@@ -50,9 +50,9 @@ Borrar el usuario en `auth.users` elimina en cascada perfil, ajustes, rating e h
 - Índices en FKs: `profiles(target_language)`, `rating_history(language_code)`, `rating_history(season_id)`.
 - `is_username_available` pasa a `SECURITY INVOKER` (los usuarios autenticados ya leen `profiles`).
 
-## Migración 0003 — currículo y progreso (`20261029120000_curriculum.sql`)
+## Migración 0003 — currículo y progreso (`20261029021909_curriculum.sql`)
 
-> Estado: probada en PGlite (29 tests). **Pendiente de aplicar en Supabase.**
+> Estado: aplicada en Supabase (2026-10-29) y verificada con una sesión real revertida.
 
 | Tabla | Propósito | Cliente |
 | --- | --- | --- |
@@ -72,7 +72,7 @@ Desviación respecto de la propuesta inicial: no hay `lesson_exercises` (cada ej
 
 | Función | Seguridad | Uso |
 | --- | --- | --- |
-| `submit_learning_session(...)` | definer, `authenticated` | Única vía de escritura del progreso. Valida sesión, tipo, ventana de tiempo (≤ 3 h), desbloqueo, pertenencia de ejercicios, un primer intento por ejercicio, palabras únicas en repasos; idempotente por id |
+| `submit_learning_session(...)` | definer, `authenticated` (aviso de advisor intencional) | Única vía de escritura del progreso. Valida sesión, tipo, ventana de tiempo (≤ 3 h), desbloqueo, pertenencia de ejercicios, un primer intento por ejercicio, palabras únicas en repasos; idempotente por id |
 | `apply_word_result(...)` | interna (sin EXECUTE para clientes) | Actualiza el SRS de una palabra |
 | `is_lesson_unlocked(...)` | interna | Regla de desbloqueo lineal |
 | `get_learning_summary(tz)` | invoker | Racha, actividad de hoy, lecciones, palabras vistas/dominadas/vencidas, tiempo, precisión por habilidad, errores frecuentes |
@@ -81,9 +81,9 @@ Desviación respecto de la propuesta inicial: no hay `lesson_exercises` (cada ej
 
 Confianza: en lecciones (no competitivas) el cliente valida la respuesta para dar feedback inmediato y el servidor registra el resultado informado. El ELO nunca depende de estas tablas.
 
-## Migración de contenido (`20261029120100_content_a1_units_1_3.sql`)
+## Migraciones de contenido (`…_content_a1_unit_01|02|03.sql`)
 
-Generada por `scripts/build-content-sql.ts` desde `content/a1`. Idempotente (upserts). **Pendiente de aplicar en Supabase.**
+Generadas por `scripts/build-content-sql.ts --unit N` desde `content/a1` (una por unidad, aplicadas en orden). Idempotentes y sin sentencias destructivas. Aplicadas en Supabase; checksum md5 del contenido idéntico al local.
 
 ## Próximas migraciones
 

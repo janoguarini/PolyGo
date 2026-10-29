@@ -1,8 +1,8 @@
 /**
  * Genera una migración SQL idempotente con el contenido de content/a1.
- * Uso: npm run content:sql -- supabase/migrations/<timestamp>_content_a1.sql
+ * Uso: npm run content:sql -- supabase/migrations/<timestamp>_content_a1.sql [--unit N]
  *
- * El contenido viaja como un único documento JSON y se aplica con upserts por conjuntos.
+ * El contenido viaja como un único documento JSON dentro de un bloque DO, sin sentencias destructivas.
  * - Unidades, lecciones, palabras y ejercicios quedan publicados con review_status = 'draft'.
  * - Los ejercicios que ya no estén en el contenido se despublican (no se borran: conservan intentos).
  */
@@ -16,8 +16,14 @@ if (!out) {
   process.exit(1);
 }
 
+// --unit N genera sólo esa unidad (migraciones más chicas; aplicar en orden).
+const unitArg = process.argv.indexOf('--unit');
+const onlyUnit = unitArg > 0 ? Number(process.argv[unitArg + 1]) : null;
+const UNITS = onlyUnit ? A1_UNITS.filter((u) => u.position === onlyUnit) : A1_UNITS;
+if (UNITS.length === 0) throw new Error(`Unidad ${onlyUnit} inexistente`);
+
 const document = {
-  units: A1_UNITS.map((u) => ({
+  units: UNITS.map((u) => ({
     id: unitId(u),
     position: u.position,
     title_es: u.title,
@@ -25,7 +31,7 @@ const document = {
     description_es: u.description,
     emoji: u.emoji,
   })),
-  words: A1_UNITS.flatMap((u) =>
+  words: UNITS.flatMap((u) =>
     u.words.map((w) => ({
       id: w.id,
       unit_id: unitId(u),
@@ -40,7 +46,7 @@ const document = {
       tags: w.tags,
     })),
   ),
-  lessons: A1_UNITS.flatMap((u) =>
+  lessons: UNITS.flatMap((u) =>
     u.lessons.map((l, li) => ({
       id: lessonId(u, li),
       unit_id: unitId(u),
@@ -49,7 +55,7 @@ const document = {
       objective_es: l.objective,
     })),
   ),
-  exercises: A1_UNITS.flatMap((u) =>
+  exercises: UNITS.flatMap((u) =>
     u.lessons.flatMap((l, li) =>
       l.exercises.map((e, ei) => ({
         id: exerciseId(u, li, ei),
@@ -71,8 +77,8 @@ const document = {
 };
 
 const payload = JSON.stringify(document);
-if (payload.includes('$content$'))
-  throw new Error('El contenido no puede incluir el delimitador $content$');
+if (payload.includes('$content$') || payload.includes('$polygo_content$'))
+  throw new Error('El contenido no puede incluir los delimitadores $content$ ni $polygo_content$');
 
 const sql = `-- =====================================================================
 -- Contenido A1 generado por scripts/build-content-sql.ts. NO editar a mano:
@@ -80,12 +86,14 @@ const sql = `-- ================================================================
 -- ${document.units.length} unidades · ${document.lessons.length} lecciones · ${document.words.length} palabras · ${document.exercises.length} ejercicios
 -- =====================================================================
 
-create temporary table content_doc on commit drop as
-select $content$${payload}$content$::jsonb as d;
+do $polygo_content$
+declare
+  d constant jsonb := $content$${payload}$content$::jsonb;
+begin
 
 insert into public.curriculum_units (id, language_code, level, position, title_es, title_en, description_es, emoji, is_published)
 select x.id, 'en', 'A1', x.position, x.title_es, x.title_en, x.description_es, x.emoji, true
-from content_doc, jsonb_to_recordset(d -> 'units')
+from jsonb_to_recordset(d -> 'units')
   as x(id text, position smallint, title_es text, title_en text, description_es text, emoji text)
 on conflict (id) do update set position = excluded.position, title_es = excluded.title_es, title_en = excluded.title_en,
   description_es = excluded.description_es, emoji = excluded.emoji, is_published = true;
@@ -94,7 +102,7 @@ insert into public.words (id, language_code, unit_id, text, translation_es, acce
   example_en, example_es, difficulty, tags, is_published)
 select x.id, 'en', x.unit_id, x.text, x.translation_es, x.accepted_translations, x.ipa, x.emoji,
   x.example_en, x.example_es, x.difficulty, x.tags, true
-from content_doc, jsonb_to_recordset(d -> 'words')
+from jsonb_to_recordset(d -> 'words')
   as x(id text, unit_id text, text text, translation_es text, accepted_translations text[], ipa text, emoji text,
        example_en text, example_es text, difficulty smallint, tags text[])
 on conflict (id) do update set unit_id = excluded.unit_id, text = excluded.text, translation_es = excluded.translation_es,
@@ -104,20 +112,20 @@ on conflict (id) do update set unit_id = excluded.unit_id, text = excluded.text,
 
 insert into public.lessons (id, unit_id, position, title_es, objective_es, is_published)
 select x.id, x.unit_id, x.position, x.title_es, x.objective_es, true
-from content_doc, jsonb_to_recordset(d -> 'lessons')
+from jsonb_to_recordset(d -> 'lessons')
   as x(id text, unit_id text, position smallint, title_es text, objective_es text)
 on conflict (id) do update set position = excluded.position, title_es = excluded.title_es,
   objective_es = excluded.objective_es, is_published = true;
 
 -- Las posiciones son únicas por lección: liberarlas antes de reordenar.
 update public.exercises set position = position + 1000
-where lesson_id in (select x ->> 'id' from content_doc, jsonb_array_elements(d -> 'lessons') x);
+where lesson_id in (select x ->> 'id' from jsonb_array_elements(d -> 'lessons') x);
 
 insert into public.exercises (id, lesson_id, position, type, skill, prompt_es, payload, answer, accepted_answers,
   explanation_es, difficulty, recommended_seconds, is_published)
 select x.id, x.lesson_id, x.position, x.type, x.skill, x.prompt_es, x.payload, x.answer, x.accepted_answers,
   x.explanation_es, x.difficulty, x.recommended_seconds, true
-from content_doc, jsonb_to_recordset(d -> 'exercises')
+from jsonb_to_recordset(d -> 'exercises')
   as x(id text, lesson_id text, position smallint, type text, skill text, prompt_es text, payload jsonb, answer text,
        accepted_answers text[], explanation_es text, difficulty smallint, recommended_seconds smallint)
 on conflict (id) do update set lesson_id = excluded.lesson_id, position = excluded.position, type = excluded.type,
@@ -127,15 +135,18 @@ on conflict (id) do update set lesson_id = excluded.lesson_id, position = exclud
 
 -- Ejercicios retirados del contenido: se despublican y se corre su posición fuera del rango usado.
 update public.exercises set is_published = false
-where lesson_id in (select x ->> 'id' from content_doc, jsonb_array_elements(d -> 'lessons') x)
-  and id not in (select x ->> 'id' from content_doc, jsonb_array_elements(d -> 'exercises') x);
+where lesson_id in (select x ->> 'id' from jsonb_array_elements(d -> 'lessons') x)
+  and id not in (select x ->> 'id' from jsonb_array_elements(d -> 'exercises') x);
 
-delete from public.exercise_words
-where exercise_id in (select x ->> 'id' from content_doc, jsonb_array_elements(d -> 'exercises') x);
-
+-- Sin sentencias destructivas: sólo se agregan vínculos. Si se quita una palabra de un ejercicio,
+-- el vínculo viejo debe borrarse con una migración escrita a mano.
 insert into public.exercise_words (exercise_id, word_id)
 select x ->> 'id', w
-from content_doc, jsonb_array_elements(d -> 'exercises') x, jsonb_array_elements_text(x -> 'words') w;
+from jsonb_array_elements(d -> 'exercises') x, jsonb_array_elements_text(x -> 'words') w
+on conflict do nothing;
+
+end
+$polygo_content$;
 `;
 
 writeFileSync(out, sql, 'utf8');

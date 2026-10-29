@@ -148,7 +148,9 @@ export async function submitLearningSession(input: {
   const { data, error } = await requireSupabase().rpc('submit_learning_session', {
     p_session_id: input.sessionId,
     p_kind: input.kind,
-    p_lesson_id: input.lessonId ?? undefined,
+    // La función SQL no tiene valores por defecto: hay que enviar todos los parámetros o PostgREST
+    // no la encuentra. En repasos el servidor ignora p_lesson_id.
+    p_lesson_id: input.lessonId ?? '',
     p_started_at: input.startedAt.toISOString(),
     p_time_zone: userTimeZone(),
     p_attempts: input.attempts.map((a) => ({

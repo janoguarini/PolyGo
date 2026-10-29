@@ -33,4 +33,13 @@ Riesgos aceptados: se puede registrar una cuenta con un email ajeno, y es más f
 
 ## Advisors de Supabase (2026-10-29)
 
-Un único aviso abierto, **intencional**: `complete_onboarding` es `SECURITY DEFINER` y ejecutable por `authenticated`. Es necesario porque el cliente no tiene privilegio `UPDATE` sobre `username`; la función exige sesión (`auth.uid()`), sólo modifica la fila del propio usuario, valida idioma y unicidad, y los `CHECK` de la tabla validan formato, avatar, nivel y objetivo.
+Avisos abiertos **intencionales** (funciones `SECURITY DEFINER` ejecutables por `authenticated`):
+
+- `complete_onboarding`: el cliente no tiene privilegio `UPDATE` sobre `username`; la función exige sesión (`auth.uid()`), sólo modifica la fila del propio usuario, valida idioma y unicidad, y los `CHECK` de la tabla validan formato, avatar, nivel y objetivo.
+- `submit_learning_session`: única vía de escritura del progreso educativo (el cliente no tiene INSERT/UPDATE en esas tablas). Valida sesión, ventana de tiempo, desbloqueo, pertenencia de ejercicios y unicidad; es idempotente por id de sesión.
+
+Aviso abierto **pendiente de decisión**: *Leaked Password Protection* (HaveIBeenPwned) desactivada en Supabase Auth. Se activa desde el dashboard (Authentication → Sign In / Providers → Email → Password security); puede requerir plan Pro.
+
+## Aprendizaje operativo: migraciones vía MCP
+
+El conector de Supabase pide confirmación extra para SQL con sentencias destructivas (`DROP`, `DELETE`, `TRUNCATE`, incluso dentro del cuerpo de una función o `on commit drop`), y esa confirmación no puede mostrarse en esta sesión: la llamada se rechaza sola. Las migraciones se escriben sin sentencias destructivas; si alguna lo necesita de verdad, aplicarla desde el SQL Editor.

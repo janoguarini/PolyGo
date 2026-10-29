@@ -26,8 +26,9 @@ Todo el contenido tiene `review_status = 'draft'`: fue redactado sin revisión e
 
 1. Editar `content/a1/unitNN-*.ts` (formato tipado en `content/types.ts`, atajos en `content/builders.ts`).
 2. `npm test`: `content/__tests__/content.test.ts` valida cada ejercicio (ver abajo).
-3. `npm run content:sql -- supabase/migrations/<timestamp>_content_….sql` genera una migración idempotente.
-4. Aplicar la migración. Los ejercicios retirados se **despublican** (no se borran) para conservar el historial de intentos.
+3. `npm run content:sql -- supabase/migrations/<timestamp>_content_a1_unit_NN.sql --unit NN` genera una migración idempotente por unidad (más chica y fácil de aplicar; aplicar en orden de unidad).
+4. Aplicar la migración y renombrar el archivo con la versión que registre Supabase. Los ejercicios retirados se **despublican** (no se borran) para conservar el historial de intentos.
+5. La migración no contiene sentencias destructivas: si se quita una palabra de un ejercicio, el vínculo viejo en `exercise_words` debe borrarse con una migración escrita a mano.
 
 ### Validaciones automáticas del contenido
 

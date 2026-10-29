@@ -283,6 +283,27 @@ $$;
 -- ---------- envío de sesiones (lección o repaso) ----------
 -- p_attempts: [{ "exercise_id"?: text, "word_id"?: text, "answer": text, "correct": bool,
 --               "first_try": bool, "response_ms": int }]
+-- Normaliza y acota cada intento recibido del cliente.
+create or replace function public.parse_learning_attempts(p_attempts jsonb)
+returns table (
+  ord int, exercise_id text, word_id text, answer text,
+  is_correct boolean, is_first_try boolean, response_ms int
+)
+language sql
+immutable
+set search_path = ''
+as $$
+  select
+    a.ordinality::int,
+    a.value ->> 'exercise_id',
+    a.value ->> 'word_id',
+    left(coalesce(a.value ->> 'answer', ''), 500),
+    coalesce((a.value ->> 'correct')::boolean, false),
+    coalesce((a.value ->> 'first_try')::boolean, false),
+    least(greatest(coalesce((a.value ->> 'response_ms')::int, 0), 0), 600000)
+  from jsonb_array_elements(p_attempts) with ordinality as a(value, ordinality);
+$$;
+
 create or replace function public.submit_learning_session(
   p_session_id uuid,
   p_kind text,
@@ -342,18 +363,6 @@ begin
     raise exception 'invalid_started_at' using errcode = '22023';
   end if;
 
-  drop table if exists pg_temp.attempt_input;
-  create temporary table attempt_input on commit drop as
-  select
-    (a.ordinality)::int as ord,
-    a.value ->> 'exercise_id' as exercise_id,
-    a.value ->> 'word_id' as word_id,
-    left(coalesce(a.value ->> 'answer', ''), 500) as answer,
-    coalesce((a.value ->> 'correct')::boolean, false) as is_correct,
-    coalesce((a.value ->> 'first_try')::boolean, false) as is_first_try,
-    least(greatest(coalesce((a.value ->> 'response_ms')::int, 0), 0), 600000) as response_ms
-  from jsonb_array_elements(p_attempts) with ordinality as a(value, ordinality);
-
   if p_kind = 'lesson' then
     if not exists (
       select 1 from public.lessons l join public.curriculum_units u on u.id = l.unit_id
@@ -366,25 +375,25 @@ begin
     end if;
     -- Cada intento debe pertenecer a un ejercicio publicado de esta lección.
     if exists (
-      select 1 from pg_temp.attempt_input i
+      select 1 from public.parse_learning_attempts(p_attempts) i
       left join public.exercises e on e.id = i.exercise_id and e.lesson_id = p_lesson_id and e.is_published
       where e.id is null
     ) then
       raise exception 'invalid_exercise' using errcode = '22023';
     end if;
     -- Debe haber exactamente un primer intento por ejercicio de la lección.
-    if (select count(*) from pg_temp.attempt_input where is_first_try)
+    if (select count(*) from public.parse_learning_attempts(p_attempts) where is_first_try)
          <> (select count(*) from public.exercises where lesson_id = p_lesson_id and is_published)
-       or (select count(distinct exercise_id) from pg_temp.attempt_input where is_first_try)
-         <> (select count(*) from pg_temp.attempt_input where is_first_try) then
+       or (select count(distinct exercise_id) from public.parse_learning_attempts(p_attempts) where is_first_try)
+         <> (select count(*) from public.parse_learning_attempts(p_attempts) where is_first_try) then
       raise exception 'incomplete_lesson' using errcode = '22023';
     end if;
   else
     if exists (
-      select 1 from pg_temp.attempt_input i
+      select 1 from public.parse_learning_attempts(p_attempts) i
       left join public.words w on w.id = i.word_id and w.is_published
       where w.id is null or not i.is_first_try
-    ) or (select count(distinct word_id) from pg_temp.attempt_input) <> n then
+    ) or (select count(distinct word_id) from public.parse_learning_attempts(p_attempts)) <> n then
       raise exception 'invalid_review' using errcode = '22023';
     end if;
   end if;
@@ -394,7 +403,7 @@ begin
          count(*),
          count(*) filter (where is_correct)
     into first_total, first_correct, total, correct_total
-  from pg_temp.attempt_input;
+  from public.parse_learning_attempts(p_attempts);
 
   duration := least(greatest(extract(epoch from (now_at - p_started_at))::int, 0), 3 * 3600);
 
@@ -416,14 +425,14 @@ begin
     session_id, user_id, exercise_id, word_id, skill, answer, is_correct, is_first_try, response_ms)
   select p_session_id, uid, i.exercise_id, i.word_id,
          coalesce(e.skill, 'vocabulary'), i.answer, i.is_correct, i.is_first_try, i.response_ms
-  from pg_temp.attempt_input i
+  from public.parse_learning_attempts(p_attempts) i
   left join public.exercises e on e.id = i.exercise_id
   order by i.ord;
 
   -- Un único resultado SRS por palabra y sesión: correcta sólo si todos sus primeros intentos lo fueron.
   for word_row in
     select w.word_id, bool_and(i.is_correct) as ok
-    from pg_temp.attempt_input i
+    from public.parse_learning_attempts(p_attempts) i
     join lateral (
       select ew.word_id from public.exercise_words ew where ew.exercise_id = i.exercise_id
       union all
@@ -590,3 +599,4 @@ revoke all on function public.word_of_the_day(date, text) from public, anon;
 grant execute on function public.word_of_the_day(date, text) to authenticated;
 revoke all on function public.apply_word_result(uuid, text, boolean, timestamptz) from public, anon, authenticated;
 revoke all on function public.is_lesson_unlocked(uuid, text) from public, anon, authenticated;
+revoke all on function public.parse_learning_attempts(jsonb) from public, anon, authenticated;

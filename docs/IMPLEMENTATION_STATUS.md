@@ -4,9 +4,9 @@
 
 ## Fase actual
 
-**Fase 2 — Sistema educativo A1: implementada y testeada en local. Bloqueada para dispositivo** hasta aplicar en Supabase las migraciones `20261029120000_curriculum.sql` y `20261029120100_content_a1_units_1_3.sql` (el aviso de permiso de `apply_migration` fue rechazado dos veces en esta sesión).
+**Fase 2 — Sistema educativo A1: completa y desplegada en Supabase.** Migraciones aplicadas, contenido verificado por checksum y flujo lección → desbloqueo → repaso probado contra la base real (transacciones revertidas). Falta recorrerla en el teléfono.
 
-Mientras no se apliquen, en el teléfono las pantallas Aprender/Vocabulario muestran error de carga y el resumen de Inicio queda vacío. Fase 1 verificada en dispositivo (registro, onboarding, tabs).
+Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 
 ## Backend
 
@@ -37,7 +37,7 @@ Mientras no se apliquen, en el teléfono las pantallas Aprender/Vocabulario mues
 
 ## Pendiente (por fase)
 
-- **Fase 2 (despliegue):** aplicar migraciones 0003 y contenido; reemplazar tipos provisionales por tipos generados; correr advisors; probar una lección completa en el teléfono.
+- **Fase 2 (verificación manual):** recorrer una lección y un repaso en el teléfono.
 - **Fase 2 (contenido):** revisión editorial humana; unidades 4–12.
 - **Fase 3:** historial de partidas, evolución de ELO, logros.
 - **Fase 4:** servidor de partidas WebSocket, matchmaking, Word Rush, liquidación ELO. *"Buscar partida" sigue deshabilitado.*
@@ -50,10 +50,27 @@ Mientras no se apliquen, en el teléfono las pantallas Aprender/Vocabulario mues
 | --- | --- | --- |
 | `20261029010416_core_profiles_ratings.sql` | ✅ | ✅ aplicada |
 | `20261029010511_advisor_fixes.sql` | ✅ | ✅ aplicada |
-| `20261029120000_curriculum.sql` | ✅ | ⏳ pendiente (permiso rechazado) |
-| `20261029120100_content_a1_units_1_3.sql` | ✅ (idempotencia testeada) | ⏳ pendiente |
+| `20261029021909_curriculum.sql` | ✅ | ✅ aplicada |
+| `20261029022122_content_a1_unit_01.sql` | ✅ | ✅ aplicada |
+| `20261029022239_content_a1_unit_02.sql` | ✅ | ✅ aplicada |
+| `20261029134056_content_a1_unit_03.sql` | ✅ (reaplicación idempotente testeada) | ✅ aplicada |
 
-Al aplicar por MCP, Supabase registra la versión con la hora de aplicación: renombrar los archivos locales para que coincidan (como se hizo con 0001/0002).
+Al aplicar por MCP, Supabase registra la versión con la hora de aplicación: los archivos locales se renombran para coincidir.
+Las migraciones no deben contener sentencias destructivas: el conector las rechaza sin poder pedir confirmación (ver SECURITY.md).
+
+## Verificación en Supabase de la Fase 2 (2026-10-29)
+
+| Prueba | Resultado |
+| --- | --- |
+| Conteos: 3 unidades, 15 lecciones, 64 palabras, 119 ejercicios, 194 vínculos | ✅ |
+| Checksum md5 de palabras, lecciones, ejercicios y vínculos igual al local | ✅ los 4 coinciden |
+| Lección 2 bloqueada antes de completar la 1 | ✅ `lesson_locked` |
+| Completar lección 1 real con todas correctas | ✅ precisión 1.000 |
+| Reenviar la misma sesión | ✅ `duplicate: true`, sin doble conteo |
+| Lección 2 desbloqueada; 6 palabras en etapa 1; racha 1 | ✅ |
+| Repaso guardado con `p_lesson_id` vacío (bug corregido en el cliente) | ✅ |
+| Datos de prueba residuales | ✅ ninguno |
+| Advisors | 2 `SECURITY DEFINER` intencionales; protección de contraseñas filtradas desactivada (decisión pendiente); índices sin uso (sin tráfico) |
 
 ## Tests locales (2026-10-29)
 
@@ -66,18 +83,17 @@ Al aplicar por MCP, Supabase registra la versión con la hora de aplicación: re
 | Bundle Metro Android + iOS | `npx expo export -p android -p ios` | ✅ |
 | expo-doctor | `npx expo-doctor` | ✅ 20/20 |
 
-No ejecutado: lecciones en dispositivo (requiere las migraciones pendientes).
+No ejecutado todavía: lecciones y repasos en el teléfono.
 
 ## Problemas conocidos
 
-1. `src/lib/database.generated.ts` contiene tipos **provisionales escritos a mano** para las tablas de 0003 (marcados `PROVISIONAL`). Regenerar al aplicar la migración.
+1. Tipos de base de datos generados desde Supabase; regenerarlos tras cada migración.
 2. Contenido A1 sin revisión editorial humana (`review_status = 'draft'`).
 3. En lecciones, la corrección la calcula el cliente (feedback inmediato); el servidor valida estructura, desbloqueo e idempotencia, no re-corrige. No afecta al ELO.
 4. Mock propio de Reanimated en Jest; bundle IDs provisionales; visibilidad de perfil aún sin efecto; SMTP por defecto de Supabase.
 
 ## Próximos pasos exactos
 
-1. Aplicar `20261029120000_curriculum.sql` y luego `20261029120100_content_a1_units_1_3.sql` (MCP con permiso aceptado, o SQL Editor del dashboard).
-2. Generar tipos reales y quitar el bloque `PROVISIONAL`; correr advisors.
-3. En el teléfono: completar la lección 1, verificar desbloqueo de la 2, racha en Inicio y palabras en Vocabulario.
-4. Fase 3 (perfil e historial) o Fase 4 (motor competitivo), según prioridad.
+1. En el teléfono: completar la lección 1, verificar desbloqueo de la 2, racha en Inicio y palabras en Vocabulario.
+2. Decidir si activar la protección de contraseñas filtradas en Supabase Auth.
+3. Fase 3 (perfil e historial) o Fase 4 (motor competitivo), según prioridad.

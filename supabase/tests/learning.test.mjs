@@ -272,9 +272,13 @@ test('contenido real A1: se carga completo y la primera lección se puede comple
 });
 
 test('el seed de contenido es idempotente (se puede reaplicar)', async () => {
-  const { readFileSync } = await import('node:fs');
-  const sql = readFileSync(new URL('../migrations/20261029120100_content_a1_units_1_3.sql', import.meta.url), 'utf8');
-  await db.exec(sql);
-  const { rows } = await db.query(`select count(*)::int as n from public.exercises where id like 'a1-%' and is_published`);
-  assert.equal(rows[0].n, 119);
+  const { readFileSync, readdirSync } = await import('node:fs');
+  const dir = new URL('../migrations/', import.meta.url);
+  const contentFiles = readdirSync(dir).filter((f) => /_content_a1_unit_\d+\.sql$/.test(f)).sort();
+  assert.equal(contentFiles.length, 3);
+  for (const file of contentFiles) await db.exec(readFileSync(new URL(file, dir), 'utf8'));
+  const { rows } = await db.query(`
+    select (select count(*)::int from public.exercises where id like 'a1-%' and is_published) as exercises,
+           (select count(*)::int from public.exercise_words) as links`);
+  assert.deepEqual(rows[0], { exercises: 119, links: 194 + 3 });
 });
