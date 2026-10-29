@@ -2,6 +2,7 @@
   "expo": {
     "name": "Polygo",
     "slug": "polygo",
+    "owner": "lichigap",
     "version": "0.1.0",
     "scheme": "polygo",
     "orientation": "portrait",

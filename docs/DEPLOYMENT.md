@@ -19,7 +19,7 @@ Si cambia la red (otra subred) o se usa `npx expo start --tunnel`, hay que agreg
 
 - [ ] Dejar sólo `polygo://auth-callback` en Redirect URLs.
 - [ ] Configurar SMTP propio (el de Supabase tiene límites bajos de envío).
-- [ ] Mantener la confirmación de email activada.
+- [ ] Revisar la decisión de **no** confirmar emails (ver SECURITY.md) y activar CAPTCHA en Auth si aparecen registros abusivos.
 - [ ] Volver a correr los advisors de seguridad y rendimiento.
 
 ## App
