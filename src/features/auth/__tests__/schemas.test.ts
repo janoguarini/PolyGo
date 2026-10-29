@@ -12,19 +12,14 @@ describe('esquemas de autenticación', () => {
     expect(signInSchema.safeParse({ email: 'no-es-email', password: 'x' }).success).toBe(false);
   });
 
-  it('exige contraseñas con letras y números de al menos 8 caracteres', () => {
+  it('exige sólo un mínimo de 6 caracteres (el de Supabase)', () => {
     const base = { email: 'a@b.co' };
-    expect(
-      signUpSchema.safeParse({ ...base, password: 'abc', confirmPassword: 'abc' }).success,
-    ).toBe(false);
-    expect(
-      signUpSchema.safeParse({ ...base, password: 'abcdefgh', confirmPassword: 'abcdefgh' })
-        .success,
-    ).toBe(false);
-    expect(
-      signUpSchema.safeParse({ ...base, password: 'abcd1234', confirmPassword: 'abcd1234' })
-        .success,
-    ).toBe(true);
+    const valid = (password: string) =>
+      signUpSchema.safeParse({ ...base, password, confirmPassword: password }).success;
+    expect(valid('abcde')).toBe(false);
+    expect(valid('abcdef')).toBe(true);
+    expect(valid('123456')).toBe(true);
+    expect(valid('x'.repeat(73))).toBe(false);
   });
 
   it('detecta contraseñas que no coinciden', () => {

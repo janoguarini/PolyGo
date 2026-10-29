@@ -39,7 +39,7 @@ export default function ResetPasswordScreen() {
             onChangeText={field.onChange}
             onBlur={field.onBlur}
             error={formState.errors.password?.message}
-            hint="Mínimo 8 caracteres, con letras y números."
+            hint="Mínimo 6 caracteres."
             secureTextEntry
             autoComplete="new-password"
             textContentType="newPassword"

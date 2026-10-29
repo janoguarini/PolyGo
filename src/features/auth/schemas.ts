@@ -2,12 +2,11 @@ import { z } from 'zod';
 
 const email = z.string().trim().toLowerCase().pipe(z.email('Ingresá un email válido.'));
 
+// 6 es el mínimo que exige Supabase Auth en el servidor; 72 es el límite de bcrypt.
 export const passwordSchema = z
   .string()
-  .min(8, 'Mínimo 8 caracteres.')
-  .max(72, 'Máximo 72 caracteres.')
-  .regex(/[A-Za-z]/, 'Incluí al menos una letra.')
-  .regex(/[0-9]/, 'Incluí al menos un número.');
+  .min(6, 'Mínimo 6 caracteres.')
+  .max(72, 'Máximo 72 caracteres.');
 
 export const signInSchema = z.object({
   email,
