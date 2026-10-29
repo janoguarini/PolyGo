@@ -31,7 +31,7 @@
 
 ## Pendiente (por fase)
 
-- **Fase 1 (verificación manual):** prueba en dispositivo; Redirect URL `polygo://auth-callback` en el dashboard.
+- **Fase 1 (verificación manual):** prueba en dispositivo (Redirect URLs ya configuradas).
 - **Fase 2:** currículo A1 (tablas, seed), motor de ejercicios, lecciones, progreso, repetición espaciada, racha.
 - **Fase 3:** historial de partidas, evolución de ELO, estadísticas educativas, logros.
 - **Fase 4:** servidor de partidas WebSocket, matchmaking, Word Rush, liquidación ELO transaccional e idempotente. *"Buscar partida" está deshabilitado a propósito.*
@@ -83,6 +83,6 @@ No ejecutado todavía: la app en un dispositivo real.
 
 ## Próximos pasos exactos
 
-1. Agregar `polygo://auth-callback` (y la URL `exp://…/--/auth-callback` de Expo Go) en Auth → URL Configuration.
+1. ~~Redirect URLs~~ ✅ configuradas (ver DEPLOYMENT.md).
 2. `npx expo start`, abrir en Expo Go, registrarse y completar el onboarding.
 3. Fase 2: migración del currículo + seed de las unidades 1–3 + motor de ejercicios con validación testeada.
