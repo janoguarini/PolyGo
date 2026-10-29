@@ -60,12 +60,12 @@ Instaladas con `npx expo install` (versiones compatibles con SDK 58): expo-route
 
 | Riesgo | Impacto | Mitigación |
 | --- | --- | --- |
-| Sin proyecto Supabase | La app muestra la pantalla "Falta configurar el backend"; nada de auth funciona en dispositivo | Crear proyecto (necesita tu OK) y aplicar migraciones |
+| ~~Sin proyecto Supabase~~ | Resuelto 2026-10-29: proyecto `PolyGo` creado y migraciones aplicadas | — |
 | Sin Android SDK / Xcode local | No hay builds nativos locales; widgets (Fase 5) imposibles de probar localmente | EAS Build en la nube; development builds |
 | SDK 58 muy reciente | APIs cambiantes | Se consultó documentación versionada; `expo-doctor` limpio |
 | Mock de Reanimated oficial roto en Jest | Tests de componentes animados | Mock mínimo propio en `jest.setup.ts` |
 | Servidor de partidas necesita hosting persistente (WebSockets) | Coste/infra en Fase 4 | Diseñado como servicio Node aparte; elegir host (Fly.io/Railway/Render) |
-| Tipos de DB escritos a mano | Desalineación con el esquema | Regenerar con `supabase gen types` al crear el proyecto |
+| ~~Tipos de DB escritos a mano~~ | Resuelto 2026-10-29: tipos generados desde el proyecto real | — |
 | `npm audit` reporta vulnerabilidades transitivas | Bajo (tooling dev) | Revisar en Fase 6; no forzar `audit fix --force` (rompe versiones de Expo) |
 
 ## 6. Plan de implementación

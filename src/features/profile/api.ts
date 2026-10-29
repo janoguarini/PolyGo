@@ -1,4 +1,10 @@
-import type { PlayerRatingRow, ProfileRow, SeasonRow, UserSettingsRow } from '@/lib/database.types';
+import type {
+  PlayerRatingRow,
+  ProfileRow,
+  ProfileVisibility,
+  SeasonRow,
+  UserSettingsRow,
+} from '@/lib/database.types';
 import { requireSupabase } from '@/lib/supabase';
 
 export interface MyProfile {
@@ -67,7 +73,7 @@ export async function completeOnboarding(input: OnboardingInput): Promise<Profil
 
 export async function updateSettings(
   userId: string,
-  patch: Partial<Pick<UserSettingsRow, 'profile_visibility' | 'show_region'>>,
+  patch: { profile_visibility?: ProfileVisibility; show_region?: boolean },
 ) {
   const { error } = await requireSupabase()
     .from('user_settings')

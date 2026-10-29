@@ -22,13 +22,13 @@ import {
 import { signOut } from '@/features/auth/api';
 import { FormMessage } from '@/features/auth/FormMessage';
 import { useMyProfile, useUpdateSettings } from '@/features/profile/hooks';
-import type { UserSettingsRow } from '@/lib/database.types';
+import type { ProfileVisibility } from '@/lib/database.types';
 import { toUserMessage } from '@/lib/errors';
 
 const joinedFormat = new Intl.DateTimeFormat('es', { month: 'long', year: 'numeric' });
 
 const VISIBILITY: {
-  id: UserSettingsRow['profile_visibility'];
+  id: ProfileVisibility;
   title: string;
   description: string;
 }[] = [

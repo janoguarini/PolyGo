@@ -24,7 +24,7 @@ Sin `.env` válido la app arranca en una pantalla que indica qué variables falt
 
 1. Aplicar las migraciones de `supabase/migrations/` (SQL Editor o `npx supabase db push`).
 2. En **Auth → URL Configuration → Redirect URLs** añadir `polygo://auth-callback` y, para Expo Go, la URL `exp://…/--/auth-callback` que muestra `npx expo start`.
-3. Regenerar tipos: `npx supabase gen types typescript --project-id <ref> > src/lib/database.types.ts`.
+3. Regenerar tipos tras cada migración: `npx supabase gen types typescript --project-id wtymosvsymzoosxscnxi > src/lib/database.generated.ts` (o vía MCP).
 
 ## Scripts
 

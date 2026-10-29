@@ -23,4 +23,8 @@
 - Fase 4: verificación de JWT en el servidor de partidas, rate limiting por socket, validación de pertenencia a partida, liquidación transaccional idempotente, logs sin datos sensibles.
 - Fase 5: el widget nunca guarda la `service_role` key; sólo contenido de vocabulario y un token de sesión si hace falta.
 - Revisar `npm audit` (dependencias transitivas de tooling) sin `--force`.
-- Ejecutar `get_advisors` de Supabase al crear el proyecto.
+- Volver a ejecutar los advisors de Supabase después de cada migración.
+
+## Advisors de Supabase (2026-10-29)
+
+Un único aviso abierto, **intencional**: `complete_onboarding` es `SECURITY DEFINER` y ejecutable por `authenticated`. Es necesario porque el cliente no tiene privilegio `UPDATE` sobre `username`; la función exige sesión (`auth.uid()`), sólo modifica la fila del propio usuario, valida idioma y unicidad, y los `CHECK` de la tabla validan formato, avatar, nivel y objetivo.

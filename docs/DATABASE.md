@@ -2,6 +2,8 @@
 
 Migraciones versionadas en `supabase/migrations/`. Tests en `supabase/tests/` (`npm run test:db`).
 
+Aplicadas en Supabase (`PolyGo`, 2026-10-29): `20261029010416_core_profiles_ratings`, `20261029010511_advisor_fixes`.
+
 ## Migración 0001 — núcleo
 
 | Tabla | Propósito | Escritura desde el cliente |
@@ -25,7 +27,7 @@ Migraciones versionadas en `supabase/migrations/`. Tests en `supabase/tests/` (`
 | Función | Seguridad | Uso |
 | --- | --- | --- |
 | `handle_new_user()` | trigger, definer | Crea perfil, ajustes, rating 1000 e historial `initial` al registrarse |
-| `is_username_available(text)` | definer, `authenticated` | Chequeo en onboarding |
+| `is_username_available(text)` | invoker (desde 0002), `authenticated` | Chequeo en onboarding |
 | `complete_onboarding(...)` | definer, `authenticated` | Valida y guarda onboarding |
 
 ## RLS
@@ -42,7 +44,13 @@ Se hace `REVOKE ALL` explícito porque Supabase concede privilegios amplios por 
 
 Borrar el usuario en `auth.users` elimina en cascada perfil, ajustes, rating e historial (testeado). En Fase 4, `battle_players` conservará la partida para el rival con el jugador anonimizado.
 
+## Migración 0002 — correcciones de advisors
+
+- Políticas RLS con `(select auth.uid())` para evaluar una vez por consulta, no por fila.
+- Índices en FKs: `profiles(target_language)`, `rating_history(language_code)`, `rating_history(season_id)`.
+- `is_username_available` pasa a `SECURITY INVOKER` (los usuarios autenticados ya leen `profiles`).
+
 ## Próximas migraciones
 
-- 0002 currículo: `curriculum_units`, `lessons`, `words`, `exercises`, `lesson_exercises`, `user_lesson_progress`, `user_word_progress`, `daily_word_assignments`.
-- 0003 batallas: `matchmaking_queue`, `battles`, `battle_players`, `battle_answers`, FK `rating_history.battle_id`, función de liquidación transaccional.
+- 0003 currículo: `curriculum_units`, `lessons`, `words`, `exercises`, `lesson_exercises`, `user_lesson_progress`, `user_word_progress`, `daily_word_assignments`.
+- 0004 batallas: `matchmaking_queue`, `battles`, `battle_players`, `battle_answers`, FK `rating_history.battle_id`, función de liquidación transaccional.
