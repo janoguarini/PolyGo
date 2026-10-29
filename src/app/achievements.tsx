@@ -11,12 +11,13 @@ import {
   Text,
   spacing,
 } from '@/design-system';
+import { battleServerConfigured } from '@/features/battle/client';
 import type { Achievement } from '@/features/profile/api';
 import { AchievementRow } from '@/features/profile/components/AchievementBadge';
 import { useMyAchievements } from '@/features/profile/hooks';
 
-// Ranked se abre con el servidor de partidas (Fase 4). Mismo criterio que la pantalla Ranked.
-const RANKED_AVAILABLE = false;
+// Mismo criterio que la pantalla Ranked: disponible si la app tiene servidor de partidas.
+const RANKED_AVAILABLE = battleServerConfigured;
 
 const CATEGORIES: { id: string; title: string }[] = [
   { id: 'learning', title: 'Lecciones' },

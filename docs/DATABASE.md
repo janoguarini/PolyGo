@@ -42,7 +42,7 @@ Se hace `REVOKE ALL` explícito porque Supabase concede privilegios amplios por 
 
 ## Borrado y conservación
 
-Borrar el usuario en `auth.users` elimina en cascada perfil, ajustes, rating e historial (testeado). En Fase 4, `battle_players` conservará la partida para el rival con el jugador anonimizado.
+Borrar el usuario en `auth.users` elimina en cascada perfil, ajustes, rating e historial (testeado). `battle_players` conserva la partida para el rival con el jugador anonimizado (`user_id` → NULL), también si la cuenta se borra durante la partida (testeado).
 
 ## Migración 0002 — correcciones de advisors
 
@@ -109,6 +109,20 @@ Además: FK `rating_history.battle_id → battles(id)`.
 | `get_public_profile(uuid)` | definer (aviso intencional) | Perfil de otro jugador según su visibilidad |
 | `submit_learning_session(...)` | reemplazada | Igual que en 0003 + evalúa logros y devuelve `achievements_unlocked` |
 
+## Migración 0005 — liquidación de partidas (`20261029144242_battle_settlement.sql`)
+
+Sin tablas nuevas: la cola, las preguntas y las respuestas viven en la memoria del servidor de partidas (son efímeras); a la base sólo llega el resultado. Todas las funciones son `security definer` con `search_path = ''` y **sólo las ejecuta `service_role`** (sin avisos de advisors).
+
+| Función | Uso |
+| --- | --- |
+| `start_battle(id, idioma, j1, j2, versión)` | Crea `battles` (`in_progress`, temporada activa) y ambas filas de `battle_players` con el rating de partida. Idempotente |
+| `battle_settlement_context(id, horas)` | Rating y partidas jugadas actuales + partidas ranked liquidadas entre ambos en la ventana (contando la actual) |
+| `settle_battle(id, estado, jugadores jsonb)` | Liquidación transaccional: bloquea `player_ratings`, exige que rating y partidas jugadas sigan siendo los leídos (`stale_rating` / 40001 si no), completa `battle_players`, actualiza `player_ratings` (rating, pico, W/L/D, rachas), inserta `rating_history`, cierra `battles` y evalúa logros; devuelve los logros nuevos por jugador. Si la partida ya estaba cerrada o cancelada: `duplicate: true` sin cambios |
+| `cancel_battle(id)` | Cancela sin tocar ratings; `false` si ya estaba cerrada |
+| `cancel_stale_battles(segundos)` | Cancela partidas abiertas más viejas que N segundos (reinicios del servidor) |
+
+El ELO lo calcula el servidor con `shared/ranking.ts` (fuente única); la base garantiza atomicidad, idempotencia y que no se liquide con datos viejos.
+
 ## Próximas migraciones
 
-- 0005 motor competitivo: `matchmaking_queue`, preguntas y `battle_answers`, función de liquidación transaccional que escriba `battles`/`battle_players`/`player_ratings`/`rating_history` y llame a `evaluate_achievements` para ambos jugadores.
+- Fase 5: lo que necesiten los widgets (probablemente nada nuevo: leen palabra del día y repasos).

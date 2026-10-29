@@ -41,7 +41,7 @@
 
 - **Datos remotos:** TanStack Query (`profileKeys`, `leaderboard`). Se limpia la caché al cerrar sesión.
 - **Sesión:** `AuthProvider` (contexto) escuchando `onAuthStateChange`.
-- **Estado de UI global:** Zustand está instalado pero sin uso todavía; se usará para el estado de batalla en Fase 4.
+- **Estado de batalla:** Zustand (`src/features/battle/store.ts`) sobre un reducer puro (`state.ts`): los eventos del socket llegan fuera del árbol de React. Es un reflejo del servidor; el cliente no decide puntos, tiempo ni resultado.
 
 ## Decisiones
 

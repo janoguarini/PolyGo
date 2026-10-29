@@ -2,7 +2,7 @@
 
 App móvil (iOS/Android) para aprender inglés compitiendo: lecciones A1, batallas 1v1 en tiempo real, ELO y rangos de Bronce a Gran Maestro, perfil competitivo y widgets de vocabulario.
 
-> Estado: **Fase 1** (fundamentos, auth, onboarding, navegación). Ver [docs/IMPLEMENTATION_STATUS.md](docs/IMPLEMENTATION_STATUS.md).
+> Estado: **Fase 4** (lecciones A1, perfil y logros, batallas ranked Word Rush con servidor autoritativo). Ver [docs/IMPLEMENTATION_STATUS.md](docs/IMPLEMENTATION_STATUS.md).
 
 ## Requisitos
 
@@ -20,6 +20,8 @@ npx expo start
 
 Sin `.env` válido la app arranca en una pantalla que indica qué variables faltan.
 
+Para Ranked hace falta el servidor de partidas (`server/`): ver [Despliegue](docs/DEPLOYMENT.md#servidor-de-partidas-fase-4).
+
 ### Backend (Supabase)
 
 1. Aplicar las migraciones de `supabase/migrations/` (SQL Editor o `npx supabase db push`).
@@ -35,6 +37,7 @@ Sin `.env` válido la app arranca en una pantalla que indica qué variables falt
 | `npm run lint` | ESLint (config de Expo) |
 | `npm test` | Jest: lógica compartida, librerías y componentes |
 | `npm run test:db` | Migraciones + RLS en Postgres real (PGlite, sin Docker) |
+| `npm run test:server` | Servidor de partidas: typecheck + tests (incluye dos clientes Socket.IO reales) |
 | `npm run check` | Todo lo anterior |
 | `npm run format` | Prettier |
 

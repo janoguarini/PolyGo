@@ -27,6 +27,7 @@
     "react-native-svg": "15.16.0",
     "react-native-web": "^0.21.4",
     "react-native-worklets": "0.13.0",
+    "socket.io-client": "^4.8.4",
     "zod": "^4.6.7",
     "zustand": "^5.0.16"
   },
@@ -53,9 +54,10 @@
     "typecheck": "tsc --noEmit && tsc --noEmit -p scripts",
     "test": "jest",
     "format": "prettier --write .",
-    "check": "npm run typecheck && npm run lint && npm test -- --ci && npm run test:db",
+    "check": "npm run typecheck && npm run lint && npm test -- --ci && npm run test:db && npm run test:server",
     "test:db": "node --import tsx --test \"supabase/tests/*.test.mjs\"",
-    "content:sql": "tsx scripts/build-content-sql.ts"
+    "content:sql": "tsx scripts/build-content-sql.ts",
+    "test:server": "npm --prefix server run typecheck && npm --prefix server test"
   },
   "private": true,
   "jest": {

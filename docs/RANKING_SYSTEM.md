@@ -49,7 +49,7 @@ Partidas ranked contra **la misma cuenta** en las últimas 24 h (contando la act
 
 Un usuario nuevo (1000) queda en **Plata I**, pero se muestra **"En colocación / Sin rango"** hasta completar 5 partidas.
 
-## Reglas de liquidación (implementación en Fase 4)
+## Reglas de liquidación (implementadas en Fase 4: `server/src/settlement.ts` + `settle_battle`)
 
 - El rating lo calcula **sólo el servidor de partidas**; el cliente no tiene privilegios de escritura sobre `player_ratings` ni `rating_history` (testeado con RLS).
 - `rating_history` tiene `UNIQUE (user_id, battle_id)`: una partida no puede liquidarse dos veces para un jugador (testeado).

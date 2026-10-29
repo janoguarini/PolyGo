@@ -1,10 +1,12 @@
 # Estado de implementación
 
-Última actualización: 2026-10-29
+Última actualización: 2026-10-29 (Fase 4)
 
 ## Fase actual
 
-**Fase 3 — Perfil, historial, evolución de ELO y logros: completa y desplegada en Supabase.** Migración 0004 aplicada y verificada contra la base real (sesión y partida revertidas). Falta recorrerla en el teléfono. Los datos competitivos (partidas, gráfico de ELO, logros de ranked) se llenan cuando exista la Fase 4; hasta entonces se muestran estados vacíos honestos.
+**Fase 4 — Servidor de partidas, matchmaking, Word Rush y liquidación ELO: implementada.** Migración 0005 aplicada y verificada contra la base real (partida revertida). El servidor (`server/`) pasa sus tests con dos clientes Socket.IO reales, pero **todavía no corrió contra Supabase**: falta la secret key en `server/.env` y jugar una partida en dos dispositivos. Sin `EXPO_PUBLIC_BATTLE_SERVER_URL` la app sigue mostrando Ranked deshabilitado.
+
+**Fase 3** — completa y desplegada; falta recorrerla en el teléfono.
 
 **Fase 2** — completa y desplegada; falta recorrerla en el teléfono.
 
@@ -45,12 +47,20 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 - [x] Resultados de lección/repaso muestran los logros recién desbloqueados.
 - [x] La visibilidad de perfil ya tiene efecto (`private`/`friends` sólo muestran nombre, avatar y rango).
 
+### Fase 4
+- [x] `shared/protocol.ts`: contrato tipado de eventos, constantes de Word Rush y matchmaking, máquina de estados (`canTransition`).
+- [x] `shared/wordRush.ts`: generación de preguntas (sin distractores sinónimos), puntuación (100 + bonus ≤ 50, −50, piso 0) y resultado (abandono → puntaje → precisión → empate).
+- [x] Migración 0005: `start_battle`, `battle_settlement_context`, `settle_battle` (transaccional, idempotente, control optimista de rating, logros), `cancel_battle`, `cancel_stale_battles`; sólo `service_role`.
+- [x] Servidor `server/`: auth por token de Supabase, una conexión por usuario, cola con ventana ±100→±400, motor autoritativo con reloj del servidor, reconexión con 15 s de gracia, abandono, práctica sin ELO, liquidación con reintentos, limpieza de partidas huérfanas, rate limit, `/health`, Dockerfile.
+- [x] App: pantalla `battle` (búsqueda, rival encontrado, cuenta atrás, partida con marcador y feedback, resultado con ELO/rango/logros, cancelaciones), cliente Socket.IO con token renovado en cada reconexión, estado en Zustand sobre reducer puro.
+- [x] "Buscar partida" y "Practicar sin ELO" se habilitan con `EXPO_PUBLIC_BATTLE_SERVER_URL`; los logros competitivos dejan de decir "Disponible cuando abra Ranked".
+
 ## Pendiente (por fase)
 
 - **Fase 2 (verificación manual):** recorrer una lección y un repaso en el teléfono.
 - **Fase 2 (contenido):** revisión editorial humana; unidades 4–12.
 - **Fase 3 (verificación manual):** recorrer perfil, editar perfil, logros y perfil de otro jugador en el teléfono.
-- **Fase 4:** servidor de partidas WebSocket, matchmaking, Word Rush, liquidación ELO (escribiendo en `battles`/`battle_players` y llamando a `evaluate_achievements`). *"Buscar partida" sigue deshabilitado; los logros competitivos dicen "Disponible cuando abra Ranked" (`RANKED_AVAILABLE` en `src/app/achievements.tsx`).*
+- **Fase 4 (puesta en marcha):** completar `server/.env` con la secret key, levantar el servidor y jugar una partida ranked y una práctica en dos dispositivos. Después, elegir hosting (Fly.io/Railway/Render) con HTTPS.
 - **Fase 5:** widgets nativos iOS y Android.
 - **Fase 6:** QA, accesibilidad, builds EAS, checklist de lanzamiento.
 
@@ -65,9 +75,24 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 | `20261029022239_content_a1_unit_02.sql` | ✅ | ✅ aplicada |
 | `20261029134056_content_a1_unit_03.sql` | ✅ (reaplicación idempotente testeada) | ✅ aplicada |
 | `20261029140504_profile_history_achievements.sql` | ✅ | ✅ aplicada |
+| `20261029144242_battle_settlement.sql` | ✅ | ✅ aplicada |
 
 Al aplicar por MCP, Supabase registra la versión con la hora de aplicación: los archivos locales se renombran para coincidir.
 Las migraciones no deben contener sentencias destructivas: el conector las rechaza sin poder pedir confirmación (ver SECURITY.md).
+
+## Verificación en Supabase de la Fase 4 (2026-10-29)
+
+Bloque con dos usuarios temporales que termina en excepción (rollback); conteos finales en 0.
+
+| Prueba | Resultado |
+| --- | --- |
+| `start_battle` + `battle_settlement_context` | ✅ ratings 1000/1000, 0 partidas, ventana 1 |
+| `settle_battle` victoria/derrota en colocación | ✅ 1000 → 1024 / 976, 1 partida, 1 victoria, racha 1, 2 filas en `rating_history`, estado `completed` |
+| Logros devueltos | ✅ `first_win` para el ganador, ninguno para el perdedor |
+| Reliquidar | ✅ `duplicate: true` |
+| `authenticated` no puede ejecutar las funciones nuevas | ✅ |
+| Datos residuales | ✅ ninguno |
+| Advisors | ✅ sin avisos nuevos |
 
 ## Verificación en Supabase de la Fase 3 (2026-10-29)
 
@@ -103,12 +128,13 @@ Todo dentro de un bloque que termina en excepción (rollback); conteos finales e
 | --- | --- | --- |
 | TypeScript (app + scripts) | `npm run typecheck` | ✅ |
 | ESLint | `npm run lint` | ✅ |
-| Jest | `npm test` | ✅ 222/222 (12 suites: + geometría del gráfico, formatos, historial, logros) |
-| SQL + RLS (PGlite) | `npm run test:db` | ✅ 39/39 (+ partidas, historial, anonimización, logros, racha récord, visibilidad) |
+| Jest | `npm test` | ✅ 249/249 (14 suites: + Word Rush, protocolo y reducer de batalla) |
+| SQL + RLS (PGlite) | `npm run test:db` | ✅ 49/49 (+ liquidación, idempotencia, stale rating, anti-farming, abandono, cuenta borrada, cancelación) |
+| Servidor de partidas | `npm run test:server` | ✅ typecheck + 33/33 (matchmaking, motor con reloj manual, liquidación con reintentos, integración con 2 clientes Socket.IO reales, rate limit) |
 | Bundle Metro Android + iOS | `npx expo export -p android -p ios` | ✅ |
-| expo-doctor | `npx expo-doctor` | ✅ 20/20 |
+| expo-doctor | `npx expo-doctor` | ⚠️ 19/20: `react-native` 0.88.0 instalado, el SDK pide 0.88.1 (parche publicado después; sin aplicar) |
 
-No ejecutado todavía: lecciones, repasos y pantallas de la Fase 3 en el teléfono.
+No ejecutado todavía: lecciones, repasos y pantallas de la Fase 3 en el teléfono; el servidor de partidas contra Supabase real y una partida en dos dispositivos.
 
 ## Problemas conocidos
 
@@ -118,9 +144,13 @@ No ejecutado todavía: lecciones, repasos y pantallas de la Fase 3 en el teléfo
 4. Mock propio de Reanimated en Jest; bundle IDs provisionales; SMTP por defecto de Supabase.
 5. `friends` se trata como privado hasta que existan amigos.
 6. El historial pagina por fecha de fin: dos partidas terminadas en el mismo microsegundo podrían saltearse entre páginas (despreciable).
+7. Servidor de partidas de una sola instancia: cola y partidas en memoria; un reinicio cancela las partidas en curso (sin ELO).
+8. El bonus de velocidad incluye la latencia de red de cada jugador.
 
 ## Próximos pasos exactos
 
-1. En el teléfono: completar la lección 1 (debe mostrar "Primer paso" y, si es perfecta, "Impecable"), verificar desbloqueo de la 2, racha en Inicio, Perfil → Logros, Editar perfil y abrir un jugador desde la clasificación.
-2. Decidir si activar la protección de contraseñas filtradas en Supabase Auth.
-3. Fase 4: servidor de partidas, matchmaking, Word Rush y liquidación (ver BATTLE_PROTOCOL → Persistencia).
+1. Servidor de partidas: copiar `server/.env.example` a `server/.env` con la secret key (Dashboard → Project Settings → API Keys), `cd server && npm install && npm run dev`, y en el `.env` de la app `EXPO_PUBLIC_BATTLE_SERVER_URL=http://<IP-de-la-PC>:3001`.
+2. En dos dispositivos con cuentas distintas: buscar partida, confirmar, jugar, ver resultado/ELO/logros; probar cortar el Wi-Fi de uno (gracia de 15 s) y "Practicar sin ELO".
+3. Pendientes de fases anteriores en el teléfono (lección 1, logros, perfil de otro jugador).
+4. Decidir hosting del servidor (con HTTPS) y si activar la protección de contraseñas filtradas.
+5. Fase 5: widgets nativos.

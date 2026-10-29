@@ -1,5 +1,5 @@
 import { router } from 'expo-router';
-import { CalendarDays, Search, Trophy } from 'lucide-react-native';
+import { CalendarDays, Dumbbell, Search, Trophy } from 'lucide-react-native';
 import { Pressable, StyleSheet, View } from 'react-native';
 
 import {
@@ -15,6 +15,7 @@ import {
   spacing,
 } from '@/design-system';
 import { useAuth } from '@/features/auth/AuthProvider';
+import { battleServerConfigured } from '@/features/battle/client';
 import { useActiveSeason, useMyProfile } from '@/features/profile/hooks';
 import { useLeaderboard } from '@/features/ranked/api';
 import { RankCard } from '@/features/ranked/RankCard';
@@ -26,8 +27,8 @@ export default function RankedScreen() {
   const me = useMyProfile();
   const season = useActiveSeason();
   const leaderboard = useLeaderboard(me.data?.profile.target_language);
-  // El cliente de matchmaking llega en la Fase 4; hasta entonces el botón no puede quedar activo sin hacer nada.
-  const battleServerReady = false;
+  // Sin URL del servidor de partidas el botón no puede quedar activo sin hacer nada.
+  const battleServerReady = battleServerConfigured;
 
   if (me.isPending) return <LoadingState />;
   if (me.isError || !me.data) return <ErrorState onRetry={() => void me.refetch()} />;
@@ -65,11 +66,20 @@ export default function RankedScreen() {
           disabled={!battleServerReady}
           icon={<Search color={colors.onPrimary} size={20} />}
           accessibilityHint="Busca un rival con un ELO similar"
+          onPress={() => router.push({ pathname: '/battle', params: { mode: 'ranked' } })}
+        />
+        <Button
+          label="Practicar sin ELO"
+          variant="ghost"
+          disabled={!battleServerReady}
+          icon={<Dumbbell color={colors.textMuted} size={18} />}
+          accessibilityHint="Una ronda de 75 segundos contra el reloj, sin rival"
+          onPress={() => router.push({ pathname: '/battle', params: { mode: 'practice' } })}
         />
         {!battleServerReady ? (
           <Text variant="caption" align="center">
-            El servidor de partidas todavía no está desplegado (Fase 4). No mostramos rivales
-            simulados.
+            El servidor de partidas no está configurado (EXPO_PUBLIC_BATTLE_SERVER_URL). No
+            mostramos rivales simulados.
           </Text>
         ) : null}
       </Card>

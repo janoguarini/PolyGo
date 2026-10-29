@@ -753,6 +753,21 @@ export type Database = {
         Args: { p_at: string; p_correct: boolean; p_user_id: string; p_word_id: string };
         Returns: undefined;
       };
+      battle_settlement_context: {
+        Args: { p_battle_id: string; p_window_hours: number };
+        Returns: {
+          games_played: number;
+          matches_in_window: number;
+          rating: number;
+          slot: number;
+          user_id: string;
+        }[];
+      };
+      cancel_battle: { Args: { p_battle_id: string }; Returns: boolean };
+      cancel_stale_battles: {
+        Args: { p_older_than_seconds: number };
+        Returns: number;
+      };
       complete_onboarding: {
         Args: {
           p_avatar_id: string;
@@ -830,7 +845,21 @@ export type Database = {
         }[];
       };
       safe_time_zone: { Args: { p_time_zone: string }; Returns: string };
+      settle_battle: {
+        Args: { p_battle_id: string; p_players: Json; p_status: string };
+        Returns: Json;
+      };
       srs_config: { Args: never; Returns: Json };
+      start_battle: {
+        Args: {
+          p_battle_id: string;
+          p_language_code: string;
+          p_player1: string;
+          p_player2: string;
+          p_protocol_version: number;
+        };
+        Returns: undefined;
+      };
       submit_learning_session: {
         Args: {
           p_attempts: Json;

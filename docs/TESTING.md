@@ -6,6 +6,7 @@
 | Librerías (storage, errores, esquemas) | Jest | `npm test` | `src/**/__tests__/` |
 | Componentes | Jest + React Native Testing Library 14 | `npm test` | `src/**/__tests__/*.test.tsx` |
 | Migraciones + RLS | `node --test` + PGlite | `npm run test:db` | `supabase/tests/` |
+| Servidor de partidas (matchmaking, motor con reloj manual, liquidación, integración con 2 clientes Socket.IO reales) | `node --test` + tsx | `npm run test:server` | `server/test/` |
 | Todo | | `npm run check` | |
 
 ## Notas
@@ -17,8 +18,8 @@
 
 ## Cobertura actual
 
-207 tests Jest + 29 tests SQL, todos en verde (2026-10-29). Lista en [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md).
+249 tests Jest + 49 tests SQL + 33 tests del servidor, todos en verde (2026-10-29). Lista en [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md).
 
 ## Pendiente
 
-Tests de pantallas con navegación (onboarding y lección completos con Supabase mockeado), prueba de lecciones en dispositivo, tests multijugador con dos clientes Socket.IO reales (Fase 4), pruebas manuales de widgets en dispositivo (Fase 5).
+Tests de pantallas con navegación (onboarding y lección completos con Supabase mockeado), prueba de lecciones en dispositivo, partida ranked real en dos dispositivos contra el servidor desplegado (Fase 4), pruebas manuales de widgets en dispositivo (Fase 5).

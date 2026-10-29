@@ -18,12 +18,18 @@
 | Doble liquidación imposible | `UNIQUE (user_id, battle_id)` | Tests SQL |
 | Funciones `security definer` con `search_path = ''` | migraciones 0001–0004 | Revisión |
 | Partidas y logros sólo los escribe el backend | `REVOKE` + sin políticas de escritura | Tests SQL |
+| Servidor de partidas: token de Supabase validado en el handshake; versión de protocolo obligatoria | `server/src/server.ts` | Test de integración |
+| La `service_role` key sólo vive en `server/.env` | `.gitignore`, `server/.env.example` | Revisión |
+| El cliente nunca recibe la respuesta correcta antes de responder; el servidor corrige, cronometra y puntúa | `server/src/battle.ts` | Tests unitarios + integración |
+| Sólo se aceptan eventos de la partida propia y de la pregunta actual | `battle.ts` / `server.ts` | Tests |
+| Rate limit: 20 eventos/s por socket | `server.ts` | Test de integración |
+| Liquidación transaccional, idempotente y con control optimista de rating | `settle_battle` (0005), sólo `service_role` | Tests SQL + verificación en Supabase |
+| Logs del servidor sin tokens ni emails (sólo ids) | `server/src` | Revisión |
 | Visibilidad de perfil aplicada (`private`/`friends` ocultan estadísticas y logros) | `get_public_profile` | Tests SQL |
 | Métricas educativas ajenas invisibles | `achievement_metrics` es invoker: RLS devuelve 0 | Tests SQL |
 
 ## Pendiente
 
-- Fase 4: verificación de JWT en el servidor de partidas, rate limiting por socket, validación de pertenencia a partida, liquidación transaccional idempotente, logs sin datos sensibles.
 - Fase 5: el widget nunca guarda la `service_role` key; sólo contenido de vocabulario y un token de sesión si hace falta.
 - Revisar `npm audit` (dependencias transitivas de tooling) sin `--force`.
 - Volver a ejecutar los advisors de Supabase después de cada migración.
