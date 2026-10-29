@@ -1,0 +1,45 @@
+{
+  "expo": {
+    "name": "Polygo",
+    "slug": "polygo",
+    "version": "0.1.0",
+    "scheme": "polygo",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#0B0A1A",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.polygo.app"
+    },
+    "android": {
+      "package": "com.polygo.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#0B0A1A",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 180,
+          "resizeMode": "contain",
+          "backgroundColor": "#0B0A1A"
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
