@@ -17,10 +17,18 @@ Si cambia la red (otra subred) o se usa `npx expo start --tunnel`, hay que agreg
 
 ### Checklist antes del lanzamiento
 
+La lista completa (tiendas, builds, calidad) está en [LAUNCH_CHECKLIST.md](LAUNCH_CHECKLIST.md). De Supabase:
+
 - [ ] Dejar sólo `polygo://auth-callback` en Redirect URLs.
 - [ ] Configurar SMTP propio (el de Supabase tiene límites bajos de envío).
 - [ ] Revisar la decisión de **no** confirmar emails (ver SECURITY.md) y activar CAPTCHA en Auth si aparecen registros abusivos.
-- [ ] Volver a correr los advisors de seguridad y rendimiento.
+- [ ] Volver a correr los advisors de seguridad y rendimiento (último: 2026-10-29, sin avisos nuevos).
+
+### Edge Functions
+
+| Función | `verify_jwt` | Uso |
+| --- | --- | --- |
+| `delete-account` | `false` (valida el token en el código) | Borra la cuenta del usuario que llama. Fuente: `supabase/functions/delete-account/index.ts`; redeploy por MCP o `npx supabase functions deploy delete-account --no-verify-jwt` |
 
 ## App
 

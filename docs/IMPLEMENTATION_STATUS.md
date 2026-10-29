@@ -1,8 +1,10 @@
 # Estado de implementación
 
-Última actualización: 2026-10-29 (Fase 5)
+Última actualización: 2026-10-29 (Fase 6)
 
 ## Fase actual
+
+**Fase 6 — QA y preparación de lanzamiento: lo que se puede hacer desde el repo está hecho.** Borrado de cuenta en la app (Edge Function probada contra Supabase real), pantalla de error global, auditoría de accesibilidad con test de contraste (2 problemas corregidos), permisos mínimos en Android, CI en GitHub Actions, borrador de política de privacidad y [checklist de lanzamiento](LAUNCH_CHECKLIST.md). Lo pendiente necesita tus cuentas, tus dispositivos o decisiones de producto (ver la checklist).
 
 **Fase 5 — Widgets nativos iOS y Android: implementada, sin probar en dispositivo.** Dos widgets con `expo-widgets` (Palabra y Pregunta rápida). Los layouts compilan con el empaquetador real de widgets para ambas plataformas y su lógica está testeada con un runtime simulado; el `prebuild` de Android genera bien los receivers. Falta: `eas init`, una development build y agregarlos en un teléfono. En Expo Go no aparecen (la app funciona igual).
 
@@ -64,6 +66,15 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 - [x] Sincronización al cargar datos, al cambiar y al volver a primer plano; no-op en Expo Go/web; los widgets se vacían al cerrar sesión.
 - [x] Vocabulario explica cómo agregar los widgets (o que hace falta una build si se usa Expo Go).
 
+### Fase 6
+- [x] Borrado de cuenta (App Store 5.1.1(v) y Google Play): Edge Function `delete-account` (valida el token, exige confirmación explícita, borra con la clave secreta) + pantalla con confirmación por nombre de usuario. E2E contra Supabase real: 401 sin token o con token inválido, 400 sin confirmación, 200 al borrar, 401 al reintentar; ningún dato residual.
+- [x] `ErrorBoundary` global de Expo Router.
+- [x] Accesibilidad: auditoría de todos los `Pressable` (rol, etiqueta, zona táctil), test de contraste WCAG AA de todos los tokens de texto; corregidos placeholders (2,1:1 → 3,5:1) y feedback de respuestas en batalla (2,5:1 → 5,5:1).
+- [x] Producción: `usesNonExemptEncryption: false`; permisos Android reducidos a `INTERNET` y `VIBRATE` (verificado en el manifest generado).
+- [x] Enlace opcional a la política de privacidad (`EXPO_PUBLIC_PRIVACY_POLICY_URL`) y borrador en PRIVACY_POLICY.md.
+- [x] CI en GitHub Actions (`npm run check` en cada push y PR).
+- [x] Advisors de Supabase y `npm audit` revisados (detalle en LAUNCH_CHECKLIST.md).
+
 ## Pendiente (por fase)
 
 - **Fase 2 (verificación manual):** recorrer una lección y un repaso en el teléfono.
@@ -71,7 +82,7 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 - **Fase 3 (verificación manual):** recorrer perfil, editar perfil, logros y perfil de otro jugador en el teléfono.
 - **Fase 4 (puesta en marcha):** completar `server/.env` con la secret key, levantar el servidor y jugar una partida ranked y una práctica en dos dispositivos. Después, elegir hosting (Fly.io/Railway/Render) con HTTPS.
 - **Fase 5 (verificación manual):** `eas init`, development build Android (y iOS si hay cuenta de Apple Developer), agregar ambos widgets, responder una ronda, verificar el cambio horario en iOS y que se vacían al cerrar sesión.
-- **Fase 6:** QA, accesibilidad, builds EAS, checklist de lanzamiento.
+- **Fase 6 (lo que requiere cuentas, dispositivos o decisiones):** ver [LAUNCH_CHECKLIST.md](LAUNCH_CHECKLIST.md): URL de la política de privacidad, URL web de borrado, cuentas de Apple/Google, builds de producción, prueba manual completa con VoiceOver/TalkBack, revisión editorial del contenido.
 
 ## Migraciones
 
@@ -137,12 +148,14 @@ Todo dentro de un bloque que termina en excepción (rollback); conteos finales e
 | --- | --- | --- |
 | TypeScript (app + scripts) | `npm run typecheck` | ✅ |
 | ESLint | `npm run lint` | ✅ |
-| Jest | `npm test` | ✅ 271/271 (17 suites: + contenido, sincronización y layouts simulados de widgets) |
+| Jest | `npm test` | ✅ 321/321 (19 suites: + contraste WCAG y pantalla de borrado de cuenta) |
 | SQL + RLS (PGlite) | `npm run test:db` | ✅ 49/49 (+ liquidación, idempotencia, stale rating, anti-farming, abandono, cuenta borrada, cancelación) |
 | Servidor de partidas | `npm run test:server` | ✅ typecheck + 33/33 (matchmaking, motor con reloj manual, liquidación con reintentos, integración con 2 clientes Socket.IO reales, rate limit) |
 | Bundle Metro Android + iOS | `npx expo export -p android -p ios` | ✅ |
 | Layouts de widgets (empaquetador de expo-widgets) | `node node_modules/expo-widgets/scripts/build-layout-registry.mjs` | ✅ Android e iOS |
 | `expo prebuild` Android | `npx expo prebuild --no-install --platform android` | ✅ 2 receivers + `appwidget-provider` (iOS no se puede generar en Windows: lo hace EAS) |
+| CI (GitHub Actions) | `.github/workflows/ci.yml` | corre `npm run check` en cada push y PR |
+| Edge Function `delete-account` (E2E contra Supabase real) | script manual con usuario descartable | ✅ 401/401/400/200/401, sin datos residuales |
 | expo-doctor | `npx expo-doctor` | ⚠️ 19/20: `react-native` 0.88.0 instalado, el SDK pide 0.88.1 (parche publicado después; sin aplicar) |
 
 No ejecutado todavía: widgets en un dispositivo (requiere development build); lecciones, repasos y pantallas de la Fase 3 en el teléfono; el servidor de partidas contra Supabase real y una partida en dos dispositivos.
@@ -162,8 +175,10 @@ No ejecutado todavía: widgets en un dispositivo (requiere development build); l
 
 ## Próximos pasos exactos
 
-1. Widgets: `npx eas-cli@latest login`, `npx eas-cli@latest init` y `npx eas-cli@latest build --profile development --platform android`; instalar, iniciar sesión, agregar «Palabra» y «Pregunta rápida» (pasos en WIDGETS.md). iOS en dispositivo requiere Apple Developer paga.
-2. Servidor de partidas: copiar `server/.env.example` a `server/.env` con la secret key, `cd server && npm install && npm run dev`, y en el `.env` de la app `EXPO_PUBLIC_BATTLE_SERVER_URL=http://<IP-de-la-PC>:3001`; jugar una partida en dos dispositivos.
-3. Pendientes de fases anteriores en el teléfono (lección 1, logros, perfil de otro jugador).
-4. Decidir hosting del servidor (con HTTPS), si activar la protección de contraseñas filtradas y si aplicar el parche `react-native` 0.88.1.
-5. Fase 6: QA, accesibilidad, builds de producción y checklist de lanzamiento.
+Todo lo que falta está en [LAUNCH_CHECKLIST.md](LAUNCH_CHECKLIST.md). En orden:
+
+1. `npx eas-cli@latest login` + `init` y una development build de Android; seguir el guion de prueba manual (checklist, sección 6), incluidos widgets y eliminar cuenta.
+2. Servidor de partidas: `server/.env` con la secret key, levantarlo y jugar en dos dispositivos; después elegir hosting con HTTPS.
+3. Publicar la política de privacidad (completar el borrador) y una URL de borrado de cuenta; cargar `EXPO_PUBLIC_PRIVACY_POLICY_URL`.
+4. Decisiones: bundle ID definitivo, parche `react-native` 0.88.1, contraseñas filtradas, SMTP propio, monitoreo de errores.
+5. Revisión editorial del contenido A1, build de producción y envío a TestFlight / prueba interna.

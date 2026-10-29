@@ -54,3 +54,19 @@ export async function signOut() {
   const { error } = await requireSupabase().auth.signOut();
   if (error) throw error;
 }
+
+/** Texto que la Edge Function exige en el cuerpo: un request accidental no borra nada. */
+export const DELETE_ACCOUNT_CONFIRMATION = 'DELETE_MY_ACCOUNT';
+
+/**
+ * Borra la cuenta y todos sus datos (Edge Function `delete-account`, con la clave secreta del
+ * servidor). Después cierra la sesión local: el token ya no corresponde a ningún usuario.
+ */
+export async function deleteAccount() {
+  const supabase = requireSupabase();
+  const { error } = await supabase.functions.invoke('delete-account', {
+    body: { confirm: DELETE_ACCOUNT_CONFIRMATION },
+  });
+  if (error) throw error;
+  await supabase.auth.signOut({ scope: 'local' });
+}

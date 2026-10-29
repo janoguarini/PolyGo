@@ -2,7 +2,7 @@
 
 App móvil (iOS/Android) para aprender inglés compitiendo: lecciones A1, batallas 1v1 en tiempo real, ELO y rangos de Bronce a Gran Maestro, perfil competitivo y widgets de vocabulario.
 
-> Estado: **Fase 5** (lecciones A1, perfil y logros, batallas ranked Word Rush, widgets de pantalla de inicio iOS/Android). Ver [docs/IMPLEMENTATION_STATUS.md](docs/IMPLEMENTATION_STATUS.md).
+> Estado: **Fase 6** (app completa; preparación de lanzamiento: ver [checklist](docs/LAUNCH_CHECKLIST.md)). Ver [docs/IMPLEMENTATION_STATUS.md](docs/IMPLEMENTATION_STATUS.md).
 
 ## Requisitos
 
@@ -43,4 +43,4 @@ Para Ranked hace falta el servidor de partidas (`server/`): ver [Despliegue](doc
 
 ## Documentación
 
-[Arquitectura](docs/ARCHITECTURE.md) · [Producto](docs/PRODUCT_SPEC.md) · [Currículo](docs/LEARNING_CURRICULUM.md) · [Ranking](docs/RANKING_SYSTEM.md) · [Protocolo de batalla](docs/BATTLE_PROTOCOL.md) · [Base de datos](docs/DATABASE.md) · [Widgets](docs/WIDGETS.md) · [Seguridad](docs/SECURITY.md) · [Testing](docs/TESTING.md) · [Despliegue](docs/DEPLOYMENT.md) · [Auditoría](PROJECT_AUDIT.md)
+[Arquitectura](docs/ARCHITECTURE.md) · [Producto](docs/PRODUCT_SPEC.md) · [Currículo](docs/LEARNING_CURRICULUM.md) · [Ranking](docs/RANKING_SYSTEM.md) · [Protocolo de batalla](docs/BATTLE_PROTOCOL.md) · [Base de datos](docs/DATABASE.md) · [Widgets](docs/WIDGETS.md) · [Seguridad](docs/SECURITY.md) · [Testing](docs/TESTING.md) · [Despliegue](docs/DEPLOYMENT.md) · [Lanzamiento](docs/LAUNCH_CHECKLIST.md) · [Privacidad (borrador)](docs/PRIVACY_POLICY.md) · [Auditoría](PROJECT_AUDIT.md)

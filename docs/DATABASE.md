@@ -123,6 +123,10 @@ Sin tablas nuevas: la cola, las preguntas y las respuestas viven en la memoria d
 
 El ELO lo calcula el servidor con `shared/ranking.ts` (fuente única); la base garantiza atomicidad, idempotencia y que no se liquide con datos viejos.
 
+## Borrado de cuenta
+
+No hay función SQL: la Edge Function `delete-account` llama a `auth.admin.deleteUser`, y las FK hacen el resto (cascada en todo lo personal, `SET NULL` en `battle_players`). Verificado contra el proyecto real (2026-10-29).
+
 ## Próximas migraciones
 
 - Fase 5: lo que necesiten los widgets (probablemente nada nuevo: leen palabra del día y repasos).

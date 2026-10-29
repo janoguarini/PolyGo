@@ -16,7 +16,6 @@ jest.mock('expo-constants', () => ({
 jest.mock('@/widgets/PolygoWord', () => ({ __esModule: true, default: mockWord }));
 jest.mock('@/widgets/PolygoQuiz', () => ({ __esModule: true, default: mockQuiz }));
 
-
 const w = (id: string, text: string, translation: string) =>
   ({
     id,

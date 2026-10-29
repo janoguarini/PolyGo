@@ -25,13 +25,14 @@
 | Rate limit: 20 eventos/s por socket | `server.ts` | Test de integración |
 | Liquidación transaccional, idempotente y con control optimista de rating | `settle_battle` (0005), sólo `service_role` | Tests SQL + verificación en Supabase |
 | Logs del servidor sin tokens ni emails (sólo ids) | `server/src` | Revisión |
+| Borrado de cuenta: sólo el propio usuario (token validado), con confirmación explícita, desde una Edge Function con la clave secreta; la app nunca la tiene | `supabase/functions/delete-account` | E2E contra Supabase real |
 | Widgets: sólo contenido de vocabulario en el almacenamiento compartido; sin tokens ni datos de cuenta; se vacían al cerrar sesión | `src/features/widgets/sync.ts` | Tests unitarios |
 | Visibilidad de perfil aplicada (`private`/`friends` ocultan estadísticas y logros) | `get_public_profile` | Tests SQL |
 | Métricas educativas ajenas invisibles | `achievement_metrics` es invoker: RLS devuelve 0 | Tests SQL |
 
 ## Pendiente
 
-- Revisar `npm audit` (dependencias transitivas de tooling) sin `--force`.
+- `npm audit` revisado el 2026-10-29: sólo queda `zod@3` dentro de `@expo/cli` (tooling de build, no viaja en la app); se acepta. Revisar en cada SDK nuevo.
 - Volver a ejecutar los advisors de Supabase después de cada migración.
 
 ## Decisión: registro sin confirmación de email (2026-10-29)

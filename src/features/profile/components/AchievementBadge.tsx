@@ -111,7 +111,7 @@ export function AchievementRow({
             Desbloqueado el {dateFormat.format(new Date(achievement.unlockedAt!))}
           </Text>
         ) : pendingRanked ? (
-          <Text variant="caption" color="textSubtle">
+          <Text variant="caption" color="textMuted">
             Disponible cuando abra Ranked
           </Text>
         ) : (

@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
+import * as Linking from 'expo-linking';
 import { router } from 'expo-router';
 import { Award, BookOpen, LogOut, Pencil, Shield, Swords } from 'lucide-react-native';
 import { StyleSheet, View } from 'react-native';
@@ -27,6 +28,7 @@ import { AchievementsSummary } from '@/features/profile/components/AchievementsS
 import { CompetitiveHistory } from '@/features/profile/components/CompetitiveHistory';
 import { useMyProfile, useUpdateSettings } from '@/features/profile/hooks';
 import type { ProfileVisibility } from '@/lib/database.types';
+import { env } from '@/lib/env';
 import { toUserMessage } from '@/lib/errors';
 
 const joinedFormat = new Intl.DateTimeFormat('es', { month: 'long', year: 'numeric' });
@@ -151,6 +153,20 @@ export default function ProfileScreen() {
         onPress={() => logout.mutate()}
         style={styles.logout}
       />
+      <Button
+        label="Eliminar cuenta"
+        variant="ghost"
+        accessibilityHint="Abre la pantalla para borrar tu cuenta y tus datos"
+        onPress={() => router.push('/delete-account')}
+      />
+      {env?.privacyPolicyUrl ? (
+        <Button
+          label="Política de privacidad"
+          variant="ghost"
+          accessibilityHint="Abre la política de privacidad en el navegador"
+          onPress={() => void Linking.openURL(env!.privacyPolicyUrl!)}
+        />
+      ) : null}
     </Screen>
   );
 }

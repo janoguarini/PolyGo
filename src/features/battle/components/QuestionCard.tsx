@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
     backgroundColor: colors.surface,
   },
-  correct: { borderColor: colors.success, backgroundColor: colors.successStrong },
-  wrong: { borderColor: colors.danger, backgroundColor: colors.dangerStrong },
+  correct: { borderColor: colors.success, backgroundColor: colors.successDeep },
+  wrong: { borderColor: colors.danger, backgroundColor: colors.dangerDeep },
   pressed: { transform: [{ scale: 0.98 }], backgroundColor: colors.surfaceRaised },
 });

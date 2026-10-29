@@ -1,5 +1,5 @@
 import { QueryClientProvider } from '@tanstack/react-query';
-import { Stack } from 'expo-router';
+import { Stack, type ErrorBoundaryProps } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -22,6 +22,26 @@ export default function RootLayout() {
           </View>
         </AuthProvider>
       </QueryClientProvider>
+    </SafeAreaProvider>
+  );
+}
+
+/**
+ * Red de seguridad: si una pantalla lanza un error al renderizar, se muestra esto en vez de una
+ * pantalla en blanco. El detalle técnico sólo se registra en desarrollo.
+ */
+export function ErrorBoundary({ error, retry }: ErrorBoundaryProps) {
+  if (__DEV__) console.error(error);
+  return (
+    <SafeAreaProvider>
+      <View style={{ flex: 1, backgroundColor: colors.background }}>
+        <StatusBar style="light" />
+        <ErrorState
+          title="Algo salió mal"
+          message="Polygo tuvo un error inesperado. Tu progreso guardado no se perdió."
+          onRetry={() => void retry()}
+        />
+      </View>
     </SafeAreaProvider>
   );
 }
@@ -73,6 +93,7 @@ function RootNavigator() {
         <Stack.Screen name="achievements" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="player/[id]" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="edit-profile" options={{ animation: 'slide_from_bottom' }} />
+        <Stack.Screen name="delete-account" options={{ animation: 'slide_from_right' }} />
       </Stack.Protected>
       <Stack.Protected guard={Boolean(session) && recoveringPassword}>
         <Stack.Screen name="reset-password" />
