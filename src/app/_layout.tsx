@@ -57,6 +57,14 @@ function RootNavigator() {
       </Stack.Protected>
       <Stack.Protected guard={signedIn && onboarded}>
         <Stack.Screen name="(tabs)" />
+        <Stack.Screen
+          name="lesson/[id]"
+          options={{ animation: 'slide_from_bottom', gestureEnabled: false }}
+        />
+        <Stack.Screen
+          name="review"
+          options={{ animation: 'slide_from_bottom', gestureEnabled: false }}
+        />
       </Stack.Protected>
       <Stack.Protected guard={Boolean(session) && recoveringPassword}>
         <Stack.Screen name="reset-password" />

@@ -3,6 +3,26 @@
 
 export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[];
 
+// ---- PROVISIONAL: ayudas para las tablas de 0003 escritas a mano (desaparecen al regenerar). ----
+type ProvisionalTable<Row, Relationships> = {
+  Row: Row;
+  Insert: Partial<Row>;
+  Update: Partial<Row>;
+  Relationships: Relationships;
+};
+type Rel<
+  Name extends string,
+  Column extends string,
+  Target extends string,
+  TargetColumn extends string,
+> = {
+  foreignKeyName: Name;
+  columns: [Column];
+  isOneToOne: false;
+  referencedRelation: Target;
+  referencedColumns: [TargetColumn];
+};
+
 export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
@@ -265,6 +285,142 @@ export type Database = {
           },
         ];
       };
+      // ---- PROVISIONAL: tablas de la migración 0003 escritas a mano. Reemplazar al regenerar. ----
+      curriculum_units: ProvisionalTable<
+        {
+          id: string;
+          language_code: string;
+          level: string;
+          position: number;
+          title_es: string;
+          title_en: string;
+          description_es: string;
+          emoji: string;
+          is_published: boolean;
+          created_at: string;
+          updated_at: string;
+        },
+        []
+      >;
+      lessons: ProvisionalTable<
+        {
+          id: string;
+          unit_id: string;
+          position: number;
+          title_es: string;
+          objective_es: string;
+          is_published: boolean;
+          created_at: string;
+          updated_at: string;
+        },
+        [Rel<'lessons_unit_id_fkey', 'unit_id', 'curriculum_units', 'id'>]
+      >;
+      words: ProvisionalTable<
+        {
+          id: string;
+          language_code: string;
+          unit_id: string;
+          text: string;
+          translation_es: string;
+          accepted_translations: string[];
+          ipa: string | null;
+          emoji: string | null;
+          example_en: string | null;
+          example_es: string | null;
+          difficulty: number;
+          tags: string[];
+          is_published: boolean;
+          review_status: string;
+          reviewed_by: string | null;
+          reviewed_at: string | null;
+          created_at: string;
+          updated_at: string;
+        },
+        [Rel<'words_unit_id_fkey', 'unit_id', 'curriculum_units', 'id'>]
+      >;
+      exercises: ProvisionalTable<
+        {
+          id: string;
+          lesson_id: string;
+          position: number;
+          type: string;
+          skill: string;
+          prompt_es: string;
+          payload: Json;
+          answer: string;
+          accepted_answers: string[];
+          explanation_es: string | null;
+          difficulty: number;
+          recommended_seconds: number;
+          is_published: boolean;
+          created_at: string;
+          updated_at: string;
+        },
+        [Rel<'exercises_lesson_id_fkey', 'lesson_id', 'lessons', 'id'>]
+      >;
+      exercise_words: ProvisionalTable<
+        { exercise_id: string; word_id: string },
+        [
+          Rel<'exercise_words_exercise_id_fkey', 'exercise_id', 'exercises', 'id'>,
+          Rel<'exercise_words_word_id_fkey', 'word_id', 'words', 'id'>,
+        ]
+      >;
+      learning_sessions: ProvisionalTable<
+        {
+          id: string;
+          user_id: string;
+          kind: string;
+          lesson_id: string | null;
+          started_at: string;
+          completed_at: string;
+          duration_seconds: number;
+          total_answers: number;
+          first_try_total: number;
+          first_try_correct: number;
+          local_date: string;
+        },
+        []
+      >;
+      user_lesson_progress: ProvisionalTable<
+        {
+          user_id: string;
+          lesson_id: string;
+          times_completed: number;
+          best_accuracy: number;
+          last_accuracy: number;
+          first_completed_at: string | null;
+          last_completed_at: string | null;
+        },
+        [Rel<'user_lesson_progress_lesson_id_fkey', 'lesson_id', 'lessons', 'id'>]
+      >;
+      user_word_progress: ProvisionalTable<
+        {
+          user_id: string;
+          word_id: string;
+          stage: number;
+          seen_count: number;
+          correct_count: number;
+          incorrect_count: number;
+          last_result: boolean | null;
+          last_reviewed_at: string | null;
+          next_review_at: string | null;
+          mastered_at: string | null;
+          created_at: string;
+          updated_at: string;
+        },
+        [Rel<'user_word_progress_word_id_fkey', 'word_id', 'words', 'id'>]
+      >;
+      user_daily_activity: ProvisionalTable<
+        {
+          user_id: string;
+          activity_date: string;
+          sessions_completed: number;
+          answers: number;
+          correct_answers: number;
+          seconds_spent: number;
+        },
+        []
+      >;
     };
     Views: {
       [_ in never]: never;
@@ -300,6 +456,24 @@ export type Database = {
         };
       };
       generate_public_code: { Args: never; Returns: string };
+      // ---- PROVISIONAL (migración 0003) ----
+      submit_learning_session: {
+        Args: {
+          p_session_id: string;
+          p_kind: string;
+          p_lesson_id?: string;
+          p_started_at: string;
+          p_attempts: Json;
+          p_time_zone: string;
+        };
+        Returns: Json;
+      };
+      get_learning_summary: { Args: { p_time_zone: string }; Returns: Json };
+      word_of_the_day: {
+        Args: { p_date: string; p_language?: string };
+        Returns: Database['public']['Tables']['words']['Row'][];
+        SetofOptions: { from: '*'; to: 'words'; isOneToOne: false; isSetofReturn: true };
+      };
       is_username_available: { Args: { p_username: string }; Returns: boolean };
     };
     Enums: {

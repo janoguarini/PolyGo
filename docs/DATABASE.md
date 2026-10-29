@@ -50,7 +50,41 @@ Borrar el usuario en `auth.users` elimina en cascada perfil, ajustes, rating e h
 - Índices en FKs: `profiles(target_language)`, `rating_history(language_code)`, `rating_history(season_id)`.
 - `is_username_available` pasa a `SECURITY INVOKER` (los usuarios autenticados ya leen `profiles`).
 
+## Migración 0003 — currículo y progreso (`20261029120000_curriculum.sql`)
+
+> Estado: probada en PGlite (29 tests). **Pendiente de aplicar en Supabase.**
+
+| Tabla | Propósito | Cliente |
+| --- | --- | --- |
+| `curriculum_units`, `lessons` | Estructura del currículo por idioma y nivel | lee lo publicado |
+| `words` | Vocabulario: texto, traducción y variantes, IPA, emoji, ejemplos, dificultad, etiquetas, revisión editorial | lee lo publicado |
+| `exercises` | Ejercicio con `type`, `skill`, `payload` jsonb (validado por CHECK contra `type`), respuesta y variantes | lee lo publicado |
+| `exercise_words` | Palabras que practica cada ejercicio (alimenta el SRS) | lee |
+| `learning_sessions` | Sesión de lección o repaso; `id` generado por el cliente = clave de idempotencia | sólo propias |
+| `exercise_attempts` | Cada respuesta: correcta, primer intento, tiempo | sólo propias |
+| `user_lesson_progress` | Veces completada y mejor precisión por lección | sólo propias |
+| `user_word_progress` | Estado SRS por palabra: etapa, aciertos/errores, próximo repaso, dominada | sólo propias |
+| `user_daily_activity` | Actividad por día local (racha y objetivo diario) | sólo propias |
+
+Desviación respecto de la propuesta inicial: no hay `lesson_exercises` (cada ejercicio pertenece a una lección) ni `daily_word_assignments` (la palabra del día es determinista por fecha con `word_of_the_day`; se revisará para los widgets en Fase 5).
+
+### Funciones
+
+| Función | Seguridad | Uso |
+| --- | --- | --- |
+| `submit_learning_session(...)` | definer, `authenticated` | Única vía de escritura del progreso. Valida sesión, tipo, ventana de tiempo (≤ 3 h), desbloqueo, pertenencia de ejercicios, un primer intento por ejercicio, palabras únicas en repasos; idempotente por id |
+| `apply_word_result(...)` | interna (sin EXECUTE para clientes) | Actualiza el SRS de una palabra |
+| `is_lesson_unlocked(...)` | interna | Regla de desbloqueo lineal |
+| `get_learning_summary(tz)` | invoker | Racha, actividad de hoy, lecciones, palabras vistas/dominadas/vencidas, tiempo, precisión por habilidad, errores frecuentes |
+| `word_of_the_day(date)` | invoker | Palabra determinista por fecha |
+| `srs_config()` | inmutable | Parámetros SRS (deben coincidir con `shared/srs.ts`) |
+
+Confianza: en lecciones (no competitivas) el cliente valida la respuesta para dar feedback inmediato y el servidor registra el resultado informado. El ELO nunca depende de estas tablas.
+
+## Migración de contenido (`20261029120100_content_a1_units_1_3.sql`)
+
+Generada por `scripts/build-content-sql.ts` desde `content/a1`. Idempotente (upserts). **Pendiente de aplicar en Supabase.**
+
 ## Próximas migraciones
 
-- 0003 currículo: `curriculum_units`, `lessons`, `words`, `exercises`, `lesson_exercises`, `user_lesson_progress`, `user_word_progress`, `daily_word_assignments`.
 - 0004 batallas: `matchmaking_queue`, `battles`, `battle_players`, `battle_answers`, FK `rating_history.battle_id`, función de liquidación transaccional.

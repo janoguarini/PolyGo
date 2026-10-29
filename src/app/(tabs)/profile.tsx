@@ -21,6 +21,7 @@ import {
 } from '@/design-system';
 import { signOut } from '@/features/auth/api';
 import { FormMessage } from '@/features/auth/FormMessage';
+import { LearningStats } from '@/features/learning/components/LearningStats';
 import { useMyProfile, useUpdateSettings } from '@/features/profile/hooks';
 import type { ProfileVisibility } from '@/lib/database.types';
 import { toUserMessage } from '@/lib/errors';
@@ -100,13 +101,7 @@ export default function ProfileScreen() {
         <BookOpen color={colors.info} size={20} />
         <Text variant="heading">Aprendizaje</Text>
       </View>
-      <Card style={styles.gap}>
-        <Text variant="bodyStrong">Nivel {profile.start_level} · en curso</Text>
-        <Text color="textMuted">
-          Lecciones, palabras dominadas y precisión por habilidad aparecerán aquí cuando completes
-          tus primeras lecciones. No mostramos estadísticas sin datos reales.
-        </Text>
-      </Card>
+      <LearningStats level={profile.start_level} />
 
       <View style={styles.sectionHeader}>
         <Shield color={colors.success} size={20} />

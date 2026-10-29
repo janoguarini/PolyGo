@@ -4,8 +4,9 @@
 
 ## Fase actual
 
-**Fase 1 — Fundamentos y diseño: completada.** Backend Supabase en producción con el esquema aplicado y verificado.
-Única verificación pendiente: recorrer registro → confirmación de email → onboarding en un teléfono (Expo Go).
+**Fase 2 — Sistema educativo A1: implementada y testeada en local. Bloqueada para dispositivo** hasta aplicar en Supabase las migraciones `20261029120000_curriculum.sql` y `20261029120100_content_a1_units_1_3.sql` (el aviso de permiso de `apply_migration` fue rechazado dos veces en esta sesión).
+
+Mientras no se apliquen, en el teléfono las pantallas Aprender/Vocabulario muestran error de carga y el resumen de Inicio queda vacío. Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 
 ## Backend
 
@@ -17,72 +18,66 @@
 
 ## Terminado
 
-- [x] Fase 0: auditoría (`PROJECT_AUDIT.md`).
-- [x] Proyecto Expo SDK 58 + TypeScript estricto (`strict`, `noUncheckedIndexedAccess`).
-- [x] Expo Router con rutas protegidas (`Stack.Protected`): auth → onboarding → tabs.
-- [x] Sistema de diseño: tokens y componentes (`Text`, `Button`, `Card`, `TextField`, `ProgressBar`, `Screen`, `SelectCard`, `StatTile`, `Avatar`, `RankEmblem`, estados de carga/vacío/error/offline).
-- [x] Emblemas de rango propios en SVG para los 8 tiers con divisiones.
-- [x] Auth Supabase: registro, login, recuperación, confirmación de email (PKCE + `auth-callback`), cierre de sesión. Sesión en SecureStore fragmentado.
-- [x] Onboarding completo con username validado en servidor.
-- [x] Tabs con datos reales; clasificación global real; ajuste de privacidad persistido.
-- [x] `shared/ranking.ts`: ELO, colocación, piso, anti-farming, rangos centralizados.
-- [x] Migraciones 0001 (núcleo) y 0002 (correcciones de advisors) **aplicadas en Supabase**.
-- [x] Tipos de base de datos **generados** desde el proyecto real (`src/lib/database.generated.ts`).
+### Fase 1
+- [x] Expo SDK 58 + TypeScript estricto, Expo Router con rutas protegidas, sistema de diseño, emblemas de rango.
+- [x] Auth Supabase (registro sin confirmación de email por decisión de producto), onboarding, tabs, clasificación global, privacidad.
+- [x] `shared/ranking.ts` (ELO, rangos, anti-farming). Migraciones 0001 y 0002 aplicadas.
+- [x] Verificado en teléfono (Expo Go): registro → onboarding → tabs.
+
+### Fase 2
+- [x] `shared/exercises.ts`: 9 tipos de ejercicio y 5 habilidades.
+- [x] `shared/answers.ts`: validador determinista (normalización, contracciones, tolerancia controlada a typos).
+- [x] `shared/srs.ts` + SQL: repetición espaciada 1/3/7 días, dominio tras 3 repasos espaciados.
+- [x] Contenido A1 unidades 1–3: 15 lecciones, 64 palabras con IPA y ejemplos, 119 ejercicios (`content/a1`, borrador sin revisión humana).
+- [x] Generador de migración de contenido idempotente (`npm run content:sql`).
+- [x] Migración 0003: currículo, sesiones idempotentes, intentos, progreso por lección y palabra, actividad diaria, racha, resumen, palabra del día, RLS.
+- [x] Motor de lecciones: reproductor con repaso de errores, feedback con traducción/IPA/ejemplo/pronunciación (voz sintetizada), resultados con reintento de guardado.
+- [x] Repaso espaciado de palabras vencidas con ejercicios generados de forma determinista.
+- [x] Pantallas: Aprender (mapa de unidades), Lección, Repaso, Vocabulario (estado de cada palabra), Inicio (racha, objetivo diario, lección y palabra del día), Perfil (estadísticas educativas reales).
 
 ## Pendiente (por fase)
 
-- **Fase 1 (verificación manual):** prueba en dispositivo (Redirect URLs ya configuradas).
-- **Fase 2:** currículo A1 (tablas, seed), motor de ejercicios, lecciones, progreso, repetición espaciada, racha.
-- **Fase 3:** historial de partidas, evolución de ELO, estadísticas educativas, logros.
-- **Fase 4:** servidor de partidas WebSocket, matchmaking, Word Rush, liquidación ELO transaccional e idempotente. *"Buscar partida" está deshabilitado a propósito.*
-- **Fase 5:** widgets nativos iOS (WidgetKit) y Android (Glance). *Vocabulario sólo muestra una vista previa marcada como ejemplo.*
+- **Fase 2 (despliegue):** aplicar migraciones 0003 y contenido; reemplazar tipos provisionales por tipos generados; correr advisors; probar una lección completa en el teléfono.
+- **Fase 2 (contenido):** revisión editorial humana; unidades 4–12.
+- **Fase 3:** historial de partidas, evolución de ELO, logros.
+- **Fase 4:** servidor de partidas WebSocket, matchmaking, Word Rush, liquidación ELO. *"Buscar partida" sigue deshabilitado.*
+- **Fase 5:** widgets nativos iOS y Android.
 - **Fase 6:** QA, accesibilidad, builds EAS, checklist de lanzamiento.
 
 ## Migraciones
 
 | Migración | Local (PGlite) | Supabase |
 | --- | --- | --- |
-| `20261029010416_core_profiles_ratings.sql` | ✅ 13/13 tests | ✅ aplicada 2026-10-29 |
-| `20261029010511_advisor_fixes.sql` | ✅ 13/13 tests | ✅ aplicada 2026-10-29 |
+| `20261029010416_core_profiles_ratings.sql` | ✅ | ✅ aplicada |
+| `20261029010511_advisor_fixes.sql` | ✅ | ✅ aplicada |
+| `20261029120000_curriculum.sql` | ✅ | ⏳ pendiente (permiso rechazado) |
+| `20261029120100_content_a1_units_1_3.sql` | ✅ (idempotencia testeada) | ⏳ pendiente |
 
-Los nombres de archivo coinciden con las versiones registradas en Supabase, para que `supabase db push` no intente reaplicarlas.
+Al aplicar por MCP, Supabase registra la versión con la hora de aplicación: renombrar los archivos locales para que coincidan (como se hizo con 0001/0002).
 
-## Verificación en Supabase (2026-10-29)
-
-| Prueba | Resultado |
-| --- | --- |
-| `anon` lee `languages` y `seasons` | ✅ |
-| `anon` lee `profiles` / `player_ratings` | ✅ denegado (42501) |
-| `anon` ejecuta `complete_onboarding` | ✅ denegado |
-| Alta simulada en `auth.users` crea perfil `PG-XXXXXX`, ajustes, rating 1000 e historial | ✅ (en transacción revertida) |
-| Onboarding como usuario autenticado normaliza username y guarda avatar/objetivo | ✅ |
-| Usuario autenticado intenta `UPDATE player_ratings` | ✅ bloqueado |
-| Datos de prueba residuales | ✅ ninguno (0 usuarios, 0 perfiles) |
-| Advisors de seguridad | 1 aviso intencional (ver SECURITY.md) |
-| Advisors de rendimiento | sólo "índice sin uso" (esperable sin datos) |
-
-## Tests locales
+## Tests locales (2026-10-29)
 
 | Suite | Comando | Resultado |
 | --- | --- | --- |
-| TypeScript | `npm run typecheck` | ✅ |
+| TypeScript (app + scripts) | `npm run typecheck` | ✅ |
 | ESLint | `npm run lint` | ✅ |
-| Jest | `npm test` | ✅ 51/51 |
-| SQL + RLS (PGlite) | `npm run test:db` | ✅ 13/13 |
+| Jest | `npm test` | ✅ 207/207 (10 suites: ranking, respuestas, contenido ×125, reproductor, entradas, componentes…) |
+| SQL + RLS (PGlite) | `npm run test:db` | ✅ 29/29 |
 | Bundle Metro Android + iOS | `npx expo export -p android -p ios` | ✅ |
 | expo-doctor | `npx expo-doctor` | ✅ 20/20 |
 
-No ejecutado todavía: la app en un dispositivo real.
+No ejecutado: lecciones en dispositivo (requiere las migraciones pendientes).
 
 ## Problemas conocidos
 
-1. El mock oficial de Reanimated 4.7 falla en Jest; se usa un mock mínimo propio.
-2. Bundle IDs `com.polygo.app` provisionales.
-3. La visibilidad "Sólo amigos"/"Privado" se guarda pero aún no filtra nada.
-4. El SMTP por defecto de Supabase tiene límites bajos de envío; para la beta conviene configurar un SMTP propio (Resend, Postmark…).
+1. `src/lib/database.generated.ts` contiene tipos **provisionales escritos a mano** para las tablas de 0003 (marcados `PROVISIONAL`). Regenerar al aplicar la migración.
+2. Contenido A1 sin revisión editorial humana (`review_status = 'draft'`).
+3. En lecciones, la corrección la calcula el cliente (feedback inmediato); el servidor valida estructura, desbloqueo e idempotencia, no re-corrige. No afecta al ELO.
+4. Mock propio de Reanimated en Jest; bundle IDs provisionales; visibilidad de perfil aún sin efecto; SMTP por defecto de Supabase.
 
 ## Próximos pasos exactos
 
-1. ~~Redirect URLs~~ ✅ configuradas (ver DEPLOYMENT.md).
-2. `npx expo start`, abrir en Expo Go, registrarse y completar el onboarding.
-3. Fase 2: migración del currículo + seed de las unidades 1–3 + motor de ejercicios con validación testeada.
+1. Aplicar `20261029120000_curriculum.sql` y luego `20261029120100_content_a1_units_1_3.sql` (MCP con permiso aceptado, o SQL Editor del dashboard).
+2. Generar tipos reales y quitar el bloque `PROVISIONAL`; correr advisors.
+3. En el teléfono: completar la lección 1, verificar desbloqueo de la 2, racha en Inicio y palabras en Vocabulario.
+4. Fase 3 (perfil e historial) o Fase 4 (motor competitivo), según prioridad.
