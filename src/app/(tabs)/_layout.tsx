@@ -2,8 +2,11 @@ import { Tabs } from 'expo-router';
 import { BookOpen, Home, Layers, Swords, User } from 'lucide-react-native';
 
 import { colors } from '@/design-system';
+import { useWidgetSync } from '@/features/widgets/useWidgetSync';
 
 export default function TabsLayout() {
+  // Con sesión y onboarding completo: los widgets reflejan las palabras del usuario.
+  useWidgetSync();
   return (
     <Tabs
       screenOptions={{

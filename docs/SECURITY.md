@@ -25,12 +25,12 @@
 | Rate limit: 20 eventos/s por socket | `server.ts` | Test de integración |
 | Liquidación transaccional, idempotente y con control optimista de rating | `settle_battle` (0005), sólo `service_role` | Tests SQL + verificación en Supabase |
 | Logs del servidor sin tokens ni emails (sólo ids) | `server/src` | Revisión |
+| Widgets: sólo contenido de vocabulario en el almacenamiento compartido; sin tokens ni datos de cuenta; se vacían al cerrar sesión | `src/features/widgets/sync.ts` | Tests unitarios |
 | Visibilidad de perfil aplicada (`private`/`friends` ocultan estadísticas y logros) | `get_public_profile` | Tests SQL |
 | Métricas educativas ajenas invisibles | `achievement_metrics` es invoker: RLS devuelve 0 | Tests SQL |
 
 ## Pendiente
 
-- Fase 5: el widget nunca guarda la `service_role` key; sólo contenido de vocabulario y un token de sesión si hace falta.
 - Revisar `npm audit` (dependencias transitivas de tooling) sin `--force`.
 - Volver a ejecutar los advisors de Supabase después de cada migración.
 

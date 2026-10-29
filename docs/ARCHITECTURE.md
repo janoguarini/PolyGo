@@ -27,6 +27,7 @@
 | `src/features/<dominio>/` | API (llamadas a Supabase), hooks de TanStack Query y componentes del dominio. |
 | `src/lib/` | Infraestructura: env, cliente Supabase, storage seguro, traducción de errores, tipos DB. |
 | `shared/` | Lógica pura y determinista compartida con el servidor. Sin dependencias de RN. |
+| `src/widgets/` | Layouts de widgets nativos (`expo-widgets`): corren aislados, sin imports en ejecución. Ver WIDGETS.md. |
 
 ## Flujo de acceso (layout raíz)
 

@@ -1,8 +1,10 @@
 # Estado de implementación
 
-Última actualización: 2026-10-29 (Fase 4)
+Última actualización: 2026-10-29 (Fase 5)
 
 ## Fase actual
+
+**Fase 5 — Widgets nativos iOS y Android: implementada, sin probar en dispositivo.** Dos widgets con `expo-widgets` (Palabra y Pregunta rápida). Los layouts compilan con el empaquetador real de widgets para ambas plataformas y su lógica está testeada con un runtime simulado; el `prebuild` de Android genera bien los receivers. Falta: `eas init`, una development build y agregarlos en un teléfono. En Expo Go no aparecen (la app funciona igual).
 
 **Fase 4 — Servidor de partidas, matchmaking, Word Rush y liquidación ELO: implementada.** Migración 0005 aplicada y verificada contra la base real (partida revertida). El servidor (`server/`) pasa sus tests con dos clientes Socket.IO reales, pero **todavía no corrió contra Supabase**: falta la secret key en `server/.env` y jugar una partida en dos dispositivos. Sin `EXPO_PUBLIC_BATTLE_SERVER_URL` la app sigue mostrando Ranked deshabilitado.
 
@@ -55,13 +57,20 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 - [x] App: pantalla `battle` (búsqueda, rival encontrado, cuenta atrás, partida con marcador y feedback, resultado con ELO/rango/logros, cancelaciones), cliente Socket.IO con token renovado en cada reconexión, estado en Zustand sobre reducer puro.
 - [x] "Buscar partida" y "Practicar sin ELO" se habilitan con `EXPO_PUBLIC_BATTLE_SERVER_URL`; los logros competitivos dejan de decir "Disponible cuando abra Ranked".
 
+### Fase 5
+- [x] `expo-widgets` + `@expo/ui` + `expo-dev-client`; plugin en `app.json` (`enableAndroid`, `initialLayout` por plataforma); `eas.json` con perfiles development / development-simulator / preview / production.
+- [x] Widget **Palabra**: palabra del día → palabras para repasar → nuevas; IPA, traducción y ejemplo; timeline horario de 12 h en iOS, snapshot en Android; deep link a Vocabulario en iOS.
+- [x] Widget **Pregunta rápida**: ronda de 10 preguntas (generador de Word Rush) jugable desde la pantalla de inicio sin abrir la app; no pisa una ronda a medias; práctica sin efecto en SRS ni ELO.
+- [x] Sincronización al cargar datos, al cambiar y al volver a primer plano; no-op en Expo Go/web; los widgets se vacían al cerrar sesión.
+- [x] Vocabulario explica cómo agregar los widgets (o que hace falta una build si se usa Expo Go).
+
 ## Pendiente (por fase)
 
 - **Fase 2 (verificación manual):** recorrer una lección y un repaso en el teléfono.
 - **Fase 2 (contenido):** revisión editorial humana; unidades 4–12.
 - **Fase 3 (verificación manual):** recorrer perfil, editar perfil, logros y perfil de otro jugador en el teléfono.
 - **Fase 4 (puesta en marcha):** completar `server/.env` con la secret key, levantar el servidor y jugar una partida ranked y una práctica en dos dispositivos. Después, elegir hosting (Fly.io/Railway/Render) con HTTPS.
-- **Fase 5:** widgets nativos iOS y Android.
+- **Fase 5 (verificación manual):** `eas init`, development build Android (y iOS si hay cuenta de Apple Developer), agregar ambos widgets, responder una ronda, verificar el cambio horario en iOS y que se vacían al cerrar sesión.
 - **Fase 6:** QA, accesibilidad, builds EAS, checklist de lanzamiento.
 
 ## Migraciones
@@ -128,13 +137,15 @@ Todo dentro de un bloque que termina en excepción (rollback); conteos finales e
 | --- | --- | --- |
 | TypeScript (app + scripts) | `npm run typecheck` | ✅ |
 | ESLint | `npm run lint` | ✅ |
-| Jest | `npm test` | ✅ 249/249 (14 suites: + Word Rush, protocolo y reducer de batalla) |
+| Jest | `npm test` | ✅ 271/271 (17 suites: + contenido, sincronización y layouts simulados de widgets) |
 | SQL + RLS (PGlite) | `npm run test:db` | ✅ 49/49 (+ liquidación, idempotencia, stale rating, anti-farming, abandono, cuenta borrada, cancelación) |
 | Servidor de partidas | `npm run test:server` | ✅ typecheck + 33/33 (matchmaking, motor con reloj manual, liquidación con reintentos, integración con 2 clientes Socket.IO reales, rate limit) |
 | Bundle Metro Android + iOS | `npx expo export -p android -p ios` | ✅ |
+| Layouts de widgets (empaquetador de expo-widgets) | `node node_modules/expo-widgets/scripts/build-layout-registry.mjs` | ✅ Android e iOS |
+| `expo prebuild` Android | `npx expo prebuild --no-install --platform android` | ✅ 2 receivers + `appwidget-provider` (iOS no se puede generar en Windows: lo hace EAS) |
 | expo-doctor | `npx expo-doctor` | ⚠️ 19/20: `react-native` 0.88.0 instalado, el SDK pide 0.88.1 (parche publicado después; sin aplicar) |
 
-No ejecutado todavía: lecciones, repasos y pantallas de la Fase 3 en el teléfono; el servidor de partidas contra Supabase real y una partida en dos dispositivos.
+No ejecutado todavía: widgets en un dispositivo (requiere development build); lecciones, repasos y pantallas de la Fase 3 en el teléfono; el servidor de partidas contra Supabase real y una partida en dos dispositivos.
 
 ## Problemas conocidos
 
@@ -146,11 +157,13 @@ No ejecutado todavía: lecciones, repasos y pantallas de la Fase 3 en el teléfo
 6. El historial pagina por fecha de fin: dos partidas terminadas en el mismo microsegundo podrían saltearse entre páginas (despreciable).
 7. Servidor de partidas de una sola instancia: cola y partidas en memoria; un reinicio cancela las partidas en curso (sin ELO).
 8. El bonus de velocidad incluye la latencia de red de cada jugador.
+9. Widgets: Android no tiene timeline ni deep link en expo-widgets (la palabra cambia al abrir la app); las respuestas del widget no se sincronizan con el repaso espaciado.
+10. Con `expo-dev-client` instalado, Expo Go se usa con `npx expo start --go`.
 
 ## Próximos pasos exactos
 
-1. Servidor de partidas: copiar `server/.env.example` a `server/.env` con la secret key (Dashboard → Project Settings → API Keys), `cd server && npm install && npm run dev`, y en el `.env` de la app `EXPO_PUBLIC_BATTLE_SERVER_URL=http://<IP-de-la-PC>:3001`.
-2. En dos dispositivos con cuentas distintas: buscar partida, confirmar, jugar, ver resultado/ELO/logros; probar cortar el Wi-Fi de uno (gracia de 15 s) y "Practicar sin ELO".
+1. Widgets: `npx eas-cli@latest login`, `npx eas-cli@latest init` y `npx eas-cli@latest build --profile development --platform android`; instalar, iniciar sesión, agregar «Palabra» y «Pregunta rápida» (pasos en WIDGETS.md). iOS en dispositivo requiere Apple Developer paga.
+2. Servidor de partidas: copiar `server/.env.example` a `server/.env` con la secret key, `cd server && npm install && npm run dev`, y en el `.env` de la app `EXPO_PUBLIC_BATTLE_SERVER_URL=http://<IP-de-la-PC>:3001`; jugar una partida en dos dispositivos.
 3. Pendientes de fases anteriores en el teléfono (lección 1, logros, perfil de otro jugador).
-4. Decidir hosting del servidor (con HTTPS) y si activar la protección de contraseñas filtradas.
-5. Fase 5: widgets nativos.
+4. Decidir hosting del servidor (con HTTPS), si activar la protección de contraseñas filtradas y si aplicar el parche `react-native` 0.88.1.
+5. Fase 6: QA, accesibilidad, builds de producción y checklist de lanzamiento.

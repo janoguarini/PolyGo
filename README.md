@@ -2,13 +2,13 @@
 
 App móvil (iOS/Android) para aprender inglés compitiendo: lecciones A1, batallas 1v1 en tiempo real, ELO y rangos de Bronce a Gran Maestro, perfil competitivo y widgets de vocabulario.
 
-> Estado: **Fase 4** (lecciones A1, perfil y logros, batallas ranked Word Rush con servidor autoritativo). Ver [docs/IMPLEMENTATION_STATUS.md](docs/IMPLEMENTATION_STATUS.md).
+> Estado: **Fase 5** (lecciones A1, perfil y logros, batallas ranked Word Rush, widgets de pantalla de inicio iOS/Android). Ver [docs/IMPLEMENTATION_STATUS.md](docs/IMPLEMENTATION_STATUS.md).
 
 ## Requisitos
 
 - Node.js 22+
 - Un proyecto de Supabase
-- Expo Go (para probar sin builds nativos) o EAS para development builds
+- Expo Go (`npx expo start --go`, todo menos widgets) o una development build de EAS (ver [Widgets](docs/WIDGETS.md#cómo-probarlos))
 
 ## Puesta en marcha
 

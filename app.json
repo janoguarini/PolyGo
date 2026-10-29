@@ -37,6 +37,46 @@
           "resizeMode": "contain",
           "backgroundColor": "#0B0A1A"
         }
+      ],
+      [
+        "expo-widgets",
+        {
+          "enableAndroid": true,
+          "widgets": [
+            {
+              "name": "PolygoWord",
+              "displayName": "Palabra",
+              "description": "Palabra del día y tus palabras para repasar, con pronunciación y ejemplo.",
+              "ios": {
+                "supportedFamilies": ["systemSmall", "systemMedium"],
+                "initialLayout": "./src/widgets/PolygoWord.ios.tsx"
+              },
+              "android": {
+                "targetCellWidth": 3,
+                "targetCellHeight": 2,
+                "minWidth": 180,
+                "minHeight": 110,
+                "initialLayout": "./src/widgets/PolygoWord.android.tsx"
+              }
+            },
+            {
+              "name": "PolygoQuiz",
+              "displayName": "Pregunta rápida",
+              "description": "Respondé preguntas de vocabulario desde la pantalla de inicio.",
+              "ios": {
+                "supportedFamilies": ["systemMedium", "systemLarge"],
+                "initialLayout": "./src/widgets/PolygoQuiz.ios.tsx"
+              },
+              "android": {
+                "targetCellWidth": 4,
+                "targetCellHeight": 3,
+                "minWidth": 250,
+                "minHeight": 180,
+                "initialLayout": "./src/widgets/PolygoQuiz.android.tsx"
+              }
+            }
+          ]
+        }
       ]
     ],
     "experiments": {

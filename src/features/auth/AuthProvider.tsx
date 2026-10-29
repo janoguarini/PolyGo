@@ -1,6 +1,7 @@
 import type { Session } from '@supabase/supabase-js';
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 
+import { clearWidgets } from '@/features/widgets/sync';
 import { queryClient } from '@/lib/queryClient';
 import { supabase } from '@/lib/supabase';
 
@@ -40,6 +41,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setRecoveringPassword(false);
         // No dejar datos del usuario anterior en caché.
         queryClient.clear();
+        clearWidgets();
       }
     });
 

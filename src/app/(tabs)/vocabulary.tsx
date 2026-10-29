@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import { Layers, Smartphone } from 'lucide-react-native';
 import { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 
 import { SRS_CONFIG, WORD_STATUS_LABELS, wordStatus, type WordStatus } from '@shared/srs';
 
@@ -21,6 +21,7 @@ import {
 } from '@/design-system';
 import { SpeakButton } from '@/features/learning/components/SpeakButton';
 import { useMyWords, useWordOfTheDay } from '@/features/learning/hooks';
+import { widgetsSupported } from '@/features/widgets/sync';
 
 const STATUS_COLOR: Record<WordStatus, keyof typeof colors> = {
   new: 'textMuted',
@@ -115,7 +116,7 @@ export default function VocabularyScreen() {
         </Card>
       )}
 
-      <Text variant="overline">WIDGET · VISTA PREVIA</Text>
+      <Text variant="overline">PALABRA DEL DÍA</Text>
       {wordOfDay.data ? (
         <Card gradient={gradients.hero} style={styles.widget}>
           <View style={styles.widgetTop}>
@@ -139,17 +140,25 @@ export default function VocabularyScreen() {
       <Card style={styles.status}>
         <View style={styles.row}>
           <Smartphone color={colors.info} size={22} />
-          <Text variant="bodyStrong">Widget de pantalla de inicio</Text>
+          <Text variant="bodyStrong">Widgets de pantalla de inicio</Text>
         </View>
         <Text color="textMuted">
-          El widget nativo para iOS y Android todavía no está instalado (Fase 5). La tarjeta de
-          arriba muestra la palabra del día real, pero sólo dentro de la app.
+          «Palabra» muestra la palabra del día y tus palabras para repasar. «Pregunta rápida» te
+          deja responder sin abrir la app (es práctica: no cambia tus repasos ni tu ELO).
         </Text>
-        <View style={styles.pill}>
-          <Text variant="overline" color="streak">
-            ESTADO: PENDIENTE
+        {widgetsSupported ? (
+          <Text color="textMuted">
+            {Platform.OS === 'ios'
+              ? 'Mantené apretada la pantalla de inicio → Editar → Agregar widget → Polygo. La palabra cambia cada hora; iOS decide el momento exacto.'
+              : 'Mantené apretada la pantalla de inicio → Widgets → Polygo. La palabra se renueva cada vez que abrís la app.'}
           </Text>
-        </View>
+        ) : (
+          <View style={styles.pill}>
+            <Text variant="overline" color="streak">
+              NO DISPONIBLE EN EXPO GO · HACE FALTA UNA BUILD DE LA APP
+            </Text>
+          </View>
+        )}
       </Card>
     </Screen>
   );
