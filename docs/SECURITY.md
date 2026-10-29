@@ -16,7 +16,10 @@
 | Cliente no puede cambiar `username` / `public_code` directamente | privilegios por columna | Tests SQL |
 | Un usuario no edita filas ajenas | políticas `USING (id = auth.uid())` | Tests SQL |
 | Doble liquidación imposible | `UNIQUE (user_id, battle_id)` | Tests SQL |
-| Funciones `security definer` con `search_path = ''` | migración 0001 | Revisión |
+| Funciones `security definer` con `search_path = ''` | migraciones 0001–0004 | Revisión |
+| Partidas y logros sólo los escribe el backend | `REVOKE` + sin políticas de escritura | Tests SQL |
+| Visibilidad de perfil aplicada (`private`/`friends` ocultan estadísticas y logros) | `get_public_profile` | Tests SQL |
+| Métricas educativas ajenas invisibles | `achievement_metrics` es invoker: RLS devuelve 0 | Tests SQL |
 
 ## Pendiente
 
@@ -36,7 +39,9 @@ Riesgos aceptados: se puede registrar una cuenta con un email ajeno, y es más f
 Avisos abiertos **intencionales** (funciones `SECURITY DEFINER` ejecutables por `authenticated`):
 
 - `complete_onboarding`: el cliente no tiene privilegio `UPDATE` sobre `username`; la función exige sesión (`auth.uid()`), sólo modifica la fila del propio usuario, valida idioma y unicidad, y los `CHECK` de la tabla validan formato, avatar, nivel y objetivo.
-- `submit_learning_session`: única vía de escritura del progreso educativo (el cliente no tiene INSERT/UPDATE en esas tablas). Valida sesión, ventana de tiempo, desbloqueo, pertenencia de ejercicios y unicidad; es idempotente por id de sesión.
+- `submit_learning_session`: única vía de escritura del progreso educativo (el cliente no tiene INSERT/UPDATE en esas tablas). Valida sesión, ventana de tiempo, desbloqueo, pertenencia de ejercicios y unicidad; es idempotente por id de sesión. Desde la 0004 también evalúa logros.
+- `get_match_history`: sólo lectura; devuelve únicamente partidas terminadas en las que participa `auth.uid()`, con nombre y avatar del rival (que ya son públicos). El cliente no puede leer la fila del rival en `battle_players` directamente.
+- `get_public_profile`: sólo lectura; exige sesión y respeta `profile_visibility` (fuera de `public` devuelve sólo identidad y rango).
 
 Aviso abierto **pendiente de decisión**: *Leaked Password Protection* (HaveIBeenPwned) desactivada en Supabase Auth. Se activa desde el dashboard (Authentication → Sign In / Providers → Email → Password security); puede requerir plan Pro.
 

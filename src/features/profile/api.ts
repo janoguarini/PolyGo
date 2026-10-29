@@ -7,6 +7,8 @@ import type {
 } from '@/lib/database.types';
 import { requireSupabase } from '@/lib/supabase';
 
+import { MAX_CHART_POINTS, isMatchResult, type MatchResult, type RatingPoint } from './stats';
+
 export interface MyProfile {
   profile: ProfileRow;
   rating: PlayerRatingRow | null;
@@ -80,4 +82,154 @@ export async function updateSettings(
     .update(patch)
     .eq('user_id', userId);
   if (error) throw error;
+}
+
+export interface ProfilePatch {
+  display_name?: string;
+  avatar_id?: string;
+  daily_goal_minutes?: number;
+}
+
+export async function updateProfile(userId: string, patch: ProfilePatch) {
+  const { error } = await requireSupabase().from('profiles').update(patch).eq('id', userId);
+  if (error) throw error;
+}
+
+/** Evolución del ELO (sólo el dueño puede leer su historial, por RLS). Orden cronológico. */
+export async function fetchRatingHistory(
+  userId: string,
+  languageCode: string,
+): Promise<RatingPoint[]> {
+  const { data, error } = await requireSupabase()
+    .from('rating_history')
+    .select('rating_after, delta, created_at, reason')
+    .eq('user_id', userId)
+    .eq('language_code', languageCode)
+    .order('created_at', { ascending: false })
+    .order('id', { ascending: false })
+    .limit(MAX_CHART_POINTS);
+  if (error) throw error;
+  return data
+    .map((r) => ({
+      rating: r.rating_after,
+      delta: r.delta ?? 0,
+      at: r.created_at,
+      reason: r.reason,
+    }))
+    .reverse();
+}
+
+export interface MatchHistoryEntry {
+  battleId: string;
+  endedAt: string;
+  isRanked: boolean;
+  result: MatchResult | null;
+  forfeited: boolean;
+  score: number;
+  correctAnswers: number;
+  totalAnswers: number;
+  ratingDelta: number | null;
+  ratingAfter: number | null;
+  /** null si el rival borró su cuenta. */
+  opponent: { id: string; username: string | null; avatarId: string | null } | null;
+  opponentScore: number | null;
+}
+
+export const MATCH_PAGE_SIZE = 20;
+
+/** Partidas terminadas del usuario actual, más recientes primero. `before` pagina por fecha. */
+export async function fetchMatchHistory(
+  before: string | null,
+  limit = MATCH_PAGE_SIZE,
+): Promise<MatchHistoryEntry[]> {
+  const { data, error } = await requireSupabase().rpc('get_match_history', {
+    p_limit: limit,
+    // La función acepta NULL (primera página); los tipos generados no lo reflejan.
+    p_before: before as string,
+  });
+  if (error) throw error;
+  return data.map((row) => ({
+    battleId: row.battle_id,
+    endedAt: row.ended_at,
+    isRanked: row.is_ranked,
+    result: isMatchResult(row.result) ? row.result : null,
+    forfeited: row.forfeited,
+    score: row.score,
+    correctAnswers: row.correct_answers,
+    totalAnswers: row.total_answers,
+    ratingDelta:
+      row.rating_after != null && row.rating_before != null
+        ? row.rating_after - row.rating_before
+        : null,
+    ratingAfter: row.rating_after ?? null,
+    opponent: row.opponent_id
+      ? {
+          id: row.opponent_id,
+          username: row.opponent_username ?? null,
+          avatarId: row.opponent_avatar_id ?? null,
+        }
+      : null,
+    opponentScore: row.opponent_score ?? null,
+  }));
+}
+
+export interface Achievement {
+  id: string;
+  category: string;
+  title: string;
+  description: string;
+  icon: string;
+  threshold: number;
+  progress: number;
+  unlockedAt: string | null;
+}
+
+export async function fetchMyAchievements(): Promise<Achievement[]> {
+  const { data, error } = await requireSupabase().rpc('get_my_achievements');
+  if (error) throw error;
+  return data.map((a) => ({
+    id: a.id,
+    category: a.category,
+    title: a.title_es,
+    description: a.description_es,
+    icon: a.icon,
+    threshold: a.threshold,
+    progress: a.progress,
+    unlockedAt: a.unlocked_at ?? null,
+  }));
+}
+
+export interface PublicProfile {
+  id: string;
+  username: string;
+  display_name: string | null;
+  avatar_id: string;
+  public_code: string;
+  created_at: string;
+  /** false si el perfil es privado: sólo llegan identidad y rango. */
+  is_public: boolean;
+  rating: { rating: number; games_played: number } | null;
+  stats?: {
+    wins: number;
+    losses: number;
+    draws: number;
+    peak_rating: number;
+    best_win_streak: number;
+  } | null;
+  learning?: { lessons_completed: number; words_mastered: number; best_streak_days: number };
+  achievements?: {
+    id: string;
+    title: string;
+    icon: string;
+    category: string;
+    unlocked_at: string;
+  }[];
+}
+
+export async function fetchPublicProfile(userId: string): Promise<PublicProfile | null> {
+  const { data, error } = await requireSupabase().rpc('get_public_profile', {
+    p_user_id: userId,
+  });
+  if (error) throw error;
+  return (data ?? null) as unknown as PublicProfile | null;
 }

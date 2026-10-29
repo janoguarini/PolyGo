@@ -15,7 +15,7 @@ Hispanohablantes que aprenden inglés (A1), competitivos, que estudian en ratos 
 | A · Aprendizaje | Unidades y lecciones A1, 10 tipos de ejercicio, repaso espaciado | Fase 2 |
 | B · Ranked | Word Rush 1v1, matchmaking por ELO, 8 tiers | Rangos/ELO en `shared/` ✅ · motor Fase 4 |
 | C · Widgets | Palabra del día, pregunta rápida (iOS/Android nativo) | Fase 5 · vista previa en app |
-| D · Perfil | Rango, ELO, V/D, rachas, progreso lingüístico separado | Parcial ✅ · estadísticas Fase 3 |
+| D · Perfil | Rango, ELO, V/D, rachas, progreso lingüístico separado, evolución de ELO, historial, logros, perfil público con privacidad, edición | Fase 3 ✅ (datos competitivos reales con la Fase 4) |
 
 ## Navegación
 

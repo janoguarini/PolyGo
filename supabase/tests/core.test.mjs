@@ -158,6 +158,10 @@ test('el historial de rating sólo es visible para su dueño', async () => {
 
 test('una misma partida no puede liquidarse dos veces para un jugador', async () => {
   const battle = '11111111-1111-1111-1111-111111111111';
+  await db.query(
+    `insert into public.battles (id, language_code, status) values ($1, 'en', 'completed')`,
+    [battle],
+  );
   const insert = () =>
     db.query(
       `insert into public.rating_history (user_id, language_code, battle_id, reason, rating_before, rating_after)

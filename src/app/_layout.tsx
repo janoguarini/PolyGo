@@ -65,6 +65,10 @@ function RootNavigator() {
           name="review"
           options={{ animation: 'slide_from_bottom', gestureEnabled: false }}
         />
+        <Stack.Screen name="matches" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="achievements" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="player/[id]" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="edit-profile" options={{ animation: 'slide_from_bottom' }} />
       </Stack.Protected>
       <Stack.Protected guard={Boolean(session) && recoveringPassword}>
         <Stack.Screen name="reset-password" />

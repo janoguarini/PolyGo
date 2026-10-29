@@ -103,11 +103,16 @@ export function useWordPool() {
   });
 }
 
-/** Envía la sesión (idempotente por sessionId) y refresca progreso, resumen y palabras. */
+/** Envía la sesión (idempotente por sessionId) y refresca progreso, resumen, palabras y logros. */
 export function useSubmitSession() {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: submitLearningSession,
-    onSuccess: () => qc.invalidateQueries({ queryKey: learningKeys.all }),
+    onSuccess: () =>
+      Promise.all([
+        qc.invalidateQueries({ queryKey: learningKeys.all }),
+        qc.invalidateQueries({ queryKey: ['profile', 'achievements'] }),
+        qc.invalidateQueries({ queryKey: ['profile', 'player'] }),
+      ]),
   });
 }

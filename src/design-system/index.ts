@@ -6,6 +6,7 @@ export { Card } from './components/Card';
 export { ProgressBar } from './components/ProgressBar';
 export { RankEmblem, RankEmblemForRating } from './components/RankEmblem';
 export { Screen } from './components/Screen';
+export { ScreenHeader } from './components/ScreenHeader';
 export { SelectCard } from './components/SelectCard';
 export { StatTile } from './components/StatTile';
 export { EmptyState, ErrorState, LoadingState } from './components/States';

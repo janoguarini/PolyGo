@@ -41,6 +41,10 @@ Cualquier otra transición se rechaza.
 
 `queue:join`, `queue:leave`, `match:found`, `match:ready`, `battle:start`, `battle:question`, `battle:answer`, `battle:score`, `battle:opponent_status`, `battle:reconnect`, `battle:finish`, `battle:cancel`.
 
+## Persistencia (ya creada en la migración 0004)
+
+`battles` y `battle_players` existen desde la Fase 3 para el historial. La liquidación debe, en una sola transacción: cerrar `battles` (estado y `ended_at`), completar ambas filas de `battle_players` (puntaje, resultado, rating antes/después), actualizar `player_ratings`, insertar `rating_history` (`UNIQUE (user_id, battle_id)` impide duplicar) y llamar a `evaluate_achievements` para cada jugador.
+
 ## Matchmaking
 
 Cola por idioma y versión de protocolo. Ventana inicial ±100 ELO, se amplía +50 cada 5 s hasta ±400. Nunca se muestran bots como personas; si no hay rival, se ofrece un modo práctica claramente etiquetado y sin ELO.

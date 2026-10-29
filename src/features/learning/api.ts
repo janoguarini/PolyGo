@@ -29,6 +29,8 @@ export interface SessionResult {
   first_try_correct?: number;
   first_try_total?: number;
   accuracy?: number;
+  /** Logros desbloqueados por esta sesión (vacío en reenvíos). */
+  achievements_unlocked?: { id: string; title: string; icon: string }[];
 }
 
 export interface LearningSummary {

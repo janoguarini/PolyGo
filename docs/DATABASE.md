@@ -85,6 +85,30 @@ Confianza: en lecciones (no competitivas) el cliente valida la respuesta para da
 
 Generadas por `scripts/build-content-sql.ts --unit N` desde `content/a1` (una por unidad, aplicadas en orden). Idempotentes y sin sentencias destructivas. Aplicadas en Supabase; checksum md5 del contenido idéntico al local.
 
+## Migración 0004 — perfil, historial y logros (`20261029140504_profile_history_achievements.sql`)
+
+> Estado: aplicada en Supabase (2026-10-29) y verificada con una sesión y una partida reales revertidas.
+
+| Tabla | Propósito | Cliente |
+| --- | --- | --- |
+| `battles` | Resultado de cada partida: idioma, temporada, modo, ranked, estado (todos los de BATTLE_PROTOCOL), inicio y fin | lee sólo las propias |
+| `battle_players` | Un jugador por slot: puntaje, aciertos, resultado, abandono, rating antes/después. `user_id` → NULL al borrar la cuenta (el rival conserva la partida anonimizada) | lee sólo su fila |
+| `achievements` | Catálogo (16): categoría, métrica, umbral, título, icono, orden | lee los activos |
+| `user_achievements` | Logros desbloqueados y fecha. Nunca se pierden aunque la métrica baje | lee los propios |
+
+Además: FK `rating_history.battle_id → battles(id)`.
+
+### Funciones
+
+| Función | Seguridad | Uso |
+| --- | --- | --- |
+| `achievement_metrics(uuid)` | invoker, `authenticated` | Métricas de logros: lecciones, lecciones perfectas, palabras vistas/dominadas, racha récord (islas de días), partidas, victorias, mejor racha, pico de ELO |
+| `evaluate_achievements(uuid)` | interna | Desbloquea lo alcanzado y devuelve los ids nuevos; idempotente. La llaman `submit_learning_session` y, en Fase 4, la liquidación |
+| `get_my_achievements()` | invoker | Catálogo con progreso y fecha de desbloqueo |
+| `get_match_history(limit, before)` | definer (aviso intencional) | Partidas terminadas propias, más recientes primero, con datos del rival; pagina por fecha |
+| `get_public_profile(uuid)` | definer (aviso intencional) | Perfil de otro jugador según su visibilidad |
+| `submit_learning_session(...)` | reemplazada | Igual que en 0003 + evalúa logros y devuelve `achievements_unlocked` |
+
 ## Próximas migraciones
 
-- 0004 batallas: `matchmaking_queue`, `battles`, `battle_players`, `battle_answers`, FK `rating_history.battle_id`, función de liquidación transaccional.
+- 0005 motor competitivo: `matchmaking_queue`, preguntas y `battle_answers`, función de liquidación transaccional que escriba `battles`/`battle_players`/`player_ratings`/`rating_history` y llame a `evaluate_achievements` para ambos jugadores.

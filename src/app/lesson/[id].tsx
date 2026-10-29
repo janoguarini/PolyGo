@@ -87,6 +87,7 @@ export default function LessonScreen() {
       saving={submit.isPending}
       saveError={submit.error}
       saved={submit.isSuccess}
+      achievements={submit.data?.achievements_unlocked ?? []}
       onRetrySave={() => save(finished.attempts)}
       primaryLabel={hasNext ? 'Siguiente lección' : 'Ver mapa de lecciones'}
       onPrimary={() =>

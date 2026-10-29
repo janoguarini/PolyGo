@@ -128,6 +128,7 @@ export default function ReviewScreen() {
       saving={submit.isPending}
       saveError={submit.error}
       saved={submit.isSuccess}
+      achievements={submit.data?.achievements_unlocked ?? []}
       onRetrySave={() => save(finished.attempts)}
       primaryLabel="Listo"
       onPrimary={() => router.back()}

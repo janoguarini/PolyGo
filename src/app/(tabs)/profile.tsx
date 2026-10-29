@@ -1,5 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
-import { BookOpen, LogOut, Shield, Swords } from 'lucide-react-native';
+import { router } from 'expo-router';
+import { Award, BookOpen, LogOut, Pencil, Shield, Swords } from 'lucide-react-native';
 import { StyleSheet, View } from 'react-native';
 
 import { TARGET_LANGUAGES } from '@shared/profile';
@@ -22,6 +23,8 @@ import {
 import { signOut } from '@/features/auth/api';
 import { FormMessage } from '@/features/auth/FormMessage';
 import { LearningStats } from '@/features/learning/components/LearningStats';
+import { AchievementsSummary } from '@/features/profile/components/AchievementsSummary';
+import { CompetitiveHistory } from '@/features/profile/components/CompetitiveHistory';
 import { useMyProfile, useUpdateSettings } from '@/features/profile/hooks';
 import type { ProfileVisibility } from '@/lib/database.types';
 import { toUserMessage } from '@/lib/errors';
@@ -35,7 +38,11 @@ const VISIBILITY: {
 }[] = [
   { id: 'public', title: 'Público', description: 'Cualquier jugador ve tu perfil y estadísticas.' },
   { id: 'friends', title: 'Sólo amigos', description: 'Se aplicará cuando existan los amigos.' },
-  { id: 'private', title: 'Privado', description: 'Sólo se muestran tu nombre, avatar y rango.' },
+  {
+    id: 'private',
+    title: 'Privado',
+    description: 'Los demás sólo ven tu nombre, avatar y rango; no tus estadísticas ni logros.',
+  },
 ];
 
 export default function ProfileScreen() {
@@ -65,6 +72,13 @@ export default function ProfileScreen() {
         <Text variant="caption">
           Desde {joinedFormat.format(new Date(profile.created_at))} · Aprende {language}
         </Text>
+        <Button
+          label="Editar perfil"
+          variant="secondary"
+          icon={<Pencil color={colors.text} size={16} />}
+          onPress={() => router.push('/edit-profile')}
+          style={styles.edit}
+        />
       </View>
 
       <View style={styles.sectionHeader}>
@@ -94,8 +108,15 @@ export default function ProfileScreen() {
             <StatTile label="Racha actual" value={String(rating.win_streak)} />
             <StatTile label="Mejor racha" value={String(rating.best_win_streak)} />
           </View>
+          <CompetitiveHistory />
         </>
       ) : null}
+
+      <View style={styles.sectionHeader}>
+        <Award color={colors.gold} size={20} />
+        <Text variant="heading">Logros</Text>
+      </View>
+      <AchievementsSummary />
 
       <View style={styles.sectionHeader}>
         <BookOpen color={colors.info} size={20} />
@@ -147,4 +168,5 @@ const styles = StyleSheet.create({
   grid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
   gap: { gap: spacing.sm },
   logout: { marginTop: spacing.xl },
+  edit: { marginTop: spacing.sm, alignSelf: 'center', paddingHorizontal: spacing.xl },
 });

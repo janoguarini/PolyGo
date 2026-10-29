@@ -25,6 +25,129 @@ export type Database = {
   };
   public: {
     Tables: {
+      achievements: {
+        Row: {
+          category: string;
+          created_at: string;
+          description_es: string;
+          icon: string;
+          id: string;
+          is_active: boolean;
+          metric: string;
+          position: number;
+          threshold: number;
+          title_es: string;
+        };
+        Insert: {
+          category: string;
+          created_at?: string;
+          description_es: string;
+          icon: string;
+          id: string;
+          is_active?: boolean;
+          metric: string;
+          position: number;
+          threshold: number;
+          title_es: string;
+        };
+        Update: {
+          category?: string;
+          created_at?: string;
+          description_es?: string;
+          icon?: string;
+          id?: string;
+          is_active?: boolean;
+          metric?: string;
+          position?: number;
+          threshold?: number;
+          title_es?: string;
+        };
+        Relationships: [];
+      };
+      battle_players: {
+        Row: {
+          battle_id: string;
+          correct_answers: number;
+          forfeited: boolean;
+          rating_after: number | null;
+          rating_before: number | null;
+          result: string | null;
+          score: number;
+          slot: number;
+          total_answers: number;
+          user_id: string | null;
+        };
+        Insert: {
+          battle_id: string;
+          correct_answers?: number;
+          forfeited?: boolean;
+          rating_after?: number | null;
+          rating_before?: number | null;
+          result?: string | null;
+          score?: number;
+          slot: number;
+          total_answers?: number;
+          user_id?: string | null;
+        };
+        Update: {
+          battle_id?: string;
+          correct_answers?: number;
+          forfeited?: boolean;
+          rating_after?: number | null;
+          rating_before?: number | null;
+          result?: string | null;
+          score?: number;
+          slot?: number;
+          total_answers?: number;
+          user_id?: string | null;
+        };
+        Relationships: [
+          FK<'battle_players_battle_id_fkey', 'battle_id', 'battles', 'id'>,
+          FK<'battle_players_user_id_fkey', 'user_id', 'profiles', 'id'>,
+        ];
+      };
+      battles: {
+        Row: {
+          created_at: string;
+          ended_at: string | null;
+          id: string;
+          is_ranked: boolean;
+          language_code: string;
+          mode: string;
+          protocol_version: number;
+          season_id: number | null;
+          started_at: string | null;
+          status: string;
+        };
+        Insert: {
+          created_at?: string;
+          ended_at?: string | null;
+          id?: string;
+          is_ranked?: boolean;
+          language_code: string;
+          mode?: string;
+          protocol_version?: number;
+          season_id?: number | null;
+          started_at?: string | null;
+          status?: string;
+        };
+        Update: {
+          created_at?: string;
+          ended_at?: string | null;
+          id?: string;
+          is_ranked?: boolean;
+          language_code?: string;
+          mode?: string;
+          protocol_version?: number;
+          season_id?: number | null;
+          started_at?: string | null;
+          status?: string;
+        };
+        Relationships: [
+          FK<'battles_language_code_fkey', 'language_code', 'languages', 'code'>,
+          FK<'battles_season_id_fkey', 'season_id', 'seasons', 'id'>,
+        ];
+      };
       curriculum_units: {
         Row: {
           created_at: string;
@@ -403,6 +526,7 @@ export type Database = {
           user_id?: string;
         };
         Relationships: [
+          FK<'rating_history_battle_id_fkey', 'battle_id', 'battles', 'id'>,
           FK<'rating_history_language_code_fkey', 'language_code', 'languages', 'code'>,
           FK<'rating_history_season_id_fkey', 'season_id', 'seasons', 'id'>,
           FK<'rating_history_user_id_fkey', 'user_id', 'profiles', 'id'>,
@@ -434,6 +558,27 @@ export type Database = {
           status?: string;
         };
         Relationships: [];
+      };
+      user_achievements: {
+        Row: {
+          achievement_id: string;
+          unlocked_at: string;
+          user_id: string;
+        };
+        Insert: {
+          achievement_id: string;
+          unlocked_at?: string;
+          user_id: string;
+        };
+        Update: {
+          achievement_id?: string;
+          unlocked_at?: string;
+          user_id?: string;
+        };
+        Relationships: [
+          FK<'user_achievements_achievement_id_fkey', 'achievement_id', 'achievements', 'id'>,
+          FK<'user_achievements_user_id_fkey', 'user_id', 'profiles', 'id'>,
+        ];
       };
       user_daily_activity: {
         Row: {
@@ -603,6 +748,7 @@ export type Database = {
       [_ in never]: never;
     };
     Functions: {
+      achievement_metrics: { Args: { p_user_id: string }; Returns: Json };
       apply_word_result: {
         Args: { p_at: string; p_correct: boolean; p_user_id: string; p_word_id: string };
         Returns: undefined;
@@ -631,8 +777,44 @@ export type Database = {
         };
         SetofOptions: { from: '*'; to: 'profiles'; isOneToOne: true; isSetofReturn: false };
       };
+      evaluate_achievements: { Args: { p_user_id: string }; Returns: string[] };
       generate_public_code: { Args: never; Returns: string };
       get_learning_summary: { Args: { p_time_zone: string }; Returns: Json };
+      get_match_history: {
+        Args: { p_before: string; p_limit: number };
+        Returns: {
+          battle_id: string;
+          correct_answers: number;
+          ended_at: string;
+          forfeited: boolean;
+          is_ranked: boolean;
+          mode: string;
+          opponent_avatar_id: string;
+          opponent_id: string;
+          opponent_score: number;
+          opponent_username: string;
+          rating_after: number;
+          rating_before: number;
+          result: string;
+          score: number;
+          status: string;
+          total_answers: number;
+        }[];
+      };
+      get_my_achievements: {
+        Args: never;
+        Returns: {
+          category: string;
+          description_es: string;
+          icon: string;
+          id: string;
+          progress: number;
+          threshold: number;
+          title_es: string;
+          unlocked_at: string;
+        }[];
+      };
+      get_public_profile: { Args: { p_user_id: string }; Returns: Json };
       is_lesson_unlocked: { Args: { p_lesson_id: string; p_user_id: string }; Returns: boolean };
       is_username_available: { Args: { p_username: string }; Returns: boolean };
       parse_learning_attempts: {

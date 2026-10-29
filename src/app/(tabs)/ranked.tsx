@@ -1,5 +1,6 @@
+import { router } from 'expo-router';
 import { CalendarDays, Search, Trophy } from 'lucide-react-native';
-import { StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 
 import {
   Avatar,
@@ -90,11 +91,21 @@ export default function RankedScreen() {
           {leaderboard.data.map((entry, index) => {
             const isMe = entry.userId === session?.user.id;
             return (
-              <View
+              <Pressable
                 key={entry.userId}
-                style={[styles.entry, isMe && styles.entryMe]}
-                accessible
+                style={({ pressed }) => [
+                  styles.entry,
+                  isMe && styles.entryMe,
+                  pressed && styles.pressed,
+                ]}
+                accessibilityRole="button"
                 accessibilityLabel={`Puesto ${index + 1}, ${entry.username}, ${entry.rating} ELO`}
+                accessibilityHint="Abre el perfil del jugador"
+                onPress={() =>
+                  isMe
+                    ? router.navigate('/profile')
+                    : router.push({ pathname: '/player/[id]', params: { id: entry.userId } })
+                }
               >
                 <Text
                   variant="bodyStrong"
@@ -112,7 +123,7 @@ export default function RankedScreen() {
                 <Text variant="bodyStrong" color="text">
                   {entry.rating}
                 </Text>
-              </View>
+              </Pressable>
             );
           })}
           {leaderboard.data.length === 0 ? (
@@ -146,6 +157,7 @@ const styles = StyleSheet.create({
     marginHorizontal: -spacing.sm,
     paddingHorizontal: spacing.sm,
   },
+  pressed: { opacity: 0.75 },
   position: { width: 24, textAlign: 'center' },
   name: { flex: 1 },
 });

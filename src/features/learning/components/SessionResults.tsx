@@ -5,6 +5,7 @@ import Animated, { FadeInUp } from 'react-native-reanimated';
 import type { Exercise } from '@shared/exercises';
 
 import { Button, Card, Screen, StatTile, Text, colors, spacing } from '@/design-system';
+import { AchievementIcon } from '@/features/profile/components/AchievementBadge';
 import { toUserMessage } from '@/lib/errors';
 
 import type { WordRow } from '../api';
@@ -18,6 +19,8 @@ interface Props {
   saving: boolean;
   saveError: unknown;
   saved: boolean;
+  /** Logros que desbloqueó esta sesión según el servidor. */
+  achievements: { id: string; title: string; icon: string }[];
   onRetrySave: () => void;
   primaryLabel: string;
   onPrimary: () => void;
@@ -101,6 +104,24 @@ export function SessionResults(props: Props) {
         </Card>
       ) : null}
 
+      {props.achievements.length > 0 ? (
+        <Animated.View entering={FadeInUp.delay(300).duration(400)}>
+          <Card style={[styles.gap, styles.achievements]} accessibilityLabel="Logros nuevos">
+            <Text variant="overline" color="gold">
+              {props.achievements.length === 1 ? 'LOGRO DESBLOQUEADO' : 'LOGROS DESBLOQUEADOS'}
+            </Text>
+            {props.achievements.map((a) => (
+              <View key={a.id} style={styles.row}>
+                <AchievementIcon icon={a.icon} unlocked size={36} />
+                <Text variant="bodyStrong" color="textStrong">
+                  {a.title}
+                </Text>
+              </View>
+            ))}
+          </Card>
+        </Animated.View>
+      ) : null}
+
       {mistakeWords.length > 0 ? (
         <Card style={styles.gap}>
           <Text variant="overline">PALABRAS PARA REPASAR</Text>
@@ -136,4 +157,5 @@ const styles = StyleSheet.create({
   error: { gap: spacing.sm, borderColor: colors.dangerStrong },
   row: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   gap: { gap: spacing.sm },
+  achievements: { borderColor: colors.goldStrong },
 });
