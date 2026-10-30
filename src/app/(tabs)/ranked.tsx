@@ -2,6 +2,8 @@ import { router } from 'expo-router';
 import { CalendarDays, Dumbbell, Search, Star, Trophy } from 'lucide-react-native';
 import { Pressable, StyleSheet, View } from 'react-native';
 
+import { BOT_CONFIG } from '@shared/bots';
+
 import {
   Avatar,
   Button,
@@ -29,8 +31,6 @@ export default function RankedScreen() {
   const season = useActiveSeason();
   const leaderboard = useLeaderboard(me.data?.profile.target_language);
   const stars = useLeaderboardStars(leaderboard.data?.map((e) => e.userId));
-  // Sin URL del servidor de partidas el botón no puede quedar activo sin hacer nada.
-  const battleServerReady = battleServerConfigured;
 
   if (me.isPending) return <LoadingState />;
   if (me.isError || !me.data) return <ErrorState onRetry={() => void me.refetch()} />;
@@ -59,13 +59,13 @@ export default function RankedScreen() {
       <Card style={styles.matchCard}>
         <Text variant="overline">MODO · WORD RUSH</Text>
         <Text color="textMuted">
-          1 contra 1 · preguntas de vocabulario idénticas para ambos jugadores · el servidor valida
-          cada respuesta.
+          {battleServerConfigured
+            ? `1 contra 1 · las mismas preguntas para los dos · si en ${BOT_CONFIG.afterMs / 1000} s no aparece nadie, jugás contra un bot de tu nivel (BOT).`
+            : '1 contra 1 contra un bot de tu nivel (BOT): 75 s de vocabulario, cuenta para el ELO. Cuanto más subís, más rápido y preciso juega.'}
         </Text>
         <Button
           label="Buscar partida"
           size="lg"
-          disabled={!battleServerReady}
           icon={<Search color={colors.onPrimary} size={20} />}
           accessibilityHint="Busca un rival con un ELO similar"
           onPress={() => router.push({ pathname: '/battle', params: { mode: 'ranked' } })}
@@ -73,17 +73,10 @@ export default function RankedScreen() {
         <Button
           label="Practicar sin ELO"
           variant="ghost"
-          disabled={!battleServerReady}
           icon={<Dumbbell color={colors.textMuted} size={18} />}
           accessibilityHint="Una ronda de 75 segundos contra el reloj, sin rival"
           onPress={() => router.push({ pathname: '/battle', params: { mode: 'practice' } })}
         />
-        {!battleServerReady ? (
-          <Text variant="caption" align="center">
-            El servidor de partidas no está configurado (EXPO_PUBLIC_BATTLE_SERVER_URL). No
-            mostramos rivales simulados.
-          </Text>
-        ) : null}
       </Card>
 
       <View style={styles.sectionHeader}>

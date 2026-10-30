@@ -19,7 +19,7 @@ import {
   colors,
   spacing,
 } from '@/design-system';
-import { ERROR_MESSAGES } from '@/features/battle/client';
+import { ERROR_MESSAGES, battleServerConfigured } from '@/features/battle/client';
 import { BattleHud } from '@/features/battle/components/BattleHud';
 import { BotBadge } from '@/features/battle/components/BotBadge';
 import { BattleResult } from '@/features/battle/components/BattleResult';
@@ -33,7 +33,11 @@ import {
 } from '@/features/battle/state';
 import { useBattleStore } from '@/features/battle/store';
 import { useBattleSession, useNow } from '@/features/battle/useBattleSession';
+import { useLocalBattleSession } from '@/features/battle/useLocalBattleSession';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
+
+/** Con servidor de partidas: ranked entre personas (y bots). Sin servidor: contra bots en el teléfono. */
+const useSession = battleServerConfigured ? useBattleSession : useLocalBattleSession;
 
 const CANCEL_MESSAGES: Record<CancelReason, string> = {
   ready_timeout: 'Alguno de los dos no confirmó a tiempo. No se movió el ELO.',
@@ -45,7 +49,7 @@ const CANCEL_MESSAGES: Record<CancelReason, string> = {
 export default function BattleScreen() {
   const params = useLocalSearchParams<{ mode?: string }>();
   const initialMode: BattleMode = params.mode === 'practice' ? 'practice' : 'ranked';
-  const session = useBattleSession();
+  const session = useSession();
   const state = useBattleStore();
   const now = useNow();
 
@@ -130,7 +134,7 @@ function Body({ state, now, onReady, onAnswer, onRetry, onExit }: BodyProps) {
   switch (state.phase) {
     case 'idle':
     case 'connecting':
-      return <LoadingState label="Conectando con el servidor de partidas…" />;
+      return <LoadingState label="Preparando la partida…" />;
 
     case 'error':
       return (

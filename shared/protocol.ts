@@ -143,7 +143,9 @@ export type ErrorCode =
   | 'stale_question'
   | 'battle_over'
   | 'invalid_payload'
-  | 'server_error';
+  | 'server_error'
+  /** Partidas contra bots sin servidor: tope diario alcanzado. */
+  | 'match_rate_limited';
 
 export interface AnswerResult {
   questionIndex: number;

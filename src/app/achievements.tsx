@@ -13,13 +13,12 @@ import {
   Text,
   spacing,
 } from '@/design-system';
-import { battleServerConfigured } from '@/features/battle/client';
 import { FamilyRow } from '@/features/profile/components/AchievementBadge';
 import { familyProgress } from '@/features/profile/families';
 import { useMyAchievements } from '@/features/profile/hooks';
 
-// Mismo criterio que la pantalla Ranked: disponible si la app tiene servidor de partidas.
-const RANKED_AVAILABLE = battleServerConfigured;
+// Ranked siempre está disponible (contra bots aunque no haya servidor de partidas).
+const RANKED_AVAILABLE = true;
 
 const CATEGORIES: { id: AchievementCategory; title: string }[] = [
   { id: 'streak', title: 'Constancia' },

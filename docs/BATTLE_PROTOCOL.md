@@ -89,6 +89,16 @@ Las partidas de práctica no se guardan. Las ranked:
 
 Cola en memoria por idioma (la versión de protocolo ya la filtra el handshake). Ventana inicial ±100 ELO, +50 cada 5 s hasta ±400; se empareja sólo si la diferencia entra en la ventana de **ambos**, priorizando a quien más espera y al rival más cercano. Un humano siempre tiene prioridad sobre un bot.
 
+## Sin servidor de partidas (modo actual)
+
+Si la app no tiene `EXPO_PUBLIC_BATTLE_SERVER_URL`, el ranked se juega **contra bots en el teléfono**, sin servidor propio ni costo extra:
+
+- `start_bot_match()` (Supabase) elige el bot a tu altura y genera **todas sus jugadas** (`battles.bot_script`): el teléfono sólo las reproduce, así que el resultado del bot no se puede tocar desde la app. Antes cierra como **abandono** cualquier partida tuya que haya quedado abierta (cerrar la app para no perder no sirve). Tope: 100 por día.
+- La partida corre en el teléfono (`src/features/battle/localMatch.ts`) con las mismas reglas y la misma pantalla.
+- `finish_bot_match(id, puntaje, correctas, respondidas, abandono)` valida el puntaje (no antes de 70 s desde el inicio, máximo 150 por acierto, ≤ 200 respuestas), recalcula el puntaje del bot desde su guion, decide el resultado y liquida el ELO y los logros. Idempotente.
+- Las funciones SQL replican `botSkill`, `answerPoints` y `computeRatingChange`; `supabase/tests/botmatch.test.mjs` verifica que den exactamente lo mismo que `shared/`.
+- Límite: no hay partidas entre personas, y el puntaje propio lo informa el teléfono (validado pero no observado en vivo). Para partidas entre personas, alojar `server/` (ver DEPLOYMENT.md) y cargar la URL.
+
 ## Bots
 
 Con pocos jugadores, quien espera **10 s** en la cola ranked sin rival humano juega contra un bot ([`shared/bots.ts`](../shared/bots.ts)):

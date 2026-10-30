@@ -110,7 +110,8 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 
 ### Ranked con bots (2026-10-30)
 - [x] Bots identificados con el distintivo BOT cuando no hay rival humano en 10 s; a tu nivel y con habilidad calibrada por simulación; cuentan para el ELO. Servidor (`Battle`, matchmaker, liquidación), migración `bot_battles` (aplicada) y app (rival encontrado, marcador, resultado e historial).
-- [ ] Probar contra Supabase real: el servidor de partidas sigue sin correr con la secret key ni estar alojado.
+- [x] Servidor probado contra Supabase real (partida completa contra bot con usuario temporal).
+- [x] **Ranked sin servidor** (decisión: no pagar hosting): la partida contra el bot corre en el teléfono y Supabase decide bot, guion, resultado y ELO (`start_bot_match` / `finish_bot_match`, migración `local_bot_matches`). Probado E2E contra Supabase real: el puntaje del bot recalculado coincide con el guion y el ELO con `shared/ranking.ts`. La práctica también es local.
 
 ## Pendiente (por fase)
 

@@ -67,6 +67,8 @@ En el `.env` de la app: `EXPO_PUBLIC_BATTLE_SERVER_URL=http://<IP-de-la-PC>:3001
 - Hosting con WebSockets y proceso persistente: Fly.io, Railway o Render. Health check: `GET /health`.
 - **Una sola instancia**: la cola y las partidas viven en memoria (no escalar a 2+ réplicas).
 
+> **Opcional.** Sin servidor, el ranked funciona contra bots en el teléfono (ver BATTLE_PROTOCOL.md → "Sin servidor de partidas"). El servidor sólo hace falta para partidas entre personas.
+
 #### Railway (recomendado)
 
 1. railway.app → New Project → Deploy from GitHub repo → `PolyGo`. Root directory: la raíz del repo (el build necesita `shared/`).

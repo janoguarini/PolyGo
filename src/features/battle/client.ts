@@ -58,4 +58,5 @@ export const ERROR_MESSAGES: Record<ErrorCode | 'connection', string> = {
   battle_over: 'La partida terminó.',
   invalid_payload: 'Algo salió mal con esa respuesta.',
   server_error: 'El servidor de partidas tuvo un problema. Probá de nuevo.',
+  match_rate_limited: 'Jugaste muchas partidas hoy. Volvé mañana para seguir subiendo.',
 };
