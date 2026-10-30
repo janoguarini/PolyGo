@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
 
 import { createDb, createUser, as } from './harness.mjs';
+import { lessonStars } from '../../src/features/learning/path.ts';
 
 let db;
 let alice;
@@ -256,6 +257,98 @@ test('el catálogo de logros es legible y estable', async () => {
     alice,
     'select id, metric, threshold from public.achievements order by position',
   );
-  assert.equal(rows.length, 16);
+  assert.equal(rows.length, 20);
   assert.equal(new Set(rows.map((r) => r.id)).size, rows.length);
+});
+
+// ---------- estrellas ----------
+const STAR_ACCURACIES = [1, 1, 0.95, 0.8, 0.79, 0.5, 0];
+
+/** Usuario con progreso en lecciones de prueba (una por precisión, más una despublicada). */
+async function starUser(email, accuracies = STAR_ACCURACIES) {
+  const id = await createUser(db, email);
+  await db.query('update public.profiles set username = $2 where id = $1', [
+    id,
+    email.split('@')[0],
+  ]);
+  const prefix = email.split('@')[0];
+  for (const [i, acc] of accuracies.entries()) {
+    await db.query(
+      `insert into public.lessons (id, unit_id, position, title_es, objective_es, is_published)
+       values ($1, 'p-u1', $2, 'L', 'o', true)`,
+      [`${prefix}-l${i}`, 100 + i + 100 * accuracies.length * prefix.length],
+    );
+    await db.query(
+      `insert into public.user_lesson_progress (user_id, lesson_id, times_completed, best_accuracy, last_accuracy)
+       values ($1, $2, 1, $3, $3)`,
+      [id, `${prefix}-l${i}`, acc],
+    );
+  }
+  return id;
+}
+
+test('las estrellas del SQL siguen la misma regla que la app (lessonStars)', async () => {
+  const dave = await starUser('dave@test.dev');
+  // Una lección despublicada y una sin completar no suman.
+  await db.query(
+    `insert into public.lessons (id, unit_id, position, title_es, objective_es, is_published)
+     values ('dave-hidden', 'p-u1', 999, 'L', 'o', false)`,
+  );
+  await db.query(
+    `insert into public.user_lesson_progress (user_id, lesson_id, times_completed, best_accuracy)
+     values ($1, 'dave-hidden', 1, 1), ($1, 'p-l1', 0, 0)`,
+    [dave],
+  );
+  const [{ s }] = await rpc(dave, 'select public.lesson_star_totals($1) as s', [dave]);
+  assert.deepEqual(s, {
+    stars_earned: STAR_ACCURACIES.reduce((n, a) => n + lessonStars(a), 0),
+    golden_lessons: STAR_ACCURACIES.filter((a) => lessonStars(a) === 3).length,
+  });
+  const [{ m }] = await rpc(dave, 'select public.achievement_metrics($1) as m', [dave]);
+  assert.equal(m.stars_earned, s.stars_earned);
+});
+
+test('juntar estrellas desbloquea los logros de estrellas', async () => {
+  // 10 lecciones doradas = 30 estrellas.
+  const erin = await starUser('erin@test.dev', Array(10).fill(1));
+  // Como en submit_learning_session (definer): el cliente no puede llamarla directo.
+  const {
+    rows: [{ ids }],
+  } = await db.query('select public.evaluate_achievements($1) as ids', [erin]);
+  assert.ok(ids.includes('stars_30'));
+  assert.ok(!ids.includes('stars_120'));
+  const mine = await rpc(erin, `select * from public.get_my_achievements() where id = 'stars_120'`);
+  assert.equal(mine[0].progress, 30);
+});
+
+test('el perfil público y la clasificación muestran estrellas sólo de perfiles públicos', async () => {
+  const frank = await starUser('frank@test.dev', [1, 0.8]);
+  const [{ p }] = await rpc(bob, 'select public.get_public_profile($1) as p', [frank]);
+  assert.equal(p.learning.stars_earned, 5);
+  assert.equal(p.learning.golden_lessons, 1);
+
+  // carol quedó privada en un test anterior; bob se ve a sí mismo aunque fuera privado.
+  await db.query(
+    `update public.user_settings set profile_visibility = 'private' where user_id = $1`,
+    [bob],
+  );
+  const rows = await rpc(
+    bob,
+    'select * from public.get_public_stars($1::uuid[]) order by stars_earned desc',
+    [[frank, carol, bob]],
+  );
+  assert.deepEqual(
+    rows.map((r) => [r.user_id, r.stars_earned]),
+    [
+      [frank, 5],
+      [bob, 0],
+    ],
+  );
+
+  await as(db, 'anon', null, async () => {
+    await assert.rejects(
+      db.query('select * from public.get_public_stars($1::uuid[])', [[frank]]),
+      /permission denied/,
+    );
+  });
 });

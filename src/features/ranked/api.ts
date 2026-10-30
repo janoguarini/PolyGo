@@ -47,3 +47,21 @@ export function useLeaderboard(languageCode: string | undefined) {
     enabled: Boolean(languageCode),
   });
 }
+
+/** Estrellas de los jugadores con perfil público (y las propias); el resto no aparece. */
+export async function fetchPublicStars(userIds: string[]): Promise<Record<string, number>> {
+  if (userIds.length === 0) return {};
+  const { data, error } = await requireSupabase().rpc('get_public_stars', {
+    p_user_ids: userIds,
+  });
+  if (error) throw error;
+  return Object.fromEntries(data.map((r) => [r.user_id, r.stars_earned]));
+}
+
+export function useLeaderboardStars(userIds: string[] | undefined) {
+  return useQuery({
+    queryKey: ['leaderboard', 'stars', userIds],
+    queryFn: () => fetchPublicStars(userIds!),
+    enabled: Boolean(userIds?.length),
+  });
+}

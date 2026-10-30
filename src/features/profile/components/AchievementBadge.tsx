@@ -3,6 +3,7 @@ import {
   BookOpen,
   Brain,
   CalendarCheck,
+  Crown,
   Eye,
   Flame,
   Footprints,
@@ -10,8 +11,11 @@ import {
   GraduationCap,
   Library,
   Lock,
+  Medal,
+  Orbit,
   Shield,
   Sparkles,
+  Star,
   Swords,
   Target,
   TrendingUp,
@@ -44,6 +48,10 @@ const ICONS: Record<string, LucideIcon> = {
   trophy: Trophy,
   'trending-up': TrendingUp,
   gem: Gem,
+  crown: Crown,
+  star: Star,
+  medal: Medal,
+  orbit: Orbit,
 };
 
 export function AchievementIcon({

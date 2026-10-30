@@ -1,5 +1,5 @@
 import { router } from 'expo-router';
-import { CalendarDays, Dumbbell, Search, Trophy } from 'lucide-react-native';
+import { CalendarDays, Dumbbell, Search, Star, Trophy } from 'lucide-react-native';
 import { Pressable, StyleSheet, View } from 'react-native';
 
 import {
@@ -17,7 +17,7 @@ import {
 import { useAuth } from '@/features/auth/AuthProvider';
 import { battleServerConfigured } from '@/features/battle/client';
 import { useActiveSeason, useMyProfile } from '@/features/profile/hooks';
-import { useLeaderboard } from '@/features/ranked/api';
+import { useLeaderboard, useLeaderboardStars } from '@/features/ranked/api';
 import { RankCard } from '@/features/ranked/RankCard';
 
 const dateFormat = new Intl.DateTimeFormat('es', { day: 'numeric', month: 'short' });
@@ -27,6 +27,7 @@ export default function RankedScreen() {
   const me = useMyProfile();
   const season = useActiveSeason();
   const leaderboard = useLeaderboard(me.data?.profile.target_language);
+  const stars = useLeaderboardStars(leaderboard.data?.map((e) => e.userId));
   // Sin URL del servidor de partidas el botón no puede quedar activo sin hacer nada.
   const battleServerReady = battleServerConfigured;
 
@@ -100,6 +101,7 @@ export default function RankedScreen() {
         <Card style={styles.list}>
           {leaderboard.data.map((entry, index) => {
             const isMe = entry.userId === session?.user.id;
+            const entryStars = stars.data?.[entry.userId];
             return (
               <Pressable
                 key={entry.userId}
@@ -109,7 +111,7 @@ export default function RankedScreen() {
                   pressed && styles.pressed,
                 ]}
                 accessibilityRole="button"
-                accessibilityLabel={`Puesto ${index + 1}, ${entry.username}, ${entry.rating} ELO`}
+                accessibilityLabel={`Puesto ${index + 1}, ${entry.username}, ${entry.rating} ELO${entryStars !== undefined ? `, ${entryStars} estrellas` : ''}`}
                 accessibilityHint="Abre el perfil del jugador"
                 onPress={() =>
                   isMe
@@ -129,6 +131,14 @@ export default function RankedScreen() {
                   {entry.username}
                   {isMe ? ' (vos)' : ''}
                 </Text>
+                {entryStars !== undefined ? (
+                  <View style={styles.stars}>
+                    <Star color={colors.gold} fill={colors.gold} size={14} />
+                    <Text variant="caption" color="gold">
+                      {entryStars}
+                    </Text>
+                  </View>
+                ) : null}
                 <RankEmblemForRating rating={entry.rating} size={26} />
                 <Text variant="bodyStrong" color="text">
                   {entry.rating}
@@ -170,4 +180,5 @@ const styles = StyleSheet.create({
   pressed: { opacity: 0.75 },
   position: { width: 24, textAlign: 'center' },
   name: { flex: 1 },
+  stars: { flexDirection: 'row', alignItems: 'center', gap: spacing.xxs },
 });

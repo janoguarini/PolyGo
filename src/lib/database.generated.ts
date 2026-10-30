@@ -830,8 +830,13 @@ export type Database = {
         }[];
       };
       get_public_profile: { Args: { p_user_id: string }; Returns: Json };
+      get_public_stars: {
+        Args: { p_user_ids: string[] };
+        Returns: { stars_earned: number; user_id: string }[];
+      };
       is_lesson_unlocked: { Args: { p_lesson_id: string; p_user_id: string }; Returns: boolean };
       is_username_available: { Args: { p_username: string }; Returns: boolean };
+      lesson_star_totals: { Args: { p_user_id: string }; Returns: Json };
       parse_learning_attempts: {
         Args: { p_attempts: Json };
         Returns: {

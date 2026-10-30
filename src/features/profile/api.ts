@@ -216,7 +216,13 @@ export interface PublicProfile {
     peak_rating: number;
     best_win_streak: number;
   } | null;
-  learning?: { lessons_completed: number; words_mastered: number; best_streak_days: number };
+  learning?: {
+    lessons_completed: number;
+    words_mastered: number;
+    best_streak_days: number;
+    stars_earned: number;
+    golden_lessons: number;
+  };
   achievements?: {
     id: string;
     title: string;

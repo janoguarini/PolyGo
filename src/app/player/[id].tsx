@@ -1,5 +1,5 @@
 import { router, useLocalSearchParams } from 'expo-router';
-import { Lock, UserX } from 'lucide-react-native';
+import { Lock, Star, UserX } from 'lucide-react-native';
 import { StyleSheet, View } from 'react-native';
 
 import { getRank, isInPlacement } from '@shared/ranking';
@@ -101,6 +101,12 @@ export default function PlayerScreen() {
           ) : null}
           {p.learning ? (
             <View style={styles.grid}>
+              <StatTile
+                label="Estrellas"
+                value={String(p.learning.stars_earned ?? 0)}
+                icon={<Star color={colors.gold} fill={colors.gold} size={18} />}
+                hint={`${p.learning.golden_lessons ?? 0} doradas`}
+              />
               <StatTile label="Lecciones" value={String(p.learning.lessons_completed)} />
               <StatTile
                 label="Dominadas"

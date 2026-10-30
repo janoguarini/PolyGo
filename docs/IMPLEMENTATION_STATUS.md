@@ -96,6 +96,11 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 - [x] Nueva migración diferencial (`npm run content:dump` / `content:diff`): 35 ejercicios, 1 palabra y 25 vínculos corregidos con `UPDATE`. Aplicada en Supabase; checksum md5 de palabras, ejercicios y vínculos (1845) idéntico al local.
 - [x] Test de base: lo que dejan las migraciones es idéntico a `content/`, vínculos incluidos.
 
+### Logros por estrellas (2026-10-30)
+- [x] Métrica `stars_earned` (misma regla que la app; un test compara el SQL con `lessonStars`) y 4 logros nuevos: Toque de oro (25 lecciones doradas), Primeras estrellas (30 ★), Constelación (120 ★), Galaxia (300 ★). Catálogo de 20 logros.
+- [x] Estrellas y lecciones doradas en el perfil público (respeta la visibilidad) y ★ en la clasificación de Ranked sólo para perfiles públicos (`get_public_stars`).
+- [x] Aplicado en Supabase. El cambio de la restricción de métricas (`DROP CONSTRAINT`) se corrió a mano en el SQL Editor y se registró en el historial de migraciones.
+
 ## Pendiente (por fase)
 
 - **Fase 2 (verificación manual):** recorrer una lección y un repaso en el teléfono.
