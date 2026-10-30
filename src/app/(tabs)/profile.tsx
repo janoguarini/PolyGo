@@ -27,6 +27,7 @@ import { LearningStats } from '@/features/learning/components/LearningStats';
 import { AchievementsSummary } from '@/features/profile/components/AchievementsSummary';
 import { CompetitiveHistory } from '@/features/profile/components/CompetitiveHistory';
 import { useMyProfile, useUpdateSettings } from '@/features/profile/hooks';
+import { ReminderSettings } from '@/features/reminders/ReminderSettings';
 import type { ProfileVisibility } from '@/lib/database.types';
 import { env } from '@/lib/env';
 import { toUserMessage } from '@/lib/errors';
@@ -125,6 +126,7 @@ export default function ProfileScreen() {
         <Text variant="heading">Aprendizaje</Text>
       </View>
       <LearningStats level={profile.start_level} />
+      <ReminderSettings />
 
       <View style={styles.sectionHeader}>
         <Shield color={colors.success} size={20} />

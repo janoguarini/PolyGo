@@ -9,12 +9,14 @@ import { SessionResults } from '@/features/learning/components/SessionResults';
 import { useCurriculum, useLessonContent, useSubmitSession } from '@/features/learning/hooks';
 import { sessionStats, type PlayerState } from '@/features/learning/player';
 import { uuid } from '@/features/learning/random';
+import { useCelebrationGate } from '@/features/learning/useCelebrationGate';
 
 export default function LessonScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const content = useLessonContent(id);
   const curriculum = useCurriculum();
   const submit = useSubmitSession();
+  const celebration = useCelebrationGate(submit);
   // Clave de idempotencia: reintentar el guardado nunca duplica la sesión.
   const [sessionId] = useState(uuid);
   const [startedAt] = useState(() => new Date());
@@ -75,6 +77,8 @@ export default function LessonScreen() {
     );
   }
 
+  if (celebration.screen) return celebration.screen;
+
   const next = curriculum.data?.current;
   const hasNext = Boolean(next && next.id !== id);
 
@@ -90,12 +94,12 @@ export default function LessonScreen() {
       achievements={submit.data?.achievements_unlocked ?? []}
       onRetrySave={() => save(finished.attempts)}
       primaryLabel={hasNext ? 'Siguiente lección' : 'Volver al camino'}
-      onPrimary={() =>
+      onPrimary={celebration.guard(() =>
         hasNext && next
           ? router.replace({ pathname: '/lesson/[id]', params: { id: next.id } })
-          : router.dismissTo('/')
-      }
-      onExit={() => router.back()}
+          : router.dismissTo('/'),
+      )}
+      onExit={celebration.guard(() => router.back())}
     />
   );
 }

@@ -30,10 +30,7 @@
         "android.permission.READ_EXTERNAL_STORAGE",
         "android.permission.WRITE_EXTERNAL_STORAGE"
       ],
-      "permissions": [
-        "android.permission.RECORD_AUDIO",
-        "android.permission.MODIFY_AUDIO_SETTINGS"
-      ]
+      "permissions": ["android.permission.RECORD_AUDIO", "android.permission.MODIFY_AUDIO_SETTINGS"]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -60,10 +57,7 @@
               "displayName": "Palabra",
               "description": "Palabra del día y tus palabras para repasar, con pronunciación y ejemplo.",
               "ios": {
-                "supportedFamilies": [
-                  "systemSmall",
-                  "systemMedium"
-                ],
+                "supportedFamilies": ["systemSmall", "systemMedium"],
                 "initialLayout": "./src/widgets/PolygoWord.ios.tsx"
               },
               "android": {
@@ -79,10 +73,7 @@
               "displayName": "Pregunta rápida",
               "description": "Respondé preguntas de vocabulario desde la pantalla de inicio.",
               "ios": {
-                "supportedFamilies": [
-                  "systemMedium",
-                  "systemLarge"
-                ],
+                "supportedFamilies": ["systemMedium", "systemLarge"],
                 "initialLayout": "./src/widgets/PolygoQuiz.ios.tsx"
               },
               "android": {
@@ -103,7 +94,16 @@
           "microphonePermission": false
         }
       ],
-      "expo-asset"
+      "expo-asset",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/android-icon-monochrome.png",
+          "color": "#7C3AED",
+          "defaultChannel": "daily-reminder",
+          "enableRemoteNotifications": false
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
@@ -123,9 +123,7 @@
                   "targetName": "ExpoWidgetsTarget",
                   "bundleIdentifier": "com.polygoidioma.app.ExpoWidgetsTarget",
                   "entitlements": {
-                    "com.apple.security.application-groups": [
-                      "group.com.polygoidioma.app"
-                    ]
+                    "com.apple.security.application-groups": ["group.com.polygoidioma.app"]
                   }
                 }
               ]

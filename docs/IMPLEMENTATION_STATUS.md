@@ -1,6 +1,6 @@
 # Estado de implementación
 
-Última actualización: 2026-10-30 (Fase 6 + contenido A1 completo)
+Última actualización: 2026-10-30 (racha visible y recordatorio diario)
 
 ## Fase actual
 
@@ -76,6 +76,12 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 - [x] Advisors de Supabase y `npm audit` revisados (detalle en LAUNCH_CHECKLIST.md).
 - [x] `react-native` 0.88.1 (expo-doctor 20/20).
 - [x] Contenido A1 unidades 4–12 (45 lecciones, 180 palabras, 338 ejercicios) aplicado en Supabase; checksum md5 de palabras, lecciones, ejercicios y vínculos idéntico al local. Validación nueva contra traducciones ambiguas (corrigió *not*, *don't*, *doesn't*, *at* y reemplazó *café* por *museum*).
+
+### Racha y recordatorio diario (2026-10-30)
+- [x] Festejo al terminar la primera sesión del día (racha nueva o +1, semana con los días de la racha) y al cumplir el objetivo diario; aparece entre los resultados y lo que sigue, en lecciones y repasos guardados. Se calcula comparando el resumen de antes y después de la sesión (sin cambios en la base).
+- [x] Aviso "Tu racha está en riesgo" en Aprender cuando hay racha y hoy no practicaste; lleva a la lección actual.
+- [x] Recordatorio diario con `expo-notifications` (sólo local, `enableRemoteNotifications: false`): interruptor y horario en Perfil, oferta para activarlo desde el festejo. Se programan los próximos 7 días con fecha fija y se reprograman al abrir la app y al terminar cada sesión: si hoy ya practicaste no avisa hoy, y el texto menciona la racha cuando está en riesgo. Se cancelan al cerrar sesión. Agrega los permisos Android `POST_NOTIFICATIONS` y `RECEIVE_BOOT_COMPLETED`.
+- [ ] Probar en dispositivo (requiere development build nueva por el módulo nativo).
 
 ## Pendiente (por fase)
 

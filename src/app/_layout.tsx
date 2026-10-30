@@ -10,6 +10,7 @@ import { AuthProvider, useAuth } from '@/features/auth/AuthProvider';
 import { ConfigMissing } from '@/features/auth/ConfigMissing';
 import { useMyProfile } from '@/features/profile/hooks';
 import { envProblems } from '@/lib/env';
+import { configureNotifications } from '@/features/reminders/notifications';
 import { queryClient } from '@/lib/queryClient';
 import { configureAudio, preloadSounds } from '@/lib/sounds';
 
@@ -17,6 +18,7 @@ export default function RootLayout() {
   useEffect(() => {
     void configureAudio();
     preloadSounds();
+    configureNotifications();
   }, []);
   return (
     <SafeAreaProvider>

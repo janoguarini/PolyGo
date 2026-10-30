@@ -13,6 +13,7 @@ import { useMyWords, useSubmitSession, useWordPool } from '@/features/learning/h
 import { sessionStats, type PlayerState } from '@/features/learning/player';
 import { shuffle, uuid } from '@/features/learning/random';
 import { buildReviewExercises } from '@/features/learning/review';
+import { useCelebrationGate } from '@/features/learning/useCelebrationGate';
 
 const REVIEW_SIZE = 10;
 
@@ -42,6 +43,7 @@ export default function ReviewScreen() {
   const myWords = useMyWords();
   const pool = useWordPool();
   const submit = useSubmitSession();
+  const celebration = useCelebrationGate(submit, saves);
   const [sessionId] = useState(uuid);
   const [startedAt] = useState(() => new Date());
   // La sesión se fija al empezar: refrescar los datos al guardar no debe cambiar los ejercicios.
@@ -151,6 +153,8 @@ export default function ReviewScreen() {
     );
   }
 
+  if (celebration.screen) return celebration.screen;
+
   return (
     <SessionResults
       title={TITLES[mode]}
@@ -168,8 +172,8 @@ export default function ReviewScreen() {
       }
       onRetrySave={() => save(finished.attempts)}
       primaryLabel="Listo"
-      onPrimary={() => router.back()}
-      onExit={() => router.back()}
+      onPrimary={celebration.guard(() => router.back())}
+      onExit={celebration.guard(() => router.back())}
     />
   );
 }

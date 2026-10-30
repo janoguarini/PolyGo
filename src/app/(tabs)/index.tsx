@@ -1,4 +1,5 @@
-import { ArrowDown, ArrowUp, Flame, Target } from 'lucide-react-native';
+import { router } from 'expo-router';
+import { ArrowDown, ArrowUp, ChevronRight, Flame, Target } from 'lucide-react-native';
 import { useRef, useState } from 'react';
 import {
   Pressable,
@@ -25,6 +26,7 @@ import {
 } from '@/design-system';
 import { LessonPath } from '@/features/learning/components/LessonPath';
 import { useCurriculum, useLearningSummary } from '@/features/learning/hooks';
+import { daysLabel, streakAtRisk } from '@/features/learning/streak';
 import { useMyProfile } from '@/features/profile/hooks';
 
 /** Fracción del alto visible donde queda la lección actual al centrarla. */
@@ -80,6 +82,8 @@ export default function HomeScreen() {
   const todayMinutes = Math.floor((summary.data?.today_seconds ?? 0) / 60);
   const goalMet = todayMinutes >= profile.daily_goal_minutes;
   const streak = summary.data?.streak_days ?? 0;
+  const atRisk = summary.data ? streakAtRisk(summary.data) : false;
+  const currentLesson = curriculum.data.current;
 
   const header = (
     <View style={styles.header}>
@@ -118,6 +122,27 @@ export default function HomeScreen() {
           {completed}/{total} · {total ? Math.round((completed / total) * 100) : 0}%
         </Text>
       </View>
+      {atRisk ? (
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={`Tu racha de ${daysLabel(streak)} está en riesgo. Hacé una lección hoy para mantenerla.`}
+          disabled={!currentLesson}
+          onPress={() =>
+            currentLesson &&
+            router.push({ pathname: '/lesson/[id]', params: { id: currentLesson.id } })
+          }
+          style={({ pressed }) => [styles.risk, pressed && styles.riskPressed]}
+        >
+          <Flame color={colors.streak} size={22} />
+          <View style={styles.flex}>
+            <Text variant="bodyStrong" color="streak">
+              Tu racha de {daysLabel(streak)} está en riesgo
+            </Text>
+            <Text variant="caption">Hacé una lección hoy para no perderla.</Text>
+          </View>
+          {currentLesson ? <ChevronRight color={colors.streak} size={20} /> : null}
+        </Pressable>
+      ) : null}
     </View>
   );
 
@@ -192,6 +217,17 @@ const styles = StyleSheet.create({
   headerRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   flex: { flex: 1 },
   chip: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
+  risk: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.md,
+    padding: spacing.md,
+    borderRadius: radii.md,
+    borderWidth: 1,
+    borderColor: colors.streak,
+    backgroundColor: colors.surfaceRaised,
+  },
+  riskPressed: { opacity: 0.85 },
   content: { paddingBottom: spacing.huge },
   fabWrap: { position: 'absolute', bottom: spacing.lg, left: 0, right: 0, alignItems: 'center' },
   fab: {

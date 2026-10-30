@@ -69,3 +69,6 @@ const webStorage: KeyValueStorage = {
 
 export const sessionStorage: KeyValueStorage =
   Platform.OS === 'web' ? webStorage : createChunkedStorage(SecureStore);
+
+/** Preferencias chicas del dispositivo (p. ej. el recordatorio diario). */
+export const deviceStorage: KeyValueStorage = sessionStorage;
