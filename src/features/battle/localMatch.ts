@@ -59,6 +59,54 @@ export interface LocalMatchApi {
   ): Promise<FinishedBotMatch>;
 }
 
+/** Partida contra una persona creada por la base (get_human_match). Horarios en ms del servidor. */
+export interface HumanMatchSetup {
+  battle_id: string;
+  your_slot: 1 | 2;
+  server_now: number;
+  starts_at: number;
+  ends_at: number;
+  questions: RushQuestion[];
+  players: {
+    slot: 1 | 2;
+    username: string;
+    avatar_id: string;
+    avatar_path: string | null;
+    rating: number;
+    games_played: number;
+  }[];
+}
+
+/** Resultado de finish_human_match / human_match_result. */
+export type HumanMatchResult =
+  | { pending: true }
+  | {
+      pending: false;
+      battle_id: string;
+      status: 'completed' | 'forfeited';
+      achievements: Record<string, { id: string; title: string; icon: string }[]>;
+      players: {
+        slot: 1 | 2;
+        username: string;
+        score: number;
+        correct: number;
+        answered: number;
+        result: 'win' | 'loss' | 'draw';
+        forfeited: boolean;
+        rating_before: number | null;
+        rating_after: number | null;
+      }[];
+    };
+
+export interface HumanMatchApi {
+  finish(
+    battleId: string,
+    line: { score: number; correct: number; answered: number },
+    forfeit: boolean,
+  ): Promise<HumanMatchResult>;
+  result(battleId: string): Promise<HumanMatchResult>;
+}
+
 export interface LocalPlayer {
   username: string;
   avatarId: string;
@@ -81,6 +129,14 @@ export interface LocalMatchDeps {
   feedbackMs?: number;
   /** Reintentos al guardar el resultado (red inestable). */
   finishAttempts?: number;
+  /** Partidas contra personas (Supabase). */
+  human?: HumanMatchApi;
+  /** Para elegir los logros propios del resultado de una partida contra una persona. */
+  userId?: string;
+  /** Cada vez que cambia el puntaje propio (para mostrárselo al rival en vivo). */
+  onLineChange?: (line: { score: number; correct: number; answered: number }) => void;
+  /** Cada cuánto se consulta si el rival ya informó su puntaje. */
+  resultPollMs?: number;
 }
 
 interface Line {
@@ -112,6 +168,9 @@ export class LocalMatch {
   private readyDeadline: number | null = null;
   private script: BotMoveScript[] = [];
   private finished = false;
+  private opponentKind: 'bot' | 'human' = 'bot';
+  private yourSlot: 1 | 2 = 1;
+  private questions: RushQuestion[];
 
   constructor(private readonly deps: LocalMatchDeps) {
     this.dispatch = deps.dispatch;
@@ -119,6 +178,7 @@ export class LocalMatch {
     this.setTimer = deps.setTimer ?? ((fn, ms) => setTimeout(fn, ms));
     this.clearTimer = deps.clearTimer ?? ((h) => clearTimeout(h as ReturnType<typeof setTimeout>));
     this.random = deps.random ?? Math.random;
+    this.questions = deps.questions;
   }
 
   /** Ranked: pide el bot a la base y lo anuncia. Práctica: arranca la cuenta atrás. */
@@ -159,6 +219,42 @@ export class LocalMatch {
     this.schedule(WORD_RUSH.readyTimeoutMs, () => this.ready());
   }
 
+  /**
+   * Partida contra una persona: la base ya la creó con las preguntas y la hora de inicio (igual
+   * para los dos). Sin confirmación: arranca la cuenta atrás hasta esa hora.
+   */
+  beginHuman(setup: HumanMatchSetup): void {
+    this.mode = 'ranked';
+    this.opponentKind = 'human';
+    this.battleId = setup.battle_id;
+    this.yourSlot = setup.your_slot;
+    this.questions = setup.questions;
+    this.players = setup.players.map((p) => ({
+      slot: p.slot,
+      username: p.username,
+      avatarId: p.avatar_id,
+      avatarPath: p.avatar_path,
+      isBot: false,
+      rating: p.rating,
+      gamesPlayed: p.games_played,
+    }));
+    // Horarios del servidor pasados al reloj local.
+    const offset = setup.server_now - this.now();
+    this.status = 'ready';
+    this.readyDeadline = null;
+    this.startsAt = setup.starts_at - offset;
+    this.endsAt = setup.ends_at - offset;
+    this.emitSnapshot();
+    this.schedule(Math.max(0, this.startsAt - this.now()), () => this.play());
+  }
+
+  /** Puntaje del rival que llegó en vivo (no autoritativo: el resultado lo decide la base). */
+  opponentUpdate(line: { score: number; correct: number; answered: number }): void {
+    if (this.opponentKind !== 'human' || this.finished) return;
+    this.bot = { score: line.score, correct: line.correct, answered: line.answered };
+    this.emitScores();
+  }
+
   /** El jugador confirmó: el bot confirma con una demora de persona y arranca la cuenta atrás. */
   ready(): void {
     if (this.status !== 'matched' || this.finished) return;
@@ -170,7 +266,7 @@ export class LocalMatch {
 
   answer(option: number): void {
     if (this.status !== 'in_progress' || this.finished) return;
-    const question = this.deps.questions[this.questionIndex];
+    const question = this.questions[this.questionIndex];
     if (!question) return;
     this.dispatch({ type: 'answer_sent' });
     const correct = option === question.correctOption;
@@ -192,6 +288,7 @@ export class LocalMatch {
       },
     });
     this.deps.onAnswer?.(correct);
+    this.deps.onLineChange?.(this.me);
     this.schedule(this.deps.feedbackMs ?? 350, () => this.dispatch({ type: 'feedback_done' }));
     this.emitScores();
     this.questionIndex += 1;
@@ -203,7 +300,12 @@ export class LocalMatch {
     if (this.finished) return;
     this.finished = true;
     this.clearAll();
-    if (this.mode === 'ranked' && this.battleId !== 'local') {
+    if (this.mode === 'ranked' && this.opponentKind === 'human' && this.deps.human) {
+      void this.deps.human.finish(this.battleId, this.me, true).then(
+        () => this.deps.onRankedFinished?.(),
+        () => {}, // Si falla, la base lo da por abandono cuando vence el plazo.
+      );
+    } else if (this.mode === 'ranked' && this.battleId !== 'local') {
       void this.deps.api.finish(this.battleId, this.me, true).then(
         () => this.deps.onRankedFinished?.(),
         () => {}, // Si falla, la base la cierra como abandono al empezar la próxima.
@@ -233,7 +335,9 @@ export class LocalMatch {
     this.questionIndex = 0;
     this.questionSentAt = this.now();
     this.emitSnapshot();
-    this.schedule(WORD_RUSH.durationMs, () => void this.finish());
+    const endsIn = this.endsAt === null ? WORD_RUSH.durationMs : this.endsAt - this.now();
+    this.schedule(Math.max(0, endsIn), () => void this.finish());
+    if (this.opponentKind === 'human') return;
     // El bot reproduce su guion: cada jugada en su momento.
     let at = 0;
     for (const move of this.script) {
@@ -251,7 +355,7 @@ export class LocalMatch {
   }
 
   private sendQuestion(): void {
-    const question = this.deps.questions[this.questionIndex];
+    const question = this.questions[this.questionIndex];
     this.questionSentAt = this.now();
     if (question) {
       this.dispatch({ type: 'question', question: toQuestionView(question, this.questionSentAt) });
@@ -266,6 +370,10 @@ export class LocalMatch {
 
     if (this.mode === 'practice') {
       this.dispatch({ type: 'finished', result: this.practiceResult() });
+      return;
+    }
+    if (this.opponentKind === 'human') {
+      await this.finishHuman();
       return;
     }
 
@@ -284,6 +392,58 @@ export class LocalMatch {
         await new Promise((resolve) => this.setTimer(() => resolve(null), 1_000 * attempt));
       }
     }
+  }
+
+  /** Informa el puntaje y espera el del rival (o el vencimiento del plazo, que decide la base). */
+  private async finishHuman(): Promise<void> {
+    const api = this.deps.human!;
+    const pollMs = this.deps.resultPollMs ?? 2_000;
+    const wait = () => new Promise((resolve) => this.setTimer(() => resolve(null), pollMs));
+    let submitted = false;
+    let failures = 0;
+    let result: HumanMatchResult | null = null;
+    // Hasta ~50 s después del final: la base cierra la partida a los 30 s de gracia.
+    for (let i = 0; i < 25; i++) {
+      try {
+        result = submitted
+          ? await api.result(this.battleId)
+          : await api.finish(this.battleId, this.me, false);
+        submitted = true;
+        failures = 0;
+        if (!result.pending) break;
+      } catch {
+        if (++failures >= (this.deps.finishAttempts ?? 3)) break;
+      }
+      await wait();
+    }
+    if (!result || result.pending) {
+      this.dispatch({ type: 'cancelled', reason: 'settlement_failed' });
+      return;
+    }
+    this.dispatch({ type: 'finished', result: this.humanResult(result) });
+    this.deps.onRankedFinished?.();
+  }
+
+  private humanResult(saved: Extract<HumanMatchResult, { pending: false }>): BattleFinish {
+    return {
+      battleId: saved.battle_id,
+      mode: 'ranked',
+      status: saved.status,
+      yourSlot: this.yourSlot,
+      players: saved.players.map((p) => ({
+        slot: p.slot,
+        username: p.username,
+        isBot: false,
+        score: p.score,
+        correct: p.correct,
+        answered: p.answered,
+        outcome: p.result,
+        forfeited: p.forfeited,
+        ratingBefore: p.rating_before,
+        ratingAfter: p.rating_after,
+      })),
+      achievementsUnlocked: (this.deps.userId && saved.achievements[this.deps.userId]) || [],
+    };
   }
 
   private rankedResult(saved: FinishedBotMatch): BattleFinish {
@@ -347,9 +507,11 @@ export class LocalMatch {
   }
 
   private scores(): ScoreLine[] {
-    const lines: ScoreLine[] = [{ slot: 1, ...this.me, connected: true }];
-    if (this.mode === 'ranked') lines.push({ slot: 2, ...this.bot, connected: true });
-    return lines;
+    const lines: ScoreLine[] = [{ slot: this.yourSlot, ...this.me, connected: true }];
+    if (this.mode === 'ranked') {
+      lines.push({ slot: this.yourSlot === 1 ? 2 : 1, ...this.bot, connected: true });
+    }
+    return lines.sort((a, b) => a.slot - b.slot);
   }
 
   private emitScores(): void {
@@ -357,14 +519,13 @@ export class LocalMatch {
   }
 
   private emitSnapshot(): void {
-    const question =
-      this.status === 'in_progress' ? this.deps.questions[this.questionIndex] : undefined;
+    const question = this.status === 'in_progress' ? this.questions[this.questionIndex] : undefined;
     const now = this.now();
     const snapshot: BattleSnapshot = {
       battleId: this.battleId,
       mode: this.mode,
       status: this.status,
-      yourSlot: 1,
+      yourSlot: this.yourSlot,
       players: this.players,
       serverNow: now,
       readyDeadline: this.readyDeadline,

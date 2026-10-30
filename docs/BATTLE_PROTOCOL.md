@@ -89,9 +89,23 @@ Las partidas de práctica no se guardan. Las ranked:
 
 Cola en memoria por idioma (la versión de protocolo ya la filtra el handshake). Ventana inicial ±100 ELO, +50 cada 5 s hasta ±400; se empareja sólo si la diferencia entra en la ventana de **ambos**, priorizando a quien más espera y al rival más cercano. Un humano siempre tiene prioridad sobre un bot.
 
-## Sin servidor de partidas (modo actual)
+## Sin servidor de partidas (modo actual: MVP con Supabase)
 
-Si la app no tiene `EXPO_PUBLIC_BATTLE_SERVER_URL`, el ranked se juega **contra bots en el teléfono**, sin servidor propio ni costo extra:
+Si la app no tiene `EXPO_PUBLIC_BATTLE_SERVER_URL`, el ranked funciona sin servidor propio ni costo extra. **Antes del lanzamiento se pasa al servidor de `server/` (Railway)**, que valida cada respuesta.
+
+### Entre personas
+
+1. **Cola:** la app llama `join_human_queue()` cada 1,5 s. La base empareja con otra persona activa del mismo idioma si la diferencia de ELO entra en la ventana de **ambos** (±100, +50 cada 5 s hasta ±400). Quien deja de consultar sale de la cola sola (`seen_at`).
+2. **Partida:** al emparejar, la base genera las 40 preguntas (`rush_questions`, mismas reglas que `shared/wordRush.ts`) y fija el inicio 5 s después. `get_human_match()` se las da a los dos con la hora del servidor para sincronizar la cuenta atrás.
+3. **En vivo:** cada teléfono publica su puntaje por **Supabase Realtime** (broadcast en `battle:<id>`) después de cada respuesta; sólo para mostrar.
+4. **Resultado:** `finish_human_match()` (no antes de 70 s, máximo 150 por acierto, ≤ 40 respuestas). Cuando están los dos se liquida a ambos (ELO de `shared/ranking.ts` con anti-farming por rival repetido). Quien no informa a los 75 s + 30 s de gracia pierde por abandono; `human_match_result()` lo cierra cuando el otro consulta.
+5. **Sin nadie en 10 s:** `leave_human_queue()` (si justo lo emparejaron, devuelve esa partida) y se juega contra un bot (abajo).
+
+Probado E2E contra Supabase real con dos usuarios temporales (emparejamiento, mismas preguntas, Realtime y liquidación).
+
+### Contra bots
+
+Sin rival humano, el ranked se juega **contra bots en el teléfono**:
 
 - `start_bot_match()` (Supabase) elige el bot a tu altura y genera **todas sus jugadas** (`battles.bot_script`): el teléfono sólo las reproduce, así que el resultado del bot no se puede tocar desde la app. Antes cierra como **abandono** cualquier partida tuya que haya quedado abierta (cerrar la app para no perder no sirve). Tope: 100 por día.
 - La partida corre en el teléfono (`src/features/battle/localMatch.ts`) con las mismas reglas y la misma pantalla.

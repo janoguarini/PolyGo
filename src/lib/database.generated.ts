@@ -872,6 +872,20 @@ export type Database = {
         Returns: undefined;
       };
       start_bot_match: { Args: never; Returns: Json };
+      join_human_queue: { Args: never; Returns: Json };
+      leave_human_queue: { Args: never; Returns: Json };
+      get_human_match: { Args: { p_battle_id: string }; Returns: Json };
+      human_match_result: { Args: { p_battle_id: string }; Returns: Json };
+      finish_human_match: {
+        Args: {
+          p_answered: number;
+          p_battle_id: string;
+          p_correct: number;
+          p_forfeit: boolean;
+          p_score: number;
+        };
+        Returns: Json;
+      };
       finish_bot_match: {
         Args: {
           p_answered: number;

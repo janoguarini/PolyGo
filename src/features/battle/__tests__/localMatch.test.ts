@@ -179,3 +179,136 @@ it('práctica: sin bot ni base, termina sola con el puntaje propio', async () =>
   expect(s.state().result?.players).toHaveLength(1);
   expect(s.state().result?.players[0]).toMatchObject({ answered: 1, correct: 0, outcome: null });
 });
+
+describe('contra una persona', () => {
+  function humanSetup() {
+    const clock = manualClock();
+    let state: BattleState = initialBattleState;
+    const dispatch = (action: BattleAction) => {
+      state = battleReducer(state, action);
+    };
+    const sent: unknown[] = [];
+    let pendingPolls = 2;
+    const human = {
+      finish: jest.fn(async () => ({ pending: true as const })),
+      result: jest.fn(async () =>
+        pendingPolls-- > 0
+          ? { pending: true as const }
+          : {
+              pending: false as const,
+              battle_id: 'h1',
+              status: 'completed' as const,
+              achievements: {
+                'user-b': [{ id: 'first_win', title: 'Campeón · Nivel 1', icon: 'trophy' }],
+              },
+              players: [
+                {
+                  slot: 1 as const,
+                  username: 'ana',
+                  score: 300,
+                  correct: 3,
+                  answered: 4,
+                  result: 'loss' as const,
+                  forfeited: false,
+                  rating_before: 1000,
+                  rating_after: 976,
+                },
+                {
+                  slot: 2 as const,
+                  username: 'beto',
+                  score: 500,
+                  correct: 5,
+                  answered: 5,
+                  result: 'win' as const,
+                  forfeited: false,
+                  rating_before: 1000,
+                  rating_after: 1024,
+                },
+              ],
+            },
+      ),
+    };
+    const match = new LocalMatch({
+      dispatch,
+      api: { start: jest.fn(), finish: jest.fn() },
+      human,
+      userId: 'user-b',
+      questions: [],
+      me: { username: 'beto', avatarId: 'flame', avatarPath: null },
+      now: clock.now,
+      setTimer: clock.setTimer,
+      clearTimer: clock.clearTimer,
+      onLineChange: (line) => sent.push(line),
+      resultPollMs: 1_000,
+    });
+    // El reloj del servidor va 5 s adelantado respecto del teléfono.
+    const serverNow = clock.now() + 5_000;
+    match.beginHuman({
+      battle_id: 'h1',
+      your_slot: 2,
+      server_now: serverNow,
+      starts_at: serverNow + 4_000,
+      ends_at: serverNow + 4_000 + WORD_RUSH.durationMs,
+      questions: QUESTIONS,
+      players: [
+        {
+          slot: 1,
+          username: 'ana',
+          avatar_id: 'bolt',
+          avatar_path: null,
+          rating: 1000,
+          games_played: 2,
+        },
+        {
+          slot: 2,
+          username: 'beto',
+          avatar_id: 'flame',
+          avatar_path: null,
+          rating: 1000,
+          games_played: 2,
+        },
+      ],
+    });
+    return { clock, match, state: () => state, sent, human };
+  }
+
+  it('arranca a la hora del servidor, muestra al rival en vivo y espera su resultado', async () => {
+    const s = humanSetup();
+    expect(s.state().phase).toBe('countdown');
+    expect(s.state().yourSlot).toBe(2);
+    expect(s.state().players.every((p) => !p.isBot)).toBe(true);
+
+    s.clock.advance(3_999);
+    expect(s.state().phase).toBe('countdown');
+    s.clock.advance(1);
+    expect(s.state().phase).toBe('playing');
+
+    s.match.answer(QUESTIONS[0]!.correctOption);
+    expect(s.sent).toHaveLength(1);
+    expect(s.state().scores.find((l) => l.slot === 2)?.answered).toBe(1);
+
+    s.match.opponentUpdate({ score: 250, correct: 2, answered: 3 });
+    expect(s.state().scores.find((l) => l.slot === 1)).toMatchObject({ score: 250, answered: 3 });
+
+    s.clock.advance(WORD_RUSH.durationMs);
+    for (let i = 0; i < 4; i++) {
+      await flush();
+      s.clock.advance(1_000);
+    }
+    await flush();
+    expect(s.human.finish).toHaveBeenCalledTimes(1);
+    expect(s.human.result).toHaveBeenCalledTimes(3);
+    expect(s.state().phase).toBe('finished');
+    expect(s.state().result?.yourSlot).toBe(2);
+    expect(s.state().result?.players[1]).toMatchObject({ outcome: 'win', ratingAfter: 1024 });
+    expect(s.state().result?.achievementsUnlocked.map((a) => a.id)).toEqual(['first_win']);
+  });
+
+  it('abandonar informa a la base como abandono', async () => {
+    const s = humanSetup();
+    s.clock.advance(4_000 + 10_000);
+    s.match.leave();
+    await flush();
+    expect(s.human.finish).toHaveBeenCalledWith('h1', { score: 0, correct: 0, answered: 0 }, true);
+  });
+});
