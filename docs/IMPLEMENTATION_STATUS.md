@@ -101,6 +101,13 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 - [x] Estrellas y lecciones doradas en el perfil público (respeta la visibilidad) y ★ en la clasificación de Ranked sólo para perfiles públicos (`get_public_stars`).
 - [x] Aplicado en Supabase. El cambio de la restricción de métricas (`DROP CONSTRAINT`) se corrió a mano en el SQL Editor y se registró en el historial de migraciones.
 
+### Logros por niveles, perfil nuevo y avatares (2026-10-30)
+- [x] 13 familias de logros con niveles (76 niveles) definidas en `shared/achievements.ts`; la migración del catálogo se genera con `scripts/build-achievements-sql.ts` y un test compara la base con ese archivo. Métricas nuevas: días con objetivo cumplido, repasos, respuestas rápidas (< 2 s). El rango máximo cuenta recién después de la colocación. Se conservaron los ids de los logros existentes.
+- [x] Perfil rediseñado (encabezado con avatar y rango, carrera, idiomas, estadísticas por período con `get_competitive_stats`, carrusel de logros) y pantalla de Ajustes (recordatorio, privacidad, mostrar país, cuenta). País (`profiles.region`) editable.
+- [x] Avatares: tres zorros (ids heredados `bolt` violeta predeterminado, `crown` amarillo, `flame` rojo) y foto propia de la galería (`expo-image-picker` + `expo-image-manipulator`, 512 px JPEG) en el bucket público `avatars`, un archivo por usuario en su carpeta. La foto se ve en perfil, perfil público, clasificación y batallas. Borrar la cuenta borra la foto.
+- [x] El `DROP CONSTRAINT` de métricas se corrió a mano en el SQL Editor y no figura en el historial remoto de migraciones (registrarlo a mano fue bloqueado).
+- [ ] Probar en dispositivo (requiere development build nueva: image picker y manipulator son módulos nativos). Moderación de fotos: ver LAUNCH_CHECKLIST.md.
+
 ## Pendiente (por fase)
 
 - **Fase 2 (verificación manual):** recorrer una lección y un repaso en el teléfono.

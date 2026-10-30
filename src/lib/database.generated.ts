@@ -444,6 +444,7 @@ export type Database = {
       profiles: {
         Row: {
           avatar_id: string;
+          avatar_path: string | null;
           created_at: string;
           daily_goal_minutes: number;
           display_name: string | null;
@@ -458,6 +459,7 @@ export type Database = {
         };
         Insert: {
           avatar_id?: string;
+          avatar_path?: string | null;
           created_at?: string;
           daily_goal_minutes?: number;
           display_name?: string | null;
@@ -472,6 +474,7 @@ export type Database = {
         };
         Update: {
           avatar_id?: string;
+          avatar_path?: string | null;
           created_at?: string;
           daily_goal_minutes?: number;
           display_name?: string | null;
@@ -778,6 +781,7 @@ export type Database = {
         };
         Returns: {
           avatar_id: string;
+          avatar_path: string | null;
           created_at: string;
           daily_goal_minutes: number;
           display_name: string | null;
@@ -816,6 +820,7 @@ export type Database = {
           total_answers: number;
         }[];
       };
+      get_competitive_stats: { Args: { p_days: number | null }; Returns: Json };
       get_my_achievements: {
         Args: never;
         Returns: {

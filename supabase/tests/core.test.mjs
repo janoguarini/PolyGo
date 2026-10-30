@@ -192,3 +192,29 @@ test('borrar la cuenta elimina en cascada sus datos', async () => {
   );
   assert.deepEqual(rows[0], { p: 0, r: 0 });
 });
+
+test('avatares: sólo los tres zorros y una foto en la carpeta propia', async () => {
+  await as(db, 'authenticated', alice, async () => {
+    await db.query(`update public.profiles set avatar_id = 'flame' where id = $1`, [alice]);
+    await rejects(
+      db.query(`update public.profiles set avatar_id = 'rocket' where id = $1`, [alice]),
+      /profiles_avatar_fox_check/,
+    );
+    const own = `${alice}/avatar.jpg?v=1761840000000`;
+    await db.query(`update public.profiles set avatar_path = $2 where id = $1`, [alice, own]);
+    // La foto tiene que estar en la carpeta del propio usuario y con el nombre fijo.
+    for (const bad of [
+      `${bob}/avatar.jpg?v=1`,
+      `${alice}/otra.jpg?v=1`,
+      'https://evil.dev/x.jpg',
+    ]) {
+      await rejects(
+        db.query(`update public.profiles set avatar_path = $2 where id = $1`, [alice, bad]),
+        /avatar_path_check/,
+      );
+    }
+    await db.query(`update public.profiles set avatar_path = null where id = $1`, [alice]);
+  });
+  const { rows } = await db.query(`select avatar_id from public.profiles where id = $1`, [bob]);
+  assert.equal(rows[0].avatar_id, 'bolt', 'el predeterminado es el zorro violeta');
+});

@@ -6,9 +6,11 @@ import {
   MATCH_PAGE_SIZE,
   completeOnboarding,
   fetchActiveSeason,
+  fetchCompetitiveStats,
   fetchMatchHistory,
   fetchMyAchievements,
   fetchMyProfile,
+  fetchMyRatings,
   fetchPublicProfile,
   fetchRatingHistory,
   updateProfile,
@@ -25,6 +27,9 @@ export const profileKeys = {
   matches: (userId: string) => ['profile', 'matches', userId] as const,
   achievements: (userId: string) => ['profile', 'achievements', userId] as const,
   player: (userId: string) => ['profile', 'player', userId] as const,
+  competitive: (userId: string, days: number | null) =>
+    ['profile', 'competitive', userId, days] as const,
+  ratings: (userId: string) => ['profile', 'ratings', userId] as const,
 };
 
 export function useMyProfile() {
@@ -118,6 +123,26 @@ export function usePublicProfile(userId: string | undefined) {
   return useQuery({
     queryKey: profileKeys.player(userId ?? 'none'),
     queryFn: () => fetchPublicProfile(userId!),
+    enabled: Boolean(userId),
+  });
+}
+
+export function useCompetitiveStats(days: number | null) {
+  const { session } = useAuth();
+  const userId = session?.user.id;
+  return useQuery({
+    queryKey: profileKeys.competitive(userId ?? 'anonymous', days),
+    queryFn: () => fetchCompetitiveStats(days),
+    enabled: Boolean(userId),
+  });
+}
+
+export function useMyRatings() {
+  const { session } = useAuth();
+  const userId = session?.user.id;
+  return useQuery({
+    queryKey: profileKeys.ratings(userId ?? 'anonymous'),
+    queryFn: () => fetchMyRatings(userId!),
     enabled: Boolean(userId),
   });
 }

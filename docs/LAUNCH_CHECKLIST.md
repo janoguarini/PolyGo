@@ -7,7 +7,8 @@ dispositivo o una decisión de producto; el resto está en el repo.
 
 | | Ítem | Quién | Dónde / cómo |
 | --- | --- | --- | --- |
-| ✅ | Borrado de cuenta dentro de la app (Apple 5.1.1(v), Google Play) | — | Perfil → Eliminar cuenta · Edge Function `delete-account` (probada contra Supabase real) |
+| ✅ | Borrado de cuenta dentro de la app (Apple 5.1.1(v), Google Play) | — | Perfil → Ajustes → Eliminar cuenta · Edge Function `delete-account` (borra también la foto de perfil de Storage) |
+| ⬜ | Fotos de perfil subidas por usuarios (Apple 1.2, contenido generado por usuarios): mecanismo para reportar/ocultar una foto inapropiada y forma de contacto | Vos / próxima fase | Hoy cualquier jugador ve la foto ajena en perfiles y clasificación; falta un botón "Reportar" y una forma de moderar |
 | ⬜ | URL web para pedir el borrado sin la app (Google Play la exige) | Vos | Una página o un email de contacto; cargarla en Play Console → Seguridad de los datos |
 | ⬜ | Política de privacidad publicada en una URL | Vos | Completar y revisar [PRIVACY_POLICY.md](PRIVACY_POLICY.md) (es un borrador), publicarla y poner la URL en `EXPO_PUBLIC_PRIVACY_POLICY_URL` (el enlace aparece en Perfil) y en ambas tiendas |
 | ✅ | Currículo A1 completo: 12 unidades, 60 lecciones, 244 palabras, 457 ejercicios | — | Cargado y verificado por checksum contra Supabase |

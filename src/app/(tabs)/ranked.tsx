@@ -19,6 +19,7 @@ import { battleServerConfigured } from '@/features/battle/client';
 import { useActiveSeason, useMyProfile } from '@/features/profile/hooks';
 import { useLeaderboard, useLeaderboardStars } from '@/features/ranked/api';
 import { RankCard } from '@/features/ranked/RankCard';
+import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 
 const dateFormat = new Intl.DateTimeFormat('es', { day: 'numeric', month: 'short' });
 
@@ -126,7 +127,11 @@ export default function RankedScreen() {
                 >
                   {index + 1}
                 </Text>
-                <Avatar avatarId={entry.avatarId} size={32} />
+                <Avatar
+                  avatarId={entry.avatarId}
+                  photoUrl={avatarPhotoUrl(entry.avatarPath)}
+                  size={32}
+                />
                 <Text variant="bodyStrong" numberOfLines={1} style={styles.name}>
                   {entry.username}
                   {isMe ? ' (vos)' : ''}

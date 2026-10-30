@@ -25,7 +25,7 @@ export function createSupabaseStore(db: SupabaseClient<Database>): BattleStore {
     async getPlayer(userId) {
       const { data: profile, error } = await db
         .from('profiles')
-        .select('id, username, avatar_id, target_language, onboarding_completed_at')
+        .select('id, username, avatar_id, avatar_path, target_language, onboarding_completed_at')
         .eq('id', userId)
         .maybeSingle();
       if (error) throw error;
@@ -44,6 +44,7 @@ export function createSupabaseStore(db: SupabaseClient<Database>): BattleStore {
         userId,
         username: profile.username,
         avatarId: profile.avatar_id,
+        avatarPath: profile.avatar_path,
         languageCode: profile.target_language,
         rating: rating.rating,
         gamesPlayed: rating.games_played,

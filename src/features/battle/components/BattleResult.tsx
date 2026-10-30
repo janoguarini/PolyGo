@@ -7,7 +7,7 @@ import { getRank, isInPlacement } from '@shared/ranking';
 import { accuracy } from '@shared/wordRush';
 
 import { Button, Card, RankEmblemForRating, Text, colors, spacing } from '@/design-system';
-import { AchievementIcon } from '@/features/profile/components/AchievementBadge';
+import { TierBadge } from '@/features/profile/components/AchievementBadge';
 
 interface Props {
   result: BattleFinish;
@@ -69,7 +69,7 @@ export function BattleResult({ result, gamesPlayedBefore, onPlayAgain, onExit }:
             </Text>
             {result.achievementsUnlocked.map((a) => (
               <View key={a.id} style={styles.row}>
-                <AchievementIcon icon={a.icon} unlocked size={36} />
+                <TierBadge id={a.id} size={40} />
                 <Text variant="bodyStrong" color="textStrong">
                   {a.title}
                 </Text>

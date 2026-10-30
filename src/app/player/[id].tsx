@@ -2,6 +2,7 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { Lock, Star, UserX } from 'lucide-react-native';
 import { StyleSheet, View } from 'react-native';
 
+import { flagEmoji } from '@shared/profile';
 import { getRank, isInPlacement } from '@shared/ranking';
 
 import {
@@ -18,8 +19,10 @@ import {
   colors,
   spacing,
 } from '@/design-system';
-import { AchievementIcon } from '@/features/profile/components/AchievementBadge';
+import { FamilyBadge } from '@/features/profile/components/AchievementBadge';
+import { familyLevels } from '@/features/profile/families';
 import { usePublicProfile } from '@/features/profile/hooks';
+import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 
 const joinedFormat = new Intl.DateTimeFormat('es', { month: 'long', year: 'numeric' });
 
@@ -48,15 +51,17 @@ export default function PlayerScreen() {
   const placement = rating ? isInPlacement(rating.games_played) : true;
   const stats = p.stats;
   const games = stats ? stats.wins + stats.losses + stats.draws : 0;
+  const flag = flagEmoji(p.region);
+  const families = familyLevels(p.achievements?.map((a) => a.id) ?? []);
 
   return (
     <Screen onRefresh={() => void player.refetch()} refreshing={player.isRefetching}>
       <ScreenHeader title={p.display_name ?? p.username} onBack={back} />
 
       <View style={styles.identity}>
-        <Avatar avatarId={p.avatar_id} size={80} />
+        <Avatar avatarId={p.avatar_id} photoUrl={avatarPhotoUrl(p.avatar_path)} size={80} />
         <Text color="textMuted">
-          @{p.username} · {p.public_code}
+          {flag ? `${flag} ` : ''}@{p.username} · {p.public_code}
         </Text>
         <Text variant="caption">Desde {joinedFormat.format(new Date(p.created_at))}</Text>
       </View>
@@ -121,14 +126,21 @@ export default function PlayerScreen() {
             </View>
           ) : null}
           <Card style={styles.gap}>
-            <Text variant="overline">LOGROS · {p.achievements?.length ?? 0}</Text>
-            {p.achievements && p.achievements.length > 0 ? (
+            <Text variant="overline">
+              LOGROS · {families.reduce((n, f) => n + f.level, 0)} NIVELES
+            </Text>
+            {families.length > 0 ? (
               <View style={styles.icons}>
-                {p.achievements.map((a) => (
-                  <View key={a.id} style={styles.badge} accessible accessibilityLabel={a.title}>
-                    <AchievementIcon icon={a.icon} unlocked />
+                {families.map(({ family, level, maxLevel }) => (
+                  <View
+                    key={family.metric}
+                    style={styles.badge}
+                    accessible
+                    accessibilityLabel={`${family.title}, nivel ${level} de ${maxLevel}`}
+                  >
+                    <FamilyBadge family={family} level={level} size={52} />
                     <Text variant="caption" align="center" numberOfLines={2}>
-                      {a.title}
+                      {family.title}
                     </Text>
                   </View>
                 ))}

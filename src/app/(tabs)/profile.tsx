@@ -1,190 +1,99 @@
-import { useMutation } from '@tanstack/react-query';
-import * as Linking from 'expo-linking';
 import { router } from 'expo-router';
-import { Award, BookOpen, LogOut, Pencil, Shield, Swords } from 'lucide-react-native';
-import { StyleSheet, View } from 'react-native';
+import { Settings } from 'lucide-react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 
-import { TARGET_LANGUAGES } from '@shared/profile';
-import { getRank, isInPlacement } from '@shared/ranking';
-
-import {
-  Avatar,
-  Button,
-  Card,
-  ErrorState,
-  LoadingState,
-  RankEmblemForRating,
-  Screen,
-  SelectCard,
-  StatTile,
-  Text,
-  colors,
-  spacing,
-} from '@/design-system';
-import { signOut } from '@/features/auth/api';
-import { FormMessage } from '@/features/auth/FormMessage';
+import { ErrorState, LoadingState, Screen, Text, colors, spacing } from '@/design-system';
 import { LearningStats } from '@/features/learning/components/LearningStats';
-import { AchievementsSummary } from '@/features/profile/components/AchievementsSummary';
+import { AchievementsCarousel } from '@/features/profile/components/AchievementsCarousel';
 import { CompetitiveHistory } from '@/features/profile/components/CompetitiveHistory';
-import { useMyProfile, useUpdateSettings } from '@/features/profile/hooks';
-import { ReminderSettings } from '@/features/reminders/ReminderSettings';
-import type { ProfileVisibility } from '@/lib/database.types';
-import { env } from '@/lib/env';
-import { toUserMessage } from '@/lib/errors';
+import { LanguagesRow } from '@/features/profile/components/LanguagesRow';
+import { ProfileHeader } from '@/features/profile/components/ProfileHeader';
+import { CareerStats, PeriodStats } from '@/features/profile/components/ProfileStats';
+import { useMyProfile } from '@/features/profile/hooks';
 
-const joinedFormat = new Intl.DateTimeFormat('es', { month: 'long', year: 'numeric' });
-
-const VISIBILITY: {
-  id: ProfileVisibility;
-  title: string;
-  description: string;
-}[] = [
-  { id: 'public', title: 'Público', description: 'Cualquier jugador ve tu perfil y estadísticas.' },
-  { id: 'friends', title: 'Sólo amigos', description: 'Se aplicará cuando existan los amigos.' },
-  {
-    id: 'private',
-    title: 'Privado',
-    description: 'Los demás sólo ven tu nombre, avatar y rango; no tus estadísticas ni logros.',
-  },
-];
-
+/** Perfil propio: identidad y rango, estadísticas, idiomas, logros y aprendizaje. */
 export default function ProfileScreen() {
   const { data, isPending, isError, refetch, isRefetching } = useMyProfile();
-  const updateSettings = useUpdateSettings();
-  const logout = useMutation({ mutationFn: signOut });
 
   if (isPending) return <LoadingState />;
   if (isError || !data) return <ErrorState onRetry={() => void refetch()} />;
-  const { profile, rating, settings } = data;
-
-  const language =
-    TARGET_LANGUAGES.find((l) => l.code === profile.target_language)?.name ??
-    profile.target_language;
-  const games = rating?.games_played ?? 0;
-  const winRate = games > 0 && rating ? `${Math.round((rating.wins / games) * 100)}%` : '—';
-  const placement = rating ? isInPlacement(rating.games_played) : true;
+  const { profile, rating } = data;
 
   return (
     <Screen onRefresh={() => void refetch()} refreshing={isRefetching}>
-      <View style={styles.identity}>
-        <Avatar avatarId={profile.avatar_id} size={88} />
-        <Text variant="title">{profile.display_name ?? profile.username}</Text>
-        <Text color="textMuted">
-          @{profile.username} · {profile.public_code}
-        </Text>
-        <Text variant="caption">
-          Desde {joinedFormat.format(new Date(profile.created_at))} · Aprende {language}
-        </Text>
-        <Button
-          label="Editar perfil"
-          variant="secondary"
-          icon={<Pencil color={colors.text} size={16} />}
-          onPress={() => router.push('/edit-profile')}
-          style={styles.edit}
-        />
+      <View style={styles.topBar}>
+        <Text variant="title">Perfil</Text>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel="Ajustes"
+          hitSlop={8}
+          onPress={() => router.push('/settings')}
+          style={styles.gear}
+        >
+          <Settings color={colors.text} size={24} />
+        </Pressable>
       </View>
 
-      <View style={styles.sectionHeader}>
-        <Swords color={colors.primaryBright} size={20} />
-        <Text variant="heading">Competitivo</Text>
-      </View>
+      <ProfileHeader profile={profile} rating={rating} />
+      <CareerStats rating={rating} />
+
+      <SectionHeader title="Idiomas" />
+      <LanguagesRow current={profile.target_language} />
+
+      <PeriodStats />
+
+      <SectionHeader
+        title="Logros"
+        action={{ label: 'Ver todos', onPress: () => router.push('/achievements') }}
+      />
+      <AchievementsCarousel />
+
+      <SectionHeader title="Aprendizaje" />
+      <LearningStats level={profile.start_level} />
+
       {rating ? (
         <>
-          <Card style={styles.rankRow}>
-            <RankEmblemForRating rating={rating.rating} size={56} dimmed={placement} />
-            <View style={styles.flex}>
-              <Text variant="bodyStrong">
-                {placement ? 'En colocación' : getRank(rating.rating).label}
-              </Text>
-              <Text variant="caption">
-                {rating.rating} ELO · máximo {rating.peak_rating}
-              </Text>
-            </View>
-          </Card>
-          <View style={styles.grid}>
-            <StatTile label="Partidas" value={String(games)} />
-            <StatTile
-              label="Victorias"
-              value={winRate}
-              hint={`${rating.wins}V · ${rating.losses}D · ${rating.draws}E`}
-            />
-            <StatTile label="Racha actual" value={String(rating.win_streak)} />
-            <StatTile label="Mejor racha" value={String(rating.best_win_streak)} />
-          </View>
+          <SectionHeader title="Historial competitivo" />
           <CompetitiveHistory />
         </>
-      ) : null}
-
-      <View style={styles.sectionHeader}>
-        <Award color={colors.gold} size={20} />
-        <Text variant="heading">Logros</Text>
-      </View>
-      <AchievementsSummary />
-
-      <View style={styles.sectionHeader}>
-        <BookOpen color={colors.info} size={20} />
-        <Text variant="heading">Aprendizaje</Text>
-      </View>
-      <LearningStats level={profile.start_level} />
-      <ReminderSettings />
-
-      <View style={styles.sectionHeader}>
-        <Shield color={colors.success} size={20} />
-        <Text variant="heading">Privacidad</Text>
-      </View>
-      {VISIBILITY.map((option) => (
-        <SelectCard
-          key={option.id}
-          title={option.title}
-          description={option.description}
-          selected={settings?.profile_visibility === option.id}
-          disabled={updateSettings.isPending}
-          onPress={() => updateSettings.mutate({ profile_visibility: option.id })}
-        />
-      ))}
-      {updateSettings.isError ? (
-        <FormMessage tone="error" message={toUserMessage(updateSettings.error)} />
-      ) : null}
-
-      {logout.isError ? <FormMessage tone="error" message={toUserMessage(logout.error)} /> : null}
-      <Button
-        label="Cerrar sesión"
-        variant="danger"
-        loading={logout.isPending}
-        icon={<LogOut color={colors.danger} size={18} />}
-        onPress={() => logout.mutate()}
-        style={styles.logout}
-      />
-      <Button
-        label="Eliminar cuenta"
-        variant="ghost"
-        accessibilityHint="Abre la pantalla para borrar tu cuenta y tus datos"
-        onPress={() => router.push('/delete-account')}
-      />
-      {env?.privacyPolicyUrl ? (
-        <Button
-          label="Política de privacidad"
-          variant="ghost"
-          accessibilityHint="Abre la política de privacidad en el navegador"
-          onPress={() => void Linking.openURL(env!.privacyPolicyUrl!)}
-        />
       ) : null}
     </Screen>
   );
 }
 
+function SectionHeader({
+  title,
+  action,
+}: {
+  title: string;
+  action?: { label: string; onPress: () => void };
+}) {
+  return (
+    <View style={styles.section}>
+      <Text variant="heading">{title}</Text>
+      {action ? (
+        <Pressable accessibilityRole="button" hitSlop={8} onPress={action.onPress}>
+          <Text variant="bodyStrong" color="primarySoft">
+            {action.label}
+          </Text>
+        </Pressable>
+      ) : null}
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
-  identity: { alignItems: 'center', gap: spacing.xs, paddingVertical: spacing.lg },
-  sectionHeader: {
+  topBar: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: spacing.sm,
-    marginTop: spacing.md,
+    justifyContent: 'space-between',
+    paddingTop: spacing.sm,
   },
-  rankRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.lg },
-  flex: { flex: 1, gap: spacing.xxs },
-  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
-  gap: { gap: spacing.sm },
-  logout: { marginTop: spacing.xl },
-  edit: { marginTop: spacing.sm, alignSelf: 'center', paddingHorizontal: spacing.xl },
+  gear: { minWidth: 44, minHeight: 44, alignItems: 'flex-end', justifyContent: 'center' },
+  section: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: spacing.sm,
+  },
 });

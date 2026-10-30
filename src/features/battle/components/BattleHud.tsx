@@ -4,6 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import type { PublicPlayer, ScoreLine } from '@shared/protocol';
 
 import { Avatar, Card, ProgressBar, Text, colors, gradients, spacing } from '@/design-system';
+import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 
 const DANGER = [colors.danger, colors.dangerStrong] as const;
 
@@ -84,7 +85,7 @@ function PlayerScore({
       accessible
       accessibilityLabel={`${label ?? player?.username ?? ''}: ${line?.score ?? 0} puntos`}
     >
-      <Avatar avatarId={player?.avatarId} size={36} />
+      <Avatar avatarId={player?.avatarId} photoUrl={avatarPhotoUrl(player?.avatarPath)} size={36} />
       <View style={right ? styles.alignRight : undefined}>
         <Text variant="caption" numberOfLines={1}>
           {label ?? player?.username}

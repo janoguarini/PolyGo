@@ -14,11 +14,47 @@ export const DAILY_GOALS = [5, 10, 15, 20] as const;
 export type DailyGoalMinutes = (typeof DAILY_GOALS)[number];
 
 export const TARGET_LANGUAGES = [
-  { code: 'en', name: 'Inglés', available: true },
-  { code: 'pt', name: 'Portugués', available: false },
-  { code: 'fr', name: 'Francés', available: false },
-  { code: 'it', name: 'Italiano', available: false },
+  { code: 'en', name: 'Inglés', flag: '🇬🇧', available: true },
+  { code: 'pt', name: 'Portugués', flag: '🇧🇷', available: false },
+  { code: 'fr', name: 'Francés', flag: '🇫🇷', available: false },
+  { code: 'it', name: 'Italiano', flag: '🇮🇹', available: false },
 ] as const;
+
+/** Países seleccionables (profiles.region, ISO 3166-1 alfa-2). Primero los hispanohablantes. */
+export const COUNTRIES = [
+  { code: 'AR', name: 'Argentina' },
+  { code: 'BO', name: 'Bolivia' },
+  { code: 'CL', name: 'Chile' },
+  { code: 'CO', name: 'Colombia' },
+  { code: 'CR', name: 'Costa Rica' },
+  { code: 'CU', name: 'Cuba' },
+  { code: 'EC', name: 'Ecuador' },
+  { code: 'SV', name: 'El Salvador' },
+  { code: 'ES', name: 'España' },
+  { code: 'GT', name: 'Guatemala' },
+  { code: 'HN', name: 'Honduras' },
+  { code: 'MX', name: 'México' },
+  { code: 'NI', name: 'Nicaragua' },
+  { code: 'PA', name: 'Panamá' },
+  { code: 'PY', name: 'Paraguay' },
+  { code: 'PE', name: 'Perú' },
+  { code: 'PR', name: 'Puerto Rico' },
+  { code: 'DO', name: 'República Dominicana' },
+  { code: 'UY', name: 'Uruguay' },
+  { code: 'VE', name: 'Venezuela' },
+  { code: 'BR', name: 'Brasil' },
+  { code: 'US', name: 'Estados Unidos' },
+  { code: 'GB', name: 'Reino Unido' },
+  { code: 'IT', name: 'Italia' },
+  { code: 'FR', name: 'Francia' },
+  { code: 'DE', name: 'Alemania' },
+] as const;
+
+/** Bandera emoji de un código de país de dos letras (indicadores regionales Unicode). */
+export function flagEmoji(code: string | null | undefined): string | null {
+  if (!code || !/^[A-Z]{2}$/.test(code)) return null;
+  return String.fromCodePoint(...[...code].map((c) => 0x1f1e6 + c.charCodeAt(0) - 65));
+}
 
 export type TargetLanguageCode = (typeof TARGET_LANGUAGES)[number]['code'];
 
@@ -38,16 +74,15 @@ export const START_LEVELS = [
   },
 ] as const;
 
-/** Avatares predefinidos: id estable → icono + color. Se guardan por id en la base de datos. */
+/**
+ * Avatares predefinidos: tres zorros. Los ids son heredados de los primeros avatares (la base los
+ * acepta sin cambiar su CHECK): 'bolt' = violeta (predeterminado), 'crown' = amarillo,
+ * 'flame' = rojo. Las imágenes están en assets/avatars y las resuelve el componente Avatar.
+ */
 export const AVATARS = [
-  { id: 'bolt', icon: 'zap', color: '#8B5CF6' },
-  { id: 'flame', icon: 'flame', color: '#F43F5E' },
-  { id: 'crown', icon: 'crown', color: '#F5C542' },
-  { id: 'rocket', icon: 'rocket', color: '#22D3EE' },
-  { id: 'brain', icon: 'brain', color: '#34D399' },
-  { id: 'ghost', icon: 'ghost', color: '#A78BFA' },
-  { id: 'sword', icon: 'swords', color: '#60A5FA' },
-  { id: 'star', icon: 'star', color: '#FB923C' },
+  { id: 'bolt', name: 'Zorro violeta', color: '#8B5CF6' },
+  { id: 'crown', name: 'Zorro amarillo', color: '#F5C542' },
+  { id: 'flame', name: 'Zorro rojo', color: '#F43F5E' },
 ] as const;
 
 export type AvatarId = (typeof AVATARS)[number]['id'];

@@ -32,6 +32,7 @@ import {
 } from '@/features/battle/state';
 import { useBattleStore } from '@/features/battle/store';
 import { useBattleSession, useNow } from '@/features/battle/useBattleSession';
+import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 
 const CANCEL_MESSAGES: Record<CancelReason, string> = {
   ready_timeout: 'Alguno de los dos no confirmó a tiempo. No se movió el ELO.',
@@ -199,6 +200,7 @@ function Body({ state, now, onReady, onAnswer, onRetry, onPractice, onExit }: Bo
             <PlayerBadge
               username="Vos"
               avatarId={me?.avatarId}
+              avatarPath={me?.avatarPath}
               rating={me?.rating}
               games={me?.gamesPlayed}
             />
@@ -206,6 +208,7 @@ function Body({ state, now, onReady, onAnswer, onRetry, onPractice, onExit }: Bo
             <PlayerBadge
               username={opponent?.username ?? '…'}
               avatarId={opponent?.avatarId}
+              avatarPath={opponent?.avatarPath}
               rating={opponent?.rating}
               games={opponent?.gamesPlayed}
             />
@@ -310,18 +313,20 @@ function Body({ state, now, onReady, onAnswer, onRetry, onPractice, onExit }: Bo
 function PlayerBadge({
   username,
   avatarId,
+  avatarPath,
   rating,
   games,
 }: {
   username: string;
   avatarId: string | undefined;
+  avatarPath: string | null | undefined;
   rating: number | undefined;
   games: number | undefined;
 }) {
   const placement = games === undefined || isInPlacement(games);
   return (
     <View style={styles.badge} accessible accessibilityLabel={`${username}, ${rating ?? ''} ELO`}>
-      <Avatar avatarId={avatarId} size={64} />
+      <Avatar avatarId={avatarId} photoUrl={avatarPhotoUrl(avatarPath)} size={64} />
       <Text variant="bodyStrong" numberOfLines={1}>
         {username}
       </Text>

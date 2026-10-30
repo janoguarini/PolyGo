@@ -175,7 +175,7 @@ test('liquidación completa: ratings, historial, partida y logros en una transac
     result.achievements[alice].map((x) => x.id),
     ['first_win'],
   );
-  assert.equal(result.achievements[alice][0].title, 'Primera victoria');
+  assert.equal(result.achievements[alice][0].title, 'Campeón · Nivel 1');
   assert.deepEqual(result.achievements[bob], []);
 
   // Aparece en el historial del jugador.
@@ -277,7 +277,8 @@ test('anti-farming: el mismo rival en 24 h baja el K y luego deja de mover el ra
   );
   assert.deepEqual(
     placement.map((x) => x.id),
-    ['placement_done', 'first_win', 'win_streak_5'],
+    // Con la colocación terminada (5 partidas) el rango máximo ya cuenta: Plata y Oro.
+    ['placement_done', 'first_win', 'win_streak_3', 'win_streak_5', 'peak_silver', 'peak_gold'],
   );
 });
 

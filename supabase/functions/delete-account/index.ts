@@ -1,6 +1,7 @@
 // Borra la cuenta del usuario que llama (exigido por App Store 5.1.1(v) y Google Play).
-// Borrar auth.users cascada a perfil, ajustes, rating, historial, progreso, sesiones y logros;
-// en las partidas el jugador queda anonimizado para el rival (battle_players.user_id → NULL).
+// Primero borra la foto de perfil de Storage; después, borrar auth.users cascada a perfil, ajustes,
+// rating, historial, progreso, sesiones y logros; en las partidas el jugador queda anonimizado
+// para el rival (battle_players.user_id → NULL).
 //
 // verify_jwt = false: la función valida el token del usuario con auth.getUser, que funciona tanto
 // con la JWT secret legacy como con las claves de firma nuevas.
@@ -45,6 +46,17 @@ Deno.serve(async (req: Request) => {
   const body = (await req.json().catch(() => null)) as { confirm?: unknown } | null;
   if (body?.confirm !== 'DELETE_MY_ACCOUNT') {
     return json({ error: 'confirmation_required' }, 400);
+  }
+
+  // La foto de perfil vive en Storage (carpeta avatars/<id>/), fuera del borrado en cascada.
+  const folder = data.user.id;
+  const { data: files, error: listError } = await admin.storage.from('avatars').list(folder);
+  if (listError) return json({ error: 'delete_failed' }, 500);
+  if (files.length > 0) {
+    const { error: removeError } = await admin.storage
+      .from('avatars')
+      .remove(files.map((f) => `${folder}/${f.name}`));
+    if (removeError) return json({ error: 'delete_failed' }, 500);
   }
 
   const { error: deleteError } = await admin.auth.admin.deleteUser(data.user.id);

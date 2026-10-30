@@ -202,7 +202,7 @@ export default function OnboardingScreen() {
               <Pressable
                 key={a.id}
                 accessibilityRole="radio"
-                accessibilityLabel={`Avatar ${a.id}`}
+                accessibilityLabel={a.name}
                 accessibilityState={{ selected: avatar === a.id }}
                 onPress={() => setAvatar(a.id)}
                 style={[styles.avatarCell, avatar === a.id && styles.avatarSelected]}

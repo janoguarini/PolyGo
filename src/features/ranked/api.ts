@@ -6,6 +6,7 @@ export interface LeaderboardEntry {
   userId: string;
   username: string;
   avatarId: string;
+  avatarPath: string | null;
   rating: number;
   gamesPlayed: number;
 }
@@ -17,7 +18,7 @@ export async function fetchLeaderboard(
 ): Promise<LeaderboardEntry[]> {
   const { data, error } = await requireSupabase()
     .from('player_ratings')
-    .select('user_id, rating, games_played, profiles!inner(username, avatar_id)')
+    .select('user_id, rating, games_played, profiles!inner(username, avatar_id, avatar_path)')
     .eq('language_code', languageCode)
     .not('profiles.username', 'is', null)
     .order('rating', { ascending: false })
@@ -33,6 +34,7 @@ export async function fetchLeaderboard(
         userId: row.user_id,
         username: profile.username,
         avatarId: profile.avatar_id,
+        avatarPath: profile.avatar_path,
         rating: row.rating,
         gamesPlayed: row.games_played,
       },

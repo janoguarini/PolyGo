@@ -4,6 +4,7 @@ import { randomUUID } from 'node:crypto';
 
 import { createDb, createUser, as } from './harness.mjs';
 import { lessonStars } from '../../src/features/learning/path.ts';
+import { achievementRows } from '../../shared/achievements.ts';
 
 let db;
 let alice;
@@ -173,7 +174,7 @@ test('completar una lección perfecta desbloquea logros una sola vez', async () 
     first.achievements_unlocked.map((a) => a.id),
     ['first_lesson', 'perfect_lesson'],
   );
-  assert.equal(first.achievements_unlocked[0].title, 'Primer paso');
+  assert.equal(first.achievements_unlocked[0].title, 'Erudito · Nivel 1');
 
   const again = await submit();
   assert.equal(again.duplicate, true);
@@ -214,7 +215,15 @@ test('los logros competitivos se calculan desde el rating', async () => {
   );
   assert.deepEqual(
     mine.map((a) => a.id),
-    ['placement_done', 'first_win', 'win_streak_5', 'peak_platinum'],
+    [
+      'placement_done',
+      'first_win',
+      'win_streak_3',
+      'win_streak_5',
+      'peak_silver',
+      'peak_gold',
+      'peak_platinum',
+    ],
   );
 });
 
@@ -224,7 +233,7 @@ test('perfil público respeta la visibilidad', async () => {
   assert.equal(open.is_public, true);
   assert.equal(open.stats.wins, 5);
   assert.equal(open.rating.rating, 1210);
-  assert.equal(open.achievements.length, 4);
+  assert.equal(open.achievements.length, 7);
 
   await db.query(
     `update public.user_settings set profile_visibility = 'private' where user_id = $1`,
@@ -252,13 +261,22 @@ test('perfil público respeta la visibilidad', async () => {
   });
 });
 
-test('el catálogo de logros es legible y estable', async () => {
+test('el catálogo de logros de la base es idéntico a shared/achievements.ts', async () => {
   const rows = await rpc(
     alice,
-    'select id, metric, threshold from public.achievements order by position',
+    `select id, category, metric, threshold, title_es, description_es, icon, position
+     from public.achievements where is_active order by position`,
   );
-  assert.equal(rows.length, 20);
-  assert.equal(new Set(rows.map((r) => r.id)).size, rows.length);
+  assert.deepEqual(rows, achievementRows());
+});
+
+test('cada logro activo usa una métrica que achievement_metrics calcula', async () => {
+  const [{ m }] = await rpc(alice, 'select public.achievement_metrics($1) as m', [alice]);
+  const metrics = await rpc(
+    alice,
+    'select distinct metric from public.achievements where is_active',
+  );
+  for (const { metric } of metrics) assert.ok(metric in m, `falta la métrica ${metric}`);
 });
 
 // ---------- estrellas ----------
@@ -351,4 +369,81 @@ test('el perfil público y la clasificación muestran estrellas sólo de perfile
       /permission denied/,
     );
   });
+});
+
+// ---------- logros por familias: métricas nuevas ----------
+test('objetivo cumplido, repasos y respuestas rápidas se miden', async () => {
+  const gina = await createUser(db, 'gina@test.dev');
+  await db.query(
+    `update public.profiles set username = 'gina', daily_goal_minutes = 10 where id = $1`,
+    [gina],
+  );
+  // Dos días con el objetivo (10 min) cumplido y uno sin cumplir.
+  await db.query(
+    `insert into public.user_daily_activity (user_id, activity_date, sessions_completed, seconds_spent) values
+       ($1, current_date - 2, 1, 600), ($1, current_date - 1, 1, 900), ($1, current_date, 1, 120)`,
+    [gina],
+  );
+  const session = randomUUID();
+  await db.query(
+    `insert into public.learning_sessions (id, user_id, kind, started_at, duration_seconds, total_answers,
+       first_try_total, first_try_correct, local_date)
+     values ($1, $2, 'review', now(), 60, 3, 3, 2, current_date)`,
+    [session, gina],
+  );
+  await db.query(
+    `insert into public.exercise_attempts (session_id, user_id, skill, answer, is_correct, is_first_try, response_ms) values
+       ($1, $2, 'vocabulary', 'a', true, true, 1500),
+       ($1, $2, 'vocabulary', 'b', true, true, 2500),
+       ($1, $2, 'vocabulary', 'c', false, true, 800),
+       ($1, $2, 'vocabulary', 'd', true, false, 500)`,
+    [session, gina],
+  );
+  const [{ m }] = await rpc(gina, 'select public.achievement_metrics($1) as m', [gina]);
+  assert.equal(m.goal_days, 2);
+  assert.equal(m.reviews_completed, 1);
+  assert.equal(m.fast_answers, 1, 'sólo cuenta correctas, al primer intento y en menos de 2 s');
+  const {
+    rows: [{ ids }],
+  } = await db.query('select public.evaluate_achievements($1) as ids', [gina]);
+  // Tres días seguidos de actividad: también En llamas nivel 1.
+  assert.deepEqual(ids, ['streak_3', 'goal_1', 'reviews_1']);
+});
+
+test('estadísticas competitivas por período', async () => {
+  const hugo = await createUser(db, 'hugo@test.dev');
+  const ivan = await createUser(db, 'ivan@test.dev');
+  // Dentro de los últimos 30 días: V V D V; hace 60 días: V.
+  await battle({ a: hugo, b: ivan, winner: hugo, endedAgo: '60 days' });
+  await battle({ a: hugo, b: ivan, winner: hugo, endedAgo: '20 days' });
+  await battle({ a: hugo, b: ivan, winner: hugo, endedAgo: '10 days' });
+  await battle({ a: hugo, b: ivan, winner: ivan, endedAgo: '5 days' });
+  await battle({ a: hugo, b: ivan, winner: hugo, endedAgo: '1 day' });
+
+  const [{ s: month }] = await rpc(hugo, 'select public.get_competitive_stats(30) as s');
+  assert.deepEqual(month, {
+    games: 4,
+    wins: 3,
+    draws: 0,
+    losses: 1,
+    rating_delta: 3 * 24 - 24,
+    best_win_streak: 2,
+  });
+  const [{ s: all }] = await rpc(hugo, 'select public.get_competitive_stats(null) as s');
+  assert.equal(all.games, 5);
+  assert.equal(all.best_win_streak, 3);
+  // Cada uno ve sólo sus partidas.
+  const [{ s: other }] = await rpc(ivan, 'select public.get_competitive_stats(30) as s');
+  assert.equal(other.wins, 1);
+});
+
+test('el país sólo aparece en el perfil público si el usuario lo muestra', async () => {
+  await db.query(`update public.profiles set region = 'AR' where id = $1`, [alice]);
+  const region = async () =>
+    (await rpc(bob, 'select public.get_public_profile($1) as p', [alice]))[0].p.region;
+  assert.equal(await region(), null);
+  await db.query(`update public.user_settings set show_region = true where user_id = $1`, [alice]);
+  assert.equal(await region(), 'AR');
+  const [{ p: self }] = await rpc(alice, 'select public.get_public_profile($1) as p', [alice]);
+  assert.equal(self.region, 'AR');
 });

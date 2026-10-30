@@ -1,7 +1,10 @@
 import { render, screen } from '@testing-library/react-native';
 
-import type { Achievement, MatchHistoryEntry } from '../api';
-import { AchievementRow } from '../components/AchievementBadge';
+import { familyByMetric } from '@shared/achievements';
+
+import type { MatchHistoryEntry } from '../api';
+import { FamilyRow } from '../components/AchievementBadge';
+import type { FamilyProgress } from '../families';
 import { MatchHistoryItem } from '../components/MatchHistoryItem';
 import { RatingChart } from '../components/RatingChart';
 
@@ -25,16 +28,17 @@ function match(overrides: Partial<MatchHistoryEntry>): MatchHistoryEntry {
   };
 }
 
-function achievement(overrides: Partial<Achievement>): Achievement {
+function progress(metric: string, overrides: Partial<FamilyProgress> = {}): FamilyProgress {
+  const family = familyByMetric(metric)!;
   return {
-    id: 'lessons_5',
-    category: 'learning',
-    title: 'Constante',
-    description: 'Completá 5 lecciones distintas.',
-    icon: 'book-open',
-    threshold: 5,
-    progress: 2,
-    unlockedAt: null,
+    family,
+    level: 1,
+    maxLevel: family.tiers.length,
+    current: family.tiers[0]!,
+    next: family.tiers[1]!,
+    value: 2,
+    ratio: 0.25,
+    lastUnlockedAt: '2026-10-29T12:00:00Z',
     ...overrides,
   };
 }
@@ -57,34 +61,39 @@ describe('MatchHistoryItem', () => {
   });
 });
 
-describe('AchievementRow', () => {
-  it('muestra el progreso de un logro pendiente', async () => {
-    await render(<AchievementRow achievement={achievement({})} rankedAvailable={false} />);
+describe('FamilyRow', () => {
+  it('muestra el nivel, el próximo objetivo y el avance', async () => {
+    await render(<FamilyRow progress={progress('lessons_completed')} rankedAvailable={false} />);
+    expect(screen.getByText('Erudito')).toBeTruthy();
+    expect(screen.getByText('Nivel 1/6')).toBeTruthy();
+    expect(screen.getByText('Completá 5 lecciones distintas.')).toBeTruthy();
     expect(screen.getByText('2/5')).toBeTruthy();
   });
 
-  it('marca los competitivos como no disponibles mientras Ranked no abra', async () => {
+  it('marca los competitivos sin niveles como no disponibles mientras Ranked no abra', async () => {
     await render(
-      <AchievementRow
-        achievement={achievement({
-          category: 'competitive',
-          title: 'Primera victoria',
-          progress: 0,
-        })}
+      <FamilyRow
+        progress={progress('wins', { level: 0, current: null, value: 0, ratio: 0 })}
         rankedAvailable={false}
       />,
     );
     expect(screen.getByText('Disponible cuando abra Ranked')).toBeTruthy();
   });
 
-  it('muestra la fecha de desbloqueo', async () => {
+  it('una familia completa no muestra barra de avance', async () => {
+    const family = familyByMetric('reviews_completed')!;
     await render(
-      <AchievementRow
-        achievement={achievement({ progress: 5, unlockedAt: '2026-10-29T12:00:00Z' })}
-        rankedAvailable={false}
+      <FamilyRow
+        progress={progress('reviews_completed', {
+          level: family.tiers.length,
+          current: family.tiers.at(-1)!,
+          next: null,
+          ratio: 1,
+        })}
+        rankedAvailable
       />,
     );
-    expect(screen.getByText(/^Desbloqueado el /)).toBeTruthy();
+    expect(screen.getByText(/^¡Completo!/)).toBeTruthy();
   });
 });
 

@@ -6,6 +6,7 @@ export interface PlayerInfo {
   userId: string;
   username: string;
   avatarId: string;
+  avatarPath?: string | null;
   languageCode: string;
   rating: number;
   gamesPlayed: number;

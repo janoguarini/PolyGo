@@ -1,6 +1,8 @@
 import { router } from 'expo-router';
 import { StyleSheet, View } from 'react-native';
 
+import type { AchievementCategory } from '@shared/achievements';
+
 import {
   Card,
   ErrorState,
@@ -12,20 +14,21 @@ import {
   spacing,
 } from '@/design-system';
 import { battleServerConfigured } from '@/features/battle/client';
-import type { Achievement } from '@/features/profile/api';
-import { AchievementRow } from '@/features/profile/components/AchievementBadge';
+import { FamilyRow } from '@/features/profile/components/AchievementBadge';
+import { familyProgress } from '@/features/profile/families';
 import { useMyAchievements } from '@/features/profile/hooks';
 
 // Mismo criterio que la pantalla Ranked: disponible si la app tiene servidor de partidas.
 const RANKED_AVAILABLE = battleServerConfigured;
 
-const CATEGORIES: { id: string; title: string }[] = [
+const CATEGORIES: { id: AchievementCategory; title: string }[] = [
+  { id: 'streak', title: 'Constancia' },
   { id: 'learning', title: 'Lecciones' },
   { id: 'vocabulary', title: 'Vocabulario' },
-  { id: 'streak', title: 'Constancia' },
   { id: 'competitive', title: 'Competitivo' },
 ];
 
+/** Todas las familias de logros con su nivel y el próximo objetivo. */
 export default function AchievementsScreen() {
   const achievements = useMyAchievements();
 
@@ -33,30 +36,37 @@ export default function AchievementsScreen() {
   if (achievements.isError || !achievements.data)
     return <ErrorState onRetry={() => void achievements.refetch()} />;
 
-  const all = achievements.data;
-  const unlocked = all.filter((a) => a.unlockedAt).length;
-  const byCategory = (id: string): Achievement[] => all.filter((a) => a.category === id);
+  const families = familyProgress(achievements.data);
+  const levels = families.reduce((n, f) => n + f.level, 0);
+  const maxLevels = families.reduce((n, f) => n + f.maxLevel, 0);
 
   return (
-    <Screen onRefresh={() => void achievements.refetch()} refreshing={achievements.isRefetching}>
+    <Screen
+      edges={['top', 'bottom']}
+      onRefresh={() => void achievements.refetch()}
+      refreshing={achievements.isRefetching}
+    >
       <ScreenHeader title="Logros" onBack={() => router.back()} />
       <View style={styles.summary}>
         <Text variant="bodyStrong">
-          {unlocked} de {all.length} desbloqueados
+          {levels} de {maxLevels} niveles
         </Text>
         <ProgressBar
-          value={all.length ? unlocked / all.length : 0}
-          accessibilityLabel="Logros desbloqueados"
+          value={maxLevels ? levels / maxLevels : 0}
+          accessibilityLabel="Niveles de logros alcanzados"
         />
+        <Text variant="caption">
+          Cada logro sube de nivel a medida que avanzás. ¡Seguí sumando!
+        </Text>
       </View>
       {CATEGORIES.map((c) => {
-        const items = byCategory(c.id);
+        const items = families.filter((f) => f.family.category === c.id);
         if (items.length === 0) return null;
         return (
           <Card key={c.id} style={styles.card}>
             <Text variant="overline">{c.title.toUpperCase()}</Text>
-            {items.map((a) => (
-              <AchievementRow key={a.id} achievement={a} rankedAvailable={RANKED_AVAILABLE} />
+            {items.map((f) => (
+              <FamilyRow key={f.family.metric} progress={f} rankedAvailable={RANKED_AVAILABLE} />
             ))}
           </Card>
         );

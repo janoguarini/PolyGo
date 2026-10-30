@@ -2,142 +2,202 @@ import {
   Award,
   BookOpen,
   Brain,
-  CalendarCheck,
   Crown,
   Eye,
   Flame,
-  Footprints,
   Gem,
-  GraduationCap,
-  Library,
   Lock,
-  Medal,
-  Orbit,
+  Repeat,
   Shield,
-  Sparkles,
   Star,
-  Swords,
   Target,
   TrendingUp,
   Trophy,
   Zap,
   type LucideIcon,
 } from 'lucide-react-native';
+import { useId } from 'react';
 import { StyleSheet, View } from 'react-native';
+import Svg, { Defs, LinearGradient, Polygon, Stop } from 'react-native-svg';
 
-import { ProgressBar, Text, colors, spacing } from '@/design-system';
+import type { AchievementFamilyDef } from '@shared/achievements';
 
-import type { Achievement } from '../api';
-import { achievementRatio } from '../stats';
+import { ProgressBar, Text, colors, radii, spacing } from '@/design-system';
 
-/** Los iconos se guardan por nombre en la base de datos; uno desconocido cae en Award. */
+import { familyOfAchievement, type FamilyProgress } from '../families';
+
+/** Los íconos se guardan por nombre (shared/achievements.ts); uno desconocido cae en Award. */
 const ICONS: Record<string, LucideIcon> = {
-  footprints: Footprints,
-  'book-open': BookOpen,
-  'graduation-cap': GraduationCap,
-  sparkles: Sparkles,
+  flame: Flame,
   target: Target,
+  'book-open': BookOpen,
+  crown: Crown,
+  star: Star,
+  zap: Zap,
   eye: Eye,
   brain: Brain,
-  library: Library,
-  flame: Flame,
-  'calendar-check': CalendarCheck,
-  zap: Zap,
+  repeat: Repeat,
   shield: Shield,
-  swords: Swords,
   trophy: Trophy,
   'trending-up': TrendingUp,
   gem: Gem,
-  crown: Crown,
-  star: Star,
-  medal: Medal,
-  orbit: Orbit,
 };
 
-export function AchievementIcon({
-  icon,
-  unlocked,
-  size = 44,
+const LOCKED = ['#3A3566', '#221E42'] as const;
+
+/** Octógono regular en un viewBox de 100×100. */
+const OCTAGON = Array.from({ length: 8 }, (_, i) => {
+  const a = (Math.PI / 8) * (2 * i + 1);
+  return `${50 + 48 * Math.cos(a)},${50 + 48 * Math.sin(a)}`;
+}).join(' ');
+const INNER = Array.from({ length: 8 }, (_, i) => {
+  const a = (Math.PI / 8) * (2 * i + 1);
+  return `${50 + 39 * Math.cos(a)},${50 + 39 * Math.sin(a)}`;
+}).join(' ');
+
+/**
+ * Distintivo de una familia de logros: octógono con el degradado de la familia, su ícono y una
+ * cinta con el nivel. Sin niveles se ve apagado con un candado.
+ */
+export function FamilyBadge({
+  family,
+  level,
+  size = 64,
 }: {
-  icon: string;
-  unlocked: boolean;
+  family: Pick<AchievementFamilyDef, 'icon' | 'colors'>;
+  level: number;
   size?: number;
 }) {
-  const Icon = unlocked ? (ICONS[icon] ?? Award) : Lock;
+  const id = useId().replace(/:/g, '');
+  const locked = level === 0;
+  const [light, dark] = locked ? LOCKED : family.colors;
+  const Icon = locked ? Lock : (ICONS[family.icon] ?? Award);
+
   return (
     <View
-      style={[
-        styles.icon,
-        {
-          width: size,
-          height: size,
-          borderRadius: size / 2,
-          borderColor: unlocked ? colors.gold : colors.borderStrong,
-          backgroundColor: unlocked ? `${colors.gold}22` : colors.surfaceRaised,
-        },
-      ]}
+      style={{ width: size, height: size + size * 0.12 }}
+      accessibilityElementsHidden
+      importantForAccessibility="no"
     >
-      <Icon color={unlocked ? colors.gold : colors.textSubtle} size={size * 0.48} />
+      <Svg width={size} height={size} viewBox="0 0 100 100">
+        <Defs>
+          <LinearGradient id={`b${id}`} x1="0" y1="0" x2="0" y2="1">
+            <Stop offset="0" stopColor={light} />
+            <Stop offset="1" stopColor={dark} />
+          </LinearGradient>
+        </Defs>
+        <Polygon points={OCTAGON} fill={`url(#b${id})`} />
+        <Polygon
+          points={INNER}
+          fill="none"
+          stroke={locked ? colors.borderStrong : 'rgba(255,255,255,0.35)'}
+          strokeWidth={3}
+        />
+      </Svg>
+      <View style={[StyleSheet.absoluteFill, styles.center, { height: size }]}>
+        <Icon
+          color={locked ? colors.textSubtle : colors.textStrong}
+          size={size * 0.42}
+          strokeWidth={2.4}
+        />
+      </View>
+      {locked ? null : (
+        <View style={[styles.ribbon, { backgroundColor: dark, borderColor: light }]}>
+          <Text
+            variant="overline"
+            color="textStrong"
+            style={{ fontSize: Math.max(9, size * 0.15) }}
+          >
+            {`NIV ${level}`}
+          </Text>
+        </View>
+      )}
     </View>
   );
 }
 
-const dateFormat = new Intl.DateTimeFormat('es', {
-  day: 'numeric',
-  month: 'short',
-  year: 'numeric',
-});
+/** Distintivo de un nivel recién desbloqueado (resultados de lección o partida). */
+export function TierBadge({ id, size = 44 }: { id: string; size?: number }) {
+  const family = familyOfAchievement(id);
+  if (!family)
+    return <FamilyBadge family={{ icon: 'award', colors: LOCKED }} level={1} size={size} />;
+  const level = family.tiers.findIndex((t) => t.id === id) + 1;
+  return <FamilyBadge family={family} level={level} size={size} />;
+}
 
-/** Fila de logro con progreso. Los competitivos explican que dependen de Ranked. */
-export function AchievementRow({
-  achievement,
+/** Fila de familia: distintivo, nivel y avance al próximo. Los competitivos dependen de Ranked. */
+export function FamilyRow({
+  progress,
   rankedAvailable,
 }: {
-  achievement: Achievement;
+  progress: FamilyProgress;
   rankedAvailable: boolean;
 }) {
-  const unlocked = Boolean(achievement.unlockedAt);
-  const ratio = achievementRatio(achievement);
-  const pendingRanked = !unlocked && achievement.category === 'competitive' && !rankedAvailable;
+  const { family, level, maxLevel, next, value, ratio, current } = progress;
+  const pendingRanked = family.category === 'competitive' && !rankedAvailable && level === 0;
 
   return (
     <View
       style={styles.row}
       accessible
-      accessibilityLabel={`${achievement.title}. ${achievement.description} ${
-        unlocked ? 'Desbloqueado.' : `Progreso ${achievement.progress} de ${achievement.threshold}.`
+      accessibilityLabel={`${family.title}, nivel ${level} de ${maxLevel}. ${
+        next ? `Próximo: ${next.description} Progreso ${value} de ${next.threshold}.` : 'Completo.'
       }`}
     >
-      <AchievementIcon icon={achievement.icon} unlocked={unlocked} />
+      <FamilyBadge family={family} level={level} size={56} />
       <View style={styles.body}>
-        <Text variant="bodyStrong" color={unlocked ? 'textStrong' : 'text'}>
-          {achievement.title}
-        </Text>
-        <Text variant="caption">{achievement.description}</Text>
-        {unlocked ? (
-          <Text variant="caption" color="gold">
-            Desbloqueado el {dateFormat.format(new Date(achievement.unlockedAt!))}
+        <View style={styles.titleRow}>
+          <Text variant="bodyStrong" color={level > 0 ? 'textStrong' : 'text'} style={styles.flex}>
+            {family.title}
           </Text>
-        ) : pendingRanked ? (
+          <Text variant="caption">
+            Nivel {level}/{maxLevel}
+          </Text>
+        </View>
+        {next ? (
+          <Text variant="caption">{next.description}</Text>
+        ) : (
+          <Text variant="caption" color="gold">
+            ¡Completo! {current?.description}
+          </Text>
+        )}
+        {pendingRanked ? (
           <Text variant="caption" color="textMuted">
             Disponible cuando abra Ranked
           </Text>
-        ) : (
+        ) : next ? (
           <View style={styles.progress}>
-            <ProgressBar value={ratio} accessibilityLabel={`Progreso de ${achievement.title}`} />
+            <View style={styles.flex}>
+              <ProgressBar
+                value={ratio}
+                colors={family.colors}
+                accessibilityLabel={`Progreso de ${family.title}`}
+              />
+            </View>
             <Text variant="caption">
-              {achievement.progress}/{achievement.threshold}
+              {value}/{next.threshold}
             </Text>
           </View>
-        )}
+        ) : null}
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  icon: { alignItems: 'center', justifyContent: 'center', borderWidth: 2 },
+  center: { alignItems: 'center', justifyContent: 'center' },
+  ribbon: {
+    position: 'absolute',
+    bottom: 0,
+    alignSelf: 'center',
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 1,
+    borderRadius: radii.pill,
+    borderWidth: 1,
+  },
   row: { flexDirection: 'row', alignItems: 'center', gap: spacing.md, paddingVertical: spacing.sm },
   body: { flex: 1, gap: spacing.xxs },
-  progress: { gap: spacing.xxs, marginTop: spacing.xxs },
+  titleRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+  flex: { flex: 1 },
+  progress: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, marginTop: spacing.xxs },
 });

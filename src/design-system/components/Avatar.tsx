@@ -1,57 +1,49 @@
-import {
-  Brain,
-  Crown,
-  Flame,
-  Ghost,
-  Rocket,
-  Star,
-  Swords,
-  Zap,
-  type LucideIcon,
-} from 'lucide-react-native';
-import { StyleSheet, View } from 'react-native';
+import { useState } from 'react';
+import { Image, StyleSheet, View, type ImageSourcePropType } from 'react-native';
 
 import { AVATARS, DEFAULT_AVATAR, type AvatarId } from '@shared/profile';
 
 import { colors } from '../tokens';
 
-const ICONS: Record<(typeof AVATARS)[number]['icon'], LucideIcon> = {
-  zap: Zap,
-  flame: Flame,
-  crown: Crown,
-  rocket: Rocket,
-  brain: Brain,
-  ghost: Ghost,
-  swords: Swords,
-  star: Star,
+const IMAGES: Record<AvatarId, ImageSourcePropType> = {
+  bolt: require('../../../assets/avatars/fox-violet.jpg'),
+  crown: require('../../../assets/avatars/fox-yellow.jpg'),
+  flame: require('../../../assets/avatars/fox-red.jpg'),
 };
 
+/**
+ * Avatar circular: la foto propia si hay (con el zorro elegido como respaldo si no carga) o uno de
+ * los tres zorros predeterminados.
+ */
 export function Avatar({
   avatarId,
+  photoUrl,
   size = 48,
 }: {
   avatarId: string | null | undefined;
+  /** URL pública de la foto propia (ver avatarPhotoUrl). */
+  photoUrl?: string | null;
   size?: number;
 }) {
+  const [failedUrl, setFailedUrl] = useState<string | null>(null);
   const avatar =
     AVATARS.find((a) => a.id === avatarId) ?? AVATARS.find((a) => a.id === DEFAULT_AVATAR)!;
-  const Icon = ICONS[avatar.icon];
+  const usePhoto = Boolean(photoUrl) && failedUrl !== photoUrl;
   return (
     <View
       accessibilityElementsHidden
       importantForAccessibility="no"
       style={[
         styles.base,
-        {
-          width: size,
-          height: size,
-          borderRadius: size / 2,
-          borderColor: avatar.color,
-          backgroundColor: `${avatar.color}26`,
-        },
+        { width: size, height: size, borderRadius: size / 2, borderColor: avatar.color },
       ]}
     >
-      <Icon color={avatar.color} size={size * 0.5} strokeWidth={2.2} />
+      <Image
+        source={usePhoto ? { uri: photoUrl! } : IMAGES[avatar.id]}
+        onError={() => setFailedUrl(photoUrl ?? null)}
+        style={styles.image}
+        resizeMode="cover"
+      />
     </View>
   );
 }
@@ -62,9 +54,9 @@ export function isAvatarId(id: string): id is AvatarId {
 
 const styles = StyleSheet.create({
   base: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    overflow: 'hidden',
     borderWidth: 2,
     backgroundColor: colors.surfaceRaised,
   },
+  image: { width: '100%', height: '100%' },
 });

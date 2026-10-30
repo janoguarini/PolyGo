@@ -101,6 +101,7 @@ function RootNavigator() {
         <Stack.Screen name="achievements" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="player/[id]" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="edit-profile" options={{ animation: 'slide_from_bottom' }} />
+        <Stack.Screen name="settings" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="delete-account" options={{ animation: 'slide_from_right' }} />
       </Stack.Protected>
       <Stack.Protected guard={Boolean(session) && recoveringPassword}>

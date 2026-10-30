@@ -5,7 +5,7 @@ import Animated, { FadeInUp } from 'react-native-reanimated';
 import type { Exercise } from '@shared/exercises';
 
 import { Button, Card, Screen, StatTile, Text, colors, spacing } from '@/design-system';
-import { AchievementIcon } from '@/features/profile/components/AchievementBadge';
+import { TierBadge } from '@/features/profile/components/AchievementBadge';
 import { toUserMessage } from '@/lib/errors';
 
 import type { WordRow } from '../api';
@@ -114,7 +114,7 @@ export function SessionResults(props: Props) {
             </Text>
             {props.achievements.map((a) => (
               <View key={a.id} style={styles.row}>
-                <AchievementIcon icon={a.icon} unlocked size={36} />
+                <TierBadge id={a.id} size={40} />
                 <Text variant="bodyStrong" color="textStrong">
                   {a.title}
                 </Text>

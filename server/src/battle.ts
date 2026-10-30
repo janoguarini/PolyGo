@@ -265,6 +265,7 @@ export class Battle {
         slot: s.slot,
         username: s.info.username,
         avatarId: s.info.avatarId,
+        avatarPath: s.info.avatarPath ?? null,
         rating: s.info.rating,
         gamesPlayed: s.info.gamesPlayed,
       })),

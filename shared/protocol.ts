@@ -63,6 +63,8 @@ export interface PublicPlayer {
   slot: 1 | 2;
   username: string;
   avatarId: string;
+  /** Foto propia (ruta en el bucket avatars) o null si usa un zorro. */
+  avatarPath?: string | null;
   rating: number;
   gamesPlayed: number;
 }

@@ -88,6 +88,8 @@ export interface ProfilePatch {
   display_name?: string;
   avatar_id?: string;
   daily_goal_minutes?: number;
+  region?: string | null;
+  avatar_path?: string | null;
 }
 
 export async function updateProfile(userId: string, patch: ProfilePatch) {
@@ -204,10 +206,13 @@ export interface PublicProfile {
   username: string;
   display_name: string | null;
   avatar_id: string;
+  avatar_path?: string | null;
   public_code: string;
   created_at: string;
   /** false si el perfil es privado: sólo llegan identidad y rango. */
   is_public: boolean;
+  /** País (sólo si el jugador eligió mostrarlo). */
+  region?: string | null;
   rating: { rating: number; games_played: number } | null;
   stats?: {
     wins: number;
@@ -238,4 +243,31 @@ export async function fetchPublicProfile(userId: string): Promise<PublicProfile 
   });
   if (error) throw error;
   return (data ?? null) as unknown as PublicProfile | null;
+}
+
+export interface CompetitiveStats {
+  games: number;
+  wins: number;
+  draws: number;
+  losses: number;
+  /** Suma de variaciones de ELO en partidas ranked del período. */
+  rating_delta: number;
+  best_win_streak: number;
+}
+
+/** Estadísticas propias de los últimos `days` días (null = desde siempre). */
+export async function fetchCompetitiveStats(days: number | null): Promise<CompetitiveStats> {
+  const { data, error } = await requireSupabase().rpc('get_competitive_stats', { p_days: days });
+  if (error) throw error;
+  return data as unknown as CompetitiveStats;
+}
+
+/** ELO propio en cada idioma donde haya jugado o tenga rating. */
+export async function fetchMyRatings(userId: string): Promise<Record<string, number>> {
+  const { data, error } = await requireSupabase()
+    .from('player_ratings')
+    .select('language_code, rating')
+    .eq('user_id', userId);
+  if (error) throw error;
+  return Object.fromEntries(data.map((r) => [r.language_code, r.rating]));
 }
