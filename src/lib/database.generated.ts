@@ -841,6 +841,7 @@ export type Database = {
       };
       is_lesson_unlocked: { Args: { p_lesson_id: string; p_user_id: string }; Returns: boolean };
       is_username_available: { Args: { p_username: string }; Returns: boolean };
+      report_avatar: { Args: { p_reason: string; p_user_id: string }; Returns: Json };
       lesson_star_totals: { Args: { p_user_id: string }; Returns: Json };
       parse_learning_attempts: {
         Args: { p_attempts: Json };

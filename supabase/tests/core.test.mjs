@@ -218,3 +218,91 @@ test('avatares: sólo los tres zorros y una foto en la carpeta propia', async ()
   const { rows } = await db.query(`select avatar_id from public.profiles where id = $1`, [bob]);
   assert.equal(rows[0].avatar_id, 'bolt', 'el predeterminado es el zorro violeta');
 });
+
+test('reportar fotos: validaciones, sin duplicados y ocultado con 3 reportantes', async () => {
+  const target = await createUser(db, 'target@test.dev');
+  const r1 = await createUser(db, 'r1@test.dev');
+  const r2 = await createUser(db, 'r2@test.dev');
+  const r3 = await createUser(db, 'r3@test.dev');
+  const report = (who, reason = 'sexual') =>
+    as(
+      db,
+      'authenticated',
+      who,
+      async () =>
+        (await db.query('select public.report_avatar($1, $2) as r', [target, reason])).rows[0].r,
+    );
+
+  // Sin foto no hay nada que reportar.
+  assert.deepEqual(await report(r1), { reported: false, hidden: false });
+
+  const photo = `${target}/avatar.jpg?v=1`;
+  await db.query('update public.profiles set avatar_path = $2 where id = $1', [target, photo]);
+
+  await rejects(
+    as(db, 'authenticated', target, () =>
+      db.query(`select public.report_avatar($1, 'other')`, [target]),
+    ),
+    /cannot_report_self/,
+  );
+  await rejects(report(r1, 'porque sí'), /invalid_reason/);
+
+  assert.deepEqual(await report(r1), { reported: true, hidden: false });
+  // El mismo reportante no suma dos veces.
+  assert.deepEqual(await report(r1, 'other'), { reported: true, hidden: false });
+  assert.deepEqual(await report(r2), { reported: true, hidden: false });
+  assert.deepEqual(await report(r3, 'hateful'), { reported: true, hidden: true });
+
+  const { rows } = await db.query('select avatar_path from public.profiles where id = $1', [
+    target,
+  ]);
+  assert.equal(rows[0].avatar_path, null, 'la foto quedó oculta');
+  const count = await db.query(
+    'select count(*)::int as n from public.avatar_reports where reported_id = $1',
+    [target],
+  );
+  assert.equal(count.rows[0].n, 3);
+
+  // Una foto nueva arranca sin reportes.
+  await db.query('update public.profiles set avatar_path = $2 where id = $1', [
+    target,
+    `${target}/avatar.jpg?v=2`,
+  ]);
+  assert.deepEqual(await report(r1), { reported: true, hidden: false });
+
+  // Los clientes no leen la tabla y anon no puede reportar.
+  await as(db, 'authenticated', r1, async () => {
+    await rejects(db.query('select * from public.avatar_reports'), /permission denied/);
+  });
+  await as(db, 'anon', null, async () => {
+    await rejects(
+      db.query(`select public.report_avatar($1, 'other')`, [target]),
+      /permission denied/,
+    );
+  });
+});
+
+test('reportar fotos: tope de 20 reportes por día', async () => {
+  const spammer = await createUser(db, 'spammer@test.dev');
+  for (let i = 0; i < 20; i++) {
+    const victim = await createUser(db, `victim${i}@test.dev`);
+    await db.query('update public.profiles set avatar_path = $2 where id = $1', [
+      victim,
+      `${victim}/avatar.jpg?v=1`,
+    ]);
+    await as(db, 'authenticated', spammer, () =>
+      db.query(`select public.report_avatar($1, 'other')`, [victim]),
+    );
+  }
+  const last = await createUser(db, 'victim20@test.dev');
+  await db.query('update public.profiles set avatar_path = $2 where id = $1', [
+    last,
+    `${last}/avatar.jpg?v=1`,
+  ]);
+  await rejects(
+    as(db, 'authenticated', spammer, () =>
+      db.query(`select public.report_avatar($1, 'other')`, [last]),
+    ),
+    /report_rate_limited/,
+  );
+});

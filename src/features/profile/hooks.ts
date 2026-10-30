@@ -13,10 +13,12 @@ import {
   fetchMyRatings,
   fetchPublicProfile,
   fetchRatingHistory,
+  reportAvatar,
   updateProfile,
   updateSettings,
   type OnboardingInput,
   type ProfilePatch,
+  type ReportReason,
 } from './api';
 
 export const profileKeys = {
@@ -144,5 +146,20 @@ export function useMyRatings() {
     queryKey: profileKeys.ratings(userId ?? 'anonymous'),
     queryFn: () => fetchMyRatings(userId!),
     enabled: Boolean(userId),
+  });
+}
+
+/** Reporta la foto de un jugador; si se ocultó, refresca su perfil. */
+export function useReportAvatar(userId: string) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (reason: ReportReason) => reportAvatar(userId, reason),
+    onSuccess: (result) =>
+      result.hidden
+        ? Promise.all([
+            qc.invalidateQueries({ queryKey: profileKeys.player(userId) }),
+            qc.invalidateQueries({ queryKey: ['leaderboard'] }),
+          ])
+        : undefined,
   });
 }

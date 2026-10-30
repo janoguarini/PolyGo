@@ -8,7 +8,8 @@ dispositivo o una decisión de producto; el resto está en el repo.
 | | Ítem | Quién | Dónde / cómo |
 | --- | --- | --- | --- |
 | ✅ | Borrado de cuenta dentro de la app (Apple 5.1.1(v), Google Play) | — | Perfil → Ajustes → Eliminar cuenta · Edge Function `delete-account` (borra también la foto de perfil de Storage) |
-| ⬜ | Fotos de perfil subidas por usuarios (Apple 1.2, contenido generado por usuarios): mecanismo para reportar/ocultar una foto inapropiada y forma de contacto | Vos / próxima fase | Hoy cualquier jugador ve la foto ajena en perfiles y clasificación; falta un botón "Reportar" y una forma de moderar |
+| ✅ | Fotos de perfil subidas por usuarios (Apple 1.2): reportar fotos | — | Perfil de otro jugador → "Reportar foto" (motivo obligatorio, anónimo, hasta 20 por día). Con 3 reportantes distintos la foto se oculta sola. Revisión manual: ver "Moderación de fotos" abajo |
+| ⬜ | Apple 1.2 también pide poder bloquear a un usuario abusivo y un contacto publicado | Vos / próxima fase | Hoy no hay mensajes ni amigos (sólo fotos y nombres visibles); agregar "Bloquear" cuando exista interacción social y un email de soporte en la ficha |
 | ⬜ | URL web para pedir el borrado sin la app (Google Play la exige) | Vos | Una página o un email de contacto; cargarla en Play Console → Seguridad de los datos |
 | ⬜ | Política de privacidad publicada en una URL | Vos | Completar y revisar [PRIVACY_POLICY.md](PRIVACY_POLICY.md) (es un borrador), publicarla y poner la URL en `EXPO_PUBLIC_PRIVACY_POLICY_URL` (el enlace aparece en Perfil) y en ambas tiendas |
 | ✅ | Currículo A1 completo: 12 unidades, 60 lecciones, 244 palabras, 457 ejercicios | — | Cargado y verificado por checksum contra Supabase |
@@ -72,3 +73,20 @@ dispositivo o una decisión de producto; el resto está en el repo.
 6. Perfil: editar nombre/avatar, cambiar privacidad, ver logros e historial, abrir el perfil de otro jugador.
 7. Eliminar cuenta: el botón sólo se habilita con el usuario exacto; después vuelve a la bienvenida y no se puede iniciar sesión con esa cuenta.
 8. Modo avión en Inicio y en una lección: mensajes de "sin conexión", sin pantallas en blanco.
+
+## Moderación de fotos
+
+Los reportes quedan en `public.avatar_reports` (sólo visible desde el dashboard). Para revisarlos, en el SQL Editor:
+
+```sql
+select r.reported_id, p.username, r.avatar_path, count(*) as reportes,
+       array_agg(distinct r.reason) as motivos, max(r.created_at) as ultimo
+from public.avatar_reports r join public.profiles p on p.id = r.reported_id
+where r.reviewed_at is null
+group by r.reported_id, p.username, r.avatar_path
+order by reportes desc, ultimo desc;
+```
+
+- La foto está en Storage → bucket `avatars` → carpeta del `reported_id` → `avatar.jpg`.
+- Si es inapropiada: `update public.profiles set avatar_path = null where id = '<reported_id>';` y borrar el archivo desde Storage (con 3 reportes ya se ocultó sola, pero el archivo sigue ahí hasta que lo borres o el usuario suba otra).
+- Marcar los reportes como revisados: `update public.avatar_reports set reviewed_at = now() where reported_id = '<reported_id>' and reviewed_at is null;`

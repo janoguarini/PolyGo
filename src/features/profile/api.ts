@@ -271,3 +271,18 @@ export async function fetchMyRatings(userId: string): Promise<Record<string, num
   if (error) throw error;
   return Object.fromEntries(data.map((r) => [r.language_code, r.rating]));
 }
+
+export type ReportReason = 'sexual' | 'violent' | 'hateful' | 'impersonation' | 'other';
+
+/** Reporta la foto de perfil actual de un jugador (idempotente por foto y reportante). */
+export async function reportAvatar(
+  userId: string,
+  reason: ReportReason,
+): Promise<{ reported: boolean; hidden: boolean }> {
+  const { data, error } = await requireSupabase().rpc('report_avatar', {
+    p_user_id: userId,
+    p_reason: reason,
+  });
+  if (error) throw error;
+  return data as unknown as { reported: boolean; hidden: boolean };
+}

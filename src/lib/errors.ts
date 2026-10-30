@@ -17,6 +17,9 @@ const RPC_MESSAGES: Record<string, string> = {
   username_taken: 'Ese nombre de usuario ya está en uso.',
   language_unavailable: 'Ese idioma todavía no está disponible.',
   not_authenticated: 'Tu sesión expiró. Volvé a iniciar sesión.',
+  cannot_report_self: 'No podés reportar tu propia foto.',
+  report_rate_limited: 'Hiciste muchos reportes hoy. Probá de nuevo mañana.',
+  invalid_reason: 'Elegí un motivo para el reporte.',
 };
 
 export function toUserMessage(error: unknown): string {

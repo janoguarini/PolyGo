@@ -19,7 +19,9 @@ import {
   colors,
   spacing,
 } from '@/design-system';
+import { useAuth } from '@/features/auth/AuthProvider';
 import { FamilyBadge } from '@/features/profile/components/AchievementBadge';
+import { ReportPhotoButton } from '@/features/profile/components/ReportPhotoButton';
 import { familyLevels } from '@/features/profile/families';
 import { usePublicProfile } from '@/features/profile/hooks';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
@@ -30,6 +32,7 @@ const joinedFormat = new Intl.DateTimeFormat('es', { month: 'long', year: 'numer
 export default function PlayerScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const player = usePublicProfile(id);
+  const { session } = useAuth();
   const back = () => router.back();
 
   if (player.isPending) return <LoadingState />;
@@ -64,6 +67,13 @@ export default function PlayerScreen() {
           {flag ? `${flag} ` : ''}@{p.username} · {p.public_code}
         </Text>
         <Text variant="caption">Desde {joinedFormat.format(new Date(p.created_at))}</Text>
+        {p.id !== session?.user.id ? (
+          <ReportPhotoButton
+            userId={p.id}
+            username={p.username}
+            hasPhoto={Boolean(p.avatar_path)}
+          />
+        ) : null}
       </View>
 
       {rating ? (
