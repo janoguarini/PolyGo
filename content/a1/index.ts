@@ -2,13 +2,34 @@ import type { UnitDef } from '../types';
 import { unit01 } from './unit01-greetings';
 import { unit02 } from './unit02-to-be';
 import { unit03 } from './unit03-numbers-countries';
+import { unit04 } from './unit04-family';
+import { unit05 } from './unit05-objects';
+import { unit06 } from './unit06-home';
+import { unit07 } from './unit07-food';
+import { unit08 } from './unit08-routines';
+import { unit09 } from './unit09-time';
+import { unit10 } from './unit10-city';
+import { unit11 } from './unit11-likes';
+import { unit12 } from './unit12-questions';
 
 /**
  * Currículo de inglés A1 (ver docs/LEARNING_CURRICULUM.md).
- * Unidades 4–12 planificadas, todavía sin contenido.
  * Todo el contenido está en review_status = 'draft' hasta pasar revisión editorial humana.
  */
-export const A1_UNITS: UnitDef[] = [unit01, unit02, unit03];
+export const A1_UNITS: UnitDef[] = [
+  unit01,
+  unit02,
+  unit03,
+  unit04,
+  unit05,
+  unit06,
+  unit07,
+  unit08,
+  unit09,
+  unit10,
+  unit11,
+  unit12,
+];
 
 export const unitId = (unit: UnitDef) => `a1-u${String(unit.position).padStart(2, '0')}`;
 export const lessonId = (unit: UnitDef, index: number) =>

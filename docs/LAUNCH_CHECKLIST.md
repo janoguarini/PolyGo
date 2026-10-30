@@ -10,6 +10,7 @@ dispositivo o una decisión de producto; el resto está en el repo.
 | ✅ | Borrado de cuenta dentro de la app (Apple 5.1.1(v), Google Play) | — | Perfil → Eliminar cuenta · Edge Function `delete-account` (probada contra Supabase real) |
 | ⬜ | URL web para pedir el borrado sin la app (Google Play la exige) | Vos | Una página o un email de contacto; cargarla en Play Console → Seguridad de los datos |
 | ⬜ | Política de privacidad publicada en una URL | Vos | Completar y revisar [PRIVACY_POLICY.md](PRIVACY_POLICY.md) (es un borrador), publicarla y poner la URL en `EXPO_PUBLIC_PRIVACY_POLICY_URL` (el enlace aparece en Perfil) y en ambas tiendas |
+| ✅ | Currículo A1 completo: 12 unidades, 60 lecciones, 244 palabras, 457 ejercicios | — | Cargado y verificado por checksum contra Supabase |
 | ⬜ | Revisión editorial humana del contenido A1 (`review_status = 'draft'`) | Vos | Ver LEARNING_CURRICULUM.md |
 | ⬜ | Bundle ID / package definitivos (`com.polygo.app` es provisional) | Vos | `app.json`; cambiarlo después de publicar no es posible |
 | ⬜ | Ícono, splash y capturas definitivas | Vos | `assets/`; capturas para la ficha de cada tienda |
@@ -37,7 +38,7 @@ dispositivo o una decisión de producto; el resto está en el repo.
 | ⬜ | Protección de contraseñas filtradas (HaveIBeenPwned) | Vos: decidir; puede requerir plan Pro |
 | ⬜ | CAPTCHA en registro si aparece abuso (no hay confirmación de email) | Vos, si hace falta |
 | ⬜ | Servidor de partidas desplegado con HTTPS (`wss://`) y `EXPO_PUBLIC_BATTLE_SERVER_URL` apuntando ahí | Vos: elegir hosting (DEPLOYMENT.md) |
-| ⬜ | Parche `react-native` 0.88.0 → 0.88.1 que pide expo-doctor | Vos: decidir; `npx expo install --fix` |
+| ✅ | Parche `react-native` 0.88.1 (expo-doctor 20/20) | 2026-10-30 |
 
 ## 4. Calidad
 

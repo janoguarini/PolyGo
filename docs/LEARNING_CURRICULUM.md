@@ -9,18 +9,20 @@ Referencia: nivel A1 del MCER. Completar unidades **no** equivale a una certific
 | 1 | Saludos y presentaciones | 5 | ✅ cargada (borrador) |
 | 2 | Pronombres y verbo *to be* | 5 | ✅ cargada (borrador) |
 | 3 | Números, edades y países | 5 | ✅ cargada (borrador) |
-| 4 | Familia y personas | — | planificada |
-| 5 | Objetos cotidianos | — | planificada |
-| 6 | Casa y habitaciones | — | planificada |
-| 7 | Comida y bebidas | — | planificada |
-| 8 | Rutinas y presente simple | — | planificada |
-| 9 | Horarios y días | — | planificada |
-| 10 | Lugares de la ciudad | — | planificada |
-| 11 | Gustos y preferencias | — | planificada |
-| 12 | Preguntas y conversaciones básicas | — | planificada |
+| 4 | Familia y personas (*his/her/our/their*, *have/has*) | 5 | ✅ cargada (borrador) |
+| 5 | Objetos cotidianos (*a/an*, *this/that/these/those*, colores) | 5 | ✅ cargada (borrador) |
+| 6 | Casa y habitaciones (*there is/are*, preposiciones de lugar) | 5 | ✅ cargada (borrador) |
+| 7 | Comida y bebidas (*want*, *eat/drink*, *hungry/thirsty*) | 5 | ✅ cargada (borrador) |
+| 8 | Rutinas y presente simple (*-s*, *do/does*, *don't/doesn't*, frecuencia) | 5 | ✅ cargada (borrador) |
+| 9 | Horarios y días (días, *o'clock*, *half past*, *at/on/in*) | 5 | ✅ cargada (borrador) |
+| 10 | Lugares de la ciudad (lugares, *near/far*, indicaciones) | 5 | ✅ cargada (borrador) |
+| 11 | Gustos y preferencias (*like/love/hate*, *can*, *favorite*) | 5 | ✅ cargada (borrador) |
+| 12 | Preguntas y conversaciones básicas (*what/when/why/which/how much/many*) | 5 | ✅ cargada (borrador) |
 
-Totales actuales: 15 lecciones · 64 palabras · 119 ejercicios.
-Todo el contenido tiene `review_status = 'draft'`: fue redactado sin revisión editorial humana. Antes del lanzamiento, una persona con dominio del inglés debe revisarlo (traducciones, IPA, ejemplos) y marcarlo `reviewed`.
+Totales actuales: 12 unidades · 60 lecciones · 244 palabras · 457 ejercicios (verificado con checksum md5 contra Supabase, 2026-10-30).
+Todo el contenido tiene `review_status = 'draft'`: fue redactado sin revisión editorial humana (las unidades 1–3 tuvieron además una revisión lingüística automática/asistida el 2026-10-30). Antes del lanzamiento, una persona con dominio del inglés debe revisarlo (traducciones, IPA, ejemplos) y marcarlo `reviewed`.
+
+Retoques puntuales a unidades ya cargadas pueden ir en una migración chica de `UPDATE` (ver `…_content_a1_text_fixes.sql`) en vez de regenerar la unidad: el resultado debe ser idéntico al de regenerarla, y se verifica con el checksum.
 
 ## Flujo de autoría
 
@@ -37,6 +39,7 @@ Todo el contenido tiene `review_status = 'draft'`: fue redactado sin revisión e
 - Los ejercicios sólo usan palabras de su unidad o de unidades anteriores.
 - Opciones únicas que incluyen la respuesta; huecos `___` únicos; máscaras de ortografía coherentes; parejas sin repetidos; fichas de "ordenar" iguales a la respuesta.
 - La respuesta canónica y cada variante aceptada pasan el validador real de la app (`shared/answers.ts`).
+- Ninguna palabra inglesa coincide con la traducción de otra (con o sin tildes ni paréntesis): evita preguntas ambiguas en Word Rush y en el widget (p. ej. *café* el lugar vs. "café" = *coffee*).
 
 ## Tipos de ejercicio (`shared/exercises.ts`)
 

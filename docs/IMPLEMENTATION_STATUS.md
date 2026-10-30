@@ -1,6 +1,6 @@
 # Estado de implementación
 
-Última actualización: 2026-10-29 (Fase 6)
+Última actualización: 2026-10-30 (Fase 6 + contenido A1 completo)
 
 ## Fase actual
 
@@ -74,11 +74,13 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 - [x] Enlace opcional a la política de privacidad (`EXPO_PUBLIC_PRIVACY_POLICY_URL`) y borrador en PRIVACY_POLICY.md.
 - [x] CI en GitHub Actions (`npm run check` en cada push y PR).
 - [x] Advisors de Supabase y `npm audit` revisados (detalle en LAUNCH_CHECKLIST.md).
+- [x] `react-native` 0.88.1 (expo-doctor 20/20).
+- [x] Contenido A1 unidades 4–12 (45 lecciones, 180 palabras, 338 ejercicios) aplicado en Supabase; checksum md5 de palabras, lecciones, ejercicios y vínculos idéntico al local. Validación nueva contra traducciones ambiguas (corrigió *not*, *don't*, *doesn't*, *at* y reemplazó *café* por *museum*).
 
 ## Pendiente (por fase)
 
 - **Fase 2 (verificación manual):** recorrer una lección y un repaso en el teléfono.
-- **Fase 2 (contenido):** revisión editorial humana; unidades 4–12.
+- **Contenido:** revisión editorial humana de las 12 unidades.
 - **Fase 3 (verificación manual):** recorrer perfil, editar perfil, logros y perfil de otro jugador en el teléfono.
 - **Fase 4 (puesta en marcha):** completar `server/.env` con la secret key, levantar el servidor y jugar una partida ranked y una práctica en dos dispositivos. Después, elegir hosting (Fly.io/Railway/Render) con HTTPS.
 - **Fase 5 (verificación manual):** `eas init`, development build Android (y iOS si hay cuenta de Apple Developer), agregar ambos widgets, responder una ronda, verificar el cambio horario en iOS y que se vacían al cerrar sesión.
@@ -96,6 +98,8 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 | `20261029134056_content_a1_unit_03.sql` | ✅ (reaplicación idempotente testeada) | ✅ aplicada |
 | `20261029140504_profile_history_achievements.sql` | ✅ | ✅ aplicada |
 | `20261029144242_battle_settlement.sql` | ✅ | ✅ aplicada |
+| `20261030025417…030645_content_a1_unit_04…12.sql` (9 archivos) | ✅ | ✅ aplicadas |
+| `20261030030654_content_a1_text_fixes.sql` | ✅ | ✅ aplicada |
 
 Al aplicar por MCP, Supabase registra la versión con la hora de aplicación: los archivos locales se renombran para coincidir.
 Las migraciones no deben contener sentencias destructivas: el conector las rechaza sin poder pedir confirmación (ver SECURITY.md).
@@ -156,7 +160,7 @@ Todo dentro de un bloque que termina en excepción (rollback); conteos finales e
 | `expo prebuild` Android | `npx expo prebuild --no-install --platform android` | ✅ 2 receivers + `appwidget-provider` (iOS no se puede generar en Windows: lo hace EAS) |
 | CI (GitHub Actions) | `.github/workflows/ci.yml` | corre `npm run check` en cada push y PR |
 | Edge Function `delete-account` (E2E contra Supabase real) | script manual con usuario descartable | ✅ 401/401/400/200/401, sin datos residuales |
-| expo-doctor | `npx expo-doctor` | ⚠️ 19/20: `react-native` 0.88.0 instalado, el SDK pide 0.88.1 (parche publicado después; sin aplicar) |
+| expo-doctor | `npx expo-doctor` | ✅ 20/20 |
 
 No ejecutado todavía: widgets en un dispositivo (requiere development build); lecciones, repasos y pantallas de la Fase 3 en el teléfono; el servidor de partidas contra Supabase real y una partida en dos dispositivos.
 
@@ -180,5 +184,5 @@ Todo lo que falta está en [LAUNCH_CHECKLIST.md](LAUNCH_CHECKLIST.md). En orden:
 1. `npx eas-cli@latest login` + `init` y una development build de Android; seguir el guion de prueba manual (checklist, sección 6), incluidos widgets y eliminar cuenta.
 2. Servidor de partidas: `server/.env` con la secret key, levantarlo y jugar en dos dispositivos; después elegir hosting con HTTPS.
 3. Publicar la política de privacidad (completar el borrador) y una URL de borrado de cuenta; cargar `EXPO_PUBLIC_PRIVACY_POLICY_URL`.
-4. Decisiones: bundle ID definitivo, parche `react-native` 0.88.1, contraseñas filtradas, SMTP propio, monitoreo de errores.
+4. Decisiones: bundle ID definitivo, contraseñas filtradas, SMTP propio, monitoreo de errores.
 5. Revisión editorial del contenido A1, build de producción y envío a TestFlight / prueba interna.

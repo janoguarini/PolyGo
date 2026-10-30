@@ -91,6 +91,23 @@ describe('estructura del currículo A1', () => {
     }
   });
 
+  it('ninguna palabra inglesa coincide con la traducción de otra palabra', () => {
+    // Si no, en Word Rush y en el widget "café" (coffee) podría tener como opción "café" (el lugar).
+    const plain = (s: string) =>
+      s
+        .normalize('NFD')
+        .replace(/[̀-ͯ]/g, '')
+        .replace(/\(.*?\)/g, '')
+        .trim()
+        .toLowerCase();
+    const clashes = allWords.flatMap((a) =>
+      allWords
+        .filter((b) => b.id !== a.id && plain(a.text) === plain(b.translation))
+        .map((b) => `${a.id} ↔ ${b.id}`),
+    );
+    expect(clashes).toEqual([]);
+  });
+
   it('cada palabra se practica en al menos un ejercicio', () => {
     const used = new Set(exercises.flatMap((e) => e.def.words));
     const unused = allWords.filter((w) => !used.has(w.id)).map((w) => w.id);

@@ -53,8 +53,8 @@ export const unit01: UnitDef = {
       translation: 'sí',
       ipa: '/jɛs/',
       emoji: '✅',
-      exampleEn: 'Yes, I am.',
-      exampleEs: 'Sí, lo soy.',
+      exampleEn: 'Yes, I am a student.',
+      exampleEs: 'Sí, soy estudiante.',
       tags: ['basics'],
     },
     {

@@ -108,7 +108,7 @@ export const unit02: UnitDef = {
     {
       id: 'en-not',
       text: 'not',
-      translation: 'no (para negar)',
+      translation: 'negación (is not, am not)',
       acceptedTranslations: ['no'],
       ipa: '/nɑt/',
       exampleEn: 'I am not tired.',
@@ -373,7 +373,7 @@ export const unit02: UnitDef = {
             explanation: 'En respuestas cortas se repite el verbo: Yes, I am / No, I am not.',
           },
         ),
-        ex.translationChoice('not', 'no (para negar)', ['sí', 'y', 'de'], ['en-not']),
+        ex.translationChoice('not', 'negación (is not, am not)', ['sí', 'y', 'de'], ['en-not']),
         ex.listenChoice(
           'Is she happy?',
           ['She is happy.', 'Is he happy?', 'Are you happy?'],

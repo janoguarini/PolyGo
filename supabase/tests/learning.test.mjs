@@ -4,6 +4,17 @@ import { randomUUID } from 'node:crypto';
 
 import { SRS_CONFIG } from '../../shared/srs.ts';
 import { createDb, createUser, as } from './harness.mjs';
+import { A1_UNITS } from '../../content/a1/index.ts';
+
+// Totales esperados calculados desde el contenido fuente (content/a1): las migraciones deben cargarlo entero.
+const CONTENT_TOTALS = {
+  units: A1_UNITS.length,
+  lessons: A1_UNITS.reduce((n, u) => n + u.lessons.length, 0),
+  exercises: A1_UNITS.reduce((n, u) => n + u.lessons.reduce((m, l) => m + l.exercises.length, 0), 0),
+  words: A1_UNITS.reduce((n, u) => n + u.words.length, 0),
+};
+const CONTENT_LINKS = A1_UNITS.flatMap((u) => u.lessons.flatMap((l) => l.exercises))
+  .reduce((n, e) => n + new Set(e.words).size, 0);
 
 let db;
 let alice;
@@ -254,7 +265,7 @@ test('contenido real A1: se carga completo y la primera lección se puede comple
            (select count(*)::int from public.words where id like 'en-%' and is_published) as words,
            (select count(*)::int from public.exercises e where id like 'a1-%'
               and not exists (select 1 from public.exercise_words w where w.exercise_id = e.id)) as orphan_exercises`);
-  assert.deepEqual(rows[0], { units: 3, lessons: 15, exercises: 119, words: 64, orphan_exercises: 0 });
+  assert.deepEqual(rows[0], { ...CONTENT_TOTALS, orphan_exercises: 0 });
 
   const carol = await createUser(db, 'carol@test.dev');
   const lessonExercises = await db.query(`select id from public.exercises where lesson_id = 'a1-u01-l01' order by position`);
@@ -275,10 +286,12 @@ test('el seed de contenido es idempotente (se puede reaplicar)', async () => {
   const { readFileSync, readdirSync } = await import('node:fs');
   const dir = new URL('../migrations/', import.meta.url);
   const contentFiles = readdirSync(dir).filter((f) => /_content_a1_unit_\d+\.sql$/.test(f)).sort();
-  assert.equal(contentFiles.length, 3);
+  // Al menos una migración por unidad (una unidad puede tener varias versiones).
+  assert.ok(contentFiles.length >= CONTENT_TOTALS.units);
   for (const file of contentFiles) await db.exec(readFileSync(new URL(file, dir), 'utf8'));
   const { rows } = await db.query(`
     select (select count(*)::int from public.exercises where id like 'a1-%' and is_published) as exercises,
            (select count(*)::int from public.exercise_words) as links`);
-  assert.deepEqual(rows[0], { exercises: 119, links: 194 + 3 });
+  // + 3 vínculos del fixture de este archivo.
+  assert.deepEqual(rows[0], { exercises: CONTENT_TOTALS.exercises, links: CONTENT_LINKS + 3 });
 });
