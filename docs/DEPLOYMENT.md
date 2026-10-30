@@ -59,11 +59,26 @@ cp .env.example .env        # completar la secret key
 npm run dev                 # escucha en :3001
 ```
 
-En el `.env` de la app: `EXPO_PUBLIC_BATTLE_SERVER_URL=http://<IP-de-la-PC>:3001` (la misma IP que muestra `npx expo start`) y reiniciar Expo. Para probar una partida ranked hacen falta **dos cuentas en dos dispositivos** (o un teléfono y el simulador). Windows puede pedir permiso de firewall para Node la primera vez.
+En el `.env` de la app: `EXPO_PUBLIC_BATTLE_SERVER_URL=http://<IP-de-la-PC>:3001` (la misma IP que muestra `npx expo start`) y reiniciar Expo. Con una sola cuenta alcanza: a los 10 s sin rival humano toca un bot (BOT). Para probar contra una persona hacen falta dos cuentas en dos dispositivos. Windows puede pedir permiso de firewall para Node la primera vez.
 
 ### Producción
 
 - Imagen: `docker build -f server/Dockerfile -t polygo-battle-server .` (desde la raíz: el servidor importa `shared/`).
 - Hosting con WebSockets y proceso persistente: Fly.io, Railway o Render. Health check: `GET /health`.
+- **Una sola instancia**: la cola y las partidas viven en memoria (no escalar a 2+ réplicas).
+
+#### Railway (recomendado)
+
+1. railway.app → New Project → Deploy from GitHub repo → `PolyGo`. Root directory: la raíz del repo (el build necesita `shared/`).
+2. Service → **Variables**:
+   - `RAILWAY_DOCKERFILE_PATH` = `server/Dockerfile`
+   - `SUPABASE_URL` = `https://wtymosvsymzoosxscnxi.supabase.co`
+   - `SUPABASE_SERVICE_ROLE_KEY` = la secret / service_role key (la misma de `server/.env`)
+   - `PORT` la pone Railway; no hace falta cargarla.
+3. Service → **Settings → Networking → Generate Domain** (te da `https://<algo>.up.railway.app`). Settings → Deploy → Healthcheck Path: `/health`. Réplicas: 1.
+4. Verificar: `https://<dominio>/health` responde `{"ok":true,...}`.
+5. App: `EXPO_PUBLIC_BATTLE_SERVER_URL=https://<dominio>` en `.env` y en las variables de EAS para las builds.
+
+Verificado el 2026-10-30: el servidor corriendo contra Supabase real jugó una partida ranked completa contra un bot (liquidación, historial y `has_bot` correctos) con un usuario temporal que después se borró; la imagen se simuló con sólo dependencias de producción.
 - Servirlo detrás de HTTPS (`wss://`): las builds de producción de Android/iOS bloquean HTTP en claro.
 - Al reiniciar, las partidas en curso se cancelan sin ELO; programar deploys fuera de horas pico.
