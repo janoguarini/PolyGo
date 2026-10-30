@@ -8,6 +8,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ErrorState, LoadingState, colors } from '@/design-system';
 import { AuthProvider, useAuth } from '@/features/auth/AuthProvider';
 import { ConfigMissing } from '@/features/auth/ConfigMissing';
+import { useApplySoundEffectsPref } from '@/features/preferences/soundEffects';
 import { useMyProfile } from '@/features/profile/hooks';
 import { envProblems } from '@/lib/env';
 import { configureNotifications } from '@/features/reminders/notifications';
@@ -57,6 +58,7 @@ export function ErrorBoundary({ error, retry }: ErrorBoundaryProps) {
 function RootNavigator() {
   const { session, initializing, recoveringPassword } = useAuth();
   const profile = useMyProfile();
+  useApplySoundEffectsPref();
 
   if (initializing || (session && profile.isPending))
     return <LoadingState label="Preparando Polygo…" />;

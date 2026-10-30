@@ -18,6 +18,7 @@ import {
 } from '@/design-system';
 import { signOut } from '@/features/auth/api';
 import { FormMessage } from '@/features/auth/FormMessage';
+import { useSetSoundEffects, useSoundEffectsPref } from '@/features/preferences/soundEffects';
 import { useMyProfile, useUpdateSettings } from '@/features/profile/hooks';
 import { ReminderSettings } from '@/features/reminders/ReminderSettings';
 import type { ProfileVisibility } from '@/lib/database.types';
@@ -43,6 +44,8 @@ export default function SettingsScreen() {
   const { data, isPending, isError, refetch } = useMyProfile();
   const updateSettings = useUpdateSettings();
   const logout = useMutation({ mutationFn: signOut });
+  const soundPref = useSoundEffectsPref();
+  const setSound = useSetSoundEffects();
 
   if (isPending) return <LoadingState />;
   if (isError || !data) return <ErrorState onRetry={() => void refetch()} />;
@@ -54,6 +57,26 @@ export default function SettingsScreen() {
 
       <Text variant="overline">RECORDATORIO</Text>
       <ReminderSettings />
+
+      <Text variant="overline" style={styles.section}>
+        SONIDO
+      </Text>
+      <Card style={styles.switchRow}>
+        <View style={styles.flex}>
+          <Text variant="bodyStrong">Efectos de sonido</Text>
+          <Text variant="caption">
+            Sonidos de acierto, error y fin de lección o partida. La pronunciación siempre suena.
+          </Text>
+        </View>
+        <Switch
+          accessibilityLabel="Efectos de sonido"
+          value={soundPref.data ?? true}
+          disabled={soundPref.data === undefined || setSound.isPending}
+          onValueChange={(enabled) => setSound.mutate(enabled)}
+          trackColor={{ false: colors.surfaceHighlight, true: colors.primary }}
+          thumbColor={colors.textStrong}
+        />
+      </Card>
 
       <Text variant="overline" style={styles.section}>
         PRIVACIDAD

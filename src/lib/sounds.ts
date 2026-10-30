@@ -10,6 +10,12 @@ const SOURCES = {
 export type SoundEffect = keyof typeof SOURCES;
 
 const players = new Map<SoundEffect, AudioPlayer>();
+/** Preferencia «Efectos de sonido» (Ajustes). La voz de pronunciación no depende de esto. */
+let effectsEnabled = true;
+
+export function setSoundEffectsEnabled(enabled: boolean) {
+  effectsEnabled = enabled;
+}
 let audioMode: Promise<void> | null = null;
 
 /**
@@ -43,6 +49,7 @@ export function preloadSounds() {
 }
 
 export function playSound(name: SoundEffect) {
+  if (!effectsEnabled) return;
   try {
     const p = player(name);
     // Si ya sonó, queda al final: se rebobina antes de reproducir.
