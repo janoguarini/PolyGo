@@ -66,4 +66,11 @@ export class Matchmaker {
     for (const id of taken) this.entries.delete(id);
     return pairs;
   }
+
+  /** Saca de la cola a quienes esperan hace al menos `waitMs` (para emparejarlos con un bot). */
+  takeWaitingLongerThan(waitMs: number, now: number): QueueEntry[] {
+    const expired = [...this.entries.values()].filter((e) => now - e.joinedAt >= waitMs);
+    for (const e of expired) this.entries.delete(e.userId);
+    return expired;
+  }
 }

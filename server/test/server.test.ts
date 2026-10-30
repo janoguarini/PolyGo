@@ -51,6 +51,8 @@ before(async () => {
     rules: RULES,
     tickMs: 20,
     random: seededRandom(9),
+    // Los bots tienen su propio archivo de tests (bots.test.ts).
+    botAfterMs: null,
   });
   await new Promise<void>((resolve) => server.http.listen(0, resolve));
   url = `http://127.0.0.1:${(server.http.address() as AddressInfo).port}`;

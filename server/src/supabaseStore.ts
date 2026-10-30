@@ -76,6 +76,19 @@ export function createSupabaseStore(db: SupabaseClient<Database>): BattleStore {
       if (error) throw error;
     },
 
+    async startBotBattle(battleId, languageCode, player, bot) {
+      const { error } = await db.rpc('start_bot_battle', {
+        p_battle_id: battleId,
+        p_language_code: languageCode,
+        p_player: player,
+        p_bot_name: bot.name,
+        p_bot_avatar_id: bot.avatarId,
+        p_bot_rating: bot.rating,
+        p_protocol_version: PROTOCOL_VERSION,
+      });
+      if (error) throw error;
+    },
+
     async settlementContext(battleId) {
       const { data, error } = await db.rpc('battle_settlement_context', {
         p_battle_id: battleId,

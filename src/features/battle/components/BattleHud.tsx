@@ -6,6 +6,8 @@ import type { PublicPlayer, ScoreLine } from '@shared/protocol';
 import { Avatar, Card, ProgressBar, Text, colors, gradients, spacing } from '@/design-system';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 
+import { BotBadge } from './BotBadge';
+
 const DANGER = [colors.danger, colors.dangerStrong] as const;
 
 interface Props {
@@ -83,13 +85,16 @@ function PlayerScore({
     <View
       style={[styles.player, right && styles.playerRight]}
       accessible
-      accessibilityLabel={`${label ?? player?.username ?? ''}: ${line?.score ?? 0} puntos`}
+      accessibilityLabel={`${label ?? player?.username ?? ''}${player?.isBot ? ' (bot)' : ''}: ${line?.score ?? 0} puntos`}
     >
       <Avatar avatarId={player?.avatarId} photoUrl={avatarPhotoUrl(player?.avatarPath)} size={36} />
       <View style={right ? styles.alignRight : undefined}>
-        <Text variant="caption" numberOfLines={1}>
-          {label ?? player?.username}
-        </Text>
+        <View style={[styles.nameRow, right && styles.playerRight]}>
+          <Text variant="caption" numberOfLines={1}>
+            {label ?? player?.username}
+          </Text>
+          {player?.isBot ? <BotBadge /> : null}
+        </View>
         <Text variant="stat">{line?.score ?? 0}</Text>
       </View>
     </View>
@@ -103,6 +108,7 @@ const styles = StyleSheet.create({
   player: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, flexShrink: 1 },
   playerRight: { flexDirection: 'row-reverse' },
   alignRight: { alignItems: 'flex-end' },
+  nameRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
   notice: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, padding: spacing.md },
   noticeText: { flex: 1 },
 });

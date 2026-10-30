@@ -1,5 +1,5 @@
 import { router, useLocalSearchParams } from 'expo-router';
-import { Dumbbell, Search, Swords, X } from 'lucide-react-native';
+import { Search, Swords, X } from 'lucide-react-native';
 import { useCallback, useEffect } from 'react';
 import { Alert, BackHandler, StyleSheet, View } from 'react-native';
 
@@ -21,6 +21,7 @@ import {
 } from '@/design-system';
 import { ERROR_MESSAGES } from '@/features/battle/client';
 import { BattleHud } from '@/features/battle/components/BattleHud';
+import { BotBadge } from '@/features/battle/components/BotBadge';
 import { BattleResult } from '@/features/battle/components/BattleResult';
 import { QuestionCard } from '@/features/battle/components/QuestionCard';
 import {
@@ -83,11 +84,6 @@ export default function BattleScreen() {
     return () => sub.remove();
   }, [exit]);
 
-  const switchToPractice = () => {
-    session.leave();
-    session.start('practice');
-  };
-
   return (
     <Screen edges={['top', 'bottom']}>
       <View style={styles.topBar}>
@@ -112,7 +108,6 @@ export default function BattleScreen() {
         onReady={session.ready}
         onAnswer={session.answer}
         onRetry={() => session.start(state.mode)}
-        onPractice={switchToPractice}
         onExit={exit}
       />
     </Screen>
@@ -125,11 +120,10 @@ interface BodyProps {
   onReady: () => void;
   onAnswer: (option: number) => void;
   onRetry: () => void;
-  onPractice: () => void;
   onExit: () => void;
 }
 
-function Body({ state, now, onReady, onAnswer, onRetry, onPractice, onExit }: BodyProps) {
+function Body({ state, now, onReady, onAnswer, onRetry, onExit }: BodyProps) {
   const me = state.players.find((p) => p.slot === state.yourSlot);
   const opponent = opponentPlayer(state);
 
@@ -168,22 +162,11 @@ function Body({ state, now, onReady, onAnswer, onRetry, onPractice, onExit }: Bo
               Rivales con ±{state.queue?.window ?? MATCHMAKING.initialWindow} de ELO. El rango se
               amplía mientras esperás.
             </Text>
+            <Text variant="caption" align="center">
+              Si en unos segundos no aparece nadie, jugás contra un bot de tu nivel (marcado BOT).
+              Cuenta para el ELO igual que una partida contra una persona.
+            </Text>
           </Card>
-          {waited >= MATCHMAKING.suggestPracticeAfterMs ? (
-            <Card style={styles.gap}>
-              <Text variant="bodyStrong">No hay rivales cerca de tu nivel ahora.</Text>
-              <Text color="textMuted">
-                Podés seguir esperando o practicar solo contra el reloj. No usamos rivales
-                simulados.
-              </Text>
-              <Button
-                label="Practicar sin ELO"
-                variant="secondary"
-                icon={<Dumbbell color={colors.text} size={18} />}
-                onPress={onPractice}
-              />
-            </Card>
-          ) : null}
           <Button label="Cancelar búsqueda" variant="ghost" onPress={onExit} />
         </View>
       );
@@ -209,6 +192,7 @@ function Body({ state, now, onReady, onAnswer, onRetry, onPractice, onExit }: Bo
               username={opponent?.username ?? '…'}
               avatarId={opponent?.avatarId}
               avatarPath={opponent?.avatarPath}
+              isBot={opponent?.isBot ?? false}
               rating={opponent?.rating}
               games={opponent?.gamesPlayed}
             />
@@ -314,22 +298,29 @@ function PlayerBadge({
   username,
   avatarId,
   avatarPath,
+  isBot = false,
   rating,
   games,
 }: {
   username: string;
   avatarId: string | undefined;
   avatarPath: string | null | undefined;
+  isBot?: boolean;
   rating: number | undefined;
   games: number | undefined;
 }) {
   const placement = games === undefined || isInPlacement(games);
   return (
-    <View style={styles.badge} accessible accessibilityLabel={`${username}, ${rating ?? ''} ELO`}>
+    <View
+      style={styles.badge}
+      accessible
+      accessibilityLabel={`${username}${isBot ? ', bot' : ''}, ${rating ?? ''} ELO`}
+    >
       <Avatar avatarId={avatarId} photoUrl={avatarPhotoUrl(avatarPath)} size={64} />
       <Text variant="bodyStrong" numberOfLines={1}>
         {username}
       </Text>
+      {isBot ? <BotBadge /> : null}
       {rating !== undefined ? (
         <View style={styles.badgeRating}>
           <RankEmblemForRating rating={rating} size={22} />

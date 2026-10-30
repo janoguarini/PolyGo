@@ -108,6 +108,10 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 - [x] El `DROP CONSTRAINT` de métricas se corrió a mano en el SQL Editor y no figura en el historial remoto de migraciones (registrarlo a mano fue bloqueado).
 - [ ] Probar en dispositivo (requiere development build nueva: image picker y manipulator son módulos nativos). Moderación de fotos: ver LAUNCH_CHECKLIST.md.
 
+### Ranked con bots (2026-10-30)
+- [x] Bots identificados con el distintivo BOT cuando no hay rival humano en 10 s; a tu nivel y con habilidad calibrada por simulación; cuentan para el ELO. Servidor (`Battle`, matchmaker, liquidación), migración `bot_battles` (aplicada) y app (rival encontrado, marcador, resultado e historial).
+- [ ] Probar contra Supabase real: el servidor de partidas sigue sin correr con la secret key ni estar alojado.
+
 ## Pendiente (por fase)
 
 - **Fase 2 (verificación manual):** recorrer una lección y un repaso en el teléfono.

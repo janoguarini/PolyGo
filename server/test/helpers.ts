@@ -64,6 +64,24 @@ export class FakeStore implements BattleStore {
     this.started.set(battleId, [p1, p2]);
   }
 
+  /** Partidas contra bots: id → [jugador, datos del bot]. */
+  botBattles = new Map<
+    string,
+    { player: string; bot: { name: string; avatarId: string; rating: number } }
+  >();
+
+  async startBotBattle(
+    battleId: string,
+    _language: string,
+    player: string,
+    bot: { name: string; avatarId: string; rating: number },
+  ) {
+    if (this.failStart) throw new Error('db down');
+    this.botBattles.set(battleId, { player, bot });
+    // El slot 2 no tiene usuario (como en start_bot_battle).
+    this.started.set(battleId, [player, `bot-slot:${battleId}`]);
+  }
+
   async settlementContext(battleId: string): Promise<SettlementContextRow[]> {
     const ids = this.started.get(battleId)!;
     return ids.map((id, i) => {

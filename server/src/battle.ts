@@ -19,6 +19,7 @@ import {
   type FinalLine,
   type RushQuestion,
 } from '../../shared/wordRush';
+import { BOT_CONFIG, botMove, botSkill } from '../../shared/bots';
 import type { Clock } from './clock';
 import type { PlayerInfo } from './types';
 
@@ -80,6 +81,8 @@ export class Battle {
     private readonly clock: Clock,
     private readonly hooks: BattleHooks,
     private readonly rules: BattleRules = WORD_RUSH,
+    /** Fuente [0, 1) de las jugadas de los bots (inyectable en tests). */
+    private readonly random: () => number = Math.random,
   ) {
     const expected = mode === 'practice' ? 1 : 2;
     if (players.length !== expected) throw new Error(`${mode} necesita ${expected} jugador(es)`);
@@ -121,6 +124,12 @@ export class Battle {
     this.schedule(this.rules.readyTimeoutMs, () => this.cancel('ready_timeout'));
     for (const seat of this.seats)
       this.hooks.send(seat.info.userId, 'match:found', this.snapshot(seat.info.userId));
+    // El bot confirma como una persona: con una pequeña demora.
+    for (const seat of this.seats) {
+      if (!seat.info.isBot) continue;
+      const { min, max } = BOT_CONFIG.readyMs;
+      this.schedule(min + this.random() * (max - min), () => this.markReady(seat.info.userId));
+    }
   }
 
   markReady(userId: string): boolean {
@@ -266,6 +275,7 @@ export class Battle {
         username: s.info.username,
         avatarId: s.info.avatarId,
         avatarPath: s.info.avatarPath ?? null,
+        isBot: s.info.isBot ?? false,
         rating: s.info.rating,
         gamesPlayed: s.info.gamesPlayed,
       })),
@@ -312,6 +322,10 @@ export class Battle {
   private sendQuestion(seat: Seat): void {
     seat.questionSentAt = this.clock.now();
     const question = this.questions[seat.questionIndex];
+    if (seat.info.isBot) {
+      if (question) this.scheduleBotAnswer(seat, question);
+      return;
+    }
     // Si está desconectado igual corre su reloj; al volver recibe la pregunta en battle:state.
     if (question && seat.connected) {
       this.hooks.send(
@@ -320,6 +334,18 @@ export class Battle {
         toQuestionView(question, seat.questionSentAt),
       );
     }
+  }
+
+  /** El bot "piensa" según su habilidad y responde por el mismo camino que una persona. */
+  private scheduleBotAnswer(seat: Seat, question: RushQuestion): void {
+    const move = botMove(botSkill(seat.info.rating), this.random);
+    this.schedule(move.delayMs, () => {
+      const wrong = question.options.map((_, i) => i).filter((i) => i !== question.correctOption);
+      const option = move.correct
+        ? question.correctOption
+        : wrong[Math.floor(this.random() * wrong.length)]!;
+      this.answer(seat.info.userId, question.index, option, () => {});
+    });
   }
 
   private forfeit(seat: Seat): void {

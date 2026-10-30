@@ -13,6 +13,11 @@
     "verbatimModuleSyntax": true,
     "types": ["node"]
   },
-  "include": ["src/**/*.ts", "test/**/*.ts", "../shared/**/*.ts", "../src/lib/database.generated.ts"],
+  "include": [
+    "src/**/*.ts",
+    "test/**/*.ts",
+    "../shared/**/*.ts",
+    "../src/lib/database.generated.ts"
+  ],
   "exclude": ["../shared/__tests__"]
 }

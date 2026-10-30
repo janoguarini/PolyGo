@@ -133,7 +133,13 @@ export interface MatchHistoryEntry {
   ratingDelta: number | null;
   ratingAfter: number | null;
   /** null si el rival borró su cuenta. */
-  opponent: { id: string; username: string | null; avatarId: string | null } | null;
+  /** null si el rival borró su cuenta. Un bot no tiene id (isBot). */
+  opponent: {
+    id: string | null;
+    username: string | null;
+    avatarId: string | null;
+    isBot: boolean;
+  } | null;
   opponentScore: number | null;
 }
 
@@ -164,13 +170,16 @@ export async function fetchMatchHistory(
         ? row.rating_after - row.rating_before
         : null,
     ratingAfter: row.rating_after ?? null,
-    opponent: row.opponent_id
-      ? {
-          id: row.opponent_id,
-          username: row.opponent_username ?? null,
-          avatarId: row.opponent_avatar_id ?? null,
-        }
-      : null,
+    // Bot: sin id pero con nombre. Cuenta borrada: sin id ni nombre.
+    opponent:
+      row.opponent_id || row.opponent_username
+        ? {
+            id: row.opponent_id ?? null,
+            username: row.opponent_username ?? null,
+            avatarId: row.opponent_avatar_id ?? null,
+            isBot: !row.opponent_id,
+          }
+        : null,
     opponentScore: row.opponent_score ?? null,
   }));
 }

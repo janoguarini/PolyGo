@@ -28,8 +28,6 @@ export const MATCHMAKING = {
   widenBy: 50,
   widenEveryMs: 5_000,
   maxWindow: 400,
-  /** Tras este tiempo sin rival la app ofrece el modo práctica (sin ELO). */
-  suggestPracticeAfterMs: 30_000,
 } as const;
 
 // ---------- máquina de estados ----------
@@ -65,6 +63,8 @@ export interface PublicPlayer {
   avatarId: string;
   /** Foto propia (ruta en el bucket avatars) o null si usa un zorro. */
   avatarPath?: string | null;
+  /** Rival bot (siempre se muestra con el distintivo BOT). */
+  isBot?: boolean;
   rating: number;
   gamesPlayed: number;
 }
@@ -92,6 +92,7 @@ export type CancelReason = 'ready_timeout' | 'opponent_left' | 'server_error' | 
 export interface PlayerResult {
   slot: 1 | 2;
   username: string;
+  isBot?: boolean;
   score: number;
   correct: number;
   answered: number;

@@ -13,6 +13,7 @@ import {
   type ErrorCode,
   type ServerToClientEvents,
 } from '../../shared/protocol';
+import { BOT_CONFIG, BOT_ID_PREFIX, pickBot } from '../../shared/bots';
 import { generateQuestions, type RushWord } from '../../shared/wordRush';
 import { Battle, type BattleHooks, type BattleRules, type Send } from './battle';
 import { systemClock, type Clock } from './clock';
@@ -40,6 +41,8 @@ export interface BattleServerOptions {
   wordCacheMs?: number;
   /** Eventos por segundo que acepta cada socket; el resto se descarta sin responder. */
   maxEventsPerSecond?: number;
+  /** Espera sin rival humano antes de jugar contra un bot; null desactiva los bots. */
+  botAfterMs?: number | null;
 }
 
 type IoSocket = Socket<ClientToServerEvents, ServerToClientEvents, object, { userId: string }>;
@@ -67,6 +70,7 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
     wordCacheMs = 10 * 60_000,
     // Una persona responde a lo sumo unas pocas preguntas por segundo; 20 deja margen holgado.
     maxEventsPerSecond = 20,
+    botAfterMs = BOT_CONFIG.afterMs,
   } = options;
 
   const sockets = new Map<string, IoSocket>();
@@ -110,6 +114,15 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
     send,
     onStart: (battle) => {
       if (battle.mode !== 'ranked') return Promise.resolve();
+      const human = battle.players.find((p) => !p.isBot)!;
+      const bot = battle.players.find((p) => p.isBot);
+      if (bot) {
+        return store.startBotBattle(battle.id, battle.languageCode, human.userId, {
+          name: bot.username,
+          avatarId: bot.avatarId,
+          rating: bot.rating,
+        });
+      }
       const [a, b] = battle.userIds;
       return store.startBattle(battle.id, battle.languageCode, a!, b!);
     },
@@ -174,6 +187,7 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
       clock,
       hooks,
       rules,
+      random,
     );
     battles.set(battle.id, battle);
     for (const p of players) battleByUser.set(p.userId, battle);
@@ -204,6 +218,29 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
           send(info.userId, 'server:error', { code: 'server_error' });
         }
       });
+    }
+    // Sin rival humano a tiempo: un bot a su altura (siempre identificado como BOT).
+    if (botAfterMs !== null) {
+      for (const entry of matchmaker.takeWaitingLongerThan(botAfterMs, now)) {
+        const info = queued.get(entry.userId);
+        queued.delete(entry.userId);
+        if (!info) continue;
+        const persona = pickBot(info.rating, random);
+        const bot: PlayerInfo = {
+          userId: `${BOT_ID_PREFIX}${randomUUID()}`,
+          username: persona.name,
+          avatarId: persona.avatarId,
+          avatarPath: null,
+          isBot: true,
+          languageCode: info.languageCode,
+          rating: persona.rating,
+          gamesPlayed: BOT_CONFIG.displayedGames,
+        };
+        createBattle('ranked', [info, bot]).catch((err: unknown) => {
+          logger.error('battle_create_failed', { err: String(err) });
+          send(info.userId, 'server:error', { code: 'server_error' });
+        });
+      }
     }
     for (const userId of queued.keys()) {
       const entry = matchmaker.get(userId);

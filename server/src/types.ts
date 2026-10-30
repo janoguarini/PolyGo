@@ -7,6 +7,8 @@ export interface PlayerInfo {
   username: string;
   avatarId: string;
   avatarPath?: string | null;
+  /** Bot de shared/bots.ts: no tiene cuenta y nunca se conecta. */
+  isBot?: boolean;
   languageCode: string;
   rating: number;
   gamesPlayed: number;
@@ -54,6 +56,13 @@ export interface BattleStore {
     languageCode: string,
     player1: string,
     player2: string,
+  ): Promise<void>;
+  /** Partida ranked contra un bot: el slot 2 queda sin usuario, con nombre y avatar del bot. */
+  startBotBattle(
+    battleId: string,
+    languageCode: string,
+    player: string,
+    bot: { name: string; avatarId: string; rating: number },
   ): Promise<void>;
   settlementContext(battleId: string): Promise<SettlementContextRow[]>;
   /** Lanza StaleRatingError si el rating cambió desde el contexto. */

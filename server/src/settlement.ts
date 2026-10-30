@@ -30,6 +30,7 @@ export async function settleBattle(
       players: lines.map((l) => ({
         slot: l.slot,
         username: l.info.username,
+        isBot: l.info.isBot ?? false,
         score: l.score,
         correct: l.correct,
         answered: l.answered,
@@ -50,6 +51,10 @@ export async function settleBattle(
     const players: SettlementPlayer[] = lines.map((line, i) => {
       const me = bySlot(line.slot);
       const opponent = bySlot(line.slot === 1 ? 2 : 1);
+      // El bot no tiene fila de rating: su rating es el que se le asignó al crear la partida.
+      const opponentLine = lines.find((l) => l.slot !== line.slot)!;
+      const opponentRating =
+        opponent?.rating ?? (opponentLine.info.isBot ? opponentLine.info.rating : null);
       const outcome = outcomes[i]!;
       const base = {
         slot: line.slot,
@@ -65,7 +70,7 @@ export async function settleBattle(
       }
       const change = computeRatingChange({
         rating: me.rating,
-        opponentRating: opponent?.rating ?? me.rating,
+        opponentRating: opponentRating ?? me.rating,
         outcome,
         gamesPlayed: me.gamesPlayed,
         matchesAgainstOpponentInWindow: me.matchesInWindow,
@@ -86,6 +91,7 @@ export async function settleBattle(
         players: players.map((p, i) => ({
           slot: p.slot,
           username: lines[i]!.info.username,
+          isBot: lines[i]!.info.isBot ?? false,
           score: p.score,
           correct: p.correct,
           answered: p.answered,

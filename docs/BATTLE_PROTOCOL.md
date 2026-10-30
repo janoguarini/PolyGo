@@ -87,7 +87,19 @@ Las partidas de práctica no se guardan. Las ranked:
 
 ## Matchmaking
 
-Cola en memoria por idioma (la versión de protocolo ya la filtra el handshake). Ventana inicial ±100 ELO, +50 cada 5 s hasta ±400; se empareja sólo si la diferencia entra en la ventana de **ambos**, priorizando a quien más espera y al rival más cercano. Nunca se muestran bots como personas: tras 30 s la app ofrece el modo práctica, claramente etiquetado y sin ELO.
+Cola en memoria por idioma (la versión de protocolo ya la filtra el handshake). Ventana inicial ±100 ELO, +50 cada 5 s hasta ±400; se empareja sólo si la diferencia entra en la ventana de **ambos**, priorizando a quien más espera y al rival más cercano. Un humano siempre tiene prioridad sobre un bot.
+
+## Bots
+
+Con pocos jugadores, quien espera **10 s** en la cola ranked sin rival humano juega contra un bot ([`shared/bots.ts`](../shared/bots.ts)):
+
+- **Siempre identificado:** nombre propio y distintivo **BOT** al encontrar rival, en la partida, en el resultado y en el historial. Nunca se presenta como persona.
+- **A tu nivel:** rating = el del jugador ± 40. Su habilidad sale de ese rating: precisión de 55 % (600) a 97 % (1900) y tiempo medio de respuesta de 5 s a 1,3 s, con variación log-normal. Una simulación con la puntuación real (`shared/__tests__/bots.test.ts`) verifica que a igual rating cada uno gana ~50 % y que más rating gana más seguido.
+- **Cuenta para el ELO** como una partida normal, calculada contra el rating del bot. Como el bot se elige a la altura del jugador, en promedio se gana la mitad: el ELO mide el nivel real y no se puede "farmear".
+- **Sin cuenta:** el bot no tiene fila en `profiles` ni `player_ratings`; ocupa el slot 2 de `battle_players` sin `user_id`, con `bot_name` y `bot_avatar_id` (`battles.has_bot = true`). No aparece en la clasificación.
+- **Juega por el mismo camino que una persona:** confirma con una demora de 0,6–2 s y responde con `Battle.answer`; el servidor no le envía nada.
+- Persistencia: `start_bot_battle` (en lugar de `start_battle`); la liquidación y `settle_battle` no cambian (el slot del bot no tiene rating que actualizar).
+- Ajustes: `BOT_CONFIG` en `shared/bots.ts`; `botAfterMs: null` en `createBattleServer` los desactiva.
 
 ## Limitaciones conocidas
 

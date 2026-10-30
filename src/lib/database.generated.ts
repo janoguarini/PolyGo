@@ -871,6 +871,18 @@ export type Database = {
         };
         Returns: undefined;
       };
+      start_bot_battle: {
+        Args: {
+          p_battle_id: string;
+          p_bot_avatar_id: string;
+          p_bot_name: string;
+          p_bot_rating: number;
+          p_language_code: string;
+          p_player: string;
+          p_protocol_version: number;
+        };
+        Returns: undefined;
+      };
       submit_learning_session: {
         Args: {
           p_attempts: Json;

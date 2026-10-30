@@ -22,7 +22,7 @@ function match(overrides: Partial<MatchHistoryEntry>): MatchHistoryEntry {
     totalAnswers: 10,
     ratingDelta: 24,
     ratingAfter: 1024,
-    opponent: { id: 'u2', username: 'bob', avatarId: 'flame' },
+    opponent: { id: 'u2', username: 'bob', avatarId: 'flame', isBot: false },
     opponentScore: 600,
     ...overrides,
   };
@@ -49,6 +49,17 @@ describe('MatchHistoryItem', () => {
     expect(screen.getByText('Victoria')).toBeTruthy();
     expect(screen.getByText('bob')).toBeTruthy();
     expect(screen.getByText('900–600 · +24')).toBeTruthy();
+  });
+
+  it('marca al rival bot y no abre su perfil', async () => {
+    await render(
+      <MatchHistoryItem
+        match={match({ opponent: { id: null, username: 'Kiko', avatarId: 'crown', isBot: true } })}
+      />,
+    );
+    expect(screen.getByText('Kiko')).toBeTruthy();
+    expect(screen.getByLabelText('Bot')).toBeTruthy();
+    expect(screen.getByLabelText('Victoria contra Kiko (bot), 900 a 600, +24 ELO')).toBeTruthy();
   });
 
   it('anonimiza al rival que borró su cuenta', async () => {

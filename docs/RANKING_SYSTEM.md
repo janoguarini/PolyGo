@@ -34,6 +34,10 @@ Partidas ranked contra **la misma cuenta** en las últimas 24 h (contando la act
 | 3–4 | 0.5 |
 | 5+ | 0 (no mueve rating; sí queda en el historial) |
 
+## Partidas contra bots
+
+Cuentan igual que contra una persona: el delta se calcula contra el rating asignado al bot (el del jugador ± 40). El bot no tiene rating propio que guardar. El anti-farming por rival repetido no aplica (cada bot es nuevo), pero no hace falta: el bot juega con la habilidad de su rating. Detalle en [BATTLE_PROTOCOL.md](BATTLE_PROTOCOL.md#bots).
+
 ## Tiers y divisiones
 
 | Tier | Rating mínimo | Divisiones (III → II → I) |

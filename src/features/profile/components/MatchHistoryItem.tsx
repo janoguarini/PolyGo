@@ -3,6 +3,8 @@ import { Pressable, StyleSheet, View } from 'react-native';
 
 import { Avatar, Text, colors, radii, spacing } from '@/design-system';
 
+import { BotBadge } from '@/features/battle/components/BotBadge';
+
 import type { MatchHistoryEntry } from '../api';
 import { RESULT_LABELS, formatDelta } from '../stats';
 
@@ -21,16 +23,20 @@ export function MatchHistoryItem({ match }: { match: MatchHistoryEntry }) {
   const opponentName = match.opponent?.username ?? 'Jugador eliminado';
   const delta =
     match.isRanked && match.ratingDelta !== null ? formatDelta(match.ratingDelta) : null;
-  const canOpen = Boolean(match.opponent?.username);
+  const isBot = match.opponent?.isBot ?? false;
+  const opponentId = match.opponent?.id ?? null;
+  const canOpen = Boolean(opponentId && match.opponent?.username);
 
-  const label = `${resultLabel}${match.forfeited ? ' por abandono' : ''} contra ${opponentName}, ${
+  const label = `${resultLabel}${match.forfeited ? ' por abandono' : ''} contra ${opponentName}${isBot ? ' (bot)' : ''}, ${
     match.score
   } a ${match.opponentScore ?? 0}${delta ? `, ${delta} ELO` : ''}`;
 
   return (
     <Pressable
       disabled={!canOpen}
-      onPress={() => router.push({ pathname: '/player/[id]', params: { id: match.opponent!.id } })}
+      onPress={() =>
+        opponentId && router.push({ pathname: '/player/[id]', params: { id: opponentId } })
+      }
       accessibilityRole={canOpen ? 'button' : undefined}
       accessibilityLabel={label}
       style={({ pressed }) => [styles.row, pressed && styles.pressed]}
@@ -40,9 +46,12 @@ export function MatchHistoryItem({ match }: { match: MatchHistoryEntry }) {
       />
       <Avatar avatarId={match.opponent?.avatarId} size={36} />
       <View style={styles.body}>
-        <Text variant="bodyStrong" numberOfLines={1}>
-          {opponentName}
-        </Text>
+        <View style={styles.nameRow}>
+          <Text variant="bodyStrong" numberOfLines={1} style={styles.shrink}>
+            {opponentName}
+          </Text>
+          {isBot ? <BotBadge /> : null}
+        </View>
         <Text variant="caption">
           {dateFormat.format(new Date(match.endedAt))}
           {match.isRanked ? '' : ' · práctica'}
@@ -62,6 +71,8 @@ export function MatchHistoryItem({ match }: { match: MatchHistoryEntry }) {
 }
 
 const styles = StyleSheet.create({
+  nameRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
+  shrink: { flexShrink: 1 },
   row: {
     flexDirection: 'row',
     alignItems: 'center',

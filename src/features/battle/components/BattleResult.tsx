@@ -9,6 +9,8 @@ import { accuracy } from '@shared/wordRush';
 import { Button, Card, RankEmblemForRating, Text, colors, spacing } from '@/design-system';
 import { TierBadge } from '@/features/profile/components/AchievementBadge';
 
+import { BotBadge } from './BotBadge';
+
 interface Props {
   result: BattleFinish;
   /** Partidas jugadas antes de esta, para saber si sigue en colocación. */
@@ -104,16 +106,19 @@ function Line({
     <View
       style={styles.row}
       accessible
-      accessibilityLabel={`${label}: ${player.score} puntos, ${player.correct} de ${player.answered} correctas`}
+      accessibilityLabel={`${label}${player.isBot ? ' (bot)' : ''}: ${player.score} puntos, ${player.correct} de ${player.answered} correctas`}
     >
-      <Text
-        variant="bodyStrong"
-        color={highlight ? 'textStrong' : 'text'}
-        style={styles.flex}
-        numberOfLines={1}
-      >
-        {label}
-      </Text>
+      <View style={[styles.flex, styles.nameRow]}>
+        <Text
+          variant="bodyStrong"
+          color={highlight ? 'textStrong' : 'text'}
+          numberOfLines={1}
+          style={styles.shrink}
+        >
+          {label}
+        </Text>
+        {player.isBot ? <BotBadge /> : null}
+      </View>
       <Text variant="caption">
         {player.correct}/{player.answered} · {pct}%
       </Text>
@@ -165,6 +170,8 @@ function RatingChange({
 }
 
 const styles = StyleSheet.create({
+  nameRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
+  shrink: { flexShrink: 1 },
   wrap: { gap: spacing.lg },
   header: { alignItems: 'center', gap: spacing.sm, marginVertical: spacing.lg },
   gap: { gap: spacing.md },

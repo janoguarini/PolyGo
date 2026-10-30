@@ -369,3 +369,103 @@ test('cancelar: no toca ratings ni historial; las partidas viejas abiertas se ca
     { id: fresh, status: 'in_progress' },
   ]);
 });
+
+test('partida contra un bot: sólo el jugador cambia de ELO y el historial muestra al bot', async () => {
+  const dana = await createUser(db, 'dana@test.dev');
+  await db.query(`update public.profiles set username = 'dana' where id = $1`, [dana]);
+  const id = randomUUID();
+  await server(`select public.start_bot_battle($1, 'en', $2, 'Kiko', 'crown', 1100, 1::smallint)`, [
+    id,
+    dana,
+  ]);
+
+  const ctx = await context(id);
+  assert.equal(ctx.length, 2);
+  assert.equal(ctx[1].user_id, null, 'el bot no tiene cuenta');
+  // Como server/src/settlement.ts: contra el bot se usa su rating asignado (1100).
+  const change = computeRatingChange({
+    rating: ctx[0].rating,
+    opponentRating: 1100,
+    outcome: 'win',
+    gamesPlayed: ctx[0].games_played,
+    matchesAgainstOpponentInWindow: ctx[0].matches_in_window,
+  });
+  const [{ r }] = await server('select public.settle_battle($1, $2, $3::jsonb) as r', [
+    id,
+    'completed',
+    JSON.stringify([
+      {
+        slot: 1,
+        score: 900,
+        correct: 9,
+        answered: 10,
+        result: 'win',
+        forfeited: false,
+        rating_before: ctx[0].rating,
+        games_played_before: ctx[0].games_played,
+        rating_after: change.after,
+      },
+      {
+        slot: 2,
+        score: 500,
+        correct: 6,
+        answered: 9,
+        result: 'loss',
+        forfeited: false,
+        rating_before: null,
+        games_played_before: null,
+        rating_after: null,
+      },
+    ]),
+  ]);
+  assert.equal(r.duplicate, false);
+  const { rows } = await db.query(
+    `select rating, games_played, wins from public.player_ratings where user_id = $1`,
+    [dana],
+  );
+  assert.deepEqual(rows[0], { rating: change.after, games_played: 1, wins: 1 });
+  assert.ok(change.after > 1000);
+
+  const history = await as(
+    db,
+    'authenticated',
+    dana,
+    async () => (await db.query('select * from public.get_match_history(10, null)')).rows,
+  );
+  assert.equal(history.length, 1);
+  assert.equal(history[0].opponent_id, null);
+  assert.equal(history[0].opponent_username, 'Kiko');
+  assert.equal(history[0].opponent_avatar_id, 'crown');
+  assert.equal(history[0].result, 'win');
+
+  const { rows: battle } = await db.query('select has_bot from public.battles where id = $1', [id]);
+  assert.equal(battle[0].has_bot, true);
+});
+
+test('start_bot_battle: valida datos y no la puede llamar un cliente', async () => {
+  for (const [name, avatar, rating] of [
+    ['', 'crown', 1000],
+    ['Kiko', 'rocket', 1000],
+    ['Kiko', 'crown', 50],
+  ]) {
+    await assert.rejects(
+      server(`select public.start_bot_battle($1, 'en', $2, $3, $4, $5, 1::smallint)`, [
+        randomUUID(),
+        alice,
+        name,
+        avatar,
+        rating,
+      ]),
+      /invalid_players/,
+    );
+  }
+  await as(db, 'authenticated', alice, async () => {
+    await assert.rejects(
+      db.query(`select public.start_bot_battle($1, 'en', $2, 'Kiko', 'crown', 1000, 1::smallint)`, [
+        randomUUID(),
+        alice,
+      ]),
+      /permission denied/,
+    );
+  });
+});
