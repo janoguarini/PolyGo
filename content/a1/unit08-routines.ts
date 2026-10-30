@@ -174,7 +174,7 @@ export const unit08: UnitDef = {
     w(
       'en-do',
       'do',
-      'hacer / auxiliar de preguntas',
+      'hacer (auxiliar de preguntas)',
       '/du/',
       undefined,
       'Do you work?',

@@ -4,20 +4,20 @@ Referencia: nivel A1 del MCER. Completar unidades **no** equivale a una certific
 
 ## Estado del contenido
 
-| # | Unidad | Lecciones | Estado |
-| --- | --- | --- | --- |
-| 1 | Saludos y presentaciones | 5 | ✅ cargada (borrador) |
-| 2 | Pronombres y verbo *to be* | 5 | ✅ cargada (borrador) |
-| 3 | Números, edades y países | 5 | ✅ cargada (borrador) |
-| 4 | Familia y personas (*his/her/our/their*, *have/has*) | 5 | ✅ cargada (borrador) |
-| 5 | Objetos cotidianos (*a/an*, *this/that/these/those*, colores) | 5 | ✅ cargada (borrador) |
-| 6 | Casa y habitaciones (*there is/are*, preposiciones de lugar) | 5 | ✅ cargada (borrador) |
-| 7 | Comida y bebidas (*want*, *eat/drink*, *hungry/thirsty*) | 5 | ✅ cargada (borrador) |
-| 8 | Rutinas y presente simple (*-s*, *do/does*, *don't/doesn't*, frecuencia) | 5 | ✅ cargada (borrador) |
-| 9 | Horarios y días (días, *o'clock*, *half past*, *at/on/in*) | 5 | ✅ cargada (borrador) |
-| 10 | Lugares de la ciudad (lugares, *near/far*, indicaciones) | 5 | ✅ cargada (borrador) |
-| 11 | Gustos y preferencias (*like/love/hate*, *can*, *favorite*) | 5 | ✅ cargada (borrador) |
-| 12 | Preguntas y conversaciones básicas (*what/when/why/which/how much/many*) | 5 | ✅ cargada (borrador) |
+| #   | Unidad                                                                   | Lecciones | Estado                |
+| --- | ------------------------------------------------------------------------ | --------- | --------------------- |
+| 1   | Saludos y presentaciones                                                 | 5         | ✅ cargada (borrador) |
+| 2   | Pronombres y verbo _to be_                                               | 5         | ✅ cargada (borrador) |
+| 3   | Números, edades y países                                                 | 5         | ✅ cargada (borrador) |
+| 4   | Familia y personas (_his/her/our/their_, _have/has_)                     | 5         | ✅ cargada (borrador) |
+| 5   | Objetos cotidianos (_a/an_, _this/that/these/those_, colores)            | 5         | ✅ cargada (borrador) |
+| 6   | Casa y habitaciones (_there is/are_, preposiciones de lugar)             | 5         | ✅ cargada (borrador) |
+| 7   | Comida y bebidas (_want_, _eat/drink_, _hungry/thirsty_)                 | 5         | ✅ cargada (borrador) |
+| 8   | Rutinas y presente simple (_-s_, _do/does_, _don't/doesn't_, frecuencia) | 5         | ✅ cargada (borrador) |
+| 9   | Horarios y días (días, _o'clock_, _half past_, _at/on/in_)               | 5         | ✅ cargada (borrador) |
+| 10  | Lugares de la ciudad (lugares, _near/far_, indicaciones)                 | 5         | ✅ cargada (borrador) |
+| 11  | Gustos y preferencias (_like/love/hate_, _can_, _favorite_)              | 5         | ✅ cargada (borrador) |
+| 12  | Preguntas y conversaciones básicas (_what/when/why/which/how much/many_) | 5         | ✅ cargada (borrador) |
 
 Totales actuales: 12 unidades · 60 lecciones · 244 palabras · 457 ejercicios (verificado con checksum md5 contra Supabase, 2026-10-30).
 Todo el contenido tiene `review_status = 'draft'`: fue redactado sin revisión editorial humana (las unidades 1–3 tuvieron además una revisión lingüística automática/asistida el 2026-10-30). Antes del lanzamiento, una persona con dominio del inglés debe revisarlo (traducciones, IPA, ejemplos) y marcarlo `reviewed`.
@@ -26,34 +26,38 @@ Retoques puntuales a unidades ya cargadas pueden ir en una migración chica de `
 
 ## Flujo de autoría
 
+0. **Unidades ya cargadas:** antes de editar, `npm run content:dump -- antes.json` (foto del contenido actual).
 1. Editar `content/a1/unitNN-*.ts` (formato tipado en `content/types.ts`, atajos en `content/builders.ts`).
 2. `npm test`: `content/__tests__/content.test.ts` valida cada ejercicio (ver abajo).
-3. `npm run content:sql -- supabase/migrations/<timestamp>_content_a1_unit_NN.sql --unit NN` genera una migración idempotente por unidad (más chica y fácil de aplicar; aplicar en orden de unidad).
+3. Unidades ya cargadas: `npm run content:diff -- antes.json supabase/migrations/<timestamp>_content_<cambio>.sql` genera sólo la diferencia (palabras y ejercicios cambiados) y **corrige los vínculos ejercicio→palabra con `UPDATE`**, sin `DELETE`. Usar esto y no `content:sql`: como los ids de ejercicios generados son posicionales, regenerar la unidad dejaría el vínculo viejo y los repasos se acreditarían a la palabra equivocada. Falla con un mensaje si el cambio no se puede expresar así (altas o bajas de lecciones o palabras, un ejercicio que pierde palabras).
+   Unidades nuevas: `npm run content:sql -- supabase/migrations/<timestamp>_content_a1_unit_NN.sql --unit NN` genera una migración idempotente por unidad (más chica y fácil de aplicar; aplicar en orden de unidad).
 4. Aplicar la migración y renombrar el archivo con la versión que registre Supabase. Los ejercicios retirados se **despublican** (no se borran) para conservar el historial de intentos.
-5. La migración no contiene sentencias destructivas: si se quita una palabra de un ejercicio, el vínculo viejo en `exercise_words` debe borrarse con una migración escrita a mano.
+5. Ninguna migración contiene sentencias destructivas. `supabase/tests/learning.test.mjs` verifica que la base que dejan todas las migraciones es idéntica a `content/` (incluidos los vínculos) y que reaplicar la última migración de contenido no cambia nada.
 
 ### Validaciones automáticas del contenido
+
+- Consolidación generada: no traduce cognados (hotel → hotel; sólo se practican de oído), la consigna de «Traducí al inglés» va sin aclaraciones entre paréntesis y acepta las otras formas en inglés de la palabra (`acceptedTexts`, p. ej. _a lot_ para «mucho»).
 
 - Unidades con 5–8 lecciones; lecciones con 6–10 ejercicios.
 - IDs de palabras únicos; cada palabra con IPA, traducción y ejemplos; cada palabra practicada en al menos un ejercicio.
 - Los ejercicios sólo usan palabras de su unidad o de unidades anteriores.
 - Opciones únicas que incluyen la respuesta; huecos `___` únicos; máscaras de ortografía coherentes; parejas sin repetidos; fichas de "ordenar" iguales a la respuesta.
 - La respuesta canónica y cada variante aceptada pasan el validador real de la app (`shared/answers.ts`).
-- Ninguna palabra inglesa coincide con la traducción de otra (con o sin tildes ni paréntesis): evita preguntas ambiguas en Word Rush y en el widget (p. ej. *café* el lugar vs. "café" = *coffee*).
+- Ninguna palabra inglesa coincide con la traducción de otra (con o sin tildes ni paréntesis): evita preguntas ambiguas en Word Rush y en el widget (p. ej. _café_ el lugar vs. "café" = _coffee_).
 
 ## Tipos de ejercicio (`shared/exercises.ts`)
 
-| Tipo | Habilidad | Respuesta |
-| --- | --- | --- |
-| `image_choice` | vocabulario | opción (imagen = emoji) |
-| `translation_choice` | vocabulario | opción |
-| `translate_write` | traducción | texto |
-| `complete_word` | vocabulario (ortografía) | texto, sin tolerancia a errores |
-| `fill_blank` | gramática / vocabulario | opción (cubre "completar frase" y "palabra en contexto") |
-| `order_words` | construcción de frases | fichas |
-| `listen_choice` | comprensión auditiva | opción |
-| `match_pairs` | vocabulario | parejas |
-| `short_answer` | construcción de frases | texto con variantes explícitas |
+| Tipo                 | Habilidad                | Respuesta                                                |
+| -------------------- | ------------------------ | -------------------------------------------------------- |
+| `image_choice`       | vocabulario              | opción (imagen = emoji)                                  |
+| `translation_choice` | vocabulario              | opción                                                   |
+| `translate_write`    | traducción               | texto                                                    |
+| `complete_word`      | vocabulario (ortografía) | texto, sin tolerancia a errores                          |
+| `fill_blank`         | gramática / vocabulario  | opción (cubre "completar frase" y "palabra en contexto") |
+| `order_words`        | construcción de frases   | fichas                                                   |
+| `listen_choice`      | comprensión auditiva     | opción                                                   |
+| `match_pairs`        | vocabulario              | parejas                                                  |
+| `short_answer`       | construcción de frases   | texto con variantes explícitas                           |
 
 Audio: voz sintetizada del sistema (`expo-speech`, en-US). La app lo indica como "voz sintetizada"; no son grabaciones de hablantes nativos.
 

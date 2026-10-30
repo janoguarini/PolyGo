@@ -18,21 +18,23 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 
 ## Backend
 
-| Dato | Valor |
-| --- | --- |
+| Dato              | Valor                                               |
+| ----------------- | --------------------------------------------------- |
 | Proyecto Supabase | `PolyGo` · ref `wtymosvsymzoosxscnxi` · `us-west-2` |
-| URL | `https://wtymosvsymzoosxscnxi.supabase.co` |
-| Repositorio | https://github.com/janoguarini/PolyGo |
+| URL               | `https://wtymosvsymzoosxscnxi.supabase.co`          |
+| Repositorio       | https://github.com/janoguarini/PolyGo               |
 
 ## Terminado
 
 ### Fase 1
+
 - [x] Expo SDK 58 + TypeScript estricto, Expo Router con rutas protegidas, sistema de diseño, emblemas de rango.
 - [x] Auth Supabase (registro sin confirmación de email por decisión de producto), onboarding, tabs, clasificación global, privacidad.
 - [x] `shared/ranking.ts` (ELO, rangos, anti-farming). Migraciones 0001 y 0002 aplicadas.
 - [x] Verificado en teléfono (Expo Go): registro → onboarding → tabs.
 
 ### Fase 2
+
 - [x] `shared/exercises.ts`: 9 tipos de ejercicio y 5 habilidades.
 - [x] `shared/answers.ts`: validador determinista (normalización, contracciones, tolerancia controlada a typos).
 - [x] `shared/srs.ts` + SQL: repetición espaciada 1/3/7 días, dominio tras 3 repasos espaciados.
@@ -44,6 +46,7 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 - [x] Pantallas: Aprender (mapa de unidades), Lección, Repaso, Vocabulario (estado de cada palabra), Inicio (racha, objetivo diario, lección y palabra del día), Perfil (estadísticas educativas reales).
 
 ### Fase 3
+
 - [x] Migración 0004: `battles` y `battle_players` (resultados, sólo backend; rival anonimizado al borrar cuenta), FK `rating_history.battle_id`, catálogo de 16 logros, `user_achievements`, RPCs `get_match_history`, `get_my_achievements`, `get_public_profile`; `submit_learning_session` evalúa logros y los devuelve.
 - [x] Backfill de logros para usuarios existentes al aplicar la migración.
 - [x] Perfil: botón Editar, gráfico de evolución de ELO (SVG, una serie, tocar para inspeccionar), últimas partidas, resumen de logros.
@@ -52,6 +55,7 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 - [x] La visibilidad de perfil ya tiene efecto (`private`/`friends` sólo muestran nombre, avatar y rango).
 
 ### Fase 4
+
 - [x] `shared/protocol.ts`: contrato tipado de eventos, constantes de Word Rush y matchmaking, máquina de estados (`canTransition`).
 - [x] `shared/wordRush.ts`: generación de preguntas (sin distractores sinónimos), puntuación (100 + bonus ≤ 50, −50, piso 0) y resultado (abandono → puntaje → precisión → empate).
 - [x] Migración 0005: `start_battle`, `battle_settlement_context`, `settle_battle` (transaccional, idempotente, control optimista de rating, logros), `cancel_battle`, `cancel_stale_battles`; sólo `service_role`.
@@ -60,6 +64,7 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 - [x] "Buscar partida" y "Practicar sin ELO" se habilitan con `EXPO_PUBLIC_BATTLE_SERVER_URL`; los logros competitivos dejan de decir "Disponible cuando abra Ranked".
 
 ### Fase 5
+
 - [x] `expo-widgets` + `@expo/ui` + `expo-dev-client`; plugin en `app.json` (`enableAndroid`, `initialLayout` por plataforma); `eas.json` con perfiles development / development-simulator / preview / production.
 - [x] Widget **Palabra**: palabra del día → palabras para repasar → nuevas; IPA, traducción y ejemplo; timeline horario de 12 h en iOS, snapshot en Android; deep link a Vocabulario en iOS.
 - [x] Widget **Pregunta rápida**: ronda de 10 preguntas (generador de Word Rush) jugable desde la pantalla de inicio sin abrir la app; no pisa una ronda a medias; práctica sin efecto en SRS ni ELO.
@@ -67,6 +72,7 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 - [x] Vocabulario explica cómo agregar los widgets (o que hace falta una build si se usa Expo Go).
 
 ### Fase 6
+
 - [x] Borrado de cuenta (App Store 5.1.1(v) y Google Play): Edge Function `delete-account` (valida el token, exige confirmación explícita, borra con la clave secreta) + pantalla con confirmación por nombre de usuario. E2E contra Supabase real: 401 sin token o con token inválido, 400 sin confirmación, 200 al borrar, 401 al reintentar; ningún dato residual.
 - [x] `ErrorBoundary` global de Expo Router.
 - [x] Accesibilidad: auditoría de todos los `Pressable` (rol, etiqueta, zona táctil), test de contraste WCAG AA de todos los tokens de texto; corregidos placeholders (2,1:1 → 3,5:1) y feedback de respuestas en batalla (2,5:1 → 5,5:1).
@@ -75,13 +81,20 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 - [x] CI en GitHub Actions (`npm run check` en cada push y PR).
 - [x] Advisors de Supabase y `npm audit` revisados (detalle en LAUNCH_CHECKLIST.md).
 - [x] `react-native` 0.88.1 (expo-doctor 20/20).
-- [x] Contenido A1 unidades 4–12 (45 lecciones, 180 palabras, 338 ejercicios) aplicado en Supabase; checksum md5 de palabras, lecciones, ejercicios y vínculos idéntico al local. Validación nueva contra traducciones ambiguas (corrigió *not*, *don't*, *doesn't*, *at* y reemplazó *café* por *museum*).
+- [x] Contenido A1 unidades 4–12 (45 lecciones, 180 palabras, 338 ejercicios) aplicado en Supabase; checksum md5 de palabras, lecciones, ejercicios y vínculos idéntico al local. Validación nueva contra traducciones ambiguas (corrigió _not_, _don't_, _doesn't_, _at_ y reemplazó _café_ por _museum_).
 
 ### Racha y recordatorio diario (2026-10-30)
+
 - [x] Festejo al terminar la primera sesión del día (racha nueva o +1, semana con los días de la racha) y al cumplir el objetivo diario; aparece entre los resultados y lo que sigue, en lecciones y repasos guardados. Se calcula comparando el resumen de antes y después de la sesión (sin cambios en la base).
 - [x] Aviso "Tu racha está en riesgo" en Aprender cuando hay racha y hoy no practicaste; lleva a la lección actual.
 - [x] Recordatorio diario con `expo-notifications` (sólo local, `enableRemoteNotifications: false`): interruptor y horario en Perfil, oferta para activarlo desde el festejo. Se programan los próximos 7 días con fecha fija y se reprograman al abrir la app y al terminar cada sesión: si hoy ya practicaste no avisa hoy, y el texto menciona la racha cuando está en riesgo. Se cancelan al cerrar sesión. Agrega los permisos Android `POST_NOTIFICATIONS` y `RECEIVE_BOOT_COMPLETED`.
 - [ ] Probar en dispositivo (requiere development build nueva por el módulo nativo).
+
+### Generador de consolidación (2026-10-30)
+
+- [x] Sin ejercicios triviales de cognados (hotel, hospital, banana, no, Argentina, México, sofa, bus), consigna de escritura sin texto descriptivo («hacer» en vez de «hacer / auxiliar de preguntas») y formas alternativas en inglés aceptadas (_a lot_/_much_, _store_, _flat_, _movie theater_, _handbag_).
+- [x] Nueva migración diferencial (`npm run content:dump` / `content:diff`): 35 ejercicios, 1 palabra y 25 vínculos corregidos con `UPDATE`. Aplicada en Supabase; checksum md5 de palabras, ejercicios y vínculos (1845) idéntico al local.
+- [x] Test de base: lo que dejan las migraciones es idéntico a `content/`, vínculos incluidos.
 
 ## Pendiente (por fase)
 
@@ -94,18 +107,18 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 
 ## Migraciones
 
-| Migración | Local (PGlite) | Supabase |
-| --- | --- | --- |
-| `20261029010416_core_profiles_ratings.sql` | ✅ | ✅ aplicada |
-| `20261029010511_advisor_fixes.sql` | ✅ | ✅ aplicada |
-| `20261029021909_curriculum.sql` | ✅ | ✅ aplicada |
-| `20261029022122_content_a1_unit_01.sql` | ✅ | ✅ aplicada |
-| `20261029022239_content_a1_unit_02.sql` | ✅ | ✅ aplicada |
-| `20261029134056_content_a1_unit_03.sql` | ✅ (reaplicación idempotente testeada) | ✅ aplicada |
-| `20261029140504_profile_history_achievements.sql` | ✅ | ✅ aplicada |
-| `20261029144242_battle_settlement.sql` | ✅ | ✅ aplicada |
-| `20261030025417…030645_content_a1_unit_04…12.sql` (9 archivos) | ✅ | ✅ aplicadas |
-| `20261030030654_content_a1_text_fixes.sql` | ✅ | ✅ aplicada |
+| Migración                                                      | Local (PGlite)                         | Supabase     |
+| -------------------------------------------------------------- | -------------------------------------- | ------------ |
+| `20261029010416_core_profiles_ratings.sql`                     | ✅                                     | ✅ aplicada  |
+| `20261029010511_advisor_fixes.sql`                             | ✅                                     | ✅ aplicada  |
+| `20261029021909_curriculum.sql`                                | ✅                                     | ✅ aplicada  |
+| `20261029022122_content_a1_unit_01.sql`                        | ✅                                     | ✅ aplicada  |
+| `20261029022239_content_a1_unit_02.sql`                        | ✅                                     | ✅ aplicada  |
+| `20261029134056_content_a1_unit_03.sql`                        | ✅ (reaplicación idempotente testeada) | ✅ aplicada  |
+| `20261029140504_profile_history_achievements.sql`              | ✅                                     | ✅ aplicada  |
+| `20261029144242_battle_settlement.sql`                         | ✅                                     | ✅ aplicada  |
+| `20261030025417…030645_content_a1_unit_04…12.sql` (9 archivos) | ✅                                     | ✅ aplicadas |
+| `20261030030654_content_a1_text_fixes.sql`                     | ✅                                     | ✅ aplicada  |
 
 Al aplicar por MCP, Supabase registra la versión con la hora de aplicación: los archivos locales se renombran para coincidir.
 Las migraciones no deben contener sentencias destructivas: el conector las rechaza sin poder pedir confirmación (ver SECURITY.md).
@@ -114,59 +127,59 @@ Las migraciones no deben contener sentencias destructivas: el conector las recha
 
 Bloque con dos usuarios temporales que termina en excepción (rollback); conteos finales en 0.
 
-| Prueba | Resultado |
-| --- | --- |
-| `start_battle` + `battle_settlement_context` | ✅ ratings 1000/1000, 0 partidas, ventana 1 |
-| `settle_battle` victoria/derrota en colocación | ✅ 1000 → 1024 / 976, 1 partida, 1 victoria, racha 1, 2 filas en `rating_history`, estado `completed` |
-| Logros devueltos | ✅ `first_win` para el ganador, ninguno para el perdedor |
-| Reliquidar | ✅ `duplicate: true` |
-| `authenticated` no puede ejecutar las funciones nuevas | ✅ |
-| Datos residuales | ✅ ninguno |
-| Advisors | ✅ sin avisos nuevos |
+| Prueba                                                 | Resultado                                                                                             |
+| ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| `start_battle` + `battle_settlement_context`           | ✅ ratings 1000/1000, 0 partidas, ventana 1                                                           |
+| `settle_battle` victoria/derrota en colocación         | ✅ 1000 → 1024 / 976, 1 partida, 1 victoria, racha 1, 2 filas en `rating_history`, estado `completed` |
+| Logros devueltos                                       | ✅ `first_win` para el ganador, ninguno para el perdedor                                              |
+| Reliquidar                                             | ✅ `duplicate: true`                                                                                  |
+| `authenticated` no puede ejecutar las funciones nuevas | ✅                                                                                                    |
+| Datos residuales                                       | ✅ ninguno                                                                                            |
+| Advisors                                               | ✅ sin avisos nuevos                                                                                  |
 
 ## Verificación en Supabase de la Fase 3 (2026-10-29)
 
 Todo dentro de un bloque que termina en excepción (rollback); conteos finales en 0.
 
-| Prueba | Resultado |
-| --- | --- |
-| 16 logros cargados; backfill sin logros (el único usuario no tenía progreso) | ✅ |
-| Completar la lección `a1-u01-l01` perfecta como usuario autenticado | ✅ devuelve `first_lesson` y `perfect_lesson` |
-| Reenviar la misma sesión | ✅ `duplicate: true`, `achievements_unlocked: []` |
-| Partida terminada con rival anonimizado → `get_match_history` | ✅ resultado, puntajes, rating 1000 → 1024, rival `null` |
-| `get_public_profile` del propio usuario | ✅ 2 logros, 1 lección, racha récord 1 |
-| Datos residuales | ✅ ninguno |
-| Advisors | 2 `SECURITY DEFINER` nuevos intencionales (`get_match_history`, `get_public_profile`); índices sin uso (sin tráfico) |
+| Prueba                                                                       | Resultado                                                                                                            |
+| ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| 16 logros cargados; backfill sin logros (el único usuario no tenía progreso) | ✅                                                                                                                   |
+| Completar la lección `a1-u01-l01` perfecta como usuario autenticado          | ✅ devuelve `first_lesson` y `perfect_lesson`                                                                        |
+| Reenviar la misma sesión                                                     | ✅ `duplicate: true`, `achievements_unlocked: []`                                                                    |
+| Partida terminada con rival anonimizado → `get_match_history`                | ✅ resultado, puntajes, rating 1000 → 1024, rival `null`                                                             |
+| `get_public_profile` del propio usuario                                      | ✅ 2 logros, 1 lección, racha récord 1                                                                               |
+| Datos residuales                                                             | ✅ ninguno                                                                                                           |
+| Advisors                                                                     | 2 `SECURITY DEFINER` nuevos intencionales (`get_match_history`, `get_public_profile`); índices sin uso (sin tráfico) |
 
 ## Verificación en Supabase de la Fase 2 (2026-10-29)
 
-| Prueba | Resultado |
-| --- | --- |
-| Conteos: 3 unidades, 15 lecciones, 64 palabras, 119 ejercicios, 194 vínculos | ✅ |
-| Checksum md5 de palabras, lecciones, ejercicios y vínculos igual al local | ✅ los 4 coinciden |
-| Lección 2 bloqueada antes de completar la 1 | ✅ `lesson_locked` |
-| Completar lección 1 real con todas correctas | ✅ precisión 1.000 |
-| Reenviar la misma sesión | ✅ `duplicate: true`, sin doble conteo |
-| Lección 2 desbloqueada; 6 palabras en etapa 1; racha 1 | ✅ |
-| Repaso guardado con `p_lesson_id` vacío (bug corregido en el cliente) | ✅ |
-| Datos de prueba residuales | ✅ ninguno |
-| Advisors | 2 `SECURITY DEFINER` intencionales; protección de contraseñas filtradas desactivada (decisión pendiente); índices sin uso (sin tráfico) |
+| Prueba                                                                       | Resultado                                                                                                                               |
+| ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| Conteos: 3 unidades, 15 lecciones, 64 palabras, 119 ejercicios, 194 vínculos | ✅                                                                                                                                      |
+| Checksum md5 de palabras, lecciones, ejercicios y vínculos igual al local    | ✅ los 4 coinciden                                                                                                                      |
+| Lección 2 bloqueada antes de completar la 1                                  | ✅ `lesson_locked`                                                                                                                      |
+| Completar lección 1 real con todas correctas                                 | ✅ precisión 1.000                                                                                                                      |
+| Reenviar la misma sesión                                                     | ✅ `duplicate: true`, sin doble conteo                                                                                                  |
+| Lección 2 desbloqueada; 6 palabras en etapa 1; racha 1                       | ✅                                                                                                                                      |
+| Repaso guardado con `p_lesson_id` vacío (bug corregido en el cliente)        | ✅                                                                                                                                      |
+| Datos de prueba residuales                                                   | ✅ ninguno                                                                                                                              |
+| Advisors                                                                     | 2 `SECURITY DEFINER` intencionales; protección de contraseñas filtradas desactivada (decisión pendiente); índices sin uso (sin tráfico) |
 
 ## Tests locales (2026-10-29)
 
-| Suite | Comando | Resultado |
-| --- | --- | --- |
-| TypeScript (app + scripts) | `npm run typecheck` | ✅ |
-| ESLint | `npm run lint` | ✅ |
-| Jest | `npm test` | ✅ 321/321 (19 suites: + contraste WCAG y pantalla de borrado de cuenta) |
-| SQL + RLS (PGlite) | `npm run test:db` | ✅ 49/49 (+ liquidación, idempotencia, stale rating, anti-farming, abandono, cuenta borrada, cancelación) |
-| Servidor de partidas | `npm run test:server` | ✅ typecheck + 33/33 (matchmaking, motor con reloj manual, liquidación con reintentos, integración con 2 clientes Socket.IO reales, rate limit) |
-| Bundle Metro Android + iOS | `npx expo export -p android -p ios` | ✅ |
-| Layouts de widgets (empaquetador de expo-widgets) | `node node_modules/expo-widgets/scripts/build-layout-registry.mjs` | ✅ Android e iOS |
-| `expo prebuild` Android | `npx expo prebuild --no-install --platform android` | ✅ 2 receivers + `appwidget-provider` (iOS no se puede generar en Windows: lo hace EAS) |
-| CI (GitHub Actions) | `.github/workflows/ci.yml` | corre `npm run check` en cada push y PR |
-| Edge Function `delete-account` (E2E contra Supabase real) | script manual con usuario descartable | ✅ 401/401/400/200/401, sin datos residuales |
-| expo-doctor | `npx expo-doctor` | ✅ 20/20 |
+| Suite                                                     | Comando                                                            | Resultado                                                                                                                                       |
+| --------------------------------------------------------- | ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| TypeScript (app + scripts)                                | `npm run typecheck`                                                | ✅                                                                                                                                              |
+| ESLint                                                    | `npm run lint`                                                     | ✅                                                                                                                                              |
+| Jest                                                      | `npm test`                                                         | ✅ 321/321 (19 suites: + contraste WCAG y pantalla de borrado de cuenta)                                                                        |
+| SQL + RLS (PGlite)                                        | `npm run test:db`                                                  | ✅ 49/49 (+ liquidación, idempotencia, stale rating, anti-farming, abandono, cuenta borrada, cancelación)                                       |
+| Servidor de partidas                                      | `npm run test:server`                                              | ✅ typecheck + 33/33 (matchmaking, motor con reloj manual, liquidación con reintentos, integración con 2 clientes Socket.IO reales, rate limit) |
+| Bundle Metro Android + iOS                                | `npx expo export -p android -p ios`                                | ✅                                                                                                                                              |
+| Layouts de widgets (empaquetador de expo-widgets)         | `node node_modules/expo-widgets/scripts/build-layout-registry.mjs` | ✅ Android e iOS                                                                                                                                |
+| `expo prebuild` Android                                   | `npx expo prebuild --no-install --platform android`                | ✅ 2 receivers + `appwidget-provider` (iOS no se puede generar en Windows: lo hace EAS)                                                         |
+| CI (GitHub Actions)                                       | `.github/workflows/ci.yml`                                         | corre `npm run check` en cada push y PR                                                                                                         |
+| Edge Function `delete-account` (E2E contra Supabase real) | script manual con usuario descartable                              | ✅ 401/401/400/200/401, sin datos residuales                                                                                                    |
+| expo-doctor                                               | `npx expo-doctor`                                                  | ✅ 20/20                                                                                                                                        |
 
 No ejecutado todavía: widgets en un dispositivo (requiere development build); lecciones, repasos y pantallas de la Fase 3 en el teléfono; el servidor de partidas contra Supabase real y una partida en dos dispositivos.
 

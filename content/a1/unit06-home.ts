@@ -33,17 +33,20 @@ export const unit06: UnitDef = {
     w('en-house', 'house', 'casa', '/haʊs/', '🏠', 'My house is big.', 'Mi casa es grande.', [
       'home',
     ]),
-    w(
-      'en-apartment',
-      'apartment',
-      'departamento',
-      '/əˈpɑrtmənt/',
-      '🏢',
-      'We live in an apartment.',
-      'Vivimos en un departamento.',
-      ['home'],
-      ['piso', 'apartamento'],
-    ),
+    {
+      ...w(
+        'en-apartment',
+        'apartment',
+        'departamento',
+        '/əˈpɑrtmənt/',
+        '🏢',
+        'We live in an apartment.',
+        'Vivimos en un departamento.',
+        ['home'],
+        ['piso', 'apartamento'],
+      ),
+      acceptedTexts: ['flat'],
+    },
     w(
       'en-room',
       'room',

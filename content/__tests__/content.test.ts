@@ -184,3 +184,48 @@ describe('integridad de cada ejercicio', () => {
     }
   });
 });
+
+describe('lecciones de consolidación generadas', () => {
+  const plainText = (s: string) =>
+    s
+      .normalize('NFD')
+      .replace(/[̀-ͯ]/g, '')
+      .replace(/\(.*?\)/g, '')
+      .trim()
+      .toLowerCase();
+  const byId = new Map(allWords.map((w) => [w.id, w]));
+  const isCognate = (id: string) => {
+    const w = byId.get(id)!;
+    return [w.translation, ...(w.acceptedTranslations ?? [])]
+      .map(plainText)
+      .includes(plainText(w.text));
+  };
+  const generated = exercises.filter(({ lessonId }) => !/-l\d+$/.test(lessonId));
+
+  it('no traduce cognados (hotel → hotel no enseña nada)', () => {
+    const trivial = generated.filter(
+      ({ def }) =>
+        ['translation_choice', 'translate_write', 'complete_word', 'match_pairs'].includes(
+          def.type,
+        ) && def.words.some(isCognate),
+    );
+    expect(trivial.map((e) => e.id)).toEqual([]);
+  });
+
+  it('la consigna de «Traducí al inglés» no lleva aclaraciones entre paréntesis', () => {
+    for (const { def, id } of generated) {
+      if (def.payload.type !== 'translate_write') continue;
+      expect([id, def.payload.source]).toEqual([id, expect.not.stringMatching(/[()]/)]);
+    }
+  });
+
+  it('acepta las otras formas válidas en inglés de la palabra', () => {
+    const veryMuch = generated.find(
+      ({ def }) => def.type === 'translate_write' && def.words[0] === 'en-very-much',
+    );
+    expect(veryMuch).toBeDefined();
+    const exercise = toExercise(veryMuch!.def, veryMuch!.id);
+    expect(checkAnswer(exercise, { kind: 'text', value: 'a lot' }).correct).toBe(true);
+    expect(checkAnswer(exercise, { kind: 'text', value: 'very much' }).correct).toBe(true);
+  });
+});

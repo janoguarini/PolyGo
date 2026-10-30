@@ -12,6 +12,8 @@ export interface WordDef {
   translation: string;
   /** Otras traducciones válidas al español. */
   acceptedTranslations?: string[];
+  /** Otras formas válidas en inglés al escribirla (p. ej. «a lot» para «very much»). */
+  acceptedTexts?: string[];
   /** Transcripción fonética (inglés general americano). */
   ipa: string;
   emoji?: string;

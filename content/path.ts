@@ -42,6 +42,12 @@ const meanings = (w: WordDef) =>
 
 const overlaps = (a: Set<string>, b: Set<string>) => [...a].some((x) => b.has(x));
 
+/** Se escribe igual en los dos idiomas (hotel, banana, México): traducirla no enseña nada. */
+const isCognate = (w: WordDef) => meanings(w).has(plain(w.text));
+
+/** Consigna en español para escribir la palabra: sin las aclaraciones entre paréntesis. */
+const writeSource = (w: WordDef) => w.translation.replace(/\s*\(.*?\)/g, '').trim();
+
 /** PRNG determinístico (mulberry32) a partir de un texto. */
 function random(seed: string): () => number {
   let h = 1779033703 ^ seed.length;
@@ -110,6 +116,7 @@ class Generator {
   }
 
   translationChoice(w: WordDef, seed: string): ExerciseDef | null {
+    if (isCognate(w)) return null;
     const options = this.distractors(w, (d) => d.translation, seed);
     return options ? ex.translationChoice(w.text, w.translation, options, [w.id]) : null;
   }
@@ -122,21 +129,32 @@ class Generator {
   }
 
   completeWord(w: WordDef): ExerciseDef | null {
-    if (w.text.replace(/\s/g, '').length < 4) return null;
+    // En un cognado la pista (la traducción) ya es la respuesta.
+    if (w.text.replace(/\s/g, '').length < 4 || isCognate(w)) return null;
     return ex.completeWord(mask(w.text), w.text, w.translation, [w.id]);
   }
 
-  /** Español → inglés sólo si ninguna otra palabra comparte significado (respuesta única). */
+  /**
+   * Español → inglés sólo si ninguna otra palabra comparte significado (respuesta única).
+   * Acepta las otras formas válidas en inglés de la palabra (`acceptedTexts`).
+   */
   translateWrite(w: WordDef): ExerciseDef | null {
     const m = meanings(w);
     const ambiguous = this.allWords.some((d) => d.id !== w.id && overlaps(meanings(d), m));
-    return ambiguous ? null : ex.translateWrite(w.translation, w.text, [w.id]);
+    if (ambiguous || isCognate(w)) return null;
+    return ex.translateWrite(
+      writeSource(w),
+      w.text,
+      [w.id],
+      w.acceptedTexts?.length ? { acceptedAnswers: w.acceptedTexts } : {},
+    );
   }
 
   /** Une 4 palabras con su significado; todas distintas entre sí en texto y significado. */
   matchPairs(words: readonly WordDef[]): ExerciseDef | null {
     const chosen: WordDef[] = [];
     for (const w of words) {
+      if (isCognate(w)) continue;
       const clash = chosen.some(
         (c) =>
           plain(c.text) === plain(w.text) ||
