@@ -35,7 +35,7 @@ La lista completa (tiendas, builds, calidad) está en [LAUNCH_CHECKLIST.md](LAUN
 - Desarrollo con Expo Go: `npx expo start --go` (todo menos los widgets). Con `expo-dev-client` instalado, `npx expo start` a secas arranca en modo development build. En Windows, si el Wi-Fi está como red **Pública**, el firewall puede bloquear al teléfono: marcarla como Privada o usar `--tunnel`.
 - Development build (necesaria para los widgets, Fase 5): perfiles en `eas.json` (`development`, `development-simulator`, `preview`, `production`). Primera vez: `npx eas-cli@latest login` y `npx eas-cli@latest init`. Luego `npx eas-cli@latest build --profile development --platform android|ios`. Pasos completos en [WIDGETS.md](WIDGETS.md#cómo-probarlos).
 - Cambiar la config de `expo-widgets` en `app.json` exige una build nueva (no alcanza con recargar JS).
-- Antes de publicar: confirmar `bundleIdentifier` / `package` (`com.polygo.app` es provisional), íconos y splash definitivos, `eas.json`.
+- Antes de publicar: `bundleIdentifier` / `package` ya son definitivos (`com.polygoidioma.app`); confirmar íconos y splash definitivos, `eas.json`.
 
 ## Servidor de partidas (Fase 4)
 

@@ -1,5 +1,5 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import type { ReactNode } from 'react';
+import type { ReactNode, Ref } from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -7,6 +7,8 @@ import {
   ScrollView,
   StyleSheet,
   View,
+  type ScrollViewInstance,
+  type ScrollViewProps,
   type ViewStyle,
 } from 'react-native';
 import { SafeAreaView, type Edge } from 'react-native-safe-area-context';
@@ -23,6 +25,13 @@ export interface ScreenProps {
   /** Pull-to-refresh (sólo con scroll). */
   onRefresh?: () => void;
   refreshing?: boolean;
+  /** Ref del ScrollView (p. ej. para desplazarse a un elemento al montar). */
+  scrollRef?: Ref<ScrollViewInstance>;
+  /** Contenido fijo arriba del scroll (no se desplaza). */
+  header?: ReactNode;
+  /** Contenido flotante sobre el scroll (p. ej. un botón de acceso rápido). */
+  overlay?: ReactNode;
+  onScroll?: ScrollViewProps['onScroll'];
 }
 
 export function Screen({
@@ -33,9 +42,16 @@ export function Screen({
   footer,
   onRefresh,
   refreshing = false,
+  scrollRef,
+  header,
+  overlay,
+  onScroll,
 }: ScreenProps) {
   const content = scroll ? (
     <ScrollView
+      ref={scrollRef}
+      onScroll={onScroll}
+      scrollEventThrottle={onScroll ? 32 : undefined}
       refreshControl={
         onRefresh ? (
           <RefreshControl
@@ -62,7 +78,11 @@ export function Screen({
           style={styles.fill}
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         >
-          {content}
+          {header}
+          <View style={styles.fill}>
+            {content}
+            {overlay}
+          </View>
           {footer ? <View style={styles.footer}>{footer}</View> : null}
         </KeyboardAvoidingView>
       </SafeAreaView>

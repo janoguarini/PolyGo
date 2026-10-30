@@ -1,10 +1,21 @@
+import { Star } from 'lucide-react-native';
 import { StyleSheet, View } from 'react-native';
 
 import { SKILL_LABELS, SKILLS, type Skill } from '@shared/exercises';
 
-import { Card, ErrorState, ProgressBar, StatTile, Text, spacing } from '@/design-system';
+import {
+  Card,
+  ErrorState,
+  ProgressBar,
+  StatTile,
+  Text,
+  colors,
+  gradients,
+  spacing,
+} from '@/design-system';
 
-import { useLearningSummary } from '../hooks';
+import { useCurriculum, useLearningSummary } from '../hooks';
+import { starTotals } from '../path';
 
 function formatMinutes(seconds: number) {
   const minutes = Math.round(seconds / 60);
@@ -15,6 +26,8 @@ function formatMinutes(seconds: number) {
 /** Estadísticas educativas reales del perfil. Independientes del rating competitivo. */
 export function LearningStats({ level }: { level: string }) {
   const summary = useLearningSummary();
+  const curriculum = useCurriculum();
+  const stars = curriculum.data ? starTotals(curriculum.data.units) : null;
 
   if (summary.isError)
     return (
@@ -31,6 +44,38 @@ export function LearningStats({ level }: { level: string }) {
   return (
     <View style={styles.wrapper}>
       <Text variant="caption">Nivel {level} · en curso</Text>
+      {stars ? (
+        <Card
+          gradient={gradients.hero}
+          style={styles.stars}
+          accessibilityLabel={`${stars.earned} de ${stars.max} estrellas, ${stars.golden} lecciones doradas`}
+        >
+          <View style={styles.starsRow}>
+            <Star color={colors.gold} fill={colors.gold} size={32} />
+            <View style={styles.flex}>
+              <Text variant="stat">
+                {stars.earned}
+                <Text variant="heading" color="textMuted">
+                  {' '}
+                  / {stars.max}
+                </Text>
+              </Text>
+              <Text variant="caption">
+                estrellas · {stars.golden}{' '}
+                {stars.golden === 1 ? 'lección dorada' : 'lecciones doradas'}
+              </Text>
+            </View>
+          </View>
+          <ProgressBar
+            value={stars.max ? stars.earned / stars.max : 0}
+            colors={gradients.gold}
+            accessibilityLabel="Estrellas conseguidas"
+          />
+          <Text variant="caption">
+            Cada lección da hasta 3 estrellas: la tercera, sólo si la hacés sin ningún error.
+          </Text>
+        </Card>
+      ) : null}
       <View style={styles.grid}>
         <StatTile label="Lecciones" value={String(s.lessons_completed)} />
         <StatTile label="Racha" value={`${s.streak_days} d`} />
@@ -82,6 +127,9 @@ export function LearningStats({ level }: { level: string }) {
 
 const styles = StyleSheet.create({
   wrapper: { gap: spacing.md },
+  stars: { gap: spacing.sm },
+  starsRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+  flex: { flex: 1 },
   grid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
   gap: { gap: spacing.sm },
   skill: { gap: spacing.xs },

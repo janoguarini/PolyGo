@@ -74,6 +74,24 @@ export const gradients = {
   screen: [palette.ink850, palette.ink900, palette.ink950] as const,
 };
 
+/**
+ * Colores del camino de lecciones, uno por unidad (rotan). `lip` es el borde inferior
+ * oscuro que da relieve al nodo; los íconos sobre `fill` son blancos.
+ */
+export const pathAccents = [
+  { fill: palette.violet500, lip: '#4C1D95' },
+  { fill: '#0891B2', lip: '#155E75' },
+  { fill: palette.green500, lip: '#065F46' },
+  { fill: '#EA580C', lip: '#9A3412' },
+  { fill: '#2563EB', lip: '#1E3A8A' },
+  { fill: '#DB2777', lip: '#9D174D' },
+] as const;
+
+/** Lección perfecta (3 estrellas). Sobre `fill` los íconos van oscuros (ink900). */
+export const pathGold = { fill: palette.gold400, lip: '#A16207' } as const;
+
+export type PathAccent = (typeof pathAccents)[number] | typeof pathGold;
+
 export const spacing = {
   xxs: 2,
   xs: 4,

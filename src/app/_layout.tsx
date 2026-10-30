@@ -1,6 +1,7 @@
 import { QueryClientProvider } from '@tanstack/react-query';
 import { Stack, type ErrorBoundaryProps } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import { useEffect } from 'react';
 import { View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
@@ -10,8 +11,13 @@ import { ConfigMissing } from '@/features/auth/ConfigMissing';
 import { useMyProfile } from '@/features/profile/hooks';
 import { envProblems } from '@/lib/env';
 import { queryClient } from '@/lib/queryClient';
+import { configureAudio, preloadSounds } from '@/lib/sounds';
 
 export default function RootLayout() {
+  useEffect(() => {
+    void configureAudio();
+    preloadSounds();
+  }, []);
   return (
     <SafeAreaProvider>
       <QueryClientProvider client={queryClient}>

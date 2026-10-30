@@ -22,6 +22,8 @@ interface Props {
   /** Logros que desbloqueó esta sesión según el servidor. */
   achievements: { id: string; title: string; icon: string }[];
   onRetrySave: () => void;
+  /** Texto bajo las palabras con errores (por defecto: volverán en los repasos). */
+  mistakesHint?: string;
   primaryLabel: string;
   onPrimary: () => void;
   onExit: () => void;
@@ -133,7 +135,9 @@ export function SessionResults(props: Props) {
               · {w.translation_es}
             </Text>
           ))}
-          <Text variant="caption">Van a aparecer en tus repasos para que las fijes.</Text>
+          <Text variant="caption">
+            {props.mistakesHint ?? 'Van a aparecer en tus repasos para que las fijes.'}
+          </Text>
         </Card>
       ) : null}
     </Screen>

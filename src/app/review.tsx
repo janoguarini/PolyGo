@@ -1,4 +1,4 @@
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import { CheckCircle2 } from 'lucide-react-native';
 import { useCallback, useState } from 'react';
 import { Alert } from 'react-native';
@@ -11,10 +11,23 @@ import { SessionPlayer } from '@/features/learning/components/SessionPlayer';
 import { SessionResults } from '@/features/learning/components/SessionResults';
 import { useMyWords, useSubmitSession, useWordPool } from '@/features/learning/hooks';
 import { sessionStats, type PlayerState } from '@/features/learning/player';
-import { uuid } from '@/features/learning/random';
+import { shuffle, uuid } from '@/features/learning/random';
 import { buildReviewExercises } from '@/features/learning/review';
 
 const REVIEW_SIZE = 10;
+
+/**
+ * review: palabras que vencieron (se guarda y actualiza la repetición espaciada).
+ * practice / mistakes: práctica libre con palabras ya estudiadas; no se envía al servidor
+ * para no adelantar los repasos.
+ */
+type ReviewMode = 'review' | 'practice' | 'mistakes';
+
+const TITLES: Record<ReviewMode, string> = {
+  review: 'Repaso de vocabulario',
+  practice: 'Práctica libre',
+  mistakes: 'Tus puntos débiles',
+};
 
 interface ReviewSession {
   exercises: Exercise[];
@@ -22,6 +35,10 @@ interface ReviewSession {
 }
 
 export default function ReviewScreen() {
+  const params = useLocalSearchParams<{ mode?: string }>();
+  const mode: ReviewMode =
+    params.mode === 'practice' || params.mode === 'mistakes' ? params.mode : 'review';
+  const saves = mode === 'review';
   const myWords = useMyWords();
   const pool = useWordPool();
   const submit = useSubmitSession();
@@ -37,9 +54,14 @@ export default function ReviewScreen() {
 
   if (!review && myWords.data && pool.data) {
     const now = startedAt.getTime();
-    const due = myWords.data
-      .filter((w) => w.nextReviewAt && new Date(w.nextReviewAt).getTime() <= now)
-      .sort((a, b) => b.incorrectCount - a.incorrectCount)
+    const due = (
+      mode === 'practice'
+        ? shuffle(myWords.data, sessionId)
+        : mode === 'mistakes'
+          ? myWords.data.filter((w) => w.incorrectCount > 0)
+          : myWords.data.filter((w) => w.nextReviewAt && new Date(w.nextReviewAt).getTime() <= now)
+    )
+      .sort((a, b) => (mode === 'practice' ? 0 : b.incorrectCount - a.incorrectCount))
       .slice(0, REVIEW_SIZE)
       .map((w) => w.word);
     setReview({
@@ -67,9 +89,9 @@ export default function ReviewScreen() {
           responseMs: a.responseMs,
         }));
       setFinished({ state, attempts, endedAt: new Date() });
-      save(attempts);
+      if (saves) save(attempts);
     },
-    [save],
+    [save, saves],
   );
 
   if (myWords.isPending || pool.isPending || (!review && !myWords.isError && !pool.isError)) {
@@ -94,8 +116,12 @@ export default function ReviewScreen() {
       <Screen edges={['top', 'bottom']} scroll={false}>
         <EmptyState
           icon={<CheckCircle2 color={colors.success} size={44} />}
-          title="Estás al día"
-          message="No tenés palabras para repasar ahora. Las palabras que estudies volverán cuando toque repasarlas."
+          title={mode === 'review' ? 'Estás al día' : 'Nada para practicar'}
+          message={
+            mode === 'review'
+              ? 'No tenés palabras para repasar ahora. Las palabras que estudies volverán cuando toque repasarlas.'
+              : 'Completá lecciones para sumar palabras a tu práctica.'
+          }
         />
         <Button label="Volver" variant="secondary" onPress={() => router.back()} />
       </Screen>
@@ -109,10 +135,16 @@ export default function ReviewScreen() {
         words={review.words}
         seed={sessionId}
         onClose={() =>
-          Alert.alert('¿Salir del repaso?', 'Las respuestas de este repaso no se van a guardar.', [
-            { text: 'Seguir', style: 'cancel' },
-            { text: 'Salir', style: 'destructive', onPress: () => router.back() },
-          ])
+          Alert.alert(
+            '¿Salir del repaso?',
+            saves
+              ? 'Las respuestas de este repaso no se van a guardar.'
+              : 'Podés volver cuando quieras.',
+            [
+              { text: 'Seguir', style: 'cancel' },
+              { text: 'Salir', style: 'destructive', onPress: () => router.back() },
+            ],
+          )
         }
         onFinished={handleFinished}
       />
@@ -121,14 +153,19 @@ export default function ReviewScreen() {
 
   return (
     <SessionResults
-      title="Repaso de vocabulario"
+      title={TITLES[mode]}
       stats={sessionStats(finished.state)}
       durationSeconds={Math.round((finished.endedAt.getTime() - startedAt.getTime()) / 1000)}
       words={review.words}
-      saving={submit.isPending}
-      saveError={submit.error}
-      saved={submit.isSuccess}
-      achievements={submit.data?.achievements_unlocked ?? []}
+      saving={saves && submit.isPending}
+      saveError={saves ? submit.error : null}
+      saved={!saves || submit.isSuccess}
+      achievements={saves ? (submit.data?.achievements_unlocked ?? []) : []}
+      mistakesHint={
+        saves
+          ? undefined
+          : 'Esta práctica no cambia tus repasos: seguí con el repaso espaciado para fijarlas.'
+      }
       onRetrySave={() => save(finished.attempts)}
       primaryLabel="Listo"
       onPrimary={() => router.back()}

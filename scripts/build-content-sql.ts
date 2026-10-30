@@ -8,7 +8,8 @@
  */
 import { writeFileSync } from 'node:fs';
 
-import { A1_UNITS, exerciseId, lessonId, unitId } from '../content/a1';
+import { A1_PATH, unitId } from '../content/a1';
+import { pathExerciseId } from '../content/path';
 
 const out = process.argv[2];
 if (!out) {
@@ -19,7 +20,8 @@ if (!out) {
 // --unit N genera sólo esa unidad (migraciones más chicas; aplicar en orden).
 const unitArg = process.argv.indexOf('--unit');
 const onlyUnit = unitArg > 0 ? Number(process.argv[unitArg + 1]) : null;
-const UNITS = onlyUnit ? A1_UNITS.filter((u) => u.position === onlyUnit) : A1_UNITS;
+const PATH = onlyUnit ? A1_PATH.filter((p) => p.unit.position === onlyUnit) : A1_PATH;
+const UNITS = PATH.map((p) => p.unit);
 if (UNITS.length === 0) throw new Error(`Unidad ${onlyUnit} inexistente`);
 
 const document = {
@@ -46,20 +48,21 @@ const document = {
       tags: w.tags,
     })),
   ),
-  lessons: UNITS.flatMap((u) =>
-    u.lessons.map((l, li) => ({
-      id: lessonId(u, li),
-      unit_id: unitId(u),
-      position: li + 1,
+  // Camino completo: lecciones escritas + consolidación generada (content/path.ts).
+  lessons: PATH.flatMap(({ unit, lessons }) =>
+    lessons.map((l) => ({
+      id: l.id,
+      unit_id: unitId(unit),
+      position: l.position,
       title_es: l.title,
       objective_es: l.objective,
     })),
   ),
-  exercises: UNITS.flatMap((u) =>
-    u.lessons.flatMap((l, li) =>
+  exercises: PATH.flatMap(({ lessons }) =>
+    lessons.flatMap((l) =>
       l.exercises.map((e, ei) => ({
-        id: exerciseId(u, li, ei),
-        lesson_id: lessonId(u, li),
+        id: pathExerciseId(l.id, ei),
+        lesson_id: l.id,
         position: ei + 1,
         type: e.type,
         skill: e.skill,
@@ -109,6 +112,10 @@ on conflict (id) do update set unit_id = excluded.unit_id, text = excluded.text,
   accepted_translations = excluded.accepted_translations, ipa = excluded.ipa, emoji = excluded.emoji,
   example_en = excluded.example_en, example_es = excluded.example_es, difficulty = excluded.difficulty,
   tags = excluded.tags, is_published = true;
+
+-- Las posiciones son únicas por unidad: liberarlas antes de reordenar (se intercalan lecciones).
+update public.lessons set position = position + 1000
+where id in (select x ->> 'id' from jsonb_array_elements(d -> 'lessons') x) and position < 1000;
 
 insert into public.lessons (id, unit_id, position, title_es, objective_es, is_published)
 select x.id, x.unit_id, x.position, x.title_es, x.objective_es, true

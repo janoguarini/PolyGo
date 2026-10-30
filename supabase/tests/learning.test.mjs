@@ -4,16 +4,16 @@ import { randomUUID } from 'node:crypto';
 
 import { SRS_CONFIG } from '../../shared/srs.ts';
 import { createDb, createUser, as } from './harness.mjs';
-import { A1_UNITS } from '../../content/a1/index.ts';
+import { A1_PATH, A1_UNITS } from '../../content/a1/index.ts';
 
 // Totales esperados calculados desde el contenido fuente (content/a1): las migraciones deben cargarlo entero.
 const CONTENT_TOTALS = {
   units: A1_UNITS.length,
-  lessons: A1_UNITS.reduce((n, u) => n + u.lessons.length, 0),
-  exercises: A1_UNITS.reduce((n, u) => n + u.lessons.reduce((m, l) => m + l.exercises.length, 0), 0),
+  lessons: A1_PATH.reduce((n, p) => n + p.lessons.length, 0),
+  exercises: A1_PATH.reduce((n, p) => n + p.lessons.reduce((m, l) => m + l.exercises.length, 0), 0),
   words: A1_UNITS.reduce((n, u) => n + u.words.length, 0),
 };
-const CONTENT_LINKS = A1_UNITS.flatMap((u) => u.lessons.flatMap((l) => l.exercises))
+const CONTENT_LINKS = A1_PATH.flatMap((p) => p.lessons.flatMap((l) => l.exercises))
   .reduce((n, e) => n + new Set(e.words).size, 0);
 
 let db;
@@ -285,9 +285,14 @@ test('contenido real A1: se carga completo y la primera lección se puede comple
 test('el seed de contenido es idempotente (se puede reaplicar)', async () => {
   const { readFileSync, readdirSync } = await import('node:fs');
   const dir = new URL('../migrations/', import.meta.url);
-  const contentFiles = readdirSync(dir).filter((f) => /_content_a1_unit_\d+\.sql$/.test(f)).sort();
-  // Al menos una migración por unidad (una unidad puede tener varias versiones).
-  assert.ok(contentFiles.length >= CONTENT_TOTALS.units);
+  // Se reaplica la última versión de cada unidad (las anteriores quedaron superadas).
+  const latest = new Map();
+  for (const f of readdirSync(dir).sort()) {
+    const m = /_content_a1_unit_(\d+)\.sql$/.exec(f);
+    if (m) latest.set(m[1], f);
+  }
+  const contentFiles = [...latest.values()];
+  assert.equal(contentFiles.length, CONTENT_TOTALS.units);
   for (const file of contentFiles) await db.exec(readFileSync(new URL(file, dir), 'utf8'));
   const { rows } = await db.query(`
     select (select count(*)::int from public.exercises where id like 'a1-%' and is_published) as exercises,

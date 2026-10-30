@@ -8,6 +8,7 @@ import { checkAnswer, serializeAnswer } from '@shared/answers';
 import type { Exercise, UserAnswer } from '@shared/exercises';
 
 import { ProgressBar, Text, colors, spacing } from '@/design-system';
+import { playSound } from '@/lib/sounds';
 
 import type { WordRow } from '../api';
 import {
@@ -47,6 +48,7 @@ export function SessionPlayer({ exercises, words, seed, onClose, onFinished }: P
     if (state.phase === 'finished' && !finishedReported.current) {
       finishedReported.current = true;
       stopSpeaking();
+      playSound('complete');
       onFinished(state);
     }
   }, [state, onFinished]);
@@ -57,6 +59,7 @@ export function SessionPlayer({ exercises, words, seed, onClose, onFinished }: P
 
   const handleSubmit = (answer: UserAnswer) => {
     const verdict = checkAnswer(exercise, answer);
+    playSound(verdict.correct ? 'correct' : 'incorrect');
     if (Platform.OS !== 'web') {
       void Haptics.notificationAsync(
         verdict.correct

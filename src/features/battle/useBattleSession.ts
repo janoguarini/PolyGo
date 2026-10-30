@@ -4,6 +4,8 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import type { BattleMode } from '@shared/protocol';
 
+import { playSound } from '@/lib/sounds';
+
 import { connectBattleSocket, connectErrorCode, type BattleSocket } from './client';
 import { isInBattle } from './state';
 import { useBattleStore } from './store';
@@ -128,6 +130,7 @@ export function useBattleSession() {
         .then((res) => {
           if (!res.ok) return dispatch({ type: 'answer_rejected' });
           dispatch({ type: 'answer_result', result: res.data, chosen: option });
+          playSound(res.data.correct ? 'correct' : 'incorrect');
           void Haptics.notificationAsync(
             res.data.correct
               ? Haptics.NotificationFeedbackType.Success

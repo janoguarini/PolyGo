@@ -12,7 +12,7 @@ dispositivo o una decisión de producto; el resto está en el repo.
 | ⬜ | Política de privacidad publicada en una URL | Vos | Completar y revisar [PRIVACY_POLICY.md](PRIVACY_POLICY.md) (es un borrador), publicarla y poner la URL en `EXPO_PUBLIC_PRIVACY_POLICY_URL` (el enlace aparece en Perfil) y en ambas tiendas |
 | ✅ | Currículo A1 completo: 12 unidades, 60 lecciones, 244 palabras, 457 ejercicios | — | Cargado y verificado por checksum contra Supabase |
 | ⬜ | Revisión editorial humana del contenido A1 (`review_status = 'draft'`) | Vos | Ver LEARNING_CURRICULUM.md |
-| ⬜ | Bundle ID / package definitivos (`com.polygo.app` es provisional) | Vos | `app.json`; cambiarlo después de publicar no es posible |
+| ✅ | Bundle ID / package definitivos: `com.polygoidioma.app` | Vos | `app.json`; cambiarlo después de publicar no es posible |
 | ⬜ | Ícono, splash y capturas definitivas | Vos | `assets/`; capturas para la ficha de cada tienda |
 
 ## 2. Cuentas y builds

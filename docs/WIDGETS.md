@@ -5,7 +5,7 @@
 
 ## Tecnología
 
-[`expo-widgets`](https://docs.expo.dev/versions/v58.0.0/sdk/widgets/) (SDK 58) + Expo UI: los widgets se escriben en TypeScript con componentes SwiftUI (`@expo/ui/swift-ui`) en iOS y Jetpack Compose/Glance (`@expo/ui/jetpack-compose`) en Android. El config plugin genera la extensión de WidgetKit, el App Group (`group.com.polygo.app`) y los `AppWidgetProvider` de Android. No hay código Swift ni Kotlin propio.
+[`expo-widgets`](https://docs.expo.dev/versions/v58.0.0/sdk/widgets/) (SDK 58) + Expo UI: los widgets se escriben en TypeScript con componentes SwiftUI (`@expo/ui/swift-ui`) en iOS y Jetpack Compose/Glance (`@expo/ui/jetpack-compose`) en Android. El config plugin genera la extensión de WidgetKit, el App Group (`group.com.polygoidioma.app`) y los `AppWidgetProvider` de Android. No hay código Swift ni Kotlin propio.
 
 | Archivo | Qué es |
 | --- | --- |

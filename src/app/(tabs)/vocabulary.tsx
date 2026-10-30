@@ -1,12 +1,11 @@
 import { router } from 'expo-router';
-import { Layers, Smartphone } from 'lucide-react-native';
+import { ChevronRight, Layers, Smartphone } from 'lucide-react-native';
 import { useState } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 
 import { SRS_CONFIG, WORD_STATUS_LABELS, wordStatus, type WordStatus } from '@shared/srs';
 
 import {
-  Button,
   Card,
   EmptyState,
   ErrorState,
@@ -56,28 +55,13 @@ export default function VocabularyScreen() {
       }}
       refreshing={words.isRefetching}
     >
-      <Text variant="title">Vocabulario</Text>
-
-      <Card gradient={gradients.ranked} style={styles.review}>
-        <View style={styles.row}>
-          <Layers color={colors.primarySoft} size={24} />
-          <Text variant="heading">
-            {due.length > 0 ? `${due.length} palabras para repasar` : 'Estás al día'}
-          </Text>
-        </View>
-        <Text color="textMuted">
-          Repetición espaciada: cada acierto aleja el próximo repaso (
-          {SRS_CONFIG.intervalsDays.join(', ')} días) y un error lo trae de vuelta enseguida.
-        </Text>
-        <Button
-          label="Repasar ahora"
-          size="lg"
-          disabled={due.length === 0}
-          onPress={() => router.push('/review')}
-        />
-      </Card>
+      <View style={styles.header}>
+        <Text variant="title">Vocabulario</Text>
+        <Text color="textMuted">Las palabras que fuiste aprendiendo en el camino.</Text>
+      </View>
 
       <View style={styles.grid}>
+        <StatTile label="Estudiadas" value={String(entries.length)} />
         <StatTile label="Aprendiendo" value={String(counts.learning)} />
         <StatTile
           label="Dominadas"
@@ -86,13 +70,27 @@ export default function VocabularyScreen() {
         />
       </View>
 
+      {due.length > 0 ? (
+        <Card
+          onPress={() => router.navigate('/practice')}
+          accessibilityLabel={`${due.length} palabras para repasar. Ir a Repaso`}
+          style={styles.dueRow}
+        >
+          <Layers color={colors.primarySoft} size={22} />
+          <Text variant="bodyStrong" color="textStrong" style={styles.flex}>
+            {due.length} palabras para repasar
+          </Text>
+          <ChevronRight color={colors.textMuted} size={20} />
+        </Card>
+      ) : null}
+
       <Text variant="overline">TUS PALABRAS</Text>
       {entries.length === 0 ? (
         <EmptyState
           title="Todavía no estudiaste palabras"
           message="Completá tu primera lección y tus palabras aparecerán acá."
-          actionLabel="Ir a Aprender"
-          onAction={() => router.navigate('/learn')}
+          actionLabel="Ir a las lecciones"
+          onAction={() => router.navigate('/')}
         />
       ) : (
         <Card style={styles.list}>
@@ -165,7 +163,8 @@ export default function VocabularyScreen() {
 }
 
 const styles = StyleSheet.create({
-  review: { gap: spacing.md },
+  header: { gap: spacing.xxs },
+  dueRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   row: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   grid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
   list: { gap: spacing.md },

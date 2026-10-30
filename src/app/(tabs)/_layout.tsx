@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { BookOpen, Home, Layers, Swords, User } from 'lucide-react-native';
+import { BookOpen, Dumbbell, Layers, Swords, User } from 'lucide-react-native';
 
 import { colors } from '@/design-system';
 import { useWidgetSync } from '@/features/widgets/useWidgetSync';
@@ -21,15 +21,15 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Inicio',
-          tabBarIcon: ({ color, size }) => <Home color={color} size={size} />,
+          title: 'Aprender',
+          tabBarIcon: ({ color, size }) => <BookOpen color={color} size={size} />,
         }}
       />
       <Tabs.Screen
-        name="learn"
+        name="practice"
         options={{
-          title: 'Aprender',
-          tabBarIcon: ({ color, size }) => <BookOpen color={color} size={size} />,
+          title: 'Repaso',
+          tabBarIcon: ({ color, size }) => <Dumbbell color={color} size={size} />,
         }}
       />
       <Tabs.Screen

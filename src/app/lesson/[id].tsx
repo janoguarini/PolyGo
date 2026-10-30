@@ -89,11 +89,11 @@ export default function LessonScreen() {
       saved={submit.isSuccess}
       achievements={submit.data?.achievements_unlocked ?? []}
       onRetrySave={() => save(finished.attempts)}
-      primaryLabel={hasNext ? 'Siguiente lección' : 'Ver mapa de lecciones'}
+      primaryLabel={hasNext ? 'Siguiente lección' : 'Volver al camino'}
       onPrimary={() =>
         hasNext && next
           ? router.replace({ pathname: '/lesson/[id]', params: { id: next.id } })
-          : router.replace('/learn')
+          : router.dismissTo('/')
       }
       onExit={() => router.back()}
     />

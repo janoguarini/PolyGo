@@ -1,16 +1,18 @@
 import { checkAnswer } from '@shared/answers';
 import type { Exercise, UserAnswer } from '@shared/exercises';
 
-import { A1_UNITS, exerciseId, lessonId } from '../a1';
+import { A1_PATH, A1_UNITS } from '../a1';
 import { tokensOf } from '../builders';
+import { pathExerciseId } from '../path';
 import type { ExerciseDef } from '../types';
 
 const allWords = A1_UNITS.flatMap((u) => u.words);
-const lessons = A1_UNITS.flatMap((unit) =>
-  unit.lessons.map((lesson, li) => ({ unit, lesson, li, id: lessonId(unit, li) })),
+// Camino completo: incluye las lecciones de consolidación generadas (también se validan).
+const lessons = A1_PATH.flatMap(({ unit, lessons: path }) =>
+  path.map((lesson) => ({ unit, lesson, id: lesson.id })),
 );
-const exercises = lessons.flatMap(({ unit, lesson, li, id }) =>
-  lesson.exercises.map((def, ei) => ({ unit, def, lessonId: id, id: exerciseId(unit, li, ei) })),
+const exercises = lessons.flatMap(({ unit, lesson, id }) =>
+  lesson.exercises.map((def, ei) => ({ unit, def, lessonId: id, id: pathExerciseId(id, ei) })),
 );
 
 function toExercise(def: ExerciseDef, id: string): Exercise {
@@ -47,12 +49,29 @@ function canonicalAnswer(def: ExerciseDef, text: string): UserAnswer {
 }
 
 describe('estructura del currículo A1', () => {
-  it('tiene unidades con posiciones consecutivas y 5–8 lecciones', () => {
+  it('tiene unidades con posiciones consecutivas y 5–8 lecciones escritas', () => {
     A1_UNITS.forEach((unit, i) => {
       expect(unit.position).toBe(i + 1);
       expect(unit.lessons.length).toBeGreaterThanOrEqual(5);
       expect(unit.lessons.length).toBeLessThanOrEqual(8);
     });
+  });
+
+  it('el camino intercala consolidación, conserva los ids escritos y cierra con el repaso final', () => {
+    for (const { unit, lessons: path } of A1_PATH) {
+      expect(path.map((l) => l.position)).toEqual(path.map((_, i) => i + 1));
+      expect(path.filter((l) => l.kind === 'lesson').map((l) => l.id)).toEqual(
+        unit.lessons.map(
+          (_, i) =>
+            `a1-u${String(unit.position).padStart(2, '0')}-l${String(i + 1).padStart(2, '0')}`,
+        ),
+      );
+      expect(path.at(-1)?.kind).toBe('final');
+      expect(path.length).toBeGreaterThanOrEqual(unit.lessons.length * 2);
+      path.forEach((l) => expect(l.id).toMatch(/^[a-z0-9-]+$/));
+    }
+    const ids = lessons.map((l) => l.id);
+    expect(new Set(ids).size).toBe(ids.length);
   });
 
   it('cada lección tiene entre 6 y 10 ejercicios', () => {
