@@ -53,6 +53,9 @@ const escape = (s) =>
 
 /** Datos que la política necesita: si faltan, se ve un aviso en la página y en la consola. */
 function required(key, label) {
+  if (config[key] && key === 'contactEmail') {
+    return `<a href="mailto:${escape(config[key])}">${escape(config[key])}</a>`;
+  }
   if (config[key]) return escape(config[key]);
   warnings.push(`Falta "${key}" (${label}) en website/site.config.json`);
   return `<mark>[completar: ${label}]</mark>`;
