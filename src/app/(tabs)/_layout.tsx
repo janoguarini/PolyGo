@@ -1,5 +1,6 @@
 import { Tabs } from 'expo-router';
 import { BookOpen, Dumbbell, Layers, Swords, User } from 'lucide-react-native';
+import { Platform, useWindowDimensions } from 'react-native';
 
 import { colors } from '@/design-system';
 import { useReminderSync } from '@/features/reminders/hooks';
@@ -9,14 +10,28 @@ export default function TabsLayout() {
   // Con sesión y onboarding completo: los widgets reflejan las palabras del usuario.
   useWidgetSync();
   useReminderSync();
+  // En la computadora, las pestañas van en una barra lateral.
+  const { width } = useWindowDimensions();
+  const sidebar = Platform.OS === 'web' && width >= 900;
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: colors.primaryBright,
         tabBarInactiveTintColor: colors.textMuted,
-        tabBarStyle: { backgroundColor: colors.backgroundDeep, borderTopColor: colors.border },
-        tabBarLabelStyle: { fontSize: 11, fontWeight: '600' },
+        tabBarPosition: sidebar ? 'left' : 'bottom',
+        tabBarLabelPosition: sidebar ? 'beside-icon' : undefined,
+        tabBarStyle: sidebar
+          ? {
+              backgroundColor: colors.backgroundDeep,
+              borderRightColor: colors.border,
+              width: 220,
+              paddingTop: 24,
+            }
+          : { backgroundColor: colors.backgroundDeep, borderTopColor: colors.border },
+        tabBarLabelStyle: sidebar
+          ? { fontSize: 15, fontWeight: '600', marginLeft: 12 }
+          : { fontSize: 11, fontWeight: '600' },
         sceneStyle: { backgroundColor: colors.background },
       }}
     >

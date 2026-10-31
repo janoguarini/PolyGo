@@ -1,5 +1,5 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import type { ReactNode, Ref } from 'react';
+import { createContext, useContext, type ReactNode, type Ref } from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -34,6 +34,9 @@ export interface ScreenProps {
   onScroll?: ScrollViewProps['onScroll'];
 }
 
+/** En la web (computadora) el contenido va en una columna centrada, como en el teléfono. */
+export const ScreenMaxWidth = createContext(680);
+
 export function Screen({
   children,
   scroll = true,
@@ -47,6 +50,9 @@ export function Screen({
   overlay,
   onScroll,
 }: ScreenProps) {
+  const maxWidth = useContext(ScreenMaxWidth);
+  const webColumn =
+    Platform.OS === 'web' ? ({ width: '100%', maxWidth, alignSelf: 'center' } as const) : null;
   const content = scroll ? (
     <ScrollView
       ref={scrollRef}
@@ -61,14 +67,14 @@ export function Screen({
           />
         ) : undefined
       }
-      contentContainerStyle={[styles.content, contentStyle]}
+      contentContainerStyle={[styles.content, webColumn, contentStyle]}
       keyboardShouldPersistTaps="handled"
       showsVerticalScrollIndicator={false}
     >
       {children}
     </ScrollView>
   ) : (
-    <View style={[styles.content, styles.fill, contentStyle]}>{children}</View>
+    <View style={[styles.content, styles.fill, webColumn, contentStyle]}>{children}</View>
   );
 
   return (
@@ -83,7 +89,7 @@ export function Screen({
             {content}
             {overlay}
           </View>
-          {footer ? <View style={styles.footer}>{footer}</View> : null}
+          {footer ? <View style={[styles.footer, webColumn]}>{footer}</View> : null}
         </KeyboardAvoidingView>
       </SafeAreaView>
     </LinearGradient>
