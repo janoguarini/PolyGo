@@ -58,7 +58,7 @@ export function flagEmoji(code: string | null | undefined): string | null {
 
 export type TargetLanguageCode = (typeof TARGET_LANGUAGES)[number]['code'];
 
-/** Niveles iniciales seleccionables. El MVP sólo tiene contenido A1. */
+/** Niveles iniciales seleccionables: define qué camino ves primero en Aprender. */
 export const START_LEVELS = [
   {
     id: 'A1',
@@ -69,8 +69,8 @@ export const START_LEVELS = [
   {
     id: 'A2',
     title: 'Sé lo básico',
-    description: 'Contenido A2 próximamente. Empezás por A1 con repaso rápido.',
-    available: false,
+    description: 'Ya me presento, hablo de mi rutina y hago preguntas simples.',
+    available: true,
   },
 ] as const;
 

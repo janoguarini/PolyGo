@@ -204,8 +204,6 @@ class Generator {
   }
 }
 
-const unitKey = (unit: UnitDef) => `a1-u${String(unit.position).padStart(2, '0')}`;
-
 /** Palabras practicadas en unas lecciones (sin repetir, en orden de aparición). */
 function wordsOf(lessons: readonly LessonDef[], gen: Generator): WordDef[] {
   const ids = [...new Set(lessons.flatMap((l) => l.exercises.flatMap((e) => e.words)))];
@@ -233,9 +231,12 @@ function sentences(
   });
 }
 
-export function unitPath(unit: UnitDef, allWords: readonly WordDef[]): PathLesson[] {
+/**
+ * `allWords`: las palabras que el alumno ya conoce al llegar a la unidad (su nivel y los anteriores),
+ * para descartar traducciones ambiguas. `key`: id de la unidad (a1-u01), prefijo de sus lecciones.
+ */
+export function unitPath(unit: UnitDef, allWords: readonly WordDef[], key: string): PathLesson[] {
   const gen = new Generator(unit, allWords);
-  const key = unitKey(unit);
   const used = new Set<ExerciseDef>();
   const path: Omit<PathLesson, 'position'>[] = [];
   let reviews = 0;

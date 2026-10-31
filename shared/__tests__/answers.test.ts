@@ -57,6 +57,13 @@ describe('canonicalForm', () => {
     expect(canonicalForm("She isn't here")).toBe('she is not here');
     expect(canonicalForm("y'all")).toBe("y'all");
   });
+
+  it('expande las contracciones del A2 (pasado, futuro y presente perfecto)', () => {
+    expect(canonicalForm("I didn't go")).toBe('i did not go');
+    expect(canonicalForm("I'll help you")).toBe('i will help you');
+    expect(canonicalForm("I've never been to England")).toBe('i have never been to england');
+    expect(canonicalForm("She hasn't called yet")).toBe('she has not called yet');
+  });
 });
 
 describe('editDistance', () => {

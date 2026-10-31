@@ -1,19 +1,26 @@
 import { checkAnswer } from '@shared/answers';
 import type { Exercise, UserAnswer } from '@shared/exercises';
 
-import { A1_PATH, A1_UNITS } from '../a1';
+import { ALL_WORDS, CURRICULUM_PATH, LEVELS, unitId } from '..';
 import { tokensOf } from '../builders';
 import { pathExerciseId } from '../path';
 import type { ExerciseDef } from '../types';
 
-const allWords = A1_UNITS.flatMap((u) => u.words);
+const allWords = ALL_WORDS;
 // Camino completo: incluye las lecciones de consolidación generadas (también se validan).
-const lessons = A1_PATH.flatMap(({ unit, lessons: path }) =>
-  path.map((lesson) => ({ unit, lesson, id: lesson.id })),
+const lessons = CURRICULUM_PATH.flatMap(({ level, unit, lessons: path }) =>
+  path.map((lesson) => ({ level, unit, lesson, id: lesson.id })),
 );
-const exercises = lessons.flatMap(({ unit, lesson, id }) =>
-  lesson.exercises.map((def, ei) => ({ unit, def, lessonId: id, id: pathExerciseId(id, ei) })),
+const exercises = lessons.flatMap(({ level, unit, lesson, id }) =>
+  lesson.exercises.map((def, ei) => ({
+    level,
+    unit,
+    def,
+    lessonId: id,
+    id: pathExerciseId(id, ei),
+  })),
 );
+const levelIndex = (level: string) => LEVELS.findIndex((l) => l.level === level);
 
 function toExercise(def: ExerciseDef, id: string): Exercise {
   return {
@@ -48,23 +55,23 @@ function canonicalAnswer(def: ExerciseDef, text: string): UserAnswer {
   }
 }
 
-describe('estructura del currículo A1', () => {
-  it('tiene unidades con posiciones consecutivas y 5–8 lecciones escritas', () => {
-    A1_UNITS.forEach((unit, i) => {
-      expect(unit.position).toBe(i + 1);
-      expect(unit.lessons.length).toBeGreaterThanOrEqual(5);
-      expect(unit.lessons.length).toBeLessThanOrEqual(8);
-    });
+describe('estructura del currículo', () => {
+  it('cada nivel tiene unidades con posiciones consecutivas y 5–8 lecciones escritas', () => {
+    for (const { units } of LEVELS) {
+      expect(units.length).toBeGreaterThan(0);
+      units.forEach((unit, i) => {
+        expect(unit.position).toBe(i + 1);
+        expect(unit.lessons.length).toBeGreaterThanOrEqual(5);
+        expect(unit.lessons.length).toBeLessThanOrEqual(8);
+      });
+    }
   });
 
   it('el camino intercala consolidación, conserva los ids escritos y cierra con el repaso final', () => {
-    for (const { unit, lessons: path } of A1_PATH) {
+    for (const { level, unit, lessons: path } of CURRICULUM_PATH) {
       expect(path.map((l) => l.position)).toEqual(path.map((_, i) => i + 1));
       expect(path.filter((l) => l.kind === 'lesson').map((l) => l.id)).toEqual(
-        unit.lessons.map(
-          (_, i) =>
-            `a1-u${String(unit.position).padStart(2, '0')}-l${String(i + 1).padStart(2, '0')}`,
-        ),
+        unit.lessons.map((_, i) => `${unitId(level, unit)}-l${String(i + 1).padStart(2, '0')}`),
       );
       expect(path.at(-1)?.kind).toBe('final');
       expect(path.length).toBeGreaterThanOrEqual(unit.lessons.length * 2);
@@ -98,12 +105,15 @@ describe('estructura del currículo A1', () => {
     }
   });
 
-  it('los ejercicios sólo usan palabras de su unidad o de unidades anteriores', () => {
-    for (const { unit, def, id } of exercises) {
+  it('los ejercicios sólo usan palabras de su unidad o de unidades (y niveles) anteriores', () => {
+    for (const { level, unit, def, id } of exercises) {
       const available = new Set(
-        A1_UNITS.filter((u) => u.position <= unit.position).flatMap((u) =>
-          u.words.map((w) => w.id),
-        ),
+        LEVELS.flatMap((l, li) =>
+          l.units.filter(
+            (u) =>
+              li < levelIndex(level) || (li === levelIndex(level) && u.position <= unit.position),
+          ),
+        ).flatMap((u) => u.words.map((w) => w.id)),
       );
       expect(def.words.length).toBeGreaterThan(0);
       for (const w of def.words) expect([id, w, available.has(w)]).toEqual([id, w, true]);

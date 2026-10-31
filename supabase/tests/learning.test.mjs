@@ -4,17 +4,21 @@ import { randomUUID } from 'node:crypto';
 
 import { SRS_CONFIG } from '../../shared/srs.ts';
 import { createDb, createUser, as } from './harness.mjs';
-import { A1_PATH, A1_UNITS } from '../../content/a1/index.ts';
+import { ALL_WORDS, CURRICULUM_PATH } from '../../content/index.ts';
 import { contentDocument } from '../../scripts/content-document.ts';
 
-// Totales esperados calculados desde el contenido fuente (content/a1): las migraciones deben cargarlo entero.
+// Totales esperados calculados desde el contenido fuente (content/, todos los niveles): las
+// migraciones deben cargarlo entero.
 const CONTENT_TOTALS = {
-  units: A1_UNITS.length,
-  lessons: A1_PATH.reduce((n, p) => n + p.lessons.length, 0),
-  exercises: A1_PATH.reduce((n, p) => n + p.lessons.reduce((m, l) => m + l.exercises.length, 0), 0),
-  words: A1_UNITS.reduce((n, u) => n + u.words.length, 0),
+  units: CURRICULUM_PATH.length,
+  lessons: CURRICULUM_PATH.reduce((n, p) => n + p.lessons.length, 0),
+  exercises: CURRICULUM_PATH.reduce(
+    (n, p) => n + p.lessons.reduce((m, l) => m + l.exercises.length, 0),
+    0,
+  ),
+  words: ALL_WORDS.length,
 };
-const CONTENT_LINKS = A1_PATH.flatMap((p) => p.lessons.flatMap((l) => l.exercises)).reduce(
+const CONTENT_LINKS = CURRICULUM_PATH.flatMap((p) => p.lessons.flatMap((l) => l.exercises)).reduce(
   (n, e) => n + new Set(e.words).size,
   0,
 );
@@ -23,10 +27,11 @@ let db;
 let alice;
 let bob;
 
-// Contenido mínimo de prueba (el contenido real se prueba en content/__tests__).
+// Contenido mínimo de prueba (el contenido real se prueba en content/__tests__). Va en portugués
+// para no chocar con las unidades reales ni compartir su orden de desbloqueo.
 const FIXTURE = `
   insert into public.curriculum_units (id, language_code, level, position, title_es, title_en, description_es, emoji, is_published)
-  values ('t-u1', 'en', 'A2', 1, 'Unidad', 'Unit', 'desc', '👋', true);
+  values ('t-u1', 'pt', 'A2', 1, 'Unidad', 'Unit', 'desc', '👋', true);
   insert into public.lessons (id, unit_id, position, title_es, objective_es, is_published) values
     ('t-l1', 't-u1', 1, 'Lección 1', 'obj', true),
     ('t-l2', 't-u1', 2, 'Lección 2', 'obj', true);
@@ -292,13 +297,13 @@ test('zona horaria inválida cae a UTC', async () => {
   assert.deepEqual(rows[0], { tz: 'UTC', ok: 'Europe/Madrid' });
 });
 
-test('contenido real A1: se carga completo y la primera lección se puede completar', async () => {
+test('contenido real (A1 y A2): se carga completo y la primera lección se puede completar', async () => {
   const { rows } = await db.query(`
-    select (select count(*)::int from public.curriculum_units where level = 'A1' and is_published) as units,
-           (select count(*)::int from public.lessons where id like 'a1-%' and is_published) as lessons,
-           (select count(*)::int from public.exercises where id like 'a1-%' and is_published) as exercises,
+    select (select count(*)::int from public.curriculum_units where id ~ '^a[12]-' and is_published) as units,
+           (select count(*)::int from public.lessons where id ~ '^a[12]-' and is_published) as lessons,
+           (select count(*)::int from public.exercises where id ~ '^a[12]-' and is_published) as exercises,
            (select count(*)::int from public.words where id like 'en-%' and is_published) as words,
-           (select count(*)::int from public.exercises e where id like 'a1-%'
+           (select count(*)::int from public.exercises e where id ~ '^a[12]-'
               and not exists (select 1 from public.exercise_words w where w.exercise_id = e.id)) as orphan_exercises`);
   assert.deepEqual(rows[0], { ...CONTENT_TOTALS, orphan_exercises: 0 });
 
@@ -332,7 +337,7 @@ test('contenido real A1: se carga completo y la primera lección se puede comple
   assert.equal(unlocked.rows[0].ok, true);
 });
 
-/** Contenido A1 publicado en la base, con la misma forma que scripts/content-document.ts. */
+/** Contenido publicado en la base, con la misma forma que scripts/content-document.ts. */
 async function dbContent() {
   const q = async (sql) => (await db.query(sql)).rows;
   const byId = (a, b) => a.id.localeCompare(b.id);
@@ -341,11 +346,11 @@ async function dbContent() {
            e.explanation_es, e.difficulty, e.recommended_seconds,
            coalesce((select array_agg(w.word_id order by w.word_id) from public.exercise_words w
                      where w.exercise_id = e.id), '{}') as words
-    from public.exercises e where e.id like 'a1-%' and e.is_published`);
+    from public.exercises e where e.id ~ '^a[12]-' and e.is_published`);
   return {
     units: (
-      await q(`select id, position, title_es, title_en, description_es, emoji from public.curriculum_units
-                     where level = 'A1' and is_published`)
+      await q(`select id, level, position, title_es, title_en, description_es, emoji from public.curriculum_units
+                     where id ~ '^a[12]-' and is_published`)
     ).sort(byId),
     words: (
       await q(`select id, unit_id, text, translation_es, accepted_translations, ipa, emoji, example_en,
@@ -353,7 +358,7 @@ async function dbContent() {
     ).sort(byId),
     lessons: (
       await q(`select id, unit_id, position, title_es, objective_es from public.lessons
-                       where id like 'a1-%' and is_published`)
+                       where id ~ '^a[12]-' and is_published`)
     ).sort(byId),
     exercises: exercises.sort(byId),
   };

@@ -37,7 +37,10 @@ type Step = (typeof STEPS)[number];
 
 const TITLES: Record<Step, { title: string; subtitle: string }> = {
   language: { title: '¿Qué idioma querés aprender?', subtitle: 'Por ahora Polygo enseña inglés.' },
-  level: { title: '¿Cuál es tu nivel?', subtitle: 'El contenido actual cubre el nivel A1.' },
+  level: {
+    title: '¿Cuál es tu nivel?',
+    subtitle: 'Podés cambiar de nivel cuando quieras desde Aprender.',
+  },
   goal: { title: 'Tu objetivo diario', subtitle: 'Podés cambiarlo cuando quieras.' },
   username: { title: 'Elegí tu nombre de jugador', subtitle: 'Así te van a ver tus rivales.' },
   avatar: { title: 'Elegí tu avatar', subtitle: 'Más opciones llegarán con las temporadas.' },

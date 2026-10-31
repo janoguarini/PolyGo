@@ -1,8 +1,12 @@
-# Currículo de inglés A1
+# Currículo de inglés A1 y A2
 
-Referencia: nivel A1 del MCER. Completar unidades **no** equivale a una certificación oficial.
+Referencia: niveles A1 y A2 del MCER. Completar unidades **no** equivale a una certificación oficial.
+
+Cada nivel es un camino propio (`content/a1/`, `content/a2/`, ensamblados en `content/index.ts`): el desbloqueo es lineal dentro del nivel y cada nivel arranca desbloqueado (`is_lesson_unlocked` particiona por idioma y nivel). En Aprender, un selector A1/A2 muestra un camino por vez; arranca en el nivel de inicio del perfil (`start_level`). El A2 supone el A1: sus ejercicios pueden usar todas las palabras del A1.
 
 ## Estado del contenido
+
+### A1
 
 | #   | Unidad                                                                   | Lecciones | Estado                |
 | --- | ------------------------------------------------------------------------ | --------- | --------------------- |
@@ -19,7 +23,26 @@ Referencia: nivel A1 del MCER. Completar unidades **no** equivale a una certific
 | 11  | Gustos y preferencias (_like/love/hate_, _can_, _favorite_)              | 5         | ✅ cargada (borrador) |
 | 12  | Preguntas y conversaciones básicas (_what/when/why/which/how much/many_) | 5         | ✅ cargada (borrador) |
 
-Totales actuales: 12 unidades · 60 lecciones · 244 palabras · 457 ejercicios (verificado con checksum md5 contra Supabase, 2026-10-30).
+Totales A1: 12 unidades · 60 lecciones escritas (120 con la consolidación) · 244 palabras · 1057 ejercicios (verificado con checksum md5 contra Supabase, 2026-10-30).
+
+### A2
+
+| #   | Unidad                                                                 | Lecciones | Estado      |
+| --- | ---------------------------------------------------------------------- | --------- | ----------- |
+| 1   | El pasado de _to be_ (_was/were_, _yesterday_, _ago_)                  | 5         | ✅ borrador |
+| 2   | Pasado simple regular (_-ed_, _did/didn't_, _then/after_)              | 5         | ✅ borrador |
+| 3   | Pasado simple irregular (_went, had, saw, bought…_)                    | 5         | ✅ borrador |
+| 4   | Viajes y vacaciones (transporte, aeropuerto, _by_ + transporte)        | 5         | ✅ borrador |
+| 5   | Presente continuo (_am/is/are + -ing_, ahora vs. rutina)               | 5         | ✅ borrador |
+| 6   | Ropa y compras (_wear_, talles, precios, pagar)                        | 5         | ✅ borrador |
+| 7   | Comparativos y superlativos (_-er/more than_, _the -est/most_, _same_) | 5         | ✅ borrador |
+| 8   | Futuro (_going to_, _will/won't_, _maybe/probably_)                    | 5         | ✅ borrador |
+| 9   | Salud y cuerpo (partes del cuerpo, _hurt_, _should/shouldn't_)         | 5         | ✅ borrador |
+| 10  | Trabajo y obligaciones (profesiones, _have to_, _must/mustn't_)        | 5         | ✅ borrador |
+| 11  | El clima y las estaciones (tiempo, estaciones, pronóstico)             | 5         | ✅ borrador |
+| 12  | Experiencias: presente perfecto (_have you ever_, _already/yet/just_)  | 5         | ✅ borrador |
+
+Totales A2: 12 unidades · 60 lecciones escritas (120 con la consolidación) · 241 palabras · 1047 ejercicios. Migraciones `…_content_a2_unit_NN.sql`.
 Todo el contenido tiene `review_status = 'draft'`: fue redactado sin revisión editorial humana (las unidades 1–3 tuvieron además una revisión lingüística automática/asistida el 2026-10-30). Antes del lanzamiento, una persona con dominio del inglés debe revisarlo (traducciones, IPA, ejemplos) y marcarlo `reviewed`.
 
 Retoques puntuales a unidades ya cargadas pueden ir en una migración chica de `UPDATE` (ver `…_content_a1_text_fixes.sql`) en vez de regenerar la unidad: el resultado debe ser idéntico al de regenerarla, y se verifica con el checksum.
@@ -27,10 +50,11 @@ Retoques puntuales a unidades ya cargadas pueden ir en una migración chica de `
 ## Flujo de autoría
 
 0. **Unidades ya cargadas:** antes de editar, `npm run content:dump -- antes.json` (foto del contenido actual).
-1. Editar `content/a1/unitNN-*.ts` (formato tipado en `content/types.ts`, atajos en `content/builders.ts`).
+1. Editar `content/<nivel>/unitNN-*.ts` (formato tipado en `content/types.ts`, atajos en `content/builders.ts`).
 2. `npm test`: `content/__tests__/content.test.ts` valida cada ejercicio (ver abajo).
 3. Unidades ya cargadas: `npm run content:diff -- antes.json supabase/migrations/<timestamp>_content_<cambio>.sql` genera sólo la diferencia (palabras y ejercicios cambiados) y **corrige los vínculos ejercicio→palabra con `UPDATE`**, sin `DELETE`. Usar esto y no `content:sql`: como los ids de ejercicios generados son posicionales, regenerar la unidad dejaría el vínculo viejo y los repasos se acreditarían a la palabra equivocada. Falla con un mensaje si el cambio no se puede expresar así (altas o bajas de lecciones o palabras, un ejercicio que pierde palabras).
-   Unidades nuevas: `npm run content:sql -- supabase/migrations/<timestamp>_content_a1_unit_NN.sql --unit NN` genera una migración idempotente por unidad (más chica y fácil de aplicar; aplicar en orden de unidad).
+   Unidades nuevas: `npm run content:sql -- supabase/migrations/<timestamp>_content_a2_unit_NN.sql --level A2 --unit NN` genera una migración idempotente por unidad (más chica y fácil de aplicar; aplicar en orden de unidad). Sin `--level`, `--unit` se refiere al A1.
+   La consolidación de cada nivel sólo considera las palabras de ese nivel y los anteriores: agregar un nivel no cambia lo generado (ni lo cargado) de los anteriores.
 4. Aplicar la migración y renombrar el archivo con la versión que registre Supabase. Los ejercicios retirados se **despublican** (no se borran) para conservar el historial de intentos.
 5. Ninguna migración contiene sentencias destructivas. `supabase/tests/learning.test.mjs` verifica que la base que dejan todas las migraciones es idéntica a `content/` (incluidos los vínculos) y que reaplicar la última migración de contenido no cambia nada.
 
@@ -65,7 +89,7 @@ Audio: voz sintetizada del sistema (`expo-speech`, en-US). La app lo indica como
 
 - Se ignoran mayúsculas, espacios extra, comas, `¿¡` y la puntuación final; se unifican apóstrofos tipográficos.
 - **Las tildes cuentan.**
-- Contracciones: sólo una lista cerrada es equivalente (`I'm` = `I am`, `isn't` = `is not`, …).
+- Contracciones: sólo una lista cerrada es equivalente (`I'm` = `I am`, `isn't` = `is not`, y para el A2 `didn't`, `won't`, `I'll`, `haven't`, `I've`, `shouldn't`, …). `he's`/`she's` se expanden siempre a _is_: en presente perfecto, listar la forma larga en `accepted_answers`.
 - Tolerancia a errores de tipeo: distancia de edición 1, sólo en respuestas escritas de ≥ 8 caracteres y nunca en `complete_word`. La app avisa "Ojo con la ortografía" y muestra la forma correcta.
 - Fuera de eso, se aceptan sólo la respuesta y las variantes listadas en `accepted_answers`.
 

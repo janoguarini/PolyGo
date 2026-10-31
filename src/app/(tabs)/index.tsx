@@ -57,6 +57,8 @@ export default function HomeScreen() {
   const viewport = useRef(height * 0.7);
   // Hacia dónde quedó tu lección cuando no se ve; null si está en pantalla.
   const [away, setAway] = useState<'up' | 'down' | null>(null);
+  // Nivel elegido en el selector; null = el nivel con el que empezaste.
+  const [chosenLevel, setChosenLevel] = useState<string | null>(null);
 
   const scrollToCurrent = (animated: boolean) => {
     if (currentY.current === null) return;
@@ -86,14 +88,18 @@ export default function HomeScreen() {
   }
 
   const { profile } = me.data;
-  const { units } = curriculum.data;
+  const levels = [...new Set(curriculum.data.units.map((u) => u.level))];
+  const level =
+    chosenLevel ??
+    (levels.includes(profile.start_level) ? profile.start_level : (levels[0] ?? 'A1'));
+  const units = curriculum.data.units.filter((u) => u.level === level);
   const total = units.reduce((n, u) => n + u.lessons.length, 0);
   const completed = units.reduce((n, u) => n + u.completedCount, 0);
   const todayMinutes = Math.floor((summary.data?.today_seconds ?? 0) / 60);
   const goalMet = todayMinutes >= profile.daily_goal_minutes;
   const streak = summary.data?.streak_days ?? 0;
   const atRisk = summary.data ? streakAtRisk(summary.data) : false;
-  const currentLesson = curriculum.data.current;
+  const currentLesson = curriculum.data.currentByLevel[level] ?? null;
   const freezes = summary.data?.streak_freezes ?? 0;
   const missionList = missions.data?.missions ?? [];
   const missionsTotal = missionList.length || 3;
@@ -112,9 +118,32 @@ export default function HomeScreen() {
     <View style={styles.header}>
       <View style={styles.headerRow}>
         <View style={styles.flex}>
-          <Text variant="overline" color="primarySoft">
-            INGLÉS · A1
-          </Text>
+          <View style={styles.levels} accessibilityRole="tablist">
+            <Text variant="overline" color="primarySoft">
+              INGLÉS
+            </Text>
+            {levels.map((l) => (
+              <Pressable
+                key={l}
+                accessibilityRole="tab"
+                accessibilityState={{ selected: l === level }}
+                accessibilityLabel={`Nivel ${l}`}
+                hitSlop={8}
+                onPress={() => {
+                  if (l === level) return;
+                  // El camino nuevo vuelve a centrarse en su lección actual, sin animar.
+                  currentY.current = null;
+                  setAway(null);
+                  setChosenLevel(l);
+                }}
+                style={[styles.level, l === level && styles.levelActive]}
+              >
+                <Text variant="overline" color={l === level ? 'onPrimary' : 'textMuted'}>
+                  {l}
+                </Text>
+              </Pressable>
+            ))}
+          </View>
           <Text variant="heading">Tu camino</Text>
         </View>
         <Pressable
@@ -255,6 +284,7 @@ export default function HomeScreen() {
         <EmptyState title="Todavía no hay unidades publicadas" />
       ) : (
         <LessonPath
+          key={level}
           units={units}
           onCurrentLayout={(y) => {
             const first = currentY.current === null;
@@ -265,7 +295,7 @@ export default function HomeScreen() {
         />
       )}
       <Text variant="caption" align="center">
-        El contenido sigue el nivel A1 del MCER como referencia; completarlo no equivale a una
+        El contenido sigue el nivel {level} del MCER como referencia; completarlo no equivale a una
         certificación oficial.
       </Text>
     </Screen>
@@ -284,6 +314,15 @@ const styles = StyleSheet.create({
   headerRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   flex: { flex: 1 },
   chip: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
+  levels: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
+  level: {
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 2,
+    borderRadius: radii.pill,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  levelActive: { backgroundColor: colors.primary, borderColor: colors.primaryBright },
   banner: {
     flexDirection: 'row',
     alignItems: 'center',

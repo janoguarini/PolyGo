@@ -114,6 +114,7 @@ describe('withStatus (desbloqueo)', () => {
   const units = [
     {
       id: 'u1',
+      level: 'A1',
       position: 1,
       title: '',
       titleEn: '',
@@ -126,6 +127,7 @@ describe('withStatus (desbloqueo)', () => {
     },
     {
       id: 'u2',
+      level: 'A1',
       position: 2,
       title: '',
       titleEn: '',
@@ -136,19 +138,32 @@ describe('withStatus (desbloqueo)', () => {
       ],
     },
   ];
+  const a2 = {
+    id: 'a2u1',
+    level: 'A2',
+    position: 1,
+    title: '',
+    titleEn: '',
+    description: '',
+    emoji: '',
+    lessons: [
+      { id: 'm1', unitId: 'a2u1', position: 1, title: '', objective: '', exerciseCount: 5 },
+      { id: 'm2', unitId: 'a2u1', position: 2, title: '', objective: '', exerciseCount: 5 },
+    ],
+  };
 
   it('la primera lección está disponible y el resto bloqueado', () => {
-    const { units: result, current } = withStatus(units, []);
+    const { units: result, currentByLevel } = withStatus(units, []);
     expect(result.flatMap((u) => u.lessons.map((l) => l.status))).toEqual([
       'current',
       'locked',
       'locked',
     ]);
-    expect(current?.id).toBe('l1');
+    expect(currentByLevel.A1?.id).toBe('l1');
   });
 
   it('completar desbloquea la siguiente, incluso en otra unidad', () => {
-    const { units: result, current } = withStatus(units, [
+    const { units: result, currentByLevel } = withStatus(units, [
       { lessonId: 'l1', timesCompleted: 1, bestAccuracy: 0.8 },
       { lessonId: 'l2', timesCompleted: 2, bestAccuracy: 1 },
     ]);
@@ -158,7 +173,23 @@ describe('withStatus (desbloqueo)', () => {
       'current',
     ]);
     expect(result[0]?.completedCount).toBe(2);
-    expect(current?.id).toBe('l3');
+    expect(currentByLevel.A1?.id).toBe('l3');
+  });
+
+  it('cada nivel tiene su propio orden y arranca desbloqueado (como el servidor)', () => {
+    const { units: result, currentByLevel } = withStatus(
+      [a2, ...units],
+      [{ lessonId: 'm1', timesCompleted: 1, bestAccuracy: 1 }],
+    );
+    expect(result.map((u) => u.id)).toEqual(['u1', 'u2', 'a2u1']);
+    expect(result.flatMap((u) => u.lessons.map((l) => l.status))).toEqual([
+      'current',
+      'locked',
+      'locked',
+      'completed',
+      'current',
+    ]);
+    expect(currentByLevel).toMatchObject({ A1: { id: 'l1' }, A2: { id: 'm2' } });
   });
 });
 

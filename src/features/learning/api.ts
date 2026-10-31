@@ -74,14 +74,15 @@ export async function fetchCurriculum(languageCode: string): Promise<UnitSummary
   const { data, error } = await db
     .from('curriculum_units')
     .select(
-      'id, position, title_es, title_en, description_es, emoji, lessons(id, unit_id, position, title_es, objective_es, exercises(count))',
+      'id, level, position, title_es, title_en, description_es, emoji, lessons(id, unit_id, position, title_es, objective_es, exercises(count))',
     )
     .eq('language_code', languageCode)
-    .eq('level', 'A1')
+    .order('level')
     .order('position');
   if (error) throw error;
   return data.map((u) => ({
     id: u.id,
+    level: u.level,
     position: u.position,
     title: u.title_es,
     titleEn: u.title_en,

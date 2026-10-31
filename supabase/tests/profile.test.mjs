@@ -14,7 +14,7 @@ let carol;
 // Lección mínima de un ejercicio (nivel A2 para no depender del orden del contenido real A1).
 const FIXTURE = `
   insert into public.curriculum_units (id, language_code, level, position, title_es, title_en, description_es, emoji, is_published)
-  values ('p-u1', 'en', 'A2', 1, 'Unidad', 'Unit', 'desc', '👋', true);
+  values ('p-u1', 'pt', 'A2', 1, 'Unidad', 'Unit', 'desc', '👋', true);
   insert into public.lessons (id, unit_id, position, title_es, objective_es, is_published)
   values ('p-l1', 'p-u1', 1, 'Lección', 'obj', true);
   insert into public.words (id, language_code, unit_id, text, translation_es, is_published)

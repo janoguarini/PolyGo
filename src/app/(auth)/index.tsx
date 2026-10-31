@@ -6,7 +6,7 @@ import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 import { Button, RankEmblem, Screen, Text, colors, spacing } from '@/design-system';
 
 const PILLARS = [
-  { icon: BookOpen, title: 'Aprendé', text: 'Lecciones cortas de inglés desde A1.' },
+  { icon: BookOpen, title: 'Aprendé', text: 'Lecciones cortas de inglés, niveles A1 y A2.' },
   { icon: Swords, title: 'Competí', text: 'Batallas 1 contra 1 en tiempo real.' },
   { icon: TrendingUp, title: 'Subí de rango', text: 'Ganá ELO de Bronce a Gran Maestro.' },
 ] as const;

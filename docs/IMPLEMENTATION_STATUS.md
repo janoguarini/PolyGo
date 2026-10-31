@@ -83,6 +83,12 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 - [x] `react-native` 0.88.1 (expo-doctor 20/20).
 - [x] Contenido A1 unidades 4–12 (45 lecciones, 180 palabras, 338 ejercicios) aplicado en Supabase; checksum md5 de palabras, lecciones, ejercicios y vínculos idéntico al local. Validación nueva contra traducciones ambiguas (corrigió _not_, _don't_, _doesn't_, _at_ y reemplazó _café_ por _museum_).
 
+### Contenido A2 (2026-10-31)
+
+- [x] 12 unidades A2 (`content/a2`, borrador sin revisión humana): pasado de to be, pasado regular e irregular, viajes, presente continuo, ropa y compras, comparativos, futuro, salud, trabajo, clima y presente perfecto. 60 lecciones escritas + consolidación = 120 lecciones, 241 palabras, 1047 ejercicios. Migraciones `20261031050101…12_content_a2_unit_NN`.
+- [x] Pipeline multinivel: `content/index.ts` (`LEVELS`, `CURRICULUM_PATH`), `content:sql --level A2 --unit N`, tests de contenido y de base sobre ambos niveles.
+- [x] App: selector A1/A2 en Aprender (arranca en `start_level`), desbloqueo por nivel igual que el servidor, A2 elegible en el onboarding. Contracciones del A2 en `shared/answers.ts`.
+
 ### Racha y recordatorio diario (2026-10-30)
 
 - [x] Festejo al terminar la primera sesión del día (racha nueva o +1, semana con los días de la racha) y al cumplir el objetivo diario; aparece entre los resultados y lo que sigue, en lecciones y repasos guardados. Se calcula comparando el resumen de antes y después de la sesión (sin cambios en la base).
@@ -207,7 +213,7 @@ No ejecutado todavía: widgets en un dispositivo (requiere development build); l
 ## Problemas conocidos
 
 1. Tipos de base de datos generados desde Supabase; regenerarlos tras cada migración.
-2. Contenido A1 sin revisión editorial humana (`review_status = 'draft'`).
+2. Contenido A1 y A2 sin revisión editorial humana (`review_status = 'draft'`).
 3. En lecciones, la corrección la calcula el cliente (feedback inmediato); el servidor valida estructura, desbloqueo e idempotencia, no re-corrige. No afecta al ELO.
 4. Mock propio de Reanimated en Jest; bundle IDs provisionales; SMTP por defecto de Supabase.
 5. `friends` se trata como privado hasta que existan amigos.
@@ -225,4 +231,4 @@ Todo lo que falta está en [LAUNCH_CHECKLIST.md](LAUNCH_CHECKLIST.md). En orden:
 2. Servidor de partidas: `server/.env` con la secret key, levantarlo y jugar en dos dispositivos; después elegir hosting con HTTPS.
 3. Publicar la política de privacidad (completar el borrador) y una URL de borrado de cuenta; cargar `EXPO_PUBLIC_PRIVACY_POLICY_URL`.
 4. Decisiones: bundle ID definitivo, contraseñas filtradas, SMTP propio, monitoreo de errores.
-5. Revisión editorial del contenido A1, build de producción y envío a TestFlight / prueba interna.
+5. Revisión editorial del contenido A1 y A2, build de producción y envío a TestFlight / prueba interna.

@@ -79,7 +79,9 @@ export default function LessonScreen() {
 
   if (celebration.screen) return celebration.screen;
 
-  const next = curriculum.data?.current;
+  // La siguiente lección es la que toca en el mismo nivel que la que terminaste.
+  const level = curriculum.data?.units.find((u) => u.lessons.some((l) => l.id === id))?.level;
+  const next = level ? curriculum.data?.currentByLevel[level] : undefined;
   const hasNext = Boolean(next && next.id !== id);
 
   return (

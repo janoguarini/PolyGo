@@ -1,4 +1,4 @@
-import { A1_PATH, unitId } from '../content/a1';
+import { CURRICULUM_PATH, unitId, type PathUnit } from '../content';
 import { pathExerciseId } from '../content/path';
 
 /**
@@ -6,21 +6,21 @@ import { pathExerciseId } from '../content/path';
  * migraciones (scripts/build-content-sql.ts, scripts/build-content-diff-sql.ts) y el test que
  * compara la base con content/.
  */
-export function contentDocument(path: typeof A1_PATH = A1_PATH) {
-  const UNITS = path.map((p) => p.unit);
+export function contentDocument(path: readonly PathUnit[] = CURRICULUM_PATH) {
   return {
-    units: UNITS.map((u) => ({
-      id: unitId(u),
+    units: path.map(({ level, unit: u }) => ({
+      id: unitId(level, u),
+      level,
       position: u.position,
       title_es: u.title,
       title_en: u.titleEn,
       description_es: u.description,
       emoji: u.emoji,
     })),
-    words: UNITS.flatMap((u) =>
+    words: path.flatMap(({ level, unit: u }) =>
       u.words.map((w) => ({
         id: w.id,
-        unit_id: unitId(u),
+        unit_id: unitId(level, u),
         text: w.text,
         translation_es: w.translation,
         accepted_translations: w.acceptedTranslations ?? [],
@@ -33,10 +33,10 @@ export function contentDocument(path: typeof A1_PATH = A1_PATH) {
       })),
     ),
     // Camino completo: lecciones escritas + consolidación generada (content/path.ts).
-    lessons: path.flatMap(({ unit, lessons }) =>
+    lessons: path.flatMap(({ level, unit, lessons }) =>
       lessons.map((l) => ({
         id: l.id,
-        unit_id: unitId(unit),
+        unit_id: unitId(level, unit),
         position: l.position,
         title_es: l.title,
         objective_es: l.objective,

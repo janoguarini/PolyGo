@@ -1,4 +1,7 @@
-/** Estado de cada lección en el mapa. Replica la regla de desbloqueo del servidor (is_lesson_unlocked). */
+/**
+ * Estado de cada lección en el mapa. Replica la regla de desbloqueo del servidor (is_lesson_unlocked):
+ * el orden es lineal dentro de cada nivel y cada nivel arranca desbloqueado.
+ */
 
 export type LessonStatus = 'completed' | 'current' | 'locked';
 
@@ -13,6 +16,8 @@ export interface LessonSummary {
 
 export interface UnitSummary {
   id: string;
+  /** Nivel MCER (A1, A2). */
+  level: string;
   position: number;
   title: string;
   titleEn: string;
@@ -42,15 +47,21 @@ export function withStatus(
   progress: LessonProgress[],
 ): {
   units: UnitWithStatus[];
-  current: LessonWithStatus | null;
+  /** Lección que toca en cada nivel (ausente si el nivel está terminado). */
+  currentByLevel: Partial<Record<string, LessonWithStatus>>;
 } {
   const done = new Map(progress.filter((p) => p.timesCompleted > 0).map((p) => [p.lessonId, p]));
   let previousCompleted = true;
-  let current: LessonWithStatus | null = null;
+  let level: string | null = null;
+  const currentByLevel: Partial<Record<string, LessonWithStatus>> = {};
 
   const result = [...units]
-    .sort((a, b) => a.position - b.position)
+    .sort((a, b) => a.level.localeCompare(b.level) || a.position - b.position)
     .map((unit) => {
+      if (unit.level !== level) {
+        level = unit.level;
+        previousCompleted = true;
+      }
       const lessons = [...unit.lessons]
         .sort((a, b) => a.position - b.position)
         .map((lesson): LessonWithStatus => {
@@ -62,7 +73,9 @@ export function withStatus(
               : 'locked';
           previousCompleted = Boolean(record);
           const item = { ...lesson, status, bestAccuracy: record ? record.bestAccuracy : null };
-          if (status === 'current' && !current) current = item;
+          if (status === 'current' && !currentByLevel[unit.level]) {
+            currentByLevel[unit.level] = item;
+          }
           return item;
         });
       return {
@@ -72,5 +85,5 @@ export function withStatus(
       };
     });
 
-  return { units: result, current };
+  return { units: result, currentByLevel };
 }

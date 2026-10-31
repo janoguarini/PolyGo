@@ -1,6 +1,6 @@
 /**
- * Genera una migración SQL idempotente con el contenido de content/a1.
- * Uso: npm run content:sql -- supabase/migrations/<timestamp>_content_a1.sql [--unit N]
+ * Genera una migración SQL idempotente con el contenido de content/ (todos los niveles).
+ * Uso: npm run content:sql -- supabase/migrations/<timestamp>_content_a2_unit_01.sql [--level A2] [--unit N]
  *
  * El contenido viaja como un único documento JSON dentro de un bloque DO, sin sentencias destructivas.
  * - Unidades, lecciones, palabras y ejercicios quedan publicados con review_status = 'draft'.
@@ -8,7 +8,7 @@
  */
 import { writeFileSync } from 'node:fs';
 
-import { A1_PATH } from '../content/a1';
+import { CURRICULUM_PATH } from '../content';
 import { contentDocument } from './content-document';
 
 const out = process.argv[2];
@@ -17,12 +17,18 @@ if (!out) {
   process.exit(1);
 }
 
-// --unit N genera sólo esa unidad (migraciones más chicas; aplicar en orden).
-const unitArg = process.argv.indexOf('--unit');
-const onlyUnit = unitArg > 0 ? Number(process.argv[unitArg + 1]) : null;
-const PATH = onlyUnit ? A1_PATH.filter((p) => p.unit.position === onlyUnit) : A1_PATH;
-const UNITS = PATH.map((p) => p.unit);
-if (UNITS.length === 0) throw new Error(`Unidad ${onlyUnit} inexistente`);
+// --level A2 / --unit N generan sólo ese nivel o unidad (migraciones más chicas; aplicar en orden).
+const arg = (name: string) => {
+  const i = process.argv.indexOf(name);
+  return i > 0 ? process.argv[i + 1] : undefined;
+};
+const onlyLevel = arg('--level') ?? (arg('--unit') ? 'A1' : undefined);
+const onlyUnit = arg('--unit') ? Number(arg('--unit')) : null;
+const PATH = CURRICULUM_PATH.filter(
+  (p) => (!onlyLevel || p.level === onlyLevel) && (!onlyUnit || p.unit.position === onlyUnit),
+);
+if (PATH.length === 0) throw new Error(`Unidad ${onlyLevel ?? ''} ${onlyUnit ?? ''} inexistente`);
+const levels = [...new Set(PATH.map((p) => p.level))].join(' y ');
 
 const document = contentDocument(PATH);
 
@@ -31,8 +37,8 @@ if (payload.includes('$content$') || payload.includes('$polygo_content$'))
   throw new Error('El contenido no puede incluir los delimitadores $content$ ni $polygo_content$');
 
 const sql = `-- =====================================================================
--- Contenido A1 generado por scripts/build-content-sql.ts. NO editar a mano:
--- editar content/a1/*.ts, correr los tests (npm test) y regenerar.
+-- Contenido ${levels} generado por scripts/build-content-sql.ts. NO editar a mano:
+-- editar content/*/*.ts, correr los tests (npm test) y regenerar.
 -- ${document.units.length} unidades · ${document.lessons.length} lecciones · ${document.words.length} palabras · ${document.exercises.length} ejercicios
 -- =====================================================================
 
@@ -42,9 +48,9 @@ declare
 begin
 
 insert into public.curriculum_units (id, language_code, level, position, title_es, title_en, description_es, emoji, is_published)
-select x.id, 'en', 'A1', x.position, x.title_es, x.title_en, x.description_es, x.emoji, true
+select x.id, 'en', x.level, x.position, x.title_es, x.title_en, x.description_es, x.emoji, true
 from jsonb_to_recordset(d -> 'units')
-  as x(id text, position smallint, title_es text, title_en text, description_es text, emoji text)
+  as x(id text, level text, position smallint, title_es text, title_en text, description_es text, emoji text)
 on conflict (id) do update set position = excluded.position, title_es = excluded.title_es, title_en = excluded.title_en,
   description_es = excluded.description_es, emoji = excluded.emoji, is_published = true;
 

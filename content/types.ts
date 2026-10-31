@@ -3,8 +3,12 @@ import type { ExercisePayload, ExerciseType, Skill } from '../shared/exercises';
 /**
  * Formato de autoría del currículo. scripts/build-content-sql.ts lo convierte en una migración SQL;
  * content/__tests__/content.test.ts valida su integridad.
- * IDs: palabra "en-<slug>", unidad "a1-u01", lección "a1-u01-l01", ejercicio "a1-u01-l01-e01".
+ * IDs: palabra "en-<slug>", unidad "a1-u01", lección "a1-u01-l01", ejercicio "a1-u01-l01-e01"
+ * (con el prefijo del nivel: a1-…, a2-…).
  */
+
+/** Niveles del MCER con contenido (la base admite los mismos en curriculum_units.level). */
+export type Level = 'A1' | 'A2';
 
 export interface WordDef {
   id: string;
@@ -44,7 +48,7 @@ export interface LessonDef {
 }
 
 export interface UnitDef {
-  /** 1-based; define el id a1-uNN. */
+  /** 1-based dentro de su nivel; define el id a1-uNN / a2-uNN. */
   position: number;
   title: string;
   titleEn: string;
