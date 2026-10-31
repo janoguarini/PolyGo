@@ -844,6 +844,12 @@ export type Database = {
       is_lesson_unlocked: { Args: { p_lesson_id: string; p_user_id: string }; Returns: boolean };
       is_username_available: { Args: { p_username: string }; Returns: boolean };
       report_avatar: { Args: { p_reason: string; p_user_id: string }; Returns: Json };
+      block_user: { Args: { p_user_id: string }; Returns: undefined };
+      unblock_user: { Args: { p_user_id: string }; Returns: undefined };
+      get_blocked_users: {
+        Args: never;
+        Returns: { user_id: string; username: string; avatar_id: string; blocked_at: string }[];
+      };
       lesson_star_totals: { Args: { p_user_id: string }; Returns: Json };
       parse_learning_attempts: {
         Args: { p_attempts: Json };

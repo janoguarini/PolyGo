@@ -18,6 +18,7 @@ import {
 } from '@/design-system';
 import { signOut } from '@/features/auth/api';
 import { FormMessage } from '@/features/auth/FormMessage';
+import { BlockedUsersSection } from '@/features/blocks/BlockedUsersSection';
 import { useSetSoundEffects, useSoundEffectsPref } from '@/features/preferences/soundEffects';
 import { useMyProfile, useUpdateSettings } from '@/features/profile/hooks';
 import { ReminderSettings } from '@/features/reminders/ReminderSettings';
@@ -39,7 +40,7 @@ const VISIBILITY: {
   },
 ];
 
-/** Ajustes: recordatorio, privacidad y cuenta. */
+/** Ajustes: recordatorio, sonido, privacidad, usuarios bloqueados y cuenta. */
 export default function SettingsScreen() {
   const { data, isPending, isError, refetch } = useMyProfile();
   const updateSettings = useUpdateSettings();
@@ -117,6 +118,11 @@ export default function SettingsScreen() {
       {updateSettings.isError ? (
         <FormMessage tone="error" message={toUserMessage(updateSettings.error)} />
       ) : null}
+
+      <Text variant="overline" style={styles.section}>
+        USUARIOS BLOQUEADOS
+      </Text>
+      <BlockedUsersSection />
 
       <Text variant="overline" style={styles.section}>
         CUENTA

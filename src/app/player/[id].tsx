@@ -1,5 +1,5 @@
 import { router, useLocalSearchParams } from 'expo-router';
-import { Lock, Star, UserX } from 'lucide-react-native';
+import { Ban, Lock, Star, UserX } from 'lucide-react-native';
 import { StyleSheet, View } from 'react-native';
 
 import { flagEmoji } from '@shared/profile';
@@ -20,6 +20,8 @@ import {
   spacing,
 } from '@/design-system';
 import { useAuth } from '@/features/auth/AuthProvider';
+import { BlockUserButton } from '@/features/blocks/BlockUserButton';
+import { useBlockedIds, useUnblockUser } from '@/features/blocks/api';
 import { FamilyBadge } from '@/features/profile/components/AchievementBadge';
 import { ReportPhotoButton } from '@/features/profile/components/ReportPhotoButton';
 import { familyLevels } from '@/features/profile/families';
@@ -33,6 +35,8 @@ export default function PlayerScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const player = usePublicProfile(id);
   const { session } = useAuth();
+  const blockedIds = useBlockedIds();
+  const unblock = useUnblockUser();
   const back = () => router.back();
 
   if (player.isPending) return <LoadingState />;
@@ -50,6 +54,20 @@ export default function PlayerScreen() {
     );
 
   const p = player.data;
+  if (blockedIds.has(p.id)) {
+    return (
+      <Screen>
+        <ScreenHeader title="Jugador" onBack={back} />
+        <EmptyState
+          icon={<Ban color={colors.textMuted} size={36} />}
+          title={`Bloqueaste a @${p.username}`}
+          message="No se cruzan en ranked, no puede entrar a tus desafíos y no ves su perfil."
+          actionLabel={unblock.isPending ? 'Desbloqueando…' : 'Desbloquear'}
+          onAction={() => unblock.mutate(p.id)}
+        />
+      </Screen>
+    );
+  }
   const rating = p.rating;
   const placement = rating ? isInPlacement(rating.games_played) : true;
   const stats = p.stats;
@@ -68,11 +86,14 @@ export default function PlayerScreen() {
         </Text>
         <Text variant="caption">Desde {joinedFormat.format(new Date(p.created_at))}</Text>
         {p.id !== session?.user.id ? (
-          <ReportPhotoButton
-            userId={p.id}
-            username={p.username}
-            hasPhoto={Boolean(p.avatar_path)}
-          />
+          <View style={styles.actions}>
+            <ReportPhotoButton
+              userId={p.id}
+              username={p.username}
+              hasPhoto={Boolean(p.avatar_path)}
+            />
+            <BlockUserButton userId={p.id} username={p.username} />
+          </View>
         ) : null}
       </View>
 
@@ -167,6 +188,7 @@ export default function PlayerScreen() {
 
 const styles = StyleSheet.create({
   identity: { alignItems: 'center', gap: spacing.xs },
+  actions: { flexDirection: 'row', justifyContent: 'center', gap: spacing.xl },
   rankRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.lg },
   private: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   flex: { flex: 1, gap: spacing.xxs },

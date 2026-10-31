@@ -22,6 +22,9 @@ const RPC_MESSAGES: Record<string, string> = {
   invalid_reason: 'Elegí un motivo para el reporte.',
   missions_incomplete: 'Todavía te faltan misiones para reclamar el protector.',
   already_claimed: 'Ya reclamaste el protector de hoy.',
+  cannot_block_self: 'No podés bloquearte a vos mismo.',
+  block_limit: 'Llegaste al máximo de usuarios bloqueados.',
+  user_not_found: 'Ese jugador ya no existe.',
 };
 
 export function toUserMessage(error: unknown): string {

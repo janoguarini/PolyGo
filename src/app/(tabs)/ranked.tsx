@@ -27,6 +27,7 @@ import {
   spacing,
 } from '@/design-system';
 import { useAuth } from '@/features/auth/AuthProvider';
+import { useBlockedIds } from '@/features/blocks/api';
 import { useActiveSeason, useMyProfile } from '@/features/profile/hooks';
 import { useLeaderboard, useLeaderboardStars } from '@/features/ranked/api';
 import { RankCard } from '@/features/ranked/RankCard';
@@ -40,6 +41,7 @@ export default function RankedScreen() {
   const season = useActiveSeason();
   const leaderboard = useLeaderboard(me.data?.profile.target_language);
   const stars = useLeaderboardStars(leaderboard.data?.map((e) => e.userId));
+  const blockedIds = useBlockedIds();
 
   if (me.isPending) return <LoadingState />;
   if (me.isError || !me.data) return <ErrorState onRetry={() => void me.refetch()} />;
@@ -103,6 +105,8 @@ export default function RankedScreen() {
       ) : (
         <Card style={styles.list}>
           {leaderboard.data.map((entry, index) => {
+            // Los bloqueados no se muestran; el resto conserva su puesto real.
+            if (blockedIds.has(entry.userId)) return null;
             const isMe = entry.userId === session?.user.id;
             const entryStars = stars.data?.[entry.userId];
             return (
