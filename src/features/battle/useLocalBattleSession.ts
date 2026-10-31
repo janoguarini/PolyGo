@@ -140,6 +140,8 @@ export function useLocalBattleSession() {
               void queryClient.invalidateQueries({ queryKey: ['profile'] });
               void queryClient.invalidateQueries({ queryKey: ['leaderboard'] });
               void queryClient.invalidateQueries({ queryKey: ['learning', 'missions'] });
+              // Las victorias de hoy y los rangos nuevos pagan Polys.
+              void queryClient.invalidateQueries({ queryKey: ['learning', 'polys'] });
             },
           });
           matchRef.current = match;

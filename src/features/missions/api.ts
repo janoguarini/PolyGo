@@ -35,12 +35,22 @@ export async function fetchDailyMissions(): Promise<DailyMissions> {
   return data as unknown as DailyMissions;
 }
 
-export async function claimMissionReward(): Promise<{ granted: boolean; freezes: number }> {
+/** Lo que trae el cofre del día. */
+export interface ChestReward {
+  polys: number;
+  jackpot: boolean;
+  /** Bonus por abrir el cofre 5 días de la semana (0 si no tocó). */
+  weekly_bonus: number;
+  balance: number;
+  freezes: number;
+}
+
+export async function claimMissionReward(): Promise<ChestReward> {
   const { data, error } = await requireSupabase().rpc('claim_mission_reward', {
     p_time_zone: userTimeZone(),
   });
   if (error) throw error;
-  return data as unknown as { granted: boolean; freezes: number };
+  return data as unknown as ChestReward;
 }
 
 export function useDailyMissions() {
@@ -53,7 +63,7 @@ export function useDailyMissions() {
   });
 }
 
-/** Reclama el protector del día y refresca misiones y racha. */
+/** Abre el cofre del día y refresca misiones, racha y saldo. */
 export function useClaimMissionReward() {
   const qc = useQueryClient();
   return useMutation({

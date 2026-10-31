@@ -17,6 +17,7 @@ import {
   spacing,
 } from '@/design-system';
 import { useActiveSeason, useMyProfile } from '@/features/profile/hooks';
+import { PolysChip } from '@/features/polys/PolysChip';
 import { useMyLeaderboardPosition } from '@/features/ranked/api';
 import { useTabPressScroll } from '@/lib/useTabPressScroll';
 import { RankCard } from '@/features/ranked/RankCard';
@@ -43,7 +44,10 @@ export default function RankedScreen() {
       refreshing={me.isRefetching}
     >
       <View style={styles.titleRow}>
-        <Text variant="title">Ranked</Text>
+        <Text variant="title" style={styles.title}>
+          Ranked
+        </Text>
+        <PolysChip />
         <Pressable
           accessibilityRole="button"
           accessibilityLabel={
@@ -156,7 +160,8 @@ function FriendChallengeCard() {
 const styles = StyleSheet.create({
   season: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs, marginTop: -spacing.sm },
   matchCard: { gap: spacing.md },
-  titleRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+  titleRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+  title: { flex: 1 },
   trophyButton: {
     flexDirection: 'row',
     alignItems: 'center',

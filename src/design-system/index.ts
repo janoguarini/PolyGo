@@ -3,6 +3,7 @@ export { TIER_COLORS } from './rankTheme';
 export { Avatar } from './components/Avatar';
 export { Button } from './components/Button';
 export { Card } from './components/Card';
+export { PolyCoin } from './components/PolyCoin';
 export { ProgressBar } from './components/ProgressBar';
 export { RankEmblem, RankEmblemForRating } from './components/RankEmblem';
 export { Screen } from './components/Screen';

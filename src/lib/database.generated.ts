@@ -801,6 +801,8 @@ export type Database = {
       get_learning_summary: { Args: { p_time_zone: string }; Returns: Json };
       get_daily_missions: { Args: { p_time_zone: string }; Returns: Json };
       claim_mission_reward: { Args: { p_time_zone: string }; Returns: Json };
+      sync_polys: { Args: { p_time_zone: string }; Returns: Json };
+      buy_streak_freeze: { Args: never; Returns: Json };
       get_match_history: {
         Args: { p_before: string; p_limit: number };
         Returns: {

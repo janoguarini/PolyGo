@@ -36,6 +36,7 @@ import { LessonPath } from '@/features/learning/components/LessonPath';
 import { useCurriculum, useLearningSummary } from '@/features/learning/hooks';
 import { daysLabel, streakAtRisk } from '@/features/learning/streak';
 import { useDailyMissions } from '@/features/missions/api';
+import { PolysChip } from '@/features/polys/PolysChip';
 import { useTabPressScroll } from '@/lib/useTabPressScroll';
 import { useMyProfile } from '@/features/profile/hooks';
 
@@ -150,6 +151,7 @@ export default function HomeScreen() {
           </View>
           <Text variant="heading">Tu camino</Text>
         </View>
+        <PolysChip />
         <Pressable
           style={styles.chip}
           accessibilityRole="button"
@@ -207,7 +209,7 @@ export default function HomeScreen() {
       {claimable ? (
         <Pressable
           accessibilityRole="button"
-          accessibilityLabel="Completaste las misiones del día. Reclamá tu protector de racha."
+          accessibilityLabel="Completaste las misiones del día. Abrí tu cofre de Polys."
           onPress={() => router.push('/missions')}
           style={({ pressed }) => [styles.banner, styles.claim, pressed && styles.riskPressed]}
         >
@@ -216,7 +218,7 @@ export default function HomeScreen() {
             <Text variant="bodyStrong" color="info">
               ¡Misiones completas!
             </Text>
-            <Text variant="caption">Reclamá tu protector de racha.</Text>
+            <Text variant="caption">Abrí tu cofre y ganá Polys.</Text>
           </View>
           <ChevronRight color={colors.info} size={20} />
         </Pressable>

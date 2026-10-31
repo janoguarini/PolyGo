@@ -8,6 +8,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ErrorState, LoadingState, colors } from '@/design-system';
 import { AuthProvider, useAuth } from '@/features/auth/AuthProvider';
 import { ConfigMissing } from '@/features/auth/ConfigMissing';
+import { PolysToast } from '@/features/polys/PolysToast';
 import { useApplySoundEffectsPref } from '@/features/preferences/soundEffects';
 import { useMyProfile } from '@/features/profile/hooks';
 import { envProblems } from '@/lib/env';
@@ -72,48 +73,51 @@ function RootNavigator() {
   const onboarded = Boolean(profile.data?.profile.onboarding_completed_at);
 
   return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-        contentStyle: { backgroundColor: colors.background },
-        animation: 'fade_from_bottom',
-      }}
-    >
-      <Stack.Protected guard={!session}>
-        <Stack.Screen name="(auth)" />
-      </Stack.Protected>
-      <Stack.Protected guard={signedIn && !onboarded}>
-        <Stack.Screen name="onboarding" />
-      </Stack.Protected>
-      <Stack.Protected guard={signedIn && onboarded}>
-        <Stack.Screen name="(tabs)" />
-        <Stack.Screen
-          name="lesson/[id]"
-          options={{ animation: 'slide_from_bottom', gestureEnabled: false }}
-        />
-        <Stack.Screen
-          name="review"
-          options={{ animation: 'slide_from_bottom', gestureEnabled: false }}
-        />
-        <Stack.Screen
-          name="battle"
-          options={{ animation: 'slide_from_bottom', gestureEnabled: false }}
-        />
-        <Stack.Screen name="challenge/[code]" options={{ animation: 'none' }} />
-        <Stack.Screen name="matches" options={{ animation: 'slide_from_right' }} />
-        <Stack.Screen name="leaderboard" options={{ animation: 'slide_from_bottom' }} />
-        <Stack.Screen name="achievements" options={{ animation: 'slide_from_right' }} />
-        <Stack.Screen name="missions" options={{ animation: 'slide_from_bottom' }} />
-        <Stack.Screen name="player/[id]" options={{ animation: 'slide_from_right' }} />
-        <Stack.Screen name="edit-profile" options={{ animation: 'slide_from_bottom' }} />
-        <Stack.Screen name="settings" options={{ animation: 'slide_from_right' }} />
-        <Stack.Screen name="delete-account" options={{ animation: 'slide_from_right' }} />
-      </Stack.Protected>
-      <Stack.Protected guard={Boolean(session) && recoveringPassword}>
-        <Stack.Screen name="reset-password" />
-      </Stack.Protected>
-      {/* Destino de los enlaces de email: siempre accesible. */}
-      <Stack.Screen name="auth-callback" />
-    </Stack>
+    <>
+      <Stack
+        screenOptions={{
+          headerShown: false,
+          contentStyle: { backgroundColor: colors.background },
+          animation: 'fade_from_bottom',
+        }}
+      >
+        <Stack.Protected guard={!session}>
+          <Stack.Screen name="(auth)" />
+        </Stack.Protected>
+        <Stack.Protected guard={signedIn && !onboarded}>
+          <Stack.Screen name="onboarding" />
+        </Stack.Protected>
+        <Stack.Protected guard={signedIn && onboarded}>
+          <Stack.Screen name="(tabs)" />
+          <Stack.Screen
+            name="lesson/[id]"
+            options={{ animation: 'slide_from_bottom', gestureEnabled: false }}
+          />
+          <Stack.Screen
+            name="review"
+            options={{ animation: 'slide_from_bottom', gestureEnabled: false }}
+          />
+          <Stack.Screen
+            name="battle"
+            options={{ animation: 'slide_from_bottom', gestureEnabled: false }}
+          />
+          <Stack.Screen name="challenge/[code]" options={{ animation: 'none' }} />
+          <Stack.Screen name="matches" options={{ animation: 'slide_from_right' }} />
+          <Stack.Screen name="leaderboard" options={{ animation: 'slide_from_bottom' }} />
+          <Stack.Screen name="achievements" options={{ animation: 'slide_from_right' }} />
+          <Stack.Screen name="missions" options={{ animation: 'slide_from_bottom' }} />
+          <Stack.Screen name="player/[id]" options={{ animation: 'slide_from_right' }} />
+          <Stack.Screen name="edit-profile" options={{ animation: 'slide_from_bottom' }} />
+          <Stack.Screen name="settings" options={{ animation: 'slide_from_right' }} />
+          <Stack.Screen name="delete-account" options={{ animation: 'slide_from_right' }} />
+        </Stack.Protected>
+        <Stack.Protected guard={Boolean(session) && recoveringPassword}>
+          <Stack.Screen name="reset-password" />
+        </Stack.Protected>
+        {/* Destino de los enlaces de email: siempre accesible. */}
+        <Stack.Screen name="auth-callback" />
+      </Stack>
+      {signedIn && onboarded ? <PolysToast /> : null}
+    </>
   );
 }

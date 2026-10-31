@@ -111,7 +111,7 @@ test('misiones: 3 por día (aprender, precisión, ranked), iguales todo el día 
   assert.deepEqual(rows.map((r) => r.id).sort(), [...MISSION_IDS].sort());
 });
 
-test('el progreso sale de la base y la recompensa se reclama una vez: +1 protector, máximo 2', async () => {
+test('el progreso sale de la base y el cofre se abre una vez: da Polys, no protectores', async () => {
   const u = await player('mis_claim@test.dev');
   await assert.rejects(claim(u), /missions_incomplete/);
 
@@ -120,15 +120,11 @@ test('el progreso sale de la base y la recompensa se reclama una vez: +1 protect
   assert.equal(done.all_done, true);
   for (const m of done.missions) assert.equal(m.progress, m.target);
 
-  assert.deepEqual(await claim(u), { granted: true, freezes: 1 });
+  const chest = await claim(u);
+  assert.ok(chest.polys >= 10 && (chest.polys <= 20 || chest.polys === 50));
+  assert.equal(chest.freezes, 0);
   assert.equal((await missions(u)).claimed, true);
   await assert.rejects(claim(u), /already_claimed/);
-
-  // Con el máximo, reclamar no suma.
-  const full = await player('mis_full@test.dev');
-  await setFreezes(full, 2);
-  await completeAll(full);
-  assert.deepEqual(await claim(full), { granted: false, freezes: 2 });
 });
 
 test('una lección con errores no cuenta como perfecta; ranked amistoso no cuenta', async () => {

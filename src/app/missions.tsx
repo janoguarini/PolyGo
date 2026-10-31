@@ -5,6 +5,7 @@ import {
   Check,
   ChevronRight,
   Clock,
+  Gift,
   Snowflake,
   Sparkles,
   Swords,
@@ -15,12 +16,14 @@ import { StyleSheet, View } from 'react-native';
 import Animated, { FadeInUp, ZoomIn } from 'react-native-reanimated';
 
 import { missionDestination, missionTitle, type MissionId } from '@shared/missions';
+import { POLYS } from '@shared/polys';
 
 import {
   Button,
   Card,
   ErrorState,
   LoadingState,
+  PolyCoin,
   ProgressBar,
   Screen,
   ScreenHeader,
@@ -36,6 +39,7 @@ import {
   useDailyMissions,
   type DailyMission,
 } from '@/features/missions/api';
+import { useBuyStreakFreeze, usePolys } from '@/features/polys/api';
 import { toUserMessage } from '@/lib/errors';
 import { playSound } from '@/lib/sounds';
 
@@ -48,7 +52,10 @@ const ICONS: Record<MissionId, typeof Target> = {
   ranked_win: Trophy,
 };
 
-/** Misiones del día: 3 metas que se renuevan a medianoche. Las 3 juntas dan un protector de racha. */
+/**
+ * Misiones del día: 3 metas que se renuevan a medianoche. Cada una da Polys y las 3 juntas abren
+ * el cofre del día. Acá también se compra el protector de racha.
+ */
 export default function MissionsScreen() {
   const missions = useDailyMissions();
   const claim = useClaimMissionReward();
@@ -81,48 +88,64 @@ export default function MissionsScreen() {
           <Animated.View
             key={claimed ? 'claimed' : 'pending'}
             entering={claimed ? ZoomIn.springify() : undefined}
-            style={[styles.freezeIcon, claimed && styles.freezeIconOn]}
+            style={[styles.chestIcon, claimed && styles.chestIconOn]}
           >
-            <Snowflake color={claimed ? colors.onPrimary : colors.info} size={30} />
+            <Gift color={claimed ? colors.onPrimary : colors.gold} size={30} />
           </Animated.View>
           <View style={styles.flex}>
-            <Text variant="overline" color="info">
+            <Text variant="overline" color="gold">
               RECOMPENSA
             </Text>
             <Text variant="heading" color="textStrong">
-              Protector de racha
+              Cofre del día
             </Text>
             <Text variant="caption">
-              Si un día no estudiás, se usa solo y tu racha sigue. Tenés {freezes} de {max_freezes}.
+              {`Entre ${POLYS.chest.min} y ${POLYS.chest.max} Polys, y a veces ${POLYS.chest.jackpot}. Abrilo ${POLYS.weekly.days} días de la semana y ganás ${POLYS.weekly.bonus} extra.`}
             </Text>
           </View>
         </View>
         <ProgressBar
           value={doneCount / list.length}
-          colors={[colors.info, colors.infoAlt]}
+          colors={[colors.gold, colors.goldStrong]}
           accessibilityLabel={`${doneCount} de ${list.length} misiones completas`}
         />
         {claimed ? (
-          <Text variant="bodyStrong" color="success" align="center">
-            {freezes >= max_freezes && claim.data?.granted === false
-              ? `Ya tenías ${max_freezes} protectores, el máximo. ¡Volvé mañana!`
-              : '¡Protector reclamado! Mañana hay misiones nuevas.'}
-          </Text>
+          claim.data ? (
+            <Animated.View entering={ZoomIn.springify()} style={styles.prize}>
+              <PolyCoin size={28} />
+              <Text variant="title" color="gold">
+                +{claim.data.polys + claim.data.weekly_bonus}
+              </Text>
+              <Text variant="bodyStrong" color="text" style={styles.flexShrink}>
+                {claim.data.jackpot
+                  ? '¡Cofre de la suerte!'
+                  : claim.data.weekly_bonus > 0
+                    ? `Incluye el bonus semanal (+${claim.data.weekly_bonus})`
+                    : '¡Cofre abierto!'}
+              </Text>
+            </Animated.View>
+          ) : (
+            <Text variant="bodyStrong" color="success" align="center">
+              Ya abriste el cofre de hoy. ¡Mañana hay misiones nuevas!
+            </Text>
+          )
         ) : all_done ? (
           <Button
-            label="Reclamar protector"
+            label="Abrir cofre"
             size="lg"
-            icon={<Snowflake color={colors.onPrimary} size={20} />}
+            icon={<Gift color={colors.onPrimary} size={20} />}
             loading={claim.isPending}
             onPress={onClaim}
           />
         ) : (
           <Text variant="caption" align="center">
-            Completá las {list.length} misiones para ganarlo · {doneCount}/{list.length}
+            Completá las {list.length} misiones para abrirlo · {doneCount}/{list.length}
           </Text>
         )}
         {claim.isError ? <FormMessage tone="error" message={toUserMessage(claim.error)} /> : null}
       </Card>
+
+      <FreezeCard freezes={freezes} max={max_freezes} />
 
       <View style={styles.list}>
         {list.map((m, i) => (
@@ -139,6 +162,52 @@ export default function MissionsScreen() {
   );
 }
 
+/** El protector se compra con Polys: si un día no estudiás, se usa solo. */
+function FreezeCard({ freezes, max }: { freezes: number; max: number }) {
+  const polys = usePolys();
+  const buy = useBuyStreakFreeze();
+  const balance = polys.data?.balance ?? 0;
+  const price = POLYS.prices.streakFreeze;
+  const full = freezes >= max;
+  return (
+    <Card style={styles.freeze}>
+      <View style={styles.rewardRow}>
+        <View style={styles.freezeIcon}>
+          <Snowflake color={colors.info} size={26} />
+        </View>
+        <View style={styles.flex}>
+          <Text variant="bodyStrong" color="textStrong">
+            Protector de racha · {freezes}/{max}
+          </Text>
+          <Text variant="caption">Si un día no estudiás, se usa solo y tu racha sigue.</Text>
+        </View>
+      </View>
+      <Button
+        label={full ? 'Tenés el máximo' : `Comprar por ${price}`}
+        variant="secondary"
+        icon={full ? undefined : <PolyCoin size={20} />}
+        disabled={full || balance < price}
+        loading={buy.isPending}
+        accessibilityHint={full ? undefined : `Cuesta ${price} Polys. Tenés ${balance}.`}
+        onPress={() =>
+          buy.mutate(undefined, {
+            onSuccess: () => {
+              playSound('complete');
+              void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+            },
+          })
+        }
+      />
+      {!full && balance < price ? (
+        <Text variant="caption" align="center">
+          Te faltan {price - balance} Polys. Completá misiones para juntarlos.
+        </Text>
+      ) : null}
+      {buy.isError ? <FormMessage tone="error" message={toUserMessage(buy.error)} /> : null}
+    </Card>
+  );
+}
+
 function MissionRow({ mission }: { mission: DailyMission }) {
   const Icon = ICONS[mission.id];
   const title = missionTitle(mission.id, mission.target);
@@ -148,7 +217,7 @@ function MissionRow({ mission }: { mission: DailyMission }) {
     <Card
       onPress={mission.done ? undefined : go}
       style={[styles.mission, mission.done && styles.missionDone]}
-      accessibilityLabel={`${title}: ${mission.progress} de ${mission.target}${mission.done ? ', completa' : ''}`}
+      accessibilityLabel={`${title}: ${mission.progress} de ${mission.target}${mission.done ? ', completa' : ''}. Da ${POLYS.mission} Polys`}
     >
       <View style={[styles.missionIcon, mission.done && styles.missionIconDone]}>
         {mission.done ? (
@@ -174,6 +243,12 @@ function MissionRow({ mission }: { mission: DailyMission }) {
           </Text>
         </View>
       </View>
+      <View style={styles.missionReward} accessible={false}>
+        <PolyCoin size={16} />
+        <Text variant="caption" color={mission.done ? 'success' : 'gold'}>
+          +{POLYS.mission}
+        </Text>
+      </View>
       {mission.done ? null : <ChevronRight color={colors.textMuted} size={20} />}
     </Card>
   );
@@ -183,7 +258,8 @@ const styles = StyleSheet.create({
   flex: { flex: 1 },
   reward: { gap: spacing.lg },
   rewardRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.lg },
-  freezeIcon: {
+  flexShrink: { flexShrink: 1 },
+  chestIcon: {
     width: 60,
     height: 60,
     borderRadius: 30,
@@ -191,9 +267,22 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: colors.surfaceRaised,
     borderWidth: 2,
+    borderColor: colors.gold,
+  },
+  chestIconOn: { backgroundColor: colors.goldStrong },
+  prize: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: spacing.sm },
+  freeze: { gap: spacing.md },
+  freezeIcon: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.surfaceRaised,
+    borderWidth: 2,
     borderColor: colors.info,
   },
-  freezeIconOn: { backgroundColor: colors.info },
+  missionReward: { flexDirection: 'row', alignItems: 'center', gap: spacing.xxs },
   list: { gap: spacing.md },
   mission: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   missionDone: { opacity: 0.85 },
