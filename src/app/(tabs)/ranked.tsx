@@ -11,8 +11,6 @@ import {
 import { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
-import { BOT_CONFIG } from '@shared/bots';
-
 import {
   Avatar,
   Button,
@@ -69,9 +67,6 @@ export default function RankedScreen() {
 
       <Card style={styles.matchCard}>
         <Text variant="overline">MODO · WORD RUSH</Text>
-        <Text color="textMuted">
-          {`1 contra 1 · las mismas preguntas para los dos · si en ${BOT_CONFIG.afterMs / 1000} s no aparece nadie, jugás contra un bot de tu nivel (BOT).`}
-        </Text>
         <Button
           label="Buscar partida"
           size="lg"

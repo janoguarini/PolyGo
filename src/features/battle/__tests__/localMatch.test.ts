@@ -180,6 +180,53 @@ it('práctica: sin bot ni base, termina sola con el puntaje propio', async () =>
   expect(s.state().result?.players[0]).toMatchObject({ answered: 1, correct: 0, outcome: null });
 });
 
+it('racha: correctas seguidas suman el bonus, y un error la corta', async () => {
+  const s = setup();
+  s.dispatch({ type: 'connecting', mode: 'practice' });
+  await s.match.begin('practice');
+  s.clock.advance(WORD_RUSH.countdownMs);
+  const answer = (correct: boolean) => {
+    const q = QUESTIONS[s.state().question!.index]!;
+    s.match.answer(correct ? q.correctOption : (q.correctOption + 1) % 4);
+    s.clock.advance(1_000); // también pasa el feedback
+  };
+  answer(true);
+  answer(true);
+  expect(s.state().streak).toBe(2);
+  answer(true);
+  expect(s.state().streak).toBe(3);
+  // La 1.ª al instante (150), la 2.ª a los 1000 ms (140) y la 3.ª igual pero con +10 de racha.
+  expect(s.state().scores[0]!.score).toBe(150 + 140 + 150);
+  answer(false);
+  expect(s.state().streak).toBe(0);
+});
+
+it('agrega la imagen de la palabra a las preguntas español → inglés', async () => {
+  const clock = manualClock();
+  let state: BattleState = initialBattleState;
+  const match = new LocalMatch({
+    dispatch: (a) => {
+      state = battleReducer(state, a);
+    },
+    api: {} as LocalMatchApi,
+    questions: QUESTIONS,
+    pictures: new Map(WORDS.map((w) => [w.id, `img-${w.id}`])),
+    me: { username: 'ana', avatarId: 'bolt', avatarPath: null },
+    now: clock.now,
+    setTimer: clock.setTimer,
+    clearTimer: clock.clearTimer,
+  });
+  state = battleReducer(state, { type: 'connecting', mode: 'practice' });
+  await match.begin('practice');
+  clock.advance(WORD_RUSH.countdownMs);
+  const first = QUESTIONS[0]!;
+  expect(state.question).toMatchObject(
+    first.direction === 'es_en'
+      ? { kind: 'image', emoji: `img-${first.wordId}` }
+      : { kind: first.index % 3 === 0 ? 'text' : 'audio' },
+  );
+});
+
 describe('contra una persona', () => {
   function humanSetup() {
     const clock = manualClock();

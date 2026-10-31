@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { createDb, createUser, as } from './harness.mjs';
 import { BOT_CONFIG, botSkill } from '../../shared/bots.ts';
 import { computeRatingChange } from '../../shared/ranking.ts';
-import { answerPoints, applyPoints, decideOutcomes } from '../../shared/wordRush.ts';
+import { answerPoints, applyPoints, decideOutcomes, streakBonus } from '../../shared/wordRush.ts';
 
 let db;
 
@@ -48,10 +48,12 @@ function botLine(script) {
   let score = 0;
   let correct = 0;
   let answered = 0;
+  let streak = 0;
   for (const m of script) {
     elapsed += m.d;
     if (elapsed > 75_000) break;
-    score = applyPoints(score, answerPoints(m.c, m.d));
+    streak = m.c ? streak + 1 : 0;
+    score = applyPoints(score, answerPoints(m.c, m.d, streak));
     answered += 1;
     if (m.c) correct += 1;
   }
@@ -60,7 +62,7 @@ function botLine(script) {
 
 // ---------- paridad con shared/ ----------
 test('bot_skill coincide con botSkill de la app', async () => {
-  for (const rating of [100, 600, 800, 1000, 1234, 1500, 1900, 2500]) {
+  for (const rating of [0, 50, 100, 250, 400, 401, 700, 1000, 1234, 1600, 1999, 2200, 2500]) {
     const row = await one('select * from public.bot_skill($1)', [rating]);
     const ts = botSkill(rating);
     assert.ok(Math.abs(row.accuracy - ts.accuracy) < 1e-9, `precisión ${rating}`);
@@ -84,30 +86,45 @@ test('rush_points coincide con answerPoints (incluido el redondeo de .5)', async
   }
 });
 
-test('rating_after coincide con computeRatingChange', async () => {
+test('rush_streak_bonus coincide con streakBonus', async () => {
+  for (let streak = 0; streak <= 12; streak++) {
+    const row = await one('select public.rush_streak_bonus($1) as b', [streak]);
+    assert.equal(row.b, streakBonus(streak), `racha ${streak}`);
+  }
+});
+
+test('ranked_rating_after coincide con computeRatingChange', async () => {
   const outcomes = { win: 1, draw: 0.5, loss: 0 };
-  for (const [rating, opponent, games] of [
-    [1000, 1000, 0],
-    [1000, 1024, 0],
-    [1000, 1024, 10],
-    [1500, 1300, 30],
-    [120, 400, 50],
-    [1003, 1037, 3],
+  const multipliers = { 1: 1, 3: 0.5, 5: 0 };
+  for (const [rating, opponent] of [
+    [100, 100],
+    [100, 140],
+    [1000, 1024],
+    [1500, 1300],
+    [120, 400],
+    [1003, 1037],
   ]) {
-    for (const [outcome, s] of Object.entries(outcomes)) {
-      const row = await one('select public.rating_after($1, $2, $3, $4) as r', [
-        rating,
-        opponent,
-        games,
-        s,
-      ]);
-      const ts = computeRatingChange({
-        rating,
-        opponentRating: opponent,
-        outcome,
-        gamesPlayed: games,
-      });
-      assert.equal(row.r, ts.after, `${rating} vs ${opponent} (${games}) ${outcome}`);
+    for (const placed of [true, false]) {
+      for (const [matches, mult] of Object.entries(multipliers)) {
+        for (const [outcome, s] of Object.entries(outcomes)) {
+          const row = await one('select public.ranked_rating_after($1, $2, $3, $4, $5) as r', [
+            rating,
+            opponent,
+            placed,
+            s,
+            mult,
+          ]);
+          const ts = computeRatingChange({
+            rating,
+            opponentRating: opponent,
+            outcome,
+            placed,
+            matchesAgainstOpponentInWindow: Number(matches),
+          });
+          const label = `${rating} vs ${opponent} placed=${placed} x${mult} ${outcome}`;
+          assert.equal(row.r, ts.after, label);
+        }
+      }
     }
   }
 });
@@ -133,8 +150,9 @@ test('el guion del bot respeta tiempos, duración y precisión de su rating', as
 test('partida contra bot: bot a su altura, resultado y ELO calculados en la base', async () => {
   const ana = await player('ana@bot.dev', 'ana');
   const m = await start(ana);
-  assert.ok(Math.abs(m.bot.rating - 1000) <= 40);
-  assert.deepEqual(m.me, { rating: 1000, games_played: 0 });
+  // Arranca sin posicionar en 100; el bot está a su altura y nunca debajo del piso.
+  assert.ok(m.bot.rating >= 100 && m.bot.rating <= 140);
+  assert.deepEqual(m.me, { rating: 100, games_played: 0 });
   assert.ok(m.script.length > 5);
 
   await assert.rejects(finish(ana, m.battle_id, 0, 0, 0), /too_early/);
@@ -145,14 +163,15 @@ test('partida contra bot: bot a su altura, resultado y ELO calculados en la base
   const r = await finish(ana, m.battle_id, mine.score, mine.correct, mine.answered);
   const [outcome] = decideOutcomes({ ...mine, forfeited: false }, bot);
   const expected = computeRatingChange({
-    rating: 1000,
+    rating: 100,
     opponentRating: m.bot.rating,
     outcome,
-    gamesPlayed: 0,
+    placed: false,
   });
   assert.equal(r.status, 'completed');
   assert.equal(r.me.result, outcome);
   assert.equal(r.me.rating_after, expected.after);
+  assert.equal(r.me.placed_before, false);
   assert.deepEqual(
     { score: r.bot.score, correct: r.bot.correct, answered: r.bot.answered },
     { score: bot.score, correct: bot.correct, answered: bot.answered },
@@ -177,6 +196,13 @@ test('partida contra bot: bot a su altura, resultado y ELO calculados en la base
     [ana],
   );
   assert.equal(after.games_played, 1);
+
+  // La siguiente ya la juega posicionada.
+  const next = await start(ana);
+  await elapse(next.battle_id);
+  const lost = await finish(ana, next.battle_id, 0, 0, 0);
+  assert.equal(lost.me.placed_before, true);
+  assert.ok(lost.me.rating_after < lost.me.rating_before || lost.me.rating_before === 100);
 });
 
 test('puntajes imposibles se rechazan', async () => {
@@ -184,7 +210,7 @@ test('puntajes imposibles se rechazan', async () => {
   const m = await start(beto);
   await elapse(m.battle_id);
   for (const [score, correct, answered] of [
-    [1000, 5, 10], // más de 150 por acierto
+    [1000, 5, 10], // más de 180 por acierto
     [100, 11, 10], // más aciertos que respuestas
     [0, 0, 500], // más respuestas de las posibles
     [-10, 0, 0],
@@ -214,6 +240,11 @@ test('abandonar o dejar una partida abierta cuenta como derrota', async () => {
     [caro],
   );
   assert.deepEqual(rating, { games_played: 2, losses: 2 });
+  // Sin posicionar, perder no resta.
+  assert.equal(
+    (await one('select rating from public.player_ratings where user_id = $1', [caro])).rating,
+    100,
+  );
 });
 
 test('nadie termina la partida de otro y las funciones internas no son públicas', async () => {

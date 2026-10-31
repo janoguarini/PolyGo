@@ -5,12 +5,14 @@
  */
 
 export const RATING_CONFIG = {
-  initialRating: 1000,
+  /**
+   * Todos arrancan "sin posicionar" con este rating oculto. Mientras no ganen ninguna partida,
+   * perder o empatar no lo mueve; la primera victoria los posiciona en Bronce III (~115).
+   */
+  initialRating: 100,
   ratingFloor: 100,
+  /** K fijo: una victoria pareja suma ~16, así que cada división (100) lleva varias victorias. */
   kFactor: 32,
-  /** K más alto mientras el jugador está en partidas de colocación. */
-  placementKFactor: 48,
-  placementMatches: 5,
   /**
    * Anti-farming: multiplicador de K según cuántas partidas ranked se jugaron
    * contra el mismo rival en las últimas 24 h (contando la actual).
@@ -40,17 +42,17 @@ export interface TierDefinition {
 /** Ordenados de menor a mayor. */
 export const TIERS: readonly TierDefinition[] = [
   { id: 'bronze', name: 'Bronce', minRating: 0, hasDivisions: true },
-  { id: 'silver', name: 'Plata', minRating: 900, hasDivisions: true },
-  { id: 'gold', name: 'Oro', minRating: 1050, hasDivisions: true },
-  { id: 'platinum', name: 'Platino', minRating: 1200, hasDivisions: true },
-  { id: 'emerald', name: 'Esmeralda', minRating: 1350, hasDivisions: true },
-  { id: 'diamond', name: 'Diamante', minRating: 1500, hasDivisions: true },
-  { id: 'master', name: 'Maestro', minRating: 1700, hasDivisions: false },
-  { id: 'grandmaster', name: 'Gran Maestro', minRating: 1900, hasDivisions: false },
+  { id: 'silver', name: 'Plata', minRating: 400, hasDivisions: true },
+  { id: 'gold', name: 'Oro', minRating: 700, hasDivisions: true },
+  { id: 'platinum', name: 'Platino', minRating: 1000, hasDivisions: true },
+  { id: 'emerald', name: 'Esmeralda', minRating: 1300, hasDivisions: true },
+  { id: 'diamond', name: 'Diamante', minRating: 1600, hasDivisions: true },
+  { id: 'master', name: 'Maestro', minRating: 1900, hasDivisions: false },
+  { id: 'grandmaster', name: 'Gran Maestro', minRating: 2200, hasDivisions: false },
 ];
 
 /** Bronce no tiene límite inferior real; sus divisiones se calculan desde este piso visual. */
-const BRONZE_DIVISION_BASE = 750;
+const BRONZE_DIVISION_BASE = 100;
 const DIVISIONS: readonly Division[] = ['III', 'II', 'I'];
 
 export interface RankInfo {
@@ -136,8 +138,8 @@ export interface RatingChangeInput {
   rating: number;
   opponentRating: number;
   outcome: MatchOutcome;
-  /** Partidas ranked ya liquidadas antes de esta (para colocación). */
-  gamesPlayed: number;
+  /** Si ya ganó alguna partida (ver isPlaced). Por defecto true. */
+  placed?: boolean;
   /** Partidas contra este rival en la ventana, contando la actual. Por defecto 1. */
   matchesAgainstOpponentInWindow?: number;
 }
@@ -150,21 +152,23 @@ export interface RatingChange {
   kFactor: number;
 }
 
-/** NewRatingA = RatingA + K * (ActualScoreA - ExpectedScoreA), redondeado y con piso. */
+/**
+ * NewRatingA = RatingA + K * (ActualScoreA - ExpectedScoreA), redondeado y con piso.
+ * Sin posicionar, sólo una victoria mueve el rating.
+ */
 export function computeRatingChange(input: RatingChangeInput): RatingChange {
   const expected = expectedScore(input.rating, input.opponentRating);
-  const baseK =
-    input.gamesPlayed < RATING_CONFIG.placementMatches
-      ? RATING_CONFIG.placementKFactor
-      : RATING_CONFIG.kFactor;
-  const kFactor = baseK * repeatOpponentMultiplier(input.matchesAgainstOpponentInWindow ?? 1);
-  const rawDelta = Math.round(kFactor * (OUTCOME_SCORE[input.outcome] - expected));
+  const kFactor =
+    RATING_CONFIG.kFactor * repeatOpponentMultiplier(input.matchesAgainstOpponentInWindow ?? 1);
+  const counts = (input.placed ?? true) || input.outcome === 'win';
+  const rawDelta = counts ? Math.round(kFactor * (OUTCOME_SCORE[input.outcome] - expected)) : 0;
   const after = Math.max(RATING_CONFIG.ratingFloor, input.rating + rawDelta);
   return { before: input.rating, after, delta: after - input.rating, expected, kFactor };
 }
 
-export function isInPlacement(gamesPlayed: number): boolean {
-  return gamesPlayed < RATING_CONFIG.placementMatches;
+/** Posicionado = ganó al menos una partida ranked. Antes se muestra "Sin posicionar". */
+export function isPlaced(rating: { wins: number }): boolean {
+  return rating.wins > 0;
 }
 
 function clamp01(n: number): number {

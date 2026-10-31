@@ -19,17 +19,17 @@ export function RankTutorial() {
         ))}
       </View>
       <Card>
-        <Text variant="bodyStrong">1 · Ganá partidas, ganá ELO</Text>
+        <Text variant="bodyStrong">1 · Empezás sin posicionar</Text>
         <Text color="textMuted">
-          Empezás con {RATING_CONFIG.initialRating} puntos. Vencer a alguien mejor que vos da más
-          puntos; perder contra alguien con menos rating cuesta más.
+          Tu primera victoria te mete en el ranking en Bronce (~{RATING_CONFIG.initialRating + 15}{' '}
+          de ELO). Hasta entonces, perder no te resta.
         </Text>
       </Card>
       <Card>
-        <Text variant="bodyStrong">2 · Partidas de colocación</Text>
+        <Text variant="bodyStrong">2 · Subí de a poco</Text>
         <Text color="textMuted">
-          Tus primeras {RATING_CONFIG.placementMatches} partidas mueven más el rating para ubicarte
-          rápido en tu nivel real.
+          Cada victoria suma ELO y cada derrota resta. Vencer a alguien mejor da más puntos. Cuanto
+          más alto llegás, más rápidos son tus rivales.
         </Text>
       </Card>
       <Card>

@@ -11,7 +11,10 @@ export interface LeaderboardEntry {
   gamesPlayed: number;
 }
 
-/** Clasificación global real: jugadores con onboarding completo, ordenados por rating. */
+/**
+ * Clasificación global real: jugadores con onboarding completo y posicionados (ganaron alguna
+ * ranked), ordenados por rating.
+ */
 export async function fetchLeaderboard(
   languageCode: string,
   limit = 50,
@@ -21,6 +24,7 @@ export async function fetchLeaderboard(
     .select('user_id, rating, games_played, profiles!inner(username, avatar_id, avatar_path)')
     .eq('language_code', languageCode)
     .not('profiles.username', 'is', null)
+    .gt('wins', 0)
     .order('rating', { ascending: false })
     .order('games_played', { ascending: false })
     .limit(limit);

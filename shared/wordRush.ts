@@ -3,13 +3,14 @@
  * Las usa el servidor para decidir y la app para explicar las reglas. Tests: shared/__tests__/wordRush.test.ts.
  */
 
-import { WORD_RUSH, type QuestionView } from './protocol';
+import { WORD_RUSH, type QuestionKind, type QuestionView } from './protocol';
 import type { MatchOutcome } from './ranking';
 
 export interface RushWord {
   id: string;
   text: string;
   translationEs: string;
+  emoji?: string | null;
 }
 
 export interface RushQuestion {
@@ -19,6 +20,8 @@ export interface RushQuestion {
   prompt: string;
   options: string[];
   correctOption: number;
+  /** Imagen de la palabra si es inequívoca (ver pictureEmojis): habilita preguntas con imagen. */
+  emoji?: string;
 }
 
 /**
@@ -77,12 +80,29 @@ export function generateQuestions(
   return questions;
 }
 
-/** Puntos de una respuesta: correcta = 100 + bonus de velocidad (≤ 50); incorrecta = −50. */
-export function answerPoints(correct: boolean, elapsedMs: number): number {
+/** Bonus por racha: `streak` = correctas seguidas contando la actual. */
+export function streakBonus(streak: number): number {
+  let bonus = 0;
+  for (const step of WORD_RUSH.streakBonus) if (streak >= step.from) bonus = step.bonus;
+  return bonus;
+}
+
+/** Nivel de racha (0 = sin racha, 1..3 = escalón de streakBonus): para sonidos y colores. */
+export function streakLevel(streak: number): number {
+  return WORD_RUSH.streakBonus.filter((step) => streak >= step.from).length;
+}
+
+/**
+ * Puntos de una respuesta: correcta = 100 + bonus de velocidad (≤ 50) + bonus de racha (≤ 30);
+ * incorrecta = −50. `streak` = correctas seguidas contando ésta (sólo cuenta si es correcta).
+ */
+export function answerPoints(correct: boolean, elapsedMs: number, streak = 0): number {
   if (!correct) return -WORD_RUSH.wrongPenalty;
   const elapsed = Math.max(0, elapsedMs);
   const ratio = Math.max(0, 1 - elapsed / WORD_RUSH.speedBonusWindowMs);
-  return WORD_RUSH.correctPoints + Math.round(WORD_RUSH.maxSpeedBonus * ratio);
+  return (
+    WORD_RUSH.correctPoints + Math.round(WORD_RUSH.maxSpeedBonus * ratio) + streakBonus(streak)
+  );
 }
 
 /** El puntaje acumulado nunca baja de 0. */
@@ -115,13 +135,80 @@ export function accuracy(line: { correct: number; answered: number }): number {
   return line.answered === 0 ? 0 : line.correct / line.answered;
 }
 
+/**
+ * Palabras abstractas o cuyo emoji confunde: nunca se preguntan con imagen (texto en inglés en
+ * minúsculas).
+ */
+const NO_PICTURE = new Set([
+  'favorite',
+  'know',
+  'slowly',
+  'name',
+  'question',
+  'hate',
+  'how much',
+  'repeat',
+  'half past',
+  "o'clock",
+  'help',
+  'fine',
+  'country',
+  'year',
+  'time',
+  'england',
+  'english',
+  'evening',
+  'morning',
+]);
+
+/**
+ * Emoji de cada palabra que se puede preguntar con imagen: tiene emoji, no está en NO_PICTURE y
+ * ninguna otra palabra comparte ese emoji (☕ es «coffee» y «cup»: no sirve).
+ */
+export function pictureEmojis(words: readonly RushWord[]): Map<string, string> {
+  const uses = new Map<string, number>();
+  for (const w of words) if (w.emoji) uses.set(w.emoji, (uses.get(w.emoji) ?? 0) + 1);
+  const result = new Map<string, string>();
+  for (const w of words) {
+    if (w.emoji && uses.get(w.emoji) === 1 && !NO_PICTURE.has(normalize(w.text))) {
+      result.set(w.id, w.emoji);
+    }
+  }
+  return result;
+}
+
+/** Agrega la imagen a las preguntas cuya palabra la tiene (las de la base vienen sin ella). */
+export function withPictures(
+  questions: readonly RushQuestion[],
+  pictures: ReadonlyMap<string, string>,
+): RushQuestion[] {
+  return questions.map((q) => {
+    const emoji = pictures.get(q.wordId);
+    return emoji ? { ...q, emoji } : q;
+  });
+}
+
+/**
+ * Cómo se presenta una pregunta. Determinístico (sale de la pregunta misma), así los dos
+ * jugadores ven lo mismo: español → inglés con imagen se muestra la imagen; de inglés → español,
+ * dos de cada tres se escuchan en vez de leerse.
+ */
+export function questionKind(question: RushQuestion): QuestionKind {
+  if (question.direction === 'es_en' && question.emoji) return 'image';
+  if (question.direction === 'en_es' && question.index % 3 !== 0) return 'audio';
+  return 'text';
+}
+
 /** Opciones de una pregunta sin la respuesta correcta, para enviar al cliente. */
 export function toQuestionView(question: RushQuestion, sentAt: number): QuestionView {
+  const kind = questionKind(question);
   return {
     index: question.index,
     direction: question.direction,
     prompt: question.prompt,
     options: question.options,
+    kind,
+    ...(kind === 'image' ? { emoji: question.emoji } : {}),
     sentAt,
   };
 }

@@ -102,14 +102,18 @@ export function FamilyBadge({
         />
       </View>
       {locked ? null : (
-        <View style={[styles.ribbon, { backgroundColor: dark, borderColor: light }]}>
-          <Text
-            variant="overline"
-            color="textStrong"
-            style={{ fontSize: Math.max(9, size * 0.15) }}
-          >
-            {`NIV ${level}`}
-          </Text>
+        // La cinta puede ser más ancha que el distintivo: así "NIV 1" nunca se parte en dos líneas.
+        <View style={styles.ribbonRow} pointerEvents="none">
+          <View style={[styles.ribbon, { backgroundColor: dark, borderColor: light }]}>
+            <Text
+              variant="overline"
+              color="textStrong"
+              numberOfLines={1}
+              style={[styles.ribbonText, { fontSize: Math.max(9, size * 0.15) }]}
+            >
+              {`NIV ${level}`}
+            </Text>
+          </View>
         </View>
       )}
     </View>
@@ -186,15 +190,20 @@ export function FamilyRow({
 
 const styles = StyleSheet.create({
   center: { alignItems: 'center', justifyContent: 'center' },
-  ribbon: {
+  ribbonRow: {
     position: 'absolute',
     bottom: 0,
-    alignSelf: 'center',
+    left: -spacing.xl,
+    right: -spacing.xl,
+    alignItems: 'center',
+  },
+  ribbon: {
     paddingHorizontal: spacing.sm,
     paddingVertical: 1,
     borderRadius: radii.pill,
     borderWidth: 1,
   },
+  ribbonText: { letterSpacing: 0.8, flexShrink: 0 },
   row: { flexDirection: 'row', alignItems: 'center', gap: spacing.md, paddingVertical: spacing.sm },
   body: { flex: 1, gap: spacing.xxs },
   titleRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },

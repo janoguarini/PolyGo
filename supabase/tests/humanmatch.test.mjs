@@ -173,19 +173,22 @@ test('liquidación: espera los dos puntajes y aplica el ELO de shared/ranking.ts
     rating: 1000,
     opponentRating: 1020,
     outcome: 'win',
-    gamesPlayed: 0,
+    placed: false,
   });
   const expectedF = computeRatingChange({
     rating: 1020,
     opponentRating: 1000,
     outcome: 'loss',
-    gamesPlayed: 0,
+    placed: false,
   });
-  assert.deepEqual([e.result, e.rating_after], ['win', expectedE.after]);
+  // Ninguno había ganado: eva se posiciona; fran sigue sin posicionar y no pierde rating.
+  assert.deepEqual([e.result, e.rating_after, e.placed_before], ['win', expectedE.after, false]);
+  assert.equal(f.rating_after, 1020);
   assert.deepEqual([f.result, f.rating_after], ['loss', expectedF.after]);
   assert.deepEqual(
     r.achievements[eva].map((x) => x.id),
-    ['first_win'],
+    // Al posicionarse en ~1016 cuenta el rango máximo (Platino).
+    ['first_win', 'peak_silver', 'peak_gold', 'peak_platinum'],
   );
   assert.deepEqual(r.achievements[fran], []);
 
@@ -235,7 +238,6 @@ test('quien no informa a tiempo pierde por abandono; el anti-farming baja el K c
       rating: before.rating,
       opponentRating: opp.rating,
       outcome: 'win',
-      gamesPlayed: before.games_played,
       matchesAgainstOpponentInWindow: n,
     });
     assert.equal(mine.rating_after, expected.after, `partida ${n}`);

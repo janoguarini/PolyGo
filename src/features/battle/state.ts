@@ -31,6 +31,8 @@ export interface AnswerFeedback {
   correctOption: number;
   correct: boolean;
   points: number;
+  /** Correctas seguidas tras esta respuesta. */
+  streak: number;
 }
 
 export interface BattleState {
@@ -55,6 +57,8 @@ export interface BattleState {
   /** Pregunta que llegó mientras se mostraba el feedback de la anterior. */
   queuedQuestion: QuestionView | null;
   feedback: AnswerFeedback | null;
+  /** Correctas seguidas propias en esta partida. */
+  streak: number;
   answering: boolean;
   scores: ScoreLine[];
   opponent: { connected: boolean; graceEndsAt: number | null };
@@ -101,6 +105,7 @@ export const initialBattleState: BattleState = {
   question: null,
   queuedQuestion: null,
   feedback: null,
+  streak: 0,
   answering: false,
   scores: [],
   opponent: { connected: true, graceEndsAt: null },
@@ -176,7 +181,9 @@ export function battleReducer(state: BattleState, action: BattleAction): BattleS
           correctOption: action.result.correctOption,
           correct: action.result.correct,
           points: action.result.points,
+          streak: action.result.streak ?? 0,
         },
+        streak: action.result.streak ?? 0,
         scores: state.scores.map((line) =>
           line.slot === state.yourSlot ? { ...line, score: action.result.score } : line,
         ),

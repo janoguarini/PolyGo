@@ -1,27 +1,27 @@
-import { RotateCcw, Trophy } from 'lucide-react-native';
+import { RotateCcw } from 'lucide-react-native';
 import { StyleSheet, View } from 'react-native';
-import Animated, { FadeInUp } from 'react-native-reanimated';
+import Animated, { FadeInUp, ZoomIn } from 'react-native-reanimated';
 
 import type { BattleFinish, PlayerResult } from '@shared/protocol';
-import { getRank, isInPlacement } from '@shared/ranking';
+import { getRank } from '@shared/ranking';
 import { accuracy } from '@shared/wordRush';
 
-import { Button, Card, RankEmblemForRating, Text, colors, spacing } from '@/design-system';
+import { Button, Card, RankEmblemForRating, Text, colors, radii, spacing } from '@/design-system';
 import { TierBadge } from '@/features/profile/components/AchievementBadge';
 
 import { BotBadge } from './BotBadge';
 
 interface Props {
   result: BattleFinish;
-  /** Partidas jugadas antes de esta, para saber si sigue en colocación. */
-  gamesPlayedBefore: number | null;
   onPlayAgain: () => void;
   onExit: () => void;
 }
 
 const TITLES = { win: '¡Victoria!', loss: 'Derrota', draw: 'Empate' } as const;
+/** Emoji grande del encabezado: sólido y a color, como los del resto de la app. */
+const EMOJIS = { win: '🏆', loss: '💪', draw: '🤝', practice: '🎯' } as const;
 
-export function BattleResult({ result, gamesPlayedBefore, onPlayAgain, onExit }: Props) {
+export function BattleResult({ result, onPlayAgain, onExit }: Props) {
   const me = result.players.find((p) => p.slot === result.yourSlot)!;
   const opponent = result.players.find((p) => p.slot !== result.yourSlot);
   const practice = result.mode === 'practice';
@@ -39,7 +39,14 @@ export function BattleResult({ result, gamesPlayedBefore, onPlayAgain, onExit }:
   return (
     <View style={styles.wrap}>
       <Animated.View entering={FadeInUp.duration(400)} style={styles.header}>
-        {me.outcome === 'win' ? <Trophy color={colors.gold} size={48} /> : null}
+        <Animated.View
+          entering={ZoomIn.springify().damping(10)}
+          style={[styles.emojiWrap, me.outcome === 'win' && styles.emojiWin]}
+        >
+          <Text style={styles.emoji} accessibilityElementsHidden importantForAccessibility="no">
+            {EMOJIS[practice ? 'practice' : (me.outcome ?? 'draw')]}
+          </Text>
+        </Animated.View>
         <Text variant="display" align="center" color={me.outcome === 'win' ? 'gold' : 'textStrong'}>
           {title}
         </Text>
@@ -59,7 +66,8 @@ export function BattleResult({ result, gamesPlayedBefore, onPlayAgain, onExit }:
         <RatingChange
           before={me.ratingBefore}
           after={me.ratingAfter}
-          placement={gamesPlayedBefore !== null && isInPlacement(gamesPlayedBefore + 1)}
+          placedBefore={me.placedBefore ?? true}
+          won={me.outcome === 'win'}
         />
       ) : null}
 
@@ -73,7 +81,7 @@ export function BattleResult({ result, gamesPlayedBefore, onPlayAgain, onExit }:
             </Text>
             {result.achievementsUnlocked.map((a) => (
               <View key={a.id} style={styles.row}>
-                <TierBadge id={a.id} size={40} />
+                <TierBadge id={a.id} size={52} />
                 <Text variant="bodyStrong" color="textStrong">
                   {a.title}
                 </Text>
@@ -134,16 +142,42 @@ function Line({
 function RatingChange({
   before,
   after,
-  placement,
+  placedBefore,
+  won,
 }: {
   before: number;
   after: number;
-  placement: boolean;
+  /** Si ya estaba posicionado antes de esta partida. */
+  placedBefore: boolean;
+  won: boolean;
 }) {
   const delta = after - before;
   const sign = delta > 0 ? '+' : '';
   const rankBefore = getRank(before).label;
   const rankAfter = getRank(after).label;
+
+  if (!placedBefore) {
+    return (
+      <Card
+        style={styles.rating}
+        accessibilityLabel={
+          won ? `Te posicionaste en ${rankAfter} con ${after} de ELO` : 'Seguís sin posicionar'
+        }
+      >
+        <RankEmblemForRating rating={after} size={48} dimmed={!won} />
+        <View style={styles.flex}>
+          <Text variant="overline">{won ? '¡POSICIONADO!' : 'SIN POSICIONAR'}</Text>
+          <Text variant="heading">{won ? `${rankAfter} · ${after} ELO` : 'Todavía sin rango'}</Text>
+          <Text variant="caption">
+            {won
+              ? 'Ya estás en el ranking. Cada victoria te acerca al próximo rango.'
+              : 'Ganá una partida para entrar al ranking en Bronce. Perder ahora no te resta.'}
+          </Text>
+        </View>
+      </Card>
+    );
+  }
+
   return (
     <Card style={styles.rating} accessibilityLabel={`ELO ${before} a ${after}, ${sign}${delta}`}>
       <RankEmblemForRating rating={after} size={48} />
@@ -160,11 +194,7 @@ function RatingChange({
           </Text>
         </Text>
         <Text variant="caption">
-          {placement
-            ? 'En colocación: tu rango se muestra tras 5 partidas.'
-            : rankBefore !== rankAfter
-              ? `${rankBefore} → ${rankAfter}`
-              : rankAfter}
+          {rankBefore !== rankAfter ? `${rankBefore} → ${rankAfter}` : rankAfter}
         </Text>
       </View>
     </Card>
@@ -176,6 +206,16 @@ const styles = StyleSheet.create({
   shrink: { flexShrink: 1 },
   wrap: { gap: spacing.lg },
   header: { alignItems: 'center', gap: spacing.sm, marginVertical: spacing.lg },
+  emojiWrap: {
+    width: 112,
+    height: 112,
+    borderRadius: radii.pill,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.surfaceRaised,
+  },
+  emojiWin: { backgroundColor: 'rgba(247, 215, 116, 0.16)' },
+  emoji: { fontSize: 64, lineHeight: 78, textAlign: 'center' },
   gap: { gap: spacing.md },
   row: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   flex: { flex: 1 },

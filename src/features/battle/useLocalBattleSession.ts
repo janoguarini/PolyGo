@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef } from 'react';
 
 import { BOT_CONFIG } from '@shared/bots';
 import { WORD_RUSH, type BattleMode } from '@shared/protocol';
-import { generateQuestions } from '@shared/wordRush';
+import { generateQuestions, pictureEmojis, type RushWord } from '@shared/wordRush';
 
 import { useAuth } from '@/features/auth/AuthProvider';
 import { fetchWordPool } from '@/features/learning/api';
@@ -12,6 +12,7 @@ import { learningKeys } from '@/features/learning/hooks';
 import { useMyProfile } from '@/features/profile/hooks';
 import { playSound } from '@/lib/sounds';
 
+import { answerSound } from './answerSound';
 import { botMatchApi, botMatchErrorCode } from './botMatchApi';
 import { humanMatchApi, openLiveChannel } from './humanMatchApi';
 import { LocalMatch } from './localMatch';
@@ -27,7 +28,7 @@ export type ChallengeRole = { role: 'host' } | { role: 'guest'; code: string };
 
 /**
  * Misma interfaz que useBattleSession, pero sin servidor de partidas (MVP con Supabase):
- * ranked busca una persona en la cola de la base y, si en 10 s no aparece, juega contra un bot;
+ * ranked busca una persona en la cola de la base y, si en 5 s no aparece, juega contra un bot;
  * la práctica es contra el reloj. La partida corre en el teléfono y la base decide el resultado.
  * Con un desafío, la misma partida entre personas pero con un amigo y sin ELO.
  */
@@ -87,24 +88,29 @@ export function useLocalBattleSession() {
             queryFn: () => fetchWordPool(language),
             staleTime: 30 * 60_000,
           });
+          const rushWords: RushWord[] = words.map((w) => ({
+            id: w.id,
+            text: w.text,
+            translationEs: w.translation_es,
+            emoji: w.emoji,
+          }));
+          let previousStreak = 0;
           const match = new LocalMatch({
             dispatch,
             api: botMatchApi,
             human: humanMatchApi,
             userId: session?.user.id,
-            questions: generateQuestions(
-              words.map((w) => ({ id: w.id, text: w.text, translationEs: w.translation_es })),
-              WORD_RUSH.questionCount,
-              Math.random,
-            ),
+            questions: generateQuestions(rushWords, WORD_RUSH.questionCount, Math.random),
+            pictures: pictureEmojis(rushWords),
             me: {
               username: profile.username,
               avatarId: profile.avatar_id,
               avatarPath: profile.avatar_path,
             },
             feedbackMs: FEEDBACK_MS,
-            onAnswer: (correct) => {
-              playSound(correct ? 'correct' : 'incorrect');
+            onAnswer: (correct, streak) => {
+              playSound(answerSound(correct, streak, previousStreak));
+              previousStreak = streak;
               void Haptics.notificationAsync(
                 correct
                   ? Haptics.NotificationFeedbackType.Success
@@ -191,7 +197,7 @@ export function useLocalBattleSession() {
             return;
           }
 
-          // Cola de personas: si en 10 s no aparece nadie, un bot de tu nivel.
+          // Cola de personas: si en 5 s no aparece nadie, un bot de tu nivel.
           dispatch({ type: 'joined', mode: 'ranked' });
           searchRef.current = search;
           const searchStartedAt = Date.now();

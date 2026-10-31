@@ -2,10 +2,20 @@ import { test, before } from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
 
-import { createDb, createUser, as } from './harness.mjs';
+import { createDb, createUser as createBaseUser, as } from './harness.mjs';
 import { computeRatingChange, RATING_CONFIG } from '../../shared/ranking.ts';
 
 let db;
+
+/** Estas pruebas del servidor de partidas parten de jugadores en 1000 (Platino III). */
+async function createUser(database, email) {
+  const id = await createBaseUser(database, email);
+  await database.query(
+    'update public.player_ratings set rating = 1000, peak_rating = 1000 where user_id = $1',
+    [id],
+  );
+  return id;
+}
 let alice;
 let bob;
 let carol;
@@ -49,7 +59,6 @@ async function settle(id, outcomes, { status = 'completed', forfeited = [false, 
       rating: p.rating,
       opponentRating: opp.rating,
       outcome: outcomes[i],
-      gamesPlayed: p.games_played,
       matchesAgainstOpponentInWindow: p.matches_in_window,
     });
     return {
@@ -130,18 +139,18 @@ test('liquidación completa: ratings, historial, partida y logros en una transac
 
   assert.equal(result.duplicate, false);
   // Ambos en colocación (K = 48), mismo rating: ±24.
-  assert.equal(players[0].rating_after, 1024);
-  assert.equal(players[1].rating_after, 976);
+  assert.equal(players[0].rating_after, 1016);
+  assert.equal(players[1].rating_after, 984);
 
   const a = await rating(alice);
   const b = await rating(bob);
-  assert.equal(a.rating, 1024);
-  assert.equal(a.peak_rating, 1024);
+  assert.equal(a.rating, 1016);
+  assert.equal(a.peak_rating, 1016);
   assert.equal(a.games_played, 1);
   assert.equal(a.wins, 1);
   assert.equal(a.win_streak, 1);
   assert.equal(a.best_win_streak, 1);
-  assert.equal(b.rating, 976);
+  assert.equal(b.rating, 984);
   assert.equal(b.peak_rating, 1000);
   assert.equal(b.losses, 1);
   assert.equal(b.win_streak, 0);
@@ -152,8 +161,8 @@ test('liquidación completa: ratings, historial, partida y logros en una transac
     [id],
   );
   assert.deepEqual(history, [
-    { user_id: alice, reason: 'battle', rating_before: 1000, rating_after: 1024, delta: 24 },
-    { user_id: bob, reason: 'battle', rating_before: 1000, rating_after: 976, delta: -24 },
+    { user_id: alice, reason: 'battle', rating_before: 1000, rating_after: 1016, delta: 16 },
+    { user_id: bob, reason: 'battle', rating_before: 1000, rating_after: 984, delta: -16 },
   ]);
 
   const { rows: bp } = await db.query(
@@ -161,8 +170,8 @@ test('liquidación completa: ratings, historial, partida y logros en una transac
     [id],
   );
   assert.deepEqual(bp, [
-    { slot: 1, score: 900, result: 'win', rating_before: 1000, rating_after: 1024 },
-    { slot: 2, score: 400, result: 'loss', rating_before: 1000, rating_after: 976 },
+    { slot: 1, score: 900, result: 'win', rating_before: 1000, rating_after: 1016 },
+    { slot: 2, score: 400, result: 'loss', rating_before: 1000, rating_after: 984 },
   ]);
   const { rows: battle } = await db.query(
     'select status, ended_at from public.battles where id = $1',
@@ -173,7 +182,8 @@ test('liquidación completa: ratings, historial, partida y logros en una transac
 
   assert.deepEqual(
     result.achievements[alice].map((x) => x.id),
-    ['first_win'],
+    // Al posicionarse en 1016 cuenta el rango máximo alcanzado.
+    ['first_win', 'peak_silver', 'peak_gold', 'peak_platinum'],
   );
   assert.equal(result.achievements[alice][0].title, 'Campeón · Nivel 1');
   assert.deepEqual(result.achievements[bob], []);
@@ -277,8 +287,16 @@ test('anti-farming: el mismo rival en 24 h baja el K y luego deja de mover el ra
   );
   assert.deepEqual(
     placement.map((x) => x.id),
-    // Con la colocación terminada (5 partidas) el rango máximo ya cuenta: Plata y Oro.
-    ['placement_done', 'first_win', 'win_streak_3', 'win_streak_5', 'peak_silver', 'peak_gold'],
+    // Posicionado (ya ganó): el rango máximo cuenta (1000+ = Platino).
+    [
+      'placement_done',
+      'first_win',
+      'win_streak_3',
+      'win_streak_5',
+      'peak_silver',
+      'peak_gold',
+      'peak_platinum',
+    ],
   );
 });
 
@@ -324,7 +342,7 @@ test('cuenta borrada a mitad de partida: se liquida al rival y la fila queda ano
       forfeited: false,
       rating_before: ctx[1].rating,
       games_played_before: ctx[1].games_played,
-      rating_after: ctx[1].rating + 24,
+      rating_after: ctx[1].rating + 16,
     },
   ];
   await server('select public.settle_battle($1, $2, $3::jsonb)', [
@@ -332,14 +350,14 @@ test('cuenta borrada a mitad de partida: se liquida al rival y la fila queda ano
     'forfeited',
     JSON.stringify(players),
   ]);
-  assert.equal((await rating(gina)).rating, 1024);
+  assert.equal((await rating(gina)).rating, 1016);
   const { rows } = await db.query(
     'select user_id, rating_after from public.battle_players where battle_id = $1 order by slot',
     [id],
   );
   assert.deepEqual(rows, [
     { user_id: null, rating_after: null },
-    { user_id: gina, rating_after: 1024 },
+    { user_id: gina, rating_after: 1016 },
   ]);
 });
 
@@ -387,7 +405,6 @@ test('partida contra un bot: sólo el jugador cambia de ELO y el historial muest
     rating: ctx[0].rating,
     opponentRating: 1100,
     outcome: 'win',
-    gamesPlayed: ctx[0].games_played,
     matchesAgainstOpponentInWindow: ctx[0].matches_in_window,
   });
   const [{ r }] = await server('select public.settle_battle($1, $2, $3::jsonb) as r', [

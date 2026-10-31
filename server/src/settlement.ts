@@ -72,7 +72,6 @@ export async function settleBattle(
         rating: me.rating,
         opponentRating: opponentRating ?? me.rating,
         outcome,
-        gamesPlayed: me.gamesPlayed,
         matchesAgainstOpponentInWindow: me.matchesInWindow,
       });
       return {

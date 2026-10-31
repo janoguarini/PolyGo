@@ -70,6 +70,37 @@ const sounds: Record<string, Note[]> = {
     { freq: 233.1, start: 0, duration: 0.16, gain: 0.3, harmonics: [0.4, 0.2] },
     { freq: 185, start: 0.13, duration: 0.3, gain: 0.3, harmonics: [0.4, 0.2] },
   ],
+  // Racha (partidas): arpegios rápidos y brillantes que suben con cada escalón de racha.
+  // Nivel 1 (3 seguidas): Sol6-Si6-Re7.
+  streak1: [
+    { freq: 1568, start: 0, duration: 0.09, gain: 0.26 },
+    { freq: 1975.5, start: 0.06, duration: 0.09, gain: 0.26 },
+    { freq: 2349.3, start: 0.12, duration: 0.3, gain: 0.28 },
+  ],
+  // Nivel 2 (5 seguidas): La6-Do#7-Mi7-La7 con un brillo de octava.
+  streak2: [
+    { freq: 1760, start: 0, duration: 0.08, gain: 0.24 },
+    { freq: 2217.5, start: 0.055, duration: 0.08, gain: 0.24 },
+    { freq: 2637, start: 0.11, duration: 0.08, gain: 0.24 },
+    { freq: 3520, start: 0.165, duration: 0.34, gain: 0.22 },
+    { freq: 1760, start: 0.165, duration: 0.34, gain: 0.12 },
+  ],
+  // Nivel 3 (8+ seguidas): escalera completa y acorde final largo.
+  streak3: [
+    { freq: 1318.5, start: 0, duration: 0.07, gain: 0.22 },
+    { freq: 1661.2, start: 0.05, duration: 0.07, gain: 0.22 },
+    { freq: 1975.5, start: 0.1, duration: 0.07, gain: 0.22 },
+    { freq: 2637, start: 0.15, duration: 0.07, gain: 0.22 },
+    { freq: 3322.4, start: 0.2, duration: 0.45, gain: 0.2 },
+    { freq: 2637, start: 0.2, duration: 0.45, gain: 0.14 },
+    { freq: 1975.5, start: 0.2, duration: 0.45, gain: 0.12 },
+  ],
+  // Se cortó una racha: dos notas que caen, más suaves que el error común.
+  streakLost: [
+    { freq: 784, start: 0, duration: 0.12, gain: 0.22, harmonics: [0.3, 0.1] },
+    { freq: 523.3, start: 0.1, duration: 0.18, gain: 0.22, harmonics: [0.3, 0.1] },
+    { freq: 392, start: 0.22, duration: 0.3, gain: 0.22, harmonics: [0.3, 0.1] },
+  ],
   // Arpegio Do-Mi-Sol-Do al terminar una sesión.
   complete: [
     { freq: 523.3, start: 0, duration: 0.2, gain: 0.22 },

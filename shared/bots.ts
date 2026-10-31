@@ -9,15 +9,21 @@ import { RATING_CONFIG } from './ranking';
 
 export const BOT_CONFIG = {
   /** Espera en cola sin rival humano antes de ofrecer un bot. */
-  afterMs: 10_000,
+  afterMs: 5_000,
   /** El rating del bot se elige a ± esto del jugador. */
   ratingJitter: 40,
-  /** Rango de la escala de habilidad: por debajo y por encima se satura. */
-  minRating: 600,
-  maxRating: 1900,
-  accuracy: { atMin: 0.55, atMax: 0.97 },
-  /** Tiempo medio de respuesta (ms). */
-  meanMs: { atMin: 5_000, atMax: 1_300 },
+  /**
+   * Habilidad por rating (interpolación lineal entre puntos; fuera del rango se satura). Empinada
+   * abajo: en Bronce los bots son lentos y en cada rango se nota que responden más rápido.
+   * meanMs = tiempo medio de respuesta. Copiada en SQL: public.bot_skill.
+   */
+  skillCurve: [
+    { rating: 100, accuracy: 0.5, meanMs: 6_500 },
+    { rating: 400, accuracy: 0.68, meanMs: 4_200 },
+    { rating: 1_000, accuracy: 0.82, meanMs: 2_700 },
+    { rating: 1_600, accuracy: 0.91, meanMs: 1_800 },
+    { rating: 2_200, accuracy: 0.97, meanMs: 1_200 },
+  ],
   /** Dispersión (log-normal) del tiempo de respuesta. */
   timeSpread: 0.35,
   minMs: 600,
@@ -62,14 +68,16 @@ const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
 /** Habilidad del bot para un rating: más rating, más preciso y más rápido. */
 export function botSkill(rating: number, config = BOT_CONFIG): BotSkill {
-  const t = Math.min(
-    1,
-    Math.max(0, (rating - config.minRating) / (config.maxRating - config.minRating)),
-  );
-  return {
-    accuracy: lerp(config.accuracy.atMin, config.accuracy.atMax, t),
-    meanMs: lerp(config.meanMs.atMin, config.meanMs.atMax, t),
-  };
+  const curve = config.skillCurve;
+  const first = curve[0]!;
+  const last = curve[curve.length - 1]!;
+  if (rating <= first.rating) return { accuracy: first.accuracy, meanMs: first.meanMs };
+  if (rating >= last.rating) return { accuracy: last.accuracy, meanMs: last.meanMs };
+  const i = curve.findIndex((p) => p.rating > rating);
+  const a = curve[i - 1]!;
+  const b = curve[i]!;
+  const t = (rating - a.rating) / (b.rating - a.rating);
+  return { accuracy: lerp(a.accuracy, b.accuracy, t), meanMs: lerp(a.meanMs, b.meanMs, t) };
 }
 
 /** Normal estándar a partir de dos uniformes (Box-Muller). */

@@ -20,11 +20,13 @@ function play(rating: number, random: () => number) {
   let score = 0;
   let correct = 0;
   let answered = 0;
+  let streak = 0;
   for (;;) {
     const move = botMove(skill, random);
     if (elapsed + move.delayMs > WORD_RUSH.durationMs) break;
     elapsed += move.delayMs;
-    score = applyPoints(score, answerPoints(move.correct, move.delayMs));
+    streak = move.correct ? streak + 1 : 0;
+    score = applyPoints(score, answerPoints(move.correct, move.delayMs, streak));
     answered += 1;
     if (move.correct) correct += 1;
   }
@@ -47,8 +49,18 @@ describe('botSkill', () => {
     const high = botSkill(1500);
     expect(high.accuracy).toBeGreaterThan(low.accuracy);
     expect(high.meanMs).toBeLessThan(low.meanMs);
-    expect(botSkill(100)).toEqual(botSkill(BOT_CONFIG.minRating));
-    expect(botSkill(3000)).toEqual(botSkill(BOT_CONFIG.maxRating));
+    expect(botSkill(0)).toEqual(botSkill(BOT_CONFIG.skillCurve[0].rating));
+    expect(botSkill(3000)).toEqual(botSkill(BOT_CONFIG.skillCurve.at(-1)!.rating));
+    // Entre puntos de la curva interpola.
+    expect(botSkill(250).meanMs).toBeCloseTo((6_500 + 4_200) / 2);
+  });
+
+  it('se nota la diferencia de un rango a otro (Bronce → Plata → Oro)', () => {
+    const bronze = botSkill(150).meanMs;
+    const silver = botSkill(450).meanMs;
+    const gold = botSkill(750).meanMs;
+    expect(bronze - silver).toBeGreaterThan(1_000);
+    expect(silver - gold).toBeGreaterThan(500);
   });
 });
 

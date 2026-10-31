@@ -1,32 +1,94 @@
+import { Volume2 } from 'lucide-react-native';
+import { useEffect } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
+import Animated, { ZoomIn } from 'react-native-reanimated';
 
 import type { QuestionView } from '@shared/protocol';
+import { streakBonus, streakLevel } from '@shared/wordRush';
 
 import { Card, MIN_TOUCH, Text, colors, radii, spacing } from '@/design-system';
+import { speakEnglish, stopSpeaking } from '@/features/learning/speech';
 
 import type { AnswerFeedback } from '../state';
 
 interface Props {
   question: QuestionView;
   feedback: AnswerFeedback | null;
+  /** Correctas seguidas hasta ahora. */
+  streak: number;
   disabled: boolean;
   onAnswer: (option: number) => void;
 }
 
-/** Enunciado y 4 opciones. La correcta sólo se conoce cuando el servidor responde. */
-export function QuestionCard({ question, feedback, disabled, onAnswer }: Props) {
+const INSTRUCTIONS = {
+  audio: 'ESCUCHÁ Y ELEGÍ QUÉ SIGNIFICA',
+  image: '¿CÓMO SE DICE EN INGLÉS?',
+  en_es: 'ELEGÍ LA TRADUCCIÓN AL ESPAÑOL',
+  es_en: 'ELEGÍ LA PALABRA EN INGLÉS',
+} as const;
+
+/** Colores de la racha por escalón (3, 5 y 8 seguidas). */
+const STREAK_COLORS = [colors.streak, colors.streak, colors.danger, colors.gold] as const;
+
+/** Enunciado (texto, audio o imagen) y 4 opciones. La correcta sólo se conoce al responder. */
+export function QuestionCard({ question, feedback, streak, disabled, onAnswer }: Props) {
   const shown = feedback?.questionIndex === question.index ? feedback : null;
+  const kind = question.kind ?? 'text';
+  const level = streakLevel(streak);
+  const bonus = shown?.correct ? streakBonus(shown.streak) : 0;
+
+  // Las de audio se escuchan solas al aparecer (se pueden repetir con el parlante).
+  useEffect(() => {
+    if (kind === 'audio') speakEnglish(question.prompt);
+  }, [kind, question.index, question.prompt]);
+  useEffect(() => () => stopSpeaking(), []);
+
   return (
     <View style={styles.wrap}>
-      <Card style={styles.prompt}>
+      <Card style={[styles.prompt, level > 0 && { borderColor: STREAK_COLORS[level] }]}>
+        {level > 0 ? (
+          <Animated.View
+            key={streak}
+            entering={ZoomIn.springify().damping(12)}
+            style={[styles.streak, { backgroundColor: STREAK_COLORS[level] }]}
+            accessible
+            accessibilityLabel={`Racha de ${streak} correctas: la próxima suma ${streakBonus(streak + 1)} extra`}
+          >
+            <Text variant="bodyStrong" color="textStrong">
+              {`🔥 Racha x${streak} · +${streakBonus(streak + 1)}`}
+            </Text>
+          </Animated.View>
+        ) : null}
+
         <Text variant="overline">
-          {question.direction === 'en_es'
-            ? 'ELEGÍ LA TRADUCCIÓN AL ESPAÑOL'
-            : 'ELEGÍ LA PALABRA EN INGLÉS'}
+          {kind === 'text' ? INSTRUCTIONS[question.direction] : INSTRUCTIONS[kind]}
         </Text>
-        <Text variant="display" align="center" accessibilityRole="header">
-          {question.prompt}
-        </Text>
+
+        {kind === 'audio' ? (
+          <View style={styles.audio}>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Escuchar otra vez"
+              onPress={() => speakEnglish(question.prompt)}
+              style={({ pressed }) => [styles.speaker, pressed && styles.pressed]}
+            >
+              <Volume2 color={colors.onPrimary} size={40} />
+            </Pressable>
+            {/* La palabra se muestra recién al responder, para aprender cómo se escribe. */}
+            <Text variant="heading" align="center" style={!shown && styles.hidden}>
+              {question.prompt}
+            </Text>
+          </View>
+        ) : kind === 'image' && question.emoji ? (
+          <Text style={styles.emoji} accessibilityLabel={`Imagen: ${question.prompt}`}>
+            {question.emoji}
+          </Text>
+        ) : (
+          <Text variant="display" align="center" accessibilityRole="header">
+            {question.prompt}
+          </Text>
+        )}
+
         {shown ? (
           <Text
             variant="bodyStrong"
@@ -34,10 +96,14 @@ export function QuestionCard({ question, feedback, disabled, onAnswer }: Props) 
             align="center"
             accessibilityLiveRegion="assertive"
           >
-            {shown.correct ? `¡Bien! +${shown.points}` : `${shown.points}`}
+            {shown.correct
+              ? bonus > 0
+                ? `¡En racha! +${shown.points}`
+                : `¡Bien! +${shown.points}`
+              : `${shown.points}`}
           </Text>
         ) : (
-          <Text variant="bodyStrong" align="center" style={styles.placeholder}>
+          <Text variant="bodyStrong" align="center" style={styles.hidden}>
             {' '}
           </Text>
         )}
@@ -79,8 +145,23 @@ export function QuestionCard({ question, feedback, disabled, onAnswer }: Props) 
 
 const styles = StyleSheet.create({
   wrap: { gap: spacing.lg },
-  prompt: { alignItems: 'center', gap: spacing.sm, paddingVertical: spacing.xxl },
-  placeholder: { opacity: 0 },
+  prompt: { alignItems: 'center', gap: spacing.sm, paddingVertical: spacing.xl, borderWidth: 1.5 },
+  hidden: { opacity: 0 },
+  streak: {
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.xxs,
+    borderRadius: radii.pill,
+  },
+  audio: { alignItems: 'center', gap: spacing.sm },
+  speaker: {
+    width: 88,
+    height: 88,
+    borderRadius: 44,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.primary,
+  },
+  emoji: { fontSize: 84, lineHeight: 100, textAlign: 'center' },
   options: { gap: spacing.md },
   option: {
     minHeight: MIN_TOUCH + 12,

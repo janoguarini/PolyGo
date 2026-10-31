@@ -23,7 +23,11 @@ import { BOT_CONFIG, botMove, botSkill } from '../../shared/bots';
 import type { Clock } from './clock';
 import type { PlayerInfo } from './types';
 
-export type BattleRules = { -readonly [K in keyof typeof WORD_RUSH]: number };
+export type BattleRules = {
+  -readonly [K in keyof typeof WORD_RUSH]: (typeof WORD_RUSH)[K] extends number
+    ? number
+    : (typeof WORD_RUSH)[K];
+};
 
 export type Send = <E extends keyof ServerToClientEvents>(
   userId: string,
@@ -48,6 +52,8 @@ interface Seat {
   score: number;
   correct: number;
   answered: number;
+  /** Correctas seguidas (bonus de racha). */
+  streak: number;
   /** Pregunta que el jugador tiene en pantalla; === questions.length cuando terminó todas. */
   questionIndex: number;
   questionSentAt: number;
@@ -94,6 +100,7 @@ export class Battle {
       score: 0,
       correct: 0,
       answered: 0,
+      streak: 0,
       questionIndex: 0,
       questionSentAt: 0,
       graceTimer: null,
@@ -162,7 +169,8 @@ export class Battle {
     }
 
     const correct = option === question.correctOption;
-    const points = answerPoints(correct, this.clock.now() - seat.questionSentAt);
+    seat.streak = correct ? seat.streak + 1 : 0;
+    const points = answerPoints(correct, this.clock.now() - seat.questionSentAt, seat.streak);
     seat.score = applyPoints(seat.score, points);
     seat.answered += 1;
     if (correct) seat.correct += 1;
@@ -176,6 +184,7 @@ export class Battle {
         correctOption: question.correctOption,
         points,
         score: seat.score,
+        streak: seat.streak,
       },
     });
 

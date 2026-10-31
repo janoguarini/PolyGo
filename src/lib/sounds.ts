@@ -5,6 +5,10 @@ const SOURCES = {
   correct: require('../../assets/sounds/correct.wav') as number,
   incorrect: require('../../assets/sounds/incorrect.wav') as number,
   complete: require('../../assets/sounds/complete.wav') as number,
+  streak1: require('../../assets/sounds/streak1.wav') as number,
+  streak2: require('../../assets/sounds/streak2.wav') as number,
+  streak3: require('../../assets/sounds/streak3.wav') as number,
+  streakLost: require('../../assets/sounds/streakLost.wav') as number,
 };
 
 export type SoundEffect = keyof typeof SOURCES;

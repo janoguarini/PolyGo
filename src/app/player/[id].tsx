@@ -3,7 +3,7 @@ import { Ban, Lock, Star, UserX } from 'lucide-react-native';
 import { StyleSheet, View } from 'react-native';
 
 import { flagEmoji } from '@shared/profile';
-import { getRank, isInPlacement } from '@shared/ranking';
+import { getRank, isPlaced } from '@shared/ranking';
 
 import {
   Avatar,
@@ -69,7 +69,7 @@ export default function PlayerScreen() {
     );
   }
   const rating = p.rating;
-  const placement = rating ? isInPlacement(rating.games_played) : true;
+  const placement = p.stats ? !isPlaced(p.stats) : true;
   const stats = p.stats;
   const games = stats ? stats.wins + stats.losses + stats.draws : 0;
   const flag = flagEmoji(p.region);
@@ -102,10 +102,12 @@ export default function PlayerScreen() {
           <RankEmblemForRating rating={rating.rating} size={56} dimmed={placement} />
           <View style={styles.flex}>
             <Text variant="bodyStrong">
-              {placement ? 'En colocación' : getRank(rating.rating).label}
+              {placement ? 'Sin posicionar' : getRank(rating.rating).label}
             </Text>
             <Text variant="caption">
-              {rating.rating} ELO{stats ? ` · máximo ${stats.peak_rating}` : ''}
+              {placement
+                ? 'Todavía no ganó una ranked'
+                : `${rating.rating} ELO${stats ? ` · máximo ${stats.peak_rating}` : ''}`}
             </Text>
           </View>
         </Card>

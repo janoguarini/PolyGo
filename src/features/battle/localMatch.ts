@@ -9,7 +9,13 @@ import {
   type PublicPlayer,
   type ScoreLine,
 } from '@shared/protocol';
-import { answerPoints, applyPoints, toQuestionView, type RushQuestion } from '@shared/wordRush';
+import {
+  answerPoints,
+  applyPoints,
+  toQuestionView,
+  withPictures,
+  type RushQuestion,
+} from '@shared/wordRush';
 
 import type { BattleAction } from './state';
 
@@ -45,6 +51,8 @@ export interface FinishedBotMatch {
     forfeited: boolean;
     rating_before: number;
     rating_after: number;
+    /** Si ya estaba posicionado antes de esta partida (ganó alguna). */
+    placed_before?: boolean;
   };
   bot: { name: string; score: number; correct: number; answered: number; result: string };
   achievements: { id: string; title: string; icon: string }[];
@@ -98,6 +106,7 @@ export type HumanMatchResult =
         forfeited: boolean;
         rating_before: number | null;
         rating_after: number | null;
+        placed_before?: boolean | null;
       }[];
     };
 
@@ -125,8 +134,10 @@ export interface LocalMatchDeps {
   setTimer?: (fn: () => void, ms: number) => unknown;
   clearTimer?: (handle: unknown) => void;
   random?: () => number;
-  /** Se llama con el resultado de cada respuesta (sonido, vibración). */
-  onAnswer?: (correct: boolean) => void;
+  /** Se llama con el resultado de cada respuesta y la racha actual (sonido, vibración). */
+  onAnswer?: (correct: boolean, streak: number) => void;
+  /** Imagen de cada palabra que se puede preguntar con imagen (pictureEmojis). */
+  pictures?: ReadonlyMap<string, string>;
   /** Ranked guardado: refrescar perfil, logros, clasificación. */
   onRankedFinished?: () => void;
   feedbackMs?: number;
@@ -164,6 +175,9 @@ export class LocalMatch {
   private players: PublicPlayer[] = [];
   private me: Line = emptyLine();
   private bot: Line = emptyLine();
+  /** Correctas seguidas de cada lado (la del rival humano no se conoce: llega su puntaje). */
+  private myStreak = 0;
+  private botStreak = 0;
   private questionIndex = 0;
   private questionSentAt = 0;
   private startsAt: number | null = null;
@@ -181,7 +195,11 @@ export class LocalMatch {
     this.setTimer = deps.setTimer ?? ((fn, ms) => setTimeout(fn, ms));
     this.clearTimer = deps.clearTimer ?? ((h) => clearTimeout(h as ReturnType<typeof setTimeout>));
     this.random = deps.random ?? Math.random;
-    this.questions = deps.questions;
+    this.questions = this.decorate(deps.questions);
+  }
+
+  private decorate(questions: RushQuestion[]): RushQuestion[] {
+    return this.deps.pictures ? withPictures(questions, this.deps.pictures) : questions;
   }
 
   /** Ranked: pide el bot a la base y lo anuncia. Práctica: arranca la cuenta atrás. */
@@ -231,7 +249,7 @@ export class LocalMatch {
     this.opponentKind = 'human';
     this.battleId = setup.battle_id;
     this.yourSlot = setup.your_slot;
-    this.questions = setup.questions;
+    this.questions = this.decorate(setup.questions);
     this.players = setup.players.map((p) => ({
       slot: p.slot,
       username: p.username,
@@ -273,7 +291,8 @@ export class LocalMatch {
     if (!question) return;
     this.dispatch({ type: 'answer_sent' });
     const correct = option === question.correctOption;
-    const points = answerPoints(correct, this.now() - this.questionSentAt);
+    this.myStreak = correct ? this.myStreak + 1 : 0;
+    const points = answerPoints(correct, this.now() - this.questionSentAt, this.myStreak);
     this.me = {
       score: applyPoints(this.me.score, points),
       correct: this.me.correct + (correct ? 1 : 0),
@@ -288,9 +307,10 @@ export class LocalMatch {
         correctOption: question.correctOption,
         points,
         score: this.me.score,
+        streak: this.myStreak,
       },
     });
-    this.deps.onAnswer?.(correct);
+    this.deps.onAnswer?.(correct, this.myStreak);
     this.deps.onLineChange?.(this.me);
     this.schedule(this.deps.feedbackMs ?? 350, () => this.dispatch({ type: 'feedback_done' }));
     this.emitScores();
@@ -336,6 +356,8 @@ export class LocalMatch {
     if (this.finished) return;
     this.status = 'in_progress';
     this.questionIndex = 0;
+    this.myStreak = 0;
+    this.botStreak = 0;
     this.questionSentAt = this.now();
     this.emitSnapshot();
     const endsIn = this.endsAt === null ? WORD_RUSH.durationMs : this.endsAt - this.now();
@@ -347,8 +369,9 @@ export class LocalMatch {
       at += move.d;
       if (at > WORD_RUSH.durationMs) break;
       this.schedule(at, () => {
+        this.botStreak = move.c ? this.botStreak + 1 : 0;
         this.bot = {
-          score: applyPoints(this.bot.score, answerPoints(move.c, move.d)),
+          score: applyPoints(this.bot.score, answerPoints(move.c, move.d, this.botStreak)),
           correct: this.bot.correct + (move.c ? 1 : 0),
           answered: this.bot.answered + 1,
         };
@@ -444,6 +467,7 @@ export class LocalMatch {
         forfeited: p.forfeited,
         ratingBefore: p.rating_before,
         ratingAfter: p.rating_after,
+        placedBefore: p.placed_before ?? undefined,
       })),
       achievementsUnlocked: (this.deps.userId && saved.achievements[this.deps.userId]) || [],
       friendly: !saved.ranked,
@@ -464,6 +488,7 @@ export class LocalMatch {
         forfeited: saved.me.forfeited,
         ratingBefore: saved.me.rating_before,
         ratingAfter: saved.me.rating_after,
+        placedBefore: saved.me.placed_before,
       },
       {
         slot: 2,

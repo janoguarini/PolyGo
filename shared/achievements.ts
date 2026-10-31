@@ -152,12 +152,9 @@ export const ACHIEVEMENT_FAMILIES: readonly AchievementFamilyDef[] = [
     icon: 'shield',
     category: 'competitive',
     colors: ['#94A3B8', '#475569'],
-    tiers: tiers(
-      'games',
-      [5, 25, 50, 100, 250, 500],
-      (n) => (n === 5 ? 'Terminá tus 5 partidas de colocación.' : `Jugá ${n} partidas ranked.`),
-      { 5: 'placement_done' },
-    ),
+    tiers: tiers('games', [5, 25, 50, 100, 250, 500], (n) => `Jugá ${n} partidas ranked.`, {
+      5: 'placement_done',
+    }),
   },
   {
     metric: 'wins',

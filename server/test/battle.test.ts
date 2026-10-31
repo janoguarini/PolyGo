@@ -107,6 +107,7 @@ test('puntuación autoritativa: velocidad, penalización, piso 0 y avance de pre
       correctOption: s.correctOf(0),
       points: -50,
       score: 0,
+      streak: 0,
     },
   });
 

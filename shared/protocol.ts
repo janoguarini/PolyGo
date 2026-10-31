@@ -21,6 +21,17 @@ export const WORD_RUSH = {
   /** El bonus de velocidad baja linealmente de maxSpeedBonus a 0 en esta ventana. */
   speedBonusWindowMs: 5_000,
   wrongPenalty: 50,
+  /**
+   * Racha: respuestas correctas seguidas (contando la actual) suman un poco más. Escalones de
+   * menor a mayor. Copiado en SQL: public.rush_streak_bonus.
+   */
+  streakBonus: [
+    { from: 3, bonus: 10 },
+    { from: 5, bonus: 20 },
+    { from: 8, bonus: 30 },
+  ],
+  /** Tope de una respuesta correcta (100 + 50 de rapidez + 30 de racha): lo valida la base. */
+  maxCorrectPoints: 180,
 } as const;
 
 export const MATCHMAKING = {
@@ -70,11 +81,18 @@ export interface PublicPlayer {
 }
 
 /** Lo único que el cliente ve de una pregunta antes de responder: nunca la respuesta correcta. */
+/** Cómo se presenta una pregunta: texto, audio (se escucha en inglés) o imagen (emoji). */
+export type QuestionKind = 'text' | 'audio' | 'image';
+
 export interface QuestionView {
   index: number;
   direction: 'en_es' | 'es_en';
   prompt: string;
   options: string[];
+  /** Sin dato = texto (servidores viejos). */
+  kind?: QuestionKind;
+  /** Imagen de la palabra en las preguntas 'image'. */
+  emoji?: string;
   /** Hora del servidor (ms) en que se emitió: el bonus de velocidad se mide desde acá. */
   sentAt: number;
 }
@@ -101,6 +119,8 @@ export interface PlayerResult {
   forfeited: boolean;
   ratingBefore: number | null;
   ratingAfter: number | null;
+  /** Si ya estaba posicionado (había ganado alguna ranked) antes de esta partida. */
+  placedBefore?: boolean;
 }
 
 export interface AchievementUnlock {
@@ -162,6 +182,8 @@ export interface AnswerResult {
   correctOption: number;
   points: number;
   score: number;
+  /** Correctas seguidas tras esta respuesta (0 si falló). */
+  streak?: number;
 }
 
 export interface ServerToClientEvents {

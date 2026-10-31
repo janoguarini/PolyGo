@@ -7,10 +7,10 @@ Si cambiás un valor, actualizá este documento y los `CHECK` de la base de dato
 
 | Parámetro | Valor |
 | --- | --- |
-| Rating inicial | 1000 |
+| Rating inicial | 100, oculto: el jugador está **sin posicionar** hasta su primera victoria |
 | Piso de rating | 100 (también `CHECK (rating >= 100)` en SQL) |
 | K estándar | 32 |
-| K en colocación | 48 durante las primeras 5 partidas |
+| Sin posicionar | 0 victorias: perder o empatar no mueve el rating; la primera victoria lo posiciona (~115, Bronce III) |
 | Redondeo | `Math.round` sobre el delta |
 
 ## Fórmula
@@ -22,7 +22,9 @@ R_A'       = max(100, R_A + Delta_A)
 S = 1 victoria · 0.5 empate · 0 derrota
 ```
 
-Entre dos jugadores establecidos con el mismo K el sistema es de suma cero (testeado). Si uno está en colocación (K=48) y el otro no, no es suma cero: es intencional para calibrar rápido al nuevo sin castigar de más al rival.
+Entre dos jugadores posicionados el sistema es de suma cero (testeado). Si uno está sin posicionar y pierde, no pierde rating aunque el rival gane: es intencional para que nadie arranque frustrado. Una victoria pareja suma ~16, así que cada división (100 puntos) lleva varias victorias netas: se sube de a poco.
+
+En la base: `ranked_rating_after()` (bots y personas, sin servidor). El servidor de partidas (`server/src/settlement.ts`) todavía no aplica "sin posicionar".
 
 ## Anti-farming: rival repetido
 
@@ -42,16 +44,16 @@ Cuentan igual que contra una persona: el delta se calcula contra el rating asign
 
 | Tier | Rating mínimo | Divisiones (III → II → I) |
 | --- | --- | --- |
-| Bronce | 0 | III < 800 · II 800–849 · I 850–899 |
-| Plata | 900 | III 900 · II 950 · I 1000 |
-| Oro | 1050 | III 1050 · II 1100 · I 1150 |
-| Platino | 1200 | III 1200 · II 1250 · I 1300 |
-| Esmeralda | 1350 | III 1350 · II 1400 · I 1450 |
-| Diamante | 1500 | III 1500 · II 1567 · I 1633 |
-| Maestro | 1700 | sin divisiones |
-| Gran Maestro | 1900 | sin divisiones |
+| Bronce | 0 | III < 200 · II 200–299 · I 300–399 |
+| Plata | 400 | III 400 · II 500 · I 600 |
+| Oro | 700 | III 700 · II 800 · I 900 |
+| Platino | 1000 | III 1000 · II 1100 · I 1200 |
+| Esmeralda | 1300 | III 1300 · II 1400 · I 1500 |
+| Diamante | 1600 | III 1600 · II 1700 · I 1800 |
+| Maestro | 1900 | sin divisiones |
+| Gran Maestro | 2200 | sin divisiones |
 
-Un usuario nuevo (1000) queda en **Plata I**, pero se muestra **"En colocación / Sin rango"** hasta completar 5 partidas.
+Un usuario nuevo se muestra **"Sin posicionar"** (sin número de ELO, fuera de la clasificación) hasta ganar una partida; entonces entra en **Bronce III**. El logro "Escalador" (rango máximo) también cuenta recién al posicionarse.
 
 ## Reglas de liquidación (implementadas en Fase 4: `server/src/settlement.ts` + `settle_battle`)
 

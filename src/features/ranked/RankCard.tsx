@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native';
 
-import { RATING_CONFIG, getRank, isInPlacement } from '@shared/ranking';
+import { getRank, isPlaced } from '@shared/ranking';
 
 import {
   Card,
@@ -15,7 +15,7 @@ import type { PlayerRatingRow } from '@/lib/database.types';
 
 export function RankCard({ rating }: { rating: PlayerRatingRow }) {
   const rank = getRank(rating.rating);
-  const placement = isInPlacement(rating.games_played);
+  const placement = !isPlaced(rating);
   const tierColors = TIER_COLORS[rank.tier.id];
   const remaining = rank.nextStepMin === null ? null : rank.nextStepMin - rating.rating;
 
@@ -25,30 +25,26 @@ export function RankCard({ rating }: { rating: PlayerRatingRow }) {
         <RankEmblem tier={rank.tier.id} division={rank.division} size={84} dimmed={placement} />
         <View style={styles.info}>
           <Text variant="overline" color="primarySoft">
-            {placement ? 'EN COLOCACIÓN' : 'RANGO ACTUAL'}
+            {placement ? 'RANKED' : 'RANGO ACTUAL'}
           </Text>
           <Text variant="title" style={{ color: placement ? undefined : tierColors.light }}>
-            {placement ? 'Sin rango' : rank.label}
+            {placement ? 'Sin posicionar' : rank.label}
           </Text>
-          <Text
-            variant="bodyStrong"
-            color="text"
-            accessibilityLabel={`${rating.rating} puntos de ELO`}
-          >
-            {rating.rating} ELO
-          </Text>
+          {placement ? null : (
+            <Text
+              variant="bodyStrong"
+              color="text"
+              accessibilityLabel={`${rating.rating} puntos de ELO`}
+            >
+              {rating.rating} ELO
+            </Text>
+          )}
         </View>
       </View>
       {placement ? (
-        <View style={styles.progress}>
-          <ProgressBar
-            value={rating.games_played / RATING_CONFIG.placementMatches}
-            accessibilityLabel="Partidas de colocación"
-          />
-          <Text variant="caption">
-            {rating.games_played}/{RATING_CONFIG.placementMatches} partidas de colocación
-          </Text>
-        </View>
+        <Text variant="caption" color="text">
+          Ganá tu primera partida para entrar al ranking en Bronce.
+        </Text>
       ) : (
         <View style={styles.progress}>
           <ProgressBar

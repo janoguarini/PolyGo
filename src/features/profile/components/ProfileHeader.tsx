@@ -3,7 +3,7 @@ import { Pencil } from 'lucide-react-native';
 import { Pressable, StyleSheet, View } from 'react-native';
 
 import { flagEmoji } from '@shared/profile';
-import { getRank, isInPlacement, RATING_CONFIG } from '@shared/ranking';
+import { getRank, isPlaced } from '@shared/ranking';
 
 import {
   Avatar,
@@ -67,7 +67,7 @@ export function ProfileHeader({
 }
 
 function RankMini({ rating }: { rating: PlayerRatingRow }) {
-  const placement = isInPlacement(rating.games_played);
+  const placement = !isPlaced(rating);
   const rank = getRank(rating.rating);
   const tier = TIER_COLORS[rank.tier.id];
   return (
@@ -77,7 +77,7 @@ function RankMini({ rating }: { rating: PlayerRatingRow }) {
       onPress={() => router.navigate('/ranked')}
       accessibilityLabel={
         placement
-          ? `En colocación: ${rating.games_played} de ${RATING_CONFIG.placementMatches} partidas`
+          ? 'Sin posicionar: ganá una partida ranked para entrar al ranking'
           : `${rank.label}, ${rating.rating} ELO`
       }
     >
@@ -87,16 +87,16 @@ function RankMini({ rating }: { rating: PlayerRatingRow }) {
         align="center"
         style={{ color: placement ? colors.text : tier.light }}
       >
-        {placement ? 'En colocación' : rank.label}
+        {placement ? 'Sin posicionar' : rank.label}
       </Text>
       <Text variant="caption" color="text">
-        {rating.rating} ELO
+        {placement ? 'Ganá una ranked' : `${rating.rating} ELO`}
       </Text>
       <View style={styles.rankBar}>
         <ProgressBar
-          value={placement ? rating.games_played / RATING_CONFIG.placementMatches : rank.progress}
+          value={placement ? 0 : rank.progress}
           colors={placement ? undefined : [tier.light, tier.dark]}
-          accessibilityLabel={placement ? 'Partidas de colocación' : 'Progreso al siguiente rango'}
+          accessibilityLabel="Progreso al siguiente rango"
         />
       </View>
     </Card>

@@ -4,8 +4,8 @@ import { Search, Share2, Swords, UserPlus, X } from 'lucide-react-native';
 import { useCallback, useEffect } from 'react';
 import { Alert, BackHandler, Share, StyleSheet, View } from 'react-native';
 
-import { MATCHMAKING, WORD_RUSH, type BattleMode, type CancelReason } from '@shared/protocol';
-import { isInPlacement } from '@shared/ranking';
+import { WORD_RUSH, type BattleMode, type CancelReason } from '@shared/protocol';
+import { isPlaced } from '@shared/ranking';
 
 import {
   Avatar,
@@ -35,6 +35,7 @@ import {
 import { useBattleStore } from '@/features/battle/store';
 import { useBattleSession, useNow } from '@/features/battle/useBattleSession';
 import { useLocalBattleSession, type ChallengeRole } from '@/features/battle/useLocalBattleSession';
+import { useMyProfile } from '@/features/profile/hooks';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 
 /** Con servidor de partidas: ranked entre personas (y bots). Sin servidor: contra bots en el teléfono. */
@@ -186,6 +187,7 @@ interface BodyProps {
 function Body({ state, now, onReady, onAnswer, onRetry, onExit }: BodyProps) {
   const me = state.players.find((p) => p.slot === state.yourSlot);
   const opponent = opponentPlayer(state);
+  const myRating = useMyProfile().data?.rating;
 
   switch (state.phase) {
     case 'idle':
@@ -229,14 +231,6 @@ function Body({ state, now, onReady, onAnswer, onRetry, onExit }: BodyProps) {
             >
               {mm}:{ss}
             </Text>
-            <Text color="textMuted" align="center">
-              Rivales con ±{state.queue?.window ?? MATCHMAKING.initialWindow} de ELO. El rango se
-              amplía mientras esperás.
-            </Text>
-            <Text variant="caption" align="center">
-              Si en unos segundos no aparece nadie, jugás contra un bot de tu nivel (marcado BOT).
-              Cuenta para el ELO igual que una partida contra una persona.
-            </Text>
           </Card>
           <Button label="Cancelar búsqueda" variant="ghost" onPress={onExit} />
         </View>
@@ -256,7 +250,7 @@ function Body({ state, now, onReady, onAnswer, onRetry, onExit }: BodyProps) {
               avatarId={me?.avatarId}
               avatarPath={me?.avatarPath}
               rating={me?.rating}
-              games={me?.gamesPlayed}
+              placed={myRating ? isPlaced(myRating) : true}
             />
             <Swords color={colors.primaryBright} size={32} />
             <PlayerBadge
@@ -265,12 +259,12 @@ function Body({ state, now, onReady, onAnswer, onRetry, onExit }: BodyProps) {
               avatarPath={opponent?.avatarPath}
               isBot={opponent?.isBot ?? false}
               rating={opponent?.rating}
-              games={opponent?.gamesPlayed}
+              placed={opponent?.isBot || (opponent?.gamesPlayed ?? 0) > 0}
             />
           </View>
           <Text color="textMuted" align="center">
             75 segundos, las mismas preguntas para los dos. Correcta +100 (+50 por rapidez),
-            incorrecta −50.
+            incorrecta −50. Encadená aciertos: la racha suma hasta +30.
           </Text>
           <Button
             label={state.iAmReady ? 'Esperando a tu rival…' : '¡Listo!'}
@@ -329,6 +323,7 @@ function Body({ state, now, onReady, onAnswer, onRetry, onExit }: BodyProps) {
             <QuestionCard
               question={state.question}
               feedback={state.feedback}
+              streak={state.streak}
               disabled={state.answering}
               onAnswer={onAnswer}
             />
@@ -341,12 +336,7 @@ function Body({ state, now, onReady, onAnswer, onRetry, onExit }: BodyProps) {
 
     case 'finished':
       return state.result ? (
-        <BattleResult
-          result={state.result}
-          gamesPlayedBefore={me?.gamesPlayed ?? null}
-          onPlayAgain={() => onRetry()}
-          onExit={onExit}
-        />
+        <BattleResult result={state.result} onPlayAgain={() => onRetry()} onExit={onExit} />
       ) : null;
 
     case 'cancelled':
@@ -420,21 +410,20 @@ function PlayerBadge({
   avatarPath,
   isBot = false,
   rating,
-  games,
+  placed,
 }: {
   username: string;
   avatarId: string | undefined;
   avatarPath: string | null | undefined;
   isBot?: boolean;
   rating: number | undefined;
-  games: number | undefined;
+  placed: boolean;
 }) {
-  const placement = games === undefined || isInPlacement(games);
   return (
     <View
       style={styles.badge}
       accessible
-      accessibilityLabel={`${username}${isBot ? ', bot' : ''}, ${rating ?? ''} ELO`}
+      accessibilityLabel={`${username}${isBot ? ', bot' : ''}, ${placed ? `${rating ?? ''} ELO` : 'sin posicionar'}`}
     >
       <Avatar avatarId={avatarId} photoUrl={avatarPhotoUrl(avatarPath)} size={64} />
       <Text variant="bodyStrong" numberOfLines={1}>
@@ -443,8 +432,8 @@ function PlayerBadge({
       {isBot ? <BotBadge /> : null}
       {rating !== undefined ? (
         <View style={styles.badgeRating}>
-          <RankEmblemForRating rating={rating} size={22} />
-          <Text variant="caption">{placement ? 'En colocación' : rating}</Text>
+          <RankEmblemForRating rating={rating} size={22} dimmed={!placed} />
+          <Text variant="caption">{placed ? rating : 'Sin posicionar'}</Text>
         </View>
       ) : null}
     </View>

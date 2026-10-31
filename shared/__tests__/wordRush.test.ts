@@ -5,7 +5,13 @@ import {
   applyPoints,
   decideOutcomes,
   generateQuestions,
+  pictureEmojis,
+  questionKind,
+  streakBonus,
+  streakLevel,
   toQuestionView,
+  withPictures,
+  type RushQuestion,
   type RushWord,
 } from '../wordRush';
 
@@ -98,6 +104,51 @@ describe('puntuación', () => {
   it('adivinar al azar entre 4 opciones tiene valor esperado ≈ 0 (sin bonus)', () => {
     const expected = 0.25 * WORD_RUSH.correctPoints - 0.75 * WORD_RUSH.wrongPenalty;
     expect(Math.abs(expected)).toBeLessThanOrEqual(WORD_RUSH.wrongPenalty / 2);
+  });
+});
+
+describe('racha', () => {
+  it('suma un poco más desde 3, 5 y 8 correctas seguidas', () => {
+    expect([1, 2, 3, 4, 5, 7, 8, 20].map(streakBonus)).toEqual([0, 0, 10, 10, 20, 20, 30, 30]);
+    expect([2, 3, 5, 8].map(streakLevel)).toEqual([0, 1, 2, 3]);
+  });
+
+  it('se suma a la respuesta correcta y nunca supera el tope', () => {
+    expect(answerPoints(true, 5_000, 3)).toBe(110);
+    expect(answerPoints(true, 0, 12)).toBe(WORD_RUSH.maxCorrectPoints);
+    expect(answerPoints(false, 0, 12)).toBe(-WORD_RUSH.wrongPenalty);
+  });
+});
+
+describe('tipos de pregunta', () => {
+  const pool: RushWord[] = [
+    { id: 'apple', text: 'apple', translationEs: 'manzana', emoji: '🍎' },
+    { id: 'coffee', text: 'coffee', translationEs: 'café', emoji: '☕' },
+    { id: 'cup', text: 'cup', translationEs: 'taza', emoji: '☕' },
+    { id: 'know', text: 'know', translationEs: 'saber', emoji: '🤔' },
+    { id: 'dog', text: 'dog', translationEs: 'perro', emoji: null },
+  ];
+
+  it('sólo usa imágenes inequívocas', () => {
+    expect([...pictureEmojis(pool).entries()]).toEqual([['apple', '🍎']]);
+  });
+
+  it('es determinístico: imagen, audio o texto según la pregunta', () => {
+    const q = (over: Partial<RushQuestion>): RushQuestion => ({
+      index: 0,
+      wordId: 'apple',
+      direction: 'es_en',
+      prompt: 'manzana',
+      options: ['apple', 'cup', 'dog', 'know'],
+      correctOption: 0,
+      ...over,
+    });
+    const [withImage] = withPictures([q({})], pictureEmojis(pool));
+    expect(questionKind(withImage!)).toBe('image');
+    expect(toQuestionView(withImage!, 0)).toMatchObject({ kind: 'image', emoji: '🍎' });
+    expect(questionKind(q({ direction: 'en_es', index: 1 }))).toBe('audio');
+    expect(questionKind(q({ direction: 'en_es', index: 3 }))).toBe('text');
+    expect(toQuestionView(q({ index: 2 }), 0).emoji).toBeUndefined();
   });
 });
 

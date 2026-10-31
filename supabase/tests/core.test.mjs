@@ -14,7 +14,7 @@ before(async () => {
 
 const rejects = (promise, pattern) => assert.rejects(promise, pattern);
 
-test('el alta crea perfil, ajustes, rating inicial 1000 e historial', async () => {
+test('el alta crea perfil, ajustes, rating inicial 100 (sin posicionar) e historial', async () => {
   const { rows } = await db.query(
     `select p.public_code, p.username, r.rating, r.peak_rating, h.reason, h.delta, s.profile_visibility
        from public.profiles p
@@ -27,7 +27,7 @@ test('el alta crea perfil, ajustes, rating inicial 1000 e historial', async () =
   assert.equal(rows.length, 1);
   assert.match(rows[0].public_code, /^PG-[A-Z0-9]{6}$/);
   assert.equal(rows[0].username, null);
-  assert.equal(rows[0].rating, 1000);
+  assert.equal(rows[0].rating, 100);
   assert.equal(rows[0].reason, 'initial');
   assert.equal(rows[0].delta, 0);
   assert.equal(rows[0].profile_visibility, 'public');
