@@ -29,6 +29,12 @@ const KNOWN: ErrorCode[] = [
   'language_unavailable',
   'match_rate_limited',
   'unauthorized',
+  'challenge_not_found',
+  'challenge_expired',
+  'challenge_taken',
+  'own_challenge',
+  'host_gone',
+  'language_mismatch',
 ];
 
 /** Traduce un error de las funciones de la base al código que muestra la pantalla. */

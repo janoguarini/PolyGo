@@ -99,6 +99,7 @@ function RootNavigator() {
           name="battle"
           options={{ animation: 'slide_from_bottom', gestureEnabled: false }}
         />
+        <Stack.Screen name="challenge/[code]" options={{ animation: 'none' }} />
         <Stack.Screen name="matches" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="achievements" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="player/[id]" options={{ animation: 'slide_from_right' }} />

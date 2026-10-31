@@ -116,6 +116,8 @@ export interface BattleFinish {
   yourSlot: 1 | 2;
   players: PlayerResult[];
   achievementsUnlocked: AchievementUnlock[];
+  /** Desafío a un amigo: no mueve el ELO. */
+  friendly?: boolean;
 }
 
 /** Foto completa para retomar la partida tras reconectar. */
@@ -145,7 +147,14 @@ export type ErrorCode =
   | 'invalid_payload'
   | 'server_error'
   /** Partidas contra bots sin servidor: tope diario alcanzado. */
-  | 'match_rate_limited';
+  | 'match_rate_limited'
+  /** Desafío a un amigo (sin servidor). */
+  | 'challenge_not_found'
+  | 'challenge_expired'
+  | 'challenge_taken'
+  | 'own_challenge'
+  | 'host_gone'
+  | 'language_mismatch';
 
 export interface AnswerResult {
   questionIndex: number;

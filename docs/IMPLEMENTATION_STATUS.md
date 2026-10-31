@@ -113,6 +113,7 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 - [x] Servidor probado contra Supabase real (partida completa contra bot con usuario temporal).
 - [x] **Ranked sin servidor** (decisión: no pagar hosting): la partida contra el bot corre en el teléfono y Supabase decide bot, guion, resultado y ELO (`start_bot_match` / `finish_bot_match`, migración `local_bot_matches`). Probado E2E contra Supabase real: el puntaje del bot recalculado coincide con el guion y el ELO con `shared/ranking.ts`. La práctica también es local.
 - [x] **Ranked entre personas sin servidor (MVP para ~5 testers):** cola y emparejamiento en Supabase, preguntas generadas en la base, puntaje del rival en vivo por Supabase Realtime y liquidación de ambos al terminar (migración `human_matches`). Si en 10 s no hay nadie, bot. Probado E2E con dos usuarios temporales. **Antes del lanzamiento: pasar a `server/` en Railway** (el puntaje hoy lo informa el teléfono).
+- [x] **Desafío a un amigo (sin servidor):** Ranked → "Desafiar a un amigo" crea un código de 6 caracteres (y link `polygo://challenge/<código>`) para compartir; el amigo entra con "Tengo un código" o el link y juegan la misma partida en vivo. Amistoso: no mueve ELO, partidas jugadas ni logros (migración `friend_challenges`). Usa Supabase aunque haya servidor de partidas. Probado E2E contra Supabase real.
 
 ## Pendiente (por fase)
 

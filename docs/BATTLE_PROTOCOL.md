@@ -113,6 +113,16 @@ Sin rival humano, el ranked se juega **contra bots en el teléfono**:
 - Las funciones SQL replican `botSkill`, `answerPoints` y `computeRatingChange`; `supabase/tests/botmatch.test.mjs` verifica que den exactamente lo mismo que `shared/`.
 - Límite: no hay partidas entre personas, y el puntaje propio lo informa el teléfono (validado pero no observado en vivo). Para partidas entre personas, alojar `server/` (ver DEPLOYMENT.md) y cargar la URL.
 
+## Desafío a un amigo
+
+Partida entre dos personas que se ponen de acuerdo, siempre por Supabase (también con servidor de partidas):
+
+- `create_friend_challenge()` → `{code, expires_at}`: código de 6 caracteres sin ambiguos (0/O, 1/I/L), vence en 15 min; crear otro anula el anterior. Tope: 30 por hora.
+- Quien desafía consulta `friend_challenge_status(code)` cada 1,5 s (`waiting` / `matched` / `expired`); si deja de consultar 10 s, el código ya no se acepta (`host_gone`).
+- `accept_friend_challenge(code)` (mayúsculas indistintas, reintento idempotente) crea la partida con `is_ranked = false` y arranca en 5 s. Errores: `challenge_not_found`, `challenge_expired`, `challenge_taken`, `own_challenge`, `language_mismatch`.
+- De ahí en más es la misma partida entre personas (`get_human_match`, Realtime, `finish_human_match`). `settle_human_match` guarda puntajes y resultado pero, al no ser ranked, no toca `player_ratings`, `rating_history` ni logros, y devuelve los ratings en null.
+- Link: `polygo://challenge/<código>` → `src/app/challenge/[code].tsx` → `/battle?code=...`. Sin sesión iniciada, el link lleva al login y el código se pierde (hay que escribirlo a mano).
+
 ## Bots
 
 Con pocos jugadores, quien espera **10 s** en la cola ranked sin rival humano juega contra un bot ([`shared/bots.ts`](../shared/bots.ts)):

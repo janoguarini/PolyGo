@@ -874,6 +874,10 @@ export type Database = {
       start_bot_match: { Args: never; Returns: Json };
       join_human_queue: { Args: never; Returns: Json };
       leave_human_queue: { Args: never; Returns: Json };
+      create_friend_challenge: { Args: never; Returns: Json };
+      friend_challenge_status: { Args: { p_code: string }; Returns: Json };
+      accept_friend_challenge: { Args: { p_code: string }; Returns: Json };
+      cancel_friend_challenge: { Args: { p_code: string }; Returns: undefined };
       get_human_match: { Args: { p_battle_id: string }; Returns: Json };
       human_match_result: { Args: { p_battle_id: string }; Returns: Json };
       finish_human_match: {

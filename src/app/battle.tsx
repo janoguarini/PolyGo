@@ -1,7 +1,8 @@
 import { router, useLocalSearchParams } from 'expo-router';
-import { Search, Swords, X } from 'lucide-react-native';
+import * as Linking from 'expo-linking';
+import { Search, Share2, Swords, UserPlus, X } from 'lucide-react-native';
 import { useCallback, useEffect } from 'react';
-import { Alert, BackHandler, StyleSheet, View } from 'react-native';
+import { Alert, BackHandler, Share, StyleSheet, View } from 'react-native';
 
 import { MATCHMAKING, WORD_RUSH, type BattleMode, type CancelReason } from '@shared/protocol';
 import { isInPlacement } from '@shared/ranking';
@@ -33,7 +34,7 @@ import {
 } from '@/features/battle/state';
 import { useBattleStore } from '@/features/battle/store';
 import { useBattleSession, useNow } from '@/features/battle/useBattleSession';
-import { useLocalBattleSession } from '@/features/battle/useLocalBattleSession';
+import { useLocalBattleSession, type ChallengeRole } from '@/features/battle/useLocalBattleSession';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 
 /** Con servidor de partidas: ranked entre personas (y bots). Sin servidor: contra bots en el teléfono. */
@@ -47,14 +48,53 @@ const CANCEL_MESSAGES: Record<CancelReason, string> = {
 };
 
 export default function BattleScreen() {
-  const params = useLocalSearchParams<{ mode?: string }>();
-  const initialMode: BattleMode = params.mode === 'practice' ? 'practice' : 'ranked';
+  const params = useLocalSearchParams<{ mode?: string; challenge?: string; code?: string }>();
+  if (params.challenge === 'host') return <ChallengeBattle challenge={{ role: 'host' }} />;
+  if (params.code) {
+    return <ChallengeBattle key={params.code} challenge={{ role: 'guest', code: params.code }} />;
+  }
+  return <MatchBattle mode={params.mode === 'practice' ? 'practice' : 'ranked'} />;
+}
+
+interface Session {
+  ready: () => void;
+  answer: (option: number) => void;
+  leave: () => void;
+}
+
+/** Ranked (cola o servidor de partidas) y práctica. */
+function MatchBattle({ mode }: { mode: BattleMode }) {
   const session = useSession();
+  return <BattleView session={session} onStart={(m) => session.start(m ?? mode)} />;
+}
+
+/**
+ * Desafío a un amigo: siempre por Supabase (también cuando haya servidor de partidas), porque
+ * no mueve el ELO. Jugar otra = crear un desafío nuevo.
+ */
+function ChallengeBattle({ challenge }: { challenge: ChallengeRole }) {
+  const session = useLocalBattleSession();
+  return (
+    <BattleView
+      session={session}
+      onStart={(_, again) => session.start('ranked', again ? { role: 'host' } : challenge)}
+    />
+  );
+}
+
+function BattleView({
+  session,
+  onStart,
+}: {
+  session: Session;
+  /** again: el usuario pidió otra partida (no es el arranque al montar). */
+  onStart: (mode: BattleMode | undefined, again: boolean) => void;
+}) {
   const state = useBattleStore();
   const now = useNow();
 
   useEffect(() => {
-    session.start(initialMode);
+    onStart(undefined, false);
     // Sólo al montar: después el usuario elige "jugar otra" o "practicar".
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -62,21 +102,27 @@ export default function BattleScreen() {
   const exit = useCallback(() => {
     const current = useBattleStore.getState();
     if (current.phase === 'playing' && current.mode === 'ranked') {
-      Alert.alert('¿Abandonar la partida?', 'Abandonar cuenta como derrota y te baja el ELO.', [
-        { text: 'Seguir jugando', style: 'cancel' },
-        {
-          text: 'Abandonar',
-          style: 'destructive',
-          onPress: () => {
-            session.leave();
-            router.back();
+      Alert.alert(
+        '¿Abandonar la partida?',
+        current.friendly
+          ? 'Abandonar cuenta como derrota en el desafío (no mueve el ELO).'
+          : 'Abandonar cuenta como derrota y te baja el ELO.',
+        [
+          { text: 'Seguir jugando', style: 'cancel' },
+          {
+            text: 'Abandonar',
+            style: 'destructive',
+            onPress: () => {
+              session.leave();
+              leaveScreen();
+            },
           },
-        },
-      ]);
+        ],
+      );
       return;
     }
     session.leave();
-    router.back();
+    leaveScreen();
   }, [session]);
 
   // Botón atrás de Android: mismo criterio que la X.
@@ -92,7 +138,11 @@ export default function BattleScreen() {
     <Screen edges={['top', 'bottom']}>
       <View style={styles.topBar}>
         <Text variant="overline">
-          {state.mode === 'practice' ? 'PRÁCTICA · SIN ELO' : 'RANKED · WORD RUSH'}
+          {state.friendly
+            ? 'DESAFÍO · SIN ELO'
+            : state.mode === 'practice'
+              ? 'PRÁCTICA · SIN ELO'
+              : 'RANKED · WORD RUSH'}
         </Text>
         <Button
           label={state.phase === 'playing' ? 'Abandonar' : 'Salir'}
@@ -111,11 +161,17 @@ export default function BattleScreen() {
         now={now}
         onReady={session.ready}
         onAnswer={session.answer}
-        onRetry={() => session.start(state.mode)}
+        onRetry={() => onStart(state.mode, true)}
         onExit={exit}
       />
     </Screen>
   );
+}
+
+/** Si se entró por un link de desafío no hay pantalla anterior: vuelve a Ranked. */
+function leaveScreen() {
+  if (router.canGoBack()) router.back();
+  else router.replace('/ranked');
 }
 
 interface BodyProps {
@@ -137,6 +193,16 @@ function Body({ state, now, onReady, onAnswer, onRetry, onExit }: BodyProps) {
       return <LoadingState label="Preparando la partida…" />;
 
     case 'error':
+      if (state.friendly && state.errorCode?.startsWith('challenge_')) {
+        return (
+          <EmptyState
+            title="No se pudo entrar al desafío"
+            message={ERROR_MESSAGES[state.errorCode]}
+            actionLabel="Crear mi propio desafío"
+            onAction={onRetry}
+          />
+        );
+      }
       return (
         <ErrorState
           message={ERROR_MESSAGES[state.errorCode ?? 'connection']}
@@ -145,6 +211,7 @@ function Body({ state, now, onReady, onAnswer, onRetry, onExit }: BodyProps) {
       );
 
     case 'searching': {
+      if (state.challenge) return <ChallengeWaiting code={state.challenge.code} onExit={onExit} />;
       const waited = state.queue?.waitedMs ?? 0;
       const mm = Math.floor(waited / 60_000);
       const ss = String(Math.floor(waited / 1000) % 60).padStart(2, '0');
@@ -291,11 +358,60 @@ function Body({ state, now, onReady, onAnswer, onRetry, onExit }: BodyProps) {
               ? CANCEL_MESSAGES[state.cancelReason]
               : 'La partida terminó mientras estabas desconectado. Mirá el resultado en tu historial.'
           }
-          actionLabel={state.mode === 'practice' ? 'Practicar de nuevo' : 'Buscar otra partida'}
+          actionLabel={
+            state.friendly
+              ? 'Nuevo desafío'
+              : state.mode === 'practice'
+                ? 'Practicar de nuevo'
+                : 'Buscar otra partida'
+          }
           onAction={onRetry}
         />
       );
   }
+}
+
+/** Quien desafía espera con el código a la vista y lo puede compartir. */
+function ChallengeWaiting({ code, onExit }: { code: string; onExit: () => void }) {
+  const share = useCallback(() => {
+    const link = Linking.createURL(`challenge/${code}`);
+    void Share.share({
+      message: `¡Te desafío en Polygo! 75 segundos de vocabulario en inglés, vos contra mí. Entrá con el código ${code} (Ranked → Tengo un código) o tocá: ${link}`,
+    }).catch(() => {});
+  }, [code]);
+  return (
+    <View style={styles.center}>
+      <Card style={styles.searchCard}>
+        <UserPlus color={colors.primaryBright} size={40} />
+        <Text variant="title" align="center">
+          Desafío creado
+        </Text>
+        <Text color="textMuted" align="center">
+          Pasale este código a tu amigo. Cuando entre, la partida empieza sola.
+        </Text>
+        <Text
+          variant="display"
+          align="center"
+          style={styles.code}
+          selectable
+          accessibilityLabel={`Código ${code.split('').join(' ')}`}
+        >
+          {code}
+        </Text>
+        <Button
+          label="Compartir desafío"
+          size="lg"
+          icon={<Share2 color={colors.onPrimary} size={20} />}
+          onPress={share}
+        />
+        <Text variant="caption" align="center">
+          Amistoso: no mueve el ELO. Dejá esta pantalla abierta mientras esperás; el código vence en
+          15 minutos.
+        </Text>
+      </Card>
+      <Button label="Cancelar desafío" variant="ghost" onPress={onExit} />
+    </View>
+  );
 }
 
 function PlayerBadge({
@@ -344,4 +460,5 @@ const styles = StyleSheet.create({
   badge: { alignItems: 'center', gap: spacing.xs, flex: 1 },
   badgeRating: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
   countdown: { fontSize: 96, lineHeight: 110 },
+  code: { letterSpacing: 6 },
 });

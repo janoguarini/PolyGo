@@ -59,4 +59,10 @@ export const ERROR_MESSAGES: Record<ErrorCode | 'connection', string> = {
   invalid_payload: 'Algo salió mal con esa respuesta.',
   server_error: 'El servidor de partidas tuvo un problema. Probá de nuevo.',
   match_rate_limited: 'Jugaste muchas partidas hoy. Volvé mañana para seguir subiendo.',
+  challenge_not_found: 'No encontramos ese código. Revisá que esté bien escrito.',
+  challenge_expired: 'Ese desafío venció o se canceló. Pedile a tu amigo uno nuevo.',
+  challenge_taken: 'Alguien más ya entró a ese desafío.',
+  own_challenge: 'Ese es tu propio desafío: compartilo con un amigo.',
+  host_gone: 'Tu amigo ya no está esperando. Pedile que vuelva a abrir el desafío.',
+  language_mismatch: 'Tu amigo está aprendiendo otro idioma, así que no pueden jugar juntos.',
 };

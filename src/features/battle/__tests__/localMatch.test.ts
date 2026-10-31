@@ -198,6 +198,7 @@ describe('contra una persona', () => {
               pending: false as const,
               battle_id: 'h1',
               status: 'completed' as const,
+              ranked: true,
               achievements: {
                 'user-b': [{ id: 'first_win', title: 'Campeón · Nivel 1', icon: 'trophy' }],
               },
@@ -245,6 +246,7 @@ describe('contra una persona', () => {
     const serverNow = clock.now() + 5_000;
     match.beginHuman({
       battle_id: 'h1',
+      ranked: true,
       your_slot: 2,
       server_now: serverNow,
       starts_at: serverNow + 4_000,
@@ -302,6 +304,7 @@ describe('contra una persona', () => {
     expect(s.state().result?.yourSlot).toBe(2);
     expect(s.state().result?.players[1]).toMatchObject({ outcome: 'win', ratingAfter: 1024 });
     expect(s.state().result?.achievementsUnlocked.map((a) => a.id)).toEqual(['first_win']);
+    expect(s.state().result?.friendly).toBe(false);
   });
 
   it('abandonar informa a la base como abandono', async () => {

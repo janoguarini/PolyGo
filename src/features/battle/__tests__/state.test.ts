@@ -186,3 +186,27 @@ describe('battleReducer', () => {
     expect(s.opponent).toEqual({ connected: false, graceEndsAt: 50_000 });
   });
 });
+
+describe('desafío a un amigo', () => {
+  it('quien desafía espera con el código y el amistoso se mantiene al empezar', () => {
+    const waiting = run(
+      { type: 'connecting', mode: 'ranked', friendly: true },
+      { type: 'challenge_waiting', code: 'ABC234', expiresAt: 99_000 },
+    );
+    expect(waiting.phase).toBe('searching');
+    expect(waiting.friendly).toBe(true);
+    expect(waiting.challenge).toEqual({ code: 'ABC234', expiresAt: 99_000 });
+
+    const started = battleReducer(waiting, {
+      type: 'snapshot',
+      snapshot: snapshot({ status: 'ready' }),
+      receivedAt: 10_000,
+    });
+    expect(started.phase).toBe('countdown');
+    expect(started.friendly).toBe(true);
+  });
+
+  it('una partida normal no es amistosa', () => {
+    expect(run({ type: 'connecting', mode: 'ranked' }).friendly).toBe(false);
+  });
+});

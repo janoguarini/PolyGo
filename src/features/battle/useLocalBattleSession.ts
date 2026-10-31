@@ -19,13 +19,17 @@ import { isInBattle } from './state';
 import { useBattleStore } from './store';
 import { FEEDBACK_MS } from './useBattleSession';
 
-/** Cada cuánto se consulta la cola mientras se busca rival. */
+/** Cada cuánto se consulta la cola (o el desafío) mientras se busca rival. */
 const QUEUE_POLL_MS = 1_500;
+
+/** Desafío a un amigo: quien lo crea espera con un código; el amigo entra con ese código. */
+export type ChallengeRole = { role: 'host' } | { role: 'guest'; code: string };
 
 /**
  * Misma interfaz que useBattleSession, pero sin servidor de partidas (MVP con Supabase):
  * ranked busca una persona en la cola de la base y, si en 10 s no aparece, juega contra un bot;
  * la práctica es contra el reloj. La partida corre en el teléfono y la base decide el resultado.
+ * Con un desafío, la misma partida entre personas pero con un amigo y sin ELO.
  */
 export function useLocalBattleSession() {
   const dispatch = useBattleStore((s) => s.dispatch);
@@ -37,6 +41,8 @@ export function useLocalBattleSession() {
   const searchRef = useRef<{ cancelled: boolean; timer: ReturnType<typeof setTimeout> | null }>(
     null,
   );
+  /** Código del desafío propio mientras se espera al amigo. */
+  const challengeRef = useRef<string | null>(null);
 
   const stopSearch = useCallback(() => {
     if (searchRef.current) {
@@ -46,18 +52,28 @@ export function useLocalBattleSession() {
     searchRef.current = null;
   }, []);
 
+  /** Deja de buscar y avisa a la base: sale de la cola o anula el desafío. */
+  const abandonSearch = useCallback(() => {
+    stopSearch();
+    const code = challengeRef.current;
+    challengeRef.current = null;
+    if (code) void humanMatchApi.cancelChallenge(code).catch(() => {});
+    else void humanMatchApi.leave().catch(() => {});
+  }, [stopSearch]);
+
   const closeChannel = useCallback(() => {
     channelRef.current?.close();
     channelRef.current = null;
   }, []);
 
   const start = useCallback(
-    (mode: BattleMode) => {
+    (mode: BattleMode, challenge?: ChallengeRole) => {
       stopSearch();
+      challengeRef.current = null;
       closeChannel();
       matchRef.current?.dispose();
       matchRef.current = null;
-      dispatch({ type: 'connecting', mode });
+      dispatch({ type: 'connecting', mode, friendly: Boolean(challenge) });
 
       const fail = (error: unknown) =>
         dispatch({ type: 'connection_error', code: botMatchErrorCode(error) });
@@ -126,9 +142,56 @@ export function useLocalBattleSession() {
             found();
           };
 
+          const search = { cancelled: false, timer: null as ReturnType<typeof setTimeout> | null };
+
+          if (challenge?.role === 'guest') {
+            const accepted = await humanMatchApi.acceptChallenge(challenge.code);
+            return await playHuman(accepted.battle_id);
+          }
+          if (challenge?.role === 'host') {
+            const created = await humanMatchApi.createChallenge();
+            if (matchRef.current !== match) {
+              void humanMatchApi.cancelChallenge(created.code).catch(() => {});
+              return;
+            }
+            challengeRef.current = created.code;
+            searchRef.current = search;
+            dispatch({
+              type: 'challenge_waiting',
+              code: created.code,
+              expiresAt: created.expires_at,
+            });
+            const pollChallenge = async () => {
+              if (search.cancelled) return;
+              try {
+                const res = await humanMatchApi.challengeStatus(created.code);
+                if (search.cancelled) return;
+                if (res.status === 'matched') {
+                  stopSearch();
+                  challengeRef.current = null;
+                  return await playHuman(res.battle_id);
+                }
+                if (res.status === 'expired') {
+                  stopSearch();
+                  challengeRef.current = null;
+                  return dispatch({ type: 'connection_error', code: 'challenge_expired' });
+                }
+              } catch (error) {
+                // Un corte de red no anula el desafío: se reintenta en la próxima consulta.
+                if (botMatchErrorCode(error) !== 'connection') {
+                  stopSearch();
+                  challengeRef.current = null;
+                  return fail(error);
+                }
+              }
+              search.timer = setTimeout(() => void pollChallenge(), QUEUE_POLL_MS);
+            };
+            await pollChallenge();
+            return;
+          }
+
           // Cola de personas: si en 10 s no aparece nadie, un bot de tu nivel.
           dispatch({ type: 'joined', mode: 'ranked' });
-          const search = { cancelled: false, timer: null as ReturnType<typeof setTimeout> | null };
           searchRef.current = search;
           const searchStartedAt = Date.now();
           const poll = async () => {
@@ -176,20 +239,16 @@ export function useLocalBattleSession() {
   /** Buscando: sale de la cola. Con el rival ya anunciado, en ranked cuenta como derrota. */
   const leave = useCallback(() => {
     if (searchRef.current) {
-      stopSearch();
-      void humanMatchApi.leave().catch(() => {});
+      abandonSearch();
       return;
     }
     matchRef.current?.leave();
     closeChannel();
-  }, [closeChannel, stopSearch]);
+  }, [abandonSearch, closeChannel]);
 
   useEffect(
     () => () => {
-      if (searchRef.current) {
-        stopSearch();
-        void humanMatchApi.leave().catch(() => {});
-      }
+      if (searchRef.current) abandonSearch();
       // Salir de la pantalla en plena partida ranked es abandonar.
       if (isInBattle(useBattleStore.getState())) matchRef.current?.leave();
       matchRef.current?.dispose();
@@ -197,7 +256,7 @@ export function useLocalBattleSession() {
       closeChannel();
       dispatch({ type: 'reset' });
     },
-    [closeChannel, dispatch, stopSearch],
+    [abandonSearch, closeChannel, dispatch],
   );
 
   return { start, ready, answer, leave };

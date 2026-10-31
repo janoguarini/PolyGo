@@ -32,7 +32,9 @@ export function BattleResult({ result, gamesPlayedBefore, onPlayAgain, onExit }:
       ? me.forfeited
         ? 'Abandonaste la partida.'
         : `${opponent?.username ?? 'Tu rival'} abandonó la partida.`
-      : null;
+      : result.friendly
+        ? 'Desafío amistoso: no mueve el ELO.'
+        : null;
 
   return (
     <View style={styles.wrap}>
@@ -82,7 +84,7 @@ export function BattleResult({ result, gamesPlayedBefore, onPlayAgain, onExit }:
       ) : null}
 
       <Button
-        label={practice ? 'Practicar otra vez' : 'Jugar otra'}
+        label={practice ? 'Practicar otra vez' : result.friendly ? 'Nuevo desafío' : 'Jugar otra'}
         size="lg"
         icon={<RotateCcw color={colors.onPrimary} size={20} />}
         onPress={onPlayAgain}

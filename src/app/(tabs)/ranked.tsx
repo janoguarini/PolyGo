@@ -1,5 +1,14 @@
 import { router } from 'expo-router';
-import { CalendarDays, Dumbbell, Search, Star, Trophy } from 'lucide-react-native';
+import {
+  CalendarDays,
+  Dumbbell,
+  KeyRound,
+  Search,
+  Star,
+  Trophy,
+  UserPlus,
+} from 'lucide-react-native';
+import { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
 import { BOT_CONFIG } from '@shared/bots';
@@ -13,6 +22,7 @@ import {
   RankEmblemForRating,
   Screen,
   Text,
+  TextField,
   colors,
   spacing,
 } from '@/design-system';
@@ -78,6 +88,8 @@ export default function RankedScreen() {
           onPress={() => router.push({ pathname: '/battle', params: { mode: 'practice' } })}
         />
       </Card>
+
+      <FriendChallengeCard />
 
       <View style={styles.sectionHeader}>
         <Trophy color={colors.gold} size={20} />
@@ -150,6 +162,64 @@ export default function RankedScreen() {
         </Card>
       )}
     </Screen>
+  );
+}
+
+const CODE_PATTERN = /^[A-Z0-9]{6}$/;
+
+/** Desafío a un amigo: crear un código o entrar con el de otro. Amistoso, sin ELO. */
+function FriendChallengeCard() {
+  const [joining, setJoining] = useState(false);
+  const [code, setCode] = useState('');
+  const clean = code.trim().toUpperCase();
+  const valid = CODE_PATTERN.test(clean);
+
+  return (
+    <Card style={styles.matchCard}>
+      <Text variant="overline">JUGAR CON UN AMIGO</Text>
+      <Text color="textMuted">
+        Mandale un código y juegan la misma partida en vivo. Amistoso: no mueve el ELO.
+      </Text>
+      {joining ? (
+        <>
+          <TextField
+            label="Código del desafío"
+            value={code}
+            onChangeText={(t) => setCode(t.replace(/[^a-zA-Z0-9]/g, '').slice(0, 6))}
+            autoCapitalize="characters"
+            autoCorrect={false}
+            autoFocus
+            placeholder="ABC234"
+            returnKeyType="go"
+            onSubmitEditing={() => {
+              if (valid) router.push({ pathname: '/battle', params: { code: clean } });
+            }}
+          />
+          <Button
+            label="Entrar al desafío"
+            disabled={!valid}
+            onPress={() => router.push({ pathname: '/battle', params: { code: clean } })}
+          />
+          <Button label="Volver" variant="ghost" onPress={() => setJoining(false)} />
+        </>
+      ) : (
+        <>
+          <Button
+            label="Desafiar a un amigo"
+            variant="secondary"
+            icon={<UserPlus color={colors.text} size={20} />}
+            accessibilityHint="Crea un código para compartir con un amigo"
+            onPress={() => router.push({ pathname: '/battle', params: { challenge: 'host' } })}
+          />
+          <Button
+            label="Tengo un código"
+            variant="ghost"
+            icon={<KeyRound color={colors.textMuted} size={18} />}
+            onPress={() => setJoining(true)}
+          />
+        </>
+      )}
+    </Card>
   );
 }
 

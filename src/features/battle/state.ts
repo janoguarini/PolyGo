@@ -36,6 +36,10 @@ export interface AnswerFeedback {
 export interface BattleState {
   phase: BattlePhase;
   mode: BattleMode;
+  /** Desafío a un amigo: partida entre personas que no mueve el ELO. */
+  friendly: boolean;
+  /** Quien desafía, mientras espera al amigo. */
+  challenge: { code: string; expiresAt: number } | null;
   errorCode: ErrorCode | 'connection' | null;
   queue: { window: number; waitedMs: number } | null;
   battleId: string | null;
@@ -59,10 +63,11 @@ export interface BattleState {
 }
 
 export type BattleAction =
-  | { type: 'connecting'; mode: BattleMode }
+  | { type: 'connecting'; mode: BattleMode; friendly?: boolean }
   | { type: 'connection_error'; code: ErrorCode | 'connection' }
   | { type: 'joined'; mode: BattleMode }
   | { type: 'queue_status'; window: number; waitedMs: number }
+  | { type: 'challenge_waiting'; code: string; expiresAt: number }
   | { type: 'snapshot'; snapshot: BattleSnapshot; receivedAt: number }
   | { type: 'question'; question: QuestionView }
   | { type: 'scores'; scores: ScoreLine[] }
@@ -81,6 +86,8 @@ export type BattleAction =
 export const initialBattleState: BattleState = {
   phase: 'idle',
   mode: 'ranked',
+  friendly: false,
+  challenge: null,
   errorCode: null,
   queue: null,
   battleId: null,
@@ -104,7 +111,12 @@ export const initialBattleState: BattleState = {
 export function battleReducer(state: BattleState, action: BattleAction): BattleState {
   switch (action.type) {
     case 'connecting':
-      return { ...initialBattleState, phase: 'connecting', mode: action.mode };
+      return {
+        ...initialBattleState,
+        phase: 'connecting',
+        mode: action.mode,
+        friendly: action.friendly ?? false,
+      };
 
     case 'connection_error':
       // Una caída de red en medio de la partida no es un error: Socket.IO reconecta solo.
@@ -116,12 +128,20 @@ export function battleReducer(state: BattleState, action: BattleAction): BattleS
         ...initialBattleState,
         phase: action.mode === 'ranked' ? 'searching' : 'countdown',
         mode: action.mode,
+        friendly: state.friendly,
         clockOffset: state.clockOffset,
       };
 
     case 'queue_status':
       if (state.phase !== 'searching') return state;
       return { ...state, queue: { window: action.window, waitedMs: action.waitedMs } };
+
+    case 'challenge_waiting':
+      return {
+        ...state,
+        phase: 'searching',
+        challenge: { code: action.code, expiresAt: action.expiresAt },
+      };
 
     case 'snapshot':
       return applySnapshot(state, action.snapshot, action.receivedAt);

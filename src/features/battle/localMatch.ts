@@ -62,6 +62,8 @@ export interface LocalMatchApi {
 /** Partida contra una persona creada por la base (get_human_match). Horarios en ms del servidor. */
 export interface HumanMatchSetup {
   battle_id: string;
+  /** false: desafío a un amigo, sin ELO. */
+  ranked: boolean;
   your_slot: 1 | 2;
   server_now: number;
   starts_at: number;
@@ -84,6 +86,7 @@ export type HumanMatchResult =
       pending: false;
       battle_id: string;
       status: 'completed' | 'forfeited';
+      ranked: boolean;
       achievements: Record<string, { id: string; title: string; icon: string }[]>;
       players: {
         slot: 1 | 2;
@@ -443,6 +446,7 @@ export class LocalMatch {
         ratingAfter: p.rating_after,
       })),
       achievementsUnlocked: (this.deps.userId && saved.achievements[this.deps.userId]) || [],
+      friendly: !saved.ranked,
     };
   }
 

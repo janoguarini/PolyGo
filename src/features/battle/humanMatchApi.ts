@@ -2,6 +2,9 @@ import { requireSupabase } from '@/lib/supabase';
 
 import type { HumanMatchApi, HumanMatchResult, HumanMatchSetup } from './localMatch';
 
+export type ChallengeStatus =
+  { status: 'waiting' | 'expired'; battle_id: null } | { status: 'matched'; battle_id: string };
+
 export type QueueResponse =
   | { status: 'waiting'; window: number; waited_ms: number }
   | { status: 'matched'; battle_id: string };
@@ -11,6 +14,10 @@ export const humanMatchApi: HumanMatchApi & {
   join(): Promise<QueueResponse>;
   leave(): Promise<{ battle_id: string | null }>;
   get(battleId: string): Promise<HumanMatchSetup>;
+  createChallenge(): Promise<{ code: string; expires_at: number }>;
+  challengeStatus(code: string): Promise<ChallengeStatus>;
+  acceptChallenge(code: string): Promise<{ status: 'matched'; battle_id: string }>;
+  cancelChallenge(code: string): Promise<void>;
 } = {
   async join() {
     const { data, error } = await requireSupabase().rpc('join_human_queue');
@@ -28,6 +35,29 @@ export const humanMatchApi: HumanMatchApi & {
     });
     if (error) throw error;
     return data as unknown as HumanMatchSetup;
+  },
+  async createChallenge() {
+    const { data, error } = await requireSupabase().rpc('create_friend_challenge');
+    if (error) throw error;
+    return data as unknown as { code: string; expires_at: number };
+  },
+  async challengeStatus(code) {
+    const { data, error } = await requireSupabase().rpc('friend_challenge_status', {
+      p_code: code,
+    });
+    if (error) throw error;
+    return data as unknown as ChallengeStatus;
+  },
+  async acceptChallenge(code) {
+    const { data, error } = await requireSupabase().rpc('accept_friend_challenge', {
+      p_code: code,
+    });
+    if (error) throw error;
+    return data as unknown as { status: 'matched'; battle_id: string };
+  },
+  async cancelChallenge(code) {
+    const { error } = await requireSupabase().rpc('cancel_friend_challenge', { p_code: code });
+    if (error) throw error;
   },
   async finish(battleId, line, forfeit) {
     const { data, error } = await requireSupabase().rpc('finish_human_match', {
