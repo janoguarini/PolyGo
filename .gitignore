@@ -45,3 +45,6 @@ yarn-error.*
 server/.env
 server/dist/
 coverage/
+
+# Sitio informativo armado (node website/build.mjs)
+website/dist/

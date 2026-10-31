@@ -5,7 +5,7 @@ export { Button } from './components/Button';
 export { Card } from './components/Card';
 export { ProgressBar } from './components/ProgressBar';
 export { RankEmblem, RankEmblemForRating } from './components/RankEmblem';
-export { Screen, ScreenMaxWidth } from './components/Screen';
+export { Screen } from './components/Screen';
 export { ScreenHeader } from './components/ScreenHeader';
 export { SelectCard } from './components/SelectCard';
 export { StatTile } from './components/StatTile';

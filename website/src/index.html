@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="es">
+  <head>
+{{> head}}
+  </head>
+  <body>
+{{> nav}}
+    <main>
+      <!-- Portada -->
+      <section class="hero">
+        <div class="glow" aria-hidden="true"></div>
+        <div class="wrap hero-inner">
+          <div class="hero-text">
+            <p class="pill"><span aria-hidden="true">⚡</span> Gratis · iPhone y Android</p>
+            <h1>Aprendé inglés <span class="accent">compitiendo.</span></h1>
+            <p class="lead">
+              Polygo es la app para aprender inglés desde cero jugando: lecciones cortas, repaso
+              inteligente y partidas de vocabulario 1 contra 1 en vivo, con ELO y rangos.
+            </p>
+            <div id="descargar-hero">{{stores}}</div>
+            <ul class="checks">
+              <li>Sin tarjeta</li>
+              <li>Desde cero (nivel A1)</li>
+              <li>5 minutos por día alcanzan</li>
+            </ul>
+          </div>
+
+          <div class="mock" role="img" aria-label="Vista de una partida ranked de Polygo: hay que elegir la traducción de apple">
+            <div class="phone">
+              <div class="screen">
+                <p class="overline">RANKED · WORD RUSH</p>
+                <div class="hud">
+                  <div class="player">
+                    <img src="assets/img/fox-violet.jpg" alt="" width="36" height="36" />
+                    <div><small>Vos</small><strong>1250</strong></div>
+                  </div>
+                  <span class="timer">0:42</span>
+                  <div class="player player-right">
+                    <img src="assets/img/fox-red.jpg" alt="" width="36" height="36" />
+                    <div><small>sofi_22</small><strong>1100</strong></div>
+                  </div>
+                </div>
+                <div class="time"><span></span></div>
+                <div class="question"><small>¿Qué significa?</small><strong>apple</strong></div>
+                <ul class="options">
+                  <li class="right">manzana</li>
+                  <li>naranja</li>
+                  <li>pera</li>
+                  <li>uva</li>
+                </ul>
+              </div>
+            </div>
+            <div class="float float-top"><span aria-hidden="true">⚡</span> +142 ¡rápido!</div>
+            <div class="float float-bottom">
+              <img src="assets/emblems/gold.svg" alt="" width="36" height="36" />
+              <div><strong>Oro</strong><small>+18 ELO</small></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Números -->
+      <section class="wrap stats" aria-label="Polygo en números">
+        <div><strong>120</strong><span>lecciones de nivel A1</span></div>
+        <div><strong>+1000</strong><span>ejercicios</span></div>
+        <div><strong>75 s</strong><span>por partida ranked</span></div>
+        <div><strong>8</strong><span>rangos, de Bronce a Gran Maestro</span></div>
+      </section>
+
+      <!-- Cómo funciona -->
+      <section id="como-funciona" class="block">
+        <div class="wrap">
+          <header class="heading">
+            <p class="overline">CÓMO FUNCIONA</p>
+            <h2>Tres hábitos para aprender inglés de verdad</h2>
+            <p class="lead">
+              Aprendés palabras nuevas, las fijás con repaso espaciado y las ponés a prueba contra
+              otras personas.
+            </p>
+          </header>
+          <div class="grid grid-3">
+            <article class="card">
+              <span class="card-icon" aria-hidden="true">📘</span>
+              <h3>1. Aprendé</h3>
+              <p>
+                Un camino de lecciones cortas, de a una por vez: saludos, números, familia, comida,
+                rutina… Cada lección da hasta 3 estrellas, y si la hacés sin errores queda dorada.
+              </p>
+            </article>
+            <article class="card">
+              <span class="card-icon" aria-hidden="true">🔁</span>
+              <h3>2. Repasá</h3>
+              <p>
+                Las palabras que te cuestan vuelven justo cuando las estás por olvidar. Elegís,
+                escuchás y escribís, para que el vocabulario quede en la memoria de largo plazo.
+              </p>
+            </article>
+            <article class="card">
+              <span class="card-icon" aria-hidden="true">⚔️</span>
+              <h3>3. Competí</h3>
+              <p>
+                Word Rush: 75 segundos, las mismas preguntas para los dos. Ganás ELO, subís de rango
+                y aparecés en la clasificación global.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ranked -->
+      <section id="ranked" class="block band">
+        <div class="wrap split">
+          <div>
+            <header class="heading heading-left">
+              <p class="overline">RANKED · WORD RUSH</p>
+              <h2>Cada palabra suma ELO</h2>
+              <p class="lead">
+                Dos jugadores, las mismas preguntas, 75 segundos. La respuesta correcta suma 100
+                puntos, y hasta 50 más si sos rápido; la incorrecta resta 50. Gana el que más sabe,
+                no el que más adivina.
+              </p>
+            </header>
+            <ul class="bullets">
+              <li>Rivales de tu nivel: el rango de búsqueda se amplía mientras esperás.</li>
+              <li>
+                Si no hay nadie, un bot de tu nivel, siempre marcado como BOT. Nunca se hace pasar
+                por una persona.
+              </li>
+              <li>Desafiá a tus amigos con un código: juegan en vivo sin tocar el ELO.</li>
+              <li>Temporadas, clasificación global y perfil con tus estadísticas.</li>
+            </ul>
+          </div>
+          <ul class="ladder" aria-label="Rangos de Polygo">
+            <li><img src="assets/emblems/bronze.svg" alt="" width="64" height="64" />Bronce</li>
+            <li><img src="assets/emblems/silver.svg" alt="" width="64" height="64" />Plata</li>
+            <li><img src="assets/emblems/gold.svg" alt="" width="64" height="64" />Oro</li>
+            <li><img src="assets/emblems/platinum.svg" alt="" width="64" height="64" />Platino</li>
+            <li><img src="assets/emblems/emerald.svg" alt="" width="64" height="64" />Esmeralda</li>
+            <li><img src="assets/emblems/diamond.svg" alt="" width="64" height="64" />Diamante</li>
+            <li class="top"><img src="assets/emblems/master.svg" alt="" width="64" height="64" />Maestro</li>
+            <li class="top"><img src="assets/emblems/grandmaster.svg" alt="" width="64" height="64" />Gran Maestro</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Funciones -->
+      <section id="funciones" class="block">
+        <div class="wrap">
+          <header class="heading">
+            <p class="overline">FUNCIONES</p>
+            <h2>Pensada para que vuelvas mañana</h2>
+            <p class="lead">Lo que hace que un idioma se aprenda: un poco todos los días.</p>
+          </header>
+          <div class="grid grid-3">
+            <article class="card">
+              <span class="card-icon" aria-hidden="true">🔥</span>
+              <h3>Racha con protector</h3>
+              <p>
+                Elegís tu objetivo diario y sumás días seguidos. Si un día no podés, un protector de
+                racha la mantiene viva.
+              </p>
+            </article>
+            <article class="card">
+              <span class="card-icon" aria-hidden="true">✅</span>
+              <h3>Misiones diarias</h3>
+              <p>Tres metas nuevas cada día. Completalas y ganás un protector de racha.</p>
+            </article>
+            <article class="card">
+              <span class="card-icon" aria-hidden="true">🤝</span>
+              <h3>Desafiá a tus amigos</h3>
+              <p>Mandás un código o un link y juegan la misma partida en vivo.</p>
+            </article>
+            <article class="card">
+              <span class="card-icon" aria-hidden="true">🏆</span>
+              <h3>Logros por niveles</h3>
+              <p>13 familias de logros con 76 niveles para desbloquear mientras aprendés y competís.</p>
+            </article>
+            <article class="card">
+              <span class="card-icon" aria-hidden="true">🎧</span>
+              <h3>Escuchá y pronunciá</h3>
+              <p>Cada palabra se puede escuchar, y hay ejercicios de comprensión auditiva.</p>
+            </article>
+            <article class="card">
+              <span class="card-icon" aria-hidden="true">📱</span>
+              <h3>Widgets y recordatorio</h3>
+              <p>
+                La palabra del día en la pantalla de inicio y un aviso a la hora que elijas para no
+                cortar la racha.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Descargar -->
+      <section id="descargar" class="block">
+        <div class="wrap">
+          <div class="cta">
+            <div class="cta-emblems" aria-hidden="true">
+              <img src="assets/emblems/gold.svg" alt="" width="48" height="48" class="dim" />
+              <img src="assets/emblems/diamond.svg" alt="" width="76" height="76" />
+              <img src="assets/emblems/master.svg" alt="" width="48" height="48" class="dim" />
+            </div>
+            <h2>Tu primera partida está a dos minutos</h2>
+            <p class="lead">Descargá Polygo, hacé la primera lección y entrá a ranked.</p>
+            {{stores}}
+          </div>
+        </div>
+      </section>
+
+      <!-- Preguntas frecuentes -->
+      <section id="preguntas" class="block">
+        <div class="wrap narrow">
+          <header class="heading">
+            <p class="overline">PREGUNTAS FRECUENTES</p>
+            <h2>Lo que todos preguntan</h2>
+          </header>
+          <div class="faq">
+            <details class="faq-item">
+              <summary>¿Polygo es gratis?</summary>
+              <p>Sí. Descargás la app, creás tu cuenta con un email y empezás a aprender inglés gratis.</p>
+            </details>
+            <details class="faq-item">
+              <summary>¿Qué nivel de inglés necesito?</summary>
+              <p>Ninguno: el contenido arranca en A1 (principiante absoluto). El nivel A2 está en camino.</p>
+            </details>
+            <details class="faq-item">
+              <summary>¿Contra quién juego en ranked?</summary>
+              <p>Contra personas con un ELO parecido al tuyo. Si en unos segundos no aparece nadie, jugás contra un bot de tu nivel, siempre marcado como BOT. Cuenta para el ELO igual.</p>
+            </details>
+            <details class="faq-item">
+              <summary>¿Cuánto tiempo por día tengo que estudiar?</summary>
+              <p>Vos elegís tu objetivo diario. Con 5 o 10 minutos por día ya mantenés la racha y avanzás en el camino de lecciones.</p>
+            </details>
+            <details class="faq-item">
+              <summary>¿Cómo funciona el ELO?</summary>
+              <p>Ganarle a alguien de más nivel suma más; perder con alguien de menos nivel resta más. Las primeras 5 partidas son de colocación y mueven más el ELO para ubicarte rápido.</p>
+            </details>
+            <details class="faq-item">
+              <summary>¿Puedo borrar mi cuenta?</summary>
+              <p>Sí, cuando quieras, desde Perfil → Ajustes → Eliminar cuenta. Se borran tu perfil y tu progreso. Más información en la página de borrar cuenta.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+{{> footer}}
+  </body>
+</html>

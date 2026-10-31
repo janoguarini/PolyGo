@@ -1,5 +1,5 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { createContext, useContext, type ReactNode, type Ref } from 'react';
+import type { ReactNode, Ref } from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -35,7 +35,8 @@ export interface ScreenProps {
 }
 
 /** En la web (computadora) el contenido va en una columna centrada, como en el teléfono. */
-export const ScreenMaxWidth = createContext(680);
+const webColumn =
+  Platform.OS === 'web' ? ({ width: '100%', maxWidth: 680, alignSelf: 'center' } as const) : null;
 
 export function Screen({
   children,
@@ -50,9 +51,6 @@ export function Screen({
   overlay,
   onScroll,
 }: ScreenProps) {
-  const maxWidth = useContext(ScreenMaxWidth);
-  const webColumn =
-    Platform.OS === 'web' ? ({ width: '100%', maxWidth, alignSelf: 'center' } as const) : null;
   const content = scroll ? (
     <ScrollView
       ref={scrollRef}

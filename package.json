@@ -62,12 +62,14 @@
     "typecheck": "tsc --noEmit && tsc --noEmit -p scripts",
     "test": "jest",
     "format": "prettier --write .",
-    "check": "npm run typecheck && npm run lint && npm test -- --ci && npm run test:db && npm run test:server",
+    "check": "npm run typecheck && npm run lint && npm test -- --ci && npm run test:db && npm run test:server && npm run website:build",
     "test:db": "node --import tsx --test \"supabase/tests/*.test.mjs\"",
     "content:sql": "tsx scripts/build-content-sql.ts",
     "content:dump": "tsx scripts/dump-content.ts",
     "content:diff": "tsx scripts/build-content-diff-sql.ts",
-    "test:server": "npm --prefix server run typecheck && npm --prefix server test"
+    "test:server": "npm --prefix server run typecheck && npm --prefix server test",
+    "website:build": "node website/build.mjs",
+    "website:emblems": "tsx scripts/generate-website-emblems.ts"
   },
   "private": true,
   "jest": {

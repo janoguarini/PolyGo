@@ -1,5 +1,7 @@
 # Política de privacidad de Polygo — BORRADOR
 
+> **Reemplazado:** la versión vigente y actualizada (fotos de perfil, reportes, desafíos, misiones) es [`website/src/privacidad.html`](../website/src/privacidad.html), que se publica con el sitio. Este archivo queda como referencia histórica.
+
 > **Borrador técnico, no es asesoramiento legal.** Lo redactó el equipo a partir de lo que la app
 > realmente guarda (migraciones de `supabase/` y código). Antes de publicarlo hay que completar los
 > campos entre corchetes y que lo revise una persona con conocimiento legal de los países donde se

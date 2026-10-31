@@ -1,0 +1,17 @@
+# Sitio informativo de Polygo (website/). Sin dependencias: Netlify no instala nada de la app.
+[build]
+  base = "website"
+  command = "node build.mjs"
+  publish = "dist"
+
+# Los archivos de assets/ cambian poco: que el navegador los guarde un día.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

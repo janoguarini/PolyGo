@@ -1,42 +1,61 @@
-# Polygo en la web
+# Sitio web de Polygo
 
-La web es la misma app de Expo exportada para navegador (`react-native-web`), no un proyecto aparte:
+Sitio **informativo y estático** en `website/`: explica la app, posiciona en buscadores y lleva a App Store / Google Play. No es la app en el navegador (la app es sólo para teléfono).
 
-- **Sin sesión**, `/` muestra la página de presentación (`src/features/landing/LandingPage.tsx`, ruta `src/app/(auth)/index.web.tsx`). En el teléfono, `/` sigue siendo la bienvenida de siempre (`index.tsx`).
-- **Con sesión**, es la app completa con la misma cuenta de Supabase: lecciones, repaso, ranked, desafíos, vocabulario y perfil. En pantallas anchas las pestañas van en una barra lateral y el contenido en una columna centrada (`Screen` usa `ScreenMaxWidth`; las pantallas de acceso, 460 px).
-- No hay en la web: widgets, recordatorios (notificaciones locales) ni vibración. La sesión se guarda en `localStorage`.
-- Los links de desafío también abren en el navegador: `https://<dominio>/challenge/<código>`.
-- Título, descripción y vista previa para redes: `public/index.html`.
+- Páginas: portada (`/`), política de privacidad (`/privacidad`) y borrar cuenta (`/borrar-cuenta`), más `404.html`. Las dos últimas son las URL que piden las tiendas.
+- HTML y CSS puros, sin frameworks ni fuentes externas: carga rápido y Google lee todo el texto.
+- SEO: título y descripción por página, URL canónica, Open Graph (imagen `assets/img/og.png`), datos estructurados (`MobileApplication` y `FAQPage`, armados a partir de las preguntas de la portada), `sitemap.xml` y `robots.txt` generados.
 
-## Probar en local
+## Estructura
 
-```bash
-npx expo start --web          # desarrollo
-npx expo export -p web        # build de producción en dist/
-npx expo serve                # sirve dist/ en http://localhost:8081
+```
+website/
+  site.config.json   dirección del sitio, links de las tiendas y datos de la política
+  build.mjs          arma website/dist (sólo Node, sin dependencias)
+  src/               páginas (.html), partials/ (head, nav, footer) y assets/
 ```
 
-## Publicar en Cloudflare Pages (gratis)
+Las páginas usan `{{variable}}` (de `site.config.json` o calculadas), `{{> partial}}` y `{{required:campo:etiqueta}}` para los datos obligatorios de la política: si falta alguno, el build avisa y la página lo marca en naranja.
 
-`app.json` tiene `web.output: "single"` (una sola página; el enrutado lo hace la app). Cloudflare Pages sirve `index.html` en cualquier ruta si no hay `404.html`, así que `/ranked` o `/challenge/ABC234` funcionan sin reglas extra.
+```bash
+npm run website:build     # o: node website/build.mjs  → website/dist
+npm run website:emblems   # regenera los SVG de rangos desde la geometría de la app
+```
 
-1. dash.cloudflare.com → Workers & Pages → Create → Pages → **Connect to Git** → repositorio `janoguarini/PolyGo`, rama `main`.
-2. Configuración de build:
-   - Framework preset: **None**
-   - Build command: `npx expo export -p web`
-   - Build output directory: `dist`
-3. Variables de entorno (para Production y Preview):
-   - `EXPO_PUBLIC_SUPABASE_URL` y `EXPO_PUBLIC_SUPABASE_ANON_KEY`: los mismos valores del `.env` (son públicos: viajan dentro de la app).
-   - `NODE_VERSION` = `22`
-   - No cargar `EXPO_PUBLIC_BATTLE_SERVER_URL` mientras no exista el servidor de partidas.
-4. Deploy. Queda en `https://<proyecto>.pages.dev` y se vuelve a publicar solo con cada push a `main` (cada rama tiene su URL de vista previa).
-5. Supabase → Authentication → URL Configuration: agregar `https://<proyecto>.pages.dev/**` en **Redirect URLs** (si no, los emails de confirmación y de recuperar contraseña no vuelven a la web). Con dominio propio, agregarlo también y ponerlo como Site URL.
+`npm run check` (y el CI) también arma el sitio, así que una página rota se detecta antes de publicar.
 
-Dominio propio: Pages → Custom domains (gratis; el dominio se compra aparte).
+## Configuración (`website/site.config.json`)
 
-Alternativa: EAS Hosting (`npx eas-cli@latest deploy --prod` después de exportar).
+| Campo | Qué es |
+| --- | --- |
+| `siteUrl` | Dirección **canónica** del sitio (sin `/` final). Ver "Netlify y GitHub Pages" abajo. |
+| `appStoreUrl`, `playStoreUrl` | Links de las tiendas. Vacíos = botones "Próximamente". |
+| `contactEmail`, `ownerName`, `country`, `privacyUpdated` | Datos de la política de privacidad y de borrar cuenta. |
 
-## Pendiente
+Cada campo se puede pisar con una variable de entorno en el hosting: `SITE_URL`, `APP_STORE_URL`, `PLAY_STORE_URL`, `CONTACT_EMAIL`, `OWNER_NAME`.
 
-- Si un link de desafío se abre sin sesión, después de entrar hay que escribir el código a mano.
-- En Windows, las banderas de los idiomas del perfil se ven como letras (GB, BR): Windows no dibuja emojis de banderas.
+Cuando las apps estén publicadas, reemplazar los botones por los distintivos oficiales de Apple y Google (tienen reglas de uso propias).
+
+## Netlify y GitHub Pages
+
+El mismo sitio funciona en los dos. Para Google conviene **una sola dirección principal**: las dos copias usan la misma `siteUrl` como canónica, así la otra no cuenta como contenido duplicado.
+
+**Netlify** (`netlify.toml` ya configurado: base `website`, comando `node build.mjs`, publica `dist`):
+1. app.netlify.com → Add new site → Import an existing project → GitHub → `janoguarini/PolyGo`.
+2. Dejar la configuración que lee de `netlify.toml` y publicar. Se actualiza solo con cada push a `main`.
+3. Elegir el nombre del sitio (Site configuration → Change site name) y poner esa dirección en `siteUrl`.
+
+**GitHub Pages** (`.github/workflows/website.yml`):
+1. GitHub → repo → Settings → Pages → Source: **GitHub Actions**.
+2. Settings → Secrets and variables → Actions → Variables: crear `DEPLOY_PAGES` = `true`.
+3. Actions → "Sitio web" → Run workflow (o hacer push en `website/`). Queda en `https://janoguarini.github.io/PolyGo/`.
+
+Sin `DEPLOY_PAGES`, el workflow sólo verifica que el sitio compile.
+
+**Dominio propio** (recomendado para SEO): se compra aparte y se conecta en el hosting principal; después actualizar `siteUrl`.
+
+## Después de publicar
+
+- Google Search Console: agregar el sitio y enviar `https://<sitio>/sitemap.xml`.
+- `EXPO_PUBLIC_PRIVACY_POLICY_URL` = `https://<sitio>/privacidad` (el enlace aparece en Ajustes de la app).
+- Play Console → Seguridad de los datos: URL de borrado = `https://<sitio>/borrar-cuenta`. App Store Connect: URL de privacidad.

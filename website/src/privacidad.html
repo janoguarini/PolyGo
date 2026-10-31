@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+  <head>
+{{> head}}
+  </head>
+  <body>
+{{> nav}}
+    <main class="wrap legal">
+      <h1>Política de privacidad</h1>
+      <p class="muted">Última actualización: {{required:privacyUpdated:fecha de publicación}}</p>
+
+      <h2>Quiénes somos</h2>
+      <p>
+        Polygo es una app para aprender inglés compitiendo. Responsable de los datos:
+        {{required:ownerName:nombre o razón social}}, {{country}}. Contacto de privacidad:
+        {{required:contactEmail:email de contacto}}.
+      </p>
+
+      <h2>Qué datos guardamos y para qué</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Dato</th><th>Para qué</th><th>¿Lo ven otros jugadores?</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Email y contraseña (la contraseña se guarda cifrada por nuestro proveedor de autenticación)</td>
+              <td>Crear tu cuenta, iniciar sesión y recuperar la contraseña</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>Nombre de usuario y avatar (uno de los avatares de la app o una foto que elijas de tu galería)</td>
+              <td>Identificarte en la clasificación, las partidas y tu perfil</td>
+              <td>Sí</td>
+            </tr>
+            <tr>
+              <td>País (opcional)</td>
+              <td>Mostrarlo en tu perfil</td>
+              <td>Sólo si activás mostrarlo</td>
+            </tr>
+            <tr>
+              <td>Idioma que aprendés, nivel inicial y objetivo diario</td>
+              <td>Personalizar las lecciones</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>Progreso: lecciones, respuestas a ejercicios, palabras estudiadas, repasos, racha, misiones, protectores y logros</td>
+              <td>Repaso espaciado, estadísticas, misiones y logros</td>
+              <td>Según tu configuración de privacidad (público o privado)</td>
+            </tr>
+            <tr>
+              <td>Partidas: rival, puntajes, resultado y cambios de ELO (también los desafíos entre amigos)</td>
+              <td>Clasificación, historial y rangos</td>
+              <td>Tu rating y rango, sí; el detalle de cada partida, sólo los dos jugadores</td>
+            </tr>
+            <tr>
+              <td>Reportes de fotos de perfil que hagas o recibas</td>
+              <td>Moderar fotos inapropiadas</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>Zona horaria del dispositivo</td>
+              <td>Calcular tu racha y tus misiones del día</td>
+              <td>No</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        <strong>No</strong> mostramos publicidad, <strong>no</strong> vendemos datos,
+        <strong>no</strong> usamos herramientas de analítica ni de seguimiento entre apps, y
+        <strong>no</strong> pedimos acceso a contactos, ubicación, cámara ni micrófono. La galería de
+        fotos sólo se abre si elegís una foto de perfil, y sólo se sube la foto que elegiste.
+      </p>
+      <p>
+        La pronunciación usa la voz sintetizada de tu dispositivo: el texto no se envía a nuestros
+        servidores para eso. Los recordatorios diarios son notificaciones locales programadas en tu
+        teléfono, y los widgets guardan en el dispositivo sólo palabras de vocabulario.
+      </p>
+
+      <h2>Dónde se guardan</h2>
+      <ul>
+        <li>Base de datos, autenticación, fotos de perfil y partidas en vivo: Supabase (servidores en Estados Unidos).</li>
+        <li>Tu sesión se guarda en el almacenamiento seguro del dispositivo (Keychain en iPhone, Keystore en Android).</li>
+        <li>Todas las conexiones viajan cifradas (HTTPS).</li>
+      </ul>
+
+      <h2>Cuánto tiempo los guardamos</h2>
+      <p>
+        Mientras tengas la cuenta. Si la borrás, se eliminan tu cuenta, perfil, foto, progreso,
+        logros y rating. Las partidas que jugaste quedan en el historial de tus rivales
+        <strong>sin tu nombre ni tu avatar</strong>.
+      </p>
+
+      <h2>Tus derechos</h2>
+      <ul>
+        <li>
+          <strong>Borrar tu cuenta:</strong> desde la app, en Perfil → Ajustes → Eliminar cuenta. Es
+          inmediato e irreversible. También podés pedirlo por email: ver
+          <a href="borrar-cuenta">cómo borrar tu cuenta</a>.
+        </li>
+        <li>
+          <strong>Acceder, corregir o pedir una copia de tus datos:</strong> podés editar tu perfil en
+          la app; para una copia escribinos a {{required:contactEmail:email de contacto}}.
+        </li>
+        <li>
+          <strong>Privacidad del perfil:</strong> en Ajustes podés hacer tu perfil privado (los demás
+          sólo ven tu nombre, avatar y rango).
+        </li>
+      </ul>
+
+      <h2>Menores</h2>
+      <p>
+        Polygo no está dirigido a menores de 13 años. Si sabemos que una cuenta pertenece a un menor
+        de esa edad, la eliminamos.
+      </p>
+
+      <h2>Cambios</h2>
+      <p>
+        Si cambiamos esta política, actualizamos la fecha de arriba y, si el cambio es importante, te
+        avisamos en la app.
+      </p>
+    </main>
+{{> footer}}
+  </body>
+</html>

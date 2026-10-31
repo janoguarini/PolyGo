@@ -1,0 +1,48 @@
+# Sitio informativo (website/) en GitHub Pages.
+# Siempre arma el sitio (verifica que compile). Publica sólo si la variable del repo DEPLOY_PAGES es
+# "true" (Settings → Secrets and variables → Actions → Variables), después de activar Pages con
+# Source "GitHub Actions". La dirección canónica sale de website/site.config.json o de la
+# variable SITE_URL.
+name: Sitio web
+
+on:
+  push:
+    branches: [main]
+    paths: ['website/**', '.github/workflows/website.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node website/build.mjs
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+      - uses: actions/upload-pages-artifact@v3
+        if: vars.DEPLOY_PAGES == 'true'
+        with:
+          path: website/dist
+
+  deploy:
+    needs: build
+    if: vars.DEPLOY_PAGES == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
