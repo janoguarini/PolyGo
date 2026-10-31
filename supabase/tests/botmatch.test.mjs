@@ -4,7 +4,15 @@ import assert from 'node:assert/strict';
 import { createDb, createUser, as } from './harness.mjs';
 import { BOT_CONFIG, botSkill } from '../../shared/bots.ts';
 import { computeRatingChange } from '../../shared/ranking.ts';
-import { answerPoints, applyPoints, decideOutcomes, streakBonus } from '../../shared/wordRush.ts';
+import {
+  answerPoints,
+  applyPoints,
+  decideOutcomes,
+  isWriteIndex,
+  pointsElapsed,
+  streakBonus,
+  WRITING,
+} from '../../shared/wordRush.ts';
 
 let db;
 
@@ -43,17 +51,18 @@ const elapse = (id) =>
   ]);
 
 /** Puntaje del bot a partir de su guion, con las reglas de la app. */
-function botLine(script) {
+function botLine(script, writing = false) {
   let elapsed = 0;
   let score = 0;
   let correct = 0;
   let answered = 0;
   let streak = 0;
-  for (const m of script) {
+  for (const [i, m] of script.entries()) {
     elapsed += m.d;
     if (elapsed > 75_000) break;
     streak = m.c ? streak + 1 : 0;
-    score = applyPoints(score, answerPoints(m.c, m.d, streak));
+    const write = writing && isWriteIndex(i);
+    score = applyPoints(score, answerPoints(m.c, pointsElapsed({ write }, m.d), streak));
     answered += 1;
     if (m.c) correct += 1;
   }
@@ -203,6 +212,39 @@ test('partida contra bot: bot a su altura, resultado y ELO calculados en la base
   const lost = await finish(ana, next.battle_id, 0, 0, 0);
   assert.equal(lost.me.placed_before, true);
   assert.ok(lost.me.rating_after < lost.me.rating_before || lost.me.rating_before === 100);
+});
+
+test('desde Oro el bot tarda el doble en las preguntas para escribir y la base lo puntúa igual que la app', async () => {
+  const oro = await player('oro@bot.dev', 'oro');
+  await db.query(
+    'update public.player_ratings set rating = $2, peak_rating = $2, wins = 5, games_played = 5 where user_id = $1',
+    [oro, WRITING.minRating + 50],
+  );
+  const m = await start(oro);
+  assert.equal(m.writing, true);
+  const avg = (xs) => xs.reduce((a, b) => a + b, 0) / xs.length;
+  const writes = m.script.filter((_, i) => isWriteIndex(i)).map((x) => x.d);
+  const others = m.script.filter((_, i) => !isWriteIndex(i)).map((x) => x.d);
+  assert.ok(avg(writes) > avg(others) * 1.4, 'tarda más en las de escribir');
+
+  await elapse(m.battle_id);
+  const bot = botLine(m.script, true);
+  const r = await finish(oro, m.battle_id, 0, 0, 0);
+  assert.deepEqual(
+    { score: r.bot.score, correct: r.bot.correct, answered: r.bot.answered },
+    { score: bot.score, correct: bot.correct, answered: bot.answered },
+  );
+
+  const plata = await player('plata@bot.dev', 'plata');
+  await db.query(
+    'update public.player_ratings set rating = 500, peak_rating = 500 where user_id = $1',
+    [plata],
+  );
+  assert.equal((await start(plata)).writing, false);
+  for (const rating of [0, 699, 700, 2000]) {
+    const { w } = await one('select public.rush_writing($1) as w', [rating]);
+    assert.equal(w, rating >= WRITING.minRating);
+  }
 });
 
 test('puntajes imposibles se rechazan', async () => {

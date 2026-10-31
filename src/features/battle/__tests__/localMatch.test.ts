@@ -1,6 +1,6 @@
 import { BOT_CONFIG } from '@shared/bots';
 import { WORD_RUSH } from '@shared/protocol';
-import { answerPoints, applyPoints, generateQuestions } from '@shared/wordRush';
+import { answerPoints, applyPoints, generateQuestions, WRITING } from '@shared/wordRush';
 
 import {
   LocalMatch,
@@ -55,7 +55,7 @@ const SCRIPT = [
   { d: 2500, c: true },
 ];
 
-function setup() {
+function setup({ writing = false }: { writing?: boolean } = {}) {
   const clock = manualClock();
   let state: BattleState = initialBattleState;
   const dispatch = (action: BattleAction) => {
@@ -68,6 +68,7 @@ function setup() {
       me: { rating: 1000, games_played: 3 },
       bot: { name: 'Kiko', avatar_id: 'crown', rating: 1020 },
       script: SCRIPT,
+      writing,
     }),
     finish: async (battleId, line, forfeit): Promise<FinishedBotMatch> => {
       finishCalls.push({ line, forfeit });
@@ -178,6 +179,49 @@ it('práctica: sin bot ni base, termina sola con el puntaje propio', async () =>
   expect(s.state().result?.mode).toBe('practice');
   expect(s.state().result?.players).toHaveLength(1);
   expect(s.state().result?.players[0]).toMatchObject({ answered: 1, correct: 0, outcome: null });
+});
+
+it('desde Oro: una de cada tres se escribe, con más margen de tiempo y la corrección al fallar', async () => {
+  const s = setup({ writing: true });
+  s.dispatch({ type: 'connecting', mode: 'ranked' });
+  await s.match.begin('ranked');
+  s.match.ready();
+  s.clock.advance(BOT_CONFIG.readyMs.min + WORD_RUSH.countdownMs);
+  for (const i of [0, 1]) {
+    expect(s.state().question?.kind).not.toBe('write');
+    s.match.answer(QUESTIONS[i]!.correctOption);
+    s.clock.advance(1_000);
+  }
+
+  const q = s.state().question!;
+  expect(q).toMatchObject({ index: 2, kind: 'write', direction: 'es_en', options: [] });
+  const original = QUESTIONS[2]!;
+  const english =
+    original.direction === 'es_en' ? original.options[original.correctOption]! : original.prompt;
+  s.match.answer(0); // una opción no vale en una pregunta para escribir
+  expect(s.state().feedback).toBeNull();
+
+  const before = s.state().scores[0]!.score;
+  s.clock.advance(3_000); // + el 1 s de antes: la pregunta salió al responder la anterior
+  s.match.answer(`  ${english.toUpperCase()} `);
+  expect(s.state().feedback).toMatchObject({ correct: true });
+  // A los 4 s cuenta como 2 s para el bonus de velocidad (y suma la racha de 3).
+  expect(s.state().scores[0]!.score - before).toBe(
+    answerPoints(true, 4_000 / WRITING.timeFactor, 3),
+  );
+
+  s.clock.advance(1_000);
+  for (const i of [3, 4]) {
+    s.match.answer(QUESTIONS[i]!.correctOption);
+    s.clock.advance(1_000);
+  }
+  s.match.answer('nada que ver');
+  expect(s.state().feedback).toMatchObject({ correct: false, correctText: expect.any(String) });
+  s.clock.advance(1_000);
+  expect(s.state().feedback).not.toBeNull(); // la corrección se muestra más tiempo
+  s.clock.advance(600);
+  expect(s.state().feedback).toBeNull();
+  s.match.dispose();
 });
 
 it('racha: correctas seguidas suman el bonus, y un error la corta', async () => {

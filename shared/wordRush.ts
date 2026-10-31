@@ -4,6 +4,7 @@
  */
 
 import { WORD_RUSH, type QuestionKind, type QuestionView } from './protocol';
+import { canonicalForm, editDistance } from './answers';
 import { TIERS, type MatchOutcome } from './ranking';
 
 export interface RushWord {
@@ -65,7 +66,65 @@ export interface RushQuestion {
   correctOption: number;
   /** Imagen de la palabra si es inequívoca (ver pictureEmojis): habilita preguntas con imagen. */
   emoji?: string;
+  /** Pregunta para escribir (ver withWriting): options = [respuesta]. */
+  write?: boolean;
 }
+
+/**
+ * Desde Oro, una de cada `every` preguntas pide escribir la palabra en inglés (sin opciones).
+ * Escribir lleva más tiempo: en esas preguntas la ventana del bonus de velocidad se multiplica por
+ * `timeFactor`, y el bot también tarda eso más. Espejo en SQL: public.rush_writing y la columna
+ * 'write' de public.rush_questions; el guion del bot en public.start_bot_match.
+ */
+export const WRITING = {
+  minRating: TIERS.find((t) => t.id === 'gold')!.minRating,
+  every: 3,
+  timeFactor: 2,
+} as const;
+
+export const writingEnabled = (rating: number) => rating >= WRITING.minRating;
+
+/** Qué preguntas son para escribir cuando el modo está activo: la 3.ª, 6.ª, 9.ª… */
+export const isWriteIndex = (index: number) => index % WRITING.every === WRITING.every - 1;
+
+/**
+ * Convierte en «escribir en inglés» las preguntas que tocan: el enunciado pasa a ser la palabra en
+ * español y la única opción, la palabra en inglés (no hacen falta distractores).
+ */
+export function withWriting(questions: readonly RushQuestion[]): RushQuestion[] {
+  return questions.map((q) => {
+    if (!isWriteIndex(q.index)) return q;
+    const correct = q.options[q.correctOption]!;
+    const english = q.direction === 'es_en' ? correct : q.prompt;
+    const spanish = q.direction === 'es_en' ? q.prompt : correct;
+    return {
+      ...q,
+      direction: 'es_en',
+      prompt: spanish,
+      options: [english],
+      correctOption: 0,
+      write: true,
+    };
+  });
+}
+
+/**
+ * Respuesta escrita: mismas reglas que en las lecciones (mayúsculas, espacios, apóstrofos y
+ * contracciones no importan; un error de tipeo se tolera en palabras de 8 letras o más).
+ */
+export function checkWritten(typed: string, expected: string): { correct: boolean; typo: boolean } {
+  const a = canonicalForm(typed);
+  const b = canonicalForm(expected);
+  if (a === b) return { correct: true, typo: false };
+  const typo = b.length >= 8 && editDistance(a, b) <= 1;
+  return { correct: typo, typo };
+}
+
+/** Milisegundos que cuentan para el bonus de velocidad (las de escribir tienen más margen). */
+export const pointsElapsed = (
+  question: Pick<RushQuestion, 'write'> | undefined,
+  elapsedMs: number,
+) => (question?.write ? Math.floor(elapsedMs / WRITING.timeFactor) : elapsedMs); // = división entera de SQL
 
 /**
  * Genera la secuencia de preguntas de una partida (la misma para ambos jugadores).
@@ -240,6 +299,7 @@ export function withPictures(
  * dos de cada tres se escuchan en vez de leerse.
  */
 export function questionKind(question: RushQuestion): QuestionKind {
+  if (question.write) return 'write';
   if (question.direction === 'es_en' && question.emoji) return 'image';
   if (question.direction === 'en_es' && question.index % 3 !== 0) return 'audio';
   return 'text';
@@ -252,7 +312,8 @@ export function toQuestionView(question: RushQuestion, sentAt: number): Question
     index: question.index,
     direction: question.direction,
     prompt: question.prompt,
-    options: question.options,
+    // En las de escribir la única opción es la respuesta: no se manda.
+    options: kind === 'write' ? [] : question.options,
     kind,
     ...(kind === 'image' ? { emoji: question.emoji } : {}),
     sentAt,

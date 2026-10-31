@@ -10,6 +10,12 @@ import {
   rushLabel,
   rushLevels,
   rushPool,
+  checkWritten,
+  isWriteIndex,
+  pointsElapsed,
+  withWriting,
+  writingEnabled,
+  WRITING,
   streakBonus,
   streakLevel,
   toQuestionView,
@@ -134,6 +140,55 @@ describe('palabras según el rango', () => {
     expect(rushLabel('fui / fue (go)')).toBe('fui / fue');
     expect(rushLabel('mañana (el día siguiente)')).toBe('mañana');
     expect(rushLabel('hola')).toBe('hola');
+  });
+});
+
+describe('escribir la respuesta (desde Oro)', () => {
+  it('se activa desde Oro y toca la 3.ª, 6.ª, 9.ª…', () => {
+    expect(writingEnabled(699)).toBe(false);
+    expect(writingEnabled(WRITING.minRating)).toBe(true);
+    expect([0, 1, 2, 3, 4, 5, 8].map(isWriteIndex)).toEqual([
+      false,
+      false,
+      true,
+      false,
+      false,
+      true,
+      true,
+    ]);
+  });
+
+  it('convierte la pregunta en «escribí en inglés» en las dos direcciones', () => {
+    const questions = withWriting(generateQuestions(WORDS, 12, mulberry(5)));
+    for (const q of questions) {
+      if (!isWriteIndex(q.index)) {
+        expect(q.write).toBeUndefined();
+        continue;
+      }
+      const word = WORDS.find((w) => w.id === q.wordId)!;
+      expect(q).toMatchObject({
+        write: true,
+        direction: 'es_en',
+        prompt: word.translationEs,
+        options: [word.text],
+        correctOption: 0,
+      });
+      expect(questionKind(q)).toBe('write');
+      expect(toQuestionView(q, 0).options).toEqual([]); // la respuesta no viaja en la vista
+    }
+  });
+
+  it('corrige como en las lecciones', () => {
+    expect(checkWritten(' Thank You ', 'thank you').correct).toBe(true);
+    expect(checkWritten("didn't", 'did not').correct).toBe(true);
+    expect(checkWritten('hella', 'hello').correct).toBe(false); // corta: sin tolerancia
+    expect(checkWritten('expensiv', 'expensive')).toEqual({ correct: true, typo: true });
+    expect(checkWritten('expens', 'expensive').correct).toBe(false);
+  });
+
+  it('el bonus de velocidad tiene el doble de margen', () => {
+    expect(pointsElapsed({ write: true }, 4_001)).toBe(2_000);
+    expect(pointsElapsed({}, 4_001)).toBe(4_001);
   });
 });
 

@@ -59,7 +59,8 @@ export default function BattleScreen() {
 
 interface Session {
   ready: () => void;
-  answer: (option: number) => void;
+  /** Opción elegida o texto escrito (preguntas para escribir). */
+  answer: (choice: number | string) => void;
   leave: () => void;
 }
 
@@ -179,7 +180,7 @@ interface BodyProps {
   state: BattleState;
   now: number;
   onReady: () => void;
-  onAnswer: (option: number) => void;
+  onAnswer: (choice: number | string) => void;
   onRetry: () => void;
   onExit: () => void;
 }

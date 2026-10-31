@@ -90,3 +90,5 @@ order by reportes desc, ultimo desc;
 - La foto está en Storage → bucket `avatars` → carpeta del `reported_id` → `avatar.jpg`.
 - Si es inapropiada: `update public.profiles set avatar_path = null where id = '<reported_id>';` y borrar el archivo desde Storage (con 3 reportes ya se ocultó sola, pero el archivo sigue ahí hasta que lo borres o el usuario suba otra).
 - Marcar los reportes como revisados: `update public.avatar_reports set reviewed_at = now() where reported_id = '<reported_id>' and reviewed_at is null;`
+
+- [ ] Servidor de partidas (Railway): soportar las preguntas para escribir (desde Oro) y las palabras por rango antes de migrar el ranked (ver RANKING_SYSTEM.md).

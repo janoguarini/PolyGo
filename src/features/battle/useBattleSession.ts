@@ -120,11 +120,13 @@ export function useBattleSession() {
   }, [dispatch]);
 
   const answer = useCallback(
-    (option: number) => {
+    (option: number | string) => {
       const state = useBattleStore.getState();
       const socket = socketRef.current;
       if (!socket || !state.battleId || !state.question || state.answering || state.feedback)
         return;
+      // El servidor de partidas todavía no manda preguntas para escribir.
+      if (typeof option !== 'number') return;
       const questionIndex = state.question.index;
       dispatch({ type: 'answer_sent' });
       socket

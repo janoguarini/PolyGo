@@ -82,7 +82,8 @@ export interface PublicPlayer {
 
 /** Lo único que el cliente ve de una pregunta antes de responder: nunca la respuesta correcta. */
 /** Cómo se presenta una pregunta: texto, audio (se escucha en inglés) o imagen (emoji). */
-export type QuestionKind = 'text' | 'audio' | 'image';
+/** 'write': sin opciones, se escribe la palabra en inglés (desde Oro; ver WRITING en wordRush). */
+export type QuestionKind = 'text' | 'audio' | 'image' | 'write';
 
 export interface QuestionView {
   index: number;
@@ -184,6 +185,8 @@ export interface AnswerResult {
   score: number;
   /** Correctas seguidas tras esta respuesta (0 si falló). */
   streak?: number;
+  /** En las preguntas para escribir: cómo se escribía la respuesta. */
+  correctText?: string;
 }
 
 export interface ServerToClientEvents {

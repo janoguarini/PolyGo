@@ -77,3 +77,9 @@ El ranked se pone más difícil a medida que subís: las preguntas de Word Rush 
 | ≥ 400 (Plata+) | A1 + A2  |
 
 En partidas entre personas y desafíos manda el rating más bajo de los dos. Contra bots lo decide la app con tu rating. Las traducciones se muestran sin las aclaraciones entre paréntesis (`rushLabel` / `public.rush_label`).
+
+## Desde Oro: escribir la respuesta
+
+Desde Oro (700) una de cada tres preguntas (la 3.ª, 6.ª, 9.ª…) no tiene opciones: se muestra la palabra en español y hay que escribirla en inglés (`WRITING`, `withWriting` en `shared/wordRush.ts`; espejo SQL `public.rush_writing` y la marca `write` en `public.rush_questions`). Se corrige como en las lecciones (`checkWritten`: sin importar mayúsculas, espacios ni contracciones; un error de tipeo se tolera desde 8 letras). En esas preguntas el bonus de velocidad tiene el doble de margen y el bot tarda el doble (`start_bot_match` / `settle_bot_match`). Al fallar se muestra cómo se escribía.
+
+El servidor de partidas (`server/`, Railway) todavía no manda preguntas para escribir: el protocolo de respuesta es por índice de opción. Hay que extenderlo antes de pasar el ranked a ese servidor.

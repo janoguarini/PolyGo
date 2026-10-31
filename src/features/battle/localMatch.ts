@@ -12,8 +12,11 @@ import {
 import {
   answerPoints,
   applyPoints,
+  checkWritten,
+  pointsElapsed,
   toQuestionView,
   withPictures,
+  withWriting,
   type RushQuestion,
 } from '@shared/wordRush';
 
@@ -38,6 +41,8 @@ export interface StartedBotMatch {
   me: { rating: number; games_played: number };
   bot: { name: string; avatar_id: string; rating: number };
   script: BotMoveScript[];
+  /** Desde Oro: hay preguntas para escribir (el guion del bot ya tarda más en ellas). */
+  writing?: boolean;
 }
 
 export interface FinishedBotMatch {
@@ -141,6 +146,10 @@ export interface LocalMatchDeps {
   /** Ranked guardado: refrescar perfil, logros, clasificación. */
   onRankedFinished?: () => void;
   feedbackMs?: number;
+  /** Cuánto se muestra cómo se escribía la palabra al fallar una pregunta para escribir. */
+  writeFeedbackMs?: number;
+  /** Práctica: con preguntas para escribir (en ranked lo decide la base). */
+  practiceWriting?: boolean;
   /** Reintentos al guardar el resultado (red inestable). */
   finishAttempts?: number;
   /** Partidas contra personas (Supabase). */
@@ -212,6 +221,7 @@ export class LocalMatch {
       isBot: false,
     };
     if (mode === 'practice') {
+      if (this.deps.practiceWriting) this.questions = withWriting(this.questions);
       this.players = [{ slot: 1, ...meBase, rating: 0, gamesPlayed: 0 }];
       this.dispatch({ type: 'joined', mode });
       this.startCountdown();
@@ -221,6 +231,7 @@ export class LocalMatch {
     const started = await this.deps.api.start();
     this.battleId = started.battle_id;
     this.script = started.script;
+    if (started.writing) this.questions = withWriting(this.questions);
     this.players = [
       { slot: 1, ...meBase, rating: started.me.rating, gamesPlayed: started.me.games_played },
       {
@@ -285,14 +296,25 @@ export class LocalMatch {
     this.schedule(min + this.random() * (max - min), () => this.startCountdown());
   }
 
-  answer(option: number): void {
+  /** Opción elegida o, en las preguntas para escribir, el texto escrito. */
+  answer(choice: number | string): void {
     if (this.status !== 'in_progress' || this.finished) return;
     const question = this.questions[this.questionIndex];
     if (!question) return;
+    if (Boolean(question.write) !== (typeof choice === 'string')) return;
     this.dispatch({ type: 'answer_sent' });
-    const correct = option === question.correctOption;
+    const correctText = question.options[question.correctOption]!;
+    const correct =
+      typeof choice === 'string'
+        ? checkWritten(choice, correctText).correct
+        : choice === question.correctOption;
+    const option = typeof choice === 'string' ? (correct ? question.correctOption : -1) : choice;
     this.myStreak = correct ? this.myStreak + 1 : 0;
-    const points = answerPoints(correct, this.now() - this.questionSentAt, this.myStreak);
+    const points = answerPoints(
+      correct,
+      pointsElapsed(question, this.now() - this.questionSentAt),
+      this.myStreak,
+    );
     this.me = {
       score: applyPoints(this.me.score, points),
       correct: this.me.correct + (correct ? 1 : 0),
@@ -308,11 +330,16 @@ export class LocalMatch {
         points,
         score: this.me.score,
         streak: this.myStreak,
+        ...(question.write ? { correctText } : {}),
       },
     });
     this.deps.onAnswer?.(correct, this.myStreak);
     this.deps.onLineChange?.(this.me);
-    this.schedule(this.deps.feedbackMs ?? 350, () => this.dispatch({ type: 'feedback_done' }));
+    const feedbackMs =
+      question.write && !correct
+        ? (this.deps.writeFeedbackMs ?? 1_500)
+        : (this.deps.feedbackMs ?? 350);
+    this.schedule(feedbackMs, () => this.dispatch({ type: 'feedback_done' }));
     this.emitScores();
     this.questionIndex += 1;
     this.sendQuestion();
@@ -365,13 +392,14 @@ export class LocalMatch {
     if (this.opponentKind === 'human') return;
     // El bot reproduce su guion: cada jugada en su momento.
     let at = 0;
-    for (const move of this.script) {
+    for (const [i, move] of this.script.entries()) {
       at += move.d;
       if (at > WORD_RUSH.durationMs) break;
+      const elapsed = pointsElapsed(this.questions[i], move.d);
       this.schedule(at, () => {
         this.botStreak = move.c ? this.botStreak + 1 : 0;
         this.bot = {
-          score: applyPoints(this.bot.score, answerPoints(move.c, move.d, this.botStreak)),
+          score: applyPoints(this.bot.score, answerPoints(move.c, elapsed, this.botStreak)),
           correct: this.bot.correct + (move.c ? 1 : 0),
           answered: this.bot.answered + 1,
         };

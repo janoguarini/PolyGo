@@ -33,6 +33,8 @@ export interface AnswerFeedback {
   points: number;
   /** Correctas seguidas tras esta respuesta. */
   streak: number;
+  /** Preguntas para escribir: cómo se escribía. */
+  correctText?: string;
 }
 
 export interface BattleState {
@@ -182,6 +184,7 @@ export function battleReducer(state: BattleState, action: BattleAction): BattleS
           correct: action.result.correct,
           points: action.result.points,
           streak: action.result.streak ?? 0,
+          correctText: action.result.correctText,
         },
         streak: action.result.streak ?? 0,
         scores: state.scores.map((line) =>

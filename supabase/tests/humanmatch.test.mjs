@@ -60,7 +60,7 @@ async function pair(a, b) {
 }
 
 test('las preguntas son válidas: 4 opciones, una sola correcta y sin palabra repetida seguida', async () => {
-  const { q } = await one(`select public.rush_questions('en', 40, 1000) as q`);
+  const { q } = await one(`select public.rush_questions('en', 40, 600) as q`);
   assert.equal(q.length, 40);
   // Como se muestran en Word Rush: sin aclaraciones entre paréntesis.
   const words = new Map(
@@ -137,6 +137,33 @@ test('las palabras dependen del rango: Bronce sólo A1, desde Plata también A2 
     ],
   );
   assert.equal(mismatches, 0, 'rush_label = rushLabel');
+});
+
+test('desde Oro, una de cada tres se escribe: sin distractores y con la palabra en inglés', async () => {
+  const words = new Map(
+    (await db.query('select id, text, translation_es from public.words')).rows.map((w) => [
+      w.id,
+      w,
+    ]),
+  );
+  const { q } = await one("select public.rush_questions('en', 30, 800) as q");
+  for (const x of q) {
+    if (x.index % 3 !== 2) {
+      assert.equal(x.write, undefined);
+      assert.equal(x.options.length, 4);
+      continue;
+    }
+    const w = words.get(x.wordId);
+    assert.deepEqual(
+      [x.write, x.direction, x.prompt, x.options, x.correctOption],
+      [true, 'es_en', rushLabel(w.translation_es), [w.text], 0],
+    );
+  }
+  const { q: plata } = await one("select public.rush_questions('en', 30, 600) as q");
+  assert.ok(
+    plata.every((x) => !x.write && x.options.length === 4),
+    'Plata no escribe',
+  );
 });
 
 test('emparejamiento: dos jugadores cercanos quedan en la misma partida con las mismas preguntas', async () => {

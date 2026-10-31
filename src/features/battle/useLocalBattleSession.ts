@@ -9,6 +9,7 @@ import {
   pictureEmojis,
   rushPool,
   wordLevel,
+  writingEnabled,
   type RushWord,
 } from '@shared/wordRush';
 
@@ -106,6 +107,7 @@ export function useLocalBattleSession() {
           }));
           let previousStreak = 0;
           const match = new LocalMatch({
+            practiceWriting: writingEnabled(rating),
             dispatch,
             api: botMatchApi,
             human: humanMatchApi,
@@ -251,10 +253,10 @@ export function useLocalBattleSession() {
     matchRef.current?.ready();
   }, [dispatch]);
 
-  const answer = useCallback((option: number) => {
+  const answer = useCallback((choice: number | string) => {
     const state = useBattleStore.getState();
     if (!state.question || state.answering || state.feedback) return;
-    matchRef.current?.answer(option);
+    matchRef.current?.answer(choice);
   }, []);
 
   /** Buscando: sale de la cola. Con el rival ya anunciado, en ranked cuenta como derrota. */
