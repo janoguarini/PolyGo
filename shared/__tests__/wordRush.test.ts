@@ -7,9 +7,13 @@ import {
   generateQuestions,
   pictureEmojis,
   questionKind,
+  rushLabel,
+  rushLevels,
+  rushPool,
   streakBonus,
   streakLevel,
   toQuestionView,
+  wordLevel,
   withPictures,
   type RushQuestion,
   type RushWord,
@@ -83,6 +87,53 @@ describe('generateQuestions', () => {
     expect(view).not.toHaveProperty('correctOption');
     expect(view).not.toHaveProperty('wordId');
     expect(view.sentAt).toBe(123);
+  });
+});
+
+describe('palabras según el rango', () => {
+  const leveled = (level: string, n: number): RushWord[] =>
+    Array.from({ length: n }, (_, i) => ({
+      id: `${level}-${i}`,
+      text: `${level}word${i}`,
+      translationEs: `${level}palabra${i}`,
+      level,
+    }));
+  const words = [...leveled('A1', 6), ...leveled('A2', 6)];
+
+  it('Bronce sólo A1; desde Plata (400) se suma el A2', () => {
+    expect(rushLevels(100)).toEqual(['A1']);
+    expect(rushLevels(399)).toEqual(['A1']);
+    expect(rushLevels(400)).toEqual(['A1', 'A2']);
+    expect(rushLevels(2500)).toEqual(['A1', 'A2']);
+  });
+
+  it('las preguntas y los distractores de un Bronce son sólo del A1', () => {
+    const questions = generateQuestions(rushPool(words, 250), 30, mulberry(3));
+    const a1 = new Set(
+      words.filter((w) => w.level === 'A1').flatMap((w) => [w.text, w.translationEs]),
+    );
+    for (const q of questions) {
+      expect(q.wordId.startsWith('A1-')).toBe(true);
+      for (const option of q.options) expect(a1.has(option)).toBe(true);
+    }
+  });
+
+  it('en Plata aparecen palabras A2', () => {
+    const questions = generateQuestions(rushPool(words, 450), 30, mulberry(3));
+    expect(questions.some((q) => q.wordId.startsWith('A2-'))).toBe(true);
+  });
+
+  it('si los niveles del rango no alcanzan, usa todas las palabras', () => {
+    expect(rushPool([...leveled('A1', 2), ...leveled('A2', 6)], 100)).toHaveLength(8);
+  });
+
+  it('el nivel sale de la unidad y la traducción se muestra sin paréntesis', () => {
+    expect(wordLevel('a2-u03')).toBe('A2');
+    expect(wordLevel('a1-u12')).toBe('A1');
+    expect(wordLevel(null)).toBeNull();
+    expect(rushLabel('fui / fue (go)')).toBe('fui / fue');
+    expect(rushLabel('mañana (el día siguiente)')).toBe('mañana');
+    expect(rushLabel('hola')).toBe('hola');
   });
 });
 

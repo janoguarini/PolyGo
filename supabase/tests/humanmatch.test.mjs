@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 
 import { createDb, createUser, as } from './harness.mjs';
 import { computeRatingChange } from '../../shared/ranking.ts';
+import { RUSH_LEVELS, rushLabel, rushLevels } from '../../shared/wordRush.ts';
 
 let db;
 
@@ -59,12 +60,13 @@ async function pair(a, b) {
 }
 
 test('las preguntas son válidas: 4 opciones, una sola correcta y sin palabra repetida seguida', async () => {
-  const { q } = await one(`select public.rush_questions('en', 40) as q`);
+  const { q } = await one(`select public.rush_questions('en', 40, 1000) as q`);
   assert.equal(q.length, 40);
+  // Como se muestran en Word Rush: sin aclaraciones entre paréntesis.
   const words = new Map(
     (
       await db.query(`select id, text, translation_es from public.words where language_code = 'en'`)
-    ).rows.map((w) => [w.id, w]),
+    ).rows.map((w) => [w.id, { ...w, translation_es: rushLabel(w.translation_es) }]),
   );
   const norm = (s) => s.trim().toLowerCase();
   q.forEach((question, i) => {
@@ -91,6 +93,50 @@ test('las preguntas son válidas: 4 opciones, una sola correcta y sin palabra re
     }
     if (i > 0) assert.notEqual(question.wordId, q[i - 1].wordId);
   });
+});
+
+test('las palabras dependen del rango: Bronce sólo A1, desde Plata también A2 (como shared/wordRush.ts)', async () => {
+  for (const rating of [0, 100, 399, ...RUSH_LEVELS.map((s) => s.minRating), 1500]) {
+    const { levels } = await one('select public.rush_levels($1) as levels', [rating]);
+    assert.deepEqual(levels, [...rushLevels(rating)], `rating ${rating}`);
+  }
+  const rows = (
+    await db.query(`select w.id, w.text, w.translation_es, u.level from public.words w
+                     join public.curriculum_units u on u.id = w.unit_id where w.language_code = 'en'`)
+  ).rows;
+  // Un texto puede existir en los dos niveles («tarde»: afternoon y late): basta que esté en el A1.
+  const a1 = new Set(
+    rows
+      .filter((w) => w.level === 'A1')
+      .flatMap((w) => [w.id, w.text, rushLabel(w.translation_es)]),
+  );
+  const levelOf = new Map(rows.map((w) => [w.id, w.level]));
+  const questions = async (rating) =>
+    (await one(`select public.rush_questions('en', 120, $1) as q`, [rating])).q;
+  for (const x of await questions(150)) {
+    assert.equal(levelOf.get(x.wordId), 'A1', 'un Bronce sólo recibe palabras A1');
+    for (const option of x.options) assert.ok(a1.has(option), `opción A1: ${option}`);
+  }
+  assert.ok(
+    (await questions(450)).some((x) => levelOf.get(x.wordId) === 'A2'),
+    'en Plata aparecen palabras A2',
+  );
+
+  const { mismatches } = await one(
+    `select count(*)::int as mismatches from public.words
+    where public.rush_label(translation_es) <> $1::jsonb ->> id`,
+    [
+      JSON.stringify(
+        Object.fromEntries(
+          (await db.query('select id, translation_es from public.words')).rows.map((w) => [
+            w.id,
+            rushLabel(w.translation_es),
+          ]),
+        ),
+      ),
+    ],
+  );
+  assert.equal(mismatches, 0, 'rush_label = rushLabel');
 });
 
 test('emparejamiento: dos jugadores cercanos quedan en la misma partida con las mismas preguntas', async () => {
@@ -268,6 +314,7 @@ test('permisos: anon no entra y las funciones internas no son públicas', async 
   });
   for (const sql of [
     `select public.rush_questions('en', 1)`,
+    `select public.rush_questions('en', 1, 500)`,
     `select public.settle_human_match(gen_random_uuid())`,
     'select * from public.ranked_queue',
   ]) {

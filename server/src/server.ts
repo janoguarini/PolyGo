@@ -14,7 +14,7 @@ import {
   type ServerToClientEvents,
 } from '../../shared/protocol';
 import { BOT_CONFIG, BOT_ID_PREFIX, pickBot } from '../../shared/bots';
-import { generateQuestions, type RushWord } from '../../shared/wordRush';
+import { generateQuestions, rushPool, type RushWord } from '../../shared/wordRush';
 import { Battle, type BattleHooks, type BattleRules, type Send } from './battle';
 import { systemClock, type Clock } from './clock';
 import { Matchmaker } from './matchmaking';
@@ -177,7 +177,13 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
 
   async function createBattle(mode: BattleMode, players: PlayerInfo[]): Promise<Battle> {
     const languageCode = players[0]!.languageCode;
-    const questions = generateQuestions(await wordsFor(languageCode), rules.questionCount, random);
+    // Palabras según el rango del jugador con menos rating (más difíciles al subir).
+    const rating = Math.min(...players.map((p) => p.rating));
+    const questions = generateQuestions(
+      rushPool(await wordsFor(languageCode), rating),
+      rules.questionCount,
+      random,
+    );
     const battle = new Battle(
       randomUUID(),
       mode,

@@ -3,7 +3,7 @@ import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import type { Database, Json } from '../../src/lib/database.generated';
 import { PROTOCOL_VERSION } from '../../shared/protocol';
 import { RATING_CONFIG } from '../../shared/ranking';
-import type { RushWord } from '../../shared/wordRush';
+import { wordLevel, type RushWord } from '../../shared/wordRush';
 import {
   StaleRatingError,
   type BattleStore,
@@ -54,7 +54,7 @@ export function createSupabaseStore(db: SupabaseClient<Database>): BattleStore {
     async loadWords(languageCode) {
       const { data, error } = await db
         .from('words')
-        .select('id, text, translation_es')
+        .select('id, text, translation_es, unit_id')
         .eq('language_code', languageCode)
         .eq('is_published', true);
       if (error) throw error;
@@ -62,6 +62,7 @@ export function createSupabaseStore(db: SupabaseClient<Database>): BattleStore {
         id: w.id,
         text: w.text,
         translationEs: w.translation_es,
+        level: wordLevel(w.unit_id),
       }));
     },
 

@@ -4,13 +4,56 @@
  */
 
 import { WORD_RUSH, type QuestionKind, type QuestionView } from './protocol';
-import type { MatchOutcome } from './ranking';
+import { TIERS, type MatchOutcome } from './ranking';
 
 export interface RushWord {
   id: string;
   text: string;
   translationEs: string;
   emoji?: string | null;
+  /** Nivel del currículo (A1, A2); ver wordLevel. */
+  level?: string | null;
+}
+
+const silver = TIERS.find((t) => t.id === 'silver')!.minRating;
+
+/**
+ * Niveles del currículo que entran en las preguntas según el rating: el ranked se pone más
+ * difícil a medida que subís de rango. Espejo en SQL: public.rush_levels.
+ */
+export const RUSH_LEVELS: readonly { minRating: number; levels: readonly string[] }[] = [
+  { minRating: 0, levels: ['A1'] },
+  { minRating: silver, levels: ['A1', 'A2'] },
+];
+
+export function rushLevels(rating: number): readonly string[] {
+  let levels = RUSH_LEVELS[0]!.levels;
+  for (const step of RUSH_LEVELS) if (rating >= step.minRating) levels = step.levels;
+  return levels;
+}
+
+/** Nivel de una palabra según su unidad: los ids son a1-uNN, a2-uNN (content/index.ts). */
+export function wordLevel(unitId: string | null | undefined): string | null {
+  const match = /^(a\d)-u\d+$/i.exec(unitId ?? '');
+  return match ? match[1]!.toUpperCase() : null;
+}
+
+/**
+ * Palabras para una partida con ese rating (en partidas entre personas, el más bajo de los dos).
+ * Si de esos niveles no alcanzan para armar preguntas, se usan todas.
+ */
+export function rushPool<T extends RushWord>(words: readonly T[], rating: number): T[] {
+  const levels = rushLevels(rating);
+  const pool = words.filter((w) => w.level != null && levels.includes(w.level));
+  return dedupeWords(pool).length >= WORD_RUSH.optionsPerQuestion ? pool : [...words];
+}
+
+/**
+ * Traducción tal como se muestra en Word Rush: sin las aclaraciones entre paréntesis, que en
+ * una pregunta rápida sobran («fui / fue (go)» → «fui / fue»). Espejo: public.rush_label.
+ */
+export function rushLabel(translation: string): string {
+  return translation.replace(/\s*\([^)]*\)/g, '').trim();
 }
 
 export interface RushQuestion {
@@ -34,7 +77,10 @@ export function generateQuestions(
   random: () => number,
   optionsPerQuestion: number = WORD_RUSH.optionsPerQuestion,
 ): RushQuestion[] {
-  const usable = dedupeWords(words);
+  const usable = dedupeWords(words).map((w) => ({
+    ...w,
+    translationEs: rushLabel(w.translationEs),
+  }));
   if (usable.length < optionsPerQuestion) {
     throw new Error(`Word Rush necesita al menos ${optionsPerQuestion} palabras distintas`);
   }

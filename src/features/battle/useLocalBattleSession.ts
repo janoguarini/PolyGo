@@ -4,7 +4,13 @@ import { useCallback, useEffect, useRef } from 'react';
 
 import { BOT_CONFIG } from '@shared/bots';
 import { WORD_RUSH, type BattleMode } from '@shared/protocol';
-import { generateQuestions, pictureEmojis, type RushWord } from '@shared/wordRush';
+import {
+  generateQuestions,
+  pictureEmojis,
+  rushPool,
+  wordLevel,
+  type RushWord,
+} from '@shared/wordRush';
 
 import { useAuth } from '@/features/auth/AuthProvider';
 import { fetchWordPool } from '@/features/learning/api';
@@ -36,7 +42,10 @@ export function useLocalBattleSession() {
   const dispatch = useBattleStore((s) => s.dispatch);
   const queryClient = useQueryClient();
   const { session } = useAuth();
-  const profile = useMyProfile().data?.profile;
+  const me = useMyProfile().data;
+  const profile = me?.profile;
+  // Las palabras de la partida dependen del rango (rushPool): más difíciles al subir.
+  const rating = me?.rating?.rating ?? 0;
   const matchRef = useRef<LocalMatch | null>(null);
   const channelRef = useRef<ReturnType<typeof openLiveChannel> | null>(null);
   const searchRef = useRef<{ cancelled: boolean; timer: ReturnType<typeof setTimeout> | null }>(
@@ -93,6 +102,7 @@ export function useLocalBattleSession() {
             text: w.text,
             translationEs: w.translation_es,
             emoji: w.emoji,
+            level: wordLevel(w.unit_id),
           }));
           let previousStreak = 0;
           const match = new LocalMatch({
@@ -100,7 +110,11 @@ export function useLocalBattleSession() {
             api: botMatchApi,
             human: humanMatchApi,
             userId: session?.user.id,
-            questions: generateQuestions(rushWords, WORD_RUSH.questionCount, Math.random),
+            questions: generateQuestions(
+              rushPool(rushWords, rating),
+              WORD_RUSH.questionCount,
+              Math.random,
+            ),
             pictures: pictureEmojis(rushWords),
             me: {
               username: profile.username,
@@ -229,7 +243,7 @@ export function useLocalBattleSession() {
         }
       })();
     },
-    [closeChannel, dispatch, profile, queryClient, session, stopSearch],
+    [closeChannel, dispatch, profile, queryClient, rating, session, stopSearch],
   );
 
   const ready = useCallback(() => {

@@ -5,13 +5,13 @@ Si cambiás un valor, actualizá este documento y los `CHECK` de la base de dato
 
 ## Parámetros
 
-| Parámetro | Valor |
-| --- | --- |
-| Rating inicial | 100, oculto: el jugador está **sin posicionar** hasta su primera victoria |
-| Piso de rating | 100 (también `CHECK (rating >= 100)` en SQL) |
-| K estándar | 32 |
+| Parámetro      | Valor                                                                                                 |
+| -------------- | ----------------------------------------------------------------------------------------------------- |
+| Rating inicial | 100, oculto: el jugador está **sin posicionar** hasta su primera victoria                             |
+| Piso de rating | 100 (también `CHECK (rating >= 100)` en SQL)                                                          |
+| K estándar     | 32                                                                                                    |
 | Sin posicionar | 0 victorias: perder o empatar no mueve el rating; la primera victoria lo posiciona (~115, Bronce III) |
-| Redondeo | `Math.round` sobre el delta |
+| Redondeo       | `Math.round` sobre el delta                                                                           |
 
 ## Fórmula
 
@@ -30,11 +30,11 @@ En la base: `ranked_rating_after()` (bots y personas, sin servidor). El servidor
 
 Partidas ranked contra **la misma cuenta** en las últimas 24 h (contando la actual):
 
-| Partida nº | Multiplicador de K |
-| --- | --- |
-| 1–2 | 1 |
-| 3–4 | 0.5 |
-| 5+ | 0 (no mueve rating; sí queda en el historial) |
+| Partida nº | Multiplicador de K                            |
+| ---------- | --------------------------------------------- |
+| 1–2        | 1                                             |
+| 3–4        | 0.5                                           |
+| 5+         | 0 (no mueve rating; sí queda en el historial) |
 
 ## Partidas contra bots
 
@@ -42,16 +42,16 @@ Cuentan igual que contra una persona: el delta se calcula contra el rating asign
 
 ## Tiers y divisiones
 
-| Tier | Rating mínimo | Divisiones (III → II → I) |
-| --- | --- | --- |
-| Bronce | 0 | III < 200 · II 200–299 · I 300–399 |
-| Plata | 400 | III 400 · II 500 · I 600 |
-| Oro | 700 | III 700 · II 800 · I 900 |
-| Platino | 1000 | III 1000 · II 1100 · I 1200 |
-| Esmeralda | 1300 | III 1300 · II 1400 · I 1500 |
-| Diamante | 1600 | III 1600 · II 1700 · I 1800 |
-| Maestro | 1900 | sin divisiones |
-| Gran Maestro | 2200 | sin divisiones |
+| Tier         | Rating mínimo | Divisiones (III → II → I)          |
+| ------------ | ------------- | ---------------------------------- |
+| Bronce       | 0             | III < 200 · II 200–299 · I 300–399 |
+| Plata        | 400           | III 400 · II 500 · I 600           |
+| Oro          | 700           | III 700 · II 800 · I 900           |
+| Platino      | 1000          | III 1000 · II 1100 · I 1200        |
+| Esmeralda    | 1300          | III 1300 · II 1400 · I 1500        |
+| Diamante     | 1600          | III 1600 · II 1700 · I 1800        |
+| Maestro      | 1900          | sin divisiones                     |
+| Gran Maestro | 2200          | sin divisiones                     |
 
 Un usuario nuevo se muestra **"Sin posicionar"** (sin número de ELO, fuera de la clasificación) hasta ganar una partida; entonces entra en **Bronce III**. El logro "Escalador" (rango máximo) también cuenta recién al posicionarse.
 
@@ -66,3 +66,14 @@ Un usuario nuevo se muestra **"Sin posicionar"** (sin número de ELO, fuera de l
 ## Rango ≠ nivel de idioma
 
 El rating mide desempeño en Word Rush. El progreso lingüístico (lecciones, palabras dominadas, habilidades) se mide en tablas separadas (Fase 2/3) y nunca se deriva del ELO.
+
+## Palabras según el rango
+
+El ranked se pone más difícil a medida que subís: las preguntas de Word Rush salen sólo de los niveles del currículo que habilita el rating (`RUSH_LEVELS` en `shared/wordRush.ts`, espejo SQL `public.rush_levels`).
+
+| Rating         | Palabras |
+| -------------- | -------- |
+| < 400 (Bronce) | A1       |
+| ≥ 400 (Plata+) | A1 + A2  |
+
+En partidas entre personas y desafíos manda el rating más bajo de los dos. Contra bots lo decide la app con tu rating. Las traducciones se muestran sin las aclaraciones entre paréntesis (`rushLabel` / `public.rush_label`).
