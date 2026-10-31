@@ -102,6 +102,7 @@ function RootNavigator() {
         <Stack.Screen name="challenge/[code]" options={{ animation: 'none' }} />
         <Stack.Screen name="matches" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="achievements" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="missions" options={{ animation: 'slide_from_bottom' }} />
         <Stack.Screen name="player/[id]" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="edit-profile" options={{ animation: 'slide_from_bottom' }} />
         <Stack.Screen name="settings" options={{ animation: 'slide_from_right' }} />

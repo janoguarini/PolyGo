@@ -799,6 +799,8 @@ export type Database = {
       evaluate_achievements: { Args: { p_user_id: string }; Returns: string[] };
       generate_public_code: { Args: never; Returns: string };
       get_learning_summary: { Args: { p_time_zone: string }; Returns: Json };
+      get_daily_missions: { Args: { p_time_zone: string }; Returns: Json };
+      claim_mission_reward: { Args: { p_time_zone: string }; Returns: Json };
       get_match_history: {
         Args: { p_before: string; p_limit: number };
         Returns: {

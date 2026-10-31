@@ -35,22 +35,44 @@ const DAY_LABELS = ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'];
 export interface WeekDay {
   label: string;
   active: boolean;
+  /** Día sin estudio cubierto por un protector de racha. */
+  frozen: boolean;
   isToday: boolean;
 }
 
-/** Los últimos 7 días (terminando hoy) marcando los que forman parte de la racha actual. */
+const dateKey = (d: Date) =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+/**
+ * Los últimos 7 días (terminando hoy) marcando los que forman parte de la racha actual. Los días
+ * cubiertos por un protector (frozenDates, YYYY-MM-DD) no cuentan como estudiados pero no la cortan.
+ */
 export function streakWeek(
   streakDays: number,
   activeToday: boolean,
   today = new Date(),
+  frozenDates: readonly string[] = [],
 ): WeekDay[] {
-  return Array.from({ length: 7 }, (_, i) => {
+  const frozen = new Set(frozenDates);
+  const days = Array.from({ length: 7 }, (_, i) => {
     const daysAgo = 6 - i;
     const date = new Date(today.getFullYear(), today.getMonth(), today.getDate() - daysAgo);
-    // Si hoy todavía no hubo actividad, la racha termina ayer.
-    const active = activeToday ? daysAgo < streakDays : daysAgo >= 1 && daysAgo <= streakDays;
-    return { label: DAY_LABELS[date.getDay()]!, active, isToday: daysAgo === 0 };
+    return { date, daysAgo, frozen: frozen.has(dateKey(date)) };
   });
+  // Recorre hacia atrás desde hoy (o ayer, si hoy todavía no hubo actividad).
+  const active = new Set<number>();
+  let remaining = streakDays;
+  for (let daysAgo = activeToday ? 0 : 1; daysAgo < 7 && remaining > 0; daysAgo++) {
+    if (days[6 - daysAgo]!.frozen) continue;
+    active.add(daysAgo);
+    remaining--;
+  }
+  return days.map(({ date, daysAgo, frozen: isFrozen }) => ({
+    label: DAY_LABELS[date.getDay()]!,
+    active: active.has(daysAgo),
+    frozen: isFrozen && !active.has(daysAgo),
+    isToday: daysAgo === 0,
+  }));
 }
 
 export const daysLabel = (n: number) => `${n} ${n === 1 ? 'día' : 'días'}`;

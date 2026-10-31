@@ -36,6 +36,12 @@ export interface SessionResult {
 export interface LearningSummary {
   streak_days: number;
   active_today: boolean;
+  /** Protectores de racha guardados. */
+  streak_freezes: number;
+  /** Días faltantes que el protector va a cubrir cuando vuelvas a estudiar. */
+  freeze_pending: number;
+  /** Días de la última semana cubiertos por un protector (YYYY-MM-DD). */
+  frozen_dates: string[];
   lessons_completed: number;
   words_seen: number;
   words_mastered: number;

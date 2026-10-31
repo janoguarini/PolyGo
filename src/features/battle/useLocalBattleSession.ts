@@ -117,6 +117,7 @@ export function useLocalBattleSession() {
               // Rating, historial, logros y estadísticas cambiaron en la base.
               void queryClient.invalidateQueries({ queryKey: ['profile'] });
               void queryClient.invalidateQueries({ queryKey: ['leaderboard'] });
+              void queryClient.invalidateQueries({ queryKey: ['learning', 'missions'] });
             },
           });
           matchRef.current = match;

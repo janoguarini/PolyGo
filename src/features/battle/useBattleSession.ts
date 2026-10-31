@@ -85,6 +85,7 @@ export function useBattleSession() {
         // Rating, historial, logros y clasificación cambiaron en el servidor.
         void queryClient.invalidateQueries({ queryKey: ['profile'] });
         void queryClient.invalidateQueries({ queryKey: ['leaderboard'] });
+        void queryClient.invalidateQueries({ queryKey: ['learning', 'missions'] });
       }
     });
     socket.on('battle:cancel', ({ reason }) => dispatch({ type: 'cancelled', reason }));

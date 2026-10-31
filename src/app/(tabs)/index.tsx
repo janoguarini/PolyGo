@@ -1,5 +1,13 @@
 import { router } from 'expo-router';
-import { ArrowDown, ArrowUp, ChevronRight, Flame, Target } from 'lucide-react-native';
+import {
+  ArrowDown,
+  ArrowUp,
+  ChevronRight,
+  Flame,
+  ListChecks,
+  Snowflake,
+  Target,
+} from 'lucide-react-native';
 import { useRef, useState } from 'react';
 import {
   Pressable,
@@ -27,6 +35,7 @@ import {
 import { LessonPath } from '@/features/learning/components/LessonPath';
 import { useCurriculum, useLearningSummary } from '@/features/learning/hooks';
 import { daysLabel, streakAtRisk } from '@/features/learning/streak';
+import { useDailyMissions } from '@/features/missions/api';
 import { useMyProfile } from '@/features/profile/hooks';
 
 /** Fracción del alto visible donde queda la lección actual al centrarla. */
@@ -40,6 +49,7 @@ export default function HomeScreen() {
   const me = useMyProfile();
   const summary = useLearningSummary();
   const curriculum = useCurriculum();
+  const missions = useDailyMissions();
   const scrollRef = useRef<ScrollViewInstance>(null);
   const { height } = useWindowDimensions();
   // Posición del nodo actual en el contenido y alto visible del scroll (medidos).
@@ -84,6 +94,19 @@ export default function HomeScreen() {
   const streak = summary.data?.streak_days ?? 0;
   const atRisk = summary.data ? streakAtRisk(summary.data) : false;
   const currentLesson = curriculum.data.current;
+  const freezes = summary.data?.streak_freezes ?? 0;
+  const missionList = missions.data?.missions ?? [];
+  const missionsTotal = missionList.length || 3;
+  const missionsDone = missionList.filter((m) => m.done).length;
+  const claimable = Boolean(missions.data?.all_done && !missions.data.claimed);
+  // Protectores que ya van a cubrir días que faltaste no te salvan si hoy tampoco estudiás.
+  const pendingFreezes = summary.data?.freeze_pending ?? 0;
+  const riskMessage =
+    pendingFreezes > 0
+      ? `Un protector cubre ${pendingFreezes === 1 ? 'el día que faltaste' : 'los días que faltaste'}. Hacé una lección hoy para seguir.`
+      : freezes > 0
+        ? 'Hacé una lección hoy. Si no, se usa un protector y la racha sigue.'
+        : 'Hacé una lección hoy para no perderla.';
 
   const header = (
     <View style={styles.header}>
@@ -94,11 +117,37 @@ export default function HomeScreen() {
           </Text>
           <Text variant="heading">Tu camino</Text>
         </View>
-        <View style={styles.chip} accessible accessibilityLabel={`Racha de ${streak} días`}>
+        <Pressable
+          style={styles.chip}
+          accessibilityRole="button"
+          accessibilityLabel={`Misiones del día: ${missionsDone} de ${missionsTotal}`}
+          onPress={() => router.push('/missions')}
+        >
+          <ListChecks
+            color={missionsDone === missionsTotal ? colors.success : colors.info}
+            size={20}
+          />
+          <Text variant="bodyStrong" color={missionsDone === missionsTotal ? 'success' : 'text'}>
+            {missionsDone}/{missionsTotal}
+          </Text>
+        </Pressable>
+        <View
+          style={styles.chip}
+          accessible
+          accessibilityLabel={`Racha de ${streak} días${freezes ? `, ${freezes} ${freezes === 1 ? 'protector' : 'protectores'}` : ''}`}
+        >
           <Flame color={summary.data?.active_today ? colors.streak : colors.textSubtle} size={20} />
           <Text variant="bodyStrong" color={summary.data?.active_today ? 'streak' : 'textMuted'}>
             {streak}
           </Text>
+          {freezes ? (
+            <View style={styles.freezeBadge}>
+              <Snowflake color={colors.info} size={12} />
+              <Text variant="caption" color="info">
+                {freezes}
+              </Text>
+            </View>
+          ) : null}
         </View>
         <View
           style={styles.chip}
@@ -122,6 +171,23 @@ export default function HomeScreen() {
           {completed}/{total} · {total ? Math.round((completed / total) * 100) : 0}%
         </Text>
       </View>
+      {claimable ? (
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel="Completaste las misiones del día. Reclamá tu protector de racha."
+          onPress={() => router.push('/missions')}
+          style={({ pressed }) => [styles.banner, styles.claim, pressed && styles.riskPressed]}
+        >
+          <Snowflake color={colors.info} size={22} />
+          <View style={styles.flex}>
+            <Text variant="bodyStrong" color="info">
+              ¡Misiones completas!
+            </Text>
+            <Text variant="caption">Reclamá tu protector de racha.</Text>
+          </View>
+          <ChevronRight color={colors.info} size={20} />
+        </Pressable>
+      ) : null}
       {atRisk ? (
         <Pressable
           accessibilityRole="button"
@@ -131,14 +197,14 @@ export default function HomeScreen() {
             currentLesson &&
             router.push({ pathname: '/lesson/[id]', params: { id: currentLesson.id } })
           }
-          style={({ pressed }) => [styles.risk, pressed && styles.riskPressed]}
+          style={({ pressed }) => [styles.banner, styles.risk, pressed && styles.riskPressed]}
         >
           <Flame color={colors.streak} size={22} />
           <View style={styles.flex}>
             <Text variant="bodyStrong" color="streak">
               Tu racha de {daysLabel(streak)} está en riesgo
             </Text>
-            <Text variant="caption">Hacé una lección hoy para no perderla.</Text>
+            <Text variant="caption">{riskMessage}</Text>
           </View>
           {currentLesson ? <ChevronRight color={colors.streak} size={20} /> : null}
         </Pressable>
@@ -153,6 +219,7 @@ export default function HomeScreen() {
       onRefresh={() => {
         void summary.refetch();
         void curriculum.refetch();
+        void missions.refetch();
       }}
       refreshing={curriculum.isRefetching}
       contentStyle={styles.content}
@@ -217,16 +284,18 @@ const styles = StyleSheet.create({
   headerRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   flex: { flex: 1 },
   chip: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
-  risk: {
+  banner: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing.md,
     padding: spacing.md,
     borderRadius: radii.md,
     borderWidth: 1,
-    borderColor: colors.streak,
     backgroundColor: colors.surfaceRaised,
   },
+  risk: { borderColor: colors.streak },
+  claim: { borderColor: colors.info },
+  freezeBadge: { flexDirection: 'row', alignItems: 'center', gap: 2, marginLeft: 2 },
   riskPressed: { opacity: 0.85 },
   content: { paddingBottom: spacing.huge },
   fabWrap: { position: 'absolute', bottom: spacing.lg, left: 0, right: 0, alignItems: 'center' },

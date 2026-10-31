@@ -1,5 +1,5 @@
 import * as Haptics from 'expo-haptics';
-import { Bell, Check, Flame, Target } from 'lucide-react-native';
+import { Bell, Check, Flame, Snowflake, Target } from 'lucide-react-native';
 import { useEffect } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 import Animated, { FadeIn, FadeInUp } from 'react-native-reanimated';
@@ -9,6 +9,7 @@ import { useReminderPrefs, useSetReminderPrefs } from '@/features/reminders/hook
 import { remindersSupported } from '@/features/reminders/notifications';
 import { DEFAULT_REMINDER, formatReminderTime } from '@/features/reminders/schedule';
 
+import { useLearningSummary } from '../hooks';
 import { daysLabel, streakWeek, type Celebration } from '../streak';
 
 function headline(c: Celebration) {
@@ -31,7 +32,13 @@ export function DailyCelebration({
   celebration: Celebration;
   onContinue: () => void;
 }) {
-  const week = streakWeek(celebration.streakDays, true);
+  const summary = useLearningSummary();
+  const week = streakWeek(
+    celebration.streakDays,
+    true,
+    new Date(),
+    summary.data?.frozen_dates ?? [],
+  );
   const reminder = useReminderPrefs();
   const setReminder = useSetReminderPrefs();
   const offerReminder =
@@ -79,9 +86,13 @@ export function DailyCelebration({
                 <Text variant="caption" color={d.isToday ? 'streak' : 'textMuted'}>
                   {d.label}
                 </Text>
-                <View style={[styles.dot, d.active && styles.dotActive]}>
+                <View
+                  style={[styles.dot, d.active && styles.dotActive, d.frozen && styles.dotFrozen]}
+                >
                   {d.active ? (
                     <Check color={colors.backgroundDeep} size={16} strokeWidth={3} />
+                  ) : d.frozen ? (
+                    <Snowflake color={colors.backgroundDeep} size={16} strokeWidth={3} />
                   ) : null}
                 </View>
               </View>
@@ -143,6 +154,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surfaceHighlight,
   },
   dotActive: { backgroundColor: colors.streak },
+  dotFrozen: { backgroundColor: colors.info },
   goal: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   flex: { flex: 1 },
   reminder: { gap: spacing.sm },

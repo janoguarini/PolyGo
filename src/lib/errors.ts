@@ -20,6 +20,8 @@ const RPC_MESSAGES: Record<string, string> = {
   cannot_report_self: 'No podés reportar tu propia foto.',
   report_rate_limited: 'Hiciste muchos reportes hoy. Probá de nuevo mañana.',
   invalid_reason: 'Elegí un motivo para el reporte.',
+  missions_incomplete: 'Todavía te faltan misiones para reclamar el protector.',
+  already_claimed: 'Ya reclamaste el protector de hoy.',
 };
 
 export function toUserMessage(error: unknown): string {

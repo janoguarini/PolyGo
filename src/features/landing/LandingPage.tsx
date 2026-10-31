@@ -1,7 +1,7 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import {
-  Bell,
+  ListChecks,
   BookOpen,
   Check,
   ChevronDown,
@@ -85,8 +85,8 @@ const STEPS = [
 const FEATURES = [
   {
     icon: Flame,
-    title: 'Racha y objetivo diario',
-    text: 'Elegís cuántos minutos por día y Polygo te festeja cada día cumplido.',
+    title: 'Racha con protector',
+    text: 'Elegís tu objetivo diario y sumás días seguidos. Si un día no podés, un protector de racha la mantiene viva.',
   },
   {
     icon: UserPlus,
@@ -104,9 +104,9 @@ const FEATURES = [
     text: 'Cada palabra se puede escuchar, y hay ejercicios de comprensión auditiva.',
   },
   {
-    icon: Bell,
-    title: 'Recordatorio diario',
-    text: 'Un aviso a la hora que elijas para no cortar la racha. Se configura en el teléfono.',
+    icon: ListChecks,
+    title: 'Misiones diarias',
+    text: 'Tres metas nuevas cada día. Completalas y ganás un protector de racha.',
   },
   {
     icon: LayoutGrid,

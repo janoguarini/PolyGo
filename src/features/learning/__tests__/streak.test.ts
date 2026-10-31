@@ -60,3 +60,14 @@ it('daysLabel usa singular y plural', () => {
   expect(daysLabel(1)).toBe('1 día');
   expect(daysLabel(7)).toBe('7 días');
 });
+
+describe('streakWeek con protector', () => {
+  // Jueves 29/10/2026: el martes 27 lo cubrió un protector.
+  const today = new Date(2026, 9, 29, 15);
+
+  it('el día cubierto no cuenta como estudiado pero no corta la racha', () => {
+    const week = streakWeek(3, true, today, ['2026-10-27']);
+    expect(week.map((d) => d.active)).toEqual([false, false, false, true, false, true, true]);
+    expect(week.map((d) => d.frozen)).toEqual([false, false, false, false, true, false, false]);
+  });
+});
