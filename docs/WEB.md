@@ -31,6 +31,7 @@ npm run website:emblems   # regenera los SVG de rangos desde la geometría de la
 | `siteUrl` | Dirección **canónica** del sitio (sin `/` final). Ver "Netlify y GitHub Pages" abajo. |
 | `appStoreUrl`, `playStoreUrl` | Links de las tiendas. Vacíos = botones "Próximamente". |
 | `contactEmail`, `ownerName`, `country`, `privacyUpdated` | Datos de la política de privacidad y de borrar cuenta. |
+| `indexable` | `false` = todas las páginas con `noindex` y sin sitemap en `robots.txt`. Hoy está en `false` hasta tener dominio propio. |
 
 Cada campo se puede pisar con una variable de entorno en el hosting: `SITE_URL`, `APP_STORE_URL`, `PLAY_STORE_URL`, `CONTACT_EMAIL`, `OWNER_NAME`.
 
@@ -54,7 +55,21 @@ Sin `DEPLOY_PAGES`, el workflow sólo verifica que el sitio compile.
 
 **Dominio propio** (recomendado para SEO): se compra aparte y se conecta en el hosting principal; después actualizar `siteUrl`.
 
-## Después de publicar
+## Estado actual
+
+- Publicado en Netlify: **https://polygoidiomas.netlify.app** (dirección provisoria, sin indexar).
+- Privacidad: https://polygoidiomas.netlify.app/privacidad · Borrar cuenta: https://polygoidiomas.netlify.app/borrar-cuenta
+- La app toma la URL de privacidad de `eas.json` (todas las builds) y de `.env` (desarrollo).
+
+## Al comprar el dominio propio
+
+1. Conectarlo en Netlify (Domain management → Add a domain).
+2. `website/site.config.json`: `siteUrl` = el dominio nuevo e `indexable` = `true`.
+3. Cambiar `EXPO_PUBLIC_PRIVACY_POLICY_URL` en `eas.json` y `.env`, y las URL en App Store Connect y Play Console.
+4. Google Search Console: agregar el dominio y enviar `https://<dominio>/sitemap.xml`.
+5. Netlify redirige la dirección `.netlify.app` al dominio principal, así que los links viejos siguen andando.
+
+## Después de publicar (con dominio)
 
 - Google Search Console: agregar el sitio y enviar `https://<sitio>/sitemap.xml`.
 - `EXPO_PUBLIC_PRIVACY_POLICY_URL` = `https://<sitio>/privacidad` (el enlace aparece en Ajustes de la app).

@@ -19,6 +19,8 @@ const config = {
   playStoreUrl: process.env.PLAY_STORE_URL || file.playStoreUrl,
   contactEmail: process.env.CONTACT_EMAIL || file.contactEmail,
   ownerName: process.env.OWNER_NAME || file.ownerName,
+  // false hasta tener el dominio definitivo: los buscadores no indexan la dirección provisoria.
+  indexable: file.indexable !== false,
 };
 
 /** Páginas del sitio: archivo fuente, ruta pública, título y descripción (SEO). */
@@ -119,6 +121,7 @@ function render(page) {
     stores: storesHtml,
     // La 404 se sirve en cualquier ruta: enlaces absolutos. El resto, relativos (GitHub Pages usa /PolyGo/).
     base: page.file === '404.html' ? `${config.siteUrl}/` : '',
+    robots: config.indexable ? '' : '<meta name="robots" content="noindex, nofollow" />',
   };
   let html = readFileSync(join(src, page.file), 'utf8');
   html = html.replace(/\{\{> (\w+)\}\}/g, (_, name) => partial(name));
@@ -149,9 +152,15 @@ writeFileSync(
       `  <url><loc>${config.siteUrl}${p.path}</loc><lastmod>${today}</lastmod><priority>${p.priority}</priority></url>`,
   ).join('\n')}\n</urlset>\n`,
 );
-writeFileSync(join(out, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${config.siteUrl}/sitemap.xml\n`);
+writeFileSync(
+  join(out, 'robots.txt'),
+  config.indexable
+    ? `User-agent: *\nAllow: /\n\nSitemap: ${config.siteUrl}/sitemap.xml\n`
+    : // Se deja rastrear para que vean el noindex de cada página.
+      'User-agent: *\nAllow: /\n',
+);
 // GitHub Pages: no procesar con Jekyll.
 writeFileSync(join(out, '.nojekyll'), '');
 
 for (const w of [...new Set(warnings)]) console.warn(`⚠ ${w}`);
-console.log(`Sitio listo en ${out} (${PAGES.length} páginas) para ${config.siteUrl}`);
+console.log(`Sitio listo en ${out} (${PAGES.length} páginas) para ${config.siteUrl}${config.indexable ? '' : ' · sin indexar (noindex)'}`);
