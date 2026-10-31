@@ -7,50 +7,72 @@ export interface LeaderboardEntry {
   username: string;
   avatarId: string;
   avatarPath: string | null;
+  region: string | null;
+  /** Idioma del rating mostrado (en la global, el mejor del jugador). */
+  languageCode: string;
   rating: number;
   gamesPlayed: number;
+  wins: number;
+  position: number;
 }
 
 /**
- * Clasificación global real: jugadores con onboarding completo y posicionados (ganaron alguna
- * ranked), ordenados por rating.
+ * Clasificación: jugadores con onboarding completo y posicionados (ganaron alguna ranked),
+ * ordenados por rating. Sin idioma = global (el mejor rating de cada uno entre sus idiomas).
  */
 export async function fetchLeaderboard(
-  languageCode: string,
-  limit = 50,
+  languageCode: string | null,
+  limit = 100,
 ): Promise<LeaderboardEntry[]> {
-  const { data, error } = await requireSupabase()
-    .from('player_ratings')
-    .select('user_id, rating, games_played, profiles!inner(username, avatar_id, avatar_path)')
-    .eq('language_code', languageCode)
-    .not('profiles.username', 'is', null)
-    .gt('wins', 0)
-    .order('rating', { ascending: false })
-    .order('games_played', { ascending: false })
-    .limit(limit);
+  const { data, error } = await requireSupabase().rpc('get_leaderboard', {
+    p_language_code: languageCode,
+    p_limit: limit,
+  });
   if (error) throw error;
+  return data.map((row) => ({
+    userId: row.user_id,
+    username: row.username,
+    avatarId: row.avatar_id,
+    avatarPath: row.avatar_path,
+    region: row.region,
+    languageCode: row.language_code,
+    rating: row.rating,
+    gamesPlayed: row.games_played,
+    wins: row.wins,
+    position: Number(row.position),
+  }));
+}
 
-  return data.flatMap((row) => {
-    const profile = row.profiles;
-    if (!profile.username) return [];
-    return [
-      {
-        userId: row.user_id,
-        username: profile.username,
-        avatarId: profile.avatar_id,
-        avatarPath: profile.avatar_path,
-        rating: row.rating,
-        gamesPlayed: row.games_played,
-      },
-    ];
+export function useLeaderboard(languageCode: string | null) {
+  return useQuery({
+    queryKey: ['leaderboard', languageCode ?? 'all'],
+    queryFn: () => fetchLeaderboard(languageCode),
   });
 }
 
-export function useLeaderboard(languageCode: string | undefined) {
+export interface LeaderboardPosition {
+  /** null = todavía sin posicionar. */
+  position: number | null;
+  total: number;
+}
+
+export async function fetchMyPosition(languageCode: string | null): Promise<LeaderboardPosition> {
+  const { data, error } = await requireSupabase().rpc('get_my_leaderboard_position', {
+    p_language_code: languageCode,
+  });
+  if (error) throw error;
+  const row = data[0];
+  return {
+    position: row?.position == null ? null : Number(row.position),
+    total: Number(row?.total ?? 0),
+  };
+}
+
+/** Tu puesto en la clasificación (global si languageCode es null). */
+export function useMyLeaderboardPosition(languageCode: string | null) {
   return useQuery({
-    queryKey: ['leaderboard', languageCode],
-    queryFn: () => fetchLeaderboard(languageCode!),
-    enabled: Boolean(languageCode),
+    queryKey: ['leaderboard', 'me', languageCode ?? 'all'],
+    queryFn: () => fetchMyPosition(languageCode),
   });
 }
 

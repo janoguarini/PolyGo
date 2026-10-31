@@ -36,6 +36,7 @@ import { LessonPath } from '@/features/learning/components/LessonPath';
 import { useCurriculum, useLearningSummary } from '@/features/learning/hooks';
 import { daysLabel, streakAtRisk } from '@/features/learning/streak';
 import { useDailyMissions } from '@/features/missions/api';
+import { useTabPressScroll } from '@/lib/useTabPressScroll';
 import { useMyProfile } from '@/features/profile/hooks';
 
 /** Fracción del alto visible donde queda la lección actual al centrarla. */
@@ -65,6 +66,9 @@ export default function HomeScreen() {
     const y = Math.max(0, currentY.current - viewport.current * FOCUS_RATIO);
     scrollRef.current?.scrollTo({ y, animated });
   };
+
+  // Tocar la pestaña te devuelve a tu lección (el "inicio" del camino).
+  useTabPressScroll(scrollRef, scrollToCurrent);
 
   const handleScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     const { contentOffset, layoutMeasurement } = e.nativeEvent;

@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import { ChevronRight, Layers, Smartphone } from 'lucide-react-native';
-import { useState } from 'react';
-import { Platform, StyleSheet, View } from 'react-native';
+import { useRef, useState } from 'react';
+import { Platform, StyleSheet, View, type ScrollViewInstance } from 'react-native';
 
 import { SRS_CONFIG, WORD_STATUS_LABELS, wordStatus, type WordStatus } from '@shared/srs';
 
@@ -20,6 +20,7 @@ import {
 } from '@/design-system';
 import { SpeakButton } from '@/features/learning/components/SpeakButton';
 import { useMyWords, useWordOfTheDay } from '@/features/learning/hooks';
+import { useTabPressScroll } from '@/lib/useTabPressScroll';
 import { widgetsSupported } from '@/features/widgets/sync';
 
 const STATUS_COLOR: Record<WordStatus, keyof typeof colors> = {
@@ -31,6 +32,8 @@ const STATUS_COLOR: Record<WordStatus, keyof typeof colors> = {
 export default function VocabularyScreen() {
   const words = useMyWords();
   const wordOfDay = useWordOfTheDay();
+  const scrollRef = useRef<ScrollViewInstance>(null);
+  useTabPressScroll(scrollRef);
   // Referencia temporal fija por montaje de la pantalla (se actualiza al refrescar).
   const [now, setNow] = useState(() => Date.now());
 
@@ -49,6 +52,7 @@ export default function VocabularyScreen() {
 
   return (
     <Screen
+      scrollRef={scrollRef}
       onRefresh={() => {
         setNow(Date.now());
         void words.refetch();

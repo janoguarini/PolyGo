@@ -40,6 +40,8 @@ export function QuestionCard({ question, feedback, streak, disabled, onAnswer }:
   const shown = feedback?.questionIndex === question.index ? feedback : null;
   const kind = question.kind ?? 'text';
   const level = streakLevel(streak);
+  // El cartel sólo salta al subir de escalón y cada 5 seguidas; en el medio cambia el número.
+  const pulse = `${level}-${Math.floor(streak / 5)}`;
   const bonus = shown?.correct ? streakBonus(shown.streak) : 0;
 
   // Las de audio se escuchan solas al aparecer (se pueden repetir con el parlante).
@@ -53,7 +55,7 @@ export function QuestionCard({ question, feedback, streak, disabled, onAnswer }:
       <Card style={[styles.prompt, level > 0 && { borderColor: STREAK_COLORS[level] }]}>
         {level > 0 ? (
           <Animated.View
-            key={streak}
+            key={pulse}
             entering={ZoomIn.springify().damping(12)}
             style={[styles.streak, { backgroundColor: STREAK_COLORS[level] }]}
             accessible

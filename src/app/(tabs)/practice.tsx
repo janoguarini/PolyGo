@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import { ChevronRight, Layers, RotateCcw, Target, Zap } from 'lucide-react-native';
-import { useState, type ReactNode } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { useRef, useState, type ReactNode } from 'react';
+import { StyleSheet, View, type ScrollViewInstance } from 'react-native';
 
 import { SRS_CONFIG } from '@shared/srs';
 
@@ -17,6 +17,7 @@ import {
   spacing,
 } from '@/design-system';
 import { useCurriculum, useMyWords } from '@/features/learning/hooks';
+import { useTabPressScroll } from '@/lib/useTabPressScroll';
 import { lessonStars } from '@/features/learning/path';
 
 /** Lecciones completadas que conviene repetir (las de peor precisión primero). */
@@ -25,6 +26,8 @@ const REPLAY_COUNT = 4;
 export default function PracticeScreen() {
   const words = useMyWords();
   const curriculum = useCurriculum();
+  const scrollRef = useRef<ScrollViewInstance>(null);
+  useTabPressScroll(scrollRef);
   // Referencia temporal fija por montaje de la pantalla (se actualiza al refrescar).
   const [now, setNow] = useState(() => Date.now());
 
@@ -42,6 +45,7 @@ export default function PracticeScreen() {
 
   return (
     <Screen
+      scrollRef={scrollRef}
       onRefresh={() => {
         setNow(Date.now());
         void words.refetch();

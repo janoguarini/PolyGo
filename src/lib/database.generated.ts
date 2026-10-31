@@ -837,6 +837,25 @@ export type Database = {
         }[];
       };
       get_public_profile: { Args: { p_user_id: string }; Returns: Json };
+      get_leaderboard: {
+        Args: { p_language_code?: string | null; p_limit?: number };
+        Returns: {
+          user_id: string;
+          username: string;
+          avatar_id: string;
+          avatar_path: string | null;
+          region: string | null;
+          language_code: string;
+          rating: number;
+          games_played: number;
+          wins: number;
+          position: number;
+        }[];
+      };
+      get_my_leaderboard_position: {
+        Args: { p_language_code?: string | null };
+        Returns: { position: number | null; total: number }[];
+      };
       get_public_stars: {
         Args: { p_user_ids: string[] };
         Returns: { stars_earned: number; user_id: string }[];

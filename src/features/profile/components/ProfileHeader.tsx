@@ -74,7 +74,7 @@ function RankMini({ rating }: { rating: PlayerRatingRow }) {
     <Card
       gradient={gradients.ranked}
       style={styles.rank}
-      onPress={() => router.navigate('/ranked')}
+      onPress={() => router.push('/leaderboard')}
       accessibilityLabel={
         placement
           ? 'Sin posicionar: ganá una partida ranked para entrar al ranking'

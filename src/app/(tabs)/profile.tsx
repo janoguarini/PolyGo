@@ -1,6 +1,7 @@
 import { router } from 'expo-router';
 import { Settings } from 'lucide-react-native';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { useRef } from 'react';
+import { Pressable, StyleSheet, View, type ScrollViewInstance } from 'react-native';
 
 import { ErrorState, LoadingState, Screen, Text, colors, spacing } from '@/design-system';
 import { LearningStats } from '@/features/learning/components/LearningStats';
@@ -9,18 +10,21 @@ import { CompetitiveHistory } from '@/features/profile/components/CompetitiveHis
 import { LanguagesRow } from '@/features/profile/components/LanguagesRow';
 import { ProfileHeader } from '@/features/profile/components/ProfileHeader';
 import { CareerStats, PeriodStats } from '@/features/profile/components/ProfileStats';
+import { useTabPressScroll } from '@/lib/useTabPressScroll';
 import { useMyProfile } from '@/features/profile/hooks';
 
 /** Perfil propio: identidad y rango, estadísticas, idiomas, logros y aprendizaje. */
 export default function ProfileScreen() {
   const { data, isPending, isError, refetch, isRefetching } = useMyProfile();
+  const scrollRef = useRef<ScrollViewInstance>(null);
+  useTabPressScroll(scrollRef);
 
   if (isPending) return <LoadingState />;
   if (isError || !data) return <ErrorState onRetry={() => void refetch()} />;
   const { profile, rating } = data;
 
   return (
-    <Screen onRefresh={() => void refetch()} refreshing={isRefetching}>
+    <Screen scrollRef={scrollRef} onRefresh={() => void refetch()} refreshing={isRefetching}>
       <View style={styles.topBar}>
         <Text variant="title">Perfil</Text>
         <Pressable

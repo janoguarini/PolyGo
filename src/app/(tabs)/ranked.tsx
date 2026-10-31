@@ -1,58 +1,65 @@
 import { router } from 'expo-router';
-import {
-  CalendarDays,
-  Dumbbell,
-  KeyRound,
-  Search,
-  Star,
-  Trophy,
-  UserPlus,
-} from 'lucide-react-native';
-import { useState } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { CalendarDays, Dumbbell, KeyRound, Search, Trophy, UserPlus } from 'lucide-react-native';
+import { useRef, useState } from 'react';
+import { Pressable, StyleSheet, View, type ScrollViewInstance } from 'react-native';
 
 import {
-  Avatar,
   Button,
   Card,
   ErrorState,
   LoadingState,
-  RankEmblemForRating,
   Screen,
   Text,
   TextField,
+  MIN_TOUCH,
   colors,
+  radii,
   spacing,
 } from '@/design-system';
-import { useAuth } from '@/features/auth/AuthProvider';
-import { useBlockedIds } from '@/features/blocks/api';
 import { useActiveSeason, useMyProfile } from '@/features/profile/hooks';
-import { useLeaderboard, useLeaderboardStars } from '@/features/ranked/api';
+import { useMyLeaderboardPosition } from '@/features/ranked/api';
+import { useTabPressScroll } from '@/lib/useTabPressScroll';
 import { RankCard } from '@/features/ranked/RankCard';
-import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 
 const dateFormat = new Intl.DateTimeFormat('es', { day: 'numeric', month: 'short' });
 
 export default function RankedScreen() {
-  const { session } = useAuth();
   const me = useMyProfile();
   const season = useActiveSeason();
-  const leaderboard = useLeaderboard(me.data?.profile.target_language);
-  const stars = useLeaderboardStars(leaderboard.data?.map((e) => e.userId));
-  const blockedIds = useBlockedIds();
+  const position = useMyLeaderboardPosition(null);
+  const scrollRef = useRef<ScrollViewInstance>(null);
+  useTabPressScroll(scrollRef);
 
   if (me.isPending) return <LoadingState />;
   if (me.isError || !me.data) return <ErrorState onRetry={() => void me.refetch()} />;
 
   return (
     <Screen
+      scrollRef={scrollRef}
       onRefresh={() => {
         void me.refetch();
-        void leaderboard.refetch();
+        void position.refetch();
       }}
-      refreshing={me.isRefetching || leaderboard.isRefetching}
+      refreshing={me.isRefetching}
     >
-      <Text variant="title">Ranked</Text>
+      <View style={styles.titleRow}>
+        <Text variant="title">Ranked</Text>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={
+            position.data?.position
+              ? `Clasificación: estás en el puesto ${position.data.position} del mundo`
+              : 'Clasificación'
+          }
+          onPress={() => router.push('/leaderboard')}
+          style={({ pressed }) => [styles.trophyButton, pressed && styles.pressed]}
+        >
+          <Trophy color={colors.gold} fill={colors.goldStrong} size={22} />
+          <Text variant="bodyStrong" color="gold">
+            {position.data?.position ? `#${position.data.position}` : 'Top'}
+          </Text>
+        </Pressable>
+      </View>
 
       {season.data ? (
         <View style={styles.season}>
@@ -84,79 +91,6 @@ export default function RankedScreen() {
       </Card>
 
       <FriendChallengeCard />
-
-      <View style={styles.sectionHeader}>
-        <Trophy color={colors.gold} size={20} />
-        <Text variant="heading">Clasificación global</Text>
-      </View>
-
-      {leaderboard.isPending ? (
-        <LoadingState label="Cargando clasificación…" />
-      ) : leaderboard.isError ? (
-        <ErrorState
-          message="No pudimos cargar la clasificación."
-          onRetry={() => void leaderboard.refetch()}
-        />
-      ) : (
-        <Card style={styles.list}>
-          {leaderboard.data.map((entry, index) => {
-            // Los bloqueados no se muestran; el resto conserva su puesto real.
-            if (blockedIds.has(entry.userId)) return null;
-            const isMe = entry.userId === session?.user.id;
-            const entryStars = stars.data?.[entry.userId];
-            return (
-              <Pressable
-                key={entry.userId}
-                style={({ pressed }) => [
-                  styles.entry,
-                  isMe && styles.entryMe,
-                  pressed && styles.pressed,
-                ]}
-                accessibilityRole="button"
-                accessibilityLabel={`Puesto ${index + 1}, ${entry.username}, ${entry.rating} ELO${entryStars !== undefined ? `, ${entryStars} estrellas` : ''}`}
-                accessibilityHint="Abre el perfil del jugador"
-                onPress={() =>
-                  isMe
-                    ? router.navigate('/profile')
-                    : router.push({ pathname: '/player/[id]', params: { id: entry.userId } })
-                }
-              >
-                <Text
-                  variant="bodyStrong"
-                  color={index < 3 ? 'gold' : 'textMuted'}
-                  style={styles.position}
-                >
-                  {index + 1}
-                </Text>
-                <Avatar
-                  avatarId={entry.avatarId}
-                  photoUrl={avatarPhotoUrl(entry.avatarPath)}
-                  size={32}
-                />
-                <Text variant="bodyStrong" numberOfLines={1} style={styles.name}>
-                  {entry.username}
-                  {isMe ? ' (vos)' : ''}
-                </Text>
-                {entryStars !== undefined ? (
-                  <View style={styles.stars}>
-                    <Star color={colors.gold} fill={colors.gold} size={14} />
-                    <Text variant="caption" color="gold">
-                      {entryStars}
-                    </Text>
-                  </View>
-                ) : null}
-                <RankEmblemForRating rating={entry.rating} size={26} />
-                <Text variant="bodyStrong" color="text">
-                  {entry.rating}
-                </Text>
-              </Pressable>
-            );
-          })}
-          {leaderboard.data.length === 0 ? (
-            <Text color="textMuted">Todavía no hay jugadores.</Text>
-          ) : null}
-        </Card>
-      )}
     </Screen>
   );
 }
@@ -222,27 +156,17 @@ function FriendChallengeCard() {
 const styles = StyleSheet.create({
   season: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs, marginTop: -spacing.sm },
   matchCard: { gap: spacing.md },
-  sectionHeader: {
+  titleRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+  trophyButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: spacing.sm,
-    marginTop: spacing.sm,
-  },
-  list: { gap: spacing.xs, paddingVertical: spacing.sm },
-  entry: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.md,
-    paddingVertical: spacing.sm,
-  },
-  entryMe: {
-    backgroundColor: colors.surfaceHighlight,
-    borderRadius: 10,
-    marginHorizontal: -spacing.sm,
-    paddingHorizontal: spacing.sm,
+    gap: spacing.xs,
+    minHeight: MIN_TOUCH,
+    paddingHorizontal: spacing.md,
+    borderRadius: radii.pill,
+    backgroundColor: colors.surfaceRaised,
+    borderWidth: 1.5,
+    borderColor: colors.goldStrong,
   },
   pressed: { opacity: 0.75 },
-  position: { width: 24, textAlign: 'center' },
-  name: { flex: 1 },
-  stars: { flexDirection: 'row', alignItems: 'center', gap: spacing.xxs },
 });
