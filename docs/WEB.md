@@ -16,21 +16,27 @@ npx expo export -p web        # build de producción en dist/
 npx expo serve                # sirve dist/ en http://localhost:8081
 ```
 
-## Publicar (EAS Hosting, recomendado por Expo)
+## Publicar en Cloudflare Pages (gratis)
 
-`app.json` tiene `web.output: "single"` (una sola página; el enrutado lo hace la app).
+`app.json` tiene `web.output: "single"` (una sola página; el enrutado lo hace la app). Cloudflare Pages sirve `index.html` en cualquier ruta si no hay `404.html`, así que `/ranked` o `/challenge/ABC234` funcionan sin reglas extra.
 
-```bash
-npx expo export -p web
-npx eas-cli@latest deploy             # vista previa con URL propia
-npx eas-cli@latest deploy --prod      # producción
-```
+1. dash.cloudflare.com → Workers & Pages → Create → Pages → **Connect to Git** → repositorio `janoguarini/PolyGo`, rama `main`.
+2. Configuración de build:
+   - Framework preset: **None**
+   - Build command: `npx expo export -p web`
+   - Build output directory: `dist`
+3. Variables de entorno (para Production y Preview):
+   - `EXPO_PUBLIC_SUPABASE_URL` y `EXPO_PUBLIC_SUPABASE_ANON_KEY`: los mismos valores del `.env` (son públicos: viajan dentro de la app).
+   - `NODE_VERSION` = `22`
+   - No cargar `EXPO_PUBLIC_BATTLE_SERVER_URL` mientras no exista el servidor de partidas.
+4. Deploy. Queda en `https://<proyecto>.pages.dev` y se vuelve a publicar solo con cada push a `main` (cada rama tiene su URL de vista previa).
+5. Supabase → Authentication → URL Configuration: agregar `https://<proyecto>.pages.dev/**` en **Redirect URLs** (si no, los emails de confirmación y de recuperar contraseña no vuelven a la web). Con dominio propio, agregarlo también y ponerlo como Site URL.
 
-Dominio propio: se configura en expo.dev → proyecto → Hosting. Después, agregar esa URL en Supabase → Authentication → URL Configuration (Site URL y Redirect URLs) para que los emails de confirmación y recuperación vuelvan a la web.
+Dominio propio: Pages → Custom domains (gratis; el dominio se compra aparte).
 
-Otras opciones (Netlify, Vercel, Cloudflare Pages) sirven igual subiendo `dist/`, con una regla que mande todas las rutas a `/index.html`.
+Alternativa: EAS Hosting (`npx eas-cli@latest deploy --prod` después de exportar).
 
 ## Pendiente
 
-- Probar con sesión iniciada en la compu (lecciones, ranked, desafío, perfil) y ajustar lo que se vea mal.
 - Si un link de desafío se abre sin sesión, después de entrar hay que escribir el código a mano.
+- En Windows, las banderas de los idiomas del perfil se ven como letras (GB, BR): Windows no dibuja emojis de banderas.

@@ -19,6 +19,10 @@ export default function TabsLayout() {
         headerShown: false,
         tabBarActiveTintColor: colors.primaryBright,
         tabBarInactiveTintColor: colors.textMuted,
+        tabBarActiveBackgroundColor: sidebar ? colors.surfaceHighlight : undefined,
+        tabBarItemStyle: sidebar
+          ? { borderRadius: 12, marginHorizontal: 12, marginVertical: 2 }
+          : undefined,
         tabBarPosition: sidebar ? 'left' : 'bottom',
         tabBarLabelPosition: sidebar ? 'beside-icon' : undefined,
         tabBarStyle: sidebar
@@ -28,7 +32,12 @@ export default function TabsLayout() {
               width: 220,
               paddingTop: 24,
             }
-          : { backgroundColor: colors.backgroundDeep, borderTopColor: colors.border },
+          : {
+              backgroundColor: colors.backgroundDeep,
+              borderTopColor: colors.border,
+              // En el navegador no hay safe area abajo y la etiqueta quedaba cortada.
+              ...(Platform.OS === 'web' ? { height: 64, paddingBottom: 8 } : null),
+            },
         tabBarLabelStyle: sidebar
           ? { fontSize: 15, fontWeight: '600', marginLeft: 12 }
           : { fontSize: 11, fontWeight: '600' },

@@ -84,7 +84,7 @@ export function Screen({
           style={styles.fill}
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         >
-          {header}
+          {header ? Platform.OS === 'web' ? <View style={webColumn}>{header}</View> : header : null}
           <View style={styles.fill}>
             {content}
             {overlay}

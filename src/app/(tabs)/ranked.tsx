@@ -27,7 +27,6 @@ import {
   spacing,
 } from '@/design-system';
 import { useAuth } from '@/features/auth/AuthProvider';
-import { battleServerConfigured } from '@/features/battle/client';
 import { useActiveSeason, useMyProfile } from '@/features/profile/hooks';
 import { useLeaderboard, useLeaderboardStars } from '@/features/ranked/api';
 import { RankCard } from '@/features/ranked/RankCard';
@@ -69,9 +68,7 @@ export default function RankedScreen() {
       <Card style={styles.matchCard}>
         <Text variant="overline">MODO · WORD RUSH</Text>
         <Text color="textMuted">
-          {battleServerConfigured
-            ? `1 contra 1 · las mismas preguntas para los dos · si en ${BOT_CONFIG.afterMs / 1000} s no aparece nadie, jugás contra un bot de tu nivel (BOT).`
-            : '1 contra 1 contra un bot de tu nivel (BOT): 75 s de vocabulario, cuenta para el ELO. Cuanto más subís, más rápido y preciso juega.'}
+          {`1 contra 1 · las mismas preguntas para los dos · si en ${BOT_CONFIG.afterMs / 1000} s no aparece nadie, jugás contra un bot de tu nivel (BOT).`}
         </Text>
         <Button
           label="Buscar partida"

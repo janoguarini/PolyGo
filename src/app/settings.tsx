@@ -2,7 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 import * as Linking from 'expo-linking';
 import { router } from 'expo-router';
 import { LogOut, Pencil } from 'lucide-react-native';
-import { StyleSheet, Switch, View } from 'react-native';
+import { Platform, StyleSheet, Switch, View } from 'react-native';
 
 import {
   Button,
@@ -55,8 +55,13 @@ export default function SettingsScreen() {
     <Screen edges={['top', 'bottom']}>
       <ScreenHeader title="Ajustes" onBack={() => router.back()} />
 
-      <Text variant="overline">RECORDATORIO</Text>
-      <ReminderSettings />
+      {/* Los recordatorios son notificaciones del teléfono: no existen en la web. */}
+      {Platform.OS === 'web' ? null : (
+        <>
+          <Text variant="overline">RECORDATORIO</Text>
+          <ReminderSettings />
+        </>
+      )}
 
       <Text variant="overline" style={styles.section}>
         SONIDO
