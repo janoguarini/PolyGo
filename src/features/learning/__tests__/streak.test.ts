@@ -1,4 +1,4 @@
-import { celebrationFor, daysLabel, streakAtRisk, streakWeek } from '../streak';
+import { celebrationFor, daysLabel, streakWeek } from '../streak';
 
 const day = (streak_days: number, active_today: boolean, today_seconds = 0) => ({
   streak_days,
@@ -28,14 +28,6 @@ describe('celebrationFor', () => {
 
   it('no festeja de nuevo si ya estaban la racha y el objetivo', () => {
     expect(celebrationFor(day(5, true, 700), day(5, true, 900), 10)).toBeNull();
-  });
-});
-
-describe('streakAtRisk', () => {
-  it('sólo con racha y sin práctica hoy', () => {
-    expect(streakAtRisk(day(3, false))).toBe(true);
-    expect(streakAtRisk(day(3, true))).toBe(false);
-    expect(streakAtRisk(day(0, false))).toBe(false);
   });
 });
 

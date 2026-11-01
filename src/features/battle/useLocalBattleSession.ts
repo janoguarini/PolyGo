@@ -127,7 +127,8 @@ export function useLocalBattleSession() {
             },
             feedbackMs: FEEDBACK_MS,
             onAnswer: (correct, streak) => {
-              playSound(answerSound(correct, streak, previousStreak));
+              const sound = answerSound(correct, streak, previousStreak);
+              if (sound) playSound(sound);
               previousStreak = streak;
               void Haptics.notificationAsync(
                 correct

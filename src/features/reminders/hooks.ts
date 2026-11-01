@@ -53,13 +53,15 @@ export function useReminderSync() {
   const p = prefs.data;
   const streakDays = summary.data?.streak_days;
   const activeToday = summary.data?.active_today;
+  const streakFreezes = summary.data?.streak_freezes ?? 0;
+  const freezePending = summary.data?.freeze_pending ?? 0;
 
   useEffect(() => {
     if (!p || streakDays === undefined || activeToday === undefined) return;
-    syncReminders(p, { streakDays, activeToday }).catch(() => {
+    syncReminders(p, { streakDays, activeToday, streakFreezes, freezePending }).catch(() => {
       // Un recordatorio que no se programa nunca debe romper la app.
     });
-  }, [p, streakDays, activeToday]);
+  }, [p, streakDays, activeToday, streakFreezes, freezePending]);
 
   useEffect(() => () => void cancelReminders().catch(() => {}), []);
 }

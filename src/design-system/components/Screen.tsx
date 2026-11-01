@@ -32,6 +32,7 @@ export interface ScreenProps {
   /** Contenido flotante sobre el scroll (p. ej. un botón de acceso rápido). */
   overlay?: ReactNode;
   onScroll?: ScrollViewProps['onScroll'];
+  onScrollBeginDrag?: ScrollViewProps['onScrollBeginDrag'];
 }
 
 /** En la web (computadora) el contenido va en una columna centrada, como en el teléfono. */
@@ -50,11 +51,13 @@ export function Screen({
   header,
   overlay,
   onScroll,
+  onScrollBeginDrag,
 }: ScreenProps) {
   const content = scroll ? (
     <ScrollView
       ref={scrollRef}
       onScroll={onScroll}
+      onScrollBeginDrag={onScrollBeginDrag}
       scrollEventThrottle={onScroll ? 32 : undefined}
       refreshControl={
         onRefresh ? (

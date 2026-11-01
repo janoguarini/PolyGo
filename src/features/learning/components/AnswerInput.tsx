@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { type ReactNode, useMemo, useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
 import type { Exercise, UserAnswer } from '@shared/exercises';
@@ -35,6 +35,16 @@ export function AnswerInput(props: Props) {
   }
 }
 
+/** Respuestas centradas en el espacio libre y "Comprobar" fijo abajo. */
+function AnswerLayout({ children, footer }: { children: ReactNode; footer: ReactNode }) {
+  return (
+    <View style={styles.layout}>
+      <View style={styles.body}>{children}</View>
+      <View style={styles.footer}>{footer}</View>
+    </View>
+  );
+}
+
 function ChoiceInput({
   exercise,
   seed,
@@ -49,7 +59,16 @@ function ChoiceInput({
   const [selected, setSelected] = useState<string | null>(null);
 
   return (
-    <View style={styles.gap}>
+    <AnswerLayout
+      footer={
+        <Button
+          label="Comprobar"
+          size="lg"
+          disabled={disabled || selected === null}
+          onPress={() => selected !== null && onSubmit({ kind: 'option', value: selected })}
+        />
+      }
+    >
       <View style={styles.options}>
         {shuffled.map((option) => (
           <Pressable
@@ -74,13 +93,7 @@ function ChoiceInput({
           </Pressable>
         ))}
       </View>
-      <Button
-        label="Comprobar"
-        size="lg"
-        disabled={disabled || selected === null}
-        onPress={() => selected !== null && onSubmit({ kind: 'option', value: selected })}
-      />
-    </View>
+    </AnswerLayout>
   );
 }
 
@@ -88,7 +101,11 @@ function TextInputAnswer({ exercise, disabled, onSubmit }: Props) {
   const [value, setValue] = useState('');
   const submit = () => value.trim() && onSubmit({ kind: 'text', value });
   return (
-    <View style={styles.gap}>
+    <AnswerLayout
+      footer={
+        <Button label="Comprobar" size="lg" disabled={disabled || !value.trim()} onPress={submit} />
+      }
+    >
       <TextField
         label={exercise.type === 'complete_word' ? 'Palabra completa' : 'Tu respuesta en inglés'}
         value={value}
@@ -101,8 +118,7 @@ function TextInputAnswer({ exercise, disabled, onSubmit }: Props) {
         onSubmitEditing={submit}
         placeholder="Escribí acá…"
       />
-      <Button label="Comprobar" size="lg" disabled={disabled || !value.trim()} onPress={submit} />
-    </View>
+    </AnswerLayout>
   );
 }
 
@@ -119,7 +135,16 @@ function OrderInput({ exercise, seed, disabled, onSubmit, tokens }: Props & { to
   const [chosen, setChosen] = useState<number[]>([]);
 
   return (
-    <View style={styles.gap}>
+    <AnswerLayout
+      footer={
+        <Button
+          label="Comprobar"
+          size="lg"
+          disabled={disabled || chosen.length !== tokens.length}
+          onPress={() => onSubmit({ kind: 'tokens', value: chosen.map((i) => tokens[i]!) })}
+        />
+      }
+    >
       <View
         style={[styles.sentence, chosen.length === 0 && styles.sentenceEmpty]}
         accessibilityLabel="Tu oración"
@@ -145,13 +170,7 @@ function OrderInput({ exercise, seed, disabled, onSubmit, tokens }: Props & { to
           />
         ))}
       </View>
-      <Button
-        label="Comprobar"
-        size="lg"
-        disabled={disabled || chosen.length !== tokens.length}
-        onPress={() => onSubmit({ kind: 'tokens', value: chosen.map((i) => tokens[i]!) })}
-      />
-    </View>
+    </AnswerLayout>
   );
 }
 
@@ -218,7 +237,26 @@ function MatchInput({
   };
 
   return (
-    <View style={styles.gap}>
+    <AnswerLayout
+      footer={
+        <>
+          <Text variant="caption" align="center">
+            Tocá una palabra en inglés y después su significado.
+          </Text>
+          <Button
+            label="Comprobar"
+            size="lg"
+            disabled={disabled || Object.keys(matches).length !== pairs.length}
+            onPress={() =>
+              onSubmit({
+                kind: 'pairs',
+                value: Object.entries(matches).map(([left, right]) => ({ left, right })),
+              })
+            }
+          />
+        </>
+      }
+    >
       <View style={styles.match}>
         <View style={styles.column}>
           {lefts.map((left) => (
@@ -273,29 +311,17 @@ function MatchInput({
           ))}
         </View>
       </View>
-      <Text variant="caption" align="center">
-        Tocá una palabra en inglés y después su significado.
-      </Text>
-      <Button
-        label="Comprobar"
-        size="lg"
-        disabled={disabled || Object.keys(matches).length !== pairs.length}
-        onPress={() =>
-          onSubmit({
-            kind: 'pairs',
-            value: Object.entries(matches).map(([left, right]) => ({ left, right })),
-          })
-        }
-      />
-    </View>
+    </AnswerLayout>
   );
 }
 
 const styles = StyleSheet.create({
-  gap: { gap: spacing.md },
-  options: { gap: spacing.sm },
+  layout: { flex: 1, gap: spacing.xl },
+  body: { flex: 1, justifyContent: 'center', gap: spacing.lg },
+  footer: { gap: spacing.md },
+  options: { gap: spacing.md },
   option: {
-    minHeight: MIN_TOUCH + 8,
+    minHeight: MIN_TOUCH + 20,
     justifyContent: 'center',
     paddingHorizontal: spacing.lg,
     paddingVertical: spacing.md,
@@ -307,7 +333,7 @@ const styles = StyleSheet.create({
   optionSelected: { borderColor: colors.primaryBright, backgroundColor: colors.surfaceHighlight },
   pressed: { opacity: 0.85 },
   sentence: {
-    minHeight: 64,
+    minHeight: 96,
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'center',
@@ -321,19 +347,22 @@ const styles = StyleSheet.create({
   sentenceEmpty: { justifyContent: 'center', borderStyle: 'dashed' },
   bank: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm, justifyContent: 'center' },
   token: {
-    minHeight: MIN_TOUCH,
+    minHeight: MIN_TOUCH + 4,
     justifyContent: 'center',
-    paddingHorizontal: spacing.md,
+    paddingHorizontal: spacing.lg,
     borderRadius: radii.md,
     backgroundColor: colors.surfaceRaised,
     borderWidth: 1,
     borderColor: colors.borderStrong,
   },
   tokenUsed: { opacity: 0.35 },
-  match: { flexDirection: 'row', gap: spacing.md },
-  column: { flex: 1, gap: spacing.sm },
+  match: { flex: 1, maxHeight: 520, flexDirection: 'row', gap: spacing.md },
+  column: { flex: 1, gap: spacing.md },
+  // Las fichas crecen para ocupar el espacio libre, con tope para no quedar gigantes.
   matchItem: {
-    minHeight: MIN_TOUCH + 8,
+    flexGrow: 1,
+    flexBasis: MIN_TOUCH + 20,
+    maxHeight: 110,
     justifyContent: 'center',
     padding: spacing.sm,
     borderRadius: radii.md,

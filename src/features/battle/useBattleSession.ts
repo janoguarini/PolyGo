@@ -137,7 +137,8 @@ export function useBattleSession() {
         .then((res) => {
           if (!res.ok) return dispatch({ type: 'answer_rejected' });
           dispatch({ type: 'answer_result', result: res.data, chosen: option });
-          playSound(answerSound(res.data.correct, res.data.streak ?? 0, state.streak));
+          const sound = answerSound(res.data.correct, res.data.streak ?? 0, state.streak);
+          if (sound) playSound(sound);
           void Haptics.notificationAsync(
             res.data.correct
               ? Haptics.NotificationFeedbackType.Success

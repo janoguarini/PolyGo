@@ -10,6 +10,8 @@ import { Button, Card, RankEmblemForRating, Text, colors, radii, spacing } from 
 import { TierBadge } from '@/features/profile/components/AchievementBadge';
 
 import { BotBadge } from './BotBadge';
+import { Confetti } from './Confetti';
+import { ResultHero } from './ResultHero';
 
 interface Props {
   result: BattleFinish;
@@ -35,34 +37,55 @@ export function BattleResult({ result, onPlayAgain, onExit }: Props) {
       : result.friendly
         ? 'Desafío amistoso: no mueve el ELO.'
         : null;
+  const victory = !practice && me.outcome === 'win';
+  // Victorias y derrotas llevan al zorro; empates y prácticas, el encabezado simple.
+  const heroOutcome = practice
+    ? null
+    : me.outcome === 'win' || me.outcome === 'loss'
+      ? me.outcome
+      : null;
 
   return (
     <View style={styles.wrap}>
-      <Animated.View entering={FadeInUp.duration(400)} style={styles.header}>
-        <Animated.View
-          entering={ZoomIn.springify().damping(10)}
-          style={[styles.emojiWrap, me.outcome === 'win' && styles.emojiWin]}
-        >
-          <Text style={styles.emoji} accessibilityElementsHidden importantForAccessibility="no">
-            {EMOJIS[practice ? 'practice' : (me.outcome ?? 'draw')]}
+      {heroOutcome ? (
+        <ResultHero
+          outcome={heroOutcome}
+          ratingBefore={me.ratingBefore}
+          ratingAfter={me.ratingAfter}
+          placedBefore={me.placedBefore ?? true}
+          subtitle={subtitle}
+        />
+      ) : (
+        <Animated.View entering={FadeInUp.duration(400)} style={styles.header}>
+          <Animated.View
+            entering={ZoomIn.springify().damping(10)}
+            style={[styles.emojiWrap, me.outcome === 'win' && styles.emojiWin]}
+          >
+            <Text style={styles.emoji} accessibilityElementsHidden importantForAccessibility="no">
+              {EMOJIS[practice ? 'practice' : (me.outcome ?? 'draw')]}
+            </Text>
+          </Animated.View>
+          <Text
+            variant="display"
+            align="center"
+            color={me.outcome === 'win' ? 'gold' : 'textStrong'}
+          >
+            {title}
           </Text>
+          {subtitle ? (
+            <Text color="textMuted" align="center">
+              {subtitle}
+            </Text>
+          ) : null}
         </Animated.View>
-        <Text variant="display" align="center" color={me.outcome === 'win' ? 'gold' : 'textStrong'}>
-          {title}
-        </Text>
-        {subtitle ? (
-          <Text color="textMuted" align="center">
-            {subtitle}
-          </Text>
-        ) : null}
-      </Animated.View>
+      )}
 
       <Card style={styles.gap}>
         <Line label="Vos" player={me} highlight />
         {opponent ? <Line label={opponent.username} player={opponent} /> : null}
       </Card>
 
-      {!practice && me.ratingBefore !== null && me.ratingAfter !== null ? (
+      {!heroOutcome && !practice && me.ratingBefore !== null && me.ratingAfter !== null ? (
         <RatingChange
           before={me.ratingBefore}
           after={me.ratingAfter}
@@ -98,6 +121,7 @@ export function BattleResult({ result, onPlayAgain, onExit }: Props) {
         onPress={onPlayAgain}
       />
       <Button label="Volver" variant="ghost" onPress={onExit} />
+      {victory ? <Confetti /> : null}
     </View>
   );
 }

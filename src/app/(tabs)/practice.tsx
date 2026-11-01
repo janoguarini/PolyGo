@@ -1,14 +1,21 @@
 import { router } from 'expo-router';
-import { ChevronDown, ChevronRight, Layers, RotateCcw, Smartphone, Target, Zap } from 'lucide-react-native';
+import {
+  ChevronRight,
+  Layers,
+  ListChecks,
+  RotateCcw,
+  Smartphone,
+  Target,
+  Zap,
+} from 'lucide-react-native';
 import { useRef, useState, type ReactNode } from 'react';
-import { Platform, Pressable, StyleSheet, View, type ScrollViewInstance } from 'react-native';
+import { Platform, StyleSheet, View, type ScrollViewInstance } from 'react-native';
 
-import { SRS_CONFIG, WORD_STATUS_LABELS, wordStatus, type WordStatus } from '@shared/srs';
+import { SRS_CONFIG, wordStatus, type WordStatus } from '@shared/srs';
 
 import {
   Button,
   Card,
-  EmptyState,
   ErrorState,
   LoadingState,
   Screen,
@@ -21,26 +28,19 @@ import {
 } from '@/design-system';
 import { SpeakButton } from '@/features/learning/components/SpeakButton';
 import { useCurriculum, useMyWords, useWordOfTheDay } from '@/features/learning/hooks';
+import { useDailyMissions } from '@/features/missions/api';
 import { useTabPressScroll } from '@/lib/useTabPressScroll';
 import { lessonStars } from '@/features/learning/path';
 import { widgetsSupported } from '@/features/widgets/sync';
 
 /** Lecciones completadas que conviene repetir (las de peor precisión primero). */
 const REPLAY_COUNT = 4;
-/** Palabras visibles en «Tus palabras» antes de «Ver todas». */
-const WORDS_PREVIEW = 8;
-
-const STATUS_COLOR: Record<WordStatus, keyof typeof colors> = {
-  new: 'textMuted',
-  learning: 'info',
-  mastered: 'success',
-};
 
 export default function PracticeScreen() {
   const words = useMyWords();
   const curriculum = useCurriculum();
   const wordOfDay = useWordOfTheDay();
-  const [showAllWords, setShowAllWords] = useState(false);
+  const missions = useDailyMissions();
   const scrollRef = useRef<ScrollViewInstance>(null);
   useTabPressScroll(scrollRef);
   // Referencia temporal fija por montaje de la pantalla (se actualiza al refrescar).
@@ -64,7 +64,9 @@ export default function PracticeScreen() {
     },
     { new: 0, learning: 0, mastered: 0 } as Record<WordStatus, number>,
   );
-  const visibleWords = showAllWords ? entries : entries.slice(0, WORDS_PREVIEW);
+  const missionList = missions.data?.missions ?? [];
+  const missionsTotal = missionList.length || 3;
+  const missionsDone = missionList.filter((m) => m.done).length;
 
   return (
     <Screen
@@ -73,6 +75,7 @@ export default function PracticeScreen() {
         setNow(Date.now());
         void words.refetch();
         void curriculum.refetch();
+        void missions.refetch();
       }}
       refreshing={words.isRefetching}
     >
@@ -80,6 +83,27 @@ export default function PracticeScreen() {
         <Text variant="title">Repaso</Text>
         <Text color="textMuted">Sesiones cortas para fijar lo que ya aprendiste.</Text>
       </View>
+
+      {wordOfDay.data ? (
+        <Card gradient={gradients.hero} style={styles.widget}>
+          <View style={styles.widgetTop}>
+            <Text variant="overline" color="primarySoft">
+              PALABRA DEL DÍA
+            </Text>
+            <SpeakButton text={wordOfDay.data.text} />
+          </View>
+          <Text variant="display">
+            {wordOfDay.data.emoji ? `${wordOfDay.data.emoji} ` : ''}
+            {wordOfDay.data.text}
+          </Text>
+          <Text color="textMuted">
+            {wordOfDay.data.ipa} · {wordOfDay.data.translation_es}
+          </Text>
+          {wordOfDay.data.example_en ? (
+            <Text variant="caption">“{wordOfDay.data.example_en}”</Text>
+          ) : null}
+        </Card>
+      ) : null}
 
       <Card gradient={gradients.ranked} style={styles.gap}>
         <View style={styles.row}>
@@ -109,6 +133,23 @@ export default function PracticeScreen() {
           hint={`${SRS_CONFIG.masteredStage} repasos espaciados correctos`}
         />
       </View>
+
+      <Text variant="overline">HOY</Text>
+      <PracticeOption
+        icon={
+          <ListChecks
+            color={missionsDone === missionsTotal ? colors.success : colors.info}
+            size={22}
+          />
+        }
+        title="Misiones del día"
+        caption={
+          missions.data?.all_done && !missions.data.claimed
+            ? '¡Completas! Abrí tu cofre de Polys'
+            : `${missionsDone} de ${missionsTotal} completas · ganá Polys y protectores`
+        }
+        onPress={() => router.push('/missions')}
+      />
 
       <Text variant="overline">PRÁCTICA RÁPIDA</Text>
       <PracticeOption
@@ -152,78 +193,6 @@ export default function PracticeScreen() {
           })}
         </>
       ) : null}
-
-      {wordOfDay.data ? (
-        <>
-          <Text variant="overline">PALABRA DEL DÍA</Text>
-          <Card gradient={gradients.hero} style={styles.widget}>
-            <View style={styles.widgetTop}>
-              <Text variant="overline" color="primarySoft">
-                PALABRA DEL DÍA
-              </Text>
-              <SpeakButton text={wordOfDay.data.text} />
-            </View>
-            <Text variant="display">
-              {wordOfDay.data.emoji ? `${wordOfDay.data.emoji} ` : ''}
-              {wordOfDay.data.text}
-            </Text>
-            <Text color="textMuted">
-              {wordOfDay.data.ipa} · {wordOfDay.data.translation_es}
-            </Text>
-            {wordOfDay.data.example_en ? (
-              <Text variant="caption">“{wordOfDay.data.example_en}”</Text>
-            ) : null}
-          </Card>
-        </>
-      ) : null}
-
-      <Text variant="overline">
-        TUS PALABRAS{entries.length > 0 ? ` · ${entries.length}` : ''}
-      </Text>
-      {entries.length === 0 ? (
-        <EmptyState
-          title="Todavía no estudiaste palabras"
-          message="Completá tu primera lección y tus palabras aparecerán acá."
-          actionLabel="Ir a las lecciones"
-          onAction={() => router.navigate('/')}
-        />
-      ) : (
-        <Card style={styles.list}>
-          {visibleWords.map((entry) => {
-            const status = wordStatus(entry.stage, entry.seenCount);
-            return (
-              <View key={entry.word.id} style={styles.wordRow}>
-                <SpeakButton text={entry.word.text} />
-                <View style={styles.flex}>
-                  <Text variant="bodyStrong" color="textStrong">
-                    {entry.word.text}
-                  </Text>
-                  <Text variant="caption">{entry.word.translation_es}</Text>
-                </View>
-                <Text variant="overline" color={STATUS_COLOR[status]}>
-                  {WORD_STATUS_LABELS[status].toUpperCase()}
-                </Text>
-              </View>
-            );
-          })}
-          {entries.length > WORDS_PREVIEW ? (
-            <Pressable
-              accessibilityRole="button"
-              onPress={() => setShowAllWords((v) => !v)}
-              style={({ pressed }) => [styles.more, pressed && styles.disabled]}
-            >
-              <Text variant="bodyStrong" color="primarySoft">
-                {showAllWords ? 'Ver menos' : `Ver todas (${entries.length})`}
-              </Text>
-              <ChevronDown
-                color={colors.primarySoft}
-                size={18}
-                style={showAllWords ? styles.flip : undefined}
-              />
-            </Pressable>
-          ) : null}
-        </Card>
-      )}
 
       <Card style={styles.gap}>
         <View style={styles.row}>
@@ -289,16 +258,6 @@ const styles = StyleSheet.create({
   flex: { flex: 1, gap: spacing.xxs },
   emoji: { fontSize: 22, lineHeight: 28 },
   grid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
-  list: { gap: spacing.md },
-  wordRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  more: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: spacing.xs,
-    minHeight: 40,
-  },
-  flip: { transform: [{ rotate: '180deg' }] },
   widget: { gap: spacing.xs },
   widgetTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   pill: {

@@ -1,13 +1,5 @@
 import { router } from 'expo-router';
-import {
-  ArrowDown,
-  ArrowUp,
-  ChevronRight,
-  Flame,
-  ListChecks,
-  Snowflake,
-  Target,
-} from 'lucide-react-native';
+import { ArrowDown, ArrowUp, ChevronRight, Flame, Snowflake } from 'lucide-react-native';
 import { useRef, useState } from 'react';
 import {
   Pressable,
@@ -34,7 +26,7 @@ import {
 } from '@/design-system';
 import { LessonPath } from '@/features/learning/components/LessonPath';
 import { useCurriculum, useLearningSummary } from '@/features/learning/hooks';
-import { daysLabel, streakAtRisk } from '@/features/learning/streak';
+import { daysLabel } from '@/features/learning/streak';
 import { useDailyMissions } from '@/features/missions/api';
 import { PolysChip } from '@/features/polys/PolysChip';
 import { useStreakRepair } from '@/features/polys/api';
@@ -61,8 +53,9 @@ export default function HomeScreen() {
   const viewport = useRef(height * 0.7);
   // Hacia dónde quedó tu lección cuando no se ve; null si está en pantalla.
   const [away, setAway] = useState<'up' | 'down' | null>(null);
-  // Nivel elegido en el selector; null = el nivel con el que empezaste.
-  const [chosenLevel, setChosenLevel] = useState<string | null>(null);
+  // Lección con el recuadro abierto: se cierra al tocar cualquier otra parte o al scrollear.
+  const [openLesson, setOpenLesson] = useState<string | null>(null);
+  const closeLesson = () => setOpenLesson(null);
 
   const scrollToCurrent = (animated: boolean) => {
     if (currentY.current === null) return;
@@ -95,86 +88,49 @@ export default function HomeScreen() {
   }
 
   const { profile } = me.data;
-  const levels = [...new Set(curriculum.data.units.map((u) => u.level))];
+  // Sin selector de nivel: el camino es el primer nivel sin terminar desde el que empezaste.
+  const allUnits = curriculum.data.units;
+  const levels = [...new Set(allUnits.map((u) => u.level))];
+  const reachable = levels.slice(Math.max(0, levels.indexOf(profile.start_level)));
   const level =
-    chosenLevel ??
-    (levels.includes(profile.start_level) ? profile.start_level : (levels[0] ?? 'A1'));
-  const units = curriculum.data.units.filter((u) => u.level === level);
+    reachable.find((l) =>
+      allUnits.some((u) => u.level === l && u.completedCount < u.lessons.length),
+    ) ??
+    reachable[reachable.length - 1] ??
+    'A1';
+  const units = allUnits.filter((u) => u.level === level);
   const total = units.reduce((n, u) => n + u.lessons.length, 0);
   const completed = units.reduce((n, u) => n + u.completedCount, 0);
-  const todayMinutes = Math.floor((summary.data?.today_seconds ?? 0) / 60);
-  const goalMet = todayMinutes >= profile.daily_goal_minutes;
   const streak = summary.data?.streak_days ?? 0;
-  const atRisk = summary.data ? streakAtRisk(summary.data) : false;
-  const currentLesson = curriculum.data.currentByLevel[level] ?? null;
+  const activeToday = Boolean(summary.data?.active_today);
   const freezes = summary.data?.streak_freezes ?? 0;
-  const missionList = missions.data?.missions ?? [];
-  const missionsTotal = missionList.length || 3;
-  const missionsDone = missionList.filter((m) => m.done).length;
   const claimable = Boolean(missions.data?.all_done && !missions.data.claimed);
-  // Protectores que ya van a cubrir días que faltaste no te salvan si hoy tampoco estudiás.
-  const pendingFreezes = summary.data?.freeze_pending ?? 0;
-  const riskMessage =
-    pendingFreezes > 0
-      ? `Un protector cubre ${pendingFreezes === 1 ? 'el día que faltaste' : 'los días que faltaste'}. Hacé una lección hoy para seguir.`
-      : freezes > 0
-        ? 'Hacé una lección hoy. Si no, se usa un protector y la racha sigue.'
-        : 'Hacé una lección hoy para no perderla.';
 
   const header = (
-    <View style={styles.header}>
+    <View style={styles.header} onTouchStart={openLesson ? closeLesson : undefined}>
       <View style={styles.headerRow}>
         <View style={styles.flex}>
-          <View style={styles.levels} accessibilityRole="tablist">
-            <Text variant="overline" color="primarySoft">
-              INGLÉS
-            </Text>
-            {levels.map((l) => (
-              <Pressable
-                key={l}
-                accessibilityRole="tab"
-                accessibilityState={{ selected: l === level }}
-                accessibilityLabel={`Nivel ${l}`}
-                hitSlop={8}
-                onPress={() => {
-                  if (l === level) return;
-                  // El camino nuevo vuelve a centrarse en su lección actual, sin animar.
-                  currentY.current = null;
-                  setAway(null);
-                  setChosenLevel(l);
-                }}
-                style={[styles.level, l === level && styles.levelActive]}
-              >
-                <Text variant="overline" color={l === level ? 'onPrimary' : 'textMuted'}>
-                  {l}
-                </Text>
-              </Pressable>
-            ))}
-          </View>
+          <Text variant="overline" color="primarySoft">
+            INGLÉS
+          </Text>
           <Text variant="heading">Tu camino</Text>
         </View>
         <PolysChip />
-        <Pressable
-          style={styles.chip}
-          accessibilityRole="button"
-          accessibilityLabel={`Misiones del día: ${missionsDone} de ${missionsTotal}`}
-          onPress={() => router.push('/missions')}
-        >
-          <ListChecks
-            color={missionsDone === missionsTotal ? colors.success : colors.info}
-            size={20}
-          />
-          <Text variant="bodyStrong" color={missionsDone === missionsTotal ? 'success' : 'text'}>
-            {missionsDone}/{missionsTotal}
-          </Text>
-        </Pressable>
         <View
-          style={styles.chip}
+          style={[styles.streak, activeToday && styles.streakActive]}
           accessible
-          accessibilityLabel={`Racha de ${streak} días${freezes ? `, ${freezes} ${freezes === 1 ? 'protector' : 'protectores'}` : ''}`}
+          accessibilityLabel={`Racha de ${streak} días${activeToday ? '' : ', todavía no estudiaste hoy'}${freezes ? `, ${freezes} ${freezes === 1 ? 'protector' : 'protectores'}` : ''}`}
         >
-          <Flame color={summary.data?.active_today ? colors.streak : colors.textSubtle} size={20} />
-          <Text variant="bodyStrong" color={summary.data?.active_today ? 'streak' : 'textMuted'}>
+          <Flame
+            color={activeToday ? colors.streak : colors.textSubtle}
+            fill={activeToday ? colors.streak : 'transparent'}
+            size={22}
+          />
+          <Text
+            variant="heading"
+            color={activeToday ? 'streak' : 'textMuted'}
+            style={styles.tabular}
+          >
             {streak}
           </Text>
           {freezes ? (
@@ -185,16 +141,6 @@ export default function HomeScreen() {
               </Text>
             </View>
           ) : null}
-        </View>
-        <View
-          style={styles.chip}
-          accessible
-          accessibilityLabel={`Objetivo diario: ${Math.min(todayMinutes, profile.daily_goal_minutes)} de ${profile.daily_goal_minutes} minutos`}
-        >
-          <Target color={goalMet ? colors.success : colors.info} size={20} />
-          <Text variant="bodyStrong" color={goalMet ? 'success' : 'text'}>
-            {Math.min(todayMinutes, profile.daily_goal_minutes)}/{profile.daily_goal_minutes}
-          </Text>
         </View>
       </View>
       <View style={styles.headerRow}>
@@ -242,27 +188,6 @@ export default function HomeScreen() {
           <ChevronRight color={colors.info} size={20} />
         </Pressable>
       ) : null}
-      {atRisk ? (
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel={`Tu racha de ${daysLabel(streak)} está en riesgo. Hacé una lección hoy para mantenerla.`}
-          disabled={!currentLesson}
-          onPress={() =>
-            currentLesson &&
-            router.push({ pathname: '/lesson/[id]', params: { id: currentLesson.id } })
-          }
-          style={({ pressed }) => [styles.banner, styles.risk, pressed && styles.riskPressed]}
-        >
-          <Flame color={colors.streak} size={22} />
-          <View style={styles.flex}>
-            <Text variant="bodyStrong" color="streak">
-              Tu racha de {daysLabel(streak)} está en riesgo
-            </Text>
-            <Text variant="caption">{riskMessage}</Text>
-          </View>
-          {currentLesson ? <ChevronRight color={colors.streak} size={20} /> : null}
-        </Pressable>
-      ) : null}
     </View>
   );
 
@@ -278,6 +203,7 @@ export default function HomeScreen() {
       refreshing={curriculum.isRefetching}
       contentStyle={styles.content}
       onScroll={handleScroll}
+      onScrollBeginDrag={openLesson ? closeLesson : undefined}
       overlay={
         away ? (
           <Animated.View
@@ -311,6 +237,8 @@ export default function HomeScreen() {
         <LessonPath
           key={level}
           units={units}
+          selected={openLesson}
+          onSelectedChange={setOpenLesson}
           onCurrentLayout={(y) => {
             const first = currentY.current === null;
             currentY.current = y;
@@ -320,8 +248,8 @@ export default function HomeScreen() {
         />
       )}
       <Text variant="caption" align="center">
-        El contenido sigue el nivel {level} del MCER como referencia; completarlo no equivale a una
-        certificación oficial.
+        El contenido sigue el MCER como referencia; completarlo no equivale a una certificación
+        oficial.
       </Text>
     </Screen>
   );
@@ -338,16 +266,20 @@ const styles = StyleSheet.create({
   },
   headerRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   flex: { flex: 1 },
-  chip: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
-  levels: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
-  level: {
-    paddingHorizontal: spacing.sm,
-    paddingVertical: 2,
+  // Racha: apagada mientras no estudiaste hoy, encendida en naranja cuando ya cumpliste.
+  streak: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+    paddingVertical: spacing.xxs,
+    paddingHorizontal: spacing.md,
     borderRadius: radii.pill,
+    backgroundColor: colors.surfaceRaised,
     borderWidth: 1,
     borderColor: colors.border,
   },
-  levelActive: { backgroundColor: colors.primary, borderColor: colors.primaryBright },
+  streakActive: { backgroundColor: 'rgba(251,146,60,0.14)', borderColor: colors.streak },
+  tabular: { fontVariant: ['tabular-nums'] },
   banner: {
     flexDirection: 'row',
     alignItems: 'center',

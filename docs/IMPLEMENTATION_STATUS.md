@@ -92,8 +92,8 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 ### Racha y recordatorio diario (2026-10-30)
 
 - [x] Festejo al terminar la primera sesión del día (racha nueva o +1, semana con los días de la racha) y al cumplir el objetivo diario; aparece entre los resultados y lo que sigue, en lecciones y repasos guardados. Se calcula comparando el resumen de antes y después de la sesión (sin cambios en la base).
-- [x] Aviso "Tu racha está en riesgo" en Aprender cuando hay racha y hoy no practicaste; lleva a la lección actual.
-- [x] Recordatorio diario con `expo-notifications` (sólo local, `enableRemoteNotifications: false`): interruptor y horario en Perfil, oferta para activarlo desde el festejo. Se programan los próximos 7 días con fecha fija y se reprograman al abrir la app y al terminar cada sesión: si hoy ya practicaste no avisa hoy, y el texto menciona la racha cuando está en riesgo. Se cancelan al cerrar sesión. Agrega los permisos Android `POST_NOTIFICATIONS` y `RECEIVE_BOOT_COMPLETED`.
+- [x] Racha en riesgo: sin banner en Aprender (alcanza con la llama apagada arriba a la derecha); a las 21:00 locales (3 horas antes de medianoche) llega una notificación local "Quedan 3 horas para tu racha" si hay racha y ese día no practicaste. Es independiente del recordatorio diario (sólo necesita permiso de notificaciones) y aclara si un protector la salvaría. Canal Android propio, importancia alta.
+- [x] Recordatorio diario con `expo-notifications` (sólo local, `enableRemoteNotifications: false`): interruptor y horario en Perfil, oferta para activarlo desde el festejo. Se programan los próximos 7 días con fecha fija y se reprograman al abrir la app y al terminar cada sesión: si hoy ya practicaste no avisa hoy; el día en que la racha está en juego se omite si caería a las 21:00 o después, para no repetir el aviso de racha. Se cancelan al cerrar sesión. Agrega los permisos Android `POST_NOTIFICATIONS` y `RECEIVE_BOOT_COMPLETED`.
 - [ ] Probar en dispositivo (requiere development build nueva por el módulo nativo).
 
 ### Generador de consolidación (2026-10-30)

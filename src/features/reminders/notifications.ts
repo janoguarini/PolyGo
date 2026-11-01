@@ -4,7 +4,13 @@ import { Platform } from 'react-native';
 
 import { deviceStorage } from '@/lib/secureStorage';
 
-import { DEFAULT_REMINDER, planReminders, type ReminderPrefs } from './schedule';
+import {
+  DEFAULT_REMINDER,
+  planReminders,
+  planStreakAlert,
+  type ReminderPrefs,
+  type StreakState,
+} from './schedule';
 
 /** En web no hay notificaciones locales programadas. */
 export const remindersSupported = Platform.OS !== 'web';
@@ -12,6 +18,8 @@ export const remindersSupported = Platform.OS !== 'web';
 const PREFS_KEY = 'polygo.reminder';
 const CHANNEL_ID = 'daily-reminder';
 const ID_PREFIX = 'daily-reminder-';
+const STREAK_CHANNEL_ID = 'streak-alert';
+const STREAK_ALERT_ID = 'streak-alert';
 
 export async function loadReminderPrefs(): Promise<ReminderPrefs> {
   try {
@@ -53,6 +61,11 @@ async function ensureChannel() {
     description: 'Un aviso por día para no cortar tu racha.',
     importance: AndroidImportance.DEFAULT,
   });
+  await Notifications.setNotificationChannelAsync(STREAK_CHANNEL_ID, {
+    name: 'Racha por perderse',
+    description: 'Avisa cuando quedan pocas horas para que se corte tu racha.',
+    importance: AndroidImportance.HIGH,
+  });
 }
 
 export type PermissionResult = 'granted' | 'denied' | 'blocked';
@@ -76,28 +89,36 @@ export async function cancelReminders() {
   const scheduled = await Notifications.getAllScheduledNotificationsAsync();
   await Promise.all(
     scheduled
-      .filter((n) => n.identifier.startsWith(ID_PREFIX))
+      .filter((n) => n.identifier.startsWith(ID_PREFIX) || n.identifier === STREAK_ALERT_ID)
       .map((n) => Notifications.cancelScheduledNotificationAsync(n.identifier)),
   );
 }
 
 /**
- * Reprograma los recordatorios de los próximos días según tu racha de hoy. No pide permiso:
- * sin permiso concedido sólo borra los que hubiera.
+ * Reprograma los recordatorios de los próximos días y el aviso de racha según tu racha de hoy.
+ * No pide permiso: sin permiso concedido sólo borra los que hubiera.
  */
-export async function syncReminders(
-  prefs: ReminderPrefs,
-  state: { streakDays: number; activeToday: boolean },
-) {
+export async function syncReminders(prefs: ReminderPrefs, state: StreakState) {
   if (!remindersSupported) return;
   await cancelReminders();
-  if (!prefs.enabled) return;
   const permission = await Notifications.getPermissionsAsync();
   if (!permission.granted) return;
   await ensureChannel();
-  const plan = planReminders({ now: new Date(), prefs, ...state });
-  await Promise.all(
-    plan.map((r, i) =>
+  const now = new Date();
+  const alert = planStreakAlert({ now, ...state });
+  const plan = planReminders({ now, prefs, ...state });
+  await Promise.all([
+    alert &&
+      Notifications.scheduleNotificationAsync({
+        identifier: STREAK_ALERT_ID,
+        content: { title: alert.title, body: alert.body },
+        trigger: {
+          type: Notifications.SchedulableTriggerInputTypes.DATE,
+          date: alert.date,
+          channelId: STREAK_CHANNEL_ID,
+        },
+      }),
+    ...plan.map((r, i) =>
       Notifications.scheduleNotificationAsync({
         identifier: `${ID_PREFIX}${i}`,
         content: { title: r.title, body: r.body },
@@ -108,5 +129,5 @@ export async function syncReminders(
         },
       }),
     ),
-  );
+  ]);
 }

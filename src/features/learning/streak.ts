@@ -25,11 +25,6 @@ export function celebrationFor(
   return { streakDays: after.streak_days, streakExtended, goalMet, goalMinutes };
 }
 
-/** Hay una racha en juego y hoy todavía no practicaste: si no lo hacés, mañana vuelve a 0. */
-export function streakAtRisk(summary: Pick<LearningSummary, 'streak_days' | 'active_today'>) {
-  return summary.streak_days > 0 && !summary.active_today;
-}
-
 const DAY_LABELS = ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'];
 
 export interface WeekDay {

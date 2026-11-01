@@ -61,15 +61,21 @@ export function ExercisePrompt({ exercise }: { exercise: Exercise }) {
 
       {p.type === 'listen_choice' ? (
         <View style={styles.center}>
-          <SpeakButton text={p.audioText} size="lg" />
-          <Text variant="caption">Tocá para volver a escuchar</Text>
+          <View style={styles.row}>
+            <SpeakButton text={p.audioText} size="lg" />
+            <SpeakButton text={p.audioText} slow />
+          </View>
+          <Text variant="caption">Tocá para volver a escuchar · 🐢 más despacio</Text>
         </View>
       ) : null}
 
       {p.type === 'short_answer' ? (
         <View style={styles.gap}>
           <View style={styles.row}>
-            <SpeakButton text={p.question} />
+            <View style={styles.gap}>
+              <SpeakButton text={p.question} />
+              <SpeakButton text={p.question} slow />
+            </View>
             <View style={styles.flex}>
               <Bubble text={p.question} />
             </View>

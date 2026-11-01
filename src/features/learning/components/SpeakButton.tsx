@@ -1,17 +1,29 @@
-import { Volume2 } from 'lucide-react-native';
+import { Turtle, Volume2 } from 'lucide-react-native';
 import { Pressable, StyleSheet } from 'react-native';
 
 import { MIN_TOUCH, colors, radii } from '@/design-system';
 
 import { speakEnglish } from '../speech';
 
-export function SpeakButton({ text, size = 'md' }: { text: string; size?: 'md' | 'lg' }) {
+/** Parlante de pronunciación; con `slow`, la tortuga que repite despacio. */
+export function SpeakButton({
+  text,
+  size = 'md',
+  slow = false,
+}: {
+  text: string;
+  size?: 'md' | 'lg';
+  slow?: boolean;
+}) {
   const dimension = size === 'lg' ? 88 : MIN_TOUCH;
+  const Icon = slow ? Turtle : Volume2;
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={`Escuchar pronunciación (voz sintetizada)`}
-      onPress={() => speakEnglish(text)}
+      accessibilityLabel={
+        slow ? 'Escuchar despacio (voz sintetizada)' : 'Escuchar pronunciación (voz sintetizada)'
+      }
+      onPress={() => speakEnglish(text, { slow })}
       hitSlop={8}
       style={({ pressed }) => [
         styles.button,
@@ -19,7 +31,7 @@ export function SpeakButton({ text, size = 'md' }: { text: string; size?: 'md' |
         pressed && styles.pressed,
       ]}
     >
-      <Volume2 color={colors.info} size={size === 'lg' ? 40 : 22} />
+      <Icon color={colors.info} size={size === 'lg' ? 40 : 22} />
     </Pressable>
   );
 }

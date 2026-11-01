@@ -1,4 +1,4 @@
-import { Volume2 } from 'lucide-react-native';
+import { Turtle, Volume2 } from 'lucide-react-native';
 import { useEffect, useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import Animated, { ZoomIn } from 'react-native-reanimated';
@@ -73,14 +73,25 @@ export function QuestionCard({ question, feedback, streak, disabled, onAnswer }:
 
         {kind === 'audio' ? (
           <View style={styles.audio}>
-            <Pressable
-              accessibilityRole="button"
-              accessibilityLabel="Escuchar otra vez"
-              onPress={() => speakEnglish(question.prompt)}
-              style={({ pressed }) => [styles.speaker, pressed && styles.pressed]}
-            >
-              <Volume2 color={colors.onPrimary} size={40} />
-            </Pressable>
+            <View style={styles.speakers}>
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel="Escuchar otra vez"
+                onPress={() => speakEnglish(question.prompt)}
+                style={({ pressed }) => [styles.speaker, pressed && styles.pressed]}
+              >
+                <Volume2 color={colors.onPrimary} size={40} />
+              </Pressable>
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel="Escuchar despacio"
+                onPress={() => speakEnglish(question.prompt, { slow: true })}
+                hitSlop={8}
+                style={({ pressed }) => [styles.slow, pressed && styles.pressed]}
+              >
+                <Turtle color={colors.info} size={22} />
+              </Pressable>
+            </View>
             {/* La palabra se muestra recién al responder, para aprender cómo se escribe. */}
             <Text variant="heading" align="center" style={!shown && styles.hidden}>
               {question.prompt}
@@ -204,6 +215,17 @@ const styles = StyleSheet.create({
     borderRadius: radii.pill,
   },
   audio: { alignItems: 'center', gap: spacing.sm },
+  speakers: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+  slow: {
+    width: MIN_TOUCH,
+    height: MIN_TOUCH,
+    borderRadius: MIN_TOUCH / 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.surfaceRaised,
+    borderWidth: 1,
+    borderColor: colors.borderStrong,
+  },
   speaker: {
     width: 88,
     height: 88,

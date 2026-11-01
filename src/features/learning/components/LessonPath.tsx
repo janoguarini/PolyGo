@@ -92,16 +92,17 @@ interface Props {
    * y otra vez cada vez que cambia la lección actual (p. ej. al volver de completar una).
    */
   onCurrentLayout?: (y: number) => void;
+  /** Lección con el recuadro abierto; la controla la pantalla para cerrarlo al tocar afuera. */
+  selected: string | null;
+  onSelectedChange: (key: string | null) => void;
 }
 
-export function LessonPath({ units, onCurrentLayout }: Props) {
+export function LessonPath({ units, onCurrentLayout, selected, onSelectedChange }: Props) {
   // Offsets medidos con onLayout: raíz → sección → camino → nodo.
   const rootY = useRef<number | null>(null);
   const sectionY = useRef(new Map<string, number>());
   const pathY = useRef(new Map<string, number>());
   const reportedKey = useRef<string | null>(null);
-  // Lección con el recuadro abierto (completadas y bloqueadas; la actual arranca directo).
-  const [selected, setSelected] = useState<string | null>(null);
 
   const { sections, nextIndex, currentUnitId, currentNodeY } = buildSections(units);
   const currentKey = currentUnitId ? `${currentUnitId}:${currentNodeY}` : null;
@@ -131,7 +132,7 @@ export function LessonPath({ units, onCurrentLayout }: Props) {
     lockedMessage: 'Estamos preparando las unidades del nivel A2.',
   }));
 
-  const select = (key: string) => setSelected((prev) => (prev === key ? null : key));
+  const select = (key: string) => onSelectedChange(selected === key ? null : key);
   const owns = (nodes: PathNode[]) => selected !== null && nodes.some((n) => n.key === selected);
 
   return (
@@ -145,7 +146,7 @@ export function LessonPath({ units, onCurrentLayout }: Props) {
       {selected ? (
         <Pressable
           style={[StyleSheet.absoluteFill, styles.backdrop]}
-          onPress={() => setSelected(null)}
+          onPress={() => onSelectedChange(null)}
           accessibilityLabel="Cerrar detalle de la lección"
         />
       ) : null}
@@ -345,7 +346,7 @@ function PathSection({
               y={points[i]?.y ?? 0}
               // El cartel de la lección actual va del lado con más espacio.
               bubbleSide={pathOffset(firstIndex + i, width) > 0 ? 'left' : 'right'}
-              onPress={() => (node.status === 'current' ? node.onStart?.() : onSelect(node.key))}
+              onPress={() => onSelect(node.key)}
             />
           ))}
           {open && openPoint ? (
@@ -424,7 +425,7 @@ function LessonNode({
           pointerEvents="none"
           accessible={false}
         >
-          <Text variant="overline" color="primarySoft">
+          <Text variant="overline" color="primarySoft" numberOfLines={1}>
             EMPEZAR
           </Text>
         </View>
@@ -433,7 +434,7 @@ function LessonNode({
   );
 }
 
-/** Recuadro bajo una lección completada (estrellas + repetir) o bloqueada (qué falta). */
+/** Recuadro bajo una lección: estrellas y empezar/repetir, o qué falta si está bloqueada. */
 function LessonPopover({
   node,
   x,
@@ -446,6 +447,7 @@ function LessonPopover({
   accent: Accent;
 }) {
   const locked = node.status === 'locked';
+  const current = node.status === 'current';
   const perfect = node.stars === 3;
   const percent = Math.round((node.bestAccuracy ?? 0) * 100);
 
@@ -481,13 +483,21 @@ function LessonPopover({
             ))}
           </View>
           <Text color="textMuted">
-            {perfect
-              ? '¡Perfecta, sin ningún error! Esta lección ya es dorada.'
-              : `Mejor precisión: ${percent} %. Hacela sin errores para ganar las 3 estrellas y volverla dorada.`}
+            {current
+              ? 'Hacela sin errores para ganar las 3 estrellas y volverla dorada.'
+              : perfect
+                ? '¡Perfecta, sin ningún error! Esta lección ya es dorada.'
+                : `Mejor precisión: ${percent} %. Hacela sin errores para ganar las 3 estrellas y volverla dorada.`}
           </Text>
           <Button
-            label="Repasar de nuevo"
-            icon={<RotateCcw color={colors.onPrimary} size={18} />}
+            label={current ? 'Empezar lección' : 'Repasar de nuevo'}
+            icon={
+              current ? (
+                <Play color={colors.onPrimary} fill={colors.onPrimary} size={18} />
+              ) : (
+                <RotateCcw color={colors.onPrimary} size={18} />
+              )
+            }
             onPress={node.onStart ?? (() => {})}
           />
         </>
@@ -554,6 +564,9 @@ const styles = StyleSheet.create({
   },
   bubble: {
     position: 'absolute',
+    // Ancho propio: si no, hereda el del nodo y el texto se parte en dos líneas.
+    width: 112,
+    alignItems: 'center',
     top: PATH_NODE_SIZE / 2 - 14,
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.xs + 2,

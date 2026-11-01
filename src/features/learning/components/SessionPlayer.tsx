@@ -1,7 +1,14 @@
 import * as Haptics from 'expo-haptics';
 import { X } from 'lucide-react-native';
 import { useEffect, useReducer, useRef } from 'react';
-import { Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import {
+  KeyboardAvoidingView,
+  Platform,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  View,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { checkAnswer, serializeAnswer } from '@shared/answers';
@@ -81,50 +88,58 @@ export function SessionPlayer({ exercises, words, seed, onClose, onFinished }: P
 
   return (
     <SafeAreaView style={styles.fill} edges={['top', 'bottom']}>
-      <View style={styles.top}>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel="Salir de la sesión"
-          onPress={onClose}
-          hitSlop={12}
-          style={styles.close}
-        >
-          <X color={colors.textMuted} size={26} />
-        </Pressable>
-        <View style={styles.flex}>
-          <ProgressBar
-            value={progress(state)}
-            height={10}
-            accessibilityLabel="Progreso de la sesión"
-          />
+      <KeyboardAvoidingView
+        style={styles.flex}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      >
+        <View style={styles.top}>
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Salir de la sesión"
+            onPress={onClose}
+            hitSlop={12}
+            style={styles.close}
+          >
+            <X color={colors.textMuted} size={26} />
+          </Pressable>
+          <View style={styles.flex}>
+            <ProgressBar
+              value={progress(state)}
+              height={10}
+              accessibilityLabel="Progreso de la sesión"
+            />
+          </View>
         </View>
-      </View>
 
-      <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
-        {isRetry ? (
-          <Text variant="overline" color="streak">
-            REPASO DE ERRORES
-          </Text>
-        ) : null}
-        <ExercisePrompt exercise={exercise} />
-        {state.phase === 'feedback' && state.lastVerdict ? (
-          <FeedbackPanel
-            exercise={exercise}
-            verdict={state.lastVerdict}
-            word={word}
-            onContinue={() => dispatch({ type: 'continue' })}
-          />
-        ) : (
-          // La key reinicia la selección en cada intento.
-          <AnswerInput
-            key={`${exercise.id}-${attemptNumber}`}
-            exercise={exercise}
-            seed={seed}
-            disabled={state.phase !== 'answering'}
-            onSubmit={handleSubmit}
-          />
-        )}
-      </ScrollView>
+        <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
+          {isRetry ? (
+            <Text variant="overline" color="streak">
+              REPASO DE ERRORES
+            </Text>
+          ) : null}
+          <ExercisePrompt exercise={exercise} />
+          {state.phase === 'feedback' && state.lastVerdict ? (
+            // Abajo, donde estaba "Comprobar": el pulgar no tiene que moverse.
+            <View style={styles.feedback}>
+              <FeedbackPanel
+                exercise={exercise}
+                verdict={state.lastVerdict}
+                word={word}
+                onContinue={() => dispatch({ type: 'continue' })}
+              />
+            </View>
+          ) : (
+            // La key reinicia la selección en cada intento.
+            <AnswerInput
+              key={`${exercise.id}-${attemptNumber}`}
+              exercise={exercise}
+              seed={seed}
+              disabled={state.phase !== 'answering'}
+              onSubmit={handleSubmit}
+            />
+          )}
+        </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }
@@ -140,5 +155,6 @@ const styles = StyleSheet.create({
   },
   close: { width: 32, height: 44, justifyContent: 'center' },
   flex: { flex: 1 },
-  content: { padding: spacing.xl, gap: spacing.xl, flexGrow: 1 },
+  content: { padding: spacing.xl, paddingTop: spacing.lg, gap: spacing.xl, flexGrow: 1 },
+  feedback: { flex: 1, justifyContent: 'flex-end' },
 });
