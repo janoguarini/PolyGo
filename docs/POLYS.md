@@ -28,15 +28,28 @@ Nunca da ventaja en ranked (el ELO no se toca con Polys).
 
 ## Gastos
 
-| Ítem                          | Precio |
-| ----------------------------- | ------ |
-| Protector de racha (máximo 2) | 100    |
+| Ítem                          | Precio                       |
+| ----------------------------- | ---------------------------- |
+| Protector de racha (máximo 2) | 100                          |
+| Recuperar la racha perdida    | 250 (400 si era de 30+ días) |
+| Marco común / fondo común     | 150–250                      |
+| Marco raro / fondo raro       | 400–600                      |
+| Marco épico / fondo épico     | 1.000–1.500                  |
+| Legendarios                   | no se venden por Polys       |
+
+Recuperar la racha: si faltaste de 1 a 3 días seguidos, los protectores no alcanzaban y la racha
+era de 3 días o más. Los días que faltaron quedan cubiertos, como con un protector
+(`repair_streak`). Se ofrece en Aprender y en la tienda.
+
+Cosméticos: catálogo en `shared/cosmetics.ts` (la base lo replica en `cosmetic_items`), dibujos en
+`src/features/cosmetics/visuals.ts`. Comprar deja el ítem puesto; `equip_cosmetic` cambia o saca.
+El marco se ve en el perfil, el perfil público y la clasificación; el fondo, en el perfil.
 
 ## Etapas
 
 1. **Hecha:** moneda, ganancias, cofre, compra del protector, saldo en Aprender y Ranked, aviso de "+Polys".
-2. Tienda: recuperar racha perdida (72 h; 250, o 400 si era de 30+ días), marcos de avatar
-   (común 150–250, raro 400–600, épico 1.000–1.500) y fondos de perfil.
+2. **Hecha:** tienda (`/shop`, se abre tocando el saldo) con probador, recuperar la racha, 10 marcos
+   y 6 fondos a la venta, y 3 legendarios bloqueados a la vista.
 3. Temporada: legendarios por rango final y destacado semanal con descuento.
 
 **Legendarios y exclusivos no se compran con Polys** (decisión del usuario): se ganan por

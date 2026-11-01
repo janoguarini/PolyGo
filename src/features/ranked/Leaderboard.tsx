@@ -13,6 +13,7 @@ import {
   radii,
   spacing,
 } from '@/design-system';
+import { FramedAvatar } from '@/features/cosmetics/FramedAvatar';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 
 import type { LeaderboardEntry } from './api';
@@ -52,13 +53,22 @@ export function Podium({ entries, meId }: { entries: LeaderboardEntry[]; meId?: 
             onPress={() => openPlayer(entry, isMe)}
           >
             {first ? <Crown color={medal} fill={medal} size={26} /> : null}
-            <View style={[styles.podiumRing, { borderColor: medal }]}>
-              <Avatar
+            {entry.frameId ? (
+              <FramedAvatar
                 avatarId={entry.avatarId}
                 photoUrl={avatarPhotoUrl(entry.avatarPath)}
-                size={first ? 72 : 56}
+                size={first ? 64 : 50}
+                frameId={entry.frameId}
               />
-            </View>
+            ) : (
+              <View style={[styles.podiumRing, { borderColor: medal }]}>
+                <Avatar
+                  avatarId={entry.avatarId}
+                  photoUrl={avatarPhotoUrl(entry.avatarPath)}
+                  size={first ? 72 : 56}
+                />
+              </View>
+            )}
             <Text variant="bodyStrong" numberOfLines={1} align="center">
               {isMe ? 'Vos' : entry.username}
             </Text>
@@ -120,7 +130,12 @@ export function LeaderboardRow({
           {entry.position}
         </Text>
       </View>
-      <Avatar avatarId={entry.avatarId} photoUrl={avatarPhotoUrl(entry.avatarPath)} size={38} />
+      <FramedAvatar
+        avatarId={entry.avatarId}
+        photoUrl={avatarPhotoUrl(entry.avatarPath)}
+        size={entry.frameId ? 32 : 38}
+        frameId={entry.frameId}
+      />
       <View style={styles.name}>
         <Text variant="bodyStrong" numberOfLines={1}>
           {entry.username}

@@ -216,6 +216,9 @@ export interface PublicProfile {
   display_name: string | null;
   avatar_id: string;
   avatar_path?: string | null;
+  /** Marco y fondo puestos (ids de shared/cosmetics.ts). */
+  frame_id?: string | null;
+  background_id?: string | null;
   public_code: string;
   created_at: string;
   /** false si el perfil es privado: sólo llegan identidad y rango. */

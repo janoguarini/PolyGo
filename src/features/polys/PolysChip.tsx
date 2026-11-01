@@ -5,7 +5,7 @@ import { PolyCoin, Text, colors, radii, spacing } from '@/design-system';
 
 import { usePolys } from './api';
 
-/** Saldo de Polys; al tocarlo abre las misiones (donde se ganan y se gastan por ahora). */
+/** Saldo de Polys; al tocarlo abre la tienda. */
 export function PolysChip() {
   const polys = usePolys();
   const balance = polys.data?.balance;
@@ -13,9 +13,9 @@ export function PolysChip() {
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={balance === undefined ? 'Polys' : `Tenés ${balance} Polys`}
-      accessibilityHint="Abre las misiones y el protector de racha"
+      accessibilityHint="Abre la tienda"
       hitSlop={8}
-      onPress={() => router.push('/missions')}
+      onPress={() => router.push('/shop')}
       style={({ pressed }) => [styles.chip, pressed && styles.pressed]}
     >
       <PolyCoin size={20} />

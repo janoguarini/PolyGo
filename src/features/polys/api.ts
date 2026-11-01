@@ -59,3 +59,51 @@ export function useBuyStreakFreeze() {
     onSuccess: () => qc.invalidateQueries({ queryKey: ['learning'] }),
   });
 }
+
+/** Oferta de recuperar una racha perdida (null si no hay nada que recuperar). */
+export interface StreakRepairOffer {
+  lost_streak: number;
+  missed_days: number;
+  price: number;
+  /** Último día (local, YYYY-MM-DD) en que se puede recuperar. */
+  last_chance: string;
+}
+
+export const streakRepairKeys = {
+  offer: (userId: string) => ['learning', 'streak-repair', userId] as const,
+};
+
+export async function fetchStreakRepair(): Promise<StreakRepairOffer | null> {
+  const { data, error } = await requireSupabase().rpc('get_streak_repair', {
+    p_time_zone: userTimeZone(),
+  });
+  if (error) throw error;
+  return (data ?? null) as unknown as StreakRepairOffer | null;
+}
+
+export function useStreakRepair() {
+  const { session } = useAuth();
+  const userId = session?.user.id;
+  return useQuery({
+    queryKey: streakRepairKeys.offer(userId ?? 'anonymous'),
+    queryFn: fetchStreakRepair,
+    enabled: Boolean(userId),
+  });
+}
+
+export async function repairStreak(): Promise<{ balance: number; streak: number }> {
+  const { data, error } = await requireSupabase().rpc('repair_streak', {
+    p_time_zone: userTimeZone(),
+  });
+  if (error) throw error;
+  return data as unknown as { balance: number; streak: number };
+}
+
+/** Paga la recuperación y refresca racha, saldo y misiones. */
+export function useRepairStreak() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: repairStreak,
+    onSuccess: () => qc.invalidateQueries({ queryKey: ['learning'] }),
+  });
+}

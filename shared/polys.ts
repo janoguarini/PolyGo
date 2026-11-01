@@ -45,6 +45,11 @@ export const POLYS = {
   achievement: { perLevel: 10, max: 50 },
   /** Precios de la tienda. */
   prices: { streakFreeze: 100 },
+  /**
+   * Recuperar una racha perdida: si faltaste hasta maxMissedDays días seguidos y no tenías
+   * protectores, se pagan los días que faltaron. Rachas de bigStreak días o más cuestan bigPrice.
+   */
+  streakRepair: { maxMissedDays: 3, minStreak: 3, price: 250, bigStreak: 30, bigPrice: 400 },
 } as const;
 
 export type PolyReason =
@@ -58,7 +63,9 @@ export type PolyReason =
   | 'rank'
   | 'streak'
   | 'achievement'
-  | 'shop_freeze';
+  | 'shop_freeze'
+  | 'shop_item'
+  | 'streak_repair';
 
 /** Texto corto de cada movimiento, para el aviso de "+5 Polys". */
 export function polyReasonLabel(reason: PolyReason): string {
@@ -85,5 +92,9 @@ export function polyReasonLabel(reason: PolyReason): string {
       return 'Logro desbloqueado';
     case 'shop_freeze':
       return 'Protector de racha';
+    case 'shop_item':
+      return 'Compra en la tienda';
+    case 'streak_repair':
+      return 'Racha recuperada';
   }
 }

@@ -6,7 +6,6 @@ import { flagEmoji } from '@shared/profile';
 import { getRank, isPlaced } from '@shared/ranking';
 
 import {
-  Avatar,
   Card,
   ProgressBar,
   RankEmblem,
@@ -14,13 +13,14 @@ import {
   Text,
   colors,
   gradients,
-  radii,
   spacing,
 } from '@/design-system';
+import { FramedAvatar } from '@/features/cosmetics/FramedAvatar';
+import { ProfileBackdrop } from '@/features/cosmetics/ProfileBackdrop';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 import type { PlayerRatingRow, ProfileRow } from '@/lib/database.types';
 
-/** Encabezado del perfil propio: avatar editable, nombre con bandera y tarjeta de rango. */
+/** Encabezado del perfil propio: avatar editable con su marco, nombre con bandera y tarjeta de rango, sobre el fondo elegido. */
 export function ProfileHeader({
   profile,
   rating,
@@ -30,7 +30,7 @@ export function ProfileHeader({
 }) {
   const flag = flagEmoji(profile.region);
   return (
-    <View style={styles.row}>
+    <ProfileBackdrop backgroundId={profile.background_id} style={styles.row}>
       <View style={styles.identity}>
         <Pressable
           accessibilityRole="button"
@@ -38,13 +38,13 @@ export function ProfileHeader({
           onPress={() => router.push('/edit-profile')}
           style={styles.avatarWrap}
         >
-          <View style={styles.avatarRing}>
-            <Avatar
-              avatarId={profile.avatar_id}
-              photoUrl={avatarPhotoUrl(profile.avatar_path)}
-              size={92}
-            />
-          </View>
+          <FramedAvatar
+            avatarId={profile.avatar_id}
+            photoUrl={avatarPhotoUrl(profile.avatar_path)}
+            size={92}
+            frameId={profile.frame_id}
+            fallbackRing={colors.primary}
+          />
           <View style={styles.pencil}>
             <Pencil color={colors.textStrong} size={14} strokeWidth={2.5} />
           </View>
@@ -62,7 +62,7 @@ export function ProfileHeader({
         <Text color="textMuted">@{profile.username}</Text>
       </View>
       {rating ? <RankMini rating={rating} /> : null}
-    </View>
+    </ProfileBackdrop>
   );
 }
 
@@ -107,12 +107,6 @@ const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'stretch', gap: spacing.md },
   identity: { flex: 1.1, gap: spacing.xxs, justifyContent: 'center' },
   avatarWrap: { alignSelf: 'flex-start', marginBottom: spacing.sm },
-  avatarRing: {
-    padding: 3,
-    borderRadius: radii.pill,
-    borderWidth: 3,
-    borderColor: colors.primary,
-  },
   pencil: {
     position: 'absolute',
     right: 2,

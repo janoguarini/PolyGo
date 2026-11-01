@@ -6,7 +6,6 @@ import { flagEmoji } from '@shared/profile';
 import { getRank, isPlaced } from '@shared/ranking';
 
 import {
-  Avatar,
   Card,
   EmptyState,
   ErrorState,
@@ -20,6 +19,8 @@ import {
   spacing,
 } from '@/design-system';
 import { useAuth } from '@/features/auth/AuthProvider';
+import { FramedAvatar } from '@/features/cosmetics/FramedAvatar';
+import { ProfileBackdrop } from '@/features/cosmetics/ProfileBackdrop';
 import { BlockUserButton } from '@/features/blocks/BlockUserButton';
 import { useBlockedIds, useUnblockUser } from '@/features/blocks/api';
 import { FamilyBadge } from '@/features/profile/components/AchievementBadge';
@@ -79,8 +80,13 @@ export default function PlayerScreen() {
     <Screen onRefresh={() => void player.refetch()} refreshing={player.isRefetching}>
       <ScreenHeader title={p.display_name ?? p.username} onBack={back} />
 
-      <View style={styles.identity}>
-        <Avatar avatarId={p.avatar_id} photoUrl={avatarPhotoUrl(p.avatar_path)} size={80} />
+      <ProfileBackdrop backgroundId={p.background_id} style={styles.identity}>
+        <FramedAvatar
+          avatarId={p.avatar_id}
+          photoUrl={avatarPhotoUrl(p.avatar_path)}
+          size={80}
+          frameId={p.frame_id}
+        />
         <Text color="textMuted">
           {flag ? `${flag} ` : ''}@{p.username} · {p.public_code}
         </Text>
@@ -95,7 +101,7 @@ export default function PlayerScreen() {
             <BlockUserButton userId={p.id} username={p.username} />
           </View>
         ) : null}
-      </View>
+      </ProfileBackdrop>
 
       {rating ? (
         <Card style={styles.rankRow}>

@@ -67,6 +67,7 @@ export default function LeaderboardScreen() {
           username: me.data.profile.username ?? '',
           avatarId: me.data.profile.avatar_id,
           avatarPath: me.data.profile.avatar_path,
+          frameId: me.data.profile.frame_id,
           region: me.data.profile.region,
           languageCode: me.data.rating.language_code,
           rating: me.data.rating.rating,

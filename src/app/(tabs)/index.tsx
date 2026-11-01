@@ -37,6 +37,7 @@ import { useCurriculum, useLearningSummary } from '@/features/learning/hooks';
 import { daysLabel, streakAtRisk } from '@/features/learning/streak';
 import { useDailyMissions } from '@/features/missions/api';
 import { PolysChip } from '@/features/polys/PolysChip';
+import { useStreakRepair } from '@/features/polys/api';
 import { useTabPressScroll } from '@/lib/useTabPressScroll';
 import { useMyProfile } from '@/features/profile/hooks';
 
@@ -52,6 +53,7 @@ export default function HomeScreen() {
   const summary = useLearningSummary();
   const curriculum = useCurriculum();
   const missions = useDailyMissions();
+  const streakRepair = useStreakRepair();
   const scrollRef = useRef<ScrollViewInstance>(null);
   const { height } = useWindowDimensions();
   // Posición del nodo actual en el contenido y alto visible del scroll (medidos).
@@ -206,6 +208,23 @@ export default function HomeScreen() {
           {completed}/{total} · {total ? Math.round((completed / total) * 100) : 0}%
         </Text>
       </View>
+      {streakRepair.data ? (
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={`Perdiste tu racha de ${daysLabel(streakRepair.data.lost_streak)}. Recuperala en la tienda.`}
+          onPress={() => router.push('/shop')}
+          style={({ pressed }) => [styles.banner, styles.risk, pressed && styles.riskPressed]}
+        >
+          <Flame color={colors.streak} size={22} />
+          <View style={styles.flex}>
+            <Text variant="bodyStrong" color="streak">
+              Perdiste tu racha de {daysLabel(streakRepair.data.lost_streak)}
+            </Text>
+            <Text variant="caption">Todavía la podés recuperar con Polys.</Text>
+          </View>
+          <ChevronRight color={colors.streak} size={20} />
+        </Pressable>
+      ) : null}
       {claimable ? (
         <Pressable
           accessibilityRole="button"

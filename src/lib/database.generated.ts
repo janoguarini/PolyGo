@@ -441,13 +441,66 @@ export type Database = {
           FK<'player_ratings_user_id_fkey', 'user_id', 'profiles', 'id'>,
         ];
       };
+      cosmetic_items: {
+        Row: {
+          id: string;
+          kind: string;
+          position: number;
+          price: number | null;
+          rarity: string;
+          source: string;
+        };
+        Insert: {
+          id: string;
+          kind: string;
+          position: number;
+          price?: number | null;
+          rarity: string;
+          source: string;
+        };
+        Update: {
+          id?: string;
+          kind?: string;
+          position?: number;
+          price?: number | null;
+          rarity?: string;
+          source?: string;
+        };
+        Relationships: [];
+      };
+      user_cosmetics: {
+        Row: {
+          acquired_at: string;
+          item_id: string;
+          source: string;
+          user_id: string;
+        };
+        Insert: {
+          acquired_at?: string;
+          item_id: string;
+          source: string;
+          user_id: string;
+        };
+        Update: {
+          acquired_at?: string;
+          item_id?: string;
+          source?: string;
+          user_id?: string;
+        };
+        Relationships: [
+          FK<'user_cosmetics_item_id_fkey', 'item_id', 'cosmetic_items', 'id'>,
+          FK<'user_cosmetics_user_id_fkey', 'user_id', 'profiles', 'id'>,
+        ];
+      };
       profiles: {
         Row: {
           avatar_id: string;
           avatar_path: string | null;
+          background_id: string | null;
           created_at: string;
           daily_goal_minutes: number;
           display_name: string | null;
+          frame_id: string | null;
           id: string;
           onboarding_completed_at: string | null;
           public_code: string;
@@ -460,9 +513,11 @@ export type Database = {
         Insert: {
           avatar_id?: string;
           avatar_path?: string | null;
+          background_id?: string | null;
           created_at?: string;
           daily_goal_minutes?: number;
           display_name?: string | null;
+          frame_id?: string | null;
           id: string;
           onboarding_completed_at?: string | null;
           public_code: string;
@@ -475,9 +530,11 @@ export type Database = {
         Update: {
           avatar_id?: string;
           avatar_path?: string | null;
+          background_id?: string | null;
           created_at?: string;
           daily_goal_minutes?: number;
           display_name?: string | null;
+          frame_id?: string | null;
           id?: string;
           onboarding_completed_at?: string | null;
           public_code?: string;
@@ -488,6 +545,8 @@ export type Database = {
           username?: string | null;
         };
         Relationships: [
+          FK<'profiles_background_id_fkey', 'background_id', 'cosmetic_items', 'id'>,
+          FK<'profiles_frame_id_fkey', 'frame_id', 'cosmetic_items', 'id'>,
           FK<'profiles_target_language_fkey', 'target_language', 'languages', 'code'>,
         ];
       };
@@ -782,9 +841,11 @@ export type Database = {
         Returns: {
           avatar_id: string;
           avatar_path: string | null;
+          background_id: string | null;
           created_at: string;
           daily_goal_minutes: number;
           display_name: string | null;
+          frame_id: string | null;
           id: string;
           onboarding_completed_at: string | null;
           public_code: string;
@@ -803,6 +864,10 @@ export type Database = {
       claim_mission_reward: { Args: { p_time_zone: string }; Returns: Json };
       sync_polys: { Args: { p_time_zone: string }; Returns: Json };
       buy_streak_freeze: { Args: never; Returns: Json };
+      buy_cosmetic: { Args: { p_item_id: string }; Returns: Json };
+      equip_cosmetic: { Args: { p_kind: string; p_item_id: string | null }; Returns: undefined };
+      get_streak_repair: { Args: { p_time_zone: string }; Returns: Json };
+      repair_streak: { Args: { p_time_zone: string }; Returns: Json };
       get_match_history: {
         Args: { p_before: string; p_limit: number };
         Returns: {

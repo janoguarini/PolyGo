@@ -7,6 +7,8 @@ export interface LeaderboardEntry {
   username: string;
   avatarId: string;
   avatarPath: string | null;
+  /** Marco puesto (shared/cosmetics.ts) o null. */
+  frameId: string | null;
   region: string | null;
   /** Idioma del rating mostrado (en la global, el mejor del jugador). */
   languageCode: string;
@@ -29,11 +31,13 @@ export async function fetchLeaderboard(
     p_limit: limit,
   });
   if (error) throw error;
+  const frames = await fetchFrames(data.map((row) => row.user_id));
   return data.map((row) => ({
     userId: row.user_id,
     username: row.username,
     avatarId: row.avatar_id,
     avatarPath: row.avatar_path,
+    frameId: frames.get(row.user_id) ?? null,
     region: row.region,
     languageCode: row.language_code,
     rating: row.rating,
@@ -41,6 +45,18 @@ export async function fetchLeaderboard(
     wins: row.wins,
     position: Number(row.position),
   }));
+}
+
+/** Marcos puestos de esos jugadores (los perfiles se leen entre usuarios con sesión). */
+async function fetchFrames(userIds: string[]): Promise<Map<string, string>> {
+  if (userIds.length === 0) return new Map();
+  const { data, error } = await requireSupabase()
+    .from('profiles')
+    .select('id, frame_id')
+    .in('id', userIds)
+    .not('frame_id', 'is', null);
+  if (error) throw error;
+  return new Map(data.flatMap((p) => (p.frame_id ? [[p.id, p.frame_id] as const] : [])));
 }
 
 export function useLeaderboard(languageCode: string | null) {

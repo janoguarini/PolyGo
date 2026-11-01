@@ -6,7 +6,6 @@ import {
   ChevronRight,
   Clock,
   Gift,
-  Snowflake,
   Sparkles,
   Swords,
   Target,
@@ -39,7 +38,7 @@ import {
   useDailyMissions,
   type DailyMission,
 } from '@/features/missions/api';
-import { useBuyStreakFreeze, usePolys } from '@/features/polys/api';
+import { FreezeCard } from '@/features/polys/StreakCards';
 import { toUserMessage } from '@/lib/errors';
 import { playSound } from '@/lib/sounds';
 
@@ -162,52 +161,6 @@ export default function MissionsScreen() {
   );
 }
 
-/** El protector se compra con Polys: si un día no estudiás, se usa solo. */
-function FreezeCard({ freezes, max }: { freezes: number; max: number }) {
-  const polys = usePolys();
-  const buy = useBuyStreakFreeze();
-  const balance = polys.data?.balance ?? 0;
-  const price = POLYS.prices.streakFreeze;
-  const full = freezes >= max;
-  return (
-    <Card style={styles.freeze}>
-      <View style={styles.rewardRow}>
-        <View style={styles.freezeIcon}>
-          <Snowflake color={colors.info} size={26} />
-        </View>
-        <View style={styles.flex}>
-          <Text variant="bodyStrong" color="textStrong">
-            Protector de racha · {freezes}/{max}
-          </Text>
-          <Text variant="caption">Si un día no estudiás, se usa solo y tu racha sigue.</Text>
-        </View>
-      </View>
-      <Button
-        label={full ? 'Tenés el máximo' : `Comprar por ${price}`}
-        variant="secondary"
-        icon={full ? undefined : <PolyCoin size={20} />}
-        disabled={full || balance < price}
-        loading={buy.isPending}
-        accessibilityHint={full ? undefined : `Cuesta ${price} Polys. Tenés ${balance}.`}
-        onPress={() =>
-          buy.mutate(undefined, {
-            onSuccess: () => {
-              playSound('complete');
-              void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-            },
-          })
-        }
-      />
-      {!full && balance < price ? (
-        <Text variant="caption" align="center">
-          Te faltan {price - balance} Polys. Completá misiones para juntarlos.
-        </Text>
-      ) : null}
-      {buy.isError ? <FormMessage tone="error" message={toUserMessage(buy.error)} /> : null}
-    </Card>
-  );
-}
-
 function MissionRow({ mission }: { mission: DailyMission }) {
   const Icon = ICONS[mission.id];
   const title = missionTitle(mission.id, mission.target);
@@ -271,17 +224,6 @@ const styles = StyleSheet.create({
   },
   chestIconOn: { backgroundColor: colors.goldStrong },
   prize: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: spacing.sm },
-  freeze: { gap: spacing.md },
-  freezeIcon: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.surfaceRaised,
-    borderWidth: 2,
-    borderColor: colors.info,
-  },
   missionReward: { flexDirection: 'row', alignItems: 'center', gap: spacing.xxs },
   list: { gap: spacing.md },
   mission: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
