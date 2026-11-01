@@ -253,3 +253,12 @@ Valores: `shared/friendChallenges.ts` (la base los replica en `friend_weekly_con
 - [x] **Retos de la semana** (lunes a domingo, UTC): 3 partidas, 20 palabras repasadas, 1 amistoso con un amigo. Progreso real, premio en Polys (`claim_friend_challenge`, motivo `friend_challenge`) y qué amigos ya lo completaron.
 - Migraciones: `20261101041401_friend_poly_reason`, `20261101041517_friends_social`, `20261101042815_friends_silent_decline` (aplicadas; checksum de funciones igual al local).
 - Pendiente de probar en dos teléfonos: invitación en vivo y presencia. Sin notificaciones push: la invitación sólo llega con la app abierta.
+
+## Push de desafíos (2026-11-01)
+
+- [x] Cuando invitás a un amigo, le llega una notificación ("@vos te desafió ⚔️"); tocarla abre la partida, también con la app cerrada. Con la app abierta no se duplica: aparece el aviso de adentro.
+- [x] Envío: Edge Function `notify-battle-invite` (verify_jwt false, valida la sesión) → `claim_battle_invite_push` decide destinatarios (invitación viva de quien llama, una sola vez, respeta Ajustes y bloqueos) → API de push de Expo. Tokens muertos (`DeviceNotRegistered`) se desactivan. Desplegada y probada sin sesión (401).
+- [x] Tokens en `push_tokens` (máx. 5 teléfonos por cuenta; se dan de baja al cerrar sesión). Canal Android `friend-challenges` (importancia alta).
+- [x] Permiso: tarjeta en Amigos (si tenés amigos) y Ajustes → «Avisarme cuando un amigo me desafía».
+- Migración `20261101151020_push_battle_invites` (aplicada).
+- Requiere **build nueva** (`enableRemoteNotifications: true` agrega el permiso de APNs) y credenciales FCM V1 en EAS para Android (ver LAUNCH_CHECKLIST). Sin probar en dispositivos.

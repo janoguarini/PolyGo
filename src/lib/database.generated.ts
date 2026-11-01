@@ -708,6 +708,7 @@ export type Database = {
           profile_visibility: string;
           show_region: boolean;
           show_online: boolean;
+          notify_challenges: boolean;
           updated_at: string;
           user_id: string;
           widget_content_type: string;
@@ -717,6 +718,7 @@ export type Database = {
           profile_visibility?: string;
           show_region?: boolean;
           show_online?: boolean;
+          notify_challenges?: boolean;
           updated_at?: string;
           user_id: string;
           widget_content_type?: string;
@@ -726,6 +728,7 @@ export type Database = {
           profile_visibility?: string;
           show_region?: boolean;
           show_online?: boolean;
+          notify_challenges?: boolean;
           updated_at?: string;
           user_id?: string;
           widget_content_type?: string;
@@ -990,6 +993,8 @@ export type Database = {
         }[];
       };
       ping_presence: { Args: never; Returns: Json };
+      register_push_token: { Args: { p_token: string; p_platform: string }; Returns: undefined };
+      unregister_push_token: { Args: { p_token: string }; Returns: undefined };
       invite_friend_to_battle: { Args: { p_user_id: string }; Returns: Json };
       decline_battle_invite: { Args: { p_code: string }; Returns: undefined };
       get_friend_activity: {

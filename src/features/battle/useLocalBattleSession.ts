@@ -14,6 +14,7 @@ import {
 } from '@shared/wordRush';
 
 import { useAuth } from '@/features/auth/AuthProvider';
+import { notifyBattleInvite } from '@/features/friends/push';
 import { fetchWordPool } from '@/features/learning/api';
 import { learningKeys } from '@/features/learning/hooks';
 import { useMyProfile } from '@/features/profile/hooks';
@@ -31,9 +32,7 @@ import { FEEDBACK_MS } from './useBattleSession';
 const QUEUE_POLL_MS = 1_500;
 
 /** Desafío a un amigo: quien lo crea espera con un código; el amigo entra con ese código. */
-export type ChallengeRole =
-  | { role: 'host'; inviteeId?: string }
-  | { role: 'guest'; code: string };
+export type ChallengeRole = { role: 'host'; inviteeId?: string } | { role: 'guest'; code: string };
 
 /**
  * Misma interfaz que useBattleSession, pero sin servidor de partidas (MVP con Supabase):
@@ -182,6 +181,8 @@ export function useLocalBattleSession() {
               void humanMatchApi.cancelChallenge(created.code).catch(() => {});
               return;
             }
+            // Desafío dirigido: push al amigo (si falla, igual lo ve en la app abierta).
+            if (challenge.inviteeId) notifyBattleInvite(created.code);
             challengeRef.current = created.code;
             searchRef.current = search;
             dispatch({

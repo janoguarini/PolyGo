@@ -111,7 +111,7 @@
           "icon": "./assets/android-icon-monochrome.png",
           "color": "#7C3AED",
           "defaultChannel": "daily-reminder",
-          "enableRemoteNotifications": false
+          "enableRemoteNotifications": true
         }
       ]
     ],

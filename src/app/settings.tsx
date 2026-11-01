@@ -19,6 +19,7 @@ import {
 import { signOut } from '@/features/auth/api';
 import { FormMessage } from '@/features/auth/FormMessage';
 import { BlockedUsersSection } from '@/features/blocks/BlockedUsersSection';
+import { useEnablePush, usePushPermission } from '@/features/friends/components/PushPromptCard';
 import { useSetSoundEffects, useSoundEffectsPref } from '@/features/preferences/soundEffects';
 import { useMyProfile, useUpdateSettings } from '@/features/profile/hooks';
 import { ReminderSettings } from '@/features/reminders/ReminderSettings';
@@ -135,6 +136,11 @@ export default function SettingsScreen() {
           thumbColor={colors.textStrong}
         />
       </Card>
+      <ChallengePushSetting
+        enabled={settings?.notify_challenges ?? true}
+        disabled={updateSettings.isPending}
+        onChange={(on) => updateSettings.mutate({ notify_challenges: on })}
+      />
       {updateSettings.isError ? (
         <FormMessage tone="error" message={toUserMessage(updateSettings.error)} />
       ) : null}
@@ -176,6 +182,53 @@ export default function SettingsScreen() {
         />
       ) : null}
     </Screen>
+  );
+}
+
+/** Avisos de desafíos: la preferencia vive en la cuenta; el permiso, en el teléfono. */
+function ChallengePushSetting({
+  enabled,
+  disabled,
+  onChange,
+}: {
+  enabled: boolean;
+  disabled: boolean;
+  onChange: (on: boolean) => void;
+}) {
+  const permission = usePushPermission();
+  const enable = useEnablePush();
+  const phone = permission.data;
+  return (
+    <Card style={styles.switchRow}>
+      <View style={styles.flex}>
+        <Text variant="bodyStrong">Avisarme cuando un amigo me desafía</Text>
+        <Text variant="caption">
+          {phone === 'blocked'
+            ? 'Las notificaciones de Polygo están apagadas en este teléfono.'
+            : phone === 'unsupported'
+              ? 'Las notificaciones sólo llegan en la app instalada (no en web ni Expo Go).'
+              : 'Una notificación con la invitación, aunque tengas la app cerrada.'}
+        </Text>
+        {phone === 'blocked' && enabled ? (
+          <Button
+            label="Abrir ajustes del teléfono"
+            variant="ghost"
+            onPress={() => void Linking.openSettings()}
+          />
+        ) : null}
+      </View>
+      <Switch
+        accessibilityLabel="Avisarme con una notificación cuando un amigo me desafía"
+        value={enabled}
+        disabled={disabled || enable.isPending}
+        onValueChange={(on) => {
+          onChange(on);
+          if (on && phone === 'undetermined') enable.mutate();
+        }}
+        trackColor={{ false: colors.surfaceHighlight, true: colors.primary }}
+        thumbColor={colors.textStrong}
+      />
+    </Card>
   );
 }
 

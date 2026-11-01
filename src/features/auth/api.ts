@@ -1,5 +1,6 @@
 import * as Linking from 'expo-linking';
 
+import { unregisterPush } from '@/features/friends/pushToken';
 import { requireSupabase } from '@/lib/supabase';
 
 import type { SignInValues, SignUpValues } from './schemas';
@@ -51,6 +52,8 @@ export async function updatePassword(password: string) {
 }
 
 export async function signOut() {
+  // Antes de perder la sesión: este teléfono deja de recibir avisos de esta cuenta.
+  await unregisterPush();
   const { error } = await requireSupabase().auth.signOut();
   if (error) throw error;
 }

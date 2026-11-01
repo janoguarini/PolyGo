@@ -5,6 +5,7 @@ import { Platform, StyleSheet, View, useWindowDimensions } from 'react-native';
 import { colors } from '@/design-system';
 import { useFriends } from '@/features/friends/api';
 import { BattleInviteBanner } from '@/features/friends/components/BattleInviteBanner';
+import { useBattleInvitePush } from '@/features/friends/push';
 import { usePresence } from '@/features/friends/social';
 import { useReminderSync } from '@/features/reminders/hooks';
 import { useWidgetSync } from '@/features/widgets/useWidgetSync';
@@ -15,6 +16,8 @@ export default function TabsLayout() {
   useReminderSync();
   // Latido de "en línea"; trae las invitaciones a amistosos que te mandaron.
   const invites = usePresence().data ?? [];
+  // Push de desafíos: registra el token y abre la partida al tocar la notificación.
+  useBattleInvitePush();
   // Solicitudes de amistad sin responder + invitaciones: globito en la pestaña Amigos.
   const pendingRequests =
     (useFriends().data?.filter((f) => f.state === 'incoming').length ?? 0) + invites.length;

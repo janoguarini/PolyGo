@@ -26,6 +26,8 @@ dispositivo o una decisión de producto; el resto está en el repo.
 | ✅ | Perfiles de build (`development`, `development-simulator`, `preview`, `production`) con versión remota y `autoIncrement` | — | `eas.json` |
 | ⬜ | Build de producción | Vos | `npx eas-cli@latest build --profile production --platform all` |
 | ⬜ | Subir a las tiendas | Vos | `npx eas-cli@latest submit --platform ios|android` (TestFlight / prueba interna primero) |
+| ⬜ | Push (desafíos de amigos) en Android: credenciales FCM V1 en EAS | Vos | Crear proyecto en Firebase → cuenta de servicio (FCM V1) → `npx eas-cli@latest credentials` → Android → Google Service Account Key for Push Notifications. Sin esto Expo no entrega push a Android |
+| ⬜ | Push en iOS: clave APNs | Vos | La genera EAS al hacer la primera build de iOS (responder que sí a configurar push). Requiere la cuenta paga de Apple |
 | ⬜ | Versión `1.0.0` en `app.json` al publicar (hoy `0.1.0`) | Vos | El número de build lo maneja EAS (`appVersionSource: remote`) |
 
 ## 3. Configuración de producción

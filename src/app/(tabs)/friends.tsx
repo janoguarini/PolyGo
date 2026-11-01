@@ -22,6 +22,7 @@ import {
 } from '@/features/friends/components/ChallengeFriendsCard';
 import { FriendActivityFeed } from '@/features/friends/components/FriendActivityFeed';
 import { PlayerRow } from '@/features/friends/components/PlayerRow';
+import { PushPromptCard } from '@/features/friends/components/PushPromptCard';
 import { WeeklyChallengesCard } from '@/features/friends/components/WeeklyChallengesCard';
 import { presenceLabel, sortFriends } from '@/features/friends/format';
 import { useTabPressScroll } from '@/lib/useTabPressScroll';
@@ -106,6 +107,8 @@ export default function FriendsScreen() {
       ) : null}
 
       <ChallengeFriendsCard friends={accepted} />
+
+      {accepted.length > 0 ? <PushPromptCard /> : null}
 
       {accepted.length > 0 ? (
         <>
