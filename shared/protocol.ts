@@ -74,6 +74,8 @@ export interface PublicPlayer {
   avatarId: string;
   /** Foto propia (ruta en el bucket avatars) o null si usa un zorro. */
   avatarPath?: string | null;
+  /** Marco puesto (shared/cosmetics.ts) o null. */
+  frameId?: string | null;
   /** Rival bot (siempre se muestra con el distintivo BOT). */
   isBot?: boolean;
   rating: number;

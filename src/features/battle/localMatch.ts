@@ -87,6 +87,7 @@ export interface HumanMatchSetup {
     username: string;
     avatar_id: string;
     avatar_path: string | null;
+    frame_id?: string | null;
     rating: number;
     games_played: number;
   }[];
@@ -128,6 +129,7 @@ export interface LocalPlayer {
   username: string;
   avatarId: string;
   avatarPath: string | null;
+  frameId?: string | null;
 }
 
 export interface LocalMatchDeps {
@@ -218,6 +220,7 @@ export class LocalMatch {
       username: this.deps.me.username,
       avatarId: this.deps.me.avatarId,
       avatarPath: this.deps.me.avatarPath,
+      frameId: this.deps.me.frameId ?? null,
       isBot: false,
     };
     if (mode === 'practice') {
@@ -266,6 +269,7 @@ export class LocalMatch {
       username: p.username,
       avatarId: p.avatar_id,
       avatarPath: p.avatar_path,
+      frameId: p.frame_id ?? null,
       isBot: false,
       rating: p.rating,
       gamesPlayed: p.games_played,

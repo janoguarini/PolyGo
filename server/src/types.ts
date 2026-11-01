@@ -7,6 +7,7 @@ export interface PlayerInfo {
   username: string;
   avatarId: string;
   avatarPath?: string | null;
+  frameId?: string | null;
   /** Bot de shared/bots.ts: no tiene cuenta y nunca se conecta. */
   isBot?: boolean;
   languageCode: string;

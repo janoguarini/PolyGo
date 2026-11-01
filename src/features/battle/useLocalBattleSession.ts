@@ -122,6 +122,7 @@ export function useLocalBattleSession() {
               username: profile.username,
               avatarId: profile.avatar_id,
               avatarPath: profile.avatar_path,
+              frameId: profile.frame_id,
             },
             feedbackMs: FEEDBACK_MS,
             onAnswer: (correct, streak) => {

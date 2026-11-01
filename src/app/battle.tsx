@@ -8,7 +8,6 @@ import { WORD_RUSH, type BattleMode, type CancelReason } from '@shared/protocol'
 import { isPlaced } from '@shared/ranking';
 
 import {
-  Avatar,
   Button,
   Card,
   EmptyState,
@@ -35,6 +34,7 @@ import {
 import { useBattleStore } from '@/features/battle/store';
 import { useBattleSession, useNow } from '@/features/battle/useBattleSession';
 import { useLocalBattleSession, type ChallengeRole } from '@/features/battle/useLocalBattleSession';
+import { FramedAvatar } from '@/features/cosmetics/FramedAvatar';
 import { useMyProfile } from '@/features/profile/hooks';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 
@@ -250,6 +250,7 @@ function Body({ state, now, onReady, onAnswer, onRetry, onExit }: BodyProps) {
               username="Vos"
               avatarId={me?.avatarId}
               avatarPath={me?.avatarPath}
+              frameId={me?.frameId}
               rating={me?.rating}
               placed={myRating ? isPlaced(myRating) : true}
             />
@@ -258,6 +259,7 @@ function Body({ state, now, onReady, onAnswer, onRetry, onExit }: BodyProps) {
               username={opponent?.username ?? '…'}
               avatarId={opponent?.avatarId}
               avatarPath={opponent?.avatarPath}
+              frameId={opponent?.frameId}
               isBot={opponent?.isBot ?? false}
               rating={opponent?.rating}
               placed={opponent?.isBot || (opponent?.gamesPlayed ?? 0) > 0}
@@ -409,6 +411,7 @@ function PlayerBadge({
   username,
   avatarId,
   avatarPath,
+  frameId,
   isBot = false,
   rating,
   placed,
@@ -416,6 +419,7 @@ function PlayerBadge({
   username: string;
   avatarId: string | undefined;
   avatarPath: string | null | undefined;
+  frameId?: string | null;
   isBot?: boolean;
   rating: number | undefined;
   placed: boolean;
@@ -426,7 +430,12 @@ function PlayerBadge({
       accessible
       accessibilityLabel={`${username}${isBot ? ', bot' : ''}, ${placed ? `${rating ?? ''} ELO` : 'sin posicionar'}`}
     >
-      <Avatar avatarId={avatarId} photoUrl={avatarPhotoUrl(avatarPath)} size={64} />
+      <FramedAvatar
+        avatarId={avatarId}
+        photoUrl={avatarPhotoUrl(avatarPath)}
+        size={frameId ? 56 : 64}
+        frameId={frameId}
+      />
       <Text variant="bodyStrong" numberOfLines={1}>
         {username}
       </Text>

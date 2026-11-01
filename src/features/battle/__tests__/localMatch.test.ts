@@ -349,6 +349,7 @@ describe('contra una persona', () => {
           username: 'ana',
           avatar_id: 'bolt',
           avatar_path: null,
+          frame_id: 'frame_fire',
           rating: 1000,
           games_played: 2,
         },
@@ -370,6 +371,8 @@ describe('contra una persona', () => {
     expect(s.state().phase).toBe('countdown');
     expect(s.state().yourSlot).toBe(2);
     expect(s.state().players.every((p) => !p.isBot)).toBe(true);
+    // El marco del rival llega al HUD.
+    expect(s.state().players.find((p) => p.slot === 1)?.frameId).toBe('frame_fire');
 
     s.clock.advance(3_999);
     expect(s.state().phase).toBe('countdown');

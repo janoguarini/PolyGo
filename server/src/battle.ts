@@ -284,6 +284,7 @@ export class Battle {
         username: s.info.username,
         avatarId: s.info.avatarId,
         avatarPath: s.info.avatarPath ?? null,
+        frameId: s.info.frameId ?? null,
         isBot: s.info.isBot ?? false,
         rating: s.info.rating,
         gamesPlayed: s.info.gamesPlayed,

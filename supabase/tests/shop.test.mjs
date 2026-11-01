@@ -32,7 +32,8 @@ const balance = async (u) =>
   (await one(`select balance from public.poly_wallets where user_id = $1`, [u])).balance;
 const buy = (u, item) => rpc(u, 'select public.buy_cosmetic($1) as r', [item]);
 const equip = (u, kind, item) => rpc(u, 'select public.equip_cosmetic($1, $2) as r', [kind, item]);
-const equipped = (u) => one(`select frame_id, background_id from public.profiles where id = $1`, [u]);
+const equipped = (u) =>
+  one(`select frame_id, background_id from public.profiles where id = $1`, [u]);
 const offer = (u) => rpc(u, 'select public.get_streak_repair($1) as r', [TZ]);
 const repair = (u) => rpc(u, 'select public.repair_streak($1) as r', [TZ]);
 

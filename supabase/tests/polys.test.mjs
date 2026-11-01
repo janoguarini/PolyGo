@@ -230,3 +230,26 @@ test('permisos: la app no escribe Polys ni llama a las funciones internas', asyn
   assert.deepEqual(seen, [u]);
   await assert.rejects(as(db, 'anon', null, () => db.query(`select public.sync_polys('UTC')`)));
 });
+
+test('hito de racha: un día salvado con protector no la corta (ni suma)', async () => {
+  const u = await player('poly_streak_frz@test.dev');
+  await sync(u);
+  // 4 días, un día cubierto por protector y 3 días más: racha de 7.
+  await db.query(
+    `insert into public.user_daily_activity (user_id, activity_date, sessions_completed, answers, correct_answers, seconds_spent)
+     select $1, (now() at time zone 'UTC')::date - g, 1, 1, 1, 60
+     from unnest(array[1, 2, 3, 5, 6, 7, 8]) g`,
+    [u],
+  );
+  await db.query(
+    `insert into public.user_frozen_days (user_id, frozen_date) values ($1, (now() at time zone 'UTC')::date - 4)`,
+    [u],
+  );
+  const { m } = await one(`select public.achievement_metrics($1) as m`, [u]);
+  assert.equal(m.best_streak_days, 7);
+  const res = await sync(u);
+  assert.deepEqual(
+    res.granted.filter((g) => g.reason === 'streak').map((g) => g.ref),
+    ['7'],
+  );
+});

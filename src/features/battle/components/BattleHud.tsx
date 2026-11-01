@@ -3,7 +3,8 @@ import { StyleSheet, View } from 'react-native';
 
 import type { PublicPlayer, ScoreLine } from '@shared/protocol';
 
-import { Avatar, Card, ProgressBar, Text, colors, gradients, spacing } from '@/design-system';
+import { Card, ProgressBar, Text, colors, gradients, spacing } from '@/design-system';
+import { FramedAvatar } from '@/features/cosmetics/FramedAvatar';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 
 import { BotBadge } from './BotBadge';
@@ -87,7 +88,12 @@ function PlayerScore({
       accessible
       accessibilityLabel={`${label ?? player?.username ?? ''}${player?.isBot ? ' (bot)' : ''}: ${line?.score ?? 0} puntos`}
     >
-      <Avatar avatarId={player?.avatarId} photoUrl={avatarPhotoUrl(player?.avatarPath)} size={36} />
+      <FramedAvatar
+        avatarId={player?.avatarId}
+        photoUrl={avatarPhotoUrl(player?.avatarPath)}
+        size={player?.frameId ? 30 : 36}
+        frameId={player?.frameId}
+      />
       <View style={right ? styles.alignRight : undefined}>
         <View style={[styles.nameRow, right && styles.playerRight]}>
           <Text variant="caption" numberOfLines={1}>

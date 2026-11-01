@@ -169,6 +169,8 @@ test('desde Oro, una de cada tres se escribe: sin distractores y con la palabra 
 test('emparejamiento: dos jugadores cercanos quedan en la misma partida con las mismas preguntas', async () => {
   const ana = await player('ana@h.dev');
   const beto = await player('beto@h.dev', 1040);
+  // El marco puesto viaja con el jugador.
+  await db.query("update public.profiles set frame_id = 'frame_fire' where id = $1", [ana]);
   const id = await pair(ana, beto);
 
   const a = await match(ana, id);
@@ -177,6 +179,7 @@ test('emparejamiento: dos jugadores cercanos quedan en la misma partida con las 
   assert.deepEqual(a.questions, b.questions);
   assert.equal(a.questions.length, 40);
   assert.equal(a.players.length, 2);
+  assert.deepEqual(a.players.map((p) => p.frame_id).sort(), ['frame_fire', null]);
   assert.ok(
     a.starts_at - a.server_now > 3_000 && a.starts_at - a.server_now <= 5_000,
     'empieza en ~5 s',
