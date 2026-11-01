@@ -21,7 +21,7 @@
 
 | Widget | iOS | Android | Contenido | Toque |
 | --- | --- | --- | --- | --- |
-| **Palabra** (`PolygoWord`) | pequeño, mediano | 3×2 | Palabra del día → tus palabras para repasar (vencidas y con más errores primero) → palabras nuevas publicadas. Palabra, IPA, traducción y ejemplo | iOS: abre Vocabulario (`polygo://vocabulary`). Android: sin deep link (expo-widgets no lo expone) |
+| **Palabra** (`PolygoWord`) | pequeño, mediano | 3×2 | Palabra del día → tus palabras para repasar (vencidas y con más errores primero) → palabras nuevas publicadas. Palabra, IPA, traducción y ejemplo | iOS: abre Repaso (`polygo://practice`). Android: sin deep link (expo-widgets no lo expone) |
 | **Pregunta rápida** (`PolygoQuiz`) | mediano, grande (botones: iOS 17+) | 4×3 | Ronda de 10 preguntas de 4 opciones (generador de Word Rush) con tus palabras estudiadas o, si tenés menos de 8, el currículo | Responder, ver la corrección, siguiente, resultado y «Otra ronda», **sin abrir la app** |
 
 ## Reglas del runtime de widgets
@@ -52,7 +52,7 @@ El componente marcado con `'widget'` se convierte en un string (plugin de Babel)
 2. Android: `npx eas-cli@latest build --profile development --platform android`, instalar el APK desde el link de EAS.
 3. iOS (dispositivo): requiere cuenta de Apple Developer paga; registrar el iPhone con `npx eas-cli@latest device:create` y luego `npx eas-cli@latest build --profile development --platform ios`. En simulador (sin cuenta paga, desde una Mac): perfil `development-simulator`.
 4. `npx expo start` (modo development build) y abrir la build instalada. Para seguir usando Expo Go: `npx expo start --go`.
-5. Abrir Vocabulario o Inicio con sesión iniciada (sincroniza) y agregar los widgets desde la pantalla de inicio.
+5. Abrir Repaso o Aprender con sesión iniciada (sincroniza) y agregar los widgets desde la pantalla de inicio.
 
 ## Fuera del MVP
 

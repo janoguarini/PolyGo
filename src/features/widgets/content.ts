@@ -10,7 +10,7 @@ import { seededRandom } from '@/features/learning/random';
  */
 
 export const WIDGET_LINKS = {
-  word: 'polygo://vocabulary',
+  word: 'polygo://practice',
   quiz: 'polygo://review',
 } as const;
 

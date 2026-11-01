@@ -54,6 +54,7 @@ function useRefreshAfterBlock() {
     Promise.all([
       qc.invalidateQueries({ queryKey: ['blocks'] }),
       qc.invalidateQueries({ queryKey: ['leaderboard'] }),
+      qc.invalidateQueries({ queryKey: ['friends'] }),
     ]);
 }
 

@@ -1,8 +1,9 @@
 import { Tabs } from 'expo-router';
-import { BookOpen, Dumbbell, Layers, Swords, User } from 'lucide-react-native';
+import { BookOpen, Dumbbell, Swords, User, Users } from 'lucide-react-native';
 import { Platform, useWindowDimensions } from 'react-native';
 
 import { colors } from '@/design-system';
+import { useFriends } from '@/features/friends/api';
 import { useReminderSync } from '@/features/reminders/hooks';
 import { useWidgetSync } from '@/features/widgets/useWidgetSync';
 
@@ -10,6 +11,8 @@ export default function TabsLayout() {
   // Con sesión y onboarding completo: los widgets reflejan las palabras del usuario.
   useWidgetSync();
   useReminderSync();
+  // Solicitudes de amistad sin responder: globito en la pestaña Amigos.
+  const pendingRequests = useFriends().data?.filter((f) => f.state === 'incoming').length ?? 0;
   // En la computadora, las pestañas van en una barra lateral.
   const { width } = useWindowDimensions();
   const sidebar = Platform.OS === 'web' && width >= 900;
@@ -66,10 +69,12 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="vocabulary"
+        name="friends"
         options={{
-          title: 'Vocabulario',
-          tabBarIcon: ({ color, size }) => <Layers color={color} size={size} />,
+          title: 'Amigos',
+          tabBarIcon: ({ color, size }) => <Users color={color} size={size} />,
+          tabBarBadge: pendingRequests > 0 ? pendingRequests : undefined,
+          tabBarBadgeStyle: { backgroundColor: colors.danger, fontSize: 11 },
         }}
       />
       <Tabs.Screen

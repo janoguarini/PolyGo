@@ -76,5 +76,5 @@ export default createWidget('PolygoWord', PolygoWord, {
   ipa: '',
   emoji: '',
   example: '',
-  url: 'polygo://vocabulary',
+  url: 'polygo://practice',
 });

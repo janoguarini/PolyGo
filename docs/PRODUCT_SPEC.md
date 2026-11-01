@@ -19,7 +19,7 @@ Hispanohablantes que aprenden inglés (A1), competitivos, que estudian en ratos 
 
 ## Navegación
 
-Tabs: **Inicio · Aprender · Ranked · Vocabulario · Perfil**.
+Tabs: **Aprender · Repaso · Ranked · Amigos · Perfil**.
 
 ## Principios de producto
 

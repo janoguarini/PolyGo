@@ -936,6 +936,37 @@ export type Database = {
         Args: never;
         Returns: { user_id: string; username: string; avatar_id: string; blocked_at: string }[];
       };
+      send_friend_request: { Args: { p_user_id: string }; Returns: string };
+      respond_friend_request: { Args: { p_user_id: string; p_accept: boolean }; Returns: string };
+      remove_friend: { Args: { p_user_id: string }; Returns: undefined };
+      get_friends: {
+        Args: never;
+        Returns: {
+          user_id: string;
+          username: string;
+          avatar_id: string;
+          avatar_path: string | null;
+          frame_id: string | null;
+          state: string;
+          rating: number | null;
+          placed: boolean;
+          streak: number;
+          since: string;
+        }[];
+      };
+      search_players: {
+        Args: { p_query: string };
+        Returns: {
+          user_id: string;
+          username: string;
+          avatar_id: string;
+          avatar_path: string | null;
+          frame_id: string | null;
+          rating: number | null;
+          placed: boolean;
+          state: string;
+        }[];
+      };
       lesson_star_totals: { Args: { p_user_id: string }; Returns: Json };
       parse_learning_attempts: {
         Args: { p_attempts: Json };

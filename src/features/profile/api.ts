@@ -5,6 +5,7 @@ import type {
   SeasonRow,
   UserSettingsRow,
 } from '@/lib/database.types';
+import type { FriendshipState } from '@/features/friends/api';
 import { requireSupabase } from '@/lib/supabase';
 
 import { MAX_CHART_POINTS, isMatchResult, type MatchResult, type RatingPoint } from './stats';
@@ -223,6 +224,8 @@ export interface PublicProfile {
   created_at: string;
   /** false si el perfil es privado: sólo llegan identidad y rango. */
   is_public: boolean;
+  /** Mi relación con este jugador ('self' en el perfil propio). */
+  friendship?: FriendshipState | 'self';
   /** País (sólo si el jugador eligió mostrarlo). */
   region?: string | null;
   rating: { rating: number; games_played: number } | null;

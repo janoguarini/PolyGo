@@ -101,7 +101,7 @@ const CARD: WordCardProps = {
   ipa: '/həˈloʊ/',
   emoji: '👋',
   example: 'Hello, my name is Ana.',
-  url: 'polygo://vocabulary',
+  url: 'polygo://practice',
 };
 
 describe.each(['ios', 'android'] as const)('widgets %s', (platform) => {

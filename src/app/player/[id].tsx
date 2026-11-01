@@ -23,6 +23,7 @@ import { FramedAvatar } from '@/features/cosmetics/FramedAvatar';
 import { ProfileBackdrop } from '@/features/cosmetics/ProfileBackdrop';
 import { BlockUserButton } from '@/features/blocks/BlockUserButton';
 import { useBlockedIds, useUnblockUser } from '@/features/blocks/api';
+import { FriendButton } from '@/features/friends/FriendButton';
 import { FamilyBadge } from '@/features/profile/components/AchievementBadge';
 import { ReportPhotoButton } from '@/features/profile/components/ReportPhotoButton';
 import { familyLevels } from '@/features/profile/families';
@@ -102,6 +103,10 @@ export default function PlayerScreen() {
           </View>
         ) : null}
       </ProfileBackdrop>
+
+      {p.friendship && p.friendship !== 'self' ? (
+        <FriendButton userId={p.id} username={p.username} state={p.friendship} />
+      ) : null}
 
       {rating ? (
         <Card style={styles.rankRow}>

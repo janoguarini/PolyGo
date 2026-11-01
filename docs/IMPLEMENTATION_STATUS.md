@@ -43,7 +43,7 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 - [x] Migración 0003: currículo, sesiones idempotentes, intentos, progreso por lección y palabra, actividad diaria, racha, resumen, palabra del día, RLS.
 - [x] Motor de lecciones: reproductor con repaso de errores, feedback con traducción/IPA/ejemplo/pronunciación (voz sintetizada), resultados con reintento de guardado.
 - [x] Repaso espaciado de palabras vencidas con ejercicios generados de forma determinista.
-- [x] Pantallas: Aprender (mapa de unidades), Lección, Repaso, Vocabulario (estado de cada palabra), Inicio (racha, objetivo diario, lección y palabra del día), Perfil (estadísticas educativas reales).
+- [x] Pantallas: Aprender (mapa de unidades), Lección, Repaso, Repaso (incluye el estado de cada palabra, antes en Vocabulario), Inicio (racha, objetivo diario, lección y palabra del día), Perfil (estadísticas educativas reales).
 
 ### Fase 3
 
@@ -66,10 +66,10 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 ### Fase 5
 
 - [x] `expo-widgets` + `@expo/ui` + `expo-dev-client`; plugin en `app.json` (`enableAndroid`, `initialLayout` por plataforma); `eas.json` con perfiles development / development-simulator / preview / production.
-- [x] Widget **Palabra**: palabra del día → palabras para repasar → nuevas; IPA, traducción y ejemplo; timeline horario de 12 h en iOS, snapshot en Android; deep link a Vocabulario en iOS.
+- [x] Widget **Palabra**: palabra del día → palabras para repasar → nuevas; IPA, traducción y ejemplo; timeline horario de 12 h en iOS, snapshot en Android; deep link a Repaso en iOS.
 - [x] Widget **Pregunta rápida**: ronda de 10 preguntas (generador de Word Rush) jugable desde la pantalla de inicio sin abrir la app; no pisa una ronda a medias; práctica sin efecto en SRS ni ELO.
 - [x] Sincronización al cargar datos, al cambiar y al volver a primer plano; no-op en Expo Go/web; los widgets se vacían al cerrar sesión.
-- [x] Vocabulario explica cómo agregar los widgets (o que hace falta una build si se usa Expo Go).
+- [x] Repaso explica cómo agregar los widgets (o que hace falta una build si se usa Expo Go).
 
 ### Fase 6
 
@@ -232,3 +232,11 @@ Todo lo que falta está en [LAUNCH_CHECKLIST.md](LAUNCH_CHECKLIST.md). En orden:
 3. Publicar la política de privacidad (completar el borrador) y una URL de borrado de cuenta; cargar `EXPO_PUBLIC_PRIVACY_POLICY_URL`.
 4. Decisiones: bundle ID definitivo, contraseñas filtradas, SMTP propio, monitoreo de errores.
 5. Revisión editorial del contenido A1 y A2, build de producción y envío a TestFlight / prueba interna.
+
+## Amigos (2026-11-01)
+
+- [x] Pestaña **Amigos** en lugar de Vocabulario (el vocabulario pasó a Repaso: estadísticas, palabra del día, tus palabras con «Ver todas» y widgets).
+- [x] Buscar jugadores por nombre de usuario (prefijo) o código `PG-XXXXXX`; solicitud → aceptar / rechazar; cancelar y sacar de amigos. Globito con las solicitudes pendientes en la pestaña.
+- [x] Lista de amigos ordenada por ELO con racha de estudio; tu código para compartir; atajo a «Desafiar a un amigo».
+- [x] Botón de amistad en el perfil de otro jugador; la visibilidad «Sólo amigos» ya se aplica.
+- [x] Bloquear termina la amistad y oculta al jugador en la búsqueda. Migración `20261101034944_friends` (sin DELETE: rechazar/sacar cambian el estado).

@@ -32,7 +32,7 @@ const VISIBILITY: {
   description: string;
 }[] = [
   { id: 'public', title: 'Público', description: 'Cualquier jugador ve tu perfil y estadísticas.' },
-  { id: 'friends', title: 'Sólo amigos', description: 'Se aplicará cuando existan los amigos.' },
+  { id: 'friends', title: 'Sólo amigos', description: 'Tus amigos ven todo; el resto, sólo nombre, avatar y rango.' },
   {
     id: 'private',
     title: 'Privado',

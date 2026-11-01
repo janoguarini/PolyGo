@@ -32,6 +32,10 @@ const RPC_MESSAGES: Record<string, string> = {
   cannot_block_self: 'No podés bloquearte a vos mismo.',
   block_limit: 'Llegaste al máximo de usuarios bloqueados.',
   user_not_found: 'Ese jugador ya no existe.',
+  cannot_friend_self: 'No podés agregarte a vos mismo.',
+  friend_limit: 'Llegaste al máximo de 200 amigos.',
+  friend_request_rate_limited: 'Mandaste muchas solicitudes hoy. Probá de nuevo mañana.',
+  friend_request_not_found: 'Esa solicitud ya no está.',
 };
 
 export function toUserMessage(error: unknown): string {
