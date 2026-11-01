@@ -113,9 +113,10 @@ test('«Sólo amigos» abre el perfil únicamente a los amigos', async () => {
   const owner = await player('vis_owner@test.dev');
   const friend = await player('vis_friend@test.dev');
   const stranger = await player('vis_stranger@test.dev');
-  await db.query(`update public.user_settings set profile_visibility = 'friends' where user_id = $1`, [
-    owner,
-  ]);
+  await db.query(
+    `update public.user_settings set profile_visibility = 'friends' where user_id = $1`,
+    [owner],
+  );
   await send(friend, owner);
   await respond(owner, friend, true);
   assert.equal((await profile(friend, owner)).is_public, true);
@@ -138,4 +139,182 @@ test('permisos: la tabla no se lee desde la app y anon no manda solicitudes', as
     as(db, 'anon', null, () => db.query(`select public.send_friend_request($1)`, [b])),
     /permission denied/,
   );
+});
+
+// ---------- en línea, invitaciones, actividad y retos ----------
+const ping = async (u) => (await rpc(u, 'select public.ping_presence() as r'))[0].r;
+const friendsV2 = (u) => rpc(u, 'select * from public.get_friends_v2()');
+const invite = async (u, target) =>
+  (await rpc(u, 'select public.invite_friend_to_battle($1) as r', [target]))[0].r;
+const challengeStatus = async (u, code) =>
+  (await rpc(u, 'select public.friend_challenge_status($1) as r', [code]))[0].r;
+const acceptChallenge = async (u, code) =>
+  (await rpc(u, 'select public.accept_friend_challenge($1) as r', [code]))[0].r;
+const finish = (u, id, score) =>
+  rpc(u, 'select public.finish_human_match($1, $2, $3, $4, false)', [id, score, 5, 8]);
+const weekly = async (u) =>
+  (await rpc(u, 'select public.get_friend_weekly_challenges() as r'))[0].r;
+const claim = async (u, id) =>
+  (await rpc(u, 'select public.claim_friend_challenge($1) as r', [id]))[0].r;
+
+async function friendsPair(prefix) {
+  const a = await player(`${prefix}_a@test.dev`);
+  const b = await player(`${prefix}_b@test.dev`);
+  await send(a, b);
+  await respond(b, a, true);
+  return [a, b];
+}
+
+test('en línea: el latido marca presencia y se puede ocultar', async () => {
+  const [a, b] = await friendsPair('onl');
+  assert.equal((await friendsV2(a))[0].online, false);
+  await ping(b);
+  let [row] = await friendsV2(a);
+  assert.equal(row.online, true);
+  assert.ok(row.last_seen_at);
+  await db.query(`update public.user_settings set show_online = false where user_id = $1`, [b]);
+  [row] = await friendsV2(a);
+  assert.equal(row.online, false);
+  assert.equal(row.last_seen_at, null);
+  // Latido viejo = desconectado.
+  await db.query(`update public.user_settings set show_online = true where user_id = $1`, [b]);
+  await db.query(
+    `update public.user_presence set last_seen_at = now() - interval '3 minutes' where user_id = $1`,
+    [b],
+  );
+  assert.equal((await friendsV2(a))[0].online, false);
+});
+
+test('invitar a un amigo: sólo él la ve y la acepta; rechazar avisa a quien desafía', async () => {
+  const [host, guest] = await friendsPair('inv');
+  const stranger = await player('inv_stranger@test.dev');
+  await assert.rejects(invite(host, stranger), /not_friends/);
+
+  const { code } = await invite(host, guest);
+  assert.equal((await ping(guest)).invites[0].code, code);
+  assert.deepEqual((await ping(stranger)).invites, []);
+  assert.equal((await friendsV2(host))[0].invited_by_me, true);
+  assert.equal((await friendsV2(guest))[0].invite_code, code);
+  await assert.rejects(acceptChallenge(stranger, code), /challenge_not_found/);
+
+  await rpc(guest, 'select public.decline_battle_invite($1)', [code]);
+  assert.equal((await challengeStatus(host, code)).status, 'declined');
+  assert.deepEqual((await ping(guest)).invites, []);
+
+  // Una invitación nueva anula la anterior y se juega.
+  const second = await invite(host, guest);
+  const third = await invite(host, guest);
+  assert.equal((await challengeStatus(host, second.code)).status, 'expired');
+  assert.equal((await acceptChallenge(guest, third.code)).status, 'matched');
+
+  // Si quien desafía deja de consultar, la invitación desaparece.
+  const fourth = await invite(host, guest);
+  await db.query(
+    `update public.friend_challenges set seen_at = now() - interval '11 seconds' where code = $1`,
+    [fourth.code],
+  );
+  assert.deepEqual((await ping(guest)).invites, []);
+});
+
+test('retos semanales: progreso real, se cobran una vez y muestran amigos que los completaron', async () => {
+  const [a, b] = await friendsPair('wk');
+  let state = await weekly(a);
+  assert.equal(state.challenges.length, 3);
+  const friendly = () => state.challenges.find((c) => c.id === 'friendly_1');
+  assert.equal(friendly().progress, 0);
+  await assert.rejects(claim(a, 'friendly_1'), /challenge_incomplete/);
+
+  // Un amistoso entre los dos, terminado.
+  const { code } = await invite(a, b);
+  const { battle_id } = await acceptChallenge(b, code);
+  await db.query(
+    `update public.battles set started_at = now() - interval '76 seconds' where id = $1`,
+    [battle_id],
+  );
+  await finish(a, battle_id, 500);
+  await finish(b, battle_id, 300);
+
+  state = await weekly(a);
+  assert.equal(friendly().progress, 1);
+  assert.equal(friendly().friends_done, 1);
+  assert.equal(friendly().friends[0].username, 'wk_b');
+  const play = state.challenges.find((c) => c.id === 'play_3');
+  assert.equal(play.progress, 1);
+
+  const res = await claim(a, 'friendly_1');
+  assert.equal(res.polys, 30);
+  await assert.rejects(claim(a, 'friendly_1'), /already_claimed/);
+  state = await weekly(a);
+  assert.equal(friendly().claimed, true);
+});
+
+test('actividad: subidas de rango y logros de amigos; un perfil privado sólo muestra el rango', async () => {
+  const [me, friend] = await friendsPair('act');
+  await db.query(
+    `with b as (insert into public.battles (language_code) select target_language from public.profiles where id = $1 returning id, language_code)
+     insert into public.rating_history (user_id, language_code, battle_id, reason, rating_before, rating_after)
+     select $1, b.language_code, b.id, 'battle', 395, 412 from b`,
+    [friend],
+  );
+  await db.query(
+    `insert into public.learning_sessions (id, user_id, kind, started_at, duration_seconds, total_answers, first_try_total, first_try_correct, local_date)
+     values (gen_random_uuid(), $1, 'review', now(), 60, 25, 25, 20, current_date)`,
+    [friend],
+  );
+  const kinds = async () =>
+    (await rpc(me, 'select * from public.get_friend_activity()')).map((e) => e.kind).sort();
+  // user_settings arranca en 'private' o 'public' según el alta: forzarlo.
+  await db.query(
+    `update public.user_settings set profile_visibility = 'friends' where user_id = $1`,
+    [friend],
+  );
+  assert.deepEqual(await kinds(), ['new_friend', 'rank_up', 'reviews_week']);
+  const rank = (await rpc(me, 'select * from public.get_friend_activity()')).find(
+    (e) => e.kind === 'rank_up',
+  );
+  assert.equal(rank.value, 395);
+  assert.equal(rank.value2, 412);
+
+  await db.query(
+    `update public.user_settings set profile_visibility = 'private' where user_id = $1`,
+    [friend],
+  );
+  assert.deepEqual(await kinds(), ['new_friend', 'rank_up']);
+});
+
+test('los valores de los retos coinciden con shared/friendChallenges.ts', async () => {
+  const { FRIEND_WEEKLY_CHALLENGES } = await import('../../shared/friendChallenges.ts');
+  const sql = (await db.query('select public.friend_weekly_config() as c')).rows[0].c;
+  assert.deepEqual(
+    sql,
+    FRIEND_WEEKLY_CHALLENGES.map(({ id, target, reward }) => ({ id, target, reward })),
+  );
+});
+
+test('rechazo silencioso: quien la mandó la sigue viendo pendiente y la puede cancelar', async () => {
+  const a = await player('sil_a@test.dev');
+  const b = await player('sil_b@test.dev');
+  await send(a, b);
+  await respond(b, a, false);
+  assert.equal((await friendsV2(a))[0].state, 'outgoing');
+  assert.equal((await search(a, 'sil_b'))[0].state, 'outgoing');
+  assert.equal((await profile(a, b)).friendship, 'outgoing');
+  // Para quien la rechazó, no hay nada.
+  assert.deepEqual(await friendsV2(b), []);
+  assert.equal((await search(b, 'sil_a'))[0].state, 'none');
+
+  await remove(a, b);
+  assert.deepEqual(await friendsV2(a), []);
+  assert.equal((await search(a, 'sil_b'))[0].state, 'none');
+
+  // Pasada la ventana, desaparece sola.
+  await send(a, b);
+  await respond(b, a, false);
+  await db.query(
+    `update public.friendships set responded_at = now() - interval '8 days' where requester_id = $1`,
+    [a],
+  );
+  assert.deepEqual(await friendsV2(a), []);
+  assert.equal(await send(a, b), 'outgoing');
+  assert.equal((await friendsV2(b))[0].state, 'incoming');
 });

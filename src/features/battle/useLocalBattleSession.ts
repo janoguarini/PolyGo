@@ -31,7 +31,9 @@ import { FEEDBACK_MS } from './useBattleSession';
 const QUEUE_POLL_MS = 1_500;
 
 /** Desafío a un amigo: quien lo crea espera con un código; el amigo entra con ese código. */
-export type ChallengeRole = { role: 'host' } | { role: 'guest'; code: string };
+export type ChallengeRole =
+  | { role: 'host'; inviteeId?: string }
+  | { role: 'guest'; code: string };
 
 /**
  * Misma interfaz que useBattleSession, pero sin servidor de partidas (MVP con Supabase):
@@ -175,7 +177,7 @@ export function useLocalBattleSession() {
             return await playHuman(accepted.battle_id);
           }
           if (challenge?.role === 'host') {
-            const created = await humanMatchApi.createChallenge();
+            const created = await humanMatchApi.createChallenge(challenge.inviteeId);
             if (matchRef.current !== match) {
               void humanMatchApi.cancelChallenge(created.code).catch(() => {});
               return;
@@ -197,10 +199,13 @@ export function useLocalBattleSession() {
                   challengeRef.current = null;
                   return await playHuman(res.battle_id);
                 }
-                if (res.status === 'expired') {
+                if (res.status === 'expired' || res.status === 'declined') {
                   stopSearch();
                   challengeRef.current = null;
-                  return dispatch({ type: 'connection_error', code: 'challenge_expired' });
+                  return dispatch({
+                    type: 'connection_error',
+                    code: res.status === 'declined' ? 'challenge_declined' : 'challenge_expired',
+                  });
                 }
               } catch (error) {
                 // Un corte de red no anula el desafío: se reintenta en la próxima consulta.

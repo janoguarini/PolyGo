@@ -2,7 +2,7 @@ import { router, useLocalSearchParams } from 'expo-router';
 import * as Linking from 'expo-linking';
 import { Search, Share2, Swords, UserPlus, X } from 'lucide-react-native';
 import { useCallback, useEffect } from 'react';
-import { Alert, BackHandler, Share, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, Alert, BackHandler, Share, StyleSheet, View } from 'react-native';
 
 import { WORD_RUSH, type BattleMode, type CancelReason } from '@shared/protocol';
 import { isPlaced } from '@shared/ranking';
@@ -49,8 +49,22 @@ const CANCEL_MESSAGES: Record<CancelReason, string> = {
 };
 
 export default function BattleScreen() {
-  const params = useLocalSearchParams<{ mode?: string; challenge?: string; code?: string }>();
-  if (params.challenge === 'host') return <ChallengeBattle challenge={{ role: 'host' }} />;
+  const params = useLocalSearchParams<{
+    mode?: string;
+    challenge?: string;
+    code?: string;
+    /** Desafío dirigido: id y nombre del amigo invitado. */
+    friend?: string;
+    friendName?: string;
+  }>();
+  if (params.challenge === 'host') {
+    return (
+      <ChallengeBattle
+        challenge={{ role: 'host', inviteeId: params.friend }}
+        inviteeName={params.friend ? params.friendName : undefined}
+      />
+    );
+  }
   if (params.code) {
     return <ChallengeBattle key={params.code} challenge={{ role: 'guest', code: params.code }} />;
   }
@@ -74,21 +88,32 @@ function MatchBattle({ mode }: { mode: BattleMode }) {
  * Desafío a un amigo: siempre por Supabase (también cuando haya servidor de partidas), porque
  * no mueve el ELO. Jugar otra = crear un desafío nuevo.
  */
-function ChallengeBattle({ challenge }: { challenge: ChallengeRole }) {
+function ChallengeBattle({
+  challenge,
+  inviteeName,
+}: {
+  challenge: ChallengeRole;
+  inviteeName?: string;
+}) {
   const session = useLocalBattleSession();
+  // Otra partida: a quien invitaste lo volvés a invitar; con código, un código nuevo.
+  const again: ChallengeRole = challenge.role === 'host' ? challenge : { role: 'host' };
   return (
     <BattleView
       session={session}
-      onStart={(_, again) => session.start('ranked', again ? { role: 'host' } : challenge)}
+      inviteeName={inviteeName}
+      onStart={(_, isAgain) => session.start('ranked', isAgain ? again : challenge)}
     />
   );
 }
 
 function BattleView({
   session,
+  inviteeName,
   onStart,
 }: {
   session: Session;
+  inviteeName?: string;
   /** again: el usuario pidió otra partida (no es el arranque al montar). */
   onStart: (mode: BattleMode | undefined, again: boolean) => void;
 }) {
@@ -165,6 +190,7 @@ function BattleView({
         onAnswer={session.answer}
         onRetry={() => onStart(state.mode, true)}
         onExit={exit}
+        inviteeName={inviteeName}
       />
     </Screen>
   );
@@ -183,9 +209,10 @@ interface BodyProps {
   onAnswer: (choice: number | string) => void;
   onRetry: () => void;
   onExit: () => void;
+  inviteeName?: string;
 }
 
-function Body({ state, now, onReady, onAnswer, onRetry, onExit }: BodyProps) {
+function Body({ state, now, onReady, onAnswer, onRetry, onExit, inviteeName }: BodyProps) {
   const me = state.players.find((p) => p.slot === state.yourSlot);
   const opponent = opponentPlayer(state);
   const myRating = useMyProfile().data?.rating;
@@ -196,6 +223,16 @@ function Body({ state, now, onReady, onAnswer, onRetry, onExit }: BodyProps) {
       return <LoadingState label="Preparando la partida…" />;
 
     case 'error':
+      if (state.friendly && state.errorCode === 'challenge_declined') {
+        return (
+          <EmptyState
+            title={inviteeName ? `@${inviteeName} no puede ahora` : 'Tu amigo no puede ahora'}
+            message={ERROR_MESSAGES.challenge_declined}
+            actionLabel="Volver"
+            onAction={onExit}
+          />
+        );
+      }
       if (state.friendly && state.errorCode?.startsWith('challenge_')) {
         return (
           <EmptyState
@@ -214,7 +251,10 @@ function Body({ state, now, onReady, onAnswer, onRetry, onExit }: BodyProps) {
       );
 
     case 'searching': {
-      if (state.challenge) return <ChallengeWaiting code={state.challenge.code} onExit={onExit} />;
+      if (state.challenge)
+        return (
+          <ChallengeWaiting code={state.challenge.code} inviteeName={inviteeName} onExit={onExit} />
+        );
       const waited = state.queue?.waitedMs ?? 0;
       const mm = Math.floor(waited / 60_000);
       const ss = String(Math.floor(waited / 1000) % 60).padStart(2, '0');
@@ -365,13 +405,41 @@ function Body({ state, now, onReady, onAnswer, onRetry, onExit }: BodyProps) {
 }
 
 /** Quien desafía espera con el código a la vista y lo puede compartir. */
-function ChallengeWaiting({ code, onExit }: { code: string; onExit: () => void }) {
+function ChallengeWaiting({
+  code,
+  inviteeName,
+  onExit,
+}: {
+  code: string;
+  inviteeName?: string;
+  onExit: () => void;
+}) {
   const share = useCallback(() => {
     const link = Linking.createURL(`challenge/${code}`);
     void Share.share({
       message: `¡Te desafío en Polygo! 75 segundos de vocabulario en inglés, vos contra mí. Entrá con el código ${code} (Ranked → Tengo un código) o tocá: ${link}`,
     }).catch(() => {});
   }, [code]);
+  if (inviteeName) {
+    return (
+      <View style={styles.center}>
+        <Card style={styles.searchCard}>
+          <ActivityIndicator color={colors.primaryBright} size="large" />
+          <Text variant="title" align="center">
+            Esperando a @{inviteeName}
+          </Text>
+          <Text color="textMuted" align="center">
+            Le llegó tu invitación en la app. Cuando la acepte, la partida empieza sola.
+          </Text>
+          <Text variant="caption" align="center">
+            Amistoso: no mueve el ELO. Dejá esta pantalla abierta: si la cerrás, la invitación se
+            cancela.
+          </Text>
+        </Card>
+        <Button label="Cancelar invitación" variant="ghost" onPress={onExit} />
+      </View>
+    );
+  }
   return (
     <View style={styles.center}>
       <Card style={styles.searchCard}>

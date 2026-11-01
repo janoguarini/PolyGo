@@ -35,6 +35,8 @@ const KNOWN: ErrorCode[] = [
   'own_challenge',
   'host_gone',
   'language_mismatch',
+  'challenge_declined',
+  'not_friends',
 ];
 
 /** Traduce un error de las funciones de la base al código que muestra la pantalla. */

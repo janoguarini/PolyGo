@@ -25,6 +25,7 @@ Nunca da ventaja en ranked (el ELO no se toca con Polys).
 | Rango alcanzado en la temporada                        | 50 (Plata) → 300 (Gran Maestro) | una vez por temporada |
 | Hito de racha 7/14/30/50/100/365 días                  | 25/40/75/100/200/500            | una vez en la vida    |
 | Logro de nivel N                                       | min(10 × N, 50)                 | cada nivel una vez    |
+| Reto semanal entre amigos (Amigos → Retos de la semana) | 20 / 20 / 30                    | cada reto, 1 por semana |
 
 ## Gastos
 

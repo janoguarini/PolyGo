@@ -19,6 +19,14 @@ export interface FriendEntry {
   /** Racha de días de estudio (sólo para amigos aceptados). */
   streak: number;
   since: string;
+  /** Conectado ahora (latido reciente y no lo ocultó). */
+  online: boolean;
+  /** Último latido (null si lo oculta o nunca abrió esta versión). */
+  lastSeenAt: string | null;
+  /** Le mandé una invitación a un amistoso que sigue en pie. */
+  invitedByMe: boolean;
+  /** Código de la invitación que me mandó y sigue en pie. */
+  inviteCode: string | null;
 }
 
 export interface PlayerSearchResult {
@@ -33,7 +41,7 @@ export interface PlayerSearchResult {
 }
 
 export async function fetchFriends(): Promise<FriendEntry[]> {
-  const { data, error } = await requireSupabase().rpc('get_friends');
+  const { data, error } = await requireSupabase().rpc('get_friends_v2');
   if (error) throw error;
   return data.map((r) => ({
     userId: r.user_id,
@@ -46,6 +54,10 @@ export async function fetchFriends(): Promise<FriendEntry[]> {
     placed: r.placed,
     streak: r.streak,
     since: r.since,
+    online: r.online,
+    lastSeenAt: r.last_seen_at,
+    invitedByMe: r.invited_by_me,
+    inviteCode: r.invite_code,
   }));
 }
 
@@ -69,7 +81,13 @@ export async function sendFriendRequest(userId: string) {
   if (error) throw error;
 }
 
-export async function respondFriendRequest({ userId, accept }: { userId: string; accept: boolean }) {
+export async function respondFriendRequest({
+  userId,
+  accept,
+}: {
+  userId: string;
+  accept: boolean;
+}) {
   const { error } = await requireSupabase().rpc('respond_friend_request', {
     p_user_id: userId,
     p_accept: accept,

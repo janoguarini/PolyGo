@@ -240,3 +240,16 @@ Todo lo que falta está en [LAUNCH_CHECKLIST.md](LAUNCH_CHECKLIST.md). En orden:
 - [x] Lista de amigos ordenada por ELO con racha de estudio; tu código para compartir; atajo a «Desafiar a un amigo».
 - [x] Botón de amistad en el perfil de otro jugador; la visibilidad «Sólo amigos» ya se aplica.
 - [x] Bloquear termina la amistad y oculta al jugador en la búsqueda. Migración `20261101034944_friends` (sin DELETE: rechazar/sacar cambian el estado).
+
+## Amigos, segunda parte (2026-11-01)
+
+Valores: `shared/friendChallenges.ts` (la base los replica en `friend_weekly_config()`, un test compara).
+
+- [x] Pantalla rediseñada: encabezado con «+ Agregar», tarjeta «Desafiar a un amigo» con los amigos en línea (liga, ELO, Desafiar), actividad reciente, retos de la semana y lista completa con estado y racha.
+- [x] **Agregar amigos** (`/add-friends`): búsqueda, solicitudes recibidas y enviadas, tu código, aviso después de cada acción. Rechazo silencioso: quien la mandó la ve pendiente 7 días.
+- [x] **En línea**: latido `ping_presence` cada 10 s con la app en primer plano (`usePresence` en el layout de pestañas); en línea = latido en los últimos 2 min. Ajustes → «Mostrar cuando estoy en línea».
+- [x] **Invitar a un amistoso**: `invite_friend_to_battle` crea un desafío dirigido (sólo ese amigo lo acepta, reusa la partida amistosa existente). Al amigo le llega con el latido: aviso arriba de las pestañas (Jugar / Ahora no) y «Aceptar» en su lista. Quien invita espera en `/battle`; si el amigo rechaza, lo ve. Un desafío abierto por vez.
+- [x] **Actividad reciente** (`get_friend_activity`, 7 días): subidas de rango, 3+ victorias, 20+ palabras repasadas, 3+ lecciones en la semana, logros, hitos de racha y amistades nuevas. Todo derivado de tablas existentes; de un perfil privado sólo rango y amistad.
+- [x] **Retos de la semana** (lunes a domingo, UTC): 3 partidas, 20 palabras repasadas, 1 amistoso con un amigo. Progreso real, premio en Polys (`claim_friend_challenge`, motivo `friend_challenge`) y qué amigos ya lo completaron.
+- Migraciones: `20261101041401_friend_poly_reason`, `20261101041517_friends_social`, `20261101042815_friends_silent_decline` (aplicadas; checksum de funciones igual al local).
+- Pendiente de probar en dos teléfonos: invitación en vivo y presencia. Sin notificaciones push: la invitación sólo llega con la app abierta.

@@ -36,6 +36,10 @@ const RPC_MESSAGES: Record<string, string> = {
   friend_limit: 'Llegaste al máximo de 200 amigos.',
   friend_request_rate_limited: 'Mandaste muchas solicitudes hoy. Probá de nuevo mañana.',
   friend_request_not_found: 'Esa solicitud ya no está.',
+  challenge_incomplete: 'Todavía no completaste este reto.',
+  not_friends: 'Sólo podés invitar a jugadores de tu lista de amigos.',
+  language_mismatch: 'Tu amigo está aprendiendo otro idioma, así que no pueden jugar juntos.',
+  match_rate_limited: 'Mandaste muchos desafíos en la última hora. Esperá un rato.',
 };
 
 export function toUserMessage(error: unknown): string {

@@ -707,6 +707,7 @@ export type Database = {
           created_at: string;
           profile_visibility: string;
           show_region: boolean;
+          show_online: boolean;
           updated_at: string;
           user_id: string;
           widget_content_type: string;
@@ -715,6 +716,7 @@ export type Database = {
           created_at?: string;
           profile_visibility?: string;
           show_region?: boolean;
+          show_online?: boolean;
           updated_at?: string;
           user_id: string;
           widget_content_type?: string;
@@ -723,6 +725,7 @@ export type Database = {
           created_at?: string;
           profile_visibility?: string;
           show_region?: boolean;
+          show_online?: boolean;
           updated_at?: string;
           user_id?: string;
           widget_content_type?: string;
@@ -967,6 +970,45 @@ export type Database = {
           state: string;
         }[];
       };
+      get_friends_v2: {
+        Args: never;
+        Returns: {
+          user_id: string;
+          username: string;
+          avatar_id: string;
+          avatar_path: string | null;
+          frame_id: string | null;
+          state: string;
+          rating: number | null;
+          placed: boolean;
+          streak: number;
+          since: string;
+          online: boolean;
+          last_seen_at: string | null;
+          invited_by_me: boolean;
+          invite_code: string | null;
+        }[];
+      };
+      ping_presence: { Args: never; Returns: Json };
+      invite_friend_to_battle: { Args: { p_user_id: string }; Returns: Json };
+      decline_battle_invite: { Args: { p_code: string }; Returns: undefined };
+      get_friend_activity: {
+        Args: never;
+        Returns: {
+          user_id: string;
+          username: string;
+          avatar_id: string;
+          avatar_path: string | null;
+          frame_id: string | null;
+          kind: string;
+          value: number | null;
+          value2: number | null;
+          label: string | null;
+          happened_at: string;
+        }[];
+      };
+      get_friend_weekly_challenges: { Args: never; Returns: Json };
+      claim_friend_challenge: { Args: { p_id: string }; Returns: Json };
       lesson_star_totals: { Args: { p_user_id: string }; Returns: Json };
       parse_learning_attempts: {
         Args: { p_attempts: Json };

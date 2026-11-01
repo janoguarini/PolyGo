@@ -65,7 +65,8 @@ export type PolyReason =
   | 'achievement'
   | 'shop_freeze'
   | 'shop_item'
-  | 'streak_repair';
+  | 'streak_repair'
+  | 'friend_challenge';
 
 /** Texto corto de cada movimiento, para el aviso de "+5 Polys". */
 export function polyReasonLabel(reason: PolyReason): string {
@@ -96,5 +97,7 @@ export function polyReasonLabel(reason: PolyReason): string {
       return 'Compra en la tienda';
     case 'streak_repair':
       return 'Racha recuperada';
+    case 'friend_challenge':
+      return 'Reto entre amigos';
   }
 }

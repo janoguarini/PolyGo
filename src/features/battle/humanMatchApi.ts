@@ -3,7 +3,7 @@ import { requireSupabase } from '@/lib/supabase';
 import type { HumanMatchApi, HumanMatchResult, HumanMatchSetup } from './localMatch';
 
 export type ChallengeStatus =
-  { status: 'waiting' | 'expired'; battle_id: null } | { status: 'matched'; battle_id: string };
+  { status: 'waiting' | 'expired' | 'declined'; battle_id: null } | { status: 'matched'; battle_id: string };
 
 export type QueueResponse =
   | { status: 'waiting'; window: number; waited_ms: number }
@@ -14,7 +14,8 @@ export const humanMatchApi: HumanMatchApi & {
   join(): Promise<QueueResponse>;
   leave(): Promise<{ battle_id: string | null }>;
   get(battleId: string): Promise<HumanMatchSetup>;
-  createChallenge(): Promise<{ code: string; expires_at: number }>;
+  /** Con inviteeId, el desafío va dirigido a ese amigo (sólo él lo puede aceptar). */
+  createChallenge(inviteeId?: string): Promise<{ code: string; expires_at: number }>;
   challengeStatus(code: string): Promise<ChallengeStatus>;
   acceptChallenge(code: string): Promise<{ status: 'matched'; battle_id: string }>;
   cancelChallenge(code: string): Promise<void>;
@@ -36,8 +37,10 @@ export const humanMatchApi: HumanMatchApi & {
     if (error) throw error;
     return data as unknown as HumanMatchSetup;
   },
-  async createChallenge() {
-    const { data, error } = await requireSupabase().rpc('create_friend_challenge');
+  async createChallenge(inviteeId) {
+    const { data, error } = inviteeId
+      ? await requireSupabase().rpc('invite_friend_to_battle', { p_user_id: inviteeId })
+      : await requireSupabase().rpc('create_friend_challenge');
     if (error) throw error;
     return data as unknown as { code: string; expires_at: number };
   },

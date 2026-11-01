@@ -65,4 +65,6 @@ export const ERROR_MESSAGES: Record<ErrorCode | 'connection', string> = {
   own_challenge: 'Ese es tu propio desafío: compartilo con un amigo.',
   host_gone: 'Tu amigo ya no está esperando. Pedile que vuelva a abrir el desafío.',
   language_mismatch: 'Tu amigo está aprendiendo otro idioma, así que no pueden jugar juntos.',
+  challenge_declined: 'Tu amigo no puede jugar ahora. Probá más tarde.',
+  not_friends: 'Sólo podés invitar a jugadores de tu lista de amigos.',
 };

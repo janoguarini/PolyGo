@@ -32,7 +32,11 @@ const VISIBILITY: {
   description: string;
 }[] = [
   { id: 'public', title: 'Público', description: 'Cualquier jugador ve tu perfil y estadísticas.' },
-  { id: 'friends', title: 'Sólo amigos', description: 'Tus amigos ven todo; el resto, sólo nombre, avatar y rango.' },
+  {
+    id: 'friends',
+    title: 'Sólo amigos',
+    description: 'Tus amigos ven todo; el resto, sólo nombre, avatar y rango.',
+  },
   {
     id: 'private',
     title: 'Privado',
@@ -111,6 +115,22 @@ export default function SettingsScreen() {
           value={settings?.show_region ?? false}
           disabled={updateSettings.isPending || !profile.region}
           onValueChange={(show) => updateSettings.mutate({ show_region: show })}
+          trackColor={{ false: colors.surfaceHighlight, true: colors.primary }}
+          thumbColor={colors.textStrong}
+        />
+      </Card>
+      <Card style={styles.switchRow}>
+        <View style={styles.flex}>
+          <Text variant="bodyStrong">Mostrar cuando estoy en línea</Text>
+          <Text variant="caption">
+            Tus amigos te ven conectado y pueden invitarte a un amistoso.
+          </Text>
+        </View>
+        <Switch
+          accessibilityLabel="Mostrar a mis amigos cuando estoy en línea"
+          value={settings?.show_online ?? true}
+          disabled={updateSettings.isPending}
+          onValueChange={(show) => updateSettings.mutate({ show_online: show })}
           trackColor={{ false: colors.surfaceHighlight, true: colors.primary }}
           thumbColor={colors.textStrong}
         />

@@ -76,7 +76,7 @@ export async function completeOnboarding(input: OnboardingInput): Promise<Profil
 
 export async function updateSettings(
   userId: string,
-  patch: { profile_visibility?: ProfileVisibility; show_region?: boolean },
+  patch: { profile_visibility?: ProfileVisibility; show_region?: boolean; show_online?: boolean },
 ) {
   const { error } = await requireSupabase()
     .from('user_settings')

@@ -177,7 +177,10 @@ export type ErrorCode =
   | 'challenge_taken'
   | 'own_challenge'
   | 'host_gone'
-  | 'language_mismatch';
+  | 'language_mismatch'
+  /** Desafío dirigido a un amigo. */
+  | 'challenge_declined'
+  | 'not_friends';
 
 export interface AnswerResult {
   questionIndex: number;
