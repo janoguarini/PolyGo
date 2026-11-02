@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { RATING_CONFIG, TIERS } from '@shared/ranking';
@@ -5,7 +6,7 @@ import { RATING_CONFIG, TIERS } from '@shared/ranking';
 import { Card, RankEmblem, Text, spacing } from '@/design-system';
 
 /** Tutorial del sistema competitivo: los valores salen de shared/ranking, no hay números copiados a mano. */
-export function RankTutorial() {
+export function RankTutorial({ mascot }: { mascot?: ReactNode }) {
   return (
     <View style={styles.wrapper}>
       <View style={styles.ladder}>
@@ -18,6 +19,7 @@ export function RankTutorial() {
           </View>
         ))}
       </View>
+      {mascot ? <View style={styles.mascot}>{mascot}</View> : null}
       <Card>
         <Text variant="bodyStrong">1 · Empezás sin posicionar</Text>
         <Text color="textMuted">
@@ -61,4 +63,5 @@ const styles = StyleSheet.create({
   },
   rung: { width: 72, alignItems: 'center', gap: spacing.xxs },
   rungLabel: { fontSize: 9 },
+  mascot: { alignItems: 'center' },
 });

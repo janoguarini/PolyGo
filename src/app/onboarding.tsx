@@ -1,7 +1,9 @@
-import { ChevronLeft, Flame, GraduationCap, Swords } from 'lucide-react-native';
-import { useState } from 'react';
+import { Check, ChevronLeft, Lock, Star } from 'lucide-react-native';
+import { useEffect, useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
-import Animated, { FadeIn } from 'react-native-reanimated';
+import Animated, { FadeIn, FadeInDown } from 'react-native-reanimated';
+
+import { ENERGY } from '@shared/energy';
 
 import {
   AVATARS,
@@ -19,12 +21,14 @@ import {
   Avatar,
   Button,
   Card,
+  Mascot,
   ProgressBar,
   Screen,
   SelectCard,
   Text,
   TextField,
   colors,
+  preloadMascot,
   radii,
   spacing,
 } from '@/design-system';
@@ -34,13 +38,31 @@ import { isUsernameAvailable } from '@/features/profile/api';
 import { useCompleteOnboarding } from '@/features/profile/hooks';
 import { toUserMessage } from '@/lib/errors';
 
-const STEPS = ['welcome', 'language', 'level', 'goal', 'username', 'avatar', 'tutorial'] as const;
+const STEPS = [
+  'welcome',
+  'lessons',
+  'ranked',
+  'language',
+  'level',
+  'goal',
+  'username',
+  'avatar',
+] as const;
 type Step = (typeof STEPS)[number];
 
 const TITLES: Record<Step, { title: string; subtitle: string }> = {
   welcome: {
     title: '¡Te damos la bienvenida a Polygo!',
-    subtitle: 'Antes de arrancar, contanos qué querés estudiar y desde dónde partís.',
+    subtitle:
+      'Acá aprendés idiomas jugando: lecciones cortas, rachas diarias y partidas contra otros jugadores. Te muestro cómo funciona.',
+  },
+  lessons: {
+    title: 'Tu camino de lecciones',
+    subtitle: 'Acá abajo vas a ir avanzando, lección por lección y unidad por unidad.',
+  },
+  ranked: {
+    title: 'Competí en Ranked',
+    subtitle: 'Arriba están los rangos: enfrentá a otros jugadores y escalá hasta la cima.',
   },
   language: { title: '¿Qué idioma querés aprender?', subtitle: 'Por ahora Polygo enseña inglés.' },
   level: {
@@ -50,17 +72,21 @@ const TITLES: Record<Step, { title: string; subtitle: string }> = {
   goal: { title: 'Tu objetivo diario', subtitle: 'Podés cambiarlo cuando quieras.' },
   username: { title: 'Elegí tu nombre de jugador', subtitle: 'Así te van a ver tus rivales.' },
   avatar: { title: 'Elegí tu avatar', subtitle: 'Más opciones llegarán con las temporadas.' },
-  tutorial: { title: 'Cómo funciona Ranked', subtitle: 'Lo esencial antes de tu primera partida.' },
 };
 
-const WELCOME_POINTS = [
+const LESSON_POINTS = [
   {
-    Icon: GraduationCap,
-    title: 'Lecciones a tu medida',
-    text: 'Arrancás en tu nivel, de A1 a C2.',
+    title: 'Empezás en tu nivel',
+    text: 'En un momento elegís tu nivel (de A1 a C2) y tu camino arranca ahí.',
   },
-  { Icon: Flame, title: 'Un ratito por día', text: 'Sumá racha y no pierdas el ritmo.' },
-  { Icon: Swords, title: 'Competí en Ranked', text: 'Enfrentá a otros jugadores y subí de rango.' },
+  {
+    title: '3 estrellas = lección dorada',
+    text: 'Terminá una lección sin errores y queda dorada en tu camino.',
+  },
+  {
+    title: 'Energía',
+    text: `Cada lección usa ${ENERGY.lessonCost} de energía ⚡. Tenés hasta ${ENERGY.max} y se recarga sola con el tiempo.`,
+  },
 ] as const;
 
 const GOAL_LABELS: Record<DailyGoalMinutes, string> = {
@@ -84,6 +110,7 @@ export default function OnboardingScreen() {
   const step = STEPS[stepIndex]!;
   const isLast = stepIndex === STEPS.length - 1;
   const isWelcome = step === 'welcome';
+  useEffect(preloadMascot, []);
   // El paso de bienvenida no cuenta en la barra de progreso.
   const progress = stepIndex / (STEPS.length - 1);
   const levelInfo = START_LEVELS.find((l) => l.id === level);
@@ -134,7 +161,13 @@ export default function OnboardingScreen() {
             <FormMessage tone="error" message={toUserMessage(complete.error)} />
           ) : null}
           <Button
-            label={isLast ? 'Empezar a jugar' : isWelcome ? 'Empezar' : 'Continuar'}
+            label={
+              isLast
+                ? 'Empezar a jugar'
+                : step === 'welcome' || step === 'lessons' || step === 'ranked'
+                  ? 'Siguiente'
+                  : 'Continuar'
+            }
             size="lg"
             loading={checkingUsername || complete.isPending}
             onPress={() => void next()}
@@ -159,10 +192,10 @@ export default function OnboardingScreen() {
       </View>
 
       <Animated.View key={step} entering={FadeIn.duration(250)} style={styles.body}>
-        {isWelcome ? (
-          <View style={styles.mascot}>
-            <Avatar avatarId={DEFAULT_AVATAR} size={120} instant />
-          </View>
+        {isWelcome || step === 'language' ? (
+          <Animated.View entering={FadeInDown.duration(400)} style={styles.mascot}>
+            <Mascot pose={isWelcome ? 'wave' : 'thinking'} height={isWelcome ? 280 : 170} />
+          </Animated.View>
         ) : null}
         <View style={[styles.header, isWelcome && styles.centered]}>
           <Text variant="title" align={isWelcome ? 'center' : undefined}>
@@ -173,18 +206,30 @@ export default function OnboardingScreen() {
           </Text>
         </View>
 
-        {isWelcome &&
-          WELCOME_POINTS.map(({ Icon, title, text }) => (
-            <Card key={title}>
-              <View style={styles.point}>
-                <Icon color={colors.primaryBright} size={26} />
-                <View style={styles.pointText}>
-                  <Text variant="bodyStrong">{title}</Text>
-                  <Text color="textMuted">{text}</Text>
-                </View>
-              </View>
-            </Card>
-          ))}
+        {step === 'lessons' && (
+          <>
+            <Animated.View entering={FadeInDown.duration(400)} style={styles.mascot}>
+              <Mascot pose="pointDown" height={190} />
+            </Animated.View>
+            <PathPreview />
+            {LESSON_POINTS.map(({ title, text }) => (
+              <Card key={title}>
+                <Text variant="bodyStrong">{title}</Text>
+                <Text color="textMuted">{text}</Text>
+              </Card>
+            ))}
+          </>
+        )}
+
+        {step === 'ranked' && (
+          <RankTutorial
+            mascot={
+              <Animated.View entering={FadeInDown.duration(400)}>
+                <Mascot pose="pointUp" height={200} />
+              </Animated.View>
+            }
+          />
+        )}
 
         {step === 'language' &&
           TARGET_LANGUAGES.map((l) => (
@@ -265,10 +310,39 @@ export default function OnboardingScreen() {
             ))}
           </View>
         )}
-
-        {step === 'tutorial' && <RankTutorial />}
       </Animated.View>
     </Screen>
+  );
+}
+
+/** Mini camino ilustrativo: una lección hecha, la actual y una bloqueada, en zigzag. */
+function PathPreview() {
+  const nodes = [
+    { key: 'done', offset: -48, Icon: Check, fill: colors.gold, icon: colors.background },
+    { key: 'current', offset: 32, Icon: Star, fill: colors.primary, icon: colors.onPrimary },
+    {
+      key: 'locked',
+      offset: -24,
+      Icon: Lock,
+      fill: colors.surfaceHighlight,
+      icon: colors.textSubtle,
+    },
+  ];
+  return (
+    <View style={styles.path} accessible={false}>
+      {nodes.map(({ key, offset, Icon, fill, icon }) => (
+        <View
+          key={key}
+          style={[
+            styles.node,
+            { backgroundColor: fill, transform: [{ translateX: offset }] },
+            key === 'current' && styles.nodeCurrent,
+          ]}
+        >
+          <Icon color={icon} size={26} strokeWidth={2.5} />
+        </View>
+      ))}
+    </View>
   );
 }
 
@@ -280,9 +354,16 @@ const styles = StyleSheet.create({
   body: { gap: spacing.md },
   header: { gap: spacing.xs, marginVertical: spacing.md },
   centered: { alignItems: 'center' },
-  mascot: { alignItems: 'center', marginTop: spacing.xl },
-  point: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  pointText: { flex: 1, gap: 2 },
+  mascot: { alignItems: 'center' },
+  path: { alignItems: 'center', gap: spacing.md, marginBottom: spacing.sm },
+  node: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  nodeCurrent: { borderWidth: 4, borderColor: colors.primarySoft },
   avatarGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md, justifyContent: 'center' },
   avatarCell: {
     padding: spacing.sm,
