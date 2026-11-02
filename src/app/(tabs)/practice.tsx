@@ -2,6 +2,7 @@ import { router } from 'expo-router';
 import {
   ChevronRight,
   Layers,
+  Library,
   ListChecks,
   RotateCcw,
   Smartphone,
@@ -35,6 +36,7 @@ import { lessonStars } from '@/features/learning/path';
 import { usePlus } from '@/features/plus/api';
 import { PlusBadge } from '@/features/plus/components/PlusBadge';
 import { pickSmartReview } from '@/features/plus/smartReview';
+import { topicSummaries } from '@/features/plus/topicReview';
 import { WidgetContentPicker } from '@/features/widgets/WidgetContentPicker';
 import { widgetsSupported } from '@/features/widgets/sync';
 
@@ -71,6 +73,7 @@ export default function PracticeScreen() {
     { new: 0, learning: 0, mastered: 0 } as Record<WordStatus, number>,
   );
   const smartCount = pickSmartReview(entries, now).length;
+  const topicCount = topicSummaries(curriculum.data?.units ?? [], entries, now).length;
   const missionList = missions.data?.missions ?? [];
   const missionsTotal = missionList.length || 3;
   const missionsDone = missionList.filter((m) => m.done).length;
@@ -212,6 +215,20 @@ export default function PracticeScreen() {
             ? router.push({ pathname: '/review', params: { mode: 'smart' } })
             : router.push('/plus')
         }
+        trailing={plus === true ? undefined : <PlusBadge />}
+      />
+      <PracticeOption
+        icon={<Library color={colors.primarySoft} size={22} />}
+        title="Repaso por tema"
+        caption={
+          plus !== true
+            ? 'Elegí una unidad y repasá sólo sus palabras'
+            : topicCount > 0
+              ? `${topicCount} ${topicCount === 1 ? 'unidad estudiada' : 'unidades estudiadas'} · elegí cuál repasar`
+              : 'Completá lecciones para sumar temas'
+        }
+        disabled={plus === true && topicCount === 0}
+        onPress={() => router.push(plus === true ? '/review-topics' : '/plus')}
         trailing={plus === true ? undefined : <PlusBadge />}
       />
       <Text variant="caption">

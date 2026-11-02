@@ -5,6 +5,7 @@ import {
   BookOpen,
   Check,
   Dumbbell,
+  Library,
   Smartphone,
   Sparkles,
   Swords,
@@ -79,6 +80,11 @@ export default function PlusScreen() {
         icon={<Sparkles color={colors.primarySoft} size={22} />}
         title="Repaso inteligente ilimitado"
         text="Cada sesión sale de tu historial real: primero lo vencido, después tus errores frecuentes, las palabras que te cuestan y las que el repaso espaciado te pide en las próximas 24 horas. Son reglas fijas, no un algoritmo con IA."
+      />
+      <Benefit
+        icon={<Library color={colors.primarySoft} size={22} />}
+        title="Repaso por tema"
+        text="Elegí una unidad que ya estudiaste (comida, viajes, el pasado…) y repasá sólo sus palabras, empezando por las que te tocan y las que más te costaron. Cuenta para tu repaso espaciado."
       />
       <Benefit
         icon={<Smartphone color={colors.info} size={22} />}

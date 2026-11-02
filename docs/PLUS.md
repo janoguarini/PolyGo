@@ -43,10 +43,13 @@ Los valores están en `shared/energy.ts` y la base los replica en `energy_config
 | Lecciones                                        | 5 de energía, 1 cada 3 h | ilimitadas                        |
 | Repaso espaciado, práctica libre, puntos débiles | ✔ ilimitado, sin energía | ✔                                 |
 | Repaso inteligente                               | —                        | ✔ ilimitado                       |
+| Repaso por tema (elegir una unidad)              | —                        | ✔                                 |
 | Widgets «Palabra» y «Pregunta rápida»            | ✔ (contenido «Variado»)  | ✔ + elegir contenido de «Palabra» |
 | Publicidad                                       | hoy no hay anuncios      | nunca                             |
 
 **Repaso inteligente** (`src/features/plus/smartReview.ts`): son reglas fijas sobre `user_word_progress`, sin IA ni modelo adaptativo. Toma, en este orden, palabras vencidas, con 2 o más errores, difíciles (≥ ⅓ de errores o que siguen en etapa 0 después de 3 vistas) y por olvidar (vencen en 24 h), hasta 15. Se guarda como repaso. Un acierto antes de tiempo no adelanta la palabra (regla de `apply_word_result`) y un error la trae de vuelta.
+
+**Repaso por tema** (`src/features/plus/topicReview.ts`, pantalla `/review-topics`): elegís una unidad con palabras estudiadas y se arma una sesión de hasta 15 de esas palabras (vencidas, después las de más errores, después las de etapa más baja). Se guarda como repaso y no usa energía. El acceso, igual que el inteligente, se controla en la app.
 
 **Widget personalizado:** las opciones son Variado, Para repasar, Tus errores y Palabras nuevas. Se guarda en el dispositivo (`polygo.widget-content`) y solo se aplica si el servidor dice que hay Plus. Vale para todos los widgets «Palabra» del teléfono, porque expo-widgets no permite configurar cada widget por separado. El idioma es inglés, el único del currículo.
 
@@ -59,7 +62,7 @@ Los valores están en `shared/energy.ts` y la base los replica en `energy_config
    - La app activa Plus recién cuando `get_energy().plus` es true. Nunca por el resultado local de la compra.
 2. **Anuncios.** No hay SDK de anuncios. Si se agrega, mostrarlos solo con `plus === false`, nunca en batallas.
 3. **Widgets.** Falta la configuración por widget (App Intents en iOS, actividad de configuración en Android) y el deep link en Android (expo-widgets no lo expone). Ver `docs/WIDGETS.md`.
-4. **Repaso inteligente.** El acceso se controla en la app. El servidor acepta cualquier repaso válido, porque son datos propios del usuario y no dan ventajas. Si hiciera falta, se puede agregar un `kind` propio validado con `has_plus`.
+4. **Repaso inteligente y por tema.** El acceso se controla en la app. El servidor acepta cualquier repaso válido, porque son datos propios del usuario y no dan ventajas. Si hiciera falta, se puede agregar un `kind` propio validado con `has_plus`.
 
 ## Otorgar Plus a mano (pruebas)
 

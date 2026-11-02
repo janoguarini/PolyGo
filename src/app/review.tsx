@@ -16,6 +16,7 @@ import { buildReviewExercises } from '@/features/learning/review';
 import { useCelebrationGate } from '@/features/learning/useCelebrationGate';
 import { useEnergy } from '@/features/plus/api';
 import { pickSmartReview } from '@/features/plus/smartReview';
+import { pickTopicReview } from '@/features/plus/topicReview';
 
 const REVIEW_SIZE = 10;
 
@@ -26,15 +27,18 @@ const REVIEW_SIZE = 10;
  * smart (PolyGo Plus): vencidas + errores frecuentes + difíciles + por olvidar (ver
  * pickSmartReview). Se guarda como repaso: un acierto antes de tiempo no adelanta la palabra y un
  * error la trae de vuelta, igual que en el repaso espaciado.
- * Todo lo que no es smart es gratis y no usa energía.
+ * topic (PolyGo Plus): las palabras estudiadas de una unidad (param `unit`, ver pickTopicReview).
+ * También se guarda como repaso.
+ * Todo lo que no es smart ni topic es gratis. Ningún repaso usa energía.
  */
-type ReviewMode = 'review' | 'practice' | 'mistakes' | 'smart';
+type ReviewMode = 'review' | 'practice' | 'mistakes' | 'smart' | 'topic';
 
 const TITLES: Record<ReviewMode, string> = {
   review: 'Repaso de vocabulario',
   practice: 'Práctica libre',
   mistakes: 'Tus puntos débiles',
   smart: 'Repaso inteligente',
+  topic: 'Repaso por tema',
 };
 
 interface ReviewSession {
@@ -43,16 +47,20 @@ interface ReviewSession {
 }
 
 export default function ReviewScreen() {
-  const params = useLocalSearchParams<{ mode?: string }>();
+  const params = useLocalSearchParams<{ mode?: string; unit?: string }>();
   const mode: ReviewMode =
-    params.mode === 'practice' || params.mode === 'mistakes' || params.mode === 'smart'
-      ? params.mode
+    params.mode === 'practice' ||
+    params.mode === 'mistakes' ||
+    params.mode === 'smart' ||
+    (params.mode === 'topic' && params.unit)
+      ? (params.mode as ReviewMode)
       : 'review';
-  const saves = mode === 'review' || mode === 'smart';
+  const plusMode = mode === 'smart' || mode === 'topic';
+  const saves = mode === 'review' || plusMode;
   const energy = useEnergy();
   const plus = energy.view?.plus;
-  // El repaso inteligente es de Plus; el servidor dice si lo tenés. Mientras no se sabe, no arranca.
-  const smartLocked = mode === 'smart' && plus !== true;
+  // Inteligente y por tema son de Plus; el servidor dice si lo tenés. Mientras no se sabe, no arranca.
+  const plusLocked = plusMode && plus !== true;
   const myWords = useMyWords();
   const pool = useWordPool();
   const submit = useSubmitSession();
@@ -67,23 +75,23 @@ export default function ReviewScreen() {
     endedAt: Date;
   } | null>(null);
 
-  if (!review && !smartLocked && myWords.data && pool.data) {
+  if (!review && !plusLocked && myWords.data && pool.data) {
     const now = startedAt.getTime();
     const due = (
       mode === 'smart'
         ? pickSmartReview(myWords.data, now).map((p) => p.entry)
-        : mode === 'practice'
-          ? shuffle(myWords.data, sessionId)
-          : mode === 'mistakes'
-            ? myWords.data.filter((w) => w.incorrectCount > 0)
-            : myWords.data.filter(
-                (w) => w.nextReviewAt && new Date(w.nextReviewAt).getTime() <= now,
-              )
+        : mode === 'topic'
+          ? pickTopicReview(myWords.data, params.unit ?? '', now)
+          : mode === 'practice'
+            ? shuffle(myWords.data, sessionId)
+            : mode === 'mistakes'
+              ? myWords.data.filter((w) => w.incorrectCount > 0)
+              : myWords.data.filter(
+                  (w) => w.nextReviewAt && new Date(w.nextReviewAt).getTime() <= now,
+                )
     )
-      .sort((a, b) =>
-        mode === 'practice' || mode === 'smart' ? 0 : b.incorrectCount - a.incorrectCount,
-      )
-      .slice(0, mode === 'smart' ? undefined : REVIEW_SIZE)
+      .sort((a, b) => (mode === 'practice' || plusMode ? 0 : b.incorrectCount - a.incorrectCount))
+      .slice(0, plusMode ? undefined : REVIEW_SIZE)
       .map((w) => w.word);
     setReview({
       exercises: buildReviewExercises(due, pool.data, sessionId),
@@ -115,20 +123,24 @@ export default function ReviewScreen() {
     [save, saves],
   );
 
-  if (mode === 'smart' && plus === false) {
+  if (plusMode && plus === false) {
     return (
       <Screen edges={['top', 'bottom']} scroll={false}>
         <EmptyState
           icon={<Sparkles color={colors.primarySoft} size={44} />}
-          title="Repaso inteligente es de PolyGo Plus"
-          message="Arma cada sesión con tus errores frecuentes, las palabras que te cuestan y las que estás por olvidar. El repaso espaciado, la práctica libre y tus puntos débiles siguen siendo gratis."
+          title={`${TITLES[mode]} es de PolyGo Plus`}
+          message={
+            mode === 'topic'
+              ? 'Repasá sólo las palabras de la unidad que elijas. El repaso espaciado, la práctica libre y tus puntos débiles siguen siendo gratis.'
+              : 'Arma cada sesión con tus errores frecuentes, las palabras que te cuestan y las que estás por olvidar. El repaso espaciado, la práctica libre y tus puntos débiles siguen siendo gratis.'
+          }
         />
         <Button label="Conocé PolyGo Plus" onPress={() => router.replace('/plus')} />
         <Button label="Volver" variant="secondary" onPress={() => router.back()} />
       </Screen>
     );
   }
-  if (mode === 'smart' && energy.isError) {
+  if (plusMode && energy.isError) {
     return (
       <Screen edges={['top', 'bottom']} scroll={false}>
         <ErrorState message="No pudimos verificar tu suscripción." onRetry={energy.refetch} />
@@ -136,7 +148,7 @@ export default function ReviewScreen() {
     );
   }
   if (
-    smartLocked ||
+    plusLocked ||
     myWords.isPending ||
     pool.isPending ||
     (!review && !myWords.isError && !pool.isError)

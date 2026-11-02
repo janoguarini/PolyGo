@@ -108,6 +108,7 @@ function RootNavigator() {
           <Stack.Screen name="missions" options={{ animation: 'slide_from_bottom' }} />
           <Stack.Screen name="shop" options={{ animation: 'slide_from_bottom' }} />
           <Stack.Screen name="plus" options={{ animation: 'slide_from_bottom' }} />
+          <Stack.Screen name="review-topics" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="player/[id]" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="edit-profile" options={{ animation: 'slide_from_bottom' }} />
           <Stack.Screen name="settings" options={{ animation: 'slide_from_right' }} />
