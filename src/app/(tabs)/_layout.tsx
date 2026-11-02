@@ -23,7 +23,7 @@ export default function TabsLayout() {
   useBattleInvitePush();
   // Tutorial guiado para cuentas recién creadas.
   const userId = useAuth().session?.user.id;
-  const tourPending = useTourPending(userId).data === true;
+  const tourPending = useTourPending(userId);
   const finishTour = useFinishTour(userId);
   // Solicitudes de amistad sin responder + invitaciones: globito en la pestaña Amigos.
   const pendingRequests =

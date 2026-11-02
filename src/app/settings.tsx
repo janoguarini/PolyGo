@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import * as Linking from 'expo-linking';
 import { router } from 'expo-router';
-import { LogOut, Pencil } from 'lucide-react-native';
+import { GraduationCap, LogOut, Pencil } from 'lucide-react-native';
 import { Platform, StyleSheet, Switch, View } from 'react-native';
 
 import {
@@ -20,6 +20,7 @@ import { signOut } from '@/features/auth/api';
 import { FormMessage } from '@/features/auth/FormMessage';
 import { BlockedUsersSection } from '@/features/blocks/BlockedUsersSection';
 import { useEnablePush, usePushPermission } from '@/features/friends/components/PushPromptCard';
+import { useReplayTour } from '@/features/onboarding/tour';
 import { useSetSoundEffects, useSoundEffectsPref } from '@/features/preferences/soundEffects';
 import { useMyProfile, useUpdateSettings } from '@/features/profile/hooks';
 import { ReminderSettings } from '@/features/reminders/ReminderSettings';
@@ -45,6 +46,9 @@ const VISIBILITY: {
   },
 ];
 
+/** Cuentas que ven «Rehacer el tutorial» (para revisar cómo quedó). */
+const TUTORIAL_TESTERS = ['janitogap'];
+
 /** Ajustes: recordatorio, sonido, privacidad, usuarios bloqueados y cuenta. */
 export default function SettingsScreen() {
   const { data, isPending, isError, refetch } = useMyProfile();
@@ -52,6 +56,7 @@ export default function SettingsScreen() {
   const logout = useMutation({ mutationFn: signOut });
   const soundPref = useSoundEffectsPref();
   const setSound = useSetSoundEffects();
+  const replayTour = useReplayTour(data?.profile.id);
 
   if (isPending) return <LoadingState />;
   if (isError || !data) return <ErrorState onRetry={() => void refetch()} />;
@@ -159,6 +164,17 @@ export default function SettingsScreen() {
         icon={<Pencil color={colors.text} size={16} />}
         onPress={() => router.push('/edit-profile')}
       />
+      {profile.username && TUTORIAL_TESTERS.includes(profile.username) ? (
+        <Button
+          label="Rehacer el tutorial"
+          variant="secondary"
+          icon={<GraduationCap color={colors.text} size={16} />}
+          onPress={() => {
+            replayTour();
+            router.navigate('/');
+          }}
+        />
+      ) : null}
       {logout.isError ? <FormMessage tone="error" message={toUserMessage(logout.error)} /> : null}
       <Button
         label="Cerrar sesión"

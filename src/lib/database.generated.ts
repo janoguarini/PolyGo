@@ -503,6 +503,7 @@ export type Database = {
           frame_id: string | null;
           id: string;
           onboarding_completed_at: string | null;
+          tutorial_completed_at: string | null;
           public_code: string;
           region: string | null;
           start_level: string;
@@ -520,6 +521,7 @@ export type Database = {
           frame_id?: string | null;
           id: string;
           onboarding_completed_at?: string | null;
+          tutorial_completed_at?: string | null;
           public_code: string;
           region?: string | null;
           start_level?: string;
@@ -537,6 +539,7 @@ export type Database = {
           frame_id?: string | null;
           id?: string;
           onboarding_completed_at?: string | null;
+          tutorial_completed_at?: string | null;
           public_code?: string;
           region?: string | null;
           start_level?: string;
@@ -890,6 +893,7 @@ export type Database = {
           frame_id: string | null;
           id: string;
           onboarding_completed_at: string | null;
+          tutorial_completed_at: string | null;
           public_code: string;
           region: string | null;
           start_level: string;
@@ -907,6 +911,7 @@ export type Database = {
       sync_polys: { Args: { p_time_zone: string }; Returns: Json };
       energy_config: { Args: never; Returns: Json };
       get_energy: { Args: never; Returns: Json };
+      complete_tutorial: { Args: never; Returns: undefined };
       buy_streak_freeze: { Args: never; Returns: Json };
       buy_cosmetic: { Args: { p_item_id: string }; Returns: Json };
       equip_cosmetic: { Args: { p_kind: string; p_item_id: string | null }; Returns: undefined };
