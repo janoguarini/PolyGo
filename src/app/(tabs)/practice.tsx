@@ -5,6 +5,7 @@ import {
   ListChecks,
   RotateCcw,
   Smartphone,
+  Sparkles,
   Target,
   Zap,
 } from 'lucide-react-native';
@@ -31,6 +32,10 @@ import { useCurriculum, useMyWords, useWordOfTheDay } from '@/features/learning/
 import { useDailyMissions } from '@/features/missions/api';
 import { useTabPressScroll } from '@/lib/useTabPressScroll';
 import { lessonStars } from '@/features/learning/path';
+import { usePlus } from '@/features/plus/api';
+import { PlusBadge } from '@/features/plus/components/PlusBadge';
+import { pickSmartReview } from '@/features/plus/smartReview';
+import { WidgetContentPicker } from '@/features/widgets/WidgetContentPicker';
 import { widgetsSupported } from '@/features/widgets/sync';
 
 /** Lecciones completadas que conviene repetir (las de peor precisión primero). */
@@ -41,6 +46,7 @@ export default function PracticeScreen() {
   const curriculum = useCurriculum();
   const wordOfDay = useWordOfTheDay();
   const missions = useDailyMissions();
+  const plus = usePlus();
   const scrollRef = useRef<ScrollViewInstance>(null);
   useTabPressScroll(scrollRef);
   // Referencia temporal fija por montaje de la pantalla (se actualiza al refrescar).
@@ -64,6 +70,7 @@ export default function PracticeScreen() {
     },
     { new: 0, learning: 0, mastered: 0 } as Record<WordStatus, number>,
   );
+  const smartCount = pickSmartReview(entries, now).length;
   const missionList = missions.data?.missions ?? [];
   const missionsTotal = missionList.length || 3;
   const missionsDone = missionList.filter((m) => m.done).length;
@@ -108,20 +115,34 @@ export default function PracticeScreen() {
       <Card gradient={gradients.ranked} style={styles.gap}>
         <View style={styles.row}>
           <Layers color={colors.primarySoft} size={24} />
-          <Text variant="heading">
-            {due.length > 0 ? `${due.length} palabras para repasar` : 'Estás al día'}
+          <Text variant="heading" style={styles.flex}>
+            {due.length > 0
+              ? `${due.length} palabras para repasar`
+              : entries.length === 0
+                ? 'Todavía no hay nada para repasar'
+                : 'Estás al día'}
           </Text>
         </View>
+        {entries.length === 0 ? (
+          <Text color="textMuted">
+            Las palabras de las lecciones que completes aparecen acá para repasarlas. El repaso es
+            gratis y no usa energía.
+          </Text>
+        ) : null}
         <Text color="textMuted">
           Repetición espaciada: cada acierto aleja el próximo repaso (
           {SRS_CONFIG.intervalsDays.join(', ')} días) y un error lo trae de vuelta enseguida.
         </Text>
-        <Button
-          label="Repasar ahora"
-          size="lg"
-          disabled={due.length === 0}
-          onPress={() => router.push('/review')}
-        />
+        {entries.length === 0 ? (
+          <Button label="Ir a mi primera lección" size="lg" onPress={() => router.navigate('/')} />
+        ) : (
+          <Button
+            label="Repasar ahora"
+            size="lg"
+            disabled={due.length === 0}
+            onPress={() => router.push('/review')}
+          />
+        )}
       </Card>
 
       <View style={styles.grid}>
@@ -175,6 +196,29 @@ export default function PracticeScreen() {
         onPress={() => router.push({ pathname: '/review', params: { mode: 'mistakes' } })}
       />
 
+      <PracticeOption
+        icon={<Sparkles color={colors.primarySoft} size={22} />}
+        title="Repaso inteligente"
+        caption={
+          plus !== true
+            ? 'Prioriza tus errores frecuentes, lo que te cuesta y lo que estás por olvidar'
+            : smartCount > 0
+              ? `${smartCount} palabras elegidas de tu historial · sin límite`
+              : 'Nada urgente por ahora: completá lecciones y volvé más tarde'
+        }
+        disabled={plus === true && smartCount === 0}
+        onPress={() =>
+          plus === true
+            ? router.push({ pathname: '/review', params: { mode: 'smart' } })
+            : router.push('/plus')
+        }
+        trailing={plus === true ? undefined : <PlusBadge />}
+      />
+      <Text variant="caption">
+        Gratis y sin energía: repaso espaciado, práctica libre y puntos débiles, todas las veces que
+        quieras.
+      </Text>
+
       {replay.length > 0 ? (
         <>
           <Text variant="overline">REPETIR LECCIONES</Text>
@@ -216,6 +260,7 @@ export default function PracticeScreen() {
             </Text>
           </View>
         )}
+        {widgetsSupported ? <WidgetContentPicker /> : null}
       </Card>
     </Screen>
   );

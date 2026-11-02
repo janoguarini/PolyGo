@@ -10,6 +10,8 @@ import { useCurriculum, useLessonContent, useSubmitSession } from '@/features/le
 import { sessionStats, type PlayerState } from '@/features/learning/player';
 import { uuid } from '@/features/learning/random';
 import { useCelebrationGate } from '@/features/learning/useCelebrationGate';
+import { useEnergy } from '@/features/plus/api';
+import { NoEnergyState } from '@/features/plus/components/NoEnergyState';
 
 export default function LessonScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -17,6 +19,14 @@ export default function LessonScreen() {
   const curriculum = useCurriculum();
   const submit = useSubmitSession();
   const celebration = useCelebrationGate(submit);
+  const energy = useEnergy();
+  // Se decide al entrar (y se reevalúa mientras esperás): terminar la lección con tu última unidad
+  // no te saca a la pantalla de «sin energía». Si no se pudo leer, se juega y el servidor decide.
+  const [canPlay, setCanPlay] = useState<boolean | null>(null);
+  if (canPlay !== true && (energy.view || energy.isError)) {
+    const next = energy.view ? energy.view.canStartLesson : true;
+    if (next !== canPlay) setCanPlay(next);
+  }
   // Clave de idempotencia: reintentar el guardado nunca duplica la sesión.
   const [sessionId] = useState(uuid);
   const [startedAt] = useState(() => new Date());
@@ -53,7 +63,8 @@ export default function LessonScreen() {
       { text: 'Salir', style: 'destructive', onPress: () => router.back() },
     ]);
 
-  if (content.isPending) return <LoadingState label="Cargando lección…" />;
+  if (content.isPending || canPlay === null) return <LoadingState label="Cargando lección…" />;
+  if (!canPlay && energy.view) return <NoEnergyState view={energy.view} />;
   if (content.isError || !content.data) {
     return (
       <Screen edges={['top', 'bottom']} scroll={false}>

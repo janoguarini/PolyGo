@@ -1,5 +1,5 @@
 import { router, useLocalSearchParams } from 'expo-router';
-import { CheckCircle2 } from 'lucide-react-native';
+import { CheckCircle2, Sparkles } from 'lucide-react-native';
 import { useCallback, useState } from 'react';
 import { Alert } from 'react-native';
 
@@ -14,6 +14,8 @@ import { sessionStats, type PlayerState } from '@/features/learning/player';
 import { shuffle, uuid } from '@/features/learning/random';
 import { buildReviewExercises } from '@/features/learning/review';
 import { useCelebrationGate } from '@/features/learning/useCelebrationGate';
+import { useEnergy } from '@/features/plus/api';
+import { pickSmartReview } from '@/features/plus/smartReview';
 
 const REVIEW_SIZE = 10;
 
@@ -21,13 +23,18 @@ const REVIEW_SIZE = 10;
  * review: palabras que vencieron (se guarda y actualiza la repetición espaciada).
  * practice / mistakes: práctica libre con palabras ya estudiadas; no se envía al servidor
  * para no adelantar los repasos.
+ * smart (PolyGo Plus): vencidas + errores frecuentes + difíciles + por olvidar (ver
+ * pickSmartReview). Se guarda como repaso: un acierto antes de tiempo no adelanta la palabra y un
+ * error la trae de vuelta, igual que en el repaso espaciado.
+ * Todo lo que no es smart es gratis y no usa energía.
  */
-type ReviewMode = 'review' | 'practice' | 'mistakes';
+type ReviewMode = 'review' | 'practice' | 'mistakes' | 'smart';
 
 const TITLES: Record<ReviewMode, string> = {
   review: 'Repaso de vocabulario',
   practice: 'Práctica libre',
   mistakes: 'Tus puntos débiles',
+  smart: 'Repaso inteligente',
 };
 
 interface ReviewSession {
@@ -38,8 +45,14 @@ interface ReviewSession {
 export default function ReviewScreen() {
   const params = useLocalSearchParams<{ mode?: string }>();
   const mode: ReviewMode =
-    params.mode === 'practice' || params.mode === 'mistakes' ? params.mode : 'review';
-  const saves = mode === 'review';
+    params.mode === 'practice' || params.mode === 'mistakes' || params.mode === 'smart'
+      ? params.mode
+      : 'review';
+  const saves = mode === 'review' || mode === 'smart';
+  const energy = useEnergy();
+  const plus = energy.view?.plus;
+  // El repaso inteligente es de Plus; el servidor dice si lo tenés. Mientras no se sabe, no arranca.
+  const smartLocked = mode === 'smart' && plus !== true;
   const myWords = useMyWords();
   const pool = useWordPool();
   const submit = useSubmitSession();
@@ -54,17 +67,23 @@ export default function ReviewScreen() {
     endedAt: Date;
   } | null>(null);
 
-  if (!review && myWords.data && pool.data) {
+  if (!review && !smartLocked && myWords.data && pool.data) {
     const now = startedAt.getTime();
     const due = (
-      mode === 'practice'
-        ? shuffle(myWords.data, sessionId)
-        : mode === 'mistakes'
-          ? myWords.data.filter((w) => w.incorrectCount > 0)
-          : myWords.data.filter((w) => w.nextReviewAt && new Date(w.nextReviewAt).getTime() <= now)
+      mode === 'smart'
+        ? pickSmartReview(myWords.data, now).map((p) => p.entry)
+        : mode === 'practice'
+          ? shuffle(myWords.data, sessionId)
+          : mode === 'mistakes'
+            ? myWords.data.filter((w) => w.incorrectCount > 0)
+            : myWords.data.filter(
+                (w) => w.nextReviewAt && new Date(w.nextReviewAt).getTime() <= now,
+              )
     )
-      .sort((a, b) => (mode === 'practice' ? 0 : b.incorrectCount - a.incorrectCount))
-      .slice(0, REVIEW_SIZE)
+      .sort((a, b) =>
+        mode === 'practice' || mode === 'smart' ? 0 : b.incorrectCount - a.incorrectCount,
+      )
+      .slice(0, mode === 'smart' ? undefined : REVIEW_SIZE)
       .map((w) => w.word);
     setReview({
       exercises: buildReviewExercises(due, pool.data, sessionId),
@@ -96,7 +115,32 @@ export default function ReviewScreen() {
     [save, saves],
   );
 
-  if (myWords.isPending || pool.isPending || (!review && !myWords.isError && !pool.isError)) {
+  if (mode === 'smart' && plus === false) {
+    return (
+      <Screen edges={['top', 'bottom']} scroll={false}>
+        <EmptyState
+          icon={<Sparkles color={colors.primarySoft} size={44} />}
+          title="Repaso inteligente es de PolyGo Plus"
+          message="Arma cada sesión con tus errores frecuentes, las palabras que te cuestan y las que estás por olvidar. El repaso espaciado, la práctica libre y tus puntos débiles siguen siendo gratis."
+        />
+        <Button label="Conocé PolyGo Plus" onPress={() => router.replace('/plus')} />
+        <Button label="Volver" variant="secondary" onPress={() => router.back()} />
+      </Screen>
+    );
+  }
+  if (mode === 'smart' && energy.isError) {
+    return (
+      <Screen edges={['top', 'bottom']} scroll={false}>
+        <ErrorState message="No pudimos verificar tu suscripción." onRetry={energy.refetch} />
+      </Screen>
+    );
+  }
+  if (
+    smartLocked ||
+    myWords.isPending ||
+    pool.isPending ||
+    (!review && !myWords.isError && !pool.isError)
+  ) {
     return <LoadingState label="Preparando repaso…" />;
   }
   if (myWords.isError || pool.isError || !review) {
@@ -118,11 +162,13 @@ export default function ReviewScreen() {
       <Screen edges={['top', 'bottom']} scroll={false}>
         <EmptyState
           icon={<CheckCircle2 color={colors.success} size={44} />}
-          title={mode === 'review' ? 'Estás al día' : 'Nada para practicar'}
+          title={mode === 'review' || mode === 'smart' ? 'Estás al día' : 'Nada para practicar'}
           message={
-            mode === 'review'
-              ? 'No tenés palabras para repasar ahora. Las palabras que estudies volverán cuando toque repasarlas.'
-              : 'Completá lecciones para sumar palabras a tu práctica.'
+            mode === 'smart'
+              ? 'No hay palabras vencidas, con errores frecuentes ni por olvidar. Completá lecciones y volvé más tarde.'
+              : mode === 'review'
+                ? 'No tenés palabras para repasar ahora. Las palabras que estudies volverán cuando toque repasarlas.'
+                : 'Completá lecciones para sumar palabras a tu práctica.'
           }
         />
         <Button label="Volver" variant="secondary" onPress={() => router.back()} />

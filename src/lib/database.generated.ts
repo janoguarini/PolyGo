@@ -669,6 +669,42 @@ export type Database = {
         };
         Relationships: [FK<'user_daily_activity_user_id_fkey', 'user_id', 'profiles', 'id'>];
       };
+      user_energy: {
+        Row: { anchor_at: string; units: number; updated_at: string; user_id: string };
+        Insert: { anchor_at: string; units: number; updated_at?: string; user_id: string };
+        Update: { anchor_at?: string; units?: number; updated_at?: string; user_id?: string };
+        Relationships: [FK<'user_energy_user_id_fkey', 'user_id', 'profiles', 'id', true>];
+      };
+      user_entitlements: {
+        Row: {
+          entitlement: string;
+          expires_at: string | null;
+          external_id: string | null;
+          source: string;
+          starts_at: string;
+          updated_at: string;
+          user_id: string;
+        };
+        Insert: {
+          entitlement: string;
+          expires_at?: string | null;
+          external_id?: string | null;
+          source: string;
+          starts_at?: string;
+          updated_at?: string;
+          user_id: string;
+        };
+        Update: {
+          entitlement?: string;
+          expires_at?: string | null;
+          external_id?: string | null;
+          source?: string;
+          starts_at?: string;
+          updated_at?: string;
+          user_id?: string;
+        };
+        Relationships: [FK<'user_entitlements_user_id_fkey', 'user_id', 'profiles', 'id'>];
+      };
       user_lesson_progress: {
         Row: {
           best_accuracy: number;
@@ -869,6 +905,8 @@ export type Database = {
       get_daily_missions: { Args: { p_time_zone: string }; Returns: Json };
       claim_mission_reward: { Args: { p_time_zone: string }; Returns: Json };
       sync_polys: { Args: { p_time_zone: string }; Returns: Json };
+      energy_config: { Args: never; Returns: Json };
+      get_energy: { Args: never; Returns: Json };
       buy_streak_freeze: { Args: never; Returns: Json };
       buy_cosmetic: { Args: { p_item_id: string }; Returns: Json };
       equip_cosmetic: { Args: { p_kind: string; p_item_id: string | null }; Returns: undefined };

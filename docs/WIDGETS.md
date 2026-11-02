@@ -58,4 +58,4 @@ El componente marcado con `'widget'` se convierte en un string (plugin de Babel)
 
 - Widgets de pantalla bloqueada (`accessory*` en iOS) y Live Activities (p. ej. partida ranked en curso).
 - Sincronizar las respuestas del widget con el repaso espaciado (hoy son sólo práctica: Android no permite leer el estado del widget desde la app).
-- Widget configurable (elegir unidad o tipo de contenido).
+- Configuración por widget (App Intents / actividad de configuración). Hoy, con PolyGo Plus, se elige en Repaso qué muestra «Palabra» para todos los widgets del teléfono (ver `docs/PLUS.md`).

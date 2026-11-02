@@ -18,7 +18,7 @@ export const WIDGET_LINKS = {
 export const WORD_TIMELINE_HOURS = 12;
 export const QUIZ_SIZE = 10;
 
-export type WordCardKind = 'daily' | 'review' | 'new';
+export type WordCardKind = 'daily' | 'review' | 'mistake' | 'new';
 
 export interface WordCardProps {
   kind: WordCardKind;
@@ -52,6 +52,7 @@ export interface QuizProps {
 const LABELS: Record<WordCardKind, string> = {
   daily: 'PALABRA DEL DÍA',
   review: 'PARA REPASAR',
+  mistake: 'TE COSTÓ',
   new: 'PALABRA NUEVA',
 };
 
@@ -80,25 +81,32 @@ export function toWordCard(word: WordRow, kind: WordCardKind): WordCardProps {
 }
 
 /**
- * Orden de las palabras del widget: la del día, después las del usuario que más le cuestan
- * (vencidas primero), después palabras publicadas que todavía no vio. Sin repetidas.
+ * Qué muestra el widget «Palabra». 'mixed' es el de todos; elegir otro es de PolyGo Plus.
+ * La preferencia vale para todos los widgets «Palabra» del teléfono: expo-widgets no permite
+ * configurar cada widget por separado (App Intents en iOS / actividad de configuración en Android).
+ */
+export type WidgetContent = 'mixed' | 'review' | 'mistakes' | 'new';
+
+export const WIDGET_CONTENT_OPTIONS: { id: WidgetContent; title: string; caption: string }[] = [
+  { id: 'mixed', title: 'Variado', caption: 'Palabra del día, tus repasos y palabras nuevas' },
+  { id: 'review', title: 'Para repasar', caption: 'Tus palabras, las vencidas primero' },
+  { id: 'mistakes', title: 'Tus errores', caption: 'Las palabras en las que más te equivocaste' },
+  { id: 'new', title: 'Palabras nuevas', caption: 'Vocabulario publicado que todavía no viste' },
+];
+
+/**
+ * Orden de las palabras del widget. Variado: la del día, después las del usuario que más le
+ * cuestan (vencidas primero), después palabras publicadas que todavía no vio. Los otros modos usan
+ * sólo uno de esos grupos; si el grupo está vacío (p. ej. todavía no hay errores) cae en Variado
+ * para que el widget nunca quede en blanco. Sin repetidas.
  */
 export function rankWidgetWords(
   myWords: readonly WordProgressEntry[],
   pool: readonly WordRow[],
   wordOfDay: WordRow | null,
   now: number,
+  content: WidgetContent = 'mixed',
 ): { word: WordRow; kind: WordCardKind }[] {
-  const seen = new Set<string>();
-  const result: { word: WordRow; kind: WordCardKind }[] = [];
-  const push = (word: WordRow, kind: WordCardKind) => {
-    if (seen.has(word.id)) return;
-    seen.add(word.id);
-    result.push({ word, kind });
-  };
-
-  if (wordOfDay) push(wordOfDay, 'daily');
-
   const studied = [...myWords]
     .filter((e) => e.seenCount > 0)
     .sort((a, b) => {
@@ -108,12 +116,32 @@ export function rankWidgetWords(
       if (a.incorrectCount !== b.incorrectCount) return b.incorrectCount - a.incorrectCount;
       return a.stage - b.stage;
     });
-  for (const entry of studied) push(entry.word, 'review');
-
   const studiedIds = new Set(myWords.map((e) => e.word.id));
-  for (const word of pool) {
-    if (word.is_published && !studiedIds.has(word.id)) push(word, 'new');
-  }
+  const fresh = pool.filter((w) => w.is_published && !studiedIds.has(w.id));
+  const mistakes = studied
+    .filter((e) => e.incorrectCount > 0)
+    .sort((a, b) => b.incorrectCount - a.incorrectCount);
+
+  const only =
+    content === 'review'
+      ? studied.map((e) => ({ word: e.word, kind: 'review' as const }))
+      : content === 'mistakes'
+        ? mistakes.map((e) => ({ word: e.word, kind: 'mistake' as const }))
+        : content === 'new'
+          ? fresh.map((word) => ({ word, kind: 'new' as const }))
+          : [];
+  if (only.length > 0) return only;
+
+  const seen = new Set<string>();
+  const result: { word: WordRow; kind: WordCardKind }[] = [];
+  const push = (word: WordRow, kind: WordCardKind) => {
+    if (seen.has(word.id)) return;
+    seen.add(word.id);
+    result.push({ word, kind });
+  };
+  if (wordOfDay) push(wordOfDay, 'daily');
+  for (const entry of studied) push(entry.word, 'review');
+  for (const word of fresh) push(word, 'new');
   return result;
 }
 

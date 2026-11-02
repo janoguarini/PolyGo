@@ -28,6 +28,8 @@ import { LessonPath } from '@/features/learning/components/LessonPath';
 import { useCurriculum, useLearningSummary } from '@/features/learning/hooks';
 import { daysLabel } from '@/features/learning/streak';
 import { useDailyMissions } from '@/features/missions/api';
+import { EnergyChip, EnergyPanel } from '@/features/plus/components/Energy';
+import { useEnergy } from '@/features/plus/api';
 import { PolysChip } from '@/features/polys/PolysChip';
 import { useStreakRepair } from '@/features/polys/api';
 import { useTabPressScroll } from '@/lib/useTabPressScroll';
@@ -46,6 +48,8 @@ export default function HomeScreen() {
   const curriculum = useCurriculum();
   const missions = useDailyMissions();
   const streakRepair = useStreakRepair();
+  const energy = useEnergy();
+  const [energyOpen, setEnergyOpen] = useState(false);
   const scrollRef = useRef<ScrollViewInstance>(null);
   const { height } = useWindowDimensions();
   // Posición del nodo actual en el contenido y alto visible del scroll (medidos).
@@ -105,6 +109,7 @@ export default function HomeScreen() {
   const activeToday = Boolean(summary.data?.active_today);
   const freezes = summary.data?.streak_freezes ?? 0;
   const claimable = Boolean(missions.data?.all_done && !missions.data.claimed);
+  const outOfEnergy = Boolean(energy.view && !energy.view.plus && energy.view.energy === 0);
 
   const header = (
     <View style={styles.header} onTouchStart={openLesson ? closeLesson : undefined}>
@@ -115,6 +120,7 @@ export default function HomeScreen() {
           </Text>
           <Text variant="heading">Tu camino</Text>
         </View>
+        <EnergyChip open={energyOpen} onPress={() => setEnergyOpen((o) => !o)} />
         <PolysChip />
         <View
           style={[styles.streak, activeToday && styles.streakActive]}
@@ -154,6 +160,7 @@ export default function HomeScreen() {
           {completed}/{total} · {total ? Math.round((completed / total) * 100) : 0}%
         </Text>
       </View>
+      {energyOpen || outOfEnergy ? <EnergyPanel compact={!energyOpen} /> : null}
       {streakRepair.data ? (
         <Pressable
           accessibilityRole="button"

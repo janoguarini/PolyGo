@@ -40,6 +40,8 @@ const RPC_MESSAGES: Record<string, string> = {
   not_friends: 'Sólo podés invitar a jugadores de tu lista de amigos.',
   language_mismatch: 'Tu amigo está aprendiendo otro idioma, así que no pueden jugar juntos.',
   match_rate_limited: 'Mandaste muchos desafíos en la última hora. Esperá un rato.',
+  no_energy:
+    'Te quedaste sin energía antes de guardar (¿la usaste en otro dispositivo?). Recuperás 1 cada 3 horas.',
 };
 
 export function toUserMessage(error: unknown): string {

@@ -37,6 +37,9 @@ import {
   type PathAccent,
 } from '@/design-system';
 
+import { energyStatusText } from '@/features/plus/components/Energy';
+import { useEnergy } from '@/features/plus/api';
+
 import type { LessonStatus, UnitWithStatus } from '../curriculum';
 import {
   PATH_NODE_SIZE,
@@ -450,6 +453,7 @@ function LessonPopover({
   const current = node.status === 'current';
   const perfect = node.stars === 3;
   const percent = Math.round((node.bestAccuracy ?? 0) * 100);
+  const energy = useEnergy().view;
 
   return (
     <Animated.View
@@ -500,6 +504,12 @@ function LessonPopover({
             }
             onPress={node.onStart ?? (() => {})}
           />
+          {energy && !energy.plus ? (
+            <Text variant="caption" align="center">
+              Completarla usa 1 de energía ({energy.energy}/{energy.max})
+              {energy.energy === 0 ? ` · ${energyStatusText(energy)}` : ''}
+            </Text>
+          ) : null}
         </>
       )}
     </Animated.View>

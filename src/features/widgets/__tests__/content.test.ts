@@ -71,6 +71,21 @@ describe('rankWidgetWords', () => {
     expect(ranked.map((r) => r.word.id)).not.toContain('draft');
     expect(ranked.find((r) => r.word.id === 'please')).toBeUndefined();
   });
+
+  it('contenido elegido (Plus): sólo repasos, errores o nuevas; si está vacío, variado', () => {
+    const mine = [
+      entry(POOL[1]!, { incorrectCount: 1 }),
+      entry(POOL[2]!, { incorrectCount: 4 }),
+      entry(POOL[3]!),
+    ];
+    const ids = (content: Parameters<typeof rankWidgetWords>[4]) =>
+      rankWidgetWords(mine, POOL, POOL[0]!, NOW, content).map((r) => `${r.word.id}:${r.kind}`);
+    expect(ids('mistakes')).toEqual(['thanks:mistake', 'bye:mistake']);
+    expect(ids('review')).toEqual(['thanks:review', 'bye:review', 'please:review']);
+    expect(ids('new')).toEqual(['hello:new', 'yes:new', 'water:new']);
+    const noMistakes = rankWidgetWords([entry(POOL[3]!)], POOL, POOL[0]!, NOW, 'mistakes');
+    expect(noMistakes[0]).toMatchObject({ kind: 'daily' });
+  });
 });
 
 describe('buildWordTimeline', () => {

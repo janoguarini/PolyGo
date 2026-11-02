@@ -12,6 +12,7 @@ import {
   buildWordTimeline,
   rankWidgetWords,
   type QuizProps,
+  type WidgetContent,
   type WordCardProps,
 } from './content';
 
@@ -53,6 +54,8 @@ export interface WidgetSyncInput {
   /** Fecha local (YYYY-MM-DD): la ronda de preguntas cambia una vez por día. */
   localDate: string;
   now?: Date;
+  /** Qué muestra el widget «Palabra» (por defecto, variado). */
+  content?: WidgetContent;
 }
 
 export const EMPTY_QUIZ: QuizProps = {
@@ -75,7 +78,13 @@ export function syncWidgets(input: WidgetSyncInput): boolean {
   if (!widgets) return false;
   const now = input.now ?? new Date();
 
-  const ranked = rankWidgetWords(input.myWords, input.pool, input.wordOfDay, now.getTime());
+  const ranked = rankWidgetWords(
+    input.myWords,
+    input.pool,
+    input.wordOfDay,
+    now.getTime(),
+    input.content,
+  );
   if (Platform.OS === 'ios') {
     widgets.word.updateTimeline(buildWordTimeline(ranked, now));
   } else {
