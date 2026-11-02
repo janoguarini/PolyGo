@@ -1,7 +1,7 @@
 import { Check, ChevronLeft, Lock, Star } from 'lucide-react-native';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
-import Animated, { FadeIn, FadeInDown } from 'react-native-reanimated';
+import Animated, { FadeIn } from 'react-native-reanimated';
 
 import { ENERGY } from '@shared/energy';
 
@@ -22,13 +22,13 @@ import {
   Button,
   Card,
   Mascot,
+  MascotWarmup,
   ProgressBar,
   Screen,
   SelectCard,
   Text,
   TextField,
   colors,
-  preloadMascot,
   radii,
   spacing,
 } from '@/design-system';
@@ -110,7 +110,6 @@ export default function OnboardingScreen() {
   const step = STEPS[stepIndex]!;
   const isLast = stepIndex === STEPS.length - 1;
   const isWelcome = step === 'welcome';
-  useEffect(preloadMascot, []);
   // El paso de bienvenida no cuenta en la barra de progreso.
   const progress = stepIndex / (STEPS.length - 1);
   const levelInfo = START_LEVELS.find((l) => l.id === level);
@@ -191,11 +190,13 @@ export default function OnboardingScreen() {
         </View>
       </View>
 
+      {/* Las cuatro poses quedan cargadas desde el primer paso: cambiar de pantalla es inmediato. */}
+      <MascotWarmup />
       <Animated.View key={step} entering={FadeIn.duration(250)} style={styles.body}>
         {isWelcome || step === 'language' ? (
-          <Animated.View entering={FadeInDown.duration(400)} style={styles.mascot}>
+          <View style={styles.mascot}>
             <Mascot pose={isWelcome ? 'wave' : 'thinking'} height={isWelcome ? 280 : 170} />
-          </Animated.View>
+          </View>
         ) : null}
         <View style={[styles.header, isWelcome && styles.centered]}>
           <Text variant="title" align={isWelcome ? 'center' : undefined}>
@@ -208,9 +209,9 @@ export default function OnboardingScreen() {
 
         {step === 'lessons' && (
           <>
-            <Animated.View entering={FadeInDown.duration(400)} style={styles.mascot}>
+            <View style={styles.mascot}>
               <Mascot pose="pointDown" height={190} />
-            </Animated.View>
+            </View>
             <PathPreview />
             {LESSON_POINTS.map(({ title, text }) => (
               <Card key={title}>
@@ -221,15 +222,7 @@ export default function OnboardingScreen() {
           </>
         )}
 
-        {step === 'ranked' && (
-          <RankTutorial
-            mascot={
-              <Animated.View entering={FadeInDown.duration(400)}>
-                <Mascot pose="pointUp" height={200} />
-              </Animated.View>
-            }
-          />
-        )}
+        {step === 'ranked' && <RankTutorial mascot={<Mascot pose="pointUp" height={200} />} />}
 
         {step === 'language' &&
           TARGET_LANGUAGES.map((l) => (
