@@ -12,6 +12,8 @@ import {
 } from 'react-native';
 import Animated, { FadeInDown, FadeOutDown } from 'react-native-reanimated';
 
+import { nextStartLevel } from '@shared/profile';
+
 import {
   EmptyState,
   ErrorState,
@@ -103,6 +105,8 @@ export default function HomeScreen() {
     reachable[reachable.length - 1] ??
     'A1';
   const units = allUnits.filter((u) => u.level === level);
+  const following = nextStartLevel(level);
+  const nextLevel = following ? { id: following.id, ready: levels.includes(following.id) } : null;
   const total = units.reduce((n, u) => n + u.lessons.length, 0);
   const completed = units.reduce((n, u) => n + u.completedCount, 0);
   const streak = summary.data?.streak_days ?? 0;
@@ -244,6 +248,7 @@ export default function HomeScreen() {
         <LessonPath
           key={level}
           units={units}
+          nextLevel={nextLevel}
           selected={openLesson}
           onSelectedChange={setOpenLesson}
           onCurrentLayout={(y) => {

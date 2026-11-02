@@ -1,4 +1,4 @@
-import { ChevronLeft } from 'lucide-react-native';
+import { ChevronLeft, Flame, GraduationCap, Swords } from 'lucide-react-native';
 import { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import Animated, { FadeIn } from 'react-native-reanimated';
@@ -9,6 +9,7 @@ import {
   DEFAULT_AVATAR,
   START_LEVELS,
   TARGET_LANGUAGES,
+  nextStartLevel,
   usernameSchema,
   type AvatarId,
   type DailyGoalMinutes,
@@ -17,6 +18,7 @@ import {
 import {
   Avatar,
   Button,
+  Card,
   ProgressBar,
   Screen,
   SelectCard,
@@ -32,20 +34,34 @@ import { isUsernameAvailable } from '@/features/profile/api';
 import { useCompleteOnboarding } from '@/features/profile/hooks';
 import { toUserMessage } from '@/lib/errors';
 
-const STEPS = ['language', 'level', 'goal', 'username', 'avatar', 'tutorial'] as const;
+const STEPS = ['welcome', 'language', 'level', 'goal', 'username', 'avatar', 'tutorial'] as const;
 type Step = (typeof STEPS)[number];
 
 const TITLES: Record<Step, { title: string; subtitle: string }> = {
+  welcome: {
+    title: '¡Te damos la bienvenida a Polygo!',
+    subtitle: 'Antes de arrancar, contanos qué querés estudiar y desde dónde partís.',
+  },
   language: { title: '¿Qué idioma querés aprender?', subtitle: 'Por ahora Polygo enseña inglés.' },
   level: {
     title: '¿Cuál es tu nivel?',
-    subtitle: 'Podés cambiar de nivel cuando quieras desde Aprender.',
+    subtitle: 'Tus lecciones van a empezar desde el nivel que elijas.',
   },
   goal: { title: 'Tu objetivo diario', subtitle: 'Podés cambiarlo cuando quieras.' },
   username: { title: 'Elegí tu nombre de jugador', subtitle: 'Así te van a ver tus rivales.' },
   avatar: { title: 'Elegí tu avatar', subtitle: 'Más opciones llegarán con las temporadas.' },
   tutorial: { title: 'Cómo funciona Ranked', subtitle: 'Lo esencial antes de tu primera partida.' },
 };
+
+const WELCOME_POINTS = [
+  {
+    Icon: GraduationCap,
+    title: 'Lecciones a tu medida',
+    text: 'Arrancás en tu nivel, de A1 a C2.',
+  },
+  { Icon: Flame, title: 'Un ratito por día', text: 'Sumá racha y no pierdas el ritmo.' },
+  { Icon: Swords, title: 'Competí en Ranked', text: 'Enfrentá a otros jugadores y subí de rango.' },
+] as const;
 
 const GOAL_LABELS: Record<DailyGoalMinutes, string> = {
   5: 'Casual',
@@ -67,6 +83,11 @@ export default function OnboardingScreen() {
 
   const step = STEPS[stepIndex]!;
   const isLast = stepIndex === STEPS.length - 1;
+  const isWelcome = step === 'welcome';
+  // El paso de bienvenida no cuenta en la barra de progreso.
+  const progress = stepIndex / (STEPS.length - 1);
+  const levelInfo = START_LEVELS.find((l) => l.id === level);
+  const comingNext = nextStartLevel(level);
 
   const next = async () => {
     if (step === 'username') {
@@ -113,7 +134,7 @@ export default function OnboardingScreen() {
             <FormMessage tone="error" message={toUserMessage(complete.error)} />
           ) : null}
           <Button
-            label={isLast ? 'Empezar a jugar' : 'Continuar'}
+            label={isLast ? 'Empezar a jugar' : isWelcome ? 'Empezar' : 'Continuar'}
             size="lg"
             loading={checkingUsername || complete.isPending}
             onPress={() => void next()}
@@ -121,30 +142,49 @@ export default function OnboardingScreen() {
         </>
       }
     >
-      <View style={styles.topBar}>
+      <View style={[styles.topBar, isWelcome && styles.hidden]}>
         <Pressable
           accessibilityRole="button"
           accessibilityLabel="Paso anterior"
-          disabled={stepIndex === 0}
+          disabled={isWelcome}
           onPress={() => setStepIndex((i) => Math.max(0, i - 1))}
-          style={[styles.back, stepIndex === 0 && styles.hidden]}
+          style={styles.back}
           hitSlop={12}
         >
           <ChevronLeft color={colors.text} size={26} />
         </Pressable>
         <View style={styles.progress}>
-          <ProgressBar
-            value={(stepIndex + 1) / STEPS.length}
-            accessibilityLabel="Progreso del registro"
-          />
+          <ProgressBar value={progress} accessibilityLabel="Progreso del registro" />
         </View>
       </View>
 
       <Animated.View key={step} entering={FadeIn.duration(250)} style={styles.body}>
-        <View style={styles.header}>
-          <Text variant="title">{TITLES[step].title}</Text>
-          <Text color="textMuted">{TITLES[step].subtitle}</Text>
+        {isWelcome ? (
+          <View style={styles.mascot}>
+            <Avatar avatarId={DEFAULT_AVATAR} size={120} instant />
+          </View>
+        ) : null}
+        <View style={[styles.header, isWelcome && styles.centered]}>
+          <Text variant="title" align={isWelcome ? 'center' : undefined}>
+            {TITLES[step].title}
+          </Text>
+          <Text color="textMuted" align={isWelcome ? 'center' : undefined}>
+            {TITLES[step].subtitle}
+          </Text>
         </View>
+
+        {isWelcome &&
+          WELCOME_POINTS.map(({ Icon, title, text }) => (
+            <Card key={title}>
+              <View style={styles.point}>
+                <Icon color={colors.primaryBright} size={26} />
+                <View style={styles.pointText}>
+                  <Text variant="bodyStrong">{title}</Text>
+                  <Text color="textMuted">{text}</Text>
+                </View>
+              </View>
+            </Card>
+          ))}
 
         {step === 'language' &&
           TARGET_LANGUAGES.map((l) => (
@@ -170,6 +210,16 @@ export default function OnboardingScreen() {
               onPress={() => setLevel(l.id)}
             />
           ))}
+        {step === 'level' && levelInfo ? (
+          <Text variant="caption" color="textMuted" align="center">
+            {level === 'A1'
+              ? 'Empezás desde la primera lección de A1.'
+              : `Empezás directo en ${level}, sin pasar por los niveles anteriores.`}
+            {comingNext && !comingNext.available
+              ? ` Los niveles desde ${comingNext.id} llegan pronto.`
+              : ''}
+          </Text>
+        ) : null}
 
         {step === 'goal' &&
           DAILY_GOALS.map((g) => (
@@ -229,6 +279,10 @@ const styles = StyleSheet.create({
   progress: { flex: 1 },
   body: { gap: spacing.md },
   header: { gap: spacing.xs, marginVertical: spacing.md },
+  centered: { alignItems: 'center' },
+  mascot: { alignItems: 'center', marginTop: spacing.xl },
+  point: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+  pointText: { flex: 1, gap: 2 },
   avatarGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md, justifyContent: 'center' },
   avatarCell: {
     padding: spacing.sm,

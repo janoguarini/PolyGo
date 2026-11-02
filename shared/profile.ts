@@ -58,7 +58,11 @@ export function flagEmoji(code: string | null | undefined): string | null {
 
 export type TargetLanguageCode = (typeof TARGET_LANGUAGES)[number]['code'];
 
-/** Niveles iniciales seleccionables: define qué camino ves primero en Aprender. */
+/**
+ * Niveles MCER del registro: el elegido define qué camino ves primero en Aprender. Los que tienen
+ * `available: false` todavía no tienen contenido y se muestran como «Próximamente» (al habilitar
+ * uno, ampliar también el CHECK de profiles.start_level).
+ */
 export const START_LEVELS = [
   {
     id: 'A1',
@@ -72,7 +76,37 @@ export const START_LEVELS = [
     description: 'Ya me presento, hablo de mi rutina y hago preguntas simples.',
     available: true,
   },
+  {
+    id: 'B1',
+    title: 'Me defiendo',
+    description: 'Me las arreglo de viaje y cuento experiencias y planes.',
+    available: false,
+  },
+  {
+    id: 'B2',
+    title: 'Hablo con soltura',
+    description: 'Sigo series y charlas sin problema y opino sobre muchos temas.',
+    available: false,
+  },
+  {
+    id: 'C1',
+    title: 'Avanzado',
+    description: 'Uso el idioma con fluidez en el trabajo o el estudio.',
+    available: false,
+  },
+  {
+    id: 'C2',
+    title: 'Casi nativo',
+    description: 'Entiendo prácticamente todo y me expreso con precisión.',
+    available: false,
+  },
 ] as const;
+
+/** Nivel MCER siguiente a `level` (o null si es C2 o no existe). */
+export function nextStartLevel(level: string): (typeof START_LEVELS)[number] | null {
+  const i = START_LEVELS.findIndex((l) => l.id === level);
+  return i >= 0 ? (START_LEVELS[i + 1] ?? null) : null;
+}
 
 /**
  * Avatares predefinidos: tres zorros. Los ids son heredados de los primeros avatares (la base los

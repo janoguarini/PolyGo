@@ -98,9 +98,17 @@ interface Props {
   /** Lección con el recuadro abierto; la controla la pantalla para cerrarlo al tocar afuera. */
   selected: string | null;
   onSelectedChange: (key: string | null) => void;
+  /** Nivel que sigue a este camino; `ready` = ya tiene unidades cargadas. */
+  nextLevel?: { id: string; ready: boolean } | null;
 }
 
-export function LessonPath({ units, onCurrentLayout, selected, onSelectedChange }: Props) {
+export function LessonPath({
+  units,
+  onCurrentLayout,
+  selected,
+  onSelectedChange,
+  nextLevel,
+}: Props) {
   // Offsets medidos con onLayout: raíz → sección → camino → nodo.
   const rootY = useRef<number | null>(null);
   const sectionY = useRef(new Map<string, number>());
@@ -123,16 +131,21 @@ export function LessonPath({ units, onCurrentLayout, selected, onSelectedChange 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(tryReport, [currentKey]);
 
+  const thisLevel = units[0]?.level ?? '';
+  const nextId = nextLevel?.id ?? '';
+  const lockedMessage = nextLevel?.ready
+    ? `Terminá el nivel ${thisLevel} para pasar a ${nextId}.`
+    : `Estamos preparando las unidades del nivel ${nextId}.`;
   const upcoming: PathNode[] = Array.from({ length: UPCOMING_NODES }, (_, i) => ({
     key: `upcoming-${i}`,
     status: 'locked',
     kind: i === UPCOMING_NODES - 1 ? 'final' : 'lesson',
     label: 'Próximamente',
-    overline: 'NIVEL A2',
+    overline: `NIVEL ${nextId}`,
     title: 'Próximamente',
     bestAccuracy: null,
     stars: 0,
-    lockedMessage: 'Estamos preparando las unidades del nivel A2.',
+    lockedMessage,
   }));
 
   const select = (key: string) => onSelectedChange(selected === key ? null : key);
@@ -186,21 +199,27 @@ export function LessonPath({ units, onCurrentLayout, selected, onSelectedChange 
         </View>
       ))}
 
-      <View style={[styles.section, owns(upcoming) && styles.raised]}>
-        <UnitBanner
-          accent={LOCKED_ACCENT}
-          overline="PRÓXIMO NIVEL · A2"
-          title="🚀 Tu camino sigue"
-          description="Estamos preparando las próximas unidades. Mientras tanto, repasá y jugá ranked para no perder la racha."
-        />
-        <PathSection
-          accent={LOCKED_ACCENT}
-          firstIndex={nextIndex}
-          nodes={upcoming}
-          selected={selected}
-          onSelect={select}
-        />
-      </View>
+      {nextLevel ? (
+        <View style={[styles.section, owns(upcoming) && styles.raised]}>
+          <UnitBanner
+            accent={LOCKED_ACCENT}
+            overline={`PRÓXIMO NIVEL · ${nextId}`}
+            title="🚀 Tu camino sigue"
+            description={
+              nextLevel.ready
+                ? `Cuando termines ${thisLevel}, seguís directo con las unidades de ${nextId}.`
+                : 'Estamos preparando las próximas unidades. Mientras tanto, repasá y jugá ranked para no perder la racha.'
+            }
+          />
+          <PathSection
+            accent={LOCKED_ACCENT}
+            firstIndex={nextIndex}
+            nodes={upcoming}
+            selected={selected}
+            onSelect={select}
+          />
+        </View>
+      ) : null}
     </View>
   );
 }
