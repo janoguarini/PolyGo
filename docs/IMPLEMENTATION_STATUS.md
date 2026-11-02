@@ -50,7 +50,7 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 - [x] Migración 0004: `battles` y `battle_players` (resultados, sólo backend; rival anonimizado al borrar cuenta), FK `rating_history.battle_id`, catálogo de 16 logros, `user_achievements`, RPCs `get_match_history`, `get_my_achievements`, `get_public_profile`; `submit_learning_session` evalúa logros y los devuelve.
 - [x] Backfill de logros para usuarios existentes al aplicar la migración.
 - [x] Perfil: botón Editar, gráfico de evolución de ELO (SVG, una serie, tocar para inspeccionar), últimas partidas, resumen de logros.
-- [x] Pantallas nuevas: Historial de partidas (paginado), Logros (por categoría, con progreso), Perfil de jugador (desde la clasificación o el historial; respeta privacidad), Editar perfil (nombre visible, avatar, objetivo diario).
+- [x] Pantallas nuevas: Historial de partidas (paginado), Logros (por categoría, con progreso), Perfil de jugador (desde la clasificación o el historial; respeta privacidad), Editar perfil (vista previa en vivo del encabezado; avatar o foto, marcos y fondos —probarlos y comprarlos ahí mismo—, nombre visible, país y objetivo diario).
 - [x] Resultados de lección/repaso muestran los logros recién desbloqueados.
 - [x] La visibilidad de perfil ya tiene efecto (`private`/`friends` sólo muestran nombre, avatar y rango).
 

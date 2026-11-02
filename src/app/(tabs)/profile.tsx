@@ -9,7 +9,7 @@ import { AchievementsCarousel } from '@/features/profile/components/Achievements
 import { CompetitiveHistory } from '@/features/profile/components/CompetitiveHistory';
 import { LanguagesRow } from '@/features/profile/components/LanguagesRow';
 import { ProfileHeader } from '@/features/profile/components/ProfileHeader';
-import { CareerStats, PeriodStats } from '@/features/profile/components/ProfileStats';
+import { PeriodStats } from '@/features/profile/components/ProfileStats';
 import { useTabPressScroll } from '@/lib/useTabPressScroll';
 import { useMyProfile } from '@/features/profile/hooks';
 
@@ -39,7 +39,6 @@ export default function ProfileScreen() {
       </View>
 
       <ProfileHeader profile={profile} rating={rating} />
-      <CareerStats rating={rating} />
 
       <SectionHeader title="Idiomas" />
       <LanguagesRow current={profile.target_language} />

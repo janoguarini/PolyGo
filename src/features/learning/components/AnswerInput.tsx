@@ -35,11 +35,19 @@ export function AnswerInput(props: Props) {
   }
 }
 
-/** Respuestas centradas en el espacio libre y "Comprobar" fijo abajo. */
-function AnswerLayout({ children, footer }: { children: ReactNode; footer: ReactNode }) {
+/** Respuestas centradas en el espacio libre (o pegadas al enunciado) y "Comprobar" fijo abajo. */
+function AnswerLayout({
+  children,
+  footer,
+  alignTop,
+}: {
+  children: ReactNode;
+  footer: ReactNode;
+  alignTop?: boolean;
+}) {
   return (
     <View style={styles.layout}>
-      <View style={styles.body}>{children}</View>
+      <View style={[styles.body, alignTop && styles.bodyTop]}>{children}</View>
       <View style={styles.footer}>{footer}</View>
     </View>
   );
@@ -102,21 +110,27 @@ function TextInputAnswer({ exercise, disabled, onSubmit }: Props) {
   const submit = () => value.trim() && onSubmit({ kind: 'text', value });
   return (
     <AnswerLayout
+      alignTop
       footer={
         <Button label="Comprobar" size="lg" disabled={disabled || !value.trim()} onPress={submit} />
       }
     >
+      {/* Con el teclado abierto de entrada, el espacio libre lo ocupa el teclado. */}
       <TextField
         label={exercise.type === 'complete_word' ? 'Palabra completa' : 'Tu respuesta en inglés'}
         value={value}
         onChangeText={setValue}
         editable={!disabled}
+        autoFocus
+        multiline={exercise.type !== 'complete_word'}
+        submitBehavior="submit"
         autoCapitalize="none"
         autoCorrect={false}
         spellCheck={false}
         returnKeyType="done"
         onSubmitEditing={submit}
         placeholder="Escribí acá…"
+        style={exercise.type === 'complete_word' ? styles.wordField : styles.textArea}
       />
     </AnswerLayout>
   );
@@ -318,7 +332,17 @@ function MatchInput({
 const styles = StyleSheet.create({
   layout: { flex: 1, gap: spacing.xl },
   body: { flex: 1, justifyContent: 'center', gap: spacing.lg },
+  bodyTop: { justifyContent: 'flex-start' },
   footer: { gap: spacing.md },
+  textArea: {
+    minHeight: 120,
+    fontSize: 20,
+    lineHeight: 28,
+    paddingTop: spacing.lg,
+    paddingBottom: spacing.lg,
+    textAlignVertical: 'top',
+  },
+  wordField: { fontSize: 22, lineHeight: 28, minHeight: 60, textAlign: 'center' },
   options: { gap: spacing.md },
   option: {
     minHeight: MIN_TOUCH + 20,

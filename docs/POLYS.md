@@ -50,7 +50,8 @@ El marco se ve en el perfil, el perfil público y la clasificación; el fondo, e
 
 1. **Hecha:** moneda, ganancias, cofre, compra del protector, saldo en Aprender y Ranked, aviso de "+Polys".
 2. **Hecha:** tienda (`/shop`, se abre tocando el saldo) con probador, recuperar la racha, 10 marcos
-   y 6 fondos a la venta, y 3 legendarios bloqueados a la vista.
+   y 6 fondos a la venta, y 3 legendarios bloqueados a la vista. Marcos y fondos también se prueban
+   y se compran desde Editar perfil.
 3. Temporada: legendarios por rango final y destacado semanal con descuento.
 
 **Legendarios y exclusivos no se compran con Polys** (decisión del usuario): se ganan por

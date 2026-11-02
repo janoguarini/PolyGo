@@ -17,38 +17,55 @@ import {
 } from '@/design-system';
 import { FramedAvatar } from '@/features/cosmetics/FramedAvatar';
 import { ProfileBackdrop } from '@/features/cosmetics/ProfileBackdrop';
+import { backgroundStyle } from '@/features/cosmetics/visuals';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 import type { PlayerRatingRow, ProfileRow } from '@/lib/database.types';
 
-/** Encabezado del perfil propio: avatar editable con su marco, nombre con bandera y tarjeta de rango, sobre el fondo elegido. */
+/**
+ * Encabezado del perfil propio: avatar editable con su marco, nombre con bandera y tarjeta de rango,
+ * sobre el fondo elegido. Con `preview` es la vista previa de Editar perfil: sin toques y con la
+ * foto que se está eligiendo (`photoUrl`).
+ */
 export function ProfileHeader({
   profile,
   rating,
+  preview,
+  photoUrl,
 }: {
   profile: ProfileRow;
   rating: PlayerRatingRow | null;
+  preview?: boolean;
+  photoUrl?: string | null;
 }) {
   const flag = flagEmoji(profile.region);
+  const avatar = (
+    <FramedAvatar
+      avatarId={profile.avatar_id}
+      photoUrl={photoUrl !== undefined ? photoUrl : avatarPhotoUrl(profile.avatar_path)}
+      size={92}
+      frameId={profile.frame_id}
+      fallbackRing={colors.primary}
+      instant={preview}
+    />
+  );
   return (
-    <ProfileBackdrop backgroundId={profile.background_id} style={styles.row}>
+    <ProfileBackdrop backgroundId={profile.background_id} style={styles.row} keepLayout>
       <View style={styles.identity}>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel="Editar perfil"
-          onPress={() => router.push('/edit-profile')}
-          style={styles.avatarWrap}
-        >
-          <FramedAvatar
-            avatarId={profile.avatar_id}
-            photoUrl={avatarPhotoUrl(profile.avatar_path)}
-            size={92}
-            frameId={profile.frame_id}
-            fallbackRing={colors.primary}
-          />
-          <View style={styles.pencil}>
-            <Pencil color={colors.textStrong} size={14} strokeWidth={2.5} />
-          </View>
-        </Pressable>
+        {preview ? (
+          <View style={styles.avatarWrap}>{avatar}</View>
+        ) : (
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Editar perfil"
+            onPress={() => router.push('/edit-profile')}
+            style={styles.avatarWrap}
+          >
+            {avatar}
+            <View style={styles.pencil}>
+              <Pencil color={colors.textStrong} size={14} strokeWidth={2.5} />
+            </View>
+          </Pressable>
+        )}
         <View style={styles.nameRow}>
           <Text variant="title" numberOfLines={1} style={styles.name}>
             {profile.display_name ?? profile.username}
@@ -61,20 +78,35 @@ export function ProfileHeader({
         </View>
         <Text color="textMuted">@{profile.username}</Text>
       </View>
-      {rating ? <RankMini rating={rating} /> : null}
+      {rating ? (
+        <RankMini
+          rating={rating}
+          onBackdrop={backgroundStyle(profile.background_id) !== null}
+          interactive={!preview}
+        />
+      ) : null}
     </ProfileBackdrop>
   );
 }
 
-function RankMini({ rating }: { rating: PlayerRatingRow }) {
+/** Con un fondo de la tienda puesto, la tarjeta se vuelve translúcida para que el fondo se vea detrás. */
+function RankMini({
+  rating,
+  onBackdrop,
+  interactive,
+}: {
+  rating: PlayerRatingRow;
+  onBackdrop: boolean;
+  interactive: boolean;
+}) {
   const placement = !isPlaced(rating);
   const rank = getRank(rating.rating);
   const tier = TIER_COLORS[rank.tier.id];
-  return (
+  const card = (
     <Card
-      gradient={gradients.ranked}
-      style={styles.rank}
-      onPress={() => router.push('/leaderboard')}
+      gradient={onBackdrop ? undefined : gradients.ranked}
+      style={[styles.rank, onBackdrop && styles.rankOnBackdrop]}
+      onPress={interactive ? () => router.push('/leaderboard') : undefined}
       accessibilityLabel={
         placement
           ? 'Sin posicionar: ganá una partida ranked para entrar al ranking'
@@ -85,13 +117,25 @@ function RankMini({ rating }: { rating: PlayerRatingRow }) {
       <Text
         variant="bodyStrong"
         align="center"
+        numberOfLines={1}
         style={{ color: placement ? colors.text : tier.light }}
       >
         {placement ? 'Sin posicionar' : rank.label}
       </Text>
-      <Text variant="caption" color="text">
-        {placement ? 'Ganá una ranked' : `${rating.rating} ELO`}
-      </Text>
+      {placement ? (
+        <Text variant="caption" color="text">
+          Ganá una ranked
+        </Text>
+      ) : (
+        <View style={styles.eloRow}>
+          <Text variant="bodyStrong" color="textStrong">
+            {rating.rating}
+          </Text>
+          <Text variant="caption" color="text">
+            ELO
+          </Text>
+        </View>
+      )}
       <View style={styles.rankBar}>
         <ProgressBar
           value={placement ? 0 : rank.progress}
@@ -101,11 +145,13 @@ function RankMini({ rating }: { rating: PlayerRatingRow }) {
       </View>
     </Card>
   );
+  // Tocable, Card la envuelve en un Pressable; la vista previa usa un View igual para medir lo mismo.
+  return interactive ? card : <View>{card}</View>;
 }
 
 const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'stretch', gap: spacing.md },
-  identity: { flex: 1.1, gap: spacing.xxs, justifyContent: 'center' },
+  identity: { flex: 1, gap: spacing.xxs, justifyContent: 'center' },
   avatarWrap: { alignSelf: 'flex-start', marginBottom: spacing.sm },
   pencil: {
     position: 'absolute',
@@ -124,5 +170,10 @@ const styles = StyleSheet.create({
   name: { flexShrink: 1 },
   flag: { fontSize: 22, lineHeight: 28 },
   rank: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: spacing.xxs },
+  rankOnBackdrop: {
+    backgroundColor: 'rgba(0, 0, 0, 0.28)',
+    borderColor: 'rgba(255, 255, 255, 0.14)',
+  },
+  eloRow: { flexDirection: 'row', alignItems: 'baseline', gap: spacing.xs },
   rankBar: { alignSelf: 'stretch', marginTop: spacing.xs },
 });

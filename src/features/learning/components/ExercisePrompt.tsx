@@ -35,7 +35,16 @@ export function ExercisePrompt({ exercise }: { exercise: Exercise }) {
         </View>
       ) : null}
 
-      {p.type === 'translate_write' ? <Bubble text={p.source} /> : null}
+      {p.type === 'translate_write' ? (
+        <View style={styles.sourceCard}>
+          <Text variant="overline" color="primarySoft">
+            EN ESPAÑOL
+          </Text>
+          <Text variant="title" color="textStrong">
+            {p.source}
+          </Text>
+        </View>
+      ) : null}
 
       {p.type === 'complete_word' ? (
         <View style={styles.center}>
@@ -105,6 +114,15 @@ const styles = StyleSheet.create({
   gap: { gap: spacing.sm },
   emoji: { fontSize: 96, lineHeight: 116 },
   masked: { letterSpacing: 4 },
+  sourceCard: {
+    gap: spacing.sm,
+    paddingHorizontal: spacing.xl,
+    paddingVertical: spacing.xl,
+    borderRadius: radii.lg,
+    backgroundColor: colors.surfaceRaised,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
   bubble: {
     padding: spacing.lg,
     borderRadius: radii.lg,

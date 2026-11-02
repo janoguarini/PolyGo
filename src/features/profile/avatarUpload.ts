@@ -37,7 +37,12 @@ export async function uploadAvatarPhoto(userId: string, localUri: string): Promi
 
   const { error } = await requireSupabase()
     .storage.from(AVATAR_BUCKET)
-    .upload(`${userId}/avatar.jpg`, bytes, { contentType: 'image/jpeg', upsert: true });
+    // La ruta guardada lleva ?v=<ms>: el archivo puede quedar un año en caché sin verse viejo.
+    .upload(`${userId}/avatar.jpg`, bytes, {
+      contentType: 'image/jpeg',
+      upsert: true,
+      cacheControl: '31536000',
+    });
   if (error) throw error;
   return avatarPathFor(userId, Date.now());
 }

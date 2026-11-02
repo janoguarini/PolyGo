@@ -1,17 +1,11 @@
 import * as Haptics from 'expo-haptics';
 import { router } from 'expo-router';
-import { Check, Lock, Paintbrush, ScanFace } from 'lucide-react-native';
+import { Check, Paintbrush, ScanFace } from 'lucide-react-native';
 import { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import Animated, { FadeIn } from 'react-native-reanimated';
 
-import {
-  COSMETICS,
-  RARITY_LABEL,
-  cosmeticSourceLabel,
-  type CosmeticItem,
-  type CosmeticKind,
-} from '@shared/cosmetics';
+import { COSMETICS, RARITY_LABEL, type CosmeticItem, type CosmeticKind } from '@shared/cosmetics';
 
 import {
   Button,
@@ -29,7 +23,8 @@ import {
 import { FormMessage } from '@/features/auth/FormMessage';
 import { FramedAvatar } from '@/features/cosmetics/FramedAvatar';
 import { ProfileBackdrop } from '@/features/cosmetics/ProfileBackdrop';
-import { useBuyCosmetic, useEquipCosmetic, useOwnedCosmetics } from '@/features/cosmetics/api';
+import { BuyCosmeticButton, ItemTile } from '@/features/cosmetics/CosmeticTiles';
+import { useEquipCosmetic, useOwnedCosmetics } from '@/features/cosmetics/api';
 import { RARITY_COLORS } from '@/features/cosmetics/visuals';
 import { useDailyMissions } from '@/features/missions/api';
 import { useMyProfile } from '@/features/profile/hooks';
@@ -186,9 +181,7 @@ function FittingRoom({
   equipped: boolean;
   balance: number;
 }) {
-  const buy = useBuyCosmetic();
   const equip = useEquipCosmetic();
-  const error = buy.error ?? equip.error;
   const rarity = RARITY_COLORS[item.rarity];
   const done = () => {
     playSound('complete');
@@ -214,26 +207,8 @@ function FittingRoom({
         onPress={() => equip.mutate({ kind: item.kind, itemId: item.id }, { onSuccess: done })}
       />
     );
-  } else if (item.price === null) {
-    action = (
-      <View style={styles.locked}>
-        <Lock color={colors.textMuted} size={18} />
-        <Text variant="bodyStrong" color="textMuted">
-          {cosmeticSourceLabel(item.source)}
-        </Text>
-      </View>
-    );
   } else {
-    action = (
-      <Button
-        label={`Comprar por ${item.price}`}
-        icon={<PolyCoin size={20} />}
-        disabled={balance < item.price}
-        loading={buy.isPending}
-        accessibilityHint={`Cuesta ${item.price} Polys. Tenés ${balance}. Queda puesto al comprarlo.`}
-        onPress={() => buy.mutate(item.id, { onSuccess: done })}
-      />
-    );
+    action = <BuyCosmeticButton item={item} balance={balance} />;
   }
 
   return (
@@ -264,85 +239,8 @@ function FittingRoom({
         </View>
       </View>
       {action}
-      {!owned && item.price !== null && balance < item.price ? (
-        <Text variant="caption" align="center">
-          Te faltan {item.price - balance} Polys.
-        </Text>
-      ) : null}
-      {error ? <FormMessage tone="error" message={toUserMessage(error)} /> : null}
+      {equip.error ? <FormMessage tone="error" message={toUserMessage(equip.error)} /> : null}
     </Card>
-  );
-}
-
-function ItemTile({
-  item,
-  avatarId,
-  photoUrl,
-  selected,
-  owned,
-  equipped,
-  onPress,
-}: {
-  item: CosmeticItem;
-  avatarId: string;
-  photoUrl: string | null;
-  selected: boolean;
-  owned: boolean;
-  equipped: boolean;
-  onPress: () => void;
-}) {
-  const rarity = RARITY_COLORS[item.rarity];
-  return (
-    <Pressable
-      accessibilityRole="button"
-      accessibilityState={{ selected }}
-      accessibilityLabel={`${item.name}, ${RARITY_LABEL[item.rarity]}. ${
-        equipped
-          ? 'En uso'
-          : owned
-            ? 'Ya es tuyo'
-            : item.price === null
-              ? cosmeticSourceLabel(item.source)
-              : `${item.price} Polys`
-      }`}
-      onPress={onPress}
-      style={({ pressed }) => [
-        styles.tile,
-        { borderColor: selected ? rarity : colors.border },
-        selected && styles.tileSelected,
-        pressed && styles.pressed,
-      ]}
-    >
-      <View style={[styles.rarityBar, { backgroundColor: rarity }]} />
-      {item.kind === 'frame' ? (
-        <FramedAvatar avatarId={avatarId} photoUrl={photoUrl} size={46} frameId={item.id} />
-      ) : (
-        <ProfileBackdrop backgroundId={item.id} style={styles.swatch}>
-          <View />
-        </ProfileBackdrop>
-      )}
-      <Text variant="caption" color="textStrong" numberOfLines={1}>
-        {item.name}
-      </Text>
-      {equipped ? (
-        <Text variant="caption" color="success">
-          En uso
-        </Text>
-      ) : owned ? (
-        <Text variant="caption" color="primarySoft">
-          Tuyo
-        </Text>
-      ) : item.price === null ? (
-        <Lock color={colors.textMuted} size={14} />
-      ) : (
-        <View style={styles.price}>
-          <PolyCoin size={14} />
-          <Text variant="caption" color="gold" style={styles.tabular}>
-            {item.price}
-          </Text>
-        </View>
-      )}
-    </Pressable>
   );
 }
 
@@ -390,32 +288,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   roomInfo: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  locked: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: spacing.sm,
-    minHeight: 50,
-    borderRadius: radii.lg,
-    backgroundColor: colors.surfaceRaised,
-  },
   grid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
-  tile: {
-    width: '31.5%',
-    alignItems: 'center',
-    gap: spacing.xs,
-    paddingTop: spacing.md,
-    paddingBottom: spacing.sm,
-    paddingHorizontal: spacing.xs,
-    borderRadius: radii.lg,
-    borderWidth: 2,
-    backgroundColor: colors.surface,
-    overflow: 'hidden',
-    minHeight: 120,
-  },
-  tileSelected: { backgroundColor: colors.surfaceRaised },
-  rarityBar: { position: 'absolute', top: 0, left: 0, right: 0, height: 3 },
-  swatch: { width: 64, height: 64, padding: 0, borderRadius: radii.md },
-  price: { flexDirection: 'row', alignItems: 'center', gap: spacing.xxs },
-  pressed: { opacity: 0.8 },
 });

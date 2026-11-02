@@ -2,15 +2,16 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { Stack, type ErrorBoundaryProps } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
-import { View } from 'react-native';
+import { Image, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { ErrorState, LoadingState, colors } from '@/design-system';
+import { ErrorState, LoadingState, colors, preloadAvatars } from '@/design-system';
 import { AuthProvider, useAuth } from '@/features/auth/AuthProvider';
 import { ConfigMissing } from '@/features/auth/ConfigMissing';
 import { PolysToast } from '@/features/polys/PolysToast';
 import { useApplySoundEffectsPref } from '@/features/preferences/soundEffects';
 import { useMyProfile } from '@/features/profile/hooks';
+import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 import { envProblems } from '@/lib/env';
 import { configureNotifications } from '@/features/reminders/notifications';
 import { queryClient } from '@/lib/queryClient';
@@ -20,6 +21,7 @@ export default function RootLayout() {
   useEffect(() => {
     void configureAudio();
     preloadSounds();
+    preloadAvatars();
     configureNotifications();
   }, []);
   return (
@@ -60,6 +62,11 @@ function RootNavigator() {
   const { session, initializing, recoveringPassword } = useAuth();
   const profile = useMyProfile();
   useApplySoundEffectsPref();
+  // La foto propia se baja apenas se conoce, así el perfil ya la tiene en caché al abrirlo.
+  const photoUrl = avatarPhotoUrl(profile.data?.profile.avatar_path);
+  useEffect(() => {
+    if (photoUrl) void Image.prefetch(photoUrl).catch(() => undefined);
+  }, [photoUrl]);
 
   if (initializing || (session && profile.isPending))
     return <LoadingState label="Preparando Polygo…" />;

@@ -3,39 +3,11 @@ import { useState, type ReactNode } from 'react';
 import { Modal, Pressable, StyleSheet, View } from 'react-native';
 
 import { Card, ErrorState, Text, colors, radii, spacing } from '@/design-system';
-import type { PlayerRatingRow } from '@/lib/database.types';
 
 import { useCompetitiveStats } from '../hooks';
 
 const winRate = (wins: number, games: number) =>
   games > 0 ? `${Math.round((wins / games) * 100)}%` : '—';
-
-/** Totales de la carrera competitiva: partidas, porcentaje de victorias y mejor racha. */
-export function CareerStats({ rating }: { rating: PlayerRatingRow | null }) {
-  const games = rating?.games_played ?? 0;
-  const items = [
-    { label: 'Partidas', value: String(games) },
-    { label: 'Win rate', value: winRate(rating?.wins ?? 0, games) },
-    { label: 'Racha máx.', value: String(rating?.best_win_streak ?? 0) },
-  ];
-  return (
-    <Card style={styles.career}>
-      {items.map((item, i) => (
-        <View
-          key={item.label}
-          style={[styles.careerItem, i > 0 && styles.divider]}
-          accessible
-          accessibilityLabel={`${item.label}: ${item.value}`}
-        >
-          <Text variant="heading" color="textStrong">
-            {item.value}
-          </Text>
-          <Text variant="caption">{item.label}</Text>
-        </View>
-      ))}
-    </Card>
-  );
-}
 
 const PERIODS: { label: string; days: number | null }[] = [
   { label: 'Últimos 7 días', days: 7 },
@@ -167,9 +139,6 @@ export function PeriodStats() {
 }
 
 const styles = StyleSheet.create({
-  career: { flexDirection: 'row', paddingVertical: spacing.md, paddingHorizontal: 0 },
-  careerItem: { flex: 1, alignItems: 'center', gap: spacing.xxs },
-  divider: { borderLeftWidth: StyleSheet.hairlineWidth, borderLeftColor: colors.borderStrong },
   gap: { gap: spacing.md },
   sectionRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   select: {

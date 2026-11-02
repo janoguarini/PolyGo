@@ -16,23 +16,26 @@ export function FramedAvatar({
   size,
   frameId,
   fallbackRing,
+  instant,
 }: {
   avatarId: string | null | undefined;
   photoUrl?: string | null;
   size: number;
   frameId?: string | null;
   fallbackRing?: string;
+  instant?: boolean;
 }) {
   const frame =
     frameStyle(frameId) ??
     (fallbackRing ? { colors: [fallbackRing, fallbackRing] as const } : null);
-  if (!frame) return <Avatar avatarId={avatarId} photoUrl={photoUrl} size={size} />;
+  if (!frame)
+    return <Avatar avatarId={avatarId} photoUrl={photoUrl} size={size} instant={instant} />;
 
   const g = frameGeometry(size, Boolean(frame.ornament));
   return (
     <View style={{ width: g.total, height: g.total }}>
       <View style={styles.center}>
-        <Avatar avatarId={avatarId} photoUrl={photoUrl} size={size} />
+        <Avatar avatarId={avatarId} photoUrl={photoUrl} size={size} instant={instant} />
       </View>
       <FrameArt frame={frame} geometry={g} />
     </View>

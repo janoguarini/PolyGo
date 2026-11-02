@@ -26,19 +26,24 @@ const STARS = [
 
 /**
  * Fondo del perfil que el jugador tiene puesto. Sin fondo devuelve el contenido tal cual, para que
- * el perfil se vea igual que siempre.
+ * el perfil se vea igual que siempre. Con `keepLayout`, sin fondo se reservan el mismo margen interno
+ * y borde (invisibles): poner o sacar un fondo no cambia el tamaño de lo que hay adentro.
  */
 export function ProfileBackdrop({
   backgroundId,
   children,
   style,
+  keepLayout,
 }: {
   backgroundId: string | null | undefined;
   children: ReactNode;
   style?: StyleProp<ViewStyle>;
+  keepLayout?: boolean;
 }) {
   const bg = backgroundStyle(backgroundId);
-  if (!bg) return <View style={style}>{children}</View>;
+  if (!bg) {
+    return <View style={[keepLayout && [styles.card, styles.empty], style]}>{children}</View>;
+  }
   return (
     <LinearGradient
       colors={bg.colors}
@@ -115,4 +120,5 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
     overflow: 'hidden',
   },
+  empty: { borderColor: 'transparent', overflow: 'visible' },
 });
