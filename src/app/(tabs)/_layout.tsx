@@ -3,10 +3,13 @@ import { BookOpen, Dumbbell, Swords, User, Users } from 'lucide-react-native';
 import { Platform, StyleSheet, View, useWindowDimensions } from 'react-native';
 
 import { colors } from '@/design-system';
+import { useAuth } from '@/features/auth/AuthProvider';
 import { useFriends } from '@/features/friends/api';
 import { BattleInviteBanner } from '@/features/friends/components/BattleInviteBanner';
 import { useBattleInvitePush } from '@/features/friends/push';
 import { usePresence } from '@/features/friends/social';
+import { AppTour } from '@/features/onboarding/AppTour';
+import { useFinishTour, useTourPending } from '@/features/onboarding/tour';
 import { useReminderSync } from '@/features/reminders/hooks';
 import { useWidgetSync } from '@/features/widgets/useWidgetSync';
 
@@ -18,6 +21,10 @@ export default function TabsLayout() {
   const invites = usePresence().data ?? [];
   // Push de desafíos: registra el token y abre la partida al tocar la notificación.
   useBattleInvitePush();
+  // Tutorial guiado para cuentas recién creadas.
+  const userId = useAuth().session?.user.id;
+  const tourPending = useTourPending(userId).data === true;
+  const finishTour = useFinishTour(userId);
   // Solicitudes de amistad sin responder + invitaciones: globito en la pestaña Amigos.
   const pendingRequests =
     (useFriends().data?.filter((f) => f.state === 'incoming').length ?? 0) + invites.length;
@@ -95,6 +102,7 @@ export default function TabsLayout() {
         />
       </Tabs>
       <BattleInviteBanner invites={invites} />
+      {tourPending ? <AppTour onFinish={() => finishTour.mutate()} /> : null}
     </View>
   );
 }

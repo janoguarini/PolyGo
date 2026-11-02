@@ -1,6 +1,7 @@
 import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { useAuth } from '@/features/auth/AuthProvider';
+import { markTourPending, tourKey } from '@/features/onboarding/tour';
 
 import {
   MATCH_PAGE_SIZE,
@@ -57,8 +58,13 @@ export function useCompleteOnboarding() {
   const { session } = useAuth();
   return useMutation({
     mutationFn: (input: OnboardingInput) => completeOnboarding(input),
-    onSuccess: () =>
-      qc.invalidateQueries({ queryKey: profileKeys.me(session?.user.id ?? 'anonymous') }),
+    onSuccess: async () => {
+      const userId = session?.user.id ?? 'anonymous';
+      // El tutorial sobre las pantallas reales queda pendiente antes de entrar a las pestañas.
+      await markTourPending(userId);
+      qc.setQueryData(tourKey(userId), true);
+      return qc.invalidateQueries({ queryKey: profileKeys.me(userId) });
+    },
   });
 }
 

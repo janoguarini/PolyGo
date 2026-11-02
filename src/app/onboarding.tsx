@@ -1,9 +1,7 @@
-import { Check, ChevronLeft, Lock, Star } from 'lucide-react-native';
+import { ChevronLeft } from 'lucide-react-native';
 import { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import Animated, { FadeIn } from 'react-native-reanimated';
-
-import { ENERGY } from '@shared/energy';
 
 import {
   AVATARS,
@@ -20,7 +18,6 @@ import {
 import {
   Avatar,
   Button,
-  Card,
   Mascot,
   MascotWarmup,
   ProgressBar,
@@ -33,36 +30,18 @@ import {
   spacing,
 } from '@/design-system';
 import { FormMessage } from '@/features/auth/FormMessage';
-import { RankTutorial } from '@/features/onboarding/RankTutorial';
 import { isUsernameAvailable } from '@/features/profile/api';
 import { useCompleteOnboarding } from '@/features/profile/hooks';
 import { toUserMessage } from '@/lib/errors';
 
-const STEPS = [
-  'welcome',
-  'lessons',
-  'ranked',
-  'language',
-  'level',
-  'goal',
-  'username',
-  'avatar',
-] as const;
+const STEPS = ['welcome', 'language', 'level', 'goal', 'username', 'avatar'] as const;
 type Step = (typeof STEPS)[number];
 
 const TITLES: Record<Step, { title: string; subtitle: string }> = {
   welcome: {
     title: '¡Te damos la bienvenida a Polygo!',
     subtitle:
-      'Acá aprendés idiomas jugando: lecciones cortas, rachas diarias y partidas contra otros jugadores. Te muestro cómo funciona.',
-  },
-  lessons: {
-    title: 'Tu camino de lecciones',
-    subtitle: 'Acá abajo vas a ir avanzando, lección por lección y unidad por unidad.',
-  },
-  ranked: {
-    title: 'Competí en Ranked',
-    subtitle: 'Arriba están los rangos: enfrentá a otros jugadores y escalá hasta la cima.',
+      'Acá aprendés idiomas jugando: lecciones cortas, rachas diarias y partidas contra otros jugadores. Contame un poco de vos y después te muestro la app.',
   },
   language: { title: '¿Qué idioma querés aprender?', subtitle: 'Por ahora Polygo enseña inglés.' },
   level: {
@@ -73,21 +52,6 @@ const TITLES: Record<Step, { title: string; subtitle: string }> = {
   username: { title: 'Elegí tu nombre de jugador', subtitle: 'Así te van a ver tus rivales.' },
   avatar: { title: 'Elegí tu avatar', subtitle: 'Más opciones llegarán con las temporadas.' },
 };
-
-const LESSON_POINTS = [
-  {
-    title: 'Empezás en tu nivel',
-    text: 'En un momento elegís tu nivel (de A1 a C2) y tu camino arranca ahí.',
-  },
-  {
-    title: '3 estrellas = lección dorada',
-    text: 'Terminá una lección sin errores y queda dorada en tu camino.',
-  },
-  {
-    title: 'Energía',
-    text: `Cada lección usa ${ENERGY.lessonCost} de energía ⚡. Tenés hasta ${ENERGY.max} y se recarga sola con el tiempo.`,
-  },
-] as const;
 
 const GOAL_LABELS: Record<DailyGoalMinutes, string> = {
   5: 'Casual',
@@ -160,13 +124,7 @@ export default function OnboardingScreen() {
             <FormMessage tone="error" message={toUserMessage(complete.error)} />
           ) : null}
           <Button
-            label={
-              isLast
-                ? 'Empezar a jugar'
-                : step === 'welcome' || step === 'lessons' || step === 'ranked'
-                  ? 'Siguiente'
-                  : 'Continuar'
-            }
+            label={isLast ? 'Empezar a jugar' : isWelcome ? 'Siguiente' : 'Continuar'}
             size="lg"
             loading={checkingUsername || complete.isPending}
             onPress={() => void next()}
@@ -190,7 +148,7 @@ export default function OnboardingScreen() {
         </View>
       </View>
 
-      {/* Las cuatro poses quedan cargadas desde el primer paso: cambiar de pantalla es inmediato. */}
+      {/* Las poses quedan cargadas desde el primer paso: cambiar de pantalla es inmediato. */}
       <MascotWarmup />
       <Animated.View key={step} entering={FadeIn.duration(250)} style={styles.body}>
         {isWelcome || step === 'language' ? (
@@ -206,23 +164,6 @@ export default function OnboardingScreen() {
             {TITLES[step].subtitle}
           </Text>
         </View>
-
-        {step === 'lessons' && (
-          <>
-            <View style={styles.mascot}>
-              <Mascot pose="pointDown" height={190} />
-            </View>
-            <PathPreview />
-            {LESSON_POINTS.map(({ title, text }) => (
-              <Card key={title}>
-                <Text variant="bodyStrong">{title}</Text>
-                <Text color="textMuted">{text}</Text>
-              </Card>
-            ))}
-          </>
-        )}
-
-        {step === 'ranked' && <RankTutorial mascot={<Mascot pose="pointUp" height={200} />} />}
 
         {step === 'language' &&
           TARGET_LANGUAGES.map((l) => (
@@ -308,37 +249,6 @@ export default function OnboardingScreen() {
   );
 }
 
-/** Mini camino ilustrativo: una lección hecha, la actual y una bloqueada, en zigzag. */
-function PathPreview() {
-  const nodes = [
-    { key: 'done', offset: -48, Icon: Check, fill: colors.gold, icon: colors.background },
-    { key: 'current', offset: 32, Icon: Star, fill: colors.primary, icon: colors.onPrimary },
-    {
-      key: 'locked',
-      offset: -24,
-      Icon: Lock,
-      fill: colors.surfaceHighlight,
-      icon: colors.textSubtle,
-    },
-  ];
-  return (
-    <View style={styles.path} accessible={false}>
-      {nodes.map(({ key, offset, Icon, fill, icon }) => (
-        <View
-          key={key}
-          style={[
-            styles.node,
-            { backgroundColor: fill, transform: [{ translateX: offset }] },
-            key === 'current' && styles.nodeCurrent,
-          ]}
-        >
-          <Icon color={icon} size={26} strokeWidth={2.5} />
-        </View>
-      ))}
-    </View>
-  );
-}
-
 const styles = StyleSheet.create({
   topBar: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   back: { width: 32, height: 44, justifyContent: 'center' },
@@ -348,15 +258,6 @@ const styles = StyleSheet.create({
   header: { gap: spacing.xs, marginVertical: spacing.md },
   centered: { alignItems: 'center' },
   mascot: { alignItems: 'center' },
-  path: { alignItems: 'center', gap: spacing.md, marginBottom: spacing.sm },
-  node: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  nodeCurrent: { borderWidth: 4, borderColor: colors.primarySoft },
   avatarGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md, justifyContent: 'center' },
   avatarCell: {
     padding: spacing.sm,
