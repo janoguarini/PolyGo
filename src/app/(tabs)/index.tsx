@@ -1,5 +1,12 @@
 import { router } from 'expo-router';
-import { ArrowDown, ArrowUp, ChevronRight, Flame, Snowflake } from 'lucide-react-native';
+import {
+  ArrowDown,
+  ArrowUp,
+  ChevronDown,
+  ChevronRight,
+  Flame,
+  Snowflake,
+} from 'lucide-react-native';
 import { useRef, useState } from 'react';
 import {
   Pressable,
@@ -36,6 +43,7 @@ import { useEnergy } from '@/features/plus/api';
 import { PolysChip } from '@/features/polys/PolysChip';
 import { useStreakRepair } from '@/features/polys/api';
 import { useTabPressScroll } from '@/lib/useTabPressScroll';
+import { LanguagesRow, usePrefetchLanguagePaths } from '@/features/profile/components/LanguagesRow';
 import { useMyProfile } from '@/features/profile/hooks';
 
 /** Fracción del alto visible donde queda la lección actual al centrarla. */
@@ -53,6 +61,8 @@ export default function HomeScreen() {
   const streakRepair = useStreakRepair();
   const energy = useEnergy();
   const [energyOpen, setEnergyOpen] = useState(false);
+  const [languagesOpen, setLanguagesOpen] = useState(false);
+  usePrefetchLanguagePaths(me.data?.profile.target_language);
   const scrollRef = useRef<ScrollViewInstance>(null);
   const { height } = useWindowDimensions();
   // Posición del nodo actual en el contenido y alto visible del scroll (medidos).
@@ -123,10 +133,27 @@ export default function HomeScreen() {
     <View style={styles.header} onTouchStart={openLesson ? closeLesson : undefined}>
       <View style={styles.headerRow}>
         <View style={styles.flex}>
-          <Text variant="overline" color="primarySoft">
-            {language.name.toUpperCase()}
-            {language.status === 'beta' ? ' · BETA' : ''}
-          </Text>
+          {/* Idioma que estudiás: tocándolo se despliegan los demás para cambiar al instante. */}
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={`Estudiando ${language.name}${language.status === 'beta' ? ', beta' : ''}`}
+            accessibilityHint="Muestra los idiomas para cambiar"
+            accessibilityState={{ expanded: languagesOpen }}
+            onPress={() => setLanguagesOpen((o) => !o)}
+            hitSlop={8}
+            style={({ pressed }) => [styles.language, pressed && styles.pressed]}
+          >
+            <Text style={styles.languageFlag}>{language.flag}</Text>
+            <Text variant="overline" color="primarySoft">
+              {language.name.toUpperCase()}
+              {language.status === 'beta' ? ' · BETA' : ''}
+            </Text>
+            <ChevronDown
+              color={colors.primarySoft}
+              size={14}
+              style={languagesOpen ? styles.chevronOpen : undefined}
+            />
+          </Pressable>
           <Text variant="heading">Tu camino</Text>
         </View>
         <EnergyChip open={energyOpen} onPress={() => setEnergyOpen((o) => !o)} />
@@ -169,6 +196,9 @@ export default function HomeScreen() {
           {completed}/{total} · {total ? Math.round((completed / total) * 100) : 0}%
         </Text>
       </View>
+      {languagesOpen ? (
+        <LanguagesRow current={profile.target_language} onChanged={() => setLanguagesOpen(false)} />
+      ) : null}
       {energyOpen || outOfEnergy ? <EnergyPanel compact={!energyOpen} /> : null}
       {streakRepair.data ? (
         <Pressable
@@ -283,6 +313,15 @@ const styles = StyleSheet.create({
     borderBottomColor: colors.border,
   },
   headerRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+  language: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+    alignSelf: 'flex-start',
+  },
+  languageFlag: { fontSize: 18, lineHeight: 22 },
+  chevronOpen: { transform: [{ rotate: '180deg' }] },
+  pressed: { opacity: 0.7 },
   flex: { flex: 1 },
   // Racha: apagada mientras no estudiaste hoy, encendida en naranja cuando ya cumpliste.
   streak: {

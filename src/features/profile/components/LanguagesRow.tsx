@@ -1,39 +1,58 @@
+import { useQueryClient } from '@tanstack/react-query';
+import { useEffect } from 'react';
 import { Alert, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
 import { LANGUAGES, isSelectable, type LanguageConfig } from '@shared/languages';
 import { RATING_CONFIG } from '@shared/ranking';
 
 import { Text, colors, radii, spacing } from '@/design-system';
+import { fetchCurriculum } from '@/features/learning/api';
+import { learningKeys } from '@/features/learning/hooks';
 
 import { useIsContentTester, useMyRatings, useSetTargetLanguage } from '../hooks';
 
+/** Precarga el camino de los otros idiomas elegibles: cambiar de idioma no muestra carga. */
+export function usePrefetchLanguagePaths(current: string | undefined) {
+  const tester = useIsContentTester().data ?? false;
+  const qc = useQueryClient();
+  useEffect(() => {
+    if (!current) return;
+    for (const l of LANGUAGES) {
+      if (l.code === current || !isSelectable(l, tester)) continue;
+      void qc.prefetchQuery({
+        queryKey: learningKeys.curriculum(l.code),
+        queryFn: () => fetchCurriculum(l.code),
+        staleTime: 10 * 60_000,
+      });
+    }
+  }, [qc, current, tester]);
+}
+
 /**
- * Idiomas: el que estudiás va resaltado y tocando otro disponible cambiás de idioma (el progreso de
- * cada uno se conserva). Los que no se pueden elegir se ven «Próximamente»; los beta, sólo para
- * los testers de contenido.
+ * Idiomas: el que estudiás va resaltado y tocando otro disponible cambiás al instante (el progreso
+ * de cada uno se conserva). Los que no se pueden elegir se ven «Próximamente»; los beta, sólo para
+ * los testers de contenido. Los caminos de los idiomas elegibles se precargan: al cambiar no hay
+ * pantalla de carga.
  */
-export function LanguagesRow({ current }: { current: string }) {
+export function LanguagesRow({
+  current,
+  onChanged,
+}: {
+  current: string;
+  /** Después de tocar otro idioma (p. ej. para cerrar el selector de Aprender). */
+  onChanged?: () => void;
+}) {
   const ratings = useMyRatings();
   const tester = useIsContentTester().data ?? false;
   const switchLanguage = useSetTargetLanguage();
+  usePrefetchLanguagePaths(current);
 
   const choose = (l: LanguageConfig) => {
-    if (l.code === current || switchLanguage.isPending) return;
-    Alert.alert(
-      `¿Estudiar ${l.name.toLowerCase()}?`,
-      `${l.status === 'beta' ? 'Es un curso en preparación: el contenido todavía no está revisado por hablantes nativos. ' : ''}Tu progreso en cada idioma se guarda: podés volver cuando quieras.`,
-      [
-        { text: 'Cancelar', style: 'cancel' },
-        {
-          text: 'Cambiar',
-          onPress: () =>
-            switchLanguage.mutate(l.code, {
-              onError: () =>
-                Alert.alert('No pudimos cambiar el idioma', 'Probá de nuevo en un rato.'),
-            }),
-        },
-      ],
-    );
+    if (l.code === current) return;
+    switchLanguage.mutate(l.code, {
+      onError: () => Alert.alert('No pudimos cambiar el idioma', 'Probá de nuevo en un rato.'),
+    });
+    onChanged?.();
   };
 
   return (

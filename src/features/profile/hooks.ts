@@ -18,6 +18,7 @@ import {
   setTargetLanguage,
   updateProfile,
   updateSettings,
+  type MyProfile,
   type OnboardingInput,
   type ProfilePatch,
   type ReportReason,
@@ -58,12 +59,33 @@ export function useIsContentTester() {
   });
 }
 
-/** Cambia de idioma y recarga todo lo que depende de él (camino, repaso, ranked). */
+/**
+ * Cambia de idioma al instante: el perfil en caché pasa al idioma nuevo antes de que responda el
+ * servidor (si falla, vuelve al anterior). Después recarga todo lo que depende de él.
+ */
 export function useSetTargetLanguage() {
   const qc = useQueryClient();
+  const { session } = useAuth();
+  const key = profileKeys.me(session?.user.id ?? 'anonymous');
   return useMutation({
     mutationFn: setTargetLanguage,
-    onSuccess: () =>
+    onMutate: async (language: string) => {
+      await qc.cancelQueries({ queryKey: key });
+      const previous = qc.getQueryData<MyProfile>(key);
+      if (previous) {
+        qc.setQueryData<MyProfile>(key, {
+          ...previous,
+          profile: { ...previous.profile, target_language: language },
+          // El rating es por idioma: llega con la recarga.
+          rating: previous.rating?.language_code === language ? previous.rating : null,
+        });
+      }
+      return { previous };
+    },
+    onError: (_error, _language, context) => {
+      if (context?.previous) qc.setQueryData(key, context.previous);
+    },
+    onSettled: () =>
       Promise.all([
         qc.invalidateQueries({ queryKey: ['profile'] }),
         qc.invalidateQueries({ queryKey: ['learning'] }),
