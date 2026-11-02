@@ -1,21 +1,20 @@
-import { Asset } from 'expo-asset';
 import { useState } from 'react';
 import { Image, StyleSheet, View, type ImageSourcePropType } from 'react-native';
 
 import { AVATARS, DEFAULT_AVATAR, type AvatarId } from '@shared/profile';
 
+import { avatarRed, avatarViolet, avatarYellow } from '../imageData.generated';
 import { colors } from '../tokens';
 
+/**
+ * Los zorros van incrustados en el bundle (scripts/build-image-data.ts): no se descargan aparte,
+ * así que aparecen al instante también en desarrollo.
+ */
 const IMAGES: Record<AvatarId, ImageSourcePropType> = {
-  bolt: require('../../../assets/avatars/fox-violet.jpg'),
-  crown: require('../../../assets/avatars/fox-yellow.jpg'),
-  flame: require('../../../assets/avatars/fox-red.jpg'),
+  bolt: avatarViolet,
+  crown: avatarYellow,
+  flame: avatarRed,
 };
-
-/** Deja los zorros en el disco del teléfono al abrir la app, así ningún avatar espera a cargarse. */
-export function preloadAvatars() {
-  void Asset.loadAsync(Object.values(IMAGES) as number[]).catch(() => undefined);
-}
 
 /**
  * Avatar circular: la foto propia si hay (con el zorro elegido como respaldo si no carga) o uno de

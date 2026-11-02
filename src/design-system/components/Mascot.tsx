@@ -1,15 +1,16 @@
-import { Asset } from 'expo-asset';
-import { Image, Platform, StyleSheet, View, type ImageSourcePropType } from 'react-native';
+import { Image, StyleSheet, View, type ImageSourcePropType } from 'react-native';
+
+import { mascotPointDown, mascotPointUp, mascotThinking, mascotWave } from '../imageData.generated';
 
 /**
- * Poses del zorro de Polygo (assets/mascot: WebP de 480 px con fondo transparente, ~55 KB cada una;
- * los originales de 1165 × 1350 pesaban casi 2 MB y tardaban en aparecer).
+ * Poses del zorro de Polygo: WebP de 480 px con fondo transparente (~40 KB), incrustados en el
+ * bundle (scripts/build-image-data.ts) para que aparezcan al instante, sin descarga aparte.
  */
 const POSES = {
-  wave: require('../../../assets/mascot/wave.webp'),
-  pointDown: require('../../../assets/mascot/point-down.webp'),
-  pointUp: require('../../../assets/mascot/point-up.webp'),
-  thinking: require('../../../assets/mascot/thinking.webp'),
+  wave: mascotWave,
+  pointDown: mascotPointDown,
+  pointUp: mascotPointUp,
+  thinking: mascotThinking,
 } satisfies Record<string, ImageSourcePropType>;
 
 export type MascotPose = keyof typeof POSES;
@@ -17,21 +18,6 @@ const POSE_NAMES = Object.keys(POSES) as MascotPose[];
 
 /** Ancho / alto de las imágenes. */
 const ASPECT = 480 / 556;
-
-/**
- * Deja las poses descargadas y en la caché de imágenes apenas abre la app, así el registro las
- * muestra al instante (en desarrollo vienen del servidor de Metro por la red).
- */
-export function preloadMascot() {
-  const modules = Object.values(POSES) as number[];
-  void Asset.loadAsync(modules).catch(() => undefined);
-  // En la web no existe resolveAssetSource (el navegador ya cachea las imágenes).
-  if (Platform.OS === 'web') return;
-  for (const mod of modules) {
-    const uri = Image.resolveAssetSource(mod)?.uri;
-    if (uri && /^(https?|file):/.test(uri)) void Image.prefetch(uri).catch(() => undefined);
-  }
-}
 
 /** La mascota en una pose. `height` en puntos; el ancho sale de la proporción de la imagen. */
 export function Mascot({ pose, height = 200 }: { pose: MascotPose; height?: number }) {

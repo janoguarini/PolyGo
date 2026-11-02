@@ -18,11 +18,10 @@ import Animated, {
 import { getRank, type RankInfo } from '@shared/ranking';
 
 import { Card, RankEmblemForRating, Text, colors, gradients, spacing } from '@/design-system';
+import { foxDefeat, foxVictory } from '@/design-system/imageData.generated';
 
-const FOX = {
-  win: require('../../../../assets/images/fox-victory.jpg') as number,
-  loss: require('../../../../assets/images/fox-defeat.jpg') as number,
-};
+// Incrustadas en el bundle (scripts/build-image-data.ts): aparecen al instante.
+const FOX = { win: foxVictory, loss: foxDefeat };
 const FOX_LABEL = {
   win: 'El zorro de Polygo festejando',
   loss: 'El zorro de Polygo, triste',

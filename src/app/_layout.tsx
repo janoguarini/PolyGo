@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { Image, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { ErrorState, LoadingState, colors, preloadAvatars, preloadMascot } from '@/design-system';
+import { ErrorState, LoadingState, colors } from '@/design-system';
 import { AuthProvider, useAuth } from '@/features/auth/AuthProvider';
 import { ConfigMissing } from '@/features/auth/ConfigMissing';
 import { PolysToast } from '@/features/polys/PolysToast';
@@ -21,8 +21,6 @@ export default function RootLayout() {
   useEffect(() => {
     void configureAudio();
     preloadSounds();
-    preloadAvatars();
-    preloadMascot();
     configureNotifications();
   }, []);
   return (
