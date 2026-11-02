@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import Animated, { FadeInDown, FadeOutDown } from 'react-native-reanimated';
 
+import { PLANNED_UNITS_PER_LEVEL, languageConfig } from '@shared/languages';
 import { nextStartLevel } from '@shared/profile';
 
 import {
@@ -107,6 +108,9 @@ export default function HomeScreen() {
   const units = allUnits.filter((u) => u.level === level);
   const following = nextStartLevel(level);
   const nextLevel = following ? { id: following.id, ready: levels.includes(following.id) } : null;
+  const language = languageConfig(profile.target_language);
+  // Idiomas en preparación: el nivel no se muestra como completo si le faltan unidades.
+  const pendingUnits = Math.max(0, PLANNED_UNITS_PER_LEVEL - units.length);
   const total = units.reduce((n, u) => n + u.lessons.length, 0);
   const completed = units.reduce((n, u) => n + u.completedCount, 0);
   const streak = summary.data?.streak_days ?? 0;
@@ -120,7 +124,8 @@ export default function HomeScreen() {
       <View style={styles.headerRow}>
         <View style={styles.flex}>
           <Text variant="overline" color="primarySoft">
-            INGLÉS
+            {language.name.toUpperCase()}
+            {language.status === 'beta' ? ' · BETA' : ''}
           </Text>
           <Text variant="heading">Tu camino</Text>
         </View>
@@ -249,6 +254,7 @@ export default function HomeScreen() {
           key={level}
           units={units}
           nextLevel={nextLevel}
+          pendingUnits={pendingUnits}
           selected={openLesson}
           onSelectedChange={setOpenLesson}
           onCurrentLayout={(y) => {

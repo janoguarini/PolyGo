@@ -1,13 +1,20 @@
 import type { Exercise } from '@shared/exercises';
+import { languageConfig } from '@shared/languages';
 
 import type { WordRow } from './api';
 import { shuffle } from './random';
 
 /**
  * Genera ejercicios de repaso determinísticos a partir de palabras (sin IA generativa):
- * rota entre elegir la traducción, escuchar y escribir en inglés.
+ * rota entre elegir la traducción, escuchar y escribir en el idioma (en chino, en pinyin).
  */
-export function buildReviewExercises(due: WordRow[], pool: WordRow[], seed: string): Exercise[] {
+export function buildReviewExercises(
+  due: WordRow[],
+  pool: WordRow[],
+  seed: string,
+  language = 'en',
+): Exercise[] {
+  const config = languageConfig(language);
   return due.map((word, index) => {
     const base = {
       id: `review-${word.id}`,
@@ -61,13 +68,18 @@ export function buildReviewExercises(due: WordRow[], pool: WordRow[], seed: stri
         };
       }
     }
+    // En chino se escribe el pinyin; también vale sin espacios o en caracteres.
+    const pinyin = config.script === 'han' ? word.romanization : null;
     return {
       ...base,
       type: 'translate_write',
       skill: 'translation',
-      prompt: 'Escribí en inglés',
+      prompt: pinyin ? 'Escribí en pinyin' : `Escribí ${config.inName}`,
       payload: { type: 'translate_write', source: word.translation_es },
-      answer: word.text,
+      answer: pinyin ?? word.text,
+      acceptedAnswers: pinyin
+        ? [...new Set([pinyin.replace(/\s+/g, ''), word.text])].filter((v) => v !== pinyin)
+        : [],
     };
   });
 }

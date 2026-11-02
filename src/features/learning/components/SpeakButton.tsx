@@ -3,7 +3,7 @@ import { Pressable, StyleSheet } from 'react-native';
 
 import { MIN_TOUCH, colors, radii } from '@/design-system';
 
-import { speakEnglish } from '../speech';
+import { speak } from '../speech';
 
 /** Parlante de pronunciación; con `slow`, la tortuga que repite despacio. */
 export function SpeakButton({
@@ -23,7 +23,7 @@ export function SpeakButton({
       accessibilityLabel={
         slow ? 'Escuchar despacio (voz sintetizada)' : 'Escuchar pronunciación (voz sintetizada)'
       }
-      onPress={() => speakEnglish(text, { slow })}
+      onPress={() => speak(text, { slow })}
       hitSlop={8}
       style={({ pressed }) => [
         styles.button,

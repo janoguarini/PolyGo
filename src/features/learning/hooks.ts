@@ -15,6 +15,7 @@ import {
   submitLearningSession,
 } from './api';
 import { withStatus } from './curriculum';
+import { languageConfig } from '@shared/languages';
 
 export const learningKeys = {
   all: ['learning'] as const,
@@ -22,10 +23,16 @@ export const learningKeys = {
   progress: (userId: string) => ['learning', 'progress', userId] as const,
   lesson: (lessonId: string) => ['learning', 'lesson', lessonId] as const,
   summary: (userId: string) => ['learning', 'summary', userId] as const,
-  words: (userId: string) => ['learning', 'words', userId] as const,
+  words: (userId: string, language: string) => ['learning', 'words', userId, language] as const,
   pool: (language: string) => ['learning', 'pool', language] as const,
-  wordOfDay: (date: string) => ['learning', 'word-of-day', date] as const,
+  wordOfDay: (date: string, language: string) =>
+    ['learning', 'word-of-day', date, language] as const,
 };
+
+/** Idioma que estudiás (configuración de shared/languages.ts). */
+export function useStudyLanguage() {
+  return languageConfig(useIdentity().language);
+}
 
 function useIdentity() {
   const { session } = useAuth();
@@ -77,19 +84,21 @@ export function useLearningSummary() {
 
 export function useWordOfTheDay() {
   const date = localDateString();
+  const { language } = useIdentity();
   return useQuery({
-    queryKey: learningKeys.wordOfDay(date),
-    queryFn: fetchWordOfTheDay,
+    queryKey: learningKeys.wordOfDay(date, language ?? 'none'),
+    queryFn: () => fetchWordOfTheDay(language!),
+    enabled: Boolean(language),
     staleTime: 60 * 60_000,
   });
 }
 
 export function useMyWords() {
-  const { userId } = useIdentity();
+  const { userId, language } = useIdentity();
   return useQuery({
-    queryKey: learningKeys.words(userId ?? 'anonymous'),
-    queryFn: () => fetchMyWords(userId!),
-    enabled: Boolean(userId),
+    queryKey: learningKeys.words(userId ?? 'anonymous', language ?? 'none'),
+    queryFn: () => fetchMyWords(userId!, language!),
+    enabled: Boolean(userId && language),
   });
 }
 

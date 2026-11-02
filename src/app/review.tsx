@@ -9,10 +9,16 @@ import { Button, EmptyState, ErrorState, LoadingState, Screen, colors } from '@/
 import type { AttemptInput, WordRow } from '@/features/learning/api';
 import { SessionPlayer } from '@/features/learning/components/SessionPlayer';
 import { SessionResults } from '@/features/learning/components/SessionResults';
-import { useMyWords, useSubmitSession, useWordPool } from '@/features/learning/hooks';
+import {
+  useMyWords,
+  useStudyLanguage,
+  useSubmitSession,
+  useWordPool,
+} from '@/features/learning/hooks';
 import { sessionStats, type PlayerState } from '@/features/learning/player';
 import { shuffle, uuid } from '@/features/learning/random';
 import { buildReviewExercises } from '@/features/learning/review';
+import { SessionLanguageProvider } from '@/features/learning/SessionLanguageProvider';
 import { useCelebrationGate } from '@/features/learning/useCelebrationGate';
 import { useEnergy } from '@/features/plus/api';
 import { pickSmartReview } from '@/features/plus/smartReview';
@@ -46,7 +52,15 @@ interface ReviewSession {
   words: Record<string, WordRow>;
 }
 
-export default function ReviewScreen() {
+export default function ReviewScreenWithLanguage() {
+  return (
+    <SessionLanguageProvider>
+      <ReviewScreen />
+    </SessionLanguageProvider>
+  );
+}
+
+function ReviewScreen() {
   const params = useLocalSearchParams<{ mode?: string; unit?: string }>();
   const mode: ReviewMode =
     params.mode === 'practice' ||
@@ -63,6 +77,7 @@ export default function ReviewScreen() {
   const plusLocked = plusMode && plus !== true;
   const myWords = useMyWords();
   const pool = useWordPool();
+  const language = useStudyLanguage();
   const submit = useSubmitSession();
   const celebration = useCelebrationGate(submit, saves);
   const [sessionId] = useState(uuid);
@@ -94,7 +109,7 @@ export default function ReviewScreen() {
       .slice(0, plusMode ? undefined : REVIEW_SIZE)
       .map((w) => w.word);
     setReview({
-      exercises: buildReviewExercises(due, pool.data, sessionId),
+      exercises: buildReviewExercises(due, pool.data, sessionId, language.code),
       words: Object.fromEntries(due.map((w) => [w.id, w])),
     });
   }

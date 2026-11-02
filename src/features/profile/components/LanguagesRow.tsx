@@ -1,32 +1,75 @@
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { Alert, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
-import { TARGET_LANGUAGES } from '@shared/profile';
+import { LANGUAGES, isSelectable, type LanguageConfig } from '@shared/languages';
 import { RATING_CONFIG } from '@shared/ranking';
 
 import { Text, colors, radii, spacing } from '@/design-system';
 
-import { useMyRatings } from '../hooks';
+import { useIsContentTester, useMyRatings, useSetTargetLanguage } from '../hooks';
 
-/** Idiomas con su ELO. El que estudiás va resaltado; los que todavía no existen, apagados. */
+/**
+ * Idiomas: el que estudiás va resaltado y tocando otro disponible cambiás de idioma (el progreso de
+ * cada uno se conserva). Los que no se pueden elegir se ven «Próximamente»; los beta, sólo para
+ * los testers de contenido.
+ */
 export function LanguagesRow({ current }: { current: string }) {
   const ratings = useMyRatings();
+  const tester = useIsContentTester().data ?? false;
+  const switchLanguage = useSetTargetLanguage();
+
+  const choose = (l: LanguageConfig) => {
+    if (l.code === current || switchLanguage.isPending) return;
+    Alert.alert(
+      `¿Estudiar ${l.name.toLowerCase()}?`,
+      `${l.status === 'beta' ? 'Es un curso en preparación: el contenido todavía no está revisado por hablantes nativos. ' : ''}Tu progreso en cada idioma se guarda: podés volver cuando quieras.`,
+      [
+        { text: 'Cancelar', style: 'cancel' },
+        {
+          text: 'Cambiar',
+          onPress: () =>
+            switchLanguage.mutate(l.code, {
+              onError: () =>
+                Alert.alert('No pudimos cambiar el idioma', 'Probá de nuevo en un rato.'),
+            }),
+        },
+      ],
+    );
+  };
+
   return (
     <ScrollView
       horizontal
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={styles.row}
     >
-      {TARGET_LANGUAGES.map((l) => {
+      {LANGUAGES.map((l) => {
         const selected = l.code === current;
-        const rating = ratings.data?.[l.code] ?? (l.available ? RATING_CONFIG.initialRating : null);
+        const selectable = isSelectable(l, tester);
+        const rating = ratings.data?.[l.code] ?? RATING_CONFIG.initialRating;
+        const detail = !selectable
+          ? 'Próximamente'
+          : l.status === 'beta'
+            ? 'Beta'
+            : l.ranked
+              ? `${rating} ELO`
+              : 'Sin ranked aún';
         return (
-          <View
+          <Pressable
             key={l.code}
-            style={[styles.card, selected && styles.selected, !l.available && styles.soon]}
-            accessible
-            accessibilityLabel={`${l.name}${selected ? ', idioma actual' : ''}: ${
-              l.available ? `${rating} ELO` : 'próximamente'
-            }`}
+            onPress={() => choose(l)}
+            disabled={!selectable || selected}
+            style={({ pressed }) => [
+              styles.card,
+              selected && styles.selected,
+              !selectable && styles.soon,
+              pressed && styles.pressed,
+            ]}
+            accessibilityRole="button"
+            accessibilityState={{ selected, disabled: !selectable }}
+            accessibilityLabel={`${l.name}${selected ? ', idioma actual' : ''}: ${detail}`}
+            accessibilityHint={
+              selectable && !selected ? 'Cambia el idioma que estudiás' : undefined
+            }
           >
             <View style={styles.flag}>
               <Text style={styles.flagText}>{l.flag}</Text>
@@ -35,9 +78,14 @@ export function LanguagesRow({ current }: { current: string }) {
               <Text variant="bodyStrong" color={selected ? 'textStrong' : 'text'}>
                 {l.name}
               </Text>
-              <Text variant="caption">{l.available ? `${rating} ELO` : 'Próximamente'}</Text>
+              <Text
+                variant="caption"
+                color={l.status === 'beta' && selectable ? 'streak' : undefined}
+              >
+                {detail}
+              </Text>
             </View>
-          </View>
+          </Pressable>
         );
       })}
     </ScrollView>
@@ -64,6 +112,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surfaceHighlight,
   },
   soon: { opacity: 0.55 },
+  pressed: { opacity: 0.85 },
   flag: {
     width: 36,
     height: 36,

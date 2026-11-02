@@ -8,23 +8,29 @@ import { pathExerciseId } from '../content/path';
  */
 export function contentDocument(path: readonly PathUnit[] = CURRICULUM_PATH) {
   return {
-    units: path.map(({ level, unit: u }) => ({
-      id: unitId(level, u),
+    units: path.map(({ language, level, unit: u }) => ({
+      id: unitId(language, level, u),
+      language_code: language,
       level,
       position: u.position,
       title_es: u.title,
       title_en: u.titleEn,
       description_es: u.description,
       emoji: u.emoji,
+      objective_es: u.objective ?? null,
+      grammar: u.grammar ?? null,
+      review_status: u.review?.status ?? 'draft',
     })),
-    words: path.flatMap(({ level, unit: u }) =>
+    words: path.flatMap(({ language, level, unit: u }) =>
       u.words.map((w) => ({
         id: w.id,
-        unit_id: unitId(level, u),
+        language_code: language,
+        unit_id: unitId(language, level, u),
         text: w.text,
         translation_es: w.translation,
         accepted_translations: w.acceptedTranslations ?? [],
-        ipa: w.ipa,
+        ipa: w.ipa ?? null,
+        romanization: w.romanization ?? null,
         emoji: w.emoji ?? null,
         example_en: w.exampleEn,
         example_es: w.exampleEs,
@@ -33,13 +39,15 @@ export function contentDocument(path: readonly PathUnit[] = CURRICULUM_PATH) {
       })),
     ),
     // Camino completo: lecciones escritas + consolidación generada (content/path.ts).
-    lessons: path.flatMap(({ level, unit, lessons }) =>
+    lessons: path.flatMap(({ language, level, unit, lessons }) =>
       lessons.map((l) => ({
         id: l.id,
-        unit_id: unitId(level, unit),
+        unit_id: unitId(language, level, unit),
         position: l.position,
         title_es: l.title,
         objective_es: l.objective,
+        intro: l.intro ?? null,
+        takeaways: l.takeaways ?? [],
       })),
     ),
     exercises: path.flatMap(({ lessons }) =>

@@ -23,6 +23,10 @@ const CONTENT_LINKS = CURRICULUM_PATH.flatMap((p) => p.lessons.flatMap((l) => l.
   0,
 );
 
+// Contenido real de todos los idiomas: ids a1-…/a2-… (inglés) o it-a1-…, pt-…, zh-… (sin el
+// fixture de este archivo, que usa ids t-…).
+const REAL = `~ '^([a-z]{2}-)?a[12]-'`;
+
 let db;
 let alice;
 let bob;
@@ -297,13 +301,13 @@ test('zona horaria inválida cae a UTC', async () => {
   assert.deepEqual(rows[0], { tz: 'UTC', ok: 'Europe/Madrid' });
 });
 
-test('contenido real (A1 y A2): se carga completo y la primera lección se puede completar', async () => {
+test('contenido real (todos los idiomas): se carga completo y la primera lección se puede completar', async () => {
   const { rows } = await db.query(`
-    select (select count(*)::int from public.curriculum_units where id ~ '^a[12]-' and is_published) as units,
-           (select count(*)::int from public.lessons where id ~ '^a[12]-' and is_published) as lessons,
-           (select count(*)::int from public.exercises where id ~ '^a[12]-' and is_published) as exercises,
-           (select count(*)::int from public.words where id like 'en-%' and is_published) as words,
-           (select count(*)::int from public.exercises e where id ~ '^a[12]-'
+    select (select count(*)::int from public.curriculum_units where id ${REAL} and is_published) as units,
+           (select count(*)::int from public.lessons where id ${REAL} and is_published) as lessons,
+           (select count(*)::int from public.exercises where id ${REAL} and is_published) as exercises,
+           (select count(*)::int from public.words where unit_id ${REAL} and is_published) as words,
+           (select count(*)::int from public.exercises e where id ${REAL}
               and not exists (select 1 from public.exercise_words w where w.exercise_id = e.id)) as orphan_exercises`);
   assert.deepEqual(rows[0], { ...CONTENT_TOTALS, orphan_exercises: 0 });
 
@@ -346,19 +350,21 @@ async function dbContent() {
            e.explanation_es, e.difficulty, e.recommended_seconds,
            coalesce((select array_agg(w.word_id order by w.word_id) from public.exercise_words w
                      where w.exercise_id = e.id), '{}') as words
-    from public.exercises e where e.id ~ '^a[12]-' and e.is_published`);
+    from public.exercises e where e.id ${REAL} and e.is_published`);
   return {
     units: (
-      await q(`select id, level, position, title_es, title_en, description_es, emoji from public.curriculum_units
-                     where id ~ '^a[12]-' and is_published`)
+      await q(`select id, language_code, level, position, title_es, title_en, description_es, emoji,
+                       objective_es, grammar, review_status
+                from public.curriculum_units where id ${REAL} and is_published`)
     ).sort(byId),
     words: (
-      await q(`select id, unit_id, text, translation_es, accepted_translations, ipa, emoji, example_en,
-                            example_es, difficulty, tags from public.words where id like 'en-%' and is_published`)
+      await q(`select id, language_code, unit_id, text, translation_es, accepted_translations, ipa,
+                       romanization, emoji, example_en, example_es, difficulty, tags
+                from public.words where unit_id ${REAL} and is_published`)
     ).sort(byId),
     lessons: (
-      await q(`select id, unit_id, position, title_es, objective_es from public.lessons
-                       where id ~ '^a[12]-' and is_published`)
+      await q(`select id, unit_id, position, title_es, objective_es, intro, takeaways from public.lessons
+                where id ${REAL} and is_published`)
     ).sort(byId),
     exercises: exercises.sort(byId),
   };

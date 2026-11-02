@@ -1,4 +1,5 @@
-import { ex } from './builders';
+import { languageConfig } from '../shared/languages';
+import { exercisesFor } from './builders';
 import type { ExerciseDef, LessonDef, UnitDef, WordDef } from './types';
 
 /**
@@ -84,15 +85,29 @@ function mask(text: string): string {
     .join(' ');
 }
 
+/** Se pronuncian igual: imposibles de distinguir de oído (IPA en inglés, pinyin en chino). */
+const sameSound = (a: WordDef, b: WordDef) =>
+  (a.ipa !== undefined && a.ipa === b.ipa) ||
+  (a.romanization !== undefined && a.romanization === b.romanization);
+
+type Builders = ReturnType<typeof exercisesFor>;
+
 class Generator {
   private readonly byId: Map<string, WordDef>;
+  private readonly ex: Builders;
+  /** Chino: no hay ortografía letra por letra y lo que se escribe es el pinyin. */
+  private readonly han: boolean;
 
   constructor(
     private readonly unit: UnitDef,
     /** Todas las palabras del currículo: para detectar traducciones ambiguas. */
     private readonly allWords: readonly WordDef[],
+    language: string,
   ) {
     this.byId = new Map(allWords.map((w) => [w.id, w]));
+    const config = languageConfig(language);
+    this.ex = exercisesFor(config);
+    this.han = config.script === 'han';
   }
 
   word(id: string) {
@@ -107,7 +122,7 @@ class Generator {
     for (const d of shuffled(this.unit.words, seed)) {
       const value = pick(d);
       if (d.id === w.id || seen.has(plain(value)) || overlaps(meanings(d), meanings(w))) continue;
-      if (d.ipa === w.ipa) continue; // homófonos: imposibles de distinguir de oído
+      if (sameSound(d, w)) continue; // homófonos: imposibles de distinguir de oído
       seen.add(plain(value));
       out.push(value);
       if (out.length === 3) return out;
@@ -118,31 +133,37 @@ class Generator {
   translationChoice(w: WordDef, seed: string): ExerciseDef | null {
     if (isCognate(w)) return null;
     const options = this.distractors(w, (d) => d.translation, seed);
-    return options ? ex.translationChoice(w.text, w.translation, options, [w.id]) : null;
+    return options ? this.ex.translationChoice(w.text, w.translation, options, [w.id]) : null;
   }
 
   listenChoice(w: WordDef, seed: string): ExerciseDef | null {
     // Un artículo suelto («a») la voz sintetizada lo lee como letra: no sirve de oído.
     if (w.tags.includes('articles')) return null;
     const options = this.distractors(w, (d) => d.text, seed);
-    return options ? ex.listenChoice(w.text, options, [w.id]) : null;
+    return options ? this.ex.listenChoice(w.text, options, [w.id]) : null;
   }
 
   completeWord(w: WordDef): ExerciseDef | null {
     // En un cognado la pista (la traducción) ya es la respuesta.
-    if (w.text.replace(/\s/g, '').length < 4 || isCognate(w)) return null;
-    return ex.completeWord(mask(w.text), w.text, w.translation, [w.id]);
+    if (this.han || w.text.replace(/\s/g, '').length < 4 || isCognate(w)) return null;
+    return this.ex.completeWord(mask(w.text), w.text, w.translation, [w.id]);
   }
 
   /**
-   * Español → inglés sólo si ninguna otra palabra comparte significado (respuesta única).
-   * Acepta las otras formas válidas en inglés de la palabra (`acceptedTexts`).
+   * Español → idioma sólo si ninguna otra palabra comparte significado (respuesta única).
+   * Acepta las otras formas válidas de la palabra (`acceptedTexts`). En chino se escribe el pinyin.
    */
   translateWrite(w: WordDef): ExerciseDef | null {
     const m = meanings(w);
     const ambiguous = this.allWords.some((d) => d.id !== w.id && overlaps(meanings(d), m));
     if (ambiguous || isCognate(w)) return null;
-    return ex.translateWrite(
+    if (this.han) {
+      if (!w.romanization) return null;
+      return this.ex.translateWrite(writeSource(w), w.romanization, [w.id], {
+        acceptedAnswers: pinyinVariants(w.romanization, w.text),
+      });
+    }
+    return this.ex.translateWrite(
       writeSource(w),
       w.text,
       [w.id],
@@ -165,7 +186,7 @@ class Generator {
       if (chosen.length === 4) break;
     }
     if (chosen.length < 4) return null;
-    return ex.matchPairs(
+    return this.ex.matchPairs(
       chosen.map((w) => [w.text, w.translation]),
       chosen.map((w) => w.id),
     );
@@ -206,7 +227,13 @@ class Generator {
 
 /** Palabras practicadas en unas lecciones (sin repetir, en orden de aparición). */
 function wordsOf(lessons: readonly LessonDef[], gen: Generator): WordDef[] {
-  const ids = [...new Set(lessons.flatMap((l) => l.exercises.flatMap((e) => e.words)))];
+  const ids = [
+    ...new Set(
+      lessons.flatMap((l) =>
+        l.exercises.filter((e) => e.consolidate !== false).flatMap((e) => e.words),
+      ),
+    ),
+  ];
   return ids.flatMap((id) => {
     const w = gen.word(id);
     return w ? [w] : [];
@@ -222,7 +249,7 @@ function sentences(
 ): ExerciseDef[] {
   return lessons.flatMap((lesson, i) => {
     const pool = shuffled(
-      lesson.exercises.filter((e) => SENTENCE_TYPES.has(e.type)),
+      lesson.exercises.filter((e) => SENTENCE_TYPES.has(e.type) && e.consolidate !== false),
       `${seed}:${i}`,
     ).sort((a, b) => Number(used.has(a)) - Number(used.has(b)));
     const picked = pool.slice(0, perLesson);
@@ -235,8 +262,13 @@ function sentences(
  * `allWords`: las palabras que el alumno ya conoce al llegar a la unidad (su nivel y los anteriores),
  * para descartar traducciones ambiguas. `key`: id de la unidad (a1-u01), prefijo de sus lecciones.
  */
-export function unitPath(unit: UnitDef, allWords: readonly WordDef[], key: string): PathLesson[] {
-  const gen = new Generator(unit, allWords);
+export function unitPath(
+  unit: UnitDef,
+  allWords: readonly WordDef[],
+  key: string,
+  language = 'en',
+): PathLesson[] {
+  const gen = new Generator(unit, allWords, language);
   const used = new Set<ExerciseDef>();
   const path: Omit<PathLesson, 'position'>[] = [];
   let reviews = 0;
@@ -276,7 +308,9 @@ export function unitPath(unit: UnitDef, allWords: readonly WordDef[], key: strin
   {
     const seed = `${key}-listen`;
     const authored = shuffled(
-      unit.lessons.flatMap((l) => l.exercises.filter((e) => e.type === 'listen_choice')),
+      unit.lessons.flatMap((l) =>
+        l.exercises.filter((e) => e.type === 'listen_choice' && e.consolidate !== false),
+      ),
       seed,
     ).slice(0, 3);
     const words = shuffled(unitWords, seed);
@@ -350,6 +384,15 @@ export function unitPath(unit: UnitDef, allWords: readonly WordDef[], key: strin
   }
 
   return path.map((lesson, i) => ({ ...lesson, position: i + 1 }));
+}
+
+/**
+ * Otras formas aceptadas de una respuesta en pinyin: sin espacios entre sílabas y en caracteres
+ * (para quien tenga teclado chino). Los números de tono (ni3 hao3) los resuelve shared/answers.ts.
+ */
+export function pinyinVariants(pinyin: string, hanzi: string): string[] {
+  const joined = pinyin.replace(/\s+/g, '');
+  return [...new Set([joined, hanzi])].filter((v) => v !== pinyin);
 }
 
 export const pathExerciseId = (lessonId: string, index: number) =>

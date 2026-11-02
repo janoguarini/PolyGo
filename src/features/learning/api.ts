@@ -8,8 +8,22 @@ import { parseExercise } from './schema';
 
 export type WordRow = Tables<'words'>;
 
+/** Introducción de la lección (lessons.intro): explicación breve y ejemplos naturales. */
+export interface LessonIntro {
+  explanation: string;
+  examples: { target: string; base: string; note?: string }[];
+}
+
 export interface LessonContent {
-  lesson: { id: string; title: string; objective: string; unitId: string };
+  lesson: {
+    id: string;
+    title: string;
+    objective: string;
+    unitId: string;
+    intro: LessonIntro | null;
+    /** Cierre: qué aprendiste (se muestra en los resultados). */
+    takeaways: string[];
+  };
   exercises: Exercise[];
   words: Record<string, WordRow>;
 }
@@ -115,7 +129,7 @@ export async function fetchLessonProgress(userId: string): Promise<LessonProgres
 export async function fetchLessonContent(lessonId: string): Promise<LessonContent> {
   const db = requireSupabase();
   const [lesson, exercises] = await Promise.all([
-    db.from('lessons').select('id, title_es, objective_es, unit_id').eq('id', lessonId).single(),
+    db.from('lessons').select('*').eq('id', lessonId).single(),
     db
       .from('exercises')
       .select('*, exercise_words(word_id, words(*))')
@@ -141,9 +155,28 @@ export async function fetchLessonContent(lessonId: string): Promise<LessonConten
       title: lesson.data.title_es,
       objective: lesson.data.objective_es,
       unitId: lesson.data.unit_id,
+      intro: parseIntro(lesson.data.intro),
+      takeaways: lesson.data.takeaways ?? [],
     },
     exercises: parsed,
     words,
+  };
+}
+
+/** lessons.intro viene como JSON: se valida la forma en vez de confiar en un cast. */
+export function parseIntro(raw: unknown): LessonIntro | null {
+  if (!raw || typeof raw !== 'object') return null;
+  const { explanation, examples } = raw as Record<string, unknown>;
+  if (typeof explanation !== 'string' || !Array.isArray(examples)) return null;
+  return {
+    explanation,
+    examples: examples.flatMap((e) => {
+      if (!e || typeof e !== 'object') return [];
+      const { target, base, note } = e as Record<string, unknown>;
+      return typeof target === 'string' && typeof base === 'string'
+        ? [{ target, base, ...(typeof note === 'string' ? { note } : {}) }]
+        : [];
+    }),
   };
 }
 
@@ -183,19 +216,24 @@ export async function fetchLearningSummary(): Promise<LearningSummary> {
   return data as unknown as LearningSummary;
 }
 
-export async function fetchWordOfTheDay(): Promise<WordRow | null> {
+export async function fetchWordOfTheDay(languageCode: string): Promise<WordRow | null> {
   const { data, error } = await requireSupabase()
-    .rpc('word_of_the_day', { p_date: localDateString() })
+    .rpc('word_of_the_day', { p_date: localDateString(), p_language: languageCode })
     .maybeSingle();
   if (error) throw error;
   return data;
 }
 
-export async function fetchMyWords(userId: string): Promise<WordProgressEntry[]> {
+/** Tus palabras del idioma que estudiás (el progreso de los otros idiomas queda guardado aparte). */
+export async function fetchMyWords(
+  userId: string,
+  languageCode: string,
+): Promise<WordProgressEntry[]> {
   const { data, error } = await requireSupabase()
     .from('user_word_progress')
-    .select('stage, seen_count, incorrect_count, next_review_at, words(*)')
+    .select('stage, seen_count, incorrect_count, next_review_at, words!inner(*)')
     .eq('user_id', userId)
+    .eq('words.language_code', languageCode)
     .order('next_review_at', { ascending: true });
   if (error) throw error;
   return data.flatMap((row) =>

@@ -7,7 +7,7 @@ import type { QuestionView } from '@shared/protocol';
 import { streakBonus, streakLevel } from '@shared/wordRush';
 
 import { Button, Card, MIN_TOUCH, Text, TextField, colors, radii, spacing } from '@/design-system';
-import { speakEnglish, stopSpeaking } from '@/features/learning/speech';
+import { speak, stopSpeaking } from '@/features/learning/speech';
 
 import type { AnswerFeedback } from '../state';
 
@@ -46,7 +46,7 @@ export function QuestionCard({ question, feedback, streak, disabled, onAnswer }:
 
   // Las de audio se escuchan solas al aparecer (se pueden repetir con el parlante).
   useEffect(() => {
-    if (kind === 'audio') speakEnglish(question.prompt);
+    if (kind === 'audio') speak(question.prompt);
   }, [kind, question.index, question.prompt]);
   useEffect(() => () => stopSpeaking(), []);
 
@@ -77,7 +77,7 @@ export function QuestionCard({ question, feedback, streak, disabled, onAnswer }:
               <Pressable
                 accessibilityRole="button"
                 accessibilityLabel="Escuchar otra vez"
-                onPress={() => speakEnglish(question.prompt)}
+                onPress={() => speak(question.prompt)}
                 style={({ pressed }) => [styles.speaker, pressed && styles.pressed]}
               >
                 <Volume2 color={colors.onPrimary} size={40} />
@@ -85,7 +85,7 @@ export function QuestionCard({ question, feedback, streak, disabled, onAnswer }:
               <Pressable
                 accessibilityRole="button"
                 accessibilityLabel="Escuchar despacio"
-                onPress={() => speakEnglish(question.prompt, { slow: true })}
+                onPress={() => speak(question.prompt, { slow: true })}
                 hitSlop={8}
                 style={({ pressed }) => [styles.slow, pressed && styles.pressed]}
               >

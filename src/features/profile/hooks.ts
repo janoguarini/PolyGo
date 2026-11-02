@@ -6,6 +6,7 @@ import {
   MATCH_PAGE_SIZE,
   completeOnboarding,
   fetchActiveSeason,
+  fetchIsContentTester,
   fetchCompetitiveStats,
   fetchMatchHistory,
   fetchMyAchievements,
@@ -14,6 +15,7 @@ import {
   fetchPublicProfile,
   fetchRatingHistory,
   reportAvatar,
+  setTargetLanguage,
   updateProfile,
   updateSettings,
   type OnboardingInput,
@@ -32,6 +34,7 @@ export const profileKeys = {
   competitive: (userId: string, days: number | null) =>
     ['profile', 'competitive', userId, days] as const,
   ratings: (userId: string) => ['profile', 'ratings', userId] as const,
+  contentTester: (userId: string) => ['profile', 'content-tester', userId] as const,
 };
 
 export function useMyProfile() {
@@ -41,6 +44,31 @@ export function useMyProfile() {
     queryKey: profileKeys.me(userId ?? 'anonymous'),
     queryFn: () => fetchMyProfile(userId!),
     enabled: Boolean(userId),
+  });
+}
+
+export function useIsContentTester() {
+  const { session } = useAuth();
+  const userId = session?.user.id;
+  return useQuery({
+    queryKey: profileKeys.contentTester(userId ?? 'anonymous'),
+    queryFn: fetchIsContentTester,
+    enabled: Boolean(userId),
+    staleTime: 30 * 60_000,
+  });
+}
+
+/** Cambia de idioma y recarga todo lo que depende de él (camino, repaso, ranked). */
+export function useSetTargetLanguage() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: setTargetLanguage,
+    onSuccess: () =>
+      Promise.all([
+        qc.invalidateQueries({ queryKey: ['profile'] }),
+        qc.invalidateQueries({ queryKey: ['learning'] }),
+        qc.invalidateQueries({ queryKey: ['leaderboard'] }),
+      ]),
   });
 }
 

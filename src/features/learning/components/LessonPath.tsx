@@ -100,6 +100,11 @@ interface Props {
   onSelectedChange: (key: string | null) => void;
   /** Nivel que sigue a este camino; `ready` = ya tiene unidades cargadas. */
   nextLevel?: { id: string; ready: boolean } | null;
+  /**
+   * Unidades previstas de este nivel que todavía no existen (idiomas en preparación): el camino
+   * termina en «Más unidades en camino» en vez de dar el nivel por completo.
+   */
+  pendingUnits?: number;
 }
 
 export function LessonPath({
@@ -108,6 +113,7 @@ export function LessonPath({
   selected,
   onSelectedChange,
   nextLevel,
+  pendingUnits = 0,
 }: Props) {
   // Offsets medidos con onLayout: raíz → sección → camino → nodo.
   const rootY = useRef<number | null>(null);
@@ -133,15 +139,19 @@ export function LessonPath({
 
   const thisLevel = units[0]?.level ?? '';
   const nextId = nextLevel?.id ?? '';
-  const lockedMessage = nextLevel?.ready
-    ? `Terminá el nivel ${thisLevel} para pasar a ${nextId}.`
-    : `Estamos preparando las unidades del nivel ${nextId}.`;
+  const pending = pendingUnits > 0;
+  const firstPending = units.length + 1;
+  const lockedMessage = pending
+    ? `Estamos preparando las unidades ${firstPending}–${units.length + pendingUnits} de ${thisLevel}.`
+    : nextLevel?.ready
+      ? `Terminá el nivel ${thisLevel} para pasar a ${nextId}.`
+      : `Estamos preparando las unidades del nivel ${nextId}.`;
   const upcoming: PathNode[] = Array.from({ length: UPCOMING_NODES }, (_, i) => ({
     key: `upcoming-${i}`,
     status: 'locked',
     kind: i === UPCOMING_NODES - 1 ? 'final' : 'lesson',
     label: 'Próximamente',
-    overline: `NIVEL ${nextId}`,
+    overline: pending ? `NIVEL ${thisLevel}` : `NIVEL ${nextId}`,
     title: 'Próximamente',
     bestAccuracy: null,
     stars: 0,
@@ -199,16 +209,22 @@ export function LessonPath({
         </View>
       ))}
 
-      {nextLevel ? (
+      {pending || nextLevel ? (
         <View style={[styles.section, owns(upcoming) && styles.raised]}>
           <UnitBanner
             accent={LOCKED_ACCENT}
-            overline={`PRÓXIMO NIVEL · ${nextId}`}
-            title="🚀 Tu camino sigue"
+            overline={
+              pending
+                ? `NIVEL ${thisLevel} · ${units.length} DE ${units.length + pendingUnits} UNIDADES`
+                : `PRÓXIMO NIVEL · ${nextId}`
+            }
+            title={pending ? '🚧 Más unidades en camino' : '🚀 Tu camino sigue'}
             description={
-              nextLevel.ready
-                ? `Cuando termines ${thisLevel}, seguís directo con las unidades de ${nextId}.`
-                : 'Estamos preparando las próximas unidades. Mientras tanto, repasá y jugá ranked para no perder la racha.'
+              pending
+                ? `El nivel ${thisLevel} todavía no está completo: estamos preparando las unidades ${firstPending} a ${units.length + pendingUnits}. Mientras tanto, repasá para no perder la racha.`
+                : nextLevel?.ready
+                  ? `Cuando termines ${thisLevel}, seguís directo con las unidades de ${nextId}.`
+                  : 'Estamos preparando las próximas unidades. Mientras tanto, repasá y jugá ranked para no perder la racha.'
             }
           />
           <PathSection

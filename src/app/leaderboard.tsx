@@ -3,7 +3,7 @@ import { Globe2, Trophy } from 'lucide-react-native';
 import { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
-import { TARGET_LANGUAGES } from '@shared/profile';
+import { LANGUAGES } from '@shared/languages';
 
 import {
   Card,
@@ -29,10 +29,10 @@ import {
 } from '@/features/ranked/api';
 import { LeaderboardRow, Podium, topPercent } from '@/features/ranked/Leaderboard';
 
-/** Pestañas: global y una por idioma disponible. */
+/** Pestañas: global y una por idioma con Ranked. */
 const SCOPES = [
   { code: null, label: 'Todos', flag: null },
-  ...TARGET_LANGUAGES.filter((l) => l.available).map((l) => ({
+  ...LANGUAGES.filter((l) => l.ranked).map((l) => ({
     code: l.code as string | null,
     label: l.name,
     flag: l.flag as string | null,

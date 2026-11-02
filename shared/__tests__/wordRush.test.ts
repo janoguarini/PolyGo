@@ -136,6 +136,8 @@ describe('palabras según el rango', () => {
   it('el nivel sale de la unidad y la traducción se muestra sin paréntesis', () => {
     expect(wordLevel('a2-u03')).toBe('A2');
     expect(wordLevel('a1-u12')).toBe('A1');
+    expect(wordLevel('it-a1-u01')).toBe('A1');
+    expect(wordLevel('zh-a2-u04')).toBe('A2');
     expect(wordLevel(null)).toBeNull();
     expect(rushLabel('fui / fue (go)')).toBe('fui / fue');
     expect(rushLabel('mañana (el día siguiente)')).toBe('mañana');

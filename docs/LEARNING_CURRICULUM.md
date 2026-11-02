@@ -2,7 +2,7 @@
 
 Referencia: niveles A1 y A2 del MCER. Completar unidades **no** equivale a una certificación oficial.
 
-Cada nivel es un camino propio (`content/a1/`, `content/a2/`, ensamblados en `content/index.ts`): el desbloqueo es lineal dentro del nivel y cada nivel arranca desbloqueado (`is_lesson_unlocked` particiona por idioma y nivel). En Aprender, un selector A1/A2 muestra un camino por vez; arranca en el nivel de inicio del perfil (`start_level`). El A2 supone el A1: sus ejercicios pueden usar todas las palabras del A1.
+Cada nivel es un camino propio (`content/en/a1/`, `content/en/a2/`, ensamblados en `content/index.ts`; los demás idiomas siguen docs/CONTENT_STANDARD.md): el desbloqueo es lineal dentro del nivel y cada nivel arranca desbloqueado (`is_lesson_unlocked` particiona por idioma y nivel). En Aprender, un selector A1/A2 muestra un camino por vez; arranca en el nivel de inicio del perfil (`start_level`). El A2 supone el A1: sus ejercicios pueden usar todas las palabras del A1.
 
 ## Estado del contenido
 
@@ -50,7 +50,7 @@ Retoques puntuales a unidades ya cargadas pueden ir en una migración chica de `
 ## Flujo de autoría
 
 0. **Unidades ya cargadas:** antes de editar, `npm run content:dump -- antes.json` (foto del contenido actual).
-1. Editar `content/<nivel>/unitNN-*.ts` (formato tipado en `content/types.ts`, atajos en `content/builders.ts`).
+1. Editar `content/<idioma>/<nivel>/unitNN-*.ts` (formato tipado en `content/types.ts`, atajos en `content/builders.ts`).
 2. `npm test`: `content/__tests__/content.test.ts` valida cada ejercicio (ver abajo).
 3. Unidades ya cargadas: `npm run content:diff -- antes.json supabase/migrations/<timestamp>_content_<cambio>.sql` genera sólo la diferencia (palabras y ejercicios cambiados) y **corrige los vínculos ejercicio→palabra con `UPDATE`**, sin `DELETE`. Usar esto y no `content:sql`: como los ids de ejercicios generados son posicionales, regenerar la unidad dejaría el vínculo viejo y los repasos se acreditarían a la palabra equivocada. Falla con un mensaje si el cambio no se puede expresar así (altas o bajas de lecciones o palabras, un ejercicio que pierde palabras).
    Unidades nuevas: `npm run content:sql -- supabase/migrations/<timestamp>_content_a2_unit_NN.sql --level A2 --unit NN` genera una migración idempotente por unidad (más chica y fácil de aplicar; aplicar en orden de unidad). Sin `--level`, `--unit` se refiere al A1.

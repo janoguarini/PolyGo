@@ -4,16 +4,26 @@ import { Alert } from 'react-native';
 
 import { ErrorState, LoadingState, Screen } from '@/design-system';
 import type { AttemptInput } from '@/features/learning/api';
+import { LessonIntro } from '@/features/learning/components/LessonIntro';
 import { SessionPlayer } from '@/features/learning/components/SessionPlayer';
 import { SessionResults } from '@/features/learning/components/SessionResults';
 import { useCurriculum, useLessonContent, useSubmitSession } from '@/features/learning/hooks';
 import { sessionStats, type PlayerState } from '@/features/learning/player';
+import { SessionLanguageProvider } from '@/features/learning/SessionLanguageProvider';
 import { uuid } from '@/features/learning/random';
 import { useCelebrationGate } from '@/features/learning/useCelebrationGate';
 import { useEnergy } from '@/features/plus/api';
 import { NoEnergyState } from '@/features/plus/components/NoEnergyState';
 
-export default function LessonScreen() {
+export default function LessonScreenWithLanguage() {
+  return (
+    <SessionLanguageProvider>
+      <LessonScreen />
+    </SessionLanguageProvider>
+  );
+}
+
+function LessonScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const content = useLessonContent(id);
   const curriculum = useCurriculum();
@@ -30,6 +40,8 @@ export default function LessonScreen() {
   // Clave de idempotencia: reintentar el guardado nunca duplica la sesión.
   const [sessionId] = useState(uuid);
   const [startedAt] = useState(() => new Date());
+  // La introducción se muestra una vez, antes del primer ejercicio (no puntúa).
+  const [introDone, setIntroDone] = useState(false);
   const [finished, setFinished] = useState<{
     state: PlayerState;
     attempts: AttemptInput[];
@@ -76,6 +88,19 @@ export default function LessonScreen() {
     );
   }
 
+  const { lesson } = content.data;
+  if (!finished && lesson.intro && !introDone) {
+    return (
+      <LessonIntro
+        title={lesson.title}
+        objective={lesson.objective}
+        intro={lesson.intro}
+        onStart={() => setIntroDone(true)}
+        onClose={() => router.back()}
+      />
+    );
+  }
+
   if (!finished) {
     return (
       <SessionPlayer
@@ -98,6 +123,7 @@ export default function LessonScreen() {
   return (
     <SessionResults
       title={content.data.lesson.title}
+      takeaways={content.data.lesson.takeaways}
       stats={sessionStats(finished.state)}
       durationSeconds={Math.round((finished.endedAt.getTime() - startedAt.getTime()) / 1000)}
       words={content.data.words}

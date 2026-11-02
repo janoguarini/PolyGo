@@ -8,8 +8,10 @@ import { useFriends } from '@/features/friends/api';
 import { BattleInviteBanner } from '@/features/friends/components/BattleInviteBanner';
 import { useBattleInvitePush } from '@/features/friends/push';
 import { usePresence } from '@/features/friends/social';
+import { useSpeechLanguage } from '@/features/learning/speech';
 import { AppTour } from '@/features/onboarding/AppTour';
 import { useFinishTour, useTourPending } from '@/features/onboarding/tour';
+import { useMyProfile } from '@/features/profile/hooks';
 import { useReminderSync } from '@/features/reminders/hooks';
 import { useWidgetSync } from '@/features/widgets/useWidgetSync';
 
@@ -23,6 +25,8 @@ export default function TabsLayout() {
   useBattleInvitePush();
   // Tutorial guiado para cuentas recién creadas.
   const userId = useAuth().session?.user.id;
+  // La voz sintetizada habla en el idioma que estudiás.
+  useSpeechLanguage(useMyProfile().data?.profile.target_language);
   const tourPending = useTourPending(userId);
   const finishTour = useFinishTour(userId);
   // Solicitudes de amistad sin responder + invitaciones: globito en la pestaña Amigos.

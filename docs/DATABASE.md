@@ -83,7 +83,7 @@ Confianza: en lecciones (no competitivas) el cliente valida la respuesta para da
 
 ## Migraciones de contenido (`…_content_a1_unit_01|02|03.sql`)
 
-Generadas por `scripts/build-content-sql.ts --unit N` desde `content/a1` (una por unidad, aplicadas en orden). Idempotentes y sin sentencias destructivas. Aplicadas en Supabase; checksum md5 del contenido idéntico al local.
+Generadas por `scripts/build-content-sql.ts --unit N` desde `content/en/a1` (y `content/<idioma>/` para los demás idiomas) (una por unidad, aplicadas en orden). Idempotentes y sin sentencias destructivas. Aplicadas en Supabase; checksum md5 del contenido idéntico al local.
 
 ## Migración 0004 — perfil, historial y logros (`20261029140504_profile_history_achievements.sql`)
 

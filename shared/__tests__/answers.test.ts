@@ -191,3 +191,35 @@ describe('serializeAnswer', () => {
     expect(serializeAnswer({ kind: 'pairs', value: [{ left: 'a', right: 'b' }] })).toBe('a=b');
   });
 });
+
+describe('chino e idiomas con tildes', () => {
+  const write = (answer: string) =>
+    exercise({ payload: { type: 'translate_write', source: 'Hola' }, answer });
+
+  it('los números de tono equivalen a las marcas; sin tono es otra respuesta', () => {
+    const ex = write('nǐ hǎo');
+    expect(checkAnswer(ex, { kind: 'text', value: 'ni3 hao3' }).correct).toBe(true);
+    expect(checkAnswer(ex, { kind: 'text', value: 'Nǐ hǎo' }).correct).toBe(true);
+    expect(checkAnswer(ex, { kind: 'text', value: 'ni hao' }).correct).toBe(false);
+    expect(checkAnswer(ex, { kind: 'text', value: 'ni2 hao3' }).correct).toBe(false);
+    expect(canonicalForm('lv4 xie4xie5')).toBe('lǜ xièxie');
+    expect(canonicalForm('liu2 gou3')).toBe('liú gǒu');
+  });
+
+  it('en chino los espacios entre caracteres y la puntuación china no cuentan', () => {
+    const ex = exercise({
+      payload: { type: 'order_words', tokens: ['我', '叫', '王明'], translation: '' },
+      answer: '我叫王明。',
+    });
+    expect(checkAnswer(ex, { kind: 'tokens', value: ['我', '叫', '王明'] }).correct).toBe(true);
+    expect(checkAnswer(ex, { kind: 'tokens', value: ['叫', '我', '王明'] }).correct).toBe(false);
+    expect(normalizeAnswer('你好！')).toBe('你好');
+  });
+
+  it('las tildes de italiano y portugués cuentan, y el inglés no cambia', () => {
+    expect(checkAnswer(write('sì'), { kind: 'text', value: 'si' }).correct).toBe(false);
+    expect(checkAnswer(write('não'), { kind: 'text', value: 'nao' }).correct).toBe(false);
+    expect(canonicalForm("I'm 25")).toBe('i am 25');
+    expect(canonicalForm('very good')).toBe('very good');
+  });
+});

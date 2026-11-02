@@ -6,6 +6,7 @@ import type { Exercise, UserAnswer } from '@shared/exercises';
 import { Button, MIN_TOUCH, Text, TextField, colors, radii, spacing } from '@/design-system';
 
 import { shuffle, shuffleDifferent } from '../random';
+import { TargetText, useSessionLanguage } from '../readings';
 
 interface Props {
   exercise: Exercise;
@@ -91,13 +92,13 @@ function ChoiceInput({
               pressed && styles.pressed,
             ]}
           >
-            <Text
+            <TargetText
               variant="bodyStrong"
               color={selected === option ? 'textStrong' : 'text'}
               align="center"
             >
               {option}
-            </Text>
+            </TargetText>
           </Pressable>
         ))}
       </View>
@@ -106,7 +107,10 @@ function ChoiceInput({
 }
 
 function TextInputAnswer({ exercise, disabled, onSubmit }: Props) {
+  const { language } = useSessionLanguage();
   const [value, setValue] = useState('');
+  // En chino se escribe el pinyin (con números de tono: ni3 hao3).
+  const answerIn = language.script === 'han' ? 'en pinyin' : language.inName;
   const submit = () => value.trim() && onSubmit({ kind: 'text', value });
   return (
     <AnswerLayout
@@ -117,7 +121,7 @@ function TextInputAnswer({ exercise, disabled, onSubmit }: Props) {
     >
       {/* Con el teclado abierto de entrada, el espacio libre lo ocupa el teclado. */}
       <TextField
-        label={exercise.type === 'complete_word' ? 'Palabra completa' : 'Tu respuesta en inglés'}
+        label={exercise.type === 'complete_word' ? 'Palabra completa' : `Tu respuesta ${answerIn}`}
         value={value}
         onChangeText={setValue}
         editable={!disabled}
@@ -129,7 +133,7 @@ function TextInputAnswer({ exercise, disabled, onSubmit }: Props) {
         spellCheck={false}
         returnKeyType="done"
         onSubmitEditing={submit}
-        placeholder="Escribí acá…"
+        placeholder={language.script === 'han' ? 'Ej.: ni3 hao3' : 'Escribí acá…'}
         style={exercise.type === 'complete_word' ? styles.wordField : styles.textArea}
       />
     </AnswerLayout>
@@ -207,9 +211,9 @@ function Token({
       onPress={onPress}
       style={({ pressed }) => [styles.token, used && styles.tokenUsed, pressed && styles.pressed]}
     >
-      <Text variant="bodyStrong" color={used ? 'textSubtle' : 'textStrong'}>
+      <TargetText variant="bodyStrong" color={used ? 'textSubtle' : 'textStrong'}>
         {label}
-      </Text>
+      </TargetText>
     </Pressable>
   );
 }
@@ -221,6 +225,7 @@ function MatchInput({
   onSubmit,
   pairs,
 }: Props & { pairs: { left: string; right: string }[] }) {
+  const { language } = useSessionLanguage();
   const lefts = useMemo(
     () =>
       shuffle(
@@ -255,7 +260,7 @@ function MatchInput({
       footer={
         <>
           <Text variant="caption" align="center">
-            Tocá una palabra en inglés y después su significado.
+            {`Tocá una palabra ${language.inName} y después su significado.`}
           </Text>
           <Button
             label="Comprobar"
@@ -292,9 +297,9 @@ function MatchInput({
                 matches[left] && styles.matched,
               ]}
             >
-              <Text variant="bodyStrong" align="center">
+              <TargetText variant="bodyStrong" align="center">
                 {left}
-              </Text>
+              </TargetText>
               {matches[left] ? (
                 <Text variant="caption" align="center" color="primarySoft">
                   {matches[left]}

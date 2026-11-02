@@ -3,6 +3,8 @@ import { CalendarDays, Dumbbell, KeyRound, Search, Trophy, UserPlus } from 'luci
 import { useRef, useState } from 'react';
 import { Pressable, StyleSheet, View, type ScrollViewInstance } from 'react-native';
 
+import { languageConfig } from '@shared/languages';
+
 import {
   Button,
   Card,
@@ -74,27 +76,49 @@ export default function RankedScreen() {
         </View>
       ) : null}
 
-      {me.data.rating ? <RankCard rating={me.data.rating} /> : null}
+      {!languageConfig(me.data.profile.target_language).ranked ? (
+        // Idiomas en preparación: sin banco de palabras suficiente para Word Rush.
+        <Card style={styles.matchCard}>
+          <Text variant="overline">MODO · WORD RUSH</Text>
+          <Text variant="heading">
+            Ranked en {languageConfig(me.data.profile.target_language).name.toLowerCase()} llega
+            pronto
+          </Text>
+          <Text color="textMuted">
+            Las partidas se habilitan cuando el nivel A1 de este idioma esté completo. Para jugar
+            ahora, cambiá a inglés desde tu perfil: tu progreso en cada idioma se guarda.
+          </Text>
+          <Button
+            label="Ir al perfil"
+            variant="secondary"
+            onPress={() => router.push('/profile')}
+          />
+        </Card>
+      ) : (
+        <>
+          {me.data.rating ? <RankCard rating={me.data.rating} /> : null}
 
-      <Card style={styles.matchCard}>
-        <Text variant="overline">MODO · WORD RUSH</Text>
-        <Button
-          label="Buscar partida"
-          size="lg"
-          icon={<Search color={colors.onPrimary} size={20} />}
-          accessibilityHint="Busca un rival con un ELO similar"
-          onPress={() => router.push({ pathname: '/battle', params: { mode: 'ranked' } })}
-        />
-        <Button
-          label="Practicar sin ELO"
-          variant="ghost"
-          icon={<Dumbbell color={colors.textMuted} size={18} />}
-          accessibilityHint="Una ronda de 75 segundos contra el reloj, sin rival"
-          onPress={() => router.push({ pathname: '/battle', params: { mode: 'practice' } })}
-        />
-      </Card>
+          <Card style={styles.matchCard}>
+            <Text variant="overline">MODO · WORD RUSH</Text>
+            <Button
+              label="Buscar partida"
+              size="lg"
+              icon={<Search color={colors.onPrimary} size={20} />}
+              accessibilityHint="Busca un rival con un ELO similar"
+              onPress={() => router.push({ pathname: '/battle', params: { mode: 'ranked' } })}
+            />
+            <Button
+              label="Practicar sin ELO"
+              variant="ghost"
+              icon={<Dumbbell color={colors.textMuted} size={18} />}
+              accessibilityHint="Una ronda de 75 segundos contra el reloj, sin rival"
+              onPress={() => router.push({ pathname: '/battle', params: { mode: 'practice' } })}
+            />
+          </Card>
 
-      <FriendChallengeCard />
+          <FriendChallengeCard />
+        </>
+      )}
     </Screen>
   );
 }

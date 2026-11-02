@@ -74,9 +74,31 @@ export async function completeOnboarding(input: OnboardingInput): Promise<Profil
   return data;
 }
 
+/** Cambia el idioma que estudiás (el progreso de cada idioma se conserva). */
+export async function setTargetLanguage(language: string): Promise<ProfileRow> {
+  const { data, error } = await requireSupabase().rpc('set_target_language', {
+    p_language: language,
+  });
+  if (error) throw error;
+  return data;
+}
+
+/** Testers de contenido: pueden elegir los idiomas en beta. */
+export async function fetchIsContentTester(): Promise<boolean> {
+  const { data, error } = await requireSupabase().rpc('is_content_tester');
+  // Antes de aplicar la migración la función no existe: nadie es tester.
+  if (error) return false;
+  return Boolean(data);
+}
+
 export async function updateSettings(
   userId: string,
-  patch: { profile_visibility?: ProfileVisibility; show_region?: boolean; show_online?: boolean; notify_challenges?: boolean },
+  patch: {
+    profile_visibility?: ProfileVisibility;
+    show_region?: boolean;
+    show_online?: boolean;
+    notify_challenges?: boolean;
+  },
 ) {
   const { error } = await requireSupabase()
     .from('user_settings')

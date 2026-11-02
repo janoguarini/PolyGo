@@ -1,4 +1,4 @@
-import { CloudOff, RotateCcw, Trophy } from 'lucide-react-native';
+import { CheckCircle2, CloudOff, RotateCcw, Trophy } from 'lucide-react-native';
 import { StyleSheet, View } from 'react-native';
 import Animated, { FadeInUp } from 'react-native-reanimated';
 
@@ -22,6 +22,8 @@ interface Props {
   /** Logros que desbloqueó esta sesión según el servidor. */
   achievements: { id: string; title: string; icon: string }[];
   onRetrySave: () => void;
+  /** Cierre de la lección: qué aprendiste («Ahora podés…»). */
+  takeaways?: string[];
   /** Texto bajo las palabras con errores (por defecto: volverán en los repasos). */
   mistakesHint?: string;
   primaryLabel: string;
@@ -80,6 +82,20 @@ export function SessionResults(props: Props) {
         <StatTile label="Correctas" value={`${stats.firstTryCorrect}/${stats.total}`} />
         <StatTile label="Tiempo" value={formatDuration(props.durationSeconds)} />
       </View>
+
+      {props.takeaways?.length ? (
+        <Card style={styles.gap} accessibilityLabel="Qué aprendiste">
+          <Text variant="overline" color="primarySoft">
+            QUÉ APRENDISTE
+          </Text>
+          {props.takeaways.map((t) => (
+            <View key={t} style={styles.takeaway}>
+              <CheckCircle2 color={colors.success} size={18} />
+              <Text style={styles.flex}>{t}</Text>
+            </View>
+          ))}
+        </Card>
+      ) : null}
 
       {props.saving ? (
         <Text variant="caption" align="center">
@@ -161,5 +177,7 @@ const styles = StyleSheet.create({
   error: { gap: spacing.sm, borderColor: colors.dangerStrong },
   row: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   gap: { gap: spacing.sm },
+  takeaway: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing.sm },
+  flex: { flex: 1 },
   achievements: { borderColor: colors.goldStrong },
 });

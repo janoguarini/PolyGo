@@ -1,18 +1,22 @@
 import { checkAnswer } from '@shared/answers';
 import type { Exercise, UserAnswer } from '@shared/exercises';
 
-import { ALL_WORDS, CURRICULUM_PATH, LEVELS, unitId } from '..';
-import { tokensOf } from '../builders';
+import { HAN, LANGUAGES, languageConfig } from '@shared/languages';
+import { readingDictionary, unreadHan } from '@shared/readings';
+
+import { ALL_WORDS, COURSES, CURRICULUM_PATH, idPrefix, unitId } from '..';
+import { joinHan, tokensOf } from '../builders';
 import { pathExerciseId } from '../path';
-import type { ExerciseDef } from '../types';
+import type { ExerciseDef, UnitDef } from '../types';
 
 const allWords = ALL_WORDS;
 // Camino completo: incluye las lecciones de consolidación generadas (también se validan).
-const lessons = CURRICULUM_PATH.flatMap(({ level, unit, lessons: path }) =>
-  path.map((lesson) => ({ level, unit, lesson, id: lesson.id })),
+const lessons = CURRICULUM_PATH.flatMap(({ language, level, unit, lessons: path }) =>
+  path.map((lesson) => ({ language, level, unit, lesson, id: lesson.id })),
 );
-const exercises = lessons.flatMap(({ level, unit, lesson, id }) =>
+const exercises = lessons.flatMap(({ language, level, unit, lesson, id }) =>
   lesson.exercises.map((def, ei) => ({
+    language,
     level,
     unit,
     def,
@@ -20,7 +24,11 @@ const exercises = lessons.flatMap(({ level, unit, lesson, id }) =>
     id: pathExerciseId(id, ei),
   })),
 );
-const levelIndex = (level: string) => LEVELS.findIndex((l) => l.level === level);
+const courseOf = (language: string) => COURSES.find((c) => c.language === language)!;
+const levelIndex = (language: string, level: string) =>
+  courseOf(language).levels.findIndex((l) => l.level === level);
+const wordsOfLanguage = (language: string) =>
+  courseOf(language).levels.flatMap((l) => l.units.flatMap((u) => u.words));
 
 function toExercise(def: ExerciseDef, id: string): Exercise {
   return {
@@ -43,7 +51,11 @@ function toExercise(def: ExerciseDef, id: string): Exercise {
 function canonicalAnswer(def: ExerciseDef, text: string): UserAnswer {
   switch (def.payload.type) {
     case 'order_words':
-      return { kind: 'tokens', value: tokensOf(text) };
+      // En chino la respuesta va sin espacios: las fichas son las del payload.
+      return {
+        kind: 'tokens',
+        value: HAN.test(text) ? def.payload.tokens : tokensOf(text),
+      };
     case 'match_pairs':
       return { kind: 'pairs', value: def.payload.pairs };
     case 'translate_write':
@@ -56,8 +68,15 @@ function canonicalAnswer(def: ExerciseDef, text: string): UserAnswer {
 }
 
 describe('estructura del currículo', () => {
+  it('sólo hay cursos de idiomas conocidos y ninguno de los «Próximamente»', () => {
+    for (const { language } of COURSES) {
+      expect(LANGUAGES.map((l) => l.code)).toContain(language);
+      expect(languageConfig(language).status).not.toBe('soon');
+    }
+  });
+
   it('cada nivel tiene unidades con posiciones consecutivas y 5–8 lecciones escritas', () => {
-    for (const { units } of LEVELS) {
+    for (const { units } of COURSES.flatMap((c) => c.levels)) {
       expect(units.length).toBeGreaterThan(0);
       units.forEach((unit, i) => {
         expect(unit.position).toBe(i + 1);
@@ -68,10 +87,13 @@ describe('estructura del currículo', () => {
   });
 
   it('el camino intercala consolidación, conserva los ids escritos y cierra con el repaso final', () => {
-    for (const { level, unit, lessons: path } of CURRICULUM_PATH) {
+    for (const { language, level, unit, lessons: path } of CURRICULUM_PATH) {
+      const id = unitId(language, level, unit);
+      // El inglés conserva los ids históricos (a1-u01); los demás idiomas llevan su prefijo.
+      expect(id.startsWith(idPrefix(language))).toBe(true);
       expect(path.map((l) => l.position)).toEqual(path.map((_, i) => i + 1));
       expect(path.filter((l) => l.kind === 'lesson').map((l) => l.id)).toEqual(
-        unit.lessons.map((_, i) => `${unitId(level, unit)}-l${String(i + 1).padStart(2, '0')}`),
+        unit.lessons.map((_, i) => `${id}-l${String(i + 1).padStart(2, '0')}`),
       );
       expect(path.at(-1)?.kind).toBe('final');
       expect(path.length).toBeGreaterThanOrEqual(unit.lessons.length * 2);
@@ -90,37 +112,46 @@ describe('estructura del currículo', () => {
     }
   });
 
-  it('los ids de palabras son únicos y válidos', () => {
+  it('los ids de palabras son únicos y llevan el prefijo de su idioma', () => {
     const ids = allWords.map((w) => w.id);
     expect(new Set(ids).size).toBe(ids.length);
-    ids.forEach((id) => expect(id).toMatch(/^en-[a-z0-9-]+$/));
+    for (const { language } of COURSES) {
+      for (const w of wordsOfLanguage(language)) {
+        expect(w.id).toMatch(new RegExp(`^${language}-[a-z0-9-]+$`));
+      }
+    }
   });
 
-  it('cada palabra tiene IPA, traducción y ejemplos', () => {
-    for (const w of allWords) {
-      expect(w.ipa).toMatch(/^\/.+\/$/);
-      expect(w.translation.trim()).not.toBe('');
-      expect(w.exampleEn.trim()).not.toBe('');
-      expect(w.exampleEs.trim()).not.toBe('');
+  it('cada palabra tiene traducción y ejemplos; IPA en inglés y pinyin con tonos en chino', () => {
+    const toneMark = /[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/;
+    for (const { language } of COURSES) {
+      const han = languageConfig(language).script === 'han';
+      for (const w of wordsOfLanguage(language)) {
+        if (language === 'en') expect(w.ipa).toMatch(/^\/.+\/$/);
+        if (han) expect([w.id, toneMark.test(w.romanization ?? '')]).toEqual([w.id, true]);
+        expect(w.translation.trim()).not.toBe('');
+        expect(w.exampleEn.trim()).not.toBe('');
+        expect(w.exampleEs.trim()).not.toBe('');
+      }
     }
   });
 
   it('los ejercicios sólo usan palabras de su unidad o de unidades (y niveles) anteriores', () => {
-    for (const { level, unit, def, id } of exercises) {
+    for (const { language, level, unit, def, id } of exercises) {
+      const current = levelIndex(language, level);
       const available = new Set(
-        LEVELS.flatMap((l, li) =>
-          l.units.filter(
-            (u) =>
-              li < levelIndex(level) || (li === levelIndex(level) && u.position <= unit.position),
-          ),
-        ).flatMap((u) => u.words.map((w) => w.id)),
+        courseOf(language)
+          .levels.flatMap((l, li) =>
+            l.units.filter((u) => li < current || (li === current && u.position <= unit.position)),
+          )
+          .flatMap((u) => u.words.map((w) => w.id)),
       );
       expect(def.words.length).toBeGreaterThan(0);
       for (const w of def.words) expect([id, w, available.has(w)]).toEqual([id, w, true]);
     }
   });
 
-  it('ninguna palabra inglesa coincide con la traducción de otra palabra', () => {
+  it('ninguna palabra coincide con la traducción de otra palabra de su idioma', () => {
     // Si no, en Word Rush y en el widget "café" (coffee) podría tener como opción "café" (el lugar).
     const plain = (s: string) =>
       s
@@ -129,11 +160,14 @@ describe('estructura del currículo', () => {
         .replace(/\(.*?\)/g, '')
         .trim()
         .toLowerCase();
-    const clashes = allWords.flatMap((a) =>
-      allWords
-        .filter((b) => b.id !== a.id && plain(a.text) === plain(b.translation))
-        .map((b) => `${a.id} ↔ ${b.id}`),
-    );
+    const clashes = COURSES.flatMap(({ language }) => {
+      const words = wordsOfLanguage(language);
+      return words.flatMap((a) =>
+        words
+          .filter((b) => b.id !== a.id && plain(a.text) === plain(b.translation))
+          .map((b) => `${a.id} ↔ ${b.id}`),
+      );
+    });
     expect(clashes).toEqual([]);
   });
 
@@ -141,6 +175,81 @@ describe('estructura del currículo', () => {
     const used = new Set(exercises.flatMap((e) => e.def.words));
     const unused = allWords.filter((w) => !used.has(w.id)).map((w) => w.id);
     expect(unused).toEqual([]);
+  });
+});
+
+describe('estándar de unidad y lección (docs/CONTENT_STANDARD.md)', () => {
+  // Siguen el estándar todas las unidades de los idiomas nuevos y, en inglés, las que ya se
+  // actualizaron (las que tienen objetivo; por ahora la piloto). El resto se completa por bloques.
+  const standard = CURRICULUM_PATH.filter(
+    ({ language, unit }) => language !== 'en' || unit.objective !== undefined,
+  );
+  const PRODUCTION = new Set(['translate_write', 'short_answer']);
+  const each = (fn: (unit: UnitDef, language: string) => void) =>
+    standard.forEach(({ unit, language }) => fn(unit, language));
+
+  it('incluye la unidad piloto en los cuatro idiomas', () => {
+    const pilots = standard.filter((p) => p.unit.position === 1).map((p) => p.language);
+    expect(pilots.sort()).toEqual(['en', 'it', 'pt', 'zh']);
+  });
+
+  it('cada unidad tiene objetivo y estado de revisión', () => {
+    each((unit) => {
+      expect(unit.objective?.trim()).toBeTruthy();
+      expect(unit.review?.status).toBeDefined();
+    });
+  });
+
+  it('el contenido de los idiomas nuevos queda en borrador hasta la revisión nativa', () => {
+    each((unit, language) => {
+      if (language === 'en') return;
+      expect([language, unit.position, unit.review?.status]).toEqual([
+        language,
+        unit.position,
+        'draft',
+      ]);
+    });
+  });
+
+  it('cada lección escrita tiene introducción, cierre y escucha, y termina con recuperación activa', () => {
+    each((unit, language) =>
+      unit.lessons.forEach((l) => {
+        const where = `${language} u${unit.position} «${l.title}»`;
+        const lastTwo = l.exercises.slice(-2).map((e) => e.type);
+        expect({
+          where,
+          intro: Boolean(l.intro?.explanation.trim()),
+          examples: (l.intro?.examples.length ?? 0) >= 2,
+          takeaways: (l.takeaways?.length ?? 0) >= 2,
+          listening: l.exercises.some((e) => e.skill === 'listening'),
+          activeRecall: lastTwo.every((t) => PRODUCTION.has(t)),
+        }).toEqual({
+          where,
+          intro: true,
+          examples: true,
+          takeaways: true,
+          listening: true,
+          activeRecall: true,
+        });
+      }),
+    );
+  });
+
+  it('todo el texto en chino tiene pinyin para mostrar encima', () => {
+    for (const { language } of COURSES) {
+      if (languageConfig(language).script !== 'han') continue;
+      const dict = readingDictionary(wordsOfLanguage(language));
+      const texts = CURRICULUM_PATH.filter((p) => p.language === language).flatMap(
+        ({ unit, lessons: path }) => [
+          ...unit.words.flatMap((w) => [w.text, w.exampleEn]),
+          ...path.flatMap((l) => [
+            ...(l.intro?.examples.map((e) => e.target) ?? []),
+            ...(l.exercises.flatMap((e) => [e.answer, JSON.stringify(e.payload)]) ?? []),
+          ]),
+        ],
+      );
+      expect([...new Set(texts.flatMap((t) => unreadHan(t, dict)))]).toEqual([]);
+    }
   });
 });
 
@@ -161,7 +270,12 @@ describe('integridad de cada ejercicio', () => {
         if (p.type === 'fill_blank') expect(p.sentence.split('___').length).toBe(2);
         break;
       case 'order_words':
-        expect(p.tokens).toEqual(tokensOf(def.answer));
+        // En chino la respuesta es la oración sin espacios entre las fichas.
+        if (HAN.test(def.answer)) {
+          expect(joinHan(p.tokens.join(' '))).toBe(tokensOf(def.answer).join(''));
+        } else {
+          expect(p.tokens).toEqual(tokensOf(def.answer));
+        }
         expect(p.tokens.length).toBeGreaterThanOrEqual(3);
         break;
       case 'complete_word': {

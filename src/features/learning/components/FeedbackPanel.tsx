@@ -4,10 +4,12 @@ import Animated, { FadeInDown } from 'react-native-reanimated';
 
 import type { AnswerVerdict } from '@shared/answers';
 import type { Exercise } from '@shared/exercises';
+import { hasHan } from '@shared/readings';
 
 import { Button, Text, colors, radii, spacing } from '@/design-system';
 
 import type { WordRow } from '../api';
+import { TargetText } from '../readings';
 import { SpeakButton } from './SpeakButton';
 
 interface Props {
@@ -49,9 +51,9 @@ export function FeedbackPanel({ exercise, verdict, word, onContinue }: Props) {
       {!correct || (verdict.correct && verdict.typo) ? (
         <View>
           <Text variant="caption">Respuesta correcta</Text>
-          <Text variant="bodyStrong" color="textStrong">
+          <TargetText variant="bodyStrong" color="textStrong">
             {expected}
-          </Text>
+          </TargetText>
         </View>
       ) : null}
 
@@ -62,8 +64,18 @@ export function FeedbackPanel({ exercise, verdict, word, onContinue }: Props) {
             <Text variant="bodyStrong" color="textStrong">
               {word.text} <Text color="textMuted">· {word.translation_es}</Text>
             </Text>
-            {word.ipa ? <Text variant="caption">{word.ipa} · voz sintetizada</Text> : null}
-            {word.example_en ? (
+            {word.romanization || word.ipa ? (
+              <Text variant="caption">{word.romanization ?? word.ipa} · voz sintetizada</Text>
+            ) : null}
+            {word.example_en && hasHan(word.example_en) ? (
+              // En chino, el ejemplo con su pinyin encima y la traducción abajo.
+              <View>
+                <TargetText variant="caption" color="text">
+                  {word.example_en}
+                </TargetText>
+                <Text variant="caption">{word.example_es}</Text>
+              </View>
+            ) : word.example_en ? (
               <Text variant="caption" color="text">
                 “{word.example_en}” — {word.example_es}
               </Text>

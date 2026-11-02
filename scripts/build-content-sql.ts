@@ -1,9 +1,11 @@
 /**
  * Genera una migración SQL idempotente con el contenido de content/ (todos los niveles).
- * Uso: npm run content:sql -- supabase/migrations/<timestamp>_content_a2_unit_01.sql [--level A2] [--unit N]
+ * Uso: npm run content:sql -- supabase/migrations/<timestamp>_content_it_a1_unit_01.sql
+ *        [--language it] [--level A1] [--unit N]   (sin --language: inglés)
  *
  * El contenido viaja como un único documento JSON dentro de un bloque DO, sin sentencias destructivas.
- * - Unidades, lecciones, palabras y ejercicios quedan publicados con review_status = 'draft'.
+ * - Unidades, lecciones, palabras y ejercicios quedan publicados; la revisión de la unidad sale de
+ *   content (UnitDef.review, 'draft' por defecto) y las palabras quedan en 'draft'.
  * - Los ejercicios que ya no estén en el contenido se despublican (no se borran: conservan intentos).
  */
 import { writeFileSync } from 'node:fs';
@@ -22,13 +24,18 @@ const arg = (name: string) => {
   const i = process.argv.indexOf(name);
   return i > 0 ? process.argv[i + 1] : undefined;
 };
+const language = arg('--language') ?? 'en';
 const onlyLevel = arg('--level') ?? (arg('--unit') ? 'A1' : undefined);
 const onlyUnit = arg('--unit') ? Number(arg('--unit')) : null;
 const PATH = CURRICULUM_PATH.filter(
-  (p) => (!onlyLevel || p.level === onlyLevel) && (!onlyUnit || p.unit.position === onlyUnit),
+  (p) =>
+    p.language === language &&
+    (!onlyLevel || p.level === onlyLevel) &&
+    (!onlyUnit || p.unit.position === onlyUnit),
 );
-if (PATH.length === 0) throw new Error(`Unidad ${onlyLevel ?? ''} ${onlyUnit ?? ''} inexistente`);
-const levels = [...new Set(PATH.map((p) => p.level))].join(' y ');
+if (PATH.length === 0)
+  throw new Error(`Unidad ${language} ${onlyLevel ?? ''} ${onlyUnit ?? ''} inexistente`);
+const levels = `${language} ${[...new Set(PATH.map((p) => p.level))].join(' y ')}`;
 
 const document = contentDocument(PATH);
 
@@ -47,22 +54,27 @@ declare
   d constant jsonb := $content$${payload}$content$::jsonb;
 begin
 
-insert into public.curriculum_units (id, language_code, level, position, title_es, title_en, description_es, emoji, is_published)
-select x.id, 'en', x.level, x.position, x.title_es, x.title_en, x.description_es, x.emoji, true
+insert into public.curriculum_units (id, language_code, level, position, title_es, title_en, description_es, emoji,
+  objective_es, grammar, review_status, is_published)
+select x.id, x.language_code, x.level, x.position, x.title_es, x.title_en, x.description_es, x.emoji,
+  x.objective_es, x.grammar, x.review_status, true
 from jsonb_to_recordset(d -> 'units')
-  as x(id text, level text, position smallint, title_es text, title_en text, description_es text, emoji text)
+  as x(id text, language_code text, level text, position smallint, title_es text, title_en text, description_es text,
+       emoji text, objective_es text, grammar jsonb, review_status text)
 on conflict (id) do update set position = excluded.position, title_es = excluded.title_es, title_en = excluded.title_en,
-  description_es = excluded.description_es, emoji = excluded.emoji, is_published = true;
+  description_es = excluded.description_es, emoji = excluded.emoji, objective_es = excluded.objective_es,
+  grammar = excluded.grammar, review_status = excluded.review_status, is_published = true;
 
-insert into public.words (id, language_code, unit_id, text, translation_es, accepted_translations, ipa, emoji,
-  example_en, example_es, difficulty, tags, is_published)
-select x.id, 'en', x.unit_id, x.text, x.translation_es, x.accepted_translations, x.ipa, x.emoji,
-  x.example_en, x.example_es, x.difficulty, x.tags, true
+insert into public.words (id, language_code, unit_id, text, translation_es, accepted_translations, ipa, romanization,
+  emoji, example_en, example_es, difficulty, tags, is_published)
+select x.id, x.language_code, x.unit_id, x.text, x.translation_es, x.accepted_translations, x.ipa, x.romanization,
+  x.emoji, x.example_en, x.example_es, x.difficulty, x.tags, true
 from jsonb_to_recordset(d -> 'words')
-  as x(id text, unit_id text, text text, translation_es text, accepted_translations text[], ipa text, emoji text,
-       example_en text, example_es text, difficulty smallint, tags text[])
+  as x(id text, language_code text, unit_id text, text text, translation_es text, accepted_translations text[],
+       ipa text, romanization text, emoji text, example_en text, example_es text, difficulty smallint, tags text[])
 on conflict (id) do update set unit_id = excluded.unit_id, text = excluded.text, translation_es = excluded.translation_es,
-  accepted_translations = excluded.accepted_translations, ipa = excluded.ipa, emoji = excluded.emoji,
+  accepted_translations = excluded.accepted_translations, ipa = excluded.ipa, romanization = excluded.romanization,
+  emoji = excluded.emoji,
   example_en = excluded.example_en, example_es = excluded.example_es, difficulty = excluded.difficulty,
   tags = excluded.tags, is_published = true;
 
@@ -70,12 +82,12 @@ on conflict (id) do update set unit_id = excluded.unit_id, text = excluded.text,
 update public.lessons set position = position + 1000
 where id in (select x ->> 'id' from jsonb_array_elements(d -> 'lessons') x) and position < 1000;
 
-insert into public.lessons (id, unit_id, position, title_es, objective_es, is_published)
-select x.id, x.unit_id, x.position, x.title_es, x.objective_es, true
+insert into public.lessons (id, unit_id, position, title_es, objective_es, intro, takeaways, is_published)
+select x.id, x.unit_id, x.position, x.title_es, x.objective_es, x.intro, x.takeaways, true
 from jsonb_to_recordset(d -> 'lessons')
-  as x(id text, unit_id text, position smallint, title_es text, objective_es text)
+  as x(id text, unit_id text, position smallint, title_es text, objective_es text, intro jsonb, takeaways text[])
 on conflict (id) do update set position = excluded.position, title_es = excluded.title_es,
-  objective_es = excluded.objective_es, is_published = true;
+  objective_es = excluded.objective_es, intro = excluded.intro, takeaways = excluded.takeaways, is_published = true;
 
 -- Las posiciones son únicas por lección: liberarlas antes de reordenar.
 update public.exercises set position = position + 1000

@@ -83,6 +83,15 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 - [x] `react-native` 0.88.1 (expo-doctor 20/20).
 - [x] Contenido A1 unidades 4–12 (45 lecciones, 180 palabras, 338 ejercicios) aplicado en Supabase; checksum md5 de palabras, lecciones, ejercicios y vínculos idéntico al local. Validación nueva contra traducciones ambiguas (corrigió _not_, _don't_, _doesn't_, _at_ y reemplazó _café_ por _museum_).
 
+### Varios idiomas: etapa 1 y unidad piloto (2026-11-02)
+
+- [x] Estándar de contenido (docs/CONTENT_STANDARD.md): `content/<idioma>/<nivel>/`, unidad con objetivo, gramática y revisión; lección con introducción y cierre. Inglés movido a `content/en/` con los mismos ids (checksum de lo existente idéntico).
+- [x] Migración `20261102120000_multilanguage_content` (aditiva): `zh`, `languages.content_status` / `ranked_available`, columnas de unidad, lección y `words.romanization`, `content_testers`, `set_target_language`, `is_content_tester`.
+- [x] Unidad piloto A1 U1 en italiano, portugués (Brasil) y chino; inglés U1 con introducciones, cierres y 7 ejercicios de producción agregados al final (`consolidate: false`). Migraciones `20261102120100…400_content_*_a1_unit_01`. **Borrador sin revisión nativa.**
+- [x] App: cambio de idioma en Perfil (beta sólo para testers), introducción y «Qué aprendiste» en la lección, pinyin encima de los caracteres (botón «pīn»), voz por idioma, repaso y palabra del día por idioma, «Más unidades en camino», Ranked deshabilitado en idiomas sin banco de palabras. Francés fuera del selector; español «Próximamente».
+- [ ] Aplicar las migraciones en Supabase (SQL editor) y probar en dispositivo.
+- [ ] Revisión nativa de cada unidad piloto antes de producir el resto de A1.
+
 ### Contenido A2 (2026-10-31)
 
 - [x] 12 unidades A2 (`content/a2`, borrador sin revisión humana): pasado de to be, pasado regular e irregular, viajes, presente continuo, ropa y compras, comparativos, futuro, salud, trabajo, clima y presente perfecto. 60 lecciones escritas + consolidación = 120 lecciones, 241 palabras, 1047 ejercicios. Migraciones `20261031050101…12_content_a2_unit_NN`.
@@ -103,11 +112,13 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 - [x] Test de base: lo que dejan las migraciones es idéntico a `content/`, vínculos incluidos.
 
 ### Logros por estrellas (2026-10-30)
+
 - [x] Métrica `stars_earned` (misma regla que la app; un test compara el SQL con `lessonStars`) y 4 logros nuevos: Toque de oro (25 lecciones doradas), Primeras estrellas (30 ★), Constelación (120 ★), Galaxia (300 ★). Catálogo de 20 logros.
 - [x] Estrellas y lecciones doradas en el perfil público (respeta la visibilidad) y ★ en la clasificación de Ranked sólo para perfiles públicos (`get_public_stars`).
 - [x] Aplicado en Supabase. El cambio de la restricción de métricas (`DROP CONSTRAINT`) se corrió a mano en el SQL Editor y se registró en el historial de migraciones.
 
 ### Logros por niveles, perfil nuevo y avatares (2026-10-30)
+
 - [x] 13 familias de logros con niveles (76 niveles) definidas en `shared/achievements.ts`; la migración del catálogo se genera con `scripts/build-achievements-sql.ts` y un test compara la base con ese archivo. Métricas nuevas: días con objetivo cumplido, repasos, respuestas rápidas (< 2 s). El rango máximo cuenta recién después de la colocación. Se conservaron los ids de los logros existentes.
 - [x] Perfil rediseñado (encabezado con avatar y rango, carrera, idiomas, estadísticas por período con `get_competitive_stats`, carrusel de logros) y pantalla de Ajustes (recordatorio, privacidad, mostrar país, cuenta). País (`profiles.region`) editable.
 - [x] Avatares: tres zorros (ids heredados `bolt` violeta predeterminado, `crown` amarillo, `flame` rojo) y foto propia de la galería (`expo-image-picker` + `expo-image-manipulator`, 512 px JPEG) en el bucket público `avatars`, un archivo por usuario en su carpeta. La foto se ve en perfil, perfil público, clasificación y batallas. Borrar la cuenta borra la foto.
@@ -115,6 +126,7 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 - [ ] Probar en dispositivo (requiere development build nueva: image picker y manipulator son módulos nativos). Moderación de fotos: ver LAUNCH_CHECKLIST.md.
 
 ### Ranked con bots (2026-10-30)
+
 - [x] Bots identificados con el distintivo BOT cuando no hay rival humano en 10 s; a tu nivel y con habilidad calibrada por simulación; cuentan para el ELO. Servidor (`Battle`, matchmaker, liquidación), migración `bot_battles` (aplicada) y app (rival encontrado, marcador, resultado e historial).
 - [x] Servidor probado contra Supabase real (partida completa contra bot con usuario temporal).
 - [x] **Ranked sin servidor** (decisión: no pagar hosting): la partida contra el bot corre en el teléfono y Supabase decide bot, guion, resultado y ELO (`start_bot_match` / `finish_bot_match`, migración `local_bot_matches`). Probado E2E contra Supabase real: el puntaje del bot recalculado coincide con el guion y el ELO con `shared/ranking.ts`. La práctica también es local.

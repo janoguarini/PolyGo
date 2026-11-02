@@ -33,9 +33,9 @@ export function rushLevels(rating: number): readonly string[] {
   return levels;
 }
 
-/** Nivel de una palabra según su unidad: los ids son a1-uNN, a2-uNN (content/index.ts). */
+/** Nivel de una palabra según su unidad: a1-uNN, a2-uNN o, en otros idiomas, it-a1-uNN (content/index.ts). */
 export function wordLevel(unitId: string | null | undefined): string | null {
-  const match = /^(a\d)-u\d+$/i.exec(unitId ?? '');
+  const match = /^(?:[a-z]{2}-)?(a\d)-u\d+$/i.exec(unitId ?? '');
   return match ? match[1]!.toUpperCase() : null;
 }
 

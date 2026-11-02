@@ -8,12 +8,12 @@ import {
   DAILY_GOALS,
   DEFAULT_AVATAR,
   START_LEVELS,
-  TARGET_LANGUAGES,
   nextStartLevel,
   usernameSchema,
   type AvatarId,
   type DailyGoalMinutes,
 } from '@shared/profile';
+import { LANGUAGES, isSelectable } from '@shared/languages';
 
 import {
   Avatar,
@@ -43,7 +43,11 @@ const TITLES: Record<Step, { title: string; subtitle: string }> = {
     subtitle:
       'Acá aprendés idiomas jugando: lecciones cortas, rachas diarias y partidas contra otros jugadores. Contame un poco de vos y después te muestro la app.',
   },
-  language: { title: '¿Qué idioma querés aprender?', subtitle: 'Por ahora Polygo enseña inglés.' },
+  language: {
+    title: '¿Qué idioma querés aprender?',
+    subtitle:
+      'Por ahora Polygo enseña inglés. Pronto sumamos italiano, portugués, chino y español.',
+  },
   level: {
     title: '¿Cuál es tu nivel?',
     subtitle: 'Tus lecciones van a empezar desde el nivel que elijas.',
@@ -166,13 +170,14 @@ export default function OnboardingScreen() {
         </View>
 
         {step === 'language' &&
-          TARGET_LANGUAGES.map((l) => (
+          // Al registrarse sólo se eligen los idiomas disponibles para todos (los beta, desde Perfil).
+          LANGUAGES.map((l) => (
             <SelectCard
               key={l.code}
               title={l.name}
               selected={language === l.code}
-              disabled={!l.available}
-              badge={l.available ? undefined : 'PRÓXIMAMENTE'}
+              disabled={!isSelectable(l, false)}
+              badge={isSelectable(l, false) ? undefined : 'PRÓXIMAMENTE'}
               onPress={() => setLanguage(l.code)}
             />
           ))}

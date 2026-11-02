@@ -157,7 +157,12 @@ export type Database = {
           is_published: boolean;
           language_code: string;
           level: string;
+          grammar: Json | null;
+          objective_es: string | null;
           position: number;
+          review_status: string;
+          reviewed_at: string | null;
+          reviewed_by: string | null;
           title_en: string;
           title_es: string;
           updated_at: string;
@@ -170,7 +175,10 @@ export type Database = {
           is_published?: boolean;
           language_code: string;
           level: string;
+          grammar?: Json | null;
+          objective_es?: string | null;
           position: number;
+          review_status?: string;
           title_en: string;
           title_es: string;
           updated_at?: string;
@@ -303,18 +311,29 @@ export type Database = {
         Relationships: [FK<'exercises_lesson_id_fkey', 'lesson_id', 'lessons', 'id'>];
       };
       languages: {
-        Row: { code: string; created_at: string; is_target_available: boolean; name_es: string };
+        Row: {
+          code: string;
+          content_status: string;
+          created_at: string;
+          is_target_available: boolean;
+          name_es: string;
+          ranked_available: boolean;
+        };
         Insert: {
           code: string;
+          content_status?: string;
           created_at?: string;
           is_target_available?: boolean;
           name_es: string;
+          ranked_available?: boolean;
         };
         Update: {
           code?: string;
+          content_status?: string;
           created_at?: string;
           is_target_available?: boolean;
           name_es?: string;
+          ranked_available?: boolean;
         };
         Relationships: [];
       };
@@ -367,9 +386,11 @@ export type Database = {
         Row: {
           created_at: string;
           id: string;
+          intro: Json | null;
           is_published: boolean;
           objective_es: string;
           position: number;
+          takeaways: string[];
           title_es: string;
           unit_id: string;
           updated_at: string;
@@ -377,9 +398,11 @@ export type Database = {
         Insert: {
           created_at?: string;
           id: string;
+          intro?: Json | null;
           is_published?: boolean;
           objective_es: string;
           position: number;
+          takeaways?: string[];
           title_es: string;
           unit_id: string;
           updated_at?: string;
@@ -835,6 +858,7 @@ export type Database = {
           ipa?: string | null;
           is_published?: boolean;
           language_code: string;
+          romanization?: string | null;
           review_status?: string;
           reviewed_at?: string | null;
           reviewed_by?: string | null;
@@ -1138,6 +1162,11 @@ export type Database = {
         };
         Returns: Json;
       };
+      is_content_tester: { Args: Record<PropertyKey, never>; Returns: boolean };
+      set_target_language: {
+        Args: { p_language: string };
+        Returns: Database['public']['Tables']['profiles']['Row'];
+      };
       word_of_the_day: {
         Args: { p_date: string; p_language?: string };
         Returns: WordRowType[];
@@ -1164,6 +1193,8 @@ type WordRowType = {
   ipa: string | null;
   is_published: boolean;
   language_code: string;
+  /** Pinyin con marcas de tono (chino); null en los idiomas de alfabeto latino. */
+  romanization: string | null;
   review_status: string;
   reviewed_at: string | null;
   reviewed_by: string | null;

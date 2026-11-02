@@ -13,13 +13,6 @@ export const usernameSchema = z
 export const DAILY_GOALS = [5, 10, 15, 20] as const;
 export type DailyGoalMinutes = (typeof DAILY_GOALS)[number];
 
-export const TARGET_LANGUAGES = [
-  { code: 'en', name: 'Inglés', flag: '🇬🇧', available: true },
-  { code: 'pt', name: 'Portugués', flag: '🇧🇷', available: false },
-  { code: 'fr', name: 'Francés', flag: '🇫🇷', available: false },
-  { code: 'it', name: 'Italiano', flag: '🇮🇹', available: false },
-] as const;
-
 /** Países seleccionables (profiles.region, ISO 3166-1 alfa-2). Primero los hispanohablantes. */
 export const COUNTRIES = [
   { code: 'AR', name: 'Argentina' },
@@ -55,8 +48,6 @@ export function flagEmoji(code: string | null | undefined): string | null {
   if (!code || !/^[A-Z]{2}$/.test(code)) return null;
   return String.fromCodePoint(...[...code].map((c) => 0x1f1e6 + c.charCodeAt(0) - 65));
 }
-
-export type TargetLanguageCode = (typeof TARGET_LANGUAGES)[number]['code'];
 
 /**
  * Niveles MCER del registro: el elegido define qué camino ves primero en Aprender. Los que tienen

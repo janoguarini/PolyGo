@@ -5,7 +5,8 @@ import type { Exercise } from '@shared/exercises';
 
 import { Text, colors, radii, spacing } from '@/design-system';
 
-import { speakEnglish } from '../speech';
+import { TargetText } from '../readings';
+import { speak } from '../speech';
 import { SpeakButton } from './SpeakButton';
 
 /** Parte superior del ejercicio: enunciado y estímulo según el tipo. */
@@ -13,7 +14,7 @@ export function ExercisePrompt({ exercise }: { exercise: Exercise }) {
   const p = exercise.payload;
 
   useEffect(() => {
-    if (p.type === 'listen_choice') speakEnglish(p.audioText);
+    if (p.type === 'listen_choice') speak(p.audioText);
   }, [exercise.id, p]);
 
   return (
@@ -31,7 +32,7 @@ export function ExercisePrompt({ exercise }: { exercise: Exercise }) {
       {p.type === 'translation_choice' ? (
         <View style={styles.row}>
           <SpeakButton text={p.word} />
-          <Text variant="title">{p.word}</Text>
+          <TargetText variant="title">{p.word}</TargetText>
         </View>
       ) : null}
 
@@ -99,9 +100,9 @@ export function ExercisePrompt({ exercise }: { exercise: Exercise }) {
 function Bubble({ text }: { text: string }) {
   return (
     <View style={styles.bubble}>
-      <Text variant="bodyStrong" color="textStrong">
+      <TargetText variant="bodyStrong" color="textStrong">
         {text}
-      </Text>
+      </TargetText>
     </View>
   );
 }

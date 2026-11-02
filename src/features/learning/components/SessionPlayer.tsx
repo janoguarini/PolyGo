@@ -14,7 +14,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { checkAnswer, serializeAnswer } from '@shared/answers';
 import type { Exercise, UserAnswer } from '@shared/exercises';
 
-import { ProgressBar, Text, colors, spacing } from '@/design-system';
+import { ProgressBar, Text, colors, radii, spacing } from '@/design-system';
 import { playSound } from '@/lib/sounds';
 
 import type { WordRow } from '../api';
@@ -25,6 +25,7 @@ import {
   progress,
   type PlayerState,
 } from '../player';
+import { useSessionLanguage } from '../readings';
 import { stopSpeaking } from '../speech';
 import { AnswerInput } from './AnswerInput';
 import { ExercisePrompt } from './ExercisePrompt';
@@ -46,6 +47,7 @@ export function SessionPlayer({ exercises, words, seed, onClose, onFinished }: P
   const shownAt = useRef(0);
   const exercise = currentExercise(state);
   const finishedReported = useRef(false);
+  const { readings, showReadings, setShowReadings } = useSessionLanguage();
 
   useEffect(() => {
     if (state.phase === 'answering') shownAt.current = nowMs();
@@ -109,6 +111,21 @@ export function SessionPlayer({ exercises, words, seed, onClose, onFinished }: P
               accessibilityLabel="Progreso de la sesión"
             />
           </View>
+          {readings ? (
+            // Chino: mostrar u ocultar el pinyin encima de los caracteres.
+            <Pressable
+              accessibilityRole="switch"
+              accessibilityLabel="Mostrar pinyin"
+              accessibilityState={{ checked: showReadings }}
+              onPress={() => setShowReadings(!showReadings)}
+              hitSlop={8}
+              style={[styles.pinyin, showReadings && styles.pinyinOn]}
+            >
+              <Text variant="caption" color={showReadings ? 'textStrong' : 'textMuted'}>
+                pīn
+              </Text>
+            </Pressable>
+          ) : null}
         </View>
 
         <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
@@ -154,6 +171,16 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.md,
   },
   close: { width: 32, height: 44, justifyContent: 'center' },
+  pinyin: {
+    minWidth: 44,
+    height: 32,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: radii.md,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  pinyinOn: { borderColor: colors.primaryBright, backgroundColor: colors.surfaceHighlight },
   flex: { flex: 1 },
   content: { padding: spacing.xl, paddingTop: spacing.lg, gap: spacing.xl, flexGrow: 1 },
   feedback: { flex: 1, justifyContent: 'flex-end' },

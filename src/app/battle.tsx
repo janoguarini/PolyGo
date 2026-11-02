@@ -4,6 +4,7 @@ import { Search, Share2, Swords, UserPlus, X } from 'lucide-react-native';
 import { useCallback, useEffect } from 'react';
 import { ActivityIndicator, Alert, BackHandler, Share, StyleSheet, View } from 'react-native';
 
+import { languageConfig } from '@shared/languages';
 import { WORD_RUSH, type BattleMode, type CancelReason } from '@shared/protocol';
 import { isPlaced } from '@shared/ranking';
 
@@ -38,6 +39,20 @@ import { FramedAvatar } from '@/features/cosmetics/FramedAvatar';
 import { useMyProfile } from '@/features/profile/hooks';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 
+function RankedUnavailable({ language }: { language: string }) {
+  const { name } = languageConfig(language);
+  return (
+    <Screen edges={['top', 'bottom']} scroll={false}>
+      <EmptyState
+        title={`Todavía no hay partidas en ${name.toLowerCase()}`}
+        message="Las partidas se habilitan cuando el nivel A1 de este idioma esté completo. Para jugar, cambiá a inglés desde tu perfil."
+        actionLabel="Volver"
+        onAction={() => (router.canGoBack() ? router.back() : router.replace('/'))}
+      />
+    </Screen>
+  );
+}
+
 /** Con servidor de partidas: ranked entre personas (y bots). Sin servidor: contra bots en el teléfono. */
 const useSession = battleServerConfigured ? useBattleSession : useLocalBattleSession;
 
@@ -57,6 +72,11 @@ export default function BattleScreen() {
     friend?: string;
     friendName?: string;
   }>();
+  const targetLanguage = useMyProfile().data?.profile.target_language;
+  // Idiomas sin banco de palabras suficiente: no hay partidas (tampoco desde un link o invitación).
+  if (targetLanguage && !languageConfig(targetLanguage).ranked) {
+    return <RankedUnavailable language={targetLanguage} />;
+  }
   if (params.challenge === 'host') {
     return (
       <ChallengeBattle

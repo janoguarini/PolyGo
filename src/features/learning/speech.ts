@@ -1,4 +1,7 @@
 import * as Speech from 'expo-speech';
+import { useEffect } from 'react';
+
+import { HAN, languageConfig } from '@shared/languages';
 
 import { configureAudio } from '@/lib/sounds';
 
@@ -10,12 +13,19 @@ const normalize = (language: string) => language.toLowerCase().replace('_', '-')
  */
 const NOVELTY = /speech\.synthesis\.voice|eloquence/;
 
-/** Puntaje de una voz: inglés de EE. UU. primero, después la mejor calidad instalada. */
-export function voiceScore(voice: Pick<Speech.Voice, 'identifier' | 'language' | 'quality'>) {
+/**
+ * Puntaje de una voz para un idioma: primero el locale exacto (en-US, it-IT, pt-BR, zh-CN), después
+ * otras variantes del idioma y, a igualdad, la mejor calidad instalada.
+ */
+export function voiceScore(
+  voice: Pick<Speech.Voice, 'identifier' | 'language' | 'quality'>,
+  locale = 'en-US',
+) {
   const language = normalize(voice.language);
-  if (!language.startsWith('en')) return -Infinity;
+  const wanted = normalize(locale);
+  if (!language.startsWith(wanted.split('-')[0]!)) return -Infinity;
   const id = voice.identifier.toLowerCase();
-  let score = language === 'en-us' ? 100 : 50;
+  let score = language === wanted ? 100 : 50;
   if (NOVELTY.test(id)) score -= 80;
   // iOS: premium > enhanced > compact (se bajan desde Ajustes → Accesibilidad → Contenido leído).
   if (id.includes('premium')) score += 30;
@@ -25,28 +35,43 @@ export function voiceScore(voice: Pick<Speech.Voice, 'identifier' | 'language' |
   return score;
 }
 
-let englishVoice: Promise<string | undefined> | null = null;
+const voices = new Map<string, Promise<string | undefined>>();
 
 /**
- * Voz inglesa instalada en el dispositivo. En Android, si el motor no tiene exactamente
- * «en-US», pedirla sólo por idioma puede no sonar: se elige una voz concreta.
+ * Voz instalada en el dispositivo para el locale. En Android, si el motor no tiene exactamente ese
+ * locale, pedirla sólo por idioma puede no sonar: se elige una voz concreta.
  */
-function pickEnglishVoice(): Promise<string | undefined> {
-  englishVoice ??= Speech.getAvailableVoicesAsync()
-    .then((voices) => {
-      const english = voices.filter((v) => voiceScore(v) > -Infinity);
+function pickVoice(locale: string): Promise<string | undefined> {
+  const cached = voices.get(locale);
+  if (cached) return cached;
+  const picked = Speech.getAvailableVoicesAsync()
+    .then((all) => {
+      const usable = all.filter((v) => voiceScore(v, locale) > -Infinity);
       // El motor de Android a veces todavía no cargó las voces: se reintenta la próxima vez.
-      if (english.length === 0) englishVoice = null;
-      return english.reduce<Speech.Voice | undefined>(
-        (best, v) => (!best || voiceScore(v) > voiceScore(best) ? v : best),
+      if (usable.length === 0) voices.delete(locale);
+      return usable.reduce<Speech.Voice | undefined>(
+        (best, v) => (!best || voiceScore(v, locale) > voiceScore(best, locale) ? v : best),
         undefined,
       )?.identifier;
     })
     .catch(() => {
-      englishVoice = null;
+      voices.delete(locale);
       return undefined;
     });
-  return englishVoice;
+  voices.set(locale, picked);
+  return picked;
+}
+
+/** Locale del idioma que se estudia; lo fija useSpeechLanguage según el perfil. */
+let currentLocale = languageConfig('en').speechLocale;
+
+export function setSpeechLanguage(code: string | null | undefined) {
+  currentLocale = languageConfig(code).speechLocale;
+}
+
+/** Mantiene la voz en el idioma del perfil (se monta en el layout raíz). */
+export function useSpeechLanguage(code: string | null | undefined) {
+  useEffect(() => setSpeechLanguage(code), [code]);
 }
 
 /** Velocidades: las palabras sueltas se dicen más despacio que las frases; «lento» para repetir. */
@@ -58,23 +83,28 @@ export const SPEECH_RATES = { word: 0.8, sentence: 0.9, slow: 0.5 } as const;
  */
 export function speechInput(text: string, slow = false) {
   const trimmed = text.trim();
-  const isWord = !/\s/.test(trimmed);
+  // En chino no hay espacios: es «palabra» si tiene hasta dos caracteres.
+  const isWord = HAN.test(trimmed) ? trimmed.length <= 2 : !/\s/.test(trimmed);
   return {
-    text: /[.!?]$/.test(trimmed) ? trimmed : `${trimmed}.`,
+    text: /[.!?。！？]$/.test(trimmed) ? trimmed : `${trimmed}.`,
     rate: slow ? SPEECH_RATES.slow : isWord ? SPEECH_RATES.word : SPEECH_RATES.sentence,
   };
 }
 
-/** Pronunciación con la voz sintetizada del sistema (no es una grabación de un hablante nativo). */
-export function speakEnglish(text: string, options: { slow?: boolean } = {}) {
+/**
+ * Pronunciación con la voz sintetizada del sistema en el idioma que se estudia (no es una grabación
+ * de un hablante nativo).
+ */
+export function speak(text: string, options: { slow?: boolean } = {}) {
+  const locale = currentLocale;
   void (async () => {
     await configureAudio();
-    const voice = await pickEnglishVoice();
+    const voice = await pickVoice(locale);
     // Cortar sólo si hay algo sonando: stop() seguido de speak() puede tragarse la palabra nueva.
     if (await Speech.isSpeakingAsync()) await Speech.stop();
     const input = speechInput(text, options.slow);
     Speech.speak(input.text, {
-      language: 'en-US',
+      language: locale,
       voice,
       rate: input.rate,
       onError: (error) => {

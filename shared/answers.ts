@@ -1,10 +1,14 @@
 import type { Exercise, UserAnswer } from './exercises';
+import { HAN } from './languages';
 
 /**
  * Validación determinista de respuestas. Reglas (documentadas en docs/LEARNING_CURRICULUM.md):
  * - Sin distinción de mayúsculas, espacios extra, apóstrofos tipográficos, comas ni puntuación final.
  * - Las tildes SÍ cuentan (no se eliminan diacríticos).
  * - Contracciones del inglés: sólo la lista cerrada CONTRACTIONS es equivalente a su forma larga.
+ * - Chino: la puntuación china cuenta como la latina y los espacios junto a caracteres no importan
+ *   («我 叫 王明» = «我叫王明»). En pinyin, los números de tono equivalen a las marcas
+ *   («ni3 hao3» = «nǐ hǎo»; 5 = tono neutro; «v» = «ü»). Sin tonos es otra respuesta.
  * - Tolerancia a un error de tipeo (distancia de edición 1) sólo en respuestas escritas de
  *   8 caracteres o más, y nunca en ejercicios de ortografía (complete_word).
  * - Cualquier otra cosa es incorrecta: no se aceptan respuestas "parecidas".
@@ -58,17 +62,58 @@ export function normalizeAnswer(raw: string): string {
     .toLowerCase()
     .replace(/[’‘`´]/g, "'")
     .replace(/[¿¡]/g, '')
-    .replace(/[,;:]/g, ' ')
+    .replace(/[,;:，、；：]/g, ' ')
     .replace(/[.!?]+(\s|$)/g, ' ')
+    .replace(/[。！？]+/g, ' ')
     .replace(/\s+/g, ' ')
-    .trim();
+    .trim()
+    .replace(HAN_SPACES, '$1');
 }
 
-/** Expande contracciones para comparar "I'm fine" con "I am fine". */
+/** Espacios junto a un carácter chino (en chino las palabras no se separan). */
+const HAN_SPACES = new RegExp(`\\s*(${HAN.source})\\s*`, 'gu');
+
+const TONE_MARKS: Record<string, string> = {
+  a: 'āáǎà',
+  e: 'ēéěè',
+  i: 'īíǐì',
+  o: 'ōóǒò',
+  u: 'ūúǔù',
+  ü: 'ǖǘǚǜ',
+};
+
+/** Una o más sílabas de pinyin con el número de tono pegado: «ni3», «ni3hao3», «lv4». */
+const NUMBERED_PINYIN = /^(?:[a-zü]*[aeiouü][a-zü]*?[1-5])+$/;
+
+/** Marca de tono en la vocal que corresponde: a/e; si no, la o de «ou»; si no, la última vocal. */
+function markSyllable(syllable: string, tone: number): string {
+  if (tone === 5) return syllable;
+  let at = syllable.search(/[ae]/);
+  if (at < 0) at = syllable.indexOf('ou');
+  if (at < 0) {
+    for (let i = syllable.length - 1; i >= 0 && at < 0; i--) {
+      if ('iouü'.includes(syllable[i]!)) at = i;
+    }
+  }
+  const marks = TONE_MARKS[syllable[at]!];
+  if (!marks) return syllable;
+  return syllable.slice(0, at) + marks[tone - 1] + syllable.slice(at + 1);
+}
+
+/** «ni3hao3» → «nǐhǎo». Lo que no es pinyin numerado queda igual. */
+export function pinyinFromNumbers(token: string): string {
+  const text = token.replace(/v/g, 'ü');
+  if (!NUMBERED_PINYIN.test(text)) return token;
+  return text.replace(/([a-zü]+?)([1-5])/g, (_, syllable: string, tone: string) =>
+    markSyllable(syllable, Number(tone)),
+  );
+}
+
+/** Expande contracciones para comparar "I'm fine" con "I am fine" (y pasa pinyin numerado a marcas). */
 export function canonicalForm(raw: string): string {
   return normalizeAnswer(raw)
     .split(' ')
-    .map((token) => CONTRACTIONS[token] ?? token)
+    .map((token) => CONTRACTIONS[token] ?? pinyinFromNumbers(token))
     .join(' ');
 }
 

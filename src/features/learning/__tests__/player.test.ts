@@ -202,6 +202,7 @@ describe('buildReviewExercises', () => {
     unit_id: 'u',
     accepted_translations: [],
     ipa: null,
+    romanization: null,
     emoji: null,
     example_en: null,
     example_es: null,
