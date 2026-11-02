@@ -2,16 +2,16 @@
 
 Cómo se organiza y se escribe el contenido de Polygo para inglés, italiano, portugués de Brasil y chino mandarín (siempre desde español). El español como idioma a aprender queda «Próximamente»: necesita la interfaz traducida al inglés.
 
-## Estado (2026-11-02)
+## Estado (2026-11-02, bloque 1)
 
-| Idioma         | Variante              | Estado (`shared/languages.ts` ↔ `languages.content_status`) | Ranked | Contenido                                                              |
-| -------------- | --------------------- | ----------------------------------------------------------- | ------ | ---------------------------------------------------------------------- |
-| Inglés         | General americano     | `available`                                                 | Sí     | A1 y A2 completos (borrador); la unidad 1 de A1 ya sigue este estándar |
-| Italiano       | Estándar              | `beta` (sólo testers)                                       | No     | Unidad piloto A1 U1 (borrador)                                         |
-| Portugués      | Brasil                | `beta` (sólo testers)                                       | No     | Unidad piloto A1 U1 (borrador)                                         |
-| Chino mandarín | Simplificado + pinyin | `beta` (sólo testers)                                       | No     | Unidad piloto A1 U1 (borrador)                                         |
-| Español        | Neutro con _tú_       | `soon`                                                      | No     | Sin contenido: requiere i18n de la interfaz                            |
-| Francés        | —                     | `hidden` (fuera del selector)                               | No     | Sin contenido                                                          |
+| Idioma         | Variante              | Estado (`shared/languages.ts` ↔ `languages.content_status`) | Ranked | Contenido                                                                |
+| -------------- | --------------------- | ----------------------------------------------------------- | ------ | ------------------------------------------------------------------------ |
+| Inglés         | General americano     | `available`                                                 | Sí     | A1 y A2 completos (borrador); unidades 1–4 de A1 ya siguen este estándar |
+| Italiano       | Estándar              | `beta` (sólo testers)                                       | No     | A1 unidades 1–4 de 12 (borrador)                                         |
+| Portugués      | Brasil                | `beta` (sólo testers)                                       | No     | A1 unidades 1–4 de 12 (borrador)                                         |
+| Chino mandarín | Simplificado + pinyin | `beta` (sólo testers)                                       | No     | A1 unidades 1–4 de 12 (borrador)                                         |
+| Español        | Neutro con _tú_       | `soon`                                                      | No     | Sin contenido: requiere i18n de la interfaz                              |
+| Francés        | —                     | `hidden` (fuera del selector)                               | No     | Sin contenido                                                            |
 
 **Todo el contenido nuevo está redactado sin revisión de hablantes nativos** (`review_status = 'draft'`). Antes de pasar un idioma a `available` hace falta revisión lingüística de cada unidad (`UnitDef.review`).
 
@@ -45,7 +45,9 @@ content/index.ts                          COURSES: idioma → niveles → unidad
 
 Reglas que valida `content/__tests__/content.test.ts`: lo anterior, ≥1 ejercicio de escucha por lección, cada palabra practicada, sólo palabras ya vistas, ids con prefijo, pinyin con tonos en chino y lectura para todo carácter chino.
 
-Para agregar ejercicios a una unidad **ya cargada**, ponelos al final con `consolidate: false`: los ids anteriores y las lecciones de consolidación no cambian.
+Para agregar ejercicios a una unidad **ya cargada**, ponelos al final con `consolidate: false`: los ids anteriores y las lecciones de consolidación no cambian. Por eso las lecciones de inglés completadas pueden tener hasta 12 ejercicios.
+
+Las partículas de tono neutro del chino (吗, 的) llevan la etiqueta `particle`: no se traducen ni se escuchan sueltas en la consolidación.
 
 ## Chino
 
@@ -64,7 +66,7 @@ Para agregar ejercicios a una unidad **ya cargada**, ponelos al final con `conso
 
 1. ✅ Estandarizar el modelo (esta etapa).
 2. ⏳ Validar la unidad piloto en los cuatro idiomas: pruebas en dispositivo + revisión nativa de cada unidad 1.
-3. A1 por bloques de 3 unidades por idioma, con revisión nativa de cada bloque antes del siguiente.
+3. A1 por bloques de 3 unidades por idioma, con revisión nativa de cada bloque antes del siguiente. ✅ Bloque 1 (U2–4) redactado; ⏳ bloques 2–4 (U5–12).
 4. A2 por bloques. Ranked de un idioma se habilita con su A1 completo y revisado.
 5. Revisión de calidad: progresión, consignas, errores frecuentes por ejercicio (`exercise_attempts`).
 6. B1: sólo preparar (ampliar el CHECK de `level` / `start_level` cuando toque).

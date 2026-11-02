@@ -29,6 +29,22 @@ export const unit04: UnitDef = {
   titleEn: 'Family and people',
   description: 'Presentar a tu familia y hablar de otras personas.',
   emoji: '👨‍👩‍👧',
+  objective:
+    'Podés presentar a tu familia, decir de quién es algo con his, her, our y their, y cuántos familiares tenés.',
+  grammar: {
+    title: 'His / her y have / has',
+    explanation:
+      'His es «su» de él y her, «su» de ella: depende de quién es dueño. Tener es have, pero con he, she e it es has.',
+    examples: [
+      { target: 'Her brother is ten.', base: 'Su hermano (de ella) tiene diez años.' },
+      { target: 'I have two sisters.', base: 'Tengo dos hermanas.' },
+      { target: 'He has a baby.', base: 'Él tiene un bebé.' },
+    ],
+  },
+  review: {
+    status: 'draft',
+    notes: 'Estándar nuevo (bloque 1). Pendiente de revisión por alguien con dominio del inglés.',
+  },
   words: [
     w(
       'en-family',
@@ -220,6 +236,18 @@ export const unit04: UnitDef = {
     {
       title: 'Mi familia',
       objective: 'Nombrar a la familia cercana.',
+      intro: {
+        explanation:
+          'Mother y father son madre y padre; parents, los dos. Ojo: parents no son los parientes, son tus padres.',
+        examples: [
+          { target: 'My family is small.', base: 'Mi familia es chica.' },
+          { target: 'My parents are from Spain.', base: 'Mis padres son de España.' },
+        ],
+      },
+      takeaways: [
+        'Nombrás a tu madre, tu padre y tus padres.',
+        'Sabés que parents son tus padres.',
+      ],
       exercises: [
         ex.imageChoice('👨‍👩‍👧‍👦', 'family', ['friend', 'student', 'name'], ['en-family']),
         ex.translationChoice('mother', 'madre', ['padre', 'hermana', 'abuela'], ['en-mother']),
@@ -238,11 +266,25 @@ export const unit04: UnitDef = {
           'en-parents',
           'en-spain',
         ]),
+        // Agregados (estándar: escucha y recuperación activa al final); no cambian lo cargado.
+        ex.translateWrite('Mi madre', 'my mother', ['en-mother'], {
+          acceptedAnswers: ['my mom'],
+          consolidate: false,
+        }),
       ],
     },
     {
       title: 'Hermanos y abuelos',
       objective: 'Hablar de hermanos, abuelos y bebés.',
+      intro: {
+        explanation:
+          'Brother y sister son hermano y hermana. Grandmother y grandfather, los abuelos.',
+        examples: [
+          { target: 'I have a brother.', base: 'Tengo un hermano.' },
+          { target: 'My grandmother is happy.', base: 'Mi abuela está feliz.' },
+        ],
+      },
+      takeaways: ['Nombrás a tus hermanos y abuelos.', 'Decís cómo está un familiar con is.'],
       exercises: [
         ex.imageChoice(
           '👵',
@@ -277,11 +319,28 @@ export const unit04: UnitDef = {
           'en-grandmother',
           'en-happy',
         ]),
+        // Agregados (estándar: escucha y recuperación activa al final); no cambian lo cargado.
+        ex.translateWrite('Mi abuelo', 'my grandfather', ['en-grandfather'], {
+          acceptedAnswers: ['my grandpa'],
+          consolidate: false,
+        }),
       ],
     },
     {
       title: 'Personas',
       objective: 'Hombre, mujer, chico, chica y preguntar quién es alguien.',
+      intro: {
+        explanation:
+          'Man y woman son hombre y mujer; boy y girl, chico y chica. Para preguntar quién es alguien: Who is he?',
+        examples: [
+          { target: 'Who is she?', base: '¿Quién es ella?' },
+          { target: 'He is a boy.', base: 'Él es un chico.' },
+        ],
+      },
+      takeaways: [
+        'Nombrás a las personas: man, woman, boy, girl.',
+        'Preguntás quién es alguien con Who is…?',
+      ],
       exercises: [
         ex.imageChoice('👩', 'woman', ['man', 'girl', 'boy'], ['en-woman']),
         ex.imageChoice('👦', 'boy', ['girl', 'man', 'baby'], ['en-boy']),
@@ -313,11 +372,35 @@ export const unit04: UnitDef = {
           ['Ana is my sister.', 'My sister.'],
           ['en-who', 'en-sister'],
         ),
+        // Agregados (estándar: escucha y recuperación activa al final); no cambian lo cargado.
+        ex.listenChoice(
+          'Who is she?',
+          ['Who is he?', 'How is she?', 'Where is she?'],
+          ['en-who', 'en-she'],
+          { consolidate: false },
+        ),
+        ex.translateWrite('¿Quién es él?', 'Who is he?', ['en-who', 'en-he'], {
+          acceptedAnswers: ["Who's he?"],
+          consolidate: false,
+        }),
+        ex.translateWrite('Ella es una chica.', 'She is a girl.', ['en-she', 'en-girl'], {
+          acceptedAnswers: ["She's a girl."],
+          consolidate: false,
+        }),
       ],
     },
     {
       title: 'Su, nuestro y su de ellos',
       objective: 'Usar his, her, our y their.',
+      intro: {
+        explanation:
+          'En inglés «su» cambia según el dueño: his (de él), her (de ella), their (de ellos). Our es «nuestro» o «nuestra».',
+        examples: [
+          { target: 'His name is Tom.', base: 'Su nombre (de él) es Tom.' },
+          { target: 'Our mother is a teacher.', base: 'Nuestra madre es profesora.' },
+        ],
+      },
+      takeaways: ['Elegís his o her según quién es el dueño.', 'Usás our y their.'],
       exercises: [
         ex.translationChoice(
           'his',
@@ -380,11 +463,33 @@ export const unit04: UnitDef = {
         ex.translateWrite('Su nombre es Ana.', 'Her name is Ana.', ['en-her', 'en-name'], {
           explanation: 'Ana es mujer: her. Si fuera Tom, sería His name is Tom.',
         }),
+        // Agregados (estándar: escucha y recuperación activa al final); no cambian lo cargado.
+        ex.listenChoice(
+          'their family',
+          ['her family', 'our family', 'his family'],
+          ['en-their', 'en-family'],
+          { consolidate: false },
+        ),
+        ex.translateWrite('Su nombre (de él) es Tom.', 'His name is Tom.', ['en-his', 'en-name'], {
+          consolidate: false,
+        }),
+        ex.translateWrite('Nuestra familia', 'our family', ['en-our', 'en-family'], {
+          consolidate: false,
+        }),
       ],
     },
     {
       title: 'Tengo dos hermanas',
       objective: 'Usar have y has para hablar de tu familia.',
+      intro: {
+        explanation:
+          'Tener es have con I, you, we y they, y has con he, she e it: I have, she has.',
+        examples: [
+          { target: 'I have two sisters.', base: 'Tengo dos hermanas.' },
+          { target: 'She has a brother.', base: 'Ella tiene un hermano.' },
+        ],
+      },
+      takeaways: ['Usás have y has según la persona.', 'Decís cuántos familiares tenés.'],
       exercises: [
         ex.fillBlank(
           'I ___ a brother.',

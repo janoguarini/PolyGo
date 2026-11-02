@@ -103,12 +103,13 @@ describe('estructura del currículo', () => {
     expect(new Set(ids).size).toBe(ids.length);
   });
 
-  it('cada lección tiene entre 6 y 10 ejercicios', () => {
+  it('cada lección tiene entre 6 y 10 ejercicios (hasta 12 las escritas que se completaron)', () => {
+    // Las lecciones de inglés ya cargadas suman al final escucha y producción (consolidate: false)
+    // para cumplir el estándar sin cambiar lo existente: pueden llegar a 12.
     for (const { lesson, id } of lessons) {
-      expect([id, lesson.exercises.length >= 6 && lesson.exercises.length <= 10]).toEqual([
-        id,
-        true,
-      ]);
+      const max = lesson.kind === 'lesson' ? 12 : 10;
+      const n = lesson.exercises.length;
+      expect([id, n >= 6 && n <= max]).toEqual([id, true]);
     }
   });
 
@@ -128,7 +129,13 @@ describe('estructura del currículo', () => {
       const han = languageConfig(language).script === 'han';
       for (const w of wordsOfLanguage(language)) {
         if (language === 'en') expect(w.ipa).toMatch(/^\/.+\/$/);
-        if (han) expect([w.id, toneMark.test(w.romanization ?? '')]).toEqual([w.id, true]);
+        // Las partículas de tono neutro (吗 ma, 的 de) no llevan marca: van con la etiqueta 'particle'.
+        if (han) {
+          const ok = w.tags.includes('particle')
+            ? /^[a-zü]+$/.test(w.romanization ?? '')
+            : toneMark.test(w.romanization ?? '');
+          expect([w.id, ok]).toEqual([w.id, true]);
+        }
         expect(w.translation.trim()).not.toBe('');
         expect(w.exampleEn.trim()).not.toBe('');
         expect(w.exampleEs.trim()).not.toBe('');

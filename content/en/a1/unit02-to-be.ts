@@ -7,6 +7,22 @@ export const unit02: UnitDef = {
   titleEn: 'Pronouns and the verb to be',
   description: 'Yo, vos, él, ella… y cómo decir quién sos y cómo estás.',
   emoji: '🧍',
+  objective:
+    'Podés usar los pronombres y el verbo to be para decir quién sos, cómo estás y hablar de otras personas.',
+  grammar: {
+    title: 'To be: am, is, are',
+    explanation:
+      'To be es «ser» y «estar» a la vez. I am; you, we y they are; he, she e it is. Para negar se agrega not y para preguntar el verbo va primero.',
+    examples: [
+      { target: "I'm a student.", base: 'Soy estudiante.' },
+      { target: 'She is not tired.', base: 'Ella no está cansada.' },
+      { target: 'Are you happy?', base: '¿Estás feliz?' },
+    ],
+  },
+  review: {
+    status: 'draft',
+    notes: 'Estándar nuevo (bloque 1). Pendiente de revisión por alguien con dominio del inglés.',
+  },
   words: [
     {
       id: 'en-i',
@@ -174,6 +190,15 @@ export const unit02: UnitDef = {
     {
       title: 'Yo, vos, él, ella',
       objective: 'Usar los pronombres I, you, he y she.',
+      intro: {
+        explanation:
+          'I es «yo» y siempre va con mayúscula. You sirve para vos, tú y usted. He es «él» y she, «ella».',
+        examples: [
+          { target: 'I am Ana.', base: 'Yo soy Ana.' },
+          { target: 'She is my friend.', base: 'Ella es mi amiga.' },
+        ],
+      },
+      takeaways: ['Usás I, you, he y she.', 'Escribís I siempre con mayúscula.'],
       exercises: [
         ex.imageChoice('👩', 'she', ['he', 'I', 'you'], ['en-she']),
         ex.imageChoice('👨', 'he', ['she', 'we', 'it'], ['en-he']),
@@ -198,6 +223,15 @@ export const unit02: UnitDef = {
     {
       title: 'Nosotros, ellos y cosas',
       objective: 'Usar we, they e it.',
+      intro: {
+        explanation:
+          'We es «nosotros» y they, «ellos» o «ellas». Para una cosa o un animal se usa it, que en español no se dice.',
+        examples: [
+          { target: 'We are friends.', base: 'Somos amigos.' },
+          { target: 'It is a cat.', base: 'Es un gato.' },
+        ],
+      },
+      takeaways: ['Usás we y they para varias personas.', 'Usás it para cosas y animales.'],
       exercises: [
         ex.translationChoice(
           'we',
@@ -238,11 +272,22 @@ export const unit02: UnitDef = {
         ),
         ex.listenChoice('they', ['we', 'he', 'it'], ['en-they']),
         ex.translateWrite('Nosotros', 'we', ['en-we']),
+        // Agregados (estándar: escucha y recuperación activa al final); no cambian lo cargado.
+        ex.translateWrite('Ellos', 'they', ['en-they'], { consolidate: false }),
       ],
     },
     {
       title: 'I am, you are',
       objective: 'Decir cómo estás con am y are.',
+      intro: {
+        explanation:
+          'Con I va am (I am) y con you, are (you are). Al hablar se contraen: I’m, you’re. To be sirve tanto para «ser» como para «estar».',
+        examples: [
+          { target: 'I am happy.', base: 'Estoy feliz.' },
+          { target: "You're tired.", base: 'Estás cansado.' },
+        ],
+      },
+      takeaways: ['Usás I am y you are.', 'Sabés que to be es «ser» y «estar».'],
       exercises: [
         ex.fillBlank(
           'I ___ happy.',
@@ -283,11 +328,35 @@ export const unit02: UnitDef = {
             explanation: 'I am · he/she/it is · you/we/they are.',
           },
         ),
+        // Agregados (estándar: escucha y recuperación activa al final); no cambian lo cargado.
+        ex.listenChoice(
+          "I'm tired",
+          ["I'm happy", "you're tired", "I'm a student"],
+          ['en-am', 'en-tired'],
+          { consolidate: false },
+        ),
+        ex.translateWrite('Estoy feliz.', "I'm happy.", ['en-am', 'en-happy'], {
+          acceptedAnswers: ['I am happy.'],
+          consolidate: false,
+        }),
+        ex.translateWrite('Estás cansada.', "You're tired.", ['en-are', 'en-tired'], {
+          acceptedAnswers: ['You are tired.'],
+          consolidate: false,
+        }),
       ],
     },
     {
       title: 'He is, she is',
       objective: 'Hablar de otras personas con is.',
+      intro: {
+        explanation:
+          'Con he, she e it el verbo es is: he is, she is, it is. Al hablar se contrae: he’s, she’s.',
+        examples: [
+          { target: 'He is a teacher.', base: 'Él es profesor.' },
+          { target: "She's my friend.", base: 'Ella es mi amiga.' },
+        ],
+      },
+      takeaways: ['Usás is con he, she e it.', 'Presentás a otra persona con he is o she is.'],
       exercises: [
         ex.fillBlank(
           'She ___ a teacher.',
@@ -327,11 +396,34 @@ export const unit02: UnitDef = {
           ['She is my friend.', 'He is a teacher.', 'I am your friend.'],
           ['en-he', 'en-friend'],
         ),
+        // Agregados (estándar: escucha y recuperación activa al final); no cambian lo cargado.
+        ex.translateWrite(
+          'Ella es profesora.',
+          'She is a teacher.',
+          ['en-she', 'en-is', 'en-teacher'],
+          { acceptedAnswers: ["She's a teacher."], consolidate: false },
+        ),
+        ex.translateWrite('Él es mi amigo.', 'He is my friend.', ['en-he', 'en-is', 'en-friend'], {
+          acceptedAnswers: ["He's my friend."],
+          consolidate: false,
+        }),
       ],
     },
     {
       title: 'Negar y preguntar',
       objective: 'Formar oraciones negativas y preguntas con to be.',
+      intro: {
+        explanation:
+          'Para negar, not va después de to be: I am not, she is not (isn’t). Para preguntar, el verbo va primero: Are you tired?',
+        examples: [
+          { target: "I'm not tired.", base: 'No estoy cansado.' },
+          { target: 'Is she a student?', base: '¿Ella es estudiante?' },
+        ],
+      },
+      takeaways: [
+        'Negás con not después de am, is o are.',
+        'Preguntás poniendo el verbo primero: Are you…?',
+      ],
       exercises: [
         ex.fillBlank(
           'I am ___ tired.',
@@ -379,6 +471,14 @@ export const unit02: UnitDef = {
           ['She is happy.', 'Is he happy?', 'Are you happy?'],
           ['en-is', 'en-happy'],
         ),
+        // Agregados (estándar: escucha y recuperación activa al final); no cambian lo cargado.
+        ex.translateWrite('No estoy cansado.', "I'm not tired.", ['en-am', 'en-not', 'en-tired'], {
+          acceptedAnswers: ['I am not tired.'],
+          consolidate: false,
+        }),
+        ex.translateWrite('¿Sos estudiante?', 'Are you a student?', ['en-are', 'en-student'], {
+          consolidate: false,
+        }),
       ],
     },
   ],

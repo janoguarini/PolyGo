@@ -138,7 +138,7 @@ class Generator {
 
   listenChoice(w: WordDef, seed: string): ExerciseDef | null {
     // Un artículo suelto («a») la voz sintetizada lo lee como letra: no sirve de oído.
-    if (w.tags.includes('articles')) return null;
+    if (w.tags.includes('articles') || w.tags.includes('particle')) return null;
     const options = this.distractors(w, (d) => d.text, seed);
     return options ? this.ex.listenChoice(w.text, options, [w.id]) : null;
   }
@@ -156,7 +156,8 @@ class Generator {
   translateWrite(w: WordDef): ExerciseDef | null {
     const m = meanings(w);
     const ambiguous = this.allWords.some((d) => d.id !== w.id && overlaps(meanings(d), m));
-    if (ambiguous || isCognate(w)) return null;
+    // Una partícula sola (吗, 的) no se traduce: se practica en contexto.
+    if (ambiguous || isCognate(w) || w.tags.includes('particle')) return null;
     if (this.han) {
       if (!w.romanization) return null;
       return this.ex.translateWrite(writeSource(w), w.romanization, [w.id], {

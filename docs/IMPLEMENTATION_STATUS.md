@@ -90,7 +90,8 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 - [x] Unidad piloto A1 U1 en italiano, portugués (Brasil) y chino; inglés U1 con introducciones, cierres y 7 ejercicios de producción agregados al final (`consolidate: false`). Migraciones `20261102120100…400_content_*_a1_unit_01`. **Borrador sin revisión nativa.**
 - [x] App: cambio de idioma en Perfil (beta sólo para testers), introducción y «Qué aprendiste» en la lección, pinyin encima de los caracteres (botón «pīn»), voz por idioma, repaso y palabra del día por idioma, «Más unidades en camino», Ranked deshabilitado en idiomas sin banco de palabras. Francés fuera del selector; español «Próximamente».
 - [ ] Aplicar las migraciones en Supabase (SQL editor) y probar en dispositivo.
-- [ ] Revisión nativa de cada unidad piloto antes de producir el resto de A1.
+- [x] Bloque 1 de A1 (2026-11-02): unidades 2–4 en italiano, portugués y chino (ser / nacionalidad, números y edad, familia) y estándar nuevo en inglés U2–4 (26 ejercicios agregados al final, nada cargado cambia). Migraciones `20261102130100…111`. **Borrador sin revisión nativa.**
+- [ ] Revisión nativa de las unidades 1–4 de cada idioma antes del bloque 2 (U5–7).
 
 ### Contenido A2 (2026-10-31)
 

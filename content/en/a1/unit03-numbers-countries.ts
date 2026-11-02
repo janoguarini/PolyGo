@@ -26,6 +26,21 @@ export const unit03: UnitDef = {
   titleEn: 'Numbers, ages and countries',
   description: 'Contar hasta veinte, decir tu edad y de dónde sos.',
   emoji: '🌍',
+  objective: 'Podés contar hasta veinte, decir tu edad y de dónde sos.',
+  grammar: {
+    title: 'La edad con to be',
+    explanation:
+      'En inglés la edad va con to be, no con have: I am ten (years old). El origen también: I am from Argentina.',
+    examples: [
+      { target: 'How old are you?', base: '¿Cuántos años tenés?' },
+      { target: "I'm twenty years old.", base: 'Tengo veinte años.' },
+      { target: 'Where are you from?', base: '¿De dónde sos?' },
+    ],
+  },
+  review: {
+    status: 'draft',
+    notes: 'Estándar nuevo (bloque 1). Pendiente de revisión por alguien con dominio del inglés.',
+  },
   words: [
     number('en-one', 'one', 'uno', '/wʌn/', '1️⃣', 'I have one brother.', 'Tengo un hermano.'),
     number('en-two', 'two', 'dos', '/tu/', '2️⃣', 'Two coffees, please.', 'Dos cafés, por favor.'),
@@ -210,6 +225,15 @@ export const unit03: UnitDef = {
     {
       title: 'Del 1 al 5',
       objective: 'Contar del uno al cinco.',
+      intro: {
+        explanation:
+          'One, two, three, four, five. Three empieza con th: la lengua va entre los dientes.',
+        examples: [
+          { target: 'One, two, three.', base: 'Uno, dos, tres.' },
+          { target: 'Two coffees, please.', base: 'Dos cafés, por favor.' },
+        ],
+      },
+      takeaways: ['Contás del uno al cinco.', 'Pronunciás three con la lengua entre los dientes.'],
       exercises: [
         ex.imageChoice('3️⃣', 'three', ['two', 'five', 'four'], ['en-three']),
         ex.imageChoice('5️⃣', 'five', ['four', 'one', 'three'], ['en-five']),
@@ -226,11 +250,21 @@ export const unit03: UnitDef = {
         ),
         ex.completeWord('th__e', 'three', 'tres', ['en-three']),
         ex.translateWrite('Cinco', 'five', ['en-five']),
+        // Agregados (estándar: escucha y recuperación activa al final); no cambian lo cargado.
+        ex.translateWrite('Tres', 'three', ['en-three'], { consolidate: false }),
       ],
     },
     {
       title: 'Del 6 al 10',
       objective: 'Contar del seis al diez.',
+      intro: {
+        explanation: 'Six, seven, eight, nine, ten. Eight se escribe con gh, pero suena «éit».',
+        examples: [
+          { target: 'Seven days.', base: 'Siete días.' },
+          { target: 'Ten dollars.', base: 'Diez dólares.' },
+        ],
+      },
+      takeaways: ['Contás del seis al diez.', 'Escribís eight con gh.'],
       exercises: [
         ex.imageChoice('7️⃣', 'seven', ['six', 'nine', 'eight'], ['en-seven']),
         ex.imageChoice('🔟', 'ten', ['two', 'nine', 'seven'], ['en-ten']),
@@ -255,11 +289,23 @@ export const unit03: UnitDef = {
           ['en-ten', 'en-five'],
           { skill: 'vocabulary' },
         ),
+        // Agregados (estándar: escucha y recuperación activa al final); no cambian lo cargado.
+        ex.translateWrite('Ocho', 'eight', ['en-eight'], { consolidate: false }),
+        ex.translateWrite('Diez', 'ten', ['en-ten'], { consolidate: false }),
       ],
     },
     {
       title: 'Hasta veinte',
       objective: 'Usar números más grandes: 11, 12, 15 y 20.',
+      intro: {
+        explanation:
+          'Eleven y twelve son especiales. Del 13 al 19 terminan en -teen: fifteen. Twenty es veinte. Ojo: fifteen (15) y fifty (50) suenan parecido.',
+        examples: [
+          { target: 'I have twelve friends.', base: 'Tengo doce amigos.' },
+          { target: 'Fifteen dollars.', base: 'Quince dólares.' },
+        ],
+      },
+      takeaways: ['Decís 11, 12, 15 y 20.', 'Reconocés la terminación -teen.'],
       exercises: [
         ex.translationChoice('twelve', 'doce', ['once', 'quince', 'veinte'], ['en-twelve']),
         ex.listenChoice('fifteen', ['five', 'twelve', 'twenty'], ['en-fifteen'], {
@@ -292,11 +338,23 @@ export const unit03: UnitDef = {
         ),
         ex.translateWrite('Doce', 'twelve', ['en-twelve']),
         ex.completeWord('tw__ty', 'twenty', 'veinte', ['en-twenty']),
+        // Agregados (estándar: escucha y recuperación activa al final); no cambian lo cargado.
+        ex.translateWrite('Veinte', 'twenty', ['en-twenty'], { consolidate: false }),
+        ex.translateWrite('Quince', 'fifteen', ['en-fifteen'], { consolidate: false }),
       ],
     },
     {
       title: '¿Cuántos años tenés?',
       objective: 'Preguntar y decir la edad.',
+      intro: {
+        explanation:
+          'Para la edad se usa to be, no have: I am ten (years old). Se pregunta How old are you? Decir «I have ten years» es un error típico.',
+        examples: [
+          { target: 'How old are you?', base: '¿Cuántos años tenés?' },
+          { target: "I'm twelve years old.", base: 'Tengo doce años.' },
+        ],
+      },
+      takeaways: ['Preguntás la edad con How old are you?', 'Respondés con I am + edad, sin have.'],
       exercises: [
         ex.translationChoice(
           'How old are you?',
@@ -336,11 +394,35 @@ export const unit03: UnitDef = {
           ['en-how-old', 'en-eleven'],
         ),
         ex.translationChoice('year', 'año', ['edad', 'viejo', 'número'], ['en-year']),
+        // Agregados (estándar: escucha y recuperación activa al final); no cambian lo cargado.
+        ex.translateWrite('¿Cuántos años tenés?', 'How old are you?', ['en-how-old', 'en-are'], {
+          consolidate: false,
+        }),
+        ex.translateWrite(
+          'Tengo veinte años.',
+          "I'm twenty years old.",
+          ['en-am', 'en-twenty', 'en-old'],
+          {
+            acceptedAnswers: ['I am twenty years old.', "I'm twenty.", 'I am twenty.'],
+            explanation: 'La edad va con to be: I am twenty. «I have twenty years» no se dice.',
+            consolidate: false,
+          },
+        ),
       ],
     },
     {
       title: '¿De dónde sos?',
       objective: 'Decir de qué país sos.',
+      intro: {
+        explanation:
+          'Where are you from? es «¿de dónde sos?». Se responde I am from + país. Los países van con mayúscula y algunos con the: the United States.',
+        examples: [
+          { target: 'Where are you from?', base: '¿De dónde sos?' },
+          { target: "I'm from Mexico.", base: 'Soy de México.' },
+          { target: 'She is from the United States.', base: 'Ella es de Estados Unidos.' },
+        ],
+      },
+      takeaways: ['Preguntás el origen con Where are you from?', 'Respondés con I am from + país.'],
       exercises: [
         ex.imageChoice('🇪🇸', 'Spain', ['Mexico', 'England', 'Argentina'], ['en-spain']),
         ex.imageChoice(
@@ -388,6 +470,22 @@ export const unit03: UnitDef = {
             ['country', 'país'],
           ],
           ['en-england', 'en-spain', 'en-mexico', 'en-country'],
+        ),
+        // Agregados (estándar: escucha y recuperación activa al final); no cambian lo cargado.
+        ex.listenChoice(
+          'Where are you from?',
+          ['How old are you?', 'How are you?', 'Who are you?'],
+          ['en-where', 'en-from'],
+          { consolidate: false },
+        ),
+        ex.translateWrite('¿De dónde sos?', 'Where are you from?', ['en-where', 'en-from'], {
+          consolidate: false,
+        }),
+        ex.translateWrite(
+          'Ella es de España.',
+          'She is from Spain.',
+          ['en-she', 'en-from', 'en-spain'],
+          { acceptedAnswers: ["She's from Spain."], consolidate: false },
         ),
       ],
     },
