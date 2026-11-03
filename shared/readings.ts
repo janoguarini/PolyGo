@@ -15,6 +15,8 @@ export const EXTRA_READINGS: Readonly<Record<string, string>> = {
   骂: 'mà',
   // Partícula que aparece suelta como opción (en el vocabulario va dentro de 你呢).
   呢: 'ne',
+  // Suelto como opción (en el vocabulario va dentro de 没有 y 没关系).
+  没: 'méi',
 };
 
 export interface ReadingSegment {

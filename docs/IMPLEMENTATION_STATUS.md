@@ -91,7 +91,8 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 - [x] App: cambio de idioma en Perfil (beta sólo para testers), introducción y «Qué aprendiste» en la lección, pinyin encima de los caracteres (botón «pīn»), voz por idioma, repaso y palabra del día por idioma, «Más unidades en camino», Ranked deshabilitado en idiomas sin banco de palabras. Francés fuera del selector; español «Próximamente».
 - [ ] Aplicar las migraciones en Supabase (SQL editor) y probar en dispositivo.
 - [x] Bloque 1 de A1 (2026-11-02): unidades 2–4 en italiano, portugués y chino (ser / nacionalidad, números y edad, familia) y estándar nuevo en inglés U2–4 (26 ejercicios agregados al final, nada cargado cambia). Migraciones `20261102130100…111`. **Borrador sin revisión nativa.**
-- [ ] Revisión nativa de las unidades 1–4 de cada idioma antes del bloque 2 (U5–7).
+- [x] Bloque 2 de A1 (2026-11-03): unidades 5–7 en italiano, portugués y chino (objetos y colores / clasificadores, la casa y dónde está algo, bar y comida). Migraciones `20261103120100…108`. **Borrador sin revisión nativa.**
+- [ ] Revisión nativa de las unidades 1–7 de cada idioma (el usuario decidió avanzar con el bloque 2 antes de revisar).
 
 ### Contenido A2 (2026-10-31)
 
