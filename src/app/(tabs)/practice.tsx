@@ -1,10 +1,13 @@
 import { router } from 'expo-router';
 import {
+  BookOpen,
+  ChartNoAxesColumn,
   ChevronRight,
+  CircleAlert,
+  CircleCheck,
   Layers,
   Library,
-  ListChecks,
-  RotateCcw,
+  Play,
   Smartphone,
   Sparkles,
   Target,
@@ -13,7 +16,7 @@ import {
 import { useRef, useState, type ReactNode } from 'react';
 import { Platform, StyleSheet, View, type ScrollViewInstance } from 'react-native';
 
-import { SRS_CONFIG, wordStatus, type WordStatus } from '@shared/srs';
+import { wordStatus, type WordStatus } from '@shared/srs';
 
 import {
   Button,
@@ -21,7 +24,6 @@ import {
   ErrorState,
   LoadingState,
   Screen,
-  StatTile,
   Text,
   colors,
   gradients,
@@ -30,9 +32,7 @@ import {
 } from '@/design-system';
 import { SpeakButton } from '@/features/learning/components/SpeakButton';
 import { useCurriculum, useMyWords, useWordOfTheDay } from '@/features/learning/hooks';
-import { useDailyMissions } from '@/features/missions/api';
 import { useTabPressScroll } from '@/lib/useTabPressScroll';
-import { lessonStars } from '@/features/learning/path';
 import { usePlus } from '@/features/plus/api';
 import { PlusBadge } from '@/features/plus/components/PlusBadge';
 import { pickSmartReview } from '@/features/plus/smartReview';
@@ -40,14 +40,13 @@ import { topicSummaries } from '@/features/plus/topicReview';
 import { WidgetContentPicker } from '@/features/widgets/WidgetContentPicker';
 import { widgetsSupported } from '@/features/widgets/sync';
 
-/** Lecciones completadas que conviene repetir (las de peor precisión primero). */
-const REPLAY_COUNT = 4;
+/** Palabras por sesión de práctica libre. */
+const PRACTICE_SIZE = 10;
 
 export default function PracticeScreen() {
   const words = useMyWords();
   const curriculum = useCurriculum();
   const wordOfDay = useWordOfTheDay();
-  const missions = useDailyMissions();
   const plus = usePlus();
   const scrollRef = useRef<ScrollViewInstance>(null);
   useTabPressScroll(scrollRef);
@@ -60,11 +59,6 @@ export default function PracticeScreen() {
   const entries = words.data;
   const due = entries.filter((e) => e.nextReviewAt && new Date(e.nextReviewAt).getTime() <= now);
   const mistakes = entries.filter((e) => e.incorrectCount > 0);
-  const replay = (curriculum.data?.units ?? [])
-    .flatMap((u) => u.lessons.map((l) => ({ ...l, unitEmoji: u.emoji })))
-    .filter((l) => l.status === 'completed' && (l.bestAccuracy ?? 0) < 1)
-    .sort((a, b) => (a.bestAccuracy ?? 0) - (b.bestAccuracy ?? 0))
-    .slice(0, REPLAY_COUNT);
   const counts = entries.reduce(
     (acc, e) => {
       acc[wordStatus(e.stage, e.seenCount)] += 1;
@@ -74,9 +68,6 @@ export default function PracticeScreen() {
   );
   const smartCount = pickSmartReview(entries, now).length;
   const topicCount = topicSummaries(curriculum.data?.units ?? [], entries, now).length;
-  const missionList = missions.data?.missions ?? [];
-  const missionsTotal = missionList.length || 3;
-  const missionsDone = missionList.filter((m) => m.done).length;
 
   return (
     <Screen
@@ -85,7 +76,6 @@ export default function PracticeScreen() {
         setNow(Date.now());
         void words.refetch();
         void curriculum.refetch();
-        void missions.refetch();
       }}
       refreshing={words.isRefetching}
     >
@@ -96,52 +86,55 @@ export default function PracticeScreen() {
 
       {wordOfDay.data ? (
         <Card gradient={gradients.hero} style={styles.widget}>
-          <View style={styles.widgetTop}>
-            <Text variant="overline" color="primarySoft">
-              PALABRA DEL DÍA
-            </Text>
+          <View style={styles.speak}>
             <SpeakButton text={wordOfDay.data.text} />
           </View>
-          <Text variant="display">
+          <Text variant="overline" color="primarySoft" align="center">
+            PALABRA DEL DÍA
+          </Text>
+          <Text variant="title" align="center" style={styles.word}>
             {wordOfDay.data.emoji ? `${wordOfDay.data.emoji} ` : ''}
             {wordOfDay.data.text}
           </Text>
-          <Text color="textMuted">
+          <Text variant="caption" align="center">
             {wordOfDay.data.ipa} · {wordOfDay.data.translation_es}
           </Text>
           {wordOfDay.data.example_en ? (
-            <Text variant="caption">“{wordOfDay.data.example_en}”</Text>
+            <HighlightedExample sentence={wordOfDay.data.example_en} word={wordOfDay.data.text} />
           ) : null}
         </Card>
       ) : null}
 
-      <Card gradient={gradients.ranked} style={styles.gap}>
+      <Card gradient={gradients.ranked} style={styles.reviewCard}>
         <View style={styles.row}>
-          <Layers color={colors.primarySoft} size={24} />
-          <Text variant="heading" style={styles.flex}>
+          <Layers color={colors.primarySoft} size={20} />
+          <Text variant="bodyStrong" color="textStrong" style={styles.flex}>
             {due.length > 0
-              ? `${due.length} palabras para repasar`
+              ? 'Tenés repasos'
               : entries.length === 0
-                ? 'Todavía no hay nada para repasar'
+                ? 'Nada para repasar'
                 : 'Estás al día'}
           </Text>
+          {entries.length > 0 ? (
+            <View style={styles.statusPill}>
+              {due.length === 0 ? <CircleCheck color={colors.success} size={16} /> : null}
+              <Text variant="caption" color="textStrong">
+                {due.length} {due.length === 1 ? 'pendiente' : 'pendientes'}
+              </Text>
+            </View>
+          ) : null}
         </View>
-        {entries.length === 0 ? (
-          <Text color="textMuted">
-            Las palabras de las lecciones que completes aparecen acá para repasarlas. El repaso es
-            gratis y no usa energía.
-          </Text>
-        ) : null}
-        <Text color="textMuted">
-          Repetición espaciada: cada acierto aleja el próximo repaso (
-          {SRS_CONFIG.intervalsDays.join(', ')} días) y un error lo trae de vuelta enseguida.
+        <Text variant="caption">
+          {entries.length === 0
+            ? 'Completá una lección y sus palabras aparecen acá.'
+            : 'Repasá justo antes de olvidar cada palabra.'}
         </Text>
         {entries.length === 0 ? (
-          <Button label="Ir a mi primera lección" size="lg" onPress={() => router.navigate('/')} />
+          <Button label="Ir a mi primera lección" onPress={() => router.navigate('/')} />
         ) : (
           <Button
             label="Repasar ahora"
-            size="lg"
+            icon={<Play color={colors.onPrimary} fill={colors.onPrimary} size={16} />}
             disabled={due.length === 0}
             onPress={() => router.push('/review')}
           />
@@ -149,111 +142,61 @@ export default function PracticeScreen() {
       </Card>
 
       <View style={styles.grid}>
-        <StatTile label="Estudiadas" value={String(entries.length)} />
-        <StatTile label="Aprendiendo" value={String(counts.learning)} />
-        <StatTile
+        <MiniStat
+          label="Estudiadas"
+          value={entries.length}
+          icon={<BookOpen color={colors.primarySoft} size={14} />}
+        />
+        <MiniStat
+          label="Aprendiendo"
+          value={counts.learning}
+          icon={<ChartNoAxesColumn color={colors.primarySoft} size={14} />}
+        />
+        <MiniStat
           label="Dominadas"
-          value={String(counts.mastered)}
-          hint={`${SRS_CONFIG.masteredStage} repasos espaciados correctos`}
+          value={counts.mastered}
+          icon={<Target color={colors.primarySoft} size={14} />}
         />
       </View>
 
-      <Text variant="overline">HOY</Text>
-      <PracticeOption
-        icon={
-          <ListChecks
-            color={missionsDone === missionsTotal ? colors.success : colors.info}
-            size={22}
-          />
-        }
-        title="Misiones del día"
-        caption={
-          missions.data?.all_done && !missions.data.claimed
-            ? '¡Completas! Abrí tu cofre de Polys'
-            : `${missionsDone} de ${missionsTotal} completas · ganá Polys y protectores`
-        }
-        onPress={() => router.push('/missions')}
-      />
-
-      <Text variant="overline">PRÁCTICA RÁPIDA</Text>
-      <PracticeOption
-        icon={<Zap color={colors.gold} size={22} />}
-        title="Práctica libre"
-        caption={
-          entries.length > 0
-            ? '10 palabras al azar de las que ya estudiaste · no cambia tus repasos'
-            : 'Completá una lección para desbloquearla'
-        }
-        disabled={entries.length === 0}
-        onPress={() => router.push({ pathname: '/review', params: { mode: 'practice' } })}
-      />
-      <PracticeOption
-        icon={<Target color={colors.danger} size={22} />}
-        title="Tus puntos débiles"
-        caption={
-          mistakes.length > 0
-            ? `${mistakes.length} palabras en las que te equivocaste · no cambia tus repasos`
-            : 'Todavía no tenés errores registrados'
-        }
-        disabled={mistakes.length === 0}
-        onPress={() => router.push({ pathname: '/review', params: { mode: 'mistakes' } })}
-      />
-
-      <PracticeOption
-        icon={<Sparkles color={colors.primarySoft} size={22} />}
-        title="Repaso inteligente"
-        caption={
-          plus !== true
-            ? 'Prioriza tus errores frecuentes, lo que te cuesta y lo que estás por olvidar'
-            : smartCount > 0
-              ? `${smartCount} palabras elegidas de tu historial · sin límite`
-              : 'Nada urgente por ahora: completá lecciones y volvé más tarde'
-        }
-        disabled={plus === true && smartCount === 0}
-        onPress={() =>
-          plus === true
-            ? router.push({ pathname: '/review', params: { mode: 'smart' } })
-            : router.push('/plus')
-        }
-        trailing={plus === true ? undefined : <PlusBadge />}
-      />
-      <PracticeOption
-        icon={<Library color={colors.primarySoft} size={22} />}
-        title="Repaso por tema"
-        caption={
-          plus !== true
-            ? 'Elegí una unidad y repasá sólo sus palabras'
-            : topicCount > 0
-              ? `${topicCount} ${topicCount === 1 ? 'unidad estudiada' : 'unidades estudiadas'} · elegí cuál repasar`
-              : 'Completá lecciones para sumar temas'
-        }
-        disabled={plus === true && topicCount === 0}
-        onPress={() => router.push(plus === true ? '/review-topics' : '/plus')}
-        trailing={plus === true ? undefined : <PlusBadge />}
-      />
-      <Text variant="caption">
-        Gratis y sin energía: repaso espaciado, práctica libre y puntos débiles, todas las veces que
-        quieras.
-      </Text>
-
-      {replay.length > 0 ? (
-        <>
-          <Text variant="overline">REPETIR LECCIONES</Text>
-          {replay.map((lesson) => {
-            const stars = lessonStars(lesson.bestAccuracy);
-            return (
-              <PracticeOption
-                key={lesson.id}
-                icon={<Text style={styles.emoji}>{lesson.unitEmoji}</Text>}
-                title={lesson.title}
-                caption={`Mejor precisión ${Math.round((lesson.bestAccuracy ?? 0) * 100)}% · ${'★'.repeat(stars)}${'☆'.repeat(3 - stars)}`}
-                onPress={() => router.push({ pathname: '/lesson/[id]', params: { id: lesson.id } })}
-                trailing={<RotateCcw color={colors.textMuted} size={18} />}
-              />
-            );
-          })}
-        </>
-      ) : null}
+      <Text variant="heading">Hoy</Text>
+      <View style={styles.list}>
+        <PracticeOption
+          icon={<Zap color={colors.primarySoft} size={18} />}
+          title="Práctica libre"
+          count={Math.min(entries.length, PRACTICE_SIZE)}
+          disabled={entries.length === 0}
+          onPress={() => router.push({ pathname: '/review', params: { mode: 'practice' } })}
+        />
+        <PracticeOption
+          icon={<CircleAlert color={colors.primarySoft} size={18} />}
+          title="Puntos débiles"
+          count={mistakes.length}
+          disabled={mistakes.length === 0}
+          onPress={() => router.push({ pathname: '/review', params: { mode: 'mistakes' } })}
+        />
+        <PracticeOption
+          icon={<Sparkles color={colors.primarySoft} size={18} />}
+          title="Repaso inteligente"
+          count={plus === true ? smartCount : undefined}
+          disabled={plus === true && smartCount === 0}
+          onPress={() =>
+            plus === true
+              ? router.push({ pathname: '/review', params: { mode: 'smart' } })
+              : router.push('/plus')
+          }
+          badge={plus === true ? undefined : <PlusBadge />}
+        />
+        <PracticeOption
+          icon={<Library color={colors.primarySoft} size={18} />}
+          title="Repaso por tema"
+          count={plus === true ? topicCount : undefined}
+          countLabel={topicCount === 1 ? 'tema' : 'temas'}
+          disabled={plus === true && topicCount === 0}
+          onPress={() => router.push(plus === true ? '/review-topics' : '/plus')}
+          badge={plus === true ? undefined : <PlusBadge />}
+        />
+      </View>
 
       <Card style={styles.gap}>
         <View style={styles.row}>
@@ -283,30 +226,69 @@ export default function PracticeScreen() {
   );
 }
 
+/** Ejemplo con la palabra del día resaltada (sin distinguir mayúsculas). */
+function HighlightedExample({ sentence, word }: { sentence: string; word: string }) {
+  const at = sentence.toLowerCase().indexOf(word.toLowerCase());
+  if (at < 0) return <Text align="center">“{sentence}”</Text>;
+  return (
+    <Text align="center">
+      “{sentence.slice(0, at)}
+      <Text variant="bodyStrong" color="textStrong" style={styles.highlight}>
+        {` ${sentence.slice(at, at + word.length)} `}
+      </Text>
+      {sentence.slice(at + word.length)}”
+    </Text>
+  );
+}
+
+/** Estadística compacta: tres entran en una fila sin cortar la etiqueta. */
+function MiniStat({ label, value, icon }: { label: string; value: number; icon: ReactNode }) {
+  return (
+    <View style={styles.stat} accessible accessibilityLabel={`${label}: ${value}`}>
+      <View style={styles.statLabel}>
+        {icon}
+        <Text variant="caption" numberOfLines={1} adjustsFontSizeToFit style={styles.flex}>
+          {label}
+        </Text>
+      </View>
+      <Text variant="heading" color="textStrong">
+        {value}
+      </Text>
+    </View>
+  );
+}
+
 function PracticeOption(props: {
   icon: ReactNode;
   title: string;
-  caption: string;
+  /** Cantidad disponible; sin valor (o en 0) no se muestra la píldora. */
+  count?: number;
+  countLabel?: string;
   disabled?: boolean;
   onPress: () => void;
-  trailing?: ReactNode;
+  badge?: ReactNode;
 }) {
+  const count = props.count ?? 0;
+  const countText = `${count} ${props.countLabel ?? (count === 1 ? 'palabra' : 'palabras')}`;
   return (
     <Card
       onPress={props.disabled ? undefined : props.onPress}
-      accessibilityLabel={`${props.title}. ${props.caption}`}
+      accessibilityLabel={count > 0 ? `${props.title}. ${countText}` : props.title}
       style={[styles.option, props.disabled && styles.disabled]}
     >
-      {props.icon}
-      <View style={styles.flex}>
-        <Text variant="bodyStrong" color="textStrong">
-          {props.title}
-        </Text>
-        <Text variant="caption">{props.caption}</Text>
-      </View>
-      {props.disabled
-        ? null
-        : (props.trailing ?? <ChevronRight color={colors.textMuted} size={20} />)}
+      <View style={styles.iconTile}>{props.icon}</View>
+      <Text variant="bodyStrong" color="textStrong" style={styles.flex}>
+        {props.title}
+      </Text>
+      {props.badge ??
+        (count > 0 ? (
+          <View style={styles.countPill}>
+            <Text variant="caption" color="primarySoft" style={styles.countText}>
+              {countText}
+            </Text>
+          </View>
+        ) : null)}
+      {props.disabled ? null : <ChevronRight color={colors.textMuted} size={18} />}
     </Card>
   );
 }
@@ -315,13 +297,66 @@ const styles = StyleSheet.create({
   header: { gap: spacing.xxs },
   gap: { gap: spacing.md },
   row: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-  option: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+  list: { gap: spacing.sm },
+  option: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.md,
+  },
   disabled: { opacity: 0.55 },
-  flex: { flex: 1, gap: spacing.xxs },
-  emoji: { fontSize: 22, lineHeight: 28 },
-  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
-  widget: { gap: spacing.xs },
-  widgetTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
+  flex: { flex: 1 },
+  grid: { flexDirection: 'row', gap: spacing.sm },
+  stat: {
+    flex: 1,
+    gap: spacing.xxs,
+    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.md,
+    borderRadius: radii.lg,
+    backgroundColor: colors.surface,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  statLabel: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
+  widget: {
+    gap: spacing.xxs,
+    paddingVertical: spacing.md,
+    paddingHorizontal: spacing.huge + spacing.sm,
+    alignItems: 'center',
+  },
+  word: { fontSize: 28, lineHeight: 34 },
+  speak: { position: 'absolute', top: spacing.sm, right: spacing.sm },
+  reviewCard: { gap: spacing.sm, padding: spacing.md },
+  iconTile: {
+    width: 34,
+    height: 34,
+    borderRadius: radii.sm,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.surfaceHighlight,
+  },
+  countPill: {
+    paddingHorizontal: spacing.sm,
+    paddingVertical: spacing.xxs,
+    borderRadius: radii.pill,
+    backgroundColor: 'rgba(139,92,246,0.16)',
+    borderWidth: 1,
+    borderColor: 'rgba(139,92,246,0.35)',
+  },
+  countText: { fontWeight: '700' },
+  statusPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xxs,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: spacing.xxs,
+    borderRadius: radii.pill,
+    borderWidth: 1,
+    borderColor: colors.borderStrong,
+    backgroundColor: 'rgba(7,6,15,0.35)',
+  },
+  highlight: { backgroundColor: 'rgba(139,92,246,0.35)' },
   pill: {
     alignSelf: 'flex-start',
     paddingHorizontal: spacing.md,
