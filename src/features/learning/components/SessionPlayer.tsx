@@ -28,6 +28,7 @@ import {
 import { useSessionLanguage } from '../readings';
 import { stopSpeaking } from '../speech';
 import { AnswerInput } from './AnswerInput';
+import { AnswerRecap } from './AnswerRecap';
 import { ExercisePrompt } from './ExercisePrompt';
 import { FeedbackPanel } from './FeedbackPanel';
 
@@ -111,33 +112,44 @@ export function SessionPlayer({ exercises, words, seed, onClose, onFinished }: P
               accessibilityLabel="Progreso de la sesión"
             />
           </View>
-          {readings ? (
-            // Chino: mostrar u ocultar el pinyin encima de los caracteres.
-            <Pressable
-              accessibilityRole="switch"
-              accessibilityLabel="Mostrar pinyin"
-              accessibilityState={{ checked: showReadings }}
-              onPress={() => setShowReadings(!showReadings)}
-              hitSlop={8}
-              style={[styles.pinyin, showReadings && styles.pinyinOn]}
-            >
-              <Text variant="caption" color={showReadings ? 'textStrong' : 'textMuted'}>
-                pīn
-              </Text>
-            </Pressable>
-          ) : null}
         </View>
 
         <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
-          {isRetry ? (
-            <Text variant="overline" color="streak">
-              REPASO DE ERRORES
-            </Text>
+          {isRetry || readings ? (
+            <View style={styles.meta}>
+              {isRetry ? (
+                <Text variant="overline" color="streak">
+                  REPASO DE ERRORES
+                </Text>
+              ) : null}
+              {readings ? (
+                // Chino: mostrar u ocultar el pinyin encima de los caracteres.
+                <Pressable
+                  accessibilityRole="switch"
+                  accessibilityLabel="Mostrar pinyin"
+                  accessibilityState={{ checked: showReadings }}
+                  onPress={() => setShowReadings(!showReadings)}
+                  hitSlop={8}
+                  style={[styles.pinyin, showReadings && styles.pinyinOn]}
+                >
+                  <Text variant="caption" color={showReadings ? 'textStrong' : 'textMuted'}>
+                    Pinyin
+                  </Text>
+                </Pressable>
+              ) : null}
+            </View>
           ) : null}
           <ExercisePrompt exercise={exercise} />
           {state.phase === 'feedback' && state.lastVerdict ? (
             // Abajo, donde estaba "Comprobar": el pulgar no tiene que moverse.
             <View style={styles.feedback}>
+              <View style={styles.recap}>
+                <AnswerRecap
+                  exercise={exercise}
+                  verdict={state.lastVerdict}
+                  answer={state.lastAnswer}
+                />
+              </View>
               <FeedbackPanel
                 exercise={exercise}
                 verdict={state.lastVerdict}
@@ -171,8 +183,10 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.md,
   },
   close: { width: 32, height: 44, justifyContent: 'center' },
+  meta: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   pinyin: {
-    minWidth: 44,
+    marginLeft: 'auto',
+    paddingHorizontal: spacing.md,
     height: 32,
     alignItems: 'center',
     justifyContent: 'center',
@@ -183,5 +197,7 @@ const styles = StyleSheet.create({
   pinyinOn: { borderColor: colors.primaryBright, backgroundColor: colors.surfaceHighlight },
   flex: { flex: 1 },
   content: { padding: spacing.xl, paddingTop: spacing.lg, gap: spacing.xl, flexGrow: 1 },
-  feedback: { flex: 1, justifyContent: 'flex-end' },
+  feedback: { flex: 1, gap: spacing.xl },
+  // Ocupa el hueco entre el enunciado y el panel, con el resumen centrado.
+  recap: { flex: 1, justifyContent: 'center' },
 });

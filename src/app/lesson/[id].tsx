@@ -4,7 +4,6 @@ import { Alert } from 'react-native';
 
 import { ErrorState, LoadingState, Screen } from '@/design-system';
 import type { AttemptInput } from '@/features/learning/api';
-import { LessonIntro } from '@/features/learning/components/LessonIntro';
 import { SessionPlayer } from '@/features/learning/components/SessionPlayer';
 import { SessionResults } from '@/features/learning/components/SessionResults';
 import { useCurriculum, useLessonContent, useSubmitSession } from '@/features/learning/hooks';
@@ -40,8 +39,6 @@ function LessonScreen() {
   // Clave de idempotencia: reintentar el guardado nunca duplica la sesión.
   const [sessionId] = useState(uuid);
   const [startedAt] = useState(() => new Date());
-  // La introducción se muestra una vez, antes del primer ejercicio (no puntúa).
-  const [introDone, setIntroDone] = useState(false);
   const [finished, setFinished] = useState<{
     state: PlayerState;
     attempts: AttemptInput[];
@@ -85,19 +82,6 @@ function LessonScreen() {
           onRetry={() => void content.refetch()}
         />
       </Screen>
-    );
-  }
-
-  const { lesson } = content.data;
-  if (!finished && lesson.intro && !introDone) {
-    return (
-      <LessonIntro
-        title={lesson.title}
-        objective={lesson.objective}
-        intro={lesson.intro}
-        onStart={() => setIntroDone(true)}
-        onClose={() => router.back()}
-      />
     );
   }
 

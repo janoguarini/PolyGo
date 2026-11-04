@@ -13,9 +13,18 @@ import { SpeakButton } from './SpeakButton';
 export function ExercisePrompt({ exercise }: { exercise: Exercise }) {
   const p = exercise.payload;
 
+  // Si el ejercicio tiene algo para escuchar, suena una vez al aparecer (después, con el botón).
+  const autoplay =
+    p.type === 'listen_choice'
+      ? p.audioText
+      : p.type === 'translation_choice'
+        ? p.word
+        : p.type === 'short_answer'
+          ? p.question
+          : null;
   useEffect(() => {
-    if (p.type === 'listen_choice') speak(p.audioText);
-  }, [exercise.id, p]);
+    if (autoplay) speak(autoplay);
+  }, [exercise.id, autoplay]);
 
   return (
     <View style={styles.wrapper}>

@@ -33,6 +33,8 @@ export interface ScreenProps {
   overlay?: ReactNode;
   onScroll?: ScrollViewProps['onScroll'];
   onScrollBeginDrag?: ScrollViewProps['onScrollBeginDrag'];
+  /** Cualquier toque dentro del contenido (burbujea desde los hijos; p. ej. cerrar un recuadro). */
+  onTouchStart?: ScrollViewProps['onTouchStart'];
 }
 
 /** En la web (computadora) el contenido va en una columna centrada, como en el teléfono. */
@@ -52,12 +54,14 @@ export function Screen({
   overlay,
   onScroll,
   onScrollBeginDrag,
+  onTouchStart,
 }: ScreenProps) {
   const content = scroll ? (
     <ScrollView
       ref={scrollRef}
       onScroll={onScroll}
       onScrollBeginDrag={onScrollBeginDrag}
+      onTouchStart={onTouchStart}
       scrollEventThrottle={onScroll ? 32 : undefined}
       refreshControl={
         onRefresh ? (
@@ -75,7 +79,12 @@ export function Screen({
       {children}
     </ScrollView>
   ) : (
-    <View style={[styles.content, styles.fill, webColumn, contentStyle]}>{children}</View>
+    <View
+      style={[styles.content, styles.fill, webColumn, contentStyle]}
+      onTouchStart={onTouchStart}
+    >
+      {children}
+    </View>
   );
 
   return (

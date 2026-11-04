@@ -95,7 +95,10 @@ interface Props {
    * y otra vez cada vez que cambia la lección actual (p. ej. al volver de completar una).
    */
   onCurrentLayout?: (y: number) => void;
-  /** Lección con el recuadro abierto; la controla la pantalla para cerrarlo al tocar afuera. */
+  /**
+   * Lección con el recuadro abierto; la controla la pantalla, que lo cierra con cualquier toque
+   * (el recuadro frena la propagación de los suyos).
+   */
   selected: string | null;
   onSelectedChange: (key: string | null) => void;
   /** Nivel que sigue a este camino; `ready` = ya tiene unidades cargadas. */
@@ -169,14 +172,6 @@ export function LessonPath({
         tryReport();
       }}
     >
-      {selected ? (
-        <Pressable
-          style={[StyleSheet.absoluteFill, styles.backdrop]}
-          onPress={() => onSelectedChange(null)}
-          accessibilityLabel="Cerrar detalle de la lección"
-        />
-      ) : null}
-
       {sections.map(({ unit, accent, first, nodes }) => (
         <View
           key={unit.id}
@@ -435,6 +430,9 @@ function LessonNode({
         accessibilityRole="button"
         accessibilityLabel={node.label}
         onPress={onPress}
+        // El nodo decide solo (abre el suyo o cierra si ya estaba abierto): que la pantalla no
+        // cierre el recuadro antes y lo vuelva a abrir.
+        onTouchStart={(e) => e.stopPropagation()}
         hitSlop={8}
       >
         {({ pressed }) => (
@@ -493,6 +491,8 @@ function LessonPopover({
   return (
     <Animated.View
       entering={FadeIn.duration(150)}
+      // Los toques dentro del recuadro no llegan a la pantalla, que lo cerraría.
+      onTouchStart={(e) => e.stopPropagation()}
       style={[styles.popover, { top }, !locked && { borderColor: accent.fill }]}
     >
       <View
@@ -571,7 +571,6 @@ const ARROW = 16;
 
 const styles = StyleSheet.create({
   root: { gap: spacing.xxl },
-  backdrop: { zIndex: 1 },
   section: { gap: spacing.lg },
   raised: { zIndex: 2 },
   flex: { flex: 1 },

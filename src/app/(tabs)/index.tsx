@@ -250,6 +250,8 @@ export default function HomeScreen() {
       contentStyle={styles.content}
       onScroll={handleScroll}
       onScrollBeginDrag={openLesson ? closeLesson : undefined}
+      // Tocar en cualquier parte del camino cierra el recuadro (el recuadro frena sus propios toques).
+      onTouchStart={openLesson ? closeLesson : undefined}
       overlay={
         away ? (
           <Animated.View

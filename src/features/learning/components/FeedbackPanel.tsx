@@ -19,13 +19,10 @@ interface Props {
   onContinue: () => void;
 }
 
-/** Feedback tras responder: resultado, respuesta correcta, traducción, pronunciación y ejemplo. */
+/** Feedback tras responder: resultado, traducción, pronunciación y ejemplo. */
 export function FeedbackPanel({ exercise, verdict, word, onContinue }: Props) {
+  // La respuesta correcta se muestra en grande en AnswerRecap, en el centro de la pantalla.
   const correct = verdict.correct;
-  const expected =
-    exercise.payload.type === 'match_pairs'
-      ? exercise.payload.pairs.map((p) => `${p.left} = ${p.right}`).join(' · ')
-      : verdict.expected;
 
   return (
     <Animated.View
@@ -47,15 +44,6 @@ export function FeedbackPanel({ exercise, verdict, word, onContinue }: Props) {
             : 'Respuesta incorrecta'}
         </Text>
       </View>
-
-      {!correct || (verdict.correct && verdict.typo) ? (
-        <View>
-          <Text variant="caption">Respuesta correcta</Text>
-          <TargetText variant="bodyStrong" color="textStrong">
-            {expected}
-          </TargetText>
-        </View>
-      ) : null}
 
       {word ? (
         <View style={styles.word}>
