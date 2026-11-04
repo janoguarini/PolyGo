@@ -2,9 +2,10 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 import { AppState } from 'react-native';
 
-import { PRESENCE_PING_MS, type FriendWeeklyChallengeId } from '@shared/friendChallenges';
+import { PRESENCE_PING_MS, type FriendMissionId } from '@shared/friendChallenges';
 
 import { useAuth } from '@/features/auth/AuthProvider';
+import { userTimeZone } from '@/features/learning/api';
 import { requireSupabase } from '@/lib/supabase';
 
 // ---------- en línea e invitaciones a amistosos ----------
@@ -139,7 +140,7 @@ export function useFriendActivity() {
   });
 }
 
-// ---------- retos semanales ----------
+// ---------- misiones diarias ----------
 
 export interface ChallengeFriend {
   user_id: string;
@@ -148,54 +149,60 @@ export interface ChallengeFriend {
   avatar_path: string | null;
 }
 
-export interface WeeklyChallengeState {
-  id: FriendWeeklyChallengeId;
+export interface FriendMissionState {
+  id: FriendMissionId;
   target: number;
   reward: number;
   progress: number;
   claimed: boolean;
-  /** Amigos (con estadísticas visibles) que ya lo completaron. */
+  /** Amigos (con estadísticas visibles) que ya la completaron hoy. */
   friends_done: number;
   /** Hasta 5 de ellos. */
   friends: ChallengeFriend[];
 }
 
-export interface WeeklyChallenges {
-  week: string;
-  /** Fin de la semana (ms). */
+export interface FriendDailyMissions {
+  /** Día local del jugador (YYYY-MM-DD). */
+  date: string;
+  /** Medianoche siguiente del jugador (ms). */
   ends_at: number;
-  challenges: WeeklyChallengeState[];
+  challenges: FriendMissionState[];
 }
 
-export async function fetchWeeklyChallenges(): Promise<WeeklyChallenges> {
-  const { data, error } = await requireSupabase().rpc('get_friend_weekly_challenges');
+export async function fetchFriendDailyMissions(): Promise<FriendDailyMissions> {
+  const { data, error } = await requireSupabase().rpc('get_friend_daily_missions', {
+    p_time_zone: userTimeZone(),
+  });
   if (error) throw error;
-  return data as unknown as WeeklyChallenges;
+  return data as unknown as FriendDailyMissions;
 }
 
-export async function claimWeeklyChallenge(id: FriendWeeklyChallengeId) {
-  const { data, error } = await requireSupabase().rpc('claim_friend_challenge', { p_id: id });
+export async function claimFriendMission(id: FriendMissionId) {
+  const { data, error } = await requireSupabase().rpc('claim_friend_daily_mission', {
+    p_id: id,
+    p_time_zone: userTimeZone(),
+  });
   if (error) throw error;
   return data as unknown as { polys: number; balance: number };
 }
 
-export function useWeeklyChallenges() {
+export function useFriendDailyMissions() {
   const { session } = useAuth();
   const userId = session?.user.id;
   return useQuery({
-    queryKey: ['friends', 'weekly', userId ?? 'anonymous'],
-    queryFn: fetchWeeklyChallenges,
+    queryKey: ['friends', 'daily', userId ?? 'anonymous'],
+    queryFn: fetchFriendDailyMissions,
     enabled: Boolean(userId),
   });
 }
 
-export function useClaimWeeklyChallenge() {
+export function useClaimFriendMission() {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: claimWeeklyChallenge,
+    mutationFn: claimFriendMission,
     onSuccess: () =>
       Promise.all([
-        qc.invalidateQueries({ queryKey: ['friends', 'weekly'] }),
+        qc.invalidateQueries({ queryKey: ['friends', 'daily'] }),
         qc.invalidateQueries({ queryKey: ['learning', 'polys'] }),
       ]),
   });

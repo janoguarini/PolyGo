@@ -1092,6 +1092,8 @@ export type Database = {
       };
       get_friend_weekly_challenges: { Args: never; Returns: Json };
       claim_friend_challenge: { Args: { p_id: string }; Returns: Json };
+      get_friend_daily_missions: { Args: { p_time_zone: string }; Returns: Json };
+      claim_friend_daily_mission: { Args: { p_id: string; p_time_zone: string }; Returns: Json };
       lesson_star_totals: { Args: { p_user_id: string }; Returns: Json };
       parse_learning_attempts: {
         Args: { p_attempts: Json };

@@ -152,10 +152,11 @@ const acceptChallenge = async (u, code) =>
   (await rpc(u, 'select public.accept_friend_challenge($1) as r', [code]))[0].r;
 const finish = (u, id, score) =>
   rpc(u, 'select public.finish_human_match($1, $2, $3, $4, false)', [id, score, 5, 8]);
-const weekly = async (u) =>
-  (await rpc(u, 'select public.get_friend_weekly_challenges() as r'))[0].r;
+const TZ = 'America/Argentina/Buenos_Aires';
+const daily = async (u) =>
+  (await rpc(u, 'select public.get_friend_daily_missions($1) as r', [TZ]))[0].r;
 const claim = async (u, id) =>
-  (await rpc(u, 'select public.claim_friend_challenge($1) as r', [id]))[0].r;
+  (await rpc(u, 'select public.claim_friend_daily_mission($1, $2) as r', [id, TZ]))[0].r;
 
 async function friendsPair(prefix) {
   const a = await player(`${prefix}_a@test.dev`);
@@ -216,9 +217,9 @@ test('invitar a un amigo: sólo él la ve y la acepta; rechazar avisa a quien de
   assert.deepEqual((await ping(guest)).invites, []);
 });
 
-test('retos semanales: progreso real, se cobran una vez y muestran amigos que los completaron', async () => {
+test('misiones diarias: progreso real, se cobran una vez por día y muestran amigos que las completaron', async () => {
   const [a, b] = await friendsPair('wk');
-  let state = await weekly(a);
+  let state = await daily(a);
   assert.equal(state.challenges.length, 3);
   const friendly = () => state.challenges.find((c) => c.id === 'friendly_1');
   assert.equal(friendly().progress, 0);
@@ -234,7 +235,7 @@ test('retos semanales: progreso real, se cobran una vez y muestran amigos que lo
   await finish(a, battle_id, 500);
   await finish(b, battle_id, 300);
 
-  state = await weekly(a);
+  state = await daily(a);
   assert.equal(friendly().progress, 1);
   assert.equal(friendly().friends_done, 1);
   assert.equal(friendly().friends[0].username, 'wk_b');
@@ -242,9 +243,9 @@ test('retos semanales: progreso real, se cobran una vez y muestran amigos que lo
   assert.equal(play.progress, 1);
 
   const res = await claim(a, 'friendly_1');
-  assert.equal(res.polys, 30);
+  assert.equal(res.polys, 15);
   await assert.rejects(claim(a, 'friendly_1'), /already_claimed/);
-  state = await weekly(a);
+  state = await daily(a);
   assert.equal(friendly().claimed, true);
 });
 
@@ -282,12 +283,12 @@ test('actividad: subidas de rango y logros de amigos; un perfil privado sólo mu
   assert.deepEqual(await kinds(), ['new_friend', 'rank_up']);
 });
 
-test('los valores de los retos coinciden con shared/friendChallenges.ts', async () => {
-  const { FRIEND_WEEKLY_CHALLENGES } = await import('../../shared/friendChallenges.ts');
-  const sql = (await db.query('select public.friend_weekly_config() as c')).rows[0].c;
+test('los valores de las misiones diarias coinciden con shared/friendChallenges.ts', async () => {
+  const { FRIEND_DAILY_MISSIONS } = await import('../../shared/friendChallenges.ts');
+  const sql = (await db.query('select public.friend_daily_config() as c')).rows[0].c;
   assert.deepEqual(
     sql,
-    FRIEND_WEEKLY_CHALLENGES.map(({ id, target, reward }) => ({ id, target, reward })),
+    FRIEND_DAILY_MISSIONS.map(({ id, target, reward }) => ({ id, target, reward })),
   );
 });
 

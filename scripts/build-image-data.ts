@@ -20,6 +20,8 @@ const IMAGES: Record<string, string> = {
   mascotPointDown: 'assets/mascot/point-down.webp',
   mascotPointUp: 'assets/mascot/point-up.webp',
   mascotThinking: 'assets/mascot/thinking.webp',
+  mascotRanked: 'assets/mascot/ranked.webp',
+  mascotChallenge: 'assets/mascot/challenge.webp',
   foxVictory: 'assets/images/fox-victory.webp',
   foxDefeat: 'assets/images/fox-defeat.webp',
 };

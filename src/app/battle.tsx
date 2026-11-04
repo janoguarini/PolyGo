@@ -72,6 +72,8 @@ export default function BattleScreen() {
     /** Desafío dirigido: id y nombre del amigo invitado. */
     friend?: string;
     friendName?: string;
+    /** Modo elegido en /challenge-friend (hoy siempre word_rush). */
+    game?: string;
   }>();
   const targetLanguage = useMyProfile().data?.profile.target_language;
   // Idiomas sin banco de palabras suficiente: no hay partidas (tampoco desde un link o invitación).
