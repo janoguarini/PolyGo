@@ -2,14 +2,14 @@
 
 Cómo se organiza y se escribe el contenido de Polygo para inglés, italiano, portugués de Brasil y chino mandarín (siempre desde español). El español como idioma a aprender queda «Próximamente»: necesita la interfaz traducida al inglés.
 
-## Estado (2026-11-03, bloque 3)
+## Estado (2026-11-03, bloque 4)
 
 | Idioma         | Variante              | Estado (`shared/languages.ts` ↔ `languages.content_status`) | Ranked | Contenido                                                                |
 | -------------- | --------------------- | ----------------------------------------------------------- | ------ | ------------------------------------------------------------------------ |
 | Inglés         | General americano     | `available`                                                 | Sí     | A1 y A2 completos (borrador); unidades 1–4 de A1 ya siguen este estándar |
-| Italiano       | Estándar              | `beta` (sólo testers)                                       | No     | A1 unidades 1–10 de 12 (borrador)                                        |
-| Portugués      | Brasil                | `beta` (sólo testers)                                       | No     | A1 unidades 1–10 de 12 (borrador)                                        |
-| Chino mandarín | Simplificado + pinyin | `beta` (sólo testers)                                       | No     | A1 unidades 1–10 de 12 (borrador)                                        |
+| Italiano       | Estándar              | `beta` (sólo testers)                                       | No     | A1 completo, 12 unidades (borrador)                                      |
+| Portugués      | Brasil                | `beta` (sólo testers)                                       | No     | A1 completo, 12 unidades (borrador)                                      |
+| Chino mandarín | Simplificado + pinyin | `beta` (sólo testers)                                       | No     | A1 completo, 12 unidades (borrador)                                      |
 | Español        | Neutro con _tú_       | `soon`                                                      | No     | Sin contenido: requiere i18n de la interfaz                              |
 | Francés        | —                     | `hidden` (fuera del selector)                               | No     | Sin contenido                                                            |
 
@@ -66,7 +66,7 @@ Las partículas de tono neutro del chino (吗, 的) llevan la etiqueta `particle
 
 1. ✅ Estandarizar el modelo (esta etapa).
 2. ⏳ Validar la unidad piloto en los cuatro idiomas: pruebas en dispositivo + revisión nativa de cada unidad 1.
-3. A1 por bloques de 3 unidades por idioma, con revisión nativa de cada bloque antes del siguiente. ✅ Bloques 1 (U2–4), 2 (U5–7) y 3 (U8–10) redactados; ⏳ bloque 4 (U11–12).
+3. A1 por bloques de 3 unidades por idioma, con revisión nativa de cada bloque antes del siguiente. ✅ Bloques 1 (U2–4), 2 (U5–7), 3 (U8–10) y 4 (U11–12) redactados: A1 completo en italiano, portugués y chino. ⏳ Revisión nativa.
 4. A2 por bloques. Ranked de un idioma se habilita con su A1 completo y revisado.
 5. Revisión de calidad: progresión, consignas, errores frecuentes por ejercicio (`exercise_attempts`).
 6. B1: sólo preparar (ampliar el CHECK de `level` / `start_level` cuando toque).

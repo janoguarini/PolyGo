@@ -93,7 +93,8 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 - [x] Bloque 1 de A1 (2026-11-02): unidades 2–4 en italiano, portugués y chino (ser / nacionalidad, números y edad, familia) y estándar nuevo en inglés U2–4 (26 ejercicios agregados al final, nada cargado cambia). Migraciones `20261102130100…111`. **Borrador sin revisión nativa.**
 - [x] Bloque 2 de A1 (2026-11-03): unidades 5–7 en italiano, portugués y chino (objetos y colores / clasificadores, la casa y dónde está algo, bar y comida). Migraciones `20261103120100…108`. **Borrador sin revisión nativa.**
 - [x] Bloque 3 de A1 (2026-11-03): unidades 8–10 en italiano, portugués y chino (rutina con presente regular / tiempo antes del verbo, horas y días, la ciudad y direcciones / 去 y transporte). Migraciones `20261103130200…208`. **Borrador sin revisión nativa.**
-- [ ] Revisión nativa de las unidades 1–10 de cada idioma (el usuario decidió avanzar con los bloques 2 y 3 antes de revisar).
+- [x] Bloque 4 de A1 (2026-11-03): unidades 11–12 en italiano, portugués y chino (gustos con mi piace / gostar de / 喜欢, poder y querer / 会 y 能, 很 + adjetivo; preguntas y precios con quanto costa / quanto custa / 多少钱, 太…了, 怎么样, 呢). **A1 completo (12 unidades) en los tres idiomas.** Migraciones `20261103234000…005`. **Borrador sin revisión nativa.**
+- [ ] Revisión nativa de las unidades 1–12 de cada idioma (el usuario decidió avanzar con los bloques 2 a 4 antes de revisar). Con A1 revisado se puede habilitar Ranked en ese idioma.
 
 ### Contenido A2 (2026-10-31)
 
