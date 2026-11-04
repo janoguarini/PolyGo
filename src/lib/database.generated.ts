@@ -985,7 +985,8 @@ export type Database = {
           avatar_id: string;
           avatar_path: string | null;
           region: string | null;
-          language_code: string;
+          /** null en la global (suma de idiomas). */
+          language_code: string | null;
           rating: number;
           games_played: number;
           wins: number;
@@ -995,6 +996,16 @@ export type Database = {
       get_my_leaderboard_position: {
         Args: { p_language_code?: string | null };
         Returns: { position: number | null; total: number }[];
+      };
+      get_my_leaderboard_entry: {
+        Args: { p_language_code?: string | null };
+        Returns: {
+          position: number | null;
+          total: number;
+          rating: number | null;
+          games_played: number | null;
+          wins: number | null;
+        }[];
       };
       get_public_stars: {
         Args: { p_user_ids: string[] };

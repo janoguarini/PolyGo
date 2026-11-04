@@ -7,9 +7,9 @@ Cómo se organiza y se escribe el contenido de Polygo para inglés, italiano, po
 | Idioma         | Variante              | Estado (`shared/languages.ts` ↔ `languages.content_status`) | Ranked | Contenido                                                                |
 | -------------- | --------------------- | ----------------------------------------------------------- | ------ | ------------------------------------------------------------------------ |
 | Inglés         | General americano     | `available`                                                 | Sí     | A1 y A2 completos (borrador); unidades 1–4 de A1 ya siguen este estándar |
-| Italiano       | Estándar              | `beta` (sólo testers)                                       | No     | A1 completo, 12 unidades (borrador)                                      |
-| Portugués      | Brasil                | `beta` (sólo testers)                                       | No     | A1 completo, 12 unidades (borrador)                                      |
-| Chino mandarín | Simplificado + pinyin | `beta` (sólo testers)                                       | No     | A1 completo, 12 unidades (borrador)                                      |
+| Italiano       | Estándar              | `beta` (sólo testers)                                       | Sí     | A1 completo, 12 unidades (borrador)                                      |
+| Portugués      | Brasil                | `beta` (sólo testers)                                       | Sí     | A1 completo, 12 unidades (borrador)                                      |
+| Chino mandarín | Simplificado + pinyin | `beta` (sólo testers)                                       | Sí     | A1 completo, 12 unidades (borrador)                                      |
 | Español        | Neutro con _tú_       | `soon`                                                      | No     | Sin contenido: requiere i18n de la interfaz                              |
 | Francés        | —                     | `hidden` (fuera del selector)                               | No     | Sin contenido                                                            |
 
@@ -59,7 +59,7 @@ Las partículas de tono neutro del chino (吗, 的) llevan la etiqueta `particle
 
 - Perfil → idiomas: tocar uno disponible cambia el idioma (`set_target_language`). El progreso es por idioma (ids propios).
 - Aprender: nombre del idioma, «BETA» y unidades faltantes.
-- Ranked: sólo en idiomas con `ranked: true`; en el resto, aviso (también si se entra por link o invitación).
+- Ranked: en idiomas con `ranked: true` (inglés, italiano, portugués y chino desde el 2026-11-04); en el resto, aviso (también si se entra por link o invitación). El ELO es por idioma; la clasificación tiene una pestaña por idioma y la global suma el ELO de los idiomas en los que el jugador está posicionado. En chino no hay preguntas para escribir (no se piden caracteres) y las palabras se muestran con pinyin encima.
 - Voz: la del sistema en el locale del idioma (`en-US`, `it-IT`, `pt-BR`, `zh-CN`). Puede faltar en algunos Android.
 
 ## Plan de producción
@@ -67,7 +67,7 @@ Las partículas de tono neutro del chino (吗, 的) llevan la etiqueta `particle
 1. ✅ Estandarizar el modelo (esta etapa).
 2. ⏳ Validar la unidad piloto en los cuatro idiomas: pruebas en dispositivo + revisión nativa de cada unidad 1.
 3. A1 por bloques de 3 unidades por idioma, con revisión nativa de cada bloque antes del siguiente. ✅ Bloques 1 (U2–4), 2 (U5–7), 3 (U8–10) y 4 (U11–12) redactados: A1 completo en italiano, portugués y chino. ⏳ Revisión nativa.
-4. A2 por bloques. Ranked de un idioma se habilita con su A1 completo y revisado.
+4. A2 por bloques. Ranked ya está habilitado en los cuatro idiomas (decisión del usuario, 2026-11-04, con el A1 de it/pt/zh todavía sin revisión nativa).
 5. Revisión de calidad: progresión, consignas, errores frecuentes por ejercicio (`exercise_attempts`).
 6. B1: sólo preparar (ampliar el CHECK de `level` / `start_level` cuando toque).
 

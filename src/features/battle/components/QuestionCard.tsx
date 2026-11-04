@@ -7,6 +7,7 @@ import type { QuestionView } from '@shared/protocol';
 import { streakBonus, streakLevel } from '@shared/wordRush';
 
 import { Button, Card, MIN_TOUCH, Text, TextField, colors, radii, spacing } from '@/design-system';
+import { TargetText, useSessionLanguage } from '@/features/learning/readings';
 import { speak, stopSpeaking } from '@/features/learning/speech';
 
 import type { AnswerFeedback } from '../state';
@@ -21,13 +22,17 @@ interface Props {
   onAnswer: (choice: number | string) => void;
 }
 
-const INSTRUCTIONS = {
-  audio: 'ESCUCHÁ Y ELEGÍ QUÉ SIGNIFICA',
-  image: '¿CÓMO SE DICE EN INGLÉS?',
-  write: 'ESCRIBÍ LA PALABRA EN INGLÉS',
-  en_es: 'ELEGÍ LA TRADUCCIÓN AL ESPAÑOL',
-  es_en: 'ELEGÍ LA PALABRA EN INGLÉS',
-} as const;
+/** Consignas en mayúsculas según el idioma de la partida («en italiano»). */
+function instructions(inName: string) {
+  const lang = inName.toUpperCase();
+  return {
+    audio: 'ESCUCHÁ Y ELEGÍ QUÉ SIGNIFICA',
+    image: `¿CÓMO SE DICE ${lang}?`,
+    write: `ESCRIBÍ LA PALABRA ${lang}`,
+    en_es: 'ELEGÍ LA TRADUCCIÓN AL ESPAÑOL',
+    es_en: `ELEGÍ LA PALABRA ${lang}`,
+  } as const;
+}
 
 /** Colores de la racha por escalón (3, 5 y 8 seguidas). */
 const STREAK_COLORS = [colors.streak, colors.streak, colors.danger, colors.gold] as const;
@@ -37,6 +42,8 @@ const STREAK_COLORS = [colors.streak, colors.streak, colors.danger, colors.gold]
  * campo de texto. La correcta sólo se conoce al responder.
  */
 export function QuestionCard({ question, feedback, streak, disabled, onAnswer }: Props) {
+  const { language } = useSessionLanguage();
+  const INSTRUCTIONS = instructions(language.inName);
   const shown = feedback?.questionIndex === question.index ? feedback : null;
   const kind = question.kind ?? 'text';
   const level = streakLevel(streak);
@@ -93,18 +100,20 @@ export function QuestionCard({ question, feedback, streak, disabled, onAnswer }:
               </Pressable>
             </View>
             {/* La palabra se muestra recién al responder, para aprender cómo se escribe. */}
-            <Text variant="heading" align="center" style={!shown && styles.hidden}>
-              {question.prompt}
-            </Text>
+            <View style={!shown && styles.hidden}>
+              <TargetText variant="heading" align="center">
+                {question.prompt}
+              </TargetText>
+            </View>
           </View>
         ) : kind === 'image' && question.emoji ? (
           <Text style={styles.emoji} accessibilityLabel={`Imagen: ${question.prompt}`}>
             {question.emoji}
           </Text>
         ) : (
-          <Text variant="display" align="center" accessibilityRole="header">
+          <TargetText variant="display" align="center" accessibilityRole="header">
             {question.prompt}
-          </Text>
+          </TargetText>
         )}
 
         {shown ? (
@@ -155,13 +164,13 @@ export function QuestionCard({ question, feedback, streak, disabled, onAnswer }:
                   pressed && styles.pressed,
                 ]}
               >
-                <Text
+                <TargetText
                   variant="heading"
                   align="center"
                   color={isCorrect || isWrongChoice ? 'textStrong' : 'text'}
                 >
                   {option}
-                </Text>
+                </TargetText>
               </Pressable>
             );
           })}

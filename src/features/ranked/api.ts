@@ -10,8 +10,8 @@ export interface LeaderboardEntry {
   /** Marco puesto (shared/cosmetics.ts) o null. */
   frameId: string | null;
   region: string | null;
-  /** Idioma del rating mostrado (en la global, el mejor del jugador). */
-  languageCode: string;
+  /** Idioma del rating mostrado; null en la global, donde rating es la suma de sus idiomas. */
+  languageCode: string | null;
   rating: number;
   gamesPlayed: number;
   wins: number;
@@ -20,7 +20,8 @@ export interface LeaderboardEntry {
 
 /**
  * Clasificación: jugadores con onboarding completo y posicionados (ganaron alguna ranked),
- * ordenados por rating. Sin idioma = global (el mejor rating de cada uno entre sus idiomas).
+ * ordenados por rating. Sin idioma = global: la suma de los ratings de los idiomas en los que
+ * cada uno está posicionado.
  */
 export async function fetchLeaderboard(
   languageCode: string | null,
@@ -70,10 +71,14 @@ export interface LeaderboardPosition {
   /** null = todavía sin posicionar. */
   position: number | null;
   total: number;
+  /** Lo que se muestra en tu fila en ese alcance (en la global, la suma); null sin posicionar. */
+  rating: number | null;
+  gamesPlayed: number;
+  wins: number;
 }
 
 export async function fetchMyPosition(languageCode: string | null): Promise<LeaderboardPosition> {
-  const { data, error } = await requireSupabase().rpc('get_my_leaderboard_position', {
+  const { data, error } = await requireSupabase().rpc('get_my_leaderboard_entry', {
     p_language_code: languageCode,
   });
   if (error) throw error;
@@ -81,6 +86,9 @@ export async function fetchMyPosition(languageCode: string | null): Promise<Lead
   return {
     position: row?.position == null ? null : Number(row.position),
     total: Number(row?.total ?? 0),
+    rating: row?.rating ?? null,
+    gamesPlayed: row?.games_played ?? 0,
+    wins: row?.wins ?? 0,
   };
 }
 

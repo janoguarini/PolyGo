@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import { Globe2, Trophy } from 'lucide-react-native';
 import { useState } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
 import { LANGUAGES } from '@shared/languages';
 
@@ -29,7 +29,7 @@ import {
 } from '@/features/ranked/api';
 import { LeaderboardRow, Podium, topPercent } from '@/features/ranked/Leaderboard';
 
-/** Pestañas: global y una por idioma con Ranked. */
+/** Pestañas: global (suma de los idiomas) y una por idioma con Ranked. */
 const SCOPES = [
   { code: null, label: 'Todos', flag: null },
   ...LANGUAGES.filter((l) => l.ranked).map((l) => ({
@@ -61,7 +61,7 @@ export default function LeaderboardScreen() {
   const inList = entries.some((e) => e.userId === meId);
   // Si no entrás en la lista, tu fila queda fija abajo.
   const myRow: LeaderboardEntry | null =
-    myPos !== null && !inList && me.data?.rating && meId
+    myPos !== null && !inList && position.data?.rating != null && me.data && meId
       ? {
           userId: meId,
           username: me.data.profile.username ?? '',
@@ -69,10 +69,10 @@ export default function LeaderboardScreen() {
           avatarPath: me.data.profile.avatar_path,
           frameId: me.data.profile.frame_id,
           region: me.data.profile.region,
-          languageCode: me.data.rating.language_code,
-          rating: me.data.rating.rating,
-          gamesPlayed: me.data.rating.games_played,
-          wins: me.data.rating.wins,
+          languageCode: scope,
+          rating: position.data.rating,
+          gamesPlayed: position.data.gamesPlayed,
+          wins: position.data.wins,
           position: myPos,
         }
       : null;
@@ -118,7 +118,18 @@ export default function LeaderboardScreen() {
         </View>
       </Card>
 
-      <View style={styles.tabs} accessibilityRole="tablist">
+      {scope === null ? (
+        <Text variant="caption" color="textMuted">
+          La global suma tu ELO de cada idioma en el que ya estás posicionado.
+        </Text>
+      ) : null}
+
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.tabs}
+        accessibilityRole="tablist"
+      >
         {SCOPES.map((s) => {
           const active = s.code === scope;
           return (
@@ -140,7 +151,7 @@ export default function LeaderboardScreen() {
             </Pressable>
           );
         })}
-      </View>
+      </ScrollView>
 
       {leaderboard.isPending ? (
         <LoadingState label="Cargando clasificación…" />
@@ -197,8 +208,8 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
   },
   tab: {
-    flex: 1,
     flexDirection: 'row',
+    paddingHorizontal: spacing.md,
     alignItems: 'center',
     justifyContent: 'center',
     gap: spacing.xs,

@@ -95,6 +95,7 @@ Fase 1 verificada en dispositivo (registro, onboarding, tabs).
 - [x] Bloque 3 de A1 (2026-11-03): unidades 8–10 en italiano, portugués y chino (rutina con presente regular / tiempo antes del verbo, horas y días, la ciudad y direcciones / 去 y transporte). Migraciones `20261103130200…208`. **Borrador sin revisión nativa.**
 - [x] Bloque 4 de A1 (2026-11-03): unidades 11–12 en italiano, portugués y chino (gustos con mi piace / gostar de / 喜欢, poder y querer / 会 y 能, 很 + adjetivo; preguntas y precios con quanto costa / quanto custa / 多少钱, 太…了, 怎么样, 呢). **A1 completo (12 unidades) en los tres idiomas.** Migraciones `20261103234000…005`. **Borrador sin revisión nativa.**
 - [ ] Revisión nativa de las unidades 1–12 de cada idioma (el usuario decidió avanzar con los bloques 2 a 4 antes de revisar). Con A1 revisado se puede habilitar Ranked en ese idioma.
+- [x] Ranked en todos los idiomas (2026-11-04): italiano, portugués y chino con Ranked (bots, partidas entre personas y desafíos usan las palabras de cada idioma). Clasificación con pestaña por idioma; la global es la suma del ELO de los idiomas en los que cada jugador está posicionado (`get_my_leaderboard_entry`). En chino no hay preguntas para escribir y la batalla muestra pinyin. Migración `20261104004214_ranked_all_languages`. El servidor de partidas en Railway todavía no lo contempla.
 
 ### Contenido A2 (2026-10-31)
 

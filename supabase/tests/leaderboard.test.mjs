@@ -54,19 +54,41 @@ test('clasificación: ordena por rating, excluye sin posicionar y da el puesto p
   assert.ok(byLang.every((r) => r.language_code === 'en'));
 });
 
-test('clasificación global: un jugador aparece una vez, con su mejor idioma', async () => {
+test('clasificación global: suma los ratings de los idiomas posicionados', async () => {
   const d = await player('lb_d@test.dev', 800);
-  await db.query(
-    `insert into public.player_ratings (user_id, language_code, rating, peak_rating, games_played, wins)
-     values ($1, 'pt', 1700, 1700, 1, 1)
-     on conflict (user_id, language_code) do update set rating = 1700, peak_rating = 1700, games_played = 1, wins = 1, losses = 0, draws = 0`,
-    [d],
-  );
+  const setRating = (lang, rating, wins) =>
+    db.query(
+      `insert into public.player_ratings (user_id, language_code, rating, peak_rating, games_played, wins)
+       values ($1, $2, $3, $3, $4, $4)
+       on conflict (user_id, language_code) do update
+         set rating = $3, peak_rating = $3, games_played = $4, wins = $4, losses = 0, draws = 0`,
+      [d, lang, rating, wins],
+    );
+  await setRating('pt', 1700, 2);
+  // Sin posicionar en chino: no suma.
+  await setRating('zh', 300, 0);
+
   const all = await rpc(d, 'select * from public.get_leaderboard(null, 100)');
   const mine = all.filter((r) => r.user_id === d);
   assert.equal(mine.length, 1);
-  assert.equal(mine[0].rating, 1700);
-  assert.equal(mine[0].language_code, 'pt');
+  assert.equal(mine[0].rating, 2500);
+  assert.equal(mine[0].wins, 3);
+  assert.equal(mine[0].language_code, null);
+
+  const [entry] = await rpc(d, 'select * from public.get_my_leaderboard_entry(null)');
+  assert.equal(entry.rating, 2500);
+  assert.equal(Number(entry.position), all.findIndex((r) => r.user_id === d) + 1);
+  assert.equal(Number(entry.total), all.length);
+
+  const [pt] = await rpc(d, `select * from public.get_my_leaderboard_entry('pt')`);
+  assert.equal(pt.rating, 1700);
+  const [zh] = await rpc(d, `select * from public.get_my_leaderboard_entry('zh')`);
+  assert.equal(zh.position, null);
+  assert.equal(zh.rating, null);
+
+  const byLang = await rpc(d, `select * from public.get_leaderboard('pt', 100)`);
+  assert.ok(byLang.every((r) => r.language_code === 'pt'));
+  assert.equal(byLang.find((r) => r.user_id === d).rating, 1700);
 });
 
 test('clasificación: sólo usuarios con sesión', async () => {

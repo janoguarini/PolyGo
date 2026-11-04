@@ -86,7 +86,7 @@ export default function RankedScreen() {
           </Text>
           <Text color="textMuted">
             Las partidas se habilitan cuando el nivel A1 de este idioma esté completo. Para jugar
-            ahora, cambiá a inglés desde tu perfil: tu progreso en cada idioma se guarda.
+            ahora, cambiá a otro idioma desde tu perfil: tu progreso en cada idioma se guarda.
           </Text>
           <Button
             label="Ir al perfil"

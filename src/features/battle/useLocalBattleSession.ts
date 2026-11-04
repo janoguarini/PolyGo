@@ -108,7 +108,7 @@ export function useLocalBattleSession() {
           }));
           let previousStreak = 0;
           const match = new LocalMatch({
-            practiceWriting: writingEnabled(rating),
+            practiceWriting: writingEnabled(rating, language),
             dispatch,
             api: botMatchApi,
             human: humanMatchApi,

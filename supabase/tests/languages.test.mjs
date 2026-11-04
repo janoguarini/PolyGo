@@ -61,7 +61,7 @@ test('sin ser tester sólo se eligen los idiomas disponibles', async () => {
   assert.equal(rows[0].target_language, 'en');
 });
 
-test('un tester elige un idioma beta, conserva su rating de inglés y no recibe rating sin ranked', async () => {
+test('un tester elige un idioma beta con ranked: conserva su inglés y recibe el rating inicial', async () => {
   const u = await onboardedUser();
   await db.query('insert into public.content_testers (user_id) values ($1)', [u]);
   const tester = await as(db, 'authenticated', u, () =>
@@ -72,12 +72,15 @@ test('un tester elige un idioma beta, conserva su rating de inglés y no recibe 
   await setLanguage(u, 'zh');
   assert.equal(await targetOf(u), 'zh');
   const ratings = await db.query(
-    'select language_code from public.player_ratings where user_id = $1 order by language_code',
+    'select language_code, rating, wins from public.player_ratings where user_id = $1 order by language_code',
     [u],
   );
   assert.deepEqual(
-    ratings.rows.map((r) => r.language_code),
-    ['en'],
+    ratings.rows.map((r) => [r.language_code, r.rating, r.wins]),
+    [
+      ['en', 100, 0],
+      ['zh', 100, 0],
+    ],
   );
 
   // «Próximamente» y oculto siguen cerrados también para testers.
@@ -86,6 +89,17 @@ test('un tester elige un idioma beta, conserva su rating de inglés y no recibe 
 
   await setLanguage(u, 'en');
   assert.equal(await targetOf(u), 'en');
+});
+
+test('en chino Ranked no pide escribir (no se escriben caracteres)', async () => {
+  const { rows } = await db.query(
+    "select public.rush_writing_for(700, 'zh') as zh, public.rush_writing_for(700, 'it') as it, public.rush_writing_for(699, 'it') as low",
+  );
+  assert.deepEqual(rows[0], { zh: false, it: true, low: false });
+  const q = await db.query("select public.rush_questions('zh', 9, 900) as q");
+  assert.ok(q.rows[0].q.every((x) => !x.write));
+  const it = await db.query("select public.rush_questions('it', 9, 900) as q");
+  assert.ok(it.rows[0].q.some((x) => x.write));
 });
 
 test('un idioma con ranked crea el rating inicial si falta', async () => {

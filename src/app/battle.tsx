@@ -36,6 +36,7 @@ import { useBattleStore } from '@/features/battle/store';
 import { useBattleSession, useNow } from '@/features/battle/useBattleSession';
 import { useLocalBattleSession, type ChallengeRole } from '@/features/battle/useLocalBattleSession';
 import { FramedAvatar } from '@/features/cosmetics/FramedAvatar';
+import { SessionLanguageProvider } from '@/features/learning/SessionLanguageProvider';
 import { useMyProfile } from '@/features/profile/hooks';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 
@@ -45,7 +46,7 @@ function RankedUnavailable({ language }: { language: string }) {
     <Screen edges={['top', 'bottom']} scroll={false}>
       <EmptyState
         title={`Todavía no hay partidas en ${name.toLowerCase()}`}
-        message="Las partidas se habilitan cuando el nivel A1 de este idioma esté completo. Para jugar, cambiá a inglés desde tu perfil."
+        message="Las partidas se habilitan cuando el nivel A1 de este idioma esté completo. Para jugar, cambiá a otro idioma desde tu perfil."
         actionLabel="Volver"
         onAction={() => (router.canGoBack() ? router.back() : router.replace('/'))}
       />
@@ -383,13 +384,15 @@ function Body({ state, now, onReady, onAnswer, onRetry, onExit, inviteeName }: B
           {left <= 0 ? (
             <LoadingState label="¡Tiempo! Calculando el resultado…" />
           ) : state.question ? (
-            <QuestionCard
-              question={state.question}
-              feedback={state.feedback}
-              streak={state.streak}
-              disabled={state.answering}
-              onAnswer={onAnswer}
-            />
+            <SessionLanguageProvider>
+              <QuestionCard
+                question={state.question}
+                feedback={state.feedback}
+                streak={state.streak}
+                disabled={state.answering}
+                onAnswer={onAnswer}
+              />
+            </SessionLanguageProvider>
           ) : state.feedback || state.answering ? null : (
             <LoadingState label="Respondiste todas. Esperando el final…" />
           )}
@@ -434,12 +437,13 @@ function ChallengeWaiting({
   inviteeName?: string;
   onExit: () => void;
 }) {
+  const { inName } = languageConfig(useMyProfile().data?.profile.target_language);
   const share = useCallback(() => {
     const link = Linking.createURL(`challenge/${code}`);
     void Share.share({
-      message: `¡Te desafío en Polygo! 75 segundos de vocabulario en inglés, vos contra mí. Entrá con el código ${code} (Ranked → Tengo un código) o tocá: ${link}`,
+      message: `¡Te desafío en Polygo! 75 segundos de vocabulario ${inName}, vos contra mí. Entrá con el código ${code} (Ranked → Tengo un código) o tocá: ${link}`,
     }).catch(() => {});
-  }, [code]);
+  }, [code, inName]);
   if (inviteeName) {
     return (
       <View style={styles.center}>

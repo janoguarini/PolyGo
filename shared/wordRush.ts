@@ -82,7 +82,9 @@ export const WRITING = {
   timeFactor: 2,
 } as const;
 
-export const writingEnabled = (rating: number) => rating >= WRITING.minRating;
+/** En chino no hay preguntas para escribir: nunca se piden caracteres (espejo: public.rush_writing_for). */
+export const writingEnabled = (rating: number, language?: string | null) =>
+  rating >= WRITING.minRating && language !== 'zh';
 
 /** Qué preguntas son para escribir cuando el modo está activo: la 3.ª, 6.ª, 9.ª… */
 export const isWriteIndex = (index: number) => index % WRITING.every === WRITING.every - 1;

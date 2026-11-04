@@ -73,7 +73,7 @@ export function Podium({ entries, meId }: { entries: LeaderboardEntry[]; meId?: 
               {isMe ? 'Vos' : entry.username}
             </Text>
             <View style={styles.podiumElo}>
-              <RankEmblemForRating rating={entry.rating} size={20} />
+              {entry.languageCode ? <RankEmblemForRating rating={entry.rating} size={20} /> : null}
               <Text variant="caption" color="text">
                 {entry.rating}
               </Text>
@@ -160,7 +160,8 @@ export function LeaderboardRow({
         ) : null}
       </View>
       <View style={styles.elo}>
-        <RankEmblemForRating rating={entry.rating} size={28} />
+        {/* En la global el número es una suma de idiomas: no corresponde a un rango. */}
+        {entry.languageCode ? <RankEmblemForRating rating={entry.rating} size={28} /> : null}
         <Text variant="bodyStrong" color="textStrong" style={styles.eloText}>
           {entry.rating}
         </Text>
