@@ -13,7 +13,7 @@ import {
   type AvatarId,
   type DailyGoalMinutes,
 } from '@shared/profile';
-import { LANGUAGES, isSelectable } from '@shared/languages';
+import { LANGUAGES, isSelectable, languageConfig } from '@shared/languages';
 
 import {
   Avatar,
@@ -80,6 +80,9 @@ export default function OnboardingScreen() {
   const isWelcome = step === 'welcome';
   // El paso de bienvenida no cuenta en la barra de progreso.
   const progress = stepIndex / (STEPS.length - 1);
+  // En cada idioma sólo se elige un nivel con contenido (italiano, portugués y chino: A1).
+  const languageLevels = languageConfig(language).levels;
+  const levelOpen = (id: string, available: boolean) => available && languageLevels.includes(id);
   const levelInfo = START_LEVELS.find((l) => l.id === level);
   const comingNext = nextStartLevel(level);
 
@@ -170,7 +173,7 @@ export default function OnboardingScreen() {
         </View>
 
         {step === 'language' &&
-          // Al registrarse sólo se eligen los idiomas disponibles para todos (los beta, desde Perfil).
+          // Al registrarse se eligen los idiomas disponibles para todos (los beta, sólo desde Perfil).
           LANGUAGES.map((l) => (
             <SelectCard
               key={l.code}
@@ -178,7 +181,10 @@ export default function OnboardingScreen() {
               selected={language === l.code}
               disabled={!isSelectable(l, false)}
               badge={isSelectable(l, false) ? undefined : 'PRÓXIMAMENTE'}
-              onPress={() => setLanguage(l.code)}
+              onPress={() => {
+                setLanguage(l.code);
+                if (!languageConfig(l.code).levels.includes(level)) setLevel('A1');
+              }}
             />
           ))}
 
@@ -189,8 +195,8 @@ export default function OnboardingScreen() {
               title={`${l.id} · ${l.title}`}
               description={l.description}
               selected={level === l.id}
-              disabled={!l.available}
-              badge={l.available ? undefined : 'PRÓXIMAMENTE'}
+              disabled={!levelOpen(l.id, l.available)}
+              badge={levelOpen(l.id, l.available) ? undefined : 'PRÓXIMAMENTE'}
               onPress={() => setLevel(l.id)}
             />
           ))}
@@ -199,7 +205,7 @@ export default function OnboardingScreen() {
             {level === 'A1'
               ? 'Empezás desde la primera lección de A1.'
               : `Empezás directo en ${level}, sin pasar por los niveles anteriores.`}
-            {comingNext && !comingNext.available
+            {comingNext && !levelOpen(comingNext.id, comingNext.available)
               ? ` Los niveles desde ${comingNext.id} llegan pronto.`
               : ''}
           </Text>

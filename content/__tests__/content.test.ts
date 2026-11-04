@@ -75,6 +75,13 @@ describe('estructura del currículo', () => {
     }
   });
 
+  it('los niveles de cada idioma en shared/languages.ts son los que tienen contenido', () => {
+    for (const l of LANGUAGES) {
+      const levels = COURSES.find((c) => c.language === l.code)?.levels.map((v) => v.level) ?? [];
+      expect([l.code, [...l.levels]]).toEqual([l.code, levels]);
+    }
+  });
+
   it('cada nivel tiene unidades con posiciones consecutivas y 5–8 lecciones escritas', () => {
     for (const { units } of COURSES.flatMap((c) => c.levels)) {
       expect(units.length).toBeGreaterThan(0);

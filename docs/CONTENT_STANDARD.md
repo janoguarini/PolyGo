@@ -2,18 +2,18 @@
 
 Cómo se organiza y se escribe el contenido de Polygo para inglés, italiano, portugués de Brasil y chino mandarín (siempre desde español). El español como idioma a aprender queda «Próximamente»: necesita la interfaz traducida al inglés.
 
-## Estado (2026-11-03, bloque 4)
+## Estado (2026-11-04)
 
 | Idioma         | Variante              | Estado (`shared/languages.ts` ↔ `languages.content_status`) | Ranked | Contenido                                                                |
 | -------------- | --------------------- | ----------------------------------------------------------- | ------ | ------------------------------------------------------------------------ |
 | Inglés         | General americano     | `available`                                                 | Sí     | A1 y A2 completos (borrador); unidades 1–4 de A1 ya siguen este estándar |
-| Italiano       | Estándar              | `beta` (sólo testers)                                       | Sí     | A1 completo, 12 unidades (borrador)                                      |
-| Portugués      | Brasil                | `beta` (sólo testers)                                       | Sí     | A1 completo, 12 unidades (borrador)                                      |
-| Chino mandarín | Simplificado + pinyin | `beta` (sólo testers)                                       | Sí     | A1 completo, 12 unidades (borrador)                                      |
+| Italiano       | Estándar              | `available`                                                 | Sí     | A1 completo, 12 unidades (borrador)                                      |
+| Portugués      | Brasil                | `available`                                                 | Sí     | A1 completo, 12 unidades (borrador)                                      |
+| Chino mandarín | Simplificado + pinyin | `available`                                                 | Sí     | A1 completo, 12 unidades (borrador)                                      |
 | Español        | Neutro con _tú_       | `soon`                                                      | No     | Sin contenido: requiere i18n de la interfaz                              |
 | Francés        | —                     | `hidden` (fuera del selector)                               | No     | Sin contenido                                                            |
 
-**Todo el contenido nuevo está redactado sin revisión de hablantes nativos** (`review_status = 'draft'`). Antes de pasar un idioma a `available` hace falta revisión lingüística de cada unidad (`UnitDef.review`).
+**Todo el contenido nuevo está redactado sin revisión de hablantes nativos** (`review_status = 'draft'`). Italiano, portugués y chino pasaron a `available` el 2026-11-04 por decisión del usuario, antes de esa revisión: sigue pendiente (`UnitDef.review`). En esos idiomas sólo se puede empezar en A1 (`LanguageConfig.levels`).
 
 ## Estructura
 

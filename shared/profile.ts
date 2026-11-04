@@ -58,7 +58,7 @@ export const START_LEVELS = [
   {
     id: 'A1',
     title: 'Desde cero',
-    description: 'Nunca estudié inglés o recuerdo muy poco.',
+    description: 'Nunca estudié el idioma o recuerdo muy poco.',
     available: true,
   },
   {

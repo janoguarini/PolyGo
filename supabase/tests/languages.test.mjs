@@ -51,17 +51,62 @@ test('el estado de cada idioma replica shared/languages.ts', async () => {
   assert.equal(byCode.fr.content_status, 'hidden');
 });
 
-test('sin ser tester sólo se eligen los idiomas disponibles', async () => {
+test('sin ser tester se eligen los idiomas disponibles y no los «Próximamente»', async () => {
   const u = await onboardedUser();
-  for (const code of ['it', 'pt', 'zh', 'es', 'fr', 'xx']) {
+  for (const code of ['es', 'fr', 'xx']) {
     await assert.rejects(setLanguage(u, code), /language_unavailable/);
   }
-  assert.equal(await targetOf(u), 'en');
+  for (const code of ['it', 'pt', 'zh']) {
+    await setLanguage(u, code);
+    assert.equal(await targetOf(u), code);
+  }
+  const ratings = await db.query(
+    'select language_code from public.player_ratings where user_id = $1 order by language_code',
+    [u],
+  );
+  assert.deepEqual(
+    ratings.rows.map((r) => r.language_code),
+    ['en', 'it', 'pt', 'zh'],
+  );
   const { rows } = await setLanguage(u, 'en');
   assert.equal(rows[0].target_language, 'en');
 });
 
-test('un tester elige un idioma beta con ranked: conserva su inglés y recibe el rating inicial', async () => {
+test('registrarse en otro idioma: rating inicial de ese idioma y sólo niveles con contenido', async () => {
+  n += 1;
+  const u = await createUser(db, `lang${n}@test.dev`);
+  const register = (lang, level) =>
+    as(db, 'authenticated', u, () =>
+      db.query(
+        `select public.complete_onboarding('lang_user_${n}', 'bolt', $1, $2, 10::smallint)`,
+        [lang, level],
+      ),
+    );
+  await assert.rejects(register('it', 'A2'), /level_unavailable/);
+  await assert.rejects(register('es', 'A1'), /language_unavailable/);
+  await register('zh', 'A1');
+  assert.equal(await targetOf(u), 'zh');
+  const { rows } = await db.query(
+    'select language_code, rating, wins from public.player_ratings where user_id = $1 order by language_code',
+    [u],
+  );
+  assert.deepEqual(
+    rows.map((r) => [r.language_code, r.rating, r.wins]),
+    [
+      ['en', 100, 0],
+      ['zh', 100, 0],
+    ],
+  );
+  // Repetir el registro no duplica el rating.
+  await register('zh', 'A1');
+  const again = await db.query(
+    "select count(*)::int as c from public.rating_history where user_id = $1 and language_code = 'zh'",
+    [u],
+  );
+  assert.equal(again.rows[0].c, 1);
+});
+
+test('un tester elige otro idioma con ranked: conserva su inglés y recibe el rating inicial', async () => {
   const u = await onboardedUser();
   await db.query('insert into public.content_testers (user_id) values ($1)', [u]);
   const tester = await as(db, 'authenticated', u, () =>

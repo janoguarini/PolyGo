@@ -26,6 +26,8 @@ export interface LanguageConfig {
   script: 'latin' | 'han';
   /** Variante enseñada, para la UI y la documentación. */
   variant: string;
+  /** Niveles con contenido (content/index.ts COURSES): los que se pueden elegir al registrarse. */
+  levels: readonly string[];
 }
 
 export const LANGUAGES: readonly LanguageConfig[] = [
@@ -40,6 +42,7 @@ export const LANGUAGES: readonly LanguageConfig[] = [
     speechLocale: 'en-US',
     script: 'latin',
     variant: 'Inglés general americano',
+    levels: ['A1', 'A2'],
   },
   {
     code: 'it',
@@ -47,11 +50,12 @@ export const LANGUAGES: readonly LanguageConfig[] = [
     inName: 'en italiano',
     alName: 'al italiano',
     flag: '🇮🇹',
-    status: 'beta',
+    status: 'available',
     ranked: true,
     speechLocale: 'it-IT',
     script: 'latin',
     variant: 'Italiano estándar',
+    levels: ['A1'],
   },
   {
     code: 'pt',
@@ -59,11 +63,12 @@ export const LANGUAGES: readonly LanguageConfig[] = [
     inName: 'en portugués',
     alName: 'al portugués',
     flag: '🇧🇷',
-    status: 'beta',
+    status: 'available',
     ranked: true,
     speechLocale: 'pt-BR',
     script: 'latin',
     variant: 'Portugués de Brasil',
+    levels: ['A1'],
   },
   {
     code: 'zh',
@@ -71,11 +76,12 @@ export const LANGUAGES: readonly LanguageConfig[] = [
     inName: 'en chino',
     alName: 'al chino',
     flag: '🇨🇳',
-    status: 'beta',
+    status: 'available',
     ranked: true,
     speechLocale: 'zh-CN',
     script: 'han',
     variant: 'Chino mandarín, caracteres simplificados y pinyin',
+    levels: ['A1'],
   },
   {
     // Necesita la interfaz traducida al inglés (la app supone que el alumno habla español).
@@ -89,6 +95,7 @@ export const LANGUAGES: readonly LanguageConfig[] = [
     speechLocale: 'es-MX',
     script: 'latin',
     variant: 'Español neutro con tú',
+    levels: [],
   },
 ];
 
