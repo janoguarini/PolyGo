@@ -12,12 +12,11 @@ import {
   TIER_COLORS,
   Text,
   colors,
-  gradients,
   spacing,
 } from '@/design-system';
 import { FramedAvatar } from '@/features/cosmetics/FramedAvatar';
 import { ProfileBackdrop } from '@/features/cosmetics/ProfileBackdrop';
-import { backgroundStyle } from '@/features/cosmetics/visuals';
+import { Laurels } from '@/features/profile/components/Laurels';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 import type { PlayerRatingRow, ProfileRow } from '@/lib/database.types';
 
@@ -49,7 +48,7 @@ export function ProfileHeader({
     />
   );
   return (
-    <ProfileBackdrop backgroundId={profile.background_id} style={styles.row} keepLayout>
+    <ProfileBackdrop backgroundId={profile.background_id} style={styles.row}>
       <View style={styles.identity}>
         {preview ? (
           <View style={styles.avatarWrap}>{avatar}</View>
@@ -79,33 +78,20 @@ export function ProfileHeader({
         <Text color="textMuted">@{profile.username}</Text>
       </View>
       {rating ? (
-        <RankMini
-          rating={rating}
-          onBackdrop={backgroundStyle(profile.background_id) !== null}
-          interactive={!preview}
-        />
+        <RankMini rating={rating} interactive={!preview} />
       ) : null}
     </ProfileBackdrop>
   );
 }
 
-/** Con un fondo de la tienda puesto, la tarjeta se vuelve translúcida para que el fondo se vea detrás. */
-function RankMini({
-  rating,
-  onBackdrop,
-  interactive,
-}: {
-  rating: PlayerRatingRow;
-  onBackdrop: boolean;
-  interactive: boolean;
-}) {
+/** Rango sobre el fondo del perfil (sin caja propia), con el emblema entre dos ramas de laurel. */
+function RankMini({ rating, interactive }: { rating: PlayerRatingRow; interactive: boolean }) {
   const placement = !isPlaced(rating);
   const rank = getRank(rating.rating);
   const tier = TIER_COLORS[rank.tier.id];
   const card = (
     <Card
-      gradient={onBackdrop ? undefined : gradients.ranked}
-      style={[styles.rank, onBackdrop && styles.rankOnBackdrop]}
+      style={styles.rank}
       onPress={interactive ? () => router.push('/leaderboard') : undefined}
       accessibilityLabel={
         placement
@@ -113,9 +99,11 @@ function RankMini({
           : `${rank.label}, ${rating.rating} ELO`
       }
     >
-      <RankEmblem tier={rank.tier.id} division={rank.division} size={68} dimmed={placement} />
+      <Laurels size={76}>
+        <RankEmblem tier={rank.tier.id} division={rank.division} size={76} dimmed={placement} />
+      </Laurels>
       <Text
-        variant="bodyStrong"
+        variant="heading"
         align="center"
         numberOfLines={1}
         style={{ color: placement ? colors.text : tier.light }}
@@ -128,10 +116,10 @@ function RankMini({
         </Text>
       ) : (
         <View style={styles.eloRow}>
-          <Text variant="bodyStrong" color="textStrong">
+          <Text variant="heading" color="textStrong">
             {rating.rating}
           </Text>
-          <Text variant="caption" color="text">
+          <Text variant="bodyStrong" color="text">
             ELO
           </Text>
         </View>
@@ -169,10 +157,16 @@ const styles = StyleSheet.create({
   nameRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   name: { flexShrink: 1 },
   flag: { fontSize: 22, lineHeight: 28 },
-  rank: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: spacing.xxs },
-  rankOnBackdrop: {
-    backgroundColor: 'rgba(0, 0, 0, 0.28)',
-    borderColor: 'rgba(255, 255, 255, 0.14)',
+  rank: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: spacing.xxs,
+    paddingHorizontal: spacing.xs,
+    backgroundColor: 'transparent',
+    borderColor: 'transparent',
+    shadowOpacity: 0,
+    elevation: 0,
   },
   eloRow: { flexDirection: 'row', alignItems: 'baseline', gap: spacing.xs },
   rankBar: { alignSelf: 'stretch', marginTop: spacing.xs },

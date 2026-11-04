@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
-import { Globe2, Trophy } from 'lucide-react-native';
+import { Check, ChevronDown, Globe2, Trophy } from 'lucide-react-native';
 import { useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 
 import { LANGUAGES } from '@shared/languages';
 
@@ -29,15 +29,8 @@ import {
 } from '@/features/ranked/api';
 import { LeaderboardRow, Podium, topPercent } from '@/features/ranked/Leaderboard';
 
-/** Pestañas: global (suma de los idiomas) y una por idioma con Ranked. */
-const SCOPES = [
-  { code: null, label: 'Todos', flag: null },
-  ...LANGUAGES.filter((l) => l.ranked).map((l) => ({
-    code: l.code as string | null,
-    label: l.name,
-    flag: l.flag as string | null,
-  })),
-];
+/** Idiomas con clasificación propia (los que tienen Ranked). */
+const RANKED_LANGUAGES = LANGUAGES.filter((l) => l.ranked);
 
 export default function LeaderboardScreen() {
   const { session } = useAuth();
@@ -45,6 +38,16 @@ export default function LeaderboardScreen() {
   const me = useMyProfile();
   const season = useActiveSeason();
   const [scope, setScope] = useState<string | null>(null);
+  // Idioma de la segunda pestaña: el que estás aprendiendo, hasta que elijas otro.
+  const [pickedLanguage, setPickedLanguage] = useState<string | null>(null);
+  const [pickerOpen, setPickerOpen] = useState(false);
+  const target = me.data?.profile.target_language;
+  const languageCode =
+    pickedLanguage ??
+    (RANKED_LANGUAGES.some((l) => l.code === target) ? target : RANKED_LANGUAGES[0]?.code) ??
+    null;
+  const language = RANKED_LANGUAGES.find((l) => l.code === languageCode);
+
   const leaderboard = useLeaderboard(scope);
   const position = useMyLeaderboardPosition(scope);
   const blockedIds = useBlockedIds();
@@ -55,7 +58,9 @@ export default function LeaderboardScreen() {
   const podium = entries.filter((e) => e.position <= 3);
   const rest = entries.filter((e) => e.position > 3);
   const scopeLabel =
-    scope === null ? 'del mundo' : `en ${SCOPES.find((s) => s.code === scope)?.label}`;
+    scope === null
+      ? 'del mundo'
+      : `en ${RANKED_LANGUAGES.find((l) => l.code === scope)?.name ?? ''}`;
 
   const myPos = position.data?.position ?? null;
   const inList = entries.some((e) => e.userId === meId);
@@ -76,6 +81,8 @@ export default function LeaderboardScreen() {
           position: myPos,
         }
       : null;
+
+  const languageActive = scope !== null;
 
   return (
     <Screen
@@ -118,40 +125,86 @@ export default function LeaderboardScreen() {
         </View>
       </Card>
 
-      {scope === null ? (
+      <View style={styles.tabs} accessibilityRole="tablist">
+        <Pressable
+          accessibilityRole="tab"
+          accessibilityState={{ selected: !languageActive }}
+          onPress={() => {
+            setScope(null);
+            setPickerOpen(false);
+          }}
+          style={[styles.tab, !languageActive && styles.tabActive]}
+        >
+          <Globe2 color={!languageActive ? colors.onPrimary : colors.textMuted} size={16} />
+          <Text variant="bodyStrong" color={!languageActive ? 'onPrimary' : 'textMuted'}>
+            Todos
+          </Text>
+        </Pressable>
+        {language ? (
+          <Pressable
+            accessibilityRole="tab"
+            accessibilityState={{ selected: languageActive, expanded: pickerOpen }}
+            accessibilityHint="Tocá de nuevo para elegir otro idioma"
+            onPress={() => {
+              if (!languageActive) setScope(language.code);
+              else setPickerOpen((open) => !open);
+            }}
+            style={[styles.tab, languageActive && styles.tabActive]}
+          >
+            <Text style={styles.tabFlag}>{language.flag}</Text>
+            <Text
+              variant="bodyStrong"
+              color={languageActive ? 'onPrimary' : 'textMuted'}
+              numberOfLines={1}
+              style={styles.shrink}
+            >
+              {language.name}
+            </Text>
+            <ChevronDown
+              color={languageActive ? colors.onPrimary : colors.textMuted}
+              size={16}
+              style={pickerOpen ? styles.chevronOpen : undefined}
+            />
+          </Pressable>
+        ) : null}
+      </View>
+
+      {pickerOpen ? (
+        <View style={styles.picker} accessibilityRole="menu">
+          {RANKED_LANGUAGES.map((l) => {
+            const selected = l.code === languageCode;
+            return (
+              <Pressable
+                key={l.code}
+                accessibilityRole="menuitem"
+                accessibilityState={{ selected }}
+                onPress={() => {
+                  setPickedLanguage(l.code);
+                  setScope(l.code);
+                  setPickerOpen(false);
+                }}
+                style={({ pressed }) => [styles.option, pressed && styles.optionPressed]}
+              >
+                <Text style={styles.tabFlag}>{l.flag}</Text>
+                <Text
+                  variant="bodyStrong"
+                  color={selected ? 'text' : 'textMuted'}
+                  style={styles.optionLabel}
+                >
+                  {l.name}
+                </Text>
+                {selected ? <Check color={colors.primary} size={18} /> : null}
+              </Pressable>
+            );
+          })}
+        </View>
+      ) : null}
+
+      {!languageActive ? (
         <Text variant="caption" color="textMuted">
           La global suma tu ELO de cada idioma en el que ya estás posicionado.
         </Text>
       ) : null}
-
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.tabs}
-        accessibilityRole="tablist"
-      >
-        {SCOPES.map((s) => {
-          const active = s.code === scope;
-          return (
-            <Pressable
-              key={s.label}
-              accessibilityRole="tab"
-              accessibilityState={{ selected: active }}
-              onPress={() => setScope(s.code)}
-              style={[styles.tab, active && styles.tabActive]}
-            >
-              {s.flag ? (
-                <Text style={styles.tabFlag}>{s.flag}</Text>
-              ) : (
-                <Globe2 color={active ? colors.onPrimary : colors.textMuted} size={16} />
-              )}
-              <Text variant="bodyStrong" color={active ? 'onPrimary' : 'textMuted'}>
-                {s.label}
-              </Text>
-            </Pressable>
-          );
-        })}
-      </ScrollView>
 
       {leaderboard.isPending ? (
         <LoadingState label="Cargando clasificación…" />
@@ -208,15 +261,35 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
   },
   tab: {
+    flex: 1,
     flexDirection: 'row',
     paddingHorizontal: spacing.md,
     alignItems: 'center',
     justifyContent: 'center',
     gap: spacing.xs,
-    minHeight: 40,
+    height: 40,
     borderRadius: radii.pill,
   },
   tabActive: { backgroundColor: colors.primary },
   tabFlag: { fontSize: 16, lineHeight: 20 },
+  shrink: { flexShrink: 1 },
+  chevronOpen: { transform: [{ rotate: '180deg' }] },
+  picker: {
+    padding: spacing.xs,
+    borderRadius: radii.lg,
+    backgroundColor: colors.surface,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  option: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+    paddingHorizontal: spacing.md,
+    height: 44,
+    borderRadius: radii.md,
+  },
+  optionPressed: { backgroundColor: colors.surfaceRaised },
+  optionLabel: { flex: 1 },
   list: { gap: spacing.xs },
 });

@@ -24,7 +24,12 @@ export default function ProfileScreen() {
   const { profile, rating } = data;
 
   return (
-    <Screen scrollRef={scrollRef} onRefresh={() => void refetch()} refreshing={isRefetching}>
+    <Screen
+      scrollRef={scrollRef}
+      onRefresh={() => void refetch()}
+      refreshing={isRefetching}
+      contentStyle={styles.content}
+    >
       <View style={styles.topBar}>
         <Text variant="title">Perfil</Text>
         <Pressable
@@ -86,11 +91,11 @@ function SectionHeader({
 }
 
 const styles = StyleSheet.create({
+  content: { paddingTop: spacing.xs },
   topBar: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingTop: spacing.sm,
   },
   gear: { minWidth: 44, minHeight: 44, alignItems: 'flex-end', justifyContent: 'center' },
   section: {

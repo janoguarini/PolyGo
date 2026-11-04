@@ -1,11 +1,11 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import type { ReactNode } from 'react';
-import { StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
+import { StyleSheet, type StyleProp, type ViewStyle } from 'react-native';
 import Svg, { Circle, Line, Path } from 'react-native-svg';
 
 import { colors, radii, spacing } from '@/design-system';
 
-import { backgroundStyle, type BackgroundStyle } from './visuals';
+import { DEFAULT_BACKGROUND, backgroundStyle, type BackgroundStyle } from './visuals';
 
 // Posiciones fijas (en %) para que el dibujo no cambie entre renders.
 const STARS = [
@@ -25,31 +25,26 @@ const STARS = [
 ] as const;
 
 /**
- * Fondo del perfil que el jugador tiene puesto. Sin fondo devuelve el contenido tal cual, para que
- * el perfil se vea igual que siempre. Con `keepLayout`, sin fondo se reservan el mismo margen interno
- * y borde (invisibles): poner o sacar un fondo no cambia el tamaño de lo que hay adentro.
+ * Fondo del perfil que el jugador tiene puesto. Sin fondo de la tienda usa el violeta por defecto,
+ * así la tarjeta nunca queda vacía.
  */
 export function ProfileBackdrop({
   backgroundId,
   children,
   style,
-  keepLayout,
 }: {
   backgroundId: string | null | undefined;
   children: ReactNode;
   style?: StyleProp<ViewStyle>;
-  keepLayout?: boolean;
 }) {
-  const bg = backgroundStyle(backgroundId);
-  if (!bg) {
-    return <View style={[keepLayout && [styles.card, styles.empty], style]}>{children}</View>;
-  }
+  const custom = backgroundStyle(backgroundId);
+  const bg = custom ?? DEFAULT_BACKGROUND;
   return (
     <LinearGradient
       colors={bg.colors}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
-      style={[styles.card, style]}
+      style={[styles.card, !custom && styles.defaultCard, style]}
     >
       <BackdropPattern bg={bg} />
       {children}
@@ -120,5 +115,5 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
     overflow: 'hidden',
   },
-  empty: { borderColor: 'transparent', overflow: 'visible' },
+  defaultCard: { borderColor: 'rgba(167, 139, 250, 0.45)' },
 });

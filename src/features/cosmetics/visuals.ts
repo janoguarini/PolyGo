@@ -56,6 +56,13 @@ export const BACKGROUND_STYLES: Record<BackgroundId, BackgroundStyle> = {
   bg_gold: { colors: ['#CA8A04', '#713F12', '#1C1305'], pattern: 'sparkles', accent: '#FEF08A' },
 };
 
+/** Fondo violeta que se ve cuando el jugador no tiene ninguno de la tienda puesto. */
+export const DEFAULT_BACKGROUND: BackgroundStyle = {
+  colors: ['#3B1D80', '#25145A', '#151036'],
+  pattern: 'waves',
+  accent: '#A78BFA',
+};
+
 export function frameStyle(id: string | null | undefined): FrameStyle | null {
   return id && id in FRAME_STYLES ? FRAME_STYLES[id as FrameId] : null;
 }

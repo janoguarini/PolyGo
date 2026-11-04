@@ -59,6 +59,9 @@ export function Screen({
   const content = scroll ? (
     <ScrollView
       ref={scrollRef}
+      // El SafeAreaView ya aplica el margen superior; sin esto iOS lo suma otra vez dentro del scroll.
+      contentInsetAdjustmentBehavior="never"
+      automaticallyAdjustContentInsets={false}
       onScroll={onScroll}
       onScrollBeginDrag={onScrollBeginDrag}
       onTouchStart={onTouchStart}
