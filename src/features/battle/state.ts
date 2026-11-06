@@ -3,8 +3,10 @@ import type {
   BattleFinish,
   BattleMode,
   BattleSnapshot,
+  CalibrationInfo,
   CancelReason,
   ErrorCode,
+  MatchRating,
   PublicPlayer,
   QuestionView,
   ScoreLine,
@@ -45,8 +47,12 @@ export interface BattleState {
   /** Quien desafía, mientras espera al amigo. */
   challenge: { code: string; expiresAt: number } | null;
   errorCode: ErrorCode | 'connection' | null;
-  queue: { window: number; waitedMs: number } | null;
+  /** botCalibrationLeft: partidas contra bots con ELO que le quedan (sólo con servidor de partidas). */
+  queue: { window: number; waitedMs: number; botCalibrationLeft?: number } | null;
   battleId: string | null;
+  /** Si la partida mueve el ELO (lo dice el servidor); null = flujo sin servidor (ranked de siempre). */
+  rating: MatchRating | null;
+  calibration: CalibrationInfo | null;
   yourSlot: 1 | 2;
   players: PublicPlayer[];
   /** serverNow − Date.now() al recibir la última foto: para mostrar relojes del servidor. */
@@ -72,7 +78,7 @@ export type BattleAction =
   | { type: 'connecting'; mode: BattleMode; friendly?: boolean }
   | { type: 'connection_error'; code: ErrorCode | 'connection' }
   | { type: 'joined'; mode: BattleMode }
-  | { type: 'queue_status'; window: number; waitedMs: number }
+  | { type: 'queue_status'; window: number; waitedMs: number; botCalibrationLeft?: number }
   | { type: 'challenge_waiting'; code: string; expiresAt: number }
   | { type: 'snapshot'; snapshot: BattleSnapshot; receivedAt: number }
   | { type: 'question'; question: QuestionView }
@@ -97,6 +103,8 @@ export const initialBattleState: BattleState = {
   errorCode: null,
   queue: null,
   battleId: null,
+  rating: null,
+  calibration: null,
   yourSlot: 1,
   players: [],
   clockOffset: 0,
@@ -133,7 +141,13 @@ export function battleReducer(state: BattleState, action: BattleAction): BattleS
     case 'joined':
       return {
         ...initialBattleState,
-        phase: action.mode === 'ranked' ? 'searching' : 'countdown',
+        // Contra un bot de práctica el rival llega enseguida (match:found).
+        phase:
+          action.mode === 'ranked'
+            ? 'searching'
+            : action.mode === 'bot_practice'
+              ? 'connecting'
+              : 'countdown',
         mode: action.mode,
         friendly: state.friendly,
         clockOffset: state.clockOffset,
@@ -141,7 +155,14 @@ export function battleReducer(state: BattleState, action: BattleAction): BattleS
 
     case 'queue_status':
       if (state.phase !== 'searching') return state;
-      return { ...state, queue: { window: action.window, waitedMs: action.waitedMs } };
+      return {
+        ...state,
+        queue: {
+          window: action.window,
+          waitedMs: action.waitedMs,
+          botCalibrationLeft: action.botCalibrationLeft,
+        },
+      };
 
     case 'challenge_waiting':
       return {
@@ -205,7 +226,13 @@ export function battleReducer(state: BattleState, action: BattleAction): BattleS
       };
 
     case 'finished':
-      return { ...state, phase: 'finished', result: action.result, answering: false };
+      return {
+        ...state,
+        phase: 'finished',
+        result: action.result,
+        rating: action.result.rating ?? state.rating,
+        answering: false,
+      };
 
     case 'cancelled':
       return { ...state, phase: 'cancelled', cancelReason: action.reason, answering: false };
@@ -231,6 +258,8 @@ function applySnapshot(state: BattleState, s: BattleSnapshot, receivedAt: number
     mode: s.mode,
     errorCode: null,
     battleId: s.battleId,
+    rating: s.rating ?? null,
+    calibration: s.calibration ?? null,
     yourSlot: s.yourSlot,
     players: s.players,
     clockOffset: s.serverNow - receivedAt,
@@ -245,6 +274,14 @@ function applySnapshot(state: BattleState, s: BattleSnapshot, receivedAt: number
     answering: sameQuestion ? state.answering : false,
     scores: s.scores,
   };
+}
+
+/**
+ * Si la partida mueve el ELO: abandonarla cuesta rating. Sin dato del servidor (flujo viejo), toda
+ * ranked lo mueve.
+ */
+export function isRated(state: Pick<BattleState, 'mode' | 'rating' | 'friendly'>): boolean {
+  return state.mode === 'ranked' && !state.friendly && state.rating !== 'unrated';
 }
 
 export function isInBattle(state: BattleState): boolean {

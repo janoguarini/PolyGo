@@ -14,6 +14,8 @@ import { useBattleStore } from './store';
 
 /** Cuánto se muestra el acierto/error antes de pasar a la siguiente pregunta. */
 export const FEEDBACK_MS = 350;
+/** Igual que localMatch.ts: tiempo para leer cómo se escribía la palabra al fallar. */
+const WRITE_FEEDBACK_MS = 1_500;
 const ACK_TIMEOUT_MS = 5_000;
 
 /**
@@ -83,7 +85,8 @@ export function useBattleSession() {
     socket.on('battle:opponent_status', (p) => dispatch({ type: 'opponent_status', ...p }));
     socket.on('battle:finish', (result) => {
       dispatch({ type: 'finished', result });
-      if (result.mode === 'ranked') {
+      // Práctica (sola o contra un bot fuera del cupo): no cambió nada en la base.
+      if (result.mode === 'ranked' && result.rating !== 'unrated') {
         // Rating, historial, logros y clasificación cambiaron en el servidor.
         void queryClient.invalidateQueries({ queryKey: ['profile'] });
         void queryClient.invalidateQueries({ queryKey: ['leaderboard'] });
@@ -121,22 +124,30 @@ export function useBattleSession() {
       .catch(() => {});
   }, [dispatch]);
 
+  /** Opción elegida o, en las preguntas para escribir, el texto: el servidor corrige y puntúa. */
   const answer = useCallback(
-    (option: number | string) => {
+    (choice: number | string) => {
       const state = useBattleStore.getState();
       const socket = socketRef.current;
       if (!socket || !state.battleId || !state.question || state.answering || state.feedback)
         return;
-      // El servidor de partidas todavía no manda preguntas para escribir.
-      if (typeof option !== 'number') return;
+      const writing = state.question.kind === 'write';
+      if (writing !== (typeof choice === 'string')) return;
       const questionIndex = state.question.index;
       dispatch({ type: 'answer_sent' });
       socket
         .timeout(ACK_TIMEOUT_MS)
-        .emitWithAck('battle:answer', { battleId: state.battleId, questionIndex, option })
+        .emitWithAck('battle:answer', {
+          battleId: state.battleId,
+          questionIndex,
+          ...(typeof choice === 'string' ? { text: choice } : { option: choice }),
+        })
         .then((res) => {
           if (!res.ok) return dispatch({ type: 'answer_rejected' });
-          dispatch({ type: 'answer_result', result: res.data, chosen: option });
+          // En las de escribir no hay opción elegida: se marca la correcta si acertó.
+          const chosen =
+            typeof choice === 'number' ? choice : res.data.correct ? res.data.correctOption : -1;
+          dispatch({ type: 'answer_result', result: res.data, chosen });
           const sound = answerSound(res.data.correct, res.data.streak ?? 0, state.streak);
           if (sound) playSound(sound);
           void Haptics.notificationAsync(
@@ -144,7 +155,9 @@ export function useBattleSession() {
               ? Haptics.NotificationFeedbackType.Success
               : Haptics.NotificationFeedbackType.Error,
           );
-          setTimeout(() => dispatch({ type: 'feedback_done' }), FEEDBACK_MS);
+          // Al fallar una de escribir se muestra un rato cómo se escribía.
+          const feedbackMs = writing && !res.data.correct ? WRITE_FEEDBACK_MS : FEEDBACK_MS;
+          setTimeout(() => dispatch({ type: 'feedback_done' }), feedbackMs);
         })
         .catch(() => dispatch({ type: 'answer_rejected' }));
     },

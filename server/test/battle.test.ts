@@ -27,7 +27,7 @@ function setup({ mode = 'ranked' as 'ranked' | 'practice', failStart = false } =
     [...sent].reverse().find((s) => s.userId === userId && s.event === event)?.payload;
   const answer = (userId: string, questionIndex: number, option: number) => {
     let result: Parameters<Parameters<Battle['answer']>[3]>[0] | undefined;
-    battle.answer(userId, questionIndex, option, (r) => (result = r));
+    battle.answer(userId, questionIndex, { option }, (r) => (result = r));
     return result!;
   };
   const correctOf = (i: number) => QUESTIONS[i]!.correctOption;

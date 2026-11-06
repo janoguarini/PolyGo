@@ -5,6 +5,7 @@ import { useCallback, useEffect } from 'react';
 import { ActivityIndicator, Alert, BackHandler, Share, StyleSheet, View } from 'react-native';
 
 import { languageConfig } from '@shared/languages';
+import { BOT_CALIBRATION } from '@shared/bots';
 import { WORD_RUSH, type BattleMode, type CancelReason } from '@shared/protocol';
 import { isPlaced } from '@shared/ranking';
 
@@ -26,6 +27,7 @@ import { BotBadge } from '@/features/battle/components/BotBadge';
 import { BattleResult } from '@/features/battle/components/BattleResult';
 import { QuestionCard } from '@/features/battle/components/QuestionCard';
 import {
+  isRated,
   myLine,
   opponentLine,
   opponentPlayer,
@@ -104,7 +106,14 @@ interface Session {
 /** Ranked (cola o servidor de partidas) y práctica. */
 function MatchBattle({ mode }: { mode: BattleMode }) {
   const session = useSession();
-  return <BattleView session={session} onStart={(m) => session.start(m ?? mode)} />;
+  return (
+    <BattleView
+      session={session}
+      onStart={(m) => session.start(m ?? mode)}
+      // Práctica contra bots: sólo la ofrece el servidor de partidas (sin cupo de calibración).
+      allowBotPractice={battleServerConfigured}
+    />
+  );
 }
 
 /**
@@ -134,11 +143,13 @@ function BattleView({
   session,
   inviteeName,
   onStart,
+  allowBotPractice = false,
 }: {
   session: Session;
   inviteeName?: string;
   /** again: el usuario pidió otra partida (no es el arranque al montar). */
   onStart: (mode: BattleMode | undefined, again: boolean) => void;
+  allowBotPractice?: boolean;
 }) {
   const state = useBattleStore();
   const now = useNow();
@@ -151,7 +162,7 @@ function BattleView({
 
   const exit = useCallback(() => {
     const current = useBattleStore.getState();
-    if (current.phase === 'playing' && current.mode === 'ranked') {
+    if (current.phase === 'playing' && current.mode === 'ranked' && current.rating !== 'unrated') {
       Alert.alert(
         '¿Abandonar la partida?',
         current.friendly
@@ -187,20 +198,14 @@ function BattleView({
   return (
     <Screen edges={['top', 'bottom']}>
       <View style={styles.topBar}>
-        <Text variant="overline">
-          {state.friendly
-            ? 'DESAFÍO · SIN ELO'
-            : state.mode === 'practice'
-              ? 'PRÁCTICA · SIN ELO'
-              : 'RANKED · WORD RUSH'}
-        </Text>
+        <Text variant="overline">{matchLabel(state)}</Text>
         <Button
           label={state.phase === 'playing' ? 'Abandonar' : 'Salir'}
           variant="ghost"
           icon={<X color={colors.textMuted} size={18} />}
           onPress={exit}
           accessibilityHint={
-            state.phase === 'playing' && state.mode === 'ranked'
+            state.phase === 'playing' && isRated(state)
               ? 'Abandonar cuenta como derrota'
               : 'Vuelve a la pantalla anterior'
           }
@@ -212,11 +217,38 @@ function BattleView({
         onReady={session.ready}
         onAnswer={session.answer}
         onRetry={() => onStart(state.mode, true)}
+        onBotPractice={allowBotPractice ? () => onStart('bot_practice', true) : undefined}
         onExit={exit}
         inviteeName={inviteeName}
       />
     </Screen>
   );
+}
+
+/** Qué tipo de partida es: se ve arriba durante toda la partida. */
+function matchLabel(state: BattleState): string {
+  if (state.friendly) return 'DESAFÍO · SIN ELO';
+  if (state.mode === 'practice') return 'PRÁCTICA · SIN ELO';
+  if (state.mode === 'bot_practice' || state.rating === 'unrated') {
+    return 'PRÁCTICA CONTRA BOT · SIN ELO';
+  }
+  if (state.rating === 'calibration' && state.calibration) {
+    return `RANKED · CALIBRACIÓN ${state.calibration.used}/${state.calibration.limit}`;
+  }
+  return 'RANKED · WORD RUSH';
+}
+
+/** Lo que se le explica antes de empezar según si mueve el ELO. */
+function ratingNote(state: BattleState): string | null {
+  if (state.friendly || state.mode === 'practice') return null;
+  if (state.mode === 'bot_practice' || state.rating === 'unrated') {
+    return 'Práctica contra un bot: no mueve tu ELO ni da recompensas de Ranked.';
+  }
+  if (state.rating === 'calibration' && state.calibration) {
+    return `Partida de calibración ${state.calibration.used} de ${state.calibration.limit} contra un bot: mueve tu ELO. Después, el ELO sólo se juega contra personas.`;
+  }
+  if (state.rating === 'competitive') return 'Partida contra una persona: mueve tu ELO.';
+  return null;
 }
 
 /** Si se entró por un link de desafío no hay pantalla anterior: vuelve a Ranked. */
@@ -231,11 +263,22 @@ interface BodyProps {
   onReady: () => void;
   onAnswer: (choice: number | string) => void;
   onRetry: () => void;
+  /** Práctica contra un bot sin ELO (con el servidor de partidas). */
+  onBotPractice?: () => void;
   onExit: () => void;
   inviteeName?: string;
 }
 
-function Body({ state, now, onReady, onAnswer, onRetry, onExit, inviteeName }: BodyProps) {
+function Body({
+  state,
+  now,
+  onReady,
+  onAnswer,
+  onRetry,
+  onBotPractice,
+  onExit,
+  inviteeName,
+}: BodyProps) {
   const me = state.players.find((p) => p.slot === state.yourSlot);
   const opponent = opponentPlayer(state);
   const myRating = useMyProfile().data?.rating;
@@ -281,6 +324,11 @@ function Body({ state, now, onReady, onAnswer, onRetry, onExit, inviteeName }: B
       const waited = state.queue?.waitedMs ?? 0;
       const mm = Math.floor(waited / 60_000);
       const ss = String(Math.floor(waited / 1000) % 60).padStart(2, '0');
+      // Sin partidas de calibración: el ELO se juega sólo contra personas. Tras un rato sin
+      // rival, se ofrece practicar contra un bot (sin ELO), nunca automáticamente.
+      const onlyHumans = state.queue?.botCalibrationLeft === 0;
+      const offerPractice =
+        onBotPractice && onlyHumans && waited >= BOT_CALIBRATION.practiceOfferAfterMs;
       return (
         <View style={styles.center}>
           <Card style={styles.searchCard}>
@@ -295,7 +343,19 @@ function Body({ state, now, onReady, onAnswer, onRetry, onExit, inviteeName }: B
             >
               {mm}:{ss}
             </Text>
+            {onlyHumans ? (
+              <Text color="textMuted" align="center">
+                Buscamos a una persona de tu nivel: las partidas contra bots ya no mueven tu ELO.
+              </Text>
+            ) : null}
           </Card>
+          {offerPractice ? (
+            <Button
+              label="Practicar contra un bot (sin ELO)"
+              variant="secondary"
+              onPress={onBotPractice}
+            />
+          ) : null}
           <Button label="Cancelar búsqueda" variant="ghost" onPress={onExit} />
         </View>
       );
@@ -332,6 +392,11 @@ function Body({ state, now, onReady, onAnswer, onRetry, onExit, inviteeName }: B
             75 segundos, las mismas preguntas para los dos. Correcta +100 (+50 por rapidez),
             incorrecta −50. Encadená aciertos: la racha suma hasta +30.
           </Text>
+          {ratingNote(state) ? (
+            <Text variant="bodyStrong" align="center">
+              {ratingNote(state)}
+            </Text>
+          ) : null}
           <Button
             label={state.iAmReady ? 'Esperando a tu rival…' : '¡Listo!'}
             size="lg"
@@ -419,7 +484,7 @@ function Body({ state, now, onReady, onAnswer, onRetry, onExit, inviteeName }: B
           actionLabel={
             state.friendly
               ? 'Nuevo desafío'
-              : state.mode === 'practice'
+              : state.mode === 'practice' || state.mode === 'bot_practice'
                 ? 'Practicar de nuevo'
                 : 'Buscar otra partida'
           }

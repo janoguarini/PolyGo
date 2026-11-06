@@ -1,4 +1,4 @@
-import type { AchievementUnlock } from '../../shared/protocol';
+import type { AchievementUnlock, CalibrationInfo } from '../../shared/protocol';
 import type { MatchOutcome } from '../../shared/ranking';
 import type { RushWord } from '../../shared/wordRush';
 
@@ -13,6 +13,17 @@ export interface PlayerInfo {
   languageCode: string;
   rating: number;
   gamesPlayed: number;
+  /** Victorias ranked en este idioma: con 0 está sin posicionar (shared/ranking.ts: isPlaced). */
+  wins?: number;
+  /** Partidas de calibración contra bots que le quedan en este idioma (la base decide al empezar). */
+  botCalibrationLeft?: number;
+}
+
+/** Lo que la base decidió al crear una partida contra un bot (start_bot_battle_v2). */
+export interface BotBattleStart {
+  /** true = de calibración (mueve el ELO); false = práctica, sin ELO. */
+  rated: boolean;
+  calibration: CalibrationInfo;
 }
 
 export interface SettlementContextRow {
@@ -20,7 +31,11 @@ export interface SettlementContextRow {
   userId: string | null;
   rating: number | null;
   gamesPlayed: number | null;
+  /** Victorias antes de la partida (null si la cuenta se borró). */
+  wins: number | null;
   matchesInWindow: number;
+  /** false = la partida no mueve el ELO (bot fuera del cupo de calibración). */
+  isRanked: boolean;
 }
 
 export interface SettlementPlayer {
@@ -58,13 +73,17 @@ export interface BattleStore {
     player1: string,
     player2: string,
   ): Promise<void>;
-  /** Partida ranked contra un bot: el slot 2 queda sin usuario, con nombre y avatar del bot. */
+  /**
+   * Partida contra un bot: el slot 2 queda sin usuario, con nombre y avatar del bot. Con `rated`
+   * pide que sea de calibración; la base decide según el cupo que le quede al jugador.
+   */
   startBotBattle(
     battleId: string,
     languageCode: string,
     player: string,
     bot: { name: string; avatarId: string; rating: number },
-  ): Promise<void>;
+    rated: boolean,
+  ): Promise<BotBattleStart>;
   settlementContext(battleId: string): Promise<SettlementContextRow[]>;
   /** Lanza StaleRatingError si el rating cambió desde el contexto. */
   settleBattle(

@@ -67,9 +67,18 @@ export class Matchmaker {
     return pairs;
   }
 
-  /** Saca de la cola a quienes esperan hace al menos `waitMs` (para emparejarlos con un bot). */
-  takeWaitingLongerThan(waitMs: number, now: number): QueueEntry[] {
-    const expired = [...this.entries.values()].filter((e) => now - e.joinedAt >= waitMs);
+  /**
+   * Saca de la cola a quienes esperan hace al menos `waitMs` (para emparejarlos con un bot).
+   * `eligible` filtra quiénes pueden jugar contra un bot (p. ej. con cupo de calibración).
+   */
+  takeWaitingLongerThan(
+    waitMs: number,
+    now: number,
+    eligible: (entry: QueueEntry) => boolean = () => true,
+  ): QueueEntry[] {
+    const expired = [...this.entries.values()].filter(
+      (e) => now - e.joinedAt >= waitMs && eligible(e),
+    );
     for (const e of expired) this.entries.delete(e.userId);
     return expired;
   }

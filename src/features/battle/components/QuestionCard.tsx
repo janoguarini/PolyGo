@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import Animated, { ZoomIn } from 'react-native-reanimated';
 
-import type { QuestionView } from '@shared/protocol';
+import { MAX_WRITTEN_ANSWER_LENGTH, type QuestionView } from '@shared/protocol';
 import { streakBonus, streakLevel } from '@shared/wordRush';
 
 import { Button, Card, MIN_TOUCH, Text, TextField, colors, radii, spacing } from '@/design-system';
@@ -207,6 +207,8 @@ function WriteAnswer({
         autoComplete="off"
         returnKeyType="send"
         submitBehavior="submit"
+        // = 80, el mismo tope que valida el servidor (que lo sigue rechazando si llega más largo).
+        maxLength={MAX_WRITTEN_ANSWER_LENGTH}
         style={styles.writeInput}
       />
       <Button label="Responder" onPress={submit} disabled={disabled || !text.trim()} />

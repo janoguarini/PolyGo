@@ -16,7 +16,8 @@ const store = createSupabaseStore(db);
 
 // Partidas que quedaron abiertas por un reinicio: se cancelan sin ELO. Una partida dura ~2 min,
 // así que cualquier fila abierta con más de 5 min es huérfana (también si coexisten dos instancias
-// durante un deploy).
+// durante un deploy). Sólo toca las partidas creadas por el servidor: las del flujo viejo sin
+// servidor se cierran con sus reglas (migración 20261106150000_stale_sweep_server_only).
 const STALE_AFTER_SECONDS = 300;
 const sweep = async () => {
   try {

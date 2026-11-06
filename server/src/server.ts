@@ -13,8 +13,16 @@ import {
   type ErrorCode,
   type ServerToClientEvents,
 } from '../../shared/protocol';
-import { BOT_CONFIG, BOT_ID_PREFIX, pickBot } from '../../shared/bots';
-import { generateQuestions, rushPool, type RushWord } from '../../shared/wordRush';
+import { BOT_CALIBRATION, BOT_CONFIG, BOT_ID_PREFIX, pickBot } from '../../shared/bots';
+import {
+  generateQuestions,
+  pictureEmojis,
+  rushPool,
+  withPictures,
+  withWriting,
+  writingEnabled,
+  type RushWord,
+} from '../../shared/wordRush';
 import { Battle, type BattleHooks, type BattleRules, type Send } from './battle';
 import { systemClock, type Clock } from './clock';
 import { Matchmaker } from './matchmaking';
@@ -113,15 +121,19 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
   const hooks: BattleHooks = {
     send,
     onStart: (battle) => {
+      // Práctica (sola o contra un bot): no se guarda.
       if (battle.mode !== 'ranked') return Promise.resolve();
       const human = battle.players.find((p) => !p.isBot)!;
       const bot = battle.players.find((p) => p.isBot);
       if (bot) {
-        return store.startBotBattle(battle.id, battle.languageCode, human.userId, {
-          name: bot.username,
-          avatarId: bot.avatarId,
-          rating: bot.rating,
-        });
+        // La base decide si todavía es de calibración (cupo por usuario e idioma).
+        return store.startBotBattle(
+          battle.id,
+          battle.languageCode,
+          human.userId,
+          { name: bot.username, avatarId: bot.avatarId, rating: bot.rating },
+          battle.rating === 'calibration',
+        );
       }
       const [a, b] = battle.userIds;
       return store.startBattle(battle.id, battle.languageCode, a!, b!);
@@ -144,8 +156,15 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
   async function finalize(battle: Battle, status: 'completed' | 'forfeited') {
     try {
       const settled = await settleBattle(store, battle, status);
-      logger.info('battle_settled', { battleId: battle.id, status, mode: battle.mode });
+      logger.info('battle_settled', {
+        battleId: battle.id,
+        status,
+        mode: battle.mode,
+        rating: settled.rating,
+        duplicate: settled.duplicate,
+      });
       for (const player of battle.players) {
+        if (player.isBot) continue;
         const slot = battle.finalLines().find((l) => l.info.userId === player.userId)!.slot;
         send(player.userId, 'battle:finish', {
           battleId: battle.id,
@@ -154,6 +173,8 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
           yourSlot: slot,
           players: settled.players,
           achievementsUnlocked: settled.achievements[player.userId] ?? [],
+          rating: settled.rating,
+          calibration: settled.calibration,
         });
       }
     } catch (err) {
@@ -175,15 +196,20 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
     return words;
   }
 
-  async function createBattle(mode: BattleMode, players: PlayerInfo[]): Promise<Battle> {
+  async function createBattle(
+    mode: BattleMode,
+    players: PlayerInfo[],
+    options: ConstructorParameters<typeof Battle>[9] = {},
+  ): Promise<Battle> {
     const languageCode = players[0]!.languageCode;
-    // Palabras según el rango del jugador con menos rating (más difíciles al subir).
-    const rating = Math.min(...players.map((p) => p.rating));
-    const questions = generateQuestions(
-      rushPool(await wordsFor(languageCode), rating),
-      rules.questionCount,
-      random,
-    );
+    // Palabras y preguntas para escribir según el rango del jugador con menos rating (lo humano;
+    // el bot tiene el rating del jugador ± 40). Mismas reglas que shared/wordRush.ts.
+    const humans = players.filter((p) => !p.isBot);
+    const rating = Math.min(...humans.map((p) => p.rating));
+    const words = await wordsFor(languageCode);
+    let questions = generateQuestions(rushPool(words, rating), rules.questionCount, random);
+    if (writingEnabled(rating, languageCode)) questions = withWriting(questions);
+    questions = withPictures(questions, pictureEmojis(words));
     const battle = new Battle(
       randomUUID(),
       mode,
@@ -194,16 +220,34 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
       hooks,
       rules,
       random,
+      options,
     );
     battles.set(battle.id, battle);
     for (const p of players) battleByUser.set(p.userId, battle);
     logger.info('battle_created', {
       battleId: battle.id,
       mode,
+      rating: battle.rating,
+      languageCode,
       players: players.map((p) => p.userId),
     });
     battle.begin();
     return battle;
+  }
+
+  /** Un bot a la altura del jugador (shared/bots.ts). */
+  function makeBot(info: PlayerInfo): PlayerInfo {
+    const persona = pickBot(info.rating, random);
+    return {
+      userId: `${BOT_ID_PREFIX}${randomUUID()}`,
+      username: persona.name,
+      avatarId: persona.avatarId,
+      avatarPath: null,
+      isBot: true,
+      languageCode: info.languageCode,
+      rating: persona.rating,
+      gamesPlayed: BOT_CONFIG.displayedGames,
+    };
   }
 
   // ---------- matchmaking ----------
@@ -225,24 +269,23 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
         }
       });
     }
-    // Sin rival humano a tiempo: un bot a su altura (siempre identificado como BOT).
+    // Sin rival humano a tiempo y con cupo de calibración: un bot a su altura que mueve el ELO
+    // (siempre identificado como BOT). Sin cupo, sigue esperando a una persona.
     if (botAfterMs !== null) {
-      for (const entry of matchmaker.takeWaitingLongerThan(botAfterMs, now)) {
+      const hasCalibration = (e: { userId: string }) =>
+        (queued.get(e.userId)?.botCalibrationLeft ?? 0) > 0;
+      for (const entry of matchmaker.takeWaitingLongerThan(botAfterMs, now, hasCalibration)) {
         const info = queued.get(entry.userId);
         queued.delete(entry.userId);
         if (!info) continue;
-        const persona = pickBot(info.rating, random);
-        const bot: PlayerInfo = {
-          userId: `${BOT_ID_PREFIX}${randomUUID()}`,
-          username: persona.name,
-          avatarId: persona.avatarId,
-          avatarPath: null,
-          isBot: true,
-          languageCode: info.languageCode,
-          rating: persona.rating,
-          gamesPlayed: BOT_CONFIG.displayedGames,
-        };
-        createBattle('ranked', [info, bot]).catch((err: unknown) => {
+        const left = info.botCalibrationLeft ?? 0;
+        createBattle('ranked', [info, makeBot(info)], {
+          rating: 'calibration',
+          calibration: {
+            used: BOT_CALIBRATION.ratedGames - left + 1,
+            limit: BOT_CALIBRATION.ratedGames,
+          },
+        }).catch((err: unknown) => {
           logger.error('battle_create_failed', { err: String(err) });
           send(info.userId, 'server:error', { code: 'server_error' });
         });
@@ -255,6 +298,7 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
         searching: true,
         window: matchmaker.windowFor(entry, now),
         waitedMs: now - entry.joinedAt,
+        botCalibrationLeft: queued.get(userId)?.botCalibrationLeft ?? 0,
       });
     }
     tickHandle = clock.setTimeout(tick, tickMs);
@@ -314,7 +358,7 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
     socket.on('queue:join', (payload, ack) => {
       const reply = safe(ack);
       const mode = payload?.mode;
-      if (mode !== 'ranked' && mode !== 'practice')
+      if (mode !== 'ranked' && mode !== 'practice' && mode !== 'bot_practice')
         return reply({ ok: false, code: 'invalid_payload' });
       if (battleByUser.has(userId)) return reply({ ok: false, code: 'already_in_battle' });
 
@@ -325,11 +369,12 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
           // Pudo haber empezado una partida mientras se leía el perfil.
           if (battleByUser.has(userId)) return reply({ ok: false, code: 'already_in_battle' });
           if (sockets.get(userId) !== socket) return;
-          if (mode === 'practice') {
+          if (mode === 'practice' || mode === 'bot_practice') {
             matchmaker.leave(userId);
             queued.delete(userId);
             reply({ ok: true, data: { mode } });
-            await createBattle('practice', [info]);
+            // Contra un bot sin ELO: no se guarda ni da recompensas.
+            await createBattle(mode, mode === 'practice' ? [info] : [info, makeBot(info)]);
             return;
           }
           queued.set(userId, info);
@@ -345,6 +390,7 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
             searching: true,
             window: matchmaker.windowFor(entry, clock.now()),
             waitedMs: clock.now() - entry.joinedAt,
+            botCalibrationLeft: info.botCalibrationLeft ?? 0,
           });
         })
         .catch((err: unknown) => {
@@ -373,7 +419,13 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
       const current = battleByUser.get(userId);
       if (!current || current.id !== payload?.battleId)
         return reply({ ok: false, code: 'not_in_battle' });
-      current.answer(userId, payload.questionIndex, payload.option, reply);
+      // Sólo se toma qué eligió o escribió: puntos, tiempo y resultado los calcula el servidor.
+      current.answer(
+        userId,
+        payload.questionIndex,
+        { option: payload.option, text: payload.text },
+        reply,
+      );
     });
 
     socket.on('battle:leave', (ack) => {

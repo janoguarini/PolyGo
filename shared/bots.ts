@@ -34,6 +34,18 @@ export const BOT_CONFIG = {
   readyMs: { min: 600, max: 2_000 },
 } as const;
 
+/**
+ * Calibración: las primeras `ratedGames` partidas contra bots de cada usuario en cada idioma mueven
+ * el ELO (motivan y ubican al jugador nuevo); después, contra un bot sólo se practica, sin ELO,
+ * estadísticas ni recompensas. Lo cuenta la base (public.bot_calibration_limit y
+ * public.start_bot_battle_v2); con el cupo agotado la cola espera a una persona y la app ofrece la
+ * práctica contra bot después de `practiceOfferAfterMs`.
+ */
+export const BOT_CALIBRATION = {
+  ratedGames: 3,
+  practiceOfferAfterMs: 30_000,
+} as const;
+
 /** Nombres de los bots (siempre con el distintivo BOT al lado). */
 export const BOT_NAMES = [
   'Kiko',

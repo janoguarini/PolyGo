@@ -1,12 +1,14 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 
 import type { Database, Json } from '../../src/lib/database.generated';
+import { BOT_CALIBRATION } from '../../shared/bots';
 import { PROTOCOL_VERSION } from '../../shared/protocol';
 import { RATING_CONFIG } from '../../shared/ranking';
 import { wordLevel, type RushWord } from '../../shared/wordRush';
 import {
   StaleRatingError,
   type BattleStore,
+  type BotBattleStart,
   type PlayerInfo,
   type SettleResponse,
   type SettlementContextRow,
@@ -35,12 +37,19 @@ export function createSupabaseStore(db: SupabaseClient<Database>): BattleStore {
 
       const { data: rating, error: ratingError } = await db
         .from('player_ratings')
-        .select('rating, games_played')
+        .select('rating, games_played, wins')
         .eq('user_id', userId)
         .eq('language_code', profile.target_language)
         .maybeSingle();
       if (ratingError) throw ratingError;
       if (!rating) return null;
+
+      // Sólo para decidir si ofrecer un bot de calibración: la base lo vuelve a contar al empezar.
+      const { data: used, error: usedError } = await db.rpc('bot_calibration_used', {
+        p_user_id: userId,
+        p_language_code: profile.target_language,
+      });
+      if (usedError) throw usedError;
 
       return {
         userId,
@@ -51,13 +60,15 @@ export function createSupabaseStore(db: SupabaseClient<Database>): BattleStore {
         languageCode: profile.target_language,
         rating: rating.rating,
         gamesPlayed: rating.games_played,
+        wins: rating.wins,
+        botCalibrationLeft: Math.max(0, BOT_CALIBRATION.ratedGames - (used ?? 0)),
       } satisfies PlayerInfo;
     },
 
     async loadWords(languageCode) {
       const { data, error } = await db
         .from('words')
-        .select('id, text, translation_es, unit_id')
+        .select('id, text, translation_es, unit_id, emoji')
         .eq('language_code', languageCode)
         .eq('is_published', true);
       if (error) throw error;
@@ -65,6 +76,7 @@ export function createSupabaseStore(db: SupabaseClient<Database>): BattleStore {
         id: w.id,
         text: w.text,
         translationEs: w.translation_es,
+        emoji: w.emoji,
         level: wordLevel(w.unit_id),
       }));
     },
@@ -80,8 +92,8 @@ export function createSupabaseStore(db: SupabaseClient<Database>): BattleStore {
       if (error) throw error;
     },
 
-    async startBotBattle(battleId, languageCode, player, bot) {
-      const { error } = await db.rpc('start_bot_battle', {
+    async startBotBattle(battleId, languageCode, player, bot, rated) {
+      const { data, error } = await db.rpc('start_bot_battle_v2', {
         p_battle_id: battleId,
         p_language_code: languageCode,
         p_player: player,
@@ -89,12 +101,22 @@ export function createSupabaseStore(db: SupabaseClient<Database>): BattleStore {
         p_bot_avatar_id: bot.avatarId,
         p_bot_rating: bot.rating,
         p_protocol_version: PROTOCOL_VERSION,
+        p_rated: rated,
       });
       if (error) throw error;
+      const res = data as unknown as {
+        rated: boolean;
+        calibration_used: number;
+        calibration_limit: number;
+      };
+      return {
+        rated: res.rated,
+        calibration: { used: res.calibration_used, limit: res.calibration_limit },
+      } satisfies BotBattleStart;
     },
 
     async settlementContext(battleId) {
-      const { data, error } = await db.rpc('battle_settlement_context', {
+      const { data, error } = await db.rpc('battle_settlement_context_v2', {
         p_battle_id: battleId,
         p_window_hours: RATING_CONFIG.repeatOpponentWindowHours,
       });
@@ -105,7 +127,9 @@ export function createSupabaseStore(db: SupabaseClient<Database>): BattleStore {
         userId: row.user_id ?? null,
         rating: row.rating ?? null,
         gamesPlayed: row.games_played ?? null,
+        wins: row.wins ?? null,
         matchesInWindow: row.matches_in_window,
+        isRanked: row.is_ranked,
       }));
     },
 

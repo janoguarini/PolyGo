@@ -1,5 +1,6 @@
 import { requireSupabase } from '@/lib/supabase';
 
+import { legacyRankedError } from './botMatchApi';
 import type { HumanMatchApi, HumanMatchResult, HumanMatchSetup } from './localMatch';
 
 export type ChallengeStatus =
@@ -22,12 +23,12 @@ export const humanMatchApi: HumanMatchApi & {
 } = {
   async join() {
     const { data, error } = await requireSupabase().rpc('join_human_queue');
-    if (error) throw error;
+    if (error) throw legacyRankedError(error);
     return data as unknown as QueueResponse;
   },
   async leave() {
     const { data, error } = await requireSupabase().rpc('leave_human_queue');
-    if (error) throw error;
+    if (error) throw legacyRankedError(error);
     return data as unknown as { battle_id: string | null };
   },
   async get(battleId) {
