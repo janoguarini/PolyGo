@@ -106,11 +106,14 @@ test('liquidación contra un bot: el ELO usa el rating del bot y el bot no guard
   await playOut(s);
 
   const store = new FakeStore().add(player('alice', 1000, 10));
-  await store.startBotBattle('bb1', 'en', 'alice', {
-    name: 'Kiko',
-    avatarId: 'crown',
-    rating: 1100,
-  });
+  const started = await store.startBotBattle(
+    'bb1',
+    'en',
+    'alice',
+    { name: 'Kiko', avatarId: 'crown', rating: 1100 },
+    true,
+  );
+  s.battle.applyBotStart(started);
   const result = await settleBattle(store, s.battle, 'completed');
   const [alice, kiko] = result.players;
   // Alice no respondió nada: pierde contra un rival de 1100.

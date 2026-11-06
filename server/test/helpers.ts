@@ -1,3 +1,4 @@
+import { BOT_CALIBRATION } from '../../shared/bots';
 import type { RushWord } from '../../shared/wordRush';
 import {
   StaleRatingError,
@@ -16,8 +17,17 @@ export const WORDS: RushWord[] = [
   { id: 'water', text: 'water', translationEs: 'agua' },
 ];
 
-export function player(userId: string, rating = 1000, gamesPlayed = 0): PlayerInfo {
-  return { userId, username: userId, avatarId: 'bolt', languageCode: 'en', rating, gamesPlayed };
+/** Jugador posicionado por defecto (1 victoria); con wins = 0 está sin posicionar. */
+export function player(userId: string, rating = 1000, gamesPlayed = 0, wins = 1): PlayerInfo {
+  return {
+    userId,
+    username: userId,
+    avatarId: 'bolt',
+    languageCode: 'en',
+    rating,
+    gamesPlayed,
+    wins,
+  };
 }
 
 /** Deja correr las promesas pendientes (p. ej. el guardado del inicio de partida). */
@@ -51,8 +61,16 @@ export class FakeStore implements BattleStore {
     return this;
   }
 
+  /** Partidas de calibración contra bots usadas por usuario:idioma (como bot_calibration_used). */
+  calibrationUsed = new Map<string, number>();
+  /** Partidas guardadas como no ranked (bot fuera del cupo). */
+  unranked = new Set<string>();
+
   async getPlayer(userId: string) {
-    return this.players.get(userId) ?? null;
+    const info = this.players.get(userId);
+    if (!info) return null;
+    const used = this.calibrationUsed.get(`${userId}:${info.languageCode}`) ?? 0;
+    return { ...info, botCalibrationLeft: Math.max(0, BOT_CALIBRATION.ratedGames - used) };
   }
 
   async loadWords() {
@@ -70,16 +88,31 @@ export class FakeStore implements BattleStore {
     { player: string; bot: { name: string; avatarId: string; rating: number } }
   >();
 
+  /** Como start_bot_battle_v2: la calibración sólo si queda cupo; idempotente por id. */
   async startBotBattle(
     battleId: string,
-    _language: string,
+    language: string,
     player: string,
     bot: { name: string; avatarId: string; rating: number },
+    rated: boolean,
   ) {
     if (this.failStart) throw new Error('db down');
+    const key = `${player}:${language}`;
+    const limit = BOT_CALIBRATION.ratedGames;
+    if (this.botBattles.has(battleId)) {
+      return {
+        rated: !this.unranked.has(battleId),
+        calibration: { used: this.calibrationUsed.get(key) ?? 0, limit },
+      };
+    }
+    const used = this.calibrationUsed.get(key) ?? 0;
+    const isRanked = rated && used < limit;
+    if (isRanked) this.calibrationUsed.set(key, used + 1);
+    else this.unranked.add(battleId);
     this.botBattles.set(battleId, { player, bot });
     // El slot 2 no tiene usuario (como en start_bot_battle).
     this.started.set(battleId, [player, `bot-slot:${battleId}`]);
+    return { rated: isRanked, calibration: { used: used + (isRanked ? 1 : 0), limit } };
   }
 
   async settlementContext(battleId: string): Promise<SettlementContextRow[]> {
@@ -91,7 +124,9 @@ export class FakeStore implements BattleStore {
         userId: p ? id : null,
         rating: p?.rating ?? null,
         gamesPlayed: p?.gamesPlayed ?? null,
+        wins: p ? (p.wins ?? 0) : null,
         matchesInWindow: this.matchesInWindow,
+        isRanked: !this.unranked.has(battleId),
       };
     });
   }
@@ -113,6 +148,8 @@ export class FakeStore implements BattleStore {
       return { duplicate: true, achievements: {} };
     }
     this.settled.set(battleId, { status, players });
+    // No ranked: resultado guardado, sin rating ni logros (settle_battle).
+    if (this.unranked.has(battleId)) return { duplicate: false, achievements: {} };
     const ids = this.started.get(battleId)!;
     const achievements: Record<string, { id: string; title: string; icon: string }[]> = {};
     players.forEach((p, i) => {
@@ -123,6 +160,7 @@ export class FakeStore implements BattleStore {
           ...info,
           rating: p.rating_after,
           gamesPlayed: info.gamesPlayed + 1,
+          wins: (info.wins ?? 0) + (p.result === 'win' ? 1 : 0),
         });
       }
       achievements[id] =

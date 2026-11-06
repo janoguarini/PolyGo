@@ -27,6 +27,8 @@ export function BattleResult({ result, onPlayAgain, onExit }: Props) {
   const me = result.players.find((p) => p.slot === result.yourSlot)!;
   const opponent = result.players.find((p) => p.slot !== result.yourSlot);
   const practice = result.mode === 'practice';
+  // Contra un bot fuera del cupo de calibración (o pedida como práctica): no movió el ELO.
+  const botPractice = result.mode === 'bot_practice' || result.rating === 'unrated';
   const title = practice ? 'Práctica terminada' : TITLES[me.outcome ?? 'draw'];
   const subtitle = practice
     ? 'Sin ELO: es para entrenar.'
@@ -36,7 +38,11 @@ export function BattleResult({ result, onPlayAgain, onExit }: Props) {
         : `${opponent?.username ?? 'Tu rival'} abandonó la partida.`
       : result.friendly
         ? 'Desafío amistoso: no mueve el ELO.'
-        : null;
+        : botPractice
+          ? 'Práctica contra un bot: no mueve el ELO.'
+          : result.rating === 'calibration' && result.calibration
+            ? `Calibración ${result.calibration.used} de ${result.calibration.limit} contra bots.`
+            : null;
   const victory = !practice && me.outcome === 'win';
   // Victorias y derrotas llevan al zorro; empates y prácticas, el encabezado simple.
   const heroOutcome = practice
@@ -115,7 +121,13 @@ export function BattleResult({ result, onPlayAgain, onExit }: Props) {
       ) : null}
 
       <Button
-        label={practice ? 'Practicar otra vez' : result.friendly ? 'Nuevo desafío' : 'Jugar otra'}
+        label={
+          practice || result.mode === 'bot_practice'
+            ? 'Practicar otra vez'
+            : result.friendly
+              ? 'Nuevo desafío'
+              : 'Jugar otra'
+        }
         size="lg"
         icon={<RotateCcw color={colors.onPrimary} size={20} />}
         onPress={onPlayAgain}

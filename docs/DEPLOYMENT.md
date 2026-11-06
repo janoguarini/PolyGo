@@ -67,7 +67,7 @@ En el `.env` de la app: `EXPO_PUBLIC_BATTLE_SERVER_URL=http://<IP-de-la-PC>:3001
 - Hosting con WebSockets y proceso persistente: Fly.io, Railway o Render. Health check: `GET /health`.
 - **Una sola instancia**: la cola y las partidas viven en memoria (no escalar a 2+ réplicas).
 
-> **Opcional.** Sin servidor, el ranked funciona contra bots en el teléfono (ver BATTLE_PROTOCOL.md → "Sin servidor de partidas"). El servidor sólo hace falta para partidas entre personas.
+> **Necesario para un Ranked justo.** Sin servidor, el ranked funciona por Supabase (ver BATTLE_PROTOCOL.md → "Sin servidor de partidas"), pero el teléfono genera o recibe las respuestas e informa su puntaje: no sirve para el lanzamiento.
 
 #### Railway (recomendado)
 
@@ -84,3 +84,27 @@ En el `.env` de la app: `EXPO_PUBLIC_BATTLE_SERVER_URL=http://<IP-de-la-PC>:3001
 Verificado el 2026-10-30: el servidor corriendo contra Supabase real jugó una partida ranked completa contra un bot (liquidación, historial y `has_bot` correctos) con un usuario temporal que después se borró; la imagen se simuló con sólo dependencias de producción.
 - Servirlo detrás de HTTPS (`wss://`): las builds de producción de Android/iOS bloquean HTTP en claro.
 - Al reiniciar, las partidas en curso se cancelan sin ELO; programar deploys fuera de horas pico.
+
+### Ranked con el servidor como autoridad (Fase 1) — pasos pendientes de autorización
+
+Código y migración listos en el repo; **nada de esto está aplicado ni desplegado**. Orden:
+
+1. **Staging** (rama de Supabase o proyecto aparte): aplicar `supabase/migrations/20261104150000_ranked_server_authority.sql`, regenerar `src/lib/database.generated.ts` (las RPC nuevas se agregaron a mano), levantar el servidor apuntando a staging y jugar con una build de desarrollo: 3 calibraciones contra bots, la 4.ª sin bot, práctica contra bot, una partida entre dos personas, preguntas para escribir desde Oro (y que en chino no aparezcan) y abandono/reconexión.
+2. **Producción**: aplicar la misma migración (no destructiva), desplegar el servidor (`PROTOCOL_VERSION` 2: los clientes viejos reciben `protocol_mismatch`) y publicar la app con `EXPO_PUBLIC_BATTLE_SERVER_URL` (build o `eas update` con la variable en el entorno de EAS).
+3. **Recién con la app nueva publicada**, cerrar el flujo viejo en el que el teléfono informa el puntaje. SQL listo, sin aplicar (rompe Ranked en versiones viejas de la app):
+
+```sql
+-- Ranked sólo por el servidor de partidas. Los desafíos con amigos (no mueven ELO) siguen por
+-- Supabase: create/accept/status/cancel_friend_challenge, get_human_match, finish_human_match y
+-- human_match_result se mantienen mientras los desafíos no pasen al servidor.
+revoke execute on function public.start_bot_match() from authenticated;
+revoke execute on function public.finish_bot_match(uuid, integer, integer, integer, boolean) from authenticated;
+revoke execute on function public.join_human_queue() from authenticated;
+revoke execute on function public.leave_human_queue() from authenticated;
+```
+
+`finish_human_match` sigue abierto porque lo usan los desafíos: como `join_human_queue` queda cerrado, ya no se pueden crear partidas ranked entre personas por ese camino (las que crea `accept_friend_challenge` son `is_ranked = false`).
+
+### Cambiar de hosting
+
+El servidor sólo necesita Node 22, WebSockets, un proceso persistente de **una instancia** y tres variables (`SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `PORT`). Para moverlo: desplegar la misma imagen (`server/Dockerfile`) en el hosting nuevo, verificar `GET /health`, cambiar `EXPO_PUBLIC_BATTLE_SERVER_URL` en EAS y publicar; apagar el anterior cuando no tenga partidas (`/health` → `battles: 0`). Supabase no cambia: ratings, partidas y cupos viven en la base, y al arrancar el servidor nuevo cancela sin ELO las partidas que hayan quedado abiertas.

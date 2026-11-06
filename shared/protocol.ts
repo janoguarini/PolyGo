@@ -6,7 +6,11 @@
 
 import type { MatchOutcome } from './ranking';
 
-export const PROTOCOL_VERSION = 1;
+/** 2: respuestas escritas (`text`), práctica contra bots y tipo de partida (`rating`). */
+export const PROTOCOL_VERSION = 2;
+
+/** Largo máximo de una respuesta escrita: lo demás se rechaza como invalid_payload. */
+export const MAX_WRITTEN_ANSWER_LENGTH = 80;
 
 export const WORD_RUSH = {
   durationMs: 75_000,
@@ -66,7 +70,23 @@ export function isTerminalStatus(status: BattleStatus): boolean {
 
 // ---------- payloads ----------
 
-export type BattleMode = 'ranked' | 'practice';
+/**
+ * ranked: cola competitiva (persona o, con cupo de calibración, bot). practice: sola contra el reloj.
+ * bot_practice: contra un bot, sin ELO ni recompensas (no se guarda).
+ */
+export type BattleMode = 'ranked' | 'practice' | 'bot_practice';
+
+/**
+ * Si la partida mueve el ELO: competitive (contra una persona), calibration (una de las primeras
+ * partidas contra bots de ese idioma, ver BOT_CALIBRATION) o unrated (práctica).
+ */
+export type MatchRating = 'competitive' | 'calibration' | 'unrated';
+
+/** Partidas de calibración contra bots usadas en ese idioma (contando la actual) y el tope. */
+export interface CalibrationInfo {
+  used: number;
+  limit: number;
+}
 
 export interface PublicPlayer {
   slot: 1 | 2;
@@ -141,6 +161,9 @@ export interface BattleFinish {
   achievementsUnlocked: AchievementUnlock[];
   /** Desafío a un amigo: no mueve el ELO. */
   friendly?: boolean;
+  /** Sin dato = como antes (ranked mueve el ELO). */
+  rating?: MatchRating;
+  calibration?: CalibrationInfo | null;
 }
 
 /** Foto completa para retomar la partida tras reconectar. */
@@ -156,6 +179,9 @@ export interface BattleSnapshot {
   endsAt: number | null;
   question: QuestionView | null;
   scores: ScoreLine[];
+  /** Sin dato = como antes (ranked mueve el ELO). */
+  rating?: MatchRating;
+  calibration?: CalibrationInfo | null;
 }
 
 export type ErrorCode =
@@ -195,7 +221,13 @@ export interface AnswerResult {
 }
 
 export interface ServerToClientEvents {
-  'queue:status': (p: { searching: boolean; window: number; waitedMs: number }) => void;
+  'queue:status': (p: {
+    searching: boolean;
+    window: number;
+    waitedMs: number;
+    /** Partidas de calibración contra bots que le quedan (0 = sólo personas; ver BOT_CALIBRATION). */
+    botCalibrationLeft?: number;
+  }) => void;
   'match:found': (p: BattleSnapshot) => void;
   'battle:start': (p: BattleSnapshot) => void;
   'battle:question': (p: QuestionView) => void;
@@ -213,8 +245,9 @@ export interface ClientToServerEvents {
   'queue:join': (p: { mode: BattleMode }, ack: Ack<{ mode: BattleMode }>) => void;
   'queue:leave': (ack: Ack<null>) => void;
   'match:ready': (p: { battleId: string }, ack: Ack<null>) => void;
+  /** Opción elegida o, en las preguntas para escribir, el texto. El servidor corrige y puntúa. */
   'battle:answer': (
-    p: { battleId: string; questionIndex: number; option: number },
+    p: { battleId: string; questionIndex: number; option?: number; text?: string },
     ack: Ack<AnswerResult>,
   ) => void;
   /** Abandono voluntario: antes de empezar cancela; en juego es derrota inmediata. */

@@ -100,6 +100,19 @@ const correctOptionFor = (q: QuestionView) => {
   return q.options.indexOf(q.direction === 'en_es' ? word.translationEs : word.text);
 };
 
+/**
+ * Respuesta de un jugador de test: la opción correcta (o una incorrecta) o, en las preguntas para
+ * escribir (desde Oro), la palabra en inglés (o una equivocada).
+ */
+const answerFor = (q: QuestionView, right: boolean): { option?: number; text?: string } => {
+  if (q.kind === 'write') {
+    const word = WORDS.find((w) => w.translationEs === q.prompt)!;
+    return { text: right ? word.text : 'zzz' };
+  }
+  const option = correctOptionFor(q);
+  return { option: right ? option : (option + 1) % q.options.length };
+};
+
 test('rechaza conexiones sin token válido o con otra versión de protocolo', async () => {
   const noToken = connect(url, {
     transports: ['websocket'],
@@ -172,12 +185,11 @@ test('partida ranked completa: cola → rival → listos → preguntas → liqui
   const play = async (socket: Client, first: Promise<QuestionView>, right: boolean) => {
     let q = await first;
     for (;;) {
-      const option = right ? correctOptionFor(q) : (correctOptionFor(q) + 1) % q.options.length;
       const nextQ = q.index + 1 < RULES.questionCount ? next(socket, 'battle:question') : null;
       const res = await socket.emitWithAck('battle:answer', {
         battleId: found.battleId,
         questionIndex: q.index,
-        option,
+        ...answerFor(q, right),
       });
       assert.equal(res.ok, true);
       if (res.ok) assert.equal(res.data.correct, right);
@@ -288,7 +300,7 @@ test('práctica: sin rival, sin confirmación y sin tocar el ELO', async () => {
   await gus.emitWithAck('battle:answer', {
     battleId: snapshot.battleId,
     questionIndex: q.index,
-    option: correctOptionFor(q),
+    ...answerFor(q, true),
   });
 
   // Salir de la práctica la termina con lo que llevaba, sin resultado ni ELO.

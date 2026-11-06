@@ -3,6 +3,7 @@ import type { BattleSnapshot, QuestionView } from '@shared/protocol';
 import {
   battleReducer,
   initialBattleState,
+  isRated,
   myLine,
   opponentPlayer,
   remainingMs,
@@ -208,5 +209,46 @@ describe('desafío a un amigo', () => {
 
   it('una partida normal no es amistosa', () => {
     expect(run({ type: 'connecting', mode: 'ranked' }).friendly).toBe(false);
+  });
+
+  it('el tipo de partida llega del servidor: calibración, práctica contra bot o sin dato (flujo viejo)', () => {
+    const calibration = run(
+      { type: 'joined', mode: 'ranked' },
+      {
+        type: 'snapshot',
+        snapshot: snapshot({ rating: 'calibration', calibration: { used: 2, limit: 3 } }),
+        receivedAt: 0,
+      },
+    );
+    expect(calibration.rating).toBe('calibration');
+    expect(calibration.calibration).toEqual({ used: 2, limit: 3 });
+    expect(isRated(calibration)).toBe(true);
+
+    const practice = run(
+      { type: 'connecting', mode: 'bot_practice' },
+      { type: 'joined', mode: 'bot_practice' },
+    );
+    expect(practice.phase).toBe('connecting');
+    const found = battleReducer(practice, {
+      type: 'snapshot',
+      snapshot: snapshot({ mode: 'bot_practice', rating: 'unrated' }),
+      receivedAt: 0,
+    });
+    expect(found.phase).toBe('found');
+    expect(isRated(found)).toBe(false);
+
+    // Un bot fuera del cupo dentro de la cola ranked tampoco mueve el ELO.
+    expect(isRated({ mode: 'ranked', rating: 'unrated', friendly: false })).toBe(false);
+    // Sin servidor de partidas no hay dato: la ranked de siempre mueve el ELO.
+    expect(isRated(run({ type: 'joined', mode: 'ranked' }))).toBe(true);
+    expect(isRated({ mode: 'ranked', rating: null, friendly: true })).toBe(false);
+  });
+
+  it('la cola informa cuántas partidas de calibración contra bots le quedan', () => {
+    const s = run(
+      { type: 'joined', mode: 'ranked' },
+      { type: 'queue_status', window: 100, waitedMs: 31_000, botCalibrationLeft: 0 },
+    );
+    expect(s.queue).toEqual({ window: 100, waitedMs: 31_000, botCalibrationLeft: 0 });
   });
 });

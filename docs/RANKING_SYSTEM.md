@@ -36,9 +36,16 @@ Partidas ranked contra **la misma cuenta** en las últimas 24 h (contando la act
 | 3–4        | 0.5                                           |
 | 5+         | 0 (no mueve rating; sí queda en el historial) |
 
-## Partidas contra bots
+## Partidas contra bots: calibración y práctica
 
-Cuentan igual que contra una persona: el delta se calcula contra el rating asignado al bot (el del jugador ± 40). El bot no tiene rating propio que guardar. El anti-farming por rival repetido no aplica (cada bot es nuevo), pero no hace falta: el bot juega con la habilidad de su rating. Detalle en [BATTLE_PROTOCOL.md](BATTLE_PROTOCOL.md#bots).
+Con el servidor de partidas (`server/`):
+
+- **Calibración:** las primeras **3** partidas contra bots de cada usuario **en cada idioma** mueven el ELO, contra el rating asignado al bot (el del jugador ± 40). Ayudan a ubicar al jugador nuevo. Tope: `BOT_CALIBRATION.ratedGames` en `shared/bots.ts`, espejo SQL `public.bot_calibration_limit()` (un test compara).
+- **Lo cuenta la base**, no la app: `start_bot_battle_v2` bloquea el rating del jugador y cuenta las partidas ranked contra bots no canceladas de ese idioma (`bot_calibration_used`), **incluidas las del flujo viejo sin servidor y las abandonadas**. Una partida cancelada antes de empezar no consume cupo; reintentar el inicio con el mismo id no consume dos veces.
+- **Después:** con el cupo agotado la cola sólo empareja personas. Tras 30 s sin rival la app ofrece "Practicar contra un bot (sin ELO)" (`bot_practice`): no se guarda y no mueve ELO, partidas jugadas, logros, misiones ni Polys. Si por una carrera la base crea la partida como no ranked, `settle_battle` la cierra sin rating.
+- Contra una persona no se consume cupo.
+
+Sin servidor (flujo viejo, hasta revocar sus RPC: ver DEPLOYMENT.md), las partidas contra bots siguen moviendo el ELO sin cupo.
 
 ## Tiers y divisiones
 
@@ -57,7 +64,8 @@ Un usuario nuevo se muestra **"Sin posicionar"** (sin número de ELO, fuera de l
 
 ## Reglas de liquidación (implementadas en Fase 4: `server/src/settlement.ts` + `settle_battle`)
 
-- El rating lo calcula **sólo el servidor de partidas**; el cliente no tiene privilegios de escritura sobre `player_ratings` ni `rating_history` (testeado con RLS).
+- El rating lo calcula **sólo el servidor de partidas**; el cliente no tiene privilegios de escritura sobre `player_ratings` ni `rating_history` (testeado con RLS). El cliente sólo envía qué opción eligió o qué escribió: corrección, tiempo y puntos los decide el servidor. **Salvedad:** mientras el flujo viejo sin servidor siga habilitado, sus RPC (`finish_bot_match`, `finish_human_match`) aceptan el puntaje que informa el teléfono.
+- "Sin posicionar" también en el servidor: `battle_settlement_context_v2` devuelve las victorias y la liquidación usa `placed`.
 - `rating_history` tiene `UNIQUE (user_id, battle_id)`: una partida no puede liquidarse dos veces para un jugador (testeado).
 - Partidas canceladas: no generan filas en `rating_history`.
 - Abandono: se liquida como derrota del que abandona (ver BATTLE_PROTOCOL).
@@ -82,4 +90,4 @@ En partidas entre personas y desafíos manda el rating más bajo de los dos. Con
 
 Desde Oro (700) una de cada tres preguntas (la 3.ª, 6.ª, 9.ª…) no tiene opciones: se muestra la palabra en español y hay que escribirla en inglés (`WRITING`, `withWriting` en `shared/wordRush.ts`; espejo SQL `public.rush_writing` y la marca `write` en `public.rush_questions`). Se corrige como en las lecciones (`checkWritten`: sin importar mayúsculas, espacios ni contracciones; un error de tipeo se tolera desde 8 letras). En esas preguntas el bonus de velocidad tiene el doble de margen y el bot tarda el doble (`start_bot_match` / `settle_bot_match`). Al fallar se muestra cómo se escribía.
 
-El servidor de partidas (`server/`, Railway) todavía no manda preguntas para escribir: el protocolo de respuesta es por índice de opción. Hay que extenderlo antes de pasar el ranked a ese servidor.
+En chino no hay preguntas para escribir (`writingEnabled`, espejo `public.rush_writing_for`). El servidor de partidas las manda desde el protocolo 2 (`battle:answer` con `text`) y las corrige él. La migración `20261104150000_ranked_server_authority` corrige el flujo viejo: `settle_bot_match` usaba `rush_writing` sin idioma y en chino desde Oro le daba al bot más bonus de velocidad que el que mostraba la app.

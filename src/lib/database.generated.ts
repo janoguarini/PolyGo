@@ -894,6 +894,38 @@ export type Database = {
           user_id: string;
         }[];
       };
+      // Migración 20261104150000_ranked_server_authority (aplicada en producción el 2026-11-06):
+      // idénticas a las que genera generate_typescript_types del proyecto.
+      battle_settlement_context_v2: {
+        Args: { p_battle_id: string; p_window_hours: number };
+        Returns: {
+          games_played: number;
+          is_ranked: boolean;
+          matches_in_window: number;
+          rating: number;
+          slot: number;
+          user_id: string;
+          wins: number;
+        }[];
+      };
+      bot_calibration_limit: { Args: never; Returns: number };
+      bot_calibration_used: {
+        Args: { p_language_code: string; p_user_id: string };
+        Returns: number;
+      };
+      start_bot_battle_v2: {
+        Args: {
+          p_battle_id: string;
+          p_bot_avatar_id: string;
+          p_bot_name: string;
+          p_bot_rating: number;
+          p_language_code: string;
+          p_player: string;
+          p_protocol_version: number;
+          p_rated: boolean;
+        };
+        Returns: Json;
+      };
       cancel_battle: { Args: { p_battle_id: string }; Returns: boolean };
       cancel_stale_battles: {
         Args: { p_older_than_seconds: number };

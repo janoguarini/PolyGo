@@ -47,6 +47,9 @@ Cualquier otra transición lanza un error (testeado en `shared/__tests__/wordRus
 - Cada jugador avanza a su ritmo: recibe la pregunta *n+1* sólo después de responder la *n*. El cliente nunca recibe la respuesta correcta antes de responder.
 - Puntuación: correcta = 100 + bonus de velocidad (50 → 0 lineal en 5 s desde que el servidor envió la pregunta) + bonus de racha (correctas seguidas: +10 desde 3, +20 desde 5, +30 desde 8; tope 180 por respuesta); incorrecta = −50 y corta la racha; el acumulado no baja de 0.
 - Tipos de pregunta (`questionKind`, determinístico, igual para los dos): español → inglés de una palabra con emoji inequívoco se muestra como **imagen**; inglés → español, dos de cada tres se **escuchan** (voz del sistema) en vez de leerse; el resto, texto. Adivinar al azar entre 4 tiene valor esperado entre −12,5 (lento) y 0 (instantáneo): nunca conviene.
+- **Escribir (protocolo 2):** desde Oro, y nunca en chino (`writingEnabled`, con el rating más bajo de los humanos), la 3.ª, 6.ª, 9.ª… pregunta llega con `kind: 'write'` y sin opciones. El cliente responde `{ text }` (≤ 80 caracteres) y el servidor corrige con `checkWritten`; el bonus de velocidad tiene el doble de margen y el bot tarda el doble. Mandar `option` en una de escribir, o `text` en una de opciones, es `invalid_payload`.
+- El cliente sólo manda `questionIndex` y `option` o `text`; cualquier otro campo (puntos, puntaje, correcta) se ignora.
+- Cada foto y cada `battle:finish` trae `rating`: `competitive` (contra una persona), `calibration` (con `calibration: {used, limit}`) o `unrated` (práctica).
 - Respuestas duplicadas, adelantadas o de otra pregunta: `stale_question`, no puntúan. Después del final: `battle_over`.
 - Resultado: abandono pierde siempre; si no, mayor puntaje; empate de puntaje → mayor precisión; si persiste, empate (S = 0.5).
 - Rate limit: 20 eventos por segundo y socket; el exceso se descarta.
@@ -81,7 +84,7 @@ Las fotos incluyen `serverNow`: la app calcula el desfase de reloj y muestra los
 Las partidas de práctica no se guardan. Las ranked:
 
 1. `start_battle(id, idioma, j1, j2, versión)` al terminar la cuenta atrás (idempotente). Si falla, la partida se cancela.
-2. `battle_settlement_context(id, 24)` devuelve rating, partidas jugadas y partidas entre ambos en las últimas 24 h (contando la actual).
+2. `battle_settlement_context_v2(id, 24)` devuelve rating, partidas jugadas, victorias (sin posicionar), si la partida es ranked y partidas entre ambos en las últimas 24 h (contando la actual).
 3. El servidor calcula el ELO con `shared/ranking.ts` y llama a `settle_battle(id, estado, jugadores)`, que en **una transacción** bloquea las filas de `player_ratings`, verifica que el rating y las partidas jugadas sigan siendo los leídos (si no: `stale_rating`, el servidor relee y reintenta hasta 3 veces), completa `battle_players`, actualiza `player_ratings`, inserta `rating_history`, cierra `battles` y llama a `evaluate_achievements` para cada jugador. Reliquidar devuelve `duplicate: true` sin tocar nada.
 4. Si la liquidación falla del todo, la partida se cancela (`cancel_battle`) y se avisa `settlement_failed`.
 5. Al arrancar y cada 5 min, el servidor cancela partidas abiertas con más de 5 min (`cancel_stale_battles`): quedaron huérfanas por un reinicio.
@@ -92,7 +95,7 @@ Cola en memoria por idioma (la versión de protocolo ya la filtra el handshake).
 
 ## Sin servidor de partidas (modo actual: MVP con Supabase)
 
-Si la app no tiene `EXPO_PUBLIC_BATTLE_SERVER_URL`, el ranked funciona sin servidor propio ni costo extra. **Antes del lanzamiento se pasa al servidor de `server/` (Railway)**, que valida cada respuesta.
+Si la app no tiene `EXPO_PUBLIC_BATTLE_SERVER_URL`, el ranked funciona sin servidor propio ni costo extra. **No es seguro para el lanzamiento:** el teléfono genera (bots) o recibe (personas) las preguntas con la respuesta e informa su puntaje; la base sólo valida rangos. Se cierra revocando sus RPC cuando la app use el servidor (pasos en DEPLOYMENT.md).
 
 ### Entre personas
 
@@ -126,14 +129,14 @@ Partida entre dos personas que se ponen de acuerdo, siempre por Supabase (tambi�
 
 ## Bots
 
-Con pocos jugadores, quien espera **5 s** en la cola ranked sin rival humano juega contra un bot ([`shared/bots.ts`](../shared/bots.ts)):
+Con pocos jugadores, quien espera **5 s** en la cola ranked sin rival humano y **todavía tiene cupo de calibración** (3 partidas con ELO por idioma; ver RANKING_SYSTEM.md) juega contra un bot ([`shared/bots.ts`](../shared/bots.ts)). Sin cupo, sigue esperando a una persona; `queue:status` trae `botCalibrationLeft` y la app ofrece `queue:join { mode: 'bot_practice' }` a los 30 s (contra un bot, sin ELO, no se guarda). Persistencia de las de calibración: `start_bot_battle_v2(…, p_rated)`, que devuelve `{rated, calibration_used, calibration_limit}`; la base puede crearla no ranked si el cupo se agotó y el servidor la liquida sin rating.
 
 - **Siempre identificado:** nombre propio y distintivo **BOT** al encontrar rival, en la partida, en el resultado y en el historial. Nunca se presenta como persona.
 - **A tu nivel:** rating = el del jugador ± 40. Su habilidad sale de ese rating por una curva por tramos (`BOT_CONFIG.skillCurve`, copiada en `bot_skill()`): precisión de 50 % (100) a 97 % (2200) y tiempo medio de respuesta de 6,5 s a 1,2 s, con variación log-normal. Es empinada abajo: de Bronce a Plata a Oro se nota que los bots responden más rápido. Una simulación con la puntuación real (`shared/__tests__/bots.test.ts`) verifica que a igual rating cada uno gana ~50 % y que más rating gana más seguido.
-- **Cuenta para el ELO** como una partida normal, calculada contra el rating del bot. Como el bot se elige a la altura del jugador, en promedio se gana la mitad: el ELO mide el nivel real y no se puede "farmear".
+- **Cuenta para el ELO sólo como calibración** (las primeras 3 por idioma), calculada contra el rating del bot.
 - **Sin cuenta:** el bot no tiene fila en `profiles` ni `player_ratings`; ocupa el slot 2 de `battle_players` sin `user_id`, con `bot_name` y `bot_avatar_id` (`battles.has_bot = true`). No aparece en la clasificación.
 - **Juega por el mismo camino que una persona:** confirma con una demora de 0,6–2 s y responde con `Battle.answer`; el servidor no le envía nada.
-- Persistencia: `start_bot_battle` (en lugar de `start_battle`); la liquidación y `settle_battle` no cambian (el slot del bot no tiene rating que actualizar).
+- Persistencia: `start_bot_battle_v2` (en lugar de `start_battle`); `settle_battle` cierra sin rating las partidas no ranked y el slot del bot no tiene rating que actualizar.
 - Ajustes: `BOT_CONFIG` en `shared/bots.ts`; `botAfterMs: null` en `createBattleServer` los desactiva.
 
 ## Limitaciones conocidas

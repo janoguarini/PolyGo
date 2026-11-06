@@ -1,4 +1,5 @@
 import {
+  MAX_WRITTEN_ANSWER_LENGTH,
   WORD_RUSH,
   canTransition,
   isTerminalStatus,
@@ -7,21 +8,32 @@ import {
   type BattleMode,
   type BattleSnapshot,
   type BattleStatus,
+  type CalibrationInfo,
   type CancelReason,
+  type MatchRating,
   type PublicPlayer,
   type ScoreLine,
   type ServerToClientEvents,
 } from '../../shared/protocol';
 import {
+  WRITING,
   answerPoints,
   applyPoints,
+  checkWritten,
+  pointsElapsed,
   toQuestionView,
   type FinalLine,
   type RushQuestion,
 } from '../../shared/wordRush';
 import { BOT_CONFIG, botMove, botSkill } from '../../shared/bots';
 import type { Clock } from './clock';
-import type { PlayerInfo } from './types';
+import type { BotBattleStart, PlayerInfo } from './types';
+
+/** Lo que manda el cliente al responder: la opción o, en las preguntas para escribir, el texto. */
+export interface AnswerChoice {
+  option?: unknown;
+  text?: unknown;
+}
 
 export type BattleRules = {
   -readonly [K in keyof typeof WORD_RUSH]: (typeof WORD_RUSH)[K] extends number
@@ -37,8 +49,11 @@ export type Send = <E extends keyof ServerToClientEvents>(
 
 export interface BattleHooks {
   send: Send;
-  /** Persiste el inicio (sólo ranked). Si falla, la partida se cancela sin ELO. */
-  onStart(battle: Battle): Promise<void>;
+  /**
+   * Persiste el inicio (sólo ranked). Si falla, la partida se cancela sin ELO. Contra un bot
+   * devuelve lo que decidió la base (si es de calibración o práctica).
+   */
+  onStart(battle: Battle): Promise<BotBattleStart | void>;
   /** La partida terminó con resultado: el orquestador liquida y envía battle:finish. */
   onFinish(battle: Battle, status: 'completed' | 'forfeited'): void;
   onCancel(battle: Battle, reason: CancelReason): void;
@@ -73,7 +88,10 @@ export class Battle {
   startsAt: number | null = null;
   endsAt: number | null = null;
   /** Promesa del guardado de inicio; quien cancela la espera para no dejar filas abiertas. */
-  persistence: Promise<void> | null = null;
+  persistence: Promise<unknown> | null = null;
+  /** Si mueve el ELO. Contra un bot lo confirma la base al guardar el inicio (cupo de calibración). */
+  rating: MatchRating;
+  calibration: CalibrationInfo | null;
 
   private readonly seats: Seat[];
   private timers = new Set<unknown>();
@@ -89,7 +107,10 @@ export class Battle {
     private readonly rules: BattleRules = WORD_RUSH,
     /** Fuente [0, 1) de las jugadas de los bots (inyectable en tests). */
     private readonly random: () => number = Math.random,
+    options: { rating?: MatchRating; calibration?: CalibrationInfo | null } = {},
   ) {
+    this.rating = options.rating ?? (mode === 'ranked' ? 'competitive' : 'unrated');
+    this.calibration = options.calibration ?? null;
     const expected = mode === 'practice' ? 1 : 2;
     if (players.length !== expected) throw new Error(`${mode} necesita ${expected} jugador(es)`);
     this.seats = players.map((info, i) => ({
@@ -147,7 +168,16 @@ export class Battle {
     return true;
   }
 
-  answer(userId: string, questionIndex: unknown, option: unknown, reply: Ack<AnswerResult>): void {
+  /**
+   * Respuesta de un jugador. El cliente sólo dice qué eligió (o qué escribió) para qué pregunta: la
+   * corrección, el tiempo y los puntos los decide el servidor. Cualquier otro dato se ignora.
+   */
+  answer(
+    userId: string,
+    questionIndex: unknown,
+    choice: AnswerChoice,
+    reply: Ack<AnswerResult>,
+  ): void {
     const seat = this.seat(userId);
     if (!seat) return reply({ ok: false, code: 'not_in_battle' });
     if (this.isOver || (this.endsAt !== null && this.clock.now() >= this.endsAt)) {
@@ -156,38 +186,57 @@ export class Battle {
     if (this.status !== 'in_progress' && this.status !== 'reconnecting') {
       return reply({ ok: false, code: 'stale_question' });
     }
-    if (!Number.isInteger(questionIndex) || !Number.isInteger(option)) {
-      return reply({ ok: false, code: 'invalid_payload' });
-    }
+    if (!Number.isInteger(questionIndex)) return reply({ ok: false, code: 'invalid_payload' });
     // Duplicadas, adelantadas o de una pregunta anterior: se ignoran.
     if (questionIndex !== seat.questionIndex || seat.questionIndex >= this.questions.length) {
       return reply({ ok: false, code: 'stale_question' });
     }
     const question = this.questions[seat.questionIndex]!;
-    if ((option as number) < 0 || (option as number) >= question.options.length) {
-      return reply({ ok: false, code: 'invalid_payload' });
-    }
 
-    const correct = option === question.correctOption;
+    let correct: boolean;
+    if (question.write) {
+      const text = choice?.text;
+      if (typeof text !== 'string' || text.length > MAX_WRITTEN_ANSWER_LENGTH) {
+        return reply({ ok: false, code: 'invalid_payload' });
+      }
+      correct = checkWritten(text, question.options[question.correctOption]!).correct;
+    } else {
+      const option = choice?.option;
+      if (
+        !Number.isInteger(option) ||
+        (option as number) < 0 ||
+        (option as number) >= question.options.length
+      ) {
+        return reply({ ok: false, code: 'invalid_payload' });
+      }
+      correct = option === question.correctOption;
+    }
+    reply({ ok: true, data: this.score(seat, question, correct) });
+    this.advance(seat);
+  }
+
+  /** Puntúa la respuesta de la pregunta actual del jugador con el reloj del servidor. */
+  private score(seat: Seat, question: RushQuestion, correct: boolean): AnswerResult {
     seat.streak = correct ? seat.streak + 1 : 0;
-    const points = answerPoints(correct, this.clock.now() - seat.questionSentAt, seat.streak);
+    const elapsed = pointsElapsed(question, this.clock.now() - seat.questionSentAt);
+    const points = answerPoints(correct, elapsed, seat.streak);
     seat.score = applyPoints(seat.score, points);
     seat.answered += 1;
     if (correct) seat.correct += 1;
     seat.questionIndex += 1;
+    return {
+      questionIndex: question.index,
+      correct,
+      correctOption: question.correctOption,
+      points,
+      score: seat.score,
+      streak: seat.streak,
+      ...(question.write ? { correctText: question.options[question.correctOption]! } : {}),
+    };
+  }
 
-    reply({
-      ok: true,
-      data: {
-        questionIndex: question.index,
-        correct,
-        correctOption: question.correctOption,
-        points,
-        score: seat.score,
-        streak: seat.streak,
-      },
-    });
-
+  /** Tras una respuesta: marcador, siguiente pregunta o fin si los dos terminaron todas. */
+  private advance(seat: Seat): void {
     this.broadcastScores();
     if (seat.questionIndex < this.questions.length) {
       this.sendQuestion(seat);
@@ -295,7 +344,15 @@ export class Battle {
       endsAt: this.endsAt,
       question: question && seat ? toQuestionView(question, seat.questionSentAt) : null,
       scores: this.scores(),
+      rating: this.rating,
+      calibration: this.calibration,
     };
+  }
+
+  /** Lo que decidió la base al guardar el inicio de una partida contra un bot. */
+  applyBotStart(start: BotBattleStart): void {
+    this.rating = start.rated ? 'calibration' : 'unrated';
+    this.calibration = start.rated ? start.calibration : null;
   }
 
   // ---------- internos ----------
@@ -304,9 +361,11 @@ export class Battle {
     this.transition('ready');
     this.clearTimers();
     this.readyDeadline = null;
-    this.persistence = this.hooks.onStart(this);
+    const persistence = this.hooks.onStart(this);
+    this.persistence = persistence;
     try {
-      await this.persistence;
+      const started = await persistence;
+      if (started) this.applyBotStart(started);
     } catch {
       this.cancel('server_error');
       return;
@@ -349,12 +408,13 @@ export class Battle {
   /** El bot "piensa" según su habilidad y responde por el mismo camino que una persona. */
   private scheduleBotAnswer(seat: Seat, question: RushQuestion): void {
     const move = botMove(botSkill(seat.info.rating), this.random);
-    this.schedule(move.delayMs, () => {
-      const wrong = question.options.map((_, i) => i).filter((i) => i !== question.correctOption);
-      const option = move.correct
-        ? question.correctOption
-        : wrong[Math.floor(this.random() * wrong.length)]!;
-      this.answer(seat.info.userId, question.index, option, () => {});
+    // Escribir lleva más tiempo: el bot tarda lo mismo que el margen extra del bonus.
+    const delay = question.write ? move.delayMs * WRITING.timeFactor : move.delayMs;
+    this.schedule(delay, () => {
+      if (this.isOver || (this.status !== 'in_progress' && this.status !== 'reconnecting')) return;
+      if (seat.questionIndex !== question.index) return;
+      this.score(seat, question, move.correct);
+      this.advance(seat);
     });
   }
 
