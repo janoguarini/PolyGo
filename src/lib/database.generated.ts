@@ -894,8 +894,8 @@ export type Database = {
           user_id: string;
         }[];
       };
-      // Agregadas a mano (migración 20261104150000_ranked_server_authority, todavía sin aplicar en
-      // el proyecto): regenerar este archivo cuando se aplique.
+      // Migración 20261104150000_ranked_server_authority (aplicada en producción el 2026-11-06):
+      // idénticas a las que genera generate_typescript_types del proyecto.
       battle_settlement_context_v2: {
         Args: { p_battle_id: string; p_window_hours: number };
         Returns: {
