@@ -52,6 +52,30 @@ export type RemoteGrader = (
   context: { responseMs: number; assists?: Record<string, number | boolean>; attemptNo: number },
 ) => Promise<RemoteGrade>;
 
+/**
+ * Corrección instantánea de los repasos (docs/LEARNING_INSTANT_REVIEW.md): el feedback sale en el momento
+ * de la clave del ítem y la respuesta se registra en segundo plano; la corrección del servidor prevalece
+ * (acción `reconcile`). Un ítem sin clave se corrige como antes, esperando al servidor (`grade`).
+ */
+export interface InstantGrader {
+  /** Veredicto con la clave del ítem; null = sin clave (se espera al servidor). */
+  grade: (
+    exercise: Exercise,
+    answer: UserAnswer,
+  ) => { verdict: AnswerVerdict; explanation: string | null } | null;
+  /** Registra el intento en segundo plano; resuelve con la corrección del servidor (la que vale). */
+  record: (
+    exercise: Exercise,
+    answer: UserAnswer,
+    context: {
+      responseMs: number;
+      assists?: Record<string, number | boolean>;
+      attemptNo: number;
+      verdict: AnswerVerdict;
+    },
+  ) => Promise<RemoteGrade>;
+}
+
 interface Props {
   exercises: Exercise[];
   words: Record<string, WordRow>;
@@ -65,6 +89,8 @@ interface Props {
    * feedback muestra su corrección. Sin conexión, la respuesta queda pendiente con «Reintentar».
    */
   grade?: RemoteGrader;
+  /** Corrección instantánea con registro en segundo plano (repasos con clave de corrección). */
+  instant?: InstantGrader;
   /** Repeticiones por ejercicio fallado (por defecto MAX_RETRIES; 0 = una respuesta por ítem). */
   maxRetries?: number;
   /** Respuestas ya corregidas (retomar una sesión). */
@@ -79,6 +105,7 @@ export function SessionPlayer({
   onClose,
   onFinished,
   grade,
+  instant,
   maxRetries,
   answered,
 }: Props) {
@@ -100,6 +127,8 @@ export function SessionPlayer({
   // Corrección remota en curso (bloqueo síncrono contra el doble toque) y el intento en pantalla.
   const grading = useRef(false);
   const attemptKey = useRef<string | null>(null);
+  // Intentos ya corregidos en el dispositivo (bloqueo síncrono contra el doble toque).
+  const answeredLocally = useRef(new Set<string>());
   const { readings, showReadings, setShowReadings } = useSessionLanguage();
 
   useEffect(() => {
@@ -176,8 +205,45 @@ export function SessionPlayer({
     }
   };
 
+  const gradeInstantly = (answer: UserAnswer, responseMs: number): boolean => {
+    const local = instant?.grade(exercise, answer);
+    if (!instant || !local) return false;
+    const attemptNo = state.attempts.filter((a) => a.exerciseId === exercise.id).length + 1;
+    const key = `${exercise.id}#${attemptNo}`;
+    if (answeredLocally.current.has(key)) return true;
+    answeredLocally.current.add(key);
+    const exerciseId = exercise.id;
+    setRevealed((r) => ({ ...r, [exerciseId]: { explanation: local.explanation } }));
+    applyVerdict(local.verdict, answer, responseMs, assistsNow);
+    instant
+      .record(exercise, answer, {
+        responseMs,
+        assists: assistsNow,
+        attemptNo,
+        verdict: local.verdict,
+      })
+      .then((result) => {
+        dispatch({
+          type: 'reconcile',
+          exerciseId,
+          attemptNo,
+          verdict: result.verdict,
+          response: result.response,
+          answer: serializeAnswer(result.response),
+        });
+        if (result.explanation !== local.explanation) {
+          setRevealed((r) => ({ ...r, [exerciseId]: { explanation: result.explanation } }));
+        }
+      })
+      // Rechazo definitivo o sesión terminada: queda el veredicto de la app; el envío final corrige
+      // la evidencia en el servidor (y una sesión terminada la vuelve a pedir la pantalla).
+      .catch(() => {});
+    return true;
+  };
+
   const handleSubmit = (answer: UserAnswer) => {
     const responseMs = nowMs() - shownAt.current;
+    if (gradeInstantly(answer, responseMs)) return;
     if (grade) {
       void gradeRemotely(answer, responseMs);
       return;

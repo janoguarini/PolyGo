@@ -105,8 +105,19 @@ describe('answerServerReview', () => {
         attempt_no: 1,
       },
     });
-    // La app no manda veredicto propio en los repasos.
+    // Sin corrección instantánea la app no manda veredicto propio.
     expect(JSON.stringify(body())).not.toMatch(/client_verdict|correct"/);
+  });
+
+  it('corrección instantánea: manda el veredicto que mostró la app (sólo para comparar)', async () => {
+    mockInvoke.mockResolvedValue({ data: { status: 'valid', verdict: 'correct' } });
+    await answerServerReview(SESSION, {
+      presentationId: 7,
+      answer: { kind: 'option', value: 'x' },
+      responseMs: 10,
+      clientVerdict: 'typo',
+    });
+    expect(body().attempt).toMatchObject({ attempt_no: 1, client_verdict: 'typo' });
   });
 
   it('repetición de un error (P4): manda su número de intento y las ayudas', async () => {

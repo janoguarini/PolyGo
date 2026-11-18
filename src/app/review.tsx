@@ -24,7 +24,11 @@ import {
   type ReviewFocus,
   type WordRow,
 } from '@/features/learning/api';
-import { SessionPlayer, type RemoteGrader } from '@/features/learning/components/SessionPlayer';
+import {
+  SessionPlayer,
+  type InstantGrader,
+  type RemoteGrader,
+} from '@/features/learning/components/SessionPlayer';
 import { SessionResults } from '@/features/learning/components/SessionResults';
 import {
   useAnswerServerReview,
@@ -38,8 +42,12 @@ import {
   SERVER_REVIEW_RETRIES,
   answeredAttempts,
   clearOpenReview,
+  clientVerdictOf,
+  gradingKeys,
   loadOpenReview,
+  localReviewGrade,
   presentationIdOf,
+  reconcileWithServer,
   remoteGrade,
   reviewKind,
   reviewSession,
@@ -48,6 +56,7 @@ import {
   type OpenReview,
 } from '@/features/learning/serverReview';
 import { sessionStats, type PlayerState } from '@/features/learning/player';
+import { reviewAnswerQueue, SESSION_GONE } from '@/features/learning/reviewAnswerQueue';
 import { shuffle, uuid } from '@/features/learning/random';
 import { buildReviewExercises } from '@/features/learning/review';
 import { SessionLanguageProvider } from '@/features/learning/SessionLanguageProvider';
@@ -130,9 +139,6 @@ const newOpenReview = (): OpenReview => ({
 
 /** Códigos con los que la sesión guardada ya no sirve: se empieza otra. */
 const RESTART_CODES = new Set(['session_closed', 'session_conflict']);
-
-/** Errores de answer_review con los que la sesión ya no admite respuestas: se vuelve a pedir. */
-const SESSION_GONE = new Set(['session_expired', 'session_closed']);
 
 function PlusUpsell({ mode }: { mode: 'smart' | 'topic' }) {
   useTheme();
@@ -279,20 +285,59 @@ function ServerReviewScreen({ mode, focus }: { mode: ReviewMode; focus?: ReviewF
     [answerAsync, refetchReview],
   );
 
+  // Corrección instantánea (docs/LEARNING_INSTANT_REVIEW.md): con la clave de cada ítem el feedback sale
+  // en el momento y la respuesta se registra en segundo plano, en orden y una vez por intento. Sin
+  // claves (learning-session anterior) el reproductor espera al servidor como siempre («Comprobando…»).
+  const queue = useMemo(() => (open ? reviewAnswerQueue(open.sessionId) : null), [open]);
+  const keys = useMemo(() => (data?.status === 'ok' ? gradingKeys(data.items) : {}), [data]);
+  const instant = useMemo<InstantGrader | undefined>(() => {
+    if (!queue || Object.keys(keys).length === 0) return undefined;
+    return {
+      grade: (exercise, response) => localReviewGrade(keys[exercise.id], response),
+      record: (exercise, response, ctx) =>
+        queue
+          .enqueue({
+            presentationId: presentationIdOf(exercise.id),
+            answer: response,
+            responseMs: ctx.responseMs,
+            assists: ctx.assists,
+            attemptNo: ctx.attemptNo,
+            clientVerdict: clientVerdictOf(ctx.verdict),
+          })
+          .then(remoteGrade, (err: unknown) => {
+            // La sesión ya no admite respuestas (medianoche, enviada desde otro dispositivo): como en
+            // la corrección del servidor, se vuelve a pedir la sesión.
+            if (err instanceof LearningSessionHttpError && SESSION_GONE.has(err.code)) {
+              void refetchReview();
+            }
+            throw err;
+          }),
+    };
+  }, [queue, keys, refetchReview]);
+
   const { mutate: submitMutate } = submit;
   const save = useCallback(
     (state: PlayerState) => {
-      if (!open) return;
+      if (!open || !queue) return;
       submitMutate(
         {
           sessionId: open.sessionId,
           startedAt: new Date(open.startedAt),
-          attempts: reviewSubmission(state),
+          // Primero terminan de registrarse las respuestas pendientes; después se envía con la
+          // corrección del servidor (prevalece) y se muestran esos resultados.
+          attempts: async () => {
+            await queue.flush();
+            const settled = reconcileWithServer(state, queue.results);
+            if (settled !== state) {
+              setFinished((f) => (f && f.state === state ? { ...f, state: settled } : f));
+            }
+            return reviewSubmission(settled);
+          },
         },
         { onSuccess: () => void clearOpenReview(language.code, kind) },
       );
     },
-    [submitMutate, open, language.code, kind],
+    [submitMutate, open, queue, language.code, kind],
   );
 
   const handleFinished = useCallback(
@@ -399,6 +444,7 @@ function ServerReviewScreen({ mode, focus }: { mode: ReviewMode; focus?: ReviewF
         seed={open.sessionId}
         shownOptions={session.shownOptions}
         grade={grade}
+        instant={instant}
         maxRetries={SERVER_REVIEW_RETRIES}
         answered={session.answered}
         onClose={() =>

@@ -1,5 +1,5 @@
 import type { Exercise, UserAnswer } from '@shared/exercises';
-import { LEARNING_CONTRACT } from '@shared/learningSession';
+import { LEARNING_CONTRACT, type ReviewGradingKey } from '@shared/learningSession';
 import Constants from 'expo-constants';
 import { Platform } from 'react-native';
 
@@ -474,6 +474,11 @@ export interface ReviewItem {
   answered: ReviewAnswered | null;
   /** Repeticiones ya corregidas de un error (cierre de la fase 4, P4); no son evidencia. */
   retries?: ReviewRetry[];
+  /**
+   * Clave de corrección (docs/LEARNING_INSTANT_REVIEW.md): con ella la app da el feedback en el momento
+   * y registra la respuesta en segundo plano. Ausente (learning-session anterior) = se espera al servidor.
+   */
+  grading_key?: ReviewGradingKey | null;
 }
 
 /** Repetición de un error dentro de la sesión, corregida por el servidor (attempt_no 2 o 3). */
@@ -545,6 +550,8 @@ export interface ServerReviewAttempt {
   assists?: Record<string, number | boolean>;
   /** 1 (por defecto) = primer intento; 2–3 = repetición de un error, sólo para el feedback (P4). */
   attemptNo?: number;
+  /** Veredicto que mostró la app (corrección instantánea): el servidor lo guarda sólo para comparar. */
+  clientVerdict?: ServerVerdict;
 }
 
 const ANSWER_TIMEOUT_MS = 10_000;
@@ -585,7 +592,11 @@ export async function answerServerReview(
     {
       action: 'answer_review',
       session_id: sessionId,
-      attempt: { ...toWire(attempt), attempt_no: attempt.attemptNo ?? 1 },
+      attempt: {
+        ...toWire(attempt),
+        attempt_no: attempt.attemptNo ?? 1,
+        ...(attempt.clientVerdict ? { client_verdict: attempt.clientVerdict } : {}),
+      },
     },
     ANSWER_TIMEOUT_MS,
   );

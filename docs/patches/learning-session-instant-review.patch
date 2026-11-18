@@ -1,0 +1,36 @@
+--- a/supabase/functions/learning-session/index.ts
++++ b/supabase/functions/learning-session/index.ts
+@@ -72,6 +72,7 @@
+   LearningSessionError,
+   presentationOrders,
+   reviewPresentationOrders,
++  withGradingKeys,
+ } from './core.generated.js';
+ import { buildBasicPlan, buildFocusPlan, parseFocusRequest } from './focus.generated.js';
+ import { buildReviewPlan, persistentUnits } from './planner.generated.js';
+@@ -218,13 +219,20 @@
+       ) {
+         return json({ error: 'session_conflict' }, 409);
+       }
++      // Corrección instantánea (docs/LEARNING_INSTANT_REVIEW.md): cada ítem lleva la clave con la que
++      // answer_review y submit_review lo corrigen (la presentación registrada), para que la app dé el
++      // feedback en el momento. El servidor sigue corrigiendo y registrando cada respuesta. Si la
++      // fotografía no se puede leer, los ítems van sin clave y la app espera al servidor como antes.
+       const content = async () => {
+-        const items = await admin.rpc('learning_review_content', {
+-          p_user: userId,
+-          p_session_id: sessionId,
+-        });
++        const [items, snapshots] = await Promise.all([
++          admin.rpc('learning_review_content', { p_user: userId, p_session_id: sessionId }),
++          admin.rpc('learning_session_presentations', { p_user: userId, p_session_id: sessionId }),
++        ]);
+         if (items.error) throw items.error;
+-        return items.data;
++        if (snapshots.error || !Array.isArray(snapshots.data) || !Array.isArray(items.data)) {
++          return items.data;
++        }
++        return withGradingKeys(items.data, snapshots.data);
+       };
+       if (state.session === 'expired') {
+         return json({

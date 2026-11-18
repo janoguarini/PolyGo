@@ -22,6 +22,7 @@ import {
   type ServerReviewAttempt,
 } from './api';
 import { withStatus } from './curriculum';
+import { reviewAnswerQueue } from './reviewAnswerQueue';
 import { languageConfig } from '@shared/languages';
 
 export const learningKeys = {
@@ -174,7 +175,12 @@ export function useServerReview(
 ) {
   return useQuery({
     queryKey: ['server-review', sessionId, language, focus ?? null] as const,
-    queryFn: () => startServerReview(sessionId!, language!, focus),
+    queryFn: async () => {
+      // Corrección instantánea: lo que quedó sin registrar (la app se cerró, sin red) se manda antes de
+      // retomar, así el servidor devuelve esas respuestas como ya corregidas. Sin red, falla como start.
+      await reviewAnswerQueue(sessionId!).replay();
+      return startServerReview(sessionId!, language!, focus);
+    },
     enabled: Boolean(sessionId && language),
     staleTime: Infinity,
     gcTime: Infinity,
@@ -191,11 +197,23 @@ export function useAnswerServerReview(sessionId: string | null) {
   });
 }
 
-/** Envía el repaso del servidor (idempotente por sessionId) y refresca lo mismo que useSubmitSession. */
+/**
+ * Envía el repaso del servidor (idempotente por sessionId) y refresca lo mismo que useSubmitSession.
+ * `attempts` puede ser una función: con la corrección instantánea, espera a que se registren las
+ * respuestas pendientes (y su fallo es un fallo del guardado, con «Reintentar»).
+ */
 export function useSubmitServerReview() {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: submitServerReview,
+    mutationFn: async (input: {
+      sessionId: string;
+      startedAt: Date;
+      attempts: ServerReviewAttempt[] | (() => Promise<ServerReviewAttempt[]>);
+    }) =>
+      submitServerReview({
+        ...input,
+        attempts: typeof input.attempts === 'function' ? await input.attempts() : input.attempts,
+      }),
     onSuccess: () =>
       Promise.all([
         qc.invalidateQueries({ queryKey: learningKeys.all }),

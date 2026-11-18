@@ -46,7 +46,22 @@ export type PlayerAction =
       response?: UserAnswer;
       assists?: Record<string, number | boolean>;
     }
-  | { type: 'continue' };
+  | { type: 'continue' }
+  | {
+      /**
+       * Corrección instantánea (repasos): llegó la corrección del servidor del intento `attemptNo` del
+       * ejercicio. Prevalece sobre la de la app: si difiere, se corrige el intento (estadísticas), el
+       * feedback en pantalla y, si ya se siguió, la cola (vuelve a preguntarse o deja de hacerlo). Una
+       * sesión terminada no se reabre: sólo se corrigen los intentos.
+       */
+      type: 'reconcile';
+      exerciseId: string;
+      attemptNo: number;
+      verdict: AnswerVerdict;
+      /** La respuesta que registró el servidor (si ya tenía otra, vale esa). */
+      response: UserAnswer;
+      answer: string;
+    };
 
 export interface PlayerOptions {
   maxRetries?: number;
@@ -137,7 +152,56 @@ export function playerReducer(state: PlayerState, action: PlayerAction): PlayerS
         lastAnswer: null,
       };
     }
+    case 'reconcile':
+      return reconcile(state, action);
   }
+}
+
+function reconcile(
+  state: PlayerState,
+  action: Extract<PlayerAction, { type: 'reconcile' }>,
+): PlayerState {
+  const id = action.exerciseId;
+  const mine = state.attempts.flatMap((a, i) => (a.exerciseId === id ? [i] : []));
+  const index = mine[action.attemptNo - 1];
+  if (index === undefined) return state;
+  const before = state.attempts[index]!;
+  const attempts = [...state.attempts];
+  attempts[index] = {
+    ...before,
+    correct: action.verdict.correct,
+    answer: action.answer,
+    response: action.response,
+  };
+  const isLast = index === mine[mine.length - 1];
+  // Es el feedback en pantalla: se muestra el del servidor; «Continuar» decide la cola con él.
+  if (isLast && state.phase === 'feedback' && state.queue[0] === id) {
+    return { ...state, attempts, lastVerdict: action.verdict, lastAnswer: action.answer };
+  }
+  // Mismo resultado, una repetición posterior ya hecha, o la sesión terminada: sólo el intento.
+  if (before.correct === action.verdict.correct || !isLast || state.phase === 'finished') {
+    return { ...state, attempts };
+  }
+  if (action.verdict.correct) {
+    // La app lo dio por errado y lo volvió a encolar: el servidor dice que estaba bien.
+    const queue = state.queue.filter((q) => q !== id);
+    const showing = state.queue[0] === id;
+    return {
+      ...state,
+      attempts,
+      queue,
+      phase: showing ? (queue.length === 0 ? 'finished' : 'answering') : state.phase,
+    };
+  }
+  // La app lo dio por bueno: el servidor dice que no. Vuelve al final si le quedan repeticiones.
+  const used = state.retries[id] ?? 0;
+  if (used >= state.maxRetries || state.queue.includes(id)) return { ...state, attempts };
+  return {
+    ...state,
+    attempts,
+    queue: [...state.queue, id],
+    retries: { ...state.retries, [id]: used + 1 },
+  };
 }
 
 /** Progreso visible: ejercicios resueltos (acertados o sin más reintentos) sobre el total. */

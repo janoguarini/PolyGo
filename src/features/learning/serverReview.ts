@@ -1,6 +1,7 @@
 import type { AnswerVerdict } from '@shared/answers';
 import { serializeAnswer } from '@shared/answers';
 import type { Exercise, UserAnswer } from '@shared/exercises';
+import { gradeWithKey, type ReviewGradingKey } from '@shared/learningSession';
 
 import { deviceStorage } from '@/lib/secureStorage';
 
@@ -10,9 +11,11 @@ import type {
   ReviewFocus,
   ReviewItem,
   ServerReviewAttempt,
+  ServerVerdict,
   WordRow,
 } from './api';
-import { MAX_RETRIES, type Attempt, type PlayerState } from './player';
+import { MAX_RETRIES, playerReducer, type Attempt, type PlayerState } from './player';
+import { attemptKeyOf } from './reviewAnswerQueue';
 import { parseExercise } from './schema';
 
 /**
@@ -187,4 +190,93 @@ export async function clearOpenReview(language: string, kind = 'review') {
   } catch {
     // Ídem.
   }
+}
+
+// Corrección instantánea (docs/LEARNING_INSTANT_REVIEW.md): con la clave de cada ítem la app corrige en
+// el momento con la regla del servidor; el servidor corrige y registra en segundo plano, y prevalece.
+
+const isStringList = (v: unknown) => Array.isArray(v) && v.every((x) => typeof x === 'string');
+
+/** Clave de corrección utilizable, o null (learning-session anterior o una clave que no se entiende). */
+function parseGradingKey(raw: unknown): ReviewGradingKey | null {
+  const k = raw as Partial<ReviewGradingKey> | null | undefined;
+  if (!k || typeof k !== 'object') return null;
+  if (typeof k.grading_spec !== 'object' || k.grading_spec === null) return null;
+  if (typeof k.answer !== 'string') return null;
+  if (k.accepted_answers != null && !isStringList(k.accepted_answers)) return null;
+  if (k.option_texts != null && !isStringList(k.option_texts)) return null;
+  if (
+    k.option_order != null &&
+    !(Array.isArray(k.option_order) && k.option_order.every((x) => typeof x === 'number'))
+  ) {
+    return null;
+  }
+  return {
+    grading_spec: k.grading_spec,
+    answer: k.answer,
+    accepted_answers: k.accepted_answers ?? null,
+    payload: k.payload ?? null,
+    option_texts: k.option_texts ?? null,
+    option_order: k.option_order ?? null,
+    explanation: typeof k.explanation === 'string' ? k.explanation : null,
+  };
+}
+
+/** Claves de corrección por ejercicio del reproductor (sólo los ítems que traen una válida). */
+export function gradingKeys(items: readonly ReviewItem[]): Record<string, ReviewGradingKey> {
+  const keys: Record<string, ReviewGradingKey> = {};
+  for (const item of items) {
+    const key = parseGradingKey(item.grading_key);
+    if (key) keys[reviewExerciseId(item.presentation_id)] = key;
+  }
+  return keys;
+}
+
+/**
+ * Veredicto instantáneo con la clave: el mismo que dará answer_review (gradeWithKey es la regla del
+ * servidor). null = no se puede corregir en el dispositivo; se espera al servidor como antes.
+ */
+export function localReviewGrade(
+  key: ReviewGradingKey | undefined,
+  answer: UserAnswer,
+): { verdict: AnswerVerdict; explanation: string | null } | null {
+  if (!key) return null;
+  const graded = gradeWithKey(key, answer);
+  if (!graded) return null;
+  return {
+    verdict: serverVerdict({ status: graded.status, verdict: graded.verdict, answer: key.answer }),
+    explanation: key.explanation,
+  };
+}
+
+/** Veredicto de la app para el servidor (client_verdict: sólo se guarda para comparar). */
+export const clientVerdictOf = (v: AnswerVerdict): ServerVerdict =>
+  v.correct ? (v.typo ? 'typo' : 'correct') : 'incorrect';
+
+/**
+ * Antes del envío: los intentos con la corrección que registró el servidor (prevalece sobre la de la
+ * app). Una sesión terminada no se reabre; cambian el resultado de cada intento y su respuesta.
+ */
+export function reconcileWithServer(
+  state: PlayerState,
+  results: ReadonlyMap<string, ReviewAnswerResult>,
+): PlayerState {
+  const seen = new Map<string, number>();
+  let next = state;
+  for (const a of state.attempts) {
+    const attemptNo = (seen.get(a.exerciseId) ?? 0) + 1;
+    seen.set(a.exerciseId, attemptNo);
+    const result = results.get(attemptKeyOf(presentationIdOf(a.exerciseId), attemptNo));
+    if (!result) continue;
+    const graded = remoteGrade(result);
+    next = playerReducer(next, {
+      type: 'reconcile',
+      exerciseId: a.exerciseId,
+      attemptNo,
+      verdict: graded.verdict,
+      response: graded.response,
+      answer: serializeAnswer(graded.response),
+    });
+  }
+  return next;
 }

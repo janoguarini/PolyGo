@@ -84,7 +84,15 @@ export interface PresentationSnapshot {
   option_order: number[] | null;
   /** Textos del conjunto, en el orden del conjunto. */
   option_texts: string[] | null;
+  /** Explicación de la versión presentada (exercise_presentation_snapshot). */
+  explanation_es?: string | null;
 }
+
+/** Lo que lee la corrección de una presentación (gradeOne). */
+export type GradingKey = Pick<
+  PresentationSnapshot,
+  'grading_spec' | 'answer' | 'accepted_answers' | 'payload' | 'option_texts' | 'option_order'
+>;
 
 export type Verdict = 'correct' | 'typo' | 'incorrect';
 const VERDICTS: readonly string[] = ['correct', 'typo', 'incorrect'];
@@ -190,7 +198,7 @@ const sameMultiset = (a: readonly string[], b: readonly string[]) =>
  * ¿La respuesta es de las que esta presentación pudo producir? (arquitectura §9). Si no, la corrección
  * es `invalid_response`: no hay veredicto ni evidencia, y para el SRS v1 cuenta como incorrecta.
  */
-function presentedProblem(p: PresentationSnapshot, answer: UserAnswer): boolean {
+function presentedProblem(p: GradingKey, answer: UserAnswer): boolean {
   switch (answer.kind) {
     case 'option':
       return !p.option_texts || !p.option_order || !p.option_texts.includes(answer.value);
@@ -291,6 +299,29 @@ export function gradeLessonAttempts(
   return { attempts, gradings };
 }
 
+/**
+ * Veredicto de una respuesta contra lo presentado: la regla de gradeOne, sin registrar nada. La usan el
+ * servidor (gradeOne) y la app para el feedback instantáneo de los repasos (gradeWithKey), así los dos
+ * corrigen exactamente igual. Quien llama comprueba antes el grading_spec.
+ */
+function gradePresented(
+  p: GradingKey,
+  answer: UserAnswer,
+): { status: AttemptGrading['status']; verdict: Verdict | null } {
+  if (presentedProblem(p, answer)) return { status: 'invalid_response', verdict: null };
+  try {
+    const v = gradeWithSpec(
+      p.grading_spec,
+      { answer: p.answer, accepted_answers: p.accepted_answers ?? [], payload: p.payload },
+      answer,
+    );
+    return { status: 'valid', verdict: v.correct ? (v.typo ? 'typo' : 'correct') : 'incorrect' };
+  } catch (err) {
+    if (!(err instanceof InvalidResponseError)) throw err;
+    return { status: 'invalid_response', verdict: null };
+  }
+}
+
 /** Corrige una respuesta contra la versión presentada (la misma regla para lecciones y repasos). */
 function gradeOne(
   p: PresentationSnapshot,
@@ -303,23 +334,7 @@ function gradeOne(
     if (gradingSpecProblems(p.grading_spec).length) {
       throw new LearningSessionError('invalid_grading_spec', p.item_id);
     }
-    let verdict: Verdict | null = null;
-    let status: AttemptGrading['status'] = 'valid';
-    if (presentedProblem(p, answer)) {
-      status = 'invalid_response';
-    } else {
-      try {
-        const v = gradeWithSpec(
-          p.grading_spec,
-          { answer: p.answer, accepted_answers: p.accepted_answers ?? [], payload: p.payload },
-          answer,
-        );
-        verdict = v.correct ? (v.typo ? 'typo' : 'correct') : 'incorrect';
-      } catch (err) {
-        if (!(err instanceof InvalidResponseError)) throw err;
-        status = 'invalid_response';
-      }
-    }
+    const { status, verdict } = gradePresented(p, answer);
     const correct = verdict === 'correct' || verdict === 'typo';
     return {
       correct,
@@ -516,4 +531,59 @@ export function gradeReviewAnswer(
     grading,
     responseMs,
   };
+}
+
+// ---------------------------------------------------------------------------------------------
+// Corrección instantánea de los repasos (docs/LEARNING_INSTANT_REVIEW.md). start_review manda, junto con
+// cada ítem, la clave con la que el servidor lo corrige: la app da el feedback en el momento con la misma
+// regla (gradeWithKey → gradePresented) y registra la respuesta en segundo plano (answer_review). El
+// servidor sigue siendo la autoridad: corrige y registra cada respuesta, y su veredicto prevalece.
+
+/** Clave de corrección de un ítem de repaso: lo que lee gradePresented y la explicación. */
+export interface ReviewGradingKey extends GradingKey {
+  explanation: string | null;
+}
+
+export const reviewGradingKey = (p: PresentationSnapshot): ReviewGradingKey => ({
+  grading_spec: p.grading_spec,
+  answer: p.answer,
+  accepted_answers: p.accepted_answers ?? null,
+  payload: p.payload,
+  option_texts: p.option_texts ?? null,
+  option_order: p.option_order ?? null,
+  explanation: p.explanation_es ?? null,
+});
+
+/**
+ * Ítems de learning_review_content con su clave (`grading_key`), tomada de la presentación registrada
+ * (learning_session_presentations): la misma fotografía con la que answer_review y submit_review
+ * corrigen. Un ítem sin presentación de repaso queda con `grading_key: null` (la app espera al servidor).
+ */
+export function withGradingKeys<T extends { presentation_id: number }>(
+  items: readonly T[],
+  snapshots: readonly PresentationSnapshot[],
+): (T & { grading_key: ReviewGradingKey | null })[] {
+  const byId = new Map(
+    snapshots.filter((s) => s.exercise_id === null).map((s) => [s.presentation_id, s]),
+  );
+  return items.map((item) => {
+    const p = byId.get(item.presentation_id);
+    return { ...item, grading_key: p ? reviewGradingKey(p) : null };
+  });
+}
+
+/**
+ * Veredicto de una respuesta con la clave de un ítem: el mismo que dará el servidor. `null` si la clave
+ * no sirve para corregir (grading_spec desconocido o inválido): entonces la app espera al servidor.
+ */
+export function gradeWithKey(
+  key: GradingKey,
+  answer: UserAnswer,
+): { status: AttemptGrading['status']; verdict: Verdict | null } | null {
+  if (gradingSpecProblems(key.grading_spec).length) return null;
+  try {
+    return gradePresented(key, answer);
+  } catch {
+    return null;
+  }
 }
