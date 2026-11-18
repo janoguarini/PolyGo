@@ -1,13 +1,20 @@
 import { router, useLocalSearchParams } from 'expo-router';
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { Alert } from 'react-native';
 
 import { ErrorState, LoadingState, Screen } from '@/design-system';
-import type { AttemptInput } from '@/features/learning/api';
+import type { AttemptInput, GradedAttemptInput } from '@/features/learning/api';
 import { SessionPlayer } from '@/features/learning/components/SessionPlayer';
 import { SessionResults } from '@/features/learning/components/SessionResults';
-import { useCurriculum, useLessonContent, useSubmitSession } from '@/features/learning/hooks';
+import { WritingPracticeCard } from '@/features/learning/components/WritingPracticeCard';
+import {
+  useCurriculum,
+  useLessonContent,
+  useLessonPresentation,
+  useSubmitSession,
+} from '@/features/learning/hooks';
 import { sessionStats, type PlayerState } from '@/features/learning/player';
+import { matchPresentations, toGradedAttempts } from '@/features/learning/presentation';
 import { SessionLanguageProvider } from '@/features/learning/SessionLanguageProvider';
 import { uuid } from '@/features/learning/random';
 import { useCelebrationGate } from '@/features/learning/useCelebrationGate';
@@ -39,15 +46,25 @@ function LessonScreen() {
   // Clave de idempotencia: reintentar el guardado nunca duplica la sesión.
   const [sessionId] = useState(uuid);
   const [startedAt] = useState(() => new Date());
+  // Fase 2: el servidor registra qué se presenta y corrige. Si no responde, la ruta vieja.
+  const presentation = useLessonPresentation(sessionId, id);
   const [finished, setFinished] = useState<{
     state: PlayerState;
     attempts: AttemptInput[];
+    graded?: GradedAttemptInput[];
     endedAt: Date;
   } | null>(null);
 
+  // Sólo se usa si cubre exactamente los ejercicios cargados y con la misma versión: si el contenido
+  // cambió entre la lectura y el registro, se juega por la ruta vieja (nada se corrige con otra versión).
+  const presented = useMemo(
+    () => matchPresentations(presentation.data, content.data),
+    [presentation.data, content.data],
+  );
+
   const save = useCallback(
-    (attempts: AttemptInput[]) =>
-      submit.mutate({ sessionId, kind: 'lesson', lessonId: id, startedAt, attempts }),
+    (attempts: AttemptInput[], graded?: GradedAttemptInput[]) =>
+      submit.mutate({ sessionId, kind: 'lesson', lessonId: id, startedAt, attempts, graded }),
     [submit, sessionId, id, startedAt],
   );
 
@@ -60,10 +77,11 @@ function LessonScreen() {
         firstTry: a.firstTry,
         responseMs: a.responseMs,
       }));
-      setFinished({ state, attempts, endedAt: new Date() });
-      save(attempts);
+      const graded = presented ? toGradedAttempts(state, presented.byExercise) : undefined;
+      setFinished({ state, attempts, graded, endedAt: new Date() });
+      save(attempts, graded);
     },
-    [save],
+    [save, presented],
   );
 
   const confirmExit = () =>
@@ -72,7 +90,9 @@ function LessonScreen() {
       { text: 'Salir', style: 'destructive', onPress: () => router.back() },
     ]);
 
-  if (content.isPending || canPlay === null) return <LoadingState label="Cargando lección…" />;
+  if (content.isPending || canPlay === null || presentation.isPending) {
+    return <LoadingState label="Cargando lección…" />;
+  }
   if (!canPlay && energy.view) return <NoEnergyState view={energy.view} />;
   if (content.isError || !content.data) {
     return (
@@ -91,6 +111,7 @@ function LessonScreen() {
         exercises={content.data.exercises}
         words={content.data.words}
         seed={sessionId}
+        shownOptions={presented?.shownOptions}
         onClose={confirmExit}
         onFinished={handleFinished}
       />
@@ -115,7 +136,8 @@ function LessonScreen() {
       saveError={submit.error}
       saved={submit.isSuccess}
       achievements={submit.data?.achievements_unlocked ?? []}
-      onRetrySave={() => save(finished.attempts)}
+      onRetrySave={() => save(finished.attempts, finished.graded)}
+      extra={<WritingPracticeCard lessonId={id} />}
       primaryLabel={hasNext ? 'Siguiente lección' : 'Volver al camino'}
       onPrimary={celebration.guard(() =>
         hasNext && next

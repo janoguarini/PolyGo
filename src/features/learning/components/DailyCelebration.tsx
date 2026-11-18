@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 import Animated, { FadeIn, FadeInUp } from 'react-native-reanimated';
 
-import { Button, Card, Screen, Text, colors, radii, spacing } from '@/design-system';
+import { Button, Card, Screen, Text, colors, radii, spacing, themedStyles } from '@/design-system';
 import { useReminderPrefs, useSetReminderPrefs } from '@/features/reminders/hooks';
 import { remindersSupported } from '@/features/reminders/notifications';
 import { DEFAULT_REMINDER, formatReminderTime } from '@/features/reminders/schedule';
@@ -32,6 +32,7 @@ export function DailyCelebration({
   celebration: Celebration;
   onContinue: () => void;
 }) {
+  const styles = useStyles();
   const summary = useLearningSummary();
   const week = streakWeek(
     celebration.streakDays,
@@ -140,22 +141,24 @@ export function DailyCelebration({
   );
 }
 
-const styles = StyleSheet.create({
-  hero: { alignItems: 'center', gap: spacing.sm, paddingTop: spacing.huge },
-  flame: { alignItems: 'center' },
-  week: { flexDirection: 'row', justifyContent: 'space-between' },
-  day: { alignItems: 'center', gap: spacing.xs },
-  dot: {
-    width: 30,
-    height: 30,
-    borderRadius: radii.pill,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.surfaceHighlight,
-  },
-  dotActive: { backgroundColor: colors.streak },
-  dotFrozen: { backgroundColor: colors.info },
-  goal: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-  flex: { flex: 1 },
-  reminder: { gap: spacing.sm },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    hero: { alignItems: 'center', gap: spacing.sm, paddingTop: spacing.huge },
+    flame: { alignItems: 'center' },
+    week: { flexDirection: 'row', justifyContent: 'space-between' },
+    day: { alignItems: 'center', gap: spacing.xs },
+    dot: {
+      width: 30,
+      height: 30,
+      borderRadius: radii.pill,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: colors.surfaceHighlight,
+    },
+    dotActive: { backgroundColor: colors.streak },
+    dotFrozen: { backgroundColor: colors.info },
+    goal: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+    flex: { flex: 1 },
+    reminder: { gap: spacing.sm },
+  }),
+);

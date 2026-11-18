@@ -4,15 +4,21 @@ import {
   PROTOCOL_VERSION,
   type ClientToServerEvents,
   type ErrorCode,
+  type HandshakeAuth,
   type ServerToClientEvents,
 } from '@shared/protocol';
 
+import { CURRICULUM_API } from '@/lib/clientInfo';
 import { env } from '@/lib/env';
 import { supabase } from '@/lib/supabase';
 
+import { rankedAvailability } from './availability';
+
 export type BattleSocket = Socket<ServerToClientEvents, ClientToServerEvents>;
 
-export const battleServerConfigured = Boolean(env?.battleServerUrl);
+/** Ranked y Práctica van por el servidor de partidas (URL válida; https fuera de desarrollo). */
+export const battleServerConfigured =
+  rankedAvailability === 'server' && Boolean(env?.battleServerUrl);
 
 const KNOWN_CODES: readonly ErrorCode[] = [
   'unauthorized',
@@ -33,7 +39,13 @@ export function connectBattleSocket(): BattleSocket {
     auth: (cb) => {
       void (async () => {
         const { data } = (await supabase?.auth.getSession()) ?? { data: { session: null } };
-        cb({ token: data.session?.access_token ?? '', protocolVersion: PROTOCOL_VERSION });
+        const auth: HandshakeAuth = {
+          token: data.session?.access_token ?? '',
+          protocolVersion: PROTOCOL_VERSION,
+          // Fase C.8: el nivel curricular de esta build (el servidor lo usa como 0 si falta).
+          curriculumApi: CURRICULUM_API,
+        };
+        cb(auth);
       })();
     },
   });

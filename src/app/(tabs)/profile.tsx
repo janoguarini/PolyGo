@@ -3,7 +3,7 @@ import { Settings } from 'lucide-react-native';
 import { useRef } from 'react';
 import { Pressable, StyleSheet, View, type ScrollViewInstance } from 'react-native';
 
-import { ErrorState, LoadingState, Screen, Text, colors, spacing } from '@/design-system';
+import { ErrorState, LoadingState, Screen, Text, colors, spacing, useTheme } from '@/design-system';
 import { LearningStats } from '@/features/learning/components/LearningStats';
 import { AchievementsCarousel } from '@/features/profile/components/AchievementsCarousel';
 import { CompetitiveHistory } from '@/features/profile/components/CompetitiveHistory';
@@ -15,6 +15,7 @@ import { useMyProfile } from '@/features/profile/hooks';
 
 /** Perfil propio: identidad y rango, estadísticas, idiomas, logros y aprendizaje. */
 export default function ProfileScreen() {
+  useTheme();
   const { data, isPending, isError, refetch, isRefetching } = useMyProfile();
   const scrollRef = useRef<ScrollViewInstance>(null);
   useTabPressScroll(scrollRef);

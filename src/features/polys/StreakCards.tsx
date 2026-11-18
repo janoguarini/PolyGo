@@ -5,7 +5,7 @@ import Animated, { ZoomIn } from 'react-native-reanimated';
 
 import { POLYS } from '@shared/polys';
 
-import { Button, Card, PolyCoin, Text, colors, spacing } from '@/design-system';
+import { Button, Card, PolyCoin, Text, colors, spacing, themedStyles } from '@/design-system';
 import { FormMessage } from '@/features/auth/FormMessage';
 import { daysLabel } from '@/features/learning/streak';
 import { toUserMessage } from '@/lib/errors';
@@ -21,6 +21,7 @@ function celebrate() {
 
 /** El protector se compra con Polys: si un día no estudiás, se usa solo. */
 export function FreezeCard({ freezes, max }: { freezes: number; max: number }) {
+  const styles = useStyles();
   const polys = usePolys();
   const buy = useBuyStreakFreeze();
   const balance = polys.data?.balance ?? 0;
@@ -60,6 +61,7 @@ export function FreezeCard({ freezes, max }: { freezes: number; max: number }) {
 
 /** Recuperar una racha perdida pagando los días que faltaron. */
 export function StreakRepairCard({ offer }: { offer: StreakRepairOffer }) {
+  const styles = useStyles();
   const polys = usePolys();
   const repair = useRepairStreak();
   const balance = polys.data?.balance ?? 0;
@@ -122,19 +124,21 @@ export function StreakRepairCard({ offer }: { offer: StreakRepairOffer }) {
   );
 }
 
-const styles = StyleSheet.create({
-  flex: { flex: 1, gap: spacing.xxs },
-  card: { gap: spacing.md },
-  repair: { borderColor: colors.streak },
-  row: { flexDirection: 'row', alignItems: 'center', gap: spacing.lg },
-  icon: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.surfaceRaised,
-    borderWidth: 2,
-  },
-  iconOn: { backgroundColor: colors.streak, borderColor: colors.streak },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    flex: { flex: 1, gap: spacing.xxs },
+    card: { gap: spacing.md },
+    repair: { borderColor: colors.streak },
+    row: { flexDirection: 'row', alignItems: 'center', gap: spacing.lg },
+    icon: {
+      width: 48,
+      height: 48,
+      borderRadius: 24,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: colors.surfaceRaised,
+      borderWidth: 2,
+    },
+    iconOn: { backgroundColor: colors.streak, borderColor: colors.streak },
+  }),
+);

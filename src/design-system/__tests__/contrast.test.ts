@@ -1,4 +1,4 @@
-import { colors, palette } from '../tokens';
+import { palette, themeColors, type ColorScheme } from '../tokens';
 
 /** Contraste WCAG 2.x entre dos colores hex (#RRGGBB). */
 function contrast(fg: string, bg: string): number {
@@ -13,13 +13,17 @@ function contrast(fg: string, bg: string): number {
   return (a! + 0.05) / (b! + 0.05);
 }
 
-// Fondos sobre los que se dibuja texto (pantalla, tarjetas, tarjeta resaltada, widget).
-const BACKGROUNDS = {
-  background: colors.background,
-  surface: colors.surface,
-  surfaceRaised: colors.surfaceRaised,
-  surfaceHighlight: colors.surfaceHighlight,
-  widget: palette.ink800,
+// Fondos sobre los que se dibuja texto (pantalla, tarjetas, tarjeta resaltada). Los widgets son
+// siempre oscuros: se prueban sólo con el tema oscuro.
+const backgrounds = (scheme: ColorScheme) => {
+  const c = themeColors[scheme];
+  return {
+    background: c.background,
+    surface: c.surface,
+    surfaceRaised: c.surfaceRaised,
+    surfaceHighlight: c.surfaceHighlight,
+    ...(scheme === 'dark' ? { widget: palette.ink800 } : {}),
+  };
 };
 
 // Texto normal: AA exige 4.5:1. Las variantes "caption"/"overline" también son texto chico.
@@ -35,7 +39,9 @@ const BODY_TEXT = [
   'streak',
 ] as const;
 
-describe('contraste WCAG AA', () => {
+describe.each(['dark', 'light'] as const)('contraste WCAG AA (tema %s)', (scheme) => {
+  const colors = themeColors[scheme];
+  const BACKGROUNDS = backgrounds(scheme);
   for (const token of BODY_TEXT) {
     for (const [bgName, bg] of Object.entries(BACKGROUNDS)) {
       it(`${token} sobre ${bgName} ≥ 4.5:1`, () => {
@@ -50,8 +56,8 @@ describe('contraste WCAG AA', () => {
   });
 
   it('feedback de respuestas: blanco sobre verde/rojo de fondo ≥ 4.5:1', () => {
-    expect(contrast(colors.textStrong, colors.successDeep)).toBeGreaterThanOrEqual(4.5);
-    expect(contrast(colors.textStrong, colors.dangerDeep)).toBeGreaterThanOrEqual(4.5);
+    expect(contrast(colors.onPrimary, colors.successDeep)).toBeGreaterThanOrEqual(4.5);
+    expect(contrast(colors.onPrimary, colors.dangerDeep)).toBeGreaterThanOrEqual(4.5);
   });
 
   it('placeholder (textSubtle) ≥ 3:1: no es contenido, pero tiene que leerse', () => {

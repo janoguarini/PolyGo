@@ -9,7 +9,13 @@ import type { ExerciseDef } from './types';
 
 type Extra = Pick<
   ExerciseDef,
-  'explanation' | 'difficulty' | 'recommendedSeconds' | 'acceptedAnswers' | 'consolidate'
+  | 'id'
+  | 'explanation'
+  | 'difficulty'
+  | 'recommendedSeconds'
+  | 'acceptedAnswers'
+  | 'consolidate'
+  | 'personalData'
 >;
 
 /**
@@ -31,10 +37,41 @@ export function joinHan(sentence: string): string {
   );
 }
 
-export function exercisesFor(language: LanguageConfig) {
+/** Consignas en el idioma de apoyo: español (todos los cursos) o inglés (el curso de español). */
+function promptsFor(language: LanguageConfig) {
   const han = language.script === 'han';
+  if (language.support?.code === 'en') {
+    const name = language.support.targetName;
+    return {
+      image: 'What does the picture show?',
+      meaning: (word: string) => `What does “${word}” mean?`,
+      translate: han ? 'Write it in pinyin' : `Translate into ${name}`,
+      complete: 'Write the whole word',
+      fill: 'Complete the sentence',
+      order: 'Put the words in order',
+      listen: 'Listen and choose what you hear',
+      match: 'Match each word with its meaning',
+      answer: `Answer in ${han ? 'pinyin' : name}`,
+    };
+  }
   // En chino se escribe en pinyin (con marcas de tono o números: ni3 hao3).
   const writeIn = han ? 'en pinyin' : language.inName;
+  return {
+    image: '¿Qué muestra la imagen?',
+    meaning: (word: string) => `¿Qué significa «${word}»?`,
+    translate: han ? 'Escribí en pinyin' : `Traducí ${language.alName}`,
+    complete: 'Escribí la palabra completa',
+    fill: 'Completá la frase',
+    order: 'Ordená las palabras',
+    listen: 'Escuchá y elegí lo que oís',
+    match: 'Uní cada palabra con su significado',
+    answer: `Respondé ${writeIn}`,
+  };
+}
+
+export function exercisesFor(language: LanguageConfig) {
+  const han = language.script === 'han';
+  const t = promptsFor(language);
   return {
     imageChoice: (
       emoji: string,
@@ -45,7 +82,7 @@ export function exercisesFor(language: LanguageConfig) {
     ): ExerciseDef => ({
       type: 'image_choice',
       skill: 'vocabulary',
-      prompt: '¿Qué muestra la imagen?',
+      prompt: t.image,
       payload: { type: 'image_choice', emoji, options: [answer, ...distractors] },
       answer,
       words,
@@ -62,7 +99,7 @@ export function exercisesFor(language: LanguageConfig) {
     ): ExerciseDef => ({
       type: 'translation_choice',
       skill: 'vocabulary',
-      prompt: `¿Qué significa «${word}»?`,
+      prompt: t.meaning(word),
       payload: { type: 'translation_choice', word, options: [answer, ...distractors] },
       answer,
       words,
@@ -78,7 +115,7 @@ export function exercisesFor(language: LanguageConfig) {
     ): ExerciseDef => ({
       type: 'translate_write',
       skill: 'translation',
-      prompt: han ? 'Escribí en pinyin' : `Traducí ${language.alName}`,
+      prompt: t.translate,
       payload: { type: 'translate_write', source },
       answer,
       words,
@@ -95,7 +132,7 @@ export function exercisesFor(language: LanguageConfig) {
     ): ExerciseDef => ({
       type: 'complete_word',
       skill: 'vocabulary',
-      prompt: 'Escribí la palabra completa',
+      prompt: t.complete,
       payload: { type: 'complete_word', masked, hint },
       answer,
       words,
@@ -115,7 +152,7 @@ export function exercisesFor(language: LanguageConfig) {
       return {
         type: 'fill_blank',
         skill,
-        prompt: 'Completá la frase',
+        prompt: t.fill,
         payload: { type: 'fill_blank', sentence, translation, options: [answer, ...distractors] },
         answer,
         words,
@@ -132,7 +169,7 @@ export function exercisesFor(language: LanguageConfig) {
     ): ExerciseDef => ({
       type: 'order_words',
       skill: 'sentence_building',
-      prompt: 'Ordená las palabras',
+      prompt: t.order,
       payload: { type: 'order_words', tokens: tokensOf(sentence), translation },
       answer: han ? joinHan(sentence) : sentence,
       words,
@@ -148,7 +185,7 @@ export function exercisesFor(language: LanguageConfig) {
     ): ExerciseDef => ({
       type: 'listen_choice',
       skill: 'listening',
-      prompt: 'Escuchá y elegí lo que oís',
+      prompt: t.listen,
       payload: { type: 'listen_choice', audioText, options: [audioText, ...distractors] },
       answer: audioText,
       words,
@@ -159,7 +196,7 @@ export function exercisesFor(language: LanguageConfig) {
     matchPairs: (pairs: [string, string][], words: string[], extra: Extra = {}): ExerciseDef => ({
       type: 'match_pairs',
       skill: 'vocabulary',
-      prompt: 'Uní cada palabra con su significado',
+      prompt: t.match,
       payload: { type: 'match_pairs', pairs: pairs.map(([left, right]) => ({ left, right })) },
       answer: '',
       words,
@@ -177,7 +214,7 @@ export function exercisesFor(language: LanguageConfig) {
     ): ExerciseDef => ({
       type: 'short_answer',
       skill: 'sentence_building',
-      prompt: `Respondé ${writeIn}`,
+      prompt: t.answer,
       payload: { type: 'short_answer', question, translation },
       answer,
       acceptedAnswers: accepted,

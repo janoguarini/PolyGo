@@ -1,3 +1,4 @@
+import { themedStyles } from '../theme';
 import type { ReactNode } from 'react';
 import { StyleSheet, View } from 'react-native';
 
@@ -12,6 +13,7 @@ export interface StatTileProps {
 }
 
 export function StatTile({ label, value, icon, hint }: StatTileProps) {
+  const styles = useStyles();
   return (
     <View
       style={styles.tile}
@@ -32,18 +34,20 @@ export function StatTile({ label, value, icon, hint }: StatTileProps) {
   );
 }
 
-const styles = StyleSheet.create({
-  tile: {
-    flexGrow: 1,
-    flexBasis: '45%',
-    minWidth: 130,
-    padding: spacing.lg,
-    gap: spacing.xs,
-    borderRadius: radii.lg,
-    backgroundColor: colors.surface,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  header: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
-  label: { flexShrink: 1 },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    tile: {
+      flexGrow: 1,
+      flexBasis: '45%',
+      minWidth: 130,
+      padding: spacing.lg,
+      gap: spacing.xs,
+      borderRadius: radii.lg,
+      backgroundColor: colors.surface,
+      borderWidth: 1,
+      borderColor: colors.border,
+    },
+    header: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
+    label: { flexShrink: 1 },
+  }),
+);

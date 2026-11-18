@@ -1,3 +1,4 @@
+import { themedStyles } from '../theme';
 import { Check, Lock } from 'lucide-react-native';
 import type { ReactNode } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
@@ -25,6 +26,7 @@ export function SelectCard({
   badge,
   leading,
 }: SelectCardProps) {
+  const styles = useStyles();
   return (
     <Pressable
       accessibilityRole="radio"
@@ -61,29 +63,31 @@ export function SelectCard({
   );
 }
 
-const styles = StyleSheet.create({
-  card: {
-    minHeight: MIN_TOUCH + 16,
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.md,
-    padding: spacing.lg,
-    borderRadius: radii.lg,
-    borderWidth: 1.5,
-    borderColor: colors.border,
-    backgroundColor: colors.surface,
-  },
-  selected: { borderColor: colors.primaryBright, backgroundColor: colors.surfaceRaised },
-  disabled: { opacity: 0.6 },
-  pressed: { transform: [{ scale: 0.99 }] },
-  texts: { flex: 1, gap: spacing.xxs },
-  check: {
-    width: 26,
-    height: 26,
-    borderRadius: 13,
-    backgroundColor: colors.primary,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  badge: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    card: {
+      minHeight: MIN_TOUCH + 16,
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.md,
+      padding: spacing.lg,
+      borderRadius: radii.lg,
+      borderWidth: 1.5,
+      borderColor: colors.border,
+      backgroundColor: colors.surface,
+    },
+    selected: { borderColor: colors.primaryBright, backgroundColor: colors.surfaceRaised },
+    disabled: { opacity: 0.6 },
+    pressed: { transform: [{ scale: 0.99 }] },
+    texts: { flex: 1, gap: spacing.xxs },
+    check: {
+      width: 26,
+      height: 26,
+      borderRadius: 13,
+      backgroundColor: colors.primary,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    badge: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
+  }),
+);

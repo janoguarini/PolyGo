@@ -3,13 +3,14 @@ import { StyleSheet, View } from 'react-native';
 
 import type { PublicPlayer, ScoreLine } from '@shared/protocol';
 
-import { Card, ProgressBar, Text, colors, gradients, spacing } from '@/design-system';
+import { Card, ProgressBar, Text, colors, gradients, spacing, useTheme } from '@/design-system';
 import { FramedAvatar } from '@/features/cosmetics/FramedAvatar';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 
 import { BotBadge } from './BotBadge';
 
-const DANGER = [colors.danger, colors.dangerStrong] as const;
+/** Barra de tiempo en rojo (se lee al dibujar: depende del tema). */
+const danger = () => [colors.danger, colors.dangerStrong] as const;
 
 interface Props {
   remainingMs: number;
@@ -31,6 +32,7 @@ export function BattleHud({
   opponentLine,
   opponentGraceMs,
 }: Props) {
+  useTheme();
   const seconds = Math.ceil(remainingMs / 1000);
   const low = seconds <= 10;
   return (
@@ -49,7 +51,7 @@ export function BattleHud({
       <ProgressBar
         value={remainingMs / durationMs}
         height={6}
-        colors={low ? DANGER : gradients.primary}
+        colors={low ? danger() : gradients.primary}
       />
 
       <View style={styles.scores}>

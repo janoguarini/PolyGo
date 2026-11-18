@@ -15,6 +15,7 @@ import {
   TextField,
   colors,
   spacing,
+  useTheme,
 } from '@/design-system';
 import { deleteAccount } from '@/features/auth/api';
 import { FormMessage } from '@/features/auth/FormMessage';
@@ -30,6 +31,7 @@ const WHAT_IS_DELETED = [
 
 /** Borrado de cuenta dentro de la app (exigido por App Store y Google Play). Irreversible. */
 export default function DeleteAccountScreen() {
+  useTheme();
   const me = useMyProfile();
   const [typed, setTyped] = useState('');
   // Al terminar, AuthProvider recibe SIGNED_OUT y el layout raíz lleva a la bienvenida.

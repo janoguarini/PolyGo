@@ -1,3 +1,4 @@
+import { themedStyles } from '../theme';
 import { useState } from 'react';
 import { StyleSheet, TextInput, View, type TextInputProps } from 'react-native';
 
@@ -11,6 +12,7 @@ export interface TextFieldProps extends TextInputProps {
 }
 
 export function TextField({ label, error, hint, style, onFocus, onBlur, ...rest }: TextFieldProps) {
+  const styles = useStyles();
   const [focused, setFocused] = useState(false);
   const borderColor = error ? colors.danger : focused ? colors.primaryBright : colors.border;
 
@@ -47,16 +49,18 @@ export function TextField({ label, error, hint, style, onFocus, onBlur, ...rest 
   );
 }
 
-const styles = StyleSheet.create({
-  wrapper: { gap: spacing.xs },
-  input: {
-    ...typography.body,
-    color: colors.textStrong,
-    backgroundColor: colors.surfaceRaised,
-    borderWidth: 1.5,
-    borderRadius: radii.md,
-    paddingHorizontal: spacing.lg,
-    paddingVertical: spacing.md,
-    minHeight: 50,
-  },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    wrapper: { gap: spacing.xs },
+    input: {
+      ...typography.body,
+      color: colors.textStrong,
+      backgroundColor: colors.surfaceRaised,
+      borderWidth: 1.5,
+      borderRadius: radii.md,
+      paddingHorizontal: spacing.lg,
+      paddingVertical: spacing.md,
+      minHeight: 50,
+    },
+  }),
+);

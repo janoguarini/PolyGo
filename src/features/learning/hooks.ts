@@ -4,7 +4,9 @@ import { useAuth } from '@/features/auth/AuthProvider';
 import { useMyProfile } from '@/features/profile/hooks';
 
 import {
+  answerServerReview,
   fetchCurriculum,
+  fetchLearningMastery,
   fetchLearningSummary,
   fetchLessonContent,
   fetchLessonProgress,
@@ -12,7 +14,12 @@ import {
   fetchWordOfTheDay,
   fetchWordPool,
   localDateString,
+  startLessonPresentation,
+  startServerReview,
   submitLearningSession,
+  submitServerReview,
+  type ReviewFocus,
+  type ServerReviewAttempt,
 } from './api';
 import { withStatus } from './curriculum';
 import { languageConfig } from '@shared/languages';
@@ -27,6 +34,7 @@ export const learningKeys = {
   pool: (language: string) => ['learning', 'pool', language] as const,
   wordOfDay: (date: string, language: string) =>
     ['learning', 'word-of-day', date, language] as const,
+  mastery: (userId: string, language: string) => ['learning', 'mastery', userId, language] as const,
 };
 
 /** Idioma que estudiás (configuración de shared/languages.ts). */
@@ -112,11 +120,82 @@ export function useWordPool() {
   });
 }
 
+/**
+ * Presentaciones de la lección registradas por el servidor (fase 2). Una sola vez por sesión: fuera
+ * de learningKeys para que guardar la sesión no la vuelva a pedir. Si falla, la lección se juega por
+ * la ruta vieja.
+ */
+export function useLessonPresentation(sessionId: string, lessonId: string) {
+  return useQuery({
+    queryKey: ['lesson-presentation', sessionId, lessonId] as const,
+    queryFn: () => startLessonPresentation(sessionId, lessonId),
+    staleTime: Infinity,
+    gcTime: Infinity,
+    // Sin reintento: si falla (o vence el tiempo límite), se juega por la ruta vieja sin esperar más.
+    retry: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+  });
+}
+
 /** Envía la sesión (idempotente por sessionId) y refresca progreso, resumen, palabras y logros. */
 export function useSubmitSession() {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: submitLearningSession,
+    onSuccess: () =>
+      Promise.all([
+        qc.invalidateQueries({ queryKey: learningKeys.all }),
+        qc.invalidateQueries({ queryKey: ['profile', 'achievements'] }),
+        qc.invalidateQueries({ queryKey: ['profile', 'player'] }),
+      ]),
+  });
+}
+
+/** Estados visibles del motor y «Para repasar» del SRS vigente (fase 4). */
+export function useLearningMastery() {
+  const { userId, language } = useIdentity();
+  return useQuery({
+    queryKey: learningKeys.mastery(userId ?? 'anonymous', language ?? 'none'),
+    queryFn: () => fetchLearningMastery(language!),
+    enabled: Boolean(userId && language),
+  });
+}
+
+/**
+ * Repaso armado por el servidor (fase 4). Una vez por sesión, fuera de learningKeys para que guardar no
+ * lo vuelva a pedir. Sin reintento automático ni respaldo: si falla, la pantalla ofrece reintentar con
+ * el mismo sessionId (el servidor lo retoma tal cual).
+ */
+export function useServerReview(
+  sessionId: string | null,
+  language: string | undefined,
+  focus?: ReviewFocus,
+) {
+  return useQuery({
+    queryKey: ['server-review', sessionId, language, focus ?? null] as const,
+    queryFn: () => startServerReview(sessionId!, language!, focus),
+    enabled: Boolean(sessionId && language),
+    staleTime: Infinity,
+    gcTime: Infinity,
+    retry: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+  });
+}
+
+/** Corrige una respuesta en el servidor (idempotente: la primera respuesta registrada es la que vale). */
+export function useAnswerServerReview(sessionId: string | null) {
+  return useMutation({
+    mutationFn: (attempt: ServerReviewAttempt) => answerServerReview(sessionId!, attempt),
+  });
+}
+
+/** Envía el repaso del servidor (idempotente por sessionId) y refresca lo mismo que useSubmitSession. */
+export function useSubmitServerReview() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: submitServerReview,
     onSuccess: () =>
       Promise.all([
         qc.invalidateQueries({ queryKey: learningKeys.all }),

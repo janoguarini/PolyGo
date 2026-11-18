@@ -2,7 +2,15 @@ import { router } from 'expo-router';
 import type { ReactNode } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
-import { MIN_TOUCH, RankEmblemForRating, Text, colors, radii, spacing } from '@/design-system';
+import {
+  MIN_TOUCH,
+  RankEmblemForRating,
+  Text,
+  colors,
+  radii,
+  spacing,
+  themedStyles,
+} from '@/design-system';
 import { FramedAvatar } from '@/features/cosmetics/FramedAvatar';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 
@@ -32,6 +40,7 @@ export function StatusAvatar({
   size: number;
   online?: boolean;
 }) {
+  const styles = useStyles();
   const dot = Math.max(10, Math.round(size * 0.28));
   return (
     <View>
@@ -53,6 +62,7 @@ export function StatusAvatar({
 
 /** Liga con su emblema: "Oro II · 812". */
 export function LeagueLine({ player, extra }: { player: RowPlayer; extra?: string }) {
+  const styles = useStyles();
   return (
     <View style={styles.sub}>
       {player.rating !== null ? (
@@ -80,6 +90,7 @@ export function PlayerRow({
   /** Reemplaza el texto que va después de la liga. */
   subtitle?: string;
 }) {
+  const styles = useStyles();
   return (
     <View style={styles.row}>
       <Pressable
@@ -109,6 +120,7 @@ export function IconAction(props: {
   onPress: () => void;
   children: ReactNode;
 }) {
+  const styles = useStyles();
   return (
     <Pressable
       accessibilityRole="button"
@@ -137,6 +149,7 @@ export function StatusTag({
   label: string;
   color?: keyof typeof colors;
 }) {
+  const styles = useStyles();
   return (
     <View style={styles.tag}>
       {icon}
@@ -147,37 +160,39 @@ export function StatusTag({
   );
 }
 
-const styles = StyleSheet.create({
-  row: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  identity: { flex: 1, flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  flex: { flex: 1, gap: spacing.xxs },
-  shrink: { flexShrink: 1 },
-  sub: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
-  pressed: { opacity: 0.6 },
-  dot: {
-    position: 'absolute',
-    right: 0,
-    bottom: 0,
-    backgroundColor: colors.success,
-    borderWidth: 2,
-    borderColor: colors.surface,
-  },
-  iconButton: {
-    width: MIN_TOUCH,
-    height: MIN_TOUCH,
-    borderRadius: radii.pill,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.surfaceHighlight,
-  },
-  iconButtonPrimary: { backgroundColor: colors.primary },
-  tag: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.xxs,
-    paddingHorizontal: spacing.sm,
-    paddingVertical: spacing.xxs,
-    borderRadius: radii.pill,
-    backgroundColor: colors.surfaceHighlight,
-  },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    row: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+    identity: { flex: 1, flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+    flex: { flex: 1, gap: spacing.xxs },
+    shrink: { flexShrink: 1 },
+    sub: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
+    pressed: { opacity: 0.6 },
+    dot: {
+      position: 'absolute',
+      right: 0,
+      bottom: 0,
+      backgroundColor: colors.success,
+      borderWidth: 2,
+      borderColor: colors.surface,
+    },
+    iconButton: {
+      width: MIN_TOUCH,
+      height: MIN_TOUCH,
+      borderRadius: radii.pill,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: colors.surfaceHighlight,
+    },
+    iconButtonPrimary: { backgroundColor: colors.primary },
+    tag: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.xxs,
+      paddingHorizontal: spacing.sm,
+      paddingVertical: spacing.xxs,
+      borderRadius: radii.pill,
+      backgroundColor: colors.surfaceHighlight,
+    },
+  }),
+);

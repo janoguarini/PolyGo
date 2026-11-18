@@ -20,7 +20,9 @@ import {
   Text,
   colors,
   spacing,
+  useTheme,
 } from '@/design-system';
+import { RANKED_UNAVAILABLE_TITLE, rankedDisabled } from '@/features/battle/availability';
 import { ERROR_MESSAGES, battleServerConfigured } from '@/features/battle/client';
 import { BattleHud } from '@/features/battle/components/BattleHud';
 import { BotBadge } from '@/features/battle/components/BotBadge';
@@ -56,7 +58,32 @@ function RankedUnavailable({ language }: { language: string }) {
   );
 }
 
-/** Con servidor de partidas: ranked entre personas (y bots). Sin servidor: contra bots en el teléfono. */
+/**
+ * Esta build no tiene un servidor de partidas válido (EXPO_PUBLIC_BATTLE_SERVER_URL falta o es
+ * inválida). En preview/production no se reemplaza por el Ranked legacy: se avisa. Los desafíos con
+ * amigos siguen disponibles porque no pasan por el servidor de partidas.
+ */
+function RankedServerUnavailable() {
+  return (
+    <Screen edges={['top', 'bottom']} scroll={false}>
+      <EmptyState
+        title={RANKED_UNAVAILABLE_TITLE}
+        message={
+          __DEV__
+            ? 'Falta o es inválida EXPO_PUBLIC_BATTLE_SERVER_URL (en desarrollo puede ser http). Los desafíos con amigos siguen funcionando.'
+            : 'No pudimos conectar esta versión de PolyGo con el servidor de partidas. Podés seguir desafiando a tus amigos.'
+        }
+        actionLabel="Volver"
+        onAction={() => (router.canGoBack() ? router.back() : router.replace('/'))}
+      />
+    </Screen>
+  );
+}
+
+/**
+ * Con servidor de partidas: ranked entre personas (y bots). Sin servidor, sólo en desarrollo: contra
+ * bots en el teléfono (Ranked legacy). Si Ranked está deshabilitado, MatchBattle no se monta.
+ */
 const useSession = battleServerConfigured ? useBattleSession : useLocalBattleSession;
 
 const CANCEL_MESSAGES: Record<CancelReason, string> = {
@@ -93,6 +120,8 @@ export default function BattleScreen() {
   if (params.code) {
     return <ChallengeBattle key={params.code} challenge={{ role: 'guest', code: params.code }} />;
   }
+  // Ranked y Práctica sin servidor de partidas válido: aviso, nunca el sistema legacy en silencio.
+  if (rankedDisabled) return <RankedServerUnavailable />;
   return <MatchBattle mode={params.mode === 'practice' ? 'practice' : 'ranked'} />;
 }
 
@@ -151,6 +180,7 @@ function BattleView({
   onStart: (mode: BattleMode | undefined, again: boolean) => void;
   allowBotPractice?: boolean;
 }) {
+  useTheme();
   const state = useBattleStore();
   const now = useNow();
 
@@ -279,6 +309,7 @@ function Body({
   onExit,
   inviteeName,
 }: BodyProps) {
+  useTheme();
   const me = state.players.find((p) => p.slot === state.yourSlot);
   const opponent = opponentPlayer(state);
   const myRating = useMyProfile().data?.rating;
@@ -504,6 +535,7 @@ function ChallengeWaiting({
   inviteeName?: string;
   onExit: () => void;
 }) {
+  useTheme();
   const { inName } = languageConfig(useMyProfile().data?.profile.target_language);
   const share = useCallback(() => {
     const link = Linking.createURL(`challenge/${code}`);

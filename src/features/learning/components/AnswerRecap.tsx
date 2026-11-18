@@ -4,7 +4,7 @@ import Animated, { FadeIn } from 'react-native-reanimated';
 import type { AnswerVerdict } from '@shared/answers';
 import type { Exercise } from '@shared/exercises';
 
-import { Text, colors, radii, spacing } from '@/design-system';
+import { Text, colors, radii, spacing, themedStyles } from '@/design-system';
 
 import { TargetText } from '../readings';
 import { SpeakButton } from './SpeakButton';
@@ -21,6 +21,7 @@ interface Props {
  * lo que respondió el usuario y, si no coincide, la forma correcta en grande.
  */
 export function AnswerRecap({ exercise, verdict, answer }: Props) {
+  const styles = useStyles();
   const { payload } = exercise;
 
   if (payload.type === 'match_pairs') {
@@ -71,26 +72,30 @@ export function AnswerRecap({ exercise, verdict, answer }: Props) {
               {verdict.expected}
             </TargetText>
           </View>
-          {/* En translation_choice la respuesta está en español: no tiene sentido pronunciarla. */}
-          {exercise.type !== 'translation_choice' ? <SpeakButton text={verdict.expected} /> : null}
+          {/* En translation_choice y context_choice la respuesta está en español: no se pronuncia. */}
+          {exercise.type !== 'translation_choice' && exercise.type !== 'context_choice' ? (
+            <SpeakButton text={verdict.expected} />
+          ) : null}
         </View>
       </View>
     </Animated.View>
   );
 }
 
-const styles = StyleSheet.create({
-  card: {
-    gap: spacing.lg,
-    padding: spacing.lg,
-    borderRadius: radii.xl,
-    borderWidth: 1,
-    borderColor: colors.border,
-    backgroundColor: colors.surface,
-  },
-  block: { gap: spacing.xs },
-  answerRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  pair: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-  struck: { textDecorationLine: 'line-through' },
-  flex: { flex: 1 },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    card: {
+      gap: spacing.lg,
+      padding: spacing.lg,
+      borderRadius: radii.xl,
+      borderWidth: 1,
+      borderColor: colors.border,
+      backgroundColor: colors.surface,
+    },
+    block: { gap: spacing.xs },
+    answerRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+    pair: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+    struck: { textDecorationLine: 'line-through' },
+    flex: { flex: 1 },
+  }),
+);

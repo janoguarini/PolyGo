@@ -1,4 +1,5 @@
 import type { ErrorCode } from '@shared/protocol';
+import { rushUnitsFromRpc } from '@shared/wordRush';
 
 import { requireSupabase } from '@/lib/supabase';
 
@@ -17,6 +18,21 @@ export function legacyRankedError(error: unknown): unknown {
     return new Error('protocol_mismatch');
   }
   return error;
+}
+
+export { localRushWords, rushWordsInUnits } from '@shared/wordRush';
+
+/**
+ * Fases C.7/C.8: unidades cuyo vocabulario puede usar este jugador en Ranked (rush_my_unit_ids: su ruta
+ * persistente vista con el nivel de esta build —la cabecera global del cliente—, unidades publicadas y
+ * desbloqueadas). null sólo si el backend todavía no tiene la función (anterior a la C.7). Cualquier
+ * otro error se propaga: la partida no empieza (antes de la C.8 se jugaba sin el filtro).
+ */
+export async function fetchRushUnits(language: string): Promise<ReadonlySet<string> | null> {
+  const { data, error } = await requireSupabase().rpc('rush_my_unit_ids', {
+    p_language_code: language,
+  });
+  return rushUnitsFromRpc(data, error);
 }
 
 /** Partidas contra bots guardadas en Supabase (sin servidor de partidas). */

@@ -12,6 +12,8 @@ import {
   elevation,
   radii,
   spacing,
+  themedStyles,
+  gradients,
 } from '@/design-system';
 import { mascotRanked } from '@/design-system/imageData.generated';
 import type { PlayerRatingRow } from '@/lib/database.types';
@@ -23,6 +25,7 @@ const FOX_HEIGHT = 136;
 const FOX_OVERFLOW = 26;
 
 export function RankCard({ rating }: { rating: PlayerRatingRow }) {
+  const styles = useStyles();
   const rank = getRank(rating.rating);
   const placement = !isPlaced(rating);
   const tierColors = TIER_COLORS[rank.tier.id];
@@ -31,7 +34,7 @@ export function RankCard({ rating }: { rating: PlayerRatingRow }) {
   return (
     <View style={styles.wrap}>
       <LinearGradient
-        colors={['#4B2A9E', '#2A1766', '#140E33']}
+        colors={gradients.rankCard}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={styles.card}
@@ -110,61 +113,63 @@ export function RankCard({ rating }: { rating: PlayerRatingRow }) {
   );
 }
 
-const styles = StyleSheet.create({
-  wrap: { marginTop: FOX_OVERFLOW - spacing.sm },
-  card: {
-    borderRadius: radii.xl,
-    padding: spacing.lg,
-    paddingTop: spacing.xl,
-    gap: spacing.lg,
-    borderWidth: 1.5,
-    borderColor: 'rgba(167, 139, 250, 0.45)',
-    overflow: 'hidden',
-    ...elevation.glow,
-  },
-  row: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  emblemHalo: {
-    shadowColor: colors.primaryBright,
-    shadowOpacity: 0.7,
-    shadowRadius: 16,
-    shadowOffset: { width: 0, height: 0 },
-  },
-  // Deja lugar a la derecha para el puño del zorro.
-  info: { flex: 1, gap: spacing.xs, paddingRight: FOX_HEIGHT * FOX_ASPECT - spacing.xl },
-  label: { fontSize: 28, lineHeight: 34, fontStyle: 'italic', fontWeight: '900' },
-  eloPill: {
-    alignSelf: 'flex-start',
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.xxs,
-    borderRadius: radii.pill,
-    backgroundColor: 'rgba(7, 6, 15, 0.45)',
-    borderWidth: 1,
-    borderColor: 'rgba(167, 139, 250, 0.5)',
-  },
-  progress: { gap: spacing.sm },
-  barGlow: {
-    shadowOpacity: 0.6,
-    shadowRadius: 8,
-    shadowOffset: { width: 0, height: 0 },
-  },
-  foxHalo: {
-    position: 'absolute',
-    top: -40,
-    right: -30,
-    width: 170,
-    height: 170,
-    borderRadius: 85,
-    backgroundColor: 'rgba(139, 92, 246, 0.28)',
-    shadowColor: colors.primaryBright,
-    shadowOpacity: 0.9,
-    shadowRadius: 40,
-    shadowOffset: { width: 0, height: 0 },
-  },
-  fox: {
-    position: 'absolute',
-    top: -FOX_OVERFLOW,
-    right: spacing.xxs,
-    height: FOX_HEIGHT,
-    width: FOX_HEIGHT * FOX_ASPECT,
-  },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    wrap: { marginTop: FOX_OVERFLOW - spacing.sm },
+    card: {
+      borderRadius: radii.xl,
+      padding: spacing.lg,
+      paddingTop: spacing.xl,
+      gap: spacing.lg,
+      borderWidth: 1.5,
+      borderColor: colors.brandBorder,
+      overflow: 'hidden',
+      ...elevation.glow,
+    },
+    row: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+    emblemHalo: {
+      shadowColor: colors.primaryBright,
+      shadowOpacity: 0.7,
+      shadowRadius: 16,
+      shadowOffset: { width: 0, height: 0 },
+    },
+    // Deja lugar a la derecha para el puño del zorro.
+    info: { flex: 1, gap: spacing.xs, paddingRight: FOX_HEIGHT * FOX_ASPECT - spacing.xl },
+    label: { fontSize: 28, lineHeight: 34, fontStyle: 'italic', fontWeight: '900' },
+    eloPill: {
+      alignSelf: 'flex-start',
+      paddingHorizontal: spacing.md,
+      paddingVertical: spacing.xxs,
+      borderRadius: radii.pill,
+      backgroundColor: colors.inset,
+      borderWidth: 1,
+      borderColor: colors.brandBorder,
+    },
+    progress: { gap: spacing.sm },
+    barGlow: {
+      shadowOpacity: 0.6,
+      shadowRadius: 8,
+      shadowOffset: { width: 0, height: 0 },
+    },
+    foxHalo: {
+      position: 'absolute',
+      top: -40,
+      right: -30,
+      width: 170,
+      height: 170,
+      borderRadius: 85,
+      backgroundColor: 'rgba(139, 92, 246, 0.28)',
+      shadowColor: colors.primaryBright,
+      shadowOpacity: 0.9,
+      shadowRadius: 40,
+      shadowOffset: { width: 0, height: 0 },
+    },
+    fox: {
+      position: 'absolute',
+      top: -FOX_OVERFLOW,
+      right: spacing.xxs,
+      height: FOX_HEIGHT,
+      width: FOX_HEIGHT * FOX_ASPECT,
+    },
+  }),
+);

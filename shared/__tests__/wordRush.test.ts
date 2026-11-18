@@ -186,6 +186,10 @@ describe('escribir la respuesta (desde Oro)', () => {
     expect(checkWritten('hella', 'hello').correct).toBe(false); // corta: sin tolerancia
     expect(checkWritten('expensiv', 'expensive')).toEqual({ correct: true, typo: true });
     expect(checkWritten('expens', 'expensive').correct).toBe(false);
+    // Un apóstrofo que falta no es un error de tipeo.
+    expect(checkWritten('oclock', "o'clock").correct).toBe(false);
+    expect(checkWritten('wasnt', "wasn't").correct).toBe(false);
+    expect(checkWritten('wasn´t', "wasn't").correct).toBe(true);
   });
 
   it('el bonus de velocidad tiene el doble de margen', () => {

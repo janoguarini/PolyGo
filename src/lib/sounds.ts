@@ -41,7 +41,9 @@ function player(name: SoundEffect): AudioPlayer {
   let p = players.get(name);
   if (!p) {
     // Viven toda la sesión de la app (se reutilizan), por eso no se liberan.
-    p = createAudioPlayer(SOURCES[name]);
+    // keepAudioSessionActive: en iOS, al terminar un efecto expo-audio desactiva la sesión de audio
+    // y eso corta a la mitad la voz sintetizada que esté sonando (expo-speech usa la misma sesión).
+    p = createAudioPlayer(SOURCES[name], { keepAudioSessionActive: true });
     players.set(name, p);
   }
   return p;

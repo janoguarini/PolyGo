@@ -33,7 +33,14 @@ export const palette = {
   orange400: '#FB923C',
 } as const;
 
-export const colors = {
+// ---------------------------------------------------------------------------------------------
+// Temas. `colors`, `gradients` y `elevation` leen SIEMPRE el tema activo (ver theme.tsx): los
+// estilos se recalculan por tema con themedStyles() y los componentes se vuelven a dibujar con
+// useTheme(). El resto de los tokens (espaciado, tipografía, colores del camino) no cambian.
+
+export type ColorScheme = 'dark' | 'light';
+
+const darkColors = {
   background: palette.ink900,
   backgroundDeep: palette.ink950,
   surface: palette.ink850,
@@ -64,14 +71,98 @@ export const colors = {
   goldStrong: palette.gold500,
   streak: palette.orange400,
   overlay: 'rgba(7, 6, 15, 0.72)',
-} as const;
+  /** Fondo translúcido de chips y recuadros dentro de tarjetas de marca. */
+  inset: 'rgba(7, 6, 15, 0.45)',
+  /** Borde violeta translúcido de tarjetas de marca. */
+  brandBorder: 'rgba(167, 139, 250, 0.45)',
+  /** Color sólido detrás del brillo de las tarjetas de marca. */
+  brandSolid: '#24145C',
+};
 
-export const gradients = {
-  primary: [palette.violet400, palette.violet600] as const,
-  hero: ['#2A1A5E', palette.ink900] as const,
-  ranked: ['#3B1D80', '#151036'] as const,
-  gold: [palette.gold400, palette.gold500] as const,
-  screen: [palette.ink850, palette.ink900, palette.ink950] as const,
+export type ColorToken = keyof typeof darkColors;
+export type Colors = Record<ColorToken, string>;
+
+/**
+ * Tema claro: mismos tokens. Todo texto sobre background/surface/surfaceRaised/surfaceHighlight
+ * cumple WCAG AA (≥ 4.5:1; test en __tests__/contrast.test.ts). Por eso el dorado, el naranja de
+ * racha y los verdes/rojos de texto son más oscuros que en el tema oscuro.
+ */
+const lightColors: Colors = {
+  background: '#F6F5FB',
+  backgroundDeep: '#ECEAF6',
+  surface: '#FFFFFF',
+  surfaceRaised: '#F1EFF9',
+  surfaceHighlight: '#E6E2F5',
+  border: '#E3E0F0',
+  borderStrong: '#C9C3E3',
+  text: '#29243F',
+  textStrong: '#13102A',
+  textMuted: '#5C567C',
+  textSubtle: '#8B85AE',
+  primary: '#6D28D9',
+  primaryBright: '#7C3AED',
+  primarySoft: '#6D28D9',
+  primaryPressed: '#5B21B6',
+  onPrimary: '#FFFFFF',
+  info: '#0B5F77',
+  infoAlt: '#1D4ED8',
+  success: '#03684B',
+  successStrong: '#059669',
+  successDeep: '#047857',
+  danger: '#B91C1C',
+  dangerStrong: '#DC2626',
+  dangerDeep: '#B91C1C',
+  gold: '#8A5306',
+  goldStrong: '#6E4204',
+  streak: '#A8380A',
+  overlay: 'rgba(19, 16, 42, 0.45)',
+  inset: 'rgba(255, 255, 255, 0.6)',
+  brandBorder: 'rgba(109, 40, 217, 0.25)',
+  brandSolid: '#DED0FF',
+};
+
+type Gradient = readonly [string, string, ...string[]];
+interface Gradients {
+  primary: Gradient;
+  hero: Gradient;
+  ranked: Gradient;
+  gold: Gradient;
+  screen: Gradient;
+  /** Tarjetas de marca (código de amigo, desafiar amigos, opción elegida). */
+  brand: Gradient;
+  /** Tarjeta de rango. */
+  rankCard: Gradient;
+  /** Panel de Ranked y su cabecera que se desvanece. */
+  rankedPanel: Gradient;
+  rankedHeader: Gradient;
+  /** Logro bloqueado. */
+  locked: Gradient;
+}
+
+const darkGradients: Gradients = {
+  primary: [palette.violet400, palette.violet600],
+  hero: ['#2A1A5E', palette.ink900],
+  ranked: ['#3B1D80', '#151036'],
+  gold: [palette.gold400, palette.gold500],
+  screen: [palette.ink850, palette.ink900, palette.ink950],
+  brand: ['#3F2391', '#24145C', '#160F3A'],
+  rankCard: ['#4B2A9E', '#2A1766', '#140E33'],
+  rankedPanel: ['#2E1A6B', '#1A1240', '#120E2C'],
+  rankedHeader: ['#3B1D80', 'rgba(59, 29, 128, 0.35)', 'transparent'],
+  locked: ['#3A3566', '#221E42'],
+};
+
+const lightGradients: Gradients = {
+  primary: [palette.violet400, palette.violet600],
+  hero: ['#E7DEFF', '#F6F5FB'],
+  ranked: ['#D9CCFF', '#EFEAFF'],
+  gold: [palette.gold400, palette.gold500],
+  screen: ['#FFFFFF', '#F6F5FB', '#ECEAF6'],
+  brand: ['#EDE5FF', '#DED0FF', '#CDB8FF'],
+  rankCard: ['#E9DFFF', '#D8C8FF', '#C7B1FF'],
+  rankedPanel: ['#EFE9FF', '#E3D9FF', '#D6C9FF'],
+  rankedHeader: ['#D9CCFF', 'rgba(217, 204, 255, 0.4)', 'transparent'],
+  locked: ['#E2DEF2', '#D2CDE8'],
 };
 
 /**
@@ -125,7 +216,19 @@ export const typography = {
 
 export type TypographyVariant = keyof typeof typography;
 
-export const elevation = {
+interface Shadow {
+  shadowColor: string;
+  shadowOpacity: number;
+  shadowRadius: number;
+  shadowOffset: { width: number; height: number };
+  elevation: number;
+}
+interface Elevation {
+  card: Shadow;
+  glow: Shadow;
+}
+
+const darkElevation: Elevation = {
   card: {
     shadowColor: '#000',
     shadowOpacity: 0.35,
@@ -140,7 +243,75 @@ export const elevation = {
     shadowOffset: { width: 0, height: 0 },
     elevation: 8,
   },
+};
+
+const lightElevation: Elevation = {
+  card: {
+    shadowColor: '#2B2160',
+    shadowOpacity: 0.1,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 3,
+  },
+  glow: {
+    shadowColor: palette.violet500,
+    shadowOpacity: 0.3,
+    shadowRadius: 16,
+    shadowOffset: { width: 0, height: 0 },
+    elevation: 6,
+  },
+};
+
+const THEMES = {
+  dark: { colors: darkColors as Colors, gradients: darkGradients, elevation: darkElevation },
+  light: { colors: lightColors, gradients: lightGradients, elevation: lightElevation },
 } as const;
+
+let active: ColorScheme = 'dark';
+
+/** Tema con el que se leen los tokens. Lo fija ThemeProvider (theme.tsx) al dibujar. */
+export function setActiveScheme(scheme: ColorScheme) {
+  active = scheme;
+}
+
+export function getActiveScheme(): ColorScheme {
+  return active;
+}
+
+/** Ejecuta `fn` leyendo los tokens de `scheme` (para calcular estilos de un tema concreto). */
+export function withScheme<T>(scheme: ColorScheme, fn: () => T): T {
+  const prev = active;
+  active = scheme;
+  try {
+    return fn();
+  } finally {
+    active = prev;
+  }
+}
+
+/** Vista del tema activo: cada lectura (`colors.text`) devuelve el valor del tema vigente. */
+function live<T extends object>(pick: (t: (typeof THEMES)[ColorScheme]) => T): T {
+  const current = () => pick(THEMES[active]) as Record<PropertyKey, unknown>;
+  return new Proxy({} as T, {
+    get: (_, key) => current()[key],
+    has: (_, key) => key in current(),
+    ownKeys: () => Reflect.ownKeys(current()),
+    getOwnPropertyDescriptor: (_, key) =>
+      key in current()
+        ? { enumerable: true, configurable: true, writable: false, value: current()[key] }
+        : undefined,
+  });
+}
+
+export const colors: Colors = live((t) => t.colors);
+export const gradients: Gradients = live((t) => t.gradients);
+export const elevation: Elevation = live((t) => t.elevation);
+
+/** Paletas completas (para tests y vistas previas). */
+export const themeColors: Record<ColorScheme, Colors> = {
+  dark: THEMES.dark.colors,
+  light: THEMES.light.colors,
+};
 
 export const durations = {
   fast: 120,

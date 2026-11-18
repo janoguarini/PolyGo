@@ -21,6 +21,7 @@ import {
   colors,
   radii,
   spacing,
+  themedStyles,
 } from '@/design-system';
 import { useFriends, type FriendEntry } from '@/features/friends/api';
 import {
@@ -42,6 +43,7 @@ const FRIENDS_PREVIEW = 5;
 const NARROW_WIDTH = 380;
 
 export default function FriendsScreen() {
+  const styles = useStyles();
   const friends = useFriends();
   const scrollRef = useRef<ScrollViewInstance>(null);
   useTabPressScroll(scrollRef);
@@ -186,6 +188,7 @@ export default function FriendsScreen() {
 }
 
 function SectionTitle({ icon, children }: { icon: ReactNode; children: ReactNode }) {
+  const styles = useStyles();
   return (
     <View style={styles.sectionTitle}>
       {icon}
@@ -196,6 +199,7 @@ function SectionTitle({ icon, children }: { icon: ReactNode; children: ReactNode
 
 /** Tarjeta de "Mis amigos": estado, ELO y desafiar si está conectado (si no, su racha). */
 function FriendCard({ friend, now }: { friend: FriendEntry; now: number }) {
+  const styles = useStyles();
   const narrow = useWindowDimensions().width < NARROW_WIDTH;
   const streak = friend.streak > 0;
   const rating = friend.placed ? friend.rating : null;
@@ -254,52 +258,54 @@ function FriendCard({ friend, now }: { friend: FriendEntry; now: number }) {
   );
 }
 
-const styles = StyleSheet.create({
-  header: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  flex: { flex: 1, gap: spacing.xxs },
-  addButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.xs,
-    minHeight: MIN_TOUCH,
-    paddingHorizontal: spacing.lg,
-    borderRadius: radii.pill,
-    backgroundColor: colors.primary,
-  },
-  badge: {
-    minWidth: 20,
-    height: 20,
-    paddingHorizontal: spacing.xs,
-    borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.dangerDeep,
-  },
-  badgeText: { fontWeight: '700' },
-  pressed: { opacity: 0.75 },
-  requests: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  list: { gap: spacing.md },
-  overline: { fontSize: 13, letterSpacing: 2 },
-  sectionTitle: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, flexShrink: 1 },
-  friendsHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: spacing.md,
-  },
-  seeAll: { flexDirection: 'row', alignItems: 'center', gap: spacing.xxs },
-  chevronUp: { transform: [{ rotate: '-90deg' }] },
-  friendCard: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.md,
-    paddingVertical: spacing.md,
-    borderColor: 'rgba(167, 139, 250, 0.2)',
-  },
-  identity: { flex: 1, flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  presence: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
-  onlineDot: { width: 8, height: 8, borderRadius: 4, backgroundColor: colors.success },
-  shrink: { flexShrink: 1 },
-  elo: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
-  streak: { flexDirection: 'row', alignItems: 'center', gap: spacing.xxs },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    header: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+    flex: { flex: 1, gap: spacing.xxs },
+    addButton: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.xs,
+      minHeight: MIN_TOUCH,
+      paddingHorizontal: spacing.lg,
+      borderRadius: radii.pill,
+      backgroundColor: colors.primary,
+    },
+    badge: {
+      minWidth: 20,
+      height: 20,
+      paddingHorizontal: spacing.xs,
+      borderRadius: 10,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: colors.dangerDeep,
+    },
+    badgeText: { fontWeight: '700' },
+    pressed: { opacity: 0.75 },
+    requests: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+    list: { gap: spacing.md },
+    overline: { fontSize: 13, letterSpacing: 2 },
+    sectionTitle: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, flexShrink: 1 },
+    friendsHeader: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      gap: spacing.md,
+    },
+    seeAll: { flexDirection: 'row', alignItems: 'center', gap: spacing.xxs },
+    chevronUp: { transform: [{ rotate: '-90deg' }] },
+    friendCard: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.md,
+      paddingVertical: spacing.md,
+      borderColor: 'rgba(167, 139, 250, 0.2)',
+    },
+    identity: { flex: 1, flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+    presence: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
+    onlineDot: { width: 8, height: 8, borderRadius: 4, backgroundColor: colors.success },
+    shrink: { flexShrink: 1 },
+    elo: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
+    streak: { flexDirection: 'row', alignItems: 'center', gap: spacing.xxs },
+  }),
+);

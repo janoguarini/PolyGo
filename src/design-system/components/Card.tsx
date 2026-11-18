@@ -1,3 +1,4 @@
+import { themedStyles } from '../theme';
 import { LinearGradient } from 'expo-linear-gradient';
 import type { ReactNode } from 'react';
 import { Pressable, StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
@@ -14,6 +15,7 @@ export interface CardProps {
 }
 
 export function Card({ children, style, gradient, onPress, accessibilityLabel }: CardProps) {
+  const styles = useStyles();
   const body = gradient ? (
     <LinearGradient
       colors={gradient}
@@ -43,13 +45,15 @@ export function Card({ children, style, gradient, onPress, accessibilityLabel }:
   );
 }
 
-const styles = StyleSheet.create({
-  card: {
-    borderRadius: radii.xl,
-    padding: spacing.lg,
-    borderWidth: 1,
-    borderColor: colors.border,
-    ...elevation.card,
-  },
-  solid: { backgroundColor: colors.surface },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    card: {
+      borderRadius: radii.xl,
+      padding: spacing.lg,
+      borderWidth: 1,
+      borderColor: colors.border,
+      ...elevation.card,
+    },
+    solid: { backgroundColor: colors.surface },
+  }),
+);

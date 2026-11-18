@@ -3,7 +3,17 @@ import { router } from 'expo-router';
 import { KeyRound, Swords, UserPlus } from 'lucide-react-native';
 import { Image, Pressable, StyleSheet, View } from 'react-native';
 
-import { Button, MIN_TOUCH, Text, colors, elevation, radii, spacing } from '@/design-system';
+import {
+  Button,
+  MIN_TOUCH,
+  Text,
+  colors,
+  elevation,
+  radii,
+  spacing,
+  themedStyles,
+  gradients,
+} from '@/design-system';
 import { mascotChallenge } from '@/design-system/imageData.generated';
 
 import type { FriendEntry } from '../api';
@@ -75,6 +85,7 @@ function Pill({
   outline?: boolean;
   compact?: boolean;
 }) {
+  const styles = useStyles();
   return (
     <Pressable
       accessibilityRole="button"
@@ -98,12 +109,13 @@ function Pill({
 
 /** Tarjeta principal: el zorro, amigos en línea (cada uno con "Desafiar") o cómo empezar. */
 export function ChallengeFriendsCard({ friends }: { friends: FriendEntry[] }) {
+  const styles = useStyles();
   const online = friends.filter((f) => f.online);
   const codeIsMain = friends.length > 0 && online.length === 0;
   return (
     <View style={styles.glow}>
       <LinearGradient
-        colors={['#3F2391', '#24145C', '#160F3A']}
+        colors={gradients.brand}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={styles.card}
@@ -179,53 +191,55 @@ export function ChallengeFriendsCard({ friends }: { friends: FriendEntry[] }) {
   );
 }
 
-const styles = StyleSheet.create({
-  // La sombra va afuera: la tarjeta recorta al zorro con sus bordes redondeados.
-  glow: { borderRadius: radii.xl, backgroundColor: '#24145C', ...elevation.glow },
-  card: {
-    borderRadius: radii.xl,
-    padding: spacing.lg,
-    gap: spacing.lg,
-    borderWidth: 1.5,
-    borderColor: 'rgba(167, 139, 250, 0.5)',
-    overflow: 'hidden',
-  },
-  hero: { minHeight: HERO_HEIGHT, justifyContent: 'center' },
-  // Deja lugar a la derecha para el zorro.
-  intro: { gap: spacing.sm, paddingRight: FOX_WIDTH - spacing.lg },
-  title: { fontSize: 22, lineHeight: 27, fontWeight: '800' },
-  onlineCount: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
-  dot: { width: 8, height: 8, borderRadius: 4, backgroundColor: colors.success },
-  list: { gap: spacing.md },
-  glowButton: {
-    shadowColor: colors.primaryBright,
-    shadowOpacity: 0.7,
-    shadowRadius: 14,
-    shadowOffset: { width: 0, height: 0 },
-  },
-  // Apoyado sobre lo que sigue (el botón lo tapa apenas), como si asomara detrás.
-  fox: {
-    position: 'absolute',
-    right: -spacing.sm,
-    bottom: -(spacing.lg + FOX_TUCK),
-    width: FOX_WIDTH,
-    height: FOX_HEIGHT,
-  },
-  pill: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.xs,
-    minHeight: MIN_TOUCH,
-    paddingHorizontal: spacing.lg,
-    borderRadius: radii.pill,
-    backgroundColor: colors.primary,
-  },
-  pillCompact: { paddingHorizontal: spacing.md },
-  pillOutline: {
-    backgroundColor: 'rgba(124, 58, 237, 0.14)',
-    borderWidth: 1.5,
-    borderColor: colors.primaryBright,
-  },
-  pillHighlight: { backgroundColor: colors.successDeep },
-  pressed: { opacity: 0.75 },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    // La sombra va afuera: la tarjeta recorta al zorro con sus bordes redondeados.
+    glow: { borderRadius: radii.xl, backgroundColor: colors.brandSolid, ...elevation.glow },
+    card: {
+      borderRadius: radii.xl,
+      padding: spacing.lg,
+      gap: spacing.lg,
+      borderWidth: 1.5,
+      borderColor: colors.brandBorder,
+      overflow: 'hidden',
+    },
+    hero: { minHeight: HERO_HEIGHT, justifyContent: 'center' },
+    // Deja lugar a la derecha para el zorro.
+    intro: { gap: spacing.sm, paddingRight: FOX_WIDTH - spacing.lg },
+    title: { fontSize: 22, lineHeight: 27, fontWeight: '800' },
+    onlineCount: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
+    dot: { width: 8, height: 8, borderRadius: 4, backgroundColor: colors.success },
+    list: { gap: spacing.md },
+    glowButton: {
+      shadowColor: colors.primaryBright,
+      shadowOpacity: 0.7,
+      shadowRadius: 14,
+      shadowOffset: { width: 0, height: 0 },
+    },
+    // Apoyado sobre lo que sigue (el botón lo tapa apenas), como si asomara detrás.
+    fox: {
+      position: 'absolute',
+      right: -spacing.sm,
+      bottom: -(spacing.lg + FOX_TUCK),
+      width: FOX_WIDTH,
+      height: FOX_HEIGHT,
+    },
+    pill: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.xs,
+      minHeight: MIN_TOUCH,
+      paddingHorizontal: spacing.lg,
+      borderRadius: radii.pill,
+      backgroundColor: colors.primary,
+    },
+    pillCompact: { paddingHorizontal: spacing.md },
+    pillOutline: {
+      backgroundColor: 'rgba(124, 58, 237, 0.14)',
+      borderWidth: 1.5,
+      borderColor: colors.primaryBright,
+    },
+    pillHighlight: { backgroundColor: colors.successDeep },
+    pressed: { opacity: 0.75 },
+  }),
+);

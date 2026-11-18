@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { StyleSheet, View, type GestureResponderEvent } from 'react-native';
 import Svg, { Circle, Line, Path } from 'react-native-svg';
 
-import { Text, colors, spacing } from '@/design-system';
+import { Text, colors, spacing, useTheme } from '@/design-system';
 
 import {
   areaPath,
@@ -25,6 +25,7 @@ const dateFormat = new Intl.DateTimeFormat('es', { day: 'numeric', month: 'short
  * Tocar o arrastrar inspecciona cada partida.
  */
 export function RatingChart({ series }: { series: readonly RatingPoint[] }) {
+  useTheme();
   const [width, setWidth] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
 

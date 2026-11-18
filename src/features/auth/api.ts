@@ -1,6 +1,7 @@
 import * as Linking from 'expo-linking';
 
 import { unregisterPush } from '@/features/friends/pushToken';
+import { CURRICULUM_API, CURRICULUM_API_SIGNUP_KEY } from '@/lib/clientInfo';
 import { requireSupabase } from '@/lib/supabase';
 
 import type { SignInValues, SignUpValues } from './schemas';
@@ -24,7 +25,12 @@ export async function signUp({
   const { data, error } = await requireSupabase().auth.signUp({
     email,
     password,
-    options: { emailRedirectTo: authRedirectUrl() },
+    options: {
+      emailRedirectTo: authRedirectUrl(),
+      // Fase C.5: la ruta curricular de la cuenta se decide en el alta según lo que esta build puede
+      // dibujar. Sin este dato (builds antiguas) el servidor asigna la ruta de respaldo.
+      data: { [CURRICULUM_API_SIGNUP_KEY]: CURRICULUM_API },
+    },
   });
   if (error) throw error;
   return { needsConfirmation: !data.session };

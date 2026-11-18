@@ -31,6 +31,7 @@ import {
   gradients,
   radii,
   spacing,
+  themedStyles,
 } from '@/design-system';
 import { FormMessage } from '@/features/auth/FormMessage';
 import {
@@ -56,6 +57,7 @@ const ICONS: Record<MissionId, typeof Target> = {
  * el cofre del día. Acá también se compra el protector de racha.
  */
 export default function MissionsScreen() {
+  const styles = useStyles();
   const missions = useDailyMissions();
   const claim = useClaimMissionReward();
 
@@ -162,6 +164,7 @@ export default function MissionsScreen() {
 }
 
 function MissionRow({ mission }: { mission: DailyMission }) {
+  const styles = useStyles();
   const Icon = ICONS[mission.id];
   const title = missionTitle(mission.id, mission.target);
   const go = () =>
@@ -207,36 +210,43 @@ function MissionRow({ mission }: { mission: DailyMission }) {
   );
 }
 
-const styles = StyleSheet.create({
-  flex: { flex: 1 },
-  reward: { gap: spacing.lg },
-  rewardRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.lg },
-  flexShrink: { flexShrink: 1 },
-  chestIcon: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.surfaceRaised,
-    borderWidth: 2,
-    borderColor: colors.gold,
-  },
-  chestIconOn: { backgroundColor: colors.goldStrong },
-  prize: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: spacing.sm },
-  missionReward: { flexDirection: 'row', alignItems: 'center', gap: spacing.xxs },
-  list: { gap: spacing.md },
-  mission: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  missionDone: { opacity: 0.85 },
-  missionIcon: {
-    width: 44,
-    height: 44,
-    borderRadius: radii.md,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.surfaceRaised,
-  },
-  missionIconDone: { backgroundColor: colors.successDeep },
-  missionBody: { flex: 1, gap: spacing.sm },
-  progressRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    flex: { flex: 1 },
+    reward: { gap: spacing.lg },
+    rewardRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.lg },
+    flexShrink: { flexShrink: 1 },
+    chestIcon: {
+      width: 60,
+      height: 60,
+      borderRadius: 30,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: colors.surfaceRaised,
+      borderWidth: 2,
+      borderColor: colors.gold,
+    },
+    chestIconOn: { backgroundColor: colors.goldStrong },
+    prize: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: spacing.sm,
+    },
+    missionReward: { flexDirection: 'row', alignItems: 'center', gap: spacing.xxs },
+    list: { gap: spacing.md },
+    mission: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+    missionDone: { opacity: 0.85 },
+    missionIcon: {
+      width: 44,
+      height: 44,
+      borderRadius: radii.md,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: colors.surfaceRaised,
+    },
+    missionIconDone: { backgroundColor: colors.successDeep },
+    missionBody: { flex: 1, gap: spacing.sm },
+    progressRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+  }),
+);

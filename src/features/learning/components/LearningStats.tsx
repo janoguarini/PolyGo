@@ -12,9 +12,11 @@ import {
   colors,
   gradients,
   spacing,
+  useTheme,
 } from '@/design-system';
 
-import { useCurriculum, useLearningSummary } from '../hooks';
+import { useCurriculum, useLearningMastery, useLearningSummary } from '../hooks';
+import { MasteryCard, totalCounts } from './MasteryCard';
 import { starTotals } from '../path';
 
 function formatMinutes(seconds: number) {
@@ -25,7 +27,10 @@ function formatMinutes(seconds: number) {
 
 /** Estadísticas educativas reales del perfil. Independientes del rating competitivo. */
 export function LearningStats({ level }: { level: string }) {
+  useTheme();
   const summary = useLearningSummary();
+  // Fase 4: «Dominadas» sólo del motor (AL12) y «Para repasar» del SRS vigente (v2 si está encendido).
+  const mastery = useLearningMastery();
   const curriculum = useCurriculum();
   const stars = curriculum.data ? starTotals(curriculum.data.units) : null;
 
@@ -80,10 +85,21 @@ export function LearningStats({ level }: { level: string }) {
         <StatTile label="Lecciones" value={String(s.lessons_completed)} />
         <StatTile label="Racha" value={`${s.streak_days} d`} />
         <StatTile label="Estudiadas" value={String(s.words_seen)} hint="palabras vistas" />
-        <StatTile label="Dominadas" value={String(s.words_mastered)} hint="repasos espaciados" />
-        <StatTile label="Para repasar" value={String(s.words_due)} />
+        {mastery.data?.available ? (
+          <StatTile
+            label="Dominadas"
+            value={String(totalCounts(mastery.data).mastered)}
+            hint="según tu evidencia"
+          />
+        ) : null}
+        <StatTile
+          label="Para repasar"
+          value={String(mastery.data ? mastery.data.review.due_now : s.words_due)}
+        />
         <StatTile label="Tiempo" value={formatMinutes(s.seconds_learning)} />
       </View>
+
+      {mastery.data ? <MasteryCard mastery={mastery.data} /> : null}
 
       <Card style={styles.gap}>
         <Text variant="overline">PRECISIÓN POR HABILIDAD</Text>

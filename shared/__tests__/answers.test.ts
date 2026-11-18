@@ -121,6 +121,25 @@ describe('checkAnswer · escritura', () => {
     expect(checkAnswer(ex, text('i’m from argentina')).correct).toBe(true);
     expect(checkAnswer(ex, text('I am Argentinian')).correct).toBe(true);
   });
+
+  it('un apóstrofo que falta no es un error de tipeo', () => {
+    const wasnt = exercise({
+      payload: { type: 'translate_write', source: 'Ella no estaba ocupada.' },
+      answer: "She wasn't busy.",
+    });
+    expect(checkAnswer(wasnt, text("She wasn't busy")).correct).toBe(true);
+    // Teclado en español: la tilde aguda cuenta como apóstrofo.
+    expect(checkAnswer(wasnt, text('She wasn´t busy')).correct).toBe(true);
+    expect(checkAnswer(wasnt, text('She was not busy')).correct).toBe(true);
+    expect(checkAnswer(wasnt, text('She wasnt busy')).correct).toBe(false);
+
+    const clock = exercise({
+      payload: { type: 'translate_write', source: 'Son las tres.' },
+      answer: "It is three o'clock.",
+    });
+    expect(checkAnswer(clock, text('It is three oclock')).correct).toBe(false);
+    expect(checkAnswer(clock, text("It is thre o'clock")).correct).toBe(true);
+  });
 });
 
 describe('checkAnswer · opciones, orden y parejas', () => {

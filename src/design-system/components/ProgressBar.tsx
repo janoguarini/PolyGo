@@ -1,3 +1,4 @@
+import { themedStyles } from '../theme';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
@@ -19,6 +20,7 @@ export function ProgressBar({
   colors: fill = gradients.primary,
   accessibilityLabel,
 }: ProgressBarProps) {
+  const styles = useStyles();
   const clamped = Math.min(1, Math.max(0, value));
   const progress = useSharedValue(0);
 
@@ -47,7 +49,9 @@ export function ProgressBar({
   );
 }
 
-const styles = StyleSheet.create({
-  track: { backgroundColor: colors.surfaceHighlight, overflow: 'hidden', width: '100%' },
-  fill: { height: '100%', borderRadius: radii.pill, overflow: 'hidden' },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    track: { backgroundColor: colors.surfaceHighlight, overflow: 'hidden', width: '100%' },
+    fill: { height: '100%', borderRadius: radii.pill, overflow: 'hidden' },
+  }),
+);

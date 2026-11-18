@@ -1,7 +1,15 @@
 import { router } from 'expo-router';
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
-import { ErrorState, ProgressBar, Text, colors, radii, spacing } from '@/design-system';
+import {
+  ErrorState,
+  ProgressBar,
+  Text,
+  colors,
+  radii,
+  spacing,
+  themedStyles,
+} from '@/design-system';
 
 import { featuredFamilies, familyProgress } from '../families';
 import { useMyAchievements } from '../hooks';
@@ -11,6 +19,7 @@ const SHOWN = 8;
 
 /** Logros destacados del perfil: una tarjeta por familia con su nivel. Abre la lista completa. */
 export function AchievementsCarousel() {
+  const styles = useStyles();
   const achievements = useMyAchievements();
 
   if (achievements.isError)
@@ -58,19 +67,21 @@ export function AchievementsCarousel() {
   );
 }
 
-const styles = StyleSheet.create({
-  row: { gap: spacing.sm },
-  card: {
-    width: 116,
-    alignItems: 'center',
-    gap: spacing.xs,
-    padding: spacing.md,
-    borderRadius: radii.lg,
-    backgroundColor: colors.surface,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  pressed: { opacity: 0.85, transform: [{ scale: 0.98 }] },
-  caption: { minHeight: 36, fontSize: 11, lineHeight: 15 },
-  bar: { alignSelf: 'stretch' },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    row: { gap: spacing.sm },
+    card: {
+      width: 116,
+      alignItems: 'center',
+      gap: spacing.xs,
+      padding: spacing.md,
+      borderRadius: radii.lg,
+      backgroundColor: colors.surface,
+      borderWidth: 1,
+      borderColor: colors.border,
+    },
+    pressed: { opacity: 0.85, transform: [{ scale: 0.98 }] },
+    caption: { minHeight: 36, fontSize: 11, lineHeight: 15 },
+    bar: { alignSelf: 'stretch' },
+  }),
+);

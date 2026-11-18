@@ -13,29 +13,49 @@ import {
   Text,
   colors,
   spacing,
+  themedStyles,
 } from '@/design-system';
 import { FramedAvatar } from '@/features/cosmetics/FramedAvatar';
 import { ProfileBackdrop } from '@/features/cosmetics/ProfileBackdrop';
 import { Laurels } from '@/features/profile/components/Laurels';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
-import type { PlayerRatingRow, ProfileRow } from '@/lib/database.types';
+import type { ProfileRow } from '@/lib/database.types';
+
+/** Lo que el encabezado necesita: sirve el perfil propio y el público de otro jugador. */
+export type HeaderProfile = Pick<ProfileRow, 'username' | 'display_name' | 'avatar_id'> & {
+  avatar_path?: string | null;
+  frame_id?: string | null;
+  background_id?: string | null;
+  region?: string | null;
+};
+
+/** Rating y victorias (posicionado = ganó alguna ranked). */
+export interface HeaderRating {
+  rating: number;
+  wins: number;
+}
 
 /**
- * Encabezado del perfil propio: avatar editable con su marco, nombre con bandera y tarjeta de rango,
- * sobre el fondo elegido. Con `preview` es la vista previa de Editar perfil: sin toques y con la
- * foto que se está eligiendo (`photoUrl`).
+ * Encabezado de perfil: avatar con su marco, nombre con bandera y tarjeta de rango, sobre el fondo
+ * elegido. Es el mismo para el perfil propio y el de otro jugador (`readonly`: sin editar).
+ * Con `preview` es la vista previa de Editar perfil: sin toques y con la foto que se está eligiendo
+ * (`photoUrl`).
  */
 export function ProfileHeader({
   profile,
   rating,
   preview,
   photoUrl,
+  readonly,
 }: {
-  profile: ProfileRow;
-  rating: PlayerRatingRow | null;
+  profile: HeaderProfile;
+  rating: HeaderRating | null;
   preview?: boolean;
   photoUrl?: string | null;
+  /** Perfil de otro jugador: el avatar no lleva a Editar perfil. */
+  readonly?: boolean;
 }) {
+  const styles = useStyles();
   const flag = flagEmoji(profile.region);
   const avatar = (
     <FramedAvatar
@@ -50,7 +70,7 @@ export function ProfileHeader({
   return (
     <ProfileBackdrop backgroundId={profile.background_id} style={styles.row}>
       <View style={styles.identity}>
-        {preview ? (
+        {preview || readonly ? (
           <View style={styles.avatarWrap}>{avatar}</View>
         ) : (
           <Pressable
@@ -77,15 +97,14 @@ export function ProfileHeader({
         </View>
         <Text color="textMuted">@{profile.username}</Text>
       </View>
-      {rating ? (
-        <RankMini rating={rating} interactive={!preview} />
-      ) : null}
+      {rating ? <RankMini rating={rating} interactive={!preview} /> : null}
     </ProfileBackdrop>
   );
 }
 
 /** Rango sobre el fondo del perfil (sin caja propia), con el emblema entre dos ramas de laurel. */
-function RankMini({ rating, interactive }: { rating: PlayerRatingRow; interactive: boolean }) {
+function RankMini({ rating, interactive }: { rating: HeaderRating; interactive: boolean }) {
+  const styles = useStyles();
   const placement = !isPlaced(rating);
   const rank = getRank(rating.rating);
   const tier = TIER_COLORS[rank.tier.id];
@@ -137,37 +156,39 @@ function RankMini({ rating, interactive }: { rating: PlayerRatingRow; interactiv
   return interactive ? card : <View>{card}</View>;
 }
 
-const styles = StyleSheet.create({
-  row: { flexDirection: 'row', alignItems: 'stretch', gap: spacing.md },
-  identity: { flex: 1, gap: spacing.xxs, justifyContent: 'center' },
-  avatarWrap: { alignSelf: 'flex-start', marginBottom: spacing.sm },
-  pencil: {
-    position: 'absolute',
-    right: 2,
-    bottom: 2,
-    width: 30,
-    height: 30,
-    borderRadius: 15,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.surfaceHighlight,
-    borderWidth: 2,
-    borderColor: colors.background,
-  },
-  nameRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-  name: { flexShrink: 1 },
-  flag: { fontSize: 22, lineHeight: 28 },
-  rank: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: spacing.xxs,
-    paddingHorizontal: spacing.xs,
-    backgroundColor: 'transparent',
-    borderColor: 'transparent',
-    shadowOpacity: 0,
-    elevation: 0,
-  },
-  eloRow: { flexDirection: 'row', alignItems: 'baseline', gap: spacing.xs },
-  rankBar: { alignSelf: 'stretch', marginTop: spacing.xs },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    row: { flexDirection: 'row', alignItems: 'stretch', gap: spacing.md },
+    identity: { flex: 1, gap: spacing.xxs, justifyContent: 'center' },
+    avatarWrap: { alignSelf: 'flex-start', marginBottom: spacing.sm },
+    pencil: {
+      position: 'absolute',
+      right: 2,
+      bottom: 2,
+      width: 30,
+      height: 30,
+      borderRadius: 15,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: colors.surfaceHighlight,
+      borderWidth: 2,
+      borderColor: colors.background,
+    },
+    nameRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+    name: { flexShrink: 1 },
+    flag: { fontSize: 22, lineHeight: 28 },
+    rank: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: spacing.xxs,
+      paddingHorizontal: spacing.xs,
+      backgroundColor: 'transparent',
+      borderColor: 'transparent',
+      shadowOpacity: 0,
+      elevation: 0,
+    },
+    eloRow: { flexDirection: 'row', alignItems: 'baseline', gap: spacing.xs },
+    rankBar: { alignSelf: 'stretch', marginTop: spacing.xs },
+  }),
+);

@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import { Pressable, StyleSheet, View } from 'react-native';
 
-import { Avatar, Text, colors, radii, spacing } from '@/design-system';
+import { Avatar, Text, colors, radii, spacing, useTheme } from '@/design-system';
 
 import { BotBadge } from '@/features/battle/components/BotBadge';
 
@@ -19,6 +19,7 @@ const RESULT_COLOR = { win: 'success', loss: 'danger', draw: 'textMuted' } as co
 
 /** Una partida terminada. El resultado se nombra con texto, no sólo con color. */
 export function MatchHistoryItem({ match }: { match: MatchHistoryEntry }) {
+  useTheme();
   const resultLabel = match.result ? RESULT_LABELS[match.result] : 'Sin resultado';
   const opponentName = match.opponent?.username ?? 'Jugador eliminado';
   const delta =

@@ -22,7 +22,7 @@ import Svg, { Defs, LinearGradient, Polygon, Stop } from 'react-native-svg';
 
 import type { AchievementFamilyDef } from '@shared/achievements';
 
-import { ProgressBar, Text, colors, radii, spacing } from '@/design-system';
+import { ProgressBar, Text, colors, radii, spacing, useTheme, gradients } from '@/design-system';
 
 import { familyOfAchievement, type FamilyProgress } from '../families';
 
@@ -43,7 +43,8 @@ const ICONS: Record<string, LucideIcon> = {
   gem: Gem,
 };
 
-const LOCKED = ['#3A3566', '#221E42'] as const;
+/** Colores del logro bloqueado (se leen al dibujar: dependen del tema). */
+const lockedColors = () => [gradients.locked[0], gradients.locked[1]] as const;
 
 /** Octógono regular en un viewBox de 100×100. */
 const OCTAGON = Array.from({ length: 8 }, (_, i) => {
@@ -68,9 +69,10 @@ export function FamilyBadge({
   level: number;
   size?: number;
 }) {
+  useTheme();
   const id = useId().replace(/:/g, '');
   const locked = level === 0;
-  const [light, dark] = locked ? LOCKED : family.colors;
+  const [light, dark] = locked ? lockedColors() : family.colors;
   const Icon = locked ? Lock : (ICONS[family.icon] ?? Award);
 
   return (
@@ -124,7 +126,7 @@ export function FamilyBadge({
 export function TierBadge({ id, size = 44 }: { id: string; size?: number }) {
   const family = familyOfAchievement(id);
   if (!family)
-    return <FamilyBadge family={{ icon: 'award', colors: LOCKED }} level={1} size={size} />;
+    return <FamilyBadge family={{ icon: 'award', colors: lockedColors() }} level={1} size={size} />;
   const level = family.tiers.findIndex((t) => t.id === id) + 1;
   return <FamilyBadge family={family} level={level} size={size} />;
 }
@@ -137,6 +139,7 @@ export function FamilyRow({
   progress: FamilyProgress;
   rankedAvailable: boolean;
 }) {
+  useTheme();
   const { family, level, maxLevel, next, value, ratio, current } = progress;
   const pendingRanked = family.category === 'competitive' && !rankedAvailable && level === 0;
 

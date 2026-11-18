@@ -2,7 +2,7 @@ import { Check, UserPlus } from 'lucide-react-native';
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { Button, Text, colors, spacing } from '@/design-system';
+import { Button, Text, colors, spacing, useTheme } from '@/design-system';
 import { FormMessage } from '@/features/auth/FormMessage';
 import { toUserMessage } from '@/lib/errors';
 
@@ -23,6 +23,7 @@ export function FriendButton({
   username: string;
   state: FriendshipState;
 }) {
+  useTheme();
   const send = useSendFriendRequest();
   const respond = useRespondFriendRequest();
   const remove = useRemoveFriend();

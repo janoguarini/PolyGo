@@ -3,7 +3,7 @@ import { BellRing, X } from 'lucide-react-native';
 import { useEffect, useState } from 'react';
 import { Linking, Pressable, StyleSheet, View } from 'react-native';
 
-import { Button, Card, Text, colors, spacing } from '@/design-system';
+import { Button, Card, Text, colors, spacing, useTheme } from '@/design-system';
 import { FormMessage } from '@/features/auth/FormMessage';
 import { deviceStorage } from '@/lib/secureStorage';
 import { toUserMessage } from '@/lib/errors';
@@ -32,6 +32,7 @@ export function useEnablePush() {
  * (no vuelve a aparecer) y desaparece sola si el permiso ya está concedido.
  */
 export function PushPromptCard() {
+  useTheme();
   const permission = usePushPermission();
   const enable = useEnablePush();
   const [dismissed, setDismissed] = useState<boolean | null>(null);

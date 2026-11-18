@@ -4,7 +4,7 @@ import { Pressable, StyleSheet, View } from 'react-native';
 
 import { RARITY_LABEL, cosmeticSourceLabel, type CosmeticItem } from '@shared/cosmetics';
 
-import { Button, PolyCoin, Text, colors, radii, spacing } from '@/design-system';
+import { Button, PolyCoin, Text, colors, radii, spacing, themedStyles } from '@/design-system';
 import { FormMessage } from '@/features/auth/FormMessage';
 import { toUserMessage } from '@/lib/errors';
 import { playSound } from '@/lib/sounds';
@@ -32,6 +32,7 @@ export function ItemTile({
   equipped: boolean;
   onPress: () => void;
 }) {
+  const styles = useStyles();
   const rarity = RARITY_COLORS[item.rarity];
   return (
     <Pressable
@@ -97,6 +98,7 @@ export function NoneTile({
   equipped: boolean;
   onPress: () => void;
 }) {
+  const styles = useStyles();
   return (
     <Pressable
       accessibilityRole="button"
@@ -135,6 +137,7 @@ export function BuyCosmeticButton({
   balance: number;
   onBought?: () => void;
 }) {
+  const styles = useStyles();
   const buy = useBuyCosmetic();
   if (item.price === null) {
     return (
@@ -174,44 +177,46 @@ export function BuyCosmeticButton({
   );
 }
 
-const styles = StyleSheet.create({
-  tile: {
-    width: '31.5%',
-    alignItems: 'center',
-    gap: spacing.xs,
-    paddingTop: spacing.md,
-    paddingBottom: spacing.sm,
-    paddingHorizontal: spacing.xs,
-    borderRadius: radii.lg,
-    borderWidth: 2,
-    backgroundColor: colors.surface,
-    overflow: 'hidden',
-    minHeight: 120,
-  },
-  tileSelected: { backgroundColor: colors.surfaceRaised },
-  rarityBar: { position: 'absolute', top: 0, left: 0, right: 0, height: 3 },
-  swatch: { width: 64, height: 64, padding: 0, borderRadius: radii.md },
-  none: {
-    width: 46,
-    height: 46,
-    borderRadius: 23,
-    borderWidth: 2,
-    borderStyle: 'dashed',
-    borderColor: colors.borderStrong,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  price: { flexDirection: 'row', alignItems: 'center', gap: spacing.xxs },
-  tabular: { fontVariant: ['tabular-nums'] },
-  pressed: { opacity: 0.8 },
-  buy: { gap: spacing.xs },
-  locked: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: spacing.sm,
-    minHeight: 50,
-    borderRadius: radii.lg,
-    backgroundColor: colors.surfaceRaised,
-  },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    tile: {
+      width: '31.5%',
+      alignItems: 'center',
+      gap: spacing.xs,
+      paddingTop: spacing.md,
+      paddingBottom: spacing.sm,
+      paddingHorizontal: spacing.xs,
+      borderRadius: radii.lg,
+      borderWidth: 2,
+      backgroundColor: colors.surface,
+      overflow: 'hidden',
+      minHeight: 120,
+    },
+    tileSelected: { backgroundColor: colors.surfaceRaised },
+    rarityBar: { position: 'absolute', top: 0, left: 0, right: 0, height: 3 },
+    swatch: { width: 64, height: 64, padding: 0, borderRadius: radii.md },
+    none: {
+      width: 46,
+      height: 46,
+      borderRadius: 23,
+      borderWidth: 2,
+      borderStyle: 'dashed',
+      borderColor: colors.borderStrong,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    price: { flexDirection: 'row', alignItems: 'center', gap: spacing.xxs },
+    tabular: { fontVariant: ['tabular-nums'] },
+    pressed: { opacity: 0.8 },
+    buy: { gap: spacing.xs },
+    locked: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: spacing.sm,
+      minHeight: 50,
+      borderRadius: radii.lg,
+      backgroundColor: colors.surfaceRaised,
+    },
+  }),
+);

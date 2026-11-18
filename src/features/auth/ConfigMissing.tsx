@@ -1,10 +1,11 @@
 import { Settings } from 'lucide-react-native';
 import { StyleSheet, View } from 'react-native';
 
-import { Card, Screen, Text, colors, spacing } from '@/design-system';
+import { Card, Screen, Text, colors, spacing, useTheme } from '@/design-system';
 
 /** Se muestra si faltan variables de entorno: nunca se finge un backend que no existe. */
 export function ConfigMissing({ missing }: { missing: string[] }) {
+  useTheme();
   return (
     <Screen edges={['top', 'bottom']}>
       <View style={styles.header}>

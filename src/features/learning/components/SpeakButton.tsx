@@ -1,7 +1,7 @@
 import { Turtle, Volume2 } from 'lucide-react-native';
 import { Pressable, StyleSheet } from 'react-native';
 
-import { MIN_TOUCH, colors, radii } from '@/design-system';
+import { MIN_TOUCH, colors, radii, themedStyles } from '@/design-system';
 
 import { speak } from '../speech';
 
@@ -15,6 +15,7 @@ export function SpeakButton({
   size?: 'md' | 'lg';
   slow?: boolean;
 }) {
+  const styles = useStyles();
   const dimension = size === 'lg' ? 88 : MIN_TOUCH;
   const Icon = slow ? Turtle : Volume2;
   return (
@@ -36,13 +37,15 @@ export function SpeakButton({
   );
 }
 
-const styles = StyleSheet.create({
-  button: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.surfaceRaised,
-    borderWidth: 1,
-    borderColor: colors.borderStrong,
-  },
-  pressed: { opacity: 0.8, transform: [{ scale: 0.96 }] },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    button: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: colors.surfaceRaised,
+      borderWidth: 1,
+      borderColor: colors.borderStrong,
+    },
+    pressed: { opacity: 0.8, transform: [{ scale: 0.96 }] },
+  }),
+);

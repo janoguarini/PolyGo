@@ -15,6 +15,8 @@ import {
   elevation,
   radii,
   spacing,
+  themedStyles,
+  gradients,
 } from '@/design-system';
 import {
   DEFAULT_GAME_MODE,
@@ -32,6 +34,7 @@ import { presenceLabel } from '@/features/friends/format';
  * Params: friend (id) y friendName; sin friend, el desafío es con código.
  */
 export default function ChallengeFriendScreen() {
+  const styles = useStyles();
   const params = useLocalSearchParams<{ friend?: string; friendName?: string }>();
   const friends = useFriends();
   const [mode, setMode] = useState<GameModeId>(DEFAULT_GAME_MODE);
@@ -147,6 +150,7 @@ function ModeCard({
   selected: boolean;
   onPress: () => void;
 }) {
+  const styles = useStyles();
   return (
     <Pressable
       accessibilityRole="radio"
@@ -157,7 +161,9 @@ function ModeCard({
       style={({ pressed }) => pressed && styles.pressed}
     >
       <LinearGradient
-        colors={selected ? ['#3F2391', '#24145C'] : [colors.surface, colors.surface]}
+        colors={
+          selected ? [gradients.brand[0], gradients.brand[1]] : [colors.surface, colors.surface]
+        }
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={[styles.mode, selected && styles.modeSelected]}
@@ -187,58 +193,60 @@ function ModeCard({
   );
 }
 
-const styles = StyleSheet.create({
-  flex: { flex: 1, gap: spacing.xxs },
-  rival: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  elo: { alignItems: 'center', gap: spacing.xxs },
-  overline: { letterSpacing: 2 },
-  modes: { gap: spacing.md },
-  mode: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.md,
-    padding: spacing.lg,
-    borderRadius: radii.xl,
-    borderWidth: 1.5,
-    borderColor: colors.border,
-  },
-  modeSelected: { borderColor: colors.primaryBright, ...elevation.glow },
-  modeIcon: {
-    width: 52,
-    height: 52,
-    borderRadius: radii.md,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'rgba(245, 197, 66, 0.12)',
-    borderWidth: 1,
-    borderColor: 'rgba(245, 197, 66, 0.35)',
-  },
-  duration: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.xxs,
-    marginTop: spacing.xxs,
-  },
-  radio: {
-    width: 26,
-    height: 26,
-    borderRadius: 13,
-    borderWidth: 2,
-    borderColor: colors.borderStrong,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  radioOn: { backgroundColor: colors.primary, borderColor: colors.primary },
-  soon: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: spacing.sm,
-    padding: spacing.md,
-    borderRadius: radii.xl,
-    borderWidth: 1,
-    borderStyle: 'dashed',
-    borderColor: colors.borderStrong,
-  },
-  pressed: { opacity: 0.85 },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    flex: { flex: 1, gap: spacing.xxs },
+    rival: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+    elo: { alignItems: 'center', gap: spacing.xxs },
+    overline: { letterSpacing: 2 },
+    modes: { gap: spacing.md },
+    mode: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.md,
+      padding: spacing.lg,
+      borderRadius: radii.xl,
+      borderWidth: 1.5,
+      borderColor: colors.border,
+    },
+    modeSelected: { borderColor: colors.primaryBright, ...elevation.glow },
+    modeIcon: {
+      width: 52,
+      height: 52,
+      borderRadius: radii.md,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: 'rgba(245, 197, 66, 0.12)',
+      borderWidth: 1,
+      borderColor: 'rgba(245, 197, 66, 0.35)',
+    },
+    duration: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.xxs,
+      marginTop: spacing.xxs,
+    },
+    radio: {
+      width: 26,
+      height: 26,
+      borderRadius: 13,
+      borderWidth: 2,
+      borderColor: colors.borderStrong,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    radioOn: { backgroundColor: colors.primary, borderColor: colors.primary },
+    soon: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: spacing.sm,
+      padding: spacing.md,
+      borderRadius: radii.xl,
+      borderWidth: 1,
+      borderStyle: 'dashed',
+      borderColor: colors.borderStrong,
+    },
+    pressed: { opacity: 0.85 },
+  }),
+);

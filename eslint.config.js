@@ -5,6 +5,7 @@ const expoConfig = require('eslint-config-expo/flat');
 module.exports = defineConfig([
   expoConfig,
   {
-    ignores: ['dist/*', 'server/**', 'supabase/**', 'coverage/**'],
+    // tools/al-sim4: simulador de investigación (AL18), copiado tal cual; no es código de la app.
+    ignores: ['dist/*', 'server/**', 'supabase/**', 'coverage/**', 'tools/al-sim4/**'],
   },
 ]);

@@ -14,6 +14,7 @@ import {
   colors,
   radii,
   spacing,
+  themedStyles,
 } from '@/design-system';
 import { FormMessage } from '@/features/auth/FormMessage';
 import { useFriends, type FriendEntry } from '@/features/friends/api';
@@ -35,6 +36,7 @@ const FEEDBACK_MS = 4000;
  * buscás, sólo los resultados.
  */
 export default function AddFriendsScreen() {
+  const styles = useStyles();
   const friends = useFriends();
   const [query, setQuery] = useState('');
   const [feedback, setFeedback] = useState<Feedback | null>(null);
@@ -132,6 +134,7 @@ function RequestSection({
   highlight?: boolean;
   renderAction: (f: FriendEntry) => ReactNode;
 }) {
+  const styles = useStyles();
   const count = requests.length;
   return (
     <View style={styles.section}>
@@ -165,33 +168,35 @@ function RequestSection({
   );
 }
 
-const styles = StyleSheet.create({
-  flex: { flex: 1 },
-  sections: { gap: spacing.xxl },
-  section: { gap: spacing.sm },
-  sectionHeader: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-  count: {
-    minWidth: 24,
-    height: 24,
-    paddingHorizontal: spacing.xs,
-    borderRadius: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.surfaceHighlight,
-  },
-  countHighlight: { backgroundColor: colors.primary },
-  bold: { fontWeight: '700' },
-  empty: {
-    paddingVertical: spacing.md,
-    paddingHorizontal: spacing.lg,
-    borderRadius: radii.lg,
-    borderWidth: 1,
-    borderStyle: 'dashed',
-    borderColor: colors.borderStrong,
-    alignItems: 'center',
-  },
-  request: { paddingVertical: spacing.md, borderColor: 'rgba(167, 139, 250, 0.2)' },
-  requestHighlight: { borderColor: 'rgba(167, 139, 250, 0.5)' },
-  note: { flexDirection: 'row', gap: spacing.sm, paddingHorizontal: spacing.xs },
-  noteIcon: { marginTop: 1 },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    flex: { flex: 1 },
+    sections: { gap: spacing.xxl },
+    section: { gap: spacing.sm },
+    sectionHeader: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+    count: {
+      minWidth: 24,
+      height: 24,
+      paddingHorizontal: spacing.xs,
+      borderRadius: 12,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: colors.surfaceHighlight,
+    },
+    countHighlight: { backgroundColor: colors.primary },
+    bold: { fontWeight: '700' },
+    empty: {
+      paddingVertical: spacing.md,
+      paddingHorizontal: spacing.lg,
+      borderRadius: radii.lg,
+      borderWidth: 1,
+      borderStyle: 'dashed',
+      borderColor: colors.borderStrong,
+      alignItems: 'center',
+    },
+    request: { paddingVertical: spacing.md, borderColor: 'rgba(167, 139, 250, 0.2)' },
+    requestHighlight: { borderColor: 'rgba(167, 139, 250, 0.5)' },
+    note: { flexDirection: 'row', gap: spacing.sm, paddingHorizontal: spacing.xs },
+    noteIcon: { marginTop: 1 },
+  }),
+);

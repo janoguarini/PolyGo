@@ -28,6 +28,7 @@ import {
   colors,
   gradients,
   spacing,
+  useTheme,
 } from '@/design-system';
 import { useEnergy } from '@/features/plus/api';
 import { EnergyPanel } from '@/features/plus/components/Energy';
@@ -41,6 +42,7 @@ const REGEN_HOURS = ENERGY.regenSeconds / 3600;
  * ventajas en ranked. La compra todavía no está integrada y la pantalla lo dice tal cual.
  */
 export default function PlusScreen() {
+  useTheme();
   const energy = useEnergy();
   const offer = useQuery({ queryKey: ['plus', 'offer'], queryFn: getPlusOffer });
 
@@ -163,6 +165,7 @@ function Benefit(props: { icon: ReactNode; title: string; text: string }) {
 }
 
 function Free({ icon, children }: { icon: ReactNode; children: ReactNode }) {
+  useTheme();
   return (
     <View style={styles.free}>
       <Check color={colors.success} size={18} />

@@ -6,7 +6,17 @@ import Animated, { ZoomIn } from 'react-native-reanimated';
 import { MAX_WRITTEN_ANSWER_LENGTH, type QuestionView } from '@shared/protocol';
 import { streakBonus, streakLevel } from '@shared/wordRush';
 
-import { Button, Card, MIN_TOUCH, Text, TextField, colors, radii, spacing } from '@/design-system';
+import {
+  Button,
+  Card,
+  MIN_TOUCH,
+  Text,
+  TextField,
+  colors,
+  radii,
+  spacing,
+  themedStyles,
+} from '@/design-system';
 import { TargetText, useSessionLanguage } from '@/features/learning/readings';
 import { speak, stopSpeaking } from '@/features/learning/speech';
 
@@ -35,13 +45,16 @@ function instructions(inName: string) {
 }
 
 /** Colores de la racha por escalón (3, 5 y 8 seguidas). */
-const STREAK_COLORS = [colors.streak, colors.streak, colors.danger, colors.gold] as const;
+/** Color por nivel de racha (se lee al dibujar: depende del tema). */
+const streakColor = (level: number) =>
+  [colors.streak, colors.streak, colors.danger, colors.gold][level] ?? colors.streak;
 
 /**
  * Enunciado (texto, audio o imagen) y 4 opciones; en las preguntas para escribir (desde Oro), un
  * campo de texto. La correcta sólo se conoce al responder.
  */
 export function QuestionCard({ question, feedback, streak, disabled, onAnswer }: Props) {
+  const styles = useStyles();
   const { language } = useSessionLanguage();
   const INSTRUCTIONS = instructions(language.inName);
   const shown = feedback?.questionIndex === question.index ? feedback : null;
@@ -59,12 +72,12 @@ export function QuestionCard({ question, feedback, streak, disabled, onAnswer }:
 
   return (
     <View style={styles.wrap}>
-      <Card style={[styles.prompt, level > 0 && { borderColor: STREAK_COLORS[level] }]}>
+      <Card style={[styles.prompt, level > 0 && { borderColor: streakColor(level) }]}>
         {level > 0 ? (
           <Animated.View
             key={pulse}
             entering={ZoomIn.springify().damping(12)}
-            style={[styles.streak, { backgroundColor: STREAK_COLORS[level] }]}
+            style={[styles.streak, { backgroundColor: streakColor(level) }]}
             accessible
             accessibilityLabel={`Racha de ${streak} correctas: la próxima suma ${streakBonus(streak + 1)} extra`}
           >
@@ -167,7 +180,7 @@ export function QuestionCard({ question, feedback, streak, disabled, onAnswer }:
                 <TargetText
                   variant="heading"
                   align="center"
-                  color={isCorrect || isWrongChoice ? 'textStrong' : 'text'}
+                  color={isCorrect || isWrongChoice ? 'onPrimary' : 'text'}
                 >
                   {option}
                 </TargetText>
@@ -188,6 +201,7 @@ function WriteAnswer({
   disabled: boolean;
   onSubmit: (text: string) => void;
 }) {
+  const styles = useStyles();
   const [text, setText] = useState('');
   const submit = () => {
     if (text.trim() && !disabled) onSubmit(text);
@@ -216,49 +230,56 @@ function WriteAnswer({
   );
 }
 
-const styles = StyleSheet.create({
-  wrap: { gap: spacing.lg },
-  prompt: { alignItems: 'center', gap: spacing.sm, paddingVertical: spacing.xl, borderWidth: 1.5 },
-  hidden: { opacity: 0 },
-  streak: {
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.xxs,
-    borderRadius: radii.pill,
-  },
-  audio: { alignItems: 'center', gap: spacing.sm },
-  speakers: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  slow: {
-    width: MIN_TOUCH,
-    height: MIN_TOUCH,
-    borderRadius: MIN_TOUCH / 2,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.surfaceRaised,
-    borderWidth: 1,
-    borderColor: colors.borderStrong,
-  },
-  speaker: {
-    width: 88,
-    height: 88,
-    borderRadius: 44,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.primary,
-  },
-  emoji: { fontSize: 84, lineHeight: 100, textAlign: 'center' },
-  options: { gap: spacing.md },
-  writeInput: { fontSize: 22, textAlign: 'center' },
-  option: {
-    minHeight: MIN_TOUCH + 12,
-    justifyContent: 'center',
-    paddingHorizontal: spacing.lg,
-    paddingVertical: spacing.md,
-    borderRadius: radii.lg,
-    borderWidth: 1.5,
-    borderColor: colors.border,
-    backgroundColor: colors.surface,
-  },
-  correct: { borderColor: colors.success, backgroundColor: colors.successDeep },
-  wrong: { borderColor: colors.danger, backgroundColor: colors.dangerDeep },
-  pressed: { transform: [{ scale: 0.98 }], backgroundColor: colors.surfaceRaised },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    wrap: { gap: spacing.lg },
+    prompt: {
+      alignItems: 'center',
+      gap: spacing.sm,
+      paddingVertical: spacing.xl,
+      borderWidth: 1.5,
+    },
+    hidden: { opacity: 0 },
+    streak: {
+      paddingHorizontal: spacing.md,
+      paddingVertical: spacing.xxs,
+      borderRadius: radii.pill,
+    },
+    audio: { alignItems: 'center', gap: spacing.sm },
+    speakers: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+    slow: {
+      width: MIN_TOUCH,
+      height: MIN_TOUCH,
+      borderRadius: MIN_TOUCH / 2,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: colors.surfaceRaised,
+      borderWidth: 1,
+      borderColor: colors.borderStrong,
+    },
+    speaker: {
+      width: 88,
+      height: 88,
+      borderRadius: 44,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: colors.primary,
+    },
+    emoji: { fontSize: 84, lineHeight: 100, textAlign: 'center' },
+    options: { gap: spacing.md },
+    writeInput: { fontSize: 22, textAlign: 'center' },
+    option: {
+      minHeight: MIN_TOUCH + 12,
+      justifyContent: 'center',
+      paddingHorizontal: spacing.lg,
+      paddingVertical: spacing.md,
+      borderRadius: radii.lg,
+      borderWidth: 1.5,
+      borderColor: colors.border,
+      backgroundColor: colors.surface,
+    },
+    correct: { borderColor: colors.success, backgroundColor: colors.successDeep },
+    wrong: { borderColor: colors.danger, backgroundColor: colors.dangerDeep },
+    pressed: { transform: [{ scale: 0.98 }], backgroundColor: colors.surfaceRaised },
+  }),
+);

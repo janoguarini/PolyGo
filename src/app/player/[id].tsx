@@ -2,38 +2,38 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { Ban, Lock, Star, UserX } from 'lucide-react-native';
 import { StyleSheet, View } from 'react-native';
 
-import { flagEmoji } from '@shared/profile';
-import { getRank, isPlaced } from '@shared/ranking';
-
 import {
   Card,
   EmptyState,
   ErrorState,
   LoadingState,
-  RankEmblemForRating,
   Screen,
   ScreenHeader,
   StatTile,
   Text,
   colors,
   spacing,
+  useTheme,
 } from '@/design-system';
 import { useAuth } from '@/features/auth/AuthProvider';
-import { FramedAvatar } from '@/features/cosmetics/FramedAvatar';
-import { ProfileBackdrop } from '@/features/cosmetics/ProfileBackdrop';
 import { BlockUserButton } from '@/features/blocks/BlockUserButton';
 import { useBlockedIds, useUnblockUser } from '@/features/blocks/api';
 import { FriendButton } from '@/features/friends/FriendButton';
 import { FamilyBadge } from '@/features/profile/components/AchievementBadge';
+import { ProfileHeader } from '@/features/profile/components/ProfileHeader';
 import { ReportPhotoButton } from '@/features/profile/components/ReportPhotoButton';
 import { familyLevels } from '@/features/profile/families';
 import { usePublicProfile } from '@/features/profile/hooks';
-import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 
 const joinedFormat = new Intl.DateTimeFormat('es', { month: 'long', year: 'numeric' });
 
-/** Perfil de otro jugador. La función del servidor decide qué mostrar según su visibilidad. */
+/**
+ * Perfil de otro jugador, con el mismo formato que el propio: encabezado con avatar, nombre y rango
+ * sobre su fondo, y debajo secciones. La función del servidor decide qué mostrar según su
+ * visibilidad.
+ */
 export default function PlayerScreen() {
+  useTheme();
   const { id } = useLocalSearchParams<{ id: string }>();
   const player = usePublicProfile(id);
   const { session } = useAuth();
@@ -70,29 +70,27 @@ export default function PlayerScreen() {
       </Screen>
     );
   }
-  const rating = p.rating;
-  const placement = p.stats ? !isPlaced(p.stats) : true;
   const stats = p.stats;
   const games = stats ? stats.wins + stats.losses + stats.draws : 0;
-  const flag = flagEmoji(p.region);
   const families = familyLevels(p.achievements?.map((a) => a.id) ?? []);
+  const isOther = p.id !== session?.user.id;
 
   return (
     <Screen onRefresh={() => void player.refetch()} refreshing={player.isRefetching}>
-      <ScreenHeader title={p.display_name ?? p.username} onBack={back} />
+      <ScreenHeader title="Perfil" onBack={back} />
 
-      <ProfileBackdrop backgroundId={p.background_id} style={styles.identity}>
-        <FramedAvatar
-          avatarId={p.avatar_id}
-          photoUrl={avatarPhotoUrl(p.avatar_path)}
-          size={80}
-          frameId={p.frame_id}
-        />
-        <Text color="textMuted">
-          {flag ? `${flag} ` : ''}@{p.username} · {p.public_code}
+      <ProfileHeader
+        profile={p}
+        // Sin estadísticas (perfil privado) no se sabe si ganó alguna: se muestra sin posicionar.
+        rating={p.rating ? { rating: p.rating.rating, wins: stats?.wins ?? 0 } : null}
+        readonly
+      />
+
+      <View style={styles.meta}>
+        <Text variant="caption" align="center">
+          {p.public_code} · Desde {joinedFormat.format(new Date(p.created_at))}
         </Text>
-        <Text variant="caption">Desde {joinedFormat.format(new Date(p.created_at))}</Text>
-        {p.id !== session?.user.id ? (
+        {isOther ? (
           <View style={styles.actions}>
             <ReportPhotoButton
               userId={p.id}
@@ -102,26 +100,10 @@ export default function PlayerScreen() {
             <BlockUserButton userId={p.id} username={p.username} />
           </View>
         ) : null}
-      </ProfileBackdrop>
+      </View>
 
       {p.friendship && p.friendship !== 'self' ? (
         <FriendButton userId={p.id} username={p.username} state={p.friendship} />
-      ) : null}
-
-      {rating ? (
-        <Card style={styles.rankRow}>
-          <RankEmblemForRating rating={rating.rating} size={56} dimmed={placement} />
-          <View style={styles.flex}>
-            <Text variant="bodyStrong">
-              {placement ? 'Sin posicionar' : getRank(rating.rating).label}
-            </Text>
-            <Text variant="caption">
-              {placement
-                ? 'Todavía no ganó una ranked'
-                : `${rating.rating} ELO${stats ? ` · máximo ${stats.peak_rating}` : ''}`}
-            </Text>
-          </View>
-        </Card>
       ) : null}
 
       {!p.is_public ? (
@@ -134,45 +116,54 @@ export default function PlayerScreen() {
       ) : (
         <>
           {stats ? (
-            <View style={styles.grid}>
-              <StatTile label="Partidas" value={String(games)} />
-              <StatTile
-                label="Victorias"
-                value={games > 0 ? `${Math.round((stats.wins / games) * 100)}%` : '—'}
-                hint={`${stats.wins}V · ${stats.losses}D · ${stats.draws}E`}
-              />
-              <StatTile
-                label="Mejor racha"
-                value={String(stats.best_win_streak)}
-                hint="victorias"
-              />
-            </View>
+            <>
+              <SectionHeader title="Competitivo" />
+              <View style={styles.grid}>
+                <StatTile label="Partidas" value={String(games)} />
+                <StatTile
+                  label="Victorias"
+                  value={games > 0 ? `${Math.round((stats.wins / games) * 100)}%` : '—'}
+                  hint={`${stats.wins}V · ${stats.losses}D · ${stats.draws}E`}
+                />
+                <StatTile
+                  label="Mejor racha"
+                  value={String(stats.best_win_streak)}
+                  hint="victorias"
+                />
+                <StatTile label="ELO máximo" value={String(stats.peak_rating)} />
+              </View>
+            </>
           ) : null}
+
           {p.learning ? (
-            <View style={styles.grid}>
-              <StatTile
-                label="Estrellas"
-                value={String(p.learning.stars_earned ?? 0)}
-                icon={<Star color={colors.gold} fill={colors.gold} size={18} />}
-                hint={`${p.learning.golden_lessons ?? 0} doradas`}
-              />
-              <StatTile label="Lecciones" value={String(p.learning.lessons_completed)} />
-              <StatTile
-                label="Dominadas"
-                value={String(p.learning.words_mastered)}
-                hint="palabras"
-              />
-              <StatTile
-                label="Racha récord"
-                value={`${p.learning.best_streak_days} d`}
-                hint="días de estudio"
-              />
-            </View>
+            <>
+              <SectionHeader title="Aprendizaje" />
+              <View style={styles.grid}>
+                <StatTile
+                  label="Estrellas"
+                  value={String(p.learning.stars_earned ?? 0)}
+                  icon={<Star color={colors.gold} fill={colors.gold} size={18} />}
+                  hint={`${p.learning.golden_lessons ?? 0} doradas`}
+                />
+                <StatTile label="Lecciones" value={String(p.learning.lessons_completed)} />
+                {typeof p.learning.concepts_mastered === 'number' ? (
+                  <StatTile
+                    label="Dominadas"
+                    value={String(p.learning.concepts_mastered)}
+                    hint="según su evidencia"
+                  />
+                ) : null}
+                <StatTile
+                  label="Racha récord"
+                  value={`${p.learning.best_streak_days} d`}
+                  hint="días de estudio"
+                />
+              </View>
+            </>
           ) : null}
+
+          <SectionHeader title={`Logros · ${families.reduce((n, f) => n + f.level, 0)} niveles`} />
           <Card style={styles.gap}>
-            <Text variant="overline">
-              LOGROS · {families.reduce((n, f) => n + f.level, 0)} NIVELES
-            </Text>
             {families.length > 0 ? (
               <View style={styles.icons}>
                 {families.map(({ family, level, maxLevel }) => (
@@ -199,14 +190,23 @@ export default function PlayerScreen() {
   );
 }
 
+/** Título de sección, igual que en el perfil propio. */
+function SectionHeader({ title }: { title: string }) {
+  return (
+    <View style={styles.section}>
+      <Text variant="heading">{title}</Text>
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
-  identity: { alignItems: 'center', gap: spacing.xs },
+  meta: { alignItems: 'center', gap: spacing.xs },
   actions: { flexDirection: 'row', justifyContent: 'center', gap: spacing.xl },
-  rankRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.lg },
   private: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   flex: { flex: 1, gap: spacing.xxs },
   grid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
   gap: { gap: spacing.sm },
   icons: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
   badge: { width: 72, alignItems: 'center', gap: spacing.xs },
+  section: { marginTop: spacing.sm },
 });

@@ -1,3 +1,4 @@
+import { useTheme } from '../theme';
 import { AlertTriangle, Inbox, WifiOff } from 'lucide-react-native';
 import type { ReactNode } from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
@@ -7,6 +8,7 @@ import { Button } from './Button';
 import { Text } from './Text';
 
 export function LoadingState({ label = 'Cargando…' }: { label?: string }) {
+  useTheme();
   return (
     <View style={styles.center} accessibilityLiveRegion="polite" accessibilityLabel={label}>
       <ActivityIndicator size="large" color={colors.primaryBright} />
@@ -24,6 +26,7 @@ interface MessageStateProps {
 }
 
 export function EmptyState({ title, message, actionLabel, onAction, icon }: MessageStateProps) {
+  useTheme();
   return (
     <View style={styles.center}>
       {icon ?? <Inbox color={colors.textMuted} size={36} />}
@@ -53,6 +56,7 @@ export function ErrorState({
   onRetry?: () => void;
   offline?: boolean;
 }) {
+  useTheme();
   return (
     <EmptyState
       icon={

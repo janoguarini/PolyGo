@@ -1,12 +1,13 @@
 import { router } from 'expo-router';
 import { Pressable, StyleSheet, type StyleProp, type ViewStyle } from 'react-native';
 
-import { PolyCoin, Text, colors, radii, spacing } from '@/design-system';
+import { PolyCoin, Text, colors, radii, spacing, themedStyles } from '@/design-system';
 
 import { usePolys } from './api';
 
 /** Saldo de Polys; al tocarlo abre la tienda. */
 export function PolysChip({ style }: { style?: StyleProp<ViewStyle> } = {}) {
+  const styles = useStyles();
   const polys = usePolys();
   const balance = polys.data?.balance;
   return (
@@ -26,18 +27,20 @@ export function PolysChip({ style }: { style?: StyleProp<ViewStyle> } = {}) {
   );
 }
 
-const styles = StyleSheet.create({
-  chip: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.xs,
-    paddingVertical: spacing.xxs,
-    paddingHorizontal: spacing.sm,
-    borderRadius: radii.pill,
-    backgroundColor: colors.surfaceRaised,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  amount: { fontVariant: ['tabular-nums'] },
-  pressed: { opacity: 0.75 },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    chip: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.xs,
+      paddingVertical: spacing.xxs,
+      paddingHorizontal: spacing.sm,
+      borderRadius: radii.pill,
+      backgroundColor: colors.surfaceRaised,
+      borderWidth: 1,
+      borderColor: colors.border,
+    },
+    amount: { fontVariant: ['tabular-nums'] },
+    pressed: { opacity: 0.75 },
+  }),
+);

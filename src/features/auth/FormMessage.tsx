@@ -1,8 +1,9 @@
 import { StyleSheet, View } from 'react-native';
 
-import { Text, colors, radii, spacing } from '@/design-system';
+import { Text, colors, radii, spacing, themedStyles } from '@/design-system';
 
 export function FormMessage({ tone, message }: { tone: 'error' | 'success'; message: string }) {
+  const styles = useStyles();
   return (
     <View
       accessibilityLiveRegion="polite"
@@ -16,8 +17,10 @@ export function FormMessage({ tone, message }: { tone: 'error' | 'success'; mess
   );
 }
 
-const styles = StyleSheet.create({
-  box: { padding: spacing.md, borderRadius: radii.md, borderWidth: 1 },
-  error: { borderColor: colors.dangerStrong, backgroundColor: 'rgba(239,68,68,0.08)' },
-  success: { borderColor: colors.successStrong, backgroundColor: 'rgba(16,185,129,0.08)' },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    box: { padding: spacing.md, borderRadius: radii.md, borderWidth: 1 },
+    error: { borderColor: colors.dangerStrong, backgroundColor: 'rgba(239,68,68,0.08)' },
+    success: { borderColor: colors.successStrong, backgroundColor: 'rgba(16,185,129,0.08)' },
+  }),
+);

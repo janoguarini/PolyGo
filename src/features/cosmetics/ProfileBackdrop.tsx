@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import { StyleSheet, type StyleProp, type ViewStyle } from 'react-native';
 import Svg, { Circle, Line, Path } from 'react-native-svg';
 
-import { colors, radii, spacing } from '@/design-system';
+import { colors, radii, spacing, themedStyles } from '@/design-system';
 
 import { DEFAULT_BACKGROUND, backgroundStyle, type BackgroundStyle } from './visuals';
 
@@ -37,6 +37,7 @@ export function ProfileBackdrop({
   children: ReactNode;
   style?: StyleProp<ViewStyle>;
 }) {
+  const styles = useStyles();
   const custom = backgroundStyle(backgroundId);
   const bg = custom ?? DEFAULT_BACKGROUND;
   return (
@@ -107,13 +108,15 @@ export function BackdropPattern({ bg }: { bg: BackgroundStyle }) {
   );
 }
 
-const styles = StyleSheet.create({
-  card: {
-    borderRadius: radii.xl,
-    padding: spacing.md,
-    borderWidth: 1,
-    borderColor: colors.border,
-    overflow: 'hidden',
-  },
-  defaultCard: { borderColor: 'rgba(167, 139, 250, 0.45)' },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    card: {
+      borderRadius: radii.xl,
+      padding: spacing.md,
+      borderWidth: 1,
+      borderColor: colors.border,
+      overflow: 'hidden',
+    },
+    defaultCard: { borderColor: 'rgba(167, 139, 250, 0.45)' },
+  }),
+);

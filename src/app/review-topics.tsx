@@ -14,6 +14,7 @@ import {
   Text,
   colors,
   spacing,
+  useTheme,
 } from '@/design-system';
 import { useCurriculum, useMyWords } from '@/features/learning/hooks';
 import { useEnergy } from '@/features/plus/api';
@@ -25,6 +26,7 @@ import { topicSummaries, type TopicSummary } from '@/features/plus/topicReview';
  * Se guarda como repaso espaciado y no usa energía.
  */
 export default function ReviewTopicsScreen() {
+  useTheme();
   const energy = useEnergy();
   const words = useMyWords();
   const curriculum = useCurriculum();
@@ -113,6 +115,7 @@ export default function ReviewTopicsScreen() {
 }
 
 function TopicCard({ topic }: { topic: TopicSummary }) {
+  useTheme();
   const parts = [`${topic.studied} ${topic.studied === 1 ? 'palabra' : 'palabras'}`];
   if (topic.due > 0) parts.push(`${topic.due} para repasar`);
   if (topic.withMistakes > 0) parts.push(`${topic.withMistakes} con errores`);

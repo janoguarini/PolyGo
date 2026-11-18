@@ -17,7 +17,15 @@ import Animated, {
 
 import { getRank, type RankInfo } from '@shared/ranking';
 
-import { Card, RankEmblemForRating, Text, colors, gradients, spacing } from '@/design-system';
+import {
+  Card,
+  RankEmblemForRating,
+  Text,
+  colors,
+  gradients,
+  spacing,
+  themedStyles,
+} from '@/design-system';
 import { foxDefeat, foxVictory } from '@/design-system/imageData.generated';
 
 // Incrustadas en el bundle (scripts/build-image-data.ts): aparecen al instante.
@@ -27,8 +35,13 @@ const FOX_LABEL = {
   loss: 'El zorro de Polygo, triste',
 };
 /** Color de la pantalla detrás del zorro: los bordes de la foto se funden hacia él. */
-const FADE_TO = colors.background;
-const FADE_FROM = 'rgba(11, 10, 26, 0)';
+/** Desvanecido hacia el fondo del tema (y el mismo color transparente, sin halo gris). */
+const fadeTo = () => colors.background;
+const fadeFrom = () => {
+  const hex = colors.background.replace('#', '');
+  const [r, g, b] = [0, 2, 4].map((i) => parseInt(hex.slice(i, i + 2), 16));
+  return `rgba(${r}, ${g}, ${b}, 0)`;
+};
 
 interface Props {
   outcome: 'win' | 'loss';
@@ -42,6 +55,7 @@ interface Props {
 
 /** Encabezado de victoria o derrota: título, el zorro (festejando o triste) y la división. */
 export function ResultHero({ outcome, ratingBefore, ratingAfter, placedBefore, subtitle }: Props) {
+  const styles = useStyles();
   const win = outcome === 'win';
   const rated = ratingBefore !== null && ratingAfter !== null;
   const delta = rated ? ratingAfter - ratingBefore : 0;
@@ -82,21 +96,25 @@ export function ResultHero({ outcome, ratingBefore, ratingAfter, placedBefore, s
           accessibilityLabel={FOX_LABEL[outcome]}
         />
         {/* Bordes difuminados para que no se vea el cuadrado de la foto. */}
-        <LinearGradient colors={[FADE_TO, FADE_FROM]} style={styles.fadeTop} pointerEvents="none" />
         <LinearGradient
-          colors={[FADE_FROM, FADE_TO]}
+          colors={[fadeTo(), fadeFrom()]}
+          style={styles.fadeTop}
+          pointerEvents="none"
+        />
+        <LinearGradient
+          colors={[fadeFrom(), fadeTo()]}
           style={styles.fadeBottom}
           pointerEvents="none"
         />
         <LinearGradient
-          colors={[FADE_TO, FADE_FROM]}
+          colors={[fadeTo(), fadeFrom()]}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
           style={styles.fadeLeft}
           pointerEvents="none"
         />
         <LinearGradient
-          colors={[FADE_FROM, FADE_TO]}
+          colors={[fadeFrom(), fadeTo()]}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
           style={styles.fadeRight}
@@ -157,6 +175,7 @@ function EloValue({
   label: string;
   color?: keyof typeof colors;
 }) {
+  const styles = useStyles();
   return (
     <View style={styles.eloValue}>
       <Text variant="title" color={color} style={styles.tabular}>
@@ -181,6 +200,7 @@ function DivisionProgress({
   after: number;
   placedBefore: boolean;
 }) {
+  const styles = useStyles();
   const reduceMotion = useReducedMotion();
   const rankBefore = getRank(before);
   const rankAfter = getRank(after);
@@ -254,42 +274,44 @@ function nextLabel(rank: RankInfo, rating: number) {
 
 const BAR = 10;
 
-const styles = StyleSheet.create({
-  wrap: { gap: spacing.md, alignItems: 'stretch' },
-  crown: { alignSelf: 'center', marginTop: spacing.sm },
-  titles: { alignItems: 'center', gap: spacing.xxs },
-  lossTitles: { marginTop: spacing.lg },
-  title: { fontSize: 40, lineHeight: 46 },
-  foxWrap: {
-    alignSelf: 'center',
-    width: '100%',
-    maxWidth: 340,
-    aspectRatio: 1,
-    marginVertical: -spacing.md,
-  },
-  fox: { width: '100%', height: '100%' },
-  fadeTop: { position: 'absolute', left: 0, right: 0, top: 0, height: '15%' },
-  fadeBottom: { position: 'absolute', left: 0, right: 0, bottom: 0, height: '30%' },
-  fadeLeft: { position: 'absolute', top: 0, bottom: 0, left: 0, width: '15%' },
-  fadeRight: { position: 'absolute', top: 0, bottom: 0, right: 0, width: '15%' },
-  elo: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    paddingVertical: spacing.lg,
-  },
-  eloValue: { alignItems: 'center', gap: spacing.xxs },
-  tabular: { fontVariant: ['tabular-nums'] },
-  division: { flexDirection: 'row', alignItems: 'center', gap: spacing.lg },
-  promoted: { borderColor: colors.primaryBright },
-  demoted: { borderColor: colors.dangerStrong },
-  flex: { flex: 1, gap: spacing.xxs },
-  track: {
-    height: BAR,
-    borderRadius: BAR / 2,
-    backgroundColor: colors.surfaceHighlight,
-    overflow: 'hidden',
-    marginTop: spacing.xs,
-  },
-  fill: { height: '100%', borderRadius: BAR / 2, overflow: 'hidden' },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    wrap: { gap: spacing.md, alignItems: 'stretch' },
+    crown: { alignSelf: 'center', marginTop: spacing.sm },
+    titles: { alignItems: 'center', gap: spacing.xxs },
+    lossTitles: { marginTop: spacing.lg },
+    title: { fontSize: 40, lineHeight: 46 },
+    foxWrap: {
+      alignSelf: 'center',
+      width: '100%',
+      maxWidth: 340,
+      aspectRatio: 1,
+      marginVertical: -spacing.md,
+    },
+    fox: { width: '100%', height: '100%' },
+    fadeTop: { position: 'absolute', left: 0, right: 0, top: 0, height: '15%' },
+    fadeBottom: { position: 'absolute', left: 0, right: 0, bottom: 0, height: '30%' },
+    fadeLeft: { position: 'absolute', top: 0, bottom: 0, left: 0, width: '15%' },
+    fadeRight: { position: 'absolute', top: 0, bottom: 0, right: 0, width: '15%' },
+    elo: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-around',
+      paddingVertical: spacing.lg,
+    },
+    eloValue: { alignItems: 'center', gap: spacing.xxs },
+    tabular: { fontVariant: ['tabular-nums'] },
+    division: { flexDirection: 'row', alignItems: 'center', gap: spacing.lg },
+    promoted: { borderColor: colors.primaryBright },
+    demoted: { borderColor: colors.dangerStrong },
+    flex: { flex: 1, gap: spacing.xxs },
+    track: {
+      height: BAR,
+      borderRadius: BAR / 2,
+      backgroundColor: colors.surfaceHighlight,
+      overflow: 'hidden',
+      marginTop: spacing.xs,
+    },
+    fill: { height: '100%', borderRadius: BAR / 2, overflow: 'hidden' },
+  }),
+);

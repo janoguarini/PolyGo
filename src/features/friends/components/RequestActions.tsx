@@ -1,7 +1,7 @@
 import { Check, Clock, UserPlus, X } from 'lucide-react-native';
 import { StyleSheet, View } from 'react-native';
 
-import { colors, spacing } from '@/design-system';
+import { colors, spacing, useTheme } from '@/design-system';
 import { toUserMessage } from '@/lib/errors';
 
 import {
@@ -29,6 +29,7 @@ export function IncomingActions({
   username: string;
   onFeedback?: OnFeedback;
 }) {
+  useTheme();
   const respond = useRespondFriendRequest();
   const run = (accept: boolean) =>
     respond.mutate(
@@ -75,6 +76,7 @@ export function CancelRequest({
   username: string;
   onFeedback?: OnFeedback;
 }) {
+  useTheme();
   const remove = useRemoveFriend();
   return (
     <IconAction
@@ -105,6 +107,7 @@ export function SearchAction({
   state: FriendshipState;
   onFeedback?: OnFeedback;
 }) {
+  useTheme();
   const send = useSendFriendRequest();
   if (state === 'friends')
     return (

@@ -4,7 +4,7 @@
  */
 
 import { WORD_RUSH, type QuestionKind, type QuestionView } from './protocol';
-import { canonicalForm, editDistance } from './answers';
+import { apostropheOnly, canonicalForm, editDistance } from './answers';
 import { TIERS, type MatchOutcome } from './ranking';
 
 export interface RushWord {
@@ -14,6 +14,11 @@ export interface RushWord {
   emoji?: string | null;
   /** Nivel del currículo (A1, A2); ver wordLevel. */
   level?: string | null;
+  /**
+   * Unidad que introduce la palabra (words.unit_id). Ranked arma el mazo sólo con las unidades
+   * comunes a los jugadores (fase C.7, rush_common_unit_ids).
+   */
+  unitId?: string | null;
 }
 
 const silver = TIERS.find((t) => t.id === 'silver')!.minRating;
@@ -111,14 +116,15 @@ export function withWriting(questions: readonly RushQuestion[]): RushQuestion[] 
 }
 
 /**
- * Respuesta escrita: mismas reglas que en las lecciones (mayúsculas, espacios, apóstrofos y
- * contracciones no importan; un error de tipeo se tolera en palabras de 8 letras o más).
+ * Respuesta escrita: mismas reglas que en las lecciones (mayúsculas, espacios, apóstrofos
+ * tipográficos y contracciones no importan; un error de tipeo se tolera en palabras de 8 letras o
+ * más, pero un apóstrofo que falta o sobra no es un error de tipeo).
  */
 export function checkWritten(typed: string, expected: string): { correct: boolean; typo: boolean } {
   const a = canonicalForm(typed);
   const b = canonicalForm(expected);
   if (a === b) return { correct: true, typo: false };
-  const typo = b.length >= 8 && editDistance(a, b) <= 1;
+  const typo = b.length >= 8 && editDistance(a, b) <= 1 && !apostropheOnly(a, b);
   return { correct: typo, typo };
 }
 
@@ -343,4 +349,72 @@ function shuffle<T>(items: readonly T[], random: () => number): T[] {
     [result[i], result[j]] = [result[j]!, result[i]!];
   }
   return result;
+}
+
+// ---------------------------------------------------------------------------------------------
+// Fase C.8: vocabulario de la partida contra bots que se arma en el teléfono (un solo humano).
+// La regla curricular (ruta persistente, nivel del cliente, unidades publicadas y desbloqueadas) NO
+// está aquí: la decide la base (rush_my_unit_ids → rush_player_unit_ids, la misma que usan Ranked y el
+// servidor de partidas). Esto sólo interpreta su respuesta y filtra; sin listas de palabras.
+
+/** Fila de public.words tal como la lee la app (RLS de la C.6 ya aplicada). */
+export interface RushWordRow {
+  id: string;
+  text: string;
+  translation_es: string;
+  emoji?: string | null;
+  unit_id: string | null;
+  is_published?: boolean | null;
+}
+
+/** Error de PostgREST/PostgreSQL de «la función no existe» (backend anterior a la C.7). */
+const MISSING_FUNCTION = new Set(['PGRST202', '42883']);
+
+/**
+ * Respuesta de rush_my_unit_ids → unidades usables. null SÓLO si el backend todavía no tiene la función
+ * (anterior a la C.7: no hay rutas que filtrar y U13/U14 no pueden estar publicadas). Cualquier otro
+ * error, o una respuesta que no es una lista, se propaga: sin conjunto no hay partida (como el servidor
+ * de partidas), nunca «todas las palabras».
+ */
+export function rushUnitsFromRpc(
+  data: unknown,
+  error: { code?: string; message?: string } | null,
+): ReadonlySet<string> | null {
+  if (error) {
+    if (error.code && MISSING_FUNCTION.has(error.code)) return null;
+    throw error;
+  }
+  if (!Array.isArray(data)) throw new Error('rush_my_unit_ids: respuesta inválida');
+  return new Set(data.filter((u): u is string => typeof u === 'string'));
+}
+
+/** Palabras de una partida armada en el teléfono: sólo las de esas unidades (null = sin filtro). */
+export function rushWordsInUnits<T extends { unitId?: string | null }>(
+  words: readonly T[],
+  units: ReadonlySet<string> | null,
+): T[] {
+  return units ? words.filter((w) => w.unitId != null && units.has(w.unitId)) : [...words];
+}
+
+/**
+ * Filas de words → palabras de la partida contra bots: publicadas (como loadWords del servidor) y de
+ * las unidades que la base dijo que este jugador puede usar.
+ */
+export function localRushWords(
+  rows: readonly RushWordRow[],
+  units: ReadonlySet<string> | null,
+): RushWord[] {
+  return rushWordsInUnits(
+    rows
+      .filter((w) => w.is_published !== false)
+      .map((w) => ({
+        id: w.id,
+        text: w.text,
+        translationEs: w.translation_es,
+        emoji: w.emoji ?? null,
+        level: wordLevel(w.unit_id),
+        unitId: w.unit_id,
+      })),
+    units,
+  );
 }

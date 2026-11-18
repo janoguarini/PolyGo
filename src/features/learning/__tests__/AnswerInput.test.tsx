@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react-native';
+import { fireEvent, render, screen, within } from '@testing-library/react-native';
 
 import { checkAnswer } from '@shared/answers';
 import type { Exercise, ExercisePayload, UserAnswer } from '@shared/exercises';
@@ -32,6 +32,29 @@ async function setup(ex: Exercise) {
 const check = () => screen.getByRole('button', { name: 'Comprobar' });
 
 describe('AnswerInput', () => {
+  it('opciones registradas por el servidor: se muestran en ese orden, sin volver a mezclar', async () => {
+    const ex = exercise(
+      { type: 'translation_choice', word: 'hello', options: ['hola', 'chau', 'sí', 'no'] },
+      'hola',
+    );
+    const shown = ['no', 'hola', 'sí', 'chau'];
+    await render(
+      <AnswerInput
+        exercise={ex}
+        seed="x"
+        disabled={false}
+        onSubmit={jest.fn()}
+        shownOptions={shown}
+      />,
+    );
+    const radios = screen.getAllByRole('radio');
+    expect(radios).toHaveLength(4);
+    shown.forEach((text, i) => {
+      expect(screen.getByText(text)).toBeTruthy();
+      expect(within(radios[i]!).getByText(text)).toBeTruthy();
+    });
+  });
+
   it('opciones: exige elegir antes de comprobar y envía la opción', async () => {
     const ex = exercise(
       { type: 'image_choice', emoji: '🪑', options: ['chair', 'table', 'door'] },

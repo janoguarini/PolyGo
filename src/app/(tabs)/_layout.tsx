@@ -2,7 +2,7 @@ import { Tabs } from 'expo-router';
 import { BookOpen, Dumbbell, Swords, User, Users } from 'lucide-react-native';
 import { Platform, StyleSheet, View, useWindowDimensions } from 'react-native';
 
-import { colors } from '@/design-system';
+import { colors, useTheme } from '@/design-system';
 import { useAuth } from '@/features/auth/AuthProvider';
 import { useFriends } from '@/features/friends/api';
 import { BattleInviteBanner } from '@/features/friends/components/BattleInviteBanner';
@@ -16,6 +16,7 @@ import { useReminderSync } from '@/features/reminders/hooks';
 import { useWidgetSync } from '@/features/widgets/useWidgetSync';
 
 export default function TabsLayout() {
+  useTheme();
   // Con sesión y onboarding completo: los widgets reflejan las palabras del usuario.
   useWidgetSync();
   useReminderSync();

@@ -7,8 +7,8 @@ import { WORD_RUSH, type BattleMode } from '@shared/protocol';
 import {
   generateQuestions,
   pictureEmojis,
+  localRushWords,
   rushPool,
-  wordLevel,
   writingEnabled,
   type RushWord,
 } from '@shared/wordRush';
@@ -21,7 +21,7 @@ import { useMyProfile } from '@/features/profile/hooks';
 import { playSound } from '@/lib/sounds';
 
 import { answerSound } from './answerSound';
-import { botMatchApi, botMatchErrorCode } from './botMatchApi';
+import { botMatchApi, botMatchErrorCode, fetchRushUnits } from './botMatchApi';
 import { humanMatchApi, openLiveChannel } from './humanMatchApi';
 import { LocalMatch } from './localMatch';
 import { isInBattle } from './state';
@@ -99,13 +99,11 @@ export function useLocalBattleSession() {
             queryFn: () => fetchWordPool(language),
             staleTime: 30 * 60_000,
           });
-          const rushWords: RushWord[] = words.map((w) => ({
-            id: w.id,
-            text: w.text,
-            translationEs: w.translation_es,
-            emoji: w.emoji,
-            level: wordLevel(w.unit_id),
-          }));
+          // Fases C.7/C.8: sólo palabras publicadas de unidades que la base dice que puede usar (ruta
+          // persistente con el nivel de esta build, publicadas y desbloqueadas). Las unidades se piden en
+          // cada partida (el banco de palabras puede venir del caché); si la base no responde, no hay
+          // partida.
+          const rushWords: RushWord[] = localRushWords(words, await fetchRushUnits(language));
           let previousStreak = 0;
           const match = new LocalMatch({
             practiceWriting: writingEnabled(rating, language),

@@ -4,13 +4,22 @@ import { ScrollView, StyleSheet, View, type ScrollViewInstance } from 'react-nat
 
 import { TIERS, type TierId } from '@shared/ranking';
 
-import { RankEmblem, TIER_COLORS, Text, colors, radii, spacing } from '@/design-system';
+import {
+  RankEmblem,
+  TIER_COLORS,
+  Text,
+  colors,
+  radii,
+  spacing,
+  themedStyles,
+} from '@/design-system';
 
 /**
  * Todos los tiers en fila, con el actual resaltado: muestra a dónde se puede llegar.
  * Los ya superados se ven encendidos; los siguientes, apagados.
  */
 export function TierLadder({ current }: { current: TierId | null }) {
+  const styles = useStyles();
   const scrollRef = useRef<ScrollViewInstance>(null);
   const currentIndex = current ? TIERS.findIndex((t) => t.id === current) : -1;
 
@@ -72,18 +81,20 @@ export function TierLadder({ current }: { current: TierId | null }) {
   );
 }
 
-const styles = StyleSheet.create({
-  box: {
-    borderRadius: radii.xl,
-    backgroundColor: 'rgba(23, 20, 47, 0.75)',
-    borderWidth: 1,
-    borderColor: colors.border,
-    paddingVertical: spacing.md,
-  },
-  row: { alignItems: 'flex-end', paddingHorizontal: spacing.md, gap: spacing.xs },
-  chevron: { marginBottom: 34 },
-  item: { alignItems: 'center', gap: spacing.xs, minWidth: 58 },
-  locked: { opacity: 0.4 },
-  name: { fontSize: 12 },
-  underline: { height: 3, width: 28, borderRadius: 2, backgroundColor: 'transparent' },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    box: {
+      borderRadius: radii.xl,
+      backgroundColor: 'rgba(23, 20, 47, 0.75)',
+      borderWidth: 1,
+      borderColor: colors.border,
+      paddingVertical: spacing.md,
+    },
+    row: { alignItems: 'flex-end', paddingHorizontal: spacing.md, gap: spacing.xs },
+    chevron: { marginBottom: 34 },
+    item: { alignItems: 'center', gap: spacing.xs, minWidth: 58 },
+    locked: { opacity: 0.4 },
+    name: { fontSize: 12 },
+    underline: { height: 3, width: 28, borderRadius: 2, backgroundColor: 'transparent' },
+  }),
+);

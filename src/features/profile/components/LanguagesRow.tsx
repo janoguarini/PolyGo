@@ -2,10 +2,10 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import { Alert, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
-import { LANGUAGES, isSelectable, type LanguageConfig } from '@shared/languages';
+import { VISIBLE_LANGUAGES, isSelectable, type LanguageConfig } from '@shared/languages';
 import { RATING_CONFIG } from '@shared/ranking';
 
-import { Text, colors, radii, spacing } from '@/design-system';
+import { Text, colors, radii, spacing, themedStyles } from '@/design-system';
 import { fetchCurriculum } from '@/features/learning/api';
 import { learningKeys } from '@/features/learning/hooks';
 
@@ -17,7 +17,7 @@ export function usePrefetchLanguagePaths(current: string | undefined) {
   const qc = useQueryClient();
   useEffect(() => {
     if (!current) return;
-    for (const l of LANGUAGES) {
+    for (const l of VISIBLE_LANGUAGES) {
       if (l.code === current || !isSelectable(l, tester)) continue;
       void qc.prefetchQuery({
         queryKey: learningKeys.curriculum(l.code),
@@ -42,6 +42,7 @@ export function LanguagesRow({
   /** Después de tocar otro idioma (p. ej. para cerrar el selector de Aprender). */
   onChanged?: () => void;
 }) {
+  const styles = useStyles();
   const ratings = useMyRatings();
   const tester = useIsContentTester().data ?? false;
   const switchLanguage = useSetTargetLanguage();
@@ -61,7 +62,7 @@ export function LanguagesRow({
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={styles.row}
     >
-      {LANGUAGES.map((l) => {
+      {VISIBLE_LANGUAGES.map((l) => {
         const selected = l.code === current;
         const selectable = isSelectable(l, tester);
         const rating = ratings.data?.[l.code] ?? RATING_CONFIG.initialRating;
@@ -111,35 +112,37 @@ export function LanguagesRow({
   );
 }
 
-const styles = StyleSheet.create({
-  row: { gap: spacing.sm },
-  card: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.sm,
-    paddingVertical: spacing.md,
-    paddingLeft: spacing.md,
-    paddingRight: spacing.lg,
-    borderRadius: radii.lg,
-    backgroundColor: colors.surface,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  selected: {
-    borderColor: colors.primaryBright,
-    borderWidth: 2,
-    backgroundColor: colors.surfaceHighlight,
-  },
-  soon: { opacity: 0.55 },
-  pressed: { opacity: 0.85 },
-  flag: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    overflow: 'hidden',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.surfaceRaised,
-  },
-  flagText: { fontSize: 24, lineHeight: 30 },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    row: { gap: spacing.sm },
+    card: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.sm,
+      paddingVertical: spacing.md,
+      paddingLeft: spacing.md,
+      paddingRight: spacing.lg,
+      borderRadius: radii.lg,
+      backgroundColor: colors.surface,
+      borderWidth: 1,
+      borderColor: colors.border,
+    },
+    selected: {
+      borderColor: colors.primaryBright,
+      borderWidth: 2,
+      backgroundColor: colors.surfaceHighlight,
+    },
+    soon: { opacity: 0.55 },
+    pressed: { opacity: 0.85 },
+    flag: {
+      width: 36,
+      height: 36,
+      borderRadius: 18,
+      overflow: 'hidden',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: colors.surfaceRaised,
+    },
+    flagText: { fontSize: 24, lineHeight: 30 },
+  }),
+);

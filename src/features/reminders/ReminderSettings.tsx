@@ -1,7 +1,7 @@
 import * as Linking from 'expo-linking';
 import { Pressable, StyleSheet, Switch, View } from 'react-native';
 
-import { Button, Card, Text, colors, radii, spacing } from '@/design-system';
+import { Button, Card, Text, colors, radii, spacing, themedStyles } from '@/design-system';
 import { toUserMessage } from '@/lib/errors';
 
 import { useReminderPrefs, useSetReminderPrefs } from './hooks';
@@ -10,6 +10,7 @@ import { DEFAULT_REMINDER, REMINDER_HOURS, formatReminderTime } from './schedule
 
 /** Interruptor y horario del recordatorio diario (notificación local, sin servidor). */
 export function ReminderSettings() {
+  const styles = useStyles();
   const prefs = useReminderPrefs();
   const update = useSetReminderPrefs();
 
@@ -87,18 +88,20 @@ export function ReminderSettings() {
   );
 }
 
-const styles = StyleSheet.create({
-  card: { gap: spacing.md },
-  row: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  flex: { flex: 1, gap: spacing.xxs },
-  hours: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
-  hour: {
-    paddingHorizontal: spacing.lg,
-    paddingVertical: spacing.sm,
-    borderRadius: radii.pill,
-    borderWidth: 1,
-    borderColor: colors.borderStrong,
-    backgroundColor: colors.surfaceRaised,
-  },
-  hourSelected: { backgroundColor: colors.primary, borderColor: colors.primaryBright },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    card: { gap: spacing.md },
+    row: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+    flex: { flex: 1, gap: spacing.xxs },
+    hours: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
+    hour: {
+      paddingHorizontal: spacing.lg,
+      paddingVertical: spacing.sm,
+      borderRadius: radii.pill,
+      borderWidth: 1,
+      borderColor: colors.borderStrong,
+      backgroundColor: colors.surfaceRaised,
+    },
+    hourSelected: { backgroundColor: colors.primary, borderColor: colors.primaryBright },
+  }),
+);

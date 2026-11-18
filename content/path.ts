@@ -13,13 +13,20 @@ import type { ExerciseDef, LessonDef, UnitDef, WordDef } from './types';
  * Las lecciones escritas conservan su id (a1-uNN-lNN) para no perder el progreso de nadie.
  */
 
-export type PathLessonKind = 'lesson' | 'review' | 'listening' | 'words' | 'final';
+/** `context`: lección «En contexto» (fase C, content/comprehension.ts), fuera de la consolidación. */
+export type PathLessonKind = 'lesson' | 'review' | 'listening' | 'words' | 'final' | 'context';
 
 export interface PathLesson extends LessonDef {
   id: string;
   kind: PathLessonKind;
   /** 1-based dentro de la unidad; define el orden de desbloqueo. */
   position: number;
+  /**
+   * Cierre de inglés A1 (docs/A1_EN_CLOSURE.md): ejercicios agregados al final de una lección ya
+   * cargada. `exercises` son sólo los nuevos y el primero va en la posición `exerciseOffset + 1`
+   * (a1-u04-l04-e10 después de los 9 cargados). Sin el campo, 0: el camino de siempre.
+   */
+  exerciseOffset?: number;
 }
 
 /** Ejercicios por lección generada (el contenido escrito usa 6–10). */
@@ -226,15 +233,22 @@ class Generator {
   }
 }
 
-/** Palabras practicadas en unas lecciones (sin repetir, en orden de aparición). */
-function wordsOf(lessons: readonly LessonDef[], gen: Generator): WordDef[] {
+/**
+ * Palabras practicadas en unas lecciones (sin repetir, en orden de aparición). `only`: si se indica,
+ * sólo esas (las de la unidad, `UnitPathOptions.unitWordsOnly`).
+ */
+function wordsOf(
+  lessons: readonly LessonDef[],
+  gen: Generator,
+  only?: ReadonlySet<string>,
+): WordDef[] {
   const ids = [
     ...new Set(
       lessons.flatMap((l) =>
         l.exercises.filter((e) => e.consolidate !== false).flatMap((e) => e.words),
       ),
     ),
-  ];
+  ].filter((id) => !only || only.has(id));
   return ids.flatMap((id) => {
     const w = gen.word(id);
     return w ? [w] : [];
@@ -259,6 +273,45 @@ function sentences(
   });
 }
 
+/** Títulos y objetivos de las lecciones generadas, en el idioma de apoyo del curso. */
+function pathTexts(language: string) {
+  const quote = (title: string) => `«${title}»`;
+  if (languageConfig(language).support?.code === 'en') {
+    const q = (title: string) => `“${title}”`;
+    return {
+      review: (n: number) => `Review ${n}`,
+      reviewObjective: (titles: string[]) => `Consolidate ${titles.map(q).join(' and ')}.`,
+      listening: 'Listening practice',
+      listeningObjective: 'Recognize the words and phrases of the unit by ear.',
+      words: 'Words of the unit',
+      wordsObjective: 'Fix the vocabulary of the unit: recognize it and write it.',
+      final: 'Final review',
+      finalObjective: (title: string) => `Show everything from ${q(title)}.`,
+    };
+  }
+  return {
+    review: (n: number) => `Repaso ${n}`,
+    reviewObjective: (titles: string[]) => `Consolidar ${titles.map(quote).join(' y ')}.`,
+    listening: 'Práctica de escucha',
+    listeningObjective: 'Reconocer de oído las palabras y frases de la unidad.',
+    words: 'Palabras de la unidad',
+    wordsObjective: 'Fijar el vocabulario de la unidad: reconocerlo y escribirlo.',
+    final: 'Repaso final',
+    finalObjective: (title: string) => `Demostrar todo lo de ${quote(title)}.`,
+  };
+}
+
+export interface UnitPathOptions {
+  /**
+   * Los repasos intercalados sólo generan ejercicios de las palabras de la unidad, no de las de otras
+   * unidades que practiquen sus lecciones. Lo usan las unidades planificadas (content/planned.ts): sus
+   * lecciones practican palabras de unidades ya cargadas, y un ejercicio generado de una de ellas
+   * sería el mismo ítem generado (`en.gen.<tipo>.<palabra>`) que ya está activo en su unidad.
+   * Por defecto false: el camino de las unidades cargadas no cambia.
+   */
+  unitWordsOnly?: boolean;
+}
+
 /**
  * `allWords`: las palabras que el alumno ya conoce al llegar a la unidad (su nivel y los anteriores),
  * para descartar traducciones ambiguas. `key`: id de la unidad (a1-u01), prefijo de sus lecciones.
@@ -268,8 +321,11 @@ export function unitPath(
   allWords: readonly WordDef[],
   key: string,
   language = 'en',
+  { unitWordsOnly = false }: UnitPathOptions = {},
 ): PathLesson[] {
   const gen = new Generator(unit, allWords, language);
+  const t = pathTexts(language);
+  const own = unitWordsOnly ? new Set(unit.words.map((w) => w.id)) : undefined;
   const used = new Set<ExerciseDef>();
   const path: Omit<PathLesson, 'position'>[] = [];
   let reviews = 0;
@@ -283,7 +339,7 @@ export function unitPath(
     const covered = unit.lessons.slice(i + 1 - REVIEW_EVERY, i + 1);
     const seed = `${key}-rev${reviews}`;
     const sentenceExercises = sentences(covered, 2, used, seed);
-    const words = shuffled(wordsOf(covered, gen), seed);
+    const words = shuffled(wordsOf(covered, gen, own), seed);
     const pairs = gen.matchPairs(words);
     const wordExercises = gen.wordExercises(
       words,
@@ -294,8 +350,8 @@ export function unitPath(
     path.push({
       id: seed,
       kind: 'review',
-      title: `Repaso ${reviews}`,
-      objective: `Consolidar ${covered.map((l) => `«${l.title}»`).join(' y ')}.`,
+      title: t.review(reviews),
+      objective: t.reviewObjective(covered.map((l) => l.title)),
       exercises: shuffled(
         [...(pairs ? [pairs] : []), ...sentenceExercises, ...wordExercises],
         seed,
@@ -318,8 +374,8 @@ export function unitPath(
     path.push({
       id: seed,
       kind: 'listening',
-      title: 'Práctica de escucha',
-      objective: 'Reconocer de oído las palabras y frases de la unidad.',
+      title: t.listening,
+      objective: t.listeningObjective,
       exercises: shuffled(
         [
           ...authored,
@@ -340,8 +396,8 @@ export function unitPath(
     path.push({
       id: seed,
       kind: 'words',
-      title: 'Palabras de la unidad',
-      objective: 'Fijar el vocabulario de la unidad: reconocerlo y escribirlo.',
+      title: t.words,
+      objective: t.wordsObjective,
       exercises: shuffled(
         [
           ...pairs,
@@ -366,8 +422,8 @@ export function unitPath(
     path.push({
       id: seed,
       kind: 'final',
-      title: 'Repaso final',
-      objective: `Demostrar todo lo de «${unit.title}».`,
+      title: t.final,
+      objective: t.finalObjective(unit.title),
       exercises: shuffled(
         [
           ...(pairs ? [pairs] : []),
@@ -398,3 +454,7 @@ export function pinyinVariants(pinyin: string, hanzi: string): string[] {
 
 export const pathExerciseId = (lessonId: string, index: number) =>
   `${lessonId}-e${String(index + 1).padStart(2, '0')}`;
+
+/** Índice (0-based) en la lección cargada del ejercicio `i` de `l.exercises` (`exerciseOffset`). */
+export const lessonExerciseIndex = (l: { exerciseOffset?: number }, i: number) =>
+  (l.exerciseOffset ?? 0) + i;

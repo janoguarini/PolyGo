@@ -6,9 +6,11 @@
  * - available: visible para todos.
  * - beta: contenido en preparación; sólo lo ven los testers de contenido (public.content_testers).
  * - soon: se muestra como «Próximamente» y no se puede elegir.
+ * - hidden: contenido cargado sin publicar; la app no lo muestra (igual que en public.languages).
+ *   Existe para que el contenido use su configuración (voz fr-FR, «Traducí al francés»).
  */
 
-export type LanguageStatus = 'available' | 'beta' | 'soon';
+export type LanguageStatus = 'available' | 'beta' | 'soon' | 'hidden';
 
 export interface LanguageConfig {
   code: string;
@@ -28,6 +30,12 @@ export interface LanguageConfig {
   variant: string;
   /** Niveles con contenido (content/index.ts COURSES): los que se pueden elegir al registrarse. */
   levels: readonly string[];
+  /**
+   * Idioma de apoyo del contenido: el de las traducciones, consignas, explicaciones y preguntas de
+   * comprensión. Sin el campo, español (todos los cursos salvo el de español, que se enseña desde el
+   * inglés). `targetName`: el idioma que se aprende, dicho en el idioma de apoyo («Spanish»).
+   */
+  support?: { code: 'en'; targetName: string };
 }
 
 export const LANGUAGES: readonly LanguageConfig[] = [
@@ -36,7 +44,7 @@ export const LANGUAGES: readonly LanguageConfig[] = [
     name: 'Inglés',
     inName: 'en inglés',
     alName: 'al inglés',
-    flag: '🇬🇧',
+    flag: '🇺🇸',
     status: 'available',
     ranked: true,
     speechLocale: 'en-US',
@@ -84,7 +92,23 @@ export const LANGUAGES: readonly LanguageConfig[] = [
     levels: ['A1'],
   },
   {
-    // Necesita la interfaz traducida al inglés (la app supone que el alumno habla español).
+    // Francés A1 y A2 (docs/FR_A1_A2.md): cargado sin publicar y oculto, como en public.languages.
+    // Publicarlo es cambiar este estado junto con la migración de supabase/pending/.
+    code: 'fr',
+    name: 'Francés',
+    inName: 'en francés',
+    alName: 'al francés',
+    flag: '🇫🇷',
+    status: 'hidden',
+    ranked: false,
+    speechLocale: 'fr-FR',
+    script: 'latin',
+    variant: 'Francés estándar de Francia',
+    levels: [],
+  },
+  {
+    // El contenido se enseña desde el inglés (support); la interfaz de la app sigue en español, así
+    // que el idioma queda «Próximamente» hasta traducirla (docs/ES_A1_A2.md).
     code: 'es',
     name: 'Español',
     inName: 'en español',
@@ -92,14 +116,18 @@ export const LANGUAGES: readonly LanguageConfig[] = [
     flag: '🇪🇸',
     status: 'soon',
     ranked: false,
-    speechLocale: 'es-MX',
+    speechLocale: 'es-AR',
     script: 'latin',
-    variant: 'Español neutro con tú',
+    variant: 'Español rioplatense (Argentina), con voseo',
     levels: [],
+    support: { code: 'en', targetName: 'Spanish' },
   },
 ];
 
 export const DEFAULT_LANGUAGE = LANGUAGES[0]!;
+
+/** Los que la app muestra (disponibles, beta y «Próximamente»): los ocultos no aparecen. */
+export const VISIBLE_LANGUAGES = LANGUAGES.filter((l) => l.status !== 'hidden');
 
 /** Configuración de un idioma; los códigos desconocidos caen en inglés (el único histórico). */
 export function languageConfig(code: string | null | undefined): LanguageConfig {

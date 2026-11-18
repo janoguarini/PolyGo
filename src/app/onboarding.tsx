@@ -13,7 +13,7 @@ import {
   type AvatarId,
   type DailyGoalMinutes,
 } from '@shared/profile';
-import { LANGUAGES, isSelectable, languageConfig } from '@shared/languages';
+import { VISIBLE_LANGUAGES, isSelectable, languageConfig } from '@shared/languages';
 
 import {
   Avatar,
@@ -28,6 +28,7 @@ import {
   colors,
   radii,
   spacing,
+  themedStyles,
 } from '@/design-system';
 import { FormMessage } from '@/features/auth/FormMessage';
 import { isUsernameAvailable } from '@/features/profile/api';
@@ -65,6 +66,7 @@ const GOAL_LABELS: Record<DailyGoalMinutes, string> = {
 };
 
 export default function OnboardingScreen() {
+  const styles = useStyles();
   const [stepIndex, setStepIndex] = useState(0);
   const [language, setLanguage] = useState<string>('en');
   const [level, setLevel] = useState<string>('A1');
@@ -174,7 +176,7 @@ export default function OnboardingScreen() {
 
         {step === 'language' &&
           // Al registrarse se eligen los idiomas disponibles para todos (los beta, sólo desde Perfil).
-          LANGUAGES.map((l) => (
+          VISIBLE_LANGUAGES.map((l) => (
             <SelectCard
               key={l.code}
               title={l.name}
@@ -260,21 +262,28 @@ export default function OnboardingScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  topBar: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  back: { width: 32, height: 44, justifyContent: 'center' },
-  hidden: { opacity: 0 },
-  progress: { flex: 1 },
-  body: { gap: spacing.md },
-  header: { gap: spacing.xs, marginVertical: spacing.md },
-  centered: { alignItems: 'center' },
-  mascot: { alignItems: 'center' },
-  avatarGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md, justifyContent: 'center' },
-  avatarCell: {
-    padding: spacing.sm,
-    borderRadius: radii.xl,
-    borderWidth: 2,
-    borderColor: 'transparent',
-  },
-  avatarSelected: { borderColor: colors.primaryBright, backgroundColor: colors.surfaceRaised },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    topBar: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+    back: { width: 32, height: 44, justifyContent: 'center' },
+    hidden: { opacity: 0 },
+    progress: { flex: 1 },
+    body: { gap: spacing.md },
+    header: { gap: spacing.xs, marginVertical: spacing.md },
+    centered: { alignItems: 'center' },
+    mascot: { alignItems: 'center' },
+    avatarGrid: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      gap: spacing.md,
+      justifyContent: 'center',
+    },
+    avatarCell: {
+      padding: spacing.sm,
+      borderRadius: radii.xl,
+      borderWidth: 2,
+      borderColor: 'transparent',
+    },
+    avatarSelected: { borderColor: colors.primaryBright, backgroundColor: colors.surfaceRaised },
+  }),
+);

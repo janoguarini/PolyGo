@@ -6,7 +6,7 @@ import type { AnswerVerdict } from '@shared/answers';
 import type { Exercise } from '@shared/exercises';
 import { hasHan } from '@shared/readings';
 
-import { Button, Text, colors, radii, spacing } from '@/design-system';
+import { Button, Text, colors, radii, spacing, themedStyles } from '@/design-system';
 
 import type { WordRow } from '../api';
 import { TargetText } from '../readings';
@@ -21,6 +21,7 @@ interface Props {
 
 /** Feedback tras responder: resultado, traducción, pronunciación y ejemplo. */
 export function FeedbackPanel({ exercise, verdict, word, onContinue }: Props) {
+  const styles = useStyles();
   // La respuesta correcta se muestra en grande en AnswerRecap, en el centro de la pantalla.
   const correct = verdict.correct;
 
@@ -79,11 +80,13 @@ export function FeedbackPanel({ exercise, verdict, word, onContinue }: Props) {
   );
 }
 
-const styles = StyleSheet.create({
-  panel: { gap: spacing.md, padding: spacing.lg, borderRadius: radii.xl, borderWidth: 1.5 },
-  correct: { borderColor: colors.successStrong, backgroundColor: 'rgba(16,185,129,0.08)' },
-  incorrect: { borderColor: colors.dangerStrong, backgroundColor: 'rgba(239,68,68,0.08)' },
-  header: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-  word: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  flex: { flex: 1, gap: spacing.xxs },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    panel: { gap: spacing.md, padding: spacing.lg, borderRadius: radii.xl, borderWidth: 1.5 },
+    correct: { borderColor: colors.successStrong, backgroundColor: 'rgba(16,185,129,0.08)' },
+    incorrect: { borderColor: colors.dangerStrong, backgroundColor: 'rgba(239,68,68,0.08)' },
+    header: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+    word: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+    flex: { flex: 1, gap: spacing.xxs },
+  }),
+);

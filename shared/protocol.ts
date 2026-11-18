@@ -260,4 +260,21 @@ export interface ClientToServerEvents {
 export interface HandshakeAuth {
   token: string;
   protocolVersion: number;
+  /**
+   * Fase C.8: nivel de compatibilidad curricular de la build (src/lib/clientInfo.ts, CURRICULUM_API).
+   * Opcional y sin subir PROTOCOL_VERSION: las builds anteriores no lo mandan y cuentan como 0. Sólo
+   * decide si el cliente puede representar la ruta que el usuario YA tiene asignada (si no, la de
+   * respaldo); nunca cambia la ruta ni desbloquea nada (eso lo decide la base).
+   */
+  curriculumApi?: number;
+}
+
+/**
+ * Nivel curricular declarado en el handshake, con la misma regla que public.parse_curriculum_api
+ * (0–999, entero; también como texto de 1 a 3 dígitos). Ausente o inválido = 0, el valor seguro.
+ */
+export function parseCurriculumApi(raw: unknown): number {
+  if (typeof raw === 'number') return Number.isInteger(raw) && raw >= 0 && raw <= 999 ? raw : 0;
+  if (typeof raw === 'string' && /^[0-9]{1,3}$/.test(raw.trim())) return Number(raw.trim());
+  return 0;
 }

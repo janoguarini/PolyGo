@@ -1,5 +1,5 @@
 import type { AnswerVerdict } from '@shared/answers';
-import type { Exercise } from '@shared/exercises';
+import type { Exercise, UserAnswer } from '@shared/exercises';
 
 /**
  * Estado puro del reproductor de lecciones/repasos.
@@ -16,10 +16,19 @@ export interface Attempt {
   correct: boolean;
   firstTry: boolean;
   responseMs: number;
+  /** La respuesta tal cual (la corrige el servidor en la ruta nueva). */
+  response?: UserAnswer;
+  /** Ayudas usadas al responder (ref_assists). */
+  assists?: Record<string, number | boolean>;
 }
 
 export interface PlayerState {
   exercises: Exercise[];
+  /**
+   * Repeticiones por ejercicio fallado (MAX_RETRIES). En los repasos del servidor también: las corrige
+   * el servidor, pero sólo el primer intento es evidencia (cierre de la fase 4, P4).
+   */
+  maxRetries: number;
   queue: string[];
   attempts: Attempt[];
   retries: Record<string, number>;
@@ -29,16 +38,53 @@ export interface PlayerState {
 }
 
 export type PlayerAction =
-  | { type: 'answer'; verdict: AnswerVerdict; answer: string; responseMs: number }
+  | {
+      type: 'answer';
+      verdict: AnswerVerdict;
+      answer: string;
+      responseMs: number;
+      response?: UserAnswer;
+      assists?: Record<string, number | boolean>;
+    }
   | { type: 'continue' };
 
-export function createPlayer(exercises: Exercise[]): PlayerState {
+export interface PlayerOptions {
+  maxRetries?: number;
+  /**
+   * Intentos ya registrados (retomar una sesión del servidor interrumpida), en orden: el primero de cada
+   * ejercicio con firstTry y después sus repeticiones. Un ejercicio acertado o sin repeticiones
+   * disponibles queda resuelto; uno fallado con repeticiones disponibles vuelve al final de la cola,
+   * después de los que no se respondieron.
+   */
+  answered?: Attempt[];
+}
+
+export function createPlayer(exercises: Exercise[], options: PlayerOptions = {}): PlayerState {
+  const maxRetries = options.maxRetries ?? MAX_RETRIES;
+  const answered = options.answered ?? [];
+  const attempts: Attempt[] = [];
+  const fresh: string[] = [];
+  const again: string[] = [];
+  const retries: Record<string, number> = {};
+  for (const e of exercises) {
+    // A lo sumo el primer intento y maxRetries repeticiones.
+    const mine = answered.filter((a) => a.exerciseId === e.id).slice(0, maxRetries + 1);
+    attempts.push(...mine.map((a, i) => ({ ...a, firstTry: i === 0 })));
+    if (mine.length === 0) {
+      fresh.push(e.id);
+      continue;
+    }
+    if (mine.length > 1) retries[e.id] = mine.length - 1;
+    if (!mine[mine.length - 1]!.correct && mine.length - 1 < maxRetries) again.push(e.id);
+  }
+  const queue = [...fresh, ...again];
   return {
     exercises,
-    queue: exercises.map((e) => e.id),
-    attempts: [],
-    retries: {},
-    phase: exercises.length === 0 ? 'finished' : 'answering',
+    maxRetries,
+    queue,
+    attempts,
+    retries,
+    phase: queue.length === 0 ? 'finished' : 'answering',
     lastVerdict: null,
     lastAnswer: null,
   };
@@ -68,6 +114,8 @@ export function playerReducer(state: PlayerState, action: PlayerAction): PlayerS
             correct: action.verdict.correct,
             firstTry,
             responseMs: Math.max(0, action.responseMs),
+            ...(action.response ? { response: action.response } : {}),
+            ...(action.assists ? { assists: action.assists } : {}),
           },
         ],
       };
@@ -78,7 +126,7 @@ export function playerReducer(state: PlayerState, action: PlayerAction): PlayerS
       if (!id) return { ...state, phase: 'finished' };
       const failed = state.lastVerdict && !state.lastVerdict.correct;
       const used = state.retries[id] ?? 0;
-      const requeue = failed && used < MAX_RETRIES;
+      const requeue = failed && used < state.maxRetries;
       const queue = requeue ? [...rest, id] : rest;
       return {
         ...state,

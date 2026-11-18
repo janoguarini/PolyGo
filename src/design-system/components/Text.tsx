@@ -1,3 +1,4 @@
+import { useTheme } from '../theme';
 import { Text as RNText, type TextProps as RNTextProps, type TextStyle } from 'react-native';
 
 import { colors, typography, type TypographyVariant } from '../tokens';
@@ -20,6 +21,7 @@ const defaultColor: Partial<Record<TypographyVariant, ColorToken>> = {
 };
 
 export function Text({ variant = 'body', color, align, style, ...rest }: TextProps) {
+  useTheme();
   const resolved = colors[color ?? defaultColor[variant] ?? 'text'];
   return (
     <RNText

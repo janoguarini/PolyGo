@@ -3,7 +3,16 @@ import { Pressable, StyleSheet, View } from 'react-native';
 
 import type { Exercise, UserAnswer } from '@shared/exercises';
 
-import { Button, MIN_TOUCH, Text, TextField, colors, radii, spacing } from '@/design-system';
+import {
+  Button,
+  MIN_TOUCH,
+  Text,
+  TextField,
+  colors,
+  radii,
+  spacing,
+  themedStyles,
+} from '@/design-system';
 
 import { shuffle, shuffleDifferent } from '../random';
 import { TargetText, useSessionLanguage } from '../readings';
@@ -14,6 +23,11 @@ interface Props {
   seed: string;
   disabled: boolean;
   onSubmit: (answer: UserAnswer) => void;
+  /**
+   * Opciones en el orden que registró el servidor (exercise_presentations). Si llegan, se muestran
+   * tal cual, sin volver a mezclar: lo mostrado es exactamente lo registrado.
+   */
+  shownOptions?: readonly string[] | null;
 }
 
 /** Zona de respuesta según el tipo de ejercicio. Siempre termina con "Comprobar". */
@@ -24,6 +38,7 @@ export function AnswerInput(props: Props) {
     case 'translation_choice':
     case 'fill_blank':
     case 'listen_choice':
+    case 'context_choice':
       return <ChoiceInput {...props} options={payload.options} />;
     case 'translate_write':
     case 'complete_word':
@@ -46,6 +61,7 @@ function AnswerLayout({
   footer: ReactNode;
   alignTop?: boolean;
 }) {
+  const styles = useStyles();
   return (
     <View style={styles.layout}>
       <View style={[styles.body, alignTop && styles.bodyTop]}>{children}</View>
@@ -60,10 +76,12 @@ function ChoiceInput({
   disabled,
   onSubmit,
   options,
+  shownOptions,
 }: Props & { options: string[] }) {
+  const styles = useStyles();
   const shuffled = useMemo(
-    () => shuffle(options, `${seed}:${exercise.id}`),
-    [options, seed, exercise.id],
+    () => (shownOptions ? [...shownOptions] : shuffle(options, `${seed}:${exercise.id}`)),
+    [shownOptions, options, seed, exercise.id],
   );
   const [selected, setSelected] = useState<string | null>(null);
 
@@ -107,6 +125,7 @@ function ChoiceInput({
 }
 
 function TextInputAnswer({ exercise, disabled, onSubmit }: Props) {
+  const styles = useStyles();
   const { language } = useSessionLanguage();
   const [value, setValue] = useState('');
   // En chino se escribe el pinyin (con números de tono: ni3 hao3).
@@ -141,6 +160,7 @@ function TextInputAnswer({ exercise, disabled, onSubmit }: Props) {
 }
 
 function OrderInput({ exercise, seed, disabled, onSubmit, tokens }: Props & { tokens: string[] }) {
+  const styles = useStyles();
   // Cada ficha se identifica por índice: puede haber palabras repetidas.
   const bank = useMemo(
     () =>
@@ -203,6 +223,7 @@ function Token({
   disabled?: boolean;
   used?: boolean;
 }) {
+  const styles = useStyles();
   return (
     <Pressable
       accessibilityRole="button"
@@ -225,6 +246,7 @@ function MatchInput({
   onSubmit,
   pairs,
 }: Props & { pairs: { left: string; right: string }[] }) {
+  const styles = useStyles();
   const { language } = useSessionLanguage();
   const lefts = useMemo(
     () =>
@@ -334,70 +356,72 @@ function MatchInput({
   );
 }
 
-const styles = StyleSheet.create({
-  layout: { flex: 1, gap: spacing.xl },
-  body: { flex: 1, justifyContent: 'center', gap: spacing.lg },
-  bodyTop: { justifyContent: 'flex-start' },
-  footer: { gap: spacing.md },
-  textArea: {
-    minHeight: 120,
-    fontSize: 20,
-    lineHeight: 28,
-    paddingTop: spacing.lg,
-    paddingBottom: spacing.lg,
-    textAlignVertical: 'top',
-  },
-  wordField: { fontSize: 22, lineHeight: 28, minHeight: 60, textAlign: 'center' },
-  options: { gap: spacing.md },
-  option: {
-    minHeight: MIN_TOUCH + 20,
-    justifyContent: 'center',
-    paddingHorizontal: spacing.lg,
-    paddingVertical: spacing.md,
-    borderRadius: radii.lg,
-    borderWidth: 1.5,
-    borderColor: colors.border,
-    backgroundColor: colors.surface,
-  },
-  optionSelected: { borderColor: colors.primaryBright, backgroundColor: colors.surfaceHighlight },
-  pressed: { opacity: 0.85 },
-  sentence: {
-    minHeight: 96,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    gap: spacing.sm,
-    padding: spacing.md,
-    borderRadius: radii.lg,
-    borderWidth: 1.5,
-    borderColor: colors.borderStrong,
-    backgroundColor: colors.surface,
-  },
-  sentenceEmpty: { justifyContent: 'center', borderStyle: 'dashed' },
-  bank: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm, justifyContent: 'center' },
-  token: {
-    minHeight: MIN_TOUCH + 4,
-    justifyContent: 'center',
-    paddingHorizontal: spacing.lg,
-    borderRadius: radii.md,
-    backgroundColor: colors.surfaceRaised,
-    borderWidth: 1,
-    borderColor: colors.borderStrong,
-  },
-  tokenUsed: { opacity: 0.35 },
-  match: { flex: 1, maxHeight: 520, flexDirection: 'row', gap: spacing.md },
-  column: { flex: 1, gap: spacing.md },
-  // Las fichas crecen para ocupar el espacio libre, con tope para no quedar gigantes.
-  matchItem: {
-    flexGrow: 1,
-    flexBasis: MIN_TOUCH + 20,
-    maxHeight: 110,
-    justifyContent: 'center',
-    padding: spacing.sm,
-    borderRadius: radii.md,
-    borderWidth: 1.5,
-    borderColor: colors.border,
-    backgroundColor: colors.surface,
-  },
-  matched: { borderColor: colors.primarySoft },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    layout: { flex: 1, gap: spacing.xl },
+    body: { flex: 1, justifyContent: 'center', gap: spacing.lg },
+    bodyTop: { justifyContent: 'flex-start' },
+    footer: { gap: spacing.md },
+    textArea: {
+      minHeight: 120,
+      fontSize: 20,
+      lineHeight: 28,
+      paddingTop: spacing.lg,
+      paddingBottom: spacing.lg,
+      textAlignVertical: 'top',
+    },
+    wordField: { fontSize: 22, lineHeight: 28, minHeight: 60, textAlign: 'center' },
+    options: { gap: spacing.md },
+    option: {
+      minHeight: MIN_TOUCH + 20,
+      justifyContent: 'center',
+      paddingHorizontal: spacing.lg,
+      paddingVertical: spacing.md,
+      borderRadius: radii.lg,
+      borderWidth: 1.5,
+      borderColor: colors.border,
+      backgroundColor: colors.surface,
+    },
+    optionSelected: { borderColor: colors.primaryBright, backgroundColor: colors.surfaceHighlight },
+    pressed: { opacity: 0.85 },
+    sentence: {
+      minHeight: 96,
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      alignItems: 'center',
+      gap: spacing.sm,
+      padding: spacing.md,
+      borderRadius: radii.lg,
+      borderWidth: 1.5,
+      borderColor: colors.borderStrong,
+      backgroundColor: colors.surface,
+    },
+    sentenceEmpty: { justifyContent: 'center', borderStyle: 'dashed' },
+    bank: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm, justifyContent: 'center' },
+    token: {
+      minHeight: MIN_TOUCH + 4,
+      justifyContent: 'center',
+      paddingHorizontal: spacing.lg,
+      borderRadius: radii.md,
+      backgroundColor: colors.surfaceRaised,
+      borderWidth: 1,
+      borderColor: colors.borderStrong,
+    },
+    tokenUsed: { opacity: 0.35 },
+    match: { flex: 1, maxHeight: 520, flexDirection: 'row', gap: spacing.md },
+    column: { flex: 1, gap: spacing.md },
+    // Las fichas crecen para ocupar el espacio libre, con tope para no quedar gigantes.
+    matchItem: {
+      flexGrow: 1,
+      flexBasis: MIN_TOUCH + 20,
+      maxHeight: 110,
+      justifyContent: 'center',
+      padding: spacing.sm,
+      borderRadius: radii.md,
+      borderWidth: 1.5,
+      borderColor: colors.border,
+      backgroundColor: colors.surface,
+    },
+    matched: { borderColor: colors.primarySoft },
+  }),
+);

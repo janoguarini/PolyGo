@@ -5,9 +5,12 @@ import { useEffect } from 'react';
 import { Image, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { ErrorState, LoadingState, colors } from '@/design-system';
+import { ErrorState, LoadingState, ThemeProvider, colors, useTheme } from '@/design-system';
 import { AuthProvider, useAuth } from '@/features/auth/AuthProvider';
 import { ConfigMissing } from '@/features/auth/ConfigMissing';
+import { useClientCompatibility } from '@/features/compat/hooks';
+import { mustUpdate } from '@/features/compat/status';
+import { UpdateRequired } from '@/features/compat/UpdateRequired';
 import { PolysToast } from '@/features/polys/PolysToast';
 import { useApplySoundEffectsPref } from '@/features/preferences/soundEffects';
 import { useMyProfile } from '@/features/profile/hooks';
@@ -24,11 +27,21 @@ export default function RootLayout() {
     configureNotifications();
   }, []);
   return (
+    <ThemeProvider>
+      <ThemedRoot />
+    </ThemeProvider>
+  );
+}
+
+/** Todo lo que depende del tema va debajo de ThemeProvider. */
+function ThemedRoot() {
+  const { scheme } = useTheme();
+  return (
     <SafeAreaProvider>
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
           <View style={{ flex: 1, backgroundColor: colors.background }}>
-            <StatusBar style="light" />
+            <StatusBar style={scheme === 'light' ? 'dark' : 'light'} />
             {envProblems.length > 0 ? <ConfigMissing missing={envProblems} /> : <RootNavigator />}
           </View>
         </AuthProvider>
@@ -41,12 +54,22 @@ export default function RootLayout() {
  * Red de seguridad: si una pantalla lanza un error al renderizar, se muestra esto en vez de una
  * pantalla en blanco. El detalle técnico sólo se registra en desarrollo.
  */
-export function ErrorBoundary({ error, retry }: ErrorBoundaryProps) {
+export function ErrorBoundary(props: ErrorBoundaryProps) {
+  // Reemplaza al layout cuando hay un error: necesita su propio ThemeProvider.
+  return (
+    <ThemeProvider>
+      <ErrorScreen {...props} />
+    </ThemeProvider>
+  );
+}
+
+function ErrorScreen({ error, retry }: ErrorBoundaryProps) {
+  const { scheme } = useTheme();
   if (__DEV__) console.error(error);
   return (
     <SafeAreaProvider>
       <View style={{ flex: 1, backgroundColor: colors.background }}>
-        <StatusBar style="light" />
+        <StatusBar style={scheme === 'light' ? 'dark' : 'light'} />
         <ErrorState
           title="Algo salió mal"
           message="Polygo tuvo un error inesperado. Tu progreso guardado no se perdió."
@@ -58,15 +81,20 @@ export function ErrorBoundary({ error, retry }: ErrorBoundaryProps) {
 }
 
 function RootNavigator() {
+  useTheme();
   const { session, initializing, recoveringPassword } = useAuth();
   const profile = useMyProfile();
   useApplySoundEffectsPref();
+  // Fase C.5: versión mínima del servidor. No espera la respuesta: sólo bloquea un rechazo explícito.
+  const compat = useClientCompatibility();
   // La foto propia se baja apenas se conoce, así el perfil ya la tiene en caché al abrirlo.
   const photoUrl = avatarPhotoUrl(profile.data?.profile.avatar_path);
   useEffect(() => {
     if (photoUrl) void Image.prefetch(photoUrl).catch(() => undefined);
   }, [photoUrl]);
 
+  if (compat.data && mustUpdate(compat.data))
+    return <UpdateRequired compat={compat.data} onRetry={() => void compat.refetch()} />;
   if (initializing || (session && profile.isPending))
     return <LoadingState label="Preparando Polygo…" />;
   if (session && profile.isError) {
@@ -115,6 +143,7 @@ function RootNavigator() {
           <Stack.Screen name="shop" options={{ animation: 'slide_from_bottom' }} />
           <Stack.Screen name="plus" options={{ animation: 'slide_from_bottom' }} />
           <Stack.Screen name="review-topics" options={{ animation: 'slide_from_right' }} />
+          <Stack.Screen name="lesson-intro/[id]" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="player/[id]" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="edit-profile" options={{ animation: 'slide_from_bottom' }} />
           <Stack.Screen name="settings" options={{ animation: 'slide_from_right' }} />

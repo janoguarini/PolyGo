@@ -1,5 +1,7 @@
 /**
  * Estado de cada lección en el mapa. Replica la regla de desbloqueo del servidor (is_lesson_unlocked):
+ * el orden de unidades es el de la ruta del usuario (fetchCurriculum ya las trae ordenadas y con la
+ * posición de su ruta: fase C.4);
  * el orden es lineal dentro de cada nivel y cada nivel arranca desbloqueado.
  */
 
@@ -86,4 +88,18 @@ export function withStatus(
     });
 
   return { units: result, currentByLevel };
+}
+
+/**
+ * Con ruta: sólo las unidades de la ruta, en su orden (una unidad publicada fuera de la ruta del
+ * usuario no es parte de su camino). Sin ruta: todas, por posición.
+ */
+export function orderByRoute<T extends { id: string; level: string; position: number }>(
+  units: readonly T[],
+  route: ReadonlyMap<string, number> | null,
+): T[] {
+  if (!route) return [...units];
+  return units
+    .filter((u) => route.has(u.id))
+    .sort((a, b) => a.level.localeCompare(b.level) || route.get(a.id)! - route.get(b.id)!);
 }

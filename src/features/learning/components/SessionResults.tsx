@@ -1,10 +1,20 @@
 import { CheckCircle2, CloudOff, RotateCcw, Trophy } from 'lucide-react-native';
+import type { ReactNode } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Animated, { FadeInUp } from 'react-native-reanimated';
 
 import type { Exercise } from '@shared/exercises';
 
-import { Button, Card, Screen, StatTile, Text, colors, spacing } from '@/design-system';
+import {
+  Button,
+  Card,
+  Screen,
+  StatTile,
+  Text,
+  colors,
+  spacing,
+  themedStyles,
+} from '@/design-system';
 import { TierBadge } from '@/features/profile/components/AchievementBadge';
 import { toUserMessage } from '@/lib/errors';
 
@@ -26,6 +36,8 @@ interface Props {
   takeaways?: string[];
   /** Texto bajo las palabras con errores (por defecto: volverán en los repasos). */
   mistakesHint?: string;
+  /** Contenido adicional al final (p. ej. AL17: volver a la explicación de la lección). */
+  extra?: ReactNode;
   primaryLabel: string;
   onPrimary: () => void;
   onExit: () => void;
@@ -45,6 +57,7 @@ function formatDuration(seconds: number) {
 }
 
 export function SessionResults(props: Props) {
+  const styles = useStyles();
   const { stats, words } = props;
   const mistakeWords = uniqueWords(stats.mistakes, words);
 
@@ -156,6 +169,7 @@ export function SessionResults(props: Props) {
           </Text>
         </Card>
       ) : null}
+      {props.extra}
     </Screen>
   );
 }
@@ -171,13 +185,15 @@ function uniqueWords(exercises: Exercise[], words: Record<string, WordRow>): Wor
   return [...seen.values()];
 }
 
-const styles = StyleSheet.create({
-  hero: { alignItems: 'center', gap: spacing.sm, paddingTop: spacing.xxl },
-  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
-  error: { gap: spacing.sm, borderColor: colors.dangerStrong },
-  row: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-  gap: { gap: spacing.sm },
-  takeaway: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing.sm },
-  flex: { flex: 1 },
-  achievements: { borderColor: colors.goldStrong },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    hero: { alignItems: 'center', gap: spacing.sm, paddingTop: spacing.xxl },
+    grid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
+    error: { gap: spacing.sm, borderColor: colors.dangerStrong },
+    row: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+    gap: { gap: spacing.sm },
+    takeaway: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing.sm },
+    flex: { flex: 1 },
+    achievements: { borderColor: colors.goldStrong },
+  }),
+);

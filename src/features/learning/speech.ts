@@ -1,5 +1,6 @@
 import * as Speech from 'expo-speech';
 import { useEffect } from 'react';
+import { Platform } from 'react-native';
 
 import { HAN, languageConfig } from '@shared/languages';
 
@@ -74,15 +75,36 @@ export function useSpeechLanguage(code: string | null | undefined) {
   useEffect(() => setSpeechLanguage(code), [code]);
 }
 
-/** Velocidades: las palabras sueltas se dicen más despacio que las frases; «lento» para repetir. */
-export const SPEECH_RATES = { word: 0.8, sentence: 0.9, slow: 0.5 } as const;
+/**
+ * Velocidades: las palabras sueltas se dicen más despacio que las frases; «lento» para repetir.
+ * En iOS expo-speech multiplica por AVSpeechUtteranceDefaultSpeechRate (0,5) y la escala de Apple
+ * no es lineal: entre 0,25 y 0,45 casi no se nota la diferencia. Para que «lento» suene lento de
+ * verdad hay que bajar mucho más (0,2 → 0,1 de AVSpeech ≈ 60 % de la velocidad normal). En Android
+ * setSpeechRate sí es lineal: 0,5 = mitad de velocidad.
+ */
+export const SPEECH_RATES = {
+  word: 0.8,
+  sentence: 0.9,
+  slow: Platform.OS === 'ios' ? 0.2 : 0.5,
+} as const;
 
 /**
  * Texto y velocidad para el motor. Sin puntuación final, las palabras sueltas suenan cortadas o
  * con tono de pregunta: el punto les da la entonación de una frase terminada.
  */
+/**
+ * Lo que se pronuncia de un texto: sin emojis (cierre de inglés A1, PW). Una escena dibujada con
+ * emojis («🍎 🍎 🍎») es la imagen del ejercicio: el motor la leería en voz alta («red apple…») y
+ * daría la respuesta. Vacío = no hay nada para decir.
+ */
+export const spokenText = (text: string) =>
+  text
+    .replace(/[\p{Extended_Pictographic}\u{1F1E6}-\u{1F1FF}\u{FE0F}\u{200D}\u{20E3}]/gu, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
 export function speechInput(text: string, slow = false) {
-  const trimmed = text.trim();
+  const trimmed = spokenText(text);
   // En chino no hay espacios: es «palabra» si tiene hasta dos caracteres.
   const isWord = HAN.test(trimmed) ? trimmed.length <= 2 : !/\s/.test(trimmed);
   return {
@@ -96,6 +118,7 @@ export function speechInput(text: string, slow = false) {
  * de un hablante nativo).
  */
 export function speak(text: string, options: { slow?: boolean } = {}) {
+  if (!spokenText(text)) return;
   const locale = currentLocale;
   void (async () => {
     await configureAudio();
@@ -114,6 +137,173 @@ export function speak(text: string, options: { slow?: boolean } = {}) {
   })();
 }
 
+/**
+ * Frase de la interfaz en español (p. ej. lo que dicen los personajes del camino), con la mejor voz
+ * en español del dispositivo: no usa el idioma que se estudia. Un poco más aguda y rápida, como un
+ * personaje. Sin emojis (no se leen).
+ */
+export function speakSpanish(text: string) {
+  const spoken = spokenText(text);
+  if (!spoken) return;
+  const locale = 'es-AR';
+  void (async () => {
+    await configureAudio();
+    const voice = await pickVoice(locale);
+    if (await Speech.isSpeakingAsync()) await Speech.stop();
+    Speech.speak(spoken, {
+      language: locale,
+      voice,
+      rate: 1,
+      pitch: 1.15,
+      onError: (error) => {
+        if (__DEV__) console.warn('expo-speech', error);
+      },
+    });
+  })();
+}
+
 export function stopSpeaking() {
+  dialogueToken++;
   void Speech.stop();
+}
+
+/** Voz de cada hablante de un diálogo y el tono con que se dice. */
+export interface DialogueVoice {
+  voice: string | undefined;
+  pitch: number;
+}
+
+/**
+ * Voces de un diálogo y qué tan reales son, para no prometer en la interfaz lo que el dispositivo no
+ * tiene:
+ * - `available`: hay al menos una voz instalada del idioma. Si no, el motor usa la del sistema (puede
+ *   sonar en otro idioma o no sonar).
+ * - `distinct`: `a` y `b` son dos voces (hablantes) distintas. Si es `false`, `b` es la MISMA voz con
+ *   otro tono: ayuda a separar las líneas, pero no es una segunda voz y no se presenta como tal.
+ */
+export interface DialogueVoices {
+  a: DialogueVoice;
+  b: DialogueVoice;
+  available: boolean;
+  distinct: boolean;
+}
+
+/**
+ * Hablante de una voz, para saber si dos voces son de verdad distintas. iOS: el nombre sin la calidad
+ * («Samantha (Enhanced)» = «Samantha»); Android: el nombre sin la variante de red o local
+ * (`en-us-x-iol-local` = `en-us-x-iol-network`).
+ */
+export function voiceSpeaker(v: Pick<Speech.Voice, 'identifier'> & { name?: string }) {
+  return (v.name || v.identifier)
+    .toLowerCase()
+    .replace(/\s*\(.*\)\s*$/, '')
+    .replace(/-(local|network)$/, '');
+}
+
+/**
+ * Voces para un diálogo (fase C): `a` es la mejor voz instalada para el locale y `b` la mejor de
+ * OTRO hablante. En diálogos se prefieren las voces locales: en Android, una voz `-network` falla sin
+ * conexión. Si no hay un segundo hablante, `b` usa la misma voz con otro tono y `distinct` es
+ * `false`. La velocidad nunca se acelera: la fija el estímulo.
+ */
+export function dialogueVoices(
+  all: readonly (Pick<Speech.Voice, 'identifier' | 'language' | 'quality'> & { name?: string })[],
+  locale: string,
+): DialogueVoices {
+  const score = (v: (typeof all)[number]) =>
+    voiceScore(v, locale) - (v.identifier.toLowerCase().endsWith('-network') ? 5 : 0);
+  const ranked = all
+    .filter((v) => voiceScore(v, locale) > -Infinity)
+    .sort((x, y) => score(y) - score(x));
+  const first = ranked[0];
+  const second = first && ranked.find((v) => voiceSpeaker(v) !== voiceSpeaker(first));
+  return {
+    a: { voice: first?.identifier, pitch: 1 },
+    b: second ? { voice: second.identifier, pitch: 1 } : { voice: first?.identifier, pitch: 1.25 },
+    available: !!first,
+    distinct: !!second,
+  };
+}
+
+const dialogueVoiceCache = new Map<string, Promise<DialogueVoices>>();
+
+function pickDialogueVoices(locale: string) {
+  const cached = dialogueVoiceCache.get(locale);
+  if (cached) return cached;
+  const picked = Speech.getAvailableVoicesAsync()
+    .then((all) => {
+      if (all.length === 0) dialogueVoiceCache.delete(locale);
+      return dialogueVoices(all, locale);
+    })
+    .catch(() => {
+      dialogueVoiceCache.delete(locale);
+      return dialogueVoices([], locale);
+    });
+  dialogueVoiceCache.set(locale, picked);
+  return picked;
+}
+
+/** Cada reproducción nueva (o stopSpeaking) invalida la anterior. */
+let dialogueToken = 0;
+
+export interface DialogueLine {
+  text: string;
+  voice: 'a' | 'b';
+}
+
+/**
+ * Dice un mensaje oral línea por línea, cada hablante con su voz (estímulos de comprensión auditiva).
+ * `rate` viene del estímulo; `slow` lo baja para repetir despacio. Devuelve una función que corta la
+ * reproducción. Los errores del motor llegan a `onError` (la app ofrece reintentar).
+ */
+export function speakDialogue(
+  lines: readonly DialogueLine[],
+  rate: number,
+  handlers: {
+    slow?: boolean;
+    onLine?: (index: number) => void;
+    onDone?: () => void;
+    onError?: (error: unknown) => void;
+    /** Qué voces se van a usar (si hay voz del idioma y si son dos hablantes distintos). */
+    onVoices?: (info: { available: boolean; distinct: boolean }) => void;
+  } = {},
+): () => void {
+  const token = ++dialogueToken;
+  const locale = currentLocale;
+  const speed = handlers.slow ? Math.min(rate, SPEECH_RATES.slow) : rate;
+  const alive = () => token === dialogueToken;
+  void (async () => {
+    try {
+      await configureAudio();
+      const voices = await pickDialogueVoices(locale);
+      if (alive()) handlers.onVoices?.({ available: voices.available, distinct: voices.distinct });
+      if (await Speech.isSpeakingAsync()) await Speech.stop();
+      const sayLine = (i: number) => {
+        if (!alive()) return;
+        if (i >= lines.length) {
+          handlers.onDone?.();
+          return;
+        }
+        const line = lines[i]!;
+        const v = line.voice === 'a' ? voices.a : voices.b;
+        handlers.onLine?.(i);
+        Speech.speak(speechInput(line.text).text, {
+          language: locale,
+          voice: v.voice,
+          pitch: v.pitch,
+          rate: speed,
+          onDone: () => sayLine(i + 1),
+          onError: (error) => {
+            if (alive()) handlers.onError?.(error);
+          },
+        });
+      };
+      sayLine(0);
+    } catch (error) {
+      if (alive()) handlers.onError?.(error);
+    }
+  })();
+  return () => {
+    if (alive()) stopSpeaking();
+  };
 }

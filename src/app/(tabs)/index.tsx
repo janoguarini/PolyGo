@@ -33,6 +33,7 @@ import {
   elevation,
   radii,
   spacing,
+  themedStyles,
 } from '@/design-system';
 import { LessonPath } from '@/features/learning/components/LessonPath';
 import { useCurriculum, useLearningSummary } from '@/features/learning/hooks';
@@ -54,6 +55,7 @@ const FOCUS_RATIO = 0.4;
  * scrolleando, aparece un botón para volver a ella.
  */
 export default function HomeScreen() {
+  const styles = useStyles();
   const me = useMyProfile();
   const summary = useLearningSummary();
   const curriculum = useCurriculum();
@@ -305,66 +307,68 @@ export default function HomeScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  header: {
-    paddingHorizontal: spacing.xl,
-    paddingTop: spacing.sm,
-    paddingBottom: spacing.md,
-    gap: spacing.sm,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: colors.border,
-  },
-  headerRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  language: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.xs,
-    alignSelf: 'flex-start',
-  },
-  languageFlag: { fontSize: 18, lineHeight: 22 },
-  chevronOpen: { transform: [{ rotate: '180deg' }] },
-  pressed: { opacity: 0.7 },
-  flex: { flex: 1 },
-  // Racha: apagada mientras no estudiaste hoy, encendida en naranja cuando ya cumpliste.
-  streak: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.xs,
-    paddingVertical: spacing.xxs,
-    paddingHorizontal: spacing.md,
-    borderRadius: radii.pill,
-    backgroundColor: colors.surfaceRaised,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  streakActive: { backgroundColor: 'rgba(251,146,60,0.14)', borderColor: colors.streak },
-  tabular: { fontVariant: ['tabular-nums'] },
-  banner: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.md,
-    padding: spacing.md,
-    borderRadius: radii.md,
-    borderWidth: 1,
-    backgroundColor: colors.surfaceRaised,
-  },
-  risk: { borderColor: colors.streak },
-  claim: { borderColor: colors.info },
-  freezeBadge: { flexDirection: 'row', alignItems: 'center', gap: 2, marginLeft: 2 },
-  riskPressed: { opacity: 0.85 },
-  content: { paddingBottom: spacing.huge },
-  fabWrap: { position: 'absolute', bottom: spacing.lg, left: 0, right: 0, alignItems: 'center' },
-  fab: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.sm,
-    paddingHorizontal: spacing.xl,
-    paddingVertical: spacing.md,
-    borderRadius: radii.pill,
-    backgroundColor: colors.primary,
-    borderWidth: 1,
-    borderColor: colors.primaryBright,
-    ...elevation.glow,
-  },
-  fabPressed: { backgroundColor: colors.primaryPressed, transform: [{ scale: 0.97 }] },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    header: {
+      paddingHorizontal: spacing.xl,
+      paddingTop: spacing.sm,
+      paddingBottom: spacing.md,
+      gap: spacing.sm,
+      borderBottomWidth: StyleSheet.hairlineWidth,
+      borderBottomColor: colors.border,
+    },
+    headerRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+    language: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.xs,
+      alignSelf: 'flex-start',
+    },
+    languageFlag: { fontSize: 18, lineHeight: 22 },
+    chevronOpen: { transform: [{ rotate: '180deg' }] },
+    pressed: { opacity: 0.7 },
+    flex: { flex: 1 },
+    // Racha: apagada mientras no estudiaste hoy, encendida en naranja cuando ya cumpliste.
+    streak: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.xs,
+      paddingVertical: spacing.xxs,
+      paddingHorizontal: spacing.md,
+      borderRadius: radii.pill,
+      backgroundColor: colors.surfaceRaised,
+      borderWidth: 1,
+      borderColor: colors.border,
+    },
+    streakActive: { backgroundColor: 'rgba(251,146,60,0.14)', borderColor: colors.streak },
+    tabular: { fontVariant: ['tabular-nums'] },
+    banner: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.md,
+      padding: spacing.md,
+      borderRadius: radii.md,
+      borderWidth: 1,
+      backgroundColor: colors.surfaceRaised,
+    },
+    risk: { borderColor: colors.streak },
+    claim: { borderColor: colors.info },
+    freezeBadge: { flexDirection: 'row', alignItems: 'center', gap: 2, marginLeft: 2 },
+    riskPressed: { opacity: 0.85 },
+    content: { paddingBottom: spacing.huge },
+    fabWrap: { position: 'absolute', bottom: spacing.lg, left: 0, right: 0, alignItems: 'center' },
+    fab: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.sm,
+      paddingHorizontal: spacing.xl,
+      paddingVertical: spacing.md,
+      borderRadius: radii.pill,
+      backgroundColor: colors.primary,
+      borderWidth: 1,
+      borderColor: colors.primaryBright,
+      ...elevation.glow,
+    },
+    fabPressed: { backgroundColor: colors.primaryPressed, transform: [{ scale: 0.97 }] },
+  }),
+);

@@ -6,7 +6,16 @@ import type { BattleFinish, PlayerResult } from '@shared/protocol';
 import { getRank } from '@shared/ranking';
 import { accuracy } from '@shared/wordRush';
 
-import { Button, Card, RankEmblemForRating, Text, colors, radii, spacing } from '@/design-system';
+import {
+  Button,
+  Card,
+  RankEmblemForRating,
+  Text,
+  colors,
+  radii,
+  spacing,
+  themedStyles,
+} from '@/design-system';
 import { TierBadge } from '@/features/profile/components/AchievementBadge';
 
 import { BotBadge } from './BotBadge';
@@ -24,6 +33,7 @@ const TITLES = { win: '¡Victoria!', loss: 'Derrota', draw: 'Empate' } as const;
 const EMOJIS = { win: '🏆', loss: '💪', draw: '🤝', practice: '🎯' } as const;
 
 export function BattleResult({ result, onPlayAgain, onExit }: Props) {
+  const styles = useStyles();
   const me = result.players.find((p) => p.slot === result.yourSlot)!;
   const opponent = result.players.find((p) => p.slot !== result.yourSlot);
   const practice = result.mode === 'practice';
@@ -147,6 +157,7 @@ function Line({
   player: PlayerResult;
   highlight?: boolean;
 }) {
+  const styles = useStyles();
   const pct = Math.round(accuracy(player) * 100);
   return (
     <View
@@ -187,6 +198,7 @@ function RatingChange({
   placedBefore: boolean;
   won: boolean;
 }) {
+  const styles = useStyles();
   const delta = after - before;
   const sign = delta > 0 ? '+' : '';
   const rankBefore = getRank(before).label;
@@ -237,25 +249,27 @@ function RatingChange({
   );
 }
 
-const styles = StyleSheet.create({
-  nameRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
-  shrink: { flexShrink: 1 },
-  wrap: { gap: spacing.lg },
-  header: { alignItems: 'center', gap: spacing.sm, marginVertical: spacing.lg },
-  emojiWrap: {
-    width: 112,
-    height: 112,
-    borderRadius: radii.pill,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.surfaceRaised,
-  },
-  emojiWin: { backgroundColor: 'rgba(247, 215, 116, 0.16)' },
-  emoji: { fontSize: 64, lineHeight: 78, textAlign: 'center' },
-  gap: { gap: spacing.md },
-  row: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  flex: { flex: 1 },
-  score: { minWidth: 56, textAlign: 'right' },
-  rating: { flexDirection: 'row', alignItems: 'center', gap: spacing.lg },
-  achievements: { borderColor: colors.goldStrong },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    nameRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
+    shrink: { flexShrink: 1 },
+    wrap: { gap: spacing.lg },
+    header: { alignItems: 'center', gap: spacing.sm, marginVertical: spacing.lg },
+    emojiWrap: {
+      width: 112,
+      height: 112,
+      borderRadius: radii.pill,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: colors.surfaceRaised,
+    },
+    emojiWin: { backgroundColor: 'rgba(247, 215, 116, 0.16)' },
+    emoji: { fontSize: 64, lineHeight: 78, textAlign: 'center' },
+    gap: { gap: spacing.md },
+    row: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+    flex: { flex: 1 },
+    score: { minWidth: 56, textAlign: 'right' },
+    rating: { flexDirection: 'row', alignItems: 'center', gap: spacing.lg },
+    achievements: { borderColor: colors.goldStrong },
+  }),
+);

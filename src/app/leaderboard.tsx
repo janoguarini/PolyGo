@@ -17,6 +17,7 @@ import {
   gradients,
   radii,
   spacing,
+  themedStyles,
 } from '@/design-system';
 import { useAuth } from '@/features/auth/AuthProvider';
 import { useBlockedIds } from '@/features/blocks/api';
@@ -33,6 +34,7 @@ import { LeaderboardRow, Podium, topPercent } from '@/features/ranked/Leaderboar
 const RANKED_LANGUAGES = LANGUAGES.filter((l) => l.ranked);
 
 export default function LeaderboardScreen() {
+  const styles = useStyles();
   const { session } = useAuth();
   const meId = session?.user.id;
   const me = useMyProfile();
@@ -202,7 +204,7 @@ export default function LeaderboardScreen() {
 
       {!languageActive ? (
         <Text variant="caption" color="textMuted">
-          La global suma tu ELO de cada idioma en el que ya estás posicionado.
+          La global toma el ELO de tu mejor idioma entre los que ya estás posicionado.
         </Text>
       ) : null}
 
@@ -229,6 +231,11 @@ export default function LeaderboardScreen() {
                 entry={entry}
                 isMe={entry.userId === meId}
                 stars={stars.data?.[entry.userId]}
+                languageName={
+                  languageActive
+                    ? undefined
+                    : RANKED_LANGUAGES.find((l) => l.code === entry.languageCode)?.name
+                }
               />
             ))}
           </View>
@@ -238,58 +245,60 @@ export default function LeaderboardScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  hero: { flexDirection: 'row', alignItems: 'center', gap: spacing.lg },
-  trophy: {
-    width: 72,
-    height: 72,
-    borderRadius: 36,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'rgba(245, 197, 66, 0.16)',
-    borderWidth: 2,
-    borderColor: colors.goldStrong,
-  },
-  heroInfo: { flex: 1, gap: spacing.xxs },
-  tabs: {
-    flexDirection: 'row',
-    padding: spacing.xs,
-    gap: spacing.xs,
-    borderRadius: radii.pill,
-    backgroundColor: colors.surface,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  tab: {
-    flex: 1,
-    flexDirection: 'row',
-    paddingHorizontal: spacing.md,
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: spacing.xs,
-    height: 40,
-    borderRadius: radii.pill,
-  },
-  tabActive: { backgroundColor: colors.primary },
-  tabFlag: { fontSize: 16, lineHeight: 20 },
-  shrink: { flexShrink: 1 },
-  chevronOpen: { transform: [{ rotate: '180deg' }] },
-  picker: {
-    padding: spacing.xs,
-    borderRadius: radii.lg,
-    backgroundColor: colors.surface,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  option: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.sm,
-    paddingHorizontal: spacing.md,
-    height: 44,
-    borderRadius: radii.md,
-  },
-  optionPressed: { backgroundColor: colors.surfaceRaised },
-  optionLabel: { flex: 1 },
-  list: { gap: spacing.xs },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    hero: { flexDirection: 'row', alignItems: 'center', gap: spacing.lg },
+    trophy: {
+      width: 72,
+      height: 72,
+      borderRadius: 36,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: 'rgba(245, 197, 66, 0.16)',
+      borderWidth: 2,
+      borderColor: colors.goldStrong,
+    },
+    heroInfo: { flex: 1, gap: spacing.xxs },
+    tabs: {
+      flexDirection: 'row',
+      padding: spacing.xs,
+      gap: spacing.xs,
+      borderRadius: radii.pill,
+      backgroundColor: colors.surface,
+      borderWidth: 1,
+      borderColor: colors.border,
+    },
+    tab: {
+      flex: 1,
+      flexDirection: 'row',
+      paddingHorizontal: spacing.md,
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: spacing.xs,
+      height: 40,
+      borderRadius: radii.pill,
+    },
+    tabActive: { backgroundColor: colors.primary },
+    tabFlag: { fontSize: 16, lineHeight: 20 },
+    shrink: { flexShrink: 1 },
+    chevronOpen: { transform: [{ rotate: '180deg' }] },
+    picker: {
+      padding: spacing.xs,
+      borderRadius: radii.lg,
+      backgroundColor: colors.surface,
+      borderWidth: 1,
+      borderColor: colors.border,
+    },
+    option: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.sm,
+      paddingHorizontal: spacing.md,
+      height: 44,
+      borderRadius: radii.md,
+    },
+    optionPressed: { backgroundColor: colors.surfaceRaised },
+    optionLabel: { flex: 1 },
+    list: { gap: spacing.xs },
+  }),
+);

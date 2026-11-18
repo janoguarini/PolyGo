@@ -1,6 +1,7 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import { AppState, Platform } from 'react-native';
 
+import { clientHeaders } from './clientInfo';
 import type { Database } from './database.types';
 import { env } from './env';
 import { sessionStorage } from './secureStorage';
@@ -19,6 +20,8 @@ export const supabase: SupabaseClient<Database> | null = env
         // PKCE: los enlaces de confirmación y recuperación traen un ?code= que se canjea en la app.
         flowType: 'pkce',
       },
+      // Fase C.5: el servidor sabe qué recorrido puede dibujar esta build (sin cabecera = build antigua).
+      global: { headers: clientHeaders() },
     })
   : null;
 

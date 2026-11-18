@@ -12,6 +12,7 @@ import {
   palette,
   radii,
   spacing,
+  themedStyles,
 } from '@/design-system';
 import { FramedAvatar } from '@/features/cosmetics/FramedAvatar';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
@@ -34,6 +35,7 @@ export function topPercent(position: number, total: number): number {
 
 /** Los tres primeros, en escalones (2.º, 1.º, 3.º). */
 export function Podium({ entries, meId }: { entries: LeaderboardEntry[]; meId?: string }) {
+  const styles = useStyles();
   const order = [entries[1], entries[0], entries[2]];
   return (
     <View style={styles.podium}>
@@ -73,7 +75,7 @@ export function Podium({ entries, meId }: { entries: LeaderboardEntry[]; meId?: 
               {isMe ? 'Vos' : entry.username}
             </Text>
             <View style={styles.podiumElo}>
-              {entry.languageCode ? <RankEmblemForRating rating={entry.rating} size={20} /> : null}
+              <RankEmblemForRating rating={entry.rating} size={20} />
               <Text variant="caption" color="text">
                 {entry.rating}
               </Text>
@@ -101,12 +103,16 @@ export function LeaderboardRow({
   isMe,
   stars,
   highlight = isMe,
+  languageName,
 }: {
   entry: LeaderboardEntry;
   isMe: boolean;
   stars?: number;
   highlight?: boolean;
+  /** En la global: el idioma del rating mostrado (el mejor del jugador). */
+  languageName?: string;
 }) {
+  const styles = useStyles();
   const flag = flagEmoji(entry.region);
   return (
     <Pressable
@@ -141,11 +147,16 @@ export function LeaderboardRow({
           {entry.username}
           {flag ? ` ${flag}` : ''}
         </Text>
-        {isMe || stars !== undefined ? (
+        {isMe || stars !== undefined || languageName ? (
           <View style={styles.sub}>
             {isMe ? (
               <Text variant="caption" color="primarySoft">
                 Vos
+              </Text>
+            ) : null}
+            {languageName ? (
+              <Text variant="caption" color="textMuted">
+                {languageName}
               </Text>
             ) : null}
             {stars !== undefined ? (
@@ -160,8 +171,8 @@ export function LeaderboardRow({
         ) : null}
       </View>
       <View style={styles.elo}>
-        {/* En la global el número es una suma de idiomas: no corresponde a un rango. */}
-        {entry.languageCode ? <RankEmblemForRating rating={entry.rating} size={28} /> : null}
+        {/* También en la global: el número es el rating de un idioma (el mejor del jugador). */}
+        <RankEmblemForRating rating={entry.rating} size={28} />
         <Text variant="bodyStrong" color="textStrong" style={styles.eloText}>
           {entry.rating}
         </Text>
@@ -170,55 +181,57 @@ export function LeaderboardRow({
   );
 }
 
-const styles = StyleSheet.create({
-  pressed: { opacity: 0.75 },
-  podium: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    gap: spacing.sm,
-    paddingTop: spacing.sm,
-  },
-  podiumSlot: { flex: 1, alignItems: 'center', gap: spacing.xxs },
-  podiumRing: { padding: 2, borderWidth: 3, borderRadius: radii.pill },
-  podiumElo: { flexDirection: 'row', alignItems: 'center', gap: spacing.xxs },
-  step: {
-    alignSelf: 'stretch',
-    marginTop: spacing.xs,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderTopWidth: 3,
-    borderTopLeftRadius: radii.md,
-    borderTopRightRadius: radii.md,
-    backgroundColor: colors.surfaceHighlight,
-  },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.md,
-    paddingVertical: spacing.sm,
-    paddingHorizontal: spacing.md,
-    borderRadius: radii.md,
-    backgroundColor: colors.surface,
-  },
-  rowAlt: { backgroundColor: colors.surfaceRaised },
-  rowMe: {
-    backgroundColor: colors.surfaceHighlight,
-    borderWidth: 1.5,
-    borderColor: colors.primaryBright,
-  },
-  badge: {
-    minWidth: 34,
-    height: 28,
-    paddingHorizontal: spacing.xs,
-    borderRadius: radii.sm,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: palette.ink600,
-  },
-  badgeMe: { backgroundColor: colors.primary },
-  badgeText: { fontVariant: ['tabular-nums'] },
-  name: { flex: 1, gap: 2 },
-  sub: { flexDirection: 'row', alignItems: 'center', gap: spacing.xxs },
-  elo: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
-  eloText: { minWidth: 40, textAlign: 'right', fontVariant: ['tabular-nums'] },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    pressed: { opacity: 0.75 },
+    podium: {
+      flexDirection: 'row',
+      alignItems: 'flex-end',
+      gap: spacing.sm,
+      paddingTop: spacing.sm,
+    },
+    podiumSlot: { flex: 1, alignItems: 'center', gap: spacing.xxs },
+    podiumRing: { padding: 2, borderWidth: 3, borderRadius: radii.pill },
+    podiumElo: { flexDirection: 'row', alignItems: 'center', gap: spacing.xxs },
+    step: {
+      alignSelf: 'stretch',
+      marginTop: spacing.xs,
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderTopWidth: 3,
+      borderTopLeftRadius: radii.md,
+      borderTopRightRadius: radii.md,
+      backgroundColor: colors.surfaceHighlight,
+    },
+    row: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.md,
+      paddingVertical: spacing.sm,
+      paddingHorizontal: spacing.md,
+      borderRadius: radii.md,
+      backgroundColor: colors.surface,
+    },
+    rowAlt: { backgroundColor: colors.surfaceRaised },
+    rowMe: {
+      backgroundColor: colors.surfaceHighlight,
+      borderWidth: 1.5,
+      borderColor: colors.primaryBright,
+    },
+    badge: {
+      minWidth: 34,
+      height: 28,
+      paddingHorizontal: spacing.xs,
+      borderRadius: radii.sm,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: palette.ink600,
+    },
+    badgeMe: { backgroundColor: colors.primary },
+    badgeText: { fontVariant: ['tabular-nums'] },
+    name: { flex: 1, gap: 2 },
+    sub: { flexDirection: 'row', alignItems: 'center', gap: spacing.xxs },
+    elo: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
+    eloText: { minWidth: 40, textAlign: 'right', fontVariant: ['tabular-nums'] },
+  }),
+);

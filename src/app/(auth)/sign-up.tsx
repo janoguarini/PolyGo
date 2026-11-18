@@ -5,13 +5,14 @@ import { MailCheck } from 'lucide-react-native';
 import { Controller, useForm } from 'react-hook-form';
 import { StyleSheet, View } from 'react-native';
 
-import { Button, Screen, Text, TextField, colors, spacing } from '@/design-system';
+import { Button, Screen, Text, TextField, colors, spacing, useTheme } from '@/design-system';
 import { signUp } from '@/features/auth/api';
 import { FormMessage } from '@/features/auth/FormMessage';
 import { signUpSchema, type SignUpValues } from '@/features/auth/schemas';
 import { toUserMessage } from '@/lib/errors';
 
 export default function SignUpScreen() {
+  useTheme();
   const { control, handleSubmit, formState, getValues } = useForm<SignUpValues>({
     resolver: zodResolver(signUpSchema),
     defaultValues: { email: '', password: '', confirmPassword: '' },

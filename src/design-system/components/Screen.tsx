@@ -1,3 +1,4 @@
+import { themedStyles } from '../theme';
 import { LinearGradient } from 'expo-linear-gradient';
 import type { ReactNode, Ref } from 'react';
 import {
@@ -56,6 +57,7 @@ export function Screen({
   onScrollBeginDrag,
   onTouchStart,
 }: ScreenProps) {
+  const styles = useStyles();
   const content = scroll ? (
     <ScrollView
       ref={scrollRef}
@@ -109,15 +111,17 @@ export function Screen({
   );
 }
 
-const styles = StyleSheet.create({
-  fill: { flex: 1, backgroundColor: 'transparent' },
-  content: { padding: spacing.xl, gap: spacing.lg, flexGrow: 1 },
-  footer: {
-    paddingHorizontal: spacing.xl,
-    paddingTop: spacing.md,
-    paddingBottom: spacing.lg,
-    gap: spacing.sm,
-    borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: colors.border,
-  },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    fill: { flex: 1, backgroundColor: 'transparent' },
+    content: { padding: spacing.xl, gap: spacing.lg, flexGrow: 1 },
+    footer: {
+      paddingHorizontal: spacing.xl,
+      paddingTop: spacing.md,
+      paddingBottom: spacing.lg,
+      gap: spacing.sm,
+      borderTopWidth: StyleSheet.hairlineWidth,
+      borderTopColor: colors.border,
+    },
+  }),
+);

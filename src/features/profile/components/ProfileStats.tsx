@@ -2,7 +2,7 @@ import { ChartNoAxesColumn, ChevronDown, Check, Flame, Target, Zap } from 'lucid
 import { useState, type ReactNode } from 'react';
 import { Modal, Pressable, StyleSheet, View } from 'react-native';
 
-import { Card, ErrorState, Text, colors, radii, spacing } from '@/design-system';
+import { Card, ErrorState, Text, colors, radii, spacing, themedStyles } from '@/design-system';
 
 import { useCompetitiveStats } from '../hooks';
 
@@ -17,6 +17,7 @@ const PERIODS: { label: string; days: number | null }[] = [
 
 /** Encabezado + 4 estadísticas competitivas del período elegido. */
 export function PeriodStats() {
+  const styles = useStyles();
   const [period, setPeriod] = useState(PERIODS[1]!);
   const [open, setOpen] = useState(false);
   const stats = useCompetitiveStats(period.days);
@@ -138,52 +139,54 @@ export function PeriodStats() {
   );
 }
 
-const styles = StyleSheet.create({
-  gap: { gap: spacing.md },
-  sectionRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
-  select: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.xs,
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.xs,
-    borderRadius: radii.pill,
-    borderWidth: 1,
-    borderColor: colors.borderStrong,
-    backgroundColor: colors.surface,
-    minHeight: 32,
-  },
-  tiles: { flexDirection: 'row', gap: spacing.sm },
-  tile: {
-    flex: 1,
-    alignItems: 'center',
-    gap: spacing.xs,
-    paddingVertical: spacing.md,
-    paddingHorizontal: spacing.xs,
-    borderRadius: radii.lg,
-    backgroundColor: colors.surface,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  iconCircle: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  backdrop: {
-    flex: 1,
-    backgroundColor: colors.overlay,
-    justifyContent: 'center',
-    padding: spacing.xxl,
-  },
-  menu: { gap: spacing.xs },
-  option: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: spacing.md,
-    minHeight: 44,
-  },
-  flex: { flex: 1 },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    gap: { gap: spacing.md },
+    sectionRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+    select: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.xs,
+      paddingHorizontal: spacing.md,
+      paddingVertical: spacing.xs,
+      borderRadius: radii.pill,
+      borderWidth: 1,
+      borderColor: colors.borderStrong,
+      backgroundColor: colors.surface,
+      minHeight: 32,
+    },
+    tiles: { flexDirection: 'row', gap: spacing.sm },
+    tile: {
+      flex: 1,
+      alignItems: 'center',
+      gap: spacing.xs,
+      paddingVertical: spacing.md,
+      paddingHorizontal: spacing.xs,
+      borderRadius: radii.lg,
+      backgroundColor: colors.surface,
+      borderWidth: 1,
+      borderColor: colors.border,
+    },
+    iconCircle: {
+      width: 40,
+      height: 40,
+      borderRadius: 20,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    backdrop: {
+      flex: 1,
+      backgroundColor: colors.overlay,
+      justifyContent: 'center',
+      padding: spacing.xxl,
+    },
+    menu: { gap: spacing.xs },
+    option: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingVertical: spacing.md,
+      minHeight: 44,
+    },
+    flex: { flex: 1 },
+  }),
+);

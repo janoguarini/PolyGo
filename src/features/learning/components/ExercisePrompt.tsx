@@ -3,14 +3,25 @@ import { StyleSheet, View } from 'react-native';
 
 import type { Exercise } from '@shared/exercises';
 
-import { Text, colors, radii, spacing } from '@/design-system';
+import { Text, colors, radii, spacing, themedStyles } from '@/design-system';
 
 import { TargetText } from '../readings';
-import { speak } from '../speech';
+import { speak, spokenText } from '../speech';
+import { ContextStimulus } from './ContextStimulus';
 import { SpeakButton } from './SpeakButton';
 
-/** Parte superior del ejercicio: enunciado y estímulo según el tipo. */
-export function ExercisePrompt({ exercise }: { exercise: Exercise }) {
+/**
+ * Parte superior del ejercicio: enunciado y estímulo según el tipo. `answered`: ya se respondió
+ * (feedback); en comprensión auditiva habilita la transcripción.
+ */
+export function ExercisePrompt({
+  exercise,
+  answered = false,
+}: {
+  exercise: Exercise;
+  answered?: boolean;
+}) {
+  const styles = useStyles();
   const p = exercise.payload;
 
   // Si el ejercicio tiene algo para escuchar, suena una vez al aparecer (después, con el botón).
@@ -88,13 +99,21 @@ export function ExercisePrompt({ exercise }: { exercise: Exercise }) {
         </View>
       ) : null}
 
+      {p.type === 'context_choice' ? (
+        // El audio de comprensión lo maneja ContextStimulus (diálogo con dos voces), no el autoplay.
+        <ContextStimulus stimulus={p.stimulus} question={p.question} answered={answered} />
+      ) : null}
+
       {p.type === 'short_answer' ? (
         <View style={styles.gap}>
           <View style={styles.row}>
-            <View style={styles.gap}>
-              <SpeakButton text={p.question} />
-              <SpeakButton text={p.question} slow />
-            </View>
+            {/* Una escena sólo con emojis (PW) no tiene nada para escuchar. */}
+            {spokenText(p.question) ? (
+              <View style={styles.gap}>
+                <SpeakButton text={p.question} />
+                <SpeakButton text={p.question} slow />
+              </View>
+            ) : null}
             <View style={styles.flex}>
               <Bubble text={p.question} />
             </View>
@@ -107,6 +126,7 @@ export function ExercisePrompt({ exercise }: { exercise: Exercise }) {
 }
 
 function Bubble({ text }: { text: string }) {
+  const styles = useStyles();
   return (
     <View style={styles.bubble}>
       <TargetText variant="bodyStrong" color="textStrong">
@@ -116,28 +136,30 @@ function Bubble({ text }: { text: string }) {
   );
 }
 
-const styles = StyleSheet.create({
-  wrapper: { gap: spacing.lg },
-  center: { alignItems: 'center', gap: spacing.sm, paddingVertical: spacing.md },
-  row: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  flex: { flex: 1 },
-  gap: { gap: spacing.sm },
-  emoji: { fontSize: 96, lineHeight: 116 },
-  masked: { letterSpacing: 4 },
-  sourceCard: {
-    gap: spacing.sm,
-    paddingHorizontal: spacing.xl,
-    paddingVertical: spacing.xl,
-    borderRadius: radii.lg,
-    backgroundColor: colors.surfaceRaised,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  bubble: {
-    padding: spacing.lg,
-    borderRadius: radii.lg,
-    backgroundColor: colors.surfaceRaised,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    wrapper: { gap: spacing.lg },
+    center: { alignItems: 'center', gap: spacing.sm, paddingVertical: spacing.md },
+    row: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+    flex: { flex: 1 },
+    gap: { gap: spacing.sm },
+    emoji: { fontSize: 96, lineHeight: 116 },
+    masked: { letterSpacing: 4 },
+    sourceCard: {
+      gap: spacing.sm,
+      paddingHorizontal: spacing.xl,
+      paddingVertical: spacing.xl,
+      borderRadius: radii.lg,
+      backgroundColor: colors.surfaceRaised,
+      borderWidth: 1,
+      borderColor: colors.border,
+    },
+    bubble: {
+      padding: spacing.lg,
+      borderRadius: radii.lg,
+      backgroundColor: colors.surfaceRaised,
+      borderWidth: 1,
+      borderColor: colors.border,
+    },
+  }),
+);

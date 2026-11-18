@@ -7,7 +7,7 @@
     "scheme": "polygo",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "dark",
+    "userInterfaceStyle": "automatic",
     "backgroundColor": "#0B0A1A",
     "ios": {
       "supportsTablet": false,

@@ -32,7 +32,10 @@ import {
   elevation,
   radii,
   spacing,
+  themedStyles,
+  gradients,
 } from '@/design-system';
+import { RANKED_UNAVAILABLE_TITLE, rankedDisabled } from '@/features/battle/availability';
 import { useActiveSeason, useMyProfile } from '@/features/profile/hooks';
 import { PolysChip } from '@/features/polys/PolysChip';
 import { useMyLeaderboardPosition } from '@/features/ranked/api';
@@ -47,6 +50,7 @@ const CHIP_HEIGHT = 38;
 const dateFormat = new Intl.DateTimeFormat('es', { day: 'numeric', month: 'short' });
 
 export default function RankedScreen() {
+  const styles = useStyles();
   const me = useMyProfile();
   const season = useActiveSeason();
   const position = useMyLeaderboardPosition(null);
@@ -70,7 +74,7 @@ export default function RankedScreen() {
     >
       {/* Resplandor violeta detrás del encabezado. */}
       <LinearGradient
-        colors={['#3B1D80', 'rgba(59, 29, 128, 0.35)', 'transparent']}
+        colors={gradients.rankedHeader}
         style={styles.backdrop}
         pointerEvents="none"
       />
@@ -139,36 +143,56 @@ export default function RankedScreen() {
           {rating ? <RankCard rating={rating} /> : null}
           <TierLadder current={currentTier} />
 
-          <Card
-            gradient={['#2E1A6B', '#1A1240', '#120E2C']}
-            style={[styles.matchCard, styles.glowCard]}
-          >
-            <SectionTitle icon={<Gamepad2 color={colors.primarySoft} size={18} />} centered>
-              MODO DE JUEGO
-            </SectionTitle>
-            <View style={styles.modePill}>
-              <Zap color={colors.gold} fill={colors.gold} size={18} />
-              <Text variant="bodyStrong" color="textStrong">
-                Word Rush
+          {rankedDisabled ? (
+            // Sin servidor de partidas válido en esta build: no se ofrece jugar (ni se cae al legacy).
+            // Los desafíos con amigos siguen abajo: no pasan por el servidor de partidas.
+            <Card style={styles.matchCard}>
+              <Text variant="overline">MODO · WORD RUSH</Text>
+              <Text variant="heading" accessibilityRole="header">
+                {RANKED_UNAVAILABLE_TITLE}
               </Text>
-            </View>
-            <GoldButton
-              label="Buscar partida"
-              accessibilityHint="Busca un rival con un ELO similar"
-              onPress={() => router.push({ pathname: '/battle', params: { mode: 'ranked' } })}
-            />
-            <OutlinePill
-              label="Practicar sin ELO"
-              icon={<Target color={colors.text} size={18} />}
-              accessibilityHint="Una ronda de 75 segundos contra el reloj, sin rival"
-              onPress={() => router.push({ pathname: '/battle', params: { mode: 'practice' } })}
-            />
-          </Card>
+              <Text color="textMuted">
+                Las partidas Ranked y la práctica están desactivadas en esta versión de PolyGo.
+                Podés seguir desafiando a tus amigos: esas partidas no mueven el ELO.
+              </Text>
+            </Card>
+          ) : (
+            <MatchModeCard />
+          )}
 
           <FriendChallengeCard />
         </>
       )}
     </Screen>
+  );
+}
+
+/** Word Rush: buscar partida Ranked o practicar sin ELO. Sólo con Ranked disponible. */
+function MatchModeCard() {
+  const styles = useStyles();
+  return (
+    <Card gradient={gradients.rankedPanel} style={[styles.matchCard, styles.glowCard]}>
+      <SectionTitle icon={<Gamepad2 color={colors.primarySoft} size={18} />} centered>
+        MODO DE JUEGO
+      </SectionTitle>
+      <View style={styles.modePill}>
+        <Zap color={colors.gold} fill={colors.gold} size={18} />
+        <Text variant="bodyStrong" color="textStrong">
+          Word Rush
+        </Text>
+      </View>
+      <GoldButton
+        label="Buscar partida"
+        accessibilityHint="Busca un rival con un ELO similar"
+        onPress={() => router.push({ pathname: '/battle', params: { mode: 'ranked' } })}
+      />
+      <OutlinePill
+        label="Practicar sin ELO"
+        icon={<Target color={colors.text} size={18} />}
+        accessibilityHint="Una ronda de 75 segundos contra el reloj, sin rival"
+        onPress={() => router.push({ pathname: '/battle', params: { mode: 'practice' } })}
+      />
+    </Card>
   );
 }
 
@@ -181,6 +205,7 @@ function SectionTitle({
   children: string;
   centered?: boolean;
 }) {
+  const styles = useStyles();
   return (
     <View style={[styles.sectionTitle, centered && styles.centered]}>
       {icon}
@@ -202,6 +227,7 @@ function OutlinePill({
   onPress: () => void;
   accessibilityHint?: string;
 }) {
+  const styles = useStyles();
   return (
     <Pressable
       accessibilityRole="button"
@@ -222,6 +248,7 @@ const CODE_PATTERN = /^[A-Z0-9]{6}$/;
 
 /** Desafío a un amigo: crear un código o entrar con el de otro. Amistoso, sin ELO. */
 function FriendChallengeCard() {
+  const styles = useStyles();
   const [joining, setJoining] = useState(false);
   const [code, setCode] = useState('');
   const clean = code.trim().toUpperCase();
@@ -283,86 +310,88 @@ function FriendChallengeCard() {
   );
 }
 
-const styles = StyleSheet.create({
-  backdrop: { position: 'absolute', top: -400, left: 0, right: 0, height: 760 },
-  headerBlock: { gap: spacing.sm },
-  header: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-  title: { flex: 1, fontStyle: 'italic', fontWeight: '900', fontSize: 38, lineHeight: 44 },
-  season: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.sm,
-    alignSelf: 'flex-start',
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.xs,
-    borderRadius: radii.pill,
-    backgroundColor: 'rgba(7, 6, 15, 0.45)',
-    borderWidth: 1,
-    borderColor: 'rgba(167, 139, 250, 0.3)',
-  },
-  seasonText: { fontSize: 14, flexShrink: 1 },
-  chip: { minHeight: CHIP_HEIGHT, paddingHorizontal: spacing.md },
-  trophyGlow: {
-    borderRadius: radii.pill,
-    shadowColor: colors.gold,
-    shadowOpacity: 0.55,
-    shadowRadius: 10,
-    shadowOffset: { width: 0, height: 0 },
-    elevation: 6,
-  },
-  trophyButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.xs,
-    minHeight: CHIP_HEIGHT,
-    paddingLeft: spacing.md,
-    paddingRight: spacing.sm,
-    borderRadius: radii.pill,
-    borderWidth: 1.5,
-    borderColor: '#FFF1B8',
-  },
-  trophyText: { color: palette.ink900, fontWeight: '800', fontVariant: ['tabular-nums'] },
-  matchCard: { gap: spacing.md },
-  glowCard: { borderColor: 'rgba(167, 139, 250, 0.45)', ...elevation.glow },
-  sectionTitle: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-  sectionText: { fontSize: 13, lineHeight: 16 },
-  centered: { justifyContent: 'center' },
-  modePill: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: spacing.sm,
-    alignSelf: 'center',
-    minHeight: MIN_TOUCH,
-    paddingHorizontal: spacing.xxl,
-    borderRadius: radii.pill,
-    backgroundColor: 'rgba(7, 6, 15, 0.45)',
-    borderWidth: 1.5,
-    borderColor: 'rgba(167, 139, 250, 0.55)',
-    marginBottom: spacing.xs,
-  },
-  outlinePill: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: spacing.sm,
-    minHeight: 50,
-    paddingHorizontal: spacing.xl,
-    borderRadius: radii.pill,
-    borderWidth: 1.5,
-    borderColor: colors.borderStrong,
-    backgroundColor: 'rgba(7, 6, 15, 0.3)',
-  },
-  friendTop: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  friendText: { flex: 1, gap: spacing.sm },
-  swords: {
-    width: 64,
-    height: 64,
-    borderRadius: 32,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'rgba(124, 58, 237, 0.18)',
-    ...elevation.glow,
-  },
-  pressed: { opacity: 0.75 },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    backdrop: { position: 'absolute', top: -400, left: 0, right: 0, height: 760 },
+    headerBlock: { gap: spacing.sm },
+    header: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+    title: { flex: 1, fontStyle: 'italic', fontWeight: '900', fontSize: 38, lineHeight: 44 },
+    season: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.sm,
+      alignSelf: 'flex-start',
+      paddingHorizontal: spacing.md,
+      paddingVertical: spacing.xs,
+      borderRadius: radii.pill,
+      backgroundColor: colors.inset,
+      borderWidth: 1,
+      borderColor: colors.brandBorder,
+    },
+    seasonText: { fontSize: 14, flexShrink: 1 },
+    chip: { minHeight: CHIP_HEIGHT, paddingHorizontal: spacing.md },
+    trophyGlow: {
+      borderRadius: radii.pill,
+      shadowColor: colors.gold,
+      shadowOpacity: 0.55,
+      shadowRadius: 10,
+      shadowOffset: { width: 0, height: 0 },
+      elevation: 6,
+    },
+    trophyButton: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.xs,
+      minHeight: CHIP_HEIGHT,
+      paddingLeft: spacing.md,
+      paddingRight: spacing.sm,
+      borderRadius: radii.pill,
+      borderWidth: 1.5,
+      borderColor: '#FFF1B8',
+    },
+    trophyText: { color: palette.ink900, fontWeight: '800', fontVariant: ['tabular-nums'] },
+    matchCard: { gap: spacing.md },
+    glowCard: { borderColor: colors.brandBorder, ...elevation.glow },
+    sectionTitle: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+    sectionText: { fontSize: 13, lineHeight: 16 },
+    centered: { justifyContent: 'center' },
+    modePill: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: spacing.sm,
+      alignSelf: 'center',
+      minHeight: MIN_TOUCH,
+      paddingHorizontal: spacing.xxl,
+      borderRadius: radii.pill,
+      backgroundColor: colors.inset,
+      borderWidth: 1.5,
+      borderColor: 'rgba(167, 139, 250, 0.55)',
+      marginBottom: spacing.xs,
+    },
+    outlinePill: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: spacing.sm,
+      minHeight: 50,
+      paddingHorizontal: spacing.xl,
+      borderRadius: radii.pill,
+      borderWidth: 1.5,
+      borderColor: colors.borderStrong,
+      backgroundColor: 'rgba(7, 6, 15, 0.3)',
+    },
+    friendTop: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+    friendText: { flex: 1, gap: spacing.sm },
+    swords: {
+      width: 64,
+      height: 64,
+      borderRadius: 32,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: 'rgba(124, 58, 237, 0.18)',
+      ...elevation.glow,
+    },
+    pressed: { opacity: 0.75 },
+  }),
+);

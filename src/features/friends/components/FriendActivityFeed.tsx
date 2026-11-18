@@ -2,7 +2,7 @@ import { Award, Flame, Handshake, Layers, Swords, TrendingUp, BookOpen } from 'l
 import { useState, type ReactNode } from 'react';
 import { ActivityIndicator, Pressable, StyleSheet, View } from 'react-native';
 
-import { Button, Card, Text, colors, spacing } from '@/design-system';
+import { Button, Card, Text, colors, spacing, useTheme } from '@/design-system';
 
 import { activityText, timeAgo } from '../format';
 import { useFriendActivity, type FriendActivityKind } from '../social';
@@ -10,18 +10,21 @@ import { StatusAvatar, openPlayer } from './PlayerRow';
 
 const PREVIEW = 6;
 
-const KIND_ICON: Record<FriendActivityKind, ReactNode> = {
-  rank_up: <TrendingUp color={colors.gold} size={14} />,
-  wins_week: <Swords color={colors.primarySoft} size={14} />,
-  reviews_week: <Layers color={colors.info} size={14} />,
-  lessons_week: <BookOpen color={colors.info} size={14} />,
-  achievement: <Award color={colors.gold} size={14} />,
-  streak: <Flame color={colors.streak} size={14} />,
-  new_friend: <Handshake color={colors.success} size={14} />,
-};
+/** Ícono de cada evento (se crea al dibujar: el color depende del tema). */
+const kindIcon = (kind: FriendActivityKind): ReactNode =>
+  ({
+    rank_up: <TrendingUp color={colors.gold} size={14} />,
+    wins_week: <Swords color={colors.primarySoft} size={14} />,
+    reviews_week: <Layers color={colors.info} size={14} />,
+    lessons_week: <BookOpen color={colors.info} size={14} />,
+    achievement: <Award color={colors.gold} size={14} />,
+    streak: <Flame color={colors.streak} size={14} />,
+    new_friend: <Handshake color={colors.success} size={14} />,
+  })[kind];
 
 /** Actividad de los amigos de los últimos 7 días (sólo eventos reales de la base). */
 export function FriendActivityFeed({ now }: { now: number }) {
+  useTheme();
   const activity = useFriendActivity();
   const [showAll, setShowAll] = useState(false);
 
@@ -73,7 +76,7 @@ export function FriendActivityFeed({ now }: { now: number }) {
               {e.text}
             </Text>
             <View style={styles.meta}>
-              {KIND_ICON[e.kind]}
+              {kindIcon(e.kind)}
               <Text variant="caption">{timeAgo(e.happenedAt, now)}</Text>
             </View>
           </View>

@@ -15,6 +15,9 @@ import {
   Text,
   colors,
   spacing,
+  useTheme,
+  useThemePreference,
+  type ThemePreference,
 } from '@/design-system';
 import { signOut } from '@/features/auth/api';
 import { FormMessage } from '@/features/auth/FormMessage';
@@ -46,17 +49,29 @@ const VISIBILITY: {
   },
 ];
 
+const APPEARANCE: { id: ThemePreference; title: string; description: string }[] = [
+  { id: 'dark', title: 'Oscuro', description: 'Fondo oscuro, el clásico de Polygo.' },
+  { id: 'light', title: 'Claro', description: 'Fondo claro, ideal con mucha luz.' },
+  {
+    id: 'system',
+    title: 'Automático',
+    description: 'Sigue el modo claro u oscuro de tu teléfono.',
+  },
+];
+
 /** Cuentas que ven «Rehacer el tutorial» (para revisar cómo quedó). */
 const TUTORIAL_TESTERS = ['janitogap'];
 
-/** Ajustes: recordatorio, sonido, privacidad, usuarios bloqueados y cuenta. */
+/** Ajustes: recordatorio, apariencia, sonido, privacidad, usuarios bloqueados y cuenta. */
 export default function SettingsScreen() {
+  useTheme();
   const { data, isPending, isError, refetch } = useMyProfile();
   const updateSettings = useUpdateSettings();
   const logout = useMutation({ mutationFn: signOut });
   const soundPref = useSoundEffectsPref();
   const setSound = useSetSoundEffects();
   const replayTour = useReplayTour(data?.profile.id);
+  const theme = useThemePreference();
 
   if (isPending) return <LoadingState />;
   if (isError || !data) return <ErrorState onRetry={() => void refetch()} />;
@@ -73,6 +88,19 @@ export default function SettingsScreen() {
           <ReminderSettings />
         </>
       )}
+
+      <Text variant="overline" style={styles.section}>
+        APARIENCIA
+      </Text>
+      {APPEARANCE.map((option) => (
+        <SelectCard
+          key={option.id}
+          title={option.title}
+          description={option.description}
+          selected={theme.preference === option.id}
+          onPress={() => theme.setPreference(option.id)}
+        />
+      ))}
 
       <Text variant="overline" style={styles.section}>
         SONIDO
@@ -211,6 +239,7 @@ function ChallengePushSetting({
   disabled: boolean;
   onChange: (on: boolean) => void;
 }) {
+  useTheme();
   const permission = usePushPermission();
   const enable = useEnablePush();
   const phone = permission.data;

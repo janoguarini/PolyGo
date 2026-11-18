@@ -1,3 +1,4 @@
+import { useTheme } from '../theme';
 import { ChevronLeft } from 'lucide-react-native';
 import { Pressable, StyleSheet, View } from 'react-native';
 
@@ -6,6 +7,7 @@ import { Text } from './Text';
 
 /** Título de pantalla apilada con botón para volver. */
 export function ScreenHeader({ title, onBack }: { title: string; onBack: () => void }) {
+  useTheme();
   return (
     <View style={styles.row}>
       <Pressable

@@ -4,7 +4,7 @@ import { StyleSheet, View } from 'react-native';
 
 import { ENERGY, formatEnergyWait, type EnergyView } from '@shared/energy';
 
-import { Button, Screen, Text, colors, spacing } from '@/design-system';
+import { Button, Screen, Text, colors, spacing, useTheme } from '@/design-system';
 
 import { EnergyPanel } from './Energy';
 
@@ -13,6 +13,7 @@ import { EnergyPanel } from './Energy';
  * gratis (repaso, ranked) y deja Plus como una opción más, sin insistir.
  */
 export function NoEnergyState({ view }: { view: EnergyView }) {
+  useTheme();
   const wait = view.msToNext === null ? null : formatEnergyWait(view.msToNext);
   return (
     <Screen edges={['top', 'bottom']}>

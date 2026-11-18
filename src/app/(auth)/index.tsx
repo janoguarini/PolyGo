@@ -3,7 +3,7 @@ import { BookOpen, Swords, TrendingUp } from 'lucide-react-native';
 import { StyleSheet, View } from 'react-native';
 import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 
-import { Button, RankEmblem, Screen, Text, colors, spacing } from '@/design-system';
+import { Button, RankEmblem, Screen, Text, colors, spacing, themedStyles } from '@/design-system';
 
 const PILLARS = [
   { icon: BookOpen, title: 'Aprendé', text: 'Lecciones cortas de inglés, niveles A1 y A2.' },
@@ -12,6 +12,7 @@ const PILLARS = [
 ] as const;
 
 export default function WelcomeScreen() {
+  const styles = useStyles();
   return (
     <Screen
       edges={['top', 'bottom']}
@@ -62,23 +63,25 @@ export default function WelcomeScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  hero: { alignItems: 'center', gap: spacing.sm, paddingTop: spacing.huge },
-  emblems: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    gap: spacing.md,
-    marginBottom: spacing.lg,
-  },
-  pillars: { gap: spacing.md, marginTop: spacing.xl },
-  pillar: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  pillarIcon: {
-    width: 44,
-    height: 44,
-    borderRadius: 14,
-    backgroundColor: colors.surfaceRaised,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  pillarText: { flex: 1 },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    hero: { alignItems: 'center', gap: spacing.sm, paddingTop: spacing.huge },
+    emblems: {
+      flexDirection: 'row',
+      alignItems: 'flex-end',
+      gap: spacing.md,
+      marginBottom: spacing.lg,
+    },
+    pillars: { gap: spacing.md, marginTop: spacing.xl },
+    pillar: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+    pillarIcon: {
+      width: 44,
+      height: 44,
+      borderRadius: 14,
+      backgroundColor: colors.surfaceRaised,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    pillarText: { flex: 1 },
+  }),
+);

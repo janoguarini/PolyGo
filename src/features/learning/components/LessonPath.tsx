@@ -35,12 +35,14 @@ import {
   radii,
   spacing,
   type PathAccent,
+  themedStyles,
 } from '@/design-system';
 
 import { energyStatusText } from '@/features/plus/components/Energy';
 import { useEnergy } from '@/features/plus/api';
 
 import type { LessonStatus, UnitWithStatus } from '../curriculum';
+import { PathCompanion, companionSide } from './PathCompanions';
 import {
   PATH_NODE_SIZE,
   PATH_ROW_HEIGHT,
@@ -53,8 +55,9 @@ import {
 } from '../path';
 
 const LIP = 6;
-const LOCKED_ACCENT = { fill: colors.surfaceHighlight, lip: colors.borderStrong } as const;
-type Accent = PathAccent | typeof LOCKED_ACCENT;
+/** Color de lo bloqueado (se lee al dibujar: depende del tema). */
+const lockedAccent = () => ({ fill: colors.surfaceHighlight, lip: colors.borderStrong });
+type Accent = PathAccent | { fill: string; lip: string };
 /** Nodos de muestra del nivel siguiente: el camino sigue aunque todavía no haya contenido. */
 const UPCOMING_NODES = 4;
 
@@ -118,6 +121,7 @@ export function LessonPath({
   nextLevel,
   pendingUnits = 0,
 }: Props) {
+  const styles = useStyles();
   // Offsets medidos con onLayout: raíz → sección → camino → nodo.
   const rootY = useRef<number | null>(null);
   const sectionY = useRef(new Map<string, number>());
@@ -207,7 +211,8 @@ export function LessonPath({
       {pending || nextLevel ? (
         <View style={[styles.section, owns(upcoming) && styles.raised]}>
           <UnitBanner
-            accent={LOCKED_ACCENT}
+            accent={lockedAccent()}
+            locked
             overline={
               pending
                 ? `NIVEL ${thisLevel} · ${units.length} DE ${units.length + pendingUnits} UNIDADES`
@@ -223,7 +228,7 @@ export function LessonPath({
             }
           />
           <PathSection
-            accent={LOCKED_ACCENT}
+            accent={lockedAccent()}
             firstIndex={nextIndex}
             nodes={upcoming}
             selected={selected}
@@ -281,21 +286,27 @@ function buildSections(units: UnitWithStatus[]) {
 
 function UnitBanner(props: {
   accent: Accent;
+  /** Banner gris de lo que todavía no existe: texto del tema (en claro el fondo es claro). */
+  locked?: boolean;
   overline: string;
   title: string;
   description: string;
   progress?: number;
   progressLabel?: string;
 }) {
+  const styles = useStyles();
+  // Sobre los colores saturados de cada unidad el texto va blanco en los dos temas.
+  const strong = props.locked ? 'textStrong' : 'onPrimary';
+  const body = props.locked ? 'text' : 'onPrimary';
   return (
     <Card gradient={[props.accent.fill, props.accent.lip]} style={styles.banner}>
-      <Text variant="overline" color="textStrong">
+      <Text variant="overline" color={strong}>
         {props.overline}
       </Text>
-      <Text variant="heading" color="textStrong">
+      <Text variant="heading" color={strong}>
         {props.title}
       </Text>
-      <Text variant="caption" color="text">
+      <Text variant="caption" color={body}>
         {props.description}
       </Text>
       {props.progress !== undefined ? (
@@ -304,11 +315,15 @@ function UnitBanner(props: {
             <ProgressBar
               value={props.progress}
               height={6}
-              colors={[colors.textStrong, colors.text]}
+              colors={
+                props.locked
+                  ? [colors.textStrong, colors.text]
+                  : [colors.onPrimary, colors.onPrimary]
+              }
               accessibilityLabel={`Progreso de la unidad: ${props.progressLabel}`}
             />
           </View>
-          <Text variant="caption" color="textStrong">
+          <Text variant="caption" color={strong}>
             {props.progressLabel}
           </Text>
         </View>
@@ -332,6 +347,7 @@ function PathSection({
   onSelect: (key: string) => void;
   onLayout?: (e: LayoutChangeEvent) => void;
 }) {
+  const styles = useStyles();
   const [width, setWidth] = useState(0);
   const height = nodes.length * PATH_ROW_HEIGHT;
   const points = width ? pathPoints(firstIndex, nodes.length, width) : [];
@@ -368,12 +384,36 @@ function PathSection({
               );
             })}
           </Svg>
+          {nodes.map((node, i) => {
+            const point = points[i];
+            if (!point || !companionSide(firstIndex + i)) return null;
+            // La lección actual muestra «EMPEZAR» hacia el mismo lado libre: el personaje se corre
+            // una fila (abajo si hay, si no arriba; en una unidad de una sola lección no va).
+            let centerY = point.y;
+            if (node.status === 'current') {
+              if (i + 1 < nodes.length) centerY += PATH_ROW_HEIGHT;
+              else if (i > 0) centerY -= PATH_ROW_HEIGHT;
+              else return null;
+            }
+            return (
+              <PathCompanion
+                key={`companion-${node.key}`}
+                globalIndex={firstIndex + i}
+                nodeX={point.x}
+                centerY={centerY}
+                width={width}
+                status={node.status}
+                kind={node.kind}
+                stars={node.stars}
+              />
+            );
+          })}
           {nodes.map((node, i) => (
             <LessonNode
               key={node.key}
               node={node}
               accent={
-                node.status === 'locked' ? LOCKED_ACCENT : node.stars === 3 ? pathGold : accent
+                node.status === 'locked' ? lockedAccent() : node.stars === 3 ? pathGold : accent
               }
               x={points[i]?.x ?? 0}
               y={points[i]?.y ?? 0}
@@ -411,6 +451,7 @@ function LessonNode({
   bubbleSide: 'left' | 'right';
   onPress: () => void;
 }) {
+  const styles = useStyles();
   const locked = node.status === 'locked';
   const current = node.status === 'current';
   const golden = node.stars === 3;
@@ -482,6 +523,7 @@ function LessonPopover({
   top: number;
   accent: Accent;
 }) {
+  const styles = useStyles();
   const locked = node.status === 'locked';
   const current = node.status === 'current';
   const perfect = node.stars === 3;
@@ -552,6 +594,7 @@ function LessonPopover({
 }
 
 function PulseRing({ color }: { color: string }) {
+  const styles = useStyles();
   const reduceMotion = useReducedMotion();
   const t = useSharedValue(0);
 
@@ -569,82 +612,84 @@ function PulseRing({ color }: { color: string }) {
 
 const ARROW = 16;
 
-const styles = StyleSheet.create({
-  root: { gap: spacing.xxl },
-  section: { gap: spacing.lg },
-  raised: { zIndex: 2 },
-  flex: { flex: 1 },
-  banner: { gap: spacing.xs },
-  bannerProgress: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.sm,
-    marginTop: spacing.sm,
-  },
-  path: { width: '100%' },
-  nodeSlot: { position: 'absolute', width: PATH_NODE_SIZE, alignItems: 'center' },
-  nodeBody: { width: PATH_NODE_SIZE, height: PATH_NODE_SIZE + LIP },
-  nodeLip: {
-    position: 'absolute',
-    bottom: 0,
-    width: PATH_NODE_SIZE,
-    height: PATH_NODE_SIZE,
-    borderRadius: PATH_NODE_SIZE / 2,
-  },
-  nodeFace: {
-    width: PATH_NODE_SIZE,
-    height: PATH_NODE_SIZE,
-    borderRadius: PATH_NODE_SIZE / 2,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  pulse: {
-    position: 'absolute',
-    top: -6,
-    width: PATH_NODE_SIZE + 12,
-    height: PATH_NODE_SIZE + 12,
-    borderRadius: (PATH_NODE_SIZE + 12) / 2,
-    borderWidth: 4,
-  },
-  bubble: {
-    position: 'absolute',
-    // Ancho propio: si no, hereda el del nodo y el texto se parte en dos líneas.
-    width: 112,
-    alignItems: 'center',
-    top: PATH_NODE_SIZE / 2 - 14,
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.xs + 2,
-    borderRadius: radii.pill,
-    backgroundColor: colors.surfaceRaised,
-    borderWidth: 1,
-    borderColor: colors.primaryBright,
-  },
-  bubbleLeft: { right: PATH_NODE_SIZE + spacing.md },
-  bubbleRight: { left: PATH_NODE_SIZE + spacing.md },
-  popover: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    zIndex: 10,
-    gap: spacing.sm,
-    padding: spacing.lg,
-    borderRadius: radii.xl,
-    backgroundColor: colors.surfaceRaised,
-    borderWidth: 1,
-    borderColor: colors.borderStrong,
-    ...elevation.card,
-    elevation: 12,
-  },
-  arrow: {
-    position: 'absolute',
-    top: -ARROW / 2 - 1,
-    width: ARROW,
-    height: ARROW,
-    backgroundColor: colors.surfaceRaised,
-    borderLeftWidth: 1,
-    borderTopWidth: 1,
-    borderColor: colors.borderStrong,
-    transform: [{ rotate: '45deg' }],
-  },
-  popoverStars: { flexDirection: 'row', gap: spacing.xs },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    root: { gap: spacing.xxl },
+    section: { gap: spacing.lg },
+    raised: { zIndex: 2 },
+    flex: { flex: 1 },
+    banner: { gap: spacing.xs },
+    bannerProgress: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.sm,
+      marginTop: spacing.sm,
+    },
+    path: { width: '100%' },
+    nodeSlot: { position: 'absolute', width: PATH_NODE_SIZE, alignItems: 'center' },
+    nodeBody: { width: PATH_NODE_SIZE, height: PATH_NODE_SIZE + LIP },
+    nodeLip: {
+      position: 'absolute',
+      bottom: 0,
+      width: PATH_NODE_SIZE,
+      height: PATH_NODE_SIZE,
+      borderRadius: PATH_NODE_SIZE / 2,
+    },
+    nodeFace: {
+      width: PATH_NODE_SIZE,
+      height: PATH_NODE_SIZE,
+      borderRadius: PATH_NODE_SIZE / 2,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    pulse: {
+      position: 'absolute',
+      top: -6,
+      width: PATH_NODE_SIZE + 12,
+      height: PATH_NODE_SIZE + 12,
+      borderRadius: (PATH_NODE_SIZE + 12) / 2,
+      borderWidth: 4,
+    },
+    bubble: {
+      position: 'absolute',
+      // Ancho propio: si no, hereda el del nodo y el texto se parte en dos líneas.
+      width: 112,
+      alignItems: 'center',
+      top: PATH_NODE_SIZE / 2 - 14,
+      paddingHorizontal: spacing.md,
+      paddingVertical: spacing.xs + 2,
+      borderRadius: radii.pill,
+      backgroundColor: colors.surfaceRaised,
+      borderWidth: 1,
+      borderColor: colors.primaryBright,
+    },
+    bubbleLeft: { right: PATH_NODE_SIZE + spacing.md },
+    bubbleRight: { left: PATH_NODE_SIZE + spacing.md },
+    popover: {
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      zIndex: 10,
+      gap: spacing.sm,
+      padding: spacing.lg,
+      borderRadius: radii.xl,
+      backgroundColor: colors.surfaceRaised,
+      borderWidth: 1,
+      borderColor: colors.borderStrong,
+      ...elevation.card,
+      elevation: 12,
+    },
+    arrow: {
+      position: 'absolute',
+      top: -ARROW / 2 - 1,
+      width: ARROW,
+      height: ARROW,
+      backgroundColor: colors.surfaceRaised,
+      borderLeftWidth: 1,
+      borderTopWidth: 1,
+      borderColor: colors.borderStrong,
+      transform: [{ rotate: '45deg' }],
+    },
+    popoverStars: { flexDirection: 'row', gap: spacing.xs },
+  }),
+);

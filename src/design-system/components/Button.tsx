@@ -1,3 +1,4 @@
+import { themedStyles } from '../theme';
 import * as Haptics from 'expo-haptics';
 import { LinearGradient } from 'expo-linear-gradient';
 import type { ReactNode } from 'react';
@@ -41,6 +42,7 @@ export function Button({
   accessibilityHint,
   testID,
 }: ButtonProps) {
+  const variantStyles = useVariantStyles();
   const inactive = disabled || loading;
   const height = size === 'lg' ? 58 : 50;
 
@@ -116,12 +118,14 @@ const styles = StyleSheet.create({
   labelLg: { fontSize: 17, letterSpacing: 0.3 },
 });
 
-const variantStyles = StyleSheet.create({
-  secondary: {
-    backgroundColor: colors.surfaceRaised,
-    borderWidth: 1,
-    borderColor: colors.borderStrong,
-  },
-  ghost: { backgroundColor: 'transparent' },
-  danger: { backgroundColor: 'transparent', borderWidth: 1, borderColor: colors.dangerStrong },
-});
+const useVariantStyles = themedStyles(() =>
+  StyleSheet.create({
+    secondary: {
+      backgroundColor: colors.surfaceRaised,
+      borderWidth: 1,
+      borderColor: colors.borderStrong,
+    },
+    ghost: { backgroundColor: 'transparent' },
+    danger: { backgroundColor: 'transparent', borderWidth: 1, borderColor: colors.dangerStrong },
+  }),
+);

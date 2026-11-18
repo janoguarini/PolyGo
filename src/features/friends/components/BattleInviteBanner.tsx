@@ -6,7 +6,7 @@ import { Platform, StyleSheet, View } from 'react-native';
 import Animated, { FadeInUp, FadeOutUp } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Button, Card, Text, colors, spacing } from '@/design-system';
+import { Button, Card, Text, colors, spacing, themedStyles } from '@/design-system';
 
 import { useDeclineBattleInvite, type BattleInvite } from '../social';
 import { StatusAvatar } from './PlayerRow';
@@ -16,6 +16,7 @@ import { StatusAvatar } from './PlayerRow';
  * con el latido de presencia; sólo existen mientras quien desafía sigue esperando.
  */
 export function BattleInviteBanner({ invites }: { invites: BattleInvite[] }) {
+  const styles = useStyles();
   const insets = useSafeAreaInsets();
   const decline = useDeclineBattleInvite();
   // Las que ya respondiste en esta sesión no vuelven a aparecer aunque el próximo latido las traiga.
@@ -80,19 +81,21 @@ export function BattleInviteBanner({ invites }: { invites: BattleInvite[] }) {
   );
 }
 
-const styles = StyleSheet.create({
-  wrap: { position: 'absolute', left: spacing.lg, right: spacing.lg, zIndex: 10 },
-  card: {
-    gap: spacing.md,
-    borderWidth: 1,
-    borderColor: colors.primary,
-    shadowColor: '#000',
-    shadowOpacity: 0.4,
-    shadowRadius: 16,
-    shadowOffset: { width: 0, height: 8 },
-    elevation: 8,
-  },
-  row: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  flex: { flex: 1, gap: spacing.xxs },
-  sub: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    wrap: { position: 'absolute', left: spacing.lg, right: spacing.lg, zIndex: 10 },
+    card: {
+      gap: spacing.md,
+      borderWidth: 1,
+      borderColor: colors.primary,
+      shadowColor: '#000',
+      shadowOpacity: 0.4,
+      shadowRadius: 16,
+      shadowOffset: { width: 0, height: 8 },
+      elevation: 8,
+    },
+    row: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+    flex: { flex: 1, gap: spacing.xxs },
+    sub: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
+  }),
+);

@@ -2,7 +2,7 @@ import { Check, Flag } from 'lucide-react-native';
 import { useState } from 'react';
 import { Modal, Pressable, StyleSheet, View } from 'react-native';
 
-import { Button, Card, Text, colors, spacing } from '@/design-system';
+import { Button, Card, Text, colors, spacing, themedStyles } from '@/design-system';
 import { FormMessage } from '@/features/auth/FormMessage';
 import { toUserMessage } from '@/lib/errors';
 
@@ -28,6 +28,7 @@ export function ReportPhotoButton({
   /** Sin foto no hay nada que reportar (el aviso de un reporte enviado se sigue mostrando). */
   hasPhoto: boolean;
 }) {
+  const styles = useStyles();
   const report = useReportAvatar(userId);
   const [open, setOpen] = useState(false);
   const [reason, setReason] = useState<ReportReason | null>(null);
@@ -111,26 +112,28 @@ export function ReportPhotoButton({
   );
 }
 
-const styles = StyleSheet.create({
-  trigger: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.xs,
-    alignSelf: 'center',
-    minHeight: 32,
-  },
-  backdrop: {
-    flex: 1,
-    backgroundColor: colors.overlay,
-    justifyContent: 'center',
-    padding: spacing.xl,
-  },
-  sheet: { gap: spacing.sm },
-  option: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    minHeight: 44,
-    paddingVertical: spacing.xs,
-  },
-  flex: { flex: 1 },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    trigger: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.xs,
+      alignSelf: 'center',
+      minHeight: 32,
+    },
+    backdrop: {
+      flex: 1,
+      backgroundColor: colors.overlay,
+      justifyContent: 'center',
+      padding: spacing.xl,
+    },
+    sheet: { gap: spacing.sm },
+    option: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      minHeight: 44,
+      paddingVertical: spacing.xs,
+    },
+    flex: { flex: 1 },
+  }),
+);

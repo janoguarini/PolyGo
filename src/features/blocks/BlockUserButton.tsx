@@ -2,7 +2,7 @@ import { Ban } from 'lucide-react-native';
 import { useState } from 'react';
 import { Modal, Pressable, StyleSheet, View } from 'react-native';
 
-import { Button, Card, Text, colors, spacing } from '@/design-system';
+import { Button, Card, Text, colors, spacing, themedStyles } from '@/design-system';
 import { FormMessage } from '@/features/auth/FormMessage';
 import { toUserMessage } from '@/lib/errors';
 
@@ -10,6 +10,7 @@ import { useBlockUser } from './api';
 
 /** "Bloquear" en el perfil de otro jugador, con confirmación que explica qué cambia. */
 export function BlockUserButton({ userId, username }: { userId: string; username: string }) {
+  const styles = useStyles();
   const block = useBlockUser();
   const [open, setOpen] = useState(false);
 
@@ -60,19 +61,21 @@ export function BlockUserButton({ userId, username }: { userId: string; username
   );
 }
 
-const styles = StyleSheet.create({
-  trigger: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.xs,
-    minHeight: 32,
-  },
-  backdrop: {
-    flex: 1,
-    backgroundColor: colors.overlay,
-    justifyContent: 'center',
-    padding: spacing.xl,
-  },
-  sheet: { gap: spacing.sm },
-  list: { gap: spacing.xxs },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    trigger: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.xs,
+      minHeight: 32,
+    },
+    backdrop: {
+      flex: 1,
+      backgroundColor: colors.overlay,
+      justifyContent: 'center',
+      padding: spacing.xl,
+    },
+    sheet: { gap: spacing.sm },
+    list: { gap: spacing.xxs },
+  }),
+);

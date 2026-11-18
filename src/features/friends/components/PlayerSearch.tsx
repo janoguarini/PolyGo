@@ -3,7 +3,16 @@ import { useEffect, useState } from 'react';
 import { ActivityIndicator, Pressable, StyleSheet, TextInput, View } from 'react-native';
 import Animated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 
-import { Card, MIN_TOUCH, Text, colors, radii, spacing, typography } from '@/design-system';
+import {
+  Card,
+  MIN_TOUCH,
+  Text,
+  colors,
+  radii,
+  spacing,
+  typography,
+  themedStyles,
+} from '@/design-system';
 import { FormMessage } from '@/features/auth/FormMessage';
 import { toUserMessage } from '@/lib/errors';
 
@@ -24,6 +33,7 @@ export function SearchBar({
   onChange: (q: string) => void;
   autoFocus?: boolean;
 }) {
+  const styles = useStyles();
   const [focused, setFocused] = useState(false);
   return (
     <View style={[styles.bar, focused && styles.barFocused]}>
@@ -66,6 +76,7 @@ export function PlayerSearchResults({
   query: string;
   onFeedback: (feedback: Feedback) => void;
 }) {
+  const styles = useStyles();
   const [debounced, setDebounced] = useState(query);
   useEffect(() => {
     const t = setTimeout(() => setDebounced(query), SEARCH_DELAY_MS);
@@ -122,41 +133,43 @@ export function PlayerSearchResults({
   );
 }
 
-const styles = StyleSheet.create({
-  bar: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.sm,
-    minHeight: 54,
-    paddingHorizontal: spacing.lg,
-    borderRadius: radii.pill,
-    borderWidth: 1.5,
-    borderColor: 'rgba(167, 139, 250, 0.25)',
-    backgroundColor: colors.surface,
-  },
-  barFocused: {
-    borderColor: colors.primaryBright,
-    backgroundColor: colors.surfaceRaised,
-    shadowColor: colors.primaryBright,
-    shadowOpacity: 0.45,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 0 },
-  },
-  input: {
-    flex: 1,
-    minHeight: MIN_TOUCH,
-    color: colors.textStrong,
-    fontSize: typography.body.fontSize,
-  },
-  clear: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.surfaceHighlight,
-  },
-  results: { gap: spacing.sm },
-  result: { paddingVertical: spacing.md, borderColor: 'rgba(167, 139, 250, 0.2)' },
-  empty: { alignItems: 'center', gap: spacing.xs, paddingVertical: spacing.xl },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    bar: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.sm,
+      minHeight: 54,
+      paddingHorizontal: spacing.lg,
+      borderRadius: radii.pill,
+      borderWidth: 1.5,
+      borderColor: 'rgba(167, 139, 250, 0.25)',
+      backgroundColor: colors.surface,
+    },
+    barFocused: {
+      borderColor: colors.primaryBright,
+      backgroundColor: colors.surfaceRaised,
+      shadowColor: colors.primaryBright,
+      shadowOpacity: 0.45,
+      shadowRadius: 12,
+      shadowOffset: { width: 0, height: 0 },
+    },
+    input: {
+      flex: 1,
+      minHeight: MIN_TOUCH,
+      color: colors.textStrong,
+      fontSize: typography.body.fontSize,
+    },
+    clear: {
+      width: 24,
+      height: 24,
+      borderRadius: 12,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: colors.surfaceHighlight,
+    },
+    results: { gap: spacing.sm },
+    result: { paddingVertical: spacing.md, borderColor: 'rgba(167, 139, 250, 0.2)' },
+    empty: { alignItems: 'center', gap: spacing.xs, paddingVertical: spacing.xl },
+  }),
+);

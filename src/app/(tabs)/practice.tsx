@@ -29,9 +29,16 @@ import {
   gradients,
   radii,
   spacing,
+  themedStyles,
 } from '@/design-system';
+import { totalCounts } from '@/features/learning/components/MasteryCard';
 import { SpeakButton } from '@/features/learning/components/SpeakButton';
-import { useCurriculum, useMyWords, useWordOfTheDay } from '@/features/learning/hooks';
+import {
+  useCurriculum,
+  useLearningMastery,
+  useMyWords,
+  useWordOfTheDay,
+} from '@/features/learning/hooks';
 import { useTabPressScroll } from '@/lib/useTabPressScroll';
 import { usePlus } from '@/features/plus/api';
 import { PlusBadge } from '@/features/plus/components/PlusBadge';
@@ -44,10 +51,14 @@ import { widgetsSupported } from '@/features/widgets/sync';
 const PRACTICE_SIZE = 10;
 
 export default function PracticeScreen() {
+  const styles = useStyles();
   const words = useMyWords();
   const curriculum = useCurriculum();
   const wordOfDay = useWordOfTheDay();
   const plus = usePlus();
+  // «Dominadas» sólo del Mastery Engine cuando está habilitado para mostrarse (AL12, P2): la etapa
+  // final del SRS v1 no se presenta con ese nombre.
+  const mastery = useLearningMastery();
   const scrollRef = useRef<ScrollViewInstance>(null);
   useTabPressScroll(scrollRef);
   // Referencia temporal fija por montaje de la pantalla (se actualiza al refrescar).
@@ -152,11 +163,19 @@ export default function PracticeScreen() {
           value={counts.learning}
           icon={<ChartNoAxesColumn color={colors.primarySoft} size={14} />}
         />
-        <MiniStat
-          label="Dominadas"
-          value={counts.mastered}
-          icon={<Target color={colors.primarySoft} size={14} />}
-        />
+        {mastery.data?.available ? (
+          <MiniStat
+            label="Dominadas"
+            value={totalCounts(mastery.data).mastered}
+            icon={<Target color={colors.primarySoft} size={14} />}
+          />
+        ) : (
+          <MiniStat
+            label="Para repasar"
+            value={due.length}
+            icon={<Target color={colors.primarySoft} size={14} />}
+          />
+        )}
       </View>
 
       <Text variant="heading">Hoy</Text>
@@ -228,6 +247,7 @@ export default function PracticeScreen() {
 
 /** Ejemplo con la palabra del día resaltada (sin distinguir mayúsculas). */
 function HighlightedExample({ sentence, word }: { sentence: string; word: string }) {
+  const styles = useStyles();
   const at = sentence.toLowerCase().indexOf(word.toLowerCase());
   if (at < 0) return <Text align="center">“{sentence}”</Text>;
   return (
@@ -243,6 +263,7 @@ function HighlightedExample({ sentence, word }: { sentence: string; word: string
 
 /** Estadística compacta: tres entran en una fila sin cortar la etiqueta. */
 function MiniStat({ label, value, icon }: { label: string; value: number; icon: ReactNode }) {
+  const styles = useStyles();
   return (
     <View style={styles.stat} accessible accessibilityLabel={`${label}: ${value}`}>
       <View style={styles.statLabel}>
@@ -268,6 +289,7 @@ function PracticeOption(props: {
   onPress: () => void;
   badge?: ReactNode;
 }) {
+  const styles = useStyles();
   const count = props.count ?? 0;
   const countText = `${count} ${props.countLabel ?? (count === 1 ? 'palabra' : 'palabras')}`;
   return (
@@ -293,75 +315,77 @@ function PracticeOption(props: {
   );
 }
 
-const styles = StyleSheet.create({
-  header: { gap: spacing.xxs },
-  gap: { gap: spacing.md },
-  row: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-  list: { gap: spacing.sm },
-  option: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.sm,
-    paddingVertical: spacing.sm,
-    paddingHorizontal: spacing.md,
-  },
-  disabled: { opacity: 0.55 },
-  flex: { flex: 1 },
-  grid: { flexDirection: 'row', gap: spacing.sm },
-  stat: {
-    flex: 1,
-    gap: spacing.xxs,
-    paddingVertical: spacing.sm,
-    paddingHorizontal: spacing.md,
-    borderRadius: radii.lg,
-    backgroundColor: colors.surface,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  statLabel: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
-  widget: {
-    gap: spacing.xxs,
-    paddingVertical: spacing.md,
-    paddingHorizontal: spacing.huge + spacing.sm,
-    alignItems: 'center',
-  },
-  word: { fontSize: 28, lineHeight: 34 },
-  speak: { position: 'absolute', top: spacing.sm, right: spacing.sm },
-  reviewCard: { gap: spacing.sm, padding: spacing.md },
-  iconTile: {
-    width: 34,
-    height: 34,
-    borderRadius: radii.sm,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.surfaceHighlight,
-  },
-  countPill: {
-    paddingHorizontal: spacing.sm,
-    paddingVertical: spacing.xxs,
-    borderRadius: radii.pill,
-    backgroundColor: 'rgba(139,92,246,0.16)',
-    borderWidth: 1,
-    borderColor: 'rgba(139,92,246,0.35)',
-  },
-  countText: { fontWeight: '700' },
-  statusPill: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.xxs,
-    paddingHorizontal: spacing.sm,
-    paddingVertical: spacing.xxs,
-    borderRadius: radii.pill,
-    borderWidth: 1,
-    borderColor: colors.borderStrong,
-    backgroundColor: 'rgba(7,6,15,0.35)',
-  },
-  highlight: { backgroundColor: 'rgba(139,92,246,0.35)' },
-  pill: {
-    alignSelf: 'flex-start',
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.xs,
-    borderRadius: radii.pill,
-    backgroundColor: 'rgba(251,146,60,0.12)',
-  },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    header: { gap: spacing.xxs },
+    gap: { gap: spacing.md },
+    row: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+    list: { gap: spacing.sm },
+    option: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.sm,
+      paddingVertical: spacing.sm,
+      paddingHorizontal: spacing.md,
+    },
+    disabled: { opacity: 0.55 },
+    flex: { flex: 1 },
+    grid: { flexDirection: 'row', gap: spacing.sm },
+    stat: {
+      flex: 1,
+      gap: spacing.xxs,
+      paddingVertical: spacing.sm,
+      paddingHorizontal: spacing.md,
+      borderRadius: radii.lg,
+      backgroundColor: colors.surface,
+      borderWidth: 1,
+      borderColor: colors.border,
+    },
+    statLabel: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
+    widget: {
+      gap: spacing.xxs,
+      paddingVertical: spacing.md,
+      paddingHorizontal: spacing.huge + spacing.sm,
+      alignItems: 'center',
+    },
+    word: { fontSize: 28, lineHeight: 34 },
+    speak: { position: 'absolute', top: spacing.sm, right: spacing.sm },
+    reviewCard: { gap: spacing.sm, padding: spacing.md },
+    iconTile: {
+      width: 34,
+      height: 34,
+      borderRadius: radii.sm,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: colors.surfaceHighlight,
+    },
+    countPill: {
+      paddingHorizontal: spacing.sm,
+      paddingVertical: spacing.xxs,
+      borderRadius: radii.pill,
+      backgroundColor: 'rgba(139,92,246,0.16)',
+      borderWidth: 1,
+      borderColor: 'rgba(139,92,246,0.35)',
+    },
+    countText: { fontWeight: '700' },
+    statusPill: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.xxs,
+      paddingHorizontal: spacing.sm,
+      paddingVertical: spacing.xxs,
+      borderRadius: radii.pill,
+      borderWidth: 1,
+      borderColor: colors.borderStrong,
+      backgroundColor: 'rgba(7,6,15,0.35)',
+    },
+    highlight: { backgroundColor: 'rgba(139,92,246,0.35)' },
+    pill: {
+      alignSelf: 'flex-start',
+      paddingHorizontal: spacing.md,
+      paddingVertical: spacing.xs,
+      borderRadius: radii.pill,
+      backgroundColor: 'rgba(251,146,60,0.12)',
+    },
+  }),
+);

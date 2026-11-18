@@ -10,7 +10,7 @@ export interface LeaderboardEntry {
   /** Marco puesto (shared/cosmetics.ts) o null. */
   frameId: string | null;
   region: string | null;
-  /** Idioma del rating mostrado; null en la global, donde rating es la suma de sus idiomas. */
+  /** Idioma del rating mostrado; en la global, el mejor idioma del jugador. */
   languageCode: string | null;
   rating: number;
   gamesPlayed: number;
@@ -20,8 +20,8 @@ export interface LeaderboardEntry {
 
 /**
  * Clasificación: jugadores con onboarding completo y posicionados (ganaron alguna ranked),
- * ordenados por rating. Sin idioma = global: la suma de los ratings de los idiomas en los que
- * cada uno está posicionado.
+ * ordenados por rating. Sin idioma = global: el rating del mejor idioma en el que cada uno está
+ * posicionado (no la suma).
  */
 export async function fetchLeaderboard(
   languageCode: string | null,
@@ -71,7 +71,7 @@ export interface LeaderboardPosition {
   /** null = todavía sin posicionar. */
   position: number | null;
   total: number;
-  /** Lo que se muestra en tu fila en ese alcance (en la global, la suma); null sin posicionar. */
+  /** Lo que se muestra en tu fila en ese alcance (en la global, el de tu mejor idioma); null sin posicionar. */
   rating: number | null;
   gamesPlayed: number;
   wins: number;

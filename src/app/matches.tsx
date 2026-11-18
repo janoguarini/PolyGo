@@ -12,11 +12,13 @@ import {
   ScreenHeader,
   colors,
   spacing,
+  useTheme,
 } from '@/design-system';
 import { MatchHistoryItem } from '@/features/profile/components/MatchHistoryItem';
 import { useMatchHistory } from '@/features/profile/hooks';
 
 export default function MatchesScreen() {
+  useTheme();
   const matches = useMatchHistory();
   const all = matches.data?.pages.flat() ?? [];
 

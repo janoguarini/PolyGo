@@ -6,7 +6,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { polyReasonLabel } from '@shared/polys';
 
-import { PolyCoin, Text, colors, radii, spacing } from '@/design-system';
+import { PolyCoin, Text, colors, radii, spacing, themedStyles } from '@/design-system';
 
 import { usePolys, type PolyGrant } from './api';
 
@@ -31,6 +31,7 @@ export function grantSummary(grants: PolyGrant[]): { total: number; label: strin
  * partida o al abrir la app). Va en el layout raíz para verse también sobre lecciones y partidas.
  */
 export function PolysToast() {
+  const styles = useStyles();
   const polys = usePolys();
   const insets = useSafeAreaInsets();
   const [shown, setShown] = useState<{ id: number; total: number; label: string } | null>(null);
@@ -78,22 +79,24 @@ export function PolysToast() {
   );
 }
 
-const styles = StyleSheet.create({
-  wrap: { position: 'absolute', left: 0, right: 0, alignItems: 'center', zIndex: 100 },
-  toast: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.md,
-    paddingVertical: spacing.sm,
-    paddingHorizontal: spacing.lg,
-    borderRadius: radii.pill,
-    backgroundColor: colors.surfaceRaised,
-    borderWidth: 1.5,
-    borderColor: colors.goldStrong,
-    shadowColor: '#000',
-    shadowOpacity: 0.4,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 6 },
-    elevation: 8,
-  },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    wrap: { position: 'absolute', left: 0, right: 0, alignItems: 'center', zIndex: 100 },
+    toast: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.md,
+      paddingVertical: spacing.sm,
+      paddingHorizontal: spacing.lg,
+      borderRadius: radii.pill,
+      backgroundColor: colors.surfaceRaised,
+      borderWidth: 1.5,
+      borderColor: colors.goldStrong,
+      shadowColor: '#000',
+      shadowOpacity: 0.4,
+      shadowRadius: 12,
+      shadowOffset: { width: 0, height: 6 },
+      elevation: 8,
+    },
+  }),
+);

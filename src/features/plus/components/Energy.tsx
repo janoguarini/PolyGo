@@ -4,7 +4,7 @@ import { Pressable, StyleSheet, View } from 'react-native';
 
 import { ENERGY, formatEnergyWait, type EnergyView } from '@shared/energy';
 
-import { Button, Card, Text, colors, radii, spacing } from '@/design-system';
+import { Button, Card, Text, colors, radii, spacing, themedStyles } from '@/design-system';
 
 import { useEnergy } from '../api';
 import { PlusBadge } from './PlusBadge';
@@ -26,6 +26,7 @@ export function energyA11yLabel(view: EnergyView): string {
 
 /** Chip de energía del encabezado de Aprender. Al tocarlo abre/cierra la explicación. */
 export function EnergyChip({ open, onPress }: { open: boolean; onPress: () => void }) {
+  const styles = useStyles();
   const { view, isError } = useEnergy();
   const empty = view && !view.plus && view.energy === 0;
   return (
@@ -61,6 +62,7 @@ export function EnergyChip({ open, onPress }: { open: boolean; onPress: () => vo
 
 /** Barra de unidades (5 segmentos). */
 function EnergyPips({ view }: { view: EnergyView }) {
+  const styles = useStyles();
   return (
     <View style={styles.pips} importantForAccessibility="no-hide-descendants">
       {Array.from({ length: view.max }, (_, i) => (
@@ -75,6 +77,7 @@ function EnergyPips({ view }: { view: EnergyView }) {
  * sugiere qué hacer mientras tanto; el link a Plus es discreto.
  */
 export function EnergyPanel({ compact = false }: { compact?: boolean }) {
+  const styles = useStyles();
   const { view, isPending, isError, isStale, refetch } = useEnergy();
 
   if (isPending) {
@@ -149,32 +152,34 @@ export function EnergyPanel({ compact = false }: { compact?: boolean }) {
   );
 }
 
-const styles = StyleSheet.create({
-  chip: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.xxs,
-    paddingVertical: spacing.xxs,
-    paddingHorizontal: spacing.sm,
-    borderRadius: radii.pill,
-    backgroundColor: colors.surfaceRaised,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  chipEmpty: { borderColor: colors.borderStrong },
-  chipOpen: { borderColor: colors.info },
-  amount: { fontVariant: ['tabular-nums'] },
-  pressed: { opacity: 0.75 },
-  panel: { gap: spacing.sm },
-  row: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-  flex: { flex: 1 },
-  pips: { flexDirection: 'row', gap: spacing.xs },
-  pip: {
-    flex: 1,
-    height: 8,
-    borderRadius: radii.pill,
-    backgroundColor: colors.surfaceHighlight,
-  },
-  pipOn: { backgroundColor: colors.info },
-  plusLink: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs, minHeight: 32 },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    chip: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.xxs,
+      paddingVertical: spacing.xxs,
+      paddingHorizontal: spacing.sm,
+      borderRadius: radii.pill,
+      backgroundColor: colors.surfaceRaised,
+      borderWidth: 1,
+      borderColor: colors.border,
+    },
+    chipEmpty: { borderColor: colors.borderStrong },
+    chipOpen: { borderColor: colors.info },
+    amount: { fontVariant: ['tabular-nums'] },
+    pressed: { opacity: 0.75 },
+    panel: { gap: spacing.sm },
+    row: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+    flex: { flex: 1 },
+    pips: { flexDirection: 'row', gap: spacing.xs },
+    pip: {
+      flex: 1,
+      height: 8,
+      borderRadius: radii.pill,
+      backgroundColor: colors.surfaceHighlight,
+    },
+    pipOn: { backgroundColor: colors.info },
+    plusLink: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs, minHeight: 32 },
+  }),
+);

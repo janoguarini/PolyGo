@@ -260,7 +260,13 @@ export interface PublicProfile {
   } | null;
   learning?: {
     lessons_completed: number;
+    /** SRS v1: sólo para las builds anteriores. No se muestra como «Dominadas» (AL12, P2). */
     words_mastered: number;
+    /**
+     * Mastery Engine: unidades dominadas según la evidencia, o null (o ausente, con un servidor
+     * anterior) mientras el motor no esté habilitado para mostrarse. Entonces no hay «Dominadas».
+     */
+    concepts_mastered?: number | null;
     best_streak_days: number;
     stars_earned: number;
     golden_lessons: number;

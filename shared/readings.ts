@@ -1,4 +1,5 @@
 import { HAN } from './languages';
+import { ZH_COURSE_READINGS } from './zh-course-readings';
 
 /**
  * Pinyin encima de los caracteres chinos. El texto se segmenta con el diccionario de palabras del
@@ -19,6 +20,8 @@ export const EXTRA_READINGS: Readonly<Record<string, string>> = {
   了: 'le',
   // Suelto como opción (en el vocabulario va dentro de 没有 y 没关系).
   没: 'méi',
+  // Chino A1 U13–U16 y A2 (docs/ZH_A1_A2.md): nombres y vocabulario de apoyo.
+  ...ZH_COURSE_READINGS,
 };
 
 export interface ReadingSegment {

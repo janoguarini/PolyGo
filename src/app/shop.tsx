@@ -19,6 +19,7 @@ import {
   colors,
   radii,
   spacing,
+  themedStyles,
 } from '@/design-system';
 import { FormMessage } from '@/features/auth/FormMessage';
 import { FramedAvatar } from '@/features/cosmetics/FramedAvatar';
@@ -44,6 +45,7 @@ const TABS: { kind: CosmeticKind; label: string; Icon: typeof ScanFace }[] = [
  * lo prueba arriba sobre tu propio avatar; recién el botón lo compra o lo pone.
  */
 export default function ShopScreen() {
+  const styles = useStyles();
   const profile = useMyProfile();
   const owned = useOwnedCosmetics();
   const polys = usePolys();
@@ -181,6 +183,7 @@ function FittingRoom({
   equipped: boolean;
   balance: number;
 }) {
+  const styles = useStyles();
   const equip = useEquipCosmetic();
   const rarity = RARITY_COLORS[item.rarity];
   const done = () => {
@@ -244,49 +247,51 @@ function FittingRoom({
   );
 }
 
-const styles = StyleSheet.create({
-  flex: { flex: 1 },
-  header: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-  balance: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.xs,
-    paddingVertical: spacing.xs,
-    paddingHorizontal: spacing.md,
-    borderRadius: radii.pill,
-    backgroundColor: colors.surfaceRaised,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  tabular: { fontVariant: ['tabular-nums'] },
-  tabs: {
-    flexDirection: 'row',
-    padding: spacing.xs,
-    gap: spacing.xs,
-    borderRadius: radii.pill,
-    backgroundColor: colors.surface,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  tab: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: spacing.xs,
-    minHeight: 40,
-    borderRadius: radii.pill,
-  },
-  tabActive: { backgroundColor: colors.primary },
-  room: { gap: spacing.md, borderWidth: 2 },
-  preview: {
-    alignItems: 'center',
-    gap: spacing.sm,
-    paddingVertical: spacing.lg,
-    borderRadius: radii.lg,
-    minHeight: 170,
-    justifyContent: 'center',
-  },
-  roomInfo: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    flex: { flex: 1 },
+    header: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+    balance: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.xs,
+      paddingVertical: spacing.xs,
+      paddingHorizontal: spacing.md,
+      borderRadius: radii.pill,
+      backgroundColor: colors.surfaceRaised,
+      borderWidth: 1,
+      borderColor: colors.border,
+    },
+    tabular: { fontVariant: ['tabular-nums'] },
+    tabs: {
+      flexDirection: 'row',
+      padding: spacing.xs,
+      gap: spacing.xs,
+      borderRadius: radii.pill,
+      backgroundColor: colors.surface,
+      borderWidth: 1,
+      borderColor: colors.border,
+    },
+    tab: {
+      flex: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: spacing.xs,
+      minHeight: 40,
+      borderRadius: radii.pill,
+    },
+    tabActive: { backgroundColor: colors.primary },
+    room: { gap: spacing.md, borderWidth: 2 },
+    preview: {
+      alignItems: 'center',
+      gap: spacing.sm,
+      paddingVertical: spacing.lg,
+      borderRadius: radii.lg,
+      minHeight: 170,
+      justifyContent: 'center',
+    },
+    roomInfo: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+    grid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
+  }),
+);

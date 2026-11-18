@@ -16,6 +16,7 @@ import {
   gradients,
   radii,
   spacing,
+  themedStyles,
 } from '@/design-system';
 import { FormMessage } from '@/features/auth/FormMessage';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
@@ -26,14 +27,15 @@ import { useClaimFriendMission, useFriendDailyMissions, type FriendMissionState 
 import { IconTile } from './IconTile';
 
 const ICON_SIZE = 18;
-const MISSION_ICON: Record<string, ReactNode> = {
-  play_3: <Swords color={colors.primarySoft} size={ICON_SIZE} />,
-  review_20: <BookOpen color={colors.primarySoft} size={ICON_SIZE} />,
-  friendly_1: <Users color={colors.primarySoft} size={ICON_SIZE} />,
-};
+/** Ícono de cada misión (se crea al dibujar: el color depende del tema). */
+function missionIcon(id: string): ReactNode {
+  const Icon = { play_3: Swords, review_20: BookOpen, friendly_1: Users }[id] ?? Swords;
+  return <Icon color={colors.primarySoft} size={ICON_SIZE} />;
+}
 
 /** Misiones diarias de Amigos: progreso real, premio en Polys y qué amigos ya las completaron. */
 export function DailyMissionsCard({ now }: { now: number }) {
+  const styles = useStyles();
   const missions = useFriendDailyMissions();
   const claim = useClaimFriendMission();
 
@@ -88,6 +90,7 @@ function MissionRow({
   claiming: boolean;
   onClaim: () => void;
 }) {
+  const styles = useStyles();
   const meta = friendChallengeById(mission.id);
   const done = mission.progress >= mission.target;
   const title = meta?.title ?? mission.id;
@@ -98,7 +101,7 @@ function MissionRow({
         {mission.claimed ? (
           <CheckCircle2 color={colors.success} size={ICON_SIZE} />
         ) : (
-          (MISSION_ICON[mission.id] ?? <Swords color={colors.primarySoft} size={ICON_SIZE} />)
+          missionIcon(mission.id)
         )}
       </IconTile>
       <View style={styles.body}>
@@ -143,6 +146,7 @@ function Reward({
   claiming: boolean;
   onClaim: () => void;
 }) {
+  const styles = useStyles();
   if (claimable)
     return (
       <Pressable
@@ -181,6 +185,7 @@ function Reward({
 }
 
 function FriendsDone({ mission }: { mission: FriendMissionState }) {
+  const styles = useStyles();
   const [first] = mission.friends;
   const others = mission.friends_done - 1;
   return (
@@ -200,45 +205,47 @@ function FriendsDone({ mission }: { mission: FriendMissionState }) {
   );
 }
 
-const styles = StyleSheet.create({
-  center: { alignItems: 'center' },
-  card: {
-    gap: spacing.md,
-    paddingVertical: spacing.md,
-    borderColor: 'rgba(167, 139, 250, 0.3)',
-  },
-  row: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  body: { flex: 1, gap: spacing.xs },
-  title: { fontSize: 15, lineHeight: 20 },
-  flex: { flex: 1 },
-  progressRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-  count: { minWidth: 34, textAlign: 'right' },
-  divider: { height: 1, backgroundColor: colors.border },
-  footer: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
-  reward: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.xxs,
-    minWidth: 52,
-    justifyContent: 'center',
-    paddingHorizontal: spacing.sm,
-    paddingVertical: spacing.xxs,
-    borderRadius: radii.pill,
-    backgroundColor: colors.surfaceHighlight,
-    borderWidth: 1,
-    borderColor: colors.borderStrong,
-  },
-  rewardClaimed: { opacity: 0.6 },
-  claim: {
-    minHeight: MIN_TOUCH - 12,
-    backgroundColor: colors.gold,
-    borderColor: colors.goldStrong,
-  },
-  claimText: { color: colors.backgroundDeep, fontWeight: '800' },
-  bold: { fontWeight: '700' },
-  pressed: { opacity: 0.75 },
-  friends: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
-  stack: { flexDirection: 'row' },
-  stackItem: { borderRadius: radii.pill, borderWidth: 2, borderColor: colors.surface },
-  overlap: { marginLeft: -6 },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    center: { alignItems: 'center' },
+    card: {
+      gap: spacing.md,
+      paddingVertical: spacing.md,
+      borderColor: 'rgba(167, 139, 250, 0.3)',
+    },
+    row: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+    body: { flex: 1, gap: spacing.xs },
+    title: { fontSize: 15, lineHeight: 20 },
+    flex: { flex: 1 },
+    progressRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+    count: { minWidth: 34, textAlign: 'right' },
+    divider: { height: 1, backgroundColor: colors.border },
+    footer: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
+    reward: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.xxs,
+      minWidth: 52,
+      justifyContent: 'center',
+      paddingHorizontal: spacing.sm,
+      paddingVertical: spacing.xxs,
+      borderRadius: radii.pill,
+      backgroundColor: colors.surfaceHighlight,
+      borderWidth: 1,
+      borderColor: colors.borderStrong,
+    },
+    rewardClaimed: { opacity: 0.6 },
+    claim: {
+      minHeight: MIN_TOUCH - 12,
+      backgroundColor: colors.gold,
+      borderColor: colors.goldStrong,
+    },
+    claimText: { color: colors.backgroundDeep, fontWeight: '800' },
+    bold: { fontWeight: '700' },
+    pressed: { opacity: 0.75 },
+    friends: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
+    stack: { flexDirection: 'row' },
+    stackItem: { borderRadius: radii.pill, borderWidth: 2, borderColor: colors.surface },
+    overlap: { marginLeft: -6 },
+  }),
+);

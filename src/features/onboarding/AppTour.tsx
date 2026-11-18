@@ -4,7 +4,16 @@ import { Pressable, StyleSheet, View } from 'react-native';
 import Animated, { FadeIn } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Button, Mascot, Text, colors, radii, spacing, type MascotPose } from '@/design-system';
+import {
+  Button,
+  Mascot,
+  Text,
+  colors,
+  radii,
+  spacing,
+  type MascotPose,
+  themedStyles,
+} from '@/design-system';
 
 interface TourStep {
   route: Href;
@@ -62,6 +71,7 @@ export function AppTour({
   /** Para mostrar el tutorial sin navegar (vista previa). */
   navigate?: (route: Href) => void;
 }) {
+  const styles = useStyles();
   const insets = useSafeAreaInsets();
   const [index, setIndex] = useState(0);
   const step = STEPS[index]!;
@@ -114,45 +124,47 @@ export function AppTour({
   );
 }
 
-const styles = StyleSheet.create({
-  overlay: {
-    ...StyleSheet.absoluteFill,
-    backgroundColor: 'rgba(7, 6, 15, 0.62)',
-    zIndex: 100,
-  },
-  row: {
-    position: 'absolute',
-    left: spacing.sm,
-    right: spacing.md,
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    maxWidth: 560,
-  },
-  bubble: {
-    flex: 1,
-    gap: spacing.xs,
-    marginLeft: -spacing.md,
-    marginBottom: spacing.xl,
-    padding: spacing.md,
-    borderRadius: radii.xl,
-    borderWidth: 2,
-    borderColor: colors.primaryBright,
-    backgroundColor: colors.surfaceRaised,
-  },
-  // Piquito de la caja apuntando al zorro.
-  tail: {
-    position: 'absolute',
-    left: -9,
-    bottom: 28,
-    width: 16,
-    height: 16,
-    backgroundColor: colors.surfaceRaised,
-    borderLeftWidth: 2,
-    borderBottomWidth: 2,
-    borderColor: colors.primaryBright,
-    transform: [{ rotate: '45deg' }],
-  },
-  actions: { flexDirection: 'row', alignItems: 'center', gap: spacing.md, marginTop: spacing.sm },
-  skip: { paddingHorizontal: spacing.xs },
-  flex: { flex: 1 },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    overlay: {
+      ...StyleSheet.absoluteFill,
+      backgroundColor: 'rgba(7, 6, 15, 0.62)',
+      zIndex: 100,
+    },
+    row: {
+      position: 'absolute',
+      left: spacing.sm,
+      right: spacing.md,
+      flexDirection: 'row',
+      alignItems: 'flex-end',
+      maxWidth: 560,
+    },
+    bubble: {
+      flex: 1,
+      gap: spacing.xs,
+      marginLeft: -spacing.md,
+      marginBottom: spacing.xl,
+      padding: spacing.md,
+      borderRadius: radii.xl,
+      borderWidth: 2,
+      borderColor: colors.primaryBright,
+      backgroundColor: colors.surfaceRaised,
+    },
+    // Piquito de la caja apuntando al zorro.
+    tail: {
+      position: 'absolute',
+      left: -9,
+      bottom: 28,
+      width: 16,
+      height: 16,
+      backgroundColor: colors.surfaceRaised,
+      borderLeftWidth: 2,
+      borderBottomWidth: 2,
+      borderColor: colors.primaryBright,
+      transform: [{ rotate: '45deg' }],
+    },
+    actions: { flexDirection: 'row', alignItems: 'center', gap: spacing.md, marginTop: spacing.sm },
+    skip: { paddingHorizontal: spacing.xs },
+    flex: { flex: 1 },
+  }),
+);

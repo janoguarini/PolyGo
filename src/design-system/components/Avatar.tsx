@@ -1,25 +1,54 @@
+import { themedStyles } from '../theme';
 import { useState } from 'react';
 import { Image, StyleSheet, View, type ImageSourcePropType } from 'react-native';
 
 import { AVATARS, DEFAULT_AVATAR, type AvatarId } from '@shared/profile';
 
-import { avatarRed, avatarViolet, avatarYellow } from '../imageData.generated';
+import {
+  avatarCatRed,
+  avatarCatViolet,
+  avatarCatYellow,
+  avatarDogRed,
+  avatarDogViolet,
+  avatarDogYellow,
+  avatarLionRed,
+  avatarLionViolet,
+  avatarLionYellow,
+  avatarPandaRed,
+  avatarPandaViolet,
+  avatarPandaYellow,
+  avatarRed,
+  avatarViolet,
+  avatarYellow,
+} from '../imageData.generated';
 import { colors } from '../tokens';
 
 /**
- * Los zorros van incrustados en el bundle (scripts/build-image-data.ts): no se descargan aparte,
+ * Los avatares van incrustados en el bundle (scripts/build-image-data.ts): no se descargan aparte,
  * así que aparecen al instante también en desarrollo.
  */
 const IMAGES: Record<AvatarId, ImageSourcePropType> = {
   bolt: avatarViolet,
   crown: avatarYellow,
   flame: avatarRed,
+  'panda-violet': avatarPandaViolet,
+  'panda-yellow': avatarPandaYellow,
+  'panda-red': avatarPandaRed,
+  'dog-violet': avatarDogViolet,
+  'dog-yellow': avatarDogYellow,
+  'dog-red': avatarDogRed,
+  'cat-violet': avatarCatViolet,
+  'cat-yellow': avatarCatYellow,
+  'cat-red': avatarCatRed,
+  'lion-violet': avatarLionViolet,
+  'lion-yellow': avatarLionYellow,
+  'lion-red': avatarLionRed,
 };
 
 /**
- * Avatar circular: la foto propia si hay (con el zorro elegido como respaldo si no carga) o uno de
- * los tres zorros predeterminados. Con `instant` los tres zorros quedan montados uno encima del otro
- * y sólo se muestra el elegido: cambiar de zorro es inmediato (para el avatar que se está editando).
+ * Avatar circular: la foto propia si hay (con el avatar elegido como respaldo si no carga) o uno de
+ * los avatares predeterminados. Con `instant` todos quedan montados uno encima del otro y sólo se
+ * muestra el elegido: cambiar de avatar es inmediato (para el avatar que se está editando).
  */
 export function Avatar({
   avatarId,
@@ -33,6 +62,7 @@ export function Avatar({
   size?: number;
   instant?: boolean;
 }) {
+  const styles = useStyles();
   const [failedUrl, setFailedUrl] = useState<string | null>(null);
   const avatar =
     AVATARS.find((a) => a.id === avatarId) ?? AVATARS.find((a) => a.id === DEFAULT_AVATAR)!;
@@ -86,12 +116,14 @@ export function isAvatarId(id: string): id is AvatarId {
   return AVATARS.some((a) => a.id === id);
 }
 
-const styles = StyleSheet.create({
-  base: {
-    overflow: 'hidden',
-    borderWidth: 2,
-    backgroundColor: colors.surfaceRaised,
-  },
-  image: { width: '100%', height: '100%' },
-  layer: { ...StyleSheet.absoluteFill },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    base: {
+      overflow: 'hidden',
+      borderWidth: 2,
+      backgroundColor: colors.surfaceRaised,
+    },
+    image: { width: '100%', height: '100%' },
+    layer: { ...StyleSheet.absoluteFill },
+  }),
+);

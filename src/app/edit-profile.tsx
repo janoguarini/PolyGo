@@ -22,6 +22,7 @@ import {
   colors,
   radii,
   spacing,
+  themedStyles,
 } from '@/design-system';
 import { useAuth } from '@/features/auth/AuthProvider';
 import { FormMessage } from '@/features/auth/FormMessage';
@@ -87,6 +88,7 @@ function EditProfileForm({
   owned: Set<string>;
   balance: number;
 }) {
+  const styles = useStyles();
   const update = useUpdateProfile();
   const qc = useQueryClient();
   const { session } = useAuth();
@@ -363,6 +365,7 @@ function CosmeticPicker({
   avatarId: string;
   photoUrl: string | null;
 }) {
+  const styles = useStyles();
   const items = COSMETICS.filter((c) => c.kind === kind);
   const selected = items.find((c) => c.id === selectedId);
   const pick = (id: string | null) => {
@@ -397,70 +400,80 @@ function CosmeticPicker({
   );
 }
 
-const styles = StyleSheet.create({
-  flex: { flex: 1 },
-  header: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-  balance: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.xs,
-    paddingVertical: spacing.xs,
-    paddingHorizontal: spacing.md,
-    borderRadius: radii.pill,
-    backgroundColor: colors.surfaceRaised,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  tabular: { fontVariant: ['tabular-nums'] },
-  tabs: {
-    flexDirection: 'row',
-    padding: spacing.xs,
-    gap: spacing.xs,
-    borderRadius: radii.pill,
-    backgroundColor: colors.surface,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  tab: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: spacing.xs,
-    minHeight: 40,
-    borderRadius: radii.pill,
-  },
-  tabActive: { backgroundColor: colors.primary },
-  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
-  avatarGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm, justifyContent: 'center' },
-  avatarCell: {
-    padding: spacing.sm,
-    borderRadius: radii.xl,
-    borderWidth: 2,
-    borderColor: 'transparent',
-  },
-  avatarSelected: { borderColor: colors.primaryBright, backgroundColor: colors.surfaceRaised },
-  addPhoto: {
-    width: 64,
-    height: 64,
-    borderRadius: 32,
-    borderWidth: 2,
-    borderStyle: 'dashed',
-    borderColor: colors.primaryBright,
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 2,
-  },
-  countries: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
-  country: {
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.sm,
-    minHeight: 36,
-    justifyContent: 'center',
-    borderRadius: radii.pill,
-    borderWidth: 1,
-    borderColor: colors.borderStrong,
-    backgroundColor: colors.surface,
-  },
-  countrySelected: { borderColor: colors.primaryBright, backgroundColor: colors.surfaceHighlight },
-});
+const useStyles = themedStyles(() =>
+  StyleSheet.create({
+    flex: { flex: 1 },
+    header: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+    balance: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.xs,
+      paddingVertical: spacing.xs,
+      paddingHorizontal: spacing.md,
+      borderRadius: radii.pill,
+      backgroundColor: colors.surfaceRaised,
+      borderWidth: 1,
+      borderColor: colors.border,
+    },
+    tabular: { fontVariant: ['tabular-nums'] },
+    tabs: {
+      flexDirection: 'row',
+      padding: spacing.xs,
+      gap: spacing.xs,
+      borderRadius: radii.pill,
+      backgroundColor: colors.surface,
+      borderWidth: 1,
+      borderColor: colors.border,
+    },
+    tab: {
+      flex: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: spacing.xs,
+      minHeight: 40,
+      borderRadius: radii.pill,
+    },
+    tabActive: { backgroundColor: colors.primary },
+    grid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
+    avatarGrid: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      gap: spacing.sm,
+      justifyContent: 'center',
+    },
+    avatarCell: {
+      padding: spacing.sm,
+      borderRadius: radii.xl,
+      borderWidth: 2,
+      borderColor: 'transparent',
+    },
+    avatarSelected: { borderColor: colors.primaryBright, backgroundColor: colors.surfaceRaised },
+    addPhoto: {
+      width: 64,
+      height: 64,
+      borderRadius: 32,
+      borderWidth: 2,
+      borderStyle: 'dashed',
+      borderColor: colors.primaryBright,
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: 2,
+    },
+    countries: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
+    country: {
+      paddingHorizontal: spacing.md,
+      paddingVertical: spacing.sm,
+      minHeight: 36,
+      justifyContent: 'center',
+      borderRadius: radii.pill,
+      borderWidth: 1,
+      borderColor: colors.borderStrong,
+      backgroundColor: colors.surface,
+    },
+    countrySelected: {
+      borderColor: colors.primaryBright,
+      backgroundColor: colors.surfaceHighlight,
+    },
+  }),
+);
