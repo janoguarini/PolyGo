@@ -6,6 +6,6 @@ module.exports = defineConfig([
   expoConfig,
   {
     // tools/al-sim4: simulador de investigación (AL18), copiado tal cual; no es código de la app.
-    ignores: ['dist/*', 'server/**', 'supabase/**', 'coverage/**', 'tools/al-sim4/**'],
+    ignores: ['dist/*', 'server/**', 'supabase/**', 'ops/**', 'coverage/**', 'tools/al-sim4/**'],
   },
 ]);

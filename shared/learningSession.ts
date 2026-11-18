@@ -1,4 +1,4 @@
-import { serializeAnswer } from './answers';
+import { serializeAnswer, type TextRules } from './answers';
 import type { UserAnswer } from './exercises';
 import {
   gradeWithSpec,
@@ -23,6 +23,18 @@ export const LEARNING_GRADER = {
   grader: 'shared/grading.ts#gradeWithSpec',
   grader_version: '1.0.0',
 } as const;
+
+/**
+ * Reglas de texto de cada versión del corrector (shared/answers.ts, TextRules). El servidor corrige con
+ * las de LEARNING_GRADER (gradeOne), no con las de la app: una regla nueva entra recién cuando se sube
+ * la versión y se agrega acá, y la app corrige cada repaso con la versión que declara su clave
+ * (gradeWithKey). 1.0.0 = la corrección de producción desde la fase 2.
+ */
+export const TEXT_RULES_BY_GRADER: Readonly<Record<string, TextRules>> = {
+  '1.0.0': { apostropheTypo: true },
+};
+
+const GRADER_RULES = TEXT_RULES_BY_GRADER[LEARNING_GRADER.grader_version]!;
 
 /** 1 intento + MAX_RETRIES de src/features/learning/player.ts. */
 export const MAX_ATTEMPTS_PER_PRESENTATION = 3;
@@ -307,6 +319,7 @@ export function gradeLessonAttempts(
 function gradePresented(
   p: GradingKey,
   answer: UserAnswer,
+  rules: TextRules,
 ): { status: AttemptGrading['status']; verdict: Verdict | null } {
   if (presentedProblem(p, answer)) return { status: 'invalid_response', verdict: null };
   try {
@@ -314,6 +327,7 @@ function gradePresented(
       p.grading_spec,
       { answer: p.answer, accepted_answers: p.accepted_answers ?? [], payload: p.payload },
       answer,
+      rules,
     );
     return { status: 'valid', verdict: v.correct ? (v.typo ? 'typo' : 'correct') : 'incorrect' };
   } catch (err) {
@@ -334,7 +348,7 @@ function gradeOne(
     if (gradingSpecProblems(p.grading_spec).length) {
       throw new LearningSessionError('invalid_grading_spec', p.item_id);
     }
-    const { status, verdict } = gradePresented(p, answer);
+    const { status, verdict } = gradePresented(p, answer, GRADER_RULES);
     const correct = verdict === 'correct' || verdict === 'typo';
     return {
       correct,
@@ -542,9 +556,12 @@ export function gradeReviewAnswer(
 /** Clave de corrección de un ítem de repaso: lo que lee gradePresented y la explicación. */
 export interface ReviewGradingKey extends GradingKey {
   explanation: string | null;
+  /** Versión del corrector que corrige este repaso en el servidor (LEARNING_GRADER). */
+  grader_version: string;
 }
 
 export const reviewGradingKey = (p: PresentationSnapshot): ReviewGradingKey => ({
+  grader_version: LEARNING_GRADER.grader_version,
   grading_spec: p.grading_spec,
   answer: p.answer,
   accepted_answers: p.accepted_answers ?? null,
@@ -573,16 +590,20 @@ export function withGradingKeys<T extends { presentation_id: number }>(
 }
 
 /**
- * Veredicto de una respuesta con la clave de un ítem: el mismo que dará el servidor. `null` si la clave
- * no sirve para corregir (grading_spec desconocido o inválido): entonces la app espera al servidor.
+ * Veredicto de una respuesta con la clave de un ítem: el mismo que dará el servidor, con las reglas de
+ * SU versión del corrector. `null` si la clave no sirve para corregir (versión del corrector que esta
+ * app no conoce, grading_spec desconocido o inválido): entonces la app espera al servidor.
  */
 export function gradeWithKey(
-  key: GradingKey,
+  key: ReviewGradingKey,
   answer: UserAnswer,
 ): { status: AttemptGrading['status']; verdict: Verdict | null } | null {
-  if (gradingSpecProblems(key.grading_spec).length) return null;
+  const rules = Object.prototype.hasOwnProperty.call(TEXT_RULES_BY_GRADER, key.grader_version)
+    ? TEXT_RULES_BY_GRADER[key.grader_version]
+    : undefined;
+  if (!rules || gradingSpecProblems(key.grading_spec).length) return null;
   try {
-    return gradePresented(key, answer);
+    return gradePresented(key, answer, rules);
   } catch {
     return null;
   }

@@ -147,10 +147,24 @@ export const apostropheOnly = (a: string, b: string) =>
 export type AnswerVerdict =
   { correct: true; typo: boolean; expected: string } | { correct: false; expected: string };
 
+/**
+ * Reglas de texto que cambian entre versiones del corrector (LEARNING_GRADER, shared/learningSession.ts).
+ * Sirven para que la app corrija un repaso con la misma regla que el servidor que lo va a corregir
+ * (docs/LEARNING_INSTANT_REVIEW.md); el resto de la app usa TEXT_RULES.
+ */
+export interface TextRules {
+  /** Una diferencia sólo de apóstrofos se acepta como error de tipeo (corrector 1.0.0). */
+  apostropheTypo: boolean;
+}
+
+/** Reglas de la app (Aprender, práctica): el apóstrofo no es un error de tipeo. */
+export const TEXT_RULES: TextRules = { apostropheTypo: false };
+
 export function verdictForText(
   given: string,
   expected: string[],
   allowTypo: boolean,
+  rules: TextRules = TEXT_RULES,
 ): AnswerVerdict {
   const canonical = canonicalForm(given);
   const display = expected[0] ?? '';
@@ -162,7 +176,7 @@ export function verdictForText(
       (c) =>
         c.length >= TYPO_MIN_LENGTH &&
         editDistance(c, canonical) === 1 &&
-        !apostropheOnly(c, canonical),
+        (rules.apostropheTypo || !apostropheOnly(c, canonical)),
     );
     if (close) return { correct: true, typo: true, expected: display };
   }

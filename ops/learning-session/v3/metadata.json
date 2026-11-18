@@ -1,0 +1,19 @@
+{
+  "slug": "learning-session",
+  "id": "b1844c3a-82fa-49cc-86e8-d893b1671cb4",
+  "version": 3,
+  "status": "ACTIVE",
+  "verify_jwt": false,
+  "import_map": false,
+  "entrypoint_path": "/tmp/user_fn_wtymosvsymzoosxscnxi_b1844c3a-82fa-49cc-86e8-d893b1671cb4_3/source/index.ts",
+  "ezbr_sha256": "1371a63958ada519d388e01aee9bed9f74cedda795a5e6b1814768accd4582e6",
+  "created_at": "2026-11-08T18:43:22.599Z",
+  "updated_at": "2026-11-09T14:39:11.163Z",
+  "files": [
+    "index.ts",
+    "core.generated.js",
+    "focus.generated.js",
+    "planner.generated.js"
+  ],
+  "source": "Supabase Management API (get_edge_function), leído 2026-11-18, sin modificar"
+}

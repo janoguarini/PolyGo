@@ -64,6 +64,7 @@
     "test": "jest",
     "format": "prettier --write .",
     "check": "npm run typecheck && npm run lint && npm test -- --ci && npm run test:db && npm run test:server && npm run website:build",
+    "test:ops": "node --import tsx --test ops/learning-session/verify.test.mjs",
     "test:db": "node --import tsx --test \"supabase/tests/*.test.mjs\"",
     "content:sql": "tsx scripts/build-content-sql.ts",
     "content:dump": "tsx scripts/dump-content.ts",
@@ -103,7 +104,8 @@
       "/node_modules/",
       "/server/",
       "/batch/",
-      "/supabase/"
+      "/supabase/",
+      "/ops/"
     ],
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/src/$1",

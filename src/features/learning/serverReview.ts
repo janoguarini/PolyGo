@@ -203,6 +203,8 @@ function parseGradingKey(raw: unknown): ReviewGradingKey | null {
   if (!k || typeof k !== 'object') return null;
   if (typeof k.grading_spec !== 'object' || k.grading_spec === null) return null;
   if (typeof k.answer !== 'string') return null;
+  // Sin versión del corrector no se sabe con qué reglas corrige el servidor: se lo espera.
+  if (typeof k.grader_version !== 'string') return null;
   if (k.accepted_answers != null && !isStringList(k.accepted_answers)) return null;
   if (k.option_texts != null && !isStringList(k.option_texts)) return null;
   if (
@@ -212,6 +214,7 @@ function parseGradingKey(raw: unknown): ReviewGradingKey | null {
     return null;
   }
   return {
+    grader_version: k.grader_version,
     grading_spec: k.grading_spec,
     answer: k.answer,
     accepted_answers: k.accepted_answers ?? null,

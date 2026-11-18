@@ -1,9 +1,12 @@
-import type { UserAnswer } from '../exercises';
+import { checkAnswer, TEXT_RULES } from '../answers';
+import type { Exercise, UserAnswer } from '../exercises';
 import { gradingSpecFor } from '../grading';
 import {
   gradeReviewAnswer,
   gradeWithKey,
+  LEARNING_GRADER,
   reviewGradingKey,
+  TEXT_RULES_BY_GRADER,
   withGradingKeys,
   type PresentationSnapshot,
 } from '../learningSession';
@@ -144,6 +147,7 @@ describe('withGradingKeys (start_review)', () => {
       presentation_id: 1,
       prompt: 'a',
       grading_key: {
+        grader_version: '1.0.0',
         grading_spec: choice.grading_spec,
         answer: 'hola',
         accepted_answers: [],
@@ -167,5 +171,80 @@ describe('withGradingKeys (start_review)', () => {
       [...ALL, lesson],
     );
     expect(out.map((i) => i.grading_key)).toEqual([null, null]);
+  });
+});
+
+describe('versión del corrector (apóstrofos)', () => {
+  // Producción (corrector 1.0.0) acepta como error de tipeo una diferencia sólo de apóstrofos; la app
+  // (TEXT_RULES, Aprender) no. La clave lleva la versión y la app corrige el repaso con SUS reglas.
+  const wasnt = review({
+    ...write,
+    presentation_id: 7,
+    item_id: 'it-7',
+    answer: "It is three o'clock.",
+    accepted_answers: [],
+    payload: { type: 'translate_write', source: 'Son las tres.' },
+  });
+  const lesson: Exercise = {
+    id: 'x',
+    lessonId: 'l',
+    position: 1,
+    type: 'translate_write',
+    skill: 'translation',
+    prompt: '',
+    payload: { type: 'translate_write', source: 'Son las tres.' },
+    answer: "It is three o'clock.",
+    acceptedAnswers: [],
+    explanation: null,
+    difficulty: 1,
+    recommendedSeconds: 20,
+    wordIds: [],
+  };
+  const CASES: UserAnswer[] = [
+    { kind: 'text', value: 'It is three oclock' },
+    { kind: 'text', value: "It is three o'clock" },
+    { kind: 'text', value: 'It is three o´clock' },
+    { kind: 'text', value: "It is thre o'clock" },
+    { kind: 'text', value: 'It is three' },
+    // Contracción: «wasnt» no es «wasn't» (se expande a «was not»), con cualquier versión.
+    { kind: 'text', value: 'It isnt three oclock' },
+  ];
+
+  it('el servidor corrige con las reglas de LEARNING_GRADER, no con las de la app', () => {
+    expect(LEARNING_GRADER.grader_version).toBe('1.0.0');
+    expect(TEXT_RULES_BY_GRADER['1.0.0']).toEqual({ apostropheTypo: true });
+    expect(TEXT_RULES).toEqual({ apostropheTypo: false });
+    const server = gradeReviewAnswer(
+      [wasnt],
+      { presentation_id: 7, answer: CASES[0], response_ms: 1 },
+      { 'it-7': 'w7' },
+    ).grading;
+    expect(server.verdict).toBe('typo');
+    // La regla de la app (Aprender) es otra: por eso la clave lleva la versión.
+    expect(checkAnswer(lesson, CASES[0]!).correct).toBe(false);
+  });
+
+  it.each(CASES.map((c) => [c.value, c] as const))(
+    '«%s»: la app con la clave da lo mismo que el servidor',
+    (_v, answer) => {
+      const server = gradeReviewAnswer(
+        [wasnt],
+        { presentation_id: 7, answer, response_ms: 1 },
+        { 'it-7': 'w7' },
+      ).grading;
+      expect(gradeWithKey(reviewGradingKey(wasnt), answer)).toEqual({
+        status: server.status,
+        verdict: server.verdict,
+      });
+    },
+  );
+
+  it('una versión del corrector que la app no conoce (o ninguna): espera al servidor', () => {
+    const key = reviewGradingKey(wasnt);
+    expect(gradeWithKey({ ...key, grader_version: '9.9.9' }, CASES[0]!)).toBeNull();
+    expect(gradeWithKey({ ...key, grader_version: 'toString' }, CASES[0]!)).toBeNull();
+    expect(
+      gradeWithKey({ ...key, grader_version: undefined as unknown as string }, CASES[0]!),
+    ).toBeNull();
   });
 });

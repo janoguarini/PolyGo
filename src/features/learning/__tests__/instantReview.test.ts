@@ -23,6 +23,7 @@ jest.mock('@/lib/secureStorage', () => ({
 }));
 
 const KEY: ReviewGradingKey = {
+  grader_version: '1.0.0',
   grading_spec: { mode: 'exact_option', mode_version: 1 },
   answer: 'perro',
   accepted_answers: [],
@@ -95,6 +96,17 @@ describe('claves de corrección (start_review)', () => {
     ]);
     expect(Object.keys(keys)).toEqual(['presentation-1']);
     expect(reviewExercise(item(1, { grading_key: KEY })).answer).toBe('');
+  });
+
+  it('una clave sin versión del corrector, o con una desconocida, no se usa', () => {
+    const { grader_version: _omit, ...unversioned } = KEY;
+    const keys = gradingKeys([
+      item(1, { grading_key: unversioned as unknown as ReviewGradingKey }),
+      item(2, { grading_key: { ...KEY, grader_version: '2.0.0' } }),
+    ]);
+    expect(Object.keys(keys)).toEqual(['presentation-2']);
+    // La versión desconocida llega, pero no corrige: el reproductor espera al servidor.
+    expect(localReviewGrade(keys['presentation-2'], opt('perro'))).toBeNull();
   });
 
   it('learning-session anterior (sin grading_key): ninguna clave → se espera al servidor', () => {

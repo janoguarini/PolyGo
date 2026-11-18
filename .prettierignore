@@ -5,3 +5,8 @@ coverage
 package-lock.json
 server/node_modules
 src/design-system/imageData.generated.ts
+# Respaldo byte a byte de producción y paquetes de despliegue: no se reformatean.
+ops/learning-session/v3/
+ops/learning-session/v4/
+ops/learning-session/v3-source/
+ops/learning-session/v4-source/

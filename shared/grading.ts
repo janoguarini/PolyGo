@@ -1,4 +1,4 @@
-import { verdictForText, type AnswerVerdict } from './answers';
+import { verdictForText, type AnswerVerdict, type TextRules } from './answers';
 import type { ExerciseType, UserAnswer } from './exercises';
 
 /**
@@ -226,6 +226,8 @@ export function gradeWithSpec(
   spec: GradingSpec,
   content: GradedContent,
   answer: UserAnswer,
+  /** Reglas de la versión del corrector (learningSession.ts); sin ellas, las de la app. */
+  rules?: TextRules,
 ): AnswerVerdict {
   const problems = gradingSpecProblems(spec);
   if (problems.length) throw new Error(`grading_spec inválido: ${problems.join('; ')}`);
@@ -251,6 +253,7 @@ export function gradeWithSpec(
         given,
         [content.answer, ...content.accepted_answers],
         spec.typo_tolerance,
+        rules,
       );
     }
 

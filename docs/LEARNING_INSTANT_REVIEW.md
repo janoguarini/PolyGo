@@ -60,24 +60,21 @@ igual que en las lecciones. Una app modificada podría acertar siempre. No puede
 corrección: el servidor corrige cada respuesta contra la presentación registrada. Ranked no cambia: el
 Battle Server sigue sin mandar la respuesta.
 
+## Corrector
+
+La clave lleva `grader_version` (`LEARNING_GRADER`), y la app corrige el repaso con las reglas de esa
+versión (`TEXT_RULES_BY_GRADER`), no con las de Aprender. Hoy importa por los apóstrofos: el
+corrector 1.0.0 de producción acepta «oclock» por «o'clock» como typo, y Aprender no. Si la versión es
+desconocida o falta, la app espera al servidor. El servidor corrige siempre con las reglas de su
+`LEARNING_GRADER`. Detalle en [ops/learning-session/README.md](../ops/learning-session/README.md).
+
 ## Deploy (pendiente, requiere autorización)
 
-La función vive en el árbol `Polygo` (rama `feature/ranked-server-authority`), no en `client/stage0`.
+**Despliegue aislado sobre la v3 de producción**, sin el resto del código local de `Polygo` (C.7,
+O-1 y la regla de apóstrofos sin versionar). Los cuatro archivos listos, el respaldo de la v3, los
+hashes, la verificación (`npm run test:ops`) y los procedimientos de deploy y rollback están en
+[ops/learning-session/README.md](../ops/learning-session/README.md). No hace falta modificar el árbol
+`Polygo`.
 
-1. En `Polygo`, comprobar que `shared/learningSession.ts` sigue igual que el de `client/stage0` antes
-   de este cambio (`git -C ../Polygo-client show 4f23d36:shared/learningSession.ts | diff - shared/learningSession.ts`
-   no debe mostrar diferencias). Después, copiar el de `client/stage0`.
-2. Aplicar el parche: `git apply ../Polygo-client/docs/patches/learning-session-instant-review.patch`.
-3. Regenerar los paquetes: `npm run functions:build`, y verificar con `npm run functions:build -- --check`.
-4. Correr los tests: `npx jest shared/__tests__` (copiar también
-   `shared/__tests__/instantReview.test.ts`) y `npx tsc --noEmit`.
-5. Desplegar la función: `npx supabase functions deploy learning-session --no-verify-jwt`.
-6. Verificar en producción con una cuenta de prueba:
-   - `start_review` devuelve `grading_key` en cada ítem;
-   - responder registra en `review_presentation_answers` con `client_verdict`;
-   - el envío no da `answer_mismatch`.
-7. Recién después, generar la build de la app. El orden importa poco: la app nueva funciona con el
-   servidor viejo, y el servidor nuevo con la app vieja, que ignora `grading_key`.
-
-Rollback: volver a desplegar la versión anterior de `learning-session`. La app vuelve sola a
-«Comprobando…».
+El orden con la build importa poco: la app nueva funciona con el servidor viejo, y el servidor nuevo
+con la app vieja, que ignora `grading_key`.
