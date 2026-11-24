@@ -5,8 +5,10 @@ import type { AnswerVerdict } from '@shared/answers';
 import type { Exercise } from '@shared/exercises';
 
 import { Text, colors, radii, spacing, themedStyles } from '@/design-system';
+import { useStrings } from '@/i18n';
 
 import { TargetText } from '../readings';
+import { answerRecapStrings } from '../strings';
 import { SpeakButton } from './SpeakButton';
 
 interface Props {
@@ -22,12 +24,13 @@ interface Props {
  */
 export function AnswerRecap({ exercise, verdict, answer }: Props) {
   const styles = useStyles();
+  const t = useStrings(answerRecapStrings);
   const { payload } = exercise;
 
   if (payload.type === 'match_pairs') {
     return (
       <Animated.View entering={FadeIn.duration(260)} style={styles.card}>
-        <Text variant="overline">PAREJAS</Text>
+        <Text variant="overline">{t.pairs}</Text>
         {payload.pairs.map((p) => (
           <View key={p.left} style={styles.pair}>
             <TargetText variant="bodyStrong" color="textStrong" style={styles.flex}>
@@ -51,7 +54,7 @@ export function AnswerRecap({ exercise, verdict, answer }: Props) {
     <Animated.View entering={FadeIn.duration(260)} style={styles.card}>
       {showGiven ? (
         <View style={styles.block}>
-          <Text variant="overline">TU RESPUESTA</Text>
+          <Text variant="overline">{t.yourAnswer}</Text>
           <Text
             variant="heading"
             color={verdict.correct ? 'text' : 'danger'}
@@ -64,7 +67,7 @@ export function AnswerRecap({ exercise, verdict, answer }: Props) {
 
       <View style={styles.block}>
         <Text variant="overline" color="success">
-          {exact ? '✓ TU RESPUESTA' : 'RESPUESTA CORRECTA'}
+          {exact ? t.yourAnswerCorrect : t.correctAnswer}
         </Text>
         <View style={styles.answerRow}>
           <View style={styles.flex}>

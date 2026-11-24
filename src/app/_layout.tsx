@@ -6,17 +6,29 @@ import { Image, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { ErrorState, LoadingState, ThemeProvider, colors, useTheme } from '@/design-system';
+import { adsEnabled } from '@/features/ads';
+import { AdsBootstrap } from '@/features/ads/AdsBootstrap';
 import { AuthProvider, useAuth } from '@/features/auth/AuthProvider';
 import { ConfigMissing } from '@/features/auth/ConfigMissing';
+import { useApplyProfileInterfaceLanguage } from '@/features/courses/hooks';
 import { useClientCompatibility } from '@/features/compat/hooks';
 import { mustUpdate } from '@/features/compat/status';
 import { UpdateRequired } from '@/features/compat/UpdateRequired';
 import { PolysToast } from '@/features/polys/PolysToast';
 import { useApplySoundEffectsPref } from '@/features/preferences/soundEffects';
 import { useMyProfile } from '@/features/profile/hooks';
+import { ReferralBootstrap } from '@/features/referrals/ReferralBootstrap';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 import { envProblems } from '@/lib/env';
 import { configureNotifications } from '@/features/reminders/notifications';
+import { XpCelebration } from '@/features/xp/XpCelebration';
+import {
+  getStrings,
+  hydrateInterfaceLanguage,
+  useInterfaceLanguageHydrated,
+  useStrings,
+} from '@/i18n';
+import { rootStrings } from '@/i18n/screens/root';
 import { queryClient } from '@/lib/queryClient';
 import { configureAudio, preloadSounds } from '@/lib/sounds';
 
@@ -25,6 +37,7 @@ export default function RootLayout() {
     void configureAudio();
     preloadSounds();
     configureNotifications();
+    void hydrateInterfaceLanguage();
   }, []);
   return (
     <ThemeProvider>
@@ -65,16 +78,13 @@ export function ErrorBoundary(props: ErrorBoundaryProps) {
 
 function ErrorScreen({ error, retry }: ErrorBoundaryProps) {
   const { scheme } = useTheme();
+  const t = getStrings(rootStrings);
   if (__DEV__) console.error(error);
   return (
     <SafeAreaProvider>
       <View style={{ flex: 1, backgroundColor: colors.background }}>
         <StatusBar style={scheme === 'light' ? 'dark' : 'light'} />
-        <ErrorState
-          title="Algo salió mal"
-          message="Polygo tuvo un error inesperado. Tu progreso guardado no se perdió."
-          onRetry={() => void retry()}
-        />
+        <ErrorState title={t.crashTitle} message={t.crashMessage} onRetry={() => void retry()} />
       </View>
     </SafeAreaProvider>
   );
@@ -83,8 +93,12 @@ function ErrorScreen({ error, retry }: ErrorBoundaryProps) {
 function RootNavigator() {
   useTheme();
   const { session, initializing, recoveringPassword } = useAuth();
+  const t = useStrings(rootStrings);
+  const languageReady = useInterfaceLanguageHydrated();
   const profile = useMyProfile();
   useApplySoundEffectsPref();
+  // El idioma de la interfaz guardado en el perfil (si lo eligió) manda sobre el del dispositivo.
+  useApplyProfileInterfaceLanguage();
   // Fase C.5: versión mínima del servidor. No espera la respuesta: sólo bloquea un rechazo explícito.
   const compat = useClientCompatibility();
   // La foto propia se baja apenas se conoce, así el perfil ya la tiene en caché al abrirlo.
@@ -95,12 +109,10 @@ function RootNavigator() {
 
   if (compat.data && mustUpdate(compat.data))
     return <UpdateRequired compat={compat.data} onRetry={() => void compat.refetch()} />;
-  if (initializing || (session && profile.isPending))
-    return <LoadingState label="Preparando Polygo…" />;
+  if (!languageReady || initializing || (session && profile.isPending))
+    return <LoadingState label={t.loading} />;
   if (session && profile.isError) {
-    return (
-      <ErrorState message="No pudimos cargar tu perfil." onRetry={() => void profile.refetch()} />
-    );
+    return <ErrorState message={t.profileError} onRetry={() => void profile.refetch()} />;
   }
 
   const signedIn = Boolean(session) && !recoveringPassword;
@@ -147,17 +159,34 @@ function RootNavigator() {
           <Stack.Screen name="player/[id]" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="edit-profile" options={{ animation: 'slide_from_bottom' }} />
           <Stack.Screen name="settings" options={{ animation: 'slide_from_right' }} />
+          <Stack.Screen name="courses" options={{ animation: 'slide_from_bottom' }} />
+          <Stack.Screen name="course-start/[code]" options={{ animation: 'slide_from_right' }} />
+          {/* Sin gesto de salida: abandonar el test se confirma con la X (no se guarda nada). */}
+          <Stack.Screen
+            name="placement/[code]"
+            options={{ animation: 'slide_from_bottom', gestureEnabled: false }}
+          />
           <Stack.Screen name="add-friends" options={{ animation: 'slide_from_bottom' }} />
           <Stack.Screen name="challenge-friend" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="delete-account" options={{ animation: 'slide_from_right' }} />
+          <Stack.Screen name="invite-friends" options={{ animation: 'slide_from_bottom' }} />
+          <Stack.Screen name="welcome-rewards" options={{ animation: 'slide_from_bottom' }} />
+          <Stack.Screen name="smart-review" options={{ animation: 'slide_from_right' }} />
         </Stack.Protected>
         <Stack.Protected guard={Boolean(session) && recoveringPassword}>
           <Stack.Screen name="reset-password" />
         </Stack.Protected>
         {/* Destino de los enlaces de email: siempre accesible. */}
         <Stack.Screen name="auth-callback" />
+        {/* Enlace de invitación: se abre con o sin cuenta; guarda el código y vuelve al inicio. */}
+        <Stack.Screen name="invite/[code]" options={{ animation: 'none' }} />
       </Stack>
       {signedIn && onboarded ? <PolysToast /> : null}
+      {signedIn && onboarded ? <XpCelebration /> : null}
+      {signedIn && onboarded ? <ReferralBootstrap /> : null}
+      {/* AdMob Fase 1: sólo builds de desarrollo (anuncios de prueba). Siempre montado mientras
+          esté habilitado, así una salida de sesión o el paso a Plus apagan los anuncios. */}
+      {adsEnabled ? <AdsBootstrap /> : null}
     </>
   );
 }

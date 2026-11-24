@@ -198,7 +198,8 @@ test('avatares: sólo los tres zorros y una foto en la carpeta propia', async ()
     await db.query(`update public.profiles set avatar_id = 'flame' where id = $1`, [alice]);
     await rejects(
       db.query(`update public.profiles set avatar_id = 'rocket' where id = $1`, [alice]),
-      /profiles_avatar_fox_check/,
+      // Nombre en producción desde 20261206120000_avatar_animals (y en 20261222120000).
+      /profiles_avatar_(fox_)?check/,
     );
     const own = `${alice}/avatar.jpg?v=1761840000000`;
     await db.query(`update public.profiles set avatar_path = $2 where id = $1`, [alice, own]);

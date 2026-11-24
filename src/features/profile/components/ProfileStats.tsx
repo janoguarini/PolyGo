@@ -3,49 +3,49 @@ import { useState, type ReactNode } from 'react';
 import { Modal, Pressable, StyleSheet, View } from 'react-native';
 
 import { Card, ErrorState, Text, colors, radii, spacing, themedStyles } from '@/design-system';
+import { useStrings } from '@/i18n';
 
 import { useCompetitiveStats } from '../hooks';
+import { periodStatsStrings } from '../strings';
 
 const winRate = (wins: number, games: number) =>
   games > 0 ? `${Math.round((wins / games) * 100)}%` : '—';
 
-const PERIODS: { label: string; days: number | null }[] = [
-  { label: 'Últimos 7 días', days: 7 },
-  { label: 'Últimos 30 días', days: 30 },
-  { label: 'Desde siempre', days: null },
-];
+const PERIODS: (number | null)[] = [7, 30, null];
 
 /** Encabezado + 4 estadísticas competitivas del período elegido. */
 export function PeriodStats() {
   const styles = useStyles();
-  const [period, setPeriod] = useState(PERIODS[1]!);
+  const t = useStrings(periodStatsStrings);
+  const [days, setDays] = useState<number | null>(PERIODS[1]!);
   const [open, setOpen] = useState(false);
-  const stats = useCompetitiveStats(period.days);
+  const stats = useCompetitiveStats(days);
+  const periodLabel = t.period(days);
   const s = stats.data;
 
   const delta = s?.rating_delta ?? 0;
   const tiles: { label: string; value: string; icon: ReactNode; tint: string; color?: string }[] = [
     {
-      label: 'Partidas',
+      label: t.games,
       value: s ? String(s.games) : '–',
       icon: <Zap color={colors.gold} size={20} fill={colors.gold} />,
       tint: colors.gold,
     },
     {
-      label: 'Victorias',
+      label: t.wins,
       value: s ? winRate(s.wins, s.games) : '–',
       icon: <Target color={colors.danger} size={20} />,
       tint: colors.danger,
     },
     {
-      label: 'ELO',
+      label: t.elo,
       value: s ? `${delta > 0 ? '+' : delta < 0 ? '−' : ''}${Math.abs(delta)}` : '–',
       icon: <ChartNoAxesColumn color={colors.infoAlt} size={20} strokeWidth={2.6} />,
       tint: colors.infoAlt,
       color: delta > 0 ? colors.success : delta < 0 ? colors.danger : undefined,
     },
     {
-      label: 'Racha máx.',
+      label: t.bestStreak,
       value: s ? String(s.best_win_streak) : '–',
       icon: <Flame color={colors.streak} size={20} fill={colors.streak} />,
       tint: colors.streak,
@@ -55,24 +55,21 @@ export function PeriodStats() {
   return (
     <View style={styles.gap}>
       <View style={styles.sectionRow}>
-        <Text variant="heading">Estadísticas</Text>
+        <Text variant="heading">{t.stats}</Text>
         <Pressable
           accessibilityRole="button"
-          accessibilityLabel={`Período: ${period.label}. Cambiar`}
+          accessibilityLabel={t.periodA11y(periodLabel)}
           onPress={() => setOpen(true)}
           style={styles.select}
         >
           <Text variant="caption" color="text">
-            {period.label}
+            {periodLabel}
           </Text>
           <ChevronDown color={colors.textMuted} size={16} />
         </Pressable>
       </View>
       {stats.isError ? (
-        <ErrorState
-          message="No pudimos cargar tus estadísticas."
-          onRetry={() => void stats.refetch()}
-        />
+        <ErrorState message={t.loadError} onRetry={() => void stats.refetch()} />
       ) : (
         <View style={styles.tiles}>
           {tiles.map((t) => (
@@ -103,20 +100,20 @@ export function PeriodStats() {
       <Modal transparent visible={open} animationType="fade" onRequestClose={() => setOpen(false)}>
         <Pressable
           style={styles.backdrop}
-          accessibilityLabel="Cerrar"
+          accessibilityLabel={t.close}
           onPress={() => setOpen(false)}
         >
           <Card style={styles.menu}>
-            <Text variant="overline">PERÍODO</Text>
+            <Text variant="overline">{t.periodCaps}</Text>
             {PERIODS.map((p) => {
-              const selected = p.label === period.label;
+              const selected = p === days;
               return (
                 <Pressable
-                  key={p.label}
+                  key={String(p)}
                   accessibilityRole="radio"
                   accessibilityState={{ selected }}
                   onPress={() => {
-                    setPeriod(p);
+                    setDays(p);
                     setOpen(false);
                   }}
                   style={styles.option}
@@ -126,7 +123,7 @@ export function PeriodStats() {
                     color={selected ? 'primarySoft' : 'text'}
                     style={styles.flex}
                   >
-                    {p.label}
+                    {t.period(p)}
                   </Text>
                   {selected ? <Check color={colors.primarySoft} size={18} /> : null}
                 </Pressable>

@@ -16,22 +16,25 @@ import {
 import { FamilyRow } from '@/features/profile/components/AchievementBadge';
 import { familyProgress } from '@/features/profile/families';
 import { useMyAchievements } from '@/features/profile/hooks';
+import { useStrings } from '@/i18n';
+import { achievementsScreenStrings } from '@/i18n/screens/achievements';
 
 // Ranked siempre está disponible (contra bots aunque no haya servidor de partidas).
 const RANKED_AVAILABLE = true;
 
-const CATEGORIES: { id: AchievementCategory; title: string }[] = [
-  { id: 'streak', title: 'Constancia' },
-  { id: 'learning', title: 'Lecciones' },
-  { id: 'vocabulary', title: 'Vocabulario' },
-  { id: 'competitive', title: 'Competitivo' },
+const CATEGORIES: readonly AchievementCategory[] = [
+  'streak',
+  'learning',
+  'vocabulary',
+  'competitive',
 ];
 
 /** Todas las familias de logros con su nivel y el próximo objetivo. */
 export default function AchievementsScreen() {
+  const t = useStrings(achievementsScreenStrings);
   const achievements = useMyAchievements();
 
-  if (achievements.isPending) return <LoadingState label="Cargando logros…" />;
+  if (achievements.isPending) return <LoadingState label={t.loading} />;
   if (achievements.isError || !achievements.data)
     return <ErrorState onRetry={() => void achievements.refetch()} />;
 
@@ -45,25 +48,18 @@ export default function AchievementsScreen() {
       onRefresh={() => void achievements.refetch()}
       refreshing={achievements.isRefetching}
     >
-      <ScreenHeader title="Logros" onBack={() => router.back()} />
+      <ScreenHeader title={t.title} onBack={() => router.back()} />
       <View style={styles.summary}>
-        <Text variant="bodyStrong">
-          {levels} de {maxLevels} niveles
-        </Text>
-        <ProgressBar
-          value={maxLevels ? levels / maxLevels : 0}
-          accessibilityLabel="Niveles de logros alcanzados"
-        />
-        <Text variant="caption">
-          Cada logro sube de nivel a medida que avanzás. ¡Seguí sumando!
-        </Text>
+        <Text variant="bodyStrong">{t.levels(levels, maxLevels)}</Text>
+        <ProgressBar value={maxLevels ? levels / maxLevels : 0} accessibilityLabel={t.levelsA11y} />
+        <Text variant="caption">{t.hint}</Text>
       </View>
       {CATEGORIES.map((c) => {
-        const items = families.filter((f) => f.family.category === c.id);
+        const items = families.filter((f) => f.family.category === c);
         if (items.length === 0) return null;
         return (
-          <Card key={c.id} style={styles.card}>
-            <Text variant="overline">{c.title.toUpperCase()}</Text>
+          <Card key={c} style={styles.card}>
+            <Text variant="overline">{t.categories[c].toUpperCase()}</Text>
             {items.map((f) => (
               <FamilyRow key={f.family.metric} progress={f} rankedAvailable={RANKED_AVAILABLE} />
             ))}

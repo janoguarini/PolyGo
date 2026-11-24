@@ -1,8 +1,10 @@
 import { StyleSheet, View } from 'react-native';
 
 import { Card, ProgressBar, Text, spacing } from '@/design-system';
+import { useStrings } from '@/i18n';
 
 import type { LearningMastery, MasteryCounts } from '../api';
+import { masteryStrings } from '../strings';
 
 /**
  * Dominio estimado por el Mastery Engine (ADAPTIVE_LEARNING_DESIGN 14, AL12). Sólo se muestra con datos
@@ -10,20 +12,14 @@ import type { LearningMastery, MasteryCounts } from '../api';
  * («Sin evidencia», «Evidencia insuficiente») del rendimiento bajo («Punto débil»).
  */
 
-const STATES: { key: keyof MasteryCounts; label: string; hint: string }[] = [
-  { key: 'mastered', label: 'Dominadas', hint: 'demostradas sin ayuda en el nivel objetivo' },
-  { key: 'in_progress', label: 'En progreso', hint: 'con evidencia suficiente' },
-  { key: 'weak', label: 'Puntos débiles', hint: 'rendimiento bajo' },
-  { key: 'insufficient', label: 'Evidencia insuficiente', hint: 'todavía no alcanza para estimar' },
-  { key: 'no_evidence', label: 'Sin evidencia', hint: 'vistas, sin respuestas que cuenten' },
+/** Estados en el orden en que se muestran (los textos, en masteryStrings). */
+const STATES: { key: keyof MasteryCounts }[] = [
+  { key: 'mastered' },
+  { key: 'in_progress' },
+  { key: 'weak' },
+  { key: 'insufficient' },
+  { key: 'no_evidence' },
 ];
-
-const DIMENSIONS: Record<string, string> = {
-  vocabulary: 'Vocabulario',
-  production: 'Producción',
-  grammar: 'Gramática',
-  comprehension: 'Comprensión',
-};
 
 export function totalCounts(m: LearningMastery): MasteryCounts {
   const out: MasteryCounts = {
@@ -42,6 +38,7 @@ export function totalCounts(m: LearningMastery): MasteryCounts {
 const pct = (x: number) => `${Math.round(x * 100)} %`;
 
 export function MasteryCard({ mastery }: { mastery: LearningMastery }) {
+  const t = useStrings(masteryStrings);
   if (!mastery.available) return null;
   const dims = Object.entries(mastery.dimensions ?? {});
   const units = (mastery.units ?? []).filter((u) => u.total - u.not_seen > 0);
@@ -49,21 +46,19 @@ export function MasteryCard({ mastery }: { mastery: LearningMastery }) {
   const any = STATES.some((s) => total[s.key] > 0);
 
   return (
-    <Card style={styles.gap} accessibilityLabel="Dominio estimado">
-      <Text variant="overline">DOMINIO</Text>
+    <Card style={styles.gap} accessibilityLabel={t.a11y}>
+      <Text variant="overline">{t.overline}</Text>
       {!any ? (
-        <Text color="textMuted">
-          Todavía no hay evidencia para estimar tu dominio. Completá lecciones y repasos.
-        </Text>
+        <Text color="textMuted">{t.none}</Text>
       ) : (
         dims.map(([dim, counts]) => (
           <View key={dim} style={styles.gap}>
-            {dims.length > 1 ? <Text variant="bodyStrong">{DIMENSIONS[dim] ?? dim}</Text> : null}
+            {dims.length > 1 ? <Text variant="bodyStrong">{t.dimensions[dim] ?? dim}</Text> : null}
             {STATES.filter((s) => counts[s.key] > 0).map((s) => (
               <View key={s.key} style={styles.row}>
                 <View style={styles.flex}>
-                  <Text>{s.label}</Text>
-                  <Text variant="caption">{s.hint}</Text>
+                  <Text>{t.states[s.key].label}</Text>
+                  <Text variant="caption">{t.states[s.key].hint}</Text>
                 </View>
                 <Text variant="bodyStrong">{counts[s.key]}</Text>
               </View>
@@ -73,23 +68,17 @@ export function MasteryCard({ mastery }: { mastery: LearningMastery }) {
       )}
       {mastery.retention && mastery.retention.units > 0 && mastery.retention.mean !== null ? (
         <Text variant="caption">
-          Retención estimada: {pct(mastery.retention.mean)} (sobre {mastery.retention.units} con
-          repasos espaciados suficientes).
+          {t.retention(pct(mastery.retention.mean), mastery.retention.units)}
         </Text>
       ) : null}
       {mastery.speed && mastery.speed.units > 0 && mastery.speed.median !== null ? (
-        <Text variant="caption">
-          Velocidad de recuperación: respondés en {pct(mastery.speed.median)} del tiempo recomendado
-          (mediana de {mastery.speed.units}).
-        </Text>
+        <Text variant="caption">{t.speed(pct(mastery.speed.median), mastery.speed.units)}</Text>
       ) : null}
-      {mastery.pending_recompute ? (
-        <Text variant="caption">Algunas estimaciones se están actualizando.</Text>
-      ) : null}
+      {mastery.pending_recompute ? <Text variant="caption">{t.updating}</Text> : null}
 
       {units.length > 0 ? (
         <View style={styles.gap}>
-          <Text variant="overline">PROGRESO POR UNIDAD</Text>
+          <Text variant="overline">{t.byUnit}</Text>
           {units.map((u) => (
             <View key={u.unit_id} style={styles.unit}>
               <View style={styles.row}>
@@ -97,13 +86,13 @@ export function MasteryCard({ mastery }: { mastery: LearningMastery }) {
                   {u.title}
                 </Text>
                 <Text variant="caption">
-                  {u.mastered} / {u.total} dominadas
-                  {u.weak > 0 ? ` · ${u.weak} débiles` : ''}
+                  {t.unitMastered(u.mastered, u.total)}
+                  {u.weak > 0 ? t.unitWeak(u.weak) : ''}
                 </Text>
               </View>
               <ProgressBar
                 value={u.total ? u.mastered / u.total : 0}
-                accessibilityLabel={`Dominadas en ${u.title}`}
+                accessibilityLabel={t.masteredIn(u.title)}
               />
             </View>
           ))}
@@ -112,7 +101,7 @@ export function MasteryCard({ mastery }: { mastery: LearningMastery }) {
 
       {mastery.weak && mastery.weak.length > 0 ? (
         <View style={styles.gap}>
-          <Text variant="overline">PARA REFORZAR</Text>
+          <Text variant="overline">{t.toReinforce}</Text>
           {mastery.weak.map((w) => (
             <Text key={`${w.concept_id}|${w.dimension}`}>
               <Text variant="bodyStrong" color="textStrong">
@@ -120,7 +109,7 @@ export function MasteryCard({ mastery }: { mastery: LearningMastery }) {
               </Text>
               {w.translation ? ` · ${w.translation}` : ''}
               {w.dimension !== 'vocabulary' ? (
-                <Text variant="caption"> ({DIMENSIONS[w.dimension] ?? w.dimension})</Text>
+                <Text variant="caption"> ({t.dimensions[w.dimension] ?? w.dimension})</Text>
               ) : null}
             </Text>
           ))}

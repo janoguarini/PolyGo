@@ -2,19 +2,22 @@ import { router } from 'expo-router';
 import { Pressable, StyleSheet, type StyleProp, type ViewStyle } from 'react-native';
 
 import { PolyCoin, Text, colors, radii, spacing, themedStyles } from '@/design-system';
+import { useStrings } from '@/i18n';
 
 import { usePolys } from './api';
+import { polysStrings } from './strings';
 
 /** Saldo de Polys; al tocarlo abre la tienda. */
 export function PolysChip({ style }: { style?: StyleProp<ViewStyle> } = {}) {
   const styles = useStyles();
+  const t = useStrings(polysStrings);
   const polys = usePolys();
   const balance = polys.data?.balance;
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={balance === undefined ? 'Polys' : `Tenés ${balance} Polys`}
-      accessibilityHint="Abre la tienda"
+      accessibilityLabel={balance === undefined ? 'Polys' : t.balanceA11y(balance)}
+      accessibilityHint={t.openShopHint}
       hitSlop={8}
       onPress={() => router.push('/shop')}
       style={({ pressed }) => [styles.chip, style, pressed && styles.pressed]}

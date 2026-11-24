@@ -1,7 +1,7 @@
 import { Star } from 'lucide-react-native';
 import { StyleSheet, View } from 'react-native';
 
-import { SKILL_LABELS, SKILLS, type Skill } from '@shared/exercises';
+import { SKILLS, type Skill } from '@shared/exercises';
 
 import {
   Card,
@@ -14,10 +14,12 @@ import {
   spacing,
   useTheme,
 } from '@/design-system';
+import { useStrings } from '@/i18n';
 
 import { useCurriculum, useLearningMastery, useLearningSummary } from '../hooks';
 import { MasteryCard, totalCounts } from './MasteryCard';
 import { starTotals } from '../path';
+import { statsStrings } from '../strings';
 
 function formatMinutes(seconds: number) {
   const minutes = Math.round(seconds / 60);
@@ -28,6 +30,7 @@ function formatMinutes(seconds: number) {
 /** Estadísticas educativas reales del perfil. Independientes del rating competitivo. */
 export function LearningStats({ level }: { level: string }) {
   useTheme();
+  const t = useStrings(statsStrings);
   const summary = useLearningSummary();
   // Fase 4: «Dominadas» sólo del motor (AL12) y «Para repasar» del SRS vigente (v2 si está encendido).
   const mastery = useLearningMastery();
@@ -35,10 +38,8 @@ export function LearningStats({ level }: { level: string }) {
   const stars = curriculum.data ? starTotals(curriculum.data.units) : null;
 
   if (summary.isError)
-    return (
-      <ErrorState message="No pudimos cargar tu progreso." onRetry={() => void summary.refetch()} />
-    );
-  if (!summary.data) return <Text variant="caption">Cargando progreso…</Text>;
+    return <ErrorState message={t.loadError} onRetry={() => void summary.refetch()} />;
+  if (!summary.data) return <Text variant="caption">{t.loading}</Text>;
   const s = summary.data;
 
   const skills = SKILLS.map((skill) => {
@@ -48,12 +49,12 @@ export function LearningStats({ level }: { level: string }) {
 
   return (
     <View style={styles.wrapper}>
-      <Text variant="caption">Nivel {level} · en curso</Text>
+      <Text variant="caption">{t.levelInProgress(level)}</Text>
       {stars ? (
         <Card
           gradient={gradients.hero}
           style={styles.stars}
-          accessibilityLabel={`${stars.earned} de ${stars.max} estrellas, ${stars.golden} lecciones doradas`}
+          accessibilityLabel={t.starsA11y(stars.earned, stars.max, stars.golden)}
         >
           <View style={styles.starsRow}>
             <Star color={colors.gold} fill={colors.gold} size={32} />
@@ -65,74 +66,69 @@ export function LearningStats({ level }: { level: string }) {
                   / {stars.max}
                 </Text>
               </Text>
-              <Text variant="caption">
-                estrellas · {stars.golden}{' '}
-                {stars.golden === 1 ? 'lección dorada' : 'lecciones doradas'}
-              </Text>
+              <Text variant="caption">{t.starsCaption(stars.golden)}</Text>
             </View>
           </View>
           <ProgressBar
             value={stars.max ? stars.earned / stars.max : 0}
             colors={gradients.gold}
-            accessibilityLabel="Estrellas conseguidas"
+            accessibilityLabel={t.starsProgress}
           />
-          <Text variant="caption">
-            Cada lección da hasta 3 estrellas: la tercera, sólo si la hacés sin ningún error.
-          </Text>
+          <Text variant="caption">{t.starsExplain}</Text>
         </Card>
       ) : null}
       <View style={styles.grid}>
-        <StatTile label="Lecciones" value={String(s.lessons_completed)} />
-        <StatTile label="Racha" value={`${s.streak_days} d`} />
-        <StatTile label="Estudiadas" value={String(s.words_seen)} hint="palabras vistas" />
+        <StatTile label={t.lessons} value={String(s.lessons_completed)} />
+        <StatTile label={t.streak} value={t.streakValue(s.streak_days)} />
+        <StatTile label={t.studied} value={String(s.words_seen)} hint={t.wordsSeen} />
         {mastery.data?.available ? (
           <StatTile
-            label="Dominadas"
+            label={t.mastered}
             value={String(totalCounts(mastery.data).mastered)}
-            hint="según tu evidencia"
+            hint={t.byEvidence}
           />
         ) : null}
         <StatTile
-          label="Para repasar"
+          label={t.toReview}
           value={String(mastery.data ? mastery.data.review.due_now : s.words_due)}
         />
-        <StatTile label="Tiempo" value={formatMinutes(s.seconds_learning)} />
+        <StatTile label={t.time} value={formatMinutes(s.seconds_learning)} />
       </View>
 
       {mastery.data ? <MasteryCard mastery={mastery.data} /> : null}
 
       <Card style={styles.gap}>
-        <Text variant="overline">PRECISIÓN POR HABILIDAD</Text>
+        <Text variant="overline">{t.accuracyBySkill}</Text>
         {skills.length === 0 ? (
-          <Text color="textMuted">Completá una lección para ver tu precisión por habilidad.</Text>
+          <Text color="textMuted">{t.noSkills}</Text>
         ) : (
           skills.map(({ skill, answers, correct }) => (
             <View key={skill} style={styles.skill}>
               <View style={styles.skillHeader}>
-                <Text variant="bodyStrong">{SKILL_LABELS[skill as Skill]}</Text>
+                <Text variant="bodyStrong">{t.skills[skill as Skill]}</Text>
                 <Text variant="caption">
-                  {Math.round((correct / answers) * 100)}% · {answers} resp.
+                  {t.skillAnswers(Math.round((correct / answers) * 100), answers)}
                 </Text>
               </View>
               <ProgressBar
                 value={correct / answers}
-                accessibilityLabel={`Precisión en ${SKILL_LABELS[skill as Skill]}`}
+                accessibilityLabel={t.accuracyIn(t.skills[skill as Skill])}
               />
             </View>
           ))
         )}
-        <Text variant="caption">Calculada sobre el primer intento de cada ejercicio.</Text>
+        <Text variant="caption">{t.firstAttempt}</Text>
       </Card>
 
       {s.frequent_mistakes.length > 0 ? (
         <Card style={styles.gap}>
-          <Text variant="overline">ERRORES FRECUENTES</Text>
+          <Text variant="overline">{t.frequentMistakes}</Text>
           {s.frequent_mistakes.map((m) => (
             <Text key={m.word_id}>
               <Text variant="bodyStrong" color="textStrong">
                 {m.text}
               </Text>{' '}
-              · {m.translation} <Text variant="caption">({m.incorrect} errores)</Text>
+              · {m.translation} <Text variant="caption">{t.mistakesCount(m.incorrect)}</Text>
             </Text>
           ))}
         </Card>

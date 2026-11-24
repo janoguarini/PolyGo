@@ -3,23 +3,25 @@ import { dialogue, ES_A1_RATE, ex, question, reading, w } from '../helpers';
 
 /**
  * Español A1 U2 «Where are you from?» (docs/ES_A1_A2.md): pronombres personales y ser en singular
- * (yo soy, vos sos, él / ella / usted es), nacionalidades con género (argentino / argentina, inglés /
- * inglesa), soy de, vivo en, hablo + idioma y la negación con no delante del verbo.
+ * (yo soy, tú eres, él / ella / usted es), nacionalidades con género (mexicano / mexicana, inglés /
+ * inglesa), soy de, vivo en, hablo + idioma y la negación con no delante del verbo. Variante: español
+ * neutro de Latinoamérica (tú, usted, ustedes).
  * Pronunciación: la sílaba tónica y la tilde (inglés, francés, país) y el seseo (ciudad, francés).
- * Cultura: el voseo frente al tuteo de otros países; Buenos Aires como ciudad de estudiantes extranjeros.
+ * Cultura: la única mención del voseo del curso (vos sos = tú eres, en la gramática, declarado en
+ * contrast); Ciudad de México, Bogotá y Buenos Aires como ciudades de estudiantes extranjeros.
  *
  * ESTADO EDITORIAL: borrador, sin revisión de hablantes nativos. Se carga sin publicar.
  */
 
 const CLASE = dialogue(
   'es.stim.a1-u2-clase',
-  'Two students meet on the first day of a Spanish class in Buenos Aires.',
+  'Two students meet on the first day of a Spanish class in Mexico City.',
   [
-    ['Lucía', '¡Hola! Me llamo Lucía. ¿Y vos?'],
+    ['Lucía', '¡Hola! Me llamo Lucía. ¿Y tú?'],
     ['Kevin', 'Me llamo Kevin. Mucho gusto.'],
-    ['Lucía', '¿De dónde sos, Kevin?'],
-    ['Kevin', 'Soy estadounidense, de Nueva York. ¿Vos sos de Buenos Aires?'],
-    ['Lucía', 'No, soy de Rosario, una ciudad de Argentina.'],
+    ['Lucía', '¿De dónde eres, Kevin?'],
+    ['Kevin', 'Soy estadounidense, de Nueva York. ¿Eres de la Ciudad de México?'],
+    ['Lucía', 'No, soy de Guadalajara, una ciudad de México.'],
   ],
   ES_A1_RATE,
 );
@@ -30,7 +32,7 @@ const PERFIL = reading(
   'Marco’s profile on a language exchange app.',
   [
     '¡Hola! Me llamo Marco y soy italiano, de Roma.',
-    'Vivo en Buenos Aires y soy estudiante.',
+    'Vivo en Bogotá y soy estudiante.',
     'Hablo italiano, inglés y un poco de español.',
     'No hablo francés.',
   ],
@@ -54,7 +56,11 @@ export const ES_A1_U02: EsUnitDef = {
     'Francia',
     'Inglaterra',
     'Estados Unidos',
+    'México',
     'Buenos Aires',
+    'Guadalajara',
+    'Bogotá',
+    'Lima',
     'Rosario',
     'Córdoba',
     'Mendoza',
@@ -63,36 +69,24 @@ export const ES_A1_U02: EsUnitDef = {
     'Londres',
     'Nueva York',
   ],
-  support: [
-    'español',
-    'portugués',
-    'vive',
-    'vivís',
-    'hablás',
-    'habla',
-    'pero',
-    'un',
-    'una',
-    'qué',
-    'poco',
-  ],
-  contrast: ['tú', 'eres'],
+  support: ['español', 'portugués', 'vive', 'habla', 'pero', 'un', 'una', 'qué', 'poco'],
+  contrast: ['vos', 'sos'],
   unit: {
     position: 2,
     title: 'Where are you from?',
-    titleEn: 'Soy argentino',
+    titleEn: '¿De dónde eres?',
     description:
-      'Say who you are with ser (yo soy, vos sos, él / ella / usted es), your nationality, where you are from, where you live and which languages you speak.',
+      'Say who you are with ser (yo soy, tú eres, él / ella / usted es), your nationality, where you are from, where you live and which languages you speak.',
     emoji: '🌎',
     objective:
       'You can say who you are, your nationality, where you are from, where you live and which languages you speak, and ask other people the same.',
     grammar: {
       title: 'Ser in the singular · nationalities · no',
       explanation:
-        'Ser (to be) in the singular: yo soy, vos sos, él es, ella es, usted es. In Argentina people say vos sos; in Spain and much of Latin America you will hear tú eres, which you only need to understand. Spanish often drops the pronoun: soy estudiante (I am a student) — and notice there is no word for “a” before a job or role. Nationalities are not capitalized and change for women: argentino → argentina, italiano → italiana, inglés → inglesa, francés → francesa (the accent disappears because the stress no longer falls on the last syllable). Words ending in -e stay the same: estadounidense. To say no, put no before the verb: no hablo francés. The c in ciudad and francés sounds like an s.',
+        'Ser (to be) in the singular: yo soy, tú eres, él es, ella es, usted es. Ser is irregular, so learn the forms as a set. Usted takes the same form as él and ella: usted es. Spanish often drops the pronoun, because the verb already tells you who: soy estudiante, eres estudiante — and notice there is no word for “a” before a job or role. In Argentina, Uruguay and parts of Central America you’ll also hear vos (vos sos = tú eres); you only need to understand it. Nationalities are not capitalized and change for women: mexicano → mexicana, italiano → italiana, inglés → inglesa, francés → francesa (the accent disappears because the stress no longer falls on the last syllable). Words ending in -e stay the same: estadounidense. To say no, put no before the verb: no hablo francés. The c in ciudad and francés sounds like an s.',
       examples: [
         {
-          target: 'Yo soy estudiante. ¿Vos también sos estudiante?',
+          target: 'Yo soy estudiante. ¿Tú también eres estudiante?',
           base: 'I am a student. Are you a student too?',
         },
         {
@@ -100,15 +94,15 @@ export const ES_A1_U02: EsUnitDef = {
           base: 'He is Argentine and she is English.',
         },
         {
-          target: 'Vos sos de Rosario. (Tú eres de Rosario.)',
-          base: 'You are from Rosario. (The tú form is used in Spain and much of Latin America.)',
+          target: 'Tú eres de Rosario. (Vos sos de Rosario.)',
+          base: 'You are from Rosario. (The vos form, heard in Argentina and Uruguay.)',
         },
       ],
     },
     review: {
       status: 'draft',
       notes:
-        'A1 nuevo (U2). Sin revisión nativa: revisar «de Argentina» frente a «de la Argentina» (las dos se oyen; usamos la forma sin artículo), «estadounidense» como gentilicio de EE. UU. (en el habla se oye también «norteamericano») y el ejemplo de contraste con tú eres en la gramática.',
+        'A1 nuevo (U2), convertido al español neutro con tú. Sin revisión nativa: revisar «de Argentina» frente a «de la Argentina» (las dos se oyen; usamos la forma sin artículo), «estadounidense» como gentilicio de EE. UU. (en el habla se oye también «norteamericano»), la palabra nueva «mexicano» y la única mención del voseo del curso (vos sos = tú eres, en la gramática, declarada en contrast).',
     },
     words: [
       w(
@@ -124,13 +118,13 @@ export const ES_A1_U02: EsUnitDef = {
         },
       ),
       w(
-        'es-vos-sos',
-        'vos sos',
+        'es-tu-eres',
+        'tú eres',
         'you are, informal',
-        '¿Vos sos Martín?',
-        'Are you Martín?',
-        ['verbs', 'pronouns', 'voseo'],
-        { acceptedTranslations: ["you're, informal"], acceptedTexts: ['sos'] },
+        'Yo soy Lucía. ¿Tú eres Martín?',
+        'I’m Lucía. Are you Martín?',
+        ['verbs', 'pronouns'],
+        { acceptedTranslations: ["you're, informal"], acceptedTexts: ['eres', 'vos sos', 'sos'] },
       ),
       w(
         'es-el-es',
@@ -169,6 +163,15 @@ export const ES_A1_U02: EsUnitDef = {
         'I’m Argentine, from Buenos Aires.',
         ['nationalities'],
         { acceptedTranslations: ['Argentinian'], acceptedTexts: ['argentina'], emoji: '🇦🇷' },
+      ),
+      w(
+        'es-mexicano',
+        'mexicano',
+        'Mexican',
+        'Lucía es mexicana, de Guadalajara.',
+        'Lucía is Mexican, from Guadalajara.',
+        ['nationalities'],
+        { acceptedTexts: ['mexicana'], emoji: '🇲🇽' },
       ),
       w(
         'es-ingles',
@@ -216,13 +219,13 @@ export const ES_A1_U02: EsUnitDef = {
         { acceptedTexts: ['francesa'] },
       ),
       w(
-        'es-de-donde-sos',
-        '¿de dónde sos?',
+        'es-de-donde-eres',
+        '¿de dónde eres?',
         'where are you from?',
-        '¡Hola! ¿De dónde sos?',
+        '¡Hola! ¿De dónde eres?',
         'Hi! Where are you from?',
-        ['questions', 'voseo'],
-        { acceptedTexts: ['¿de dónde eres?'] },
+        ['questions'],
+        { acceptedTexts: ['¿de dónde sos?'] },
       ),
       w(
         'es-soy-de',
@@ -235,9 +238,7 @@ export const ES_A1_U02: EsUnitDef = {
           acceptedTranslations: ['I am from'],
         },
       ),
-      w('es-vivo-en', 'vivo en', 'I live in', 'Vivo en Buenos Aires.', 'I live in Buenos Aires.', [
-        'verbs',
-      ]),
+      w('es-vivo-en', 'vivo en', 'I live in', 'Vivo en Lima.', 'I live in Lima.', ['verbs']),
       w('es-hablo', 'hablo', 'I speak', 'Hablo inglés y español.', 'I speak English and Spanish.', [
         'verbs',
         'languages',
@@ -246,7 +247,7 @@ export const ES_A1_U02: EsUnitDef = {
         'es-el-pais',
         'el país',
         'the country',
-        '¿De qué país sos?',
+        '¿De qué país eres?',
         'What country are you from?',
         ['places'],
         { acceptedTranslations: ['country'] },
@@ -276,18 +277,18 @@ export const ES_A1_U02: EsUnitDef = {
     lessons: [
       // ------------------------------------------------------------------------------------ L1
       {
-        title: 'Yo soy, vos sos',
+        title: 'Yo soy, tú eres',
         objective: 'Say who you are and who other people are with ser.',
         intro: {
           explanation:
-            'Ser means to be. Yo soy (I am), vos sos (you are, to a friend), él es (he is), ella es (she is) and usted es (you are, formal). In Argentina people say vos sos; in Spain and much of Latin America they say tú eres. Spanish usually drops yo: soy estudiante. And there is no “a” before a role: soy estudiante = I am a student.',
+            'Ser means to be, and it is irregular: yo soy (I am), tú eres (you are, to a friend), él es (he is), ella es (she is) and usted es (you are, formal). Spanish usually drops the pronoun: soy estudiante, ¿eres estudiante? And there is no “a” before a role: soy estudiante = I am a student.',
           examples: [
             { target: 'Yo soy estudiante.', base: 'I am a student.' },
             { target: 'Ella es Lucía. Él es Diego.', base: 'She is Lucía. He is Diego.' },
           ],
         },
         takeaways: [
-          'You use yo soy, vos sos, él es, ella es and usted es.',
+          'You use yo soy, tú eres, él es, ella es and usted es.',
           'You say soy estudiante without a word for “a”.',
         ],
         exercises: [
@@ -299,50 +300,50 @@ export const ES_A1_U02: EsUnitDef = {
             { id: 'es.ex.sfbb8v3ztvfgzp' },
           ),
           ex.translationChoice(
-            'vos sos',
+            'tú eres',
             'you are, informal',
             ['you are, formal', 'I am', 'she is'],
-            ['es-vos-sos'],
-            { id: 'es.ex.6xg6o8p4z8ekqh' },
+            ['es-tu-eres'],
+            { id: 'es.ex.1qkzdd0o5kc3g4' },
           ),
           ex.matchPairs(
             [
               ['yo soy', 'I am'],
-              ['vos sos', 'you are, informal'],
+              ['tú eres', 'you are, informal'],
               ['él es', 'he is'],
               ['ella es', 'she is'],
             ],
-            ['es-yo-soy', 'es-vos-sos', 'es-el-es', 'es-ella-es'],
-            { id: 'es.ex.xcojiwbzx60n21' },
+            ['es-yo-soy', 'es-tu-eres', 'es-el-es', 'es-ella-es'],
+            { id: 'es.ex.mqp67lgx6jr0gv' },
           ),
           ex.fillBlank(
             'Yo ___ estudiante.',
             'I am a student.',
             'soy',
-            ['sos', 'es', 'está'],
+            ['eres', 'es', 'está'],
             ['es-yo-soy', 'es-estudiante'],
             {
               id: 'es.ex.0l92ng5teryie8',
               explanation:
-                'With yo the verb is soy. Sos goes with vos and es with él, ella or usted. Notice: no word for “a” before estudiante.',
+                'With yo the verb is soy. Eres goes with tú and es with él, ella or usted. Notice: no word for “a” before estudiante.',
             },
           ),
           ex.listenChoice(
-            'Vos sos estudiante.',
+            'Tú eres estudiante.',
             ['Yo soy estudiante.', 'Ella es estudiante.', 'Usted es estudiante.'],
-            ['es-vos-sos', 'es-estudiante'],
-            { id: 'es.ex.wtq7ew3802onjt' },
+            ['es-tu-eres', 'es-estudiante'],
+            { id: 'es.ex.4xt1hpuxcur5k0' },
           ),
           ex.fillBlank(
-            'Buen día, señora. ¿Usted ___ Lucía?',
+            'Buenos días, señora. ¿Usted ___ Lucía?',
             'Good morning, madam. Are you Lucía?',
             'es',
-            ['sos', 'soy', 'estás'],
+            ['eres', 'soy', 'estás'],
             ['es-usted-es'],
             {
               id: 'es.ex.qo5rncw1956msw',
               explanation:
-                'Usted takes the same verb as él and ella: usted es. Sos is for vos, a friend.',
+                'Usted takes the same verb as él and ella: usted es. Eres is for tú, a friend.',
             },
           ),
           ex.translationChoice(
@@ -370,7 +371,7 @@ export const ES_A1_U02: EsUnitDef = {
             },
           ),
           ex.shortAnswer(
-            '¿Vos sos estudiante?',
+            '¿Eres estudiante?',
             'Answer yes and say you are a student (e.g. «Sí, soy estudiante»).',
             'Sí, soy estudiante.',
             ['Sí, soy estudiante', 'Sí, yo soy estudiante.', 'Sí. Soy estudiante.'],
@@ -382,15 +383,15 @@ export const ES_A1_U02: EsUnitDef = {
 
       // ------------------------------------------------------------------------------------ L2
       {
-        title: 'Argentino, argentina',
+        title: 'Mexicano, mexicana',
         objective: 'Say your nationality and other people’s, for a man or a woman.',
         intro: {
           explanation:
-            'Nationalities are written with a small letter and change for women: argentino → argentina, italiano → italiana, brasileño → brasileña. Inglés and francés lose their accent in the feminine: inglesa, francesa. The written accent marks the stressed syllable: in-GLÉS, fran-CÉS. Estadounidense (from the US) is the same for men and women. The c in francés sounds like an s.',
+            'Nationalities are written with a small letter and change for women: mexicano → mexicana, argentino → argentina, italiano → italiana, brasileño → brasileña. Inglés and francés lose their accent in the feminine: inglesa, francesa. The written accent marks the stressed syllable: in-GLÉS, fran-CÉS. Estadounidense (from the US) is the same for men and women. The c in francés sounds like an s.',
           examples: [
             {
-              target: 'Martín es argentino. Lucía es argentina.',
-              base: 'Martín is Argentine. Lucía is Argentine.',
+              target: 'Martín es argentino. Lucía es mexicana.',
+              base: 'Martín is Argentine. Lucía is Mexican.',
             },
             { target: 'Emma es inglesa.', base: 'Emma is English.' },
           ],
@@ -419,13 +420,13 @@ export const ES_A1_U02: EsUnitDef = {
           ),
           ex.fillBlank(
             'Lucía es ___.',
-            'Lucía is Argentine.',
-            'argentina',
-            ['argentino', 'italiano', 'brasileño'],
-            ['es-argentino'],
+            'Lucía is Mexican.',
+            'mexicana',
+            ['mexicano', 'italiano', 'brasileño'],
+            ['es-mexicano'],
             {
-              id: 'es.ex.g8m49egcgilfp9',
-              explanation: 'Lucía is a woman, so argentino becomes argentina.',
+              id: 'es.ex.nf8hc2lc4q5515',
+              explanation: 'Lucía is a woman, so mexicano becomes mexicana.',
             },
           ),
           ex.listenChoice(
@@ -449,7 +450,7 @@ export const ES_A1_U02: EsUnitDef = {
           ex.translationChoice(
             'estadounidense',
             'American',
-            ['English', 'Argentine', 'Brazilian'],
+            ['English', 'Mexican', 'Brazilian'],
             ['es-estadounidense'],
             { id: 'es.ex.g8ksixvwgyx2nq' },
           ),
@@ -494,43 +495,43 @@ export const ES_A1_U02: EsUnitDef = {
 
       // ------------------------------------------------------------------------------------ L3
       {
-        title: '¿De dónde sos?',
+        title: '¿De dónde eres?',
         objective: 'Ask where someone is from and say your country and city.',
         intro: {
           explanation:
-            'To ask a friend: ¿de dónde sos? With usted: ¿de dónde es usted? To answer: soy de + place. El país (the country) is masculine and la ciudad (the city) is feminine: the article tells you the gender. In país the stress falls on the í, and in ciudad the c sounds like an s.',
+            'To ask a friend: ¿de dónde eres? With usted: ¿de dónde es usted? To answer: soy de + place. El país (the country) is masculine and la ciudad (the city) is feminine: the article tells you the gender. In país the stress falls on the í, and in ciudad the c sounds like an s.',
           examples: [
             {
-              target: '¿De dónde sos? — Soy de Córdoba.',
-              base: 'Where are you from? — I’m from Córdoba.',
+              target: '¿De dónde eres? — Soy de Bogotá.',
+              base: 'Where are you from? — I’m from Bogotá.',
             },
             { target: '¿De dónde es usted, señor?', base: 'Where are you from, sir?' },
           ],
         },
-        takeaways: ['You ask ¿de dónde sos? and answer soy de…', 'You say el país and la ciudad.'],
+        takeaways: ['You ask ¿de dónde eres? and answer soy de…', 'You say el país and la ciudad.'],
         exercises: [
           ex.translationChoice(
-            '¿de dónde sos?',
+            '¿de dónde eres?',
             'where are you from?',
             ['how are you?', "what's your name?", 'and you?, informal'],
-            ['es-de-donde-sos'],
-            { id: 'es.ex.3qatkp7u4wqfkd' },
+            ['es-de-donde-eres'],
+            { id: 'es.ex.si63pbi7959lom' },
           ),
           ex.fillBlank(
             '¿De dónde ___? — Soy de Mendoza.',
             'Where are you from? — I’m from Mendoza.',
-            'sos',
-            ['soy', 'llamás', 'estás'],
-            ['es-de-donde-sos', 'es-soy-de'],
+            'eres',
+            ['soy', 'llamas', 'estás'],
+            ['es-de-donde-eres', 'es-soy-de'],
             {
-              id: 'es.ex.mdqdzp40vxfiw9',
+              id: 'es.ex.jmk7gwobky8vtm',
               explanation:
-                'To ask where a friend is from, use ser: ¿de dónde sos? Estás is for how someone is.',
+                'To ask where a friend is from, use ser: ¿de dónde eres? Estás is for how someone is.',
             },
           ),
           ex.listenChoice(
             'Soy de Córdoba.',
-            ['Soy de Rosario.', 'Soy de Roma.', 'Sos de Córdoba.'],
+            ['Soy de Rosario.', 'Soy de Roma.', 'Es de Córdoba.'],
             ['es-soy-de'],
             { id: 'es.ex.dt2zrddoyq5qyl' },
           ),
@@ -539,10 +540,10 @@ export const ES_A1_U02: EsUnitDef = {
               ['el país', 'the country'],
               ['la ciudad', 'the city'],
               ['soy de', "I'm from"],
-              ['¿de dónde sos?', 'where are you from?'],
+              ['¿de dónde eres?', 'where are you from?'],
             ],
-            ['es-el-pais', 'es-la-ciudad', 'es-soy-de', 'es-de-donde-sos'],
-            { id: 'es.ex.c5xndynymaeigv' },
+            ['es-el-pais', 'es-la-ciudad', 'es-soy-de', 'es-de-donde-eres'],
+            { id: 'es.ex.1nz4mfo6w5qvu3' },
           ),
           ex.fillBlank(
             'Rosario es una ___ argentina.',
@@ -570,34 +571,34 @@ export const ES_A1_U02: EsUnitDef = {
             },
           ),
           question(
-            'es.ex.fr17yim909uk36',
+            'es.ex.y57ox013wzhglt',
             CLASE,
             'Where is Kevin from?',
             'New York',
-            ['Buenos Aires', 'Rosario', 'London'],
-            ['es-de-donde-sos', 'es-soy-de'],
+            ['Mexico City', 'Guadalajara', 'London'],
+            ['es-de-donde-eres', 'es-soy-de'],
             'Kevin says “Soy estadounidense, de Nueva York”.',
           ),
           question(
             'es.ex.yruhwllu3w9ij5',
             CLASE,
-            'Is Lucía from Buenos Aires?',
-            'No, she is from Rosario',
-            ['Yes, she is', 'No, she is from New York', 'No, she is from Córdoba'],
+            'Is Lucía from Mexico City?',
+            'No, she is from Guadalajara',
+            ['Yes, she is', 'No, she is from New York', 'No, she is from Bogotá'],
             ['es-soy-de', 'es-la-ciudad'],
-            'Lucía answers “No, soy de Rosario, una ciudad de Argentina”.',
+            'Lucía answers “No, soy de Guadalajara, una ciudad de México”.',
           ),
           ex.translateWrite("I'm from Buenos Aires.", 'Soy de Buenos Aires.', ['es-soy-de'], {
             id: 'es.ex.vh2ql1fjt6b9ch',
             acceptedAnswers: ['Yo soy de Buenos Aires.'],
           }),
           ex.shortAnswer(
-            '¿De dónde sos?',
+            '¿De dónde eres?',
             'Say you are from Mendoza (start with «Soy de»).',
             'Soy de Mendoza.',
             ['Soy de Mendoza', 'Yo soy de Mendoza.'],
-            ['es-soy-de', 'es-de-donde-sos'],
-            { id: 'es.ex.5qmbh8418emyvj' },
+            ['es-soy-de', 'es-de-donde-eres'],
+            { id: 'es.ex.sjd9j4xge8iust' },
           ),
         ],
       },
@@ -608,11 +609,11 @@ export const ES_A1_U02: EsUnitDef = {
         objective: 'Say where you live and which languages you speak, and say no.',
         intro: {
           explanation:
-            'Vivo en + place: I live in. Hablo + language: I speak. Languages are not capitalized: inglés, español, italiano. To say no, put no before the verb: no hablo francés. También means also or too: yo también hablo inglés. Careful: vivo is I live, vive is he or she lives.',
+            'Vivo en + place: I live in. Hablo + language: I speak. Languages are not capitalized: inglés, español, italiano. To say no, put no before the verb: no hablo francés. También means also or too: yo también hablo inglés. Careful with the endings: vivo is I live, vive is he or she lives; hablo is I speak, habla is he or she speaks.',
           examples: [
             {
-              target: 'Vivo en Buenos Aires. Hablo inglés y español.',
-              base: 'I live in Buenos Aires. I speak English and Spanish.',
+              target: 'Vivo en Bogotá. Hablo inglés y español.',
+              base: 'I live in Bogotá. I speak English and Spanish.',
             },
             { target: 'No hablo francés.', base: 'I don’t speak French.' },
           ],
@@ -645,7 +646,7 @@ export const ES_A1_U02: EsUnitDef = {
           ),
           ex.listenChoice(
             'Vivo en Rosario.',
-            ['Vive en Rosario.', 'Vivís en Rosario.', 'Soy de Rosario.'],
+            ['Vive en Rosario.', 'Vives en Rosario.', 'Soy de Rosario.'],
             ['es-vivo-en'],
             { id: 'es.ex.cy2f1y8rwach74' },
           ),
@@ -653,12 +654,12 @@ export const ES_A1_U02: EsUnitDef = {
             'Emma ___ inglés y español.',
             'Emma speaks English and Spanish.',
             'habla',
-            ['hablo', 'hablás', 'vive'],
+            ['hablo', 'hablas', 'vive'],
             ['es-hablo'],
             {
               id: 'es.ex.7n6aahc278lgxd',
               explanation:
-                'With Emma (she) the verb ends in -a: habla. Hablo is I speak and hablás is you speak (vos).',
+                'With Emma (she) the verb ends in -a: habla. Hablo is I speak and hablas is you speak (tú).',
             },
           ),
           ex.fillBlank(
@@ -694,7 +695,7 @@ export const ES_A1_U02: EsUnitDef = {
             },
           ),
           ex.shortAnswer(
-            '¿Hablás inglés?',
+            '¿Hablas inglés?',
             'Say yes, and that you also speak Spanish (e.g. «Sí, y también hablo español»).',
             'Sí, y también hablo español.',
             [
@@ -715,7 +716,7 @@ export const ES_A1_U02: EsUnitDef = {
         objective: 'Understand a short introduction and a profile, and introduce yourself.',
         intro: {
           explanation:
-            'Buenos Aires has many foreign students, and on a language exchange app people introduce themselves like this: name, nationality, city and languages. Remember: un poco de español means a little Spanish.',
+            'Cities like Mexico City, Bogotá and Buenos Aires have many foreign students, and on a language exchange app people introduce themselves like this: name, nationality, city and languages. Remember: un poco de español means a little Spanish.',
           examples: [
             {
               target: 'Me llamo Marco y soy italiano, de Roma.',
@@ -737,7 +738,7 @@ export const ES_A1_U02: EsUnitDef = {
             PERFIL,
             'Where is Marco from?',
             'Rome, in Italy',
-            ['Buenos Aires', 'Paris, in France', 'London'],
+            ['Bogotá', 'Paris, in France', 'London'],
             ['es-italiano'],
             'Marco writes “soy italiano, de Roma”.',
           ),
@@ -745,10 +746,10 @@ export const ES_A1_U02: EsUnitDef = {
             'es.ex.nfsyrxquf3hz8c',
             PERFIL,
             'Where does Marco live?',
-            'In Buenos Aires',
-            ['In Rome', 'In Paris', 'In Rosario'],
+            'In Bogotá',
+            ['In Rome', 'In Paris', 'In Lima'],
             ['es-vivo-en'],
-            'He writes “Vivo en Buenos Aires”.',
+            'He writes “Vivo en Bogotá”.',
           ),
           question(
             'es.ex.pt73piez955lsy',
@@ -773,7 +774,7 @@ export const ES_A1_U02: EsUnitDef = {
             CLASE,
             'What nationality is Kevin?',
             'American',
-            ['English', 'Argentine', 'Italian'],
+            ['English', 'Mexican', 'Italian'],
             ['es-estadounidense'],
             'Kevin says “Soy estadounidense”: he is from the US.',
           ),
@@ -787,7 +788,7 @@ export const ES_A1_U02: EsUnitDef = {
             'Kevin es de Nueva York. ___ estadounidense.',
             'Kevin is from New York. He is American.',
             'Es',
-            ['Sos', 'Soy', 'Está'],
+            ['Eres', 'Soy', 'Está'],
             ['es-el-es', 'es-estadounidense'],
             {
               id: 'es.ex.7oyai4of5s1b5v',
@@ -796,15 +797,16 @@ export const ES_A1_U02: EsUnitDef = {
             },
           ),
           ex.translateWrite(
-            'My name is Marco. I am Italian and I live in Buenos Aires.',
-            'Me llamo Marco. Soy italiano y vivo en Buenos Aires.',
+            'My name is Marco. I am Italian and I live in Bogotá.',
+            'Me llamo Marco. Soy italiano y vivo en Bogotá.',
             ['es-yo-soy', 'es-italiano', 'es-vivo-en'],
             {
               id: 'es.ex.28qyagtx1qamlj',
               acceptedAnswers: [
-                'Me llamo Marco. Yo soy italiano y vivo en Buenos Aires.',
-                'Me llamo Marco, soy italiano y vivo en Buenos Aires.',
-                'Me llamo Marco. Soy italiano, y vivo en Buenos Aires.',
+                'Me llamo Marco. Yo soy italiano y vivo en Bogotá.',
+                'Me llamo Marco, soy italiano y vivo en Bogotá.',
+                'Me llamo Marco. Soy italiano, y vivo en Bogotá.',
+                'Me llamo Marco. Soy italiano y vivo en Bogota.',
               ],
             },
           ),

@@ -878,7 +878,10 @@ export const FR_A2_U12: FrUnitDef = {
             'Me dijo que estaba cansado.',
             "Il m'a dit qu'il était fatigué.",
             ['fr-elle-m-a-dit-que'],
-            { id: 'fr.ex.i2r9wkdx1hu3wo' },
+            {
+              id: 'fr.ex.i2r9wkdx1hu3wo',
+              acceptedAnswers: ["Elle m'a dit qu'il était fatigué."],
+            },
           ),
           ex.shortAnswer(
             "Qu'est-ce que Thomas dit?",

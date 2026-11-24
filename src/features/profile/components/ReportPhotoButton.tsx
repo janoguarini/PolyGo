@@ -4,18 +4,14 @@ import { Modal, Pressable, StyleSheet, View } from 'react-native';
 
 import { Button, Card, Text, colors, spacing, themedStyles } from '@/design-system';
 import { FormMessage } from '@/features/auth/FormMessage';
+import { useStrings } from '@/i18n';
 import { toUserMessage } from '@/lib/errors';
 
 import type { ReportReason } from '../api';
 import { useReportAvatar } from '../hooks';
+import { reportStrings } from '../strings';
 
-const REASONS: { id: ReportReason; label: string }[] = [
-  { id: 'sexual', label: 'Contenido sexual' },
-  { id: 'violent', label: 'Violencia' },
-  { id: 'hateful', label: 'Ofensiva o discriminatoria' },
-  { id: 'impersonation', label: 'Se hace pasar por otra persona' },
-  { id: 'other', label: 'Otro motivo' },
-];
+const REASONS: readonly ReportReason[] = ['sexual', 'violent', 'hateful', 'impersonation', 'other'];
 
 /** "Reportar foto" en el perfil de otro jugador: elegir motivo, confirmar y avisar el resultado. */
 export function ReportPhotoButton({
@@ -29,6 +25,7 @@ export function ReportPhotoButton({
   hasPhoto: boolean;
 }) {
   const styles = useStyles();
+  const t = useStrings(reportStrings);
   const report = useReportAvatar(userId);
   const [open, setOpen] = useState(false);
   const [reason, setReason] = useState<ReportReason | null>(null);
@@ -42,9 +39,7 @@ export function ReportPhotoButton({
   if (report.isSuccess && !open) {
     return (
       <Text variant="caption" align="center" color="success">
-        {report.data.hidden
-          ? 'Gracias por avisar. La foto se ocultó.'
-          : 'Gracias por avisar. Vamos a revisar la foto.'}
+        {report.data.hidden ? t.hidden : t.review}
       </Text>
     );
   }
@@ -55,31 +50,29 @@ export function ReportPhotoButton({
     <>
       <Pressable
         accessibilityRole="button"
-        accessibilityLabel={`Reportar la foto de perfil de ${username}`}
+        accessibilityLabel={t.triggerA11y(username)}
         onPress={() => setOpen(true)}
         style={styles.trigger}
         hitSlop={6}
       >
         <Flag color={colors.textMuted} size={14} />
-        <Text variant="caption">Reportar foto</Text>
+        <Text variant="caption">{t.trigger}</Text>
       </Pressable>
 
       <Modal transparent visible={open} animationType="fade" onRequestClose={close}>
         <View style={styles.backdrop}>
           <Card style={styles.sheet}>
-            <Text variant="heading">Reportar foto de perfil</Text>
-            <Text variant="caption">
-              ¿Por qué no debería verse la foto de @{username}? Tu reporte es anónimo.
-            </Text>
+            <Text variant="heading">{t.title}</Text>
+            <Text variant="caption">{t.body(username)}</Text>
             <View accessibilityRole="radiogroup">
               {REASONS.map((r) => {
-                const selected = reason === r.id;
+                const selected = reason === r;
                 return (
                   <Pressable
-                    key={r.id}
+                    key={r}
                     accessibilityRole="radio"
                     accessibilityState={{ selected }}
-                    onPress={() => setReason(r.id)}
+                    onPress={() => setReason(r)}
                     style={styles.option}
                   >
                     <Text
@@ -87,7 +80,7 @@ export function ReportPhotoButton({
                       color={selected ? 'primarySoft' : 'text'}
                       style={styles.flex}
                     >
-                      {r.label}
+                      {t.reason(r)}
                     </Text>
                     {selected ? <Check color={colors.primarySoft} size={18} /> : null}
                   </Pressable>
@@ -98,13 +91,13 @@ export function ReportPhotoButton({
               <FormMessage tone="error" message={toUserMessage(report.error)} />
             ) : null}
             <Button
-              label="Enviar reporte"
+              label={t.send}
               variant="danger"
               disabled={!reason}
               loading={report.isPending}
               onPress={() => reason && report.mutate(reason, { onSuccess: () => setOpen(false) })}
             />
-            <Button label="Cancelar" variant="ghost" onPress={close} />
+            <Button label={t.cancel} variant="ghost" onPress={close} />
           </Card>
         </View>
       </Modal>

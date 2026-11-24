@@ -1,5 +1,5 @@
 import { themedStyles } from '../theme';
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { Image, StyleSheet, View, type ImageSourcePropType } from 'react-native';
 
 import { AVATARS, DEFAULT_AVATAR, type AvatarId } from '@shared/profile';
@@ -21,6 +21,7 @@ import {
   avatarViolet,
   avatarYellow,
 } from '../imageData.generated';
+import { SKIN_IMAGES } from '../skinImages';
 import { colors } from '../tokens';
 
 /**
@@ -50,7 +51,7 @@ const IMAGES: Record<AvatarId, ImageSourcePropType> = {
  * los avatares predeterminados. Con `instant` todos quedan montados uno encima del otro y sólo se
  * muestra el elegido: cambiar de avatar es inmediato (para el avatar que se está editando).
  */
-export function Avatar({
+function AvatarBase({
   avatarId,
   photoUrl,
   size = 48,
@@ -64,6 +65,23 @@ export function Avatar({
 }) {
   const styles = useStyles();
   const [failedUrl, setFailedUrl] = useState<string | null>(null);
+  // Una skin puesta manda sobre la foto (la foto no se borra: vuelve al elegir un avatar común).
+  const skin = avatarId ? SKIN_IMAGES[avatarId] : undefined;
+  if (skin) {
+    return (
+      <View
+        accessibilityElementsHidden
+        importantForAccessibility="no"
+        style={[
+          styles.base,
+          styles.skin,
+          { width: size, height: size, borderRadius: size / 2 },
+        ]}
+      >
+        <Image source={skin} style={styles.image} resizeMode="cover" fadeDuration={0} />
+      </View>
+    );
+  }
   const avatar =
     AVATARS.find((a) => a.id === avatarId) ?? AVATARS.find((a) => a.id === DEFAULT_AVATAR)!;
   const usePhoto = Boolean(photoUrl) && failedUrl !== photoUrl;
@@ -112,6 +130,8 @@ export function Avatar({
   );
 }
 
+export const Avatar = memo(AvatarBase);
+
 export function isAvatarId(id: string): id is AvatarId {
   return AVATARS.some((a) => a.id === id);
 }
@@ -123,6 +143,8 @@ const useStyles = themedStyles(() =>
       borderWidth: 2,
       backgroundColor: colors.surfaceRaised,
     },
+    // Las skins traen su propio aro neón: sin borde extra.
+    skin: { borderWidth: 0, backgroundColor: 'transparent' },
     image: { width: '100%', height: '100%' },
     layer: { ...StyleSheet.absoluteFill },
   }),

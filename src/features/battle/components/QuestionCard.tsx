@@ -19,8 +19,10 @@ import {
 } from '@/design-system';
 import { TargetText, useSessionLanguage } from '@/features/learning/readings';
 import { speak, stopSpeaking } from '@/features/learning/speech';
+import { useStrings } from '@/i18n';
 
 import type { AnswerFeedback } from '../state';
+import { battleStrings } from '../strings';
 
 interface Props {
   question: QuestionView;
@@ -32,15 +34,14 @@ interface Props {
   onAnswer: (choice: number | string) => void;
 }
 
-/** Consignas en mayúsculas según el idioma de la partida («en italiano»). */
-function instructions(inName: string) {
-  const lang = inName.toUpperCase();
+/** Consignas en mayúsculas según el idioma de la partida («en italiano» / «in Italian»). */
+function instructions(t: (typeof battleStrings)['es'], code: string) {
   return {
-    audio: 'ESCUCHÁ Y ELEGÍ QUÉ SIGNIFICA',
-    image: `¿CÓMO SE DICE ${lang}?`,
-    write: `ESCRIBÍ LA PALABRA ${lang}`,
-    en_es: 'ELEGÍ LA TRADUCCIÓN AL ESPAÑOL',
-    es_en: `ELEGÍ LA PALABRA ${lang}`,
+    audio: t.listenAndChoose,
+    image: t.howDoYouSay(code),
+    write: t.writeTheWord(code),
+    en_es: t.chooseSpanish,
+    es_en: t.chooseTheWord(code),
   } as const;
 }
 
@@ -55,8 +56,9 @@ const streakColor = (level: number) =>
  */
 export function QuestionCard({ question, feedback, streak, disabled, onAnswer }: Props) {
   const styles = useStyles();
+  const t = useStrings(battleStrings);
   const { language } = useSessionLanguage();
-  const INSTRUCTIONS = instructions(language.inName);
+  const INSTRUCTIONS = instructions(t, language.code);
   const shown = feedback?.questionIndex === question.index ? feedback : null;
   const kind = question.kind ?? 'text';
   const level = streakLevel(streak);
@@ -79,10 +81,10 @@ export function QuestionCard({ question, feedback, streak, disabled, onAnswer }:
             entering={ZoomIn.springify().damping(12)}
             style={[styles.streak, { backgroundColor: streakColor(level) }]}
             accessible
-            accessibilityLabel={`Racha de ${streak} correctas: la próxima suma ${streakBonus(streak + 1)} extra`}
+            accessibilityLabel={t.streakA11y(streak, streakBonus(streak + 1))}
           >
             <Text variant="bodyStrong" color="textStrong">
-              {`🔥 Racha x${streak} · +${streakBonus(streak + 1)}`}
+              {t.streakChip(streak, streakBonus(streak + 1))}
             </Text>
           </Animated.View>
         ) : null}
@@ -96,7 +98,7 @@ export function QuestionCard({ question, feedback, streak, disabled, onAnswer }:
             <View style={styles.speakers}>
               <Pressable
                 accessibilityRole="button"
-                accessibilityLabel="Escuchar otra vez"
+                accessibilityLabel={t.listenAgain}
                 onPress={() => speak(question.prompt)}
                 style={({ pressed }) => [styles.speaker, pressed && styles.pressed]}
               >
@@ -104,7 +106,7 @@ export function QuestionCard({ question, feedback, streak, disabled, onAnswer }:
               </Pressable>
               <Pressable
                 accessibilityRole="button"
-                accessibilityLabel="Escuchar despacio"
+                accessibilityLabel={t.listenSlowly}
                 onPress={() => speak(question.prompt, { slow: true })}
                 hitSlop={8}
                 style={({ pressed }) => [styles.slow, pressed && styles.pressed]}
@@ -120,7 +122,7 @@ export function QuestionCard({ question, feedback, streak, disabled, onAnswer }:
             </View>
           </View>
         ) : kind === 'image' && question.emoji ? (
-          <Text style={styles.emoji} accessibilityLabel={`Imagen: ${question.prompt}`}>
+          <Text style={styles.emoji} accessibilityLabel={t.imageA11y(question.prompt)}>
             {question.emoji}
           </Text>
         ) : (
@@ -138,10 +140,10 @@ export function QuestionCard({ question, feedback, streak, disabled, onAnswer }:
           >
             {shown.correct
               ? bonus > 0
-                ? `¡En racha! +${shown.points}`
-                : `¡Bien! +${shown.points}`
+                ? t.onStreak(shown.points)
+                : t.nice(shown.points)
               : shown.correctText
-                ? `Se escribe «${shown.correctText}» · ${shown.points}`
+                ? t.spelled(shown.correctText, shown.points)
                 : `${shown.points}`}
           </Text>
         ) : (
@@ -202,6 +204,7 @@ function WriteAnswer({
   onSubmit: (text: string) => void;
 }) {
   const styles = useStyles();
+  const t = useStrings(battleStrings);
   const [text, setText] = useState('');
   const submit = () => {
     if (text.trim() && !disabled) onSubmit(text);
@@ -209,7 +212,7 @@ function WriteAnswer({
   return (
     <View style={styles.options}>
       <TextField
-        label="Tu respuesta"
+        label={t.yourAnswer}
         value={text}
         onChangeText={setText}
         onSubmitEditing={submit}
@@ -225,7 +228,7 @@ function WriteAnswer({
         maxLength={MAX_WRITTEN_ANSWER_LENGTH}
         style={styles.writeInput}
       />
-      <Button label="Responder" onPress={submit} disabled={disabled || !text.trim()} />
+      <Button label={t.submit} onPress={submit} disabled={disabled || !text.trim()} />
     </View>
   );
 }

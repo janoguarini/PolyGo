@@ -14,9 +14,11 @@ import {
   themedStyles,
 } from '@/design-system';
 import { FormMessage } from '@/features/auth/FormMessage';
+import { useStrings } from '@/i18n';
 import { toUserMessage } from '@/lib/errors';
 
 import { usePlayerSearch } from '../api';
+import { friendsStrings } from '../strings';
 import { PlayerRow } from './PlayerRow';
 import { SearchAction, type Feedback } from './RequestActions';
 
@@ -34,6 +36,7 @@ export function SearchBar({
   autoFocus?: boolean;
 }) {
   const styles = useStyles();
+  const t = useStrings(friendsStrings);
   const [focused, setFocused] = useState(false);
   return (
     <View style={[styles.bar, focused && styles.barFocused]}>
@@ -41,9 +44,9 @@ export function SearchBar({
       <TextInput
         value={query}
         onChangeText={onChange}
-        placeholder="Nombre de usuario o código PG-…"
+        placeholder={t.searchPlaceholder}
         placeholderTextColor={colors.textSubtle}
-        accessibilityLabel="Buscar jugadores por nombre de usuario o código"
+        accessibilityLabel={t.searchA11y}
         autoCapitalize="none"
         autoCorrect={false}
         autoFocus={autoFocus}
@@ -56,7 +59,7 @@ export function SearchBar({
       {query.length > 0 ? (
         <Pressable
           accessibilityRole="button"
-          accessibilityLabel="Borrar búsqueda"
+          accessibilityLabel={t.clearSearch}
           onPress={() => onChange('')}
           hitSlop={12}
           style={styles.clear}
@@ -77,6 +80,7 @@ export function PlayerSearchResults({
   onFeedback: (feedback: Feedback) => void;
 }) {
   const styles = useStyles();
+  const t = useStrings(friendsStrings);
   const [debounced, setDebounced] = useState(query);
   useEffect(() => {
     const t = setTimeout(() => setDebounced(query), SEARCH_DELAY_MS);
@@ -88,30 +92,28 @@ export function PlayerSearchResults({
   if (tooShort)
     return (
       <Text variant="caption" align="center">
-        Escribí al menos 2 letras.
+        {t.typeTwoLetters}
       </Text>
     );
   if (search.isPending || debounced !== query)
-    return <ActivityIndicator color={colors.primaryBright} accessibilityLabel="Buscando" />;
+    return <ActivityIndicator color={colors.primaryBright} accessibilityLabel={t.searching} />;
   if (search.isError) return <FormMessage tone="error" message={toUserMessage(search.error)} />;
   if (!search.data || search.data.length === 0)
     return (
       <Animated.View entering={FadeIn.duration(200)} style={styles.empty}>
         <SearchX color={colors.textSubtle} size={32} />
         <Text variant="bodyStrong" color="text">
-          Sin resultados
+          {t.noResults}
         </Text>
         <Text variant="caption" align="center">
-          No encontramos jugadores con ese nombre o código.
+          {t.noResultsHint}
         </Text>
       </Animated.View>
     );
 
   return (
     <View style={styles.results}>
-      <Text variant="overline">
-        {search.data.length === 1 ? '1 JUGADOR' : `${search.data.length} JUGADORES`}
-      </Text>
+      <Text variant="overline">{t.playersCount(search.data.length)}</Text>
       {search.data.map((p, i) => (
         <Animated.View key={p.userId} entering={FadeInDown.delay(50 * i).duration(250)}>
           <Card style={styles.result}>

@@ -2,6 +2,9 @@ import { generateQuestions, type RushWord } from '@shared/wordRush';
 
 import type { WordProgressEntry, WordRow } from '@/features/learning/api';
 import { seededRandom } from '@/features/learning/random';
+import { getStrings } from '@/i18n';
+
+import { widgetStrings } from './strings';
 
 /**
  * Contenido de los widgets, calculado en la app (con red y sesión) y entregado al widget como props.
@@ -39,8 +42,22 @@ export interface QuizQuestion {
   correct: number;
 }
 
+/** Textos fijos del widget de preguntas, en el idioma de la interfaz al sincronizar. */
+export interface QuizUi {
+  empty: string;
+  done: string;
+  again: string;
+  question: string;
+  correct: string;
+  was: string;
+  result: string;
+  next: string;
+}
+
 export interface QuizProps {
   questions: QuizQuestion[];
+  /** Opcional: las props guardadas antes de esta versión no lo traen (el widget usa español). */
+  ui?: QuizUi;
   /** Pregunta actual; === questions.length cuando terminó la ronda. */
   index: number;
   /** Opción elegida en la pregunta actual, −1 si todavía no respondió. */
@@ -49,28 +66,28 @@ export interface QuizProps {
   url: string;
 }
 
-const LABELS: Record<WordCardKind, string> = {
-  daily: 'PALABRA DEL DÍA',
-  review: 'PARA REPASAR',
-  mistake: 'TE COSTÓ',
-  new: 'PALABRA NUEVA',
-};
-
+/** Tarjeta vacía en español (= props iniciales de src/widgets/PolygoWord). */
 export const EMPTY_WORD_CARD: WordCardProps = {
   kind: 'new',
   label: 'POLYGO',
-  text: 'Abrí Polygo',
-  translation: 'para cargar tus palabras',
+  text: widgetStrings.es.emptyText,
+  translation: widgetStrings.es.emptyTranslation,
   ipa: '',
   emoji: '',
   example: '',
   url: WIDGET_LINKS.word,
 };
 
+/** Tarjeta vacía en el idioma de la interfaz. */
+export function emptyWordCard(): WordCardProps {
+  const t = getStrings(widgetStrings);
+  return { ...EMPTY_WORD_CARD, text: t.emptyText, translation: t.emptyTranslation };
+}
+
 export function toWordCard(word: WordRow, kind: WordCardKind): WordCardProps {
   return {
     kind,
-    label: LABELS[kind],
+    label: getStrings(widgetStrings).labels[kind],
     text: word.text,
     translation: word.translation_es,
     ipa: word.ipa ?? '',
@@ -87,11 +104,12 @@ export function toWordCard(word: WordRow, kind: WordCardKind): WordCardProps {
  */
 export type WidgetContent = 'mixed' | 'review' | 'mistakes' | 'new';
 
-export const WIDGET_CONTENT_OPTIONS: { id: WidgetContent; title: string; caption: string }[] = [
-  { id: 'mixed', title: 'Variado', caption: 'Palabra del día, tus repasos y palabras nuevas' },
-  { id: 'review', title: 'Para repasar', caption: 'Tus palabras, las vencidas primero' },
-  { id: 'mistakes', title: 'Tus errores', caption: 'Las palabras en las que más te equivocaste' },
-  { id: 'new', title: 'Palabras nuevas', caption: 'Vocabulario publicado que todavía no viste' },
+/** Opciones en orden; los títulos y descripciones están en strings.ts (`options`). */
+export const WIDGET_CONTENT_OPTIONS: { id: WidgetContent }[] = [
+  { id: 'mixed' },
+  { id: 'review' },
+  { id: 'mistakes' },
+  { id: 'new' },
 ];
 
 /**
@@ -162,7 +180,7 @@ export function buildWordTimeline(
   now: Date,
   hours = WORD_TIMELINE_HOURS,
 ): { date: Date; props: WordCardProps }[] {
-  if (ranked.length === 0) return [{ date: now, props: EMPTY_WORD_CARD }];
+  if (ranked.length === 0) return [{ date: now, props: emptyWordCard() }];
   const entries: { date: Date; props: WordCardProps }[] = [];
   let at = now;
   for (let i = 0; i < hours; i++) {
@@ -205,6 +223,7 @@ export function buildQuiz(
       options: q.options,
       correct: q.correctOption,
     })),
+    ui: getStrings(widgetStrings).quiz,
     index: 0,
     chosen: -1,
     correctCount: 0,

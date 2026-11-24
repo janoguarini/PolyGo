@@ -8,6 +8,7 @@ export {
 } from './theme';
 export { TIER_COLORS } from './rankTheme';
 export { Avatar } from './components/Avatar';
+export { BrandCard } from './components/BrandCard';
 export { Button } from './components/Button';
 export { Card } from './components/Card';
 export { Mascot, MascotWarmup, type MascotPose } from './components/Mascot';

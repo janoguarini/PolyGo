@@ -6,7 +6,7 @@ import { ActivityIndicator, Alert, BackHandler, Share, StyleSheet, View } from '
 
 import { languageConfig } from '@shared/languages';
 import { BOT_CALIBRATION } from '@shared/bots';
-import { WORD_RUSH, type BattleMode, type CancelReason } from '@shared/protocol';
+import { WORD_RUSH, type BattleMode } from '@shared/protocol';
 import { isPlaced } from '@shared/ranking';
 
 import {
@@ -22,8 +22,8 @@ import {
   spacing,
   useTheme,
 } from '@/design-system';
-import { RANKED_UNAVAILABLE_TITLE, rankedDisabled } from '@/features/battle/availability';
-import { ERROR_MESSAGES, battleServerConfigured } from '@/features/battle/client';
+import { rankedDisabled } from '@/features/battle/availability';
+import { battleErrorMessage, battleServerConfigured } from '@/features/battle/client';
 import { BattleHud } from '@/features/battle/components/BattleHud';
 import { BotBadge } from '@/features/battle/components/BotBadge';
 import { BattleResult } from '@/features/battle/components/BattleResult';
@@ -38,20 +38,24 @@ import {
 } from '@/features/battle/state';
 import { useBattleStore } from '@/features/battle/store';
 import { useBattleSession, useNow } from '@/features/battle/useBattleSession';
+import { battleStrings, cancelStrings } from '@/features/battle/strings';
 import { useLocalBattleSession, type ChallengeRole } from '@/features/battle/useLocalBattleSession';
 import { FramedAvatar } from '@/features/cosmetics/FramedAvatar';
 import { SessionLanguageProvider } from '@/features/learning/SessionLanguageProvider';
 import { useMyProfile } from '@/features/profile/hooks';
+import { useRankLabels } from '@/features/ranked/strings';
+import { getStrings, useStrings } from '@/i18n';
+import { battleScreenStrings } from '@/i18n/screens/battle';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 
 function RankedUnavailable({ language }: { language: string }) {
-  const { name } = languageConfig(language);
+  const t = useStrings(battleScreenStrings);
   return (
     <Screen edges={['top', 'bottom']} scroll={false}>
       <EmptyState
-        title={`Todavía no hay partidas en ${name.toLowerCase()}`}
-        message="Las partidas se habilitan cuando el nivel A1 de este idioma esté completo. Para jugar, cambiá a otro idioma desde tu perfil."
-        actionLabel="Volver"
+        title={t.noMatchesIn(language)}
+        message={t.noMatchesBody}
+        actionLabel={t.back}
         onAction={() => (router.canGoBack() ? router.back() : router.replace('/'))}
       />
     </Screen>
@@ -64,16 +68,14 @@ function RankedUnavailable({ language }: { language: string }) {
  * amigos siguen disponibles porque no pasan por el servidor de partidas.
  */
 function RankedServerUnavailable() {
+  const t = useStrings(battleScreenStrings);
+  const title = useStrings(battleStrings).rankedUnavailableTitle;
   return (
     <Screen edges={['top', 'bottom']} scroll={false}>
       <EmptyState
-        title={RANKED_UNAVAILABLE_TITLE}
-        message={
-          __DEV__
-            ? 'Falta o es inválida EXPO_PUBLIC_BATTLE_SERVER_URL (en desarrollo puede ser http). Los desafíos con amigos siguen funcionando.'
-            : 'No pudimos conectar esta versión de PolyGo con el servidor de partidas. Podés seguir desafiando a tus amigos.'
-        }
-        actionLabel="Volver"
+        title={title}
+        message={__DEV__ ? t.serverMissingDev : t.serverMissing}
+        actionLabel={t.back}
         onAction={() => (router.canGoBack() ? router.back() : router.replace('/'))}
       />
     </Screen>
@@ -85,13 +87,6 @@ function RankedServerUnavailable() {
  * bots en el teléfono (Ranked legacy). Si Ranked está deshabilitado, MatchBattle no se monta.
  */
 const useSession = battleServerConfigured ? useBattleSession : useLocalBattleSession;
-
-const CANCEL_MESSAGES: Record<CancelReason, string> = {
-  ready_timeout: 'Alguno de los dos no confirmó a tiempo. No se movió el ELO.',
-  opponent_left: 'Tu rival se fue antes de empezar. No se movió el ELO.',
-  server_error: 'El servidor no pudo empezar la partida. No se movió el ELO.',
-  settlement_failed: 'No pudimos guardar el resultado, así que la partida se anuló sin ELO.',
-};
 
 export default function BattleScreen() {
   const params = useLocalSearchParams<{
@@ -181,6 +176,7 @@ function BattleView({
   allowBotPractice?: boolean;
 }) {
   useTheme();
+  const t = useStrings(battleScreenStrings);
   const state = useBattleStore();
   const now = useNow();
 
@@ -193,23 +189,18 @@ function BattleView({
   const exit = useCallback(() => {
     const current = useBattleStore.getState();
     if (current.phase === 'playing' && current.mode === 'ranked' && current.rating !== 'unrated') {
-      Alert.alert(
-        '¿Abandonar la partida?',
-        current.friendly
-          ? 'Abandonar cuenta como derrota en el desafío (no mueve el ELO).'
-          : 'Abandonar cuenta como derrota y te baja el ELO.',
-        [
-          { text: 'Seguir jugando', style: 'cancel' },
-          {
-            text: 'Abandonar',
-            style: 'destructive',
-            onPress: () => {
-              session.leave();
-              leaveScreen();
-            },
+      const s = getStrings(battleScreenStrings);
+      Alert.alert(s.leaveTitle, current.friendly ? s.leaveFriendly : s.leaveRanked, [
+        { text: s.keepPlaying, style: 'cancel' },
+        {
+          text: s.forfeit,
+          style: 'destructive',
+          onPress: () => {
+            session.leave();
+            leaveScreen();
           },
-        ],
-      );
+        },
+      ]);
       return;
     }
     session.leave();
@@ -228,16 +219,14 @@ function BattleView({
   return (
     <Screen edges={['top', 'bottom']}>
       <View style={styles.topBar}>
-        <Text variant="overline">{matchLabel(state)}</Text>
+        <Text variant="overline">{matchLabel(state, t)}</Text>
         <Button
-          label={state.phase === 'playing' ? 'Abandonar' : 'Salir'}
+          label={state.phase === 'playing' ? t.forfeit : t.exit}
           variant="ghost"
           icon={<X color={colors.textMuted} size={18} />}
           onPress={exit}
           accessibilityHint={
-            state.phase === 'playing' && isRated(state)
-              ? 'Abandonar cuenta como derrota'
-              : 'Vuelve a la pantalla anterior'
+            state.phase === 'playing' && isRated(state) ? t.forfeitHint : t.exitHint
           }
         />
       </View>
@@ -256,30 +245,32 @@ function BattleView({
 }
 
 /** Qué tipo de partida es: se ve arriba durante toda la partida. */
-function matchLabel(state: BattleState): string {
-  if (state.friendly) return 'DESAFÍO · SIN ELO';
-  if (state.mode === 'practice') return 'PRÁCTICA · SIN ELO';
+function matchLabel(state: BattleState, t: ScreenStrings): string {
+  if (state.friendly) return t.labelFriendly;
+  if (state.mode === 'practice') return t.labelPractice;
   if (state.mode === 'bot_practice' || state.rating === 'unrated') {
-    return 'PRÁCTICA CONTRA BOT · SIN ELO';
+    return t.labelBotPractice;
   }
   if (state.rating === 'calibration' && state.calibration) {
-    return `RANKED · CALIBRACIÓN ${state.calibration.used}/${state.calibration.limit}`;
+    return t.labelCalibration(state.calibration.used, state.calibration.limit);
   }
-  return 'RANKED · WORD RUSH';
+  return t.labelRanked;
 }
 
 /** Lo que se le explica antes de empezar según si mueve el ELO. */
-function ratingNote(state: BattleState): string | null {
+function ratingNote(state: BattleState, t: ScreenStrings): string | null {
   if (state.friendly || state.mode === 'practice') return null;
   if (state.mode === 'bot_practice' || state.rating === 'unrated') {
-    return 'Práctica contra un bot: no mueve tu ELO ni da recompensas de Ranked.';
+    return t.noteBotPractice;
   }
   if (state.rating === 'calibration' && state.calibration) {
-    return `Partida de calibración ${state.calibration.used} de ${state.calibration.limit} contra un bot: mueve tu ELO. Después, el ELO sólo se juega contra personas.`;
+    return t.noteCalibration(state.calibration.used, state.calibration.limit);
   }
-  if (state.rating === 'competitive') return 'Partida contra una persona: mueve tu ELO.';
+  if (state.rating === 'competitive') return t.noteCompetitive;
   return null;
 }
+
+type ScreenStrings = (typeof battleScreenStrings)['es'];
 
 /** Si se entró por un link de desafío no hay pantalla anterior: vuelve a Ranked. */
 function leaveScreen() {
@@ -310,6 +301,8 @@ function Body({
   inviteeName,
 }: BodyProps) {
   useTheme();
+  const t = useStrings(battleScreenStrings);
+  const cancelMessages = useStrings(cancelStrings);
   const me = state.players.find((p) => p.slot === state.yourSlot);
   const opponent = opponentPlayer(state);
   const myRating = useMyProfile().data?.rating;
@@ -317,15 +310,15 @@ function Body({
   switch (state.phase) {
     case 'idle':
     case 'connecting':
-      return <LoadingState label="Preparando la partida…" />;
+      return <LoadingState label={t.preparing} />;
 
     case 'error':
       if (state.friendly && state.errorCode === 'challenge_declined') {
         return (
           <EmptyState
-            title={inviteeName ? `@${inviteeName} no puede ahora` : 'Tu amigo no puede ahora'}
-            message={ERROR_MESSAGES.challenge_declined}
-            actionLabel="Volver"
+            title={t.declinedTitle(inviteeName)}
+            message={battleErrorMessage('challenge_declined')}
+            actionLabel={t.back}
             onAction={onExit}
           />
         );
@@ -333,16 +326,16 @@ function Body({
       if (state.friendly && state.errorCode?.startsWith('challenge_')) {
         return (
           <EmptyState
-            title="No se pudo entrar al desafío"
-            message={ERROR_MESSAGES[state.errorCode]}
-            actionLabel="Crear mi propio desafío"
+            title={t.challengeFailedTitle}
+            message={battleErrorMessage(state.errorCode)}
+            actionLabel={t.createOwnChallenge}
             onAction={onRetry}
           />
         );
       }
       return (
         <ErrorState
-          message={ERROR_MESSAGES[state.errorCode ?? 'connection']}
+          message={battleErrorMessage(state.errorCode ?? 'connection')}
           onRetry={state.errorCode === 'protocol_mismatch' ? undefined : onRetry}
         />
       );
@@ -365,29 +358,21 @@ function Body({
           <Card style={styles.searchCard}>
             <Search color={colors.primaryBright} size={40} />
             <Text variant="title" align="center">
-              Buscando rival…
+              {t.searching}
             </Text>
-            <Text
-              variant="stat"
-              align="center"
-              accessibilityLabel={`Esperando ${mm} minutos ${ss} segundos`}
-            >
+            <Text variant="stat" align="center" accessibilityLabel={t.waitingA11y(mm, ss)}>
               {mm}:{ss}
             </Text>
             {onlyHumans ? (
               <Text color="textMuted" align="center">
-                Buscamos a una persona de tu nivel: las partidas contra bots ya no mueven tu ELO.
+                {t.onlyHumans}
               </Text>
             ) : null}
           </Card>
           {offerPractice ? (
-            <Button
-              label="Practicar contra un bot (sin ELO)"
-              variant="secondary"
-              onPress={onBotPractice}
-            />
+            <Button label={t.practiceVsBot} variant="secondary" onPress={onBotPractice} />
           ) : null}
-          <Button label="Cancelar búsqueda" variant="ghost" onPress={onExit} />
+          <Button label={t.cancelSearch} variant="ghost" onPress={onExit} />
         </View>
       );
     }
@@ -397,11 +382,11 @@ function Body({
       return (
         <View style={styles.center}>
           <Text variant="title" align="center">
-            ¡Rival encontrado!
+            {t.opponentFound}
           </Text>
           <View style={styles.versus}>
             <PlayerBadge
-              username="Vos"
+              username={t.you}
               avatarId={me?.avatarId}
               avatarPath={me?.avatarPath}
               frameId={me?.frameId}
@@ -420,23 +405,22 @@ function Body({
             />
           </View>
           <Text color="textMuted" align="center">
-            75 segundos, las mismas preguntas para los dos. Correcta +100 (+50 por rapidez),
-            incorrecta −50. Encadená aciertos: la racha suma hasta +30.
+            {t.rules}
           </Text>
-          {ratingNote(state) ? (
+          {ratingNote(state, t) ? (
             <Text variant="bodyStrong" align="center">
-              {ratingNote(state)}
+              {ratingNote(state, t)}
             </Text>
           ) : null}
           <Button
-            label={state.iAmReady ? 'Esperando a tu rival…' : '¡Listo!'}
+            label={state.iAmReady ? t.waitingOpponent : t.ready}
             size="lg"
             disabled={state.iAmReady}
             onPress={onReady}
           />
           {left !== null ? (
             <Text variant="caption" align="center">
-              Confirmá en {Math.ceil(left / 1000)} s o la partida se cancela.
+              {t.confirmIn(Math.ceil(left / 1000))}
             </Text>
           ) : null}
         </View>
@@ -448,7 +432,7 @@ function Body({
       return (
         <View style={styles.center}>
           {left === null ? (
-            <LoadingState label="Preparando la partida…" />
+            <LoadingState label={t.preparing} />
           ) : (
             <Text
               variant="display"
@@ -456,7 +440,7 @@ function Body({
               style={styles.countdown}
               accessibilityLiveRegion="polite"
             >
-              {left > 0 ? Math.ceil(left / 1000) : '¡Ya!'}
+              {left > 0 ? Math.ceil(left / 1000) : t.go}
             </Text>
           )}
         </View>
@@ -480,7 +464,7 @@ function Body({
             opponentGraceMs={grace}
           />
           {left <= 0 ? (
-            <LoadingState label="¡Tiempo! Calculando el resultado…" />
+            <LoadingState label={t.timeUp} />
           ) : state.question ? (
             <SessionLanguageProvider>
               <QuestionCard
@@ -492,7 +476,7 @@ function Body({
               />
             </SessionLanguageProvider>
           ) : state.feedback || state.answering ? null : (
-            <LoadingState label="Respondiste todas. Esperando el final…" />
+            <LoadingState label={t.allAnswered} />
           )}
         </View>
       );
@@ -506,18 +490,14 @@ function Body({
     case 'cancelled':
       return (
         <EmptyState
-          title={state.cancelReason ? 'Partida cancelada' : 'Te perdiste el final'}
-          message={
-            state.cancelReason
-              ? CANCEL_MESSAGES[state.cancelReason]
-              : 'La partida terminó mientras estabas desconectado. Mirá el resultado en tu historial.'
-          }
+          title={state.cancelReason ? t.cancelledTitle : t.missedEndTitle}
+          message={state.cancelReason ? cancelMessages[state.cancelReason] : t.missedEndBody}
           actionLabel={
             state.friendly
-              ? 'Nuevo desafío'
+              ? t.newChallenge
               : state.mode === 'practice' || state.mode === 'bot_practice'
-                ? 'Practicar de nuevo'
-                : 'Buscar otra partida'
+                ? t.practiceAgain
+                : t.findAnother
           }
           onAction={onRetry}
         />
@@ -536,30 +516,30 @@ function ChallengeWaiting({
   onExit: () => void;
 }) {
   useTheme();
-  const { inName } = languageConfig(useMyProfile().data?.profile.target_language);
+  const t = useStrings(battleScreenStrings);
+  const language = languageConfig(useMyProfile().data?.profile.target_language).code;
   const share = useCallback(() => {
     const link = Linking.createURL(`challenge/${code}`);
     void Share.share({
-      message: `¡Te desafío en Polygo! 75 segundos de vocabulario ${inName}, vos contra mí. Entrá con el código ${code} (Ranked → Tengo un código) o tocá: ${link}`,
+      message: t.shareMessage(code, language, link),
     }).catch(() => {});
-  }, [code, inName]);
+  }, [code, language, t]);
   if (inviteeName) {
     return (
       <View style={styles.center}>
         <Card style={styles.searchCard}>
           <ActivityIndicator color={colors.primaryBright} size="large" />
           <Text variant="title" align="center">
-            Esperando a @{inviteeName}
+            {t.waitingFor(inviteeName)}
           </Text>
           <Text color="textMuted" align="center">
-            Le llegó tu invitación en la app. Cuando la acepte, la partida empieza sola.
+            {t.inviteSent}
           </Text>
           <Text variant="caption" align="center">
-            Amistoso: no mueve el ELO. Dejá esta pantalla abierta: si la cerrás, la invitación se
-            cancela.
+            {t.inviteNote}
           </Text>
         </Card>
-        <Button label="Cancelar invitación" variant="ghost" onPress={onExit} />
+        <Button label={t.cancelInvite} variant="ghost" onPress={onExit} />
       </View>
     );
   }
@@ -568,32 +548,31 @@ function ChallengeWaiting({
       <Card style={styles.searchCard}>
         <UserPlus color={colors.primaryBright} size={40} />
         <Text variant="title" align="center">
-          Desafío creado
+          {t.challengeCreated}
         </Text>
         <Text color="textMuted" align="center">
-          Pasale este código a tu amigo. Cuando entre, la partida empieza sola.
+          {t.passCode}
         </Text>
         <Text
           variant="display"
           align="center"
           style={styles.code}
           selectable
-          accessibilityLabel={`Código ${code.split('').join(' ')}`}
+          accessibilityLabel={t.codeA11y(code.split('').join(' '))}
         >
           {code}
         </Text>
         <Button
-          label="Compartir desafío"
+          label={t.shareChallenge}
           size="lg"
           icon={<Share2 color={colors.onPrimary} size={20} />}
           onPress={share}
         />
         <Text variant="caption" align="center">
-          Amistoso: no mueve el ELO. Dejá esta pantalla abierta mientras esperás; el código vence en
-          15 minutos.
+          {t.codeNote}
         </Text>
       </Card>
-      <Button label="Cancelar desafío" variant="ghost" onPress={onExit} />
+      <Button label={t.cancelChallenge} variant="ghost" onPress={onExit} />
     </View>
   );
 }
@@ -615,11 +594,13 @@ function PlayerBadge({
   rating: number | undefined;
   placed: boolean;
 }) {
+  const t = useStrings(battleScreenStrings);
+  const ranks = useRankLabels();
   return (
     <View
       style={styles.badge}
       accessible
-      accessibilityLabel={`${username}${isBot ? ', bot' : ''}, ${placed ? `${rating ?? ''} ELO` : 'sin posicionar'}`}
+      accessibilityLabel={t.playerA11y(username, isBot, placed ? String(rating ?? '') : null)}
     >
       <FramedAvatar
         avatarId={avatarId}
@@ -634,7 +615,7 @@ function PlayerBadge({
       {rating !== undefined ? (
         <View style={styles.badgeRating}>
           <RankEmblemForRating rating={rating} size={22} dimmed={!placed} />
-          <Text variant="caption">{placed ? rating : 'Sin posicionar'}</Text>
+          <Text variant="caption">{placed ? rating : ranks.unplaced}</Text>
         </View>
       ) : null}
     </View>

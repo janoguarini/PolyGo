@@ -26,12 +26,23 @@ const PolygoQuiz = (props: QuizProps) => {
   const muted = '#8D88B5';
   const bg = containerBackground('#17142F', 'widget');
   const total = props.questions.length;
+  // Textos en el idioma de la interfaz (los manda la app); las props viejas no los traen.
+  const ui = props.ui || {
+    empty: 'Abrí Polygo para cargar preguntas',
+    done: 'RONDA TERMINADA',
+    again: 'Otra ronda',
+    question: 'PREGUNTA',
+    correct: '¡Correcto!',
+    was: 'Era:',
+    result: 'Ver resultado',
+    next: 'Siguiente',
+  };
 
   if (total === 0) {
     return (
       <VStack spacing={6} modifiers={[bg, widgetURL(props.url)]}>
         <Text modifiers={[font({ size: 15, weight: 'semibold' }), foregroundStyle(strong)]}>
-          Abrí Polygo para cargar preguntas
+          {ui.empty}
         </Text>
       </VStack>
     );
@@ -41,13 +52,13 @@ const PolygoQuiz = (props: QuizProps) => {
     return (
       <VStack spacing={8} modifiers={[bg, widgetURL(props.url)]}>
         <Text modifiers={[font({ size: 11, weight: 'bold' }), foregroundStyle(violet)]}>
-          RONDA TERMINADA
+          {ui.done}
         </Text>
         <Text modifiers={[font({ size: 28, weight: 'heavy' }), foregroundStyle(strong)]}>
           {`${props.correctCount}/${total}`}
         </Text>
         <Button
-          label="Otra ronda"
+          label={ui.again}
           target="restart"
           onPress={() => ({ ...props, index: 0, chosen: -1, correctCount: 0 })}
           modifiers={[buttonStyle('borderedProminent'), tint('#7C3AED'), controlSize('small')]}
@@ -77,7 +88,7 @@ const PolygoQuiz = (props: QuizProps) => {
     <VStack alignment="leading" spacing={6} modifiers={[bg, widgetURL(props.url)]}>
       <HStack>
         <Text modifiers={[font({ size: 11, weight: 'bold' }), foregroundStyle(violet)]}>
-          {`PREGUNTA ${props.index + 1}/${total}`}
+          {`${ui.question} ${props.index + 1}/${total}`}
         </Text>
         <Spacer />
         <Text modifiers={[font({ size: 11, weight: 'bold' }), foregroundStyle(muted)]}>
@@ -104,10 +115,10 @@ const PolygoQuiz = (props: QuizProps) => {
               minimumScaleFactor(0.6),
             ]}
           >
-            {right ? '¡Correcto!' : `Era: ${q.options[q.correct] ?? ''}`}
+            {right ? ui.correct : `${ui.was} ${q.options[q.correct] ?? ''}`}
           </Text>
           <Button
-            label={props.index + 1 >= total ? 'Ver resultado' : 'Siguiente'}
+            label={props.index + 1 >= total ? ui.result : ui.next}
             target="next"
             onPress={() => ({ ...props, index: props.index + 1, chosen: -1 })}
             modifiers={[buttonStyle('borderedProminent'), tint('#7C3AED'), controlSize('small')]}

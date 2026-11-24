@@ -20,6 +20,8 @@ import { useCurriculum, useMyWords } from '@/features/learning/hooks';
 import { useEnergy } from '@/features/plus/api';
 import { PlusBadge } from '@/features/plus/components/PlusBadge';
 import { topicSummaries, type TopicSummary } from '@/features/plus/topicReview';
+import { useStrings } from '@/i18n';
+import { reviewTopicsStrings } from '@/i18n/screens/review';
 
 /**
  * Repaso por tema (PolyGo Plus): elegís una unidad que ya estudiaste y repasás sólo sus palabras.
@@ -27,22 +29,23 @@ import { topicSummaries, type TopicSummary } from '@/features/plus/topicReview';
  */
 export default function ReviewTopicsScreen() {
   useTheme();
+  const t = useStrings(reviewTopicsStrings);
   const energy = useEnergy();
   const words = useMyWords();
   const curriculum = useCurriculum();
   const [now] = useState(() => Date.now());
   const plus = energy.view?.plus;
 
-  const header = <ScreenHeader title="Repaso por tema" onBack={() => router.back()} />;
+  const header = <ScreenHeader title={t.title} onBack={() => router.back()} />;
 
   if (energy.isPending || (plus && (words.isPending || curriculum.isPending))) {
-    return <LoadingState label="Buscando tus temas…" />;
+    return <LoadingState label={t.loading} />;
   }
   if (energy.isError) {
     return (
       <Screen edges={['top', 'bottom']} scroll={false}>
         {header}
-        <ErrorState message="No pudimos verificar tu suscripción." onRetry={energy.refetch} />
+        <ErrorState message={t.verifyError} onRetry={energy.refetch} />
       </Screen>
     );
   }
@@ -52,10 +55,10 @@ export default function ReviewTopicsScreen() {
         {header}
         <EmptyState
           icon={<Library color={colors.primarySoft} size={44} />}
-          title="Repaso por tema es de PolyGo Plus"
-          message="Elegí una unidad que ya estudiaste y repasá sólo sus palabras, empezando por las que te tocan y las que más te costaron. El repaso espaciado y la práctica libre siguen siendo gratis."
+          title={t.plusTitle}
+          message={t.plusMessage}
         />
-        <Button label="Conocé PolyGo Plus" onPress={() => router.replace('/plus')} />
+        <Button label={t.discoverPlus} onPress={() => router.replace('/plus')} />
       </Screen>
     );
   }
@@ -64,7 +67,7 @@ export default function ReviewTopicsScreen() {
       <Screen edges={['top', 'bottom']} scroll={false}>
         {header}
         <ErrorState
-          message="No pudimos cargar tus temas."
+          message={t.loadError}
           onRetry={() => {
             void words.refetch();
             void curriculum.refetch();
@@ -81,32 +84,29 @@ export default function ReviewTopicsScreen() {
         {header}
         <EmptyState
           icon={<BookOpen color={colors.textMuted} size={44} />}
-          title="Todavía no hay temas"
-          message="Completá lecciones: cada unidad en la que estudies palabras aparece acá para repasarla."
+          title={t.emptyTitle}
+          message={t.emptyMessage}
         />
-        <Button label="Ir a mi camino" onPress={() => router.dismissTo('/')} />
+        <Button label={t.goToPath} onPress={() => router.dismissTo('/')} />
       </Screen>
     );
   }
 
-  const levels = [...new Set(topics.map((t) => t.unit.level))];
+  const levels = [...new Set(topics.map((topic) => topic.unit.level))];
   return (
     <Screen edges={['top', 'bottom']}>
       {header}
       <View style={styles.intro}>
         <PlusBadge />
-        <Text color="textMuted">
-          Hasta 15 palabras del tema: primero las que te tocan repasar y las que más te costaron.
-          Cuenta para tu repaso espaciado y no usa energía.
-        </Text>
+        <Text color="textMuted">{t.intro}</Text>
       </View>
       {levels.map((level) => (
         <View key={level} style={styles.group}>
-          <Text variant="overline">NIVEL {level}</Text>
+          <Text variant="overline">{t.level(level)}</Text>
           {topics
-            .filter((t) => t.unit.level === level)
-            .map((t) => (
-              <TopicCard key={t.unit.id} topic={t} />
+            .filter((topic) => topic.unit.level === level)
+            .map((topic) => (
+              <TopicCard key={topic.unit.id} topic={topic} />
             ))}
         </View>
       ))}
@@ -116,9 +116,10 @@ export default function ReviewTopicsScreen() {
 
 function TopicCard({ topic }: { topic: TopicSummary }) {
   useTheme();
-  const parts = [`${topic.studied} ${topic.studied === 1 ? 'palabra' : 'palabras'}`];
-  if (topic.due > 0) parts.push(`${topic.due} para repasar`);
-  if (topic.withMistakes > 0) parts.push(`${topic.withMistakes} con errores`);
+  const t = useStrings(reviewTopicsStrings);
+  const parts = [t.words(topic.studied)];
+  if (topic.due > 0) parts.push(t.due(topic.due));
+  if (topic.withMistakes > 0) parts.push(t.withMistakes(topic.withMistakes));
   const caption = parts.join(' · ');
   return (
     <Card

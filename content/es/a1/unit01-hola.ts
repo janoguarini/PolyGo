@@ -3,9 +3,12 @@ import { dialogue, ES_A1_RATE, ex, question, reading, w } from '../helpers';
 
 /**
  * Español A1 U1 «Greetings and introductions» (docs/ES_A1_A2.md): saludar y despedirse según la hora,
- * agradecer, preguntar cómo está alguien con vos o con usted y presentarse con me llamo.
- * Pronunciación: las cinco vocales (cortas y siempre iguales) y la h muda (hola, hasta luego).
- * Cultura: en la Argentina se saluda con un beso en la mejilla, también entre hombres.
+ * agradecer, preguntar cómo está alguien con tú o con usted y presentarse con me llamo. Variante:
+ * español neutro de Latinoamérica (tú, usted, ustedes); buenos días y adiós.
+ * Pronunciación: las cinco vocales (cortas y siempre iguales), la h muda (hola, hasta luego) y la ll
+ * como la y inglesa de yes (me llamo).
+ * Cultura: en gran parte de Latinoamérica se saluda con un beso en la mejilla (entre mujeres y entre
+ * hombre y mujer; los hombres suelen darse la mano o un abrazo); en España, dos besos.
  *
  * ESTADO EDITORIAL: borrador, sin revisión de hablantes nativos. Se carga sin publicar.
  */
@@ -14,8 +17,8 @@ const KIOSCO = dialogue(
   'es.stim.a1-u1-kiosco',
   'A customer walks into a small corner shop in the morning.',
   [
-    ['Lucía', '¡Buen día, señor!'],
-    ['Juan', 'Buen día, señora. ¿Cómo está?'],
+    ['Lucía', '¡Buenos días, señor!'],
+    ['Juan', 'Buenos días, señora. ¿Cómo está?'],
     ['Lucía', 'Muy bien, gracias. ¿Y usted?'],
     ['Juan', 'Bien, gracias.'],
   ],
@@ -26,10 +29,10 @@ const FIESTA = dialogue(
   'es.stim.a1-u1-fiesta',
   'Two young people meet at a friend’s party.',
   [
-    ['Martín', '¡Hola! Me llamo Martín. ¿Cómo te llamás?'],
+    ['Martín', '¡Hola! Me llamo Martín. ¿Cómo te llamas?'],
     ['Sofía', 'Hola, Martín. Me llamo Sofía.'],
     ['Martín', '¡Mucho gusto, Sofía! ¿Cómo estás?'],
-    ['Sofía', 'Muy bien. ¿Y vos?'],
+    ['Sofía', 'Muy bien. ¿Y tú?'],
     ['Martín', 'Bien, bien.'],
   ],
   ES_A1_RATE,
@@ -62,27 +65,27 @@ export const ES_A1_U01: EsUnitDef = {
     title: 'Greetings and introductions',
     titleEn: '¡Hola!',
     description:
-      'Say hello and goodbye at any time of day, say thank you and please, ask how someone is with vos or usted, and say your name.',
+      'Say hello and goodbye at any time of day, say thank you and please, ask how someone is with tú or usted, and say your name.',
     emoji: '👋',
     objective:
       'You can greet people and say goodbye depending on the time and the person, ask how someone is, introduce yourself and say your name.',
     grammar: {
-      title: 'Vos and usted · me llamo',
+      title: 'Tú and usted · me llamo',
       explanation:
-        'Spanish has two ways of saying “you”. In Argentina you use vos with friends, family and people your age (¿cómo estás?, ¿y vos?) and usted with strangers, older people or in a shop (¿cómo está?, ¿y usted?), often together with señor or señora. In Spain and in much of Latin America people say tú instead of vos; you will understand it, but this course teaches vos, the form you hear in Buenos Aires. To say your name: me llamo + name. Spanish vowels are short and always sound the same (a, e, i, o, u), and the letter h is never pronounced: hola, hasta luego.',
+        'Spanish has two ways of saying “you” to one person. Tú is informal: for friends, family, children and people your age (¿cómo estás?, ¿y tú?). Usted is formal: for strangers, older people, in a shop or at work (¿cómo está?, ¿y usted?), often together with señor or señora. With usted the verb loses the final s: estás → está. This course teaches the neutral Spanish of Latin America, understood everywhere. To say your name: me llamo + name. Spanish vowels are short and always sound the same (a, e, i, o, u), and the letter h is never pronounced: hola, hasta luego.',
       examples: [
         {
-          target: '¡Hola! ¿Cómo estás? — Bien, ¿y vos?',
+          target: '¡Hola! ¿Cómo estás? — Bien, ¿y tú?',
           base: 'Hi! How are you? — Fine, and you?',
         },
-        { target: 'Buen día, señora. ¿Cómo está?', base: 'Good morning, madam. How are you?' },
+        { target: 'Buenos días, señora. ¿Cómo está?', base: 'Good morning, madam. How are you?' },
         { target: 'Me llamo Ana. Mucho gusto.', base: 'My name is Ana. Nice to meet you.' },
       ],
     },
     review: {
       status: 'draft',
       notes:
-        'A1 nuevo (U1). Sin revisión nativa: revisar «buen día» (lo habitual en la Argentina, frente a «buenos días», que se acepta) y el uso de «chau» también para saludar al pasar.',
+        'A1 nuevo (U1), convertido al español neutro con tú. Sin revisión nativa: revisar «adiós» como despedida base (en el Cono Sur se dice más «chau», que se acepta, igual que «chao» y «buen día») y la nota cultural sobre el beso en la mejilla.',
     },
     words: [
       w('es-hola', 'hola', 'hello', '¡Hola, Martín!', 'Hi, Martín!', ['greetings'], {
@@ -90,13 +93,13 @@ export const ES_A1_U01: EsUnitDef = {
         emoji: '👋',
       }),
       w(
-        'es-buen-dia',
-        'buen día',
+        'es-buenos-dias',
+        'buenos días',
         'good morning',
-        'Buen día, señora.',
+        'Buenos días, señora.',
         'Good morning, madam.',
         ['greetings'],
-        { acceptedTexts: ['buenos días'], emoji: '🌅' },
+        { acceptedTexts: ['buen día'], emoji: '🌅' },
       ),
       w(
         'es-buenas-tardes',
@@ -115,15 +118,16 @@ export const ES_A1_U01: EsUnitDef = {
         ['greetings'],
         { acceptedTranslations: ['good night'], emoji: '🌙' },
       ),
-      w('es-chau', 'chau', 'bye', 'Chau, Sofía.', 'Bye, Sofía.', ['greetings'], {
-        acceptedTranslations: ['goodbye'],
+      w('es-adios', 'adiós', 'goodbye', 'Adiós, Sofía.', 'Goodbye, Sofía.', ['greetings'], {
+        acceptedTranslations: ['bye'],
+        acceptedTexts: ['chau', 'chao'],
       }),
       w(
         'es-hasta-luego',
         'hasta luego',
         'see you later',
-        'Chau, Juan. ¡Hasta luego!',
-        'Bye, Juan. See you later!',
+        'Gracias, Juan. ¡Hasta luego!',
+        'Thank you, Juan. See you later!',
         ['greetings'],
       ),
       w(
@@ -165,13 +169,13 @@ export const ES_A1_U01: EsUnitDef = {
         { acceptedTranslations: ['well', 'good'] },
       ),
       w(
-        'es-y-vos',
-        '¿y vos?',
+        'es-y-tu',
+        '¿y tú?',
         'and you?, informal',
-        'Muy bien, ¿y vos?',
+        'Muy bien, ¿y tú?',
         'Very well, and you?',
-        ['greetings', 'voseo'],
-        { acceptedTexts: ['¿y tú?'] },
+        ['greetings'],
+        { acceptedTexts: ['¿y vos?'] },
       ),
       w(
         'es-y-usted',
@@ -192,12 +196,12 @@ export const ES_A1_U01: EsUnitDef = {
       ),
       w(
         'es-como-te-llamas',
-        '¿cómo te llamás?',
+        '¿cómo te llamas?',
         "what's your name?",
-        '¡Hola! ¿Cómo te llamás?',
+        '¡Hola! ¿Cómo te llamas?',
         'Hi! What’s your name?',
-        ['introductions', 'questions', 'voseo'],
-        { acceptedTranslations: ['what is your name?'], acceptedTexts: ['¿cómo te llamas?'] },
+        ['introductions', 'questions'],
+        { acceptedTranslations: ['what is your name?'], acceptedTexts: ['¿cómo te llamás?'] },
       ),
       w(
         'es-mucho-gusto',
@@ -224,50 +228,50 @@ export const ES_A1_U01: EsUnitDef = {
     lessons: [
       // ------------------------------------------------------------------------------------ L1
       {
-        title: 'Hola, buen día, chau',
+        title: 'Hola, buenos días, adiós',
         objective: 'Say hello and goodbye depending on the time of day.',
         intro: {
           explanation:
-            'Hola works at any time of day. To be more polite, use the time of day: buen día in the morning (in Argentina people say buen día rather than buenos días), buenas tardes in the afternoon and buenas noches in the evening, both when you arrive and when you leave. To say goodbye: chau or hasta luego. With a stranger, add señor or señora. The h in hola and hasta is silent.',
+            'Hola works at any time of day. To be more polite, use the time of day: buenos días in the morning, buenas tardes in the afternoon and buenas noches in the evening, both when you arrive and when you leave. To say goodbye: adiós, or the friendly hasta luego (see you later), which people use all the time, even if they won’t see you again that day. With a stranger, add señor or señora. The h in hola and hasta is silent.',
           examples: [
-            { target: 'Buen día, señora.', base: 'Good morning, madam.' },
-            { target: 'Chau, Martín. ¡Hasta luego!', base: 'Bye, Martín. See you later!' },
+            { target: 'Buenos días, señora.', base: 'Good morning, madam.' },
+            { target: 'Adiós, Martín. ¡Hasta luego!', base: 'Goodbye, Martín. See you later!' },
           ],
         },
         takeaways: [
-          'You greet with hola, buen día, buenas tardes or buenas noches.',
-          'You say goodbye with chau or hasta luego.',
+          'You greet with hola, buenos días, buenas tardes or buenas noches.',
+          'You say goodbye with adiós or hasta luego.',
         ],
         exercises: [
           ex.translationChoice(
             'hola',
             'hello',
-            ['bye', 'see you later', 'good evening'],
+            ['goodbye', 'see you later', 'good evening'],
             ['es-hola'],
             {
               id: 'es.ex.06btcqkcfwdk80',
             },
           ),
           ex.translationChoice(
-            'chau',
-            'bye',
+            'adiós',
+            'goodbye',
             ['good morning', 'good afternoon', 'hello'],
-            ['es-chau'],
-            { id: 'es.ex.gcpscrdzv4lgeu' },
+            ['es-adios'],
+            { id: 'es.ex.hzb8w2pyv3yhx5' },
           ),
           ex.matchPairs(
             [
-              ['buen día', 'good morning'],
+              ['buenos días', 'good morning'],
               ['buenas tardes', 'good afternoon'],
               ['buenas noches', 'good evening'],
               ['hasta luego', 'see you later'],
             ],
-            ['es-buen-dia', 'es-buenas-tardes', 'es-buenas-noches', 'es-hasta-luego'],
-            { id: 'es.ex.zuw65f3f34xnm1' },
+            ['es-buenos-dias', 'es-buenas-tardes', 'es-buenas-noches', 'es-hasta-luego'],
+            { id: 'es.ex.zgnx8n87ffur8b' },
           ),
           ex.listenChoice(
             'Buenas tardes, señora.',
-            ['Buenas noches, señora.', 'Buenas tardes, señor.', 'Buen día, señora.'],
+            ['Buenas noches, señora.', 'Buenas tardes, señor.', 'Buenos días, señora.'],
             ['es-buenas-tardes', 'es-senora'],
             { id: 'es.ex.mre1e08ts7vsob' },
           ),
@@ -275,23 +279,23 @@ export const ES_A1_U01: EsUnitDef = {
             '¡___, Martín!',
             'Hi, Martín!',
             'Hola',
-            ['Chau', 'Señor', 'Señora'],
+            ['Adiós', 'Señor', 'Señora'],
             ['es-hola'],
             {
               id: 'es.ex.y6wjo6k6uxhzxz',
               skill: 'vocabulary',
               explanation:
-                'Hola is the everyday greeting, at any time of day. Chau means bye. The h is never pronounced.',
+                'Hola is the everyday greeting, at any time of day. Adiós means goodbye. The h is never pronounced.',
             },
           ),
           ex.fillBlank(
-            'Buen día, ___.',
+            'Buenos días, ___.',
             'Good morning, sir.',
             'señor',
-            ['señora', 'chau', 'hola'],
-            ['es-buen-dia', 'es-senor'],
+            ['señora', 'adiós', 'hola'],
+            ['es-buenos-dias', 'es-senor'],
             {
-              id: 'es.ex.763mpp4qrs3yn2',
+              id: 'es.ex.xuceqy0uridmct',
               skill: 'vocabulary',
               explanation: 'Señor is sir and señora is madam. The ñ sounds like the ny in canyon.',
             },
@@ -304,16 +308,16 @@ export const ES_A1_U01: EsUnitDef = {
             { id: 'es.ex.0c0mjlljxl8y66' },
           ),
           ex.listenChoice(
-            'Chau, señor. ¡Hasta luego!',
-            ['Chau, señora. ¡Hasta luego!', 'Hola, señor. ¡Buen día!', 'Buenas noches, señor.'],
-            ['es-chau', 'es-hasta-luego'],
-            { id: 'es.ex.maq6tnvu3x454h' },
+            'Adiós, señor. ¡Hasta luego!',
+            ['Adiós, señora. ¡Hasta luego!', 'Hola, señor. ¡Buenos días!', 'Buenas noches, señor.'],
+            ['es-adios', 'es-hasta-luego'],
+            { id: 'es.ex.dfff2ulza090he' },
           ),
           ex.translateWrite(
             'Good morning, madam.',
-            'Buen día, señora.',
-            ['es-buen-dia', 'es-senora'],
-            { id: 'es.ex.gvri902iwpby2w', acceptedAnswers: ['Buenos días, señora.'] },
+            'Buenos días, señora.',
+            ['es-buenos-dias', 'es-senora'],
+            { id: 'es.ex.z3fqggif54dvil', acceptedAnswers: ['Buen día, señora.'] },
           ),
           ex.translateWrite(
             'Good evening, sir.',
@@ -379,17 +383,24 @@ export const ES_A1_U01: EsUnitDef = {
           ex.translationChoice(
             'por favor',
             'please',
-            ['thank you', 'no', 'bye'],
+            ['thank you', 'no', 'goodbye'],
             ['es-por-favor'],
             {
               id: 'es.ex.04l6aertkc0lam',
             },
           ),
-          ex.fillBlank('___, gracias.', 'No, thank you.', 'No', ['Sí', 'Hola', 'Chau'], ['es-no'], {
-            id: 'es.ex.gzwysgo1ldzrx5',
-            skill: 'vocabulary',
-            explanation: 'No is no. Sí, gracias would be yes, thank you.',
-          }),
+          ex.fillBlank(
+            '___, gracias.',
+            'No, thank you.',
+            'No',
+            ['Sí', 'Hola', 'Adiós'],
+            ['es-no'],
+            {
+              id: 'es.ex.gzwysgo1ldzrx5',
+              skill: 'vocabulary',
+              explanation: 'No is no. Sí, gracias would be yes, thank you.',
+            },
+          ),
           ex.listenChoice(
             'Por favor, señor.',
             ['Por favor, señora.', 'Gracias, señor.', 'De nada, señor.'],
@@ -414,17 +425,17 @@ export const ES_A1_U01: EsUnitDef = {
       // ------------------------------------------------------------------------------------ L3
       {
         title: '¿Cómo estás?',
-        objective: 'Ask how someone is with vos or usted, and answer.',
+        objective: 'Ask how someone is with tú or usted, and answer.',
         intro: {
           explanation:
-            'With a friend: ¿cómo estás? and, to ask back, ¿y vos? With someone you treat formally (usted), the verb loses its final s: ¿cómo está? and ¿y usted? A typical answer: bien or muy bien, gracias. In other countries you will hear ¿y tú?; in Argentina people say ¿y vos?',
+            'With a friend (tú): ¿cómo estás? and, to ask back, ¿y tú? With someone you treat formally (usted), the verb loses its final s: ¿cómo está? and ¿y usted? A typical answer: bien or muy bien, gracias. Use tú with friends, family and people your age, and usted with strangers, older people and in shops. Spanish usually leaves out tú (¿cómo estás?, not ¿cómo estás tú?), but you say it in ¿y tú?, where it carries the meaning. Tú has an accent; tu without one means your.',
           examples: [
-            { target: '¿Cómo estás? — Bien, ¿y vos?', base: 'How are you? — Fine, and you?' },
+            { target: '¿Cómo estás? — Bien, ¿y tú?', base: 'How are you? — Fine, and you?' },
             { target: 'Muy bien, gracias. ¿Y usted?', base: 'Very well, thank you. And you?' },
           ],
         },
         takeaways: [
-          'You ask a friend ¿cómo estás? and ¿y vos?',
+          'You ask a friend ¿cómo estás? and ¿y tú?',
           'You use ¿cómo está? and ¿y usted? with señor and señora.',
         ],
         exercises: [
@@ -433,27 +444,27 @@ export const ES_A1_U01: EsUnitDef = {
           }),
           ex.listenChoice(
             '¿Cómo estás?',
-            ['¿Cómo está?', '¿Y vos?', '¿Y usted?'],
+            ['¿Cómo está?', '¿Y tú?', '¿Y usted?'],
             ['es-como-estas'],
             { id: 'es.ex.vf68c7ewjiaanz' },
           ),
           ex.fillBlank(
             'Bien, gracias. ¿Y ___?',
             'Fine, thanks. And you? (to a friend)',
-            'vos',
+            'tú',
             ['usted', 'señor', 'señora'],
-            ['es-y-vos'],
+            ['es-y-tu'],
             {
-              id: 'es.ex.m2pgsh435gzzet',
+              id: 'es.ex.synzaoc14vqcin',
               explanation:
-                'With a friend you use vos. ¿Y usted? is for someone you treat formally.',
+                'With a friend you use tú (with an accent). ¿Y usted? is for someone you treat formally.',
             },
           ),
           ex.fillBlank(
             'Muy bien, gracias. ¿Y ___, señor?',
             'Very well, thank you. And you, sir?',
             'usted',
-            ['vos', 'bien', 'chau'],
+            ['tú', 'bien', 'adiós'],
             ['es-y-usted', 'es-senor'],
             {
               id: 'es.ex.z84rz3m2ww4ikt',
@@ -464,11 +475,11 @@ export const ES_A1_U01: EsUnitDef = {
             [
               ['¿cómo estás?', 'how are you?'],
               ['bien', 'fine'],
-              ['¿y vos?', 'and you?, informal'],
+              ['¿y tú?', 'and you?, informal'],
               ['¿y usted?', 'and you?, formal'],
             ],
-            ['es-como-estas', 'es-bien', 'es-y-vos', 'es-y-usted'],
-            { id: 'es.ex.w4sn2w9ieyvaiy' },
+            ['es-como-estas', 'es-bien', 'es-y-tu', 'es-y-usted'],
+            { id: 'es.ex.hoo0013oj1l794' },
           ),
           question(
             'es.ex.ql4m2xxkg7qsij',
@@ -482,33 +493,36 @@ export const ES_A1_U01: EsUnitDef = {
           question(
             'es.ex.tbdg2jcmu8t031',
             KIOSCO,
-            'Why does Lucía say “¿Y usted?” and not “¿Y vos?”?',
+            'Why does Lucía say “¿Y usted?” and not “¿Y tú?”?',
             'She is speaking formally to the shopkeeper',
             ['She is talking to a close friend', 'She is asking his name', 'She is saying goodbye'],
             ['es-y-usted', 'es-senor'],
             'She calls him señor and uses usted, the formal you, as people do in a shop.',
           ),
           ex.listenChoice(
-            'Muy bien. ¿Y vos?',
+            'Muy bien. ¿Y tú?',
             ['Muy bien. ¿Y usted?', 'Bien, gracias.', 'No muy bien.'],
-            ['es-bien', 'es-y-vos'],
-            { id: 'es.ex.w3vlxjxyccd8fc' },
+            ['es-bien', 'es-y-tu'],
+            { id: 'es.ex.hsve2ptylkni70' },
           ),
           ex.shortAnswer(
             '¿Cómo estás?',
-            'A friend asks you. Say you are fine and ask back (e.g. «Bien, ¿y vos?»).',
-            'Bien, ¿y vos?',
+            'A friend asks you. Say you are fine and ask back (e.g. «Bien, ¿y tú?»).',
+            'Bien, ¿y tú?',
             [
-              'Bien. ¿Y vos?',
-              'Muy bien, ¿y vos?',
-              'Muy bien. ¿Y vos?',
-              'Bien, gracias, ¿y vos?',
+              'Bien. ¿Y tú?',
+              'Muy bien, ¿y tú?',
+              'Muy bien. ¿Y tú?',
+              'Bien, gracias, ¿y tú?',
+              'Bien, gracias. ¿Y tú?',
+              'Muy bien, gracias. ¿Y tú?',
+              'Muy bien, gracias, ¿y tú?',
+              'Bien, ¿y vos?',
               'Bien, gracias. ¿Y vos?',
               'Muy bien, gracias. ¿Y vos?',
-              'Muy bien, gracias, ¿y vos?',
             ],
-            ['es-bien', 'es-y-vos'],
-            { id: 'es.ex.in13925d0tv3ms' },
+            ['es-bien', 'es-y-tu'],
+            { id: 'es.ex.u08iv9he8k7upy' },
           ),
           ex.translateWrite(
             'How are you? — Fine, thanks.',
@@ -528,17 +542,17 @@ export const ES_A1_U01: EsUnitDef = {
         objective: 'Say your name and ask someone else’s.',
         intro: {
           explanation:
-            'To say your name: me llamo + name. To ask a friend: ¿cómo te llamás? With vos the stress falls on the last syllable (lla-MÁS), which is why it has an accent. When you meet someone, say mucho gusto. In Buenos Aires the ll of llamo sounds like the sh in shoe or the s in measure.',
+            'To say your name: me llamo + name (literally “I call myself”). To ask a friend: ¿cómo te llamas? — the same verb, now ending in -as for tú: yo me llamo, tú te llamas. When you meet someone, say mucho gusto. The ll of llamo sounds like the y in yes: YA-mo.',
           examples: [
             { target: 'Me llamo Sofía.', base: 'My name is Sofía.' },
             {
-              target: '¿Cómo te llamás? — Me llamo Martín.',
+              target: '¿Cómo te llamas? — Me llamo Martín.',
               base: 'What’s your name? — My name is Martín.',
             },
           ],
         },
         takeaways: [
-          'You introduce yourself with me llamo and ask ¿cómo te llamás?',
+          'You introduce yourself with me llamo and ask ¿cómo te llamas?',
           'You answer an introduction with mucho gusto.',
         ],
         exercises: [
@@ -555,17 +569,18 @@ export const ES_A1_U01: EsUnitDef = {
           ex.fillBlank(
             '¿Cómo te ___?',
             'What’s your name?',
-            'llamás',
+            'llamas',
             ['llamo', 'estás', 'bien'],
             ['es-como-te-llamas'],
             {
               id: 'es.ex.97r0q0yai10879',
-              explanation: 'With vos: ¿cómo te llamás? To answer, you say me llamo…',
+              explanation:
+                'With tú the verb ends in -as: ¿cómo te llamas? To answer, you say me llamo…',
             },
           ),
           ex.listenChoice(
             'Me llamo Martín.',
-            ['Me llamo Mateo.', 'Me llamo Valentina.', '¿Cómo te llamás?'],
+            ['Me llamo Mateo.', 'Me llamo Valentina.', '¿Cómo te llamas?'],
             ['es-me-llamo'],
             { id: 'es.ex.ujs1sx8gwj6pen' },
           ),
@@ -595,29 +610,30 @@ export const ES_A1_U01: EsUnitDef = {
             'Martín says “¡Mucho gusto, Sofía!”: nice to meet you.',
           ),
           question(
-            'es.ex.ogkrkoe3f0ay9r',
+            'es.ex.9jdwggkvo8a2no',
             FIESTA,
             'How do Martín and Sofía speak to each other?',
-            'Informally, with vos',
+            'Informally, with tú',
             ['Formally, with usted', 'With señor and señora', 'We can’t tell'],
-            ['es-como-te-llamas', 'es-y-vos'],
-            'They ask “¿Cómo te llamás?” and “¿Y vos?”: the informal vos.',
+            ['es-como-te-llamas', 'es-y-tu'],
+            'They ask “¿Cómo te llamas?” and “¿Y tú?”: the informal tú.',
           ),
           ex.translateWrite(
             'Hi! My name is Ana. What’s your name?',
-            '¡Hola! Me llamo Ana. ¿Cómo te llamás?',
+            '¡Hola! Me llamo Ana. ¿Cómo te llamas?',
             ['es-hola', 'es-me-llamo', 'es-como-te-llamas'],
             {
               id: 'es.ex.0bdy3g4ilfxgf2',
               acceptedAnswers: [
-                'Hola, me llamo Ana. ¿Cómo te llamás?',
-                '¡Hola! Me llamo Ana, ¿cómo te llamás?',
+                'Hola, me llamo Ana. ¿Cómo te llamas?',
+                '¡Hola! Me llamo Ana, ¿cómo te llamas?',
                 'Hola. Me llamo Ana. ¿Cómo te llamas?',
+                '¡Hola! Me llamo Ana. ¿Cómo te llamás?',
               ],
             },
           ),
           ex.shortAnswer(
-            '¿Cómo te llamás?',
+            '¿Cómo te llamas?',
             'Answer with the name Diego (start with «Me llamo»).',
             'Me llamo Diego.',
             ['Me llamo Diego', 'Hola, me llamo Diego.', 'Mucho gusto, me llamo Diego.'],
@@ -633,7 +649,7 @@ export const ES_A1_U01: EsUnitDef = {
         objective: 'Understand short greetings in a conversation and a message.',
         intro: {
           explanation:
-            'In Argentina, friends and family greet each other with one kiss on the cheek, also between men. A short chat between friends: ¡Hola! ¿Cómo estás? — Bien, ¿y vos? In a message, you can close with chau or hasta luego.',
+            'In much of Latin America, friends and family greet each other with one kiss on the cheek (between women, and between a man and a woman); men usually shake hands or hug. In Spain it is two kisses. A short chat between friends: ¡Hola! ¿Cómo estás? — Bien, ¿y tú? In a message, you can close with adiós or hasta luego.',
           examples: [
             { target: '¡Hola, Tomás! ¿Cómo estás?', base: 'Hi, Tomás! How are you?' },
             { target: '¡Muchas gracias! Hasta luego.', base: 'Thanks a lot! See you later.' },
@@ -641,7 +657,7 @@ export const ES_A1_U01: EsUnitDef = {
         },
         takeaways: [
           'You understand a greeting, a thank-you and a goodbye in a message.',
-          'You choose vos or usted depending on the person.',
+          'You choose tú or usted depending on the person.',
         ],
         exercises: [
           question(
@@ -663,40 +679,40 @@ export const ES_A1_U01: EsUnitDef = {
             'Before her name she writes “Hasta luego”.',
           ),
           question(
-            'es.ex.ok7og6uszs5swc',
+            'es.ex.tl0oanrnc8pvbf',
             KIOSCO,
             'When does this conversation take place?',
             'In the morning',
             ['In the afternoon', 'In the evening', 'We can’t tell'],
-            ['es-buen-dia'],
-            'They greet each other with “Buen día”, the morning greeting.',
+            ['es-buenos-dias'],
+            'They greet each other with “Buenos días”, the morning greeting.',
           ),
           ex.listenChoice(
             '¡Hola! ¿Cómo estás?',
-            ['¡Hola! ¿Cómo te llamás?', '¡Chau! ¿Cómo estás?', '¡Hola! ¿Y usted?'],
+            ['¡Hola! ¿Cómo te llamas?', '¡Adiós! ¿Cómo estás?', '¡Hola! ¿Y usted?'],
             ['es-hola', 'es-como-estas'],
             { id: 'es.ex.p8y5jfx8u8abcu' },
           ),
           ex.matchPairs(
             [
               ['hola', 'hello'],
-              ['chau', 'bye'],
+              ['adiós', 'goodbye'],
               ['por favor', 'please'],
               ['mucho gusto', 'nice to meet you'],
             ],
-            ['es-hola', 'es-chau', 'es-por-favor', 'es-mucho-gusto'],
-            { id: 'es.ex.igp0zo19mlyuba' },
+            ['es-hola', 'es-adios', 'es-por-favor', 'es-mucho-gusto'],
+            { id: 'es.ex.4rxkvdttlwydl3' },
           ),
           ex.fillBlank(
             'Buenas noches, señor. ¿Cómo ___?',
             'Good evening, sir. How are you?',
             'está',
-            ['estás', 'llamás', 'vos'],
+            ['estás', 'llamas', 'tú'],
             ['es-buenas-noches', 'es-como-estas'],
             {
               id: 'es.ex.y5eokpekfxhazg',
               explanation:
-                'With usted (señor, señora) the verb has no final s: ¿cómo está? With vos: ¿cómo estás?',
+                'With usted (señor, señora) the verb has no final s: ¿cómo está? With tú: ¿cómo estás?',
             },
           ),
           ex.translationChoice(

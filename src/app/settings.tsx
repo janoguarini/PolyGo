@@ -19,45 +19,30 @@ import {
   useThemePreference,
   type ThemePreference,
 } from '@/design-system';
+import { AdsDebugPanel, AdsPrivacyOptionsButton } from '@/features/ads/AdsSettings';
 import { signOut } from '@/features/auth/api';
 import { FormMessage } from '@/features/auth/FormMessage';
 import { BlockedUsersSection } from '@/features/blocks/BlockedUsersSection';
+import { useChangeInterfaceLanguage } from '@/features/courses/hooks';
 import { useEnablePush, usePushPermission } from '@/features/friends/components/PushPromptCard';
 import { useReplayTour } from '@/features/onboarding/tour';
 import { useSetSoundEffects, useSoundEffectsPref } from '@/features/preferences/soundEffects';
 import { useMyProfile, useUpdateSettings } from '@/features/profile/hooks';
 import { ReminderSettings } from '@/features/reminders/ReminderSettings';
+import {
+  INTERFACE_LANGUAGE_LABELS,
+  INTERFACE_LANGUAGES,
+  useInterfaceLanguage,
+  useStrings,
+} from '@/i18n';
+import { settingsStrings } from '@/i18n/screens/settings';
 import type { ProfileVisibility } from '@/lib/database.types';
 import { env } from '@/lib/env';
 import { toUserMessage } from '@/lib/errors';
 
-const VISIBILITY: {
-  id: ProfileVisibility;
-  title: string;
-  description: string;
-}[] = [
-  { id: 'public', title: 'Público', description: 'Cualquier jugador ve tu perfil y estadísticas.' },
-  {
-    id: 'friends',
-    title: 'Sólo amigos',
-    description: 'Tus amigos ven todo; el resto, sólo nombre, avatar y rango.',
-  },
-  {
-    id: 'private',
-    title: 'Privado',
-    description: 'Los demás sólo ven tu nombre, avatar y rango; no tus estadísticas ni logros.',
-  },
-];
+const VISIBILITY: readonly ProfileVisibility[] = ['public', 'friends', 'private'];
 
-const APPEARANCE: { id: ThemePreference; title: string; description: string }[] = [
-  { id: 'dark', title: 'Oscuro', description: 'Fondo oscuro, el clásico de Polygo.' },
-  { id: 'light', title: 'Claro', description: 'Fondo claro, ideal con mucha luz.' },
-  {
-    id: 'system',
-    title: 'Automático',
-    description: 'Sigue el modo claro u oscuro de tu teléfono.',
-  },
-];
+const APPEARANCE: readonly ThemePreference[] = ['dark', 'light', 'system'];
 
 /** Cuentas que ven «Rehacer el tutorial» (para revisar cómo quedó). */
 const TUTORIAL_TESTERS = ['janitogap'];
@@ -65,6 +50,7 @@ const TUTORIAL_TESTERS = ['janitogap'];
 /** Ajustes: recordatorio, apariencia, sonido, privacidad, usuarios bloqueados y cuenta. */
 export default function SettingsScreen() {
   useTheme();
+  const t = useStrings(settingsStrings);
   const { data, isPending, isError, refetch } = useMyProfile();
   const updateSettings = useUpdateSettings();
   const logout = useMutation({ mutationFn: signOut });
@@ -72,6 +58,8 @@ export default function SettingsScreen() {
   const setSound = useSetSoundEffects();
   const replayTour = useReplayTour(data?.profile.id);
   const theme = useThemePreference();
+  const interfaceLanguage = useInterfaceLanguage();
+  const changeLanguage = useChangeInterfaceLanguage();
 
   if (isPending) return <LoadingState />;
   if (isError || !data) return <ErrorState onRetry={() => void refetch()} />;
@@ -79,41 +67,52 @@ export default function SettingsScreen() {
 
   return (
     <Screen edges={['top', 'bottom']}>
-      <ScreenHeader title="Ajustes" onBack={() => router.back()} />
+      <ScreenHeader title={t.title} onBack={() => router.back()} />
 
       {/* Los recordatorios son notificaciones del teléfono: no existen en la web. */}
       {Platform.OS === 'web' ? null : (
         <>
-          <Text variant="overline">RECORDATORIO</Text>
+          <Text variant="overline">{t.reminder}</Text>
           <ReminderSettings />
         </>
       )}
 
       <Text variant="overline" style={styles.section}>
-        APARIENCIA
+        {t.appearance}
       </Text>
-      {APPEARANCE.map((option) => (
+      {APPEARANCE.map((id) => (
         <SelectCard
-          key={option.id}
-          title={option.title}
-          description={option.description}
-          selected={theme.preference === option.id}
-          onPress={() => theme.setPreference(option.id)}
+          key={id}
+          title={t.themes[id].title}
+          description={t.themes[id].description}
+          selected={theme.preference === id}
+          onPress={() => theme.setPreference(id)}
         />
       ))}
 
       <Text variant="overline" style={styles.section}>
-        SONIDO
+        {t.interfaceLanguage}
+      </Text>
+      <Text variant="caption">{t.interfaceLanguageHint}</Text>
+      {INTERFACE_LANGUAGES.map((id) => (
+        <SelectCard
+          key={id}
+          title={INTERFACE_LANGUAGE_LABELS[id]}
+          selected={interfaceLanguage === id}
+          onPress={() => changeLanguage.mutate(id)}
+        />
+      ))}
+
+      <Text variant="overline" style={styles.section}>
+        {t.sound}
       </Text>
       <Card style={styles.switchRow}>
         <View style={styles.flex}>
-          <Text variant="bodyStrong">Efectos de sonido</Text>
-          <Text variant="caption">
-            Sonidos de acierto, error y fin de lección o partida. La pronunciación siempre suena.
-          </Text>
+          <Text variant="bodyStrong">{t.soundEffects}</Text>
+          <Text variant="caption">{t.soundEffectsHint}</Text>
         </View>
         <Switch
-          accessibilityLabel="Efectos de sonido"
+          accessibilityLabel={t.soundEffects}
           value={soundPref.data ?? true}
           disabled={soundPref.data === undefined || setSound.isPending}
           onValueChange={(enabled) => setSound.mutate(enabled)}
@@ -123,29 +122,25 @@ export default function SettingsScreen() {
       </Card>
 
       <Text variant="overline" style={styles.section}>
-        PRIVACIDAD
+        {t.privacy}
       </Text>
-      {VISIBILITY.map((option) => (
+      {VISIBILITY.map((id) => (
         <SelectCard
-          key={option.id}
-          title={option.title}
-          description={option.description}
-          selected={settings?.profile_visibility === option.id}
+          key={id}
+          title={t.visibility[id].title}
+          description={t.visibility[id].description}
+          selected={settings?.profile_visibility === id}
           disabled={updateSettings.isPending}
-          onPress={() => updateSettings.mutate({ profile_visibility: option.id })}
+          onPress={() => updateSettings.mutate({ profile_visibility: id })}
         />
       ))}
       <Card style={styles.switchRow}>
         <View style={styles.flex}>
-          <Text variant="bodyStrong">Mostrar mi país</Text>
-          <Text variant="caption">
-            {profile.region
-              ? 'La bandera aparece en tu perfil público.'
-              : 'Elegí tu país en Editar perfil.'}
-          </Text>
+          <Text variant="bodyStrong">{t.showCountry}</Text>
+          <Text variant="caption">{profile.region ? t.showCountryOn : t.showCountryNone}</Text>
         </View>
         <Switch
-          accessibilityLabel="Mostrar mi país en el perfil público"
+          accessibilityLabel={t.showCountryA11y}
           value={settings?.show_region ?? false}
           disabled={updateSettings.isPending || !profile.region}
           onValueChange={(show) => updateSettings.mutate({ show_region: show })}
@@ -155,13 +150,11 @@ export default function SettingsScreen() {
       </Card>
       <Card style={styles.switchRow}>
         <View style={styles.flex}>
-          <Text variant="bodyStrong">Mostrar cuando estoy en línea</Text>
-          <Text variant="caption">
-            Tus amigos te ven conectado y pueden invitarte a un amistoso.
-          </Text>
+          <Text variant="bodyStrong">{t.showOnline}</Text>
+          <Text variant="caption">{t.showOnlineHint}</Text>
         </View>
         <Switch
-          accessibilityLabel="Mostrar a mis amigos cuando estoy en línea"
+          accessibilityLabel={t.showOnlineA11y}
           value={settings?.show_online ?? true}
           disabled={updateSettings.isPending}
           onValueChange={(show) => updateSettings.mutate({ show_online: show })}
@@ -177,24 +170,26 @@ export default function SettingsScreen() {
       {updateSettings.isError ? (
         <FormMessage tone="error" message={toUserMessage(updateSettings.error)} />
       ) : null}
+      <AdsPrivacyOptionsButton />
+      <AdsDebugPanel />
 
       <Text variant="overline" style={styles.section}>
-        USUARIOS BLOQUEADOS
+        {t.blocked}
       </Text>
       <BlockedUsersSection />
 
       <Text variant="overline" style={styles.section}>
-        CUENTA
+        {t.account}
       </Text>
       <Button
-        label="Editar perfil"
+        label={t.editProfile}
         variant="secondary"
         icon={<Pencil color={colors.text} size={16} />}
         onPress={() => router.push('/edit-profile')}
       />
       {profile.username && TUTORIAL_TESTERS.includes(profile.username) ? (
         <Button
-          label="Rehacer el tutorial"
+          label={t.replayTutorial}
           variant="secondary"
           icon={<GraduationCap color={colors.text} size={16} />}
           onPress={() => {
@@ -205,23 +200,23 @@ export default function SettingsScreen() {
       ) : null}
       {logout.isError ? <FormMessage tone="error" message={toUserMessage(logout.error)} /> : null}
       <Button
-        label="Cerrar sesión"
+        label={t.signOut}
         variant="danger"
         loading={logout.isPending}
         icon={<LogOut color={colors.danger} size={18} />}
         onPress={() => logout.mutate()}
       />
       <Button
-        label="Eliminar cuenta"
+        label={t.deleteAccount}
         variant="ghost"
-        accessibilityHint="Abre la pantalla para borrar tu cuenta y tus datos"
+        accessibilityHint={t.deleteAccountHint}
         onPress={() => router.push('/delete-account')}
       />
       {env?.privacyPolicyUrl ? (
         <Button
-          label="Política de privacidad"
+          label={t.privacyPolicy}
           variant="ghost"
-          accessibilityHint="Abre la política de privacidad en el navegador"
+          accessibilityHint={t.privacyPolicyHint}
           onPress={() => void Linking.openURL(env!.privacyPolicyUrl!)}
         />
       ) : null}
@@ -240,30 +235,31 @@ function ChallengePushSetting({
   onChange: (on: boolean) => void;
 }) {
   useTheme();
+  const t = useStrings(settingsStrings);
   const permission = usePushPermission();
   const enable = useEnablePush();
   const phone = permission.data;
   return (
     <Card style={styles.switchRow}>
       <View style={styles.flex}>
-        <Text variant="bodyStrong">Avisarme cuando un amigo me desafía</Text>
+        <Text variant="bodyStrong">{t.challengePush}</Text>
         <Text variant="caption">
           {phone === 'blocked'
-            ? 'Las notificaciones de Polygo están apagadas en este teléfono.'
+            ? t.pushBlocked
             : phone === 'unsupported'
-              ? 'Las notificaciones sólo llegan en la app instalada (no en web ni Expo Go).'
-              : 'Una notificación con la invitación, aunque tengas la app cerrada.'}
+              ? t.pushUnsupported
+              : t.pushOn}
         </Text>
         {phone === 'blocked' && enabled ? (
           <Button
-            label="Abrir ajustes del teléfono"
+            label={t.openPhoneSettings}
             variant="ghost"
             onPress={() => void Linking.openSettings()}
           />
         ) : null}
       </View>
       <Switch
-        accessibilityLabel="Avisarme con una notificación cuando un amigo me desafía"
+        accessibilityLabel={t.challengePushA11y}
         value={enabled}
         disabled={disabled || enable.isPending}
         onValueChange={(on) => {

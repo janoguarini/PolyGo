@@ -5,10 +5,11 @@ import { dialogue, ex, question, reading, w } from '../helpers';
  * Español A2 U9 «Shopping and services» (docs/ES_A1_A2.md): comparativos (más… que, menos… que,
  * tan… como) y los irregulares mejor / peor; superlativo el más… / la más… de y el absoluto -ísimo
  * (carísimo, baratísimo); pronombre de objeto directo con la ropa (me lo llevo, ¿me la puedo
- * probar?). Probarse, el probador, el talle y el número de calzado, la liquidación, pagar con tarjeta o
- * en efectivo. Vocabulario rioplatense: la campera, las zapatillas.
- * Pronunciación: el acento de -ísimo (siempre en la í, siempre con tilde); la z de zapatillas suena s
- * y la ll como la sh inglesa.
+ * probar?). Probarse, el probador, la talla y el número de calzado, la liquidación, pagar con tarjeta o
+ * en efectivo. Variante: español neutro de Latinoamérica (tú; usted con el vendedor). Vocabulario: la
+ * chaqueta, los tenis, la talla (se aceptan la campera, las zapatillas, el talle).
+ * Pronunciación: el acento de -ísimo (siempre en la í, siempre con tilde); la ll de talla como la y
+ * inglesa de yes.
  * Cultura: las liquidaciones de fin de temporada; el descuento por pagar en efectivo.
  *
  * ESTADO EDITORIAL: borrador, sin revisión de hablantes nativos. Se carga sin publicar.
@@ -18,9 +19,9 @@ const NEGOCIO = dialogue(
   'es.stim.a2-u9-negocio',
   'Sofía is shopping for a jacket. Camila works in the clothes shop.',
   [
-    ['Sofía', 'Buenas tardes. Busco una campera para el invierno.'],
+    ['Sofía', 'Buenas tardes. Busco una chaqueta para el invierno.'],
     ['Camila', 'Tenemos esta azul y esta negra. La negra es más cara, pero es mejor.'],
-    ['Sofía', 'Me gusta la negra. ¿Me la puedo probar? Uso talle cuarenta.'],
+    ['Sofía', 'Me gusta la negra. ¿Me la puedo probar? Uso talla cuarenta.'],
     ['Camila', 'Sí, claro. El probador está al lado de la ventana.'],
     ['Sofía', 'Me queda muy bien. Me la llevo. ¿Puedo pagar con tarjeta?'],
     ['Camila', 'Sí, claro. Con tarjeta o en efectivo.'],
@@ -33,10 +34,10 @@ const AVISO = reading(
   'An ad in the window of a clothes shop.',
   [
     '¡Liquidación de invierno!',
-    'Camperas, pantalones y vestidos: hasta cincuenta por ciento menos.',
-    'Las zapatillas más baratas de la ciudad: desde treinta mil pesos.',
+    'Chaquetas, pantalones y vestidos: hasta cincuenta por ciento menos.',
+    'Los tenis más baratos de la ciudad.',
     'Camisas: dos por el precio de una.',
-    'Podés pagar con tarjeta o en efectivo. En efectivo, ¡más barato todavía!',
+    'Puedes pagar con tarjeta o en efectivo. En efectivo, ¡más barato todavía!',
     'Probadores: en el piso de arriba.',
   ],
   { title: 'Liquidación' },
@@ -48,12 +49,11 @@ export const ES_A2_U09: EsUnitDef = {
     'baratísimo',
     'probar',
     'probarme',
-    'usás',
+    'usas',
     'uso',
     'paga',
     'pago',
     'pagar',
-    'claro',
     'precio',
     'pantalones',
   ],
@@ -69,10 +69,10 @@ export const ES_A2_U09: EsUnitDef = {
     grammar: {
       title: 'Comparisons · superlatives · lo, la',
       explanation:
-        'To compare: más + adjective + que (more … than), menos + adjective + que (less … than) and tan + adjective + como (as … as). Bueno and malo have their own forms: mejor (better) and peor (worse). To say the most: el, la, los or las + noun + más + adjective + de: la campera más barata del negocio (de, not en). To say really or extremely, add -ísimo to the adjective: caro → carísimo, barato → baratísimo; the stress always falls on that í, which always carries an accent mark. Lo, la, los and las replace a noun you already mentioned (el pantalón → lo, la camisa → la). They go before the conjugated verb: me lo llevo (I’ll take it), ¿me la puedo probar? (can I try it on?).',
+        'To compare: más + adjective + que (more … than), menos + adjective + que (less … than) and tan + adjective + como (as … as). Bueno and malo have their own forms: mejor (better) and peor (worse). To say the most: el, la, los or las + noun + más + adjective + de: la chaqueta más barata del negocio (de, not en). To say really or extremely, add -ísimo to the adjective: caro → carísimo, barato → baratísimo; the stress always falls on that í, which always carries an accent mark. Lo, la, los and las replace a noun you already mentioned (el pantalón → lo, la camisa → la). They go before the conjugated verb: me lo llevo (I’ll take it), ¿me la puedo probar? (can I try it on?).',
       examples: [
         {
-          target: 'La campera negra es mejor que la azul.',
+          target: 'La chaqueta negra es mejor que la azul.',
           base: 'The black jacket is better than the blue one.',
         },
         {
@@ -88,14 +88,14 @@ export const ES_A2_U09: EsUnitDef = {
     review: {
       status: 'draft',
       notes:
-        'A2 nuevo (U9). Sin revisión nativa. Revisar: «uso talle cuarenta» (también «soy talle cuarenta», coloquial, aceptado); «el número» traducido como «the shoe size» (aceptado «the number»); los precios del aviso («desde treinta mil pesos») pueden quedar viejos con la inflación; «me queda muy bien» se usa sin enseñarse como palabra (apoyo «queda»); el descuento por pago en efectivo es habitual pero no universal.',
+        'A2 nuevo (U9), convertido al español neutro con tú (2026-11-21). Sin revisión nativa. Revisar: «la chaqueta» (se acepta «la campera»; en México también «la chamarra», no enseñada); «los tenis» (masculino e invariable; se aceptan «las zapatillas»; en Perú y España se dice «zapatillas»); «uso talla cuarenta» (también «soy talla cuarenta», coloquial, aceptado; las tallas numéricas cambian de país a país); «el negocio» (de A1 U12) frente a «la tienda», más neutro; «el número» traducido como «the shoe size» (aceptado «the number»); el aviso ya no da precios; «me queda muy bien» se usa sin enseñarse como palabra (apoyo «queda»); el descuento por pago en efectivo es habitual pero no universal.',
     },
     words: [
       w(
         'es-mejor',
         'mejor',
         'better',
-        'Esta campera es mejor que la azul.',
+        'Esta chaqueta es mejor que la azul.',
         'This jacket is better than the blue one.',
         ['comparisons'],
       ),
@@ -120,7 +120,7 @@ export const ES_A2_U09: EsUnitDef = {
         'es-carisimo',
         'carísimo',
         'really expensive',
-        '¡Las zapatillas son carísimas!',
+        '¡Los tenis son carísimos!',
         'The sneakers are really expensive!',
         ['comparisons', 'shopping'],
         {
@@ -130,18 +130,19 @@ export const ES_A2_U09: EsUnitDef = {
         },
       ),
       w(
-        'es-el-talle',
-        'el talle',
+        'es-la-talla',
+        'la talla',
         'the size (clothes)',
-        '¿Qué talle usás?',
+        '¿Qué talla usas?',
         'What size do you wear?',
-        ['shopping', 'argentina'],
+        ['shopping'],
+        { acceptedTexts: ['el talle'] },
       ),
       w(
         'es-el-numero',
         'el número',
         'the shoe size',
-        '¿Tiene estas zapatillas en el número cuarenta?',
+        '¿Tiene estos tenis en el número cuarenta?',
         'Do you have these sneakers in size forty?',
         ['shopping'],
         { acceptedTranslations: ['the number'] },
@@ -200,22 +201,26 @@ export const ES_A2_U09: EsUnitDef = {
         { emoji: '👗' },
       ),
       w(
-        'es-las-zapatillas',
-        'las zapatillas',
+        'es-los-tenis',
+        'los tenis',
         'the sneakers',
-        'Quiero unas zapatillas blancas.',
+        'Quiero unos tenis blancos.',
         'I want some white sneakers.',
-        ['clothes', 'argentina'],
-        { acceptedTranslations: ['the trainers'], emoji: '👟' },
+        ['clothes'],
+        {
+          acceptedTranslations: ['the trainers', 'the tennis shoes'],
+          acceptedTexts: ['las zapatillas'],
+          emoji: '👟',
+        },
       ),
       w(
-        'es-la-campera',
-        'la campera',
+        'es-la-chaqueta',
+        'la chaqueta',
         'the jacket',
-        'Busco una campera para el invierno.',
+        'Busco una chaqueta para el invierno.',
         'I’m looking for a jacket for the winter.',
-        ['clothes', 'argentina'],
-        { emoji: '🧥' },
+        ['clothes'],
+        { acceptedTexts: ['la campera'], emoji: '🧥' },
       ),
       w(
         'es-con-tarjeta',
@@ -364,13 +369,13 @@ export const ES_A2_U09: EsUnitDef = {
         objective: 'Say what is the cheapest, the best or really expensive.',
         intro: {
           explanation:
-            'To say the most: el, la, los or las + noun + más + adjective + de: la campera más barata del negocio (the cheapest jacket in the shop; Spanish uses de, not en). To say really, add -ísimo: caro → carísimo, barato → baratísimo. The stress always falls on the í of -ísimo, and it always has an accent mark. In Argentina a jacket is una campera and sneakers are zapatillas; the z sounds like s and the ll like the sh in shoe.',
+            'To say the most: el, la, los or las + noun + más + adjective + de: la chaqueta más barata del negocio (the cheapest jacket in the shop; Spanish uses de, not en). To say really, add -ísimo: caro → carísimo, barato → baratísimo. The stress always falls on the í of -ísimo, and it always has an accent mark. A jacket is una chaqueta, and in much of Latin America sneakers are los tenis (the same word as the sport, and it never changes: un tenis, dos tenis). In Argentina, Peru and Spain you will also hear las zapatillas.',
           examples: [
             {
-              target: 'Son las zapatillas más baratas del negocio.',
+              target: 'Son los tenis más baratos del negocio.',
               base: 'They’re the cheapest sneakers in the shop.',
             },
-            { target: '¡Esta campera es carísima!', base: 'This jacket is really expensive!' },
+            { target: '¡Esta chaqueta es carísima!', base: 'This jacket is really expensive!' },
           ],
         },
         takeaways: [
@@ -387,80 +392,84 @@ export const ES_A2_U09: EsUnitDef = {
           ),
           ex.matchPairs(
             [
-              ['las zapatillas', 'the sneakers'],
-              ['la campera', 'the jacket'],
+              ['los tenis', 'the sneakers'],
+              ['la chaqueta', 'the jacket'],
               ['el más', 'the most'],
               ['carísimo', 'really expensive'],
             ],
-            ['es-las-zapatillas', 'es-la-campera', 'es-el-mas', 'es-carisimo'],
-            { id: 'es.ex.6pzs1gfnydjfob' },
+            ['es-los-tenis', 'es-la-chaqueta', 'es-el-mas', 'es-carisimo'],
+            { id: 'es.ex.2jybd1mhniothm' },
           ),
           ex.fillBlank(
-            'Es la campera más barata ___ negocio.',
+            'Es la chaqueta más barata ___ negocio.',
             'It’s the cheapest jacket in the shop.',
             'del',
             ['en el', 'que el', 'como el'],
-            ['es-el-mas', 'es-la-campera'],
+            ['es-el-mas', 'es-la-chaqueta'],
             {
-              id: 'es.ex.6k7dsm7iju1mqe',
+              id: 'es.ex.39phkqztvqwkjf',
               explanation:
                 'After a superlative Spanish uses de (de + el = del), not en: la más barata del negocio.',
             },
           ),
           ex.fillBlank(
-            '¡Las zapatillas son ___!',
+            '¡Los tenis son ___!',
             'The sneakers are really expensive!',
-            'carísimas',
-            ['carísimo', 'carísima', 'más caras'],
-            ['es-carisimo', 'es-las-zapatillas'],
+            'carísimos',
+            ['carísimo', 'carísimas', 'más caros'],
+            ['es-carisimo', 'es-los-tenis'],
             {
-              id: 'es.ex.ligj6eiriv9mdu',
-              explanation: 'Las zapatillas is feminine plural, so the adjective is too: carísimas.',
+              id: 'es.ex.l739eyar115ya4',
+              explanation: 'Los tenis is masculine plural, so the adjective is too: carísimos.',
             },
           ),
           ex.listenChoice('¡Es carísimo!', ['¡Es baratísimo!', '¡Es caro!'], ['es-carisimo'], {
             id: 'es.ex.enrkcuetbhh9k1',
           }),
           ex.fillBlank(
-            'Estas zapatillas son ___ más lindas del negocio.',
+            'Estos tenis son ___ más lindos del negocio.',
             'These sneakers are the nicest in the shop.',
-            'las',
-            ['los', 'la', 'el'],
-            ['es-el-mas', 'es-las-zapatillas'],
+            'los',
+            ['las', 'la', 'el'],
+            ['es-el-mas', 'es-los-tenis'],
             {
-              id: 'es.ex.r72dr6gv0c9whi',
-              explanation: 'The article agrees with the noun: las zapatillas → las más lindas.',
+              id: 'es.ex.wsnqf5r9nzy037',
+              explanation: 'The article agrees with the noun: los tenis → los más lindos.',
             },
           ),
           ex.translationChoice(
-            'la campera',
+            'la chaqueta',
             'the jacket',
             ['the dress', 'the sneakers', 'the shirt'],
-            ['es-la-campera'],
-            { id: 'es.ex.ziad9c5twc4bo6' },
+            ['es-la-chaqueta'],
+            { id: 'es.ex.hh9otuc155wz0u' },
           ),
           ex.orderWords(
-            'Busco una campera para el invierno.',
+            'Busco una chaqueta para el invierno.',
             'I’m looking for a jacket for the winter.',
-            ['es-la-campera'],
-            { id: 'es.ex.vzlt353xe9vr8a' },
+            ['es-la-chaqueta'],
+            { id: 'es.ex.bjbotl76hgrlgj' },
           ),
           ex.translateWrite(
             'This jacket is really cheap!',
-            '¡Esta campera es baratísima!',
-            ['es-la-campera', 'es-carisimo'],
+            '¡Esta chaqueta es baratísima!',
+            ['es-la-chaqueta', 'es-carisimo'],
             {
-              id: 'es.ex.vtyaady6kv5do9',
-              acceptedAnswers: ['Esta campera es baratísima.', '¡Esta campera es muy barata!'],
+              id: 'es.ex.ggwh9thj564jaq',
+              acceptedAnswers: [
+                'Esta chaqueta es baratísima.',
+                '¡Esta chaqueta es muy barata!',
+                '¡Esta campera es baratísima!',
+              ],
             },
           ),
           ex.shortAnswer(
-            '¿Cómo son las zapatillas?',
+            '¿Cómo son los tenis?',
             'Say they are really expensive (use -ísimo).',
-            'Son carísimas.',
-            ['Son carísimas', 'Las zapatillas son carísimas.', '¡Son carísimas!'],
-            ['es-carisimo', 'es-las-zapatillas'],
-            { id: 'es.ex.2riz1ed5691fcy' },
+            'Son carísimos.',
+            ['Son carísimos', 'Los tenis son carísimos.', '¡Son carísimos!'],
+            ['es-carisimo', 'es-los-tenis'],
+            { id: 'es.ex.cpk3fiv3txdo3x' },
           ),
         ],
       },
@@ -471,39 +480,39 @@ export const ES_A2_U09: EsUnitDef = {
         objective: 'Ask for your size and try clothes on.',
         intro: {
           explanation:
-            'In Argentina clothes come in talles (sizes) and shoes in números. Probarse means to try on. To avoid repeating the noun, use lo for a masculine thing (el pantalón → lo) and la for a feminine one (la camisa → la); los and las for plurals. The pronoun goes before the conjugated verb: ¿me lo puedo probar? (can I try it on?). Try clothes on in el probador.',
+            'Clothes come in tallas (sizes) and shoes in números. The ll of talla sounds like the y in yes. Probarse means to try on. To avoid repeating the noun, use lo for a masculine thing (el pantalón → lo) and la for a feminine one (la camisa → la); los and las for plurals. The pronoun goes before the conjugated verb: ¿me lo puedo probar? (can I try it on?). Try clothes on in el probador.',
           examples: [
             {
               target: 'Me gusta este pantalón. ¿Me lo puedo probar?',
               base: 'I like these trousers. Can I try them on?',
             },
             {
-              target: '¿Tiene estas zapatillas en el número cuarenta?',
+              target: '¿Tiene estos tenis en el número cuarenta?',
               base: 'Do you have these sneakers in size forty?',
             },
           ],
         },
         takeaways: [
-          'You ask for your size with talle (clothes) and número (shoes).',
+          'You ask for your size with talla (clothes) and número (shoes).',
           'You ask to try something on with ¿me lo puedo probar? or ¿me la puedo probar?',
         ],
         exercises: [
           ex.translationChoice(
-            'el talle',
+            'la talla',
             'the size (clothes)',
             ['the shoe size', 'the fitting room', 'the sale'],
-            ['es-el-talle'],
-            { id: 'es.ex.596xgz8s4b3rb4' },
+            ['es-la-talla'],
+            { id: 'es.ex.3l4yxf7u5qbc20' },
           ),
           ex.matchPairs(
             [
-              ['el talle', 'the size (clothes)'],
+              ['la talla', 'the size (clothes)'],
               ['el número', 'the shoe size'],
               ['probarse', 'to try on'],
               ['el probador', 'the fitting room'],
             ],
-            ['es-el-talle', 'es-el-numero', 'es-probarse', 'es-el-probador'],
-            { id: 'es.ex.gh96xev1b0wefx' },
+            ['es-la-talla', 'es-el-numero', 'es-probarse', 'es-el-probador'],
+            { id: 'es.ex.wtia7w049j6abr' },
           ),
           ex.fillBlank(
             'Me gusta esta camisa. ¿Me ___ puedo probar?',
@@ -530,16 +539,16 @@ export const ES_A2_U09: EsUnitDef = {
             },
           ),
           ex.listenChoice(
-            '¿Qué talle usás?',
-            ['¿Qué número usás?', '¿Qué color usás?'],
-            ['es-el-talle'],
-            { id: 'es.ex.gc3tc09n4r2kss' },
+            '¿Qué talla usas?',
+            ['¿Qué número usas?', '¿Qué color usas?'],
+            ['es-la-talla'],
+            { id: 'es.ex.8w65fgv9aehk1v' },
           ),
           ex.fillBlank(
             'El ___ está al lado de la puerta.',
             'The fitting room is next to the door.',
             'probador',
-            ['talle', 'número', 'pantalón'],
+            ['número', 'pantalón', 'vestido'],
             ['es-el-probador'],
             {
               id: 'es.ex.q6bqodgchg1ud6',
@@ -562,32 +571,35 @@ export const ES_A2_U09: EsUnitDef = {
           ),
           ex.translateWrite(
             'Do you have these sneakers in size forty? (formal)',
-            '¿Tiene estas zapatillas en el número cuarenta?',
-            ['es-el-numero', 'es-las-zapatillas'],
+            '¿Tiene estos tenis en el número cuarenta?',
+            ['es-el-numero', 'es-los-tenis'],
             {
-              id: 'es.ex.gzdd9twk5y44vr',
+              id: 'es.ex.djqdwdjnw80fxk',
               acceptedAnswers: [
-                '¿Tiene estas zapatillas en cuarenta?',
-                '¿Tiene estas zapatillas en el cuarenta?',
-                '¿Tenés estas zapatillas en el número cuarenta?',
-                '¿Las tiene en el número cuarenta?',
-                'Tiene estas zapatillas en el número cuarenta',
+                '¿Tiene estos tenis en cuarenta?',
+                '¿Tiene estos tenis en el cuarenta?',
+                '¿Tiene los tenis en el número cuarenta?',
+                '¿Los tiene en el número cuarenta?',
+                'Tiene estos tenis en el número cuarenta',
+                '¿Tienes estos tenis en el número cuarenta?',
+                '¿Tiene estas zapatillas en el número cuarenta?',
               ],
             },
           ),
           ex.shortAnswer(
-            '¿Qué talle usás?',
+            '¿Qué talla usas?',
             'Say you wear size forty (start with «Uso»).',
-            'Uso talle cuarenta.',
+            'Uso talla cuarenta.',
             [
-              'Uso talle cuarenta',
-              'Uso el talle cuarenta.',
-              'Uso talle 40.',
-              'Talle cuarenta.',
-              'Soy talle cuarenta.',
+              'Uso talla cuarenta',
+              'Uso la talla cuarenta.',
+              'Uso talla 40.',
+              'Talla cuarenta.',
+              'Soy talla cuarenta.',
+              'Uso talle cuarenta.',
             ],
-            ['es-el-talle'],
-            { id: 'es.ex.8e4cn73u1grhwu' },
+            ['es-la-talla'],
+            { id: 'es.ex.n8k41otqavi1no' },
           ),
         ],
       },
@@ -598,7 +610,7 @@ export const ES_A2_U09: EsUnitDef = {
         objective: 'Say you’ll buy something and choose how to pay.',
         intro: {
           explanation:
-            'To say you’ll buy something: me lo llevo (I’ll take it), me la llevo for a feminine thing, me los llevo or me las llevo for plurals. If something fits or suits you: me queda bien. You pay con tarjeta (by card) or en efectivo (in cash). A liquidación is a sale: Argentine shops have big sales at the end of each season.',
+            'To say you’ll buy something: me lo llevo (I’ll take it), me la llevo for a feminine thing, me los llevo or me las llevo for plurals. If something fits or suits you: me queda bien. You pay con tarjeta (by card) or en efectivo (in cash). A liquidación is a sale: many shops have big sales at the end of each season (you will also hear las rebajas and las ofertas).',
           examples: [
             { target: 'Me gusta. Me lo llevo.', base: 'I like it. I’ll take it.' },
             { target: '¿Puedo pagar con tarjeta?', base: 'Can I pay by card?' },
@@ -617,15 +629,14 @@ export const ES_A2_U09: EsUnitDef = {
             { id: 'es.ex.ky8p9zz0wyvwn4' },
           ),
           ex.fillBlank(
-            'Me gustan las zapatillas. Me ___ llevo.',
+            'Me gustan los tenis. Me ___ llevo.',
             'I like the sneakers. I’ll take them.',
-            'las',
-            ['lo', 'la', 'los'],
-            ['es-me-lo-llevo', 'es-las-zapatillas'],
+            'los',
+            ['lo', 'la', 'las'],
+            ['es-me-lo-llevo', 'es-los-tenis'],
             {
-              id: 'es.ex.75echxx6s4e64m',
-              explanation:
-                'Las zapatillas is feminine plural, so the pronoun is las: me las llevo.',
+              id: 'es.ex.3p5m4ose1s6pwd',
+              explanation: 'Los tenis is masculine plural, so the pronoun is los: me los llevo.',
             },
           ),
           ex.matchPairs(
@@ -645,13 +656,13 @@ export const ES_A2_U09: EsUnitDef = {
             { id: 'es.ex.bymbhf5y4f8bj5' },
           ),
           question(
-            'es.ex.ho77xjy792upmp',
+            'es.ex.mlo1a8thdgbjle',
             NEGOCIO,
             'What is Sofía looking for?',
             'A jacket for the winter',
             ['A dress for a party', 'Sneakers', 'A white shirt'],
-            ['es-la-campera'],
-            'Sofía says “Busco una campera para el invierno”.',
+            ['es-la-chaqueta'],
+            'Sofía says “Busco una chaqueta para el invierno”.',
           ),
           question(
             'es.ex.gtrl6vr2hi3ymb',
@@ -714,14 +725,14 @@ export const ES_A2_U09: EsUnitDef = {
         objective: 'Understand a sale ad and talk about the best prices.',
         intro: {
           explanation:
-            'Sale ads use comparisons and superlatives: las zapatillas más baratas de la ciudad. El mejor and la mejor + noun mean the best: la mejor campera del negocio. Many shops in Argentina give a discount if you pay en efectivo.',
+            'Sale ads use comparisons and superlatives: los tenis más baratos de la ciudad. El mejor and la mejor + noun mean the best: la mejor chaqueta del negocio. Some shops give a discount if you pay en efectivo.',
           examples: [
             {
-              target: 'Las zapatillas más baratas de la ciudad.',
+              target: 'Los tenis más baratos de la ciudad.',
               base: 'The cheapest sneakers in town.',
             },
             {
-              target: 'Es la mejor campera del negocio.',
+              target: 'Es la mejor chaqueta del negocio.',
               base: 'It’s the best jacket in the shop.',
             },
           ],
@@ -732,22 +743,22 @@ export const ES_A2_U09: EsUnitDef = {
         ],
         exercises: [
           question(
-            'es.ex.12gg2wvku2owqj',
+            'es.ex.vbkyfctuba241c',
             AVISO,
             'What does the ad offer on jackets, trousers and dresses?',
             'Up to fifty percent off',
             ['Two for the price of one', 'Free sneakers', 'Thirty percent off'],
-            ['es-la-liquidacion', 'es-la-campera'],
-            'The ad says “Camperas, pantalones y vestidos: hasta cincuenta por ciento menos”.',
+            ['es-la-liquidacion', 'es-la-chaqueta'],
+            'The ad says “Chaquetas, pantalones y vestidos: hasta cincuenta por ciento menos”.',
           ),
           question(
-            'es.ex.i0jhi13t49soyt',
+            'es.ex.afs118crgfkukn',
             AVISO,
             'What does the ad say about the sneakers?',
             'They are the cheapest in the city',
             ['They are really expensive', 'They are only for children', 'They are two for one'],
-            ['es-el-mas', 'es-las-zapatillas'],
-            'It says “Las zapatillas más baratas de la ciudad”.',
+            ['es-el-mas', 'es-los-tenis'],
+            'It says “Los tenis más baratos de la ciudad”.',
           ),
           question(
             'es.ex.6gvn6as73y5duc',
@@ -777,7 +788,7 @@ export const ES_A2_U09: EsUnitDef = {
             'Con la ___, todo es más barato.',
             'With the sale, everything is cheaper.',
             'liquidación',
-            ['tarjeta', 'campera', 'camisa'],
+            ['tarjeta', 'chaqueta', 'camisa'],
             ['es-la-liquidacion'],
             {
               id: 'es.ex.nh45am8xo2ucjf',
@@ -794,20 +805,22 @@ export const ES_A2_U09: EsUnitDef = {
             { id: 'es.ex.qazq7qo96hphbj' },
           ),
           ex.orderWords(
-            'Las zapatillas son más baratas en efectivo.',
+            'Los tenis son más baratos en efectivo.',
             'The sneakers are cheaper in cash.',
-            ['es-las-zapatillas', 'es-en-efectivo'],
-            { id: 'es.ex.099jhhkuv1ximj' },
+            ['es-los-tenis', 'es-en-efectivo'],
+            { id: 'es.ex.iig8nq86xjuhrx' },
           ),
           ex.translateWrite(
             'It’s the best jacket in the shop.',
-            'Es la mejor campera del negocio.',
-            ['es-mejor', 'es-la-campera'],
+            'Es la mejor chaqueta del negocio.',
+            ['es-mejor', 'es-la-chaqueta'],
             {
-              id: 'es.ex.ivyox7bozy2z3t',
+              id: 'es.ex.yvkm3vgyfl4h69',
               acceptedAnswers: [
-                'Es la mejor campera del negocio',
-                'Esta es la mejor campera del negocio.',
+                'Es la mejor chaqueta del negocio',
+                'Esta es la mejor chaqueta del negocio.',
+                'Es la mejor chaqueta de la tienda.',
+                'Es la mejor campera del negocio.',
               ],
             },
           ),

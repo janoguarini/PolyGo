@@ -7,12 +7,19 @@ import { StyleSheet, View } from 'react-native';
 
 import { Button, Screen, Text, TextField, colors, spacing, useTheme } from '@/design-system';
 import { signUp } from '@/features/auth/api';
+import { AppleSignInButton } from '@/features/auth/AppleSignInButton';
 import { FormMessage } from '@/features/auth/FormMessage';
+import { AuthDivider, GoogleSignInButton } from '@/features/auth/GoogleSignInButton';
 import { signUpSchema, type SignUpValues } from '@/features/auth/schemas';
+import { authStrings } from '@/features/auth/strings';
+import { useStrings } from '@/i18n';
+import { signUpStrings } from '@/i18n/screens/signUp';
 import { toUserMessage } from '@/lib/errors';
 
 export default function SignUpScreen() {
   useTheme();
+  const t = useStrings(signUpStrings);
+  const auth = useStrings(authStrings);
   const { control, handleSubmit, formState, getValues } = useForm<SignUpValues>({
     resolver: zodResolver(signUpSchema),
     defaultValues: { email: '', password: '', confirmPassword: '' },
@@ -25,14 +32,13 @@ export default function SignUpScreen() {
       <Screen edges={['top', 'bottom']} contentStyle={styles.centered}>
         <MailCheck color={colors.success} size={48} />
         <Text variant="title" align="center">
-          Revisá tu email
+          {t.checkEmailTitle}
         </Text>
         <Text color="textMuted" align="center">
-          Enviamos un enlace de confirmación a {getValues('email')}. Abrilo desde este teléfono para
-          activar tu cuenta.
+          {t.checkEmailMessage(getValues('email'))}
         </Text>
         <Link href="/sign-in" replace style={styles.link}>
-          <Text color="primarySoft">Ir a iniciar sesión</Text>
+          <Text color="primarySoft">{t.goToSignIn}</Text>
         </Link>
       </Screen>
     );
@@ -41,8 +47,7 @@ export default function SignUpScreen() {
   return (
     <Screen edges={['top', 'bottom']} contentStyle={styles.content}>
       <View style={styles.header}>
-        <Text variant="title">Crear cuenta</Text>
-        <Text color="textMuted">Empezás en 1000 de ELO. Lo demás depende de vos.</Text>
+        <Text variant="title">{t.title}</Text>
       </View>
 
       <Controller
@@ -50,7 +55,7 @@ export default function SignUpScreen() {
         name="email"
         render={({ field }) => (
           <TextField
-            label="Email"
+            label={t.email}
             value={field.value}
             onChangeText={field.onChange}
             onBlur={field.onBlur}
@@ -67,12 +72,12 @@ export default function SignUpScreen() {
         name="password"
         render={({ field }) => (
           <TextField
-            label="Contraseña"
+            label={t.password}
             value={field.value}
             onChangeText={field.onChange}
             onBlur={field.onBlur}
             error={formState.errors.password?.message}
-            hint="Mínimo 6 caracteres."
+            hint={t.passwordHint}
             secureTextEntry
             autoComplete="new-password"
             textContentType="newPassword"
@@ -84,7 +89,7 @@ export default function SignUpScreen() {
         name="confirmPassword"
         render={({ field }) => (
           <TextField
-            label="Repetir contraseña"
+            label={t.confirmPassword}
             value={field.value}
             onChangeText={field.onChange}
             onBlur={field.onBlur}
@@ -101,11 +106,16 @@ export default function SignUpScreen() {
         <FormMessage tone="error" message={toUserMessage(mutation.error)} />
       ) : null}
 
-      <Button label="Crear cuenta" size="lg" loading={mutation.isPending} onPress={submit} />
+      <Button label={t.submit} size="lg" loading={mutation.isPending} onPress={submit} />
+
+      <AuthDivider label={auth.dividerContinueWith} />
+      <GoogleSignInButton />
+      <AppleSignInButton />
 
       <Link href="/sign-in" replace style={styles.link}>
         <Text color="textMuted" align="center">
-          ¿Ya tenés cuenta? <Text color="primarySoft">Iniciá sesión</Text>
+          {t.haveAccount}
+          <Text color="primarySoft">{t.signIn}</Text>
         </Text>
       </Link>
     </Screen>

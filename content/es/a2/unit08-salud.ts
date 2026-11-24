@@ -4,10 +4,10 @@ import { dialogue, ex, question, reading, w } from '../helpers';
 /**
  * Español A2 U8 «Health» (docs/ES_A1_A2.md): me duele + singular / me duelen + plural, con artículo y
  * no con posesivo (me duele la cabeza); me siento bien / mal, estoy enfermo; el imperativo para dar
- * consejos: con vos descansá, tomá y en negativo no tomes, no salgas (la forma estándar, no «no
- * tomés»); con usted tome, descanse; y la fórmula ¡que te mejores! Vocabulario rioplatense: el
- * resfrío, el remedio.
- * Pronunciación: el acento que cambia el sentido (tomá / toma / tomo); la g fuerte de garganta.
+ * consejos: con tú descansa, toma (igual que la forma de él / ella del presente) y en negativo no
+ * tomes, no salgas (con el subjuntivo); con usted tome, descanse; y la fórmula ¡que te mejores!
+ * Variante: español neutro de Latinoamérica (tú y usted). Vocabulario: el resfriado, el remedio.
+ * Pronunciación: la vocal final que cambia el sentido (toma / tomo / tome); la g fuerte de garganta.
  * Cultura: en el consultorio se habla de usted; cuando alguien estornuda se dice ¡salud!
  *
  * ESTADO EDITORIAL: borrador, sin revisión de hablantes nativos. Se carga sin publicar.
@@ -21,7 +21,7 @@ const CONSULTORIO = dialogue(
     ['Tomás', 'Me siento muy mal. Me duele la cabeza y tengo fiebre desde ayer.'],
     ['Elena', '¿Le duele la garganta también?'],
     ['Tomás', 'Sí, un poco. Y me duelen los brazos.'],
-    ['Elena', 'Es un resfrío. Tome este remedio tres veces por día y descanse.'],
+    ['Elena', 'Es un resfriado. Tome este remedio tres veces al día y descanse.'],
     ['Tomás', '¿Puedo ir a trabajar mañana?'],
     ['Elena', 'No, tiene que quedarse en casa dos días. Acá tiene la receta.'],
   ],
@@ -33,8 +33,8 @@ const MENSAJE = reading(
   'A message from Valentina to her friend Tomás.',
   [
     '¡Hola, Tomás!',
-    'Martín dice que estás enfermo. ¿Cómo te sentís?',
-    'Descansá mucho y tomá mucha agua.',
+    'Martín dice que estás enfermo. ¿Cómo te sientes?',
+    'Descansa mucho y toma mucha agua.',
     'No tomes café: no es bueno para la garganta.',
     'Mañana voy a tu casa con sopa.',
     '¡Que te mejores!',
@@ -45,33 +45,33 @@ const MENSAJE = reading(
 
 export const ES_A2_U08: EsUnitDef = {
   names: ['Tomás', 'Elena', 'Valentina', 'Martín', 'Lucía'],
-  support: ['tome', 'descanse', 'tomá', 'sentís', 'dice', 'sopa', 'salgas', 'descansar'],
+  support: ['tome', 'descanse', 'sientes', 'dice', 'sopa', 'salgas', 'descansar'],
   unit: {
     position: 8,
     title: 'Health',
     titleEn: 'La salud',
     description:
-      'Say what hurts (me duele, me duelen), how you feel and that you are sick, understand a doctor, give advice with the imperative (descansá, no tomes) and wish someone well.',
+      'Say what hurts (me duele, me duelen), how you feel and that you are sick, understand a doctor, give advice with the imperative (descansa, no tomes) and wish someone well.',
     emoji: '🩺',
     objective:
       'You can say what hurts and how you feel, understand a doctor’s questions and instructions, give a friend simple health advice and wish someone a quick recovery.',
     grammar: {
       title: 'Me duele / me duelen · the imperative',
       explanation:
-        'Doler works like gustar: the thing that hurts is the subject, so it is me duele with one thing and me duelen with more than one (me duele la cabeza, me duelen los dientes). Spanish uses the article, not my, with parts of the body: me duele la espalda. To give advice to a friend, use the vos imperative: the infinitive without the final r, stressed on the last vowel: descansar → descansá, tomar → tomá. The negative uses a different form: no tomes, no salgas. In Argentina you may hear no tomés in casual speech, but no tomes is the standard form. With usted: tome, descanse, no tome.',
+        'Doler works like gustar: the thing that hurts is the subject, so it is me duele with one thing and me duelen with more than one (me duele la cabeza, me duelen los dientes). Spanish uses the article, not my, with parts of the body: me duele la espalda. To give advice to a friend, use the tú imperative. For regular verbs it looks just like the él / ella form of the present: descansar → descansa, tomar → toma, beber → bebe. The negative uses a different form, with the “opposite” vowel: -ar verbs take -es (no tomes, no descanses) and -er / -ir verbs take -as (no comas); some verbs keep the irregular stem of yo (salgo → no salgas). With usted, the vowel also swaps: tome, descanse, beba, no tome.',
       examples: [
         {
           target: 'Me duele la cabeza y me duelen los dientes.',
           base: 'I have a headache and my teeth hurt.',
         },
-        { target: 'Descansá y tomá mucha agua.', base: 'Rest and drink lots of water.' },
-        { target: 'No salgas hoy: tenés fiebre.', base: 'Don’t go out today: you have a fever.' },
+        { target: 'Descansa y toma mucha agua.', base: 'Rest and drink lots of water.' },
+        { target: 'No salgas hoy: tienes fiebre.', base: 'Don’t go out today: you have a fever.' },
       ],
     },
     review: {
       status: 'draft',
       notes:
-        'A2 nuevo (U8). Sin revisión nativa. Revisar: «no tomes» como forma estándar del imperativo negativo con vos (frente a «no tomés», coloquial); «el resfrío» y «el remedio» como lo habitual en la Argentina; «la panza» aceptada para «el estómago»; «la receta» (también «recipe»); si «me siento» puede confundirse con sentarse (se evitó «I sit» como distractor); la médica habla de usted («tome», «descanse»).',
+        'A2 nuevo (U8), convertido al español neutro con tú (2026-11-21). Sin revisión nativa. Revisar: el imperativo de tú presentado como «igual a la forma de él / ella» (descansa, toma) y el negativo con el subjuntivo (no tomes); «el resfriado» como forma neutra (se acepta «el resfrío»; en México y Colombia también «la gripa», no enseñada); «el remedio» frente a «la medicina» / «el medicamento»; «tres veces al día» en lugar de «por día» (ambas se usan); «la panza» aceptada para «el estómago»; «la receta» (también «recipe»); si «me siento» puede confundirse con sentarse (se evitó «I sit» como distractor); la médica habla de usted («tome», «descanse»).',
     },
     words: [
       w(
@@ -142,22 +142,26 @@ export const ES_A2_U08: EsUnitDef = {
         { acceptedTranslations: ['a temperature', 'a fever'], emoji: '🌡️' },
       ),
       w(
-        'es-el-resfrio',
-        'el resfrío',
+        'es-el-resfriado',
+        'el resfriado',
         'a cold',
-        'Tengo un resfrío y me duele la garganta.',
+        'Tengo un resfriado y me duele la garganta.',
         'I have a cold and my throat hurts.',
-        ['health', 'argentina'],
-        { acceptedTranslations: ['the cold (illness)'], emoji: '🤧' },
+        ['health'],
+        {
+          acceptedTranslations: ['the cold (illness)'],
+          acceptedTexts: ['el resfrío'],
+          emoji: '🤧',
+        },
       ),
       w(
         'es-el-remedio',
         'el remedio',
         'the medicine',
-        'Tomo el remedio tres veces por día.',
+        'Tomo el remedio tres veces al día.',
         'I take the medicine three times a day.',
-        ['health', 'argentina'],
-        { emoji: '💊' },
+        ['health'],
+        { acceptedTexts: ['la medicina'], emoji: '💊' },
       ),
       w(
         'es-la-receta',
@@ -181,17 +185,18 @@ export const ES_A2_U08: EsUnitDef = {
       ),
       w(
         'es-descansa',
-        'descansá',
+        'descansa',
         'rest, informal',
-        'Estás muy cansado: descansá.',
+        'Estás muy cansado: descansa.',
         'You’re very tired: get some rest.',
-        ['imperative', 'voseo'],
+        ['imperative'],
+        { acceptedTexts: ['descansá'] },
       ),
       w(
         'es-no-tomes',
         'no tomes',
         "don't take, informal",
-        'No tomes café a la noche.',
+        'No tomes café por la noche.',
         'Don’t drink coffee at night.',
         ['imperative'],
         { acceptedTranslations: ["don't drink"] },
@@ -312,13 +317,16 @@ export const ES_A2_U08: EsUnitDef = {
 
       // ------------------------------------------------------------------------------------ L2
       {
-        title: '¿Cómo te sentís?',
+        title: '¿Cómo te sientes?',
         objective: 'Say how you feel and that you are sick.',
         intro: {
           explanation:
-            'Me siento + bien, mal or cansado means I feel… To ask a friend: ¿cómo te sentís? Estoy enfermo or estoy enferma (I’m sick) uses estar, because it is a state, not who you are. In garganta, the g before a, o or u is hard, like the g in go.',
+            'Me siento + bien, mal or cansado means I feel… Sentirse changes e to ie: me siento, te sientes, se siente. To ask a friend: ¿cómo te sientes? (to usted: ¿cómo se siente?). Estoy enfermo or estoy enferma (I’m sick) uses estar, because it is a state, not who you are. In garganta, the g before a, o or u is hard, like the g in go.',
           examples: [
-            { target: '¿Cómo te sentís? — Me siento mal.', base: 'How do you feel? — I feel bad.' },
+            {
+              target: '¿Cómo te sientes? — Me siento mal.',
+              base: 'How do you feel? — I feel bad.',
+            },
             { target: 'Estoy enferma: me duele la garganta.', base: 'I’m sick: my throat hurts.' },
           ],
         },
@@ -399,7 +407,7 @@ export const ES_A2_U08: EsUnitDef = {
             },
           ),
           ex.shortAnswer(
-            '¿Cómo te sentís?',
+            '¿Cómo te sientes?',
             'Say you are sick (estoy + enfermo or enferma).',
             'Estoy enfermo.',
             [
@@ -423,11 +431,11 @@ export const ES_A2_U08: EsUnitDef = {
         objective: 'Understand a doctor’s questions and instructions.',
         intro: {
           explanation:
-            'At the doctor’s, people speak with usted: ¿qué le pasa?, ¿le duele…? The doctor gives instructions with the usted imperative: tome este remedio, descanse. In Argentina people say el resfrío (a cold) and el remedio (medicine); elsewhere you will also hear resfriado and medicina. La receta is the prescription (the same word means recipe). Tener fiebre, to have a fever, has no article.',
+            'At the doctor’s, people speak with usted: ¿qué le pasa?, ¿le duele…? The doctor gives instructions with the usted imperative: tome este remedio, descanse. A cold is el resfriado (in Argentina and Chile you will also hear el resfrío). For medicine you will hear both el remedio and la medicina. La receta is the prescription (the same word means recipe). Tener fiebre, to have a fever, has no article.',
           examples: [
             { target: 'Tengo fiebre desde ayer.', base: 'I’ve had a fever since yesterday.' },
             {
-              target: 'Tome el remedio tres veces por día.',
+              target: 'Tome el remedio tres veces al día.',
               base: 'Take the medicine three times a day.',
             },
           ],
@@ -440,12 +448,12 @@ export const ES_A2_U08: EsUnitDef = {
           ex.matchPairs(
             [
               ['la fiebre', 'fever'],
-              ['el resfrío', 'a cold'],
+              ['el resfriado', 'a cold'],
               ['el remedio', 'the medicine'],
               ['la receta', 'the prescription'],
             ],
-            ['es-la-fiebre', 'es-el-resfrio', 'es-el-remedio', 'es-la-receta'],
-            { id: 'es.ex.86rtg0u9kg0lfd' },
+            ['es-la-fiebre', 'es-el-resfriado', 'es-el-remedio', 'es-la-receta'],
+            { id: 'es.ex.53qdhd83n5tttf' },
           ),
           ex.fillBlank(
             'Tengo ___ desde ayer.',
@@ -461,8 +469,8 @@ export const ES_A2_U08: EsUnitDef = {
             },
           ),
           ex.listenChoice(
-            'Tome el remedio tres veces por día.',
-            ['Tomo el remedio tres veces por día.', 'Tome el remedio dos veces por día.'],
+            'Tome el remedio tres veces al día.',
+            ['Tomo el remedio tres veces al día.', 'Tome el remedio dos veces al día.'],
             ['es-el-remedio'],
             { id: 'es.ex.ox8bqhnuuz0dgb' },
           ),
@@ -485,13 +493,13 @@ export const ES_A2_U08: EsUnitDef = {
             'He answers “Sí, un poco” about his throat and adds “me duelen los brazos”.',
           ),
           question(
-            'es.ex.fyizlqk9c2yjqa',
+            'es.ex.5chd2jrr5jrltv',
             CONSULTORIO,
             'What does the doctor say he has?',
             'A cold',
             ['Nothing serious, just tiredness', 'A stomach problem', 'An accident'],
-            ['es-el-resfrio'],
-            'Elena says “Es un resfrío”: it’s a cold.',
+            ['es-el-resfriado'],
+            'Elena says “Es un resfriado”: it’s a cold.',
           ),
           question(
             'es.ex.gtok8zmbzlyuq9',
@@ -500,7 +508,7 @@ export const ES_A2_U08: EsUnitDef = {
             'Three times a day',
             ['Once a day', 'Twice a day', 'Only at night'],
             ['es-el-remedio'],
-            'The doctor says “Tome este remedio tres veces por día”.',
+            'The doctor says “Tome este remedio tres veces al día”.',
           ),
           question(
             'es.ex.uy7n4nwlbg9234',
@@ -511,9 +519,15 @@ export const ES_A2_U08: EsUnitDef = {
             ['es-la-receta', 'es-el-remedio'],
             'Elena answers “No, tiene que quedarse en casa dos días” and gives him the prescription: “Acá tiene la receta”.',
           ),
-          ex.translateWrite('I have a cold.', 'Tengo un resfrío.', ['es-el-resfrio'], {
-            id: 'es.ex.zhnoar1wq6bncw',
-            acceptedAnswers: ['Tengo resfrío.', 'Estoy con un resfrío.'],
+          ex.translateWrite('I have a cold.', 'Tengo un resfriado.', ['es-el-resfriado'], {
+            id: 'es.ex.drzb4q8jieqyht',
+            acceptedAnswers: [
+              'Tengo resfriado.',
+              'Estoy resfriado.',
+              'Estoy resfriada.',
+              'Tengo un resfrío.',
+              'Estoy con un resfrío.',
+            ],
           }),
           ex.shortAnswer(
             '¿Qué le pasa?',
@@ -533,23 +547,23 @@ export const ES_A2_U08: EsUnitDef = {
 
       // ------------------------------------------------------------------------------------ L4
       {
-        title: 'Descansá, no tomes café',
+        title: 'Descansa, no tomes café',
         objective: 'Give a friend health advice with the imperative.',
         intro: {
           explanation:
-            'To give a friend advice, take the infinitive, drop the final r and stress the last vowel: descansar → descansá, tomar → tomá. For negative advice the verb changes its vowel: no tomes, no salgas. In Argentina you may hear no tomés in casual speech, but no tomes is the standard. With usted: tome, descanse, no tome. Careful with stress: tomá (take!, to a friend), toma (he or she takes) and tomo (I take) are three different words.',
+            'To give a friend (tú) advice, use the same form as él or ella in the present: descansa (rest!), toma (take! or drink!), bebe (drink!). In Latin America tomar is the everyday verb for drinking. For negative advice the vowel swaps: -ar verbs take -es and -er / -ir verbs take -as: no tomes, no descanses, no comas. With usted the vowel also swaps: tome, descanse, no tome. Listen to the last vowel: toma (take!, to a friend), tomo (I take) and tome (take!, to usted) are three different words.',
           examples: [
-            { target: 'Descansá y tomá mucha agua.', base: 'Rest and drink lots of water.' },
-            { target: 'No tomes café a la noche.', base: 'Don’t drink coffee at night.' },
+            { target: 'Descansa y toma mucha agua.', base: 'Rest and drink lots of water.' },
+            { target: 'No tomes café por la noche.', base: 'Don’t drink coffee at night.' },
           ],
         },
         takeaways: [
-          'You give advice to a friend with descansá or tomá, stressed on the last syllable.',
-          'You say what not to do with no tomes.',
+          'You give advice to a friend with descansa or toma, the same form as él / ella.',
+          'You say what not to do with no tomes, no comas: the vowel swaps.',
         ],
         exercises: [
           ex.translationChoice(
-            'descansá',
+            'descansa',
             'rest, informal',
             ["don't take, informal", 'I rest', 'get well soon!'],
             ['es-descansa'],
@@ -565,48 +579,48 @@ export const ES_A2_U08: EsUnitDef = {
           ex.fillBlank(
             'Estás muy cansado: ___ un poco.',
             'You’re very tired: rest a little. (to a friend)',
-            'descansá',
+            'descansa',
             ['descansar', 'descanse'],
             ['es-descansa'],
             {
               id: 'es.ex.992zyaumbbptkh',
               explanation:
-                'With vos the imperative is the infinitive without the r, stressed at the end: descansá. Descanse is for usted.',
+                'With tú the imperative looks like the él / ella form: descansa. Descanse is for usted, and descansar is the infinitive.',
             },
           ),
           ex.fillBlank(
             '___ café: te duele el estómago.',
             'Don’t drink coffee: your stomach hurts. (to a friend)',
             'No tomes',
-            ['No tomá', 'Tomá', 'No tomo'],
+            ['No toma', 'Toma', 'No tomo'],
             ['es-no-tomes', 'es-el-estomago'],
             {
               id: 'es.ex.7cdbse1vrmzrjs',
               explanation:
-                'The negative imperative changes the vowel: tomá → no tomes. No tomá is not correct.',
+                'The negative imperative swaps the vowel: toma → no tomes. No toma would mean he or she doesn’t drink.',
             },
           ),
           ex.listenChoice(
-            'Tomá el remedio.',
-            ['Tomo el remedio.', 'No tomes el remedio.'],
+            'Toma el remedio.',
+            ['Tomo el remedio.', 'Tome el remedio.'],
             ['es-no-tomes', 'es-el-remedio'],
             { id: 'es.ex.ho9llk8i2te8ma' },
           ),
           ex.fillBlank(
-            'Señor, ___ este remedio tres veces por día.',
+            'Señor, ___ este remedio tres veces al día.',
             'Sir, take this medicine three times a day.',
             'tome',
-            ['tomá', 'tomes', 'tomo'],
+            ['toma', 'tomes', 'tomo'],
             ['es-el-remedio'],
             {
               id: 'es.ex.mrnp8jsltu8fsx',
               explanation:
-                'With usted (señor, señora) the imperative is tome. Tomá is for vos and tomo means I take.',
+                'With usted (señor, señora) the imperative is tome. Toma is for tú and tomo means I take.',
             },
           ),
           ex.matchPairs(
             [
-              ['descansá', 'rest, informal'],
+              ['descansa', 'rest, informal'],
               ['no tomes', "don't take, informal"],
               ['el remedio', 'the medicine'],
               ['la receta', 'the prescription'],
@@ -615,7 +629,7 @@ export const ES_A2_U08: EsUnitDef = {
             { id: 'es.ex.4hnkjd6ybhztlv' },
           ),
           ex.orderWords(
-            'Descansá y tomá mucha agua.',
+            'Descansa y toma mucha agua.',
             'Rest and drink lots of water.',
             ['es-descansa'],
             {
@@ -624,27 +638,32 @@ export const ES_A2_U08: EsUnitDef = {
           ),
           ex.translateWrite(
             'Don’t drink coffee at night. (to a friend)',
-            'No tomes café a la noche.',
+            'No tomes café por la noche.',
             ['es-no-tomes'],
             {
               id: 'es.ex.9rqd1eck9k6l3w',
               acceptedAnswers: [
                 'No tomes café de noche.',
-                'A la noche no tomes café.',
+                'No tomes café en la noche.',
+                'Por la noche no tomes café.',
+                'No bebas café por la noche.',
+                'No tomes café a la noche.',
                 'No tomés café a la noche.',
               ],
             },
           ),
           ex.shortAnswer(
             'Estoy muy cansado.',
-            'Give your friend advice: tell him to rest (use vos).',
-            'Descansá.',
+            'Give your friend advice: tell him to rest (use tú).',
+            'Descansa.',
             [
-              'Descansá',
+              'Descansa',
+              '¡Descansa!',
+              'Descansa un poco.',
+              'Descansa mucho.',
+              'Tienes que descansar.',
+              'Descansá.',
               '¡Descansá!',
-              'Descansá un poco.',
-              'Descansá mucho.',
-              'Tenés que descansar.',
             ],
             ['es-descansa'],
             { id: 'es.ex.7m5d7cc2a2wsri' },
@@ -658,11 +677,11 @@ export const ES_A2_U08: EsUnitDef = {
         objective: 'Understand a message to a sick friend and wish someone well.',
         intro: {
           explanation:
-            'When a friend is sick, say ¡que te mejores! (get well soon!); with usted it is ¡que se mejore! It uses a verb form you will learn later, the subjunctive: for now, learn it as a fixed expression. And in Argentina, when someone sneezes, people say ¡salud!',
+            'When a friend is sick, say ¡que te mejores! (get well soon!); with usted it is ¡que se mejore! It uses a verb form you will learn later, the subjunctive (the same one as in no tomes): for now, learn it as a fixed expression. And all over the Spanish-speaking world, when someone sneezes, people say ¡salud!',
           examples: [
             { target: '¿Estás enfermo? ¡Que te mejores!', base: 'Are you sick? Get well soon!' },
             {
-              target: 'Descansá mucho. ¡Que te mejores!',
+              target: 'Descansa mucho. ¡Que te mejores!',
               base: 'Get lots of rest. Get well soon!',
             },
           ],
@@ -695,7 +714,7 @@ export const ES_A2_U08: EsUnitDef = {
             'To rest and drink lots of water',
             ['To go to the doctor', 'To go out a little', 'To eat a lot'],
             ['es-descansa'],
-            'She writes “Descansá mucho y tomá mucha agua”.',
+            'She writes “Descansa mucho y toma mucha agua”.',
           ),
           question(
             'es.ex.x62wmo3jl8mt9b',
@@ -704,7 +723,7 @@ export const ES_A2_U08: EsUnitDef = {
             'Coffee, because it is bad for his throat',
             [
               'Water, because it is cold',
-              'Mate, because it is late',
+              'Milk, because it is late',
               'Tea, because he has a fever',
             ],
             ['es-no-tomes', 'es-la-garganta'],
@@ -743,14 +762,16 @@ export const ES_A2_U08: EsUnitDef = {
           ),
           ex.translateWrite(
             'Are you sick? Get lots of rest. Get well soon!',
-            '¿Estás enfermo? Descansá mucho. ¡Que te mejores!',
+            '¿Estás enfermo? Descansa mucho. ¡Que te mejores!',
             ['es-enfermo', 'es-descansa', 'es-que-te-mejores'],
             {
               id: 'es.ex.9w7umqtgsmptso',
               acceptedAnswers: [
+                '¿Estás enferma? Descansa mucho. ¡Que te mejores!',
+                '¿Estás enfermo? Descansa mucho, ¡que te mejores!',
+                '¿Estás enferma? Descansa mucho, ¡que te mejores!',
+                '¿Estás enfermo? Descansá mucho. ¡Que te mejores!',
                 '¿Estás enferma? Descansá mucho. ¡Que te mejores!',
-                '¿Estás enfermo? Descansá mucho, ¡que te mejores!',
-                '¿Estás enferma? Descansá mucho, ¡que te mejores!',
               ],
             },
           ),
@@ -762,6 +783,7 @@ export const ES_A2_U08: EsUnitDef = {
               'Que te mejores',
               'Que te mejores.',
               '¡Que te mejores pronto!',
+              'Descansa. ¡Que te mejores!',
               'Descansá. ¡Que te mejores!',
             ],
             ['es-que-te-mejores'],

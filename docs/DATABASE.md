@@ -127,6 +127,39 @@ El ELO lo calcula el servidor con `shared/ranking.ts` (fuente única); la base g
 
 No hay función SQL: la Edge Function `delete-account` llama a `auth.admin.deleteUser`, y las FK hacen el resto (cascada en todo lo personal, `SET NULL` en `battle_players`). Verificado contra el proyecto real (2026-10-29).
 
+## Modelo de cursos (`20261223120000_course_model.sql`, LOCAL, sin aplicar)
+
+Diseño y migración de datos: [MULTILINGUAL_ONBOARDING_PLAN.md](MULTILINGUAL_ONBOARDING_PLAN.md) §4.2.
+
+- `courses`: un curso = idioma de destino + idioma de origen (`en-from-es`, `es-from-en`…). Un curso por
+  defecto por destino (índice parcial único). Lectura pública. Espejo en `shared/courses.ts`.
+- `user_courses (user_id, course_code)`: nivel inicial por curso, resultado de la prueba de nivel y
+  fechas. Lectura sólo del dueño; escritura por RPC o trigger. Cascada al borrar el perfil.
+- `profiles.active_course_code` y `profiles.interface_language` (null = la elige el dispositivo), sin
+  grant de update.
+- Triggers en `profiles`: `profiles_sync_active_course` (before: curso ↔ `target_language`, y
+  `start_level` = nivel del curso al cambiar de curso) y `profiles_enroll_active_course` (after:
+  inscribe al completar el onboarding o al cambiar de curso).
+- RPC: `complete_onboarding_v2`, `set_active_course`, `set_course_start_level`,
+  `set_interface_language`. Se conservan `complete_onboarding` (v1) y `set_target_language`.
+- Rollback: `supabase/rollback/20261223120000_course_model.down.sql`. Pruebas:
+  `supabase/tests/courses.test.mjs`.
+
+## Test de nivel (`20261224120000_course_placement.sql`, LOCAL, sin aplicar)
+
+Diseño: [PLACEMENT_TEST.md](PLACEMENT_TEST.md). Requiere el modelo de cursos.
+
+- `user_courses` suma `placement_correct`, `placement_total` y `placement_version` (nulas; CHECK
+  `user_courses_placement_score_check`: van juntas, 0 ≤ aciertos ≤ preguntas ≤ 100, sólo con
+  `placement_level`). El nivel y la fecha del test ya existían (`placement_level`,
+  `placement_completed_at`).
+- RPC `start_course(course, start_level, placement_level?, correct?, total?, version?) → jsonb`:
+  inscribe en un curso nuevo y lo deja activo en una transacción. Valida disponibilidad, que ambos
+  niveles estén publicados y que el inicial no supere al del test. Si ya estaba inscripto no cambia
+  nada del curso (devuelve `created: false`) y sólo lo activa. No toca XP, progreso ni otros cursos.
+- Rollback: `supabase/rollback/20261224120000_course_placement.down.sql` (antes que el del modelo de
+  cursos). Pruebas: `supabase/tests/coursePlacement.test.mjs`.
+
 ## Próximas migraciones
 
 - Fase 5: lo que necesiten los widgets (probablemente nada nuevo: leen palabra del día y repasos).

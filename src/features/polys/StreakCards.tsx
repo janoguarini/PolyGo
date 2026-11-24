@@ -8,11 +8,13 @@ import { POLYS } from '@shared/polys';
 import { Button, Card, PolyCoin, Text, colors, spacing, themedStyles } from '@/design-system';
 import { FormMessage } from '@/features/auth/FormMessage';
 import { daysLabel } from '@/features/learning/streak';
+import { useStrings } from '@/i18n';
 import { toUserMessage } from '@/lib/errors';
 import { playSound } from '@/lib/sounds';
 
 import { useBuyStreakFreeze, usePolys, useRepairStreak, type StreakRepairOffer } from './api';
 import { lastChanceLabel } from './lastChance';
+import { polysStrings } from './strings';
 
 function celebrate() {
   playSound('complete');
@@ -22,6 +24,7 @@ function celebrate() {
 /** El protector se compra con Polys: si un día no estudiás, se usa solo. */
 export function FreezeCard({ freezes, max }: { freezes: number; max: number }) {
   const styles = useStyles();
+  const t = useStrings(polysStrings);
   const polys = usePolys();
   const buy = useBuyStreakFreeze();
   const balance = polys.data?.balance ?? 0;
@@ -35,23 +38,23 @@ export function FreezeCard({ freezes, max }: { freezes: number; max: number }) {
         </View>
         <View style={styles.flex}>
           <Text variant="bodyStrong" color="textStrong">
-            Protector de racha · {freezes}/{max}
+            {t.freezeTitle(freezes, max)}
           </Text>
-          <Text variant="caption">Si un día no estudiás, se usa solo y tu racha sigue.</Text>
+          <Text variant="caption">{t.freezeBody}</Text>
         </View>
       </View>
       <Button
-        label={full ? 'Tenés el máximo' : `Comprar por ${price}`}
+        label={full ? t.freezeFull : t.buyFor(price)}
         variant="secondary"
         icon={full ? undefined : <PolyCoin size={20} />}
         disabled={full || balance < price}
         loading={buy.isPending}
-        accessibilityHint={full ? undefined : `Cuesta ${price} Polys. Tenés ${balance}.`}
+        accessibilityHint={full ? undefined : t.costHint(price, balance)}
         onPress={() => buy.mutate(undefined, { onSuccess: celebrate })}
       />
       {!full && balance < price ? (
         <Text variant="caption" align="center">
-          Te faltan {price - balance} Polys. Completá misiones para juntarlos.
+          {t.shortMissions(price - balance)}
         </Text>
       ) : null}
       {buy.isError ? <FormMessage tone="error" message={toUserMessage(buy.error)} /> : null}
@@ -62,6 +65,7 @@ export function FreezeCard({ freezes, max }: { freezes: number; max: number }) {
 /** Recuperar una racha perdida pagando los días que faltaron. */
 export function StreakRepairCard({ offer }: { offer: StreakRepairOffer }) {
   const styles = useStyles();
+  const t = useStrings(polysStrings);
   const polys = usePolys();
   const repair = useRepairStreak();
   const balance = polys.data?.balance ?? 0;
@@ -77,9 +81,9 @@ export function StreakRepairCard({ offer }: { offer: StreakRepairOffer }) {
             </View>
             <View style={styles.flex}>
               <Text variant="heading" color="streak">
-                ¡Racha recuperada!
+                {t.repaired}
               </Text>
-              <Text variant="caption">Vas {daysLabel(repair.data.streak)}. Seguí así.</Text>
+              <Text variant="caption">{t.repairedBody(daysLabel(repair.data.streak))}</Text>
             </View>
           </View>
         </Card>
@@ -95,28 +99,27 @@ export function StreakRepairCard({ offer }: { offer: StreakRepairOffer }) {
         </View>
         <View style={styles.flex}>
           <Text variant="overline" color="streak">
-            RACHA PERDIDA
+            {t.lostOverline}
           </Text>
           <Text variant="bodyStrong" color="textStrong">
-            Recuperá tu racha de {daysLabel(offer.lost_streak)}
+            {t.repairTitle(daysLabel(offer.lost_streak))}
           </Text>
           <Text variant="caption">
-            {offer.missed_days === 1 ? 'Faltaste 1 día' : `Faltaste ${offer.missed_days} días`}.
-            Podés recuperarla hasta {lastChanceLabel(offer.last_chance)}.
+            {t.missed(offer.missed_days)}. {t.repairUntil(lastChanceLabel(offer.last_chance))}
           </Text>
         </View>
       </View>
       <Button
-        label={`Recuperar por ${offer.price}`}
+        label={t.repairFor(offer.price)}
         icon={<PolyCoin size={20} />}
         disabled={short}
         loading={repair.isPending}
-        accessibilityHint={`Cuesta ${offer.price} Polys. Tenés ${balance}.`}
+        accessibilityHint={t.costHint(offer.price, balance)}
         onPress={() => repair.mutate(undefined, { onSuccess: celebrate })}
       />
       {short ? (
         <Text variant="caption" align="center">
-          Te faltan {offer.price - balance} Polys.
+          {t.short(offer.price - balance)}
         </Text>
       ) : null}
       {repair.isError ? <FormMessage tone="error" message={toUserMessage(repair.error)} /> : null}

@@ -3,8 +3,10 @@ import { PenLine } from 'lucide-react-native';
 import { StyleSheet } from 'react-native';
 
 import { Button, Card, Text, colors, spacing, useTheme } from '@/design-system';
+import { useStrings } from '@/i18n';
 
 import { writingTasksForLesson } from '../../../../content/writing';
+import { writingStrings } from '../strings';
 
 /**
  * Práctica de escritura opcional al terminar una lección (docs/A1_EN_CLOSURE.md §6, y A2 en
@@ -13,23 +15,24 @@ import { writingTasksForLesson } from '../../../../content/writing';
  */
 export function WritingPracticeCard({ lessonId }: { lessonId: string }) {
   useTheme();
+  const t = useStrings(writingStrings);
   const tasks = writingTasksForLesson(lessonId);
   if (!tasks.length) return null;
   return (
-    <Card style={styles.gap} accessibilityLabel="Practicá escribiendo">
+    <Card style={styles.gap} accessibilityLabel={t.practiceLabel}>
       <Text variant="overline" color="primarySoft">
-        PRACTICÁ ESCRIBIENDO
+        {t.practiceOverline}
       </Text>
-      {tasks.map((t) => (
+      {tasks.map((task) => (
         <Button
-          key={t.id}
-          label={t.title}
+          key={task.id}
+          label={task.title}
           variant="secondary"
           icon={<PenLine color={colors.text} size={18} />}
-          onPress={() => router.push({ pathname: '/writing/[id]', params: { id: t.id } })}
+          onPress={() => router.push({ pathname: '/writing/[id]', params: { id: task.id } })}
         />
       ))}
-      <Text variant="caption">Opcional: escribís a tu ritmo y no se guarda.</Text>
+      <Text variant="caption">{t.practiceOptional}</Text>
     </Card>
   );
 }

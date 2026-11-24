@@ -1,8 +1,8 @@
-import type { CosmeticId, CosmeticRarity } from '@shared/cosmetics';
+import type { CosmeticRarity } from '@shared/cosmetics';
 
 /**
- * Cómo se dibuja cada cosmético. El catálogo (precio, rareza) está en shared/cosmetics.ts; acá sólo
- * colores y adornos, todo en código (sin imágenes).
+ * Cosméticos dibujados en código: el aro Básico, el fondo Sólido y el catálogo anterior (retirado,
+ * pero quien lo compró lo sigue usando). Lo nuevo es arte en imágenes: ver ./assets.ts.
  */
 
 export type FrameOrnament = 'dots' | 'stars' | 'flames' | 'crown' | 'laurel' | 'gems';
@@ -24,10 +24,10 @@ export interface BackgroundStyle {
   accent?: string;
 }
 
-type FrameId = Extract<CosmeticId, `frame_${string}`>;
-type BackgroundId = Extract<CosmeticId, `bg_${string}`>;
-
-export const FRAME_STYLES: Record<FrameId, FrameStyle> = {
+export const FRAME_STYLES: Record<string, FrameStyle> = {
+  // Gratis: aro violeta limpio.
+  frame_basic: { colors: ['#C4B5FD', '#7C3AED', '#4C1D95'] },
+  // ---- retirados ----
   frame_mint: { colors: ['#6EE7B7', '#059669'] },
   frame_coral: { colors: ['#FDA4AF', '#E11D48'] },
   frame_sky: { colors: ['#7DD3FC', '#0284C7'] },
@@ -46,35 +46,52 @@ export const FRAME_STYLES: Record<FrameId, FrameStyle> = {
   frame_founder: { colors: ['#F5F3FF', '#A78BFA', '#4C1D95'], ornament: 'gems', accent: '#E9D5FF' },
 };
 
-export const BACKGROUND_STYLES: Record<BackgroundId, BackgroundStyle> = {
-  bg_forest: { colors: ['#166534', '#0B1F17'], pattern: 'waves', accent: '#4ADE80' },
-  bg_ocean: { colors: ['#075985', '#0A1A33'], pattern: 'waves', accent: '#38BDF8' },
-  bg_wine: { colors: ['#881337', '#2A0E1A'] },
-  bg_sunset: { colors: ['#EA580C', '#BE185D', '#3B0764'], pattern: 'sparkles', accent: '#FDE68A' },
-  bg_neon: { colors: ['#4C1D95', '#0F172A'], pattern: 'grid', accent: '#E879F9' },
-  bg_galaxy: { colors: ['#312E81', '#3B0764', '#0B0A1F'], pattern: 'stars', accent: '#FFFFFF' },
-  bg_gold: { colors: ['#CA8A04', '#713F12', '#1C1305'], pattern: 'sparkles', accent: '#FEF08A' },
-};
-
-/** Fondo violeta que se ve cuando el jugador no tiene ninguno de la tienda puesto. */
+/** Fondo violeta que se ve cuando el jugador no tiene ninguno puesto (y el gratis, Sólido). */
 export const DEFAULT_BACKGROUND: BackgroundStyle = {
   colors: ['#3B1D80', '#25145A', '#151036'],
   pattern: 'waves',
   accent: '#A78BFA',
 };
 
+export const BACKGROUND_STYLES: Record<string, BackgroundStyle> = {
+  bg_solid: DEFAULT_BACKGROUND,
+  // ---- retirados ----
+  bg_ocean: { colors: ['#075985', '#0A1A33'], pattern: 'waves', accent: '#38BDF8' },
+  bg_wine: { colors: ['#881337', '#2A0E1A'] },
+  bg_sunset: { colors: ['#EA580C', '#BE185D', '#3B0764'], pattern: 'sparkles', accent: '#FDE68A' },
+  bg_gold: { colors: ['#CA8A04', '#713F12', '#1C1305'], pattern: 'sparkles', accent: '#FEF08A' },
+};
+
 export function frameStyle(id: string | null | undefined): FrameStyle | null {
-  return id && id in FRAME_STYLES ? FRAME_STYLES[id as FrameId] : null;
+  return id && Object.hasOwn(FRAME_STYLES, id) ? FRAME_STYLES[id]! : null;
 }
 
 export function backgroundStyle(id: string | null | undefined): BackgroundStyle | null {
-  return id && id in BACKGROUND_STYLES ? BACKGROUND_STYLES[id as BackgroundId] : null;
+  return id && Object.hasOwn(BACKGROUND_STYLES, id) ? BACKGROUND_STYLES[id]! : null;
 }
 
-/** Color de cada rareza (etiquetas y bordes en la tienda). */
+/**
+ * Identidad de cada rareza: color principal (etiqueta, borde) y degradado del brillo de la tarjeta.
+ * Mítica combina magenta y cian; Exclusiva es el violeta-celeste de Plus y las invitaciones.
+ */
 export const RARITY_COLORS: Record<CosmeticRarity, string> = {
-  common: '#94A3B8',
+  free: '#B4A7D6',
+  common: '#4ADE80',
   rare: '#38BDF8',
   epic: '#C084FC',
   legendary: '#FACC15',
+  mythic: '#F472B6',
+  exclusive: '#A5B4FC',
+  limited: '#FB923C',
+};
+
+export const RARITY_GLOW: Record<CosmeticRarity, readonly [string, string]> = {
+  free: ['rgba(180,167,214,0.10)', 'rgba(180,167,214,0.02)'],
+  common: ['rgba(74,222,128,0.18)', 'rgba(74,222,128,0.02)'],
+  rare: ['rgba(56,189,248,0.20)', 'rgba(56,189,248,0.02)'],
+  epic: ['rgba(192,132,252,0.24)', 'rgba(192,132,252,0.03)'],
+  legendary: ['rgba(250,204,21,0.26)', 'rgba(250,204,21,0.03)'],
+  mythic: ['rgba(244,114,182,0.30)', 'rgba(34,211,238,0.10)'],
+  exclusive: ['rgba(139,92,246,0.32)', 'rgba(56,189,248,0.10)'],
+  limited: ['rgba(251,146,60,0.24)', 'rgba(251,146,60,0.03)'],
 };

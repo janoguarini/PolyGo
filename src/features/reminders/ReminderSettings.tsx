@@ -2,15 +2,18 @@ import * as Linking from 'expo-linking';
 import { Pressable, StyleSheet, Switch, View } from 'react-native';
 
 import { Button, Card, Text, colors, radii, spacing, themedStyles } from '@/design-system';
+import { useStrings } from '@/i18n';
 import { toUserMessage } from '@/lib/errors';
 
 import { useReminderPrefs, useSetReminderPrefs } from './hooks';
 import { remindersSupported } from './notifications';
 import { DEFAULT_REMINDER, REMINDER_HOURS, formatReminderTime } from './schedule';
+import { reminderStrings } from './strings';
 
 /** Interruptor y horario del recordatorio diario (notificación local, sin servidor). */
 export function ReminderSettings() {
   const styles = useStyles();
+  const t = useStrings(reminderStrings);
   const prefs = useReminderPrefs();
   const update = useSetReminderPrefs();
 
@@ -23,15 +26,13 @@ export function ReminderSettings() {
     <Card style={styles.card}>
       <View style={styles.row}>
         <View style={styles.flex}>
-          <Text variant="bodyStrong">Recordatorio diario</Text>
+          <Text variant="bodyStrong">{t.dailyReminder}</Text>
           <Text variant="caption">
-            {current.enabled
-              ? `Te avisamos a las ${formatReminderTime(current)} si todavía no practicaste.`
-              : 'Un aviso por día para no cortar tu racha.'}
+            {current.enabled ? t.enabledHint(formatReminderTime(current)) : t.disabledHint}
           </Text>
         </View>
         <Switch
-          accessibilityLabel="Recordatorio diario"
+          accessibilityLabel={t.dailyReminder}
           value={current.enabled}
           disabled={!prefs.data || update.isPending}
           onValueChange={(enabled) => update.mutate({ ...current, enabled })}
@@ -41,7 +42,7 @@ export function ReminderSettings() {
       </View>
 
       {current.enabled ? (
-        <View style={styles.hours} accessibilityRole="radiogroup" accessibilityLabel="Horario">
+        <View style={styles.hours} accessibilityRole="radiogroup" accessibilityLabel={t.schedule}>
           {REMINDER_HOURS.map((hour) => {
             const selected = current.hour === hour && current.minute === 0;
             return (
@@ -64,16 +65,16 @@ export function ReminderSettings() {
 
       {denied ? (
         <Text variant="caption" color="danger">
-          Sin permiso para notificaciones no podemos recordarte.
+          {t.denied}
         </Text>
       ) : null}
       {blocked ? (
         <>
           <Text variant="caption" color="danger">
-            Las notificaciones de Polygo están desactivadas en los ajustes del teléfono.
+            {t.blocked}
           </Text>
           <Button
-            label="Abrir ajustes"
+            label={t.openSettings}
             variant="secondary"
             onPress={() => void Linking.openSettings()}
           />

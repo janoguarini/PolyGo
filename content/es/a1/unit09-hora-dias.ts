@@ -2,10 +2,12 @@ import type { EsUnitDef } from '../../es-course';
 import { dialogue, ES_A1_RATE, ex, question, reading, w } from '../helpers';
 
 /**
- * Español A1 U9 «Time and days» (docs/ES_A1_A2.md): preguntar y decir la hora (¿qué hora es? Es la
+ * Español A1 U9 «Time and days» (docs/ES_A1_A2.md), en español neutro de Latinoamérica (tú y ustedes):
+ * preguntar y decir la hora (¿qué hora es? ¿tienes la hora? / ¿tiene la hora? con usted; es la
  * una / son las dos, y cuarto, y media, menos cuarto), decir a qué hora pasa algo (a las ocho, al
  * mediodía), los días de la semana (en minúscula; el lunes = on Monday, los lunes = on Mondays), el fin
- * de semana (el finde, coloquial), hoy y mañana (tomorrow) frente a la mañana (the morning).
+ * de semana (el finde, coloquial, sólo aceptado), hoy y mañana (tomorrow) frente a la mañana (the
+ * morning): mañana por la mañana.
  * Pronunciación: la entonación de las preguntas (sube al final en las de sí o no, baja en las que
  * empiezan con qué o a qué hora) y los números que se confunden de oído (dos / doce).
  *
@@ -19,7 +21,7 @@ const HORA = dialogue(
     ['Diego', 'Hola, Lucía. ¿Qué hora es?'],
     ['Lucía', 'Son las doce y media.'],
     ['Diego', 'Tengo clase a la una.'],
-    ['Lucía', '¿Y mañana? ¿A qué hora tenés clase?'],
+    ['Lucía', '¿Y mañana? ¿A qué hora tienes clase?'],
     ['Diego', 'Mañana es sábado. ¡No tengo clase!'],
   ],
   ES_A1_RATE,
@@ -40,7 +42,7 @@ const CLASES = reading(
 
 export const ES_A1_U09: EsUnitDef = {
   names: ['Diego', 'Lucía', 'Tomás', 'Camila'],
-  support: ['clase', 'cenás'],
+  support: ['clase', 'cenas'],
   unit: {
     position: 9,
     title: 'Time and days',
@@ -53,7 +55,7 @@ export const ES_A1_U09: EsUnitDef = {
     grammar: {
       title: 'Es la una / son las dos · el lunes, los lunes',
       explanation:
-        'To ask the time: ¿qué hora es? Answer es la una for one o’clock and son las + number for every other hour: son las dos, son las diez (la and las refer to la hora). Add minutes with y: y cuarto (quarter past), y media (half past), y diez; take them away with menos: menos cuarto (quarter to). To say when something happens, use a: a la una, a las ocho, al mediodía (a + el = al); ask ¿a qué hora? Add de la mañana, de la tarde or de la noche to make it clear. The days of the week are masculine and written in lower case. El lunes means on Monday (one day), los lunes on Mondays (every week); there is no word for “on”. Hoy is today and mañana is tomorrow, but la mañana is the morning: mañana a la mañana is tomorrow morning. Intonation: a yes/no question rises at the end (¿Es la una?); a question that starts with qué or a qué hora usually falls (¿Qué hora es?).',
+        'To ask the time: ¿qué hora es? Answer es la una for one o’clock and son las + number for every other hour: son las dos, son las diez (la and las refer to la hora). Add minutes with y: y cuarto (quarter past), y media (half past), y diez; take them away with menos: menos cuarto (quarter to). To say when something happens, use a: a la una, a las ocho, al mediodía (a + el = al); ask ¿a qué hora? Add de la mañana, de la tarde or de la noche to make it clear. The days of the week are masculine and written in lower case. El lunes means on Monday (one day), los lunes on Mondays (every week); there is no word for “on”. Hoy is today and mañana is tomorrow, but la mañana is the morning: mañana por la mañana is tomorrow morning. Intonation: a yes/no question rises at the end (¿Es la una?); a question that starts with qué or a qué hora usually falls (¿Qué hora es?).',
       examples: [
         {
           target: '¿Qué hora es? — Son las tres y media.',
@@ -66,7 +68,7 @@ export const ES_A1_U09: EsUnitDef = {
     review: {
       status: 'draft',
       notes:
-        'A1 nuevo (U9). Sin revisión nativa. Revisar: «¿tenés la hora?» como pedido habitual; «a las siete de la tarde» (en la Argentina la tarde llega hasta más o menos las ocho); «mañana a la mañana» frente a «mañana por la mañana» (ambas aceptadas); «el finde» como coloquial; la explicación de la entonación (descendente en las preguntas con qué).',
+        'A1 nuevo (U9). Convertido al español neutro de Latinoamérica (tú y ustedes) el 2026-11-21. Sin revisión nativa. Revisar: «¿tienes la hora?» / «¿tiene la hora?» como pedido habitual; «a las siete de la tarde» (en muchos países la tarde llega hasta más o menos las siete u ocho); «mañana por la mañana» como forma mostrada («mañana a la mañana», rioplatense, aceptada); «el finde» como coloquial (España, Argentina), sólo aceptado; la explicación de la entonación (descendente en las preguntas con qué).',
     },
     words: [
       w(
@@ -78,9 +80,17 @@ export const ES_A1_U09: EsUnitDef = {
         ['time', 'questions'],
         { emoji: '🕒' },
       ),
-      w('es-la-hora', 'la hora', 'the time', '¿Tenés la hora?', 'Do you have the time?', ['time'], {
-        acceptedTranslations: ['the hour'],
-      }),
+      w(
+        'es-la-hora',
+        'la hora',
+        'the time',
+        '¿Tienes la hora?',
+        'Do you have the time?',
+        ['time'],
+        {
+          acceptedTranslations: ['the hour'],
+        },
+      ),
       w('es-y-media', 'y media', 'half past', 'Son las ocho y media.', 'It’s half past eight.', [
         'time',
       ]),
@@ -181,7 +191,7 @@ export const ES_A1_U09: EsUnitDef = {
         'es-a-que-hora',
         '¿a qué hora?',
         'at what time?',
-        '¿A qué hora cenás?',
+        '¿A qué hora cenas?',
         'What time do you have dinner?',
         ['time', 'questions'],
         { acceptedTranslations: ['what time?'] },
@@ -194,7 +204,7 @@ export const ES_A1_U09: EsUnitDef = {
         objective: 'Ask the time and say it with o’clock, quarter past and half past.',
         intro: {
           explanation:
-            '¿Qué hora es? asks the time. For one o’clock say es la una; for every other hour, son las + number: son las dos, son las ocho. The la and las are there because they refer to la hora (the time). Add y cuarto for quarter past and y media for half past: son las ocho y media. To ask a stranger politely in Argentina: ¿tenés la hora? or, with usted, ¿tiene la hora? Careful with dos (two) and doce (twelve): listen for the c.',
+            '¿Qué hora es? asks the time. For one o’clock say es la una; for every other hour, son las + number: son las dos, son las ocho. The la and las are there because they refer to la hora (the time). Add y cuarto for quarter past and y media for half past: son las ocho y media. To ask someone informally: ¿tienes la hora? (tener: yo tengo, tú tienes); to a stranger, with usted: ¿tiene la hora? Careful with dos (two) and doce (twelve): listen for the c.',
           examples: [
             { target: '¿Qué hora es? — Es la una.', base: 'What time is it? — It’s one o’clock.' },
             { target: 'Son las ocho y media.', base: 'It’s half past eight.' },
@@ -213,7 +223,7 @@ export const ES_A1_U09: EsUnitDef = {
             { id: 'es.ex.ra1r8g5jnd2ai1' },
           ),
           ex.fillBlank(
-            '¿Tenés la ___?',
+            '¿Tienes la ___?',
             'Do you have the time?',
             'hora',
             ['una', 'cuarto', 'media'],
@@ -222,7 +232,7 @@ export const ES_A1_U09: EsUnitDef = {
               id: 'es.ex.ehfq2vjtrhpti2',
               skill: 'vocabulary',
               explanation:
-                'La hora is the time. ¿Tenés la hora? is a common way to ask the time in Argentina.',
+                'La hora is the time. ¿Tienes la hora? (or, with usted, ¿tiene la hora?) is a common way to ask the time.',
             },
           ),
           ex.listenChoice(
@@ -302,7 +312,7 @@ export const ES_A1_U09: EsUnitDef = {
             'After half past, count back with menos: son las nueve menos cuarto (quarter to nine). Twelve o’clock is el mediodía (noon) or la medianoche (midnight). To ask when something happens: ¿a qué hora…? The answer uses a: a la una, a las ocho, al mediodía (a + el becomes al). Add de la mañana, de la tarde or de la noche to be clear: a las diez de la noche.',
           examples: [
             {
-              target: '¿A qué hora te levantás? — A las siete.',
+              target: '¿A qué hora te levantas? — A las siete.',
               base: 'What time do you get up? — At seven.',
             },
             { target: 'Almuerzo al mediodía.', base: 'I have lunch at noon.' },
@@ -356,7 +366,7 @@ export const ES_A1_U09: EsUnitDef = {
             { id: 'es.ex.1htq14rp2me9nt' },
           ),
           ex.fillBlank(
-            '¿___ qué hora cenás?',
+            '¿___ qué hora cenas?',
             'What time do you have dinner?',
             'A',
             ['De', 'En', 'Y'],
@@ -384,7 +394,7 @@ export const ES_A1_U09: EsUnitDef = {
             },
           ),
           ex.shortAnswer(
-            '¿A qué hora te levantás?',
+            '¿A qué hora te levantas?',
             'Say you get up at seven (start with «Me levanto»).',
             'Me levanto a las siete.',
             [
@@ -452,8 +462,8 @@ export const ES_A1_U09: EsUnitDef = {
             { id: 'es.ex.f87f9q0ryqme4i' },
           ),
           ex.fillBlank(
-            '___ lunes tomo mate con mi abuela.',
-            'On Mondays I drink mate with my grandmother.',
+            '___ lunes tomo café con mi abuela.',
+            'On Mondays I have coffee with my grandmother.',
             'Los',
             ['El', 'La', 'Las'],
             ['es-lunes'],
@@ -497,7 +507,7 @@ export const ES_A1_U09: EsUnitDef = {
             },
           ),
           ex.shortAnswer(
-            '¿Qué días trabajás?',
+            '¿Qué días trabajas?',
             'Say you work from Monday to Thursday (start with «Trabajo de»).',
             'Trabajo de lunes a jueves.',
             [
@@ -531,7 +541,7 @@ export const ES_A1_U09: EsUnitDef = {
         objective: 'Talk about Friday and the weekend and read a timetable.',
         intro: {
           explanation:
-            'Viernes is Friday, and the weekend, el fin de semana, is sábado and domingo. In Argentina people often shorten it to el finde (informal). Sábado and domingo add an s in the plural: los sábados, los domingos. Sunday is a family day in Argentina, often with a long lunch or an asado.',
+            'Viernes is Friday, and the weekend, el fin de semana, is sábado and domingo. In Spain and Argentina people often shorten it to el finde (informal). Sábado and domingo add an s in the plural: los sábados, los domingos. In many Spanish-speaking countries Sunday is a family day, often with a long lunch.',
           examples: [
             { target: 'El sábado me levanto tarde.', base: 'On Saturday I get up late.' },
             {
@@ -620,7 +630,8 @@ export const ES_A1_U09: EsUnitDef = {
             {
               id: 'es.ex.65vytg3kljiapo',
               skill: 'vocabulary',
-              explanation: 'The weekend is el fin de semana (informally, el finde).',
+              explanation:
+                'The weekend is el fin de semana (in Spain and Argentina, informally, el finde).',
             },
           ),
           ex.translateWrite(
@@ -633,7 +644,7 @@ export const ES_A1_U09: EsUnitDef = {
             },
           ),
           ex.shortAnswer(
-            '¿Qué hacés el fin de semana?',
+            '¿Qué haces el fin de semana?',
             'Say that at the weekend you watch movies (start with «El fin de semana»).',
             'El fin de semana miro películas.',
             [
@@ -655,10 +666,10 @@ export const ES_A1_U09: EsUnitDef = {
           'Say what day it is today and tomorrow, and follow a short conversation about times.',
         intro: {
           explanation:
-            'Hoy is today and mañana is tomorrow. Don’t mix up mañana (tomorrow) and la mañana (the morning): mañana a la mañana is tomorrow morning. Listen to the melody of questions: a yes/no question goes up at the end (¿Hoy trabajás?), while a question with qué or a qué hora usually goes down (¿A qué hora trabajás?).',
+            'Hoy is today and mañana is tomorrow. Don’t mix up mañana (tomorrow) and la mañana (the morning): mañana por la mañana is tomorrow morning. Listen to the melody of questions: a yes/no question goes up at the end (¿Hoy trabajas?), while a question with qué or a qué hora usually goes down (¿A qué hora trabajas?).',
           examples: [
             { target: 'Hoy es viernes.', base: 'Today is Friday.' },
-            { target: 'Mañana a la mañana trabajo.', base: 'Tomorrow morning I work.' },
+            { target: 'Mañana por la mañana trabajo.', base: 'Tomorrow morning I work.' },
           ],
         },
         takeaways: [
@@ -732,15 +743,15 @@ export const ES_A1_U09: EsUnitDef = {
           ),
           ex.translateWrite(
             'Tomorrow morning I work.',
-            'Mañana a la mañana trabajo.',
+            'Mañana por la mañana trabajo.',
             ['es-manana'],
             {
               id: 'es.ex.67d595j7der8ku',
               acceptedAnswers: [
-                'Mañana a la mañana yo trabajo.',
-                'Trabajo mañana a la mañana.',
-                'Mañana por la mañana trabajo.',
+                'Mañana por la mañana yo trabajo.',
                 'Trabajo mañana por la mañana.',
+                'Mañana a la mañana trabajo.',
+                'Trabajo mañana a la mañana.',
               ],
             },
           ),

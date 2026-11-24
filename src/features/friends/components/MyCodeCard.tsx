@@ -14,6 +14,9 @@ import {
 } from '@/design-system';
 import { mascotWave } from '@/design-system/imageData.generated';
 import { useMyProfile } from '@/features/profile/hooks';
+import { useStrings } from '@/i18n';
+
+import { friendsStrings } from '../strings';
 
 /** Ancho / alto de assets/mascot/wave.webp. */
 const FOX_ASPECT = 480 / 556;
@@ -27,6 +30,7 @@ const FOX_TUCK = 8;
 /** Tu código PG- para que otros te encuentren, con el zorro saludando y botón para compartirlo. */
 export function MyCodeCard() {
   const styles = useStyles();
+  const t = useStrings(friendsStrings);
   const profile = useMyProfile();
   const code = profile.data?.profile.public_code;
   const username = profile.data?.profile.username;
@@ -34,7 +38,7 @@ export function MyCodeCard() {
 
   const share = () =>
     void Share.share({
-      message: `¡Agregame en Polygo! Buscame como @${username} o con mi código ${code}.`,
+      message: t.shareCodeMessage(username, code),
     }).catch(() => {});
 
   return (
@@ -55,7 +59,7 @@ export function MyCodeCard() {
         />
         <View style={styles.info}>
           <Text variant="overline" color="primarySoft">
-            TU CÓDIGO DE AMIGO
+            {t.yourFriendCode}
           </Text>
           <View style={styles.ticket}>
             <Text
@@ -66,17 +70,17 @@ export function MyCodeCard() {
               adjustsFontSizeToFit
               minimumFontScale={0.7}
               style={styles.code}
-              accessibilityLabel={`Tu código: ${code.split('').join(' ')}`}
+              accessibilityLabel={t.yourCodeA11y(code.split('').join(' '))}
             >
               {code}
             </Text>
           </View>
           <Text variant="caption" color="text">
-            Te pueden agregar con este código{username ? ` o buscando @${username}` : ''}.
+            {t.addWithCode(username)}
           </Text>
         </View>
         <Button
-          label="Compartir mi código"
+          label={t.shareMyCode}
           icon={<Share2 color={colors.onPrimary} size={18} />}
           onPress={share}
           style={styles.button}

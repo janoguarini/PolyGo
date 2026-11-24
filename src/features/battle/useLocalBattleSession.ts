@@ -143,6 +143,8 @@ export function useLocalBattleSession() {
               void queryClient.invalidateQueries({ queryKey: ['learning', 'missions'] });
               // Las victorias de hoy y los rangos nuevos pagan Polys.
               void queryClient.invalidateQueries({ queryKey: ['learning', 'polys'] });
+              // Y XP (ganar o perder una ranked suma experiencia; lo decide la base).
+              void queryClient.invalidateQueries({ queryKey: ['learning', 'xp'] });
             },
           });
           matchRef.current = match;

@@ -3,11 +3,12 @@ import { dialogue, ex, question, reading, w } from '../helpers';
 
 /**
  * Español A2 U12 «Opinions and solutions» (docs/ES_A1_A2.md): opinar (creo que, me parece que, para
- * mí, [no] estoy de acuerdo, tenés razón), aconsejar y proponer con el condicional (deberías,
+ * mí, [no] estoy de acuerdo, tienes razón), aconsejar y proponer con el condicional (deberías,
  * podríamos), la condición con si + presente (si llueve, vamos al cine), los conectores sin embargo,
  * por eso y porque, por y para (finalidad y destinatario / causa y medio), el estilo indirecto (dice
  * que…, me dijo que…) y ojalá (que) + subjuntivo como expresión fija (ojalá que no llueva).
- * Vocabulario rioplatense: la plata (el dinero), che (informal).
+ * Variante: español neutro de Latinoamérica, con tú (tienes razón, contigo, para ti). Vocabulario: el
+ * dinero (se acepta «la plata»), oye para llamar la atención.
  * Pronunciación: la entonación de la opinión (descendente) y del desacuerdo cortés (suavizado).
  *
  * ESTADO EDITORIAL: borrador, sin revisión de hablantes nativos. Se carga sin publicar.
@@ -19,7 +20,7 @@ const PRESTAMO = dialogue(
   [
     [
       'Martín',
-      'Che, Lucía, tengo un problema. Le presté plata a Diego hace un mes y todavía no me la devolvió.',
+      'Oye, Lucía, tengo un problema. Le presté dinero a Diego hace un mes y todavía no me lo devolvió.',
     ],
     ['Lucía', '¿Y qué dice él?'],
     ['Martín', 'Me dijo que no tiene trabajo. Por eso no puede.'],
@@ -27,7 +28,7 @@ const PRESTAMO = dialogue(
       'Lucía',
       'Para mí, deberías hablar con él. Podríamos invitarlo a comer y buscar una solución.',
     ],
-    ['Martín', 'Tenés razón. Lo llamo esta noche.'],
+    ['Martín', 'Tienes razón. Lo llamo esta noche.'],
   ],
 );
 
@@ -55,7 +56,9 @@ export const ES_A2_U12: EsUnitDef = {
     'devuelvo',
     'devolvió',
     'presté',
-    'che',
+    'oye',
+    'contigo',
+    'ti',
     'invitarlo',
     'buscar',
     'razón',
@@ -77,7 +80,7 @@ export const ES_A2_U12: EsUnitDef = {
     grammar: {
       title: 'Opinions · deberías, podríamos · si + present · por and para',
       explanation:
-        'To give an opinion: creo que, me parece que or para mí + a sentence. To agree: estoy de acuerdo (with estar) or tenés razón; to disagree: no estoy de acuerdo. For advice and suggestions, use the conditional, which ends in -ía: deberías + infinitive (you should), podríamos + infinitive (we could). For a real condition, use si (without an accent: if) + present, and the present or ir a in the other half: si llueve, vamos al cine. Connectors: porque (because), por eso (that’s why), sin embargo (however). Para expresses purpose, destination or who something is for (para aprender, para vos); por expresses a cause or a means (por la lluvia, por teléfono). To report: dice que…, me dijo que… Ojalá (que) is followed by a special verb form, the subjunctive; for now, learn it as a fixed expression: ¡ojalá que no llueva! In Argentina money is usually la plata.',
+        'To give an opinion: creo que, me parece que or para mí + a sentence. To agree: estoy de acuerdo (with estar) or tienes razón; to disagree: no estoy de acuerdo. For advice and suggestions, use the conditional, which ends in -ía: deberías + infinitive (you should), podríamos + infinitive (we could). For a real condition, use si (without an accent: if) + present, and the present or ir a in the other half: si llueve, vamos al cine. Connectors: porque (because), por eso (that’s why), sin embargo (however). Para expresses purpose, destination or who something is for (para aprender, para ti); por expresses a cause or a means (por la lluvia, por teléfono). To report: dice que…, me dijo que… Ojalá (que) is followed by a special verb form, the subjunctive; for now, learn it as a fixed expression: ¡ojalá que no llueva! After a preposition, tú becomes ti (para ti), and con + tú is contigo.',
       examples: [
         {
           target: 'Para mí, deberías hablar con él.',
@@ -87,13 +90,13 @@ export const ES_A2_U12: EsUnitDef = {
           target: 'Si llueve, podríamos ir al cine.',
           base: 'If it rains, we could go to the cinema.',
         },
-        { target: 'Me dijo que no tiene plata.', base: 'He told me that he has no money.' },
+        { target: 'Me dijo que no tiene dinero.', base: 'He told me that he has no money.' },
       ],
     },
     review: {
       status: 'draft',
       notes:
-        'A2 nuevo (U12). Sin revisión nativa: revisar «ojalá que» + subjuntivo presentado como expresión fija (también «ojalá llueva» sin que), «che» como informal, «la plata» frente a «el dinero», «me dijo que no tiene trabajo» (concordancia de tiempos: también «no tenía») y «para mí» traducido como «in my opinion». La entonación se explica sin transcripciones.',
+        'A2 nuevo (U12), convertido al español neutro con tú (2026-11-21). Sin revisión nativa: revisar «ojalá que» + subjuntivo presentado como expresión fija (también «ojalá llueva» sin que), «oye» como forma informal de llamar la atención, «el dinero» (se acepta «la plata», muy común en Sudamérica), «contigo» y «para ti» como apoyo sin práctica propia, «el autobús» y «el metro» en la opinión de L1, «me dijo que no tiene trabajo» (concordancia de tiempos: también «no tenía») y «para mí» traducido como «in my opinion». La entonación se explica sin transcripciones.',
     },
     words: [
       w(
@@ -117,7 +120,7 @@ export const ES_A2_U12: EsUnitDef = {
         'es-estoy-de-acuerdo',
         'estoy de acuerdo',
         'I agree',
-        'Estoy de acuerdo con vos.',
+        'Estoy de acuerdo contigo.',
         'I agree with you.',
         ['opinions'],
         { emoji: '🤝' },
@@ -126,8 +129,8 @@ export const ES_A2_U12: EsUnitDef = {
         'es-para-mi',
         'para mí',
         'in my opinion',
-        'Para mí, el mate es mejor que el café.',
-        'In my opinion, mate is better than coffee.',
+        'Para mí, el té es mejor que el café.',
+        'In my opinion, tea is better than coffee.',
         ['opinions'],
         { acceptedTranslations: ['for me'] },
       ),
@@ -177,7 +180,7 @@ export const ES_A2_U12: EsUnitDef = {
         'es-el-problema',
         'el problema',
         'the problem',
-        'El problema es la plata.',
+        'El problema es el dinero.',
         'The problem is money.',
         ['problems'],
       ),
@@ -200,13 +203,13 @@ export const ES_A2_U12: EsUnitDef = {
         { acceptedTranslations: ['to return (something)'] },
       ),
       w(
-        'es-la-plata',
-        'la plata',
+        'es-el-dinero',
+        'el dinero',
         'money',
-        'No tengo plata para el viaje.',
+        'No tengo dinero para el viaje.',
         'I don’t have money for the trip.',
-        ['money', 'argentina'],
-        { acceptedTranslations: ['the money'], emoji: '💵' },
+        ['money'],
+        { acceptedTranslations: ['the money'], acceptedTexts: ['la plata'], emoji: '💵' },
       ),
       w(
         'es-dice-que',
@@ -261,21 +264,21 @@ export const ES_A2_U12: EsUnitDef = {
         objective: 'Give your opinion and say whether you agree.',
         intro: {
           explanation:
-            'To give your opinion, start with creo que (I think that), me parece que (it seems to me that) or para mí (in my opinion), followed by a normal sentence. Para mí has an accent on mí (me), which tells it apart from mi (my). To agree: estoy de acuerdo, literally “I am in agreement”, with estar (not a verb like in English), or tenés razón (you’re right). To disagree: no estoy de acuerdo. An opinion is said with a falling tone at the end, like a statement; to disagree politely, Argentinians slow down and soften it first: Mmm… para mí, no.',
+            'To give your opinion, start with creo que (I think that), me parece que (it seems to me that) or para mí (in my opinion), followed by a normal sentence. Para mí has an accent on mí (me), which tells it apart from mi (my). To agree: estoy de acuerdo, literally “I am in agreement”, with estar (not a verb like in English), or tienes razón (you’re right; to usted: tiene razón). To disagree: no estoy de acuerdo. An opinion is said with a falling tone at the end, like a statement; to disagree politely, people slow down and soften it first: Mmm… para mí, no.',
           examples: [
             {
-              target: 'Creo que el colectivo es mejor que el subte.',
+              target: 'Creo que el autobús es mejor que el metro.',
               base: 'I think the bus is better than the subway.',
             },
             {
-              target: '¿Estás de acuerdo? — Sí, tenés razón.',
+              target: '¿Estás de acuerdo? — Sí, tienes razón.',
               base: 'Do you agree? — Yes, you’re right.',
             },
           ],
         },
         takeaways: [
           'You give your opinion with creo que, me parece que and para mí.',
-          'You agree with estoy de acuerdo or tenés razón, and disagree with no estoy de acuerdo.',
+          'You agree with estoy de acuerdo or tienes razón, and disagree with no estoy de acuerdo.',
         ],
         exercises: [
           ex.translationChoice(
@@ -316,12 +319,12 @@ export const ES_A2_U12: EsUnitDef = {
           ),
           ex.listenChoice(
             'Para mí, no.',
-            ['Para mí, sí.', 'Para vos, no.', 'Para mí, también.'],
+            ['Para mí, sí.', 'Para ti, no.', 'Para mí, también.'],
             ['es-para-mi'],
             { id: 'es.ex.g5exut2j9cazue' },
           ),
           ex.fillBlank(
-            'No estoy de ___ con vos.',
+            'No estoy de ___ contigo.',
             'I don’t agree with you.',
             'acuerdo',
             ['razón', 'bien', 'gusto'],
@@ -329,7 +332,7 @@ export const ES_A2_U12: EsUnitDef = {
             {
               id: 'es.ex.8lf4f93tnkr9iw',
               explanation:
-                'To agree is estar de acuerdo (con alguien). Razón goes with tener: tenés razón (you’re right).',
+                'To agree is estar de acuerdo (con alguien; with you: contigo). Razón goes with tener: tienes razón (you’re right).',
             },
           ),
           ex.fillBlank(
@@ -344,30 +347,32 @@ export const ES_A2_U12: EsUnitDef = {
                 'Creo que + sentence: I think that… In Spanish the que is never dropped.',
             },
           ),
-          ex.orderWords('Estoy de acuerdo con vos.', 'I agree with you.', ['es-estoy-de-acuerdo'], {
+          ex.orderWords('Estoy de acuerdo contigo.', 'I agree with you.', ['es-estoy-de-acuerdo'], {
             id: 'es.ex.jl7qghf7g3r0kz',
           }),
           ex.translateWrite(
-            'In my opinion, mate is better than coffee.',
-            'Para mí, el mate es mejor que el café.',
+            'In my opinion, tea is better than coffee.',
+            'Para mí, el té es mejor que el café.',
             ['es-para-mi'],
             {
               id: 'es.ex.c3cotcd6f1k9hk',
               acceptedAnswers: [
-                'Para mí el mate es mejor que el café.',
-                'Creo que el mate es mejor que el café.',
+                'Para mí el té es mejor que el café.',
+                'Creo que el té es mejor que el café.',
               ],
             },
           ),
           ex.shortAnswer(
-            'El subte es mejor que el colectivo. ¿Estás de acuerdo?',
+            'El metro es mejor que el autobús. ¿Estás de acuerdo?',
             'Say you agree (use «estoy de acuerdo»).',
             'Sí, estoy de acuerdo.',
             [
               'Estoy de acuerdo.',
+              'Sí, estoy de acuerdo contigo.',
+              'Sí, tienes razón, estoy de acuerdo.',
+              'Sí, estoy de acuerdo',
               'Sí, estoy de acuerdo con vos.',
               'Sí, tenés razón, estoy de acuerdo.',
-              'Sí, estoy de acuerdo',
             ],
             ['es-estoy-de-acuerdo'],
             { id: 'es.ex.oi3ie8zn78gkk3' },
@@ -427,7 +432,7 @@ export const ES_A2_U12: EsUnitDef = {
             {
               id: 'es.ex.x86tvki2yi9h3l',
               explanation:
-                'Advice to vos: deberías + infinitive. Debería is “I should” and podríamos is “we could”.',
+                'Advice to a friend (tú): deberías + infinitive. Debería is “I should” (or usted should) and podríamos is “we could”.',
             },
           ),
           ex.listenChoice(
@@ -447,7 +452,7 @@ export const ES_A2_U12: EsUnitDef = {
             { id: 'es.ex.xv54i00wly1ijp' },
           ),
           ex.fillBlank(
-            '¿Cuál es la ___? — Podríamos tomar el subte.',
+            '¿Cuál es la ___? — Podríamos tomar el metro.',
             'What’s the solution? — We could take the subway.',
             'solución',
             ['problema', 'cuenta', 'hora'],
@@ -618,14 +623,14 @@ export const ES_A2_U12: EsUnitDef = {
 
       // ------------------------------------------------------------------------------------ L4
       {
-        title: 'Por y para · la plata',
+        title: 'Por y para · el dinero',
         objective: 'Use por and para, talk about money and report what someone told you.',
         intro: {
           explanation:
-            'Para looks ahead: purpose (estudio para aprender), destination or the person something is for (es para vos). Por looks back to a cause or shows the means: por la lluvia (because of the rain), por teléfono (by phone), por mensaje. In Argentina money is la plata (literally silver); el dinero is the general word. Devolver (to give back) changes o to ue: devuelvo, devolvés. Me dijo que reports what someone told you: me dijo que no tiene plata.',
+            'Para looks ahead: purpose (estudio para aprender), destination or the person something is for (es para ti, es para usted). Por looks back to a cause or shows the means: por la lluvia (because of the rain), por teléfono (by phone), por mensaje. Money is el dinero; in much of South America people also say la plata (literally silver). Devolver (to give back) changes o to ue: devuelvo, devuelves, devuelve (but devolvemos). Me dijo que reports what someone told you: me dijo que no tiene dinero.',
           examples: [
             { target: 'Estudio español para viajar.', base: 'I study Spanish in order to travel.' },
-            { target: 'Me dijo que no tiene plata.', base: 'He told me that he has no money.' },
+            { target: 'Me dijo que no tiene dinero.', base: 'He told me that he has no money.' },
           ],
         },
         takeaways: [
@@ -634,11 +639,11 @@ export const ES_A2_U12: EsUnitDef = {
         ],
         exercises: [
           ex.translationChoice(
-            'la plata',
+            'el dinero',
             'money',
             ['the bill', 'the tip', 'the wallet'],
-            ['es-la-plata'],
-            { id: 'es.ex.o7lhwzblbsrf6k' },
+            ['es-el-dinero'],
+            { id: 'es.ex.uyji2ke2zjpvjp' },
           ),
           ex.translationChoice(
             'devolver',
@@ -672,14 +677,14 @@ export const ES_A2_U12: EsUnitDef = {
             },
           ),
           ex.listenChoice(
-            'Me dijo que no tiene plata.',
+            'Me dijo que no tiene dinero.',
             [
               'Me dijo que no tiene tiempo.',
-              'Dice que no tiene plata.',
-              'Me dijo que tiene plata.',
+              'Dice que no tiene dinero.',
+              'Me dijo que tiene dinero.',
             ],
-            ['es-me-dijo-que', 'es-la-plata'],
-            { id: 'es.ex.l6rcdrncr0tk0i' },
+            ['es-me-dijo-que', 'es-el-dinero'],
+            { id: 'es.ex.orjplcj6xtq6hp' },
           ),
           ex.fillBlank(
             'Mañana te ___ el libro.',
@@ -694,13 +699,13 @@ export const ES_A2_U12: EsUnitDef = {
             },
           ),
           question(
-            'es.ex.1qdbhmjt2e9dji',
+            'es.ex.pf3j6kgqf1pcdv',
             PRESTAMO,
             'What is Martín’s problem?',
             'Diego hasn’t given back the money Martín lent him',
             ['Diego stole his wallet', 'Martín lost his job', 'Martín has no money for a trip'],
-            ['es-el-problema', 'es-devolver', 'es-la-plata'],
-            'Martín says “Le presté plata a Diego hace un mes y todavía no me la devolvió”.',
+            ['es-el-problema', 'es-devolver', 'es-el-dinero'],
+            'Martín says “Le presté dinero a Diego hace un mes y todavía no me lo devolvió”: lo is el dinero.',
           ),
           question(
             'es.ex.52zs85iv3r9lm6',
@@ -711,9 +716,15 @@ export const ES_A2_U12: EsUnitDef = {
             ['es-me-dijo-que', 'es-por-eso'],
             'Martín says “Me dijo que no tiene trabajo. Por eso no puede”.',
           ),
-          ex.translateWrite('This is for you.', 'Esto es para vos.', ['es-para'], {
+          ex.translateWrite('This is for you.', 'Esto es para ti.', ['es-para'], {
             id: 'es.ex.24vvq43lwwjr37',
-            acceptedAnswers: ['Esto es para usted.', 'Es para vos.', 'Es para usted.'],
+            acceptedAnswers: [
+              'Esto es para usted.',
+              'Es para ti.',
+              'Es para usted.',
+              'Esto es para ustedes.',
+              'Esto es para vos.',
+            ],
           }),
           ex.translateWrite(
             'She told me that she’s sick.',
@@ -733,10 +744,10 @@ export const ES_A2_U12: EsUnitDef = {
         objective: 'Discuss a problem, disagree politely and agree on a solution.',
         intro: {
           explanation:
-            'When friends discuss a problem, they combine everything: an opinion (para mí…), advice (deberías…), a suggestion (podríamos…) and a condition (si llueve…). Questions rise at the end and statements fall. A polite disagreement usually starts softly and more slowly, with tenés razón, pero… or no sé, para mí… Che is an informal way to get a friend’s attention in Argentina.',
+            'When friends discuss a problem, they combine everything: an opinion (para mí…), advice (deberías…), a suggestion (podríamos…) and a condition (si llueve…). Questions rise at the end and statements fall. A polite disagreement usually starts softly and more slowly, with tienes razón, pero… or no sé, para mí… Oye (literally “hear!”) is an informal way to get a friend’s attention.',
           examples: [
             {
-              target: 'Tenés razón, pero creo que es caro.',
+              target: 'Tienes razón, pero creo que es caro.',
               base: 'You’re right, but I think it’s expensive.',
             },
             {
@@ -770,7 +781,7 @@ export const ES_A2_U12: EsUnitDef = {
               'He will talk to Diego next week',
             ],
             ['es-estoy-de-acuerdo'],
-            'Martín answers “Tenés razón. Lo llamo esta noche”.',
+            'Martín answers “Tienes razón. Lo llamo esta noche”.',
           ),
           question(
             'es.ex.ds20dgxntlobix',
@@ -796,7 +807,7 @@ export const ES_A2_U12: EsUnitDef = {
           ),
           ex.listenChoice(
             'No estoy de acuerdo.',
-            ['Estoy de acuerdo.', 'Tenés razón.', 'No estoy libre.'],
+            ['Estoy de acuerdo.', 'Tienes razón.', 'No estoy libre.'],
             ['es-estoy-de-acuerdo'],
             { id: 'es.ex.p89cf93igpeecd' },
           ),
@@ -824,14 +835,14 @@ export const ES_A2_U12: EsUnitDef = {
           ),
           ex.translateWrite(
             'In my opinion, you should give back the money.',
-            'Para mí, deberías devolver la plata.',
-            ['es-para-mi', 'es-deberias', 'es-devolver', 'es-la-plata'],
+            'Para mí, deberías devolver el dinero.',
+            ['es-para-mi', 'es-deberias', 'es-devolver', 'es-el-dinero'],
             {
-              id: 'es.ex.vqp93xqofoq54k',
+              id: 'es.ex.2iz7gbzf9iuo02',
               acceptedAnswers: [
-                'Para mí deberías devolver la plata.',
-                'Creo que deberías devolver la plata.',
-                'Para mí, deberías devolver el dinero.',
+                'Para mí deberías devolver el dinero.',
+                'Creo que deberías devolver el dinero.',
+                'Para mí, deberías devolver la plata.',
               ],
             },
           ),

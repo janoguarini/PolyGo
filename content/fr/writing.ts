@@ -40,7 +40,83 @@ const PARTICIPES_ETRE = ['allé', 'parti', 'arrivé', 'resté', 'rentré', 'venu
   .flatMap((p) => ['', 'e', 's', 'es'].map((end) => p + end))
   .join('|');
 const INFINITIFS =
-  'prendre|visiter|partir|rester|voyager|faire|danser|cuisiner|jouer|lire|manger|travailler';
+  'prendre|visiter|partir|rester|voyager|faire|danser|cuisiner|jouer|lire|manger|travailler|aller|regarder|écouter|dormir';
+/**
+ * Imperativo de tu (A2 U13), para la nota de fr.a2.wt.consignes. Acepta de más antes que rechazar un
+ * imperativo correcto: la forma sola (donne), con pronombre (prends-les, dépêche-toi), negativa con
+ * elisión (n'oublie) o con pronombre delante (ne te dépêche pas).
+ */
+const IMPERATIFS_TU = [
+  'prends',
+  'regarde',
+  'attends',
+  'mange',
+  'fais',
+  'viens',
+  'va',
+  'sois',
+  'aie',
+  'sache',
+  'ferme',
+  'oublie',
+  'donne',
+  'écoute',
+  'range',
+  'appelle',
+  'aide',
+  'cherche',
+  'laisse',
+  'achète',
+  'parle',
+  'prépare',
+  'lave',
+  'entre',
+  'reste',
+  'rentre',
+  'ouvre',
+  'mets',
+  'dis',
+  'lis',
+  'écris',
+  'bois',
+  'dors',
+  'finis',
+  'choisis',
+  'pars',
+  'sors',
+  'arrose',
+  'nettoie',
+  'téléphone',
+  'envoie',
+  'dépêche',
+  'assieds',
+  'lève',
+  'couche',
+  'repose',
+  'amuse',
+  'inquiète',
+  'hésite',
+  'nourris',
+  'promène',
+  'éteins',
+  'profite',
+  'vas',
+];
+const PRONOMS_IMPERATIF = ['moi', 'toi', 'le', 'la', 'les', 'lui', 'leur', 'nous', 'y', 'en'];
+const IMPERATIF_TU: string[][] = [
+  [
+    [
+      ...IMPERATIFS_TU.filter((v) => v !== 'vas'),
+      ...IMPERATIFS_TU.flatMap((v) => PRONOMS_IMPERATIF.map((p) => `${v}-${p}`)),
+      // Delante de vocal o h: n'oublie, y con pronombre elidido (ne t'inquiète pas, ne m'aide pas).
+      ...IMPERATIFS_TU.filter((v) => /^[aeéèêiouh]/.test(v)).flatMap((v) =>
+        ['n', 't', 'm', 'l'].map((p) => `${p}'${v}`),
+      ),
+    ].join('|'),
+  ],
+  ['ne', 'te|le|la|les|lui|me|nous|leur|y|en', IMPERATIFS_TU.join('|')],
+  ['ne', IMPERATIFS_TU.join('|')],
+];
 const METIERS =
   'médecin|infirmier|infirmière|serveur|serveuse|vendeur|vendeuse|professeur|professeure|ingénieur|ingénieure|boulanger|boulangère|étudiant|étudiante';
 
@@ -265,7 +341,7 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
         id: 'work',
         label: 'Decís dónde trabajás o estudiás (je travaille dans… / à…)',
         kind: 'pattern',
-        patterns: [['travaille|travaillons|travaillent', 'dans|à']],
+        patterns: [['travaille|travaillons|travaillent', 'dans|à|au|aux|chez']],
       },
       ...common(3),
     ],
@@ -740,7 +816,7 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
         patterns: [
           ["s'est", '<WORD>'],
           ["s'entend|s'entendent|s'entendre"],
-          ['se|me|nous', 'dispute|disputent|marier|marient|réveille|suis|sommes'],
+          ['se|me|nous', 'dispute|disputent|marier|marient|réveille|suis|sommes|sont'],
         ],
       },
       {
@@ -791,6 +867,39 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     checklist: [
       'Doy mi opinión con à mon avis o je pense que.',
       'Propongo con el condicional: on pourrait, tu devrais.',
+    ],
+  },
+  {
+    ...a2,
+    id: 'fr.a2.wt.consignes',
+    kind: 'guided',
+    codes: [],
+    lesson: 'fr-a2-u13-l05',
+    title: 'Una nota con indicaciones',
+    instructions:
+      'Un amigo se queda en tu casa unos días. Dejale una nota: qué tiene que hacer y qué no (con el imperativo de tu) y usá al menos un pronombre tónico (chez moi, avec moi, pour toi…).',
+    prompts: ["Qu'est-ce qu'il faut faire chez toi?"],
+    requirements: [
+      {
+        id: 'imperative',
+        label: 'Usás el imperativo con tu (prends, regarde, attends, dépêche-toi…)',
+        kind: 'pattern',
+        patterns: IMPERATIF_TU,
+      },
+      {
+        id: 'tonic',
+        label:
+          'Usás un pronombre tónico después de una preposición (chez moi, avec toi, sans eux…)',
+        kind: 'pattern',
+        patterns: [['avec|pour|sans|chez', 'moi|toi|lui|elle|nous|vous|eux|elles']],
+      },
+      ...common(4),
+    ],
+    model:
+      "Salut Hugo! Cette semaine, tu restes chez moi. Prends les clés sur la table. Le chat dort avec moi: ne ferme pas la porte de ma chambre. Ne regarde pas la télé toute la nuit et n'oublie pas de manger! Bisous, Léa.",
+    checklist: [
+      'En el imperativo de tu de los verbos en -er no va la s: regarde, mange.',
+      'Después de chez, avec, pour y sans uso moi, toi, lui, elle, eux…',
     ],
   },
 

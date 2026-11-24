@@ -1,8 +1,11 @@
 import type { Exercise } from '@shared/exercises';
 import { languageConfig } from '@shared/languages';
 
+import { getStrings } from '@/i18n';
+
 import type { WordRow } from './api';
 import { shuffle } from './random';
+import { reviewBuilderStrings } from './strings';
 
 /**
  * Genera ejercicios de repaso determinísticos a partir de palabras (sin IA generativa):
@@ -15,6 +18,8 @@ export function buildReviewExercises(
   language = 'en',
 ): Exercise[] {
   const config = languageConfig(language);
+  // Consignas en el idioma de la interfaz.
+  const t = getStrings(reviewBuilderStrings);
   return due.map((word, index) => {
     const base = {
       id: `review-${word.id}`,
@@ -41,7 +46,7 @@ export function buildReviewExercises(
           ...base,
           type: 'translation_choice',
           skill: 'vocabulary',
-          prompt: `¿Qué significa «${word.text}»?`,
+          prompt: t.meaning(word.text),
           payload: {
             type: 'translation_choice',
             word: word.text,
@@ -58,7 +63,7 @@ export function buildReviewExercises(
           ...base,
           type: 'listen_choice',
           skill: 'listening',
-          prompt: 'Escuchá y elegí lo que oís',
+          prompt: t.listen,
           payload: {
             type: 'listen_choice',
             audioText: word.text,
@@ -74,7 +79,7 @@ export function buildReviewExercises(
       ...base,
       type: 'translate_write',
       skill: 'translation',
-      prompt: pinyin ? 'Escribí en pinyin' : `Escribí ${config.inName}`,
+      prompt: pinyin ? t.writePinyin : t.writeIn(config),
       payload: { type: 'translate_write', source: word.translation_es },
       answer: pinyin ?? word.text,
       acceptedAnswers: pinyin

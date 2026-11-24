@@ -4,18 +4,20 @@ import { dialogue, ex, question, reading, w } from '../helpers';
 /**
  * Español A2 U3 «Restaurant and hotel» (docs/ES_A1_A2.md): reservar una mesa o una habitación,
  * pedir en un restaurante con cortesía (me gustaría, ¿podría…?, ¿me trae…?) y con usted, entender la
- * carta y el menú del día, pedir el punto de la carne y la cuenta.
+ * carta y el menú del día, pedir el término de la carne y la cuenta. Variante: español neutro de
+ * Latinoamérica (tú y ustedes), con usted para el personal: el mesero / la mesera.
  * Pronunciación: la entonación amable de los pedidos (sube al final, ¿podría traerme la cuenta?) y la
  * r simple de podría y traer.
- * Cultura: la parrilla, el bife jugoso o a punto, el flan con dulce de leche y la propina (alrededor
- * del 10 %, casi nunca incluida).
+ * Cultura: un hotel en Santiago de Chile, el menú del día en Bogotá, un restaurante en la Ciudad de
+ * México; el bistec término medio o bien cocido, el flan y la propina (alrededor del 10 %, a menudo no
+ * incluida).
  *
  * ESTADO EDITORIAL: borrador, sin revisión de hablantes nativos. Se carga sin publicar.
  */
 
 const RESERVA = dialogue(
   'es.stim.a2-u3-reserva',
-  'Juan phones a hotel in Mendoza to book a room.',
+  'Juan phones a hotel in Santiago, Chile, to book a room.',
   [
     ['Valentina', 'Hotel Los Andes, buenas tardes.'],
     [
@@ -35,12 +37,12 @@ const RESERVA = dialogue(
 const MENU = reading(
   'es.stim.a2-u3-menu',
   'menu',
-  'The set lunch menu on the board of a small restaurant in Buenos Aires.',
+  'The set lunch menu on the board of a small restaurant in Bogotá.',
   [
     'Menú del día: $15.000',
     'Entrada: empanada de carne o ensalada.',
-    'Plato principal: bife con papas fritas o pescado con verduras.',
-    'Postre: flan con dulce de leche o helado.',
+    'Plato principal: bistec con papas fritas o pescado con verduras.',
+    'Postre: flan o helado.',
     'Pan y bebida incluidos: agua o vino.',
     'La propina no está incluida.',
   ],
@@ -49,13 +51,13 @@ const MENU = reading(
 
 const PARRILLA = dialogue(
   'es.stim.a2-u3-parrilla',
-  'Martín orders dinner at a parrilla, an Argentine steakhouse.',
+  'Martín orders dinner at a restaurant in Mexico City.',
   [
-    ['Mozo', 'Buenas noches. ¿Quiere la carta o el menú del día?'],
-    ['Martín', 'La carta, por favor. Me gustaría un bife con papas fritas.'],
-    ['Mozo', '¿Cómo quiere la carne? ¿Jugosa, a punto o cocida?'],
-    ['Martín', 'A punto, por favor. ¿Me trae también un agua sin gas?'],
-    ['Mozo', '¡Cómo no! ¿Y de postre?'],
+    ['Mesero', 'Buenas noches. ¿Quiere la carta o el menú del día?'],
+    ['Martín', 'La carta, por favor. Me gustaría un bistec con papas fritas.'],
+    ['Mesero', '¿Cómo quiere la carne? ¿Término medio o bien cocida?'],
+    ['Martín', 'Término medio, por favor. ¿Me trae también un agua sin gas?'],
+    ['Mesero', '¡Cómo no! ¿Y de postre?'],
     ['Martín', 'Un flan con dulce de leche. Y después, ¿podría traerme la cuenta?'],
   ],
 );
@@ -70,13 +72,17 @@ export const ES_A2_U03: EsUnitDef = {
     'La Esquina',
     'Mendoza',
     'Buenos Aires',
+    'Santiago',
+    'Chile',
+    'Bogotá',
+    'México',
   ],
   support: [
     'traer',
     'traerme',
     'sin',
     'gas',
-    'bife',
+    'bistec',
     'papas',
     'fritas',
     'empanada',
@@ -85,7 +91,6 @@ export const ES_A2_U03: EsUnitDef = {
     'dulce',
     'helado',
     'bebida',
-    'cocido',
     'tercer',
   ],
   unit: {
@@ -100,7 +105,7 @@ export const ES_A2_U03: EsUnitDef = {
     grammar: {
       title: 'Polite requests: me gustaría, ¿podría…?, ¿me trae…?',
       explanation:
-        'With waiters and hotel staff you usually speak politely, often with usted. Me gustaría (I would like) is the conditional of me gusta and goes with an infinitive or a noun: me gustaría reservar una mesa, me gustaría un café. ¿Podría…? (could you…?, usted) goes with an infinitive: ¿podría traer agua? A pronoun can join the end of the infinitive: ¿podría traerme la cuenta? (bring me). In a restaurant people very often order with a simple present question: ¿me trae…? (literally “do you bring me…?”). Quisiera, which you already know, works too. Say these requests softly, with the voice rising at the end: that intonation is part of being polite in Spanish.',
+        'With waiters and hotel staff you usually speak politely, with usted (some young people use tú with a waiter, but usted is always safe). Me gustaría (I would like) is the conditional of me gusta and goes with an infinitive or a noun: me gustaría reservar una mesa, me gustaría un café. ¿Podría…? (could you…?, usted) goes with an infinitive: ¿podría traer agua? A pronoun can join the end of the infinitive: ¿podría traerme la cuenta? (bring me). In a restaurant people very often order with a simple present question: ¿me trae…? (literally “do you bring me…?”). Quisiera, which you already know, works too. Say these requests softly, with the voice rising at the end: that intonation is part of being polite in Spanish.',
       examples: [
         {
           target: 'Me gustaría reservar una habitación doble.',
@@ -116,7 +121,7 @@ export const ES_A2_U03: EsUnitDef = {
     review: {
       status: 'draft',
       notes:
-        'A2 nuevo (U3). Sin revisión nativa. Revisar: «jugoso» traducido como «rare (steak)» (en la Argentina es más bien poco hecho / medium-rare); «a punto» como medium; «cocido» (o «bien cocido») para well done; el uso de usted con el mozo (en Buenos Aires muchos jóvenes lo tutean con vos: ¿me traés…?), que se menciona sólo en inglés; «la propina, alrededor del 10 %»; «¿Me trae…?» como pedido habitual; el precio en cifras (70.000 pesos) para el audio.',
+        'A2 nuevo (U3). Convertido al español neutro de Latinoamérica (tú y ustedes); sin revisión nativa. Revisar: «término medio» (medium) y «bien cocido» (well done) en lugar de «jugoso» y «a punto» (se aceptan como respuesta); «bistec» en lugar de «bife»; «el mesero» (en España, «el camarero»); el uso de usted con el mesero, que se explica en inglés; «la propina, alrededor del 10 %» (en Chile se sugiere en la cuenta; en México, 10–15 %); «¿Me trae…?» como pedido habitual; el precio en cifras (70.000 pesos) para el audio.',
     },
     words: [
       w(
@@ -262,21 +267,22 @@ export const ES_A2_U03: EsUnitDef = {
         { acceptedTranslations: ['the storey'] },
       ),
       w(
-        'es-jugoso',
-        'jugoso',
-        'rare (steak)',
-        'Quiero la carne jugosa.',
-        'I want the meat rare.',
-        ['restaurant', 'argentina'],
-        { acceptedTranslations: ['medium-rare'], acceptedTexts: ['jugosa'] },
+        'es-termino-medio',
+        'término medio',
+        'medium (steak)',
+        'Quiero la carne término medio.',
+        'I want the meat medium.',
+        ['restaurant'],
+        { acceptedTexts: ['a punto', 'jugoso', 'jugosa'] },
       ),
       w(
-        'es-a-punto',
-        'a punto',
-        'medium (steak)',
-        'El bife a punto, por favor.',
-        'The steak medium, please.',
+        'es-bien-cocido',
+        'bien cocido',
+        'well done (steak)',
+        'El bistec bien cocido, por favor.',
+        'The steak well done, please.',
         ['restaurant'],
+        { acceptedTexts: ['bien cocida', 'cocido'] },
       ),
     ],
     lessons: [
@@ -542,7 +548,7 @@ export const ES_A2_U03: EsUnitDef = {
         objective: 'Understand the menu and order a starter, a main course and a dessert.',
         intro: {
           explanation:
-            'La carta is the full menu. El menú del día is a set menu at a fixed price, very common at lunchtime: una entrada (a starter; careful, entrada also means entrance or ticket), un plato principal and un postre. To order each course: de entrada…, de plato principal…, de postre… Argentine classics: empanadas as a starter and flan con dulce de leche for dessert. Note the written accent of menú: the stress falls on the last syllable.',
+            'La carta is the full menu. El menú del día is a set menu at a fixed price, very common at lunchtime: una entrada (a starter; careful, entrada also means entrance or ticket), un plato principal and un postre. To order each course: de entrada…, de plato principal…, de postre… Classics across Latin America: empanadas as a starter and flan for dessert (in Argentina and Uruguay, flan con dulce de leche). Note the written accent of menú: the stress falls on the last syllable.',
           examples: [
             { target: 'De entrada, una empanada.', base: 'As a starter, an empanada.' },
             {
@@ -655,59 +661,60 @@ export const ES_A2_U03: EsUnitDef = {
 
       // ------------------------------------------------------------------------------------ L4
       {
-        title: 'Jugoso o a punto',
+        title: 'Término medio o bien cocido',
         objective: 'Say how you want your meat and understand what is included and the tip.',
         intro: {
           explanation:
-            'At a parrilla (an Argentine steakhouse) the waiter asks how you want your meat: jugoso (pink and juicy inside, roughly medium-rare), a punto (medium) or cocido (well done). The adjective agrees with the noun: el bife jugoso, la carne jugosa. La propina (the tip) is almost never included in la cuenta; around 10 % is usual in Argentina.',
+            'When you order meat, the waiter asks how you want it: término medio (medium, pink inside) or bien cocido (well done); for rare, say poco cocido. Cocido agrees with the noun: el bistec bien cocido, la carne bien cocida, but término medio never changes. In Spain and Argentina you will also hear a punto for medium. La propina (the tip) is often not included in la cuenta; around 10 % is usual in much of Latin America (in Mexico, 10 to 15 %).',
           examples: [
-            { target: 'El bife a punto, por favor.', base: 'The steak medium, please.' },
+            { target: 'El bistec término medio, por favor.', base: 'The steak medium, please.' },
             { target: 'La propina no está incluida.', base: 'The tip isn’t included.' },
           ],
         },
         takeaways: [
-          'You order your meat jugoso, a punto or cocido.',
+          'You order your meat término medio or bien cocido.',
           'You know that la propina is not usually included.',
         ],
         exercises: [
           ex.translationChoice(
-            'jugoso',
-            'rare (steak)',
-            ['well done', 'medium (steak)', 'cold'],
-            ['es-jugoso'],
-            { id: 'es.ex.cow9ywt3l9j3fx' },
+            'término medio',
+            'medium (steak)',
+            ['well done (steak)', 'rare (steak)', 'cold'],
+            ['es-termino-medio'],
+            { id: 'es.ex.ra8v8wk9164a6j' },
           ),
           ex.fillBlank(
-            'Quiero el bife ___, no muy cocido.',
-            'I want the steak rare, not very well done.',
-            'jugoso',
-            ['cocido', 'barato'],
-            ['es-jugoso'],
+            'Quiero el bistec ___, no muy cocido.',
+            'I want the steak medium, not too well done.',
+            'término medio',
+            ['bien cocido', 'barato'],
+            ['es-termino-medio', 'es-bien-cocido'],
             {
-              id: 'es.ex.mmbbqxapxf4xqc',
+              id: 'es.ex.8buyrhhdqwk4xl',
               skill: 'vocabulary',
-              explanation: 'Jugoso is pink and juicy inside; cocido is well done, the opposite.',
+              explanation:
+                'Término medio is medium, pink inside; bien cocido is well done, the opposite of what this person wants.',
             },
           ),
           ex.listenChoice(
-            'El bife a punto, por favor.',
+            'El bistec término medio, por favor.',
             [
-              'El bife jugoso, por favor.',
-              'El bife cocido, por favor.',
-              'El pescado a punto, por favor.',
+              'El bistec bien cocido, por favor.',
+              'El pescado término medio, por favor.',
+              'El bistec término medio, señor.',
             ],
-            ['es-a-punto'],
-            { id: 'es.ex.j0iobcqzukdl6g' },
+            ['es-termino-medio'],
+            { id: 'es.ex.eneccselh1iowa' },
           ),
           ex.matchPairs(
             [
-              ['jugoso', 'rare (steak)'],
-              ['a punto', 'medium (steak)'],
+              ['término medio', 'medium (steak)'],
+              ['bien cocido', 'well done (steak)'],
               ['la propina', 'the tip'],
               ['la cuenta', 'the bill'],
             ],
-            ['es-jugoso', 'es-a-punto', 'es-la-propina', 'es-la-cuenta'],
-            { id: 'es.ex.tzbx2pjw973eit' },
+            ['es-termino-medio', 'es-bien-cocido', 'es-la-propina', 'es-la-cuenta'],
+            { id: 'es.ex.bu76lgoozd0wjs' },
           ),
           question(
             'es.ex.ub2i2f6z0s0trh',
@@ -728,8 +735,8 @@ export const ES_A2_U03: EsUnitDef = {
             'The last line says “La propina no está incluida”.',
           ),
           ex.fillBlank(
-            'En la Argentina, la ___ es más o menos el diez por ciento.',
-            'In Argentina, the tip is about ten per cent.',
+            'En Chile, la ___ es más o menos el diez por ciento.',
+            'In Chile, the tip is about ten per cent.',
             'propina',
             ['cuenta', 'carta'],
             ['es-la-propina'],
@@ -748,11 +755,16 @@ export const ES_A2_U03: EsUnitDef = {
           ),
           ex.shortAnswer(
             '¿Cómo quiere la carne?',
-            'Say you want it medium (start with «A punto»).',
-            'A punto, por favor.',
-            ['A punto.', 'A punto, gracias.', 'La quiero a punto.', 'A punto, por favor, gracias.'],
-            ['es-a-punto'],
-            { id: 'es.ex.1o47d3c2lw3485' },
+            'Say you want it medium (start with «Término medio»).',
+            'Término medio, por favor.',
+            [
+              'Término medio.',
+              'Término medio, gracias.',
+              'La quiero término medio.',
+              'A punto, por favor.',
+            ],
+            ['es-termino-medio'],
+            { id: 'es.ex.one5z9q5lzdqu4' },
           ),
           ex.translateWrite(
             'Is the tip included?',
@@ -765,11 +777,11 @@ export const ES_A2_U03: EsUnitDef = {
 
       // ------------------------------------------------------------------------------------ L5
       {
-        title: 'En la parrilla',
+        title: 'En el restaurante',
         objective: 'Follow a conversation with a waiter and order a whole meal.',
         intro: {
           explanation:
-            'Dinner in Argentina starts late: many restaurants fill up after nine in the evening. The waiter is el mozo; to call him, make eye contact or raise your hand. A typical order at a parrilla: a steak (bife) with chips (papas fritas), a drink (agua con gas or sin gas, or wine) and a dessert. Finish with ¿podría traerme la cuenta?, said softly and rising at the end.',
+            'Dinner times vary: in Mexico City or Bogotá many people have dinner around eight, while in Buenos Aires or Madrid restaurants fill up after nine or ten. The waiter is el mesero or la mesera (in Spain, el camarero); to call them, make eye contact, raise your hand or say disculpe. A typical order: a steak (un bistec) with fries (papas fritas), a drink (agua con gas or sin gas, or wine) and a dessert. Finish with ¿podría traerme la cuenta?, said softly and rising at the end.',
           examples: [
             { target: '¿Me trae un agua sin gas?', base: 'Could you bring me a still water?' },
             { target: '¿Podría traerme la cuenta?', base: 'Could you bring me the bill?' },
@@ -781,13 +793,13 @@ export const ES_A2_U03: EsUnitDef = {
         ],
         exercises: [
           question(
-            'es.ex.eraa2p4ra7041u',
+            'es.ex.6wtqwip1f1tut3',
             PARRILLA,
             'How does Martín want his steak?',
             'Medium',
             ['Rare', 'Well done', 'He doesn’t say'],
-            ['es-a-punto', 'es-jugoso'],
-            'The waiter asks “¿Jugosa, a punto o cocida?” and Martín answers “A punto, por favor”.',
+            ['es-termino-medio', 'es-bien-cocido'],
+            'The waiter asks “¿Término medio o bien cocida?” and Martín answers “Término medio, por favor”.',
           ),
           question(
             'es.ex.yx8hh47zvw06mh',
@@ -830,20 +842,21 @@ export const ES_A2_U03: EsUnitDef = {
               ['la carta', 'the menu'],
               ['el postre', 'the dessert'],
               ['¿podría…?', 'could you…?, formal'],
-              ['a punto', 'medium (steak)'],
+              ['término medio', 'medium (steak)'],
             ],
-            ['es-la-carta', 'es-el-postre', 'es-podria', 'es-a-punto'],
-            { id: 'es.ex.fo1sitrnylb7w4' },
+            ['es-la-carta', 'es-el-postre', 'es-podria', 'es-termino-medio'],
+            { id: 'es.ex.j3lhyrjb0e3by1' },
           ),
           ex.fillBlank(
-            '¿Cómo quiere la carne: jugosa o a ___?',
-            'How would you like the meat: rare or medium?',
-            'punto',
-            ['tiempo', 'pie'],
-            ['es-a-punto', 'es-jugoso'],
+            '¿Cómo quiere la carne: término medio o bien ___?',
+            'How would you like the meat: medium or well done?',
+            'cocida',
+            ['cocido', 'incluida'],
+            ['es-bien-cocido', 'es-termino-medio'],
             {
-              id: 'es.ex.q3dwmauxpiqrx7',
-              explanation: 'A punto is medium. A tiempo means on time and a pie, on foot.',
+              id: 'es.ex.7bm6lrleij8up8',
+              explanation:
+                'Bien cocida (well done) agrees with la carne, so it ends in -a; cocido goes with el bistec. Incluida means included.',
             },
           ),
           ex.translationChoice(

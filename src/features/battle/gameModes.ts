@@ -1,5 +1,9 @@
 import { WORD_RUSH } from '@shared/protocol';
 
+import { getStrings } from '@/i18n';
+
+import { battleStrings } from './strings';
+
 /**
  * Modos de juego para desafiar a un amigo. Hoy hay uno solo; cuando haya más, se suman acá y la
  * pantalla de desafío los muestra sin cambios.
@@ -18,7 +22,10 @@ export const GAME_MODES: readonly GameMode[] = [
   {
     id: 'word_rush',
     name: 'Word Rush',
-    description: 'Vocabulario cara a cara: el que más acierta gana.',
+    // Se lee al dibujar: sigue el idioma de la interfaz.
+    get description() {
+      return getStrings(battleStrings).wordRushDescription;
+    },
     duration: `${WORD_RUSH.durationMs / 1000} s`,
   },
 ];

@@ -1,68 +1,94 @@
-import { router } from 'expo-router';
-import { Settings } from 'lucide-react-native';
 import { useRef } from 'react';
-import { Pressable, StyleSheet, View, type ScrollViewInstance } from 'react-native';
+import { StyleSheet, View, type ScrollViewInstance } from 'react-native';
 
-import { ErrorState, LoadingState, Screen, Text, colors, spacing, useTheme } from '@/design-system';
+import { ErrorState, LoadingState, Screen, Text, spacing, useTheme } from '@/design-system';
+import { useAuth } from '@/features/auth/AuthProvider';
 import { LearningStats } from '@/features/learning/components/LearningStats';
-import { AchievementsCarousel } from '@/features/profile/components/AchievementsCarousel';
+import { usePrefetchLanguagePaths } from '@/features/profile/components/LanguagesRow';
 import { CompetitiveHistory } from '@/features/profile/components/CompetitiveHistory';
-import { LanguagesRow } from '@/features/profile/components/LanguagesRow';
-import { ProfileHeader } from '@/features/profile/components/ProfileHeader';
+import { ProfileHeader, RankSummaryCard } from '@/features/profile/components/ProfileHeader';
+import {
+  AchievementsCard,
+  LanguagesCard,
+  NextGoalsCard,
+  PlusCard,
+  ProfileTopBar,
+  StatsRow,
+} from '@/features/profile/components/ProfileSections';
 import { PeriodStats } from '@/features/profile/components/ProfileStats';
-import { useTabPressScroll } from '@/lib/useTabPressScroll';
 import { useMyProfile } from '@/features/profile/hooks';
+import { useXp } from '@/features/xp/api';
+import { PlayerTitle } from '@/features/xp/PlayerTitle';
+import { PlayerXpPanel } from '@/features/xp/PlayerXpPanel';
+import { xpPreview } from '@/features/xp/previewGate';
+import { xpOrStart } from '@/features/xp/startingXp';
+import { useTitleChoice } from '@/features/xp/titles';
+import { useLanguageStartLevel } from '@/features/courses/hooks';
+import { useStrings } from '@/i18n';
+import { profileScreenStrings } from '@/i18n/screens/profile';
+import { useTabPressScroll } from '@/lib/useTabPressScroll';
 
-/** Perfil propio: identidad y rango, estadísticas, idiomas, logros y aprendizaje. */
+/**
+ * Perfil propio (Perfil 2.0), en orden de prioridad: encabezado en una fila (marca, racha, Polys y
+ * Ajustes); tarjeta del jugador con avatar, marco y fondo equipados y, debajo, el nivel global (a la
+ * izquierda) con la barra de XP y lo que falta (a la derecha); liga y ELO con lo que falta para el
+ * próximo escalón; estadísticas de ranked; idiomas; próximos objetivos; logros; Plus. Debajo, el detalle de aprendizaje y el historial competitivo.
+ * Todo con datos del servidor: el XP lo otorga la base (sync_xp) y es independiente del ELO.
+ */
 export default function ProfileScreen() {
   useTheme();
+  const t = useStrings(profileScreenStrings);
   const { data, isPending, isError, refetch, isRefetching } = useMyProfile();
+  const xp = useXp();
+  const titleChoice = useTitleChoice(useAuth().session?.user.id);
   const scrollRef = useRef<ScrollViewInstance>(null);
   useTabPressScroll(scrollRef);
+  usePrefetchLanguagePaths(data?.profile.target_language);
+  // Nivel del curso que estudia (modelo de cursos; sin él, profiles.start_level).
+  const courseLevel = useLanguageStartLevel();
 
   if (isPending) return <LoadingState />;
   if (isError || !data) return <ErrorState onRetry={() => void refetch()} />;
   const { profile, rating } = data;
+  const startLevel = courseLevel ?? profile.start_level;
 
   return (
     <Screen
       scrollRef={scrollRef}
-      onRefresh={() => void refetch()}
+      onRefresh={() => {
+        void refetch();
+        void xp.refetch();
+      }}
       refreshing={isRefetching}
       contentStyle={styles.content}
     >
-      <View style={styles.topBar}>
-        <Text variant="title">Perfil</Text>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel="Ajustes"
-          hitSlop={8}
-          onPress={() => router.push('/settings')}
-          style={styles.gear}
-        >
-          <Settings color={colors.text} size={24} />
-        </Pressable>
-      </View>
-
-      <ProfileHeader profile={profile} rating={rating} />
-
-      <SectionHeader title="Idiomas" />
-      <LanguagesRow current={profile.target_language} />
+      <ProfileTopBar />
+      {xpPreview ? <xpPreview.XpPreviewPanel /> : null}
+      <ProfileHeader
+        profile={profile}
+        rating={rating}
+        // La liga va en su propia tarjeta, justo debajo de la del jugador (nivel y XP).
+        showRank={false}
+        // Sin «@usuario» repetido: debajo del nombre va el título (el elegido o el del nivel).
+        // Sin XP en el servidor todavía, nivel 0.
+        subtitle={xp.isError ? null : <PlayerTitle xp={xpOrStart(xp.data)} choice={titleChoice} />}
+        footer={xp.isError ? null : <PlayerXpPanel xp={xpOrStart(xp.data)} />}
+      />
+      {rating ? <RankSummaryCard rating={rating} interactive /> : null}
+      <StatsRow rating={rating} />
+      <LanguagesCard current={profile.target_language} startLevel={startLevel} />
+      <NextGoalsCard rating={rating} />
+      <AchievementsCard />
+      <PlusCard />
 
       <PeriodStats />
 
-      <SectionHeader
-        title="Logros"
-        action={{ label: 'Ver todos', onPress: () => router.push('/achievements') }}
-      />
-      <AchievementsCarousel />
-
-      <SectionHeader title="Aprendizaje" />
-      <LearningStats level={profile.start_level} />
+      <SectionHeader title={t.learning} />
+      <LearningStats level={startLevel} />
 
       {rating ? (
         <>
-          <SectionHeader title="Historial competitivo" />
+          <SectionHeader title={t.competitiveHistory} />
           <CompetitiveHistory />
         </>
       ) : null}
@@ -70,39 +96,16 @@ export default function ProfileScreen() {
   );
 }
 
-function SectionHeader({
-  title,
-  action,
-}: {
-  title: string;
-  action?: { label: string; onPress: () => void };
-}) {
+function SectionHeader({ title }: { title: string }) {
   return (
     <View style={styles.section}>
       <Text variant="heading">{title}</Text>
-      {action ? (
-        <Pressable accessibilityRole="button" hitSlop={8} onPress={action.onPress}>
-          <Text variant="bodyStrong" color="primarySoft">
-            {action.label}
-          </Text>
-        </Pressable>
-      ) : null}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  content: { paddingTop: spacing.xs },
-  topBar: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  gear: { minWidth: 44, minHeight: 44, alignItems: 'flex-end', justifyContent: 'center' },
-  section: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginTop: spacing.sm,
-  },
+  // Un poco menos de aire entre secciones que el resto de la app: más información sin desplazarse.
+  content: { paddingTop: spacing.xs, gap: spacing.md },
+  section: { marginTop: spacing.sm },
 });

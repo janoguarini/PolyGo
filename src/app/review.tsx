@@ -62,6 +62,8 @@ import { buildReviewExercises } from '@/features/learning/review';
 import { SessionLanguageProvider } from '@/features/learning/SessionLanguageProvider';
 import { useCelebrationGate } from '@/features/learning/useCelebrationGate';
 import { useEnergy } from '@/features/plus/api';
+import { useStrings } from '@/i18n';
+import { reviewStrings } from '@/i18n/screens/review';
 
 /** Palabras por práctica (la misma cantidad que el repaso básico). */
 const PRACTICE_SIZE = 10;
@@ -84,14 +86,6 @@ const PRACTICE_SIZE = 10;
  * Todo lo que no es smart ni topic es gratis. Ningún repaso usa energía.
  */
 type ReviewMode = 'review' | 'practice' | 'mistakes' | 'smart' | 'topic';
-
-const TITLES: Record<ReviewMode, string> = {
-  review: 'Repaso de vocabulario',
-  practice: 'Práctica libre',
-  mistakes: 'Tus puntos débiles',
-  smart: 'Repaso inteligente',
-  topic: 'Repaso por tema',
-};
 
 interface ReviewSession {
   exercises: Exercise[];
@@ -142,19 +136,16 @@ const RESTART_CODES = new Set(['session_closed', 'session_conflict']);
 
 function PlusUpsell({ mode }: { mode: 'smart' | 'topic' }) {
   useTheme();
+  const t = useStrings(reviewStrings);
   return (
     <Screen edges={['top', 'bottom']} scroll={false}>
       <EmptyState
         icon={<Sparkles color={colors.primarySoft} size={44} />}
-        title={`${TITLES[mode]} es de PolyGo Plus`}
-        message={
-          mode === 'topic'
-            ? 'Repasá sólo las palabras de la unidad que elijas. El repaso espaciado, la práctica libre y tus puntos débiles siguen siendo gratis.'
-            : 'Arma cada sesión con tus errores frecuentes, las palabras que te cuestan y las que estás por olvidar. El repaso espaciado, la práctica libre y tus puntos débiles siguen siendo gratis.'
-        }
+        title={t.plusTitle(t.titles[mode])}
+        message={mode === 'topic' ? t.topicUpsell : t.smartUpsell}
       />
-      <Button label="Conocé PolyGo Plus" onPress={() => router.replace('/plus')} />
-      <Button label="Volver" variant="secondary" onPress={() => router.back()} />
+      <Button label={t.discoverPlus} onPress={() => router.replace('/plus')} />
+      <Button label={t.back} variant="secondary" onPress={() => router.back()} />
     </Screen>
   );
 }
@@ -164,23 +155,25 @@ function PlusUpsell({ mode }: { mode: 'smart' | 'topic' }) {
  * servidor (has_plus), que también rechaza con plus_required.
  */
 function PlusReviewScreen({ mode, focus }: { mode: 'smart' | 'topic'; focus: ReviewFocus }) {
+  const t = useStrings(reviewStrings);
   const energy = useEnergy();
   const plus = energy.view?.plus;
   if (plus === false) return <PlusUpsell mode={mode} />;
   if (energy.isError) {
     return (
       <Screen edges={['top', 'bottom']} scroll={false}>
-        <ErrorState message="No pudimos verificar tu suscripción." onRetry={energy.refetch} />
+        <ErrorState message={t.verifyError} onRetry={energy.refetch} />
       </Screen>
     );
   }
-  if (plus !== true) return <LoadingState label="Preparando repaso…" />;
+  if (plus !== true) return <LoadingState label={t.preparing} />;
   return <ServerReviewScreen mode={mode} focus={focus} />;
 }
 
 /** Repaso armado y corregido por el servidor: adaptativo (fase 4) o foco de Plus (P3). */
 function ServerReviewScreen({ mode, focus }: { mode: ReviewMode; focus?: ReviewFocus }) {
   useTheme();
+  const t = useStrings(reviewStrings);
   const language = useStudyLanguage();
   const kind = reviewKind(focus);
   const [open, setOpen] = useState<OpenReview | null>(null);
@@ -361,25 +354,19 @@ function ServerReviewScreen({ mode, focus }: { mode: ReviewMode; focus?: ReviewF
   if (expired && finalize.isError) {
     return (
       <Screen edges={['top', 'bottom']} scroll={false}>
-        <ErrorState
-          message="No pudimos guardar tu repaso anterior. Sus respuestas no se pierden: podés reintentar."
-          onRetry={() => finalize.reset()}
-        />
-        <Button label="Volver" variant="secondary" onPress={() => router.back()} />
+        <ErrorState message={t.previousSaveError} onRetry={() => finalize.reset()} />
+        <Button label={t.back} variant="secondary" onPress={() => router.back()} />
       </Screen>
     );
   }
   if (!open || review.isPending || stale || expired) {
-    return <LoadingState label="Preparando repaso…" />;
+    return <LoadingState label={t.preparing} />;
   }
   if (review.isError || !data || outdated) {
     return (
       <Screen edges={['top', 'bottom']} scroll={false}>
-        <ErrorState
-          message="No pudimos preparar el repaso. Lo que ya respondiste no se pierde: podés reintentar."
-          onRetry={() => void review.refetch()}
-        />
-        <Button label="Volver" variant="secondary" onPress={() => router.back()} />
+        <ErrorState message={t.prepareError} onRetry={() => void review.refetch()} />
+        <Button label={t.back} variant="secondary" onPress={() => router.back()} />
       </Screen>
     );
   }
@@ -391,10 +378,10 @@ function ServerReviewScreen({ mode, focus }: { mode: ReviewMode; focus?: ReviewF
       <Screen edges={['top', 'bottom']} scroll={false}>
         <EmptyState
           icon={<Hourglass color={colors.primarySoft} size={44} />}
-          title="Repasos en preparación"
-          message={`Todavía no hay ejercicios de repaso para ${language.name}. Tu progreso en este idioma se guarda igual; los repasos llegan cuando su contenido esté publicado.`}
+          title={t.unavailableTitle}
+          message={t.unavailableMessage(language.code)}
         />
-        <Button label="Volver" variant="secondary" onPress={() => router.back()} />
+        <Button label={t.back} variant="secondary" onPress={() => router.back()} />
       </Screen>
     );
   }
@@ -411,25 +398,19 @@ function ServerReviewScreen({ mode, focus }: { mode: ReviewMode; focus?: ReviewF
               <CheckCircle2 color={colors.success} size={44} />
             )
           }
-          title={
-            exhausted
-              ? 'Ya repasaste lo de hoy'
-              : mode === 'topic'
-                ? 'Nada para repasar'
-                : 'Estás al día'
-          }
+          title={exhausted ? t.exhaustedTitle : mode === 'topic' ? t.nothingToReview : t.upToDate}
           message={
             exhausted
-              ? 'Cubriste tu meta diaria de repasos. Lo que falta vuelve mañana, en orden.'
+              ? t.exhaustedMessage
               : mode === 'smart'
-                ? 'No hay palabras vencidas, con errores frecuentes ni por olvidar. Completá lecciones y volvé más tarde.'
+                ? t.smartEmpty
                 : mode === 'topic'
-                  ? 'Todavía no hay palabras de esta unidad para repasar.'
-                  : 'No tenés nada para repasar ahora. Lo que estudies volverá cuando toque repasarlo.'
+                  ? t.topicEmpty
+                  : t.reviewEmpty
           }
         />
         <PersistentHelp units={data.persistent ?? []} words={{}} />
-        <Button label="Volver" variant="secondary" onPress={() => router.back()} />
+        <Button label={t.back} variant="secondary" onPress={() => router.back()} />
       </Screen>
     );
   }
@@ -448,14 +429,10 @@ function ServerReviewScreen({ mode, focus }: { mode: ReviewMode; focus?: ReviewF
         maxRetries={SERVER_REVIEW_RETRIES}
         answered={session.answered}
         onClose={() =>
-          Alert.alert(
-            '¿Salir del repaso?',
-            'Las respuestas que ya comprobaste quedan guardadas: podés retomar este repaso hoy.',
-            [
-              { text: 'Seguir', style: 'cancel' },
-              { text: 'Salir', style: 'destructive', onPress: () => router.back() },
-            ],
-          )
+          Alert.alert(t.exitReviewTitle, t.exitReviewMessage, [
+            { text: t.stay, style: 'cancel' },
+            { text: t.leave, style: 'destructive', onPress: () => router.back() },
+          ])
         }
         onFinished={handleFinished}
       />
@@ -466,7 +443,7 @@ function ServerReviewScreen({ mode, focus }: { mode: ReviewMode; focus?: ReviewF
 
   return (
     <SessionResults
-      title={TITLES[mode]}
+      title={t.titles[mode]}
       stats={sessionStats(finished.state)}
       durationSeconds={Math.max(
         0,
@@ -479,7 +456,7 @@ function ServerReviewScreen({ mode, focus }: { mode: ReviewMode; focus?: ReviewF
       achievements={submit.data?.achievements_unlocked ?? []}
       onRetrySave={() => save(finished.state)}
       extra={<PersistentHelp units={data.persistent ?? []} words={session.words} />}
-      primaryLabel="Listo"
+      primaryLabel={t.done}
       onPrimary={celebration.guard(() => router.back())}
       onExit={celebration.guard(() => router.back())}
     />
@@ -494,18 +471,17 @@ function PersistentHelp({
   units: PersistentUnit[];
   words: Record<string, WordRow>;
 }) {
+  const t = useStrings(reviewStrings);
   const withLesson = units.filter((u) => u.intro_lesson_id);
   if (withLesson.length === 0) return null;
   return (
     <Card style={styles.gap}>
-      <Text variant="overline">TE ESTÁ COSTANDO</Text>
-      <Text color="textMuted">
-        Estas palabras se te resisten. Volver a la explicación de la lección suele ayudar.
-      </Text>
+      <Text variant="overline">{t.strugglingOverline}</Text>
+      <Text color="textMuted">{t.strugglingBody}</Text>
       {withLesson.slice(0, 3).map((u) => (
         <Button
           key={u.concept_id + '|' + u.dimension}
-          label={'Ver la explicación · ' + (words[u.concept_id]?.text ?? u.concept_id)}
+          label={t.seeExplanation(words[u.concept_id]?.text ?? u.concept_id)}
           variant="secondary"
           onPress={() =>
             router.push({ pathname: '/lesson-intro/[id]', params: { id: u.intro_lesson_id! } })
@@ -522,6 +498,7 @@ function PersistentHelp({
  */
 function LegacyReviewScreen({ mode }: { mode: 'practice' | 'mistakes' }) {
   useTheme();
+  const t = useStrings(reviewStrings);
   const myWords = useMyWords();
   const pool = useWordPool();
   const language = useStudyLanguage();
@@ -551,13 +528,13 @@ function LegacyReviewScreen({ mode }: { mode: 'practice' | 'mistakes' }) {
   }, []);
 
   if (myWords.isPending || pool.isPending || (!review && !myWords.isError && !pool.isError)) {
-    return <LoadingState label="Preparando práctica…" />;
+    return <LoadingState label={t.preparingPractice} />;
   }
   if (myWords.isError || pool.isError || !review) {
     return (
       <Screen edges={['top', 'bottom']} scroll={false}>
         <ErrorState
-          message="No pudimos preparar la práctica."
+          message={t.practiceError}
           onRetry={() => {
             void myWords.refetch();
             void pool.refetch();
@@ -572,10 +549,10 @@ function LegacyReviewScreen({ mode }: { mode: 'practice' | 'mistakes' }) {
       <Screen edges={['top', 'bottom']} scroll={false}>
         <EmptyState
           icon={<CheckCircle2 color={colors.success} size={44} />}
-          title="Nada para practicar"
-          message="Completá lecciones para sumar palabras a tu práctica."
+          title={t.nothingToPractice}
+          message={t.nothingToPracticeMessage}
         />
-        <Button label="Volver" variant="secondary" onPress={() => router.back()} />
+        <Button label={t.back} variant="secondary" onPress={() => router.back()} />
       </Screen>
     );
   }
@@ -587,9 +564,9 @@ function LegacyReviewScreen({ mode }: { mode: 'practice' | 'mistakes' }) {
         words={review.words}
         seed={sessionId}
         onClose={() =>
-          Alert.alert('¿Salir de la práctica?', 'Podés volver cuando quieras.', [
-            { text: 'Seguir', style: 'cancel' },
-            { text: 'Salir', style: 'destructive', onPress: () => router.back() },
+          Alert.alert(t.exitPracticeTitle, t.exitPracticeMessage, [
+            { text: t.stay, style: 'cancel' },
+            { text: t.leave, style: 'destructive', onPress: () => router.back() },
           ])
         }
         onFinished={handleFinished}
@@ -599,7 +576,7 @@ function LegacyReviewScreen({ mode }: { mode: 'practice' | 'mistakes' }) {
 
   return (
     <SessionResults
-      title={TITLES[mode]}
+      title={t.titles[mode]}
       stats={sessionStats(finished.state)}
       durationSeconds={Math.round((finished.endedAt.getTime() - startedAt.getTime()) / 1000)}
       words={review.words}
@@ -607,9 +584,9 @@ function LegacyReviewScreen({ mode }: { mode: 'practice' | 'mistakes' }) {
       saveError={null}
       saved
       achievements={[]}
-      mistakesHint="Esta práctica no cambia tus repasos: seguí con el repaso espaciado para fijarlas."
+      mistakesHint={t.practiceMistakesHint}
       onRetrySave={() => {}}
-      primaryLabel="Listo"
+      primaryLabel={t.done}
       onPrimary={() => router.back()}
       onExit={() => router.back()}
     />

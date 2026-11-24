@@ -15,6 +15,7 @@ import { checkAnswer, serializeAnswer, type AnswerVerdict } from '@shared/answer
 import type { Exercise, UserAnswer } from '@shared/exercises';
 
 import { Button, ProgressBar, Text, colors, radii, spacing, themedStyles } from '@/design-system';
+import { useStrings } from '@/i18n';
 import { playSound } from '@/lib/sounds';
 
 import type { WordRow } from '../api';
@@ -28,6 +29,7 @@ import {
 } from '../player';
 import { useSessionLanguage } from '../readings';
 import { stopSpeaking } from '../speech';
+import { playerStrings } from '../strings';
 import { AnswerInput } from './AnswerInput';
 import { AnswerRecap } from './AnswerRecap';
 import { ExercisePrompt } from './ExercisePrompt';
@@ -110,6 +112,7 @@ export function SessionPlayer({
   answered,
 }: Props) {
   const styles = useStyles();
+  const t = useStrings(playerStrings);
   const [state, dispatch] = useReducer(playerReducer, exercises, (list) =>
     createPlayer(list, { maxRetries, answered }),
   );
@@ -269,7 +272,7 @@ export function SessionPlayer({
         <View style={styles.top}>
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel="Salir de la sesión"
+            accessibilityLabel={t.exit}
             onPress={onClose}
             hitSlop={12}
             style={styles.close}
@@ -277,11 +280,7 @@ export function SessionPlayer({
             <X color={colors.textMuted} size={26} />
           </Pressable>
           <View style={styles.flex}>
-            <ProgressBar
-              value={progress(state)}
-              height={10}
-              accessibilityLabel="Progreso de la sesión"
-            />
+            <ProgressBar value={progress(state)} height={10} accessibilityLabel={t.progress} />
           </View>
         </View>
 
@@ -290,21 +289,21 @@ export function SessionPlayer({
             <View style={styles.meta}>
               {isRetry ? (
                 <Text variant="overline" color="streak">
-                  REPASO DE ERRORES
+                  {t.mistakeReview}
                 </Text>
               ) : null}
               {readings ? (
                 // Chino: mostrar u ocultar el pinyin encima de los caracteres.
                 <Pressable
                   accessibilityRole="switch"
-                  accessibilityLabel="Mostrar pinyin"
+                  accessibilityLabel={t.showPinyin}
                   accessibilityState={{ checked: showReadings }}
                   onPress={() => setShowReadings(!showReadings)}
                   hitSlop={8}
                   style={[styles.pinyin, showReadings && styles.pinyinOn]}
                 >
                   <Text variant="caption" color={showReadings ? 'textStrong' : 'textMuted'}>
-                    Pinyin
+                    {t.pinyin}
                   </Text>
                 </Pressable>
               ) : null}
@@ -342,13 +341,11 @@ export function SessionPlayer({
               {pending ? (
                 <View style={styles.pending} accessibilityLiveRegion="polite">
                   <Text color={pending.failed ? 'danger' : 'textMuted'} align="center">
-                    {pending.failed
-                      ? 'No pudimos comprobar tu respuesta. Revisá tu conexión.'
-                      : 'Comprobando…'}
+                    {pending.failed ? t.checkFailed : t.checking}
                   </Text>
                   {pending.failed ? (
                     <Button
-                      label="Reintentar"
+                      label={t.retry}
                       variant="secondary"
                       onPress={() => void gradeRemotely(pending.answer, pending.responseMs)}
                     />

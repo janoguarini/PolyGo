@@ -1,0 +1,150 @@
+import type { LevelProgress } from '@/features/profile/languageProgress';
+
+import { buildCourseList, type CourseListInput } from '../catalog';
+import type { CourseEnrollment, CourseProfile } from '../level';
+
+const enrollment = (course_code: string, start_level: string): CourseEnrollment => ({
+  course_code,
+  start_level,
+  placement_level: null,
+  placement_completed_at: null,
+  enrolled_at: '2026-11-21T00:00:00Z',
+  last_selected_at: null,
+});
+
+type Row = { progress: LevelProgress | null; started: boolean };
+
+const progress = (level: string, completed: number, total: number): Row => ({
+  progress: { level, completed, total, ratio: completed / total },
+  started: true,
+});
+
+const profile: CourseProfile = {
+  target_language: 'en',
+  start_level: 'A2',
+  active_course_code: 'en-from-es',
+};
+
+const input = (over: Partial<CourseListInput> = {}): CourseListInput => ({
+  profile,
+  enrollments: [enrollment('en-from-es', 'A2')],
+  progressByLanguage: new Map([['en', progress('A2', 3, 120)]]),
+  isTester: false,
+  ...over,
+});
+
+const codes = (entries: { course: { code: string } }[]) => entries.map((e) => e.course.code);
+
+describe('lista de cursos (buildCourseList)', () => {
+  it('identifica el curso activo con su idioma de origen, nivel y progreso', () => {
+    const { active } = buildCourseList(input());
+    expect(active.course).toMatchObject({ code: 'en-from-es', target: 'en', source: 'es' });
+    expect(active.active).toBe(true);
+    expect(active.startLevel).toBe('A2');
+    expect(active.progress).toMatchObject({ level: 'A2', completed: 3, total: 120 });
+  });
+
+  it('ofrece sólo cursos con contenido disponible: el español (Próximamente) no aparece', () => {
+    const { available } = buildCourseList(input());
+    expect(available.map((g) => g.source)).toEqual(['es']);
+    expect(codes(available[0]!.courses)).toEqual([
+      'fr-from-es',
+      'it-from-es',
+      'pt-from-es',
+      'zh-from-es',
+    ]);
+    const all = [
+      ...codes(available.flatMap((g) => g.courses)),
+      ...codes(buildCourseList(input()).mine),
+    ];
+    expect(all).not.toContain('es-from-en');
+  });
+
+  it('un curso nuevo empieza en A1 aunque el activo esté en A2 (no hereda el nivel)', () => {
+    const { available } = buildCourseList(input());
+    for (const entry of available.flatMap((g) => g.courses)) {
+      expect([entry.course.code, entry.startLevel, entry.progress]).toEqual([
+        entry.course.code,
+        'A1',
+        null,
+      ]);
+    }
+  });
+
+  it('mis cursos: los inscriptos y los empezados, cada uno con su nivel y su progreso', () => {
+    const list = buildCourseList(
+      input({
+        enrollments: [
+          enrollment('en-from-es', 'A2'),
+          enrollment('it-from-es', 'A1'),
+          enrollment('zh-from-es', 'A1'),
+        ],
+        progressByLanguage: new Map([
+          ['en', progress('A2', 3, 120)],
+          ['it', progress('A1', 40, 120)],
+          ['zh', { progress: null, started: true } as Row],
+        ]),
+      }),
+    );
+    expect(codes(list.mine)).toEqual(['it-from-es', 'zh-from-es']);
+    expect(list.mine[0]).toMatchObject({ startLevel: 'A1', progress: { completed: 40 } });
+    // Los cursos míos no se ofrecen otra vez para empezar.
+    expect(codes(list.available.flatMap((g) => g.courses))).toEqual(['fr-from-es', 'pt-from-es']);
+  });
+
+  it('los niveles de cada curso son independientes', () => {
+    const list = buildCourseList(
+      input({
+        profile: { target_language: 'it', start_level: 'A1', active_course_code: 'it-from-es' },
+        enrollments: [enrollment('en-from-es', 'A2'), enrollment('it-from-es', 'A1')],
+        progressByLanguage: new Map([
+          ['en', progress('A2', 10, 120)],
+          ['it', progress('A1', 1, 120)],
+        ]),
+      }),
+    );
+    expect([list.active.course.code, list.active.startLevel]).toEqual(['it-from-es', 'A1']);
+    expect([list.mine[0]!.course.code, list.mine[0]!.startLevel]).toEqual(['en-from-es', 'A2']);
+  });
+
+  it('sin la migración (enrollments null) usa el progreso para saber qué cursos son tuyos', () => {
+    const list = buildCourseList(
+      input({
+        enrollments: null,
+        progressByLanguage: new Map([
+          ['en', progress('A2', 3, 120)],
+          ['pt', progress('A1', 2, 120)],
+        ]),
+      }),
+    );
+    expect(list.active.startLevel).toBe('A2'); // profiles.start_level, como hoy
+    expect(codes(list.mine)).toEqual(['pt-from-es']);
+    expect(list.mine[0]!.startLevel).toBe('A1');
+  });
+
+  it('un curso tuyo cuyo idioma dejó de estar disponible se ve pero no se elige', () => {
+    const list = buildCourseList(
+      input({
+        enrollments: [enrollment('en-from-es', 'A2'), enrollment('es-from-en', 'A1')],
+      }),
+    );
+    const es = list.mine.find((e) => e.course.code === 'es-from-en')!;
+    expect(es.selectable).toBe(false);
+    expect(list.mine[list.mine.length - 1]!.course.code).toBe('es-from-en');
+  });
+
+  it('el curso activo está siempre, aunque no tenga inscripción ni progreso todavía', () => {
+    const list = buildCourseList(input({ enrollments: [], progressByLanguage: new Map() }));
+    expect(list.active).toMatchObject({ active: true, progress: null, startLevel: 'A2' });
+    expect(list.mine).toEqual([]);
+  });
+
+  it('si ya tenés todos los cursos disponibles, no queda ningún grupo para empezar', () => {
+    const list = buildCourseList(
+      input({
+        enrollments: ['en', 'fr', 'it', 'pt', 'zh'].map((l) => enrollment(`${l}-from-es`, 'A1')),
+      }),
+    );
+    expect(list.available).toEqual([]);
+  });
+});

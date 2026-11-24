@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 
 const MIGRATIONS_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', 'migrations');
 
-const SUPABASE_STUB = `
+export const SUPABASE_STUB = `
   create role anon nologin;
   create role authenticated nologin;
   create role service_role nologin bypassrls;
@@ -17,6 +17,8 @@ const SUPABASE_STUB = `
   create table auth.users (
     id uuid primary key default gen_random_uuid(),
     email text unique,
+    -- Como en Supabase: options.data de signUp (la app compatible declara polygo_curriculum_api).
+    raw_user_meta_data jsonb,
     created_at timestamptz not null default now()
   );
   create function auth.uid() returns uuid language sql stable as $$
@@ -30,12 +32,29 @@ const SUPABASE_STUB = `
   alter default privileges in schema public grant execute on functions to anon, authenticated, service_role;
 `;
 
-export async function createDb() {
+/**
+ * Migraciones que se dejan afuera (POLYGO_TEST_EXCLUDE_MIGRATIONS="a.sql,b.sql"): sirve para comparar
+ * una corrida contra la línea base sin mover archivos del repo.
+ */
+const EXCLUDED = new Set(
+  (process.env.POLYGO_TEST_EXCLUDE_MIGRATIONS ?? '')
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean),
+);
+
+/**
+ * Base con todas las migraciones, o sólo con `files` (nombres de supabase/migrations/, en ese orden)
+ * para probar cómo una migración trata datos que ya existían.
+ */
+export async function createDb({ files: only } = {}) {
   const db = new PGlite();
   await db.exec(SUPABASE_STUB);
-  const files = readdirSync(MIGRATIONS_DIR)
-    .filter((f) => f.endsWith('.sql'))
-    .sort();
+  const files =
+    only ??
+    readdirSync(MIGRATIONS_DIR)
+      .filter((f) => f.endsWith('.sql') && !EXCLUDED.has(f))
+      .sort();
   for (const file of files) {
     try {
       await db.exec(readFileSync(join(MIGRATIONS_DIR, file), 'utf8'));

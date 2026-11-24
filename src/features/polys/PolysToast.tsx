@@ -4,11 +4,11 @@ import { StyleSheet, View } from 'react-native';
 import Animated, { FadeInUp, FadeOutUp } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { polyReasonLabel } from '@shared/polys';
-
 import { PolyCoin, Text, colors, radii, spacing, themedStyles } from '@/design-system';
+import { getStrings, useStrings } from '@/i18n';
 
 import { usePolys, type PolyGrant } from './api';
+import { polysStrings } from './strings';
 
 /** Ganancias ya anunciadas en esta sesión (la misma respuesta puede volver del caché). */
 const announced = new Set<string>();
@@ -17,12 +17,13 @@ const VISIBLE_MS = 2800;
 
 /** Resume varias ganancias en una línea: "Misión completada ×3" o "Recompensas". */
 export function grantSummary(grants: PolyGrant[]): { total: number; label: string } {
+  const t = getStrings(polysStrings);
   const total = grants.reduce((n, g) => n + g.amount, 0);
   const reasons = [...new Set(grants.map((g) => g.reason))];
   const label =
     reasons.length === 1
-      ? `${polyReasonLabel(reasons[0]!)}${grants.length > 1 ? ` ×${grants.length}` : ''}`
-      : 'Recompensas';
+      ? `${t.reasons[reasons[0]!]}${grants.length > 1 ? ` ×${grants.length}` : ''}`
+      : t.rewards;
   return { total, label };
 }
 
@@ -32,6 +33,7 @@ export function grantSummary(grants: PolyGrant[]): { total: number; label: strin
  */
 export function PolysToast() {
   const styles = useStyles();
+  const t = useStrings(polysStrings);
   const polys = usePolys();
   const insets = useSafeAreaInsets();
   const [shown, setShown] = useState<{ id: number; total: number; label: string } | null>(null);
@@ -63,7 +65,7 @@ export function PolysToast() {
         style={styles.toast}
         accessible
         accessibilityLiveRegion="polite"
-        accessibilityLabel={`Ganaste ${shown.total} Polys: ${shown.label}`}
+        accessibilityLabel={t.toastA11y(shown.total, shown.label)}
       >
         <PolyCoin size={30} />
         <View>

@@ -5,6 +5,7 @@ import { HAN, LANGUAGES, languageConfig } from '@shared/languages';
 import { readingDictionary, unreadHan } from '@shared/readings';
 
 import { ALL_WORDS, COURSES, CURRICULUM_PATH, idPrefix, unitId } from '..';
+import { FR_COURSE } from '../fr-course';
 import { joinHan, tokensOf } from '../builders';
 import { pathExerciseId } from '../path';
 import type { ExerciseDef, UnitDef } from '../types';
@@ -76,8 +77,11 @@ describe('estructura del currículo', () => {
   });
 
   it('los niveles de cada idioma en shared/languages.ts son los que tienen contenido', () => {
+    // El francés tiene su curso aparte (content/fr-course.ts), fuera de COURSES y de CURRICULUM_PATH.
+    const own: Record<string, readonly string[]> = { fr: FR_COURSE.map((v) => v.level) };
     for (const l of LANGUAGES) {
-      const levels = COURSES.find((c) => c.language === l.code)?.levels.map((v) => v.level) ?? [];
+      const levels =
+        own[l.code] ?? COURSES.find((c) => c.language === l.code)?.levels.map((v) => v.level) ?? [];
       expect([l.code, [...l.levels]]).toEqual([l.code, levels]);
     }
   });

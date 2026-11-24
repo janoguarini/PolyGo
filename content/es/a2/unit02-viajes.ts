@@ -5,9 +5,11 @@ import { dialogue, ex, question, reading, w } from '../helpers';
  * Español A2 U2 «Travel» (docs/ES_A1_A2.md): contar un viaje en pasado con los irregulares estar
  * (estuve), tener (tuve) y venir (vine), los regulares salir, volver y quedarse, y llegar con su
  * cambio ortográfico (llegué); decir hace cuánto (hace dos años) y si se llegó tarde o a tiempo.
- * Vocabulario rioplatense: la valija (maleta), la estadía (estancia).
+ * Variante: español neutro de Latinoamérica (tú y ustedes): la maleta, la estadía (en España, la
+ * estancia).
  * Pronunciación: la g suave de llegué (gue) frente a la j fuerte de viaje.
- * Cultura: Bariloche y la nieve en julio, el invierno del hemisferio sur.
+ * Cultura: viajes por Latinoamérica (Cusco, Bogotá, Cartagena) y España; Bariloche y la nieve en
+ * julio: las estaciones dependen del hemisferio.
  *
  * ESTADO EDITORIAL: borrador, sin revisión de hablantes nativos. Se carga sin publicar.
  */
@@ -31,21 +33,34 @@ const VACACIONES = dialogue(
 const POSTAL = reading(
   'es.stim.a2-u2-postal',
   'postcard',
-  'A postcard from Tomás to his grandmother in Buenos Aires.',
+  'A postcard from Tomás to his grandmother in Bogotá.',
   [
     'Querida abuela:',
     'Este es mi primer viaje al extranjero. Llegué a Madrid el lunes.',
-    'El vuelo salió a tiempo, pero mi valija llegó dos días después.',
+    'El vuelo salió a tiempo, pero mi maleta llegó dos días después.',
     'Me quedé en un hotel chico y muy lindo.',
     'Ayer tuve un problema: ¡no encontré mi pasaporte! Después lo encontré en la mochila.',
-    'Vuelvo a Buenos Aires el domingo.',
+    'Vuelvo a Bogotá el domingo.',
     'Un beso, Tomás',
   ],
   { from: 'Tomás', to: 'Abuela' },
 );
 
 export const ES_A2_U02: EsUnitDef = {
-  names: ['Buenos Aires', 'Madrid', 'Patagonia', 'Argentina'],
+  names: [
+    'Buenos Aires',
+    'Madrid',
+    'Patagonia',
+    'Argentina',
+    'Bariloche',
+    'Bogotá',
+    'Cusco',
+    'Lima',
+    'Cartagena',
+    'Córdoba',
+    'México',
+    'Tomás',
+  ],
   support: [
     'estuviste',
     'estuvo',
@@ -86,26 +101,26 @@ export const ES_A2_U02: EsUnitDef = {
       explanation:
         'Estar, tener and venir have irregular pasts with a new stem and no written accent: estar → estuve, estuviste, estuvo; tener → tuve, tuviste, tuvo; venir → vine, viniste, vino (yes, vino is also wine). Salir and volver are regular -ir and -er verbs: salí, saliste, salió; volví, volviste, volvió. Llegar is regular, but its yo form is spelled llegué: the u keeps the g hard, as in English get. Quedarse (to stay) keeps its pronoun: me quedé, te quedaste, se quedó, nos quedamos. To say how long ago something happened, use hace + time: hace dos años (two years ago), hace una semana. Llegar tarde is to arrive late and llegar a tiempo, on time. Remember a + el = al and de + el = del: llegué al aeropuerto, salí del hotel.',
       examples: [
-        { target: 'Estuve en Bariloche hace dos años.', base: 'I was in Bariloche two years ago.' },
+        { target: 'Estuve en Cusco hace dos años.', base: 'I was in Cusco two years ago.' },
         { target: 'Llegué al aeropuerto a tiempo.', base: 'I got to the airport on time.' },
         {
-          target: '¿Cuándo viniste a la Argentina? — Vine hace dos años.',
-          base: 'When did you come to Argentina? — I came two years ago.',
+          target: '¿Cuándo viniste a México? — Vine hace dos años.',
+          base: 'When did you come to Mexico? — I came two years ago.',
         },
       ],
     },
     review: {
       status: 'draft',
       notes:
-        'A2 nuevo (U2). Sin revisión nativa. Revisar: «la estadía» (rioplatense, frente a «estancia»); «estuve» traducido como «I was (somewhere)» y «fue» para valorar (la estadía fue muy linda); «llegó a hora» como distractor incorrecto (se dice «a tiempo»); «Querida abuela:» y «Un beso» en la postal; el aviso de que «vino» es también el pasado de venir.',
+        'A2 nuevo (U2). Convertido al español neutro de Latinoamérica (tú y ustedes); sin revisión nativa. Revisar: «la maleta» (se acepta «la valija»); «la estadía» (Latinoamérica, frente a «estancia» en España); «estuve» traducido como «I was (somewhere)» y «fue» para valorar (la estadía fue muy linda); «llegó a hora» como distractor incorrecto (se dice «a tiempo»); «Querida abuela:» y «Un beso» en la postal; el aviso de que «vino» es también el pasado de venir.',
     },
     words: [
       w(
         'es-estuve',
         'estuve',
         'I was (somewhere)',
-        'El verano pasado estuve en Bariloche.',
-        'Last summer I was in Bariloche.',
+        'El verano pasado estuve en Cartagena.',
+        'Last summer I was in Cartagena.',
         ['past'],
       ),
       w('es-tuve', 'tuve', 'I had', 'Ayer tuve mucho trabajo.', 'Yesterday I had a lot of work.', [
@@ -115,8 +130,8 @@ export const ES_A2_U02: EsUnitDef = {
         'es-vine',
         'vine',
         'I came',
-        'Vine a Buenos Aires hace dos años.',
-        'I came to Buenos Aires two years ago.',
+        'Vine a Bogotá hace dos años.',
+        'I came to Bogotá two years ago.',
         ['past'],
       ),
       w(
@@ -143,8 +158,8 @@ export const ES_A2_U02: EsUnitDef = {
         'es-volvi',
         'volví',
         'I came back',
-        'Volví de Mendoza el domingo.',
-        'I came back from Mendoza on Sunday.',
+        'Volví de Cusco el domingo.',
+        'I came back from Cusco on Sunday.',
         ['past'],
         { acceptedTranslations: ['I returned'] },
       ),
@@ -160,8 +175,8 @@ export const ES_A2_U02: EsUnitDef = {
         'es-hace-dos-anos',
         'hace dos años',
         'two years ago',
-        'Fui a Córdoba hace dos años.',
-        'I went to Córdoba two years ago.',
+        'Fui a Madrid hace dos años.',
+        'I went to Madrid two years ago.',
         ['time'],
       ),
       w(
@@ -174,13 +189,13 @@ export const ES_A2_U02: EsUnitDef = {
         { emoji: '🛫' },
       ),
       w(
-        'es-la-valija',
-        'la valija',
+        'es-la-maleta',
+        'la maleta',
         'the suitcase',
-        '¿Dónde está mi valija?',
+        '¿Dónde está mi maleta?',
         'Where is my suitcase?',
-        ['travel', 'argentina'],
-        { emoji: '🧳' },
+        ['travel'],
+        { emoji: '🧳', acceptedTexts: ['la valija'] },
       ),
       w(
         'es-el-pasaporte',
@@ -206,7 +221,7 @@ export const ES_A2_U02: EsUnitDef = {
         'the stay',
         'La estadía en el hotel fue muy linda.',
         'The stay at the hotel was really nice.',
-        ['travel', 'argentina'],
+        ['travel'],
       ),
       w(
         'es-el-extranjero',
@@ -224,9 +239,7 @@ export const ES_A2_U02: EsUnitDef = {
         'The flight left on time.',
         ['travel'],
       ),
-      w('es-tarde', 'tarde', 'late', 'El colectivo llegó tarde.', 'The bus arrived late.', [
-        'time',
-      ]),
+      w('es-tarde', 'tarde', 'late', 'El tren llegó tarde.', 'The train arrived late.', ['time']),
       w(
         'es-a-tiempo',
         'a tiempo',
@@ -243,9 +256,9 @@ export const ES_A2_U02: EsUnitDef = {
         objective: 'Say where you were and what you had, using the past of estar and tener.',
         intro: {
           explanation:
-            'Estar and tener have irregular pasts with a u in the stem and no written accent: estar → estuve, estuviste, estuvo; tener → tuve, tuviste, tuvo. Use estuve to say where you were for a while: estuve en Córdoba. To say what something was like, fue (from ser) is the usual choice: la estadía fue muy linda. La estadía (the stay) is the word used in Argentina. El extranjero means abroad: viajar al extranjero, estuve en el extranjero.',
+            'Estar and tener have irregular pasts with a u in the stem and no written accent: estar → estuve, estuviste, estuvo; tener → tuve, tuviste, tuvo. Use estuve to say where you were for a while: estuve en Lima. To say what something was like, fue (from ser) is the usual choice: la estadía fue muy linda. La estadía (the stay) is the usual word in Latin America; in Spain you will hear la estancia. El extranjero means abroad: viajar al extranjero, estuve en el extranjero.',
           examples: [
-            { target: 'Estuve una semana en Bariloche.', base: 'I was in Bariloche for a week.' },
+            { target: 'Estuve una semana en Lima.', base: 'I was in Lima for a week.' },
             {
               target: 'La estadía en el hotel fue muy linda.',
               base: 'The stay at the hotel was really nice.',
@@ -265,8 +278,8 @@ export const ES_A2_U02: EsUnitDef = {
             { id: 'es.ex.krs5seqo24ig8d' },
           ),
           ex.fillBlank(
-            'El verano pasado ___ en Mendoza.',
-            'Last summer I was in Mendoza.',
+            'El verano pasado ___ en Cartagena.',
+            'Last summer I was in Cartagena.',
             'estuve',
             ['tuve', 'estuvo', 'estoy'],
             ['es-estuve'],
@@ -304,15 +317,15 @@ export const ES_A2_U02: EsUnitDef = {
             },
           ),
           ex.fillBlank(
-            '¿Vos ___ en el extranjero?',
-            'Have you ever been abroad?',
+            'Y tú, ¿___ en el extranjero?',
+            'And you, have you ever been abroad?',
             'estuviste',
             ['estuve', 'estuvo', 'tuviste'],
             ['es-estuve', 'es-el-extranjero'],
             {
               id: 'es.ex.nbhlq2v0t7n50f',
               explanation:
-                'With vos: estuviste. In Argentina the simple past is used where English says have you ever been.',
+                'With tú: estuviste. In Latin America the simple past is used where English says have you ever been.',
             },
           ),
           ex.translationChoice(
@@ -329,10 +342,10 @@ export const ES_A2_U02: EsUnitDef = {
             { id: 'es.ex.nozr02mp64sf9n' },
           ),
           ex.translateWrite(
-            'Last year I was in Córdoba.',
-            'El año pasado estuve en Córdoba.',
+            'Last year I was in Bogotá.',
+            'El año pasado estuve en Bogotá.',
             ['es-estuve'],
-            { id: 'es.ex.nbijvczcssn74z', acceptedAnswers: ['Estuve en Córdoba el año pasado.'] },
+            { id: 'es.ex.nbijvczcssn74z', acceptedAnswers: ['Estuve en Bogotá el año pasado.'] },
           ),
           ex.shortAnswer(
             '¿Tuviste un buen viaje?',
@@ -356,7 +369,7 @@ export const ES_A2_U02: EsUnitDef = {
           'Say when you left, arrived and came back, and whether you were late or on time.',
         intro: {
           explanation:
-            'Salir and volver are regular: salí, saliste, salió; volví, volviste, volvió. Llegar is regular too, but its yo form is spelled llegué: the u is silent and keeps the g hard, like the g in get. Without it, ge would sound like the strong h of the j in viaje. Salir de, llegar a: salí de Córdoba, llegué a Rosario (de + el = del, a + el = al). Llegar tarde means to arrive late; llegar a tiempo, on time.',
+            'Salir and volver are regular: salí, saliste, salió; volví, volviste, volvió. Llegar is regular too, but its yo form is spelled llegué: the u is silent and keeps the g hard, like the g in get. Without it, ge would sound like the strong h of the j in viaje. Salir de, llegar a: salí de Lima, llegué a Cusco (de + el = del, a + el = al). Llegar tarde means to arrive late; llegar a tiempo, on time.',
           examples: [
             { target: 'Salí del hotel a las seis.', base: 'I left the hotel at six.' },
             { target: 'El vuelo llegó a tiempo.', base: 'The flight arrived on time.' },
@@ -431,12 +444,12 @@ export const ES_A2_U02: EsUnitDef = {
             {
               id: 'es.ex.8yyb14ip4sngh8',
               explanation:
-                'With vos: saliste. Salir de means to leave a place; you arrive a un lugar (llegaste al aeropuerto).',
+                'With tú: saliste. Salir de means to leave a place; you arrive a un lugar (llegaste al aeropuerto).',
             },
           ),
           ex.orderWords(
-            'Volví de Mendoza el domingo.',
-            'I came back from Mendoza on Sunday.',
+            'Volví de Cusco el domingo.',
+            'I came back from Cusco on Sunday.',
             ['es-volvi'],
             {
               id: 'es.ex.v5n3u0o98yagi3',
@@ -465,15 +478,15 @@ export const ES_A2_U02: EsUnitDef = {
         objective: 'Say how long ago something happened and talk about luggage and documents.',
         intro: {
           explanation:
-            'Venir is irregular: vine, viniste, vino (careful: vino is also wine!). Quedarse (to stay) is regular and keeps its pronoun: me quedé, te quedaste, se quedó. To say how long ago, put hace before the time: hace dos años (two years ago), hace tres días, hace una semana. In Argentina a suitcase is la valija; in other countries you will hear maleta.',
+            'Venir is irregular: vine, viniste, vino (careful: vino is also wine!). Quedarse (to stay) is regular and keeps its pronoun: me quedé, te quedaste, se quedó. To say how long ago, put hace before the time: hace dos años (two years ago), hace tres días, hace una semana. A suitcase is la maleta (in Argentina and Uruguay you will also hear la valija).',
           examples: [
             {
-              target: 'Vine a Buenos Aires hace dos años.',
-              base: 'I came to Buenos Aires two years ago.',
+              target: 'Vine a Bogotá hace dos años.',
+              base: 'I came to Bogotá two years ago.',
             },
             {
-              target: 'Me quedé una semana en Bariloche.',
-              base: 'I stayed in Bariloche for a week.',
+              target: 'Me quedé una semana en Cusco.',
+              base: 'I stayed in Cusco for a week.',
             },
           ],
         },
@@ -490,8 +503,8 @@ export const ES_A2_U02: EsUnitDef = {
             { id: 'es.ex.k2qwn4dcw6smrb' },
           ),
           ex.fillBlank(
-            '___ a la Argentina hace dos años.',
-            'I came to Argentina two years ago.',
+            '___ a México hace dos años.',
+            'I came to Mexico two years ago.',
             'Vine',
             ['Vino', 'Viene'],
             ['es-vine', 'es-hace-dos-anos'],
@@ -503,7 +516,7 @@ export const ES_A2_U02: EsUnitDef = {
           ),
           ex.listenChoice(
             'Vine en avión.',
-            ['Vino en avión.', 'Viene en avión.', 'Vine en auto.'],
+            ['Vino en avión.', 'Viene en avión.', 'Vine en tren.'],
             ['es-vine'],
             { id: 'es.ex.xzng06huz5nm9e' },
           ),
@@ -511,11 +524,11 @@ export const ES_A2_U02: EsUnitDef = {
             [
               ['vine', 'I came'],
               ['me quedé', 'I stayed'],
-              ['la valija', 'the suitcase'],
+              ['la maleta', 'the suitcase'],
               ['el pasaporte', 'the passport'],
             ],
-            ['es-vine', 'es-me-quede', 'es-la-valija', 'es-el-pasaporte'],
-            { id: 'es.ex.ysxowl253a2166' },
+            ['es-vine', 'es-me-quede', 'es-la-maleta', 'es-el-pasaporte'],
+            { id: 'es.ex.rzlj9sum8wnbjn' },
           ),
           ex.fillBlank(
             'Me ___ tres noches en el hotel.',
@@ -526,7 +539,7 @@ export const ES_A2_U02: EsUnitDef = {
             {
               id: 'es.ex.p6xw4pbm4lz4dg',
               explanation:
-                'Me goes with quedé (yo). With vos it is te quedaste; with nosotros, nos quedamos.',
+                'Me goes with quedé (yo). With tú it is te quedaste; with nosotros, nos quedamos.',
             },
           ),
           ex.translationChoice(
@@ -537,7 +550,7 @@ export const ES_A2_U02: EsUnitDef = {
             { id: 'es.ex.8x5fc9nwrmiphz' },
           ),
           ex.fillBlank(
-            '¿Tenés el ___? — Sí, está en mi mochila.',
+            '¿Tienes el ___? — Sí, está en mi mochila.',
             'Have you got the passport? — Yes, it’s in my backpack.',
             'pasaporte',
             ['aeropuerto', 'hotel', 'vuelo'],
@@ -566,9 +579,9 @@ export const ES_A2_U02: EsUnitDef = {
               acceptedAnswers: ['Yo me quedé en un hotel cerca de la playa.'],
             },
           ),
-          ex.translateWrite('Where is my suitcase?', '¿Dónde está mi valija?', ['es-la-valija'], {
-            id: 'es.ex.0pwq65iu116tkm',
-            acceptedAnswers: ['¿Dónde está mi maleta?'],
+          ex.translateWrite('Where is my suitcase?', '¿Dónde está mi maleta?', ['es-la-maleta'], {
+            id: 'es.ex.ngl8s8jw7wdopg',
+            acceptedAnswers: ['¿Dónde está mi valija?'],
           }),
         ],
       },
@@ -583,7 +596,7 @@ export const ES_A2_U02: EsUnitDef = {
           examples: [
             { target: 'Llegué a Madrid el lunes.', base: 'I arrived in Madrid on Monday.' },
             {
-              target: 'Tuve un problema con mi valija.',
+              target: 'Tuve un problema con mi maleta.',
               base: 'I had a problem with my suitcase.',
             },
           ],
@@ -607,13 +620,13 @@ export const ES_A2_U02: EsUnitDef = {
             'He writes “Este es mi primer viaje al extranjero”.',
           ),
           question(
-            'es.ex.zygtkveuuzsxgk',
+            'es.ex.53cyb9an1gk5zh',
             POSTAL,
             'What happened to his suitcase?',
             'It arrived two days later',
             ['It arrived on time', 'He left it at the hotel', 'He never found it'],
-            ['es-la-valija', 'es-a-tiempo'],
-            'The flight left on time, “pero mi valija llegó dos días después”.',
+            ['es-la-maleta', 'es-a-tiempo'],
+            'The flight left on time, “pero mi maleta llegó dos días después”.',
           ),
           question(
             'es.ex.alo82v71ulh42u',
@@ -628,7 +641,7 @@ export const ES_A2_U02: EsUnitDef = {
             'Tuve un problema con el pasaporte.',
             [
               'Tuvo un problema con el pasaporte.',
-              'Tuve un problema con la valija.',
+              'Tuve un problema con la maleta.',
               'Tengo un problema con el pasaporte.',
             ],
             ['es-tuve', 'es-el-pasaporte'],
@@ -645,15 +658,15 @@ export const ES_A2_U02: EsUnitDef = {
             { id: 'es.ex.8ucx334294ttsf' },
           ),
           ex.fillBlank(
-            'Mi valija ___ dos días después.',
+            'Mi maleta ___ dos días después.',
             'My suitcase arrived two days later.',
             'llegó',
             ['llegué', 'salí', 'vine'],
-            ['es-llegue', 'es-la-valija'],
+            ['es-llegue', 'es-la-maleta'],
             {
-              id: 'es.ex.zj6bqh5egcxfxw',
+              id: 'es.ex.rldlwfd22he1um',
               explanation:
-                'La valija is it, so you need the él / ella form: llegó. Llegué is I arrived.',
+                'La maleta is it, so you need the él / ella form: llegó. Llegué is I arrived.',
             },
           ),
           ex.fillBlank(
@@ -676,10 +689,10 @@ export const ES_A2_U02: EsUnitDef = {
             },
           ),
           ex.shortAnswer(
-            '¿Cuándo llegaste a Buenos Aires?',
+            '¿Cuándo llegaste a Bogotá?',
             'Say you arrived two years ago (start with «Llegué»).',
             'Llegué hace dos años.',
-            ['Hace dos años.', 'Llegué a Buenos Aires hace dos años.', 'Hace dos años que llegué.'],
+            ['Hace dos años.', 'Llegué a Bogotá hace dos años.', 'Hace dos años que llegué.'],
             ['es-llegue', 'es-hace-dos-anos'],
             { id: 'es.ex.r9crg30bm8q8v9' },
           ),
@@ -698,7 +711,7 @@ export const ES_A2_U02: EsUnitDef = {
         objective: 'Understand a friend telling you about a trip and tell the story of your own.',
         intro: {
           explanation:
-            'To ask a friend about a trip: ¿Cómo fue el viaje?, ¿Dónde estuviste?, ¿Cuánto tiempo te quedaste? For a group, use the nosotros forms; for -ar and -ir verbs they look like the present (salimos, nos quedamos), and the time words tell you it is the past. Bariloche, in Patagonia, is famous for its lakes and mountains, and for snow in July: winter in the southern hemisphere.',
+            'To ask a friend about a trip: ¿Cómo fue el viaje?, ¿Dónde estuviste?, ¿Cuánto tiempo te quedaste? For a group, use the nosotros forms; for -ar and -ir verbs they look like the present (salimos, nos quedamos), and the time words tell you it is the past. Seasons depend on the hemisphere: July is summer in Mexico and Spain, but winter in Chile and Argentina, where Bariloche, in Patagonia, is famous for its lakes, mountains and snow.',
           examples: [
             {
               target: '¿Cómo fue el viaje? — Muy lindo.',
@@ -722,7 +735,7 @@ export const ES_A2_U02: EsUnitDef = {
             'In Bariloche with his family',
             [
               'In Bariloche with some friends',
-              'In Mendoza with his family',
+              'In Cusco with his family',
               'At home in Buenos Aires',
             ],
             ['es-estuve'],
@@ -773,7 +786,7 @@ export const ES_A2_U02: EsUnitDef = {
             ['es-me-quede'],
             {
               id: 'es.ex.b63oiqgyh11793',
-              explanation: 'Te goes with the vos form: te quedaste. Me quedé is I stayed.',
+              explanation: 'Te goes with the tú form: te quedaste. Me quedé is I stayed.',
             },
           ),
           ex.translationChoice(

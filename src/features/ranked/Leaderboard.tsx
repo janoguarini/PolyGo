@@ -1,4 +1,5 @@
 import { router } from 'expo-router';
+import { memo } from 'react';
 import { Crown, Star } from 'lucide-react-native';
 import { Pressable, StyleSheet, View } from 'react-native';
 
@@ -15,9 +16,11 @@ import {
   themedStyles,
 } from '@/design-system';
 import { FramedAvatar } from '@/features/cosmetics/FramedAvatar';
+import { useStrings } from '@/i18n';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 
 import type { LeaderboardEntry } from './api';
+import { rankedStrings } from './strings';
 
 /** Oro, plata y bronce del podio. */
 const MEDALS = ['#F5C542', '#C9D1DE', '#D9905F'] as const;
@@ -36,6 +39,7 @@ export function topPercent(position: number, total: number): number {
 /** Los tres primeros, en escalones (2.º, 1.º, 3.º). */
 export function Podium({ entries, meId }: { entries: LeaderboardEntry[]; meId?: string }) {
   const styles = useStyles();
+  const t = useStrings(rankedStrings);
   const order = [entries[1], entries[0], entries[2]];
   return (
     <View style={styles.podium}>
@@ -50,8 +54,8 @@ export function Podium({ entries, meId }: { entries: LeaderboardEntry[]; meId?: 
             key={entry.userId}
             style={({ pressed }) => [styles.podiumSlot, pressed && styles.pressed]}
             accessibilityRole="button"
-            accessibilityLabel={`Puesto ${place}, ${entry.username}, ${entry.rating} ELO`}
-            accessibilityHint="Abre el perfil del jugador"
+            accessibilityLabel={t.podiumA11y(place, entry.username, entry.rating)}
+            accessibilityHint={t.openProfileHint}
             onPress={() => openPlayer(entry, isMe)}
           >
             {first ? <Crown color={medal} fill={medal} size={26} /> : null}
@@ -61,6 +65,7 @@ export function Podium({ entries, meId }: { entries: LeaderboardEntry[]; meId?: 
                 photoUrl={avatarPhotoUrl(entry.avatarPath)}
                 size={first ? 64 : 50}
                 frameId={entry.frameId}
+                rating={entry.rating}
               />
             ) : (
               <View style={[styles.podiumRing, { borderColor: medal }]}>
@@ -72,7 +77,7 @@ export function Podium({ entries, meId }: { entries: LeaderboardEntry[]; meId?: 
               </View>
             )}
             <Text variant="bodyStrong" numberOfLines={1} align="center">
-              {isMe ? 'Vos' : entry.username}
+              {isMe ? t.you : entry.username}
             </Text>
             <View style={styles.podiumElo}>
               <RankEmblemForRating rating={entry.rating} size={20} />
@@ -98,7 +103,7 @@ export function Podium({ entries, meId }: { entries: LeaderboardEntry[]; meId?: 
 }
 
 /** Una fila de la clasificación. `highlight` = la fila propia (en la lista o fija abajo). */
-export function LeaderboardRow({
+function LeaderboardRowBase({
   entry,
   isMe,
   stars,
@@ -113,6 +118,7 @@ export function LeaderboardRow({
   languageName?: string;
 }) {
   const styles = useStyles();
+  const t = useStrings(rankedStrings);
   const flag = flagEmoji(entry.region);
   return (
     <Pressable
@@ -123,8 +129,8 @@ export function LeaderboardRow({
         pressed && styles.pressed,
       ]}
       accessibilityRole="button"
-      accessibilityLabel={`Puesto ${entry.position}, ${entry.username}, ${entry.rating} ELO${stars !== undefined ? `, ${stars} estrellas` : ''}`}
-      accessibilityHint="Abre el perfil del jugador"
+      accessibilityLabel={t.rowA11y(entry.position, entry.username, entry.rating, stars)}
+      accessibilityHint={t.openProfileHint}
       onPress={() => openPlayer(entry, isMe)}
     >
       <View style={[styles.badge, highlight && styles.badgeMe]}>
@@ -141,6 +147,7 @@ export function LeaderboardRow({
         photoUrl={avatarPhotoUrl(entry.avatarPath)}
         size={entry.frameId ? 32 : 38}
         frameId={entry.frameId}
+        rating={entry.rating}
       />
       <View style={styles.name}>
         <Text variant="bodyStrong" numberOfLines={1}>
@@ -151,7 +158,7 @@ export function LeaderboardRow({
           <View style={styles.sub}>
             {isMe ? (
               <Text variant="caption" color="primarySoft">
-                Vos
+                {t.you}
               </Text>
             ) : null}
             {languageName ? (
@@ -180,6 +187,8 @@ export function LeaderboardRow({
     </Pressable>
   );
 }
+
+export const LeaderboardRow = memo(LeaderboardRowBase);
 
 const useStyles = themedStyles(() =>
   StyleSheet.create({

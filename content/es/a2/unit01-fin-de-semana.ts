@@ -4,10 +4,12 @@ import { dialogue, ex, question, reading, w } from '../helpers';
 /**
  * Español A2 U1 «What did you do on the weekend?» (docs/ES_A1_A2.md): contar qué hiciste ayer, anoche
  * y el fin de semana pasado con el pretérito indefinido (regulares -ar, -er, -ir e irregulares hacer,
- * ir / ser, ver), preguntarlo con vos y usar ya / todavía no con las tareas de la casa.
+ * ir / ser, ver), preguntarlo con tú (hablaste, comiste, hiciste) y usar ya / todavía no con las
+ * tareas de la casa. Variante: español neutro de Latinoamérica (tú y ustedes).
  * Pronunciación: la sílaba acentuada cambia el tiempo (hablo, presente, frente a habló, pasado).
- * Cultura: el asado del domingo en familia; en la Argentina el pasado de todos los días es el
- * indefinido (hoy comí, ya terminé), no el pretérito perfecto (he comido), que se ve en la U11.
+ * Cultura: la comida del domingo en familia (en Puebla, en Lima; un asado en Buenos Aires); en
+ * Latinoamérica el pasado de todos los días es el indefinido (hoy comí, ya terminé), no el pretérito
+ * perfecto (he comido), más frecuente en España, que se ve en la U11.
  *
  * ESTADO EDITORIAL: borrador, sin revisión de hablantes nativos. Se carga sin publicar.
  */
@@ -19,7 +21,7 @@ const LUNES = dialogue(
     ['Martín', '¡Hola, Lucía! ¿Qué hiciste el finde?'],
     [
       'Lucía',
-      'El sábado fui al cine con mi hermana. Vimos una película argentina muy divertida. ¿Y vos?',
+      'El sábado fui al cine con mi hermana. Vimos una película argentina muy divertida. ¿Y tú?',
     ],
     [
       'Martín',
@@ -49,9 +51,9 @@ const MENSAJE = reading(
   'A message from Sofía to her friend Tomás on Monday.',
   [
     '¡Hola, Tomás! ¿Cómo estás?',
-    'El fin de semana pasado fui a Rosario a visitar a mis abuelos.',
-    'El sábado hablé mucho con mi abuela y tomé mate con mi abuelo.',
-    'El domingo comimos un asado en familia.',
+    'El fin de semana pasado fui a Puebla a visitar a mis abuelos.',
+    'El sábado hablé mucho con mi abuela y tomé café con mi abuelo.',
+    'El domingo comimos en familia.',
     'Anoche dormí diez horas. ¡Estoy muy contenta!',
     'Sofía',
   ],
@@ -68,6 +70,11 @@ export const ES_A2_U01: EsUnitDef = {
     'Mateo',
     'Camila',
     'Diego',
+    'Puebla',
+    'Lima',
+    'Cusco',
+    'Cancún',
+    'Bogotá',
     'Rosario',
     'Córdoba',
     'Mendoza',
@@ -113,7 +120,7 @@ export const ES_A2_U01: EsUnitDef = {
     grammar: {
       title: 'The simple past (pretérito indefinido)',
       explanation:
-        'To talk about finished actions, Argentines use the simple past, even for things that happened today (hoy comí, ya terminé); the form he comido exists but is much less common in Argentina. Regular -ar verbs: hablé, hablaste (vos), habló (él, ella, usted), hablamos, hablaron. Regular -er and -ir verbs: comí, comiste, comió, comimos, comieron. The yo and él forms carry a written accent on the last syllable, and that stress is the whole difference between hablo (I speak, now) and habló (he spoke). Three very common verbs are irregular and have no accent: hacer → hice, hiciste, hizo; ir → fui, fuiste, fue (ser has the same forms: fue muy lindo, it was really nice); ver → vi, viste, vio. Ya means already and todavía no means not yet: where English says “Have you eaten yet?”, Argentines say ¿Ya comiste?',
+        'To talk about finished actions, Latin Americans use the simple past, even for things that happened today (hoy comí, ya terminé); the form he comido exists, but in Latin America it is much less common than in Spain. Regular -ar verbs: hablé, hablaste (tú), habló (él, ella, usted), hablamos, hablaron. Regular -er and -ir verbs: comí, comiste, comió, comimos, comieron. The yo and él forms carry a written accent on the last syllable, and that stress is the whole difference between hablo (I speak, now) and habló (he spoke). Three very common verbs are irregular and have no accent: hacer → hice, hiciste, hizo; ir → fui, fuiste, fue (ser has the same forms: fue muy lindo, it was really nice); ver → vi, viste, vio. Ya means already and todavía no means not yet: where English says “Have you eaten yet?”, Latin Americans say ¿Ya comiste?',
       examples: [
         { target: 'Ayer hablé con mi mamá.', base: 'Yesterday I talked to my mom.' },
         {
@@ -129,7 +136,7 @@ export const ES_A2_U01: EsUnitDef = {
     review: {
       status: 'draft',
       notes:
-        'A2 nuevo (U1). Sin revisión nativa. Revisar: «miré fútbol» (también se dice «vi el partido»); «hice las compras» para el súper; el «vos» en pasado sin acento (comiste) y sin la -s final coloquial (comistes), que no se enseña; «fui» sólo como «I went» (también es el pasado de ser: se explica en la gramática); «leí» con la aclaración «(in the past)» para separarlo del presente en inglés.',
+        'A2 nuevo (U1). Convertido al español neutro de Latinoamérica (tú y ustedes); sin revisión nativa. Revisar: «miré fútbol» (también se dice «vi el partido»); «hice las compras» para el súper; «finde» como forma coloquial (México, Chile, Argentina, España), con «fin de semana» siempre aceptado; el tú en pasado sin -s final (comiste; la forma coloquial comistes no se enseña); «tomé café» y «comimos en familia» en lugar de mate y asado en la lectura (Puebla); «fui» sólo como «I went» (también es el pasado de ser: se explica en la gramática); «leí» con la aclaración «(in the past)» para separarlo del presente en inglés.',
     },
     words: [
       w(
@@ -144,8 +151,8 @@ export const ES_A2_U01: EsUnitDef = {
         'es-el-fin-de-semana-pasado',
         'el fin de semana pasado',
         'last weekend',
-        'El fin de semana pasado fui a Córdoba.',
-        'Last weekend I went to Córdoba.',
+        'El fin de semana pasado fui a Lima.',
+        'Last weekend I went to Lima.',
         ['time'],
         { acceptedTexts: ['el finde pasado'] },
       ),
@@ -340,7 +347,7 @@ export const ES_A2_U01: EsUnitDef = {
           ),
           ex.listenChoice(
             'Anoche miré fútbol.',
-            ['Ayer miré fútbol.', 'Anoche tomé mate.', 'Anoche miró fútbol.'],
+            ['Ayer miré fútbol.', 'Anoche tomé café.', 'Anoche miró fútbol.'],
             ['es-anoche', 'es-mire'],
             { id: 'es.ex.i5zqh6ewc12r9r' },
           ),
@@ -360,7 +367,7 @@ export const ES_A2_U01: EsUnitDef = {
             {
               id: 'es.ex.b3ibr5mnn9xq7p',
               explanation:
-                'Tomé is the past of tomar (to drink, to have). Argentines use the simple past for things that happened earlier today too: esta mañana tomé…',
+                'Tomé is the past of tomar (to drink, to have). Latin Americans use the simple past for things that happened earlier today too: esta mañana tomé…',
             },
           ),
           ex.orderWords(
@@ -372,11 +379,11 @@ export const ES_A2_U01: EsUnitDef = {
             },
           ),
           ex.listenChoice(
-            'El fin de semana pasado tomé mate.',
+            'El fin de semana pasado tomé mucho café.',
             [
               'El fin de semana pasado hablé mucho.',
-              'Este fin de semana tomo mate.',
-              'El fin de semana pasado tomé café.',
+              'Este fin de semana tomo mucho café.',
+              'El fin de semana pasado tomé mucho té.',
             ],
             ['es-el-fin-de-semana-pasado', 'es-tome'],
             { id: 'es.ex.howiefqqv07wt3' },
@@ -409,10 +416,10 @@ export const ES_A2_U01: EsUnitDef = {
       // ------------------------------------------------------------------------------------ L2
       {
         title: 'Comí, dormí, leí',
-        objective: 'Talk about the past with -er and -ir verbs and ask a friend with vos.',
+        objective: 'Talk about the past with -er and -ir verbs and ask a friend with tú.',
         intro: {
           explanation:
-            'With -er and -ir verbs, yo ends in -í: comer → comí, dormir → dormí, leer → leí. To ask a friend (vos), add -aste to -ar verbs and -iste to -er and -ir verbs: ¿hablaste?, ¿comiste?, ¿dormiste? In the past the vos form has no special accent, and it never ends in s (you may hear comistes, but it is not standard). For él, ella and usted: habló, comió, and dormir changes its vowel: durmió.',
+            'With -er and -ir verbs, yo ends in -í: comer → comí, dormir → dormí, leer → leí. To ask a friend (tú), add -aste to -ar verbs and -iste to -er and -ir verbs: ¿hablaste?, ¿comiste?, ¿dormiste? Careful: in the present the tú form ends in -s (hablas, comes), but in the past it does not (you may hear comistes, but it is not standard). For él, ella and usted: habló, comió, and dormir changes its vowel: durmió.',
           examples: [
             {
               target: '¿Qué comiste ayer? — Comí pescado.',
@@ -440,7 +447,7 @@ export const ES_A2_U01: EsUnitDef = {
             ['es-dormi', 'es-anoche'],
             {
               id: 'es.ex.rjx3qxomg5t6by',
-              explanation: 'Dormí is I slept. Dormiste is the vos form: you slept.',
+              explanation: 'Dormí is I slept. Dormiste is the tú form: you slept.',
             },
           ),
           ex.listenChoice(
@@ -468,11 +475,11 @@ export const ES_A2_U01: EsUnitDef = {
             {
               id: 'es.ex.osxhnxx07hppvt',
               explanation:
-                'With él, ella and usted the past of -ar verbs ends in a stressed -ó: habló. Hablé is yo; hablaste is vos.',
+                'With él, ella and usted the past of -ar verbs ends in a stressed -ó: habló. Hablé is yo; hablaste is tú.',
             },
           ),
           ex.fillBlank(
-            '¿Vos ___ bien anoche?',
+            'Y tú, ¿___ bien anoche?',
             'Did you sleep well last night?',
             'dormiste',
             ['dormí', 'durmió', 'leíste'],
@@ -480,7 +487,7 @@ export const ES_A2_U01: EsUnitDef = {
             {
               id: 'es.ex.kdcwo71hlaphd7',
               explanation:
-                'With vos, -er and -ir verbs take -iste in the past: dormiste, comiste, leíste.',
+                'With tú, -er and -ir verbs take -iste in the past: dormiste, comiste, leíste. Durmió is él, ella or usted.',
             },
           ),
           ex.translationChoice(
@@ -514,6 +521,7 @@ export const ES_A2_U01: EsUnitDef = {
               id: 'es.ex.e5w1fwlujofp4c',
               acceptedAnswers: [
                 '¿Dormiste bien? Sí, dormí mucho.',
+                '¿Tú dormiste bien? — Sí, dormí mucho.',
                 '¿Vos dormiste bien? — Sí, dormí mucho.',
                 '¿Durmió bien? — Sí, dormí mucho.',
               ],
@@ -584,14 +592,14 @@ export const ES_A2_U01: EsUnitDef = {
             },
           ),
           ex.fillBlank(
-            '¿Vos ___ a Bariloche el verano pasado?',
-            'Did you go to Bariloche last summer?',
+            'Y tú, ¿___ a Cancún el verano pasado?',
+            'Did you go to Cancún last summer?',
             'fuiste',
             ['fui', 'fue', 'viste'],
             ['es-fui'],
             {
               id: 'es.ex.jgqv5mnvnl5cxz',
-              explanation: 'With vos: fuiste. Fui is yo and fue is él, ella or usted.',
+              explanation: 'With tú: fuiste. Fui is yo and fue is él, ella or usted.',
             },
           ),
           ex.orderWords(
@@ -603,11 +611,11 @@ export const ES_A2_U01: EsUnitDef = {
             },
           ),
           ex.listenChoice(
-            'Fui a Mendoza con mi familia.',
+            'Fui a Cusco con mi familia.',
             [
-              'Fue a Mendoza con su familia.',
-              'Fui a Córdoba con mi familia.',
-              'Voy a Mendoza con mi familia.',
+              'Fue a Cusco con su familia.',
+              'Fui a Bogotá con mi familia.',
+              'Voy a Cusco con mi familia.',
             ],
             ['es-fui'],
             { id: 'es.ex.3opwlnuo05l8t7' },
@@ -620,6 +628,7 @@ export const ES_A2_U01: EsUnitDef = {
               id: 'es.ex.vgm1m4m933hy83',
               acceptedAnswers: [
                 '¿Qué hiciste el finde pasado?',
+                '¿Qué hiciste tú el fin de semana pasado?',
                 '¿Qué hiciste vos el fin de semana pasado?',
                 '¿Qué hizo el fin de semana pasado?',
               ],
@@ -643,7 +652,7 @@ export const ES_A2_U01: EsUnitDef = {
         objective: 'Talk about housework and say what you have already done or not done yet.',
         intro: {
           explanation:
-            'Ya + past means already: ya limpié (I’ve already cleaned). Todavía no + past means not yet: todavía no terminé. Where English uses the present perfect (Have you cleaned yet?), Argentines use the simple past: ¿Ya limpiaste? Housework: limpiar (to clean), ordenar (to tidy up) and hacer las compras (to do the food shopping; in the past, hice las compras). After quiero, odio or voy a, the verb stays in the infinitive: quiero ordenar.',
+            'Ya + past means already: ya limpié (I’ve already cleaned). Todavía no + past means not yet: todavía no terminé. Where English uses the present perfect (Have you cleaned yet?), Latin Americans use the simple past: ¿Ya limpiaste? (In Spain you will often hear ¿Ya has limpiado?) Housework: limpiar (to clean), ordenar (to tidy up) and hacer las compras (to do the food shopping; in the past, hice las compras). After quiero, odio or voy a, the verb stays in the infinitive: quiero ordenar.',
           examples: [
             {
               target: '¿Ya limpiaste la cocina? — Sí, ya limpié.',
@@ -768,7 +777,7 @@ export const ES_A2_U01: EsUnitDef = {
         objective: 'Understand people telling you about their weekend and tell them about yours.',
         intro: {
           explanation:
-            'On Monday, everyone asks ¿Qué hiciste el finde? (finde is the everyday short form of fin de semana). A typical Argentine Sunday: a long lunch with the family, often an asado (a barbecue), and football in the afternoon. To tell a story, list the days and join the actions with y and después. To sum it up: fue muy lindo (it was really nice).',
+            'On Monday, everyone asks ¿Qué hiciste el fin de semana? (or, informally, ¿Qué hiciste el finde?, a short form heard in many countries). In much of Latin America, Sunday means a long lunch with the family (in Argentina and Uruguay, often an asado, a barbecue) and football in the afternoon. To tell a story, list the days and join the actions with y and después. To sum it up: fue muy lindo (it was really nice).',
           examples: [
             {
               target: 'El sábado fui al cine y el domingo comí un asado.',
@@ -813,27 +822,27 @@ export const ES_A2_U01: EsUnitDef = {
             'es.ex.8cf6lvd7fs6lmd',
             MENSAJE,
             'Where did Sofía go last weekend?',
-            'To Rosario, to visit her grandparents',
+            'To Puebla, to visit her grandparents',
             [
-              'To Córdoba, to visit her parents',
-              'To Rosario, to visit her sister',
+              'To Lima, to visit her parents',
+              'To Puebla, to visit her sister',
               'To the cinema with Tomás',
             ],
             ['es-el-fin-de-semana-pasado', 'es-fui'],
-            'Sofía writes “El fin de semana pasado fui a Rosario a visitar a mis abuelos”.',
+            'Sofía writes “El fin de semana pasado fui a Puebla a visitar a mis abuelos”.',
           ),
           question(
             'es.ex.aq3c8xmpxj44bq',
             MENSAJE,
             'What did Sofía do with her grandfather?',
-            'She drank mate with him',
+            'She drank coffee with him',
             [
               'She talked a lot with him',
               'She watched football with him',
-              'She cooked an asado with him',
+              'She ate an asado with him',
             ],
             ['es-tome'],
-            'She writes “tomé mate con mi abuelo”; she talked a lot with her grandmother.',
+            'She writes “tomé café con mi abuelo”; she talked a lot with her grandmother.',
           ),
           ex.listenChoice(
             'El domingo comí un asado con mi familia.',

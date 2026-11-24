@@ -6,7 +6,7 @@ import type { WritingRequirement, WritingTaskDef } from '../../shared/writing';
  * Práctica opcional al terminar la lección; no bloquea ni cuenta para el progreso.
  *
  * Como el resto del curso de español, las consignas, los requisitos y las listas de control van en
- * inglés (el idioma de apoyo) y los modelos, en español rioplatense con voseo.
+ * inglés (el idioma de apoyo) y los modelos, en español neutro de Latinoamérica, con tú y ustedes (docs/ES_NEUTRAL_GUIDE.md).
  *
  * - `guided`: requisitos observables (las estructuras que la lección acaba de practicar). Completa =
  *   todos los obligatorios cumplidos.
@@ -51,8 +51,11 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
     title: 'Introduce yourself',
     instructions:
       'Introduce yourself in Spanish (real or invented details): say hello, your name, your nationality, where you live and what language you speak.',
-    prompts: ['¿Cómo te llamás?', '¿De dónde sos?'],
-    glossary: [{ term: 'Chicago', meaning: 'Chicago' }],
+    prompts: ['¿Cómo te llamas?', '¿De dónde eres?'],
+    glossary: [
+      { term: 'Chicago', meaning: 'Chicago' },
+      { term: 'Ciudad de México', meaning: 'Mexico City' },
+    ],
     requirements: [
       {
         id: 'name',
@@ -72,11 +75,11 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
       ...common(3),
     ],
     model:
-      '¡Hola! Me llamo Emma. Soy estadounidense, de Chicago. Vivo en Buenos Aires y soy estudiante. Hablo inglés y también un poco de español.',
+      '¡Hola! Me llamo Emma. Soy estadounidense, de Chicago. Vivo en Ciudad de México y soy estudiante. Hablo inglés y también un poco de español.',
     checklist: [
       'I start with a greeting.',
       'I use soy for my nationality and vivo en for my city.',
-      'Nationalities change for women: argentino → argentina.',
+      'Nationalities change for women: italiano → italiana.',
     ],
   },
   {
@@ -88,7 +91,7 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
     title: 'Your family',
     instructions:
       'Introduce your family: who they are, what their names are and how old they are. Use mi and mis.',
-    prompts: ['¿Cómo se llama tu mamá?', '¿Tenés hermanos?'],
+    prompts: ['¿Cómo se llama tu mamá?', '¿Tienes hermanos?'],
     requirements: [
       {
         id: 'possessive',
@@ -137,7 +140,7 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
       ...common(3),
     ],
     model:
-      'Vivo en un departamento. Hay un living, una cocina y dos dormitorios. En mi dormitorio hay una cama y una mesa. La mesa está al lado de la ventana.',
+      'Vivo en un apartamento. Hay una sala, una cocina y dos dormitorios. En mi dormitorio hay una cama y una mesa. La mesa está al lado de la ventana.',
     checklist: [
       'I use hay to say what there is (hay una cama).',
       'I use está to say where something is (la mesa está…).',
@@ -152,7 +155,7 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
     title: 'Your day',
     instructions:
       'Describe a normal day: what you do in the morning, in the afternoon and at night. Put the actions in order with primero and después.',
-    prompts: ['¿Qué hacés a la mañana?', '¿Y a la noche?'],
+    prompts: ['¿Qué haces por la mañana?', '¿Y por la noche?'],
     requirements: [
       {
         id: 'reflexive',
@@ -169,10 +172,10 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
       ...common(4),
     ],
     model:
-      'Todos los días me levanto a la mañana. Primero tomo un café con leche. Después trabajo. A la noche miro la tele y me acuesto.',
+      'Todos los días me levanto por la mañana. Primero tomo un café con leche. Después trabajo. Por la noche miro la tele y me acuesto.',
     checklist: [
       'I use yo + present tense verbs (trabajo, miro).',
-      'I order my day with primero, después, a la mañana and a la noche.',
+      'I order my day with primero, después, por la mañana and por la noche.',
     ],
   },
   {
@@ -184,7 +187,7 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
     title: 'Your free time',
     instructions:
       'Say what you like and don’t like doing in your free time. Remember: me gusta el fútbol (with the article), me gustan los libros (plural).',
-    prompts: ['¿Te gusta el fútbol?', '¿Qué hacés en tu tiempo libre?'],
+    prompts: ['¿Te gusta el fútbol?', '¿Qué haces en tu tiempo libre?'],
     requirements: [
       {
         id: 'likes',
@@ -248,7 +251,7 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
     title: 'Your job',
     instructions:
       'Say what you do (job or studies), where, and when you start and finish. Add someone from your family.',
-    prompts: ['¿A qué te dedicás?'],
+    prompts: ['¿A qué te dedicas?'],
     requirements: [
       {
         id: 'job',
@@ -257,7 +260,7 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
         patterns: [
           [
             'soy|es|somos|son',
-            'médico|médica|enfermero|enfermera|mozo|moza|vendedor|vendedora|profesor|profesora|ingeniero|ingeniera|abogado|abogada|estudiante|estudiantes|médicos|profesores',
+            'médico|médica|enfermero|enfermera|mesero|mesera|mozo|moza|camarero|camarera|vendedor|vendedora|profesor|profesora|ingeniero|ingeniera|abogado|abogada|estudiante|estudiantes|médicos|profesores',
           ],
         ],
       },
@@ -321,6 +324,7 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
     instructions:
       'Write about your plans for the weekend or the holidays: where you are going, with whom and how you will travel.',
     prompts: ['¿Qué vas a hacer este fin de semana?', '¿Vas a tomar el tren?'],
+    glossary: [{ term: 'Guadalajara', meaning: 'Guadalajara' }],
     requirements: [
       {
         id: 'ir-a',
@@ -330,17 +334,19 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'transport',
-        label: 'You mention a means of transport (en tren, en colectivo, a pie…)',
+        label: 'You mention a means of transport (en tren, en autobús, a pie…)',
         kind: 'pattern',
-        patterns: [['tren|colectivo|auto|avión|subte|bicicleta|pie']],
+        patterns: [
+          ['tren|autobús|carro|auto|coche|metro|avión|bicicleta|pie|colectivo|camión|subte'],
+        ],
       },
       ...common(3),
     ],
     model:
-      'Este fin de semana voy a visitar Rosario con mi familia. Vamos a tomar el tren. La semana que viene voy a viajar a la playa en auto.',
+      'Este fin de semana voy a visitar Guadalajara con mi familia. Vamos a tomar el tren. La semana que viene voy a viajar a la playa en autobús.',
     checklist: [
       'I use ir (voy, vamos) + a + infinitive for plans.',
-      'I use en with vehicles (en tren, en auto) but a pie.',
+      'I use en with vehicles (en tren, en autobús) but a pie.',
     ],
   },
 
@@ -355,8 +361,12 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
     title: 'Free writing: about me',
     instructions:
       'Write freely about yourself: who you are, your family, your day, what you like and your plans. There is no right answer: compare your text with the model and go through the checklist.',
-    prompts: ['¿Cómo te llamás?', '¿Qué te gusta?', '¿Qué vas a hacer este fin de semana?'],
-    glossary: [{ term: 'Londres', meaning: 'London' }],
+    prompts: ['¿Cómo te llamas?', '¿Qué te gusta?', '¿Qué vas a hacer este fin de semana?'],
+    glossary: [
+      { term: 'Londres', meaning: 'London' },
+      { term: 'Bogotá', meaning: 'Bogotá' },
+      { term: 'Cartagena', meaning: 'Cartagena' },
+    ],
     requirements: [
       {
         id: 'likes',
@@ -375,7 +385,7 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
       { id: 'words', label: 'Tip: about 40 words', kind: 'min_words', min: 40, optional: true },
     ],
     model:
-      '¡Hola! Me llamo Ana y soy inglesa, de Londres. Ahora vivo en Córdoba. Soy estudiante y a la tarde trabajo en un negocio. Tengo dos hermanas. Me gusta mucho la música y me encanta bailar. Este fin de semana voy a visitar Mendoza con mis amigos. ¡Vamos a tomar el colectivo!',
+      '¡Hola! Me llamo Ana y soy inglesa, de Londres. Ahora vivo en Bogotá. Soy estudiante y por la tarde trabajo en un negocio. Tengo dos hermanas. Me gusta mucho la música y me encanta bailar. Este fin de semana voy a visitar Cartagena con mis amigos. ¡Vamos a tomar el autobús!',
     checklist: [
       'I introduce myself and talk about my family.',
       'I talk about what I like with me gusta / me encanta.',
@@ -410,10 +420,10 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
       ...common(4),
     ],
     model:
-      'El sábado a la mañana hice las compras y limpié la casa. A la noche fui al cine con Martín y vi una película muy divertida. El domingo dormí mucho y comí con mi familia. Todavía no terminé mi libro.',
+      'El sábado por la mañana hice las compras y limpié la casa. Por la noche fui al cine con Martín y vi una película muy divertida. El domingo dormí mucho y comí con mi familia. Todavía no terminé mi libro.',
     checklist: [
       'I use the simple past: hice, fui, vi, comí.',
-      'In Argentina we say ya / todavía no with the simple past: todavía no terminé.',
+      'In Latin America ya / todavía no usually go with the simple past: todavía no terminé (in Spain you will also hear todavía no he terminado).',
     ],
   },
   {
@@ -426,6 +436,10 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
     instructions:
       'Write about a trip you took: where you went, when you left and arrived, how long you stayed and when you came back.',
     prompts: ['¿Adónde fuiste?', '¿Cuánto tiempo te quedaste?'],
+    glossary: [
+      { term: 'Cusco', meaning: 'Cusco' },
+      { term: 'Lima', meaning: 'Lima' },
+    ],
     requirements: [
       {
         id: 'past',
@@ -449,7 +463,7 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
       ...common(4),
     ],
     model:
-      'Hace dos años fui a Bariloche con mi hermana. Salimos de Buenos Aires en avión y llegué al hotel a la noche. Me quedé una semana. Volví en colectivo y llegué muy cansado.',
+      'Hace dos años fui a Cusco con mi hermana. Salimos de Lima en avión y llegué al hotel por la noche. Me quedé una semana. Volví en autobús y llegué muy cansado.',
     checklist: [
       'I tell the events in the simple past.',
       'I use hace + time to say how long ago: hace dos años.',
@@ -505,7 +519,11 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
         id: 'habit',
         label: 'You mark habits (de chico, cuando era chico, generalmente, cada…)',
         kind: 'pattern',
-        patterns: [['generalmente|cada|antes|siempre'], ['de', 'chico|chica'], ['cuando', 'era']],
+        patterns: [
+          ['generalmente|cada|antes|siempre'],
+          ['de', 'chico|chica|niño|niña|pequeño|pequeña'],
+          ['cuando', 'era'],
+        ],
       },
       ...common(4),
     ],
@@ -548,7 +566,7 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
       ...common(4),
     ],
     model:
-      'Ayer a la noche volvía a casa en colectivo. Llovía mucho. De repente, alguien me robó la billetera. Tuve mucho miedo. Entonces llamé a la policía. Por suerte, la policía llegó a tiempo.',
+      'Ayer por la noche volvía a casa en autobús. Llovía mucho. De repente, alguien me robó la billetera. Tuve mucho miedo. Entonces llamé a la policía. Por suerte, la policía llegó a tiempo.',
     checklist: [
       'The scene goes in the imperfect and the events in the simple past.',
       'I connect the story with de repente, entonces and por suerte.',
@@ -563,13 +581,13 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
     title: 'An invitation',
     instructions:
       'Write to a friend to invite them to a party: when it is, what there will be and where you will meet.',
-    prompts: ['¿Querés venir el sábado?'],
+    prompts: ['¿Quieres venir el sábado?'],
     requirements: [
       {
         id: 'invite',
-        label: 'You invite (¿querés venir…?, te invito a…)',
+        label: 'You invite (¿quieres venir…?, te invito a…)',
         kind: 'pattern',
-        patterns: [['querés', 'venir'], ['invito'], ['invitar']],
+        patterns: [['quieres', 'venir'], ['invito'], ['invitar']],
       },
       {
         id: 'future',
@@ -580,9 +598,9 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
       ...common(4),
     ],
     model:
-      '¡Hola, Lucía! El sábado que viene hago una fiesta en mi casa. ¿Querés venir? Habrá música y mucha comida. Nos encontramos en la estación a las nueve. ¡Será muy divertido!',
+      '¡Hola, Lucía! El sábado que viene hago una fiesta en mi casa. ¿Quieres venir? Habrá música y mucha comida. Nos encontramos en la estación a las nueve. ¡Será muy divertido!',
     checklist: [
-      'I invite with ¿querés venir…? (vos).',
+      'I invite a friend with tú: ¿quieres venir…?',
       'I say what there will be with habrá and ir a + infinitive.',
     ],
   },
@@ -612,7 +630,7 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
       ...common(4),
     ],
     model:
-      'Buen día, señora. Me llamo Martín y estudio en la universidad desde hace tres años. Me gustaría hacer una pasantía en su empresa. Puedo trabajar a la tarde. Muchas gracias.',
+      'Buenos días, señora. Me llamo Martín y estudio en la universidad desde hace tres años. Me gustaría hacer una pasantía en su empresa. Puedo trabajar por la tarde. Muchas gracias.',
     checklist: [
       'I use usted with a company: su empresa, le mando.',
       'I use desde hace + time for something that is still going on.',
@@ -627,7 +645,7 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
     title: 'You are sick',
     instructions:
       'Write to a coworker to say you can’t come to work: what hurts, how you feel and what you are going to do.',
-    prompts: ['¿Cómo te sentís?'],
+    prompts: ['¿Cómo te sientes?'],
     requirements: [
       {
         id: 'pain',
@@ -676,14 +694,14 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'shop',
-        label: 'You use a shopping word (el talle, probarse, con tarjeta, en efectivo…)',
+        label: 'You use a shopping word (la talla, probarse, con tarjeta, en efectivo…)',
         kind: 'pattern',
-        patterns: [['talle|número|probador|tarjeta|efectivo|liquidación']],
+        patterns: [['talla|talle|número|probador|tarjeta|efectivo|liquidación']],
       },
       ...common(3),
     ],
     model:
-      'Busco una campera para el invierno. La campera negra es más cara que la campera azul, pero es mejor. ¡Me la llevo! Pago con tarjeta.',
+      'Busco una chaqueta para el invierno. La chaqueta negra es más cara que la chaqueta azul, pero es mejor. ¡Me la llevo! Pago con tarjeta.',
     checklist: [
       'I compare with más / menos + adjective + que.',
       'I use mejor and peor, not más bueno or más malo.',
@@ -698,7 +716,7 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
     title: 'A problem with technology',
     instructions:
       'Write to a friend: say what is wrong with your computer or phone and how you will get in touch. Use an object pronoun (lo, la, le, les).',
-    prompts: ['¿Te anda la compu?'],
+    prompts: ['¿Te funciona la computadora?'],
     requirements: [
       {
         id: 'pronoun',
@@ -715,10 +733,10 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
       ...common(4),
     ],
     model:
-      '¡Hola, Mateo! Mi computadora no anda. Te escribo desde el celular. No puedo bajar la app de la facultad. ¿Me mandás la contraseña por mensaje, por favor? Te llamo a la noche.',
+      '¡Hola, Mateo! Mi computadora no funciona. Te escribo desde el celular. No puedo descargar la app de la universidad. ¿Me mandas la contraseña por mensaje, por favor? Te llamo por la noche.',
     checklist: [
       'The pronoun goes before the conjugated verb: te llamo, lo mando.',
-      'In Argentina we say no anda for “it doesn’t work”.',
+      'I say no funciona for “it doesn’t work” (in Argentina you will also hear no anda).',
     ],
   },
   {
@@ -731,6 +749,7 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
     instructions:
       'Write how two people met (you and your partner, your parents, some friends) and what their relationship is like now. Use a negative word (nunca, nadie, nada, ya no).',
     prompts: ['¿Cómo se conocieron?'],
+    glossary: [{ term: 'Santiago', meaning: 'Santiago (Chile)' }],
     requirements: [
       {
         id: 'reflexive',
@@ -752,7 +771,7 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
       ...common(4),
     ],
     model:
-      'Mis padres se conocieron en la facultad. Se casaron hace treinta años. Ahora viven juntos en Rosario y se llevan muy bien. Nunca se pelean. ¡Ya no trabajan!',
+      'Mis padres se conocieron en la universidad. Se casaron hace treinta años. Ahora viven juntos en Santiago y se llevan muy bien. Nunca se pelean. ¡Ya no trabajan!',
     checklist: [
       'I use se / nos with reflexive and reciprocal verbs.',
       'I use double negation correctly: no viene nadie / nadie viene.',
@@ -788,7 +807,7 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
       ...common(4),
     ],
     model:
-      'Para mí, el problema de mi barrio son los autos. Creo que hay muchos autos en la calle. Sin embargo, hay una solución: podríamos ir en bicicleta. Si llueve, podemos tomar el colectivo.',
+      'Para mí, el problema de mi barrio son los carros. Creo que hay muchos carros en la calle. Sin embargo, hay una solución: podríamos ir en bicicleta. Si llueve, podemos tomar el autobús.',
     checklist: [
       'I give my opinion with creo que, me parece que or para mí.',
       'I suggest with the conditional: podríamos, deberías.',
@@ -825,7 +844,7 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
       { id: 'words', label: 'Tip: about 60 words', kind: 'min_words', min: 60, optional: true },
     ],
     model:
-      'El fin de semana pasado fui al campo con mi familia. El sábado comimos un asado con mis abuelos y a la noche miré una película. Mi abuela cocina muy bien y siempre hay mucha comida. El domingo volvimos en tren. El próximo fin de semana es el cumpleaños de mi hermana. Vamos a hacer una fiesta en casa. Habrá mucha música y vamos a bailar. ¡Será muy divertido!',
+      'El fin de semana pasado fui al campo con mi familia. El sábado comimos con mis abuelos y por la noche miré una película. Mi abuela cocina muy bien y siempre hay mucha comida. El domingo volvimos en tren. El próximo fin de semana es el cumpleaños de mi hermana. Vamos a hacer una fiesta en casa. Habrá mucha música y vamos a bailar. ¡Será muy divertido!',
     checklist: [
       'I tell the past with the simple past.',
       'I tell the plans with ir a + infinitive or the future.',
@@ -864,7 +883,7 @@ export const ES_WRITING_TASKS: readonly WritingTaskDef[] = [
       { id: 'words', label: 'Tip: about 70 words', kind: 'min_words', min: 70, optional: true },
     ],
     model:
-      'Mi primer día en Buenos Aires fue hace cinco años. Era verano y había mucho sol. Llegué al aeropuerto a la mañana y estaba muy cansado. De repente, perdí mi billetera. ¡Tuve mucho miedo! Por suerte, estaba en mi valija. A la noche, comí con una familia muy simpática en su casa. Después escuché música con sus hijos. Para mí, fue el mejor día de mi viaje. Creo que fue un día muy lindo.',
+      'Mi primer día en Buenos Aires fue hace cinco años. Era verano y había mucho sol. Llegué al aeropuerto por la mañana y estaba muy cansado. De repente, perdí mi billetera. ¡Tuve mucho miedo! Por suerte, estaba en mi maleta. Por la noche, comí con una familia muy simpática en su casa. Después escuché música con sus hijos. Para mí, fue el mejor día de mi viaje. Creo que fue un día muy lindo.',
     checklist: [
       'I describe the scene with the imperfect and tell the events with the simple past.',
       'I use connectors: de repente, por suerte.',

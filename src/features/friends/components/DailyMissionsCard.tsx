@@ -2,7 +2,7 @@ import { BookOpen, CheckCircle2, Clock, Swords, Users } from 'lucide-react-nativ
 import { Fragment, useEffect, type ReactNode } from 'react';
 import { ActivityIndicator, Pressable, StyleSheet, View } from 'react-native';
 
-import { friendChallengeById } from '@shared/friendChallenges';
+import { friendChallengeById, type FriendMissionId } from '@shared/friendChallenges';
 
 import {
   Avatar,
@@ -19,11 +19,13 @@ import {
   themedStyles,
 } from '@/design-system';
 import { FormMessage } from '@/features/auth/FormMessage';
+import { useStrings } from '@/i18n';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 import { toUserMessage } from '@/lib/errors';
 
 import { endsInLabel } from '../format';
 import { useClaimFriendMission, useFriendDailyMissions, type FriendMissionState } from '../social';
+import { friendMissionStrings, friendsStrings } from '../strings';
 import { IconTile } from './IconTile';
 
 const ICON_SIZE = 18;
@@ -36,6 +38,7 @@ function missionIcon(id: string): ReactNode {
 /** Misiones diarias de Amigos: progreso real, premio en Polys y qué amigos ya las completaron. */
 export function DailyMissionsCard({ now }: { now: number }) {
   const styles = useStyles();
+  const t = useStrings(friendsStrings);
   const missions = useFriendDailyMissions();
   const claim = useClaimFriendMission();
 
@@ -49,14 +52,14 @@ export function DailyMissionsCard({ now }: { now: number }) {
   if (missions.isPending)
     return (
       <Card style={styles.center}>
-        <ActivityIndicator color={colors.primaryBright} accessibilityLabel="Cargando misiones" />
+        <ActivityIndicator color={colors.primaryBright} accessibilityLabel={t.loadingMissions} />
       </Card>
     );
   if (missions.isError || !missions.data)
     return (
       <Card style={styles.card}>
-        <Text color="textMuted">No pudimos cargar las misiones de hoy.</Text>
-        <Button label="Reintentar" variant="secondary" onPress={() => void missions.refetch()} />
+        <Text color="textMuted">{t.missionsError}</Text>
+        <Button label={t.retry} variant="secondary" onPress={() => void missions.refetch()} />
       </Card>
     );
 
@@ -75,7 +78,7 @@ export function DailyMissionsCard({ now }: { now: number }) {
       {claim.isError ? <FormMessage tone="error" message={toUserMessage(claim.error)} /> : null}
       <View style={styles.footer}>
         <Clock color={colors.textMuted} size={14} />
-        <Text variant="caption">{endsInLabel(missions.data.ends_at, now)} · nuevas cada día.</Text>
+        <Text variant="caption">{t.newEveryDay(endsInLabel(missions.data.ends_at, now))}</Text>
       </View>
     </Card>
   );
@@ -91,7 +94,12 @@ function MissionRow({
   onClaim: () => void;
 }) {
   const styles = useStyles();
-  const meta = friendChallengeById(mission.id);
+  const t = useStrings(friendsStrings);
+  const missionTexts = useStrings(friendMissionStrings);
+  // Los textos de shared/ están en español (los replica la base): se muestran por id.
+  const meta = friendChallengeById(mission.id)
+    ? missionTexts[mission.id as FriendMissionId]
+    : undefined;
   const done = mission.progress >= mission.target;
   const title = meta?.title ?? mission.id;
   const claimable = done && !mission.claimed;
@@ -120,7 +128,7 @@ function MissionRow({
               value={mission.progress / mission.target}
               height={6}
               colors={done ? gradients.gold : undefined}
-              accessibilityLabel={`${title}: ${mission.progress} de ${mission.target}`}
+              accessibilityLabel={t.missionProgressA11y(title, mission.progress, mission.target)}
             />
           </View>
           <Text variant="caption" color={done ? 'gold' : 'textMuted'} style={styles.count}>
@@ -147,11 +155,12 @@ function Reward({
   onClaim: () => void;
 }) {
   const styles = useStyles();
+  const t = useStrings(friendsStrings);
   if (claimable)
     return (
       <Pressable
         accessibilityRole="button"
-        accessibilityLabel={`Reclamar ${mission.reward} Polys`}
+        accessibilityLabel={t.claimA11y(mission.reward)}
         accessibilityState={{ busy: claiming }}
         disabled={claiming}
         onPress={onClaim}
@@ -174,7 +183,7 @@ function Reward({
     <View
       style={[styles.reward, mission.claimed && styles.rewardClaimed]}
       accessible
-      accessibilityLabel={mission.claimed ? 'Premio cobrado' : `Premio: ${mission.reward} Polys`}
+      accessibilityLabel={mission.claimed ? t.rewardClaimed : t.rewardA11y(mission.reward)}
     >
       <PolyCoin size={14} />
       <Text variant="caption" color={mission.claimed ? 'textMuted' : 'gold'} style={styles.bold}>
@@ -186,6 +195,7 @@ function Reward({
 
 function FriendsDone({ mission }: { mission: FriendMissionState }) {
   const styles = useStyles();
+  const t = useStrings(friendsStrings);
   const [first] = mission.friends;
   const others = mission.friends_done - 1;
   return (
@@ -198,8 +208,7 @@ function FriendsDone({ mission }: { mission: FriendMissionState }) {
         ))}
       </View>
       <Text variant="caption" numberOfLines={1} style={styles.flex}>
-        {first ? `${first.username}${others > 0 ? ` y ${others} más` : ''}` : ''}{' '}
-        {mission.friends_done === 1 ? 'ya la completó' : 'ya la completaron'}
+        {t.friendsDone(first?.username ?? '', first ? others : 0, mission.friends_done)}
       </Text>
     </View>
   );

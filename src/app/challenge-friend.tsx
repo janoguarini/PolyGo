@@ -28,6 +28,8 @@ import { useFriends } from '@/features/friends/api';
 import { IconTile } from '@/features/friends/components/IconTile';
 import { StatusAvatar } from '@/features/friends/components/PlayerRow';
 import { presenceLabel } from '@/features/friends/format';
+import { useStrings } from '@/i18n';
+import { challengeFriendStrings } from '@/i18n/screens/challenge-friend';
 
 /**
  * Antes de desafiar: a quién (un amigo o un código para compartir) y en qué modo de juego.
@@ -35,6 +37,7 @@ import { presenceLabel } from '@/features/friends/format';
  */
 export default function ChallengeFriendScreen() {
   const styles = useStyles();
+  const s = useStrings(challengeFriendStrings);
   const params = useLocalSearchParams<{ friend?: string; friendName?: string }>();
   const friends = useFriends();
   const [mode, setMode] = useState<GameModeId>(DEFAULT_GAME_MODE);
@@ -60,7 +63,7 @@ export default function ChallengeFriendScreen() {
     <Screen
       footer={
         <Button
-          label={params.friend ? 'Enviar desafío' : 'Crear código'}
+          label={params.friend ? s.sendChallenge : s.createCode}
           size="lg"
           icon={
             params.friend ? (
@@ -69,26 +72,22 @@ export default function ChallengeFriendScreen() {
               <KeyRound color={colors.onPrimary} size={20} />
             )
           }
-          accessibilityHint={
-            params.friend
-              ? `Le avisa a ${name ?? 'tu amigo'} y espera a que acepte`
-              : 'Crea un código para compartir con quien quieras'
-          }
+          accessibilityHint={params.friend ? s.sendHint(name) : s.codeHint}
           onPress={start}
         />
       }
     >
-      <ScreenHeader title="Desafiar" onBack={back} />
+      <ScreenHeader title={s.title} onBack={back} />
 
       {params.friend ? (
         <Card style={styles.rival}>
           {friend ? <StatusAvatar player={friend} size={56} online={friend.online} /> : null}
           <View style={styles.flex}>
             <Text variant="overline" color="primarySoft">
-              TU RIVAL
+              {s.yourRival}
             </Text>
             <Text variant="heading" color="textStrong" numberOfLines={1}>
-              {name ?? 'Tu amigo'}
+              {name ?? s.yourFriend}
             </Text>
             {friend ? (
               <Text variant="caption" color={friend.online ? 'success' : 'textMuted'}>
@@ -100,7 +99,7 @@ export default function ChallengeFriendScreen() {
             <View style={styles.elo}>
               <RankEmblemForRating rating={friend.rating} size={24} />
               <Text variant="caption" color="text">
-                {friend.rating} ELO
+                {s.elo(friend.rating)}
               </Text>
             </View>
           ) : null}
@@ -112,15 +111,15 @@ export default function ChallengeFriendScreen() {
           </IconTile>
           <View style={styles.flex}>
             <Text variant="heading" color="textStrong">
-              Desafío con código
+              {s.codeChallenge}
             </Text>
-            <Text variant="caption">Creá un código y compartilo con quien quieras.</Text>
+            <Text variant="caption">{s.codeChallengeHint}</Text>
           </View>
         </Card>
       )}
 
       <Text variant="overline" color="textStrong" style={styles.overline}>
-        ELEGÍ EL MODO
+        {s.pickMode}
       </Text>
       <View style={styles.modes} accessibilityRole="radiogroup">
         {GAME_MODES.map((m) => (
@@ -129,13 +128,13 @@ export default function ChallengeFriendScreen() {
         <View style={styles.soon}>
           <Sparkles color={colors.textSubtle} size={18} />
           <Text variant="caption" color="textMuted">
-            Más modos, muy pronto.
+            {s.moreModes}
           </Text>
         </View>
       </View>
 
       <Text variant="caption" align="center">
-        Amistoso: no mueve el ELO.
+        {s.friendlyNote}
       </Text>
     </Screen>
   );

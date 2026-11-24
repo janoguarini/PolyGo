@@ -2,14 +2,16 @@ import type { EsUnitDef } from '../../es-course';
 import { dialogue, ex, question, reading, w } from '../helpers';
 
 /**
- * Español A2 U6 «Invitations and plans» (docs/ES_A1_A2.md): invitar (¿querés venir…?, te invito a…),
- * aceptar (dale, con gusto), rechazar con cortesía (lo siento, no puedo, tengo que…), decir que
+ * Español A2 U6 «Invitations and plans» (docs/ES_A1_A2.md): invitar (¿quieres venir…?, te invito
+ * a…), aceptar (claro, con gusto), rechazar con cortesía (lo siento, no puedo, tengo que…), decir que
  * uno está libre y quedar (nos encontramos en…, nos vemos, el próximo sábado, en dos días). Futuro
- * simple introductorio (iré, haré, vendré, habrá, será): en la Argentina los planes se dicen con
- * ir a + infinitivo; el futuro simple aparece más en lo escrito, en promesas y en predicciones.
+ * simple introductorio (iré, haré, vendré, habrá, será): en la conversación de Latinoamérica los
+ * planes se dicen sobre todo con ir a + infinitivo; el futuro simple aparece más en lo escrito, en
+ * promesas y en predicciones. Variante: español neutro de Latinoamérica (tú y ustedes).
  * Pronunciación: la entonación de la invitación (sube al final) y de la respuesta cortés; el acento
  * final del futuro (iré, será).
- * Cultura: «dale», muy rioplatense; los mensajes entre amigos terminan con «un beso».
+ * Cultura: una fiesta en casa y una fiesta del barrio; los mensajes entre amigos terminan con «un
+ * beso» o «un abrazo».
  *
  * ESTADO EDITORIAL: borrador, sin revisión de hablantes nativos. Se carga sin publicar.
  */
@@ -18,11 +20,11 @@ const INVITACION = dialogue(
   'es.stim.a2-u6-invitacion',
   'Camila calls her friend Juan to invite him to something.',
   [
-    ['Camila', 'Hola, Juan. El sábado hago una fiesta en mi casa. ¿Querés venir?'],
-    ['Juan', '¡Dale, con gusto! ¿A qué hora?'],
+    ['Camila', 'Hola, Juan. El sábado hago una fiesta en mi casa. ¿Quieres venir?'],
+    ['Juan', '¡Claro, con gusto! ¿A qué hora?'],
     ['Camila', 'A las nueve de la noche. Va a venir Martín también.'],
     ['Juan', '¿Llevo algo?'],
-    ['Camila', 'Sí, si querés, traé algo para tomar.'],
+    ['Camila', 'Sí, si quieres, trae algo para tomar.'],
     ['Juan', 'Perfecto. ¡Nos vemos el sábado!'],
   ],
 );
@@ -35,8 +37,8 @@ const MENSAJE = reading(
     'Hola, Camila. ¡Gracias por invitarme a la fiesta!',
     'Lo siento, pero el sábado no puedo: tengo que trabajar.',
     '¿Estás libre el próximo viernes?',
-    'Podemos ir al cine o comer algo en Palermo.',
-    'Si querés, nos encontramos en la estación a las ocho.',
+    'Podemos ir al cine o comer algo en Coyoacán.',
+    'Si quieres, nos encontramos en la estación a las ocho.',
     '¡Un beso!',
   ],
   { from: 'Martín', to: 'Camila' },
@@ -57,13 +59,12 @@ const AVISO = reading(
 );
 
 export const ES_A2_U06: EsUnitDef = {
-  names: ['Camila', 'Juan', 'Martín', 'Palermo'],
+  names: ['Camila', 'Juan', 'Martín', 'Palermo', 'Coyoacán'],
   support: [
     'hago',
     'llevo',
     'algo',
     'si',
-    'traé',
     'perfecto',
     'invitarme',
     'trabajar',
@@ -73,7 +74,7 @@ export const ES_A2_U06: EsUnitDef = {
     'baile',
     'comida',
     'esperamos',
-    'podés',
+    'puedes',
     'invito',
     'cenar',
     'ir',
@@ -84,17 +85,17 @@ export const ES_A2_U06: EsUnitDef = {
     title: 'Invitations and plans',
     titleEn: 'Invitaciones y planes',
     description:
-      'Invite friends, accept with dale or con gusto, say no politely with lo siento, no puedo, arrange when and where to meet, and recognize the simple future (iré, haré, será, habrá).',
+      'Invite friends, accept with claro or con gusto, say no politely with lo siento, no puedo, arrange when and where to meet, and recognize the simple future (iré, haré, será, habrá).',
     emoji: '🎉',
     objective:
       'You can invite someone, accept or politely decline an invitation, say when you are free, arrange a time and place to meet, and understand plans and announcements in the future.',
     grammar: {
       title: 'Inviting and the future: voy a ir and iré',
       explanation:
-        'To invite a friend, ask ¿querés venir…? (with usted: ¿quiere venir…?) or say te invito a… To accept: dale (very Argentine: OK, sure) or con gusto (with pleasure). To decline politely: lo siento, no puedo, plus a reason with tengo que + infinitive (tengo que trabajar). For plans, people in Argentina almost always use ir a + infinitive: voy a ir, vamos a hacer una fiesta. The simple future (iré, haré, vendré, será, habrá) is more common in writing, in promises and in predictions. It is the infinitive + -é for yo and -á for él / ella (invitar → invitaré, ser → será), and a few verbs shorten the stem: hacer → haré, venir → vendré, haber → habrá (there will be). Every form is stressed on the last syllable, so it always has an accent.',
+        'To invite a friend, ask ¿quieres venir…? (querer changes e to ie: quiero, quieres, quiere; with usted: ¿quiere venir…?; to a group: ¿quieren venir…?) or say te invito a… To accept: ¡claro! (sure, of course) or con gusto (with pleasure). To decline politely: lo siento, no puedo, plus a reason with tengo que + infinitive (tengo que trabajar). For plans, in everyday conversation Latin Americans mostly use ir a + infinitive: voy a ir, vamos a hacer una fiesta. The simple future (iré, haré, vendré, será, habrá) is more common in writing, in promises and in predictions. It is the infinitive + -é for yo, -ás for tú and -á for él / ella (invitar → invitaré, invitarás, ser → será), and a few verbs shorten the stem: hacer → haré, venir → vendré, haber → habrá (there will be). Every form is stressed on the last syllable, so it always has an accent.',
       examples: [
         {
-          target: '¿Querés venir a mi fiesta? — ¡Dale!',
+          target: '¿Quieres venir a mi fiesta? — ¡Claro!',
           base: 'Do you want to come to my party? — Sure!',
         },
         {
@@ -110,26 +111,29 @@ export const ES_A2_U06: EsUnitDef = {
     review: {
       status: 'draft',
       notes:
-        'A2 nuevo (U6). Sin revisión nativa. Revisar: «dale» como aceptación (informal, muy rioplatense); «¿Llevo algo?» / «traé algo para tomar» en una invitación; «un beso» como cierre de mensaje entre amigos (también entre varones es común «un abrazo»); el futuro simple presentado como más escrito y para predicciones (en la conversación de acá se prefiere «voy a + infinitivo»); «nos encontramos en…» con valor de propuesta («let’s meet»).',
+        'A2 nuevo (U6). Convertido al español neutro de Latinoamérica (tú y ustedes); sin revisión nativa. Revisar: «¡claro!» como aceptación en lugar de «dale» (rioplatense; «dale» y «de acuerdo» se aceptan en las respuestas; «vale», de España, no se usa); el imperativo «trae algo para tomar» (igual a la forma de usted del presente); «¿Llevo algo?» en una invitación; «un beso» o «un abrazo» como cierre de mensaje entre amigos; el futuro simple presentado como más escrito y para predicciones (en la conversación se prefiere «voy a + infinitivo»); Coyoacán (Ciudad de México) en el mensaje; «nos encontramos en…» con valor de propuesta («let’s meet»).',
     },
     words: [
       w(
-        'es-queres-venir',
-        '¿querés venir?',
+        'es-quieres-venir',
+        '¿quieres venir?',
         'do you want to come?',
-        '¿Querés venir al cine el sábado?',
+        '¿Quieres venir al cine el sábado?',
         'Do you want to come to the cinema on Saturday?',
-        ['invitations', 'voseo'],
-        { acceptedTexts: ['¿quieres venir?'] },
+        ['invitations'],
+        { acceptedTexts: ['¿querés venir?'] },
       ),
       w(
-        'es-dale',
-        'dale',
-        'OK',
-        '¿Vamos a la playa? — ¡Dale!',
+        'es-claro',
+        'claro',
+        'sure',
+        '¿Vamos a la playa? — ¡Claro!',
         'Shall we go to the beach? — Sure!',
-        ['invitations', 'argentina', 'informal'],
-        { acceptedTranslations: ['sure', 'okay', 'all right'] },
+        ['invitations'],
+        {
+          acceptedTranslations: ['of course', 'OK', 'okay'],
+          acceptedTexts: ['claro que sí', 'de acuerdo', 'dale'],
+        },
       ),
       w(
         'es-con-gusto',
@@ -244,8 +248,8 @@ export const ES_A2_U06: EsUnitDef = {
         'es-nos-vemos',
         'nos vemos',
         'see you',
-        '¡Chau, nos vemos mañana!',
-        'Bye, see you tomorrow!',
+        'Gracias, ¡nos vemos mañana!',
+        'Thanks, see you tomorrow!',
         ['invitations'],
       ),
       w(
@@ -269,14 +273,14 @@ export const ES_A2_U06: EsUnitDef = {
     lessons: [
       // ------------------------------------------------------------------------------------ L1
       {
-        title: '¿Querés venir?',
+        title: '¿Quieres venir?',
         objective: 'Invite a friend and accept an invitation.',
         intro: {
           explanation:
-            'To invite a friend: ¿querés venir a…? (with vos the stress falls on the last syllable: querés). With usted: ¿quiere venir? You can also say te invito a…, which often means you are paying. To accept: dale (very Argentine: OK, sure) or sí, con gusto (yes, with pleasure). Careful: mucho gusto is only for meeting someone. In ¿querés venir? your voice goes up at the end, as in a yes / no question in English.',
+            'To invite a friend: ¿quieres venir a…? Querer changes its e to ie: quiero, quieres, quiere. With usted: ¿quiere venir?; with a group: ¿quieren venir? You can also say te invito a…, which often means you are paying. To accept: ¡claro! (sure, of course) or sí, con gusto (yes, with pleasure). In Argentina and Uruguay you will hear dale, and in Spain vale. Careful: mucho gusto is only for meeting someone. In ¿quieres venir? your voice goes up at the end, as in a yes / no question in English.',
           examples: [
             {
-              target: '¿Querés venir a mi fiesta? — ¡Dale!',
+              target: '¿Quieres venir a mi fiesta? — ¡Claro!',
               base: 'Do you want to come to my party? — Sure!',
             },
             {
@@ -286,8 +290,8 @@ export const ES_A2_U06: EsUnitDef = {
           ],
         },
         takeaways: [
-          'You invite a friend with ¿querés venir…? or te invito a…',
-          'You accept with dale or con gusto.',
+          'You invite a friend with ¿quieres venir…? or te invito a…',
+          'You accept with claro or con gusto.',
         ],
         exercises: [
           ex.translationChoice(
@@ -297,48 +301,48 @@ export const ES_A2_U06: EsUnitDef = {
             ['es-la-fiesta'],
             { id: 'es.ex.uii7q43a2sgmu5' },
           ),
-          ex.translationChoice('dale', 'OK', ['I’m sorry', 'see you', 'please'], ['es-dale'], {
-            id: 'es.ex.zg2pjk4trvx203',
+          ex.translationChoice('claro', 'sure', ['I’m sorry', 'see you', 'please'], ['es-claro'], {
+            id: 'es.ex.glfubpks3aod34',
           }),
           ex.fillBlank(
             '¿___ venir a mi fiesta?',
-            'Do you want to come to my party?',
-            'Querés',
+            'Do you want to come to my party? (to a friend)',
+            'Quieres',
             ['Quiero', 'Quiere', 'Vamos'],
-            ['es-queres-venir', 'es-la-fiesta'],
+            ['es-quieres-venir', 'es-la-fiesta'],
             {
-              id: 'es.ex.ycno0ypcyf6iky',
+              id: 'es.ex.sy6ek2t6865ztu',
               explanation:
-                'With vos: ¿querés venir? Quiero is I want; quiere is for usted, but «my party» shows you are talking to a friend.',
+                'With tú: ¿quieres venir? (querer: e → ie). Quiero is I want; quiere is for usted or él / ella, but here you are talking to a friend.',
             },
           ),
           ex.listenChoice(
-            '¿Querés venir?',
-            ['¿Quiere venir?', '¿Querés comer?', '¿Querés salir?'],
-            ['es-queres-venir'],
-            { id: 'es.ex.ytoa4udf0ivcsl' },
+            '¿Quieres venir?',
+            ['¿Quiere venir?', '¿Quieres comer?', '¿Quieres salir?'],
+            ['es-quieres-venir'],
+            { id: 'es.ex.set660kjzl6ejl' },
           ),
           ex.matchPairs(
             [
-              ['dale', 'OK'],
+              ['claro', 'sure'],
               ['con gusto', 'with pleasure'],
               ['la fiesta', 'the party'],
               ['invitar', 'to invite'],
             ],
-            ['es-dale', 'es-con-gusto', 'es-la-fiesta', 'es-invitar'],
-            { id: 'es.ex.dxh8xcav87ks4b' },
+            ['es-claro', 'es-con-gusto', 'es-la-fiesta', 'es-invitar'],
+            { id: 'es.ex.f7ptxv12a6fnog' },
           ),
           ex.fillBlank(
             'Te invito a mi fiesta. — ¡___!',
             'I’m inviting you to my party. — Sure!',
-            'Dale',
-            ['Chau', 'De nada', 'Mucho gusto'],
-            ['es-dale'],
+            'Claro',
+            ['Adiós', 'De nada', 'Mucho gusto'],
+            ['es-claro'],
             {
-              id: 'es.ex.xg6ccz8ostka96',
+              id: 'es.ex.dfzh6omow9abek',
               skill: 'vocabulary',
               explanation:
-                'Dale means OK, sure. Mucho gusto is only for introductions; with pleasure is con gusto.',
+                '¡Claro! means sure, of course. Mucho gusto is only for introductions; with pleasure is con gusto.',
             },
           ),
           ex.orderWords(
@@ -354,23 +358,36 @@ export const ES_A2_U06: EsUnitDef = {
             { id: 'es.ex.ogfdrt2sb01qbb' },
           ),
           ex.translateWrite(
-            'Do you want to come to the party? — OK!',
-            '¿Querés venir a la fiesta? — ¡Dale!',
-            ['es-queres-venir', 'es-la-fiesta', 'es-dale'],
+            'Do you want to come to the party? — Sure!',
+            '¿Quieres venir a la fiesta? — ¡Claro!',
+            ['es-quieres-venir', 'es-la-fiesta', 'es-claro'],
             {
-              id: 'es.ex.adz1rm88fv1ycq',
+              id: 'es.ex.kwfynar3zkshdr',
               acceptedAnswers: [
-                '¿Querés venir a la fiesta? ¡Dale!',
-                '¿Querés venir a la fiesta? — Dale.',
+                '¿Quieres venir a la fiesta? ¡Claro!',
+                '¿Quieres venir a la fiesta? — Claro.',
+                '¿Quieres venir a la fiesta? — ¡Claro que sí!',
+                '¿Quieres venir a la fiesta? — ¡De acuerdo!',
                 '¿Quieres venir a la fiesta? — ¡Dale!',
+                '¿Querés venir a la fiesta? — ¡Dale!',
               ],
             },
           ),
           ex.shortAnswer(
-            '¿Querés venir a mi casa el sábado?',
+            '¿Quieres venir a mi casa el sábado?',
             'Accept the invitation politely (e.g. «Sí, con gusto»).',
             'Sí, con gusto.',
-            ['Con gusto.', '¡Sí, con gusto!', 'Dale, con gusto.', '¡Dale!', 'Dale.', 'Sí, dale.'],
+            [
+              'Con gusto.',
+              '¡Sí, con gusto!',
+              'Claro, con gusto.',
+              '¡Claro!',
+              'Claro que sí.',
+              'Sí, claro.',
+              'De acuerdo.',
+              'Dale, con gusto.',
+              'Sí, dale.',
+            ],
             ['es-con-gusto'],
             { id: 'es.ex.d4d7vsfemby6p6' },
           ),
@@ -383,7 +400,7 @@ export const ES_A2_U06: EsUnitDef = {
         objective: 'Decline politely, give a reason and say when you are free.',
         intro: {
           explanation:
-            'To say no politely, start with lo siento (I’m sorry), then no puedo (I can’t) and a reason with tengo que + infinitive (I have to): lo siento, no puedo, tengo que trabajar. With vos: ¿podés? (can you?). To say you are available: estoy libre (libre is the same for a man or a woman). In Argentina a flat no sounds rude: people give a reason and suggest another plan (el plan).',
+            'To say no politely, start with lo siento (I’m sorry), then no puedo (I can’t) and a reason with tengo que + infinitive (I have to): lo siento, no puedo, tengo que trabajar. With tú: ¿puedes? (can you?); poder changes o to ue, as in puedo. To say you are available: estoy libre (libre is the same for a man or a woman). In most Spanish-speaking countries a flat no sounds rude: people give a reason and suggest another plan (el plan).',
           examples: [
             {
               target: 'Lo siento, no puedo. Tengo que trabajar.',
@@ -418,12 +435,12 @@ export const ES_A2_U06: EsUnitDef = {
             'Lo siento, no ___. Tengo que trabajar.',
             'I’m sorry, I can’t. I have to work.',
             'puedo',
-            ['podés', 'quiero', 'estoy'],
+            ['puedes', 'quiero', 'estoy'],
             ['es-lo-siento', 'es-no-puedo'],
             {
               id: 'es.ex.k6o2xzi1h8lhoa',
               explanation:
-                'No puedo is I can’t (yo). Podés is the vos form, and no quiero (I don’t want to) would sound rude.',
+                'No puedo is I can’t (yo). Puedes is the tú form, and no quiero (I don’t want to) would sound rude.',
             },
           ),
           ex.listenChoice(
@@ -531,22 +548,22 @@ export const ES_A2_U06: EsUnitDef = {
             },
           ),
           question(
-            'es.ex.2sj4kvks2kzsmc',
+            'es.ex.j93ltunkctzf1h',
             INVITACION,
             'What is Camila organizing?',
             'A party at her house on Saturday',
             ['A dinner at a restaurant', 'A trip to the beach', 'A party at Juan’s house'],
-            ['es-la-fiesta', 'es-queres-venir'],
-            'Camila says “El sábado hago una fiesta en mi casa. ¿Querés venir?”',
+            ['es-la-fiesta', 'es-quieres-venir'],
+            'Camila says “El sábado hago una fiesta en mi casa. ¿Quieres venir?”',
           ),
           question(
-            'es.ex.7vg8nd5ieptt2r',
+            'es.ex.aauvjfzwfcme7f',
             INVITACION,
             'How does Juan answer the invitation?',
             'He accepts happily',
             ['He says he can’t', 'He says maybe', 'He asks who is going'],
-            ['es-dale', 'es-con-gusto'],
-            'Juan answers “¡Dale, con gusto!”: OK, with pleasure.',
+            ['es-claro', 'es-con-gusto'],
+            'Juan answers “¡Claro, con gusto!”: sure, with pleasure.',
           ),
           ex.matchPairs(
             [
@@ -583,7 +600,7 @@ export const ES_A2_U06: EsUnitDef = {
             'Something to drink',
             ['Something to eat', 'Music', 'Nothing'],
             ['es-nos-vemos'],
-            'Camila tells him “traé algo para tomar”: bring something to drink.',
+            'Camila tells him “trae algo para tomar”: bring something to drink.',
           ),
           ex.translateWrite(
             'See you in two days!',
@@ -612,7 +629,7 @@ export const ES_A2_U06: EsUnitDef = {
         objective: 'Recognize and use the simple future in plans, promises and announcements.',
         intro: {
           explanation:
-            'In everyday conversation Argentines talk about plans with ir a + infinitive: voy a ir, voy a hacer una fiesta. The simple future appears more in writing, in promises and in predictions. Regular verbs add -é for yo and -á for él / ella to the infinitive (ser → será). Some shorten the stem: hacer → haré, venir → vendré, haber → habrá (there will be, the future of hay). The stress is always on the last syllable, which carries the accent: iré, será. Don’t mix up habrá (there will be) and había (there was).',
+            'In everyday conversation, Latin Americans usually talk about plans with ir a + infinitive: voy a ir, voy a hacer una fiesta. The simple future appears more in writing, in promises and in predictions. Regular verbs add -é for yo, -ás for tú and -á for él / ella to the infinitive (ser → serás, será). Some shorten the stem: hacer → haré, venir → vendré, haber → habrá (there will be, the future of hay). The stress is always on the last syllable, which carries the accent: iré, será. Don’t mix up habrá (there will be) and había (there was).',
           examples: [
             {
               target: 'El sábado habrá música en la plaza.',
@@ -719,11 +736,11 @@ export const ES_A2_U06: EsUnitDef = {
 
       // ------------------------------------------------------------------------------------ L5
       {
-        title: '¿Qué plan tenés?',
+        title: '¿Qué plan tienes?',
         objective: 'Understand a reply to an invitation and suggest another plan.',
         intro: {
           explanation:
-            'A polite written refusal thanks first, then apologizes and suggests something else: ¡Gracias por invitarme! Lo siento, pero… ¿Estás libre el próximo viernes? Messages between friends in Argentina often end with un beso, the written version of the kiss on the cheek. Listen to the music of the sentence: an invitation rises at the end (¿querés venir?), while a polite refusal falls gently, starting with lo siento.',
+            'A polite written refusal thanks first, then apologizes and suggests something else: ¡Gracias por invitarme! Lo siento, pero… ¿Estás libre el próximo viernes? Messages between friends in much of Latin America end with un beso (the written version of the kiss on the cheek) or un abrazo (a hug). Listen to the music of the sentence: an invitation rises at the end (¿quieres venir?), while a polite refusal falls gently, starting with lo siento.',
           examples: [
             {
               target: '¡Gracias por invitarme! Lo siento, pero no puedo.',
@@ -757,26 +774,26 @@ export const ES_A2_U06: EsUnitDef = {
               'Meeting at the station on Saturday',
             ],
             ['es-proximo', 'es-estoy-libre'],
-            '“¿Estás libre el próximo viernes? Podemos ir al cine o comer algo en Palermo.”',
+            '“¿Estás libre el próximo viernes? Podemos ir al cine o comer algo en Coyoacán.”',
           ),
           question(
             'es.ex.0zsu5kau15ns51',
             MENSAJE,
             'Where and when would they meet?',
             'At the station at eight',
-            ['At Camila’s house at nine', 'In Palermo at five', 'At the cinema at eight'],
+            ['At Camila’s house at nine', 'In Coyoacán at five', 'At the cinema at eight'],
             ['es-nos-encontramos'],
-            '“Si querés, nos encontramos en la estación a las ocho.”',
+            '“Si quieres, nos encontramos en la estación a las ocho.”',
           ),
           ex.listenChoice(
-            '¿Querés venir el próximo viernes?',
+            '¿Quieres venir el próximo viernes?',
             [
-              '¿Querés venir el próximo jueves?',
-              '¿Podés venir el próximo viernes?',
+              '¿Quieres venir el próximo jueves?',
+              '¿Puedes venir el próximo viernes?',
               'Quiero venir el próximo viernes.',
             ],
-            ['es-queres-venir', 'es-proximo'],
-            { id: 'es.ex.y6xu37srlr7prf' },
+            ['es-quieres-venir', 'es-proximo'],
+            { id: 'es.ex.gzbfakh7ep06ux' },
           ),
           ex.fillBlank(
             'El ___ es ir al cine y después comer algo.',
@@ -792,13 +809,13 @@ export const ES_A2_U06: EsUnitDef = {
           ),
           ex.matchPairs(
             [
-              ['¿querés venir?', 'do you want to come?'],
+              ['¿quieres venir?', 'do you want to come?'],
               ['iré', 'I will go'],
               ['estoy libre', "I'm free"],
               ['invitar', 'to invite'],
             ],
-            ['es-queres-venir', 'es-ire', 'es-estoy-libre', 'es-invitar'],
-            { id: 'es.ex.mqcuc3szh3hiww' },
+            ['es-quieres-venir', 'es-ire', 'es-estoy-libre', 'es-invitar'],
+            { id: 'es.ex.ql2llwegv1yj13' },
           ),
           ex.listenChoice(
             'Haré una fiesta.',
@@ -831,7 +848,7 @@ export const ES_A2_U06: EsUnitDef = {
             },
           ),
           ex.shortAnswer(
-            '¿Querés venir a la fiesta el sábado?',
+            '¿Quieres venir a la fiesta el sábado?',
             'Decline politely: say you are sorry, you can’t (start with «Lo siento…»).',
             'Lo siento, no puedo.',
             [

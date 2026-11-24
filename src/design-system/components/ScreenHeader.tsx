@@ -2,17 +2,21 @@ import { useTheme } from '../theme';
 import { ChevronLeft } from 'lucide-react-native';
 import { Pressable, StyleSheet, View } from 'react-native';
 
+import { useStrings } from '@/i18n';
+
+import { designSystemStrings } from '../strings';
 import { colors, MIN_TOUCH, spacing } from '../tokens';
 import { Text } from './Text';
 
 /** Título de pantalla apilada con botón para volver. */
 export function ScreenHeader({ title, onBack }: { title: string; onBack: () => void }) {
   useTheme();
+  const t = useStrings(designSystemStrings);
   return (
     <View style={styles.row}>
       <Pressable
         accessibilityRole="button"
-        accessibilityLabel="Volver"
+        accessibilityLabel={t.back}
         onPress={onBack}
         hitSlop={12}
         style={styles.back}

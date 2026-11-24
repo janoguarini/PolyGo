@@ -1,4 +1,7 @@
+import { getStrings } from '@/i18n';
+
 import type { LearningSummary } from './api';
+import { streakStrings } from './strings';
 
 type DailyState = Pick<LearningSummary, 'streak_days' | 'active_today' | 'today_seconds'>;
 
@@ -24,8 +27,6 @@ export function celebrationFor(
   if (!streakExtended && !goalMet) return null;
   return { streakDays: after.streak_days, streakExtended, goalMet, goalMinutes };
 }
-
-const DAY_LABELS = ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'];
 
 export interface WeekDay {
   label: string;
@@ -63,11 +64,65 @@ export function streakWeek(
     remaining--;
   }
   return days.map(({ date, daysAgo, frozen: isFrozen }) => ({
-    label: DAY_LABELS[date.getDay()]!,
+    label: getStrings(streakStrings).dayLabels[date.getDay()]!,
     active: active.has(daysAgo),
     frozen: isFrozen && !active.has(daysAgo),
     isToday: daysAgo === 0,
   }));
 }
 
-export const daysLabel = (n: number) => `${n} ${n === 1 ? 'día' : 'días'}`;
+export const daysLabel = (n: number) => getStrings(streakStrings).days(n);
+
+export interface CalendarDay {
+  /** YYYY-MM-DD. */
+  key: string;
+  day: number;
+  /** Hubo estudio ese día. */
+  studied: boolean;
+  /** Sin estudio, pero cubierto por un protector de racha. */
+  frozen: boolean;
+  isToday: boolean;
+  isFuture: boolean;
+}
+
+/** Primer y último día de un mes (month: 0–11), como YYYY-MM-DD. */
+export function monthRange(year: number, month: number): { from: string; to: string } {
+  return {
+    from: dateKey(new Date(year, month, 1)),
+    to: dateKey(new Date(year, month + 1, 0)),
+  };
+}
+
+/**
+ * Semanas de un mes para el calendario de racha, empezando en lunes; null = casilla vacía antes del
+ * día 1 o después del último. Marca los días con los datos reales (studied / frozen, YYYY-MM-DD): no
+ * deduce nada de la cantidad de días de racha.
+ */
+export function monthGrid(
+  year: number,
+  month: number,
+  studied: readonly string[],
+  frozen: readonly string[],
+  today = new Date(),
+): (CalendarDay | null)[][] {
+  const studiedSet = new Set(studied);
+  const frozenSet = new Set(frozen);
+  const todayKey = dateKey(today);
+  const lead = (new Date(year, month, 1).getDay() + 6) % 7; // lunes = 0
+  const length = new Date(year, month + 1, 0).getDate();
+  const cells: (CalendarDay | null)[] = Array.from({ length: lead }, () => null);
+  for (let day = 1; day <= length; day++) {
+    const key = dateKey(new Date(year, month, day));
+    const isStudied = studiedSet.has(key);
+    cells.push({
+      key,
+      day,
+      studied: isStudied,
+      frozen: !isStudied && frozenSet.has(key),
+      isToday: key === todayKey,
+      isFuture: key > todayKey,
+    });
+  }
+  while (cells.length % 7) cells.push(null);
+  return Array.from({ length: cells.length / 7 }, (_, w) => cells.slice(w * 7, w * 7 + 7));
+}

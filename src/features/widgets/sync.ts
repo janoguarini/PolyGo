@@ -4,17 +4,19 @@ import { Platform } from 'react-native';
 import type { Widget } from 'expo-widgets';
 
 import type { WordProgressEntry, WordRow } from '@/features/learning/api';
+import { getInterfaceLanguage, getStrings } from '@/i18n';
 
 import {
-  EMPTY_WORD_CARD,
   WIDGET_LINKS,
   buildQuiz,
   buildWordTimeline,
+  emptyWordCard,
   rankWidgetWords,
   type QuizProps,
   type WidgetContent,
   type WordCardProps,
 } from './content';
+import { widgetStrings } from './strings';
 
 /**
  * Los widgets necesitan el módulo nativo de expo-widgets: existe en development/production builds,
@@ -58,13 +60,18 @@ export interface WidgetSyncInput {
   content?: WidgetContent;
 }
 
+/** Ronda vacía en español. */
 export const EMPTY_QUIZ: QuizProps = {
   questions: [],
+  ui: widgetStrings.es.quiz,
   index: 0,
   chosen: -1,
   correctCount: 0,
   url: WIDGET_LINKS.quiz,
 };
+
+/** Ronda vacía en el idioma de la interfaz. */
+const emptyQuiz = (): QuizProps => ({ ...EMPTY_QUIZ, ui: getStrings(widgetStrings).quiz });
 
 let lastQuizKey: string | null = null;
 
@@ -97,10 +104,11 @@ export function syncWidgets(input: WidgetSyncInput): boolean {
     .map((e) => e.word.id)
     .sort()
     .join(',');
-  const quizKey = `${input.localDate}|${studiedIds}|${input.pool.length}`;
+  // El idioma entra en la clave: al cambiarlo, la ronda se vuelve a armar con sus textos.
+  const quizKey = `${input.localDate}|${studiedIds}|${input.pool.length}|${getInterfaceLanguage()}`;
   if (quizKey !== lastQuizKey) {
     widgets.quiz.updateSnapshot(
-      buildQuiz(input.myWords, input.pool, `quiz:${input.localDate}`) ?? EMPTY_QUIZ,
+      buildQuiz(input.myWords, input.pool, `quiz:${input.localDate}`) ?? emptyQuiz(),
     );
     lastQuizKey = quizKey;
   }
@@ -111,8 +119,8 @@ export function syncWidgets(input: WidgetSyncInput): boolean {
 export function clearWidgets(): void {
   const widgets = loadWidgets();
   if (!widgets) return;
-  widgets.word.updateSnapshot(EMPTY_WORD_CARD);
-  widgets.quiz.updateSnapshot(EMPTY_QUIZ);
+  widgets.word.updateSnapshot(emptyWordCard());
+  widgets.quiz.updateSnapshot(emptyQuiz());
   lastQuizKey = null;
 }
 

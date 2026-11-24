@@ -2,6 +2,7 @@ import * as Notifications from 'expo-notifications';
 import { AndroidImportance } from 'expo-notifications';
 import { Platform } from 'react-native';
 
+import { getStrings } from '@/i18n';
 import { deviceStorage } from '@/lib/secureStorage';
 
 import {
@@ -11,6 +12,7 @@ import {
   type ReminderPrefs,
   type StreakState,
 } from './schedule';
+import { reminderStrings } from './strings';
 
 /** En web no hay notificaciones locales programadas. */
 export const remindersSupported = Platform.OS !== 'web';
@@ -56,14 +58,15 @@ export function configureNotifications() {
 async function ensureChannel() {
   // En Android 13+ el diálogo de permiso sólo aparece si ya existe un canal.
   if (Platform.OS !== 'android') return;
+  const t = getStrings(reminderStrings);
   await Notifications.setNotificationChannelAsync(CHANNEL_ID, {
-    name: 'Recordatorio diario',
-    description: 'Un aviso por día para no cortar tu racha.',
+    name: t.dailyChannelName,
+    description: t.dailyChannelDescription,
     importance: AndroidImportance.DEFAULT,
   });
   await Notifications.setNotificationChannelAsync(STREAK_CHANNEL_ID, {
-    name: 'Racha por perderse',
-    description: 'Avisa cuando quedan pocas horas para que se corte tu racha.',
+    name: t.streakChannelName,
+    description: t.streakChannelDescription,
     importance: AndroidImportance.HIGH,
   });
 }

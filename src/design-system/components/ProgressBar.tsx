@@ -2,7 +2,12 @@ import { themedStyles } from '../theme';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated, {
+  useAnimatedStyle,
+  useReducedMotion,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
 
 import { colors, durations, gradients, radii } from '../tokens';
 
@@ -22,11 +27,13 @@ export function ProgressBar({
 }: ProgressBarProps) {
   const styles = useStyles();
   const clamped = Math.min(1, Math.max(0, value));
-  const progress = useSharedValue(0);
+  // Con «Reducir movimiento» la barra aparece directamente en su valor, sin llenarse.
+  const reduceMotion = useReducedMotion();
+  const progress = useSharedValue(reduceMotion ? clamped : 0);
 
   useEffect(() => {
-    progress.value = withTiming(clamped, { duration: durations.slow });
-  }, [clamped, progress]);
+    progress.value = reduceMotion ? clamped : withTiming(clamped, { duration: durations.slow });
+  }, [clamped, progress, reduceMotion]);
 
   const animated = useAnimatedStyle(() => ({ width: `${progress.value * 100}%` }));
 

@@ -6,9 +6,10 @@ import { dialogue, ES_A1_RATE, ex, question, reading, w } from '../helpers';
  * género y el número (el / la, un / una, unos / unas, plural en -s y en -es), preguntar ¿qué es esto?,
  * describir con colores y tamaño (el adjetivo va después del sustantivo y concuerda) y señalar con
  * este / esta / estos / estas.
- * Pronunciación: la ll (silla, llave, amarillo) como la sh de shoe en el Río de la Plata y la ch
- * (mochila, chico) como la ch de chair; la j de rojo, fuerte.
- * Vocabulario rioplatense: lapicera (bolígrafo), celular (móvil), chico (pequeño).
+ * Pronunciación: la ll (silla, llave, amarillo) como la y inglesa de yes y la ch (mochila, chico) como
+ * la ch de chair; la j de rojo, fuerte.
+ * Variante: español neutro de Latinoamérica (tú, usted, ustedes). Léxico: el bolígrafo (se aceptan la
+ * pluma y la lapicera), el celular (en España, el móvil), chico (pequeño también es muy común).
  *
  * ESTADO EDITORIAL: borrador, sin revisión de hablantes nativos. Se carga sin publicar.
  */
@@ -17,9 +18,9 @@ const AULA = dialogue(
   'es.stim.a1-u5-aula',
   'Two classmates talk just before a class starts.',
   [
-    ['Tomás', '¡Hola, Ana! ¿Tenés una lapicera?'],
-    ['Ana', 'Sí, tengo dos: una azul y una roja.'],
-    ['Tomás', 'La azul, por favor. ¡Gracias!'],
+    ['Tomás', '¡Hola, Ana! ¿Tienes un bolígrafo?'],
+    ['Ana', 'Sí, tengo dos: uno azul y uno rojo.'],
+    ['Tomás', 'El azul, por favor. ¡Gracias!'],
     ['Ana', 'De nada. ¿Y esto? ¿Es tu cuaderno?'],
     ['Tomás', 'No, mi cuaderno es verde.'],
   ],
@@ -53,9 +54,9 @@ export const ES_A1_U05: EsUnitDef = {
     grammar: {
       title: 'Gender and number · adjectives after the noun · este / esta',
       explanation:
-        'Every Spanish noun is masculine or feminine. Most nouns in -o are masculine (el libro, un cuaderno) and most nouns in -a are feminine (la mochila, una lapicera); learn each noun with its article. Plurals add -s after a vowel (sillas) and -es after a consonant (celulares, colores), and the articles change too: el → los, la → las, un → unos, una → unas. Adjectives usually come after the noun and agree with it: una mochila roja, unos libros negros. Colors in -o have four forms (rojo, roja, rojos, rojas); verde, azul and grande only change in the plural (verdes, azules, grandes). Este (this) agrees as well: este libro, esta mochila, estos libros, estas mochilas. In Argentina chico means small, and a pen is una lapicera.',
+        'Every Spanish noun is masculine or feminine. Most nouns in -o are masculine (el libro, un cuaderno) and most nouns in -a are feminine (la mochila, una silla); learn each noun with its article. Plurals add -s after a vowel (sillas) and -es after a consonant (celulares, colores), and the articles change too: el → los, la → las, un → unos, una → unas. Adjectives usually come after the noun and agree with it: una mochila roja, unos libros negros. Colors in -o have four forms (rojo, roja, rojos, rojas); verde, azul and grande only change in the plural (verdes, azules, grandes). Este (this) agrees as well: este libro, esta mochila, estos libros, estas mochilas. Chico means small in much of Latin America; pequeño is also very common.',
       examples: [
-        { target: '¿Qué es esto? — Es una lapicera.', base: 'What is this? — It’s a pen.' },
+        { target: '¿Qué es esto? — Es un bolígrafo.', base: 'What is this? — It’s a pen.' },
         {
           target: 'Tengo una mochila roja y dos libros negros.',
           base: 'I have a red backpack and two black books.',
@@ -66,7 +67,7 @@ export const ES_A1_U05: EsUnitDef = {
     review: {
       status: 'draft',
       notes:
-        'A1 nuevo (U5). Sin revisión nativa. Revisar: «chico» como «pequeño» (en la Argentina es lo habitual; también es «chico = muchacho», que no se enseña acá); el orden «un cuaderno verde chico» se evitó a propósito; «lapicera» frente a «birome» (las dos se usan en la Argentina).',
+        'A1 nuevo (U5), convertido al español neutro con tú. Sin revisión nativa. Revisar: «chico» como «pequeño» (habitual en gran parte de Latinoamérica, y se mantiene porque lo usan unidades posteriores; «pequeño» se acepta; también es «chico = muchacho», que no se enseña aquí); el orden «un cuaderno verde chico» se evitó a propósito; «el bolígrafo» como palabra base (se aceptan «la pluma», de México, y «la lapicera», del Río de la Plata).',
     },
     words: [
       w(
@@ -108,13 +109,13 @@ export const ES_A1_U05: EsUnitDef = {
         { emoji: '📓' },
       ),
       w(
-        'es-la-lapicera',
-        'la lapicera',
+        'es-el-boligrafo',
+        'el bolígrafo',
         'the pen',
-        '¿Tenés una lapicera?',
+        '¿Tienes un bolígrafo?',
         'Do you have a pen?',
-        ['objects', 'argentina'],
-        { emoji: '🖊️' },
+        ['objects'],
+        { acceptedTexts: ['la pluma', 'la lapicera'], emoji: '🖊️' },
       ),
       w(
         'es-la-mochila',
@@ -143,7 +144,7 @@ export const ES_A1_U05: EsUnitDef = {
         'the cell phone',
         'Mi celular es negro.',
         'My phone is black.',
-        ['objects', 'argentina'],
+        ['objects'],
         { acceptedTranslations: ['the mobile phone', 'the phone'], emoji: '📱' },
       ),
       w(
@@ -196,14 +197,14 @@ export const ES_A1_U05: EsUnitDef = {
         'es-amarillo',
         'amarillo',
         'yellow',
-        'Una lapicera amarilla.',
+        'Un bolígrafo amarillo.',
         'A yellow pen.',
         ['colors'],
         { acceptedTexts: ['amarilla', 'amarillos', 'amarillas'], emoji: '🟡' },
       ),
       w('es-chico', 'chico', 'small', 'Mi perro es chico.', 'My dog is small.', ['adjectives'], {
         acceptedTranslations: ['little'],
-        acceptedTexts: ['chica', 'chicos', 'chicas'],
+        acceptedTexts: ['chica', 'chicos', 'chicas', 'pequeño', 'pequeña'],
       }),
       w(
         'es-grande',
@@ -225,7 +226,7 @@ export const ES_A1_U05: EsUnitDef = {
         objective: 'Name school things with un / una and ask what something is.',
         intro: {
           explanation:
-            'Every Spanish noun is masculine or feminine. Nouns in -o are usually masculine and take el (the) or un (a): el libro, un cuaderno. Nouns in -a are usually feminine and take la or una: la lapicera, una mochila. To ask about a thing, say ¿qué es esto? and answer es un… or es una… In Argentina a pen is una lapicera; in other countries you will also hear bolígrafo. The ch in mochila sounds like the ch in English chair.',
+            'Every Spanish noun is masculine or feminine. Nouns in -o are usually masculine and take el (the) or un (a): el libro, un cuaderno. Nouns in -a are usually feminine and take la or una: la mochila, una silla. To ask about a thing, say ¿qué es esto? and answer es un… or es una… A pen is un bolígrafo (in Mexico you will also hear una pluma). The ch in mochila sounds like the ch in English chair.',
           examples: [
             { target: '¿Qué es esto? — Es un libro.', base: 'What is this? — It’s a book.' },
             { target: 'Es una mochila.', base: 'It’s a backpack.' },
@@ -244,25 +245,25 @@ export const ES_A1_U05: EsUnitDef = {
             { id: 'es.ex.ped7vj1cp3ngru' },
           ),
           ex.translationChoice(
-            'la lapicera',
+            'el bolígrafo',
             'the pen',
             ['the book', 'the backpack', 'the notebook'],
-            ['es-la-lapicera'],
-            { id: 'es.ex.57edoupxuf1bs4' },
+            ['es-el-boligrafo'],
+            { id: 'es.ex.z1gljgh7ub2skz' },
           ),
           ex.matchPairs(
             [
               ['el libro', 'the book'],
               ['el cuaderno', 'the notebook'],
-              ['la lapicera', 'the pen'],
+              ['el bolígrafo', 'the pen'],
               ['la mochila', 'the backpack'],
             ],
-            ['es-el-libro', 'es-el-cuaderno', 'es-la-lapicera', 'es-la-mochila'],
-            { id: 'es.ex.3c10h0tjryqefh' },
+            ['es-el-libro', 'es-el-cuaderno', 'es-el-boligrafo', 'es-la-mochila'],
+            { id: 'es.ex.9ml4crlk6qgxsl' },
           ),
           ex.listenChoice(
             'Es un cuaderno.',
-            ['Es un libro.', 'Es una mochila.', 'Es una lapicera.'],
+            ['Es un libro.', 'Es una mochila.', 'Es un bolígrafo.'],
             ['es-el-cuaderno'],
             { id: 'es.ex.i4am8db8mzsnt2' },
           ),
@@ -294,7 +295,7 @@ export const ES_A1_U05: EsUnitDef = {
           ),
           ex.listenChoice(
             '¿Qué es esto?',
-            ['¿Cómo estás?', '¿De dónde sos?', '¿Cómo te llamás?'],
+            ['¿Cómo estás?', '¿De dónde eres?', '¿Cómo te llamas?'],
             ['es-que-es-esto'],
             { id: 'es.ex.03u2k9y8lofxwi' },
           ),
@@ -303,14 +304,16 @@ export const ES_A1_U05: EsUnitDef = {
           }),
           ex.translateWrite(
             'What is this? — It’s a pen.',
-            '¿Qué es esto? — Es una lapicera.',
-            ['es-que-es-esto', 'es-la-lapicera'],
+            '¿Qué es esto? — Es un bolígrafo.',
+            ['es-que-es-esto', 'es-el-boligrafo'],
             {
-              id: 'es.ex.vtjqecazs6bog8',
+              id: 'es.ex.thrvg7oxkhf3e5',
               acceptedAnswers: [
+                '¿Qué es esto? Es un bolígrafo.',
+                '¿Qué es esto? — Un bolígrafo.',
+                '¿Qué es esto? Un bolígrafo.',
+                '¿Qué es esto? Es una pluma.',
                 '¿Qué es esto? Es una lapicera.',
-                '¿Qué es esto? — Una lapicera.',
-                '¿Qué es esto? Una lapicera.',
               ],
             },
           ),
@@ -331,7 +334,7 @@ export const ES_A1_U05: EsUnitDef = {
         objective: 'Make plurals and say how many things there are.',
         intro: {
           explanation:
-            'To make a plural, add -s after a vowel (la silla → las sillas) and -es after a consonant (el celular → los celulares). The articles change too: el → los, la → las, un → unos, una → unas. For one thing you say es; for more than one, son: es una llave, son dos llaves. In Buenos Aires the ll in silla and llave sounds like the sh in shoe.',
+            'To make a plural, add -s after a vowel (la silla → las sillas) and -es after a consonant (el celular → los celulares). The articles change too: el → los, la → las, un → unos, una → unas. For one thing you say es; for more than one, son: es una llave, son dos llaves. The ll in silla and llave sounds like the y in yes: SI-ya, YA-ve.',
           examples: [
             {
               target: 'Es una silla. — Son dos sillas.',
@@ -445,7 +448,7 @@ export const ES_A1_U05: EsUnitDef = {
               base: 'What color is the backpack? — It’s red.',
             },
             {
-              target: 'Un libro azul y una lapicera verde.',
+              target: 'Un libro azul y un bolígrafo verde.',
               base: 'A blue book and a green pen.',
             },
           ],
@@ -498,13 +501,13 @@ export const ES_A1_U05: EsUnitDef = {
             { id: 'es.ex.m59tq1jpnsfyva' },
           ),
           question(
-            'es.ex.i72s6ny9eh2cr2',
+            'es.ex.tpyneye083v778',
             AULA,
             'Which pen does Tomás take?',
             'The blue one',
             ['The red one', 'The green one', 'Both pens'],
-            ['es-azul', 'es-la-lapicera'],
-            'Ana has “una azul y una roja”, and Tomás says “La azul, por favor”.',
+            ['es-azul', 'es-el-boligrafo'],
+            'Ana has “uno azul y uno rojo”, and Tomás says “El azul, por favor”.',
           ),
           question(
             'es.ex.bkcyolqdllsxae',
@@ -538,7 +541,7 @@ export const ES_A1_U05: EsUnitDef = {
         objective: 'Point at things with este / esta and say if they are big or small.',
         intro: {
           explanation:
-            'Este (this) agrees with the noun: este libro, esta mochila, estos libros, estas mochilas. In Argentina chico means small (in other countries you also hear pequeño). Grande does not change for feminine: un libro grande, una mesa grande. The ch in chico sounds like the ch in chair, and the ll in silla, llave and amarillo sounds like the sh in shoe.',
+            'Este (this) agrees with the noun: este libro, esta mochila, estos libros, estas mochilas. In much of Latin America chico means small (you will also hear pequeño). Grande does not change for feminine: un libro grande, una mesa grande. The ch in chico sounds like the ch in chair, and the ll in silla, llave and amarillo sounds like the y in yes.',
           examples: [
             { target: 'Este libro es grande.', base: 'This book is big.' },
             { target: 'Esta mochila es chica.', base: 'This backpack is small.' },
@@ -675,13 +678,13 @@ export const ES_A1_U05: EsUnitDef = {
             'The last line says “Lucía tiene la mochila”.',
           ),
           question(
-            'es.ex.3ij97ten6b2tpr',
+            'es.ex.vq9rfp6yuk4lru',
             AULA,
             'What does Tomás ask Ana for?',
             'A pen',
             ['A notebook', 'A book', 'A key'],
-            ['es-la-lapicera'],
-            'Tomás asks “¿Tenés una lapicera?”.',
+            ['es-el-boligrafo'],
+            'Tomás asks “¿Tienes un bolígrafo?”.',
           ),
           ex.listenChoice(
             'Tengo una mochila negra.',

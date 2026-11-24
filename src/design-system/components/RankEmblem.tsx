@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import Svg, { Defs, LinearGradient, Path, Polygon, Stop } from 'react-native-svg';
 
 import { TIERS, getRank, type Division, type TierId } from '@shared/ranking';
@@ -23,7 +23,7 @@ export interface RankEmblemProps {
 }
 
 /** Emblema propio: la gema central gana lados con cada tier; los tiers altos usan estrella y corona. */
-export function RankEmblem({ tier, division = null, size = 64, dimmed = false }: RankEmblemProps) {
+function RankEmblemBase({ tier, division = null, size = 64, dimmed = false }: RankEmblemProps) {
   const tierIndex = TIERS.findIndex((t) => t.id === tier);
   const c = TIER_COLORS[tier];
   const gem = useMemo(() => gemPoints(tierIndex), [tierIndex]);
@@ -63,7 +63,9 @@ export function RankEmblem({ tier, division = null, size = 64, dimmed = false }:
   );
 }
 
-export function RankEmblemForRating({
+export const RankEmblem = memo(RankEmblemBase);
+
+function RankEmblemForRatingBase({
   rating,
   size,
   dimmed,
@@ -75,3 +77,5 @@ export function RankEmblemForRating({
   const rank = getRank(rating);
   return <RankEmblem tier={rank.tier.id} division={rank.division} size={size} dimmed={dimmed} />;
 }
+
+export const RankEmblemForRating = memo(RankEmblemForRatingBase);

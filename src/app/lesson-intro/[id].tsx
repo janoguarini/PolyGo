@@ -5,6 +5,8 @@ import { Button, Card, ErrorState, LoadingState, Screen, Text, spacing } from '@
 import { useLessonContent } from '@/features/learning/hooks';
 import { TargetText } from '@/features/learning/readings';
 import { SessionLanguageProvider } from '@/features/learning/SessionLanguageProvider';
+import { useStrings } from '@/i18n';
+import { lessonIntroStrings } from '@/i18n/screens/lesson';
 
 /**
  * Explicación de una lección, sólo lectura (AL17: «ofrecer volver a la explicación de la lección» a
@@ -19,17 +21,15 @@ export default function LessonIntroScreenWithLanguage() {
 }
 
 function LessonIntroScreen() {
+  const t = useStrings(lessonIntroStrings);
   const { id } = useLocalSearchParams<{ id: string }>();
   const content = useLessonContent(id);
 
-  if (content.isPending) return <LoadingState label="Cargando explicación…" />;
+  if (content.isPending) return <LoadingState label={t.loading} />;
   if (content.isError || !content.data) {
     return (
       <Screen edges={['top', 'bottom']} scroll={false}>
-        <ErrorState
-          message="No pudimos cargar la explicación."
-          onRetry={() => void content.refetch()}
-        />
+        <ErrorState message={t.loadError} onRetry={() => void content.refetch()} />
       </Screen>
     );
   }
@@ -38,10 +38,10 @@ function LessonIntroScreen() {
   return (
     <Screen
       edges={['top', 'bottom']}
-      footer={<Button label="Volver" variant="secondary" onPress={() => router.back()} />}
+      footer={<Button label={t.back} variant="secondary" onPress={() => router.back()} />}
     >
       <View style={styles.gap}>
-        <Text variant="overline">EXPLICACIÓN DE LA LECCIÓN</Text>
+        <Text variant="overline">{t.overline}</Text>
         <Text variant="title">{lesson.title}</Text>
         <Text color="textMuted">{lesson.objective}</Text>
       </View>
@@ -60,14 +60,14 @@ function LessonIntroScreen() {
         </Card>
       ) : (
         <Card>
-          <Text color="textMuted">Esta lección no tiene una explicación escrita todavía.</Text>
+          <Text color="textMuted">{t.noIntro}</Text>
         </Card>
       )}
       {lesson.takeaways.length > 0 ? (
         <Card style={styles.gap}>
-          <Text variant="overline">QUÉ APRENDISTE</Text>
-          {lesson.takeaways.map((t) => (
-            <Text key={t}>• {t}</Text>
+          <Text variant="overline">{t.learned}</Text>
+          {lesson.takeaways.map((takeaway) => (
+            <Text key={takeaway}>• {takeaway}</Text>
           ))}
         </Card>
       ) : null}

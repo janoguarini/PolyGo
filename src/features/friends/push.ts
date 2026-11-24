@@ -7,9 +7,11 @@ import { useEffect } from 'react';
 import { Platform } from 'react-native';
 
 import { useAuth } from '@/features/auth/AuthProvider';
+import { getStrings } from '@/i18n';
 import { requireSupabase } from '@/lib/supabase';
 
 import { rememberPushToken } from './pushToken';
+import { friendsStrings } from './strings';
 
 /**
  * Push remotas: sólo en una build de la app (en Expo Go de Android no existen y en web no hay
@@ -23,9 +25,10 @@ export const CHALLENGE_CHANNEL_ID = 'friend-challenges';
 
 async function ensureChallengeChannel() {
   if (Platform.OS !== 'android') return;
+  const t = getStrings(friendsStrings);
   await Notifications.setNotificationChannelAsync(CHALLENGE_CHANNEL_ID, {
-    name: 'Desafíos de amigos',
-    description: 'Cuando un amigo te invita a un amistoso.',
+    name: t.channelName,
+    description: t.channelDescription,
     importance: AndroidImportance.HIGH,
   });
 }

@@ -1,0 +1,73 @@
+import { defineStrings } from '..';
+
+/** Repaso: la pestaña de práctica (src/app/(tabs)/practice.tsx). */
+export const practiceStrings = defineStrings({
+  es: {
+    title: 'Repaso',
+    subtitle: 'Entrená tu memoria y consolidá lo que aprendiste.',
+    wordOfDay: 'PALABRA DEL DÍA',
+    forToday: 'Para hoy',
+    pending: (n: number) => `${n} ${n === 1 ? 'palabra pendiente' : 'palabras pendientes'}`,
+    haveReviews: 'Tenés repasos listos',
+    nothingToReview: 'Nada para repasar',
+    upToDate: 'Estás al día',
+    emptyCaption: 'Completá una lección y sus palabras aparecen acá.',
+    reviewCaption: 'Practicá ahora y recordalas por más tiempo.',
+    upToDateCaption: 'Volvé más tarde: te avisamos cuando toque repasar.',
+    firstLesson: 'Ir a mi primera lección',
+    reviewNow: 'Repasar ahora',
+    training: 'Tu entrenamiento',
+    smartReview: 'Repaso inteligente',
+    smartReviewSub: 'Tu plan personalizado',
+    freePractice: 'Práctica libre',
+    freePracticeSub: 'Entrená a tu ritmo',
+    weakSpots: 'Puntos débiles',
+    weakSpotsSub: 'Repasá lo que más te cuesta',
+    topicReview: 'Repaso por tema',
+    topicReviewSub: 'Elegí qué practicar',
+    plus: 'Plus',
+    plusA11y: 'Función de PolyGo Plus',
+    widgetsTitle: 'Widgets de pantalla de inicio',
+    widgetsBody:
+      '«Palabra» muestra la palabra del día y tus palabras para repasar. «Pregunta rápida» te deja responder sin abrir la app (es práctica: no cambia tus repasos ni tu ELO).',
+    widgetsIos:
+      'Mantené apretada la pantalla de inicio → Editar → Agregar widget → Polygo. La palabra cambia cada hora; iOS decide el momento exacto.',
+    widgetsAndroid:
+      'Mantené apretada la pantalla de inicio → Widgets → Polygo. La palabra se renueva cada vez que abrís la app.',
+    widgetsUnavailable: 'NO DISPONIBLE EN EXPO GO · HACE FALTA UNA BUILD DE LA APP',
+  },
+  en: {
+    title: 'Review',
+    subtitle: 'Train your memory and lock in what you’ve learned.',
+    wordOfDay: 'WORD OF THE DAY',
+    forToday: 'For today',
+    pending: (n: number) => `${n} ${n === 1 ? 'word' : 'words'} due`,
+    haveReviews: 'Your reviews are ready',
+    nothingToReview: 'Nothing to review',
+    upToDate: 'You’re all caught up',
+    emptyCaption: 'Complete a lesson and its words show up here.',
+    reviewCaption: 'Practice now and remember them for longer.',
+    upToDateCaption: 'Come back later: we’ll let you know when it’s time.',
+    firstLesson: 'Go to my first lesson',
+    reviewNow: 'Review now',
+    training: 'Your training',
+    smartReview: 'Smart review',
+    smartReviewSub: 'Your personal plan',
+    freePractice: 'Free practice',
+    freePracticeSub: 'Train at your own pace',
+    weakSpots: 'Weak spots',
+    weakSpotsSub: 'Review what you find hardest',
+    topicReview: 'Review by topic',
+    topicReviewSub: 'Pick what to practice',
+    plus: 'Plus',
+    plusA11y: 'PolyGo Plus feature',
+    widgetsTitle: 'Home screen widgets',
+    widgetsBody:
+      '“Word” shows the word of the day and your words to review. “Quick question” lets you answer without opening the app (it’s practice: it doesn’t change your reviews or your ELO).',
+    widgetsIos:
+      'Long-press your home screen → Edit → Add Widget → Polygo. The word changes every hour; iOS decides the exact time.',
+    widgetsAndroid:
+      'Long-press your home screen → Widgets → Polygo. The word refreshes every time you open the app.',
+    widgetsUnavailable: 'NOT AVAILABLE IN EXPO GO · NEEDS AN APP BUILD',
+  },
+});

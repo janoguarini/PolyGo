@@ -4,9 +4,11 @@ import { StyleSheet, View } from 'react-native';
 import type { Exercise } from '@shared/exercises';
 
 import { Text, colors, radii, spacing, themedStyles } from '@/design-system';
+import { useStrings } from '@/i18n';
 
-import { TargetText } from '../readings';
+import { TargetText, useSessionLanguage } from '../readings';
 import { speak, spokenText } from '../speech';
+import { promptStrings } from '../strings';
 import { ContextStimulus } from './ContextStimulus';
 import { SpeakButton } from './SpeakButton';
 
@@ -22,6 +24,9 @@ export function ExercisePrompt({
   answered?: boolean;
 }) {
   const styles = useStyles();
+  const t = useStrings(promptStrings);
+  // Idioma de apoyo del curso: el de la frase a traducir (español salvo en el curso de español).
+  const { language } = useSessionLanguage();
   const p = exercise.payload;
 
   // Si el ejercicio tiene algo para escuchar, suena una vez al aparecer (después, con el botón).
@@ -43,7 +48,7 @@ export function ExercisePrompt({
 
       {p.type === 'image_choice' ? (
         <View style={styles.center}>
-          <Text style={styles.emoji} accessibilityLabel="Imagen del ejercicio">
+          <Text style={styles.emoji} accessibilityLabel={t.image}>
             {p.emoji}
           </Text>
         </View>
@@ -59,7 +64,7 @@ export function ExercisePrompt({
       {p.type === 'translate_write' ? (
         <View style={styles.sourceCard}>
           <Text variant="overline" color="primarySoft">
-            EN ESPAÑOL
+            {t.inSupport(language.support?.code ?? 'es')}
           </Text>
           <Text variant="title" color="textStrong">
             {p.source}
@@ -72,11 +77,11 @@ export function ExercisePrompt({
           <Text
             variant="display"
             style={styles.masked}
-            accessibilityLabel={`Palabra incompleta: ${p.masked.replace(/_/g, ' guion bajo ')}`}
+            accessibilityLabel={t.maskedLabel(p.masked)}
           >
             {p.masked.split('').join(' ')}
           </Text>
-          <Text color="textMuted">Pista: {p.hint}</Text>
+          <Text color="textMuted">{t.hint(p.hint)}</Text>
         </View>
       ) : null}
 
@@ -95,7 +100,7 @@ export function ExercisePrompt({
             <SpeakButton text={p.audioText} size="lg" />
             <SpeakButton text={p.audioText} slow />
           </View>
-          <Text variant="caption">Tocá para volver a escuchar · 🐢 más despacio</Text>
+          <Text variant="caption">{t.listenAgain}</Text>
         </View>
       ) : null}
 

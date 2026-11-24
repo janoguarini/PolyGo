@@ -35,22 +35,26 @@ import {
   themedStyles,
   gradients,
 } from '@/design-system';
-import { RANKED_UNAVAILABLE_TITLE, rankedDisabled } from '@/features/battle/availability';
+import { rankedDisabled } from '@/features/battle/availability';
+import { battleStrings } from '@/features/battle/strings';
 import { useActiveSeason, useMyProfile } from '@/features/profile/hooks';
 import { PolysChip } from '@/features/polys/PolysChip';
 import { useMyLeaderboardPosition } from '@/features/ranked/api';
 import { GoldButton } from '@/features/ranked/GoldButton';
 import { RankCard } from '@/features/ranked/RankCard';
 import { TierLadder } from '@/features/ranked/TierLadder';
+import { useLocale, useStrings } from '@/i18n';
+import { rankedScreenStrings } from '@/i18n/screens/ranked';
 import { useTabPressScroll } from '@/lib/useTabPressScroll';
 
 /** Alto de los chips del encabezado (Polys y clasificación). */
 const CHIP_HEIGHT = 38;
 
-const dateFormat = new Intl.DateTimeFormat('es', { day: 'numeric', month: 'short' });
-
 export default function RankedScreen() {
   const styles = useStyles();
+  const t = useStrings(rankedScreenStrings);
+  const unavailableTitle = useStrings(battleStrings).rankedUnavailableTitle;
+  const locale = useLocale();
   const me = useMyProfile();
   const season = useActiveSeason();
   const position = useMyLeaderboardPosition(null);
@@ -87,11 +91,7 @@ export default function RankedScreen() {
           <PolysChip style={styles.chip} />
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel={
-              position.data?.position
-                ? `Clasificación: estás en el puesto ${position.data.position} del mundo`
-                : 'Clasificación'
-            }
+            accessibilityLabel={t.leaderboardA11y(position.data?.position)}
             hitSlop={6}
             onPress={() => router.push('/leaderboard')}
             style={({ pressed }) => [styles.trophyGlow, pressed && styles.pressed]}
@@ -104,7 +104,7 @@ export default function RankedScreen() {
             >
               <Trophy color={palette.ink900} fill={palette.ink900} size={18} />
               <Text variant="bodyStrong" style={styles.trophyText}>
-                {position.data?.position ? `#${position.data.position}` : 'Top'}
+                {position.data?.position ? `#${position.data.position}` : t.top}
               </Text>
               <ChevronRight color={palette.ink900} size={16} strokeWidth={2.5} />
             </LinearGradient>
@@ -114,7 +114,12 @@ export default function RankedScreen() {
           <View style={styles.season}>
             <CalendarDays color={colors.primarySoft} size={16} />
             <Text variant="caption" color="text" style={styles.seasonText}>
-              {season.data.name} · Termina el {dateFormat.format(new Date(season.data.ends_at))}
+              {t.seasonEnds(
+                season.data.name,
+                new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'short' }).format(
+                  new Date(season.data.ends_at),
+                ),
+              )}
             </Text>
           </View>
         ) : null}
@@ -123,17 +128,11 @@ export default function RankedScreen() {
       {!languageConfig(me.data.profile.target_language).ranked ? (
         // Idiomas en preparación: sin banco de palabras suficiente para Word Rush.
         <Card style={styles.matchCard}>
-          <Text variant="overline">MODO · WORD RUSH</Text>
-          <Text variant="heading">
-            Ranked en {languageConfig(me.data.profile.target_language).name.toLowerCase()} llega
-            pronto
-          </Text>
-          <Text color="textMuted">
-            Las partidas se habilitan cuando el nivel A1 de este idioma esté completo. Para jugar
-            ahora, cambiá a otro idioma desde tu perfil: tu progreso en cada idioma se guarda.
-          </Text>
+          <Text variant="overline">{t.modeWordRush}</Text>
+          <Text variant="heading">{t.comingSoon(me.data.profile.target_language)}</Text>
+          <Text color="textMuted">{t.comingSoonBody}</Text>
           <Button
-            label="Ir al perfil"
+            label={t.goToProfile}
             variant="secondary"
             onPress={() => router.push('/profile')}
           />
@@ -147,14 +146,11 @@ export default function RankedScreen() {
             // Sin servidor de partidas válido en esta build: no se ofrece jugar (ni se cae al legacy).
             // Los desafíos con amigos siguen abajo: no pasan por el servidor de partidas.
             <Card style={styles.matchCard}>
-              <Text variant="overline">MODO · WORD RUSH</Text>
+              <Text variant="overline">{t.modeWordRush}</Text>
               <Text variant="heading" accessibilityRole="header">
-                {RANKED_UNAVAILABLE_TITLE}
+                {unavailableTitle}
               </Text>
-              <Text color="textMuted">
-                Las partidas Ranked y la práctica están desactivadas en esta versión de PolyGo.
-                Podés seguir desafiando a tus amigos: esas partidas no mueven el ELO.
-              </Text>
+              <Text color="textMuted">{t.disabledBody}</Text>
             </Card>
           ) : (
             <MatchModeCard />
@@ -170,10 +166,11 @@ export default function RankedScreen() {
 /** Word Rush: buscar partida Ranked o practicar sin ELO. Sólo con Ranked disponible. */
 function MatchModeCard() {
   const styles = useStyles();
+  const t = useStrings(rankedScreenStrings);
   return (
     <Card gradient={gradients.rankedPanel} style={[styles.matchCard, styles.glowCard]}>
       <SectionTitle icon={<Gamepad2 color={colors.primarySoft} size={18} />} centered>
-        MODO DE JUEGO
+        {t.gameMode}
       </SectionTitle>
       <View style={styles.modePill}>
         <Zap color={colors.gold} fill={colors.gold} size={18} />
@@ -182,14 +179,14 @@ function MatchModeCard() {
         </Text>
       </View>
       <GoldButton
-        label="Buscar partida"
-        accessibilityHint="Busca un rival con un ELO similar"
+        label={t.findMatch}
+        accessibilityHint={t.findMatchHint}
         onPress={() => router.push({ pathname: '/battle', params: { mode: 'ranked' } })}
       />
       <OutlinePill
-        label="Practicar sin ELO"
+        label={t.practiceNoElo}
         icon={<Target color={colors.text} size={18} />}
-        accessibilityHint="Una ronda de 75 segundos contra el reloj, sin rival"
+        accessibilityHint={t.practiceHint}
         onPress={() => router.push({ pathname: '/battle', params: { mode: 'practice' } })}
       />
     </Card>
@@ -249,6 +246,7 @@ const CODE_PATTERN = /^[A-Z0-9]{6}$/;
 /** Desafío a un amigo: crear un código o entrar con el de otro. Amistoso, sin ELO. */
 function FriendChallengeCard() {
   const styles = useStyles();
+  const t = useStrings(rankedScreenStrings);
   const [joining, setJoining] = useState(false);
   const [code, setCode] = useState('');
   const clean = code.trim().toUpperCase();
@@ -259,11 +257,9 @@ function FriendChallengeCard() {
       <View style={styles.friendTop}>
         <View style={styles.friendText}>
           <SectionTitle icon={<Users color={colors.primarySoft} size={18} />}>
-            JUGAR CON UN AMIGO
+            {t.playWithFriend}
           </SectionTitle>
-          <Text color="text">
-            Mandale un código y juegan la misma partida en vivo. Amistoso: no mueve el ELO.
-          </Text>
+          <Text color="text">{t.playWithFriendBody}</Text>
         </View>
         <View style={styles.swords} accessible={false}>
           <Swords color={colors.primarySoft} size={36} strokeWidth={1.75} />
@@ -272,7 +268,7 @@ function FriendChallengeCard() {
       {joining ? (
         <>
           <TextField
-            label="Código del desafío"
+            label={t.challengeCode}
             value={code}
             onChangeText={(t) => setCode(t.replace(/[^a-zA-Z0-9]/g, '').slice(0, 6))}
             autoCapitalize="characters"
@@ -285,22 +281,22 @@ function FriendChallengeCard() {
             }}
           />
           <Button
-            label="Entrar al desafío"
+            label={t.joinChallenge}
             disabled={!valid}
             onPress={() => router.push({ pathname: '/battle', params: { code: clean } })}
           />
-          <Button label="Volver" variant="ghost" onPress={() => setJoining(false)} />
+          <Button label={t.back} variant="ghost" onPress={() => setJoining(false)} />
         </>
       ) : (
         <>
           <Button
-            label="Desafiar a un amigo"
+            label={t.challengeFriend}
             icon={<UserPlus color={colors.onPrimary} size={20} />}
-            accessibilityHint="Crea un código para compartir con un amigo"
+            accessibilityHint={t.challengeFriendHint}
             onPress={() => router.push('/challenge-friend')}
           />
           <OutlinePill
-            label="Tengo un código"
+            label={t.haveCode}
             icon={<KeyRound color={colors.text} size={18} />}
             onPress={() => setJoining(true)}
           />

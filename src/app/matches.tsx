@@ -16,24 +16,27 @@ import {
 } from '@/design-system';
 import { MatchHistoryItem } from '@/features/profile/components/MatchHistoryItem';
 import { useMatchHistory } from '@/features/profile/hooks';
+import { useStrings } from '@/i18n';
+import { matchesScreenStrings } from '@/i18n/screens/matches';
 
 export default function MatchesScreen() {
   useTheme();
+  const t = useStrings(matchesScreenStrings);
   const matches = useMatchHistory();
   const all = matches.data?.pages.flat() ?? [];
 
   return (
     <Screen onRefresh={() => void matches.refetch()} refreshing={matches.isRefetching}>
-      <ScreenHeader title="Historial de partidas" onBack={() => router.back()} />
+      <ScreenHeader title={t.title} onBack={() => router.back()} />
       {matches.isPending ? (
-        <LoadingState label="Cargando partidas…" />
+        <LoadingState label={t.loading} />
       ) : matches.isError ? (
         <ErrorState onRetry={() => void matches.refetch()} />
       ) : all.length === 0 ? (
         <EmptyState
           icon={<Swords color={colors.textMuted} size={36} />}
-          title="Sin partidas todavía"
-          message="Cuando juegues Word Rush vas a ver acá cada resultado y cuánto ELO ganaste o perdiste."
+          title={t.emptyTitle}
+          message={t.emptyBody}
         />
       ) : (
         <Card style={styles.list}>
@@ -42,7 +45,7 @@ export default function MatchesScreen() {
           ))}
           {matches.hasNextPage ? (
             <Button
-              label="Cargar más"
+              label={t.loadMore}
               variant="ghost"
               loading={matches.isFetchingNextPage}
               onPress={() => void matches.fetchNextPage()}

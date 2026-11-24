@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
 
 import { createDb, createUser, as } from './harness.mjs';
+import { exercisesFixtureSql } from './fixtures.mjs';
 import { lessonStars } from '../../src/features/learning/path.ts';
 import { achievementRows } from '../../shared/achievements.ts';
 
@@ -19,8 +20,19 @@ const FIXTURE = `
   values ('p-l1', 'p-u1', 1, 'Lección', 'obj', true);
   insert into public.words (id, language_code, unit_id, text, translation_es, is_published)
   values ('p-hello', 'en', 'p-u1', 'hello', 'hola', true);
-  insert into public.exercises (id, lesson_id, position, type, skill, prompt_es, payload, answer, is_published)
-  values ('p-e1', 'p-l1', 1, 'translate_write', 'translation', 'p', '{"type":"translate_write","source":"hola"}', 'hello', true);
+  ${exercisesFixtureSql([
+    {
+      id: 'p-e1',
+      lesson_id: 'p-l1',
+      position: 1,
+      type: 'translate_write',
+      skill: 'translation',
+      payload: { type: 'translate_write', source: 'hola' },
+      answer: 'hello',
+      language: 'pt',
+      level: 'A2',
+    },
+  ])}
   insert into public.exercise_words values ('p-e1', 'p-hello');
 `;
 

@@ -16,7 +16,10 @@ import {
   gradients,
 } from '@/design-system';
 import { mascotRanked } from '@/design-system/imageData.generated';
+import { useStrings } from '@/i18n';
 import type { PlayerRatingRow } from '@/lib/database.types';
+
+import { rankedStrings, useRankLabels } from './strings';
 
 /** Ancho / alto de assets/mascot/ranked.webp. */
 const FOX_ASPECT = 480 / 560;
@@ -26,6 +29,8 @@ const FOX_OVERFLOW = 26;
 
 export function RankCard({ rating }: { rating: PlayerRatingRow }) {
   const styles = useStyles();
+  const t = useStrings(rankedStrings);
+  const ranks = useRankLabels();
   const rank = getRank(rating.rating);
   const placement = !isPlaced(rating);
   const tierColors = TIER_COLORS[rank.tier.id];
@@ -55,7 +60,7 @@ export function RankCard({ rating }: { rating: PlayerRatingRow }) {
           </View>
           <View style={styles.info}>
             <Text variant="overline" color="primarySoft">
-              {placement ? 'RANKED' : 'RANGO ACTUAL'}
+              {placement ? 'RANKED' : t.currentRank}
             </Text>
             <Text
               variant="title"
@@ -64,14 +69,14 @@ export function RankCard({ rating }: { rating: PlayerRatingRow }) {
               minimumFontScale={0.7}
               style={[styles.label, !placement && { color: tierColors.light }]}
             >
-              {placement ? 'Sin posicionar' : rank.label}
+              {placement ? ranks.unplaced : ranks.label(rank)}
             </Text>
             {placement ? null : (
               <View style={styles.eloPill}>
                 <Text
                   variant="bodyStrong"
                   color="textStrong"
-                  accessibilityLabel={`${rating.rating} puntos de ELO`}
+                  accessibilityLabel={t.eloA11y(rating.rating)}
                 >
                   {rating.rating} ELO
                 </Text>
@@ -81,7 +86,7 @@ export function RankCard({ rating }: { rating: PlayerRatingRow }) {
         </View>
         {placement ? (
           <Text variant="caption" color="text">
-            Ganá tu primera partida para entrar al ranking en Bronce.
+            {t.firstWinHint}
           </Text>
         ) : (
           <View style={styles.progress}>
@@ -90,13 +95,11 @@ export function RankCard({ rating }: { rating: PlayerRatingRow }) {
                 value={rank.progress}
                 height={12}
                 colors={[tierColors.accent, tierColors.light, tierColors.dark]}
-                accessibilityLabel="Progreso al siguiente rango"
+                accessibilityLabel={t.progressA11y}
               />
             </View>
             <Text variant="caption" color="text" align="center">
-              {remaining === null
-                ? 'Rango máximo alcanzado'
-                : `${remaining} ELO para el siguiente rango`}
+              {remaining === null ? t.maxRank : t.eloToNextRank(remaining)}
             </Text>
           </View>
         )}

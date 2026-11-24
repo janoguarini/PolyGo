@@ -15,8 +15,10 @@ import {
   gradients,
 } from '@/design-system';
 import { mascotChallenge } from '@/design-system/imageData.generated';
+import { useStrings } from '@/i18n';
 
 import type { FriendEntry } from '../api';
+import { friendsStrings } from '../strings';
 import { IconTile } from './IconTile';
 import { PlayerRow, StatusTag } from './PlayerRow';
 
@@ -46,23 +48,24 @@ export function acceptInvite(code: string) {
 
 /** Desafiar / Aceptar / Desafío enviado, según el estado del amigo. */
 export function ChallengeAction({ friend, outline }: { friend: FriendEntry; outline?: boolean }) {
+  const t = useStrings(friendsStrings);
   if (friend.inviteCode) {
     const code = friend.inviteCode;
     return (
       <Pill
-        label="Aceptar"
-        accessibilityLabel={`Aceptar el desafío de ${friend.username}`}
+        label={t.accept}
+        accessibilityLabel={t.acceptChallengeA11y(friend.username)}
         onPress={() => acceptInvite(code)}
         highlight
         compact={outline}
       />
     );
   }
-  if (friend.invitedByMe) return <StatusTag label="Desafío enviado" color="primarySoft" />;
+  if (friend.invitedByMe) return <StatusTag label={t.challengeSent} color="primarySoft" />;
   return (
     <Pill
-      label="Desafiar"
-      accessibilityLabel={`Desafiar a ${friend.username} a un amistoso`}
+      label={t.challenge}
+      accessibilityLabel={t.challengeA11y(friend.username)}
       onPress={() => challengeFriend(friend)}
       outline={outline}
       compact={outline}
@@ -110,6 +113,7 @@ function Pill({
 /** Tarjeta principal: el zorro, amigos en línea (cada uno con "Desafiar") o cómo empezar. */
 export function ChallengeFriendsCard({ friends }: { friends: FriendEntry[] }) {
   const styles = useStyles();
+  const t = useStrings(friendsStrings);
   const online = friends.filter((f) => f.online);
   const codeIsMain = friends.length > 0 && online.length === 0;
   return (
@@ -134,13 +138,13 @@ export function ChallengeFriendsCard({ friends }: { friends: FriendEntry[] }) {
               <Swords color={colors.primarySoft} size={24} />
             </IconTile>
             <Text variant="heading" color="textStrong" style={styles.title}>
-              Desafiar a un amigo
+              {t.challengeAFriend}
             </Text>
             {online.length > 0 ? (
               <View style={styles.onlineCount}>
                 <View style={styles.dot} />
                 <Text variant="caption" color="success">
-                  {online.length} en línea
+                  {t.onlineCount(online.length)}
                 </Text>
               </View>
             ) : null}
@@ -149,15 +153,13 @@ export function ChallengeFriendsCard({ friends }: { friends: FriendEntry[] }) {
 
         {friends.length === 0 ? (
           <Button
-            label="Agregar amigos"
+            label={t.addFriends}
             icon={<UserPlus color={colors.onPrimary} size={20} />}
-            onPress={() => router.push('/add-friends')}
+            onPress={() => router.push('/invite-friends')}
             style={styles.glowButton}
           />
         ) : online.length === 0 ? (
-          <Text color="textMuted">
-            Ninguno de tus amigos está conectado ahora. Podés crear un código y mandárselo.
-          </Text>
+          <Text color="textMuted">{t.noneOnline}</Text>
         ) : (
           <View style={styles.list}>
             {online.slice(0, MAX_ONLINE).map((f) => (
@@ -169,19 +171,17 @@ export function ChallengeFriendsCard({ friends }: { friends: FriendEntry[] }) {
               />
             ))}
             {online.length > MAX_ONLINE ? (
-              <Text variant="caption">
-                Y {online.length - MAX_ONLINE} más en línea: están en «Mis amigos».
-              </Text>
+              <Text variant="caption">{t.moreOnline(online.length - MAX_ONLINE)}</Text>
             ) : null}
           </View>
         )}
 
         {friends.length > 0 ? (
           <Button
-            label="Desafiar con un código"
+            label={t.challengeWithCode}
             variant={codeIsMain ? 'primary' : 'ghost'}
             icon={<KeyRound color={codeIsMain ? colors.onPrimary : colors.textMuted} size={18} />}
-            accessibilityHint="Elegí el modo y creá un código para compartir"
+            accessibilityHint={t.challengeWithCodeHint}
             onPress={() => router.push('/challenge-friend')}
             style={codeIsMain ? styles.glowButton : undefined}
           />

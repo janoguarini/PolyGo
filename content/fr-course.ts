@@ -8,7 +8,7 @@ import type { Level } from './types';
 /**
  * Francés A1 y A2 completos (docs/FR_A1_A2.md). El francés no tenía piloto: todo el curso es nuevo.
  *
- * - A1 U1–U16 y A2 U1–U12, en francés estándar de Francia, con traducciones al español rioplatense
+ * - A1 U1–U17 y A2 U1–U13, en francés estándar de Francia, con traducciones al español rioplatense
  *   como los demás idiomas.
  * - Como el portugués, el italiano y el chino nuevos, vive en su propio camino, fuera de COURSES y de
  *   CURRICULUM_PATH: no cambia la consolidación de lo cargado, sus ids, los totales que comparan la

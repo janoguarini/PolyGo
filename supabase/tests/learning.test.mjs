@@ -4,8 +4,39 @@ import { randomUUID } from 'node:crypto';
 
 import { SRS_CONFIG } from '../../shared/srs.ts';
 import { createDb, createUser, as } from './harness.mjs';
+import { exercisesFixtureSql } from './fixtures.mjs';
 import { ALL_WORDS, CURRICULUM_PATH } from '../../content/index.ts';
 import { contentDocument } from '../../scripts/content-document.ts';
+import { COMPREHENSION_PATH } from '../../content/comprehension.ts';
+import { PLANNED_PATH } from '../../content/planned.ts';
+import { SUPPLEMENT_PATH } from '../../content/supplement.ts';
+import { A2_EXPANSION_PATH } from '../../content/a2-expansion.ts';
+import { B1_PATH } from '../../content/b1.ts';
+import { B2_PATH } from '../../content/b2.ts';
+import { PT_PATH } from '../../content/pt-course.ts';
+import { IT_PATH } from '../../content/it-course.ts';
+import { ZH_PATH } from '../../content/zh-course.ts';
+import { ES_PATH } from '../../content/es-course.ts';
+import { FR_PATH } from '../../content/fr-course.ts';
+
+/** Preguntas «En contexto» de la fase C (75 desde la C.1). */
+// Más las preguntas context_choice (LM y RQ) del cierre de inglés A1 (docs/A1_EN_CLOSURE.md) y las de
+// A2 U13–U17 (docs/A2_EN_COMPLETION.md), sin palabras.
+const COMPREHENSION_QUESTIONS =
+  COMPREHENSION_PATH.reduce((n, p) => n + p.lessons[0].exercises.length, 0) +
+  [
+    ...SUPPLEMENT_PATH,
+    ...A2_EXPANSION_PATH,
+    ...B1_PATH,
+    ...B2_PATH,
+    ...PT_PATH,
+    ...IT_PATH,
+    ...ZH_PATH,
+    ...FR_PATH,
+    ...ES_PATH,
+  ]
+    .flatMap((p) => p.lessons.flatMap((l) => l.exercises))
+    .filter((e) => e.type === 'context_choice').length;
 
 // Totales esperados calculados desde el contenido fuente (content/, todos los niveles): las
 // migraciones deben cargarlo entero.
@@ -22,6 +53,23 @@ const CONTENT_LINKS = CURRICULUM_PATH.flatMap((p) => p.lessons.flatMap((l) => l.
   (n, e) => n + new Set(e.words).size,
   0,
 );
+// Vínculos de las lecciones escritas de U13 y U14 (fase C.3): cargados, pero sin publicar.
+// Y los del cierre de inglés A1, también sin publicar.
+// Y los de A2 U13–U17 (docs/A2_EN_COMPLETION.md), sin publicar.
+const PLANNED_LINKS = [
+  ...PLANNED_PATH,
+  ...SUPPLEMENT_PATH,
+  ...A2_EXPANSION_PATH,
+  ...B1_PATH,
+  ...B2_PATH,
+  ...PT_PATH,
+  ...IT_PATH,
+  ...ZH_PATH,
+  ...FR_PATH,
+  ...ES_PATH,
+]
+  .flatMap((p) => p.lessons.flatMap((l) => l.exercises))
+  .reduce((n, e) => n + new Set(e.words).size, 0);
 
 // Contenido real de todos los idiomas: ids a1-…/a2-… (inglés) o it-a1-…, pt-…, zh-… (sin el
 // fixture de este archivo, que usa ids t-…).
@@ -32,10 +80,11 @@ let alice;
 let bob;
 
 // Contenido mínimo de prueba (el contenido real se prueba en content/__tests__). Va en portugués
-// para no chocar con las unidades reales ni compartir su orden de desbloqueo.
+// para no chocar con las unidades reales ni compartir su orden de desbloqueo (posición 99: pt A2
+// U1–U12 son reales desde docs/PT_A1_A2.md).
 const FIXTURE = `
   insert into public.curriculum_units (id, language_code, level, position, title_es, title_en, description_es, emoji, is_published)
-  values ('t-u1', 'pt', 'A2', 1, 'Unidad', 'Unit', 'desc', '👋', true);
+  values ('t-u1', 'pt', 'A2', 99, 'Unidad', 'Unit', 'desc', '👋', true);
   insert into public.lessons (id, unit_id, position, title_es, objective_es, is_published) values
     ('t-l1', 't-u1', 1, 'Lección 1', 'obj', true),
     ('t-l2', 't-u1', 2, 'Lección 2', 'obj', true);
@@ -43,10 +92,41 @@ const FIXTURE = `
     ('t-hello', 'en', 't-u1', 'hello', 'hola', true),
     ('t-bye', 'en', 't-u1', 'bye', 'chau', true),
     ('t-draft', 'en', 't-u1', 'draft', 'borrador', false);
-  insert into public.exercises (id, lesson_id, position, type, skill, prompt_es, payload, answer, is_published) values
-    ('t-e1', 't-l1', 1, 'translation_choice', 'vocabulary', 'p', '{"type":"translation_choice","word":"hello","options":["hola","chau"]}', 'hola', true),
-    ('t-e2', 't-l1', 2, 'translate_write', 'translation', 'p', '{"type":"translate_write","source":"chau"}', 'bye', true),
-    ('t-e3', 't-l2', 1, 'translate_write', 'translation', 'p', '{"type":"translate_write","source":"hola"}', 'hello', true);
+  ${exercisesFixtureSql([
+    {
+      id: 't-e1',
+      lesson_id: 't-l1',
+      position: 1,
+      type: 'translation_choice',
+      skill: 'vocabulary',
+      payload: { type: 'translation_choice', word: 'hello', options: ['hola', 'chau'] },
+      answer: 'hola',
+      language: 'pt',
+      level: 'A2',
+    },
+    {
+      id: 't-e2',
+      lesson_id: 't-l1',
+      position: 2,
+      type: 'translate_write',
+      skill: 'translation',
+      payload: { type: 'translate_write', source: 'chau' },
+      answer: 'bye',
+      language: 'pt',
+      level: 'A2',
+    },
+    {
+      id: 't-e3',
+      lesson_id: 't-l2',
+      position: 1,
+      type: 'translate_write',
+      skill: 'translation',
+      payload: { type: 'translate_write', source: 'hola' },
+      answer: 'hello',
+      language: 'pt',
+      level: 'A2',
+    },
+  ])}
   insert into public.exercise_words values ('t-e1', 't-hello'), ('t-e2', 't-bye'), ('t-e3', 't-hello');
 `;
 
@@ -69,7 +149,9 @@ async function submit(
   userId,
   { id = randomUUID(), kind = 'lesson', lesson = 't-l1', attempts, startedOffset = '2 minutes' },
 ) {
-  return as(db, 'authenticated', userId, async () => {
+  // Repasos: la app ya no puede enviarlos por esta RPC (20261112120000); el cuerpo v1 de repasos sigue
+  // vigente para el servidor y se prueba como service_role.
+  return as(db, kind === 'review' ? 'service_role' : 'authenticated', userId, async () => {
     const { rows } = await db.query(
       `select public.submit_learning_session($1, $2, $3, now() - $4::interval, $5::jsonb, 'America/Argentina/Buenos_Aires') as r`,
       [id, kind, kind === 'lesson' ? lesson : null, startedOffset, JSON.stringify(attempts)],
@@ -307,13 +389,25 @@ test('contenido real (todos los idiomas): se carga completo y la primera lecció
            (select count(*)::int from public.lessons where id ${REAL} and is_published) as lessons,
            (select count(*)::int from public.exercises where id ${REAL} and is_published) as exercises,
            (select count(*)::int from public.words where unit_id ${REAL} and is_published) as words,
-           (select count(*)::int from public.exercises e where id ${REAL}
-              and not exists (select 1 from public.exercise_words w where w.exercise_id = e.id)) as orphan_exercises`);
-  assert.deepEqual(rows[0], { ...CONTENT_TOTALS, orphan_exercises: 0 });
+           (select count(*)::int from public.exercises e where id ${REAL} and e.type <> 'context_choice'
+              and not exists (select 1 from public.exercise_words w where w.exercise_id = e.id)) as orphan_exercises,
+           -- Fase C: la comprensión no tiene exercise_words a propósito (no alimenta el SRS v1) y no se publica.
+           (select count(*)::int from public.exercises e where e.type = 'context_choice'
+              and not e.is_published
+              and not exists (select 1 from public.exercise_words w where w.exercise_id = e.id)) as comprehension_without_words,
+           (select count(*)::int from public.exercises e where e.type = 'context_choice') as comprehension`);
+  assert.deepEqual(rows[0], {
+    ...CONTENT_TOTALS,
+    orphan_exercises: 0,
+    comprehension_without_words: COMPREHENSION_QUESTIONS,
+    comprehension: COMPREHENSION_QUESTIONS,
+  });
 
   const carol = await createUser(db, 'carol@test.dev');
   const lessonExercises = await db.query(
-    `select id from public.exercises where lesson_id = 'a1-u01-l01' order by position`,
+    // Sólo los publicados: los agregados del cierre de inglés A1 están en la lección sin publicar y el
+    // servidor los rechaza (invalid_exercise), igual que a cualquier ejercicio que la app no recibió.
+    `select id from public.exercises where lesson_id = 'a1-u01-l01' and is_published order by position`,
   );
   await assert.rejects(
     submit(carol, {
@@ -395,6 +489,29 @@ test('reaplicar la última migración de contenido no cambia nada', async () => 
   await db.exec(readFileSync(new URL(last, dir), 'utf8'));
   assert.deepEqual(await dbContent(), expectedContent());
   const { rows } = await db.query(`select count(*)::int as links from public.exercise_words`);
-  // + 3 vínculos del fixture de este archivo.
-  assert.equal(rows[0].links, CONTENT_LINKS + 3);
+  // + los de U13 y U14 sin publicar (fase C.3) + 3 vínculos del fixture de este archivo.
+  assert.equal(rows[0].links, CONTENT_LINKS + PLANNED_LINKS + 3);
+});
+
+test('V8: PostgreSQL rechaza una ubicación sin ítem o sin versión, y un ítem sin versión vigente', async () => {
+  const exercise = (cols, vals) =>
+    `insert into public.exercises (id, lesson_id, position, type, skill, prompt_es, payload, answer,
+       is_published${cols}) values ('t-e9', 't-l2', 9, 'translate_write', 'translation', 'p',
+       '{"type":"translate_write","source":"chau"}', 'bye', true${vals})`;
+  await assert.rejects(db.exec(exercise('', '')), /item_id/);
+  await assert.rejects(db.exec(exercise(', item_id', ", 't-e3'")), /item_version_id/);
+  // El ítem sin versión se inserta, pero la transacción no confirma.
+  await assert.rejects(
+    db.exec(`insert into public.exercise_items (id, language_code, level, origin, type, assessment_mode,
+      response_format, input_modality, response_privacy, status)
+      select 't-e9', language_code, level, origin, type, assessment_mode, response_format,
+        input_modality, response_privacy, status
+      from public.exercise_items where id = 't-e3'`),
+    /no tiene versión vigente/,
+  );
+  const left = await db.query(
+    `select (select count(*)::int from public.exercises where id = 't-e9') e,
+       (select count(*)::int from public.exercise_items where id = 't-e9') i`,
+  );
+  assert.deepEqual(left.rows[0], { e: 0, i: 0 });
 });

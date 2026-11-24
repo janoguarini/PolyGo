@@ -1,4 +1,4 @@
-import { celebrationFor, daysLabel, streakWeek } from '../streak';
+import { celebrationFor, daysLabel, monthGrid, monthRange, streakWeek } from '../streak';
 
 const day = (streak_days: number, active_today: boolean, today_seconds = 0) => ({
   streak_days,
@@ -61,5 +61,44 @@ describe('streakWeek con protector', () => {
     const week = streakWeek(3, true, today, ['2026-10-27']);
     expect(week.map((d) => d.active)).toEqual([false, false, false, true, false, true, true]);
     expect(week.map((d) => d.frozen)).toEqual([false, false, false, false, true, false, false]);
+  });
+});
+
+describe('calendario de racha', () => {
+  // Lunes 23/11/2026.
+  const today = new Date(2026, 10, 23, 12);
+
+  it('rango del mes, incluido febrero', () => {
+    expect(monthRange(2026, 10)).toEqual({ from: '2026-11-01', to: '2026-11-30' });
+    expect(monthRange(2028, 1)).toEqual({ from: '2028-02-01', to: '2028-02-29' });
+  });
+
+  it('semanas desde el lunes, con casillas vacías alrededor del mes', () => {
+    // Noviembre 2026 empieza un domingo: seis casillas vacías antes del 1.
+    const weeks = monthGrid(2026, 10, [], [], today);
+    expect(weeks.every((w) => w.length === 7)).toBe(true);
+    expect(weeks[0]!.slice(0, 6)).toEqual([null, null, null, null, null, null]);
+    expect(weeks[0]![6]!.day).toBe(1);
+    const days = weeks.flat().filter((d) => d !== null);
+    expect(days).toHaveLength(30);
+  });
+
+  it('marca sólo los días reales: estudiados, protegidos, hoy y futuros', () => {
+    const days = monthGrid(
+      2026,
+      10,
+      ['2026-11-20', '2026-11-23', '2026-10-31'],
+      ['2026-11-21', '2026-11-23'],
+      today,
+    )
+      .flat()
+      .filter((d) => d !== null);
+    const byDay = (n: number) => days.find((d) => d.day === n)!;
+    expect(days.filter((d) => d.studied).map((d) => d.day)).toEqual([20, 23]);
+    expect(byDay(21)).toMatchObject({ studied: false, frozen: true });
+    // Un día estudiado no se muestra como protegido.
+    expect(byDay(23)).toMatchObject({ studied: true, frozen: false, isToday: true });
+    expect(byDay(22)).toMatchObject({ studied: false, frozen: false, isFuture: false });
+    expect(byDay(24).isFuture).toBe(true);
   });
 });

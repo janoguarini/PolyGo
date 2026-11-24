@@ -2,13 +2,14 @@ import type { EsUnitDef } from '../../es-course';
 import { dialogue, ES_A1_RATE, ex, question, reading, w } from '../helpers';
 
 /**
- * Español A1 U6 «At home» (docs/ES_A1_A2.md): describir la casa o el departamento con hay / no hay
+ * Español A1 U6 «At home» (docs/ES_A1_A2.md): describir la casa o el apartamento con hay / no hay
  * (invariable y sin artículo definido), preguntar y decir dónde está algo con estar (ser frente a
  * estar, primera parte) y ubicar cosas con en, arriba de, debajo de, al lado de, enfrente de y detrás
- * de (también «atrás de» en la Argentina). Contracción de + el = del.
+ * de (en el habla también «atrás de», que se acepta). Contracción de + el = del.
  * Pronunciación: la ñ (baño) como la ny de canyon; la h muda de hay.
- * Vocabulario rioplatense: departamento (piso), living (salón), dormitorio.
- * Cultura: en las ciudades argentinas mucha gente vive en departamentos.
+ * Variante: español neutro de Latinoamérica (tú, usted, ustedes). Léxico: el apartamento (se aceptan
+ * el departamento y el piso), la sala (se acepta el living), el dormitorio.
+ * Cultura: en las grandes ciudades latinoamericanas mucha gente vive en apartamentos.
  *
  * ESTADO EDITORIAL: borrador, sin revisión de hablantes nativos. Se carga sin publicar.
  */
@@ -18,7 +19,7 @@ const LLAVES = dialogue(
   'Martín can’t find his keys at home and asks his sister Sofía.',
   [
     ['Martín', 'Sofía, ¿dónde están mis llaves?'],
-    ['Sofía', '¿No están en la mesa del living?'],
+    ['Sofía', '¿No están en la mesa de la sala?'],
     ['Martín', 'No, en la mesa no hay nada.'],
     ['Sofía', '¿Y en el dormitorio? ¿Debajo de la cama?'],
     ['Martín', '¡Sí! Están debajo de la cama. ¡Gracias!'],
@@ -29,17 +30,17 @@ const LLAVES = dialogue(
 const AVISO = reading(
   'es.stim.a1-u6-aviso',
   'ad',
-  'An online ad for an apartment for rent in Palermo, Buenos Aires.',
+  'An online ad for an apartment for rent in Miraflores, Lima.',
   [
-    'Departamento en Palermo',
-    'Hay dos dormitorios, un baño, una cocina chica y un living grande.',
-    'El living tiene tres ventanas.',
+    'Apartamento en Miraflores',
+    'Hay dos dormitorios, un baño, una cocina chica y una sala grande.',
+    'La sala tiene tres ventanas.',
     'No hay camas ni mesas.',
   ],
 );
 
 export const ES_A1_U06: EsUnitDef = {
-  names: ['Martín', 'Sofía', 'Palermo'],
+  names: ['Martín', 'Sofía', 'Miraflores'],
   support: ['del', 'están', 'ni'],
   unit: {
     position: 6,
@@ -53,10 +54,10 @@ export const ES_A1_U06: EsUnitDef = {
     grammar: {
       title: 'Hay · estar for location · prepositions of place',
       explanation:
-        'Hay means both there is and there are, and it never changes: hay una cama, hay dos ventanas; the negative is no hay. After hay you use un / una, a number or no article, never el or la: hay una cocina (not hay la cocina). To say where a specific thing is, use estar: ¿dónde está la llave? — está en la mesa; for plurals, están. This is the first difference between Spanish’s two verbs for “to be”: ser says what something is or is like (la cocina es grande), estar says where it is (la cocina está al lado del living). Places: en (in, on, at), arriba de (on top of), debajo de (under), al lado de (next to), enfrente de (opposite) and detrás de (behind; in Argentina people also say atrás de). De + el becomes del: al lado del baño.',
+        'Hay means both there is and there are, and it never changes: hay una cama, hay dos ventanas; the negative is no hay. After hay you use un / una, a number or no article, never el or la: hay una cocina (not hay la cocina). To say where a specific thing is, use estar: ¿dónde está la llave? — está en la mesa; for plurals, están. This is the first difference between Spanish’s two verbs for “to be”: ser says what something is or is like (la cocina es grande), estar says where it is (la cocina está al lado de la sala). Places: en (in, on, at), arriba de (on top of), debajo de (under), al lado de (next to), enfrente de (opposite) and detrás de (behind; in everyday speech you will also hear atrás de). De + el becomes del: al lado del baño.',
       examples: [
         {
-          target: 'En el departamento hay dos dormitorios.',
+          target: 'En el apartamento hay dos dormitorios.',
           base: 'There are two bedrooms in the apartment.',
         },
         {
@@ -69,7 +70,7 @@ export const ES_A1_U06: EsUnitDef = {
     review: {
       status: 'draft',
       notes:
-        'A1 nuevo (U6). Sin revisión nativa. Revisar: «arriba de» para «on top of» (en la Argentina es lo habitual; «encima de» también se oye); «atrás de» y «abajo de» aceptados como variantes coloquiales rioplatenses; «living» como sustantivo masculino; «no hay camas ni mesas» (doble negación con ni).',
+        'A1 nuevo (U6), convertido al español neutro con tú. Sin revisión nativa. Revisar: «arriba de» para «on top of» (habitual en Latinoamérica; «encima de» se acepta); «atrás de» y «abajo de» aceptados como variantes coloquiales; «la sala» y «el apartamento» como palabras base (se aceptan «el living», «el departamento» y «el piso»); «el dormitorio» frente a «el cuarto», «la habitación» o «la recámara» (México); «no hay camas ni mesas» (doble negación con ni).',
     },
     words: [
       w('es-la-casa', 'la casa', 'the house', 'Mi casa es grande.', 'My house is big.', ['house'], {
@@ -77,13 +78,17 @@ export const ES_A1_U06: EsUnitDef = {
         emoji: '🏠',
       }),
       w(
-        'es-el-departamento',
-        'el departamento',
+        'es-el-apartamento',
+        'el apartamento',
         'the apartment',
-        'Vivo en un departamento chico.',
+        'Vivo en un apartamento chico.',
         'I live in a small apartment.',
-        ['house', 'argentina'],
-        { acceptedTranslations: ['the flat'], emoji: '🏢' },
+        ['house'],
+        {
+          acceptedTranslations: ['the flat'],
+          acceptedTexts: ['el departamento', 'el piso'],
+          emoji: '🏢',
+        },
       ),
       w(
         'es-el-dormitorio',
@@ -97,7 +102,7 @@ export const ES_A1_U06: EsUnitDef = {
         'es-la-cocina',
         'la cocina',
         'the kitchen',
-        'La cocina está al lado del living.',
+        'La cocina está al lado de la sala.',
         'The kitchen is next to the living room.',
         ['house'],
       ),
@@ -111,13 +116,13 @@ export const ES_A1_U06: EsUnitDef = {
         { acceptedTranslations: ['the toilet'], emoji: '🚿' },
       ),
       w(
-        'es-el-living',
-        'el living',
+        'es-la-sala',
+        'la sala',
         'the living room',
-        'El living tiene dos ventanas.',
+        'La sala tiene dos ventanas.',
         'The living room has two windows.',
-        ['house', 'argentina'],
-        { acceptedTranslations: ['the lounge'], emoji: '🛋️' },
+        ['house'],
+        { acceptedTranslations: ['the lounge'], acceptedTexts: ['el living'], emoji: '🛋️' },
       ),
       w(
         'es-la-cama',
@@ -201,10 +206,10 @@ export const ES_A1_U06: EsUnitDef = {
         'es-arriba-de',
         'arriba de',
         'on top of',
-        'La lapicera está arriba de la mesa.',
+        'El bolígrafo está arriba de la mesa.',
         'The pen is on top of the table.',
         ['prepositions'],
-        { acceptedTranslations: ['on', 'above'] },
+        { acceptedTranslations: ['on', 'above'], acceptedTexts: ['encima de'] },
       ),
       w(
         'es-debajo-de',
@@ -250,15 +255,15 @@ export const ES_A1_U06: EsUnitDef = {
         objective: 'Name the rooms of a house or an apartment.',
         intro: {
           explanation:
-            'In Argentine cities many people live in un departamento (an apartment; in Spain they say piso). The rooms: el living (the living room, a word borrowed from English), la cocina (the kitchen), el dormitorio (the bedroom) and el baño (the bathroom). The ñ in baño sounds like the ny in canyon, so baño and año are different words.',
+            'In big Latin American cities many people live in un apartamento (an apartment; in Argentina and Mexico you will also hear departamento, and in Spain piso). The rooms: la sala (the living room), la cocina (the kitchen), el dormitorio (the bedroom) and el baño (the bathroom). The ñ in baño sounds like the ny in canyon, so baño and año are different words.',
           examples: [
-            { target: 'Mi departamento es chico.', base: 'My apartment is small.' },
+            { target: 'Mi apartamento es chico.', base: 'My apartment is small.' },
             { target: 'La cocina es grande.', base: 'The kitchen is big.' },
           ],
         },
         takeaways: [
-          'You name the rooms: el living, la cocina, el dormitorio, el baño.',
-          'You say departamento for an apartment in Argentina.',
+          'You name the rooms: la sala, la cocina, el dormitorio, el baño.',
+          'You say apartamento for an apartment.',
         ],
         exercises: [
           ex.translationChoice(
@@ -269,25 +274,25 @@ export const ES_A1_U06: EsUnitDef = {
             { id: 'es.ex.rcbingzumlayck' },
           ),
           ex.translationChoice(
-            'el departamento',
+            'el apartamento',
             'the apartment',
             ['the house', 'the bathroom', 'the living room'],
-            ['es-el-departamento'],
-            { id: 'es.ex.nq7fturt6x8b0g' },
+            ['es-el-apartamento'],
+            { id: 'es.ex.jhl24s213dcyhd' },
           ),
           ex.matchPairs(
             [
               ['el dormitorio', 'the bedroom'],
               ['la cocina', 'the kitchen'],
               ['el baño', 'the bathroom'],
-              ['el living', 'the living room'],
+              ['la sala', 'the living room'],
             ],
-            ['es-el-dormitorio', 'es-la-cocina', 'es-el-bano', 'es-el-living'],
-            { id: 'es.ex.63q0bsupzcrn9u' },
+            ['es-el-dormitorio', 'es-la-cocina', 'es-el-bano', 'es-la-sala'],
+            { id: 'es.ex.8p8e4prbaziruf' },
           ),
           ex.listenChoice(
             'Es el baño.',
-            ['Es el año.', 'Es la cocina.', 'Es el living.'],
+            ['Es el año.', 'Es la cocina.', 'Es la sala.'],
             ['es-el-bano'],
             { id: 'es.ex.5yklejjbrd2jxl' },
           ),
@@ -316,26 +321,22 @@ export const ES_A1_U06: EsUnitDef = {
             },
           ),
           ex.listenChoice(
-            'Tengo un departamento chico.',
-            [
-              'Tengo una casa chica.',
-              'Tengo un departamento grande.',
-              'Tengo un dormitorio chico.',
-            ],
-            ['es-el-departamento'],
-            { id: 'es.ex.9ccrp7stugox0f' },
+            'Tengo un apartamento chico.',
+            ['Tengo una casa chica.', 'Tengo un apartamento grande.', 'Tengo un dormitorio chico.'],
+            ['es-el-apartamento'],
+            { id: 'es.ex.zmz5vrys9mt3eh' },
           ),
-          ex.orderWords('El living es grande.', 'The living room is big.', ['es-el-living'], {
-            id: 'es.ex.6bw6k7t6obq9xu',
+          ex.orderWords('La sala es grande.', 'The living room is big.', ['es-la-sala'], {
+            id: 'es.ex.9riz6zhjw0bkvw',
           }),
           ex.translateWrite('The bathroom is small.', 'El baño es chico.', ['es-el-bano'], {
             id: 'es.ex.atwvg42hpz3xhl',
           }),
           ex.translateWrite(
             'My apartment is big.',
-            'Mi departamento es grande.',
-            ['es-el-departamento'],
-            { id: 'es.ex.ddznhhgmu3hrjo' },
+            'Mi apartamento es grande.',
+            ['es-el-apartamento'],
+            { id: 'es.ex.0pc1r6wx6ourno' },
           ),
         ],
       },
@@ -455,7 +456,7 @@ export const ES_A1_U06: EsUnitDef = {
         objective: 'Ask and say where something is with estar.',
         intro: {
           explanation:
-            'To say where something is, use estar: ¿dónde está la llave? — Está en la mesa. For more than one thing: están. Spanish has two verbs for “to be”: ser for what something is or is like (la cocina es grande) and estar for where it is (la cocina está al lado del living). En means in, on or at: en la mesa, en el baño. Hay says that something exists; está says where a specific thing is: hay una mesa, but la mesa está en la cocina.',
+            'To say where something is, use estar: ¿dónde está la llave? — Está en la mesa. For more than one thing: están. Spanish has two verbs for “to be”: ser for what something is or is like (la cocina es grande) and estar for where it is (la cocina está al lado de la sala). En means in, on or at: en la mesa, en el baño. Hay says that something exists; está says where a specific thing is: hay una mesa, but la mesa está en la cocina.',
           examples: [
             {
               target: '¿Dónde está el gato? — Está en la cama.',
@@ -496,7 +497,7 @@ export const ES_A1_U06: EsUnitDef = {
             },
           ),
           ex.fillBlank(
-            'El gato está ___ el living.',
+            'El gato está ___ la sala.',
             'The cat is in the living room.',
             'en',
             ['de', 'y', 'por'],
@@ -504,7 +505,7 @@ export const ES_A1_U06: EsUnitDef = {
             {
               id: 'es.ex.auyvmub6le154i',
               skill: 'grammar',
-              explanation: 'En means in, on or at: en el living, en la mesa.',
+              explanation: 'En means in, on or at: en la sala, en la mesa.',
             },
           ),
           ex.listenChoice(
@@ -539,7 +540,7 @@ export const ES_A1_U06: EsUnitDef = {
             },
           ),
           ex.orderWords(
-            'El perro está en el living.',
+            'El perro está en la sala.',
             'The dog is in the living room.',
             ['es-esta', 'es-en'],
             { id: 'es.ex.ehw9wqmb7qlnf1' },
@@ -569,7 +570,7 @@ export const ES_A1_U06: EsUnitDef = {
         objective: 'Place things with prepositions of place.',
         intro: {
           explanation:
-            'Prepositions of place: arriba de (on top of), debajo de (under), al lado de (next to), enfrente de (opposite, across from) and detrás de (behind; in Argentina people also say atrás de). De + el becomes del: al lado del baño. With la nothing changes: al lado de la cocina.',
+            'Prepositions of place: arriba de (on top of), debajo de (under), al lado de (next to), enfrente de (opposite, across from) and detrás de (behind; in everyday speech you will also hear atrás de). De + el becomes del: al lado del baño. With la nothing changes: al lado de la cocina.',
           examples: [
             { target: 'El gato está debajo de la mesa.', base: 'The cat is under the table.' },
             {
@@ -636,7 +637,7 @@ export const ES_A1_U06: EsUnitDef = {
             { id: 'es.ex.frigqwymxod258' },
           ),
           ex.fillBlank(
-            'La cocina está ___ del living.',
+            'La cocina está ___ de la sala.',
             'The kitchen is opposite the living room.',
             'enfrente',
             ['arriba', 'debajo', 'detrás'],
@@ -644,7 +645,7 @@ export const ES_A1_U06: EsUnitDef = {
             {
               id: 'es.ex.q05dwixijm9q5n',
               skill: 'vocabulary',
-              explanation: 'Enfrente de is opposite or across from: enfrente del living.',
+              explanation: 'Enfrente de is opposite or across from: enfrente de la sala.',
             },
           ),
           ex.listenChoice(
@@ -684,7 +685,7 @@ export const ES_A1_U06: EsUnitDef = {
         objective: 'Understand a description of a home and a conversation about where things are.',
         intro: {
           explanation:
-            'Hay and estar together describe a home: hay dos dormitorios; la cocina está al lado del living. Spanish uses a double negative: no hay nada (there is nothing), no hay camas ni mesas (there are no beds or tables).',
+            'Hay and estar together describe a home: hay dos dormitorios; la cocina está al lado de la sala. Spanish uses a double negative: no hay nada (there is nothing), no hay camas ni mesas (there are no beds or tables).',
           examples: [
             {
               target: 'En mi casa hay tres dormitorios.',
@@ -708,22 +709,22 @@ export const ES_A1_U06: EsUnitDef = {
             'The ad says “Hay dos dormitorios”.',
           ),
           question(
-            'es.ex.b3pvzkeus0gjkg',
+            'es.ex.84gurbqhs8epvf',
             AVISO,
             'Which room is big?',
             'The living room',
             ['The kitchen', 'The bathroom', 'The bedroom'],
-            ['es-el-living'],
-            'It mentions “una cocina chica y un living grande”.',
+            ['es-la-sala'],
+            'It mentions “una cocina chica y una sala grande”.',
           ),
           question(
-            'es.ex.scrmqcxvyj4bu2',
+            'es.ex.n4xp2rbtif4gxf',
             AVISO,
             'How many windows does the living room have?',
             'Three',
             ['Two', 'One', 'None'],
-            ['es-la-ventana', 'es-el-living'],
-            'The ad says “El living tiene tres ventanas”.',
+            ['es-la-ventana', 'es-la-sala'],
+            'The ad says “La sala tiene tres ventanas”.',
           ),
           question(
             'es.ex.j5zuik2gsbgze6',
@@ -753,14 +754,14 @@ export const ES_A1_U06: EsUnitDef = {
             'Martín finds them: “Están debajo de la cama”.',
           ),
           ex.listenChoice(
-            'En el living hay dos ventanas.',
+            'En la sala hay dos ventanas.',
             [
-              'En el living hay tres ventanas.',
+              'En la sala hay tres ventanas.',
               'En el dormitorio hay dos ventanas.',
-              'En el living no hay ventanas.',
+              'En la sala no hay ventanas.',
             ],
-            ['es-hay', 'es-el-living'],
-            { id: 'es.ex.ez4329cehhsutt' },
+            ['es-hay', 'es-la-sala'],
+            { id: 'es.ex.ee11ntbppyi4d6' },
           ),
           ex.fillBlank(
             'La cocina está ___ lado del baño.',
@@ -790,11 +791,11 @@ export const ES_A1_U06: EsUnitDef = {
           ),
           ex.translateWrite(
             'In my apartment there is a big kitchen.',
-            'En mi departamento hay una cocina grande.',
-            ['es-hay', 'es-el-departamento', 'es-la-cocina'],
+            'En mi apartamento hay una cocina grande.',
+            ['es-hay', 'es-el-apartamento', 'es-la-cocina'],
             {
-              id: 'es.ex.h6rh95524wtmww',
-              acceptedAnswers: ['Hay una cocina grande en mi departamento.'],
+              id: 'es.ex.bc336cx5pjbkjc',
+              acceptedAnswers: ['Hay una cocina grande en mi apartamento.'],
             },
           ),
         ],

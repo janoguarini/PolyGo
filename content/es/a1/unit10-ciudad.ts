@@ -2,23 +2,24 @@ import type { EsUnitDef } from '../../es-course';
 import { dialogue, ES_A1_RATE, ex, question, reading, w } from '../helpers';
 
 /**
- * Español A1 U10 «Around town» (docs/ES_A1_A2.md): decir adónde va uno con ir (voy, vas, va, vamos,
- * van) + a + lugar (a + el = al: voy al cine), nombrar los lugares del barrio, preguntar dónde está
- * algo y entender indicaciones: cerca / lejos, a la derecha / a la izquierda, derecho, y el imperativo
- * introductorio con vos (doblá, seguí, con acento en la última sílaba) frente a usted (doble, siga).
+ * Español A1 U10 «Around town» (docs/ES_A1_A2.md), en español neutro de Latinoamérica (tú y ustedes):
+ * decir adónde va uno con ir (voy, vas, va, vamos, van) + a + lugar (a + el = al: voy al cine), nombrar
+ * los lugares del barrio, preguntar dónde está algo y entender indicaciones: cerca / lejos, a la derecha
+ * / a la izquierda, derecho, y el imperativo introductorio con tú (dobla, sigue, toma: la forma de él del
+ * presente; seguir e → i) frente a usted (doble, siga, tome). El autobús (se aceptan colectivo y camión).
  * Pronunciación: la r simple de «derecha» (golpe rápido) frente a la rr de «perro» o «barrio»
- * (vibrante); la z de «izquierda» suena como s (seseo). Cultura: en Buenos Aires las distancias se dan
- * en cuadras.
+ * (vibrante); la z de «izquierda» suena como s (seseo). Cultura: en muchas ciudades de Latinoamérica las
+ * distancias se dan en cuadras.
  *
  * ESTADO EDITORIAL: borrador, sin revisión de hablantes nativos. Se carga sin publicar.
  */
 
 const ESTACION = dialogue(
   'es.stim.a1-u10-estacion',
-  'A young man asks a woman in the street for directions.',
+  'A young man asks a young woman in the street in Lima for directions.',
   [
     ['Juan', 'Perdón, ¿dónde está la estación?'],
-    ['Camila', 'Está cerca. Seguí derecho dos cuadras y doblá a la izquierda.'],
+    ['Camila', 'Está cerca. Sigue derecho dos cuadras y dobla a la izquierda.'],
     ['Juan', '¿Está al lado del banco?'],
     ['Camila', 'No, está enfrente del banco.'],
     ['Juan', '¡Muchas gracias!'],
@@ -33,7 +34,7 @@ const CINE = reading(
   [
     '¡Hola, Martín!',
     'Hoy vamos al cine con Lucía.',
-    'El cine está en la calle Corrientes, cerca de la estación.',
+    'El cine está en la calle Juárez, cerca de la estación.',
     'Primero voy a la panadería y después voy al cine.',
     '¿Vas con nosotros?',
   ],
@@ -41,8 +42,8 @@ const CINE = reading(
 );
 
 export const ES_A1_U10: EsUnitDef = {
-  names: ['Juan', 'Camila', 'Sofía', 'Martín', 'Lucía', 'Florida', 'Corrientes'],
-  support: ['adónde', 'disculpe', 'perdón', 'cuadra', 'doble', 'siga', 'colectivo', 'barrio'],
+  names: ['Juan', 'Camila', 'Sofía', 'Martín', 'Lucía', 'Bolívar', 'Juárez'],
+  support: ['adónde', 'disculpe', 'perdón', 'cuadra', 'doble', 'siga', 'autobús', 'barrio'],
   unit: {
     position: 10,
     title: 'Around town',
@@ -53,17 +54,17 @@ export const ES_A1_U10: EsUnitDef = {
     objective:
       'You can say where you and others are going, ask where a place is, say if it is near or far, and give and understand simple directions.',
     grammar: {
-      title: 'Ir a + place · al · doblá, seguí',
+      title: 'Ir a + place · al · dobla, sigue',
       explanation:
-        'Ir (to go) is irregular: yo voy, vos vas, él / ella / usted va, nosotros vamos, ustedes / ellos van. Vamos also means let’s go. To say where: ir a + place. A + el always becomes al: voy al cine; with la nothing changes: voy a la farmacia. In the same way, de + el becomes del: cerca del banco. To ask where a place is, use está: ¿dónde está la estación? To give directions to a friend, use the vos command, stressed on the last syllable: doblá (turn), seguí (keep going), tomá (take). With usted: doble, siga, tome. Derecho means straight ahead; derecha means right: seguí derecho y doblá a la derecha. Pronunciation: the single r in derecha is a quick tap, like the tt in American butter; rr, as in perro or barrio, is a strong trill. The z in izquierda sounds like an s.',
+        'Ir (to go) is irregular: yo voy, tú vas, él / ella / usted va, nosotros vamos, ustedes / ellos van. Vamos also means let’s go. To say where: ir a + place. A + el always becomes al: voy al cine; with la nothing changes: voy a la farmacia. In the same way, de + el becomes del: cerca del banco. To ask where a place is, use está: ¿dónde está la estación? To give directions to a friend, use the tú command, which looks like the él / ella form of the present: dobla (turn), sigue (keep going), toma (take). Seguir changes e to i: sigo, sigues, sigue, so the command is sigue. With usted the vowel swaps: doble, siga, tome. Derecho means straight ahead; derecha means right: sigue derecho y dobla a la derecha. Pronunciation: the single r in derecha is a quick tap, like the tt in American butter; rr, as in perro or barrio, is a strong trill. The z in izquierda sounds like an s.',
       examples: [
         {
-          target: 'Voy al cine y vos vas al museo.',
+          target: 'Voy al cine y tú vas al museo.',
           base: 'I’m going to the cinema and you’re going to the museum.',
         },
         { target: 'Nosotros vamos a la panadería.', base: 'We’re going to the bakery.' },
         {
-          target: 'Seguí derecho y doblá a la derecha.',
+          target: 'Sigue derecho y dobla a la derecha.',
           base: 'Go straight ahead and turn right.',
         },
       ],
@@ -71,7 +72,7 @@ export const ES_A1_U10: EsUnitDef = {
     review: {
       status: 'draft',
       notes:
-        'A1 nuevo (U10). Sin revisión nativa. Revisar: «doblá / seguí» y «doble / siga» como única forma del imperativo en A1 (sin enseñar el negativo); «derecho» y «todo derecho» frente a «recto» (que no se enseña); «cuadra» como unidad de distancia en Buenos Aires; «perdón» y «disculpe» para llamar la atención de un desconocido; el par «perro / pero» para practicar r / rr.',
+        'A1 nuevo (U10). Convertido al español neutro de Latinoamérica (tú y ustedes) el 2026-11-21. Sin revisión nativa. Revisar: «dobla / sigue» y «doble / siga» como única forma del imperativo en A1 (sin enseñar el negativo); «dobla» frente a «gira» (también aceptada); «derecho» y «todo derecho» frente a «recto» (aceptado, no enseñado); «cuadra» como unidad de distancia (en España, «manzana»); «el autobús» (se mencionan camión y colectivo); calles Bolívar y Juárez en lugar de Florida y Corrientes; «perdón» y «disculpe» para llamar la atención de un desconocido; el par «perro / pero» para practicar r / rr.',
     },
     words: [
       w(
@@ -91,7 +92,7 @@ export const ES_A1_U10: EsUnitDef = {
         'you go, informal',
         '¿Vas al cine hoy?',
         'Are you going to the cinema today?',
-        ['verbs', 'voseo'],
+        ['verbs'],
         { acceptedTranslations: ["you're going, informal"] },
       ),
       w('es-va', 'va', 'he goes', 'Mi mamá va al banco.', 'My mum goes to the bank.', ['verbs'], {
@@ -128,8 +129,8 @@ export const ES_A1_U10: EsUnitDef = {
         'es-el-banco',
         'el banco',
         'the bank',
-        'El banco está en la calle Florida.',
-        'The bank is on Florida Street.',
+        'El banco está en la calle Bolívar.',
+        'The bank is on Bolívar Street.',
         ['city'],
         { emoji: '🏦' },
       ),
@@ -167,8 +168,8 @@ export const ES_A1_U10: EsUnitDef = {
         'es-la-panaderia',
         'la panadería',
         'the bakery',
-        'En la panadería hay medialunas.',
-        'There are croissants at the bakery.',
+        'En la panadería hay pan y croissants.',
+        'There is bread and there are croissants at the bakery.',
         ['city'],
         { emoji: '🥐' },
       ),
@@ -193,10 +194,13 @@ export const ES_A1_U10: EsUnitDef = {
         'es-derecho',
         'derecho',
         'straight ahead',
-        'Seguí derecho dos cuadras.',
+        'Sigue derecho dos cuadras.',
         'Go straight ahead for two blocks.',
         ['directions'],
-        { acceptedTranslations: ['straight on'], acceptedTexts: ['todo derecho'] },
+        {
+          acceptedTranslations: ['straight on'],
+          acceptedTexts: ['todo derecho', 'recto', 'todo recto'],
+        },
       ),
       w(
         'es-a-la-izquierda',
@@ -211,7 +215,7 @@ export const ES_A1_U10: EsUnitDef = {
         'es-a-la-derecha',
         'a la derecha',
         'on the right',
-        'Doblá a la derecha.',
+        'Dobla a la derecha.',
         'Turn right.',
         ['directions'],
         { acceptedTranslations: ['to the right', 'right'], emoji: '➡️' },
@@ -236,20 +240,21 @@ export const ES_A1_U10: EsUnitDef = {
       ),
       w(
         'es-dobla',
-        'doblá',
+        'dobla',
         'turn, informal',
-        'Doblá a la izquierda en la calle Corrientes.',
-        'Turn left on Corrientes Street.',
-        ['directions', 'imperative', 'voseo'],
+        'Dobla a la izquierda en la calle Juárez.',
+        'Turn left on Juárez Street.',
+        ['directions', 'imperative'],
+        { acceptedTexts: ['doblá', 'gira'] },
       ),
       w(
-        'es-segui',
-        'seguí',
+        'es-sigue',
+        'sigue',
         'keep going',
-        'Seguí derecho hasta la estación.',
+        'Sigue derecho hasta la estación.',
         'Keep going straight ahead to the station.',
-        ['directions', 'imperative', 'voseo'],
-        { acceptedTranslations: ['carry on'] },
+        ['directions', 'imperative'],
+        { acceptedTranslations: ['carry on'], acceptedTexts: ['seguí'] },
       ),
     ],
     lessons: [
@@ -259,7 +264,7 @@ export const ES_A1_U10: EsUnitDef = {
         objective: 'Say where you, a friend or someone else is going.',
         intro: {
           explanation:
-            'Ir (to go) is irregular: yo voy, vos vas, él, ella or usted va. To say where, use a + place. A + el always becomes al: voy al cine, voy al museo. With la it stays the same: voy a la farmacia. The same verb works for “I go” and “I’m going”: voy al cine can mean both. The v in voy and vas sounds just like a b.',
+            'Ir (to go) is irregular: yo voy, tú vas, él, ella or usted va. To say where, use a + place. A + el always becomes al: voy al cine, voy al museo. With la it stays the same: voy a la farmacia. The same verb works for “I go” and “I’m going”: voy al cine can mean both. The v in voy and vas sounds just like a b.',
           examples: [
             { target: 'Voy al cine.', base: 'I’m going to the cinema.' },
             {
@@ -288,7 +293,7 @@ export const ES_A1_U10: EsUnitDef = {
             ['es-voy', 'es-el-cine'],
             {
               id: 'es.ex.h8g7pli837cyfc',
-              explanation: 'With yo, ir is voy. Vas is for vos and va for él, ella or usted.',
+              explanation: 'With yo, ir is voy. Vas is for tú and va for él, ella or usted.',
             },
           ),
           ex.listenChoice(
@@ -358,7 +363,7 @@ export const ES_A1_U10: EsUnitDef = {
             ['es-vas', 'es-el-museo'],
             {
               id: 'es.ex.51e01vc18n9t2h',
-              acceptedAnswers: ['¿Vos vas al museo?', '¿Vas al museo hoy?'],
+              acceptedAnswers: ['¿Tú vas al museo?', '¿Vas al museo hoy?', '¿Vos vas al museo?'],
             },
           ),
         ],
@@ -371,7 +376,7 @@ export const ES_A1_U10: EsUnitDef = {
           'Say where we, you all and they are going: the bakery, the supermarket, the bank.',
         intro: {
           explanation:
-            'In the plural: nosotros vamos, ustedes and ellos van (in Argentina, never vosotros). Vamos also means let’s go: ¡vamos al cine! In an Argentine neighbourhood you go to la panadería for bread and medialunas, to el supermercado for everything else and to el banco for money matters.',
+            'In the plural: nosotros vamos, ustedes and ellos van. In Latin America ustedes is the only plural “you” (in Spain friends say vosotros, which you only need to recognise). Vamos also means let’s go: ¡vamos al cine! In your barrio (neighbourhood) you go to la panadería for bread, to el supermercado for everything else and to el banco for money matters.',
           examples: [
             { target: 'Vamos a la panadería.', base: 'We’re going to the bakery.' },
             { target: 'Ellos van al supermercado.', base: 'They’re going to the supermarket.' },
@@ -441,8 +446,8 @@ export const ES_A1_U10: EsUnitDef = {
             { id: 'es.ex.xqmann7w4c4uqu' },
           ),
           ex.fillBlank(
-            '¡___ a la panadería! Quiero medialunas.',
-            'Let’s go to the bakery! I want croissants.',
+            '¡___ a la panadería! Quiero pan.',
+            'Let’s go to the bakery! I want bread.',
             'Vamos',
             ['Van', 'Vas', 'Va'],
             ['es-vamos', 'es-la-panaderia'],
@@ -482,7 +487,7 @@ export const ES_A1_U10: EsUnitDef = {
         objective: 'Ask where a place is and say if it is near or far.',
         intro: {
           explanation:
-            'To ask for a place, use está, as in unit 6: ¿dónde está la farmacia? Answer está cerca (it’s near) or está lejos (it’s far); to say near what: cerca de la estación. De + el becomes del: cerca del banco. With a stranger, start with disculpe (excuse me, formal) or perdón. In Buenos Aires distances are given in cuadras (blocks): está a dos cuadras.',
+            'To ask for a place, use está, as in unit 6: ¿dónde está la farmacia? Answer está cerca (it’s near) or está lejos (it’s far); to say near what: cerca de la estación. De + el becomes del: cerca del banco. With a stranger, start with disculpe (excuse me, formal) or perdón. In many Latin American cities distances are given in cuadras (blocks): está a dos cuadras.',
           examples: [
             {
               target: 'Disculpe, ¿dónde está la farmacia?',
@@ -545,13 +550,13 @@ export const ES_A1_U10: EsUnitDef = {
             },
           ),
           ex.orderWords(
-            'El banco está en la calle Florida.',
-            'The bank is on Florida Street.',
+            'El banco está en la calle Bolívar.',
+            'The bank is on Bolívar Street.',
             ['es-la-calle', 'es-el-banco'],
             { id: 'es.ex.qxk334ejyjhitt' },
           ),
           ex.fillBlank(
-            'El museo está muy ___. Vamos en colectivo.',
+            'El museo está muy ___. Vamos en autobús.',
             'The museum is very far. Let’s go by bus.',
             'lejos',
             ['cerca', 'bien', 'grande'],
@@ -560,7 +565,7 @@ export const ES_A1_U10: EsUnitDef = {
               id: 'es.ex.sq2mr9tnhpeaid',
               skill: 'vocabulary',
               explanation:
-                'Lejos is far, the opposite of cerca. In Argentina the city bus is el colectivo.',
+                'Lejos is far, the opposite of cerca. The city bus is el autobús (in Mexico also el camión, in Argentina el colectivo).',
             },
           ),
           ex.shortAnswer(
@@ -579,6 +584,7 @@ export const ES_A1_U10: EsUnitDef = {
               id: 'es.ex.fao2o1yen6ogin',
               acceptedAnswers: [
                 'Perdón, ¿dónde está la farmacia?',
+                'Disculpa, ¿dónde está la farmacia?',
                 'Disculpá, ¿dónde está la farmacia?',
                 '¿Dónde está la farmacia?',
                 'Disculpe, ¿dónde hay una farmacia?',
@@ -590,21 +596,21 @@ export const ES_A1_U10: EsUnitDef = {
 
       // ------------------------------------------------------------------------------------ L4
       {
-        title: 'Doblá a la derecha',
-        objective: 'Give and follow simple directions with vos and usted.',
+        title: 'Dobla a la derecha',
+        objective: 'Give and follow simple directions with tú and usted.',
         intro: {
           explanation:
-            'To give directions to a friend, use the vos command, stressed on the last syllable: doblá (turn), seguí (keep going). With usted: doble, siga. A la derecha is on the right, a la izquierda on the left, and derecho (or todo derecho) is straight ahead: don’t mix up derecho (straight) and derecha (right). Pronunciation: the single r in derecha is a quick tap, like the tt in American butter, while rr, as in perro or barrio, is a strong trill. The z in izquierda sounds like an s.',
+            'To give directions to a friend, use the tú command. For most verbs it is the same as the él / ella form of the present: él dobla → ¡dobla! (turn). Seguir (to keep going) changes e to i (sigo, sigues, sigue), so the command is sigue. With usted the vowel swaps: doble, siga. You will also hear gira (turn). A la derecha is on the right, a la izquierda on the left, and derecho (or todo derecho) is straight ahead: don’t mix up derecho (straight) and derecha (right). Pronunciation: the single r in derecha is a quick tap, like the tt in American butter, while rr, as in perro or barrio, is a strong trill. The z in izquierda sounds like an s.',
           examples: [
             {
-              target: 'Seguí derecho y doblá a la izquierda.',
+              target: 'Sigue derecho y dobla a la izquierda.',
               base: 'Go straight ahead and turn left.',
             },
             { target: 'Doble a la derecha, señora.', base: 'Turn right, madam.' },
           ],
         },
         takeaways: [
-          'You give directions with doblá and seguí, and doble and siga with usted.',
+          'You give directions with dobla and sigue (tú), and doble and siga with usted.',
           'You say a la derecha, a la izquierda and derecho.',
         ],
         exercises: [
@@ -620,45 +626,45 @@ export const ES_A1_U10: EsUnitDef = {
               ['a la derecha', 'on the right'],
               ['a la izquierda', 'on the left'],
               ['derecho', 'straight ahead'],
-              ['seguí', 'keep going'],
+              ['sigue', 'keep going'],
             ],
-            ['es-a-la-derecha', 'es-a-la-izquierda', 'es-derecho', 'es-segui'],
-            { id: 'es.ex.sfnbpjp9q4l6wy' },
+            ['es-a-la-derecha', 'es-a-la-izquierda', 'es-derecho', 'es-sigue'],
+            { id: 'es.ex.awvss06s4san7z' },
           ),
           ex.listenChoice(
-            'Doblá a la izquierda.',
-            ['Doblá a la derecha.', 'Seguí derecho.', 'Seguí a la izquierda.'],
-            ['es-dobla', 'es-a-la-izquierda', 'es-a-la-derecha', 'es-derecho', 'es-segui'],
-            { id: 'es.ex.a80po1a4flphsc' },
+            'Dobla a la izquierda.',
+            ['Dobla a la derecha.', 'Sigue derecho.', 'Sigue a la izquierda.'],
+            ['es-dobla', 'es-a-la-izquierda', 'es-a-la-derecha', 'es-derecho', 'es-sigue'],
+            { id: 'es.ex.35pqtybt413z87' },
           ),
           ex.fillBlank(
-            '___ a la derecha en la calle Florida.',
-            'Turn right on Florida Street.',
-            'Doblá',
-            ['Seguí', 'Vas', 'Voy'],
+            '___ a la derecha en la calle Bolívar.',
+            'Turn right on Bolívar Street.',
+            'Dobla',
+            ['Sigue', 'Vas', 'Voy'],
             ['es-dobla', 'es-a-la-derecha'],
             {
               id: 'es.ex.zxagy2iy0j9gmj',
-              explanation: 'Doblá is turn (vos). Seguí is keep going.',
+              explanation: 'Dobla is turn (tú). Sigue is keep going.',
             },
           ),
           ex.fillBlank(
-            'Seguí ___ y la estación está a la izquierda.',
+            'Sigue ___ y la estación está a la izquierda.',
             'Keep going straight ahead and the station is on the left.',
             'derecho',
             ['derecha', 'lejos', 'cerca'],
-            ['es-derecho', 'es-segui', 'es-a-la-izquierda'],
+            ['es-derecho', 'es-sigue', 'es-a-la-izquierda'],
             {
-              id: 'es.ex.8eqg5bkcx5yrj6',
+              id: 'es.ex.ya6n4uzuv3kwm4',
               explanation: 'Derecho (with o) means straight ahead; derecha (with a) means right.',
             },
           ),
           ex.translationChoice(
-            'seguí',
+            'sigue',
             'keep going',
             ['turn, informal', 'I go', 'on the right'],
-            ['es-segui'],
-            { id: 'es.ex.l75j8q8bubm2z4' },
+            ['es-sigue'],
+            { id: 'es.ex.njvwoe14brfdil' },
           ),
           ex.listenChoice(
             'El perro está a la derecha.',
@@ -670,33 +676,41 @@ export const ES_A1_U10: EsUnitDef = {
             'Señora, ___ derecho dos cuadras.',
             'Madam, keep going straight ahead for two blocks.',
             'siga',
-            ['seguí', 'doblá', 'va'],
-            ['es-segui', 'es-derecho'],
+            ['sigue', 'dobla', 'va'],
+            ['es-sigue', 'es-derecho'],
             {
-              id: 'es.ex.xmgtlz0tt59tja',
+              id: 'es.ex.060wwflhgjs58m',
               explanation:
-                'With usted (señora) the command is siga. Seguí is for a friend you call vos.',
+                'With usted (señora) the command is siga. Sigue is for a friend you call tú.',
             },
           ),
           ex.translateWrite(
             'Turn left and keep going straight ahead. (to a friend)',
-            'Doblá a la izquierda y seguí derecho.',
-            ['es-dobla', 'es-a-la-izquierda', 'es-segui', 'es-derecho'],
+            'Dobla a la izquierda y sigue derecho.',
+            ['es-dobla', 'es-a-la-izquierda', 'es-sigue', 'es-derecho'],
             {
-              id: 'es.ex.fzip8ie8apjn29',
+              id: 'es.ex.om5zu7iv8v742b',
               acceptedAnswers: [
-                'Doblá a la izquierda y seguí todo derecho.',
-                'Doblá a la izquierda, seguí derecho.',
-                'Doblá a la izquierda y después seguí derecho.',
-                'Dobla a la izquierda y sigue derecho.',
+                'Dobla a la izquierda y sigue todo derecho.',
+                'Dobla a la izquierda, sigue derecho.',
+                'Dobla a la izquierda y después sigue derecho.',
+                'Dobla a la izquierda y sigue todo recto.',
+                'Gira a la izquierda y sigue derecho.',
+                'Doblá a la izquierda y seguí derecho.',
               ],
             },
           ),
           ex.shortAnswer(
             '¿Dónde está el banco?',
-            'Tell a friend to turn right (start with «Doblá»).',
-            'Doblá a la derecha.',
-            ['Doblá a la derecha', 'Doblá a la derecha y seguí derecho.', 'Doble a la derecha.'],
+            'Tell a friend to turn right (start with «Dobla»).',
+            'Dobla a la derecha.',
+            [
+              'Dobla a la derecha',
+              'Dobla a la derecha y sigue derecho.',
+              'Doble a la derecha.',
+              'Gira a la derecha.',
+              'Doblá a la derecha.',
+            ],
             ['es-dobla', 'es-a-la-derecha'],
             { id: 'es.ex.k4ybbwz0pcx2gq' },
           ),
@@ -709,7 +723,7 @@ export const ES_A1_U10: EsUnitDef = {
         objective: 'Understand directions and plans in a conversation and a message.',
         intro: {
           explanation:
-            'Now put it all together: where you are going (voy al cine), where a place is (cerca de la estación, enfrente del banco) and how to get there (seguí derecho, doblá a la izquierda). Remember from unit 6: al lado de (next to) and enfrente de (opposite).',
+            'Now put it all together: where you are going (voy al cine), where a place is (cerca de la estación, enfrente del banco) and how to get there (sigue derecho, dobla a la izquierda). Remember from unit 6: al lado de (next to) and enfrente de (opposite).',
           examples: [
             { target: 'La farmacia del barrio está cerca.', base: 'The local pharmacy is nearby.' },
             {
@@ -743,7 +757,7 @@ export const ES_A1_U10: EsUnitDef = {
               'It’s far: take the bus',
             ],
             ['es-derecho', 'es-dobla', 'es-a-la-izquierda'],
-            'Camila says “Seguí derecho dos cuadras y doblá a la izquierda”.',
+            'Camila says “Sigue derecho dos cuadras y dobla a la izquierda”.',
           ),
           question(
             'es.ex.w80fp6sokfpp68',
@@ -773,14 +787,14 @@ export const ES_A1_U10: EsUnitDef = {
             'es.ex.ajd4m3vnlcf7me',
             CINE,
             'Where is the cinema?',
-            'On Corrientes Street, near the station',
+            'On Juárez Street, near the station',
             [
-              'On Corrientes Street, far from the station',
-              'On Florida Street, near the bank',
+              'On Juárez Street, far from the station',
+              'On Bolívar Street, near the bank',
               'Next to the bakery',
             ],
             ['es-la-calle', 'es-cerca-de'],
-            'She writes “El cine está en la calle Corrientes, cerca de la estación”.',
+            'She writes “El cine está en la calle Juárez, cerca de la estación”.',
           ),
           question(
             'es.ex.dy7dd2dlg1alba',

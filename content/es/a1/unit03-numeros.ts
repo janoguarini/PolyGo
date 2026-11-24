@@ -3,18 +3,19 @@ import { dialogue, ES_A1_RATE, ex, question, reading, w } from '../helpers';
 
 /**
  * Español A1 U3 «Numbers and age» (docs/ES_A1_A2.md): los números del 1 al 12 y el 20, tener en
- * singular (tengo, vos tenés, él / ella / usted tiene) y la edad con tener (tengo veinte años, nunca
- * «soy veinte»), ¿cuántos años tenés? y la apócope uno → un año.
+ * singular (yo tengo, tú tienes, él / ella / usted tiene: g en la primera persona y diptongo e → ie) y
+ * la edad con tener (tengo veinte años, nunca «soy veinte»), ¿cuántos años tienes? y la apócope uno →
+ * un año. Variante: español neutro de Latinoamérica (tú, usted, ustedes).
  * Pronunciación: la r suave (tres, cuatro) frente a la r fuerte al principio (Rosario, Roma); la v
  * suena igual que la b (veinte, nueve); el falso amigo once (eleven).
- * Cultura: en la Argentina la primaria empieza a los seis años.
+ * Cultura: en casi todos los países hispanohablantes la primaria empieza a los seis años.
  *
  * ESTADO EDITORIAL: borrador, sin revisión de hablantes nativos. Se carga sin publicar.
  */
 
 const PLAZA = dialogue(
   'es.stim.a1-u3-plaza',
-  'Two mothers talk at a playground in Palermo while their children play.',
+  'Two mothers talk at a playground in Lima while their children play.',
   [
     ['Ana', '¡Hola! Ella es Valentina. Tiene seis años.'],
     ['Camila', 'Hola, Valentina. Él es Mateo. Tiene ocho años.'],
@@ -28,9 +29,9 @@ const EDAD = dialogue(
   'es.stim.a1-u3-edad',
   'Kevin, an exchange student, talks to Mateo, the young son of his host family.',
   [
-    ['Kevin', '¡Hola! ¿Cómo te llamás?'],
-    ['Mateo', 'Mateo. ¿Cuántos años tenés?'],
-    ['Kevin', 'Tengo veinte años. ¿Y vos, Mateo?'],
+    ['Kevin', '¡Hola! ¿Cómo te llamas?'],
+    ['Mateo', 'Mateo. ¿Cuántos años tienes?'],
+    ['Kevin', 'Tengo veinte años. ¿Y tú, Mateo?'],
     ['Mateo', 'Yo tengo siete. ¡Veinte son muchos!'],
   ],
   ES_A1_RATE,
@@ -39,7 +40,7 @@ const EDAD = dialogue(
 const FICHA = reading(
   'es.stim.a1-u3-ficha',
   'form',
-  'A registration form for a Spanish course for children in Buenos Aires.',
+  'A registration form for a Spanish course for children in Bogotá.',
   [
     'Nombre: Claire',
     'Nacionalidad: francesa',
@@ -62,7 +63,7 @@ export const ES_A1_U03: EsUnitDef = {
     'Diego',
     'Kevin',
     'Claire',
-    'Palermo',
+    'Lima',
     'París',
   ],
   support: ['idiomas', 'meses', 'son', 'nombre', 'nacionalidad', 'edad', 'curso'],
@@ -71,18 +72,18 @@ export const ES_A1_U03: EsUnitDef = {
     title: 'Numbers and age',
     titleEn: 'Números y edad',
     description:
-      'Count from one to twelve and say twenty, use tener (tengo, vos tenés, tiene) and say and ask how old someone is.',
+      'Count from one to twelve and say twenty, use tener (tengo, tienes, tiene) and say and ask how old someone is.',
     emoji: '🔢',
     objective:
       'You can count from one to twelve, say twenty, say how old you are and ask other people how old they are.',
     grammar: {
       title: 'Tener · age with tener · un año',
       explanation:
-        'Tener (to have) in the singular: yo tengo, vos tenés, él / ella / usted tiene. In Spanish you “have” years: tengo veinte años (I am twenty years old) — never soy veinte. To ask a friend: ¿cuántos años tenés?; with usted: ¿cuántos años tiene? In Spain and much of Latin America you will hear tú tienes instead of vos tenés. Uno becomes un before a masculine noun: un año, but uno, dos, tres when you count. Año has an ñ (like the ny in canyon): always write it. The v in veinte and nueve sounds exactly like a b, and the r in tres and cuatro is a quick tap, like the tt in American butter.',
+        'Tener (to have) in the singular: yo tengo, tú tienes, él / ella / usted tiene. It is irregular in two ways: yo has a g (tengo), and in tienes and tiene the e of the stem becomes ie (ten- → tien-). In Spanish you “have” years: tengo veinte años (I am twenty years old) — never soy veinte. To ask a friend: ¿cuántos años tienes?; with usted: ¿cuántos años tiene? Uno becomes un before a masculine noun: un año, but uno, dos, tres when you count. Año has an ñ (like the ny in canyon): always write it. The v in veinte and nueve sounds exactly like a b, and the r in tres and cuatro is a quick tap, like the tt in American butter.',
       examples: [
         { target: 'Tengo veinte años.', base: 'I am twenty years old.' },
         {
-          target: '¿Cuántos años tenés? — Tengo doce.',
+          target: '¿Cuántos años tienes? — Tengo doce.',
           base: 'How old are you? — I’m twelve.',
         },
         { target: 'Thiago tiene un año.', base: 'Thiago is one year old.' },
@@ -91,7 +92,7 @@ export const ES_A1_U03: EsUnitDef = {
     review: {
       status: 'draft',
       notes:
-        'A1 nuevo (U3). Sin revisión nativa: revisar «Dos y dos son cuatro» (también se oye «dos más dos, cuatro»), el diálogo con un chico («¡Veinte son muchos!») y la ficha de inscripción (nombre, nacionalidad, edad, idiomas van como apoyo, sin practicarse). Las edades de adultos se limitan a veinte porque sólo se enseña del 1 al 12 y el 20.',
+        'A1 nuevo (U3), convertido al español neutro con tú (tienes, ¿cuántos años tienes?). Sin revisión nativa: revisar «Dos y dos son cuatro» (también se oye «dos más dos, cuatro»), el diálogo con un chico («¡Veinte son muchos!») y la ficha de inscripción (nombre, nacionalidad, edad, idiomas van como apoyo, sin practicarse). Las edades de adultos se limitan a veinte porque sólo se enseña del 1 al 12 y el 20.',
     },
     words: [
       w('es-uno', 'uno', 'one', 'Thiago tiene un año.', 'Thiago is one year old.', ['numbers'], {
@@ -146,12 +147,13 @@ export const ES_A1_U03: EsUnitDef = {
         ['verbs'],
       ),
       w(
-        'es-tenes',
-        'tenés',
+        'es-tienes',
+        'tienes',
         'you have, informal',
-        '¿Vos tenés doce años?',
+        '¿Tienes doce años?',
         'Are you twelve years old?',
-        ['verbs', 'voseo'],
+        ['verbs'],
+        { acceptedTexts: ['tenés'] },
       ),
       w(
         'es-tiene',
@@ -165,13 +167,13 @@ export const ES_A1_U03: EsUnitDef = {
         },
       ),
       w(
-        'es-cuantos-anos-tenes',
-        '¿cuántos años tenés?',
+        'es-cuantos-anos-tienes',
+        '¿cuántos años tienes?',
         'how old are you?',
-        '¡Hola! ¿Cuántos años tenés?',
+        '¡Hola! ¿Cuántos años tienes?',
         'Hi! How old are you?',
-        ['questions', 'voseo'],
-        { acceptedTexts: ['¿cuántos años tienes?'] },
+        ['questions'],
+        { acceptedTexts: ['¿cuántos años tenés?'] },
       ),
       w(
         'es-el-ano',
@@ -452,48 +454,48 @@ export const ES_A1_U03: EsUnitDef = {
 
       // ------------------------------------------------------------------------------------ L4
       {
-        title: '¿Cuántos años tenés?',
-        objective: 'Ask how old someone is with vos or usted, and talk about other people’s age.',
+        title: '¿Cuántos años tienes?',
+        objective: 'Ask how old someone is with tú or usted, and talk about other people’s age.',
         intro: {
           explanation:
-            'Tener with other people: vos tenés (stress on the last syllable: te-NÉS), él, ella and usted tiene. To ask a friend: ¿cuántos años tenés? With usted: ¿cuántos años tiene? In Spain and much of Latin America people say tú tienes; in Argentina, vos tenés.',
+            'Tener with other people: tú tienes (to a friend) and él, ella and usted tiene. Notice the change: tengo has a g, and in tienes and tiene the e becomes ie. The only difference between tienes and tiene is the final s: listen for it. To ask a friend: ¿cuántos años tienes? With usted: ¿cuántos años tiene?',
           examples: [
             {
-              target: '¿Cuántos años tenés? — Tengo veinte.',
+              target: '¿Cuántos años tienes? — Tengo veinte.',
               base: 'How old are you? — I’m twenty.',
             },
             { target: 'Valentina tiene seis años.', base: 'Valentina is six years old.' },
           ],
         },
         takeaways: [
-          'You ask a friend ¿cuántos años tenés?',
-          'You use tiene for él, ella and usted.',
+          'You ask a friend ¿cuántos años tienes?',
+          'You say yo tengo, tú tienes and él, ella or usted tiene.',
         ],
         exercises: [
           ex.translationChoice(
-            '¿cuántos años tenés?',
+            '¿cuántos años tienes?',
             'how old are you?',
             ['where are you from?', "what's your name?", 'how are you?'],
-            ['es-cuantos-anos-tenes'],
-            { id: 'es.ex.sy4aeihmah1s6n' },
+            ['es-cuantos-anos-tienes'],
+            { id: 'es.ex.grx3y9u5h2h3zz' },
           ),
           ex.fillBlank(
             '¿Cuántos años ___, Sofía?',
             'How old are you, Sofía? (to a friend)',
-            'tenés',
-            ['tengo', 'tiene', 'sos'],
-            ['es-tenes', 'es-cuantos-anos-tenes'],
+            'tienes',
+            ['tengo', 'tiene', 'eres'],
+            ['es-tienes', 'es-cuantos-anos-tienes'],
             {
-              id: 'es.ex.hs6vn2jildwahh',
+              id: 'es.ex.fa6csb7u4s8yi3',
               explanation:
-                'To a friend you use vos: ¿cuántos años tenés? Tiene is for él, ella or usted.',
+                'To a friend you use tú: ¿cuántos años tienes? Tiene (no final s) is for él, ella or usted.',
             },
           ),
           ex.fillBlank(
             'Valentina ___ seis años.',
             'Valentina is six years old.',
             'tiene',
-            ['tenés', 'tengo', 'es'],
+            ['tienes', 'tengo', 'es'],
             ['es-tiene', 'es-seis'],
             {
               id: 'es.ex.2zap6gmnzqhmp1',
@@ -501,10 +503,10 @@ export const ES_A1_U03: EsUnitDef = {
             },
           ),
           ex.listenChoice(
-            '¿Cuántos años tenés?',
-            ['¿Cuántos años tiene?', '¿De dónde sos?', '¿Cómo te llamás?'],
-            ['es-cuantos-anos-tenes'],
-            { id: 'es.ex.r96gvf52qz2gw4' },
+            '¿Cuántos años tienes?',
+            ['¿Cuántos años tiene?', '¿De dónde eres?', '¿Cómo te llamas?'],
+            ['es-cuantos-anos-tienes'],
+            { id: 'es.ex.ca7ph8zttit91b' },
           ),
           question(
             'es.ex.9f669x28ezhgbn',
@@ -535,9 +537,9 @@ export const ES_A1_U03: EsUnitDef = {
           ),
           ex.listenChoice(
             'Tengo cinco años.',
-            ['Tenés cinco años.', 'Tiene cinco años.', 'Tengo cuatro años.'],
-            ['es-tengo', 'es-tenes', 'es-cinco'],
-            { id: 'es.ex.aoe57ngf0yx413' },
+            ['Tienes cinco años.', 'Tiene cinco años.', 'Tengo cuatro años.'],
+            ['es-tengo', 'es-tienes', 'es-cinco'],
+            { id: 'es.ex.9zn8idfj7inbp0' },
           ),
           ex.translateWrite(
             'She is ten years old.',
@@ -549,7 +551,7 @@ export const ES_A1_U03: EsUnitDef = {
             },
           ),
           ex.shortAnswer(
-            '¿Cuántos años tenés?',
+            '¿Cuántos años tienes?',
             'Say you are twenty (e.g. «Tengo veinte años»).',
             'Tengo veinte años.',
             ['Tengo veinte años', 'Tengo veinte.', 'Yo tengo veinte años.'],
@@ -565,7 +567,7 @@ export const ES_A1_U03: EsUnitDef = {
         objective: 'Understand ages and numbers in a conversation and a form.',
         intro: {
           explanation:
-            'In Argentina children start primary school at six. On a form you often see nombre (name), nacionalidad (nationality) and edad (age). And remember: un año tiene doce meses — a year has twelve months.',
+            'In almost every Spanish-speaking country children start primary school at six. On a form you often see nombre (name), nacionalidad (nationality) and edad (age). And remember: un año tiene doce meses — a year has twelve months.',
           examples: [
             { target: 'Un año tiene doce meses.', base: 'A year has twelve months.' },
             { target: 'Mateo tiene siete años.', base: 'Mateo is seven years old.' },
@@ -573,7 +575,7 @@ export const ES_A1_U03: EsUnitDef = {
         },
         takeaways: [
           'You understand ages in a short conversation and on a form.',
-          'You ask and answer about age with vos and with usted.',
+          'You ask and answer about age with tú and with usted.',
         ],
         exercises: [
           question(
@@ -595,13 +597,13 @@ export const ES_A1_U03: EsUnitDef = {
             'Kevin says “Tengo veinte años”.',
           ),
           question(
-            'es.ex.51nofn6f2hapzc',
+            'es.ex.8542ozy7ddiw44',
             EDAD,
             'What does Mateo ask Kevin?',
             'How old he is',
             ['Where he is from', 'How he is', 'What his name is'],
-            ['es-cuantos-anos-tenes'],
-            'Mateo asks “¿Cuántos años tenés?”.',
+            ['es-cuantos-anos-tienes'],
+            'Mateo asks “¿Cuántos años tienes?”.',
           ),
           question(
             'es.ex.ckbkxymriqxu7o',
@@ -635,7 +637,7 @@ export const ES_A1_U03: EsUnitDef = {
           ),
           ex.listenChoice(
             'Tiene nueve años.',
-            ['Tiene once años.', 'Tenés nueve años.', 'Tiene nueve meses.'],
+            ['Tiene once años.', 'Tienes nueve años.', 'Tiene nueve meses.'],
             ['es-nueve', 'es-tiene'],
             { id: 'es.ex.nosfcadugkwjwr' },
           ),

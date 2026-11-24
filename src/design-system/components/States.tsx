@@ -3,12 +3,17 @@ import { AlertTriangle, Inbox, WifiOff } from 'lucide-react-native';
 import type { ReactNode } from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 
+import { useStrings } from '@/i18n';
+
+import { designSystemStrings } from '../strings';
 import { colors, spacing } from '../tokens';
 import { Button } from './Button';
 import { Text } from './Text';
 
-export function LoadingState({ label = 'Cargando…' }: { label?: string }) {
+export function LoadingState({ label: labelProp }: { label?: string }) {
   useTheme();
+  const t = useStrings(designSystemStrings);
+  const label = labelProp ?? t.loading;
   return (
     <View style={styles.center} accessibilityLiveRegion="polite" accessibilityLabel={label}>
       <ActivityIndicator size="large" color={colors.primaryBright} />
@@ -46,8 +51,8 @@ export function EmptyState({ title, message, actionLabel, onAction, icon }: Mess
 }
 
 export function ErrorState({
-  title = 'Algo salió mal',
-  message = 'No pudimos cargar esta información.',
+  title,
+  message,
   onRetry,
   offline = false,
 }: {
@@ -57,6 +62,7 @@ export function ErrorState({
   offline?: boolean;
 }) {
   useTheme();
+  const t = useStrings(designSystemStrings);
   return (
     <EmptyState
       icon={
@@ -66,9 +72,9 @@ export function ErrorState({
           <AlertTriangle color={colors.danger} size={36} />
         )
       }
-      title={offline ? 'Sin conexión' : title}
-      message={offline ? 'Revisá tu conexión a internet e intentá de nuevo.' : message}
-      actionLabel={onRetry ? 'Reintentar' : undefined}
+      title={offline ? t.offlineTitle : (title ?? t.errorTitle)}
+      message={offline ? t.offlineMessage : (message ?? t.errorMessage)}
+      actionLabel={onRetry ? t.retry : undefined}
       onAction={onRetry}
     />
   );

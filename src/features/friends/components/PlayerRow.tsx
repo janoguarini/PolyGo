@@ -12,9 +12,11 @@ import {
   themedStyles,
 } from '@/design-system';
 import { FramedAvatar } from '@/features/cosmetics/FramedAvatar';
+import { useStrings } from '@/i18n';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 
 import { leagueLabel } from '../format';
+import { friendsStrings } from '../strings';
 
 export interface RowPlayer {
   userId: string;
@@ -36,7 +38,9 @@ export function StatusAvatar({
   size,
   online,
 }: {
-  player: Pick<RowPlayer, 'avatarId' | 'avatarPath' | 'frameId'>;
+  /** rating/placed: para dibujar el marco de rango con el ELO real (si el que llama los tiene). */
+  player: Pick<RowPlayer, 'avatarId' | 'avatarPath' | 'frameId'> &
+    Partial<Pick<RowPlayer, 'rating' | 'placed'>>;
   size: number;
   online?: boolean;
 }) {
@@ -49,6 +53,7 @@ export function StatusAvatar({
         photoUrl={avatarPhotoUrl(player.avatarPath)}
         size={player.frameId ? size - 6 : size}
         frameId={player.frameId}
+        rating={player.placed ? (player.rating ?? null) : null}
       />
       {online ? (
         <View
@@ -63,6 +68,7 @@ export function StatusAvatar({
 /** Liga con su emblema: "Oro II · 812". */
 export function LeagueLine({ player, extra }: { player: RowPlayer; extra?: string }) {
   const styles = useStyles();
+  useStrings(friendsStrings); // vuelve a dibujar la liga al cambiar el idioma
   return (
     <View style={styles.sub}>
       {player.rating !== null ? (
@@ -91,12 +97,13 @@ export function PlayerRow({
   subtitle?: string;
 }) {
   const styles = useStyles();
+  const t = useStrings(friendsStrings);
   return (
     <View style={styles.row}>
       <Pressable
         style={({ pressed }) => [styles.identity, pressed && styles.pressed]}
         accessibilityRole="button"
-        accessibilityLabel={`${player.username}, ${leagueLabel(player.rating, player.placed)}${subtitle ? `, ${subtitle}` : ''}. Ver perfil`}
+        accessibilityLabel={`${player.username}, ${leagueLabel(player.rating, player.placed)}${subtitle ? `, ${subtitle}` : ''}. ${t.viewProfile}`}
         onPress={() => openPlayer(player.userId)}
       >
         <StatusAvatar player={player} size={42} online={online} />

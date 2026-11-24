@@ -7,9 +7,11 @@ import type { Exercise } from '@shared/exercises';
 import { hasHan } from '@shared/readings';
 
 import { Button, Text, colors, radii, spacing, themedStyles } from '@/design-system';
+import { useStrings } from '@/i18n';
 
 import type { WordRow } from '../api';
 import { TargetText } from '../readings';
+import { feedbackStrings } from '../strings';
 import { SpeakButton } from './SpeakButton';
 
 interface Props {
@@ -22,6 +24,7 @@ interface Props {
 /** Feedback tras responder: resultado, traducción, pronunciación y ejemplo. */
 export function FeedbackPanel({ exercise, verdict, word, onContinue }: Props) {
   const styles = useStyles();
+  const t = useStrings(feedbackStrings);
   // La respuesta correcta se muestra en grande en AnswerRecap, en el centro de la pantalla.
   const correct = verdict.correct;
 
@@ -38,11 +41,7 @@ export function FeedbackPanel({ exercise, verdict, word, onContinue }: Props) {
           <XCircle color={colors.danger} size={26} />
         )}
         <Text variant="heading" color={correct ? 'success' : 'danger'}>
-          {correct
-            ? verdict.typo
-              ? '¡Bien! Ojo con la ortografía'
-              : '¡Correcto!'
-            : 'Respuesta incorrecta'}
+          {correct ? (verdict.typo ? t.typo : t.correct) : t.incorrect}
         </Text>
       </View>
 
@@ -54,7 +53,9 @@ export function FeedbackPanel({ exercise, verdict, word, onContinue }: Props) {
               {word.text} <Text color="textMuted">· {word.translation_es}</Text>
             </Text>
             {word.romanization || word.ipa ? (
-              <Text variant="caption">{word.romanization ?? word.ipa} · voz sintetizada</Text>
+              <Text variant="caption">
+                {word.romanization ?? word.ipa} · {t.synthesizedVoice}
+              </Text>
             ) : null}
             {word.example_en && hasHan(word.example_en) ? (
               // En chino, el ejemplo con su pinyin encima y la traducción abajo.
@@ -75,7 +76,7 @@ export function FeedbackPanel({ exercise, verdict, word, onContinue }: Props) {
 
       {exercise.explanation ? <Text color="text">{exercise.explanation}</Text> : null}
 
-      <Button label="Continuar" size="lg" onPress={onContinue} />
+      <Button label={t.continue} size="lg" onPress={onContinue} />
     </Animated.View>
   );
 }

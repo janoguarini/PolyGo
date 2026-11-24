@@ -1,24 +1,21 @@
-import * as Haptics from 'expo-haptics';
 import { router } from 'expo-router';
 import {
   BookOpen,
   Check,
   ChevronRight,
   Clock,
-  Gift,
   Sparkles,
   Swords,
   Target,
   Trophy,
 } from 'lucide-react-native';
 import { StyleSheet, View } from 'react-native';
-import Animated, { FadeInUp, ZoomIn } from 'react-native-reanimated';
+import Animated, { FadeInUp } from 'react-native-reanimated';
 
-import { missionDestination, missionTitle, type MissionId } from '@shared/missions';
+import { missionDestination, type MissionId } from '@shared/missions';
 import { POLYS } from '@shared/polys';
 
 import {
-  Button,
   Card,
   ErrorState,
   LoadingState,
@@ -28,20 +25,16 @@ import {
   ScreenHeader,
   Text,
   colors,
-  gradients,
   radii,
   spacing,
   themedStyles,
 } from '@/design-system';
-import { FormMessage } from '@/features/auth/FormMessage';
-import {
-  useClaimMissionReward,
-  useDailyMissions,
-  type DailyMission,
-} from '@/features/missions/api';
+import { DailyRewardCard } from '@/features/missions/DailyRewardCard';
+import { useDailyMissions, type DailyMission } from '@/features/missions/api';
+import { missionStrings } from '@/features/missions/strings';
 import { FreezeCard } from '@/features/polys/StreakCards';
-import { toUserMessage } from '@/lib/errors';
-import { playSound } from '@/lib/sounds';
+import { useStrings } from '@/i18n';
+import { missionsScreenStrings } from '@/i18n/screens/missions';
 
 const ICONS: Record<MissionId, typeof Target> = {
   lessons: BookOpen,
@@ -58,23 +51,14 @@ const ICONS: Record<MissionId, typeof Target> = {
  */
 export default function MissionsScreen() {
   const styles = useStyles();
+  const t = useStrings(missionsScreenStrings);
   const missions = useDailyMissions();
-  const claim = useClaimMissionReward();
 
-  if (missions.isPending) return <LoadingState label="Cargando misiones…" />;
+  if (missions.isPending) return <LoadingState label={t.loading} />;
   if (missions.isError || !missions.data) {
     return <ErrorState onRetry={() => void missions.refetch()} />;
   }
-  const { missions: list, all_done, claimed, freezes, max_freezes } = missions.data;
-  const doneCount = list.filter((m) => m.done).length;
-
-  const onClaim = () =>
-    claim.mutate(undefined, {
-      onSuccess: () => {
-        playSound('complete');
-        void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-      },
-    });
+  const { missions: list, freezes, max_freezes } = missions.data;
 
   return (
     <Screen
@@ -82,72 +66,13 @@ export default function MissionsScreen() {
       onRefresh={() => void missions.refetch()}
       refreshing={missions.isRefetching}
     >
-      <ScreenHeader title="Misiones del día" onBack={() => router.back()} />
+      <ScreenHeader title={t.title} onBack={() => router.back()} />
 
-      <Card gradient={gradients.hero} style={styles.reward}>
-        <View style={styles.rewardRow}>
-          <Animated.View
-            key={claimed ? 'claimed' : 'pending'}
-            entering={claimed ? ZoomIn.springify() : undefined}
-            style={[styles.chestIcon, claimed && styles.chestIconOn]}
-          >
-            <Gift color={claimed ? colors.onPrimary : colors.gold} size={30} />
-          </Animated.View>
-          <View style={styles.flex}>
-            <Text variant="overline" color="gold">
-              RECOMPENSA
-            </Text>
-            <Text variant="heading" color="textStrong">
-              Cofre del día
-            </Text>
-            <Text variant="caption">
-              {`Entre ${POLYS.chest.min} y ${POLYS.chest.max} Polys, y a veces ${POLYS.chest.jackpot}. Abrilo ${POLYS.weekly.days} días de la semana y ganás ${POLYS.weekly.bonus} extra.`}
-            </Text>
-          </View>
-        </View>
-        <ProgressBar
-          value={doneCount / list.length}
-          colors={[colors.gold, colors.goldStrong]}
-          accessibilityLabel={`${doneCount} de ${list.length} misiones completas`}
-        />
-        {claimed ? (
-          claim.data ? (
-            <Animated.View entering={ZoomIn.springify()} style={styles.prize}>
-              <PolyCoin size={28} />
-              <Text variant="title" color="gold">
-                +{claim.data.polys + claim.data.weekly_bonus}
-              </Text>
-              <Text variant="bodyStrong" color="text" style={styles.flexShrink}>
-                {claim.data.jackpot
-                  ? '¡Cofre de la suerte!'
-                  : claim.data.weekly_bonus > 0
-                    ? `Incluye el bonus semanal (+${claim.data.weekly_bonus})`
-                    : '¡Cofre abierto!'}
-              </Text>
-            </Animated.View>
-          ) : (
-            <Text variant="bodyStrong" color="success" align="center">
-              Ya abriste el cofre de hoy. ¡Mañana hay misiones nuevas!
-            </Text>
-          )
-        ) : all_done ? (
-          <Button
-            label="Abrir cofre"
-            size="lg"
-            icon={<Gift color={colors.onPrimary} size={20} />}
-            loading={claim.isPending}
-            onPress={onClaim}
-          />
-        ) : (
-          <Text variant="caption" align="center">
-            Completá las {list.length} misiones para abrirlo · {doneCount}/{list.length}
-          </Text>
-        )}
-        {claim.isError ? <FormMessage tone="error" message={toUserMessage(claim.error)} /> : null}
-      </Card>
+      <DailyRewardCard missions={missions.data} />
 
-      <FreezeCard freezes={freezes} max={max_freezes} />
-
+      <Text variant="overline" color="textStrong">
+        {t.today}
+      </Text>
       <View style={styles.list}>
         {list.map((m, i) => (
           <Animated.View key={m.id} entering={FadeInUp.delay(80 * i).duration(300)}>
@@ -157,23 +82,33 @@ export default function MissionsScreen() {
       </View>
 
       <Text variant="caption" align="center">
-        Las misiones cambian todos los días a la medianoche.
+        {t.resetHint}
       </Text>
+
+      <FreezeCard freezes={freezes} max={max_freezes} />
     </Screen>
   );
 }
 
 function MissionRow({ mission }: { mission: DailyMission }) {
   const styles = useStyles();
+  const t = useStrings(missionsScreenStrings);
+  const m = useStrings(missionStrings);
   const Icon = ICONS[mission.id];
-  const title = missionTitle(mission.id, mission.target);
+  const title = m.title(mission.id, mission.target);
   const go = () =>
     missionDestination(mission.id) === 'ranked' ? router.navigate('/ranked') : router.navigate('/');
   return (
     <Card
       onPress={mission.done ? undefined : go}
       style={[styles.mission, mission.done && styles.missionDone]}
-      accessibilityLabel={`${title}: ${mission.progress} de ${mission.target}${mission.done ? ', completa' : ''}. Da ${POLYS.mission} Polys`}
+      accessibilityLabel={t.missionA11y(
+        title,
+        mission.progress,
+        mission.target,
+        mission.done,
+        POLYS.mission,
+      )}
     >
       <View style={[styles.missionIcon, mission.done && styles.missionIconDone]}>
         {mission.done ? (
@@ -213,26 +148,6 @@ function MissionRow({ mission }: { mission: DailyMission }) {
 const useStyles = themedStyles(() =>
   StyleSheet.create({
     flex: { flex: 1 },
-    reward: { gap: spacing.lg },
-    rewardRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.lg },
-    flexShrink: { flexShrink: 1 },
-    chestIcon: {
-      width: 60,
-      height: 60,
-      borderRadius: 30,
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: colors.surfaceRaised,
-      borderWidth: 2,
-      borderColor: colors.gold,
-    },
-    chestIconOn: { backgroundColor: colors.goldStrong },
-    prize: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: spacing.sm,
-    },
     missionReward: { flexDirection: 'row', alignItems: 'center', gap: spacing.xxs },
     list: { gap: spacing.md },
     mission: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },

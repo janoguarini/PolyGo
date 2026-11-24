@@ -56,7 +56,7 @@ Los valores están en `shared/energy.ts` y la base los replica en `energy_config
 ## Pendiente (integraciones reales)
 
 1. **Compras.** Falta elegir entre RevenueCat (`react-native-purchases`, recomendado: un webhook unifica App Store y Google Play) o `expo-iap`. Requiere una build nueva. Pasos:
-   - Crear el producto `polygo_plus_monthly` (USD 4,99/mes) en App Store Connect y Google Play Console.
+   - Crear en App Store Connect y Google Play Console los productos que muestra `/plus` (`PLUS_PLANS` y `REMOVE_ADS_PRODUCT` en `src/features/plus/purchases.ts`): `polygo_plus_monthly` (USD 4,99/mes), `polygo_plus_annual` (USD 34,99/año ≈ 2,92/mes, −42 %) y `polygo_remove_ads` (USD 0,99, pago único; necesita su propio derecho en el servidor, que todavía no existe).
    - Implementar `getPlusOffer` / `purchasePlus` / `restorePurchases` en `src/features/plus/purchases.ts`, con el precio localizado de la tienda.
    - Crear una Edge Function de webhook (verifica la firma y usa `service_role`) que haga upsert en `user_entitlements` (`source`, `external_id`, `expires_at`) en compras, renovaciones, cancelaciones y reembolsos.
    - La app activa Plus recién cuando `get_energy().plus` es true. Nunca por el resultado local de la compra.

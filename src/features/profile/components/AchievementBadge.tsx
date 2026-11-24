@@ -23,8 +23,10 @@ import Svg, { Defs, LinearGradient, Polygon, Stop } from 'react-native-svg';
 import type { AchievementFamilyDef } from '@shared/achievements';
 
 import { ProgressBar, Text, colors, radii, spacing, useTheme, gradients } from '@/design-system';
+import { useStrings } from '@/i18n';
 
 import { familyOfAchievement, type FamilyProgress } from '../families';
+import { achievementStrings } from '../strings';
 
 /** Los íconos se guardan por nombre (shared/achievements.ts); uno desconocido cae en Award. */
 const ICONS: Record<string, LucideIcon> = {
@@ -70,6 +72,7 @@ export function FamilyBadge({
   size?: number;
 }) {
   useTheme();
+  const t = useStrings(achievementStrings);
   const id = useId().replace(/:/g, '');
   const locked = level === 0;
   const [light, dark] = locked ? lockedColors() : family.colors;
@@ -113,7 +116,7 @@ export function FamilyBadge({
               numberOfLines={1}
               style={[styles.ribbonText, { fontSize: Math.max(9, size * 0.15) }]}
             >
-              {`NIV ${level}`}
+              {t.ribbon(level)}
             </Text>
           </View>
         </View>
@@ -140,37 +143,38 @@ export function FamilyRow({
   rankedAvailable: boolean;
 }) {
   useTheme();
+  const t = useStrings(achievementStrings);
   const { family, level, maxLevel, next, value, ratio, current } = progress;
+  const title = t.familyTitle(family);
+  const nextDescription = next ? t.tierDescription(family, next) : '';
   const pendingRanked = family.category === 'competitive' && !rankedAvailable && level === 0;
 
   return (
     <View
       style={styles.row}
       accessible
-      accessibilityLabel={`${family.title}, nivel ${level} de ${maxLevel}. ${
-        next ? `Próximo: ${next.description} Progreso ${value} de ${next.threshold}.` : 'Completo.'
+      accessibilityLabel={`${t.familyA11y(title, level, maxLevel)}. ${
+        next ? t.nextA11y(nextDescription, value, next.threshold) : t.complete
       }`}
     >
       <FamilyBadge family={family} level={level} size={56} />
       <View style={styles.body}>
         <View style={styles.titleRow}>
           <Text variant="bodyStrong" color={level > 0 ? 'textStrong' : 'text'} style={styles.flex}>
-            {family.title}
+            {title}
           </Text>
-          <Text variant="caption">
-            Nivel {level}/{maxLevel}
-          </Text>
+          <Text variant="caption">{t.levelOf(level, maxLevel)}</Text>
         </View>
         {next ? (
-          <Text variant="caption">{next.description}</Text>
+          <Text variant="caption">{nextDescription}</Text>
         ) : (
           <Text variant="caption" color="gold">
-            ¡Completo! {current?.description}
+            {t.completeBang} {current ? t.tierDescription(family, current) : ''}
           </Text>
         )}
         {pendingRanked ? (
           <Text variant="caption" color="textMuted">
-            Disponible cuando abra Ranked
+            {t.pendingRanked}
           </Text>
         ) : next ? (
           <View style={styles.progress}>
@@ -178,7 +182,7 @@ export function FamilyRow({
               <ProgressBar
                 value={ratio}
                 colors={family.colors}
-                accessibilityLabel={`Progreso de ${family.title}`}
+                accessibilityLabel={t.progressOf(title)}
               />
             </View>
             <Text variant="caption">

@@ -11,8 +11,9 @@ import { FR_A2_U09 } from './unit09-achats';
 import { FR_A2_U10 } from './unit10-technologie';
 import { FR_A2_U11 } from './unit11-relations';
 import { FR_A2_U12 } from './unit12-opinions';
+import { FR_A2_U13 } from './unit13-moi-toi';
 
-/** Francés A2 U1–U12 (docs/FR_A1_A2.md). Vive fuera de COURSES (content/fr-course.ts). */
+/** Francés A2 U1–U13 (docs/FR_A1_A2.md). Vive fuera de COURSES (content/fr-course.ts). */
 export const FR_A2_UNITS: readonly FrUnitDef[] = [
   FR_A2_U01,
   FR_A2_U02,
@@ -26,4 +27,5 @@ export const FR_A2_UNITS: readonly FrUnitDef[] = [
   FR_A2_U10,
   FR_A2_U11,
   FR_A2_U12,
+  FR_A2_U13,
 ];

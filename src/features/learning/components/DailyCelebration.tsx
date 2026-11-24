@@ -8,20 +8,24 @@ import { Button, Card, Screen, Text, colors, radii, spacing, themedStyles } from
 import { useReminderPrefs, useSetReminderPrefs } from '@/features/reminders/hooks';
 import { remindersSupported } from '@/features/reminders/notifications';
 import { DEFAULT_REMINDER, formatReminderTime } from '@/features/reminders/schedule';
+import { useStrings } from '@/i18n';
 
 import { useLearningSummary } from '../hooks';
 import { daysLabel, streakWeek, type Celebration } from '../streak';
+import { streakStrings } from '../strings';
 
-function headline(c: Celebration) {
-  if (!c.streakExtended) return '¡Objetivo cumplido!';
-  if (c.streakDays <= 1) return '¡Arrancaste tu racha!';
-  return `¡${daysLabel(c.streakDays)} seguidos!`;
+type Strings = (typeof streakStrings)['es'];
+
+function headline(c: Celebration, t: Strings) {
+  if (!c.streakExtended) return t.goalMet;
+  if (c.streakDays <= 1) return t.streakStarted;
+  return t.inARow(daysLabel(c.streakDays));
 }
 
-function subtitle(c: Celebration) {
-  if (!c.streakExtended) return `Hoy ya practicaste tus ${c.goalMinutes} minutos.`;
-  if (c.streakDays <= 1) return 'Volvé mañana para sumar el segundo día.';
-  return 'Volvé mañana para no cortarla.';
+function subtitle(c: Celebration, t: Strings) {
+  if (!c.streakExtended) return t.goalToday(c.goalMinutes);
+  if (c.streakDays <= 1) return t.comeBackSecond;
+  return t.comeBack;
 }
 
 /** Festejo de la primera sesión del día (racha) y/o de cumplir el objetivo diario. */
@@ -33,6 +37,7 @@ export function DailyCelebration({
   onContinue: () => void;
 }) {
   const styles = useStyles();
+  const t = useStrings(streakStrings);
   const summary = useLearningSummary();
   const week = streakWeek(
     celebration.streakDays,
@@ -54,14 +59,14 @@ export function DailyCelebration({
   return (
     <Screen
       edges={['top', 'bottom']}
-      footer={<Button label="Continuar" size="lg" onPress={onContinue} />}
+      footer={<Button label={t.continue} size="lg" onPress={onContinue} />}
     >
       <Animated.View entering={FadeInUp.duration(450)} style={styles.hero}>
         {celebration.streakExtended ? (
           <View
             style={styles.flame}
             accessible
-            accessibilityLabel={`Racha de ${daysLabel(celebration.streakDays)}`}
+            accessibilityLabel={t.streakLabel(daysLabel(celebration.streakDays))}
           >
             <Flame color={colors.streak} fill={colors.streak} size={96} />
             <Text variant="display" color="streak">
@@ -72,16 +77,16 @@ export function DailyCelebration({
           <Target color={colors.success} size={96} />
         )}
         <Text variant="title" align="center">
-          {headline(celebration)}
+          {headline(celebration, t)}
         </Text>
         <Text color="textMuted" align="center">
-          {subtitle(celebration)}
+          {subtitle(celebration, t)}
         </Text>
       </Animated.View>
 
       {celebration.streakExtended ? (
         <Animated.View entering={FadeIn.delay(250).duration(400)}>
-          <Card style={styles.week} accessibilityLabel="Tu semana">
+          <Card style={styles.week} accessibilityLabel={t.yourWeek}>
             {week.map((d, i) => (
               <View key={i} style={styles.day}>
                 <Text variant="caption" color={d.isToday ? 'streak' : 'textMuted'}>
@@ -106,20 +111,17 @@ export function DailyCelebration({
         <Card style={styles.goal}>
           <Target color={colors.success} size={22} />
           <Text variant="bodyStrong" style={styles.flex}>
-            Y cumpliste tu objetivo de {celebration.goalMinutes} minutos.
+            {t.alsoGoal(celebration.goalMinutes)}
           </Text>
         </Card>
       ) : null}
 
       {offerReminder ? (
         <Card style={styles.reminder}>
-          <Text variant="bodyStrong">¿Te recordamos mañana?</Text>
-          <Text variant="caption">
-            Un aviso a las {formatReminderTime(DEFAULT_REMINDER)} sólo si todavía no practicaste.
-            Podés cambiar el horario en Perfil.
-          </Text>
+          <Text variant="bodyStrong">{t.remindTitle}</Text>
+          <Text variant="caption">{t.remindBody(formatReminderTime(DEFAULT_REMINDER))}</Text>
           <Button
-            label="Activar recordatorio"
+            label={t.enableReminder}
             variant="secondary"
             loading={setReminder.isPending}
             icon={<Bell color={colors.text} size={18} />}
@@ -127,14 +129,14 @@ export function DailyCelebration({
           />
           {setReminder.data && setReminder.data !== 'granted' ? (
             <Text variant="caption" color="danger">
-              Sin permiso para notificaciones no podemos recordarte.
+              {t.noPermission}
             </Text>
           ) : null}
         </Card>
       ) : null}
       {remindersSupported && setReminder.data === 'granted' ? (
         <Text variant="caption" align="center" color="success">
-          Listo: te avisamos a las {formatReminderTime(DEFAULT_REMINDER)}.
+          {t.reminderSet(formatReminderTime(DEFAULT_REMINDER))}
         </Text>
       ) : null}
     </Screen>

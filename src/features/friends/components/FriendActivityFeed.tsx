@@ -3,9 +3,11 @@ import { useState, type ReactNode } from 'react';
 import { ActivityIndicator, Pressable, StyleSheet, View } from 'react-native';
 
 import { Button, Card, Text, colors, spacing, useTheme } from '@/design-system';
+import { useStrings } from '@/i18n';
 
 import { activityText, timeAgo } from '../format';
 import { useFriendActivity, type FriendActivityKind } from '../social';
+import { friendsStrings } from '../strings';
 import { StatusAvatar, openPlayer } from './PlayerRow';
 
 const PREVIEW = 6;
@@ -25,20 +27,21 @@ const kindIcon = (kind: FriendActivityKind): ReactNode =>
 /** Actividad de los amigos de los últimos 7 días (sólo eventos reales de la base). */
 export function FriendActivityFeed({ now }: { now: number }) {
   useTheme();
+  const t = useStrings(friendsStrings);
   const activity = useFriendActivity();
   const [showAll, setShowAll] = useState(false);
 
   if (activity.isPending)
     return (
       <Card style={styles.center}>
-        <ActivityIndicator color={colors.primaryBright} accessibilityLabel="Cargando actividad" />
+        <ActivityIndicator color={colors.primaryBright} accessibilityLabel={t.loadingActivity} />
       </Card>
     );
   if (activity.isError)
     return (
       <Card style={styles.gap}>
-        <Text color="textMuted">No pudimos cargar la actividad.</Text>
-        <Button label="Reintentar" variant="secondary" onPress={() => void activity.refetch()} />
+        <Text color="textMuted">{t.activityError}</Text>
+        <Button label={t.retry} variant="secondary" onPress={() => void activity.refetch()} />
       </Card>
     );
 
@@ -49,10 +52,7 @@ export function FriendActivityFeed({ now }: { now: number }) {
   if (events.length === 0)
     return (
       <Card>
-        <Text color="textMuted">
-          Todavía no hay novedades. Cuando tus amigos suban de rango, ganen partidas o desbloqueen
-          logros, lo vas a ver acá.
-        </Text>
+        <Text color="textMuted">{t.activityEmpty}</Text>
       </Card>
     );
 
@@ -63,7 +63,7 @@ export function FriendActivityFeed({ now }: { now: number }) {
         <Pressable
           key={`${e.userId}-${e.kind}-${e.happenedAt}-${e.label ?? ''}`}
           accessibilityRole="button"
-          accessibilityLabel={`${e.username} ${e.text}, ${timeAgo(e.happenedAt, now)}. Ver perfil`}
+          accessibilityLabel={t.activityA11y(e.username, e.text, timeAgo(e.happenedAt, now))}
           onPress={() => openPlayer(e.userId)}
           style={({ pressed }) => [styles.row, pressed && styles.pressed]}
         >
@@ -84,7 +84,7 @@ export function FriendActivityFeed({ now }: { now: number }) {
       ))}
       {events.length > PREVIEW ? (
         <Button
-          label={showAll ? 'Ver menos' : `Ver toda la actividad (${events.length})`}
+          label={showAll ? t.showLess : t.showAllActivity(events.length)}
           variant="ghost"
           onPress={() => setShowAll((v) => !v)}
         />

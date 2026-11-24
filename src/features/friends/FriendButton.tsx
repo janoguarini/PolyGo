@@ -4,6 +4,7 @@ import { StyleSheet, View } from 'react-native';
 
 import { Button, Text, colors, spacing, useTheme } from '@/design-system';
 import { FormMessage } from '@/features/auth/FormMessage';
+import { useStrings } from '@/i18n';
 import { toUserMessage } from '@/lib/errors';
 
 import {
@@ -12,6 +13,7 @@ import {
   useSendFriendRequest,
   type FriendshipState,
 } from './api';
+import { friendsStrings } from './strings';
 
 /** Agregar / aceptar / sacar de amigos, en el perfil de otro jugador. */
 export function FriendButton({
@@ -24,6 +26,7 @@ export function FriendButton({
   state: FriendshipState;
 }) {
   useTheme();
+  const t = useStrings(friendsStrings);
   const send = useSendFriendRequest();
   const respond = useRespondFriendRequest();
   const remove = useRemoveFriend();
@@ -35,29 +38,29 @@ export function FriendButton({
     content = confirmRemove ? (
       <>
         <Text variant="caption" align="center">
-          ¿Sacar a @{username} de tus amigos? No le avisamos.
+          {t.removeConfirm(username)}
         </Text>
         <Button
-          label="Sí, sacar"
+          label={t.removeYes}
           variant="danger"
           loading={remove.isPending}
           onPress={() => remove.mutate(userId, { onSuccess: () => setConfirmRemove(false) })}
         />
-        <Button label="Cancelar" variant="ghost" onPress={() => setConfirmRemove(false)} />
+        <Button label={t.cancel} variant="ghost" onPress={() => setConfirmRemove(false)} />
       </>
     ) : (
       <Button
-        label="Son amigos"
+        label={t.areFriends}
         variant="secondary"
         icon={<Check color={colors.success} size={20} />}
-        accessibilityHint="Toca para sacarlo de tus amigos"
+        accessibilityHint={t.areFriendsHint}
         onPress={() => setConfirmRemove(true)}
       />
     );
   } else if (state === 'outgoing') {
     content = (
       <Button
-        label="Solicitud enviada · cancelar"
+        label={t.requestSentCancel}
         variant="ghost"
         loading={remove.isPending}
         onPress={() => remove.mutate(userId)}
@@ -67,18 +70,18 @@ export function FriendButton({
     content = (
       <>
         <Text variant="caption" align="center">
-          @{username} te mandó una solicitud de amistad.
+          {t.incomingRequest(username)}
         </Text>
         <View style={styles.row}>
           <Button
-            label="Rechazar"
+            label={t.decline}
             variant="ghost"
             style={styles.flex}
             disabled={respond.isPending}
             onPress={() => respond.mutate({ userId, accept: false })}
           />
           <Button
-            label="Aceptar"
+            label={t.accept}
             style={styles.flex}
             loading={respond.isPending}
             onPress={() => respond.mutate({ userId, accept: true })}
@@ -89,7 +92,7 @@ export function FriendButton({
   } else {
     content = (
       <Button
-        label="Agregar amigo"
+        label={t.addFriend}
         icon={<UserPlus color={colors.onPrimary} size={20} />}
         loading={send.isPending}
         onPress={() => send.mutate(userId)}

@@ -1,27 +1,67 @@
 import {
-  PATH_ROW_HEIGHT,
+  MAP_CURRENT_ROW_HEIGHT,
+  MAP_CURRENT_SIZE,
+  MAP_NODE_SIZE,
+  MAP_ROW_HEIGHT,
   lessonKind,
   lessonStars,
-  pathOffset,
-  pathPoints,
+  mapLabelBox,
+  mapLayout,
+  mapNodeX,
   starTotals,
 } from '../path';
 
 describe('camino de lecciones', () => {
-  it('ondula alrededor del centro sin salirse del contenedor', () => {
-    const width = 335;
-    const offsets = Array.from({ length: 16 }, (_, i) => pathOffset(i, width));
-    expect(offsets[0]).toBe(0);
-    expect(Math.max(...offsets)).toBeGreaterThan(0);
-    expect(Math.min(...offsets)).toBeLessThan(0);
-    for (const o of offsets) expect(Math.abs(o) + 36).toBeLessThanOrEqual(width / 2);
+  it('serpentea de un lado al otro sin sacar ningún nodo del contenedor', () => {
+    for (const width of [280, 335, 361, 640]) {
+      const sides = new Set<string>();
+      for (let i = 0; i < 12; i++) {
+        for (const status of ['completed', 'current', 'locked'] as const) {
+          const x = mapNodeX(i, width, status);
+          expect(x - MAP_CURRENT_SIZE / 2).toBeGreaterThanOrEqual(0);
+          expect(x + MAP_CURRENT_SIZE / 2).toBeLessThanOrEqual(width);
+          // Nunca en el centro: siempre queda un lado ancho para el texto.
+          expect(Math.abs(x - width / 2)).toBeGreaterThan(width * 0.1);
+          sides.add(x > width / 2 ? 'right' : 'left');
+        }
+      }
+      expect(sides).toEqual(new Set(['left', 'right']));
+    }
   });
 
-  it('continúa la onda entre unidades usando el índice global', () => {
-    const a = pathPoints(0, 6, 335);
-    const b = pathPoints(6, 2, 335);
-    expect(b[0]?.x).toBe(335 / 2 + pathOffset(6, 335));
-    expect((a[1]?.y ?? 0) - (a[0]?.y ?? 0)).toBe(PATH_ROW_HEIGHT);
+  it('arranca a la izquierda y cruza hacia la derecha', () => {
+    const { points } = mapLayout(0, ['current', 'locked', 'locked', 'locked', 'locked'], 335);
+    expect(points.map((p) => p.side)).toEqual(['left', 'left', 'left', 'right', 'right']);
+  });
+
+  it('pone el texto del lado contrario al nodo, con lugar suficiente', () => {
+    const width = 335;
+    const { points } = mapLayout(
+      0,
+      Array.from({ length: 6 }, () => 'locked' as const),
+      width,
+    );
+    for (const point of points) {
+      const box = mapLabelBox(point, width, MAP_NODE_SIZE);
+      expect(width - box.left - box.right).toBeGreaterThanOrEqual(150);
+      if (point.side === 'left') expect(box.left).toBeGreaterThan(point.x + MAP_NODE_SIZE / 2);
+      else expect(width - box.right).toBeLessThan(point.x - MAP_NODE_SIZE / 2);
+    }
+    // La lección actual se arrima a su borde: su tarjeta tiene más ancho que un texto común.
+    const current = mapLayout(2, ['current'], width).points[0]!;
+    const card = mapLabelBox(current, width, MAP_CURRENT_SIZE);
+    expect(width - card.left - card.right).toBeGreaterThanOrEqual(190);
+  });
+
+  it('continúa la onda entre unidades y agranda la fila de la lección actual', () => {
+    const a = mapLayout(0, ['completed', 'current', 'locked'], 335);
+    const b = mapLayout(3, ['locked'], 335);
+    expect(b.points[0]?.x).toBe(mapNodeX(3, 335, 'locked'));
+    expect(a.points[0]?.y).toBe(MAP_ROW_HEIGHT / 2);
+    expect((a.points[1]?.y ?? 0) - (a.points[0]?.y ?? 0)).toBe(
+      MAP_ROW_HEIGHT / 2 + MAP_CURRENT_ROW_HEIGHT / 2,
+    );
+    expect(a.height).toBe(2 * MAP_ROW_HEIGHT + MAP_CURRENT_ROW_HEIGHT);
   });
 
   it('da estrellas según la mejor precisión', () => {

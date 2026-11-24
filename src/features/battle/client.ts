@@ -8,11 +8,13 @@ import {
   type ServerToClientEvents,
 } from '@shared/protocol';
 
+import { getStrings } from '@/i18n';
 import { CURRICULUM_API } from '@/lib/clientInfo';
 import { env } from '@/lib/env';
 import { supabase } from '@/lib/supabase';
 
 import { rankedAvailability } from './availability';
+import { battleErrorStrings } from './strings';
 
 export type BattleSocket = Socket<ServerToClientEvents, ClientToServerEvents>;
 
@@ -58,25 +60,7 @@ export function connectErrorCode(error: Error): ErrorCode | 'connection' {
     : 'connection';
 }
 
-export const ERROR_MESSAGES: Record<ErrorCode | 'connection', string> = {
-  connection: 'No pudimos conectar con el servidor de partidas. Revisá tu conexión.',
-  unauthorized: 'Tu sesión expiró. Volvé a iniciar sesión.',
-  protocol_mismatch: 'Hay una versión nueva de Polygo. Actualizá la app para jugar.',
-  onboarding_required: 'Completá tu perfil antes de jugar.',
-  language_unavailable: 'Ranked todavía no está disponible para tu idioma.',
-  already_in_battle: 'Ya estás en una partida.',
-  not_in_battle: 'La partida ya no existe.',
-  stale_question: 'Esa pregunta ya pasó.',
-  battle_over: 'La partida terminó.',
-  invalid_payload: 'Algo salió mal con esa respuesta.',
-  server_error: 'El servidor de partidas tuvo un problema. Probá de nuevo.',
-  match_rate_limited: 'Jugaste muchas partidas hoy. Volvé mañana para seguir subiendo.',
-  challenge_not_found: 'No encontramos ese código. Revisá que esté bien escrito.',
-  challenge_expired: 'Ese desafío venció o se canceló. Pedile a tu amigo uno nuevo.',
-  challenge_taken: 'Alguien más ya entró a ese desafío.',
-  own_challenge: 'Ese es tu propio desafío: compartilo con un amigo.',
-  host_gone: 'Tu amigo ya no está esperando. Pedile que vuelva a abrir el desafío.',
-  language_mismatch: 'Tu amigo está aprendiendo otro idioma, así que no pueden jugar juntos.',
-  challenge_declined: 'Tu amigo no puede jugar ahora. Probá más tarde.',
-  not_friends: 'Sólo podés invitar a jugadores de tu lista de amigos.',
-};
+/** Mensaje para mostrar de un código de error, en el idioma de la interfaz (ver strings.ts). */
+export function battleErrorMessage(code: ErrorCode | 'connection'): string {
+  return getStrings(battleErrorStrings)[code];
+}

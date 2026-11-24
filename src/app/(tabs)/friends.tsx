@@ -33,6 +33,9 @@ import { StatusAvatar, openPlayer } from '@/features/friends/components/PlayerRo
 import { PushPromptCard } from '@/features/friends/components/PushPromptCard';
 import { DailyMissionsCard } from '@/features/friends/components/DailyMissionsCard';
 import { presenceLabel, sortFriends } from '@/features/friends/format';
+import { InviteRewardsCard } from '@/features/referrals/InviteRewardsCard';
+import { useStrings } from '@/i18n';
+import { friendsScreenStrings } from '@/i18n/screens/friends';
 import { useTabPressScroll } from '@/lib/useTabPressScroll';
 
 /** Cada cuánto se refrescan la lista (en línea, invitaciones) y los "hace X min". */
@@ -44,6 +47,7 @@ const NARROW_WIDTH = 380;
 
 export default function FriendsScreen() {
   const styles = useStyles();
+  const s = useStrings(friendsScreenStrings);
   const friends = useFriends();
   const scrollRef = useRef<ScrollViewInstance>(null);
   useTabPressScroll(scrollRef);
@@ -77,44 +81,35 @@ export default function FriendsScreen() {
     >
       <View style={styles.header}>
         <View style={styles.flex}>
-          <Text variant="title">Amigos</Text>
-          <Text color="textMuted">Competí y aprendé con tus amigos.</Text>
+          <Text variant="title">{s.title}</Text>
+          <Text color="textMuted">{s.subtitle}</Text>
         </View>
         <Pressable
           accessibilityRole="button"
-          accessibilityLabel={
-            incoming.length > 0
-              ? `Agregar amigos. ${incoming.length} solicitudes nuevas`
-              : 'Agregar amigos'
-          }
-          onPress={() => router.push('/add-friends')}
+          accessibilityLabel={s.addFriends}
+          // Abre Invitar amigos; la búsqueda por usuario y las solicitudes siguen en /add-friends
+          // (enlace desde Invitar y tarjeta de solicitudes de abajo).
+          onPress={() => router.push('/invite-friends')}
           style={({ pressed }) => [styles.addButton, pressed && styles.pressed]}
         >
           <Plus color={colors.onPrimary} size={18} />
           <Text variant="bodyStrong" color="onPrimary">
-            Agregar
+            {s.add}
           </Text>
-          {incoming.length > 0 ? (
-            <View style={styles.badge}>
-              <Text variant="caption" color="onPrimary" style={styles.badgeText}>
-                {incoming.length}
-              </Text>
-            </View>
-          ) : null}
         </Pressable>
       </View>
 
       {incoming.length > 0 ? (
         <Card
           onPress={() => router.push('/add-friends')}
-          accessibilityLabel={`${incoming.length} solicitudes de amistad. Ver`}
+          accessibilityLabel={s.requestsA11y(incoming.length)}
           style={styles.requests}
         >
           <UserPlus color={colors.primarySoft} size={22} />
           <Text variant="bodyStrong" color="textStrong" style={styles.flex}>
             {incoming.length === 1
-              ? `@${incoming[0]!.username} quiere ser tu amigo`
-              : `${incoming.length} solicitudes de amistad`}
+              ? s.wantsToBeFriend(incoming[0]!.username)
+              : s.requestsCount(incoming.length)}
           </Text>
           <ChevronRight color={colors.textMuted} size={20} />
         </Card>
@@ -122,11 +117,13 @@ export default function FriendsScreen() {
 
       <ChallengeFriendsCard friends={accepted} />
 
+      <InviteRewardsCard />
+
       {accepted.length > 0 ? <PushPromptCard /> : null}
 
       <SectionTitle icon={<Target color={colors.primarySoft} size={20} />}>
         <Text variant="overline" color="textStrong" style={styles.overline}>
-          MISIONES DIARIAS
+          {s.dailyMissions}
         </Text>
       </SectionTitle>
       <DailyMissionsCard now={now} />
@@ -134,7 +131,7 @@ export default function FriendsScreen() {
       <View style={styles.friendsHeader}>
         <SectionTitle icon={<Users color={colors.primarySoft} size={22} />}>
           <Text variant="heading" color="textStrong">
-            Mis amigos
+            {s.myFriends}
             {accepted.length > 0 ? (
               <Text variant="heading" color="textMuted">
                 {` (${accepted.length})`}
@@ -145,13 +142,13 @@ export default function FriendsScreen() {
         {accepted.length > FRIENDS_PREVIEW ? (
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel={showAll ? 'Ver menos amigos' : 'Ver todos tus amigos'}
+            accessibilityLabel={s.seeAllA11y(showAll)}
             onPress={() => setShowAll((v) => !v)}
             hitSlop={8}
             style={({ pressed }) => [styles.seeAll, pressed && styles.pressed]}
           >
             <Text variant="bodyStrong" color="primarySoft">
-              {showAll ? 'Ver menos' : 'Ver todos'}
+              {s.seeAll(showAll)}
             </Text>
             <ChevronRight
               color={colors.primarySoft}
@@ -164,10 +161,10 @@ export default function FriendsScreen() {
       {accepted.length === 0 ? (
         <EmptyState
           icon={<Users color={colors.textMuted} size={36} />}
-          title="Todavía no tenés amigos"
-          message="Buscalos por su nombre de usuario o pasales tu código de amigo."
-          actionLabel="Agregar amigos"
-          onAction={() => router.push('/add-friends')}
+          title={s.emptyTitle}
+          message={s.emptyMessage}
+          actionLabel={s.addFriends}
+          onAction={() => router.push('/invite-friends')}
         />
       ) : (
         <View style={styles.list}>
@@ -179,7 +176,7 @@ export default function FriendsScreen() {
 
       {accepted.length > 0 ? (
         <>
-          <Text variant="overline">ACTIVIDAD RECIENTE</Text>
+          <Text variant="overline">{s.recentActivity}</Text>
           <FriendActivityFeed now={now} />
         </>
       ) : null}
@@ -200,6 +197,7 @@ function SectionTitle({ icon, children }: { icon: ReactNode; children: ReactNode
 /** Tarjeta de "Mis amigos": estado, ELO y desafiar si está conectado (si no, su racha). */
 function FriendCard({ friend, now }: { friend: FriendEntry; now: number }) {
   const styles = useStyles();
+  const s = useStrings(friendsScreenStrings);
   const narrow = useWindowDimensions().width < NARROW_WIDTH;
   const streak = friend.streak > 0;
   const rating = friend.placed ? friend.rating : null;
@@ -210,7 +208,7 @@ function FriendCard({ friend, now }: { friend: FriendEntry; now: number }) {
       <Pressable
         style={({ pressed }) => [styles.identity, pressed && styles.pressed]}
         accessibilityRole="button"
-        accessibilityLabel={`${friend.username}, ${presence}${elo ? `, ${elo}` : ''}. Ver perfil`}
+        accessibilityLabel={s.friendA11y(friend.username, presence, elo)}
         onPress={() => openPlayer(friend.userId)}
       >
         <StatusAvatar player={friend} size={52} />
@@ -243,11 +241,7 @@ function FriendCard({ friend, now }: { friend: FriendEntry; now: number }) {
       {friend.online || friend.inviteCode ? (
         <ChallengeAction friend={friend} outline />
       ) : (
-        <View
-          style={styles.streak}
-          accessible
-          accessibilityLabel={`Racha de ${friend.streak} ${friend.streak === 1 ? 'día' : 'días'}`}
-        >
+        <View style={styles.streak} accessible accessibilityLabel={s.streakA11y(friend.streak)}>
           <Flame color={streak ? colors.streak : colors.textSubtle} size={18} />
           <Text variant="bodyStrong" color={streak ? 'streak' : 'textSubtle'}>
             {friend.streak}
@@ -271,16 +265,6 @@ const useStyles = themedStyles(() =>
       borderRadius: radii.pill,
       backgroundColor: colors.primary,
     },
-    badge: {
-      minWidth: 20,
-      height: 20,
-      paddingHorizontal: spacing.xs,
-      borderRadius: 10,
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: colors.dangerDeep,
-    },
-    badgeText: { fontWeight: '700' },
     pressed: { opacity: 0.75 },
     requests: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
     list: { gap: spacing.md },

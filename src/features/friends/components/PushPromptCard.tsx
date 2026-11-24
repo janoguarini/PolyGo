@@ -5,10 +5,12 @@ import { Linking, Pressable, StyleSheet, View } from 'react-native';
 
 import { Button, Card, Text, colors, spacing, useTheme } from '@/design-system';
 import { FormMessage } from '@/features/auth/FormMessage';
+import { useStrings } from '@/i18n';
 import { deviceStorage } from '@/lib/secureStorage';
 import { toUserMessage } from '@/lib/errors';
 
 import { getPushPermission, pushSupported, registerForPush } from '../push';
+import { friendsStrings } from '../strings';
 
 const DISMISSED_KEY = 'polygo.pushPromptDismissed';
 const permissionKey = ['friends', 'push-permission'] as const;
@@ -33,6 +35,7 @@ export function useEnablePush() {
  */
 export function PushPromptCard() {
   useTheme();
+  const t = useStrings(friendsStrings);
   const permission = usePushPermission();
   const enable = useEnablePush();
   const [dismissed, setDismissed] = useState<boolean | null>(null);
@@ -55,11 +58,11 @@ export function PushPromptCard() {
       <View style={styles.row}>
         <BellRing color={colors.primarySoft} size={22} />
         <Text variant="bodyStrong" color="textStrong" style={styles.flex}>
-          Enterate cuando te desafían
+          {t.pushTitle}
         </Text>
         <Pressable
           accessibilityRole="button"
-          accessibilityLabel="No mostrar más"
+          accessibilityLabel={t.dontShowAgain}
           onPress={dismiss}
           hitSlop={12}
           style={styles.close}
@@ -67,20 +70,16 @@ export function PushPromptCard() {
           <X color={colors.textMuted} size={18} />
         </Pressable>
       </View>
-      <Text color="textMuted">
-        {state === 'blocked'
-          ? 'Las notificaciones de Polygo están apagadas en tu teléfono. Activalas desde los ajustes para que te llegue cuando un amigo te invita a jugar.'
-          : 'Te avisamos con una notificación cuando un amigo te invita a un amistoso, aunque tengas la app cerrada.'}
-      </Text>
+      <Text color="textMuted">{state === 'blocked' ? t.pushBlocked : t.pushAsk}</Text>
       {enable.isError ? <FormMessage tone="error" message={toUserMessage(enable.error)} /> : null}
       {state === 'blocked' ? (
         <Button
-          label="Abrir ajustes del teléfono"
+          label={t.openPhoneSettings}
           variant="secondary"
           onPress={() => void Linking.openSettings()}
         />
       ) : (
-        <Button label="Activar avisos" loading={enable.isPending} onPress={() => enable.mutate()} />
+        <Button label={t.enablePush} loading={enable.isPending} onPress={() => enable.mutate()} />
       )}
     </Card>
   );

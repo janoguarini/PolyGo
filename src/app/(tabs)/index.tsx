@@ -26,7 +26,6 @@ import {
   EmptyState,
   ErrorState,
   LoadingState,
-  ProgressBar,
   Screen,
   Text,
   colors,
@@ -35,36 +34,53 @@ import {
   spacing,
   themedStyles,
 } from '@/design-system';
+import { LearnHero } from '@/features/learning/components/LearnHero';
 import { LessonPath } from '@/features/learning/components/LessonPath';
+import { PathScenery } from '@/features/learning/components/PathScenery';
+import { StreakCalendar } from '@/features/learning/components/StreakCalendar';
 import { useCurriculum, useLearningSummary } from '@/features/learning/hooks';
 import { daysLabel } from '@/features/learning/streak';
+import { streakStrings } from '@/features/learning/strings';
 import { useDailyMissions } from '@/features/missions/api';
+import { useWelcomeAutoOpen } from '@/features/welcomeRewards/useWelcomeAutoOpen';
 import { EnergyChip, EnergyPanel } from '@/features/plus/components/Energy';
 import { useEnergy } from '@/features/plus/api';
 import { PolysChip } from '@/features/polys/PolysChip';
 import { useStreakRepair } from '@/features/polys/api';
 import { useTabPressScroll } from '@/lib/useTabPressScroll';
-import { LanguagesRow, usePrefetchLanguagePaths } from '@/features/profile/components/LanguagesRow';
+import { usePrefetchLanguagePaths } from '@/features/profile/components/LanguagesRow';
+import { useLanguageStartLevel } from '@/features/courses/hooks';
 import { useMyProfile } from '@/features/profile/hooks';
+import { useStrings } from '@/i18n';
+import { useLanguageName } from '@/i18n/languages';
+import { learnStrings } from '@/i18n/screens/learn';
 
 /** Fracción del alto visible donde queda la lección actual al centrarla. */
 const FOCUS_RATIO = 0.4;
 
 /**
- * Inicio: el camino de lecciones. Se abre centrado en la lección que toca y, si te alejás
+ * Inicio: el mapa de aprendizaje (título, nivel, unidades y su recorrido de lecciones sobre un
+ * paisaje de montañas). Se abre centrado en la lección que toca y, si te alejás
  * scrolleando, aparece un botón para volver a ella.
  */
 export default function HomeScreen() {
   const styles = useStyles();
+  const t = useStrings(learnStrings);
+  const streakT = useStrings(streakStrings);
+  const languageName = useLanguageName();
   const me = useMyProfile();
+  // Nivel del curso que estudia (modelo de cursos; sin él, profiles.start_level).
+  const courseLevel = useLanguageStartLevel();
   const summary = useLearningSummary();
   const curriculum = useCurriculum();
   const missions = useDailyMissions();
   const streakRepair = useStreakRepair();
   const energy = useEnergy();
   const [energyOpen, setEnergyOpen] = useState(false);
-  const [languagesOpen, setLanguagesOpen] = useState(false);
+  const [calendarOpen, setCalendarOpen] = useState(false);
   usePrefetchLanguagePaths(me.data?.profile.target_language);
+  // Calendario de bienvenida: se abre solo si hoy hay premio (una vez por sesión).
+  useWelcomeAutoOpen(Boolean(me.data));
   const scrollRef = useRef<ScrollViewInstance>(null);
   const { height } = useWindowDimensions();
   // Posición del nodo actual en el contenido y alto visible del scroll (medidos).
@@ -100,7 +116,7 @@ export default function HomeScreen() {
     if (next !== away) setAway(next);
   };
 
-  if (me.isPending || curriculum.isPending) return <LoadingState label="Cargando tu camino…" />;
+  if (me.isPending || curriculum.isPending) return <LoadingState label={t.loading} />;
   if (me.isError || !me.data) return <ErrorState onRetry={() => void me.refetch()} />;
   if (curriculum.isError || !curriculum.data) {
     return <ErrorState onRetry={() => void curriculum.refetch()} />;
@@ -110,7 +126,8 @@ export default function HomeScreen() {
   // Sin selector de nivel: el camino es el primer nivel sin terminar desde el que empezaste.
   const allUnits = curriculum.data.units;
   const levels = [...new Set(allUnits.map((u) => u.level))];
-  const reachable = levels.slice(Math.max(0, levels.indexOf(profile.start_level)));
+  const startLevel = courseLevel ?? profile.start_level;
+  const reachable = levels.slice(Math.max(0, levels.indexOf(startLevel)));
   const level =
     reachable.find((l) =>
       allUnits.some((u) => u.level === l && u.completedCount < u.lessons.length),
@@ -135,35 +152,37 @@ export default function HomeScreen() {
     <View style={styles.header} onTouchStart={openLesson ? closeLesson : undefined}>
       <View style={styles.headerRow}>
         <View style={styles.flex}>
-          {/* Idioma que estudiás: tocándolo se despliegan los demás para cambiar al instante. */}
+          {/* Curso que estudiás: tocándolo se abre «Tus cursos» para ver o cambiar de curso. */}
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel={`Estudiando ${language.name}${language.status === 'beta' ? ', beta' : ''}`}
-            accessibilityHint="Muestra los idiomas para cambiar"
-            accessibilityState={{ expanded: languagesOpen }}
-            onPress={() => setLanguagesOpen((o) => !o)}
+            accessibilityLabel={t.studying(languageName(language.code), language.status === 'beta')}
+            accessibilityHint={t.languagesHint}
+            onPress={() => router.push('/courses')}
             hitSlop={8}
             style={({ pressed }) => [styles.language, pressed && styles.pressed]}
           >
             <Text style={styles.languageFlag}>{language.flag}</Text>
             <Text variant="overline" color="primarySoft">
-              {language.name.toUpperCase()}
+              {languageName(language.code).toUpperCase()}
               {language.status === 'beta' ? ' · BETA' : ''}
             </Text>
-            <ChevronDown
-              color={colors.primarySoft}
-              size={14}
-              style={languagesOpen ? styles.chevronOpen : undefined}
-            />
+            <ChevronDown color={colors.primarySoft} size={14} />
           </Pressable>
-          <Text variant="heading">Tu camino</Text>
         </View>
         <EnergyChip open={energyOpen} onPress={() => setEnergyOpen((o) => !o)} />
         <PolysChip />
-        <View
-          style={[styles.streak, activeToday && styles.streakActive]}
-          accessible
-          accessibilityLabel={`Racha de ${streak} días${activeToday ? '' : ', todavía no estudiaste hoy'}${freezes ? `, ${freezes} ${freezes === 1 ? 'protector' : 'protectores'}` : ''}`}
+        {/* Tocar la racha abre su calendario (sólo lectura: no cambia la racha). */}
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={t.streakA11y(streak, activeToday, freezes)}
+          accessibilityHint={streakT.openCalendarHint}
+          onPress={() => setCalendarOpen(true)}
+          hitSlop={6}
+          style={({ pressed }) => [
+            styles.streak,
+            activeToday && styles.streakActive,
+            pressed && styles.pressed,
+          ]}
         >
           <Flame
             color={activeToday ? colors.streak : colors.textSubtle}
@@ -185,36 +204,28 @@ export default function HomeScreen() {
               </Text>
             </View>
           ) : null}
-        </View>
+        </Pressable>
       </View>
-      <View style={styles.headerRow}>
-        <View style={styles.flex}>
-          <ProgressBar
-            value={total ? completed / total : 0}
-            accessibilityLabel={`Progreso del curso: ${completed} de ${total} lecciones`}
-          />
-        </View>
-        <Text variant="caption">
-          {completed}/{total} · {total ? Math.round((completed / total) * 100) : 0}%
-        </Text>
-      </View>
-      {languagesOpen ? (
-        <LanguagesRow current={profile.target_language} onChanged={() => setLanguagesOpen(false)} />
-      ) : null}
+      <StreakCalendar
+        visible={calendarOpen}
+        onClose={() => setCalendarOpen(false)}
+        streak={streak}
+        activeToday={activeToday}
+      />
       {energyOpen || outOfEnergy ? <EnergyPanel compact={!energyOpen} /> : null}
       {streakRepair.data ? (
         <Pressable
           accessibilityRole="button"
-          accessibilityLabel={`Perdiste tu racha de ${daysLabel(streakRepair.data.lost_streak)}. Recuperala en la tienda.`}
+          accessibilityLabel={t.lostStreakA11y(daysLabel(streakRepair.data.lost_streak))}
           onPress={() => router.push('/shop')}
           style={({ pressed }) => [styles.banner, styles.risk, pressed && styles.riskPressed]}
         >
           <Flame color={colors.streak} size={22} />
           <View style={styles.flex}>
             <Text variant="bodyStrong" color="streak">
-              Perdiste tu racha de {daysLabel(streakRepair.data.lost_streak)}
+              {t.lostStreak(daysLabel(streakRepair.data.lost_streak))}
             </Text>
-            <Text variant="caption">Todavía la podés recuperar con Polys.</Text>
+            <Text variant="caption">{t.recoverable}</Text>
           </View>
           <ChevronRight color={colors.streak} size={20} />
         </Pressable>
@@ -222,16 +233,16 @@ export default function HomeScreen() {
       {claimable ? (
         <Pressable
           accessibilityRole="button"
-          accessibilityLabel="Completaste las misiones del día. Abrí tu cofre de Polys."
+          accessibilityLabel={t.missionsA11y}
           onPress={() => router.push('/missions')}
           style={({ pressed }) => [styles.banner, styles.claim, pressed && styles.riskPressed]}
         >
           <Snowflake color={colors.info} size={22} />
           <View style={styles.flex}>
             <Text variant="bodyStrong" color="info">
-              ¡Misiones completas!
+              {t.missionsDone}
             </Text>
-            <Text variant="caption">Abrí tu cofre y ganá Polys.</Text>
+            <Text variant="caption">{t.openChest}</Text>
           </View>
           <ChevronRight color={colors.info} size={20} />
         </Pressable>
@@ -250,6 +261,7 @@ export default function HomeScreen() {
       }}
       refreshing={curriculum.isRefetching}
       contentStyle={styles.content}
+      background={<PathScenery language={language.code} />}
       onScroll={handleScroll}
       onScrollBeginDrag={openLesson ? closeLesson : undefined}
       // Tocar en cualquier parte del camino cierra el recuadro (el recuadro frena sus propios toques).
@@ -264,7 +276,7 @@ export default function HomeScreen() {
           >
             <Pressable
               accessibilityRole="button"
-              accessibilityLabel="Ir a mi lección actual"
+              accessibilityLabel={t.goToLesson}
               onPress={() => scrollToCurrent(true)}
               style={({ pressed }) => [styles.fab, pressed && styles.fabPressed]}
             >
@@ -274,15 +286,16 @@ export default function HomeScreen() {
                 <ArrowDown color={colors.onPrimary} size={20} strokeWidth={3} />
               )}
               <Text variant="bodyStrong" color="onPrimary">
-                Mi lección
+                {t.myLesson}
               </Text>
             </Pressable>
           </Animated.View>
         ) : null
       }
     >
+      <LearnHero level={level} completed={completed} total={total} />
       {units.length === 0 ? (
-        <EmptyState title="Todavía no hay unidades publicadas" />
+        <EmptyState title={t.noUnits} />
       ) : (
         <LessonPath
           key={level}
@@ -300,8 +313,7 @@ export default function HomeScreen() {
         />
       )}
       <Text variant="caption" align="center">
-        El contenido sigue el MCER como referencia; completarlo no equivale a una certificación
-        oficial.
+        {t.cefr}
       </Text>
     </Screen>
   );
@@ -312,20 +324,17 @@ const useStyles = themedStyles(() =>
     header: {
       paddingHorizontal: spacing.xl,
       paddingTop: spacing.sm,
-      paddingBottom: spacing.md,
+      paddingBottom: spacing.xs,
       gap: spacing.sm,
-      borderBottomWidth: StyleSheet.hairlineWidth,
-      borderBottomColor: colors.border,
     },
-    headerRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+    headerRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
     language: {
       flexDirection: 'row',
       alignItems: 'center',
       gap: spacing.xs,
       alignSelf: 'flex-start',
     },
-    languageFlag: { fontSize: 18, lineHeight: 22 },
-    chevronOpen: { transform: [{ rotate: '180deg' }] },
+    languageFlag: { fontSize: 20, lineHeight: 24 },
     pressed: { opacity: 0.7 },
     flex: { flex: 1 },
     // Racha: apagada mientras no estudiaste hoy, encendida en naranja cuando ya cumpliste.
@@ -355,7 +364,7 @@ const useStyles = themedStyles(() =>
     claim: { borderColor: colors.info },
     freezeBadge: { flexDirection: 'row', alignItems: 'center', gap: 2, marginLeft: 2 },
     riskPressed: { opacity: 0.85 },
-    content: { paddingBottom: spacing.huge },
+    content: { paddingTop: spacing.sm, paddingBottom: spacing.huge * 2 },
     fabWrap: { position: 'absolute', bottom: spacing.lg, left: 0, right: 0, alignItems: 'center' },
     fab: {
       flexDirection: 'row',

@@ -5,6 +5,7 @@ import { useMyProfile } from '@/features/profile/hooks';
 
 import {
   answerServerReview,
+  fetchActivityDays,
   fetchCurriculum,
   fetchLearningMastery,
   fetchLearningSummary,
@@ -36,6 +37,8 @@ export const learningKeys = {
   wordOfDay: (date: string, language: string) =>
     ['learning', 'word-of-day', date, language] as const,
   mastery: (userId: string, language: string) => ['learning', 'mastery', userId, language] as const,
+  activity: (userId: string, from: string, to: string) =>
+    ['learning', 'activity', userId, from, to] as const,
 };
 
 /** Idioma que estudiás (configuración de shared/languages.ts). */
@@ -88,6 +91,16 @@ export function useLearningSummary() {
     queryKey: learningKeys.summary(userId ?? 'anonymous'),
     queryFn: fetchLearningSummary,
     enabled: Boolean(userId),
+  });
+}
+
+/** Días estudiados y protegidos de un rango (calendario de racha). Sólo lee: no toca la racha. */
+export function useActivityDays(from: string, to: string, enabled = true) {
+  const { userId } = useIdentity();
+  return useQuery({
+    queryKey: learningKeys.activity(userId ?? 'anonymous', from, to),
+    queryFn: () => fetchActivityDays(userId!, from, to),
+    enabled: enabled && Boolean(userId),
   });
 }
 

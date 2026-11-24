@@ -5,8 +5,10 @@ import { dialogue, ES_A1_RATE, ex, question, reading, w } from '../helpers';
  * Español A1 U14 «Describing people» (docs/ES_A1_A2.md): describir cómo es alguien con ser + adjetivo
  * (es alto, es simpática), el pelo y los ojos con tener (tiene el pelo largo, los ojos verdes) y cómo
  * está con estar + adjetivo (estoy cansado, está contenta): ser frente a estar, segunda parte.
- * Concordancia de género y número. Falsos amigos: largo = long, simpático = friendly. Vocabulario
- * rioplatense: lindo, flaco, morocho. Pronunciación: pero (r simple) / perro (rr) / pelo (l).
+ * Concordancia de género y número. Falsos amigos: largo = long, simpático = friendly. Español neutro
+ * de Latinoamérica (tú y ustedes): ¿cómo eres? / ¿cómo estás?; delgado (se acepta flaco), moreno de
+ * pelo oscuro (se acepta morocho), lindo (panhispánico). Pronunciación: pero (r simple) / perro (rr) /
+ * pelo (l).
  *
  * ESTADO EDITORIAL: borrador, sin revisión de hablantes nativos. Se carga sin publicar.
  */
@@ -19,7 +21,7 @@ const HERMANA = dialogue(
     ['Martín', 'Es alta y rubia. Tiene el pelo largo.'],
     ['Sofía', '¿Es seria?'],
     ['Martín', 'No, para nada. Es muy divertida y simpática.'],
-    ['Sofía', '¿Y vos? ¿Cómo estás?'],
+    ['Sofía', '¿Y tú? ¿Cómo estás?'],
     ['Martín', 'Estoy muy cansado, pero contento.'],
   ],
   ES_A1_RATE,
@@ -32,10 +34,10 @@ const MENSAJE = reading(
   [
     '¡Hola, Ana!',
     'Hoy voy a la facultad con mi hermano Diego.',
-    'Diego es alto y morocho.',
+    'Diego es alto y moreno.',
     'Tiene el pelo corto y los ojos verdes.',
     'Es muy simpático, pero un poco tímido.',
-    'Chau, Lucía',
+    'Hasta luego, Lucía',
   ],
   { from: 'Lucía', to: 'Ana' },
 );
@@ -55,7 +57,7 @@ export const ES_A1_U14: EsUnitDef = {
     grammar: {
       title: 'Ser or estar · adjectives agree',
       explanation:
-        'To say what someone is like, use ser: es alto, es simpática, son divertidos. To say how someone is right now, a state that can change, use estar: estoy cansado, está contenta. Hair and eyes go with tener and the article: tiene el pelo largo, tengo los ojos verdes. Adjectives come after the noun and agree with the person: -o for a man, -a for a woman, and -s in the plural (alto, alta, altos, altas); joven is the same for both (plural jóvenes). Muy means very. Watch out for false friends: largo means long (not large) and simpático means friendly (not sympathetic). Argentine words: lindo (good-looking, guapo elsewhere), flaco (thin, delgado elsewhere) and morocho (dark-haired, moreno elsewhere).',
+        'To say what someone is like, use ser: es alto, es simpática, son divertidos. To say how someone is right now, a state that can change, use estar: estoy cansado, está contenta. Hair and eyes go with tener and the article: tiene el pelo largo, tengo los ojos verdes. Adjectives come after the noun and agree with the person: -o for a man, -a for a woman, and -s in the plural (alto, alta, altos, altas); joven is the same for both (plural jóvenes). Muy means very. Watch out for false friends: largo means long (not large) and simpático means friendly (not sympathetic). To ask a friend: ¿cómo eres? (what are you like?) and ¿cómo estás? (how are you right now?). Words: lindo (good-looking, cute) is heard all over Latin America (guapo is common too, especially in Spain and Mexico); moreno means dark-haired (in some countries also dark-skinned); delgado means thin (informally, many people say flaco).',
       examples: [
         {
           target: '¿Cómo es tu hermana? — Es alta y muy simpática.',
@@ -71,7 +73,7 @@ export const ES_A1_U14: EsUnitDef = {
     review: {
       status: 'draft',
       notes:
-        'A1 nuevo (U14). Sin revisión nativa: revisar «morocho» (pelo oscuro; en algunas zonas también piel morena) y si conviene mencionar «castaño» además de «marrones» para los ojos. «Flaco» se presenta como neutro y cotidiano en la Argentina; «lindo» como equivalente de «guapo». Se evitan adjetivos sensibles (gordo, viejo).',
+        'A1 nuevo (U14), convertido al español neutro de Latinoamérica con tú (2026-11-21). Sin revisión nativa: revisar «moreno» como dark-haired (en varios países también es piel morena; se acepta «morocho»), si conviene mencionar «castaño» y «café» además de «marrones» para los ojos (en México se dice ojos cafés), «delgado» como palabra enseñada (se acepta «flaco») y «lindo» como equivalente de «guapo». Se evitan adjetivos sensibles (gordo, viejo).',
     },
     words: [
       w(
@@ -89,7 +91,7 @@ export const ES_A1_U14: EsUnitDef = {
         'good-looking',
         'Tu perro es muy lindo.',
         'Your dog is very cute.',
-        ['descriptions', 'argentina'],
+        ['descriptions'],
         {
           acceptedTranslations: ['pretty', 'cute', 'handsome'],
           acceptedTexts: ['linda', 'lindos', 'lindas'],
@@ -151,13 +153,16 @@ export const ES_A1_U14: EsUnitDef = {
         { acceptedTexts: ['baja', 'bajos', 'bajas'] },
       ),
       w(
-        'es-flaco',
-        'flaco',
+        'es-delgado',
+        'delgado',
         'thin',
-        'Diego es alto y flaco.',
+        'Diego es alto y delgado.',
         'Diego is tall and thin.',
-        ['descriptions', 'argentina'],
-        { acceptedTranslations: ['slim'], acceptedTexts: ['flaca', 'flacos', 'flacas'] },
+        ['descriptions'],
+        {
+          acceptedTranslations: ['slim'],
+          acceptedTexts: ['delgada', 'delgados', 'delgadas', 'flaco', 'flaca', 'flacos', 'flacas'],
+        },
       ),
       w(
         'es-el-pelo',
@@ -182,13 +187,13 @@ export const ES_A1_U14: EsUnitDef = {
         acceptedTexts: ['rubia', 'rubios', 'rubias'],
       }),
       w(
-        'es-morocho',
-        'morocho',
+        'es-moreno',
+        'moreno',
         'dark-haired',
-        'Tomás es morocho.',
+        'Tomás es moreno.',
         'Tomás has dark hair.',
-        ['descriptions', 'argentina'],
-        { acceptedTexts: ['morocha', 'morochos', 'morochas'] },
+        ['descriptions'],
+        { acceptedTexts: ['morena', 'morenos', 'morenas', 'morocho', 'morocha'] },
       ),
       w(
         'es-corto',
@@ -299,12 +304,12 @@ export const ES_A1_U14: EsUnitDef = {
             '¿Cómo ___ tu papá? — Es serio.',
             'What is your dad like? — He is serious.',
             'es',
-            ['está', 'sos', 'soy'],
+            ['está', 'eres', 'soy'],
             ['es-como-es', 'es-serio'],
             {
               id: 'es.ex.6yqkm4u1vkudfg',
               explanation:
-                'To ask what someone is like, use ser: ¿cómo es? ¿Cómo está? asks how someone is right now.',
+                'To ask what someone is like, use ser: ¿cómo es? (to a friend: ¿cómo eres?). ¿Cómo está? asks how someone is right now.',
             },
           ),
           ex.orderWords(
@@ -340,18 +345,18 @@ export const ES_A1_U14: EsUnitDef = {
 
       // ------------------------------------------------------------------------------------ L2
       {
-        title: 'Alto, bajo, flaco',
+        title: 'Alto, bajo, delgado',
         objective: 'Describe what someone looks like: height, build and age.',
         intro: {
           explanation:
-            'Appearance also goes with ser: es alto (tall), es bajo (short), es flaco (thin), es joven (young). Bajo is only for height; short hair is corto. In Argentina flaco is the everyday word (delgado elsewhere), and lindo means good-looking, pretty or cute (people here rarely say guapo). Joven is the same for men and women; the plural is jóvenes. The j in joven sounds like a strong h.',
+            'Appearance also goes with ser: es alto (tall), es bajo (short), es delgado (thin), es joven (young). Bajo is only for height; short hair is corto. In conversation you will also hear flaco for thin. Lindo means good-looking, pretty or cute, for people, animals and things; guapo (good-looking) is also common, especially for people. Joven is the same for men and women; the plural is jóvenes. The j in joven sounds like a strong h.',
           examples: [
-            { target: 'Mi papá es alto y flaco.', base: 'My dad is tall and thin.' },
+            { target: 'Mi papá es alto y delgado.', base: 'My dad is tall and thin.' },
             { target: 'Mis abuelos son bajos.', base: 'My grandparents are short.' },
           ],
         },
         takeaways: [
-          'You describe height and build with alto, bajo and flaco.',
+          'You describe height and build with alto, bajo and delgado.',
           'You make adjectives plural with -s: altos, bajas, jóvenes.',
         ],
         exercises: [
@@ -362,11 +367,11 @@ export const ES_A1_U14: EsUnitDef = {
             [
               ['alto', 'tall'],
               ['bajo', 'short, not tall'],
-              ['flaco', 'thin'],
+              ['delgado', 'thin'],
               ['joven', 'young'],
             ],
-            ['es-alto', 'es-bajo', 'es-flaco', 'es-joven'],
-            { id: 'es.ex.bm5bb4n669vxzr' },
+            ['es-alto', 'es-bajo', 'es-delgado', 'es-joven'],
+            { id: 'es.ex.rss05isoo4pfak' },
           ),
           ex.fillBlank(
             'Mi mamá no es alta. Es ___.',
@@ -380,10 +385,10 @@ export const ES_A1_U14: EsUnitDef = {
             },
           ),
           ex.listenChoice(
-            'Es alto y flaco.',
-            ['Es bajo y flaco.', 'Es alto y joven.', 'Es alta y flaca.'],
-            ['es-alto', 'es-flaco'],
-            { id: 'es.ex.0ryn1ze2nqq6z2' },
+            'Es alto y delgado.',
+            ['Es bajo y delgado.', 'Es alto y joven.', 'Es alta y delgada.'],
+            ['es-alto', 'es-delgado'],
+            { id: 'es.ex.5rflntqjelsp7y' },
           ),
           ex.translationChoice('lindo', 'good-looking', ['young', 'tall', 'funny'], ['es-lindo'], {
             id: 'es.ex.lxwq75n4ziuz58',
@@ -392,12 +397,12 @@ export const ES_A1_U14: EsUnitDef = {
             'Mis abuelos no son ___.',
             'My grandparents are not young.',
             'jóvenes',
-            ['joven', 'altas', 'flacas'],
+            ['joven', 'altas', 'delgadas'],
             ['es-joven'],
             {
               id: 'es.ex.c438yue5q1ilva',
               explanation:
-                'Abuelos is plural, so joven becomes jóvenes (with an accent). Altas and flacas are feminine.',
+                'Abuelos is plural, so joven becomes jóvenes (with an accent). Altas and delgadas are feminine.',
             },
           ),
           ex.orderWords(
@@ -416,9 +421,16 @@ export const ES_A1_U14: EsUnitDef = {
           ),
           ex.translateWrite(
             'My brother is tall and thin.',
-            'Mi hermano es alto y flaco.',
-            ['es-alto', 'es-flaco'],
-            { id: 'es.ex.zxdzoq90b8hnus', acceptedAnswers: ['Mi hermano es flaco y alto.'] },
+            'Mi hermano es alto y delgado.',
+            ['es-alto', 'es-delgado'],
+            {
+              id: 'es.ex.vul3jm8ir4arl5',
+              acceptedAnswers: [
+                'Mi hermano es delgado y alto.',
+                'Mi hermano es alto y flaco.',
+                'Mi hermano es flaco y alto.',
+              ],
+            },
           ),
           ex.shortAnswer(
             '¿Cómo es tu papá?',
@@ -437,14 +449,14 @@ export const ES_A1_U14: EsUnitDef = {
         objective: 'Describe someone’s hair and eyes.',
         intro: {
           explanation:
-            'For hair and eyes, Spanish uses tener with the article: tiene el pelo largo (she has long hair), tengo los ojos verdes (I have green eyes). The adjective goes after the noun. Careful: largo means long, not large (large is grande). Rubio is blond; in Argentina morocho means dark-haired. Listen to the difference: pero (but) has a quick tap like the tt in American butter, perro (dog) has a trilled rr, and pelo (hair) has an l.',
+            'For hair and eyes, Spanish uses tener with the article: tiene el pelo largo (she has long hair), tengo los ojos verdes (I have green eyes). The adjective goes after the noun. Careful: largo means long, not large (large is grande). Rubio is blond and moreno is dark-haired (in some countries moreno also describes dark skin). Listen to the difference: pero (but) has a quick tap like the tt in American butter, perro (dog) has a trilled rr, and pelo (hair) has an l.',
           examples: [
             {
               target: 'Tiene el pelo largo y los ojos verdes.',
               base: 'She has long hair and green eyes.',
             },
             {
-              target: 'Soy morocha, pero mi hermano es rubio.',
+              target: 'Soy morena, pero mi hermano es rubio.',
               base: 'I have dark hair, but my brother is blond.',
             },
           ],
@@ -464,12 +476,12 @@ export const ES_A1_U14: EsUnitDef = {
           ex.matchPairs(
             [
               ['rubio', 'blond'],
-              ['morocho', 'dark-haired'],
+              ['moreno', 'dark-haired'],
               ['corto', 'short, not long'],
               ['largo', 'long'],
             ],
-            ['es-rubio', 'es-morocho', 'es-corto', 'es-largo'],
-            { id: 'es.ex.n78jxbgvow2duy' },
+            ['es-rubio', 'es-moreno', 'es-corto', 'es-largo'],
+            { id: 'es.ex.5eqzvek28yaqj8' },
           ),
           ex.fillBlank(
             'Ana tiene el pelo ___.',
@@ -516,11 +528,15 @@ export const ES_A1_U14: EsUnitDef = {
           ),
           ex.translateWrite(
             'He is dark-haired, but his brother is blond.',
-            'Él es morocho, pero su hermano es rubio.',
-            ['es-morocho', 'es-rubio'],
+            'Él es moreno, pero su hermano es rubio.',
+            ['es-moreno', 'es-rubio'],
             {
-              id: 'es.ex.r4bpdezixjbqdk',
-              acceptedAnswers: ['Es morocho, pero su hermano es rubio.'],
+              id: 'es.ex.ilbzqy619z98jk',
+              acceptedAnswers: [
+                'Es moreno, pero su hermano es rubio.',
+                'Él es morocho, pero su hermano es rubio.',
+                'Es morocho, pero su hermano es rubio.',
+              ],
             },
           ),
           ex.shortAnswer(
@@ -540,7 +556,7 @@ export const ES_A1_U14: EsUnitDef = {
         objective: 'Say how you and others feel right now, and choose between ser and estar.',
         intro: {
           explanation:
-            'Ser describes what someone is like (es serio, es divertida). Estar describes how someone is right now, a state that can change: estoy cansado (I’m tired), está contenta (she’s happy). With vos: estás; plural: estamos (we), están (they). So Martín es serio means he is a serious person, but hoy está contento means he is happy today.',
+            'Ser describes what someone is like (es serio, es divertida). Estar describes how someone is right now, a state that can change: estoy cansado (I’m tired), está contenta (she’s happy). With tú: estás (¿cómo estás?); plural: estamos (we), están (they, ustedes). So Martín es serio means he is a serious person, but hoy está contento means he is happy today.',
           examples: [
             { target: 'Hoy estoy muy cansada.', base: 'I’m very tired today.' },
             {
@@ -600,12 +616,12 @@ export const ES_A1_U14: EsUnitDef = {
             '¿Cómo ___ hoy? — Estoy cansada.',
             'How are you today? — I’m tired.',
             'estás',
-            ['sos', 'tenés', 'soy'],
+            ['eres', 'tienes', 'soy'],
             ['es-estoy', 'es-cansado'],
             {
               id: 'es.ex.ftlxayqi2lmeob',
               explanation:
-                'To ask a friend how they feel today, use estar with vos: ¿cómo estás? ¿Cómo sos? would ask what they are like.',
+                'To ask a friend how they feel today, use estar with tú: ¿cómo estás? ¿Cómo eres? would ask what they are like.',
             },
           ),
           question(
@@ -669,13 +685,13 @@ export const ES_A1_U14: EsUnitDef = {
         ],
         exercises: [
           question(
-            'es.ex.grmbly1n2xjj4z',
+            'es.ex.7093yp4tl48ocf',
             MENSAJE,
             'What does Diego look like?',
             'Tall and dark-haired',
             ['Short and blond', 'Tall and blond', 'Short and dark-haired'],
-            ['es-alto', 'es-morocho'],
-            'Lucía writes “Diego es alto y morocho”.',
+            ['es-alto', 'es-moreno'],
+            'Lucía writes “Diego es alto y moreno”.',
           ),
           question(
             'es.ex.lm1jb7sp7c88ni',

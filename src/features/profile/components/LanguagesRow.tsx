@@ -8,8 +8,11 @@ import { RATING_CONFIG } from '@shared/ranking';
 import { Text, colors, radii, spacing, themedStyles } from '@/design-system';
 import { fetchCurriculum } from '@/features/learning/api';
 import { learningKeys } from '@/features/learning/hooks';
+import { useStrings } from '@/i18n';
+import { useLanguageName } from '@/i18n/languages';
 
 import { useIsContentTester, useMyRatings, useSetTargetLanguage } from '../hooks';
+import { languagesRowStrings } from '../strings';
 
 /** Precarga el camino de los otros idiomas elegibles: cambiar de idioma no muestra carga. */
 export function usePrefetchLanguagePaths(current: string | undefined) {
@@ -43,6 +46,8 @@ export function LanguagesRow({
   onChanged?: () => void;
 }) {
   const styles = useStyles();
+  const t = useStrings(languagesRowStrings);
+  const languageName = useLanguageName();
   const ratings = useMyRatings();
   const tester = useIsContentTester().data ?? false;
   const switchLanguage = useSetTargetLanguage();
@@ -51,7 +56,7 @@ export function LanguagesRow({
   const choose = (l: LanguageConfig) => {
     if (l.code === current) return;
     switchLanguage.mutate(l.code, {
-      onError: () => Alert.alert('No pudimos cambiar el idioma', 'Probá de nuevo en un rato.'),
+      onError: () => Alert.alert(t.switchErrorTitle, t.switchErrorMessage),
     });
     onChanged?.();
   };
@@ -67,12 +72,12 @@ export function LanguagesRow({
         const selectable = isSelectable(l, tester);
         const rating = ratings.data?.[l.code] ?? RATING_CONFIG.initialRating;
         const detail = !selectable
-          ? 'Próximamente'
+          ? t.soon
           : l.status === 'beta'
-            ? 'Beta'
+            ? t.beta
             : l.ranked
               ? `${rating} ELO`
-              : 'Sin ranked aún';
+              : t.noRanked;
         return (
           <Pressable
             key={l.code}
@@ -86,17 +91,15 @@ export function LanguagesRow({
             ]}
             accessibilityRole="button"
             accessibilityState={{ selected, disabled: !selectable }}
-            accessibilityLabel={`${l.name}${selected ? ', idioma actual' : ''}: ${detail}`}
-            accessibilityHint={
-              selectable && !selected ? 'Cambia el idioma que estudiás' : undefined
-            }
+            accessibilityLabel={`${languageName(l.code)}${selected ? t.currentSuffix : ''}: ${detail}`}
+            accessibilityHint={selectable && !selected ? t.hint : undefined}
           >
             <View style={styles.flag}>
               <Text style={styles.flagText}>{l.flag}</Text>
             </View>
             <View>
               <Text variant="bodyStrong" color={selected ? 'textStrong' : 'text'}>
-                {l.name}
+                {languageName(l.code)}
               </Text>
               <Text
                 variant="caption"

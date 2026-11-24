@@ -2,35 +2,45 @@ import { router } from 'expo-router';
 import { Pressable, StyleSheet, View } from 'react-native';
 
 import { Avatar, Text, colors, radii, spacing, useTheme } from '@/design-system';
+import { useLocale, useStrings } from '@/i18n';
 
 import { BotBadge } from '@/features/battle/components/BotBadge';
 
 import type { MatchHistoryEntry } from '../api';
-import { RESULT_LABELS, formatDelta } from '../stats';
+import { formatDelta } from '../stats';
+import { historyStrings } from '../strings';
 
-const dateFormat = new Intl.DateTimeFormat('es', {
+const DATE_OPTIONS: Intl.DateTimeFormatOptions = {
   day: 'numeric',
   month: 'short',
   hour: '2-digit',
   minute: '2-digit',
-});
+};
 
 const RESULT_COLOR = { win: 'success', loss: 'danger', draw: 'textMuted' } as const;
 
 /** Una partida terminada. El resultado se nombra con texto, no sólo con color. */
 export function MatchHistoryItem({ match }: { match: MatchHistoryEntry }) {
   useTheme();
-  const resultLabel = match.result ? RESULT_LABELS[match.result] : 'Sin resultado';
-  const opponentName = match.opponent?.username ?? 'Jugador eliminado';
+  const t = useStrings(historyStrings);
+  const dateFormat = new Intl.DateTimeFormat(useLocale(), DATE_OPTIONS);
+  const resultLabel = t.result(match.result);
+  const opponentName = match.opponent?.username ?? t.deletedPlayer;
   const delta =
     match.isRanked && match.ratingDelta !== null ? formatDelta(match.ratingDelta) : null;
   const isBot = match.opponent?.isBot ?? false;
   const opponentId = match.opponent?.id ?? null;
   const canOpen = Boolean(opponentId && match.opponent?.username);
 
-  const label = `${resultLabel}${match.forfeited ? ' por abandono' : ''} contra ${opponentName}${isBot ? ' (bot)' : ''}, ${
-    match.score
-  } a ${match.opponentScore ?? 0}${delta ? `, ${delta} ELO` : ''}`;
+  const label = t.matchA11y(
+    resultLabel,
+    Boolean(match.forfeited),
+    opponentName,
+    isBot,
+    match.score,
+    match.opponentScore ?? 0,
+    delta,
+  );
 
   return (
     <Pressable
@@ -55,7 +65,7 @@ export function MatchHistoryItem({ match }: { match: MatchHistoryEntry }) {
         </View>
         <Text variant="caption">
           {dateFormat.format(new Date(match.endedAt))}
-          {match.isRanked ? '' : ' · práctica'}
+          {match.isRanked ? '' : t.practice}
         </Text>
       </View>
       <View style={styles.right}>

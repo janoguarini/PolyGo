@@ -1,10 +1,11 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import type { ReactNode } from 'react';
-import { StyleSheet, type StyleProp, type ViewStyle } from 'react-native';
+import { Image, StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
 import Svg, { Circle, Line, Path } from 'react-native-svg';
 
 import { colors, radii, spacing, themedStyles } from '@/design-system';
 
+import { BACKGROUND_IMAGES } from './assets';
 import { DEFAULT_BACKGROUND, backgroundStyle, type BackgroundStyle } from './visuals';
 
 // Posiciones fijas (en %) para que el dibujo no cambie entre renders.
@@ -38,6 +39,30 @@ export function ProfileBackdrop({
   style?: StyleProp<ViewStyle>;
 }) {
   const styles = useStyles();
+  const image = backgroundId ? BACKGROUND_IMAGES[backgroundId] : undefined;
+  if (image) {
+    // Panorámico con recorte "cover" (nunca se deforma) y un velo oscuro que deja el centro tranquilo
+    // para que nombre, rango y ELO se lean sobre cualquier arte.
+    return (
+      <View style={[styles.card, styles.imageCard, style]}>
+        <Image
+          source={image}
+          style={StyleSheet.absoluteFill}
+          resizeMode="cover"
+          fadeDuration={0}
+          accessibilityIgnoresInvertColors
+        />
+        <LinearGradient
+          colors={['rgba(12,8,32,0.30)', 'rgba(12,8,32,0.62)', 'rgba(12,8,32,0.30)']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          style={StyleSheet.absoluteFill}
+          pointerEvents="none"
+        />
+        {children}
+      </View>
+    );
+  }
   const custom = backgroundStyle(backgroundId);
   const bg = custom ?? DEFAULT_BACKGROUND;
   return (
@@ -118,5 +143,6 @@ const useStyles = themedStyles(() =>
       overflow: 'hidden',
     },
     defaultCard: { borderColor: 'rgba(167, 139, 250, 0.45)' },
+    imageCard: { borderColor: 'rgba(196, 181, 253, 0.45)', backgroundColor: '#151036' },
   }),
 );

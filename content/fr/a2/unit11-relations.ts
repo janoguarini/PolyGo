@@ -406,7 +406,7 @@ export const FR_A2_U11: FrUnitDef = {
           ex.translationChoice(
             "on s'est rencontrés",
             'nos conocimos',
-            ['nos casamos', 'nos encontramos', 'nos peleamos'],
+            ['nos casamos', 'nos separamos', 'nos peleamos'],
             ['fr-on-s-est-rencontres'],
             {
               id: 'fr.ex.syzf7d94ox6t77',

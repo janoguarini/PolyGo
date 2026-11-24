@@ -5,9 +5,11 @@ import type { PublicPlayer, ScoreLine } from '@shared/protocol';
 
 import { Card, ProgressBar, Text, colors, gradients, spacing, useTheme } from '@/design-system';
 import { FramedAvatar } from '@/features/cosmetics/FramedAvatar';
+import { useStrings } from '@/i18n';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 
 import { BotBadge } from './BotBadge';
+import { battleStrings } from '../strings';
 
 /** Barra de tiempo en rojo (se lee al dibujar: depende del tema). */
 const danger = () => [colors.danger, colors.dangerStrong] as const;
@@ -33,16 +35,17 @@ export function BattleHud({
   opponentGraceMs,
 }: Props) {
   useTheme();
+  const t = useStrings(battleStrings);
   const seconds = Math.ceil(remainingMs / 1000);
   const low = seconds <= 10;
   return (
     <View style={styles.wrap}>
       <View style={styles.timerRow}>
-        <Text variant="overline">TIEMPO</Text>
+        <Text variant="overline">{t.time}</Text>
         <Text
           variant="heading"
           color={low ? 'danger' : 'textStrong'}
-          accessibilityLabel={`Quedan ${seconds} segundos`}
+          accessibilityLabel={t.secondsLeft(seconds)}
           accessibilityLiveRegion={low ? 'polite' : 'none'}
         >
           {seconds}s
@@ -55,7 +58,7 @@ export function BattleHud({
       />
 
       <View style={styles.scores}>
-        <PlayerScore player={me} line={myLine} label="Vos" />
+        <PlayerScore player={me} line={myLine} label={t.you} />
         {opponent ? <PlayerScore player={opponent} line={opponentLine} align="right" /> : null}
       </View>
 
@@ -63,8 +66,7 @@ export function BattleHud({
         <Card style={styles.notice}>
           <WifiOff color={colors.streak} size={18} />
           <Text variant="caption" color="text" style={styles.noticeText}>
-            {opponent.username} se desconectó. Si no vuelve en {Math.ceil(opponentGraceMs / 1000)}{' '}
-            s, ganás por abandono.
+            {t.opponentDisconnected(opponent.username, Math.ceil(opponentGraceMs / 1000))}
           </Text>
         </Card>
       ) : null}
@@ -83,12 +85,17 @@ function PlayerScore({
   label?: string;
   align?: 'left' | 'right';
 }) {
+  const t = useStrings(battleStrings);
   const right = align === 'right';
   return (
     <View
       style={[styles.player, right && styles.playerRight]}
       accessible
-      accessibilityLabel={`${label ?? player?.username ?? ''}${player?.isBot ? ' (bot)' : ''}: ${line?.score ?? 0} puntos`}
+      accessibilityLabel={t.scoreA11y(
+        label ?? player?.username ?? '',
+        Boolean(player?.isBot),
+        line?.score ?? 0,
+      )}
     >
       <FramedAvatar
         avatarId={player?.avatarId}

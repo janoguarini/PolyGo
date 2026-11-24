@@ -16,10 +16,13 @@ import {
   themedStyles,
 } from '@/design-system';
 import { TierBadge } from '@/features/profile/components/AchievementBadge';
+import { useStrings } from '@/i18n';
 import { toUserMessage } from '@/lib/errors';
 
 import type { WordRow } from '../api';
 import type { SessionStats } from '../player';
+import { resultsStrings } from '../strings';
+import { useAchievementTitle } from '@/features/profile/strings';
 
 interface Props {
   title: string;
@@ -43,11 +46,11 @@ interface Props {
   onExit: () => void;
 }
 
-function headline(accuracy: number) {
-  if (accuracy === 1) return '¡Perfecto!';
-  if (accuracy >= 0.8) return '¡Muy bien!';
-  if (accuracy >= 0.5) return 'Buen trabajo';
-  return 'Seguí practicando';
+function headline(accuracy: number, t: (typeof resultsStrings)['es']) {
+  if (accuracy === 1) return t.perfect;
+  if (accuracy >= 0.8) return t.great;
+  if (accuracy >= 0.5) return t.good;
+  return t.keepGoing;
 }
 
 function formatDuration(seconds: number) {
@@ -58,6 +61,8 @@ function formatDuration(seconds: number) {
 
 export function SessionResults(props: Props) {
   const styles = useStyles();
+  const t = useStrings(resultsStrings);
+  const achievementTitle = useAchievementTitle();
   const { stats, words } = props;
   const mistakeWords = uniqueWords(stats.mistakes, words);
 
@@ -72,14 +77,14 @@ export function SessionResults(props: Props) {
             disabled={!props.saved}
             onPress={props.onPrimary}
           />
-          <Button label="Volver" variant="ghost" onPress={props.onExit} />
+          <Button label={t.back} variant="ghost" onPress={props.onExit} />
         </>
       }
     >
       <Animated.View entering={FadeInUp.duration(400)} style={styles.hero}>
         <Trophy color={stats.accuracy >= 0.8 ? colors.gold : colors.primaryBright} size={56} />
         <Text variant="display" align="center">
-          {headline(stats.accuracy)}
+          {headline(stats.accuracy, t)}
         </Text>
         <Text color="textMuted" align="center">
           {props.title}
@@ -88,23 +93,23 @@ export function SessionResults(props: Props) {
 
       <View style={styles.grid}>
         <StatTile
-          label="Precisión"
+          label={t.accuracy}
           value={`${Math.round(stats.accuracy * 100)}%`}
-          hint="en el primer intento"
+          hint={t.firstTry}
         />
-        <StatTile label="Correctas" value={`${stats.firstTryCorrect}/${stats.total}`} />
-        <StatTile label="Tiempo" value={formatDuration(props.durationSeconds)} />
+        <StatTile label={t.correct} value={`${stats.firstTryCorrect}/${stats.total}`} />
+        <StatTile label={t.time} value={formatDuration(props.durationSeconds)} />
       </View>
 
       {props.takeaways?.length ? (
-        <Card style={styles.gap} accessibilityLabel="Qué aprendiste">
+        <Card style={styles.gap} accessibilityLabel={t.learnedLabel}>
           <Text variant="overline" color="primarySoft">
-            QUÉ APRENDISTE
+            {t.learned}
           </Text>
-          {props.takeaways.map((t) => (
-            <View key={t} style={styles.takeaway}>
+          {props.takeaways.map((takeaway) => (
+            <View key={takeaway} style={styles.takeaway}>
               <CheckCircle2 color={colors.success} size={18} />
-              <Text style={styles.flex}>{t}</Text>
+              <Text style={styles.flex}>{takeaway}</Text>
             </View>
           ))}
         </Card>
@@ -112,7 +117,7 @@ export function SessionResults(props: Props) {
 
       {props.saving ? (
         <Text variant="caption" align="center">
-          Guardando tu progreso…
+          {t.saving}
         </Text>
       ) : null}
       {props.saveError ? (
@@ -120,14 +125,14 @@ export function SessionResults(props: Props) {
           <View style={styles.row}>
             <CloudOff color={colors.danger} size={22} />
             <Text variant="bodyStrong" color="danger">
-              No se pudo guardar
+              {t.saveFailed}
             </Text>
           </View>
           <Text color="textMuted">
-            {toUserMessage(props.saveError)} Tu sesión no se perdió: podés reintentar.
+            {toUserMessage(props.saveError)} {t.notLost}
           </Text>
           <Button
-            label="Reintentar"
+            label={t.retry}
             variant="secondary"
             icon={<RotateCcw color={colors.text} size={18} />}
             onPress={props.onRetrySave}
@@ -137,15 +142,15 @@ export function SessionResults(props: Props) {
 
       {props.achievements.length > 0 ? (
         <Animated.View entering={FadeInUp.delay(300).duration(400)}>
-          <Card style={[styles.gap, styles.achievements]} accessibilityLabel="Logros nuevos">
+          <Card style={[styles.gap, styles.achievements]} accessibilityLabel={t.newAchievements}>
             <Text variant="overline" color="gold">
-              {props.achievements.length === 1 ? 'LOGRO DESBLOQUEADO' : 'LOGROS DESBLOQUEADOS'}
+              {t.unlocked(props.achievements.length)}
             </Text>
             {props.achievements.map((a) => (
               <View key={a.id} style={styles.row}>
                 <TierBadge id={a.id} size={40} />
                 <Text variant="bodyStrong" color="textStrong">
-                  {a.title}
+                  {achievementTitle(a.id, a.title)}
                 </Text>
               </View>
             ))}
@@ -155,7 +160,7 @@ export function SessionResults(props: Props) {
 
       {mistakeWords.length > 0 ? (
         <Card style={styles.gap}>
-          <Text variant="overline">PALABRAS PARA REPASAR</Text>
+          <Text variant="overline">{t.wordsToReview}</Text>
           {mistakeWords.map((w) => (
             <Text key={w.id}>
               <Text variant="bodyStrong" color="textStrong">
@@ -164,9 +169,7 @@ export function SessionResults(props: Props) {
               · {w.translation_es}
             </Text>
           ))}
-          <Text variant="caption">
-            {props.mistakesHint ?? 'Van a aparecer en tus repasos para que las fijes.'}
-          </Text>
+          <Text variant="caption">{props.mistakesHint ?? t.mistakesHint}</Text>
         </Card>
       ) : null}
       {props.extra}

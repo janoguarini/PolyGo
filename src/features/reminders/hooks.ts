@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useEffect } from 'react';
 
 import { useLearningSummary } from '@/features/learning/hooks';
+import { useInterfaceLanguage } from '@/i18n';
 
 import {
   cancelReminders,
@@ -55,13 +56,15 @@ export function useReminderSync() {
   const activeToday = summary.data?.active_today;
   const streakFreezes = summary.data?.streak_freezes ?? 0;
   const freezePending = summary.data?.freeze_pending ?? 0;
+  // Los textos se arman al programar: al cambiar el idioma de la interfaz se reprograman.
+  const language = useInterfaceLanguage();
 
   useEffect(() => {
     if (!p || streakDays === undefined || activeToday === undefined) return;
     syncReminders(p, { streakDays, activeToday, streakFreezes, freezePending }).catch(() => {
       // Un recordatorio que no se programa nunca debe romper la app.
     });
-  }, [p, streakDays, activeToday, streakFreezes, freezePending]);
+  }, [p, streakDays, activeToday, streakFreezes, freezePending, language]);
 
   useEffect(() => () => void cancelReminders().catch(() => {}), []);
 }

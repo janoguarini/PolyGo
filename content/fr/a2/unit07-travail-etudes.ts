@@ -694,7 +694,7 @@ export const FR_A2_U07: FrUnitDef = {
         objective: 'Contar los pasos de una búsqueda de empleo y dar razones.',
         intro: {
           explanation:
-            "Para ordenar los pasos: d'abord (primero), ensuite (después) y enfin (por último). Para dar una razón: parce que (porque); delante de vocal, parce qu': parce qu'il faut travailler. En enfin, las dos sílabas tienen vocal nasal, como en vin.",
+            "Para ordenar los pasos: d'abord (primero), ensuite (después) y enfin (por último). Para dar una razón: parce que (porque); delante de vocal, parce qu': parce qu'il faut travailler. En enfin hay dos nasales distintas: en- suena como la preposición en (en France) y -fin, como vin.",
           examples: [
             {
               target: "D'abord, j'ai un entretien. Ensuite, une réunion.",

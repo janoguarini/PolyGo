@@ -333,7 +333,7 @@ export const FR_A1_U11: FrUnitDef = {
             {
               id: 'fr.ex.jpf3u43mzztc39',
               explanation:
-                'Le suena como la e de «de»; les, como una e más abierta. La s de chats no suena.',
+                'Le tiene una e débil, como la eu de deux; les suena como «lé», con la e española. La s de chats no suena.',
             },
           ),
           ex.fillBlank(

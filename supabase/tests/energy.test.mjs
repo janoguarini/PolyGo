@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
 
 import { createDb, createUser, as } from './harness.mjs';
+import { exercisesFixtureSql } from './fixtures.mjs';
 import { ENERGY } from '../../shared/energy.ts';
 
 let db;
@@ -15,8 +16,19 @@ const FIXTURE = `
     ('zz-energy-l1', 'zz-energy-u1', 1, 'Lección 1', 'obj', true);
   insert into public.words (id, language_code, unit_id, text, translation_es, is_published) values
     ('zz-energy-hello', 'en', 'zz-energy-u1', 'hello', 'hola', true);
-  insert into public.exercises (id, lesson_id, position, type, skill, prompt_es, payload, answer, is_published) values
-    ('zz-energy-e1', 'zz-energy-l1', 1, 'translate_write', 'translation', 'p', '{"type":"translate_write","source":"hola"}', 'hello', true);
+  ${exercisesFixtureSql([
+    {
+      id: 'zz-energy-e1',
+      lesson_id: 'zz-energy-l1',
+      position: 1,
+      type: 'translate_write',
+      skill: 'translation',
+      payload: { type: 'translate_write', source: 'hola' },
+      answer: 'hello',
+      language: 'pt',
+      level: 'A2',
+    },
+  ])}
   insert into public.exercise_words values ('zz-energy-e1', 'zz-energy-hello');
 `;
 
@@ -63,6 +75,12 @@ const travel = (u, hours) =>
     [u, hours],
   );
 
+/** Ancla de la recarga guardada en el servidor (desde ahí se cuentan los intervalos de 3 h). */
+const anchorOf = async (u) =>
+  new Date(
+    (await one('select anchor_at from public.user_energy where user_id = $1', [u])).anchor_at,
+  );
+
 const lessonSessions = async (u) =>
   Number(
     (
@@ -97,9 +115,12 @@ test('completar una lección gasta 1 aunque haya errores; reenviarla no gasta ot
   assert.equal(dup.duplicate, true);
   const e = await energy(u);
   assert.equal(e.energy, ENERGY.max - 1);
-  // El reloj arranca al gastar desde lleno: próxima unidad en 3 h.
+  // El reloj arranca al gastar desde lleno: próxima unidad 3 h después del ancla. Se compara contra el
+  // ancla guardada (exacto) y no contra el reloj de pared: con la máquina cargada pasan segundos entre
+  // el gasto y la lectura (docs/PRE_RELEASE_VALIDATION.md, D-1).
+  assert.equal((new Date(e.next_unit_at) - (await anchorOf(u))) / 1000, ENERGY.regenSeconds);
   const wait = (new Date(e.next_unit_at) - new Date(e.server_now)) / 1000;
-  assert.ok(Math.abs(wait - ENERGY.regenSeconds) < 5, `espera ${wait}`);
+  assert.ok(wait > 0 && wait <= ENERGY.regenSeconds, `espera ${wait}`);
 });
 
 test('sin energía: la lección no se guarda; se recupera 1 cada 3 h hasta el máximo', async () => {
@@ -110,22 +131,30 @@ test('sin energía: la lección no se guarda; se recupera 1 cada 3 h hasta el m�
   await assert.rejects(finishLesson(u), /no_energy/);
   assert.equal(await lessonSessions(u), ENERGY.max, 'la sesión rechazada no queda guardada');
 
-  // Repasar no usa energía.
-  const review = await rpc(
+  // Repasar no usa energía (cuerpo v1 de repasos; la app ya no lo llama directamente desde
+  // 20261112120000, el servidor sí: service_role).
+  const review = await as(
+    db,
+    'service_role',
     u,
-    `select public.submit_learning_session($1, 'review', '', now() - interval '1 minute', $2::jsonb, 'UTC') as r`,
-    [
-      randomUUID(),
-      JSON.stringify([
-        {
-          word_id: 'zz-energy-hello',
-          answer: 'hello',
-          correct: true,
-          first_try: true,
-          response_ms: 900,
-        },
-      ]),
-    ],
+    async () =>
+      (
+        await db.query(
+          `select public.submit_learning_session($1, 'review', '', now() - interval '1 minute', $2::jsonb, 'UTC') as r`,
+          [
+            randomUUID(),
+            JSON.stringify([
+              {
+                word_id: 'zz-energy-hello',
+                answer: 'hello',
+                correct: true,
+                first_try: true,
+                response_ms: 900,
+              },
+            ]),
+          ],
+        )
+      ).rows[0].r,
   );
   assert.equal(review.duplicate, false);
   assert.equal(review.energy_left, null);
@@ -140,8 +169,10 @@ test('sin energía: la lección no se guarda; se recupera 1 cada 3 h hasta el m�
   await travel(u, 8);
   e = await energy(u);
   assert.equal(e.energy, 2);
+  // Exacto contra el ancla (8 h atrás): 2 unidades a las 6 h, la tercera a las 9 h → falta 1 h.
+  assert.equal((new Date(e.next_unit_at) - (await anchorOf(u))) / 1000, 3 * ENERGY.regenSeconds);
   const wait = (new Date(e.next_unit_at) - new Date(e.server_now)) / 1000;
-  assert.ok(Math.abs(wait - 3600) < 5, `espera ${wait}`);
+  assert.ok(wait > 0 && wait <= 3600, `espera ${wait}`);
 
   // Mucho tiempo después: tope en el máximo.
   await travel(u, 100);

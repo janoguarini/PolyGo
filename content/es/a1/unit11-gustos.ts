@@ -2,13 +2,15 @@ import type { EsUnitDef } from '../../es-course';
 import { dialogue, ES_A1_RATE, ex, question, reading, w } from '../helpers';
 
 /**
- * Español A1 U11 «Likes and free time» (docs/ES_A1_A2.md): decir qué te gusta y qué no con gustar
- * (me gusta + singular o infinitivo, me gustan + plural, ¿te gusta?, le gusta), me encanta, odio y
- * prefiero (e → ie; vos preferís), jugar (u → ue: juego, vos jugás) y tocar un instrumento (falso
- * amigo: play = jugar o tocar), salir con amigos y no me gusta para nada.
+ * Español A1 U11 «Likes and free time» (docs/ES_A1_A2.md), en español neutro de Latinoamérica (tú y
+ * ustedes): decir qué te gusta y qué no con gustar (me gusta + singular o infinitivo, me gustan +
+ * plural, ¿te gusta?, le gusta), me encanta, odio y prefiero (e → ie: prefiero, prefieres, prefiere),
+ * jugar (u → ue: juego, juegas, juega) y tocar un instrumento (falso amigo: play = jugar o tocar), salir
+ * con amigos y no me gusta para nada.
  * Pronunciación: la g de gusta (g + u, sonido duro), la de guitarra (gu + i: la u no suena) y la j de
  * juego / jugar (una h fuerte).
- * Cultura: el tango, el fútbol de los fines de semana y salir con amigos.
+ * Cultura: bailes de distintos países (salsa, tango, cumbia), el fútbol de los fines de semana y salir
+ * con amigos.
  *
  * ESTADO EDITORIAL: borrador, sin revisión de hablantes nativos. Se carga sin publicar.
  */
@@ -20,7 +22,7 @@ const TIEMPO_LIBRE = dialogue(
     ['Ana', 'Mateo, ¿te gusta leer?'],
     ['Mateo', 'Sí, me encanta. Leo todos los días.'],
     ['Ana', 'A mí no me gusta para nada. Me encanta bailar.'],
-    ['Mateo', '¿Bailás tango?'],
+    ['Mateo', '¿Bailas salsa?'],
     ['Ana', 'Sí, los viernes.'],
   ],
   ES_A1_RATE,
@@ -32,8 +34,8 @@ const FUTBOL = dialogue(
   [
     ['Martín', 'Sofía, ¿te gusta el fútbol?'],
     ['Sofía', 'No, para nada. Me gusta la música.'],
-    ['Martín', '¿Tocás la guitarra?'],
-    ['Sofía', 'Sí, toco la guitarra todos los días. ¿Y vos?'],
+    ['Martín', '¿Tocas la guitarra?'],
+    ['Sofía', 'Sí, toco la guitarra todos los días. ¿Y tú?'],
     ['Martín', 'Yo juego al fútbol los sábados.'],
   ],
   ES_A1_RATE,
@@ -44,7 +46,7 @@ const DIEGO = reading(
   'post',
   'Diego writes a short post about his free time.',
   [
-    '¡Hola! Me llamo Diego y vivo en Rosario.',
+    '¡Hola! Me llamo Diego y vivo en Cali.',
     'En mi tiempo libre me encanta cocinar y viajar.',
     'No me gustan los deportes: odio el fútbol.',
     'Prefiero salir con mis amigos los viernes.',
@@ -53,7 +55,7 @@ const DIEGO = reading(
 );
 
 export const ES_A1_U11: EsUnitDef = {
-  names: ['Ana', 'Mateo', 'Martín', 'Sofía', 'Diego', 'Rosario', 'Italia'],
+  names: ['Ana', 'Mateo', 'Martín', 'Sofía', 'Diego', 'Cali', 'Italia'],
   support: [
     'gustan',
     'encantan',
@@ -61,14 +63,14 @@ export const ES_A1_U11: EsUnitDef = {
     'o',
     'mí',
     'leo',
-    'bailás',
-    'tango',
+    'bailas',
+    'salsa',
     'toco',
-    'tocás',
+    'tocas',
     'toca',
-    'jugás',
+    'juegas',
     'juega',
-    'preferís',
+    'prefieres',
     'prefiere',
     'amigo',
   ],
@@ -84,7 +86,7 @@ export const ES_A1_U11: EsUnitDef = {
     grammar: {
       title: 'Gustar: me gusta, me gustan · jugar and tocar',
       explanation:
-        'Gustar works “backwards”: the thing you like is the subject. Me gusta + one thing or a verb in the infinitive (me gusta la música, me gusta leer); me gustan + several things (me gustan los gatos). Keep the article: me gusta el fútbol, not me gusta fútbol. To ask a friend: ¿te gusta…? For he or she: le gusta. Me encanta (I love) works the same way. Odio (I hate) and prefiero (I prefer) are normal verbs; prefiero changes e to ie, but with vos it doesn’t: preferís. Jugar changes u to ue: juego, but vos jugás; play a sport is jugar al (a + el) fútbol, and play an instrument is tocar: toco la guitarra.',
+        'Gustar works “backwards”: the thing you like is the subject. Me gusta + one thing or a verb in the infinitive (me gusta la música, me gusta leer); me gustan + several things (me gustan los gatos). Keep the article: me gusta el fútbol, not me gusta fútbol. To ask a friend: ¿te gusta…? For he or she: le gusta. Me encanta (I love) works the same way. Odio (I hate) and prefiero (I prefer) are normal verbs. Preferir changes e to ie in yo, tú and él / ella / usted: prefiero, prefieres, prefiere. Jugar changes u to ue in the same persons: juego, juegas, juega (but nosotros jugamos). Play a sport is jugar al (a + el) fútbol (in Mexico you will also hear jugar fútbol), and play an instrument is tocar: toco la guitarra, ¿tocas la guitarra?',
       examples: [
         { target: 'Me gusta la música. Me gustan los gatos.', base: 'I like music. I like cats.' },
         {
@@ -100,16 +102,24 @@ export const ES_A1_U11: EsUnitDef = {
     review: {
       status: 'draft',
       notes:
-        'A1 nuevo (U11). Sin revisión nativa: revisar que «me gusta» se traduzca «I like» (la explicación aclara que funciona al revés), «jugar al fútbol» (en la Argentina, siempre con «al»), «el deporte» con la aceptada «sports» y si conviene enseñar «a mí me gusta» ya acá (sólo aparece en el diálogo).',
+        'A1 nuevo (U11). Convertido al español neutro de Latinoamérica (tú y ustedes) el 2026-11-21. Sin revisión nativa: revisar que «me gusta» se traduzca «I like» (la explicación aclara que funciona al revés), «jugar al fútbol» (en México también «jugar fútbol», aceptado en las respuestas), la salsa en lugar del tango en el diálogo, «el deporte» con la aceptada «sports» y si conviene enseñar «a mí me gusta» ya acá (sólo aparece en el diálogo).',
     },
     words: [
       w('es-me-gusta', 'me gusta', 'I like', 'Me gusta la música.', 'I like music.', ['likes'], {
         emoji: '👍',
       }),
-      w('es-me-encanta', 'me encanta', 'I love', 'Me encanta el mate.', 'I love mate.', ['likes'], {
-        acceptedTranslations: ['I really like'],
-        emoji: '😍',
-      }),
+      w(
+        'es-me-encanta',
+        'me encanta',
+        'I love',
+        'Me encanta el café.',
+        'I love coffee.',
+        ['likes'],
+        {
+          acceptedTranslations: ['I really like'],
+          emoji: '😍',
+        },
+      ),
       w('es-odio', 'odio', 'I hate', 'Odio la leche.', 'I hate milk.', ['likes']),
       w('es-prefiero', 'prefiero', 'I prefer', 'Prefiero el té.', 'I prefer tea.', [
         'likes',
@@ -167,8 +177,8 @@ export const ES_A1_U11: EsUnitDef = {
         'es-bailar',
         'bailar',
         'to dance',
-        'Me encanta bailar tango.',
-        'I love dancing tango.',
+        'Me encanta bailar salsa.',
+        'I love dancing salsa.',
         ['hobbies', 'verbs'],
         { emoji: '💃' },
       ),
@@ -301,7 +311,7 @@ export const ES_A1_U11: EsUnitDef = {
             '¿Te ___ el deporte?',
             'Do you like sport?',
             'gusta',
-            ['gusto', 'llamás', 'tengo'],
+            ['gusto', 'llamas', 'tengo'],
             ['es-te-gusta', 'es-el-deporte'],
             {
               id: 'es.ex.rwnyqgqtpslnmw',
@@ -325,7 +335,10 @@ export const ES_A1_U11: EsUnitDef = {
             'Do you like football?',
             '¿Te gusta el fútbol?',
             ['es-te-gusta', 'es-el-futbol'],
-            { id: 'es.ex.jk9r3dzcek2n7b', acceptedAnswers: ['¿A vos te gusta el fútbol?'] },
+            {
+              id: 'es.ex.jk9r3dzcek2n7b',
+              acceptedAnswers: ['¿A ti te gusta el fútbol?', '¿A vos te gusta el fútbol?'],
+            },
           ),
           ex.shortAnswer(
             '¿Te gusta la música?',
@@ -350,12 +363,12 @@ export const ES_A1_U11: EsUnitDef = {
         objective: 'Talk about things you like in the plural, and say you love or hate something.',
         intro: {
           explanation:
-            'When you like several things, gustar goes plural: me gustan los perros. Me encanta (I love) works the same way: me encanta el mate, me encantan los libros. Odio (I hate) is a normal verb: odio el café. For he or she, use le: a mi papá le gusta el fútbol. Listen to the end of the word: gusta or gustan.',
+            'When you like several things, gustar goes plural: me gustan los perros. Me encanta (I love) works the same way: me encanta el café, me encantan los libros. Odio (I hate) is a normal verb: odio el té. For he or she, use le: a mi papá le gusta el fútbol. Listen to the end of the word: gusta or gustan.',
           examples: [
             { target: 'Me gustan los perros.', base: 'I like dogs.' },
             {
-              target: 'Me encanta el mate, pero odio el café.',
-              base: 'I love mate, but I hate coffee.',
+              target: 'Me encanta el café, pero odio el té.',
+              base: 'I love coffee, but I hate tea.',
             },
           ],
         },
@@ -428,7 +441,7 @@ export const ES_A1_U11: EsUnitDef = {
           ex.orderWords('Me encantan los libros.', 'I love books.', ['es-me-encanta'], {
             id: 'es.ex.g2tkmfo33h8uvd',
           }),
-          ex.translateWrite('I love mate.', 'Me encanta el mate.', ['es-me-encanta'], {
+          ex.translateWrite('I love coffee.', 'Me encanta el café.', ['es-me-encanta'], {
             id: 'es.ex.j1iead1k91z68a',
           }),
           ex.translateWrite(
@@ -449,7 +462,7 @@ export const ES_A1_U11: EsUnitDef = {
         objective: 'Talk about free-time activities with me gusta + a verb.',
         intro: {
           explanation:
-            'To say you like doing something, use the infinitive (the basic form of the verb, ending in -ar, -er or -ir) and always gusta, never gustan: me gusta leer, me gusta bailar y cocinar. English uses the -ing form (I like reading); Spanish uses the infinitive. Your free time is el tiempo libre.',
+            'To say you like doing something, use the infinitive (the basic form of the verb, ending in -ar, -er or -ir) and always gusta, never gustan: me gusta leer, me gusta bailar y cocinar. English uses the -ing form (I like reading); Spanish uses the infinitive. Your free time is el tiempo libre. Every country has its dances: salsa in Cali, tango in Buenos Aires, cumbia almost everywhere.',
           examples: [
             { target: 'Me gusta leer.', base: 'I like reading.' },
             {
@@ -527,7 +540,7 @@ export const ES_A1_U11: EsUnitDef = {
             'Dancing',
             ['Reading', 'Cooking', 'Travelling'],
             ['es-bailar'],
-            'Ana says “Me encanta bailar”, and she dances tango on Fridays.',
+            'Ana says “Me encanta bailar”, and she dances salsa on Fridays.',
           ),
           ex.translateWrite('I like cooking.', 'Me gusta cocinar.', ['es-me-gusta', 'es-cocinar'], {
             id: 'es.ex.le9wacuulgqcsz',
@@ -549,14 +562,14 @@ export const ES_A1_U11: EsUnitDef = {
         objective: 'Say which sports and instruments you play, with jugar and tocar.',
         intro: {
           explanation:
-            'English “play” is two verbs in Spanish: jugar for games and sports (juego al fútbol: a + el becomes al) and tocar for instruments (toco la guitarra). Jugar changes u to ue in yo: juego; with vos it doesn’t change: jugás; for he or she: juega. Pronunciation: in guitarra the u is silent and the g is hard, like the g in give; the j in juego and jugar sounds like a strong English h.',
+            'English “play” is two verbs in Spanish: jugar for games and sports (juego al fútbol: a + el becomes al) and tocar for instruments (toco la guitarra). Jugar changes u to ue: yo juego, tú juegas, él / ella / usted juega (only nosotros keeps the u: jugamos). In Mexico people often drop the al: juego fútbol. Pronunciation: in guitarra the u is silent and the g is hard, like the g in give; the j in juego and jugar sounds like a strong English h.',
           examples: [
             { target: 'Juego al fútbol los domingos.', base: 'I play football on Sundays.' },
             { target: 'Mi hermana toca la guitarra.', base: 'My sister plays the guitar.' },
           ],
         },
         takeaways: [
-          'You play sports with jugar al… (juego, vos jugás).',
+          'You play sports with jugar al… (juego, tú juegas).',
           'You play instruments with tocar: toco la guitarra.',
         ],
         exercises: [
@@ -571,30 +584,30 @@ export const ES_A1_U11: EsUnitDef = {
             'Yo ___ al fútbol los sábados.',
             'I play football on Saturdays.',
             'juego',
-            ['jugás', 'juega', 'jugar'],
+            ['juegas', 'juega', 'jugar'],
             ['es-juego', 'es-el-futbol'],
             {
               id: 'es.ex.jcrph5d3o8bfed',
               explanation:
-                'With yo, jugar becomes juego (u → ue). Jugás is for vos and juega for él, ella or usted.',
+                'With yo, jugar becomes juego (u → ue). Juegas is for tú and juega for él, ella or usted.',
             },
           ),
           ex.listenChoice(
             'Juego al fútbol.',
-            ['Jugás al fútbol.', 'Juega al fútbol.'],
+            ['Juegas al fútbol.', 'Juega al fútbol.'],
             ['es-juego', 'es-el-futbol'],
             { id: 'es.ex.5ej3gaknp339vh' },
           ),
           ex.fillBlank(
-            '¿Vos ___ al fútbol?',
+            '¿Tú ___ al fútbol?',
             'Do you play football?',
-            'jugás',
+            'juegas',
             ['juego', 'juega', 'jugar'],
             ['es-jugar', 'es-el-futbol'],
             {
               id: 'es.ex.slg9hdjq4pgbbp',
               explanation:
-                'With vos the vowel doesn’t change and the stress falls at the end: vos jugás. Yo juego, usted juega.',
+                'With tú: juegas. The u changes to ue, as in juego: yo juego, tú juegas, usted juega.',
             },
           ),
           ex.fillBlank(
@@ -637,14 +650,22 @@ export const ES_A1_U11: EsUnitDef = {
             'I play football with my brother.',
             'Juego al fútbol con mi hermano.',
             ['es-juego', 'es-el-futbol', 'es-con'],
-            { id: 'es.ex.6c4dnpiza55mnv', acceptedAnswers: ['Yo juego al fútbol con mi hermano.'] },
+            {
+              id: 'es.ex.6c4dnpiza55mnv',
+              acceptedAnswers: [
+                'Yo juego al fútbol con mi hermano.',
+                'Juego fútbol con mi hermano.',
+                'Yo juego fútbol con mi hermano.',
+              ],
+            },
           ),
           ex.shortAnswer(
-            '¿Jugás al fútbol?',
+            '¿Juegas al fútbol?',
             'Say yes, you play on Sundays (e.g. «Sí, juego los domingos.»).',
             'Sí, juego los domingos.',
             [
               'Sí, juego al fútbol los domingos.',
+              'Sí, juego fútbol los domingos.',
               'Sí, los domingos.',
               'Juego los domingos.',
               'Sí, yo juego los domingos.',
@@ -661,17 +682,17 @@ export const ES_A1_U11: EsUnitDef = {
         objective: 'Say what you prefer, talk about going out with friends, and understand a post.',
         intro: {
           explanation:
-            'Prefiero (I prefer) changes e to ie; with vos it doesn’t: ¿preferís el té o el café? Salir is to go out: salir con amigos (con = with). In Argentina people often go out with friends late, and dinner is usually after nine in the evening.',
+            'Prefiero (I prefer) changes e to ie, and so does the tú form: yo prefiero, tú prefieres, él / ella / usted prefiere. To ask a friend: ¿prefieres el té o el café? Salir is to go out: salir con amigos (con = with). In many Spanish-speaking cities, from Madrid to Bogotá, people go out with friends late, especially on Fridays and Saturdays.',
           examples: [
             {
               target: 'Prefiero salir con mis amigos.',
               base: 'I prefer going out with my friends.',
             },
-            { target: '¿Preferís el té o el café?', base: 'Do you prefer tea or coffee?' },
+            { target: '¿Prefieres el té o el café?', base: 'Do you prefer tea or coffee?' },
           ],
         },
         takeaways: [
-          'You say what you prefer with prefiero and ask a friend ¿preferís…?',
+          'You say what you prefer with prefiero and ask a friend ¿prefieres…?',
           'You talk about going out with friends: salir con amigos.',
         ],
         exercises: [
@@ -690,15 +711,15 @@ export const ES_A1_U11: EsUnitDef = {
             { id: 'es.ex.bye1nnpbdf2xkn' },
           ),
           ex.fillBlank(
-            '¿Vos ___ el té o el café?',
+            '¿Tú ___ el té o el café?',
             'Do you prefer tea or coffee?',
-            'preferís',
+            'prefieres',
             ['prefiero', 'prefiere', 'quiero'],
             ['es-prefiero'],
             {
               id: 'es.ex.3i8pde1mt063ci',
               explanation:
-                'With vos: preferís, with no vowel change. Prefiero is for yo and prefiere for usted.',
+                'With tú: prefieres, with the same e → ie change as prefiero. Prefiero is for yo and prefiere for usted.',
             },
           ),
           ex.listenChoice(

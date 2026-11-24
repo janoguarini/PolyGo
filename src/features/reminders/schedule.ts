@@ -1,4 +1,7 @@
 import { daysLabel } from '@/features/learning/streak';
+import { getStrings } from '@/i18n';
+
+import { reminderStrings } from './strings';
 
 export interface ReminderPrefs {
   enabled: boolean;
@@ -16,12 +19,6 @@ export interface PlannedReminder {
   title: string;
   body: string;
 }
-
-const GENERIC = [
-  { title: 'Hora de practicar inglés', body: 'Una lección corta y sumás un día a tu racha.' },
-  { title: 'Tu camino te espera', body: 'Cinco minutos hoy hacen la diferencia.' },
-  { title: 'Volvé a Polygo', body: 'Repasá tus palabras antes de que se te olviden.' },
-];
 
 /** Cuántos días por delante se programan; se reprograma cada vez que abrís la app o practicás. */
 export const REMINDER_DAYS = 7;
@@ -60,12 +57,13 @@ export function planStreakAlert(input: { now: Date } & StreakState): PlannedRemi
   if (date.getTime() <= now.getTime()) return null;
   // Igual que en Inicio: un protector libre salva el día, salvo que ya esté cubriendo otros.
   const saved = streakFreezes > 0 && (activeToday || freezePending === 0);
+  const t = getStrings(reminderStrings);
   return {
     date,
-    title: `🔥 Quedan ${STREAK_ALERT_HOURS_BEFORE} horas para tu racha`,
+    title: t.streakAlertTitle(STREAK_ALERT_HOURS_BEFORE),
     body: saved
-      ? `Hacé una lección para sumar a tu racha de ${daysLabel(streakDays)}. Si no, se usa un protector.`
-      : `Hacé una lección antes de medianoche para no perder tu racha de ${daysLabel(streakDays)}.`,
+      ? t.streakAlertSaved(daysLabel(streakDays))
+      : t.streakAlertBody(daysLabel(streakDays)),
   };
 }
 
@@ -83,6 +81,7 @@ export function planReminders(
   const { now, prefs, activeToday, days = REMINDER_DAYS } = input;
   if (!prefs.enabled) return [];
   const riskDay = streakRiskDay({ ...input, streakFreezes: 0, freezePending: 0 });
+  const generic = getStrings(reminderStrings).generic;
   const plan: PlannedReminder[] = [];
   for (let k = 0; k < days; k++) {
     if (k === 0 && activeToday) continue;
@@ -95,7 +94,7 @@ export function planReminders(
     );
     if (date.getTime() <= now.getTime()) continue;
     if (k === riskDay && date.getTime() >= alertDate(now, k).getTime()) continue;
-    plan.push({ date, ...GENERIC[k % GENERIC.length]! });
+    plan.push({ date, ...generic[k % generic.length]! });
   }
   return plan;
 }

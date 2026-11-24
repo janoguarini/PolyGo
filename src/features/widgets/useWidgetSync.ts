@@ -4,6 +4,7 @@ import { AppState } from 'react-native';
 import { localDateString } from '@/features/learning/api';
 import { useMyWords, useWordOfTheDay, useWordPool } from '@/features/learning/hooks';
 import { usePlus } from '@/features/plus/api';
+import { useInterfaceLanguage } from '@/i18n';
 
 import { useWidgetContentPref } from './preferences';
 
@@ -22,6 +23,8 @@ export function useWidgetSync(): void {
   const plus = usePlus();
   const pref = useWidgetContentPref().data;
   const content = plus && pref ? pref : 'mixed';
+  // Los textos del widget viajan en sus props: al cambiar el idioma se vuelven a publicar.
+  const language = useInterfaceLanguage();
 
   useEffect(() => {
     if (!widgetsSupported) return;
@@ -45,5 +48,13 @@ export function useWidgetSync(): void {
     } catch {
       // Un widget que no se pudo actualizar nunca debe romper la app; queda el contenido anterior.
     }
-  }, [myWords.data, pool.data, wordOfDay.data, wordOfDay.isPending, foregroundAt, content]);
+  }, [
+    myWords.data,
+    pool.data,
+    wordOfDay.data,
+    wordOfDay.isPending,
+    foregroundAt,
+    content,
+    language,
+  ]);
 }

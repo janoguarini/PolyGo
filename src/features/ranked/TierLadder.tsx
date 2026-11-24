@@ -13,6 +13,9 @@ import {
   spacing,
   themedStyles,
 } from '@/design-system';
+import { useStrings } from '@/i18n';
+
+import { rankedStrings, useRankLabels } from './strings';
 
 /**
  * Todos los tiers en fila, con el actual resaltado: muestra a dónde se puede llegar.
@@ -20,6 +23,8 @@ import {
  */
 export function TierLadder({ current }: { current: TierId | null }) {
   const styles = useStyles();
+  const t = useStrings(rankedStrings);
+  const ranks = useRankLabels();
   const scrollRef = useRef<ScrollViewInstance>(null);
   const currentIndex = current ? TIERS.findIndex((t) => t.id === current) : -1;
 
@@ -30,7 +35,7 @@ export function TierLadder({ current }: { current: TierId | null }) {
         horizontal
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.row}
-        accessibilityLabel={`Rangos: ${TIERS.map((t) => t.name).join(', ')}`}
+        accessibilityLabel={t.ladderA11y(TIERS.map((tier) => ranks.tier(tier.id)).join(', '))}
       >
         {TIERS.map((tier, i) => {
           const active = i === currentIndex;
@@ -69,7 +74,7 @@ export function TierLadder({ current }: { current: TierId | null }) {
                       : { color: reached ? colors.text : colors.textMuted },
                   ]}
                 >
-                  {tier.name}
+                  {ranks.tier(tier.id)}
                 </Text>
                 <View style={[styles.underline, active && { backgroundColor: c.light }]} />
               </View>

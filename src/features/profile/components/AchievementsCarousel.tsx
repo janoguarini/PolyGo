@@ -10,9 +10,11 @@ import {
   spacing,
   themedStyles,
 } from '@/design-system';
+import { useStrings } from '@/i18n';
 
 import { featuredFamilies, familyProgress } from '../families';
 import { useMyAchievements } from '../hooks';
+import { achievementStrings } from '../strings';
 import { FamilyBadge } from './AchievementBadge';
 
 const SHOWN = 8;
@@ -21,15 +23,11 @@ const SHOWN = 8;
 export function AchievementsCarousel() {
   const styles = useStyles();
   const achievements = useMyAchievements();
+  const t = useStrings(achievementStrings);
 
   if (achievements.isError)
-    return (
-      <ErrorState
-        message="No pudimos cargar tus logros."
-        onRetry={() => void achievements.refetch()}
-      />
-    );
-  if (!achievements.data) return <Text variant="caption">Cargando logros…</Text>;
+    return <ErrorState message={t.loadError} onRetry={() => void achievements.refetch()} />;
+  if (!achievements.data) return <Text variant="caption">{t.loading}</Text>;
 
   const families = featuredFamilies(familyProgress(achievements.data), SHOWN);
 
@@ -43,18 +41,22 @@ export function AchievementsCarousel() {
         <Pressable
           key={family.metric}
           accessibilityRole="button"
-          accessibilityLabel={`${family.title}, nivel ${level} de ${maxLevel}. ${
-            next ? next.description : 'Completo.'
-          } Ver todos los logros.`}
+          accessibilityLabel={`${t.familyA11y(t.familyTitle(family), level, maxLevel)}. ${
+            next ? t.tierDescription(family, next) : t.complete
+          } ${t.seeAllA11y}`}
           onPress={() => router.push('/achievements')}
           style={({ pressed }) => [styles.card, pressed && styles.pressed]}
         >
           <FamilyBadge family={family} level={level} size={58} />
           <Text variant="bodyStrong" align="center" numberOfLines={1} color="textStrong">
-            {family.title}
+            {t.familyTitle(family)}
           </Text>
           <Text variant="caption" align="center" numberOfLines={2} style={styles.caption}>
-            {current ? current.description : (next?.description ?? '')}
+            {current
+              ? t.tierDescription(family, current)
+              : next
+                ? t.tierDescription(family, next)
+                : ''}
           </Text>
           {next ? (
             <View style={styles.bar}>

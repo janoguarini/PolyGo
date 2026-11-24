@@ -18,7 +18,9 @@ jest.mock('react-native-reanimated', () => {
     ...Animated,
     useSharedValue: (value: unknown) => ({ value }),
     useAnimatedStyle: (fn: () => object) => fn(),
+    useReducedMotion: () => true,
     withTiming: (value: unknown) => value,
+    withRepeat: (value: unknown) => value,
     withSpring: (value: unknown) => value,
     withDelay: (_: number, value: unknown) => value,
     FadeIn: animation(),
@@ -27,3 +29,10 @@ jest.mock('react-native-reanimated', () => {
     FadeOut: animation(),
   };
 });
+
+// expo-web-browser (inicio con Google) no tiene runtime nativo en Jest y al importarse carga todo
+// `expo`. Los tests que lo ejercitan (features/auth) definen su propio comportamiento.
+jest.mock('expo-web-browser', () => ({
+  openAuthSessionAsync: jest.fn(),
+  maybeCompleteAuthSession: jest.fn(),
+}));

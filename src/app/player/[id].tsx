@@ -24,8 +24,11 @@ import { ProfileHeader } from '@/features/profile/components/ProfileHeader';
 import { ReportPhotoButton } from '@/features/profile/components/ReportPhotoButton';
 import { familyLevels } from '@/features/profile/families';
 import { usePublicProfile } from '@/features/profile/hooks';
+import { achievementStrings } from '@/features/profile/strings';
+import { useLocale, useStrings } from '@/i18n';
+import { playerStrings } from '@/i18n/screens/player';
 
-const joinedFormat = new Intl.DateTimeFormat('es', { month: 'long', year: 'numeric' });
+const JOINED_OPTIONS: Intl.DateTimeFormatOptions = { month: 'long', year: 'numeric' };
 
 /**
  * Perfil de otro jugador, con el mismo formato que el propio: encabezado con avatar, nombre y rango
@@ -34,6 +37,9 @@ const joinedFormat = new Intl.DateTimeFormat('es', { month: 'long', year: 'numer
  */
 export default function PlayerScreen() {
   useTheme();
+  const t = useStrings(playerStrings);
+  const a = useStrings(achievementStrings);
+  const locale = useLocale();
   const { id } = useLocalSearchParams<{ id: string }>();
   const player = usePublicProfile(id);
   const { session } = useAuth();
@@ -46,11 +52,11 @@ export default function PlayerScreen() {
   if (!player.data)
     return (
       <Screen>
-        <ScreenHeader title="Jugador" onBack={back} />
+        <ScreenHeader title={t.player} onBack={back} />
         <EmptyState
           icon={<UserX color={colors.textMuted} size={36} />}
-          title="Jugador no encontrado"
-          message="Puede que haya borrado su cuenta."
+          title={t.notFound}
+          message={t.notFoundMessage}
         />
       </Screen>
     );
@@ -59,12 +65,12 @@ export default function PlayerScreen() {
   if (blockedIds.has(p.id)) {
     return (
       <Screen>
-        <ScreenHeader title="Jugador" onBack={back} />
+        <ScreenHeader title={t.player} onBack={back} />
         <EmptyState
           icon={<Ban color={colors.textMuted} size={36} />}
-          title={`Bloqueaste a @${p.username}`}
-          message="No se cruzan en ranked, no puede entrar a tus desafíos y no ves su perfil."
-          actionLabel={unblock.isPending ? 'Desbloqueando…' : 'Desbloquear'}
+          title={t.blockedTitle(p.username)}
+          message={t.blockedMessage}
+          actionLabel={unblock.isPending ? t.unblocking : t.unblock}
           onAction={() => unblock.mutate(p.id)}
         />
       </Screen>
@@ -77,7 +83,7 @@ export default function PlayerScreen() {
 
   return (
     <Screen onRefresh={() => void player.refetch()} refreshing={player.isRefetching}>
-      <ScreenHeader title="Perfil" onBack={back} />
+      <ScreenHeader title={t.profile} onBack={back} />
 
       <ProfileHeader
         profile={p}
@@ -88,7 +94,10 @@ export default function PlayerScreen() {
 
       <View style={styles.meta}>
         <Text variant="caption" align="center">
-          {p.public_code} · Desde {joinedFormat.format(new Date(p.created_at))}
+          {t.since(
+            p.public_code,
+            new Intl.DateTimeFormat(locale, JOINED_OPTIONS).format(new Date(p.created_at)),
+          )}
         </Text>
         {isOther ? (
           <View style={styles.actions}>
@@ -110,59 +119,59 @@ export default function PlayerScreen() {
         <Card style={styles.private}>
           <Lock color={colors.textMuted} size={20} />
           <Text color="textMuted" style={styles.flex}>
-            Este perfil es privado: sólo se muestran el nombre, el avatar y el rango.
+            {t.private}
           </Text>
         </Card>
       ) : (
         <>
           {stats ? (
             <>
-              <SectionHeader title="Competitivo" />
+              <SectionHeader title={t.competitive} />
               <View style={styles.grid}>
-                <StatTile label="Partidas" value={String(games)} />
+                <StatTile label={t.games} value={String(games)} />
                 <StatTile
-                  label="Victorias"
+                  label={t.wins}
                   value={games > 0 ? `${Math.round((stats.wins / games) * 100)}%` : '—'}
-                  hint={`${stats.wins}V · ${stats.losses}D · ${stats.draws}E`}
+                  hint={t.record(stats.wins, stats.losses, stats.draws)}
                 />
                 <StatTile
-                  label="Mejor racha"
+                  label={t.bestStreak}
                   value={String(stats.best_win_streak)}
-                  hint="victorias"
+                  hint={t.winsHint}
                 />
-                <StatTile label="ELO máximo" value={String(stats.peak_rating)} />
+                <StatTile label={t.peakElo} value={String(stats.peak_rating)} />
               </View>
             </>
           ) : null}
 
           {p.learning ? (
             <>
-              <SectionHeader title="Aprendizaje" />
+              <SectionHeader title={t.learning} />
               <View style={styles.grid}>
                 <StatTile
-                  label="Estrellas"
+                  label={t.stars}
                   value={String(p.learning.stars_earned ?? 0)}
                   icon={<Star color={colors.gold} fill={colors.gold} size={18} />}
-                  hint={`${p.learning.golden_lessons ?? 0} doradas`}
+                  hint={t.golden(p.learning.golden_lessons ?? 0)}
                 />
-                <StatTile label="Lecciones" value={String(p.learning.lessons_completed)} />
+                <StatTile label={t.lessons} value={String(p.learning.lessons_completed)} />
                 {typeof p.learning.concepts_mastered === 'number' ? (
                   <StatTile
-                    label="Dominadas"
+                    label={t.mastered}
                     value={String(p.learning.concepts_mastered)}
-                    hint="según su evidencia"
+                    hint={t.masteredHint}
                   />
                 ) : null}
                 <StatTile
-                  label="Racha récord"
-                  value={`${p.learning.best_streak_days} d`}
-                  hint="días de estudio"
+                  label={t.recordStreak}
+                  value={t.days(p.learning.best_streak_days)}
+                  hint={t.studyDays}
                 />
               </View>
             </>
           ) : null}
 
-          <SectionHeader title={`Logros · ${families.reduce((n, f) => n + f.level, 0)} niveles`} />
+          <SectionHeader title={t.achievements(families.reduce((n, f) => n + f.level, 0))} />
           <Card style={styles.gap}>
             {families.length > 0 ? (
               <View style={styles.icons}>
@@ -171,17 +180,17 @@ export default function PlayerScreen() {
                     key={family.metric}
                     style={styles.badge}
                     accessible
-                    accessibilityLabel={`${family.title}, nivel ${level} de ${maxLevel}`}
+                    accessibilityLabel={a.familyA11y(a.familyTitle(family), level, maxLevel)}
                   >
                     <FamilyBadge family={family} level={level} size={52} />
                     <Text variant="caption" align="center" numberOfLines={2}>
-                      {family.title}
+                      {a.familyTitle(family)}
                     </Text>
                   </View>
                 ))}
               </View>
             ) : (
-              <Text color="textMuted">Todavía no desbloqueó logros.</Text>
+              <Text color="textMuted">{t.noAchievements}</Text>
             )}
           </Card>
         </>

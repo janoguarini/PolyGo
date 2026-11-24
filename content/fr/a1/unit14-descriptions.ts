@@ -437,7 +437,7 @@ export const FR_A1_U14: FrUnitDef = {
         objective: 'Describir el carácter de una persona.',
         intro: {
           explanation:
-            'Para el carácter: sympa (simpático, igual en femenino), gentil (¡falso amigo!: amable), drôle (gracioso, divertido), timide, sérieux y sportif. En femenino: gentille, sérieuse, sportive. En gentil la l final no suena; en gentille sí se oye. En sportive, la f del masculino se vuelve v. Pero (para contrastar) es mais.',
+            'Para el carácter: sympa (simpático, igual en femenino), gentil (¡falso amigo!: amable), drôle (gracioso, divertido), timide, sérieux y sportif. En femenino: gentille, sérieuse, sportive. En gentil la l final no suena; en gentille, -ille suena como una y (gentiy). En sportive, la f del masculino se vuelve v. Pero (para contrastar) es mais.',
           examples: [
             { target: 'Hugo est très drôle.', base: 'Hugo es muy gracioso.' },
             { target: 'Elle est gentille et un peu timide.', base: 'Es amable y un poco tímida.' },
@@ -489,7 +489,7 @@ export const FR_A1_U14: FrUnitDef = {
             ['fr-gentil'],
             {
               id: 'fr.ex.gm09tkbvutd5jb',
-              explanation: 'Léa es mujer: gentille, con la l que ahora sí se oye.',
+              explanation: 'Léa es mujer: gentille, que termina con un sonido de y (gentiy).',
             },
           ),
           ex.fillBlank(

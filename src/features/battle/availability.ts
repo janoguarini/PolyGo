@@ -14,4 +14,4 @@ export const rankedAvailability = rankedBackend;
 
 export const rankedDisabled = rankedAvailability === 'disabled';
 
-export const RANKED_UNAVAILABLE_TITLE = 'Ranked no está disponible en esta versión';
+// El título del aviso (antes RANKED_UNAVAILABLE_TITLE) está en strings.ts: rankedUnavailableTitle.

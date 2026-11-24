@@ -4,10 +4,13 @@ import { dialogue, ES_A1_RATE, ex, question, reading, w } from '../helpers';
 /**
  * Español A1 U4 «Family» (docs/ES_A1_A2.md): la familia, los artículos el / la / los / las y el
  * masculino plural que incluye a todos (los padres = padre y madre, los hermanos, los hijos; falso
- * amigo: parents ≠ parientes), los posesivos mi / mis, tu / tus (también con vos) y su / sus (de él, de
- * ella, de usted), se llama y papá / mamá frente a padre / madre.
- * Pronunciación: la rr fuerte (perro / pero) y el yeísmo rehilado rioplatense (ella, se llama, yo).
- * Cultura: el domingo en familia y los abuelos italianos de muchas familias argentinas.
+ * amigo: parents ≠ parientes), los posesivos mi / mis, tu / tus (de tú, sin tilde) y su / sus (de él,
+ * de ella, de usted), se llama y papá / mamá frente a padre / madre. Variante: español neutro de
+ * Latinoamérica (tú, usted, ustedes).
+ * Pronunciación: la rr fuerte (perro / pero) y el yeísmo: ll e y como la y inglesa de yes (ella, se
+ * llama, yo).
+ * Cultura: el domingo en familia en gran parte de Latinoamérica; los abuelos italianos o españoles de
+ * muchas familias de la Argentina y el Uruguay.
  *
  * ESTADO EDITORIAL: borrador, sin revisión de hablantes nativos. Se carga sin publicar.
  */
@@ -20,7 +23,7 @@ const FOTO = dialogue(
     ['Sofía', 'Sí, se llama Camila. Tiene doce años.'],
     ['Martín', '¿Y él es tu papá?'],
     ['Sofía', 'No, es mi abuelo. Se llama Juan.'],
-    ['Martín', '¿Tenés perro?'],
+    ['Martín', '¿Tienes perro?'],
     ['Sofía', 'No, pero tengo dos gatos.'],
   ],
   ES_A1_RATE,
@@ -55,6 +58,7 @@ export const ES_A1_U04: EsUnitDef = {
     'Toto',
     'Pancho',
     'Rosario',
+    'Lima',
     'Córdoba',
     'Mendoza',
   ],
@@ -71,7 +75,7 @@ export const ES_A1_U04: EsUnitDef = {
     grammar: {
       title: 'el / la / los / las · mi, tu, su',
       explanation:
-        'Every noun has a gender: el padre, el hermano (masculine); la madre, la hermana (feminine). In the plural: los and las. A mixed group uses the masculine plural: los padres (father and mother), los hermanos (brothers and sisters, siblings), los hijos (children). Careful: parents is padres; parientes means relatives. Possessives: mi / mis (my), tu / tus (your, for someone you call vos — no accent: tú with an accent is the pronoun used in other countries), su / sus (his, her, their, and your for usted). Add -s when the noun is plural: mis padres, tus hermanos, sus hijos. Papá and mamá (stress on the last syllable) are the everyday words; padre and madre sound more formal. To say someone’s name: se llama (se llaman in the plural).',
+        'Every noun has a gender: el padre, el hermano (masculine); la madre, la hermana (feminine). In the plural: los and las. A mixed group uses the masculine plural: los padres (father and mother), los hermanos (brothers and sisters, siblings), los hijos (children). Careful: parents is padres; parientes means relatives. Possessives: mi / mis (my), tu / tus (your, for someone you call tú — no accent: tu hermana is your sister, while tú with an accent is the pronoun you), su / sus (his, her, their, and your for usted). Add -s when the noun is plural: mis padres, tus hermanos, sus hijos. Papá and mamá (stress on the last syllable) are the everyday words; padre and madre sound more formal. To say someone’s name: se llama (se llaman in the plural).',
       examples: [
         { target: 'Mis padres son de Córdoba.', base: 'My parents are from Córdoba.' },
         {
@@ -84,15 +88,15 @@ export const ES_A1_U04: EsUnitDef = {
     review: {
       status: 'draft',
       notes:
-        'A1 nuevo (U4). Sin revisión nativa: revisar «¿Tenés perro?» sin artículo (habitual en la Argentina), «esposo / esposa» frente a «marido / mujer» (también muy usados), el comentario sobre los abuelos italianos y el asado del domingo, y la explicación de papá / mamá como formas cotidianas frente a padre / madre.',
+        'A1 nuevo (U4), convertido al español neutro con tú (¿tienes hermanos?, tu / tus). Sin revisión nativa: revisar «¿Tienes perro?» sin artículo (habitual en el habla), «esposo / esposa» frente a «marido / mujer» (también muy usados), las notas culturales (domingo en familia, abuelos italianos o españoles en la Argentina y el Uruguay, asado) y la explicación de papá / mamá como formas cotidianas frente a padre / madre.',
     },
     words: [
       w(
         'es-la-familia',
         'la familia',
         'the family',
-        'Mi familia es de Rosario.',
-        'My family is from Rosario.',
+        'Mi familia es de Lima.',
+        'My family is from Lima.',
         ['family'],
         { acceptedTranslations: ['family'], emoji: '👨‍👩‍👧' },
       ),
@@ -273,8 +277,8 @@ export const ES_A1_U04: EsUnitDef = {
           explanation:
             'El goes with masculine nouns (el padre) and la with feminine ones (la madre, la familia). In the plural: los and las. A mixed group uses the masculine: los padres means father and mother together. Careful: parents is padres; parientes means relatives. Mi is my, and mis goes before a plural: mis padres. To say whose: el padre de Lucía (Lucía’s father).',
           examples: [
-            { target: 'Mi familia es de Rosario.', base: 'My family is from Rosario.' },
-            { target: 'Mis padres son argentinos.', base: 'My parents are Argentine.' },
+            { target: 'Mi familia es de Lima.', base: 'My family is from Lima.' },
+            { target: 'Mis padres son mexicanos.', base: 'My parents are Mexican.' },
           ],
         },
         takeaways: [
@@ -352,8 +356,8 @@ export const ES_A1_U04: EsUnitDef = {
             },
           ),
           ex.orderWords(
-            'Mi familia es de Rosario.',
-            'My family is from Rosario.',
+            'Mi familia es de Lima.',
+            'My family is from Lima.',
             ['es-mi', 'es-la-familia'],
             { id: 'es.ex.drrlke3u11olr2' },
           ),
@@ -378,11 +382,11 @@ export const ES_A1_U04: EsUnitDef = {
         objective: 'Talk about your mom, dad, brothers and sisters, and ask about a friend’s.',
         intro: {
           explanation:
-            'Papá and mamá are what people say every day; padre and madre sound more formal. Both have the stress on the last syllable, marked with the accent. Los hermanos means brothers, or brothers and sisters together. Tu is your for someone you call vos (tus before a plural). And se llama tells you someone’s name: mi mamá se llama Ana.',
+            'Papá and mamá are what people say every day; padre and madre sound more formal. Both have the stress on the last syllable, marked with the accent. Los hermanos means brothers, or brothers and sisters together. Tu is your for someone you call tú (tus before a plural) — with no accent: tu hermana (your sister), but ¿y tú? (and you?). And se llama tells you someone’s name: mi mamá se llama Ana.',
           examples: [
             { target: 'Mi mamá se llama Ana.', base: 'My mom’s name is Ana.' },
             {
-              target: '¿Vos tenés hermanos? — Sí, tengo una hermana.',
+              target: '¿Tienes hermanos? — Sí, tengo una hermana.',
               base: 'Do you have any siblings? — Yes, I have a sister.',
             },
           ],
@@ -442,16 +446,16 @@ export const ES_A1_U04: EsUnitDef = {
             'Mi mamá ___ Ana.',
             'My mom’s name is Ana.',
             'se llama',
-            ['me llamo', 'te llamás', 'tiene'],
+            ['me llamo', 'te llamas', 'tiene'],
             ['es-la-mama', 'es-se-llama'],
             {
               id: 'es.ex.fxhxgc1i8orly3',
               explanation:
-                'For another person (él, ella): se llama. Me llamo is for yourself and te llamás for vos.',
+                'For another person (él, ella): se llama. Me llamo is for yourself and te llamas for tú.',
             },
           ),
           ex.fillBlank(
-            '¿Vos tenés ___? — Sí, un hermano y una hermana.',
+            '¿Tienes ___? — Sí, un hermano y una hermana.',
             'Do you have siblings? — Yes, a brother and a sister.',
             'hermanos',
             ['hermanas', 'hermano', 'padres'],
@@ -494,7 +498,7 @@ export const ES_A1_U04: EsUnitDef = {
         objective: 'Talk about grandparents, children and partners, and use su / sus.',
         intro: {
           explanation:
-            'Su means his, her or their, and also your when you speak to someone as usted: su hijo can be his son, her son or your son. Sus goes before a plural: sus hijos. Los hijos means children (sons and daughters); los abuelos, grandparents. Many Argentine families have Italian or Spanish grandparents.',
+            'Su means his, her or their, and also your when you speak to someone as usted: su hijo can be his son, her son or your son. Sus goes before a plural: sus hijos. Los hijos means children (sons and daughters); los abuelos, grandparents. In Argentina and Uruguay many families have Italian or Spanish grandparents.',
           examples: [
             { target: 'Mi abuelo es italiano.', base: 'My grandfather is Italian.' },
             { target: 'Diego tiene una hija y un hijo.', base: 'Diego has a daughter and a son.' },
@@ -567,7 +571,7 @@ export const ES_A1_U04: EsUnitDef = {
             {
               id: 'es.ex.cx9alzyifzet9p',
               explanation:
-                'With usted (señora), your is su, and before a plural it is sus: sus hijos. Tus is for vos.',
+                'With usted (señora), your is su, and before a plural it is sus: sus hijos. Tus is for tú.',
             },
           ),
           ex.orderWords(
@@ -599,7 +603,7 @@ export const ES_A1_U04: EsUnitDef = {
         objective: 'Talk about pets and pronounce rr and ll.',
         intro: {
           explanation:
-            'Perro (dog) has a strong, trilled rr; pero (but) has a single quick tap, like the tt in American butter: two different words. In Buenos Aires ll and y sound the same, like the sh in shoe or the s in measure: ella, se llama, yo. In Argentina people often ask ¿tenés perro? without un.',
+            'Perro (dog) has a strong, trilled rr; pero (but) has a single quick tap, like the tt in American butter: two different words. In Latin America ll and y sound the same, like the y in yes: ella, se llama, yo. People often ask ¿tienes perro? without un.',
           examples: [
             { target: 'Tengo un perro y dos gatos.', base: 'I have a dog and two cats.' },
             { target: 'Mi perro se llama Toto.', base: 'My dog’s name is Toto.' },
@@ -607,7 +611,7 @@ export const ES_A1_U04: EsUnitDef = {
         },
         takeaways: [
           'You say el perro and el gato, and los gatos in the plural.',
-          'You trill the rr in perro and say ll like the sh in shoe.',
+          'You trill the rr in perro and say ll like the y in yes.',
         ],
         exercises: [
           ex.imageChoice('🐶', 'el perro', ['el gato', 'el hijo', 'el abuelo'], ['es-el-perro'], {
@@ -674,7 +678,7 @@ export const ES_A1_U04: EsUnitDef = {
             { id: 'es.ex.c7o25qpif0oscj' },
           ),
           ex.shortAnswer(
-            '¿Tenés perro?',
+            '¿Tienes perro?',
             'Say no, but that you have a cat (e.g. «No, pero tengo un gato»).',
             'No, pero tengo un gato.',
             ['No, pero tengo un gato', 'No. Pero tengo un gato.', 'No, tengo un gato.'],
@@ -690,7 +694,7 @@ export const ES_A1_U04: EsUnitDef = {
         objective: 'Understand a family post and a conversation, and describe your family.',
         intro: {
           explanation:
-            'In Argentina Sunday is often a family day: many families meet at the grandparents’ house for an asado (barbecue). When you introduce several people, use the plural: mis padres, mis hijos, se llaman.',
+            'In much of Latin America Sunday is a family day: many families meet at the grandparents’ house for a long lunch (in Argentina and Uruguay, often an asado, a barbecue). When you introduce several people, use the plural: mis padres, mis hijos, se llaman.',
           examples: [
             { target: 'Mis padres viven en Córdoba.', base: 'My parents live in Córdoba.' },
             {

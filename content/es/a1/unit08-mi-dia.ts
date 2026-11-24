@@ -2,13 +2,15 @@ import type { EsUnitDef } from '../../es-course';
 import { dialogue, ES_A1_RATE, ex, question, reading, w } from '../helpers';
 
 /**
- * Español A1 U8 «My day» (docs/ES_A1_A2.md): contar la rutina de todos los días con el presente de
- * los verbos regulares en -ar, -er, -ir en todas las personas (yo trabajo, vos trabajás, ella trabaja,
- * nosotros trabajamos, ustedes / ellos trabajan; en la Argentina no hay vosotros), los reflexivos más
- * frecuentes (me levanto, me acuesto, me ducho), las partes del día (a la mañana, a la tarde, a la
- * noche), las comidas, el orden (primero, después) y la frecuencia (siempre, a veces, todos los días).
- * Pronunciación: el acento del voseo en la última sílaba (trabajás, comés, vivís) lo distingue de yo y
- * de él (trabajo, trabaja). Cultura: en la Argentina se cena tarde.
+ * Español A1 U8 «My day» (docs/ES_A1_A2.md), en español neutro de Latinoamérica (tú y ustedes): contar
+ * la rutina de todos los días con el presente de los verbos regulares en -ar, -er, -ir en todas las
+ * personas (yo trabajo, tú trabajas, él / ella / usted trabaja, nosotros trabajamos, ustedes / ellos
+ * trabajan; como, comes…; vivo, vives…), ustedes como único plural (vosotros sólo se menciona en inglés,
+ * para España), los reflexivos más frecuentes (me levanto / te levantas / se levanta; me acuesto / te
+ * acuestas, o → ue), las partes del día (por la mañana, por la tarde, por la noche; se acepta «a la…»),
+ * las comidas, el orden (primero, después) y la frecuencia (siempre, a veces, todos los días).
+ * Pronunciación: la terminación distingue a las personas (trabajo / trabajas / trabaja).
+ * Cultura: los horarios de las comidas cambian según el país (en España y en la Argentina se cena tarde).
  *
  * ESTADO EDITORIAL: borrador, sin revisión de hablantes nativos. Se carga sin publicar.
  */
@@ -17,10 +19,10 @@ const MANANA = dialogue(
   'es.stim.a1-u8-manana',
   'Two friends talk about when they work.',
   [
-    ['Martín', '¿Vos trabajás a la mañana?'],
-    ['Sofía', 'Sí, siempre trabajo a la mañana. ¿Y vos?'],
-    ['Martín', 'Yo trabajo a la tarde. A la mañana miro series.'],
-    ['Sofía', '¡Qué bien! ¿Y a la noche?'],
+    ['Martín', '¿Trabajas por la mañana?'],
+    ['Sofía', 'Sí, siempre trabajo por la mañana. ¿Y tú?'],
+    ['Martín', 'Yo trabajo por la tarde. Por la mañana miro series.'],
+    ['Sofía', '¡Qué bien! ¿Y por la noche?'],
     ['Martín', 'A veces ceno con mis padres.'],
   ],
   ES_A1_RATE,
@@ -32,9 +34,9 @@ const MI_DIA = reading(
   'Valentina writes a short post about her day.',
   [
     'Todos los días me levanto temprano.',
-    'Primero tomo mate, después trabajo en casa.',
+    'Primero tomo café, después trabajo en casa.',
     'El almuerzo es con mi hermana.',
-    'A la tarde escucho música.',
+    'Por la tarde escucho música.',
     'La cena es muy tarde y después me acuesto.',
   ],
   { title: 'Mi día', from: 'Valentina' },
@@ -48,11 +50,10 @@ export const ES_A1_U08: EsUnitDef = {
     'Valentina',
     'Diego',
     'Camila',
-    'Palermo',
-    'Córdoba',
-    'Rosario',
-    'Mendoza',
-    'Buenos Aires',
+    'Bogotá',
+    'Lima',
+    'Guadalajara',
+    'Monterrey',
   ],
   support: [
     'tele',
@@ -62,11 +63,11 @@ export const ES_A1_U08: EsUnitDef = {
     'radio',
     'temprano',
     'ducho',
-    'levantás',
-    'acostás',
-    'trabajás',
-    'mirás',
-    'escuchás',
+    'levantas',
+    'acuestas',
+    'trabajas',
+    'miras',
+    'escuchas',
     'trabajamos',
     'trabajan',
     'escuchamos',
@@ -78,7 +79,7 @@ export const ES_A1_U08: EsUnitDef = {
     'hablan',
     'hablamos',
     'ceno',
-    'hacés',
+    'haces',
   ],
   unit: {
     position: 8,
@@ -92,15 +93,15 @@ export const ES_A1_U08: EsUnitDef = {
     grammar: {
       title: 'Present tense: -ar, -er, -ir · me levanto',
       explanation:
-        'Regular verbs change their ending for each person. -ar (trabajar): trabajo, trabajás, trabaja, trabajamos, trabajan. -er (comer): como, comés, come, comemos, comen. -ir (vivir): vivo, vivís, vive, vivimos, viven. Vos stresses the last syllable and carries an accent (trabajás, comés, vivís): that stress is what tells it apart from yo trabajo and ella trabaja. Usted, él and ella share a form (trabaja), and so do ustedes and ellos (trabajan). In Argentina ustedes is the plural of both vos and usted; in Spain you will also hear vosotros, which is not used here. Some verbs come with me, te, se (reflexive): me levanto (I get up), te levantás, se levanta; me acuesto (I go to bed), te acostás, se acuesta. Spanish often drops the subject pronoun, because the ending already says who it is: trabajo = I work.',
+        'Regular verbs change their ending for each person: yo, tú, él / ella / usted, nosotros, ustedes / ellos. -ar (trabajar): trabajo, trabajas, trabaja, trabajamos, trabajan. -er (comer): como, comes, come, comemos, comen. -ir (vivir): vivo, vives, vive, vivimos, viven. The tú form ends in -s (trabajas, comes, vives). Usted, él and ella share a form (trabaja), and so do ustedes and ellos (trabajan). In Latin America ustedes is the plural of both tú and usted; in Spain friends say vosotros, which you only need to recognise. Some verbs come with me, te, se (reflexive): me levanto (I get up), te levantas, se levanta; me acuesto (I go to bed), te acuestas, se acuesta. Acostarse changes o to ue in these forms: acuesto, acuestas, acuesta. Spanish often drops the subject pronoun, because the ending already says who it is: trabajo = I work.',
       examples: [
         {
-          target: 'Yo trabajo, vos trabajás y ella trabaja.',
+          target: 'Yo trabajo, tú trabajas y ella trabaja.',
           base: 'I work, you work and she works.',
         },
         {
-          target: 'Nosotros vivimos en Rosario y ellos viven en Córdoba.',
-          base: 'We live in Rosario and they live in Córdoba.',
+          target: 'Nosotros vivimos en Guadalajara y ellos viven en Lima.',
+          base: 'We live in Guadalajara and they live in Lima.',
         },
         {
           target: 'Primero me levanto, después me ducho.',
@@ -111,15 +112,15 @@ export const ES_A1_U08: EsUnitDef = {
     review: {
       status: 'draft',
       notes:
-        'A1 nuevo (U8). Sin revisión nativa. Revisar: «a la mañana / a la tarde / a la noche» como forma rioplatense habitual (se acepta «por la…» en las respuestas); «tarde» también como adverbio (me acuesto tarde) sin enseñarlo como palabra; «desayuno» y «almuerzo» usados también como verbos (yo desayuno) a partir de los sustantivos; «miro la tele» como lo más natural en la Argentina; «café con leche» en el desayuno.',
+        'A1 nuevo (U8). Convertido al español neutro de Latinoamérica (tú y ustedes) el 2026-11-21. Sin revisión nativa. Revisar: «por la mañana / por la tarde / por la noche» como forma general (se acepta «a la…» en las respuestas); «el almuerzo» para lunch (en México se dice más «la comida»; se menciona); «tarde» también como adverbio (me acuesto tarde) sin enseñarlo como palabra; «desayuno» y «almuerzo» usados también como verbos (yo desayuno) a partir de los sustantivos; «miro la tele» («veo la tele» también es muy común y se acepta en las respuestas); «café con leche» en el desayuno; las ciudades (Bogotá, Lima, Guadalajara, Monterrey) reemplazan a las argentinas.',
     },
     words: [
       w(
         'es-la-manana',
         'la mañana',
         'the morning',
-        'Tomo mate a la mañana.',
-        'I drink mate in the morning.',
+        'Tomo café por la mañana.',
+        'I drink café in the morning.',
         ['time'],
         { emoji: '🌅' },
       ),
@@ -127,7 +128,7 @@ export const ES_A1_U08: EsUnitDef = {
         'es-la-tarde',
         'la tarde',
         'the afternoon',
-        'A la tarde trabajo en casa.',
+        'Por la tarde trabajo en casa.',
         'In the afternoon I work at home.',
         ['time'],
       ),
@@ -135,7 +136,7 @@ export const ES_A1_U08: EsUnitDef = {
         'es-la-noche',
         'la noche',
         'the night',
-        'A la noche miro la tele.',
+        'Por la noche miro la tele.',
         'In the evening I watch TV.',
         ['time'],
         { acceptedTranslations: ['the evening'], emoji: '🌙' },
@@ -157,7 +158,7 @@ export const ES_A1_U08: EsUnitDef = {
         ['verbs', 'reflexive'],
         { emoji: '🛏️' },
       ),
-      w('es-trabajo', 'trabajo', 'I work', 'Trabajo en Palermo.', 'I work in Palermo.', ['verbs']),
+      w('es-trabajo', 'trabajo', 'I work', 'Trabajo en Bogotá.', 'I work in Bogotá.', ['verbs']),
       w(
         'es-miro',
         'miro',
@@ -180,8 +181,8 @@ export const ES_A1_U08: EsUnitDef = {
         'es-nosotros',
         'nosotros',
         'we',
-        'Nosotros vivimos en Córdoba.',
-        'We live in Córdoba.',
+        'Nosotros vivimos en Lima.',
+        'We live in Lima.',
         ['pronouns'],
         { acceptedTexts: ['nosotras'] },
       ),
@@ -192,8 +193,8 @@ export const ES_A1_U08: EsUnitDef = {
         'es-ustedes',
         'ustedes',
         'you all',
-        '¿Ustedes viven en Rosario?',
-        'Do you all live in Rosario?',
+        '¿Ustedes viven en Guadalajara?',
+        'Do you all live in Guadalajara?',
         ['pronouns'],
         { acceptedTranslations: ['you (plural)'] },
       ),
@@ -201,8 +202,8 @@ export const ES_A1_U08: EsUnitDef = {
         'es-primero',
         'primero',
         'first',
-        'Primero me levanto, después tomo mate.',
-        'First I get up, then I drink mate.',
+        'Primero me levanto, después tomo café.',
+        'First I get up, then I drink café.',
         ['sequence'],
       ),
       w(
@@ -218,15 +219,15 @@ export const ES_A1_U08: EsUnitDef = {
         'es-todos-los-dias',
         'todos los días',
         'every day',
-        'Tomo mate todos los días.',
-        'I drink mate every day.',
+        'Tomo café todos los días.',
+        'I drink café every day.',
         ['frequency'],
       ),
       w(
         'es-el-desayuno',
         'el desayuno',
         'breakfast',
-        'El desayuno es café con leche y medialunas.',
+        'El desayuno es café con leche y croissants.',
         'Breakfast is coffee with milk and croissants.',
         ['meals'],
         { acceptedTranslations: ['the breakfast'], emoji: '☕' },
@@ -244,8 +245,8 @@ export const ES_A1_U08: EsUnitDef = {
         'es-la-cena',
         'la cena',
         'dinner',
-        'En la Argentina la cena es muy tarde.',
-        'In Argentina dinner is very late.',
+        'En mi casa la cena es muy tarde.',
+        'At home, dinner is very late.',
         ['meals', 'culture'],
         { acceptedTranslations: ['the dinner', 'supper'], emoji: '🍽️' },
       ),
@@ -273,14 +274,14 @@ export const ES_A1_U08: EsUnitDef = {
         objective: 'Talk about the parts of the day and the meals.',
         intro: {
           explanation:
-            'La mañana is the morning, la tarde the afternoon and la noche the evening or night. To say “in the morning”, people in Argentina usually say a la mañana (a la tarde, a la noche); you will also hear por la mañana. The meals: el desayuno (breakfast), el almuerzo (lunch) and la cena (dinner). Dinner in Argentina is late, often after nine in the evening. Careful: la mañana is the morning, but mañana on its own means tomorrow. The ñ sounds like the ny in canyon.',
+            'La mañana is the morning, la tarde the afternoon and la noche the evening or night. To say “in the morning”, say por la mañana (por la tarde, por la noche); in Argentina and Uruguay you will also hear a la mañana. The meals: el desayuno (breakfast), el almuerzo (lunch; in Mexico people usually call the midday meal la comida) and la cena (dinner). Meal times change from country to country: in Spain and Argentina dinner is late, often after nine in the evening. Careful: la mañana is the morning, but mañana on its own means tomorrow. The ñ sounds like the ny in canyon.',
           examples: [
-            { target: 'Tomo mate a la mañana.', base: 'I drink mate in the morning.' },
-            { target: 'La cena es a la noche.', base: 'Dinner is in the evening.' },
+            { target: 'Tomo café por la mañana.', base: 'I drink coffee in the morning.' },
+            { target: 'La cena es por la noche.', base: 'Dinner is in the evening.' },
           ],
         },
         takeaways: [
-          'You say when you do something with a la mañana, a la tarde and a la noche.',
+          'You say when you do something with por la mañana, por la tarde and por la noche.',
           'You name the meals: el desayuno, el almuerzo and la cena.',
         ],
         exercises: [
@@ -302,8 +303,8 @@ export const ES_A1_U08: EsUnitDef = {
             { id: 'es.ex.lewy135ttyy819' },
           ),
           ex.listenChoice(
-            'Tomo mate a la mañana.',
-            ['Tomo mate a la tarde.', 'Tomo mate a la noche.', 'Tomo café a la mañana.'],
+            'Tomo café por la mañana.',
+            ['Tomo café por la tarde.', 'Tomo café por la noche.', 'Tomo té por la mañana.'],
             ['es-la-manana', 'es-la-tarde', 'es-la-noche'],
             { id: 'es.ex.gg7inmmbfoli73' },
           ),
@@ -315,7 +316,7 @@ export const ES_A1_U08: EsUnitDef = {
             { id: 'es.ex.6e80bxtbac2tsw' },
           ),
           ex.fillBlank(
-            'El ___ es a la mañana.',
+            'El ___ es por la mañana.',
             'Breakfast is in the morning.',
             'desayuno',
             ['almuerzo', 'vino', 'pan'],
@@ -335,7 +336,7 @@ export const ES_A1_U08: EsUnitDef = {
             { id: 'es.ex.907fjok9ucac04' },
           ),
           ex.fillBlank(
-            'La ___ es a la noche.',
+            'La ___ es por la noche.',
             'Dinner is in the evening.',
             'cena',
             ['mañana', 'tarde', 'leche'],
@@ -344,7 +345,7 @@ export const ES_A1_U08: EsUnitDef = {
               id: 'es.ex.f953gkjyg5j18v',
               skill: 'vocabulary',
               explanation:
-                'La cena is dinner. In Argentina it is late: many people have dinner after nine.',
+                'La cena is dinner. In Spain and Argentina it is late: many people have dinner after nine.',
             },
           ),
           ex.listenChoice(
@@ -354,26 +355,28 @@ export const ES_A1_U08: EsUnitDef = {
             { id: 'es.ex.fokl5l8ty9xjbz' },
           ),
           ex.translateWrite(
-            'Sometimes I drink mate in the afternoon.',
-            'A veces tomo mate a la tarde.',
+            'Sometimes I drink coffee in the afternoon.',
+            'A veces tomo café por la tarde.',
             ['es-a-veces', 'es-la-tarde'],
             {
               id: 'es.ex.d00ybqyv7zisdj',
               acceptedAnswers: [
-                'A la tarde a veces tomo mate.',
-                'A veces tomo mate por la tarde.',
-                'A veces, tomo mate a la tarde.',
-                'A la tarde, a veces tomo mate.',
+                'Por la tarde a veces tomo café.',
+                'A veces tomo café a la tarde.',
+                'A veces, tomo café por la tarde.',
+                'Por la tarde, a veces tomo café.',
+                'A veces bebo café por la tarde.',
+                'A veces tomo un café por la tarde.',
               ],
             },
           ),
           ex.translateWrite(
             'Dinner is in the evening.',
-            'La cena es a la noche.',
+            'La cena es por la noche.',
             ['es-la-cena', 'es-la-noche'],
             {
               id: 'es.ex.q6qlk9dzmkv0rt',
-              acceptedAnswers: ['La cena es por la noche.', 'La cena es de noche.'],
+              acceptedAnswers: ['La cena es a la noche.', 'La cena es de noche.'],
             },
           ),
         ],
@@ -385,7 +388,7 @@ export const ES_A1_U08: EsUnitDef = {
         objective: 'Say when you get up and go to bed, and in what order you do things.',
         intro: {
           explanation:
-            'Some verbs come with me, te or se: they are reflexive, a bit like “get yourself up”. Me levanto is I get up and me acuesto is I go to bed; me ducho is I take a shower. With vos: te levantás, te acostás (no ue, because the stress moves to the end). With él, ella or usted: se levanta, se acuesta. To put things in order: primero (first) and después (then, afterwards). Two handy extras: tarde also means late (me acuesto tarde), and desayuno also means I have breakfast.',
+            'Some verbs come with me, te or se: they are reflexive, a bit like “get yourself up”. Me levanto is I get up and me acuesto is I go to bed; me ducho is I take a shower. With tú: te levantas, te acuestas. Notice the ue: acostarse changes o to ue in yo, tú and él / ella (me acuesto, te acuestas, se acuesta). With él, ella or usted: se levanta, se acuesta. To put things in order: primero (first) and después (then, afterwards). Two handy extras: tarde also means late (me acuesto tarde), and desayuno also means I have breakfast.',
           examples: [
             {
               target: 'Primero me levanto, después me ducho.',
@@ -395,7 +398,7 @@ export const ES_A1_U08: EsUnitDef = {
           ],
         },
         takeaways: [
-          'You use me levanto and me acuesto, and te levantás, te acostás with vos.',
+          'You use me levanto and me acuesto, and te levantas, te acuestas with tú.',
           'You order your day with primero and después.',
         ],
         exercises: [
@@ -414,8 +417,8 @@ export const ES_A1_U08: EsUnitDef = {
             { id: 'es.ex.l67t4apzn9n8j7' },
           ),
           ex.fillBlank(
-            'Primero me ___, después tomo mate.',
-            'First I get up, then I drink mate.',
+            'Primero me ___, después tomo café.',
+            'First I get up, then I drink café.',
             'levanto',
             ['acuesto', 'llamo', 'tomo'],
             ['es-primero', 'es-despues', 'es-me-levanto'],
@@ -423,12 +426,12 @@ export const ES_A1_U08: EsUnitDef = {
               id: 'es.ex.tpexktq0qciw8k',
               skill: 'vocabulary',
               explanation:
-                'Me levanto is I get up. Me acuesto would be I go to bed, which does not come before mate in the morning.',
+                'Me levanto is I get up. Me acuesto would be I go to bed, which does not come before your morning coffee.',
             },
           ),
           ex.listenChoice(
             'Me levanto y me ducho.',
-            ['Me acuesto y me ducho.', 'Me levanto y tomo mate.', 'Me acuesto muy tarde.'],
+            ['Me acuesto y me ducho.', 'Me levanto y tomo café.', 'Me acuesto muy tarde.'],
             ['es-me-levanto', 'es-me-acuesto'],
             { id: 'es.ex.f4ziuu6brxpdyt' },
           ),
@@ -443,27 +446,27 @@ export const ES_A1_U08: EsUnitDef = {
             { id: 'es.ex.nkhye46vzedo5a' },
           ),
           ex.fillBlank(
-            'Vos te ___ muy tarde.',
+            'Tú te ___ muy tarde.',
             'You go to bed very late.',
-            'acostás',
+            'acuestas',
             ['acuesto', 'acuesta', 'levanto'],
             ['es-me-acuesto'],
             {
               id: 'es.ex.3ohjkw0w10veh0',
               explanation:
-                'With vos: te acostás, stressed on the last syllable and without ue. Yo me acuesto, ella se acuesta.',
+                'With tú: te acuestas, with -as and the o → ue change. Yo me acuesto, ella se acuesta.',
             },
           ),
           ex.fillBlank(
-            'Martín ___ levanta y después toma mate.',
-            'Martín gets up and then drinks mate.',
+            'Martín ___ levanta y después toma café.',
+            'Martín gets up and then drinks café.',
             'se',
             ['me', 'te', 'mi'],
             ['es-me-levanto', 'es-despues'],
             {
               id: 'es.ex.nqzydci1a5aiat',
               explanation:
-                'With él, ella or usted the reflexive word is se: se levanta. Me is for yo and te for vos.',
+                'With él, ella or usted the reflexive word is se: se levanta. Me is for yo and te for tú.',
             },
           ),
           ex.orderWords(
@@ -473,7 +476,7 @@ export const ES_A1_U08: EsUnitDef = {
             { id: 'es.ex.r203ryjks64j7b' },
           ),
           ex.shortAnswer(
-            '¿Te levantás tarde?',
+            '¿Te levantas tarde?',
             'Answer that yes, you get up late (start with «Sí, me levanto»).',
             'Sí, me levanto tarde.',
             ['Sí, me levanto tarde', 'Sí, yo me levanto tarde.', 'Sí, me levanto muy tarde.'],
@@ -500,17 +503,17 @@ export const ES_A1_U08: EsUnitDef = {
       // ------------------------------------------------------------------------------------ L3
       {
         title: 'Trabajo, miro, escucho',
-        objective: 'Say what you and others do, with yo, vos and él or ella, and how often.',
+        objective: 'Say what you and others do, with yo, tú and él or ella, and how often.',
         intro: {
           explanation:
-            'Verbs ending in -ar (trabajar, mirar, escuchar) change their ending for each person: yo trabajo, vos trabajás, él, ella or usted trabaja. With vos the stress falls on the last syllable and it has an accent: trabajás, mirás, escuchás. Listen for it: tra-BA-jo is I, tra-ba-JÁS is you. Mirar means to watch or look at and escuchar to listen to, with no extra word for “at” or “to”: miro la tele, escucho música. Siempre (always) and a veces (sometimes) usually go before the verb.',
+            'Verbs ending in -ar (trabajar, mirar, escuchar) change their ending for each person: yo trabajo, tú trabajas, él, ella or usted trabaja. The stress stays in the same place (tra-BA-jo, tra-BA-jas, tra-BA-ja), so listen for the ending: -o is I, -as is you, -a is he, she or usted. Mirar means to watch or look at and escuchar to listen to, with no extra word for “at” or “to”: miro la tele, escucho música. Siempre (always) and a veces (sometimes) usually go before the verb.',
           examples: [
             { target: 'Siempre escucho música.', base: 'I always listen to music.' },
-            { target: '¿Vos trabajás en Palermo?', base: 'Do you work in Palermo?' },
+            { target: '¿Trabajas en Bogotá?', base: 'Do you work in Bogotá?' },
           ],
         },
         takeaways: [
-          'You conjugate -ar verbs for yo, vos and él or ella: trabajo, trabajás, trabaja.',
+          'You conjugate -ar verbs for yo, tú and él or ella: trabajo, trabajas, trabaja.',
           'You say how often with siempre and a veces.',
         ],
         exercises: [
@@ -522,21 +525,21 @@ export const ES_A1_U08: EsUnitDef = {
             { id: 'es.ex.4y826uyfeb2pho' },
           ),
           ex.listenChoice(
-            'Vos trabajás en Palermo.',
-            ['Yo trabajo en Palermo.', 'Ella trabaja en Palermo.'],
+            'Tú trabajas en Bogotá.',
+            ['Yo trabajo en Bogotá.', 'Ella trabaja en Bogotá.'],
             ['es-trabajo'],
             { id: 'es.ex.tbuwqc5btbvc7u' },
           ),
           ex.fillBlank(
-            'Vos ___ música a la noche.',
+            'Tú ___ música por la noche.',
             'You listen to music in the evening.',
-            'escuchás',
-            ['escucho', 'escucha', 'mirás'],
+            'escuchas',
+            ['escucho', 'escucha', 'miras'],
             ['es-escucho', 'es-la-noche'],
             {
               id: 'es.ex.q2vh6b1nmygrbe',
               explanation:
-                'With vos the ending is -ás, stressed: escuchás. Escucho is for yo and escucha for él or ella.',
+                'With tú the ending is -as: escuchas. Escucho is for yo and escucha for él or ella.',
             },
           ),
           ex.matchPairs(
@@ -550,15 +553,15 @@ export const ES_A1_U08: EsUnitDef = {
             { id: 'es.ex.w8vy5il6830lbc' },
           ),
           ex.fillBlank(
-            'Lucía ___ una serie a la noche.',
+            'Lucía ___ una serie por la noche.',
             'Lucía watches a series in the evening.',
             'mira',
-            ['miro', 'mirás', 'escucha'],
+            ['miro', 'miras', 'escucha'],
             ['es-miro'],
             {
               id: 'es.ex.p76ej5gtx420yu',
               explanation:
-                'With ella (Lucía) the -ar ending is -a: mira. Miro is for yo and mirás for vos.',
+                'With ella (Lucía) the -ar ending is -a: mira. Miro is for yo and miras for tú.',
             },
           ),
           question(
@@ -568,7 +571,7 @@ export const ES_A1_U08: EsUnitDef = {
             'In the morning',
             ['In the afternoon', 'In the evening', 'Only sometimes'],
             ['es-trabajo', 'es-la-manana', 'es-siempre'],
-            'Sofía answers “Sí, siempre trabajo a la mañana”: she always works in the morning.',
+            'Sofía answers “Sí, siempre trabajo por la mañana”: she always works in the morning.',
           ),
           question(
             'es.ex.czfooijvftkl2y',
@@ -577,7 +580,7 @@ export const ES_A1_U08: EsUnitDef = {
             'He watches series',
             ['He works', 'He listens to music', 'He has dinner with his parents'],
             ['es-miro'],
-            'Martín works in the afternoon; he says “A la mañana miro series”.',
+            'Martín works in the afternoon; he says “Por la mañana miro series”.',
           ),
           ex.orderWords(
             'A veces escucho la radio.',
@@ -586,30 +589,31 @@ export const ES_A1_U08: EsUnitDef = {
             { id: 'es.ex.6s13ljt7bzd49b' },
           ),
           ex.shortAnswer(
-            '¿Trabajás a la mañana?',
+            '¿Trabajas por la mañana?',
             'Answer that yes, you work in the morning (start with «Sí, trabajo»).',
-            'Sí, trabajo a la mañana.',
+            'Sí, trabajo por la mañana.',
             [
-              'Sí, trabajo a la mañana',
-              'Sí, yo trabajo a la mañana.',
-              'Sí, trabajo por la mañana.',
-              'Sí, siempre trabajo a la mañana.',
+              'Sí, trabajo por la mañana',
+              'Sí, yo trabajo por la mañana.',
+              'Sí, trabajo a la mañana.',
+              'Sí, siempre trabajo por la mañana.',
             ],
             ['es-trabajo', 'es-la-manana'],
             { id: 'es.ex.mpe9sicu61yx8x' },
           ),
           ex.translateWrite(
             'I always watch TV in the evening.',
-            'Siempre miro la tele a la noche.',
+            'Siempre miro la tele por la noche.',
             ['es-siempre', 'es-miro', 'es-la-noche'],
             {
               id: 'es.ex.07kdn4ik7zh4ao',
               acceptedAnswers: [
-                'A la noche siempre miro la tele.',
-                'Siempre miro la televisión a la noche.',
-                'Siempre miro tele a la noche.',
-                'Siempre miro la tele por la noche.',
-                'Yo siempre miro la tele a la noche.',
+                'Por la noche siempre miro la tele.',
+                'Siempre miro la televisión por la noche.',
+                'Siempre miro tele por la noche.',
+                'Siempre miro la tele a la noche.',
+                'Yo siempre miro la tele por la noche.',
+                'Siempre veo la tele por la noche.',
               ],
             },
           ),
@@ -622,15 +626,15 @@ export const ES_A1_U08: EsUnitDef = {
         objective: 'Talk about what we, you all and they do, with -ar, -er and -ir verbs.',
         intro: {
           explanation:
-            'The plural persons are nosotros (we; nosotras if they are all women), ustedes (you all) and ellos (they; ellas for women). In Argentina ustedes is the plural of both vos and usted, and ustedes and ellos share the same verb form. -ar: trabajamos, trabajan. Verbs in -er and -ir follow the same idea: comer → como, comés, come, comemos, comen; vivir → vivo, vivís, vive, vivimos, viven. Todos los días means every day.',
+            'The plural persons are nosotros (we; nosotras if they are all women), ustedes (you all) and ellos (they; ellas for women). In Latin America ustedes is the plural of both tú and usted (in Spain friends say vosotros, which this course does not practise), and ustedes and ellos share the same verb form. -ar: trabajamos, trabajan. Verbs in -er and -ir follow the same idea: comer → como, comes, come, comemos, comen; vivir → vivo, vives, vive, vivimos, viven. Todos los días means every day.',
           examples: [
             {
               target: 'Nosotros comemos en casa todos los días.',
               base: 'We eat at home every day.',
             },
             {
-              target: '¿Ustedes viven en Rosario? — No, vivimos en Mendoza.',
-              base: 'Do you all live in Rosario? — No, we live in Mendoza.',
+              target: '¿Ustedes viven en Guadalajara? — No, vivimos en Monterrey.',
+              base: 'Do you all live in Guadalajara? — No, we live in Monterrey.',
             },
           ],
         },
@@ -653,10 +657,10 @@ export const ES_A1_U08: EsUnitDef = {
             { id: 'es.ex.kqm0dg3kkvlv1o' },
           ),
           ex.fillBlank(
-            'Nosotros ___ en Córdoba.',
-            'We live in Córdoba.',
+            'Nosotros ___ en Lima.',
+            'We live in Lima.',
             'vivimos',
-            ['viven', 'vive', 'vivís'],
+            ['viven', 'vive', 'vives'],
             ['es-nosotros'],
             {
               id: 'es.ex.rby6s67yjemofe',
@@ -665,11 +669,11 @@ export const ES_A1_U08: EsUnitDef = {
             },
           ),
           ex.listenChoice(
-            'Ellos trabajan en Rosario.',
+            'Ellos trabajan en Guadalajara.',
             [
-              'Ellos trabajan en Mendoza.',
-              'Ella trabaja en Rosario.',
-              'Nosotros trabajamos en Rosario.',
+              'Ellos trabajan en Monterrey.',
+              'Ella trabaja en Guadalajara.',
+              'Nosotros trabajamos en Guadalajara.',
             ],
             ['es-ellos', 'es-trabajo', 'es-nosotros'],
             { id: 'es.ex.mu3bebuc21dbyg' },
@@ -683,7 +687,7 @@ export const ES_A1_U08: EsUnitDef = {
             {
               id: 'es.ex.2p8dyxe96zvy21',
               explanation:
-                'Ustedes takes the same ending as ellos: comen. In Spain you would also hear vosotros, but not in Argentina.',
+                'Ustedes takes the same ending as ellos: comen. In Latin America ustedes is the only plural “you”; in Spain friends would say vosotros.',
             },
           ),
           ex.translationChoice(
@@ -705,8 +709,8 @@ export const ES_A1_U08: EsUnitDef = {
             },
           ),
           ex.listenChoice(
-            'Nosotros comemos a la noche.',
-            ['Ustedes comen a la noche.', 'Vos comés a la noche.', 'Ella come a la noche.'],
+            'Nosotros comemos por la noche.',
+            ['Ustedes comen por la noche.', 'Tú comes por la noche.', 'Ella come por la noche.'],
             ['es-nosotros', 'es-ustedes'],
             { id: 'es.ex.h8riq2yieoe62l' },
           ),
@@ -726,13 +730,13 @@ export const ES_A1_U08: EsUnitDef = {
             },
           ),
           ex.shortAnswer(
-            '¿Ustedes viven en Rosario?',
-            'Answer that no, you live in Mendoza (start with «No, vivimos»).',
-            'No, vivimos en Mendoza.',
+            '¿Ustedes viven en Guadalajara?',
+            'Answer that no, you live in Monterrey (start with «No, vivimos»).',
+            'No, vivimos en Monterrey.',
             [
-              'No, vivimos en Mendoza',
-              'No, nosotros vivimos en Mendoza.',
-              'No, nosotras vivimos en Mendoza.',
+              'No, vivimos en Monterrey',
+              'No, nosotros vivimos en Monterrey.',
+              'No, nosotras vivimos en Monterrey.',
             ],
             ['es-ustedes', 'es-nosotros'],
             { id: 'es.ex.eur18qto2118z5' },
@@ -746,14 +750,14 @@ export const ES_A1_U08: EsUnitDef = {
         objective: 'Understand and tell a short description of someone’s day.',
         intro: {
           explanation:
-            'To tell your day, put the actions in order with primero and después, and add when (a la mañana, a la tarde, a la noche) and how often (siempre, a veces, todos los días). A typical Argentine day: mate or café con leche with medialunas for breakfast, lunch around one, and a late dinner.',
+            'To tell your day, put the actions in order with primero and después, and add when (por la mañana, por la tarde, por la noche) and how often (siempre, a veces, todos los días). Routines change from country to country: in Mexico the big meal (la comida) is around two or three in the afternoon, and in Spain and Argentina dinner is very late.',
           examples: [
             {
-              target: 'Todos los días me levanto temprano y tomo mate.',
-              base: 'Every day I get up early and drink mate.',
+              target: 'Todos los días me levanto temprano y tomo café.',
+              base: 'Every day I get up early and drink café.',
             },
             {
-              target: 'A la noche ceno y después me acuesto.',
+              target: 'Por la noche ceno y después me acuesto.',
               base: 'In the evening I have dinner and then I go to bed.',
             },
           ],
@@ -767,17 +771,17 @@ export const ES_A1_U08: EsUnitDef = {
             'es.ex.6t5cjbuakv83dx',
             MI_DIA,
             'What does Valentina do first?',
-            'She drinks mate',
+            'She drinks coffee',
             ['She works at home', 'She listens to music', 'She has lunch with her sister'],
             ['es-primero'],
-            'She writes “Primero tomo mate, después trabajo en casa”.',
+            'She writes “Primero tomo café, después trabajo en casa”.',
           ),
           question(
             'es.ex.x7ot3lhah2l3tl',
             MI_DIA,
             'Where does Valentina work?',
             'At home',
-            ['In Palermo', 'At her sister’s', 'She doesn’t work'],
+            ['In Bogotá', 'At her sister’s', 'She doesn’t work'],
             ['es-trabajo'],
             'She writes “después trabajo en casa”: she works at home.',
           ),
@@ -813,16 +817,16 @@ export const ES_A1_U08: EsUnitDef = {
             [
               'Nosotros trabajamos todos los días.',
               'Ellos trabajan a veces.',
-              'Vos trabajás todos los días.',
+              'Tú trabajas todos los días.',
             ],
             ['es-ustedes', 'es-todos-los-dias', 'es-a-veces'],
             { id: 'es.ex.ls1ack4bk1ur6b' },
           ),
           ex.fillBlank(
-            'A la tarde, Valentina ___ música.',
+            'Por la tarde, Valentina ___ música.',
             'In the afternoon, Valentina listens to music.',
             'escucha',
-            ['escucho', 'escuchás', 'escuchan'],
+            ['escucho', 'escuchas', 'escuchan'],
             ['es-escucho', 'es-la-tarde'],
             {
               id: 'es.ex.noa0owaxlwxfy0',
@@ -841,27 +845,29 @@ export const ES_A1_U08: EsUnitDef = {
           ),
           ex.translateWrite(
             'Sometimes we listen to music in the evening.',
-            'A veces escuchamos música a la noche.',
+            'A veces escuchamos música por la noche.',
             ['es-a-veces', 'es-escucho', 'es-nosotros'],
             {
               id: 'es.ex.akpsx8zezgdy87',
               acceptedAnswers: [
-                'A veces nosotros escuchamos música a la noche.',
-                'A la noche a veces escuchamos música.',
-                'A veces escuchamos música por la noche.',
-                'Nosotros a veces escuchamos música a la noche.',
+                'A veces nosotros escuchamos música por la noche.',
+                'Por la noche a veces escuchamos música.',
+                'A veces escuchamos música a la noche.',
+                'Nosotros a veces escuchamos música por la noche.',
               ],
             },
           ),
           ex.shortAnswer(
-            '¿Qué hacés a la noche?',
-            'Say that in the evening you watch a series (start with «A la noche»).',
-            'A la noche miro una serie.',
+            '¿Qué haces por la noche?',
+            'Say that in the evening you watch a series (start with «Por la noche»).',
+            'Por la noche miro una serie.',
             [
-              'A la noche miro una serie',
-              'A la noche yo miro una serie.',
-              'A la noche, miro una serie.',
-              'A la noche miro series.',
+              'Por la noche miro una serie',
+              'Por la noche yo miro una serie.',
+              'Por la noche, miro una serie.',
+              'Por la noche miro series.',
+              'A la noche miro una serie.',
+              'Por la noche veo una serie.',
             ],
             ['es-miro', 'es-la-noche'],
             { id: 'es.ex.zvbddcfwztg3lc' },

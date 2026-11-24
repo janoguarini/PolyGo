@@ -29,12 +29,17 @@ import {
   type LeaderboardEntry,
 } from '@/features/ranked/api';
 import { LeaderboardRow, Podium, topPercent } from '@/features/ranked/Leaderboard';
+import { useInterfaceLanguage, useStrings } from '@/i18n';
+import { languageName } from '@/i18n/languages';
+import { leaderboardScreenStrings } from '@/i18n/screens/leaderboard';
 
 /** Idiomas con clasificación propia (los que tienen Ranked). */
 const RANKED_LANGUAGES = LANGUAGES.filter((l) => l.ranked);
 
 export default function LeaderboardScreen() {
   const styles = useStyles();
+  const t = useStrings(leaderboardScreenStrings);
+  const ui = useInterfaceLanguage();
   const { session } = useAuth();
   const meId = session?.user.id;
   const me = useMyProfile();
@@ -59,10 +64,7 @@ export default function LeaderboardScreen() {
   const stars = useLeaderboardStars(leaderboard.data?.map((e) => e.userId));
   const podium = entries.filter((e) => e.position <= 3);
   const rest = entries.filter((e) => e.position > 3);
-  const scopeLabel =
-    scope === null
-      ? 'del mundo'
-      : `en ${RANKED_LANGUAGES.find((l) => l.code === scope)?.name ?? ''}`;
+  const scopeLabel = scope === null ? t.worldScope : t.languageScope(languageName(scope, ui));
 
   const myPos = position.data?.position ?? null;
   const inList = entries.some((e) => e.userId === meId);
@@ -95,7 +97,7 @@ export default function LeaderboardScreen() {
       refreshing={leaderboard.isRefetching}
       footer={myRow ? <LeaderboardRow entry={myRow} isMe /> : undefined}
     >
-      <ScreenHeader title="Clasificación" onBack={() => router.back()} />
+      <ScreenHeader title={t.title} onBack={() => router.back()} />
 
       <Card gradient={gradients.ranked} style={styles.hero}>
         <View style={styles.trophy}>
@@ -103,24 +105,28 @@ export default function LeaderboardScreen() {
         </View>
         <View style={styles.heroInfo}>
           <Text variant="overline" color="primarySoft">
-            {season.data ? season.data.name.toUpperCase() : 'TU PUESTO'}
+            {season.data ? season.data.name.toUpperCase() : t.yourPosition}
           </Text>
           {position.isPending ? (
             <Text variant="title">…</Text>
           ) : myPos !== null ? (
             <>
               <Text variant="title" color="gold">
-                Top {myPos} {scopeLabel}
+                {t.topIn(myPos, scopeLabel)}
               </Text>
               <Text variant="caption" color="text">
-                {`Puesto ${myPos} de ${position.data?.total ?? 0} · top ${topPercent(myPos, position.data?.total ?? 0)} %`}
+                {t.positionOf(
+                  myPos,
+                  position.data?.total ?? 0,
+                  topPercent(myPos, position.data?.total ?? 0),
+                )}
               </Text>
             </>
           ) : (
             <>
-              <Text variant="heading">Sin posicionar</Text>
+              <Text variant="heading">{t.unplaced}</Text>
               <Text variant="caption" color="text">
-                Ganá una ranked para entrar a la clasificación.
+                {t.winToEnter}
               </Text>
             </>
           )}
@@ -139,14 +145,14 @@ export default function LeaderboardScreen() {
         >
           <Globe2 color={!languageActive ? colors.onPrimary : colors.textMuted} size={16} />
           <Text variant="bodyStrong" color={!languageActive ? 'onPrimary' : 'textMuted'}>
-            Todos
+            {t.all}
           </Text>
         </Pressable>
         {language ? (
           <Pressable
             accessibilityRole="tab"
             accessibilityState={{ selected: languageActive, expanded: pickerOpen }}
-            accessibilityHint="Tocá de nuevo para elegir otro idioma"
+            accessibilityHint={t.pickLanguageHint}
             onPress={() => {
               if (!languageActive) setScope(language.code);
               else setPickerOpen((open) => !open);
@@ -160,7 +166,7 @@ export default function LeaderboardScreen() {
               numberOfLines={1}
               style={styles.shrink}
             >
-              {language.name}
+              {languageName(language.code, ui)}
             </Text>
             <ChevronDown
               color={languageActive ? colors.onPrimary : colors.textMuted}
@@ -193,7 +199,7 @@ export default function LeaderboardScreen() {
                   color={selected ? 'text' : 'textMuted'}
                   style={styles.optionLabel}
                 >
-                  {l.name}
+                  {languageName(l.code, ui)}
                 </Text>
                 {selected ? <Check color={colors.primary} size={18} /> : null}
               </Pressable>
@@ -204,22 +210,19 @@ export default function LeaderboardScreen() {
 
       {!languageActive ? (
         <Text variant="caption" color="textMuted">
-          La global toma el ELO de tu mejor idioma entre los que ya estás posicionado.
+          {t.globalNote}
         </Text>
       ) : null}
 
       {leaderboard.isPending ? (
-        <LoadingState label="Cargando clasificación…" />
+        <LoadingState label={t.loading} />
       ) : leaderboard.isError ? (
-        <ErrorState
-          message="No pudimos cargar la clasificación."
-          onRetry={() => void leaderboard.refetch()}
-        />
+        <ErrorState message={t.loadError} onRetry={() => void leaderboard.refetch()} />
       ) : entries.length === 0 ? (
         <EmptyState
           icon={<Trophy color={colors.textMuted} size={36} />}
-          title="Todavía no hay jugadores"
-          message="Ganá una ranked y estrená la clasificación."
+          title={t.emptyTitle}
+          message={t.emptyBody}
         />
       ) : (
         <>
@@ -234,7 +237,10 @@ export default function LeaderboardScreen() {
                 languageName={
                   languageActive
                     ? undefined
-                    : RANKED_LANGUAGES.find((l) => l.code === entry.languageCode)?.name
+                    : entry.languageCode &&
+                        RANKED_LANGUAGES.some((l) => l.code === entry.languageCode)
+                      ? languageName(entry.languageCode, ui)
+                      : undefined
                 }
               />
             ))}

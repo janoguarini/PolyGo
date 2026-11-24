@@ -92,23 +92,25 @@ export const LANGUAGES: readonly LanguageConfig[] = [
     levels: ['A1'],
   },
   {
-    // Francés A1 y A2 (docs/FR_A1_A2.md): cargado sin publicar y oculto, como en public.languages.
-    // Publicarlo es cambiar este estado junto con la migración de supabase/pending/.
+    // Francés A1 U1–U17 y A2 U1–U13 (docs/FR_A1_A2.md), para todos (docs/FR_A1_A2_INTEGRATION.md).
+    // Requiere en la base la carga, la publicación y 20261203130000_enable_fr (content_status
+    // 'available'). Sin Ranked: ranked_available sigue en false.
     code: 'fr',
     name: 'Francés',
     inName: 'en francés',
     alName: 'al francés',
     flag: '🇫🇷',
-    status: 'hidden',
+    status: 'available',
     ranked: false,
     speechLocale: 'fr-FR',
     script: 'latin',
     variant: 'Francés estándar de Francia',
-    levels: [],
+    levels: ['A1', 'A2'],
   },
   {
-    // El contenido se enseña desde el inglés (support); la interfaz de la app sigue en español, así
-    // que el idioma queda «Próximamente» hasta traducirla (docs/ES_A1_A2.md).
+    // El contenido se enseña desde el inglés (support); queda «Próximamente» hasta tener la interfaz
+    // en inglés y el curso en producción (docs/ES_A1_A2.md, docs/MULTILINGUAL_ONBOARDING_PLAN.md).
+    // Variante: español neutro de Latinoamérica, con tú y ustedes (docs/ES_NEUTRAL_GUIDE.md).
     code: 'es',
     name: 'Español',
     inName: 'en español',
@@ -116,9 +118,9 @@ export const LANGUAGES: readonly LanguageConfig[] = [
     flag: '🇪🇸',
     status: 'soon',
     ranked: false,
-    speechLocale: 'es-AR',
+    speechLocale: 'es-MX',
     script: 'latin',
-    variant: 'Español rioplatense (Argentina), con voseo',
+    variant: 'Español neutro de Latinoamérica (tú y ustedes)',
     levels: [],
     support: { code: 'en', targetName: 'Spanish' },
   },

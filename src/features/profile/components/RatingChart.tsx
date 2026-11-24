@@ -3,6 +3,7 @@ import { StyleSheet, View, type GestureResponderEvent } from 'react-native';
 import Svg, { Circle, Line, Path } from 'react-native-svg';
 
 import { Text, colors, spacing, useTheme } from '@/design-system';
+import { useLocale, useStrings } from '@/i18n';
 
 import {
   areaPath,
@@ -12,12 +13,13 @@ import {
   nearestIndex,
   type RatingPoint,
 } from '../stats';
+import { historyStrings } from '../strings';
 
 const HEIGHT = 160;
 const AXIS_WIDTH = 40;
 const PADDING = { top: 12, bottom: 12, left: 8, right: 12 };
 
-const dateFormat = new Intl.DateTimeFormat('es', { day: 'numeric', month: 'short' });
+const DATE_OPTIONS: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short' };
 
 /**
  * Evolución del ELO: una sola serie (sin leyenda; el título la nombra), línea de 2 px con lavado
@@ -26,6 +28,8 @@ const dateFormat = new Intl.DateTimeFormat('es', { day: 'numeric', month: 'short
  */
 export function RatingChart({ series }: { series: readonly RatingPoint[] }) {
   useTheme();
+  const t = useStrings(historyStrings);
+  const dateFormat = new Intl.DateTimeFormat(useLocale(), DATE_OPTIONS);
   const [width, setWidth] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
 
@@ -51,7 +55,7 @@ export function RatingChart({ series }: { series: readonly RatingPoint[] }) {
         <Text variant="stat">{point.rating}</Text>
         <Text variant="caption">
           {active === 0 && point.reason === 'initial'
-            ? `Inicio · ${dateFormat.format(new Date(point.at))}`
+            ? t.start(dateFormat.format(new Date(point.at)))
             : `${formatDelta(point.delta)} · ${dateFormat.format(new Date(point.at))}`}
         </Text>
       </View>
@@ -61,7 +65,12 @@ export function RatingChart({ series }: { series: readonly RatingPoint[] }) {
         onLayout={(e) => setWidth(e.nativeEvent.layout.width)}
         accessible
         accessibilityRole="image"
-        accessibilityLabel={`Evolución del ELO en ${games} partidas: de ${first.rating} a ${series[last]!.rating}, ${formatDelta(total)}.`}
+        accessibilityLabel={t.chartA11y(
+          games,
+          first.rating,
+          series[last]!.rating,
+          formatDelta(total),
+        )}
       >
         {width > 0 ? (
           <>
@@ -129,10 +138,7 @@ export function RatingChart({ series }: { series: readonly RatingPoint[] }) {
           </>
         ) : null}
       </View>
-      <Text variant="caption">
-        {games} {games === 1 ? 'partida' : 'partidas'} · {formatDelta(total)} en total · tocá el
-        gráfico para ver cada una
-      </Text>
+      <Text variant="caption">{t.chartFooter(games, formatDelta(total))}</Text>
     </View>
   );
 }

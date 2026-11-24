@@ -27,6 +27,8 @@ import {
   IncomingActions,
   type Feedback,
 } from '@/features/friends/components/RequestActions';
+import { useStrings } from '@/i18n';
+import { addFriendsStrings } from '@/i18n/screens/add-friends';
 
 /** Cuánto queda a la vista el aviso de la última acción. */
 const FEEDBACK_MS = 4000;
@@ -37,6 +39,7 @@ const FEEDBACK_MS = 4000;
  */
 export default function AddFriendsScreen() {
   const styles = useStyles();
+  const s = useStrings(addFriendsStrings);
   const friends = useFriends();
   const [query, setQuery] = useState('');
   const [feedback, setFeedback] = useState<Feedback | null>(null);
@@ -61,10 +64,10 @@ export default function AddFriendsScreen() {
   const received = (
     <RequestSection
       icon={<Inbox color={colors.primarySoft} size={18} />}
-      title="Solicitudes recibidas"
+      title={s.received}
       requests={incoming}
       highlight
-      empty="No tenés solicitudes nuevas."
+      empty={s.receivedEmpty}
       renderAction={(f) => (
         <IncomingActions userId={f.userId} username={f.username} onFeedback={setFeedback} />
       )}
@@ -73,7 +76,7 @@ export default function AddFriendsScreen() {
 
   return (
     <Screen onRefresh={() => void friends.refetch()} refreshing={friends.isRefetching}>
-      <ScreenHeader title="Agregar amigos" onBack={back} />
+      <ScreenHeader title={s.title} onBack={back} />
 
       <SearchBar query={query} onChange={setQuery} />
 
@@ -94,10 +97,10 @@ export default function AddFriendsScreen() {
 
           <RequestSection
             icon={<Send color={colors.primarySoft} size={18} />}
-            title="Solicitudes enviadas"
+            title={s.sent}
             requests={outgoing}
-            subtitle="Pendiente"
-            empty="No tenés solicitudes pendientes."
+            subtitle={s.pending}
+            empty={s.sentEmpty}
             renderAction={(f) => (
               <CancelRequest userId={f.userId} username={f.username} onFeedback={setFeedback} />
             )}
@@ -106,8 +109,7 @@ export default function AddFriendsScreen() {
           <View style={styles.note}>
             <Info color={colors.textSubtle} size={16} style={styles.noteIcon} />
             <Text variant="caption" style={styles.flex}>
-              Si alguien rechaza tu solicitud no te avisamos: la seguís viendo pendiente durante 7
-              días y después desaparece. Ahí se la podés volver a mandar.
+              {s.declinedNote}
             </Text>
           </View>
         </Animated.View>

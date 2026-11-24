@@ -1,8 +1,11 @@
 import { ImageManipulator, SaveFormat } from 'expo-image-manipulator';
 import * as ImagePicker from 'expo-image-picker';
 
+import { getStrings } from '@/i18n';
 import { AVATAR_BUCKET } from '@/lib/avatarPhoto';
 import { requireSupabase } from '@/lib/supabase';
+
+import { avatarUploadStrings } from './strings';
 
 /** Lado de la foto subida: suficiente para el avatar más grande y liviana (< 100 KB). */
 const PHOTO_SIZE = 512;
@@ -32,7 +35,7 @@ export async function uploadAvatarPhoto(userId: string, localUri: string): Promi
   context.resize({ width: PHOTO_SIZE, height: null });
   const image = await context.renderAsync();
   const saved = await image.saveAsync({ format: SaveFormat.JPEG, compress: 0.8, base64: true });
-  if (!saved.base64) throw new Error('No se pudo procesar la imagen.');
+  if (!saved.base64) throw new Error(getStrings(avatarUploadStrings).processError);
   const bytes = Uint8Array.from(atob(saved.base64), (c) => c.charCodeAt(0));
 
   const { error } = await requireSupabase()

@@ -8,21 +8,23 @@ import { dialogue, ex, question, reading, w } from '../helpers';
  * reunión, aprobar un examen y el título.
  * Pronunciación: la c suena k delante de a, o, u (currículum, compañero) y s delante de e, i (oficina);
  * las palabras en -ión llevan el acento en la última sílaba (reunión).
- * Cultura: en la Argentina la universidad pública es gratuita; la pasantía es un trabajo para estudiantes.
+ * Variante: español neutro de Latinoamérica, con tú (tienes que, puedes) y usted en la entrevista.
+ * Cultura: en varios países (México, Argentina) la universidad pública es gratuita o casi gratuita; la
+ * pasantía (también «las prácticas») es un trabajo para estudiantes. Escenarios: Bogotá, Lima, Buenos Aires.
  *
  * ESTADO EDITORIAL: borrador, sin revisión de hablantes nativos. Se carga sin publicar.
  */
 
 const ENTREVISTA = dialogue(
   'es.stim.a2-u7-entrevista',
-  'A job interview at a company in Rosario. The interviewer and the candidate use usted.',
+  'A job interview at a company in Bogotá. The interviewer and the candidate use usted.',
   [
     ['Laura', 'Buenas tardes, Diego. ¿Dónde trabaja ahora?'],
-    ['Diego', 'Buenas tardes. Trabajo en un hotel de Rosario desde hace dos años.'],
+    ['Diego', 'Buenas tardes. Trabajo en un hotel de Bogotá desde hace dos años.'],
     ['Laura', '¿Y también estudia?'],
     ['Diego', 'Sí, estudio en la universidad durante la semana. Termino el año que viene.'],
     ['Laura', 'Bien. Acá hay que trabajar los sábados. ¿Puede?'],
-    ['Diego', 'Sí, puedo. Pero los lunes tengo que ir a la facultad a la mañana.'],
+    ['Diego', 'Sí, puedo. Pero los lunes tengo que ir a la facultad por la mañana.'],
     ['Laura', 'No hay problema. ¿Me trae su currículum mañana?'],
   ],
 );
@@ -33,9 +35,9 @@ const AVISO = reading(
   'An ad on a university notice board.',
   [
     'Buscamos estudiantes de la universidad para una pasantía de seis meses en una empresa de Buenos Aires.',
-    'Hay que hablar inglés y tener tiempo libre a la tarde.',
+    'Hay que hablar inglés y tener tiempo libre por la tarde.',
     'La pasantía es de lunes a viernes, durante cuatro horas por día, y tiene sueldo.',
-    'Si te interesa, mandá tu currículum antes del viernes.',
+    'Si te interesa, manda tu currículum antes del viernes.',
   ],
   { title: 'Pasantía en Buenos Aires' },
 );
@@ -48,7 +50,7 @@ const MENSAJE = reading(
     '¡Hola, Martín!',
     'Hoy no puedo ir a la reunión de las cinco: tengo un examen en la facultad.',
     'Si apruebo, ¡ya tengo el título!',
-    '¿Me contás después qué pasó en la reunión?',
+    '¿Me cuentas después qué pasó en la reunión?',
     'Gracias. Sofía',
   ],
   { from: 'Sofía', to: 'Martín' },
@@ -62,8 +64,8 @@ export const ES_A2_U07: EsUnitDef = {
     'Martín',
     'Lucía',
     'Tomás',
-    'Rosario',
-    'Córdoba',
+    'Bogotá',
+    'Lima',
     'Buenos',
     'Aires',
   ],
@@ -74,10 +76,10 @@ export const ES_A2_U07: EsUnitDef = {
     'puede',
     'buscamos',
     'interesa',
-    'mandá',
+    'manda',
     'apruebo',
-    'contás',
-    'estudiás',
+    'cuentas',
+    'estudias',
     'empresa',
   ],
   unit: {
@@ -92,7 +94,7 @@ export const ES_A2_U07: EsUnitDef = {
     grammar: {
       title: 'Tener que, hay que, poder · desde hace',
       explanation:
-        'Tener que + infinitive is a personal obligation: tengo que, tenés que (vos), tiene que (usted, él, ella), tenemos que, tienen que. Never drop the que: tengo que trabajar. Hay que + infinitive is impersonal, a general rule with no subject: en la oficina hay que llegar a tiempo. Poder + infinitive is can: puedo, podés, puede, podemos, pueden (the o becomes ue except with vos and nosotros); no puedo is I can’t. To say how long something has been going on, Spanish uses the present tense: trabajo acá desde hace tres años means I have been working here for three years. Desde hace goes with a period of time, desde alone with a starting point (desde marzo), and durante means during (durante la semana).',
+        'Tener que + infinitive is a personal obligation: tengo que, tienes que (tú), tiene que (usted, él, ella), tenemos que, tienen que (ustedes, ellos). Tener is irregular: yo tengo, but tú tienes. Never drop the que: tengo que trabajar. Hay que + infinitive is impersonal, a general rule with no subject: en la oficina hay que llegar a tiempo. Poder + infinitive is can: puedo, puedes, puede, podemos, pueden (the o becomes ue in every form except nosotros); no puedo is I can’t. To say how long something has been going on, Spanish uses the present tense: trabajo acá desde hace tres años means I have been working here for three years. Desde hace goes with a period of time, desde alone with a starting point (desde marzo), and durante means during (durante la semana).',
       examples: [
         { target: 'Tengo que mandar el currículum hoy.', base: 'I have to send my CV today.' },
         {
@@ -108,7 +110,7 @@ export const ES_A2_U07: EsUnitDef = {
     review: {
       status: 'draft',
       notes:
-        'A2 nuevo (U7). Sin revisión nativa. Revisar: «hay que» traducido como «one has to» (aceptado «you have to»); «currículum» con tilde frente a «currículo» / «CV» (se acepta «el CV»); «la pasantía» como práctica rentada para estudiantes; «desde hace» frente a «hace… que» (aceptado en las respuestas); «acá» en vez de «aquí»; si conviene enseñar «desaprobar» (en la Argentina, no aprobar un examen).',
+        'A2 nuevo (U7), convertido al español neutro con tú (2026-11-21). Sin revisión nativa. Revisar: «hay que» traducido como «one has to» (aceptado «you have to»); «currículum» con tilde frente a «currículo» / «CV» (se acepta «el CV»); «la pasantía» como práctica para estudiantes (en México se dice más «las prácticas profesionales»); «desde hace» frente a «hace… que» (aceptado en las respuestas); «acá» (general en Latinoamérica; «aquí» también); «la facultad» frente a «la universidad»; si conviene enseñar «reprobar» (México) / «desaprobar» (Argentina) para no aprobar un examen.',
     },
     words: [
       w(
@@ -178,7 +180,7 @@ export const ES_A2_U07: EsUnitDef = {
         'the internship',
         'Mi hermana hace una pasantía en un banco.',
         'My sister is doing an internship at a bank.',
-        ['work', 'argentina'],
+        ['work'],
       ),
       w(
         'es-el-curriculum',
@@ -254,8 +256,8 @@ export const ES_A2_U07: EsUnitDef = {
         'es-el-empleo',
         'el empleo',
         'employment',
-        'Busco empleo en Buenos Aires.',
-        'I’m looking for work in Buenos Aires.',
+        'Busco empleo en Lima.',
+        'I’m looking for work in Lima.',
         ['work'],
         { acceptedTranslations: ['a job'] },
       ),
@@ -267,7 +269,7 @@ export const ES_A2_U07: EsUnitDef = {
         objective: 'Say what you have to do and what one has to do at work.',
         intro: {
           explanation:
-            'Tener que + infinitive means to have to: tengo que, tenés que (vos), tiene que (usted, él, ella), tenemos que, tienen que. The que is never dropped: tengo que trabajar. Hay que + infinitive has no subject: it is a general rule, like “you have to” or “one has to” in English. Reunión ends in -ión, so the stress falls on the last syllable and it carries an accent.',
+            'Tener que + infinitive means to have to: tengo que, tienes que (tú), tiene que (usted, él, ella), tenemos que, tienen que (ustedes, ellos). Notice the change in tienes and tiene: the e becomes ie, but yo tengo has a g. The que is never dropped: tengo que trabajar. Hay que + infinitive has no subject: it is a general rule, like “you have to” or “one has to” in English. Reunión ends in -ión, so the stress falls on the last syllable and it carries an accent.',
           examples: [
             { target: 'Hoy tengo que trabajar hasta tarde.', base: 'Today I have to work late.' },
             {
@@ -292,16 +294,16 @@ export const ES_A2_U07: EsUnitDef = {
             'Hoy ___ que trabajar hasta tarde.',
             'Today I have to work late.',
             'tengo',
-            ['tenés', 'tiene', 'hay'],
+            ['tienes', 'tiene', 'hay'],
             ['es-tengo-que'],
             {
               id: 'es.ex.2r0h3c9b59qj4l',
               explanation:
-                'For I, the form is tengo que. Tenés que is for vos, tiene que for usted, él or ella, and hay que is a general rule.',
+                'For I, the form is tengo que. Tienes que is for tú, tiene que for usted, él or ella, and hay que is a general rule.',
             },
           ),
           ex.listenChoice(
-            'Tenés que trabajar mañana.',
+            'Tienes que trabajar mañana.',
             ['Tengo que trabajar mañana.', 'Tiene que trabajar mañana.'],
             ['es-tengo-que'],
             { id: 'es.ex.lm7ujrxsvx5i67' },
@@ -362,7 +364,7 @@ export const ES_A2_U07: EsUnitDef = {
             },
           ),
           ex.shortAnswer(
-            '¿Qué tenés que hacer hoy?',
+            '¿Qué tienes que hacer hoy?',
             'Say you have to go to a meeting (start with «Tengo que»).',
             'Tengo que ir a una reunión.',
             [
@@ -383,10 +385,10 @@ export const ES_A2_U07: EsUnitDef = {
         objective: 'Say what you can and can’t do, and talk about exams.',
         intro: {
           explanation:
-            'Poder + infinitive means can: puedo, podés (vos), puede (usted, él, ella), podemos, pueden. The o becomes ue in puedo, puede and pueden, but not in podés or podemos. No puedo is I can’t. Watch out for a false friend: aprobar un examen means to pass an exam. In Argentina, public universities are free to attend.',
+            'Poder + infinitive means can: puedo, puedes (tú), puede (usted, él, ella), podemos, pueden (ustedes, ellos). The o becomes ue in puedo, puedes, puede and pueden, but not in podemos. No puedo is I can’t. Aprobar un examen means to pass an exam (it does not mean to approve). In several Latin American countries, such as Mexico and Argentina, public universities are free or almost free.',
           examples: [
             {
-              target: '¿Podés venir mañana? — No, no puedo.',
+              target: '¿Puedes venir mañana? — No, no puedo.',
               base: 'Can you come tomorrow? — No, I can’t.',
             },
             { target: 'Tengo que aprobar el examen.', base: 'I have to pass the exam.' },
@@ -403,13 +405,13 @@ export const ES_A2_U07: EsUnitDef = {
           ex.fillBlank(
             '¿___ venir a la reunión mañana?',
             'Can you come to the meeting tomorrow? (to a friend)',
-            'Podés',
-            ['Puedo', 'Podemos', 'Tenés'],
+            'Puedes',
+            ['Puedo', 'Podemos', 'Tienes'],
             ['es-puedo', 'es-la-reunion'],
             {
               id: 'es.ex.iwq6r1r8es8pn9',
               explanation:
-                'With vos the form is podés, with the stress on the last syllable and no ue. Tenés needs que: ¿tenés que venir?',
+                'With tú the form is puedes, with ue like puedo. Tienes needs que: ¿tienes que venir?',
             },
           ),
           ex.listenChoice(
@@ -449,14 +451,14 @@ export const ES_A2_U07: EsUnitDef = {
             { id: 'es.ex.acf20outksjp9s' },
           ),
           ex.fillBlank(
-            'Mi hermana ___ estudiar en la universidad de Córdoba.',
-            'My sister can study at the university in Córdoba.',
+            'Mi hermana ___ estudiar en la universidad de Lima.',
+            'My sister can study at the university in Lima.',
             'puede',
-            ['podés', 'puedo', 'podemos'],
+            ['puedes', 'puedo', 'podemos'],
             ['es-puedo', 'es-la-universidad'],
             {
               id: 'es.ex.8yjt6rsuxb5cg3',
-              explanation: 'For él or ella the form is puede. Podés is for vos, puedo for yo.',
+              explanation: 'For él or ella the form is puede. Puedes is for tú, puedo for yo.',
             },
           ),
           ex.orderWords(
@@ -479,14 +481,15 @@ export const ES_A2_U07: EsUnitDef = {
             },
           ),
           ex.shortAnswer(
-            '¿Podés venir el sábado?',
+            '¿Puedes venir el sábado?',
             'A friend asks you. Say yes, you can (start with «Sí»).',
             'Sí, puedo.',
             [
               'Sí, puedo',
               'Sí, puedo ir.',
+              'Sí, claro, puedo.',
+              'Claro, sí, puedo.',
               'Sí, dale, puedo.',
-              'Dale, sí, puedo.',
               'Sí, puedo venir.',
             ],
             ['es-puedo'],
@@ -508,8 +511,8 @@ export const ES_A2_U07: EsUnitDef = {
               base: 'I’ve been studying English for two years.',
             },
             {
-              target: 'Vivo en Rosario desde enero.',
-              base: 'I’ve lived in Rosario since January.',
+              target: 'Vivo en Bogotá desde enero.',
+              base: 'I’ve lived in Bogotá since January.',
             },
           ],
         },
@@ -538,8 +541,8 @@ export const ES_A2_U07: EsUnitDef = {
             },
           ),
           ex.fillBlank(
-            'Vivo en Rosario desde ___.',
-            'I’ve lived in Rosario since January.',
+            'Vivo en Bogotá desde ___.',
+            'I’ve lived in Bogotá since January.',
             'enero',
             ['dos años', 'tres meses', 'mucho'],
             ['es-desde'],
@@ -586,20 +589,20 @@ export const ES_A2_U07: EsUnitDef = {
             { id: 'es.ex.wrgrncfz20lkkn' },
           ),
           ex.translateWrite(
-            'I’ve been working in Córdoba for two years.',
-            'Trabajo en Córdoba desde hace dos años.',
+            'I’ve been working in Lima for two years.',
+            'Trabajo en Lima desde hace dos años.',
             ['es-desde-hace'],
             {
               id: 'es.ex.e95i2vxtg5m5b0',
               acceptedAnswers: [
-                'Desde hace dos años trabajo en Córdoba.',
-                'Hace dos años que trabajo en Córdoba.',
-                'Yo trabajo en Córdoba desde hace dos años.',
+                'Desde hace dos años trabajo en Lima.',
+                'Hace dos años que trabajo en Lima.',
+                'Yo trabajo en Lima desde hace dos años.',
               ],
             },
           ),
           ex.shortAnswer(
-            '¿Desde cuándo estudiás inglés?',
+            '¿Desde cuándo estudias inglés?',
             'Say you have been studying English since March (use «desde»).',
             'Estudio inglés desde marzo.',
             [
@@ -620,7 +623,7 @@ export const ES_A2_U07: EsUnitDef = {
         objective: 'Understand and answer questions in a job interview.',
         intro: {
           explanation:
-            'In a job interview people usually speak with usted: ¿me trae su currículum?, ¿puede trabajar los sábados? With your coworkers you switch to vos. In Argentina a pasantía is an internship for students, often paid. Pronunciation: c before a, o or u sounds like k (currículum, compañero), and before e or i like s (oficina, cine). The rr of currículum is trilled.',
+            'In a job interview people usually speak with usted: ¿me trae su currículum?, ¿puede trabajar los sábados? With your coworkers you usually switch to tú. A pasantía is an internship for students, often paid (in Mexico people also say las prácticas). Pronunciation: c before a, o or u sounds like k (currículum, compañero), and before e or i like s (oficina, cine). The rr of currículum is trilled.',
           examples: [
             {
               target: 'Mañana tengo una entrevista de trabajo.',
@@ -661,8 +664,8 @@ export const ES_A2_U07: EsUnitDef = {
             { id: 'es.ex.rrv6ruv9aefj1w' },
           ),
           ex.fillBlank(
-            'Busco ___ en una oficina de Buenos Aires.',
-            'I’m looking for work in an office in Buenos Aires.',
+            'Busco ___ en una oficina de Lima.',
+            'I’m looking for work in an office in Lima.',
             'empleo',
             ['sueldo', 'examen', 'título'],
             ['es-el-empleo'],
@@ -680,7 +683,7 @@ export const ES_A2_U07: EsUnitDef = {
             'For two years',
             ['Since Monday', 'For a week', 'He doesn’t work there yet'],
             ['es-desde-hace'],
-            'Diego says “Trabajo en un hotel de Rosario desde hace dos años”: he has been working there for two years.',
+            'Diego says “Trabajo en un hotel de Bogotá desde hace dos años”: he has been working there for two years.',
           ),
           question(
             'es.ex.18a11579udbt88',
@@ -698,7 +701,7 @@ export const ES_A2_U07: EsUnitDef = {
             'Go to college',
             ['Work at the hotel', 'Bring his CV', 'Take an exam'],
             ['es-tengo-que', 'es-la-universidad'],
-            'Diego says “los lunes tengo que ir a la facultad a la mañana”.',
+            'Diego says “los lunes tengo que ir a la facultad por la mañana”. La facultad is the school or faculty of a university.',
           ),
           question(
             'es.ex.ajp89vcr5zl57l',
@@ -774,7 +777,7 @@ export const ES_A2_U07: EsUnitDef = {
             AVISO,
             'What do you need for the internship?',
             'To speak English',
-            ['To have a car', 'To work on Saturdays', 'To live in Córdoba'],
+            ['To have a car', 'To work on Saturdays', 'To live in Lima'],
             ['es-hay-que'],
             'The ad says “Hay que hablar inglés”: you have to speak English.',
           ),
@@ -844,7 +847,7 @@ export const ES_A2_U07: EsUnitDef = {
             },
           ),
           ex.shortAnswer(
-            '¿Desde cuándo trabajás acá?',
+            '¿Desde cuándo trabajas acá?',
             'Say you have been working here for three years (use «desde hace»).',
             'Trabajo acá desde hace tres años.',
             [
@@ -852,6 +855,7 @@ export const ES_A2_U07: EsUnitDef = {
               'Desde hace tres años',
               'Trabajo acá desde hace tres años',
               'Desde hace tres años trabajo acá.',
+              'Trabajo aquí desde hace tres años.',
             ],
             ['es-desde-hace'],
             { id: 'es.ex.72i4suc80fzgmq' },

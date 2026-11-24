@@ -1,11 +1,11 @@
 import * as Haptics from 'expo-haptics';
 import { router } from 'expo-router';
-import { Check, Paintbrush, ScanFace } from 'lucide-react-native';
+import { Check, Paintbrush, ScanFace, Smile } from 'lucide-react-native';
 import { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import Animated, { FadeIn } from 'react-native-reanimated';
 
-import { COSMETICS, RARITY_LABEL, type CosmeticItem, type CosmeticKind } from '@shared/cosmetics';
+import { visibleCosmetics, type CosmeticItem, type CosmeticKind } from '@shared/cosmetics';
 
 import {
   Button,
@@ -24,20 +24,31 @@ import {
 import { FormMessage } from '@/features/auth/FormMessage';
 import { FramedAvatar } from '@/features/cosmetics/FramedAvatar';
 import { ProfileBackdrop } from '@/features/cosmetics/ProfileBackdrop';
-import { BuyCosmeticButton, ItemTile } from '@/features/cosmetics/CosmeticTiles';
+import {
+  CosmeticAction,
+  ItemTile,
+  RankLadder,
+  useCosmeticContext,
+} from '@/features/cosmetics/CosmeticTiles';
 import { useEquipCosmetic, useOwnedCosmetics } from '@/features/cosmetics/api';
+import { cosmeticStatus, type CosmeticStatus } from '@/features/cosmetics/state';
 import { RARITY_COLORS } from '@/features/cosmetics/visuals';
 import { useDailyMissions } from '@/features/missions/api';
 import { useMyProfile } from '@/features/profile/hooks';
 import { usePolys, useStreakRepair } from '@/features/polys/api';
 import { FreezeCard, StreakRepairCard } from '@/features/polys/StreakCards';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
+import { useStrings } from '@/i18n';
+import { shopStrings } from '@/i18n/screens/shop';
 import { toUserMessage } from '@/lib/errors';
 import { playSound } from '@/lib/sounds';
 
-const TABS: { kind: CosmeticKind; label: string; Icon: typeof ScanFace }[] = [
-  { kind: 'frame', label: 'Marcos', Icon: ScanFace },
-  { kind: 'background', label: 'Fondos', Icon: Paintbrush },
+type TabLabel = 'tabSkins' | 'tabFrames' | 'tabBackgrounds';
+
+const TABS: { kind: CosmeticKind; label: TabLabel; Icon: typeof ScanFace }[] = [
+  { kind: 'skin', label: 'tabSkins', Icon: Smile },
+  { kind: 'frame', label: 'tabFrames', Icon: ScanFace },
+  { kind: 'background', label: 'tabBackgrounds', Icon: Paintbrush },
 ];
 
 /**
@@ -46,15 +57,18 @@ const TABS: { kind: CosmeticKind; label: string; Icon: typeof ScanFace }[] = [
  */
 export default function ShopScreen() {
   const styles = useStyles();
+  const t = useStrings(shopStrings);
   const profile = useMyProfile();
   const owned = useOwnedCosmetics();
   const polys = usePolys();
   const missions = useDailyMissions();
   const repair = useStreakRepair();
-  const [kind, setKind] = useState<CosmeticKind>('frame');
+  const [kind, setKind] = useState<CosmeticKind>('skin');
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const ownedSet = new Set(owned.data ?? []);
+  const ctx = useCosmeticContext(ownedSet);
 
-  if (profile.isPending || owned.isPending) return <LoadingState label="Abriendo la tienda…" />;
+  if (profile.isPending || owned.isPending) return <LoadingState label={t.loading} />;
   if (profile.isError || owned.isError || !profile.data) {
     return (
       <ErrorState
@@ -67,11 +81,12 @@ export default function ShopScreen() {
   }
 
   const me = profile.data.profile;
-  const ownedSet = new Set(owned.data);
-  const equippedId = kind === 'frame' ? me.frame_id : me.background_id;
-  const items = COSMETICS.filter((c) => c.kind === kind);
+  const equippedId =
+    kind === 'skin' ? me.avatar_id : kind === 'frame' ? me.frame_id : me.background_id;
+  const items = visibleCosmetics(kind, ownedSet);
   const selected =
     items.find((c) => c.id === selectedId) ?? items.find((c) => c.id === equippedId) ?? items[0]!;
+  const statusOf = (item: CosmeticItem) => cosmeticStatus(item, ctx, equippedId);
 
   return (
     <Screen
@@ -85,9 +100,9 @@ export default function ShopScreen() {
     >
       <View style={styles.header}>
         <View style={styles.flex}>
-          <ScreenHeader title="Tienda" onBack={() => router.back()} />
+          <ScreenHeader title={t.title} onBack={() => router.back()} />
         </View>
-        <View style={styles.balance} accessibilityLabel={`Tenés ${polys.data?.balance ?? 0} Polys`}>
+        <View style={styles.balance} accessibilityLabel={t.balanceA11y(polys.data?.balance ?? 0)}>
           <PolyCoin size={22} />
           <Text variant="heading" color="gold" style={styles.tabular}>
             {polys.data?.balance ?? '–'}
@@ -116,7 +131,7 @@ export default function ShopScreen() {
             >
               <Icon color={active ? colors.onPrimary : colors.textMuted} size={16} />
               <Text variant="bodyStrong" color={active ? 'onPrimary' : 'textMuted'}>
-                {label}
+                {t[label]}
               </Text>
             </Pressable>
           );
@@ -126,13 +141,13 @@ export default function ShopScreen() {
       <FittingRoom
         key={selected.id}
         item={selected}
-        avatarId={me.avatar_id}
+        status={statusOf(selected)}
+        avatarId={kind === 'skin' && selected.available ? selected.id : me.avatar_id}
         photoUrl={avatarPhotoUrl(me.avatar_path)}
         name={me.display_name ?? me.username ?? ''}
         frameId={kind === 'frame' ? selected.id : me.frame_id}
         backgroundId={kind === 'background' ? selected.id : me.background_id}
-        owned={ownedSet.has(selected.id)}
-        equipped={equippedId === selected.id}
+        rating={ctx.rating}
         balance={polys.data?.balance ?? 0}
       />
 
@@ -141,11 +156,11 @@ export default function ShopScreen() {
           <ItemTile
             key={item.id}
             item={item}
+            status={statusOf(item)}
             avatarId={me.avatar_id}
             photoUrl={avatarPhotoUrl(me.avatar_path)}
+            rating={ctx.rating}
             selected={item.id === selected.id}
-            owned={ownedSet.has(item.id)}
-            equipped={item.id === equippedId}
             onPress={() => {
               void Haptics.selectionAsync();
               setSelectedId(item.id);
@@ -154,8 +169,10 @@ export default function ShopScreen() {
         ))}
       </View>
 
+      {kind === 'frame' ? <RankLadder rating={ctx.rating} /> : null}
+
       <Text variant="caption" align="center">
-        Los legendarios no se compran: se ganan en la temporada o son exclusivos.
+        {t.footer}
       </Text>
     </Screen>
   );
@@ -164,26 +181,27 @@ export default function ShopScreen() {
 /** Vista previa grande del ítem elegido sobre tu perfil, con la acción que corresponda. */
 function FittingRoom({
   item,
+  status,
   avatarId,
   photoUrl,
   name,
   frameId,
   backgroundId,
-  owned,
-  equipped,
+  rating,
   balance,
 }: {
   item: CosmeticItem;
+  status: CosmeticStatus;
   avatarId: string;
   photoUrl: string | null;
   name: string;
   frameId: string | null;
   backgroundId: string | null;
-  owned: boolean;
-  equipped: boolean;
+  rating: number | null;
   balance: number;
 }) {
   const styles = useStyles();
+  const t = useStrings(shopStrings);
   const equip = useEquipCosmetic();
   const rarity = RARITY_COLORS[item.rarity];
   const done = () => {
@@ -192,26 +210,28 @@ function FittingRoom({
   };
 
   let action;
-  if (equipped) {
+  if (status.kind === 'equipped') {
+    // Una skin no se "saca": se elige otro avatar.
+    action =
+      item.kind === 'skin' ? null : (
+        <Button
+          label={t.unequip}
+          variant="ghost"
+          loading={equip.isPending}
+          onPress={() => equip.mutate({ kind: item.kind, itemId: null })}
+        />
+      );
+  } else if (status.kind === 'unlocked') {
     action = (
       <Button
-        label="Sacármelo"
-        variant="ghost"
-        loading={equip.isPending}
-        onPress={() => equip.mutate({ kind: item.kind, itemId: null })}
-      />
-    );
-  } else if (owned) {
-    action = (
-      <Button
-        label="Usar"
+        label={t.equip}
         icon={<Check color={colors.onPrimary} size={20} />}
         loading={equip.isPending}
         onPress={() => equip.mutate({ kind: item.kind, itemId: item.id }, { onSuccess: done })}
       />
     );
   } else {
-    action = <BuyCosmeticButton item={item} balance={balance} />;
+    action = <CosmeticAction item={item} status={status} balance={balance} />;
   }
 
   return (
@@ -223,7 +243,9 @@ function FittingRoom({
             photoUrl={photoUrl}
             size={96}
             frameId={frameId}
+            rating={frameId === 'frame_rank' ? (rating ?? 200) : rating}
             fallbackRing={colors.primary}
+            animated
           />
           <Text variant="heading" color="textStrong" numberOfLines={1}>
             {name}
@@ -236,8 +258,8 @@ function FittingRoom({
             {item.name}
           </Text>
           <Text variant="caption" style={{ color: rarity }}>
-            {RARITY_LABEL[item.rarity]}
-            {equipped ? ' · En uso' : owned ? ' · Tuyo' : ''}
+            {t.rarity[item.rarity]} · {t.source[item.source]}
+            {status.kind === 'equipped' ? t.equipped : status.kind === 'unlocked' ? t.unlocked : ''}
           </Text>
         </View>
       </View>

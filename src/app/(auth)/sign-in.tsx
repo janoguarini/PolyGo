@@ -6,11 +6,18 @@ import { StyleSheet, View } from 'react-native';
 
 import { Button, Screen, Text, TextField, spacing } from '@/design-system';
 import { signIn } from '@/features/auth/api';
+import { AppleSignInButton } from '@/features/auth/AppleSignInButton';
 import { FormMessage } from '@/features/auth/FormMessage';
+import { AuthDivider, GoogleSignInButton } from '@/features/auth/GoogleSignInButton';
 import { signInSchema, type SignInValues } from '@/features/auth/schemas';
+import { useStrings } from '@/i18n';
+import { signInStrings } from '@/i18n/screens/signIn';
+import { authStrings } from '@/features/auth/strings';
 import { toUserMessage } from '@/lib/errors';
 
 export default function SignInScreen() {
+  const t = useStrings(signInStrings);
+  const auth = useStrings(authStrings);
   const { control, handleSubmit, formState } = useForm<SignInValues>({
     resolver: zodResolver(signInSchema),
     defaultValues: { email: '', password: '' },
@@ -21,8 +28,8 @@ export default function SignInScreen() {
   return (
     <Screen edges={['top', 'bottom']} contentStyle={styles.content}>
       <View style={styles.header}>
-        <Text variant="title">Iniciar sesión</Text>
-        <Text color="textMuted">Tu rango te está esperando.</Text>
+        <Text variant="title">{t.title}</Text>
+        <Text color="textMuted">{t.subtitle}</Text>
       </View>
 
       <Controller
@@ -30,7 +37,7 @@ export default function SignInScreen() {
         name="email"
         render={({ field }) => (
           <TextField
-            label="Email"
+            label={t.email}
             value={field.value}
             onChangeText={field.onChange}
             onBlur={field.onBlur}
@@ -48,7 +55,7 @@ export default function SignInScreen() {
         name="password"
         render={({ field }) => (
           <TextField
-            label="Contraseña"
+            label={t.password}
             value={field.value}
             onChangeText={field.onChange}
             onBlur={field.onBlur}
@@ -67,19 +74,24 @@ export default function SignInScreen() {
       ) : null}
 
       <Button
-        label="Entrar"
+        label={t.submit}
         size="lg"
         loading={mutation.isPending}
         onPress={handleSubmit((v) => mutation.mutate(v))}
       />
 
+      <AuthDivider label={auth.dividerContinueWith} />
+      <GoogleSignInButton />
+      <AppleSignInButton />
+
       <View style={styles.links}>
         <Link href="/forgot-password" style={styles.link}>
-          <Text color="primarySoft">¿Olvidaste tu contraseña?</Text>
+          <Text color="primarySoft">{t.forgotPassword}</Text>
         </Link>
         <Link href="/sign-up" replace style={styles.link}>
           <Text color="textMuted">
-            ¿No tenés cuenta? <Text color="primarySoft">Registrate</Text>
+            {t.noAccount}
+            <Text color="primarySoft">{t.signUp}</Text>
           </Text>
         </Link>
       </View>

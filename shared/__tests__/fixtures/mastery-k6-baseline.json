@@ -1,0 +1,3173 @@
+{
+  "description": "Línea base de los 33 casos validados de 5.8.4 criterio 1, generada con shared/mastery.ts ANTES de incorporar K6 (rev. 2.2). engine: entrada y salida completas de modelEval (sin prior) de los 9 casos con historial; published: los otros 24, cuyo α y β publica el documento.",
+  "model_version": "me-1.0.0",
+  "generated_from_sha256": "42d55659589e893362b31635826a3be66ef8eb17945a505681486c38eb2bc6f4",
+  "engine": [
+    {
+      "id": "E6-d40",
+      "input": {
+        "dimension": "vocabulary",
+        "level": "A1",
+        "rows": [
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100000,
+            "recordedAtMs": 0,
+            "itemId": "z1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": null,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100001,
+            "recordedAtMs": 86400000,
+            "itemId": "z2",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100002,
+            "recordedAtMs": 259200000,
+            "itemId": "z3",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 172800,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100003,
+            "recordedAtMs": 604800000,
+            "itemId": "z1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 345600,
+            "prevItemFirstTryMs": 0
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100004,
+            "recordedAtMs": 1209600000,
+            "itemId": "z4",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 604800,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100005,
+            "recordedAtMs": 1814400000,
+            "itemId": "z2",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 604800,
+            "prevItemFirstTryMs": 86400000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100006,
+            "recordedAtMs": 2592000000,
+            "itemId": "z3",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 777600,
+            "prevItemFirstTryMs": 259200000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100007,
+            "recordedAtMs": 3456000000,
+            "itemId": "z4",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 864000,
+            "prevItemFirstTryMs": 1209600000
+          }
+        ],
+        "asOfMs": 3456000000,
+        "lastExposureMs": 3456000000
+      },
+      "output": {
+        "status": "mastered",
+        "mastery": 0.9047311085672898,
+        "confidence": 0.6554998387152715,
+        "lower": 0.698614556368284,
+        "weak": false,
+        "retention": 0.9499999999999997,
+        "halfLifeDays": 128,
+        "retentionSufficient": true,
+        "retentionDemonstrated": true,
+        "recallSpeed": 0.20000000000000007,
+        "sufficient": true,
+        "detail": {
+          "alpha": 6.978744564458804,
+          "beta": 0.7348672461377994,
+          "sd": 0.09945719656290111,
+          "nEff": 6.243877318321005,
+          "directItems": 4,
+          "directDays": 8,
+          "tLastMs": 3456000000,
+          "transfer": {
+            "sNov": 2.3111249494542556,
+            "index": 0.7680419816812339,
+            "met": true,
+            "far": {
+              "sNov": 0,
+              "index": 0.5
+            }
+          },
+          "rungs": {
+            "R": {
+              "N": 0,
+              "S": 0,
+              "F": 0,
+              "speed": null,
+              "speedRows": 0,
+              "impulsiveErrors": 0
+            },
+            "G": {
+              "N": 0,
+              "S": 0,
+              "F": 0,
+              "speed": null,
+              "speedRows": 0,
+              "impulsiveErrors": 0
+            },
+            "L": {
+              "N": 6.243877318321005,
+              "S": 6.243877318321005,
+              "F": 0,
+              "speed": 0.20000000000000007,
+              "speedRows": 8,
+              "impulsiveErrors": 0
+            }
+          },
+          "retentionGrid": [
+            1.742030533497617e-49, 2.1059856905023163e-25, 2.3155557546371733e-13,
+            2.42803619097442e-7, 0.00024863090595578084, 0.007956188990584987, 0.045007001501155164,
+            0.10704529282022374, 0.16508640939631194, 0.2050138471759714, 0.2284647133414829,
+            0.2411776730644633
+          ],
+          "probes": 7,
+          "evidence": [
+            {
+              "eventId": 100000,
+              "rung": "L",
+              "w": 0.3674336230688997,
+              "hits": 0.3674336230688997,
+              "misses": 0
+            },
+            {
+              "eventId": 100001,
+              "rung": "L",
+              "w": 0.7405487761432821,
+              "hits": 0.7405487761432821,
+              "misses": 0
+            },
+            {
+              "eventId": 100002,
+              "rung": "L",
+              "w": 0.7520439537809918,
+              "hits": 0.7520439537809918,
+              "misses": 0
+            },
+            {
+              "eventId": 100003,
+              "rung": "L",
+              "w": 0.7755723809168673,
+              "hits": 0.7755723809168673,
+              "misses": 0
+            },
+            {
+              "eventId": 100004,
+              "rung": "L",
+              "w": 0.8185322195299817,
+              "hits": 0.8185322195299817,
+              "misses": 0
+            },
+            {
+              "eventId": 100005,
+              "rung": "L",
+              "w": 0.8638716525936915,
+              "hits": 0.8638716525936915,
+              "misses": 0
+            },
+            {
+              "eventId": 100006,
+              "rung": "L",
+              "w": 0.9258747122872905,
+              "hits": 0.9258747122872905,
+              "misses": 0
+            },
+            {
+              "eventId": 100007,
+              "rung": "L",
+              "w": 1,
+              "hits": 1,
+              "misses": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "E6-d100",
+      "input": {
+        "dimension": "vocabulary",
+        "level": "A1",
+        "rows": [
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100000,
+            "recordedAtMs": 0,
+            "itemId": "z1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": null,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100001,
+            "recordedAtMs": 86400000,
+            "itemId": "z2",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100002,
+            "recordedAtMs": 259200000,
+            "itemId": "z3",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 172800,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100003,
+            "recordedAtMs": 604800000,
+            "itemId": "z1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 345600,
+            "prevItemFirstTryMs": 0
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100004,
+            "recordedAtMs": 1209600000,
+            "itemId": "z4",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 604800,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100005,
+            "recordedAtMs": 1814400000,
+            "itemId": "z2",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 604800,
+            "prevItemFirstTryMs": 86400000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100006,
+            "recordedAtMs": 2592000000,
+            "itemId": "z3",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 777600,
+            "prevItemFirstTryMs": 259200000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100007,
+            "recordedAtMs": 3456000000,
+            "itemId": "z4",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 864000,
+            "prevItemFirstTryMs": 1209600000
+          }
+        ],
+        "asOfMs": 8640000000,
+        "lastExposureMs": 3456000000
+      },
+      "output": {
+        "status": "mastered",
+        "mastery": 0.9047311085672898,
+        "confidence": 0.41293902250003245,
+        "lower": 0.698614556368284,
+        "weak": false,
+        "retention": 0.6493062248614657,
+        "halfLifeDays": 128,
+        "retentionSufficient": true,
+        "retentionDemonstrated": true,
+        "recallSpeed": 0.20000000000000007,
+        "sufficient": true,
+        "detail": {
+          "alpha": 6.978744564458804,
+          "beta": 0.7348672461377994,
+          "sd": 0.09945719656290111,
+          "nEff": 6.243877318321005,
+          "directItems": 4,
+          "directDays": 8,
+          "tLastMs": 3456000000,
+          "transfer": {
+            "sNov": 2.3111249494542556,
+            "index": 0.7680419816812339,
+            "met": true,
+            "far": {
+              "sNov": 0,
+              "index": 0.5
+            }
+          },
+          "rungs": {
+            "R": {
+              "N": 0,
+              "S": 0,
+              "F": 0,
+              "speed": null,
+              "speedRows": 0,
+              "impulsiveErrors": 0
+            },
+            "G": {
+              "N": 0,
+              "S": 0,
+              "F": 0,
+              "speed": null,
+              "speedRows": 0,
+              "impulsiveErrors": 0
+            },
+            "L": {
+              "N": 6.243877318321005,
+              "S": 6.243877318321005,
+              "F": 0,
+              "speed": 0.20000000000000007,
+              "speedRows": 8,
+              "impulsiveErrors": 0
+            }
+          },
+          "retentionGrid": [
+            1.742030533497617e-49, 2.1059856905023163e-25, 2.3155557546371733e-13,
+            2.42803619097442e-7, 0.00024863090595578084, 0.007956188990584987, 0.045007001501155164,
+            0.10704529282022374, 0.16508640939631194, 0.2050138471759714, 0.2284647133414829,
+            0.2411776730644633
+          ],
+          "probes": 7,
+          "evidence": [
+            {
+              "eventId": 100000,
+              "rung": "L",
+              "w": 0.3674336230688997,
+              "hits": 0.3674336230688997,
+              "misses": 0
+            },
+            {
+              "eventId": 100001,
+              "rung": "L",
+              "w": 0.7405487761432821,
+              "hits": 0.7405487761432821,
+              "misses": 0
+            },
+            {
+              "eventId": 100002,
+              "rung": "L",
+              "w": 0.7520439537809918,
+              "hits": 0.7520439537809918,
+              "misses": 0
+            },
+            {
+              "eventId": 100003,
+              "rung": "L",
+              "w": 0.7755723809168673,
+              "hits": 0.7755723809168673,
+              "misses": 0
+            },
+            {
+              "eventId": 100004,
+              "rung": "L",
+              "w": 0.8185322195299817,
+              "hits": 0.8185322195299817,
+              "misses": 0
+            },
+            {
+              "eventId": 100005,
+              "rung": "L",
+              "w": 0.8638716525936915,
+              "hits": 0.8638716525936915,
+              "misses": 0
+            },
+            {
+              "eventId": 100006,
+              "rung": "L",
+              "w": 0.9258747122872905,
+              "hits": 0.9258747122872905,
+              "misses": 0
+            },
+            {
+              "eventId": 100007,
+              "rung": "L",
+              "w": 1,
+              "hits": 1,
+              "misses": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "E6-d101",
+      "input": {
+        "dimension": "vocabulary",
+        "level": "A1",
+        "rows": [
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100000,
+            "recordedAtMs": 0,
+            "itemId": "z1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": null,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100001,
+            "recordedAtMs": 86400000,
+            "itemId": "z2",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100002,
+            "recordedAtMs": 259200000,
+            "itemId": "z3",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 172800,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100003,
+            "recordedAtMs": 604800000,
+            "itemId": "z1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 345600,
+            "prevItemFirstTryMs": 0
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100004,
+            "recordedAtMs": 1209600000,
+            "itemId": "z4",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 604800,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100005,
+            "recordedAtMs": 1814400000,
+            "itemId": "z2",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 604800,
+            "prevItemFirstTryMs": 86400000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100006,
+            "recordedAtMs": 2592000000,
+            "itemId": "z3",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 777600,
+            "prevItemFirstTryMs": 259200000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100007,
+            "recordedAtMs": 3456000000,
+            "itemId": "z4",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 864000,
+            "prevItemFirstTryMs": 1209600000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100008,
+            "recordedAtMs": 8640000000,
+            "itemId": "z1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "incorrect",
+            "isFirstTry": true,
+            "sinceLastSeenS": 5184000,
+            "prevItemFirstTryMs": 604800000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100009,
+            "recordedAtMs": 8726400000,
+            "itemId": "z5",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "incorrect",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": null
+          }
+        ],
+        "asOfMs": 8726400000,
+        "lastExposureMs": 8726400000
+      },
+      "output": {
+        "status": "in_progress",
+        "mastery": 0.6402114616903773,
+        "confidence": 0.4053066914447452,
+        "lower": 0.3342191803562855,
+        "weak": false,
+        "retention": 0.95,
+        "halfLifeDays": 64,
+        "retentionSufficient": true,
+        "retentionDemonstrated": true,
+        "recallSpeed": 0.20000000000000007,
+        "sufficient": true,
+        "detail": {
+          "alpha": 4.362604681757397,
+          "beta": 2.4517136221333637,
+          "sd": 0.17168795817990207,
+          "nEff": 5.895546952149921,
+          "directItems": 5,
+          "directDays": 10,
+          "tLastMs": 8726400000,
+          "transfer": {
+            "sNov": 1.4447476091851137,
+            "index": 0.5500306933363368,
+            "met": false,
+            "far": {
+              "sNov": 0,
+              "index": 0.5
+            }
+          },
+          "rungs": {
+            "R": {
+              "N": 0,
+              "S": 0,
+              "F": 0,
+              "speed": null,
+              "speedRows": 0,
+              "impulsiveErrors": 0
+            },
+            "G": {
+              "N": 0,
+              "S": 0,
+              "F": 0,
+              "speed": null,
+              "speedRows": 0,
+              "impulsiveErrors": 0
+            },
+            "L": {
+              "N": 5.895546952149921,
+              "S": 3.903219005886977,
+              "F": 1.9923279462629435,
+              "speed": 0.20000000000000007,
+              "speedRows": 8,
+              "impulsiveErrors": 2
+            }
+          },
+          "retentionGrid": [
+            7.17788548927688e-48, 7.034277700885939e-24, 5.325235168121974e-12,
+            0.000003491260281472209, 0.002190702284503063, 0.04466996458682758, 0.16541666655651727,
+            0.24446522766849646, 0.21952172163591727, 0.15523565498441555, 0.10124830173999612,
+            0.06724826927772001
+          ],
+          "probes": 9,
+          "evidence": [
+            {
+              "eventId": 100000,
+              "rung": "L",
+              "w": 0.22969283793521014,
+              "hits": 0.22969283793521014,
+              "misses": 0
+            },
+            {
+              "eventId": 100001,
+              "rung": "L",
+              "w": 0.4629373561436452,
+              "hits": 0.4629373561436452,
+              "misses": 0
+            },
+            {
+              "eventId": 100002,
+              "rung": "L",
+              "w": 0.470123307043081,
+              "hits": 0.470123307043081,
+              "misses": 0
+            },
+            {
+              "eventId": 100003,
+              "rung": "L",
+              "w": 0.48483157232335894,
+              "hits": 0.48483157232335894,
+              "misses": 0
+            },
+            {
+              "eventId": 100004,
+              "rung": "L",
+              "w": 0.5116869459983875,
+              "hits": 0.5116869459983875,
+              "misses": 0
+            },
+            {
+              "eventId": 100005,
+              "rung": "L",
+              "w": 0.5400298694461532,
+              "hits": 0.5400298694461532,
+              "misses": 0
+            },
+            {
+              "eventId": 100006,
+              "rung": "L",
+              "w": 0.5787896830493259,
+              "hits": 0.5787896830493259,
+              "misses": 0
+            },
+            {
+              "eventId": 100007,
+              "rung": "L",
+              "w": 0.6251274339478154,
+              "hits": 0.6251274339478154,
+              "misses": 0
+            },
+            {
+              "eventId": 100008,
+              "rung": "L",
+              "w": 0.9923279462629435,
+              "hits": 0,
+              "misses": 0.9923279462629435
+            },
+            {
+              "eventId": 100009,
+              "rung": "L",
+              "w": 1,
+              "hits": 0,
+              "misses": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "E6-alt",
+      "input": {
+        "dimension": "vocabulary",
+        "level": "A1",
+        "rows": [
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100000,
+            "recordedAtMs": 0,
+            "itemId": "z1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": null,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100001,
+            "recordedAtMs": 86400000,
+            "itemId": "z2",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100002,
+            "recordedAtMs": 259200000,
+            "itemId": "z3",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 172800,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100003,
+            "recordedAtMs": 604800000,
+            "itemId": "z1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 345600,
+            "prevItemFirstTryMs": 0
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100004,
+            "recordedAtMs": 1209600000,
+            "itemId": "z4",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 604800,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100005,
+            "recordedAtMs": 1814400000,
+            "itemId": "z2",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 604800,
+            "prevItemFirstTryMs": 86400000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100006,
+            "recordedAtMs": 2592000000,
+            "itemId": "z3",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 777600,
+            "prevItemFirstTryMs": 259200000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100007,
+            "recordedAtMs": 3456000000,
+            "itemId": "z4",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 864000,
+            "prevItemFirstTryMs": 1209600000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100008,
+            "recordedAtMs": 8640000000,
+            "itemId": "z1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 5184000,
+            "prevItemFirstTryMs": 604800000
+          }
+        ],
+        "asOfMs": 8640000000,
+        "lastExposureMs": 8640000000
+      },
+      "output": {
+        "status": "mastered",
+        "mastery": 0.920990621452043,
+        "confidence": 0.64323588554693,
+        "lower": 0.7008733980969737,
+        "weak": false,
+        "retention": 0.95,
+        "halfLifeDays": 256,
+        "retentionSufficient": true,
+        "retentionDemonstrated": true,
+        "recallSpeed": 0.20000000000000007,
+        "sufficient": true,
+        "detail": {
+          "alpha": 5.396333589300538,
+          "beta": 0.4629373561436452,
+          "sd": 0.10299779984260132,
+          "nEff": 4.933396233156893,
+          "directItems": 4,
+          "directDays": 9,
+          "tLastMs": 8640000000,
+          "transfer": {
+            "sNov": 1.4559174863773205,
+            "index": 0.7106412395718816,
+            "met": true,
+            "far": {
+              "sNov": 0,
+              "index": 0.5
+            }
+          },
+          "rungs": {
+            "R": {
+              "N": 0,
+              "S": 0,
+              "F": 0,
+              "speed": null,
+              "speedRows": 0,
+              "impulsiveErrors": 0
+            },
+            "G": {
+              "N": 0,
+              "S": 0,
+              "F": 0,
+              "speed": null,
+              "speedRows": 0,
+              "impulsiveErrors": 0
+            },
+            "L": {
+              "N": 4.933396233156893,
+              "S": 4.933396233156893,
+              "F": 0,
+              "speed": 0.20000000000000007,
+              "speedRows": 9,
+              "impulsiveErrors": 0
+            }
+          },
+          "retentionGrid": [
+            1.4425498911574622e-121, 2.3180883008425992e-61, 2.938526025945121e-31,
+            3.3084861788662166e-16, 1.1101437451170675e-8, 0.00006430639474803579,
+            0.004894311819170414, 0.04269827907904239, 0.12611586986110263, 0.21674516774279395,
+            0.2841445076962314, 0.32533754630547335
+          ],
+          "probes": 8,
+          "evidence": [
+            {
+              "eventId": 100000,
+              "rung": "L",
+              "w": 0.2314686780718226,
+              "hits": 0.2314686780718226,
+              "misses": 0
+            },
+            {
+              "eventId": 100001,
+              "rung": "L",
+              "w": 0.4665164957684037,
+              "hits": 0.4665164957684037,
+              "misses": 0
+            },
+            {
+              "eventId": 100002,
+              "rung": "L",
+              "w": 0.4737580039074193,
+              "hits": 0.4737580039074193,
+              "misses": 0
+            },
+            {
+              "eventId": 100003,
+              "rung": "L",
+              "w": 0.48857998421712295,
+              "hits": 0.48857998421712295,
+              "misses": 0
+            },
+            {
+              "eventId": 100004,
+              "rung": "L",
+              "w": 0.5156429867014977,
+              "hits": 0.5156429867014977,
+              "misses": 0
+            },
+            {
+              "eventId": 100005,
+              "rung": "L",
+              "w": 0.5442050397551315,
+              "hits": 0.5442050397551315,
+              "misses": 0
+            },
+            {
+              "eventId": 100006,
+              "rung": "L",
+              "w": 0.5832645197880583,
+              "hits": 0.5832645197880583,
+              "misses": 0
+            },
+            {
+              "eventId": 100007,
+              "rung": "L",
+              "w": 0.6299605249474366,
+              "hits": 0.6299605249474366,
+              "misses": 0
+            },
+            {
+              "eventId": 100008,
+              "rung": "L",
+              "w": 1,
+              "hits": 1,
+              "misses": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "E8-r2",
+      "input": {
+        "dimension": "grammar",
+        "level": "A1",
+        "rows": [
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100000,
+            "recordedAtMs": 0,
+            "itemId": "ow1",
+            "itemType": "order_words",
+            "assessmentMode": "guided_construction",
+            "responseFormat": "tiles",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": null,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100001,
+            "recordedAtMs": 864000,
+            "itemId": "ow1",
+            "itemType": "order_words",
+            "assessmentMode": "guided_construction",
+            "responseFormat": "tiles",
+            "verdict": "incorrect",
+            "isFirstTry": false,
+            "sinceLastSeenS": 864,
+            "prevItemFirstTryMs": 0
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100002,
+            "recordedAtMs": 1728000,
+            "itemId": "tw1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 864,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100003,
+            "recordedAtMs": 86400000,
+            "itemId": "tw1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": 1728000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100004,
+            "recordedAtMs": 259200000,
+            "itemId": "tw1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 172800,
+            "prevItemFirstTryMs": 86400000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100005,
+            "recordedAtMs": 518400000,
+            "itemId": "tw1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 259200,
+            "prevItemFirstTryMs": 259200000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100006,
+            "recordedAtMs": 691200000,
+            "itemId": "sa1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 172800,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100007,
+            "recordedAtMs": 864000000,
+            "itemId": "tw2",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 172800,
+            "prevItemFirstTryMs": null
+          }
+        ],
+        "asOfMs": 864000000,
+        "lastExposureMs": 864000000
+      },
+      "output": {
+        "status": "in_progress",
+        "mastery": 0.8354193655572264,
+        "confidence": 0.5010232910314019,
+        "lower": 0.5428476751499147,
+        "weak": false,
+        "retention": 0.9499999999999998,
+        "halfLifeDays": 64,
+        "retentionSufficient": true,
+        "retentionDemonstrated": false,
+        "recallSpeed": 0.2,
+        "sufficient": true,
+        "detail": {
+          "alpha": 4.6997854112263715,
+          "beta": 0.9258747122872905,
+          "sd": 0.1440545758792343,
+          "nEff": 3.542442020867259,
+          "directItems": 3,
+          "directDays": 6,
+          "tLastMs": 864000000,
+          "transfer": {
+            "sNov": 2.72552862354213,
+            "index": 0.7883834635942958,
+            "met": true,
+            "far": {
+              "sNov": 0.740813870607699,
+              "index": 0.6351448703890724
+            }
+          },
+          "rungs": {
+            "R": {
+              "N": 0,
+              "S": 0,
+              "F": 0,
+              "speed": null,
+              "speedRows": 0,
+              "impulsiveErrors": 0
+            },
+            "G": {
+              "N": 0.46293735614364523,
+              "S": 0.46293735614364523,
+              "F": 0,
+              "speed": null,
+              "speedRows": 1,
+              "impulsiveErrors": 0
+            },
+            "L": {
+              "N": 3.542442020867259,
+              "S": 3.542442020867259,
+              "F": 0,
+              "speed": 0.2,
+              "speedRows": 6,
+              "impulsiveErrors": 0
+            }
+          },
+          "retentionGrid": [
+            8.830551800877615e-9, 0.00003652987776272981, 0.0023495160017756194,
+            0.018842715952153918, 0.05336125662318777, 0.08979813601945479, 0.11648981583818804,
+            0.13267780471021812, 0.1415967992090593, 0.1462786743353309, 0.14867734792701207,
+            0.14989139467530485
+          ],
+          "probes": 6,
+          "evidence": [
+            {
+              "eventId": 100000,
+              "rung": "G",
+              "w": 0.46293735614364523,
+              "hits": 0.46293735614364523,
+              "misses": 0
+            },
+            {
+              "eventId": 100002,
+              "rung": "L",
+              "w": 0.740813870607699,
+              "hits": 0.740813870607699,
+              "misses": 0
+            },
+            {
+              "eventId": 100003,
+              "rung": "L",
+              "w": 0.13062461881515303,
+              "hits": 0.13062461881515303,
+              "misses": 0
+            },
+            {
+              "eventId": 100004,
+              "rung": "L",
+              "w": 0.27071885937566814,
+              "hits": 0.27071885937566814,
+              "misses": 0
+            },
+            {
+              "eventId": 100005,
+              "rung": "L",
+              "w": 0.4155699191343077,
+              "hits": 0.4155699191343077,
+              "misses": 0
+            },
+            {
+              "eventId": 100006,
+              "rung": "L",
+              "w": 0.9847147529344312,
+              "hits": 0.9847147529344312,
+              "misses": 0
+            },
+            {
+              "eventId": 100007,
+              "rung": "L",
+              "w": 1,
+              "hits": 1,
+              "misses": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "E8-r3",
+      "input": {
+        "dimension": "grammar",
+        "level": "A1",
+        "rows": [
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100000,
+            "recordedAtMs": 0,
+            "itemId": "ow1",
+            "itemType": "order_words",
+            "assessmentMode": "guided_construction",
+            "responseFormat": "tiles",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": null,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100001,
+            "recordedAtMs": 864000,
+            "itemId": "ow1",
+            "itemType": "order_words",
+            "assessmentMode": "guided_construction",
+            "responseFormat": "tiles",
+            "verdict": "incorrect",
+            "isFirstTry": false,
+            "sinceLastSeenS": 864,
+            "prevItemFirstTryMs": 0
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100002,
+            "recordedAtMs": 1728000,
+            "itemId": "tw1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 864,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100003,
+            "recordedAtMs": 86400000,
+            "itemId": "tw1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": 1728000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100004,
+            "recordedAtMs": 259200000,
+            "itemId": "tw1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 172800,
+            "prevItemFirstTryMs": 86400000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100005,
+            "recordedAtMs": 518400000,
+            "itemId": "tw1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 259200,
+            "prevItemFirstTryMs": 259200000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100006,
+            "recordedAtMs": 691200000,
+            "itemId": "sa1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 172800,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100007,
+            "recordedAtMs": 864000000,
+            "itemId": "tw2",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 172800,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100008,
+            "recordedAtMs": 1123200000,
+            "itemId": "sa2",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 259200,
+            "prevItemFirstTryMs": null
+          }
+        ],
+        "asOfMs": 1123200000,
+        "lastExposureMs": 1123200000
+      },
+      "output": {
+        "status": "mastered",
+        "mastery": 0.8607504924583828,
+        "confidence": 0.5620343855866294,
+        "lower": 0.6027889540214346,
+        "weak": false,
+        "retention": 0.95,
+        "halfLifeDays": 64,
+        "retentionSufficient": true,
+        "retentionDemonstrated": false,
+        "recallSpeed": 0.20000000000000007,
+        "sufficient": true,
+        "detail": {
+          "alpha": 5.5924421640816915,
+          "beta": 0.9047277046327152,
+          "sd": 0.12644067288114008,
+          "nEff": 4.461532533290797,
+          "directItems": 4,
+          "directDays": 7,
+          "tLastMs": 1123200000,
+          "transfer": {
+            "sNov": 3.663277463747062,
+            "index": 0.8234238024886815,
+            "met": true,
+            "far": {
+              "sNov": 0.7238936584186708,
+              "index": 0.6328784727299008
+            }
+          },
+          "rungs": {
+            "R": {
+              "N": 0,
+              "S": 0,
+              "F": 0,
+              "speed": null,
+              "speedRows": 0,
+              "impulsiveErrors": 0
+            },
+            "G": {
+              "N": 0.4523638523163576,
+              "S": 0.4523638523163576,
+              "F": 0,
+              "speed": null,
+              "speedRows": 1,
+              "impulsiveErrors": 0
+            },
+            "L": {
+              "N": 4.461532533290797,
+              "S": 4.461532533290797,
+              "F": 0,
+              "speed": 0.20000000000000007,
+              "speedRows": 7,
+              "impulsiveErrors": 0
+            }
+          },
+          "retentionGrid": [
+            2.3631396834860097e-12, 6.256475434510143e-7, 0.00032192145275876545,
+            0.007302305640401985, 0.03477883661434266, 0.07590013917491097, 0.11212600099514251,
+            0.13628191064871023, 0.15024642735960725, 0.15775644973428013, 0.16165107947328705,
+            0.16363430325665193
+          ],
+          "probes": 7,
+          "evidence": [
+            {
+              "eventId": 100000,
+              "rung": "G",
+              "w": 0.4523638523163576,
+              "hits": 0.4523638523163576,
+              "misses": 0
+            },
+            {
+              "eventId": 100002,
+              "rung": "L",
+              "w": 0.7238936584186708,
+              "hits": 0.7238936584186708,
+              "misses": 0
+            },
+            {
+              "eventId": 100003,
+              "rung": "L",
+              "w": 0.12764114839815033,
+              "hits": 0.12764114839815033,
+              "misses": 0
+            },
+            {
+              "eventId": 100004,
+              "rung": "L",
+              "w": 0.26453563208208297,
+              "hits": 0.26453563208208297,
+              "misses": 0
+            },
+            {
+              "eventId": 100005,
+              "rung": "L",
+              "w": 0.40607828906350224,
+              "hits": 0.40607828906350224,
+              "misses": 0
+            },
+            {
+              "eventId": 100006,
+              "rung": "L",
+              "w": 0.9622238368941451,
+              "hits": 0.9622238368941451,
+              "misses": 0
+            },
+            {
+              "eventId": 100007,
+              "rung": "L",
+              "w": 0.9771599684342459,
+              "hits": 0.9771599684342459,
+              "misses": 0
+            },
+            {
+              "eventId": 100008,
+              "rung": "L",
+              "w": 1,
+              "hits": 1,
+              "misses": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "E8-var",
+      "input": {
+        "dimension": "grammar",
+        "level": "A1",
+        "rows": [
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100000,
+            "recordedAtMs": 0,
+            "itemId": "ow1",
+            "itemType": "order_words",
+            "assessmentMode": "guided_construction",
+            "responseFormat": "tiles",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": null,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100001,
+            "recordedAtMs": 864000,
+            "itemId": "ow1",
+            "itemType": "order_words",
+            "assessmentMode": "guided_construction",
+            "responseFormat": "tiles",
+            "verdict": "incorrect",
+            "isFirstTry": false,
+            "sinceLastSeenS": 864,
+            "prevItemFirstTryMs": 0
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100002,
+            "recordedAtMs": 1728000,
+            "itemId": "tw1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 864,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100003,
+            "recordedAtMs": 86400000,
+            "itemId": "tw1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": 1728000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100004,
+            "recordedAtMs": 259200000,
+            "itemId": "tw1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 172800,
+            "prevItemFirstTryMs": 86400000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100005,
+            "recordedAtMs": 518400000,
+            "itemId": "tw1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 259200,
+            "prevItemFirstTryMs": 259200000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100006,
+            "recordedAtMs": 691200000,
+            "itemId": "sa1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "incorrect",
+            "isFirstTry": true,
+            "sinceLastSeenS": 172800,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100007,
+            "recordedAtMs": 864000000,
+            "itemId": "tw2",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "incorrect",
+            "isFirstTry": true,
+            "sinceLastSeenS": 172800,
+            "prevItemFirstTryMs": null
+          }
+        ],
+        "asOfMs": 864000000,
+        "lastExposureMs": 864000000
+      },
+      "output": {
+        "status": "in_progress",
+        "mastery": 0.4826225898261639,
+        "confidence": 0.32757137445702866,
+        "lower": 0.16748317576502814,
+        "weak": true,
+        "retention": 0.9500000000000001,
+        "halfLifeDays": 2,
+        "retentionSufficient": true,
+        "retentionDemonstrated": false,
+        "recallSpeed": 0.2,
+        "sufficient": true,
+        "detail": {
+          "alpha": 2.715070658291941,
+          "beta": 2.9105894652217215,
+          "sd": 0.19413014419425584,
+          "nEff": 3.542442020867259,
+          "directItems": 3,
+          "directDays": 6,
+          "tLastMs": 864000000,
+          "transfer": {
+            "sNov": 0.740813870607699,
+            "index": 0.3683850018250088,
+            "met": false,
+            "far": {
+              "sNov": 0.740813870607699,
+              "index": 0.6351448703890724
+            }
+          },
+          "rungs": {
+            "R": {
+              "N": 0,
+              "S": 0,
+              "F": 0,
+              "speed": null,
+              "speedRows": 0,
+              "impulsiveErrors": 0
+            },
+            "G": {
+              "N": 0.46293735614364523,
+              "S": 0.46293735614364523,
+              "F": 0,
+              "speed": null,
+              "speedRows": 1,
+              "impulsiveErrors": 0
+            },
+            "L": {
+              "N": 3.542442020867259,
+              "S": 1.5577272679328278,
+              "F": 1.9847147529344311,
+              "speed": 0.2,
+              "speedRows": 4,
+              "impulsiveErrors": 2
+            }
+          },
+          "retentionGrid": [
+            0.007789664207128012, 0.11220222193922552, 0.29638643596413977, 0.28171004822475215,
+            0.1559344008905582, 0.06967801129841472, 0.031186644424317678, 0.01599043873249119,
+            0.009925605482774534, 0.007354328384287367, 0.0061945997657809546, 0.005647600686129933
+          ],
+          "probes": 6,
+          "evidence": [
+            {
+              "eventId": 100000,
+              "rung": "G",
+              "w": 0.46293735614364523,
+              "hits": 0.46293735614364523,
+              "misses": 0
+            },
+            {
+              "eventId": 100002,
+              "rung": "L",
+              "w": 0.740813870607699,
+              "hits": 0.740813870607699,
+              "misses": 0
+            },
+            {
+              "eventId": 100003,
+              "rung": "L",
+              "w": 0.13062461881515303,
+              "hits": 0.13062461881515303,
+              "misses": 0
+            },
+            {
+              "eventId": 100004,
+              "rung": "L",
+              "w": 0.27071885937566814,
+              "hits": 0.27071885937566814,
+              "misses": 0
+            },
+            {
+              "eventId": 100005,
+              "rung": "L",
+              "w": 0.4155699191343077,
+              "hits": 0.4155699191343077,
+              "misses": 0
+            },
+            {
+              "eventId": 100006,
+              "rung": "L",
+              "w": 0.9847147529344312,
+              "hits": 0,
+              "misses": 0.9847147529344312
+            },
+            {
+              "eventId": 100007,
+              "rung": "L",
+              "w": 1,
+              "hits": 0,
+              "misses": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "E9-sin",
+      "input": {
+        "dimension": "vocabulary",
+        "level": "A1",
+        "rows": [
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100000,
+            "recordedAtMs": 10368000000,
+            "itemId": "p1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 10368000,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100001,
+            "recordedAtMs": 10454400000,
+            "itemId": "p2",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 100002,
+            "recordedAtMs": 10627200000,
+            "itemId": "p3",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 172800,
+            "prevItemFirstTryMs": null
+          }
+        ],
+        "asOfMs": 10627200000,
+        "lastExposureMs": 10627200000
+      },
+      "output": {
+        "status": "in_progress",
+        "mastery": 0.801236518005446,
+        "confidence": 0.4316960767042062,
+        "lower": 0.4717961526507679,
+        "weak": false,
+        "retention": 0.9500000000000001,
+        "halfLifeDays": 256,
+        "retentionSufficient": true,
+        "retentionDemonstrated": true,
+        "recallSpeed": 0.2,
+        "sufficient": true,
+        "detail": {
+          "alpha": 3.939034689802923,
+          "beta": 0.9771599684342459,
+          "sd": 0.1640693426554957,
+          "nEff": 2.961874721368677,
+          "directItems": 3,
+          "directDays": 3,
+          "tLastMs": 10627200000,
+          "transfer": {
+            "sNov": 1.9847147529344311,
+            "index": 0.7490410074488825,
+            "met": true,
+            "far": {
+              "sNov": 0,
+              "index": 0.5
+            }
+          },
+          "rungs": {
+            "R": {
+              "N": 0,
+              "S": 0,
+              "F": 0,
+              "speed": null,
+              "speedRows": 0,
+              "impulsiveErrors": 0
+            },
+            "G": {
+              "N": 0,
+              "S": 0,
+              "F": 0,
+              "speed": null,
+              "speedRows": 0,
+              "impulsiveErrors": 0
+            },
+            "L": {
+              "N": 2.961874721368677,
+              "S": 2.961874721368677,
+              "F": 0,
+              "speed": 0.2,
+              "speedRows": 3,
+              "impulsiveErrors": 0
+            }
+          },
+          "retentionGrid": [
+            3.237674705841238e-149, 3.66110467246282e-75, 3.8931542609091325e-38,
+            1.2695398736304307e-19, 2.2925494514040816e-10, 0.000009742151875213004,
+            0.002008274100148718, 0.02883414202104478, 0.10925694584547778, 0.21267677572564672,
+            0.29672598031399694, 0.350488139612555
+          ],
+          "probes": 3,
+          "evidence": [
+            {
+              "eventId": 100000,
+              "rung": "L",
+              "w": 0.9771599684342459,
+              "hits": 0.9771599684342459,
+              "misses": 0
+            },
+            {
+              "eventId": 100001,
+              "rung": "L",
+              "w": 0.9847147529344312,
+              "hits": 0.9847147529344312,
+              "misses": 0
+            },
+            {
+              "eventId": 100002,
+              "rung": "L",
+              "w": 1,
+              "hits": 1,
+              "misses": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "E2-B",
+      "input": {
+        "dimension": "vocabulary",
+        "level": "A1",
+        "rows": [
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 1,
+            "recordedAtMs": 0,
+            "itemId": "i0",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": null,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 2,
+            "recordedAtMs": 86400000,
+            "itemId": "i1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 3,
+            "recordedAtMs": 172800000,
+            "itemId": "i2",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 4,
+            "recordedAtMs": 259200000,
+            "itemId": "i3",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 5,
+            "recordedAtMs": 345600000,
+            "itemId": "i4",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 6,
+            "recordedAtMs": 432000000,
+            "itemId": "i5",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 7,
+            "recordedAtMs": 518400000,
+            "itemId": "i6",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 8,
+            "recordedAtMs": 604800000,
+            "itemId": "i7",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 9,
+            "recordedAtMs": 691200000,
+            "itemId": "i8",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 10,
+            "recordedAtMs": 777600000,
+            "itemId": "i9",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": null
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 11,
+            "recordedAtMs": 864000000,
+            "itemId": "i0",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": 0
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 12,
+            "recordedAtMs": 950400000,
+            "itemId": "i1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": 86400000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 13,
+            "recordedAtMs": 1036800000,
+            "itemId": "i2",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": 172800000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 14,
+            "recordedAtMs": 1123200000,
+            "itemId": "i3",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": 259200000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 15,
+            "recordedAtMs": 1209600000,
+            "itemId": "i4",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": 345600000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 16,
+            "recordedAtMs": 1296000000,
+            "itemId": "i5",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": 432000000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 17,
+            "recordedAtMs": 1382400000,
+            "itemId": "i6",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": 518400000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 18,
+            "recordedAtMs": 1468800000,
+            "itemId": "i7",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": 604800000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 19,
+            "recordedAtMs": 1555200000,
+            "itemId": "i8",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": 691200000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 20,
+            "recordedAtMs": 1641600000,
+            "itemId": "i9",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": 777600000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 21,
+            "recordedAtMs": 1728000000,
+            "itemId": "i0",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": 864000000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 22,
+            "recordedAtMs": 1814400000,
+            "itemId": "i1",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": 950400000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 23,
+            "recordedAtMs": 1900800000,
+            "itemId": "i2",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": 1036800000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 24,
+            "recordedAtMs": 1987200000,
+            "itemId": "i3",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": 1123200000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 25,
+            "recordedAtMs": 2073600000,
+            "itemId": "i4",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": 1209600000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 26,
+            "recordedAtMs": 2160000000,
+            "itemId": "i5",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": 1296000000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 27,
+            "recordedAtMs": 2246400000,
+            "itemId": "i6",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": 1382400000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 28,
+            "recordedAtMs": 2332800000,
+            "itemId": "i7",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": 1468800000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 29,
+            "recordedAtMs": 2419200000,
+            "itemId": "i8",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": 1555200000
+          },
+          {
+            "inputModality": "text",
+            "score": null,
+            "responseMs": 4000,
+            "choices": null,
+            "assists": {},
+            "recommendedSeconds": 20,
+            "eventId": 30,
+            "recordedAtMs": 2505600000,
+            "itemId": "i9",
+            "itemType": "translate_write",
+            "assessmentMode": "free_recall",
+            "responseFormat": "typed",
+            "verdict": "correct",
+            "isFirstTry": true,
+            "sinceLastSeenS": 86400,
+            "prevItemFirstTryMs": 1641600000
+          }
+        ],
+        "asOfMs": 2505600000,
+        "lastExposureMs": 2505600000
+      },
+      "output": {
+        "status": "mastered",
+        "mastery": 0.9715254006594444,
+        "confidence": 0.8931828299251459,
+        "lower": 0.9089828100782142,
+        "weak": false,
+        "retention": 0.9500000000000001,
+        "halfLifeDays": 128,
+        "retentionSufficient": true,
+        "retentionDemonstrated": false,
+        "recallSpeed": 0.20000000000000007,
+        "sufficient": true,
+        "detail": {
+          "alpha": 27.28965112845287,
+          "beta": 0.7998369177983302,
+          "sd": 0.0308381170006104,
+          "nEff": 26.48981421065454,
+          "directItems": 10,
+          "directDays": 30,
+          "tLastMs": 2505600000,
+          "transfer": {
+            "sNov": 7.4826203024964215,
+            "index": 0.8945439163332589,
+            "met": true,
+            "far": {
+              "sNov": 0,
+              "index": 0.5
+            }
+          },
+          "rungs": {
+            "R": {
+              "N": 0,
+              "S": 0,
+              "F": 0,
+              "speed": null,
+              "speedRows": 0,
+              "impulsiveErrors": 0
+            },
+            "G": {
+              "N": 0,
+              "S": 0,
+              "F": 0,
+              "speed": null,
+              "speedRows": 0,
+              "impulsiveErrors": 0
+            },
+            "L": {
+              "N": 26.48981421065454,
+              "S": 26.48981421065454,
+              "F": 0,
+              "speed": 0.20000000000000007,
+              "speedRows": 20,
+              "impulsiveErrors": 0
+            }
+          },
+          "retentionGrid": [
+            2.750043849913065e-36, 7.926461732941342e-19, 4.255486739497443e-10,
+            0.000009860164913555218, 0.0015008996185984075, 0.018517629117224953,
+            0.06504325228423553, 0.12190195824838501, 0.16688407620738646, 0.19526167362579727,
+            0.21121174352052505, 0.21966890678738515
+          ],
+          "probes": 29,
+          "evidence": [
+            {
+              "eventId": 1,
+              "rung": "L",
+              "w": 0.3999184588991651,
+              "hits": 0.3999184588991651,
+              "misses": 0
+            },
+            {
+              "eventId": 2,
+              "rung": "L",
+              "w": 0.8060207523233376,
+              "hits": 0.8060207523233376,
+              "misses": 0
+            },
+            {
+              "eventId": 3,
+              "rung": "L",
+              "w": 0.8122523963562356,
+              "hits": 0.8122523963562356,
+              "misses": 0
+            },
+            {
+              "eventId": 4,
+              "rung": "L",
+              "w": 0.8185322195299817,
+              "hits": 0.8185322195299817,
+              "misses": 0
+            },
+            {
+              "eventId": 5,
+              "rung": "L",
+              "w": 0.8248605943353025,
+              "hits": 0.8248605943353025,
+              "misses": 0
+            },
+            {
+              "eventId": 6,
+              "rung": "L",
+              "w": 0.8312378961427878,
+              "hits": 0.8312378961427878,
+              "misses": 0
+            },
+            {
+              "eventId": 7,
+              "rung": "L",
+              "w": 0.837664503225156,
+              "hits": 0.837664503225156,
+              "misses": 0
+            },
+            {
+              "eventId": 8,
+              "rung": "L",
+              "w": 0.8441407967796914,
+              "hits": 0.8441407967796914,
+              "misses": 0
+            },
+            {
+              "eventId": 9,
+              "rung": "L",
+              "w": 0.8506671609508557,
+              "hits": 0.8506671609508557,
+              "misses": 0
+            },
+            {
+              "eventId": 10,
+              "rung": "L",
+              "w": 0.8572439828530728,
+              "hits": 0.8572439828530728,
+              "misses": 0
+            },
+            {
+              "eventId": 11,
+              "rung": "L",
+              "w": 0.8638716525936915,
+              "hits": 0.8638716525936915,
+              "misses": 0
+            },
+            {
+              "eventId": 12,
+              "rung": "L",
+              "w": 0.8705505632961241,
+              "hits": 0.8705505632961241,
+              "misses": 0
+            },
+            {
+              "eventId": 13,
+              "rung": "L",
+              "w": 0.8772811111231658,
+              "hits": 0.8772811111231658,
+              "misses": 0
+            },
+            {
+              "eventId": 14,
+              "rung": "L",
+              "w": 0.8840636953004919,
+              "hits": 0.8840636953004919,
+              "misses": 0
+            },
+            {
+              "eventId": 15,
+              "rung": "L",
+              "w": 0.8908987181403393,
+              "hits": 0.8908987181403393,
+              "misses": 0
+            },
+            {
+              "eventId": 16,
+              "rung": "L",
+              "w": 0.8977865850653692,
+              "hits": 0.8977865850653692,
+              "misses": 0
+            },
+            {
+              "eventId": 17,
+              "rung": "L",
+              "w": 0.9047277046327152,
+              "hits": 0.9047277046327152,
+              "misses": 0
+            },
+            {
+              "eventId": 18,
+              "rung": "L",
+              "w": 0.9117224885582168,
+              "hits": 0.9117224885582168,
+              "misses": 0
+            },
+            {
+              "eventId": 19,
+              "rung": "L",
+              "w": 0.9187713517408406,
+              "hits": 0.9187713517408406,
+              "misses": 0
+            },
+            {
+              "eventId": 20,
+              "rung": "L",
+              "w": 0.9258747122872905,
+              "hits": 0.9258747122872905,
+              "misses": 0
+            },
+            {
+              "eventId": 21,
+              "rung": "L",
+              "w": 0.9330329915368074,
+              "hits": 0.9330329915368074,
+              "misses": 0
+            },
+            {
+              "eventId": 22,
+              "rung": "L",
+              "w": 0.9402466140861618,
+              "hits": 0.9402466140861618,
+              "misses": 0
+            },
+            {
+              "eventId": 23,
+              "rung": "L",
+              "w": 0.9475160078148386,
+              "hits": 0.9475160078148386,
+              "misses": 0
+            },
+            {
+              "eventId": 24,
+              "rung": "L",
+              "w": 0.9548416039104165,
+              "hits": 0.9548416039104165,
+              "misses": 0
+            },
+            {
+              "eventId": 25,
+              "rung": "L",
+              "w": 0.9622238368941451,
+              "hits": 0.9622238368941451,
+              "misses": 0
+            },
+            {
+              "eventId": 26,
+              "rung": "L",
+              "w": 0.969663144646718,
+              "hits": 0.969663144646718,
+              "misses": 0
+            },
+            {
+              "eventId": 27,
+              "rung": "L",
+              "w": 0.9771599684342459,
+              "hits": 0.9771599684342459,
+              "misses": 0
+            },
+            {
+              "eventId": 28,
+              "rung": "L",
+              "w": 0.9847147529344312,
+              "hits": 0.9847147529344312,
+              "misses": 0
+            },
+            {
+              "eventId": 29,
+              "rung": "L",
+              "w": 0.9923279462629435,
+              "hits": 0.9923279462629435,
+              "misses": 0
+            },
+            {
+              "eventId": 30,
+              "rung": "L",
+              "w": 1,
+              "hits": 1,
+              "misses": 0
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "published": [
+    {
+      "id": "5.8.1-a",
+      "alpha": 1,
+      "beta": 1,
+      "L": 0.05,
+      "p5": 0.04999999999972715
+    },
+    {
+      "id": "5.8.1-b",
+      "alpha": 3,
+      "beta": 1,
+      "L": 0.3684,
+      "p5": 0.36840314986375233
+    },
+    {
+      "id": "5.8.1-c",
+      "alpha": 5,
+      "beta": 1,
+      "L": 0.5493,
+      "p5": 0.5492802716530605
+    },
+    {
+      "id": "5.8.1-d",
+      "alpha": 6,
+      "beta": 1,
+      "L": 0.607,
+      "p5": 0.6069622310028535
+    },
+    {
+      "id": "5.8.1-e",
+      "alpha": 1,
+      "beta": 0.5,
+      "L": 0.0975,
+      "p5": 0.09750000000030923
+    },
+    {
+      "id": "5.8.1-f",
+      "alpha": 13,
+      "beta": 4,
+      "L": 0.5834,
+      "p5": 0.5834277192939226
+    },
+    {
+      "id": "5.8.1-g",
+      "alpha": 2,
+      "beta": 8,
+      "L": 0.041,
+      "p5": 0.04102316750731916
+    },
+    {
+      "id": "5.8.1-h",
+      "alpha": 100,
+      "beta": 25,
+      "L": 0.7387,
+      "p5": 0.7387408328236234
+    },
+    {
+      "id": "5.8.2-a",
+      "alpha": 20,
+      "beta": 1,
+      "L": 0.8609,
+      "p5": 0.860891659331628
+    },
+    {
+      "id": "5.8.2-b",
+      "alpha": 6,
+      "beta": 0.25,
+      "L": 0.8069,
+      "p5": 0.8068533084037881
+    },
+    {
+      "id": "7.6-10",
+      "alpha": 10,
+      "beta": 2,
+      "L": 0.6356,
+      "p5": 0.6356405107530918
+    },
+    {
+      "id": "7.6-15",
+      "alpha": 14,
+      "beta": 3,
+      "L": 0.6562,
+      "p5": 0.656174800770259
+    },
+    {
+      "id": "7.6-20",
+      "alpha": 17,
+      "beta": 5,
+      "L": 0.6156,
+      "p5": 0.6155918923727768
+    },
+    {
+      "id": "7.6-30",
+      "alpha": 24,
+      "beta": 8,
+      "L": 0.6174,
+      "p5": 0.6173897690828198
+    },
+    {
+      "id": "7.6-40",
+      "alpha": 31,
+      "beta": 11,
+      "L": 0.6215,
+      "p5": 0.6214939451806458
+    },
+    {
+      "id": "E0",
+      "alpha": 3.15848,
+      "beta": 0.97716,
+      "L": 0.3917,
+      "p5": 0.39165491243193173
+    },
+    {
+      "id": "E1",
+      "alpha": 0.9259,
+      "beta": 3.5997,
+      "L": 0.0108,
+      "p5": 0.010848988821180683
+    },
+    {
+      "id": "E3-a",
+      "alpha": 6.7841,
+      "beta": 0.9548,
+      "L": 0.6506,
+      "p5": 0.6505519837878637
+    },
+    {
+      "id": "E3-b",
+      "alpha": 3.2865,
+      "beta": 4.4524,
+      "L": 0.1612,
+      "p5": 0.1612266770093811
+    },
+    {
+      "id": "E3-c",
+      "alpha": 19.8007,
+      "beta": 29.3837,
+      "L": 0.2909,
+      "p5": 0.2908826782345386
+    },
+    {
+      "id": "E5",
+      "alpha": 2.7373,
+      "beta": 4.3713,
+      "L": 0.1241,
+      "p5": 0.12408019944587068
+    },
+    {
+      "id": "10-a",
+      "alpha": 1,
+      "beta": 4,
+      "L": 0.0127,
+      "p5": 0.012741455098421284
+    },
+    {
+      "id": "10-b",
+      "alpha": 10,
+      "beta": 0.0625,
+      "L": 0.9636,
+      "p5": 0.9636390652990485
+    },
+    {
+      "id": "10-c",
+      "alpha": 10,
+      "beta": 0.01,
+      "L": 0.9996,
+      "p5": 0.999646451622084
+    }
+  ]
+}

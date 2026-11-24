@@ -387,6 +387,45 @@ export async function fetchLearningSummary(): Promise<LearningSummary> {
   return data as unknown as LearningSummary;
 }
 
+export interface ActivityDays {
+  /** Días con estudio (una fila en user_daily_activity: la misma regla que usa la racha). */
+  studied: string[];
+  /** Días sin estudio cubiertos por un protector de racha. */
+  frozen: string[];
+}
+
+/**
+ * Actividad diaria del usuario entre `from` y `to` (YYYY-MM-DD, inclusive), para el calendario de
+ * racha. Sólo lectura: las fechas ya están en el día local con el que el servidor calcula la racha.
+ */
+export async function fetchActivityDays(
+  userId: string,
+  from: string,
+  to: string,
+): Promise<ActivityDays> {
+  const db = requireSupabase();
+  const [activity, frozen] = await Promise.all([
+    db
+      .from('user_daily_activity')
+      .select('activity_date')
+      .eq('user_id', userId)
+      .gte('activity_date', from)
+      .lte('activity_date', to),
+    db
+      .from('user_frozen_days')
+      .select('frozen_date')
+      .eq('user_id', userId)
+      .gte('frozen_date', from)
+      .lte('frozen_date', to),
+  ]);
+  if (activity.error) throw activity.error;
+  if (frozen.error) throw frozen.error;
+  return {
+    studied: activity.data.map((r) => r.activity_date),
+    frozen: frozen.data.map((r) => r.frozen_date),
+  };
+}
+
 export async function fetchWordOfTheDay(languageCode: string): Promise<WordRow | null> {
   const { data, error } = await requireSupabase()
     .rpc('word_of_the_day', { p_date: localDateString(), p_language: languageCode })

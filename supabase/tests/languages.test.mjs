@@ -1,5 +1,6 @@
 import { test, before } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 
 import { LANGUAGES } from '../../shared/languages.ts';
 import { createDb, createUser, as } from './harness.mjs';
@@ -7,8 +8,14 @@ import { createDb, createUser, as } from './harness.mjs';
 let db;
 let n = 0;
 
+// La base que espera la app: todas las migraciones más la publicación y la activación del francés
+// (supabase/pending/, todavía fuera de migrations/).
+const pending = (name) => readFileSync(new URL(`../pending/${name}`, import.meta.url), 'utf8');
+
 before(async () => {
   db = await createDb();
+  await db.exec(pending('20261203120000_publish_fr_a1_a2.sql'));
+  await db.exec(pending('20261203130000_enable_fr.sql'));
 });
 
 /** Usuario con el registro completo (en inglés). */
@@ -47,15 +54,18 @@ test('el estado de cada idioma replica shared/languages.ts', async () => {
       { code: l.code, status: l.status, ranked: l.ranked },
     );
   }
-  // Francés: sin contenido, oculto.
-  assert.equal(byCode.fr.content_status, 'hidden');
+  // Francés: disponible para todos y sin Ranked.
+  assert.deepEqual([byCode.fr.content_status, byCode.fr.ranked_available], ['available', false]);
 });
 
 test('sin ser tester se eligen los idiomas disponibles y no los «Próximamente»', async () => {
   const u = await onboardedUser();
-  for (const code of ['es', 'fr', 'xx']) {
+  for (const code of ['es', 'xx']) {
     await assert.rejects(setLanguage(u, code), /language_unavailable/);
   }
+  // Francés: cualquier cuenta lo elige, sin content_testers; no crea rating (sin Ranked).
+  await setLanguage(u, 'fr');
+  assert.equal(await targetOf(u), 'fr');
   for (const code of ['it', 'pt', 'zh']) {
     await setLanguage(u, code);
     assert.equal(await targetOf(u), code);
@@ -84,6 +94,10 @@ test('registrarse en otro idioma: rating inicial de ese idioma y sólo niveles c
     );
   await assert.rejects(register('it', 'A2'), /level_unavailable/);
   await assert.rejects(register('es', 'A1'), /language_unavailable/);
+  // Francés: se registra en A1 o A2, sin rating de francés.
+  await register('fr', 'A2');
+  assert.equal(await targetOf(u), 'fr');
+  await register('fr', 'A1');
   await register('zh', 'A1');
   assert.equal(await targetOf(u), 'zh');
   const { rows } = await db.query(
@@ -128,9 +142,10 @@ test('un tester elige otro idioma con ranked: conserva su inglés y recibe el ra
     ],
   );
 
-  // «Próximamente» y oculto siguen cerrados también para testers.
+  // «Próximamente» sigue cerrado también para testers; el francés ya no depende de serlo.
   await assert.rejects(setLanguage(u, 'es'), /language_unavailable/);
-  await assert.rejects(setLanguage(u, 'fr'), /language_unavailable/);
+  await setLanguage(u, 'fr');
+  assert.equal(await targetOf(u), 'fr');
 
   await setLanguage(u, 'en');
   assert.equal(await targetOf(u), 'en');
@@ -161,6 +176,35 @@ test('un idioma con ranked crea el rating inicial si falta', async () => {
     [u],
   );
   assert.equal(rows.length, 1);
+});
+
+test('la activación del francés es idempotente y su rollback lo vuelve a cerrar sin tocar perfiles', async () => {
+  const u = await onboardedUser();
+  await setLanguage(u, 'fr');
+  await db.exec(pending('20261203130000_enable_fr.sql'));
+  const rollback = readFileSync(
+    new URL('../rollback/20261203130000_enable_fr.down.sql', import.meta.url),
+    'utf8',
+  );
+  await db.exec(rollback);
+  await db.exec(rollback);
+  const other = await onboardedUser();
+  await assert.rejects(setLanguage(other, 'fr'), /language_unavailable/);
+  // Quien ya lo eligió conserva el idioma.
+  assert.equal(await targetOf(u), 'fr');
+  // El rollback de la publicación se niega mientras alguien estudia francés.
+  await assert.rejects(
+    db.exec(
+      readFileSync(
+        new URL('../rollback/20261203120000_publish_fr_a1_a2.down.sql', import.meta.url),
+        'utf8',
+      ),
+    ),
+    /fr_unpublish: hay perfiles estudiando francés/,
+  );
+  await db.exec(pending('20261203130000_enable_fr.sql'));
+  await setLanguage(other, 'fr');
+  assert.equal(await targetOf(other), 'fr');
 });
 
 test('nadie más que el propio usuario cambia su idioma y la tabla de testers es privada', async () => {

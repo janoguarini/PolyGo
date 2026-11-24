@@ -2,25 +2,26 @@ import { StyleSheet, View } from 'react-native';
 
 import { Avatar, Button, Card, Text, spacing } from '@/design-system';
 import { FormMessage } from '@/features/auth/FormMessage';
+import { useStrings } from '@/i18n';
 import { toUserMessage } from '@/lib/errors';
 
 import { useBlockedUsers, useUnblockUser } from './api';
+import { blockStrings } from './strings';
 
 /** Ajustes → Usuarios bloqueados: la lista y "Desbloquear". */
 export function BlockedUsersSection() {
+  const t = useStrings(blockStrings);
   const blocked = useBlockedUsers();
   const unblock = useUnblockUser();
 
   if (blocked.isPending) return null;
   if (blocked.isError) {
-    return <FormMessage tone="error" message="No pudimos cargar los usuarios bloqueados." />;
+    return <FormMessage tone="error" message={t.loadError} />;
   }
   if (blocked.data.length === 0) {
     return (
       <Card>
-        <Text variant="caption">
-          No bloqueaste a nadie. Para bloquear a alguien, abrí su perfil desde la clasificación.
-        </Text>
+        <Text variant="caption">{t.empty}</Text>
       </Card>
     );
   }
@@ -34,7 +35,7 @@ export function BlockedUsersSection() {
             @{u.username}
           </Text>
           <Button
-            label="Desbloquear"
+            label={t.unblock}
             variant="ghost"
             loading={unblock.isPending && unblock.variables === u.userId}
             disabled={unblock.isPending}

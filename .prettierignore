@@ -10,3 +10,8 @@ ops/learning-session/v3/
 ops/learning-session/v4/
 ops/learning-session/v3-source/
 ops/learning-session/v4-source/
+ops/learning-session/v5/
+# Paquetes que genera scripts/build-functions.ts: attempts.test.mjs exige que coincidan byte a byte.
+supabase/functions/learning-session/*.generated.js
+# Banco del test de nivel: lo escribe scripts/build-placement-bank.ts y placement.test.ts lo compara byte a byte.
+content/placement/banks.generated.ts

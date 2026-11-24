@@ -3,11 +3,13 @@ import { dialogue, ex, question, reading, w } from '../helpers';
 
 /**
  * Español A2 U10 «Technology» (docs/ES_A1_A2.md): la computadora, el celular, los mensajes y los
- * mails; mandar, recibir, llamar, bajar (descargar) y andar (= funcionar en la Argentina: la compu no
- * anda). Pronombres de objeto directo (lo, la, los, las) e indirecto (le, les) delante del verbo
+ * mails; mandar, recibir, llamar, bajar (descargar) y funcionar (la compu no funciona; «andar» se
+ * menciona como alternativa de algunos países). Variante: español neutro de Latinoamérica, con tú
+ * (llámame, tienes que leerlo). Pronombres de objeto directo (lo, la, los, las) e indirecto (le, les) delante del verbo
  * conjugado (lo llamo, la veo, le escribo, les hablo), le + lo = se lo (se lo mando), y detrás del
  * infinitivo (voy a llamarlo = lo voy a llamar).
- * Pronunciación: la ll rehilada de llamo y pantalla, y la ñ de contraseña.
+ * Pronunciación: la ll de llamo y pantalla como la y inglesa de yes, y la ñ de contraseña; la tilde
+ * de llámame.
  *
  * ESTADO EDITORIAL: borrador, sin revisión de hablantes nativos. Se carga sin publicar.
  */
@@ -16,9 +18,9 @@ const COMPU = dialogue(
   'es.stim.a2-u10-compu',
   'Marta calls her grandson Nico because her computer has a problem.',
   [
-    ['Marta', '¡Hola, Nico! La computadora no anda y no puedo leer los mails.'],
+    ['Marta', '¡Hola, Nico! La computadora no funciona y no puedo leer los mails.'],
     ['Nico', 'Hola, abuela. ¿Qué pasó con la pantalla?'],
-    ['Marta', 'Está negra. Y ayer cambié la contraseña, pero me olvidé la nueva.'],
+    ['Marta', 'Está negra. Y ayer cambié la contraseña, pero olvidé la nueva.'],
     ['Nico', 'Tranquila, abuela. Esta tarde voy a tu casa y lo vemos.'],
     ['Marta', '¡Gracias! ¿Llamo a tu mamá?'],
     ['Nico', 'No, yo la llamo ahora.'],
@@ -32,9 +34,9 @@ const FACULTAD = reading(
   [
     '¡Hola, papá!',
     'Te mando el mail de la facultad con el horario de los exámenes. ¿Lo recibiste?',
-    'Para leerlo, tenés que bajar la app de la facultad.',
+    'Para leerlo, tienes que bajar la app de la facultad.',
     'La contraseña te la mando por mensaje.',
-    '¿No anda? Llamame esta noche.',
+    '¿No funciona? Llámame esta noche.',
     'Besos, Valen',
   ],
   { from: 'Valen', to: 'Papá' },
@@ -43,16 +45,15 @@ const FACULTAD = reading(
 export const ES_A2_U10: EsUnitDef = {
   names: ['Marta', 'Nico', 'Valen', 'Martín', 'Sofía', 'Juan', 'Diego', 'Camila', 'Ana'],
   support: [
-    'anda',
-    'manda',
-    'mandás',
+    'funciona',
+    'mandas',
     'mandé',
     'mandaste',
     'bajé',
     'bajaste',
     'recibí',
     'recibiste',
-    'llamame',
+    'llámame',
     'llamarlo',
     'llamarla',
     'leerlo',
@@ -75,7 +76,7 @@ export const ES_A2_U10: EsUnitDef = {
     grammar: {
       title: 'Object pronouns: lo, la, le, les · se lo',
       explanation:
-        'To avoid repeating a noun, Spanish uses object pronouns. For the person or thing that receives the action directly: lo (him, it, masculine), la (her, it, feminine), los and las (them). For the person something is sent, written or said to: le (to him, to her, to you with usted) and les (to them, to ustedes). With a conjugated verb, the pronoun goes BEFORE it, unlike English: lo llamo (I call him), no la veo (I don’t see her), le escribo (I write to him). Spanish usually keeps the person too: le escribo a Diego. When le meets lo or la, le becomes se: se lo mando (I send it to him), never “le lo”. With an infinitive the pronoun can also be attached to the end: voy a llamarlo = lo voy a llamar. In Argentina, andar is also used for devices: la compu no anda (the computer isn’t working).',
+        'To avoid repeating a noun, Spanish uses object pronouns. For the person or thing that receives the action directly: lo (him, it, masculine), la (her, it, feminine), los and las (them). For the person something is sent, written or said to: le (to him, to her, to you with usted) and les (to them, to ustedes). With a conjugated verb, the pronoun goes BEFORE it, unlike English: lo llamo (I call him), no la veo (I don’t see her), le escribo (I write to him). Spanish usually keeps the person too: le escribo a Diego. When le meets lo or la, le becomes se: se lo mando (I send it to him), never “le lo”. With an infinitive the pronoun can also be attached to the end: voy a llamarlo = lo voy a llamar. For devices, the verb is funcionar: la compu no funciona (the computer isn’t working); in Argentina and some other countries you will also hear no anda.',
       examples: [
         { target: '¿Y Martín? — Lo llamo ahora.', base: 'What about Martín? — I’ll call him now.' },
         {
@@ -91,7 +92,7 @@ export const ES_A2_U10: EsUnitDef = {
     review: {
       status: 'draft',
       notes:
-        'A2 nuevo (U10). Sin revisión nativa: revisar «me olvidé la contraseña» (lo coloquial en la Argentina; la norma pide «me olvidé de la contraseña»), «ya se lo mando» con «ya» = enseguida, «la compu» como forma aceptada y «el mail» (también se dice «el correo»). Se enseña «se lo» y se muestra «te la mando» en la lectura sin explicarlo a fondo.',
+        'A2 nuevo (U10), convertido al español neutro con tú (2026-11-21). Sin revisión nativa: revisar «funcionar» como verbo principal para aparatos (se acepta «andar»); «olvidé la contraseña» (también «se me olvidó», no enseñado); «bajar» frente a «descargar» (se acepta); «ya se lo mando» con «ya» = enseguida; «la compu» como forma aceptada y «el mail» (se aceptan «el correo» y «el email»; «el correo» es más neutro). Se enseña «se lo» y se muestra «te la mando» en la lectura sin explicarlo a fondo.',
     },
     words: [
       w(
@@ -136,7 +137,11 @@ export const ES_A2_U10: EsUnitDef = {
         'Le escribo un mail a la profesora.',
         'I’m writing an email to the teacher.',
         ['technology'],
-        { acceptedTranslations: ['the e-mail'], emoji: '📧' },
+        {
+          acceptedTranslations: ['the e-mail'],
+          acceptedTexts: ['el correo', 'el email'],
+          emoji: '📧',
+        },
       ),
       w(
         'es-llamar',
@@ -160,7 +165,7 @@ export const ES_A2_U10: EsUnitDef = {
         'es-la-app',
         'la app',
         'the app',
-        'La app del banco no anda.',
+        'La app del banco no funciona.',
         'The bank app isn’t working.',
         ['technology'],
         { emoji: '📱' },
@@ -169,7 +174,7 @@ export const ES_A2_U10: EsUnitDef = {
         'es-la-contrasena',
         'la contraseña',
         'the password',
-        'Me olvidé la contraseña.',
+        'Olvidé la contraseña.',
         'I forgot the password.',
         ['technology'],
         { emoji: '🔑' },
@@ -192,12 +197,13 @@ export const ES_A2_U10: EsUnitDef = {
         ['technology'],
       ),
       w(
-        'es-andar',
-        'andar',
+        'es-funcionar',
+        'funcionar',
         'to work (a device)',
-        'El celular no anda.',
+        'El celular no funciona.',
         'The phone isn’t working.',
-        ['technology', 'argentina'],
+        ['technology', 'verbs'],
+        { acceptedTexts: ['andar'] },
       ),
       w(
         'es-lo-llamo',
@@ -252,7 +258,7 @@ export const ES_A2_U10: EsUnitDef = {
           'Name the parts of your digital life: computer, screen, app, password, messages.',
         intro: {
           explanation:
-            'In Argentina a computer is la computadora (informally la compu) and a mobile phone is el celular. Emails are el mail, borrowed from English, and an app is la app. Watch the gender: la pantalla and la contraseña are feminine, el mensaje is masculine even though it ends in -e. The ñ of contraseña sounds like the ny in canyon. Conectado means online; for a woman, conectada.',
+            'In Latin America a computer is la computadora (informally la compu; in Spain, el ordenador) and a mobile phone is el celular (in Spain, el móvil). An email is el mail, borrowed from English, or el correo, and an app is la app. Watch the gender: la pantalla and la contraseña are feminine, el mensaje is masculine even though it ends in -e. The ñ of contraseña sounds like the ny in canyon. Conectado means online; for a woman, conectada.',
           examples: [
             {
               target: 'La pantalla de la computadora es grande.',
@@ -309,7 +315,7 @@ export const ES_A2_U10: EsUnitDef = {
               id: 'es.ex.ok215asvwgxlbs',
               skill: 'vocabulary',
               explanation:
-                'La pantalla is the screen. Spanish says “the screen of the phone”: la pantalla del celular. The ll sounds like the sh in shoe in Buenos Aires.',
+                'La pantalla is the screen. Spanish says “the screen of the phone”: la pantalla del celular. The ll sounds like the y in yes.',
             },
           ),
           ex.translationChoice(
@@ -366,15 +372,15 @@ export const ES_A2_U10: EsUnitDef = {
         objective: 'Say what you send, receive, download and call, and say a device isn’t working.',
         intro: {
           explanation:
-            'Mandar (to send), llamar (to call) and bajar (to download) are regular -ar verbs: in the past, mandé, llamé, bajé (I) and mandaste, llamaste, bajaste (vos). Recibir (to receive) is an -ir verb: recibí, recibiste. Bajar literally means to go down; in Argentina it is the everyday word for downloading (descargar is also correct). With a person, llamar needs a: llamo a mi abuela. And for devices, Argentinians say andar: el celular no anda (the phone isn’t working).',
+            'Mandar (to send), llamar (to call) and bajar (to download) are regular -ar verbs: in the past, mandé, llamé, bajé (yo) and mandaste, llamaste, bajaste (tú). Recibir (to receive) is an -ir verb: recibí, recibiste. Bajar literally means to go down; in everyday speech it also means to download (the standard word is descargar). With a person, llamar needs a: llamo a mi abuela. For devices, use funcionar: el celular no funciona (the phone isn’t working). In Argentina and some other countries people also say no anda.',
           examples: [
             { target: 'Ayer bajé la app del banco.', base: 'Yesterday I downloaded the bank app.' },
-            { target: 'El celular no anda.', base: 'The phone isn’t working.' },
+            { target: 'El celular no funciona.', base: 'The phone isn’t working.' },
           ],
         },
         takeaways: [
           'You use mandar, recibir, llamar and bajar in the present and the past.',
-          'You say a device isn’t working with no anda.',
+          'You say a device isn’t working with no funciona.',
         ],
         exercises: [
           ex.translationChoice(
@@ -410,7 +416,7 @@ export const ES_A2_U10: EsUnitDef = {
             {
               id: 'es.ex.wmt6741szh7pma',
               explanation:
-                'Ayer asks for the past, and “I” for the yo form: bajé. Bajaste is the vos form (you downloaded).',
+                'Ayer asks for the past, and “I” for the yo form: bajé. Bajaste is the tú form (you downloaded).',
             },
           ),
           ex.listenChoice(
@@ -422,13 +428,13 @@ export const ES_A2_U10: EsUnitDef = {
           ex.fillBlank(
             'La computadora no ___.',
             'The computer isn’t working.',
-            'anda',
+            'funciona',
             ['está', 'es', 'tiene'],
-            ['es-andar', 'es-la-computadora'],
+            ['es-funcionar', 'es-la-computadora'],
             {
-              id: 'es.ex.pz4eeur7qb2pn3',
+              id: 'es.ex.nr8np08l4wpdjs',
               explanation:
-                'In Argentina, andar is used for machines and devices: no anda means it isn’t working (no funciona).',
+                'Funcionar is the verb for machines and devices: no funciona means it isn’t working. In Argentina you will also hear no anda.',
             },
           ),
           ex.fillBlank(
@@ -440,7 +446,7 @@ export const ES_A2_U10: EsUnitDef = {
             {
               id: 'es.ex.zybc6wtlfvpm4g',
               explanation:
-                'Asking a friend (vos) about the past: recibiste. Recibí is “I received”.',
+                'Asking a friend (tú) about the past: recibiste. Recibí is “I received”.',
             },
           ),
           ex.orderWords(
@@ -449,10 +455,15 @@ export const ES_A2_U10: EsUnitDef = {
             ['es-llamar'],
             { id: 'es.ex.cjplf2qh1vuvbc' },
           ),
-          ex.translateWrite('The phone isn’t working.', 'El celular no anda.', ['es-andar'], {
-            id: 'es.ex.ddbtt0jgwf3kmh',
-            acceptedAnswers: ['El celular no funciona.'],
-          }),
+          ex.translateWrite(
+            'The phone isn’t working.',
+            'El celular no funciona.',
+            ['es-funcionar'],
+            {
+              id: 'es.ex.dcsqeo53j4fjfu',
+              acceptedAnswers: ['El teléfono no funciona.', 'El celular no anda.'],
+            },
+          ),
           ex.translateWrite(
             'I received a message from Camila.',
             'Recibí un mensaje de Camila.',
@@ -468,7 +479,7 @@ export const ES_A2_U10: EsUnitDef = {
         objective: 'Replace a person or a thing with lo, la, los, las.',
         intro: {
           explanation:
-            'Lo, la, los and las replace the person or thing that receives the action: lo for a man or a masculine noun, la for a woman or a feminine noun, los and las for plurals. Unlike English, they go before the conjugated verb: lo llamo (I call him), la veo (I see her). With no, the order is no + pronoun + verb: no lo tengo. In Buenos Aires the ll of llamo sounds like the sh in shoe.',
+            'Lo, la, los and las replace the person or thing that receives the action: lo for a man or a masculine noun, la for a woman or a feminine noun, los and las for plurals. Unlike English, they go before the conjugated verb: lo llamo (I call him), la veo (I see her). With no, the order is no + pronoun + verb: no lo tengo. The ll of llamo sounds like the y in yes.',
           examples: [
             {
               target: '¿Y Martín? — Lo llamo ahora.',
@@ -531,13 +542,13 @@ export const ES_A2_U10: EsUnitDef = {
             id: 'es.ex.gnx84uuztc2wg5',
           }),
           question(
-            'es.ex.a03algzwg6v4zj',
+            'es.ex.5v4r0jq4tpwnq7',
             COMPU,
             'What is wrong with Marta’s computer?',
             'It isn’t working and the screen is black',
             ['It is very old', 'It has no apps', 'Someone stole it'],
-            ['es-andar', 'es-la-pantalla'],
-            'Marta says “La computadora no anda” (it isn’t working) and the screen “está negra” (is black).',
+            ['es-funcionar', 'es-la-pantalla'],
+            'Marta says “La computadora no funciona” (it isn’t working) and the screen “está negra” (is black).',
           ),
           question(
             'es.ex.y4ljn309rtcij2',
@@ -561,7 +572,7 @@ export const ES_A2_U10: EsUnitDef = {
             },
           ),
           ex.shortAnswer(
-            '¿Llamás a tu papá hoy?',
+            '¿Llamas a tu papá hoy?',
             'Answer yes, using a pronoun instead of tu papá (e.g. «Sí, lo llamo hoy»).',
             'Sí, lo llamo hoy.',
             ['Sí, lo llamo.', 'Sí, hoy lo llamo.', 'Sí, lo llamo hoy'],
@@ -686,7 +697,7 @@ export const ES_A2_U10: EsUnitDef = {
             },
           ),
           ex.shortAnswer(
-            '¿Le mandás el mail a Diego?',
+            '¿Le mandas el mail a Diego?',
             'Answer yes, replacing both el mail and Diego with pronouns (start with «Sí, se…»).',
             'Sí, se lo mando.',
             ['Sí, se lo mando ahora.', 'Sí, ya se lo mando.', 'Sí, se lo mando'],
@@ -702,7 +713,7 @@ export const ES_A2_U10: EsUnitDef = {
         objective: 'Understand messages about technology and use pronouns with infinitives.',
         intro: {
           explanation:
-            'With an infinitive (llamar, leer, bajar) the pronoun has two possible places: before the conjugated verb or attached to the end of the infinitive, as one word. Lo voy a llamar = voy a llamarlo; tenés que leerlo. Never use both at once. With an affirmative vos command it is also attached: llamame (call me). The stress stays where it was: lla-MAR-lo.',
+            'With an infinitive (llamar, leer, bajar) the pronoun has two possible places: before the conjugated verb or attached to the end of the infinitive, as one word. Lo voy a llamar = voy a llamarlo; tienes que leerlo. Never use both at once. With an affirmative tú command it is also attached: llámame (call me). The stress stays where it was: lla-MAR-lo, LLA-ma-me. That is why llámame needs a written accent: the stress is now three syllables from the end.',
           examples: [
             { target: 'Voy a llamarlo esta noche.', base: 'I’m going to call him tonight.' },
             { target: 'Lo voy a llamar esta noche.', base: 'I’m going to call him tonight.' },
@@ -720,7 +731,7 @@ export const ES_A2_U10: EsUnitDef = {
             'She changed her password',
             ['She downloaded an app', 'She sent an email', 'She bought a computer'],
             ['es-la-contrasena'],
-            'Marta says “ayer cambié la contraseña, pero me olvidé la nueva”: she changed it and forgot the new one.',
+            'Marta says “ayer cambié la contraseña, pero olvidé la nueva”: she changed it and forgot the new one.',
           ),
           question(
             'es.ex.thk4csf29go8km',
@@ -738,16 +749,16 @@ export const ES_A2_U10: EsUnitDef = {
             'Download the college app',
             ['Call the college', 'Change his password', 'Buy a new computer'],
             ['es-bajar', 'es-la-app'],
-            'She writes “Para leerlo, tenés que bajar la app de la facultad”.',
+            'She writes “Para leerlo, tienes que bajar la app de la facultad”.',
           ),
           question(
-            'es.ex.qhhjotdj0jh21o',
+            'es.ex.mv7wee1ul420oo',
             FACULTAD,
             'What should he do if it doesn’t work?',
             'Call her tonight',
             ['Write to her tomorrow', 'Go to the college', 'Send her an email'],
-            ['es-andar', 'es-llamar'],
-            'She writes “¿No anda? Llamame esta noche”: if it isn’t working, call me tonight.',
+            ['es-funcionar', 'es-llamar'],
+            'She writes “¿No funciona? Llámame esta noche”: if it isn’t working, call me tonight.',
           ),
           ex.listenChoice(
             'Voy a llamarlo mañana.',
@@ -771,12 +782,12 @@ export const ES_A2_U10: EsUnitDef = {
           ex.matchPairs(
             [
               ['bajar', 'to download'],
-              ['andar', 'to work (a device)'],
+              ['funcionar', 'to work (a device)'],
               ['les hablo', 'I talk to them'],
               ['se lo mando', 'I send it to him'],
             ],
-            ['es-bajar', 'es-andar', 'es-les-hablo', 'es-se-lo-mando'],
-            { id: 'es.ex.dxlap80etpunoy' },
+            ['es-bajar', 'es-funcionar', 'es-les-hablo', 'es-se-lo-mando'],
+            { id: 'es.ex.v8zwvhwar3jxer' },
           ),
           ex.translateWrite(
             'I’m going to call him tonight.',
@@ -793,16 +804,16 @@ export const ES_A2_U10: EsUnitDef = {
           ),
           ex.translateWrite(
             'The app isn’t working. Are you online?',
-            'La app no anda. ¿Estás conectado?',
-            ['es-la-app', 'es-andar', 'es-conectado'],
+            'La app no funciona. ¿Estás conectado?',
+            ['es-la-app', 'es-funcionar', 'es-conectado'],
             {
-              id: 'es.ex.cqbsekmvgkctj0',
+              id: 'es.ex.y6o7323txgqeak',
               acceptedAnswers: [
-                'La app no anda. ¿Estás conectada?',
-                'La app no anda, ¿estás conectado?',
-                'La app no anda, ¿estás conectada?',
-                'La app no funciona. ¿Estás conectado?',
                 'La app no funciona. ¿Estás conectada?',
+                'La app no funciona, ¿estás conectado?',
+                'La app no funciona, ¿estás conectada?',
+                'La app no anda. ¿Estás conectado?',
+                'La app no anda. ¿Estás conectada?',
               ],
             },
           ),

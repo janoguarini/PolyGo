@@ -21,12 +21,23 @@ const PolygoQuiz = (props: QuizProps) => {
   const optionColors = { containerColor: '#2F2A58', contentColor: '#E7E5F7' };
   const primaryColors = { containerColor: '#7C3AED', contentColor: '#FFFFFF' };
   const total = props.questions.length;
+  // Textos en el idioma de la interfaz (los manda la app); las props viejas no los traen.
+  const ui = props.ui || {
+    empty: 'Abrí Polygo para cargar preguntas',
+    done: 'RONDA TERMINADA',
+    again: 'Otra ronda',
+    question: 'PREGUNTA',
+    correct: '¡Correcto!',
+    was: 'Era:',
+    result: 'Ver resultado',
+    next: 'Siguiente',
+  };
 
   if (total === 0) {
     return (
       <Column modifiers={container}>
         <Text color="#FFFFFF" style={{ fontSize: 15, fontWeight: '600' }}>
-          Abrí Polygo para cargar preguntas
+          {ui.empty}
         </Text>
       </Column>
     );
@@ -36,7 +47,7 @@ const PolygoQuiz = (props: QuizProps) => {
     return (
       <Column modifiers={container} horizontalAlignment="center" verticalArrangement="center">
         <Text color="#A78BFA" style={{ fontSize: 11, fontWeight: 'bold' }}>
-          RONDA TERMINADA
+          {ui.done}
         </Text>
         <Text color="#FFFFFF" style={{ fontSize: 28, fontWeight: '800' }}>
           {`${props.correctCount}/${total}`}
@@ -45,7 +56,7 @@ const PolygoQuiz = (props: QuizProps) => {
           colors={primaryColors}
           onClick={() => ({ ...props, index: 0, chosen: -1, correctCount: 0 })}
         >
-          <Text>Otra ronda</Text>
+          <Text>{ui.again}</Text>
         </Button>
       </Column>
     );
@@ -73,7 +84,7 @@ const PolygoQuiz = (props: QuizProps) => {
     <Column modifiers={container}>
       <Row modifiers={[fillMaxWidth()]} horizontalArrangement="spaceBetween">
         <Text color="#A78BFA" style={{ fontSize: 11, fontWeight: 'bold' }}>
-          {`PREGUNTA ${props.index + 1}/${total}`}
+          {`${ui.question} ${props.index + 1}/${total}`}
         </Text>
         <Spacer modifiers={[width(8)]} />
         <Text color="#8D88B5" style={{ fontSize: 11, fontWeight: 'bold' }}>
@@ -91,13 +102,13 @@ const PolygoQuiz = (props: QuizProps) => {
             maxLines={1}
             style={{ fontSize: 15, fontWeight: '600' }}
           >
-            {right ? '¡Correcto!' : `Era: ${q.options[q.correct] ?? ''}`}
+            {right ? ui.correct : `${ui.was} ${q.options[q.correct] ?? ''}`}
           </Text>
           <Button
             colors={primaryColors}
             onClick={() => ({ ...props, index: props.index + 1, chosen: -1 })}
           >
-            <Text>{props.index + 1 >= total ? 'Ver resultado' : 'Siguiente'}</Text>
+            <Text>{props.index + 1 >= total ? ui.result : ui.next}</Text>
           </Button>
         </Column>
       ) : (

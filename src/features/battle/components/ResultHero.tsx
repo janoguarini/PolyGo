@@ -27,13 +27,14 @@ import {
   themedStyles,
 } from '@/design-system';
 import { foxDefeat, foxVictory } from '@/design-system/imageData.generated';
+import { useRankLabels } from '@/features/ranked/strings';
+import { useStrings } from '@/i18n';
+
+import { battleStrings } from '../strings';
 
 // Incrustadas en el bundle (scripts/build-image-data.ts): aparecen al instante.
 const FOX = { win: foxVictory, loss: foxDefeat };
-const FOX_LABEL = {
-  win: 'El zorro de Polygo festejando',
-  loss: 'El zorro de Polygo, triste',
-};
+const FOX_LABEL = { win: 'foxWin', loss: 'foxLoss' } as const;
 /** Color de la pantalla detrás del zorro: los bordes de la foto se funden hacia él. */
 /** Desvanecido hacia el fondo del tema (y el mismo color transparente, sin halo gris). */
 const fadeTo = () => colors.background;
@@ -56,6 +57,8 @@ interface Props {
 /** Encabezado de victoria o derrota: título, el zorro (festejando o triste) y la división. */
 export function ResultHero({ outcome, ratingBefore, ratingAfter, placedBefore, subtitle }: Props) {
   const styles = useStyles();
+  const t = useStrings(battleStrings);
+  const ranks = useRankLabels();
   const win = outcome === 'win';
   const rated = ratingBefore !== null && ratingAfter !== null;
   const delta = rated ? ratingAfter - ratingBefore : 0;
@@ -72,7 +75,7 @@ export function ResultHero({ outcome, ratingBefore, ratingAfter, placedBefore, s
         style={[styles.titles, !win && styles.lossTitles]}
       >
         <Text variant="display" align="center" color="textStrong" style={styles.title}>
-          {win ? '¡Victoria!' : 'Derrota'}
+          {win ? t.victory : t.defeat}
         </Text>
         {rated && delta !== 0 ? (
           <Text variant="title" align="center" color={delta > 0 ? 'primarySoft' : 'danger'}>
@@ -80,9 +83,9 @@ export function ResultHero({ outcome, ratingBefore, ratingAfter, placedBefore, s
             {delta} ELO
           </Text>
         ) : null}
-        {(subtitle ?? (win ? null : 'La próxima es tuya.')) ? (
+        {(subtitle ?? (win ? null : t.nextOneIsYours)) ? (
           <Text color="textMuted" align="center">
-            {subtitle ?? 'La próxima es tuya.'}
+            {subtitle ?? t.nextOneIsYours}
           </Text>
         ) : null}
       </Animated.View>
@@ -93,7 +96,7 @@ export function ResultHero({ outcome, ratingBefore, ratingAfter, placedBefore, s
           style={styles.fox}
           resizeMode="contain"
           accessibilityIgnoresInvertColors
-          accessibilityLabel={FOX_LABEL[outcome]}
+          accessibilityLabel={t[FOX_LABEL[outcome]]}
         />
         {/* Bordes difuminados para que no se vea el cuadrado de la foto. */}
         <LinearGradient
@@ -124,14 +127,12 @@ export function ResultHero({ outcome, ratingBefore, ratingAfter, placedBefore, s
 
       {rated && !placedBefore && !win ? (
         <Animated.View entering={FadeInUp.delay(250).duration(400)}>
-          <Card style={styles.division} accessibilityLabel="Seguís sin posicionar">
+          <Card style={styles.division} accessibilityLabel={t.stillUnplaced}>
             <RankEmblemForRating rating={ratingAfter} size={64} dimmed />
             <View style={styles.flex}>
-              <Text variant="caption">Sin posicionar</Text>
-              <Text variant="heading">Todavía sin rango</Text>
-              <Text variant="caption">
-                Ganá una partida para entrar al ranking en Bronce. Perder ahora no te resta.
-              </Text>
+              <Text variant="caption">{ranks.unplaced}</Text>
+              <Text variant="heading">{t.noRankYet}</Text>
+              <Text variant="caption">{t.unplacedHint}</Text>
             </View>
           </Card>
         </Animated.View>
@@ -141,13 +142,13 @@ export function ResultHero({ outcome, ratingBefore, ratingAfter, placedBefore, s
             <Animated.View entering={FadeInUp.delay(250).duration(400)}>
               <Card
                 style={styles.elo}
-                accessibilityLabel={`ELO anterior ${ratingBefore}, ELO actual ${ratingAfter}`}
+                accessibilityLabel={t.eloBeforeAfterA11y(ratingBefore, ratingAfter)}
               >
-                <EloValue value={ratingBefore} label="ELO anterior" />
+                <EloValue value={ratingBefore} label={t.previousElo} />
                 <ArrowRight color={colors.textMuted} size={22} />
                 <EloValue
                   value={ratingAfter}
-                  label="ELO actual"
+                  label={t.currentElo}
                   color={delta > 0 ? 'primarySoft' : delta < 0 ? 'danger' : 'textStrong'}
                 />
               </Card>
@@ -201,6 +202,8 @@ function DivisionProgress({
   placedBefore: boolean;
 }) {
   const styles = useStyles();
+  const t = useStrings(battleStrings);
+  const ranks = useRankLabels();
   const reduceMotion = useReducedMotion();
   const rankBefore = getRank(before);
   const rankAfter = getRank(after);
@@ -228,17 +231,19 @@ function DivisionProgress({
   const barStyle = useAnimatedStyle(() => ({ width: `${fill.value * 100}%` }));
 
   const heading = !placedBefore
-    ? 'Te posicionaste en'
+    ? t.placedIn
     : promoted
-      ? 'Ascendiste a'
+      ? t.promotedTo
       : demoted
-        ? 'Bajaste a'
-        : 'Tu división';
+        ? t.demotedTo
+        : t.yourDivision;
+  const afterLabel = ranks.label(rankAfter);
+  const next = nextLabel(rankAfter, after, t, ranks.label);
 
   return (
     <Card
       style={[styles.division, promoted && styles.promoted, demoted && styles.demoted]}
-      accessibilityLabel={`${heading} ${rankAfter.label}. ${nextLabel(rankAfter, after)}`}
+      accessibilityLabel={`${heading} ${afterLabel}. ${next}`}
     >
       <RankEmblemForRating rating={after} size={64} />
       <View style={styles.flex}>
@@ -247,7 +252,7 @@ function DivisionProgress({
           variant="title"
           color={promoted || !placedBefore ? 'primarySoft' : demoted ? 'danger' : 'textStrong'}
         >
-          {rankAfter.label}
+          {afterLabel}
         </Text>
         <View style={styles.track}>
           <Animated.View style={[styles.fill, barStyle]}>
@@ -259,17 +264,22 @@ function DivisionProgress({
             />
           </Animated.View>
         </View>
-        <Text variant="caption">{nextLabel(rankAfter, after)}</Text>
+        <Text variant="caption">{next}</Text>
       </View>
     </Card>
   );
 }
 
 /** «Faltan 38 ELO para Bronce II», o el tope si no hay más divisiones. */
-function nextLabel(rank: RankInfo, rating: number) {
-  if (rank.nextStepMin === null) return 'Estás en la cima del ranking.';
-  const next = getRank(rank.nextStepMin).label;
-  return `Faltan ${Math.max(1, rank.nextStepMin - Math.floor(rating))} ELO para ${next}`;
+function nextLabel(
+  rank: RankInfo,
+  rating: number,
+  t: (typeof battleStrings)['es'],
+  label: (rank: RankInfo) => string,
+) {
+  if (rank.nextStepMin === null) return t.topOfLadder;
+  const next = label(getRank(rank.nextStepMin));
+  return t.eloToNext(Math.max(1, rank.nextStepMin - Math.floor(rating)), next);
 }
 
 const BAR = 10;

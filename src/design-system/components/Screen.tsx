@@ -32,6 +32,8 @@ export interface ScreenProps {
   header?: ReactNode;
   /** Contenido flotante sobre el scroll (p. ej. un botón de acceso rápido). */
   overlay?: ReactNode;
+  /** Ilustración fija detrás del scroll (no recibe toques; el contenido pasa por encima). */
+  background?: ReactNode;
   onScroll?: ScrollViewProps['onScroll'];
   onScrollBeginDrag?: ScrollViewProps['onScrollBeginDrag'];
   /** Cualquier toque dentro del contenido (burbujea desde los hijos; p. ej. cerrar un recuadro). */
@@ -53,6 +55,7 @@ export function Screen({
   scrollRef,
   header,
   overlay,
+  background,
   onScroll,
   onScrollBeginDrag,
   onTouchStart,
@@ -101,6 +104,16 @@ export function Screen({
         >
           {header ? Platform.OS === 'web' ? <View style={webColumn}>{header}</View> : header : null}
           <View style={styles.fill}>
+            {background ? (
+              <View
+                style={StyleSheet.absoluteFill}
+                pointerEvents="none"
+                accessibilityElementsHidden
+                importantForAccessibility="no-hide-descendants"
+              >
+                {background}
+              </View>
+            ) : null}
             {content}
             {overlay}
           </View>

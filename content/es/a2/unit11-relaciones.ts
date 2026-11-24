@@ -6,8 +6,10 @@ import { dialogue, ex, question, reading, w } from '../helpers';
  * pareja y cómo se llevan las personas, con verbos reflexivos y recíprocos en pasado (me desperté, nos
  * conocimos, se casaron, se pelean, llevarse bien); la negación doble (no… nunca, no… nada, no…
  * nadie; nunca / nadie delante del verbo sin no), ya no y casi nunca; y el pretérito perfecto (he
- * estado, ha sido, ¿alguna vez has estado…?) para experiencias, explicado como poco frecuente en la
- * Argentina, donde el pasado de todos los días es el indefinido (¿alguna vez fuiste…?).
+ * estado, ha sido, ¿alguna vez has estado…?) para experiencias: muy frecuente en España y usado en
+ * algunos contextos en Latinoamérica, donde el pasado de todos los días es el indefinido (¿alguna vez
+ * fuiste…?). Variante: español neutro de Latinoamérica, con tú (¿y tú?, ¿quieres…?, te llevas).
+ * Escenarios: Guadalajara, Medellín, Lima, Cusco, Cancún, Buenos Aires.
  * Pronunciación: la h muda de he, has, ha.
  *
  * ESTADO EDITORIAL: borrador, sin revisión de hablantes nativos. Se carga sin publicar.
@@ -35,8 +37,8 @@ const VIAJE = reading(
     'En marzo me desperté un día y pensé: «Nunca he estado en el extranjero».',
     'Entonces compré un pasaje a Lima.',
     'No conocía a nadie, pero no tuve miedo.',
-    'Allá conocí a Mateo, un chico de Rosario. Ahora somos novios y viajamos juntos.',
-    '¿Y vos? ¿Alguna vez viajaste solo?',
+    'Allá conocí a Mateo, un chico de Guadalajara. Ahora somos novios y viajamos juntos.',
+    '¿Y tú? ¿Alguna vez viajaste solo?',
   ],
   { from: 'Camila' },
 );
@@ -48,10 +50,10 @@ export const ES_A2_U11: EsUnitDef = {
     'Camila',
     'Mateo',
     'Lima',
-    'Rosario',
-    'Córdoba',
-    'Mendoza',
-    'Bariloche',
+    'Guadalajara',
+    'Medellín',
+    'Cusco',
+    'Cancún',
     'Buenos Aires',
     'Lucía',
     'Ana',
@@ -70,7 +72,7 @@ export const ES_A2_U11: EsUnitDef = {
     'pelearon',
     'llevan',
     'llevamos',
-    'llevás',
+    'llevas',
     'increíble',
     'pensé',
     'allá',
@@ -91,7 +93,7 @@ export const ES_A2_U11: EsUnitDef = {
     grammar: {
       title: 'Reflexive verbs in the past · double negation · he estado',
       explanation:
-        'Reflexive verbs carry a pronoun that matches the subject: me desperté (I woke up), te despertaste (vos), se despertó, nos conocimos, se casaron. With a plural subject, nos and se often mean “each other”: nos conocimos (we met), se pelean (they argue), se llevan bien (they get along). Negation in Spanish is double, and the two negatives do not cancel each other: no + verb + nada, nadie or nunca (no tengo nada, no vino nadie). If nunca or nadie goes before the verb, there is no no: nunca vino nadie. Ya no means no longer. The present perfect is he, has, ha + a participle (estado, sido): he estado, ha sido. In Spain it is very common; in Argentina people prefer the simple past even for experiences (¿alguna vez fuiste a Bariloche?), but you will hear the perfect and should recognise it. The h is silent: he, has and ha sound just like e, as and a.',
+        'Reflexive verbs carry a pronoun that matches the subject: me desperté (I woke up), te despertaste (tú), se despertó, nos conocimos, se casaron. With a plural subject, nos and se often mean “each other”: nos conocimos (we met), se pelean (they argue), se llevan bien (they get along). Negation in Spanish is double, and the two negatives do not cancel each other: no + verb + nada, nadie or nunca (no tengo nada, no vino nadie). If nunca or nadie goes before the verb, there is no no: nunca vino nadie. Ya no means no longer. The present perfect is he, has, ha, hemos, han + a participle (estado, sido): he estado, ha sido. In Spain it is used all the time for the recent past. In Latin America the simple past is the everyday past (hoy comí, ya terminé, ¿alguna vez fuiste a Cancún?), and the perfect appears in some contexts, especially for life experiences and for a period that is not over yet (este año ha sido increíble). You should recognise it and can use it. The h is silent: he, has and ha sound just like e, as and a.',
       examples: [
         {
           target: 'Nos conocimos en la facultad y nos casamos en el verano.',
@@ -99,15 +101,15 @@ export const ES_A2_U11: EsUnitDef = {
         },
         { target: 'No vino nadie a la fiesta.', base: 'Nobody came to the party.' },
         {
-          target: '¿Alguna vez has estado en Mendoza? — No, nunca.',
-          base: 'Have you ever been to Mendoza? — No, never.',
+          target: '¿Alguna vez has estado en Cusco? — No, nunca.',
+          base: 'Have you ever been to Cusco? — No, never.',
         },
       ],
     },
     review: {
       status: 'draft',
       notes:
-        'A2 nuevo (U11). Sin revisión nativa: revisar el lugar del pretérito perfecto en la Argentina (se presenta como poco frecuente y se prefiere «¿alguna vez fuiste…?»), «ya no vivo» frente a «no vivo más» (muy rioplatense, se acepta en las respuestas), «la pareja» para un hombre y «el novio / la novia» (también prometido/a). El estímulo usa «vino» (de venir), que el validador sólo reconoce por coincidir con «el vino».',
+        'A2 nuevo (U11), convertido al español neutro con tú (2026-11-21). Sin revisión nativa: revisar el lugar del pretérito perfecto (muy frecuente en España; en Latinoamérica el indefinido es el pasado cotidiano y el perfecto aparece en algunos contextos, sobre todo experiencias y períodos no terminados; se enseña «¿alguna vez fuiste…?» y se aceptan las dos formas), «ya no vivo» frente a «no vivo más» (rioplatense, solo se acepta en las respuestas), «la boda» mencionada en la introducción de L2 sin practicarse, los escenarios (Guadalajara, Medellín, Cusco, Cancún), «la pareja» para un hombre y «el novio / la novia» (también prometido/a). El estímulo usa «vino» (de venir), que el validador sólo reconoce por coincidir con «el vino».',
     },
     words: [
       w(
@@ -167,8 +169,8 @@ export const ES_A2_U11: EsUnitDef = {
         'es-la-pareja',
         'la pareja',
         'the partner',
-        'Mi pareja es de Córdoba.',
-        'My partner is from Córdoba.',
+        'Mi pareja es de Medellín.',
+        'My partner is from Medellín.',
         ['relationships'],
         { acceptedTranslations: ['the couple'], emoji: '💑' },
       ),
@@ -193,8 +195,8 @@ export const ES_A2_U11: EsUnitDef = {
         'es-ya-no',
         'ya no',
         'no longer',
-        'Ya no vivo en Rosario.',
-        'I no longer live in Rosario.',
+        'Ya no vivo en Guadalajara.',
+        'I no longer live in Guadalajara.',
         ['negation'],
         { acceptedTranslations: ['not anymore'] },
       ),
@@ -216,7 +218,7 @@ export const ES_A2_U11: EsUnitDef = {
         ['negation'],
         { acceptedTranslations: ['no one'] },
       ),
-      w('es-algo', 'algo', 'something', '¿Querés tomar algo?', 'Do you want something to drink?', [
+      w('es-algo', 'algo', 'something', '¿Quieres tomar algo?', 'Do you want something to drink?', [
         'pronouns',
       ]),
       w(
@@ -232,8 +234,8 @@ export const ES_A2_U11: EsUnitDef = {
         'es-he-estado',
         'he estado',
         'I have been',
-        'Nunca he estado en Mendoza.',
-        'I have never been to Mendoza.',
+        'Nunca he estado en Cusco.',
+        'I have never been to Cusco.',
         ['perfect'],
         { acceptedTranslations: ["I've been"] },
       ),
@@ -241,8 +243,8 @@ export const ES_A2_U11: EsUnitDef = {
         'es-alguna-vez',
         'alguna vez',
         'ever',
-        '¿Alguna vez fuiste a Bariloche?',
-        'Have you ever been to Bariloche?',
+        '¿Alguna vez fuiste a Cancún?',
+        'Have you ever been to Cancún?',
         ['perfect'],
       ),
       w(
@@ -262,7 +264,7 @@ export const ES_A2_U11: EsUnitDef = {
         objective: 'Say when you woke up and tell how you met someone.',
         intro: {
           explanation:
-            'Reflexive verbs carry a pronoun that matches the subject: me desperté (I woke up), te despertaste (you woke up, vos), se despertó (he or she woke up). With nos, the action is often mutual: nos conocimos (we met, literally “we got to know each other”). In the past, conocer is the verb for meeting someone for the first time. El novio and la novia are boyfriend and girlfriend; la pareja (partner, or couple) is always feminine, even when it is a man.',
+            'Reflexive verbs carry a pronoun that matches the subject: me desperté (I woke up), te despertaste (you woke up, tú), se despertó (he or she woke up; also usted). With nos, the action is often mutual: nos conocimos (we met, literally “we got to know each other”). In the past, conocer is the verb for meeting someone for the first time. El novio and la novia are boyfriend and girlfriend; la pareja (partner, or couple) is always feminine, even when it is a man.',
           examples: [
             { target: 'Hoy me desperté muy tarde.', base: 'Today I woke up very late.' },
             {
@@ -300,12 +302,16 @@ export const ES_A2_U11: EsUnitDef = {
               id: 'es.ex.tm9m30v4x64ku5',
               skill: 'grammar',
               explanation:
-                'The pronoun matches the subject: yo → me desperté. Te is for vos, se for él or ella, nos for nosotros.',
+                'The pronoun matches the subject: yo → me desperté. Te is for tú, se for él, ella or usted, nos for nosotros.',
             },
           ),
           ex.listenChoice(
-            'Nos conocimos en Córdoba.',
-            ['Nos conocimos en Rosario.', 'Se conocieron en Córdoba.', 'Me desperté en Córdoba.'],
+            'Nos conocimos en Medellín.',
+            [
+              'Nos conocimos en Guadalajara.',
+              'Se conocieron en Medellín.',
+              'Me desperté en Medellín.',
+            ],
             ['es-nos-conocimos'],
             { id: 'es.ex.7qox679eikxhdo' },
           ),
@@ -332,8 +338,8 @@ export const ES_A2_U11: EsUnitDef = {
             { id: 'es.ex.z4wjt2euzz8vur' },
           ),
           ex.fillBlank(
-            'Mi ___ se llama Martín. Es de Mendoza.',
-            'My partner’s name is Martín. He’s from Mendoza.',
+            'Mi ___ se llama Martín. Es de Cusco.',
+            'My partner’s name is Martín. He’s from Cusco.',
             'pareja',
             ['esposa', 'hermana', 'mamá'],
             ['es-la-pareja'],
@@ -371,7 +377,7 @@ export const ES_A2_U11: EsUnitDef = {
         objective: 'Say who got married, who argues and who gets along.',
         intro: {
           explanation:
-            'Some verbs come with -se in the infinitive: casarse (to get married), pelearse (to argue), llevarse bien (to get along). The se changes with the person: nos casamos, se casaron (they got married), se pelean, me llevo bien con mi hermana. Note the preposition: llevarse bien con alguien, casarse con alguien. Juntos (together) agrees like an adjective: juntas for women. In Argentina a wedding is usually called el casamiento.',
+            'Some verbs come with -se in the infinitive: casarse (to get married), pelearse (to argue), llevarse bien (to get along). The se changes with the person: nos casamos, se casaron (they got married), se pelean, me llevo bien con mi hermana. Note the preposition: llevarse bien con alguien, casarse con alguien. Juntos (together) agrees like an adjective: juntas for women. The wedding itself is la boda (in Argentina, el casamiento).',
           examples: [
             {
               target: 'Mis padres se casaron en el verano.',
@@ -456,8 +462,8 @@ export const ES_A2_U11: EsUnitDef = {
             },
           ),
           ex.orderWords(
-            'Mis padres se casaron en Córdoba.',
-            'My parents got married in Córdoba.',
+            'Mis padres se casaron en Medellín.',
+            'My parents got married in Medellín.',
             ['es-casarse'],
             { id: 'es.ex.off6oa49eeadzl' },
           ),
@@ -468,7 +474,7 @@ export const ES_A2_U11: EsUnitDef = {
             { id: 'es.ex.fm8gascf52tiz8' },
           ),
           ex.shortAnswer(
-            '¿Te llevás bien con tu familia?',
+            '¿Te llevas bien con tu familia?',
             'Answer yes (start with «Sí, me llevo…»).',
             'Sí, me llevo bien con mi familia.',
             [
@@ -489,10 +495,10 @@ export const ES_A2_U11: EsUnitDef = {
         objective: 'Say what never, no longer or hardly ever happens, with double negatives.',
         intro: {
           explanation:
-            'In Spanish two negatives don’t cancel each other: no + verb + nada, nadie or nunca. No tengo nada (I don’t have anything), no vino nadie (nobody came). If nunca or nadie goes before the verb, you drop no: nunca tomo café. The opposites are algo (something) / nada, alguien (someone) / nadie, siempre / nunca. Ya no means no longer, and casi nunca means hardly ever. In Argentina you will also hear no… más: no vivo más en Rosario.',
+            'In Spanish two negatives don’t cancel each other: no + verb + nada, nadie or nunca. No tengo nada (I don’t have anything), no vino nadie (nobody came). If nunca or nadie goes before the verb, you drop no: nunca tomo café. The opposites are algo (something) / nada, alguien (someone) / nadie, siempre / nunca. Ya no means no longer, and casi nunca means hardly ever.',
           examples: [
             { target: 'No vino nadie a la fiesta.', base: 'Nobody came to the party.' },
-            { target: 'Ya no vivo en Rosario.', base: 'I no longer live in Rosario.' },
+            { target: 'Ya no vivo en Guadalajara.', base: 'I no longer live in Guadalajara.' },
           ],
         },
         takeaways: [
@@ -575,16 +581,16 @@ export const ES_A2_U11: EsUnitDef = {
             'Sofía says “Mis padres ya no están juntos, pero se llevan bien”.',
           ),
           ex.translateWrite(
-            'I no longer live in Rosario.',
-            'Ya no vivo en Rosario.',
+            'I no longer live in Guadalajara.',
+            'Ya no vivo en Guadalajara.',
             ['es-ya-no'],
             {
               id: 'es.ex.r2x0oa7p8n961h',
-              acceptedAnswers: ['No vivo más en Rosario.'],
+              acceptedAnswers: ['No vivo más en Guadalajara.'],
             },
           ),
           ex.shortAnswer(
-            '¿Querés algo?',
+            '¿Quieres algo?',
             'Say no, you don’t want anything (use «nada»).',
             'No, no quiero nada.',
             [
@@ -605,13 +611,13 @@ export const ES_A2_U11: EsUnitDef = {
         objective: 'Ask and answer about life experiences, and recognise the present perfect.',
         intro: {
           explanation:
-            'The present perfect is he, has or ha + a participle ending in -ado or -ido: he estado (I have been), ha sido (it has been). In Spain it is used all the time; in Argentina people usually prefer the simple past, even for experiences: ¿Alguna vez fuiste a Bariloche? (Have you ever been to Bariloche?). You will still hear and read the perfect, especially for experiences and for something that has just ended (ha sido un día largo). Alguna vez means ever. The h is silent: he, has and ha sound exactly like e, as and a.',
+            'The present perfect is he (yo), has (tú), ha (él, ella, usted) + a participle ending in -ado or -ido: he estado (I have been), ha sido (it has been). In Spain it is used all the time for the recent past. In Latin America the simple past is the everyday past, even for experiences: ¿Alguna vez fuiste a Cancún? (Have you ever been to Cancún?). The perfect is still used in some contexts, especially for life experiences (¿alguna vez has estado en Cancún?) and for a period that is not over (ha sido un día largo), so you will hear and read both. Alguna vez means ever. The h is silent: he, has and ha sound exactly like e, as and a.',
           examples: [
             {
-              target: '¿Alguna vez fuiste a Bariloche? — No, nunca.',
-              base: 'Have you ever been to Bariloche? — No, never.',
+              target: '¿Alguna vez fuiste a Cancún? — No, nunca.',
+              base: 'Have you ever been to Cancún? — No, never.',
             },
-            { target: 'Nunca he estado en Mendoza.', base: 'I have never been to Mendoza.' },
+            { target: 'Nunca he estado en Cusco.', base: 'I have never been to Cusco.' },
           ],
         },
         takeaways: [
@@ -643,12 +649,12 @@ export const ES_A2_U11: EsUnitDef = {
               id: 'es.ex.f9l7tzlexs8x7y',
               skill: 'grammar',
               explanation:
-                'For yo, the perfect uses he: he estado. Has is for vos, ha for él, ella or usted. The h is never pronounced.',
+                'For yo, the perfect uses he: he estado. Has is for tú, ha for él, ella or usted. The h is never pronounced.',
             },
           ),
           ex.listenChoice(
-            'He estado en Mendoza.',
-            ['Ha estado en Mendoza.', 'Has estado en Mendoza.', 'Estuve en Mendoza.'],
+            'He estado en Cusco.',
+            ['Ha estado en Cusco.', 'Has estado en Cusco.', 'Estuve en Cusco.'],
             ['es-he-estado'],
             { id: 'es.ex.2gdb1qqs4drsmq' },
           ),
@@ -669,7 +675,7 @@ export const ES_A2_U11: EsUnitDef = {
             VIAJE,
             'What had Camila never done before this year?',
             'Travel abroad',
-            ['Buy a plane ticket', 'Have a boyfriend', 'Visit Rosario'],
+            ['Buy a plane ticket', 'Have a boyfriend', 'Visit Guadalajara'],
             ['es-nunca', 'es-he-estado'],
             'In March she thought “Nunca he estado en el extranjero”: I have never been abroad.',
           ),
@@ -678,7 +684,7 @@ export const ES_A2_U11: EsUnitDef = {
             VIAJE,
             'Who did Camila know in Lima when she arrived?',
             'Nobody',
-            ['Her boyfriend', 'A friend from Rosario', 'Her family'],
+            ['Her boyfriend', 'A friend from Guadalajara', 'Her family'],
             ['es-nadie'],
             'She writes “No conocía a nadie”: she didn’t know anybody.',
           ),
@@ -693,17 +699,17 @@ export const ES_A2_U11: EsUnitDef = {
             { id: 'es.ex.fimedk4sdvldb4' },
           ),
           ex.translateWrite(
-            'Have you ever been to Bariloche?',
-            '¿Alguna vez fuiste a Bariloche?',
+            'Have you ever been to Cancún?',
+            '¿Alguna vez fuiste a Cancún?',
             ['es-alguna-vez'],
             {
               id: 'es.ex.s6c3iekoddxfug',
               acceptedAnswers: [
-                '¿Fuiste alguna vez a Bariloche?',
-                '¿Alguna vez has estado en Bariloche?',
-                '¿Alguna vez estuviste en Bariloche?',
-                '¿Has estado alguna vez en Bariloche?',
-                '¿Alguna vez fue a Bariloche?',
+                '¿Fuiste alguna vez a Cancún?',
+                '¿Alguna vez has estado en Cancún?',
+                '¿Alguna vez estuviste en Cancún?',
+                '¿Has estado alguna vez en Cancún?',
+                '¿Alguna vez fue a Cancún?',
               ],
             },
           ),
@@ -720,7 +726,7 @@ export const ES_A2_U11: EsUnitDef = {
         objective: 'Understand and tell a short story about a relationship.',
         intro: {
           explanation:
-            'To tell a love story, Argentinians use the simple past for the events (nos conocimos, se casaron) and the present for how things are now (se llevan bien, ya no están juntos). Hace + time means ago: nos conocimos hace dos años. Nosotros forms of -ar verbs are the same in the present and the past (nos peleamos = we argue / we argued): the context tells you which.',
+            'To tell a love story, people in Latin America use the simple past for the events (nos conocimos, se casaron) and the present for how things are now (se llevan bien, ya no están juntos). Hace + time means ago: nos conocimos hace dos años. Nosotros forms of -ar verbs are the same in the present and the past (nos peleamos = we argue / we argued): the context tells you which.',
           examples: [
             {
               target: 'Nos conocimos hace dos años y ahora vivimos juntos.',
@@ -789,8 +795,8 @@ export const ES_A2_U11: EsUnitDef = {
             },
           ),
           ex.orderWords(
-            'Nunca he estado en Mendoza.',
-            'I have never been to Mendoza.',
+            'Nunca he estado en Cusco.',
+            'I have never been to Cusco.',
             ['es-nunca', 'es-he-estado'],
             { id: 'es.ex.4ddtddllm7plpq' },
           ),
@@ -808,15 +814,15 @@ export const ES_A2_U11: EsUnitDef = {
             },
           ),
           ex.shortAnswer(
-            '¿Alguna vez fuiste a Bariloche?',
+            '¿Alguna vez fuiste a Cancún?',
             'Answer no, never (use «nunca»).',
-            'No, nunca fui a Bariloche.',
+            'No, nunca fui a Cancún.',
             [
               'No, nunca.',
               'No, nunca fui.',
-              'No, nunca he estado en Bariloche.',
+              'No, nunca he estado en Cancún.',
               'No, no fui nunca.',
-              'No, nunca fui a Bariloche',
+              'No, nunca fui a Cancún',
             ],
             ['es-nunca', 'es-alguna-vez'],
             { id: 'es.ex.1ad81ys8x6h0nf' },

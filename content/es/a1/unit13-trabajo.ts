@@ -2,12 +2,13 @@ import type { EsUnitDef } from '../../es-course';
 import { dialogue, ES_A1_RATE, ex, question, reading, w } from '../helpers';
 
 /**
- * Español A1 U13 «Work and studies» (docs/ES_A1_A2.md): preguntar a qué se dedica alguien (¿a qué te
- * dedicás?) y contestar con ser + profesión sin artículo (soy médica, no «soy una médica»), con
- * masculino y femenino (el médico / la médica, el profesor / la profesora); lugares de trabajo y de
- * estudio (la oficina, el hospital, la escuela, la facultad); el plural de ser y tener (somos, son;
- * tenemos, tienen) y empiezo (e → ie; vos empezás), termino, estudio.
- * Vocabulario rioplatense: el mozo (en España, camarero), la facultad.
+ * Español A1 U13 «Work and studies» (docs/ES_A1_A2.md), en español neutro de Latinoamérica (tú y
+ * ustedes): preguntar a qué se dedica alguien (¿a qué te dedicas?; con usted, ¿a qué se dedica?) y
+ * contestar con ser + profesión sin artículo (soy médica, no «soy una médica»), con masculino y
+ * femenino (el médico / la médica, el profesor / la profesora); lugares de trabajo y de estudio (la
+ * oficina, el hospital, la escuela, la facultad); el plural de ser y tener (somos, son; tenemos,
+ * tienen) y empezar con diptongo (yo empiezo, tú empiezas, él empieza), termino, estudio.
+ * Vocabulario: el mesero / la mesera (camarero en España, mozo en el Río de la Plata: se aceptan).
  * Pronunciación: la j de trabajo (una h fuerte) y la g suave delante de e / i (ingeniero), que suena
  * igual que la j.
  *
@@ -18,8 +19,8 @@ const FIESTA = dialogue(
   'es.stim.a1-u13-fiesta',
   'Two people meet at a party and talk about their jobs.',
   [
-    ['Camila', 'Hola, me llamo Camila. ¿A qué te dedicás?'],
-    ['Tomás', 'Soy profesor. ¿Y vos?'],
+    ['Camila', 'Hola, me llamo Camila. ¿A qué te dedicas?'],
+    ['Tomás', 'Soy profesor. ¿Y tú?'],
     ['Camila', 'Soy abogada, como mi papá.'],
     ['Tomás', '¡Mi mamá es abogada también!'],
   ],
@@ -31,7 +32,7 @@ const FAMILIA = dialogue(
   'Ana asks Martín about his family.',
   [
     ['Ana', 'Martín, ¿tus padres son médicos?'],
-    ['Martín', 'No, son abogados. Tienen una oficina en Palermo.'],
+    ['Martín', 'No, son abogados. Tienen una oficina en Bogotá.'],
     ['Ana', '¿Y tus hermanos?'],
     ['Martín', 'Somos estudiantes. Mi hermana estudia en la facultad y yo, en la escuela.'],
   ],
@@ -44,7 +45,7 @@ const VALENTINA = reading(
   'Valentina describes her work day.',
   [
     'Me llamo Valentina y soy enfermera.',
-    'Trabajo en un hospital en Córdoba.',
+    'Trabajo en un hospital en Lima.',
     'Empiezo a las siete de la mañana y termino a las tres de la tarde.',
     'Después estudio inglés en la facultad.',
     '¡Me encanta mi trabajo!',
@@ -53,8 +54,8 @@ const VALENTINA = reading(
 );
 
 export const ES_A1_U13: EsUnitDef = {
-  names: ['Camila', 'Tomás', 'Ana', 'Martín', 'Valentina', 'Lucía', 'Juan', 'Palermo', 'Córdoba'],
-  support: ['dedica', 'estudia', 'empezás', 'empieza', 'terminás', 'termina'],
+  names: ['Camila', 'Tomás', 'Ana', 'Martín', 'Valentina', 'Lucía', 'Juan', 'Bogotá', 'Lima'],
+  support: ['dedica', 'estudia', 'empiezas', 'empieza', 'terminas', 'termina'],
   unit: {
     position: 13,
     title: 'Work and studies',
@@ -67,7 +68,7 @@ export const ES_A1_U13: EsUnitDef = {
     grammar: {
       title: 'Ser + profession · somos, son · tenemos, tienen',
       explanation:
-        'After ser, a profession goes without an article: soy médica, él es profesor (English says “a doctor”; Spanish doesn’t say soy una médica). Most professions have a masculine and a feminine form: médico / médica, enfermero / enfermera, profesor / profesora, vendedor / vendedora. To ask a friend: ¿a qué te dedicás? The plural of ser is nosotros somos and ellos / ellas / ustedes son; of tener, tenemos and tienen. In Argentina ustedes is the only plural “you”. Empezar (to start) changes e to ie: empiezo, but vos empezás; terminar and estudiar are regular: termino, estudio.',
+        'After ser, a profession goes without an article: soy médica, él es profesor (English says “a doctor”; Spanish doesn’t say soy una médica). Most professions have a masculine and a feminine form: médico / médica, enfermero / enfermera, profesor / profesora, vendedor / vendedora. To ask a friend (tú): ¿a qué te dedicas?; to ask someone you call usted: ¿a qué se dedica? The plural of ser is nosotros somos and ellos / ellas / ustedes son; of tener, tenemos and tienen. In Latin America ustedes is the only plural “you”, for friends and strangers alike. Empezar (to start) changes e to ie when the stress falls on it: yo empiezo, tú empiezas, él / ella / usted empieza, ellos empiezan (but nosotros empezamos). Terminar and estudiar are regular: termino, terminas; estudio, estudias.',
       examples: [
         { target: 'Soy médica. Él es profesor.', base: 'I’m a doctor. He’s a teacher.' },
         {
@@ -83,7 +84,7 @@ export const ES_A1_U13: EsUnitDef = {
     review: {
       status: 'draft',
       notes:
-        'A1 nuevo (U13). Sin revisión nativa: revisar «la facultad» traducida como college / university (en la Argentina es la palabra habitual para la universidad), «el vendedor» como shop assistant, «el mozo / la moza» (rioplatense; en España, camarero) y «¿a qué se dedica tu hermana?» con se dedica sólo como apoyo.',
+        'A1 nuevo (U13), convertido al español neutro de Latinoamérica con tú (2026-11-21). Sin revisión nativa: revisar «la facultad» traducida como college / university (en toda la región es la facultad de una universidad; «la universidad» se enseña en A2 U7), «el vendedor» como shop assistant, «el mesero / la mesera» (se aceptan camarero y mozo) y el vocativo «¡Mesero, un café, por favor!» (en México también se dice «¡Joven!»), y «¿a qué se dedica tu hermana?» con se dedica sólo como apoyo.',
     },
     words: [
       w(
@@ -97,12 +98,12 @@ export const ES_A1_U13: EsUnitDef = {
       ),
       w(
         'es-a-que-te-dedicas',
-        '¿a qué te dedicás?',
+        '¿a qué te dedicas?',
         'what do you do for a living?',
-        '¿A qué te dedicás? — Soy profesora.',
+        '¿A qué te dedicas? — Soy profesora.',
         'What do you do? — I’m a teacher.',
-        ['work', 'questions', 'voseo'],
-        { acceptedTranslations: ['what do you do?'], acceptedTexts: ['¿a qué te dedicas?'] },
+        ['work', 'questions'],
+        { acceptedTranslations: ['what do you do?'], acceptedTexts: ['¿a qué te dedicás?'] },
       ),
       w(
         'es-el-medico',
@@ -123,13 +124,16 @@ export const ES_A1_U13: EsUnitDef = {
         { acceptedTexts: ['la enfermera'] },
       ),
       w(
-        'es-el-mozo',
-        'el mozo',
+        'es-el-mesero',
+        'el mesero',
         'the waiter',
-        '¡Mozo, un café, por favor!',
+        '¡Mesero, un café, por favor!',
         'Waiter, a coffee, please!',
-        ['work', 'argentina'],
-        { acceptedTranslations: ['the waitress'], acceptedTexts: ['la moza'] },
+        ['work'],
+        {
+          acceptedTranslations: ['the waitress'],
+          acceptedTexts: ['la mesera', 'el camarero', 'la camarera', 'el mozo', 'la moza'],
+        },
       ),
       w(
         'es-el-vendedor',
@@ -144,8 +148,8 @@ export const ES_A1_U13: EsUnitDef = {
         'es-el-profesor',
         'el profesor',
         'the teacher',
-        'La profesora es argentina.',
-        'The teacher is Argentine.',
+        'La profesora es italiana.',
+        'The teacher is Italian.',
         ['work'],
         { acceptedTexts: ['la profesora'] },
       ),
@@ -197,7 +201,7 @@ export const ES_A1_U13: EsUnitDef = {
         ['studies', 'places'],
         { acceptedTranslations: ['university', 'the faculty'] },
       ),
-      w('es-somos', 'somos', 'we are', 'Somos argentinos.', 'We are Argentine.', ['verbs']),
+      w('es-somos', 'somos', 'we are', 'Somos estudiantes.', 'We are students.', ['verbs']),
       w('es-ellos-son', 'ellos son', 'they are', 'Ellos son mis padres.', 'They are my parents.', [
         'verbs',
       ]),
@@ -229,21 +233,21 @@ export const ES_A1_U13: EsUnitDef = {
     lessons: [
       // ------------------------------------------------------------------------------------ L1
       {
-        title: '¿A qué te dedicás?',
+        title: '¿A qué te dedicas?',
         objective: 'Ask what someone does and say your job.',
         intro: {
           explanation:
-            'To ask a friend what they do: ¿a qué te dedicás? (with usted: ¿a qué se dedica?). Answer with soy + profession and no article: soy médico, soy profesora. English says “I’m a doctor”, but in Spanish un or una is wrong here. El trabajo is your job or work. The j in trabajo sounds like a strong English h, from the back of the throat.',
+            'To ask a friend what they do: ¿a qué te dedicas? (literally “what do you dedicate yourself to?”). With usted, for someone older or in a formal situation: ¿a qué se dedica? Answer with soy + profession and no article: soy médico, soy profesora. English says “I’m a doctor”, but in Spanish un or una is wrong here. El trabajo is your job or work. The j in trabajo sounds like a strong English h, from the back of the throat.',
           examples: [
             {
-              target: '¿A qué te dedicás? — Soy abogado.',
+              target: '¿A qué te dedicas? — Soy abogado.',
               base: 'What do you do? — I’m a lawyer.',
             },
             { target: 'Mi papá es médico.', base: 'My dad is a doctor.' },
           ],
         },
         takeaways: [
-          'You ask ¿a qué te dedicás? and answer soy + profession.',
+          'You ask ¿a qué te dedicas? (usted: ¿a qué se dedica?) and answer soy + profession.',
           'You don’t use un or una before a profession after ser.',
         ],
         exercises: [
@@ -255,7 +259,7 @@ export const ES_A1_U13: EsUnitDef = {
             { id: 'es.ex.ghnvew4e9a2w3j' },
           ),
           ex.translationChoice(
-            '¿a qué te dedicás?',
+            '¿a qué te dedicas?',
             'what do you do for a living?',
             ['where do you live?', 'how old are you?', 'what is your name?'],
             ['es-a-que-te-dedicas'],
@@ -284,8 +288,8 @@ export const ES_A1_U13: EsUnitDef = {
             },
           ),
           ex.listenChoice(
-            '¿A qué te dedicás?',
-            ['¿A qué hora?', '¿Qué es esto?', '¿De dónde sos?'],
+            '¿A qué te dedicas?',
+            ['¿A qué hora?', '¿Qué es esto?', '¿De dónde eres?'],
             ['es-a-que-te-dedicas'],
             { id: 'es.ex.b8k68qyulr7g68' },
           ),
@@ -308,7 +312,7 @@ export const ES_A1_U13: EsUnitDef = {
             'He’s a teacher',
             ['He’s a lawyer', 'He’s a doctor', 'He’s a student'],
             ['es-el-profesor', 'es-a-que-te-dedicas'],
-            'Camila asks “¿A qué te dedicás?” and Tomás answers “Soy profesor”.',
+            'Camila asks “¿A qué te dedicas?” and Tomás answers “Soy profesor”. Then he asks her back with “¿Y tú?”.',
           ),
           question(
             'es.ex.yzgnvjr9nxr2nv',
@@ -324,7 +328,7 @@ export const ES_A1_U13: EsUnitDef = {
             acceptedAnswers: ['Soy abogada.', 'Yo soy abogado.', 'Yo soy abogada.'],
           }),
           ex.shortAnswer(
-            '¿A qué te dedicás?',
+            '¿A qué te dedicas?',
             'Answer that you are a doctor (e.g. «Soy médico.» or «Soy médica.»).',
             'Soy médico.',
             ['Soy médica.', 'Yo soy médico.', 'Yo soy médica.'],
@@ -340,33 +344,33 @@ export const ES_A1_U13: EsUnitDef = {
         objective: 'Say jobs in the masculine and the feminine.',
         intro: {
           explanation:
-            'Most jobs change -o to -a for a woman: enfermero / enfermera, ingeniero / ingeniera, mozo / moza. Jobs ending in -or add -a: vendedor / vendedora, profesor / profesora. El mozo is the Argentine word for waiter (in Spain: camarero). In ingeniero, the g before e sounds like the Spanish j, a strong h.',
+            'Most jobs change -o to -a for a woman: enfermero / enfermera, ingeniero / ingeniera, mesero / mesera. Jobs ending in -or add -a: vendedor / vendedora, profesor / profesora. El mesero (waiter) is the usual word in Mexico and much of Latin America; you will also hear el camarero in Spain and el mozo in Argentina. In ingeniero, the g before e sounds like the Spanish j, a strong h.',
           examples: [
             { target: 'Mi hermana es enfermera.', base: 'My sister is a nurse.' },
-            { target: '¡Mozo, un café, por favor!', base: 'Waiter, a coffee, please!' },
+            { target: '¡Mesero, un café, por favor!', base: 'Waiter, a coffee, please!' },
           ],
         },
         takeaways: [
           'You change -o to -a, or add -a after -or, for a woman’s job.',
-          'You call the waiter el mozo, as people do in Argentina.',
+          'You call the waiter el mesero (la mesera for a woman).',
         ],
         exercises: [
           ex.translationChoice(
-            'el mozo',
+            'el mesero',
             'the waiter',
             ['the nurse', 'the shop assistant', 'the engineer'],
-            ['es-el-mozo'],
-            { id: 'es.ex.u4hcpnat0fwrvy' },
+            ['es-el-mesero'],
+            { id: 'es.ex.rrc7ywecocg5hn' },
           ),
           ex.matchPairs(
             [
               ['el enfermero', 'the nurse'],
               ['el vendedor', 'the shop assistant'],
               ['el ingeniero', 'the engineer'],
-              ['el mozo', 'the waiter'],
+              ['el mesero', 'the waiter'],
             ],
-            ['es-el-enfermero', 'es-el-vendedor', 'es-el-ingeniero', 'es-el-mozo'],
-            { id: 'es.ex.qwxjcgfvy0i40u' },
+            ['es-el-enfermero', 'es-el-vendedor', 'es-el-ingeniero', 'es-el-mesero'],
+            { id: 'es.ex.d5dcnpgqbhe3jf' },
           ),
           ex.fillBlank(
             'Lucía es ___.',
@@ -415,11 +419,16 @@ export const ES_A1_U13: EsUnitDef = {
           }),
           ex.translateWrite(
             'Waiter, a coffee, please!',
-            '¡Mozo, un café, por favor!',
-            ['es-el-mozo'],
+            '¡Mesero, un café, por favor!',
+            ['es-el-mesero'],
             {
-              id: 'es.ex.4h7kci7ew3oeu9',
-              acceptedAnswers: ['Mozo, un café, por favor.', '¡Mozo, un café por favor!'],
+              id: 'es.ex.qfsc9xepd0sldz',
+              acceptedAnswers: [
+                'Mesero, un café, por favor.',
+                '¡Mesero, un café por favor!',
+                '¡Camarero, un café, por favor!',
+                '¡Mozo, un café, por favor!',
+              ],
             },
           ),
           ex.shortAnswer(
@@ -439,7 +448,7 @@ export const ES_A1_U13: EsUnitDef = {
         objective: 'Say where you work or study.',
         intro: {
           explanation:
-            'Trabajo en + place: trabajo en una oficina, en un hospital. Estudio means I study. La escuela is school (for children); in Argentina people say la facultad for university, because a university is made of facultades. English says “at school” or “at university”; Spanish uses en.',
+            'Trabajo en + place: trabajo en una oficina, en un hospital. Estudio means I study (tú estudias, you study). La escuela is school (for children). A university is made of facultades (schools or faculties: medicine, law…), so students often say estudio en la facultad for “I study at university”. English says “at school” or “at university”; Spanish uses en. To ask a friend where they work: ¿dónde trabajas?',
           examples: [
             { target: 'Trabajo en una oficina.', base: 'I work in an office.' },
             { target: 'Estudio en la facultad.', base: 'I study at university.' },
@@ -523,7 +532,7 @@ export const ES_A1_U13: EsUnitDef = {
             { id: 'es.ex.dcran5bgueippa', acceptedAnswers: ['Yo estudio en la facultad.'] },
           ),
           ex.shortAnswer(
-            '¿Dónde trabajás?',
+            '¿Dónde trabajas?',
             'Answer that you work in an office (e.g. «Trabajo en una oficina.»).',
             'Trabajo en una oficina.',
             ['En una oficina.', 'Yo trabajo en una oficina.'],
@@ -539,7 +548,7 @@ export const ES_A1_U13: EsUnitDef = {
         objective: 'Talk about two or more people with somos, son, tenemos and tienen.',
         intro: {
           explanation:
-            'Ser in the plural: nosotros somos (we are), ellos / ellas son (they are). Tener: tenemos (we have), tienen (they have). Ustedes (you, plural) uses the same forms as ellos: ustedes son, ustedes tienen; in Argentina ustedes is the only plural “you”. Jobs go plural too: somos médicos, son profesoras.',
+            'Ser in the plural: nosotros somos (we are), ellos / ellas son (they are). Tener: tenemos (we have), tienen (they have). Ustedes (you, plural) uses the same forms as ellos: ustedes son, ustedes tienen. In Latin America ustedes is the only plural “you”, for friends and strangers alike (in Spain, friends use vosotros, which you don’t need here). Compare the singular: yo soy, tú eres; yo tengo, tú tienes. Jobs go plural too: somos médicos, son profesoras.',
           examples: [
             { target: 'Somos estudiantes.', base: 'We are students.' },
             {
@@ -561,8 +570,8 @@ export const ES_A1_U13: EsUnitDef = {
             { id: 'es.ex.33j6nz7b4og1dt' },
           ),
           ex.fillBlank(
-            'Nosotros ___ argentinos.',
-            'We are Argentine.',
+            'Nosotros ___ italianos.',
+            'We are Italian.',
             'somos',
             ['son', 'soy', 'tenemos'],
             ['es-somos'],
@@ -584,7 +593,7 @@ export const ES_A1_U13: EsUnitDef = {
           ),
           ex.listenChoice(
             'Tenemos dos hijos.',
-            ['Tienen dos hijos.', 'Tengo dos hijos.', 'Tenés dos hijos.'],
+            ['Tienen dos hijos.', 'Tengo dos hijos.', 'Tienes dos hijos.'],
             ['es-tenemos', 'es-tienen'],
             { id: 'es.ex.exvyuiansb3aeq' },
           ),
@@ -602,12 +611,12 @@ export const ES_A1_U13: EsUnitDef = {
             'Ustedes ___ estudiantes, ¿no?',
             'You’re students, aren’t you?',
             'son',
-            ['somos', 'sos', 'tienen'],
+            ['somos', 'eres', 'tienen'],
             ['es-ellos-son'],
             {
               id: 'es.ex.egkyukpm9vgt5g',
               explanation:
-                'Ustedes uses the same verb form as ellos: ustedes son. Sos is for vos, one person.',
+                'Ustedes uses the same verb form as ellos: ustedes son. Eres is for tú, one person.',
             },
           ),
           question(
@@ -623,10 +632,10 @@ export const ES_A1_U13: EsUnitDef = {
             'es.ex.8iu29wd97s75ox',
             FAMILIA,
             'Where is his parents’ office?',
-            'In Palermo',
-            ['In Córdoba', 'Next to the school', 'At the university'],
+            'In Bogotá',
+            ['In Lima', 'Next to the school', 'At the university'],
             ['es-tienen', 'es-la-oficina'],
-            'Martín says “Tienen una oficina en Palermo”.',
+            'Martín says “Tienen una oficina en Bogotá”.',
           ),
           ex.translateWrite(
             'They are doctors.',
@@ -655,17 +664,17 @@ export const ES_A1_U13: EsUnitDef = {
           'Say what time you start and finish, and understand people talking about their work.',
         intro: {
           explanation:
-            'Empezar (to start) changes e to ie: empiezo; with vos it doesn’t: empezás; for he or she: empieza. Terminar (to finish) and estudiar (to study) are regular: termino, terminás; estudio, estudiás. With a time, use a las: empiezo a las nueve, termino a las cinco.',
+            'Empezar (to start) changes e to ie: yo empiezo, tú empiezas, él / ella / usted empieza. The same ie appears in every form where the stress falls on the stem (only nosotros empezamos keeps the e). Terminar (to finish) and estudiar (to study) are regular: termino, terminas, termina; estudio, estudias, estudia. With a time, use a las: empiezo a las nueve, termino a las cinco.',
           examples: [
             {
               target: 'Empiezo a las nueve y termino a las seis.',
               base: 'I start at nine and finish at six.',
             },
-            { target: '¿A qué hora empezás?', base: 'What time do you start?' },
+            { target: '¿A qué hora empiezas?', base: 'What time do you start?' },
           ],
         },
         takeaways: [
-          'You say when you start and finish with empiezo and termino.',
+          'You say when you start and finish with empiezo and termino, and ask ¿a qué hora empiezas?',
           'You understand a short text about someone’s job and studies.',
         ],
         exercises: [
@@ -677,15 +686,15 @@ export const ES_A1_U13: EsUnitDef = {
             { id: 'es.ex.2avhpc1jcxdxub' },
           ),
           ex.fillBlank(
-            '¿A qué hora ___ vos?',
+            '¿A qué hora ___ tú?',
             'What time do you start?',
-            'empezás',
+            'empiezas',
             ['empiezo', 'empieza', 'termino'],
             ['es-empiezo'],
             {
               id: 'es.ex.zklcqlur6yxaep',
               explanation:
-                'With vos the vowel doesn’t change: empezás. Empiezo is for yo and empieza for él, ella or usted.',
+                'With tú: empiezas, with the same e → ie change as empiezo. Empiezo is for yo and empieza for él, ella or usted.',
             },
           ),
           ex.listenChoice(
@@ -738,11 +747,12 @@ export const ES_A1_U13: EsUnitDef = {
             'Yo ___ a las seis de la tarde.',
             'I finish at six in the evening.',
             'termino',
-            ['terminás', 'termina', 'empiezo'],
+            ['terminas', 'termina', 'empiezo'],
             ['es-termino'],
             {
               id: 'es.ex.01k9zku3r333qx',
-              explanation: 'With yo: termino. Terminás is for vos and termina for él or ella.',
+              explanation:
+                'With yo: termino. Terminas is for tú and termina for él, ella or usted.',
             },
           ),
           ex.translateWrite(
@@ -755,16 +765,20 @@ export const ES_A1_U13: EsUnitDef = {
             },
           ),
           ex.shortAnswer(
-            '¿A qué te dedicás y dónde trabajás?',
-            'Answer that you are a waiter in a café (e.g. «Soy mozo y trabajo en un café.»).',
-            'Soy mozo y trabajo en un café.',
+            '¿A qué te dedicas y dónde trabajas?',
+            'Answer that you are a waiter in a café (e.g. «Soy mesero y trabajo en un café.»).',
+            'Soy mesero y trabajo en un café.',
             [
+              'Soy mesera y trabajo en un café.',
+              'Soy mesero. Trabajo en un café.',
+              'Soy mesera. Trabajo en un café.',
+              'Soy camarero y trabajo en un café.',
+              'Soy camarera y trabajo en un café.',
+              'Soy mozo y trabajo en un café.',
               'Soy moza y trabajo en un café.',
-              'Soy mozo. Trabajo en un café.',
-              'Soy moza. Trabajo en un café.',
             ],
-            ['es-el-mozo', 'es-a-que-te-dedicas'],
-            { id: 'es.ex.ukbqzce0y82xz3' },
+            ['es-el-mesero', 'es-a-que-te-dedicas'],
+            { id: 'es.ex.2r8xt2cgjgzpr7' },
           ),
         ],
       },

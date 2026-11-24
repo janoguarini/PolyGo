@@ -1,61 +1,29 @@
-/** Traduce errores de Supabase/red a mensajes en español sin filtrar detalles internos. */
+import { getStrings } from '@/i18n';
 
-const AUTH_MESSAGES: Record<string, string> = {
-  invalid_credentials: 'Email o contraseña incorrectos.',
-  email_not_confirmed: 'Confirmá tu email antes de iniciar sesión. Revisá tu bandeja de entrada.',
-  user_already_exists: 'Ya existe una cuenta con ese email.',
-  email_exists: 'Ya existe una cuenta con ese email.',
-  weak_password: 'La contraseña es demasiado débil.',
-  over_email_send_rate_limit: 'Demasiados emails enviados. Esperá unos minutos.',
-  over_request_rate_limit: 'Demasiados intentos. Esperá unos minutos.',
-  same_password: 'La nueva contraseña debe ser distinta de la anterior.',
-  otp_expired: 'El enlace expiró. Pedí uno nuevo.',
-  flow_state_not_found: 'El enlace ya no es válido. Pedí uno nuevo desde este dispositivo.',
-};
+import { errorStrings } from './strings';
 
-const RPC_MESSAGES: Record<string, string> = {
-  username_taken: 'Ese nombre de usuario ya está en uso.',
-  language_unavailable: 'Ese idioma todavía no está disponible.',
-  not_authenticated: 'Tu sesión expiró. Volvé a iniciar sesión.',
-  cannot_report_self: 'No podés reportar tu propia foto.',
-  report_rate_limited: 'Hiciste muchos reportes hoy. Probá de nuevo mañana.',
-  invalid_reason: 'Elegí un motivo para el reporte.',
-  missions_incomplete: 'Todavía te faltan misiones para abrir el cofre.',
-  already_claimed: 'Ya abriste el cofre de hoy.',
-  insufficient_polys: 'No te alcanzan los Polys.',
-  freezes_full: 'Ya tenés el máximo de protectores.',
-  item_owned: 'Ya lo tenés.',
-  item_not_for_sale: 'Este ítem no se vende por Polys.',
-  item_not_found: 'Ese ítem ya no está en la tienda.',
-  item_not_owned: 'Primero tenés que conseguirlo.',
-  streak_not_repairable: 'Ya no hay una racha para recuperar.',
-  cannot_block_self: 'No podés bloquearte a vos mismo.',
-  block_limit: 'Llegaste al máximo de usuarios bloqueados.',
-  user_not_found: 'Ese jugador ya no existe.',
-  cannot_friend_self: 'No podés agregarte a vos mismo.',
-  friend_limit: 'Llegaste al máximo de 200 amigos.',
-  friend_request_rate_limited: 'Mandaste muchas solicitudes hoy. Probá de nuevo mañana.',
-  friend_request_not_found: 'Esa solicitud ya no está.',
-  challenge_incomplete: 'Todavía no completaste este reto.',
-  not_friends: 'Sólo podés invitar a jugadores de tu lista de amigos.',
-  language_mismatch: 'Tu amigo está aprendiendo otro idioma, así que no pueden jugar juntos.',
-  match_rate_limited: 'Mandaste muchos desafíos en la última hora. Esperá un rato.',
-  no_energy:
-    'Te quedaste sin energía antes de guardar (¿la usaste en otro dispositivo?). Recuperás 1 cada 3 horas.',
-};
+/**
+ * Traduce errores de Supabase/red a mensajes para el usuario (en el idioma de la interfaz) sin
+ * filtrar detalles internos. Los textos viven en ./strings.ts, por código estable del servidor.
+ */
+
+// Orden fijo de búsqueda de los códigos de las RPC (el del español; los dos idiomas tienen las mismas claves).
+const RPC_CODES = Object.keys(errorStrings.es.rpc) as (keyof typeof errorStrings.es.rpc)[];
 
 export function toUserMessage(error: unknown): string {
-  if (!error || typeof error !== 'object') return 'Ocurrió un error inesperado.';
+  const t = getStrings(errorStrings);
+  if (!error || typeof error !== 'object') return t.unexpected;
   const e = error as { code?: unknown; message?: unknown; name?: unknown };
   const code = typeof e.code === 'string' ? e.code : undefined;
   const message = typeof e.message === 'string' ? e.message : '';
 
-  if (code && AUTH_MESSAGES[code]) return AUTH_MESSAGES[code];
-  for (const [key, text] of Object.entries(RPC_MESSAGES)) {
-    if (message.includes(key)) return text;
+  const auth = t.auth as Record<string, string>;
+  if (code && Object.prototype.hasOwnProperty.call(auth, code)) return auth[code]!;
+  for (const key of RPC_CODES) {
+    if (message.includes(key)) return t.rpc[key];
   }
   if (/network|fetch|Failed to fetch/i.test(message) || e.name === 'AuthRetryableFetchError') {
-    return 'No hay conexión con el servidor. Revisá tu internet.';
+    return t.network;
   }
-  return 'Ocurrió un error inesperado. Intentá de nuevo.';
+  return t.unexpectedRetry;
 }

@@ -2,6 +2,8 @@ import { router, useLocalSearchParams } from 'expo-router';
 
 import { Button, EmptyState, Screen } from '@/design-system';
 import { WritingTask } from '@/features/learning/components/WritingTask';
+import { useStrings } from '@/i18n';
+import { writingTaskScreenStrings } from '@/i18n/screens/lesson';
 
 import { writingTask } from '../../../content/writing';
 
@@ -12,17 +14,18 @@ import { writingTask } from '../../../content/writing';
  * resultados de la lección a la que acompaña (WritingPracticeCard). Es práctica opcional.
  */
 export default function WritingTaskScreen() {
+  const t = useStrings(writingTaskScreenStrings);
   const { id } = useLocalSearchParams<{ id: string }>();
   const task = id ? writingTask(id) : undefined;
   return (
     <Screen
       edges={['top', 'bottom']}
-      footer={<Button label="Volver" variant="secondary" onPress={() => router.back()} />}
+      footer={<Button label={t.back} variant="secondary" onPress={() => router.back()} />}
     >
       {task ? (
         <WritingTask task={task} />
       ) : (
-        <EmptyState title="No encontramos esta tarea" message="Volvé e intentá de nuevo." />
+        <EmptyState title={t.notFoundTitle} message={t.notFoundMessage} />
       )}
     </Screen>
   );

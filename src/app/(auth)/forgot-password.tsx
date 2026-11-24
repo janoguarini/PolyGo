@@ -7,9 +7,12 @@ import { Button, Screen, Text, TextField, spacing } from '@/design-system';
 import { sendPasswordReset } from '@/features/auth/api';
 import { FormMessage } from '@/features/auth/FormMessage';
 import { forgotPasswordSchema, type ForgotPasswordValues } from '@/features/auth/schemas';
+import { useStrings } from '@/i18n';
+import { forgotPasswordStrings } from '@/i18n/screens/forgotPassword';
 import { toUserMessage } from '@/lib/errors';
 
 export default function ForgotPasswordScreen() {
+  const t = useStrings(forgotPasswordStrings);
   const { control, handleSubmit, formState } = useForm<ForgotPasswordValues>({
     resolver: zodResolver(forgotPasswordSchema),
     defaultValues: { email: '' },
@@ -22,8 +25,8 @@ export default function ForgotPasswordScreen() {
   return (
     <Screen edges={['top', 'bottom']} contentStyle={styles.content}>
       <View style={styles.header}>
-        <Text variant="title">Recuperar contraseña</Text>
-        <Text color="textMuted">Te enviamos un enlace para elegir una contraseña nueva.</Text>
+        <Text variant="title">{t.title}</Text>
+        <Text color="textMuted">{t.subtitle}</Text>
       </View>
 
       <Controller
@@ -31,7 +34,7 @@ export default function ForgotPasswordScreen() {
         name="email"
         render={({ field }) => (
           <TextField
-            label="Email"
+            label={t.email}
             value={field.value}
             onChangeText={field.onChange}
             onBlur={field.onBlur}
@@ -49,14 +52,11 @@ export default function ForgotPasswordScreen() {
       ) : null}
       {mutation.isSuccess ? (
         // Mensaje neutro: no revela si el email está registrado.
-        <FormMessage
-          tone="success"
-          message="Si existe una cuenta con ese email, vas a recibir un enlace. Abrilo desde este teléfono."
-        />
+        <FormMessage tone="success" message={t.sent} />
       ) : null}
 
       <Button
-        label={mutation.isSuccess ? 'Reenviar enlace' : 'Enviar enlace'}
+        label={mutation.isSuccess ? t.resend : t.send}
         size="lg"
         loading={mutation.isPending}
         onPress={submit}

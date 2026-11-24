@@ -64,18 +64,39 @@ export function useIsContentTester() {
  * servidor (si falla, vuelve al anterior). Después recarga todo lo que depende de él.
  */
 export function useSetTargetLanguage() {
+  return useSwitchStudy(setTargetLanguage, (language: string) => ({ language }));
+}
+
+/**
+ * Cambio de lo que se estudia con caché optimista (idioma y, si hay, curso), usado por
+ * useSetTargetLanguage y por useSwitchCourse (src/features/courses/hooks.ts). Si falla, vuelve al
+ * anterior; al terminar recarga perfil, aprendizaje y clasificación. No toca XP, progreso ni ELO: el
+ * XP es global y el progreso y el ELO de cada idioma quedan donde estaban.
+ */
+export function useSwitchStudy<T>(
+  mutationFn: (input: T) => Promise<unknown>,
+  targetOf: (input: T) => { language: string; courseCode?: string },
+) {
   const qc = useQueryClient();
   const { session } = useAuth();
   const key = profileKeys.me(session?.user.id ?? 'anonymous');
   return useMutation({
-    mutationFn: setTargetLanguage,
-    onMutate: async (language: string) => {
+    mutationFn,
+    onMutate: async (input: T) => {
+      const { language, courseCode } = targetOf(input);
       await qc.cancelQueries({ queryKey: key });
       const previous = qc.getQueryData<MyProfile>(key);
       if (previous) {
         qc.setQueryData<MyProfile>(key, {
           ...previous,
-          profile: { ...previous.profile, target_language: language },
+          profile: {
+            ...previous.profile,
+            target_language: language,
+            // Sólo si el perfil ya tiene la columna (modelo de cursos aplicado).
+            ...(courseCode && 'active_course_code' in previous.profile
+              ? { active_course_code: courseCode }
+              : {}),
+          },
           // El rating es por idioma: llega con la recarga.
           rating: previous.rating?.language_code === language ? previous.rating : null,
         });

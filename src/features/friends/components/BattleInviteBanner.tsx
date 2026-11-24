@@ -7,8 +7,10 @@ import Animated, { FadeInUp, FadeOutUp } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button, Card, Text, colors, spacing, themedStyles } from '@/design-system';
+import { useStrings } from '@/i18n';
 
 import { useDeclineBattleInvite, type BattleInvite } from '../social';
+import { friendsStrings } from '../strings';
 import { StatusAvatar } from './PlayerRow';
 
 /**
@@ -17,6 +19,7 @@ import { StatusAvatar } from './PlayerRow';
  */
 export function BattleInviteBanner({ invites }: { invites: BattleInvite[] }) {
   const styles = useStyles();
+  const t = useStrings(friendsStrings);
   const insets = useSafeAreaInsets();
   const decline = useDeclineBattleInvite();
   // Las que ya respondiste en esta sesión no vuelven a aparecer aunque el próximo latido las traiga.
@@ -48,17 +51,17 @@ export function BattleInviteBanner({ invites }: { invites: BattleInvite[] }) {
           <StatusAvatar player={invite} size={40} online />
           <View style={styles.flex}>
             <Text variant="bodyStrong" color="textStrong" numberOfLines={1}>
-              @{invite.username} te desafió
+              {t.challengedYou(invite.username)}
             </Text>
             <View style={styles.sub}>
               <Swords color={colors.primarySoft} size={14} />
-              <Text variant="caption">Amistoso · no mueve el ELO</Text>
+              <Text variant="caption">{t.friendlyNoElo}</Text>
             </View>
           </View>
         </View>
         <View style={styles.row}>
           <Button
-            label="Ahora no"
+            label={t.notNow}
             variant="ghost"
             style={styles.flex}
             disabled={decline.isPending}
@@ -68,7 +71,7 @@ export function BattleInviteBanner({ invites }: { invites: BattleInvite[] }) {
             }}
           />
           <Button
-            label="Jugar"
+            label={t.play}
             style={styles.flex}
             onPress={() => {
               markHandled();

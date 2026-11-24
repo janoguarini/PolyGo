@@ -4,10 +4,13 @@ import { useEffect, useRef, useState } from 'react';
 import { Button, ErrorState, LoadingState, Screen } from '@/design-system';
 import { useAuth } from '@/features/auth/AuthProvider';
 import { exchangeCode } from '@/features/auth/api';
+import { useStrings } from '@/i18n';
+import { authCallbackStrings } from '@/i18n/screens/authCallback';
 import { toUserMessage } from '@/lib/errors';
 
 /** Destino de los enlaces de email (confirmación de cuenta y recuperación de contraseña). */
 export default function AuthCallbackScreen() {
+  const t = useStrings(authCallbackStrings);
   const params = useLocalSearchParams<{ code?: string; error_description?: string }>();
   const { session, recoveringPassword } = useAuth();
   const [exchangeError, setExchangeError] = useState<string | null>(null);
@@ -28,15 +31,13 @@ export default function AuthCallbackScreen() {
     router.replace(recoveringPassword ? '/reset-password' : '/');
   }, [exchanged, session, recoveringPassword]);
 
-  const error =
-    params.error_description ??
-    (params.code ? exchangeError : 'El enlace no es válido o está incompleto.');
+  const error = params.error_description ?? (params.code ? exchangeError : t.invalidLink);
 
-  if (!error) return <LoadingState label="Verificando enlace…" />;
+  if (!error) return <LoadingState label={t.verifying} />;
   return (
     <Screen edges={['top', 'bottom']} scroll={false}>
-      <ErrorState title="No pudimos verificar el enlace" message={error} />
-      <Button label="Volver al inicio" variant="secondary" onPress={() => router.replace('/')} />
+      <ErrorState title={t.errorTitle} message={error} />
+      <Button label={t.backHome} variant="secondary" onPress={() => router.replace('/')} />
     </Screen>
   );
 }

@@ -5,33 +5,17 @@ import { Image, Pressable, StyleSheet, View } from 'react-native';
 import type {
   ContextStimulus as Stimulus,
   ListeningStimulus,
-  ReadingDocument,
   ReadingStimulus,
   StimulusVisual,
-  StimulusVisualKind,
 } from '@shared/exercises';
 
 import { MIN_TOUCH, Text, colors, radii, spacing, themedStyles } from '@/design-system';
+import { useStrings } from '@/i18n';
 
-import { TargetText } from '../readings';
+import { TargetText, useSessionLanguage } from '../readings';
 import { speakDialogue } from '../speech';
 import { stimulusImageSource } from '../stimulusImages';
-
-/** Nombre en español de cada tipo de documento (encabezado de la tarjeta de lectura). */
-export const DOCUMENT_LABELS: Record<ReadingDocument, string> = {
-  message: 'MENSAJE',
-  email: 'CORREO',
-  post: 'PUBLICACIÓN',
-  notice: 'FICHA',
-  sign: 'CARTEL',
-  menu: 'MENÚ',
-  schedule: 'HORARIO',
-  description: 'DESCRIPCIÓN',
-  directions: 'INDICACIONES',
-  postcard: 'POSTAL',
-  ad: 'AVISO',
-  form: 'FORMULARIO',
-};
+import { stimulusStrings } from '../strings';
 
 /**
  * Último estímulo de audio que sonó solo. Las preguntas de un mismo audio comparten el estímulo: suena
@@ -59,6 +43,7 @@ export function ContextStimulus({
   answered: boolean;
 }) {
   const styles = useStyles();
+  const t = useStrings(stimulusStrings);
   return (
     <View style={styles.wrapper}>
       <Text variant="caption">{stimulus.setting}</Text>
@@ -69,7 +54,7 @@ export function ContextStimulus({
       )}
       <View style={styles.question} accessibilityRole="header">
         <Text variant="overline" color="primarySoft">
-          PREGUNTA
+          {t.question}
         </Text>
         <Text variant="heading" color="textStrong">
           {question}
@@ -81,17 +66,15 @@ export function ContextStimulus({
 
 function ReadingCard({ stimulus, answered }: { stimulus: ReadingStimulus; answered: boolean }) {
   const styles = useStyles();
+  const t = useStrings(stimulusStrings);
   return (
-    <View
-      style={styles.card}
-      accessibilityLabel={`${DOCUMENT_LABELS[stimulus.document].toLowerCase()} para leer`}
-    >
+    <View style={styles.card} accessibilityLabel={t.toRead(t.documents[stimulus.document])}>
       <Text variant="overline" color="info">
-        {DOCUMENT_LABELS[stimulus.document]}
+        {t.documents[stimulus.document]}
       </Text>
       {stimulus.from || stimulus.to ? (
         <Text variant="caption">
-          {[stimulus.from && `De: ${stimulus.from}`, stimulus.to && `Para: ${stimulus.to}`]
+          {[stimulus.from && t.from(stimulus.from), stimulus.to && t.to(stimulus.to)]
             .filter(Boolean)
             .join(' · ')}
         </Text>
@@ -119,6 +102,8 @@ type AudioState =
 
 function ListeningCard({ stimulus, answered }: { stimulus: ListeningStimulus; answered: boolean }) {
   const styles = useStyles();
+  const t = useStrings(stimulusStrings);
+  const { language } = useSessionLanguage();
   const [audio, setAudio] = useState<AudioState>({ status: 'idle', heard: false });
   /** Lo que de verdad tiene el dispositivo (se sabe al empezar a reproducir). */
   const [voices, setVoices] = useState<{ available: boolean; distinct: boolean } | null>(null);
@@ -169,13 +154,13 @@ function ListeningCard({ stimulus, answered }: { stimulus: ListeningStimulus; an
   return (
     <View style={styles.card}>
       <Text variant="overline" color="info">
-        {stimulus.speakers.length > 1 ? 'CONVERSACIÓN' : 'MENSAJE ORAL'}
+        {stimulus.speakers.length > 1 ? t.conversation : t.voiceMessage}
       </Text>
       <StimulusVisualSlot visual={stimulus.visual} answered={answered} at="with_stimulus" />
       <View style={styles.controls}>
         <Pressable
           accessibilityRole="button"
-          accessibilityLabel={playing ? 'Detener el audio' : 'Escuchar el audio (voz sintetizada)'}
+          accessibilityLabel={playing ? t.stopAudio : t.playAudio}
           onPress={() => (playing ? stop() : play(false))}
           hitSlop={8}
           style={({ pressed }) => [styles.play, pressed && styles.pressed]}
@@ -188,7 +173,7 @@ function ListeningCard({ stimulus, answered }: { stimulus: ListeningStimulus; an
         </Pressable>
         <Pressable
           accessibilityRole="button"
-          accessibilityLabel="Escuchar más despacio (voz sintetizada)"
+          accessibilityLabel={t.playSlow}
           onPress={() => play(true)}
           hitSlop={8}
           style={({ pressed }) => [styles.slow, pressed && styles.pressed]}
@@ -198,31 +183,30 @@ function ListeningCard({ stimulus, answered }: { stimulus: ListeningStimulus; an
         <View style={styles.flex} accessibilityLiveRegion="polite">
           <Text variant="caption" color={audio.status === 'error' ? 'danger' : 'textMuted'}>
             {audio.status === 'error'
-              ? 'No se pudo reproducir el audio. Tocá el parlante para intentar de nuevo.'
+              ? t.audioError
               : playing
-                ? `Reproduciendo${audio.slow ? ' despacio' : ''}… ${audio.line + 1} de ${stimulus.lines.length}`
+                ? t.playing(audio.slow, audio.line + 1, stimulus.lines.length)
                 : audio.status === 'idle' && audio.heard
-                  ? 'Podés volver a escucharlo las veces que quieras.'
-                  : 'Tocá el parlante para escuchar.'}
+                  ? t.listenAgain
+                  : t.tapToListen}
           </Text>
         </View>
       </View>
       <Text variant="caption">
-        {names.length > 1 ? `Hablan: ${names.join(' y ')}` : `Habla: ${names[0]}`} · voz sintetizada
+        {t.speakers(names)} · {t.synthesizedVoice}
       </Text>
       {voices && !voices.available ? (
         <Text variant="caption" color="gold">
-          Tu dispositivo no tiene una voz en inglés instalada: puede sonar con otra voz del sistema.
+          {t.noVoice(language)}
         </Text>
       ) : voices && names.length > 1 && !voices.distinct ? (
         <Text variant="caption" color="gold">
-          Tu dispositivo tiene una sola voz en inglés: los dos hablantes usan la misma voz, sólo con
-          otro tono.
+          {t.oneVoice(language)}
         </Text>
       ) : null}
       {answered ? (
-        <View style={styles.transcript} accessibilityLabel="Transcripción del audio">
-          <Text variant="overline">TRANSCRIPCIÓN</Text>
+        <View style={styles.transcript} accessibilityLabel={t.transcriptLabel}>
+          <Text variant="overline">{t.transcript}</Text>
           {stimulus.lines.map((l, i) => (
             <Text key={i} variant="body" color="textStrong">
               <Text variant="bodyStrong" color="primarySoft">
@@ -237,14 +221,6 @@ function ListeningCard({ stimulus, answered }: { stimulus: ListeningStimulus; an
     </View>
   );
 }
-
-/** Encabezado de una imagen que aparece después de responder (como la transcripción). */
-const VISUAL_LABELS: Record<StimulusVisualKind, string> = {
-  photo: 'FOTO',
-  illustration: 'ILUSTRACIÓN',
-  floor_plan: 'PLANO',
-  map: 'MAPA',
-};
 
 /**
  * Imagen de apoyo del estímulo (fase C.9.1) en su momento: `with_stimulus` junto al texto o el
@@ -268,11 +244,13 @@ function StimulusVisualSlot({
 
 function AfterAnswerVisual({ visual, children }: { visual: StimulusVisual; children: ReactNode }) {
   const styles = useStyles();
+  // Encabezado de una imagen que aparece después de responder (como la transcripción).
+  const t = useStrings(stimulusStrings);
   // Sin recurso, tampoco el encabezado.
   if (!stimulusImageSource(visual)) return null;
   return (
     <View style={styles.transcript}>
-      <Text variant="overline">{VISUAL_LABELS[visual.kind]}</Text>
+      <Text variant="overline">{t.visuals[visual.kind]}</Text>
       {children}
     </View>
   );

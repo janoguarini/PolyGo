@@ -14,9 +14,12 @@ import { useFinishTour, useTourPending } from '@/features/onboarding/tour';
 import { useMyProfile } from '@/features/profile/hooks';
 import { useReminderSync } from '@/features/reminders/hooks';
 import { useWidgetSync } from '@/features/widgets/useWidgetSync';
+import { useStrings } from '@/i18n';
+import { tabsStrings } from '@/i18n/screens/tabs';
 
 export default function TabsLayout() {
   useTheme();
+  const t = useStrings(tabsStrings);
   // Con sesión y onboarding completo: los widgets reflejan las palabras del usuario.
   useWidgetSync();
   useReminderSync();
@@ -43,10 +46,11 @@ export default function TabsLayout() {
           headerShown: false,
           tabBarActiveTintColor: colors.primaryBright,
           tabBarInactiveTintColor: colors.textMuted,
-          tabBarActiveBackgroundColor: sidebar ? colors.surfaceHighlight : undefined,
+          // La pestaña activa va resaltada sobre un fondo propio (también en el teléfono).
+          tabBarActiveBackgroundColor: colors.surfaceHighlight,
           tabBarItemStyle: sidebar
             ? { borderRadius: 12, marginHorizontal: 12, marginVertical: 2 }
-            : undefined,
+            : { borderRadius: 14, marginHorizontal: 3, marginVertical: 5 },
           tabBarPosition: sidebar ? 'left' : 'bottom',
           tabBarLabelPosition: sidebar ? 'beside-icon' : undefined,
           tabBarStyle: sidebar
@@ -71,28 +75,28 @@ export default function TabsLayout() {
         <Tabs.Screen
           name="index"
           options={{
-            title: 'Aprender',
+            title: t.learn,
             tabBarIcon: ({ color, size }) => <BookOpen color={color} size={size} />,
           }}
         />
         <Tabs.Screen
           name="practice"
           options={{
-            title: 'Repaso',
+            title: t.review,
             tabBarIcon: ({ color, size }) => <Dumbbell color={color} size={size} />,
           }}
         />
         <Tabs.Screen
           name="ranked"
           options={{
-            title: 'Ranked',
+            title: t.ranked,
             tabBarIcon: ({ color, size }) => <Swords color={color} size={size} />,
           }}
         />
         <Tabs.Screen
           name="friends"
           options={{
-            title: 'Amigos',
+            title: t.friends,
             tabBarIcon: ({ color, size }) => <Users color={color} size={size} />,
             tabBarBadge: pendingRequests > 0 ? pendingRequests : undefined,
             tabBarBadgeStyle: { backgroundColor: colors.danger, fontSize: 11 },
@@ -101,7 +105,7 @@ export default function TabsLayout() {
         <Tabs.Screen
           name="profile"
           options={{
-            title: 'Perfil',
+            title: t.profile,
             tabBarIcon: ({ color, size }) => <User color={color} size={size} />,
           }}
         />

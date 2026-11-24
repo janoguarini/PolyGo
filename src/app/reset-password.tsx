@@ -8,9 +8,12 @@ import { useAuth } from '@/features/auth/AuthProvider';
 import { signOut, updatePassword } from '@/features/auth/api';
 import { FormMessage } from '@/features/auth/FormMessage';
 import { newPasswordSchema, type NewPasswordValues } from '@/features/auth/schemas';
+import { useStrings } from '@/i18n';
+import { resetPasswordStrings } from '@/i18n/screens/resetPassword';
 import { toUserMessage } from '@/lib/errors';
 
 export default function ResetPasswordScreen() {
+  const t = useStrings(resetPasswordStrings);
   const { setRecoveringPassword } = useAuth();
   const { control, handleSubmit, formState } = useForm<NewPasswordValues>({
     resolver: zodResolver(newPasswordSchema),
@@ -26,20 +29,20 @@ export default function ResetPasswordScreen() {
   return (
     <Screen edges={['top', 'bottom']} contentStyle={styles.content}>
       <View style={styles.header}>
-        <Text variant="title">Nueva contraseña</Text>
-        <Text color="textMuted">Elegí una contraseña que no uses en otros sitios.</Text>
+        <Text variant="title">{t.title}</Text>
+        <Text color="textMuted">{t.subtitle}</Text>
       </View>
       <Controller
         control={control}
         name="password"
         render={({ field }) => (
           <TextField
-            label="Contraseña nueva"
+            label={t.password}
             value={field.value}
             onChangeText={field.onChange}
             onBlur={field.onBlur}
             error={formState.errors.password?.message}
-            hint="Mínimo 6 caracteres."
+            hint={t.passwordHint}
             secureTextEntry
             autoComplete="new-password"
             textContentType="newPassword"
@@ -51,7 +54,7 @@ export default function ResetPasswordScreen() {
         name="confirmPassword"
         render={({ field }) => (
           <TextField
-            label="Repetir contraseña"
+            label={t.confirmPassword}
             value={field.value}
             onChangeText={field.onChange}
             onBlur={field.onBlur}
@@ -65,9 +68,9 @@ export default function ResetPasswordScreen() {
       {mutation.isError ? (
         <FormMessage tone="error" message={toUserMessage(mutation.error)} />
       ) : null}
-      <Button label="Guardar contraseña" size="lg" loading={mutation.isPending} onPress={submit} />
+      <Button label={t.save} size="lg" loading={mutation.isPending} onPress={submit} />
       <Button
-        label="Cancelar y cerrar sesión"
+        label={t.cancel}
         variant="ghost"
         onPress={() => {
           setRecoveringPassword(false);

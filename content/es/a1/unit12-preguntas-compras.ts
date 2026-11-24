@@ -2,27 +2,30 @@ import type { EsUnitDef } from '../../es-course';
 import { dialogue, ES_A1_RATE, ex, question, reading, w } from '../helpers';
 
 /**
- * Español A1 U12 «Questions and shopping» (docs/ES_A1_A2.md): las palabras interrogativas (quién,
+ * Español A1 U12 «Questions and shopping» (docs/ES_A1_A2.md), en español neutro de Latinoamérica (tú y
+ * ustedes; ¿qué buscas?, ¿cuál prefieres?, el vendedor con usted: ¿qué busca?): las palabras interrogativas (quién,
  * qué, cuál, cómo, cuánto / cuánta / cuántos / cuántas, por qué) y la respuesta con porque; comprar en
- * un negocio: ¿cuánto cuesta?, caro / barato (con concordancia), busco…, y los números 13, 15, 30, 40,
+ * un negocio o una tienda: ¿cuánto cuesta?, caro / barato (con concordancia), busco…, la camiseta, y los
+ * números 13, 15, 30, 40,
  * 50 y cien (cien frente a ciento veinte).
  * Pronunciación: la entonación de las preguntas con palabra interrogativa (baja al final), por qué
  * (acento en qué) frente a porque (acento en por), y la c / qu de cinco, cincuenta, quince.
- * Cultura: los precios en pesos suelen ir en miles (treinta mil pesos) y el signo $ es el del peso.
+ * Cultura: varios países usan el peso (México, Colombia, Chile, Argentina…), con valores muy distintos;
+ * en Colombia o en Chile los precios suelen ir en miles (treinta mil pesos); el signo $ es el del peso.
  *
  * ESTADO EDITORIAL: borrador, sin revisión de hablantes nativos. Se carga sin publicar.
  */
 
-const REMERA = dialogue(
+const CAMISETA = dialogue(
   'es.stim.a1-u12-remera',
-  'Lucía is shopping for a T-shirt in a small clothes shop.',
+  'Lucía is shopping for a T-shirt in a small clothes shop in Bogotá.',
   [
     ['Juan', 'Buenas tardes. ¿Qué busca?'],
-    ['Lucía', 'Busco una remera blanca.'],
+    ['Lucía', 'Busco una camiseta blanca.'],
     ['Juan', 'Esta es muy linda.'],
     ['Lucía', '¿Cuánto cuesta?'],
     ['Juan', 'Cuesta cuarenta mil pesos.'],
-    ['Lucía', '¡Es muy cara! ¿Y la remera azul?'],
+    ['Lucía', '¡Es muy cara! ¿Y la camiseta azul?'],
     ['Juan', 'La azul cuesta quince mil pesos.'],
     ['Lucía', 'Bien, la azul, por favor.'],
   ],
@@ -36,7 +39,7 @@ const CARTEL = reading(
   [
     '¡Hoy, todo muy barato!',
     'Cuadernos: cinco mil pesos.',
-    'Lapiceras azules y rojas: mil pesos.',
+    'Bolígrafos azules y rojos: mil pesos.',
     'Mochilas: cincuenta mil pesos.',
     'Abierto hasta las ocho de la noche.',
   ],
@@ -45,7 +48,7 @@ const CARTEL = reading(
 
 export const ES_A1_U12: EsUnitDef = {
   names: ['Lucía', 'Juan', 'Ana', 'Buenos Aires'],
-  support: ['buscás', 'busca', 'remera', 'linda', 'mil', 'ciento', 'abierto'],
+  support: ['buscas', 'busca', 'camiseta', 'linda', 'mil', 'ciento', 'abierto'],
   unit: {
     position: 12,
     title: 'Questions and shopping',
@@ -58,10 +61,10 @@ export const ES_A1_U12: EsUnitDef = {
     grammar: {
       title: 'Question words · ¿cuánto cuesta? · caro / barato',
       explanation:
-        'Question words always carry a written accent: ¿quién? (who), ¿qué? (what), ¿cuál? (which one), ¿cómo? (how, or what something is like), ¿cuánto? (how much) and ¿por qué? (why, two words). The answer to ¿por qué? is porque (because: one word, no accent). Spanish questions open with ¿ and close with ?. Cuánto agrees with the noun: ¿cuánto?, ¿cuánta agua?, ¿cuántos hermanos?, ¿cuántas sillas? To ask a price: ¿cuánto cuesta? Caro (expensive) and barato (cheap) agree too: el libro es caro, la remera es cara. Busco means I’m looking for, with no word for “for”: busco una remera.',
+        'Question words always carry a written accent: ¿quién? (who), ¿qué? (what), ¿cuál? (which one), ¿cómo? (how, or what something is like), ¿cuánto? (how much) and ¿por qué? (why, two words). The answer to ¿por qué? is porque (because: one word, no accent). Spanish questions open with ¿ and close with ?. Cuánto agrees with the noun: ¿cuánto?, ¿cuánta agua?, ¿cuántos hermanos?, ¿cuántas sillas? To ask a price: ¿cuánto cuesta? Caro (expensive) and barato (cheap) agree too: el libro es caro, la camiseta es cara. Busco means I’m looking for, with no word for “for”: busco una camiseta. To a friend: ¿qué buscas? (tú); a shop assistant asks you ¿qué busca? (usted).',
       examples: [
         {
-          target: '¿Quién es? ¿Qué buscás? ¿Cuál preferís?',
+          target: '¿Quién es? ¿Qué buscas? ¿Cuál prefieres?',
           base: 'Who is it? What are you looking for? Which one do you prefer?',
         },
         {
@@ -77,7 +80,7 @@ export const ES_A1_U12: EsUnitDef = {
     review: {
       status: 'draft',
       notes:
-        'A1 nuevo (U12). Sin revisión nativa: revisar los precios (en la Argentina van en miles; usamos «mil» como apoyo), «el negocio» como palabra general para tienda, «¿Qué busca?» del vendedor con usted, y si «¿cuál preferís?» frente a «¿qué preferís?» queda bien explicado (ambas se oyen; el ejercicio evita poner las dos como opciones).',
+        'A1 nuevo (U12). Convertido al español neutro de Latinoamérica (tú y ustedes) el 2026-11-21. Sin revisión nativa: revisar los precios (en miles de pesos, como en Colombia o Chile; usamos «mil» como apoyo), «el negocio» como palabra general para tienda (se mantiene porque A1 U13 y A2 U9 la usan; «la tienda» se acepta y se menciona), «la camiseta» en lugar de «la remera», «¿Qué busca?» del vendedor con usted, y si «¿cuál prefieres?» frente a «¿qué prefieres?» queda bien explicado (ambas se oyen; el ejercicio evita poner las dos como opciones).',
     },
     words: [
       w(
@@ -88,7 +91,7 @@ export const ES_A1_U12: EsUnitDef = {
         'Who is he? — He’s my brother.',
         ['questions'],
       ),
-      w('es-que', 'qué', 'what', '¿Qué buscás?', 'What are you looking for?', ['questions']),
+      w('es-que', 'qué', 'what', '¿Qué buscas?', 'What are you looking for?', ['questions']),
       w(
         'es-por-que',
         'por qué',
@@ -101,8 +104,8 @@ export const ES_A1_U12: EsUnitDef = {
         'es-porque',
         'porque',
         'because',
-        'Tomo mate porque me encanta.',
-        'I drink mate because I love it.',
+        'Tomo café porque me encanta.',
+        'I drink coffee because I love it.',
         ['connectors'],
       ),
       w(
@@ -117,7 +120,7 @@ export const ES_A1_U12: EsUnitDef = {
         'es-cuanto',
         'cuánto',
         'how much',
-        '¿Cuántos hermanos tenés?',
+        '¿Cuántos hermanos tienes?',
         'How many brothers and sisters do you have?',
         ['questions'],
         { acceptedTranslations: ['how many'], acceptedTexts: ['cuánta', 'cuántos', 'cuántas'] },
@@ -131,7 +134,7 @@ export const ES_A1_U12: EsUnitDef = {
         ['shopping', 'questions'],
         { acceptedTranslations: ['how much does it cost?'] },
       ),
-      w('es-cual', 'cuál', 'which', '¿Cuál preferís?', 'Which one do you prefer?', ['questions'], {
+      w('es-cual', 'cuál', 'which', '¿Cuál prefieres?', 'Which one do you prefer?', ['questions'], {
         acceptedTranslations: ['which one'],
       }),
       w(
@@ -147,7 +150,7 @@ export const ES_A1_U12: EsUnitDef = {
         'es-barato',
         'barato',
         'cheap',
-        'La remera es barata.',
+        'La camiseta es barata.',
         'The T-shirt is cheap.',
         ['shopping'],
         {
@@ -160,8 +163,8 @@ export const ES_A1_U12: EsUnitDef = {
         'the shop',
         'El negocio está cerca de la estación.',
         'The shop is near the station.',
-        ['shopping', 'argentina'],
-        { acceptedTranslations: ['the store'], emoji: '🏪' },
+        ['shopping'],
+        { acceptedTranslations: ['the store'], acceptedTexts: ['la tienda'], emoji: '🏪' },
       ),
       w(
         'es-el-peso',
@@ -256,7 +259,7 @@ export const ES_A1_U12: EsUnitDef = {
             },
           ),
           ex.fillBlank(
-            '¿___ buscás?',
+            '¿___ buscas?',
             'What are you looking for?',
             'Qué',
             ['Quién', 'Cuántos', 'Cómo'],
@@ -278,7 +281,7 @@ export const ES_A1_U12: EsUnitDef = {
             { id: 'es.ex.au4p7om720n4wz' },
           ),
           ex.fillBlank(
-            '¿___ preferís, el rojo o el azul?',
+            '¿___ prefieres, el rojo o el azul?',
             'Which one do you prefer, the red one or the blue one?',
             'Cuál',
             ['Quién', 'Cómo', 'Dónde'],
@@ -322,8 +325,8 @@ export const ES_A1_U12: EsUnitDef = {
               base: 'What is your city like? — It’s very big.',
             },
             {
-              target: '¿Por qué tomás mate? — Porque me encanta.',
-              base: 'Why do you drink mate? — Because I love it.',
+              target: '¿Por qué tomas café? — Porque me encanta.',
+              base: 'Why do you drink coffee? — Because I love it.',
             },
           ],
         },
@@ -351,8 +354,8 @@ export const ES_A1_U12: EsUnitDef = {
             },
           ),
           ex.fillBlank(
-            'Tomo mate ___ me encanta.',
-            'I drink mate because I love it.',
+            'Tomo café ___ me encanta.',
+            'I drink coffee because I love it.',
             'porque',
             ['cómo', 'quién', 'cuál'],
             ['es-porque'],
@@ -388,7 +391,10 @@ export const ES_A1_U12: EsUnitDef = {
             ['es-por-que'],
             {
               id: 'es.ex.xuri1hyvx32gtd',
-              acceptedAnswers: ['¿Por qué a vos no te gusta el café?'],
+              acceptedAnswers: [
+                '¿Por qué a ti no te gusta el café?',
+                '¿Por qué a vos no te gusta el café?',
+              ],
             },
           ),
           ex.shortAnswer(
@@ -459,7 +465,7 @@ export const ES_A1_U12: EsUnitDef = {
             { id: 'es.ex.ayd399urr7chle' },
           ),
           ex.fillBlank(
-            '¿___ hermanos tenés?',
+            '¿___ hermanos tienes?',
             'How many brothers and sisters do you have?',
             'Cuántos',
             ['Cuántas', 'Cuánto', 'Cuál'],
@@ -471,7 +477,7 @@ export const ES_A1_U12: EsUnitDef = {
             },
           ),
           ex.fillBlank(
-            '¿___ agua querés?',
+            '¿___ agua quieres?',
             'How much water do you want?',
             'Cuánta',
             ['Cuánto', 'Cuántas', 'Quién'],
@@ -512,10 +518,10 @@ export const ES_A1_U12: EsUnitDef = {
           'Ask for prices, say if something is expensive or cheap and say what you are looking for.',
         intro: {
           explanation:
-            'To ask a price: ¿cuánto cuesta? (for several things, ¿cuánto cuestan?). Caro (expensive) and barato (cheap) agree with the thing: el libro es caro, la remera es barata. Busco means I’m looking for, with no extra word for “for”. In Argentina money is the peso (written with $), and prices are often in the thousands: mil is a thousand, treinta mil pesos.',
+            'To ask a price: ¿cuánto cuesta? (for several things, ¿cuánto cuestan?). Caro (expensive) and barato (cheap) agree with the thing: el libro es caro, la camiseta es barata. Busco means I’m looking for, with no extra word for “for”; with tú it is buscas. Mexico, Colombia, Chile and Argentina all use the peso (written with $), but its value is very different in each country: in Colombia or Chile prices are often in the thousands (mil is a thousand: treinta mil pesos).',
           examples: [
             {
-              target: '¿Cuánto cuesta la remera? — Cuesta treinta mil pesos.',
+              target: '¿Cuánto cuesta la camiseta? — Cuesta treinta mil pesos.',
               base: 'How much is the T-shirt? — It costs thirty thousand pesos.',
             },
             { target: 'Busco una mochila barata.', base: 'I’m looking for a cheap backpack.' },
@@ -537,14 +543,14 @@ export const ES_A1_U12: EsUnitDef = {
             id: 'es.ex.h4y1gx50grjeha',
           }),
           ex.fillBlank(
-            'La remera es muy ___.',
+            'La camiseta es muy ___.',
             'The T-shirt is very expensive.',
             'cara',
             ['caro', 'caros', 'barata'],
             ['es-caro'],
             {
               id: 'es.ex.qxppcsyhvzif76',
-              explanation: 'Remera is feminine singular, so the adjective is cara.',
+              explanation: 'Camiseta is feminine singular, so the adjective is cara.',
             },
           ),
           ex.listenChoice(
@@ -557,12 +563,12 @@ export const ES_A1_U12: EsUnitDef = {
             '___ una mochila azul.',
             'I’m looking for a blue backpack.',
             'Busco',
-            ['Buscás', 'Busca'],
+            ['Buscas', 'Busca'],
             ['es-busco'],
             {
               id: 'es.ex.jitgwldxy7q0eb',
               explanation:
-                'With yo: busco. Buscás is for vos and busca for usted. There is no word for “for”.',
+                'With yo: busco. Buscas is for tú and busca for usted. There is no word for “for”.',
             },
           ),
           ex.matchPairs(
@@ -577,16 +583,16 @@ export const ES_A1_U12: EsUnitDef = {
           ),
           question(
             'es.ex.8pkc6zdiedndmi',
-            REMERA,
+            CAMISETA,
             'What is Lucía looking for?',
             'A white T-shirt',
             ['A blue backpack', 'A white notebook', 'A cheap phone'],
             ['es-busco'],
-            'Lucía says “Busco una remera blanca”.',
+            'Lucía says “Busco una camiseta blanca”.',
           ),
           question(
             'es.ex.ba4hx7vvpfnjfp',
-            REMERA,
+            CAMISETA,
             'Why doesn’t Lucía take the white T-shirt?',
             'It’s too expensive',
             ['It’s too small', 'She doesn’t like the color', 'The shop has no white T-shirts'],
@@ -600,7 +606,7 @@ export const ES_A1_U12: EsUnitDef = {
             { id: 'es.ex.3c59ewn0a2jkc9' },
           ),
           ex.shortAnswer(
-            '¿Qué buscás?',
+            '¿Qué buscas?',
             'Say you’re looking for a cheap backpack (e.g. «Busco una mochila barata.»).',
             'Busco una mochila barata.',
             ['Una mochila barata.', 'Yo busco una mochila barata.'],
@@ -616,7 +622,7 @@ export const ES_A1_U12: EsUnitDef = {
         objective: 'Understand prices in a conversation and on a shop sign.',
         intro: {
           explanation:
-            'In Argentina people greet when they walk into a small shop: buen día or buenas tardes. Shop assistants often use usted with customers (¿qué busca?). On signs, prices are written with $, the peso sign, which looks like the dollar sign.',
+            'In most Spanish-speaking countries people greet when they walk into a small shop: buenos días or buenas tardes. Shop assistants often use usted with customers (¿qué busca?). A shop is el negocio or la tienda. On signs, prices are written with $, the peso sign, which looks like the dollar sign.',
           examples: [
             {
               target: 'Buenas tardes. ¿Cuánto cuesta el queso?',
@@ -632,7 +638,7 @@ export const ES_A1_U12: EsUnitDef = {
         exercises: [
           question(
             'es.ex.j6hiygbleozpoo',
-            REMERA,
+            CAMISETA,
             'How much is the blue T-shirt?',
             'Fifteen thousand pesos',
             ['Fifty thousand pesos', 'Forty thousand pesos', 'Five thousand pesos'],
@@ -681,7 +687,8 @@ export const ES_A1_U12: EsUnitDef = {
             {
               id: 'es.ex.nf2pxhxe4a757d',
               skill: 'vocabulary',
-              explanation: 'El negocio is the everyday word for a shop in Argentina.',
+              explanation:
+                'El negocio is a common word for a shop in much of Latin America; la tienda is understood everywhere.',
             },
           ),
           ex.translationChoice(

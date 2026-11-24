@@ -16,6 +16,8 @@ dispositivo o una decisión de producto; el resto está en el repo.
 | ⬜ | Revisión editorial humana del contenido A1 (`review_status = 'draft'`) | Vos | Ver LEARNING_CURRICULUM.md |
 | ✅ | Bundle ID / package definitivos: `com.polygoidioma.app` | Vos | `app.json`; cambiarlo después de publicar no es posible |
 | ⬜ | Ícono, splash y capturas definitivas | Vos | `assets/`; capturas para la ficha de cada tienda |
+| ⬜ | **Iniciar sesión con Apple** (Apple 4.8): la app ofrece "Continuar con Google", así que App Store exige también un login con Apple (o equivalente que no comparta datos) | Vos | Código listo (2026-11-18, sólo iOS): `expo-apple-authentication` + `signInWithIdToken` con nonce (`src/features/auth/apple.ts`). Falta: habilitar Apple en Supabase → Auth → Providers con Client IDs `com.polygoidioma.app` (y `host.exp.Exponent` para Expo Go), capacidad Sign in with Apple en el App ID (EAS la sincroniza al compilar), Development Build nueva y prueba en un iPhone real |
+| ⬜ | Google OAuth en modo Testing | Vos | Mientras siga en Testing sólo entran los usuarios de prueba cargados en Google Cloud. Publicar la app OAuth (verificación de Google) antes del lanzamiento |
 
 ## 2. Cuentas y builds
 

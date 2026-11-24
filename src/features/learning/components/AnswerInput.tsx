@@ -13,9 +13,11 @@ import {
   spacing,
   themedStyles,
 } from '@/design-system';
+import { useStrings } from '@/i18n';
 
 import { shuffle, shuffleDifferent } from '../random';
 import { TargetText, useSessionLanguage } from '../readings';
+import { answerInputStrings } from '../strings';
 
 interface Props {
   exercise: Exercise;
@@ -79,6 +81,7 @@ function ChoiceInput({
   shownOptions,
 }: Props & { options: string[] }) {
   const styles = useStyles();
+  const t = useStrings(answerInputStrings);
   const shuffled = useMemo(
     () => (shownOptions ? [...shownOptions] : shuffle(options, `${seed}:${exercise.id}`)),
     [shownOptions, options, seed, exercise.id],
@@ -89,7 +92,7 @@ function ChoiceInput({
     <AnswerLayout
       footer={
         <Button
-          label="Comprobar"
+          label={t.check}
           size="lg"
           disabled={disabled || selected === null}
           onPress={() => selected !== null && onSubmit({ kind: 'option', value: selected })}
@@ -127,20 +130,20 @@ function ChoiceInput({
 function TextInputAnswer({ exercise, disabled, onSubmit }: Props) {
   const styles = useStyles();
   const { language } = useSessionLanguage();
+  const t = useStrings(answerInputStrings);
   const [value, setValue] = useState('');
   // En chino se escribe el pinyin (con números de tono: ni3 hao3).
-  const answerIn = language.script === 'han' ? 'en pinyin' : language.inName;
   const submit = () => value.trim() && onSubmit({ kind: 'text', value });
   return (
     <AnswerLayout
       alignTop
       footer={
-        <Button label="Comprobar" size="lg" disabled={disabled || !value.trim()} onPress={submit} />
+        <Button label={t.check} size="lg" disabled={disabled || !value.trim()} onPress={submit} />
       }
     >
       {/* Con el teclado abierto de entrada, el espacio libre lo ocupa el teclado. */}
       <TextField
-        label={exercise.type === 'complete_word' ? 'Palabra completa' : `Tu respuesta ${answerIn}`}
+        label={exercise.type === 'complete_word' ? t.completeWord : t.yourAnswer(language)}
         value={value}
         onChangeText={setValue}
         editable={!disabled}
@@ -152,7 +155,7 @@ function TextInputAnswer({ exercise, disabled, onSubmit }: Props) {
         spellCheck={false}
         returnKeyType="done"
         onSubmitEditing={submit}
-        placeholder={language.script === 'han' ? 'Ej.: ni3 hao3' : 'Escribí acá…'}
+        placeholder={language.script === 'han' ? t.pinyinPlaceholder : t.placeholder}
         style={exercise.type === 'complete_word' ? styles.wordField : styles.textArea}
       />
     </AnswerLayout>
@@ -161,6 +164,7 @@ function TextInputAnswer({ exercise, disabled, onSubmit }: Props) {
 
 function OrderInput({ exercise, seed, disabled, onSubmit, tokens }: Props & { tokens: string[] }) {
   const styles = useStyles();
+  const t = useStrings(answerInputStrings);
   // Cada ficha se identifica por índice: puede haber palabras repetidas.
   const bank = useMemo(
     () =>
@@ -176,7 +180,7 @@ function OrderInput({ exercise, seed, disabled, onSubmit, tokens }: Props & { to
     <AnswerLayout
       footer={
         <Button
-          label="Comprobar"
+          label={t.check}
           size="lg"
           disabled={disabled || chosen.length !== tokens.length}
           onPress={() => onSubmit({ kind: 'tokens', value: chosen.map((i) => tokens[i]!) })}
@@ -185,9 +189,9 @@ function OrderInput({ exercise, seed, disabled, onSubmit, tokens }: Props & { to
     >
       <View
         style={[styles.sentence, chosen.length === 0 && styles.sentenceEmpty]}
-        accessibilityLabel="Tu oración"
+        accessibilityLabel={t.yourSentence}
       >
-        {chosen.length === 0 ? <Text variant="caption">Tocá las palabras en orden</Text> : null}
+        {chosen.length === 0 ? <Text variant="caption">{t.tapInOrder}</Text> : null}
         {chosen.map((index) => (
           <Token
             key={index}
@@ -247,6 +251,7 @@ function MatchInput({
   pairs,
 }: Props & { pairs: { left: string; right: string }[] }) {
   const styles = useStyles();
+  const t = useStrings(answerInputStrings);
   const { language } = useSessionLanguage();
   const lefts = useMemo(
     () =>
@@ -282,10 +287,10 @@ function MatchInput({
       footer={
         <>
           <Text variant="caption" align="center">
-            {`Tocá una palabra ${language.inName} y después su significado.`}
+            {t.matchHint(language)}
           </Text>
           <Button
-            label="Comprobar"
+            label={t.check}
             size="lg"
             disabled={disabled || Object.keys(matches).length !== pairs.length}
             onPress={() =>
@@ -304,7 +309,7 @@ function MatchInput({
             <Pressable
               key={left}
               accessibilityRole="button"
-              accessibilityLabel={matches[left] ? `${left}, unido con ${matches[left]}` : left}
+              accessibilityLabel={matches[left] ? t.matchedWith(left, matches[left]) : left}
               accessibilityState={{ selected: activeLeft === left, disabled }}
               disabled={disabled}
               onPress={() => {

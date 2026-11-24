@@ -17,10 +17,14 @@ import {
   themedStyles,
 } from '@/design-system';
 import { TierBadge } from '@/features/profile/components/AchievementBadge';
+import { useRankLabels } from '@/features/ranked/strings';
+import { useStrings } from '@/i18n';
 
 import { BotBadge } from './BotBadge';
 import { Confetti } from './Confetti';
 import { ResultHero } from './ResultHero';
+import { battleStrings } from '../strings';
+import { useAchievementTitle } from '@/features/profile/strings';
 
 interface Props {
   result: BattleFinish;
@@ -28,30 +32,32 @@ interface Props {
   onExit: () => void;
 }
 
-const TITLES = { win: '¡Victoria!', loss: 'Derrota', draw: 'Empate' } as const;
+const TITLES = { win: 'victory', loss: 'defeat', draw: 'draw' } as const;
 /** Emoji grande del encabezado: sólido y a color, como los del resto de la app. */
 const EMOJIS = { win: '🏆', loss: '💪', draw: '🤝', practice: '🎯' } as const;
 
 export function BattleResult({ result, onPlayAgain, onExit }: Props) {
   const styles = useStyles();
+  const t = useStrings(battleStrings);
+  const achievementTitle = useAchievementTitle();
   const me = result.players.find((p) => p.slot === result.yourSlot)!;
   const opponent = result.players.find((p) => p.slot !== result.yourSlot);
   const practice = result.mode === 'practice';
   // Contra un bot fuera del cupo de calibración (o pedida como práctica): no movió el ELO.
   const botPractice = result.mode === 'bot_practice' || result.rating === 'unrated';
-  const title = practice ? 'Práctica terminada' : TITLES[me.outcome ?? 'draw'];
+  const title = practice ? t.practiceDone : t[TITLES[me.outcome ?? 'draw']];
   const subtitle = practice
-    ? 'Sin ELO: es para entrenar.'
+    ? t.practiceSubtitle
     : result.status === 'forfeited'
       ? me.forfeited
-        ? 'Abandonaste la partida.'
-        : `${opponent?.username ?? 'Tu rival'} abandonó la partida.`
+        ? t.youForfeited
+        : t.opponentForfeited(opponent?.username)
       : result.friendly
-        ? 'Desafío amistoso: no mueve el ELO.'
+        ? t.friendlySubtitle
         : botPractice
-          ? 'Práctica contra un bot: no mueve el ELO.'
+          ? t.botPracticeSubtitle
           : result.rating === 'calibration' && result.calibration
-            ? `Calibración ${result.calibration.used} de ${result.calibration.limit} contra bots.`
+            ? t.calibrationSubtitle(result.calibration.used, result.calibration.limit)
             : null;
   const victory = !practice && me.outcome === 'win';
   // Victorias y derrotas llevan al zorro; empates y prácticas, el encabezado simple.
@@ -97,7 +103,7 @@ export function BattleResult({ result, onPlayAgain, onExit }: Props) {
       )}
 
       <Card style={styles.gap}>
-        <Line label="Vos" player={me} highlight />
+        <Line label={t.you} player={me} highlight />
         {opponent ? <Line label={opponent.username} player={opponent} /> : null}
       </Card>
 
@@ -112,17 +118,15 @@ export function BattleResult({ result, onPlayAgain, onExit }: Props) {
 
       {result.achievementsUnlocked.length > 0 ? (
         <Animated.View entering={FadeInUp.delay(300).duration(400)}>
-          <Card style={[styles.gap, styles.achievements]} accessibilityLabel="Logros nuevos">
+          <Card style={[styles.gap, styles.achievements]} accessibilityLabel={t.newAchievements}>
             <Text variant="overline" color="gold">
-              {result.achievementsUnlocked.length === 1
-                ? 'LOGRO DESBLOQUEADO'
-                : 'LOGROS DESBLOQUEADOS'}
+              {t.achievementsUnlocked(result.achievementsUnlocked.length)}
             </Text>
             {result.achievementsUnlocked.map((a) => (
               <View key={a.id} style={styles.row}>
                 <TierBadge id={a.id} size={52} />
                 <Text variant="bodyStrong" color="textStrong">
-                  {a.title}
+                  {achievementTitle(a.id, a.title)}
                 </Text>
               </View>
             ))}
@@ -133,16 +137,16 @@ export function BattleResult({ result, onPlayAgain, onExit }: Props) {
       <Button
         label={
           practice || result.mode === 'bot_practice'
-            ? 'Practicar otra vez'
+            ? t.practiceAgain
             : result.friendly
-              ? 'Nuevo desafío'
-              : 'Jugar otra'
+              ? t.newChallenge
+              : t.playAgain
         }
         size="lg"
         icon={<RotateCcw color={colors.onPrimary} size={20} />}
         onPress={onPlayAgain}
       />
-      <Button label="Volver" variant="ghost" onPress={onExit} />
+      <Button label={t.back} variant="ghost" onPress={onExit} />
       {victory ? <Confetti /> : null}
     </View>
   );
@@ -158,12 +162,19 @@ function Line({
   highlight?: boolean;
 }) {
   const styles = useStyles();
+  const t = useStrings(battleStrings);
   const pct = Math.round(accuracy(player) * 100);
   return (
     <View
       style={styles.row}
       accessible
-      accessibilityLabel={`${label}${player.isBot ? ' (bot)' : ''}: ${player.score} puntos, ${player.correct} de ${player.answered} correctas`}
+      accessibilityLabel={t.lineA11y(
+        label,
+        Boolean(player.isBot),
+        player.score,
+        player.correct,
+        player.answered,
+      )}
     >
       <View style={[styles.flex, styles.nameRow]}>
         <Text
@@ -199,35 +210,34 @@ function RatingChange({
   won: boolean;
 }) {
   const styles = useStyles();
+  const t = useStrings(battleStrings);
+  const ranks = useRankLabels();
   const delta = after - before;
   const sign = delta > 0 ? '+' : '';
-  const rankBefore = getRank(before).label;
-  const rankAfter = getRank(after).label;
+  const rankBefore = ranks.label(getRank(before));
+  const rankAfter = ranks.label(getRank(after));
 
   if (!placedBefore) {
     return (
       <Card
         style={styles.rating}
-        accessibilityLabel={
-          won ? `Te posicionaste en ${rankAfter} con ${after} de ELO` : 'Seguís sin posicionar'
-        }
+        accessibilityLabel={won ? t.placedA11y(rankAfter, after) : t.stillUnplaced}
       >
         <RankEmblemForRating rating={after} size={48} dimmed={!won} />
         <View style={styles.flex}>
-          <Text variant="overline">{won ? '¡POSICIONADO!' : 'SIN POSICIONAR'}</Text>
-          <Text variant="heading">{won ? `${rankAfter} · ${after} ELO` : 'Todavía sin rango'}</Text>
-          <Text variant="caption">
-            {won
-              ? 'Ya estás en el ranking. Cada victoria te acerca al próximo rango.'
-              : 'Ganá una partida para entrar al ranking en Bronce. Perder ahora no te resta.'}
-          </Text>
+          <Text variant="overline">{won ? t.placedOverline : t.unplacedOverline}</Text>
+          <Text variant="heading">{won ? `${rankAfter} · ${after} ELO` : t.noRankYet}</Text>
+          <Text variant="caption">{won ? t.placedHint : t.unplacedHint}</Text>
         </View>
       </Card>
     );
   }
 
   return (
-    <Card style={styles.rating} accessibilityLabel={`ELO ${before} a ${after}, ${sign}${delta}`}>
+    <Card
+      style={styles.rating}
+      accessibilityLabel={t.eloChangeA11y(before, after, `${sign}${delta}`)}
+    >
       <RankEmblemForRating rating={after} size={48} />
       <View style={styles.flex}>
         <Text variant="overline">ELO</Text>

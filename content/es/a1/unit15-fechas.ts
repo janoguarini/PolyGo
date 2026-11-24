@@ -4,9 +4,12 @@ import { dialogue, ES_A1_RATE, ex, question, reading, w } from '../helpers';
 /**
  * Español A1 U15 «Months and dates» (docs/ES_A1_A2.md): los meses (en minúscula), en + mes, la fecha
  * con el + número + de + mes (el 9 de julio, el primero de mayo; también «el uno»), ¿qué fecha es hoy?,
- * el cumpleaños y nací (primer pasado, como fórmula; nació y naciste en el apoyo).
- * Cultura: el 25 de mayo y el 9 de julio, fechas patrias; en la Argentina diciembre es verano.
- * Pronunciación: la y de mayo (rehilada, como sh) y la j de junio y julio (h fuerte); junio / julio.
+ * el cumpleaños y nací (primer pasado, como fórmula; nació y naciste, de tú, en el apoyo). Español
+ * neutro de Latinoamérica (tú y ustedes).
+ * Cultura: fechas patrias de varios países (16 de septiembre en México, 20 de julio en Colombia, 28 de
+ * julio en el Perú, 9 de julio en la Argentina); las estaciones dependen del hemisferio.
+ * Pronunciación: la y de mayo (como la y inglesa de yes) y la j de junio y julio (h fuerte); junio /
+ * julio.
  *
  * ESTADO EDITORIAL: borrador, sin revisión de hablantes nativos. Se carga sin publicar.
  */
@@ -16,7 +19,7 @@ const CUMPLE = dialogue(
   'Camila and Tomás talk about their birthdays at school.',
   [
     ['Tomás', 'Camila, ¿cuándo es tu cumpleaños?'],
-    ['Camila', 'Es el 9 de julio. ¿Y vos?'],
+    ['Camila', 'Es el 9 de julio. ¿Y tú?'],
     ['Tomás', 'Yo nací el primero de marzo.'],
     ['Camila', '¿Qué fecha es hoy?'],
     ['Tomás', 'Hoy es el 28 de febrero.'],
@@ -31,7 +34,7 @@ const POSTEO = reading(
   'Lucía writes a post on social media.',
   [
     '¡Hoy es mi cumpleaños!',
-    'Nací el 15 de octubre en Córdoba.',
+    'Nací el 15 de octubre en Guadalajara.',
     'Hoy tengo veinte años.',
     'El sábado hay una fiesta con mi familia.',
     '¡Gracias a todos!',
@@ -47,10 +50,11 @@ export const ES_A1_U15: EsUnitDef = {
     'Tomás',
     'Sofía',
     'Martín',
-    'Córdoba',
-    'Bariloche',
-    'Mendoza',
-    'Rosario',
+    'Guadalajara',
+    'Cusco',
+    'Cartagena',
+    'Bogotá',
+    'México',
   ],
   support: ['cuándo', 'nació', 'naciste', 'fiesta', 'patria', 'navidad'],
   unit: {
@@ -65,7 +69,7 @@ export const ES_A1_U15: EsUnitDef = {
     grammar: {
       title: 'Dates: el + number + de + month',
       explanation:
-        'Months are written with a lowercase letter: enero, julio, diciembre. In a month = en + month: en diciembre. A date is el + number + de + month, with the day first: el 9 de julio (July 9). For the first day of the month say el primero (el primero de mayo); many Argentines also say el uno. To ask the date: ¿qué fecha es hoy? — Hoy es el 20 de junio. For your birthday: ¿cuándo es tu cumpleaños? — Es el 3 de marzo. Nací means I was born: nací el 3 de marzo, nací en Rosario (he or she was born: nació; you were born, with vos: naciste). Argentina is in the southern hemisphere: diciembre and enero are summer and julio is winter.',
+        'Months are written with a lowercase letter: enero, julio, diciembre. In a month = en + month: en diciembre. A date is el + number + de + month, with the day first: el 9 de julio (July 9). For the first day of the month most of Latin America says el primero (el primero de mayo); in Spain and some other places people say el uno. To ask the date: ¿qué fecha es hoy? — Hoy es el 20 de junio. To ask a friend about their birthday: ¿cuándo es tu cumpleaños? — Es el 3 de marzo. Nací means I was born: nací el 3 de marzo, nací en Bogotá (he or she was born: nació; you were born, with tú: naciste — ¿cuándo naciste?). The months don’t tell you the season everywhere: diciembre is summer in Chile and Argentina, but winter in Mexico and Spain.',
       examples: [
         { target: 'Hoy es el 9 de julio.', base: 'Today is July 9.' },
         { target: 'Nací el primero de marzo.', base: 'I was born on March 1.' },
@@ -75,7 +79,7 @@ export const ES_A1_U15: EsUnitDef = {
     review: {
       status: 'draft',
       notes:
-        'A1 nuevo (U15). Sin revisión nativa: revisar «el primero» frente a «el uno» (ambos se aceptan), «fecha patria» para el 25 de mayo y el 9 de julio, «el cumple» como forma informal aceptada, y «setiembre» como grafía aceptada. Las fechas van en cifras en ejercicios y estímulos (salvo los pares de escucha ocho / once y doce / dos).',
+        'A1 nuevo (U15), convertido al español neutro de Latinoamérica con tú (2026-11-21). Sin revisión nativa: revisar «el primero» frente a «el uno» (ambos se aceptan), «fecha patria» para las independencias (16 de septiembre en México, 20 de julio en Colombia, 28 de julio en el Perú, 9 de julio en la Argentina), «el 10 de mayo» como Día de la Madre en México, «el cumple» como forma informal aceptada, y «setiembre» como grafía aceptada. Las fechas van en cifras en ejercicios y estímulos (salvo los pares de escucha ocho / once y doce / dos).',
     },
     words: [
       w(
@@ -102,8 +106,8 @@ export const ES_A1_U15: EsUnitDef = {
         'es-mayo',
         'mayo',
         'May',
-        'El 25 de mayo es una fecha patria.',
-        'May 25 is a national holiday.',
+        'El 10 de mayo es el Día de la Madre en México.',
+        'May 10 is Mother’s Day in Mexico.',
         ['months'],
       ),
       w(
@@ -122,14 +126,9 @@ export const ES_A1_U15: EsUnitDef = {
         'My sister was born on July 9.',
         ['months'],
       ),
-      w(
-        'es-agosto',
-        'agosto',
-        'August',
-        'En agosto voy a Bariloche.',
-        'In August I go to Bariloche.',
-        ['months'],
-      ),
+      w('es-agosto', 'agosto', 'August', 'En agosto voy a Cusco.', 'In August I go to Cusco.', [
+        'months',
+      ]),
       w(
         'es-septiembre',
         'septiembre',
@@ -209,7 +208,9 @@ export const ES_A1_U15: EsUnitDef = {
         ['dates'],
         { acceptedTranslations: ['the 1st'] },
       ),
-      w('es-naci', 'nací', 'I was born', 'Nací en Mendoza.', 'I was born in Mendoza.', ['verbs']),
+      w('es-naci', 'nací', 'I was born', 'Nací en Guadalajara.', 'I was born in Guadalajara.', [
+        'verbs',
+      ]),
     ],
     lessons: [
       // ------------------------------------------------------------------------------------ L1
@@ -218,7 +219,7 @@ export const ES_A1_U15: EsUnitDef = {
         objective: 'Say the months from January to June and use en + month.',
         intro: {
           explanation:
-            'Spanish months are written with a lowercase letter: enero, febrero, marzo, abril, mayo, junio. To say “in” a month, use en: en marzo. The j in junio sounds like a strong h, and in Argentina the y in mayo sounds like the sh in shoe. In Argentina the school year starts in marzo, after the summer holidays.',
+            'Spanish months are written with a lowercase letter: enero, febrero, marzo, abril, mayo, junio. To say “in” a month, use en: en marzo. The j in junio sounds like a strong h, and the y in mayo sounds like the y in English yes. The school year doesn’t start in the same month everywhere: in Mexico it starts in agosto, but in Chile and Argentina it starts in marzo, after the southern summer holidays.',
           examples: [
             { target: 'En enero no trabajo.', base: 'I don’t work in January.' },
             { target: 'Febrero es un mes corto.', base: 'February is a short month.' },
@@ -244,7 +245,8 @@ export const ES_A1_U15: EsUnitDef = {
           ),
           ex.listenChoice('mayo', ['marzo', 'junio'], ['es-mayo', 'es-junio'], {
             id: 'es.ex.jzp8yb88aov1ng',
-            explanation: 'In mayo the y sounds like the sh in shoe; in junio the j is a strong h.',
+            explanation:
+              'In mayo the y sounds like the y in yes; in junio the j is a strong h; marzo has an r and a z (said like s).',
           }),
           ex.fillBlank(
             'Febrero es un ___ corto.',
@@ -300,9 +302,9 @@ export const ES_A1_U15: EsUnitDef = {
         objective: 'Say the months from July to December.',
         intro: {
           explanation:
-            'The second half of the year: julio, agosto, septiembre (also written setiembre), octubre, noviembre, diciembre. Junio and julio differ only in n and l, so listen carefully. Remember the southern hemisphere: in Argentina julio is the middle of winter and diciembre is summer, so Christmas is hot!',
+            'The second half of the year: julio, agosto, septiembre (also written setiembre), octubre, noviembre, diciembre. Junio and julio differ only in n and l, so listen carefully. Seasons depend on the hemisphere: in Mexico and Spain julio is summer and diciembre is winter, but in Chile and Argentina it is the other way round, so Christmas there is hot!',
           examples: [
-            { target: 'En julio voy a Bariloche.', base: 'In July I go to Bariloche.' },
+            { target: 'En julio voy a Cusco.', base: 'In July I go to Cusco.' },
             { target: 'En diciembre no trabajo.', base: 'I don’t work in December.' },
           ],
         },
@@ -329,8 +331,8 @@ export const ES_A1_U15: EsUnitDef = {
             { id: 'es.ex.nq07ek99q0kp92' },
           ),
           ex.fillBlank(
-            'En ___ voy a Bariloche.',
-            'In July I go to Bariloche.',
+            'En ___ voy a Cusco.',
+            'In July I go to Cusco.',
             'julio',
             ['junio', 'agosto', 'enero'],
             ['es-julio'],
@@ -358,8 +360,8 @@ export const ES_A1_U15: EsUnitDef = {
             { id: 'es.ex.rw891ax43vxj9b' },
           ),
           ex.orderWords(
-            'En diciembre voy a Mendoza.',
-            'In December I go to Mendoza.',
+            'En diciembre voy a Cartagena.',
+            'In December I go to Cartagena.',
             ['es-diciembre'],
             {
               id: 'es.ex.z1q6om0ohzlo0s',
@@ -382,15 +384,15 @@ export const ES_A1_U15: EsUnitDef = {
             acceptedAnswers: ['En agosto no trabajo.', 'Yo no trabajo en agosto.'],
           }),
           ex.translateWrite(
-            'My sister goes to Córdoba in September.',
-            'Mi hermana va a Córdoba en septiembre.',
+            'My sister goes to Bogotá in September.',
+            'Mi hermana va a Bogotá en septiembre.',
             ['es-septiembre'],
             {
               id: 'es.ex.nqikkve47zn4qc',
               acceptedAnswers: [
-                'Mi hermana va a Córdoba en setiembre.',
-                'En septiembre mi hermana va a Córdoba.',
-                'En setiembre mi hermana va a Córdoba.',
+                'Mi hermana va a Bogotá en setiembre.',
+                'En septiembre mi hermana va a Bogotá.',
+                'En setiembre mi hermana va a Bogotá.',
               ],
             },
           ),
@@ -403,7 +405,7 @@ export const ES_A1_U15: EsUnitDef = {
         objective: 'Ask and say the date.',
         intro: {
           explanation:
-            'To ask the date: ¿qué fecha es hoy? Answer with el + number + de + month: hoy es el 9 de julio. Unlike English, the day comes before the month. For the first day of the month say el primero: el primero de mayo (many people also say el uno de mayo). From the 2nd on, use the normal numbers: el dos, el tres…',
+            'To ask the date: ¿qué fecha es hoy? Answer with el + number + de + month: hoy es el 9 de julio. Unlike English, the day comes before the month. For the first day of the month say el primero: el primero de mayo (in Spain and some other places people also say el uno de mayo). From the 2nd on, use the normal numbers: el dos, el tres…',
           examples: [
             {
               target: '¿Qué fecha es hoy? — Es el 20 de junio.',
@@ -525,13 +527,13 @@ export const ES_A1_U15: EsUnitDef = {
         objective: 'Talk about birthdays and say when and where you were born.',
         intro: {
           explanation:
-            'To ask about someone’s birthday: ¿cuándo es tu cumpleaños? — Es el 9 de julio (or es en julio). In Argentina people often say el cumple. On the day you say ¡feliz cumpleaños! To say when or where you were born: nací el 3 de marzo, nací en Rosario. For another person: nació; with vos: ¿cuándo naciste?',
+            'To ask a friend about their birthday: ¿cuándo es tu cumpleaños? — Es el 9 de julio (or es en julio). Informally, many people say el cumple. On the day you say ¡feliz cumpleaños! To say when or where you were born: nací el 3 de marzo, nací en Bogotá. For another person (or usted): nació; to ask a friend (tú): ¿cuándo naciste?',
           examples: [
             {
               target: '¿Cuándo es tu cumpleaños? — Es el 9 de julio.',
               base: 'When is your birthday? — It’s July 9.',
             },
-            { target: 'Nací en Rosario, en octubre.', base: 'I was born in Rosario, in October.' },
+            { target: 'Nací en Bogotá, en octubre.', base: 'I was born in Bogotá, in October.' },
           ],
         },
         takeaways: [
@@ -565,15 +567,15 @@ export const ES_A1_U15: EsUnitDef = {
             { id: 'es.ex.7c0qn52dx5roic' },
           ),
           ex.fillBlank(
-            '___ en Córdoba, en abril.',
-            'I was born in Córdoba, in April.',
+            '___ en Bogotá, en abril.',
+            'I was born in Bogotá, in April.',
             'Nací',
             ['Nació', 'Naciste', 'Tengo'],
             ['es-naci', 'es-abril'],
             {
               id: 'es.ex.eb3ppapmvy42r8',
               explanation:
-                'Nací = I was born. Nació is he or she was born; naciste is you were born (vos).',
+                'Nací = I was born. Nació is he, she or usted was born; naciste is you were born (tú).',
             },
           ),
           ex.translationChoice(
@@ -639,15 +641,18 @@ export const ES_A1_U15: EsUnitDef = {
         objective: 'Understand dates and birthdays in a conversation and a post.',
         intro: {
           explanation:
-            'Argentina has two big national dates: el 25 de mayo (the May Revolution of 1810) and el 9 de julio (Independence Day, 1816). They are holidays, and many people eat locro and empanadas. Remember: dates are el + number + de + month, and months go in lowercase.',
+            'Every Spanish-speaking country has its own fechas patrias (national holidays). Independence Day is el 16 de septiembre in Mexico, el 20 de julio in Colombia, el 28 de julio in Peru and el 9 de julio in Argentina. Many countries also have a holiday on el primero de mayo (Labor Day). Remember: dates are el + number + de + month, and months go in lowercase.',
           examples: [
-            { target: 'El 25 de mayo es una fecha patria.', base: 'May 25 is a national holiday.' },
+            {
+              target: 'El 16 de septiembre es una fecha patria en México.',
+              base: 'September 16 is a national holiday in Mexico.',
+            },
             { target: 'El 9 de julio no trabajo.', base: 'I don’t work on July 9.' },
           ],
         },
         takeaways: [
           'You understand dates and birthdays in a conversation and a post.',
-          'You know the two main national holidays of Argentina.',
+          'You know some national holidays of Spanish-speaking countries.',
         ],
         exercises: [
           question(
@@ -663,10 +668,10 @@ export const ES_A1_U15: EsUnitDef = {
             'es.ex.7s6eqszsjj75dk',
             POSTEO,
             'Where was Lucía born?',
-            'In Córdoba',
-            ['In Rosario', 'In Buenos Aires', 'In Mendoza'],
+            'In Guadalajara',
+            ['In Bogotá', 'In Cusco', 'In Cartagena'],
             ['es-naci'],
-            'She writes “Nací el 15 de octubre en Córdoba”.',
+            'She writes “Nací el 15 de octubre en Guadalajara”.',
           ),
           question(
             'es.ex.ubjfnnkkqgbcar',

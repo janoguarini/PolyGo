@@ -3,9 +3,11 @@ import { dialogue, ES_A1_RATE, ex, question, reading, w } from '../helpers';
 
 /**
  * Español A1 U16 «Weather and seasons» (docs/ES_A1_A2.md): el tiempo con hace (hace calor, hace frío,
- * hace buen tiempo), llueve, nieva, hay sol, hay viento; ¿qué tiempo hace? / ¿cómo está el día? Las
- * estaciones con artículo (el verano, en invierno), al revés que en el hemisferio norte. Comparaciones:
- * más… que, menos… que y tan… como (en el apoyo). Pronunciación: la entonación de ¡qué calor!, el ritmo
+ * hace buen tiempo), llueve, nieva, hay sol, hay viento; ¿qué tiempo hace? / ¿cómo está el clima? Las
+ * estaciones con artículo (el verano, en invierno), que dependen del hemisferio (diciembre es verano en
+ * Chile y la Argentina, invierno en México y España). Español neutro de Latinoamérica (tú y ustedes):
+ * ¿prefieres…? Lugares variados (Bogotá, Cartagena, Ciudad de México, Bariloche, Viña del Mar).
+ * Comparaciones: más… que, menos… que y tan… como (en el apoyo). Pronunciación: la entonación de ¡qué calor!, el ritmo
  * silábico (llue-ve) y los pares calor / color y mar / mal / más.
  *
  * ESTADO EDITORIAL: borrador, sin revisión de hablantes nativos. Se carga sin publicar.
@@ -13,13 +15,13 @@ import { dialogue, ES_A1_RATE, ex, question, reading, w } from '../helpers';
 
 const LLAMADA = dialogue(
   'es.stim.a1-u16-llamada',
-  'In July, Martín calls his friend Valentina, who is on holiday in Bariloche.',
+  'In July, Martín, who lives in Mexico City, calls his friend Valentina, who is on holiday in Bariloche, in the south of Argentina.',
   [
     ['Martín', '¡Hola, Valentina! ¿Qué tiempo hace en Bariloche?'],
-    ['Valentina', '¡Hace mucho frío! Hoy nieva.'],
-    ['Martín', 'Acá en Buenos Aires llueve.'],
+    ['Valentina', '¡Hace mucho frío! Hoy nieva. ¿Y en México?'],
+    ['Martín', 'Acá es verano, pero llueve mucho.'],
     ['Valentina', '¿Y hace frío?'],
-    ['Martín', 'Sí, pero hace menos frío que en Bariloche.'],
+    ['Martín', 'Un poco, pero hace menos frío que en Bariloche.'],
     ['Valentina', '¡Me encanta el invierno en la montaña!'],
   ],
   ES_A1_RATE,
@@ -28,15 +30,15 @@ const LLAMADA = dialogue(
 const POSTAL = reading(
   'es.stim.a1-u16-postal',
   'postcard',
-  'Camila sends a postcard to her friend Diego from the seaside.',
+  'In January, Camila sends a postcard to her friend Diego from the seaside in Chile.',
   [
     '¡Hola, Diego!',
-    'Estoy en Mar del Plata con mi familia.',
+    'Estoy en Viña del Mar con mi familia.',
     'Es enero y hace mucho calor.',
     'Hay sol todos los días.',
-    'A la mañana vamos a la playa.',
+    'Por la mañana vamos a la playa.',
     '¡El mar es más lindo que la ciudad!',
-    'Chau, Camila',
+    'Hasta luego, Camila',
   ],
   { from: 'Camila', to: 'Diego' },
 );
@@ -45,37 +47,40 @@ export const ES_A1_U16: EsUnitDef = {
   names: [
     'Bariloche',
     'Buenos Aires',
-    'Rosario',
-    'Mendoza',
-    'Córdoba',
-    'Mar del Plata',
+    'Ciudad de México',
+    'México',
+    'Chile',
+    'Santiago',
+    'Bogotá',
+    'Cartagena',
+    'Viña del Mar',
     'Martín',
     'Valentina',
     'Camila',
     'Diego',
   ],
-  support: ['acá', 'mal', 'tan', 'sur', 'norte'],
+  support: ['acá', 'mal', 'tan', 'sur', 'norte', 'clima'],
   unit: {
     position: 16,
     title: 'Weather and seasons',
     titleEn: 'El clima',
     description:
-      'Talk about the weather with hace, llueve and hay sol, name the seasons of the southern hemisphere and compare places with más… que and menos… que.',
+      'Talk about the weather with hace, llueve and hay sol, name the seasons (and see why they depend on the hemisphere) and compare places with más… que and menos… que.',
     emoji: '🌦️',
     objective:
       'You can ask and say what the weather is like, name the seasons, say what you prefer (the sea or the mountains) and compare places with más… que and menos… que.',
     grammar: {
       title: 'Hace calor · más… que',
       explanation:
-        'For most weather Spanish uses hace (literally “it makes”): hace calor (it’s hot), hace frío (it’s cold), hace buen tiempo (the weather is nice). Calor and frío are nouns, so “very” is mucho: hace mucho frío. Rain and snow have their own verbs: llueve, nieva. For sun and wind use hay: hay sol, hay viento. To ask: ¿qué tiempo hace? (in Argentina also ¿cómo está el día?). Seasons take the article (el verano, el invierno, la primavera, el otoño), but after en you can drop it: en verano. Argentina is in the southern hemisphere: enero is summer and julio is winter. To compare: más + adjective or noun + que (more… than), menos… que (less… than) and tan… como (as… as).',
+        'For most weather Spanish uses hace (literally “it makes”): hace calor (it’s hot), hace frío (it’s cold), hace buen tiempo (the weather is nice). Calor and frío are nouns, so “very” is mucho: hace mucho frío. Rain and snow have their own verbs: llueve, nieva. For sun and wind use hay: hay sol, hay viento. To ask: ¿qué tiempo hace? (in many countries also ¿cómo está el clima?). Seasons take the article (el verano, el invierno, la primavera, el otoño), but after en you can drop it: en verano. Seasons depend on the hemisphere: in Mexico and Spain julio is summer and diciembre is winter; in Chile and Argentina it is the other way round. Near the equator (Colombia, Ecuador) the temperature hardly changes during the year, and people talk about rainy and dry seasons instead. To compare: más + adjective or noun + que (more… than), menos… que (less… than) and tan… como (as… as).',
       examples: [
         {
           target: '¿Qué tiempo hace? — Hace frío y llueve.',
           base: 'What’s the weather like? — It’s cold and raining.',
         },
         {
-          target: 'En julio es invierno en la Argentina.',
-          base: 'In July it’s winter in Argentina.',
+          target: 'En julio es invierno en Chile y verano en México.',
+          base: 'In July it’s winter in Chile and summer in Mexico.',
         },
         {
           target: 'En Bariloche hace más frío que en Buenos Aires.',
@@ -86,15 +91,15 @@ export const ES_A1_U16: EsUnitDef = {
     review: {
       status: 'draft',
       notes:
-        'A1 nuevo (U16). Sin revisión nativa: revisar «hay sol» frente a «hace sol» (se aceptan los dos), «¿cómo está el día?» como pregunta rioplatense y «a la mañana» (frente a «por la mañana»). Se usa «acá» (rioplatense) y no «aquí». «Tan… como» se presenta con tan en el apoyo.',
+        'A1 nuevo (U16), convertido al español neutro de Latinoamérica con tú (2026-11-21). Sin revisión nativa: revisar «hay sol» frente a «hace sol» (se aceptan los dos), «¿cómo está el clima?» como pregunta coloquial frecuente en Latinoamérica (en rigor, el clima es el clima y el tiempo, el tiempo), la temporada de lluvias de julio en la Ciudad de México y las estaciones según el hemisferio. Se usa «acá» (latinoamericano general, ya enseñado). «Tan… como» se presenta con tan en el apoyo.',
     },
     words: [
       w(
         'es-que-tiempo-hace',
         '¿qué tiempo hace?',
         "what's the weather like?",
-        '¿Qué tiempo hace en Bariloche?',
-        'What’s the weather like in Bariloche?',
+        '¿Qué tiempo hace en Bogotá?',
+        'What’s the weather like in Bogotá?',
         ['weather', 'questions'],
         { acceptedTranslations: ['what is the weather like?', "how's the weather?"] },
       ),
@@ -102,8 +107,8 @@ export const ES_A1_U16: EsUnitDef = {
         'es-hace-calor',
         'hace calor',
         "it's hot",
-        'En enero hace mucho calor.',
-        'It’s very hot in January.',
+        'En la playa hace mucho calor.',
+        'It’s very hot at the beach.',
         ['weather'],
         { acceptedTranslations: ['it is hot'], emoji: '🥵' },
       ),
@@ -111,8 +116,8 @@ export const ES_A1_U16: EsUnitDef = {
         'es-hace-frio',
         'hace frío',
         "it's cold",
-        'En julio hace frío.',
-        'It’s cold in July.',
+        'En invierno hace frío.',
+        'It’s cold in winter.',
         ['weather'],
         { acceptedTranslations: ['it is cold'], emoji: '🥶' },
       ),
@@ -178,8 +183,8 @@ export const ES_A1_U16: EsUnitDef = {
         'es-el-verano',
         'el verano',
         'summer',
-        'En la Argentina, enero es verano.',
-        'In Argentina, January is summer.',
+        'En Chile, enero es verano.',
+        'In Chile, January is summer.',
         ['seasons'],
         { acceptedTranslations: ['the summer'] },
       ),
@@ -227,8 +232,8 @@ export const ES_A1_U16: EsUnitDef = {
         'es-mas-que',
         'más… que',
         'more… than',
-        'En Bariloche hace más frío que en Rosario.',
-        'It’s colder in Bariloche than in Rosario.',
+        'En Bogotá hace más frío que en Cartagena.',
+        'It’s colder in Bogotá than in Cartagena.',
         ['comparisons'],
       ),
       w(
@@ -354,7 +359,7 @@ export const ES_A1_U16: EsUnitDef = {
         objective: 'Talk about rain, snow, sun and wind.',
         intro: {
           explanation:
-            'Rain and snow have their own verbs: llueve (it’s raining), nieva (it’s snowing). For sun and wind use hay: hay sol, hay viento (you’ll also hear hace sol). La lluvia is the rain. In Argentina the ll of llueve and lluvia sounds like the sh in shoe. Spanish has an even rhythm: every syllable gets about the same time, llue-ve, llu-via.',
+            'Rain and snow have their own verbs: llueve (it’s raining), nieva (it’s snowing). For sun and wind use hay: hay sol, hay viento (you’ll also hear hace sol). La lluvia is the rain. The ll of llueve and lluvia sounds like the y in English yes. Spanish has an even rhythm: every syllable gets about the same time, llue-ve, llu-via.',
           examples: [
             { target: 'Hoy llueve mucho.', base: 'It’s raining a lot today.' },
             { target: 'Hay sol, pero hace frío.', base: 'It’s sunny, but it’s cold.' },
@@ -453,21 +458,21 @@ export const ES_A1_U16: EsUnitDef = {
       // ------------------------------------------------------------------------------------ L3
       {
         title: 'Las estaciones',
-        objective: 'Name the seasons and say when they are in Argentina.',
+        objective: 'Name the seasons and say when they are in different countries.',
         intro: {
           explanation:
-            'The seasons take the article: el verano, el otoño, el invierno, la primavera. After en you can drop it: en verano, en invierno. Argentina is in the southern hemisphere, so the seasons are the other way round: enero is summer and julio is winter. Spring starts on 21 September, which is also Students’ Day. The ñ in otoño sounds like the ny in canyon.',
+            'The seasons take the article: el verano, el otoño, el invierno, la primavera. After en you can drop it: en verano, en invierno. The seasons depend on the hemisphere. In the north (Mexico, Spain, the US) enero is winter and julio is summer. In the south (Chile, Argentina, Uruguay) it is the other way round: enero is summer and julio is winter, so spring starts in septiembre. Near the equator, in Colombia or Ecuador, people talk more about the rainy and the dry season. The ñ in otoño sounds like the ny in canyon.',
           examples: [
             {
-              target: 'En enero es verano en la Argentina.',
-              base: 'In January it’s summer in Argentina.',
+              target: 'En enero es verano en Chile.',
+              base: 'In January it’s summer in Chile.',
             },
             { target: 'En invierno hace frío.', base: 'It’s cold in winter.' },
           ],
         },
         takeaways: [
           'You know the four seasons with their article.',
-          'You know that in Argentina summer is in enero and winter in julio.',
+          'You know that the seasons depend on the hemisphere: enero is summer in Chile and winter in Mexico.',
         ],
         exercises: [
           ex.translationChoice(
@@ -488,8 +493,8 @@ export const ES_A1_U16: EsUnitDef = {
             { id: 'es.ex.l9t1pal8yn2w6n' },
           ),
           ex.fillBlank(
-            'En Buenos Aires, enero es ___.',
-            'In Buenos Aires, January is summer.',
+            'En Santiago, enero es ___.',
+            'In Santiago (Chile), January is summer.',
             'verano',
             ['invierno', 'otoño', 'primavera'],
             ['es-el-verano'],
@@ -497,7 +502,7 @@ export const ES_A1_U16: EsUnitDef = {
               id: 'es.ex.rjb50kifbk6e8u',
               skill: 'vocabulary',
               explanation:
-                'Southern hemisphere: in Argentina January is summer and July is winter.',
+                'Santiago de Chile is in the southern hemisphere, so January is summer and July is winter. In Mexico City it would be invierno.',
             },
           ),
           ex.listenChoice(
@@ -539,16 +544,16 @@ export const ES_A1_U16: EsUnitDef = {
             },
           ),
           ex.translateWrite(
-            'In July it is winter in Argentina.',
-            'En julio es invierno en la Argentina.',
+            'In July it is winter in Chile.',
+            'En julio es invierno en Chile.',
             ['es-el-invierno'],
             {
               id: 'es.ex.mwbx5eb569k6hv',
               acceptedAnswers: [
-                'En julio es invierno en Argentina.',
-                'En la Argentina, julio es invierno.',
-                'En Argentina julio es invierno.',
-                'En la Argentina en julio es invierno.',
+                'En Chile, julio es invierno.',
+                'En Chile julio es invierno.',
+                'En Chile en julio es invierno.',
+                'En Chile, en julio es invierno.',
               ],
             },
           ),
@@ -569,11 +574,11 @@ export const ES_A1_U16: EsUnitDef = {
         objective: 'Compare places and say where you prefer to go.',
         intro: {
           explanation:
-            'To compare: más + word + que (more… than) and menos + word + que (less… than): en Bariloche hace más frío que en Buenos Aires. To say two things are equal: tan + adjective + como (as… as). In summer many Argentines go to the beach on the Atlantic coast, and in winter to the mountains in the south. Listen to the ends of mar (sea), mal (bad) and más (more).',
+            'To compare: más + word + que (more… than) and menos + word + que (less… than): en Bogotá hace más frío que en Cartagena (Bogotá is high in the mountains; Cartagena is on the Caribbean coast). To say two things are equal: tan + adjective + como (as… as). To ask a friend what they prefer: ¿prefieres el mar o la montaña? (preferir changes e to ie: prefiero, prefieres). Listen to the ends of mar (sea), mal (bad) and más (more).',
           examples: [
             {
-              target: 'En Bariloche hace más frío que en Rosario.',
-              base: 'It’s colder in Bariloche than in Rosario.',
+              target: 'En Bogotá hace más frío que en Cartagena.',
+              base: 'It’s colder in Bogotá than in Cartagena.',
             },
             {
               target: 'La playa es tan linda como la montaña.',
@@ -604,8 +609,8 @@ export const ES_A1_U16: EsUnitDef = {
             { id: 'es.ex.sikt702h4kr1m0' },
           ),
           ex.fillBlank(
-            'En Bariloche hace ___ frío que en Buenos Aires.',
-            'It’s colder in Bariloche than in Buenos Aires.',
+            'En Bogotá hace ___ frío que en Cartagena.',
+            'It’s colder in Bogotá than in Cartagena.',
             'más',
             ['menos', 'muy', 'mucho'],
             ['es-mas-que', 'es-hace-frio'],
@@ -627,7 +632,7 @@ export const ES_A1_U16: EsUnitDef = {
             {
               id: 'es.ex.fdvrn2qfrs37k8',
               explanation:
-                'Less… than = menos… que. In Argentina the south is colder than the north.',
+                'Less… than = menos… que. In Chile or Argentina the south is colder than the north (in Mexico or Spain it is usually the other way round).',
             },
           ),
           ex.fillBlank(
@@ -670,7 +675,7 @@ export const ES_A1_U16: EsUnitDef = {
             },
           ),
           ex.shortAnswer(
-            '¿Preferís el mar o la montaña?',
+            '¿Prefieres el mar o la montaña?',
             'Say you prefer the sea (use «Prefiero…»).',
             'Prefiero el mar.',
             ['Yo prefiero el mar.', 'Prefiero el mar, gracias.'],
@@ -682,16 +687,19 @@ export const ES_A1_U16: EsUnitDef = {
 
       // ------------------------------------------------------------------------------------ L5
       {
-        title: '¿Cómo está el día?',
+        title: '¿Cómo está el clima?',
         objective: 'Understand the weather in a phone call and a postcard.',
         intro: {
           explanation:
-            'In Argentina you’ll often hear ¿cómo está el día? for “what’s the weather like?”. Put it together: hace calor or frío, llueve, nieva, hay sol, and compare places with más… que. Remember: when it is summer in Europe or the US, it is winter in Argentina.',
+            'In much of Latin America you’ll also hear ¿cómo está el clima? for “what’s the weather like?” (strictly, el clima is the climate and el tiempo the weather). Put it together: hace calor or frío, llueve, nieva, hay sol, and compare places with más… que. Remember: when it is summer in Mexico or Spain, it is winter in Chile and Argentina.',
           examples: [
-            { target: 'En enero hace calor y hay sol.', base: 'In January it’s hot and sunny.' },
             {
-              target: 'En Bariloche nieva más que en Mendoza.',
-              base: 'It snows more in Bariloche than in Mendoza.',
+              target: 'En Cartagena hace calor y hay sol.',
+              base: 'In Cartagena it’s hot and sunny.',
+            },
+            {
+              target: 'En Bariloche nieva más que en Santiago.',
+              base: 'It snows more in Bariloche than in Santiago.',
             },
           ],
         },
@@ -704,10 +712,10 @@ export const ES_A1_U16: EsUnitDef = {
             'es.ex.bruse39evo13ao',
             POSTAL,
             'Where is Camila?',
-            'At the beach in Mar del Plata, with her family',
-            ['In the mountains in Bariloche', 'At home in Buenos Aires', 'In the city, at work'],
+            'At the beach in Viña del Mar, with her family',
+            ['In the mountains in Bariloche', 'At home in Santiago', 'In the city, at work'],
             ['es-la-playa', 'es-el-mar'],
-            'She writes “Estoy en Mar del Plata con mi familia” and “vamos a la playa”.',
+            'She writes “Estoy en Viña del Mar con mi familia” and “vamos a la playa”. In January it is summer in Chile.',
           ),
           question(
             'es.ex.9t2297fqybsy4m',
@@ -739,20 +747,20 @@ export const ES_A1_U16: EsUnitDef = {
           question(
             'es.ex.qfj1d6o8e4j515',
             LLAMADA,
-            'What is the weather like in Buenos Aires?',
+            'What is the weather like in Mexico City?',
             'It’s raining',
-            ['It’s snowing', 'It’s hot and sunny', 'It’s windy'],
+            ['It’s snowing', 'It’s very cold', 'It’s windy'],
             ['es-llueve'],
-            'Martín says “Acá en Buenos Aires llueve”.',
+            'Martín says “Acá es verano, pero llueve mucho”: July is summer, and the rainy season, in Mexico City.',
           ),
           question(
             'es.ex.w80fhinvvcu0ke',
             LLAMADA,
             'Where is it colder?',
             'In Bariloche',
-            ['In Buenos Aires', 'It’s the same', 'We can’t tell'],
+            ['In Mexico City', 'It’s the same', 'We can’t tell'],
             ['es-menos-que'],
-            'Martín says “hace menos frío que en Bariloche”: Buenos Aires is less cold.',
+            'Martín says “hace menos frío que en Bariloche”: Mexico City is less cold.',
           ),
           ex.listenChoice(
             'En verano hace más calor que en primavera.',
@@ -787,7 +795,7 @@ export const ES_A1_U16: EsUnitDef = {
             },
           ),
           ex.shortAnswer(
-            '¿Cómo está el día?',
+            '¿Cómo está el clima?',
             'Say the weather is nice and sunny (use «Hace buen tiempo y…»).',
             'Hace buen tiempo y hay sol.',
             ['Hace buen tiempo y hace sol.', 'Hoy hace buen tiempo y hay sol.'],

@@ -3,6 +3,7 @@ import {
   BookOpen,
   Check,
   Dumbbell,
+  FileText,
   Headphones,
   Lock,
   Play,
@@ -21,7 +22,7 @@ import Animated, {
   withRepeat,
   withTiming,
 } from 'react-native-reanimated';
-import Svg, { Path } from 'react-native-svg';
+import Svg, { Circle, Defs, Path, RadialGradient, Stop } from 'react-native-svg';
 
 import {
   Button,
@@ -30,37 +31,47 @@ import {
   Text,
   colors,
   elevation,
-  pathAccents,
+  gradients,
   pathGold,
   radii,
   spacing,
-  type PathAccent,
   themedStyles,
 } from '@/design-system';
 
 import { energyStatusText } from '@/features/plus/components/Energy';
 import { useEnergy } from '@/features/plus/api';
+import { useStrings } from '@/i18n';
 
 import type { LessonStatus, UnitWithStatus } from '../curriculum';
-import { PathCompanion, companionSide } from './PathCompanions';
 import {
-  PATH_NODE_SIZE,
-  PATH_ROW_HEIGHT,
+  MAP_CURRENT_SIZE,
+  MAP_NODE_SIZE,
+  MAP_ROW_HEIGHT,
   lessonKind,
   lessonStars,
-  pathOffset,
-  pathPoints,
+  mapLabelBox,
+  mapLayout,
+  mapRowHeight,
   segmentPath,
   type LessonKind,
+  type PathPoint,
 } from '../path';
+import { pathStrings } from '../strings';
+
+type Strings = (typeof pathStrings)['es'];
 
 const LIP = 6;
+/** Violeta del recorrido: nodos completados. */
+const PATH_VIOLET = { fill: '#7C3AED', lip: '#4C1D95' } as const;
+/** Degradado de la tarjeta de cada unidad. */
+const UNIT_GRADIENT = ['#8B5CF6', '#6D28D9', '#4C1D95'] as const;
 /** Color de lo bloqueado (se lee al dibujar: depende del tema). */
 const lockedAccent = () => ({ fill: colors.surfaceHighlight, lip: colors.borderStrong });
-type Accent = PathAccent | { fill: string; lip: string };
+type Accent = { fill: string; lip: string };
 /** Nodos de muestra del nivel siguiente: el camino sigue aunque todavía no haya contenido. */
 const UPCOMING_NODES = 4;
 
+/** Ícono dentro del nodo de la lección actual. */
 const KIND_ICON: Record<LessonKind, LucideIcon> = {
   lesson: Play,
   review: Dumbbell,
@@ -69,11 +80,13 @@ const KIND_ICON: Record<LessonKind, LucideIcon> = {
   final: Trophy,
 };
 
-const KIND_LABEL: Record<Exclude<LessonKind, 'lesson'>, string> = {
-  review: 'REPASO',
-  listening: 'ESCUCHA',
-  words: 'PALABRAS',
-  final: 'REPASO FINAL',
+/** Ícono junto al título de cada lección. */
+const LABEL_ICON: Record<LessonKind, LucideIcon> = {
+  lesson: FileText,
+  review: Dumbbell,
+  listening: Headphones,
+  words: BookOpen,
+  final: Trophy,
 };
 
 interface PathNode {
@@ -83,7 +96,11 @@ interface PathNode {
   label: string;
   /** Encabezado del recuadro: «LECCIÓN 3», «REPASO»… */
   overline: string;
+  /** Número de la lección dentro de su unidad (1…n); null en los nodos de muestra. */
+  number: number | null;
   title: string;
+  /** Objetivo de la lección (se muestra en la tarjeta de la lección actual). */
+  objective: string;
   bestAccuracy: number | null;
   stars: 0 | 1 | 2 | 3;
   /** Texto del recuadro cuando está bloqueada. */
@@ -113,6 +130,10 @@ interface Props {
   pendingUnits?: number;
 }
 
+/**
+ * Mapa de aprendizaje: por cada unidad, su tarjeta y el recorrido de sus lecciones (en el orden real
+ * del currículo) con nodos que ondulan a la izquierda y el título de cada lección al costado.
+ */
 export function LessonPath({
   units,
   onCurrentLayout,
@@ -122,13 +143,14 @@ export function LessonPath({
   pendingUnits = 0,
 }: Props) {
   const styles = useStyles();
+  const t = useStrings(pathStrings);
   // Offsets medidos con onLayout: raíz → sección → camino → nodo.
   const rootY = useRef<number | null>(null);
   const sectionY = useRef(new Map<string, number>());
   const pathY = useRef(new Map<string, number>());
   const reportedKey = useRef<string | null>(null);
 
-  const { sections, nextIndex, currentUnitId, currentNodeY } = buildSections(units);
+  const { sections, nextIndex, currentUnitId, currentNodeY } = buildSections(units, t);
   const currentKey = currentUnitId ? `${currentUnitId}:${currentNodeY}` : null;
 
   const tryReport = () => {
@@ -149,17 +171,19 @@ export function LessonPath({
   const pending = pendingUnits > 0;
   const firstPending = units.length + 1;
   const lockedMessage = pending
-    ? `Estamos preparando las unidades ${firstPending}–${units.length + pendingUnits} de ${thisLevel}.`
+    ? t.preparingRange(firstPending, units.length + pendingUnits, thisLevel)
     : nextLevel?.ready
-      ? `Terminá el nivel ${thisLevel} para pasar a ${nextId}.`
-      : `Estamos preparando las unidades del nivel ${nextId}.`;
+      ? t.finishLevel(thisLevel, nextId)
+      : t.preparingLevel(nextId);
   const upcoming: PathNode[] = Array.from({ length: UPCOMING_NODES }, (_, i) => ({
     key: `upcoming-${i}`,
     status: 'locked',
     kind: i === UPCOMING_NODES - 1 ? 'final' : 'lesson',
-    label: 'Próximamente',
-    overline: pending ? `NIVEL ${thisLevel}` : `NIVEL ${nextId}`,
-    title: 'Próximamente',
+    label: t.soonLocked,
+    overline: t.levelN(pending ? thisLevel : nextId),
+    number: null,
+    title: t.soon,
+    objective: '',
     bestAccuracy: null,
     stars: 0,
     lockedMessage,
@@ -176,7 +200,7 @@ export function LessonPath({
         tryReport();
       }}
     >
-      {sections.map(({ unit, accent, first, nodes }) => (
+      {sections.map(({ unit, first, nodes }) => (
         <View
           key={unit.id}
           // La sección con el recuadro abierto va por encima de las siguientes.
@@ -187,15 +211,16 @@ export function LessonPath({
           }}
         >
           <UnitBanner
-            accent={accent}
-            overline={`UNIDAD ${unit.position}`}
+            overline={t.unitN(unit.position)}
+            level={unit.level}
+            lessons={unit.lessons.length}
+            emoji={unit.emoji}
             title={`${unit.emoji} ${unit.title}`}
             description={unit.description}
             progress={unit.lessons.length ? unit.completedCount / unit.lessons.length : 0}
             progressLabel={`${unit.completedCount}/${unit.lessons.length}`}
           />
           <PathSection
-            accent={accent}
             firstIndex={first}
             nodes={nodes}
             selected={selected}
@@ -211,24 +236,22 @@ export function LessonPath({
       {pending || nextLevel ? (
         <View style={[styles.section, owns(upcoming) && styles.raised]}>
           <UnitBanner
-            accent={lockedAccent()}
             locked
             overline={
               pending
-                ? `NIVEL ${thisLevel} · ${units.length} DE ${units.length + pendingUnits} UNIDADES`
-                : `PRÓXIMO NIVEL · ${nextId}`
+                ? t.levelUnits(thisLevel, units.length, units.length + pendingUnits)
+                : t.nextLevel(nextId)
             }
-            title={pending ? '🚧 Más unidades en camino' : '🚀 Tu camino sigue'}
+            title={pending ? t.moreUnits : t.pathContinues}
             description={
               pending
-                ? `El nivel ${thisLevel} todavía no está completo: estamos preparando las unidades ${firstPending} a ${units.length + pendingUnits}. Mientras tanto, repasá para no perder la racha.`
+                ? t.pendingDescription(thisLevel, firstPending, units.length + pendingUnits)
                 : nextLevel?.ready
-                  ? `Cuando termines ${thisLevel}, seguís directo con las unidades de ${nextId}.`
-                  : 'Estamos preparando las próximas unidades. Mientras tanto, repasá y jugá ranked para no perder la racha.'
+                  ? t.nextReadyDescription(thisLevel, nextId)
+                  : t.nextPendingDescription
             }
           />
           <PathSection
-            accent={lockedAccent()}
             firstIndex={nextIndex}
             nodes={upcoming}
             selected={selected}
@@ -240,90 +263,124 @@ export function LessonPath({
   );
 }
 
-/** Nodos de cada unidad, su color y el índice global donde arranca su tramo del camino. */
-function buildSections(units: UnitWithStatus[]) {
+/** Nodos de cada unidad y el índice global donde arranca su tramo del camino. */
+function buildSections(units: UnitWithStatus[], t: Strings) {
   let nextIndex = 0;
   let currentUnitId: string | null = null;
   let currentNodeY = 0;
-  const sections = units.map((unit, unitIndex) => {
+  const sections = units.map((unit) => {
     const first = nextIndex;
     nextIndex += unit.lessons.length;
     const currentIndex = unit.lessons.findIndex((l) => l.status === 'current');
     if (currentIndex >= 0 && currentUnitId === null) {
       currentUnitId = unit.id;
-      currentNodeY = currentIndex * PATH_ROW_HEIGHT + PATH_ROW_HEIGHT / 2;
+      // El alto de las filas no depende del ancho: se puede calcular antes de medir.
+      currentNodeY =
+        unit.lessons.slice(0, currentIndex).reduce((y, l) => y + mapRowHeight(l.status), 0) +
+        mapRowHeight('current') / 2;
     }
     let lessonNumber = 0;
-    const nodes = unit.lessons.map((lesson): PathNode => {
+    const nodes = unit.lessons.map((lesson, index): PathNode => {
       const kind = lessonKind(lesson.id);
       if (kind === 'lesson') lessonNumber += 1;
-      const overline = kind === 'lesson' ? `LECCIÓN ${lessonNumber}` : KIND_LABEL[kind];
+      const overline = kind === 'lesson' ? t.lessonN(lessonNumber) : t.kinds[kind];
       const stars = lessonStars(lesson.bestAccuracy);
       return {
         key: lesson.id,
         status: lesson.status,
         kind,
         overline,
+        number: index + 1,
         title: lesson.title,
+        objective: lesson.objective,
         bestAccuracy: lesson.bestAccuracy,
         stars,
         label: `${overline}: ${lesson.title}. ${
           lesson.status === 'locked'
-            ? 'Bloqueada'
+            ? t.locked
             : lesson.status === 'current'
-              ? 'Siguiente lección'
-              : `Completada, ${stars} de 3 estrellas`
+              ? t.nextLesson
+              : t.completedStars(stars)
         }`,
-        lockedMessage: 'Completá las lecciones anteriores para desbloquearla.',
+        lockedMessage: t.lockedPrevious,
         onStart: () => router.push({ pathname: '/lesson/[id]', params: { id: lesson.id } }),
       };
     });
-    const accent: PathAccent = pathAccents[unitIndex % pathAccents.length] ?? pathAccents[0];
-    return { unit, accent, first, nodes };
+    return { unit, first, nodes };
   });
   return { sections, nextIndex, currentUnitId: currentUnitId as string | null, currentNodeY };
 }
 
+/** Tarjeta de la unidad: degradado violeta, nivel, cantidad de lecciones y progreso real. */
 function UnitBanner(props: {
-  accent: Accent;
   /** Banner gris de lo que todavía no existe: texto del tema (en claro el fondo es claro). */
   locked?: boolean;
   overline: string;
+  level?: string;
+  lessons?: number;
+  emoji?: string;
   title: string;
   description: string;
   progress?: number;
   progressLabel?: string;
 }) {
   const styles = useStyles();
-  // Sobre los colores saturados de cada unidad el texto va blanco en los dos temas.
+  const t = useStrings(pathStrings);
+  // Sobre el violeta de la unidad el texto va blanco en los dos temas.
   const strong = props.locked ? 'textStrong' : 'onPrimary';
   const body = props.locked ? 'text' : 'onPrimary';
   return (
-    <Card gradient={[props.accent.fill, props.accent.lip]} style={styles.banner}>
-      <Text variant="overline" color={strong}>
-        {props.overline}
-      </Text>
-      <Text variant="heading" color={strong}>
-        {props.title}
-      </Text>
-      <Text variant="caption" color={body}>
-        {props.description}
-      </Text>
+    <Card
+      gradient={props.locked ? gradients.locked : UNIT_GRADIENT}
+      style={[styles.banner, !props.locked && styles.bannerBrand]}
+    >
+      <View style={styles.bannerTop}>
+        <Text variant="overline" color={strong} style={styles.flex} numberOfLines={1}>
+          {props.overline}
+        </Text>
+        {props.level ? (
+          <View style={styles.pill}>
+            <Text variant="caption" color="onPrimary" style={styles.pillText}>
+              {props.level}
+            </Text>
+          </View>
+        ) : null}
+        {props.lessons ? (
+          <View style={styles.pill}>
+            <BookOpen color={colors.onPrimary} size={13} />
+            <Text variant="caption" color="onPrimary" style={styles.pillText}>
+              {t.lessonsCount(props.lessons)}
+            </Text>
+          </View>
+        ) : null}
+      </View>
+      <View style={styles.bannerMain}>
+        <View style={styles.bannerText}>
+          <Text variant="heading" color={strong} numberOfLines={1} style={styles.bannerTitle}>
+            {props.title}
+          </Text>
+          <Text
+            variant="caption"
+            color={body}
+            numberOfLines={props.locked ? 2 : 1}
+            style={[styles.bannerDescription, !props.locked && styles.bannerBody]}
+          >
+            {props.description}
+          </Text>
+        </View>
+        {props.emoji && !props.locked ? <UnitIllustration emoji={props.emoji} /> : null}
+      </View>
       {props.progress !== undefined ? (
         <View style={styles.bannerProgress}>
           <View style={styles.flex}>
             <ProgressBar
               value={props.progress}
               height={6}
-              colors={
-                props.locked
-                  ? [colors.textStrong, colors.text]
-                  : [colors.onPrimary, colors.onPrimary]
-              }
-              accessibilityLabel={`Progreso de la unidad: ${props.progressLabel}`}
+              colors={[colors.onPrimary, '#DDD6FE']}
+              accessibilityLabel={t.unitProgress(props.progressLabel ?? '')}
             />
           </View>
-          <Text variant="caption" color={strong}>
+          <Text variant="caption" color={strong} style={[styles.tabular, styles.bannerCount]}>
             {props.progressLabel}
           </Text>
         </View>
@@ -332,15 +389,108 @@ function UnitBanner(props: {
   );
 }
 
+/** Globitos de diálogo con el emoji de la unidad (decoración). */
+function UnitIllustration({ emoji }: { emoji: string }) {
+  const styles = useStyles();
+  return (
+    <View
+      style={styles.illustrationSlot}
+      accessible={false}
+      accessibilityElementsHidden
+      importantForAccessibility="no-hide-descendants"
+    >
+      <View style={styles.illustration}>
+        <View style={[styles.bubble, styles.bubbleMain]}>
+          <View style={[styles.bubbleTail, styles.bubbleTailMain]} />
+          <Text style={styles.bubbleEmoji}>{emoji}</Text>
+        </View>
+        <View style={[styles.bubble, styles.bubbleSmall]}>
+          <View style={[styles.bubbleTail, styles.bubbleTailSmall]} />
+          {[0, 1, 2].map((i) => (
+            <View key={i} style={styles.dot} />
+          ))}
+        </View>
+        <Svg width={22} height={22} viewBox="0 0 22 22" style={styles.illustrationSparks}>
+          <Path d="M4 14 L2 8" stroke={colors.gold} strokeWidth={3} strokeLinecap="round" />
+          <Path d="M10 10 L11 2" stroke={colors.gold} strokeWidth={3} strokeLinecap="round" />
+          <Path d="M15 14 L20 9" stroke={colors.gold} strokeWidth={3} strokeLinecap="round" />
+        </Svg>
+      </View>
+    </View>
+  );
+}
+
+/** Tramos entre nodos: los andados (hasta la lección actual) como camino luminoso; el resto, puntos. */
+function PathTrail({
+  points,
+  nodes,
+  width,
+  height,
+}: {
+  points: PathPoint[];
+  nodes: PathNode[];
+  width: number;
+  height: number;
+}) {
+  const segments = points.slice(1).flatMap((to, i) => {
+    const from = points[i];
+    const node = nodes[i + 1];
+    return from && node
+      ? [{ key: node.key, d: segmentPath(from, to), lit: node.status !== 'locked' }]
+      : [];
+  });
+  return (
+    <Svg width={width} height={height} style={StyleSheet.absoluteFill} pointerEvents="none">
+      {segments
+        .filter((s) => !s.lit)
+        .map((s) => (
+          <Path
+            key={s.key}
+            d={s.d}
+            stroke={colors.borderStrong}
+            strokeWidth={7}
+            strokeLinecap="round"
+            strokeDasharray="0.1 15"
+            fill="none"
+          />
+        ))}
+      {/* Brillo ancho y translúcido debajo, trazo claro encima: el camino «iluminado». */}
+      {segments
+        .filter((s) => s.lit)
+        .map((s) => (
+          <Path
+            key={`glow-${s.key}`}
+            d={s.d}
+            stroke={colors.primaryBright}
+            strokeOpacity={0.3}
+            strokeWidth={16}
+            strokeLinecap="round"
+            fill="none"
+          />
+        ))}
+      {segments
+        .filter((s) => s.lit)
+        .map((s) => (
+          <Path
+            key={`core-${s.key}`}
+            d={s.d}
+            stroke={colors.primarySoft}
+            strokeWidth={6}
+            strokeLinecap="round"
+            fill="none"
+          />
+        ))}
+    </Svg>
+  );
+}
+
 function PathSection({
-  accent,
   firstIndex,
   nodes,
   selected,
   onSelect,
   onLayout,
 }: {
-  accent: Accent;
   firstIndex: number;
   nodes: PathNode[];
   selected: string | null;
@@ -349,14 +499,18 @@ function PathSection({
 }) {
   const styles = useStyles();
   const [width, setWidth] = useState(0);
-  const height = nodes.length * PATH_ROW_HEIGHT;
-  const points = width ? pathPoints(firstIndex, nodes.length, width) : [];
+  const { points, height } = mapLayout(
+    firstIndex,
+    nodes.map((n) => n.status),
+    width || 1,
+  );
   const openIndex = nodes.findIndex((n) => n.key === selected);
   const open = nodes[openIndex];
   const openPoint = points[openIndex];
 
   return (
     <View
+      testID="lesson-map-path"
       style={[styles.path, { height }]}
       onLayout={(e) => {
         setWidth(e.nativeEvent.layout.width);
@@ -365,69 +519,55 @@ function PathSection({
     >
       {width ? (
         <>
-          <Svg width={width} height={height} style={StyleSheet.absoluteFill} pointerEvents="none">
-            {points.slice(1).map((to, i) => {
-              const from = points[i];
-              const node = nodes[i + 1];
-              if (!from || !node) return null;
-              const reached = node.status !== 'locked';
-              return (
-                <Path
-                  key={node.key}
-                  d={segmentPath(from, to)}
-                  stroke={reached ? accent.fill : colors.borderStrong}
-                  strokeWidth={8}
-                  strokeLinecap="round"
-                  strokeDasharray={reached ? undefined : '2 14'}
-                  fill="none"
-                />
-              );
-            })}
-          </Svg>
-          {nodes.map((node, i) => {
-            const point = points[i];
-            if (!point || !companionSide(firstIndex + i)) return null;
-            // La lección actual muestra «EMPEZAR» hacia el mismo lado libre: el personaje se corre
-            // una fila (abajo si hay, si no arriba; en una unidad de una sola lección no va).
-            let centerY = point.y;
-            if (node.status === 'current') {
-              if (i + 1 < nodes.length) centerY += PATH_ROW_HEIGHT;
-              else if (i > 0) centerY -= PATH_ROW_HEIGHT;
-              else return null;
-            }
-            return (
-              <PathCompanion
-                key={`companion-${node.key}`}
-                globalIndex={firstIndex + i}
-                nodeX={point.x}
-                centerY={centerY}
-                width={width}
-                status={node.status}
-                kind={node.kind}
-                stars={node.stars}
-              />
-            );
-          })}
+          <PathTrail points={points} nodes={nodes} width={width} height={height} />
+
           {nodes.map((node, i) => (
             <LessonNode
               key={node.key}
               node={node}
               accent={
-                node.status === 'locked' ? lockedAccent() : node.stars === 3 ? pathGold : accent
+                node.status === 'locked'
+                  ? lockedAccent()
+                  : node.stars === 3
+                    ? pathGold
+                    : PATH_VIOLET
               }
               x={points[i]?.x ?? 0}
               y={points[i]?.y ?? 0}
-              // El cartel de la lección actual va del lado con más espacio.
-              bubbleSide={pathOffset(firstIndex + i, width) > 0 ? 'left' : 'right'}
               onPress={() => onSelect(node.key)}
             />
           ))}
+
+          {nodes.map((node, i) => {
+            const point = points[i];
+            if (!point) return null;
+            return (
+              <NodeLabel
+                key={`label-${node.key}`}
+                node={node}
+                box={mapLabelBox(
+                  point,
+                  width,
+                  node.status === 'current' ? MAP_CURRENT_SIZE : MAP_NODE_SIZE,
+                )}
+                // Del lado izquierdo el texto se alinea hacia su nodo.
+                alignEnd={point.side === 'right'}
+                centerY={point.y}
+                onPress={() => onSelect(node.key)}
+              />
+            );
+          })}
+
           {open && openPoint ? (
             <LessonPopover
               node={open}
               x={openPoint.x}
-              top={openPoint.y + (PATH_NODE_SIZE + LIP) / 2 + spacing.md}
-              accent={open.stars === 3 ? pathGold : accent}
+              top={
+                openPoint.y +
+                (open.status === 'current' ? MAP_CURRENT_SIZE / 2 : (MAP_NODE_SIZE + LIP) / 2) +
+                spacing.md
+              }
+              accent={open.stars === 3 ? pathGold : PATH_VIOLET}
             />
           ) : null}
         </>
@@ -436,37 +576,175 @@ function PathSection({
   );
 }
 
+/**
+ * Título de la lección al costado del nodo, con su estado («Completado» / «Sin completar» /
+ * «Bloqueado»). Tocarlo abre la misma ficha que el nodo.
+ */
+function NodeLabel({
+  node,
+  box,
+  alignEnd,
+  centerY,
+  onPress,
+}: {
+  node: PathNode;
+  box: { left: number; right: number };
+  alignEnd: boolean;
+  centerY: number;
+  onPress: () => void;
+}) {
+  const styles = useStyles();
+  const t = useStrings(pathStrings);
+  const locked = node.status === 'locked';
+  const Icon = LABEL_ICON[node.kind];
+  return (
+    <Pressable
+      // El nodo ya es el elemento accesible; el texto sólo agranda la zona de toque.
+      accessible={false}
+      accessibilityElementsHidden
+      importantForAccessibility="no-hide-descendants"
+      onPress={onPress}
+      onTouchStart={(e) => e.stopPropagation()}
+      style={({ pressed }) => [
+        styles.label,
+        box,
+        { top: centerY - LABEL_HEIGHT / 2 },
+        alignEnd && styles.labelEnd,
+        pressed && styles.pressed,
+      ]}
+    >
+      <View style={[styles.labelTitle, alignEnd && styles.labelTitleEnd]}>
+        <Icon color={locked ? colors.textMuted : colors.text} size={18} />
+        <Text
+          variant="bodyStrong"
+          // Bloqueadas en tono claro (no gris): se leen sobre el paisaje; el candado ya marca el estado.
+          color={locked ? 'text' : 'textStrong'}
+          numberOfLines={2}
+          align={alignEnd ? 'right' : undefined}
+          style={[styles.labelText, styles.readable]}
+        >
+          {node.number ? `${node.number}. ` : ''}
+          {node.title}
+        </Text>
+      </View>
+      {locked ? (
+        <View style={[styles.status, alignEnd && styles.statusEnd, styles.statusLocked]}>
+          <Lock color={colors.text} size={12} strokeWidth={2.5} />
+          <Text variant="caption" color="text" style={styles.statusText}>
+            {t.statusLocked}
+          </Text>
+        </View>
+      ) : node.status === 'current' ? (
+        <View style={[styles.status, alignEnd && styles.statusEnd, styles.statusPending]}>
+          <Text variant="caption" color="textStrong" style={styles.statusText}>
+            {t.statusPending}
+          </Text>
+          <View style={styles.statusStars}>
+            {[1, 2, 3].map((n) => (
+              <Star key={n} size={11} color={colors.textSubtle} fill="transparent" />
+            ))}
+          </View>
+        </View>
+      ) : (
+        <View style={[styles.status, alignEnd && styles.statusEnd, styles.statusDone]}>
+          <Check color={colors.success} size={13} strokeWidth={3} />
+          <Text variant="caption" color="success" style={styles.statusText}>
+            {t.statusDone}
+          </Text>
+          {node.stars ? (
+            <View style={styles.statusStars}>
+              {[1, 2, 3].map((n) => (
+                <Star
+                  key={n}
+                  size={11}
+                  color={n <= node.stars ? colors.gold : colors.textSubtle}
+                  fill={n <= node.stars ? colors.gold : 'transparent'}
+                />
+              ))}
+            </View>
+          ) : null}
+        </View>
+      )}
+    </Pressable>
+  );
+}
+
 function LessonNode({
   node,
   accent,
   x,
   y,
-  bubbleSide,
   onPress,
 }: {
   node: PathNode;
   accent: Accent;
   x: number;
   y: number;
-  bubbleSide: 'left' | 'right';
   onPress: () => void;
 }) {
   const styles = useStyles();
   const locked = node.status === 'locked';
   const current = node.status === 'current';
   const golden = node.stars === 3;
-  const iconColor = locked ? colors.textSubtle : golden ? colors.background : colors.onPrimary;
-  const Icon =
-    node.kind === 'final' ? Trophy : locked ? Lock : current ? KIND_ICON[node.kind] : Check;
+  const iconColor = locked ? colors.textMuted : golden ? colors.background : colors.onPrimary;
 
+  if (current) {
+    const Icon = KIND_ICON[node.kind];
+    const glow = MAP_CURRENT_SIZE * 1.8;
+    const gradientId = `glow-${node.key}`;
+    return (
+      <View
+        style={[
+          styles.currentSlot,
+          { left: x - MAP_CURRENT_SIZE / 2, top: y - MAP_CURRENT_SIZE / 2 },
+        ]}
+      >
+        <Svg
+          width={glow}
+          height={glow}
+          style={[
+            styles.currentGlow,
+            { left: -(glow - MAP_CURRENT_SIZE) / 2, top: -(glow - MAP_CURRENT_SIZE) / 2 },
+          ]}
+          pointerEvents="none"
+        >
+          <Defs>
+            <RadialGradient id={gradientId} cx="50%" cy="50%" r="50%">
+              <Stop offset="0.35" stopColor={colors.primaryBright} stopOpacity={0.55} />
+              <Stop offset="1" stopColor={colors.primaryBright} stopOpacity={0} />
+            </RadialGradient>
+          </Defs>
+          <Circle cx={glow / 2} cy={glow / 2} r={glow / 2} fill={`url(#${gradientId})`} />
+        </Svg>
+        <PulseRing color={colors.primaryBright} />
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={node.label}
+          onPress={onPress}
+          onTouchStart={(e) => e.stopPropagation()}
+          hitSlop={8}
+          style={styles.currentRing}
+        >
+          {({ pressed }) => (
+            <View style={[styles.currentFace, pressed && styles.currentFacePressed]}>
+              <Icon
+                color={colors.onPrimary}
+                size={32}
+                strokeWidth={2.75}
+                fill={node.kind === 'lesson' ? colors.onPrimary : 'transparent'}
+              />
+            </View>
+          )}
+        </Pressable>
+      </View>
+    );
+  }
+
+  const Icon = node.kind === 'final' && !locked ? Trophy : locked ? Lock : Check;
   return (
     <View
-      style={[
-        styles.nodeSlot,
-        { left: x - PATH_NODE_SIZE / 2, top: y - (PATH_NODE_SIZE + LIP) / 2 },
-      ]}
+      style={[styles.nodeSlot, { left: x - MAP_NODE_SIZE / 2, top: y - (MAP_NODE_SIZE + LIP) / 2 }]}
     >
-      {current ? <PulseRing color={accent.fill} /> : null}
       <Pressable
         accessibilityRole="button"
         accessibilityLabel={node.label}
@@ -482,31 +760,15 @@ function LessonNode({
             <View
               style={[
                 styles.nodeFace,
+                locked && styles.nodeFaceLocked,
                 { backgroundColor: accent.fill, transform: [{ translateY: pressed ? LIP : 0 }] },
               ]}
             >
-              <Icon
-                color={iconColor}
-                size={30}
-                strokeWidth={3}
-                fill={current && node.kind === 'lesson' ? iconColor : 'transparent'}
-              />
+              <Icon color={iconColor} size={locked ? 26 : 30} strokeWidth={locked ? 2.5 : 3.5} />
             </View>
           </View>
         )}
       </Pressable>
-
-      {current ? (
-        <View
-          style={[styles.bubble, bubbleSide === 'left' ? styles.bubbleLeft : styles.bubbleRight]}
-          pointerEvents="none"
-          accessible={false}
-        >
-          <Text variant="overline" color="primarySoft" numberOfLines={1}>
-            EMPEZAR
-          </Text>
-        </View>
-      ) : null}
     </View>
   );
 }
@@ -529,6 +791,7 @@ function LessonPopover({
   const perfect = node.stars === 3;
   const percent = Math.round((node.bestAccuracy ?? 0) * 100);
   const energy = useEnergy().view;
+  const t = useStrings(pathStrings);
 
   return (
     <Animated.View
@@ -543,17 +806,13 @@ function LessonPopover({
       <Text variant="overline" color={locked ? 'textMuted' : perfect ? 'gold' : 'primarySoft'}>
         {node.overline}
       </Text>
-      <Text variant="heading">{locked ? 'Bloqueada' : node.title}</Text>
+      <Text variant="heading">{locked ? t.locked : node.title}</Text>
 
       {locked ? (
         <Text color="textMuted">{node.lockedMessage}</Text>
       ) : (
         <>
-          <View
-            style={styles.popoverStars}
-            accessible
-            accessibilityLabel={`${node.stars} de 3 estrellas`}
-          >
+          <View style={styles.popoverStars} accessible accessibilityLabel={t.starsOf(node.stars)}>
             {[1, 2, 3].map((n) => (
               <Star
                 key={n}
@@ -564,14 +823,10 @@ function LessonPopover({
             ))}
           </View>
           <Text color="textMuted">
-            {current
-              ? 'Hacela sin errores para ganar las 3 estrellas y volverla dorada.'
-              : perfect
-                ? '¡Perfecta, sin ningún error! Esta lección ya es dorada.'
-                : `Mejor precisión: ${percent} %. Hacela sin errores para ganar las 3 estrellas y volverla dorada.`}
+            {current ? t.currentHint : perfect ? t.perfectHint : t.bestHint(percent)}
           </Text>
           <Button
-            label={current ? 'Empezar lección' : 'Repasar de nuevo'}
+            label={current ? t.start : t.redo}
             icon={
               current ? (
                 <Play color={colors.onPrimary} fill={colors.onPrimary} size={18} />
@@ -583,7 +838,7 @@ function LessonPopover({
           />
           {energy && !energy.plus ? (
             <Text variant="caption" align="center">
-              Completarla usa 1 de energía ({energy.energy}/{energy.max})
+              {t.energyCost(energy.energy, energy.max)}
               {energy.energy === 0 ? ` · ${energyStatusText(energy)}` : ''}
             </Text>
           ) : null}
@@ -599,72 +854,212 @@ function PulseRing({ color }: { color: string }) {
   const t = useSharedValue(0);
 
   useEffect(() => {
-    if (!reduceMotion) t.value = withRepeat(withTiming(1, { duration: 1400 }), -1, false);
+    if (!reduceMotion) t.value = withRepeat(withTiming(1, { duration: 1600 }), -1, false);
   }, [reduceMotion, t]);
 
   const style = useAnimatedStyle(() => ({
-    opacity: reduceMotion ? 0.35 : 0.55 * (1 - t.value),
-    transform: [{ scale: reduceMotion ? 1.15 : 1 + 0.4 * t.value }],
+    opacity: reduceMotion ? 0.3 : 0.5 * (1 - t.value),
+    transform: [{ scale: reduceMotion ? 1.1 : 1 + 0.3 * t.value }],
   }));
 
   return <Animated.View style={[styles.pulse, { borderColor: color }, style]} />;
 }
 
 const ARROW = 16;
+/** Alto de la zona tocable del título de cada lección. */
+const LABEL_HEIGHT = MAP_ROW_HEIGHT - spacing.md;
 
 const useStyles = themedStyles(() =>
   StyleSheet.create({
     root: { gap: spacing.xxl },
-    section: { gap: spacing.lg },
+    section: { gap: spacing.sm },
     raised: { zIndex: 2 },
     flex: { flex: 1 },
-    banner: { gap: spacing.xs },
+    tabular: { fontVariant: ['tabular-nums'] },
+    pressed: { opacity: 0.7 },
+
+    // Tarjeta compacta: deja ver más lecciones del recorrido en la primera pantalla.
+    banner: { gap: spacing.xs, paddingVertical: spacing.md, paddingHorizontal: spacing.lg },
+    bannerBrand: { borderColor: 'rgba(196, 181, 253, 0.55)', ...elevation.glow },
+    bannerTop: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
+    bannerMain: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+    bannerText: { flex: 1, gap: 2 },
+    bannerTitle: { fontSize: 17, lineHeight: 22 },
+    bannerDescription: { fontSize: 12, lineHeight: 16 },
+    bannerBody: { opacity: 0.92 },
+    bannerCount: { fontWeight: '700' },
     bannerProgress: {
       flexDirection: 'row',
       alignItems: 'center',
-      gap: spacing.sm,
-      marginTop: spacing.sm,
+      gap: spacing.md,
+      marginTop: 2,
     },
-    path: { width: '100%' },
-    nodeSlot: { position: 'absolute', width: PATH_NODE_SIZE, alignItems: 'center' },
-    nodeBody: { width: PATH_NODE_SIZE, height: PATH_NODE_SIZE + LIP },
-    nodeLip: {
-      position: 'absolute',
-      bottom: 0,
-      width: PATH_NODE_SIZE,
-      height: PATH_NODE_SIZE,
-      borderRadius: PATH_NODE_SIZE / 2,
-    },
-    nodeFace: {
-      width: PATH_NODE_SIZE,
-      height: PATH_NODE_SIZE,
-      borderRadius: PATH_NODE_SIZE / 2,
+    pill: {
+      flexDirection: 'row',
       alignItems: 'center',
-      justifyContent: 'center',
+      gap: 4,
+      paddingHorizontal: spacing.sm,
+      paddingVertical: 1,
+      borderRadius: radii.pill,
+      backgroundColor: 'rgba(255, 255, 255, 0.18)',
+      borderWidth: 1,
+      borderColor: 'rgba(255, 255, 255, 0.25)',
     },
-    pulse: {
+    pillText: { fontSize: 11, lineHeight: 15, fontWeight: '700' },
+
+    // Los globitos se dibujan a 86×74 y se muestran al 60 % dentro de un hueco de 52×44.
+    illustrationSlot: { width: 52, height: 44 },
+    illustration: {
       position: 'absolute',
-      top: -6,
-      width: PATH_NODE_SIZE + 12,
-      height: PATH_NODE_SIZE + 12,
-      borderRadius: (PATH_NODE_SIZE + 12) / 2,
-      borderWidth: 4,
+      left: (52 - 86) / 2,
+      top: (44 - 74) / 2,
+      width: 86,
+      height: 74,
+      transform: [{ scale: 0.6 }],
     },
     bubble: {
       position: 'absolute',
-      // Ancho propio: si no, hereda el del nodo y el texto se parte en dos líneas.
-      width: 112,
       alignItems: 'center',
-      top: PATH_NODE_SIZE / 2 - 14,
-      paddingHorizontal: spacing.md,
-      paddingVertical: spacing.xs + 2,
+      justifyContent: 'center',
+      borderRadius: radii.md,
+    },
+    bubbleMain: {
+      left: 0,
+      top: 6,
+      width: 56,
+      height: 44,
+      backgroundColor: '#FFFFFF',
+      transform: [{ rotate: '-8deg' }],
+    },
+    bubbleSmall: {
+      right: 0,
+      bottom: 2,
+      width: 46,
+      height: 28,
+      flexDirection: 'row',
+      gap: 4,
+      backgroundColor: '#EDE9FE',
+      transform: [{ rotate: '7deg' }],
+    },
+    bubbleEmoji: { fontSize: 24, lineHeight: 30 },
+    bubbleTail: { position: 'absolute', width: 10, height: 10, transform: [{ rotate: '45deg' }] },
+    bubbleTailMain: { bottom: -4, left: 12, backgroundColor: '#FFFFFF' },
+    bubbleTailSmall: { bottom: -4, right: 10, backgroundColor: '#EDE9FE' },
+    dot: { width: 6, height: 6, borderRadius: 3, backgroundColor: '#7C3AED' },
+    illustrationSparks: { position: 'absolute', right: 2, top: -6 },
+
+    path: { width: '100%' },
+    nodeSlot: { position: 'absolute', width: MAP_NODE_SIZE, alignItems: 'center' },
+    nodeBody: { width: MAP_NODE_SIZE, height: MAP_NODE_SIZE + LIP },
+    nodeLip: {
+      position: 'absolute',
+      bottom: 0,
+      width: MAP_NODE_SIZE,
+      height: MAP_NODE_SIZE,
+      borderRadius: MAP_NODE_SIZE / 2,
+    },
+    nodeFace: {
+      width: MAP_NODE_SIZE,
+      height: MAP_NODE_SIZE,
+      borderRadius: MAP_NODE_SIZE / 2,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    nodeFaceLocked: { borderWidth: 1.5, borderColor: colors.borderStrong },
+
+    currentSlot: {
+      position: 'absolute',
+      width: MAP_CURRENT_SIZE,
+      height: MAP_CURRENT_SIZE,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    currentGlow: { position: 'absolute' },
+    currentRing: {
+      width: MAP_CURRENT_SIZE,
+      height: MAP_CURRENT_SIZE,
+      borderRadius: MAP_CURRENT_SIZE / 2,
+      borderWidth: 3,
+      borderColor: colors.primaryBright,
+      backgroundColor: colors.backgroundDeep,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    currentFace: {
+      width: MAP_CURRENT_SIZE - 18,
+      height: MAP_CURRENT_SIZE - 18,
+      borderRadius: (MAP_CURRENT_SIZE - 18) / 2,
+      borderWidth: 3,
+      borderColor: '#EDE9FE',
+      backgroundColor: PATH_VIOLET.fill,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    currentFacePressed: { transform: [{ scale: 0.94 }] },
+    pulse: {
+      position: 'absolute',
+      width: MAP_CURRENT_SIZE,
+      height: MAP_CURRENT_SIZE,
+      borderRadius: MAP_CURRENT_SIZE / 2,
+      borderWidth: 4,
+    },
+
+    label: {
+      position: 'absolute',
+      height: LABEL_HEIGHT,
+      justifyContent: 'center',
+      gap: spacing.xs,
+    },
+    // Pastilla gris translúcida detrás del título: ayuda a leerlo sin tapar el fondo del idioma.
+    labelTitle: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      alignSelf: 'flex-start',
+      gap: spacing.sm,
+      paddingHorizontal: spacing.sm,
+      paddingVertical: 3,
+      borderRadius: radii.md,
+      backgroundColor: `${colors.surfaceRaised}8C`,
+    },
+    labelTitleEnd: { justifyContent: 'flex-end', alignSelf: 'flex-end' },
+    labelText: { flexShrink: 1 },
+    labelEnd: { alignItems: 'flex-end' },
+    status: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      alignSelf: 'flex-start',
+      gap: 4,
+      marginLeft: 26 + spacing.sm,
+      marginRight: 0,
+      paddingHorizontal: spacing.sm,
+      paddingVertical: 2,
       borderRadius: radii.pill,
+    },
+    statusEnd: { alignSelf: 'flex-end', marginLeft: 0, marginRight: spacing.sm },
+    statusDone: {
       backgroundColor: colors.surfaceRaised,
       borderWidth: 1,
-      borderColor: colors.primaryBright,
+      borderColor: 'rgba(52, 211, 153, 0.45)',
     },
-    bubbleLeft: { right: PATH_NODE_SIZE + spacing.md },
-    bubbleRight: { left: PATH_NODE_SIZE + spacing.md },
+    statusLocked: {
+      backgroundColor: colors.surfaceRaised,
+      borderWidth: 1,
+      borderColor: colors.borderStrong,
+    },
+    statusPending: {
+      backgroundColor: colors.surfaceRaised,
+      borderWidth: 1,
+      borderColor: colors.brandBorder,
+    },
+    // Sombra suave del color del fondo: separa el texto de las montañas y nubes de atrás.
+    readable: {
+      textShadowColor: colors.backgroundDeep,
+      textShadowRadius: 6,
+      textShadowOffset: { width: 0, height: 1 },
+    },
+    statusText: { fontSize: 12, lineHeight: 16, fontWeight: '600' },
+    statusStars: { flexDirection: 'row', gap: 1, marginLeft: 2 },
+
     popover: {
       position: 'absolute',
       left: 0,

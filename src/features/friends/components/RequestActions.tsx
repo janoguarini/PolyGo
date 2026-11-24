@@ -2,6 +2,7 @@ import { Check, Clock, UserPlus, X } from 'lucide-react-native';
 import { StyleSheet, View } from 'react-native';
 
 import { colors, spacing, useTheme } from '@/design-system';
+import { useStrings } from '@/i18n';
 import { toUserMessage } from '@/lib/errors';
 
 import {
@@ -10,6 +11,7 @@ import {
   useSendFriendRequest,
   type FriendshipState,
 } from '../api';
+import { friendsStrings } from '../strings';
 import { IconAction, StatusTag } from './PlayerRow';
 
 export interface Feedback {
@@ -30,6 +32,7 @@ export function IncomingActions({
   onFeedback?: OnFeedback;
 }) {
   useTheme();
+  const t = useStrings(friendsStrings);
   const respond = useRespondFriendRequest();
   const run = (accept: boolean) =>
     respond.mutate(
@@ -38,9 +41,7 @@ export function IncomingActions({
         onSuccess: () =>
           onFeedback?.({
             tone: 'success',
-            message: accept
-              ? `¡Ahora vos y @${username} son amigos!`
-              : `Rechazaste la solicitud de @${username}.`,
+            message: accept ? t.nowFriends(username) : t.declinedRequest(username),
           }),
         onError: (e) => onFeedback?.({ tone: 'error', message: toUserMessage(e) }),
       },
@@ -48,14 +49,14 @@ export function IncomingActions({
   return (
     <View style={styles.actions}>
       <IconAction
-        label={`Rechazar la solicitud de ${username}`}
+        label={t.declineRequestA11y(username)}
         disabled={respond.isPending}
         onPress={() => run(false)}
       >
         <X color={colors.textMuted} size={20} />
       </IconAction>
       <IconAction
-        label={`Aceptar la solicitud de ${username}`}
+        label={t.acceptRequestA11y(username)}
         primary
         disabled={respond.isPending}
         onPress={() => run(true)}
@@ -77,15 +78,15 @@ export function CancelRequest({
   onFeedback?: OnFeedback;
 }) {
   useTheme();
+  const t = useStrings(friendsStrings);
   const remove = useRemoveFriend();
   return (
     <IconAction
-      label={`Cancelar la solicitud a ${username}`}
+      label={t.cancelRequestA11y(username)}
       disabled={remove.isPending}
       onPress={() =>
         remove.mutate(userId, {
-          onSuccess: () =>
-            onFeedback?.({ tone: 'success', message: `Cancelaste la solicitud a @${username}.` }),
+          onSuccess: () => onFeedback?.({ tone: 'success', message: t.canceledRequest(username) }),
           onError: (e) => onFeedback?.({ tone: 'error', message: toUserMessage(e) }),
         })
       }
@@ -108,24 +109,28 @@ export function SearchAction({
   onFeedback?: OnFeedback;
 }) {
   useTheme();
+  const t = useStrings(friendsStrings);
   const send = useSendFriendRequest();
   if (state === 'friends')
     return (
-      <StatusTag icon={<Check color={colors.success} size={14} />} label="Amigos" color="success" />
+      <StatusTag
+        icon={<Check color={colors.success} size={14} />}
+        label={t.friendsTag}
+        color="success"
+      />
     );
   if (state === 'outgoing')
-    return <StatusTag icon={<Clock color={colors.textMuted} size={14} />} label="Pendiente" />;
+    return <StatusTag icon={<Clock color={colors.textMuted} size={14} />} label={t.pendingTag} />;
   if (state === 'incoming')
     return <IncomingActions userId={userId} username={username} onFeedback={onFeedback} />;
   return (
     <IconAction
-      label={`Agregar a ${username}`}
+      label={t.addUserA11y(username)}
       primary
       disabled={send.isPending}
       onPress={() =>
         send.mutate(userId, {
-          onSuccess: () =>
-            onFeedback?.({ tone: 'success', message: `Le mandaste una solicitud a @${username}.` }),
+          onSuccess: () => onFeedback?.({ tone: 'success', message: t.requestSent(username) }),
           onError: (e) => onFeedback?.({ tone: 'error', message: toUserMessage(e) }),
         })
       }

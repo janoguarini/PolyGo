@@ -20,6 +20,8 @@ import { uuid } from '@/features/learning/random';
 import { useCelebrationGate } from '@/features/learning/useCelebrationGate';
 import { useEnergy } from '@/features/plus/api';
 import { NoEnergyState } from '@/features/plus/components/NoEnergyState';
+import { useStrings } from '@/i18n';
+import { lessonStrings } from '@/i18n/screens/lesson';
 
 export default function LessonScreenWithLanguage() {
   return (
@@ -30,6 +32,7 @@ export default function LessonScreenWithLanguage() {
 }
 
 function LessonScreen() {
+  const t = useStrings(lessonStrings);
   const { id } = useLocalSearchParams<{ id: string }>();
   const content = useLessonContent(id);
   const curriculum = useCurriculum();
@@ -85,22 +88,19 @@ function LessonScreen() {
   );
 
   const confirmExit = () =>
-    Alert.alert('¿Salir de la lección?', 'Vas a perder el progreso de esta lección.', [
-      { text: 'Seguir', style: 'cancel' },
-      { text: 'Salir', style: 'destructive', onPress: () => router.back() },
+    Alert.alert(t.exitTitle, t.exitMessage, [
+      { text: t.stay, style: 'cancel' },
+      { text: t.leave, style: 'destructive', onPress: () => router.back() },
     ]);
 
   if (content.isPending || canPlay === null || presentation.isPending) {
-    return <LoadingState label="Cargando lección…" />;
+    return <LoadingState label={t.loading} />;
   }
   if (!canPlay && energy.view) return <NoEnergyState view={energy.view} />;
   if (content.isError || !content.data) {
     return (
       <Screen edges={['top', 'bottom']} scroll={false}>
-        <ErrorState
-          message="No pudimos cargar la lección."
-          onRetry={() => void content.refetch()}
-        />
+        <ErrorState message={t.loadError} onRetry={() => void content.refetch()} />
       </Screen>
     );
   }
@@ -138,7 +138,7 @@ function LessonScreen() {
       achievements={submit.data?.achievements_unlocked ?? []}
       onRetrySave={() => save(finished.attempts, finished.graded)}
       extra={<WritingPracticeCard lessonId={id} />}
-      primaryLabel={hasNext ? 'Siguiente lección' : 'Volver al camino'}
+      primaryLabel={hasNext ? t.nextLesson : t.backToPath}
       onPrimary={celebration.guard(() =>
         hasNext && next
           ? router.replace({ pathname: '/lesson/[id]', params: { id: next.id } })

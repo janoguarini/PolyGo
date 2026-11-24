@@ -1,30 +1,71 @@
-import { useId } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { useEffect, useId, useState } from 'react';
+import { AccessibilityInfo, Animated, Easing, Image, StyleSheet, View } from 'react-native';
 import Svg, { Circle, Defs, Ellipse, G, LinearGradient, Path, Stop } from 'react-native-svg';
+
+import { getRank } from '@shared/ranking';
 
 import { Avatar } from '@/design-system';
 
+import { FRAME_ART, RANK_FRAME_ART, type FrameArt as FrameImage } from './assets';
 import { frameStyle, type FrameStyle } from './visuals';
+
+/** Marcos que brillan (exclusivos): pulso suave detrás del arte, sólo con `animated`. */
+const GLOW: Record<string, string> = {
+  frame_plus: '#8B5CF6',
+  frame_referral_legend: '#FACC15',
+};
+
+/** El arte de un marco: imagen (catálogo v2 o el de rango según el ELO) o null si es dibujado. */
+export function frameArt(
+  frameId: string | null | undefined,
+  rating?: number | null,
+): FrameImage | null {
+  if (!frameId) return null;
+  if (frameId === 'frame_rank') {
+    return rating == null ? null : RANK_FRAME_ART[getRank(rating).tier.id];
+  }
+  return FRAME_ART[frameId] ?? null;
+}
 
 /**
  * Avatar con el marco que el jugador tiene puesto. Sin marco se ve el avatar solo, o con un aro
- * liso de `fallbackRing` si se pasa (el del perfil propio).
+ * liso de `fallbackRing` si se pasa (el del perfil propio). El marco de rango necesita `rating` (el
+ * ELO real que trae el perfil, la clasificación o la partida): sin él se ve el aro de respaldo.
  */
 export function FramedAvatar({
   avatarId,
   photoUrl,
   size,
   frameId,
+  rating,
   fallbackRing,
   instant,
+  animated,
 }: {
   avatarId: string | null | undefined;
   photoUrl?: string | null;
   size: number;
   frameId?: string | null;
+  rating?: number | null;
   fallbackRing?: string;
   instant?: boolean;
+  /** Brillo animado de los exclusivos (sólo en el perfil: no en listas). */
+  animated?: boolean;
 }) {
+  const image = frameArt(frameId, rating);
+  if (image) {
+    return (
+      <ImageFramedAvatar
+        art={image}
+        avatarId={avatarId}
+        photoUrl={photoUrl}
+        size={size}
+        instant={instant}
+        glow={animated && frameId ? GLOW[frameId] : undefined}
+      />
+    );
+  }
+
   const frame =
     frameStyle(frameId) ??
     (fallbackRing ? { colors: [fallbackRing, fallbackRing] as const } : null);
@@ -39,6 +80,107 @@ export function FramedAvatar({
       </View>
       <FrameArt frame={frame} geometry={g} />
     </View>
+  );
+}
+
+/**
+ * Avatar dentro de un marco en imagen: el avatar ocupa el hueco medido del arte y el marco va
+ * encima, sin deformarse (se escala con su proporción).
+ */
+function ImageFramedAvatar({
+  art,
+  avatarId,
+  photoUrl,
+  size,
+  instant,
+  glow,
+}: {
+  art: FrameImage;
+  avatarId: string | null | undefined;
+  photoUrl?: string | null;
+  size: number;
+  instant?: boolean;
+  glow?: string;
+}) {
+  // Ocupa el mismo ancho que un marco dibujado con adornos: las filas (clasificación, amigos,
+  // partida) no cambian de tamaño. El avatar llena el 97 % del hueco medido, así el borde interior
+  // del aro lo pisa apenas y no queda luz entre los dos.
+  const width = frameGeometry(size, true).total;
+  const height = width * art.aspect;
+  const inner = Math.round(2 * art.r * 0.97 * width);
+  const left = art.cx * width - inner / 2;
+  const top = art.cy * height - inner / 2;
+  return (
+    <View style={{ width, height }}>
+      {glow ? (
+        <Glow color={glow} size={inner * 1.25} x={art.cx * width} y={art.cy * height} />
+      ) : null}
+      <View style={{ position: 'absolute', left, top }}>
+        <Avatar avatarId={avatarId} photoUrl={photoUrl} size={inner} instant={instant} />
+      </View>
+      <Image
+        source={art.source}
+        style={[StyleSheet.absoluteFill, { width, height }]}
+        resizeMode="contain"
+        fadeDuration={0}
+        pointerEvents="none"
+      />
+    </View>
+  );
+}
+
+/** Halo que late despacio. Respeta "Reducir movimiento": ahí queda fijo. */
+function Glow({ color, size, x, y }: { color: string; size: number; x: number; y: number }) {
+  const [pulse] = useState(() => new Animated.Value(0.55));
+  const [reduceMotion, setReduceMotion] = useState(false);
+  useEffect(() => {
+    let alive = true;
+    void AccessibilityInfo.isReduceMotionEnabled().then((v) => {
+      if (alive) setReduceMotion(v);
+    });
+    return () => {
+      alive = false;
+    };
+  }, []);
+  useEffect(() => {
+    if (reduceMotion) return;
+    const loop = Animated.loop(
+      Animated.sequence([
+        Animated.timing(pulse, {
+          toValue: 1,
+          duration: 1600,
+          easing: Easing.inOut(Easing.sin),
+          useNativeDriver: true,
+        }),
+        Animated.timing(pulse, {
+          toValue: 0.55,
+          duration: 1600,
+          easing: Easing.inOut(Easing.sin),
+          useNativeDriver: true,
+        }),
+      ]),
+    );
+    loop.start();
+    return () => loop.stop();
+  }, [pulse, reduceMotion]);
+  return (
+    <Animated.View
+      pointerEvents="none"
+      style={{
+        position: 'absolute',
+        left: x - size / 2,
+        top: y - size / 2,
+        width: size,
+        height: size,
+        borderRadius: size / 2,
+        backgroundColor: color,
+        opacity: Animated.multiply(pulse, 0.35),
+        shadowColor: color,
+        shadowOpacity: 0.9,
+        shadowRadius: size * 0.2,
+        shadowOffset: { width: 0, height: 0 },
+      }}
+    />
   );
 }
 

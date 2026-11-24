@@ -1,84 +1,65 @@
+import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import {
-  BookOpen,
-  ChartNoAxesColumn,
+  Brain,
+  CalendarDays,
   ChevronRight,
-  CircleAlert,
   CircleCheck,
   Layers,
-  Library,
   Play,
   Smartphone,
-  Sparkles,
   Target,
   Zap,
 } from 'lucide-react-native';
 import { useRef, useState, type ReactNode } from 'react';
 import { Platform, StyleSheet, View, type ScrollViewInstance } from 'react-native';
 
-import { wordStatus, type WordStatus } from '@shared/srs';
-
 import {
+  BrandCard,
   Button,
   Card,
   ErrorState,
   LoadingState,
+  Mascot,
   Screen,
   Text,
   colors,
-  gradients,
   radii,
   spacing,
   themedStyles,
 } from '@/design-system';
-import { totalCounts } from '@/features/learning/components/MasteryCard';
 import { SpeakButton } from '@/features/learning/components/SpeakButton';
-import {
-  useCurriculum,
-  useLearningMastery,
-  useMyWords,
-  useWordOfTheDay,
-} from '@/features/learning/hooks';
-import { useTabPressScroll } from '@/lib/useTabPressScroll';
+import { useMyWords, useWordOfTheDay } from '@/features/learning/hooks';
 import { usePlus } from '@/features/plus/api';
-import { PlusBadge } from '@/features/plus/components/PlusBadge';
-import { pickSmartReview } from '@/features/plus/smartReview';
-import { topicSummaries } from '@/features/plus/topicReview';
+import { PlusCrownPill } from '@/features/plus/components/PlusCrownPill';
 import { WidgetContentPicker } from '@/features/widgets/WidgetContentPicker';
 import { widgetsSupported } from '@/features/widgets/sync';
+import { useStrings } from '@/i18n';
+import { practiceStrings } from '@/i18n/screens/practice';
+import { useTabPressScroll } from '@/lib/useTabPressScroll';
 
-/** Palabras por sesión de práctica libre. */
-const PRACTICE_SIZE = 10;
-
+/**
+ * Repaso: palabra del día, los repasos que tocan hoy y los cuatro entrenamientos. Repaso
+ * inteligente abre su presentación (/smart-review), que muestra qué va a trabajar la sesión.
+ */
 export default function PracticeScreen() {
   const styles = useStyles();
+  const t = useStrings(practiceStrings);
   const words = useMyWords();
-  const curriculum = useCurriculum();
   const wordOfDay = useWordOfTheDay();
   const plus = usePlus();
-  // «Dominadas» sólo del Mastery Engine cuando está habilitado para mostrarse (AL12, P2): la etapa
-  // final del SRS v1 no se presenta con ese nombre.
-  const mastery = useLearningMastery();
   const scrollRef = useRef<ScrollViewInstance>(null);
   useTabPressScroll(scrollRef);
   // Referencia temporal fija por montaje de la pantalla (se actualiza al refrescar).
   const [now, setNow] = useState(() => Date.now());
 
-  if (words.isPending || curriculum.isPending) return <LoadingState />;
+  if (words.isPending) return <LoadingState />;
   if (words.isError || !words.data) return <ErrorState onRetry={() => void words.refetch()} />;
 
   const entries = words.data;
   const due = entries.filter((e) => e.nextReviewAt && new Date(e.nextReviewAt).getTime() <= now);
   const mistakes = entries.filter((e) => e.incorrectCount > 0);
-  const counts = entries.reduce(
-    (acc, e) => {
-      acc[wordStatus(e.stage, e.seenCount)] += 1;
-      return acc;
-    },
-    { new: 0, learning: 0, mastered: 0 } as Record<WordStatus, number>,
-  );
-  const smartCount = pickSmartReview(entries, now).length;
-  const topicCount = topicSummaries(curriculum.data?.units ?? [], entries, now).length;
+  const empty = entries.length === 0;
 
   return (
     <Screen
@@ -86,156 +67,152 @@ export default function PracticeScreen() {
       onRefresh={() => {
         setNow(Date.now());
         void words.refetch();
-        void curriculum.refetch();
       }}
       refreshing={words.isRefetching}
     >
       <View style={styles.header}>
-        <Text variant="title">Repaso</Text>
-        <Text color="textMuted">Sesiones cortas para fijar lo que ya aprendiste.</Text>
+        <View style={styles.headerText}>
+          <View style={styles.titleRow}>
+            <Brain color={colors.primarySoft} size={34} />
+            <Text variant="title" accessibilityRole="header">
+              {t.title}
+            </Text>
+          </View>
+          <Text color="text">{t.subtitle}</Text>
+        </View>
+        <View style={styles.mascot} pointerEvents="none">
+          <Mascot pose="thinking" height={128} />
+        </View>
       </View>
 
       {wordOfDay.data ? (
-        <Card gradient={gradients.hero} style={styles.widget}>
-          <View style={styles.speak}>
+        <BrandCard contentStyle={styles.wordCard}>
+          <View style={styles.wordTop}>
+            <View style={styles.overlinePill}>
+              <Text variant="overline" color="textStrong">
+                {t.wordOfDay}
+              </Text>
+            </View>
             <SpeakButton text={wordOfDay.data.text} />
           </View>
-          <Text variant="overline" color="primarySoft" align="center">
-            PALABRA DEL DÍA
-          </Text>
-          <Text variant="title" align="center" style={styles.word}>
-            {wordOfDay.data.emoji ? `${wordOfDay.data.emoji} ` : ''}
-            {wordOfDay.data.text}
-          </Text>
-          <Text variant="caption" align="center">
-            {wordOfDay.data.ipa} · {wordOfDay.data.translation_es}
-          </Text>
-          {wordOfDay.data.example_en ? (
-            <HighlightedExample sentence={wordOfDay.data.example_en} word={wordOfDay.data.text} />
-          ) : null}
-        </Card>
+          <View style={styles.wordBody}>
+            <View style={styles.flex}>
+              <Text variant="title" color="textStrong" style={styles.word} numberOfLines={2}>
+                {wordOfDay.data.emoji ? `${wordOfDay.data.emoji} ` : ''}
+                {wordOfDay.data.text}
+              </Text>
+              <Text color="text" style={styles.ipa}>
+                {wordOfDay.data.ipa} · {wordOfDay.data.translation_es}
+              </Text>
+            </View>
+            {wordOfDay.data.example_en ? (
+              <>
+                <View style={styles.divider} />
+                <View style={styles.flex}>
+                  <HighlightedExample
+                    sentence={wordOfDay.data.example_en}
+                    word={wordOfDay.data.text}
+                  />
+                </View>
+              </>
+            ) : null}
+          </View>
+        </BrandCard>
       ) : null}
 
-      <Card gradient={gradients.ranked} style={styles.reviewCard}>
-        <View style={styles.row}>
-          <Layers color={colors.primarySoft} size={20} />
-          <Text variant="bodyStrong" color="textStrong" style={styles.flex}>
-            {due.length > 0
-              ? 'Tenés repasos'
-              : entries.length === 0
-                ? 'Nada para repasar'
-                : 'Estás al día'}
-          </Text>
-          {entries.length > 0 ? (
-            <View style={styles.statusPill}>
-              {due.length === 0 ? <CircleCheck color={colors.success} size={16} /> : null}
-              <Text variant="caption" color="textStrong">
-                {due.length} {due.length === 1 ? 'pendiente' : 'pendientes'}
+      <BrandCard glow={due.length > 0} contentStyle={styles.todayCard}>
+        <View style={styles.todayTop}>
+          <View style={styles.chip}>
+            <CalendarDays color={colors.textStrong} size={16} />
+            <Text variant="bodyStrong" color="textStrong">
+              {t.forToday}
+            </Text>
+          </View>
+          {!empty ? (
+            <View style={[styles.chip, styles.chipAccent]}>
+              {due.length === 0 ? <CircleCheck color={colors.success} size={14} /> : null}
+              <Text variant="caption" color="primarySoft" style={styles.bold}>
+                {t.pending(due.length)}
               </Text>
             </View>
           ) : null}
         </View>
-        <Text variant="caption">
-          {entries.length === 0
-            ? 'Completá una lección y sus palabras aparecen acá.'
-            : 'Repasá justo antes de olvidar cada palabra.'}
-        </Text>
-        {entries.length === 0 ? (
-          <Button label="Ir a mi primera lección" onPress={() => router.navigate('/')} />
+        <View style={styles.todayBody}>
+          <View style={styles.todayText}>
+            <Text variant="heading" color="textStrong">
+              {due.length > 0 ? t.haveReviews : empty ? t.nothingToReview : t.upToDate}
+            </Text>
+            <Text color="text">
+              {empty ? t.emptyCaption : due.length > 0 ? t.reviewCaption : t.upToDateCaption}
+            </Text>
+          </View>
+          <TargetArt />
+        </View>
+        {empty ? (
+          <Button label={t.firstLesson} onPress={() => router.navigate('/')} />
         ) : (
           <Button
-            label="Repasar ahora"
-            icon={<Play color={colors.onPrimary} fill={colors.onPrimary} size={16} />}
+            label={t.reviewNow}
+            size="lg"
+            icon={<Play color={colors.onPrimary} fill={colors.onPrimary} size={18} />}
             disabled={due.length === 0}
             onPress={() => router.push('/review')}
           />
         )}
-      </Card>
+      </BrandCard>
 
-      <View style={styles.grid}>
-        <MiniStat
-          label="Estudiadas"
-          value={entries.length}
-          icon={<BookOpen color={colors.primarySoft} size={14} />}
-        />
-        <MiniStat
-          label="Aprendiendo"
-          value={counts.learning}
-          icon={<ChartNoAxesColumn color={colors.primarySoft} size={14} />}
-        />
-        {mastery.data?.available ? (
-          <MiniStat
-            label="Dominadas"
-            value={totalCounts(mastery.data).mastered}
-            icon={<Target color={colors.primarySoft} size={14} />}
-          />
-        ) : (
-          <MiniStat
-            label="Para repasar"
-            value={due.length}
-            icon={<Target color={colors.primarySoft} size={14} />}
-          />
-        )}
+      <View style={styles.sectionTitle}>
+        <Zap color={colors.primarySoft} size={22} />
+        <Text variant="heading" color="textStrong">
+          {t.training}
+        </Text>
       </View>
-
-      <Text variant="heading">Hoy</Text>
-      <View style={styles.list}>
-        <PracticeOption
-          icon={<Zap color={colors.primarySoft} size={18} />}
-          title="Práctica libre"
-          count={Math.min(entries.length, PRACTICE_SIZE)}
-          disabled={entries.length === 0}
+      <View style={styles.grid}>
+        <TrainingTile
+          icon={<Brain color={colors.primarySoft} size={30} />}
+          title={t.smartReview}
+          subtitle={t.smartReviewSub}
+          highlight
+          badge={<PlusCrownPill label={t.plus} a11y={t.plusA11y} />}
+          disabled={empty}
+          onPress={() => router.push('/smart-review')}
+        />
+        <TrainingTile
+          icon={<Zap color={colors.primarySoft} size={30} />}
+          title={t.freePractice}
+          subtitle={t.freePracticeSub}
+          disabled={empty}
           onPress={() => router.push({ pathname: '/review', params: { mode: 'practice' } })}
         />
-        <PracticeOption
-          icon={<CircleAlert color={colors.primarySoft} size={18} />}
-          title="Puntos débiles"
-          count={mistakes.length}
+        <TrainingTile
+          icon={<Target color={colors.primarySoft} size={30} />}
+          title={t.weakSpots}
+          subtitle={t.weakSpotsSub}
           disabled={mistakes.length === 0}
           onPress={() => router.push({ pathname: '/review', params: { mode: 'mistakes' } })}
         />
-        <PracticeOption
-          icon={<Sparkles color={colors.primarySoft} size={18} />}
-          title="Repaso inteligente"
-          count={plus === true ? smartCount : undefined}
-          disabled={plus === true && smartCount === 0}
-          onPress={() =>
-            plus === true
-              ? router.push({ pathname: '/review', params: { mode: 'smart' } })
-              : router.push('/plus')
-          }
-          badge={plus === true ? undefined : <PlusBadge />}
-        />
-        <PracticeOption
-          icon={<Library color={colors.primarySoft} size={18} />}
-          title="Repaso por tema"
-          count={plus === true ? topicCount : undefined}
-          countLabel={topicCount === 1 ? 'tema' : 'temas'}
-          disabled={plus === true && topicCount === 0}
+        <TrainingTile
+          icon={<Layers color={colors.primarySoft} size={30} />}
+          title={t.topicReview}
+          subtitle={t.topicReviewSub}
+          badge={plus === true ? undefined : <PlusCrownPill label={t.plus} a11y={t.plusA11y} />}
+          disabled={empty}
           onPress={() => router.push(plus === true ? '/review-topics' : '/plus')}
-          badge={plus === true ? undefined : <PlusBadge />}
         />
       </View>
 
-      <Card style={styles.gap}>
+      <Card style={styles.widgets}>
         <View style={styles.row}>
           <Smartphone color={colors.info} size={22} />
-          <Text variant="bodyStrong">Widgets de pantalla de inicio</Text>
+          <Text variant="bodyStrong">{t.widgetsTitle}</Text>
         </View>
-        <Text color="textMuted">
-          «Palabra» muestra la palabra del día y tus palabras para repasar. «Pregunta rápida» te
-          deja responder sin abrir la app (es práctica: no cambia tus repasos ni tu ELO).
-        </Text>
+        <Text color="textMuted">{t.widgetsBody}</Text>
         {widgetsSupported ? (
-          <Text color="textMuted">
-            {Platform.OS === 'ios'
-              ? 'Mantené apretada la pantalla de inicio → Editar → Agregar widget → Polygo. La palabra cambia cada hora; iOS decide el momento exacto.'
-              : 'Mantené apretada la pantalla de inicio → Widgets → Polygo. La palabra se renueva cada vez que abrís la app.'}
-          </Text>
+          <Text color="textMuted">{Platform.OS === 'ios' ? t.widgetsIos : t.widgetsAndroid}</Text>
         ) : (
           <View style={styles.pill}>
             <Text variant="overline" color="streak">
-              NO DISPONIBLE EN EXPO GO · HACE FALTA UNA BUILD DE LA APP
+              {t.widgetsUnavailable}
             </Text>
           </View>
         )}
@@ -249,137 +226,144 @@ export default function PracticeScreen() {
 function HighlightedExample({ sentence, word }: { sentence: string; word: string }) {
   const styles = useStyles();
   const at = sentence.toLowerCase().indexOf(word.toLowerCase());
-  if (at < 0) return <Text align="center">“{sentence}”</Text>;
-  return (
-    <Text align="center">
-      “{sentence.slice(0, at)}
-      <Text variant="bodyStrong" color="textStrong" style={styles.highlight}>
-        {` ${sentence.slice(at, at + word.length)} `}
+  if (at < 0) {
+    return (
+      <Text variant="bodyStrong" color="textStrong" style={styles.example}>
+        “{sentence}”
       </Text>
-      {sentence.slice(at + word.length)}”
+    );
+  }
+  // Resalta la palabra completa donde aparece («running» para «run»).
+  const end = at + (/^[\p{L}'’-]+/u.exec(sentence.slice(at))?.[0].length ?? word.length);
+  return (
+    <Text variant="bodyStrong" color="textStrong" style={styles.example}>
+      “{sentence.slice(0, at)}
+      <Text variant="bodyStrong" color="primarySoft" style={styles.highlight}>
+        {sentence.slice(at, end)}
+      </Text>
+      {sentence.slice(end)}”
     </Text>
   );
 }
 
-/** Estadística compacta: tres entran en una fila sin cortar la etiqueta. */
-function MiniStat({ label, value, icon }: { label: string; value: number; icon: ReactNode }) {
+/** Diana con degradé violeta (el ícono del diseño, sin imagen). */
+function TargetArt() {
   const styles = useStyles();
   return (
-    <View style={styles.stat} accessible accessibilityLabel={`${label}: ${value}`}>
-      <View style={styles.statLabel}>
-        {icon}
-        <Text variant="caption" numberOfLines={1} adjustsFontSizeToFit style={styles.flex}>
-          {label}
-        </Text>
-      </View>
-      <Text variant="heading" color="textStrong">
-        {value}
-      </Text>
-    </View>
+    <LinearGradient
+      colors={[colors.primaryBright, colors.primaryPressed]}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      style={styles.target}
+    >
+      <Target color={colors.onPrimary} size={52} strokeWidth={2.2} />
+    </LinearGradient>
   );
 }
 
-function PracticeOption(props: {
+function TrainingTile(props: {
   icon: ReactNode;
   title: string;
-  /** Cantidad disponible; sin valor (o en 0) no se muestra la píldora. */
-  count?: number;
-  countLabel?: string;
+  subtitle: string;
+  badge?: ReactNode;
+  highlight?: boolean;
   disabled?: boolean;
   onPress: () => void;
-  badge?: ReactNode;
 }) {
   const styles = useStyles();
-  const count = props.count ?? 0;
-  const countText = `${count} ${props.countLabel ?? (count === 1 ? 'palabra' : 'palabras')}`;
   return (
-    <Card
+    <BrandCard
+      highlight={props.highlight && !props.disabled}
+      glow={props.highlight && !props.disabled}
       onPress={props.disabled ? undefined : props.onPress}
-      accessibilityLabel={count > 0 ? `${props.title}. ${countText}` : props.title}
-      style={[styles.option, props.disabled && styles.disabled]}
+      accessibilityLabel={`${props.title}. ${props.subtitle}`}
+      style={[styles.tile, props.disabled && styles.disabled]}
+      contentStyle={styles.tileContent}
     >
-      <View style={styles.iconTile}>{props.icon}</View>
-      <Text variant="bodyStrong" color="textStrong" style={styles.flex}>
-        {props.title}
+      <View style={styles.tileTop}>
+        {props.icon}
+        {props.badge}
+      </View>
+      <View style={styles.tileTitleRow}>
+        <Text variant="bodyStrong" color="textStrong" style={[styles.flex, styles.tileTitle]}>
+          {props.title}
+        </Text>
+        {props.disabled ? null : <ChevronRight color={colors.textMuted} size={20} />}
+      </View>
+      <Text variant="caption" color="text" numberOfLines={2}>
+        {props.subtitle}
       </Text>
-      {props.badge ??
-        (count > 0 ? (
-          <View style={styles.countPill}>
-            <Text variant="caption" color="primarySoft" style={styles.countText}>
-              {countText}
-            </Text>
-          </View>
-        ) : null)}
-      {props.disabled ? null : <ChevronRight color={colors.textMuted} size={18} />}
-    </Card>
+    </BrandCard>
   );
 }
 
 const useStyles = themedStyles(() =>
   StyleSheet.create({
-    header: { gap: spacing.xxs },
-    gap: { gap: spacing.md },
+    flex: { flex: 1 },
+    bold: { fontWeight: '700' },
     row: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-    list: { gap: spacing.sm },
-    option: {
+    header: { flexDirection: 'row', alignItems: 'center', minHeight: 128 },
+    headerText: { flex: 1, gap: spacing.xs, zIndex: 1 },
+    titleRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+    mascot: { marginRight: -spacing.md, marginLeft: -spacing.lg },
+    wordCard: { gap: spacing.sm, padding: spacing.lg },
+    wordTop: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+    overlinePill: {
+      paddingHorizontal: spacing.md,
+      paddingVertical: spacing.xxs,
+      borderRadius: radii.pill,
+      backgroundColor: 'rgba(139,92,246,0.28)',
+    },
+    wordBody: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+    word: { fontSize: 30, lineHeight: 36 },
+    ipa: { marginTop: spacing.xxs },
+    divider: { width: 1, alignSelf: 'stretch', backgroundColor: colors.brandBorder },
+    example: { lineHeight: 24 },
+    highlight: { backgroundColor: 'rgba(139,92,246,0.35)' },
+    todayCard: { gap: spacing.md, padding: spacing.lg },
+    todayTop: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+    chip: {
       flexDirection: 'row',
       alignItems: 'center',
-      gap: spacing.sm,
-      paddingVertical: spacing.sm,
+      gap: spacing.xs,
       paddingHorizontal: spacing.md,
-    },
-    disabled: { opacity: 0.55 },
-    flex: { flex: 1 },
-    grid: { flexDirection: 'row', gap: spacing.sm },
-    stat: {
-      flex: 1,
-      gap: spacing.xxs,
-      paddingVertical: spacing.sm,
-      paddingHorizontal: spacing.md,
-      borderRadius: radii.lg,
-      backgroundColor: colors.surface,
+      paddingVertical: spacing.xs,
+      borderRadius: radii.pill,
+      backgroundColor: colors.inset,
       borderWidth: 1,
-      borderColor: colors.border,
+      borderColor: colors.brandBorder,
     },
-    statLabel: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
-    widget: {
-      gap: spacing.xxs,
-      paddingVertical: spacing.md,
-      paddingHorizontal: spacing.huge + spacing.sm,
-      alignItems: 'center',
+    chipAccent: {
+      paddingVertical: spacing.xxs,
+      backgroundColor: 'rgba(139,92,246,0.18)',
+      borderColor: 'rgba(139,92,246,0.45)',
     },
-    word: { fontSize: 28, lineHeight: 34 },
-    speak: { position: 'absolute', top: spacing.sm, right: spacing.sm },
-    reviewCard: { gap: spacing.sm, padding: spacing.md },
-    iconTile: {
-      width: 34,
-      height: 34,
-      borderRadius: radii.sm,
+    todayBody: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+    todayText: { flex: 1, gap: spacing.xs },
+    target: {
+      width: 88,
+      height: 88,
+      borderRadius: 44,
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: colors.surfaceHighlight,
+      borderWidth: 2,
+      borderColor: 'rgba(255,255,255,0.18)',
     },
-    countPill: {
-      paddingHorizontal: spacing.sm,
-      paddingVertical: spacing.xxs,
-      borderRadius: radii.pill,
-      backgroundColor: 'rgba(139,92,246,0.16)',
-      borderWidth: 1,
-      borderColor: 'rgba(139,92,246,0.35)',
-    },
-    countText: { fontWeight: '700' },
-    statusPill: {
+    sectionTitle: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+    grid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
+    // Dos por fila: casi la mitad del ancho; flexGrow reparte el resto entre columnas.
+    tile: { width: '45%', flexGrow: 1 },
+    tileContent: { gap: spacing.xs, padding: spacing.md, minHeight: 132 },
+    tileTop: {
       flexDirection: 'row',
-      alignItems: 'center',
-      gap: spacing.xxs,
-      paddingHorizontal: spacing.sm,
-      paddingVertical: spacing.xxs,
-      borderRadius: radii.pill,
-      borderWidth: 1,
-      borderColor: colors.borderStrong,
-      backgroundColor: 'rgba(7,6,15,0.35)',
+      alignItems: 'flex-start',
+      justifyContent: 'space-between',
+      marginBottom: spacing.xs,
     },
-    highlight: { backgroundColor: 'rgba(139,92,246,0.35)' },
+    tileTitleRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.xxs },
+    tileTitle: { fontSize: 17, lineHeight: 21 },
+    disabled: { opacity: 0.55 },
+    widgets: { gap: spacing.md },
     pill: {
       alignSelf: 'flex-start',
       paddingHorizontal: spacing.md,

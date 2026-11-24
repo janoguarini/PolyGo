@@ -20,18 +20,14 @@ import {
 import { deleteAccount } from '@/features/auth/api';
 import { FormMessage } from '@/features/auth/FormMessage';
 import { useMyProfile } from '@/features/profile/hooks';
+import { useStrings } from '@/i18n';
+import { deleteAccountStrings } from '@/i18n/screens/deleteAccount';
 import { toUserMessage } from '@/lib/errors';
-
-const WHAT_IS_DELETED = [
-  'Tu cuenta, email y contraseña.',
-  'Tu perfil, avatar y ajustes de privacidad.',
-  'Tu progreso: lecciones, palabras, repasos, racha y logros.',
-  'Tu ELO, tu rango y tu historial de rating.',
-];
 
 /** Borrado de cuenta dentro de la app (exigido por App Store y Google Play). Irreversible. */
 export default function DeleteAccountScreen() {
   useTheme();
+  const t = useStrings(deleteAccountStrings);
   const me = useMyProfile();
   const [typed, setTyped] = useState('');
   // Al terminar, AuthProvider recibe SIGNED_OUT y el layout raíz lleva a la bienvenida.
@@ -45,32 +41,30 @@ export default function DeleteAccountScreen() {
 
   return (
     <Screen edges={['top', 'bottom']}>
-      <ScreenHeader title="Eliminar cuenta" onBack={() => router.back()} />
+      <ScreenHeader title={t.title} onBack={() => router.back()} />
 
       <Card style={styles.gap}>
-        <Text variant="heading">Esto no se puede deshacer</Text>
-        <Text color="textMuted">Se borran de forma permanente:</Text>
-        {WHAT_IS_DELETED.map((line) => (
+        <Text variant="heading">{t.cannotUndo}</Text>
+        <Text color="textMuted">{t.deletedPermanently}</Text>
+        {t.whatIsDeleted.map((line) => (
           <Text key={line}>• {line}</Text>
         ))}
-        <Text color="textMuted">
-          Las partidas que jugaste quedan en el historial de tus rivales sin tu nombre ni avatar.
-        </Text>
+        <Text color="textMuted">{t.matchesNote}</Text>
       </Card>
 
       <View style={styles.gap}>
         <TextField
-          label={`Para confirmar, escribí tu usuario: ${username}`}
+          label={t.confirmLabel(username)}
           value={typed}
           onChangeText={setTyped}
           autoCapitalize="none"
           autoCorrect={false}
           editable={!remove.isPending}
-          accessibilityHint="El botón de eliminar se habilita cuando coincide"
+          accessibilityHint={t.confirmHint}
         />
         {remove.isError ? <FormMessage tone="error" message={toUserMessage(remove.error)} /> : null}
         <Button
-          label="Eliminar mi cuenta para siempre"
+          label={t.deleteForever}
           variant="danger"
           size="lg"
           disabled={!matches}
@@ -78,7 +72,7 @@ export default function DeleteAccountScreen() {
           icon={<Trash2 color={colors.danger} size={18} />}
           onPress={() => remove.mutate()}
         />
-        <Button label="Cancelar" variant="ghost" onPress={() => router.back()} />
+        <Button label={t.cancel} variant="ghost" onPress={() => router.back()} />
       </View>
     </Screen>
   );

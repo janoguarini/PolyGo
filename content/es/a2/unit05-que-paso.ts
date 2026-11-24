@@ -6,8 +6,9 @@ import { dialogue, ex, question, reading, w } from '../helpers';
  * escena (llovía, estaba caminando: estar + gerundio) y el indefinido cuenta lo que pasó (de repente,
  * alguien me robó la billetera). Conectores: mientras, de repente, entonces, por suerte,
  * lamentablemente. Acabar de + infinitivo (acabo de llegar) y tener miedo (tuve / tenía miedo).
- * Vocabulario rioplatense: la billetera (en otros países, cartera; acá la cartera es la de mujer).
- * Pronunciación: el gerundio (-ando, -iendo, con el acento en an / ien) y la cc de accidente.
+ * Variante: español neutro de Latinoamérica (tú y ustedes): la billetera, el autobús, el carro.
+ * Pronunciación: el gerundio (-ando, -iendo, con el acento en an / ien), la c de accidente (k + s,
+ * seseo) y la ll de llovía como la y de yes.
  *
  * ESTADO EDITORIAL: borrador, sin revisión de hablantes nativos. Se carga sin publicar.
  */
@@ -20,8 +21,8 @@ const NOTICIA = reading(
     'Hola, Mateo. ¿Viste qué pasó anoche en la calle?',
     'Llovía mucho y había poca luz.',
     'Mientras yo estaba mirando la tele, escuché un ruido muy fuerte.',
-    'Fue un accidente: un auto chocó con un árbol.',
-    'Por suerte, el señor del auto estaba bien.',
+    'Fue un accidente: un carro chocó con un árbol.',
+    'Por suerte, el señor del carro estaba bien.',
     'La policía llegó a los diez minutos.',
   ],
   { from: 'Ana', to: 'Mateo' },
@@ -32,7 +33,7 @@ const BILLETERA = dialogue(
   'Diego meets his friend Sofía, who looks upset.',
   [
     ['Diego', '¡Sofía! ¿Qué pasó? Estás muy seria.'],
-    ['Sofía', 'Ayer, mientras volvía a casa en el colectivo, alguien me robó la billetera.'],
+    ['Sofía', 'Ayer, mientras volvía a casa en el autobús, alguien me robó la billetera.'],
     ['Diego', '¡Qué mal! ¿Y qué hiciste?'],
     ['Sofía', 'Tuve mucho miedo. Entonces llamé a la policía.'],
     ['Diego', '¿Y la encontraron?'],
@@ -110,7 +111,7 @@ export const ES_A2_U05: EsUnitDef = {
     review: {
       status: 'draft',
       notes:
-        'A2 nuevo (U5). Sin revisión nativa. Revisar: «billetera» (en la Argentina la cartera es el bolso de mujer: se explica); «me robaron la billetera» (impersonal) junto a «alguien me robó»; «perder el tren / el colectivo» por «to miss» (se agregó «to miss» como traducción aceptada de perder); «la policía llegó a los diez minutos»; «¡Qué mal!» como reacción. El pretérito perfecto (he llegado) no se usa: acabo de + infinitivo cubre el «I’ve just».',
+        'A2 nuevo (U5). Convertido al español neutro de Latinoamérica (tú y ustedes); sin revisión nativa. Revisar: «billetera» (en algunos países también «cartera», que en otros es el bolso de mujer: se explica); «el autobús» y «el carro» en lugar de «colectivo» y «auto» (se aceptan en las respuestas); «me robaron la billetera» (impersonal) junto a «alguien me robó»; «perder el tren / el autobús» por «to miss» (se agregó «to miss» como traducción aceptada de perder); «la policía llegó a los diez minutos»; «¡Qué mal!» como reacción. El pretérito perfecto (he llegado) no se usa: acabo de + infinitivo cubre el «I’ve just».',
     },
     words: [
       w(
@@ -150,7 +151,7 @@ export const ES_A2_U05: EsUnitDef = {
         'es-entonces',
         'entonces',
         'then',
-        'Perdí el colectivo, entonces fui a pie.',
+        'Perdí el autobús, entonces fui a pie.',
         'I missed the bus, so I walked.',
         ['connectors'],
         { acceptedTranslations: ['so'] },
@@ -203,9 +204,9 @@ export const ES_A2_U05: EsUnitDef = {
         'es-la-billetera',
         'la billetera',
         'the wallet',
-        'Perdí la billetera en el colectivo.',
+        'Perdí la billetera en el autobús.',
         'I lost my wallet on the bus.',
-        ['objects', 'argentina'],
+        ['objects'],
         { emoji: '👛' },
       ),
       w(
@@ -270,7 +271,7 @@ export const ES_A2_U05: EsUnitDef = {
         objective: 'Ask what happened and say that something was stolen.',
         intro: {
           explanation:
-            '¿Qué pasó? means what happened? In the preterite, -ar verbs end in -é for yo (llamé, llegué) and in -ó for él / ella (pasó, robó, llegó). Alguien is someone. When you don’t know who did it, you can also say me robaron (they stole from me). In Argentina your wallet is la billetera; la cartera is a woman’s handbag. Notice: me robó la billetera, not mi billetera.',
+            '¿Qué pasó? means what happened? In the preterite, -ar verbs end in -é for yo (llamé, llegué) and in -ó for él / ella (pasó, robó, llegó). Alguien is someone. When you don’t know who did it, you can also say me robaron (they stole from me). Your wallet is la billetera (in some countries also la cartera, which in others means a handbag). Notice: me robó la billetera, not mi billetera.',
           examples: [
             {
               target: '¿Qué pasó? — Alguien me robó la billetera.',
@@ -380,7 +381,7 @@ export const ES_A2_U05: EsUnitDef = {
         objective: 'Describe the scene: the weather and what was going on.',
         intro: {
           explanation:
-            'The background of a story goes in the imperfect: llovía (it was raining), había poca luz. For an action in progress use estaba + gerund: estaba caminando, estaba comiendo. The gerund ends in -ando (-ar verbs) or -iendo (-er and -ir verbs), and the stress always falls on an or ien: ca-mi-nan-do, co-mien-do (ie is one syllable). Mientras means while. In llovía, the ll sounds like the sh in shoe in Buenos Aires.',
+            'The background of a story goes in the imperfect: llovía (it was raining), había poca luz. For an action in progress use estaba + gerund: estaba caminando, estaba comiendo. The gerund ends in -ando (-ar verbs) or -iendo (-er and -ir verbs), and the stress always falls on an or ien: ca-mi-nan-do, co-mien-do (ie is one syllable). Mientras means while. In llovía, the ll sounds like the y in yes.',
           examples: [
             {
               target: 'Llovía y yo estaba caminando por la calle.',
@@ -592,7 +593,7 @@ export const ES_A2_U05: EsUnitDef = {
             'He was fine',
             ['He was badly hurt', 'He ran away', 'He called Ana'],
             ['es-por-suerte', 'es-el-accidente'],
-            '“Fue un accidente… Por suerte, el señor del auto estaba bien.”',
+            '“Fue un accidente… Por suerte, el señor del carro estaba bien.”',
           ),
           ex.translateWrite(
             'Unfortunately, I arrived late.',
@@ -621,9 +622,9 @@ export const ES_A2_U05: EsUnitDef = {
         objective: 'Say how you felt and what you lost.',
         intro: {
           explanation:
-            'To be scared is tener miedo, literally to have fear (like tener frío or tener calor). In a story: tenía miedo describes how you felt, tuve miedo is the moment you got scared. Miedo is a noun, so you say mucho miedo, not muy miedo. Perder means to lose (perdí la billetera) and also to miss a train or a bus (perdí el colectivo). Your neighbor is el vecino or la vecina.',
+            'To be scared is tener miedo, literally to have fear (like tener frío or tener calor). In a story: tenía miedo describes how you felt, tuve miedo is the moment you got scared. Miedo is a noun, so you say mucho miedo, not muy miedo. Perder means to lose (perdí la billetera) and also to miss a train or a bus (perdí el autobús). Your neighbor is el vecino or la vecina.',
           examples: [
-            { target: 'Perdí la billetera en el colectivo.', base: 'I lost my wallet on the bus.' },
+            { target: 'Perdí la billetera en el autobús.', base: 'I lost my wallet on the bus.' },
             { target: 'Tuve mucho miedo.', base: 'I was very scared.' },
           ],
         },
@@ -675,7 +676,7 @@ export const ES_A2_U05: EsUnitDef = {
               'In the morning, on the subway',
             ],
             ['es-mientras', 'es-robar', 'es-la-billetera'],
-            'Sofía says “mientras volvía a casa en el colectivo, alguien me robó la billetera”.',
+            'Sofía says “mientras volvía a casa en el autobús, alguien me robó la billetera”.',
           ),
           question(
             'es.ex.7fxi5i8z0ct6fy',
@@ -731,7 +732,7 @@ export const ES_A2_U05: EsUnitDef = {
         objective: 'Say what you have just done and understand a complete short story.',
         intro: {
           explanation:
-            'Acabar de + infinitive means to have just done something: acabo de llegar (I’ve just arrived). Only acabar changes: vos acabás de comer, ella acaba de salir. In Argentina this is the usual way to say I’ve just…; he llegado is much less common here. A story has a rhythm: the scene in the imperfect (estaba, llovía), the event with de repente + preterite, the next step with entonces, and the end with por suerte or lamentablemente.',
+            'Acabar de + infinitive means to have just done something: acabo de llegar (I’ve just arrived). Only acabar changes: tú acabas de comer, ella acaba de salir, ustedes acaban de llegar. In Latin America this is the usual way to say I’ve just…; the present perfect (he llegado) is less common there than in Spain. A story has a rhythm: the scene in the imperfect (estaba, llovía), the event with de repente + preterite, the next step with entonces, and the end with por suerte or lamentablemente.',
           examples: [
             { target: 'Acabo de llegar a casa.', base: 'I’ve just got home.' },
             { target: 'Mi hermana acaba de salir.', base: 'My sister has just gone out.' },
@@ -795,7 +796,7 @@ export const ES_A2_U05: EsUnitDef = {
             { id: 'es.ex.j1ar8ssybyk5rd' },
           ),
           ex.fillBlank(
-            'Estaba en el colectivo cuando alguien me ___ el celular.',
+            'Estaba en el autobús cuando alguien me ___ el celular.',
             'I was on the bus when someone stole my phone.',
             'robó',
             ['robaba', 'robar', 'roba'],
@@ -819,11 +820,14 @@ export const ES_A2_U05: EsUnitDef = {
           ex.shortAnswer(
             '¿Qué pasó? ¿Por qué llegaste tarde?',
             'Say that you missed the bus (start with «Perdí…»).',
-            'Perdí el colectivo.',
+            'Perdí el autobús.',
             [
-              'Perdí el colectivo',
-              'Porque perdí el colectivo.',
-              'Lamentablemente, perdí el colectivo.',
+              'Perdí el autobús',
+              'Porque perdí el autobús.',
+              'Lamentablemente, perdí el autobús.',
+              'Perdí el camión.',
+              'Perdí el colectivo.',
+              'Perdí el bus.',
             ],
             ['es-perder', 'es-que-paso'],
             { id: 'es.ex.2uheppsqk4181q' },
