@@ -355,12 +355,12 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
         }
       });
     }
-    // Sin rival humano a tiempo y con cupo de calibración: un bot a su altura que mueve el ELO
-    // (siempre identificado como BOT). Sin cupo, sigue esperando a una persona.
+    // Sin rival humano a tiempo: un bot a su altura (siempre identificado como BOT). Los emparejamientos
+    // humanos de este mismo tick ya salieron de la cola, así que tienen prioridad. Con cupo de
+    // calibración, el bot mueve el ELO; sin cupo, se juega igual pero sin ELO (unrated): la base lo
+    // guarda con is_ranked = false (start_bot_battle_v2 con p_rated = false) y no toca el rating.
     if (botAfterMs !== null) {
-      const hasCalibration = (e: { userId: string }) =>
-        (queued.get(e.userId)?.botCalibrationLeft ?? 0) > 0;
-      for (const entry of matchmaker.takeWaitingLongerThan(botAfterMs, now, hasCalibration)) {
+      for (const entry of matchmaker.takeWaitingLongerThan(botAfterMs, now)) {
         const info = queued.get(entry.userId);
         const protocol = queuedProtocol.get(entry.userId) ?? WORD_RUSH_PROTOCOL_VERSION;
         queued.delete(entry.userId);
@@ -370,13 +370,15 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
         createBattle(
           'ranked',
           [info, makeBot(info)],
-          {
-            rating: 'calibration',
-            calibration: {
-              used: BOT_CALIBRATION.ratedGames - left + 1,
-              limit: BOT_CALIBRATION.ratedGames,
-            },
-          },
+          left > 0
+            ? {
+                rating: 'calibration',
+                calibration: {
+                  used: BOT_CALIBRATION.ratedGames - left + 1,
+                  limit: BOT_CALIBRATION.ratedGames,
+                },
+              }
+            : { rating: 'unrated', calibration: null },
           protocol,
         ).catch((err: unknown) => {
           logger.error('battle_create_failed', { err: String(err) });

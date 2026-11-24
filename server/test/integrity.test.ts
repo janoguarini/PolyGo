@@ -347,7 +347,7 @@ async function playBotMatch(socket: Client, mode: 'ranked' | 'bot_practice' = 'r
   return { snap, result: (await finish) as BattleFinish };
 }
 
-test('cupo de calibración: 3 partidas contra bots con ELO; después la cola sólo espera personas', async () => {
+test('cupo de calibración: 3 partidas contra bots con ELO; después, un bot sin ELO', async () => {
   const calib = client('calib');
   await connected(calib);
   for (let i = 1; i <= BOT_CALIBRATION.ratedGames; i++) {
@@ -359,14 +359,44 @@ test('cupo de calibración: 3 partidas contra bots con ELO; después la cola só
   }
   assert.equal(store.calibrationUsed.get('calib:en'), BOT_CALIBRATION.ratedGames);
 
-  // Cupo agotado: no aparece un bot aunque espere; la cola le avisa que no le quedan.
+  // Cupo agotado: la cola avisa que no le quedan y, sin rival humano, igual entra un bot, sin ELO.
+  const before = { ...store.players.get('calib')! };
+  const unrankedBefore = store.unranked.size;
   const status = next(calib, 'queue:status');
+  const found = next(calib, 'match:found');
+  const finish = next(calib, 'battle:finish');
   calib.emit('queue:join', { mode: 'ranked' }, () => {});
   assert.equal((await status).botCalibrationLeft, 0);
-  await new Promise((r) => setTimeout(r, 400));
-  assert.equal(server.stats().battles, 0, 'sin bot competitivo fuera del cupo');
-  assert.equal(server.stats().queued, 1);
-  await calib.emitWithAck('queue:leave');
+  const snap = (await found) as BattleSnapshot;
+  assert.equal(snap.mode, 'ranked');
+  assert.equal(snap.rating, 'unrated');
+  assert.equal(snap.calibration, null);
+  assert.equal(snap.players.find((p) => p.slot !== snap.yourSlot)!.isBot, true);
+  calib.emit('match:ready', { battleId: snap.battleId }, () => {});
+  const result = (await finish) as BattleFinish;
+  assert.equal(result.rating, 'unrated');
+  assert.equal(result.calibration, null);
+  for (const p of result.players) {
+    assert.equal(p.ratingBefore, null);
+    assert.equal(p.ratingAfter, null);
+  }
+  assert.deepEqual(result.achievementsUnlocked, []);
+
+  // La base la guardó como no ranked (p_rated = false) y la liquidó sin rating.
+  assert.equal(store.unranked.size, unrankedBefore + 1);
+  assert.ok(store.unranked.has(snap.battleId));
+  const settled = store.settled.get(snap.battleId)!;
+  for (const p of settled.players) {
+    assert.equal(p.rating_before, null);
+    assert.equal(p.games_played_before, null);
+    assert.equal(p.rating_after, null);
+  }
+  // Ni rating, ni partidas, ni victorias, ni cupo: todo como antes.
+  const now = store.players.get('calib')!;
+  assert.equal(now.rating, before.rating);
+  assert.equal(now.gamesPlayed, before.gamesPlayed);
+  assert.equal(now.wins, before.wins);
+  assert.equal(store.calibrationUsed.get('calib:en'), BOT_CALIBRATION.ratedGames);
   calib.disconnect();
 });
 
