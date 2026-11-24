@@ -88,7 +88,9 @@ export interface BattleStore {
   rushUnits(languageCode: string, players: readonly RushPlayer[]): Promise<ReadonlySet<string>>;
   /**
    * Arcade: frases de Sentence Rush (ejercicios order_words publicados, de lecciones publicadas, del
-   * curso). Sólo lectura; el filtro de nivel y de ambigüedad lo hace shared/arcade.ts (sentencePool).
+   * curso) más el banco propio de Word Rush (Fase 5, ver wordRushBank.ts; si no se puede leer, sólo
+   * las lecciones). Sólo lectura; el filtro de
+   * nivel y de ambigüedad lo hace shared/arcade.ts (sentencePool).
    */
   loadSentences(languageCode: string): Promise<ArcadeSentence[]>;
   /** protocolVersion: 2 (Word Rush) o 3 (Arcade), se guarda en battles.protocol_version. */

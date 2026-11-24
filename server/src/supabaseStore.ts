@@ -6,9 +6,16 @@ import type { ArcadeSentence } from '../../shared/arcade';
 import { RATING_CONFIG } from '../../shared/ranking';
 import { wordLevel, type RushWord } from '../../shared/wordRush';
 import {
+  mergeSentenceSources,
+  type WordRushSentenceRow,
+  type WordRushVariantRow,
+} from './wordRushBank';
+import {
+  consoleLogger,
   StaleRatingError,
   type BattleStore,
   type BotBattleStart,
+  type Logger,
   type PlayerInfo,
   type SettleResponse,
   type SettlementContextRow,
@@ -22,7 +29,38 @@ export function createServiceClient(url: string, serviceRoleKey: string): Supaba
   });
 }
 
-export function createSupabaseStore(db: SupabaseClient<Database>): BattleStore {
+/**
+ * Fase 5: lee el banco de Word Rush (word_rush_sentences + word_rush_exercise_variants). Las tablas
+ * todavía no están en los tipos generados (src/lib/database.generated.ts), así que se leen sin tipos y
+ * cada fila se valida en mergeSentenceSources. Lanza si cualquiera de las dos lecturas falla (también
+ * si las tablas no existen): quien llama sigue sólo con las lecciones.
+ */
+async function loadWordRushBank(
+  db: SupabaseClient<Database>,
+  languageCode: string,
+): Promise<{ sentences: WordRushSentenceRow[]; variants: WordRushVariantRow[] }> {
+  const untyped = db as unknown as SupabaseClient;
+  const [sentences, variants] = await Promise.all([
+    untyped
+      .from('word_rush_sentences')
+      .select('id, language_code, unit_id, tokens, answer, accepted_answers, translation')
+      .eq('language_code', languageCode)
+      .eq('is_published', true),
+    // Pocas filas en total (~50, los seis cursos): se lee entera y sólo se usan las de ejercicios cargados.
+    untyped.from('word_rush_exercise_variants').select('exercise_id, accepted_answers'),
+  ]);
+  if (sentences.error) throw sentences.error;
+  if (variants.error) throw variants.error;
+  return {
+    sentences: (sentences.data ?? []) as WordRushSentenceRow[],
+    variants: (variants.data ?? []) as WordRushVariantRow[],
+  };
+}
+
+export function createSupabaseStore(
+  db: SupabaseClient<Database>,
+  logger: Logger = consoleLogger,
+): BattleStore {
   return {
     async getPlayer(userId) {
       const { data: profile, error } = await db
@@ -142,7 +180,26 @@ export function createSupabaseStore(db: SupabaseClient<Database>): BattleStore {
           unitId: unitOf.get(e.lesson_id) ?? null,
         });
       }
-      return sentences;
+
+      // Fase 5: el banco propio de Word Rush. Si no se puede leer (tablas sin crear, red, permisos),
+      // la partida sigue sólo con las lecciones: nunca un banco a medias ni variantes sin su frase.
+      let bank: Awaited<ReturnType<typeof loadWordRushBank>>;
+      try {
+        bank = await loadWordRushBank(db, languageCode);
+      } catch (err) {
+        logger.warn('word_rush_bank_unavailable', {
+          languageCode,
+          err: String((err as { message?: unknown } | null)?.message ?? err),
+          code: (err as { code?: unknown } | null)?.code ?? null,
+        });
+        return sentences;
+      }
+      const merged = mergeSentenceSources(languageCode, sentences, bank, new Set(unitIds));
+      const { report } = merged;
+      if (report.bankSkipped || report.variantsSkipped || report.duplicatesSkipped) {
+        logger.warn('word_rush_bank_rows_skipped', { languageCode, ...report });
+      }
+      return merged.sentences;
     },
 
     async startBattle(battleId, languageCode, player1, player2, protocolVersion) {
