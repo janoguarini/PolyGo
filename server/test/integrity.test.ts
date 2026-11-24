@@ -12,7 +12,7 @@ import { io as connect, type Socket } from 'socket.io-client';
 import { BOT_CALIBRATION, BOT_CONFIG } from '../../shared/bots';
 import {
   MAX_WRITTEN_ANSWER_LENGTH,
-  PROTOCOL_VERSION,
+  WORD_RUSH_PROTOCOL_VERSION as PROTOCOL_VERSION,
   WORD_RUSH,
   type AnswerResult,
   type BattleFinish,
@@ -268,10 +268,9 @@ const EMOJI_WORDS: RushWord[] = [
   { id: 'house', text: 'house', translationEs: 'casa', emoji: '🏠' },
 ];
 
+// Fase C.7: cada palabra trae su unidad (el mazo sólo usa unidades comunes a los jugadores).
 class EmojiStore extends FakeStore {
-  override async loadWords() {
-    return EMOJI_WORDS;
-  }
+  override words = EMOJI_WORDS.map((w) => ({ ...w, unitId: 'a1-u01' }));
 }
 
 before(async () => {

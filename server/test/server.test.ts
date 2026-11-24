@@ -5,7 +5,7 @@ import { after, before, test } from 'node:test';
 import { io as connect, type Socket } from 'socket.io-client';
 
 import {
-  PROTOCOL_VERSION,
+  WORD_RUSH_PROTOCOL_VERSION as PROTOCOL_VERSION,
   WORD_RUSH,
   type BattleFinish,
   type BattleSnapshot,
@@ -134,7 +134,8 @@ test('rechaza conexiones sin token válido o con otra versión de protocolo', as
     'unauthorized',
   );
 
-  const old = client('alice', PROTOCOL_VERSION + 1);
+  // Una versión que el servidor no conoce (la 2 y la 3 conviven).
+  const old = client('alice', 99);
   assert.equal(
     (await new Promise<Error>((resolve) => old.once('connect_error', resolve))).message,
     'protocol_mismatch',

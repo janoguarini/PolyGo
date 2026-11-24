@@ -5,10 +5,12 @@ export interface QueueEntry {
   languageCode: string;
   rating: number;
   joinedAt: number;
+  /** Versión de protocolo (2 Word Rush, 3 Arcade): nunca se emparejan versiones distintas. Sin dato = 2. */
+  protocolVersion?: number;
 }
 
 /**
- * Cola ranked por idioma (la versión de protocolo ya la filtra el handshake).
+ * Cola ranked por idioma y versión de protocolo (Word Rush y Arcade no se mezclan).
  * Ventana inicial ±100 ELO, +50 cada 5 s hasta ±400; dos jugadores se emparejan sólo si la
  * diferencia entra en la ventana de AMBOS, así quien recién entra no recibe un rival lejano.
  */
@@ -50,7 +52,12 @@ export class Matchmaker {
       if (taken.has(a.userId)) continue;
       let best: QueueEntry | null = null;
       for (const b of waiting) {
-        if (b.userId === a.userId || taken.has(b.userId) || b.languageCode !== a.languageCode)
+        if (
+          b.userId === a.userId ||
+          taken.has(b.userId) ||
+          b.languageCode !== a.languageCode ||
+          (b.protocolVersion ?? 2) !== (a.protocolVersion ?? 2)
+        )
           continue;
         const diff = Math.abs(a.rating - b.rating);
         if (diff > Math.min(this.windowFor(a, now), this.windowFor(b, now))) continue;

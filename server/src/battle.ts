@@ -1,6 +1,7 @@
 import {
   MAX_WRITTEN_ANSWER_LENGTH,
   WORD_RUSH,
+  WORD_RUSH_PROTOCOL_VERSION,
   canTransition,
   isTerminalStatus,
   type Ack,
@@ -28,6 +29,16 @@ import {
 import { BOT_CONFIG, botMove, botSkill } from '../../shared/bots';
 import type { Clock } from './clock';
 import type { BotBattleStart, PlayerInfo } from './types';
+import type { ArcadeStats } from '../../shared/arcade';
+
+export interface BattleOptions {
+  rating?: MatchRating;
+  calibration?: CalibrationInfo | null;
+  protocolVersion?: number;
+}
+
+/** Línea final de un jugador (para decidir el resultado y liquidar). */
+export type BattleLine = FinalLine & { slot: 1 | 2; info: PlayerInfo; arcade?: ArcadeStats };
 
 /** Lo que manda el cliente al responder: la opción o, en las preguntas para escribir, el texto. */
 export interface AnswerChoice {
@@ -59,7 +70,7 @@ export interface BattleHooks {
   onCancel(battle: Battle, reason: CancelReason): void;
 }
 
-interface Seat {
+export interface Seat {
   slot: 1 | 2;
   info: PlayerInfo;
   connected: boolean;
@@ -92,8 +103,10 @@ export class Battle {
   /** Si mueve el ELO. Contra un bot lo confirma la base al guardar el inicio (cupo de calibración). */
   rating: MatchRating;
   calibration: CalibrationInfo | null;
+  /** Versión del protocolo de los jugadores (2 = Word Rush, 3 = Arcade): se guarda en battles. */
+  readonly protocolVersion: number;
 
-  private readonly seats: Seat[];
+  protected readonly seats: Seat[];
   private timers = new Set<unknown>();
 
   constructor(
@@ -101,16 +114,17 @@ export class Battle {
     readonly mode: BattleMode,
     readonly languageCode: string,
     players: PlayerInfo[],
-    private readonly questions: RushQuestion[],
-    private readonly clock: Clock,
-    private readonly hooks: BattleHooks,
-    private readonly rules: BattleRules = WORD_RUSH,
+    protected readonly questions: RushQuestion[],
+    protected readonly clock: Clock,
+    protected readonly hooks: BattleHooks,
+    protected readonly rules: BattleRules = WORD_RUSH,
     /** Fuente [0, 1) de las jugadas de los bots (inyectable en tests). */
-    private readonly random: () => number = Math.random,
-    options: { rating?: MatchRating; calibration?: CalibrationInfo | null } = {},
+    protected readonly random: () => number = Math.random,
+    options: BattleOptions = {},
   ) {
     this.rating = options.rating ?? (mode === 'ranked' ? 'competitive' : 'unrated');
     this.calibration = options.calibration ?? null;
+    this.protocolVersion = options.protocolVersion ?? WORD_RUSH_PROTOCOL_VERSION;
     const expected = mode === 'practice' ? 1 : 2;
     if (players.length !== expected) throw new Error(`${mode} necesita ${expected} jugador(es)`);
     this.seats = players.map((info, i) => ({
@@ -306,7 +320,7 @@ export class Battle {
   }
 
   /** Líneas finales por slot, para decidir el resultado y liquidar. */
-  finalLines(): (FinalLine & { slot: 1 | 2; info: PlayerInfo })[] {
+  finalLines(): BattleLine[] {
     return this.seats.map((s) => ({
       slot: s.slot,
       info: s.info,
@@ -388,7 +402,7 @@ export class Battle {
     for (const seat of this.seats) this.sendQuestion(seat);
   }
 
-  private sendQuestion(seat: Seat): void {
+  protected sendQuestion(seat: Seat): void {
     seat.questionSentAt = this.clock.now();
     const question = this.questions[seat.questionIndex];
     if (seat.info.isBot) {
@@ -418,21 +432,21 @@ export class Battle {
     });
   }
 
-  private forfeit(seat: Seat): void {
+  protected forfeit(seat: Seat): void {
     if (this.status !== 'in_progress' && this.status !== 'reconnecting') return;
     if (this.status === 'in_progress') this.transition('reconnecting');
     seat.forfeited = true;
     this.finish('forfeited');
   }
 
-  private finish(status: 'completed' | 'forfeited'): void {
+  protected finish(status: 'completed' | 'forfeited'): void {
     if (this.isOver) return;
     this.clearTimers();
     this.transition(status);
     this.hooks.onFinish(this, status);
   }
 
-  private scores(): ScoreLine[] {
+  protected scores(): ScoreLine[] {
     return this.seats.map((s) => ({
       slot: s.slot,
       score: s.score,
@@ -442,7 +456,7 @@ export class Battle {
     }));
   }
 
-  private broadcastScores(): void {
+  protected broadcastScores(): void {
     const scores = this.scores();
     for (const seat of this.seats) {
       if (seat.connected) this.hooks.send(seat.info.userId, 'battle:score', { scores });
@@ -467,11 +481,11 @@ export class Battle {
     this.status = to;
   }
 
-  private seat(userId: string): Seat | undefined {
+  protected seat(userId: string): Seat | undefined {
     return this.seats.find((s) => s.info.userId === userId);
   }
 
-  private schedule(ms: number, fn: () => void): unknown {
+  protected schedule(ms: number, fn: () => void): unknown {
     const handle = this.clock.setTimeout(() => {
       this.timers.delete(handle);
       fn();

@@ -1,5 +1,6 @@
 import type { AchievementUnlock, CalibrationInfo } from '../../shared/protocol';
 import type { MatchOutcome } from '../../shared/ranking';
+import type { ArcadeSentence } from '../../shared/arcade';
 import type { RushWord } from '../../shared/wordRush';
 
 export interface PlayerInfo {
@@ -17,6 +18,18 @@ export interface PlayerInfo {
   wins?: number;
   /** Partidas de calibración contra bots que le quedan en este idioma (la base decide al empezar). */
   botCalibrationLeft?: number;
+  /**
+   * Fase C.8: nivel curricular que declaró su cliente en el handshake (0 si no lo declaró). Sólo vive
+   * en memoria; no lo lee ni lo escribe la base salvo como argumento de rush_common_unit_ids.
+   */
+  curriculumApi?: number;
+}
+
+/** Un jugador humano de la partida, para calcular el vocabulario común (rush_common_unit_ids). */
+export interface RushPlayer {
+  userId: string;
+  /** Nivel curricular de su cliente; ausente = 0. */
+  curriculumApi?: number;
 }
 
 /** Lo que la base decidió al crear una partida contra un bot (start_bot_battle_v2). */
@@ -67,11 +80,24 @@ export interface BattleStore {
   /** null si el usuario no existe o no completó el onboarding. */
   getPlayer(userId: string): Promise<PlayerInfo | null>;
   loadWords(languageCode: string): Promise<RushWord[]>;
+  /**
+   * Fases C.7/C.8: unidades cuyo contenido pueden usar TODOS los humanos de la partida, cada uno con el
+   * nivel de su cliente (public.rush_common_unit_ids). Sin conjunto, lanza: la partida no se crea
+   * (nunca «todas las palabras»). Vale para Word Rush (v2) y Arcade (v3).
+   */
+  rushUnits(languageCode: string, players: readonly RushPlayer[]): Promise<ReadonlySet<string>>;
+  /**
+   * Arcade: frases de Sentence Rush (ejercicios order_words publicados, de lecciones publicadas, del
+   * curso). Sólo lectura; el filtro de nivel y de ambigüedad lo hace shared/arcade.ts (sentencePool).
+   */
+  loadSentences(languageCode: string): Promise<ArcadeSentence[]>;
+  /** protocolVersion: 2 (Word Rush) o 3 (Arcade), se guarda en battles.protocol_version. */
   startBattle(
     battleId: string,
     languageCode: string,
     player1: string,
     player2: string,
+    protocolVersion: number,
   ): Promise<void>;
   /**
    * Partida contra un bot: el slot 2 queda sin usuario, con nombre y avatar del bot. Con `rated`
@@ -83,6 +109,7 @@ export interface BattleStore {
     player: string,
     bot: { name: string; avatarId: string; rating: number },
     rated: boolean,
+    protocolVersion: number,
   ): Promise<BotBattleStart>;
   settlementContext(battleId: string): Promise<SettlementContextRow[]>;
   /** Lanza StaleRatingError si el rating cambió desde el contexto. */

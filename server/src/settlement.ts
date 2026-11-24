@@ -51,6 +51,7 @@ export async function settleBattle(
         forfeited: l.forfeited,
         ratingBefore: null,
         ratingAfter: null,
+        ...(l.arcade ? { arcade: l.arcade } : {}),
       })),
     };
   }
@@ -122,6 +123,8 @@ export async function settleBattle(
           ratingAfter: shownRating ? p.rating_after : null,
           placedBefore:
             rated && shownRating ? isPlaced({ wins: bySlot(p.slot)?.wins ?? 0 }) : undefined,
+          // Sólo para mostrar: la base guarda puntos, aciertos y respuestas como siempre.
+          ...(lines[i]!.arcade ? { arcade: lines[i]!.arcade } : {}),
         })),
       };
     } catch (err) {

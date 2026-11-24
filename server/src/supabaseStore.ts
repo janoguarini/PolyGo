@@ -2,7 +2,7 @@ import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 
 import type { Database, Json } from '../../src/lib/database.generated';
 import { BOT_CALIBRATION } from '../../shared/bots';
-import { PROTOCOL_VERSION } from '../../shared/protocol';
+import type { ArcadeSentence } from '../../shared/arcade';
 import { RATING_CONFIG } from '../../shared/ranking';
 import { wordLevel, type RushWord } from '../../shared/wordRush';
 import {
@@ -78,21 +78,85 @@ export function createSupabaseStore(db: SupabaseClient<Database>): BattleStore {
         translationEs: w.translation_es,
         emoji: w.emoji,
         level: wordLevel(w.unit_id),
+        // Fase C.7: el mazo se filtra por las unidades comunes a los jugadores (rushUnits).
+        unitId: w.unit_id,
       }));
     },
 
-    async startBattle(battleId, languageCode, player1, player2) {
+    async rushUnits(languageCode, players) {
+      const { data, error } = await db.rpc('rush_common_unit_ids', {
+        p_language: languageCode,
+        p_players: players.map((p) => p.userId),
+        p_apis: players.map((p) => p.curriculumApi ?? 0),
+      });
+      if (error) throw error;
+      if (!Array.isArray(data)) throw new Error('rush_common_unit_ids: sin unidades');
+      return new Set(data);
+    },
+
+    async loadSentences(languageCode) {
+      // Tres lecturas simples (unidades → lecciones → ejercicios), todas publicadas y del curso.
+      const { data: units, error: unitsError } = await db
+        .from('curriculum_units')
+        .select('id')
+        .eq('language_code', languageCode)
+        .eq('is_published', true);
+      if (unitsError) throw unitsError;
+      const unitIds = (units ?? []).map((u) => u.id);
+      if (unitIds.length === 0) return [];
+
+      const { data: lessons, error: lessonsError } = await db
+        .from('lessons')
+        .select('id, unit_id')
+        .in('unit_id', unitIds)
+        .eq('is_published', true);
+      if (lessonsError) throw lessonsError;
+      const unitOf = new Map((lessons ?? []).map((l) => [l.id, l.unit_id]));
+      if (unitOf.size === 0) return [];
+
+      const { data: exercises, error } = await db
+        .from('exercises')
+        .select('id, lesson_id, payload, answer, accepted_answers')
+        .eq('type', 'order_words')
+        .eq('is_published', true)
+        .in('lesson_id', [...unitOf.keys()]);
+      if (error) throw error;
+
+      const sentences: ArcadeSentence[] = [];
+      for (const e of exercises ?? []) {
+        const payload = e.payload as { tokens?: unknown; translation?: unknown } | null;
+        const tokens = payload?.tokens;
+        if (
+          !Array.isArray(tokens) ||
+          !tokens.every((t): t is string => typeof t === 'string') ||
+          typeof payload?.translation !== 'string'
+        ) {
+          continue;
+        }
+        sentences.push({
+          id: e.id,
+          tokens,
+          answer: e.answer,
+          acceptedAnswers: e.accepted_answers ?? [],
+          translation: payload.translation,
+          unitId: unitOf.get(e.lesson_id) ?? null,
+        });
+      }
+      return sentences;
+    },
+
+    async startBattle(battleId, languageCode, player1, player2, protocolVersion) {
       const { error } = await db.rpc('start_battle', {
         p_battle_id: battleId,
         p_language_code: languageCode,
         p_player1: player1,
         p_player2: player2,
-        p_protocol_version: PROTOCOL_VERSION,
+        p_protocol_version: protocolVersion,
       });
       if (error) throw error;
     },
 
-    async startBotBattle(battleId, languageCode, player, bot, rated) {
+    async startBotBattle(battleId, languageCode, player, bot, rated, protocolVersion) {
       const { data, error } = await db.rpc('start_bot_battle_v2', {
         p_battle_id: battleId,
         p_language_code: languageCode,
@@ -100,7 +164,7 @@ export function createSupabaseStore(db: SupabaseClient<Database>): BattleStore {
         p_bot_name: bot.name,
         p_bot_avatar_id: bot.avatarId,
         p_bot_rating: bot.rating,
-        p_protocol_version: PROTOCOL_VERSION,
+        p_protocol_version: protocolVersion,
         p_rated: rated,
       });
       if (error) throw error;

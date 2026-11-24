@@ -10,7 +10,8 @@ import { HAN } from './languages';
  *   («我 叫 王明» = «我叫王明»). En pinyin, los números de tono equivalen a las marcas
  *   («ni3 hao3» = «nǐ hǎo»; 5 = tono neutro; «v» = «ü»). Sin tonos es otra respuesta.
  * - Tolerancia a un error de tipeo (distancia de edición 1) sólo en respuestas escritas de
- *   8 caracteres o más, y nunca en ejercicios de ortografía (complete_word).
+ *   8 caracteres o más, y nunca en ejercicios de ortografía (complete_word). Un apóstrofo que
+ *   falta o sobra no es un error de tipeo («wasnt», «oclock», «Lets»): es incorrecto.
  * - Cualquier otra cosa es incorrecta: no se aceptan respuestas "parecidas".
  */
 
@@ -136,10 +137,35 @@ export function editDistance(a: string, b: string): number {
   return prev[b.length]!;
 }
 
+/**
+ * Las dos formas difieren sólo en apóstrofos («wasnt» / «wasn't», «oclock» / «o'clock»,
+ * «lombrello» / «l'ombrello»). El apóstrofo es parte de lo que se enseña: no es un error de tipeo.
+ */
+export const apostropheOnly = (a: string, b: string) =>
+  a !== b && a.replace(/'/g, '') === b.replace(/'/g, '');
+
 export type AnswerVerdict =
   { correct: true; typo: boolean; expected: string } | { correct: false; expected: string };
 
-function verdictForText(given: string, expected: string[], allowTypo: boolean): AnswerVerdict {
+/**
+ * Reglas de texto que cambian entre versiones del corrector (LEARNING_GRADER, shared/learningSession.ts).
+ * Sirven para que la app corrija un repaso con la misma regla que el servidor que lo va a corregir
+ * (docs/LEARNING_INSTANT_REVIEW.md); el resto de la app usa TEXT_RULES.
+ */
+export interface TextRules {
+  /** Una diferencia sólo de apóstrofos se acepta como error de tipeo (corrector 1.0.0). */
+  apostropheTypo: boolean;
+}
+
+/** Reglas de la app (Aprender, práctica): el apóstrofo no es un error de tipeo. */
+export const TEXT_RULES: TextRules = { apostropheTypo: false };
+
+export function verdictForText(
+  given: string,
+  expected: string[],
+  allowTypo: boolean,
+  rules: TextRules = TEXT_RULES,
+): AnswerVerdict {
   const canonical = canonicalForm(given);
   const display = expected[0] ?? '';
   if (canonical.length === 0) return { correct: false, expected: display };
@@ -147,7 +173,10 @@ function verdictForText(given: string, expected: string[], allowTypo: boolean): 
   if (candidates.includes(canonical)) return { correct: true, typo: false, expected: display };
   if (allowTypo) {
     const close = candidates.some(
-      (c) => c.length >= TYPO_MIN_LENGTH && editDistance(c, canonical) === 1,
+      (c) =>
+        c.length >= TYPO_MIN_LENGTH &&
+        editDistance(c, canonical) === 1 &&
+        (rules.apostropheTypo || !apostropheOnly(c, canonical)),
     );
     if (close) return { correct: true, typo: true, expected: display };
   }
