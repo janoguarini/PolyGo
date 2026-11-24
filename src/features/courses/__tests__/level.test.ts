@@ -43,8 +43,7 @@ describe('catálogo de cursos (shared/courses.ts)', () => {
     expect(defaultCourseFor('en').source).toBe('es');
   });
 
-  it('desde español se eligen los cursos disponibles con niveles; desde inglés, todavía ninguno', () => {
-    // El español sigue «Próximamente» (shared/languages.ts) hasta publicarlo.
+  it('desde español se eligen los cinco cursos con niveles; desde inglés, el de español', () => {
     expect(selectableCoursesFor('es').map((c) => c.code)).toEqual([
       'en-from-es',
       'fr-from-es',
@@ -52,7 +51,7 @@ describe('catálogo de cursos (shared/courses.ts)', () => {
       'pt-from-es',
       'zh-from-es',
     ]);
-    expect(selectableCoursesFor('en')).toEqual([]);
+    expect(selectableCoursesFor('en').map((c) => c.code)).toEqual(['es-from-en']);
   });
 
   it('curso activo: el guardado si coincide con el idioma; si no (o sin migración), el por defecto', () => {

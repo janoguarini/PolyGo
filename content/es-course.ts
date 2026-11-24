@@ -9,10 +9,11 @@ import type { Level } from './types';
  * Español A1 y A2 completos (docs/ES_A1_A2.md), para quien no habla español. No había piloto: todo el
  * curso es nuevo.
  *
- * - A1 U1–U17 y A2 U1–U12, en español rioplatense (Argentina) con voseo, y con el inglés como idioma
- *   de apoyo (shared/languages.ts `support`): las traducciones, consignas, explicaciones y preguntas
- *   de comprensión están en inglés. La interfaz de la app sigue en español, así que el idioma queda
- *   «Próximamente» hasta traducirla.
+ * - A1 U1–U17 y A2 U1–U12, en español neutro de Latinoamérica con tú y ustedes
+ *   (docs/ES_NEUTRAL_GUIDE.md; el voseo sólo se menciona en la gramática de U2 y se acepta como
+ *   variante en algunas respuestas), con el inglés como idioma de apoyo (shared/languages.ts
+ *   `support`): las traducciones, consignas, explicaciones y preguntas de comprensión están en inglés.
+ *   Publicado en producción; disponible y con Ranked desde 20261226120000_ranked_all_courses.
  * - Como los demás cursos nuevos, vive en su propio camino, fuera de COURSES y de CURRICULUM_PATH.
  * - Cada unidad tiene el camino de siempre (content/path.ts): L1 · L2 · Repaso · L3 · L4 · Repaso ·
  *   L5 · Escucha · Palabras · Repaso final, con ids es-a1-u01-… y es-a2-u01-…, y los títulos de los

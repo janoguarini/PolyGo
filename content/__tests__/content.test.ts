@@ -5,7 +5,11 @@ import { HAN, LANGUAGES, languageConfig } from '@shared/languages';
 import { readingDictionary, unreadHan } from '@shared/readings';
 
 import { ALL_WORDS, COURSES, CURRICULUM_PATH, idPrefix, unitId } from '..';
+import { ES_COURSE } from '../es-course';
 import { FR_COURSE } from '../fr-course';
+import { IT_COURSE } from '../it-course';
+import { PT_COURSE } from '../pt-course';
+import { ZH_COURSE } from '../zh-course';
 import { joinHan, tokensOf } from '../builders';
 import { pathExerciseId } from '../path';
 import type { ExerciseDef, UnitDef } from '../types';
@@ -77,8 +81,19 @@ describe('estructura del currículo', () => {
   });
 
   it('los niveles de cada idioma en shared/languages.ts son los que tienen contenido', () => {
-    // El francés tiene su curso aparte (content/fr-course.ts), fuera de COURSES y de CURRICULUM_PATH.
-    const own: Record<string, readonly string[]> = { fr: FR_COURSE.map((v) => v.level) };
+    // Francés y español tienen su curso aparte (fuera de COURSES y de CURRICULUM_PATH); italiano,
+    // portugués y chino suman al piloto A1 su propio camino (A1 U13–U16 y A2).
+    const union = (...lists: (readonly { level: string }[])[]) => [
+      ...new Set(lists.flatMap((list) => list.map((v) => v.level))),
+    ];
+    const pilot = (code: string) => COURSES.find((c) => c.language === code)?.levels ?? [];
+    const own: Record<string, readonly string[]> = {
+      fr: union(FR_COURSE),
+      es: union(ES_COURSE),
+      it: union(pilot('it'), IT_COURSE),
+      pt: union(pilot('pt'), PT_COURSE),
+      zh: union(pilot('zh'), ZH_COURSE),
+    };
     for (const l of LANGUAGES) {
       const levels =
         own[l.code] ?? COURSES.find((c) => c.language === l.code)?.levels.map((v) => v.level) ?? [];

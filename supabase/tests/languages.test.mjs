@@ -8,14 +8,26 @@ import { createDb, createUser, as } from './harness.mjs';
 let db;
 let n = 0;
 
-// La base que espera la app: todas las migraciones más la publicación y la activación del francés
-// (supabase/pending/, todavía fuera de migrations/).
+// La base que espera la app (como producción + Ranked en todos los cursos): todas las migraciones y
+// las publicaciones de supabase/pending/, en el orden en que se aplicaron, más
+// 20261226120000_ranked_all_courses (francés y español con Ranked; español disponible).
 const pending = (name) => readFileSync(new URL(`../pending/${name}`, import.meta.url), 'utf8');
+const PENDING = [
+  '20261121120000_publish_en_a2_u13_u17.sql',
+  '20261123120000_publish_en_b1.sql',
+  '20261125120000_publish_en_b2.sql',
+  '20261127120000_publish_pt_a1_a2.sql',
+  '20261129120000_publish_it_a1_a2.sql',
+  '20261201120000_publish_zh_a1_a2.sql',
+  '20261203120000_publish_fr_a1_a2.sql',
+  '20261203130000_enable_fr.sql',
+  '20261205120000_publish_es_a1_a2.sql',
+  '20261226120000_ranked_all_courses.sql',
+];
 
 before(async () => {
   db = await createDb();
-  await db.exec(pending('20261203120000_publish_fr_a1_a2.sql'));
-  await db.exec(pending('20261203130000_enable_fr.sql'));
+  for (const file of PENDING) await db.exec(pending(file));
 });
 
 /** Usuario con el registro completo (en inglés). */
@@ -54,19 +66,20 @@ test('el estado de cada idioma replica shared/languages.ts', async () => {
       { code: l.code, status: l.status, ranked: l.ranked },
     );
   }
-  // Francés: disponible para todos y sin Ranked.
-  assert.deepEqual([byCode.fr.content_status, byCode.fr.ranked_available], ['available', false]);
+  // Los seis idiomas: disponibles para todos y con Ranked.
+  for (const code of ['en', 'fr', 'it', 'pt', 'zh', 'es']) {
+    assert.deepEqual(
+      [byCode[code].content_status, byCode[code].ranked_available],
+      ['available', true],
+    );
+  }
 });
 
-test('sin ser tester se eligen los idiomas disponibles y no los «Próximamente»', async () => {
+test('sin ser tester se eligen los idiomas disponibles y no los inexistentes', async () => {
   const u = await onboardedUser();
-  for (const code of ['es', 'xx']) {
-    await assert.rejects(setLanguage(u, code), /language_unavailable/);
-  }
-  // Francés: cualquier cuenta lo elige, sin content_testers; no crea rating (sin Ranked).
-  await setLanguage(u, 'fr');
-  assert.equal(await targetOf(u), 'fr');
-  for (const code of ['it', 'pt', 'zh']) {
+  await assert.rejects(setLanguage(u, 'xx'), /language_unavailable/);
+  // Cualquier cuenta elige cualquiera de los seis; cada uno crea su propio rating.
+  for (const code of ['fr', 'it', 'pt', 'zh', 'es']) {
     await setLanguage(u, code);
     assert.equal(await targetOf(u), code);
   }
@@ -76,7 +89,7 @@ test('sin ser tester se eligen los idiomas disponibles y no los «Próximamente�
   );
   assert.deepEqual(
     ratings.rows.map((r) => r.language_code),
-    ['en', 'it', 'pt', 'zh'],
+    ['en', 'es', 'fr', 'it', 'pt', 'zh'],
   );
   const { rows } = await setLanguage(u, 'en');
   assert.equal(rows[0].target_language, 'en');
@@ -92,9 +105,10 @@ test('registrarse en otro idioma: rating inicial de ese idioma y sólo niveles c
         [lang, level],
       ),
     );
-  await assert.rejects(register('it', 'A2'), /level_unavailable/);
-  await assert.rejects(register('es', 'A1'), /language_unavailable/);
-  // Francés: se registra en A1 o A2, sin rating de francés.
+  // Italiano, portugués y chino tienen A2 publicado; ninguno tiene B1 (el inglés sí).
+  await assert.rejects(register('it', 'B1'), /level_unavailable/);
+  await assert.rejects(register('xx', 'A1'), /language_unavailable/);
+  // Francés: se registra en A1 o A2, con su propio rating.
   await register('fr', 'A2');
   assert.equal(await targetOf(u), 'fr');
   await register('fr', 'A1');
@@ -108,6 +122,7 @@ test('registrarse en otro idioma: rating inicial de ese idioma y sólo niveles c
     rows.map((r) => [r.language_code, r.rating, r.wins]),
     [
       ['en', 100, 0],
+      ['fr', 100, 0],
       ['zh', 100, 0],
     ],
   );
@@ -142,8 +157,9 @@ test('un tester elige otro idioma con ranked: conserva su inglés y recibe el ra
     ],
   );
 
-  // «Próximamente» sigue cerrado también para testers; el francés ya no depende de serlo.
-  await assert.rejects(setLanguage(u, 'es'), /language_unavailable/);
+  // El español y el francés ya no dependen de ser tester.
+  await setLanguage(u, 'es');
+  assert.equal(await targetOf(u), 'es');
   await setLanguage(u, 'fr');
   assert.equal(await targetOf(u), 'fr');
 
@@ -178,7 +194,16 @@ test('un idioma con ranked crea el rating inicial si falta', async () => {
   assert.equal(rows.length, 1);
 });
 
-test('la activación del francés es idempotente y su rollback lo vuelve a cerrar sin tocar perfiles', async () => {
+test('la activación del francés es idempotente y su rollback lo vuelve a cerrar sin tocar perfiles', async (t) => {
+  // En su propia base, con el estado de cuando se activó el francés (sin Ranked: enable_fr se niega
+  // a correr con ranked_available en true, que ahora decide 20261226120000_ranked_all_courses).
+  const shared = db;
+  db = await createDb();
+  t.after(() => {
+    db = shared;
+  });
+  await db.exec(pending('20261203120000_publish_fr_a1_a2.sql'));
+  await db.exec(pending('20261203130000_enable_fr.sql'));
   const u = await onboardedUser();
   await setLanguage(u, 'fr');
   await db.exec(pending('20261203130000_enable_fr.sql'));

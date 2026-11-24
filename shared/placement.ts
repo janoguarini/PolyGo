@@ -64,6 +64,12 @@ export interface PlacementBank {
   levels: PlacementLevelInfo[];
   /** En orden de dificultad: A1·1, A1·2, A2·1, A2·2… */
   bands: PlacementBand[];
+  /**
+   * Sólo en cursos con caracteres chinos: el pinyin de cada palabra que aparece en las preguntas
+   * (texto → romanización, del vocabulario del curso y de EXTRA_READINGS). El test se hace antes de
+   * empezar el curso, sin el banco de palabras del servidor, así que la lectura viaja con el banco.
+   */
+  readings?: Record<string, string>;
 }
 
 export interface PlacementAnswer {

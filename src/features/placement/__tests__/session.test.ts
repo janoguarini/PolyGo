@@ -1,5 +1,7 @@
 import { courseByCode } from '@shared/courses';
+import { LANGUAGES } from '@shared/languages';
 import { placementResult, type PlacementBank } from '@shared/placement';
+import { unreadHan } from '@shared/readings';
 
 import { PLACEMENT_BANKS } from '../../../../content/placement/banks.generated';
 import {
@@ -26,10 +28,34 @@ describe('placementBankFor', () => {
     expect(placementBankFor(courseByCode('fr-from-es')!)).not.toBeNull();
   });
 
-  it('italiano, portugués y chino (sólo A1) y español («Próximamente») no tienen test', () => {
+  it('italiano, portugués, chino y español (A1 y A2) también tienen test', () => {
     for (const code of ['it-from-es', 'pt-from-es', 'zh-from-es', 'es-from-en']) {
-      expect(placementBankFor(courseByCode(code)!)).toBeNull();
+      expect(placementBankFor(courseByCode(code)!)?.levels.map((l) => l.level)).toEqual([
+        'A1',
+        'A2',
+      ]);
     }
+  });
+
+  it('un curso con un solo nivel no tiene test (no hay nada que distinguir)', () => {
+    const it_ = LANGUAGES.find((l) => l.code === 'it') as unknown as { levels: string[] };
+    const levels = it_.levels;
+    it_.levels = ['A1'];
+    try {
+      expect(placementBankFor(courseByCode('it-from-es')!)).toBeNull();
+    } finally {
+      it_.levels = levels;
+    }
+  });
+
+  it('chino: el banco trae el pinyin de todo lo que muestran las preguntas', () => {
+    const bank = placementBankFor(courseByCode('zh-from-es')!)!;
+    const dict = new Map(Object.entries(bank.readings ?? {}));
+    expect(dict.size).toBeGreaterThan(0);
+    for (const item of bank.bands.flatMap((b) => b.items)) {
+      expect(unreadHan(JSON.stringify(item.exercise), dict)).toEqual([]);
+    }
+    expect(placementBankFor(courseByCode('fr-from-es')!)!.readings).toBeUndefined();
   });
 
   it('acota el banco a los niveles publicados hoy: nunca más de lo disponible', () => {

@@ -40,7 +40,7 @@ function instructions(t: (typeof battleStrings)['es'], code: string) {
     audio: t.listenAndChoose,
     image: t.howDoYouSay(code),
     write: t.writeTheWord(code),
-    en_es: t.chooseSpanish,
+    en_es: t.chooseTranslation(code),
     es_en: t.chooseTheWord(code),
   } as const;
 }

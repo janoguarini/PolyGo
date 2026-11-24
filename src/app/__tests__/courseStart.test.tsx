@@ -5,6 +5,7 @@ import type { CourseEnrollment } from '@/features/courses/level';
 import { __setInterfaceLanguageForTests } from '@/i18n';
 
 import CourseStartScreen from '../course-start/[code]';
+import { LANGUAGES } from '@shared/languages';
 
 const mockRouter = {
   back: jest.fn(),
@@ -67,6 +68,22 @@ beforeEach(() => {
 
 afterAll(() => __setInterfaceLanguageForTests('es'));
 
+/** Cambia por un momento la configuración de un idioma (hoy todos tienen A1 y A2 y están disponibles). */
+async function withLanguage(
+  code: string,
+  patch: { levels?: string[]; status?: string },
+  fn: () => Promise<void>,
+) {
+  const config = LANGUAGES.find((l) => l.code === code) as unknown as Record<string, unknown>;
+  const saved = { levels: config.levels, status: config.status };
+  Object.assign(config, patch);
+  try {
+    await fn();
+  } finally {
+    Object.assign(config, saved);
+  }
+}
+
 it('ofrece los dos caminos: el test de nivel y empezar desde A1', async () => {
   await render(<CourseStartScreen />);
   expect(screen.getByText('Francés')).toBeTruthy();
@@ -124,10 +141,21 @@ it('si falla, avisa que no cambió nada y ofrece reintentar', async () => {
 
 it('un curso con un solo nivel no ofrece test: empieza desde el principio', async () => {
   mockCode = 'it-from-es';
-  await render(<CourseStartScreen />);
-  expect(screen.getByText(/tiene sólo el nivel A1/)).toBeTruthy();
-  expect(screen.queryByText('Hacer el test de nivel')).toBeNull();
-  expect(screen.getByRole('button', { name: 'Prefiero empezar desde A1' })).toBeTruthy();
+  await withLanguage('it', { levels: ['A1'] }, async () => {
+    await render(<CourseStartScreen />);
+    expect(screen.getByText(/tiene sólo el nivel A1/)).toBeTruthy();
+    expect(screen.queryByText('Hacer el test de nivel')).toBeNull();
+    expect(screen.getByRole('button', { name: 'Prefiero empezar desde A1' })).toBeTruthy();
+  });
+});
+
+it('italiano, portugués, chino y español (A1 y A2) ofrecen el test de nivel', async () => {
+  for (const code of ['it-from-es', 'pt-from-es', 'zh-from-es', 'es-from-en']) {
+    mockCode = code;
+    const view = await render(<CourseStartScreen />);
+    expect(screen.getByRole('button', { name: /^Hacer el test de nivel/ })).toBeTruthy();
+    await view.unmount();
+  }
 });
 
 it('sin el modelo de cursos aplicado, el test no se ofrece como botón', async () => {
@@ -153,13 +181,15 @@ it('un curso en el que ya está inscripto no se vuelve a empezar: conserva su ni
 });
 
 it('cursos «Próximamente», ocultos o inexistentes no se pueden empezar', async () => {
-  for (const code of ['es-from-en', 'xx-from-es']) {
-    mockCode = code;
-    const view = await render(<CourseStartScreen />);
-    expect(screen.getByText('Curso no disponible')).toBeTruthy();
-    expect(screen.queryByRole('button', { name: /empezar desde/ })).toBeNull();
-    await view.unmount();
-  }
+  await withLanguage('es', { status: 'soon' }, async () => {
+    for (const code of ['es-from-en', 'xx-from-es']) {
+      mockCode = code;
+      const view = await render(<CourseStartScreen />);
+      expect(screen.getByText('Curso no disponible')).toBeTruthy();
+      expect(screen.queryByRole('button', { name: /empezar desde/ })).toBeNull();
+      await view.unmount();
+    }
+  });
 });
 
 it('carga y error', async () => {

@@ -1,3 +1,5 @@
+import { LANGUAGES } from '@shared/languages';
+
 import type { LevelProgress } from '@/features/profile/languageProgress';
 
 import { buildCourseList, type CourseListInput } from '../catalog';
@@ -44,20 +46,29 @@ describe('lista de cursos (buildCourseList)', () => {
     expect(active.progress).toMatchObject({ level: 'A2', completed: 3, total: 120 });
   });
 
-  it('ofrece sólo cursos con contenido disponible: el español (Próximamente) no aparece', () => {
+  it('ofrece los cursos disponibles agrupados por origen: primero el del curso activo', () => {
     const { available } = buildCourseList(input());
-    expect(available.map((g) => g.source)).toEqual(['es']);
+    expect(available.map((g) => g.source)).toEqual(['es', 'en']);
     expect(codes(available[0]!.courses)).toEqual([
       'fr-from-es',
       'it-from-es',
       'pt-from-es',
       'zh-from-es',
     ]);
-    const all = [
-      ...codes(available.flatMap((g) => g.courses)),
-      ...codes(buildCourseList(input()).mine),
-    ];
-    expect(all).not.toContain('es-from-en');
+    // El español se enseña desde el inglés: aparece en el grupo «desde inglés».
+    expect(codes(available[1]!.courses)).toEqual(['es-from-en']);
+  });
+
+  it('un idioma «Próximamente» no se ofrece para empezar', () => {
+    const es = LANGUAGES.find((l) => l.code === 'es') as { status: string };
+    const status = es.status;
+    es.status = 'soon';
+    try {
+      const all = codes(buildCourseList(input()).available.flatMap((g) => g.courses));
+      expect(all).not.toContain('es-from-en');
+    } finally {
+      es.status = status;
+    }
   });
 
   it('un curso nuevo empieza en A1 aunque el activo esté en A2 (no hereda el nivel)', () => {
@@ -89,7 +100,11 @@ describe('lista de cursos (buildCourseList)', () => {
     expect(codes(list.mine)).toEqual(['it-from-es', 'zh-from-es']);
     expect(list.mine[0]).toMatchObject({ startLevel: 'A1', progress: { completed: 40 } });
     // Los cursos míos no se ofrecen otra vez para empezar.
-    expect(codes(list.available.flatMap((g) => g.courses))).toEqual(['fr-from-es', 'pt-from-es']);
+    expect(codes(list.available.flatMap((g) => g.courses))).toEqual([
+      'fr-from-es',
+      'pt-from-es',
+      'es-from-en',
+    ]);
   });
 
   it('los niveles de cada curso son independientes', () => {
@@ -123,14 +138,25 @@ describe('lista de cursos (buildCourseList)', () => {
   });
 
   it('un curso tuyo cuyo idioma dejó de estar disponible se ve pero no se elige', () => {
-    const list = buildCourseList(
-      input({
-        enrollments: [enrollment('en-from-es', 'A2'), enrollment('es-from-en', 'A1')],
-      }),
-    );
-    const es = list.mine.find((e) => e.course.code === 'es-from-en')!;
-    expect(es.selectable).toBe(false);
-    expect(list.mine[list.mine.length - 1]!.course.code).toBe('es-from-en');
+    const fr = LANGUAGES.find((l) => l.code === 'fr') as { status: string };
+    const status = fr.status;
+    fr.status = 'soon';
+    try {
+      const list = buildCourseList(
+        input({
+          enrollments: [
+            enrollment('en-from-es', 'A2'),
+            enrollment('fr-from-es', 'A1'),
+            enrollment('it-from-es', 'A1'),
+          ],
+        }),
+      );
+      const entry = list.mine.find((e) => e.course.code === 'fr-from-es')!;
+      expect(entry.selectable).toBe(false);
+      expect(list.mine[list.mine.length - 1]!.course.code).toBe('fr-from-es');
+    } finally {
+      fr.status = status;
+    }
   });
 
   it('el curso activo está siempre, aunque no tenga inscripción ni progreso todavía', () => {
@@ -142,7 +168,10 @@ describe('lista de cursos (buildCourseList)', () => {
   it('si ya tenés todos los cursos disponibles, no queda ningún grupo para empezar', () => {
     const list = buildCourseList(
       input({
-        enrollments: ['en', 'fr', 'it', 'pt', 'zh'].map((l) => enrollment(`${l}-from-es`, 'A1')),
+        enrollments: [
+          ...['en', 'fr', 'it', 'pt', 'zh'].map((l) => enrollment(`${l}-from-es`, 'A1')),
+          enrollment('es-from-en', 'A1'),
+        ],
       }),
     );
     expect(list.available).toEqual([]);

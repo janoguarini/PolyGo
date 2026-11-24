@@ -6,6 +6,9 @@ import { languageName, languageShortName } from '@/i18n/languages';
 
 type ErrorKey = ErrorCode | 'connection';
 
+/** Idioma de las traducciones de un curso (shared/languages.ts `support`; sin el campo, español). */
+const supportOf = (code: string) => languageConfig(code).support?.code ?? 'es';
+
 /** Mensajes de error de las partidas, por código estable del protocolo (no se tocan los códigos). */
 export const battleErrorStrings = defineStrings<Record<ErrorKey, string>>({
   es: {
@@ -138,7 +141,9 @@ export const battleStrings = defineStrings({
     howDoYouSay: (code: string) => `¿CÓMO SE DICE ${languageConfig(code).inName.toUpperCase()}?`,
     writeTheWord: (code: string) =>
       `ESCRIBÍ LA PALABRA ${languageConfig(code).inName.toUpperCase()}`,
-    chooseSpanish: 'ELEGÍ LA TRADUCCIÓN AL ESPAÑOL',
+    // La traducción está en el idioma de apoyo del curso: español, o inglés en el curso de español.
+    chooseTranslation: (code: string) =>
+      `ELEGÍ LA TRADUCCIÓN ${languageConfig(supportOf(code)).alName.toUpperCase()}`,
     chooseTheWord: (code: string) =>
       `ELEGÍ LA PALABRA ${languageConfig(code).inName.toUpperCase()}`,
     streakA11y: (streak: number, bonus: number) =>
@@ -217,7 +222,8 @@ export const battleStrings = defineStrings({
       `HOW DO YOU SAY IT IN ${languageShortName(code, 'en').toUpperCase()}?`,
     writeTheWord: (code: string) =>
       `TYPE THE WORD IN ${languageShortName(code, 'en').toUpperCase()}`,
-    chooseSpanish: 'CHOOSE THE SPANISH TRANSLATION',
+    chooseTranslation: (code: string) =>
+      `CHOOSE THE ${languageShortName(supportOf(code), 'en').toUpperCase()} TRANSLATION`,
     chooseTheWord: (code: string) =>
       `CHOOSE THE WORD IN ${languageShortName(code, 'en').toUpperCase()}`,
     streakA11y: (streak: number, bonus: number) =>

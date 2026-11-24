@@ -38,8 +38,15 @@ it('hay banco para cada curso con dos o más niveles publicados, y sólo para es
     (c) => c.code,
   );
   expect(Object.keys(PLACEMENT_BANKS).sort()).toEqual(expected.sort());
-  // Hoy: inglés y francés (A1 y A2). Italiano, portugués y chino sólo tienen A1; español, nada.
-  expect(Object.keys(PLACEMENT_BANKS).sort()).toEqual(['en-from-es', 'fr-from-es']);
+  // Hoy: los seis cursos tienen A1 y A2 publicados.
+  expect(Object.keys(PLACEMENT_BANKS).sort()).toEqual([
+    'en-from-es',
+    'es-from-en',
+    'fr-from-es',
+    'it-from-es',
+    'pt-from-es',
+    'zh-from-es',
+  ]);
 });
 
 describe.each(banks.map((b) => [b.courseCode, b] as const))('%s', (courseCode, bank) => {

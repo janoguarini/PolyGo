@@ -95,10 +95,11 @@ function PlacementTest({ course, bank }: { course: CourseDef; bank: PlacementBan
   // Las preguntas son del idioma del curso (no del que estudia ahora): voz y textos de ese idioma.
   useSpeechLanguage(course.target);
   useEffect(() => stopSpeaking, []);
-  const languageContext = useMemo(
-    () => ({ language, readings: null, showReadings: false, setShowReadings: () => {} }),
-    [language],
-  );
+  // En chino, el pinyin viaja con el banco (bank.readings): todavía no hay banco de palabras del curso.
+  const languageContext = useMemo(() => {
+    const readings = bank.readings ? new Map(Object.entries(bank.readings)) : null;
+    return { language, readings, showReadings: readings !== null, setShowReadings: () => {} };
+  }, [language, bank.readings]);
 
   const inTest = session.phase === 'question' || session.phase === 'feedback';
   const leave = () => {

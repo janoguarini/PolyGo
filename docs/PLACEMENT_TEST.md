@@ -17,7 +17,10 @@ Estado (2026-11-22): **hecho en local, sin aplicar**. Plan general:
 
 - Salir del test (X, con confirmación; el gesto de volver está desactivado) no guarda nada.
 - Si falla el guardado, el resultado queda en pantalla con «Reintentar» (misma elección).
-- Un curso con un solo nivel publicado no ofrece el test (italiano, portugués y chino hoy).
+- Un curso con un solo nivel publicado no ofrece el test. Desde 2026-11-23 ninguno: los seis cursos
+  (en, fr, it, pt, zh desde español; es desde inglés) tienen banco A1–A2 (docs/RANKED_ALL_COURSES.md).
+  En chino, el banco trae el pinyin de sus preguntas (`readings`), porque el test se hace antes de
+  tener el banco de palabras del curso.
 - Un curso en el que ya está inscripto muestra «Ya estás en este curso» y sólo lo abre.
 - Sin el modelo de cursos aplicado (producción hoy), el test aparece como «llega con la próxima
   actualización» y «desde A1» usa el cambio de curso de la Fase 3.

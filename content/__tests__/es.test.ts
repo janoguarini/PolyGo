@@ -55,14 +55,14 @@ describe('español A1 y A2 (content/es-course.ts)', () => {
     expect(esProblems()).toEqual([]);
   });
 
-  it('el idioma enseña el español neutro desde el inglés y sigue «Próximamente»', () => {
+  it('el idioma enseña el español neutro desde el inglés, disponible con A1, A2 y Ranked', () => {
     const es = languageConfig('es');
     expect([es.code, es.status, es.ranked, es.speechLocale, [...es.levels]]).toEqual([
       'es',
-      'soon',
-      false,
+      'available',
+      true,
       'es-MX',
-      [],
+      ES_COURSE.map((l) => l.level),
     ]);
     expect(es.support).toEqual({ code: 'en', targetName: 'Spanish' });
     // Sólo el español cambia de idioma de apoyo: los demás cursos siguen enseñándose desde el español.

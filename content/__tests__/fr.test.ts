@@ -44,12 +44,12 @@ describe('francés A1 y A2 (content/fr-course.ts)', () => {
     expect(frProblems()).toEqual([]);
   });
 
-  it('el idioma está disponible para todos con A1 y A2, sin Ranked', () => {
+  it('el idioma está disponible para todos con A1 y A2, con Ranked', () => {
     const fr = languageConfig('fr');
     expect([fr.code, fr.status, fr.ranked, fr.speechLocale, [...fr.levels]]).toEqual([
       'fr',
       'available',
-      false,
+      true,
       'fr-FR',
       ['A1', 'A2'],
     ]);

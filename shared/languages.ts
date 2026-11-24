@@ -63,7 +63,8 @@ export const LANGUAGES: readonly LanguageConfig[] = [
     speechLocale: 'it-IT',
     script: 'latin',
     variant: 'Italiano estándar',
-    levels: ['A1'],
+    // A1 U1–U16 y A2 U1–U12 publicados (docs/IT_A1_A2.md).
+    levels: ['A1', 'A2'],
   },
   {
     code: 'pt',
@@ -76,7 +77,8 @@ export const LANGUAGES: readonly LanguageConfig[] = [
     speechLocale: 'pt-BR',
     script: 'latin',
     variant: 'Portugués de Brasil',
-    levels: ['A1'],
+    // A1 U1–U16 y A2 U1–U12 publicados (docs/PT_A1_A2.md).
+    levels: ['A1', 'A2'],
   },
   {
     code: 'zh',
@@ -89,39 +91,40 @@ export const LANGUAGES: readonly LanguageConfig[] = [
     speechLocale: 'zh-CN',
     script: 'han',
     variant: 'Chino mandarín, caracteres simplificados y pinyin',
-    levels: ['A1'],
+    // A1 U1–U16 y A2 U1–U12 publicados (docs/ZH_A1_A2.md).
+    levels: ['A1', 'A2'],
   },
   {
     // Francés A1 U1–U17 y A2 U1–U13 (docs/FR_A1_A2.md), para todos (docs/FR_A1_A2_INTEGRATION.md).
-    // Requiere en la base la carga, la publicación y 20261203130000_enable_fr (content_status
-    // 'available'). Sin Ranked: ranked_available sigue en false.
+    // Ranked desde 20261226120000_ranked_all_courses (languages.ranked_available = true).
     code: 'fr',
     name: 'Francés',
     inName: 'en francés',
     alName: 'al francés',
     flag: '🇫🇷',
     status: 'available',
-    ranked: false,
+    ranked: true,
     speechLocale: 'fr-FR',
     script: 'latin',
     variant: 'Francés estándar de Francia',
     levels: ['A1', 'A2'],
   },
   {
-    // El contenido se enseña desde el inglés (support); queda «Próximamente» hasta tener la interfaz
-    // en inglés y el curso en producción (docs/ES_A1_A2.md, docs/MULTILINGUAL_ONBOARDING_PLAN.md).
+    // El contenido se enseña desde el inglés (support): curso es-from-en, A1 U1–U17 y A2 U1–U12
+    // publicados (docs/ES_A1_A2.md). Disponible y con Ranked desde 20261226120000_ranked_all_courses;
+    // se elige desde «Tus cursos» (grupo «desde inglés»), no en el onboarding en español.
     // Variante: español neutro de Latinoamérica, con tú y ustedes (docs/ES_NEUTRAL_GUIDE.md).
     code: 'es',
     name: 'Español',
     inName: 'en español',
     alName: 'al español',
     flag: '🇪🇸',
-    status: 'soon',
-    ranked: false,
+    status: 'available',
+    ranked: true,
     speechLocale: 'es-MX',
     script: 'latin',
     variant: 'Español neutro de Latinoamérica (tú y ustedes)',
-    levels: [],
+    levels: ['A1', 'A2'],
     support: { code: 'en', targetName: 'Spanish' },
   },
 ];

@@ -1,5 +1,6 @@
 import type { Exercise } from '../../shared/exercises';
 import { languageConfig } from '../../shared/languages';
+import { readingDictionary, segmentReadings } from '../../shared/readings';
 import { COURSES as COURSE_CATALOG } from '../../shared/courses';
 import {
   BAND_SIZE,
@@ -9,8 +10,12 @@ import {
   type PlacementDimension,
   type PlacementItem,
 } from '../../shared/placement';
+import { ES_PATH } from '../es-course';
 import { FR_PATH } from '../fr-course';
 import { CURRICULUM_PATH, type PathUnit } from '../index';
+import { IT_PATH } from '../it-course';
+import { PT_PATH } from '../pt-course';
+import { ZH_PATH } from '../zh-course';
 import { lessonExerciseIndex, pathExerciseId } from '../path';
 import type { ExerciseDef } from '../types';
 
@@ -41,6 +46,16 @@ interface CourseSource {
   declaredIdsPublished: boolean;
 }
 
+/**
+ * Italiano, portugués y chino: el piloto A1 U1–U12 (CURRICULUM_PATH, ids por posición, ninguno
+ * declarado) y, en su propio camino, A1 U13–U16 y A2 U1–U12, cargados y publicados juntos con ids
+ * declarados (2026-11-23). Español: todo el curso se cargó y publicó junto, con ids declarados.
+ */
+const pilotPlus = (language: string, rest: readonly PathUnit[]): CourseSource => ({
+  path: [...CURRICULUM_PATH.filter((u) => u.language === language), ...rest],
+  declaredIdsPublished: true,
+});
+
 /** De dónde sale el contenido publicado de cada curso con más de un nivel. */
 const SOURCES: Record<string, CourseSource> = {
   'en-from-es': {
@@ -48,6 +63,10 @@ const SOURCES: Record<string, CourseSource> = {
     declaredIdsPublished: false,
   },
   'fr-from-es': { path: FR_PATH, declaredIdsPublished: true },
+  'it-from-es': pilotPlus('it', IT_PATH),
+  'pt-from-es': pilotPlus('pt', PT_PATH),
+  'zh-from-es': pilotPlus('zh', ZH_PATH),
+  'es-from-en': { path: ES_PATH, declaredIdsPublished: true },
 };
 
 /** Dimensiones de las tres preguntas de cada banda, de la más fácil a la más difícil. */
@@ -194,7 +213,33 @@ export function buildPlacementBank(courseCode: string): PlacementBank | null {
     return { level, firstUnitTitle: units[0]!.unit.title, units: units.length };
   });
 
-  return { courseCode, version: PLACEMENT_VERSION, levels: levelInfo, bands };
+  const bank: PlacementBank = { courseCode, version: PLACEMENT_VERSION, levels: levelInfo, bands };
+  if (languageConfig(course.target).script === 'han') {
+    bank.readings = bankReadings(
+      bands,
+      source.path.flatMap((u) => u.unit.words),
+    );
+  }
+  return bank;
+}
+
+/**
+ * Pinyin de lo que muestran las preguntas: se segmenta cada pregunta con el mismo diccionario que usa
+ * la app en las lecciones (vocabulario del curso + EXTRA_READINGS) y se guardan sólo las entradas
+ * usadas, en orden alfabético (determinista).
+ */
+function bankReadings(
+  bands: readonly PlacementBand[],
+  words: readonly { text: string; romanization?: string }[],
+): Record<string, string> {
+  const dict = readingDictionary(words);
+  const used = new Map<string, string>();
+  for (const item of bands.flatMap((b) => b.items)) {
+    for (const s of segmentReadings(JSON.stringify(item.exercise), dict)) {
+      if (s.reading) used.set(s.text, s.reading);
+    }
+  }
+  return Object.fromEntries([...used].sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0)));
 }
 
 /** Bancos de todos los cursos que lo necesitan (dos o más niveles publicados). */

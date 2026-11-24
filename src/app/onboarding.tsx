@@ -13,6 +13,7 @@ import {
   type AvatarId,
   type DailyGoalMinutes,
 } from '@shared/profile';
+import { defaultCourseFor } from '@shared/courses';
 import { VISIBLE_LANGUAGES, isSelectable, languageConfig } from '@shared/languages';
 
 import {
@@ -64,6 +65,10 @@ const GOAL_LABELS: Record<DailyGoalMinutes, string> = {
   15: 'Serio',
   20: 'Intenso',
 };
+
+const ONBOARDING_LANGUAGES = VISIBLE_LANGUAGES.filter(
+  (l) => defaultCourseFor(l.code).source === 'es',
+);
 
 export default function OnboardingScreen() {
   const styles = useStyles();
@@ -176,7 +181,9 @@ export default function OnboardingScreen() {
 
         {step === 'language' &&
           // Al registrarse se eligen los idiomas disponibles para todos (los beta, sólo desde Perfil).
-          VISIBLE_LANGUAGES.map((l) => (
+          // Este registro está en español: sólo los cursos que se enseñan desde el español. El de español
+          // (desde el inglés) se empieza desde «Tus cursos» hasta que exista el registro en inglés.
+          ONBOARDING_LANGUAGES.map((l) => (
             <SelectCard
               key={l.code}
               title={l.name}

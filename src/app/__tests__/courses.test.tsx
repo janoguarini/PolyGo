@@ -89,10 +89,11 @@ it('los cursos para empezar van por idioma de origen: test de nivel o desde A1',
   await render(<CoursesScreen />);
   expect(screen.getByText('EMPEZAR UN CURSO NUEVO')).toBeTruthy();
   expect(screen.getByText(/Para hablantes de español/)).toBeTruthy();
-  // Francés (A1 y A2) ofrece el test; portugués y chino (sólo A1) empiezan en A1.
-  expect(screen.getAllByText(/Test de nivel o desde A1/).length).toBe(1);
-  expect(screen.getAllByText(/Empezás desde A1/).length).toBe(2);
-  expect(screen.queryByText('Español', { exact: true })).toBeNull(); // no hay curso de español todavía
+  // Todos los cursos tienen A1 y A2: francés, portugués y chino (desde español) y español (desde
+  // inglés) ofrecen el test de nivel.
+  expect(screen.getAllByText(/Test de nivel o desde A1/).length).toBe(4);
+  expect(screen.queryByText(/Empezás desde A1/)).toBeNull();
+  expect(screen.getByText(/Para hablantes de inglés/)).toBeTruthy();
 });
 
 it('tocar uno de mis cursos lo elige y vuelve a Aprender; uno nuevo abre por dónde empezar', async () => {
@@ -159,7 +160,7 @@ it('en inglés: textos, idiomas y etiquetas de accesibilidad en inglés', async 
   expect(
     screen.getByRole('button', { name: 'Italian from Spanish, level A1, 33 percent' }),
   ).toBeTruthy();
-  expect(screen.getAllByText(/Starts at A1/).length).toBe(2);
-  expect(screen.getByText(/Placement test or start at A1/)).toBeTruthy();
+  expect(screen.queryByText(/Starts at A1/)).toBeNull();
+  expect(screen.getAllByText(/Placement test or start at A1/).length).toBe(4);
   expect(screen.getByText('Keep learning')).toBeTruthy();
 });

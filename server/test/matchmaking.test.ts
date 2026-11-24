@@ -85,3 +85,27 @@ test('con muchos jugadores arma varios pares sin repetir a nadie', () => {
   assert.equal(new Set(ids).size, 8);
   assert.equal(mm.size, 1);
 });
+
+test('seis cursos en la cola a la vez: cada pareja es del mismo idioma y nadie queda con otro curso', () => {
+  const mm = new Matchmaker();
+  const languages = ['en', 'fr', 'it', 'pt', 'zh', 'es'];
+  // Dos jugadores por idioma, todos con el mismo rating: el idioma es lo único que los separa.
+  for (const language of languages) {
+    mm.join(entry(`${language}-1`, 500, 0, language));
+    mm.join(entry(`${language}-2`, 500, 0, language));
+  }
+  // Uno más en francés, solo: aunque espere mucho, no se lo empareja con otro idioma.
+  mm.join(entry('fr-solo', 500, 0, 'fr'));
+
+  const pairs = mm.takePairs(600_000);
+  assert.equal(pairs.length, languages.length);
+  for (const [a, b] of pairs) assert.equal(a.languageCode, b.languageCode);
+  assert.deepEqual(pairs.map(([a]) => a.languageCode).sort(), [...languages].sort());
+  assert.equal(mm.size, 1);
+  assert.equal(mm.takePairs(10 * 600_000).length, 0);
+  // Sin rival de su curso, pasa al bot (si tiene cupo de calibración) después de la espera.
+  assert.deepEqual(
+    mm.takeWaitingLongerThan(1, 600_001).map((e) => [e.userId, e.languageCode]),
+    [['fr-solo', 'fr']],
+  );
+});

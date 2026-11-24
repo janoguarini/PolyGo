@@ -9,6 +9,7 @@ import { PlacementUnsupportedError } from '@/features/placement/startCourse';
 import { __setInterfaceLanguageForTests } from '@/i18n';
 
 import PlacementScreen from '../placement/[code]';
+import { LANGUAGES } from '@shared/languages';
 
 const mockRouter = {
   back: jest.fn(),
@@ -108,6 +109,22 @@ beforeEach(() => {
 });
 
 afterAll(() => __setInterfaceLanguageForTests('es'));
+
+/** Cambia por un momento la configuración de un idioma (hoy todos tienen A1 y A2 y están disponibles). */
+async function withLanguage(
+  code: string,
+  patch: { levels?: string[]; status?: string },
+  fn: () => Promise<void>,
+) {
+  const config = LANGUAGES.find((l) => l.code === code) as unknown as Record<string, unknown>;
+  const saved = { levels: config.levels, status: config.status };
+  Object.assign(config, patch);
+  try {
+    await fn();
+  } finally {
+    Object.assign(config, saved);
+  }
+}
 
 it('bienvenida: qué se evalúa, cómo funciona y cuánto dura', async () => {
   await render(<PlacementScreen />);
@@ -270,8 +287,10 @@ it('repetir el test vuelve a la bienvenida sin guardar', async () => {
 
 it('un curso sin test (un solo nivel) no muestra preguntas', async () => {
   mockCode = 'it-from-es';
-  await render(<PlacementScreen />);
-  expect(screen.getByText('Este curso no tiene test de nivel')).toBeTruthy();
+  await withLanguage('it', { levels: ['A1'] }, async () => {
+    await render(<PlacementScreen />);
+    expect(screen.getByText('Este curso no tiene test de nivel')).toBeTruthy();
+  });
 });
 
 it('en inglés: instrucciones y resultado en el idioma de la interfaz; las preguntas, del curso', async () => {
