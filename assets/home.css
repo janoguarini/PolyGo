@@ -1805,3 +1805,22 @@
     display: none;
   }
 }
+
+/* Emojis 3D (Fluent, licencia MIT) en las funciones */
+.fi img {
+  width: 46px;
+  height: 46px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.35));
+}
+.fi {
+  width: 66px;
+  height: 66px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.22), rgba(192, 38, 211, 0.1));
+}
+/* Saltos desde el menú: el título de la sección queda justo debajo del menú, no su aire. */
+.home section[id] {
+  scroll-margin-top: -64px;
+}
+.home #inicio {
+  scroll-margin-top: 0;
+}
