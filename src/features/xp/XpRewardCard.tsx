@@ -44,11 +44,14 @@ const ratioOf = (xp: XpState) => (xp.need > 0 ? Math.min(1, xp.into / xp.need) :
 export function XpRewardCard({
   before,
   saved,
+  compact = false,
 }: {
   /** XP antes de la sesión (null: el servidor todavía no tiene XP; undefined: no se leyó). */
   before: XpState | null | undefined;
   /** La sesión ya se guardó (recién ahí el servidor acredita la XP). */
   saved: boolean;
+  /** Versión baja (resultado de Ranked): una fila con la ganancia, la barra y el nivel. */
+  compact?: boolean;
 }) {
   const styles = useStyles();
   const t = useStrings(xpStrings);
@@ -113,6 +116,68 @@ export function XpRewardCard({
   const current = after ?? before;
   const maxed = current.need === 0;
 
+  const badge = (size: number) => (
+    <Animated.View
+      key={shownLevel}
+      entering={levelUp && !reduceMotion ? ZoomIn.springify().damping(8) : undefined}
+    >
+      <LevelBadge level={shownLevel} size={size} />
+    </Animated.View>
+  );
+  const track = (
+    <View style={[styles.track, compact && styles.trackCompact]}>
+      <Animated.View style={[styles.fill, bar]}>
+        <LinearGradient
+          colors={XP_BAR_COLORS}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          style={StyleSheet.absoluteFill}
+        />
+      </Animated.View>
+    </View>
+  );
+  const progress = maxed
+    ? t.maxReached
+    : `${nf.format(current.into)} / ${nf.format(current.need)} XP`;
+
+  if (compact) {
+    return (
+      <Animated.View
+        entering={reduceMotion ? undefined : FadeInUp.delay(200).duration(400)}
+        accessible
+        accessibilityLabel={after ? t.rewardA11y(gained, current.level) : t.rewardAdding}
+      >
+        <Card style={[styles.card, styles.cardCompact]}>
+          {badge(40)}
+          <View style={styles.flex}>
+            <View style={styles.compactTop}>
+              {after ? (
+                <View style={[styles.gainRow, styles.gainRowCompact]}>
+                  <Sparkles color={colors.gold} size={16} />
+                  <Text style={styles.gainCompact}>+{nf.format(shownGain)} XP</Text>
+                </View>
+              ) : (
+                <View style={[styles.gainRow, styles.gainRowCompact]}>
+                  <ActivityIndicator color={colors.gold} size="small" />
+                  <Text variant="caption" color="text">
+                    {t.rewardAdding}
+                  </Text>
+                </View>
+              )}
+              <Text variant="caption" color={levelUp ? 'gold' : 'text'} style={styles.tabular}>
+                {levelUp ? t.rewardLevelUp(levelUp) : t.level(shownLevel)}
+              </Text>
+            </View>
+            {track}
+            <Text variant="caption" style={styles.tabular}>
+              {progress}
+            </Text>
+          </View>
+        </Card>
+      </Animated.View>
+    );
+  }
+
   return (
     <Animated.View
       entering={reduceMotion ? undefined : FadeInUp.delay(200).duration(400)}
@@ -139,30 +204,16 @@ export function XpRewardCard({
               </View>
             )}
           </View>
-          <Animated.View
-            key={shownLevel}
-            entering={levelUp && !reduceMotion ? ZoomIn.springify().damping(8) : undefined}
-          >
-            <LevelBadge level={shownLevel} size={54} />
-          </Animated.View>
+          {badge(54)}
         </View>
 
-        <View style={styles.track}>
-          <Animated.View style={[styles.fill, bar]}>
-            <LinearGradient
-              colors={XP_BAR_COLORS}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0 }}
-              style={StyleSheet.absoluteFill}
-            />
-          </Animated.View>
-        </View>
+        {track}
         <View style={styles.bottom}>
           <Text variant="caption" color="textStrong" style={styles.tabular}>
             {t.level(shownLevel)}
           </Text>
           <Text variant="caption" color="text" style={styles.tabular}>
-            {maxed ? t.maxReached : `${nf.format(current.into)} / ${nf.format(current.need)} XP`}
+            {progress}
           </Text>
         </View>
 
@@ -188,9 +239,26 @@ const useStyles = themedStyles(() =>
     gain: {
       color: colors.gold,
       fontSize: 34,
+      lineHeight: 40,
       fontWeight: '900',
       fontVariant: ['tabular-nums'],
     },
+    cardCompact: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.md,
+      paddingVertical: spacing.sm,
+    },
+    compactTop: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+    gainCompact: {
+      color: colors.gold,
+      fontSize: 20,
+      lineHeight: 26,
+      fontWeight: '900',
+      fontVariant: ['tabular-nums'],
+    },
+    trackCompact: { height: 8 },
+    gainRowCompact: { minHeight: 26 },
     track: {
       height: 14,
       borderRadius: 999,

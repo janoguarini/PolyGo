@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 6,
   },
-  cellText: { ...arcadeText.option, fontSize: 17 },
+  cellText: { ...arcadeText.option, fontSize: 17, lineHeight: 22 },
   active: { borderColor: arcade.violetGlow, backgroundColor: arcade.cardRaised },
   wrong: { borderColor: arcade.danger, backgroundColor: '#3A1020' },
   done: { borderColor: arcade.success, backgroundColor: '#0E2A22' },

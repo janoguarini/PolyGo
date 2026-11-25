@@ -35,6 +35,7 @@ import {
   themedStyles,
   gradients,
 } from '@/design-system';
+import { TourTarget } from '@/features/onboarding/tourTargets';
 import { rankedDisabled } from '@/features/battle/availability';
 import { battleStrings } from '@/features/battle/strings';
 import { useActiveSeason, useMyProfile } from '@/features/profile/hooks';
@@ -153,7 +154,9 @@ export default function RankedScreen() {
               <Text color="textMuted">{t.disabledBody}</Text>
             </Card>
           ) : (
-            <MatchModeCard />
+            <TourTarget id="ranked-play">
+              <MatchModeCard />
+            </TourTarget>
           )}
 
           <FriendChallengeCard />

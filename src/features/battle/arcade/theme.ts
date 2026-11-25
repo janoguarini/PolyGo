@@ -28,9 +28,29 @@ export const arcadeRadii = { card: 20, block: 14, pill: 999 } as const;
 export const ARCADE_TOUCH = 52;
 
 export const arcadeText = StyleSheet.create({
-  title: { color: arcade.text, fontSize: 30, fontWeight: '800', textAlign: 'center' },
-  word: { color: arcade.text, fontSize: 34, fontWeight: '800', textAlign: 'center' },
-  option: { color: arcade.text, fontSize: 18, fontWeight: '700', textAlign: 'center' },
+  // lineHeight explícito: TargetText usa el Text del design system, que si no deja la de cuerpo (22) y
+  // recorta arriba y abajo las letras grandes.
+  title: {
+    color: arcade.text,
+    fontSize: 30,
+    lineHeight: 36,
+    fontWeight: '800',
+    textAlign: 'center',
+  },
+  word: {
+    color: arcade.text,
+    fontSize: 34,
+    lineHeight: 42,
+    fontWeight: '800',
+    textAlign: 'center',
+  },
+  option: {
+    color: arcade.text,
+    fontSize: 18,
+    lineHeight: 24,
+    fontWeight: '700',
+    textAlign: 'center',
+  },
   label: {
     color: arcade.muted,
     fontSize: 12,
@@ -39,5 +59,5 @@ export const arcadeText = StyleSheet.create({
     textTransform: 'uppercase',
     textAlign: 'center',
   },
-  body: { color: arcade.text, fontSize: 16, fontWeight: '600' },
+  body: { color: arcade.text, fontSize: 16, lineHeight: 22, fontWeight: '600' },
 });

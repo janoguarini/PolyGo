@@ -310,7 +310,10 @@ describe('resultado de Word Rush', () => {
         onExit={jest.fn()}
       />,
     );
-    expect(screen.getByText('ELO anterior')).toBeTruthy();
+    // El ELO va dentro de la tarjeta de división: «1000 → 1012 ELO» y el «+12 ELO» del título.
+    expect(screen.getByText('1000')).toBeTruthy();
+    expect(screen.getByText('1012')).toBeTruthy();
+    expect(screen.getByText(/\+12/)).toBeTruthy();
   });
 });
 

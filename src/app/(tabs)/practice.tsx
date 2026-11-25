@@ -28,6 +28,7 @@ import {
   spacing,
   themedStyles,
 } from '@/design-system';
+import { TourTarget } from '@/features/onboarding/tourTargets';
 import { SpeakButton } from '@/features/learning/components/SpeakButton';
 import { useMyWords, useWordOfTheDay } from '@/features/learning/hooks';
 import { usePlus } from '@/features/plus/api';
@@ -81,7 +82,7 @@ export default function PracticeScreen() {
           <Text color="text">{t.subtitle}</Text>
         </View>
         <View style={styles.mascot} pointerEvents="none">
-          <Mascot pose="thinking" height={128} />
+          <Mascot pose="thinking" height={124} />
         </View>
       </View>
 
@@ -120,46 +121,48 @@ export default function PracticeScreen() {
         </BrandCard>
       ) : null}
 
-      <BrandCard glow={due.length > 0} contentStyle={styles.todayCard}>
-        <View style={styles.todayTop}>
-          <View style={styles.chip}>
-            <CalendarDays color={colors.textStrong} size={16} />
-            <Text variant="bodyStrong" color="textStrong">
-              {t.forToday}
-            </Text>
-          </View>
-          {!empty ? (
-            <View style={[styles.chip, styles.chipAccent]}>
-              {due.length === 0 ? <CircleCheck color={colors.success} size={14} /> : null}
-              <Text variant="caption" color="primarySoft" style={styles.bold}>
-                {t.pending(due.length)}
+      <TourTarget id="practice-today">
+        <BrandCard glow={due.length > 0} contentStyle={styles.todayCard}>
+          <View style={styles.todayTop}>
+            <View style={styles.chip}>
+              <CalendarDays color={colors.textStrong} size={16} />
+              <Text variant="bodyStrong" color="textStrong">
+                {t.forToday}
               </Text>
             </View>
-          ) : null}
-        </View>
-        <View style={styles.todayBody}>
-          <View style={styles.todayText}>
-            <Text variant="heading" color="textStrong">
-              {due.length > 0 ? t.haveReviews : empty ? t.nothingToReview : t.upToDate}
-            </Text>
-            <Text color="text">
-              {empty ? t.emptyCaption : due.length > 0 ? t.reviewCaption : t.upToDateCaption}
-            </Text>
+            {!empty ? (
+              <View style={[styles.chip, styles.chipAccent]}>
+                {due.length === 0 ? <CircleCheck color={colors.success} size={14} /> : null}
+                <Text variant="caption" color="primarySoft" style={styles.bold}>
+                  {t.pending(due.length)}
+                </Text>
+              </View>
+            ) : null}
           </View>
-          <TargetArt />
-        </View>
-        {empty ? (
-          <Button label={t.firstLesson} onPress={() => router.navigate('/')} />
-        ) : (
-          <Button
-            label={t.reviewNow}
-            size="lg"
-            icon={<Play color={colors.onPrimary} fill={colors.onPrimary} size={18} />}
-            disabled={due.length === 0}
-            onPress={() => router.push('/review')}
-          />
-        )}
-      </BrandCard>
+          <View style={styles.todayBody}>
+            <View style={styles.todayText}>
+              <Text variant="heading" color="textStrong">
+                {due.length > 0 ? t.haveReviews : empty ? t.nothingToReview : t.upToDate}
+              </Text>
+              <Text color="text">
+                {empty ? t.emptyCaption : due.length > 0 ? t.reviewCaption : t.upToDateCaption}
+              </Text>
+            </View>
+            <TargetArt />
+          </View>
+          {empty ? (
+            <Button label={t.firstLesson} onPress={() => router.navigate('/')} />
+          ) : (
+            <Button
+              label={t.reviewNow}
+              size="lg"
+              icon={<Play color={colors.onPrimary} fill={colors.onPrimary} size={18} />}
+              disabled={due.length === 0}
+              onPress={() => router.push('/review')}
+            />
+          )}
+        </BrandCard>
+      </TourTarget>
 
       <View style={styles.sectionTitle}>
         <Zap color={colors.primarySoft} size={22} />
@@ -305,7 +308,8 @@ const useStyles = themedStyles(() =>
     header: { flexDirection: 'row', alignItems: 'center', minHeight: 128 },
     headerText: { flex: 1, gap: spacing.xs, zIndex: 1 },
     titleRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-    mascot: { marginRight: -spacing.md, marginLeft: -spacing.lg },
+    // Al costado del texto, sin superponerse (sólo sobresale hacia el margen derecho).
+    mascot: { marginLeft: spacing.sm, marginRight: -spacing.sm },
     wordCard: { gap: spacing.sm, padding: spacing.lg },
     wordTop: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
     overlinePill: {

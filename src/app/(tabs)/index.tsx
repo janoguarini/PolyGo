@@ -50,6 +50,7 @@ import { useStreakRepair } from '@/features/polys/api';
 import { useTabPressScroll } from '@/lib/useTabPressScroll';
 import { usePrefetchLanguagePaths } from '@/features/profile/components/LanguagesRow';
 import { CourseSwitcher } from '@/features/courses/CourseSwitcher';
+import { TourTarget } from '@/features/onboarding/tourTargets';
 import { useLanguageStartLevel } from '@/features/courses/hooks';
 import { useMyProfile } from '@/features/profile/hooks';
 import { useStrings } from '@/i18n';
@@ -175,42 +176,44 @@ export default function HomeScreen() {
             />
           </Pressable>
         </View>
-        <EnergyChip open={energyOpen} onPress={() => setEnergyOpen((o) => !o)} />
-        <PolysChip />
-        {/* Tocar la racha abre su calendario (sólo lectura: no cambia la racha). */}
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel={t.streakA11y(streak, activeToday, freezes)}
-          accessibilityHint={streakT.openCalendarHint}
-          onPress={() => setCalendarOpen(true)}
-          hitSlop={6}
-          style={({ pressed }) => [
-            styles.streak,
-            activeToday && styles.streakActive,
-            pressed && styles.pressed,
-          ]}
-        >
-          <Flame
-            color={activeToday ? colors.streak : colors.textSubtle}
-            fill={activeToday ? colors.streak : 'transparent'}
-            size={22}
-          />
-          <Text
-            variant="heading"
-            color={activeToday ? 'streak' : 'textMuted'}
-            style={styles.tabular}
+        <TourTarget id="learn-stats" style={styles.stats}>
+          <EnergyChip open={energyOpen} onPress={() => setEnergyOpen((o) => !o)} />
+          <PolysChip />
+          {/* Tocar la racha abre su calendario (sólo lectura: no cambia la racha). */}
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={t.streakA11y(streak, activeToday, freezes)}
+            accessibilityHint={streakT.openCalendarHint}
+            onPress={() => setCalendarOpen(true)}
+            hitSlop={6}
+            style={({ pressed }) => [
+              styles.streak,
+              activeToday && styles.streakActive,
+              pressed && styles.pressed,
+            ]}
           >
-            {streak}
-          </Text>
-          {freezes ? (
-            <View style={styles.freezeBadge}>
-              <Snowflake color={colors.info} size={12} />
-              <Text variant="caption" color="info">
-                {freezes}
-              </Text>
-            </View>
-          ) : null}
-        </Pressable>
+            <Flame
+              color={activeToday ? colors.streak : colors.textSubtle}
+              fill={activeToday ? colors.streak : 'transparent'}
+              size={22}
+            />
+            <Text
+              variant="heading"
+              color={activeToday ? 'streak' : 'textMuted'}
+              style={styles.tabular}
+            >
+              {streak}
+            </Text>
+            {freezes ? (
+              <View style={styles.freezeBadge}>
+                <Snowflake color={colors.info} size={12} />
+                <Text variant="caption" color="info">
+                  {freezes}
+                </Text>
+              </View>
+            ) : null}
+          </Pressable>
+        </TourTarget>
       </View>
       {coursesOpen ? <CourseSwitcher onClose={() => setCoursesOpen(false)} /> : null}
       <StreakCalendar
@@ -337,6 +340,7 @@ const useStyles = themedStyles(() =>
       gap: spacing.sm,
     },
     headerRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+    stats: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
     language: {
       flexDirection: 'row',
       alignItems: 'center',

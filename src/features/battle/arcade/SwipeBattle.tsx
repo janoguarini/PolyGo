@@ -111,9 +111,23 @@ export function SwipeBattle({
         <Animated.View style={[styles.stamp, styles.stampNo, no]} pointerEvents="none">
           <X color={arcade.danger} size={28} strokeWidth={3} />
         </Animated.View>
-        <TargetText style={arcadeText.word}>{view.prompt}</TargetText>
+        <TargetText
+          style={arcadeText.word}
+          numberOfLines={2}
+          adjustsFontSizeToFit
+          minimumFontScale={0.6}
+        >
+          {view.prompt}
+        </TargetText>
         <View style={styles.divider} />
-        <Text style={styles.candidate}>{view.candidate}</Text>
+        <Text
+          style={styles.candidate}
+          numberOfLines={2}
+          adjustsFontSizeToFit
+          minimumFontScale={0.6}
+        >
+          {view.candidate}
+        </Text>
       </Animated.View>
       <View style={styles.buttons}>
         <Pressable
@@ -156,7 +170,13 @@ const styles = StyleSheet.create({
     elevation: 8,
   },
   divider: { width: 48, height: 3, borderRadius: 2, backgroundColor: arcade.border },
-  candidate: { color: arcade.gold, fontSize: 26, fontWeight: '800', textAlign: 'center' },
+  candidate: {
+    color: arcade.gold,
+    fontSize: 26,
+    lineHeight: 32,
+    fontWeight: '800',
+    textAlign: 'center',
+  },
   stamp: {
     position: 'absolute',
     top: 14,

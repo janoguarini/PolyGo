@@ -36,24 +36,15 @@ import { battleStrings } from '../strings';
 // Incrustadas en el bundle (scripts/build-image-data.ts): aparecen al instante.
 const FOX = { win: foxVictory, loss: foxDefeat };
 const FOX_LABEL = { win: 'foxWin', loss: 'foxLoss' } as const;
-/** Color de la pantalla detrás del zorro: los bordes de la foto se funden hacia él. */
-/** Desvanecido hacia el fondo del tema (y el mismo color transparente, sin halo gris). */
-const fadeTo = () => colors.background;
-const fadeFrom = () => {
-  const hex = colors.background.replace('#', '');
-  const [r, g, b] = [0, 2, 4].map((i) => parseInt(hex.slice(i, i + 2), 16));
-  return `rgba(${r}, ${g}, ${b}, 0)`;
-};
-
 /**
- * Alto que necesita el resto del resultado para que la tarjeta de rango SIEMPRE se vea completa sin
- * scrollear: barra superior, corona, título, ELO, subtítulo, la tarjeta «ELO anterior → actual», la de
- * la división y los espacios entre medio (medido en el iPhone, con margen).
+ * Alto que necesita el resto del resultado para que la tarjeta de división (con el ELO) y la de
+ * experiencia SIEMPRE se vean completas sin scrollear: barra superior, corona, título, ELO, subtítulo,
+ * la tarjeta de división, la de XP (compacta) y los espacios entre medio (medido en el iPhone, con margen).
  */
-const RESERVED_RATED = 530;
+const RESERVED_RATED = 500;
 /** Sin ELO no hay tarjetas de rango: el zorro puede ser más grande. */
 const RESERVED_UNRATED = 330;
-const FOX_MAX = 320;
+const FOX_MAX = 300;
 /** Más chico que esto no se luce: mejor no mostrarlo y dejar el rango a la vista. */
 const FOX_MIN = 110;
 
@@ -128,31 +119,6 @@ export function ResultHero({ outcome, ratingBefore, ratingAfter, placedBefore, s
             accessibilityIgnoresInvertColors
             accessibilityLabel={t[FOX_LABEL[outcome]]}
           />
-          {/* Bordes difuminados para que no se vea el cuadrado de la foto. */}
-          <LinearGradient
-            colors={[fadeTo(), fadeFrom()]}
-            style={styles.fadeTop}
-            pointerEvents="none"
-          />
-          <LinearGradient
-            colors={[fadeFrom(), fadeTo()]}
-            style={styles.fadeBottom}
-            pointerEvents="none"
-          />
-          <LinearGradient
-            colors={[fadeTo(), fadeFrom()]}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 0 }}
-            style={styles.fadeLeft}
-            pointerEvents="none"
-          />
-          <LinearGradient
-            colors={[fadeFrom(), fadeTo()]}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 0 }}
-            style={styles.fadeRight}
-            pointerEvents="none"
-          />
         </Animated.View>
       ) : null}
 
@@ -168,58 +134,17 @@ export function ResultHero({ outcome, ratingBefore, ratingAfter, placedBefore, s
           </Card>
         </Animated.View>
       ) : rated ? (
-        <>
-          {placedBefore ? (
-            <Animated.View entering={FadeInUp.delay(250).duration(400)}>
-              <Card
-                style={styles.elo}
-                accessibilityLabel={t.eloBeforeAfterA11y(ratingBefore, ratingAfter)}
-              >
-                <EloValue value={ratingBefore} label={t.previousElo} />
-                <ArrowRight color={colors.textMuted} size={22} />
-                <EloValue
-                  value={ratingAfter}
-                  label={t.currentElo}
-                  color={delta > 0 ? 'primarySoft' : delta < 0 ? 'danger' : 'textStrong'}
-                />
-              </Card>
-            </Animated.View>
-          ) : null}
-          <Animated.View entering={FadeInUp.delay(350).duration(400)}>
-            <DivisionProgress
-              before={ratingBefore}
-              after={ratingAfter}
-              placedBefore={placedBefore}
-            />
-          </Animated.View>
-        </>
+        <Animated.View entering={FadeInUp.delay(250).duration(400)}>
+          <DivisionProgress before={ratingBefore} after={ratingAfter} placedBefore={placedBefore} />
+        </Animated.View>
       ) : null}
     </View>
   );
 }
 
-function EloValue({
-  value,
-  label,
-  color = 'textStrong',
-}: {
-  value: number;
-  label: string;
-  color?: keyof typeof colors;
-}) {
-  const styles = useStyles();
-  return (
-    <View style={styles.eloValue}>
-      <Text variant="title" color={color} style={styles.tabular}>
-        {value}
-      </Text>
-      <Text variant="caption">{label}</Text>
-    </View>
-  );
-}
-
 /**
- * Barra hacia la próxima división. Arranca donde estabas antes de la partida y va hasta donde
+ * División y ELO en una sola tarjeta: emblema, división, «135 → 151» y la barra hacia la próxima
+ * división. La barra arranca donde estabas antes de la partida y va hasta donde
  * quedaste. Si cambiaste de división, primero llega al borde (lleno al subir, vacío al bajar)
  * y sigue desde el otro extremo en la división nueva.
  */
@@ -270,21 +195,42 @@ function DivisionProgress({
         : t.yourDivision;
   const afterLabel = ranks.label(rankAfter);
   const next = nextLabel(rankAfter, after, t, ranks.label);
+  const delta = after - before;
+  const eloColor = delta > 0 ? 'primarySoft' : delta < 0 ? 'danger' : 'textStrong';
 
   return (
     <Card
       style={[styles.division, promoted && styles.promoted, demoted && styles.demoted]}
-      accessibilityLabel={`${heading} ${afterLabel}. ${next}`}
+      accessibilityLabel={`${heading} ${afterLabel}. ${placedBefore ? t.eloBeforeAfterA11y(before, after) + '. ' : ''}${next}`}
     >
-      <RankEmblemForRating rating={after} size={64} />
+      <RankEmblemForRating rating={after} size={56} />
       <View style={styles.flex}>
         <Text variant="caption">{heading}</Text>
-        <Text
-          variant="title"
-          color={promoted || !placedBefore ? 'primarySoft' : demoted ? 'danger' : 'textStrong'}
-        >
-          {afterLabel}
-        </Text>
+        <View style={styles.rankRow}>
+          <Text
+            variant="title"
+            color={promoted || !placedBefore ? 'primarySoft' : demoted ? 'danger' : 'textStrong'}
+            style={styles.flexShrink}
+            numberOfLines={1}
+          >
+            {afterLabel}
+          </Text>
+          {/* ELO de antes → ahora (al posicionarte por primera vez no hay «antes»). */}
+          <View style={styles.eloChange}>
+            {placedBefore ? (
+              <>
+                <Text variant="bodyStrong" color="textMuted" style={styles.tabular}>
+                  {before}
+                </Text>
+                <ArrowRight color={colors.textMuted} size={16} />
+              </>
+            ) : null}
+            <Text variant="heading" color={eloColor} style={styles.tabular}>
+              {after}
+            </Text>
+            <Text variant="caption">ELO</Text>
+          </View>
+        </View>
         <View style={styles.track}>
           <Animated.View style={[styles.fill, barStyle]}>
             <LinearGradient
@@ -317,10 +263,10 @@ const BAR = 10;
 
 const useStyles = themedStyles(() =>
   StyleSheet.create({
-    wrap: { gap: spacing.md, alignItems: 'stretch' },
-    crown: { alignSelf: 'center', marginTop: spacing.sm },
+    wrap: { gap: spacing.sm, alignItems: 'stretch' },
+    crown: { alignSelf: 'center' },
     titles: { alignItems: 'center', gap: spacing.xxs },
-    lossTitles: { marginTop: spacing.lg },
+    lossTitles: { marginTop: spacing.sm },
     title: { fontSize: 40, lineHeight: 46 },
     // El tamaño lo da resultFoxSize (cuadrado, según el alto de la pantalla).
     foxWrap: {
@@ -328,19 +274,11 @@ const useStyles = themedStyles(() =>
       marginVertical: -spacing.md,
     },
     fox: { width: '100%', height: '100%' },
-    fadeTop: { position: 'absolute', left: 0, right: 0, top: 0, height: '15%' },
-    fadeBottom: { position: 'absolute', left: 0, right: 0, bottom: 0, height: '30%' },
-    fadeLeft: { position: 'absolute', top: 0, bottom: 0, left: 0, width: '15%' },
-    fadeRight: { position: 'absolute', top: 0, bottom: 0, right: 0, width: '15%' },
-    elo: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'space-around',
-      paddingVertical: spacing.lg,
-    },
-    eloValue: { alignItems: 'center', gap: spacing.xxs },
+    rankRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+    flexShrink: { flexShrink: 1 },
+    eloChange: { marginLeft: 'auto', flexDirection: 'row', alignItems: 'center', gap: spacing.xxs },
     tabular: { fontVariant: ['tabular-nums'] },
-    division: { flexDirection: 'row', alignItems: 'center', gap: spacing.lg },
+    division: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
     promoted: { borderColor: colors.primaryBright },
     demoted: { borderColor: colors.dangerStrong },
     flex: { flex: 1, gap: spacing.xxs },

@@ -176,14 +176,16 @@ describe('XP en el resultado de la partida', () => {
 });
 
 describe('el rango siempre se ve sin scrollear', () => {
-  it('el zorro usa sólo lo que sobra después de reservar el título y el rango', () => {
-    // iPhone 14/15/16 (852 pt menos zonas seguras ≈ 759): zorro mediano y el rango entra entero.
-    expect(resultFoxSize(759, true)).toBe(229);
-    // Pantallas altas: tope de 320.
-    expect(resultFoxSize(1_000, true)).toBe(320);
-    // Pantalla chica (iPhone SE ≈ 627): no entra, se oculta y queda el rango a la vista.
-    expect(resultFoxSize(627, true)).toBe(0);
-    // Sin ELO no hay tarjetas de rango: el zorro puede ser más grande.
-    expect(resultFoxSize(759, false)).toBe(320);
+  it('el zorro usa sólo lo que sobra después de reservar el título, la división y la XP', () => {
+    // iPhone 14/15/16 (852 pt menos zonas seguras ≈ 759): zorro mediano; división y XP enteras.
+    expect(resultFoxSize(759, true)).toBe(259);
+    // Pantallas altas: tope de 300.
+    expect(resultFoxSize(1_000, true)).toBe(300);
+    // iPhone SE (≈ 627): zorro chico, todavía visible.
+    expect(resultFoxSize(627, true)).toBe(127);
+    // Más chica todavía: no entra, se oculta y quedan el rango y la XP a la vista.
+    expect(resultFoxSize(590, true)).toBe(0);
+    // Sin ELO no hay tarjeta de división: el zorro puede ser más grande.
+    expect(resultFoxSize(759, false)).toBe(300);
   });
 });

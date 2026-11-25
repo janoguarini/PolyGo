@@ -94,7 +94,14 @@ export function AudioBlitz({
             style={styles.fallback}
           >
             <Text style={styles.fallbackLabel}>{t.noAudio}</Text>
-            <TargetText style={arcadeText.word}>{view.prompt}</TargetText>
+            <TargetText
+              style={arcadeText.word}
+              numberOfLines={2}
+              adjustsFontSizeToFit
+              minimumFontScale={0.6}
+            >
+              {view.prompt}
+            </TargetText>
           </Animated.View>
         ) : null}
       </View>

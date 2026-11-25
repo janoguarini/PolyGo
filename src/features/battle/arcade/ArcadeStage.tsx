@@ -65,7 +65,7 @@ export function ArcadeStage({
   return (
     <SessionLanguageProvider>
       <View style={styles.stage}>
-        <FrenzyLayer active={frenzy} />
+        <FrenzyBorder active={frenzy} />
         <ArcadeHud
           remainingMs={left}
           durationMs={a.durationMs}
@@ -86,9 +86,11 @@ export function ArcadeStage({
             <Text style={styles.offlineText}>{t.reconnecting}</Text>
           </View>
         )}
-        {/* Franja propia para «+114 x2» / «✕ respuesta»: nunca tapa la palabra ni los botones. */}
+        {/* Franja propia, debajo del marcador, para «+114 x2» / «✕ respuesta» y el cartel del Frenesí:
+            nunca tapa la palabra ni los botones. */}
         <View style={styles.flashSlot}>
           <VerdictFlash verdict={a.verdict} />
+          <FrenzyBanner active={frenzy} />
         </View>
         <View style={styles.game}>
           {left <= 0 ? (
@@ -182,17 +184,10 @@ function VerdictFlash({ verdict }: { verdict: ArcadeVerdict | null }) {
   );
 }
 
-/**
- * Frenesí: borde dorado que late y un cartel de 1,6 s que no pausa nada (no recibe toques). Vibración
- * y sonido una sola vez al activarse.
- */
-function FrenzyLayer({ active }: { active: boolean }) {
-  const t = useStrings(arcadeStrings);
+/** Frenesí: borde dorado que late mientras dura (no recibe toques). */
+function FrenzyBorder({ active }: { active: boolean }) {
   const reduceMotion = useReducedMotion();
   const glow = useSharedValue(0);
-  const [banner, setBanner] = useState(false);
-  const fired = useRef(false);
-
   useEffect(() => {
     if (!active) {
       glow.value = withTiming(0, { duration: 150 });
@@ -205,32 +200,43 @@ function FrenzyLayer({ active }: { active: boolean }) {
           -1,
           true,
         );
-    if (fired.current) return;
+  }, [active, reduceMotion, glow]);
+  const border = useAnimatedStyle(() => ({ opacity: glow.value }));
+  return <Animated.View pointerEvents="none" style={[styles.frenzyBorder, border]} />;
+}
+
+/**
+ * Cartel del Frenesí: 1,6 s en la franja de arriba (debajo del marcador), sobre el «+114». No pausa
+ * nada ni recibe toques. Vibración y sonido una sola vez al activarse.
+ */
+function FrenzyBanner({ active }: { active: boolean }) {
+  const t = useStrings(arcadeStrings);
+  const reduceMotion = useReducedMotion();
+  const [banner, setBanner] = useState(false);
+  const fired = useRef(false);
+
+  useEffect(() => {
+    if (!active || fired.current) return;
     fired.current = true;
     setBanner(true);
     playSound('streak3');
     void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
     const timer = setTimeout(() => setBanner(false), 1_600);
     return () => clearTimeout(timer);
-  }, [active, reduceMotion, glow]);
+  }, [active]);
 
-  const border = useAnimatedStyle(() => ({ opacity: glow.value }));
+  if (!banner) return null;
   return (
-    <>
-      <Animated.View pointerEvents="none" style={[styles.frenzyBorder, border]} />
-      {banner ? (
-        <Animated.View
-          pointerEvents="none"
-          entering={reduceMotion ? undefined : ZoomIn.springify().damping(10)}
-          exiting={reduceMotion ? undefined : FadeOutUp.duration(250)}
-          style={styles.banner}
-          accessibilityLiveRegion="assertive"
-        >
-          <Text style={styles.bannerTitle}>{t.frenzy}</Text>
-          <Text style={styles.bannerSub}>{t.frenzySub}</Text>
-        </Animated.View>
-      ) : null}
-    </>
+    <Animated.View
+      pointerEvents="none"
+      entering={reduceMotion ? undefined : ZoomIn.springify().damping(10)}
+      exiting={reduceMotion ? undefined : FadeOutUp.duration(250)}
+      style={styles.banner}
+      accessibilityLiveRegion="assertive"
+    >
+      <Text style={styles.bannerTitle}>{t.frenzy}</Text>
+      <Text style={styles.bannerSub}>{t.frenzySub}</Text>
+    </Animated.View>
   );
 }
 
@@ -291,14 +297,22 @@ const styles = StyleSheet.create({
   banner: {
     position: 'absolute',
     alignSelf: 'center',
-    top: '30%',
+    top: -6,
     zIndex: 10,
-    paddingHorizontal: 26,
-    paddingVertical: 14,
+    flexDirection: 'row',
+    gap: 10,
+    paddingHorizontal: 20,
+    paddingVertical: 8,
     borderRadius: arcadeRadii.card,
     backgroundColor: arcade.gold,
     alignItems: 'center',
   },
-  bannerTitle: { color: arcade.bgDeep, fontSize: 32, fontWeight: '900', letterSpacing: 1 },
-  bannerSub: { color: arcade.bgDeep, fontSize: 16, fontWeight: '900' },
+  bannerTitle: {
+    color: arcade.bgDeep,
+    fontSize: 24,
+    lineHeight: 30,
+    fontWeight: '900',
+    letterSpacing: 1,
+  },
+  bannerSub: { color: arcade.bgDeep, fontSize: 14, lineHeight: 18, fontWeight: '900' },
 });

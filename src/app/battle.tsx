@@ -550,6 +550,7 @@ function Body({
               <XpRewardCard
                 before={xpBefore?.battleId === state.result.battleId ? xpBefore.xp : undefined}
                 saved
+                compact
               />
             ) : null
           }

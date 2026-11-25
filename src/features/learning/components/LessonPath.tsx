@@ -37,6 +37,7 @@ import {
   spacing,
   themedStyles,
 } from '@/design-system';
+import { useTourTarget } from '@/features/onboarding/tourTargets';
 
 import { energyStatusText } from '@/features/plus/components/Energy';
 import { useEnergy } from '@/features/plus/api';
@@ -686,6 +687,8 @@ function LessonNode({
   const locked = node.status === 'locked';
   const current = node.status === 'current';
   const golden = node.stars === 3;
+  // El tutorial ilumina la lección actual (sólo la vista del nodo actual usa esta ref).
+  const tourRef = useTourTarget('learn-lesson');
   const iconColor = locked ? colors.textMuted : golden ? colors.background : colors.onPrimary;
 
   if (current) {
@@ -694,6 +697,8 @@ function LessonNode({
     const gradientId = `glow-${node.key}`;
     return (
       <View
+        ref={tourRef}
+        collapsable={false}
         style={[
           styles.currentSlot,
           { left: x - MAP_CURRENT_SIZE / 2, top: y - MAP_CURRENT_SIZE / 2 },
