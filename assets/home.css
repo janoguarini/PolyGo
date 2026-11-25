@@ -1847,3 +1847,39 @@
     justify-content: center;
   }
 }
+
+/* ---------- demo en vivo del teléfono de la portada ---------- */
+.phone-hero .wr-time .bar i { animation: none; width: 100%; transition: width 0.5s linear; }
+.phone-hero .tug i { animation: none; inset: 0 50% 0 0; transition: right 0.5s ease; }
+.phone-hero .wr-flashslot { height: 36px; margin-top: 10px; display: flex; justify-content: center; align-items: center; }
+.phone-hero .wr-flash { margin: 0; animation: none; opacity: 0; transform: scale(0.7); transition: opacity 0.18s ease, transform 0.18s ease; }
+.phone-hero .wr-flash.show { opacity: 1; transform: scale(1); }
+.phone-hero .wr-flash.frz { background: rgba(251, 191, 36, 0.2); color: var(--gold); }
+.phone-hero .wr-kind { margin-top: 8px; }
+.wr-stage { position: relative; height: 262px; }
+.wr-mode { position: absolute; inset: 0; opacity: 0; transform: translateY(8px); transition: opacity 0.3s ease, transform 0.3s ease; pointer-events: none; }
+.wr-mode.on { opacity: 1; transform: none; }
+.phone-hero .wr-q { margin: 14px 0 8px; }
+.phone-hero .wr-card { animation: none; transition: transform 0.35s cubic-bezier(0.5, 0, 0.75, 0), opacity 0.35s ease; }
+.phone-hero .wr-card.go { transform: translateX(150px) rotate(14deg); opacity: 0; }
+.phone-hero .wr-card.in { transition: none; transform: translateX(-30px); opacity: 0; }
+.wr-btns .yes.hit { background: rgba(52, 211, 153, 0.25); transform: scale(1.12); }
+.wr-btns span { transition: transform 0.15s ease, background 0.15s ease; }
+.wr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 6px; }
+.wr-grid span { padding: 11px 6px; border-radius: 12px; border: 1.5px solid #2f2a58; background: #16122e; text-align: center; font-weight: 800; font-size: 13px; transition: all 0.2s ease; }
+.wr-grid span.sel { border-color: var(--violet-hi); background: #2a1c63; }
+.wr-grid span.ok { border-color: var(--mint); background: rgba(52, 211, 153, 0.16); color: var(--mint); }
+.wr-wave { display: flex; justify-content: center; align-items: center; gap: 5px; height: 60px; margin: 10px 0 12px; }
+.wr-wave i { width: 6px; height: 100%; border-radius: 3px; background: linear-gradient(180deg, #e879f9, #8b5cf6); animation: eq 0.9s ease-in-out infinite; }
+.wr-wave i:nth-child(odd) { animation-delay: -0.3s; }
+.wr-wave i:nth-child(3n) { animation-delay: -0.6s; }
+.wr-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.wr-opts span { padding: 10px 4px; border-radius: 12px; border: 1.5px solid #2f2a58; background: #16122e; text-align: center; font-weight: 800; font-size: 12px; transition: all 0.2s ease; }
+.wr-opts span.ok { border-color: var(--mint); background: rgba(52, 211, 153, 0.16); color: var(--mint); }
+.wr-win { margin: 70px 0 0; text-align: center; font-size: 34px; font-weight: 900; }
+.wr-winsub { margin: 4px 0 0; text-align: center; color: var(--mint); font-weight: 900; font-size: 18px; }
+.phone-hero.frenzy { box-shadow: 0 0 0 3px #fbbf24 inset, 0 0 60px rgba(251, 191, 36, 0.55), 0 40px 80px rgba(0, 0, 0, 0.55); }
+.phone-hero.frenzy .wr-time b { color: var(--gold); }
+.f-frenzy { transition: transform 0.3s ease, opacity 0.3s ease; }
+.hero-stage:not(.frz) .f-frenzy { opacity: 0.55; }
+.hero-stage.frz .f-frenzy { transform: scale(1.12); }
