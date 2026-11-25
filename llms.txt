@@ -1,0 +1,32 @@
+# Polygo
+
+> Polygo es una app gratuita para iPhone y Android para aprender idiomas jugando: lecciones cortas, repaso con repetición espaciada y partidas competitivas 1 contra 1 en vivo (Word Rush, 60 segundos) con ELO y rangos de Bronce a Gran Maestro.
+
+Datos clave:
+- Idiomas: inglés, italiano, portugués, chino mandarín y francés para hispanohablantes; español para angloparlantes. Cursos desde cero (A1) y A2; inglés también B1 y B2.
+- Aprender: un camino de lecciones de unos 5 minutos (elegir, escuchar, escribir, unir parejas); sin errores la lección queda dorada con 3 estrellas.
+- Repasar: las palabras vuelven justo antes de olvidarlas (repetición espaciada) y hay una palabra del día.
+- Competir: Word Rush, partidas en vivo de 60 segundos con 4 microjuegos (Swipe Battle, Connect, Audio Blitz y Sentence Rush), combos y «Frenesí» (puntos dobles los últimos 15 segundos). Ranking por ELO en cada idioma, 8 rangos y clasificación global.
+- Hábito: racha diaria con protector, misiones diarias, logros, niveles de experiencia y colección de skins de zorro.
+- Precio: gratis; PolyGo Plus es opcional.
+- Web: https://polygoidiomas.com/
+
+## Guías del blog
+
+- [Cómo aprender inglés desde cero (y rápido)](https://polygoidiomas.com/blog/aprender-ingles-desde-cero): Guía práctica para aprender inglés desde cero: qué estudiar primero, vocabulario básico, pronunciación, falsos amigos, un plan de 15 minutos por día y cómo practicar jugando.
+- [Cómo aprender italiano desde cero](https://polygoidiomas.com/blog/aprender-italiano): Aprendé italiano desde cero: frases básicas, cómo se pronuncia, las dobles consonantes, falsos amigos con el español y un plan de estudio diario simple.
+- [Aprender portugués siendo hispanohablante](https://polygoidiomas.com/blog/aprender-portugues): Cómo aprender portugués brasileño rápido si hablás español: los falsos amigos más traicioneros, las vocales nasales, frases básicas y un método de práctica diaria.
+- [Cómo aprender francés sin trabarte en la pronunciación](https://polygoidiomas.com/blog/aprender-frances): Guía para aprender francés desde cero: letras que no se pronuncian, vocales nasales, la liaison, frases básicas, falsos amigos y cómo practicar el oído todos los días.
+- [Aprender chino mandarín desde cero: tonos, pinyin y caracteres](https://polygoidiomas.com/blog/aprender-chino-mandarin): Cómo empezar con el chino mandarín: los cuatro tonos, qué es el pinyin, cómo aprender caracteres sin abrumarte, el examen HSK y un plan realista para principiantes.
+- [How to learn Spanish fast: a practical guide for beginners](https://polygoidiomas.com/blog/learn-spanish): A practical guide to learning Spanish from scratch: pronunciation, ser vs. estar, gender, verb conjugation, false friends, a 15-minute daily plan and how to practice by playing.
+- [Repetición espaciada: cómo memorizar vocabulario y no olvidarlo](https://polygoidiomas.com/blog/repeticion-espaciada): Qué es la repetición espaciada, por qué funciona según la ciencia de la memoria (curva del olvido y práctica de recuperación) y cómo usarla para aprender vocabulario de un idioma.
+- [¿Cuánto tiempo se tarda en aprender un idioma?](https://polygoidiomas.com/blog/cuanto-tiempo-aprender-un-idioma): Cuántas horas lleva aprender un idioma según el nivel (A1 a C2) y según el idioma: estimaciones del Foreign Service Institute y de Cambridge, y cómo acortar los tiempos.
+- [Aprender idiomas con juegos: por qué la gamificación funciona](https://polygoidiomas.com/blog/aprender-idiomas-con-juegos): Por qué aprender idiomas jugando funciona: rachas, recompensas, desafíos cortos y competencia mantienen la constancia, que es lo que más pesa al aprender un idioma.
+- [Aprender idiomas compitiendo: partidas 1 contra 1 en vivo](https://polygoidiomas.com/blog/aprender-idiomas-compitiendo): Cómo funciona Word Rush, el modo competitivo de Polygo: partidas en vivo de 60 segundos, cuatro microjuegos, combos, Frenesí, ELO por idioma y rangos de Bronce a Gran Maestro.
+- [Cómo elegir una app para aprender idiomas: 7 criterios](https://polygoidiomas.com/blog/como-elegir-app-para-aprender-idiomas): Qué mirar antes de elegir una app para aprender idiomas: método de repaso, práctica de escucha y escritura, niveles, motivación, precio y si te hace volver todos los días.
+
+## Páginas
+
+- [Inicio](https://polygoidiomas.com/): qué es Polygo y cómo funciona.
+- [Blog](https://polygoidiomas.com/blog/): todas las guías.
+- [Privacidad](https://polygoidiomas.com/privacidad)
