@@ -17,6 +17,7 @@ import {
   type ServerToClientEvents,
 } from '../../shared/protocol';
 import { pickBotIdentity } from '../../shared/botIdentities';
+import { botTargetScore } from '../../shared/botPacing';
 import { BOT_CALIBRATION, BOT_CONFIG, BOT_ID_PREFIX, pickBot } from '../../shared/bots';
 import {
   generateQuestions,
@@ -65,6 +66,8 @@ export interface BattleServerOptions {
   maxEventsPerSecond?: number;
   /** Espera sin rival humano antes de jugar contra un bot; null desactiva los bots. */
   botAfterMs?: number | null;
+  /** Después del cupo de calibración, el bot de Ranked mueve el ELO (BOT_CALIBRATION). */
+  botRatedAfterCalibration?: boolean;
 }
 
 /** Datos del socket tras el handshake: quién es y qué versión del protocolo habla. */
@@ -102,6 +105,7 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
     // Una persona responde a lo sumo unas pocas preguntas por segundo; 20 deja margen holgado.
     maxEventsPerSecond = 20,
     botAfterMs = BOT_CONFIG.afterMs,
+    botRatedAfterCalibration = BOT_CALIBRATION.ratedAfterCalibration,
   } = options;
 
   const sockets = new Map<string, IoSocket>();
@@ -162,13 +166,14 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
       const human = battle.players.find((p) => !p.isBot)!;
       const bot = battle.players.find((p) => p.isBot);
       if (bot) {
-        // La base decide si todavía es de calibración (cupo por usuario e idioma).
+        // Se pide con ELO si es de calibración o clasificatoria; la base tiene la última palabra (si
+        // devuelve rated = false, la partida queda sin ELO: applyBotStart).
         return store.startBotBattle(
           battle.id,
           battle.languageCode,
           human.userId,
           { name: bot.username, avatarId: bot.avatarId, rating: bot.rating },
-          battle.rating === 'calibration',
+          battle.rating !== 'unrated',
           battle.protocolVersion,
         );
       }
@@ -342,6 +347,9 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
       languageCode: info.languageCode,
       rating: persona.rating,
       gamesPlayed: BOT_CONFIG.displayedGames,
+      // Juega a la altura de lo que el jugador hace en Word Rush (shared/botPacing.ts); sin historial,
+      // como siempre (por rating).
+      botTargetScore: botTargetScore(info.recentScores, random),
     };
   }
 
@@ -368,10 +376,11 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
         }
       });
     }
-    // Sin rival humano a tiempo: un bot a su altura (siempre identificado como BOT). Los emparejamientos
-    // humanos de este mismo tick ya salieron de la cola, así que tienen prioridad. Con cupo de
-    // calibración, el bot mueve el ELO; sin cupo, se juega igual pero sin ELO (unrated): la base lo
-    // guarda con is_ranked = false (start_bot_battle_v2 con p_rated = false) y no toca el rating.
+    // Sin rival humano a tiempo: un bot a su altura. Los emparejamientos humanos de este mismo tick ya
+    // salieron de la cola, así que tienen prioridad. Con cupo de calibración, partida de calibración;
+    // sin cupo, clasificatoria (mueve el ELO) si botRatedAfterCalibration, o sin ELO si no. La base
+    // tiene la última palabra en start_bot_battle_v2 (sin la migración 20261228120000, sólo da ELO
+    // dentro del cupo y la partida queda sin ELO).
     if (botAfterMs !== null) {
       for (const entry of matchmaker.takeWaitingLongerThan(botAfterMs, now)) {
         const info = queued.get(entry.userId);
@@ -391,7 +400,9 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
                   limit: BOT_CALIBRATION.ratedGames,
                 },
               }
-            : { rating: 'unrated', calibration: null },
+            : botRatedAfterCalibration
+              ? { rating: 'competitive', calibration: null }
+              : { rating: 'unrated', calibration: null },
           protocol,
         ).catch((err: unknown) => {
           logger.error('battle_create_failed', { err: String(err) });

@@ -1,6 +1,7 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 
 import type { Database, Json } from '../../src/lib/database.generated';
+import { BOT_PACING } from '../../shared/botPacing';
 import { BOT_CALIBRATION } from '../../shared/bots';
 import type { ArcadeSentence } from '../../shared/arcade';
 import { RATING_CONFIG } from '../../shared/ranking';
@@ -89,6 +90,26 @@ export function createSupabaseStore(
       });
       if (usedError) throw usedError;
 
+      // Puntajes recientes en Word Rush (protocolo 3), para el objetivo del bot. Si falla, el bot juega
+      // como siempre: nunca impide entrar a la cola.
+      let recentScores: number[] = [];
+      const { data: recent, error: recentError } = await db
+        .from('battles')
+        .select('ended_at, battle_players!inner(score, user_id)')
+        .eq('battle_players.user_id', userId)
+        .eq('language_code', profile.target_language)
+        .eq('protocol_version', 3)
+        .eq('status', 'completed')
+        .order('ended_at', { ascending: false })
+        .limit(BOT_PACING.historySize);
+      if (recentError) {
+        logger.warn('recent_scores_unavailable', { userId, err: recentError.message });
+      } else {
+        recentScores = (recent ?? []).flatMap((row) =>
+          row.battle_players.map((p) => p.score).filter((s): s is number => typeof s === 'number'),
+        );
+      }
+
       return {
         userId,
         username: profile.username,
@@ -100,6 +121,7 @@ export function createSupabaseStore(
         gamesPlayed: rating.games_played,
         wins: rating.wins,
         botCalibrationLeft: Math.max(0, BOT_CALIBRATION.ratedGames - (used ?? 0)),
+        recentScores,
       } satisfies PlayerInfo;
     },
 

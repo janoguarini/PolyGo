@@ -11,6 +11,7 @@ import {
   type ChallengeView,
   type GradeOutcome,
 } from '../../shared/arcade';
+import { pacedBotMove } from '../../shared/botPacing';
 import {
   ARCADE_PROTOCOL_VERSION,
   WORD_RUSH,
@@ -248,7 +249,19 @@ export class ArcadeBattle extends Battle {
   private scheduleBot(seat: Seat, state: ArcadeSeat): void {
     const challenge = this.challenges[state.current];
     if (!challenge) return;
-    const move = botArcadeMove(seat.info.rating, challenge.kind, this.random);
+    // Con objetivo (historial del jugador), a su altura; sin objetivo, por rating como siempre.
+    const target = seat.info.botTargetScore;
+    const move =
+      target != null && this.startsAt !== null
+        ? pacedBotMove({
+            target,
+            score: seat.score,
+            elapsedMs: this.clock.now() - this.startsAt,
+            kind: challenge.kind,
+            rules: this.arcadeRules,
+            random: this.random,
+          })
+        : botArcadeMove(seat.info.rating, challenge.kind, this.random);
     const index = challenge.index;
     const solvedBefore = state.solved.size;
     this.schedule(move.delayMs, () => {

@@ -95,11 +95,23 @@ export class FakeStore implements BattleStore {
   /** Partidas guardadas como no ranked (bot fuera del cupo). */
   unranked = new Set<string>();
 
+  /** Puntajes recientes de Word Rush por usuario (más nuevos primero), como los lee getPlayer. */
+  recentScores = new Map<string, number[]>();
+  /**
+   * true: como start_bot_battle_v2 ANTES de la migración 20261228120000 (ELO sólo dentro del cupo).
+   * false (por defecto): como después (la base respeta p_rated).
+   */
+  capRatedBotBattles = false;
+
   async getPlayer(userId: string) {
     const info = this.players.get(userId);
     if (!info) return null;
     const used = this.calibrationUsed.get(`${userId}:${info.languageCode}`) ?? 0;
-    return { ...info, botCalibrationLeft: Math.max(0, BOT_CALIBRATION.ratedGames - used) };
+    return {
+      ...info,
+      botCalibrationLeft: Math.max(0, BOT_CALIBRATION.ratedGames - used),
+      recentScores: this.recentScores.get(userId) ?? [],
+    };
   }
 
   /** Banco de palabras y frases (Arcade) que devuelve la "base". */
@@ -166,7 +178,10 @@ export class FakeStore implements BattleStore {
     { player: string; bot: { name: string; avatarId: string; rating: number } }
   >();
 
-  /** Como start_bot_battle_v2: la calibración sólo si queda cupo; idempotente por id. */
+  /**
+   * Como start_bot_battle_v2: ranked si se pide (con capRatedBotBattles, sólo dentro del cupo, como
+   * antes de la migración); cuenta las partidas ranked contra bots (bot_calibration_used); idempotente.
+   */
   async startBotBattle(
     battleId: string,
     language: string,
@@ -186,7 +201,7 @@ export class FakeStore implements BattleStore {
       };
     }
     const used = this.calibrationUsed.get(key) ?? 0;
-    const isRanked = rated && used < limit;
+    const isRanked = rated && (!this.capRatedBotBattles || used < limit);
     if (isRanked) this.calibrationUsed.set(key, used + 1);
     else this.unranked.add(battleId);
     this.botBattles.set(battleId, { player, bot });

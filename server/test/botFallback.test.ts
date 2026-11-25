@@ -115,7 +115,7 @@ test('con cupo de calibración: a los 3000 ms (no antes) entra un bot de calibra
   }
 });
 
-test('sin cupo (v3): a los 3000 ms entra un bot sin ELO que la base guarda como no ranked', async () => {
+test('sin cupo (v3): a los 3000 ms entra un bot clasificatorio que la base guarda como ranked', async () => {
   const store = new FakeStore().add(player('veterano', 1200, 30));
   store.words = ARCADE_WORDS;
   store.sentences = ARCADE_SENTENCES;
@@ -133,15 +133,15 @@ test('sin cupo (v3): a los 3000 ms entra un bot sin ELO que la base guarda como 
     s.clock.advance(1);
     const snap = (await found) as BattleSnapshot;
     assert.equal(snap.mode, 'ranked');
-    assert.equal(snap.rating, 'unrated');
+    assert.equal(snap.rating, 'competitive');
     assert.equal(snap.calibration, null);
     assert.equal(snap.players.find((p) => p.slot !== snap.yourSlot)!.isBot, true);
     await socket.emitWithAck('match:ready', { battleId: snap.battleId });
     s.clock.advance(BOT_CONFIG.readyMs.max);
     await flush();
-    assert.ok(store.unranked.has(snap.battleId), 'guardada con p_rated = false');
+    assert.ok(store.botBattles.has(snap.battleId));
+    assert.ok(!store.unranked.has(snap.battleId), 'guardada con p_rated = true');
     assert.equal(store.protocolOf.get(snap.battleId), ARCADE_PROTOCOL_VERSION);
-    assert.equal(store.calibrationUsed.get('veterano:en'), BOT_CALIBRATION.ratedGames);
   } finally {
     await s.close();
   }

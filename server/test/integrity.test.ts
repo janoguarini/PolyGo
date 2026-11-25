@@ -229,6 +229,8 @@ test('reliquidar la misma partida no duplica el ELO', async () => {
 
 test('un bot fuera del cupo que la base guardó como no ranked se cierra sin ELO', async () => {
   const store = new FakeStore().add(player('alice', 1000, 10));
+  // La base de antes de la migración 20261228120000: ELO contra bots sólo dentro del cupo.
+  store.capRatedBotBattles = true;
   store.calibrationUsed.set('alice:en', BOT_CALIBRATION.ratedGames);
   const bot: PlayerInfo = { ...player('bot:1', 1000), username: 'Kiko', isBot: true };
   const s = setup(generateQuestions(WORDS, 4, seededRandom(4)), [player('alice', 1000, 10), bot]);
@@ -347,7 +349,7 @@ async function playBotMatch(socket: Client, mode: 'ranked' | 'bot_practice' = 'r
   return { snap, result: (await finish) as BattleFinish };
 }
 
-test('cupo de calibración: 3 partidas contra bots con ELO; después, un bot sin ELO', async () => {
+test('cupo de calibración: 3 partidas de calibración; después, el bot es clasificatoria y mueve el ELO', async () => {
   const calib = client('calib');
   await connected(calib);
   for (let i = 1; i <= BOT_CALIBRATION.ratedGames; i++) {
@@ -359,7 +361,8 @@ test('cupo de calibración: 3 partidas contra bots con ELO; después, un bot sin
   }
   assert.equal(store.calibrationUsed.get('calib:en'), BOT_CALIBRATION.ratedGames);
 
-  // Cupo agotado: la cola avisa que no le quedan y, sin rival humano, igual entra un bot, sin ELO.
+  // Cupo agotado: sin rival humano entra un bot y la partida es clasificatoria (como contra una
+  // persona): la base la guarda ranked (p_rated = true) y la liquidación mueve el ELO.
   const before = { ...store.players.get('calib')! };
   const unrankedBefore = store.unranked.size;
   const status = next(calib, 'queue:status');
@@ -369,35 +372,62 @@ test('cupo de calibración: 3 partidas contra bots con ELO; después, un bot sin
   assert.equal((await status).botCalibrationLeft, 0);
   const snap = (await found) as BattleSnapshot;
   assert.equal(snap.mode, 'ranked');
-  assert.equal(snap.rating, 'unrated');
+  assert.equal(snap.rating, 'competitive');
   assert.equal(snap.calibration, null);
   assert.equal(snap.players.find((p) => p.slot !== snap.yourSlot)!.isBot, true);
   calib.emit('match:ready', { battleId: snap.battleId }, () => {});
   const result = (await finish) as BattleFinish;
-  assert.equal(result.rating, 'unrated');
+  assert.equal(result.rating, 'competitive');
   assert.equal(result.calibration, null);
-  for (const p of result.players) {
-    assert.equal(p.ratingBefore, null);
-    assert.equal(p.ratingAfter, null);
-  }
-  assert.deepEqual(result.achievementsUnlocked, []);
+  const mine = result.players.find((p) => p.slot === result.yourSlot)!;
+  assert.equal(mine.ratingBefore, before.rating);
+  assert.notEqual(mine.ratingAfter, null);
 
-  // La base la guardó como no ranked (p_rated = false) y la liquidó sin rating.
-  assert.equal(store.unranked.size, unrankedBefore + 1);
-  assert.ok(store.unranked.has(snap.battleId));
+  // Guardada como ranked y liquidada con rating: cuenta como una partida más.
+  assert.equal(store.unranked.size, unrankedBefore);
+  assert.ok(!store.unranked.has(snap.battleId));
   const settled = store.settled.get(snap.battleId)!;
-  for (const p of settled.players) {
-    assert.equal(p.rating_before, null);
-    assert.equal(p.games_played_before, null);
-    assert.equal(p.rating_after, null);
-  }
-  // Ni rating, ni partidas, ni victorias, ni cupo: todo como antes.
-  const now = store.players.get('calib')!;
-  assert.equal(now.rating, before.rating);
-  assert.equal(now.gamesPlayed, before.gamesPlayed);
-  assert.equal(now.wins, before.wins);
-  assert.equal(store.calibrationUsed.get('calib:en'), BOT_CALIBRATION.ratedGames);
+  const line = settled.players.find((p) => p.slot === mine.slot)!;
+  assert.equal(line.rating_before, before.rating);
+  assert.equal(line.games_played_before, before.gamesPlayed);
+  assert.equal(store.players.get('calib')!.gamesPlayed, before.gamesPlayed + 1);
+  assert.equal(store.players.get('calib')!.rating, mine.ratingAfter);
   calib.disconnect();
+});
+
+test('con el interruptor apagado (o la base sin migrar), después del cupo el bot sigue sin ELO', async () => {
+  for (const variant of ['interruptor', 'base'] as const) {
+    const local = new FakeStore().add(player('veterano', 900, 30));
+    local.calibrationUsed.set('veterano:en', BOT_CALIBRATION.ratedGames);
+    if (variant === 'base') local.capRatedBotBattles = true;
+    const s = createBattleServer({
+      store: local,
+      verifyToken: async (token) => (token.startsWith('tok-') ? token.slice(4) : null),
+      logger: silentLogger,
+      rules: { ...WORD_RUSH, questionCount: 12, countdownMs: 30, durationMs: 300 },
+      tickMs: 20,
+      random: seededRandom(5),
+      botAfterMs: 60,
+      botRatedAfterCalibration: variant === 'base',
+    });
+    await new Promise<void>((resolve) => s.http.listen(0, resolve));
+    const socket: Client = connect(`http://127.0.0.1:${(s.http.address() as AddressInfo).port}`, {
+      transports: ['websocket'],
+      auth: { token: 'tok-veterano', protocolVersion: PROTOCOL_VERSION },
+      reconnection: false,
+      forceNew: true,
+    });
+    await connected(socket);
+    const { snap, result } = await playBotMatch(socket);
+    if (variant === 'interruptor') assert.equal(snap.rating, 'unrated');
+    // Con la base sin migrar se pide clasificatoria, pero la base la guarda sin ELO y manda ella.
+    assert.equal(result.rating, 'unrated', variant);
+    assert.ok(local.unranked.has(snap.battleId), variant);
+    assert.equal(local.players.get('veterano')!.rating, 900, variant);
+    assert.equal(local.players.get('veterano')!.gamesPlayed, 30, variant);
+    socket.disconnect();
+    await s.close();
+  }
 });
 
 test('práctica contra bot: sin ELO, sin guardar nada y sin consumir cupo', async () => {

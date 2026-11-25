@@ -149,7 +149,7 @@ async function rankedBotMatch(socket: Client) {
 
 for (const [label, userId, protocol, rating, expected] of [
   ['v3 con cupo: calibración', 'nueva', ARCADE_PROTOCOL_VERSION, 600, 'calibration'],
-  ['v3 sin cupo: sin ELO', 'veterana', ARCADE_PROTOCOL_VERSION, 1400, 'unrated'],
+  ['v3 sin cupo: clasificatoria', 'veterana', ARCADE_PROTOCOL_VERSION, 1400, 'competitive'],
   [
     'v2 (Word Rush clásico): calibración',
     'clasico',
@@ -180,16 +180,12 @@ for (const [label, userId, protocol, rating, expected] of [
     assert.equal(saved.bot.rating, rival(snap).rating);
     assert.equal(store.protocolOf.get(snap.battleId), protocol);
 
-    // Ranked/unrated como antes de las identidades.
+    // Con cupo, calibración; sin cupo, clasificatoria (mueve el ELO como contra una persona).
     assert.equal(snap.rating, expected);
     assert.equal(result.rating, expected);
-    if (expected === 'unrated') {
-      assert.ok(store.unranked.has(snap.battleId));
-      assert.equal(store.players.get(userId)!.rating, before.rating);
-      assert.equal(store.players.get(userId)!.gamesPlayed, before.gamesPlayed);
-      for (const p of result.players) assert.equal(p.ratingAfter, null);
-    } else {
-      assert.ok(!store.unranked.has(snap.battleId));
+    assert.ok(!store.unranked.has(snap.battleId));
+    assert.equal(store.players.get(userId)!.gamesPlayed, before.gamesPlayed + 1);
+    if (expected === 'calibration') {
       assert.equal(store.calibrationUsed.get(`${userId}:en`), 1);
     }
     socket.disconnect();
