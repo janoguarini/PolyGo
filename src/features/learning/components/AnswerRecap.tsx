@@ -1,7 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 import Animated, { FadeIn } from 'react-native-reanimated';
 
-import type { AnswerVerdict } from '@shared/answers';
+import { canonicalForm, type AnswerVerdict } from '@shared/answers';
 import type { Exercise } from '@shared/exercises';
 
 import { Text, colors, radii, spacing, themedStyles } from '@/design-system';
@@ -16,6 +16,19 @@ interface Props {
   verdict: AnswerVerdict;
   /** Respuesta del usuario tal como se registró (serializeAnswer). */
   answer: string | null;
+}
+
+/** Cómo coincidió la respuesta: exacta, otra forma aceptada, con error de tipeo o incorrecta. */
+export type AnswerMatch = 'exact' | 'alternative' | 'typo' | 'wrong';
+
+export function answerMatch(verdict: AnswerVerdict, answer: string | null): AnswerMatch {
+  if (!verdict.correct) return 'wrong';
+  if (verdict.typo) return 'typo';
+  const given = answer?.trim() ?? '';
+  // Una respuesta aceptada distinta de la principal («ciao» por «arrivederci») no es «exacta».
+  return given.length > 0 && canonicalForm(given) !== canonicalForm(verdict.expected)
+    ? 'alternative'
+    : 'exact';
 }
 
 /**
@@ -46,18 +59,23 @@ export function AnswerRecap({ exercise, verdict, answer }: Props) {
     );
   }
 
-  const exact = verdict.correct && !verdict.typo;
   const given = answer?.trim() ?? '';
+  // Otra forma aceptada: se muestra lo que escribiste (bien) y también la que enseña la lección.
+  const match = answerMatch(verdict, answer);
+  const alternative = match === 'alternative';
+  const exact = match === 'exact';
   const showGiven = !exact && given.length > 0;
 
   return (
     <Animated.View entering={FadeIn.duration(260)} style={styles.card}>
       {showGiven ? (
         <View style={styles.block}>
-          <Text variant="overline">{t.yourAnswer}</Text>
+          <Text variant="overline" color={alternative ? 'success' : undefined}>
+            {alternative ? t.yourAnswerCorrect : t.yourAnswer}
+          </Text>
           <Text
             variant="heading"
-            color={verdict.correct ? 'text' : 'danger'}
+            color={alternative ? 'textStrong' : verdict.correct ? 'text' : 'danger'}
             style={!verdict.correct && styles.struck}
           >
             {given}
@@ -67,7 +85,7 @@ export function AnswerRecap({ exercise, verdict, answer }: Props) {
 
       <View style={styles.block}>
         <Text variant="overline" color="success">
-          {exact ? t.yourAnswerCorrect : t.correctAnswer}
+          {exact ? t.yourAnswerCorrect : alternative ? t.alsoSaid : t.correctAnswer}
         </Text>
         <View style={styles.answerRow}>
           <View style={styles.flex}>

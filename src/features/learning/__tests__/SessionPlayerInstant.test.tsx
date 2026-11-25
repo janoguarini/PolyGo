@@ -120,9 +120,10 @@ describe('SessionPlayer con corrección instantánea', () => {
     );
     await choose('hola');
     await check();
-    // El servidor todavía no respondió: el veredicto ya está en pantalla, con la explicación.
+    // El servidor todavía no respondió: el veredicto ya está en pantalla.
     expect(screen.getByText('¡Correcto!')).toBeTruthy();
-    expect(screen.getByText('Ciao = hola.')).toBeTruthy();
+    // Al acertar el feedback es breve: la explicación sólo aparece al equivocarse.
+    expect(screen.queryByText('Ciao = hola.')).toBeNull();
     expect(screen.queryByText('Comprobando…')).toBeNull();
     expect(grade).not.toHaveBeenCalled();
     expect(record).toHaveBeenCalledTimes(1);

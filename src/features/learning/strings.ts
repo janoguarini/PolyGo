@@ -59,12 +59,14 @@ export const answerRecapStrings = defineStrings({
     yourAnswer: 'TU RESPUESTA',
     yourAnswerCorrect: '✓ TU RESPUESTA',
     correctAnswer: 'RESPUESTA CORRECTA',
+    alsoSaid: 'TAMBIÉN SE DICE',
   },
   en: {
     pairs: 'PAIRS',
     yourAnswer: 'YOUR ANSWER',
     yourAnswerCorrect: '✓ YOUR ANSWER',
     correctAnswer: 'CORRECT ANSWER',
+    alsoSaid: 'ALSO SAID',
   },
 });
 

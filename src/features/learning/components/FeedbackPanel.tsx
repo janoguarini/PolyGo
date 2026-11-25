@@ -2,7 +2,7 @@ import { CheckCircle2, XCircle } from 'lucide-react-native';
 import { StyleSheet, View } from 'react-native';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 
-import type { AnswerVerdict } from '@shared/answers';
+import { canonicalForm, type AnswerVerdict } from '@shared/answers';
 import type { Exercise } from '@shared/exercises';
 import { hasHan } from '@shared/readings';
 
@@ -12,21 +12,40 @@ import { useStrings } from '@/i18n';
 import type { WordRow } from '../api';
 import { TargetText } from '../readings';
 import { feedbackStrings } from '../strings';
+import { answerMatch } from './AnswerRecap';
 import { SpeakButton } from './SpeakButton';
 
 interface Props {
   exercise: Exercise;
   verdict: AnswerVerdict;
   word: WordRow | null;
+  /** Respuesta del usuario tal como se registró (serializeAnswer). */
+  answer: string | null;
   onContinue: () => void;
 }
 
-/** Feedback tras responder: resultado, traducción, pronunciación y ejemplo. */
-export function FeedbackPanel({ exercise, verdict, word, onContinue }: Props) {
+/**
+ * Feedback tras responder. Breve cuando acertaste; más contexto cuando hace falta:
+ * - La palabra (con su parlante) sólo si no es ya la respuesta que AnswerRecap muestra en grande.
+ * - El ejemplo, sólo al equivocarte y si no repite la respuesta correcta.
+ * - La explicación, al equivocarte o con otra forma aceptada (ahí aclara la diferencia), y siempre
+ *   en comprensión en contexto.
+ */
+export function FeedbackPanel({ exercise, verdict, word, answer, onContinue }: Props) {
   const styles = useStyles();
   const t = useStrings(feedbackStrings);
-  // La respuesta correcta se muestra en grande en AnswerRecap, en el centro de la pantalla.
   const correct = verdict.correct;
+  const match = answerMatch(verdict, answer);
+  const same = (a: string, b: string) => canonicalForm(a) === canonicalForm(b);
+  const showWord = word !== null && !same(word.text, verdict.expected);
+  const example =
+    match === 'wrong' && word?.example_en && !same(word.example_en, verdict.expected)
+      ? word.example_en
+      : null;
+  // En comprensión en contexto la explicación es la evidencia del texto: va siempre.
+  const showExplanation =
+    Boolean(exercise.explanation) &&
+    (exercise.type === 'context_choice' || match === 'wrong' || match === 'alternative');
 
   return (
     <Animated.View
@@ -45,7 +64,7 @@ export function FeedbackPanel({ exercise, verdict, word, onContinue }: Props) {
         </Text>
       </View>
 
-      {word ? (
+      {showWord && word ? (
         <View style={styles.word}>
           <SpeakButton text={word.text} />
           <View style={styles.flex}>
@@ -53,28 +72,26 @@ export function FeedbackPanel({ exercise, verdict, word, onContinue }: Props) {
               {word.text} <Text color="textMuted">· {word.translation_es}</Text>
             </Text>
             {word.romanization || word.ipa ? (
-              <Text variant="caption">
-                {word.romanization ?? word.ipa} · {t.synthesizedVoice}
-              </Text>
+              <Text variant="caption">{word.romanization ?? word.ipa}</Text>
             ) : null}
-            {word.example_en && hasHan(word.example_en) ? (
+            {example && hasHan(example) ? (
               // En chino, el ejemplo con su pinyin encima y la traducción abajo.
               <View>
                 <TargetText variant="caption" color="text">
-                  {word.example_en}
+                  {example}
                 </TargetText>
                 <Text variant="caption">{word.example_es}</Text>
               </View>
-            ) : word.example_en ? (
+            ) : example ? (
               <Text variant="caption" color="text">
-                “{word.example_en}” — {word.example_es}
+                “{example}” — {word.example_es}
               </Text>
             ) : null}
           </View>
         </View>
       ) : null}
 
-      {exercise.explanation ? <Text color="text">{exercise.explanation}</Text> : null}
+      {showExplanation ? <Text color="text">{exercise.explanation}</Text> : null}
 
       <Button label={t.continue} size="lg" onPress={onContinue} />
     </Animated.View>

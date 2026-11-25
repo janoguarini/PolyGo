@@ -324,6 +324,7 @@ export function SessionPlayer({
                 exercise={shown}
                 verdict={state.lastVerdict}
                 word={word}
+                answer={state.lastAnswer}
                 onContinue={() => dispatch({ type: 'continue' })}
               />
             </View>
