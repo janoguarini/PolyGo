@@ -22,6 +22,8 @@ export interface ArcadeRules {
   readyTimeoutMs: number;
   reconnectGraceMs: number;
   challengeCount: number;
+  /** Desafíos que se agregan a la secuencia cada vez que hace falta (flujo continuo). */
+  challengeBlock: number;
   lookahead: number;
   connectPairs: number;
   audioOptions: number;
@@ -40,8 +42,13 @@ export const ARCADE: Readonly<ArcadeRules> = {
   countdownMs: 3_000,
   readyTimeoutMs: 10_000,
   reconnectGraceMs: 15_000,
-  /** Más desafíos de los que alguien puede resolver en 60 s: el tiempo es el límite real. */
+  /**
+   * Desafíos generados al crear la partida. No es un tope: la secuencia es un flujo continuo
+   * (createChallengeStream) que agrega bloques de `challengeBlock` cuando alguien se acerca al final,
+   * así que la partida sólo termina por el reloj.
+   */
   challengeCount: 60,
+  challengeBlock: 20,
   /** Desafíos que el cliente tiene por adelantado (el actual y el siguiente): cero espera entre uno y otro. */
   lookahead: 2,
   /** Parejas por tablero de Connect. */
@@ -236,7 +243,57 @@ export function sentencePool(
   });
 }
 
-/** Palabras usables: texto y traducción no vacíos, sin repetir texto (lo mismo que Word Rush). */
+/**
+ * Traducciones que no son un significado sino una explicación gramatical («auxiliar con he, she, it»,
+ * «no + verbo», «artículo masculino», «partícula de pregunta», «clasificador»). Sirven en las lecciones,
+ * pero en una tarjeta de Swipe, Audio o Connect no hay nada que reconocer: esas palabras no entran.
+ */
+const DESCRIPTIVE_TRANSLATION: readonly RegExp[] = [
+  /\+/,
+  /^(?:art[ií]culo|part[ií]cula|clasificador|auxiliar|negaci[oó]n)(?:\s|$|:)/i,
+  /^(?:article|particle|classifier|auxiliary|negation)(?:\s|$|:)/i,
+];
+
+export function isDescriptiveTranslation(translation: string): boolean {
+  const label = rushLabel(translation).trim();
+  return DESCRIPTIVE_TRANSLATION.some((re) => re.test(label));
+}
+
+/** Artículos y la marca de infinitivo que no cambian el significado al comparar traducciones. */
+const LEADING_ARTICLE = /^(?:el|la|los|las|un|una|unos|unas|the|a|an|to)\s+/;
+
+/**
+ * Significados de una traducción, para decidir si dos palabras pueden confundirse. Cada alternativa
+ * («casa / hogar», «viejo; años») es un significado; lo que va después de una coma es una aclaración
+ * («por favor, informal», «short, not tall») y no cuenta. Se compara también sin artículo inicial
+ * («la mañana» ~ «mañana»). Es deliberadamente amplio: ante la duda, dos palabras se tratan como
+ * confundibles y nunca se usan una como «mentira» o distractor de la otra.
+ */
+export function translationKeys(translation: string): string[] {
+  const keys = new Set<string>();
+  for (const alternative of rushLabel(translation).split(/[/;]/)) {
+    const meaning = norm(alternative.split(',')[0] ?? '')
+      .replace(/[¿?¡!.…]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+    if (!meaning) continue;
+    keys.add(meaning);
+    const bare = meaning.replace(LEADING_ARTICLE, '');
+    if (bare) keys.add(bare);
+  }
+  return [...keys];
+}
+
+/** Si dos traducciones comparten algún significado (ver translationKeys). */
+export function translationsOverlap(a: string, b: string): boolean {
+  const keys = new Set(translationKeys(a));
+  return translationKeys(b).some((k) => keys.has(k));
+}
+
+/**
+ * Palabras usables en Ranked: texto y traducción no vacíos, sin repetir texto y sin traducciones
+ * descriptivas (ver isDescriptiveTranslation).
+ */
 function usableWords(words: readonly RushWord[]): RushWord[] {
   const seen = new Set<string>();
   const result: RushWord[] = [];
@@ -244,6 +301,8 @@ function usableWords(words: readonly RushWord[]): RushWord[] {
     const translation = rushLabel(w.translationEs);
     const key = norm(w.text);
     if (!key || !norm(translation) || seen.has(key)) continue;
+    if (isDescriptiveTranslation(translation) || translationKeys(translation).length === 0)
+      continue;
     seen.add(key);
     result.push({ ...w, translationEs: translation });
   }
@@ -280,6 +339,8 @@ export type ArcadeChallenge =
   | {
       index: number;
       kind: 'connect';
+      /** Ids de las palabras de `left`, en el mismo orden (sólo servidor: memoria de contenido). */
+      wordIds: string[];
       /** Palabras (idioma que se aprende), en orden mezclado. */
       left: string[];
       /** Traducciones, en otro orden mezclado. */
@@ -356,29 +417,104 @@ export interface ArcadeStats {
   frenzyPoints: number;
 }
 
+// ---------------------------------------------------------------------------------------------
+// Rotación de microjuegos
+
 /**
- * Orden de los microjuegos: rondas con los formatos disponibles en orden mezclado (Swipe va de a dos
- * tarjetas porque es el más corto). Una ronda nunca empieza con el formato con que terminó la
- * anterior: como mucho hay dos Swipe seguidos y ningún otro formato se repite.
+ * Rotación ponderada: cada desafío se sortea entre los formatos disponibles con estos pesos, corregidos
+ * por déficit (el que viene atrasado respecto de su proporción gana peso), con estas restricciones:
+ *   - `maxRun`: repeticiones seguidas permitidas (Swipe y Audio son cortos; Connect y Sentence, no).
+ *   - `maxGap`: ningún formato disponible falta más de tantos desafíos seguidos.
+ *   - `openers`: la partida arranca con un formato rápido.
+ * No hay rondas fijas: después de ver tres formatos no se puede deducir el cuarto.
  */
+export const KIND_ROTATION = {
+  weights: { swipe: 0.3, audio: 0.25, connect: 0.23, sentence: 0.22 } as Readonly<
+    Record<ChallengeKind, number>
+  >,
+  maxRun: { swipe: 2, audio: 2, connect: 1, sentence: 1 } as Readonly<
+    Record<ChallengeKind, number>
+  >,
+  maxGap: 6,
+  openers: ['swipe', 'audio'] as readonly ChallengeKind[],
+  /** Fuerza de la corrección por déficit (0 = sorteo puro). */
+  balance: 1.2,
+};
+
+export type KindRotationConfig = typeof KIND_ROTATION;
+
+/** Rotación con estado: `next()` da el formato del próximo desafío. Determinista dado `random`. */
+export function createKindRotation(
+  available: readonly ChallengeKind[],
+  random: () => number,
+  config: KindRotationConfig = KIND_ROTATION,
+): { kinds: readonly ChallengeKind[]; next(): ChallengeKind } {
+  const kinds = CHALLENGE_KINDS.filter((k) => available.includes(k));
+  if (kinds.length === 0) throw new Error('arcade: ningún microjuego disponible');
+  const totalWeight = kinds.reduce((sum, k) => sum + config.weights[k], 0);
+  const share = (k: ChallengeKind) => config.weights[k] / totalWeight;
+  const counts = new Map<ChallengeKind, number>(kinds.map((k) => [k, 0]));
+  const lastAt = new Map<ChallengeKind, number>(kinds.map((k) => [k, -1]));
+  let produced = 0;
+  let last: ChallengeKind | null = null;
+  let run = 0;
+
+  const pick = (): ChallengeKind => {
+    const n = produced;
+    let candidates = kinds.filter((k) => !(k === last && run >= config.maxRun[k]));
+    // Con un solo formato disponible (no pasa: Swipe y Audio van juntos) se permite repetir.
+    if (candidates.length === 0) candidates = [...kinds];
+    if (n === 0) {
+      const openers = candidates.filter((k) => config.openers.includes(k));
+      if (openers.length > 0) candidates = openers;
+    }
+    // Plazos: a un formato que falta hace `absent` desafíos le quedan `slack` lugares antes de pasarse
+    // de maxGap. Si los que vencen dentro de los próximos t lugares no entran, el más urgente va ahora.
+    if (kinds.length > 1) {
+      const slacks = kinds
+        .map((k) => ({ k, slack: config.maxGap - (n - lastAt.get(k)! - 1) }))
+        .sort((a, b) => a.slack - b.slack);
+      if (slacks.some((s, i) => s.slack <= i)) {
+        const urgent = slacks.find((s) => candidates.includes(s.k));
+        if (urgent) return urgent.k;
+      }
+    }
+    const weights = candidates.map((k) => {
+      const deficit = share(k) * (n + 1) - counts.get(k)!;
+      return share(k) * Math.exp(config.balance * deficit);
+    });
+    const total = weights.reduce((a, b) => a + b, 0);
+    let r = random() * total;
+    for (let i = 0; i < candidates.length; i++) {
+      r -= weights[i]!;
+      if (r < 0) return candidates[i]!;
+    }
+    return candidates[candidates.length - 1]!;
+  };
+
+  return {
+    kinds,
+    next() {
+      const kind = pick();
+      run = kind === last ? run + 1 : 1;
+      last = kind;
+      counts.set(kind, counts.get(kind)! + 1);
+      lastAt.set(kind, produced);
+      produced += 1;
+      return kind;
+    },
+  };
+}
+
+/** Los primeros `count` formatos de una rotación (ver createKindRotation). */
 export function kindSequence(
   available: readonly ChallengeKind[],
   count: number,
   random: () => number,
+  config: KindRotationConfig = KIND_ROTATION,
 ): ChallengeKind[] {
-  const kinds = CHALLENGE_KINDS.filter((k) => available.includes(k));
-  if (kinds.length === 0) throw new Error('arcade: ningún microjuego disponible');
-  const sequence: ChallengeKind[] = [];
-  while (sequence.length < count) {
-    let round = shuffle(kinds, random);
-    const last = sequence[sequence.length - 1];
-    if (round.length > 1 && round[0] === last) round = [...round.slice(1), round[0]!];
-    for (const kind of round) {
-      sequence.push(kind);
-      if (kind === 'swipe' && kinds.length > 1) sequence.push('swipe');
-    }
-  }
-  return sequence.slice(0, count);
+  const rotation = createKindRotation(available, random, config);
+  return Array.from({ length: count }, () => rotation.next());
 }
 
 /** Qué microjuegos tienen contenido suficiente en esta partida. Sin contenido, no se inventa: se excluye. */
@@ -388,34 +524,167 @@ export function availableKinds(
   rules: ArcadeRules = ARCADE,
 ): ChallengeKind[] {
   const usable = usableWords(words);
-  if (usable.length < rules.audioOptions) return [];
+  // Audio necesita la palabra y tres distractores que no se confundan entre sí.
+  if (unambiguousSet(usable, rules.audioOptions).length < rules.audioOptions) return [];
   const kinds: ChallengeKind[] = ['swipe', 'audio'];
-  if (usable.length >= rules.minWords) kinds.push('connect');
+  // Connect necesita además un mazo con variedad y un tablero de parejas inequívocas.
+  if (
+    usable.length >= rules.minWords &&
+    unambiguousSet(usable, rules.connectPairs).length === rules.connectPairs
+  ) {
+    kinds.push('connect');
+  }
   if (sentences.length >= rules.minSentences) kinds.push('sentence');
   return kinds;
 }
 
+// ---------------------------------------------------------------------------------------------
+// Memoria de contenido reciente
+
+/** Contenido visto hace poco: id → orden en que se vio (más alto = más reciente). */
+export interface RecentContent {
+  words: ReadonlyMap<string, number>;
+  sentences: ReadonlyMap<string, number>;
+}
+
+/** Ids del contenido que un jugador vio en esos desafíos (palabras de la consigna y frases). */
+export function contentIds(challenges: readonly ArcadeChallenge[]): {
+  words: string[];
+  sentences: string[];
+} {
+  const words: string[] = [];
+  const sentences: string[] = [];
+  for (const c of challenges) {
+    if (c.kind === 'swipe' || c.kind === 'audio') words.push(c.wordId);
+    else if (c.kind === 'connect') words.push(...c.wordIds);
+    else sentences.push(c.sentenceId);
+  }
+  return { words, sentences };
+}
+
 /**
- * Secuencia de desafíos de una partida: la misma para los dos jugadores. `words` ya filtradas por
- * nivel (rushPool) y `sentences` por sentencePool. `random` en [0, 1); el servidor usa una fuente
+ * Memoria en el proceso (sin base de datos) de lo que cada jugador vio en sus últimas partidas, por
+ * clave (p. ej. `usuario:idioma`). No excluye nada: al armar la próxima partida, lo visto hace poco va
+ * al final del mazo (lo más viejo primero). Acotada por clave y en cantidad de claves; se pierde al
+ * reiniciar el proceso y entonces sólo vuelve el comportamiento anterior (mazo mezclado).
+ *
+ * Tope de memoria: con los valores por defecto, como mucho 5.000 claves × 190 ids (≈ 1 M de entradas,
+ * del orden de 100 MB en el peor caso, con todas las claves llenas). 150 palabras y 40 frases cubren las
+ * últimas ~4 partidas de 25 desafíos, que es lo que importa para no repetir enseguida.
+ */
+export class RecentContentMemory {
+  private readonly entries = new Map<
+    string,
+    { words: Map<string, number>; sentences: Map<string, number> }
+  >();
+  private clock = 0;
+
+  constructor(
+    private readonly limits: { words: number; sentences: number; keys: number } = {
+      words: 150,
+      sentences: 40,
+      keys: 5_000,
+    },
+  ) {}
+
+  /** Registra lo que vio `key`, en el orden en que lo vio. */
+  record(key: string, challenges: readonly ArcadeChallenge[]): void {
+    const entry = this.entries.get(key) ?? { words: new Map(), sentences: new Map() };
+    // Reinsertar deja la clave como la más reciente; si hay demasiadas se olvida la más vieja.
+    this.entries.delete(key);
+    this.entries.set(key, entry);
+    while (this.entries.size > this.limits.keys) {
+      const oldest = this.entries.keys().next().value;
+      if (oldest === undefined) break;
+      this.entries.delete(oldest);
+    }
+    const { words, sentences } = contentIds(challenges);
+    for (const id of words) touch(entry.words, id, ++this.clock, this.limits.words);
+    for (const id of sentences) touch(entry.sentences, id, ++this.clock, this.limits.sentences);
+  }
+
+  /** Lo visto hace poco por cualquiera de las claves (p. ej. los dos jugadores de una partida). */
+  recentFor(keys: readonly string[]): RecentContent {
+    const words = new Map<string, number>();
+    const sentences = new Map<string, number>();
+    for (const key of keys) {
+      const entry = this.entries.get(key);
+      if (!entry) continue;
+      for (const [id, at] of entry.words) words.set(id, Math.max(at, words.get(id) ?? 0));
+      for (const [id, at] of entry.sentences) {
+        sentences.set(id, Math.max(at, sentences.get(id) ?? 0));
+      }
+    }
+    return { words, sentences };
+  }
+
+  get size(): number {
+    return this.entries.size;
+  }
+}
+
+function touch(map: Map<string, number>, id: string, at: number, limit: number): void {
+  map.delete(id);
+  map.set(id, at);
+  while (map.size > limit) {
+    const oldest = map.keys().next().value;
+    if (oldest === undefined) break;
+    map.delete(oldest);
+  }
+}
+
+// ---------------------------------------------------------------------------------------------
+// Secuencia de desafíos
+
+/**
+ * Secuencia de una partida como flujo continuo: la misma para los dos jugadores (y el bot), que la leen
+ * del mismo arreglo. `ensure(n)` la extiende por bloques de `challengeBlock` hasta tener al menos `n`
+ * desafíos. Cada desafío depende sólo de la fuente `random` y de su posición, no de cuándo se pidió el
+ * bloque, siempre que la fuente sea exclusiva del flujo (si otra cosa la consume entre bloques, la
+ * secuencia sigue siendo una sola porque está en el arreglo, pero ya no se reproduce desde la semilla).
+ */
+export interface ChallengeStream {
+  /** Formatos que entran en la rotación de esta partida. */
+  readonly kinds: readonly ChallengeKind[];
+  /** Desafíos generados hasta ahora (siempre el mismo arreglo, que crece). */
+  readonly challenges: readonly ArcadeChallenge[];
+  /** Extiende la secuencia hasta tener al menos `length` desafíos. */
+  ensure(length: number): void;
+  /** El desafío `index` (lo genera si hace falta). */
+  at(index: number): ArcadeChallenge;
+}
+
+export interface ChallengeStreamOptions {
+  /** Contenido visto hace poco por los jugadores: va al final del mazo (RecentContentMemory). */
+  recent?: RecentContent;
+  rotation?: KindRotationConfig;
+}
+
+/**
+ * Crea el flujo de desafíos y genera `rules.challengeCount` de entrada. `words` ya filtradas por nivel
+ * (rushPool) y unidades; `sentences` por sentencePool. `random` en [0, 1); el servidor usa una fuente
  * criptográfica.
  */
-export function generateChallenges(
+export function createChallengeStream(
   words: readonly RushWord[],
   sentences: readonly ArcadeSentence[],
   random: () => number,
   rules: ArcadeRules = ARCADE,
-  count: number = rules.challengeCount,
-): ArcadeChallenge[] {
+  options: ChallengeStreamOptions = {},
+): ChallengeStream {
   const usable = usableWords(words);
   const kinds = availableKinds(usable, sentences, rules);
   if (kinds.length === 0) {
     throw new Error(`arcade: hacen falta al menos ${rules.audioOptions} palabras distintas`);
   }
-  const wordDeck = cycler(usable, random, (w) => w.id);
-  const sentenceDeck = cycler(sentences, random, (s) => s.id);
+  const rotation = createKindRotation(kinds, random, options.rotation);
+  const wordDeck = cycler(usable, random, (w) => w.id, options.recent?.words);
+  const sentenceDeck = cycler(sentences, random, (s) => s.id, options.recent?.sentences);
+  const challenges: ArcadeChallenge[] = [];
+  const distractorCount = rules.audioOptions - 1;
 
-  return kindSequence(kinds, count, random).map((kind, index): ArcadeChallenge => {
+  const build = (index: number): ArcadeChallenge => {
+    const kind = rotation.next();
     switch (kind) {
       case 'swipe': {
         const word = wordDeck.next();
@@ -433,13 +702,24 @@ export function generateChallenges(
         };
       }
       case 'audio': {
-        const word = wordDeck.next();
-        const distractors = uniqueBy(shuffle(distinctFrom(usable, [word]), random), (w) =>
-          norm(w.translationEs),
-        )
-          .slice(0, rules.audioOptions - 1)
-          .map((w) => w.translationEs);
-        const options = shuffle([word.translationEs, ...distractors], random);
+        // Distractores que no se confunden con la palabra ni entre sí. Si una palabra se parece a
+        // demasiadas, se pasa a la siguiente del mazo.
+        let word = wordDeck.next();
+        let distractors = unambiguousSet(
+          shuffle(distinctFrom(usable, [word]), random),
+          distractorCount,
+        );
+        for (let i = 0; distractors.length < distractorCount && i < usable.length; i++) {
+          word = wordDeck.next();
+          distractors = unambiguousSet(
+            shuffle(distinctFrom(usable, [word]), random),
+            distractorCount,
+          );
+        }
+        const options = shuffle(
+          [word.translationEs, ...distractors.map((w) => w.translationEs)],
+          random,
+        );
         return {
           index,
           kind,
@@ -450,14 +730,15 @@ export function generateChallenges(
         };
       }
       case 'connect': {
-        // Cuatro palabras sin texto ni traducción compartidos: cada pareja tiene una sola solución.
+        // Cuatro palabras que no se confunden entre sí: cada pareja tiene una sola solución.
         const board: RushWord[] = [];
-        for (
-          let tries = 0;
-          board.length < rules.connectPairs && tries < usable.length * 3;
-          tries++
-        ) {
+        for (let tries = 0; board.length < rules.connectPairs && tries < usable.length; tries++) {
           const candidate = wordDeck.next();
+          if (distinctFrom([candidate], board).length === 1) board.push(candidate);
+        }
+        // Mazo con muchas palabras parecidas: se completa con cualquiera compatible.
+        for (const candidate of shuffle(usable, random)) {
+          if (board.length >= rules.connectPairs) break;
           if (distinctFrom([candidate], board).length === 1) board.push(candidate);
         }
         const left = shuffle(board, random);
@@ -465,6 +746,7 @@ export function generateChallenges(
         return {
           index,
           kind,
+          wordIds: left.map((w) => w.id),
           left: left.map((w) => w.text),
           right: right.map((w) => w.translationEs),
           solution: left.map((w) => right.indexOf(w)),
@@ -487,7 +769,44 @@ export function generateChallenges(
         };
       }
     }
-  });
+  };
+
+  const stream: ChallengeStream = {
+    kinds: rotation.kinds,
+    challenges,
+    ensure(length: number) {
+      const block = Math.max(1, rules.challengeBlock);
+      while (challenges.length < length) {
+        const end = challenges.length + block;
+        while (challenges.length < end) challenges.push(build(challenges.length));
+      }
+    },
+    at(index: number) {
+      if (!Number.isInteger(index) || index < 0)
+        throw new Error(`arcade: índice inválido ${index}`);
+      stream.ensure(index + 1);
+      return challenges[index]!;
+    },
+  };
+  stream.ensure(rules.challengeCount);
+  return stream;
+}
+
+/**
+ * Los primeros `count` desafíos de una partida, como arreglo fijo (ver createChallengeStream, que es
+ * lo que debería usar una partida en vivo para no agotarse).
+ */
+export function generateChallenges(
+  words: readonly RushWord[],
+  sentences: readonly ArcadeSentence[],
+  random: () => number,
+  rules: ArcadeRules = ARCADE,
+  count: number = rules.challengeCount,
+  options: ChallengeStreamOptions = {},
+): ArcadeChallenge[] {
+  const stream = createChallengeStream(words, sentences, random, rules, options);
+  stream.ensure(count);
+  return stream.challenges.slice(0, count);
 }
 
 /** Vista para el cliente: sin respuesta. `solved` sólo en Connect. */
@@ -653,39 +972,74 @@ function isIndex(value: unknown, length: number): value is number {
   return Number.isInteger(value) && (value as number) >= 0 && (value as number) < length;
 }
 
-/** Palabras que no comparten texto ni traducción con ninguna de `taken` (sin ambigüedad). */
+/**
+ * Palabras que no comparten texto ni ningún significado (translationKeys) con ninguna de `taken`: ni
+ * una «mentira» de Swipe, ni un distractor de Audio, ni otra pareja de Connect puede ser correcta.
+ */
 function distinctFrom(words: readonly RushWord[], taken: readonly RushWord[]): RushWord[] {
   return words.filter((w) =>
     taken.every(
       (t) =>
         w.id !== t.id &&
         norm(w.text) !== norm(t.text) &&
-        norm(w.translationEs) !== norm(t.translationEs),
+        !translationsOverlap(w.translationEs, t.translationEs),
     ),
   );
 }
 
-function uniqueBy<T>(items: readonly T[], key: (item: T) => string): T[] {
-  const seen = new Set<string>();
-  return items.filter((item) => {
-    const k = key(item);
-    if (seen.has(k)) return false;
-    seen.add(k);
-    return true;
-  });
+/** Hasta `size` palabras de `words` (en ese orden) que no se confunden entre sí. */
+function unambiguousSet(words: readonly RushWord[], size: number): RushWord[] {
+  const set: RushWord[] = [];
+  for (const w of words) {
+    if (set.length >= size) break;
+    if (distinctFrom([w], set).length === 1) set.push(w);
+  }
+  return set;
 }
 
-/** Mazo que se rearma mezclado al agotarse, sin repetir el mismo elemento dos veces seguidas. */
-function cycler<T>(items: readonly T[], random: () => number, id: (item: T) => string) {
+/**
+ * Mazo que se rearma mezclado al agotarse. Al rearmarse, lo sacado en las últimas extracciones (hasta
+ * la mitad del mazo, como mucho 8) va al final: una palabra del cierre de una vuelta no reaparece en el
+ * desafío siguiente (p. ej. Swipe y enseguida un tablero de Connect con la misma palabra). En la
+ * primera vuelta, lo que está en `recent` va al final, lo visto hace más tiempo antes.
+ */
+function cycler<T>(
+  items: readonly T[],
+  random: () => number,
+  id: (item: T) => string,
+  recent?: ReadonlyMap<string, number>,
+) {
+  const spacing = Math.min(8, Math.floor(items.length / 2));
   let deck: T[] = [];
-  let previous: string | null = null;
+  const lastDrawn: string[] = [];
+  let firstPass = true;
   return {
     next(): T {
       if (items.length === 0) throw new Error('arcade: mazo vacío');
-      if (deck.length === 0) deck = shuffle(items, random);
-      if (deck.length > 1 && id(deck[0]!) === previous) deck.push(deck.shift()!);
+      if (deck.length === 0) {
+        deck = shuffle(items, random);
+        if (firstPass && recent && recent.size > 0) {
+          const fresh = deck.filter((item) => !recent.has(id(item)));
+          // sort es estable: entre los vistos se conserva el orden mezclado si empatan.
+          const seen = deck
+            .filter((item) => recent.has(id(item)))
+            .sort((a, b) => recent.get(id(a))! - recent.get(id(b))!);
+          deck = [...fresh, ...seen];
+        }
+        if (lastDrawn.length > 0) {
+          const late = new Set(lastDrawn);
+          const rest = deck.filter((item) => !late.has(id(item)));
+          // Los recién sacados, del más viejo al más nuevo.
+          const tail = lastDrawn
+            .map((drawn) => deck.find((item) => id(item) === drawn))
+            .filter((item): item is T => item !== undefined);
+          deck = [...rest, ...tail];
+        }
+        firstPass = false;
+      }
       const item = deck.shift()!;
-      previous = id(item);
+      lastDrawn.push(id(item));
+      if (lastDrawn.length > spacing) lastDrawn.shift();
       return item;
     },
   };

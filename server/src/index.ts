@@ -1,3 +1,4 @@
+import { SUPPORTED_PROTOCOL_VERSIONS } from '../../shared/protocol';
 import { createBattleServer } from './server';
 import { createServiceClient, createSupabaseStore, createTokenVerifier } from './supabaseStore';
 import { consoleLogger } from './types';
@@ -30,7 +31,35 @@ const sweep = async () => {
 await sweep();
 setInterval(() => void sweep(), STALE_AFTER_SECONDS * 1000).unref();
 
-const server = createBattleServer({ store, verifyToken: createTokenVerifier(db) });
+/**
+ * Versiones de protocolo aceptadas. Sin variable: todas las soportadas (2 y 3, transición). Para el
+ * corte de Word Rush clásico, BATTLE_PROTOCOL_VERSIONS=3. Un valor inválido no deja al servidor sin
+ * versiones: se registra el error y se usan las soportadas.
+ */
+function protocolVersionsFromEnv(raw: string | undefined): readonly number[] {
+  if (raw === undefined || raw.trim() === '') return SUPPORTED_PROTOCOL_VERSIONS;
+  const parsed = raw.split(',').map((v) => Number(v.trim()));
+  const valid =
+    parsed.length > 0 &&
+    parsed.every((v) => Number.isInteger(v) && SUPPORTED_PROTOCOL_VERSIONS.includes(v));
+  if (!valid) {
+    consoleLogger.error('invalid_protocol_versions', {
+      value: raw,
+      supported: SUPPORTED_PROTOCOL_VERSIONS,
+    });
+    return SUPPORTED_PROTOCOL_VERSIONS;
+  }
+  return [...new Set(parsed)];
+}
+
+const protocolVersions = protocolVersionsFromEnv(process.env.BATTLE_PROTOCOL_VERSIONS);
+consoleLogger.info('protocol_versions', { protocolVersions });
+
+const server = createBattleServer({
+  store,
+  verifyToken: createTokenVerifier(db),
+  protocolVersions,
+});
 server.http.listen(port, () => consoleLogger.info('listening', { port }));
 
 const shutdown = (signal: string) => {

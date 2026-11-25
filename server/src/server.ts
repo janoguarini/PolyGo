@@ -28,7 +28,13 @@ import {
   writingEnabled,
   type RushWord,
 } from '../../shared/wordRush';
-import { ARCADE, generateChallenges, sentencePool, type ArcadeSentence } from '../../shared/arcade';
+import {
+  ARCADE,
+  RecentContentMemory,
+  createChallengeStream,
+  sentencePool,
+  type ArcadeSentence,
+} from '../../shared/arcade';
 import { ArcadeBattle, type ArcadeRules } from './arcadeBattle';
 import {
   Battle,
@@ -38,7 +44,7 @@ import {
   type Send,
 } from './battle';
 import { systemClock, type Clock } from './clock';
-import { Matchmaker } from './matchmaking';
+import { Matchmaker, type QueueEntry } from './matchmaking';
 import { settleBattle } from './settlement';
 import {
   consoleLogger,
@@ -54,12 +60,12 @@ export interface BattleServerOptions {
   clock?: Clock;
   logger?: Logger;
   rules?: BattleRules;
-  /** Reglas de Arcade (protocolo 3); en tests se acortan. */
+  /** Reglas de Word Rush (motor Arcade, protocolo 3); en tests se acortan. */
   arcadeRules?: ArcadeRules;
   matchmaking?: typeof MATCHMAKING;
-  /** Cada cuánto se intenta emparejar y se informa la espera. */
+  /** Cada cuánto se reintenta emparejar (ventanas que se amplían) y se informa la espera. */
   tickMs?: number;
-  /** Fuente [0, 1) para las preguntas; por defecto criptográfica. */
+  /** Fuente [0, 1) para los desafíos y los bots; por defecto criptográfica. */
   random?: () => number;
   wordCacheMs?: number;
   /** Eventos por segundo que acepta cada socket; el resto se descarta sin responder. */
@@ -68,6 +74,14 @@ export interface BattleServerOptions {
   botAfterMs?: number | null;
   /** Después del cupo de calibración, el bot de Ranked mueve el ELO (BOT_CALIBRATION). */
   botRatedAfterCalibration?: boolean;
+  /**
+   * Versiones de protocolo que acepta este servidor (subconjunto de SUPPORTED_PROTOCOL_VERSIONS). La
+   * 2 (Word Rush clásico) sólo queda durante la transición a la build con el protocolo 3; quitarla es
+   * el corte (index.ts lo lee de BATTLE_PROTOCOL_VERSIONS).
+   */
+  protocolVersions?: readonly number[];
+  /** Memoria de contenido reciente (inyectable en tests). */
+  recentContent?: RecentContentMemory;
 }
 
 /** Datos del socket tras el handshake: quién es y qué versión del protocolo habla. */
@@ -86,8 +100,19 @@ export interface BattleServer {
   http: HttpServer;
   io: Server<ClientToServerEvents, ServerToClientEvents, object, SocketData>;
   close(): Promise<void>;
-  /** Para tests y /health. */
-  stats(): { connected: number; queued: number; battles: number };
+  /** Para tests y /health. `matching`: jugadores cuya partida se está creando. */
+  stats(): { connected: number; queued: number; battles: number; matching: number };
+}
+
+/** Un jugador cuya partida se está armando (lecturas de la base todavía en curso). */
+interface PendingPlayer {
+  mode: BattleMode;
+  info: PlayerInfo;
+  /** Entrada de cola original (ranked): para volver a la cola sin perder la espera. */
+  entry: QueueEntry | null;
+  protocol: number;
+  /** Salió (queue:leave o reconexión con otra versión): su partida no se crea. */
+  left: boolean;
 }
 
 export function createBattleServer(options: BattleServerOptions): BattleServer {
@@ -106,7 +131,12 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
     maxEventsPerSecond = 20,
     botAfterMs = BOT_CONFIG.afterMs,
     botRatedAfterCalibration = BOT_CALIBRATION.ratedAfterCalibration,
+    protocolVersions = SUPPORTED_PROTOCOL_VERSIONS,
+    recentContent = new RecentContentMemory(),
   } = options;
+
+  const accepted = protocolVersions.filter((v) => SUPPORTED_PROTOCOL_VERSIONS.includes(v));
+  if (accepted.length === 0) throw new Error('battle-server: ninguna versión de protocolo válida');
 
   const sockets = new Map<string, IoSocket>();
   const battles = new Map<string, Battle>();
@@ -116,11 +146,21 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
   const queuedProtocol = new Map<string, number>();
   /** Última identidad de bot que vio cada jugador (para no repetirla en la partida siguiente). */
   const lastBotIdentity = new Map<string, string>();
+  /** Temporizador del bot de cada jugador en la cola (vence a joinedAt + botAfterMs). */
+  const botTimers = new Map<string, unknown>();
+  /** Jugadores cuya partida se está creando: ni están en la cola ni tienen partida todavía. */
+  const pending = new Map<string, PendingPlayer>();
   const matchmaker = new Matchmaker(matchmaking);
   const wordCache = new Map<string, { words: RushWord[]; loadedAt: number }>();
   const sentenceCache = new Map<string, { sentences: ArcadeSentence[]; loadedAt: number }>();
 
-  const stats = () => ({ connected: sockets.size, queued: matchmaker.size, battles: battles.size });
+  const stats = () => ({
+    connected: sockets.size,
+    queued: matchmaker.size,
+    battles: battles.size,
+    matching: pending.size,
+  });
+  const contentKey = (userId: string, languageCode: string) => `${userId}:${languageCode}`;
 
   const http = createServer((req, res) => {
     if (req.url === '/health') {
@@ -128,9 +168,9 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
       res.end(
         JSON.stringify({
           ok: true,
-          // La más nueva (como antes) y todas las que acepta.
-          protocolVersion: ARCADE_PROTOCOL_VERSION,
-          protocolVersions: SUPPORTED_PROTOCOL_VERSIONS,
+          // La más nueva que acepta (como antes) y todas las que acepta.
+          protocolVersion: Math.max(...accepted),
+          protocolVersions: accepted,
           ...stats(),
         }),
       );
@@ -158,6 +198,18 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
     }
   };
 
+  /** Lo que vio cada persona en una partida de Word Rush, para no repetírselo enseguida. */
+  const rememberContent = (battle: Battle) => {
+    if (!(battle instanceof ArcadeBattle)) return;
+    for (const player of battle.players) {
+      if (player.isBot) continue;
+      recentContent.record(
+        contentKey(player.userId, battle.languageCode),
+        battle.seenBy(player.userId),
+      );
+    }
+  };
+
   const hooks: BattleHooks = {
     send,
     onStart: (battle) => {
@@ -166,13 +218,14 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
       const human = battle.players.find((p) => !p.isBot)!;
       const bot = battle.players.find((p) => p.isBot);
       if (bot) {
-        // Se pide con ELO si es de calibración o clasificatoria; la base tiene la última palabra (si
-        // devuelve rated = false, la partida queda sin ELO: applyBotStart).
+        // La base decide si todavía es de calibración (cupo por usuario e idioma).
         return store.startBotBattle(
           battle.id,
           battle.languageCode,
           human.userId,
           { name: bot.username, avatarId: bot.avatarId, rating: bot.rating },
+          // Se pide con ELO si es de calibración o clasificatoria; la base tiene la última palabra (si
+          // devuelve rated = false, la partida queda sin ELO: applyBotStart).
           battle.rating !== 'unrated',
           battle.protocolVersion,
         );
@@ -180,7 +233,10 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
       const [a, b] = battle.userIds;
       return store.startBattle(battle.id, battle.languageCode, a!, b!, battle.protocolVersion);
     },
-    onFinish: (battle, status) => void finalize(battle, status),
+    onFinish: (battle, status) => {
+      rememberContent(battle);
+      void finalize(battle, status);
+    },
     onCancel: (battle, reason) => {
       release(battle);
       logger.info('battle_cancelled', { battleId: battle.id, reason });
@@ -246,12 +302,17 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
     return sentences;
   }
 
+  /**
+   * Arma y anuncia una partida. Las lecturas de la base son asíncronas: si mientras tanto alguien se fue
+   * (`aborted()`), la partida no se crea y devuelve null (nadie recibe match:found).
+   */
   async function createBattle(
     mode: BattleMode,
     players: PlayerInfo[],
     options: BattleOptions = {},
     protocolVersion: number = WORD_RUSH_PROTOCOL_VERSION,
-  ): Promise<Battle> {
+    aborted: () => boolean = () => false,
+  ): Promise<Battle | null> {
     const languageCode = players[0]!.languageCode;
     // Contenido según el rango del jugador con menos rating (lo humano; el bot tiene el rating del
     // jugador ± 40). Mismas reglas que shared/wordRush.ts y shared/arcade.ts.
@@ -268,26 +329,29 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
     const words = (await wordsFor(languageCode)).filter((w) => inUnits(w.unitId));
     let battle: Battle;
     if (protocolVersion === ARCADE_PROTOCOL_VERSION) {
-      // Arcade: la misma secuencia de desafíos para los dos. Las frases pasan por el mismo filtro de
-      // unidades. Si el curso no tiene frases suficientes para su nivel, Sentence Rush queda fuera de la
-      // rotación (nunca se inventan frases).
+      // Word Rush: la misma secuencia para todos, como flujo continuo. Las frases pasan por el mismo
+      // filtro de unidades; sin frases suficientes, Sentence Rush queda fuera (nunca se inventan).
       const sentences = sentencePool(
         (await sentencesFor(languageCode)).filter((s) => inUnits(s.unitId)),
         languageCode,
         rating,
       );
-      const challenges = generateChallenges(
+      if (aborted()) return null;
+      const stream = createChallengeStream(
         rushPool(words, rating),
         sentences,
         random,
         arcadeRules,
+        {
+          recent: recentContent.recentFor(humans.map((p) => contentKey(p.userId, languageCode))),
+        },
       );
       battle = new ArcadeBattle(
         randomUUID(),
         mode,
         languageCode,
         players,
-        challenges,
+        stream,
         clock,
         hooks,
         random,
@@ -295,6 +359,8 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
         arcadeRules,
       );
     } else {
+      // Protocolo 2 (Word Rush clásico de 75 s): sólo para las builds anteriores, hasta el corte.
+      if (aborted()) return null;
       let questions = generateQuestions(rushPool(words, rating), rules.questionCount, random);
       if (writingEnabled(rating, languageCode)) questions = withWriting(questions);
       questions = withPictures(questions, pictureEmojis(words));
@@ -347,69 +413,156 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
       languageCode: info.languageCode,
       rating: persona.rating,
       gamesPlayed: BOT_CONFIG.displayedGames,
-      // Juega a la altura de lo que el jugador hace en Word Rush (shared/botPacing.ts); sin historial,
-      // como siempre (por rating).
+      // Juega a la altura de lo que el jugador hace en Word Rush, ajustado por su rango
+      // (shared/botPacing.ts); sin historial, como siempre (por rating).
       botTargetScore: botTargetScore(info.recentScores, info.rating, random),
     };
   }
 
-  // ---------- matchmaking ----------
+  // ---------- cola ----------
+
+  function clearBotTimer(userId: string) {
+    const handle = botTimers.get(userId);
+    if (handle !== undefined) clock.clearTimeout(handle);
+    botTimers.delete(userId);
+  }
+
+  function dequeue(userId: string) {
+    matchmaker.leave(userId);
+    queued.delete(userId);
+    queuedProtocol.delete(userId);
+    clearBotTimer(userId);
+  }
+
+  /** Entra (o vuelve) a la cola. Conserva la espera si ya estaba; el bot vence a joinedAt + botAfterMs. */
+  function enqueue(info: PlayerInfo, protocol: number, joinedAt: number) {
+    queued.set(info.userId, info);
+    queuedProtocol.set(info.userId, protocol);
+    matchmaker.join({
+      userId: info.userId,
+      languageCode: info.languageCode,
+      rating: info.rating,
+      joinedAt,
+      protocolVersion: protocol,
+    });
+    clearBotTimer(info.userId);
+    if (botAfterMs !== null) {
+      const entry = matchmaker.get(info.userId)!;
+      const wait = Math.max(0, entry.joinedAt + botAfterMs - clock.now());
+      botTimers.set(
+        info.userId,
+        clock.setTimeout(() => {
+          botTimers.delete(info.userId);
+          runMatching();
+        }, wait),
+      );
+    }
+  }
+
+  /**
+   * Un pase de emparejamiento. Primero personas (también quien llegó justo al vencer el plazo de otro);
+   * después, a quien esperó botAfterMs sin rival compatible, un bot. Es síncrono: un mismo jugador no
+   * puede quedar en dos partidas, porque sale de la cola antes de que se arme cualquiera de ellas.
+   */
+  function runMatching() {
+    if (closed) return;
+    const now = clock.now();
+    for (const pair of matchmaker.takePairs(now)) launch(pair, false);
+    if (botAfterMs !== null) {
+      for (const entry of matchmaker.takeWaitingLongerThan(botAfterMs, now)) launch([entry], true);
+    }
+  }
+
+  /** Saca de la cola a los emparejados y arma su partida (contra un bot si `withBot`). */
+  function launch(entries: QueueEntry[], withBot: boolean) {
+    const members: PendingPlayer[] = [];
+    for (const entry of entries) {
+      const info = queued.get(entry.userId);
+      const protocol = queuedProtocol.get(entry.userId) ?? WORD_RUSH_PROTOCOL_VERSION;
+      dequeue(entry.userId);
+      if (!info) continue;
+      members.push({ mode: 'ranked', info, entry, protocol, left: false });
+    }
+    if (members.length !== entries.length) {
+      // No debería pasar (cola y datos van juntos): quien quedó, vuelve a la cola con su espera.
+      for (const m of members) enqueue(m.info, m.protocol, m.entry!.joinedAt);
+      return;
+    }
+    const players = withBot
+      ? [members[0]!.info, makeBot(members[0]!.info)]
+      : members.map((m) => m.info);
+    let options: BattleOptions = {};
+    if (withBot) {
+      // Con cupo de calibración, partida de calibración. Sin cupo, igual se juega en seguida (nadie
+      // queda esperando): clasificatoria (mueve el ELO) si botRatedAfterCalibration, o sin ELO si no.
+      // La base tiene la última palabra en start_bot_battle_v2 (sin la migración 20261228120000, sólo
+      // da ELO dentro del cupo y la partida queda sin ELO).
+      const left = members[0]!.info.botCalibrationLeft ?? 0;
+      options =
+        left > 0
+          ? {
+              rating: 'calibration',
+              calibration: {
+                used: BOT_CALIBRATION.ratedGames - left + 1,
+                limit: BOT_CALIBRATION.ratedGames,
+              },
+            }
+          : botRatedAfterCalibration
+            ? { rating: 'competitive', calibration: null }
+            : { rating: 'unrated', calibration: null };
+    }
+    void startPending(members, 'ranked', players, options, members[0]!.protocol);
+  }
+
+  /**
+   * Crea la partida de `members` registrándolos como pendientes mientras se leen los datos. Si alguno se
+   * fue o se desconectó en ese lapso, la partida no se crea y los demás vuelven a la cola con su espera.
+   */
+  async function startPending(
+    members: PendingPlayer[],
+    mode: BattleMode,
+    players: PlayerInfo[],
+    options: BattleOptions,
+    protocol: number,
+  ): Promise<void> {
+    for (const m of members) pending.set(m.info.userId, m);
+    const gone = (m: PendingPlayer) => m.left || !sockets.has(m.info.userId) || closed;
+    let battle: Battle | null = null;
+    try {
+      battle = await createBattle(mode, players, options, protocol, () => members.some(gone));
+    } catch (err) {
+      // Error (p. ej. la base no dio las unidades): se avisa y NO se vuelve a la cola, porque volver a
+      // emparejar fallaría igual (sería un bucle). El cliente muestra el error y puede reintentar.
+      logger.error('battle_create_failed', { mode, err: String(err) });
+      for (const m of members) {
+        if (!gone(m)) send(m.info.userId, 'server:error', { code: 'server_error' });
+      }
+      return;
+    } finally {
+      for (const m of members) {
+        if (pending.get(m.info.userId) === m) pending.delete(m.info.userId);
+      }
+    }
+    if (battle || mode !== 'ranked') return;
+    // No se creó porque alguien se fue: los que siguen buscando vuelven con su espera original.
+    let requeued = false;
+    for (const m of members) {
+      if (gone(m) || battleByUser.has(m.info.userId) || pending.has(m.info.userId)) continue;
+      if (!m.entry || matchmaker.get(m.info.userId)) continue;
+      enqueue(m.info, m.protocol, m.entry.joinedAt);
+      requeued = true;
+    }
+    if (requeued) runMatching();
+  }
+
+  // ---------- tick ----------
   let tickHandle: unknown = null;
   let closed = false;
   const tick = () => {
     if (closed) return;
+    // Las ventanas de ELO se amplían con la espera: se reintenta periódicamente.
+    runMatching();
     const now = clock.now();
-    for (const [a, b] of matchmaker.takePairs(now)) {
-      const infoA = queued.get(a.userId);
-      const infoB = queued.get(b.userId);
-      // El matchmaker sólo empareja la misma versión de protocolo.
-      const protocol = queuedProtocol.get(a.userId) ?? WORD_RUSH_PROTOCOL_VERSION;
-      for (const id of [a.userId, b.userId]) {
-        queued.delete(id);
-        queuedProtocol.delete(id);
-      }
-      if (!infoA || !infoB) continue;
-      createBattle('ranked', [infoA, infoB], {}, protocol).catch((err: unknown) => {
-        logger.error('battle_create_failed', { err: String(err) });
-        for (const info of [infoA, infoB]) {
-          send(info.userId, 'server:error', { code: 'server_error' });
-        }
-      });
-    }
-    // Sin rival humano a tiempo: un bot a su altura. Los emparejamientos humanos de este mismo tick ya
-    // salieron de la cola, así que tienen prioridad. Con cupo de calibración, partida de calibración;
-    // sin cupo, clasificatoria (mueve el ELO) si botRatedAfterCalibration, o sin ELO si no. La base
-    // tiene la última palabra en start_bot_battle_v2 (sin la migración 20261228120000, sólo da ELO
-    // dentro del cupo y la partida queda sin ELO).
-    if (botAfterMs !== null) {
-      for (const entry of matchmaker.takeWaitingLongerThan(botAfterMs, now)) {
-        const info = queued.get(entry.userId);
-        const protocol = queuedProtocol.get(entry.userId) ?? WORD_RUSH_PROTOCOL_VERSION;
-        queued.delete(entry.userId);
-        queuedProtocol.delete(entry.userId);
-        if (!info) continue;
-        const left = info.botCalibrationLeft ?? 0;
-        createBattle(
-          'ranked',
-          [info, makeBot(info)],
-          left > 0
-            ? {
-                rating: 'calibration',
-                calibration: {
-                  used: BOT_CALIBRATION.ratedGames - left + 1,
-                  limit: BOT_CALIBRATION.ratedGames,
-                },
-              }
-            : botRatedAfterCalibration
-              ? { rating: 'competitive', calibration: null }
-              : { rating: 'unrated', calibration: null },
-          protocol,
-        ).catch((err: unknown) => {
-          logger.error('battle_create_failed', { err: String(err) });
-          send(info.userId, 'server:error', { code: 'server_error' });
-        });
-      }
-    }
     for (const userId of queued.keys()) {
       const entry = matchmaker.get(userId);
       if (!entry) continue;
@@ -433,7 +586,7 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
       next(error);
     };
     const version = auth.protocolVersion;
-    if (typeof version !== 'number' || !SUPPORTED_PROTOCOL_VERSIONS.includes(version)) {
+    if (typeof version !== 'number' || !accepted.includes(version)) {
       return fail('protocol_mismatch');
     }
     if (typeof auth.token !== 'string' || auth.token.length === 0) return fail('unauthorized');
@@ -470,14 +623,12 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
     sockets.set(userId, socket);
     // Una conexión por usuario: la nueva reemplaza a la anterior (p. ej. reconexión de red).
     if (previous) previous.disconnect(true);
-    // Si estaba en la cola con otra versión, esa entrada ya no corresponde a esta conexión: se saca
-    // (con la misma versión se conserva, como siempre: el cliente vuelve a entrar sin perder la espera).
+    // Si estaba en la cola (o armando partida) con otra versión, eso ya no corresponde a esta conexión
+    // (con la misma versión se conserva: el cliente vuelve a entrar sin perder la espera).
     const queuedVersion = queuedProtocol.get(userId);
-    if (queuedVersion !== undefined && queuedVersion !== protocolVersion) {
-      matchmaker.leave(userId);
-      queued.delete(userId);
-      queuedProtocol.delete(userId);
-    }
+    if (queuedVersion !== undefined && queuedVersion !== protocolVersion) dequeue(userId);
+    const waiting = pending.get(userId);
+    if (waiting && waiting.protocol !== protocolVersion) waiting.left = true;
 
     if (battle) battle.reconnect(userId);
 
@@ -499,12 +650,25 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
     const safe = <T>(ack: Ack<T> | undefined): Ack<T> =>
       typeof ack === 'function' ? ack : () => {};
 
+    /**
+     * Si ya hay una partida armándose para este usuario: pedir lo mismo otra vez (p. ej. el cliente
+     * reingresa a la cola al reconectarse) se acepta sin crear otra; pedir otra cosa, no.
+     */
+    const pendingConflict = (mode: BattleMode): 'same' | 'other' | null => {
+      const current = pending.get(userId);
+      if (!current || current.left) return null;
+      return current.mode === mode && current.protocol === protocolVersion ? 'same' : 'other';
+    };
+
     socket.on('queue:join', (payload, ack) => {
       const reply = safe(ack);
       const mode = payload?.mode;
       if (mode !== 'ranked' && mode !== 'practice' && mode !== 'bot_practice')
         return reply({ ok: false, code: 'invalid_payload' });
       if (battleByUser.has(userId)) return reply({ ok: false, code: 'already_in_battle' });
+      const conflict = pendingConflict(mode);
+      if (conflict === 'same') return reply({ ok: true, data: { mode } });
+      if (conflict === 'other') return reply({ ok: false, code: 'already_in_battle' });
 
       store
         .getPlayer(userId)
@@ -512,39 +676,35 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
           if (!profile) return reply({ ok: false, code: 'onboarding_required' });
           // El nivel curricular es el de la conexión que entra a la cola (fase C.8).
           const info: PlayerInfo = { ...profile, curriculumApi: socket.data.curriculumApi };
-          // Pudo haber empezado una partida mientras se leía el perfil.
+          // Pudo haber empezado (o estar armándose) una partida mientras se leía el perfil.
           if (battleByUser.has(userId)) return reply({ ok: false, code: 'already_in_battle' });
           if (sockets.get(userId) !== socket) return;
+          const late = pendingConflict(mode);
+          if (late === 'same') return reply({ ok: true, data: { mode } });
+          if (late === 'other') return reply({ ok: false, code: 'already_in_battle' });
+
           if (mode === 'practice' || mode === 'bot_practice') {
-            matchmaker.leave(userId);
-            queued.delete(userId);
-            queuedProtocol.delete(userId);
+            dequeue(userId);
             reply({ ok: true, data: { mode } });
-            // Contra un bot sin ELO: no se guarda ni da recompensas.
-            try {
-              await createBattle(
-                mode,
-                mode === 'practice' ? [info] : [info, makeBot(info)],
-                {},
-                protocolVersion,
-              );
-            } catch (err) {
-              // El ack ya salió con ok: sin este aviso el cliente se queda esperando la partida. Se
-              // atrapa acá para que el catch de abajo no vuelva a responder (un solo aviso).
-              logger.error('battle_create_failed', { userId, mode, err: String(err) });
-              socket.emit('server:error', { code: 'server_error' });
-            }
+            // Sin ELO: no se guarda ni da recompensas. El ack ya salió con ok: si falla, server:error.
+            const member: PendingPlayer = {
+              mode,
+              info,
+              entry: null,
+              protocol: protocolVersion,
+              left: false,
+            };
+            await startPending(
+              [member],
+              mode,
+              mode === 'practice' ? [info] : [info, makeBot(info)],
+              {},
+              protocolVersion,
+            );
             return;
           }
-          queued.set(userId, info);
-          queuedProtocol.set(userId, protocolVersion);
-          matchmaker.join({
-            userId,
-            languageCode: info.languageCode,
-            rating: info.rating,
-            joinedAt: clock.now(),
-            protocolVersion,
-          });
+          // Reentrar no reinicia la espera (Matchmaker.join conserva joinedAt).
+          enqueue(info, protocolVersion, clock.now());
           reply({ ok: true, data: { mode } });
           const entry = matchmaker.get(userId)!;
           send(userId, 'queue:status', {
@@ -553,6 +713,8 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
             waitedMs: clock.now() - entry.joinedAt,
             botCalibrationLeft: info.botCalibrationLeft ?? 0,
           });
+          // Si ya hay un rival compatible esperando, se empareja ahora (sin esperar al tick).
+          runMatching();
         })
         .catch((err: unknown) => {
           logger.error('queue_join_failed', { userId, err: String(err) });
@@ -561,9 +723,9 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
     });
 
     socket.on('queue:leave', (ack) => {
-      matchmaker.leave(userId);
-      queued.delete(userId);
-      queuedProtocol.delete(userId);
+      dequeue(userId);
+      const waiting = pending.get(userId);
+      if (waiting) waiting.left = true;
       safe(ack)({ ok: true, data: null });
     });
 
@@ -614,9 +776,8 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
     socket.on('disconnect', () => {
       if (sockets.get(userId) !== socket) return;
       sockets.delete(userId);
-      matchmaker.leave(userId);
-      queued.delete(userId);
-      queuedProtocol.delete(userId);
+      dequeue(userId);
+      // Una partida que se está armando para este usuario no se crea si no vuelve antes (ver gone()).
       battleByUser.get(userId)?.disconnect(userId);
     });
   });
@@ -628,6 +789,7 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
     close: async () => {
       closed = true;
       if (tickHandle !== null) clock.clearTimeout(tickHandle);
+      for (const userId of [...botTimers.keys()]) clearBotTimer(userId);
       await new Promise<void>((resolve) => {
         void io.close(() => resolve());
       });

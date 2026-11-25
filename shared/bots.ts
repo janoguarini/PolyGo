@@ -8,7 +8,7 @@ import { RATING_CONFIG } from './ranking';
  */
 
 export const BOT_CONFIG = {
-  /** Espera en cola sin rival humano antes de jugar contra un bot. */
+  /** Espera en cola sin rival humano antes de jugar contra un bot (exacta: temporizador por jugador). */
   afterMs: 3_000,
   /** El rating del bot se elige a ± esto del jugador. */
   ratingJitter: 40,
@@ -43,8 +43,8 @@ export const BOT_CONFIG = {
  *     la deja sin ELO.
  *   - `false`: contra un bot se juega sin ELO (unrated): se guarda el resultado, pero no cambia el
  *     rating, las estadísticas del ranking ni los logros.
- * La cola da un bot a los `BOT_CONFIG.afterMs`; la oferta de práctica tras `practiceOfferAfterMs`
- * sólo la usan las builds anteriores.
+ * Con el servidor de partidas, el bot entra a los `BOT_CONFIG.afterMs` sin rival humano, haya cupo o
+ * no; la oferta de práctica tras `practiceOfferAfterMs` sólo la usan las builds anteriores.
  */
 export const BOT_CALIBRATION = {
   ratedGames: 3,

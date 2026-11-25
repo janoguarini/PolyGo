@@ -11,7 +11,7 @@ import { connect, type Socket } from 'socket.io-client';
 
 import {
   ARCADE,
-  generateChallenges,
+  createChallengeStream,
   gradeArcade,
   sentencePool,
   type ArcadeChallenge,
@@ -365,19 +365,19 @@ function bigTables(): Record<string, Row[]> {
 test('banco: dos flujos con la misma semilla dan el mismo contenido y orden', async () => {
   const { sentences } = await load(bigTables());
   const pool = forMatch(sentences, ['a1-u01', 'a1-u02'], A1_ONLY);
-  const a = generateChallenges(ARCADE_WORDS, pool, seededRandom(42));
-  const b = generateChallenges(ARCADE_WORDS, pool, seededRandom(42));
-  assert.deepEqual(a, b);
+  const a = createChallengeStream(ARCADE_WORDS, pool, seededRandom(42));
+  const b = createChallengeStream(ARCADE_WORDS, pool, seededRandom(42));
+  for (let i = 0; i < 80; i++) assert.deepEqual(a.at(i), b.at(i));
 });
 
 test('banco: una partida no repite frases (con banco suficiente)', async () => {
   const { sentences } = await load(bigTables());
   const pool = forMatch(sentences, ['a1-u01', 'a1-u02'], A1_ONLY);
   assert.ok(pool.length >= 60);
-  const stream = generateChallenges(ARCADE_WORDS, pool, seededRandom(7));
+  const stream = createChallengeStream(ARCADE_WORDS, pool, seededRandom(7));
   const seen: string[] = [];
   for (let i = 0; i < 60; i++) {
-    const c = stream[i]!;
+    const c = stream.at(i);
     if (c.kind === 'sentence') seen.push(c.sentenceId);
   }
   assert.ok(seen.length > 0, 'hubo desafíos de frases');

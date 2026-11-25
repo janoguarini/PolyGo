@@ -9,7 +9,7 @@ import { test } from 'node:test';
 
 import { io as connect, type Socket } from 'socket.io-client';
 
-import { ARCADE, generateChallenges } from '../../shared/arcade';
+import { ARCADE, createChallengeStream } from '../../shared/arcade';
 import { TIERS } from '../../shared/ranking';
 import {
   BOT_PACING,
@@ -43,7 +43,7 @@ const hooks: BattleHooks = {
 async function botScore(target: number | null, seed: number, rating = 180): Promise<number> {
   const clock = new ManualClock();
   const random = seededRandom(seed);
-  const challenges = generateChallenges(ARCADE_WORDS, ARCADE_SENTENCES, random);
+  const challenges = createChallengeStream(ARCADE_WORDS, ARCADE_SENTENCES, random);
   const bot: PlayerInfo = {
     ...player('bot:1', rating),
     isBot: true,
@@ -168,19 +168,24 @@ test('jugada: nunca más rápida que una persona y corrige hacia el plan', () =>
   assert.ok(avg(behind) < avg(ahead) * 0.6);
 });
 
-test('simulación: el bot termina cerca del objetivo en todo el rango (motor real)', async () => {
+test('simulación: el bot termina cerca del objetivo en todo el rango (motor real)', async (t) => {
+  const failures: string[] = [];
   for (const target of [1_500, 4_000, 8_000, 12_000]) {
     const ratios: number[] = [];
-    for (let seed = 1; seed <= 24; seed++) ratios.push((await botScore(target, seed)) / target);
+    for (let seed = 1; seed <= 72; seed++) ratios.push((await botScore(target, seed)) / target);
     const m = median(ratios);
     const within = ratios.filter((x) => x > 0.7 && x < 1.3).length / ratios.length;
-    assert.ok(m > 0.85 && m < 1.15, `objetivo ${target}: mediana ${m.toFixed(2)}`);
-    assert.ok(within >= 0.8, `objetivo ${target}: ${(within * 100).toFixed(0)} % a ±30 %`);
+    t.diagnostic(
+      `objetivo ${target}: mediana ${m.toFixed(2)}, ${(within * 100).toFixed(0)} % a ±30 %`,
+    );
+    if (!(m > 0.85 && m < 1.15)) failures.push(`objetivo ${target}: mediana ${m.toFixed(2)}`);
+    if (within < 0.8) failures.push(`objetivo ${target}: ${(within * 100).toFixed(0)} % a ±30 %`);
   }
+  assert.deepEqual(failures, []);
 });
 
 /** Partidas simuladas contra alguien que juega como su promedio (±12 % por partida): % que gana. */
-async function playerWinRate(rating: number, games = 60): Promise<number> {
+async function playerWinRate(rating: number, games = 200): Promise<number> {
   // El jugador de la prueba de producción: 8048, 9132, 11554…
   const history = [9132, 8048, 8600, 8900, 8300];
   const playerMedian = median(history);

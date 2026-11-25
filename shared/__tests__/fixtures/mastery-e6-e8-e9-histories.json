@@ -1,0 +1,72 @@
+{
+  "description": "Historiales originales de E6, E8 y E9 (docs/MASTERY_ENGINE_DESIGN.md rev. 2.1, apéndice 17). Filas: t en días, tier L (translate_write/short_answer typed, free_recall) o G (order_words tiles, guided_construction), s 1/0, first=false = reintento, delta = días desde la exposición anterior del concepto (null = primera). Sin ayudas.",
+  "sources": {
+    "me2.js": "0ae89f317f628ac1bc27c221c5d08494e8cabd469054a776b2372b7f3b1c0c2a",
+    "extra.js": "50a98ce1c6803cbc98bc3d440fa8a90b7af2bf4f381198b9b9c1d462ac20bbc7"
+  },
+  "bases": {
+    "e6pre": [
+      { "t": 0, "item": "z1", "tier": "L", "s": 1, "delta": null },
+      { "t": 1, "item": "z2", "tier": "L", "s": 1, "delta": 1 },
+      { "t": 3, "item": "z3", "tier": "L", "s": 1, "delta": 2 },
+      { "t": 7, "item": "z1", "tier": "L", "s": 1, "delta": 4 },
+      { "t": 14, "item": "z4", "tier": "L", "s": 1, "delta": 7 },
+      { "t": 21, "item": "z2", "tier": "L", "s": 1, "delta": 7 },
+      { "t": 30, "item": "z3", "tier": "L", "s": 1, "delta": 9 },
+      { "t": 40, "item": "z4", "tier": "L", "s": 1, "delta": 10 }
+    ],
+    "e8": [
+      { "t": 0, "item": "ow1", "tier": "G", "s": 1, "delta": null },
+      { "t": 0.01, "item": "ow1", "tier": "G", "s": 0, "first": false, "delta": 0.01 },
+      { "t": 0.02, "item": "tw1", "tier": "L", "s": 1, "delta": 0.01 },
+      { "t": 1, "item": "tw1", "tier": "L", "s": 1, "delta": 1 },
+      { "t": 3, "item": "tw1", "tier": "L", "s": 1, "delta": 2 },
+      { "t": 6, "item": "tw1", "tier": "L", "s": 1, "delta": 3 }
+    ]
+  },
+  "cases": [
+    { "id": "E6-d40", "dimension": "vocabulary", "base": "e6pre", "extra": [], "asOf": 40, "lastExposure": 40, "prior": null,
+      "alpha": 6.978744564458804, "beta": 0.7348672461377994, "m": 0.9047, "L": 0.6986, "c": 0.6555, "status": "mastered" },
+    { "id": "E6-d100", "dimension": "vocabulary", "base": "e6pre", "extra": [], "asOf": 100, "lastExposure": 40, "prior": null,
+      "alpha": 6.978744564458804, "beta": 0.7348672461377994, "m": 0.9047, "L": 0.6986, "c": 0.4129, "status": "mastered" },
+    { "id": "E6-d101", "dimension": "vocabulary", "base": "e6pre",
+      "extra": [{ "t": 100, "item": "z1", "tier": "L", "s": 0, "delta": 60 }, { "t": 101, "item": "z5", "tier": "L", "s": 0, "delta": 1 }],
+      "asOf": 101, "lastExposure": 101, "prior": null,
+      "alpha": 4.362604681757397, "beta": 2.4517136221333637, "m": 0.6402, "L": 0.3342, "c": 0.4053, "status": "in_progress" },
+    { "id": "E6-alt", "dimension": "vocabulary", "base": "e6pre",
+      "extra": [{ "t": 100, "item": "z1", "tier": "L", "s": 1, "delta": 60 }],
+      "asOf": 100, "lastExposure": 100, "prior": null,
+      "alpha": 5.396333589300538, "beta": 0.4629373561436452, "m": 0.921, "L": 0.7009, "c": 0.6432, "status": "mastered" },
+    { "id": "E8-r2", "dimension": "grammar", "base": "e8",
+      "extra": [{ "t": 8, "item": "sa1", "tier": "L", "s": 1, "delta": 2 }, { "t": 10, "item": "tw2", "tier": "L", "s": 1, "delta": 2 }],
+      "asOf": 10, "lastExposure": 10, "prior": null,
+      "alpha": 4.6997854112263715, "beta": 0.9258747122872905, "m": 0.8354, "L": 0.5428, "c": null, "status": "in_progress",
+      "transfer": [2.7255, 0.7884] },
+    { "id": "E8-r3", "dimension": "grammar", "base": "e8",
+      "extra": [{ "t": 8, "item": "sa1", "tier": "L", "s": 1, "delta": 2 }, { "t": 10, "item": "tw2", "tier": "L", "s": 1, "delta": 2 },
+                { "t": 13, "item": "sa2", "tier": "L", "s": 1, "delta": 3 }],
+      "asOf": 13, "lastExposure": 13, "prior": null,
+      "alpha": 5.5924421640816915, "beta": 0.9047277046327152, "m": 0.8608, "L": 0.6028, "c": null, "status": "mastered",
+      "transfer": [3.6633, 0.8234] },
+    { "id": "E8-var", "dimension": "grammar", "base": "e8",
+      "extra": [{ "t": 8, "item": "sa1", "tier": "L", "s": 0, "delta": 2 }, { "t": 10, "item": "tw2", "tier": "L", "s": 0, "delta": 2 }],
+      "asOf": 10, "lastExposure": 10, "prior": null,
+      "alpha": 2.715070658291941, "beta": 2.9105894652217215, "m": 0.4826, "L": 0.1675, "c": null, "status": "in_progress",
+      "transfer": [0.7408, 0.3684] },
+    { "id": "E9-sin", "dimension": "vocabulary", "base": null,
+      "extra": [{ "t": 120, "item": "p1", "tier": "L", "s": 1, "delta": 120 }, { "t": 121, "item": "p2", "tier": "L", "s": 1, "delta": 1 },
+                { "t": 123, "item": "p3", "tier": "L", "s": 1, "delta": 2 }],
+      "asOf": 123, "lastExposure": 123, "prior": null,
+      "alpha": 3.939034689802923, "beta": 0.9771599684342459, "m": 0.8012, "L": 0.4718, "c": null, "status": "in_progress" },
+    { "id": "E9-con", "dimension": "vocabulary", "base": null,
+      "extra": [{ "t": 120, "item": "p1", "tier": "L", "s": 1, "delta": 120 }, { "t": 121, "item": "p2", "tier": "L", "s": 1, "delta": 1 },
+                { "t": 123, "item": "p3", "tier": "L", "s": 1, "delta": 2 }],
+      "asOf": 123, "lastExposure": 123, "prior": { "m": 0.9, "conf": 0.7, "frozenAt": 0 },
+      "alpha": 4.916255889758176, "beta": 1.0857401017626074, "m": 0.8191, "L": 0.5285, "c": null, "status": "in_progress" },
+    { "id": "E9-2e1a", "dimension": "vocabulary", "base": null,
+      "extra": [{ "t": 120, "item": "p1", "tier": "L", "s": 0, "delta": 120 }, { "t": 121, "item": "p2", "tier": "L", "s": 0, "delta": 1 },
+                { "t": 123, "item": "p3", "tier": "L", "s": 1, "delta": 2 }],
+      "asOf": 123, "lastExposure": 123, "prior": { "m": 0.9, "conf": 0.7, "frozenAt": 0 },
+      "alpha": 2.9543811683894985, "beta": 3.0476148231312843, "m": 0.4922, "L": 0.1832, "c": null, "status": "in_progress" }
+  ]
+}

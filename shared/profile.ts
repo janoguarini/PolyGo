@@ -100,14 +100,28 @@ export function nextStartLevel(level: string): (typeof START_LEVELS)[number] | n
 }
 
 /**
- * Avatares predefinidos: tres zorros. Los ids son heredados de los primeros avatares (la base los
- * acepta sin cambiar su CHECK): 'bolt' = violeta (predeterminado), 'crown' = amarillo,
- * 'flame' = rojo. Las imágenes están en assets/avatars y las resuelve el componente Avatar.
+ * Avatares predefinidos. Los zorros conservan los ids heredados de los primeros avatares:
+ * 'bolt' = violeta (predeterminado), 'crown' = amarillo, 'flame' = rojo. El resto son
+ * '<animal>-<color>'. La base acepta exactamente estos ids (profiles_avatar_check, migración
+ * 20261206120000_avatar_animals): al agregar uno, ampliar también ese CHECK. Las imágenes están en
+ * assets/avatars y las resuelve el componente Avatar.
  */
 export const AVATARS = [
   { id: 'bolt', name: 'Zorro violeta', color: '#8B5CF6' },
   { id: 'crown', name: 'Zorro amarillo', color: '#F5C542' },
   { id: 'flame', name: 'Zorro rojo', color: '#F43F5E' },
+  { id: 'panda-violet', name: 'Panda violeta', color: '#8B5CF6' },
+  { id: 'panda-yellow', name: 'Panda amarillo', color: '#F5C542' },
+  { id: 'panda-red', name: 'Panda rojo', color: '#F43F5E' },
+  { id: 'dog-violet', name: 'Perro violeta', color: '#8B5CF6' },
+  { id: 'dog-yellow', name: 'Perro amarillo', color: '#F5C542' },
+  { id: 'dog-red', name: 'Perro rojo', color: '#F43F5E' },
+  { id: 'cat-violet', name: 'Gato violeta', color: '#8B5CF6' },
+  { id: 'cat-yellow', name: 'Gato amarillo', color: '#F5C542' },
+  { id: 'cat-red', name: 'Gato rojo', color: '#F43F5E' },
+  { id: 'lion-violet', name: 'León violeta', color: '#8B5CF6' },
+  { id: 'lion-yellow', name: 'León amarillo', color: '#F5C542' },
+  { id: 'lion-red', name: 'León rojo', color: '#F43F5E' },
 ] as const;
 
 export type AvatarId = (typeof AVATARS)[number]['id'];

@@ -6,7 +6,7 @@ import { connect, type Socket } from 'socket.io-client';
 
 import {
   ARCADE,
-  generateChallenges,
+  createChallengeStream,
   type ArcadeAnswer,
   type ArcadeAnswerResult,
   type ArcadeChallenge,
@@ -30,7 +30,18 @@ import { settleBattle } from '../src/settlement';
 import { silentLogger } from '../src/types';
 import { ARCADE_SENTENCES, ARCADE_WORDS, FakeStore, flush, player, seededRandom } from './helpers';
 
-const CHALLENGES = generateChallenges(ARCADE_WORDS, ARCADE_SENTENCES, seededRandom(3));
+/** Flujo de desafíos de las partidas de prueba (misma semilla: misma secuencia en cada partida). */
+const newStream = () => createChallengeStream(ARCADE_WORDS, ARCADE_SENTENCES, seededRandom(3));
+/** La secuencia de esas partidas, para consultarla desde los tests (crece a pedido). */
+const CHALLENGES_STREAM = newStream();
+const challengeAt = (index: number) => CHALLENGES_STREAM.at(index);
+
+/**
+ * Lo que tarda una persona en responder en los tests. Las respuestas a 0 ms de un Swipe no son humanas
+ * y el servidor las cuenta como fallo (KIND_RULES.swipe.minMs): los tests no responden así salvo que lo
+ * pidan a propósito.
+ */
+const HUMAN_ANSWER_MS = 400;
 
 /** Respuesta correcta (o equivocada) para un desafío; en Connect, para la primera pareja libre. */
 function answerFor(
@@ -76,28 +87,24 @@ function setup({ withBot = false, mode = 'ranked' as 'ranked' | 'practice' } = {
     mode === 'practice'
       ? [player('alice')]
       : [player('alice'), withBot ? bot : player('bob', 1050)];
-  const battle = new ArcadeBattle(
-    'a1',
-    mode,
-    'en',
-    players,
-    CHALLENGES,
-    clock,
-    hooks,
-    seededRandom(5),
-  );
+  const stream = newStream();
+  const battle = new ArcadeBattle('a1', mode, 'en', players, stream, clock, hooks, seededRandom(5));
   const events = (userId: string, event: string) =>
     sent.filter((s) => s.userId === userId && s.event === event).map((s) => s.payload);
   const progress = new Map<string, { index: number; solved: Set<number> }>();
-  /** Responde el desafío actual de `userId` (lleva la cuenta como lo haría la app). */
+  /**
+   * Responde el desafío actual de `userId` (lleva la cuenta como lo haría la app), después de pensar
+   * `delayMs` (por defecto, el tiempo de una persona).
+   */
   const play = (
     userId: string,
     right: boolean,
-    override?: { index?: number; answer?: unknown },
+    override?: { index?: number; answer?: unknown; delayMs?: number },
   ) => {
     const p = progress.get(userId) ?? { index: 0, solved: new Set<number>() };
     progress.set(userId, p);
-    const challenge = CHALLENGES[p.index]!;
+    clock.advance(override?.delayMs ?? HUMAN_ANSWER_MS);
+    const challenge = stream.at(p.index);
     const answer = override?.answer ?? answerFor(challenge, right, p.solved);
     let result: Parameters<Ack<ArcadeAnswerResult>>[0] | undefined;
     battle.arcadeAnswer(userId, override?.index ?? p.index, answer, (r) => (result = r));
@@ -110,7 +117,7 @@ function setup({ withBot = false, mode = 'ranked' as 'ranked' | 'practice' } = {
     }
     return result!;
   };
-  return { clock, sent, finished, cancelled, battle, events, play, progress };
+  return { clock, sent, finished, cancelled, battle, events, play, progress, stream };
 }
 
 async function startPlaying(s: ReturnType<typeof setup>) {
@@ -203,13 +210,16 @@ test('arcade: Frenesí desde el segundo 45 duplica y no reinicia el combo', asyn
   await startPlaying(s);
   s.play('alice', true);
   s.play('alice', true);
-  s.clock.advance(45_000 - 1);
+  // La tercera respuesta llega un tiempo humano antes del Frenesí y la cuarta, justo al empezar.
+  const frenzyAt = s.battle.endsAt! - ARCADE.frenzyMs;
+  s.clock.advance(frenzyAt - HUMAN_ANSWER_MS - HUMAN_ANSWER_MS - s.clock.now());
   const before = s.play('alice', true);
   assert.ok(before.ok);
+  assert.equal(s.clock.now(), frenzyAt - HUMAN_ANSWER_MS);
   assert.equal(before.data.frenzy, false);
-  s.clock.advance(1);
   const during = s.play('alice', true);
   assert.ok(during.ok);
+  assert.equal(s.clock.now(), frenzyAt, 'exactamente en el segundo 45');
   assert.equal(during.data.frenzy, true);
   assert.equal(during.data.combo, 4, 'el combo sigue');
   // (base + 0 de velocidad: pasó menos de 1 ms… se calcula igual que el servidor) × 2 × 2.
@@ -221,7 +231,7 @@ test('arcade: Frenesí desde el segundo 45 duplica y no reinicia el combo', asyn
 test('arcade: respuesta duplicada, adelantada o de otro formato no puntúa dos veces', async () => {
   const s = setup();
   await startPlaying(s);
-  const first = CHALLENGES[0]!;
+  const first = challengeAt(0);
   const ok = s.play('alice', true);
   assert.ok(ok.ok);
   // Reenvío del mismo desafío (p. ej. tras reconectar) cuando ya se cerró.
@@ -246,7 +256,7 @@ test('arcade: respuesta duplicada, adelantada o de otro formato no puntúa dos v
 test('arcade: el cliente no puede mandar puntos, combo ni tiempo', async () => {
   const s = setup();
   await startPlaying(s);
-  const challenge = CHALLENGES[0]!;
+  const challenge = challengeAt(0);
   const forged = {
     ...answerFor(challenge, true),
     points: 99_999,
@@ -266,7 +276,9 @@ test('arcade: Connect pareja por pareja; un error rompe el combo pero no cierra 
   await startPlaying(s);
   // Avanza hasta el primer Connect.
   s.progress.set('alice', { index: 0, solved: new Set() });
-  while (CHALLENGES[s.progress.get('alice')?.index ?? 0]!.kind !== 'connect') s.play('alice', true);
+  while (s.stream.at(s.progress.get('alice')?.index ?? 0).kind !== 'connect') {
+    s.play('alice', true);
+  }
   const index = s.progress.get('alice')!.index;
   const wrong = s.play('alice', false);
   assert.ok(wrong.ok);

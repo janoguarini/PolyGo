@@ -1,16 +1,17 @@
 import {
   ARCADE,
   arcadeScore,
-  botArcadeMove,
   gradeArcade,
   isFrenzy,
   toChallengeView,
   type ArcadeAnswerResult,
   type ArcadeRules,
   type ArcadeChallenge,
+  type ChallengeStream,
   type ChallengeView,
   type GradeOutcome,
 } from '../../shared/arcade';
+import { ArcadeBotBrain, botArcadeAnswer } from '../../shared/arcadeBot';
 import { pacedBotMove } from '../../shared/botPacing';
 import {
   ARCADE_PROTOCOL_VERSION,
@@ -25,9 +26,12 @@ import type { PlayerInfo } from './types';
 
 export type { ArcadeRules } from '../../shared/arcade';
 
-/** Progreso propio de cada jugador en la partida arcade. */
+/** Si a un bot no se le puede armar ninguna respuesta válida (contenido roto), reintenta así. */
+const BOT_RETRY_MS = 400;
+
+/** Progreso propio de cada jugador en la partida. */
 interface ArcadeSeat {
-  /** Desafío actual (=== challenges.length si terminó todos). */
+  /** Desafío actual. */
   current: number;
   /** Instante del servidor en que el desafío (o, en Connect, la pareja) quedó activo. */
   activeSince: number;
@@ -36,13 +40,23 @@ interface ArcadeSeat {
   frenzyPoints: number;
   /** Connect: parejas resueltas del tablero actual, izquierda → derecha. */
   solved: Map<number, number>;
+  /** Intentos en el desafío actual (Connect: parejas probadas). */
+  attempts: number;
+  /** Hasta qué índice (exclusivo) se le mostraron desafíos: lo que «vio» (memoria de contenido). */
+  shownUpTo: number;
+  /** Sólo bots: cómo juega. */
+  brain: ArcadeBotBrain | null;
 }
 
 /**
- * Partida Ranked Arcade (protocolo 3): 60 s, cuatro microjuegos, combo y Frenesí. El ciclo de vida
- * (confirmación, cuenta regresiva, reloj, desconexión con gracia, abandono, cierre y liquidación) es
- * el de Battle; acá sólo cambia qué se juega y cómo se puntúa. Toda decisión usa el reloj del servidor:
- * el cliente dice qué hizo en qué desafío, nada más.
+ * Partida de Word Rush (motor interno Arcade, protocolo 3): 60 s, cuatro microjuegos, combo y Frenesí.
+ * El ciclo de vida (confirmación, cuenta regresiva, reloj, desconexión con gracia, abandono, cierre y
+ * liquidación) es el de Battle; acá cambia qué se juega y cómo se puntúa. Toda decisión usa el reloj
+ * del servidor: el cliente dice qué hizo en qué desafío, nada más.
+ *
+ * La secuencia es un flujo continuo compartido (createChallengeStream): todos los jugadores (y el bot)
+ * leen el mismo arreglo, que crece a pedido del más adelantado. La partida termina sólo por el reloj
+ * (o por abandono): nunca por quedarse sin desafíos.
  */
 export class ArcadeBattle extends Battle {
   private readonly arcade = new Map<string, ArcadeSeat>();
@@ -52,7 +66,7 @@ export class ArcadeBattle extends Battle {
     mode: BattleMode,
     languageCode: string,
     players: PlayerInfo[],
-    private readonly challenges: ArcadeChallenge[],
+    private readonly stream: ChallengeStream,
     clock: Clock,
     hooks: BattleHooks,
     random: () => number = Math.random,
@@ -85,8 +99,22 @@ export class ArcadeBattle extends Battle {
         bestCombo: 0,
         frenzyPoints: 0,
         solved: new Map(),
+        attempts: 0,
+        shownUpTo: 0,
+        brain: p.isBot ? new ArcadeBotBrain(p.rating, random) : null,
       });
     }
+  }
+
+  /** Los desafíos generados hasta ahora (el mismo arreglo para todos). */
+  get challenges(): readonly ArcadeChallenge[] {
+    return this.stream.challenges;
+  }
+
+  /** Lo que se le mostró a un jugador, en orden (para la memoria de contenido reciente). */
+  seenBy(userId: string): readonly ArcadeChallenge[] {
+    const state = this.arcade.get(userId);
+    return state ? this.challenges.slice(0, state.shownUpTo) : [];
   }
 
   /**
@@ -109,10 +137,8 @@ export class ArcadeBattle extends Battle {
       return reply({ ok: false, code: 'stale_question' });
     }
     if (!Number.isInteger(challengeIndex)) return reply({ ok: false, code: 'invalid_payload' });
-    if (challengeIndex !== state.current || state.current >= this.challenges.length) {
-      return reply({ ok: false, code: 'stale_question' });
-    }
-    const challenge = this.challenges[state.current]!;
+    if (challengeIndex !== state.current) return reply({ ok: false, code: 'stale_question' });
+    const challenge = this.stream.at(state.current);
     const outcome = gradeArcade(challenge, answer, new Set(state.solved.keys()));
     if (!outcome.valid) return reply({ ok: false, code: 'invalid_payload' });
     const result = this.resolve(seat, state, challenge, outcome);
@@ -158,20 +184,25 @@ export class ArcadeBattle extends Battle {
       this.scheduleBot(seat, state);
       return;
     }
+    // Desconectado: igual corre su reloj; al volver recibe la ventana en battle:state.
     if (!seat.connected) return;
     for (const view of this.windowViews(state)) {
       this.hooks.send(seat.info.userId, 'arcade:challenge', view);
     }
   }
 
-  /** El desafío actual y los siguientes (lookahead), con el progreso de Connect. */
+  /**
+   * El desafío actual y los siguientes (lookahead), con el progreso de Connect. Asegura que existan:
+   * el flujo crece a pedido, así que la ventana nunca queda vacía.
+   */
   private windowViews(state: ArcadeSeat): ChallengeView[] {
+    const end = state.current + this.arcadeRules.lookahead;
+    this.stream.ensure(end);
     const views: ChallengeView[] = [];
-    for (let i = state.current; i < state.current + this.arcadeRules.lookahead; i++) {
-      const challenge = this.challenges[i];
-      if (!challenge) break;
-      views.push(toChallengeView(challenge, i === state.current ? [...state.solved] : []));
+    for (let i = state.current; i < end; i++) {
+      views.push(toChallengeView(this.stream.at(i), i === state.current ? [...state.solved] : []));
     }
+    state.shownUpTo = Math.max(state.shownUpTo, end);
     return views;
   }
 
@@ -204,9 +235,11 @@ export class ArcadeBattle extends Battle {
     // Una pareja de Connect descartada por rápida no existe (minMs 0): `done` sólo si se resolvió.
     const done = outcome.done && (challenge.kind !== 'connect' || score.correct);
     state.activeSince = now;
+    state.attempts += 1;
     if (done) {
       state.current += 1;
       state.solved.clear();
+      state.attempts = 0;
     }
     return {
       challengeIndex: challenge.index,
@@ -225,33 +258,37 @@ export class ArcadeBattle extends Battle {
     };
   }
 
-  /** Marcador para los dos, el desafío que entra en la ventana y fin si todos agotaron la secuencia. */
+  /** Marcador para los dos y el desafío que entra en la ventana (el flujo crece si hace falta). */
   private afterAnswer(seat: Seat, state: ArcadeSeat, done: boolean): void {
     this.broadcastScores();
-    if (state.current >= this.challenges.length) {
-      if ([...this.arcade.values()].every((s) => s.current >= this.challenges.length)) {
-        this.finish('completed');
-      }
-      return;
-    }
     if (seat.info.isBot) {
       this.scheduleBot(seat, state);
       return;
     }
     // Pasó al siguiente: entra en la ventana el que viene después (el actual ya lo tenía).
-    const entering = this.challenges[state.current + this.arcadeRules.lookahead - 1];
-    if (done && entering && seat.connected) {
+    if (done && seat.connected) {
+      const enteringIndex = state.current + this.arcadeRules.lookahead - 1;
+      const entering = this.stream.at(enteringIndex);
+      state.shownUpTo = Math.max(state.shownUpTo, enteringIndex + 1);
       this.hooks.send(seat.info.userId, 'arcade:challenge', toChallengeView(entering));
     }
   }
 
-  /** El bot juega el mismo desafío que una persona, con su habilidad, por el mismo camino de puntaje. */
+  /**
+   * El bot juega su desafío actual con su habilidad (shared/arcadeBot.ts), por el mismo camino de
+   * puntaje que una persona y con el reloj del servidor. Nunca queda trabado: si no se le puede armar
+   * una respuesta válida, reintenta acertando y, si el contenido está roto, lo saltea sin puntos.
+   */
   private scheduleBot(seat: Seat, state: ArcadeSeat): void {
-    const challenge = this.challenges[state.current];
-    if (!challenge) return;
-    // Con objetivo (historial del jugador), a su altura; sin objetivo, por rating como siempre.
+    const brain = state.brain;
+    if (!brain) return;
+    const index = state.current;
+    const challenge = this.stream.at(index);
+    const attempts = state.attempts;
+    // Con objetivo (historial del jugador, shared/botPacing.ts), juega a su altura; sin objetivo, por
+    // rating como siempre. Las rachas del cerebro se siguen registrando en botPlay (observe).
     const target = seat.info.botTargetScore;
-    const move =
+    const plan =
       target != null && this.startsAt !== null
         ? pacedBotMove({
             target,
@@ -261,68 +298,40 @@ export class ArcadeBattle extends Battle {
             rules: this.arcadeRules,
             random: this.random,
           })
-        : botArcadeMove(seat.info.rating, challenge.kind, this.random);
-    const index = challenge.index;
-    const solvedBefore = state.solved.size;
-    this.schedule(move.delayMs, () => {
-      if (this.isOver || (this.status !== 'in_progress' && this.status !== 'reconnecting')) return;
-      if (state.current !== index || state.solved.size !== solvedBefore) return;
-      if (this.endsAt !== null && this.clock.now() >= this.endsAt) return;
-      const outcome = gradeArcade(
-        challenge,
-        this.botAnswer(challenge, state, move.correct),
-        new Set(state.solved.keys()),
-      );
-      if (!outcome.valid) return;
-      const result = this.resolve(seat, state, challenge, outcome);
-      this.afterAnswer(seat, state, result.done);
-    });
+        : brain.plan(challenge.kind, challenge.kind === 'connect' && attempts > 0);
+    this.schedule(plan.delayMs, () => this.botPlay(seat, state, index, attempts, plan.correct));
   }
 
-  /** Lo que "toca" el bot: la respuesta correcta o una equivocada válida. */
-  private botAnswer(challenge: ArcadeChallenge, state: ArcadeSeat, correct: boolean): unknown {
-    switch (challenge.kind) {
-      case 'swipe':
-        return { kind: 'swipe', accept: correct ? challenge.truthful : !challenge.truthful };
-      case 'audio': {
-        const wrong = challenge.options.findIndex((_, i) => i !== challenge.correctOption);
-        return {
-          kind: 'audio',
-          option: correct || wrong < 0 ? challenge.correctOption : wrong,
-        };
-      }
-      case 'connect': {
-        const left = challenge.left.findIndex((_, i) => !state.solved.has(i));
-        const usedRight = new Set(state.solved.values());
-        const wrong = challenge.right.findIndex(
-          (_, r) => r !== challenge.solution[left] && !usedRight.has(r),
-        );
-        return {
-          kind: 'connect',
-          left,
-          right: correct || wrong < 0 ? challenge.solution[left] : wrong,
-        };
-      }
-      case 'sentence': {
-        const order = challenge.tokens.map((_, i) => i);
-        if (correct) {
-          // Ordena los bloques según la respuesta canónica.
-          const canonical = challenge.answers[0] ?? '';
-          const remaining = [...order];
-          const sorted: number[] = [];
-          let rest = canonical;
-          while (remaining.length > 0) {
-            const at = remaining.findIndex((i) =>
-              rest.trimStart().toLowerCase().startsWith(challenge.tokens[i]!.toLowerCase()),
-            );
-            const pick = remaining.splice(at < 0 ? 0 : at, 1)[0]!;
-            sorted.push(pick);
-            rest = rest.trimStart().slice(challenge.tokens[pick]!.length);
-          }
-          return { kind: 'sentence', order: sorted };
-        }
-        return { kind: 'sentence', order: [...order].reverse() };
-      }
+  private botPlay(
+    seat: Seat,
+    state: ArcadeSeat,
+    index: number,
+    attempts: number,
+    wantCorrect: boolean,
+  ): void {
+    if (this.isOver || (this.status !== 'in_progress' && this.status !== 'reconnecting')) return;
+    if (state.current !== index || state.attempts !== attempts) return;
+    // Lo que el servidor no acepta de una persona tampoco lo hace el bot.
+    if (this.endsAt !== null && this.clock.now() >= this.endsAt) return;
+    const challenge = this.stream.at(index);
+    const solvedLeft = new Set(state.solved.keys());
+    let move = botArcadeAnswer(challenge, state.solved, wantCorrect, this.random);
+    let outcome = move ? gradeArcade(challenge, move.answer, solvedLeft) : null;
+    if (!outcome?.valid) {
+      move = botArcadeAnswer(challenge, state.solved, true, this.random);
+      outcome = move ? gradeArcade(challenge, move.answer, solvedLeft) : null;
     }
+    if (!outcome?.valid) {
+      // Contenido sin ninguna respuesta válida: no se puntúa y el bot pasa al siguiente.
+      state.current += 1;
+      state.solved.clear();
+      state.attempts = 0;
+      state.activeSince = this.clock.now();
+      this.schedule(BOT_RETRY_MS, () => this.scheduleBot(seat, state));
+      return;
+    }
+    const result = this.resolve(seat, state, challenge, outcome);
+    state.brain?.observe(result.correct);
+    this.afterAnswer(seat, state, result.done);
   }
 }
