@@ -3,9 +3,9 @@
  *
  * El bot de siempre (botArcadeMove) juega según el RATING: con poco ELO juega flojo. Pero un jugador
  * nuevo tiene poco ELO aunque juegue bien, y en el modo de 60 s con combos la diferencia se multiplica
- * (8000 a 900). Acá el bot apunta a un PUNTAJE: la mediana de las últimas partidas del jugador, con
- * variación entre partidas, y regula precisión y ritmo durante la partida para terminar cerca de ese
- * objetivo. No mira al rival: sólo su propio puntaje contra su propio plan, así que ganarle depende de
+ * (8000 a 900). Acá el bot apunta a un PUNTAJE: la mediana de las últimas partidas del jugador, ajustada
+ * por su rango (en Bronce un 10 % menos; cada rango, más exigente) y con variación entre partidas, y
+ * regula precisión y ritmo durante la partida para terminar cerca de ese objetivo. No mira al rival: sólo su propio puntaje contra su propio plan, así que ganarle depende de
  * jugar mejor que tu promedio.
  *
  * Sin historial suficiente (las primeras partidas), botTargetScore devuelve null y se usa el bot de
@@ -13,14 +13,29 @@
  */
 import { KIND_RULES, type ArcadeRules, type ChallengeKind } from './arcade';
 import { BOT_CONFIG } from './bots';
+import { getRank, type TierId } from './ranking';
 
 export const BOT_PACING = {
   /** Partidas recientes (Word Rush completas, en este idioma) que se miran. */
   historySize: 10,
   /** Con menos que esto no hay objetivo: se usa el bot de siempre. */
   minHistory: 2,
-  /** El objetivo es la mediana × esto (el bot termina apenas debajo de su objetivo): partidas parejas, ganás más o menos la mitad (simulación: 50–60 %). */
-  targetFactor: 1.02,
+  /**
+   * El objetivo es la mediana × el factor del rango del jugador: en Bronce el rival apunta un 10 %
+   * por debajo de tu nivel y cada rango se pone más difícil (en los rangos altos, por encima). Así
+   * subir de los primeros rangos es accesible y los altos cuestan. Ver la simulación por rango en
+   * server/test/botPacing.test.ts.
+   */
+  targetFactorByTier: {
+    bronze: 0.9,
+    silver: 0.93,
+    gold: 0.96,
+    platinum: 0.99,
+    emerald: 1.02,
+    diamond: 1.05,
+    master: 1.08,
+    grandmaster: 1.1,
+  } as Readonly<Record<TierId, number>>,
   /** Variación del objetivo entre partidas (log-normal): unas veces el rival está mejor, otras peor. */
   targetSpread: 0.15,
   /** Precisión cuando va justo en su plan, y sus límites. */
@@ -74,6 +89,8 @@ const clamp = (x: number, min: number, max: number) => Math.min(max, Math.max(mi
  */
 export function botTargetScore(
   recentScores: readonly number[] | null | undefined,
+  /** Rating del jugador en este idioma: su rango decide qué tan exigente es el rival. */
+  playerRating: number,
   random: () => number,
   config: BotPacingConfig = BOT_PACING,
 ): number | null {
@@ -85,7 +102,8 @@ export function botTargetScore(
   const mid = Math.floor(sorted.length / 2);
   const median = sorted.length % 2 === 1 ? sorted[mid]! : (sorted[mid - 1]! + sorted[mid]!) / 2;
   const spread = Math.exp(config.targetSpread * gaussian(random));
-  return Math.max(1, Math.round(median * config.targetFactor * spread));
+  const factor = config.targetFactorByTier[getRank(playerRating).tier.id];
+  return Math.max(1, Math.round(median * factor * spread));
 }
 
 /**

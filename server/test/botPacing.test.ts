@@ -10,6 +10,7 @@ import { test } from 'node:test';
 import { io as connect, type Socket } from 'socket.io-client';
 
 import { ARCADE, generateChallenges } from '../../shared/arcade';
+import { TIERS } from '../../shared/ranking';
 import {
   BOT_PACING,
   botTargetScore,
@@ -75,27 +76,49 @@ const median = (xs: number[]) => {
   return s.length % 2 ? s[m]! : (s[m - 1]! + s[m]!) / 2;
 };
 
-test('objetivo: mediana de las últimas partidas × factor, con variación; sin historial, null', () => {
+const BRONZE = 182;
+
+test('objetivo: mediana de las últimas partidas × factor del rango, con variación; sin historial, null', () => {
   assert.equal(
-    botTargetScore(undefined, () => 0.5),
+    botTargetScore(undefined, BRONZE, () => 0.5),
     null,
   );
   assert.equal(
-    botTargetScore([8000], () => 0.5),
+    botTargetScore([8000], BRONZE, () => 0.5),
     null,
   );
   // u = v = 0.5 → gaussiana = -1.177…; con random constante el valor es determinista.
   const fixed = () => 0.5;
-  const a = botTargetScore([8000, 9000, 100_000, 7000], fixed)!;
-  const b = botTargetScore([8000, 9000, 9000, 7000], fixed)!;
+  const a = botTargetScore([8000, 9000, 100_000, 7000], BRONZE, fixed)!;
+  const b = botTargetScore([8000, 9000, 9000, 7000], BRONZE, fixed)!;
   assert.ok(a > 0 && b > 0);
   // Robusto a un valor aislado: la mediana de [7000, 8000, 9000, 100000] es 8500, igual que la otra.
   assert.equal(a, b);
   // Sólo mira las últimas `historySize`.
   const many = Array.from({ length: 30 }, (_, i) => (i < BOT_PACING.historySize ? 5000 : 50_000));
-  assert.equal(botTargetScore(many, fixed), botTargetScore([5000, 5000], fixed));
+  assert.equal(botTargetScore(many, BRONZE, fixed), botTargetScore([5000, 5000], BRONZE, fixed));
   // Ignora puntajes inválidos.
-  assert.equal(botTargetScore([0, -5, Number.NaN, 4000], fixed), null);
+  assert.equal(botTargetScore([0, -5, Number.NaN, 4000], BRONZE, fixed), null);
+});
+
+test('objetivo por rango: en Bronce un 10 % menos y cada rango más exigente', () => {
+  const factors = TIERS.map((t) => BOT_PACING.targetFactorByTier[t.id]);
+  assert.equal(factors[0], 0.9);
+  for (let i = 1; i < factors.length; i++) assert.ok(factors[i]! > factors[i - 1]!);
+  // Sin variación (gaussiana 0: u = 1, v = 0,25), el objetivo es exactamente mediana × factor.
+  const noSpread = (() => {
+    const seq = [1, 0.25];
+    let i = 0;
+    return () => seq[i++ % 2]!;
+  })();
+  for (const tier of TIERS) {
+    const rating = Math.max(tier.minRating, 150);
+    assert.equal(
+      botTargetScore([10_000, 10_000], rating, noSpread),
+      Math.round(10_000 * BOT_PACING.targetFactorByTier[tier.id]),
+      tier.id,
+    );
+  }
 });
 
 test('fracción esperada: pareja hasta el Frenesí y el doble de rápido en los últimos 15 s', () => {
@@ -156,15 +179,15 @@ test('simulación: el bot termina cerca del objetivo en todo el rango (motor rea
   }
 });
 
-test('simulación: contra alguien que juega como su promedio, gana más o menos la mitad', async (t) => {
-  // El jugador de la prueba de producción: 8048 y 9132. Su puntaje en cada partida varía ±12 %.
+/** Partidas simuladas contra alguien que juega como su promedio (±12 % por partida): % que gana. */
+async function playerWinRate(rating: number, games = 60): Promise<number> {
+  // El jugador de la prueba de producción: 8048, 9132, 11554…
   const history = [9132, 8048, 8600, 8900, 8300];
   const playerMedian = median(history);
   const random = seededRandom(99);
   let playerWins = 0;
-  const games = 60;
   for (let g = 0; g < games; g++) {
-    const target = botTargetScore(history, random)!;
+    const target = botTargetScore(history, rating, random)!;
     const bot = await botScore(target, 1_000 + g);
     const u = Math.max(random(), 1e-9);
     const v = random();
@@ -172,9 +195,17 @@ test('simulación: contra alguien que juega como su promedio, gana más o menos 
     const human = playerMedian * Math.exp(0.12 * z);
     if (human > bot) playerWins++;
   }
-  const rate = playerWins / games;
-  t.diagnostic(`el jugador ganó ${(rate * 100).toFixed(0)} %`);
-  assert.ok(rate >= 0.4 && rate <= 0.7, `el jugador ganó ${(rate * 100).toFixed(0)} %`);
+  return playerWins / games;
+}
+
+test('simulación: en Bronce se le gana seguido; en Diamante, menos de la mitad', async (t) => {
+  const bronze = await playerWinRate(BRONZE);
+  const diamond = await playerWinRate(1_700);
+  t.diagnostic(`Bronce: el jugador ganó ${(bronze * 100).toFixed(0)} %`);
+  t.diagnostic(`Diamante: el jugador ganó ${(diamond * 100).toFixed(0)} %`);
+  assert.ok(bronze >= 0.65, `Bronce ${(bronze * 100).toFixed(0)} %`);
+  assert.ok(diamond <= 0.5, `Diamante ${(diamond * 100).toFixed(0)} %`);
+  assert.ok(bronze > diamond + 0.15);
 });
 
 test('sin objetivo (sin historial) juega como siempre, por rating', async () => {

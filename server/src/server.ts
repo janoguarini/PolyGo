@@ -349,7 +349,7 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
       gamesPlayed: BOT_CONFIG.displayedGames,
       // Juega a la altura de lo que el jugador hace en Word Rush (shared/botPacing.ts); sin historial,
       // como siempre (por rating).
-      botTargetScore: botTargetScore(info.recentScores, random),
+      botTargetScore: botTargetScore(info.recentScores, info.rating, random),
     };
   }
 
