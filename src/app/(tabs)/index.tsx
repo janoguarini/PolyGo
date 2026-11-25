@@ -43,7 +43,6 @@ import { WarmLesson } from '@/features/learning/lessonWarmup';
 import { daysLabel } from '@/features/learning/streak';
 import { streakStrings } from '@/features/learning/strings';
 import { useDailyMissions } from '@/features/missions/api';
-import { useWelcomeAutoOpen } from '@/features/welcomeRewards/useWelcomeAutoOpen';
 import { EnergyChip, EnergyPanel } from '@/features/plus/components/Energy';
 import { useEnergy } from '@/features/plus/api';
 import { PolysChip } from '@/features/polys/PolysChip';
@@ -83,8 +82,6 @@ export default function HomeScreen() {
   const [coursesOpen, setCoursesOpen] = useState(false);
   const [calendarOpen, setCalendarOpen] = useState(false);
   usePrefetchLanguagePaths(me.data?.profile.target_language);
-  // Calendario de bienvenida: se abre solo si hoy hay premio (una vez por sesión).
-  useWelcomeAutoOpen(Boolean(me.data));
   const scrollRef = useRef<ScrollViewInstance>(null);
   const { height } = useWindowDimensions();
   // Posición del nodo actual en el contenido y alto visible del scroll (medidos).

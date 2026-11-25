@@ -69,6 +69,7 @@ const HERO_ASPECT = 840 / 615;
  * también ofrece Copiar).
  */
 export default function InviteScreen() {
+  const styles = useStyles();
   const s = useStrings(inviteFriendsStrings);
   const r = useStrings(referralStrings);
   const status = useReferralStatus();
@@ -97,10 +98,10 @@ export default function InviteScreen() {
   return (
     <Screen
       edges={['top', 'bottom']}
+      contentStyle={styles.content}
       onRefresh={() => void status.refetch()}
       refreshing={status.isRefetching}
     >
-      <BackButton />
       <Hero />
       <Progress qualified={data.qualified} pending={data.pending} />
       {data.milestones.map((m) => (
@@ -150,19 +151,26 @@ function BackButton() {
   );
 }
 
+/** Cabecera compacta: volver, título en dos líneas y el arte chico (deja lugar a los premios). */
 function Hero() {
   const styles = useStyles();
   const s = useStrings(inviteFriendsStrings);
   return (
     <View style={styles.hero}>
-      <View style={styles.heroText}>
-        <Text variant="display" color="textStrong" style={styles.heroTitle}>
+      <BackButton />
+      <View style={styles.heroText} accessibilityRole="header">
+        <Text variant="heading" color="textStrong" style={styles.heroTitle} numberOfLines={1}>
           {s.heroTitle}
         </Text>
-        <Text variant="display" color="primarySoft" style={styles.heroTitle}>
+        <Text
+          variant="heading"
+          color="primarySoft"
+          style={styles.heroTitle}
+          numberOfLines={1}
+          adjustsFontSizeToFit
+        >
           {s.heroTitle2}
         </Text>
-        <Text color="text">{s.heroBody}</Text>
       </View>
       <Image
         source={HERO}
@@ -181,22 +189,22 @@ function Progress({ qualified, pending }: { qualified: number; pending: number }
   const next = nextMilestone(qualified);
   const missing = next ? next.at - qualified : 0;
   return (
-    <BrandCard>
+    <BrandCard contentStyle={styles.progressCard}>
       <View style={styles.progressTop}>
-        <Text variant="heading" color="textStrong" style={styles.flex}>
+        <Text variant="bodyStrong" color="textStrong" style={styles.flex}>
           {s.yourProgress}
         </Text>
-        <Text variant="title" color="primarySoft" style={styles.tabular}>
+        <Text variant="heading" color="primarySoft" style={styles.tabular}>
           {qualified}
         </Text>
-        <Text variant="heading" color="textStrong">
+        <Text variant="bodyStrong" color="textStrong">
           {s.goalFriends(REFERRAL_GOAL)}
         </Text>
       </View>
       <View>
         <ProgressBar
           value={Math.min(1, qualified / REFERRAL_GOAL)}
-          height={14}
+          height={10}
           accessibilityLabel={s.progressA11y(qualified, REFERRAL_GOAL)}
         />
         <View style={styles.marks} pointerEvents="none">
@@ -212,7 +220,7 @@ function Progress({ qualified, pending }: { qualified: number; pending: number }
           ))}
         </View>
       </View>
-      <Text color="text">
+      <Text variant="caption" color="text">
         {next ? s.missingForNext(missing) : s.allUnlocked}
         {pending > 0 ? s.pendingValidation(pending) : ''}
       </Text>
@@ -259,17 +267,17 @@ function MilestoneCard({
   const missing = Math.max(0, milestone.at - qualified);
   const plusDays = milestone.plus_days ?? 0;
   // El premio principal del hito (como en el diseño): lo legendario, la skin, Plus o los Polys.
-  const crown = <Crown color={colors.gold} size={18} fill={colors.gold} />;
+  const crown = <Crown color={colors.gold} size={15} fill={colors.gold} />;
   const headline: { icon: ReactNode; label: string } = top
     ? {
         icon: crown,
         label: plusDays > 0 ? s.legendaryPlus(plusDays) : s.legendarySkinFrame,
       }
     : items.length > 0
-      ? { icon: <Shirt color={colors.textStrong} size={18} />, label: s.exclusiveSkin }
+      ? { icon: <Shirt color={colors.primarySoft} size={15} />, label: s.exclusiveSkin }
       : plusDays > 0
         ? { icon: crown, label: s.plusDays(plusDays) }
-        : { icon: <PolyCoin size={18} />, label: s.polys(milestone.polys) };
+        : { icon: <PolyCoin size={15} />, label: s.polys(milestone.polys) };
   const polysInHeadline = !top && items.length === 0 && plusDays === 0;
   const details = [
     ...(plusDays > 0 ? [s.unlimitedEnergy(plusDays)] : []),
@@ -296,49 +304,61 @@ function MilestoneCard({
           style={[styles.milestoneIcon, !unlocked && !isNext && styles.dim]}
         >
           {top ? (
-            <Crown color={colors.brandSolid} size={34} fill={colors.brandSolid} />
+            <Crown color={colors.brandSolid} size={26} fill={colors.brandSolid} />
           ) : items.length > 0 ? (
-            <Shirt color={colors.onPrimary} size={32} />
+            <Shirt color={colors.onPrimary} size={24} />
           ) : plusDays > 0 ? (
             // Energía ilimitada: infinito + rayo, como en el diseño.
             <View style={styles.energyIcon}>
-              <InfinityIcon color={colors.gold} size={34} strokeWidth={2.6} />
-              <Zap color={colors.gold} fill={colors.gold} size={18} style={styles.energyZap} />
+              <InfinityIcon color={colors.gold} size={26} strokeWidth={2.6} />
+              <Zap color={colors.gold} fill={colors.gold} size={14} style={styles.energyZap} />
             </View>
           ) : (
-            <Gift color={colors.onPrimary} size={32} />
+            <Gift color={colors.onPrimary} size={24} />
           )}
         </LinearGradient>
-        <View style={styles.flex}>
-          <Text variant="heading" color="textStrong">
-            {s.friendsCount(milestone.at)}
-          </Text>
-          <View style={[styles.rewardPill, top && styles.rewardPillTop]}>
+        {/* Fila 1: hito + estado; fila 2: premio principal; fila 3: el detalle (2 líneas). */}
+        <View style={styles.milestoneBody}>
+          <View style={styles.milestoneTop}>
+            <Text variant="bodyStrong" color="textStrong" style={styles.milestoneTitle}>
+              {s.friendsCount(milestone.at)}
+            </Text>
+            {unlocked ? (
+              <View
+                style={[styles.statusChip, styles.statusChipDone]}
+                accessible
+                accessibilityLabel={s.unlocked}
+              >
+                <Check color={colors.onPrimary} size={14} strokeWidth={3} />
+              </View>
+            ) : (
+              <View
+                style={styles.statusChip}
+                accessible
+                accessibilityLabel={s.missingA11y(missing)}
+              >
+                <Lock color={colors.textMuted} size={12} />
+                <Text variant="caption" color="textMuted" numberOfLines={1}>
+                  {s.missingShort(missing)}
+                </Text>
+              </View>
+            )}
+          </View>
+          <View style={styles.headline}>
             {headline.icon}
-            <Text variant="bodyStrong" color={top ? 'gold' : 'textStrong'} numberOfLines={1}>
+            <Text
+              variant="bodyStrong"
+              color={top ? 'gold' : 'primarySoft'}
+              numberOfLines={1}
+              style={styles.flexShrink}
+            >
               {headline.label}
             </Text>
           </View>
-          <Text variant="caption" color="text">
+          <Text variant="caption" color="text" numberOfLines={2}>
             {details.join(', ')}.
           </Text>
         </View>
-        {unlocked ? (
-          <View
-            style={[styles.statusChip, styles.statusChipDone]}
-            accessible
-            accessibilityLabel={s.unlocked}
-          >
-            <Check color={colors.onPrimary} size={16} strokeWidth={3} />
-          </View>
-        ) : (
-          <View style={styles.statusChip} accessible accessibilityLabel={s.missingA11y(missing)}>
-            <Lock color={colors.textStrong} size={14} />
-            <Text variant="caption" color="textStrong" numberOfLines={1}>
-              {s.missingShort(missing)}
-            </Text>
-          </View>
-        )}
       </BrandCard>
     </Animated.View>
   );
@@ -480,10 +500,14 @@ const useStyles = themedStyles(() =>
       borderWidth: 1,
       borderColor: colors.brandBorder,
     },
-    hero: { flexDirection: 'row', alignItems: 'center', minHeight: 170 },
-    heroText: { flex: 1, gap: spacing.xs, zIndex: 1 },
-    heroTitle: { fontSize: 30, lineHeight: 34 },
-    heroArt: { width: '46%', aspectRatio: HERO_ASPECT, marginLeft: -spacing.md },
+    flexShrink: { flexShrink: 1 },
+    // Más junto que el resto de las pantallas: los 3 premios entran sin scroll.
+    content: { gap: spacing.md, paddingTop: spacing.sm },
+    hero: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+    heroText: { flex: 1, zIndex: 1 },
+    heroTitle: { fontSize: 21, lineHeight: 26, fontWeight: '800' },
+    heroArt: { width: 104, aspectRatio: HERO_ASPECT, marginLeft: -spacing.md },
+    progressCard: { gap: spacing.xs, paddingVertical: spacing.md },
     progressTop: { flexDirection: 'row', alignItems: 'baseline', gap: spacing.xs },
     marks: { ...StyleSheet.absoluteFill },
     mark: {
@@ -496,43 +520,39 @@ const useStyles = themedStyles(() =>
       backgroundColor: colors.borderStrong,
     },
     markDone: { backgroundColor: colors.gold },
-    milestone: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+    milestone: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.md,
+      paddingVertical: spacing.sm + 2,
+      paddingHorizontal: spacing.md,
+    },
     energyIcon: { alignItems: 'center', justifyContent: 'center' },
-    energyZap: { position: 'absolute', top: -14, right: -4 },
+    energyZap: { position: 'absolute', top: -10, right: -3 },
     milestoneIcon: {
-      width: 68,
-      height: 68,
-      borderRadius: radii.lg,
+      width: 52,
+      height: 52,
+      borderRadius: radii.md,
       alignItems: 'center',
       justifyContent: 'center',
     },
-    rewardPill: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      alignSelf: 'flex-start',
-      gap: spacing.xs,
-      marginVertical: spacing.xxs,
-      paddingHorizontal: spacing.sm,
-      paddingVertical: 2,
-      borderRadius: radii.pill,
-      backgroundColor: colors.inset,
-      borderWidth: 1,
-      borderColor: colors.brandBorder,
-    },
-    rewardPillTop: { borderColor: colors.gold },
+    milestoneBody: { flex: 1, gap: 2 },
+    milestoneTop: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
+    milestoneTitle: { flex: 1, fontSize: 17, lineHeight: 22, fontWeight: '800' },
+    headline: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
     statusChip: {
       flexDirection: 'row',
       alignItems: 'center',
-      gap: spacing.xxs,
-      paddingHorizontal: spacing.sm,
-      minHeight: 32,
+      gap: 3,
+      paddingHorizontal: spacing.xs + 2,
+      minHeight: 24,
       borderRadius: radii.pill,
       backgroundColor: colors.inset,
       borderWidth: 1,
       borderColor: colors.brandBorder,
     },
     statusChipDone: {
-      width: 32,
+      width: 24,
       paddingHorizontal: 0,
       justifyContent: 'center',
       backgroundColor: colors.successStrong,

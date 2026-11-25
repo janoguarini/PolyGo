@@ -17,6 +17,7 @@ import { useStrings } from '@/i18n';
 
 import { shuffle, shuffleDifferent } from '../random';
 import { TargetText, useSessionLanguage } from '../readings';
+import { speak } from '../speech';
 import { answerInputStrings } from '../strings';
 
 interface Props {
@@ -253,7 +254,10 @@ function MatchInput({
   const styles = useStyles();
   const t = useStrings(answerInputStrings);
   const { language } = useSessionLanguage();
-  const lefts = useMemo(
+  // En el contenido, `left` es la palabra del idioma que se estudia y `right` su significado.
+  // En pantalla van al revés: significado (idioma de la interfaz) a la izquierda y la palabra a
+  // aprender a la derecha. La respuesta enviada conserva el formato { left, right } del contenido.
+  const targets = useMemo(
     () =>
       shuffle(
         pairs.map((p) => p.left),
@@ -261,7 +265,7 @@ function MatchInput({
       ),
     [pairs, seed, exercise.id],
   );
-  const rights = useMemo(
+  const meanings = useMemo(
     () =>
       shuffle(
         pairs.map((p) => p.right),
@@ -269,18 +273,37 @@ function MatchInput({
       ),
     [pairs, seed, exercise.id],
   );
-  const [activeLeft, setActiveLeft] = useState<string | null>(null);
+  // Se puede empezar por cualquiera de las dos columnas.
+  const [active, setActive] = useState<{ side: 'target' | 'meaning'; value: string } | null>(null);
+  /** palabra → significado */
   const [matches, setMatches] = useState<Record<string, string>>({});
-  const usedRights = new Set(Object.values(matches));
+  const targetOf = Object.fromEntries(Object.entries(matches).map(([tg, mn]) => [mn, tg]));
 
-  const pickRight = (right: string) => {
-    if (!activeLeft) return;
+  const link = (target: string, meaning: string) => {
     setMatches((m) => {
-      const next = Object.fromEntries(Object.entries(m).filter(([, r]) => r !== right));
-      return { ...next, [activeLeft]: right };
+      const next = Object.fromEntries(Object.entries(m).filter(([, mn]) => mn !== meaning));
+      return { ...next, [target]: meaning };
     });
-    setActiveLeft(null);
+    setActive(null);
   };
+
+  const pressTarget = (target: string) => {
+    // Escuchar la palabra cada vez que se toca: práctica de listening.
+    speak(target);
+    if (matches[target]) setMatches(({ [target]: _removed, ...rest }) => rest);
+    if (active?.side === 'meaning') link(target, active.value);
+    else setActive({ side: 'target', value: target });
+  };
+
+  const pressMeaning = (meaning: string) => {
+    const linked = targetOf[meaning];
+    if (linked) setMatches(({ [linked]: _removed, ...rest }) => rest);
+    if (active?.side === 'target') link(active.value, meaning);
+    else setActive({ side: 'meaning', value: meaning });
+  };
+
+  const isActive = (side: 'target' | 'meaning', value: string) =>
+    active?.side === side && active.value === value;
 
   return (
     <AnswerLayout
@@ -305,56 +328,64 @@ function MatchInput({
     >
       <View style={styles.match}>
         <View style={styles.column}>
-          {lefts.map((left) => (
-            <Pressable
-              key={left}
-              accessibilityRole="button"
-              accessibilityLabel={matches[left] ? t.matchedWith(left, matches[left]) : left}
-              accessibilityState={{ selected: activeLeft === left, disabled }}
-              disabled={disabled}
-              onPress={() => {
-                if (matches[left]) {
-                  setMatches(({ [left]: _removed, ...rest }) => rest);
-                }
-                setActiveLeft(left);
-              }}
-              style={[
-                styles.matchItem,
-                activeLeft === left && styles.optionSelected,
-                matches[left] && styles.matched,
-              ]}
-            >
-              <TargetText variant="bodyStrong" align="center">
-                {left}
-              </TargetText>
-              {matches[left] ? (
-                <Text variant="caption" align="center" color="primarySoft">
-                  {matches[left]}
+          {meanings.map((meaning) => {
+            const linked = targetOf[meaning];
+            return (
+              <Pressable
+                key={meaning}
+                accessibilityRole="button"
+                accessibilityLabel={linked ? t.matchedWith(meaning, linked) : meaning}
+                accessibilityState={{ selected: isActive('meaning', meaning), disabled }}
+                disabled={disabled}
+                onPress={() => pressMeaning(meaning)}
+                style={({ pressed }) => [
+                  styles.matchItem,
+                  linked && styles.matched,
+                  isActive('meaning', meaning) && styles.optionSelected,
+                  pressed && styles.pressed,
+                ]}
+              >
+                <Text variant="bodyStrong" align="center">
+                  {meaning}
                 </Text>
-              ) : null}
-            </Pressable>
-          ))}
+                {linked ? (
+                  <TargetText variant="caption" align="center" color="primarySoft">
+                    {linked}
+                  </TargetText>
+                ) : null}
+              </Pressable>
+            );
+          })}
         </View>
         <View style={styles.column}>
-          {rights.map((right) => (
-            <Pressable
-              key={right}
-              accessibilityRole="button"
-              accessibilityLabel={right}
-              accessibilityState={{ disabled: disabled || !activeLeft }}
-              disabled={disabled || !activeLeft}
-              onPress={() => pickRight(right)}
-              style={[styles.matchItem, usedRights.has(right) && styles.tokenUsed]}
-            >
-              <Text
-                variant="bodyStrong"
-                align="center"
-                color={usedRights.has(right) ? 'textSubtle' : 'text'}
+          {targets.map((target) => {
+            const used = Boolean(matches[target]);
+            return (
+              <Pressable
+                key={target}
+                accessibilityRole="button"
+                accessibilityLabel={target}
+                accessibilityHint={t.tapToHear}
+                accessibilityState={{ selected: isActive('target', target), disabled }}
+                disabled={disabled}
+                onPress={() => pressTarget(target)}
+                style={({ pressed }) => [
+                  styles.matchItem,
+                  used && styles.tokenUsed,
+                  isActive('target', target) && styles.optionSelected,
+                  pressed && styles.pressed,
+                ]}
               >
-                {right}
-              </Text>
-            </Pressable>
-          ))}
+                <TargetText
+                  variant="bodyStrong"
+                  align="center"
+                  color={used ? 'textSubtle' : 'textStrong'}
+                >
+                  {target}
+                </TargetText>
+              </Pressable>
+            );
+          })}
         </View>
       </View>
     </AnswerLayout>

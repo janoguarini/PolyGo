@@ -101,10 +101,13 @@ export const rankedStrings = defineStrings({
     // Leaderboard
     you: 'Vos',
     openProfileHint: 'Abre el perfil del jugador',
-    podiumA11y: (place: number, name: string, elo: number) =>
-      `Puesto ${place}, ${name}, ${elo} ELO`,
-    rowA11y: (place: number, name: string, elo: number, stars: number | undefined) =>
-      `Puesto ${place}, ${name}, ${elo} ELO${stars !== undefined ? `, ${stars} estrellas` : ''}`,
+    rowA11y: (
+      place: number,
+      name: string,
+      language: string | undefined,
+      rank: string,
+      elo: number,
+    ) => `Puesto ${place}, ${name}${language ? `, ${language}` : ''}, ${rank}, ${elo} ELO`,
   },
   en: {
     currentRank: 'CURRENT RANK',
@@ -116,8 +119,12 @@ export const rankedStrings = defineStrings({
     ladderA11y: (names: string) => `Ranks: ${names}`,
     you: 'You',
     openProfileHint: 'Opens the player’s profile',
-    podiumA11y: (place: number, name: string, elo: number) => `Rank ${place}, ${name}, ${elo} ELO`,
-    rowA11y: (place: number, name: string, elo: number, stars: number | undefined) =>
-      `Rank ${place}, ${name}, ${elo} ELO${stars !== undefined ? `, ${stars} stars` : ''}`,
+    rowA11y: (
+      place: number,
+      name: string,
+      language: string | undefined,
+      rank: string,
+      elo: number,
+    ) => `Rank ${place}, ${name}${language ? `, ${language}` : ''}, ${rank}, ${elo} ELO`,
   },
 });

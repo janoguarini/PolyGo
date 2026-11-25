@@ -1,29 +1,37 @@
+import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
+import { Crown, Trophy } from 'lucide-react-native';
 import { memo } from 'react';
-import { Crown, Star } from 'lucide-react-native';
 import { Pressable, StyleSheet, View } from 'react-native';
+import Animated, { FadeInDown } from 'react-native-reanimated';
 
-import { flagEmoji } from '@shared/profile';
+import { getRank } from '@shared/ranking';
 
 import {
-  Avatar,
   RankEmblemForRating,
+  TIER_COLORS,
   Text,
   colors,
-  palette,
   radii,
   spacing,
   themedStyles,
 } from '@/design-system';
 import { FramedAvatar } from '@/features/cosmetics/FramedAvatar';
-import { useStrings } from '@/i18n';
+import { useInterfaceLanguage, useStrings } from '@/i18n';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 
 import type { LeaderboardEntry } from './api';
-import { rankedStrings } from './strings';
+import { rankedStrings, rankLabelForRating } from './strings';
 
-/** Oro, plata y bronce del podio. */
-const MEDALS = ['#F5C542', '#C9D1DE', '#D9905F'] as const;
+/** Oro, plata y bronce: medalla, borde y brillo de las tres primeras filas. */
+const MEDALS = [
+  { light: '#FFE58A', mid: '#F5C542', dark: '#A8740F', glow: 'rgba(245, 197, 66, 0.22)' },
+  { light: '#F4F7FC', mid: '#C9D1DE', dark: '#6B7487', glow: 'rgba(201, 209, 222, 0.16)' },
+  { light: '#F6C29A', mid: '#D9905F', dark: '#7A4122', glow: 'rgba(217, 144, 95, 0.18)' },
+] as const;
+
+/** Sólo las primeras filas entran animadas: el resto aparece directo (lista de hasta 100). */
+const ANIMATED_ROWS = 14;
 
 function openPlayer(entry: LeaderboardEntry, isMe: boolean) {
   if (isMe) router.navigate('/profile');
@@ -36,155 +44,170 @@ export function topPercent(position: number, total: number): number {
   return Math.max(1, Math.ceil((position / total) * 100));
 }
 
-/** Los tres primeros, en escalones (2.º, 1.º, 3.º). */
-export function Podium({ entries, meId }: { entries: LeaderboardEntry[]; meId?: string }) {
-  const styles = useStyles();
-  const t = useStrings(rankedStrings);
-  const order = [entries[1], entries[0], entries[2]];
-  return (
-    <View style={styles.podium}>
-      {order.map((entry, i) => {
-        if (!entry) return <View key={i} style={styles.podiumSlot} />;
-        const place = entry.position;
-        const medal = MEDALS[place - 1] ?? MEDALS[2];
-        const first = place === 1;
-        const isMe = entry.userId === meId;
-        return (
-          <Pressable
-            key={entry.userId}
-            style={({ pressed }) => [styles.podiumSlot, pressed && styles.pressed]}
-            accessibilityRole="button"
-            accessibilityLabel={t.podiumA11y(place, entry.username, entry.rating)}
-            accessibilityHint={t.openProfileHint}
-            onPress={() => openPlayer(entry, isMe)}
-          >
-            {first ? <Crown color={medal} fill={medal} size={26} /> : null}
-            {entry.frameId ? (
-              <FramedAvatar
-                avatarId={entry.avatarId}
-                photoUrl={avatarPhotoUrl(entry.avatarPath)}
-                size={first ? 64 : 50}
-                frameId={entry.frameId}
-                rating={entry.rating}
-              />
-            ) : (
-              <View style={[styles.podiumRing, { borderColor: medal }]}>
-                <Avatar
-                  avatarId={entry.avatarId}
-                  photoUrl={avatarPhotoUrl(entry.avatarPath)}
-                  size={first ? 72 : 56}
-                />
-              </View>
-            )}
-            <Text variant="bodyStrong" numberOfLines={1} align="center">
-              {isMe ? t.you : entry.username}
-            </Text>
-            <View style={styles.podiumElo}>
-              <RankEmblemForRating rating={entry.rating} size={20} />
-              <Text variant="caption" color="text">
-                {entry.rating}
-              </Text>
-            </View>
-            <View
-              style={[
-                styles.step,
-                { height: first ? 64 : place === 2 ? 46 : 34, borderTopColor: medal },
-              ]}
-            >
-              <Text variant="title" style={{ color: medal }}>
-                {place}
-              </Text>
-            </View>
-          </Pressable>
-        );
-      })}
-    </View>
-  );
+/** Idioma del rating de la fila (bandera + nombre). */
+export interface RowLanguage {
+  flag: string;
+  name: string;
 }
 
-/** Una fila de la clasificación. `highlight` = la fila propia (en la lista o fija abajo). */
+/**
+ * Una fila de la clasificación: puesto, nombre, idioma de ese rating y rango en ese idioma (con su
+ * ELO). Las tres primeras llevan medalla y brillo; la propia va resaltada en violeta.
+ */
 function LeaderboardRowBase({
   entry,
   isMe,
-  stars,
-  highlight = isMe,
-  languageName,
+  language,
+  index = 0,
+  animate = false,
+  pinned = false,
 }: {
   entry: LeaderboardEntry;
   isMe: boolean;
-  stars?: number;
-  highlight?: boolean;
-  /** En la global: el idioma del rating mostrado (el mejor del jugador). */
-  languageName?: string;
+  language?: RowLanguage;
+  /** Orden en la lista (para escalonar la entrada). */
+  index?: number;
+  /** Entrada animada (sólo la primera carga de la lista). */
+  animate?: boolean;
+  /** Fila propia fija abajo (sin animación de entrada). */
+  pinned?: boolean;
 }) {
   const styles = useStyles();
   const t = useStrings(rankedStrings);
-  const flag = flagEmoji(entry.region);
-  return (
+  const ui = useInterfaceLanguage();
+  const rank = getRank(entry.rating);
+  const rankName = rankLabelForRating(entry.rating, ui);
+  const tierColor = TIER_COLORS[rank.tier.id];
+  const medal = entry.position <= 3 ? MEDALS[entry.position - 1] : undefined;
+
+  const row = (
     <Pressable
-      style={({ pressed }) => [
-        styles.row,
-        entry.position % 2 === 0 && styles.rowAlt,
-        highlight && styles.rowMe,
-        pressed && styles.pressed,
-      ]}
       accessibilityRole="button"
-      accessibilityLabel={t.rowA11y(entry.position, entry.username, entry.rating, stars)}
+      accessibilityLabel={t.rowA11y(
+        entry.position,
+        entry.username,
+        language?.name,
+        rankName,
+        entry.rating,
+      )}
       accessibilityHint={t.openProfileHint}
       onPress={() => openPlayer(entry, isMe)}
+      style={({ pressed }) => [
+        styles.row,
+        medal && { borderColor: medal.mid },
+        isMe && styles.rowMe,
+        pinned && styles.rowPinned,
+        pressed && styles.pressed,
+      ]}
     >
-      <View style={[styles.badge, highlight && styles.badgeMe]}>
-        <Text
-          variant="bodyStrong"
-          color={highlight ? 'onPrimary' : 'text'}
-          style={styles.badgeText}
-        >
-          {entry.position}
-        </Text>
+      {medal ? (
+        <LinearGradient
+          colors={[medal.glow, 'rgba(0,0,0,0)']}
+          start={{ x: 0, y: 0.5 }}
+          end={{ x: 0.75, y: 0.5 }}
+          style={StyleSheet.absoluteFill}
+          pointerEvents="none"
+        />
+      ) : null}
+
+      <Position position={entry.position} isMe={isMe} />
+
+      <View style={styles.avatar}>
+        <FramedAvatar
+          avatarId={entry.avatarId}
+          photoUrl={avatarPhotoUrl(entry.avatarPath)}
+          size={entry.frameId ? 34 : 40}
+          frameId={entry.frameId}
+          rating={entry.rating}
+        />
       </View>
-      <FramedAvatar
-        avatarId={entry.avatarId}
-        photoUrl={avatarPhotoUrl(entry.avatarPath)}
-        size={entry.frameId ? 32 : 38}
-        frameId={entry.frameId}
-        rating={entry.rating}
-      />
-      <View style={styles.name}>
-        <Text variant="bodyStrong" numberOfLines={1}>
-          {entry.username}
-          {flag ? ` ${flag}` : ''}
-        </Text>
-        {isMe || stars !== undefined || languageName ? (
-          <View style={styles.sub}>
-            {isMe ? (
-              <Text variant="caption" color="primarySoft">
-                {t.you}
-              </Text>
-            ) : null}
-            {languageName ? (
-              <Text variant="caption" color="textMuted">
-                {languageName}
-              </Text>
-            ) : null}
-            {stars !== undefined ? (
-              <>
-                <Star color={colors.gold} fill={colors.gold} size={12} />
-                <Text variant="caption" color="gold">
-                  {stars}
-                </Text>
-              </>
-            ) : null}
+
+      <View style={styles.player}>
+        <View style={styles.nameLine}>
+          <Text
+            variant="bodyStrong"
+            color="textStrong"
+            numberOfLines={1}
+            style={[styles.name, medal && styles.nameTop]}
+          >
+            {entry.username}
+          </Text>
+          {isMe ? (
+            <View style={styles.youTag}>
+              <Text style={styles.youText}>{t.you.toUpperCase()}</Text>
+            </View>
+          ) : null}
+        </View>
+        {language ? (
+          <View style={styles.languageLine}>
+            <Text style={styles.flag}>{language.flag}</Text>
+            <Text variant="caption" color="textMuted" numberOfLines={1} style={styles.shrink}>
+              {language.name}
+            </Text>
           </View>
         ) : null}
       </View>
-      <View style={styles.elo}>
-        {/* También en la global: el número es el rating de un idioma (el mejor del jugador). */}
-        <RankEmblemForRating rating={entry.rating} size={28} />
-        <Text variant="bodyStrong" color="textStrong" style={styles.eloText}>
-          {entry.rating}
-        </Text>
+
+      <View style={styles.rank}>
+        <View style={styles.rankText}>
+          <Text
+            numberOfLines={1}
+            adjustsFontSizeToFit
+            style={[styles.rankName, { color: tierColor.light }]}
+          >
+            {rankName}
+          </Text>
+          <View style={styles.eloLine}>
+            <Trophy color={colors.gold} size={12} strokeWidth={2.6} />
+            <Text style={styles.elo}>{entry.rating}</Text>
+          </View>
+        </View>
+        <RankEmblemForRating rating={entry.rating} size={40} />
       </View>
     </Pressable>
+  );
+
+  if (!animate || pinned || index >= ANIMATED_ROWS) return row;
+  return (
+    <Animated.View entering={FadeInDown.delay(index * 35).duration(320).springify().damping(18)}>
+      {row}
+    </Animated.View>
+  );
+}
+
+/** Puesto: medalla para el podio (con corona el 1.º), número grande para el resto. */
+function Position({ position, isMe }: { position: number; isMe: boolean }) {
+  const styles = useStyles();
+  const medal = position <= 3 ? MEDALS[position - 1] : undefined;
+  if (medal) {
+    return (
+      <View style={styles.position}>
+        {position === 1 ? (
+          <View style={styles.crown} pointerEvents="none">
+            <Crown color={medal.mid} fill={medal.mid} size={14} />
+          </View>
+        ) : null}
+        <LinearGradient
+          colors={[medal.light, medal.mid, medal.dark]}
+          start={{ x: 0.2, y: 0 }}
+          end={{ x: 0.8, y: 1 }}
+          style={styles.medal}
+        >
+          <Text style={styles.medalText}>{position}</Text>
+        </LinearGradient>
+      </View>
+    );
+  }
+  return (
+    <View style={styles.position}>
+      <Text
+        numberOfLines={1}
+        adjustsFontSizeToFit
+        style={[styles.positionText, isMe && styles.positionMe]}
+      >
+        {position}
+      </Text>
+    </View>
   );
 }
 
@@ -192,55 +215,86 @@ export const LeaderboardRow = memo(LeaderboardRowBase);
 
 const useStyles = themedStyles(() =>
   StyleSheet.create({
-    pressed: { opacity: 0.75 },
-    podium: {
-      flexDirection: 'row',
-      alignItems: 'flex-end',
-      gap: spacing.sm,
-      paddingTop: spacing.sm,
-    },
-    podiumSlot: { flex: 1, alignItems: 'center', gap: spacing.xxs },
-    podiumRing: { padding: 2, borderWidth: 3, borderRadius: radii.pill },
-    podiumElo: { flexDirection: 'row', alignItems: 'center', gap: spacing.xxs },
-    step: {
-      alignSelf: 'stretch',
-      marginTop: spacing.xs,
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderTopWidth: 3,
-      borderTopLeftRadius: radii.md,
-      borderTopRightRadius: radii.md,
-      backgroundColor: colors.surfaceHighlight,
-    },
+    pressed: { opacity: 0.8, transform: [{ scale: 0.985 }] },
+    shrink: { flexShrink: 1 },
     row: {
       flexDirection: 'row',
       alignItems: 'center',
-      gap: spacing.md,
+      gap: spacing.sm,
+      minHeight: 64,
       paddingVertical: spacing.sm,
-      paddingHorizontal: spacing.md,
-      borderRadius: radii.md,
+      paddingLeft: spacing.xs,
+      paddingRight: spacing.sm,
+      borderRadius: radii.lg,
+      borderWidth: 1,
+      borderColor: colors.border,
       backgroundColor: colors.surface,
+      overflow: 'hidden',
     },
-    rowAlt: { backgroundColor: colors.surfaceRaised },
     rowMe: {
       backgroundColor: colors.surfaceHighlight,
-      borderWidth: 1.5,
+      borderWidth: 2,
       borderColor: colors.primaryBright,
     },
-    badge: {
-      minWidth: 34,
-      height: 28,
-      paddingHorizontal: spacing.xs,
-      borderRadius: radii.sm,
+    // Fila propia fija abajo: sombra violeta para que se despegue de la lista.
+    rowPinned: {
+      shadowColor: colors.primaryBright,
+      shadowOpacity: 0.45,
+      shadowRadius: 12,
+      shadowOffset: { width: 0, height: 0 },
+      elevation: 8,
+    },
+    position: { width: 36, alignItems: 'center', justifyContent: 'center' },
+    positionText: {
+      fontSize: 18,
+      lineHeight: 22,
+      fontWeight: '900',
+      color: colors.textMuted,
+      fontVariant: ['tabular-nums'],
+    },
+    positionMe: { color: colors.primaryBright },
+    medal: {
+      width: 34,
+      height: 34,
+      borderRadius: 17,
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: palette.ink600,
+      borderWidth: 1.5,
+      borderColor: 'rgba(255, 255, 255, 0.55)',
     },
-    badgeMe: { backgroundColor: colors.primary },
-    badgeText: { fontVariant: ['tabular-nums'] },
-    name: { flex: 1, gap: 2 },
-    sub: { flexDirection: 'row', alignItems: 'center', gap: spacing.xxs },
-    elo: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
-    eloText: { minWidth: 40, textAlign: 'right', fontVariant: ['tabular-nums'] },
+    medalText: {
+      fontSize: 17,
+      lineHeight: 21,
+      fontWeight: '900',
+      color: '#2A1A00',
+      fontVariant: ['tabular-nums'],
+    },
+    crown: { position: 'absolute', top: -9, zIndex: 1 },
+    // Caja fija: con o sin marco, los nombres quedan alineados.
+    avatar: { width: 44, height: 44, alignItems: 'center', justifyContent: 'center' },
+    player: { flex: 1, gap: 2 },
+    nameLine: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
+    name: { flexShrink: 1, fontSize: 16, lineHeight: 21 },
+    nameTop: { fontWeight: '800' },
+    youTag: {
+      paddingHorizontal: 6,
+      paddingVertical: 1,
+      borderRadius: radii.pill,
+      backgroundColor: colors.primary,
+    },
+    youText: { fontSize: 10, lineHeight: 14, fontWeight: '900', color: colors.onPrimary },
+    languageLine: { flexDirection: 'row', alignItems: 'center', gap: 4 },
+    flag: { fontSize: 13, lineHeight: 16 },
+    rank: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs, maxWidth: '40%' },
+    rankText: { alignItems: 'flex-end', flexShrink: 1 },
+    rankName: { fontSize: 14, lineHeight: 18, fontWeight: '900' },
+    eloLine: { flexDirection: 'row', alignItems: 'center', gap: 3 },
+    elo: {
+      fontSize: 12,
+      lineHeight: 16,
+      fontWeight: '800',
+      color: colors.gold,
+      fontVariant: ['tabular-nums'],
+    },
   }),
 );

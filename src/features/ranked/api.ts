@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
 import { requireSupabase } from '@/lib/supabase';
 
@@ -64,6 +64,9 @@ export function useLeaderboard(languageCode: string | null) {
   return useQuery({
     queryKey: ['leaderboard', languageCode ?? 'all'],
     queryFn: () => fetchLeaderboard(languageCode),
+    // Al cambiar de pestaña se sigue mostrando la lista anterior hasta que llega la nueva: la
+    // pantalla no salta a "Cargando…" y vuelve.
+    placeholderData: keepPreviousData,
   });
 }
 
@@ -97,6 +100,7 @@ export function useMyLeaderboardPosition(languageCode: string | null) {
   return useQuery({
     queryKey: ['leaderboard', 'me', languageCode ?? 'all'],
     queryFn: () => fetchMyPosition(languageCode),
+    placeholderData: keepPreviousData,
   });
 }
 

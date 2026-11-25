@@ -5,6 +5,9 @@ import type { Exercise, ExercisePayload, UserAnswer } from '@shared/exercises';
 
 import { AnswerInput } from '../components/AnswerInput';
 
+const mockSpeak = jest.fn();
+jest.mock('../speech', () => ({ speak: (text: string) => mockSpeak(text) }));
+
 function exercise(payload: ExercisePayload, answer = ''): Exercise {
   return {
     id: 'e1',
@@ -95,13 +98,34 @@ describe('AnswerInput', () => {
       ],
     });
     const onSubmit = await setup(ex);
+    // Se puede empezar por cualquiera de las dos columnas.
     await fireEvent.press(screen.getByRole('button', { name: 'one' }));
     await fireEvent.press(screen.getByRole('button', { name: 'uno' }));
-    await fireEvent.press(screen.getByRole('button', { name: 'two' }));
     await fireEvent.press(screen.getByRole('button', { name: 'dos' }));
+    await fireEvent.press(screen.getByRole('button', { name: 'two' }));
     await fireEvent.press(check());
     const answer = onSubmit.mock.calls[0]![0];
     expect(checkAnswer(ex, answer).correct).toBe(true);
+  });
+
+  it('parejas: el significado va a la izquierda y la palabra suena al tocarla', async () => {
+    mockSpeak.mockClear();
+    await setup(
+      exercise({
+        type: 'match_pairs',
+        pairs: [
+          { left: 'one', right: 'uno' },
+          { left: 'two', right: 'dos' },
+        ],
+      }),
+    );
+    const order = screen.getAllByRole('button').map((b) => b.props.accessibilityLabel);
+    expect(order.indexOf('uno')).toBeLessThan(order.indexOf('one'));
+    expect(order.indexOf('dos')).toBeLessThan(order.indexOf('two'));
+    await fireEvent.press(screen.getByRole('button', { name: 'two' }));
+    expect(mockSpeak).toHaveBeenCalledWith('two');
+    await fireEvent.press(screen.getByRole('button', { name: 'uno' }));
+    expect(mockSpeak).toHaveBeenCalledTimes(1);
   });
 
   it('escritura: envía el texto ingresado', async () => {

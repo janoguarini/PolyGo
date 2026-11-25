@@ -69,8 +69,14 @@ function shownReward(d: WelcomeDay): ShownReward {
   return { item: d.kind === 'item' ? cosmeticById(d.item) : undefined, polys: d.polys };
 }
 
-/** Tiempo para ver la celebración antes de volver a Aprender. */
-const CLOSE_AFTER_CLAIM_MS = 2200;
+/**
+ * Tiempo desde que el servidor confirma el cobro hasta cerrar: lo justo para ver el cofre abrirse
+ * y el premio. La celebración ya empezó al tocar (no espera la red).
+ */
+const CLOSE_AFTER_CLAIM_MS = 1300;
+
+/** Cierra y vuelve a donde estaba el usuario (o a Inicio si no hay historial). */
+const close = () => (router.canGoBack() ? router.back() : router.replace('/'));
 
 /** Ancho útil del contenido (Screen usa una columna de 680 en la web y padding xl). */
 const contentWidth = (window: number) => Math.min(window, 680) - spacing.xl * 2;
@@ -86,11 +92,15 @@ export default function WelcomeRewardsScreen() {
   const claim = useClaimWelcomeReward();
   const { width, height } = useWindowDimensions();
 
-  // Tras un cobro exitoso: se ve la celebración (cofre, confeti, premio) y la pantalla se cierra
-  // sola, dejándote en Aprender. Si salís antes, el temporizador se cancela.
+  // La celebración arranca al tocar (cofre que se abre, confeti, sonido y vibración) sin esperar
+  // al servidor; si el cobro falla, se deshace y se muestra el error.
+  const celebrating = claim.isPending || claim.isSuccess;
+
+  // Tras un cobro exitoso la pantalla se cierra sola y te deja donde estabas. Si salís antes, el
+  // temporizador se cancela.
   useEffect(() => {
     if (!claim.isSuccess) return;
-    const id = setTimeout(() => router.dismissTo('/'), CLOSE_AFTER_CLAIM_MS);
+    const id = setTimeout(close, CLOSE_AFTER_CLAIM_MS);
     return () => clearTimeout(id);
   }, [claim.isSuccess]);
 
@@ -104,13 +114,12 @@ export default function WelcomeRewardsScreen() {
     d.claimed_at ? 'claimed' : data.claimable_today && d.day === data.next_day ? 'today' : 'locked';
 
   const onClaim = () => {
-    if (claim.isPending) return;
-    claim.mutate(undefined, {
-      onSuccess: () => {
-        playSound('complete');
-        void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-      },
-    });
+    if (claim.isPending || claim.isSuccess) return;
+    playSound('complete');
+    if (Platform.OS !== 'web') {
+      void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    }
+    claim.mutate();
   };
 
   const inner = contentWidth(width);
@@ -127,7 +136,7 @@ export default function WelcomeRewardsScreen() {
         accessibilityLabel={t.back}
         hitSlop={8}
         // Se abre sola desde Inicio: si no quedó historial (recarga, enlace), vuelve a Inicio.
-        onPress={() => (router.canGoBack() ? router.back() : router.replace('/'))}
+        onPress={close}
         style={({ pressed }) => [styles.back, pressed && styles.pressed]}
       >
         <ChevronLeft color={colors.textStrong} size={24} />
@@ -149,13 +158,8 @@ export default function WelcomeRewardsScreen() {
             {t.completed}
           </Text>
         </View>
-      ) : data.claimable_today ? (
-        <ClaimButton
-          label={t.claim}
-          hint={t.claimHint}
-          loading={claim.isPending}
-          onPress={onClaim}
-        />
+      ) : celebrating ? null : data.claimable_today ? (
+        <ClaimButton label={t.claim} hint={t.claimHint} loading={false} onPress={onClaim} />
       ) : !data.completed ? (
         <Button
           label={t.comeBack}
@@ -175,7 +179,7 @@ export default function WelcomeRewardsScreen() {
       header={header}
       footer={footer}
       contentStyle={styles.content}
-      overlay={claim.isSuccess ? <Confetti /> : null}
+      overlay={celebrating ? <Confetti /> : null}
     >
       {/* A. El cofre: lo primero que se ve. */}
       <LinearGradient
@@ -188,8 +192,8 @@ export default function WelcomeRewardsScreen() {
       >
         <LegendaryChest
           size={chestSize}
-          open={claim.isSuccess || data.completed}
-          celebrate={claim.isSuccess}
+          open={celebrating || data.completed}
+          celebrate={celebrating}
         />
         <View style={styles.heroText}>
           <Text

@@ -13,6 +13,8 @@ import { AppTour } from '@/features/onboarding/AppTour';
 import { useFinishTour, useTourPending } from '@/features/onboarding/tour';
 import { useMyProfile } from '@/features/profile/hooks';
 import { useReminderSync } from '@/features/reminders/hooks';
+import { useStoreReviewPrompt } from '@/features/storeReview/useStoreReviewPrompt';
+import { useWelcomeAutoOpen } from '@/features/welcomeRewards/useWelcomeAutoOpen';
 import { useWidgetSync } from '@/features/widgets/useWidgetSync';
 import { useStrings } from '@/i18n';
 import { tabsStrings } from '@/i18n/screens/tabs';
@@ -30,9 +32,14 @@ export default function TabsLayout() {
   // Tutorial guiado para cuentas recién creadas.
   const userId = useAuth().session?.user.id;
   // La voz sintetizada habla en el idioma que estudiás.
-  useSpeechLanguage(useMyProfile().data?.profile.target_language);
+  const me = useMyProfile();
+  useSpeechLanguage(me.data?.profile.target_language);
+  // Recompensa diaria: se abre sola tras la primera lección o Ranked del día (una vez por sesión).
+  useWelcomeAutoOpen(Boolean(me.data));
   const tourPending = useTourPending(userId);
   const finishTour = useFinishTour(userId);
+  // Valorar la app: tras 5 lecciones o 5 Ranked (lo primero), una sola vez; nunca sobre el tutorial.
+  useStoreReviewPrompt(!tourPending);
   // Solicitudes de amistad sin responder + invitaciones: globito en la pestaña Amigos.
   const pendingRequests =
     (useFriends().data?.filter((f) => f.state === 'incoming').length ?? 0) + invites.length;
@@ -46,11 +53,12 @@ export default function TabsLayout() {
           headerShown: false,
           tabBarActiveTintColor: colors.primaryBright,
           tabBarInactiveTintColor: colors.textMuted,
-          // La pestaña activa va resaltada sobre un fondo propio (también en el teléfono).
-          tabBarActiveBackgroundColor: colors.surfaceHighlight,
+          // En el teléfono la pestaña activa se marca sólo con el color violeta del ícono y la
+          // etiqueta, sin fondo detrás. En la barra lateral de la computadora sí lleva fondo.
+          tabBarActiveBackgroundColor: sidebar ? colors.surfaceHighlight : 'transparent',
           tabBarItemStyle: sidebar
             ? { borderRadius: 12, marginHorizontal: 12, marginVertical: 2 }
-            : { borderRadius: 14, marginHorizontal: 3, marginVertical: 5 },
+            : undefined,
           tabBarPosition: sidebar ? 'left' : 'bottom',
           tabBarLabelPosition: sidebar ? 'beside-icon' : undefined,
           tabBarStyle: sidebar

@@ -30,13 +30,9 @@ export const referralStrings = defineStrings({
     errorInvalidCode: 'No encontramos ese código. Revisalo y probá de nuevo.',
     errorGeneric: 'No pudimos registrar la invitación. Probá de nuevo en un rato.',
     // InviteRewardsCard
-    cardA11y: (qualified: number, goal: number) =>
-      `Invitá amigos y ganá recompensas. ${qualified} de ${goal} amigos válidos`,
+    cardA11y: 'Agregar amigos. Invitá amigos y ganá recompensas',
     cardOverline: 'INVITÁ AMIGOS Y GANÁ RECOMPENSAS',
-    cardMissing: (n: number) => `Te faltan ${n} para tu próximo premio`,
-    cardAllUnlocked: '¡Desbloqueaste todas las recompensas!',
-    validFriendsA11y: (qualified: number, goal: number) => `${qualified} de ${goal} amigos válidos`,
-    validFriends: (qualified: number, goal: number) => `${qualified} / ${goal} amigos válidos`,
+    cardTitle: 'Agregar amigos',
   },
   en: {
     badges: {
@@ -58,13 +54,8 @@ export const referralStrings = defineStrings({
     errorNotEligible: 'This code isn’t valid for your account.',
     errorInvalidCode: 'We couldn’t find that code. Check it and try again.',
     errorGeneric: 'We couldn’t register the invite. Try again in a bit.',
-    cardA11y: (qualified: number, goal: number) =>
-      `Invite friends and earn rewards. ${qualified} of ${goal} valid friends`,
+    cardA11y: 'Add friends. Invite friends and earn rewards',
     cardOverline: 'INVITE FRIENDS AND EARN REWARDS',
-    cardMissing: (n: number) =>
-      n === 1 ? '1 more to your next reward' : `${n} more to your next reward`,
-    cardAllUnlocked: 'You unlocked every reward!',
-    validFriendsA11y: (qualified: number, goal: number) => `${qualified} of ${goal} valid friends`,
-    validFriends: (qualified: number, goal: number) => `${qualified} / ${goal} valid friends`,
+    cardTitle: 'Add friends',
   },
 });

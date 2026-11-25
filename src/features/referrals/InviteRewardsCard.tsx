@@ -3,29 +3,26 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { ChevronRight, Gift } from 'lucide-react-native';
 import { StyleSheet, View } from 'react-native';
 
-import { REFERRAL_GOAL, nextMilestone } from '@shared/referrals';
-
-import { Card, ProgressBar, Text, colors, radii, spacing, themedStyles } from '@/design-system';
+import { Card, Text, colors, radii, spacing, themedStyles } from '@/design-system';
 import { useStrings } from '@/i18n';
 
 import { useReferralStatus } from './api';
 import { referralStrings } from './strings';
 
 /**
- * Entrada a Invitar amigos desde la pantalla de Amigos: progreso hacia el próximo premio. No se
- * muestra mientras la función del servidor no exista (migración sin aplicar).
+ * Entrada a Invitar amigos desde la pantalla de Amigos: «Agregar amigos» y, al tocar, la pantalla
+ * de recompensas (el progreso se ve allá). No se muestra mientras la función del servidor no
+ * exista (migración sin aplicar).
  */
 export function InviteRewardsCard() {
   const styles = useStyles();
   const t = useStrings(referralStrings);
   const status = useReferralStatus();
   if (!status.data) return null;
-  const { qualified } = status.data;
-  const next = nextMilestone(qualified);
   return (
     <Card
       onPress={() => router.push('/invite-friends')}
-      accessibilityLabel={t.cardA11y(qualified, REFERRAL_GOAL)}
+      accessibilityLabel={t.cardA11y}
       style={styles.card}
     >
       <LinearGradient
@@ -42,15 +39,7 @@ export function InviteRewardsCard() {
           {t.cardOverline}
         </Text>
         <Text variant="bodyStrong" color="textStrong">
-          {next ? t.cardMissing(next.at - qualified) : t.cardAllUnlocked}
-        </Text>
-        <ProgressBar
-          value={Math.min(1, qualified / REFERRAL_GOAL)}
-          colors={['#FDE68A', '#F59E0B']}
-          accessibilityLabel={t.validFriendsA11y(qualified, REFERRAL_GOAL)}
-        />
-        <Text variant="caption" color="text">
-          {t.validFriends(qualified, REFERRAL_GOAL)}
+          {t.cardTitle}
         </Text>
       </View>
       <ChevronRight color={colors.textMuted} size={20} />
@@ -75,6 +64,6 @@ const useStyles = themedStyles(() =>
       justifyContent: 'center',
       backgroundColor: 'rgba(250,204,21,0.14)',
     },
-    body: { flex: 1, gap: spacing.xs },
+    body: { flex: 1, gap: spacing.xxs },
   }),
 );

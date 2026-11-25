@@ -1,12 +1,13 @@
+import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
-import { Check, ChevronDown, Globe2, Trophy } from 'lucide-react-native';
-import { useState } from 'react';
+import { ChevronDown, Globe2, Swords, Trophy } from 'lucide-react-native';
+import { useMemo, useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
+import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
 
 import { LANGUAGES } from '@shared/languages';
 
 import {
-  Card,
   EmptyState,
   ErrorState,
   LoadingState,
@@ -14,21 +15,19 @@ import {
   ScreenHeader,
   Text,
   colors,
-  gradients,
   radii,
   spacing,
   themedStyles,
 } from '@/design-system';
 import { useAuth } from '@/features/auth/AuthProvider';
 import { useBlockedIds } from '@/features/blocks/api';
-import { useActiveSeason, useMyProfile } from '@/features/profile/hooks';
+import { useMyProfile, useMyRatings } from '@/features/profile/hooks';
 import {
   useLeaderboard,
-  useLeaderboardStars,
   useMyLeaderboardPosition,
   type LeaderboardEntry,
 } from '@/features/ranked/api';
-import { LeaderboardRow, Podium, topPercent } from '@/features/ranked/Leaderboard';
+import { LeaderboardRow, type RowLanguage } from '@/features/ranked/Leaderboard';
 import { useInterfaceLanguage, useStrings } from '@/i18n';
 import { languageName } from '@/i18n/languages';
 import { leaderboardScreenStrings } from '@/i18n/screens/leaderboard';
@@ -36,6 +35,14 @@ import { leaderboardScreenStrings } from '@/i18n/screens/leaderboard';
 /** Idiomas con clasificación propia (los que tienen Ranked). */
 const RANKED_LANGUAGES = LANGUAGES.filter((l) => l.ranked);
 
+/** Degradé de la pestaña activa. */
+const ACTIVE_TAB = ['#8B5CFF', '#6A2BFF', '#4A15C8'] as const;
+
+/**
+ * Clasificación: una fila por jugador (puesto, nombre, idioma y rango en ese idioma). Dos
+ * pestañas: Global (el mejor idioma de cada uno) y el idioma que estudiás; tocar de nuevo la del
+ * idioma abre el selector para ver otro. Tu fila queda fija abajo si no entrás en la lista.
+ */
 export default function LeaderboardScreen() {
   const styles = useStyles();
   const t = useStrings(leaderboardScreenStrings);
@@ -43,7 +50,6 @@ export default function LeaderboardScreen() {
   const { session } = useAuth();
   const meId = session?.user.id;
   const me = useMyProfile();
-  const season = useActiveSeason();
   const [scope, setScope] = useState<string | null>(null);
   // Idioma de la segunda pestaña: el que estás aprendiendo, hasta que elijas otro.
   const [pickedLanguage, setPickedLanguage] = useState<string | null>(null);
@@ -54,23 +60,43 @@ export default function LeaderboardScreen() {
     (RANKED_LANGUAGES.some((l) => l.code === target) ? target : RANKED_LANGUAGES[0]?.code) ??
     null;
   const language = RANKED_LANGUAGES.find((l) => l.code === languageCode);
+  const languageActive = scope !== null;
 
   const leaderboard = useLeaderboard(scope);
   const position = useMyLeaderboardPosition(scope);
   const blockedIds = useBlockedIds();
+  const myRatings = useMyRatings();
 
   // Los bloqueados no se muestran; el resto conserva su puesto real.
   const entries = (leaderboard.data ?? []).filter((e) => !blockedIds.has(e.userId));
-  const stars = useLeaderboardStars(leaderboard.data?.map((e) => e.userId));
-  const podium = entries.filter((e) => e.position <= 3);
-  const rest = entries.filter((e) => e.position > 3);
-  const scopeLabel = scope === null ? t.worldScope : t.languageScope(languageName(scope, ui));
+
+  // Bandera y nombre de cada idioma con Ranked, en el idioma de la interfaz.
+  const languages = useMemo(
+    () =>
+      new Map<string, RowLanguage>(
+        RANKED_LANGUAGES.map((l) => [l.code, { flag: l.flag, name: languageName(l.code, ui) }]),
+      ),
+    [ui],
+  );
+  // En la global, el idioma del rating de cada uno (su mejor idioma); en un idioma, ese.
+  // (Primero el idioma de la fila: mientras llega la pestaña nueva se ve la lista anterior.)
+  const rowLanguage = (entry: LeaderboardEntry) =>
+    languages.get((entry.languageCode ?? scope) || '');
+
+  // Las filas entran animadas sólo al abrir la pantalla; después de cambiar de pestaña se
+  // reemplazan en el lugar, sin moverse.
+  const [switched, setSwitched] = useState(false);
+  const changeScope = (next: string | null) => {
+    setSwitched(true);
+    setScope(next);
+  };
 
   const myPos = position.data?.position ?? null;
+  const myRating = position.data?.rating ?? null;
   const inList = entries.some((e) => e.userId === meId);
   // Si no entrás en la lista, tu fila queda fija abajo.
   const myRow: LeaderboardEntry | null =
-    myPos !== null && !inList && position.data?.rating != null && me.data && meId
+    myPos !== null && !inList && myRating !== null && me.data && meId
       ? {
           userId: meId,
           username: me.data.profile.username ?? '',
@@ -78,107 +104,76 @@ export default function LeaderboardScreen() {
           avatarPath: me.data.profile.avatar_path,
           frameId: me.data.profile.frame_id,
           region: me.data.profile.region,
-          languageCode: scope,
-          rating: position.data.rating,
-          gamesPlayed: position.data.gamesPlayed,
-          wins: position.data.wins,
+          // En la global, el idioma cuyo ELO es el mostrado (tu mejor idioma).
+          languageCode:
+            scope ??
+            Object.entries(myRatings.data ?? {}).find(
+              ([code, rating]) => rating === myRating && languages.has(code),
+            )?.[0] ??
+            null,
+          rating: myRating,
+          gamesPlayed: position.data?.gamesPlayed ?? 0,
+          wins: position.data?.wins ?? 0,
           position: myPos,
         }
       : null;
 
-  const languageActive = scope !== null;
-
-  return (
-    <Screen
-      onRefresh={() => {
-        void leaderboard.refetch();
-        void position.refetch();
-      }}
-      refreshing={leaderboard.isRefetching}
-      footer={myRow ? <LeaderboardRow entry={myRow} isMe /> : undefined}
+  const footer = myRow ? (
+    <LeaderboardRow entry={myRow} isMe pinned language={rowLanguage(myRow)} />
+  ) : !position.isPending && myPos === null ? (
+    <Pressable
+      accessibilityRole="button"
+      onPress={() => router.navigate('/ranked')}
+      style={({ pressed }) => [styles.unplaced, pressed && styles.pressed]}
     >
+      <Swords color={colors.primaryBright} size={20} />
+      <Text variant="bodyStrong" color="textStrong" style={styles.shrink}>
+        {t.winToEnter}
+      </Text>
+    </Pressable>
+  ) : undefined;
+
+  const header = (
+    <View style={styles.header}>
       <ScreenHeader title={t.title} onBack={() => router.back()} />
-
-      <Card gradient={gradients.ranked} style={styles.hero}>
-        <View style={styles.trophy}>
-          <Trophy color={colors.gold} fill={colors.goldStrong} size={40} />
-        </View>
-        <View style={styles.heroInfo}>
-          <Text variant="overline" color="primarySoft">
-            {season.data ? season.data.name.toUpperCase() : t.yourPosition}
-          </Text>
-          {position.isPending ? (
-            <Text variant="title">…</Text>
-          ) : myPos !== null ? (
-            <>
-              <Text variant="title" color="gold">
-                {t.topIn(myPos, scopeLabel)}
-              </Text>
-              <Text variant="caption" color="text">
-                {t.positionOf(
-                  myPos,
-                  position.data?.total ?? 0,
-                  topPercent(myPos, position.data?.total ?? 0),
-                )}
-              </Text>
-            </>
-          ) : (
-            <>
-              <Text variant="heading">{t.unplaced}</Text>
-              <Text variant="caption" color="text">
-                {t.winToEnter}
-              </Text>
-            </>
-          )}
-        </View>
-      </Card>
-
       <View style={styles.tabs} accessibilityRole="tablist">
-        <Pressable
-          accessibilityRole="tab"
-          accessibilityState={{ selected: !languageActive }}
+        <Tab
+          active={!languageActive}
           onPress={() => {
-            setScope(null);
+            changeScope(null);
             setPickerOpen(false);
           }}
-          style={[styles.tab, !languageActive && styles.tabActive]}
-        >
-          <Globe2 color={!languageActive ? colors.onPrimary : colors.textMuted} size={16} />
-          <Text variant="bodyStrong" color={!languageActive ? 'onPrimary' : 'textMuted'}>
-            {t.all}
-          </Text>
-        </Pressable>
+          icon={<Globe2 color={!languageActive ? '#FFFFFF' : colors.textMuted} size={18} />}
+          label={t.global}
+        />
         {language ? (
-          <Pressable
-            accessibilityRole="tab"
-            accessibilityState={{ selected: languageActive, expanded: pickerOpen }}
-            accessibilityHint={t.pickLanguageHint}
+          <Tab
+            active={languageActive}
+            expanded={pickerOpen}
+            hint={t.pickLanguageHint}
             onPress={() => {
-              if (!languageActive) setScope(language.code);
+              if (!languageActive) changeScope(language.code);
               else setPickerOpen((open) => !open);
             }}
-            style={[styles.tab, languageActive && styles.tabActive]}
-          >
-            <Text style={styles.tabFlag}>{language.flag}</Text>
-            <Text
-              variant="bodyStrong"
-              color={languageActive ? 'onPrimary' : 'textMuted'}
-              numberOfLines={1}
-              style={styles.shrink}
-            >
-              {languageName(language.code, ui)}
-            </Text>
-            <ChevronDown
-              color={languageActive ? colors.onPrimary : colors.textMuted}
-              size={16}
-              style={pickerOpen ? styles.chevronOpen : undefined}
-            />
-          </Pressable>
+            icon={<Text style={styles.tabFlag}>{language.flag}</Text>}
+            label={languageName(language.code, ui)}
+            trailing={
+              <ChevronDown
+                color={languageActive ? '#FFFFFF' : colors.textMuted}
+                size={16}
+                style={pickerOpen ? styles.chevronOpen : undefined}
+              />
+            }
+          />
         ) : null}
       </View>
-
       {pickerOpen ? (
-        <View style={styles.picker} accessibilityRole="menu">
+        <Animated.View
+          entering={FadeIn.duration(140)}
+          exiting={FadeOut.duration(100)}
+          style={styles.picker}
+          accessibilityRole="menu"
+        >
           {RANKED_LANGUAGES.map((l) => {
             const selected = l.code === languageCode;
             return (
@@ -188,32 +183,43 @@ export default function LeaderboardScreen() {
                 accessibilityState={{ selected }}
                 onPress={() => {
                   setPickedLanguage(l.code);
-                  setScope(l.code);
+                  changeScope(l.code);
                   setPickerOpen(false);
                 }}
-                style={({ pressed }) => [styles.option, pressed && styles.optionPressed]}
+                style={({ pressed }) => [
+                  styles.chip,
+                  selected && styles.chipSelected,
+                  pressed && styles.pressed,
+                ]}
               >
                 <Text style={styles.tabFlag}>{l.flag}</Text>
                 <Text
                   variant="bodyStrong"
-                  color={selected ? 'text' : 'textMuted'}
-                  style={styles.optionLabel}
+                  color={selected ? 'textStrong' : 'text'}
+                  numberOfLines={1}
+                  style={styles.shrink}
                 >
                   {languageName(l.code, ui)}
                 </Text>
-                {selected ? <Check color={colors.primary} size={18} /> : null}
               </Pressable>
             );
           })}
-        </View>
+        </Animated.View>
       ) : null}
+    </View>
+  );
 
-      {!languageActive ? (
-        <Text variant="caption" color="textMuted">
-          {t.globalNote}
-        </Text>
-      ) : null}
-
+  return (
+    <Screen
+      header={header}
+      footer={footer}
+      contentStyle={styles.content}
+      onRefresh={() => {
+        void leaderboard.refetch();
+        void position.refetch();
+      }}
+      refreshing={leaderboard.isRefetching}
+    >
       {leaderboard.isPending ? (
         <LoadingState label={t.loading} />
       ) : leaderboard.isError ? (
@@ -225,86 +231,170 @@ export default function LeaderboardScreen() {
           message={t.emptyBody}
         />
       ) : (
-        <>
-          {podium.length > 0 ? <Podium entries={podium} meId={meId} /> : null}
-          <View style={styles.list}>
-            {rest.map((entry) => (
-              <LeaderboardRow
-                key={entry.userId}
-                entry={entry}
-                isMe={entry.userId === meId}
-                stars={stars.data?.[entry.userId]}
-                languageName={
-                  languageActive
-                    ? undefined
-                    : entry.languageCode &&
-                        RANKED_LANGUAGES.some((l) => l.code === entry.languageCode)
-                      ? languageName(entry.languageCode, ui)
-                      : undefined
-                }
-              />
-            ))}
+        // Mientras llega la pestaña nueva, la anterior queda apenas atenuada (sin saltos).
+        <View style={[styles.list, leaderboard.isPlaceholderData && styles.stale]}>
+          <View style={styles.columns} importantForAccessibility="no-hide-descendants">
+            <Text style={[styles.column, styles.columnPosition]}>#</Text>
+            <Text style={[styles.column, styles.columnPlayer]}>{t.playerColumn}</Text>
+            <Text style={styles.column}>{t.rankColumn}</Text>
           </View>
-        </>
+          {entries.map((entry, index) => (
+            <LeaderboardRow
+              key={entry.userId}
+              entry={entry}
+              index={index}
+              animate={!switched}
+              isMe={entry.userId === meId}
+              language={rowLanguage(entry)}
+            />
+          ))}
+        </View>
       )}
     </Screen>
   );
 }
 
+function Tab({
+  active,
+  expanded,
+  hint,
+  onPress,
+  icon,
+  label,
+  trailing,
+}: {
+  active: boolean;
+  expanded?: boolean;
+  hint?: string;
+  onPress: () => void;
+  icon: React.ReactNode;
+  label: string;
+  trailing?: React.ReactNode;
+}) {
+  const styles = useStyles();
+  const content = (
+    <>
+      {icon}
+      <Text
+        numberOfLines={1}
+        style={[styles.tabLabel, active ? styles.tabLabelActive : styles.tabLabelIdle]}
+      >
+        {label.toUpperCase()}
+      </Text>
+      {trailing}
+    </>
+  );
+  return (
+    <Pressable
+      accessibilityRole="tab"
+      accessibilityState={{ selected: active, expanded }}
+      accessibilityHint={hint}
+      onPress={onPress}
+      style={({ pressed }) => [styles.tabShell, pressed && styles.pressed]}
+    >
+      {active ? (
+        <LinearGradient
+          colors={ACTIVE_TAB}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={[styles.tab, styles.tabActive]}
+        >
+          {content}
+        </LinearGradient>
+      ) : (
+        <View style={styles.tab}>{content}</View>
+      )}
+    </Pressable>
+  );
+}
+
 const useStyles = themedStyles(() =>
   StyleSheet.create({
-    hero: { flexDirection: 'row', alignItems: 'center', gap: spacing.lg },
-    trophy: {
-      width: 72,
-      height: 72,
-      borderRadius: 36,
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: 'rgba(245, 197, 66, 0.16)',
-      borderWidth: 2,
-      borderColor: colors.goldStrong,
-    },
-    heroInfo: { flex: 1, gap: spacing.xxs },
+    pressed: { opacity: 0.85, transform: [{ scale: 0.98 }] },
+    shrink: { flexShrink: 1 },
+    header: { gap: spacing.sm, paddingHorizontal: spacing.xl, paddingBottom: spacing.sm },
+    content: { paddingTop: spacing.xs },
     tabs: {
       flexDirection: 'row',
-      padding: spacing.xs,
-      gap: spacing.xs,
-      borderRadius: radii.pill,
+      padding: 4,
+      gap: 4,
+      borderRadius: radii.lg,
       backgroundColor: colors.surface,
       borderWidth: 1,
       borderColor: colors.border,
     },
+    tabShell: { flex: 1 },
     tab: {
-      flex: 1,
+      height: 44,
       flexDirection: 'row',
-      paddingHorizontal: spacing.md,
       alignItems: 'center',
       justifyContent: 'center',
       gap: spacing.xs,
-      height: 40,
-      borderRadius: radii.pill,
+      paddingHorizontal: spacing.sm,
+      borderRadius: radii.md,
     },
-    tabActive: { backgroundColor: colors.primary },
-    tabFlag: { fontSize: 16, lineHeight: 20 },
-    shrink: { flexShrink: 1 },
+    tabActive: {
+      borderWidth: 1,
+      borderColor: 'rgba(255, 255, 255, 0.25)',
+    },
+    tabLabel: { fontSize: 14, lineHeight: 18, fontWeight: '900', letterSpacing: 0.8, flexShrink: 1 },
+    tabLabelActive: { color: '#FFFFFF' },
+    tabLabelIdle: { color: colors.textMuted },
+    tabFlag: { fontSize: 17, lineHeight: 21 },
     chevronOpen: { transform: [{ rotate: '180deg' }] },
     picker: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      gap: spacing.xs,
       padding: spacing.xs,
       borderRadius: radii.lg,
       backgroundColor: colors.surface,
       borderWidth: 1,
       borderColor: colors.border,
     },
-    option: {
+    chip: {
+      flexBasis: '31%',
+      flexGrow: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.xs,
+      height: 42,
+      paddingHorizontal: spacing.sm,
+      borderRadius: radii.md,
+      backgroundColor: colors.surfaceRaised,
+      borderWidth: 1.5,
+      borderColor: 'transparent',
+    },
+    chipSelected: { borderColor: colors.primaryBright, backgroundColor: colors.surfaceHighlight },
+    list: { gap: spacing.xs },
+    stale: { opacity: 0.55 },
+    columns: {
       flexDirection: 'row',
       alignItems: 'center',
       gap: spacing.sm,
-      paddingHorizontal: spacing.md,
-      height: 44,
-      borderRadius: radii.md,
+      paddingLeft: spacing.xs,
+      paddingRight: spacing.sm,
+      paddingBottom: 2,
     },
-    optionPressed: { backgroundColor: colors.surfaceRaised },
-    optionLabel: { flex: 1 },
-    list: { gap: spacing.xs },
+    column: {
+      fontSize: 11,
+      lineHeight: 14,
+      fontWeight: '800',
+      letterSpacing: 1.2,
+      color: colors.textSubtle,
+    },
+    columnPosition: { width: 36, textAlign: 'center' },
+    columnPlayer: { flex: 1 },
+    unplaced: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.sm,
+      padding: spacing.md,
+      borderRadius: radii.lg,
+      borderWidth: 1.5,
+      borderStyle: 'dashed',
+      borderColor: colors.primaryBright,
+      backgroundColor: colors.surface,
+    },
   }),
 );

@@ -32,8 +32,9 @@ export const answerInputStrings = defineStrings({
     yourSentence: 'Tu oración',
     tapInOrder: 'Tocá las palabras en orden',
     matchHint: (lang: LanguageConfig) =>
-      `Tocá una palabra ${lang.inName} y después su significado.`,
+      `Uní cada significado con su palabra ${lang.inName}. Tocá la palabra para escucharla.`,
     matchedWith: (left: string, right: string) => `${left}, unido con ${right}`,
+    tapToHear: 'Reproduce la pronunciación',
   },
   en: {
     check: 'Check',
@@ -44,8 +45,10 @@ export const answerInputStrings = defineStrings({
     placeholder: 'Type here…',
     yourSentence: 'Your sentence',
     tapInOrder: 'Tap the words in order',
-    matchHint: (lang: LanguageConfig) => `Tap a word in ${enName(lang)}, then its meaning.`,
+    matchHint: (lang: LanguageConfig) =>
+      `Match each meaning with its word in ${enName(lang)}. Tap the word to hear it.`,
     matchedWith: (left: string, right: string) => `${left}, matched with ${right}`,
+    tapToHear: 'Plays the pronunciation',
   },
 });
 
