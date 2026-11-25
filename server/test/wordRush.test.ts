@@ -82,6 +82,7 @@ async function harness(
   store: FakeStore,
   options: {
     botAfterMs?: number | null;
+    botRatedAfterCalibration?: boolean;
     arcadeRules?: ArcadeRules;
     protocolVersions?: readonly number[];
     recentContent?: RecentContentMemory;
@@ -98,6 +99,7 @@ async function harness(
     tickMs: 600_000,
     random: seededRandom(options.seed ?? 7),
     botAfterMs: options.botAfterMs === undefined ? BOT_CONFIG.afterMs : options.botAfterMs,
+    botRatedAfterCalibration: options.botRatedAfterCalibration,
     arcadeRules: options.arcadeRules ?? ARCADE,
     ...(options.protocolVersions ? { protocolVersions: options.protocolVersions } : {}),
     ...(options.recentContent ? { recentContent: options.recentContent } : {}),
@@ -257,10 +259,12 @@ test('humano después del límite: el primero ya tiene su bot y el segundo esper
   d.disconnect();
 });
 
-test('sin cupo de calibración: bot a los 3 s igual, sin ELO, guardado y sin consumir cupo', async () => {
+// Con el interruptor encendido (producción) la partida es clasificatoria: integrity.test.ts y
+// botIdentity.test.ts. Acá, apagado (BOT_CALIBRATION.ratedAfterCalibration = false).
+test('interruptor apagado, sin cupo: bot a los 3 s igual, sin ELO, guardado y sin consumir cupo', async () => {
   const store = bankStore(player('veterana', 1200, 30, 12));
   store.calibrationUsed.set('veterana:en', BOT_CALIBRATION.ratedGames);
-  const h = await harness(store);
+  const h = await harness(store, { botRatedAfterCalibration: false });
   const s = h.client('veterana');
   await connected(s);
   await s.emitWithAck('queue:join', { mode: 'ranked' });

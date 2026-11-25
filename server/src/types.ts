@@ -19,6 +19,13 @@ export interface PlayerInfo {
   /** Partidas de calibración contra bots que le quedan en este idioma (la base decide al empezar). */
   botCalibrationLeft?: number;
   /**
+   * Puntajes de sus últimas partidas de Word Rush (protocolo 3) completas en este idioma, más nuevas
+   * primero. Sólo para elegir el objetivo del bot (shared/botPacing.ts).
+   */
+  recentScores?: number[];
+  /** Bot: puntaje al que apunta en esta partida (null o ausente = bot de siempre, por rating). */
+  botTargetScore?: number | null;
+  /**
    * Fase C.8: nivel curricular que declaró su cliente en el handshake (0 si no lo declaró). Sólo vive
    * en memoria; no lo lee ni lo escribe la base salvo como argumento de rush_common_unit_ids.
    */

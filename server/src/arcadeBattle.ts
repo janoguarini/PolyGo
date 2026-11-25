@@ -12,6 +12,7 @@ import {
   type GradeOutcome,
 } from '../../shared/arcade';
 import { ArcadeBotBrain, botArcadeAnswer } from '../../shared/arcadeBot';
+import { pacedBotMove } from '../../shared/botPacing';
 import {
   ARCADE_PROTOCOL_VERSION,
   WORD_RUSH,
@@ -284,7 +285,20 @@ export class ArcadeBattle extends Battle {
     const index = state.current;
     const challenge = this.stream.at(index);
     const attempts = state.attempts;
-    const plan = brain.plan(challenge.kind, challenge.kind === 'connect' && attempts > 0);
+    // Con objetivo (historial del jugador, shared/botPacing.ts), juega a su altura; sin objetivo, por
+    // rating como siempre. Las rachas del cerebro se siguen registrando en botPlay (observe).
+    const target = seat.info.botTargetScore;
+    const plan =
+      target != null && this.startsAt !== null
+        ? pacedBotMove({
+            target,
+            score: seat.score,
+            elapsedMs: this.clock.now() - this.startsAt,
+            kind: challenge.kind,
+            rules: this.arcadeRules,
+            random: this.random,
+          })
+        : brain.plan(challenge.kind, challenge.kind === 'connect' && attempts > 0);
     this.schedule(plan.delayMs, () => this.botPlay(seat, state, index, attempts, plan.correct));
   }
 

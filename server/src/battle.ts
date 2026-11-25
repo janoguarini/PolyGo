@@ -363,10 +363,22 @@ export class Battle {
     };
   }
 
-  /** Lo que decidió la base al guardar el inicio de una partida contra un bot. */
+  /**
+   * Lo que decidió la base al guardar el inicio de una partida contra un bot: sin ELO si no la guardó
+   * como ranked; si sí, clasificatoria cuando se pidió así (después del cupo) o de calibración.
+   */
   applyBotStart(start: BotBattleStart): void {
-    this.rating = start.rated ? 'calibration' : 'unrated';
-    this.calibration = start.rated ? start.calibration : null;
+    if (!start.rated) {
+      this.rating = 'unrated';
+      this.calibration = null;
+      return;
+    }
+    if (this.rating === 'competitive') {
+      this.calibration = null;
+      return;
+    }
+    this.rating = 'calibration';
+    this.calibration = start.calibration;
   }
 
   // ---------- internos ----------

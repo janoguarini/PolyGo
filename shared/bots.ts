@@ -35,15 +35,21 @@ export const BOT_CONFIG = {
 } as const;
 
 /**
- * Calibración: las primeras `ratedGames` partidas contra bots de cada usuario en cada idioma mueven
- * el ELO (motivan y ubican al jugador nuevo); después, contra un bot se juega sin ELO (unrated): la
- * partida se guarda con su resultado, pero no cambia el rating, las partidas jugadas ni los logros. Lo
- * cuenta la base (public.bot_calibration_limit y public.start_bot_battle_v2). Con el servidor de
- * partidas, el bot entra a los `BOT_CONFIG.afterMs` sin rival humano, haya cupo o no; la oferta de
- * práctica tras `practiceOfferAfterMs` sólo la usan las builds anteriores.
+ * Calibración: las primeras `ratedGames` partidas contra bots de cada usuario en cada idioma son de
+ * calibración (mueven el ELO, motivan y ubican al jugador nuevo). Después:
+ *   - `ratedAfterCalibration: true` (mientras haya pocos jugadores): el bot juega a la altura del
+ *     jugador (shared/botPacing.ts) y la partida es clasificatoria, mueve el ELO como contra una
+ *     persona. Requiere la migración 20261228120000 (start_bot_battle_v2 sin tope); sin ella la base
+ *     la deja sin ELO.
+ *   - `false`: contra un bot se juega sin ELO (unrated): se guarda el resultado, pero no cambia el
+ *     rating, las estadísticas del ranking ni los logros.
+ * Con el servidor de partidas, el bot entra a los `BOT_CONFIG.afterMs` sin rival humano, haya cupo o
+ * no; la oferta de práctica tras `practiceOfferAfterMs` sólo la usan las builds anteriores.
  */
 export const BOT_CALIBRATION = {
   ratedGames: 3,
+  /** Interruptor: apagarlo (false) y redesplegar cuando haya volumen de jugadores. */
+  ratedAfterCalibration: true,
   practiceOfferAfterMs: 30_000,
 } as const;
 

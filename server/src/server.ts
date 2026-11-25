@@ -17,6 +17,7 @@ import {
   type ServerToClientEvents,
 } from '../../shared/protocol';
 import { pickBotIdentity } from '../../shared/botIdentities';
+import { botTargetScore } from '../../shared/botPacing';
 import { BOT_CALIBRATION, BOT_CONFIG, BOT_ID_PREFIX, pickBot } from '../../shared/bots';
 import {
   generateQuestions,
@@ -71,6 +72,8 @@ export interface BattleServerOptions {
   maxEventsPerSecond?: number;
   /** Espera sin rival humano antes de jugar contra un bot; null desactiva los bots. */
   botAfterMs?: number | null;
+  /** Después del cupo de calibración, el bot de Ranked mueve el ELO (BOT_CALIBRATION). */
+  botRatedAfterCalibration?: boolean;
   /**
    * Versiones de protocolo que acepta este servidor (subconjunto de SUPPORTED_PROTOCOL_VERSIONS). La
    * 2 (Word Rush clásico) sólo queda durante la transición a la build con el protocolo 3; quitarla es
@@ -127,6 +130,7 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
     // Una persona responde a lo sumo unas pocas preguntas por segundo; 20 deja margen holgado.
     maxEventsPerSecond = 20,
     botAfterMs = BOT_CONFIG.afterMs,
+    botRatedAfterCalibration = BOT_CALIBRATION.ratedAfterCalibration,
     protocolVersions = SUPPORTED_PROTOCOL_VERSIONS,
     recentContent = new RecentContentMemory(),
   } = options;
@@ -220,7 +224,9 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
           battle.languageCode,
           human.userId,
           { name: bot.username, avatarId: bot.avatarId, rating: bot.rating },
-          battle.rating === 'calibration',
+          // Se pide con ELO si es de calibración o clasificatoria; la base tiene la última palabra (si
+          // devuelve rated = false, la partida queda sin ELO: applyBotStart).
+          battle.rating !== 'unrated',
           battle.protocolVersion,
         );
       }
@@ -407,6 +413,9 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
       languageCode: info.languageCode,
       rating: persona.rating,
       gamesPlayed: BOT_CONFIG.displayedGames,
+      // Juega a la altura de lo que el jugador hace en Word Rush, ajustado por su rango
+      // (shared/botPacing.ts); sin historial, como siempre (por rating).
+      botTargetScore: botTargetScore(info.recentScores, info.rating, random),
     };
   }
 
@@ -484,8 +493,10 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
       : members.map((m) => m.info);
     let options: BattleOptions = {};
     if (withBot) {
-      // Con cupo de calibración, el bot mueve el ELO (la base lo confirma al guardar el inicio). Sin
-      // cupo, igual se juega en seguida, pero sin ELO (unrated): nadie queda esperando.
+      // Con cupo de calibración, partida de calibración. Sin cupo, igual se juega en seguida (nadie
+      // queda esperando): clasificatoria (mueve el ELO) si botRatedAfterCalibration, o sin ELO si no.
+      // La base tiene la última palabra en start_bot_battle_v2 (sin la migración 20261228120000, sólo
+      // da ELO dentro del cupo y la partida queda sin ELO).
       const left = members[0]!.info.botCalibrationLeft ?? 0;
       options =
         left > 0
@@ -496,7 +507,9 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
                 limit: BOT_CALIBRATION.ratedGames,
               },
             }
-          : { rating: 'unrated', calibration: null };
+          : botRatedAfterCalibration
+            ? { rating: 'competitive', calibration: null }
+            : { rating: 'unrated', calibration: null };
     }
     void startPending(members, 'ranked', players, options, members[0]!.protocol);
   }
