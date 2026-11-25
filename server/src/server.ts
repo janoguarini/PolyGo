@@ -16,6 +16,7 @@ import {
   type ErrorCode,
   type ServerToClientEvents,
 } from '../../shared/protocol';
+import { pickBotIdentity } from '../../shared/botIdentities';
 import { BOT_CALIBRATION, BOT_CONFIG, BOT_ID_PREFIX, pickBot } from '../../shared/bots';
 import {
   generateQuestions,
@@ -109,6 +110,8 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
   const queued = new Map<string, PlayerInfo>();
   /** Versión de protocolo de quien está en la cola (la del socket con que entró). */
   const queuedProtocol = new Map<string, number>();
+  /** Última identidad de bot que vio cada jugador (para no repetirla en la partida siguiente). */
+  const lastBotIdentity = new Map<string, string>();
   const matchmaker = new Matchmaker(matchmaking);
   const wordCache = new Map<string, { words: RushWord[]; loadedAt: number }>();
   const sentenceCache = new Map<string, { sentences: ArcadeSentence[]; loadedAt: number }>();
@@ -317,12 +320,22 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
     return battle;
   }
 
-  /** Un bot a la altura del jugador (shared/bots.ts). */
+  /**
+   * Un bot a la altura del jugador (shared/bots.ts) con una identidad del catálogo
+   * (shared/botIdentities.ts): sólo cambia el nombre que se muestra; rating y dificultad siguen saliendo
+   * de pickBot. El avatarId sigue siendo uno de los zorros de BOT_AVATARS (lo que acepta la base en
+   * start_bot_battle_v2); el cliente dibuja el avatar, el marco y el fondo de la identidad por su nombre.
+   */
   function makeBot(info: PlayerInfo): PlayerInfo {
     const persona = pickBot(info.rating, random);
+    const identity = pickBotIdentity(random, {
+      previousId: lastBotIdentity.get(info.userId),
+      playerAvatarId: info.avatarId,
+    });
+    lastBotIdentity.set(info.userId, identity.id);
     return {
       userId: `${BOT_ID_PREFIX}${randomUUID()}`,
-      username: persona.name,
+      username: identity.name,
       avatarId: persona.avatarId,
       avatarPath: null,
       isBot: true,
