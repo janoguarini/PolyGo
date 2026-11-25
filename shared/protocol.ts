@@ -4,10 +4,28 @@
  * el servidor rechaza clientes con otra versión y la cola se separa por versión.
  */
 
+import type {
+  ArcadeAnswer,
+  ArcadeAnswerResult,
+  ArcadeSnapshot,
+  ArcadeStats,
+  ChallengeView,
+} from './arcade';
 import type { MatchOutcome } from './ranking';
 
-/** 2: respuestas escritas (`text`), práctica contra bots y tipo de partida (`rating`). */
-export const PROTOCOL_VERSION = 2;
+/**
+ * 2: respuestas escritas (`text`), práctica contra bots y tipo de partida (`rating`) — Word Rush 75 s.
+ * 3: Ranked Arcade 60 s (shared/arcade.ts, docs/RANKED_ARCADE.md): eventos arcade:*.
+ * La app nueva habla 3. El servidor acepta las dos (SUPPORTED_PROTOCOL_VERSIONS) y nunca empareja
+ * versiones distintas: las builds con la 2 siguen jugando Word Rush hasta actualizarse.
+ */
+export const PROTOCOL_VERSION = 3;
+export const WORD_RUSH_PROTOCOL_VERSION = 2;
+export const ARCADE_PROTOCOL_VERSION = 3;
+export const SUPPORTED_PROTOCOL_VERSIONS: readonly number[] = [
+  WORD_RUSH_PROTOCOL_VERSION,
+  ARCADE_PROTOCOL_VERSION,
+];
 
 /** Largo máximo de una respuesta escrita: lo demás se rechaza como invalid_payload. */
 export const MAX_WRITTEN_ANSWER_LENGTH = 80;
@@ -144,6 +162,8 @@ export interface PlayerResult {
   ratingAfter: number | null;
   /** Si ya estaba posicionado (había ganado alguna ranked) antes de esta partida. */
   placedBefore?: boolean;
+  /** Sólo Arcade (protocolo 3): mejor combo y puntos hechos en Frenesí. */
+  arcade?: ArcadeStats;
 }
 
 export interface AchievementUnlock {
@@ -182,6 +202,8 @@ export interface BattleSnapshot {
   /** Sin dato = como antes (ranked mueve el ELO). */
   rating?: MatchRating;
   calibration?: CalibrationInfo | null;
+  /** Sólo Arcade (protocolo 3): desafíos actuales, combo y Frenesí. `question` queda null. */
+  arcade?: ArcadeSnapshot;
 }
 
 export type ErrorCode =
@@ -236,6 +258,8 @@ export interface ServerToClientEvents {
   'battle:state': (p: BattleSnapshot) => void;
   'battle:finish': (p: BattleFinish) => void;
   'battle:cancel': (p: { battleId: string; reason: CancelReason }) => void;
+  /** Arcade: un desafío nuevo (siempre se tiene el actual y el siguiente por adelantado). */
+  'arcade:challenge': (p: ChallengeView) => void;
   'server:error': (p: { code: ErrorCode; message?: string }) => void;
 }
 
@@ -249,6 +273,14 @@ export interface ClientToServerEvents {
   'battle:answer': (
     p: { battleId: string; questionIndex: number; option?: number; text?: string },
     ack: Ack<AnswerResult>,
+  ) => void;
+  /**
+   * Arcade: qué hizo el jugador en su desafío actual. El servidor corrige, mide el tiempo con su reloj y
+   * calcula combo, Frenesí y puntos. Desafío duplicado, adelantado o vencido: stale_question.
+   */
+  'arcade:answer': (
+    p: { battleId: string; challengeIndex: number; answer: ArcadeAnswer },
+    ack: Ack<ArcadeAnswerResult>,
   ) => void;
   /** Abandono voluntario: antes de empezar cancela; en juego es derrota inmediata. */
   'battle:leave': (ack: Ack<null>) => void;

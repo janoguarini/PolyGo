@@ -6,7 +6,7 @@ import { io as connect, type Socket } from 'socket.io-client';
 
 import { BOT_CONFIG } from '../../shared/bots';
 import {
-  PROTOCOL_VERSION,
+  WORD_RUSH_PROTOCOL_VERSION as PROTOCOL_VERSION,
   WORD_RUSH,
   type BattleFinish,
   type BattleSnapshot,

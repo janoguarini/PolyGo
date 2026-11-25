@@ -2,11 +2,13 @@ import { useQueryClient } from '@tanstack/react-query';
 import * as Haptics from 'expo-haptics';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+import type { ArcadeAnswer } from '@shared/arcade';
 import type { BattleMode } from '@shared/protocol';
 
 import { playSound } from '@/lib/sounds';
 
 import { answerSound } from './answerSound';
+import { currentChallenge, verdictSound } from './arcade/arcadeState';
 
 import { connectBattleSocket, connectErrorCode, type BattleSocket } from './client';
 import { isInBattle } from './state';
@@ -47,7 +49,10 @@ export function useBattleSession() {
     const socket = connectBattleSocket();
     socketRef.current = socket;
 
+    // Caída de red: Socket.IO reconecta solo; la pantalla avisa mientras tanto (la partida no se pausa).
+    socket.on('disconnect', () => dispatch({ type: 'socket_status', online: false }));
     socket.on('connect', () => {
+      dispatch({ type: 'socket_status', online: true });
       const state = useBattleStore.getState();
       // El servidor saca de la cola a quien se desconecta: al volver, se reingresa.
       if (state.phase === 'searching') join(socket, 'ranked');
@@ -81,6 +86,7 @@ export function useBattleSession() {
       dispatch({ type: 'snapshot', snapshot, receivedAt: Date.now() }),
     );
     socket.on('battle:question', (question) => dispatch({ type: 'question', question }));
+    socket.on('arcade:challenge', (challenge) => dispatch({ type: 'arcade_challenge', challenge }));
     socket.on('battle:score', ({ scores }) => dispatch({ type: 'scores', scores }));
     socket.on('battle:opponent_status', (p) => dispatch({ type: 'opponent_status', ...p }));
     socket.on('battle:finish', (result) => {
@@ -166,6 +172,74 @@ export function useBattleSession() {
     [dispatch],
   );
 
+  /** Pide la foto al servidor y la aplica (tras un rechazo: el servidor manda). */
+  const resync = useCallback(() => {
+    const socket = socketRef.current;
+    if (!socket) return;
+    socket
+      .timeout(ACK_TIMEOUT_MS)
+      .emitWithAck('battle:sync')
+      .then((res) => {
+        if (res.ok && res.data) {
+          dispatch({ type: 'snapshot', snapshot: res.data, receivedAt: Date.now() });
+        }
+      })
+      .catch(() => {});
+  }, [dispatch]);
+
+  /**
+   * Arcade: qué hizo el jugador en su desafío actual. La pantalla avanza enseguida (Swipe, Audio,
+   * Sentence) o espera la pareja (Connect); el veredicto, el combo y los puntos los decide el servidor.
+   */
+  const arcadeAnswer = useCallback(
+    (answer: ArcadeAnswer) => {
+      const state = useBattleStore.getState();
+      const socket = socketRef.current;
+      const arcade = state.arcade;
+      if (!socket || !state.battleId || !arcade || state.phase !== 'playing') return;
+      const view = currentChallenge(arcade);
+      if (!view || view.kind !== answer.kind) return;
+      if (answer.kind === 'connect' && arcade.connectPending) return;
+      const challengeIndex = view.index;
+      dispatch({
+        type: 'arcade_submit',
+        challengeIndex,
+        ...(answer.kind === 'connect'
+          ? { pair: [answer.left, answer.right] as [number, number] }
+          : {}),
+      });
+      socket
+        .timeout(ACK_TIMEOUT_MS)
+        .emitWithAck('arcade:answer', { battleId: state.battleId, challengeIndex, answer })
+        .then((res) => {
+          if (!res.ok) {
+            dispatch({ type: 'arcade_rejected', challengeIndex, kind: answer.kind });
+            // Desfasado (p. ej. tras una reconexión): la foto del servidor manda.
+            if (res.code === 'stale_question' || res.code === 'invalid_payload') resync();
+            return;
+          }
+          dispatch({ type: 'arcade_result', result: res.data });
+          const verdict = useBattleStore.getState().arcade?.verdict;
+          const sound = verdict ? verdictSound(verdict) : null;
+          if (sound) playSound(sound);
+          if (res.data.correct) {
+            void Haptics.impactAsync(
+              verdict?.tierUp
+                ? Haptics.ImpactFeedbackStyle.Heavy
+                : Haptics.ImpactFeedbackStyle.Light,
+            );
+          } else {
+            void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+          }
+        })
+        .catch(() => {
+          dispatch({ type: 'arcade_rejected', challengeIndex, kind: answer.kind });
+          resync();
+        });
+    },
+    [dispatch, resync],
+  );
+
   /** Salir de la cola o abandonar la partida (antes de empezar cancela; en juego es derrota). */
   const leave = useCallback(() => {
     const socket = socketRef.current;
@@ -184,7 +258,7 @@ export function useBattleSession() {
     [dispatch],
   );
 
-  return { start, ready, answer, leave };
+  return { start, ready, answer, arcadeAnswer, leave };
 }
 
 /** Reloj local que se actualiza cada `intervalMs` (para cuentas regresivas). */

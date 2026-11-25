@@ -12,6 +12,13 @@ import type {
   ScoreLine,
 } from '@shared/protocol';
 
+import {
+  arcadeFromSnapshot,
+  arcadeReducer,
+  type ArcadeAction,
+  type ArcadeClientState,
+} from './arcade/arcadeState';
+
 /**
  * Estado de la pantalla de batalla. Es sólo un reflejo de lo que dice el servidor: el cliente nunca
  * decide puntos, tiempo ni resultado.
@@ -72,6 +79,16 @@ export interface BattleState {
   opponent: { connected: boolean; graceEndsAt: number | null };
   result: BattleFinish | null;
   cancelReason: CancelReason | null;
+  /**
+   * Word Rush con el servidor de partidas (protocolo 3, motor interno «Arcade»); null en el formato
+   * clásico de 75 s (desafíos con amigos y el flujo sin servidor de desarrollo).
+   */
+  arcade: ArcadeClientState | null;
+  /**
+   * Si la conexión con el servidor de partidas está activa. Socket.IO reconecta solo; mientras tanto
+   * la partida sigue corriendo en el servidor y la pantalla lo avisa.
+   */
+  online: boolean;
 }
 
 export type BattleAction =
@@ -93,7 +110,10 @@ export type BattleAction =
   | { type: 'cancelled'; reason: CancelReason }
   /** Al reconectar, el servidor ya no tiene la partida (terminó mientras no estábamos). */
   | { type: 'lost' }
-  | { type: 'reset' };
+  | { type: 'reset' }
+  /** La conexión con el servidor de partidas se cayó o volvió. */
+  | { type: 'socket_status'; online: boolean }
+  | ArcadeAction;
 
 export const initialBattleState: BattleState = {
   phase: 'idle',
@@ -121,6 +141,8 @@ export const initialBattleState: BattleState = {
   opponent: { connected: true, graceEndsAt: null },
   result: null,
   cancelReason: null,
+  arcade: null,
+  online: true,
 };
 
 export function battleReducer(state: BattleState, action: BattleAction): BattleState {
@@ -242,6 +264,32 @@ export function battleReducer(state: BattleState, action: BattleAction): BattleS
 
     case 'reset':
       return initialBattleState;
+
+    case 'socket_status':
+      return state.online === action.online ? state : { ...state, online: action.online };
+
+    case 'arcade_challenge':
+    case 'arcade_submit':
+    case 'arcade_result':
+    case 'arcade_rejected': {
+      if (!state.arcade || (state.phase !== 'playing' && state.phase !== 'countdown')) return state;
+      const arcade = arcadeReducer(state.arcade, action);
+      if (action.type !== 'arcade_result') {
+        return {
+          ...state,
+          arcade,
+          phase: action.type === 'arcade_challenge' ? 'playing' : state.phase,
+        };
+      }
+      return {
+        ...state,
+        arcade,
+        // El puntaje propio confirmado por el servidor (el del rival llega con battle:score).
+        scores: state.scores.map((line) =>
+          line.slot === state.yourSlot ? { ...line, score: action.result.score } : line,
+        ),
+      };
+    }
   }
 }
 
@@ -263,6 +311,8 @@ function applySnapshot(state: BattleState, s: BattleSnapshot, receivedAt: number
     yourSlot: s.yourSlot,
     players: s.players,
     clockOffset: s.serverNow - receivedAt,
+    // Una foto del servidor llega por una conexión activa.
+    online: true,
     readyDeadline: s.readyDeadline,
     startsAt: s.startsAt,
     endsAt: s.endsAt,
@@ -273,6 +323,8 @@ function applySnapshot(state: BattleState, s: BattleSnapshot, receivedAt: number
     feedback: sameQuestion ? state.feedback : null,
     answering: sameQuestion ? state.answering : false,
     scores: s.scores,
+    // La foto del servidor manda: tras reconectar se descartan respuestas sin confirmar.
+    arcade: s.arcade ? arcadeFromSnapshot(state.arcade, s.arcade) : null,
   };
 }
 

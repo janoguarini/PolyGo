@@ -5,7 +5,9 @@ export const learnStrings = defineStrings({
   es: {
     loading: 'Cargando tu camino…',
     studying: (name: string, beta: boolean) => `Estudiando ${name}${beta ? ', beta' : ''}`,
-    languagesHint: 'Abre tus cursos para ver tu progreso o cambiar de curso',
+    languagesHint: 'Muestra tus idiomas para cambiar de curso o agregar otro',
+    switchTo: (name: string) => `Cambiar a ${name}`,
+    addLanguage: 'Agregar otro idioma',
     streakA11y: (streak: number, activeToday: boolean, freezes: number) =>
       `Racha de ${streak} días${activeToday ? '' : ', todavía no estudiaste hoy'}${
         freezes ? `, ${freezes} ${freezes === 1 ? 'protector' : 'protectores'}` : ''
@@ -24,7 +26,9 @@ export const learnStrings = defineStrings({
   en: {
     loading: 'Loading your path…',
     studying: (name: string, beta: boolean) => `Studying ${name}${beta ? ', beta' : ''}`,
-    languagesHint: 'Opens your courses to see your progress or switch courses',
+    languagesHint: 'Shows your languages to switch courses or add another one',
+    switchTo: (name: string) => `Switch to ${name}`,
+    addLanguage: 'Add another language',
     streakA11y: (streak: number, activeToday: boolean, freezes: number) =>
       `${streak}-day streak${activeToday ? '' : ', you haven’t studied today yet'}${
         freezes ? `, ${freezes} ${freezes === 1 ? 'streak freeze' : 'streak freezes'}` : ''

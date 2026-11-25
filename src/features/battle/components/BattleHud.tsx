@@ -8,7 +8,7 @@ import { FramedAvatar } from '@/features/cosmetics/FramedAvatar';
 import { useStrings } from '@/i18n';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 
-import { BotBadge } from './BotBadge';
+import { playerLook } from '../rivalLook';
 import { battleStrings } from '../strings';
 
 /** Barra de tiempo en rojo (se lee al dibujar: depende del tema). */
@@ -87,28 +87,24 @@ function PlayerScore({
 }) {
   const t = useStrings(battleStrings);
   const right = align === 'right';
+  const look = playerLook(player);
   return (
     <View
       style={[styles.player, right && styles.playerRight]}
       accessible
-      accessibilityLabel={t.scoreA11y(
-        label ?? player?.username ?? '',
-        Boolean(player?.isBot),
-        line?.score ?? 0,
-      )}
+      accessibilityLabel={t.scoreA11y(label ?? player?.username ?? '', line?.score ?? 0)}
     >
       <FramedAvatar
-        avatarId={player?.avatarId}
+        avatarId={look.avatarId}
         photoUrl={avatarPhotoUrl(player?.avatarPath)}
-        size={player?.frameId ? 30 : 36}
-        frameId={player?.frameId}
+        size={look.frameId ? 30 : 36}
+        frameId={look.frameId}
       />
       <View style={right ? styles.alignRight : undefined}>
         <View style={[styles.nameRow, right && styles.playerRight]}>
           <Text variant="caption" numberOfLines={1}>
             {label ?? player?.username}
           </Text>
-          {player?.isBot ? <BotBadge /> : null}
         </View>
         <Text variant="stat">{line?.score ?? 0}</Text>
       </View>

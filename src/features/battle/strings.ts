@@ -92,17 +92,17 @@ export const battleStrings = defineStrings({
     youForfeited: 'Abandonaste la partida.',
     opponentForfeited: (name: string | undefined) => `${name ?? 'Tu rival'} abandonó la partida.`,
     friendlySubtitle: 'Desafío amistoso: no mueve el ELO.',
-    botPracticeSubtitle: 'Práctica contra un bot: no mueve el ELO.',
+    unratedSubtitle: 'Rival de práctica y sin ELO: tu ELO no cambió.',
     calibrationSubtitle: (used: number, limit: number) =>
-      `Calibración ${used} de ${limit} contra bots.`,
+      `Calibración ${used} de ${limit} contra rivales de práctica.`,
     newAchievements: 'Logros nuevos',
     achievementsUnlocked: (n: number): string =>
       n === 1 ? 'LOGRO DESBLOQUEADO' : 'LOGROS DESBLOQUEADOS',
     practiceAgain: 'Practicar otra vez',
     newChallenge: 'Nuevo desafío',
     playAgain: 'Jugar otra',
-    lineA11y: (name: string, isBot: boolean, score: number, correct: number, answered: number) =>
-      `${name}${isBot ? ' (bot)' : ''}: ${score} puntos, ${correct} de ${answered} correctas`,
+    lineA11y: (name: string, score: number, correct: number, answered: number) =>
+      `${name}: ${score} puntos, ${correct} de ${answered} correctas`,
     placedA11y: (rank: string, elo: number) => `Te posicionaste en ${rank} con ${elo} de ELO`,
     stillUnplaced: 'Seguís sin posicionar',
     placedOverline: '¡POSICIONADO!',
@@ -133,8 +133,7 @@ export const battleStrings = defineStrings({
     secondsLeft: (s: number) => `Quedan ${s} segundos`,
     opponentDisconnected: (name: string, s: number) =>
       `${name} se desconectó. Si no vuelve en ${s} s, ganás por abandono.`,
-    scoreA11y: (name: string, isBot: boolean, score: number) =>
-      `${name}${isBot ? ' (bot)' : ''}: ${score} puntos`,
+    scoreA11y: (name: string, score: number) => `${name}: ${score} puntos`,
 
     // QuestionCard (consignas en mayúsculas según el idioma de la partida)
     listenAndChoose: 'ESCUCHÁ Y ELEGÍ QUÉ SIGNIFICA',
@@ -175,17 +174,17 @@ export const battleStrings = defineStrings({
     youForfeited: 'You left the match.',
     opponentForfeited: (name: string | undefined) => `${name ?? 'Your opponent'} left the match.`,
     friendlySubtitle: 'Friendly challenge: ELO doesn’t change.',
-    botPracticeSubtitle: 'Practice against a bot: ELO doesn’t change.',
+    unratedSubtitle: 'Practice rival, no ELO: your ELO didn’t change.',
     calibrationSubtitle: (used: number, limit: number) =>
-      `Calibration ${used} of ${limit} against bots.`,
+      `Calibration ${used} of ${limit} against practice rivals.`,
     newAchievements: 'New achievements',
     achievementsUnlocked: (n: number) =>
       n === 1 ? 'ACHIEVEMENT UNLOCKED' : 'ACHIEVEMENTS UNLOCKED',
     practiceAgain: 'Practice again',
     newChallenge: 'New challenge',
     playAgain: 'Play again',
-    lineA11y: (name: string, isBot: boolean, score: number, correct: number, answered: number) =>
-      `${name}${isBot ? ' (bot)' : ''}: ${score} points, ${correct} of ${answered} correct`,
+    lineA11y: (name: string, score: number, correct: number, answered: number) =>
+      `${name}: ${score} points, ${correct} of ${answered} correct`,
     placedA11y: (rank: string, elo: number) => `You placed in ${rank} with ${elo} ELO`,
     stillUnplaced: 'You’re still unranked',
     placedOverline: 'PLACED!',
@@ -214,8 +213,7 @@ export const battleStrings = defineStrings({
     secondsLeft: (s: number) => `${s} seconds left`,
     opponentDisconnected: (name: string, s: number) =>
       `${name} disconnected. If they’re not back in ${s} s, you win by forfeit.`,
-    scoreA11y: (name: string, isBot: boolean, score: number) =>
-      `${name}${isBot ? ' (bot)' : ''}: ${score} points`,
+    scoreA11y: (name: string, score: number) => `${name}: ${score} points`,
 
     listenAndChoose: 'LISTEN AND CHOOSE WHAT IT MEANS',
     howDoYouSay: (code: string) =>

@@ -24,13 +24,14 @@ export const battleScreenStrings = defineStrings({
     forfeitHint: 'Abandonar cuenta como derrota',
     exitHint: 'Vuelve a la pantalla anterior',
     labelFriendly: 'DESAFÍO · SIN ELO',
-    labelPractice: 'PRÁCTICA · SIN ELO',
-    labelBotPractice: 'PRÁCTICA CONTRA BOT · SIN ELO',
+    labelPractice: 'WORD RUSH · PRÁCTICA',
+    labelUnrated: 'WORD RUSH · SIN ELO',
     labelCalibration: (used: number, limit: number) => `RANKED · CALIBRACIÓN ${used}/${limit}`,
     labelRanked: 'RANKED · WORD RUSH',
-    noteBotPractice: 'Práctica contra un bot: no mueve tu ELO ni da recompensas de Ranked.',
+    noteUnrated:
+      'Rival de práctica y sin ELO: ya jugaste tus partidas de calibración en este idioma. Ganes o pierdas, tu ELO no cambia.',
     noteCalibration: (used: number, limit: number) =>
-      `Partida de calibración ${used} de ${limit} contra un bot: mueve tu ELO. Después, el ELO sólo se juega contra personas.`,
+      `Partida de calibración ${used} de ${limit} contra un rival de práctica: mueve tu ELO. Después, contra rivales de práctica se juega sin ELO.`,
     noteCompetitive: 'Partida contra una persona: mueve tu ELO.',
     preparing: 'Preparando la partida…',
     declinedTitle: (name: string | undefined) =>
@@ -39,8 +40,10 @@ export const battleScreenStrings = defineStrings({
     createOwnChallenge: 'Crear mi propio desafío',
     searching: 'Buscando rival…',
     waitingA11y: (mm: number, ss: string) => `Esperando ${mm} minutos ${ss} segundos`,
-    onlyHumans: 'Buscamos a una persona de tu nivel: las partidas contra bots ya no mueven tu ELO.',
-    practiceVsBot: 'Practicar contra un bot (sin ELO)',
+    botSoon: (s: number) =>
+      `Si en ${s} s no aparece nadie, jugás contra un rival de práctica de tu nivel.`,
+    botSoonUnrated: (s: number) =>
+      `Si en ${s} s no aparece nadie, jugás contra un rival de práctica de tu nivel, sin ELO (ya usaste tus partidas de calibración).`,
     cancelSearch: 'Cancelar búsqueda',
     opponentFound: '¡Rival encontrado!',
     you: 'Vos',
@@ -73,8 +76,8 @@ export const battleScreenStrings = defineStrings({
     codeNote:
       'Amistoso: no mueve el ELO. Dejá esta pantalla abierta mientras esperás; el código vence en 15 minutos.',
     cancelChallenge: 'Cancelar desafío',
-    playerA11y: (name: string, isBot: boolean, elo: string | null) =>
-      `${name}${isBot ? ', bot' : ''}, ${elo !== null ? `${elo} ELO` : 'sin posicionar'}`,
+    playerA11y: (name: string, elo: string | null) =>
+      `${name}, ${elo !== null ? `${elo} ELO` : 'sin posicionar'}`,
   },
   en: {
     noMatchesIn: (code: string | null | undefined) =>
@@ -95,13 +98,14 @@ export const battleScreenStrings = defineStrings({
     forfeitHint: 'Leaving counts as a loss',
     exitHint: 'Goes back to the previous screen',
     labelFriendly: 'CHALLENGE · NO ELO',
-    labelPractice: 'PRACTICE · NO ELO',
-    labelBotPractice: 'PRACTICE VS BOT · NO ELO',
+    labelPractice: 'WORD RUSH · PRACTICE',
+    labelUnrated: 'WORD RUSH · NO ELO',
     labelCalibration: (used: number, limit: number) => `RANKED · CALIBRATION ${used}/${limit}`,
     labelRanked: 'RANKED · WORD RUSH',
-    noteBotPractice: 'Practice against a bot: it won’t change your ELO or give Ranked rewards.',
+    noteUnrated:
+      'Practice rival, no ELO: you’ve already played your calibration matches in this language. Win or lose, your ELO stays the same.',
     noteCalibration: (used: number, limit: number) =>
-      `Calibration match ${used} of ${limit} against a bot: it changes your ELO. After that, ELO is only on the line against people.`,
+      `Calibration match ${used} of ${limit} against a practice rival: it changes your ELO. After that, matches against practice rivals don’t affect ELO.`,
     noteCompetitive: 'Match against a person: it changes your ELO.',
     preparing: 'Getting the match ready…',
     declinedTitle: (name: string | undefined) =>
@@ -110,9 +114,10 @@ export const battleScreenStrings = defineStrings({
     createOwnChallenge: 'Create my own challenge',
     searching: 'Looking for an opponent…',
     waitingA11y: (mm: number, ss: string) => `Waiting ${mm} minutes ${ss} seconds`,
-    onlyHumans:
-      'We’re looking for a person at your level: matches against bots no longer change your ELO.',
-    practiceVsBot: 'Practice against a bot (no ELO)',
+    botSoon: (s: number) =>
+      `If nobody shows up in ${s} s, you’ll play a practice rival at your level.`,
+    botSoonUnrated: (s: number) =>
+      `If nobody shows up in ${s} s, you’ll play a practice rival at your level, with no ELO (you’ve used your calibration matches).`,
     cancelSearch: 'Cancel search',
     opponentFound: 'Opponent found!',
     you: 'You',
@@ -146,7 +151,7 @@ export const battleScreenStrings = defineStrings({
     codeNote:
       'Friendly: ELO doesn’t change. Keep this screen open while you wait; the code expires in 15 minutes.',
     cancelChallenge: 'Cancel challenge',
-    playerA11y: (name: string, isBot: boolean, elo: string | null) =>
-      `${name}${isBot ? ', bot' : ''}, ${elo !== null ? `${elo} ELO` : 'unranked'}`,
+    playerA11y: (name: string, elo: string | null) =>
+      `${name}, ${elo !== null ? `${elo} ELO` : 'unranked'}`,
   },
 });

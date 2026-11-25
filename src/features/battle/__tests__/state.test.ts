@@ -252,3 +252,37 @@ describe('desafío a un amigo', () => {
     expect(s.queue).toEqual({ window: 100, waitedMs: 31_000, botCalibrationLeft: 0 });
   });
 });
+
+describe('conexión propia durante Word Rush', () => {
+  it('una caída de red se refleja (sin error ni pausa) y vuelve al reconectar', () => {
+    const playing = run(
+      { type: 'joined', mode: 'ranked' },
+      {
+        type: 'snapshot',
+        snapshot: snapshot({ status: 'in_progress', endsAt: 70_000 }),
+        receivedAt: 0,
+      },
+    );
+    expect(playing.online).toBe(true);
+    const offline = battleReducer(playing, { type: 'socket_status', online: false });
+    expect(offline.online).toBe(false);
+    expect(offline.phase).toBe('playing');
+    // Socket.IO reconecta: el error de conexión en partida no corta la pantalla.
+    expect(battleReducer(offline, { type: 'connection_error', code: 'connection' }).phase).toBe(
+      'playing',
+    );
+    expect(battleReducer(offline, { type: 'socket_status', online: true }).online).toBe(true);
+    // La foto del servidor (battle:sync) llega por una conexión activa.
+    const synced = battleReducer(offline, {
+      type: 'snapshot',
+      snapshot: snapshot({ status: 'in_progress', endsAt: 70_000 }),
+      receivedAt: 0,
+    });
+    expect(synced.online).toBe(true);
+  });
+
+  it('el mismo estado no genera un estado nuevo (no re-dibuja de más)', () => {
+    const s = run({ type: 'joined', mode: 'ranked' });
+    expect(battleReducer(s, { type: 'socket_status', online: true })).toBe(s);
+  });
+});

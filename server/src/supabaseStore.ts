@@ -2,13 +2,20 @@ import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 
 import type { Database, Json } from '../../src/lib/database.generated';
 import { BOT_CALIBRATION } from '../../shared/bots';
-import { PROTOCOL_VERSION } from '../../shared/protocol';
+import type { ArcadeSentence } from '../../shared/arcade';
 import { RATING_CONFIG } from '../../shared/ranking';
 import { wordLevel, type RushWord } from '../../shared/wordRush';
 import {
+  mergeSentenceSources,
+  type WordRushSentenceRow,
+  type WordRushVariantRow,
+} from './wordRushBank';
+import {
+  consoleLogger,
   StaleRatingError,
   type BattleStore,
   type BotBattleStart,
+  type Logger,
   type PlayerInfo,
   type SettleResponse,
   type SettlementContextRow,
@@ -22,7 +29,38 @@ export function createServiceClient(url: string, serviceRoleKey: string): Supaba
   });
 }
 
-export function createSupabaseStore(db: SupabaseClient<Database>): BattleStore {
+/**
+ * Fase 5: lee el banco de Word Rush (word_rush_sentences + word_rush_exercise_variants). Las tablas
+ * todavía no están en los tipos generados (src/lib/database.generated.ts), así que se leen sin tipos y
+ * cada fila se valida en mergeSentenceSources. Lanza si cualquiera de las dos lecturas falla (también
+ * si las tablas no existen): quien llama sigue sólo con las lecciones.
+ */
+async function loadWordRushBank(
+  db: SupabaseClient<Database>,
+  languageCode: string,
+): Promise<{ sentences: WordRushSentenceRow[]; variants: WordRushVariantRow[] }> {
+  const untyped = db as unknown as SupabaseClient;
+  const [sentences, variants] = await Promise.all([
+    untyped
+      .from('word_rush_sentences')
+      .select('id, language_code, unit_id, tokens, answer, accepted_answers, translation')
+      .eq('language_code', languageCode)
+      .eq('is_published', true),
+    // Pocas filas en total (~50, los seis cursos): se lee entera y sólo se usan las de ejercicios cargados.
+    untyped.from('word_rush_exercise_variants').select('exercise_id, accepted_answers'),
+  ]);
+  if (sentences.error) throw sentences.error;
+  if (variants.error) throw variants.error;
+  return {
+    sentences: (sentences.data ?? []) as WordRushSentenceRow[],
+    variants: (variants.data ?? []) as WordRushVariantRow[],
+  };
+}
+
+export function createSupabaseStore(
+  db: SupabaseClient<Database>,
+  logger: Logger = consoleLogger,
+): BattleStore {
   return {
     async getPlayer(userId) {
       const { data: profile, error } = await db
@@ -78,21 +116,104 @@ export function createSupabaseStore(db: SupabaseClient<Database>): BattleStore {
         translationEs: w.translation_es,
         emoji: w.emoji,
         level: wordLevel(w.unit_id),
+        // Fase C.7: el mazo se filtra por las unidades comunes a los jugadores (rushUnits).
+        unitId: w.unit_id,
       }));
     },
 
-    async startBattle(battleId, languageCode, player1, player2) {
+    async rushUnits(languageCode, players) {
+      const { data, error } = await db.rpc('rush_common_unit_ids', {
+        p_language: languageCode,
+        p_players: players.map((p) => p.userId),
+        p_apis: players.map((p) => p.curriculumApi ?? 0),
+      });
+      if (error) throw error;
+      if (!Array.isArray(data)) throw new Error('rush_common_unit_ids: sin unidades');
+      return new Set(data);
+    },
+
+    async loadSentences(languageCode) {
+      // Tres lecturas simples (unidades → lecciones → ejercicios), todas publicadas y del curso.
+      const { data: units, error: unitsError } = await db
+        .from('curriculum_units')
+        .select('id')
+        .eq('language_code', languageCode)
+        .eq('is_published', true);
+      if (unitsError) throw unitsError;
+      const unitIds = (units ?? []).map((u) => u.id);
+      if (unitIds.length === 0) return [];
+
+      const { data: lessons, error: lessonsError } = await db
+        .from('lessons')
+        .select('id, unit_id')
+        .in('unit_id', unitIds)
+        .eq('is_published', true);
+      if (lessonsError) throw lessonsError;
+      const unitOf = new Map((lessons ?? []).map((l) => [l.id, l.unit_id]));
+      if (unitOf.size === 0) return [];
+
+      const { data: exercises, error } = await db
+        .from('exercises')
+        .select('id, lesson_id, payload, answer, accepted_answers')
+        .eq('type', 'order_words')
+        .eq('is_published', true)
+        .in('lesson_id', [...unitOf.keys()]);
+      if (error) throw error;
+
+      const sentences: ArcadeSentence[] = [];
+      for (const e of exercises ?? []) {
+        const payload = e.payload as { tokens?: unknown; translation?: unknown } | null;
+        const tokens = payload?.tokens;
+        if (
+          !Array.isArray(tokens) ||
+          !tokens.every((t): t is string => typeof t === 'string') ||
+          typeof payload?.translation !== 'string'
+        ) {
+          continue;
+        }
+        sentences.push({
+          id: e.id,
+          tokens,
+          answer: e.answer,
+          acceptedAnswers: e.accepted_answers ?? [],
+          translation: payload.translation,
+          unitId: unitOf.get(e.lesson_id) ?? null,
+        });
+      }
+
+      // Fase 5: el banco propio de Word Rush. Si no se puede leer (tablas sin crear, red, permisos),
+      // la partida sigue sólo con las lecciones: nunca un banco a medias ni variantes sin su frase.
+      let bank: Awaited<ReturnType<typeof loadWordRushBank>>;
+      try {
+        bank = await loadWordRushBank(db, languageCode);
+      } catch (err) {
+        logger.warn('word_rush_bank_unavailable', {
+          languageCode,
+          err: String((err as { message?: unknown } | null)?.message ?? err),
+          code: (err as { code?: unknown } | null)?.code ?? null,
+        });
+        return sentences;
+      }
+      const merged = mergeSentenceSources(languageCode, sentences, bank, new Set(unitIds));
+      const { report } = merged;
+      if (report.bankSkipped || report.variantsSkipped || report.duplicatesSkipped) {
+        logger.warn('word_rush_bank_rows_skipped', { languageCode, ...report });
+      }
+      return merged.sentences;
+    },
+
+    async startBattle(battleId, languageCode, player1, player2, protocolVersion) {
       const { error } = await db.rpc('start_battle', {
         p_battle_id: battleId,
         p_language_code: languageCode,
         p_player1: player1,
         p_player2: player2,
-        p_protocol_version: PROTOCOL_VERSION,
+        p_protocol_version: protocolVersion,
       });
       if (error) throw error;
     },
 
-    async startBotBattle(battleId, languageCode, player, bot, rated) {
+    async startBotBattle(battleId, languageCode, player, bot, rated, protocolVersion) {
       const { data, error } = await db.rpc('start_bot_battle_v2', {
         p_battle_id: battleId,
         p_language_code: languageCode,
@@ -100,7 +221,7 @@ export function createSupabaseStore(db: SupabaseClient<Database>): BattleStore {
         p_bot_name: bot.name,
         p_bot_avatar_id: bot.avatarId,
         p_bot_rating: bot.rating,
-        p_protocol_version: PROTOCOL_VERSION,
+        p_protocol_version: protocolVersion,
         p_rated: rated,
       });
       if (error) throw error;

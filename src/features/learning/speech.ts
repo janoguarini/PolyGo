@@ -117,7 +117,16 @@ export function speechInput(text: string, slow = false) {
  * Pronunciación con la voz sintetizada del sistema en el idioma que se estudia (no es una grabación
  * de un hablante nativo).
  */
-export function speak(text: string, options: { slow?: boolean } = {}) {
+export function speak(
+  text: string,
+  options: {
+    slow?: boolean;
+    /** Empezó a sonar (Ranked Arcade lo usa para saber que el audio llegó). */
+    onStart?: () => void;
+    /** El motor falló: quien escucha muestra el texto en su lugar. */
+    onError?: () => void;
+  } = {},
+) {
   if (!spokenText(text)) return;
   const locale = currentLocale;
   void (async () => {
@@ -130,11 +139,13 @@ export function speak(text: string, options: { slow?: boolean } = {}) {
       language: locale,
       voice,
       rate: input.rate,
+      ...(options.onStart ? { onStart: options.onStart } : {}),
       onError: (error) => {
         if (__DEV__) console.warn('expo-speech', error);
+        options.onError?.();
       },
     });
-  })();
+  })().catch(() => options.onError?.());
 }
 
 /**

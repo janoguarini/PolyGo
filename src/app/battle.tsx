@@ -2,10 +2,21 @@ import { router, useLocalSearchParams } from 'expo-router';
 import * as Linking from 'expo-linking';
 import { Search, Share2, Swords, UserPlus, X } from 'lucide-react-native';
 import { useCallback, useEffect } from 'react';
-import { ActivityIndicator, Alert, BackHandler, Share, StyleSheet, View } from 'react-native';
+import {
+  ActivityIndicator,
+  Alert,
+  BackHandler,
+  Pressable,
+  Share,
+  StyleSheet,
+  Text as RNText,
+  View,
+} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+import type { ArcadeAnswer } from '@shared/arcade';
 
 import { languageConfig } from '@shared/languages';
-import { BOT_CALIBRATION } from '@shared/bots';
 import { WORD_RUSH, type BattleMode } from '@shared/protocol';
 import { isPlaced } from '@shared/ranking';
 
@@ -22,10 +33,14 @@ import {
   spacing,
   useTheme,
 } from '@/design-system';
+import { ArcadeLobby } from '@/features/battle/arcade/ArcadeLobby';
+import { ArcadeStage } from '@/features/battle/arcade/ArcadeStage';
+import { arcade, arcadeText } from '@/features/battle/arcade/theme';
+import { matchLabel, ratingNote, searchHint } from '@/features/battle/labels';
 import { rankedDisabled } from '@/features/battle/availability';
 import { battleErrorMessage, battleServerConfigured } from '@/features/battle/client';
+import { playerLook } from '@/features/battle/rivalLook';
 import { BattleHud } from '@/features/battle/components/BattleHud';
-import { BotBadge } from '@/features/battle/components/BotBadge';
 import { BattleResult } from '@/features/battle/components/BattleResult';
 import { QuestionCard } from '@/features/battle/components/QuestionCard';
 import {
@@ -122,22 +137,20 @@ export default function BattleScreen() {
 
 interface Session {
   ready: () => void;
-  /** Opción elegida o texto escrito (preguntas para escribir). */
+  /** Opción elegida o texto escrito (formato clásico de 75 s: desafíos con amigos). */
   answer: (choice: number | string) => void;
+  /** Word Rush (motor interno Arcade, sólo con el servidor de partidas). */
+  arcadeAnswer?: (answer: ArcadeAnswer) => void;
   leave: () => void;
 }
 
-/** Ranked (cola o servidor de partidas) y práctica. */
+/**
+ * Ranked y práctica: Word Rush con el servidor de partidas. Si no aparece una persona, el servidor pone
+ * un bot de tu nivel a los pocos segundos (con o sin ELO según el cupo de calibración).
+ */
 function MatchBattle({ mode }: { mode: BattleMode }) {
   const session = useSession();
-  return (
-    <BattleView
-      session={session}
-      onStart={(m) => session.start(m ?? mode)}
-      // Práctica contra bots: sólo la ofrece el servidor de partidas (sin cupo de calibración).
-      allowBotPractice={battleServerConfigured}
-    />
-  );
+  return <BattleView session={session} onStart={(m) => session.start(m ?? mode)} />;
 }
 
 /**
@@ -167,13 +180,11 @@ function BattleView({
   session,
   inviteeName,
   onStart,
-  allowBotPractice = false,
 }: {
   session: Session;
   inviteeName?: string;
   /** again: el usuario pidió otra partida (no es el arranque al montar). */
   onStart: (mode: BattleMode | undefined, again: boolean) => void;
-  allowBotPractice?: boolean;
 }) {
   useTheme();
   const t = useStrings(battleScreenStrings);
@@ -216,6 +227,49 @@ function BattleView({
     return () => sub.remove();
   }, [exit]);
 
+  // Word Rush: desde el rival encontrado hasta el «¡Tiempo!», pantalla completa oscura (la misma
+  // identidad que el juego, sin saltos de tema). La práctica sola entra directo a la cuenta regresiva.
+  const inGame =
+    state.phase === 'found' || state.phase === 'countdown' || state.phase === 'playing';
+  const wordRushShell =
+    session.arcadeAnswer !== undefined &&
+    !state.friendly &&
+    inGame &&
+    (state.arcade !== null || state.phase === 'countdown');
+  if (wordRushShell && session.arcadeAnswer) {
+    return (
+      <View style={styles.arcadeRoot}>
+        <SafeAreaView edges={['top', 'bottom']} style={styles.arcadeSafe}>
+          <View style={styles.topBar}>
+            <RNText style={arcadeText.label}>{matchLabel(state, t)}</RNText>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={state.phase === 'playing' ? t.forfeit : t.exit}
+              accessibilityHint={
+                state.phase === 'playing' && isRated(state) ? t.forfeitHint : t.exitHint
+              }
+              onPress={exit}
+              hitSlop={12}
+              style={styles.arcadeExit}
+            >
+              <X color={arcade.muted} size={20} />
+            </Pressable>
+          </View>
+          {state.phase === 'playing' && state.arcade ? (
+            <ArcadeStage state={state} now={now} onAnswer={session.arcadeAnswer} />
+          ) : state.arcade ? (
+            <ArcadeLobby state={state} now={now} onReady={session.ready} />
+          ) : (
+            <View style={styles.arcadeLoading}>
+              <ActivityIndicator color={arcade.violetGlow} />
+              <RNText style={arcadeText.label}>{t.preparing}</RNText>
+            </View>
+          )}
+        </SafeAreaView>
+      </View>
+    );
+  }
+
   return (
     <Screen edges={['top', 'bottom']}>
       <View style={styles.topBar}>
@@ -236,41 +290,12 @@ function BattleView({
         onReady={session.ready}
         onAnswer={session.answer}
         onRetry={() => onStart(state.mode, true)}
-        onBotPractice={allowBotPractice ? () => onStart('bot_practice', true) : undefined}
         onExit={exit}
         inviteeName={inviteeName}
       />
     </Screen>
   );
 }
-
-/** Qué tipo de partida es: se ve arriba durante toda la partida. */
-function matchLabel(state: BattleState, t: ScreenStrings): string {
-  if (state.friendly) return t.labelFriendly;
-  if (state.mode === 'practice') return t.labelPractice;
-  if (state.mode === 'bot_practice' || state.rating === 'unrated') {
-    return t.labelBotPractice;
-  }
-  if (state.rating === 'calibration' && state.calibration) {
-    return t.labelCalibration(state.calibration.used, state.calibration.limit);
-  }
-  return t.labelRanked;
-}
-
-/** Lo que se le explica antes de empezar según si mueve el ELO. */
-function ratingNote(state: BattleState, t: ScreenStrings): string | null {
-  if (state.friendly || state.mode === 'practice') return null;
-  if (state.mode === 'bot_practice' || state.rating === 'unrated') {
-    return t.noteBotPractice;
-  }
-  if (state.rating === 'calibration' && state.calibration) {
-    return t.noteCalibration(state.calibration.used, state.calibration.limit);
-  }
-  if (state.rating === 'competitive') return t.noteCompetitive;
-  return null;
-}
-
-type ScreenStrings = (typeof battleScreenStrings)['es'];
 
 /** Si se entró por un link de desafío no hay pantalla anterior: vuelve a Ranked. */
 function leaveScreen() {
@@ -284,22 +309,11 @@ interface BodyProps {
   onReady: () => void;
   onAnswer: (choice: number | string) => void;
   onRetry: () => void;
-  /** Práctica contra un bot sin ELO (con el servidor de partidas). */
-  onBotPractice?: () => void;
   onExit: () => void;
   inviteeName?: string;
 }
 
-function Body({
-  state,
-  now,
-  onReady,
-  onAnswer,
-  onRetry,
-  onBotPractice,
-  onExit,
-  inviteeName,
-}: BodyProps) {
+function Body({ state, now, onReady, onAnswer, onRetry, onExit, inviteeName }: BodyProps) {
   useTheme();
   const t = useStrings(battleScreenStrings);
   const cancelMessages = useStrings(cancelStrings);
@@ -348,11 +362,8 @@ function Body({
       const waited = state.queue?.waitedMs ?? 0;
       const mm = Math.floor(waited / 60_000);
       const ss = String(Math.floor(waited / 1000) % 60).padStart(2, '0');
-      // Sin partidas de calibración: el ELO se juega sólo contra personas. Tras un rato sin
-      // rival, se ofrece practicar contra un bot (sin ELO), nunca automáticamente.
-      const onlyHumans = state.queue?.botCalibrationLeft === 0;
-      const offerPractice =
-        onBotPractice && onlyHumans && waited >= BOT_CALIBRATION.practiceOfferAfterMs;
+      // Primero una persona de tu nivel; si no aparece, el servidor pone un bot a los pocos segundos
+      // (sin ELO si ya usaste las partidas de calibración). No hay que elegir nada.
       return (
         <View style={styles.center}>
           <Card style={styles.searchCard}>
@@ -363,15 +374,10 @@ function Body({
             <Text variant="stat" align="center" accessibilityLabel={t.waitingA11y(mm, ss)}>
               {mm}:{ss}
             </Text>
-            {onlyHumans ? (
-              <Text color="textMuted" align="center">
-                {t.onlyHumans}
-              </Text>
-            ) : null}
+            <Text color="textMuted" align="center">
+              {searchHint(state.queue, t)}
+            </Text>
           </Card>
-          {offerPractice ? (
-            <Button label={t.practiceVsBot} variant="secondary" onPress={onBotPractice} />
-          ) : null}
           <Button label={t.cancelSearch} variant="ghost" onPress={onExit} />
         </View>
       );
@@ -396,14 +402,14 @@ function Body({
             <Swords color={colors.primaryBright} size={32} />
             <PlayerBadge
               username={opponent?.username ?? '…'}
-              avatarId={opponent?.avatarId}
+              avatarId={playerLook(opponent).avatarId ?? undefined}
               avatarPath={opponent?.avatarPath}
-              frameId={opponent?.frameId}
-              isBot={opponent?.isBot ?? false}
+              frameId={playerLook(opponent).frameId}
               rating={opponent?.rating}
               placed={opponent?.isBot || (opponent?.gamesPlayed ?? 0) > 0}
             />
           </View>
+          {/* Formato clásico de 75 s (desafíos con amigos): Word Rush se presenta en ArcadeLobby. */}
           <Text color="textMuted" align="center">
             {t.rules}
           </Text>
@@ -582,7 +588,6 @@ function PlayerBadge({
   avatarId,
   avatarPath,
   frameId,
-  isBot = false,
   rating,
   placed,
 }: {
@@ -590,7 +595,6 @@ function PlayerBadge({
   avatarId: string | undefined;
   avatarPath: string | null | undefined;
   frameId?: string | null;
-  isBot?: boolean;
   rating: number | undefined;
   placed: boolean;
 }) {
@@ -600,7 +604,7 @@ function PlayerBadge({
     <View
       style={styles.badge}
       accessible
-      accessibilityLabel={t.playerA11y(username, isBot, placed ? String(rating ?? '') : null)}
+      accessibilityLabel={t.playerA11y(username, placed ? String(rating ?? '') : null)}
     >
       <FramedAvatar
         avatarId={avatarId}
@@ -611,7 +615,6 @@ function PlayerBadge({
       <Text variant="bodyStrong" numberOfLines={1}>
         {username}
       </Text>
-      {isBot ? <BotBadge /> : null}
       {rating !== undefined ? (
         <View style={styles.badgeRating}>
           <RankEmblemForRating rating={rating} size={22} dimmed={!placed} />
@@ -632,4 +635,20 @@ const styles = StyleSheet.create({
   badgeRating: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
   countdown: { fontSize: 96, lineHeight: 110 },
   code: { letterSpacing: 6 },
+  arcadeRoot: { flex: 1, backgroundColor: arcade.bg },
+  arcadeSafe: {
+    flex: 1,
+    paddingHorizontal: spacing.lg,
+    paddingBottom: spacing.md,
+    gap: spacing.sm,
+  },
+  arcadeLoading: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: spacing.md },
+  arcadeExit: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: arcade.card,
+  },
 });

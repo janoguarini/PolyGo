@@ -12,7 +12,7 @@ import { io as connect, type Socket } from 'socket.io-client';
 import { BOT_CALIBRATION, BOT_CONFIG } from '../../shared/bots';
 import {
   MAX_WRITTEN_ANSWER_LENGTH,
-  PROTOCOL_VERSION,
+  WORD_RUSH_PROTOCOL_VERSION as PROTOCOL_VERSION,
   WORD_RUSH,
   type AnswerResult,
   type BattleFinish,
@@ -268,10 +268,9 @@ const EMOJI_WORDS: RushWord[] = [
   { id: 'house', text: 'house', translationEs: 'casa', emoji: '🏠' },
 ];
 
+// Fase C.7: cada palabra trae su unidad (el mazo sólo usa unidades comunes a los jugadores).
 class EmojiStore extends FakeStore {
-  override async loadWords() {
-    return EMOJI_WORDS;
-  }
+  override words = EMOJI_WORDS.map((w) => ({ ...w, unitId: 'a1-u01' }));
 }
 
 before(async () => {
@@ -348,7 +347,7 @@ async function playBotMatch(socket: Client, mode: 'ranked' | 'bot_practice' = 'r
   return { snap, result: (await finish) as BattleFinish };
 }
 
-test('cupo de calibración: 3 partidas contra bots con ELO; después la cola sólo espera personas', async () => {
+test('cupo de calibración: 3 partidas contra bots con ELO; después el bot sigue, pero sin ELO', async () => {
   const calib = client('calib');
   await connected(calib);
   for (let i = 1; i <= BOT_CALIBRATION.ratedGames; i++) {
@@ -360,14 +359,32 @@ test('cupo de calibración: 3 partidas contra bots con ELO; después la cola só
   }
   assert.equal(store.calibrationUsed.get('calib:en'), BOT_CALIBRATION.ratedGames);
 
-  // Cupo agotado: no aparece un bot aunque espere; la cola le avisa que no le quedan.
+  // Cupo agotado: el bot igual entra a tiempo (nadie queda esperando), pero la partida no mueve el
+  // ELO, no consume cupo y queda guardada con su resultado (historial), como en settle_battle.
+  const ratingBefore = store.players.get('calib')!.rating;
+  const gamesBefore = store.players.get('calib')!.gamesPlayed;
   const status = next(calib, 'queue:status');
-  calib.emit('queue:join', { mode: 'ranked' }, () => {});
-  assert.equal((await status).botCalibrationLeft, 0);
-  await new Promise((r) => setTimeout(r, 400));
-  assert.equal(server.stats().battles, 0, 'sin bot competitivo fuera del cupo');
-  assert.equal(server.stats().queued, 1);
-  await calib.emitWithAck('queue:leave');
+  const { snap, result } = await playBotMatch(calib);
+  assert.equal((await status).botCalibrationLeft, 0, 'la cola avisa que no quedan');
+  assert.equal(snap.mode, 'ranked');
+  assert.equal(snap.rating, 'unrated');
+  assert.equal(snap.calibration, null);
+  assert.equal(snap.players.find((p) => p.slot !== snap.yourSlot)!.isBot, true);
+  assert.equal(result.rating, 'unrated');
+  for (const p of result.players) {
+    assert.equal(p.ratingBefore, null);
+    assert.equal(p.ratingAfter, null);
+  }
+  assert.equal(store.players.get('calib')!.rating, ratingBefore, 'el ELO no cambia');
+  assert.equal(store.players.get('calib')!.gamesPlayed, gamesBefore);
+  assert.equal(store.calibrationUsed.get('calib:en'), BOT_CALIBRATION.ratedGames, 'sin cupo extra');
+  assert.ok(store.unranked.has(snap.battleId), 'guardada como no ranked');
+  assert.ok(store.settled.has(snap.battleId), 'con su resultado en el historial');
+  assert.equal(
+    store.botBattles.get(snap.battleId)?.player,
+    'calib',
+    'identificada como contra bot',
+  );
   calib.disconnect();
 });
 

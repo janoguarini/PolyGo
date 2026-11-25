@@ -5,7 +5,10 @@ import { Server, type Socket } from 'socket.io';
 
 import {
   MATCHMAKING,
-  PROTOCOL_VERSION,
+  ARCADE_PROTOCOL_VERSION,
+  SUPPORTED_PROTOCOL_VERSIONS,
+  parseCurriculumApi,
+  WORD_RUSH_PROTOCOL_VERSION,
   WORD_RUSH,
   type Ack,
   type BattleMode,
@@ -13,6 +16,7 @@ import {
   type ErrorCode,
   type ServerToClientEvents,
 } from '../../shared/protocol';
+import { pickBotIdentity } from '../../shared/botIdentities';
 import { BOT_CALIBRATION, BOT_CONFIG, BOT_ID_PREFIX, pickBot } from '../../shared/bots';
 import {
   generateQuestions,
@@ -23,9 +27,23 @@ import {
   writingEnabled,
   type RushWord,
 } from '../../shared/wordRush';
-import { Battle, type BattleHooks, type BattleRules, type Send } from './battle';
+import {
+  ARCADE,
+  RecentContentMemory,
+  createChallengeStream,
+  sentencePool,
+  type ArcadeSentence,
+} from '../../shared/arcade';
+import { ArcadeBattle, type ArcadeRules } from './arcadeBattle';
+import {
+  Battle,
+  type BattleHooks,
+  type BattleOptions,
+  type BattleRules,
+  type Send,
+} from './battle';
 import { systemClock, type Clock } from './clock';
-import { Matchmaker } from './matchmaking';
+import { Matchmaker, type QueueEntry } from './matchmaking';
 import { settleBattle } from './settlement';
 import {
   consoleLogger,
@@ -41,28 +59,57 @@ export interface BattleServerOptions {
   clock?: Clock;
   logger?: Logger;
   rules?: BattleRules;
+  /** Reglas de Word Rush (motor Arcade, protocolo 3); en tests se acortan. */
+  arcadeRules?: ArcadeRules;
   matchmaking?: typeof MATCHMAKING;
-  /** Cada cuánto se intenta emparejar y se informa la espera. */
+  /** Cada cuánto se reintenta emparejar (ventanas que se amplían) y se informa la espera. */
   tickMs?: number;
-  /** Fuente [0, 1) para las preguntas; por defecto criptográfica. */
+  /** Fuente [0, 1) para los desafíos y los bots; por defecto criptográfica. */
   random?: () => number;
   wordCacheMs?: number;
   /** Eventos por segundo que acepta cada socket; el resto se descarta sin responder. */
   maxEventsPerSecond?: number;
   /** Espera sin rival humano antes de jugar contra un bot; null desactiva los bots. */
   botAfterMs?: number | null;
+  /**
+   * Versiones de protocolo que acepta este servidor (subconjunto de SUPPORTED_PROTOCOL_VERSIONS). La
+   * 2 (Word Rush clásico) sólo queda durante la transición a la build con el protocolo 3; quitarla es
+   * el corte (index.ts lo lee de BATTLE_PROTOCOL_VERSIONS).
+   */
+  protocolVersions?: readonly number[];
+  /** Memoria de contenido reciente (inyectable en tests). */
+  recentContent?: RecentContentMemory;
 }
 
-type IoSocket = Socket<ClientToServerEvents, ServerToClientEvents, object, { userId: string }>;
+/** Datos del socket tras el handshake: quién es y qué versión del protocolo habla. */
+interface SocketData {
+  userId: string;
+  protocolVersion: number;
+  /** Fase C.8: nivel curricular declarado en el handshake (0 si el cliente no lo declara). */
+  curriculumApi: number;
+}
+
+type IoSocket = Socket<ClientToServerEvents, ServerToClientEvents, object, SocketData>;
 
 const cryptoRandom = () => randomInt(0, 2 ** 32) / 2 ** 32;
 
 export interface BattleServer {
   http: HttpServer;
-  io: Server<ClientToServerEvents, ServerToClientEvents, object, { userId: string }>;
+  io: Server<ClientToServerEvents, ServerToClientEvents, object, SocketData>;
   close(): Promise<void>;
-  /** Para tests y /health. */
-  stats(): { connected: number; queued: number; battles: number };
+  /** Para tests y /health. `matching`: jugadores cuya partida se está creando. */
+  stats(): { connected: number; queued: number; battles: number; matching: number };
+}
+
+/** Un jugador cuya partida se está armando (lecturas de la base todavía en curso). */
+interface PendingPlayer {
+  mode: BattleMode;
+  info: PlayerInfo;
+  /** Entrada de cola original (ranked): para volver a la cola sin perder la espera. */
+  entry: QueueEntry | null;
+  protocol: number;
+  /** Salió (queue:leave o reconexión con otra versión): su partida no se crea. */
+  left: boolean;
 }
 
 export function createBattleServer(options: BattleServerOptions): BattleServer {
@@ -72,6 +119,7 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
     clock = systemClock,
     logger = consoleLogger,
     rules = WORD_RUSH,
+    arcadeRules = ARCADE,
     matchmaking = MATCHMAKING,
     tickMs = 1_000,
     random = cryptoRandom,
@@ -79,21 +127,49 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
     // Una persona responde a lo sumo unas pocas preguntas por segundo; 20 deja margen holgado.
     maxEventsPerSecond = 20,
     botAfterMs = BOT_CONFIG.afterMs,
+    protocolVersions = SUPPORTED_PROTOCOL_VERSIONS,
+    recentContent = new RecentContentMemory(),
   } = options;
+
+  const accepted = protocolVersions.filter((v) => SUPPORTED_PROTOCOL_VERSIONS.includes(v));
+  if (accepted.length === 0) throw new Error('battle-server: ninguna versión de protocolo válida');
 
   const sockets = new Map<string, IoSocket>();
   const battles = new Map<string, Battle>();
   const battleByUser = new Map<string, Battle>();
   const queued = new Map<string, PlayerInfo>();
+  /** Versión de protocolo de quien está en la cola (la del socket con que entró). */
+  const queuedProtocol = new Map<string, number>();
+  /** Última identidad de bot que vio cada jugador (para no repetirla en la partida siguiente). */
+  const lastBotIdentity = new Map<string, string>();
+  /** Temporizador del bot de cada jugador en la cola (vence a joinedAt + botAfterMs). */
+  const botTimers = new Map<string, unknown>();
+  /** Jugadores cuya partida se está creando: ni están en la cola ni tienen partida todavía. */
+  const pending = new Map<string, PendingPlayer>();
   const matchmaker = new Matchmaker(matchmaking);
   const wordCache = new Map<string, { words: RushWord[]; loadedAt: number }>();
+  const sentenceCache = new Map<string, { sentences: ArcadeSentence[]; loadedAt: number }>();
 
-  const stats = () => ({ connected: sockets.size, queued: matchmaker.size, battles: battles.size });
+  const stats = () => ({
+    connected: sockets.size,
+    queued: matchmaker.size,
+    battles: battles.size,
+    matching: pending.size,
+  });
+  const contentKey = (userId: string, languageCode: string) => `${userId}:${languageCode}`;
 
   const http = createServer((req, res) => {
     if (req.url === '/health') {
       res.writeHead(200, { 'content-type': 'application/json' });
-      res.end(JSON.stringify({ ok: true, protocolVersion: PROTOCOL_VERSION, ...stats() }));
+      res.end(
+        JSON.stringify({
+          ok: true,
+          // La más nueva que acepta (como antes) y todas las que acepta.
+          protocolVersion: Math.max(...accepted),
+          protocolVersions: accepted,
+          ...stats(),
+        }),
+      );
       return;
     }
     res.writeHead(404).end();
@@ -118,6 +194,18 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
     }
   };
 
+  /** Lo que vio cada persona en una partida de Word Rush, para no repetírselo enseguida. */
+  const rememberContent = (battle: Battle) => {
+    if (!(battle instanceof ArcadeBattle)) return;
+    for (const player of battle.players) {
+      if (player.isBot) continue;
+      recentContent.record(
+        contentKey(player.userId, battle.languageCode),
+        battle.seenBy(player.userId),
+      );
+    }
+  };
+
   const hooks: BattleHooks = {
     send,
     onStart: (battle) => {
@@ -133,12 +221,16 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
           human.userId,
           { name: bot.username, avatarId: bot.avatarId, rating: bot.rating },
           battle.rating === 'calibration',
+          battle.protocolVersion,
         );
       }
       const [a, b] = battle.userIds;
-      return store.startBattle(battle.id, battle.languageCode, a!, b!);
+      return store.startBattle(battle.id, battle.languageCode, a!, b!, battle.protocolVersion);
     },
-    onFinish: (battle, status) => void finalize(battle, status),
+    onFinish: (battle, status) => {
+      rememberContent(battle);
+      void finalize(battle, status);
+    },
     onCancel: (battle, reason) => {
       release(battle);
       logger.info('battle_cancelled', { battleId: battle.id, reason });
@@ -196,32 +288,89 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
     return words;
   }
 
+  async function sentencesFor(languageCode: string): Promise<ArcadeSentence[]> {
+    const cached = sentenceCache.get(languageCode);
+    if (cached && clock.now() - cached.loadedAt < wordCacheMs) return cached.sentences;
+    const sentences = await store.loadSentences(languageCode);
+    sentenceCache.set(languageCode, { sentences, loadedAt: clock.now() });
+    return sentences;
+  }
+
+  /**
+   * Arma y anuncia una partida. Las lecturas de la base son asíncronas: si mientras tanto alguien se fue
+   * (`aborted()`), la partida no se crea y devuelve null (nadie recibe match:found).
+   */
   async function createBattle(
     mode: BattleMode,
     players: PlayerInfo[],
-    options: ConstructorParameters<typeof Battle>[9] = {},
-  ): Promise<Battle> {
+    options: BattleOptions = {},
+    protocolVersion: number = WORD_RUSH_PROTOCOL_VERSION,
+    aborted: () => boolean = () => false,
+  ): Promise<Battle | null> {
     const languageCode = players[0]!.languageCode;
-    // Palabras y preguntas para escribir según el rango del jugador con menos rating (lo humano;
-    // el bot tiene el rating del jugador ± 40). Mismas reglas que shared/wordRush.ts.
+    // Contenido según el rango del jugador con menos rating (lo humano; el bot tiene el rating del
+    // jugador ± 40). Mismas reglas que shared/wordRush.ts y shared/arcade.ts.
     const humans = players.filter((p) => !p.isBot);
     const rating = Math.min(...humans.map((p) => p.rating));
-    const words = await wordsFor(languageCode);
-    let questions = generateQuestions(rushPool(words, rating), rules.questionCount, random);
-    if (writingEnabled(rating, languageCode)) questions = withWriting(questions);
-    questions = withPictures(questions, pictureEmojis(words));
-    const battle = new Battle(
-      randomUUID(),
-      mode,
+    // Fases C.7/C.8: sólo el contenido de las unidades que pueden usar TODOS los humanos, cada uno con
+    // el nivel curricular de su cliente (public.rush_common_unit_ids; el bot no cuenta). Si la base no
+    // da el conjunto, esto lanza y la partida no se crea: nunca «todas las palabras».
+    const units = await store.rushUnits(
       languageCode,
-      players,
-      questions,
-      clock,
-      hooks,
-      rules,
-      random,
-      options,
+      humans.map((p) => ({ userId: p.userId, curriculumApi: p.curriculumApi ?? 0 })),
     );
+    const inUnits = (unitId: string | null | undefined) => unitId != null && units.has(unitId);
+    const words = (await wordsFor(languageCode)).filter((w) => inUnits(w.unitId));
+    let battle: Battle;
+    if (protocolVersion === ARCADE_PROTOCOL_VERSION) {
+      // Word Rush: la misma secuencia para todos, como flujo continuo. Las frases pasan por el mismo
+      // filtro de unidades; sin frases suficientes, Sentence Rush queda fuera (nunca se inventan).
+      const sentences = sentencePool(
+        (await sentencesFor(languageCode)).filter((s) => inUnits(s.unitId)),
+        languageCode,
+        rating,
+      );
+      if (aborted()) return null;
+      const stream = createChallengeStream(
+        rushPool(words, rating),
+        sentences,
+        random,
+        arcadeRules,
+        {
+          recent: recentContent.recentFor(humans.map((p) => contentKey(p.userId, languageCode))),
+        },
+      );
+      battle = new ArcadeBattle(
+        randomUUID(),
+        mode,
+        languageCode,
+        players,
+        stream,
+        clock,
+        hooks,
+        random,
+        options,
+        arcadeRules,
+      );
+    } else {
+      // Protocolo 2 (Word Rush clásico de 75 s): sólo para las builds anteriores, hasta el corte.
+      if (aborted()) return null;
+      let questions = generateQuestions(rushPool(words, rating), rules.questionCount, random);
+      if (writingEnabled(rating, languageCode)) questions = withWriting(questions);
+      questions = withPictures(questions, pictureEmojis(words));
+      battle = new Battle(
+        randomUUID(),
+        mode,
+        languageCode,
+        players,
+        questions,
+        clock,
+        hooks,
+        rules,
+        random,
+        options,
+      );
+    }
     battles.set(battle.id, battle);
     for (const p of players) battleByUser.set(p.userId, battle);
     logger.info('battle_created', {
@@ -229,18 +378,29 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
       mode,
       rating: battle.rating,
       languageCode,
+      protocolVersion: battle.protocolVersion,
       players: players.map((p) => p.userId),
     });
     battle.begin();
     return battle;
   }
 
-  /** Un bot a la altura del jugador (shared/bots.ts). */
+  /**
+   * Un bot a la altura del jugador (shared/bots.ts) con una identidad del catálogo
+   * (shared/botIdentities.ts): sólo cambia el nombre que se muestra; rating y dificultad siguen saliendo
+   * de pickBot. El avatarId sigue siendo uno de los zorros de BOT_AVATARS (lo que acepta la base en
+   * start_bot_battle_v2); el cliente dibuja el avatar, el marco y el fondo de la identidad por su nombre.
+   */
   function makeBot(info: PlayerInfo): PlayerInfo {
     const persona = pickBot(info.rating, random);
+    const identity = pickBotIdentity(random, {
+      previousId: lastBotIdentity.get(info.userId),
+      playerAvatarId: info.avatarId,
+    });
+    lastBotIdentity.set(info.userId, identity.id);
     return {
       userId: `${BOT_ID_PREFIX}${randomUUID()}`,
-      username: persona.name,
+      username: identity.name,
       avatarId: persona.avatarId,
       avatarPath: null,
       isBot: true,
@@ -250,47 +410,146 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
     };
   }
 
-  // ---------- matchmaking ----------
+  // ---------- cola ----------
+
+  function clearBotTimer(userId: string) {
+    const handle = botTimers.get(userId);
+    if (handle !== undefined) clock.clearTimeout(handle);
+    botTimers.delete(userId);
+  }
+
+  function dequeue(userId: string) {
+    matchmaker.leave(userId);
+    queued.delete(userId);
+    queuedProtocol.delete(userId);
+    clearBotTimer(userId);
+  }
+
+  /** Entra (o vuelve) a la cola. Conserva la espera si ya estaba; el bot vence a joinedAt + botAfterMs. */
+  function enqueue(info: PlayerInfo, protocol: number, joinedAt: number) {
+    queued.set(info.userId, info);
+    queuedProtocol.set(info.userId, protocol);
+    matchmaker.join({
+      userId: info.userId,
+      languageCode: info.languageCode,
+      rating: info.rating,
+      joinedAt,
+      protocolVersion: protocol,
+    });
+    clearBotTimer(info.userId);
+    if (botAfterMs !== null) {
+      const entry = matchmaker.get(info.userId)!;
+      const wait = Math.max(0, entry.joinedAt + botAfterMs - clock.now());
+      botTimers.set(
+        info.userId,
+        clock.setTimeout(() => {
+          botTimers.delete(info.userId);
+          runMatching();
+        }, wait),
+      );
+    }
+  }
+
+  /**
+   * Un pase de emparejamiento. Primero personas (también quien llegó justo al vencer el plazo de otro);
+   * después, a quien esperó botAfterMs sin rival compatible, un bot. Es síncrono: un mismo jugador no
+   * puede quedar en dos partidas, porque sale de la cola antes de que se arme cualquiera de ellas.
+   */
+  function runMatching() {
+    if (closed) return;
+    const now = clock.now();
+    for (const pair of matchmaker.takePairs(now)) launch(pair, false);
+    if (botAfterMs !== null) {
+      for (const entry of matchmaker.takeWaitingLongerThan(botAfterMs, now)) launch([entry], true);
+    }
+  }
+
+  /** Saca de la cola a los emparejados y arma su partida (contra un bot si `withBot`). */
+  function launch(entries: QueueEntry[], withBot: boolean) {
+    const members: PendingPlayer[] = [];
+    for (const entry of entries) {
+      const info = queued.get(entry.userId);
+      const protocol = queuedProtocol.get(entry.userId) ?? WORD_RUSH_PROTOCOL_VERSION;
+      dequeue(entry.userId);
+      if (!info) continue;
+      members.push({ mode: 'ranked', info, entry, protocol, left: false });
+    }
+    if (members.length !== entries.length) {
+      // No debería pasar (cola y datos van juntos): quien quedó, vuelve a la cola con su espera.
+      for (const m of members) enqueue(m.info, m.protocol, m.entry!.joinedAt);
+      return;
+    }
+    const players = withBot
+      ? [members[0]!.info, makeBot(members[0]!.info)]
+      : members.map((m) => m.info);
+    let options: BattleOptions = {};
+    if (withBot) {
+      // Con cupo de calibración, el bot mueve el ELO (la base lo confirma al guardar el inicio). Sin
+      // cupo, igual se juega en seguida, pero sin ELO (unrated): nadie queda esperando.
+      const left = members[0]!.info.botCalibrationLeft ?? 0;
+      options =
+        left > 0
+          ? {
+              rating: 'calibration',
+              calibration: {
+                used: BOT_CALIBRATION.ratedGames - left + 1,
+                limit: BOT_CALIBRATION.ratedGames,
+              },
+            }
+          : { rating: 'unrated', calibration: null };
+    }
+    void startPending(members, 'ranked', players, options, members[0]!.protocol);
+  }
+
+  /**
+   * Crea la partida de `members` registrándolos como pendientes mientras se leen los datos. Si alguno se
+   * fue o se desconectó en ese lapso, la partida no se crea y los demás vuelven a la cola con su espera.
+   */
+  async function startPending(
+    members: PendingPlayer[],
+    mode: BattleMode,
+    players: PlayerInfo[],
+    options: BattleOptions,
+    protocol: number,
+  ): Promise<void> {
+    for (const m of members) pending.set(m.info.userId, m);
+    const gone = (m: PendingPlayer) => m.left || !sockets.has(m.info.userId) || closed;
+    let battle: Battle | null = null;
+    try {
+      battle = await createBattle(mode, players, options, protocol, () => members.some(gone));
+    } catch (err) {
+      // Error (p. ej. la base no dio las unidades): se avisa y NO se vuelve a la cola, porque volver a
+      // emparejar fallaría igual (sería un bucle). El cliente muestra el error y puede reintentar.
+      logger.error('battle_create_failed', { mode, err: String(err) });
+      for (const m of members) {
+        if (!gone(m)) send(m.info.userId, 'server:error', { code: 'server_error' });
+      }
+      return;
+    } finally {
+      for (const m of members) {
+        if (pending.get(m.info.userId) === m) pending.delete(m.info.userId);
+      }
+    }
+    if (battle || mode !== 'ranked') return;
+    // No se creó porque alguien se fue: los que siguen buscando vuelven con su espera original.
+    let requeued = false;
+    for (const m of members) {
+      if (gone(m) || battleByUser.has(m.info.userId) || pending.has(m.info.userId)) continue;
+      if (!m.entry || matchmaker.get(m.info.userId)) continue;
+      enqueue(m.info, m.protocol, m.entry.joinedAt);
+      requeued = true;
+    }
+    if (requeued) runMatching();
+  }
+
+  // ---------- tick ----------
   let tickHandle: unknown = null;
   let closed = false;
   const tick = () => {
     if (closed) return;
+    // Las ventanas de ELO se amplían con la espera: se reintenta periódicamente.
+    runMatching();
     const now = clock.now();
-    for (const [a, b] of matchmaker.takePairs(now)) {
-      const infoA = queued.get(a.userId);
-      const infoB = queued.get(b.userId);
-      queued.delete(a.userId);
-      queued.delete(b.userId);
-      if (!infoA || !infoB) continue;
-      createBattle('ranked', [infoA, infoB]).catch((err: unknown) => {
-        logger.error('battle_create_failed', { err: String(err) });
-        for (const info of [infoA, infoB]) {
-          send(info.userId, 'server:error', { code: 'server_error' });
-        }
-      });
-    }
-    // Sin rival humano a tiempo y con cupo de calibración: un bot a su altura que mueve el ELO
-    // (siempre identificado como BOT). Sin cupo, sigue esperando a una persona.
-    if (botAfterMs !== null) {
-      const hasCalibration = (e: { userId: string }) =>
-        (queued.get(e.userId)?.botCalibrationLeft ?? 0) > 0;
-      for (const entry of matchmaker.takeWaitingLongerThan(botAfterMs, now, hasCalibration)) {
-        const info = queued.get(entry.userId);
-        queued.delete(entry.userId);
-        if (!info) continue;
-        const left = info.botCalibrationLeft ?? 0;
-        createBattle('ranked', [info, makeBot(info)], {
-          rating: 'calibration',
-          calibration: {
-            used: BOT_CALIBRATION.ratedGames - left + 1,
-            limit: BOT_CALIBRATION.ratedGames,
-          },
-        }).catch((err: unknown) => {
-          logger.error('battle_create_failed', { err: String(err) });
-          send(info.userId, 'server:error', { code: 'server_error' });
-        });
-      }
-    }
     for (const userId of queued.keys()) {
       const entry = matchmaker.get(userId);
       if (!entry) continue;
@@ -313,12 +572,21 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
       error.data = { code };
       next(error);
     };
-    if (auth.protocolVersion !== PROTOCOL_VERSION) return fail('protocol_mismatch');
+    const version = auth.protocolVersion;
+    if (typeof version !== 'number' || !accepted.includes(version)) {
+      return fail('protocol_mismatch');
+    }
     if (typeof auth.token !== 'string' || auth.token.length === 0) return fail('unauthorized');
     verifyToken(auth.token)
       .then((userId) => {
         if (!userId) return fail('unauthorized');
+        // Una partida en curso sólo la retoma un cliente de su misma versión de protocolo (Word Rush 2,
+        // Arcade 3): si no, se rechaza ANTES de reemplazar la conexión que la está jugando.
+        const ongoing = battleByUser.get(userId);
+        if (ongoing && ongoing.protocolVersion !== version) return fail('protocol_mismatch');
         socket.data.userId = userId;
+        socket.data.protocolVersion = version;
+        socket.data.curriculumApi = parseCurriculumApi(auth.curriculumApi);
         next();
       })
       .catch((err: unknown) => {
@@ -329,12 +597,26 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
 
   io.on('connection', (socket: IoSocket) => {
     const userId = socket.data.userId;
+    const protocolVersion = socket.data.protocolVersion;
+    // La partida pudo crearse entre el handshake y este punto: misma regla que en io.use, sin tocar la
+    // conexión que la está jugando.
+    const battle = battleByUser.get(userId);
+    if (battle && battle.protocolVersion !== protocolVersion) {
+      socket.emit('server:error', { code: 'protocol_mismatch' });
+      socket.disconnect(true);
+      return;
+    }
     const previous = sockets.get(userId);
     sockets.set(userId, socket);
     // Una conexión por usuario: la nueva reemplaza a la anterior (p. ej. reconexión de red).
     if (previous) previous.disconnect(true);
+    // Si estaba en la cola (o armando partida) con otra versión, eso ya no corresponde a esta conexión
+    // (con la misma versión se conserva: el cliente vuelve a entrar sin perder la espera).
+    const queuedVersion = queuedProtocol.get(userId);
+    if (queuedVersion !== undefined && queuedVersion !== protocolVersion) dequeue(userId);
+    const waiting = pending.get(userId);
+    if (waiting && waiting.protocol !== protocolVersion) waiting.left = true;
 
-    const battle = battleByUser.get(userId);
     if (battle) battle.reconnect(userId);
 
     // Rate limit por socket (ventana fija de 1 s): protege la base de reintentos en bucle.
@@ -355,35 +637,61 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
     const safe = <T>(ack: Ack<T> | undefined): Ack<T> =>
       typeof ack === 'function' ? ack : () => {};
 
+    /**
+     * Si ya hay una partida armándose para este usuario: pedir lo mismo otra vez (p. ej. el cliente
+     * reingresa a la cola al reconectarse) se acepta sin crear otra; pedir otra cosa, no.
+     */
+    const pendingConflict = (mode: BattleMode): 'same' | 'other' | null => {
+      const current = pending.get(userId);
+      if (!current || current.left) return null;
+      return current.mode === mode && current.protocol === protocolVersion ? 'same' : 'other';
+    };
+
     socket.on('queue:join', (payload, ack) => {
       const reply = safe(ack);
       const mode = payload?.mode;
       if (mode !== 'ranked' && mode !== 'practice' && mode !== 'bot_practice')
         return reply({ ok: false, code: 'invalid_payload' });
       if (battleByUser.has(userId)) return reply({ ok: false, code: 'already_in_battle' });
+      const conflict = pendingConflict(mode);
+      if (conflict === 'same') return reply({ ok: true, data: { mode } });
+      if (conflict === 'other') return reply({ ok: false, code: 'already_in_battle' });
 
       store
         .getPlayer(userId)
-        .then(async (info) => {
-          if (!info) return reply({ ok: false, code: 'onboarding_required' });
-          // Pudo haber empezado una partida mientras se leía el perfil.
+        .then(async (profile) => {
+          if (!profile) return reply({ ok: false, code: 'onboarding_required' });
+          // El nivel curricular es el de la conexión que entra a la cola (fase C.8).
+          const info: PlayerInfo = { ...profile, curriculumApi: socket.data.curriculumApi };
+          // Pudo haber empezado (o estar armándose) una partida mientras se leía el perfil.
           if (battleByUser.has(userId)) return reply({ ok: false, code: 'already_in_battle' });
           if (sockets.get(userId) !== socket) return;
+          const late = pendingConflict(mode);
+          if (late === 'same') return reply({ ok: true, data: { mode } });
+          if (late === 'other') return reply({ ok: false, code: 'already_in_battle' });
+
           if (mode === 'practice' || mode === 'bot_practice') {
-            matchmaker.leave(userId);
-            queued.delete(userId);
+            dequeue(userId);
             reply({ ok: true, data: { mode } });
-            // Contra un bot sin ELO: no se guarda ni da recompensas.
-            await createBattle(mode, mode === 'practice' ? [info] : [info, makeBot(info)]);
+            // Sin ELO: no se guarda ni da recompensas. El ack ya salió con ok: si falla, server:error.
+            const member: PendingPlayer = {
+              mode,
+              info,
+              entry: null,
+              protocol: protocolVersion,
+              left: false,
+            };
+            await startPending(
+              [member],
+              mode,
+              mode === 'practice' ? [info] : [info, makeBot(info)],
+              {},
+              protocolVersion,
+            );
             return;
           }
-          queued.set(userId, info);
-          matchmaker.join({
-            userId,
-            languageCode: info.languageCode,
-            rating: info.rating,
-            joinedAt: clock.now(),
-          });
+          // Reentrar no reinicia la espera (Matchmaker.join conserva joinedAt).
+          enqueue(info, protocolVersion, clock.now());
           reply({ ok: true, data: { mode } });
           const entry = matchmaker.get(userId)!;
           send(userId, 'queue:status', {
@@ -392,6 +700,8 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
             waitedMs: clock.now() - entry.joinedAt,
             botCalibrationLeft: info.botCalibrationLeft ?? 0,
           });
+          // Si ya hay un rival compatible esperando, se empareja ahora (sin esperar al tick).
+          runMatching();
         })
         .catch((err: unknown) => {
           logger.error('queue_join_failed', { userId, err: String(err) });
@@ -400,8 +710,9 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
     });
 
     socket.on('queue:leave', (ack) => {
-      matchmaker.leave(userId);
-      queued.delete(userId);
+      dequeue(userId);
+      const waiting = pending.get(userId);
+      if (waiting) waiting.left = true;
       safe(ack)({ ok: true, data: null });
     });
 
@@ -428,6 +739,15 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
       );
     });
 
+    socket.on('arcade:answer', (payload, ack) => {
+      const reply = safe(ack);
+      const current = battleByUser.get(userId);
+      if (!(current instanceof ArcadeBattle) || current.id !== payload?.battleId)
+        return reply({ ok: false, code: 'not_in_battle' });
+      // Sólo qué hizo en qué desafío: tiempo, corrección, combo, Frenesí y puntos los decide el servidor.
+      current.arcadeAnswer(userId, payload.challengeIndex, payload.answer, reply);
+    });
+
     socket.on('battle:leave', (ack) => {
       const current = battleByUser.get(userId);
       if (!current) return safe(ack)({ ok: false, code: 'not_in_battle' });
@@ -443,8 +763,8 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
     socket.on('disconnect', () => {
       if (sockets.get(userId) !== socket) return;
       sockets.delete(userId);
-      matchmaker.leave(userId);
-      queued.delete(userId);
+      dequeue(userId);
+      // Una partida que se está armando para este usuario no se crea si no vuelve antes (ver gone()).
       battleByUser.get(userId)?.disconnect(userId);
     });
   });
@@ -456,6 +776,7 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
     close: async () => {
       closed = true;
       if (tickHandle !== null) clock.clearTimeout(tickHandle);
+      for (const userId of [...botTimers.keys()]) clearBotTimer(userId);
       await new Promise<void>((resolve) => {
         void io.close(() => resolve());
       });

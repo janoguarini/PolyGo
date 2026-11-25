@@ -4,7 +4,7 @@ import { Pressable, StyleSheet, View } from 'react-native';
 import { Avatar, Text, colors, radii, spacing, useTheme } from '@/design-system';
 import { useLocale, useStrings } from '@/i18n';
 
-import { BotBadge } from '@/features/battle/components/BotBadge';
+import { playerLook } from '@/features/battle/rivalLook';
 
 import type { MatchHistoryEntry } from '../api';
 import { formatDelta } from '../stats';
@@ -28,19 +28,21 @@ export function MatchHistoryItem({ match }: { match: MatchHistoryEntry }) {
   const opponentName = match.opponent?.username ?? t.deletedPlayer;
   const delta =
     match.isRanked && match.ratingDelta !== null ? formatDelta(match.ratingDelta) : null;
-  const isBot = match.opponent?.isBot ?? false;
+  // Un rival de práctica se ve con el avatar de su identidad (el mismo que en la partida).
+  const opponentAvatarId = playerLook(match.opponent).avatarId;
   const opponentId = match.opponent?.id ?? null;
   const canOpen = Boolean(opponentId && match.opponent?.username);
 
-  const label = t.matchA11y(
-    resultLabel,
-    Boolean(match.forfeited),
-    opponentName,
-    isBot,
-    match.score,
-    match.opponentScore ?? 0,
-    delta,
-  );
+  // Sin ELO (p. ej. contra un rival de práctica fuera del cupo de calibración): también en voz alta.
+  const label =
+    t.matchA11y(
+      resultLabel,
+      Boolean(match.forfeited),
+      opponentName,
+      match.score,
+      match.opponentScore ?? 0,
+      delta,
+    ) + (match.isRanked ? '' : t.noEloA11y);
 
   return (
     <Pressable
@@ -55,17 +57,16 @@ export function MatchHistoryItem({ match }: { match: MatchHistoryEntry }) {
       <View
         style={[styles.marker, { backgroundColor: colors[RESULT_COLOR[match.result ?? 'draw']] }]}
       />
-      <Avatar avatarId={match.opponent?.avatarId} size={36} />
+      <Avatar avatarId={opponentAvatarId} size={36} />
       <View style={styles.body}>
         <View style={styles.nameRow}>
           <Text variant="bodyStrong" numberOfLines={1} style={styles.shrink}>
             {opponentName}
           </Text>
-          {isBot ? <BotBadge /> : null}
         </View>
         <Text variant="caption">
           {dateFormat.format(new Date(match.endedAt))}
-          {match.isRanked ? '' : t.practice}
+          {match.isRanked ? '' : t.noElo}
         </Text>
       </View>
       <View style={styles.right}>

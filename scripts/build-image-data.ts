@@ -4,7 +4,7 @@
  * imagen venía de Metro por la red y tardaba en aparecer) ni en producción.
  *
  * Uso: npx tsx scripts/build-image-data.ts   (después de cambiar algo en assets/avatars,
- * assets/mascot o assets/images; las imágenes ya deben estar optimizadas en WebP).
+ * assets/mascot, assets/images o assets/languages; las imágenes ya deben estar optimizadas en WebP).
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -37,6 +37,13 @@ const IMAGES: Record<string, string> = {
   mascotCelebrate: 'assets/mascot/celebrate.webp',
   foxVictory: 'assets/images/fox-victory.webp',
   foxDefeat: 'assets/images/fox-defeat.webp',
+  // Fondos de Aprender por idioma (720 px de ancho; ver src/design-system/languageImages.ts).
+  languageEn: 'assets/languages/en.webp',
+  languageEs: 'assets/languages/es.webp',
+  languageIt: 'assets/languages/it.webp',
+  languagePt: 'assets/languages/pt.webp',
+  languageZh: 'assets/languages/zh.webp',
+  languageFr: 'assets/languages/fr.webp',
 };
 
 let total = 0;

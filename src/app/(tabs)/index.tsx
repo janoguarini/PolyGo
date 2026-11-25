@@ -49,6 +49,7 @@ import { PolysChip } from '@/features/polys/PolysChip';
 import { useStreakRepair } from '@/features/polys/api';
 import { useTabPressScroll } from '@/lib/useTabPressScroll';
 import { usePrefetchLanguagePaths } from '@/features/profile/components/LanguagesRow';
+import { CourseSwitcher } from '@/features/courses/CourseSwitcher';
 import { useLanguageStartLevel } from '@/features/courses/hooks';
 import { useMyProfile } from '@/features/profile/hooks';
 import { useStrings } from '@/i18n';
@@ -77,6 +78,8 @@ export default function HomeScreen() {
   const streakRepair = useStreakRepair();
   const energy = useEnergy();
   const [energyOpen, setEnergyOpen] = useState(false);
+  // Línea de cursos bajo el idioma (cambiar de curso o «+» para agregar otro).
+  const [coursesOpen, setCoursesOpen] = useState(false);
   const [calendarOpen, setCalendarOpen] = useState(false);
   usePrefetchLanguagePaths(me.data?.profile.target_language);
   // Calendario de bienvenida: se abre solo si hoy hay premio (una vez por sesión).
@@ -152,12 +155,13 @@ export default function HomeScreen() {
     <View style={styles.header} onTouchStart={openLesson ? closeLesson : undefined}>
       <View style={styles.headerRow}>
         <View style={styles.flex}>
-          {/* Curso que estudiás: tocándolo se abre «Tus cursos» para ver o cambiar de curso. */}
+          {/* Curso que estudiás: tocándolo se despliega la línea de tus cursos (CourseSwitcher). */}
           <Pressable
             accessibilityRole="button"
             accessibilityLabel={t.studying(languageName(language.code), language.status === 'beta')}
             accessibilityHint={t.languagesHint}
-            onPress={() => router.push('/courses')}
+            accessibilityState={{ expanded: coursesOpen }}
+            onPress={() => setCoursesOpen((o) => !o)}
             hitSlop={8}
             style={({ pressed }) => [styles.language, pressed && styles.pressed]}
           >
@@ -166,7 +170,11 @@ export default function HomeScreen() {
               {languageName(language.code).toUpperCase()}
               {language.status === 'beta' ? ' · BETA' : ''}
             </Text>
-            <ChevronDown color={colors.primarySoft} size={14} />
+            <ChevronDown
+              color={colors.primarySoft}
+              size={14}
+              style={coursesOpen ? styles.chevronOpen : undefined}
+            />
           </Pressable>
         </View>
         <EnergyChip open={energyOpen} onPress={() => setEnergyOpen((o) => !o)} />
@@ -206,6 +214,7 @@ export default function HomeScreen() {
           ) : null}
         </Pressable>
       </View>
+      {coursesOpen ? <CourseSwitcher onClose={() => setCoursesOpen(false)} /> : null}
       <StreakCalendar
         visible={calendarOpen}
         onClose={() => setCalendarOpen(false)}
@@ -335,6 +344,7 @@ const useStyles = themedStyles(() =>
       alignSelf: 'flex-start',
     },
     languageFlag: { fontSize: 20, lineHeight: 24 },
+    chevronOpen: { transform: [{ rotate: '180deg' }] },
     pressed: { opacity: 0.7 },
     flex: { flex: 1 },
     // Racha: apagada mientras no estudiaste hoy, encendida en naranja cuando ya cumpliste.

@@ -51,15 +51,19 @@ describe('MatchHistoryItem', () => {
     expect(screen.getByText('900–600 · +24')).toBeTruthy();
   });
 
-  it('marca al rival bot y no abre su perfil', async () => {
+  it('un rival de práctica se muestra sin distintivo BOT y no abre ningún perfil', async () => {
     await render(
       <MatchHistoryItem
-        match={match({ opponent: { id: null, username: 'Kiko', avatarId: 'crown', isBot: true } })}
+        match={match({
+          opponent: { id: null, username: 'Fede Martínez', avatarId: 'crown', isBot: true },
+        })}
       />,
     );
-    expect(screen.getByText('Kiko')).toBeTruthy();
-    expect(screen.getByLabelText('Bot')).toBeTruthy();
-    expect(screen.getByLabelText('Victoria contra Kiko (bot), 900 a 600, +24 ELO')).toBeTruthy();
+    expect(screen.getByText('Fede Martínez')).toBeTruthy();
+    expect(screen.queryByLabelText('Bot')).toBeNull();
+    expect(screen.queryByText('BOT')).toBeNull();
+    expect(screen.queryByRole('button')).toBeNull();
+    expect(screen.getByLabelText('Victoria contra Fede Martínez, 900 a 600, +24 ELO')).toBeTruthy();
   });
 
   it('anonimiza al rival que borró su cuenta', async () => {

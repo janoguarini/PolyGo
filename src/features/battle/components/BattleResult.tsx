@@ -20,7 +20,7 @@ import { TierBadge } from '@/features/profile/components/AchievementBadge';
 import { useRankLabels } from '@/features/ranked/strings';
 import { useStrings } from '@/i18n';
 
-import { BotBadge } from './BotBadge';
+import { ArcadeResultStats } from '../arcade/ArcadeResultStats';
 import { Confetti } from './Confetti';
 import { ResultHero } from './ResultHero';
 import { battleStrings } from '../strings';
@@ -43,8 +43,9 @@ export function BattleResult({ result, onPlayAgain, onExit }: Props) {
   const me = result.players.find((p) => p.slot === result.yourSlot)!;
   const opponent = result.players.find((p) => p.slot !== result.yourSlot);
   const practice = result.mode === 'practice';
-  // Contra un bot fuera del cupo de calibración (o pedida como práctica): no movió el ELO.
-  const botPractice = result.mode === 'bot_practice' || result.rating === 'unrated';
+  // Contra un bot fuera del cupo de calibración (el servidor lo pone solo) o una práctica contra bot
+  // pedida por una build anterior: no movió el ELO y no se muestra ningún cambio de rating.
+  const unrated = result.mode === 'bot_practice' || result.rating === 'unrated';
   const title = practice ? t.practiceDone : t[TITLES[me.outcome ?? 'draw']];
   const subtitle = practice
     ? t.practiceSubtitle
@@ -54,8 +55,8 @@ export function BattleResult({ result, onPlayAgain, onExit }: Props) {
         : t.opponentForfeited(opponent?.username)
       : result.friendly
         ? t.friendlySubtitle
-        : botPractice
-          ? t.botPracticeSubtitle
+        : unrated
+          ? t.unratedSubtitle
           : result.rating === 'calibration' && result.calibration
             ? t.calibrationSubtitle(result.calibration.used, result.calibration.limit)
             : null;
@@ -72,8 +73,9 @@ export function BattleResult({ result, onPlayAgain, onExit }: Props) {
       {heroOutcome ? (
         <ResultHero
           outcome={heroOutcome}
-          ratingBefore={me.ratingBefore}
-          ratingAfter={me.ratingAfter}
+          // Sin ELO, aunque llegara un rating no se muestra ningún cambio.
+          ratingBefore={unrated ? null : me.ratingBefore}
+          ratingAfter={unrated ? null : me.ratingAfter}
           placedBefore={me.placedBefore ?? true}
           subtitle={subtitle}
         />
@@ -107,7 +109,13 @@ export function BattleResult({ result, onPlayAgain, onExit }: Props) {
         {opponent ? <Line label={opponent.username} player={opponent} /> : null}
       </Card>
 
-      {!heroOutcome && !practice && me.ratingBefore !== null && me.ratingAfter !== null ? (
+      {me.arcade ? <ArcadeResultStats me={me} opponent={opponent} /> : null}
+
+      {!heroOutcome &&
+      !practice &&
+      !unrated &&
+      me.ratingBefore !== null &&
+      me.ratingAfter !== null ? (
         <RatingChange
           before={me.ratingBefore}
           after={me.ratingAfter}
@@ -168,13 +176,7 @@ function Line({
     <View
       style={styles.row}
       accessible
-      accessibilityLabel={t.lineA11y(
-        label,
-        Boolean(player.isBot),
-        player.score,
-        player.correct,
-        player.answered,
-      )}
+      accessibilityLabel={t.lineA11y(label, player.score, player.correct, player.answered)}
     >
       <View style={[styles.flex, styles.nameRow]}>
         <Text
@@ -185,7 +187,6 @@ function Line({
         >
           {label}
         </Text>
-        {player.isBot ? <BotBadge /> : null}
       </View>
       <Text variant="caption">
         {player.correct}/{player.answered} · {pct}%

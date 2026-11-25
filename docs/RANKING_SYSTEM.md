@@ -24,7 +24,13 @@ S = 1 victoria · 0.5 empate · 0 derrota
 
 Entre dos jugadores posicionados el sistema es de suma cero (testeado). Si uno está sin posicionar y pierde, no pierde rating aunque el rival gane: es intencional para que nadie arranque frustrado. Una victoria pareja suma ~16, así que cada división (100 puntos) lleva varias victorias netas: se sube de a poco.
 
-En la base: `ranked_rating_after()` (bots y personas, sin servidor). El servidor de partidas (`server/src/settlement.ts`) todavía no aplica "sin posicionar".
+En la base: `ranked_rating_after()` (bots y personas, sin servidor). El servidor de partidas (`server/src/settlement.ts`) aplica la misma fórmula con `computeRatingChange`, incluido "sin posicionar" (`isPlaced`).
+
+## Modo de juego: Word Rush
+
+Ranked tiene **un único modo, Word Rush**: una partida de **60 s** que mezcla cuatro formatos (Swipe Battle, Connect Battle, Sentence Rush y Audio Blitz). El servidor decide qué formato viene (rotación ponderada en `shared/arcade.ts`, `KIND_ROTATION`), la secuencia es la misma para los dos jugadores y la partida termina sólo por el reloj. Puntos, combo y Frenesí: `arcadeScore` (diseño en [RANKED_ARCADE.md](RANKED_ARCADE.md); «Arcade» es el nombre interno del motor, nunca un modo visible).
+
+El rating se calcula igual que siempre: sólo importa quién ganó (más puntos) con la fórmula de arriba. El protocolo y la transición desde el formato clásico de 75 s están en [BATTLE_PROTOCOL.md](BATTLE_PROTOCOL.md).
 
 ## Anti-farming: rival repetido
 
@@ -36,16 +42,20 @@ Partidas ranked contra **la misma cuenta** en las últimas 24 h (contando la act
 | 3–4        | 0.5                                           |
 | 5+         | 0 (no mueve rating; sí queda en el historial) |
 
-## Partidas contra bots: calibración y práctica
+## Partidas contra bots: calibración y sin ELO
 
-Con el servidor de partidas (`server/`):
+Con el servidor de partidas (`server/`), Ranked siempre se puede jugar:
 
-- **Calibración:** las primeras **3** partidas contra bots de cada usuario **en cada idioma** mueven el ELO, contra el rating asignado al bot (el del jugador ± 40). Ayudan a ubicar al jugador nuevo. Tope: `BOT_CALIBRATION.ratedGames` en `shared/bots.ts`, espejo SQL `public.bot_calibration_limit()` (un test compara).
+- **Bot a los 3 s:** si en `BOT_CONFIG.afterMs` (3 s, temporizador exacto por jugador desde que entró a la cola) no aparece una persona compatible, el servidor arma la partida contra un bot. Una persona que llega antes del plazo tiene prioridad, y nadie queda en dos partidas (ver BATTLE_PROTOCOL, «Cola»).
+- **Rating del bot:** el del jugador ± 40 (`pickBot`). Su habilidad sale de `botSkill(rating)`, una curva continua sin saltos entre rangos.
+- **Calibración:** las primeras **3** partidas contra bots de cada usuario **en cada idioma** mueven el ELO, contra el rating asignado al bot. Ayudan a ubicar al jugador nuevo. Tope: `BOT_CALIBRATION.ratedGames` en `shared/bots.ts`, espejo SQL `public.bot_calibration_limit()` (un test compara).
 - **Lo cuenta la base**, no la app: `start_bot_battle_v2` bloquea el rating del jugador y cuenta las partidas ranked contra bots no canceladas de ese idioma (`bot_calibration_used`), **incluidas las del flujo viejo sin servidor y las abandonadas**. Una partida cancelada antes de empezar no consume cupo; reintentar el inicio con el mismo id no consume dos veces.
-- **Después:** con el cupo agotado la cola sólo empareja personas. Tras 30 s sin rival la app ofrece "Practicar contra un bot (sin ELO)" (`bot_practice`): no se guarda y no mueve ELO, partidas jugadas, logros, misiones ni Polys. Si por una carrera la base crea la partida como no ranked, `settle_battle` la cierra sin rating.
+- **Después del cupo:** el bot sigue entrando a los 3 s, pero la partida es **sin ELO** (`rating: 'unrated'`, `is_ranked = false`). Se guarda con su resultado (historial, identificada como partida contra bot), pero `settle_battle` no cambia el rating, las partidas jugadas ni los logros. La app la muestra como «Word Rush · sin ELO» y no muestra ningún cambio de ELO.
 - Contra una persona no se consume cupo.
 
-Sin servidor (flujo viejo, hasta revocar sus RPC: ver DEPLOYMENT.md), las partidas contra bots siguen moviendo el ELO sin cupo.
+**Cómo juega el bot** (`shared/arcadeBot.ts`): forma del día, dificultad por formato (Swipe le resulta más fácil que Sentence Rush), rachas, errores que suelen tardar más, demora de feedback entre desafíos y nunca más rápido que lo que el servidor acepta de una persona. Las rachas están centradas en su precisión base: en promedio acierta lo de su rating (±2,5 puntos, verificado por simulación), así que el ELO contra el bot mide lo mismo que antes.
+
+Las builds anteriores (formato clásico, protocolo 2) también reciben el bot a los 3 s y la partida sin ELO fuera del cupo; la oferta «Practicar contra un bot» que tenían tras 30 s ya no llega a mostrarse. Sin servidor (flujo viejo, hasta revocar sus RPC: ver DEPLOYMENT.md), las partidas contra bots siguen moviendo el ELO sin cupo.
 
 ## Tiers y divisiones
 
@@ -77,16 +87,18 @@ El rating mide desempeño en Word Rush. El progreso lingüístico (lecciones, pa
 
 ## Palabras según el rango
 
-El ranked se pone más difícil a medida que subís: las preguntas de Word Rush salen sólo de los niveles del currículo que habilita el rating (`RUSH_LEVELS` en `shared/wordRush.ts`, espejo SQL `public.rush_levels`).
+El ranked se pone más difícil a medida que subís: las palabras y las frases de Word Rush (los cuatro formatos) salen sólo de los niveles del currículo que habilita el rating (`RUSH_LEVELS` en `shared/wordRush.ts`, espejo SQL `public.rush_levels`; frases: `sentencePool` en `shared/arcade.ts`) y de las unidades que puede usar cada jugador (`rush_common_unit_ids`).
 
 | Rating         | Palabras |
 | -------------- | -------- |
 | < 400 (Bronce) | A1       |
 | ≥ 400 (Plata+) | A1 + A2  |
 
-En partidas entre personas y desafíos manda el rating más bajo de los dos. Contra bots lo decide la app con tu rating. Las traducciones se muestran sin las aclaraciones entre paréntesis (`rushLabel` / `public.rush_label`).
+En partidas entre personas y desafíos manda el rating más bajo de los dos. Contra bots, tu rating (el servidor no cuenta al bot). Las traducciones se muestran sin las aclaraciones entre paréntesis (`rushLabel` / `public.rush_label`). En Word Rush tampoco entran las palabras cuya traducción es una explicación gramatical («auxiliar…», «partícula…»), y una «mentira» de Swipe o un distractor nunca comparte un significado con la respuesta (`translationKeys`).
 
-## Desde Oro: escribir la respuesta
+## Formato clásico (75 s): escribir la respuesta desde Oro
+
+Esto rige sólo para el formato clásico de 75 s: los desafíos con amigos y las builds anteriores con el protocolo 2 hasta el corte (BATTLE_PROTOCOL). Word Rush no tiene preguntas para escribir.
 
 Desde Oro (700) una de cada tres preguntas (la 3.ª, 6.ª, 9.ª…) no tiene opciones: se muestra la palabra en español y hay que escribirla en inglés (`WRITING`, `withWriting` en `shared/wordRush.ts`; espejo SQL `public.rush_writing` y la marca `write` en `public.rush_questions`). Se corrige como en las lecciones (`checkWritten`: sin importar mayúsculas, espacios ni contracciones; un error de tipeo se tolera desde 8 letras). En esas preguntas el bonus de velocidad tiene el doble de margen y el bot tarda el doble (`start_bot_match` / `settle_bot_match`). Al fallar se muestra cómo se escribía.
 

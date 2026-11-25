@@ -18,9 +18,11 @@ export const rankedScreenStrings = defineStrings({
       'Las partidas Ranked y la práctica están desactivadas en esta versión de PolyGo. Podés seguir desafiando a tus amigos: esas partidas no mueven el ELO.',
     gameMode: 'MODO DE JUEGO',
     findMatch: 'Buscar partida',
-    findMatchHint: 'Busca un rival con un ELO similar',
+    findMatchHint:
+      'Busca un rival con un ELO similar; si no aparece nadie en unos segundos, jugás contra un rival de práctica de tu nivel',
+    modeSummary: '60 segundos que mezclan cuatro formatos en una sola partida',
     practiceNoElo: 'Practicar sin ELO',
-    practiceHint: 'Una ronda de 75 segundos contra el reloj, sin rival',
+    practiceHint: 'Una partida de Word Rush de 60 segundos contra el reloj, sin rival',
     playWithFriend: 'JUGAR CON UN AMIGO',
     playWithFriendBody:
       'Mandale un código y juegan la misma partida en vivo. Amistoso: no mueve el ELO.',
@@ -46,9 +48,11 @@ export const rankedScreenStrings = defineStrings({
       'Ranked matches and practice are turned off in this version of PolyGo. You can still challenge your friends: those matches don’t affect ELO.',
     gameMode: 'GAME MODE',
     findMatch: 'Find a match',
-    findMatchHint: 'Looks for an opponent with a similar ELO',
+    findMatchHint:
+      'Looks for an opponent with a similar ELO; if nobody shows up in a few seconds, you play a practice rival at your level',
+    modeSummary: '60 seconds mixing four formats in a single match',
     practiceNoElo: 'Practice without ELO',
-    practiceHint: 'A 75-second round against the clock, no opponent',
+    practiceHint: 'A 60-second Word Rush match against the clock, no opponent',
     playWithFriend: 'PLAY WITH A FRIEND',
     playWithFriendBody:
       'Send them a code and play the same match live. Friendly: ELO doesn’t change.',
