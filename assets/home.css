@@ -2026,11 +2026,11 @@
 
 /* ---------- celular: sin «Gratis», teléfono más chico y tiendas a la vista ---------- */
 @media (max-width: 760px) {
-  .chip-pill {
-    display: none;
-  }
   .hero {
-    padding-top: 18px;
+    padding-top: 12px;
+  }
+  .chip-pill {
+    margin-bottom: 8px;
   }
   /* Sin zoom (Safari recalcula y la página salta): escala por transform con alto fijo. */
   .hero-stage {
