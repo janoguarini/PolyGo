@@ -1824,3 +1824,26 @@
 .home #inicio {
   scroll-margin-top: 0;
 }
+
+/* Rarezas de la colección 2 */
+.r-legend { --rc: #f59e0b; }
+.r-mythic { --rc: #f472b6; }
+.r-plus { --rc: #a78bfa; }
+/* Instagram junto a las tiendas */
+.hero-stores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.home .store-ig {
+  background: linear-gradient(45deg, #f58529, #dd2a7b 45%, #8134af 75%, #515bd4);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+.home .store-ig:hover {
+  box-shadow: 0 14px 40px rgba(221, 42, 123, 0.5);
+}
+@media (max-width: 1040px) {
+  .hero-stores {
+    justify-content: center;
+  }
+}
