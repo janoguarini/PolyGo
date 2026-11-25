@@ -29,10 +29,6 @@ export const referralStrings = defineStrings({
     errorNotEligible: 'Este código no es válido para tu cuenta.',
     errorInvalidCode: 'No encontramos ese código. Revisalo y probá de nuevo.',
     errorGeneric: 'No pudimos registrar la invitación. Probá de nuevo en un rato.',
-    // InviteRewardsCard
-    cardA11y: 'Agregar amigos. Invitá amigos y ganá recompensas',
-    cardOverline: 'INVITÁ AMIGOS Y GANÁ RECOMPENSAS',
-    cardTitle: 'Agregar amigos',
   },
   en: {
     badges: {
@@ -54,8 +50,5 @@ export const referralStrings = defineStrings({
     errorNotEligible: 'This code isn’t valid for your account.',
     errorInvalidCode: 'We couldn’t find that code. Check it and try again.',
     errorGeneric: 'We couldn’t register the invite. Try again in a bit.',
-    cardA11y: 'Add friends. Invite friends and earn rewards',
-    cardOverline: 'INVITE FRIENDS AND EARN REWARDS',
-    cardTitle: 'Add friends',
   },
 });

@@ -12,4 +12,9 @@ export const SKIN_IMAGES: Partial<Record<string, ImageSourcePropType>> = {
   'skin-explorer': require('../../assets/profile/avatars/explorer.webp'),
   'skin-academic': require('../../assets/profile/avatars/academic.webp'),
   'skin-cyber': require('../../assets/profile/avatars/cyber.webp'),
+  'skin-aztec': require('../../assets/profile/avatars/aztec.webp'),
+  'skin-dragon': require('../../assets/profile/avatars/dragon.webp'),
+  'skin-king': require('../../assets/profile/avatars/king.webp'),
+  'skin-titan': require('../../assets/profile/avatars/titan.webp'),
+  'skin-diamond': require('../../assets/profile/avatars/diamond.webp'),
 };

@@ -33,7 +33,6 @@ import { StatusAvatar, openPlayer } from '@/features/friends/components/PlayerRo
 import { PushPromptCard } from '@/features/friends/components/PushPromptCard';
 import { DailyMissionsCard } from '@/features/friends/components/DailyMissionsCard';
 import { presenceLabel, sortFriends } from '@/features/friends/format';
-import { InviteRewardsCard } from '@/features/referrals/InviteRewardsCard';
 import { useStrings } from '@/i18n';
 import { friendsScreenStrings } from '@/i18n/screens/friends';
 import { useTabPressScroll } from '@/lib/useTabPressScroll';
@@ -116,8 +115,6 @@ export default function FriendsScreen() {
       ) : null}
 
       <ChallengeFriendsCard friends={accepted} />
-
-      <InviteRewardsCard />
 
       {accepted.length > 0 ? <PushPromptCard /> : null}
 

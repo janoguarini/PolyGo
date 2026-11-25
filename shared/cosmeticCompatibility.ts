@@ -19,7 +19,9 @@
  * Criterio artístico (sobre el arte real, docs/PROFILE_XP_LEVELS.md §6): Ninja = noche, hojas,
  * filos, sakura y templo; Explorador = aventura al aire libre, montaña, bosque, ruinas; Académico =
  * laureles y oro, astronomía y conocimiento antiguo; Cyber = neón, energía, cristal tecnológico,
- * espacio.
+ * espacio. Colección 2: Azteca = selva, pirámide, oro y turquesa; Dragón = noche oriental, templo,
+ * dragón entre nubes; Rey = corona, oro y realeza; Titán = armadura y cristal violeta, energía;
+ * Diamante (Plus) = cristal y brillo, espacio.
  */
 
 import { cosmeticById, type CosmeticId, type CosmeticItem, type SkinId } from './cosmetics';
@@ -45,6 +47,26 @@ export const SKIN_COMPATIBILITY: Partial<Record<SkinId, SkinCompatibility>> = {
   'skin-cyber': {
     frames: ['frame_stellar', 'frame_crystal', 'frame_elite'],
     backgrounds: ['bg_neon', 'bg_space', 'bg_galaxy', 'bg_dimension'],
+  },
+  'skin-aztec': {
+    frames: ['frame_leaf', 'frame_elite', 'frame_master'],
+    backgrounds: ['bg_forest', 'bg_mountain', 'bg_aurora', 'bg_temple'],
+  },
+  'skin-dragon': {
+    frames: ['frame_stellar', 'frame_crystal', 'frame_elite'],
+    backgrounds: ['bg_temple', 'bg_space', 'bg_galaxy', 'bg_forest'],
+  },
+  'skin-king': {
+    frames: ['frame_stellar', 'frame_elite', 'frame_master'],
+    backgrounds: ['bg_aurora', 'bg_mountain', 'bg_galaxy', 'bg_dimension'],
+  },
+  'skin-titan': {
+    frames: ['frame_crystal', 'frame_elite', 'frame_master'],
+    backgrounds: ['bg_neon', 'bg_space', 'bg_galaxy', 'bg_dimension'],
+  },
+  'skin-diamond': {
+    frames: ['frame_stellar', 'frame_crystal', 'frame_elite'],
+    backgrounds: ['bg_aurora', 'bg_space', 'bg_galaxy', 'bg_dimension'],
   },
 };
 

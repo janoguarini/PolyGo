@@ -17,24 +17,10 @@
 
 export type CosmeticKind = 'skin' | 'frame' | 'background';
 export type CosmeticRarity =
-  | 'free'
-  | 'common'
-  | 'rare'
-  | 'epic'
-  | 'legendary'
-  | 'mythic'
-  | 'exclusive'
-  | 'limited';
+  'free' | 'common' | 'rare' | 'epic' | 'legendary' | 'mythic' | 'exclusive' | 'limited';
 /** Cómo se consigue. */
 export type CosmeticSource =
-  | 'free'
-  | 'polys'
-  | 'season'
-  | 'premium'
-  | 'plus'
-  | 'referral'
-  | 'event'
-  | 'rank';
+  'free' | 'polys' | 'season' | 'premium' | 'plus' | 'referral' | 'event' | 'rank';
 
 export interface CosmeticItem {
   id: string;
@@ -71,7 +57,15 @@ const ROWS = [
   ['skin-cyber', 'skin', 'epic', 'Cyber', 850, 'polys'],
   ['skin-guardian', 'skin', 'legendary', 'Guardián', 1300, 'polys', 'missing-art'],
   ['skin-omega', 'skin', 'mythic', 'Omega', 2000, 'polys', 'missing-art'],
-  ['skin-social-explorer', 'skin', 'exclusive', 'Explorador Social', null, 'referral', 'missing-art'],
+  [
+    'skin-social-explorer',
+    'skin',
+    'exclusive',
+    'Explorador Social',
+    null,
+    'referral',
+    'missing-art',
+  ],
   ['skin-team-legend', 'skin', 'exclusive', 'Leyenda del Equipo', null, 'referral', 'missing-art'],
   // ---------- marcos ----------
   ['frame_basic', 'frame', 'free', 'Básico', null, 'free'],
@@ -95,6 +89,12 @@ const ROWS = [
   ['bg_temple', 'background', 'legendary', 'Templo', 1100, 'polys', 'missing-art'],
   ['bg_galaxy', 'background', 'legendary', 'Galaxia', 1400, 'polys'],
   ['bg_dimension', 'background', 'mythic', 'Dimensión', 2000, 'polys'],
+  // ---------- skins de la colección 2 (posiciones 32–36) ----------
+  ['skin-aztec', 'skin', 'epic', 'Azteca', 850, 'polys'],
+  ['skin-dragon', 'skin', 'legendary', 'Dragón', 1300, 'polys'],
+  ['skin-king', 'skin', 'legendary', 'Rey', 1300, 'polys'],
+  ['skin-titan', 'skin', 'mythic', 'Titán', 2000, 'polys'],
+  ['skin-diamond', 'skin', 'exclusive', 'Diamante', null, 'plus'],
   // ---------- catálogo anterior: retirado, lo conserva quien lo tiene ----------
   ['frame_mint', 'frame', 'common', 'Menta', 150, 'polys', 'retired'],
   ['frame_coral', 'frame', 'common', 'Coral', 150, 'polys', 'retired'],

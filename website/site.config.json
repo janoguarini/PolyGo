@@ -1,10 +1,10 @@
 {
-  "siteUrl": "https://polygoidiomas.netlify.app",
+  "siteUrl": "https://polygoidiomas.com",
   "appStoreUrl": "",
-  "playStoreUrl": "",
+  "playStoreUrl": "https://play.google.com/store/apps/details?id=com.polygoidioma.app",
   "contactEmail": "polygocontacto@gmail.com",
   "ownerName": "Jano Guarini",
   "country": "Argentina",
   "privacyUpdated": "31 de octubre de 2026",
-  "indexable": false
+  "indexable": true
 }

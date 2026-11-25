@@ -48,3 +48,6 @@ coverage/
 
 # Sitio informativo armado (node website/build.mjs)
 website/dist/
+
+# Local Netlify folder
+.netlify

@@ -35,6 +35,7 @@ const IMAGES: Record<string, string> = {
   mascotRanked: 'assets/mascot/ranked.webp',
   mascotChallenge: 'assets/mascot/challenge.webp',
   mascotCelebrate: 'assets/mascot/celebrate.webp',
+  brandLogo: 'assets/images/logo.webp',
   foxVictory: 'assets/images/fox-victory.webp',
   foxDefeat: 'assets/images/fox-defeat.webp',
   // Fondos de Aprender por idioma (720 px de ancho; ver src/design-system/languageImages.ts).

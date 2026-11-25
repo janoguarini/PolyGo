@@ -1,6 +1,6 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
-import { Crown, Gem, Info, Pencil } from 'lucide-react-native';
+import { Gem, Info, Pencil } from 'lucide-react-native';
 import type { ReactNode } from 'react';
 import { Pressable, StyleSheet, View, useWindowDimensions } from 'react-native';
 
@@ -149,14 +149,6 @@ export function ProfileHeader({
               ) : null}
             </View>
             {subtitle !== undefined ? subtitle : null}
-            {plus ? (
-              <View style={styles.memberRow}>
-                <Crown color={colors.gold} fill={colors.gold} size={16} />
-                <Text variant="bodyStrong" style={styles.onDarkSoft}>
-                  PolyGo Plus
-                </Text>
-              </View>
-            ) : null}
             {subtitle === undefined ? (
               <Text style={styles.onDarkMuted} numberOfLines={1}>
                 @{profile.username}
@@ -298,7 +290,6 @@ const useStyles = themedStyles(() =>
     },
     // Texto sobre el fondo del perfil (siempre oscuro), igual en ambos temas.
     onDark: { color: '#FFFFFF' },
-    onDarkSoft: { color: '#EDE9FE' },
     onDarkMuted: { color: '#C4B5FD' },
     onDarkGold: { color: '#FACC15' },
     identity: { flex: 1, gap: spacing.xs, justifyContent: 'center' },
@@ -314,7 +305,6 @@ const useStyles = themedStyles(() =>
       borderColor: colors.brandBorder,
     },
     nameRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-    memberRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
     tabular: { fontVariant: ['tabular-nums'] },
     rankCard: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
     rankInfo: { flex: 1, minWidth: 0, gap: spacing.xxs },

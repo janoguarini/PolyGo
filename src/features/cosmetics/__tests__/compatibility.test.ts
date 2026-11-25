@@ -84,11 +84,19 @@ describe('compatibilidad avatar ↔ marcos y fondos', () => {
   });
 
   it('la tienda dice con qué skins combina cada ítem temático', () => {
-    expect(skinsCompatibleWith('frame_master')).toEqual(['Académico']);
+    expect(skinsCompatibleWith('frame_master').sort()).toEqual([
+      'Académico',
+      'Azteca',
+      'Rey',
+      'Titán',
+    ]);
     expect(skinsCompatibleWith('bg_dimension').sort()).toEqual([
       'Académico',
       'Cyber',
+      'Diamante',
       'Explorador',
+      'Rey',
+      'Titán',
     ]);
     expect(skinsCompatibleWith('frame_plus')).toEqual([]);
   });

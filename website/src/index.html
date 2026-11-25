@@ -1,240 +1,337 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" class="no-js">
   <head>
 {{> head}}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,600;0,700;0,800;0,900;1,900&display=swap"
+    />
+    <link rel="stylesheet" href="assets/home.css" />
+    <script src="assets/home.js" defer></script>
   </head>
-  <body>
+  <body class="home">
 {{> nav}}
     <main>
-      <!-- Portada -->
-      <section class="hero">
-        <div class="glow" aria-hidden="true"></div>
-        <div class="wrap hero-inner">
-          <div class="hero-text">
-            <p class="pill"><span aria-hidden="true">⚡</span> Gratis · iPhone y Android</p>
-            <h1>Aprendé inglés <span class="accent">compitiendo.</span></h1>
+      <!-- ============ PORTADA ============ -->
+      <section class="hero" id="inicio">
+        <div class="aurora" aria-hidden="true">
+          <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+        </div>
+        <div class="stars" aria-hidden="true"></div>
+        <div class="wrap hero-grid">
+          <div class="hero-copy reveal">
+            <p class="chip-pill"><span class="dot"></span> Gratis · iPhone y Android · 6 idiomas</p>
+            <h1>
+              Aprendé idiomas<br class="br-d" /> <span class="grad">jugando.</span><br />Competí
+              <span class="grad-gold">en serio.</span>
+            </h1>
             <p class="lead">
-              Polygo es la app para aprender inglés desde cero jugando: lecciones cortas, repaso
-              inteligente y partidas de vocabulario 1 contra 1 en vivo, con ELO y rangos.
+              Lecciones cortas, repaso inteligente y <strong>partidas 1 contra 1 en vivo</strong> de
+              60 segundos. Sumá ELO, subí de Bronce a Gran Maestro y coleccioná zorros.
             </p>
-            <div id="descargar-hero">{{stores}}</div>
-            <ul class="checks">
-              <li>Sin tarjeta</li>
-              <li>Desde cero (nivel A1)</li>
-              <li>5 minutos por día alcanzan</li>
+            <div class="hero-stores">{{stores}}<a class="store store-ig" href="https://www.instagram.com/polygo.idiomas/" target="_blank" rel="noopener" aria-label="Polygo en Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 4.7a5.1 5.1 0 1 0 0 10.2 5.1 5.1 0 0 0 0-10.2zm0 8.4a3.3 3.3 0 1 1 0-6.6 3.3 3.3 0 0 1 0 6.6zm5.3-9.8a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"/></svg><span><small>Seguinos en</small><strong>Instagram</strong></span></a></div>
+            <ul class="hero-proof">
+              <li><b>60 s</b> por partida</li>
+              <li><b>4</b> microjuegos</li>
+              <li><b>8</b> rangos</li>
             </ul>
           </div>
 
-          <div class="mock" role="img" aria-label="Vista de una partida ranked de Polygo: hay que elegir la traducción de apple">
-            <div class="phone">
-              <div class="screen">
-                <p class="overline">RANKED · WORD RUSH</p>
-                <div class="hud">
-                  <div class="player">
-                    <img src="assets/img/fox-violet.jpg" alt="" width="36" height="36" />
-                    <div><small>Vos</small><strong>1250</strong></div>
+          <div class="hero-stage reveal" data-parallax>
+            <img class="hero-fox" src="assets/img/fox/point-up.webp" alt="" width="240" height="278" />
+            <div class="phone phone-hero" role="img" aria-label="Demostración de una partida de Word Rush en Polygo: Swipe Battle, Connect y Audio Blitz en 60 segundos" data-demo>
+              <div class="notch"></div>
+              <div class="scr wr">
+                <div class="wr-top">
+                  <span class="ovl">RANKED · WORD RUSH</span>
+                  <span class="x">✕</span>
+                </div>
+                <div class="wr-time"><b data-d="time">60</b><span class="bar"><i data-d="bar"></i></span><span class="combo" data-d="combo">⚡x1</span></div>
+                <div class="wr-players">
+                  <img src="assets/img/avatars/fox-violet.webp" alt="" width="34" height="34" />
+                  <div><small>Vos</small><b data-d="me">0</b></div>
+                  <span class="tug"><i data-d="tug"></i></span>
+                  <div class="r"><small>sofi_22</small><b class="o" data-d="rival">0</b></div>
+                  <img src="assets/img/avatars/panda-yellow.webp" alt="" width="34" height="34" />
+                </div>
+                <div class="wr-flashslot"><p class="wr-flash" data-d="flash">+100</p></div>
+                <p class="wr-kind" data-d="kind">SWIPE BATTLE</p>
+                <div class="wr-stage">
+                  <div class="wr-mode on" data-mode="swipe">
+                    <p class="wr-q">¿ES LA TRADUCCIÓN CORRECTA?</p>
+                    <div class="wr-card" data-d="card"><b data-d="w">la mela</b><hr /><span data-d="t">manzana</span></div>
+                    <div class="wr-btns"><span class="no">✕</span><span class="yes" data-d="yes">✓</span></div>
                   </div>
-                  <span class="timer">0:42</span>
-                  <div class="player player-right">
-                    <img src="assets/img/fox-red.jpg" alt="" width="36" height="36" />
-                    <div><small>sofi_22</small><strong>1100</strong></div>
+                  <div class="wr-mode" data-mode="connect">
+                    <p class="wr-q">UNÍ CADA PAREJA</p>
+                    <div class="wr-grid">
+                      <span data-p="0">ciao</span><span data-p="1">gato</span>
+                      <span data-p="1">gatto</span><span data-p="2">agua</span>
+                      <span data-p="2">acqua</span><span data-p="0">hola</span>
+                    </div>
+                  </div>
+                  <div class="wr-mode" data-mode="audio">
+                    <p class="wr-q">¿QUÉ ESCUCHASTE?</p>
+                    <div class="wr-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                    <div class="wr-opts"><span>buongiorno</span><span data-ok>buonasera</span><span>arrivederci</span><span>grazie</span></div>
+                  </div>
+                  <div class="wr-mode" data-mode="end">
+                    <p class="wr-win">¡Victoria!</p>
+                    <p class="wr-winsub">+18 ELO</p>
                   </div>
                 </div>
-                <div class="time"><span></span></div>
-                <div class="question"><small>¿Qué significa?</small><strong>apple</strong></div>
-                <ul class="options">
-                  <li class="right">manzana</li>
-                  <li>naranja</li>
-                  <li>pera</li>
-                  <li>uva</li>
-                </ul>
               </div>
             </div>
-            <div class="float float-top"><span aria-hidden="true">⚡</span> +142 ¡rápido!</div>
-            <div class="float float-bottom">
-              <img src="assets/emblems/gold.svg" alt="" width="36" height="36" />
-              <div><strong>Oro</strong><small>+18 ELO</small></div>
+            <div class="float f-streak"><span>🔥</span><div><b>12 días</b><small>de racha</small></div></div>
+            <div class="float f-rank">
+              <img src="assets/emblems/gold.svg" alt="" width="40" height="40" />
+              <div><b>Oro II</b><small class="up">+18 ELO</small></div>
             </div>
+            <div class="float f-frenzy">¡FRENESÍ! <span>PUNTOS x2</span></div>
+          </div>
+        </div>
+        <a class="scroll-hint" href="#idiomas" aria-label="Seguir">
+          <span></span>
+        </a>
+      </section>
+
+      <!-- ============ IDIOMAS ============ -->
+      <section class="langs" id="idiomas" aria-label="Idiomas disponibles">
+        <div class="marquee">
+          <div class="track">
+            <span><img src="assets/flags/gb.svg" alt="" width="36" height="24" />Inglés</span><span><img src="assets/flags/it.svg" alt="" width="36" height="24" />Italiano</span><span><img src="assets/flags/br.svg" alt="" width="36" height="24" />Portugués</span><span><img src="assets/flags/cn.svg" alt="" width="36" height="24" />Chino mandarín</span><span><img src="assets/flags/fr.svg" alt="" width="36" height="24" />Francés</span><span><img src="assets/flags/es.svg" alt="" width="36" height="24" />Español</span>
+            <span><img src="assets/flags/gb.svg" alt="" width="36" height="24" />Inglés</span><span><img src="assets/flags/it.svg" alt="" width="36" height="24" />Italiano</span><span><img src="assets/flags/br.svg" alt="" width="36" height="24" />Portugués</span><span><img src="assets/flags/cn.svg" alt="" width="36" height="24" />Chino mandarín</span><span><img src="assets/flags/fr.svg" alt="" width="36" height="24" />Francés</span><span><img src="assets/flags/es.svg" alt="" width="36" height="24" />Español</span>
           </div>
         </div>
       </section>
 
-      <!-- Números -->
-      <section class="wrap stats" aria-label="Polygo en números">
-        <div><strong>120</strong><span>lecciones de nivel A1</span></div>
-        <div><strong>+1000</strong><span>ejercicios</span></div>
-        <div><strong>75 s</strong><span>por partida ranked</span></div>
-        <div><strong>8</strong><span>rangos, de Bronce a Gran Maestro</span></div>
+      <!-- ============ NÚMEROS ============ -->
+      <section class="wrap numbers" aria-label="Polygo en números">
+        <div class="num reveal"><b data-count="6">6</b><span>idiomas para aprender</span></div>
+        <div class="num reveal"><b data-count="60" data-suffix=" s">60 s</b><span>dura cada partida</span></div>
+        <div class="num reveal"><b data-count="4">4</b><span>microjuegos en Word Rush</span></div>
+        <div class="num reveal"><b data-count="8">8</b><span>rangos hasta la cima</span></div>
       </section>
 
-      <!-- Cómo funciona -->
-      <section id="como-funciona" class="block">
+      <!-- ============ CÓMO FUNCIONA ============ -->
+      <section class="block" id="como-funciona">
         <div class="wrap">
-          <header class="heading">
-            <p class="overline">CÓMO FUNCIONA</p>
-            <h2>Tres hábitos para aprender inglés de verdad</h2>
-            <p class="lead">
-              Aprendés palabras nuevas, las fijás con repaso espaciado y las ponés a prueba contra
-              otras personas.
-            </p>
+          <header class="head reveal">
+            <p class="kicker">CÓMO FUNCIONA</p>
+            <h2>Tres hábitos. <span class="grad">Cero aburrimiento.</span></h2>
+            <p class="lead">Aprendés palabras nuevas, las fijás antes de olvidarlas y las ponés a prueba en partidas en vivo.</p>
           </header>
-          <div class="grid grid-3">
-            <article class="card">
-              <span class="card-icon" aria-hidden="true">📘</span>
-              <h3>1. Aprendé</h3>
-              <p>
-                Un camino de lecciones cortas, de a una por vez: saludos, números, familia, comida,
-                rutina… Cada lección da hasta 3 estrellas, y si la hacés sin errores queda dorada.
-              </p>
+          <div class="steps3">
+            <article class="step reveal">
+              <img src="assets/img/fox/wave.webp" alt="" width="150" height="174" loading="lazy" />
+              <span class="step-n">1</span>
+              <h3>Aprendé</h3>
+              <p>Un camino de lecciones de 5 minutos: elegís, escuchás, escribís y unís parejas. Sin errores, la lección queda <b class="gold">dorada</b> con 3 estrellas.</p>
             </article>
-            <article class="card">
-              <span class="card-icon" aria-hidden="true">🔁</span>
-              <h3>2. Repasá</h3>
-              <p>
-                Las palabras que te cuestan vuelven justo cuando las estás por olvidar. Elegís,
-                escuchás y escribís, para que el vocabulario quede en la memoria de largo plazo.
-              </p>
+            <article class="step reveal">
+              <img src="assets/img/fox/thinking.webp" alt="" width="150" height="174" loading="lazy" />
+              <span class="step-n">2</span>
+              <h3>Repasá</h3>
+              <p>Las palabras que te cuestan vuelven justo antes de que las olvides. Además, cada día una <b>palabra del día</b> nueva.</p>
             </article>
-            <article class="card">
-              <span class="card-icon" aria-hidden="true">⚔️</span>
-              <h3>3. Competí</h3>
-              <p>
-                Word Rush: 75 segundos, las mismas preguntas para los dos. Ganás ELO, subís de rango
-                y aparecés en la clasificación global.
-              </p>
+            <article class="step reveal">
+              <img src="assets/img/fox/challenge.webp" alt="" width="150" height="174" loading="lazy" />
+              <span class="step-n">3</span>
+              <h3>Competí</h3>
+              <p>Word Rush en vivo: 60 segundos, los mismos desafíos para los dos. Ganás <b class="violet">ELO</b>, subís de rango y aparecés en la clasificación.</p>
             </article>
           </div>
         </div>
       </section>
 
-      <!-- Ranked -->
-      <section id="ranked" class="block band">
+      <!-- ============ WORD RUSH ============ -->
+      <section class="block band" id="ranked">
+        <div class="aurora soft" aria-hidden="true"><span class="blob b2"></span><span class="blob b4"></span></div>
+        <div class="wrap">
+          <header class="head reveal">
+            <p class="kicker gold">RANKED · WORD RUSH</p>
+            <h2>60 segundos. <span class="grad-gold">4 juegos.</span> Un ganador.</h2>
+            <p class="lead">Cada acierto suma, la racha multiplica y en los últimos 15 segundos llega el <b class="gold">Frenesí</b>: todo vale el doble.</p>
+          </header>
+          <div class="games">
+            <article class="game reveal">
+              <div class="g-art g-swipe"><span class="gw">il gatto</span><span class="gt">gato</span><i class="gy">✓</i></div>
+              <h3>Swipe Battle</h3>
+              <p>¿La traducción es correcta? Deslizá a la derecha o a la izquierda, rapidísimo.</p>
+            </article>
+            <article class="game reveal">
+              <div class="g-art g-connect">
+                <span class="on">hello</span><span class="on">hola</span><span>cat</span><span>casa</span><span>house</span><span>gato</span>
+              </div>
+              <h3>Connect</h3>
+              <p>Uní cada palabra con su significado antes que tu rival.</p>
+            </article>
+            <article class="game reveal">
+              <div class="g-art g-audio"><span class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="pill-o">bonjour</span></div>
+              <h3>Audio Blitz</h3>
+              <p>Escuchá y elegí lo que oíste. Entrena el oído de verdad.</p>
+            </article>
+            <article class="game reveal">
+              <div class="g-art g-sentence"><span>I</span><span>like</span><span class="ghost">…</span><span>coffee</span></div>
+              <h3>Sentence Rush</h3>
+              <p>Armá la frase en orden con los bloques, contra reloj.</p>
+            </article>
+          </div>
+
+          <div class="combo-row reveal">
+            <div class="combo-card"><b>x2</b><span>Combo: acertá seguido y multiplicás los puntos.</span></div>
+            <div class="combo-card frenzy"><b>¡FRENESÍ!</b><span>Los últimos 15 segundos, puntos dobles.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ RANGOS ============ -->
+      <section class="block" id="rangos">
         <div class="wrap split">
-          <div>
-            <header class="heading heading-left">
-              <p class="overline">RANKED · WORD RUSH</p>
-              <h2>Cada palabra suma ELO</h2>
-              <p class="lead">
-                Dos jugadores, las mismas preguntas, 75 segundos. La respuesta correcta suma 100
-                puntos, y hasta 50 más si sos rápido; la incorrecta resta 50. Gana el que más sabe,
-                no el que más adivina.
-              </p>
-            </header>
-            <ul class="bullets">
-              <li>Rivales de tu nivel: el rango de búsqueda se amplía mientras esperás.</li>
-              <li>
-                Si no hay nadie, un bot de tu nivel, siempre marcado como BOT. Nunca se hace pasar
-                por una persona.
-              </li>
-              <li>Desafiá a tus amigos con un código: juegan en vivo sin tocar el ELO.</li>
-              <li>Temporadas, clasificación global y perfil con tus estadísticas.</li>
+          <div class="reveal">
+            <p class="kicker">RANGOS</p>
+            <h2>De Bronce a <span class="grad-gold">Gran Maestro</span></h2>
+            <p class="lead">Ganarle a alguien de más nivel suma más. Las primeras partidas te ubican rápido y después cada punto de ELO cuesta. ¿Hasta dónde llegás?</p>
+            <ul class="ticks">
+              <li>Rivales de tu nivel, en cada uno de tus idiomas.</li>
+              <li>Clasificación global y por idioma.</li>
+              <li>Desafiá a tus amigos con un código, sin tocar el ELO.</li>
             </ul>
           </div>
-          <ul class="ladder" aria-label="Rangos de Polygo">
-            <li><img src="assets/emblems/bronze.svg" alt="" width="64" height="64" />Bronce</li>
-            <li><img src="assets/emblems/silver.svg" alt="" width="64" height="64" />Plata</li>
-            <li><img src="assets/emblems/gold.svg" alt="" width="64" height="64" />Oro</li>
-            <li><img src="assets/emblems/platinum.svg" alt="" width="64" height="64" />Platino</li>
-            <li><img src="assets/emblems/emerald.svg" alt="" width="64" height="64" />Esmeralda</li>
-            <li><img src="assets/emblems/diamond.svg" alt="" width="64" height="64" />Diamante</li>
-            <li class="top"><img src="assets/emblems/master.svg" alt="" width="64" height="64" />Maestro</li>
-            <li class="top"><img src="assets/emblems/grandmaster.svg" alt="" width="64" height="64" />Gran Maestro</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- Funciones -->
-      <section id="funciones" class="block">
-        <div class="wrap">
-          <header class="heading">
-            <p class="overline">FUNCIONES</p>
-            <h2>Pensada para que vuelvas mañana</h2>
-            <p class="lead">Lo que hace que un idioma se aprenda: un poco todos los días.</p>
-          </header>
-          <div class="grid grid-3">
-            <article class="card">
-              <span class="card-icon" aria-hidden="true">🔥</span>
-              <h3>Racha con protector</h3>
-              <p>
-                Elegís tu objetivo diario y sumás días seguidos. Si un día no podés, un protector de
-                racha la mantiene viva.
-              </p>
-            </article>
-            <article class="card">
-              <span class="card-icon" aria-hidden="true">✅</span>
-              <h3>Misiones diarias</h3>
-              <p>Tres metas nuevas cada día. Completalas y ganás un protector de racha.</p>
-            </article>
-            <article class="card">
-              <span class="card-icon" aria-hidden="true">🤝</span>
-              <h3>Desafiá a tus amigos</h3>
-              <p>Mandás un código o un link y juegan la misma partida en vivo.</p>
-            </article>
-            <article class="card">
-              <span class="card-icon" aria-hidden="true">🏆</span>
-              <h3>Logros por niveles</h3>
-              <p>13 familias de logros con 76 niveles para desbloquear mientras aprendés y competís.</p>
-            </article>
-            <article class="card">
-              <span class="card-icon" aria-hidden="true">🎧</span>
-              <h3>Escuchá y pronunciá</h3>
-              <p>Cada palabra se puede escuchar, y hay ejercicios de comprensión auditiva.</p>
-            </article>
-            <article class="card">
-              <span class="card-icon" aria-hidden="true">📱</span>
-              <h3>Widgets y recordatorio</h3>
-              <p>
-                La palabra del día en la pantalla de inicio y un aviso a la hora que elijas para no
-                cortar la racha.
-              </p>
-            </article>
+          <div class="ladder2 reveal" aria-label="Rangos de Polygo">
+            <div class="rk"><img src="assets/emblems/bronze.svg" alt="" width="70" height="70" loading="lazy" /><span>Bronce</span></div>
+            <div class="rk"><img src="assets/emblems/silver.svg" alt="" width="70" height="70" loading="lazy" /><span>Plata</span></div>
+            <div class="rk"><img src="assets/emblems/gold.svg" alt="" width="70" height="70" loading="lazy" /><span>Oro</span></div>
+            <div class="rk"><img src="assets/emblems/platinum.svg" alt="" width="70" height="70" loading="lazy" /><span>Platino</span></div>
+            <div class="rk"><img src="assets/emblems/emerald.svg" alt="" width="70" height="70" loading="lazy" /><span>Esmeralda</span></div>
+            <div class="rk"><img src="assets/emblems/diamond.svg" alt="" width="70" height="70" loading="lazy" /><span>Diamante</span></div>
+            <div class="rk top"><img src="assets/emblems/master.svg" alt="" width="70" height="70" loading="lazy" /><span>Maestro</span></div>
+            <div class="rk top"><img src="assets/emblems/grandmaster.svg" alt="" width="70" height="70" loading="lazy" /><span>Gran Maestro</span></div>
           </div>
         </div>
       </section>
 
-      <!-- Descargar -->
-      <section id="descargar" class="block">
+      <!-- ============ PANTALLAS ============ -->
+      <section class="block band" id="pantallas">
         <div class="wrap">
-          <div class="cta">
-            <div class="cta-emblems" aria-hidden="true">
-              <img src="assets/emblems/gold.svg" alt="" width="48" height="48" class="dim" />
-              <img src="assets/emblems/diamond.svg" alt="" width="76" height="76" />
-              <img src="assets/emblems/master.svg" alt="" width="48" height="48" class="dim" />
+          <header class="head reveal">
+            <p class="kicker">LA APP</p>
+            <h2>Hecha para que <span class="grad">vuelvas mañana</span></h2>
+          </header>
+        </div>
+        <div class="gallery" tabindex="0" aria-label="Pantallas de Polygo">
+          <figure class="shot reveal">
+            <div class="phone">
+              <div class="scr photo"><img src="assets/img/screens/aprender.webp" alt="Camino de lecciones de italiano en Polygo" width="280" height="607" loading="lazy" /></div>
             </div>
-            <h2>Tu primera partida está a dos minutos</h2>
-            <p class="lead">Descargá Polygo, hacé la primera lección y entrá a ranked.</p>
+            <figcaption>Tu camino de lecciones</figcaption>
+          </figure>
+          <figure class="shot reveal">
+            <div class="phone">
+              <div class="scr photo"><img src="assets/img/screens/repaso.webp" alt="Pantalla de Repaso con la palabra del día" width="280" height="607" loading="lazy" /></div>
+            </div>
+            <figcaption>Repaso antes de olvidar</figcaption>
+          </figure>
+          <figure class="shot reveal">
+            <div class="phone">
+              <div class="scr photo"><img src="assets/img/screens/ranked.webp" alt="Pantalla de Ranked con el rango actual y Buscar partida" width="280" height="607" loading="lazy" /></div>
+            </div>
+            <figcaption>Tu rango en cada idioma</figcaption>
+          </figure>
+          <figure class="shot reveal">
+            <div class="phone">
+              <div class="scr photo"><img src="assets/img/screens/victoria.webp" alt="Resultado de una partida ganada: +16 ELO y +30 XP" width="280" height="607" loading="lazy" /></div>
+            </div>
+            <figcaption>Cada victoria se siente</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ============ COLECCIÓN ============ -->
+      <section class="block" id="zorros">
+        <div class="wrap">
+          <header class="head reveal">
+            <p class="kicker">COLECCIÓN</p>
+            <h2>Coleccioná <span class="grad">zorros</span> legendarios</h2>
+            <p class="lead">Ganá Polys jugando y desbloqueá skins, marcos y fondos para tu perfil. Cada rival ve tu estilo.</p>
+          </header>
+          <div class="skins">
+            <figure class="skin r-free reveal"><img src="assets/img/skins/clasico.webp" alt="Zorro Clásico" width="180" height="180" loading="lazy" /><figcaption><b>Clásico</b><span>Gratis</span></figcaption></figure>
+            <figure class="skin r-common reveal"><img src="assets/img/skins/ninja.webp" alt="Zorro Ninja" width="180" height="180" loading="lazy" /><figcaption><b>Ninja</b><span>Común</span></figcaption></figure>
+            <figure class="skin r-common reveal"><img src="assets/img/skins/explorador.webp" alt="Zorro Explorador" width="180" height="180" loading="lazy" /><figcaption><b>Explorador</b><span>Común</span></figcaption></figure>
+            <figure class="skin r-rare reveal"><img src="assets/img/skins/academico.webp" alt="Zorro Académico" width="180" height="180" loading="lazy" /><figcaption><b>Académico</b><span>Raro</span></figcaption></figure>
+            <figure class="skin r-epic reveal"><img src="assets/img/skins/cyber.webp" alt="Zorro Cyber" width="180" height="180" loading="lazy" /><figcaption><b>Cyber</b><span>Épico</span></figcaption></figure>
+            <figure class="skin r-epic reveal"><img src="assets/img/skins/azteca.webp" alt="Zorro Azteca" width="180" height="180" loading="lazy" /><figcaption><b>Azteca</b><span>Épico</span></figcaption></figure>
+            <figure class="skin r-legend reveal"><img src="assets/img/skins/dragon.webp" alt="Zorro Dragón" width="180" height="180" loading="lazy" /><figcaption><b>Dragón</b><span>Legendario</span></figcaption></figure>
+            <figure class="skin r-legend reveal"><img src="assets/img/skins/rey.webp" alt="Zorro Rey" width="180" height="180" loading="lazy" /><figcaption><b>Rey</b><span>Legendario</span></figcaption></figure>
+            <figure class="skin r-mythic reveal"><img src="assets/img/skins/titan.webp" alt="Zorro Titán" width="180" height="180" loading="lazy" /><figcaption><b>Titán</b><span>Mítico</span></figcaption></figure>
+            <figure class="skin r-plus reveal"><img src="assets/img/skins/diamante.webp" alt="Zorro Diamante" width="180" height="180" loading="lazy" /><figcaption><b>Diamante</b><span>Exclusivo Plus</span></figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ FUNCIONES ============ -->
+      <section class="block band" id="funciones">
+        <div class="wrap">
+          <header class="head reveal">
+            <p class="kicker">TODO LO QUE TE ENGANCHA</p>
+            <h2>Un poco cada día, <span class="grad-gold">sin darte cuenta</span></h2>
+          </header>
+          <div class="feats">
+            <article class="feat reveal"><span class="fi"><img src="assets/img/emoji/fire.webp" alt="" width="40" height="40" loading="lazy" /></span><h3>Racha</h3><p>Sumá días seguidos. Si un día no podés, un protector la mantiene viva.</p></article>
+            <article class="feat reveal"><span class="fi"><img src="assets/img/emoji/gift.webp" alt="" width="40" height="40" loading="lazy" /></span><h3>Cofres de bienvenida</h3><p>Tus primeros 7 días, un cofre por día que jugás, con premios que crecen hasta el legendario.</p></article>
+            <article class="feat reveal"><span class="fi"><img src="assets/img/emoji/target.webp" alt="" width="40" height="40" loading="lazy" /></span><h3>Misiones diarias</h3><p>Tres metas nuevas por día con Polys de premio.</p></article>
+            <article class="feat reveal"><span class="fi"><img src="assets/img/emoji/swords.webp" alt="" width="40" height="40" loading="lazy" /></span><h3>Desafiá amigos</h3><p>Mandales un link y juegan la misma partida en vivo.</p></article>
+            <article class="feat reveal"><span class="fi"><img src="assets/img/emoji/trophy.webp" alt="" width="40" height="40" loading="lazy" /></span><h3>Logros y niveles</h3><p>Ganá XP con cada lección y partida, subí de nivel y desbloqueá logros.</p></article>
+            <article class="feat reveal"><span class="fi"><img src="assets/img/emoji/headphones.webp" alt="" width="40" height="40" loading="lazy" /></span><h3>Escuchá cada palabra</h3><p>Pronunciación en cada ejercicio y desafíos de audio.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ DESCARGAR ============ -->
+      <section class="block" id="descargar">
+        <div class="wrap">
+          <div class="final reveal">
+            <div class="aurora soft" aria-hidden="true"><span class="blob b1"></span><span class="blob b3"></span></div>
+            <img class="final-fox l" src="assets/img/fox/wave.webp" alt="" width="200" height="232" loading="lazy" />
+            <img class="final-fox r" src="assets/img/fox/celebrate.webp" alt="" width="200" height="213" loading="lazy" />
+            <img class="final-logo" src="assets/img/icon-192.png" alt="" width="96" height="96" loading="lazy" />
+            <h2>Tu primera partida está a <span class="grad-gold">dos minutos</span></h2>
+            <p class="lead">Descargá Polygo gratis, hacé tu primera lección y entrá a Ranked.</p>
             {{stores}}
           </div>
         </div>
       </section>
 
-      <!-- Preguntas frecuentes -->
-      <section id="preguntas" class="block">
+      <!-- ============ PREGUNTAS ============ -->
+      <section class="block" id="preguntas">
         <div class="wrap narrow">
-          <header class="heading">
-            <p class="overline">PREGUNTAS FRECUENTES</p>
+          <header class="head reveal">
+            <p class="kicker">PREGUNTAS FRECUENTES</p>
             <h2>Lo que todos preguntan</h2>
           </header>
           <div class="faq">
             <details class="faq-item">
               <summary>¿Polygo es gratis?</summary>
-              <p>Sí. Descargás la app, creás tu cuenta con un email y empezás a aprender inglés gratis.</p>
+              <p>Sí. Descargás la app, creás tu cuenta y aprendés y competís gratis. PolyGo Plus es opcional y suma extras como energía ilimitada y repasos especiales.</p>
             </details>
             <details class="faq-item">
-              <summary>¿Qué nivel de inglés necesito?</summary>
-              <p>Ninguno: el contenido arranca en A1 (principiante absoluto) y sigue con A2. Si ya sabés lo básico, podés empezar directo por A2.</p>
+              <summary>¿Qué idiomas puedo aprender?</summary>
+              <p>Inglés, italiano, portugués, chino mandarín y francés desde español, y español para quienes hablan inglés. Podés estudiar varios a la vez, cada uno con su propio rango.</p>
             </details>
             <details class="faq-item">
-              <summary>¿Contra quién juego en ranked?</summary>
-              <p>Contra personas con un ELO parecido al tuyo. Si en unos segundos no aparece nadie, jugás contra un bot de tu nivel, siempre marcado como BOT. Cuenta para el ELO igual.</p>
+              <summary>¿Qué nivel necesito?</summary>
+              <p>Ninguno: los cursos arrancan desde cero (A1) y siguen con A2. Si ya sabés algo, podés empezar más adelante.</p>
+            </details>
+            <details class="faq-item">
+              <summary>¿Contra quién juego en Ranked?</summary>
+              <p>Contra rivales de tu nivel: el emparejamiento busca un ELO parecido al tuyo, en el idioma que estás aprendiendo.</p>
             </details>
             <details class="faq-item">
               <summary>¿Cuánto tiempo por día tengo que estudiar?</summary>
-              <p>Vos elegís tu objetivo diario. Con 5 o 10 minutos por día ya mantenés la racha y avanzás en el camino de lecciones.</p>
-            </details>
-            <details class="faq-item">
-              <summary>¿Cómo funciona el ELO?</summary>
-              <p>Ganarle a alguien de más nivel suma más; perder con alguien de menos nivel resta más. Las primeras 5 partidas son de colocación y mueven más el ELO para ubicarte rápido.</p>
+              <p>Con 5 o 10 minutos por día alcanza para mantener la racha y avanzar en tu camino de lecciones.</p>
             </details>
             <details class="faq-item">
               <summary>¿Puedo borrar mi cuenta?</summary>

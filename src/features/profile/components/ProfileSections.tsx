@@ -33,7 +33,7 @@ import { PolysChip } from '@/features/polys/PolysChip';
 import { useXp } from '@/features/xp/api';
 import { qaReadOnly } from '@/features/xp/previewGate';
 import { XP_BAR_COLORS } from '@/features/xp/LevelProgress';
-import { avatarViolet } from '@/design-system/imageData.generated';
+import { brandLogo } from '@/design-system/imageData.generated';
 import { useRankLabels } from '@/features/ranked/rankNames';
 import { useLocale, useStrings } from '@/i18n';
 import { useLanguageName } from '@/i18n/languages';
@@ -63,7 +63,7 @@ export function ProfileTopBar() {
   return (
     <View style={styles.topBar}>
       <View style={styles.brand}>
-        <Image source={avatarViolet} style={styles.logo} fadeDuration={0} accessible={false} />
+        <Image source={brandLogo} style={styles.logo} fadeDuration={0} accessible={false} />
         {showWordmark ? (
           <Text variant="title" color="textStrong" numberOfLines={1}>
             PolyGo
@@ -492,7 +492,8 @@ const useStyles = themedStyles(() =>
     pressed: { opacity: 0.75 },
     topBar: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
     brand: { flex: 1, minWidth: 0, flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-    logo: { width: 36, height: 36, borderRadius: 18 },
+    // El logo ya trae sus esquinas redondeadas (como el ícono de la app).
+    logo: { width: 36, height: 36 },
     chip: {
       flexDirection: 'row',
       alignItems: 'center',

@@ -252,17 +252,55 @@ test('marco Plus: con Plus se equipa; al vencer se suspende sin borrar nada y vu
   assert.deepEqual(after.suspended_cosmetics, { frame: 'frame_plus' });
   // Lo comprado con Polys sigue intacto (puesto y en el inventario).
   assert.equal(after.background_id, 'bg_aurora');
-  const inv = await rpc(u, `select array_agg(item_id order by item_id) as r from public.user_cosmetics`);
+  const inv = await rpc(
+    u,
+    `select array_agg(item_id order by item_id) as r from public.user_cosmetics`,
+  );
   assert.deepEqual(inv, ['bg_aurora']);
   await assert.rejects(equip(u, 'frame', 'frame_plus'), /plus_required/);
 
   // Renueva: vuelve solo.
   await grantPlus(u);
-  const back = await one(`select frame_id, suspended_cosmetics from public.profiles where id = $1`, [
-    u,
-  ]);
+  const back = await one(
+    `select frame_id, suspended_cosmetics from public.profiles where id = $1`,
+    [u],
+  );
   assert.equal(back.frame_id, 'frame_plus');
   assert.deepEqual(back.suspended_cosmetics, {});
+});
+
+test('colección 2: Azteca, Dragón, Rey y Titán se compran por Polys al precio del catálogo', async () => {
+  const u = await player('shop_skins2@test.dev');
+  await sync(u);
+  for (const id of ['skin-aztec', 'skin-dragon', 'skin-king', 'skin-titan']) {
+    const price = COSMETICS.find((c) => c.id === id).price;
+    await setBalance(u, price);
+    assert.deepEqual(await buy(u, id), { balance: 0, item_id: id, equipped: true });
+    assert.equal(await avatarOf(u), id);
+  }
+  await assert.rejects(buy(u, 'skin-diamond'), /item_not_for_sale/);
+});
+
+test('skin Diamante (Plus): sólo con Plus; al vencer se suspende y vuelve al renovar', async () => {
+  const u = await player('shop_skin_plus@test.dev');
+  await assert.rejects(setAvatar(u, 'skin-diamond'), /plus_required/);
+  await grantPlus(u);
+  await setAvatar(u, 'skin-diamond');
+  assert.equal(await avatarOf(u), 'skin-diamond');
+
+  await db.query(
+    `update public.user_entitlements set expires_at = now() - interval '1 minute' where user_id = $1`,
+    [u],
+  );
+  const after = await one(
+    `select avatar_id, suspended_cosmetics from public.profiles where id = $1`,
+    [u],
+  );
+  assert.equal(after.avatar_id, 'bolt');
+  assert.deepEqual(after.suspended_cosmetics, { avatar: 'skin-diamond' });
+
+  await grantPlus(u);
+  assert.equal(await avatarOf(u), 'skin-diamond');
 });
 
 test('marco Plus: si vence sin que nadie toque la fila, sync_cosmetics lo suspende', async () => {
@@ -270,7 +308,9 @@ test('marco Plus: si vence sin que nadie toque la fila, sync_cosmetics lo suspen
   await grantPlus(u, new Date(Date.now() + 60_000).toISOString());
   await equip(u, 'frame', 'frame_plus');
   // Simula que el tiempo pasó: se adelanta el vencimiento sin disparar el trigger.
-  await db.query(`alter table public.user_entitlements disable trigger user_entitlements_reconcile`);
+  await db.query(
+    `alter table public.user_entitlements disable trigger user_entitlements_reconcile`,
+  );
   await db.query(
     `update public.user_entitlements set expires_at = now() - interval '1 second' where user_id = $1`,
     [u],
