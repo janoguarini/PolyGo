@@ -86,6 +86,10 @@ export function ArcadeStage({
             <Text style={styles.offlineText}>{t.reconnecting}</Text>
           </View>
         )}
+        {/* Franja propia para «+114 x2» / «✕ respuesta»: nunca tapa la palabra ni los botones. */}
+        <View style={styles.flashSlot}>
+          <VerdictFlash verdict={a.verdict} />
+        </View>
         <View style={styles.game}>
           {left <= 0 ? (
             // El servidor cierra a los 60 s; hasta que llega el resultado no se puede responder.
@@ -123,14 +127,16 @@ export function ArcadeStage({
               <Text style={arcadeText.label}>{t.waiting}</Text>
             </View>
           )}
-          <VerdictFlash verdict={a.verdict} />
         </View>
       </View>
     </SessionLanguageProvider>
   );
 }
 
-/** «+114 x2»: sale del centro y se va. En los fallos muestra la respuesta un instante. */
+/**
+ * «+114 x2» en su franja, arriba del desafío, y se va. En los fallos muestra la respuesta un instante,
+ * en la misma línea.
+ */
 function VerdictFlash({ verdict }: { verdict: ArcadeVerdict | null }) {
   const t = useStrings(arcadeStrings);
   const reduceMotion = useReducedMotion();
@@ -166,7 +172,7 @@ function VerdictFlash({ verdict }: { verdict: ArcadeVerdict | null }) {
             {shown.tooFast ? t.tooFast : shown.comboBroken ? t.comboBroken : '✕'}
           </Text>
           {shown.solution && shown.kind !== 'connect' ? (
-            <Text style={styles.flashSolution} numberOfLines={2}>
+            <Text style={styles.flashSolution} numberOfLines={1}>
               {shown.solution}
             </Text>
           ) : null}
@@ -249,23 +255,24 @@ const styles = StyleSheet.create({
     borderColor: arcade.goldDeep,
   },
   offlineText: { color: arcade.text, fontSize: 13, fontWeight: '800' },
+  // Altura fija: el cartel aparece y se va sin mover el desafío de lugar.
+  flashSlot: { height: 40, alignItems: 'center', justifyContent: 'center' },
   flash: {
-    position: 'absolute',
-    alignSelf: 'center',
-    top: '38%',
-    paddingHorizontal: 18,
-    paddingVertical: 10,
-    borderRadius: arcadeRadii.pill,
+    flexDirection: 'row',
     alignItems: 'center',
-    maxWidth: '90%',
+    gap: 8,
+    paddingHorizontal: 16,
+    paddingVertical: 4,
+    borderRadius: arcadeRadii.pill,
+    maxWidth: '100%',
   },
   flashOk: { backgroundColor: 'rgba(46,229,157,0.16)' },
   flashBad: { backgroundColor: 'rgba(255,77,109,0.18)' },
-  flashPoints: { color: arcade.success, fontSize: 30, fontWeight: '900' },
+  flashPoints: { color: arcade.success, fontSize: 24, fontWeight: '900' },
   flashFrenzy: { color: arcade.gold },
-  flashMult: { color: arcade.gold, fontSize: 20, fontWeight: '900' },
-  flashWrong: { color: arcade.danger, fontSize: 22, fontWeight: '900' },
-  flashSolution: { color: arcade.text, fontSize: 16, fontWeight: '700', textAlign: 'center' },
+  flashMult: { color: arcade.gold, fontSize: 17, fontWeight: '900' },
+  flashWrong: { color: arcade.danger, fontSize: 18, fontWeight: '900' },
+  flashSolution: { color: arcade.text, fontSize: 16, fontWeight: '700', flexShrink: 1 },
   frenzyBorder: {
     position: 'absolute',
     top: 0,

@@ -1,7 +1,7 @@
 import { router, useLocalSearchParams } from 'expo-router';
 import * as Linking from 'expo-linking';
 import { Search, Share2, Swords, UserPlus, X } from 'lucide-react-native';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   Alert,
@@ -34,9 +34,10 @@ import {
   useTheme,
 } from '@/design-system';
 import { ArcadeLobby } from '@/features/battle/arcade/ArcadeLobby';
+import { ArcadeSearching } from '@/features/battle/arcade/ArcadeSearching';
 import { ArcadeStage } from '@/features/battle/arcade/ArcadeStage';
 import { arcade, arcadeText } from '@/features/battle/arcade/theme';
-import { matchLabel, ratingNote, searchHint } from '@/features/battle/labels';
+import { battleGivesXp, isRankedSearch, matchLabel, ratingNote } from '@/features/battle/labels';
 import { rankedDisabled } from '@/features/battle/availability';
 import { battleErrorMessage, battleServerConfigured } from '@/features/battle/client';
 import { playerLook } from '@/features/battle/rivalLook';
@@ -58,6 +59,8 @@ import { useLocalBattleSession, type ChallengeRole } from '@/features/battle/use
 import { FramedAvatar } from '@/features/cosmetics/FramedAvatar';
 import { SessionLanguageProvider } from '@/features/learning/SessionLanguageProvider';
 import { useMyProfile } from '@/features/profile/hooks';
+import { useXp, type XpState } from '@/features/xp/api';
+import { XpRewardCard } from '@/features/xp/XpRewardCard';
 import { useRankLabels } from '@/features/ranked/strings';
 import { getStrings, useStrings } from '@/i18n';
 import { battleScreenStrings } from '@/i18n/screens/battle';
@@ -150,7 +153,13 @@ interface Session {
  */
 function MatchBattle({ mode }: { mode: BattleMode }) {
   const session = useSession();
-  return <BattleView session={session} onStart={(m) => session.start(m ?? mode)} />;
+  return (
+    <BattleView
+      session={session}
+      rankedRoute={mode === 'ranked'}
+      onStart={(m) => session.start(m ?? mode)}
+    />
+  );
 }
 
 /**
@@ -179,10 +188,13 @@ function ChallengeBattle({
 function BattleView({
   session,
   inviteeName,
+  rankedRoute = false,
   onStart,
 }: {
   session: Session;
   inviteeName?: string;
+  /** Se entró a buscar partida Ranked: desde el primer instante se ve «Buscando rival». */
+  rankedRoute?: boolean;
   /** again: el usuario pidió otra partida (no es el arranque al montar). */
   onStart: (mode: BattleMode | undefined, again: boolean) => void;
 }) {
@@ -190,6 +202,19 @@ function BattleView({
   const t = useStrings(battleScreenStrings);
   const state = useBattleStore();
   const now = useNow();
+  const myProfile = useMyProfile().data?.profile;
+  // XP de antes de cada partida (para mostrar cuánto se ganó en el resultado). Se toma mientras se
+  // juega; el servidor la acredita al liquidar.
+  const xp = useXp();
+  const [xpBefore, setXpBefore] = useState<{ battleId: string; xp: XpState | null } | null>(null);
+  if (
+    state.battleId &&
+    state.phase !== 'finished' &&
+    xp.data !== undefined &&
+    xpBefore?.battleId !== state.battleId
+  ) {
+    setXpBefore({ battleId: state.battleId, xp: xp.data });
+  }
 
   useEffect(() => {
     onStart(undefined, false);
@@ -231,11 +256,13 @@ function BattleView({
   // identidad que el juego, sin saltos de tema). La práctica sola entra directo a la cuenta regresiva.
   const inGame =
     state.phase === 'found' || state.phase === 'countdown' || state.phase === 'playing';
+  // La búsqueda de Ranked también va con la identidad oscura (ArcadeSearching), y desde el primer
+  // instante: mientras conecta y entra a la cola ya se ve «Buscando rival» (sin «Preparando…»).
+  const rankedSearch = isRankedSearch(state, rankedRoute);
   const wordRushShell =
     session.arcadeAnswer !== undefined &&
     !state.friendly &&
-    inGame &&
-    (state.arcade !== null || state.phase === 'countdown');
+    ((inGame && (state.arcade !== null || state.phase === 'countdown')) || rankedSearch);
   if (wordRushShell && session.arcadeAnswer) {
     return (
       <View style={styles.arcadeRoot}>
@@ -255,10 +282,21 @@ function BattleView({
               <X color={arcade.muted} size={20} />
             </Pressable>
           </View>
-          {state.phase === 'playing' && state.arcade ? (
+          {rankedSearch ? (
+            <ArcadeSearching waitedMs={state.queue?.waitedMs ?? 0} onCancel={exit} />
+          ) : state.phase === 'playing' && state.arcade ? (
             <ArcadeStage state={state} now={now} onAnswer={session.arcadeAnswer} />
           ) : state.arcade ? (
-            <ArcadeLobby state={state} now={now} onReady={session.ready} />
+            <ArcadeLobby
+              state={state}
+              now={now}
+              onReady={session.ready}
+              myLook={{
+                avatarId: myProfile?.avatar_id,
+                frameId: myProfile?.frame_id,
+                backgroundId: myProfile?.background_id,
+              }}
+            />
           ) : (
             <View style={styles.arcadeLoading}>
               <ActivityIndicator color={arcade.violetGlow} />
@@ -292,6 +330,7 @@ function BattleView({
         onRetry={() => onStart(state.mode, true)}
         onExit={exit}
         inviteeName={inviteeName}
+        xpBefore={xpBefore}
       />
     </Screen>
   );
@@ -311,9 +350,20 @@ interface BodyProps {
   onRetry: () => void;
   onExit: () => void;
   inviteeName?: string;
+  /** XP de antes de la partida (de qué partida es: battleId). */
+  xpBefore?: { battleId: string; xp: XpState | null } | null;
 }
 
-function Body({ state, now, onReady, onAnswer, onRetry, onExit, inviteeName }: BodyProps) {
+function Body({
+  state,
+  now,
+  onReady,
+  onAnswer,
+  onRetry,
+  onExit,
+  inviteeName,
+  xpBefore,
+}: BodyProps) {
   useTheme();
   const t = useStrings(battleScreenStrings);
   const cancelMessages = useStrings(cancelStrings);
@@ -375,7 +425,7 @@ function Body({ state, now, onReady, onAnswer, onRetry, onExit, inviteeName }: B
               {mm}:{ss}
             </Text>
             <Text color="textMuted" align="center">
-              {searchHint(state.queue, t)}
+              {t.searchingSub(null)}
             </Text>
           </Card>
           <Button label={t.cancelSearch} variant="ghost" onPress={onExit} />
@@ -490,7 +540,20 @@ function Body({ state, now, onReady, onAnswer, onRetry, onExit, inviteeName }: B
 
     case 'finished':
       return state.result ? (
-        <BattleResult result={state.result} onPlayAgain={() => onRetry()} onExit={onExit} />
+        <BattleResult
+          result={state.result}
+          onPlayAgain={() => onRetry()}
+          onExit={onExit}
+          reward={
+            // Sólo las ranked con ELO dan XP (ganar o perder); el resultado ya llega liquidado.
+            battleGivesXp(state.result) ? (
+              <XpRewardCard
+                before={xpBefore?.battleId === state.result.battleId ? xpBefore.xp : undefined}
+                saved
+              />
+            ) : null
+          }
+        />
       ) : null;
 
     case 'cancelled':

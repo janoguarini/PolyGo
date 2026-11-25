@@ -51,6 +51,12 @@ export const xpStrings = defineStrings({
       preview ? 'PREVIEW · ¡SUBISTE DE NIVEL!' : '¡SUBISTE DE NIVEL!',
     levelUpHint: 'Cada lección, repaso y partida te acerca al próximo nivel.',
     continue: 'Continuar',
+    // XpRewardCard (resultados de la lección)
+    rewardTitle: 'EXPERIENCIA',
+    rewardAdding: 'Sumando experiencia…',
+    rewardLevelUp: (n: number) => `¡SUBISTE AL NIVEL ${n}!`,
+    rewardA11y: (gained: number, level: number) =>
+      `Ganaste ${gained} de experiencia. Nivel ${level}`,
   },
   en: {
     title: (title: string) => EN_TITLES[title] ?? title,
@@ -70,5 +76,10 @@ export const xpStrings = defineStrings({
     levelUp: (preview: boolean) => (preview ? 'PREVIEW · LEVEL UP!' : 'LEVEL UP!'),
     levelUpHint: 'Every lesson, review and match brings you closer to the next level.',
     continue: 'Continue',
+    rewardTitle: 'EXPERIENCE',
+    rewardAdding: 'Adding up your experience…',
+    rewardLevelUp: (n: number) => `YOU REACHED LEVEL ${n}!`,
+    rewardA11y: (gained: number, level: number) =>
+      `You earned ${gained} experience. Level ${level}`,
   },
 });

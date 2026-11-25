@@ -373,6 +373,7 @@ export const resultsStrings = defineStrings({
     unlocked: (n: number): string => (n === 1 ? 'LOGRO DESBLOQUEADO' : 'LOGROS DESBLOQUEADOS'),
     wordsToReview: 'PALABRAS PARA REPASAR',
     mistakesHint: 'Van a aparecer en tus repasos para que las fijes.',
+    starsA11y: (n: number) => (n === 1 ? '1 estrella de 3' : `${n} estrellas de 3`),
   },
   en: {
     perfect: 'Perfect!',
@@ -394,6 +395,7 @@ export const resultsStrings = defineStrings({
     unlocked: (n: number): string => (n === 1 ? 'ACHIEVEMENT UNLOCKED' : 'ACHIEVEMENTS UNLOCKED'),
     wordsToReview: 'WORDS TO REVIEW',
     mistakesHint: 'They’ll show up in your reviews so they stick.',
+    starsA11y: (n: number) => (n === 1 ? '1 star out of 3' : `${n} stars out of 3`),
   },
 });
 

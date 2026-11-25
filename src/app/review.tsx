@@ -62,6 +62,8 @@ import { buildReviewExercises } from '@/features/learning/review';
 import { SessionLanguageProvider } from '@/features/learning/SessionLanguageProvider';
 import { useCelebrationGate } from '@/features/learning/useCelebrationGate';
 import { useEnergy } from '@/features/plus/api';
+import { useXp, type XpState } from '@/features/xp/api';
+import { XpRewardCard } from '@/features/xp/XpRewardCard';
 import { useStrings } from '@/i18n';
 import { reviewStrings } from '@/i18n/screens/review';
 
@@ -194,6 +196,10 @@ function ServerReviewScreen({ mode, focus }: { mode: ReviewMode; focus?: ReviewF
   const finalize = useSubmitServerReview();
   const celebration = useCelebrationGate(submit);
   const [finished, setFinished] = useState<{ state: PlayerState; endedAt: Date } | null>(null);
+  // XP de antes del repaso (para mostrar cuánto ganaste): se toma mientras se juega.
+  const xp = useXp();
+  const [xpBefore, setXpBefore] = useState<XpState | null | undefined>(undefined);
+  if (xpBefore === undefined && xp.data !== undefined && !finished) setXpBefore(xp.data);
 
   const { reset: finalizeReset } = finalize;
   // Se olvida la sesión guardada y, recién después, se empieza otra.
@@ -456,6 +462,7 @@ function ServerReviewScreen({ mode, focus }: { mode: ReviewMode; focus?: ReviewF
       achievements={submit.data?.achievements_unlocked ?? []}
       onRetrySave={() => save(finished.state)}
       extra={<PersistentHelp units={data.persistent ?? []} words={session.words} />}
+      reward={<XpRewardCard before={xpBefore} saved={submit.isSuccess} />}
       primaryLabel={t.done}
       onPrimary={celebration.guard(() => router.back())}
       onExit={celebration.guard(() => router.back())}

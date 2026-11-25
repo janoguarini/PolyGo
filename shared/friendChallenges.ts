@@ -20,7 +20,7 @@ export const FRIEND_DAILY_MISSIONS: readonly FriendDailyMission[] = [
   {
     id: 'play_3',
     title: 'Jugá 3 partidas',
-    description: 'Ranked, contra bots o amistosos',
+    description: 'Ranked o amistosos',
     target: 3,
     reward: 10,
   },

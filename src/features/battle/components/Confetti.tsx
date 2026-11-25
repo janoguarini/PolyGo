@@ -27,22 +27,47 @@ function rand(i: number, salt: number) {
   return x - Math.floor(x);
 }
 
-/** Lluvia de confeti que cae una vez sobre toda la pantalla. No intercepta toques. */
-export function Confetti() {
+/**
+ * Lluvia de confeti que cae una vez sobre toda la pantalla. No intercepta toques. `palette` y `pieces`
+ * permiten, por ejemplo, la lluvia con los colores del rango al ascender.
+ */
+export function Confetti({
+  palette = PALETTE,
+  pieces = PIECES,
+}: {
+  palette?: readonly string[];
+  pieces?: number;
+} = {}) {
   const reduceMotion = useReducedMotion();
   const { width, height } = useWindowDimensions();
   if (reduceMotion) return null;
 
   return (
     <View style={StyleSheet.absoluteFill} pointerEvents="none">
-      {Array.from({ length: PIECES }, (_, i) => (
-        <Piece key={i} index={i} width={width} height={height} />
+      {Array.from({ length: pieces }, (_, i) => (
+        <Piece
+          key={i}
+          index={i}
+          width={width}
+          height={height}
+          color={palette[i % palette.length]!}
+        />
       ))}
     </View>
   );
 }
 
-function Piece({ index, width, height }: { index: number; width: number; height: number }) {
+function Piece({
+  index,
+  width,
+  height,
+  color,
+}: {
+  index: number;
+  width: number;
+  height: number;
+  color: string;
+}) {
   const t = useSharedValue(0);
   const x = rand(index, 1) * width;
   const drift = (rand(index, 2) - 0.5) * 120;
@@ -51,7 +76,6 @@ function Piece({ index, width, height }: { index: number; width: number; height:
   const h = w * (rand(index, 6) > 0.5 ? 1.8 : 1);
   const delay = rand(index, 7) * 900;
   const duration = 2200 + rand(index, 8) * 1600;
-  const color = PALETTE[index % PALETTE.length];
 
   useEffect(() => {
     t.value = withDelay(delay, withTiming(1, { duration, easing: Easing.in(Easing.quad) }));

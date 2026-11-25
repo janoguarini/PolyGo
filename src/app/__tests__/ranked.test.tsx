@@ -56,21 +56,16 @@ describe('pestaña Ranked', () => {
     });
   });
 
-  it('un único modo, Word Rush: 60 s que combinan los cuatro formatos (sin selector ni Arcade)', async () => {
+  it('un único modo, Word Rush, sin textos explicativos (sin selector ni Arcade)', async () => {
     mockDisabled = false;
     await render(<RankedScreen />);
 
     expect(screen.getAllByText('Word Rush').length).toBeGreaterThan(0);
-    expect(
-      screen.getByText('60 segundos que mezclan cuatro formatos en una sola partida'),
-    ).toBeTruthy();
-    expect(
-      screen.getByLabelText(
-        'Formatos de la partida: Swipe Battle, Connect Battle, Sentence Rush, Audio Blitz',
-      ),
-    ).toBeTruthy();
-    // Los formatos sólo se muestran: no son botones para elegir un modo.
-    expect(screen.queryByRole('button', { name: /Swipe|Connect|Sentence|Audio/ })).toBeNull();
+    // Ni el resumen de 60 s ni la lista de formatos: sólo el modo y los botones.
+    expect(screen.queryByText(/cuatro formatos/)).toBeNull();
+    expect(screen.queryByLabelText(/^Formatos de la partida/)).toBeNull();
+    expect(screen.queryByText(/Swipe Battle|Connect Battle|Sentence Rush|Audio Blitz/)).toBeNull();
+    expect(screen.getByRole('button', { name: 'Buscar partida' })).toBeTruthy();
     // Ni texto visible ni etiqueta de accesibilidad nombran a Arcade como modo.
     expect(screen.queryByText(/arcade/i)).toBeNull();
     expect(screen.queryByLabelText(/arcade/i)).toBeNull();

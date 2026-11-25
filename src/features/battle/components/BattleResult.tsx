@@ -1,4 +1,5 @@
 import { RotateCcw } from 'lucide-react-native';
+import { useState, type ReactNode } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Animated, { FadeInUp, ZoomIn } from 'react-native-reanimated';
 
@@ -22,6 +23,7 @@ import { useStrings } from '@/i18n';
 
 import { ArcadeResultStats } from '../arcade/ArcadeResultStats';
 import { Confetti } from './Confetti';
+import { RankUpCelebration, rankUpKind } from './RankUpCelebration';
 import { ResultHero } from './ResultHero';
 import { battleStrings } from '../strings';
 import { useAchievementTitle } from '@/features/profile/strings';
@@ -30,13 +32,15 @@ interface Props {
   result: BattleFinish;
   onPlayAgain: () => void;
   onExit: () => void;
+  /** Recompensa bajo el encabezado (la XP de la partida: XpRewardCard). */
+  reward?: ReactNode;
 }
 
 const TITLES = { win: 'victory', loss: 'defeat', draw: 'draw' } as const;
 /** Emoji grande del encabezado: sólido y a color, como los del resto de la app. */
 const EMOJIS = { win: '🏆', loss: '💪', draw: '🤝', practice: '🎯' } as const;
 
-export function BattleResult({ result, onPlayAgain, onExit }: Props) {
+export function BattleResult({ result, onPlayAgain, onExit, reward }: Props) {
   const styles = useStyles();
   const t = useStrings(battleStrings);
   const achievementTitle = useAchievementTitle();
@@ -61,6 +65,12 @@ export function BattleResult({ result, onPlayAgain, onExit }: Props) {
             ? t.calibrationSubtitle(result.calibration.used, result.calibration.limit)
             : null;
   const victory = !practice && me.outcome === 'win';
+  // Subiste de división, de rango o entraste al ranking: celebración a pantalla completa (una vez).
+  const rankUp =
+    practice || unrated || result.friendly
+      ? null
+      : rankUpKind(me.ratingBefore, me.ratingAfter, me.placedBefore ?? true, victory);
+  const [celebrating, setCelebrating] = useState(rankUp !== null);
   // Victorias y derrotas llevan al zorro; empates y prácticas, el encabezado simple.
   const heroOutcome = practice
     ? null
@@ -103,6 +113,8 @@ export function BattleResult({ result, onPlayAgain, onExit }: Props) {
           ) : null}
         </Animated.View>
       )}
+
+      {reward}
 
       <Card style={styles.gap}>
         <Line label={t.you} player={me} highlight />
@@ -156,6 +168,14 @@ export function BattleResult({ result, onPlayAgain, onExit }: Props) {
       />
       <Button label={t.back} variant="ghost" onPress={onExit} />
       {victory ? <Confetti /> : null}
+      {rankUp && celebrating && me.ratingBefore != null && me.ratingAfter != null ? (
+        <RankUpCelebration
+          ratingBefore={me.ratingBefore}
+          ratingAfter={me.ratingAfter}
+          kind={rankUp}
+          onClose={() => setCelebrating(false)}
+        />
+      ) : null}
     </View>
   );
 }

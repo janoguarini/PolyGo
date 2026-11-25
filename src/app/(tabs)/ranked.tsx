@@ -35,7 +35,6 @@ import {
   themedStyles,
   gradients,
 } from '@/design-system';
-import { FormatStrip } from '@/features/battle/arcade/FormatStrip';
 import { rankedDisabled } from '@/features/battle/availability';
 import { battleStrings } from '@/features/battle/strings';
 import { useActiveSeason, useMyProfile } from '@/features/profile/hooks';
@@ -165,8 +164,8 @@ export default function RankedScreen() {
 }
 
 /**
- * Word Rush, el único modo Ranked: 60 s que mezclan Swipe, Connect, Sentence y Audio (los formatos se
- * muestran como partes del juego, no para elegir). Buscar partida o practicar sin ELO.
+ * Word Rush, el único modo Ranked: el nombre del modo y los dos botones (buscar partida o practicar
+ * sin ELO). Sin textos explicativos: los formatos se descubren jugando.
  */
 function MatchModeCard() {
   const styles = useStyles();
@@ -182,17 +181,6 @@ function MatchModeCard() {
           Word Rush
         </Text>
       </View>
-      <Text color="text" align="center">
-        {t.modeSummary}
-      </Text>
-      <FormatStrip
-        colors={{
-          chip: colors.inset,
-          border: colors.brandBorder,
-          icon: colors.primarySoft,
-          text: colors.textStrong,
-        }}
-      />
       <GoldButton
         label={t.findMatch}
         accessibilityHint={t.findMatchHint}

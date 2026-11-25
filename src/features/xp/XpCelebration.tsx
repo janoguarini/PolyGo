@@ -16,7 +16,7 @@ import { Button, Text, colors, radii, spacing, themedStyles } from '@/design-sys
 import { useStrings } from '@/i18n';
 import { playSound } from '@/lib/sounds';
 
-import { nextXpAnnouncement } from './announce';
+import { nextXpAnnouncement, xpAnnouncementsSuppressed } from './announce';
 import { useXp, type XpState } from './api';
 import { LevelBadge } from './LevelBadge';
 import { LevelProgress } from './LevelProgress';
@@ -47,7 +47,8 @@ export function XpCelebration() {
   useEffect(() => {
     const announce = (state: XpState) => {
       const next = nextXpAnnouncement(state);
-      if (!next) return;
+      // Los resultados de la lección lo muestran ellos (XpRewardCard): acá no se repite.
+      if (!next || xpAnnouncementsSuppressed()) return;
       if (next.kind === 'level') {
         // El modal tapa cualquier aviso de +XP que siga visible.
         setLevelUp({ level: next.level, gained: next.gained });

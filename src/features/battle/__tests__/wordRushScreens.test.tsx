@@ -106,19 +106,16 @@ const fromSnapshot = (s: BattleSnapshot): BattleState =>
 const allText = () => JSON.stringify(screen.toJSON());
 
 describe('Word Rush antes de jugar (identidad oscura, un solo modo)', () => {
-  it('rival encontrado: Word Rush de 60 s con sus cuatro formatos, sin ELO contra el bot', async () => {
+  it('rival encontrado: Word Rush de 60 s, sin formatos ni reglas, y la nota corta de ELO', async () => {
     const onReady = jest.fn();
     const state = fromSnapshot(snapshot({ rating: 'unrated', calibration: null }));
     await render(<ArcadeLobby state={state} now={100_000} onReady={onReady} />);
     expect(screen.getByText('¡Rival encontrado!')).toBeTruthy();
     expect(screen.getByText('Word Rush')).toBeTruthy();
     expect(screen.getByText('60 s')).toBeTruthy();
-    expect(
-      screen.getByLabelText(
-        'Formatos de la partida: Swipe Battle, Connect Battle, Sentence Rush, Audio Blitz',
-      ),
-    ).toBeTruthy();
-    expect(screen.getByText(/ganes o pierdas, tu ELO no cambia/i)).toBeTruthy();
+    expect(screen.queryByLabelText(/^Formatos de la partida/)).toBeNull();
+    expect(screen.queryByText(/cuatro formatos/)).toBeNull();
+    expect(screen.getByText('Partida sin ELO: ganes o pierdas, tu ELO no cambia.')).toBeTruthy();
     expect(screen.getByText('Confirmá en 10 s o la partida se cancela.')).toBeTruthy();
     await fireEvent.press(screen.getByRole('button', { name: '¡Listo!' }));
     expect(onReady).toHaveBeenCalledTimes(1);
@@ -154,7 +151,7 @@ describe('Word Rush antes de jugar (identidad oscura, un solo modo)', () => {
     );
     expect(screen.getByText('Opponent found!')).toBeTruthy();
     expect(screen.getByText('Word Rush')).toBeTruthy();
-    expect(screen.getByLabelText(/^Match formats: /)).toBeTruthy();
+    expect(screen.queryByLabelText(/^Match formats: /)).toBeNull();
     expect(allText()).not.toMatch(/arcade/i);
   });
 });
@@ -188,6 +185,36 @@ describe('Word Rush en juego', () => {
     expect(screen.getByText('¡Tiempo!')).toBeTruthy();
     expect(screen.getByText('Calculando el resultado…')).toBeTruthy();
     expect(screen.queryByText('Swipe Battle')).toBeNull();
+  });
+
+  it('el «+puntos» va en su propia franja, arriba del desafío: nunca tapa la palabra', async () => {
+    const base = playing();
+    const state: BattleState = {
+      ...base,
+      arcade: {
+        ...base.arcade!,
+        verdict: {
+          id: 1,
+          challengeIndex: 0,
+          kind: 'swipe',
+          correct: true,
+          points: 400,
+          multiplier: 4,
+          frenzy: false,
+          comboBroken: false,
+          tierUp: false,
+        },
+      },
+    };
+    await render(<ArcadeStage state={state} now={110_000} onAnswer={jest.fn()} />);
+    const flash = screen.getByText(/^\+400/);
+    // Ningún antecesor del cartel es la tarjeta del Swipe (la de la palabra).
+    for (let node = flash.parent; node; node = node.parent) {
+      expect(String(node.props.accessibilityLabel ?? '')).not.toMatch(/apple/);
+    }
+    // Y se dibuja antes que el desafío (arriba de «Swipe Battle»).
+    const tree = allText();
+    expect(tree.indexOf('+')).toBeLessThan(tree.indexOf('Swipe Battle'));
   });
 
   it('si se cae la conexión, avisa que reconecta y que el reloj sigue', async () => {
@@ -252,7 +279,7 @@ describe('resultado de Word Rush', () => {
         onExit={jest.fn()}
       />,
     );
-    expect(screen.getByText('Rival de práctica y sin ELO: tu ELO no cambió.')).toBeTruthy();
+    expect(screen.getByText('Partida sin ELO: tu ELO no cambió.')).toBeTruthy();
     expect(screen.queryByText('BOT')).toBeNull();
     expect(screen.queryByText('ELO anterior')).toBeNull();
     expect(screen.queryByText('ELO actual')).toBeNull();

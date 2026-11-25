@@ -1,7 +1,7 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { ArrowRight, Crown } from 'lucide-react-native';
-import { useEffect } from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { useContext, useEffect } from 'react';
+import { Image, StyleSheet, View, useWindowDimensions } from 'react-native';
 import Animated, {
   Easing,
   FadeIn,
@@ -14,6 +14,7 @@ import Animated, {
   withSequence,
   withTiming,
 } from 'react-native-reanimated';
+import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
 
 import { getRank, type RankInfo } from '@shared/ranking';
 
@@ -44,6 +45,27 @@ const fadeFrom = () => {
   return `rgba(${r}, ${g}, ${b}, 0)`;
 };
 
+/**
+ * Alto que necesita el resto del resultado para que la tarjeta de rango SIEMPRE se vea completa sin
+ * scrollear: barra superior, corona, título, ELO, subtítulo, la tarjeta «ELO anterior → actual», la de
+ * la división y los espacios entre medio (medido en el iPhone, con margen).
+ */
+const RESERVED_RATED = 530;
+/** Sin ELO no hay tarjetas de rango: el zorro puede ser más grande. */
+const RESERVED_UNRATED = 330;
+const FOX_MAX = 320;
+/** Más chico que esto no se luce: mejor no mostrarlo y dejar el rango a la vista. */
+const FOX_MIN = 110;
+
+/**
+ * Tamaño del zorro según el alto disponible (pantalla menos zonas seguras): lo que sobra después de
+ * reservar el título y el rango, hasta FOX_MAX. 0 = no entra (pantalla chica): no se muestra.
+ */
+export function resultFoxSize(availableHeight: number, rated: boolean): number {
+  const size = Math.min(FOX_MAX, availableHeight - (rated ? RESERVED_RATED : RESERVED_UNRATED));
+  return size >= FOX_MIN ? Math.round(size) : 0;
+}
+
 interface Props {
   outcome: 'win' | 'loss';
   /** null en partidas sin ELO (amistosos, abandono sin rating). */
@@ -62,6 +84,10 @@ export function ResultHero({ outcome, ratingBefore, ratingAfter, placedBefore, s
   const win = outcome === 'win';
   const rated = ratingBefore !== null && ratingAfter !== null;
   const delta = rated ? ratingAfter - ratingBefore : 0;
+  const { height } = useWindowDimensions();
+  // Sin proveedor (p. ej. en tests) las zonas seguras valen 0.
+  const insets = useContext(SafeAreaInsetsContext) ?? { top: 0, bottom: 0 };
+  const foxSize = resultFoxSize(height - insets.top - insets.bottom, rated);
 
   return (
     <View style={styles.wrap}>
@@ -90,40 +116,45 @@ export function ResultHero({ outcome, ratingBefore, ratingAfter, placedBefore, s
         ) : null}
       </Animated.View>
 
-      <Animated.View entering={FadeIn.delay(150).duration(500)} style={styles.foxWrap}>
-        <Image
-          source={FOX[outcome]}
-          style={styles.fox}
-          resizeMode="contain"
-          accessibilityIgnoresInvertColors
-          accessibilityLabel={t[FOX_LABEL[outcome]]}
-        />
-        {/* Bordes difuminados para que no se vea el cuadrado de la foto. */}
-        <LinearGradient
-          colors={[fadeTo(), fadeFrom()]}
-          style={styles.fadeTop}
-          pointerEvents="none"
-        />
-        <LinearGradient
-          colors={[fadeFrom(), fadeTo()]}
-          style={styles.fadeBottom}
-          pointerEvents="none"
-        />
-        <LinearGradient
-          colors={[fadeTo(), fadeFrom()]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
-          style={styles.fadeLeft}
-          pointerEvents="none"
-        />
-        <LinearGradient
-          colors={[fadeFrom(), fadeTo()]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
-          style={styles.fadeRight}
-          pointerEvents="none"
-        />
-      </Animated.View>
+      {foxSize > 0 ? (
+        <Animated.View
+          entering={FadeIn.delay(150).duration(500)}
+          style={[styles.foxWrap, { width: foxSize, height: foxSize }]}
+        >
+          <Image
+            source={FOX[outcome]}
+            style={styles.fox}
+            resizeMode="contain"
+            accessibilityIgnoresInvertColors
+            accessibilityLabel={t[FOX_LABEL[outcome]]}
+          />
+          {/* Bordes difuminados para que no se vea el cuadrado de la foto. */}
+          <LinearGradient
+            colors={[fadeTo(), fadeFrom()]}
+            style={styles.fadeTop}
+            pointerEvents="none"
+          />
+          <LinearGradient
+            colors={[fadeFrom(), fadeTo()]}
+            style={styles.fadeBottom}
+            pointerEvents="none"
+          />
+          <LinearGradient
+            colors={[fadeTo(), fadeFrom()]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            style={styles.fadeLeft}
+            pointerEvents="none"
+          />
+          <LinearGradient
+            colors={[fadeFrom(), fadeTo()]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            style={styles.fadeRight}
+            pointerEvents="none"
+          />
+        </Animated.View>
+      ) : null}
 
       {rated && !placedBefore && !win ? (
         <Animated.View entering={FadeInUp.delay(250).duration(400)}>
@@ -291,11 +322,9 @@ const useStyles = themedStyles(() =>
     titles: { alignItems: 'center', gap: spacing.xxs },
     lossTitles: { marginTop: spacing.lg },
     title: { fontSize: 40, lineHeight: 46 },
+    // El tamaño lo da resultFoxSize (cuadrado, según el alto de la pantalla).
     foxWrap: {
       alignSelf: 'center',
-      width: '100%',
-      maxWidth: 340,
-      aspectRatio: 1,
       marginVertical: -spacing.md,
     },
     fox: { width: '100%', height: '100%' },

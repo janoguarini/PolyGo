@@ -28,11 +28,10 @@ export const battleScreenStrings = defineStrings({
     labelUnrated: 'WORD RUSH · SIN ELO',
     labelCalibration: (used: number, limit: number) => `RANKED · CALIBRACIÓN ${used}/${limit}`,
     labelRanked: 'RANKED · WORD RUSH',
-    noteUnrated:
-      'Rival de práctica y sin ELO: ya jugaste tus partidas de calibración en este idioma. Ganes o pierdas, tu ELO no cambia.',
+    noteUnrated: 'Partida sin ELO: ganes o pierdas, tu ELO no cambia.',
     noteCalibration: (used: number, limit: number) =>
-      `Partida de calibración ${used} de ${limit} contra un rival de práctica: mueve tu ELO. Después, contra rivales de práctica se juega sin ELO.`,
-    noteCompetitive: 'Partida contra una persona: mueve tu ELO.',
+      `Partida de calibración ${used} de ${limit}: mueve tu ELO.`,
+    noteCompetitive: 'Partida clasificatoria: mueve tu ELO.',
     preparing: 'Preparando la partida…',
     declinedTitle: (name: string | undefined) =>
       name ? `@${name} no puede ahora` : 'Tu amigo no puede ahora',
@@ -40,10 +39,8 @@ export const battleScreenStrings = defineStrings({
     createOwnChallenge: 'Crear mi propio desafío',
     searching: 'Buscando rival…',
     waitingA11y: (mm: number, ss: string) => `Esperando ${mm} minutos ${ss} segundos`,
-    botSoon: (s: number) =>
-      `Si en ${s} s no aparece nadie, jugás contra un rival de práctica de tu nivel.`,
-    botSoonUnrated: (s: number) =>
-      `Si en ${s} s no aparece nadie, jugás contra un rival de práctica de tu nivel, sin ELO (ya usaste tus partidas de calibración).`,
+    searchingSub: (language: string | null) =>
+      language ? `Buscando a alguien de tu nivel en ${language}` : 'Buscando a alguien de tu nivel',
     cancelSearch: 'Cancelar búsqueda',
     opponentFound: '¡Rival encontrado!',
     you: 'Vos',
@@ -102,11 +99,10 @@ export const battleScreenStrings = defineStrings({
     labelUnrated: 'WORD RUSH · NO ELO',
     labelCalibration: (used: number, limit: number) => `RANKED · CALIBRATION ${used}/${limit}`,
     labelRanked: 'RANKED · WORD RUSH',
-    noteUnrated:
-      'Practice rival, no ELO: you’ve already played your calibration matches in this language. Win or lose, your ELO stays the same.',
+    noteUnrated: 'No-ELO match: win or lose, your ELO stays the same.',
     noteCalibration: (used: number, limit: number) =>
-      `Calibration match ${used} of ${limit} against a practice rival: it changes your ELO. After that, matches against practice rivals don’t affect ELO.`,
-    noteCompetitive: 'Match against a person: it changes your ELO.',
+      `Calibration match ${used} of ${limit}: it changes your ELO.`,
+    noteCompetitive: 'Ranked match: it changes your ELO.',
     preparing: 'Getting the match ready…',
     declinedTitle: (name: string | undefined) =>
       name ? `@${name} can’t play right now` : 'Your friend can’t play right now',
@@ -114,10 +110,10 @@ export const battleScreenStrings = defineStrings({
     createOwnChallenge: 'Create my own challenge',
     searching: 'Looking for an opponent…',
     waitingA11y: (mm: number, ss: string) => `Waiting ${mm} minutes ${ss} seconds`,
-    botSoon: (s: number) =>
-      `If nobody shows up in ${s} s, you’ll play a practice rival at your level.`,
-    botSoonUnrated: (s: number) =>
-      `If nobody shows up in ${s} s, you’ll play a practice rival at your level, with no ELO (you’ve used your calibration matches).`,
+    searchingSub: (language: string | null) =>
+      language
+        ? `Looking for someone at your level in ${language}`
+        : 'Looking for someone at your level',
     cancelSearch: 'Cancel search',
     opponentFound: 'Opponent found!',
     you: 'You',

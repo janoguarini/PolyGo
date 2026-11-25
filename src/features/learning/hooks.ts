@@ -78,11 +78,7 @@ export function useCurriculum() {
 }
 
 export function useLessonContent(lessonId: string) {
-  return useQuery({
-    queryKey: learningKeys.lesson(lessonId),
-    queryFn: () => fetchLessonContent(lessonId),
-    staleTime: 10 * 60_000,
-  });
+  return useQuery(lessonContentQuery(lessonId));
 }
 
 export function useLearningSummary() {
@@ -140,7 +136,12 @@ export function useWordPool() {
  * la ruta vieja.
  */
 export function useLessonPresentation(sessionId: string, lessonId: string) {
-  return useQuery({
+  return useQuery(lessonPresentationQuery(sessionId, lessonId));
+}
+
+/** La consulta de la presentación (también la usa la precarga de lessonWarmup.ts, con la misma clave). */
+export function lessonPresentationQuery(sessionId: string, lessonId: string) {
+  return {
     queryKey: ['lesson-presentation', sessionId, lessonId] as const,
     queryFn: () => startLessonPresentation(sessionId, lessonId),
     staleTime: Infinity,
@@ -149,7 +150,16 @@ export function useLessonPresentation(sessionId: string, lessonId: string) {
     retry: false,
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
-  });
+  };
+}
+
+/** La consulta del contenido de una lección (también la usa la precarga). */
+export function lessonContentQuery(lessonId: string) {
+  return {
+    queryKey: learningKeys.lesson(lessonId),
+    queryFn: () => fetchLessonContent(lessonId),
+    staleTime: 10 * 60_000,
+  };
 }
 
 /** Envía la sesión (idempotente por sessionId) y refresca progreso, resumen, palabras y logros. */
@@ -157,6 +167,10 @@ export function useSubmitSession() {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: submitLearningSession,
+    // Los resultados no esperan al guardado (se puede seguir enseguida): si la red falla, se reintenta
+    // solo. Es seguro: el envío es idempotente por session_id (un reenvío nunca duplica la sesión).
+    retry: 3,
+    retryDelay: (attempt) => Math.min(8_000, 1_000 * 2 ** attempt),
     onSuccess: () =>
       Promise.all([
         qc.invalidateQueries({ queryKey: learningKeys.all }),

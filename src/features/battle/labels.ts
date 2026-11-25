@@ -1,4 +1,4 @@
-import { BOT_CONFIG } from '@shared/bots';
+import type { BattleFinish } from '@shared/protocol';
 
 import type { battleScreenStrings } from '@/i18n/screens/battle';
 
@@ -8,7 +8,8 @@ type ScreenStrings = (typeof battleScreenStrings)['es'];
 
 /**
  * Qué tipo de partida es (se ve arriba durante toda la partida). Todo Ranked es Word Rush: lo que
- * cambia es si mueve el ELO (contra una persona, calibración contra un bot, o sin ELO).
+ * cambia es si mueve el ELO (clasificatoria, calibración o sin ELO). Ningún texto dice si el rival es
+ * un bot: los rivales de práctica se presentan como cualquier jugador (ver rivalLook.ts).
  */
 export function matchLabel(
   state: Pick<BattleState, 'friendly' | 'mode' | 'rating' | 'calibration'>,
@@ -38,14 +39,23 @@ export function ratingNote(
 }
 
 /**
- * Mientras se busca rival: el servidor pone un bot de tu nivel a los BOT_CONFIG.afterMs si no aparece
- * una persona. Sin partidas de calibración en este idioma, ese bot juega sin ELO. Antes de saber cuántas
- * quedan (todavía no llegó queue:status), el aviso general.
+ * Si se muestra «Buscando rival» (ArcadeSearching): al buscar partida Ranked, desde el primer instante
+ * (mientras conecta y entra a la cola) y hasta que aparece el rival. Nunca en desafíos ni prácticas.
  */
-export function searchHint(
-  queue: Pick<NonNullable<BattleState['queue']>, 'botCalibrationLeft'> | null,
-  t: ScreenStrings,
-): string {
-  const seconds = Math.round(BOT_CONFIG.afterMs / 1000);
-  return queue?.botCalibrationLeft === 0 ? t.botSoonUnrated(seconds) : t.botSoon(seconds);
+export function isRankedSearch(
+  state: Pick<BattleState, 'phase' | 'mode' | 'friendly' | 'challenge'>,
+  rankedRoute: boolean,
+): boolean {
+  return (
+    rankedRoute &&
+    (state.phase === 'idle' || state.phase === 'connecting' || state.phase === 'searching') &&
+    state.mode === 'ranked' &&
+    !state.friendly &&
+    !state.challenge
+  );
+}
+
+/** Si la partida suma XP (y se muestra la tarjeta de XP): sólo Ranked con ELO, ganes o pierdas. */
+export function battleGivesXp(result: Pick<BattleFinish, 'mode' | 'rating' | 'friendly'>): boolean {
+  return result.mode === 'ranked' && result.rating !== 'unrated' && !result.friendly;
 }

@@ -92,9 +92,8 @@ export const battleStrings = defineStrings({
     youForfeited: 'Abandonaste la partida.',
     opponentForfeited: (name: string | undefined) => `${name ?? 'Tu rival'} abandonó la partida.`,
     friendlySubtitle: 'Desafío amistoso: no mueve el ELO.',
-    unratedSubtitle: 'Rival de práctica y sin ELO: tu ELO no cambió.',
-    calibrationSubtitle: (used: number, limit: number) =>
-      `Calibración ${used} de ${limit} contra rivales de práctica.`,
+    unratedSubtitle: 'Partida sin ELO: tu ELO no cambió.',
+    calibrationSubtitle: (used: number, limit: number) => `Calibración ${used} de ${limit}.`,
     newAchievements: 'Logros nuevos',
     achievementsUnlocked: (n: number): string =>
       n === 1 ? 'LOGRO DESBLOQUEADO' : 'LOGROS DESBLOQUEADOS',
@@ -124,6 +123,14 @@ export const battleStrings = defineStrings({
     placedIn: 'Te posicionaste en',
     promotedTo: 'Ascendiste a',
     demotedTo: 'Bajaste a',
+
+    // RankUpCelebration
+    rankUpDivision: '¡ASCENDISTE!',
+    rankUpTier: '¡NUEVO RANGO!',
+    rankUpPlaced: '¡ENTRASTE AL RANKING!',
+    rankUpFrom: (from: string) => `Dejaste atrás ${from}`,
+    rankUpContinue: '¡Vamos!',
+    rankUpA11y: (rank: string) => `¡Ascendiste a ${rank}!`,
     yourDivision: 'Tu división',
     topOfLadder: 'Estás en la cima del ranking.',
     eloToNext: (n: number, next: string) => `Faltan ${n} ELO para ${next}`,
@@ -174,9 +181,8 @@ export const battleStrings = defineStrings({
     youForfeited: 'You left the match.',
     opponentForfeited: (name: string | undefined) => `${name ?? 'Your opponent'} left the match.`,
     friendlySubtitle: 'Friendly challenge: ELO doesn’t change.',
-    unratedSubtitle: 'Practice rival, no ELO: your ELO didn’t change.',
-    calibrationSubtitle: (used: number, limit: number) =>
-      `Calibration ${used} of ${limit} against practice rivals.`,
+    unratedSubtitle: 'No-ELO match: your ELO didn’t change.',
+    calibrationSubtitle: (used: number, limit: number) => `Calibration ${used} of ${limit}.`,
     newAchievements: 'New achievements',
     achievementsUnlocked: (n: number) =>
       n === 1 ? 'ACHIEVEMENT UNLOCKED' : 'ACHIEVEMENTS UNLOCKED',
@@ -205,6 +211,13 @@ export const battleStrings = defineStrings({
     placedIn: 'You placed in',
     promotedTo: 'Promoted to',
     demotedTo: 'Dropped to',
+
+    rankUpDivision: 'RANK UP!',
+    rankUpTier: 'NEW RANK!',
+    rankUpPlaced: 'YOU’RE ON THE LADDER!',
+    rankUpFrom: (from: string) => `You left ${from} behind`,
+    rankUpContinue: 'Let’s go!',
+    rankUpA11y: (rank: string) => `You reached ${rank}!`,
     yourDivision: 'Your division',
     topOfLadder: 'You’re at the top of the ladder.',
     eloToNext: (n: number, next: string) => `${n} ELO to ${next}`,

@@ -1,43 +1,32 @@
-import { BOT_CONFIG } from '@shared/bots';
-
 import { battleScreenStrings } from '@/i18n/screens/battle';
+import { rankedScreenStrings } from '@/i18n/screens/ranked';
 
-import { matchLabel, ratingNote, searchHint } from '../labels';
+import { battleGivesXp, isRankedSearch, matchLabel, ratingNote } from '../labels';
 
 const es = battleScreenStrings.es;
 const en = battleScreenStrings.en;
 
 const base = { friendly: false, mode: 'ranked' as const, rating: null, calibration: null };
 
+/** Nada que delate si el rival es un bot o una persona. */
+const REVEALS_RIVAL = /\bbots?\b|rivales? de pr[áa]ctica|practice rival|una persona|a person/i;
+
 describe('etiqueta de la partida: todo Ranked es Word Rush', () => {
-  it('contra una persona', () => {
-    expect(matchLabel({ ...base, rating: 'competitive' }, es)).toBe('RANKED · WORD RUSH');
-    expect(matchLabel({ ...base, rating: 'competitive' }, en)).toBe('RANKED · WORD RUSH');
+  it('clasificatoria', () => {
+    const s = { ...base, rating: 'competitive' as const };
+    expect(matchLabel(s, es)).toBe('RANKED · WORD RUSH');
+    expect(matchLabel(s, en)).toBe('RANKED · WORD RUSH');
+    expect(ratingNote(s, es)).toBe('Partida clasificatoria: mueve tu ELO.');
   });
 
-  it('calibración contra un rival de práctica: lo dice antes de empezar y que mueve el ELO', () => {
+  it('calibración: dice cuál es y que mueve el ELO', () => {
     const s = { ...base, rating: 'calibration' as const, calibration: { used: 2, limit: 3 } };
     expect(matchLabel(s, es)).toBe('RANKED · CALIBRACIÓN 2/3');
-    expect(ratingNote(s, es)).toContain('contra un rival de práctica: mueve tu ELO');
-    expect(ratingNote(s, es)).toContain('contra rivales de práctica se juega sin ELO');
-    expect(ratingNote(s, en)).toContain('against a practice rival: it changes your ELO');
+    expect(ratingNote(s, es)).toBe('Partida de calibración 2 de 3: mueve tu ELO.');
+    expect(ratingNote(s, en)).toBe('Calibration match 2 of 3: it changes your ELO.');
   });
 
-  it('ninguna etiqueta ni nota del lobby dice «bot»', () => {
-    const states = [
-      { ...base, rating: 'competitive' as const },
-      { ...base, rating: 'calibration' as const, calibration: { used: 1, limit: 3 } },
-      { ...base, rating: 'unrated' as const },
-    ];
-    for (const t of [es, en]) {
-      for (const s of states) {
-        expect(matchLabel(s, t)).not.toMatch(/\bbots?\b/i);
-        expect(ratingNote(s, t) ?? '').not.toMatch(/\bbots?\b/i);
-      }
-    }
-  });
-
-  it('bot fuera del cupo (unrated): Word Rush sin ELO, no «práctica»', () => {
+  it('fuera del cupo (unrated): Word Rush sin ELO, no «práctica»', () => {
     const s = { ...base, rating: 'unrated' as const };
     expect(matchLabel(s, es)).toBe('WORD RUSH · SIN ELO');
     expect(matchLabel(s, en)).toBe('WORD RUSH · NO ELO');
@@ -53,7 +42,7 @@ describe('etiqueta de la partida: todo Ranked es Word Rush', () => {
     expect(matchLabel({ ...base, mode: 'bot_practice' }, es)).toBe('WORD RUSH · SIN ELO');
   });
 
-  it('ninguna etiqueta ni nota menciona Arcade', () => {
+  it('ninguna etiqueta ni nota menciona Arcade ni delata al rival', () => {
     const states = [
       { ...base, rating: 'competitive' as const },
       { ...base, rating: 'calibration' as const, calibration: { used: 1, limit: 3 } },
@@ -65,31 +54,67 @@ describe('etiqueta de la partida: todo Ranked es Word Rush', () => {
       for (const s of states) {
         expect(matchLabel(s, t)).not.toMatch(/arcade/i);
         expect(ratingNote(s, t) ?? '').not.toMatch(/arcade/i);
+        expect(matchLabel(s, t)).not.toMatch(REVEALS_RIVAL);
+        expect(ratingNote(s, t) ?? '').not.toMatch(REVEALS_RIVAL);
       }
     }
   });
 });
 
-describe('aviso mientras se busca rival', () => {
-  const seconds = Math.round(BOT_CONFIG.afterMs / 1000);
+describe('búsqueda de rival', () => {
+  it('sólo dice que busca a alguien de tu nivel', () => {
+    expect(es.searchingSub('Inglés')).toBe('Buscando a alguien de tu nivel en Inglés');
+    expect(es.searchingSub(null)).toBe('Buscando a alguien de tu nivel');
+    expect(en.searchingSub('English')).toBe('Looking for someone at your level in English');
+  });
 
-  it('anuncia el rival de práctica a los 3 s, sin decir «bot»', () => {
-    expect(seconds).toBe(3);
-    expect(searchHint(null, es)).toBe(
-      'Si en 3 s no aparece nadie, jugás contra un rival de práctica de tu nivel.',
-    );
-    expect(searchHint({ botCalibrationLeft: 2 }, en)).toBe(
-      'If nobody shows up in 3 s, you’ll play a practice rival at your level.',
-    );
-    for (const left of [null, 2, 0]) {
-      const queue = left === null ? null : { botCalibrationLeft: left };
-      expect(searchHint(queue, es)).not.toMatch(/\bbots?\b/i);
-      expect(searchHint(queue, en)).not.toMatch(/\bbots?\b/i);
+  it('ni la búsqueda ni la pestaña Ranked mencionan bots ni rivales de práctica', () => {
+    for (const t of [es, en]) {
+      expect(t.searching).not.toMatch(REVEALS_RIVAL);
+      expect(t.searchingSub('Inglés')).not.toMatch(REVEALS_RIVAL);
+      expect(t.searchingSub(null)).not.toMatch(REVEALS_RIVAL);
+    }
+    for (const t of [rankedScreenStrings.es, rankedScreenStrings.en]) {
+      expect(t.findMatchHint).not.toMatch(REVEALS_RIVAL);
+    }
+  });
+});
+
+describe('cuándo se ve «Buscando rival»', () => {
+  const ranked = { mode: 'ranked' as const, friendly: false, challenge: null };
+
+  it('al buscar Ranked, desde el primer instante: antes de conectar, conectando y en la cola', () => {
+    for (const phase of ['idle', 'connecting', 'searching'] as const) {
+      expect(isRankedSearch({ ...ranked, phase }, true)).toBe(true);
     }
   });
 
-  it('sin partidas de calibración, aclara que ese bot es sin ELO', () => {
-    expect(searchHint({ botCalibrationLeft: 0 }, es)).toContain('sin ELO');
-    expect(searchHint({ botCalibrationLeft: 0 }, en)).toContain('no ELO');
+  it('nunca en prácticas, desafíos con amigos ni con el rival ya encontrado', () => {
+    expect(isRankedSearch({ ...ranked, phase: 'connecting', mode: 'practice' }, true)).toBe(false);
+    expect(isRankedSearch({ ...ranked, phase: 'idle' }, false)).toBe(false);
+    expect(isRankedSearch({ ...ranked, phase: 'connecting', friendly: true }, true)).toBe(false);
+    expect(
+      isRankedSearch(
+        { ...ranked, phase: 'searching', challenge: { code: 'ABC123', expiresAt: 0 } },
+        true,
+      ),
+    ).toBe(false);
+    for (const phase of ['found', 'countdown', 'playing', 'finished', 'error'] as const) {
+      expect(isRankedSearch({ ...ranked, phase }, true)).toBe(false);
+    }
+  });
+});
+
+describe('qué partidas muestran la XP ganada', () => {
+  it('Ranked con ELO (calibración o clasificatoria), ganes o pierdas', () => {
+    expect(battleGivesXp({ mode: 'ranked', rating: 'competitive' })).toBe(true);
+    expect(battleGivesXp({ mode: 'ranked', rating: 'calibration' })).toBe(true);
+  });
+
+  it('no las sin ELO, las prácticas ni los amistosos', () => {
+    expect(battleGivesXp({ mode: 'ranked', rating: 'unrated' })).toBe(false);
+    expect(battleGivesXp({ mode: 'practice', rating: 'unrated' })).toBe(false);
+    expect(battleGivesXp({ mode: 'bot_practice', rating: 'unrated' })).toBe(false);
+    expect(battleGivesXp({ mode: 'ranked', rating: 'competitive', friendly: true })).toBe(false);
   });
 });

@@ -50,4 +50,24 @@ export function nextXpAnnouncement(
 export function resetXpAnnouncements() {
   announced.clear();
   announcedLevels.clear();
+  suppressed = 0;
+}
+
+/**
+ * Pantallas que muestran ellas mismas la XP ganada (los resultados de una lección): mientras están
+ * a la vista, el aviso global («+20 XP» y el modal de nivel) no se muestra encima. Lo anunciado igual
+ * se marca, así no aparece después. Devuelve la función que levanta la supresión.
+ */
+let suppressed = 0;
+export function suppressXpAnnouncements(): () => void {
+  suppressed += 1;
+  let released = false;
+  return () => {
+    if (released) return;
+    released = true;
+    suppressed -= 1;
+  };
+}
+export function xpAnnouncementsSuppressed(): boolean {
+  return suppressed > 0;
 }

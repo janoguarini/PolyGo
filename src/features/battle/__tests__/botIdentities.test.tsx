@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react-native';
+import { fireEvent, render, screen } from '@testing-library/react-native';
 import type { ReactNode } from 'react';
 
 import type { ArcadeSnapshot } from '@shared/arcade';
@@ -13,6 +13,7 @@ import { MatchHistoryItem } from '@/features/profile/components/MatchHistoryItem
 import { __setInterfaceLanguageForTests } from '@/i18n';
 
 import { ArcadeLobby } from '../arcade/ArcadeLobby';
+import { ArcadeSearching } from '../arcade/ArcadeSearching';
 import { playerLook } from '../rivalLook';
 import { battleReducer, initialBattleState, type BattleState } from '../state';
 
@@ -77,7 +78,7 @@ jest.mock('@/features/cosmetics/ProfileBackdrop', () => {
   const { View } = jest.requireActual('react-native');
   return {
     ProfileBackdrop: ({ backgroundId, children }: { backgroundId: string; children: ReactNode }) =>
-      createElement(View, { testID: `fondo:${backgroundId}` }, children),
+      createElement(View, { testID: `fondo:${backgroundId ?? null}` }, children),
   };
 });
 jest.mock('@/design-system', () => {
@@ -89,6 +90,22 @@ jest.mock('@/design-system', () => {
       createElement(Text, null, `avatar:${avatarId ?? '-'}`),
   };
 });
+
+// Perfil propio para la pantalla de búsqueda (sin red ni react-query).
+jest.mock('@/features/profile/hooks', () => ({
+  useMyProfile: () => ({
+    data: {
+      profile: {
+        username: 'ana',
+        avatar_id: 'cat-red',
+        avatar_path: null,
+        frame_id: 'frame_leaf',
+        target_language: 'en',
+      },
+      rating: { rating: 182, wins: 6 },
+    },
+  }),
+}));
 
 beforeEach(() => __setInterfaceLanguageForTests('es'));
 
@@ -265,18 +282,23 @@ describe('rival encontrado (lobby)', () => {
     await render(<ArcadeLobby state={lobbyState(bot)} now={100_000} onReady={jest.fn()} />);
     expect(screen.getByText('¡Rival encontrado!')).toBeTruthy();
     expect(screen.getByText('Fede Martínez')).toBeTruthy();
-    expect(screen.getByText('174 ELO')).toBeTruthy();
+    // ELO y rango con su color, en la tarjeta a todo el ancho.
+    expect(screen.getByText(/^174 ELO/)).toBeTruthy();
+    // Vos (182) y el rival (174) están en Bronce III: el rango figura en las dos tarjetas.
+    expect(screen.getAllByText(/·\s+Bronce III$/)).toHaveLength(2);
     expect(screen.getByText(`avatar:${FEDE.avatarId} marco:${FEDE.frameId}`)).toBeTruthy();
+    // Uno arriba del otro con un VS en el medio.
+    expect(screen.getByText('VS', { includeHiddenElements: true })).toBeTruthy();
     expect(screen.getByTestId(`fondo:${FEDE.backgroundId}`)).toBeTruthy();
     expect(screen.getByLabelText('Fede Martínez, 174 ELO')).toBeTruthy();
     // Ni distintivo ni la palabra «bot» en ningún texto o etiqueta de accesibilidad.
     expect(screen.queryByText('BOT')).toBeNull();
-    expect(allText()).not.toMatch(/\bbots?\b/i);
-    // Sigue diciendo, antes de empezar, que es un rival de práctica y que no mueve el ELO.
-    expect(screen.getByText(/^Rival de práctica y sin ELO/)).toBeTruthy();
+    expect(allText()).not.toMatch(/\bbots?\b|rival(es)? de pr[áa]ctica/i);
+    // Antes de empezar dice que no mueve el ELO, sin decir contra quién.
+    expect(screen.getByText(/^Partida sin ELO/)).toBeTruthy();
   });
 
-  it('en calibración avisa antes de empezar que es contra un rival de práctica y que mueve el ELO', async () => {
+  it('en calibración avisa antes de empezar que mueve el ELO, sin delatar al rival', async () => {
     await render(
       <ArcadeLobby
         state={lobbyState(bot, { rating: 'calibration', calibration: { used: 1, limit: 3 } })}
@@ -284,11 +306,11 @@ describe('rival encontrado (lobby)', () => {
         onReady={jest.fn()}
       />,
     );
-    expect(screen.getByText(/contra un rival de práctica: mueve tu ELO/)).toBeTruthy();
-    expect(allText()).not.toMatch(/\bbots?\b/i);
+    expect(screen.getByText('Partida de calibración 1 de 3: mueve tu ELO.')).toBeTruthy();
+    expect(allText()).not.toMatch(/\bbots?\b|rival(es)? de pr[áa]ctica/i);
   });
 
-  it('un jugador real se sigue viendo con su propio perfil (sin identidad ni fondo)', async () => {
+  it('un jugador real se ve con su propio perfil, en una tarjeta con el fondo por defecto', async () => {
     const human: PublicPlayer = {
       slot: 2,
       username: 'bob',
@@ -305,11 +327,29 @@ describe('rival encontrado (lobby)', () => {
       />,
     );
     expect(screen.getByText('bob')).toBeTruthy();
-    expect(screen.getByText('990 ELO')).toBeTruthy();
+    expect(screen.getByText(/^990 ELO/)).toBeTruthy();
+    expect(screen.getByText(/·\s+Oro I$/)).toBeTruthy();
     expect(screen.getByText('avatar:panda-red marco:frame_crystal')).toBeTruthy();
     // Mi propio perfil, también tal cual.
     expect(screen.getByText('avatar:cat-red marco:frame_leaf')).toBeTruthy();
-    expect(screen.queryByTestId(/^fondo:/)).toBeNull();
+    // Las dos tarjetas con el mismo formato: sin fondo propio, el violeta por defecto.
+    expect(screen.getAllByTestId('fondo:null')).toHaveLength(2);
+  });
+
+  it('mi tarjeta usa el fondo y el marco de mi perfil, con el mismo formato que la del rival', async () => {
+    await render(
+      <ArcadeLobby
+        state={lobbyState(bot)}
+        now={100_000}
+        onReady={jest.fn()}
+        myLook={{ avatarId: 'cat-red', frameId: 'frame_master', backgroundId: 'bg_aurora' }}
+      />,
+    );
+    expect(screen.getByTestId('fondo:bg_aurora')).toBeTruthy();
+    expect(screen.getByText('avatar:cat-red marco:frame_master')).toBeTruthy();
+    expect(screen.getByTestId(`fondo:${FEDE.backgroundId}`)).toBeTruthy();
+    expect(screen.getByLabelText('Vos, 182 ELO')).toBeTruthy();
+    expect(screen.getByLabelText('Fede Martínez, 174 ELO')).toBeTruthy();
   });
 });
 
@@ -362,5 +402,43 @@ describe('la identidad es la misma en toda la experiencia', () => {
       frameId: undefined,
       backgroundId: null,
     });
+  });
+});
+
+// ---------- búsqueda de rival ----------
+
+describe('buscando rival (pantalla oscura de Word Rush)', () => {
+  it('muestra tu perfil, la espera, el idioma y qué se juega, sin decir nada de bots', async () => {
+    const onCancel = jest.fn();
+    await render(<ArcadeSearching waitedMs={2_400} onCancel={onCancel} />);
+    expect(screen.getByText('Buscando rival…')).toBeTruthy();
+    expect(screen.getByText('0:02')).toBeTruthy();
+    expect(screen.getByLabelText('Esperando 0 minutos 02 segundos')).toBeTruthy();
+    expect(screen.getByText(/^Buscando a alguien de tu nivel en /)).toBeTruthy();
+    // Tu avatar y marco (en el radar, decorativo: oculto al lector de pantalla), tu ELO y tu rango.
+    expect(
+      screen.getByText('avatar:cat-red marco:frame_leaf', { includeHiddenElements: true }),
+    ).toBeTruthy();
+    // Insignia de rango con los colores del tier (182 = Bronce).
+    expect(screen.getByLabelText(/^Bronce .+, 182 ELO$/)).toBeTruthy();
+    // El modo, sin la lista de formatos ni las reglas.
+    expect(screen.getByText('Word Rush')).toBeTruthy();
+    expect(screen.getByText('60 s')).toBeTruthy();
+    expect(screen.queryByLabelText(/^Formatos de la partida: /)).toBeNull();
+    expect(screen.queryByText(/cuatro formatos/)).toBeNull();
+    // Nada que delate a los bots.
+    expect(allText()).not.toMatch(/\bbots?\b|rival(es)? de pr[áa]ctica|practice rival/i);
+    expect(allText()).not.toMatch(/arcade/i);
+    await fireEvent.press(screen.getByRole('button', { name: 'Cancelar búsqueda' }));
+    expect(onCancel).toHaveBeenCalledTimes(1);
+  });
+
+  it('en inglés, igual de neutral', async () => {
+    __setInterfaceLanguageForTests('en');
+    await render(<ArcadeSearching waitedMs={65_000} onCancel={jest.fn()} />);
+    expect(screen.getByText('Looking for an opponent…')).toBeTruthy();
+    expect(screen.getByText('1:05')).toBeTruthy();
+    expect(screen.getByText(/^Looking for someone at your level in /)).toBeTruthy();
+    expect(allText()).not.toMatch(/\bbots?\b|practice rival/i);
   });
 });

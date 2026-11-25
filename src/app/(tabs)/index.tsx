@@ -39,6 +39,7 @@ import { LessonPath } from '@/features/learning/components/LessonPath';
 import { PathScenery } from '@/features/learning/components/PathScenery';
 import { StreakCalendar } from '@/features/learning/components/StreakCalendar';
 import { useCurriculum, useLearningSummary } from '@/features/learning/hooks';
+import { WarmLesson } from '@/features/learning/lessonWarmup';
 import { daysLabel } from '@/features/learning/streak';
 import { streakStrings } from '@/features/learning/strings';
 import { useDailyMissions } from '@/features/missions/api';
@@ -302,6 +303,8 @@ export default function HomeScreen() {
         ) : null
       }
     >
+      {/* La lección que toca se precarga: al tocarla abre al instante (lessonWarmup.ts). */}
+      <WarmLesson lessonId={curriculum.data.currentByLevel[level]?.id} />
       <LearnHero level={level} completed={completed} total={total} />
       {units.length === 0 ? (
         <EmptyState title={t.noUnits} />

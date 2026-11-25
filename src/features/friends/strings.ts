@@ -244,7 +244,7 @@ export const friendsStrings = defineStrings({
  */
 export const friendMissionStrings = defineStrings({
   es: {
-    play_3: { title: 'Jugá 3 partidas', description: 'Ranked, contra bots o amistosos' },
+    play_3: { title: 'Jugá 3 partidas', description: 'Ranked o amistosos' },
     review_20: { title: 'Repasá 20 palabras', description: 'Respuestas en sesiones de repaso' },
     friendly_1: {
       title: 'Jugá un amistoso',
@@ -252,7 +252,7 @@ export const friendMissionStrings = defineStrings({
     },
   } satisfies Record<FriendMissionId, { title: string; description: string }>,
   en: {
-    play_3: { title: 'Play 3 matches', description: 'Ranked, against bots or friendly' },
+    play_3: { title: 'Play 3 matches', description: 'Ranked or friendly' },
     review_20: { title: 'Review 20 words', description: 'Answers in review sessions' },
     friendly_1: {
       title: 'Play a friendly match',
