@@ -1883,3 +1883,111 @@
 .f-frenzy { transition: transform 0.3s ease, opacity 0.3s ease; }
 .hero-stage:not(.frz) .f-frenzy { opacity: 0.55; }
 .hero-stage.frz .f-frenzy { transform: scale(1.12); }
+
+/* ---------- portada en celular: menú compacto, título en 2 renglones y el teléfono enseguida ---------- */
+@media (max-width: 760px) {
+  .home .nav-inner {
+    height: 56px;
+  }
+  .home .nav .logo img {
+    width: 30px;
+    height: 30px;
+  }
+  .home .nav .btn-sm {
+    padding: 8px 16px;
+  }
+  .hero {
+    min-height: 0;
+    padding: 14px 0 36px;
+  }
+  .hero-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    text-align: center;
+  }
+  /* Los hijos del bloque de texto se ordenan junto con el teléfono. */
+  .hero-copy {
+    display: contents;
+  }
+  .chip-pill {
+    order: 1;
+    align-self: center;
+    margin: 0 0 12px;
+    padding: 5px 12px;
+    font-size: 0.78rem;
+  }
+  .hero h1 {
+    order: 2;
+    font-size: clamp(1.55rem, 7.1vw, 2.2rem);
+    line-height: 1.08;
+    margin: 0;
+  }
+  .hero h1 .br-d {
+    display: none;
+  }
+  .hero-stage {
+    order: 3;
+    min-height: 0;
+    /* Con zoom, la altura también se escala: 680 × 0,72 ≈ 490 px reales (teléfono + aire). */
+    height: 680px;
+    margin: 6px 0 10px;
+    transform: none;
+    zoom: 0.72;
+  }
+  .hero .lead {
+    order: 4;
+    font-size: 1rem;
+    margin: 0 auto 18px;
+  }
+  .hero-stores {
+    order: 5;
+    justify-content: center;
+    gap: 10px;
+  }
+  .hero-stores .stores {
+    display: contents;
+  }
+  .hero-stores .store {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 9px 10px;
+    gap: 8px;
+    justify-content: center;
+  }
+  .hero-stores .store strong {
+    font-size: 1.05rem;
+  }
+  .hero-stores .store svg {
+    width: 22px;
+    height: 22px;
+  }
+  .hero-stores .store-ig {
+    flex-basis: 100%;
+  }
+  .hero-proof {
+    order: 6;
+    justify-content: center;
+    margin-top: 16px;
+  }
+  .scroll-hint {
+    display: none;
+  }
+  /* El teléfono, el zorro y las tarjetas, ajustados al ancho. */
+  /* En celular las tarjetas tapaban el juego: el Frenesí se ve en el brillo dorado del teléfono. */
+  .hero-stage .f-streak,
+  .hero-stage .f-rank,
+  .hero-stage .f-frenzy {
+    display: none;
+  }
+  .hero-stage .hero-fox {
+    width: 180px;
+    left: 0;
+    bottom: 0;
+  }
+  .hero-stage .f-frenzy {
+    left: auto;
+    right: 0;
+    top: 46%;
+  }
+}
