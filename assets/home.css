@@ -1991,3 +1991,80 @@
     top: 46%;
   }
 }
+
+/* ---------- botones oficiales de las tiendas ---------- */
+.home .store[data-store] {
+  background: #000;
+  border: 1px solid #a6a6a6;
+  border-radius: 10px;
+  padding: 8px 18px 8px 14px;
+  min-width: 0;
+  font-family: -apple-system, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+.home .store[data-store] small {
+  font-size: 0.68rem;
+  font-weight: 500;
+  opacity: 1;
+}
+.home .store[data-store] strong {
+  font-size: 1.32rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.home .store[data-store='android'] small {
+  text-transform: uppercase;
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+}
+.home .store[data-store='android'] strong {
+  font-weight: 500;
+}
+.home .store[data-store]:hover {
+  border-color: #fff;
+}
+
+/* ---------- celular: sin «Gratis», teléfono más chico y tiendas a la vista ---------- */
+@media (max-width: 760px) {
+  .chip-pill {
+    display: none;
+  }
+  .hero {
+    padding-top: 18px;
+  }
+  /* Sin zoom (Safari recalcula y la página salta): escala por transform con alto fijo. */
+  .hero-stage {
+    zoom: 1;
+    height: 392px;
+    margin: 8px 0 6px;
+    align-items: flex-start;
+  }
+  .hero-stage .phone-hero {
+    flex: none;
+    transform: scale(0.58) rotate(-3deg);
+    transform-origin: top center;
+  }
+  .hero-stage .hero-fox {
+    width: 118px;
+    left: 4%;
+    bottom: 0;
+    animation: none;
+  }
+  .hero-stores {
+    order: 4;
+    margin-bottom: 16px;
+  }
+  .hero .lead {
+    order: 5;
+    margin-bottom: 0;
+  }
+  .hero-proof {
+    order: 6;
+  }
+  .hero-stores .store[data-store] {
+    padding: 7px 10px;
+  }
+  .hero-stores .store[data-store] strong {
+    font-size: 1.08rem;
+  }
+}
