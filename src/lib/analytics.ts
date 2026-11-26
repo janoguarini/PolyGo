@@ -24,6 +24,9 @@ export type AnalyticsEvent =
   | 'username_suggestion_used'
   | 'tutorial_completed'
   | 'tutorial_skipped'
+  | 'push_delivered'
+  | 'push_opened'
+  | 'push_permission'
   | 'lesson_started'
   | 'lesson_completed'
   | 'review_started'
@@ -144,4 +147,16 @@ export function analyticsEnabled(): boolean {
 /** Sólo para tests. */
 export function __resetAnalyticsClient(next?: PostHog | null): void {
   client = next;
+}
+
+/**
+ * Payload de un feature flag de PostHog (configuración remota: p. ej. la prioridad del push
+ * inteligente, «smart-push-priority»). undefined sin analítica, sin el flag o si todavía no cargó.
+ */
+export function flagPayload(key: string): unknown {
+  try {
+    return ph()?.getFeatureFlagResult(key)?.payload;
+  } catch {
+    return undefined;
+  }
 }

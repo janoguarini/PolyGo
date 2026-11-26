@@ -13,7 +13,7 @@ import { useSpeechLanguage } from '@/features/learning/speech';
 import { AppTour } from '@/features/onboarding/AppTour';
 import { useFinishTour, useTourPending } from '@/features/onboarding/tour';
 import { useMyProfile } from '@/features/profile/hooks';
-import { useReminderSync } from '@/features/reminders/hooks';
+import { useAskPushPermissionOnce, usePushOpen, useReminderSync } from '@/features/reminders/hooks';
 import { useStoreReviewPrompt } from '@/features/storeReview/useStoreReviewPrompt';
 import { useWelcomeAutoOpen } from '@/features/welcomeRewards/useWelcomeAutoOpen';
 import { useWidgetSync } from '@/features/widgets/useWidgetSync';
@@ -41,6 +41,9 @@ export default function TabsLayout() {
   useWelcomeAutoOpen(Boolean(me.data));
   const tourPending = useTourPending(userId);
   const finishTour = useFinishTour(userId);
+  // Avisos: el permiso se pide una sola vez, al cerrar el tutorial; tocar un aviso abre su pantalla.
+  useAskPushPermissionOnce(Boolean(me.data) && !tourPending);
+  usePushOpen();
   // Valorar la app: tras 5 lecciones o 5 Ranked (lo primero), una sola vez; nunca sobre el tutorial.
   useStoreReviewPrompt(!tourPending);
   // Solicitudes de amistad sin responder + invitaciones: globito en la pestaña Amigos.

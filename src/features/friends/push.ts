@@ -8,6 +8,7 @@ import { Platform } from 'react-native';
 
 import { useAuth } from '@/features/auth/AuthProvider';
 import { getStrings } from '@/i18n';
+import { track } from '@/lib/analytics';
 import { requireSupabase } from '@/lib/supabase';
 
 import { rememberPushToken } from './pushToken';
@@ -82,6 +83,7 @@ export function notifyBattleInvite(code: string) {
 interface InviteData {
   type?: unknown;
   code?: unknown;
+  variant?: unknown;
 }
 
 function inviteCode(response: Notifications.NotificationResponse | null | undefined) {
@@ -117,6 +119,13 @@ export function useBattleInvitePush() {
     const id = lastResponse.notification.request.identifier;
     if (handled.has(id)) return;
     handled.add(id);
+    const variant = (lastResponse.notification.request.content.data as InviteData | undefined)
+      ?.variant;
+    track('push_opened', {
+      kind: 'challenge',
+      type: 'battle_invite',
+      variant: typeof variant === 'string' ? variant : null,
+    });
     router.push({ pathname: '/battle', params: { code } });
   }, [lastResponse]);
 

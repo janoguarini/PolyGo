@@ -5465,6 +5465,14 @@ export type Database = {
           user_id: string;
         }[];
       };
+      battle_server_challenge_host: {
+        Args: { p_code: string; p_host: string };
+        Returns: Json;
+      };
+      battle_server_challenge_join: {
+        Args: { p_code: string; p_guest: string };
+        Returns: Json;
+      };
       battle_settlement_context_v2: {
         Args: { p_battle_id: string; p_window_hours: number };
         Returns: {
@@ -6379,6 +6387,16 @@ export type Database = {
       srs_v2_user_rhythm100: {
         Args: { p_exclude: string; p_user: string };
         Returns: number;
+      };
+      start_friendly_battle: {
+        Args: {
+          p_battle_id: string;
+          p_code: string;
+          p_guest: string;
+          p_host: string;
+          p_protocol_version: number;
+        };
+        Returns: undefined;
       };
       start_battle: {
         Args: {

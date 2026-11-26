@@ -60,7 +60,7 @@ export const battleScreenStrings = defineStrings({
     practiceAgain: 'Practicar de nuevo',
     findAnother: 'Buscar otra partida',
     shareMessage: (code: string, language: string, link: string) =>
-      `¡Te desafío en Polygo! 75 segundos de vocabulario ${languageConfig(language).inName}, vos contra mí. Entrá con el código ${code} (Ranked → Tengo un código) o tocá: ${link}`,
+      `¡Te desafío en Polygo! 60 segundos de duelo ${languageConfig(language).inName}, vos contra mí. Entrá con el código ${code} (Ranked → Tengo un código) o tocá: ${link}`,
     waitingFor: (name: string) => `Esperando a @${name}`,
     inviteSent: 'Le llegó tu invitación en la app. Cuando la acepte, la partida empieza sola.',
     inviteNote:
@@ -133,7 +133,7 @@ export const battleScreenStrings = defineStrings({
     practiceAgain: 'Practice again',
     findAnother: 'Find another match',
     shareMessage: (code: string, language: string, link: string) =>
-      `I challenge you on Polygo! 75 seconds of ${languageName(language, 'en')} vocabulary, you vs. me. Join with the code ${code} (Ranked → I have a code) or tap: ${link}`,
+      `I challenge you on Polygo! A 60-second ${languageName(language, 'en')} duel, you vs. me. Join with the code ${code} (Ranked → I have a code) or tap: ${link}`,
     waitingFor: (name: string) => `Waiting for @${name}`,
     inviteSent:
       'Your invite reached them in the app. Once they accept, the match starts on its own.',

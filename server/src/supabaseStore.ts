@@ -13,6 +13,8 @@ import {
 } from './wordRushBank';
 import {
   consoleLogger,
+  CHALLENGE_ERRORS,
+  ChallengeError,
   StaleRatingError,
   type BattleStore,
   type BotBattleStart,
@@ -258,6 +260,45 @@ export function createSupabaseStore(
       } satisfies BotBattleStart;
     },
 
+    async challengeHost(code, hostId) {
+      const { data, error } = await db.rpc('battle_server_challenge_host', {
+        p_code: code,
+        p_host: hostId,
+      });
+      if (error) throw challengeError(error);
+      const res = data as unknown as {
+        language_code: string;
+        invitee_id: string | null;
+        expires_at: number;
+      };
+      return {
+        languageCode: res.language_code,
+        inviteeId: res.invitee_id,
+        expiresAt: Number(res.expires_at),
+      };
+    },
+
+    async challengeJoin(code, guestId) {
+      const { data, error } = await db.rpc('battle_server_challenge_join', {
+        p_code: code,
+        p_guest: guestId,
+      });
+      if (error) throw challengeError(error);
+      const res = data as unknown as { host_id: string; language_code: string };
+      return { hostId: res.host_id, languageCode: res.language_code };
+    },
+
+    async startFriendlyBattle(battleId, code, host, guest, protocolVersion) {
+      const { error } = await db.rpc('start_friendly_battle', {
+        p_battle_id: battleId,
+        p_code: code,
+        p_host: host,
+        p_guest: guest,
+        p_protocol_version: protocolVersion,
+      });
+      if (error) throw challengeError(error);
+    },
+
     async settlementContext(battleId) {
       const { data, error } = await db.rpc('battle_settlement_context_v2', {
         p_battle_id: battleId,
@@ -313,4 +354,10 @@ export function createTokenVerifier(db: SupabaseClient<Database>): VerifyToken {
     if (error || !data.user) return null;
     return data.user.id;
   };
+}
+
+/** Un rechazo de la base con un código de desafío conocido se reenvía al cliente tal cual. */
+function challengeError(error: { message: string }): Error {
+  const code = CHALLENGE_ERRORS.find((c) => error.message === c || error.message.includes(c));
+  return code ? new ChallengeError(code) : new Error(error.message);
 }

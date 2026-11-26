@@ -129,3 +129,24 @@ test('tokens no registrados se desactivan; permisos', async () => {
     /permission denied/,
   );
 });
+
+test('el aviso trae el idioma del duelo y el historial entre los dos amigos', async () => {
+  const [host, guest] = await friends('h2h');
+  await register(guest, 'ExponentPushToken[h2h1]');
+  // Dos partidas terminadas: una gana cada uno, más una ganada por el invitado.
+  for (const [hostResult, guestResult] of [['win', 'loss'], ['loss', 'win'], ['loss', 'win']]) {
+    const { rows } = await db.query(
+      `insert into public.battles (language_code, mode, is_ranked, status, protocol_version, started_at, ended_at)
+       values ('en', 'word_rush', false, 'completed', 1, now(), now()) returning id`,
+    );
+    await db.query(
+      `insert into public.battle_players (battle_id, slot, user_id, result) values ($1, 1, $2, $3), ($1, 2, $4, $5)`,
+      [rows[0].id, host, hostResult, guest, guestResult],
+    );
+  }
+  const { code } = await invite(host, guest);
+  const res = await claim(host, code);
+  assert.deepEqual(res.tokens, ['ExponentPushToken[h2h1]']);
+  assert.equal(typeof res.language_code, 'string');
+  assert.deepEqual(res.h2h, { host_wins: 1, invitee_wins: 2 });
+});

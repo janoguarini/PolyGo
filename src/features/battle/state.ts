@@ -304,6 +304,8 @@ function applySnapshot(state: BattleState, s: BattleSnapshot, receivedAt: number
     ...state,
     phase,
     mode: s.mode,
+    // El amistoso en el servidor de partidas llega como su propio modo.
+    friendly: state.friendly || s.mode === 'friendly',
     errorCode: null,
     battleId: s.battleId,
     rating: s.rating ?? null,

@@ -5,12 +5,15 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import type { ArcadeAnswer } from '@shared/arcade';
 import type { BattleMode } from '@shared/protocol';
 
+import { notifyBattleInvite } from '@/features/friends/push';
 import { playSound } from '@/lib/sounds';
 
 import { answerSound } from './answerSound';
 import { currentChallenge, verdictSound } from './arcade/arcadeState';
 
 import { connectBattleSocket, connectErrorCode, type BattleSocket } from './client';
+import { humanMatchApi } from './humanMatchApi';
+import type { ChallengeRole } from './useLocalBattleSession';
 import { isInBattle } from './state';
 import { useBattleStore } from './store';
 
@@ -19,6 +22,8 @@ export const FEEDBACK_MS = 350;
 /** Igual que localMatch.ts: tiempo para leer cómo se escribía la palabra al fallar. */
 const WRITE_FEEDBACK_MS = 1_500;
 const ACK_TIMEOUT_MS = 5_000;
+/** Mientras el anfitrión espera: cada cuánto se mira si el amigo rechazó el desafío. */
+const DECLINE_POLL_MS = 3_000;
 
 /**
  * Conecta la pantalla de batalla con el servidor. Un socket por pantalla: al salir se cierra
@@ -28,6 +33,45 @@ export function useBattleSession() {
   const socketRef = useRef<BattleSocket | null>(null);
   const dispatch = useBattleStore((s) => s.dispatch);
   const queryClient = useQueryClient();
+  /** Desafío propio mientras se espera al amigo (para reanunciarlo al reconectar y anularlo al salir). */
+  const hostingRef = useRef<string | null>(null);
+  const declinePollRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const stopDeclinePoll = useCallback(() => {
+    if (declinePollRef.current) clearTimeout(declinePollRef.current);
+    declinePollRef.current = null;
+  }, []);
+
+  /** El anfitrión se anuncia en el servidor con su código (también al reconectarse). */
+  const host = useCallback(
+    (socket: BattleSocket, code: string) => {
+      socket
+        .timeout(ACK_TIMEOUT_MS)
+        .emitWithAck('challenge:host', { code })
+        .then((res) => {
+          if (!res.ok) {
+            hostingRef.current = null;
+            dispatch({ type: 'connection_error', code: res.code });
+          }
+        })
+        .catch(() => dispatch({ type: 'connection_error', code: 'connection' }));
+    },
+    [dispatch],
+  );
+
+  /** El amigo entra con el código: el servidor arma la partida (match:found). */
+  const joinChallenge = useCallback(
+    (socket: BattleSocket, code: string) => {
+      socket
+        .timeout(ACK_TIMEOUT_MS)
+        .emitWithAck('challenge:join', { code })
+        .then((res) => {
+          if (!res.ok) dispatch({ type: 'connection_error', code: res.code });
+        })
+        .catch(() => dispatch({ type: 'connection_error', code: 'connection' }));
+    },
+    [dispatch],
+  );
 
   const join = useCallback(
     (socket: BattleSocket, mode: BattleMode) => {
@@ -54,8 +98,12 @@ export function useBattleSession() {
     socket.on('connect', () => {
       dispatch({ type: 'socket_status', online: true });
       const state = useBattleStore.getState();
-      // El servidor saca de la cola a quien se desconecta: al volver, se reingresa.
-      if (state.phase === 'searching') join(socket, 'ranked');
+      // El servidor saca de la cola (o de la espera del desafío) a quien se desconecta: al volver, se
+      // reingresa.
+      if (state.phase === 'searching') {
+        if (hostingRef.current) host(socket, hostingRef.current);
+        else if (!state.challenge) join(socket, 'ranked');
+      }
       // Si la partida terminó mientras no estábamos, el servidor ya no la tiene.
       if (isInBattle(state)) {
         socket
@@ -76,6 +124,9 @@ export function useBattleSession() {
     );
     socket.on('queue:status', (p) => dispatch({ type: 'queue_status', ...p }));
     socket.on('match:found', (snapshot) => {
+      // Llegó el amigo: ya no se espera ni se mira si rechazó.
+      hostingRef.current = null;
+      stopDeclinePoll();
       void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
       dispatch({ type: 'snapshot', snapshot, receivedAt: Date.now() });
     });
@@ -91,6 +142,11 @@ export function useBattleSession() {
     socket.on('battle:opponent_status', (p) => dispatch({ type: 'opponent_status', ...p }));
     socket.on('battle:finish', (result) => {
       dispatch({ type: 'finished', result });
+      // Amistoso: se guardó (historial con ese amigo y misiones de amigos), sin ELO.
+      if (result.mode === 'friendly') {
+        void queryClient.invalidateQueries({ queryKey: ['friends'] });
+        void queryClient.invalidateQueries({ queryKey: ['profile'] });
+      }
       // Práctica (sola o contra un bot fuera del cupo): no cambió nada en la base.
       if (result.mode === 'ranked' && result.rating !== 'unrated') {
         // Rating, historial, logros y clasificación cambiaron en el servidor.
@@ -104,22 +160,93 @@ export function useBattleSession() {
       }
     });
     socket.on('battle:cancel', ({ reason }) => dispatch({ type: 'cancelled', reason }));
-    socket.on('server:error', ({ code }) => dispatch({ type: 'connection_error', code }));
+    socket.on('server:error', ({ code }) => {
+      if (code === 'challenge_expired' || code === 'host_gone') {
+        hostingRef.current = null;
+        stopDeclinePoll();
+      }
+      dispatch({ type: 'connection_error', code });
+    });
     return socket;
-  }, [dispatch, join, queryClient]);
+  }, [dispatch, join, host, queryClient, stopDeclinePoll]);
 
-  const start = useCallback(
-    (mode: BattleMode) => {
-      dispatch({ type: 'connecting', mode });
+  /** Corre `action` con el socket conectado (conecta si hace falta). */
+  const withSocket = useCallback(
+    (action: (socket: BattleSocket) => void) => {
       const socket = ensureSocket();
-      if (socket.connected) join(socket, mode);
+      if (socket.connected) action(socket);
       else {
-        socket.once('connect', () => join(socket, mode));
+        socket.once('connect', () => action(socket));
         // Tras un rechazo del handshake Socket.IO no reintenta solo.
         if (!socket.active) socket.connect();
       }
     },
-    [dispatch, ensureSocket, join],
+    [ensureSocket],
+  );
+
+  /**
+   * Ranked o práctica: a la cola. Con un desafío a un amigo: la MISMA partida que Ranked, sin ELO. El
+   * anfitrión crea el desafío en la base (y avisa al amigo), y espera en el servidor con su código; el
+   * amigo entra con ese código.
+   */
+  const start = useCallback(
+    (mode: BattleMode, challenge?: ChallengeRole) => {
+      stopDeclinePoll();
+      hostingRef.current = null;
+      dispatch({
+        type: 'connecting',
+        mode: challenge ? 'friendly' : mode,
+        friendly: Boolean(challenge),
+      });
+      if (!challenge) return withSocket((socket) => join(socket, mode));
+      if (challenge.role === 'guest') {
+        return withSocket((socket) => joinChallenge(socket, challenge.code));
+      }
+      void (async () => {
+        try {
+          const created = await humanMatchApi.createChallenge(challenge.inviteeId);
+          // Desafío dirigido: push al amigo (si falla, igual lo ve en la app abierta).
+          if (challenge.inviteeId) notifyBattleInvite(created.code);
+          hostingRef.current = created.code;
+          dispatch({
+            type: 'challenge_waiting',
+            code: created.code,
+            expiresAt: created.expires_at,
+          });
+          withSocket((socket) => host(socket, created.code));
+          // Si el amigo lo rechaza, se avisa enseguida (la base lo sabe; el servidor no).
+          const poll = async () => {
+            if (hostingRef.current !== created.code) return;
+            try {
+              const res = await humanMatchApi.challengeStatus(created.code);
+              if (hostingRef.current !== created.code) return;
+              if (res.status === 'declined' || res.status === 'expired') {
+                hostingRef.current = null;
+                void socketRef.current?.emitWithAck('queue:leave').catch(() => {});
+                return dispatch({
+                  type: 'connection_error',
+                  code: res.status === 'declined' ? 'challenge_declined' : 'challenge_expired',
+                });
+              }
+            } catch {
+              // Sin red: se vuelve a mirar en la próxima vuelta.
+            }
+            declinePollRef.current = setTimeout(() => void poll(), DECLINE_POLL_MS);
+          };
+          declinePollRef.current = setTimeout(() => void poll(), DECLINE_POLL_MS);
+        } catch (error) {
+          const code = (error as { message?: string } | null)?.message;
+          dispatch({
+            type: 'connection_error',
+            code:
+              code === 'match_rate_limited' || code === 'language_unavailable'
+                ? code
+                : 'connection',
+          });
+        }
+      })();
+    },
+    [dispatch, host, join, joinChallenge, stopDeclinePoll, withSocket],
   );
 
   const ready = useCallback(() => {
@@ -244,18 +371,27 @@ export function useBattleSession() {
   const leave = useCallback(() => {
     const socket = socketRef.current;
     const state = useBattleStore.getState();
+    // Esperando al amigo: se anula el desafío (ya no puede entrar).
+    const hosting = hostingRef.current;
+    hostingRef.current = null;
+    stopDeclinePoll();
+    if (hosting) void humanMatchApi.cancelChallenge(hosting).catch(() => {});
     if (!socket) return;
     if (state.phase === 'searching') void socket.emitWithAck('queue:leave').catch(() => {});
     else if (isInBattle(state)) void socket.emitWithAck('battle:leave').catch(() => {});
-  }, []);
+  }, [stopDeclinePoll]);
 
   useEffect(
     () => () => {
+      stopDeclinePoll();
+      if (hostingRef.current)
+        void humanMatchApi.cancelChallenge(hostingRef.current).catch(() => {});
+      hostingRef.current = null;
       socketRef.current?.disconnect();
       socketRef.current = null;
       dispatch({ type: 'reset' });
     },
-    [dispatch],
+    [dispatch, stopDeclinePoll],
   );
 
   return { start, ready, answer, arcadeAnswer, leave };

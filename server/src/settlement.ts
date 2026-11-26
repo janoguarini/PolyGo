@@ -32,8 +32,9 @@ export async function settleBattle(
 ): Promise<SettledBattle> {
   const lines = battle.finalLines();
 
-  // Práctica (sola o contra un bot): no se guarda nada.
-  if (battle.mode !== 'ranked') {
+  // Práctica (sola o contra un bot): no se guarda nada. El amistoso sí (sin ELO: la base lo guardó
+  // como no ranked y settle_battle sólo escribe el resultado).
+  if (battle.mode === 'practice' || battle.mode === 'bot_practice') {
     const outcomes = lines.length === 2 ? decideOutcomes(lines[0]!, lines[1]!) : null;
     return {
       duplicate: false,

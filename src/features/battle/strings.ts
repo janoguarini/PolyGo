@@ -165,7 +165,7 @@ export const battleStrings = defineStrings({
     submit: 'Responder',
 
     // Modos de juego (desafío a un amigo)
-    wordRushDescription: 'Vocabulario cara a cara: el que más acierta gana.',
+    wordRushDescription: 'La misma partida que Ranked: los microjuegos cara a cara, sin ELO.',
   },
   en: {
     rankedUnavailableTitle: 'Ranked isn’t available in this version',
@@ -249,6 +249,6 @@ export const battleStrings = defineStrings({
     yourAnswer: 'Your answer',
     submit: 'Submit',
 
-    wordRushDescription: 'Head-to-head vocabulary: whoever gets the most right wins.',
+    wordRushDescription: 'The same match as Ranked: head-to-head mini-games, no ELO.',
   },
 });

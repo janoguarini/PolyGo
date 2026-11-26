@@ -5,20 +5,29 @@ import { Button, Card, Text, colors, radii, spacing, themedStyles } from '@/desi
 import { useStrings } from '@/i18n';
 import { toUserMessage } from '@/lib/errors';
 
-import { useReminderPrefs, useSetReminderPrefs } from './hooks';
+import { useNotificationsGranted, useReminderPrefs, useSetReminderPrefs } from './hooks';
 import { remindersSupported } from './notifications';
 import { DEFAULT_REMINDER, REMINDER_HOURS, formatReminderTime } from './schedule';
+import { smartStrings } from './smartStrings';
 import { reminderStrings } from './strings';
 
 /** Interruptor y horario del recordatorio diario (notificación local, sin servidor). */
 export function ReminderSettings() {
   const styles = useStyles();
   const t = useStrings(reminderStrings);
+  const s = useStrings(smartStrings);
   const prefs = useReminderPrefs();
   const update = useSetReminderPrefs();
+  const granted = useNotificationsGranted().data === true;
 
   if (!remindersSupported) return null;
-  const current = prefs.data ?? DEFAULT_REMINDER;
+  const saved = prefs.data ?? DEFAULT_REMINDER;
+  // Sin permiso del teléfono no llega nada: los interruptores se ven apagados (al prenderlos se pide).
+  const current = {
+    ...saved,
+    enabled: saved.enabled && granted,
+    smart: saved.smart !== false && granted,
+  };
   const blocked = update.data === 'blocked';
   const denied = update.data === 'denied';
 
@@ -35,7 +44,7 @@ export function ReminderSettings() {
           accessibilityLabel={t.dailyReminder}
           value={current.enabled}
           disabled={!prefs.data || update.isPending}
-          onValueChange={(enabled) => update.mutate({ ...current, enabled })}
+          onValueChange={(enabled) => update.mutate({ ...saved, enabled })}
           trackColor={{ false: colors.surfaceHighlight, true: colors.primary }}
           thumbColor={colors.textStrong}
         />
@@ -51,7 +60,7 @@ export function ReminderSettings() {
                 accessibilityRole="radio"
                 accessibilityState={{ selected, disabled: update.isPending }}
                 disabled={update.isPending}
-                onPress={() => update.mutate({ ...current, hour, minute: 0 })}
+                onPress={() => update.mutate({ ...saved, enabled: true, hour, minute: 0 })}
                 style={[styles.hour, selected && styles.hourSelected]}
               >
                 <Text variant="bodyStrong" color={selected ? 'onPrimary' : 'text'}>
@@ -62,6 +71,21 @@ export function ReminderSettings() {
           })}
         </View>
       ) : null}
+
+      <View style={styles.row}>
+        <View style={styles.flex}>
+          <Text variant="bodyStrong">{s.smartToggle}</Text>
+          <Text variant="caption">{s.smartHint}</Text>
+        </View>
+        <Switch
+          accessibilityLabel={s.smartToggle}
+          value={current.smart}
+          disabled={!prefs.data || update.isPending}
+          onValueChange={(smart) => update.mutate({ ...saved, smart })}
+          trackColor={{ false: colors.surfaceHighlight, true: colors.primary }}
+          thumbColor={colors.textStrong}
+        />
+      </View>
 
       {denied ? (
         <Text variant="caption" color="danger">

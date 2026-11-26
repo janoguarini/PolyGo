@@ -63,6 +63,7 @@ import { useXp, type XpState } from '@/features/xp/api';
 import { XpRewardCard } from '@/features/xp/XpRewardCard';
 import { useRankLabels } from '@/features/ranked/strings';
 import { getStrings, useStrings } from '@/i18n';
+import { recordPractice } from '@/features/reminders/practiceLog';
 import { track } from '@/lib/analytics';
 import { battleScreenStrings } from '@/i18n/screens/battle';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
@@ -164,9 +165,12 @@ function MatchBattle({ mode }: { mode: BattleMode }) {
 }
 
 /**
- * Desafío a un amigo: siempre por Supabase (también cuando haya servidor de partidas), porque
- * no mueve el ELO. Jugar otra = crear un desafío nuevo.
+ * Desafío a un amigo: con servidor de partidas, la MISMA partida que Ranked (Word Rush de 60 s con los
+ * microjuegos), sin ELO. Sin servidor (sólo en desarrollo), la partida clásica por Supabase. Jugar
+ * otra = crear un desafío nuevo.
  */
+const useChallengeSession = battleServerConfigured ? useBattleSession : useLocalBattleSession;
+
 function ChallengeBattle({
   challenge,
   inviteeName,
@@ -174,7 +178,7 @@ function ChallengeBattle({
   challenge: ChallengeRole;
   inviteeName?: string;
 }) {
-  const session = useLocalBattleSession();
+  const session = useChallengeSession();
   // Otra partida: a quien invitaste lo volvés a invitar; con código, un código nuevo.
   const again: ChallengeRole = challenge.role === 'host' ? challenge : { role: 'host' };
   return (
@@ -228,6 +232,7 @@ function BattleView({
   useEffect(() => {
     if (!finish) return;
     const me = finish.players.find((p) => p.slot === finish.yourSlot);
+    void recordPractice();
     track('battle_finished', {
       mode: finish.mode,
       status: finish.status,
@@ -247,7 +252,11 @@ function BattleView({
 
   const exit = useCallback(() => {
     const current = useBattleStore.getState();
-    if (current.phase === 'playing' && current.mode === 'ranked' && current.rating !== 'unrated') {
+    // En plena partida, abandonar es perder: se confirma en Ranked con ELO y en los amistosos.
+    if (
+      current.phase === 'playing' &&
+      (current.friendly || (current.mode === 'ranked' && current.rating !== 'unrated'))
+    ) {
       const s = getStrings(battleScreenStrings);
       Alert.alert(s.leaveTitle, current.friendly ? s.leaveFriendly : s.leaveRanked, [
         { text: s.keepPlaying, style: 'cancel' },

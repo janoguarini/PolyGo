@@ -47,6 +47,7 @@ import { systemClock, type Clock } from './clock';
 import { Matchmaker, type QueueEntry } from './matchmaking';
 import { settleBattle } from './settlement';
 import {
+  ChallengeError,
   consoleLogger,
   type BattleStore,
   type Logger,
@@ -101,8 +102,27 @@ export interface BattleServer {
   io: Server<ClientToServerEvents, ServerToClientEvents, object, SocketData>;
   close(): Promise<void>;
   /** Para tests y /health. `matching`: jugadores cuya partida se está creando. */
-  stats(): { connected: number; queued: number; battles: number; matching: number };
+  stats(): {
+    connected: number;
+    queued: number;
+    battles: number;
+    matching: number;
+    /** Anfitriones de desafíos a amigos esperando. */
+    challenges: number;
+  };
 }
+
+/** Anfitrión de un desafío esperando a su amigo (en memoria: si se desconecta, vuelve a registrarse). */
+interface WaitingHost {
+  code: string;
+  info: PlayerInfo;
+  protocol: number;
+  timer: unknown;
+}
+
+/** Código de desafío: 6 letras o números (new_challenge_code). */
+const CHALLENGE_CODE = /^[A-Z0-9]{6}$/;
+const normalizeCode = (raw: unknown) => (typeof raw === 'string' ? raw.trim().toUpperCase() : '');
 
 /** Un jugador cuya partida se está armando (lecturas de la base todavía en curso). */
 interface PendingPlayer {
@@ -153,12 +173,28 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
   const matchmaker = new Matchmaker(matchmaking);
   const wordCache = new Map<string, { words: RushWord[]; loadedAt: number }>();
   const sentenceCache = new Map<string, { sentences: ArcadeSentence[]; loadedAt: number }>();
+  /** Desafíos a amigos: código → anfitrión esperando, y anfitrión → su código. */
+  const hostsByCode = new Map<string, WaitingHost>();
+  const codeByHost = new Map<string, string>();
+
+  /** El anfitrión deja de esperar (salió, se desconectó, venció o empezó la partida). */
+  const stopHosting = (userId: string) => {
+    const code = codeByHost.get(userId);
+    if (code === undefined) return;
+    codeByHost.delete(userId);
+    const waiting = hostsByCode.get(code);
+    if (waiting && waiting.info.userId === userId) {
+      clock.clearTimeout(waiting.timer);
+      hostsByCode.delete(code);
+    }
+  };
 
   const stats = () => ({
     connected: sockets.size,
     queued: matchmaker.size,
     battles: battles.size,
     matching: pending.size,
+    challenges: hostsByCode.size,
   });
   const contentKey = (userId: string, languageCode: string) => `${userId}:${languageCode}`;
 
@@ -213,6 +249,17 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
   const hooks: BattleHooks = {
     send,
     onStart: (battle) => {
+      // Amistoso: se guarda sin ELO y se ata al desafío (historial, misiones de amigos).
+      if (battle.mode === 'friendly') {
+        const [host, guest] = battle.userIds;
+        return store.startFriendlyBattle(
+          battle.id,
+          battle.challengeCode!,
+          host!,
+          guest!,
+          battle.protocolVersion,
+        );
+      }
       // Práctica (sola o contra un bot): no se guarda.
       if (battle.mode !== 'ranked') return Promise.resolve();
       const human = battle.players.find((p) => !p.isBot)!;
@@ -241,7 +288,7 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
       release(battle);
       logger.info('battle_cancelled', { battleId: battle.id, reason });
       // Si el inicio llegó a guardarse (o se está guardando), la fila se cierra como cancelada.
-      if (battle.mode === 'ranked' && battle.persistence) {
+      if ((battle.mode === 'ranked' || battle.mode === 'friendly') && battle.persistence) {
         battle.persistence
           .then(() => store.cancelBattle(battle.id))
           .catch((err: unknown) =>
@@ -273,6 +320,7 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
           achievementsUnlocked: settled.achievements[player.userId] ?? [],
           rating: settled.rating,
           calibration: settled.calibration,
+          ...(battle.mode === 'friendly' ? { friendly: true } : {}),
         });
       }
     } catch (err) {
@@ -543,6 +591,13 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
         if (pending.get(m.info.userId) === m) pending.delete(m.info.userId);
       }
     }
+    if (!battle && mode === 'friendly') {
+      // Uno de los dos se fue mientras se armaba: al otro se le avisa (no hay cola a la que volver).
+      for (const m of members) {
+        if (!gone(m)) send(m.info.userId, 'server:error', { code: 'host_gone' });
+      }
+      return;
+    }
     if (battle || mode !== 'ranked') return;
     // No se creó porque alguien se fue: los que siguen buscando vuelven con su espera original.
     let requeued = false;
@@ -722,7 +777,120 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
         });
     });
 
+    // ---------- desafíos a amigos (amistoso = la misma partida que Ranked, sin ELO) ----------
+
+    /** Validaciones comunes; devuelve el código o responde el error. */
+    const challengeCodeOf = (
+      payload: { code?: unknown } | undefined,
+      reply: Ack<{ code: string }>,
+    ): string | null => {
+      const code = normalizeCode(payload?.code);
+      if (!CHALLENGE_CODE.test(code)) {
+        reply({ ok: false, code: 'invalid_payload' });
+        return null;
+      }
+      // Sólo con el motor de Ranked (Arcade): una build vieja juega sus amistosos por la base.
+      if (protocolVersion !== ARCADE_PROTOCOL_VERSION) {
+        reply({ ok: false, code: 'protocol_mismatch' });
+        return null;
+      }
+      if (battleByUser.has(userId) || pending.has(userId)) {
+        reply({ ok: false, code: 'already_in_battle' });
+        return null;
+      }
+      return code;
+    };
+
+    const challengeFailed = (reply: Ack<{ code: string }>, err: unknown) => {
+      if (err instanceof ChallengeError) return reply({ ok: false, code: err.code });
+      logger.error('challenge_failed', { userId, err: String(err) });
+      reply({ ok: false, code: 'server_error' });
+    };
+
+    socket.on('challenge:host', (payload, ack) => {
+      const reply = safe(ack);
+      const code = challengeCodeOf(payload, reply);
+      if (!code) return;
+      void (async () => {
+        try {
+          const profile = await store.getPlayer(userId);
+          if (!profile) return reply({ ok: false, code: 'onboarding_required' });
+          const challenge = await store.challengeHost(code, userId);
+          if (sockets.get(userId) !== socket) return;
+          dequeue(userId);
+          stopHosting(userId);
+          const waiting: WaitingHost = {
+            code,
+            info: { ...profile, curriculumApi: socket.data.curriculumApi },
+            protocol: protocolVersion,
+            timer: null,
+          };
+          waiting.timer = clock.setTimeout(
+            () => {
+              if (hostsByCode.get(code) !== waiting) return;
+              stopHosting(userId);
+              send(userId, 'server:error', { code: 'challenge_expired' });
+            },
+            Math.max(0, challenge.expiresAt - clock.now()),
+          );
+          hostsByCode.set(code, waiting);
+          codeByHost.set(userId, code);
+          reply({ ok: true, data: { code } });
+        } catch (err) {
+          challengeFailed(reply, err);
+        }
+      })();
+    });
+
+    socket.on('challenge:join', (payload, ack) => {
+      const reply = safe(ack);
+      const code = challengeCodeOf(payload, reply);
+      if (!code) return;
+      void (async () => {
+        try {
+          const profile = await store.getPlayer(userId);
+          if (!profile) return reply({ ok: false, code: 'onboarding_required' });
+          const challenge = await store.challengeJoin(code, userId);
+          const host = hostsByCode.get(code);
+          // El anfitrión tiene que estar esperando ahora mismo (si cerró la app, ya no hay duelo).
+          if (
+            !host ||
+            host.info.userId !== challenge.hostId ||
+            !sockets.has(host.info.userId) ||
+            battleByUser.has(host.info.userId)
+          ) {
+            return reply({ ok: false, code: 'host_gone' });
+          }
+          if (sockets.get(userId) !== socket || battleByUser.has(userId)) return;
+          stopHosting(host.info.userId);
+          dequeue(userId);
+          reply({ ok: true, data: { code } });
+          const guest: PlayerInfo = { ...profile, curriculumApi: socket.data.curriculumApi };
+          const members: PendingPlayer[] = [
+            {
+              mode: 'friendly',
+              info: host.info,
+              entry: null,
+              protocol: host.protocol,
+              left: false,
+            },
+            { mode: 'friendly', info: guest, entry: null, protocol: protocolVersion, left: false },
+          ];
+          await startPending(
+            members,
+            'friendly',
+            [host.info, guest],
+            { rating: 'unrated', calibration: null, challengeCode: code },
+            ARCADE_PROTOCOL_VERSION,
+          );
+        } catch (err) {
+          challengeFailed(reply, err);
+        }
+      })();
+    });
+
     socket.on('queue:leave', (ack) => {
+      stopHosting(userId);
       dequeue(userId);
       const waiting = pending.get(userId);
       if (waiting) waiting.left = true;
@@ -777,6 +945,8 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
       if (sockets.get(userId) !== socket) return;
       sockets.delete(userId);
       dequeue(userId);
+      // El anfitrión que se desconecta deja de esperar; al reconectarse, la app vuelve a registrarse.
+      stopHosting(userId);
       // Una partida que se está armando para este usuario no se crea si no vuelve antes (ver gone()).
       battleByUser.get(userId)?.disconnect(userId);
     });

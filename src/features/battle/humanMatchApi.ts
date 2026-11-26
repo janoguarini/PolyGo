@@ -4,7 +4,8 @@ import { legacyRankedError } from './botMatchApi';
 import type { HumanMatchApi, HumanMatchResult, HumanMatchSetup } from './localMatch';
 
 export type ChallengeStatus =
-  { status: 'waiting' | 'expired' | 'declined'; battle_id: null } | { status: 'matched'; battle_id: string };
+  | { status: 'waiting' | 'expired' | 'declined'; battle_id: null }
+  | { status: 'matched'; battle_id: string };
 
 export type QueueResponse =
   | { status: 'waiting'; window: number; waited_ms: number }

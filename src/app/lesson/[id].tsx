@@ -15,6 +15,7 @@ import {
   useSubmitSession,
 } from '@/features/learning/hooks';
 import { sessionStats, type PlayerState } from '@/features/learning/player';
+import { recordPractice } from '@/features/reminders/practiceLog';
 import { track } from '@/lib/analytics';
 import { matchPresentations, toGradedAttempts } from '@/features/learning/presentation';
 import { SessionLanguageProvider } from '@/features/learning/SessionLanguageProvider';
@@ -100,6 +101,7 @@ function LessonScreen() {
       }));
       const graded = presented ? toGradedAttempts(state, presented.byExercise) : undefined;
       const stats = sessionStats(state);
+      void recordPractice();
       track('lesson_completed', {
         lesson_id: id,
         accuracy: stats.accuracy,

@@ -7,6 +7,8 @@
 // EXPO_ACCESS_TOKEN (opcional): sólo hace falta si se activa "enhanced push security" en EAS.
 import { createClient } from 'npm:@supabase/supabase-js@2';
 
+import { challengeMessage } from './message.ts';
+
 const CORS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
@@ -37,6 +39,8 @@ interface Claim {
   host_username?: string;
   code?: string;
   expires_at?: number;
+  language_code?: string | null;
+  h2h?: { host_wins: number; invitee_wins: number } | null;
 }
 
 interface Ticket {
@@ -74,11 +78,16 @@ Deno.serve(async (req: Request) => {
 
   // Que no llegue cuando la invitación ya venció.
   const ttl = Math.max(30, Math.floor(((claim.expires_at ?? Date.now()) - Date.now()) / 1000));
+  // Texto llamativo con el historial entre los dos (message.ts); sin historial, A/B al azar.
+  const msg = challengeMessage(
+    { host: claim.host_username ?? '', languageCode: claim.language_code, h2h: claim.h2h },
+    Math.random() < 0.5 ? 0 : 1,
+  );
   const messages = claim.tokens.map((to) => ({
     to,
-    title: `@${claim.host_username} te desafió ⚔️`,
-    body: 'Amistoso de 75 segundos, sin ELO. Tocá para jugar ahora.',
-    data: { type: 'battle_invite', code: claim.code },
+    title: msg.title,
+    body: msg.body,
+    data: { type: 'battle_invite', code: claim.code, variant: msg.variant },
     sound: 'default',
     priority: 'high',
     channelId: CHANNEL_ID,

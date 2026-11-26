@@ -8,7 +8,7 @@ export const reminderStrings = defineStrings({
   es: {
     // Notificaciones (schedule.ts)
     generic: [
-      { title: 'Hora de practicar inglés', body: 'Una lección corta y sumás un día a tu racha.' },
+      { title: 'Hora de practicar', body: 'Una lección corta y sumás un día a tu racha.' },
       { title: 'Tu camino te espera', body: 'Cinco minutos hoy hacen la diferencia.' },
       { title: 'Volvé a Polygo', body: 'Repasá tus palabras antes de que se te olviden.' },
     ],

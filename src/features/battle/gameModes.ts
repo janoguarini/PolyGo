@@ -1,4 +1,4 @@
-import { WORD_RUSH } from '@shared/protocol';
+import { ARCADE } from '@shared/arcade';
 
 import { getStrings } from '@/i18n';
 
@@ -14,7 +14,7 @@ export interface GameMode {
   id: GameModeId;
   name: string;
   description: string;
-  /** "75 s". */
+  /** "60 s". */
   duration: string;
 }
 
@@ -26,7 +26,8 @@ export const GAME_MODES: readonly GameMode[] = [
     get description() {
       return getStrings(battleStrings).wordRushDescription;
     },
-    duration: `${WORD_RUSH.durationMs / 1000} s`,
+    // La misma partida que Ranked (Arcade).
+    duration: `${ARCADE.durationMs / 1000} s`,
   },
 ];
 

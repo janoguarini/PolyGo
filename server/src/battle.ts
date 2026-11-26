@@ -35,6 +35,8 @@ export interface BattleOptions {
   rating?: MatchRating;
   calibration?: CalibrationInfo | null;
   protocolVersion?: number;
+  /** Amistoso: el código del desafío (friend_challenges) al que se ata la partida al guardarla. */
+  challengeCode?: string;
 }
 
 /** Línea final de un jugador (para decidir el resultado y liquidar). */
@@ -105,6 +107,8 @@ export class Battle {
   calibration: CalibrationInfo | null;
   /** Versión del protocolo de los jugadores (2 = Word Rush, 3 = Arcade): se guarda en battles. */
   readonly protocolVersion: number;
+  /** Amistoso: código del desafío (null en las demás). */
+  readonly challengeCode: string | null;
 
   protected readonly seats: Seat[];
   private timers = new Set<unknown>();
@@ -125,6 +129,7 @@ export class Battle {
     this.rating = options.rating ?? (mode === 'ranked' ? 'competitive' : 'unrated');
     this.calibration = options.calibration ?? null;
     this.protocolVersion = options.protocolVersion ?? WORD_RUSH_PROTOCOL_VERSION;
+    this.challengeCode = options.challengeCode ?? null;
     const expected = mode === 'practice' ? 1 : 2;
     if (players.length !== expected) throw new Error(`${mode} necesita ${expected} jugador(es)`);
     this.seats = players.map((info, i) => ({

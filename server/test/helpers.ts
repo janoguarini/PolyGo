@@ -2,6 +2,7 @@ import { BOT_CALIBRATION } from '../../shared/bots';
 import type { ArcadeSentence } from '../../shared/arcade';
 import type { RushWord } from '../../shared/wordRush';
 import {
+  ChallengeError,
   StaleRatingError,
   type BattleStore,
   type PlayerInfo,
@@ -208,6 +209,79 @@ export class FakeStore implements BattleStore {
     // El slot 2 no tiene usuario (como en start_bot_battle).
     this.started.set(battleId, [player, `bot-slot:${battleId}`]);
     return { rated: isRanked, calibration: { used: used + (isRanked ? 1 : 0), limit } };
+  }
+
+  /**
+   * Desafíos a amigos, como friend_challenges + battle_server_challenge_host/_join y
+   * start_friendly_battle: código → anfitrión, invitado (opcional), vencimiento y partida.
+   */
+  challenges = new Map<
+    string,
+    {
+      host: string;
+      invitee: string | null;
+      expiresAt: number;
+      battleId: string | null;
+      language: string;
+    }
+  >();
+  friendlyStarts: {
+    battleId: string;
+    code: string;
+    host: string;
+    guest: string;
+    protocol: number;
+  }[] = [];
+
+  addChallenge(
+    code: string,
+    host: string,
+    invitee: string | null = null,
+    expiresAt = Date.now() + 120_000,
+  ) {
+    const language = this.players.get(host)?.languageCode ?? 'en';
+    this.challenges.set(code, { host, invitee, expiresAt, battleId: null, language });
+    return this;
+  }
+
+  async challengeHost(code: string, hostId: string) {
+    const c = this.challenges.get(code);
+    if (!c || c.host !== hostId) throw new ChallengeError('challenge_not_found');
+    if (c.battleId) throw new ChallengeError('challenge_taken');
+    if (c.expiresAt < Date.now()) throw new ChallengeError('challenge_expired');
+    return { languageCode: c.language, inviteeId: c.invitee, expiresAt: c.expiresAt };
+  }
+
+  async challengeJoin(code: string, guestId: string) {
+    const c = this.challenges.get(code);
+    if (!c) throw new ChallengeError('challenge_not_found');
+    if (c.battleId) throw new ChallengeError('challenge_taken');
+    if (c.host === guestId) throw new ChallengeError('own_challenge');
+    if (c.invitee && c.invitee !== guestId) throw new ChallengeError('challenge_not_found');
+    if (c.expiresAt < Date.now()) throw new ChallengeError('challenge_expired');
+    if ((this.players.get(guestId)?.languageCode ?? 'en') !== c.language) {
+      throw new ChallengeError('language_mismatch');
+    }
+    return { hostId: c.host, languageCode: c.language };
+  }
+
+  async startFriendlyBattle(
+    battleId: string,
+    code: string,
+    host: string,
+    guest: string,
+    protocol: number,
+  ) {
+    if (this.failStart) throw new Error('db down');
+    const c = this.challenges.get(code);
+    if (!c || c.host !== host) throw new ChallengeError('challenge_not_found');
+    if (c.battleId && c.battleId !== battleId) throw new ChallengeError('challenge_taken');
+    c.battleId = battleId;
+    this.friendlyStarts.push({ battleId, code, host, guest, protocol });
+    // Como start_friendly_battle: una partida sin ELO (is_ranked = false).
+    this.started.set(battleId, [host, guest]);
+    this.protocolOf.set(battleId, protocol);
+    this.unranked.add(battleId);
   }
 
   async settlementContext(battleId: string): Promise<SettlementContextRow[]> {

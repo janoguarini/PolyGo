@@ -56,6 +56,7 @@ import {
   type OpenReview,
 } from '@/features/learning/serverReview';
 import { sessionStats, type PlayerState } from '@/features/learning/player';
+import { recordPractice } from '@/features/reminders/practiceLog';
 import { track } from '@/lib/analytics';
 import { reviewAnswerQueue, SESSION_GONE } from '@/features/learning/reviewAnswerQueue';
 import { newOpenReview, RESTART_CODES, takeWarmReview } from '@/features/learning/reviewWarmup';
@@ -359,6 +360,7 @@ function ServerReviewScreen({ mode, focus }: { mode: ReviewMode; focus?: ReviewF
 
   const handleFinished = useCallback(
     (state: PlayerState) => {
+      void recordPractice();
       track('review_completed', { mode, accuracy: sessionStats(state).accuracy });
       setFinished({ state, endedAt: new Date() });
       save(state);
@@ -572,6 +574,7 @@ function LegacyReviewScreen({ mode }: { mode: 'practice' | 'mistakes' }) {
   }, [legacyStarted, mode]);
   const handleFinished = useCallback(
     (state: PlayerState) => {
+      void recordPractice();
       track('review_completed', { mode, accuracy: sessionStats(state).accuracy });
       setFinished({ state, endedAt: new Date() });
     },
