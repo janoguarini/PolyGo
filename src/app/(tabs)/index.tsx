@@ -48,6 +48,7 @@ import { useEnergy } from '@/features/plus/api';
 import { PolysChip } from '@/features/polys/PolysChip';
 import { useStreakRepair } from '@/features/polys/api';
 import { useTabPressScroll } from '@/lib/useTabPressScroll';
+import { LevelCompleteShare } from '@/features/share/LevelCompleteShare';
 import { usePrefetchLanguagePaths } from '@/features/profile/components/LanguagesRow';
 import { CourseSwitcher } from '@/features/courses/CourseSwitcher';
 import { TourTarget } from '@/features/onboarding/tourTargets';
@@ -140,6 +141,17 @@ export default function HomeScreen() {
   const following = nextStartLevel(level);
   const nextLevel = following ? { id: following.id, ready: levels.includes(following.id) } : null;
   const language = languageConfig(profile.target_language);
+  // Último nivel terminado entero (con todas sus unidades planificadas): festejo para compartir.
+  const doneLevel =
+    reachable
+      .filter((l) => {
+        const ofLevel = allUnits.filter((u) => u.level === l);
+        return (
+          ofLevel.length >= PLANNED_UNITS_PER_LEVEL &&
+          ofLevel.every((u) => u.lessons.length > 0 && u.completedCount >= u.lessons.length)
+        );
+      })
+      .at(-1) ?? null;
   // Idiomas en preparación: el nivel no se muestra como completo si le faltan unidades.
   const pendingUnits = Math.max(0, PLANNED_UNITS_PER_LEVEL - units.length);
   const total = units.reduce((n, u) => n + u.lessons.length, 0);
@@ -303,6 +315,8 @@ export default function HomeScreen() {
         ) : null
       }
     >
+      {/* Terminaste un nivel entero: festejo con la tarjeta para compartir (una vez). */}
+      <LevelCompleteShare language={language.code} level={doneLevel} />
       {/* La lección que toca se precarga: al tocarla abre al instante (lessonWarmup.ts). */}
       <WarmLesson lessonId={curriculum.data.currentByLevel[level]?.id} />
       <LearnHero level={level} completed={completed} total={total} />

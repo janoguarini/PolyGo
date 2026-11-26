@@ -70,7 +70,9 @@ export type PolyReason =
   /** Premio por invitar amigos (shared/referrals.ts). */
   | 'referral'
   /** Calendario de bienvenida de 7 días (shared/welcomeRewards.ts). */
-  | 'welcome_week';
+  | 'welcome_week'
+  /** Compartir un logro como tarjeta (shared/share.ts). */
+  | 'share';
 
 /** Texto corto de cada movimiento, para el aviso de "+5 Polys". */
 export function polyReasonLabel(reason: PolyReason): string {
@@ -107,5 +109,7 @@ export function polyReasonLabel(reason: PolyReason): string {
       return 'Premio por invitar amigos';
     case 'welcome_week':
       return 'Recompensa de bienvenida';
+    case 'share':
+      return 'Logro compartido';
   }
 }

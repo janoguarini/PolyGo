@@ -1,5 +1,6 @@
 import * as Haptics from 'expo-haptics';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Share2 } from 'lucide-react-native';
 import { useEffect, useState } from 'react';
 import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, {
@@ -22,6 +23,8 @@ import { getRank, type RankInfo } from '@shared/ranking';
 
 import { RankEmblem, TIER_COLORS } from '@/design-system';
 import { useRankLabels } from '@/features/ranked/strings';
+import { ShareAchievementView, canShareImages } from '@/features/share/ShareAchievement';
+import { shareStrings } from '@/features/share/strings';
 import { useStrings } from '@/i18n';
 import { playSound } from '@/lib/sounds';
 
@@ -82,6 +85,10 @@ export function RankUpCelebration({
   const tier = TIER_COLORS[after.tier.id];
   const [revealed, setRevealed] = useState(reduceMotion);
   const [canClose, setCanClose] = useState(reduceMotion);
+  // Rango nuevo (no división): se ofrece compartir la tarjeta, en este mismo Modal.
+  const [sharing, setSharing] = useState(false);
+  const ts = useStrings(shareStrings);
+  const offerShare = kind === 'tier' && canShareImages;
 
   useEffect(() => {
     const timers = [
@@ -110,6 +117,17 @@ export function RankUpCelebration({
   const title =
     kind === 'placed' ? t.rankUpPlaced : kind === 'tier' ? t.rankUpTier : t.rankUpDivision;
   const afterLabel = ranks.label(after);
+
+  if (sharing) {
+    return (
+      <Modal visible transparent animationType="none" statusBarTranslucent onRequestClose={onClose}>
+        <ShareAchievementView
+          achievement={{ kind: 'rank', tier: after.tier.id }}
+          onClose={onClose}
+        />
+      </Modal>
+    );
+  }
 
   return (
     <Modal visible transparent animationType="none" statusBarTranslucent onRequestClose={onClose}>
@@ -167,17 +185,37 @@ export function RankUpCelebration({
         ) : null}
 
         {canClose ? (
-          <Animated.View entering={reduceMotion ? undefined : FadeInUp.duration(300)}>
+          <Animated.View
+            entering={reduceMotion ? undefined : FadeInUp.duration(300)}
+            style={styles.actions}
+          >
+            {offerShare ? (
+              <Pressable
+                accessibilityRole="button"
+                onPress={() => setSharing(true)}
+                style={({ pressed }) => [
+                  styles.button,
+                  styles.shareButton,
+                  { shadowColor: tier.light },
+                  pressed && styles.pressed,
+                ]}
+              >
+                <Share2 color="#1A1033" size={20} strokeWidth={2.6} />
+                <Text style={styles.buttonText}>{ts.shareAchievement}</Text>
+              </Pressable>
+            ) : null}
             <Pressable
               accessibilityRole="button"
               onPress={onClose}
               style={({ pressed }) => [
-                styles.button,
-                { shadowColor: tier.light },
+                offerShare ? styles.secondary : styles.button,
+                !offerShare && { shadowColor: tier.light },
                 pressed && styles.pressed,
               ]}
             >
-              <Text style={styles.buttonText}>{t.rankUpContinue}</Text>
+              <Text style={offerShare ? styles.secondaryText : styles.buttonText}>
+                {t.rankUpContinue}
+              </Text>
             </Pressable>
           </Animated.View>
         ) : null}
@@ -403,6 +441,10 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 0 },
     elevation: 8,
   },
+  actions: { alignItems: 'center', gap: 6 },
+  shareButton: { flexDirection: 'row', gap: 8 },
+  secondary: { minHeight: 48, justifyContent: 'center', paddingHorizontal: 24 },
+  secondaryText: { color: '#E9E1FF', fontSize: 17, fontWeight: '800' },
   pressed: { opacity: 0.85, transform: [{ scale: 0.97 }] },
   buttonText: { color: '#1A1033', fontSize: 18, fontWeight: '900' },
 });

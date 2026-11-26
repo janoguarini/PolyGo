@@ -23,7 +23,9 @@ export type PendingRpc =
   | 'start_course'
   /** Calendario de bienvenida (20261225120000_welcome_rewards). */
   | 'get_welcome_rewards'
-  | 'claim_welcome_reward';
+  | 'claim_welcome_reward'
+  /** Premio por compartir un logro (shared/share.ts; migración de la etapa 2, sin aplicar). */
+  | 'claim_share_reward';
 
 type UntypedRpc = (
   fn: string,

@@ -1,11 +1,16 @@
 import * as Haptics from 'expo-haptics';
 import { Bell, Check, Flame, Snowflake, Target } from 'lucide-react-native';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
-import Animated, { FadeIn, FadeInUp } from 'react-native-reanimated';
+import Animated, { FadeIn, FadeInUp, ZoomIn } from 'react-native-reanimated';
+
+import { isStreakShareMilestone, type ShareAchievement } from '@shared/share';
 
 import { Button, Card, Screen, Text, colors, radii, spacing, themedStyles } from '@/design-system';
+import { useMyProfile } from '@/features/profile/hooks';
 import { useReminderPrefs, useSetReminderPrefs } from '@/features/reminders/hooks';
+import { ShareAchievementModal, canShareImages } from '@/features/share/ShareAchievement';
+import { shareStrings } from '@/features/share/strings';
 import { remindersSupported } from '@/features/reminders/notifications';
 import { DEFAULT_REMINDER, formatReminderTime } from '@/features/reminders/schedule';
 import { useStrings } from '@/i18n';
@@ -56,11 +61,32 @@ export function DailyCelebration({
     }
   }, []);
 
+  // Hito de racha (7, 14, 30, 50, 100…): se festeja aparte y se puede compartir como tarjeta.
+  const ts = useStrings(shareStrings);
+  const language = useMyProfile().data?.profile.target_language;
+  const milestone = celebration.streakExtended && isStreakShareMilestone(celebration.streakDays);
+  const [sharing, setSharing] = useState<ShareAchievement | null>(null);
+  const offerShare = milestone && canShareImages && Boolean(language);
+
   return (
     <Screen
       edges={['top', 'bottom']}
-      footer={<Button label={t.continue} size="lg" onPress={onContinue} />}
+      footer={
+        offerShare && language ? (
+          <View style={styles.footer}>
+            <Button
+              label={ts.shareAchievement}
+              size="lg"
+              onPress={() => setSharing({ kind: 'streak', days: celebration.streakDays, language })}
+            />
+            <Button label={t.continue} variant="ghost" onPress={onContinue} />
+          </View>
+        ) : (
+          <Button label={t.continue} size="lg" onPress={onContinue} />
+        )
+      }
     >
+      <ShareAchievementModal achievement={sharing} onClose={() => setSharing(null)} />
       <Animated.View entering={FadeInUp.duration(450)} style={styles.hero}>
         {celebration.streakExtended ? (
           <View
@@ -68,7 +94,9 @@ export function DailyCelebration({
             accessible
             accessibilityLabel={t.streakLabel(daysLabel(celebration.streakDays))}
           >
-            <Flame color={colors.streak} fill={colors.streak} size={96} />
+            <Animated.View entering={ZoomIn.delay(150).springify().damping(8)}>
+              <Flame color={colors.streak} fill={colors.streak} size={96} />
+            </Animated.View>
             <Text variant="display" color="streak">
               {celebration.streakDays}
             </Text>
@@ -77,7 +105,7 @@ export function DailyCelebration({
           <Target color={colors.success} size={96} />
         )}
         <Text variant="title" align="center">
-          {headline(celebration, t)}
+          {milestone ? ts.streakMilestone(celebration.streakDays) : headline(celebration, t)}
         </Text>
         <Text color="textMuted" align="center">
           {subtitle(celebration, t)}
@@ -146,6 +174,7 @@ export function DailyCelebration({
 const useStyles = themedStyles(() =>
   StyleSheet.create({
     hero: { alignItems: 'center', gap: spacing.sm, paddingTop: spacing.huge },
+    footer: { gap: spacing.xs },
     flame: { alignItems: 'center' },
     week: { flexDirection: 'row', justifyContent: 'space-between' },
     day: { alignItems: 'center', gap: spacing.xs },
