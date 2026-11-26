@@ -1,0 +1,27 @@
+{
+  "name": "polygo-admin",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Panel Superadmin de PolyGo (sólo local). Ver docs/ADMIN_PANEL.md.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test --experimental-strip-types src/lib/*.test.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.57.4",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.18.1",
+    "@types/react": "19.1.12",
+    "@types/react-dom": "19.1.9",
+    "@vitejs/plugin-react": "5.0.2",
+    "typescript": "5.9.2",
+    "vite": "7.3.8"
+  }
+}

@@ -45,11 +45,14 @@ const EXCLUDED = new Set(
 
 /**
  * Base con todas las migraciones, o sólo con `files` (nombres de supabase/migrations/, en ese orden)
- * para probar cómo una migración trata datos que ya existían.
+ * para probar cómo una migración trata datos que ya existían. `beforeMigrations(db)` corre después del
+ * stub de Supabase y antes de la primera migración.
  */
-export async function createDb({ files: only } = {}) {
+export async function createDb({ files: only, beforeMigrations } = {}) {
   const db = new PGlite();
   await db.exec(SUPABASE_STUB);
+  // Para preparar datos que una migración espera encontrar (p. ej. una cuenta con un UID fijo).
+  if (beforeMigrations) await beforeMigrations(db);
   const files =
     only ??
     readdirSync(MIGRATIONS_DIR)
