@@ -201,7 +201,8 @@ export function AppTour({
   onFinish,
   navigate = (route) => router.navigate(route),
 }: {
-  onFinish: () => void;
+  /** finished: llegó al último paso; false: lo saltó (para la analítica: el regalo es el mismo). */
+  onFinish: (finished: boolean) => void;
   /** Para mostrar el tutorial sin navegar (vista previa). */
   navigate?: (route: Href) => void;
 }) {
@@ -294,7 +295,7 @@ export function AppTour({
 
   const next = () => {
     void Haptics.selectionAsync();
-    if (isLast) onFinish();
+    if (isLast) onFinish(true);
     else setIndex((i) => i + 1);
   };
   const copy = t[step.key];
@@ -324,7 +325,12 @@ export function AppTour({
       <Text color="text">{copy.body}</Text>
       <View style={styles.actions}>
         {isLast ? null : (
-          <Pressable accessibilityRole="button" onPress={onFinish} hitSlop={12} style={styles.skip}>
+          <Pressable
+            accessibilityRole="button"
+            onPress={() => onFinish(false)}
+            hitSlop={12}
+            style={styles.skip}
+          >
             <Text variant="caption" color="textMuted">
               {t.skip}
             </Text>

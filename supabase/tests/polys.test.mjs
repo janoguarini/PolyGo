@@ -26,6 +26,8 @@ async function player(email) {
 const rpc = (userId, sql, params = []) =>
   as(db, 'authenticated', userId, async () => (await db.query(sql, params)).rows[0]?.r);
 const sync = (u) => rpc(u, 'select public.sync_polys($1) as r', [TZ]);
+/** Termina el tutorial: así se cobran las Polys de bienvenida. */
+const welcome = (u) => rpc(u, 'select public.complete_tutorial() as r');
 const buyFreeze = (u) => rpc(u, 'select public.buy_streak_freeze() as r');
 const balance = async (u) =>
   (await one(`select balance from public.poly_wallets where user_id = $1`, [u])).balance;
@@ -63,16 +65,17 @@ test('poly_config replica shared/polys.ts', async () => {
   assert.deepEqual(c, JSON.parse(JSON.stringify(POLYS)));
 });
 
-test('primera sincronización: sólo el regalo; lo logrado antes queda contado', async () => {
+test('primera sincronización: no paga nada (el regalo llega con el tutorial); lo logrado antes queda contado', async () => {
   const u = await player('poly_first@test.dev');
   const { id: lesson } = await one(`select id from public.lessons order by id limit 1`);
   await finishLesson(u, lesson);
 
   const first = await sync(u);
-  assert.deepEqual(reasons(first.granted), ['welcome']);
-  assert.equal(first.balance, POLYS.welcome);
+  assert.deepEqual(first.granted, []);
+  assert.equal(first.balance, 0);
 
-  // Volver a sincronizar no da nada nuevo.
+  // Terminar el tutorial paga el regalo; volver a sincronizar no da nada nuevo.
+  await welcome(u);
   const again = await sync(u);
   assert.deepEqual(again.granted, []);
   assert.equal(again.balance, POLYS.welcome);
@@ -81,6 +84,7 @@ test('primera sincronización: sólo el regalo; lo logrado antes queda contado',
 test('lecciones con 3★ y unidades se pagan una sola vez', async () => {
   const u = await player('poly_lessons@test.dev');
   await sync(u);
+  await welcome(u);
   const { unit_id } = await one(
     `select unit_id from public.lessons where is_published order by unit_id limit 1`,
   );
@@ -190,7 +194,8 @@ test('cofre: Polys al azar y bonus semanal al 5.º cofre de la semana', async ()
 
 test('protector: se compra con Polys, máximo 2 y sin saldo negativo', async () => {
   const u = await player('poly_shop@test.dev');
-  await sync(u); // 100 de bienvenida
+  await sync(u);
+  await welcome(u); // 100 de bienvenida
   const first = await buyFreeze(u);
   assert.deepEqual(first, { balance: POLYS.welcome - POLYS.prices.streakFreeze, freezes: 1 });
   await assert.rejects(buyFreeze(u), /insufficient_polys/);

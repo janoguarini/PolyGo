@@ -122,7 +122,7 @@ export default function TabsLayout() {
         />
       </Tabs>
       <BattleInviteBanner invites={invites} />
-      {tourPending ? <AppTour onFinish={() => finishTour.mutate()} /> : null}
+      {tourPending ? <AppTour onFinish={(finished) => finishTour.mutate(finished)} /> : null}
     </View>
   );
 }

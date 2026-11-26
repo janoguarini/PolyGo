@@ -22,6 +22,8 @@ export type AnalyticsEvent =
   | 'onboarding_step_viewed'
   | 'onboarding_completed'
   | 'username_suggestion_used'
+  | 'tutorial_completed'
+  | 'tutorial_skipped'
   | 'lesson_started'
   | 'lesson_completed'
   | 'review_started'

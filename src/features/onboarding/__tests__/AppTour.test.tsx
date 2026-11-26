@@ -57,12 +57,12 @@ it('recorre los 6 pasos navegando a cada pestaña y termina con «¡A jugar!»',
   ]);
   expect(screen.queryByText('Saltar')).toBeNull();
   await fireEvent.press(screen.getByText('¡A jugar!'));
-  expect(onFinish).toHaveBeenCalledTimes(1);
+  expect(onFinish).toHaveBeenCalledWith(true);
 });
 
-it('«Saltar» termina el tutorial', async () => {
+it('«Saltar» cierra el tutorial (sin aviso: el regalo llega igual)', async () => {
   const onFinish = jest.fn();
   await render(<AppTour onFinish={onFinish} navigate={jest.fn()} />, { wrapper });
   await fireEvent.press(screen.getByText('Saltar'));
-  expect(onFinish).toHaveBeenCalledTimes(1);
+  expect(onFinish).toHaveBeenCalledWith(false);
 });
