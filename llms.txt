@@ -30,3 +30,6 @@ Datos clave:
 - [Inicio](https://polygoidiomas.com/): qué es Polygo y cómo funciona.
 - [Blog](https://polygoidiomas.com/blog/): todas las guías.
 - [Privacidad](https://polygoidiomas.com/privacidad)
+- [Términos y condiciones](https://polygoidiomas.com/terminos)
+- [Soporte](https://polygoidiomas.com/soporte)
+- [Borrar cuenta](https://polygoidiomas.com/borrar-cuenta)

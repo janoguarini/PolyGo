@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://polygoidiomas.com/</loc><lastmod>2026-11-25</lastmod><priority>1.0</priority></url>
-  <url><loc>https://polygoidiomas.com/privacidad</loc><lastmod>2026-11-25</lastmod><priority>0.3</priority></url>
-  <url><loc>https://polygoidiomas.com/borrar-cuenta</loc><lastmod>2026-11-25</lastmod><priority>0.3</priority></url>
-  <url><loc>https://polygoidiomas.com/blog/</loc><lastmod>2026-11-25</lastmod><priority>0.8</priority></url>
+  <url><loc>https://polygoidiomas.com/</loc><lastmod>2026-11-26</lastmod><priority>1.0</priority></url>
+  <url><loc>https://polygoidiomas.com/privacidad</loc><lastmod>2026-11-26</lastmod><priority>0.3</priority></url>
+  <url><loc>https://polygoidiomas.com/borrar-cuenta</loc><lastmod>2026-11-26</lastmod><priority>0.3</priority></url>
+  <url><loc>https://polygoidiomas.com/terminos</loc><lastmod>2026-11-26</lastmod><priority>0.3</priority></url>
+  <url><loc>https://polygoidiomas.com/soporte</loc><lastmod>2026-11-26</lastmod><priority>0.4</priority></url>
+  <url><loc>https://polygoidiomas.com/blog/</loc><lastmod>2026-11-26</lastmod><priority>0.8</priority></url>
   <url><loc>https://polygoidiomas.com/blog/aprender-ingles-desde-cero</loc><lastmod>2026-11-25</lastmod><priority>0.7</priority></url>
   <url><loc>https://polygoidiomas.com/blog/aprender-italiano</loc><lastmod>2026-11-25</lastmod><priority>0.7</priority></url>
   <url><loc>https://polygoidiomas.com/blog/aprender-portugues</loc><lastmod>2026-11-25</lastmod><priority>0.7</priority></url>
