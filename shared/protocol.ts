@@ -91,8 +91,10 @@ export function isTerminalStatus(status: BattleStatus): boolean {
 /**
  * ranked: cola competitiva (persona o, con cupo de calibración, bot). practice: sola contra el reloj.
  * bot_practice: contra un bot, sin ELO ni recompensas (no se guarda).
+ * friendly: desafío a un amigo con un código (challenge:host / challenge:join): la MISMA partida que
+ * Ranked (Arcade, 60 s, los mismos microjuegos), sin ELO; se guarda (historial y misiones de amigos).
  */
-export type BattleMode = 'ranked' | 'practice' | 'bot_practice';
+export type BattleMode = 'ranked' | 'practice' | 'bot_practice' | 'friendly';
 
 /**
  * Si la partida mueve el ELO: competitive (contra una persona), calibration (una de las primeras
@@ -268,6 +270,14 @@ export type Ack<T> = (response: { ok: true; data: T } | { ok: false; code: Error
 export interface ClientToServerEvents {
   'queue:join': (p: { mode: BattleMode }, ack: Ack<{ mode: BattleMode }>) => void;
   'queue:leave': (ack: Ack<null>) => void;
+  /**
+   * Desafío a un amigo (sólo Arcade, protocolo 3). El anfitrión, con el código que creó en la base,
+   * queda esperando; el amigo entra con el mismo código y se arma la partida (match:found). Salir de la
+   * espera: queue:leave. Errores: challenge_not_found, challenge_expired, challenge_taken,
+   * own_challenge, host_gone, language_mismatch, challenge_declined.
+   */
+  'challenge:host': (p: { code: string }, ack: Ack<{ code: string }>) => void;
+  'challenge:join': (p: { code: string }, ack: Ack<{ code: string }>) => void;
   'match:ready': (p: { battleId: string }, ack: Ack<null>) => void;
   /** Opción elegida o, en las preguntas para escribir, el texto. El servidor corrige y puntúa. */
   'battle:answer': (

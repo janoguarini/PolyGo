@@ -1,4 +1,4 @@
-import type { AchievementUnlock, CalibrationInfo } from '../../shared/protocol';
+import type { AchievementUnlock, CalibrationInfo, ErrorCode } from '../../shared/protocol';
 import type { MatchOutcome } from '../../shared/ranking';
 import type { ArcadeSentence } from '../../shared/arcade';
 import type { RushWord } from '../../shared/wordRush';
@@ -76,6 +76,39 @@ export interface SettleResponse {
   achievements: Record<string, AchievementUnlock[]>;
 }
 
+/** Lo que la base dice de un desafío al anfitrión que se pone a esperar. */
+export interface ChallengeHost {
+  languageCode: string;
+  /** Amigo invitado (desafío dirigido) o null (cualquiera con el código). */
+  inviteeId: string | null;
+  /** Vence (ms). */
+  expiresAt: number;
+}
+
+/** Lo que la base dice de un desafío al amigo que entra con el código. */
+export interface ChallengeJoin {
+  hostId: string;
+  languageCode: string;
+}
+
+/** Códigos con los que la base rechaza un desafío (se le reenvían al cliente tal cual). */
+export const CHALLENGE_ERRORS: readonly ErrorCode[] = [
+  'challenge_not_found',
+  'challenge_expired',
+  'challenge_taken',
+  'own_challenge',
+  'host_gone',
+  'language_mismatch',
+  'challenge_declined',
+  'onboarding_required',
+];
+
+export class ChallengeError extends Error {
+  constructor(readonly code: ErrorCode) {
+    super(code);
+  }
+}
+
 export class StaleRatingError extends Error {
   constructor() {
     super('stale_rating');
@@ -120,6 +153,24 @@ export interface BattleStore {
     rated: boolean,
     protocolVersion: number,
   ): Promise<BotBattleStart>;
+  /**
+   * Desafío a un amigo: el anfitrión confirma que el código es suyo y sigue vivo (y renueva seen_at).
+   * Lanza ChallengeError si no.
+   */
+  challengeHost(code: string, hostId: string): Promise<ChallengeHost>;
+  /**
+   * El amigo entra con el código: mismas reglas que accept_friend_challenge (bloqueos, desafío dirigido
+   * a otro, vencido, idioma), sin crear la partida. Lanza ChallengeError si no puede.
+   */
+  challengeJoin(code: string, guestId: string): Promise<ChallengeJoin>;
+  /** Guarda el amistoso (sin ELO) y lo ata al desafío (friend_challenges.battle_id). */
+  startFriendlyBattle(
+    battleId: string,
+    code: string,
+    host: string,
+    guest: string,
+    protocolVersion: number,
+  ): Promise<void>;
   settlementContext(battleId: string): Promise<SettlementContextRow[]>;
   /** Lanza StaleRatingError si el rating cambió desde el contexto. */
   settleBattle(
