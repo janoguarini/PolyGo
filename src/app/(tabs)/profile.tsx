@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { StyleSheet, View, type ScrollViewInstance } from 'react-native';
 
 import { ErrorState, LoadingState, Screen, Text, spacing, useTheme } from '@/design-system';
+import { AdminEntryCard } from '@/features/admin/AdminEntryCard';
 import { useAuth } from '@/features/auth/AuthProvider';
 import { LearningStats } from '@/features/learning/components/LearningStats';
 import { usePrefetchLanguagePaths } from '@/features/profile/components/LanguagesRow';
@@ -63,6 +64,8 @@ export default function ProfileScreen() {
       contentStyle={styles.content}
     >
       <ProfileTopBar />
+      {/* Sólo la cuenta administradora (janitogap); los datos los autoriza la base con MFA. */}
+      <AdminEntryCard />
       {xpPreview ? <xpPreview.XpPreviewPanel /> : null}
       <ProfileHeader
         profile={profile}

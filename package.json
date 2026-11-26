@@ -118,7 +118,7 @@
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/server/",
-      "/admin/",
+      "<rootDir>/admin/",
       "/batch/",
       "/supabase/",
       "/ops/"

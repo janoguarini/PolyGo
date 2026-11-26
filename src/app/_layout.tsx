@@ -175,6 +175,8 @@ function RootNavigator() {
           <Stack.Screen name="welcome-rewards" options={{ animation: 'slide_from_bottom' }} />
           <Stack.Screen name="smart-review" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="coach" options={{ animation: 'slide_from_right' }} />
+          {/* Panel de administración: sólo janitogap con MFA (lo valida la base). */}
+          <Stack.Screen name="admin" options={{ animation: 'slide_from_right' }} />
         </Stack.Protected>
         <Stack.Protected guard={Boolean(session) && recoveringPassword}>
           <Stack.Screen name="reset-password" />

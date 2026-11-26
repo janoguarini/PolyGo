@@ -1,6 +1,9 @@
 # Panel Superadmin (Etapa A)
 
-Centro de control privado de PolyGo. **Sólo local** (no hay URL pública ni deploy) y **sólo para `janitogap`** con MFA.
+Centro de control privado de PolyGo, **sólo para `janitogap`** con MFA. Dos caras sobre las mismas RPC:
+
+- **En la app** (principal): Perfil → «Panel de administración» → `/admin` (13 módulos + ficha de usuario). Ver §9.
+- **Web local** (`admin/`, opcional): `127.0.0.1:5174`, sin URL pública ni deploy.
 
 - Código: [`admin/`](../admin) (Vite + React + TypeScript, sin librerías de gráficos).
 - Base: [`supabase/migrations/20270101120000_superadmin_panel.sql`](../supabase/migrations/20270101120000_superadmin_panel.sql).
@@ -137,10 +140,21 @@ Las fórmulas de cada KPI están en [`admin/src/lib/metrics.ts`](../admin/src/li
 
 **Rollback:** el bloque `Rollback` al comienzo de la migración (`drop schema admin cascade`, borrar las funciones `public.admin_*` y los 6 índices). No toca datos de la app.
 
+## 9. Panel dentro de la app
+
+- **Botón:** `src/features/admin/AdminEntryCard.tsx`, arriba del perfil. Se dibuja sólo si el UID de la sesión es `SUPERADMIN_UID` (`src/features/admin/api.ts`). Es una decisión **visual**: así ningún otro usuario consulta la base al abrir su perfil (y no se llenan los eventos de seguridad). Quien autoriza es la base; cambiar ese valor en un cliente no da acceso a nada.
+- **Rutas:** `src/app/admin/_layout.tsx` (gate), `index.tsx` (inicio con KPIs y módulos), `[section].tsx` (los 13 módulos), `user/[id].tsx` (ficha). Registradas en `src/app/_layout.tsx` dentro de la zona de usuarios con sesión.
+- **Gate y MFA:** `AdminGate` llama a `admin_session_check`. Con `mfa_required` da de alta el TOTP en el teléfono (botón que abre la app autenticadora con el link `otpauth://` y la clave para cargar a mano) o pide el código de 6 dígitos. Al verificarlo, la sesión de la app pasa a `aal2`. Si una RPC devuelve `admin_forbidden` o `admin_mfa_required`, se vuelve a verificar.
+- **Datos:** `src/features/admin/modules.tsx`, con React Query (60 s de caché y «tirar para actualizar»). Período y Free/Plus compartidos por todo el panel. Sólo lectura.
+- **Idioma:** español fijo. Es una herramienta interna del dueño y es la única excepción a docs/I18N_GUIDE.md (no usa `defineStrings`).
+- **Requiere una build nueva** (no hay OTA). Sin build, el botón no aparece en el teléfono.
+- **Riesgo a tener en cuenta:** con el MFA verificado, la sesión `aal2` queda en el teléfono. Cualquiera con el teléfono desbloqueado y la app abierta ve el panel. Mejora posible (requiere migración): exigir en la guardia que la verificación TOTP (`amr`) sea reciente, por ejemplo de menos de 12 h.
+- **Test:** `src/features/admin/__tests__/AdminEntryCard.test.tsx` (el botón no aparece para otras cuentas ni sin sesión; aparece y abre `/admin` para janitogap).
+
 ## 8. Cambios fuera de `admin/`
 
 - `supabase/migrations/20270101120000_superadmin_panel.sql`: nueva.
 - `supabase/tests/adminPanel.test.mjs`: nuevo (16 pruebas).
 - `supabase/tests/harness.mjs`: opción `beforeMigrations` en `createDb` (para crear la cuenta con UID fijo antes de migrar; no cambia el resto de los tests).
 - `tsconfig.json`, `eslint.config.js`, `package.json` (Jest): excluyen `admin/`, como ya hacían con `server/`.
-- **La app móvil no se modificó.**
+- App: `src/features/admin/*`, `src/app/admin/*`, el botón en `src/app/(tabs)/profile.tsx` y la ruta en `src/app/_layout.tsx` (§9). Jest ignora `<rootDir>/admin/` (el panel web), no `src/**/admin`.
