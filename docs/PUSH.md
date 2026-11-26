@@ -17,10 +17,11 @@ la programación, `smartContext.ts` los datos del usuario, `practiceLog.ts` el h
 
 ## Tipos del aviso inteligente
 
+(El aviso de repaso «se te están por olvidar» se sacó el 2026-11-26: no convencía.)
+
 | Tipo | Cuándo aplica | Abre |
 |---|---|---|
 | `streak` | Hoy, racha ≥ 2 sin practicar | Inicio |
-| `reviews` | ≥ 3 palabras vencidas (proyectadas a ese día) | Repaso |
 | `mission` | Hoy, a 1–2 de completar una misión | Misiones |
 | `rank` | Hoy o mañana, a ≤ 30 de ELO del siguiente rango | Ranked |
 | `chest` | Hoy, misiones completas y cofre sin abrir | Misiones |
@@ -43,7 +44,7 @@ fórmula `A / B`, desglose por `type` (o por `variant` filtrando un tipo para co
 
 1. PostHog → Feature flags → New: key **`smart-push-priority`**, liberado al 100 %.
 2. Payload (JSON), en orden de prioridad, por ejemplo:
-   `["reviews", "streak", "rank", "mission", "chest", "lesson", "word", "comeback"]`
+   `["streak", "rank", "mission", "chest", "lesson", "word", "comeback"]`
 3. Guardar. Los teléfonos lo leen al abrir la app y lo usan al reprogramar.
 
 Tipos desconocidos se ignoran y los que falten se agregan al final en el orden por defecto; sin el

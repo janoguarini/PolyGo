@@ -8,13 +8,12 @@ import { smartStrings } from './smartStrings';
  * se ajusta desde PostHog con lo que más se abre).
  */
 
-export type SmartType =
-  'streak' | 'reviews' | 'mission' | 'chest' | 'rank' | 'lesson' | 'word' | 'comeback';
+/** Sin aviso de repaso («se te están por olvidar»): el dueño lo sacó (2026-11-26). */
+export type SmartType = 'streak' | 'mission' | 'chest' | 'rank' | 'lesson' | 'word' | 'comeback';
 
 /** Prioridad por defecto (la propuesta); PostHog la puede reemplazar (flag smart-push-priority). */
 export const DEFAULT_PRIORITY: readonly SmartType[] = [
   'streak',
-  'reviews',
   'mission',
   'rank',
   'chest',
@@ -28,7 +27,6 @@ const ALL_TYPES = new Set<SmartType>(DEFAULT_PRIORITY);
 /** Pantalla que abre cada aviso al tocarlo. */
 export const SMART_ROUTES: Record<SmartType, string> = {
   streak: '/',
-  reviews: '/review',
   mission: '/missions',
   chest: '/missions',
   rank: '/ranked',
@@ -55,8 +53,6 @@ export function normalizePriority(raw: unknown): SmartType[] {
 export interface SmartContext {
   streakDays: number;
   activeToday: boolean;
-  /** Palabras con repaso programado (texto y cuándo vence, en ms). */
-  dueWords: readonly { text: string; dueAt: number }[];
   /** Lo que falta de la misión más avanzada de hoy (null si ninguna está cerca). */
   missionLeft: number | null;
   /** Misiones completas y cofre sin abrir. */
@@ -72,8 +68,6 @@ export interface SmartContext {
 
 /** Un ELO a esta distancia del siguiente rango ya se siente alcanzable. */
 export const RANK_GAP_MAX = 30;
-/** Con menos palabras vencidas que esto, no vale un aviso de repaso. */
-export const MIN_DUE_WORDS = 3;
 
 export interface SmartMessage {
   type: SmartType;
@@ -93,8 +87,8 @@ function variantFor(date: Date, type: SmartType): 0 | 1 {
 
 /**
  * El mensaje del día `day` (0 = hoy) para la fecha `date`. Lo que cambia día a día (racha, misiones,
- * cofre, palabra del día) sólo cuenta hoy; las palabras vencidas se proyectan a esa fecha; a partir
- * del día 2 sin abrir la app aparece «te extraño». null: nada para decir.
+ * cofre, palabra del día) sólo cuenta hoy; a partir del día 2 sin abrir la app aparece «te extraño».
+ * null: nada para decir.
  */
 export function pickSmartMessage(input: {
   ctx: SmartContext;
@@ -105,9 +99,6 @@ export function pickSmartMessage(input: {
 }): SmartMessage | null {
   const { ctx, day, date, priority = DEFAULT_PRIORITY, exclude = [] } = input;
   const t = getStrings(smartStrings);
-  const due = ctx.dueWords
-    .filter((w) => w.dueAt <= date.getTime())
-    .sort((a, b) => a.dueAt - b.dueAt);
 
   const build = (
     type: SmartType,
@@ -117,14 +108,6 @@ export function pickSmartMessage(input: {
         return day === 0 && ctx.streakDays >= 2 && !ctx.activeToday
           ? t.streak(ctx.streakDays)
           : null;
-      case 'reviews': {
-        if (due.length < MIN_DUE_WORDS) return null;
-        const names = due
-          .slice(0, 2)
-          .map((w) => w.text)
-          .join(', ');
-        return t.reviews(names, due.length - 2);
-      }
       case 'mission':
         return day === 0 && ctx.missionLeft !== null && ctx.missionLeft > 0
           ? t.mission(ctx.missionLeft)

@@ -2,12 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 
 import { getRank, isPlaced } from '@shared/ranking';
 
-import {
-  useCurriculum,
-  useMyWords,
-  useStudyLanguage,
-  useWordOfTheDay,
-} from '@/features/learning/hooks';
+import { useCurriculum, useStudyLanguage, useWordOfTheDay } from '@/features/learning/hooks';
 import { useDailyMissions } from '@/features/missions/api';
 import { useMyProfile } from '@/features/profile/hooks';
 import { useLanguageName } from '@/i18n/languages';
@@ -27,7 +22,6 @@ export function useSmartInput(
   streakDays: number | undefined,
   activeToday: boolean | undefined,
 ): { ctx: SmartContext; practiceTimes: number[]; priority: SmartType[] } | undefined {
-  const words = useMyWords().data;
   const missions = useDailyMissions().data;
   const rating = useMyProfile().data?.rating;
   const curriculum = useCurriculum().data;
@@ -49,7 +43,7 @@ export function useSmartInput(
   const flag = study.flag;
 
   return useMemo(() => {
-    if (streakDays === undefined || activeToday === undefined || !words || !practiceTimes) {
+    if (streakDays === undefined || activeToday === undefined || !practiceTimes) {
       return undefined;
     }
 
@@ -65,9 +59,6 @@ export function useSmartInput(
       ctx: {
         streakDays,
         activeToday,
-        dueWords: words
-          .filter((w) => w.nextReviewAt)
-          .map((w) => ({ text: w.word.text, dueAt: Date.parse(w.nextReviewAt!) })),
         missionLeft: pending && pending.length > 0 ? Math.min(...pending) : null,
         chestReady: Boolean(missions?.all_done && !missions.claimed),
         rankGap:
@@ -81,16 +72,5 @@ export function useSmartInput(
       practiceTimes,
       priority: normalizePriority(flagPayload(PRIORITY_FLAG)),
     };
-  }, [
-    streakDays,
-    activeToday,
-    words,
-    missions,
-    rating,
-    curriculum,
-    wordOfDay,
-    name,
-    flag,
-    practiceTimes,
-  ]);
+  }, [streakDays, activeToday, missions, rating, curriculum, wordOfDay, name, flag, practiceTimes]);
 }

@@ -18,19 +18,6 @@ export const smartStrings = defineStrings({
         body: 'Dos minutos alcanzan para mantenerla viva.',
       },
     ],
-    reviews: (words: string, more: number): [Msg, Msg] => [
-      {
-        title: '🧠 Se te están por olvidar',
-        body:
-          more > 0
-            ? `${words} y ${more} más. 2 minutos y las salvás.`
-            : `${words}. 2 minutos y las salvás.`,
-      },
-      {
-        title: `🧠 ${more > 0 ? `${more + 2} palabras` : 'Tus palabras'} te esperan`,
-        body: `Repasá ${words} justo antes de olvidarlas.`,
-      },
-    ],
     mission: (left: number): [Msg, Msg] => [
       {
         title: '🎯 Misión casi completa',
@@ -88,19 +75,6 @@ export const smartStrings = defineStrings({
       {
         title: `🔥 ${days} days in a row. Stopping today?`,
         body: 'Two minutes is enough to keep it alive.',
-      },
-    ],
-    reviews: (words: string, more: number): [Msg, Msg] => [
-      {
-        title: '🧠 You’re about to forget these',
-        body:
-          more > 0
-            ? `${words} and ${more} more. Save them in 2 minutes.`
-            : `${words}. Save them in 2 minutes.`,
-      },
-      {
-        title: `🧠 ${more > 0 ? `${more + 2} words` : 'Your words'} are waiting`,
-        body: `Review ${words} right before you forget them.`,
       },
     ],
     mission: (left: number): [Msg, Msg] => [

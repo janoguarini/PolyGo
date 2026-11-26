@@ -14,7 +14,6 @@ const NOW = new Date(2026, 10, 26, 8, 0);
 const ctx = (over: Partial<SmartContext> = {}): SmartContext => ({
   streakDays: 0,
   activeToday: false,
-  dueWords: [],
   missionLeft: null,
   chestReady: false,
   rankGap: null,
@@ -23,8 +22,6 @@ const ctx = (over: Partial<SmartContext> = {}): SmartContext => ({
   language: { name: 'italiano', flag: '🇮🇹' },
   ...over,
 });
-const due = (n: number, when = at(25, 10)) =>
-  Array.from({ length: n }, (_, i) => ({ text: `w${i}`, dueAt: when }));
 
 describe('horario de oro', () => {
   it('es la hora en que más practicaste las últimas semanas', () => {
@@ -51,7 +48,7 @@ describe('mensaje del push inteligente', () => {
   const today = new Date(2026, 10, 26, 12, 50);
   it('gana el más fuerte según la prioridad: racha en juego primero', () => {
     const m = pickSmartMessage({
-      ctx: ctx({ streakDays: 23, dueWords: due(12), nextLesson: 'En el bar' }),
+      ctx: ctx({ streakDays: 23, nextLesson: 'En el bar' }),
       day: 0,
       date: today,
     });
@@ -60,26 +57,16 @@ describe('mensaje del push inteligente', () => {
     expect(m?.route).toBe('/');
     expect(['a', 'b']).toContain(m?.variant);
   });
-  it('palabras por olvidarse, con las palabras reales', () => {
-    const m = pickSmartMessage({ ctx: ctx({ dueWords: due(12) }), day: 0, date: today });
-    expect(m?.type).toBe('reviews');
-    expect(`${m?.title} ${m?.body}`).toMatch(/w0|12 palabras/);
-    expect(m?.route).toBe('/review');
+  it('ya no hay aviso de repaso: con una lección pendiente, avisa la lección', () => {
+    const m = pickSmartMessage({ ctx: ctx({ nextLesson: 'En el bar' }), day: 0, date: today });
+    expect(m?.type).toBe('lesson');
+    expect(m?.route).toBe('/');
+    expect(`${m?.title} ${m?.body}`).not.toMatch(/olvid|repas/i);
   });
   it('lo que cambia día a día sólo vale hoy; desde el día 2 aparece «te extraño»', () => {
     const c = ctx({ streakDays: 5, chestReady: true, wordOfDay: 'magari' });
     expect(pickSmartMessage({ ctx: c, day: 1, date: today })).toBeNull();
     expect(pickSmartMessage({ ctx: c, day: 2, date: today })?.type).toBe('comeback');
-  });
-  it('las palabras vencidas se proyectan a esa fecha', () => {
-    const later = due(5, at(28, 9));
-    expect(pickSmartMessage({ ctx: ctx({ dueWords: later }), day: 0, date: today })).toBeNull();
-    const m = pickSmartMessage({
-      ctx: ctx({ dueWords: later }),
-      day: 2,
-      date: new Date(2026, 10, 28, 12, 50),
-    });
-    expect(m?.type).toBe('reviews');
   });
   it('PostHog reordena la prioridad (lo que más tracciona va primero)', () => {
     const c = ctx({ streakDays: 9, wordOfDay: 'magari' });
@@ -90,6 +77,8 @@ describe('mensaje del push inteligente', () => {
   it('una prioridad remota inválida no rompe nada', () => {
     expect(normalizePriority('basura')).toEqual([...DEFAULT_PRIORITY]);
     expect(normalizePriority(['rank', 'nope', 'rank'])[0]).toBe('rank');
+    // Un flag viejo que todavía nombre «reviews» se ignora.
+    expect(normalizePriority(['reviews', 'word'])).not.toContain('reviews');
     expect(normalizePriority(['rank'])).toHaveLength(DEFAULT_PRIORITY.length);
   });
 });
