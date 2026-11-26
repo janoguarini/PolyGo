@@ -290,7 +290,7 @@ export function AdminAsync({
     const denied = query.error instanceof AdminError && query.error.denied;
     return denied ? (
       <Text variant="body" color="danger">
-        La base negó el acceso. Volvé a verificar el MFA.
+        La base negó el acceso. Cerrá sesión y volvé a entrar.
       </Text>
     ) : (
       <ErrorState onRetry={() => void query.refetch()} />

@@ -9,7 +9,7 @@ import { requireSupabase } from '@/lib/supabase';
  *
  * SEGURIDAD: este UID sólo decide si se MUESTRA el botón (para no consultar la base por cada
  * usuario que abre su perfil). Quien autoriza es la base: cada public.admin_* verifica auth.uid()
- * contra admin.superadmins y exige MFA (aal2). Cambiar este valor en un cliente no da acceso a nada.
+ * contra admin.superadmins (sin MFA desde 20270102120000). Cambiar este valor en un cliente no da acceso a nada.
  */
 export const SUPERADMIN_UID = '267762e4-8145-4e48-900b-9b14ccefb59b';
 
@@ -77,7 +77,7 @@ export function useAdminSession(enabled: boolean) {
   });
 }
 
-/** Una RPC del panel. Si la base niega el acceso (p. ej. la sesión perdió el MFA), se vuelve a verificar. */
+/** Una RPC del panel. Si la base niega el acceso (p. ej. la sesión expiró), se vuelve a verificar. */
 export function useAdmin<T = Json>(fn: AdminRpc, args: Record<string, unknown>) {
   const qc = useQueryClient();
   return useQuery({

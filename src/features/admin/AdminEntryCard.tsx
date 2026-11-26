@@ -8,7 +8,7 @@ import { useIsSuperadminAccount } from './api';
 
 /**
  * Botón «Panel de administración» del perfil. Sólo se dibuja en la cuenta de janitogap (comparando
- * el UID de la sesión): es una decisión visual, el acceso a los datos lo valida la base con MFA.
+ * el UID de la sesión): es una decisión visual, el acceso a los datos lo valida la base.
  */
 export function AdminEntryCard() {
   useTheme();

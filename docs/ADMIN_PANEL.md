@@ -1,6 +1,6 @@
 # Panel Superadmin (Etapa A)
 
-Centro de control privado de PolyGo, **sólo para `janitogap`** con MFA. Dos caras sobre las mismas RPC:
+Centro de control privado de PolyGo, **sólo para `janitogap`**. Dos caras sobre las mismas RPC:
 
 - **En la app** (principal): Perfil → «Panel de administración» → `/admin` (13 módulos + ficha de usuario). Ver §9.
 - **Web local** (`admin/`, opcional): `127.0.0.1:5174`, sin URL pública ni deploy.
@@ -8,7 +8,7 @@ Centro de control privado de PolyGo, **sólo para `janitogap`** con MFA. Dos car
 - Código: [`admin/`](../admin) (Vite + React + TypeScript, sin librerías de gráficos).
 - Base: [`supabase/migrations/20270101120000_superadmin_panel.sql`](../supabase/migrations/20270101120000_superadmin_panel.sql).
 - Pruebas: [`supabase/tests/adminPanel.test.mjs`](../supabase/tests/adminPanel.test.mjs) y `admin/src/lib/*.test.ts`.
-- Estado: migración **aplicada en producción el 2026-11-26 ~22:55 UTC** con `psql --single-transaction` desde el archivo (sha256 `fd1f5f54…`), registrada en el historial como `20270101120000 superadmin_panel` (148 filas). Backup previo verificado: físico COMPLETED de 2026-11-26 13:12 UTC. Postchecks y pruebas de rol en producción OK (ver §7). Falta el primer ingreso real con alta de MFA.
+- Estado: migración **aplicada en producción el 2026-11-26 ~22:55 UTC** con `psql --single-transaction` desde el archivo (sha256 `fd1f5f54…`), registrada en el historial como `20270101120000 superadmin_panel` (148 filas). Backup previo verificado: físico COMPLETED de 2026-11-26 13:12 UTC. Postchecks y pruebas de rol en producción OK (ver §7). **Sin MFA** desde `20270102120000_superadmin_no_mfa.sql` (decisión del dueño, 2026-11-26): alcanza con la sesión de la cuenta.
 
 ## 1. Seguridad
 
@@ -18,7 +18,7 @@ El navegador no decide nada. Cada dato sale de una función de Postgres que veri
 | --- | --- |
 | Identidad | `auth.uid()` del JWT firmado por Supabase. Nunca un username, un parámetro ni algo guardado en el navegador. |
 | Superadmin | `admin.superadmin_uid()` = `267762e4-8145-4e48-900b-9b14ccefb59b` (janitogap) **y** fila en `admin.superadmins`. Hacen falta las dos; cambiar el admin exige una migración nueva. |
-| MFA | El JWT debe tener `aal = 'aal2'` (TOTP verificado en esa sesión). Sin MFA: `admin_mfa_required`. |
+| MFA | **Desactivado** a pedido del dueño (`20270102120000_superadmin_no_mfa`). El acceso queda protegido sólo por las credenciales de la cuenta (contraseña o Google). Para reactivarlo, volver a las funciones de `20270101120000`. |
 | Schema `admin` | Sin `USAGE` para `public`, `anon`, `authenticated` ni `service_role`; RLS activado y sin políticas. La API REST no lo expone. Ningún cliente puede leer ni escribir `superadmins`, `internal_accounts`, `audit_log` ni `security_events`. |
 | RPC `public.admin_*` | `SECURITY DEFINER`, `search_path` vacío, `EXECUTE` sólo para `authenticated` (anon ni las puede llamar). La **primera sentencia** de cada una es `admin.assert_superadmin(...)` (lo verifica un test sobre el catálogo). Sólo leen. |
 | Auditoría | Cada consulta del panel queda en `admin.audit_log` (la misma consulta con los mismos parámetros, como máximo una vez por minuto). |
@@ -38,8 +38,8 @@ El navegador no decide nada. Cada dato sale de una función de Postgres que veri
 6. Las cuentas internas `hola` y `janotester` → `admin_forbidden`.
 7. `admin_session_check` con un usuario común → `forbidden`, sin datos, y un solo evento de seguridad aunque lo intente 3 veces seguidas.
 8. Escalamiento: un usuario no puede insertar en `admin.superadmins`, leerla, tocar `internal_accounts`, borrar la auditoría, leer eventos ni llamar `admin.assert_superadmin`. No puede cambiar su username, y ponerse `janitogap` como nombre visible no da acceso. Ninguna RPC recibe usuario, rol, `aal` ni UID como parámetro.
-9. janitogap sin MFA (`aal1` o sin claim) → `admin_mfa_required` en todas; `session_check` → `mfa_required`.
-10. janitogap con MFA → accede a todas y queda auditado (sin duplicar lecturas repetidas).
+9. janitogap sin MFA (`aal1` o sin claim) accede a todas; la guardia ya no mira el `aal` pero sigue exigiendo el UID fijo y la fila en `superadmins`, con los mismos permisos.
+10. janitogap accede a todas y queda auditado (sin duplicar lecturas repetidas).
 11. Validaciones: período invertido, de más de 2 años, orden inyectado (`'id; drop table x'`), segmento inválido → error.
 
 ## 2. Ejecutarlo localmente
@@ -53,16 +53,12 @@ npm run dev          # http://127.0.0.1:5174
 Requisitos:
 
 - La migración `20270101120000_superadmin_panel.sql` aplicada en Supabase (**pendiente de autorización**).
-- MFA TOTP habilitado en Supabase Auth (es el valor por defecto de los proyectos).
 - El `.env` de la raíz con `EXPO_PUBLIC_SUPABASE_URL` y `EXPO_PUBLIC_SUPABASE_ANON_KEY` (ya existe).
 
 Primer ingreso como `janitogap`:
 
 1. Email y contraseña de la cuenta (la cuenta tiene proveedor email y Google; el panel usa email y contraseña). Si no recordás la contraseña, usá «Olvidé mi contraseña» de la app.
-2. La base responde `mfa_required` y el panel muestra un QR: escanealo con una app autenticadora y escribí el código. Esto da de alta el factor TOTP (una sola vez).
-3. Desde ahí, cada sesión pide email, contraseña y código.
-
-El factor MFA queda en la cuenta: la app móvil no lo pide (sólo el panel exige `aal2`).
+2. Listo: la base verifica que sea la cuenta de janitogap.
 
 Otros comandos (en `admin/`): `npm run typecheck`, `npm run build` (genera `admin/dist`, ignorado por git), `npm test`.
 
@@ -136,7 +132,7 @@ Las fórmulas de cada KPI están en [`admin/src/lib/metrics.ts`](../admin/src/li
    - `has_schema_privilege('authenticated', 'admin', 'USAGE')` → false.
    - `has_function_privilege('anon', 'public.admin_overview(date,date,jsonb)', 'EXECUTE')` → false.
    - Advisors de seguridad sin hallazgos nuevos.
-4. Probar desde el panel: entrar como janitogap (alta de MFA), recorrer los 13 módulos, y entrar con `janotester` para confirmar «Acceso denegado».
+4. Probar desde el panel: entrar como janitogap, recorrer los 13 módulos, y entrar con `janotester` para confirmar «Acceso denegado».
 
 **Rollback:** el bloque `Rollback` al comienzo de la migración (`drop schema admin cascade`, borrar las funciones `public.admin_*` y los 6 índices). No toca datos de la app.
 
@@ -144,11 +140,11 @@ Las fórmulas de cada KPI están en [`admin/src/lib/metrics.ts`](../admin/src/li
 
 - **Botón:** `src/features/admin/AdminEntryCard.tsx`, arriba del perfil. Se dibuja sólo si el UID de la sesión es `SUPERADMIN_UID` (`src/features/admin/api.ts`). Es una decisión **visual**: así ningún otro usuario consulta la base al abrir su perfil (y no se llenan los eventos de seguridad). Quien autoriza es la base; cambiar ese valor en un cliente no da acceso a nada.
 - **Rutas:** `src/app/admin/_layout.tsx` (gate), `index.tsx` (inicio con KPIs y módulos), `[section].tsx` (los 13 módulos), `user/[id].tsx` (ficha). Registradas en `src/app/_layout.tsx` dentro de la zona de usuarios con sesión.
-- **Gate y MFA:** `AdminGate` llama a `admin_session_check`. Con `mfa_required` da de alta el TOTP en el teléfono (botón que abre la app autenticadora con el link `otpauth://` y la clave para cargar a mano) o pide el código de 6 dígitos. Al verificarlo, la sesión de la app pasa a `aal2`. Si una RPC devuelve `admin_forbidden` o `admin_mfa_required`, se vuelve a verificar.
+- **Gate:** `AdminGate` llama a `admin_session_check`; sin `allowed`, muestra «Acceso denegado». Si una RPC devuelve `admin_forbidden`, se vuelve a verificar.
 - **Datos:** `src/features/admin/modules.tsx`, con React Query (60 s de caché y «tirar para actualizar»). Período y Free/Plus compartidos por todo el panel. Sólo lectura.
 - **Idioma:** español fijo. Es una herramienta interna del dueño y es la única excepción a docs/I18N_GUIDE.md (no usa `defineStrings`).
 - **Requiere una build nueva** (no hay OTA). Sin build, el botón no aparece en el teléfono.
-- **Riesgo a tener en cuenta:** con el MFA verificado, la sesión `aal2` queda en el teléfono. Cualquiera con el teléfono desbloqueado y la app abierta ve el panel. Mejora posible (requiere migración): exigir en la guardia que la verificación TOTP (`amr`) sea reciente, por ejemplo de menos de 12 h.
+- **Riesgo a tener en cuenta:** sin MFA, quien tenga la contraseña de la cuenta, o el teléfono desbloqueado con la app abierta, ve el panel.
 - **Test:** `src/features/admin/__tests__/AdminEntryCard.test.tsx` (el botón no aparece para otras cuentas ni sin sesión; aparece y abre `/admin` para janitogap).
 
 ## 8. Cambios fuera de `admin/`

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { supabase } from './supabase.ts';
 
-/** Las RPC del panel (todas validan janitogap + MFA en la base). */
+/** Las RPC del panel (todas validan janitogap en la base). */
 export type AdminRpc =
   | 'admin_session_check'
   | 'admin_filter_options'
@@ -30,7 +30,7 @@ export class RpcError extends Error {
   ) {
     super(message);
   }
-  /** La base negó el acceso (no es superadmin, falta MFA o expiró la sesión). */
+  /** La base negó el acceso (no es superadmin o expiró la sesión). */
   get denied(): boolean {
     return this.code === '42501' || /admin_forbidden|admin_mfa_required|JWT/i.test(this.message);
   }

@@ -73,7 +73,7 @@ export function Layout({
         ))}
         <div className="sidebar-foot">
           <div>
-            Sesión: <b style={{ color: 'var(--text-primary)' }}>{session.username}</b> · MFA ✓
+            Sesión: <b style={{ color: 'var(--text-primary)' }}>{session.username}</b>
           </div>
           <button className="btn" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
             {theme === 'dark' ? '☀ Tema claro' : '☾ Tema oscuro'}

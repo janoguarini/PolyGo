@@ -270,24 +270,46 @@ test('nadie puede darse el rol: ni escribir admin.*, ni llamar la guardia, ni ha
 });
 
 // =====================================================================================
-// 4. MFA
+// 4. Sin MFA (20270102120000_superadmin_no_mfa): alcanza con la sesión de janitogap
 // =====================================================================================
 
-test('janitogap sin MFA (aal1 o sin claim) → admin_mfa_required en todas las RPC', async () => {
+test('janitogap sin MFA (aal1 o sin claim) accede a todas las RPC', async () => {
   for (const aal of ['aal1', undefined]) {
     for (const rpc of rpcs()) {
-      await rejects(callRpc('authenticated', ADMIN, aal, rpc), /admin_mfa_required/);
+      const { r } = await callRpc('authenticated', ADMIN, aal, rpc);
+      assert.ok(r && typeof r === 'object', `${rpc[0]} (${aal ?? 'sin aal'})`);
     }
   }
   const { r } = await asUser('authenticated', ADMIN, 'aal1', 'select public.admin_session_check() as r');
-  assert.deepEqual(r, { allowed: false, reason: 'mfa_required' });
+  assert.equal(r.allowed, true);
+  assert.equal(r.reason, 'ok');
+});
+
+test('la guardia ya no mira el aal; sigue exigiendo UID fijo + fila en superadmins', async () => {
+  const def = (await one(`select pg_get_functiondef('admin.assert_superadmin(text,jsonb)'::regprocedure) d`)).d;
+  assert.doesNotMatch(def, /aal2/);
+  assert.match(def, /admin\.caller_is_superadmin\(\)/);
+  const caller = (await one(`select pg_get_functiondef('admin.caller_is_superadmin()'::regprocedure) d`)).d;
+  assert.match(caller, /admin\.superadmin_uid\(\)/);
+  assert.match(caller, /admin\.superadmins/);
+  // Los permisos no cambiaron con el create or replace.
+  for (const role of ['anon', 'authenticated']) {
+    assert.equal(
+      (await one(`select has_function_privilege($1, 'admin.assert_superadmin(text,jsonb)', 'EXECUTE') ok`, [role])).ok,
+      false,
+    );
+  }
+  assert.equal(
+    (await one(`select has_function_privilege('anon', 'public.admin_session_check()', 'EXECUTE') ok`)).ok,
+    false,
+  );
 });
 
 // =====================================================================================
 // 5. Acceso autorizado
 // =====================================================================================
 
-test('janitogap con MFA (aal2) accede a todas las RPC y queda auditado', async () => {
+test('janitogap accede a todas las RPC y queda auditado', async () => {
   const { r } = await asAdmin('select public.admin_session_check() as r');
   assert.equal(r.allowed, true);
   assert.equal(r.username, 'janitogap');
