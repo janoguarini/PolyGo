@@ -3,21 +3,20 @@
 -- Antes: sync_polys las acreditaba en la primera sincronización (al inicializar la billetera), o sea
 -- apenas entrabas, antes del tutorial. Ahora:
 --   · sync_polys ya no las da al inicializar (el resto de esa inicialización no cambia).
---   · complete_tutorial() marca el tutorial y acredita el regalo, se termine o se salte: cerrar el
---     tutorial de cualquier forma lo da. Devuelve {balance, granted} (antes void) para que la app
---     muestre el aviso de «+100 Polys» sobre el inicio, de sorpresa.
---   · Las apps publicadas ya llaman complete_tutorial() al cerrarlo (e ignoran la respuesta): reciben
---     el regalo en ese momento y lo ven en la próxima sincronización.
+--   · finish_tutorial() (nueva) marca el tutorial y acredita el regalo, se termine o se salte, y
+--     devuelve {balance, granted} para que la app muestre el aviso de «+100 Polys» sobre el inicio,
+--     de sorpresa.
+--   · complete_tutorial() (la que llaman las apps publicadas al cerrar el tutorial) conserva su firma
+--     (returns void) y hace lo mismo: esos usuarios también reciben el regalo al cerrarlo.
+-- Sin DROP: nada se borra, sólo se reemplazan cuerpos y se agrega una función.
 --
 -- Idempotente: poly_credit no repite un (user, 'welcome', 'welcome') ya pagado, así que nadie que ya
 -- lo tenga lo cobra dos veces.
 --
--- Rollback: volver a crear complete_tutorial() returns void (20261102030524_tutorial_completed) y
--- reponer el bloque del regalo en sync_polys.
+-- Rollback: complete_tutorial() con el cuerpo de 20261102030524_tutorial_completed, reponer el bloque
+-- del regalo en sync_polys y (opcional) quitar finish_tutorial().
 
-drop function if exists public.complete_tutorial();
-
-create function public.complete_tutorial()
+create or replace function public.finish_tutorial()
 returns jsonb
 language plpgsql
 security definer
@@ -43,8 +42,20 @@ begin
     end);
 end;
 $$;
-revoke all on function public.complete_tutorial() from public, anon;
-grant execute on function public.complete_tutorial() to authenticated;
+revoke all on function public.finish_tutorial() from public, anon;
+grant execute on function public.finish_tutorial() to authenticated;
+
+-- Apps publicadas: misma firma, ahora también con el regalo.
+create or replace function public.complete_tutorial()
+returns void
+language plpgsql
+security definer
+set search_path = ''
+as $$
+begin
+  perform public.finish_tutorial();
+end;
+$$;
 
 do $migration$
 declare

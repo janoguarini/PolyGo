@@ -55,7 +55,7 @@ export function useFinishTour(userId: string | undefined) {
           ? { ...old, profile: { ...old.profile, tutorial_completed_at: new Date().toISOString() } }
           : old,
       );
-      const { data, error } = await requireSupabase().rpc('complete_tutorial');
+      const { data, error } = await requireSupabase().rpc('finish_tutorial');
       if (error) throw error;
       const wallet = data as unknown as PolysState | null;
       if (wallet && Array.isArray(wallet.granted) && wallet.granted.length > 0) {

@@ -36,7 +36,7 @@ test('el usuario no puede escribir la columna directamente', async () => {
 
 const tutorial = (u) =>
   as(db, 'authenticated', u, async () =>
-    (await db.query('select public.complete_tutorial() as r')).rows[0].r,
+    (await db.query('select public.finish_tutorial() as r')).rows[0].r,
   );
 const syncPolys = (u) =>
   as(db, 'authenticated', u, async () =>
@@ -59,4 +59,12 @@ test('las 100 Polys de bienvenida llegan al cerrar el tutorial, no al entrar', a
   assert.deepEqual(again.granted, []);
   assert.equal(again.balance, 100);
   assert.deepEqual((await syncPolys(u)).granted, []);
+});
+
+test('apps publicadas: complete_tutorial() también da el regalo al cerrar el tutorial', async () => {
+  const u = await createUser(db);
+  await syncPolys(u);
+  await as(db, 'authenticated', u, () => db.query('select public.complete_tutorial()'));
+  assert.equal((await syncPolys(u)).balance, 100);
+  assert.ok(await completedAt(u));
 });

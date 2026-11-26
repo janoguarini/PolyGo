@@ -5542,7 +5542,7 @@ export type Database = {
           isSetofReturn: false;
         };
       };
-      complete_tutorial: { Args: never; Returns: Json };
+      complete_tutorial: { Args: never; Returns: undefined };
       consume_lesson_energy: { Args: { p_user: string }; Returns: number };
       create_friend_challenge: { Args: never; Returns: Json };
       current_streak: { Args: { p_user: string }; Returns: number };
@@ -5589,6 +5589,7 @@ export type Database = {
         };
         Returns: Json;
       };
+      finish_tutorial: { Args: never; Returns: Json };
       friend_challenge_progress: {
         Args: { p_id: string; p_user: string; p_week: string };
         Returns: number;

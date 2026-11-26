@@ -27,7 +27,7 @@ const rpc = (userId, sql, params = []) =>
   as(db, 'authenticated', userId, async () => (await db.query(sql, params)).rows[0]?.r);
 const sync = (u) => rpc(u, 'select public.sync_polys($1) as r', [TZ]);
 /** Termina el tutorial: así se cobran las Polys de bienvenida. */
-const welcome = (u) => rpc(u, 'select public.complete_tutorial() as r');
+const welcome = (u) => rpc(u, 'select public.finish_tutorial() as r');
 const buyFreeze = (u) => rpc(u, 'select public.buy_streak_freeze() as r');
 const balance = async (u) =>
   (await one(`select balance from public.poly_wallets where user_id = $1`, [u])).balance;
