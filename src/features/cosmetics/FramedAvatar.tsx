@@ -41,6 +41,7 @@ export function FramedAvatar({
   fallbackRing,
   instant,
   animated,
+  stable,
 }: {
   avatarId: string | null | undefined;
   photoUrl?: string | null;
@@ -51,8 +52,29 @@ export function FramedAvatar({
   instant?: boolean;
   /** Brillo animado de los exclusivos (sólo en el perfil: no en listas). */
   animated?: boolean;
+  /**
+   * El avatar SIEMPRE del mismo tamaño y en el mismo lugar, con cualquier marco (o sin marco): ocupa
+   * una caja fija y es el marco el que se ajusta al avatar. Para la vista previa al personalizar,
+   * donde cambiar de marco no puede mover nada.
+   */
+  stable?: boolean;
 }) {
   const image = frameArt(frameId, rating);
+  if (stable) {
+    return (
+      <StableFramedAvatar
+        avatarId={avatarId}
+        photoUrl={photoUrl}
+        size={size}
+        image={image}
+        frame={
+          frameStyle(frameId) ?? (fallbackRing ? { colors: [fallbackRing, fallbackRing] } : null)
+        }
+        instant={instant}
+        glow={animated && frameId ? GLOW[frameId] : undefined}
+      />
+    );
+  }
   if (image) {
     return (
       <ImageFramedAvatar
@@ -125,6 +147,78 @@ function ImageFramedAvatar({
         fadeDuration={0}
         pointerEvents="none"
       />
+    </View>
+  );
+}
+
+/**
+ * Caja fija (la de un marco con adornos) con el avatar de `size` siempre centrado. El marco en imagen
+ * se escala para que su hueco medido calce justo alrededor del avatar (puede asomar apenas fuera de la
+ * caja: no cambia el layout); el aro dibujado se centra igual. Cambiar de marco no mueve nada.
+ */
+function StableFramedAvatar({
+  avatarId,
+  photoUrl,
+  size,
+  image,
+  frame,
+  instant,
+  glow,
+}: {
+  avatarId: string | null | undefined;
+  photoUrl?: string | null;
+  size: number;
+  image: FrameImage | null;
+  frame: FrameStyle | null;
+  instant?: boolean;
+  glow?: string;
+}) {
+  const box = frameGeometry(size, true).total;
+  const c = box / 2;
+  const avatar = (
+    <View style={{ position: 'absolute', left: c - size / 2, top: c - size / 2 }}>
+      <Avatar avatarId={avatarId} photoUrl={photoUrl} size={size} instant={instant} />
+    </View>
+  );
+  if (image) {
+    // El avatar llena el 97 % del hueco (como en el marco normal): el hueco mide size / 0,97.
+    const width = size / (2 * image.r * 0.97);
+    const height = width * image.aspect;
+    return (
+      <View style={{ width: box, height: box }}>
+        {glow ? <Glow color={glow} size={size * 1.25} x={c} y={c} /> : null}
+        {avatar}
+        <Image
+          source={image.source}
+          style={{
+            position: 'absolute',
+            left: c - image.cx * width,
+            top: c - image.cy * height,
+            width,
+            height,
+          }}
+          resizeMode="contain"
+          fadeDuration={0}
+          pointerEvents="none"
+        />
+      </View>
+    );
+  }
+  if (!frame) {
+    return <View style={{ width: box, height: box }}>{avatar}</View>;
+  }
+  const g = frameGeometry(size, Boolean(frame.ornament));
+  return (
+    <View style={{ width: box, height: box }}>
+      {avatar}
+      <View
+        style={{ position: 'absolute', left: c - g.total / 2, top: c - g.total / 2 }}
+        pointerEvents="none"
+      >
+        <View style={{ width: g.total, height: g.total }}>
+          <FrameArt frame={frame} geometry={g} />
+        </View>
+      </View>
     </View>
   );
 }

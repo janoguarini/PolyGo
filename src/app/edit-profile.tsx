@@ -15,7 +15,6 @@ import {
 import {
   compatibilityFor,
   isCosmeticCompatible,
-  keepIfCompatible,
 } from '@shared/cosmeticCompatibility';
 import { AVATARS, COUNTRIES, DAILY_GOALS, DEFAULT_AVATAR, flagEmoji } from '@shared/profile';
 
@@ -46,7 +45,7 @@ import {
   RankLadder,
   useCosmeticContext,
 } from '@/features/cosmetics/CosmeticTiles';
-import { equipCosmetic, useOwnedCosmetics } from '@/features/cosmetics/api';
+import { buyCosmetic, equipCosmetic, useOwnedCosmetics } from '@/features/cosmetics/api';
 import { cosmeticStatus, isUnlocked } from '@/features/cosmetics/state';
 import { cosmeticStrings } from '@/features/cosmetics/strings';
 import { usePolys } from '@/features/polys/api';
@@ -149,19 +148,10 @@ function EditProfileForm({
     setBackgroundId(id);
     setBackgroundTouched(true);
   };
-  // Cambiar de avatar conserva el marco y el fondo si siguen combinando; si no, vuelven al
-  // predeterminado. Es lo mismo que hace la base (trigger profiles_guard_compat).
-  const setAvatarId = (id: string) => {
-    setAvatarIdRaw(id);
-    if (keepIfCompatible(id, frameId) !== frameId) {
-      setFrameId(null);
-      setFrameTouched(false);
-    }
-    if (keepIfCompatible(id, backgroundId) !== backgroundId) {
-      setBackgroundId(null);
-      setBackgroundTouched(false);
-    }
-  };
+  // Probar otro avatar cambia SÓLO el avatar: el marco y el fondo quedan como estaban. Si alguno no
+  // combina con el avatar que se guarda, se avisa antes de guardar (la base lo saca: trigger
+  // profiles_guard_compat).
+  const setAvatarId = (id: string) => setAvatarIdRaw(id);
   // Título: el nivel global decide cuáles están desbloqueados (nivel 0 si el servidor no tiene XP).
   const level = xpOrStart(useXp().data)?.level ?? 0;
   const userId = session?.user.id;
@@ -190,26 +180,45 @@ function EditProfileForm({
     const item = cosmeticById(id);
     return item ? isUnlocked(item, ctx) : !isSkinId(id);
   };
-  // El avatar que queda guardado (una skin que se está probando sin tenerla no se guarda).
-  const savedAvatar = usable(avatarId) ? avatarId : profile.avatar_id;
+  // Lo que se está probando sin tenerlo: lo que se vende por Polys se compra al guardar (el botón
+  // dice cuánto sale); lo que no (Plus, rango, invitaciones) sólo se prueba.
+  const trial = [avatarId, frameId, backgroundId]
+    .filter((id): id is string => id !== null && !usable(id))
+    .map((id) => cosmeticById(id))
+    .filter((item): item is NonNullable<typeof item> => Boolean(item));
+  const toBuy = trial.filter((item) => cosmeticStatus(item, ctx, null).kind === 'buy');
+  const buying = (id: string | null) => toBuy.some((item) => item.id === id);
+  const price = toBuy.reduce((sum, item) => sum + (item.price ?? 0), 0);
+  const missing = Math.max(0, price - balance);
+  const tryingOn = trial.filter((item) => !toBuy.includes(item)).map((item) => ct.name(item));
+  // El avatar que queda guardado: el propio o el que se compra al guardar (una skin que no se vende,
+  // como la de Plus, se prueba pero no se guarda).
+  const savedAvatar = usable(avatarId) || buying(avatarId) ? avatarId : profile.avatar_id;
   // Marco y fondo se comparan con lo puesto ahora (comprar ya lo pone) y tienen que combinar con el
   // avatar que se guarda: la base rechaza una combinación incompatible.
   const savable = (id: string | null) => usable(id) && isCosmeticCompatible(savedAvatar, id);
   const frameChanged = frameTouched && frameId !== profile.frame_id && savable(frameId);
   const backgroundChanged =
     backgroundTouched && backgroundId !== profile.background_id && savable(backgroundId);
-  const avatarChanged = avatarId !== profile.avatar_id && usable(avatarId);
+  const avatarChanged = avatarId !== profile.avatar_id && savedAvatar === avatarId;
   // Combinan con la skin que se está probando, pero no con el avatar que se guardaría.
   const blockedByAvatar = [frameTouched && frameId, backgroundTouched && backgroundId].some(
     (id) => typeof id === 'string' && usable(id) && !savable(id),
   );
-  const tryingOn = [avatarId, frameId, backgroundId]
-    .filter((id): id is string => id !== null && !usable(id))
+  // Marco o fondo (propios o que se compran) que no combinan con el avatar que se guarda: la base los
+  // saca al guardar. Se avisa antes, con nombre.
+  const dropped = [frameId, backgroundId]
+    .filter(
+      (id): id is string =>
+        typeof id === 'string' &&
+        (usable(id) || buying(id)) &&
+        !isCosmeticCompatible(savedAvatar, id),
+    )
     .map((id) => {
       const item = cosmeticById(id);
-      return item ? ct.name(item) : undefined;
-    })
-    .filter((name): name is string => Boolean(name));
+      return item ? ct.name(item) : id;
+    });
+  const savedAvatarName = cosmeticById(savedAvatar) ? ct.name(cosmeticById(savedAvatar)!) : '';
   // Un avatar común para volver desde una skin a la foto o a los zorros de siempre.
   const [lastBasicAvatar, setLastBasicAvatar] = useState(
     isSkinId(profile.avatar_id) ? DEFAULT_AVATAR : profile.avatar_id,
@@ -240,28 +249,50 @@ function EditProfileForm({
     backgroundChanged;
   // El título se guarda en este teléfono, no en la base: cambiar sólo el título no escribe en Supabase.
   const titleChanged = titleChoice !== storedTitle;
-  const changed = profileChanged || titleChanged;
+  const changed = profileChanged || titleChanged || toBuy.length > 0;
 
   // La foto se sube recién al guardar; si falla, no se toca el perfil.
   const save = useMutation({
     mutationFn: async () => {
       if (titleChanged && userId) setTitleChoice(userId, titleChoice);
-      if (!profileChanged) return;
+      // Primero se compra lo que se está probando (la skin antes que marco y fondo: la base valida
+      // que combinen con el avatar). Comprar ya lo deja puesto si combina.
+      const bought = new Set<string>();
+      for (const item of [...toBuy].sort(
+        (a, b) => Number(isSkinId(b.id)) - Number(isSkinId(a.id)),
+      )) {
+        await buyCosmetic(item.id);
+        bought.add(item.id);
+      }
+      if (bought.size > 0) {
+        void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+        await Promise.all([
+          qc.invalidateQueries({ queryKey: ['cosmetics'] }),
+          qc.invalidateQueries({ queryKey: ['learning', 'polys'] }),
+          qc.invalidateQueries({ queryKey: ['leaderboard'] }),
+        ]);
+      }
+      // La skin recién comprada es la que queda (no la anterior).
+      const finalAvatar = savedAvatar;
+      if (!profileChanged && !bought.has(avatarId)) {
+        if (bought.size > 0) await qc.invalidateQueries({ queryKey: ['profile'] });
+        return;
+      }
       let avatarPath = initial.avatarPath;
       if (photo?.local) avatarPath = await uploadAvatarPhoto(session!.user.id, photo.uri);
       else if (!photo) avatarPath = null;
       // Primero el avatar: la base valida marco y fondo contra el avatar que ya quedó guardado.
       await update.mutateAsync({
         display_name: trimmed,
-        // Lo que se está probando sin tenerlo no se guarda: queda el avatar actual.
-        avatar_id: savedAvatar,
+        // Lo que se está probando sin tenerlo (y no se vende) no se guarda: queda el avatar actual.
+        avatar_id: finalAvatar,
         avatar_path: avatarPath,
         daily_goal_minutes: dailyGoal,
         region,
       });
       if (frameChanged) await equipCosmetic('frame', frameId);
       if (backgroundChanged) await equipCosmetic('background', backgroundId);
-      if (frameChanged || backgroundChanged) {
+      if (frameChanged || backgroundChanged || bought.size > 0) {
         await Promise.all([
           qc.invalidateQueries({ queryKey: ['cosmetics'] }),
           qc.invalidateQueries({ queryKey: ['profile'] }),
@@ -283,6 +314,54 @@ function EditProfileForm({
   return (
     <Screen
       edges={['top', 'bottom']}
+      header={
+        // Fijo arriba: mientras scrolleás marcos, fondos y avatares, la vista previa sigue a la vista.
+        <View style={styles.fixedHeader}>
+          <View style={styles.header}>
+            <View style={styles.flex}>
+              <ScreenHeader title={t.title} onBack={() => router.back()} />
+            </View>
+            <View style={styles.balance} accessibilityLabel={t.balanceA11y(balance)}>
+              <PolyCoin size={20} />
+              <Text variant="bodyStrong" color="gold" style={styles.tabular}>
+                {balance}
+              </Text>
+            </View>
+          </View>
+
+          <View accessibilityLabel={t.previewA11y}>
+            <ProfileHeader
+              profile={previewProfile}
+              rating={rating}
+              preview
+              showRank={false}
+              subtitle={<PlayerTitle xp={{ ...STARTING_XP, level }} choice={titleChoice} />}
+              photoUrl={photo?.uri ?? null}
+              footer={<Loadout avatarId={avatarId} frameId={frameId} backgroundId={backgroundId} />}
+            />
+          </View>
+
+          <View style={styles.tabs} accessibilityRole="tablist">
+            {TABS.map(({ id, Icon }) => {
+              const active = id === tab;
+              return (
+                <Pressable
+                  key={id}
+                  accessibilityRole="tab"
+                  accessibilityState={{ selected: active }}
+                  onPress={() => setTab(id)}
+                  style={[styles.tab, active && styles.tabActive]}
+                >
+                  <Icon color={active ? colors.onPrimary : colors.textMuted} size={16} />
+                  <Text variant="bodyStrong" color={active ? 'onPrimary' : 'textMuted'}>
+                    {t.tabs[id]}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </View>
+        </View>
+      }
       footer={
         <>
           {save.isError ? <FormMessage tone="error" message={toUserMessage(save.error)} /> : null}
@@ -300,60 +379,29 @@ function EditProfileForm({
               {t.previewSave}
             </Text>
           ) : null}
+          {dropped.length > 0 && !blockedByAvatar ? (
+            <Text variant="caption" align="center" color="textMuted">
+              {t.droppedOnSave(dropped, savedAvatarName)}
+            </Text>
+          ) : null}
+          {toBuy.length > 0 ? (
+            <Text variant="caption" align="center" color={missing > 0 ? 'danger' : 'textMuted'}>
+              {missing > 0
+                ? t.notEnough(missing)
+                : t.buyingOnSave(toBuy.map((item) => ct.name(item)))}
+            </Text>
+          ) : null}
           <Button
-            label={t.save}
+            label={toBuy.length > 0 ? t.buyAndSave(price) : t.save}
+            icon={toBuy.length > 0 ? <PolyCoin size={18} /> : undefined}
             size="lg"
-            disabled={qaReadOnly || !changed || Boolean(nameError)}
+            disabled={qaReadOnly || !changed || Boolean(nameError) || missing > 0}
             loading={save.isPending}
             onPress={() => save.mutate()}
           />
         </>
       }
     >
-      <View style={styles.header}>
-        <View style={styles.flex}>
-          <ScreenHeader title={t.title} onBack={() => router.back()} />
-        </View>
-        <View style={styles.balance} accessibilityLabel={t.balanceA11y(balance)}>
-          <PolyCoin size={20} />
-          <Text variant="bodyStrong" color="gold" style={styles.tabular}>
-            {balance}
-          </Text>
-        </View>
-      </View>
-
-      <View accessibilityLabel={t.previewA11y}>
-        <ProfileHeader
-          profile={previewProfile}
-          rating={rating}
-          preview
-          showRank={false}
-          subtitle={<PlayerTitle xp={{ ...STARTING_XP, level }} choice={titleChoice} />}
-          photoUrl={photo?.uri ?? null}
-          footer={<Loadout avatarId={avatarId} frameId={frameId} backgroundId={backgroundId} />}
-        />
-      </View>
-
-      <View style={styles.tabs} accessibilityRole="tablist">
-        {TABS.map(({ id, Icon }) => {
-          const active = id === tab;
-          return (
-            <Pressable
-              key={id}
-              accessibilityRole="tab"
-              accessibilityState={{ selected: active }}
-              onPress={() => setTab(id)}
-              style={[styles.tab, active && styles.tabActive]}
-            >
-              <Icon color={active ? colors.onPrimary : colors.textMuted} size={16} />
-              <Text variant="bodyStrong" color={active ? 'onPrimary' : 'textMuted'}>
-                {t.tabs[id]}
-              </Text>
-            </Pressable>
-          );
-        })}
-      </View>
-
       {tab === 'avatar' ? (
         <>
           <CosmeticPicker
@@ -735,6 +783,14 @@ const RARITY_FILTERS: readonly (CosmeticRarity | 'all')[] = [
 const useStyles = themedStyles(() =>
   StyleSheet.create({
     flex: { flex: 1 },
+    fixedHeader: {
+      paddingHorizontal: spacing.xl,
+      paddingTop: spacing.sm,
+      paddingBottom: spacing.md,
+      gap: spacing.md,
+      borderBottomWidth: StyleSheet.hairlineWidth,
+      borderBottomColor: colors.border,
+    },
     header: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
     balance: {
       flexDirection: 'row',

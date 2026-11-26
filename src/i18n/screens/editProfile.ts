@@ -71,6 +71,12 @@ export const editProfileStrings = defineStrings({
     previewSave:
       'PREVIEW: guardar está deshabilitado (esta build usa la base real). Podés probar todo en la vista previa.',
     save: 'Guardar cambios',
+    buyAndSave: (price: number) => `Comprar y guardar · ${price}`,
+    buyingOnSave: (names: string[]) =>
+      `Al guardar se compra${names.length > 1 ? 'n' : ''} ${names.join(' y ')} y queda${names.length > 1 ? 'n' : ''} puesto${names.length > 1 ? 's' : ''}.`,
+    notEnough: (missing: number) => `Te faltan ${missing} Polys para comprarlo.`,
+    droppedOnSave: (names: string[], avatar: string) =>
+      `${names.join(' y ')} no combina${names.length > 1 ? 'n' : ''} con ${avatar || 'este avatar'}: al guardar vuelve${names.length > 1 ? 'n' : ''} al básico.`,
     title: 'Personalización',
     balanceA11y: (balance: number) => `Tenés ${balance} Polys`,
     previewA11y: 'Vista previa de tu perfil',
@@ -138,6 +144,12 @@ export const editProfileStrings = defineStrings({
     previewSave:
       'PREVIEW: saving is disabled (this build uses the real database). You can try everything in the preview.',
     save: 'Save changes',
+    buyAndSave: (price: number) => `Buy and save · ${price}`,
+    buyingOnSave: (names: string[]) =>
+      `Saving buys ${names.join(' and ')} and puts ${names.length > 1 ? 'them' : 'it'} on.`,
+    notEnough: (missing: number) => `You need ${missing} more Polys to buy it.`,
+    droppedOnSave: (names: string[], avatar: string) =>
+      `${names.join(' and ')} ${names.length > 1 ? "don't" : "doesn't"} go with ${avatar || 'this avatar'}: saving switches ${names.length > 1 ? 'them' : 'it'} back to basic.`,
     title: 'Customize',
     balanceA11y: (balance: number) => `You have ${balance} Polys`,
     previewA11y: 'Preview of your profile',

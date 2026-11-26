@@ -20,7 +20,7 @@ import {
   themedStyles,
 } from '@/design-system';
 import { useProfileFlair } from '@/features/cosmetics/api';
-import { FramedAvatar, frameArt } from '@/features/cosmetics/FramedAvatar';
+import { FramedAvatar } from '@/features/cosmetics/FramedAvatar';
 import { ProfileBackdrop } from '@/features/cosmetics/ProfileBackdrop';
 import { useRankLabels } from '@/features/ranked/rankNames';
 import { useStrings } from '@/i18n';
@@ -90,11 +90,10 @@ export function ProfileHeader({
   const aura = badges.includes('elite_inviter');
   const editable = !preview && !readonly;
   const rankRating = rating?.wins ? rating.rating : null;
-  // Un marco en imagen ocupa más que el aro liso: el avatar se achica un poco para que entre al lado
-  // del nombre también en teléfonos angostos.
-  const imageFrame = frameArt(profile.frame_id, rankRating) !== null;
+  // El avatar mide siempre lo mismo y queda en el mismo lugar con cualquier marco (FramedAvatar
+  // stable): cambiar de marco o sacarlo no mueve el avatar ni el nombre.
   const narrow = useWindowDimensions().width < 360;
-  const avatarSize = (imageFrame ? 92 : 100) - (narrow ? 16 : 0);
+  const avatarSize = narrow ? 76 : 92;
   const avatar = (
     <View>
       {aura ? <View style={styles.aura} pointerEvents="none" /> : null}
@@ -107,6 +106,7 @@ export function ProfileHeader({
         fallbackRing={colors.primary}
         instant={preview}
         animated
+        stable
       />
     </View>
   );
