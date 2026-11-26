@@ -49,6 +49,22 @@ const PAGES = [
     description: 'Cómo eliminar tu cuenta de Polygo y todos tus datos, desde la app o por email.',
     priority: '0.3',
   },
+  {
+    file: 'terminos.html',
+    path: '/terminos',
+    title: 'Términos y condiciones · Polygo',
+    description:
+      'Las reglas de uso de Polygo: tu cuenta, juego limpio, Ranked, Polys, la suscripción PolyGo Plus y cómo cancelarla.',
+    priority: '0.3',
+  },
+  {
+    file: 'soporte.html',
+    path: '/soporte',
+    title: 'Soporte · Polygo',
+    description:
+      'Ayuda con Polygo: contacto, contraseña, cancelar o restaurar PolyGo Plus, reembolsos y cómo borrar tu cuenta.',
+    priority: '0.4',
+  },
 ];
 
 // Blog: índice y un artículo por entrada de src/blog/posts.json.
@@ -201,6 +217,8 @@ writeFileSync(
 );
 // Resumen para asistentes de IA (llmstxt.org).
 writeFileSync(join(out, 'llms.txt'), llmsTxt(POSTS, config.siteUrl));
+// AdMob: app-ads.txt en la raíz del dominio de desarrollador declarado en las tiendas.
+if (existsSync(join(src, 'app-ads.txt'))) cpSync(join(src, 'app-ads.txt'), join(out, 'app-ads.txt'));
 // GitHub Pages: no procesar con Jekyll.
 writeFileSync(join(out, '.nojekyll'), '');
 // GitHub Pages con dominio propio: el archivo CNAME dice cuál (no aplica a *.github.io ni a Netlify).

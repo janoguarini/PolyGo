@@ -32,6 +32,37 @@ export interface SmartOverview {
   minutes: { low: number; high: number };
   /** Qué trabaja la sesión, en orden de prioridad (sólo motivos presentes). */
   focus: { reason: SmartReason; count: number }[];
+  /**
+   * Las palabras estudiadas en tres grupos que no se pisan y suman studied (lo que se muestra al
+   * usuario en vez de un % abstracto):
+   *   struggling  te cuestan: te equivocás en al menos un tercio de las veces, o siguen en la etapa
+   *               inicial después de verlas 3 veces;
+   *   due         para repasar hoy: no te cuestan, pero el repaso espaciado ya las pide;
+   *   mastered    dominadas: el resto (las sabés y no hace falta repasarlas hoy).
+   */
+  groups: WordGroups;
+}
+
+export interface WordGroups {
+  mastered: number;
+  due: number;
+  struggling: number;
+}
+
+/** ¿Te cuesta esta palabra? (misma regla que «difíciles» del repaso inteligente). */
+const struggles = (e: FocusProgress) =>
+  e.incorrectCount / e.seenCount >= 1 / 3 || (e.stage === 0 && e.seenCount >= 3);
+
+/** Agrupa las palabras estudiadas en dominadas / para repasar hoy / te cuestan. */
+export function wordGroups(entries: readonly FocusProgress[], now: number): WordGroups {
+  const groups: WordGroups = { mastered: 0, due: 0, struggling: 0 };
+  for (const e of entries) {
+    if (e.seenCount <= 0) continue;
+    if (struggles(e)) groups.struggling++;
+    else if (e.nextReviewAt !== null && new Date(e.nextReviewAt).getTime() <= now) groups.due++;
+    else groups.mastered++;
+  }
+  return groups;
 }
 
 const REASON_ORDER: SmartReason[] = ['due', 'frequent_mistakes', 'difficult', 'due_soon'];
@@ -71,6 +102,7 @@ export function smartOverview(
       low: Math.max(1, Math.round((exercises * SECONDS_PER_EXERCISE.low) / 60)),
       high: Math.max(1, Math.round((exercises * SECONDS_PER_EXERCISE.high) / 60)),
     },
+    groups: wordGroups(entries, now),
     focus: REASON_ORDER.filter((r) => counts.has(r)).map((reason) => ({
       reason,
       count: counts.get(reason)!,

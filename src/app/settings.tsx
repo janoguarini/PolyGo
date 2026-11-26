@@ -2,6 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 import * as Linking from 'expo-linking';
 import { router } from 'expo-router';
 import { GraduationCap, LogOut, Pencil } from 'lucide-react-native';
+import { useState } from 'react';
 import { Platform, StyleSheet, Switch, View } from 'react-native';
 
 import {
@@ -37,6 +38,7 @@ import {
 } from '@/i18n';
 import { settingsStrings } from '@/i18n/screens/settings';
 import type { ProfileVisibility } from '@/lib/database.types';
+import { analyticsAvailable, analyticsEnabled, setAnalyticsEnabled } from '@/lib/analytics';
 import { env } from '@/lib/env';
 import { toUserMessage } from '@/lib/errors';
 
@@ -56,6 +58,8 @@ export default function SettingsScreen() {
   const logout = useMutation({ mutationFn: signOut });
   const soundPref = useSoundEffectsPref();
   const setSound = useSetSoundEffects();
+  // Analítica (PostHog): el interruptor sólo aparece en builds que la tienen.
+  const [usageData, setUsageData] = useState(analyticsEnabled);
   const replayTour = useReplayTour(data?.profile.id);
   const theme = useThemePreference();
   const interfaceLanguage = useInterfaceLanguage();
@@ -124,6 +128,24 @@ export default function SettingsScreen() {
       <Text variant="overline" style={styles.section}>
         {t.privacy}
       </Text>
+      {analyticsAvailable() ? (
+        <Card style={styles.switchRow}>
+          <View style={styles.flex}>
+            <Text variant="bodyStrong">{t.usageData}</Text>
+            <Text variant="caption">{t.usageDataHint}</Text>
+          </View>
+          <Switch
+            accessibilityLabel={t.usageData}
+            value={usageData}
+            onValueChange={(enabled) => {
+              setAnalyticsEnabled(enabled);
+              setUsageData(enabled);
+            }}
+            trackColor={{ false: colors.surfaceHighlight, true: colors.primary }}
+            thumbColor={colors.textStrong}
+          />
+        </Card>
+      ) : null}
       {VISIBILITY.map((id) => (
         <SelectCard
           key={id}
@@ -218,6 +240,22 @@ export default function SettingsScreen() {
           variant="ghost"
           accessibilityHint={t.privacyPolicyHint}
           onPress={() => void Linking.openURL(env!.privacyPolicyUrl!)}
+        />
+      ) : null}
+      {env?.termsUrl ? (
+        <Button
+          label={t.terms}
+          variant="ghost"
+          accessibilityHint={t.termsHint}
+          onPress={() => void Linking.openURL(env!.termsUrl!)}
+        />
+      ) : null}
+      {env?.supportUrl ? (
+        <Button
+          label={t.support}
+          variant="ghost"
+          accessibilityHint={t.supportHint}
+          onPress={() => void Linking.openURL(env!.supportUrl!)}
         />
       ) : null}
     </Screen>

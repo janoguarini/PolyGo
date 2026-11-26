@@ -162,6 +162,8 @@ describe('repasos del servidor en la app (fase 4)', () => {
     // Los repasos Plus guardan su propia sesión.
     expect(reviewKind({ kind: 'smart' })).toBe('smart');
     expect(reviewKind({ kind: 'topic', unit_id: 'a1-u02' })).toBe('topic.a1-u02');
+    // Coach: el orden de las unidades no cambia la sesión guardada.
+    expect(reviewKind({ kind: 'coach', unit_ids: ['a1-u03', 'a1-u01'] })).toBe('coach.a1-u01+a1-u03');
     expect(await loadOpenReview('en', 'smart', at('2026-11-08T13:00:00Z'))).toBeNull();
     await saveOpenReview('en', { ...open, sessionId: 's2' }, 'smart');
     expect((await loadOpenReview('en', 'smart', at('2026-11-08T13:00:00Z')))?.sessionId).toBe('s2');

@@ -151,7 +151,13 @@ const MAX_AGE_MS = 90 * 24 * 60 * 60 * 1000;
 
 /** Tipo de repaso de una sesión guardada: el adaptativo o un foco de Plus (P3). */
 export const reviewKind = (focus?: ReviewFocus) =>
-  !focus ? 'review' : focus.kind === 'smart' ? 'smart' : `topic.${focus.unit_id}`;
+  !focus
+    ? 'review'
+    : focus.kind === 'smart'
+      ? 'smart'
+      : focus.kind === 'topic'
+        ? `topic.${focus.unit_id}`
+        : `coach.${[...focus.unit_ids].sort().join('+')}`;
 
 const key = (language: string, kind: string) =>
   kind === 'review' ? `polygo.review.open.${language}` : `polygo.review.open.${language}.${kind}`;

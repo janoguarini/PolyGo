@@ -60,6 +60,21 @@ describe('smartOverview', () => {
     expect(o.minutes).toEqual({ low: 5, high: 7 });
   });
 
+  it('agrupa las palabras en dominadas, para repasar hoy y te cuestan (sin pisarse, suman el total)', () => {
+    const entries = [
+      entry({}), // dominada
+      entry({ nextReviewAt: new Date(NOW + 2 * HOUR).toISOString() }), // dominada (vence más tarde)
+      entry({ nextReviewAt: new Date(NOW - HOUR).toISOString() }), // para repasar hoy
+      // Te cuesta aunque esté vencida: cuenta una sola vez, como «te cuesta».
+      entry({ incorrectCount: 2, seenCount: 4, nextReviewAt: new Date(NOW - HOUR).toISOString() }),
+      entry({ stage: 0, seenCount: 3, incorrectCount: 0 }), // te cuesta: sigue en la etapa inicial
+      entry({ seenCount: 0 }), // nunca vista: no cuenta
+    ];
+    const o = smartOverview(entries, units, NOW);
+    expect(o.groups).toEqual({ mastered: 2, due: 1, struggling: 2 });
+    expect(o.groups.mastered + o.groups.due + o.groups.struggling).toBe(o.studied);
+  });
+
   it('niveles de memoria', () => {
     expect(memoryLevel(90)).toBe('strong');
     expect(memoryLevel(70)).toBe('good');

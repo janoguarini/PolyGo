@@ -10,7 +10,8 @@ import {
   isGoogleTestId,
 } from '../config';
 import { createAdsController } from '../controller';
-import { currentAdFreeStatus, resolveAdsEligibility, type EligibilityInput } from '../eligibility';
+import { resolveAdsEligibility, type EligibilityInput } from '../eligibility';
+import { resolveEntitlements } from '@shared/plus';
 import { createInterstitialService } from '../interstitial';
 import { createRewardedService } from '../rewarded';
 import { adsCanServe, createAdsStore } from '../state';
@@ -92,8 +93,14 @@ describe('elegibilidad: Plus || Ad-Free ⇒ ningún anuncio', () => {
     expect(resolveAdsEligibility({ ...base, adFree: undefined })).toBe('unknown');
   });
 
-  it('Ad-Free todavía no tiene fuente: nadie es Ad-Free (limitación documentada)', () => {
-    expect(currentAdFreeStatus()).toBe(false);
+  it('Plus y Sin publicidad (del servidor, vía resolveEntitlements) excluyen todo anuncio', () => {
+    const noAds = (plus: boolean | undefined, adFree: boolean | undefined) =>
+      resolveAdsEligibility({ ...base, plus, adFree: resolveEntitlements({ plus, adFree }).noAds });
+    expect(noAds(false, false)).toBe('eligible');
+    expect(noAds(true, false)).toBe('excluded');
+    expect(noAds(false, true)).toBe('excluded');
+    expect(noAds(true, undefined)).toBe('excluded');
+    expect(noAds(false, undefined)).toBe('unknown');
   });
 });
 

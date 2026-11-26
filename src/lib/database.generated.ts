@@ -5622,7 +5622,9 @@ export type Database = {
       };
       get_competitive_stats: { Args: { p_days: number | null }; Returns: Json };
       get_daily_missions: { Args: { p_time_zone: string }; Returns: Json };
+      get_coach_status: { Args: never; Returns: Json };
       get_energy: { Args: never; Returns: Json };
+      get_entitlements: { Args: never; Returns: Json };
       get_friend_activity: {
         Args: never;
         Returns: {

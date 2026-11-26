@@ -228,6 +228,9 @@ ${posts.map((p) => `- [${p.h1}](${siteUrl}/blog/${p.slug}): ${p.description}`).j
 - [Inicio](${siteUrl}/): qué es Polygo y cómo funciona.
 - [Blog](${siteUrl}/blog/): todas las guías.
 - [Privacidad](${siteUrl}/privacidad)
+- [Términos y condiciones](${siteUrl}/terminos)
+- [Soporte](${siteUrl}/soporte)
+- [Borrar cuenta](${siteUrl}/borrar-cuenta)
 `;
 }
 

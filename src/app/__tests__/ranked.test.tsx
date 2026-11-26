@@ -15,6 +15,7 @@ const mockPush = jest.fn();
 jest.mock('expo-router', () => ({
   router: { push: (...args: unknown[]) => mockPush(...args) },
   useNavigation: () => ({ addListener: () => () => {} }),
+  useFocusEffect: jest.fn(),
 }));
 jest.mock('react-native-safe-area-context', () => {
   const { View } = jest.requireActual('react-native');

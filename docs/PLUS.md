@@ -1,9 +1,11 @@
 # Energía y PolyGo Plus
 
-> **Estado:** la energía y el control de Plus funcionan de punta a punta en Supabase
-> (migración `20261102004033_energy_plus`, aplicada). **La compra de Plus no está integrada**:
-> la pantalla `/plus` lo dice y el botón está deshabilitado. Hoy Plus solo se puede otorgar a mano
-> (ver más abajo).
+> **Estado (2026-11-25):** la energía y el control de Plus funcionan en producción
+> (`20261102004033_energy_plus`). La tienda (RevenueCat), «Sin publicidad» y el Coach están
+> implementados **en local, sin aplicar ni desplegar**: migración `20261230120000_plus_store_coach`,
+> Edge Function `plus-store` y `learning-session` con el foco `coach`. Sin las claves de RevenueCat la
+> pantalla `/plus` dice «compras no habilitadas» y nada se rompe. Ver «Tienda y derechos» y
+> «Pendiente».
 
 ## Principios
 
@@ -37,15 +39,17 @@ Los valores están en `shared/energy.ts` y la base los replica en `energy_config
 
 ## Gratis vs. Plus
 
-|                                                  | Gratis                   | Plus                              |
-| ------------------------------------------------ | ------------------------ | --------------------------------- |
-| Ranked, amistosos, Amigos                        | ✔ ilimitado              | ✔ igual (sin ventajas)            |
-| Lecciones                                        | 5 de energía, 1 cada 3 h | ilimitadas                        |
-| Repaso espaciado, práctica libre, puntos débiles | ✔ ilimitado, sin energía | ✔                                 |
-| Repaso inteligente                               | —                        | ✔ ilimitado                       |
-| Repaso por tema (elegir una unidad)              | —                        | ✔                                 |
-| Widgets «Palabra» y «Pregunta rápida»            | ✔ (contenido «Variado»)  | ✔ + elegir contenido de «Palabra» |
-| Publicidad                                       | hoy no hay anuncios      | nunca                             |
+|                                                  | Gratis                                   | Plus                                           |
+| ------------------------------------------------ | ---------------------------------------- | ---------------------------------------------- |
+| Ranked, amistosos, Amigos                        | ✔ ilimitado                              | ✔ igual (sin ventajas)                         |
+| Lecciones                                        | 5 de energía, 1 cada 3 h                 | ilimitadas                                     |
+| Repaso espaciado, práctica libre, puntos débiles | ✔ ilimitado, sin energía                 | ✔                                              |
+| Repaso inteligente                               | —                                        | ✔ ilimitado                                    |
+| Coach: diagnóstico e historial                   | ✔                                        | ✔                                              |
+| Coach: sesiones personalizadas (~3 min)          | 2 de prueba por cuenta                   | ✔ sin límite                                   |
+| Repaso por tema (elegir una unidad)              | —                                        | ✔                                              |
+| Widgets «Palabra» y «Pregunta rápida»            | ✔ (contenido «Variado»)                  | ✔ + elegir contenido de «Palabra»              |
+| Publicidad                                       | moderada (AdMob, aún sólo en desarrollo) | nunca (también «Sin publicidad», compra única) |
 
 **Repaso inteligente** (`src/features/plus/smartReview.ts`): son reglas fijas sobre `user_word_progress`, sin IA ni modelo adaptativo. Toma, en este orden, palabras vencidas, con 2 o más errores, difíciles (≥ ⅓ de errores o que siguen en etapa 0 después de 3 vistas) y por olvidar (vencen en 24 h), hasta 15. Se guarda como repaso. Un acierto antes de tiempo no adelanta la palabra (regla de `apply_word_result`) y un error la trae de vuelta.
 
@@ -53,16 +57,74 @@ Los valores están en `shared/energy.ts` y la base los replica en `energy_config
 
 **Widget personalizado:** las opciones son Variado, Para repasar, Tus errores y Palabras nuevas. Se guarda en el dispositivo (`polygo.widget-content`) y solo se aplica si el servidor dice que hay Plus. Vale para todos los widgets «Palabra» del teléfono, porque expo-widgets no permite configurar cada widget por separado. El idioma es inglés, el único del currículo.
 
-## Pendiente (integraciones reales)
+## Permisos centralizados
 
-1. **Compras.** Falta elegir entre RevenueCat (`react-native-purchases`, recomendado: un webhook unifica App Store y Google Play) o `expo-iap`. Requiere una build nueva. Pasos:
-   - Crear en App Store Connect y Google Play Console los productos que muestra `/plus` (`PLUS_PLANS` y `REMOVE_ADS_PRODUCT` en `src/features/plus/purchases.ts`): `polygo_plus_monthly` (USD 4,99/mes), `polygo_plus_annual` (USD 34,99/año ≈ 2,92/mes, −42 %) y `polygo_remove_ads` (USD 0,99, pago único; necesita su propio derecho en el servidor, que todavía no existe).
-   - Implementar `getPlusOffer` / `purchasePlus` / `restorePurchases` en `src/features/plus/purchases.ts`, con el precio localizado de la tienda.
-   - Crear una Edge Function de webhook (verifica la firma y usa `service_role`) que haga upsert en `user_entitlements` (`source`, `external_id`, `expires_at`) en compras, renovaciones, cancelaciones y reembolsos.
-   - La app activa Plus recién cuando `get_energy().plus` es true. Nunca por el resultado local de la compra.
-2. **Anuncios.** No hay SDK de anuncios. Si se agrega, mostrarlos solo con `plus === false`, nunca en batallas.
-3. **Widgets.** Falta la configuración por widget (App Intents en iOS, actividad de configuración en Android) y el deep link en Android (expo-widgets no lo expone). Ver `docs/WIDGETS.md`.
-4. **Repaso inteligente y por tema.** El acceso se controla en la app. El servidor acepta cualquier repaso válido, porque son datos propios del usuario y no dan ventajas. Si hiciera falta, se puede agregar un `kind` propio validado con `has_plus`.
+`shared/plus.ts` es la única tabla de «qué da cada plan» (`resolveEntitlements`) y de los límites gratis
+(`FREE_LIMITS.coachTrialSessions = 2`, `COACH.sessionSize = 8`). En la app se consulta con
+`useEntitlements()` (`src/features/plus/entitlements.ts`): `isPlus`, `unlimitedEnergy`, `noAds`,
+`smartReview`, `unlimitedCoach`, `advancedStats`, `personalizedWidgets`, `plusCosmetics`. `undefined` =
+todavía no se sabe (la UI no asume ninguno). No existe ningún permiso de Ranked.
+
+La condición siempre la decide el servidor: Plus = `has_plus` (lo lee `get_energy`), Sin publicidad =
+`has_ad_free` (lo lee `get_entitlements`). Sin conexión, React Query conserva el último estado confirmado.
+Los beneficios que importan los vuelve a comprobar el servidor: energía (`submit_learning_session`),
+repasos Plus y Coach (`learning_start_focus_review`).
+
+## Tienda y derechos (RevenueCat)
+
+1. La app configura el SDK con `appUserID = user.id` (`PurchasesBootstrap`): la compra queda en la cuenta,
+   no en el teléfono, y se restaura en otro dispositivo.
+2. Precios: los del offering actual de RevenueCat (`priceString` localizado). El ahorro del anual se
+   calcula con esos precios (`annualSavings`) y no se muestra si las monedas difieren o no hay ahorro.
+   Cambiar un precio en App Store Connect / Play Console no requiere una versión nueva.
+3. Compra o restauración → la app llama a `plus-store` (`{action: 'sync'}`) → la función pide el estado a
+   la API de RevenueCat con la clave secreta → `store_sync_entitlements` (sólo `service_role`). El webhook
+   de RevenueCat entra por la misma función y hace lo mismo (del evento sólo toma qué cuentas mirar).
+4. Estados: compra/renovación (vence = fin del período), cancelación (`will_renew = false`, acceso hasta
+   el vencimiento), período de gracia (el vencimiento incluye la gracia y `billing_issue_at` avisa),
+   reembolso (vence en la fecha del reembolso), revocación (la tienda ya no lo tiene → vence ahora).
+   Un Plus manual o por invitación vigente más largo que el de la tienda no se pisa.
+5. Nunca se activa nada por el resultado local de la compra ni por lo que mande la app.
+
+## Coach (primera versión, sin IA generativa)
+
+- Diagnóstico (`shared/coach.ts`, `diagnose`): reglas fijas sobre `user_word_progress` agrupado por unidad.
+  Con menos de 8 palabras estudiadas, mensaje neutral. Una unidad es débil con ≥ 3 palabras, ≥ 2 errores,
+  ≥ 20 % de errores y al menos una palabra que cuesta. Hasta 3 áreas. Los números que se muestran son
+  los reales.
+- Sesión: `/review?mode=coach&units=…` → `learning-session` arma el plan (`buildFocusPlan` con foco
+  `coach`: palabras con errores de esas unidades, hasta 8, por turnos entre unidades) con ítems ya
+  publicados del catálogo; se corrige y se guarda como cualquier repaso.
+- Pruebas: `learning_start_focus_review` llama a `coach_claim_session` en la misma transacción que crea la
+  sesión. Sin Plus, descuenta una de las 2 (de por vida de la cuenta; `coach_sessions.trial`). Si la
+  sesión no se crea, no descuenta; repetir el inicio de la misma sesión no descuenta otra; dos teléfonos
+  a la vez se serializan con un candado por cuenta. `get_coach_status()` informa usadas, restantes e
+  historial (resultado = `learning_sessions` del mismo id).
+- Límite conocido: **Ranked no guarda qué palabra se respondió** (sólo totales en `battle_players`), así que
+  el Coach todavía no analiza partidas. Hacerlo requiere que el Battle Server registre el id de palabra
+  de cada respuesta (cambio en el servidor de partidas, fuera de esta fase).
+
+## Pendiente
+
+1. **Revisar y aplicar** `20261230120000_plus_store_coach.sql` (con autorización) y desplegar
+   `learning-session` (incluye el foco `coach`) y `plus-store` con `--no-verify-jwt`.
+2. **Tiendas:** crear en App Store Connect y Play Console las suscripciones `polygo_plus_monthly` y
+   `polygo_plus_annual` (un grupo de suscripción) y el producto único `polygo_remove_ads`. Ids propuestos:
+   si cambian, se cambian sólo en `src/features/plus/storeConfig.ts`.
+3. **RevenueCat:** proyecto con las dos apps; entitlements `polygo_pro` (= Plus, con los productos mensual y
+   anual) y `ad_free` (con el producto Lifetime = «Sin publicidad», compra única: NO es Plus de por vida);
+   offering «current» con `$rc_monthly`, `$rc_annual` y `$rc_lifetime`; webhook a
+   `https://<ref>.supabase.co/functions/v1/plus-store` con una cabecera Authorization propia.
+4. **Secretos/variables (no configurados):** Edge Functions → `REVENUECAT_SECRET_API_KEY`,
+   `REVENUECAT_WEBHOOK_AUTH`. EAS → `EXPO_PUBLIC_REVENUECAT_IOS_KEY`, `EXPO_PUBLIC_REVENUECAT_ANDROID_KEY`
+   (claves públicas del SDK).
+5. **Build nueva** (development primero): `react-native-purchases` trae código nativo; Expo Go no compra.
+6. **Términos de uso** propios para Android (en iOS se enlaza la EULA estándar de Apple).
+7. **Anuncios:** AdMob sigue en modo prueba (`ADS_MODE`); la exclusión de Plus y Sin publicidad ya usa
+   `useEntitlements().noAds`. Antes de anuncios reales: política de privacidad y Fase 2 (ver
+   `docs/ADMOB_PHASE1_IMPLEMENTATION.md`).
+8. **Estadísticas avanzadas, plan semanal y widgets por error:** no implementados (el permiso
+   `advancedStats` existe para cuando se construyan). Widgets: ver `docs/WIDGETS.md`.
 
 ## Otorgar Plus a mano (pruebas)
 

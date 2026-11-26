@@ -64,3 +64,20 @@ export function connectErrorCode(error: Error): ErrorCode | 'connection' {
 export function battleErrorMessage(code: ErrorCode | 'connection'): string {
   return getStrings(battleErrorStrings)[code];
 }
+
+/** Cada cuánto, como mucho, se vuelve a despertar la conexión con el servidor de partidas. */
+const WARM_EVERY_MS = 60_000;
+let lastWarm = 0;
+
+/**
+ * Precalienta la conexión con el servidor de partidas mientras ves la pestaña Ranked: resuelve el
+ * dominio y abre TLS antes de tocar «Jugar», así «Preparando…» dura menos. Una consulta liviana a
+ * /health (sin token ni datos del usuario); si falla no pasa nada.
+ */
+export function warmBattleServer(now = Date.now()): void {
+  if (!battleServerConfigured || !env?.battleServerUrl) return;
+  if (now - lastWarm < WARM_EVERY_MS) return;
+  lastWarm = now;
+  const url = env.battleServerUrl.replace(/\/+$/, '') + '/health';
+  void fetch(url, { method: 'GET' }).catch(() => undefined);
+}

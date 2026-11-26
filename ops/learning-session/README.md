@@ -1,3 +1,5 @@
+> **2026-11-25: PRODUCCIÓN = v6** (versión 5 de Supabase): v5 (C.7 + O-1) + foco `coach` de PolyGo Plus. Desplegada con `supabase@3.2.0 functions deploy learning-session --use-api --no-verify-jwt`; los 4 archivos remotos coinciden con `v6/SHA256SUMS`. Antes del deploy se verificó que producción era exactamente `v4/`. **Rollback:** desplegar `v4/` de la misma forma. Lo de abajo describe el estado anterior.
+
 # learning-session: artefactos de producción y candidata v5
 
 **Estado (2026-11-20):**

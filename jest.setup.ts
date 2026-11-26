@@ -16,7 +16,16 @@ jest.mock('react-native-reanimated', () => {
     __esModule: true,
     default: Animated,
     ...Animated,
-    useSharedValue: (value: unknown) => ({ value }),
+    useSharedValue: (value: unknown) => {
+      const sv = {
+        value,
+        get: () => sv.value,
+        set: (next: unknown) => {
+          sv.value = next;
+        },
+      };
+      return sv;
+    },
     useAnimatedStyle: (fn: () => object) => fn(),
     useAnimatedProps: (fn: () => object) => fn(),
     useReducedMotion: () => true,
@@ -30,6 +39,8 @@ jest.mock('react-native-reanimated', () => {
     FadeIn: animation(),
     FadeInDown: animation(),
     FadeInUp: animation(),
+    FadeInLeft: animation(),
+    FadeInRight: animation(),
     FadeOut: animation(),
   };
 });

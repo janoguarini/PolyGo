@@ -10,6 +10,40 @@ export const usernameSchema = z
   .toLowerCase()
   .regex(USERNAME_REGEX, 'Usá de 3 a 20 caracteres: letras minúsculas, números o "_".');
 
+/**
+ * Nombres parecidos a `raw` para sugerir cuando el elegido ya existe: el mismo nombre normalizado
+ * (sin tildes ni símbolos) con números o un toque de juego (_pro, the_…, _fox). Todos cumplen
+ * USERNAME_REGEX y ninguno es el nombre pedido. `random` es inyectable para los tests.
+ */
+export function suggestUsernames(raw: string, random: () => number = Math.random): string[] {
+  let base = raw
+    .trim()
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z0-9_]/g, '')
+    .replace(/_+/g, '_')
+    .replace(/^_|_$/g, '');
+  if (base.length < 3) base = `${base}poly`;
+  const fit = (prefix: string, suffix: string) =>
+    prefix + base.slice(0, 20 - prefix.length - suffix.length) + suffix;
+  const digits = (n: number) => String(10 ** (n - 1) + Math.floor(random() * 9 * 10 ** (n - 1)));
+  const candidates = [
+    fit('', digits(2)),
+    fit('', '_pro'),
+    fit('the_', ''),
+    fit('', '_fox'),
+    fit('', digits(3)),
+    fit('poly_', ''),
+    fit('', '_go'),
+    fit('', `_${digits(2)}`),
+    fit('real_', ''),
+    fit('', digits(4)),
+  ];
+  const original = raw.trim().toLowerCase();
+  return [...new Set(candidates)].filter((c) => USERNAME_REGEX.test(c) && c !== original);
+}
+
 export const DAILY_GOALS = [5, 10, 15, 20] as const;
 export type DailyGoalMinutes = (typeof DAILY_GOALS)[number];
 

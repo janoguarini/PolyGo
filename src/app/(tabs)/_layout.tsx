@@ -8,6 +8,7 @@ import { useFriends } from '@/features/friends/api';
 import { BattleInviteBanner } from '@/features/friends/components/BattleInviteBanner';
 import { useBattleInvitePush } from '@/features/friends/push';
 import { usePresence } from '@/features/friends/social';
+import { useWarmNextSteps } from '@/features/learning/reviewWarmup';
 import { useSpeechLanguage } from '@/features/learning/speech';
 import { AppTour } from '@/features/onboarding/AppTour';
 import { useFinishTour, useTourPending } from '@/features/onboarding/tour';
@@ -34,6 +35,8 @@ export default function TabsLayout() {
   // La voz sintetizada habla en el idioma que estudiás.
   const me = useMyProfile();
   useSpeechLanguage(me.data?.profile.target_language);
+  // Lo que sigue, precargado en segundo plano: el repaso del día abre sin «Preparando repaso…».
+  useWarmNextSteps();
   // Recompensa diaria: se abre sola tras la primera lección o Ranked del día (una vez por sesión).
   useWelcomeAutoOpen(Boolean(me.data));
   const tourPending = useTourPending(userId);

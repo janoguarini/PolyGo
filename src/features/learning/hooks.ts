@@ -122,12 +122,16 @@ export function useMyWords() {
 
 export function useWordPool() {
   const { language } = useIdentity();
-  return useQuery({
-    queryKey: learningKeys.pool(language ?? 'none'),
-    queryFn: () => fetchWordPool(language!),
-    enabled: Boolean(language),
+  return useQuery({ ...wordPoolQuery(language ?? 'none'), enabled: Boolean(language) });
+}
+
+/** La consulta del banco de palabras (también la usa la precarga de reviewWarmup.ts). */
+export function wordPoolQuery(language: string) {
+  return {
+    queryKey: learningKeys.pool(language),
+    queryFn: () => fetchWordPool(language),
     staleTime: 30 * 60_000,
-  });
+  };
 }
 
 /**
@@ -201,20 +205,27 @@ export function useServerReview(
   focus?: ReviewFocus,
 ) {
   return useQuery({
+    ...serverReviewQuery(sessionId ?? '', language ?? '', focus),
+    enabled: Boolean(sessionId && language),
+  });
+}
+
+/** La consulta del repaso del servidor (también la usa la precarga de reviewWarmup.ts, misma clave). */
+export function serverReviewQuery(sessionId: string, language: string, focus?: ReviewFocus) {
+  return {
     queryKey: ['server-review', sessionId, language, focus ?? null] as const,
     queryFn: async () => {
       // Corrección instantánea: lo que quedó sin registrar (la app se cerró, sin red) se manda antes de
       // retomar, así el servidor devuelve esas respuestas como ya corregidas. Sin red, falla como start.
-      await reviewAnswerQueue(sessionId!).replay();
-      return startServerReview(sessionId!, language!, focus);
+      await reviewAnswerQueue(sessionId).replay();
+      return startServerReview(sessionId, language, focus);
     },
-    enabled: Boolean(sessionId && language),
     staleTime: Infinity,
     gcTime: Infinity,
-    retry: false,
+    retry: false as const,
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
-  });
+  };
 }
 
 /** Corrige una respuesta en el servidor (idempotente: la primera respuesta registrada es la que vale). */

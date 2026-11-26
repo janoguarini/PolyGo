@@ -35,7 +35,9 @@
 //   submit_review exige que cada respuesta ya corregida coincida con la registrada (409 answer_mismatch).
 //
 // Cierre de la fase 4 (docs/LEARNING_PHASE4.md §10):
-//   start_review {…, focus?: {kind: 'smart'} | {kind: 'topic', unit_id}}
+//   start_review {…, focus?: {kind: 'smart'} | {kind: 'topic', unit_id} | {kind: 'coach', unit_ids}}
+//     · 'coach' (PolyGo Plus, docs/PLUS.md): Plus o una de las sesiones de prueba de la cuenta; si no
+//       quedan → 403 coach_trial_exhausted. La prueba se descuenta sólo si la sesión se crea.
 //     · con `focus` → repaso Plus (P3): el servidor comprueba Plus, elige las palabras con las reglas de
 //       shared/focusReview.ts sobre learning_focus_candidates y registra plan y presentaciones
 //       (learning_start_focus_review, origen focus_review). Igual con el v2 apagado o encendido: la
@@ -126,6 +128,8 @@ const SQL_ERRORS: Record<string, number> = {
   answer_mismatch: 409,
   session_expired: 409,
   plus_required: 403,
+  // Coach sin Plus y sin sesiones de prueba (coach_claim_session).
+  coach_trial_exhausted: 403,
   retry_not_allowed: 409,
 };
 
@@ -270,7 +274,11 @@ Deno.serve(async (req: Request) => {
           p_now: new Date().toISOString(),
         });
         if (cand.error) return sqlError(cand.error);
-        if (cand.data?.plus !== true) return json({ error: 'plus_required' }, 403);
+        // El Coach también admite cuentas gratis con sesiones de prueba: lo decide
+        // learning_start_focus_review (coach_claim_session), en la misma transacción que el inicio.
+        if (cand.data?.plus !== true && focus.kind !== 'coach') {
+          return json({ error: 'plus_required' }, 403);
+        }
         const plan = buildFocusPlan({ ...cand.data, seed: sessionId }, focus);
         if (plan.items.length === 0) {
           return json({ session_id: sessionId, status: plan.status, presentations: [], items: [] });

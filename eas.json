@@ -8,7 +8,9 @@
       "developmentClient": true,
       "distribution": "internal",
       "env": {
-        "EXPO_PUBLIC_PRIVACY_POLICY_URL": "https://polygoidiomas.netlify.app/privacidad"
+        "EXPO_PUBLIC_PRIVACY_POLICY_URL": "https://polygoidiomas.com/privacidad",
+        "EXPO_PUBLIC_POSTHOG_KEY": "phc_rGYVT6Tf2pRn7WN2kfoHtoBTV7Qm4DPaR5x3FYqnSC3Z",
+        "EXPO_PUBLIC_POSTHOG_HOST": "https://us.i.posthog.com"
       }
     },
     "development-simulator": {
@@ -20,15 +22,19 @@
     "preview": {
       "distribution": "internal",
       "env": {
-        "EXPO_PUBLIC_PRIVACY_POLICY_URL": "https://polygoidiomas.netlify.app/privacidad",
-        "EXPO_PUBLIC_BATTLE_SERVER_URL": "https://battle-server-production-e40e9e40.up.railway.app"
+        "EXPO_PUBLIC_PRIVACY_POLICY_URL": "https://polygoidiomas.com/privacidad",
+        "EXPO_PUBLIC_BATTLE_SERVER_URL": "https://battle-server-production-e40e9e40.up.railway.app",
+        "EXPO_PUBLIC_POSTHOG_KEY": "phc_rGYVT6Tf2pRn7WN2kfoHtoBTV7Qm4DPaR5x3FYqnSC3Z",
+        "EXPO_PUBLIC_POSTHOG_HOST": "https://us.i.posthog.com"
       }
     },
     "production": {
       "autoIncrement": true,
       "env": {
-        "EXPO_PUBLIC_PRIVACY_POLICY_URL": "https://polygoidiomas.netlify.app/privacidad",
-        "EXPO_PUBLIC_BATTLE_SERVER_URL": "https://battle-server-production-e40e9e40.up.railway.app"
+        "EXPO_PUBLIC_PRIVACY_POLICY_URL": "https://polygoidiomas.com/privacidad",
+        "EXPO_PUBLIC_BATTLE_SERVER_URL": "https://battle-server-production-e40e9e40.up.railway.app",
+        "EXPO_PUBLIC_POSTHOG_KEY": "phc_rGYVT6Tf2pRn7WN2kfoHtoBTV7Qm4DPaR5x3FYqnSC3Z",
+        "EXPO_PUBLIC_POSTHOG_HOST": "https://us.i.posthog.com"
       }
     }
   },

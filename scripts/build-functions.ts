@@ -26,6 +26,10 @@ export const FUNCTION_BUNDLES = [
     entry: 'shared/focusReview.ts',
     out: 'supabase/functions/learning-session/focus.generated.js',
   },
+  {
+    entry: 'shared/storeEntitlements.ts',
+    out: 'supabase/functions/plus-store/store.generated.js',
+  },
 ] as const;
 
 const BANNER =

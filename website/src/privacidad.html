@@ -8,12 +8,17 @@
     <main class="wrap legal">
       <h1>Política de privacidad</h1>
       <p class="muted">Última actualización: {{required:privacyUpdated:fecha de publicación}}</p>
+{{> legalnav}}
 
       <h2>Quiénes somos</h2>
       <p>
-        Polygo es una app para aprender inglés compitiendo. Responsable de los datos:
-        {{required:ownerName:nombre o razón social}}, {{country}}. Contacto de privacidad:
-        {{required:contactEmail:email de contacto}}.
+        Polygo es una app para aprender idiomas jugando: lecciones, repasos y partidas en vivo
+        contra otros jugadores. Responsable de los datos: {{required:ownerName:nombre o razón social}},
+        {{country}}. Contacto de privacidad: {{required:contactEmail:email de contacto}}.
+      </p>
+      <p>
+        Esta política explica qué datos guarda Polygo, para qué, con quién se comparten y cómo podés
+        borrarlos. Se aplica a la app para iPhone y Android y a este sitio web.
       </p>
 
       <h2>Qué datos guardamos y para qué</h2>
@@ -24,34 +29,59 @@
           </thead>
           <tbody>
             <tr>
-              <td>Email y contraseña (la contraseña se guarda cifrada por nuestro proveedor de autenticación)</td>
-              <td>Crear tu cuenta, iniciar sesión y recuperar la contraseña</td>
+              <td>Email y contraseña (cifrada por nuestro proveedor de autenticación), o el identificador de tu cuenta de Apple o Google si entrás con ellas</td>
+              <td>Crear tu cuenta, iniciar sesión y recuperar el acceso</td>
               <td>No</td>
             </tr>
             <tr>
-              <td>Nombre de usuario y avatar (uno de los avatares de la app o una foto que elijas de tu galería)</td>
-              <td>Identificarte en la clasificación, las partidas y tu perfil</td>
+              <td>Nombre de usuario, avatar o skin, marco, fondo y, si la elegís, una foto de perfil de tu galería</td>
+              <td>Identificarte en tu perfil, las partidas, la clasificación y con tus amigos</td>
               <td>Sí</td>
             </tr>
             <tr>
               <td>País (opcional)</td>
               <td>Mostrarlo en tu perfil</td>
-              <td>Sólo si activás mostrarlo</td>
+              <td>Sólo si lo cargás</td>
             </tr>
             <tr>
-              <td>Idioma que aprendés, nivel inicial y objetivo diario</td>
-              <td>Personalizar las lecciones</td>
+              <td>Idiomas que aprendés, nivel, objetivo diario e idioma de la interfaz</td>
+              <td>Armar tu curso y personalizar las lecciones</td>
               <td>No</td>
             </tr>
             <tr>
-              <td>Progreso: lecciones, respuestas a ejercicios, palabras estudiadas, repasos, racha, misiones, protectores y logros</td>
-              <td>Repaso espaciado, estadísticas, misiones y logros</td>
-              <td>Según tu configuración de privacidad (público o privado)</td>
+              <td>Progreso: lecciones, respuestas a ejercicios, palabras, repasos, racha, experiencia (XP), misiones, logros, Polys (moneda de la app) y objetos desbloqueados</td>
+              <td>Repaso espaciado, Coach, estadísticas, misiones, logros y recompensas</td>
+              <td>Según tu configuración de privacidad (perfil público o privado)</td>
             </tr>
             <tr>
-              <td>Partidas: rival, puntajes, resultado y cambios de ELO (también los desafíos entre amigos)</td>
-              <td>Clasificación, historial y rangos</td>
+              <td>Partidas: rival, respuestas, puntajes, resultado y cambios de ELO (también los desafíos entre amigos)</td>
+              <td>Clasificación, rangos, temporadas e historial; detectar trampas</td>
               <td>Tu rating y rango, sí; el detalle de cada partida, sólo los dos jugadores</td>
+            </tr>
+            <tr>
+              <td>Amigos, solicitudes, invitaciones, bloqueos y si estás conectado</td>
+              <td>Agregar amigos, desafiarlos y mostrar quién está en línea</td>
+              <td>Tus amigos ven si estás conectado; los bloqueos no los ve nadie</td>
+            </tr>
+            <tr>
+              <td>Código de invitación y quién se unió con él</td>
+              <td>Dar las recompensas por invitar amigos</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>Token de notificaciones del dispositivo</td>
+              <td>Avisarte cuando un amigo te desafía</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>Compras y suscripción a PolyGo Plus (producto, fechas y estado; nunca los datos de tu tarjeta)</td>
+              <td>Darte los beneficios de lo que compraste</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>Datos de uso: pantallas que abrís, lecciones y partidas que empezás o terminás, versión de la app, modelo y sistema del dispositivo</td>
+              <td>Analítica de producto: entender qué funciona y dónde se traba la gente, para mejorar la app</td>
+              <td>No</td>
             </tr>
             <tr>
               <td>Reportes de fotos de perfil que hagas o recibas</td>
@@ -60,36 +90,73 @@
             </tr>
             <tr>
               <td>Zona horaria del dispositivo</td>
-              <td>Calcular tu racha y tus misiones del día</td>
+              <td>Calcular tu racha, tus repasos y tus misiones del día</td>
               <td>No</td>
             </tr>
           </tbody>
         </table>
       </div>
+
+      <h2>Analítica de uso</h2>
       <p>
-        <strong>No</strong> mostramos publicidad, <strong>no</strong> vendemos datos,
-        <strong>no</strong> usamos herramientas de analítica ni de seguimiento entre apps, y
-        <strong>no</strong> pedimos acceso a contactos, ubicación, cámara ni micrófono. La galería de
-        fotos sólo se abre si elegís una foto de perfil, y sólo se sube la foto que elegiste.
-      </p>
-      <p>
-        La pronunciación usa la voz sintetizada de tu dispositivo: el texto no se envía a nuestros
-        servidores para eso. Los recordatorios diarios son notificaciones locales programadas en tu
-        teléfono, y los widgets guardan en el dispositivo sólo palabras de vocabulario.
+        Usamos <strong>PostHog</strong> para medir cómo se usa la app (por ejemplo, en qué paso del
+        registro se va la gente o qué pantallas se usan más). Los eventos se asocian al identificador
+        interno de tu cuenta, <strong>nunca</strong> a tu email ni a tu nombre, y no incluyen el texto
+        de tus respuestas. No grabamos tu pantalla. Podés desactivarla cuando quieras en
+        <strong>Perfil → Ajustes → Privacidad → Compartir datos de uso</strong>.
       </p>
 
-      <h2>Dónde se guardan</h2>
+      <h2>Publicidad</h2>
+      <p>
+        Las cuentas gratuitas pueden ver anuncios de <strong>Google AdMob</strong>. Para mostrarlos,
+        Google puede usar identificadores del dispositivo, tu dirección IP aproximada y datos de
+        interacción con el anuncio. En el Espacio Económico Europeo, el Reino Unido y Suiza te pedimos
+        consentimiento antes, y en iPhone sólo se usa el identificador publicitario si lo autorizás.
+        Podés cambiar tu elección en Ajustes. PolyGo Plus y la compra «Sin publicidad» quitan los
+        anuncios. Más información en la
+        <a href="https://policies.google.com/technologies/ads?hl=es" rel="noopener">política de publicidad de Google</a>.
+      </p>
+
+      <h2>Lo que no hacemos</h2>
+      <p>
+        <strong>No</strong> vendemos tus datos. <strong>No</strong> pedimos acceso a contactos,
+        ubicación, cámara ni micrófono. La galería de fotos sólo se abre si elegís una foto de
+        perfil, y sólo se sube la foto que elegiste. La pronunciación usa la voz sintetizada de tu
+        dispositivo. Los recordatorios diarios son notificaciones locales programadas en tu teléfono,
+        y los widgets guardan en el dispositivo sólo palabras de vocabulario.
+      </p>
+
+      <h2>Con quién se comparten (proveedores)</h2>
+      <p>Sólo con los servicios que hacen funcionar la app, y sólo para eso:</p>
       <ul>
-        <li>Base de datos, autenticación, fotos de perfil y partidas en vivo: Supabase (servidores en Estados Unidos).</li>
-        <li>Tu sesión se guarda en el almacenamiento seguro del dispositivo (Keychain en iPhone, Keystore en Android).</li>
+        <li><strong>Supabase</strong> (Estados Unidos): base de datos, autenticación, fotos de perfil y funciones del servidor.</li>
+        <li><strong>Railway</strong>: servidor de las partidas en vivo.</li>
+        <li><strong>PostHog</strong> (Estados Unidos): analítica de uso.</li>
+        <li><strong>RevenueCat</strong>, <strong>Apple App Store</strong> y <strong>Google Play</strong>: compras y suscripciones.</li>
+        <li><strong>Apple</strong> y <strong>Google</strong>: inicio de sesión, si lo elegís.</li>
+        <li><strong>Expo</strong>, <strong>Apple</strong> y <strong>Google</strong>: envío de notificaciones.</li>
+        <li><strong>Google AdMob</strong>: anuncios en las cuentas gratuitas.</li>
+      </ul>
+      <p>
+        También podemos revelar datos si una ley u orden judicial nos obliga. Algunos de estos
+        proveedores procesan datos fuera de tu país (principalmente en Estados Unidos) con medidas de
+        seguridad adecuadas.
+      </p>
+
+      <h2>Seguridad</h2>
+      <ul>
         <li>Todas las conexiones viajan cifradas (HTTPS).</li>
+        <li>Tu sesión se guarda en el almacenamiento seguro del dispositivo (Keychain en iPhone, Keystore en Android).</li>
+        <li>Cada jugador sólo puede leer y modificar sus propios datos privados.</li>
       </ul>
 
       <h2>Cuánto tiempo los guardamos</h2>
       <p>
         Mientras tengas la cuenta. Si la borrás, se eliminan tu cuenta, perfil, foto, progreso,
-        logros y rating. Las partidas que jugaste quedan en el historial de tus rivales
-        <strong>sin tu nombre ni tu avatar</strong>.
+        logros, amigos y rating. Las partidas que jugaste quedan en el historial de tus rivales
+        <strong>sin tu nombre ni tu avatar</strong>. Los datos de analítica asociados a tu cuenta se
+        eliminan a pedido, y los de compras los conservan Apple, Google y RevenueCat según sus propias
+        obligaciones legales.
       </p>
 
       <h2>Tus derechos</h2>
@@ -104,10 +171,17 @@
           la app; para una copia escribinos a {{required:contactEmail:email de contacto}}.
         </li>
         <li>
+          <strong>Oponerte a la analítica:</strong> apagá «Compartir datos de uso» en Ajustes.
+        </li>
+        <li>
           <strong>Privacidad del perfil:</strong> en Ajustes podés hacer tu perfil privado (los demás
           sólo ven tu nombre, avatar y rango).
         </li>
       </ul>
+      <p>
+        Si estás en Argentina, también podés reclamar ante la Agencia de Acceso a la Información
+        Pública, órgano de control de la Ley 25.326 de Protección de Datos Personales.
+      </p>
 
       <h2>Menores</h2>
       <p>

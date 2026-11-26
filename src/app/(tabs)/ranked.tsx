@@ -1,5 +1,5 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { router } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import {
   CalendarDays,
   ChevronRight,
@@ -12,7 +12,7 @@ import {
   Users,
   Zap,
 } from 'lucide-react-native';
-import { useRef, useState, type ReactNode } from 'react';
+import { useCallback, useRef, useState, type ReactNode } from 'react';
 import { Pressable, StyleSheet, View, type ScrollViewInstance } from 'react-native';
 
 import { languageConfig } from '@shared/languages';
@@ -37,6 +37,7 @@ import {
 } from '@/design-system';
 import { TourTarget } from '@/features/onboarding/tourTargets';
 import { rankedDisabled } from '@/features/battle/availability';
+import { warmBattleServer } from '@/features/battle/client';
 import { battleStrings } from '@/features/battle/strings';
 import { useActiveSeason, useMyProfile } from '@/features/profile/hooks';
 import { PolysChip } from '@/features/polys/PolysChip';
@@ -60,6 +61,8 @@ export default function RankedScreen() {
   const season = useActiveSeason();
   const position = useMyLeaderboardPosition(null);
   const scrollRef = useRef<ScrollViewInstance>(null);
+  // Con la pestaña a la vista, la conexión al servidor de partidas se precalienta.
+  useFocusEffect(useCallback(() => warmBattleServer(), []));
   useTabPressScroll(scrollRef);
 
   if (me.isPending) return <LoadingState />;

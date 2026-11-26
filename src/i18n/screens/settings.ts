@@ -24,6 +24,9 @@ export const settingsStrings = defineStrings({
     soundEffectsHint:
       'Sonidos de acierto, error y fin de lección o partida. La pronunciación siempre suena.',
     privacy: 'PRIVACIDAD',
+    usageData: 'Compartir datos de uso',
+    usageDataHint:
+      'Nos ayuda a mejorar Polygo: qué pantallas usás y dónde te trabás. Nunca tu email ni tus respuestas.',
     visibility: {
       public: { title: 'Público', description: 'Cualquier jugador ve tu perfil y estadísticas.' },
       friends: {
@@ -51,6 +54,10 @@ export const settingsStrings = defineStrings({
     deleteAccountHint: 'Abre la pantalla para borrar tu cuenta y tus datos',
     privacyPolicy: 'Política de privacidad',
     privacyPolicyHint: 'Abre la política de privacidad en el navegador',
+    terms: 'Términos y condiciones',
+    termsHint: 'Abre los términos y condiciones en el navegador',
+    support: 'Ayuda y soporte',
+    supportHint: 'Abre la página de soporte en el navegador',
     challengePush: 'Avisarme cuando un amigo me desafía',
     pushBlocked: 'Las notificaciones de Polygo están apagadas en este teléfono.',
     pushUnsupported: 'Las notificaciones sólo llegan en la app instalada (no en web ni Expo Go).',
@@ -75,6 +82,9 @@ export const settingsStrings = defineStrings({
     soundEffectsHint:
       'Sounds for right and wrong answers and for finishing a lesson or match. Pronunciation always plays.',
     privacy: 'PRIVACY',
+    usageData: 'Share usage data',
+    usageDataHint:
+      'Helps us improve Polygo: which screens you use and where you get stuck. Never your email or your answers.',
     visibility: {
       public: { title: 'Public', description: 'Any player can see your profile and stats.' },
       friends: {
@@ -102,6 +112,10 @@ export const settingsStrings = defineStrings({
     deleteAccountHint: 'Opens the screen to delete your account and your data',
     privacyPolicy: 'Privacy policy',
     privacyPolicyHint: 'Opens the privacy policy in your browser',
+    terms: 'Terms and conditions',
+    termsHint: 'Opens the terms and conditions in your browser',
+    support: 'Help and support',
+    supportHint: 'Opens the support page in your browser',
     challengePush: 'Notify me when a friend challenges me',
     pushBlocked: 'Polygo notifications are turned off on this phone.',
     pushUnsupported: 'Notifications only arrive in the installed app (not on web or Expo Go).',

@@ -35,9 +35,31 @@ export const widgetStrings = defineStrings({
       new: { title: 'Palabras nuevas', caption: 'Vocabulario publicado que todavía no viste' },
     } satisfies Record<WidgetContent, { title: string; caption: string }>,
     pickerTitle: 'Qué muestra «Palabra»',
-    pickerNote:
-      'Vale para todos tus widgets «Palabra» de este teléfono, en inglés (el idioma que estudiás). Si un grupo está vacío, el widget muestra «Variado».',
+    pickerNote: 'En el idioma que estudiás. Si un grupo está vacío, muestra «Variado».',
     customizeWithPlus: 'Personalizar con PolyGo Plus',
+    // Tarjeta de widgets (pestaña Repaso)
+    cardTitle: 'Widgets',
+    cardSubtitle: 'Aprendé sin abrir la app',
+    wordName: 'Palabra',
+    quizName: 'Pregunta rápida',
+    previewDaily: 'PALABRA DEL DÍA',
+    previewQuestion: '¿Cómo se dice?',
+    add: 'Agregar widget',
+    unavailable: 'Hace falta la app instalada (no funciona en Expo Go)',
+    guideTitle: 'Agregá PolyGo a tu pantalla',
+    guideSteps: {
+      ios: [
+        'Mantené apretado un espacio vacío de la pantalla de inicio',
+        'Tocá «Editar» y después «Agregar widget»',
+        'Buscá «Polygo» y elegí «Palabra» o «Pregunta rápida»',
+      ],
+      android: [
+        'Mantené apretado un espacio vacío de la pantalla de inicio',
+        'Tocá «Widgets»',
+        'Buscá «Polygo» y arrastrá «Palabra» o «Pregunta rápida»',
+      ],
+    },
+    guideDone: 'Entendido',
   },
   en: {
     labels: {
@@ -65,8 +87,29 @@ export const widgetStrings = defineStrings({
       new: { title: 'New words', caption: 'Published vocabulary you haven’t seen yet' },
     },
     pickerTitle: 'What “Word” shows',
-    pickerNote:
-      'Applies to all your “Word” widgets on this phone, in English (the language you’re learning). If a group is empty, the widget shows “Mixed”.',
+    pickerNote: 'In the language you’re learning. If a group is empty, it shows “Mixed”.',
     customizeWithPlus: 'Customize with PolyGo Plus',
+    cardTitle: 'Widgets',
+    cardSubtitle: 'Learn without opening the app',
+    wordName: 'Word',
+    quizName: 'Quick question',
+    previewDaily: 'WORD OF THE DAY',
+    previewQuestion: 'How do you say it?',
+    add: 'Add widget',
+    unavailable: 'Needs the installed app (doesn’t work in Expo Go)',
+    guideTitle: 'Add PolyGo to your screen',
+    guideSteps: {
+      ios: [
+        'Press and hold an empty spot on your Home Screen',
+        'Tap “Edit”, then “Add Widget”',
+        'Search for “Polygo” and pick “Word” or “Quick question”',
+      ],
+      android: [
+        'Press and hold an empty spot on your Home Screen',
+        'Tap “Widgets”',
+        'Search for “Polygo” and drag “Word” or “Quick question”',
+      ],
+    },
+    guideDone: 'Got it',
   },
 });

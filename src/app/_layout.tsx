@@ -8,6 +8,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ErrorState, LoadingState, ThemeProvider, colors, useTheme } from '@/design-system';
 import { adsEnabled } from '@/features/ads';
 import { AdsBootstrap } from '@/features/ads/AdsBootstrap';
+import { AnalyticsBootstrap } from '@/features/analytics/AnalyticsBootstrap';
+import { PurchasesBootstrap } from '@/features/plus/PurchasesBootstrap';
 import { AuthProvider, useAuth } from '@/features/auth/AuthProvider';
 import { ConfigMissing } from '@/features/auth/ConfigMissing';
 import { useApplyProfileInterfaceLanguage } from '@/features/courses/hooks';
@@ -172,6 +174,7 @@ function RootNavigator() {
           <Stack.Screen name="invite-friends" options={{ animation: 'slide_from_bottom' }} />
           <Stack.Screen name="welcome-rewards" options={{ animation: 'slide_from_bottom' }} />
           <Stack.Screen name="smart-review" options={{ animation: 'slide_from_right' }} />
+          <Stack.Screen name="coach" options={{ animation: 'slide_from_right' }} />
         </Stack.Protected>
         <Stack.Protected guard={Boolean(session) && recoveringPassword}>
           <Stack.Screen name="reset-password" />
@@ -187,6 +190,10 @@ function RootNavigator() {
       {/* AdMob Fase 1: sólo builds de desarrollo (anuncios de prueba). Siempre montado mientras
           esté habilitado, así una salida de sesión o el paso a Plus apagan los anuncios. */}
       {adsEnabled ? <AdsBootstrap /> : null}
+      {/* PolyGo Plus: asocia la tienda (RevenueCat) a la cuenta. Sin claves no hace nada. */}
+      <PurchasesBootstrap />
+      {/* Analítica (PostHog): pantallas vistas y cuenta. Sin EXPO_PUBLIC_POSTHOG_KEY no hace nada. */}
+      <AnalyticsBootstrap />
     </>
   );
 }

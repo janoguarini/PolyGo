@@ -8,6 +8,9 @@
  * parámetros del SRS (AL11): el envío va por la misma vía que cualquier repaso del servidor.
  */
 
+import { parseCoachUnits, pickCoachReview } from './coach';
+import { COACH } from './plus';
+
 /** Palabras por sesión de repaso inteligente (el básico usa 10). */
 export const SMART_REVIEW_SIZE = 15;
 /** Palabras por sesión de repaso por tema. */
@@ -157,7 +160,12 @@ export function topicSummaries(
 // ---------------------------------------------------------------------------------------------
 // Plan del servidor (Edge Function learning-session, start_review con `focus`).
 
-export type FocusRequest = { kind: 'smart' } | { kind: 'topic'; unit_id: string };
+/**
+ * Pedido de foco. 'coach' (sesión del Coach, shared/coach.ts): palabras que cuestan de 1 a 3 unidades;
+ * el servidor decide si corresponde (Plus o una sesión de prueba, coach_claim_session).
+ */
+export type FocusRequest =
+  { kind: 'smart' } | { kind: 'topic'; unit_id: string } | { kind: 'coach'; unit_ids: string[] };
 
 /** Ítem del catálogo presentable para la palabra (review_item_candidates, dimensión vocabulario). */
 export interface FocusItem {
@@ -187,7 +195,7 @@ export interface FocusPlanItem {
   concept_id: string;
   dimension: string;
   rung: string;
-  reason: SmartReason | 'topic';
+  reason: SmartReason | 'topic' | 'coach';
   option_count: number | null;
 }
 
@@ -241,13 +249,18 @@ export function pickFocusItem(
 export function buildFocusPlan(input: FocusInput, focus: FocusRequest): FocusPlan {
   const now = Date.parse(input.now);
   const presentable = input.words.filter((w) => w.items.length > 0);
-  const picked: { entry: FocusCandidate; reason: SmartReason | 'topic' }[] =
+  const picked: { entry: FocusCandidate; reason: SmartReason | 'topic' | 'coach' }[] =
     focus.kind === 'smart'
       ? pickSmartReview(presentable, now)
-      : pickTopicReview(presentable, focus.unit_id, now).map((entry) => ({
-          entry,
-          reason: 'topic' as const,
-        }));
+      : focus.kind === 'topic'
+        ? pickTopicReview(presentable, focus.unit_id, now).map((entry) => ({
+            entry,
+            reason: 'topic' as const,
+          }))
+        : pickCoachReview(presentable, focus.unit_ids).map((entry) => ({
+            entry,
+            reason: 'coach' as const,
+          }));
   const items: FocusPlanItem[] = [];
   const taken = new Set<string>();
   for (const { entry, reason } of picked) {
@@ -269,7 +282,12 @@ export function buildFocusPlan(input: FocusInput, focus: FocusRequest): FocusPla
   return {
     planner_version: FOCUS_PLANNER_VERSION,
     focus,
-    capacity: focus.kind === 'smart' ? SMART_REVIEW_SIZE : TOPIC_REVIEW_SIZE,
+    capacity:
+      focus.kind === 'smart'
+        ? SMART_REVIEW_SIZE
+        : focus.kind === 'topic'
+          ? TOPIC_REVIEW_SIZE
+          : COACH.sessionSize,
     status: items.length > 0 ? 'ok' : 'up_to_date',
     items,
   };
@@ -283,6 +301,10 @@ export function parseFocusRequest(raw: unknown): FocusRequest | null {
   // El id de la unidad sólo filtra palabras del propio usuario: uno inexistente da un repaso vacío.
   if (r.kind === 'topic' && typeof r.unit_id === 'string' && /^[\w-]{1,100}$/.test(r.unit_id)) {
     return { kind: 'topic', unit_id: r.unit_id };
+  }
+  if (r.kind === 'coach') {
+    const unitIds = parseCoachUnits(r.unit_ids);
+    return unitIds ? { kind: 'coach', unit_ids: unitIds } : null;
   }
   return null;
 }

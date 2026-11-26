@@ -531,7 +531,11 @@ export interface ReviewRetry {
 }
 
 /** Repaso Plus (P3): lo arma y lo corrige el servidor, con las reglas de shared/focusReview.ts. */
-export type ReviewFocus = { kind: 'smart' } | { kind: 'topic'; unit_id: string };
+export type ReviewFocus =
+  | { kind: 'smart' }
+  | { kind: 'topic'; unit_id: string }
+  /** Sesión del Coach: el servidor decide si corresponde (Plus o prueba, coach_claim_session). */
+  | { kind: 'coach'; unit_ids: string[] };
 
 /** AL17: unidad persistente con la lección de su explicación. */
 export interface PersistentUnit {

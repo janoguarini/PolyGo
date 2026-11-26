@@ -49,6 +49,9 @@ export const env = parsed.success
       battleServerUrl: battleServer.status === 'configured' ? battleServer.url : undefined,
       // Inválida = no se muestra el enlace (igual que vacía); no bloquea la app.
       privacyPolicyUrl: privacy.success ? privacy.data : undefined,
+      // Las demás páginas legales viven en el mismo sitio que la política (polygoidiomas.com).
+      termsUrl: privacy.success ? new URL('/terminos', privacy.data).toString() : undefined,
+      supportUrl: privacy.success ? new URL('/soporte', privacy.data).toString() : undefined,
     }
   : null;
 

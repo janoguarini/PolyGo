@@ -7,17 +7,16 @@ import {
   CircleCheck,
   Layers,
   Play,
-  Smartphone,
+  Sparkles,
   Target,
   Zap,
 } from 'lucide-react-native';
 import { useRef, useState, type ReactNode } from 'react';
-import { Platform, StyleSheet, View, type ScrollViewInstance } from 'react-native';
+import { Pressable, StyleSheet, View, type ScrollViewInstance } from 'react-native';
 
 import {
   BrandCard,
   Button,
-  Card,
   ErrorState,
   LoadingState,
   Mascot,
@@ -33,8 +32,7 @@ import { SpeakButton } from '@/features/learning/components/SpeakButton';
 import { useMyWords, useWordOfTheDay } from '@/features/learning/hooks';
 import { usePlus } from '@/features/plus/api';
 import { PlusCrownPill } from '@/features/plus/components/PlusCrownPill';
-import { WidgetContentPicker } from '@/features/widgets/WidgetContentPicker';
-import { widgetsSupported } from '@/features/widgets/sync';
+import { WidgetsCard } from '@/features/widgets/WidgetsCard';
 import { useStrings } from '@/i18n';
 import { practiceStrings } from '@/i18n/screens/practice';
 import { useTabPressScroll } from '@/lib/useTabPressScroll';
@@ -171,15 +169,7 @@ export default function PracticeScreen() {
         </Text>
       </View>
       <View style={styles.grid}>
-        <TrainingTile
-          icon={<Brain color={colors.primarySoft} size={30} />}
-          title={t.smartReview}
-          subtitle={t.smartReviewSub}
-          highlight
-          badge={<PlusCrownPill label={t.plus} a11y={t.plusA11y} />}
-          disabled={empty}
-          onPress={() => router.push('/smart-review')}
-        />
+        {/* Primero lo gratis, después lo de Plus. */}
         <TrainingTile
           icon={<Zap color={colors.primarySoft} size={30} />}
           title={t.freePractice}
@@ -200,27 +190,42 @@ export default function PracticeScreen() {
           subtitle={t.topicReviewSub}
           badge={plus === true ? undefined : <PlusCrownPill label={t.plus} a11y={t.plusA11y} />}
           disabled={empty}
-          onPress={() => router.push(plus === true ? '/review-topics' : '/plus')}
+          // Lo ven todos: sin Plus, la pantalla muestra sus temas con candado y lleva a Plus.
+          onPress={() => router.push('/review-topics')}
+        />
+        <TrainingTile
+          icon={<Brain color={colors.primarySoft} size={30} />}
+          title={t.smartReview}
+          subtitle={t.smartReviewSub}
+          highlight
+          badge={<PlusCrownPill label={t.plus} a11y={t.plusA11y} />}
+          disabled={empty}
+          onPress={() => router.push('/smart-review')}
         />
       </View>
 
-      <Card style={styles.widgets}>
-        <View style={styles.row}>
-          <Smartphone color={colors.info} size={22} />
-          <Text variant="bodyStrong">{t.widgetsTitle}</Text>
-        </View>
-        <Text color="textMuted">{t.widgetsBody}</Text>
-        {widgetsSupported ? (
-          <Text color="textMuted">{Platform.OS === 'ios' ? t.widgetsIos : t.widgetsAndroid}</Text>
-        ) : (
-          <View style={styles.pill}>
-            <Text variant="overline" color="streak">
-              {t.widgetsUnavailable}
+      {/* Coach: el diagnóstico es gratis; las sesiones personalizadas, Plus o 2 de prueba. */}
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={`${t.coach}. ${t.coachSub}`}
+        onPress={() => router.push('/coach')}
+        style={({ pressed }) => [pressed && styles.pressedCard]}
+      >
+        <BrandCard contentStyle={styles.coachCard}>
+          <Sparkles color={colors.primarySoft} size={30} />
+          <View style={styles.flexOne}>
+            <Text variant="bodyStrong" color="textStrong">
+              {t.coach}
+            </Text>
+            <Text variant="caption" color="text">
+              {t.coachSub}
             </Text>
           </View>
-        )}
-        {widgetsSupported ? <WidgetContentPicker /> : null}
-      </Card>
+          <PlusCrownPill label={t.plus} a11y={t.plusA11y} />
+        </BrandCard>
+      </Pressable>
+
+      <WidgetsCard />
     </Screen>
   );
 }
@@ -367,13 +372,8 @@ const useStyles = themedStyles(() =>
     tileTitleRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.xxs },
     tileTitle: { fontSize: 17, lineHeight: 21 },
     disabled: { opacity: 0.55 },
-    widgets: { gap: spacing.md },
-    pill: {
-      alignSelf: 'flex-start',
-      paddingHorizontal: spacing.md,
-      paddingVertical: spacing.xs,
-      borderRadius: radii.pill,
-      backgroundColor: 'rgba(251,146,60,0.12)',
-    },
+    coachCard: { flexDirection: 'row', alignItems: 'center', gap: spacing.md, padding: spacing.lg },
+    flexOne: { flex: 1, gap: spacing.xxs },
+    pressedCard: { opacity: 0.85 },
   }),
 );

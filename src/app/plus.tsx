@@ -1,23 +1,32 @@
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import {
+  AlertTriangle,
+  BarChart3,
   Brain,
-  ChartNoAxesColumn,
   Check,
-  ChevronRight,
   Crown,
   GraduationCap,
   ImageOff,
   Info,
-  Layers,
-  Smartphone,
-  TrendingUp,
+  Sparkles,
   Trophy,
   X,
   Zap,
 } from 'lucide-react-native';
-import { useState, type ReactNode } from 'react';
-import { Image, Pressable, StyleSheet, View } from 'react-native';
+import { useEffect, useState, type ReactNode } from 'react';
+import {
+  Image,
+  Linking,
+  Platform,
+  Pressable,
+  StyleSheet,
+  View,
+  useWindowDimensions,
+} from 'react-native';
+
+import { FREE_LIMITS } from '@shared/plus';
 
 import {
   BrandCard,
@@ -31,53 +40,129 @@ import {
   spacing,
   themedStyles,
 } from '@/design-system';
-import { useEnergy } from '@/features/plus/api';
+import { useAuth } from '@/features/auth/AuthProvider';
+import { energyKeys, useEnergy } from '@/features/plus/api';
+import { entitlementKeys, useEntitlementsQuery } from '@/features/plus/entitlements';
 import {
-  PLUS_PLANS,
-  REMOVE_ADS_PRODUCT,
-  annualDeal,
-  formatUsd,
-  purchasePlus,
-  restorePurchases,
-  type PlusPlanId,
+  getPlusOffer,
+  manageSubscription,
+  purchase,
+  restore,
+  storeSupported,
 } from '@/features/plus/purchases';
+import {
+  annualSavings,
+  formatPerMonth,
+  type PlusPlanId,
+  type PurchaseOutcome,
+  type RestoreOutcome,
+  type StorePlan,
+} from '@/features/plus/store';
+import { GoldButton, PLUS_INK as INK } from '@/features/plus/components/GoldButton';
+import { APPLE_STANDARD_EULA } from '@/features/plus/storeConfig';
 import { useLocale, useStrings } from '@/i18n';
+import { track } from '@/lib/analytics';
 import { plusStrings } from '@/i18n/screens/plus';
+import { env } from '@/lib/env';
 
 const FOX = require('../../assets/plus/plus-fox.png') as number;
 /** Ancho / alto de assets/plus/plus-fox.png. */
 const FOX_ASPECT = 531 / 451;
 
-const ROW_H = 48;
-const HEAD_H = 54;
+/**
+ * Medidas según la pantalla, para que todo entre sin scroll en cualquier teléfono:
+ * bajos (iPhone SE, Android 640 dp) → compacto; altos (Pro Max) → más aire; angostos → columnas
+ * más finas; tablets y horizontal → ancho máximo centrado. Si con letra grande no entra, la
+ * pantalla se desplaza (Screen) en vez de cortar nada.
+ */
+interface PlusLayout {
+  rowH: number;
+  headH: number;
+  fox: number;
+  titleSize: number;
+  freeW: number;
+  plusW: number;
+  gap: number;
+  priceSize: number;
+}
 
-type FeatureKey =
-  'lessons' | 'energy' | 'progress' | 'topic' | 'ranked' | 'smart' | 'widgets' | 'ads';
+function usePlusLayout(): PlusLayout {
+  const { width, height } = useWindowDimensions();
+  const short = height < 720;
+  const tall = height >= 860;
+  const narrow = width < 370;
+  return {
+    rowH: short ? 32 : tall ? 40 : 36,
+    headH: short ? 34 : 40,
+    fox: short ? 76 : tall ? 120 : 100,
+    titleSize: short || narrow ? 21 : 25,
+    freeW: narrow ? 56 : 62,
+    plusW: narrow ? 68 : 78,
+    gap: short ? spacing.sm : spacing.md,
+    priceSize: narrow ? 18 : 21,
+  };
+}
 
-/** Gratis vs. Plus: lo mismo que dice docs/PLUS.md. Ranked nunca es una ventaja paga. */
-const FEATURES: { key: FeatureKey; icon: typeof Zap; free: boolean }[] = [
+/** Ancho máximo del contenido (tablets y horizontal). */
+const MAX_WIDTH = 480;
+/** Tope del agrandado de letra por accesibilidad en la tabla y los planes (después se desplaza). */
+const MAX_FONT_SCALE = 1.25;
+
+type FeatureKey = 'lessons' | 'progress' | 'ranked' | 'coach' | 'energy' | 'smart' | 'ads';
+
+/**
+ * Gratis vs. Plus (lo mismo que docs/PLUS.md), en el orden que vende: primero lo que ya tenés gratis,
+ * después el Coach (prueba vs. ilimitado) y al final lo que sólo da Plus. Ranked nunca es una ventaja.
+ * free: true = incluido, false = no, 'trial' = sesiones de prueba. plus: '∞' = ilimitado.
+ */
+const FEATURES: {
+  key: FeatureKey;
+  icon: typeof Zap;
+  free: boolean | 'trial';
+  plus?: '∞';
+}[] = [
   { key: 'lessons', icon: GraduationCap, free: true },
-  { key: 'energy', icon: Zap, free: false },
-  { key: 'progress', icon: ChartNoAxesColumn, free: true },
-  { key: 'topic', icon: Layers, free: false },
+  { key: 'progress', icon: BarChart3, free: true },
   { key: 'ranked', icon: Trophy, free: true },
+  { key: 'coach', icon: Sparkles, free: 'trial', plus: '∞' },
+  { key: 'energy', icon: Zap, free: false, plus: '∞' },
   { key: 'smart', icon: Brain, free: false },
-  { key: 'widgets', icon: Smartphone, free: false },
   { key: 'ads', icon: ImageOff, free: false },
 ];
 
+type Busy = null | 'purchase' | 'restore';
+type Notice =
+  { kind: 'purchase'; outcome: PurchaseOutcome } | { kind: 'restore'; outcome: RestoreOutcome };
+
 /**
- * PolyGo Plus: comparación Gratis / Plus, planes mensual y anual y la compra única sin publicidad.
- * Las compras todavía no están integradas (src/features/plus/purchases.ts): los botones lo avisan
- * en vez de cobrar, y Plus sólo se activa cuando el servidor lo confirma.
+ * PolyGo Plus en una sola pantalla: qué tenés gratis, qué suma Plus, los dos planes y la compra.
+ * Precios: los de la tienda (RevenueCat), en la moneda del usuario; nada de importes fijos.
+ * Plus se activa recién cuando el servidor lo confirma (get_energy / get_entitlements).
  */
 export default function PlusScreen() {
   const styles = useStyles();
   const t = useStrings(plusStrings);
   const locale = useLocale();
+  const layout = usePlusLayout();
   const energy = useEnergy();
+  const ent = useEntitlementsQuery();
+  const { session } = useAuth();
+  const userId = session?.user.id ?? 'anonymous';
+  const queryClient = useQueryClient();
+  const offer = useQuery({
+    queryKey: ['plus', 'offer', userId] as const,
+    queryFn: getPlusOffer,
+    enabled: storeSupported(),
+    staleTime: 10 * 60_000,
+    retry: 1,
+  });
   const [plan, setPlan] = useState<PlusPlanId>('annual');
-  const [notice, setNotice] = useState(false);
+  const [busy, setBusy] = useState<Busy>(null);
+  const [notice, setNotice] = useState<Notice | null>(null);
+  // Analítica: cuánta gente llega al paywall (y cuánta compra).
+  useEffect(() => {
+    track('plus_viewed');
+  }, []);
 
   if (energy.isPending) return <LoadingState />;
   if (energy.isError || !energy.view) {
@@ -89,147 +174,345 @@ export default function PlusScreen() {
     );
   }
   const isPlus = energy.view.plus;
-  const deal = annualDeal();
-  // Mientras no haya tienda, cualquier compra termina en el aviso.
-  const tryPurchase = (run: () => Promise<unknown>) => () => {
-    run().catch(() => setNotice(true));
+  const adFree = ent.data?.adFree === true;
+  const detail = ent.data?.detail ?? null;
+  const expired =
+    !isPlus &&
+    detail?.expiresAt != null &&
+    ent.data != null &&
+    // Con la hora del servidor: adelantar el reloj del teléfono no cambia nada.
+    Date.parse(detail.expiresAt) <= Date.parse(ent.data.serverNow);
+
+  const offerState = storeSupported()
+    ? (offer.data ??
+      (offer.isError ? { status: 'error' as const, reason: 'store' as const } : null))
+    : { status: 'unavailable' as const };
+  const available = offerState?.status === 'available' ? offerState.offer : null;
+  const monthly = available?.monthly ?? null;
+  const annual = available?.annual ?? null;
+  const removeAds = available?.removeAds ?? null;
+  const savings = annualSavings(monthly, annual);
+  const selected = plan === 'annual' ? (annual ?? monthly) : (monthly ?? annual);
+  const selectedId: PlusPlanId | null = selected
+    ? selected === annual
+      ? 'annual'
+      : 'monthly'
+    : null;
+  // El precio por mes del anual sale de la tienda (mismo formato que los demás precios); si no lo da,
+  // se calcula con Intl.
+  const annualPerMonth =
+    annual && savings
+      ? (annual.pricePerMonthString ??
+        formatPerMonth(savings.perMonth, annual.currencyCode, locale))
+      : null;
+
+  const refreshEntitlements = () => {
+    void queryClient.invalidateQueries({ queryKey: entitlementKeys.all });
+    void queryClient.invalidateQueries({ queryKey: energyKeys.state(userId) });
   };
+  const runPurchase = (item: StorePlan, wants: 'plus' | 'ad_free') => {
+    if (busy) return;
+    setBusy('purchase');
+    setNotice(null);
+    const product = {
+      product_id: item.productId,
+      wants,
+      price: item.price,
+      currency: item.currencyCode,
+    };
+    track('purchase_started', product);
+    void purchase(item, wants)
+      .then((outcome) => {
+        track(
+          outcome === 'success' || outcome === 'confirming'
+            ? 'purchase_completed'
+            : 'purchase_failed',
+          { ...product, outcome },
+        );
+        setNotice({ kind: 'purchase', outcome });
+        if (outcome === 'success' || outcome === 'confirming') refreshEntitlements();
+      })
+      .finally(() => setBusy(null));
+  };
+  const runRestore = () => {
+    if (busy) return;
+    setBusy('restore');
+    setNotice(null);
+    void restore()
+      .then((outcome) => {
+        setNotice({ kind: 'restore', outcome });
+        if (outcome === 'restored') refreshEntitlements();
+      })
+      .finally(() => setBusy(null));
+  };
+  const noticeText = notice
+    ? notice.kind === 'purchase'
+      ? t.purchaseOutcome[notice.outcome]
+      : t.restoreOutcome[notice.outcome]
+    : null;
+  const noticeIsGood =
+    notice?.outcome === 'success' ||
+    notice?.outcome === 'restored' ||
+    notice?.outcome === 'confirming';
 
   return (
     <Screen edges={['top', 'bottom']}>
-      <View style={styles.topBar}>
-        <CloseButton />
-        <View style={styles.brand}>
-          <Crown color={colors.textStrong} size={26} strokeWidth={2.2} />
-          <Text variant="heading" color="textStrong" style={styles.brandText}>
-            {t.brand}
-          </Text>
+      <View style={[styles.page, { gap: layout.gap }]}>
+        <View style={styles.topBar}>
+          <CloseButton />
+          <View style={styles.brandPill}>
+            <Crown color={INK} fill={INK} size={14} />
+            <Text style={styles.brandPillText}>{t.brandPill}</Text>
+          </View>
+          <View style={styles.closeSpacer} />
         </View>
-        <View style={styles.closeSpacer} />
-      </View>
 
-      <View style={styles.hero}>
-        <Burst side="left" />
-        <Image
-          source={FOX}
-          style={styles.fox}
-          resizeMode="contain"
-          fadeDuration={0}
-          accessible={false}
-        />
-        <Burst side="right" />
-      </View>
-      <View style={styles.titleBox}>
-        <Text style={styles.title} color="textStrong" accessibilityRole="header">
-          {isPlus ? t.titleActive1 : t.title1}
-        </Text>
-        <Text style={styles.title} color="primarySoft">
-          {isPlus ? t.titleActive2 : t.title2}
-        </Text>
-      </View>
-
-      <Comparison />
-
-      <BrandCard contentStyle={styles.smartCard}>
-        <Brain color={colors.primarySoft} size={52} strokeWidth={1.8} />
-        <View style={styles.smartText}>
-          <Text color="textStrong" style={styles.smartTitle}>
-            {t.smartTitle}
-          </Text>
-          <Text variant="caption" color="text">
-            {t.smartBody}
-          </Text>
-        </View>
-        <SmartArt />
-      </BrandCard>
-
-      {isPlus ? (
-        <BrandCard contentStyle={styles.subscription}>
-          <Text variant="bodyStrong" color="textStrong">
-            {t.yourSubscription}
-          </Text>
-          <Text color="text">
-            {energy.plusExpiresAt
-              ? t.activeUntil(new Date(energy.plusExpiresAt).toLocaleDateString(locale))
-              : t.active}{' '}
-            {t.manage}
-          </Text>
-          {energy.isStale ? <Text variant="caption">{t.stale}</Text> : null}
-        </BrandCard>
-      ) : (
-        <>
-          <View style={styles.plans}>
-            <PlanCard
-              selected={plan === 'monthly'}
-              title={t.monthly}
-              price={t.perMonth(formatUsd(PLUS_PLANS.monthly.amount, locale))}
-              onPress={() => setPlan('monthly')}
-            />
-            <PlanCard
-              selected={plan === 'annual'}
-              title={t.annual}
-              badge={t.discount(deal.discountPercent)}
-              price={t.perMonth(formatUsd(deal.perMonth, locale))}
-              onPress={() => setPlan('annual')}
+        <View style={styles.hero}>
+          <View
+            style={[
+              styles.foxGlow,
+              { width: layout.fox, height: layout.fox, borderRadius: layout.fox / 2 },
+            ]}
+          >
+            <Image
+              source={FOX}
+              // Ancho y alto explícitos: con sólo aspectRatio, iOS dibujaba la imagen a su tamaño original.
+              style={{ width: layout.fox * 1.04, height: (layout.fox * 1.04) / FOX_ASPECT }}
+              resizeMode="contain"
+              fadeDuration={0}
+              accessible={false}
             />
           </View>
-          {plan === 'annual' ? (
-            <Text color="textStrong" align="center" style={styles.yearLine}>
-              {t.perYear(formatUsd(PLUS_PLANS.annual.amount, locale))}{' '}
-              <Text color="primarySoft">{t.savings(formatUsd(deal.savings, locale))}</Text>
-            </Text>
-          ) : (
-            <Text color="text" align="center" style={styles.yearLine}>
-              {t.monthlyNote}
-            </Text>
-          )}
-
-          <Button
-            label={t.activate(plan === 'annual')}
-            size="lg"
-            icon={<Crown color={colors.onPrimary} fill={colors.onPrimary} size={22} />}
-            onPress={tryPurchase(() => purchasePlus())}
-            style={styles.cta}
-          />
-          {notice ? (
-            <View style={styles.notice} accessibilityLiveRegion="polite">
-              <Info color={colors.info} size={18} />
-              <Text variant="caption" color="textStrong" style={styles.flex}>
-                {t.storeUnavailable}
+          <View style={[styles.heroText, { marginTop: -Math.round(layout.fox * 0.24) }]}>
+            <View style={styles.titleBox}>
+              <Text
+                style={[
+                  styles.title,
+                  { fontSize: layout.titleSize, lineHeight: layout.titleSize + 4 },
+                ]}
+                color="textStrong"
+                accessibilityRole="header"
+                numberOfLines={1}
+                adjustsFontSizeToFit
+                minimumFontScale={0.7}
+                maxFontSizeMultiplier={MAX_FONT_SCALE}
+              >
+                {isPlus ? t.titleActive1 : t.title1}
+              </Text>
+              <Text
+                style={[
+                  styles.title,
+                  { fontSize: layout.titleSize, lineHeight: layout.titleSize + 4 },
+                ]}
+                color="primarySoft"
+                numberOfLines={1}
+                adjustsFontSizeToFit
+                minimumFontScale={0.7}
+                maxFontSizeMultiplier={MAX_FONT_SCALE}
+              >
+                {isPlus ? t.titleActive2 : t.title2}
               </Text>
             </View>
-          ) : null}
+          </View>
+        </View>
 
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel={t.removeAdsA11y(formatUsd(REMOVE_ADS_PRODUCT.amount, locale))}
-            onPress={tryPurchase(() => purchasePlus())}
-            hitSlop={8}
-            style={({ pressed }) => [styles.removeAds, pressed && styles.pressed]}
-          >
-            <ImageOff color={colors.textStrong} size={20} />
-            <Text color="textStrong" style={styles.removeAdsText}>
-              {t.removeAds} · {formatUsd(REMOVE_ADS_PRODUCT.amount, locale)} · {t.oneTime}
-            </Text>
-            <ChevronRight color={colors.textStrong} size={18} />
-          </Pressable>
+        <Comparison layout={layout} />
 
-          <Pressable
-            accessibilityRole="button"
-            onPress={tryPurchase(() => restorePurchases())}
-            hitSlop={8}
-            style={({ pressed }) => [styles.restore, pressed && styles.pressed]}
+        {noticeText ? (
+          <View
+            style={[styles.notice, noticeIsGood && styles.noticeGood]}
+            accessibilityLiveRegion="polite"
           >
-            <Text variant="caption" color="text" style={styles.underline}>
-              {t.restore}
+            {noticeIsGood ? (
+              <Check color={colors.success} size={18} />
+            ) : (
+              <Info color={colors.info} size={18} />
+            )}
+            <Text variant="caption" color="textStrong" style={styles.flex}>
+              {noticeText}
             </Text>
-          </Pressable>
-          <Text variant="caption" color="textMuted" align="center">
-            {t.referencePrice} {t.fairPlay}
-          </Text>
-        </>
-      )}
+          </View>
+        ) : null}
+
+        {isPlus ? (
+          <BrandCard contentStyle={styles.subscription}>
+            <Text variant="bodyStrong" color="textStrong">
+              {t.yourSubscription}
+            </Text>
+            <Text color="text">
+              {energy.plusExpiresAt
+                ? detail?.willRenew === false
+                  ? t.cancelledUntil(new Date(energy.plusExpiresAt).toLocaleDateString(locale))
+                  : detail?.willRenew === true
+                    ? t.renewsOn(new Date(energy.plusExpiresAt).toLocaleDateString(locale))
+                    : t.activeUntil(new Date(energy.plusExpiresAt).toLocaleDateString(locale))
+                : t.active}
+            </Text>
+            {detail?.billingIssue ? (
+              <View style={styles.row}>
+                <AlertTriangle color={colors.streak} size={18} />
+                <Text variant="caption" color="textStrong" style={styles.flex}>
+                  {t.billingIssue}
+                </Text>
+              </View>
+            ) : null}
+            {detail && (detail.source === 'app_store' || detail.source === 'play_store') ? (
+              <Button
+                label={t.manageButton}
+                variant="secondary"
+                onPress={() => void manageSubscription()}
+              />
+            ) : (
+              <Text variant="caption" color="text">
+                {detail?.source === 'referral' ? t.referralSource : t.manage}
+              </Text>
+            )}
+            {energy.isStale ? <Text variant="caption">{t.stale}</Text> : null}
+          </BrandCard>
+        ) : (
+          <>
+            {expired ? (
+              <View style={styles.notice}>
+                <Info color={colors.info} size={18} />
+                <Text variant="caption" color="textStrong" style={styles.flex}>
+                  {t.expired(new Date(detail!.expiresAt!).toLocaleDateString(locale))}
+                </Text>
+              </View>
+            ) : null}
+
+            {offerState === null ? (
+              <LoadingState label={t.loadingPrices} />
+            ) : offerState.status === 'error' ? (
+              <View style={styles.notice}>
+                <Info color={colors.info} size={18} />
+                <Text variant="caption" color="textStrong" style={styles.flex}>
+                  {offerState.reason === 'network' ? t.storeError : t.storeNotReady}
+                </Text>
+                <Pressable
+                  accessibilityRole="button"
+                  onPress={() => void offer.refetch()}
+                  hitSlop={8}
+                >
+                  <Text variant="caption" color="primarySoft" style={styles.underline}>
+                    {t.retry}
+                  </Text>
+                </Pressable>
+              </View>
+            ) : offerState.status === 'unavailable' ? (
+              <View style={styles.notice}>
+                <Info color={colors.info} size={18} />
+                <Text variant="caption" color="textStrong" style={styles.flex}>
+                  {t.storeUnavailable}
+                </Text>
+              </View>
+            ) : (
+              <>
+                <View style={styles.plans}>
+                  {monthly ? (
+                    <PlanCard
+                      priceSize={layout.priceSize}
+                      selected={selectedId === 'monthly'}
+                      title={t.monthly}
+                      price={t.perMonth(monthly.priceString)}
+                      detail={t.billedMonthly}
+                      onPress={() => setPlan('monthly')}
+                    />
+                  ) : null}
+                  {annual ? (
+                    <PlanCard
+                      priceSize={layout.priceSize}
+                      selected={selectedId === 'annual'}
+                      title={t.annual}
+                      badge={savings ? t.saveBadge(savings.percent) : undefined}
+                      price={
+                        annualPerMonth ? t.perMonth(annualPerMonth) : t.perYear(annual.priceString)
+                      }
+                      detail={annualPerMonth ? t.billedYearly(annual.priceString) : t.annualNote}
+                      onPress={() => setPlan('annual')}
+                    />
+                  ) : null}
+                </View>
+
+                {selected ? (
+                  <GoldButton
+                    label={busy === 'purchase' ? t.purchasing : t.cta}
+                    sublabel={t.ctaSub}
+                    disabled={busy !== null}
+                    onPress={() => runPurchase(selected, 'plus')}
+                  />
+                ) : null}
+              </>
+            )}
+
+            <View style={styles.links}>
+              {removeAds && !adFree ? (
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel={t.removeAdsA11y(removeAds.priceString)}
+                  onPress={() => runPurchase(removeAds, 'ad_free')}
+                  disabled={busy !== null}
+                  hitSlop={8}
+                  style={({ pressed }) => pressed && styles.pressed}
+                >
+                  <Text variant="caption" color="text" style={styles.underline}>
+                    {t.removeAdsShort(removeAds.priceString)}
+                  </Text>
+                </Pressable>
+              ) : null}
+              {storeSupported() ? (
+                <Pressable
+                  accessibilityRole="button"
+                  onPress={runRestore}
+                  disabled={busy !== null}
+                  hitSlop={8}
+                  style={({ pressed }) => pressed && styles.pressed}
+                >
+                  <Text variant="caption" color="text" style={styles.underline}>
+                    {busy === 'restore' ? t.restoring : t.restore}
+                  </Text>
+                </Pressable>
+              ) : null}
+            </View>
+            <Text style={styles.fine} color="textMuted" align="center">
+              {t.renewalTerms(Platform.OS === 'ios' ? 'App Store' : 'Google Play')}
+            </Text>
+          </>
+        )}
+        <LegalLinks />
+      </View>
     </Screen>
+  );
+}
+
+/** Términos de uso y política de privacidad, exigidos por las tiendas junto a la compra. */
+function LegalLinks() {
+  const styles = useStyles();
+  const t = useStrings(plusStrings);
+  const links = [
+    // Nuestros términos (incluyen el EULA estándar de Apple para iPhone); sin sitio, el EULA de Apple.
+    env?.termsUrl
+      ? { label: t.terms, url: env.termsUrl }
+      : Platform.OS === 'ios'
+        ? { label: t.terms, url: APPLE_STANDARD_EULA }
+        : null,
+    env?.privacyPolicyUrl ? { label: t.privacy, url: env.privacyPolicyUrl } : null,
+  ].filter((l): l is { label: string; url: string } => l !== null);
+  if (links.length === 0) return null;
+  return (
+    <View style={styles.links}>
+      {links.map((l) => (
+        <Pressable
+          key={l.url}
+          accessibilityRole="link"
+          onPress={() => void Linking.openURL(l.url)}
+          hitSlop={8}
+        >
+          <Text style={[styles.fine, styles.underline]} color="textMuted">
+            {l.label}
+          </Text>
+        </Pressable>
+      ))}
+    </View>
   );
 }
 
@@ -240,54 +523,48 @@ function CloseButton() {
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={t.close}
-      hitSlop={8}
+      hitSlop={10}
       onPress={() => router.back()}
       style={({ pressed }) => [styles.close, pressed && styles.pressed]}
     >
-      <X color={colors.textStrong} size={24} />
+      <X color={colors.textStrong} size={20} />
     </Pressable>
   );
 }
 
-/** Rayitas doradas a los costados del zorro. */
-function Burst({ side }: { side: 'left' | 'right' }) {
+function Comparison({ layout }: { layout: PlusLayout }) {
   const styles = useStyles();
-  const flip = side === 'right' ? -1 : 1;
-  return (
-    <View style={[styles.burst, side === 'left' ? styles.burstLeft : styles.burstRight]}>
-      {[-35, 0, 35].map((deg, i) => (
-        <View
-          key={deg}
-          style={[
-            styles.ray,
-            i === 1 && styles.rayLong,
-            { transform: [{ rotate: `${(deg - 20) * flip}deg` }] },
-          ]}
-        />
-      ))}
-    </View>
-  );
-}
-
-function Comparison() {
-  const styles = useStyles();
+  const rowH = { height: layout.rowH };
+  const headH = { height: layout.headH - 1 };
   const t = useStrings(plusStrings);
+  const trial = t.trialCell(FREE_LIMITS.coachTrialSessions);
   return (
     <View style={styles.table}>
       <View style={styles.flex}>
-        <View style={{ height: HEAD_H }} />
+        <View style={{ height: layout.headH }} />
         <View style={styles.featureCard}>
           {FEATURES.map((f, i) => {
             const Icon = f.icon;
             return (
               <View
                 key={f.key}
-                style={[styles.featureRow, i > 0 && styles.rowLine]}
+                style={[styles.featureRow, rowH, i > 0 && styles.rowLine]}
                 accessible
-                accessibilityLabel={t.rowA11y(t.features[f.key], f.free, true)}
+                accessibilityLabel={t.rowA11y(
+                  t.features[f.key],
+                  f.free === 'trial' ? trial : f.free,
+                  true,
+                )}
               >
-                <Icon color={colors.primarySoft} size={20} />
-                <Text color="textStrong" style={styles.featureText} numberOfLines={2}>
+                <Icon color={f.free === true ? colors.textMuted : colors.primarySoft} size={17} />
+                <Text
+                  color="textStrong"
+                  style={styles.featureText}
+                  numberOfLines={1}
+                  adjustsFontSizeToFit
+                  minimumFontScale={0.75}
+                  maxFontSizeMultiplier={MAX_FONT_SCALE}
+                >
                   {t.features[f.key]}
                 </Text>
               </View>
@@ -296,118 +573,112 @@ function Comparison() {
         </View>
       </View>
 
-      <View style={styles.freeCol} importantForAccessibility="no-hide-descendants">
-        <View style={styles.colHead}>
-          <Text color="textStrong" style={styles.colTitle}>
+      <View
+        style={[styles.freeCol, { width: layout.freeW }]}
+        importantForAccessibility="no-hide-descendants"
+      >
+        <View style={[styles.colHead, headH]}>
+          <Text color="text" style={styles.colTitle}>
             {t.free}
           </Text>
         </View>
         {FEATURES.map((f, i) => (
-          <View key={f.key} style={[styles.cell, i > 0 && styles.rowLine]}>
-            <Mark ok={f.free} />
+          <View key={f.key} style={[styles.cell, rowH, i > 0 && styles.rowLine]}>
+            {f.free === 'trial' ? (
+              <Text color="text" style={styles.trialCell}>
+                {trial}
+              </Text>
+            ) : (
+              <Mark ok={f.free} />
+            )}
           </View>
         ))}
       </View>
 
-      <LinearGradient
-        colors={['#5B2BC2', '#3A1C86', '#2A1566']}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 0, y: 1 }}
-        style={styles.plusCol}
+      {/* View con ancho fijo (entra en el cálculo de la fila) y el degradado como fondo absoluto. */}
+      <View
+        style={[styles.plusCol, { width: layout.plusW }]}
         importantForAccessibility="no-hide-descendants"
       >
-        <View style={styles.colHead}>
-          <Crown color={colors.gold} fill={colors.gold} size={22} />
+        <LinearGradient
+          colors={['#6D36E0', '#4320A6', '#2A1566']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 0, y: 1 }}
+          style={styles.plusColFill}
+        />
+        <View style={[styles.colHead, headH]}>
+          <Crown color={colors.gold} fill={colors.gold} size={18} />
           <Text color="textStrong" style={[styles.colTitle, styles.plusTitle]}>
             {t.plus}
           </Text>
         </View>
         {FEATURES.map((f, i) => (
-          <View key={f.key} style={[styles.cell, i > 0 && styles.rowLinePlus]}>
-            <Mark ok />
+          <View key={f.key} style={[styles.cell, rowH, i > 0 && styles.rowLinePlus]}>
+            {f.plus ? <Text style={styles.infinity}>{f.plus}</Text> : <Mark ok plus />}
           </View>
         ))}
-      </LinearGradient>
+      </View>
     </View>
   );
 }
 
-function Mark({ ok }: { ok: boolean }) {
+function Mark({ ok, plus = false }: { ok: boolean; plus?: boolean }) {
   return ok ? (
-    <Check color={colors.success} size={24} strokeWidth={3.5} />
+    <Check color={plus ? colors.gold : colors.success} size={22} strokeWidth={3.5} />
   ) : (
-    <X color={colors.textMuted} size={22} strokeWidth={2.5} />
-  );
-}
-
-/** Barras de aciertos y gráfico en subida (la ilustración del diseño). */
-function SmartArt() {
-  const styles = useStyles();
-  const bars: { color: string; fill: number; icon: ReactNode }[] = [
-    { color: colors.success, fill: 0.75, icon: <Check color="#fff" size={9} strokeWidth={4} /> },
-    { color: colors.gold, fill: 0.9, icon: <Check color="#1A1040" size={9} strokeWidth={4} /> },
-    { color: colors.primaryBright, fill: 0.4, icon: <X color="#fff" size={9} strokeWidth={4} /> },
-  ];
-  return (
-    <View style={styles.art} accessible={false}>
-      <View style={styles.artBars}>
-        {bars.map((b, i) => (
-          <View key={i} style={styles.artRow}>
-            <View style={[styles.artDot, { backgroundColor: b.color }]}>{b.icon}</View>
-            <View style={styles.artTrack}>
-              <View
-                style={[styles.artFill, { width: `${b.fill * 100}%`, backgroundColor: b.color }]}
-              />
-            </View>
-          </View>
-        ))}
-      </View>
-      <View style={styles.chart}>
-        {[0.35, 0.55, 0.75, 1].map((h, i) => (
-          <View key={i} style={[styles.chartBar, { height: `${h * 100}%` }]} />
-        ))}
-        <TrendingUp color={colors.primarySoft} size={30} style={styles.trend} />
-      </View>
-    </View>
+    <X color={colors.textMuted} size={18} strokeWidth={2.5} />
   );
 }
 
 function PlanCard(props: {
+  priceSize: number;
   selected: boolean;
   title: string;
   price: string;
+  detail: string;
   badge?: string;
   onPress: () => void;
 }) {
   const styles = useStyles();
   const t = useStrings(plusStrings);
-  const body = (
+  const body: ReactNode = (
     <>
-      <View style={[styles.radio, props.selected && styles.radioOn]}>
-        {props.selected ? <View style={styles.radioDot} /> : null}
-      </View>
-      <View style={styles.flex}>
-        <View style={styles.planTitleRow}>
-          <Text color="textStrong" style={styles.planTitle}>
-            {props.title}
-          </Text>
-          {props.badge ? (
-            <View style={styles.discount}>
-              <Text style={styles.discountText}>{props.badge}</Text>
-            </View>
-          ) : null}
-        </View>
-        <Text color="textStrong" numberOfLines={1} adjustsFontSizeToFit>
-          {props.price}
+      <View style={styles.planTitleRow}>
+        <Text color="textStrong" style={styles.planTitle}>
+          {props.title}
         </Text>
+        <View style={[styles.radio, props.selected && styles.radioOn]}>
+          {props.selected ? <Check color={INK} size={14} strokeWidth={4} /> : null}
+        </View>
       </View>
+      <Text
+        color="textStrong"
+        style={[styles.planPrice, { fontSize: props.priceSize, lineHeight: props.priceSize + 5 }]}
+        numberOfLines={1}
+        adjustsFontSizeToFit
+        minimumFontScale={0.7}
+        maxFontSizeMultiplier={MAX_FONT_SCALE}
+      >
+        {props.price}
+      </Text>
+      <Text
+        color={props.selected ? 'textStrong' : 'text'}
+        style={styles.planDetail}
+        numberOfLines={1}
+      >
+        {props.detail}
+      </Text>
     </>
   );
   return (
     <Pressable
       accessibilityRole="radio"
       accessibilityState={{ selected: props.selected }}
-      accessibilityLabel={t.planA11y(props.title, props.price, props.selected)}
+      accessibilityLabel={t.planA11y(
+        props.title,
+        `${props.price}, ${props.detail}`,
+        props.selected,
+      )}
       onPress={props.onPress}
       style={({ pressed }) => [
         styles.planShell,
@@ -427,65 +698,88 @@ function PlanCard(props: {
       ) : (
         <View style={styles.plan}>{body}</View>
       )}
+      {props.badge ? (
+        <View style={styles.badge}>
+          <Text style={styles.badgeText}>{props.badge}</Text>
+        </View>
+      ) : null}
     </Pressable>
   );
 }
 
 const useStyles = themedStyles(() =>
   StyleSheet.create({
+    page: {
+      gap: spacing.md,
+      marginHorizontal: -spacing.sm,
+      marginTop: 0,
+      width: '100%',
+      maxWidth: MAX_WIDTH,
+      alignSelf: 'center',
+    },
     flex: { flex: 1 },
-    pressed: { opacity: 0.8 },
+    row: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+    pressed: { opacity: 0.85 },
+    disabled: { opacity: 0.6 },
     underline: { textDecorationLine: 'underline' },
     topBar: { flexDirection: 'row', alignItems: 'center' },
     close: {
-      width: 44,
-      height: 44,
-      borderRadius: 22,
+      width: 36,
+      height: 36,
+      borderRadius: 18,
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: 'rgba(139,92,246,0.22)',
     },
-    closeSpacer: { width: 44 },
-    brand: {
-      flex: 1,
+    closeSpacer: { width: 36 },
+    brandPill: {
+      flex: 0,
+      marginHorizontal: 'auto',
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.xxs,
+      paddingHorizontal: spacing.md,
+      paddingVertical: 4,
+      borderRadius: radii.pill,
+      backgroundColor: colors.gold,
+    },
+    brandPillText: { color: INK, fontWeight: '900', fontSize: 14, letterSpacing: 0.4 },
+    hero: { alignItems: 'center', marginTop: -spacing.xs },
+    foxGlow: {
+      width: 108,
+      height: 108,
+      borderRadius: 54,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: 'rgba(168,85,247,0.22)',
+      shadowColor: '#C084FC',
+      shadowOpacity: 0.8,
+      shadowRadius: 18,
+      shadowOffset: { width: 0, height: 0 },
+    },
+    // Ancho y alto explícitos: con sólo aspectRatio, iOS dibujaba la imagen a su tamaño original.
+    // El título se monta sobre la base del zorro, como en el diseño de referencia.
+    heroText: {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
       gap: spacing.xs,
+      marginTop: -26,
+      zIndex: 1,
     },
-    brandText: { fontSize: 24, fontWeight: '800' },
-    hero: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginTop: -spacing.sm,
-      marginBottom: -spacing.lg,
-    },
-    fox: { width: 210, aspectRatio: FOX_ASPECT },
-    burst: { width: 36, height: 60, alignItems: 'center', justifyContent: 'center' },
-    burstLeft: { marginRight: -spacing.sm },
-    burstRight: { marginLeft: -spacing.sm },
-    ray: {
-      position: 'absolute',
-      width: 5,
-      height: 18,
-      borderRadius: 3,
-      backgroundColor: colors.gold,
-    },
-    rayLong: { height: 26 },
-    titleBox: { alignItems: 'center' },
+    titleBox: { alignItems: 'center', flexShrink: 1 },
     title: {
-      fontSize: 31,
-      lineHeight: 37,
+      fontSize: 25,
+      lineHeight: 29,
       fontWeight: '900',
       fontStyle: 'italic',
+      letterSpacing: -0.4,
       textAlign: 'center',
-      letterSpacing: -0.5,
     },
-    table: { flexDirection: 'row', alignItems: 'flex-start', marginTop: spacing.sm },
+    table: { flexDirection: 'row', alignItems: 'flex-start' },
     featureCard: {
-      borderTopLeftRadius: radii.xl,
-      borderBottomLeftRadius: radii.xl,
+      borderTopLeftRadius: radii.lg,
+      borderBottomLeftRadius: radii.lg,
       backgroundColor: 'rgba(139,92,246,0.10)',
       borderWidth: 1,
       borderRightWidth: 0,
@@ -493,153 +787,124 @@ const useStyles = themedStyles(() =>
       overflow: 'hidden',
     },
     featureRow: {
-      height: ROW_H,
       flexDirection: 'row',
       alignItems: 'center',
       gap: spacing.sm,
-      paddingLeft: spacing.md,
-      paddingRight: spacing.xs,
+      paddingLeft: spacing.sm,
+      paddingRight: spacing.xxs,
     },
-    featureText: { flex: 1, fontSize: 14, lineHeight: 17 },
+    featureText: { flex: 1, fontSize: 14, lineHeight: 17, fontWeight: '600' },
     rowLine: { borderTopWidth: 1, borderTopColor: colors.brandBorder },
     rowLinePlus: { borderTopWidth: 1, borderTopColor: 'rgba(255,255,255,0.10)' },
     freeCol: {
-      width: 68,
-      borderTopLeftRadius: radii.lg,
-      borderTopRightRadius: radii.lg,
+      width: 62,
+      flexShrink: 0,
+      borderTopLeftRadius: radii.md,
+      borderTopRightRadius: radii.md,
       backgroundColor: colors.surface,
       borderWidth: 1,
       borderColor: colors.brandBorder,
     },
     colHead: {
-      height: HEAD_H - 1,
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
-      gap: spacing.xxs,
+      gap: 3,
     },
-    colTitle: { fontSize: 17, fontWeight: '800', fontStyle: 'italic' },
-    plusTitle: { fontSize: 20 },
-    cell: { height: ROW_H, alignItems: 'center', justifyContent: 'center' },
+    colTitle: { fontSize: 14, fontWeight: '800', fontStyle: 'italic' },
+    plusTitle: { fontSize: 17 },
+    cell: { alignItems: 'center', justifyContent: 'center' },
+    trialCell: { fontWeight: '800', fontSize: 12 },
+    infinity: { color: colors.gold, fontSize: 24, lineHeight: 26, fontWeight: '900' },
+    plusColFill: {
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0,
+      borderRadius: radii.lg - 2,
+    },
     plusCol: {
-      width: 88,
+      width: 78,
+      flexShrink: 0,
+      overflow: 'visible',
+      backgroundColor: '#4320A6',
       marginTop: -6,
       paddingTop: 6,
-      paddingBottom: 4,
-      marginBottom: -4,
-      borderRadius: radii.xl,
+      paddingBottom: 3,
+      marginBottom: -3,
+      borderRadius: radii.lg,
       borderWidth: 2,
       borderColor: colors.gold,
       shadowColor: '#C084FC',
-      shadowOpacity: 0.8,
+      shadowOpacity: 0.9,
       shadowRadius: 16,
       shadowOffset: { width: 0, height: 0 },
       elevation: 12,
     },
-    smartCard: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      gap: spacing.md,
-      padding: spacing.md,
-    },
-    smartText: { flex: 1, gap: spacing.xxs },
-    smartTitle: { fontSize: 19, lineHeight: 22, fontWeight: '900', fontStyle: 'italic' },
-    art: { width: 104, flexDirection: 'row', alignItems: 'flex-end', gap: spacing.xs },
-    artBars: { flex: 1, gap: 6 },
-    artRow: { flexDirection: 'row', alignItems: 'center', gap: 3 },
-    artDot: {
-      width: 14,
-      height: 14,
-      borderRadius: 7,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    artTrack: {
-      flex: 1,
-      height: 7,
-      borderRadius: 4,
-      backgroundColor: 'rgba(255,255,255,0.10)',
-      overflow: 'hidden',
-    },
-    artFill: { height: '100%', borderRadius: 4 },
-    chart: {
-      width: 40,
-      height: 56,
-      flexDirection: 'row',
-      alignItems: 'flex-end',
-      gap: 2,
-    },
-    chartBar: { flex: 1, borderRadius: 2, backgroundColor: colors.primaryBright },
-    trend: { position: 'absolute', top: -12, right: -6 },
-    plans: { flexDirection: 'row', gap: spacing.sm, marginTop: spacing.xs },
-    planShell: { flex: 1, borderRadius: radii.xl },
+    plans: { flexDirection: 'row', gap: spacing.sm, marginTop: spacing.sm },
+    planShell: { flex: 1, borderRadius: radii.lg },
     planGlow: {
       shadowColor: '#A855F7',
-      shadowOpacity: 0.7,
+      shadowOpacity: 0.8,
       shadowRadius: 14,
       shadowOffset: { width: 0, height: 0 },
       elevation: 10,
     },
     plan: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      gap: spacing.sm,
-      minHeight: 76,
+      gap: 2,
       paddingHorizontal: spacing.md,
-      paddingVertical: spacing.sm,
-      borderRadius: radii.xl,
-      backgroundColor: colors.surface,
-      borderWidth: 1,
-      borderColor: colors.brandBorder,
-    },
-    planOn: { borderWidth: 2, borderColor: '#E9D5FF' },
-    planTitleRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs, flexWrap: 'wrap' },
-    planTitle: { fontSize: 18, fontWeight: '800' },
-    discount: {
-      paddingHorizontal: spacing.xs,
-      paddingVertical: 1,
-      borderRadius: radii.pill,
-      backgroundColor: colors.gold,
-    },
-    discountText: { color: '#1A1040', fontWeight: '800', fontSize: 13 },
-    radio: {
-      width: 24,
-      height: 24,
-      borderRadius: 12,
-      borderWidth: 2,
-      borderColor: colors.textMuted,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    radioOn: { borderColor: '#FFFFFF' },
-    radioDot: { width: 12, height: 12, borderRadius: 6, backgroundColor: '#FFFFFF' },
-    yearLine: { fontWeight: '700' },
-    cta: {
-      shadowColor: '#A855F7',
-      shadowOpacity: 0.7,
-      shadowRadius: 18,
-      shadowOffset: { width: 0, height: 0 },
-      elevation: 10,
-    },
-    notice: {
-      flexDirection: 'row',
-      alignItems: 'flex-start',
-      gap: spacing.sm,
-      padding: spacing.md,
+      paddingTop: spacing.md,
+      paddingBottom: spacing.sm,
       borderRadius: radii.lg,
       backgroundColor: colors.surface,
       borderWidth: 1,
       borderColor: colors.brandBorder,
     },
-    removeAds: {
-      flexDirection: 'row',
+    planOn: { borderWidth: 2, borderColor: '#E9D5FF' },
+    planTitleRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+    planTitle: { fontSize: 15, fontWeight: '800' },
+    planPrice: { fontSize: 21, lineHeight: 26, fontWeight: '900' },
+    planDetail: { fontSize: 12, lineHeight: 15 },
+    radio: {
+      width: 20,
+      height: 20,
+      borderRadius: 10,
+      borderWidth: 2,
+      borderColor: colors.textMuted,
       alignItems: 'center',
       justifyContent: 'center',
-      gap: spacing.sm,
-      minHeight: 44,
     },
-    removeAdsText: { flexShrink: 1, textDecorationLine: 'underline' },
-    restore: { alignSelf: 'center', minHeight: 32, justifyContent: 'center' },
+    radioOn: { borderColor: colors.gold, backgroundColor: colors.gold },
+    badge: {
+      position: 'absolute',
+      top: -11,
+      left: spacing.sm,
+      paddingHorizontal: spacing.sm,
+      paddingVertical: 2,
+      borderRadius: radii.pill,
+      backgroundColor: colors.gold,
+    },
+    badgeText: { color: INK, fontWeight: '900', fontSize: 11, letterSpacing: 0.3 },
+    notice: {
+      flexDirection: 'row',
+      alignItems: 'flex-start',
+      gap: spacing.sm,
+      padding: spacing.sm,
+      borderRadius: radii.lg,
+      backgroundColor: colors.surface,
+      borderWidth: 1,
+      borderColor: colors.brandBorder,
+    },
+    noticeGood: { borderColor: colors.success },
+    links: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      flexWrap: 'wrap',
+      columnGap: spacing.lg,
+      rowGap: spacing.xxs,
+    },
+    fine: { fontSize: 11, lineHeight: 14 },
     subscription: { gap: spacing.sm },
   }),
 );

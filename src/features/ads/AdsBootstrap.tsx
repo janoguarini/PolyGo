@@ -2,24 +2,27 @@ import { useEffect } from 'react';
 import { AppState } from 'react-native';
 
 import { useAuth } from '@/features/auth/AuthProvider';
-import { usePlus } from '@/features/plus/api';
+import { useEntitlements } from '@/features/plus/entitlements';
 import { useMyProfile } from '@/features/profile/hooks';
 
-import { currentAdFreeStatus, resolveAdsEligibility } from './eligibility';
+import { resolveAdsEligibility } from './eligibility';
 import { adsController, adsEnabled } from './index';
 
 /**
  * Conecta la elegibilidad del usuario con el ciclo de anuncios. No dibuja nada.
  * Se monta sólo si `adsEnabled` (Fase 1: builds de desarrollo en iOS/Android).
  *
- * - Plus viene de get_energy() (el servidor; el cliente no puede otorgárselo).
- * - Ad-Free todavía no existe: ver currentAdFreeStatus().
+ * - Plus y Sin publicidad vienen del servidor (useEntitlements: get_energy / get_entitlements); el
+ *   cliente no puede otorgárselos.
  * - Mientras algo no se sabe, no hay anuncios ni formulario de consentimiento.
  */
 export function AdsBootstrap() {
   const { session } = useAuth();
   const profile = useMyProfile();
-  const plus = usePlus();
+  const entitlements = useEntitlements();
+  const plus = entitlements.isPlus;
+  // noAds ya combina Plus y Sin publicidad (shared/plus.ts).
+  const adFree = entitlements.noAds;
   const signedIn = Boolean(session);
   const onboarded = profile.data
     ? Boolean(profile.data.profile.onboarding_completed_at)
@@ -30,7 +33,7 @@ export function AdsBootstrap() {
     signedIn,
     onboarded: signedIn ? onboarded : undefined,
     plus: signedIn ? plus : undefined,
-    adFree: currentAdFreeStatus(),
+    adFree: signedIn ? adFree : undefined,
   });
 
   useEffect(() => {

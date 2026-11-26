@@ -63,6 +63,7 @@ import { useXp, type XpState } from '@/features/xp/api';
 import { XpRewardCard } from '@/features/xp/XpRewardCard';
 import { useRankLabels } from '@/features/ranked/strings';
 import { getStrings, useStrings } from '@/i18n';
+import { track } from '@/lib/analytics';
 import { battleScreenStrings } from '@/i18n/screens/battle';
 import { avatarPhotoUrl } from '@/lib/avatarPhoto';
 
@@ -215,6 +216,28 @@ function BattleView({
   ) {
     setXpBefore({ battleId: state.battleId, xp: xp.data });
   }
+
+  // Analítica: partida empezada y terminada (una vez por partida).
+  const playingId = state.phase === 'playing' ? state.battleId : null;
+  useEffect(() => {
+    if (!playingId) return;
+    const s = useBattleStore.getState();
+    track('battle_started', { mode: s.mode, friendly: Boolean(s.friendly) });
+  }, [playingId]);
+  const finish = state.result;
+  useEffect(() => {
+    if (!finish) return;
+    const me = finish.players.find((p) => p.slot === finish.yourSlot);
+    track('battle_finished', {
+      mode: finish.mode,
+      status: finish.status,
+      friendly: Boolean(finish.friendly),
+      outcome: me?.outcome ?? null,
+      vs_bot: finish.players.some((p) => p.slot !== finish.yourSlot && p.isBot),
+      correct: me?.correct,
+      answered: me?.answered,
+    });
+  }, [finish]);
 
   useEffect(() => {
     onStart(undefined, false);

@@ -22,7 +22,7 @@ export interface EligibilityInput {
   onboarded: boolean | undefined;
   /** undefined mientras get_energy() no respondió (usePlus()). */
   plus: boolean | undefined;
-  /** undefined si no se sabe. Ver useAdFree(): hoy no existe ninguna fuente. */
+  /** Sin publicidad (o Plus) según el servidor: useEntitlements().noAds. undefined si no se sabe. */
   adFree: boolean | undefined;
 }
 
@@ -35,17 +35,4 @@ export function resolveAdsEligibility(input: EligibilityInput): AdsEligibility {
     return 'unknown';
   }
   return 'eligible';
-}
-
-/**
- * Estado Ad-Free del usuario.
- *
- * LIMITACIÓN CONOCIDA (Fase 1): Ad-Free (compra única USD 0,99) todavía no existe. No hay producto
- * en las tiendas, ni compras integradas, ni entitlement en la base (`user_entitlements` sólo acepta
- * 'plus'). Por eso ninguna cuenta puede ser Ad-Free hoy y esta función devuelve `false`, con su
- * propia firma para que la fase de compras la conecte al servidor sin tocar los servicios de
- * anuncios. No inventa ningún entitlement.
- */
-export function currentAdFreeStatus(): boolean | undefined {
-  return false;
 }

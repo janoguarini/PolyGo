@@ -1,6 +1,6 @@
 import { useQueryClient } from '@tanstack/react-query';
 import { router, useLocalSearchParams } from 'expo-router';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Alert } from 'react-native';
 
 import { ErrorState, LoadingState, Screen } from '@/design-system';
@@ -15,6 +15,7 @@ import {
   useSubmitSession,
 } from '@/features/learning/hooks';
 import { sessionStats, type PlayerState } from '@/features/learning/player';
+import { track } from '@/lib/analytics';
 import { matchPresentations, toGradedAttempts } from '@/features/learning/presentation';
 import { SessionLanguageProvider } from '@/features/learning/SessionLanguageProvider';
 import { uuid } from '@/features/learning/random';
@@ -77,6 +78,11 @@ function LessonScreen() {
     [presentation.data, content.data],
   );
 
+  // Analítica: lección abierta y terminada.
+  useEffect(() => {
+    track('lesson_started', { lesson_id: id });
+  }, [id]);
+
   const save = useCallback(
     (attempts: AttemptInput[], graded?: GradedAttemptInput[]) =>
       submit.mutate({ sessionId, kind: 'lesson', lessonId: id, startedAt, attempts, graded }),
@@ -93,10 +99,16 @@ function LessonScreen() {
         responseMs: a.responseMs,
       }));
       const graded = presented ? toGradedAttempts(state, presented.byExercise) : undefined;
+      const stats = sessionStats(state);
+      track('lesson_completed', {
+        lesson_id: id,
+        accuracy: stats.accuracy,
+        duration_s: Math.round((Date.now() - startedAt.getTime()) / 1000),
+      });
       setFinished({ state, attempts, graded, endedAt: new Date() });
       save(attempts, graded);
     },
-    [save, presented],
+    [save, presented, id, startedAt],
   );
 
   const confirmExit = () =>

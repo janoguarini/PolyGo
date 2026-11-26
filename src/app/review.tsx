@@ -1,5 +1,6 @@
 import { router, useLocalSearchParams } from 'expo-router';
 import { CheckCircle2, Hourglass, Sparkles } from 'lucide-react-native';
+import { useQueryClient } from '@tanstack/react-query';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Alert, StyleSheet } from 'react-native';
 
@@ -19,7 +20,6 @@ import {
 } from '@/design-system';
 import {
   LearningSessionHttpError,
-  localDateString,
   type PersistentUnit,
   type ReviewFocus,
   type WordRow,
@@ -56,7 +56,11 @@ import {
   type OpenReview,
 } from '@/features/learning/serverReview';
 import { sessionStats, type PlayerState } from '@/features/learning/player';
+import { track } from '@/lib/analytics';
 import { reviewAnswerQueue, SESSION_GONE } from '@/features/learning/reviewAnswerQueue';
+import { newOpenReview, RESTART_CODES, takeWarmReview } from '@/features/learning/reviewWarmup';
+import { parseCoachUnits } from '@shared/coach';
+import { CoachResultCard } from '@/features/coach/CoachResultCard';
 import { shuffle, uuid } from '@/features/learning/random';
 import { buildReviewExercises } from '@/features/learning/review';
 import { SessionLanguageProvider } from '@/features/learning/SessionLanguageProvider';
@@ -87,7 +91,7 @@ const PRACTICE_SIZE = 10;
  * para no adelantar los repasos.
  * Todo lo que no es smart ni topic es gratis. Ningún repaso usa energía.
  */
-type ReviewMode = 'review' | 'practice' | 'mistakes' | 'smart' | 'topic';
+type ReviewMode = 'review' | 'practice' | 'mistakes' | 'smart' | 'topic' | 'coach';
 
 interface ReviewSession {
   exercises: Exercise[];
@@ -103,12 +107,14 @@ export default function ReviewScreenWithLanguage() {
 }
 
 function ReviewScreen() {
-  const params = useLocalSearchParams<{ mode?: string; unit?: string }>();
+  const params = useLocalSearchParams<{ mode?: string; unit?: string; units?: string }>();
+  const coachUnits = useMemo(() => parseCoachUnits(params.units?.split(',') ?? []), [params.units]);
   const mode: ReviewMode =
     params.mode === 'practice' ||
     params.mode === 'mistakes' ||
     params.mode === 'smart' ||
-    (params.mode === 'topic' && params.unit)
+    (params.mode === 'topic' && params.unit) ||
+    (params.mode === 'coach' && coachUnits)
       ? (params.mode as ReviewMode)
       : 'review';
   const focus = useMemo<ReviewFocus | undefined>(
@@ -117,26 +123,22 @@ function ReviewScreen() {
         ? { kind: 'smart' }
         : mode === 'topic' && params.unit
           ? { kind: 'topic', unit_id: params.unit }
-          : undefined,
-    [mode, params.unit],
+          : mode === 'coach' && coachUnits
+            ? { kind: 'coach', unit_ids: coachUnits }
+            : undefined,
+    [mode, params.unit, coachUnits],
   );
   if (mode === 'review') return <ServerReviewScreen mode="review" />;
+  // Coach: sin comprobación previa en la app; el servidor decide (Plus o una sesión de prueba) y
+  // descuenta la prueba sólo si la sesión se crea.
+  if (mode === 'coach' && focus) return <ServerReviewScreen mode="coach" focus={focus} />;
   if ((mode === 'smart' || mode === 'topic') && focus) {
     return <PlusReviewScreen mode={mode} focus={focus} />;
   }
   return <LegacyReviewScreen mode={mode === 'mistakes' ? 'mistakes' : 'practice'} />;
 }
 
-const newOpenReview = (): OpenReview => ({
-  sessionId: uuid(),
-  startedAt: new Date().toISOString(),
-  date: localDateString(),
-});
-
-/** Códigos con los que la sesión guardada ya no sirve: se empieza otra. */
-const RESTART_CODES = new Set(['session_closed', 'session_conflict']);
-
-function PlusUpsell({ mode }: { mode: 'smart' | 'topic' }) {
+function PlusUpsell({ mode }: { mode: 'smart' | 'topic' | 'coach' }) {
   useTheme();
   const t = useStrings(reviewStrings);
   return (
@@ -144,7 +146,9 @@ function PlusUpsell({ mode }: { mode: 'smart' | 'topic' }) {
       <EmptyState
         icon={<Sparkles color={colors.primarySoft} size={44} />}
         title={t.plusTitle(t.titles[mode])}
-        message={mode === 'topic' ? t.topicUpsell : t.smartUpsell}
+        message={
+          mode === 'topic' ? t.topicUpsell : mode === 'coach' ? t.coachUpsell : t.smartUpsell
+        }
       />
       <Button label={t.discoverPlus} onPress={() => router.replace('/plus')} />
       <Button label={t.back} variant="secondary" onPress={() => router.back()} />
@@ -178,11 +182,16 @@ function ServerReviewScreen({ mode, focus }: { mode: ReviewMode; focus?: ReviewF
   const t = useStrings(reviewStrings);
   const language = useStudyLanguage();
   const kind = reviewKind(focus);
-  const [open, setOpen] = useState<OpenReview | null>(null);
+  const qc = useQueryClient();
+  // Precargado (reviewWarmup.ts): la sesión y su contenido ya están, se abre sin «Preparando repaso…».
+  const [open, setOpen] = useState<OpenReview | null>(
+    () => takeWarmReview(qc, language.code, focus) ?? null,
+  );
   useEffect(() => {
     let alive = true;
     void loadOpenReview(language.code, kind).then((found) => {
-      if (alive) setOpen(found ?? newOpenReview());
+      // La precargada (si hubo) ya está en pantalla y es la misma que quedó guardada: no se cambia.
+      if (alive) setOpen((current) => current ?? found ?? newOpenReview());
     });
     return () => {
       alive = false;
@@ -251,6 +260,15 @@ function ServerReviewScreen({ mode, focus }: { mode: ReviewMode; focus?: ReviewF
     () => (data?.status === 'ok' && data.items.length > 0 ? reviewSession(data.items) : null),
     [data],
   );
+  // Analítica: repaso empezado (una vez por sesión) y terminado.
+  const startedId = session && open ? open.sessionId : null;
+  const items = session?.exercises.length ?? 0;
+  useEffect(() => {
+    if (startedId) track('review_started', { mode, items });
+    // Una vez por sesión: items no cambia dentro de la misma.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [startedId, mode]);
+
   // Recién cuando el servidor registró el plan se guarda para poder retomarlo.
   useEffect(() => {
     if (open && session) void saveOpenReview(language.code, open, kind);
@@ -341,10 +359,11 @@ function ServerReviewScreen({ mode, focus }: { mode: ReviewMode; focus?: ReviewF
 
   const handleFinished = useCallback(
     (state: PlayerState) => {
+      track('review_completed', { mode, accuracy: sessionStats(state).accuracy });
       setFinished({ state, endedAt: new Date() });
       save(state);
     },
-    [save],
+    [save, mode],
   );
 
   // Cierre de la fase 5: la app (contrato 2) nunca recibe srs_v2_disabled; si llegara, es un servidor
@@ -356,6 +375,13 @@ function ServerReviewScreen({ mode, focus }: { mode: ReviewMode; focus?: ReviewF
     (mode === 'smart' || mode === 'topic')
   ) {
     return <PlusUpsell mode={mode} />;
+  }
+  if (
+    review.error instanceof LearningSessionHttpError &&
+    review.error.code === 'coach_trial_exhausted' &&
+    mode === 'coach'
+  ) {
+    return <PlusUpsell mode="coach" />;
   }
   if (expired && finalize.isError) {
     return (
@@ -410,9 +436,11 @@ function ServerReviewScreen({ mode, focus }: { mode: ReviewMode; focus?: ReviewF
               ? t.exhaustedMessage
               : mode === 'smart'
                 ? t.smartEmpty
-                : mode === 'topic'
-                  ? t.topicEmpty
-                  : t.reviewEmpty
+                : mode === 'coach'
+                  ? t.coachEmpty
+                  : mode === 'topic'
+                    ? t.topicEmpty
+                    : t.reviewEmpty
           }
         />
         <PersistentHelp units={data.persistent ?? []} words={{}} />
@@ -461,7 +489,15 @@ function ServerReviewScreen({ mode, focus }: { mode: ReviewMode; focus?: ReviewF
       saved={submit.isSuccess}
       achievements={submit.data?.achievements_unlocked ?? []}
       onRetrySave={() => save(finished.state)}
-      extra={<PersistentHelp units={data.persistent ?? []} words={session.words} />}
+      extra={
+        <>
+          {/* Coach: cierre con el resultado real y qué sigue (otra sesión gratis, el plan o Plus). */}
+          {mode === 'coach' && submit.isSuccess ? (
+            <CoachResultCard accuracy={sessionStats(finished.state).accuracy} />
+          ) : null}
+          <PersistentHelp units={data.persistent ?? []} words={session.words} />
+        </>
+      }
       reward={<XpRewardCard before={xpBefore} saved={submit.isSuccess} />}
       primaryLabel={t.done}
       onPrimary={celebration.guard(() => router.back())}
@@ -530,9 +566,17 @@ function LegacyReviewScreen({ mode }: { mode: 'practice' | 'mistakes' }) {
     });
   }
 
-  const handleFinished = useCallback((state: PlayerState) => {
-    setFinished({ state, endedAt: new Date() });
-  }, []);
+  const legacyStarted = review !== null && review.exercises.length > 0;
+  useEffect(() => {
+    if (legacyStarted) track('review_started', { mode });
+  }, [legacyStarted, mode]);
+  const handleFinished = useCallback(
+    (state: PlayerState) => {
+      track('review_completed', { mode, accuracy: sessionStats(state).accuracy });
+      setFinished({ state, endedAt: new Date() });
+    },
+    [mode],
+  );
 
   if (myWords.isPending || pool.isPending || (!review && !myWords.isError && !pool.isError)) {
     return <LoadingState label={t.preparingPractice} />;

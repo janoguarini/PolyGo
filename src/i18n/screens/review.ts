@@ -1,7 +1,7 @@
 import { defineStrings } from '..';
 import { languageName } from '../languages';
 
-type ReviewMode = 'review' | 'practice' | 'mistakes' | 'smart' | 'topic';
+type ReviewMode = 'review' | 'practice' | 'mistakes' | 'smart' | 'topic' | 'coach';
 
 /** Repasos y práctica (src/app/review.tsx). */
 export const reviewStrings = defineStrings({
@@ -12,12 +12,16 @@ export const reviewStrings = defineStrings({
       mistakes: 'Tus puntos débiles',
       smart: 'Repaso inteligente',
       topic: 'Repaso por tema',
+      coach: 'Sesión del Coach',
     } as Record<ReviewMode, string>,
     plusTitle: (title: string) => `${title} es de PolyGo Plus`,
     topicUpsell:
       'Repasá sólo las palabras de la unidad que elijas. El repaso espaciado, la práctica libre y tus puntos débiles siguen siendo gratis.',
     smartUpsell:
       'Arma cada sesión con tus errores frecuentes, las palabras que te cuestan y las que estás por olvidar. El repaso espaciado, la práctica libre y tus puntos débiles siguen siendo gratis.',
+    coachUpsell:
+      'Ya usaste tus sesiones de prueba del Coach. Con Plus entrenás tus puntos débiles sin límite. Tu diagnóstico, el repaso espaciado y tus puntos débiles siguen siendo gratis.',
+    coachEmpty: 'Esos temas ya no tienen palabras para reforzar. ¡Bien!',
     discoverPlus: 'Conocé PolyGo Plus',
     back: 'Volver',
     verifyError: 'No pudimos verificar tu suscripción.',
@@ -64,12 +68,16 @@ export const reviewStrings = defineStrings({
       mistakes: 'Your weak spots',
       smart: 'Smart review',
       topic: 'Review by topic',
+      coach: 'Coach session',
     } as Record<ReviewMode, string>,
     plusTitle: (title: string) => `${title} is part of PolyGo Plus`,
     topicUpsell:
       'Review only the words from the unit you choose. Spaced review, free practice and your weak spots stay free.',
     smartUpsell:
       'Build each session from your frequent mistakes, the words you find hard and the ones you’re about to forget. Spaced review, free practice and your weak spots stay free.',
+    coachUpsell:
+      'You’ve used your free Coach sessions. With Plus you can train your weak spots without limits. Your diagnosis, spaced review and weak spots stay free.',
+    coachEmpty: 'Those topics have nothing left to reinforce. Nice!',
     discoverPlus: 'Discover PolyGo Plus',
     back: 'Back',
     verifyError: 'We couldn’t verify your subscription.',
@@ -111,45 +119,71 @@ export const reviewStrings = defineStrings({
   },
 });
 
-/** Repaso por tema (src/app/review-topics.tsx). */
+/** Repaso por tema (src/app/review-topics.tsx). Lo ven todos; repasar es de Plus. */
 export const reviewTopicsStrings = defineStrings({
   es: {
     title: 'Repaso por tema',
-    loading: 'Buscando tus temas…',
-    verifyError: 'No pudimos verificar tu suscripción.',
-    plusTitle: 'Repaso por tema es de PolyGo Plus',
-    plusMessage:
-      'Elegí una unidad que ya estudiaste y repasá sólo sus palabras, empezando por las que te tocan y las que más te costaron. El repaso espaciado y la práctica libre siguen siendo gratis.',
-    discoverPlus: 'Conocé PolyGo Plus',
+    plus: 'Plus',
     loadError: 'No pudimos cargar tus temas.',
     emptyTitle: 'Todavía no hay temas',
     emptyMessage:
       'Completá lecciones: cada unidad en la que estudies palabras aparece acá para repasarla.',
     goToPath: 'Ir a mi camino',
-    intro:
-      'Hasta 15 palabras del tema: primero las que te tocan repasar y las que más te costaron. Cuenta para tu repaso espaciado y no usa energía.',
+    heroTitle: 'Elegí un tema y entrenalo',
+    heroStats: (topics: number, started: number, weak: number) =>
+      [
+        `${topics} ${topics === 1 ? 'tema' : 'temas'}`,
+        `${started} ${started === 1 ? 'empezado' : 'empezados'}`,
+        weak > 0 ? `${weak} para reforzar` : null,
+      ]
+        .filter(Boolean)
+        .join(' · '),
+    wordsOf: (n: number, total: number) => `${n} de ${total} palabras`,
+    lessons: (n: number) => `${n} ${n === 1 ? 'lección' : 'lecciones'}`,
+    notStarted: 'Por empezar',
+    recommended: 'Recomendado para vos',
     level: (level: string) => `NIVEL ${level}`,
     words: (n: number) => `${n} ${n === 1 ? 'palabra' : 'palabras'}`,
-    due: (n: number) => `${n} para repasar`,
-    withMistakes: (n: number) => `${n} con errores`,
+    struggling: (n: number) => (n === 1 ? '1 te cuesta' : `${n} te cuestan`),
+    dueToday: (n: number) => `${n} para hoy`,
+    allGood: 'Al día',
+    cardA11y: (title: string, detail: string, locked: boolean) =>
+      `${title}. ${detail}.${locked ? ' Con PolyGo Plus.' : ''}`,
+    unlock: 'Desbloquear repaso por tema',
+    unlockSub: 'Con PolyGo Plus · cancelá cuando quieras',
+    legend: { mastered: 'Dominadas', due: 'Para hoy', struggling: 'Te cuestan' },
+    note: 'Hasta 15 palabras del tema: primero las que te tocan y las que más te cuestan. No usa energía.',
   },
   en: {
     title: 'Review by topic',
-    loading: 'Finding your topics…',
-    verifyError: 'We couldn’t verify your subscription.',
-    plusTitle: 'Review by topic is part of PolyGo Plus',
-    plusMessage:
-      'Choose a unit you’ve already studied and review only its words, starting with the ones that are due and the ones you found hardest. Spaced review and free practice stay free.',
-    discoverPlus: 'Discover PolyGo Plus',
+    plus: 'Plus',
     loadError: 'We couldn’t load your topics.',
     emptyTitle: 'No topics yet',
     emptyMessage: 'Complete lessons: every unit where you study words shows up here for review.',
     goToPath: 'Go to my path',
-    intro:
-      'Up to 15 words from the topic: first the ones due for review and the ones you found hardest. It counts toward your spaced review and doesn’t use energy.',
+    heroTitle: 'Pick a topic and train it',
+    heroStats: (topics: number, started: number, weak: number) =>
+      [
+        `${topics} ${topics === 1 ? 'topic' : 'topics'}`,
+        `${started} started`,
+        weak > 0 ? `${weak} to reinforce` : null,
+      ]
+        .filter(Boolean)
+        .join(' · '),
+    wordsOf: (n: number, total: number) => `${n} of ${total} words`,
+    lessons: (n: number) => `${n} ${n === 1 ? 'lesson' : 'lessons'}`,
+    notStarted: 'Not started',
+    recommended: 'Recommended for you',
     level: (level: string) => `LEVEL ${level}`,
     words: (n: number) => `${n} ${n === 1 ? 'word' : 'words'}`,
-    due: (n: number) => `${n} to review`,
-    withMistakes: (n: number) => `${n} with mistakes`,
+    struggling: (n: number) => (n === 1 ? '1 is hard' : `${n} are hard`),
+    dueToday: (n: number) => `${n} due today`,
+    allGood: 'Up to date',
+    cardA11y: (title: string, detail: string, locked: boolean) =>
+      `${title}. ${detail}.${locked ? ' With PolyGo Plus.' : ''}`,
+    unlock: 'Unlock review by topic',
+    unlockSub: 'With PolyGo Plus · cancel anytime',
+    legend: { mastered: 'Mastered', due: 'Due today', struggling: 'Hard' },
+    note: 'Up to 15 words from the topic: due ones first, then the hardest. Doesn’t use energy.',
   },
 });

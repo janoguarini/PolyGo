@@ -1,4 +1,44 @@
 // GENERADO por scripts/build-functions.ts desde shared/ (npm run functions:build). No editar.
+// shared/plus.ts
+var COACH = {
+  sessionSize: 8,
+  /** Áreas débiles que trabaja una sesión (y que muestra el plan de mejora). */
+  maxAreas: 3
+};
+
+// shared/coach.ts
+var struggles = (e) => e.incorrectCount >= 2 || e.seenCount > 0 && e.incorrectCount / e.seenCount >= 1 / 3 || e.stage === 0 && e.seenCount >= 3;
+function pickCoachReview(entries, unitIds, size = COACH.sessionSize) {
+  const queues = unitIds.map(
+    (unitId) => entries.filter(
+      (e) => e.seenCount > 0 && e.word.unit_id === unitId && (e.incorrectCount > 0 || struggles(e))
+    ).sort(
+      (a, b) => Number(struggles(b)) - Number(struggles(a)) || b.incorrectCount - a.incorrectCount || a.stage - b.stage || a.word.id.localeCompare(b.word.id)
+    )
+  );
+  const out = [];
+  const seen = /* @__PURE__ */ new Set();
+  for (let round = 0; out.length < size; round++) {
+    let added = false;
+    for (const queue of queues) {
+      const entry = queue[round];
+      if (!entry || seen.has(entry.word.id)) continue;
+      seen.add(entry.word.id);
+      out.push(entry);
+      added = true;
+      if (out.length >= size) break;
+    }
+    if (!added && queues.every((q) => round >= q.length)) break;
+  }
+  return out;
+}
+function parseCoachUnits(raw) {
+  if (!Array.isArray(raw) || raw.length === 0 || raw.length > COACH.maxAreas) return null;
+  if (!raw.every((u) => typeof u === "string" && /^[\w-]{1,100}$/.test(u))) return null;
+  const units = raw;
+  return new Set(units).size === units.length ? [...units] : null;
+}
+
 // shared/focusReview.ts
 var SMART_REVIEW_SIZE = 15;
 var TOPIC_REVIEW_SIZE = 15;
@@ -75,9 +115,12 @@ function pickFocusItem(items, seed, blocked = /* @__PURE__ */ new Set()) {
 function buildFocusPlan(input, focus) {
   const now = Date.parse(input.now);
   const presentable = input.words.filter((w) => w.items.length > 0);
-  const picked = focus.kind === "smart" ? pickSmartReview(presentable, now) : pickTopicReview(presentable, focus.unit_id, now).map((entry) => ({
+  const picked = focus.kind === "smart" ? pickSmartReview(presentable, now) : focus.kind === "topic" ? pickTopicReview(presentable, focus.unit_id, now).map((entry) => ({
     entry,
     reason: "topic"
+  })) : pickCoachReview(presentable, focus.unit_ids).map((entry) => ({
+    entry,
+    reason: "coach"
   }));
   const items = [];
   const taken = /* @__PURE__ */ new Set();
@@ -100,7 +143,7 @@ function buildFocusPlan(input, focus) {
   return {
     planner_version: FOCUS_PLANNER_VERSION,
     focus,
-    capacity: focus.kind === "smart" ? SMART_REVIEW_SIZE : TOPIC_REVIEW_SIZE,
+    capacity: focus.kind === "smart" ? SMART_REVIEW_SIZE : focus.kind === "topic" ? TOPIC_REVIEW_SIZE : COACH.sessionSize,
     status: items.length > 0 ? "ok" : "up_to_date",
     items
   };
@@ -111,6 +154,10 @@ function parseFocusRequest(raw) {
   if (r.kind === "smart") return { kind: "smart" };
   if (r.kind === "topic" && typeof r.unit_id === "string" && /^[\w-]{1,100}$/.test(r.unit_id)) {
     return { kind: "topic", unit_id: r.unit_id };
+  }
+  if (r.kind === "coach") {
+    const unitIds = parseCoachUnits(r.unit_ids);
+    return unitIds ? { kind: "coach", unit_ids: unitIds } : null;
   }
   return null;
 }
