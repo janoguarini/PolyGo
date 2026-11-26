@@ -13,7 +13,7 @@ export type ShareAchievement =
   /** Terminaste un nivel entero de un curso (A1 → A2). */
   | { kind: 'level'; level: string; language: string };
 
-/** Polys por compartir cada logro (una vez por logro). Igual que poly_config ->> 'share'. */
+/** Polys por compartir cada logro (una vez por logro). Igual que public.share_reward_polys(). */
 export const SHARE_REWARD_POLYS = 20;
 
 /** Hitos de racha que se festejan y se pueden compartir. Pasado el año, cada 100 días. */

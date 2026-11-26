@@ -24,7 +24,7 @@ export type PendingRpc =
   /** Calendario de bienvenida (20261225120000_welcome_rewards). */
   | 'get_welcome_rewards'
   | 'claim_welcome_reward'
-  /** Premio por compartir un logro (shared/share.ts; migración de la etapa 2, sin aplicar). */
+  /** Premio por compartir un logro (20261231160000_share_rewards). */
   | 'claim_share_reward';
 
 type UntypedRpc = (
