@@ -499,6 +499,19 @@ export const streakStrings = defineStrings({
     openCalendarHint: 'Abre el calendario de tu racha',
     dayA11y: (date: string, state: 'studied' | 'frozen' | 'none') =>
       `${date}: ${state === 'studied' ? 'estudiaste' : state === 'frozen' ? 'protector de racha' : 'sin actividad'}`,
+    safeToday: '¡Racha a salvo por hoy!',
+    safeTodaySub: 'Vuelve mañana para sumar otro día al fuego.',
+    atRisk: (hours: number) => `¡Tu racha se apaga en ${hours} h!`,
+    atRiskSub: 'Una lección cortita alcanza para mantenerla viva.',
+    startToday: 'Enciende tu racha hoy',
+    startTodaySub: 'Una lección y arranca el fuego.',
+    practiceNow: '¡Practicar ahora!',
+    milestoneLeft: (left: number, target: number, polys: number | null) =>
+      `${left === 1 ? 'Falta 1 día' : `Faltan ${left} días`} ${polys ? `para los ${target}: +${polys} Polys` : `para tu meta de ${target}`}`,
+    statMonth: 'Este mes',
+    statBest: 'Mejor tanda',
+    statFreezes: 'Protectores',
+    legendPerfect: 'Semana perfecta',
   },
   en: {
     dayLabels: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
@@ -533,6 +546,19 @@ export const streakStrings = defineStrings({
     openCalendarHint: 'Opens your streak calendar',
     dayA11y: (date: string, state: 'studied' | 'frozen' | 'none') =>
       `${date}: ${state === 'studied' ? 'studied' : state === 'frozen' ? 'streak freeze' : 'no activity'}`,
+    safeToday: 'Streak safe for today!',
+    safeTodaySub: 'Come back tomorrow to add another day to the fire.',
+    atRisk: (hours: number) => `Your streak burns out in ${hours} h!`,
+    atRiskSub: 'One quick lesson is enough to keep it alive.',
+    startToday: 'Light your streak today',
+    startTodaySub: 'One lesson and the fire is on.',
+    practiceNow: 'Practice now!',
+    milestoneLeft: (left: number, target: number, polys: number | null) =>
+      `${left === 1 ? '1 day' : `${left} days`} ${polys ? `to ${target}: +${polys} Polys` : `to your ${target}-day goal`}`,
+    statMonth: 'This month',
+    statBest: 'Best run',
+    statFreezes: 'Freezes',
+    legendPerfect: 'Perfect week',
   },
   'pt-BR': {
     dayLabels: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
@@ -567,6 +593,19 @@ export const streakStrings = defineStrings({
     openCalendarHint: 'Abre o calendário da sua sequência',
     dayA11y: (date: string, state: 'studied' | 'frozen' | 'none') =>
       `${date}: ${state === 'studied' ? 'você estudou' : state === 'frozen' ? 'protetor de sequência' : 'sem atividade'}`,
+    safeToday: 'Sequência garantida hoje!',
+    safeTodaySub: 'Volte amanhã para somar mais um dia ao fogo.',
+    atRisk: (hours: number) => `Sua sequência apaga em ${hours} h!`,
+    atRiskSub: 'Uma lição rapidinha basta para mantê-la viva.',
+    startToday: 'Acenda sua sequência hoje',
+    startTodaySub: 'Uma lição e o fogo começa.',
+    practiceNow: 'Praticar agora!',
+    milestoneLeft: (left: number, target: number, polys: number | null) =>
+      `${left === 1 ? 'Falta 1 dia' : `Faltam ${left} dias`} ${polys ? `para os ${target}: +${polys} Polys` : `para sua meta de ${target}`}`,
+    statMonth: 'Este mês',
+    statBest: 'Melhor série',
+    statFreezes: 'Protetores',
+    legendPerfect: 'Semana perfeita',
   },
   it: {
     dayLabels: ['D', 'L', 'M', 'M', 'G', 'V', 'S'],
@@ -601,6 +640,19 @@ export const streakStrings = defineStrings({
     openCalendarHint: 'Apre il calendario della tua serie',
     dayA11y: (date: string, state: 'studied' | 'frozen' | 'none') =>
       `${date}: ${state === 'studied' ? 'hai studiato' : state === 'frozen' ? 'protezione della serie' : 'nessuna attività'}`,
+    safeToday: 'Serie al sicuro per oggi!',
+    safeTodaySub: 'Torna domani per aggiungere un altro giorno al fuoco.',
+    atRisk: (hours: number) => `La tua serie si spegne tra ${hours} h!`,
+    atRiskSub: 'Basta una lezione veloce per tenerla viva.',
+    startToday: 'Accendi la tua serie oggi',
+    startTodaySub: 'Una lezione e il fuoco parte.',
+    practiceNow: 'Esercitati ora!',
+    milestoneLeft: (left: number, target: number, polys: number | null) =>
+      `${left === 1 ? 'Manca 1 giorno' : `Mancano ${left} giorni`} ${polys ? `ai ${target}: +${polys} Polys` : `al tuo obiettivo di ${target}`}`,
+    statMonth: 'Questo mese',
+    statBest: 'Serie migliore',
+    statFreezes: 'Protezioni',
+    legendPerfect: 'Settimana perfetta',
   },
 });
 

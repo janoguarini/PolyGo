@@ -1,3 +1,5 @@
+import { POLYS } from '@shared/polys';
+
 import { getStrings } from '@/i18n';
 
 import type { LearningSummary } from './api';
@@ -125,4 +127,51 @@ export function monthGrid(
   }
   while (cells.length % 7) cells.push(null);
   return Array.from({ length: cells.length / 7 }, (_, w) => cells.slice(w * 7, w * 7 + 7));
+}
+
+/** Hitos de racha que se festejan en el calendario. */
+export const STREAK_MILESTONES = [3, 7, 14, 30, 50, 100, 150, 200, 365, 500, 1000] as const;
+
+/**
+ * Próximo hito por alcanzar, el progreso (0–1) desde el hito anterior y los Polys que paga al
+ * llegar (POLYS.streakMilestones; null si ese hito no paga nada).
+ */
+export function nextMilestone(streak: number): {
+  target: number;
+  previous: number;
+  progress: number;
+  polys: number | null;
+} {
+  const target = STREAK_MILESTONES.find((m) => m > streak) ?? (Math.floor(streak / 500) + 1) * 500;
+  const previous = [...STREAK_MILESTONES].reverse().find((m) => m <= streak) ?? 0;
+  const span = target - previous;
+  const polys = POLYS.streakMilestones.find((m) => m.days === target)?.polys ?? null;
+  return { target, previous, progress: span > 0 ? (streak - previous) / span : 0, polys };
+}
+
+/** Días estudiados del mes y la tanda consecutiva más larga (un protector no corta, pero no suma). */
+export function monthStats(weeks: readonly (readonly (CalendarDay | null)[])[]): {
+  studied: number;
+  bestRun: number;
+} {
+  let studied = 0;
+  let run = 0;
+  let bestRun = 0;
+  for (const day of weeks.flat()) {
+    if (!day || day.isFuture) continue;
+    if (day.studied) {
+      studied++;
+      run++;
+      bestRun = Math.max(bestRun, run);
+    } else if (!day.frozen && !day.isToday) {
+      run = 0;
+    }
+  }
+  return { studied, bestRun };
+}
+
+/** Horas enteras (redondeando hacia arriba) que faltan para la medianoche local. */
+export function hoursUntilMidnight(now = new Date()): number {
+  const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+  return Math.max(1, Math.ceil((midnight.getTime() - now.getTime()) / 3_600_000));
 }

@@ -233,6 +233,7 @@ export default function HomeScreen() {
         onClose={() => setCalendarOpen(false)}
         streak={streak}
         activeToday={activeToday}
+        freezes={freezes}
       />
       {energyOpen || outOfEnergy ? <EnergyPanel compact={!energyOpen} /> : null}
       {streakRepair.data ? (
