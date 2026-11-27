@@ -112,7 +112,7 @@
         "expo-audio",
         {
           "enableBackgroundPlayback": false,
-          "microphonePermission": false
+          "microphonePermission": "PolyGo usa el micrófono sólo para los ejercicios de hablar: escucha tu respuesta y la compara con la frase. No guarda tu voz."
         }
       ],
       "expo-asset",
@@ -168,6 +168,17 @@
         "expo-tracking-transparency",
         {
           "userTrackingPermission": "PolyGo usa este permiso para medir qué anuncios te trajeron a la app y mostrarte publicidad más relevante. No vendemos tus datos."
+        }
+      ],
+      [
+        "expo-speech-recognition",
+        {
+          "microphonePermission": "PolyGo usa el micrófono sólo para los ejercicios de hablar: escucha tu respuesta y la compara con la frase. No guarda tu voz.",
+          "speechRecognitionPermission": "PolyGo transcribe tu voz en los ejercicios de hablar para corregir tu pronunciación de la frase.",
+          "androidSpeechServicePackages": [
+            "com.google.android.googlequicksearchbox",
+            "com.google.android.tts"
+          ]
         }
       ]
     ],

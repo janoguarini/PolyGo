@@ -64,6 +64,7 @@ import { parseCoachUnits } from '@shared/coach';
 import { CoachResultCard } from '@/features/coach/CoachResultCard';
 import { shuffle, uuid } from '@/features/learning/random';
 import { buildReviewExercises } from '@/features/learning/review';
+import { pickSpeakingExercises } from '@/features/learning/speaking';
 import { SessionLanguageProvider } from '@/features/learning/SessionLanguageProvider';
 import { useCelebrationGate } from '@/features/learning/useCelebrationGate';
 import { useEnergy } from '@/features/plus/api';
@@ -460,6 +461,8 @@ function ServerReviewScreen({ mode, focus }: { mode: ReviewMode; focus?: ReviewF
         words={session.words}
         seed={open.sessionId}
         shownOptions={session.shownOptions}
+        // «Dilo en voz alta» también en los repasos (nunca en Ranked).
+        speakingIds={pickSpeakingExercises(session.exercises, open.sessionId)}
         grade={grade}
         instant={instant}
         maxRetries={SERVER_REVIEW_RETRIES}
@@ -617,6 +620,7 @@ function LegacyReviewScreen({ mode }: { mode: 'practice' | 'mistakes' }) {
         exercises={review.exercises}
         words={review.words}
         seed={sessionId}
+        speakingIds={pickSpeakingExercises(review.exercises, sessionId)}
         onClose={() =>
           Alert.alert(t.exitPracticeTitle, t.exitPracticeMessage, [
             { text: t.stay, style: 'cancel' },

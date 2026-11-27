@@ -28,12 +28,15 @@ import {
   type PlayerState,
 } from '../player';
 import { useSessionLanguage } from '../readings';
+import { pauseSpeaking, useSpeakingPaused } from '../speakingPause';
+import { speechRecognitionAvailable } from '../speechRecognition';
 import { stopSpeaking } from '../speech';
 import { playerStrings } from '../strings';
 import { AnswerInput } from './AnswerInput';
 import { AnswerRecap } from './AnswerRecap';
 import { ExercisePrompt } from './ExercisePrompt';
 import { FeedbackPanel } from './FeedbackPanel';
+import { SpeakAnswer } from './SpeakAnswer';
 
 /** Reloj de pared para medir tiempos de respuesta (sólo en efectos y manejadores de eventos). */
 const nowMs = () => Date.now();
@@ -97,6 +100,11 @@ interface Props {
   maxRetries?: number;
   /** Respuestas ya corregidas (retomar una sesión). */
   answered?: Attempt[];
+  /**
+   * Ejercicios de traducir que se responden hablando («Dilo en voz alta»). Lo pasan las lecciones
+   * y los repasos; nunca la nivelación ni Ranked.
+   */
+  speakingIds?: ReadonlySet<string>;
 }
 
 export function SessionPlayer({
@@ -110,6 +118,7 @@ export function SessionPlayer({
   instant,
   maxRetries,
   answered,
+  speakingIds,
 }: Props) {
   const styles = useStyles();
   const t = useStrings(playerStrings);
@@ -132,7 +141,10 @@ export function SessionPlayer({
   const attemptKey = useRef<string | null>(null);
   // Intentos ya corregidos en el dispositivo (bloqueo síncrono contra el doble toque).
   const answeredLocally = useRef(new Set<string>());
-  const { readings, showReadings, setShowReadings } = useSessionLanguage();
+  const { language, readings, showReadings, setShowReadings } = useSessionLanguage();
+  // Hablar: pausado por «Ahora no puedo hablar», o pasado al teclado en un ejercicio.
+  const speakingPaused = useSpeakingPaused();
+  const [keyboardFor, setKeyboardFor] = useState<ReadonlySet<string>>(() => new Set());
 
   useEffect(() => {
     if (state.phase === 'answering') shownAt.current = nowMs();
@@ -159,7 +171,9 @@ export function SessionPlayer({
 
   if (!exercise || state.phase === 'finished') return null;
 
-  const assistsNow = readings ? { reading_visible: showReadings } : undefined;
+  const assistsNow: Record<string, number | boolean> | undefined = readings
+    ? { reading_visible: showReadings }
+    : undefined;
 
   const applyVerdict = (
     verdict: AnswerVerdict,
@@ -186,7 +200,7 @@ export function SessionPlayer({
     });
   };
 
-  const gradeRemotely = async (answer: UserAnswer, responseMs: number) => {
+  const gradeRemotely = async (answer: UserAnswer, responseMs: number, assists = assistsNow) => {
     // Doble toque (Comprobar o Reintentar antes de que React deshabilite el botón): una sola corrección
     // en curso. El bloqueo es síncrono; el estado `pending` llega recién en el próximo render.
     if (!grade || grading.current) return;
@@ -195,20 +209,24 @@ export function SessionPlayer({
     const key = `${exercise.id}#${attemptNo}`;
     setPending({ answer, responseMs, failed: false });
     try {
-      const result = await grade(exercise, answer, { responseMs, assists: assistsNow, attemptNo });
+      const result = await grade(exercise, answer, { responseMs, assists, attemptNo });
       grading.current = false;
       setPending(null);
       // Una corrección que ya no corresponde al ejercicio en pantalla no se aplica a otro.
       if (attemptKey.current !== key) return;
       setRevealed((r) => ({ ...r, [exercise.id]: { explanation: result.explanation } }));
-      applyVerdict(result.verdict, result.response, result.responseMs, assistsNow);
+      applyVerdict(result.verdict, result.response, result.responseMs, assists);
     } catch {
       grading.current = false;
       setPending(attemptKey.current === key ? { answer, responseMs, failed: true } : null);
     }
   };
 
-  const gradeInstantly = (answer: UserAnswer, responseMs: number): boolean => {
+  const gradeInstantly = (
+    answer: UserAnswer,
+    responseMs: number,
+    assists = assistsNow,
+  ): boolean => {
     const local = instant?.grade(exercise, answer);
     if (!instant || !local) return false;
     const attemptNo = state.attempts.filter((a) => a.exerciseId === exercise.id).length + 1;
@@ -217,11 +235,11 @@ export function SessionPlayer({
     answeredLocally.current.add(key);
     const exerciseId = exercise.id;
     setRevealed((r) => ({ ...r, [exerciseId]: { explanation: local.explanation } }));
-    applyVerdict(local.verdict, answer, responseMs, assistsNow);
+    applyVerdict(local.verdict, answer, responseMs, assists);
     instant
       .record(exercise, answer, {
         responseMs,
-        assists: assistsNow,
+        assists,
         attemptNo,
         verdict: local.verdict,
       })
@@ -244,15 +262,24 @@ export function SessionPlayer({
     return true;
   };
 
-  const handleSubmit = (answer: UserAnswer) => {
+  const handleSubmit = (answer: UserAnswer, extra?: Record<string, number | boolean>) => {
     const responseMs = nowMs() - shownAt.current;
-    if (gradeInstantly(answer, responseMs)) return;
+    const assists = extra ? { ...assistsNow, ...extra } : assistsNow;
+    if (gradeInstantly(answer, responseMs, assists)) return;
     if (grade) {
-      void gradeRemotely(answer, responseMs);
+      void gradeRemotely(answer, responseMs, assists);
       return;
     }
-    applyVerdict(checkAnswer(exercise, answer), answer, responseMs, assistsNow);
+    applyVerdict(checkAnswer(exercise, answer), answer, responseMs, assists);
   };
+
+  // «Dilo en voz alta»: un ejercicio de traducir elegido para hablar, si el teléfono puede.
+  const speaking =
+    exercise.type === 'translate_write' &&
+    Boolean(speakingIds?.has(exercise.id)) &&
+    !speakingPaused &&
+    !keyboardFor.has(exercise.id) &&
+    speechRecognitionAvailable();
 
   // En la corrección remota, la explicación llega con el veredicto.
   const shown: Exercise = revealed[exercise.id]
@@ -309,7 +336,11 @@ export function SessionPlayer({
               ) : null}
             </View>
           ) : null}
-          <ExercisePrompt exercise={shown} answered={state.phase === 'feedback'} />
+          <ExercisePrompt
+            exercise={shown}
+            answered={state.phase === 'feedback'}
+            spoken={speaking}
+          />
           {state.phase === 'feedback' && state.lastVerdict ? (
             // Abajo, donde estaba "Comprobar": el pulgar no tiene que moverse.
             <View style={styles.feedback}>
@@ -330,15 +361,27 @@ export function SessionPlayer({
             </View>
           ) : (
             <>
-              {/* La key reinicia la selección en cada intento. */}
-              <AnswerInput
-                key={`${exercise.id}-${attemptNumber}`}
-                exercise={exercise}
-                seed={seed}
-                shownOptions={shownOptions?.[exercise.id]}
-                disabled={state.phase !== 'answering' || pending !== null}
-                onSubmit={handleSubmit}
-              />
+              {/* La key reinicia la selección (o la grabación) en cada intento. */}
+              {speaking ? (
+                <SpeakAnswer
+                  key={`${exercise.id}-${attemptNumber}-speak`}
+                  exercise={exercise}
+                  locale={language.speechLocale}
+                  disabled={state.phase !== 'answering' || pending !== null}
+                  onSubmit={handleSubmit}
+                  onUseKeyboard={() => setKeyboardFor((s) => new Set(s).add(exercise.id))}
+                  onCantSpeak={() => pauseSpeaking()}
+                />
+              ) : (
+                <AnswerInput
+                  key={`${exercise.id}-${attemptNumber}`}
+                  exercise={exercise}
+                  seed={seed}
+                  shownOptions={shownOptions?.[exercise.id]}
+                  disabled={state.phase !== 'answering' || pending !== null}
+                  onSubmit={handleSubmit}
+                />
+              )}
               {pending ? (
                 <View style={styles.pending} accessibilityLiveRegion="polite">
                   <Text color={pending.failed ? 'danger' : 'textMuted'} align="center">

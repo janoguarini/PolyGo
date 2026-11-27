@@ -8,7 +8,7 @@ import { useStrings } from '@/i18n';
 
 import { TargetText, useSessionLanguage } from '../readings';
 import { speak, spokenText } from '../speech';
-import { promptStrings } from '../strings';
+import { promptStrings, speakAnswerStrings } from '../strings';
 import { ContextStimulus } from './ContextStimulus';
 import { SpeakButton } from './SpeakButton';
 
@@ -19,12 +19,16 @@ import { SpeakButton } from './SpeakButton';
 export function ExercisePrompt({
   exercise,
   answered = false,
+  spoken = false,
 }: {
   exercise: Exercise;
   answered?: boolean;
+  /** Se responde hablando: el título pasa a «Dilo en <idioma>». */
+  spoken?: boolean;
 }) {
   const styles = useStyles();
   const t = useStrings(promptStrings);
+  const speakT = useStrings(speakAnswerStrings);
   // Idioma de apoyo del curso: el de la frase a traducir (español salvo en el curso de español).
   const { language } = useSessionLanguage();
   const p = exercise.payload;
@@ -44,7 +48,7 @@ export function ExercisePrompt({
 
   return (
     <View style={styles.wrapper}>
-      <Text variant="heading">{exercise.prompt}</Text>
+      <Text variant="heading">{spoken ? speakT.sayIn(language.code) : exercise.prompt}</Text>
 
       {p.type === 'image_choice' ? (
         <View style={styles.center}>

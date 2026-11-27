@@ -7,7 +7,7 @@ import {
 import { languageConfig, type LanguageConfig } from '@shared/languages';
 
 import { defineStrings } from '@/i18n';
-import { languageName } from '@/i18n/languages';
+import { languageName, languageShortName } from '@/i18n/languages';
 
 import type { MasteryCounts } from './api';
 import type { LessonKind } from './path';
@@ -1361,5 +1361,73 @@ export const reviewBuilderStrings = defineStrings({
     listen: 'Ascolta e scegli ciò che senti',
     writePinyin: 'Scrivi in pinyin',
     writeIn: (lang: LanguageConfig) => `Scrivi in ${itName(lang.code)}`,
+  },
+});
+
+/** Ejercicio de hablar («Dilo en voz alta»: SpeakAnswer). */
+export const speakAnswerStrings = defineStrings({
+  es: {
+    sayIn: (code: string) => `Dilo en ${languageShortName(code, 'es').toLowerCase()}`,
+    tapToSpeak: 'Toca el micrófono y dilo en voz alta',
+    listening: 'Te escucho…',
+    heard: 'Escuché',
+    notHeard: 'No te escuché bien. Toca el micrófono y vuelve a intentarlo.',
+    tryAgain: 'Grabar de nuevo',
+    check: 'Comprobar',
+    useKeyboard: 'Usar el teclado',
+    cantSpeak: 'Ahora no puedo hablar',
+    cantSpeakHint: (minutes: number) => `Durante ${minutes} minutos respondes escribiendo`,
+    noPermission: 'Sin permiso de micrófono no podemos escucharte. Responde escribiendo.',
+    unavailable: 'El reconocimiento de voz no está disponible ahora. Responde escribiendo.',
+    micA11y: 'Hablar',
+    stopA11y: 'Terminar de hablar',
+  },
+  en: {
+    sayIn: (code: string) => `Say it in ${languageShortName(code, 'en')}`,
+    tapToSpeak: 'Tap the microphone and say it out loud',
+    listening: 'Listening…',
+    heard: 'I heard',
+    notHeard: 'I didn’t catch that. Tap the microphone and try again.',
+    tryAgain: 'Record again',
+    check: 'Check',
+    useKeyboard: 'Use the keyboard',
+    cantSpeak: 'I can’t speak right now',
+    cantSpeakHint: (minutes: number) => `You’ll type your answers for ${minutes} minutes`,
+    noPermission: 'Without microphone access we can’t hear you. Type your answer instead.',
+    unavailable: 'Speech recognition isn’t available right now. Type your answer instead.',
+    micA11y: 'Speak',
+    stopA11y: 'Stop speaking',
+  },
+  'pt-BR': {
+    sayIn: (code: string) => `Diga em ${languageShortName(code, 'pt-BR').toLowerCase()}`,
+    tapToSpeak: 'Toque no microfone e diga em voz alta',
+    listening: 'Estou ouvindo…',
+    heard: 'Ouvi',
+    notHeard: 'Não te ouvi bem. Toque no microfone e tente de novo.',
+    tryAgain: 'Gravar de novo',
+    check: 'Verificar',
+    useKeyboard: 'Usar o teclado',
+    cantSpeak: 'Não posso falar agora',
+    cantSpeakHint: (minutes: number) => `Por ${minutes} minutos você responde escrevendo`,
+    noPermission: 'Sem permissão do microfone não conseguimos te ouvir. Responda escrevendo.',
+    unavailable: 'O reconhecimento de voz não está disponível agora. Responda escrevendo.',
+    micA11y: 'Falar',
+    stopA11y: 'Parar de falar',
+  },
+  it: {
+    sayIn: (code: string) => `Dillo in ${languageShortName(code, 'it').toLowerCase()}`,
+    tapToSpeak: 'Tocca il microfono e dillo ad alta voce',
+    listening: 'Ti ascolto…',
+    heard: 'Ho sentito',
+    notHeard: 'Non ti ho sentito bene. Tocca il microfono e riprova.',
+    tryAgain: 'Registra di nuovo',
+    check: 'Controlla',
+    useKeyboard: 'Usa la tastiera',
+    cantSpeak: 'Ora non posso parlare',
+    cantSpeakHint: (minutes: number) => `Per ${minutes} minuti rispondi scrivendo`,
+    noPermission: 'Senza il permesso del microfono non possiamo sentirti. Rispondi scrivendo.',
+    unavailable: 'Il riconoscimento vocale non è disponibile ora. Rispondi scrivendo.',
+    micA11y: 'Parla',
+    stopA11y: 'Smetti di parlare',
   },
 });

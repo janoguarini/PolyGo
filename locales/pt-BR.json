@@ -2,7 +2,9 @@
   "ios": {
     "CFBundleDisplayName": "PolyGo",
     "NSPhotoLibraryUsageDescription": "O PolyGo usa suas fotos só para você escolher sua foto de perfil.",
-    "NSUserTrackingUsageDescription": "O PolyGo usa esta permissão para medir quais anúncios te trouxeram ao app e mostrar publicidade mais relevante. Nunca vendemos seus dados."
+    "NSUserTrackingUsageDescription": "O PolyGo usa esta permissão para medir quais anúncios te trouxeram ao app e mostrar publicidade mais relevante. Nunca vendemos seus dados.",
+    "NSMicrophoneUsageDescription": "O PolyGo usa o microfone só nos exercícios de fala: ouve sua resposta e compara com a frase. Sua voz não é guardada.",
+    "NSSpeechRecognitionUsageDescription": "O PolyGo transcreve sua voz nos exercícios de fala para corrigir como você diz a frase."
   },
   "android": {
     "app_name": "PolyGo"

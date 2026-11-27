@@ -17,6 +17,8 @@ import {
   useSubmitSession,
 } from '@/features/learning/hooks';
 import { sessionStats, type PlayerState } from '@/features/learning/player';
+import { pickSpeakingExercises } from '@/features/learning/speaking';
+import { loadSpeakingPause } from '@/features/learning/speakingPause';
 import { recordPractice } from '@/features/reminders/practiceLog';
 import { track } from '@/lib/analytics';
 import { metaFirstLesson } from '@/lib/metaEvents';
@@ -82,6 +84,14 @@ function LessonScreen() {
     () => matchPresentations(presentation.data, content.data),
     [presentation.data, content.data],
   );
+  // «Dilo en voz alta»: hasta 2 ejercicios de traducir de la lección se responden hablando.
+  const speakingIds = useMemo(
+    () => (content.data ? pickSpeakingExercises(content.data.exercises, sessionId) : undefined),
+    [content.data, sessionId],
+  );
+  useEffect(() => {
+    void loadSpeakingPause();
+  }, []);
 
   // Analítica: lección abierta y terminada.
   useEffect(() => {
@@ -147,6 +157,7 @@ function LessonScreen() {
         words={content.data.words}
         seed={sessionId}
         shownOptions={presented?.shownOptions}
+        speakingIds={speakingIds}
         onClose={confirmExit}
         onFinished={handleFinished}
       />

@@ -57,9 +57,7 @@ const stimulusSchema: z.ZodType<ContextStimulus> = z.discriminatedUnion('kind', 
     kind: z.literal('listening'),
     id: z.string().min(1),
     setting: z.string(),
-    speakers: z
-      .array(z.object({ name: z.string().min(1), voice: z.enum(['a', 'b']) }))
-      .min(1),
+    speakers: z.array(z.object({ name: z.string().min(1), voice: z.enum(['a', 'b']) })).min(1),
     rate: z.number().positive().max(1),
     lines: z.array(z.object({ speaker: z.string().min(1), text: z.string().min(1) })).min(1),
     visual: optionalVisual,
