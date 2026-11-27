@@ -51,3 +51,6 @@ website/dist/
 
 # Local Netlify folder
 .netlify
+
+# audios de voces neurales generados (npm run tts)
+/build/

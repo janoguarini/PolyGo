@@ -3,8 +3,11 @@ import { useEffect } from 'react';
 import { Platform } from 'react-native';
 
 import { HAN, languageConfig } from '@shared/languages';
+import { spokenText } from '@shared/tts';
 
 import { configureAudio } from '@/lib/sounds';
+
+import { hasNeuralClip, loadNeuralVoices, playNeural, stopNeural } from './neuralVoice';
 
 const normalize = (language: string) => language.toLowerCase().replace('_', '-');
 
@@ -63,12 +66,20 @@ function pickVoice(locale: string): Promise<string | undefined> {
   return picked;
 }
 
-/** Locale del idioma que se estudia; lo fija useSpeechLanguage según el perfil. */
+/** Idioma que se estudia (y su locale); lo fija useSpeechLanguage según el perfil. */
+let currentLanguage = languageConfig('en').code;
 let currentLocale = languageConfig('en').speechLocale;
 
 export function setSpeechLanguage(code: string | null | undefined) {
-  currentLocale = languageConfig(code).speechLocale;
+  const config = languageConfig(code);
+  currentLanguage = config.code;
+  currentLocale = config.speechLocale;
+  // Voces neurales del idioma (si ya se generaron): el índice se baja en segundo plano.
+  void loadNeuralVoices(config.code);
 }
+
+/** Velocidad de «lento» con voz neural (el tono no cambia). */
+export const NEURAL_SLOW_RATE = 0.7;
 
 /** Mantiene la voz en el idioma del perfil (se monta en el layout raíz). */
 export function useSpeechLanguage(code: string | null | undefined) {
@@ -93,15 +104,10 @@ export const SPEECH_RATES = {
  * con tono de pregunta: el punto les da la entonación de una frase terminada.
  */
 /**
- * Lo que se pronuncia de un texto: sin emojis (cierre de inglés A1, PW). Una escena dibujada con
- * emojis («🍎 🍎 🍎») es la imagen del ejercicio: el motor la leería en voz alta («red apple…») y
- * daría la respuesta. Vacío = no hay nada para decir.
+ * Lo que se pronuncia de un texto: sin emojis (cierre de inglés A1, PW). Es el de shared/tts.ts, la
+ * misma normalización con la que se generan las claves de los audios neurales.
  */
-export const spokenText = (text: string) =>
-  text
-    .replace(/[\p{Extended_Pictographic}\u{1F1E6}-\u{1F1FF}\u{FE0F}\u{200D}\u{20E3}]/gu, '')
-    .replace(/\s+/g, ' ')
-    .trim();
+export { spokenText };
 
 export function speechInput(text: string, slow = false) {
   const trimmed = spokenText(text);
@@ -114,20 +120,37 @@ export function speechInput(text: string, slow = false) {
 }
 
 /**
- * Pronunciación con la voz sintetizada del sistema en el idioma que se estudia (no es una grabación
- * de un hablante nativo).
+ * Pronunciación en el idioma que se estudia: con la voz neural pregenerada si ese texto la tiene
+ * (neuralVoice.ts) y, si no o si falla, con la voz sintetizada del teléfono.
  */
-export function speak(
-  text: string,
-  options: {
-    slow?: boolean;
-    /** Empezó a sonar (Ranked Arcade lo usa para saber que el audio llegó). */
-    onStart?: () => void;
-    /** El motor falló: quien escucha muestra el texto en su lugar. */
-    onError?: () => void;
-  } = {},
-) {
+export interface SpeakOptions {
+  slow?: boolean;
+  /** Empezó a sonar (Ranked Arcade lo usa para saber que el audio llegó). */
+  onStart?: () => void;
+  /** El motor falló: quien escucha muestra el texto en su lugar. */
+  onError?: () => void;
+}
+
+export function speak(text: string, options: SpeakOptions = {}) {
   if (!spokenText(text)) return;
+  dialogueToken++;
+  void configureAudio();
+  const neural = playNeural(currentLanguage, 'a', text, {
+    rate: options.slow ? NEURAL_SLOW_RATE : 1,
+    ...(options.onStart ? { onStart: options.onStart } : {}),
+    // Si el audio no se pudo bajar ni reproducir, la voz del teléfono.
+    onError: () => speakWithDevice(text, options),
+  });
+  if (neural) {
+    void Speech.stop();
+    return;
+  }
+  speakWithDevice(text, options);
+}
+
+/** Voz sintetizada del sistema (no es una grabación de un hablante nativo). */
+function speakWithDevice(text: string, options: SpeakOptions = {}) {
+  stopNeural();
   const locale = currentLocale;
   void (async () => {
     await configureAudio();
@@ -175,6 +198,7 @@ export function speakSpanish(text: string) {
 
 export function stopSpeaking() {
   dialogueToken++;
+  stopNeural();
   void Speech.stop();
 }
 
@@ -281,8 +305,34 @@ export function speakDialogue(
 ): () => void {
   const token = ++dialogueToken;
   const locale = currentLocale;
+  const language = currentLanguage;
   const speed = handlers.slow ? Math.min(rate, SPEECH_RATES.slow) : rate;
   const alive = () => token === dialogueToken;
+  if (lines.length > 0 && lines.every((l) => hasNeuralClip(language, l.voice, l.text))) {
+    void configureAudio();
+    void Speech.stop();
+    handlers.onVoices?.({ available: true, distinct: true });
+    const playLine = (i: number) => {
+      if (!alive()) return;
+      if (i >= lines.length) {
+        handlers.onDone?.();
+        return;
+      }
+      const line = lines[i]!;
+      handlers.onLine?.(i);
+      playNeural(language, line.voice, line.text, {
+        rate: handlers.slow ? NEURAL_SLOW_RATE : 1,
+        onDone: () => playLine(i + 1),
+        onError: () => {
+          if (alive()) handlers.onError?.(new Error('neural_voice_failed'));
+        },
+      });
+    };
+    playLine(0);
+    return () => {
+      if (alive()) stopSpeaking();
+    };
+  }
   void (async () => {
     try {
       await configureAudio();
