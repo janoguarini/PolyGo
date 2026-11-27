@@ -31,7 +31,7 @@ import { A2_EXPANSION_PATH } from '../a2-expansion';
 import { B1_PATH } from '../b1';
 import { B2_PATH } from '../b2';
 import { IT_PATH } from '../it-course';
-import { ES_PATH } from '../es-course';
+import { ES_B1_PATH, ES_PATH } from '../es-course';
 import { FR_PATH } from '../fr-course';
 import { ZH_PATH } from '../zh-course';
 import { PT_PATH } from '../pt-course';
@@ -265,7 +265,9 @@ describe('fase C: identidad', () => {
         // Francés A1 y A2 (docs/FR_A1_A2.md).
         FR_PATH.length +
         // Español A1 y A2 (docs/ES_A1_A2.md).
-        ES_PATH.length,
+        ES_PATH.length +
+        // Español B1 (docs/ES_B1.md): 12 unidades nuevas.
+        ES_B1_PATH.length,
     );
   });
 });

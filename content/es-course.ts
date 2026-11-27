@@ -1,6 +1,7 @@
 import type { ExpansionUnitDef } from './a2-expansion';
 import { ES_A1_UNITS } from './es/a1';
 import { ES_A2_UNITS } from './es/a2';
+import { ES_B1_UNITS } from './es/b1';
 import { unitId, type PathUnit } from './index';
 import { unitPath } from './path';
 import type { Level } from './types';
@@ -63,3 +64,26 @@ export const ES_PATH: PathUnit[] = ES_COURSE.flatMap(({ language, level, units }
     }),
   })),
 );
+
+/**
+ * Español B1 U1–U12 (docs/ES_B1.md). Como el inglés B1, vive en su propio camino (`ES_B1_PATH`), fuera
+ * de `ES_PATH`: la carga y la publicación del A1/A2, la nivelación y Ranked no cambian.
+ */
+export const ES_B1: EsLevelDef = { language: 'es', level: 'B1', first: 1, units: ES_B1_UNITS };
+
+/** Niveles del curso en orden (A1, A2, B1): el validador cuenta lo enseñado en este orden. */
+export const ES_LEVELS: readonly EsLevelDef[] = [...ES_COURSE, ES_B1];
+
+/** Palabras con las que el generador del B1 descarta traducciones ambiguas: todo el español con B1. */
+export function esB1KnownWords() {
+  return [...esKnownWords(), ...ES_B1.units.flatMap((u) => u.unit.words)];
+}
+
+export const ES_B1_PATH: PathUnit[] = ES_B1.units.map(({ unit }) => ({
+  language: ES_B1.language,
+  level: ES_B1.level,
+  unit,
+  lessons: unitPath(unit, esB1KnownWords(), unitId(ES_B1.language, ES_B1.level, unit), 'es', {
+    unitWordsOnly: true,
+  }),
+}));

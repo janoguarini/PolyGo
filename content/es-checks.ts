@@ -1,5 +1,6 @@
 import { writingTaskProblems, writingTokens } from '../shared/writing';
-import { ES_COURSE, ES_PATH } from './es-course';
+import { ES_B1_PATH, ES_LEVELS, ES_PATH } from './es-course';
+import { ES_B1_WRITING_TASKS } from './es/b1';
 import { ES_WRITING_TASKS } from './es/writing';
 import { AUTHORED_ID } from './ids-lock';
 import type { PathUnit } from './index';
@@ -7,8 +8,8 @@ import { englishTexts, gradingProblems } from './supplement-checks';
 import type { ExerciseDef, WordDef } from './types';
 
 /**
- * Reglas del español A1 U1–U17 y A2 U1–U12 (content/es-course.ts, docs/ES_A1_A2.md) y de su escritura
- * (content/es/writing.ts). Las usan content/__tests__/es.test.ts y scripts/build-es-sql.ts (que no
+ * Reglas del español A1 U1–U17, A2 U1–U12 y B1 U1–U12 (content/es-course.ts, docs/ES_A1_A2.md,
+ * docs/ES_B1.md) y de su escritura (content/es/writing.ts, content/es/b1/*.ts). Las usan content/__tests__/es.test.ts y scripts/build-es-sql.ts (que no
  * escribe si hay problemas). Vacío = válido. Son las reglas del francés adaptadas al español, con el
  * inglés como idioma de apoyo:
  *
@@ -313,14 +314,15 @@ function addPathForms(out: Set<string>, p: PathUnit) {
   }
 }
 
-/** Orden de las unidades: A1 U1–U17 y después A2 U1–U12 (0…28). */
-const ORDER = ES_COURSE.flatMap((l) =>
+/** Orden de las unidades: A1 U1–U17, A2 U1–U12 y B1 U1–U12 (0…40). */
+const ORDER = ES_LEVELS.flatMap((l) =>
   l.units.map((u) => ({ level: l.level, position: u.unit.position, def: u })),
 );
 const indexOf = (level: string, position: number) =>
   ORDER.findIndex((o) => o.level === level && o.position === position);
+const ALL_PATHS = [...ES_PATH, ...ES_B1_PATH];
 const pathOf = (level: string, position: number) =>
-  ES_PATH.find((p) => p.level === level && p.unit.position === position);
+  ALL_PATHS.find((p) => p.level === level && p.unit.position === position);
 
 /** Formas enseñadas antes de la unidad número `index` (0 = A1 U1): las unidades anteriores. */
 export function esTaughtFormsBefore(index: number): Set<string> {
@@ -342,13 +344,13 @@ export function esProblems(only?: string): string[] {
   const problems: string[] = [];
   const byId = new Map<string, WordDef>();
   const linkable = new Set(
-    ES_COURSE.flatMap((l) => l.units.flatMap((u) => u.unit.words.map((w) => w.id))),
+    ES_LEVELS.flatMap((l) => l.units.flatMap((u) => u.unit.words.map((w) => w.id))),
   );
   const texts = new Map<string, string>();
   const translations = new Map<string, string>();
   const stimuli = new Map<string, string>();
 
-  for (const { level, first, units } of ES_COURSE)
+  for (const { level, first, units } of ES_LEVELS)
     units.forEach(({ unit, names: unitNames, support, contrast = [] }, ui) => {
       const where = `es ${level} U${unit.position}`;
       const report = (p: string) => {
@@ -471,9 +473,9 @@ export function esProblems(only?: string): string[] {
             if (!e.explanation) report(`${ex}: falta la explicación con la evidencia`);
             if (
               p.stimulus.kind === 'listening' &&
-              (p.stimulus.rate < 0.75 || p.stimulus.rate > 0.9)
+              (p.stimulus.rate < 0.75 || p.stimulus.rate > (level === 'B1' ? 1 : 0.9))
             )
-              report(`${ex}: velocidad del audio fuera de 0.75–0.9`);
+              report(`${ex}: velocidad del audio fuera de 0.75–${level === 'B1' ? '1.0' : '0.9'}`);
           }
           const targetTexts = esTexts(e);
           const voseo = voseoIn(targetTexts, false);
@@ -608,7 +610,7 @@ export function esProblems(only?: string): string[] {
 
 /** Lo enseñado hasta la unidad de la lección tras la que se ofrece una tarea (incluida). */
 function taughtForLesson(lesson: string): Set<string> | null {
-  const m = /^es-(a[12])-u(\d{2})-/.exec(lesson);
+  const m = /^es-(a[12]|b1)-u(\d{2})-/.exec(lesson);
   if (!m) return null;
   const index = indexOf(m[1]!.toUpperCase(), Number(m[2]));
   return index >= 0 ? esTaughtFormsBefore(index + 1) : null;
@@ -617,14 +619,14 @@ function taughtForLesson(lesson: string): Set<string> | null {
 /** Problemas de la escritura: definición, lección existente y vocabulario enseñado. */
 export function esWritingProblems(): string[] {
   const problems: string[] = [];
-  const lessons = new Set(ES_PATH.flatMap((p) => p.lessons.map((l) => l.id)));
+  const lessons = new Set(ALL_PATHS.flatMap((p) => p.lessons.map((l) => l.id)));
   const ids = new Set<string>();
-  for (const task of ES_WRITING_TASKS) {
+  for (const task of [...ES_WRITING_TASKS, ...ES_B1_WRITING_TASKS]) {
     problems.push(...writingTaskProblems(task));
     if (ids.has(task.id)) problems.push(`${task.id}: id repetido`);
     ids.add(task.id);
-    if (task.language !== 'es' || !/^es\.a[12]\.wt\./.test(task.id))
-      problems.push(`${task.id}: no es una tarea de español A1/A2`);
+    if (task.language !== 'es' || !/^es\.(a[12]|b1)\.wt\./.test(task.id))
+      problems.push(`${task.id}: no es una tarea de español A1/A2/B1`);
     if (!task.lesson || !lessons.has(task.lesson)) {
       problems.push(`${task.id}: la lección ${task.lesson} no existe`);
       continue;

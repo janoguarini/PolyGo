@@ -2,7 +2,7 @@ import type { ContextStimulus } from '../shared/exercises';
 import { A2_EXPANSION_PATH } from './a2-expansion';
 import { B1_PATH } from './b1';
 import { B2_PATH } from './b2';
-import { ES_PATH } from './es-course';
+import { ES_B1_PATH, ES_PATH } from './es-course';
 import { FR_PATH } from './fr-course';
 import { IT_PATH } from './it-course';
 import { PT_PATH } from './pt-course';
@@ -139,6 +139,7 @@ export const ITEM_REGISTRY_PATH: PathUnit[] = [
   ...ZH_PATH,
   ...FR_PATH,
   ...ES_PATH,
+  ...ES_B1_PATH,
 ];
 
 /**
@@ -160,6 +161,7 @@ export function registryCatalog(base: Catalog = buildCatalog(CURRICULUM_PATH)): 
     buildCatalog(ZH_PATH),
     buildCatalog(FR_PATH),
     buildCatalog(ES_PATH),
+    buildCatalog(ES_B1_PATH),
   ];
   const items = [...base.items, ...extras.flatMap((e) => e.items)];
   const seen = new Set<string>();

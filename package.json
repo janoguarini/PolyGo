@@ -108,13 +108,16 @@
     "content:fr-publish": "tsx scripts/build-fr-publish-sql.ts",
     "content:es": "tsx scripts/build-es-sql.ts",
     "content:es-publish": "tsx scripts/build-es-publish-sql.ts",
+    "content:es-b1": "tsx scripts/build-es-b1-sql.ts",
+    "content:es-b1-publish": "tsx scripts/build-es-b1-publish-sql.ts",
     "content:visual": "tsx scripts/stimulus-visual-info.ts",
     "content:placement": "tsx scripts/build-placement-bank.ts",
     "test:server": "npm --prefix server run typecheck && npm --prefix server test",
     "website:build": "node website/build.mjs",
     "website:emblems": "tsx scripts/generate-website-emblems.ts",
     "functions:build": "tsx scripts/build-functions.ts",
-    "env:check": "tsx scripts/check-env.ts"
+    "env:check": "tsx scripts/check-env.ts",
+    "tts": "tsx --env-file=.env scripts/build-tts.ts"
   },
   "private": true,
   "jest": {

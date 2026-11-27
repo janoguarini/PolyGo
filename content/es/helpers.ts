@@ -27,9 +27,11 @@ export const w = (
   extra: Partial<WordDef> = {},
 ): WordDef => ({ id, text, translation, exampleEn, exampleEs, tags, ...extra });
 
-/** Velocidad del audio: A1 más lento, A2 un poco menos (nunca acelerado). */
+/** Velocidad del audio: A1 más lento, A2 un poco menos, B1 casi normal (nunca acelerado). */
 export const ES_A1_RATE = 0.85;
 export const ES_A2_RATE = 0.9;
+/** B1: velocidad normal de conversación pausada (docs/ES_B1.md). */
+export const ES_B1_RATE = 0.95;
 
 export const dialogue = (
   id: string,
