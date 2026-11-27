@@ -4,11 +4,13 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Alert } from 'react-native';
 
 import { ErrorState, LoadingState, Screen } from '@/design-system';
-import type { AttemptInput, GradedAttemptInput } from '@/features/learning/api';
+import { useAuth } from '@/features/auth/AuthProvider';
+import type { AttemptInput, GradedAttemptInput, LearningSummary } from '@/features/learning/api';
 import { SessionPlayer } from '@/features/learning/components/SessionPlayer';
 import { SessionResults } from '@/features/learning/components/SessionResults';
 import { WritingPracticeCard } from '@/features/learning/components/WritingPracticeCard';
 import {
+  learningKeys,
   useCurriculum,
   useLessonContent,
   useLessonPresentation,
@@ -17,6 +19,7 @@ import {
 import { sessionStats, type PlayerState } from '@/features/learning/player';
 import { recordPractice } from '@/features/reminders/practiceLog';
 import { track } from '@/lib/analytics';
+import { metaFirstLesson } from '@/lib/metaEvents';
 import { matchPresentations, toGradedAttempts } from '@/features/learning/presentation';
 import { SessionLanguageProvider } from '@/features/learning/SessionLanguageProvider';
 import { uuid } from '@/features/learning/random';
@@ -56,6 +59,7 @@ function LessonScreen() {
   // esta lección (lessonWarmup.ts), se usa esa sesión: contenido y presentación ya están en caché y la
   // lección abre al instante.
   const qc = useQueryClient();
+  const userId = useAuth().session?.user.id;
   const [sessionId] = useState(() => takeWarmSession(qc, id) ?? uuid());
   const [startedAt] = useState(() => new Date());
   // Fase 2: el servidor registra qué se presenta y corrige. Si no responde, la ruta vieja.
@@ -107,10 +111,15 @@ function LessonScreen() {
         accuracy: stats.accuracy,
         duration_s: Math.round((Date.now() - startedAt.getTime()) / 1000),
       });
+      // Meta Ads: primera lección de la cuenta (el resumen, todavía sin esta, dice 0 terminadas).
+      const before = userId
+        ? qc.getQueryData<LearningSummary>(learningKeys.summary(userId))
+        : undefined;
+      if (userId && before && before.lessons_completed === 0) void metaFirstLesson(userId, id);
       setFinished({ state, attempts, graded, endedAt: new Date() });
       save(attempts, graded);
     },
-    [save, presented, id, startedAt],
+    [save, presented, id, startedAt, userId, qc],
   );
 
   const confirmExit = () =>

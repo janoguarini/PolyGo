@@ -51,6 +51,7 @@ import {
 import { useLanguageName } from '@/i18n/languages';
 import { toUserMessage } from '@/lib/errors';
 import { track } from '@/lib/analytics';
+import { metaRegistration, requestTracking } from '@/lib/metaEvents';
 import { playSound } from '@/lib/sounds';
 
 /**
@@ -201,6 +202,9 @@ export default function OnboardingScreen() {
               suggested_username: usedSuggestion,
               interface_language: ui,
             });
+            // Meta Ads: cuenta creada, y en iOS el aviso de rastreo (una vez, ya dentro de la app).
+            void metaRegistration();
+            setTimeout(() => void requestTracking(), 1500);
             // El idioma de la app queda en el perfil: así el servidor escribe los push en ese idioma.
             // Si falla (sin conexión, o pt-BR / it sin la migración), queda pendiente y se reintenta.
             void chooseLanguage(ui);

@@ -5,6 +5,7 @@ import { useAuth } from '@/features/auth/AuthProvider';
 import { usePlus } from '@/features/plus/api';
 import { useMyProfile } from '@/features/profile/hooks';
 import { identifyUser, initAnalytics, resetAnalytics, trackScreen } from '@/lib/analytics';
+import { initMeta } from '@/lib/metaEvents';
 
 /**
  * Nombre de pantalla para la analítica: la ruta como plantilla, sin los grupos de Expo Router y con
@@ -34,6 +35,7 @@ export function AnalyticsBootstrap() {
 
   useEffect(() => {
     initAnalytics();
+    initMeta();
   }, []);
 
   useEffect(() => {

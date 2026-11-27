@@ -39,6 +39,7 @@ import {
 import { settingsStrings } from '@/i18n/screens/settings';
 import type { ProfileVisibility } from '@/lib/database.types';
 import { analyticsAvailable, analyticsEnabled, setAnalyticsEnabled } from '@/lib/analytics';
+import { setMetaEnabled } from '@/lib/metaEvents';
 import { env } from '@/lib/env';
 import { toUserMessage } from '@/lib/errors';
 
@@ -139,6 +140,7 @@ export default function SettingsScreen() {
             value={usageData}
             onValueChange={(enabled) => {
               setAnalyticsEnabled(enabled);
+              setMetaEnabled(enabled);
               setUsageData(enabled);
             }}
             trackColor={{ false: colors.surfaceHighlight, true: colors.primary }}

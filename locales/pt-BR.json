@@ -1,7 +1,8 @@
 {
   "ios": {
     "CFBundleDisplayName": "PolyGo",
-    "NSPhotoLibraryUsageDescription": "O PolyGo usa suas fotos só para você escolher sua foto de perfil."
+    "NSPhotoLibraryUsageDescription": "O PolyGo usa suas fotos só para você escolher sua foto de perfil.",
+    "NSUserTrackingUsageDescription": "O PolyGo usa esta permissão para medir quais anúncios te trouxeram ao app e mostrar publicidade mais relevante. Nunca vendemos seus dados."
   },
   "android": {
     "app_name": "PolyGo"

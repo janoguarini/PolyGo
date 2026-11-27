@@ -62,6 +62,7 @@ import { GoldButton, PLUS_INK as INK } from '@/features/plus/components/GoldButt
 import { APPLE_STANDARD_EULA } from '@/features/plus/storeConfig';
 import { useLocale, useStrings } from '@/i18n';
 import { track } from '@/lib/analytics';
+import { metaPurchase } from '@/lib/metaEvents';
 import { plusStrings } from '@/i18n/screens/plus';
 import { env } from '@/lib/env';
 
@@ -229,6 +230,14 @@ export default function PlusScreen() {
             : 'purchase_failed',
           { ...product, outcome },
         );
+        if (outcome === 'success' || outcome === 'confirming') {
+          metaPurchase({
+            price: item.price,
+            currency: item.currencyCode,
+            productId: item.productId,
+            kind: wants,
+          });
+        }
         setNotice({ kind: 'purchase', outcome });
         if (outcome === 'success' || outcome === 'confirming') refreshEntitlements();
       })

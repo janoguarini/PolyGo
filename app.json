@@ -163,7 +163,13 @@
           }
         }
       ],
-      "expo-sharing"
+      "expo-sharing",
+      [
+        "expo-tracking-transparency",
+        {
+          "userTrackingPermission": "PolyGo usa este permiso para medir qué anuncios te trajeron a la app y mostrarte publicidad más relevante. No vendemos tus datos."
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
