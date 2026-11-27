@@ -1,3 +1,4 @@
+import { voseoIn } from '../../shared/neutralSpanish';
 import { verdictForText } from '../../shared/answers';
 import { ARCADE, sentencePool, type ArcadeSentence } from '../../shared/arcade';
 import { TIERS } from '../../shared/ranking';
@@ -82,20 +83,6 @@ const VOSEO = new Set([
   'estudiás',
   'trabajás',
   'necesitás',
-]);
-/** Formas del tuteo: las traducciones del curso de inglés van con voseo, como toda la app. */
-const TUTEO = new Set([
-  'tú',
-  'tienes',
-  'eres',
-  'quieres',
-  'puedes',
-  'sabes',
-  'vives',
-  'hablas',
-  'necesitas',
-  'estudias',
-  'trabajas',
 ]);
 
 // ---------------------------------------------------------------------------------------------
@@ -245,10 +232,17 @@ export function bankProblems(language: WordRushLanguage): string[] {
       const voseo = esTokens(def.sentence).filter((t) => VOSEO.has(t));
       if (voseo.length > 0) problems.push(`${where}: voseo en el curso de español: ${voseo}`);
     }
-    if (language === 'en') {
-      const tuteo = esTokens(def.translation).filter((t) => TUTEO.has(t));
-      if (tuteo.length > 0)
-        problems.push(`${where}: la traducción usa tú (la app usa vos): ${tuteo.join(', ')}`);
+    // Las traducciones al español de los demás idiomas van en español neutro, como toda la app
+    // (docs/NEUTRAL_SPANISH.md): sin voseo.
+    if (language !== 'es') {
+      const voseo = [
+        ...esTokens(def.translation).filter((t) => VOSEO.has(t)),
+        ...voseoIn(def.translation).map((h) => h.form.toLowerCase()),
+      ];
+      if (voseo.length > 0)
+        problems.push(
+          `${where}: la traducción usa voseo (la app usa español neutro): ${[...new Set(voseo)].join(', ')}`,
+        );
     }
   }
 

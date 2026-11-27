@@ -52,7 +52,7 @@ export const EN_A2_U17: ExpansionUnitDef = {
       'Lo que estaba pasando (was/were + -ing), when y while, accidentes y el orden de un relato.',
     emoji: '📖',
     objective:
-      'Podés contar una historia corta del pasado: qué estaba pasando, qué pasó de repente y cómo terminó.',
+      'Puedes contar una historia corta del pasado: qué estaba pasando, qué pasó de repente y cómo terminó.',
     grammar: {
       title: 'Past continuous',
       explanation:
@@ -260,8 +260,8 @@ export const EN_A2_U17: ExpansionUnitDef = {
           ],
         },
         takeaways: [
-          'Contás qué estaba pasando: I was cooking, they were sleeping.',
-          'Preguntás: What were you doing at eight?',
+          'Cuentas qué estaba pasando: I was cooking, they were sleeping.',
+          'Preguntas: What were you doing at eight?',
         ],
         exercises: [
           ex.fillBlank(
@@ -359,8 +359,8 @@ export const EN_A2_U17: ExpansionUnitDef = {
           ],
         },
         takeaways: [
-          'Contás una acción que interrumpe otra: I was cooking when the phone rang.',
-          'Usás while con la acción larga.',
+          'Cuentas una acción que interrumpe otra: I was cooking when the phone rang.',
+          'Usas while con la acción larga.',
         ],
         exercises: [
           ex.matchPairs(
@@ -452,8 +452,8 @@ export const EN_A2_U17: ExpansionUnitDef = {
           ],
         },
         takeaways: [
-          'Preguntás What happened? y contás un accidente.',
-          'Decís cómo te sentiste: I was scared.',
+          'Preguntas What happened? y cuentas un accidente.',
+          'Dices cómo te sentiste: I was scared.',
         ],
         exercises: [
           ex.translationChoice(
@@ -547,8 +547,8 @@ export const EN_A2_U17: ExpansionUnitDef = {
           ],
         },
         takeaways: [
-          'Ordenás una historia con at first, then, the next day e in the end.',
-          'Contás cuándo empezó algo: It began to rain.',
+          'Ordenas una historia con at first, then, the next day e in the end.',
+          'Cuentas cuándo empezó algo: It began to rain.',
         ],
         exercises: [
           ex.matchPairs(
@@ -646,7 +646,7 @@ export const EN_A2_U17: ExpansionUnitDef = {
         objective: 'Contar una historia corta con comienzo, problema y final.',
         intro: {
           explanation:
-            'Una historia corta tiene un comienzo (dónde estabas y qué estabas haciendo), algo que pasó de repente y un final. Usá was/were + -ing para la escena y el past simple para lo que pasó.',
+            'Una historia corta tiene un comienzo (dónde estabas y qué estabas haciendo), algo que pasó de repente y un final. Usa was/were + -ing para la escena y el past simple para lo que pasó.',
           examples: [
             {
               target: 'I was walking home when I saw an old friend.',
@@ -656,8 +656,8 @@ export const EN_A2_U17: ExpansionUnitDef = {
           ],
         },
         takeaways: [
-          'Contás una historia corta con comienzo, problema y final.',
-          'Combinás el past continuous y el past simple.',
+          'Cuentas una historia corta con comienzo, problema y final.',
+          'Combinas el past continuous y el past simple.',
         ],
         exercises: [
           question(

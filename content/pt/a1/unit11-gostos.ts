@@ -24,10 +24,10 @@ export const unit11: UnitDef = {
   title: 'Gustos',
   titleEn: 'Eu gosto de…',
   description:
-    'Decir lo que te gusta con gostar de, preguntar gustos, decir lo que podés hacer y dos falsos amigos.',
+    'Decir lo que te gusta con gostar de, preguntar gustos, decir lo que puedes hacer y dos falsos amigos.',
   emoji: '❤️',
   objective:
-    'Podés decir eu gosto de… / não gosto de…, preguntar você gosta de…?, responder eu também / eu também não y usar posso y pode con un verbo.',
+    'Puedes decir eu gosto de… / não gosto de…, preguntar você gosta de…?, responder eu também / eu também não y usar posso y pode con un verbo.',
   grammar: {
     title: 'Gostar de (≠ gustar) · poder + infinitivo',
     explanation:
@@ -35,7 +35,7 @@ export const unit11: UnitDef = {
     examples: [
       { target: 'Eu gosto de futebol.', base: 'Me gusta el fútbol.' },
       { target: 'Eu gosto da praia.', base: 'Me gusta la playa.' },
-      { target: 'Você pode jogar amanhã?', base: '¿Podés jugar mañana?' },
+      { target: 'Você pode jogar amanhã?', base: '¿Puedes jugar mañana?' },
     ],
   },
   review: {
@@ -154,7 +154,7 @@ export const unit11: UnitDef = {
       'ler',
       'leer',
       'Eu gosto de ler à noite.',
-      'Me gusta leer a la noche.',
+      'Me gusta leer por la noche.',
       ['verbs', 'hobbies'],
       { emoji: '📖' },
     ),
@@ -162,11 +162,11 @@ export const unit11: UnitDef = {
     w(
       'pt-pode',
       'pode',
-      'puede / podés (con você)',
+      'puede / puedes (con você)',
       'Você pode jogar amanhã?',
-      '¿Podés jugar mañana?',
+      '¿Puedes jugar mañana?',
       ['verbs'],
-      { acceptedTranslations: ['puede', 'podés', 'puedes'] },
+      { acceptedTranslations: ['puede', 'podés', 'puedes', 'puede / podés (con você)'] },
     ),
     w('pt-legal', 'legal', 'genial', 'Que legal!', '¡Qué genial!', ['likes'], {
       acceptedTranslations: ['copado', 'bárbaro', 'buenísimo'],
@@ -195,7 +195,7 @@ export const unit11: UnitDef = {
           { target: 'Eu não gosto de cozinhar.', base: 'No me gusta cocinar.' },
         ],
       },
-      takeaways: ['Decís lo que te gusta con gosto de.', 'Negás con não gosto de.'],
+      takeaways: ['Dices lo que te gusta con gosto de.', 'Niegas con não gosto de.'],
       exercises: [
         ex.translationChoice(
           'gosto de',
@@ -225,7 +225,7 @@ export const unit11: UnitDef = {
           ['nem', 'sem', 'no'],
           ['pt-nao-gosto', 'pt-cozinhar'],
         ),
-        ex.orderWords('Eu gosto de cozinhar à noite.', 'Me gusta cocinar a la noche.', [
+        ex.orderWords('Eu gosto de cozinhar à noite.', 'Me gusta cocinar por la noche.', [
           'pt-gosto-de',
           'pt-cozinhar',
           'pt-a-noite',
@@ -257,7 +257,7 @@ export const unit11: UnitDef = {
           { target: 'Eu gosto muito do meu cachorro.', base: 'Quiero mucho a mi perro.' },
         ],
       },
-      takeaways: ['Juntás de con el artículo: do, da.', 'Sabés que cachorro es «perro».'],
+      takeaways: ['Juntas de con el artículo: do, da.', 'Sabes que cachorro es «perro».'],
       exercises: [
         ex.imageChoice('🏖️', 'praia', ['rua', 'escola', 'cozinha'], ['pt-praia']),
         ex.imageChoice('🐶', 'cachorro', ['futebol', 'filme', 'cadeira'], ['pt-cachorro']),
@@ -327,7 +327,7 @@ export const unit11: UnitDef = {
           },
         ],
       },
-      takeaways: ['Preguntás você gosta de…?', 'Respondés eu também o eu também não.'],
+      takeaways: ['Preguntas você gosta de…?', 'Respondes eu também o eu também não.'],
       exercises: [
         ex.translationChoice(
           'adoro',
@@ -372,7 +372,7 @@ export const unit11: UnitDef = {
         ]),
         ex.shortAnswer(
           'Eu gosto de dançar. E você?',
-          'Me gusta bailar. ¿Y a vos? (Respondé que a vos también.)',
+          'Me gusta bailar. ¿Y a ti? (Responde que a ti también.)',
           'Eu também.',
           ['Eu também!', 'Eu também gosto.', 'Também.', 'Eu também gosto de dançar.'],
           ['pt-eu-tambem'],
@@ -391,11 +391,11 @@ export const unit11: UnitDef = {
         explanation:
           'Que legal! es «¡qué genial!»: en Brasil legal se usa para todo lo que está bueno. Ojo: esquisito NO es «exquisito», es «raro». Para algo rico se dice gostoso.',
         examples: [
-          { target: 'Você joga futebol? Que legal!', base: '¿Jugás al fútbol? ¡Qué genial!' },
+          { target: 'Você joga futebol? Que legal!', base: '¿Juegas al fútbol? ¡Qué genial!' },
           { target: 'Que filme esquisito!', base: '¡Qué película rara!' },
         ],
       },
-      takeaways: ['Decís que algo está bueno con que legal!', 'Sabés que esquisito es «raro».'],
+      takeaways: ['Dices que algo está bueno con que legal!', 'Sabes que esquisito es «raro».'],
       exercises: [
         ex.translationChoice('legal', 'genial', ['raro', 'rico', 'lejos'], ['pt-legal']),
         ex.translationChoice('esquisito', 'raro', ['rico', 'genial', 'lindo'], ['pt-esquisito'], {
@@ -419,14 +419,14 @@ export const unit11: UnitDef = {
             skill: 'vocabulary',
           },
         ),
-        ex.orderWords('Eu adoro ler à noite.', 'Me encanta leer a la noche.', [
+        ex.orderWords('Eu adoro ler à noite.', 'Me encanta leer por la noche.', [
           'pt-adoro',
           'pt-ler',
           'pt-a-noite',
         ]),
         ex.shortAnswer(
           'Eu jogo futebol todo dia.',
-          'Juego al fútbol todos los días. (Respondé «¡qué genial!».)',
+          'Juego al fútbol todos los días. (Responde «¡qué genial!».)',
           'Que legal!',
           ['Que legal.', 'Legal!'],
           ['pt-legal'],
@@ -441,18 +441,18 @@ export const unit11: UnitDef = {
       objective: 'Pedir permiso y preguntar si alguien puede.',
       intro: {
         explanation:
-          'Posso es «puedo» y (você) pode «podés». Van con el verbo en infinitivo: posso pagar? («¿puedo pagar?»), você pode jogar amanhã?',
+          'Posso es «puedo» y (você) pode «puedes». Van con el verbo en infinitivo: posso pagar? («¿puedo pagar?»), você pode jogar amanhã?',
         examples: [
           { target: 'Posso pagar?', base: '¿Puedo pagar?' },
           { target: 'Hoje eu não posso.', base: 'Hoy no puedo.' },
         ],
       },
-      takeaways: ['Pedís permiso con posso…?', 'Preguntás você pode…?'],
+      takeaways: ['Pides permiso con posso…?', 'Preguntas você pode…?'],
       exercises: [
-        ex.translationChoice('posso', 'puedo', ['quiero', 'tengo', 'podés'], ['pt-posso']),
+        ex.translationChoice('posso', 'puedo', ['quiero', 'tengo', 'puedes'], ['pt-posso']),
         ex.translationChoice(
           'pode',
-          'puede / podés (con você)',
+          'puede / puedes (con você)',
           ['quiere', 'tiene', 'va'],
           ['pt-pode'],
         ),
@@ -483,7 +483,7 @@ export const unit11: UnitDef = {
           'pt-cozinhar',
           'pt-hoje',
         ]),
-        ex.translateWrite('¿Podés jugar mañana?', 'Você pode jogar amanhã?', [
+        ex.translateWrite('¿Puedes jugar mañana?', 'Você pode jogar amanhã?', [
           'pt-voce',
           'pt-pode',
           'pt-jogar',

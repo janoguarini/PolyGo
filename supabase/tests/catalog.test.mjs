@@ -9,7 +9,11 @@ import { readFileSync } from 'node:fs';
 
 import { createDb, createUser, as } from './harness.mjs';
 import { CURRICULUM_PATH } from '../../content/index.ts';
-import { PHASE5_PRACTICE_SOURCES, PRACTICE_SOURCES, SRS_V2_PRACTICE_SOURCES } from '../../content/practice-sources.ts';
+import {
+  PHASE5_PRACTICE_SOURCES,
+  PRACTICE_SOURCES,
+  SRS_V2_PRACTICE_SOURCES,
+} from '../../content/practice-sources.ts';
 import { contentSql } from '../../scripts/content-sql.ts';
 import { COMPREHENSION_OBJECTIVES } from '../../content/comprehension.ts';
 import { PLANNED_OBJECTIVES } from '../../content/planned-objectives.ts';
@@ -17,7 +21,9 @@ import { PLANNED_OBJECTIVES } from '../../content/planned-objectives.ts';
 // Los únicos objetivos que traen las migraciones: los 24 propuestos (draft) de la fase C
 // (20261113120100_comprehension_en_a1.sql, docs/LEARNING_PHASE_C.md). content/objectives.ts sigue vacío.
 // La C.3 (20261113120300) no crea objetivos: amplía las relaciones de cuatro (PLANNED_OBJECTIVES).
-const LOADED = COMPREHENSION_OBJECTIVES.map((o) => PLANNED_OBJECTIVES.find((p) => p.id === o.id) ?? o);
+const LOADED = COMPREHENSION_OBJECTIVES.map(
+  (o) => PLANNED_OBJECTIVES.find((p) => p.id === o.id) ?? o,
+);
 const PHASE_C = {
   objectives: LOADED.length,
   objective_concepts: LOADED.reduce((n, o) => n + o.concepts.length, 0),
@@ -115,7 +121,11 @@ test('practice_sources: exactamente las filas de content/practice-sources.ts', a
       counts_for_streak, evidence_class, reward_kind, plus_feature, active
     from public.practice_sources order by id`);
   // Fase 1 (§6.1) + los dos orígenes del SRS v2 (fase 3, §11 del diseño de Adaptive) + basic_review (fase 5).
-  const expected = [...PRACTICE_SOURCES, ...SRS_V2_PRACTICE_SOURCES, ...PHASE5_PRACTICE_SOURCES].sort((a, b) => (a.id < b.id ? -1 : 1));
+  const expected = [
+    ...PRACTICE_SOURCES,
+    ...SRS_V2_PRACTICE_SOURCES,
+    ...PHASE5_PRACTICE_SOURCES,
+  ].sort((a, b) => (a.id < b.id ? -1 : 1));
   assert.deepEqual(rows, expected);
   // D3: práctica libre y «Tus errores» no tocan el SRS; ningún origen es Ranked (§14).
   assert.deepEqual(
@@ -169,7 +179,9 @@ test('objetivos: el esquema existe y sólo están los propuestos de la fase C, e
   const loaded = await all(`select id, status from public.learning_objectives order by id`);
   assert.deepEqual(
     loaded,
-    COMPREHENSION_OBJECTIVES.map((o) => ({ id: o.id, status: 'draft' })).sort((a, b) => (a.id < b.id ? -1 : 1)),
+    COMPREHENSION_OBJECTIVES.map((o) => ({ id: o.id, status: 'draft' })).sort((a, b) =>
+      a.id < b.id ? -1 : 1,
+    ),
   );
   const cons = await all(`select conname from pg_constraint
     where conrelid in ('public.learning_objectives'::regclass, 'public.objective_concepts'::regclass,
@@ -220,11 +232,15 @@ test('objetivos: content:sql carga objetivos y relaciones desde content/ y es id
       ],
     );
     assert.deepEqual(
-      await all(`select lesson_id, objective_id, role from public.lesson_objectives where objective_id = '${OBJ.id}'`),
+      await all(
+        `select lesson_id, objective_id, role from public.lesson_objectives where objective_id = '${OBJ.id}'`,
+      ),
       [{ lesson_id: 'a1-u01-l01', objective_id: OBJ.id, role: 'introduce' }],
     );
     assert.deepEqual(
-      await all(`select item_id, objective_id, language_code from public.item_objectives where objective_id = '${OBJ.id}'`),
+      await all(
+        `select item_id, objective_id, language_code from public.item_objectives where objective_id = '${OBJ.id}'`,
+      ),
       [{ item_id: 'a1-u01-l01-e01', objective_id: OBJ.id, language_code: 'en' }],
     );
     const once = await counts();
@@ -241,12 +257,19 @@ test('objetivos: content:sql carga objetivos y relaciones desde content/ y es id
         },
       ],
     });
-    assert.deepEqual(await one(`select can_do_es, status from public.learning_objectives where id = '${OBJ.id}'`), {
-      can_do_es: 'Prueba: otro texto',
-      status: 'active',
-    });
+    assert.deepEqual(
+      await one(`select can_do_es, status from public.learning_objectives where id = '${OBJ.id}'`),
+      {
+        can_do_es: 'Prueba: otro texto',
+        status: 'active',
+      },
+    );
     assert.equal(
-      (await one(`select role from public.objective_concepts where objective_id = '${OBJ.id}' and concept_id = 'en-hello'`)).role,
+      (
+        await one(
+          `select role from public.objective_concepts where objective_id = '${OBJ.id}' and concept_id = 'en-hello'`,
+        )
+      ).role,
       'support',
     );
     const identity = await failure(
@@ -341,19 +364,22 @@ test('personas: sólo la de U13 (fase C.2); content:sql las carga y una persona 
   await inRollback(async () => {
     await load({ personas: [PERSONA] });
     await load({ personas: [PERSONA] });
-    assert.deepEqual(await all(`select * from public.content_personas where id = '${PERSONA.id}'`), [
-      {
-        id: PERSONA.id,
-        language_code: 'en',
-        display_name: 'Zz Test',
-        age: 30,
-        city: 'Testville',
-        country: 'Testland',
-        phone: '000-0000',
-        email: 'zz.test@example.com',
-        fictional: true,
-      },
-    ]);
+    assert.deepEqual(
+      await all(`select * from public.content_personas where id = '${PERSONA.id}'`),
+      [
+        {
+          id: PERSONA.id,
+          language_code: 'en',
+          display_name: 'Zz Test',
+          age: 30,
+          city: 'Testville',
+          country: 'Testland',
+          phone: '000-0000',
+          email: 'zz.test@example.com',
+          fictional: true,
+        },
+      ],
+    );
     const changed = await failure(contentSql([UNIT], { personas: [{ ...PERSONA, age: 31 }] }).sql);
     assert.match(String(changed?.message), /una persona no cambia/);
     // Una persona de otro idioma no entra en el tramo inglés.
@@ -457,6 +483,12 @@ test('el SRS v1 y learning_sessions no cambian; nada existente referencia las ta
   // (el origen de cada sesión aplicada y de cada plan).
   assert.deepEqual(
     fks.map((r) => r.t),
-    ['item_objectives', 'lesson_objectives', 'objective_concepts', 'srs_applied_sessions', 'srs_session_plans'],
+    [
+      'item_objectives',
+      'lesson_objectives',
+      'objective_concepts',
+      'srs_applied_sessions',
+      'srs_session_plans',
+    ],
   );
 });

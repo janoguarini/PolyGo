@@ -12,10 +12,10 @@ export const rankedScreenStrings = defineStrings({
     comingSoon: (code: string | null | undefined) =>
       `Ranked en ${languageName(code, 'es').toLowerCase()} llega pronto`,
     comingSoonBody:
-      'Las partidas se habilitan cuando el nivel A1 de este idioma esté completo. Para jugar ahora, cambiá a otro idioma desde tu perfil: tu progreso en cada idioma se guarda.',
+      'Las partidas se habilitan cuando el nivel A1 de este idioma esté completo. Para jugar ahora, cambia a otro idioma desde tu perfil: tu progreso en cada idioma se guarda.',
     goToProfile: 'Ir al perfil',
     disabledBody:
-      'Las partidas Ranked y la práctica están desactivadas en esta versión de PolyGo. Podés seguir desafiando a tus amigos: esas partidas no mueven el ELO.',
+      'Las partidas Ranked y la práctica están desactivadas en esta versión de PolyGo. Puedes seguir desafiando a tus amigos: esas partidas no mueven el ELO.',
     gameMode: 'MODO DE JUEGO',
     findMatch: 'Buscar partida',
     findMatchHint: 'Busca un rival con un ELO similar',
@@ -23,7 +23,7 @@ export const rankedScreenStrings = defineStrings({
     practiceHint: 'Una partida de Word Rush de 60 segundos contra el reloj, sin rival',
     playWithFriend: 'JUGAR CON UN AMIGO',
     playWithFriendBody:
-      'Mandale un código y juegan la misma partida en vivo. Amistoso: no mueve el ELO.',
+      'Mándale un código y juegan la misma partida en vivo. Amistoso: no mueve el ELO.',
     challengeCode: 'Código del desafío',
     joinChallenge: 'Entrar al desafío',
     back: 'Volver',
@@ -58,5 +58,61 @@ export const rankedScreenStrings = defineStrings({
     challengeFriend: 'Challenge a friend',
     challengeFriendHint: 'Creates a code to share with a friend',
     haveCode: 'I have a code',
+  },
+  'pt-BR': {
+    leaderboardA11y: (position: number | null | undefined) =>
+      position ? `Classificação: você está na posição ${position} do mundo` : 'Classificação',
+    top: 'Top',
+    seasonEnds: (season: string, date: string) => `${season} · Termina em ${date}`,
+    modeWordRush: 'MODO · WORD RUSH',
+    comingSoon: (code: string | null | undefined) =>
+      `Ranked em ${languageName(code, 'pt-BR').toLowerCase()} chega em breve`,
+    comingSoonBody:
+      'As partidas são liberadas quando o nível A1 deste idioma estiver completo. Para jogar agora, mude para outro idioma no seu perfil: seu progresso em cada idioma fica salvo.',
+    goToProfile: 'Ir para o perfil',
+    disabledBody:
+      'As partidas Ranked e o treino estão desativados nesta versão do PolyGo. Você ainda pode desafiar seus amigos: essas partidas não mexem no ELO.',
+    gameMode: 'MODO DE JOGO',
+    findMatch: 'Buscar partida',
+    findMatchHint: 'Procura um rival com ELO parecido',
+    practiceNoElo: 'Treinar sem ELO',
+    practiceHint: 'Uma partida de Word Rush de 60 segundos contra o relógio, sem rival',
+    playWithFriend: 'JOGAR COM UM AMIGO',
+    playWithFriendBody:
+      'Mande um código e vocês jogam a mesma partida ao vivo. Amistoso: não mexe no ELO.',
+    challengeCode: 'Código do desafio',
+    joinChallenge: 'Entrar no desafio',
+    back: 'Voltar',
+    challengeFriend: 'Desafiar um amigo',
+    challengeFriendHint: 'Cria um código para compartilhar com um amigo',
+    haveCode: 'Tenho um código',
+  },
+  it: {
+    leaderboardA11y: (position: number | null | undefined) =>
+      position ? `Classifica: sei in posizione ${position} nel mondo` : 'Classifica',
+    top: 'Top',
+    seasonEnds: (season: string, date: string) => `${season} · Fine: ${date}`,
+    modeWordRush: 'MODALITÀ · WORD RUSH',
+    comingSoon: (code: string | null | undefined) =>
+      `Ranked in ${languageName(code, 'it').toLowerCase()} arriva presto`,
+    comingSoonBody:
+      'Le partite si sbloccano quando il livello A1 di questa lingua è completo. Per giocare ora, passa a un’altra lingua dal tuo profilo: i tuoi progressi in ogni lingua restano salvati.',
+    goToProfile: 'Vai al profilo',
+    disabledBody:
+      'Le partite Ranked e l’allenamento sono disattivati in questa versione di PolyGo. Puoi comunque sfidare i tuoi amici: quelle partite non cambiano l’ELO.',
+    gameMode: 'MODALITÀ DI GIOCO',
+    findMatch: 'Cerca partita',
+    findMatchHint: 'Cerca un avversario con un ELO simile',
+    practiceNoElo: 'Allenati senza ELO',
+    practiceHint: 'Una partita di Word Rush da 60 secondi contro il tempo, senza avversario',
+    playWithFriend: 'GIOCA CON UN AMICO',
+    playWithFriendBody:
+      'Mandagli un codice e giocate la stessa partita dal vivo. Amichevole: non cambia l’ELO.',
+    challengeCode: 'Codice della sfida',
+    joinChallenge: 'Entra nella sfida',
+    back: 'Indietro',
+    challengeFriend: 'Sfida un amico',
+    challengeFriendHint: 'Crea un codice da condividere con un amico',
+    haveCode: 'Ho un codice',
   },
 });

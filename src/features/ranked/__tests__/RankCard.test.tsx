@@ -26,7 +26,7 @@ describe('RankCard', () => {
     await render(<RankCard rating={rating({ games_played: 2, losses: 2 })} />);
     expect(screen.getByText('Sin posicionar')).toBeTruthy();
     expect(
-      screen.getByText('Ganá tu primera partida para entrar al ranking en Bronce.'),
+      screen.getByText('Gana tu primera partida para entrar al ranking en Bronce.'),
     ).toBeTruthy();
     expect(screen.queryByText('100 ELO')).toBeNull();
   });

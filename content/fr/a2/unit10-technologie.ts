@@ -64,10 +64,10 @@ export const FR_A2_U10: FrUnitDef = {
     title: 'Tecnología y comunicación',
     titleEn: 'La technologie',
     description:
-      "La compu, el celular y las apps; envoyer, recevoir, appeler; los pronombres le, la, l', les y lui, leur antes del verbo. Falso amigo: marcher (funcionar).",
+      "La computadora, el celular y las apps; envoyer, recevoir, appeler; los pronombres le, la, l', les y lui, leur antes del verbo. Falso amigo: marcher (funcionar).",
     emoji: '💻',
     objective:
-      'Podés hablar de tu compu y tu celular, decir que algo no funciona, mandar y recibir mensajes y mails, y decir a quién llamás, ves, escribís o hablás sin repetir su nombre.',
+      'Puedes hablar de tu computadora y tu celular, decir que algo no funciona, mandar y recibir mensajes y mails, y decir a quién llamas, ves, escribes o hablas sin repetir su nombre.',
     grammar: {
       title: "Pronombres le, la, l', les · lui, leur",
       explanation:
@@ -241,7 +241,8 @@ export const FR_A2_U10: FrUnitDef = {
       // ------------------------------------------------------------------------------------ L1
       {
         title: "L'ordinateur et le portable",
-        objective: 'Nombrar la compu, el celular, la pantalla y las apps, y decir si funcionan.',
+        objective:
+          'Nombrar la computadora, el celular, la pantalla y las apps, y decir si funcionan.',
         intro: {
           explanation:
             "L'ordinateur es la computadora, le portable el celular, l'écran la pantalla y l'appli (de application) la app. Falso amigo: marcher es caminar, pero también funcionar: mon portable ne marche pas (mi celular no anda). Appli es femenino, pero delante de vocal ma se vuelve mon: mon appli. Pronunciación: con liaison, mon‿ordinateur se une con un sonido n y deux‿écrans, con un sonido z.",
@@ -254,8 +255,8 @@ export const FR_A2_U10: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Nombrás l'ordinateur, le portable, l'écran y l'appli.",
-          'Decís que algo no funciona con ne marche pas.',
+          "Nombras l'ordinateur, le portable, l'écran y l'appli.",
+          'Dices que algo no funciona con ne marche pas.',
         ],
         exercises: [
           ex.translationChoice(
@@ -306,7 +307,7 @@ export const FR_A2_U10: FrUnitDef = {
           ),
           ex.fillBlank(
             "L'écran de mon ordinateur est très ___.",
-            'La pantalla de mi compu es muy chica.',
+            'La pantalla de mi computadora es muy chica.',
             'petit',
             ['petite', 'petits', 'petites'],
             ['fr-l-ecran', 'fr-l-ordinateur'],
@@ -358,8 +359,8 @@ export const FR_A2_U10: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Conjugás envoyer (j'envoie) y recevoir (je reçois).",
-          "Contás lo que mandaste o recibiste con j'ai envoyé y j'ai reçu.",
+          "Conjugas envoyer (j'envoie) y recevoir (je reçois).",
+          "Cuentas lo que mandaste o recibiste con j'ai envoyé y j'ai reçu.",
         ],
         exercises: [
           ex.translationChoice(
@@ -445,7 +446,7 @@ export const FR_A2_U10: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Tu envoies un message à Léa?',
-            '¿Le mandás un mensaje a Léa? (Respondé que sí.)',
+            '¿Le mandas un mensaje a Léa? (Responde que sí.)',
             "Oui, j'envoie un message à Léa.",
             ["Oui, j'envoie un message à Léa", 'Oui, je lui envoie un message.'],
             ['fr-envoyer', 'fr-le-message'],
@@ -467,8 +468,8 @@ export const FR_A2_U10: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Conjugás appeler: j'appelle con ll, vous appelez con una sola l.",
-          'Hablás de descargar, de contraseñas y de estar en línea.',
+          "Conjugas appeler: j'appelle con ll, vous appelez con una sola l.",
+          'Hablas de descargar, de contraseñas y de estar en línea.',
         ],
         exercises: [
           ex.translationChoice(
@@ -562,7 +563,7 @@ export const FR_A2_U10: FrUnitDef = {
         objective: "Reemplazar a una persona o una cosa con le, la, l' y les.",
         intro: {
           explanation:
-            "Con verbos sin à, como appeler o voir, la persona o la cosa se reemplaza con le (masculino), la (femenino), l' (delante de vocal) o les (plural), y el pronombre va delante del verbo: Paul? Je l'appelle. En la negación queda pegado al verbo: je ne l'appelle pas. Con un infinitivo va delante del infinitivo: je vais l'appeler (voy a llamarlo). Escuchá la diferencia: je le vois (e muda) y je les vois (e cerrada, como en el español «mes»).",
+            "Con verbos sin à, como appeler o voir, la persona o la cosa se reemplaza con le (masculino), la (femenino), l' (delante de vocal) o les (plural), y el pronombre va delante del verbo: Paul? Je l'appelle. En la negación queda pegado al verbo: je ne l'appelle pas. Con un infinitivo va delante del infinitivo: je vais l'appeler (voy a llamarlo). Escucha la diferencia: je le vois (e muda) y je les vois (e cerrada, como en el español «mes»).",
           examples: [
             { target: "Paul? Je l'appelle demain.", base: '¿Paul? Lo llamo mañana.' },
             {
@@ -572,8 +573,8 @@ export const FR_A2_U10: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Ponés le, la, l' o les delante del verbo.",
-          "Decís je ne l'appelle pas y je vais l'appeler.",
+          "Pones le, la, l' o les delante del verbo.",
+          "Dices je ne l'appelle pas y je vais l'appeler.",
         ],
         exercises: [
           ex.translationChoice(
@@ -655,7 +656,7 @@ export const FR_A2_U10: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Tu appelles Claire ce soir?',
-            '¿Llamás a Claire esta noche? (Respondé que sí, con un pronombre.)',
+            '¿Llamas a Claire esta noche? (Responde que sí, con un pronombre.)',
             "Oui, je l'appelle ce soir.",
             ["Oui, je l'appelle.", "Oui, je vais l'appeler ce soir.", "Oui, je vais l'appeler."],
             ['fr-je-l-appelle'],
@@ -670,7 +671,7 @@ export const FR_A2_U10: FrUnitDef = {
         objective: 'Reemplazar a una persona con lui y leur.',
         intro: {
           explanation:
-            "Con verbos que llevan à (parler à, écrire à, envoyer à, téléphoner à), la persona se reemplaza con lui (a él o a ella) o leur (a ellos o a ellas), delante del verbo: ma sœur? Je lui écris. Leur nunca lleva s. Ojo con la diferencia con el español: appeler va sin à (je l'appelle), pero téléphoner lleva à (je lui téléphone), aunque en español los dos sean «la llamo». Escuchá: lui y leur se distinguen por la vocal.",
+            "Con verbos que llevan à (parler à, écrire à, envoyer à, téléphoner à), la persona se reemplaza con lui (a él o a ella) o leur (a ellos o a ellas), delante del verbo: ma sœur? Je lui écris. Leur nunca lleva s. Ojo con la diferencia con el español: appeler va sin à (je l'appelle), pero téléphoner lleva à (je lui téléphone), aunque en español los dos sean «la llamo». Escucha: lui y leur se distinguen por la vocal.",
           examples: [
             { target: 'Ma sœur? Je lui écris souvent.', base: '¿Mi hermana? Le escribo seguido.' },
             {
@@ -680,8 +681,8 @@ export const FR_A2_U10: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Usás lui y leur con parler à, écrire à y envoyer à.',
-          "Distinguís je l'appelle de je lui téléphone.",
+          'Usas lui y leur con parler à, écrire à y envoyer à.',
+          "Distingues je l'appelle de je lui téléphone.",
         ],
         exercises: [
           ex.translationChoice(
@@ -769,7 +770,7 @@ export const FR_A2_U10: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Tu parles souvent à tes parents?',
-            '¿Hablás seguido con tus padres? (Respondé que sí, que les hablás todos los días.)',
+            '¿Hablas seguido con tus padres? (Responde que sí, que les hablas todos los días.)',
             'Oui, je leur parle tous les jours.',
             ['Oui, je leur parle tous les jours', 'Oui, je leur parle souvent.'],
             ['fr-je-leur-parle'],

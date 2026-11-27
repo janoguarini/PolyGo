@@ -71,7 +71,7 @@ const PolygoWord = (props: WordCardProps, environment: WidgetEnvironment) => {
 export default createWidget('PolygoWord', PolygoWord, {
   kind: 'new',
   label: 'POLYGO',
-  text: 'Abrí Polygo',
+  text: 'Abre PolyGo',
   translation: 'para cargar tus palabras',
   ipa: '',
   emoji: '',

@@ -28,6 +28,7 @@ import { catalogPayload, FULL_CATALOG_SQL } from '../../scripts/catalog-sql.ts';
 import { OPTION_SETS_SQL } from '../../scripts/option-sets-sql.ts';
 import { EXERCISE_TYPES } from '../../shared/exercises.ts';
 import { SHUFFLE_V1, choiceSeed, shuffleOrderV1 } from '../../shared/shuffle.ts';
+import { NEUTRAL_ITEMS, neutralAddedVersions, withNeutralSpanish } from './neutralHistory.mjs';
 import { shuffle as appShuffle } from '../../src/features/learning/random.ts';
 
 let db;
@@ -252,7 +253,10 @@ const link = (attemptId, presentationId) =>
 
 // Ubicaciones de prueba: un ítem de distractores variables con dos ubicaciones y dos conjuntos, uno en
 // chino con pinyin, y uno escrito de elección.
-const VAR_ITEM = VARIABLE_OPTION_ITEMS.find((id) => placementsOf(id).length >= 2);
+// Uno que la corrección de español neutro no tocó: su historia de asignaciones empieza en el backfill.
+const VAR_ITEM = VARIABLE_OPTION_ITEMS.find(
+  (id) => placementsOf(id).length >= 2 && !NEUTRAL_ITEMS.has(id),
+);
 const [VAR_A, VAR_B] = placementsOf(VAR_ITEM);
 const ZH_SET = optionSets.option_sets.find(
   (s) => s.options.filter((o) => o.reading).length >= 2 && variable.has(s.item_id),
@@ -337,9 +341,9 @@ test('esquema: tablas, FK compuestas, unique e índices de §5', async () => {
 });
 
 test('backfill: 2.652 conjuntos, uno en cada una de las 3.139 ubicaciones de elección, iguales a content/', async () => {
-  const n = await one(`select (select count(*)::int from public.exercise_option_sets) sets,
+  const n = await one(`select (select count(distinct option_set_id)::int from public.exercises) sets,
       (select count(*)::int from public.exercises where option_set_id is not null) placed,
-      (select count(*)::int from public.exercise_option_set_assignments) assigned,
+      (select count(distinct exercise_id)::int from public.exercise_option_set_assignments) assigned,
       (select count(*)::int from public.exercises
          where type in ('image_choice','translation_choice','fill_blank','listen_choice','context_choice') and option_set_id is null) missing,
       (select count(*)::int from public.exercises
@@ -365,10 +369,23 @@ test('backfill: 2.652 conjuntos, uno en cada una de las 3.139 ubicaciones de ele
     'translation_choice',
   ]);
 
+  // Historia que dejó la corrección de español neutro: conjuntos que ya no usa ninguna ubicación (de la
+  // versión anterior, o de la misma con los distractores de antes) y una segunda asignación, sólo en sus
+  // ítems; la última asignación de cada ubicación es la vigente (abajo).
+  const history = await all(`select distinct s.item_id from public.exercise_option_sets s
+      where not exists (select 1 from public.exercises e where e.option_set_id = s.id)
+    union
+    select distinct e.item_id from public.exercise_option_set_assignments a
+      join public.exercises e on e.id = a.exercise_id
+      group by e.item_id, a.exercise_id having count(*) > 1`);
+  assert.ok(history.length > 0);
+  for (const { item_id } of history) assert.ok(NEUTRAL_ITEMS.has(item_id), item_id);
+
   const db_sets =
     await all(`select s.item_id, v.content_hash version_hash, s.options_hash, s.format,
       s.options, s.answer_index, s.origin, s.generator, s.generator_version
     from public.exercise_option_sets s join public.exercise_item_versions v on v.id = s.item_version_id
+    where exists (select 1 from public.exercises e where e.option_set_id = s.id)
     order by s.id`);
   const sort = (xs) =>
     [...xs].sort((a, b) =>
@@ -408,7 +425,12 @@ test('los 176 ítems de distractores variables: una versión cada uno, sin optio
      from public.exercise_item_versions v where v.item_id = any($1)`,
     [[...variable]],
   );
-  assert.deepEqual(r, { items: 176, versions: 176, with_options: 0, no_current: 0 });
+  assert.deepEqual(r, {
+    items: 176,
+    versions: 176 + (await neutralAddedVersions(db, variable)),
+    with_options: 0,
+    no_current: 0,
+  });
   const p = await one(
     `select count(*)::int placements, count(item_version_id)::int with_version,
             count(option_set_id)::int with_set, count(distinct option_set_id)::int sets
@@ -838,7 +860,10 @@ test('regenerar el catálogo y reaplicar las migraciones no sobrescribe ni destr
   const before = await digest();
   await inRollback(async () => {
     await db.exec(migration('20261108130000_learning_option_sets.sql'));
-    for (const f of [...VERSION_FILES, ...SET_FILES]) await db.exec(migration(f));
+    // Las cargas históricas con la corrección de español neutro aplicada a su documento (tal cual,
+    // fallan a propósito: su copia de exercises ya no coincide con la versión vigente) y la corrección.
+    for (const f of [...VERSION_FILES, ...SET_FILES]) await db.exec(withNeutralSpanish(migration(f)));
+    await db.exec(migration('20270104120000_neutral_spanish_content.sql'));
     await db.exec(docSql(FULL_CATALOG_SQL(), catalogPayload(catalog, versions, optionSets)));
     await db.exec('set constraints all immediate');
     assert.deepEqual(await digest(), before);

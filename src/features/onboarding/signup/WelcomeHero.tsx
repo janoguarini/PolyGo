@@ -14,6 +14,9 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { Mascot, Text, colors, radii, spacing, themedStyles } from '@/design-system';
+import { useStrings } from '@/i18n';
+
+import { signupStrings } from './strings';
 
 /** Banderas que flotan alrededor del zorro (posición en % del recuadro). */
 const ORBIT = [
@@ -25,11 +28,8 @@ const ORBIT = [
   { flag: '🇪🇸', top: '76%', left: '80%', size: 32 },
 ] as const;
 
-const FEATURES = [
-  { emoji: '⚡', label: 'Lecciones de 5 min' },
-  { emoji: '🔥', label: 'Rachas diarias' },
-  { emoji: '⚔️', label: 'Duelos en vivo' },
-] as const;
+/** Emoji de cada característica; el texto sale de signupStrings.features (mismo orden). */
+const FEATURE_EMOJIS = ['⚡', '🔥', '⚔️'] as const;
 
 function FloatingFlag({ flag, index, size }: { flag: string; index: number; size: number }) {
   const y = useSharedValue(0);
@@ -57,6 +57,7 @@ function FloatingFlag({ flag, index, size }: { flag: string; index: number; size
 /** Primer paso del registro: el zorro saluda rodeado de banderas; tres chips dicen de qué se trata. */
 export function WelcomeHero() {
   const styles = useStyles();
+  const t = useStrings(signupStrings);
   const bob = useSharedValue(0);
   useEffect(() => {
     bob.value = withRepeat(
@@ -93,23 +94,23 @@ export function WelcomeHero() {
 
       <Animated.View entering={FadeInUp.delay(250).springify()} style={styles.texts}>
         <Text variant="display" align="center" color="textStrong">
-          ¡Hola! 👋
+          {t.hello}
         </Text>
         <Text variant="bodyStrong" align="center" color="text">
-          Aprendé idiomas jugando con Polygo
+          {t.tagline}
         </Text>
       </Animated.View>
 
       <View style={styles.chips}>
-        {FEATURES.map((f, i) => (
+        {t.features.map((label, i) => (
           <Animated.View
-            key={f.label}
+            key={label}
             entering={FadeInDown.delay(600 + i * 120).springify()}
             style={styles.chip}
           >
-            <RNText style={styles.chipEmoji}>{f.emoji}</RNText>
+            <RNText style={styles.chipEmoji}>{FEATURE_EMOJIS[i]}</RNText>
             <Text variant="caption" color="textStrong" style={styles.chipLabel}>
-              {f.label}
+              {label}
             </Text>
           </Animated.View>
         ))}

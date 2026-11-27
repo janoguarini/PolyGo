@@ -127,11 +127,11 @@ export const EN_B2_U02: B2UnitDef = {
       'Negociar y ceder, poner condiciones (as long as, provided that, otherwise, in case), liderar un equipo y decir que no con cortesía.',
     emoji: '🤝',
     objective:
-      'Podés negociar un acuerdo con condiciones, repartir tareas en un equipo y rechazar una propuesta con cortesía.',
+      'Puedes negociar un acuerdo con condiciones, repartir tareas en un equipo y rechazar una propuesta con cortesía.',
     grammar: {
       title: 'Condiciones: as long as, provided that, otherwise, in case',
       explanation:
-        'As long as y provided that ponen una condición (siempre que, siempre y cuando) y van con presente aunque hablen del futuro. Otherwise (si no, de lo contrario) dice qué pasa si la condición no se cumple. In case (por si) habla de una precaución: hacés algo antes por si pasa otra cosa. Unless (a menos que) ya lo conocés del B1.',
+        'As long as y provided that ponen una condición (siempre que, siempre y cuando) y van con presente aunque hablen del futuro. Otherwise (si no, de lo contrario) dice qué pasa si la condición no se cumple. In case (por si) habla de una precaución: haces algo antes por si pasa otra cosa. Unless (a menos que) ya lo conoces del B1.',
       examples: [
         {
           target: 'I could offer three percent, as long as you sign a two-year contract.',
@@ -139,11 +139,11 @@ export const EN_B2_U02: B2UnitDef = {
         },
         {
           target: 'Send me the terms in writing, in case anything changes.',
-          base: 'Mandame las condiciones por escrito, por si algo cambia.',
+          base: 'Mándame las condiciones por escrito, por si algo cambia.',
         },
         {
           target: 'Hurry up. Otherwise, we will miss the train.',
-          base: 'Apurate. Si no, vamos a perder el tren.',
+          base: 'Apúrate. Si no, vamos a perder el tren.',
         },
       ],
     },
@@ -211,7 +211,7 @@ export const EN_B2_U02: B2UnitDef = {
         '/ˈmit ˌhæfˈweɪ/',
         undefined,
         "You want ten, I want six. Let's meet halfway at eight.",
-        'Vos querés diez y yo seis. Cedamos los dos: ocho.',
+        'Tú quieres diez y yo seis. Cedamos los dos: ocho.',
         ['negotiation', 'collocations'],
         ['ceder cada uno un poco', 'encontrarse a mitad de camino'],
       ),
@@ -242,7 +242,7 @@ export const EN_B2_U02: B2UnitDef = {
         '/æz ˈlɔŋ æz/',
         undefined,
         'You can borrow my car as long as you drive carefully.',
-        'Podés usar mi auto siempre que manejes con cuidado.',
+        'Puedes usar mi auto siempre que manejes con cuidado.',
         ['conditions', 'connectors'],
         ['siempre que', 'mientras'],
       ),
@@ -264,7 +264,7 @@ export const EN_B2_U02: B2UnitDef = {
         '/ˈʌðərˌwaɪz/',
         undefined,
         'Hurry up. Otherwise, we will miss the train.',
-        'Apurate. Si no, vamos a perder el tren.',
+        'Apúrate. Si no, vamos a perder el tren.',
         ['conditions', 'connectors'],
         ['si no', 'de lo contrario'],
       ),
@@ -275,7 +275,7 @@ export const EN_B2_U02: B2UnitDef = {
         '/ɪn ˈkeɪs/',
         '☂️',
         'Take an umbrella in case it rains.',
-        'Llevá un paraguas por si llueve.',
+        'Lleva un paraguas por si llueve.',
         ['conditions', 'connectors'],
         ['por si', 'por si acaso'],
       ),
@@ -360,8 +360,8 @@ export const EN_B2_U02: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Presentás y discutís una propuesta.',
-          'Cerrás una negociación: We have a deal, we reached an agreement.',
+          'Presentas y discutes una propuesta.',
+          'Cierras una negociación: We have a deal, we reached an agreement.',
         ],
         exercises: [
           ex.matchPairs(
@@ -454,14 +454,14 @@ export const EN_B2_U02: B2UnitDef = {
       // ------------------------------------------------------------------------------------ L2
       {
         title: 'Ceder un poco',
-        objective: 'Buscar un término medio y decir qué es lo más importante para vos.',
+        objective: 'Buscar un término medio y decir qué es lo más importante para ti.',
         intro: {
           explanation:
-            'En una negociación nadie consigue todo: a compromise es un término medio. Let’s meet halfway propone que los dos cedan un poco. Para explicar qué te importa más: Our main priority is… Y si podés adaptarte, sos flexible.',
+            'En una negociación nadie consigue todo: a compromise es un término medio. Let’s meet halfway propone que los dos cedan un poco. Para explicar qué te importa más: Our main priority is… Y si puedes adaptarte, eres flexible.',
           examples: [
             {
               target: "You want ten, I want six. Let's meet halfway at eight.",
-              base: 'Vos querés diez y yo seis. Cedamos los dos: ocho.',
+              base: 'Tú quieres diez y yo seis. Cedamos los dos: ocho.',
             },
             {
               target: 'Our main priority is the customer.',
@@ -470,8 +470,8 @@ export const EN_B2_U02: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Proponés un término medio: Let’s meet halfway.',
-          'Explicás tus prioridades y si podés ser flexible.',
+          'Propones un término medio: Let’s meet halfway.',
+          'Explicas tus prioridades y si puedes ser flexible.',
         ],
         exercises: [
           ex.matchPairs(
@@ -486,7 +486,7 @@ export const EN_B2_U02: B2UnitDef = {
           ),
           ex.fillBlank(
             "You want ten, I want six. Let's ___ halfway at eight.",
-            'Vos querés diez y yo seis. Cedamos los dos: ocho.',
+            'Tú quieres diez y yo seis. Cedamos los dos: ocho.',
             'meet',
             ['go', 'make', 'find'],
             ['en-meet-halfway'],
@@ -536,7 +536,7 @@ export const EN_B2_U02: B2UnitDef = {
           ),
           ex.shortAnswer(
             'What is more important for you, time or money? (el dinero es tu prioridad)',
-            '¿Qué es más importante para vos, el tiempo o el dinero?',
+            '¿Qué es más importante para ti, el tiempo o el dinero?',
             'Money is my priority.',
             [
               'Money is my main priority.',
@@ -568,26 +568,26 @@ export const EN_B2_U02: B2UnitDef = {
           'Poner condiciones y precauciones con as long as, provided that, otherwise e in case.',
         intro: {
           explanation:
-            'As long as y provided that ponen una condición y van con presente: I’ll sign, provided that the price stays the same. Otherwise dice qué pasa si no se cumple. In case es una precaución: llevás un paraguas in case it rains (por si llueve, aunque no sepas si va a llover).',
+            'As long as y provided that ponen una condición y van con presente: I’ll sign, provided that the price stays the same. Otherwise dice qué pasa si no se cumple. In case es una precaución: llevas un paraguas in case it rains (por si llueve, aunque no sepas si va a llover).',
           examples: [
             {
               target: 'You can borrow my car as long as you drive carefully.',
-              base: 'Podés usar mi auto siempre que manejes con cuidado.',
+              base: 'Puedes usar mi auto siempre que manejes con cuidado.',
             },
             {
               target: 'Take an umbrella in case it rains.',
-              base: 'Llevá un paraguas por si llueve.',
+              base: 'Lleva un paraguas por si llueve.',
             },
           ],
         },
         takeaways: [
-          'Ponés condiciones con as long as y provided that.',
-          'Hablás de precauciones con in case y de consecuencias con otherwise.',
+          'Pones condiciones con as long as y provided that.',
+          'Hablas de precauciones con in case y de consecuencias con otherwise.',
         ],
         exercises: [
           ex.fillBlank(
             'You can borrow my car ___ you drive carefully.',
-            'Podés usar mi auto siempre que manejes con cuidado.',
+            'Puedes usar mi auto siempre que manejes con cuidado.',
             'as long as',
             ['in case', 'otherwise', 'although'],
             ['en-as-long-as'],
@@ -598,18 +598,18 @@ export const EN_B2_U02: B2UnitDef = {
           ),
           ex.fillBlank(
             'Take an umbrella ___ it rains.',
-            'Llevá un paraguas por si llueve.',
+            'Lleva un paraguas por si llueve.',
             'in case',
             ['as long as', 'otherwise', 'unless'],
             ['en-in-case'],
             {
               id: 'en.ex.op4wwztgtm8r5b',
-              explanation: 'In case: hacés algo antes, como precaución.',
+              explanation: 'In case: haces algo antes, como precaución.',
             },
           ),
           ex.fillBlank(
             'Hurry up. ___, we will miss the train.',
-            'Apurate. Si no, vamos a perder el tren.',
+            'Apúrate. Si no, vamos a perder el tren.',
             'Otherwise',
             ['Provided that', 'In case', 'As long as'],
             ['en-otherwise'],
@@ -661,13 +661,13 @@ export const EN_B2_U02: B2UnitDef = {
           ),
           ex.orderWords(
             'I will help you as long as you help me.',
-            'Te voy a ayudar siempre que vos me ayudes.',
+            'Te voy a ayudar siempre que tú me ayudes.',
             ['en-as-long-as'],
             { id: 'en.ex.s7h0o11k5rnt6x' },
           ),
           ex.shortAnswer(
             'Why are you taking a jacket? (por si hace frío)',
-            '¿Por qué llevás una campera?',
+            '¿Por qué llevas una chaqueta?',
             'In case it gets cold.',
             [
               "In case it's cold.",
@@ -678,7 +678,7 @@ export const EN_B2_U02: B2UnitDef = {
             { id: 'en.ex.om05s1amsvknxd' },
           ),
           ex.translateWrite(
-            'Apurate. Si no, vamos a perder el tren.',
+            'Apúrate. Si no, vamos a perder el tren.',
             'Hurry up. Otherwise, we will miss the train.',
             ['en-otherwise'],
             {
@@ -699,7 +699,7 @@ export const EN_B2_U02: B2UnitDef = {
         objective: 'Repartir tareas, hablar de la carga de trabajo y convencer.',
         intro: {
           explanation:
-            'A leader no hace todo: delegate es delegar tareas en otros. Si tenés demasiado trabajo, tu workload es demasiado grande. Take on es asumir una tarea nueva. Persuade someone to do something es convencer a alguien de hacer algo.',
+            'A leader no hace todo: delegate es delegar tareas en otros. Si tienes demasiado trabajo, tu workload es demasiado grande. Take on es asumir una tarea nueva. Persuade someone to do something es convencer a alguien de hacer algo.',
           examples: [
             {
               target: 'You should delegate some tasks to your team.',
@@ -712,8 +712,8 @@ export const EN_B2_U02: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Hablás de la carga de trabajo y de asumir tareas nuevas.',
-          'Delegás y convencés con persuade.',
+          'Hablas de la carga de trabajo y de asumir tareas nuevas.',
+          'Delegas y convences con persuade.',
         ],
         exercises: [
           ex.matchPairs(
@@ -805,7 +805,7 @@ export const EN_B2_U02: B2UnitDef = {
             'El artículo dice: «The best leaders are flexible. They listen first, and they are willing to compromise».',
           ),
           ex.shortAnswer(
-            'How is work at the moment? (tenés demasiado trabajo)',
+            'How is work at the moment? (tienes demasiado trabajo)',
             '¿Cómo va el trabajo?',
             'My workload is too heavy.',
             [
@@ -838,7 +838,7 @@ export const EN_B2_U02: B2UnitDef = {
         objective: 'Rechazar una oferta o una tarea sin cerrar la puerta.',
         intro: {
           explanation:
-            'Turn down es rechazar (una oferta, una invitación, un trabajo). Para decir que no con cortesía, suavizás: I’m afraid I’ll have to turn it down (me temo que…), I’d love to, but… Y si querés seguir negociando, ofrecés una alternativa con as long as o provided that.',
+            'Turn down es rechazar (una oferta, una invitación, un trabajo). Para decir que no con cortesía, suavizas: I’m afraid I’ll have to turn it down (me temo que…), I’d love to, but… Y si quieres seguir negociando, ofreces una alternativa con as long as o provided that.',
           examples: [
             {
               target: 'He turned down the job because the salary was too low.',
@@ -851,8 +851,8 @@ export const EN_B2_U02: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Rechazás algo con cortesía: I’m afraid I’ll have to turn it down.',
-          'Ofrecés una alternativa con una condición.',
+          'Rechazas algo con cortesía: I’m afraid I’ll have to turn it down.',
+          'Ofreces una alternativa con una condición.',
         ],
         exercises: [
           ex.translationChoice(

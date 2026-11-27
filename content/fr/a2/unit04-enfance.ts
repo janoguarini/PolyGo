@@ -75,7 +75,7 @@ export const FR_A2_U04: FrUnitDef = {
       "El imparfait para describir el pasado y lo habitual: j'étais, j'avais, j'habitais, je jouais, il y avait, c'était; d'habitude, avant, chaque.",
     emoji: '🧸',
     objective:
-      'Podés contar cómo era tu infancia: dónde vivías, cómo eras, qué había y qué hacías normalmente, y compararlo con tu vida de ahora.',
+      'Puedes contar cómo era tu infancia: dónde vivías, cómo eras, qué había y qué hacías normalmente, y compararlo con tu vida de ahora.',
     grammar: {
       title: "El imparfait: j'étais, j'avais, j'habitais",
       explanation:
@@ -258,7 +258,7 @@ export const FR_A2_U04: FrUnitDef = {
         objective: 'Decir cómo eras y qué tenías de chico.',
         intro: {
           explanation:
-            "Para describir tu infancia usás el imparfait: j'étais (yo era) y j'avais (tenía). Quand j'étais petit es «cuando era chico»; una mujer dice quand j'étais petite, y en el femenino la t sí suena. La edad va con avoir: quand j'avais dix ans (cuando tenía diez años). En j'étais y j'avais la s final no suena: terminan en una e abierta.",
+            "Para describir tu infancia usas el imparfait: j'étais (yo era) y j'avais (tenía). Quand j'étais petit es «cuando era chico»; una mujer dice quand j'étais petite, y en el femenino la t sí suena. La edad va con avoir: quand j'avais dix ans (cuando tenía diez años). En j'étais y j'avais la s final no suena: terminan en una e abierta.",
           examples: [
             {
               target: "Quand j'étais petit, j'étais timide.",
@@ -270,7 +270,7 @@ export const FR_A2_U04: FrUnitDef = {
             },
           ],
         },
-        takeaways: ["Describís cómo eras con j'étais.", "Decís qué tenías y tu edad con j'avais."],
+        takeaways: ["Describes cómo eras con j'étais.", "Dices qué tenías y tu edad con j'avais."],
         exercises: [
           ex.translationChoice("j'étais", 'yo era', ['soy', 'tenía', 'vivía'], ['fr-j-etais'], {
             id: 'fr.ex.yya8lsovr7con1',
@@ -351,7 +351,7 @@ export const FR_A2_U04: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Quand tu étais petit, tu étais sportif?',
-            '¿De chico eras deportista? (Respondé que sí, que eras muy deportista.)',
+            '¿De chico eras deportista? (Responde que sí, que eras muy deportista.)',
             "Oui, j'étais très sportif.",
             [
               "Oui, j'étais très sportive.",
@@ -379,7 +379,7 @@ export const FR_A2_U04: FrUnitDef = {
             },
           ],
         },
-        takeaways: ["Contás dónde vivías con j'habitais.", 'Describís el lugar con il y avait.'],
+        takeaways: ["Cuentas dónde vivías con j'habitais.", 'Describes el lugar con il y avait.'],
         exercises: [
           ex.translationChoice(
             'la campagne',
@@ -468,7 +468,7 @@ export const FR_A2_U04: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Qu'est-ce qu'il y avait dans ton village?",
-            '¿Qué había en tu pueblo? (Respondé: había una panadería.)',
+            '¿Qué había en tu pueblo? (Responde: había una panadería.)',
             'Il y avait une boulangerie.',
             ['Dans mon village, il y avait une boulangerie.', 'Une boulangerie.'],
             ['fr-il-y-avait'],
@@ -483,7 +483,7 @@ export const FR_A2_U04: FrUnitDef = {
         objective: 'Contar qué hacías normalmente de chico.',
         intro: {
           explanation:
-            "El imparfait también cuenta lo habitual, lo que hacías siempre: je jouais (jugaba), on allait (íbamos). Va con d'habitude (normalmente), chaque (cada: chaque été, chaque dimanche), tous les jours y souvent. Escuchá la diferencia: je joue (presente), je jouais (imparfait, termina en e abierta) y j'ai joué (passé composé).",
+            "El imparfait también cuenta lo habitual, lo que hacías siempre: je jouais (jugaba), on allait (íbamos). Va con d'habitude (normalmente), chaque (cada: chaque été, chaque dimanche), tous les jours y souvent. Escucha la diferencia: je joue (presente), je jouais (imparfait, termina en e abierta) y j'ai joué (passé composé).",
           examples: [
             {
               target: "D'habitude, je jouais avec mon frère.",
@@ -493,8 +493,8 @@ export const FR_A2_U04: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Contás costumbres con el imparfait: je jouais, on allait.',
-          "Usás d'habitude y chaque para lo que se repetía.",
+          'Cuentas costumbres con el imparfait: je jouais, on allait.',
+          "Usas d'habitude y chaque para lo que se repetía.",
         ],
         exercises: [
           ex.translationChoice('chaque', 'cada', ['todos', 'siempre', 'seguido'], ['fr-chaque'], {
@@ -579,7 +579,7 @@ export const FR_A2_U04: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Quand tu étais petit, qu'est-ce que tu faisais le week-end?",
-            '¿Qué hacías los fines de semana de chico? (Respondé: jugaba al fútbol.)',
+            '¿Qué hacías los fines de semana de chico? (Responde: jugaba al fútbol.)',
             'Je jouais au foot.',
             [
               "D'habitude, je jouais au foot.",
@@ -598,7 +598,7 @@ export const FR_A2_U04: FrUnitDef = {
         objective: 'Describir lugares del pasado y hablar de tus recuerdos.',
         intro: {
           explanation:
-            "C'était (era, estaba) describe en pasado: c'était loin, c'était beau. Escuchá la diferencia con c'est (presente). Le souvenir es el recuerdo (también el souvenir de un viaje). Grandir es crecer; para decir dónde creciste: j'ai grandi à… En Francia, l'école primaire va de los 6 a los 11 años.",
+            "C'était (era, estaba) describe en pasado: c'était loin, c'était beau. Escucha la diferencia con c'est (presente). Le souvenir es el recuerdo (también el souvenir de un viaje). Grandir es crecer; para decir dónde creciste: j'ai grandi à… En Francia, l'école primaire va de los 6 a los 11 años.",
           examples: [
             {
               target: "L'école primaire, c'était à côté de la maison.",
@@ -608,8 +608,8 @@ export const FR_A2_U04: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Describís el pasado con c'était.",
-          "Contás tus souvenirs y dónde creciste: j'ai grandi à…",
+          "Describes el pasado con c'était.",
+          "Cuentas tus souvenirs y dónde creciste: j'ai grandi à…",
         ],
         exercises: [
           ex.translationChoice(
@@ -676,7 +676,7 @@ export const FR_A2_U04: FrUnitDef = {
             PHOTO,
             '¿Cómo iba Hélène a la escuela?',
             'A pie, con sus hermanos.',
-            ['En colectivo.', 'En auto, con su padre.', 'En bici, sola.'],
+            ['En autobús.', 'En auto, con su padre.', 'En bici, sola.'],
             ['fr-l-ecole-primaire', 'fr-d-habitude'],
             "Cuenta «D'habitude, j'y allais à pied avec mes frères».",
           ),
@@ -688,7 +688,7 @@ export const FR_A2_U04: FrUnitDef = {
           ),
           ex.shortAnswer(
             "C'était comment, ton école primaire?",
-            '¿Cómo era tu primaria? (Respondé que era muy buena.)',
+            '¿Cómo era tu primaria? (Responde que era muy buena.)',
             "C'était très bien.",
             ["C'était très bien!", "Très bien, c'était très bien."],
             ['fr-c-etait'],
@@ -716,8 +716,8 @@ export const FR_A2_U04: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Contrastás avant (imparfait) con maintenant (presente).',
-          'Contás un recuerdo de infancia completo.',
+          'Contrastas avant (imparfait) con maintenant (presente).',
+          'Cuentas un recuerdo de infancia completo.',
         ],
         exercises: [
           ex.listenChoice(
@@ -754,7 +754,7 @@ export const FR_A2_U04: FrUnitDef = {
             SOUVENIRS,
             '¿Dónde pasaba Thomas los veranos?',
             'En el campo, en la casa de sus abuelos.',
-            ['En Lyon, en su departamento.', 'En París.', 'En la playa, con sus padres.'],
+            ['En Lyon, en su apartamento.', 'En París.', 'En la playa, con sus padres.'],
             ['fr-chaque', 'fr-la-campagne'],
             'Escribe «Chaque été, on allait chez mes grands-parents, à la campagne».',
           ),
@@ -796,7 +796,7 @@ export const FR_A2_U04: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Et avant, tu habitais où?',
-            'Y antes, ¿dónde vivías? (Respondé que antes vivías en Lyon.)',
+            'Y antes, ¿dónde vivías? (Responde que antes vivías en Lyon.)',
             "Avant, j'habitais à Lyon.",
             ["J'habitais à Lyon.", "Avant j'habitais à Lyon.", 'À Lyon.'],
             ['fr-avant', 'fr-j-habitais'],

@@ -22,7 +22,7 @@ export const unit06: UnitDef = {
   description: 'Las partes de la casa, los muebles, decir qué hay y dónde está cada cosa.',
   emoji: '🏠',
   objective:
-    "Podés describir tu casa con c'è y ci sono y decir dónde está algo con in, nel / nella y sul / sulla.",
+    "Puedes describir tu casa con c'è y ci sono y decir dónde está algo con in, nel / nella y sul / sulla.",
   grammar: {
     title: "C'è / ci sono y las preposiciones articuladas",
     explanation:
@@ -50,17 +50,17 @@ export const unit06: UnitDef = {
       },
     ),
     w('it-cucina', 'cucina', 'cocina', 'Sono in cucina.', 'Estoy en la cocina.', ['home']),
-    w('it-bagno', 'bagno', 'baño', 'Il bagno è qui.', 'El baño está acá.', ['home'], {
+    w('it-bagno', 'bagno', 'baño', 'Il bagno è qui.', 'El baño está aquí.', ['home'], {
       emoji: '🛁',
     }),
     w(
       'it-soggiorno',
       'soggiorno',
-      'living',
+      'sala',
       'Mia madre è in soggiorno.',
-      'Mi mamá está en el living.',
+      'Mi mamá está en la sala.',
       ['home'],
-      { acceptedTranslations: ['sala de estar', 'comedor'] },
+      { acceptedTranslations: ['sala de estar', 'comedor', 'living'] },
     ),
     w('it-tavolo', 'tavolo', 'mesa', 'Il libro è sul tavolo.', 'El libro está sobre la mesa.', [
       'home',
@@ -143,7 +143,7 @@ export const unit06: UnitDef = {
       'sulla',
       'sobre la (su + la)',
       'La penna è sulla sedia.',
-      'La lapicera está sobre la silla.',
+      'El bolígrafo está sobre la silla.',
       ['prepositions'],
     ),
     w('it-dove', 'dove', 'dónde', 'Dove sono le chiavi?', '¿Dónde están las llaves?', [
@@ -159,12 +159,12 @@ export const unit06: UnitDef = {
           'Para decir en qué parte de la casa estás se usa in, sin artículo: in cucina, in bagno, in camera. Ojo: sono también es «estoy» (sono in cucina), y camera es la habitación, no la cámara de fotos.',
         examples: [
           { target: 'Sono in cucina.', base: 'Estoy en la cocina.' },
-          { target: 'Mia madre è in soggiorno.', base: 'Mi mamá está en el living.' },
+          { target: 'Mia madre è in soggiorno.', base: 'Mi mamá está en la sala.' },
         ],
       },
-      takeaways: ['Nombrás las partes de la casa.', 'Decís dónde estás con in + habitación.'],
+      takeaways: ['Nombras las partes de la casa.', 'Dices dónde estás con in + habitación.'],
       exercises: [
-        ex.translationChoice('cucina', 'cocina', ['baño', 'habitación', 'living'], ['it-cucina']),
+        ex.translationChoice('cucina', 'cocina', ['baño', 'habitación', 'sala'], ['it-cucina']),
         ex.translationChoice('camera', 'habitación', ['cocina', 'cama', 'baño'], ['it-camera'], {
           explanation: 'Camera es la habitación. La cámara de fotos es macchina fotografica.',
         }),
@@ -187,7 +187,7 @@ export const unit06: UnitDef = {
             ['cucina', 'cocina'],
             ['bagno', 'baño'],
             ['camera', 'habitación'],
-            ['soggiorno', 'living'],
+            ['soggiorno', 'sala'],
           ],
           ['it-cucina', 'it-bagno', 'it-camera', 'it-soggiorno'],
         ),
@@ -200,7 +200,7 @@ export const unit06: UnitDef = {
             explanation: 'Sono es «soy» y también «estoy».',
           },
         ),
-        ex.translateWrite('Mi papá está en el living.', 'Mio padre è in soggiorno.', [
+        ex.translateWrite('Mi papá está en la sala.', 'Mio padre è in soggiorno.', [
           'it-mio',
           'it-in',
           'it-soggiorno',
@@ -218,7 +218,7 @@ export const unit06: UnitDef = {
           { target: 'La finestra è aperta.', base: 'La ventana está abierta.' },
         ],
       },
-      takeaways: ['Nombrás seis muebles y partes de la casa.', 'Sabés que tavolo es la mesa.'],
+      takeaways: ['Nombras seis muebles y partes de la casa.', 'Sabes que tavolo es la mesa.'],
       exercises: [
         ex.imageChoice('🛏️', 'letto', ['divano', 'tavolo', 'sedia'], ['it-letto']),
         ex.imageChoice('🛋️', 'divano', ['letto', 'sedia', 'porta'], ['it-divano']),
@@ -252,7 +252,7 @@ export const unit06: UnitDef = {
           { target: 'In cucina ci sono quattro sedie.', base: 'En la cocina hay cuatro sillas.' },
         ],
       },
-      takeaways: ["Decís qué hay con c'è y ci sono.", "Preguntás si hay algo: c'è…?"],
+      takeaways: ["Dices qué hay con c'è y ci sono.", "Preguntas si hay algo: c'è…?"],
       exercises: [
         ex.translationChoice(
           "c'è",
@@ -262,7 +262,7 @@ export const unit06: UnitDef = {
         ),
         ex.fillBlank(
           'In soggiorno ___ un divano.',
-          'En el living hay un sillón.',
+          'En la sala hay un sillón.',
           "c'è",
           ['ci sono', 'sono', 'ho'],
           ['it-c-e', 'it-divano'],
@@ -315,7 +315,7 @@ export const unit06: UnitDef = {
           { target: 'Le chiavi sono nel cassetto.', base: 'Las llaves están en el cajón.' },
         ],
       },
-      takeaways: ['Decís dónde está algo con nel y nella.', 'Usás in solo con las habitaciones.'],
+      takeaways: ['Dices dónde está algo con nel y nella.', 'Usas in solo con las habitaciones.'],
       exercises: [
         ex.translationChoice('borsa', 'cartera', ['mochila', 'llave', 'mesa'], ['it-borsa']),
         ex.translationChoice('cassetto', 'cajón', ['cartera', 'cocina', 'silla'], ['it-cassetto']),
@@ -381,8 +381,8 @@ export const unit06: UnitDef = {
         ],
       },
       takeaways: [
-        "Preguntás dónde está algo con dov'è…?",
-        'Decís que algo está sobre otra cosa con sul y sulla.',
+        "Preguntas dónde está algo con dov'è…?",
+        'Dices que algo está sobre otra cosa con sul y sulla.',
       ],
       exercises: [
         ex.translationChoice('dove', 'dónde', ['qué', 'cuándo', 'cómo'], ['it-dove']),
@@ -396,7 +396,7 @@ export const unit06: UnitDef = {
         ),
         ex.fillBlank(
           'La penna è ___ sedia.',
-          'La lapicera está sobre la silla.',
+          'El bolígrafo está sobre la silla.',
           'sulla',
           ['sul', 'nel', 'in'],
           ['it-sulla', 'it-sedia'],
@@ -423,7 +423,7 @@ export const unit06: UnitDef = {
         ),
         ex.shortAnswer(
           "Dov'è il libro?",
-          '¿Dónde está el libro? (Respondé que está sobre la mesa.)',
+          '¿Dónde está el libro? (Responde que está sobre la mesa.)',
           'È sul tavolo.',
           ['Il libro è sul tavolo.', 'Sul tavolo.'],
           ['it-dove', 'it-sul', 'it-tavolo'],

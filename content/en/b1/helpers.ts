@@ -50,7 +50,7 @@ export const question = (
   id,
   type: 'context_choice',
   skill: stimulus.kind === 'reading' ? 'reading' : 'listening',
-  prompt: stimulus.kind === 'reading' ? 'Leé y respondé' : 'Escuchá y respondé',
+  prompt: stimulus.kind === 'reading' ? 'Lee y responde' : 'Escucha y responde',
   payload: { type: 'context_choice', stimulus, question: q, options: [answer, ...distractors] },
   answer,
   words: [],

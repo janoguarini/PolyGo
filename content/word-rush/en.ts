@@ -22,9 +22,9 @@ export const EN_WORD_RUSH: WordRushBank = {
   names: ['Ana', 'Tom'],
   sentences: [
     // U1 — Saludos y presentaciones
-    a1(1, 'is-your-name-tom', 'Is your name Tom?', '¿Te llamás Tom?'),
+    a1(1, 'is-your-name-tom', 'Is your name Tom?', '¿Te llamas Tom?'),
     a1(1, 'hi-how-are-you', 'Hi, how are you?', 'Hola, ¿cómo estás?'),
-    a1(1, 'excuse-me-are-you-ana', 'Excuse me, are you Ana?', 'Disculpá, ¿sos Ana?'),
+    a1(1, 'excuse-me-are-you-ana', 'Excuse me, are you Ana?', 'Disculpa, ¿eres Ana?'),
     a1(1, 'good-morning-tom', 'Good morning, Tom.', 'Buenos días, Tom.'),
     a1(1, 'yes-i-am-tom', 'Yes, I am Tom.', 'Sí, soy Tom.'),
     a1(1, 'no-my-name-is-ana', 'No, my name is Ana.', 'No, me llamo Ana.'),
@@ -37,7 +37,7 @@ export const EN_WORD_RUSH: WordRushBank = {
     a1(2, 'he-is-not-happy', 'He is not happy.', 'Él no está contento.'),
     a1(2, 'we-are-students', 'We are students.', 'Somos estudiantes.'),
     a1(2, 'is-he-your-friend', 'Is he your friend?', '¿Él es tu amigo?'),
-    a1(2, 'you-are-my-friend', 'You are my friend.', 'Sos mi amigo.'),
+    a1(2, 'you-are-my-friend', 'You are my friend.', 'Eres mi amigo.'),
     a1(2, 'they-are-teachers', 'They are teachers.', 'Ellos son profesores.'),
     a1(2, 'are-they-students', 'Are they students?', '¿Ellos son estudiantes?'),
     a1(2, 'ana-is-tired', 'Ana is tired.', 'Ana está cansada.'),
@@ -48,7 +48,7 @@ export const EN_WORD_RUSH: WordRushBank = {
     a1(3, 'where-is-ana-from', 'Where is Ana from?', '¿De dónde es Ana?'),
     a1(3, 'my-friend-is-from-england', 'My friend is from England.', 'Mi amigo es de Inglaterra.'),
     a1(3, 'we-are-from-the-us', 'We are from the United States.', 'Somos de Estados Unidos.'),
-    a1(3, 'are-you-from-spain', 'Are you from Spain?', '¿Sos de España?'),
+    a1(3, 'are-you-from-spain', 'Are you from Spain?', '¿Eres de España?'),
     a1(3, 'she-is-eleven', 'She is eleven years old.', 'Ella tiene once años.'),
     a1(
       3,
@@ -155,13 +155,13 @@ export const EN_WORD_RUSH: WordRushBank = {
       accepted: ['Every day I go to work.'],
     }),
     a1(8, 'she-lives-in-spain', 'She lives in Spain.', 'Ella vive en España.'),
-    a1(8, 'do-you-work-at-home', 'Do you work at home?', '¿Trabajás desde casa?'),
+    a1(8, 'do-you-work-at-home', 'Do you work at home?', '¿Trabajas desde casa?'),
     a1(8, 'he-never-drinks-coffee', 'He never drinks coffee.', 'Él nunca toma café.'),
     a1(8, 'they-play-in-the-garden', 'They play in the garden.', 'Ellos juegan en el jardín.'),
     a1(8, 'does-she-read-every-day', 'Does she read every day?', '¿Ella lee todos los días?'),
     a1(8, 'i-wake-up-at-seven', 'I wake up at seven.', 'Me despierto a las siete.'),
     a1(8, 'he-doesnt-live-in-england', "He doesn't live in England.", 'Él no vive en Inglaterra.'),
-    a1(8, 'where-do-you-live', 'Where do you live?', '¿Dónde vivís?'),
+    a1(8, 'where-do-you-live', 'Where do you live?', '¿Dónde vives?'),
     a1(8, 'i-usually-read-at-home', 'I usually read at home.', 'Normalmente leo en casa.'),
     a1(8, 'do-they-go-to-school', 'Do they go to school?', '¿Ellos van a la escuela?'),
 
@@ -180,7 +180,7 @@ export const EN_WORD_RUSH: WordRushBank = {
     ),
     a1(9, 'they-dont-watch-tv', "They don't watch TV.", 'Ellos no miran televisión.'),
     a1(9, 'its-half-past-seven', "It's half past seven.", 'Son las siete y media.'),
-    a1(9, 'what-time-do-you-eat-lunch', 'What time do you eat lunch?', '¿A qué hora almorzás?'),
+    a1(9, 'what-time-do-you-eat-lunch', 'What time do you eat lunch?', '¿A qué hora almuerzas?'),
     a1(9, 'i-read-on-the-weekend', 'I read on the weekend.', 'Leo los fines de semana.'),
     a1(9, 'i-dont-work-tomorrow', "I don't work tomorrow.", 'Mañana no trabajo.', {
       accepted: ["Tomorrow I don't work."],
@@ -191,7 +191,7 @@ export const EN_WORD_RUSH: WordRushBank = {
     a1(10, 'the-bank-is-on-the-left', 'The bank is on the left.', 'El banco está a la izquierda.'),
     a1(10, 'is-the-hospital-far', 'Is the hospital far?', '¿El hospital queda lejos?'),
     a1(10, 'where-is-the-supermarket', 'Where is the supermarket?', '¿Dónde está el supermercado?'),
-    a1(10, 'turn-left-at-the-bank', 'Turn left at the bank.', 'Doblá a la izquierda en el banco.'),
+    a1(10, 'turn-left-at-the-bank', 'Turn left at the bank.', 'Dobla a la izquierda en el banco.'),
     a1(
       10,
       'the-park-is-near-my-house',
@@ -204,7 +204,7 @@ export const EN_WORD_RUSH: WordRushBank = {
       'The bus station is far.',
       'La estación de colectivos queda lejos.',
     ),
-    a1(10, 'go-straight-on', 'Go straight on.', 'Seguí derecho.'),
+    a1(10, 'go-straight-on', 'Go straight on.', 'Sigue derecho.'),
     a1(
       10,
       'my-city-has-a-big-park',
@@ -233,7 +233,7 @@ export const EN_WORD_RUSH: WordRushBank = {
 
     // U11 — Gustos y preferencias
     a1(11, 'she-likes-music', 'She likes music.', 'A ella le gusta la música.'),
-    a1(11, 'can-you-swim', 'Can you swim?', '¿Sabés nadar?'),
+    a1(11, 'can-you-swim', 'Can you swim?', '¿Sabes nadar?'),
     a1(
       11,
       'my-favorite-sport-is-football',
@@ -263,23 +263,23 @@ export const EN_WORD_RUSH: WordRushBank = {
       12,
       'can-you-repeat-that-please',
       'Can you repeat that, please?',
-      '¿Podés repetir eso, por favor?',
+      '¿Puedes repetir eso, por favor?',
     ),
     a1(12, 'what-does-this-word-mean', 'What does this word mean?', '¿Qué significa esta palabra?'),
     a1(12, 'why-are-you-tired', 'Why are you tired?', '¿Por qué estás cansado?'),
     a1(12, 'i-dont-know', "I don't know.", 'No sé.'),
-    a1(12, 'do-you-speak-spanish', 'Do you speak Spanish?', '¿Hablás español?'),
+    a1(12, 'do-you-speak-spanish', 'Do you speak Spanish?', '¿Hablas español?'),
     a1(
       12,
       'how-many-brothers-do-you-have',
       'How many brothers do you have?',
-      '¿Cuántos hermanos tenés?',
+      '¿Cuántos hermanos tienes?',
     ),
-    a1(12, 'when-do-you-work', 'When do you work?', '¿Cuándo trabajás?'),
-    a1(12, 'which-book-do-you-want', 'Which book do you want?', '¿Qué libro querés?'),
+    a1(12, 'when-do-you-work', 'When do you work?', '¿Cuándo trabajas?'),
+    a1(12, 'which-book-do-you-want', 'Which book do you want?', '¿Qué libro quieres?'),
     a1(12, 'how-much-is-the-coffee', 'How much is the coffee?', '¿Cuánto sale el café?'),
     a1(12, 'i-know-the-answer', 'I know the answer.', 'Sé la respuesta.'),
-    a1(12, 'please-speak-slowly', 'Please speak slowly.', 'Hablá despacio, por favor.', {
+    a1(12, 'please-speak-slowly', 'Please speak slowly.', 'Habla despacio, por favor.', {
       accepted: ['Speak slowly, please.'],
     }),
     a1(

@@ -69,7 +69,7 @@ export function mapFormatOf(e: ExerciseDef): MapFormat {
     case 'order_words':
       return 'OW';
     case 'short_answer':
-      if (/^Escribí la oración (en negativa|como pregunta)/.test(p.translation)) return 'TR';
+      if (/^(Escribí|Escribe) la oración (en negativa|como pregunta)/.test(p.translation)) return 'TR';
       return PICTO.test(p.question) || /^\d+$/.test(p.question.trim()) ? 'PW' : 'SA';
     case 'context_choice':
       if (p.stimulus.kind === 'reading') return 'RQ';

@@ -20,7 +20,7 @@ it('Apple avisa que hay que actualizar la app, sin llamar a Supabase', async () 
   const error = await signInWithApple().catch((e: unknown) => e);
   expect(error).toMatchObject({ code: 'apple_unavailable' });
   expect(toUserMessage(error)).toBe(
-    'Esta versión de la app todavía no permite entrar con Apple. Actualizala o usá tu email.',
+    'Esta versión de la app todavía no permite entrar con Apple. Actualízala o usa tu email.',
   );
   expect(mockAuth.signInWithIdToken).not.toHaveBeenCalled();
 });

@@ -27,7 +27,7 @@ export const unit11: UnitDef = {
   position: 11,
   title: 'Gustos y preferencias',
   titleEn: 'Likes and preferences',
-  description: 'Decir qué te gusta, qué no, qué sabés hacer y cuál es tu favorito.',
+  description: 'Decir qué te gusta, qué no, qué sabes hacer y cuál es tu favorito.',
   emoji: '❤️',
   words: [
     w(
@@ -128,7 +128,7 @@ export const unit11: UnitDef = {
       'hobbies',
       'verbs',
     ]),
-    w('en-swim', 'swim', 'nadar', '/swɪm/', '🏊', 'Can you swim?', '¿Sabés nadar?', [
+    w('en-swim', 'swim', 'nadar', '/swɪm/', '🏊', 'Can you swim?', '¿Sabes nadar?', [
       'hobbies',
       'verbs',
     ]),
@@ -357,7 +357,7 @@ export const unit11: UnitDef = {
     },
     {
       title: 'Sé nadar',
-      objective: 'Decir lo que sabés o podés hacer con can.',
+      objective: 'Decir lo que sabes o puedes hacer con can.',
       exercises: [
         ex.translationChoice(
           'I can swim.',
@@ -404,7 +404,7 @@ export const unit11: UnitDef = {
         ),
         ex.shortAnswer(
           'Can you dance? (Sí.)',
-          '¿Sabés bailar?',
+          '¿Sabes bailar?',
           'Yes, I can.',
           ['Yes.', 'Yes, I can dance.'],
           ['en-can', 'en-dance', 'en-yes'],

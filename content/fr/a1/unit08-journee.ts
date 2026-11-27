@@ -78,15 +78,15 @@ export const FR_A1_U08: FrUnitDef = {
       "Rutina y momentos del día; verbos en -er en presente, nous / ils / on; je me lève, je me couche; d'abord, ensuite; toujours, souvent. -e, -es, -ent mudas y liaison ils‿écoutent.",
     emoji: '⏰',
     objective:
-      'Podés contar tu rutina: a qué momento del día hacés cada cosa, en qué orden y con qué frecuencia, y lo que hacen otras personas.',
+      'Puedes contar tu rutina: a qué momento del día haces cada cosa, en qué orden y con qué frecuencia, y lo que hacen otras personas.',
     grammar: {
       title: 'Verbos en -er en presente',
       explanation:
         'Los verbos en -er (travailler, regarder, écouter) cambian la terminación: je travaille, tu travailles, il / elle / on travaille, nous travaillons, vous travaillez, ils / elles travaillent. Las terminaciones -e, -es y -ent no se pronuncian: travaille, travailles y travaillent suenan igual; sólo nous (-ons) y vous (-ez) suenan distinto. On (nosotros, informal) va con el verbo como il: on travaille. Delante de vocal hay liaison con sonido z: nous‿écoutons, ils‿écoutent. Los pronominales llevan me / te / se: je me lève, tu te lèves, il se lève.',
       examples: [
-        { target: 'Je travaille le matin.', base: 'Trabajo a la mañana.' },
+        { target: 'Je travaille le matin.', base: 'Trabajo por la mañana.' },
         { target: 'Nous travaillons à Lyon.', base: 'Trabajamos en Lyon.' },
-        { target: 'Ils écoutent la radio le soir.', base: 'Ellos escuchan la radio a la noche.' },
+        { target: 'Ils écoutent la radio le soir.', base: 'Ellos escuchan la radio por la noche.' },
       ],
     },
     review: {
@@ -100,7 +100,7 @@ export const FR_A1_U08: FrUnitDef = {
         'le matin',
         'la mañana',
         'Le matin, je bois un café.',
-        'A la mañana tomo un café.',
+        'Por la mañana tomo un café.',
         ['time', 'm'],
         { emoji: '🌅' },
       ),
@@ -109,7 +109,7 @@ export const FR_A1_U08: FrUnitDef = {
         "l'après-midi",
         'la tarde',
         "L'après-midi, je travaille.",
-        'A la tarde trabajo.',
+        'Por la tarde trabajo.',
         ['time'],
         { acceptedTexts: ["l'après-midi"] },
       ),
@@ -118,7 +118,7 @@ export const FR_A1_U08: FrUnitDef = {
         'le soir',
         'la noche',
         'Le soir, je regarde la télé.',
-        'A la noche miro la tele.',
+        'Por la noche miro la tele.',
         ['time', 'm'],
         { emoji: '🌙' },
       ),
@@ -135,7 +135,7 @@ export const FR_A1_U08: FrUnitDef = {
         'je me couche',
         'me acuesto',
         'Le soir, je me couche tard.',
-        'A la noche me acuesto tarde.',
+        'Por la noche me acuesto tarde.',
         ['routine', 'verbs'],
       ),
       w(
@@ -152,7 +152,7 @@ export const FR_A1_U08: FrUnitDef = {
         'je regarde',
         'miro',
         'Le soir, je regarde la télé.',
-        'A la noche miro la tele.',
+        'Por la noche miro la tele.',
         ['verbs'],
         { acceptedTranslations: ['yo miro'] },
       ),
@@ -161,7 +161,7 @@ export const FR_A1_U08: FrUnitDef = {
         "j'écoute",
         'escucho',
         "J'écoute la radio le matin.",
-        'Escucho la radio a la mañana.',
+        'Escucho la radio por la mañana.',
         ['verbs'],
         { acceptedTranslations: ['yo escucho'], acceptedTexts: ["j'écoute"] },
       ),
@@ -179,7 +179,7 @@ export const FR_A1_U08: FrUnitDef = {
         'ils',
         'ellos',
         'Ils écoutent la radio le soir.',
-        'Ellos escuchan la radio a la noche.',
+        'Ellos escuchan la radio por la noche.',
         ['pronouns'],
       ),
       w(
@@ -187,7 +187,7 @@ export const FR_A1_U08: FrUnitDef = {
         'on',
         'nosotros, informal',
         'Le soir, on regarde la télé.',
-        'A la noche miramos la tele.',
+        'Por la noche miramos la tele.',
         ['pronouns'],
         { acceptedTranslations: ['se', 'uno'] },
       ),
@@ -222,7 +222,7 @@ export const FR_A1_U08: FrUnitDef = {
         'le petit-déjeuner',
         'el desayuno',
         'Au petit-déjeuner, je mange un croissant.',
-        'En el desayuno como una medialuna.',
+        'En el desayuno como un cruasán.',
         ['food', 'm'],
         { emoji: '🥐' },
       ),
@@ -256,7 +256,7 @@ export const FR_A1_U08: FrUnitDef = {
         'toujours',
         'siempre',
         'Le matin, je bois toujours un café.',
-        'A la mañana siempre tomo un café.',
+        'Por la mañana siempre tomo un café.',
         ['frequency'],
       ),
     ],
@@ -264,18 +264,18 @@ export const FR_A1_U08: FrUnitDef = {
       // ------------------------------------------------------------------------------------ L1
       {
         title: 'Le matin, le soir',
-        objective: 'Decir en qué momento del día te levantás y te acostás.',
+        objective: 'Decir en qué momento del día te levantas y te acuestas.',
         intro: {
           explanation:
-            "Le matin es la mañana; l'après-midi, la tarde; le soir, la noche. Para decir «a la mañana» no hace falta preposición: le matin, je me lève. Se lever y se coucher son pronominales, como s'appeler: je me lève, tu te lèves, il / elle se lève. La s de tu te lèves no suena: lève y lèves se pronuncian igual.",
+            "Le matin es la mañana; l'après-midi, la tarde; le soir, la noche. Para decir «por la mañana» no hace falta preposición: le matin, je me lève. Se lever y se coucher son pronominales, como s'appeler: je me lève, tu te lèves, il / elle se lève. La s de tu te lèves no suena: lève y lèves se pronuncian igual.",
           examples: [
-            { target: 'Le matin, je me lève.', base: 'A la mañana me levanto.' },
-            { target: 'Le soir, je me couche tard.', base: 'A la noche me acuesto tarde.' },
+            { target: 'Le matin, je me lève.', base: 'Por la mañana me levanto.' },
+            { target: 'Le soir, je me couche tard.', base: 'Por la noche me acuesto tarde.' },
           ],
         },
         takeaways: [
-          "Nombrás los momentos del día: le matin, l'après-midi, le soir.",
-          "Decís je me lève y je me couche, con me como en je m'appelle.",
+          "Nombras los momentos del día: le matin, l'après-midi, le soir.",
+          "Dices je me lève y je me couche, con me como en je m'appelle.",
         ],
         exercises: [
           ex.translationChoice(
@@ -303,7 +303,7 @@ export const FR_A1_U08: FrUnitDef = {
           ),
           ex.fillBlank(
             'Le soir, je me ___ tard.',
-            'A la noche me acuesto tarde.',
+            'Por la noche me acuesto tarde.',
             'couche',
             ['lève', 'couches', 'appelle'],
             ['fr-je-me-couche'],
@@ -315,7 +315,7 @@ export const FR_A1_U08: FrUnitDef = {
           ),
           ex.fillBlank(
             'Le matin, je ___ lève.',
-            'A la mañana me levanto.',
+            'Por la mañana me levanto.',
             'me',
             ['te', 'se', 'ma'],
             ['fr-je-me-leve', 'fr-le-matin'],
@@ -342,19 +342,19 @@ export const FR_A1_U08: FrUnitDef = {
           ),
           ex.orderWords(
             'Je me couche tard le soir.',
-            'A la noche me acuesto tarde.',
+            'Por la noche me acuesto tarde.',
             ['fr-je-me-couche', 'fr-le-soir'],
             { id: 'fr.ex.tbg3axm939xh0y' },
           ),
           ex.translateWrite(
-            'A la mañana me levanto.',
+            'Por la mañana me levanto.',
             'Le matin, je me lève.',
             ['fr-le-matin', 'fr-je-me-leve'],
             { id: 'fr.ex.lef0s7lo3kdibf', acceptedAnswers: ['Je me lève le matin.'] },
           ),
           ex.shortAnswer(
             'Tu te couches tard le soir?',
-            '¿Te acostás tarde a la noche? (Respondé que sí.)',
+            '¿Te acuestas tarde por la noche? (Responde que sí.)',
             'Oui, je me couche tard.',
             ['Oui, je me couche tard le soir.', 'Oui, le soir, je me couche tard.'],
             ['fr-je-me-couche', 'fr-le-soir'],
@@ -366,18 +366,18 @@ export const FR_A1_U08: FrUnitDef = {
       // ------------------------------------------------------------------------------------ L2
       {
         title: 'Je travaille, je regarde',
-        objective: 'Contar qué hacés con verbos en -er (je, tu, il, elle).',
+        objective: 'Contar qué haces con verbos en -er (je, tu, il, elle).',
         intro: {
           explanation:
             "Travailler, regarder y écouter son verbos en -er. En singular: je travaille, tu travailles, il / elle travaille. Las tres formas suenan igual, porque la -e y la -es finales no se pronuncian. Delante de vocal, je se vuelve j': j'écoute. Regarder es mirar (la télé, un livre).",
           examples: [
-            { target: "J'écoute la radio le matin.", base: 'Escucho la radio a la mañana.' },
+            { target: "J'écoute la radio le matin.", base: 'Escucho la radio por la mañana.' },
             { target: 'Elle regarde la télé.', base: 'Ella mira la tele.' },
           ],
         },
         takeaways: [
-          'Conjugás un verbo en -er con je, tu, il y elle.',
-          "Sabés que travaille y travailles suenan igual y que je se vuelve j' delante de vocal.",
+          'Conjugas un verbo en -er con je, tu, il y elle.',
+          "Sabes que travaille y travailles suenan igual y que je se vuelve j' delante de vocal.",
         ],
         exercises: [
           ex.translationChoice(
@@ -399,7 +399,7 @@ export const FR_A1_U08: FrUnitDef = {
           ),
           ex.fillBlank(
             'Tu ___ la radio?',
-            '¿Escuchás la radio?',
+            '¿Escuchas la radio?',
             'écoutes',
             ['écoute', 'regardes', 'travailles'],
             ['fr-j-ecoute'],
@@ -416,7 +416,7 @@ export const FR_A1_U08: FrUnitDef = {
           ),
           ex.fillBlank(
             'Le soir, je ___ la télé.',
-            'A la noche miro la tele.',
+            'Por la noche miro la tele.',
             'regarde',
             ['écoute', 'travaille', 'mange'],
             ['fr-je-regarde', 'fr-le-soir'],
@@ -449,19 +449,19 @@ export const FR_A1_U08: FrUnitDef = {
           ),
           ex.orderWords(
             "J'écoute la radio le matin.",
-            'Escucho la radio a la mañana.',
+            'Escucho la radio por la mañana.',
             ['fr-j-ecoute', 'fr-le-matin'],
             { id: 'fr.ex.bduyqtcgihyokd' },
           ),
           ex.translateWrite(
-            'Trabajo a la tarde.',
+            'Trabajo por la tarde.',
             "Je travaille l'après-midi.",
             ['fr-je-travaille', 'fr-l-apres-midi'],
             { id: 'fr.ex.vd6tsl1s3e5qbw', acceptedAnswers: ["L'après-midi, je travaille."] },
           ),
           ex.shortAnswer(
             'Tu écoutes la radio le matin?',
-            '¿Escuchás la radio a la mañana? (Respondé que sí.)',
+            '¿Escuchas la radio por la mañana? (Responde que sí.)',
             "Oui, j'écoute la radio le matin.",
             ["Oui, j'écoute la radio.", "Oui, le matin, j'écoute la radio."],
             ['fr-j-ecoute', 'fr-le-matin'],
@@ -478,13 +478,13 @@ export const FR_A1_U08: FrUnitDef = {
           explanation:
             'En plural: nous travaillons, vous travaillez, ils / elles travaillent. La -ent de ils travaillent no suena: se pronuncia igual que il travaille. On es muy común en lo oral y significa nosotros; va con el verbo como il: on regarde. Delante de vocal hay liaison con sonido z: nous‿écoutons, ils‿écoutent. Así se distingue ils écoutent de il écoute.',
           examples: [
-            { target: 'Nous travaillons le matin.', base: 'Trabajamos a la mañana.' },
+            { target: 'Nous travaillons le matin.', base: 'Trabajamos por la mañana.' },
             { target: 'Ils écoutent la radio.', base: 'Ellos escuchan la radio.' },
           ],
         },
         takeaways: [
-          'Conjugás con nous (-ons), vous (-ez) e ils (-ent, que no suena).',
-          'Usás on como nosotros, con el verbo como il.',
+          'Conjugas con nous (-ons), vous (-ez) e ils (-ent, que no suena).',
+          'Usas on como nosotros, con el verbo como il.',
         ],
         exercises: [
           ex.translationChoice(
@@ -507,7 +507,7 @@ export const FR_A1_U08: FrUnitDef = {
           ),
           ex.fillBlank(
             'Ils ___ la télé le soir.',
-            'Ellos miran la tele a la noche.',
+            'Ellos miran la tele por la noche.',
             'regardent',
             ['regardons', 'regardes', 'regarde'],
             ['fr-ils', 'fr-je-regarde'],
@@ -538,7 +538,7 @@ export const FR_A1_U08: FrUnitDef = {
           ),
           ex.fillBlank(
             'Le soir, ___ regarde la télé.',
-            'A la noche miramos la tele.',
+            'Por la noche miramos la tele.',
             'on',
             ['nous', 'ils', 'vous'],
             ['fr-on'],
@@ -552,22 +552,22 @@ export const FR_A1_U08: FrUnitDef = {
             'fr.ex.efna1p6vtoi5em',
             SOEUR,
             '¿Cuándo trabaja Marc?',
-            'A la mañana.',
-            ['A la tarde.', 'A la noche.', 'No trabaja.'],
+            'Por la mañana.',
+            ['Por la tarde.', 'Por la noche.', 'No trabaja.'],
             ['fr-je-travaille', 'fr-le-matin'],
             'Marc responde «Oui, je travaille le matin».',
           ),
           question(
             'fr.ex.x6g40f2aa4bar0',
             SOEUR,
-            '¿Qué hacen los hermanos de Marc a la mañana?',
+            '¿Qué hacen los hermanos de Marc por la mañana?',
             'Miran la tele.',
             ['Trabajan.', 'Escuchan música.', 'Se acuestan.'],
             ['fr-ils', 'fr-je-regarde'],
-            'Marc dice «Le matin, ils regardent la télé»; trabajan a la noche.',
+            'Marc dice «Le matin, ils regardent la télé»; trabajan por la noche.',
           ),
           ex.translateWrite(
-            'Trabajamos a la mañana.',
+            'Trabajamos por la mañana.',
             'Nous travaillons le matin.',
             ['fr-nous', 'fr-je-travaille', 'fr-le-matin'],
             {
@@ -581,7 +581,7 @@ export const FR_A1_U08: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Vous travaillez le soir?',
-            '¿Ustedes trabajan a la noche? (Respondé que no, que trabajan a la tarde.)',
+            '¿Ustedes trabajan por la noche? (Responde que no, que trabajan por la tarde.)',
             "Non, nous travaillons l'après-midi.",
             ["Non, on travaille l'après-midi.", "Non, l'après-midi."],
             ['fr-nous', 'fr-l-apres-midi'],
@@ -606,8 +606,8 @@ export const FR_A1_U08: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Distinguís le petit-déjeuner, le déjeuner (el almuerzo) y le dîner.',
-          "Contás tu día en orden con d'abord y ensuite.",
+          'Distingues le petit-déjeuner, le déjeuner (el almuerzo) y le dîner.',
+          "Cuentas tu día en orden con d'abord y ensuite.",
         ],
         exercises: [
           ex.translationChoice(
@@ -633,7 +633,7 @@ export const FR_A1_U08: FrUnitDef = {
           ),
           ex.fillBlank(
             'Au ___, je mange un croissant et je bois un café.',
-            'En el desayuno como una medialuna y tomo un café.',
+            'En el desayuno como un cruasán y tomo un café.',
             'petit-déjeuner',
             ['déjeuner', 'dîner', 'soir'],
             ['fr-le-petit-dejeuner'],
@@ -675,7 +675,7 @@ export const FR_A1_U08: FrUnitDef = {
             'fr.ex.8obmdcd8ggk0e1',
             BLOG,
             '¿Qué come Camille en el desayuno?',
-            'Una medialuna.',
+            'Un cruasán.',
             ['Pescado.', 'Pan con queso.', 'Nada, sólo toma café.'],
             ['fr-le-petit-dejeuner'],
             'Escribe «Au petit-déjeuner, je mange un croissant».',
@@ -687,7 +687,7 @@ export const FR_A1_U08: FrUnitDef = {
             'Trabaja.',
             ['Se acuesta.', 'Mira la tele.', 'Almuerza pescado.'],
             ['fr-ensuite', 'fr-le-diner'],
-            'Después del croissant escribe «Ensuite, je travaille»; la tele es a la noche.',
+            'Después del croissant escribe «Ensuite, je travaille»; la tele es por la noche.',
           ),
           ex.translateWrite(
             'Primero desayuno. Después trabajo.',
@@ -703,7 +703,7 @@ export const FR_A1_U08: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Au dîner, tu bois du vin?',
-            '¿En la cena tomás vino? (Respondé que no, que tomás agua.)',
+            '¿En la cena tomas vino? (Responde que no, que tomas agua.)',
             "Non, je bois de l'eau.",
             ["Non, au dîner, je bois de l'eau.", "Non, de l'eau."],
             ['fr-le-diner'],
@@ -715,21 +715,21 @@ export const FR_A1_U08: FrUnitDef = {
       // ------------------------------------------------------------------------------------ L5
       {
         title: 'Toujours, souvent',
-        objective: 'Decir con qué frecuencia hacés las cosas.',
+        objective: 'Decir con qué frecuencia haces las cosas.',
         intro: {
           explanation:
             'Toujours (siempre) y souvent (seguido) van después del verbo: je bois toujours un café, il regarde souvent la télé. Tous les jours (todos los días) suele ir al final. En tous les jours, la s de tous no suena; no confundas tous les jours con toujours.',
           examples: [
             {
               target: 'Je bois toujours un café le matin.',
-              base: 'Siempre tomo un café a la mañana.',
+              base: 'Siempre tomo un café por la mañana.',
             },
             { target: 'Nous travaillons tous les jours.', base: 'Trabajamos todos los días.' },
           ],
         },
         takeaways: [
-          'Ponés toujours y souvent después del verbo.',
-          'Distinguís toujours (siempre) de tous les jours (todos los días).',
+          'Pones toujours y souvent después del verbo.',
+          'Distingues toujours (siempre) de tous les jours (todos los días).',
         ],
         exercises: [
           ex.translationChoice(
@@ -765,7 +765,7 @@ export const FR_A1_U08: FrUnitDef = {
           ),
           ex.fillBlank(
             'Je bois ___ un café le matin.',
-            'Siempre tomo un café a la mañana.',
+            'Siempre tomo un café por la mañana.',
             'toujours',
             ['souvent', 'ensuite', "d'abord"],
             ['fr-toujours'],
@@ -805,7 +805,7 @@ export const FR_A1_U08: FrUnitDef = {
           question(
             'fr.ex.lga27e0thdtwrb',
             RYTHME,
-            '¿Qué hace Léa a la noche?',
+            '¿Qué hace Léa por la noche?',
             'Mira la tele seguido.',
             ['Escucha siempre la radio.', 'Trabaja seguido.', 'Nunca mira la tele.'],
             ['fr-souvent', 'fr-toujours'],
@@ -819,7 +819,7 @@ export const FR_A1_U08: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Tu bois souvent du café?',
-            '¿Tomás café seguido? (Respondé que sí, todos los días.)',
+            '¿Tomas café seguido? (Responde que sí, todos los días.)',
             'Oui, je bois du café tous les jours.',
             ['Oui, tous les jours.', 'Oui, tous les jours, je bois du café.'],
             ['fr-souvent', 'fr-tous-les-jours'],

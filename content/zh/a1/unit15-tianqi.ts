@@ -51,7 +51,7 @@ export const ZH_A1_U15: ZhUnitDef = {
     description: 'El año y la fecha, cumpleaños, el clima, las estaciones y 了 de cambio.',
     emoji: '🌦️',
     objective:
-      'Podés decir fechas completas y tu cumpleaños, saludar en un cumpleaños, hablar del clima y de las estaciones.',
+      'Puedes decir fechas completas y tu cumpleaños, saludar en un cumpleaños, hablar del clima y de las estaciones.',
     grammar: {
       title: 'La fecha · 了 de cambio',
       explanation:
@@ -207,7 +207,7 @@ export const ZH_A1_U15: ZhUnitDef = {
             { target: '我明年去北京。', base: 'El año que viene voy a Pekín.' },
           ],
         },
-        takeaways: ['Decís la fecha en orden: año, mes, día.', 'Usás 去年, 今年 y 明年.'],
+        takeaways: ['Dices la fecha en orden: año, mes, día.', 'Usas 去年, 今年 y 明年.'],
         exercises: [
           ex.translationChoice('年', 'año', ['mes', 'día (del mes)', 'semana'], ['zh-nian'], {
             id: 'zh.ex.1lkmy8zajfqswp',
@@ -256,7 +256,7 @@ export const ZH_A1_U15: ZhUnitDef = {
           ),
           reply(
             '今天几月几号？',
-            '¿Qué fecha es hoy? (Respondé: 5 de octubre.)',
+            '¿Qué fecha es hoy? (Responde: 5 de octubre.)',
             'shí yuè wǔ hào',
             '十月五号',
             ['zh-hao-fecha', 'zh-yue'],
@@ -296,7 +296,7 @@ export const ZH_A1_U15: ZhUnitDef = {
             { target: '我今天二十岁了。', base: 'Hoy cumplo veinte años.' },
           ],
         },
-        takeaways: ['Decís cuándo es tu cumpleaños.', 'Marcás un cambio con 了 al final.'],
+        takeaways: ['Dices cuándo es tu cumpleaños.', 'Marcas un cambio con 了 al final.'],
         exercises: [
           ex.translationChoice('生日', 'cumpleaños', ['año', 'fiesta', 'semana'], ['zh-shengri'], {
             id: 'zh.ex.wwe54osdndm0ix',
@@ -347,7 +347,7 @@ export const ZH_A1_U15: ZhUnitDef = {
           }),
           reply(
             '你的生日是几月几号？',
-            '¿Cuándo es tu cumpleaños? (Respondé: el 3 de abril.)',
+            '¿Cuándo es tu cumpleaños? (Responde: el 3 de abril.)',
             'wǒ de shēngrì shì sì yuè sān hào',
             '我的生日是四月三号',
             ['zh-shengri'],
@@ -380,7 +380,7 @@ export const ZH_A1_U15: ZhUnitDef = {
             { target: '下雨了！', base: '¡Se puso a llover!' },
           ],
         },
-        takeaways: ['Preguntás por el clima con 天气怎么样？', 'Decís frío, calor, sol y lluvia.'],
+        takeaways: ['Preguntas por el clima con 天气怎么样？', 'Dices frío, calor, sol y lluvia.'],
         exercises: [
           ex.translationChoice(
             '天气',
@@ -435,7 +435,7 @@ export const ZH_A1_U15: ZhUnitDef = {
           ),
           reply(
             '今天天气怎么样？',
-            '¿Qué tiempo hace hoy? (Respondé que hace mucho frío.)',
+            '¿Qué tiempo hace hoy? (Responde que hace mucho frío.)',
             'hěn lěng',
             '很冷',
             ['zh-tianqi', 'zh-leng'],
@@ -471,7 +471,7 @@ export const ZH_A1_U15: ZhUnitDef = {
             { target: '我喜欢秋天。', base: 'Me gusta el otoño.' },
           ],
         },
-        takeaways: ['Nombrás las cuatro estaciones.', 'Contás cómo es el clima en cada una.'],
+        takeaways: ['Nombras las cuatro estaciones.', 'Cuentas cómo es el clima en cada una.'],
         exercises: [
           ex.translationChoice(
             '夏天',
@@ -538,7 +538,7 @@ export const ZH_A1_U15: ZhUnitDef = {
           ),
           reply(
             '你喜欢夏天吗？',
-            '¿Te gusta el verano? (Respondé que no, que te gusta el invierno.)',
+            '¿Te gusta el verano? (Responde que no, que te gusta el invierno.)',
             'bù xǐhuan, wǒ xǐhuan dōngtiān',
             '不喜欢，我喜欢冬天',
             ['zh-xiatian', 'zh-dongtian'],
@@ -576,14 +576,14 @@ export const ZH_A1_U15: ZhUnitDef = {
           ],
         },
         takeaways: [
-          'Usás 中午 y otras palabras de tiempo antes del verbo.',
-          'Entendés un mensaje y una charla sobre el clima.',
+          'Usas 中午 y otras palabras de tiempo antes del verbo.',
+          'Entiendes un mensaje y una charla sobre el clima.',
         ],
         exercises: [
           ex.translationChoice(
             '中午',
             'mediodía',
-            ['a la mañana', 'a la noche', 'a la tarde'],
+            ['por la mañana', 'por la noche', 'por la tarde'],
             ['zh-zhongwu'],
             {
               id: 'zh.ex.bxek19fyllmxj0',
@@ -638,7 +638,7 @@ export const ZH_A1_U15: ZhUnitDef = {
           question(
             'zh.ex.gqbnfswayf98sj',
             SALUDO,
-            '¿Qué van a hacer a la noche?',
+            '¿Qué van a hacer por la noche?',
             'Comer en un restaurante',
             ['Cocinar en casa', 'Ir a la escuela', 'Mirar la tele'],
             ['zh-shengri-kuaile'],
@@ -646,7 +646,7 @@ export const ZH_A1_U15: ZhUnitDef = {
           ),
           reply(
             '明天中午你在哪儿吃饭？',
-            '¿Dónde comés mañana al mediodía? (Respondé que en casa.)',
+            '¿Dónde comes mañana al mediodía? (Responde que en casa.)',
             'wǒ zài jiā chīfàn',
             '我在家吃饭',
             ['zh-zhongwu'],

@@ -76,13 +76,13 @@ export const unit04: UnitDef = {
     w(
       'en-suitcase',
       'suitcase',
-      'valija',
+      'maleta',
       '/ˈsutˌkeɪs/',
       '🧳',
       'My suitcase is very big.',
-      'Mi valija es muy grande.',
+      'Mi maleta es muy grande.',
       ['travel'],
-      ['maleta'],
+      ['maleta', 'valija'],
     ),
     w(
       'en-trip',
@@ -131,7 +131,7 @@ export const unit04: UnitDef = {
       '/mæp/',
       '🗺️',
       'Do you have a map of the city?',
-      '¿Tenés un mapa de la ciudad?',
+      '¿Tienes un mapa de la ciudad?',
       ['travel'],
     ),
     w(
@@ -151,7 +151,7 @@ export const unit04: UnitDef = {
       '/ˈfoʊtoʊ/',
       '📸',
       'Can you take a photo of us?',
-      '¿Nos sacás una foto?',
+      '¿Nos sacas una foto?',
       ['travel'],
       ['fotografía'],
       ['picture'],
@@ -184,7 +184,7 @@ export const unit04: UnitDef = {
       '/əˈbrɔd/',
       '🌎',
       'Do you want to travel abroad?',
-      '¿Querés viajar al exterior?',
+      '¿Quieres viajar al exterior?',
       ['travel'],
       ['al exterior', 'en el extranjero', 'al extranjero'],
     ),
@@ -202,13 +202,13 @@ export const unit04: UnitDef = {
     w(
       'en-pack',
       'pack',
-      'armar la valija',
+      'hacer la maleta',
       '/pæk/',
       undefined,
       'I packed my suitcase last night.',
-      'Anoche armé la valija.',
+      'Anoche hice la maleta.',
       ['travel', 'verbs'],
-      ['empacar', 'hacer la valija'],
+      ['empacar', 'hacer la maleta', 'hacer la valija', 'armar la valija'],
     ),
   ],
   lessons: [
@@ -259,7 +259,7 @@ export const unit04: UnitDef = {
     },
     {
       title: 'En el aeropuerto',
-      objective: 'Pasaporte, valija y vuelo.',
+      objective: 'Pasaporte, maleta y vuelo.',
       exercises: [
         ex.imageChoice('🛂', 'passport', ['ticket', 'map', 'photo'], ['en-passport']),
         ex.imageChoice('🧳', 'suitcase', ['passport', 'ticket', 'map'], ['en-suitcase']),
@@ -287,7 +287,7 @@ export const unit04: UnitDef = {
         ),
         ex.fillBlank(
           'I ___ my suitcase last night.',
-          'Anoche armé la valija.',
+          'Anoche hice la maleta.',
           'packed',
           ['pack', 'packs', 'packing'],
           ['en-pack', 'en-suitcase', 'en-last-night'],
@@ -329,7 +329,7 @@ export const unit04: UnitDef = {
         ),
         ex.fillBlank(
           'Do you want to travel ___?',
-          '¿Querés viajar al exterior?',
+          '¿Quieres viajar al exterior?',
           'abroad',
           ['by', 'near', 'ago'],
           ['en-abroad', 'en-travel', 'en-want'],
@@ -407,7 +407,7 @@ export const unit04: UnitDef = {
         ex.imageChoice('🗺️', 'map', ['photo', 'ticket', 'passport'], ['en-map']),
         ex.fillBlank(
           'Can you take a ___ of us?',
-          '¿Nos sacás una foto?',
+          '¿Nos sacas una foto?',
           'photo',
           ['map', 'ticket', 'trip'],
           ['en-photo', 'en-can'],
@@ -435,13 +435,13 @@ export const unit04: UnitDef = {
           ['We took a lot of maps.', 'We take a lot of photos.', 'They took a lot of photos.'],
           ['en-photo', 'en-took'],
         ),
-        ex.orderWords('We packed our suitcases and left.', 'Armamos las valijas y nos fuimos.', [
+        ex.orderWords('We packed our suitcases and left.', 'Hicimos las maletas y nos fuimos.', [
           'en-pack',
           'en-suitcase',
           'en-leave',
           'en-our',
         ]),
-        ex.translateWrite('¿Tenés un mapa de la ciudad?', 'Do you have a map of the city?', [
+        ex.translateWrite('¿Tienes un mapa de la ciudad?', 'Do you have a map of the city?', [
           'en-map',
           'en-city',
           'en-have',

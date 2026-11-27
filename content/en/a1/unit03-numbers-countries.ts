@@ -24,17 +24,17 @@ export const unit03: UnitDef = {
   position: 3,
   title: 'Números, edades y países',
   titleEn: 'Numbers, ages and countries',
-  description: 'Contar hasta veinte, decir tu edad y de dónde sos.',
+  description: 'Contar hasta veinte, decir tu edad y de dónde eres.',
   emoji: '🌍',
-  objective: 'Podés contar hasta veinte, decir tu edad y de dónde sos.',
+  objective: 'Puedes contar hasta veinte, decir tu edad y de dónde eres.',
   grammar: {
     title: 'La edad con to be',
     explanation:
       'En inglés la edad va con to be, no con have: I am ten (years old). El origen también: I am from Argentina.',
     examples: [
-      { target: 'How old are you?', base: '¿Cuántos años tenés?' },
+      { target: 'How old are you?', base: '¿Cuántos años tienes?' },
       { target: "I'm twenty years old.", base: 'Tengo veinte años.' },
-      { target: 'Where are you from?', base: '¿De dónde sos?' },
+      { target: 'Where are you from?', base: '¿De dónde eres?' },
     ],
   },
   review: {
@@ -138,7 +138,7 @@ export const unit03: UnitDef = {
       translation: '¿cuántos años…?',
       ipa: '/haʊ oʊld/',
       exampleEn: 'How old are you?',
-      exampleEs: '¿Cuántos años tenés?',
+      exampleEs: '¿Cuántos años tienes?',
       tags: ['age', 'questions'],
     },
     {
@@ -147,7 +147,7 @@ export const unit03: UnitDef = {
       translation: 'dónde',
       ipa: '/wɛr/',
       exampleEn: 'Where are you from?',
-      exampleEs: '¿De dónde sos?',
+      exampleEs: '¿De dónde eres?',
       tags: ['questions'],
     },
     {
@@ -233,7 +233,7 @@ export const unit03: UnitDef = {
           { target: 'Two coffees, please.', base: 'Dos cafés, por favor.' },
         ],
       },
-      takeaways: ['Contás del uno al cinco.', 'Pronunciás three con la lengua entre los dientes.'],
+      takeaways: ['Cuentas del uno al cinco.', 'Pronuncias three con la lengua entre los dientes.'],
       exercises: [
         ex.imageChoice('3️⃣', 'three', ['two', 'five', 'four'], ['en-three']),
         ex.imageChoice('5️⃣', 'five', ['four', 'one', 'three'], ['en-five']),
@@ -264,7 +264,7 @@ export const unit03: UnitDef = {
           { target: 'Ten dollars.', base: 'Diez dólares.' },
         ],
       },
-      takeaways: ['Contás del seis al diez.', 'Escribís eight con gh.'],
+      takeaways: ['Cuentas del seis al diez.', 'Escribes eight con gh.'],
       exercises: [
         ex.imageChoice('7️⃣', 'seven', ['six', 'nine', 'eight'], ['en-seven']),
         ex.imageChoice('🔟', 'ten', ['two', 'nine', 'seven'], ['en-ten']),
@@ -305,7 +305,7 @@ export const unit03: UnitDef = {
           { target: 'Fifteen dollars.', base: 'Quince dólares.' },
         ],
       },
-      takeaways: ['Decís 11, 12, 15 y 20.', 'Reconocés la terminación -teen.'],
+      takeaways: ['Dices 11, 12, 15 y 20.', 'Reconoces la terminación -teen.'],
       exercises: [
         ex.translationChoice('twelve', 'doce', ['once', 'quince', 'veinte'], ['en-twelve']),
         ex.listenChoice('fifteen', ['five', 'twelve', 'twenty'], ['en-fifteen'], {
@@ -344,22 +344,22 @@ export const unit03: UnitDef = {
       ],
     },
     {
-      title: '¿Cuántos años tenés?',
+      title: '¿Cuántos años tienes?',
       objective: 'Preguntar y decir la edad.',
       intro: {
         explanation:
           'Para la edad se usa to be, no have: I am ten (years old). Se pregunta How old are you? Decir «I have ten years» es un error típico.',
         examples: [
-          { target: 'How old are you?', base: '¿Cuántos años tenés?' },
+          { target: 'How old are you?', base: '¿Cuántos años tienes?' },
           { target: "I'm twelve years old.", base: 'Tengo doce años.' },
         ],
       },
-      takeaways: ['Preguntás la edad con How old are you?', 'Respondés con I am + edad, sin have.'],
+      takeaways: ['Preguntas la edad con How old are you?', 'Respondes con I am + edad, sin have.'],
       exercises: [
         ex.translationChoice(
           'How old are you?',
-          '¿Cuántos años tenés?',
-          ['¿Cómo estás?', '¿De dónde sos?', '¿Cuál es tu nombre?'],
+          '¿Cuántos años tienes?',
+          ['¿Cómo estás?', '¿De dónde eres?', '¿Cuál es tu nombre?'],
           ['en-how-old'],
         ),
         ex.fillBlank(
@@ -395,7 +395,7 @@ export const unit03: UnitDef = {
         ),
         ex.translationChoice('year', 'año', ['edad', 'viejo', 'número'], ['en-year']),
         // Agregados (estándar: escucha y recuperación activa al final); no cambian lo cargado.
-        ex.translateWrite('¿Cuántos años tenés?', 'How old are you?', ['en-how-old', 'en-are'], {
+        ex.translateWrite('¿Cuántos años tienes?', 'How old are you?', ['en-how-old', 'en-are'], {
           consolidate: false,
         }),
         ex.translateWrite(
@@ -411,18 +411,18 @@ export const unit03: UnitDef = {
       ],
     },
     {
-      title: '¿De dónde sos?',
-      objective: 'Decir de qué país sos.',
+      title: '¿De dónde eres?',
+      objective: 'Decir de qué país eres.',
       intro: {
         explanation:
-          'Where are you from? es «¿de dónde sos?». Se responde I am from + país. Los países van con mayúscula y algunos con the: the United States.',
+          'Where are you from? es «¿de dónde eres?». Se responde I am from + país. Los países van con mayúscula y algunos con the: the United States.',
         examples: [
-          { target: 'Where are you from?', base: '¿De dónde sos?' },
+          { target: 'Where are you from?', base: '¿De dónde eres?' },
           { target: "I'm from Mexico.", base: 'Soy de México.' },
           { target: 'She is from the United States.', base: 'Ella es de Estados Unidos.' },
         ],
       },
-      takeaways: ['Preguntás el origen con Where are you from?', 'Respondés con I am from + país.'],
+      takeaways: ['Preguntas el origen con Where are you from?', 'Respondes con I am from + país.'],
       exercises: [
         ex.imageChoice('🇪🇸', 'Spain', ['Mexico', 'England', 'Argentina'], ['en-spain']),
         ex.imageChoice(
@@ -439,8 +439,8 @@ export const unit03: UnitDef = {
         ),
         ex.translationChoice(
           'Where are you from?',
-          '¿De dónde sos?',
-          ['¿Dónde estás?', '¿Cómo estás?', '¿Cuántos años tenés?'],
+          '¿De dónde eres?',
+          ['¿Dónde estás?', '¿Cómo estás?', '¿Cuántos años tienes?'],
           ['en-where', 'en-from'],
         ),
         ex.fillBlank(
@@ -453,7 +453,7 @@ export const unit03: UnitDef = {
             explanation: 'Para decir tu origen se usa from: I am from Mexico.',
           },
         ),
-        ex.orderWords('Where are you from?', '¿De dónde sos?', ['en-where', 'en-from']),
+        ex.orderWords('Where are you from?', '¿De dónde eres?', ['en-where', 'en-from']),
         ex.translateWrite('Soy de Argentina.', 'I am from Argentina.', ['en-from', 'en-argentina']),
         ex.shortAnswer(
           'Ana is from Spain. Where is Ana from?',
@@ -478,7 +478,7 @@ export const unit03: UnitDef = {
           ['en-where', 'en-from'],
           { consolidate: false },
         ),
-        ex.translateWrite('¿De dónde sos?', 'Where are you from?', ['en-where', 'en-from'], {
+        ex.translateWrite('¿De dónde eres?', 'Where are you from?', ['en-where', 'en-from'], {
           consolidate: false,
         }),
         ex.translateWrite(

@@ -100,13 +100,13 @@ export const IT_A2_U06: ItUnitDef = {
       'Invitar, aceptar y rechazar con amabilidad, ponerse de acuerdo para salir y contar planes con el futuro (andrò, farò, sarà).',
     emoji: '🥂',
     objective:
-      'Podés invitar a alguien (ti va di…?, che ne dici di…?), aceptar o rechazar con amabilidad, arreglar día y hora, y contar tus planes con el futuro.',
+      'Puedes invitar a alguien (ti va di…?, che ne dici di…?), aceptar o rechazar con amabilidad, arreglar día y hora, y contar tus planes con el futuro.',
     grammar: {
       title: 'Invitar y responder · futuro semplice',
       explanation:
-        'Para invitar: ti va di + infinitivo? (¿tenés ganas de…?) o che ne dici di…? (¿qué te parece…?). Aceptar: volentieri!, d’accordo. Rechazar: mi dispiace, non posso: devo lavorare. El futuro: -are / -ere → -erò, -ire → -irò; irregulares frecuentes: andrò, farò, sarò / sarà, verrò. Para planes cercanos alcanza el presente: domani vado al mare. Tra due giorni es «dentro de dos días». Ojo: magari es «¡ojalá!» o «quizás».',
+        'Para invitar: ti va di + infinitivo? (¿tienes ganas de…?) o che ne dici di…? (¿qué te parece…?). Aceptar: volentieri!, d’accordo. Rechazar: mi dispiace, non posso: devo lavorare. El futuro: -are / -ere → -erò, -ire → -irò; irregulares frecuentes: andrò, farò, sarò / sarà, verrò. Para planes cercanos alcanza el presente: domani vado al mare. Tra due giorni es «dentro de dos días». Ojo: magari es «¡ojalá!» o «quizás».',
       examples: [
-        { target: 'Ti va di venire alla festa?', base: '¿Tenés ganas de venir a la fiesta?' },
+        { target: 'Ti va di venire alla festa?', base: '¿Tienes ganas de venir a la fiesta?' },
         {
           target: 'Mi dispiace, non posso: devo lavorare.',
           base: 'Lo siento, no puedo: tengo que trabajar.',
@@ -126,13 +126,13 @@ export const IT_A2_U06: ItUnitDef = {
       w(
         'it-ti-va-di',
         'ti va di…?',
-        '¿tenés ganas de…?',
+        '¿tienes ganas de…?',
         'Ti va di venire al cinema?',
-        '¿Tenés ganas de venir al cine?',
+        '¿Tienes ganas de venir al cine?',
         ['invitations'],
         {
           acceptedTexts: ['ti va di?'],
-          acceptedTranslations: ['¿te pinta…?', '¿querés…?'],
+          acceptedTranslations: ['¿te pinta…?', '¿querés…?', '¿quieres…?', '¿tenés ganas de…?'],
         },
       ),
       w(
@@ -197,7 +197,7 @@ export const IT_A2_U06: ItUnitDef = {
         "d'accordo",
         'de acuerdo',
         "D'accordo, a domani!",
-        '¡Dale, hasta mañana!',
+        '¡De acuerdo, hasta mañana!',
         ['invitations'],
         {
           acceptedTexts: ['d’accordo'],
@@ -299,17 +299,17 @@ export const IT_A2_U06: ItUnitDef = {
         objective: 'Invitar a alguien y aceptar una invitación.',
         intro: {
           explanation:
-            'Para invitar: ti va di + infinitivo? (¿tenés ganas de…?) o che ne dici di…? (¿qué te parece…?). Para aceptar: volentieri! (¡con gusto!). Ojo: «invitar a Marco» es invitare Marco, sin a.',
+            'Para invitar: ti va di + infinitivo? (¿tienes ganas de…?) o che ne dici di…? (¿qué te parece…?). Para aceptar: volentieri! (¡con gusto!). Ojo: «invitar a Marco» es invitare Marco, sin a.',
           examples: [
-            { target: 'Ti va di venire alla festa?', base: '¿Tenés ganas de venir a la fiesta?' },
+            { target: 'Ti va di venire alla festa?', base: '¿Tienes ganas de venir a la fiesta?' },
             { target: 'Volentieri, grazie!', base: '¡Con gusto, gracias!' },
           ],
         },
-        takeaways: ['Invitás con ti va di…? y che ne dici di…?', 'Aceptás con volentieri.'],
+        takeaways: ['Invitas con ti va di…? y che ne dici di…?', 'Aceptas con volentieri.'],
         exercises: [
           ex.translationChoice(
             'ti va di…?',
-            '¿tenés ganas de…?',
+            '¿tienes ganas de…?',
             ['¿te vas de…?', '¿te gusta…?', '¿vas a…?'],
             ['it-ti-va-di'],
             {
@@ -319,7 +319,7 @@ export const IT_A2_U06: ItUnitDef = {
           ex.translationChoice(
             'che ne dici?',
             '¿qué te parece?',
-            ['¿cuántos tenés?', '¿qué hora es?', '¿de qué hablás?'],
+            ['¿cuántos tienes?', '¿qué hora es?', '¿de qué hablas?'],
             ['it-che-ne-dici'],
             {
               id: 'it.ex.gmxikclo4y7irs',
@@ -380,7 +380,7 @@ export const IT_A2_U06: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Ti va di andare al cinema?',
-            '¿Tenés ganas de ir al cine? (Respondé que sí, con gusto.)',
+            '¿Tienes ganas de ir al cine? (Responde que sí, con gusto.)',
             'Sì, volentieri!',
             ['Volentieri!', 'Sì, volentieri.', 'Volentieri, grazie!'],
             ['it-volentieri'],
@@ -404,7 +404,7 @@ export const IT_A2_U06: ItUnitDef = {
         objective: 'Aceptar y rechazar con amabilidad.',
         intro: {
           explanation:
-            'Para aceptar: d’accordo (dale, de acuerdo). Para rechazar: mi dispiace (lo siento), non posso, devo lavorare (tengo que trabajar). Ojo: magari! es «¡ojalá!» (y magari solo, «quizás»).',
+            'Para aceptar: d’accordo (de acuerdo, vale). Para rechazar: mi dispiace (lo siento), non posso, devo lavorare (tengo que trabajar). Ojo: magari! es «¡ojalá!» (y magari solo, «quizás»).',
           examples: [
             {
               target: 'Mi dispiace, non posso: devo lavorare.',
@@ -413,7 +413,7 @@ export const IT_A2_U06: ItUnitDef = {
             { target: 'Magari! Ma sono a Torino.', base: '¡Ojalá! Pero estoy en Turín.' },
           ],
         },
-        takeaways: ['Rechazás con mi dispiace y devo…', 'Sabés que magari es «ojalá».'],
+        takeaways: ['Rechazas con mi dispiace y devo…', 'Sabes que magari es «ojalá».'],
         exercises: [
           ex.translationChoice(
             'magari',
@@ -488,7 +488,7 @@ export const IT_A2_U06: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Vieni alla festa sabato?',
-            '¿Venís a la fiesta el sábado? (Decí que lo sentís, que no podés porque tenés que trabajar.)',
+            '¿Vienes a la fiesta el sábado? (Di que lo sientes, que no puedes porque tienes que trabajar.)',
             'Mi dispiace, non posso: devo lavorare.',
             [
               'Mi dispiace, non posso. Devo lavorare.',
@@ -522,7 +522,7 @@ export const IT_A2_U06: ItUnitDef = {
             { target: 'Parto tra due giorni.', base: 'Me voy dentro de dos días.' },
           ],
         },
-        takeaways: ['Decís sabato prossimo y tra due giorni.', 'Arreglás una cita con ci vediamo…'],
+        takeaways: ['Dices sabato prossimo y tra due giorni.', 'Arreglas una cita con ci vediamo…'],
         exercises: [
           ex.translationChoice(
             'tra due giorni',
@@ -575,10 +575,10 @@ export const IT_A2_U06: ItUnitDef = {
             'it.ex.2o3cbz4k8z9988',
             APERITIVO,
             '¿Qué significa «Daje» en lo que dice Valerio?',
-            '«¡Dale!», una expresión típica de Roma',
-            ['«Dejalo»', '«Te doy»', '«Despacio»'],
+            '«¡Vamos!», una expresión típica de Roma',
+            ['«Déjalo»', '«Te doy»', '«Despacio»'],
             ['it-d-accordo'],
-            'Valerio dice «Daje, andiamo lì!»: daje es una expresión romana para animar, como «¡dale!».',
+            'Valerio dice «Daje, andiamo lì!»: daje es una expresión romana para animar, como «¡vamos!».',
           ),
           question(
             'it.ex.gb9n7v3dc9zsd2',
@@ -591,7 +591,7 @@ export const IT_A2_U06: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Quando ci vediamo?',
-            '¿Cuándo nos vemos? (Respondé que el sábado que viene.)',
+            '¿Cuándo nos vemos? (Responde que el sábado que viene.)',
             'Ci vediamo sabato prossimo.',
             ['Sabato prossimo.', 'Ci vediamo sabato prossimo!'],
             ['it-ci-vediamo', 'it-prossimo'],
@@ -624,7 +624,7 @@ export const IT_A2_U06: ItUnitDef = {
             { target: 'Sarà una bella festa.', base: 'Va a ser una linda fiesta.' },
           ],
         },
-        takeaways: ['Usás andrò, farò, sarà y verrò.', 'Contás planes de las vacaciones.'],
+        takeaways: ['Usas andrò, farò, sarà y verrò.', 'Cuentas planes de las vacaciones.'],
         exercises: [
           ex.translationChoice('farò', 'haré', ['hice', 'hago', 'hacía'], ['it-faro'], {
             id: 'it.ex.xhcs65n2gy99qr',
@@ -698,7 +698,7 @@ export const IT_A2_U06: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Cosa farai domani?',
-            '¿Qué vas a hacer mañana? (Respondé que vas a ir al mar.)',
+            '¿Qué vas a hacer mañana? (Responde que vas a ir al mar.)',
             'Domani andrò al mare.',
             ['Andrò al mare.', 'Domani vado al mare.', 'Vado al mare.'],
             ['it-andro', 'it-mare'],
@@ -722,15 +722,15 @@ export const IT_A2_U06: ItUnitDef = {
         objective: 'Organizar una salida de principio a fin.',
         intro: {
           explanation:
-            'En Italia, l’aperitivo es una costumbre: después del trabajo se toma algo con picoteo antes de cenar, como nuestra previa. Para organizar: proponés (che ne dici…?), arreglás (ci vediamo alle…) y confirmás (d’accordo!).',
+            'En Italia, l’aperitivo es una costumbre: después del trabajo se toma algo con picoteo antes de cenar, como nuestra previa. Para organizar: propones (che ne dici…?), arreglas (ci vediamo alle…) y confirmas (d’accordo!).',
           examples: [
             { target: 'Che ne dici di un aperitivo?', base: '¿Qué te parece un aperitivo?' },
-            { target: "D'accordo, alle sette!", base: '¡Dale, a las siete!' },
+            { target: "D'accordo, alle sette!", base: '¡De acuerdo, a las siete!' },
           ],
         },
         takeaways: [
-          'Organizás una salida: proponés, arreglás y confirmás.',
-          'Conocés la costumbre del aperitivo.',
+          'Organizas una salida: propones, arreglas y confirmas.',
+          'Conoces la costumbre del aperitivo.',
         ],
         exercises: [
           ex.matchPairs(
@@ -745,7 +745,7 @@ export const IT_A2_U06: ItUnitDef = {
           ),
           ex.fillBlank(
             'Ti va di prendere un ___ dopo il lavoro?',
-            '¿Tenés ganas de tomar un aperitivo después del trabajo?',
+            '¿Tienes ganas de tomar un aperitivo después del trabajo?',
             'aperitivo',
             ['pranzo', 'volo', 'dolce'],
             ['it-aperitivo', 'it-ti-va-di'],
@@ -778,7 +778,7 @@ export const IT_A2_U06: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Che ne dici di un aperitivo?',
-            '¿Qué te parece un aperitivo? (Aceptá y proponé las siete.)',
+            '¿Qué te parece un aperitivo? (Acepta y propón las siete.)',
             "D'accordo, alle sette!",
             [
               'D’accordo, alle sette.',
@@ -790,7 +790,7 @@ export const IT_A2_U06: ItUnitDef = {
             { id: 'it.ex.pvj0zbyazdnjak' },
           ),
           ex.translateWrite(
-            '¿Tenés ganas de venir a la fiesta?',
+            '¿Tienes ganas de venir a la fiesta?',
             'Ti va di venire alla festa?',
             ['it-ti-va-di', 'it-festa'],
             { id: 'it.ex.pw4jxrg8edpqmw' },

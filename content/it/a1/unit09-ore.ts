@@ -19,10 +19,10 @@ export const unit09: UnitDef = {
   position: 9,
   title: 'Horas y días',
   titleEn: 'Ore e giorni',
-  description: 'Decir y preguntar la hora, a qué hora hacés algo y los días de la semana.',
+  description: 'Decir y preguntar la hora, a qué hora haces algo y los días de la semana.',
   emoji: '🕗',
   objective:
-    'Podés preguntar y decir la hora (che ore sono? sono le otto), decir a qué hora hacés algo (alle nove) y nombrar los días.',
+    'Puedes preguntar y decir la hora (che ore sono? sono le otto), decir a qué hora haces algo (alle nove) y nombrar los días.',
   grammar: {
     title: 'Sono le… / è l’una / alle…',
     explanation:
@@ -71,7 +71,7 @@ export const unit09: UnitDef = {
       ['time'],
       { emoji: '🕛' },
     ),
-    w('it-a-che-ora', 'a che ora?', '¿a qué hora?', 'A che ora lavori?', '¿A qué hora trabajás?', [
+    w('it-a-che-ora', 'a che ora?', '¿a qué hora?', 'A che ora lavori?', '¿A qué hora trabajas?', [
       'time',
       'questions',
     ]),
@@ -137,12 +137,12 @@ export const unit09: UnitDef = {
           { target: "È l'una.", base: 'Es la una.' },
         ],
       },
-      takeaways: ['Preguntás la hora con che ore sono?', "Decís la hora con sono le… y è l'una."],
+      takeaways: ['Preguntas la hora con che ore sono?', "Dices la hora con sono le… y è l'una."],
       exercises: [
         ex.translationChoice(
           'che ore sono?',
           '¿qué hora es?',
-          ['¿cuántos años tenés?', '¿cómo estás?', '¿dónde está?'],
+          ['¿cuántos años tienes?', '¿cómo estás?', '¿dónde está?'],
           ['it-che-ore-sono'],
         ),
         ex.listenChoice(
@@ -173,7 +173,7 @@ export const unit09: UnitDef = {
         ),
         ex.shortAnswer(
           'Che ore sono?',
-          '¿Qué hora es? (Respondé que son las cuatro.)',
+          '¿Qué hora es? (Responde que son las cuatro.)',
           'Sono le quattro.',
           ['Le quattro.'],
           ['it-sono-le', 'it-quattro'],
@@ -192,7 +192,7 @@ export const unit09: UnitDef = {
           { target: 'Sono le undici e un quarto.', base: 'Son las once y cuarto.' },
         ],
       },
-      takeaways: ['Decís y media y y cuarto.', 'Contás hasta las doce y decís mediodía.'],
+      takeaways: ['Dices y media y y cuarto.', 'Cuentas hasta las doce y dices mediodía.'],
       exercises: [
         ex.translationChoice(
           'e mezza',
@@ -235,16 +235,16 @@ export const unit09: UnitDef = {
     },
     {
       title: 'A che ora?',
-      objective: 'Decir a qué hora hacés algo.',
+      objective: 'Decir a qué hora haces algo.',
       intro: {
         explanation:
           "Para preguntar cuándo pasa algo: a che ora? Se responde con alle + número: alle nove («a las nueve»). Con la una: all'una. Y a mezzogiorno: «al mediodía».",
         examples: [
-          { target: 'A che ora lavori?', base: '¿A qué hora trabajás?' },
+          { target: 'A che ora lavori?', base: '¿A qué hora trabajas?' },
           { target: 'Mi sveglio alle sette.', base: 'Me despierto a las siete.' },
         ],
       },
-      takeaways: ['Preguntás a che ora…?', 'Decís a qué hora hacés algo con alle.'],
+      takeaways: ['Preguntas a che ora…?', 'Dices a qué hora haces algo con alle.'],
       exercises: [
         ex.translationChoice('alle', 'a las', ['son las', 'y media', 'hoy'], ['it-alle']),
         ex.translationChoice(
@@ -273,13 +273,13 @@ export const unit09: UnitDef = {
           ['it-mangio', 'it-mezzogiorno'],
           { skill: 'vocabulary' },
         ),
-        ex.orderWords('A che ora fai colazione?', '¿A qué hora desayunás?', [
+        ex.orderWords('A che ora fai colazione?', '¿A qué hora desayunas?', [
           'it-a-che-ora',
           'it-faccio-colazione',
         ]),
         ex.shortAnswer(
           'A che ora ti svegli?',
-          '¿A qué hora te despertás? (Respondé que a las siete.)',
+          '¿A qué hora te despiertas? (Responde que a las siete.)',
           'Mi sveglio alle sette.',
           ['Alle sette.', 'Io mi sveglio alle sette.'],
           ['it-mi-sveglio', 'it-alle', 'it-sette'],
@@ -303,7 +303,7 @@ export const unit09: UnitDef = {
           { target: 'Martedì studio italiano.', base: 'El martes estudio italiano.' },
         ],
       },
-      takeaways: ['Nombrás los días de lunes a viernes.', 'Decís qué hacés un día sin artículo.'],
+      takeaways: ['Nombras los días de lunes a viernes.', 'Dices qué haces un día sin artículo.'],
       exercises: [
         ex.translationChoice('lunedì', 'lunes', ['martes', 'miércoles', 'jueves'], ['it-lunedi']),
         ex.translationChoice('giovedì', 'jueves', ['viernes', 'martes', 'lunes'], ['it-giovedi']),
@@ -353,7 +353,7 @@ export const unit09: UnitDef = {
           { target: 'Il fine settimana dormo molto.', base: 'El fin de semana duermo mucho.' },
         ],
       },
-      takeaways: ['Distinguís domani y la mattina.', 'Hablás del fin de semana.'],
+      takeaways: ['Distingues domani y la mattina.', 'Hablas del fin de semana.'],
       exercises: [
         ex.translationChoice(
           'domani',
@@ -390,7 +390,7 @@ export const unit09: UnitDef = {
         ]),
         ex.shortAnswer(
           'Che giorno è oggi?',
-          '¿Qué día es hoy? (Respondé que hoy es domingo.)',
+          '¿Qué día es hoy? (Responde que hoy es domingo.)',
           'Oggi è domenica.',
           ['È domenica.', 'Domenica.'],
           ['it-oggi', 'it-domenica'],

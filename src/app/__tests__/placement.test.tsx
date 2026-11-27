@@ -76,7 +76,7 @@ async function answer(correct: boolean) {
     }
   } else if (p.type === 'short_answer') {
     await fireEvent.changeText(
-      screen.getByPlaceholderText('Escribí acá…'),
+      screen.getByPlaceholderText('Escribe aquí…'),
       correct ? e.answer : 'zzz qqq',
     );
   } else if ('options' in p) {
@@ -128,7 +128,7 @@ async function withLanguage(
 
 it('bienvenida: qué se evalúa, cómo funciona y cuánto dura', async () => {
   await render(<PlacementScreen />);
-  expect(screen.getByText('¿Cuánto sabés?')).toBeTruthy();
+  expect(screen.getByText('¿Cuánto sabes?')).toBeTruthy();
   for (const label of [
     'Vocabulario',
     'Gramática',
@@ -139,7 +139,7 @@ it('bienvenida: qué se evalúa, cómo funciona y cuánto dura', async () => {
     expect(screen.getByText(label)).toBeTruthy();
   }
   expect(screen.getByText('Hasta 12 preguntas · unos 3 minutos')).toBeTruthy();
-  expect(screen.getByText(/Si salís, no se guarda nada/)).toBeTruthy();
+  expect(screen.getByText(/Si sales, no se guarda nada/)).toBeTruthy();
 });
 
 it('progreso visible y preguntas de a una, con el nivel de la pregunta', async () => {
@@ -188,7 +188,7 @@ it('todo bien: sube a A2, termina en A2 (el máximo publicado) y se puede elegir
   let sawLevelUp = false;
   while (!finished) {
     finished = await answer(true);
-    if (screen.queryByText('¡Subís al nivel A2!')) sawLevelUp = true;
+    if (screen.queryByText('¡Subes al nivel A2!')) sawLevelUp = true;
     await next();
   }
   expect(sawLevelUp).toBe(true);
@@ -226,7 +226,7 @@ it('si falla el guardado, muestra el error y reintenta con el mismo resultado', 
     o.onError(new Error('network')),
   );
   await fireEvent.press(screen.getByRole('button', { name: 'Comenzar curso' }));
-  expect(screen.getByText(/tus respuestas siguen acá/)).toBeTruthy();
+  expect(screen.getByText(/tus respuestas siguen aquí/)).toBeTruthy();
   // El resultado sigue en pantalla.
   expect(screen.getByLabelText('Tu nivel estimado es A1, Principiante')).toBeTruthy();
   await fireEvent.press(screen.getByRole('button', { name: 'Reintentar' }));
@@ -281,7 +281,7 @@ it('repetir el test vuelve a la bienvenida sin guardar', async () => {
   await answer(false);
   await next();
   await fireEvent.press(screen.getByRole('button', { name: 'Hacer el test de nuevo' }));
-  expect(screen.getByText('¿Cuánto sabés?')).toBeTruthy();
+  expect(screen.getByText('¿Cuánto sabes?')).toBeTruthy();
   expect(mockMutate).not.toHaveBeenCalled();
 });
 

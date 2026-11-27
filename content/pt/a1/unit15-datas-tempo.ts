@@ -69,7 +69,7 @@ export const PT_A1_U15: PtUnitDef = {
       'Los meses, la fecha y el cumpleaños, em + mes y el clima con faz calor, faz frio y chove.',
     emoji: '📅',
     objective:
-      'Podés decir la fecha y cuándo es tu cumpleaños, nombrar los meses y las estaciones y contar qué tiempo hace.',
+      'Puedes decir la fecha y cuándo es tu cumpleaños, nombrar los meses y las estaciones y contar qué tiempo hace.',
     grammar: {
       title: 'La fecha · em + mes · fazer para el clima',
       explanation:
@@ -229,7 +229,7 @@ export const PT_A1_U15: PtUnitDef = {
             { target: 'O meu aniversário é em março.', base: 'Mi cumpleaños es en marzo.' },
           ],
         },
-        takeaways: ['Nombrás los meses de enero a junio.', 'Usás em con los meses: em março.'],
+        takeaways: ['Nombras los meses de enero a junio.', 'Usas em con los meses: em março.'],
         exercises: [
           ex.translationChoice('janeiro', 'enero', ['junio', 'julio', 'febrero'], ['pt-janeiro'], {
             id: 'pt.ex.ztw2k5zna6c2e9',
@@ -304,8 +304,8 @@ export const PT_A1_U15: PtUnitDef = {
           ],
         },
         takeaways: [
-          'Nombrás los meses de julio a diciembre.',
-          'Distinguís junho (junio) y julho (julio).',
+          'Nombras los meses de julio a diciembre.',
+          'Distingues junho (junio) y julho (julio).',
         ],
         exercises: [
           ex.translationChoice('julho', 'julio', ['junio', 'enero', 'abril'], ['pt-julho'], {
@@ -394,8 +394,8 @@ export const PT_A1_U15: PtUnitDef = {
           ],
         },
         takeaways: [
-          'Decís la fecha: dia dez de maio.',
-          'Preguntás y decís cuándo es el cumpleaños.',
+          'Dices la fecha: dia dez de maio.',
+          'Preguntas y dices cuándo es el cumpleaños.',
         ],
         exercises: [
           ex.translationChoice(
@@ -465,7 +465,7 @@ export const PT_A1_U15: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Quando é o seu aniversário? (5/3)',
-            '¿Cuándo es tu cumpleaños? (Respondé que es el 5 de marzo.)',
+            '¿Cuándo es tu cumpleaños? (Responde que es el 5 de marzo.)',
             'É no dia cinco de março.',
             [
               'O meu aniversário é no dia cinco de março.',
@@ -497,8 +497,8 @@ export const PT_A1_U15: PtUnitDef = {
           ],
         },
         takeaways: [
-          'Decís qué tiempo hace: faz calor, faz frio, chove.',
-          'Hablás de verão e inverno.',
+          'Dices qué tiempo hace: faz calor, faz frio, chove.',
+          'Hablas de verão e inverno.',
         ],
         exercises: [
           ex.imageChoice('☀️', 'faz calor', ['faz frio', 'chove', 'inverno'], ['pt-faz-calor'], {
@@ -558,7 +558,7 @@ export const PT_A1_U15: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Faz frio hoje?',
-            '¿Hace frío hoy? (Respondé que no, que hace calor.)',
+            '¿Hace frío hoy? (Responde que no, que hace calor.)',
             'Não, faz calor.',
             ['Não, hoje faz calor.', 'Faz calor.', 'Não. Faz calor.', 'Não, faz muito calor.'],
             ['pt-faz-calor'],
@@ -588,8 +588,8 @@ export const PT_A1_U15: PtUnitDef = {
           ],
         },
         takeaways: [
-          'Hablás del año: meses, fiestas y clima.',
-          'Entendés un aviso con fecha y hora.',
+          'Hablas del año: meses, fiestas y clima.',
+          'Entiendes un aviso con fecha y hora.',
         ],
         exercises: [
           ex.fillBlank(
@@ -644,7 +644,7 @@ export const PT_A1_U15: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Qual é o seu mês favorito?',
-            '¿Cuál es tu mes favorito? (Respondé que es enero, porque hace calor.)',
+            '¿Cuál es tu mes favorito? (Responde que es enero, porque hace calor.)',
             'É janeiro, porque faz calor.',
             [
               'Janeiro, porque faz calor.',

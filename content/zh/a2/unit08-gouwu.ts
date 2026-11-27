@@ -44,11 +44,11 @@ export const ZH_A2_U08: ZhUnitDef = {
       'Probarse ropa, cambiar y elegir, comparar con 更, 最 y 没有…那么, descuentos y pagos.',
     emoji: '🛍️',
     objective:
-      'Podés probarte ropa y decir si te queda bien, cambiar algo, comparar precios y productos, entender un descuento y decir cómo pagás.',
+      'Puedes probarte ropa y decir si te queda bien, cambiar algo, comparar precios y productos, entender un descuento y decir cómo pagas.',
     grammar: {
       title: '比…一点儿 / 多了 · 更 · 最 · 没有…那么',
       explanation:
-        'Con 比 se dice cuánto: 比…一点儿 (un poco más), 比…多了 (mucho más). 更 es «aún más» y 最, «el más», ambos antes del adjetivo. A 没有 B 那么 + adjetivo es «A no es tan… como B». 打八折 no es 80 % de descuento: pagás el 80 %.',
+        'Con 比 se dice cuánto: 比…一点儿 (un poco más), 比…多了 (mucho más). 更 es «aún más» y 最, «el más», ambos antes del adjetivo. A 没有 B 那么 + adjetivo es «A no es tan… como B». 打八折 no es 80 % de descuento: pagas el 80 %.',
       examples: [
         { target: '这个比那个贵多了。', base: 'Este es mucho más caro que aquel.' },
         { target: '红色的最便宜。', base: 'El rojo es el más barato.' },
@@ -77,12 +77,12 @@ export const ZH_A2_U08: ZhUnitDef = {
         'zh-qunzi',
         '裙子',
         'qúnzi',
-        'pollera',
+        'falda',
         '我想买一条裙子。',
-        'Quiero comprar una pollera.',
+        'Quiero comprar una falda.',
         ['clothes'],
         {
-          acceptedTranslations: ['falda'],
+          acceptedTranslations: ['pollera'],
         },
       ),
       w(
@@ -126,7 +126,7 @@ export const ZH_A2_U08: ZhUnitDef = {
         'verbs',
         'shopping',
       ]),
-      w('zh-xuan', '选', 'xuǎn', 'elegir', '你选哪个？', '¿Cuál elegís?', ['verbs'], {
+      w('zh-xuan', '选', 'xuǎn', 'elegir', '你选哪个？', '¿Cuál eliges?', ['verbs'], {
         acceptedTranslations: ['escoger'],
       }),
       w('zh-geng', '更', 'gèng', 'aún más', '那个更好。', 'Aquel es todavía mejor.', ['grammar'], {
@@ -174,7 +174,7 @@ export const ZH_A2_U08: ZhUnitDef = {
         'dǎzhé',
         'descuento',
         '今天打八折。',
-        'Hoy pagás el 80 % (20 % de descuento).',
+        'Hoy pagas el 80 % (20 % de descuento).',
         ['shopping'],
         {
           acceptedTranslations: ['hacer descuento', 'rebaja', 'oferta'],
@@ -213,13 +213,13 @@ export const ZH_A2_U08: ZhUnitDef = {
         objective: 'Nombrar ropa y pedir probártela.',
         intro: {
           explanation:
-            'Ropa: 裤子 (pantalón), 裙子 (pollera), 帽子 (gorro). Las prendas largas se cuentan con 条: 一条裤子. 试 es probar(se); repetido, 试试, suena amable: 我可以试试吗？',
+            'Ropa: 裤子 (pantalón), 裙子 (falda), 帽子 (gorro). Las prendas largas se cuentan con 条: 一条裤子. 试 es probar(se); repetido, 试试, suena amable: 我可以试试吗？',
           examples: [
             { target: '我可以试试这条裤子吗？', base: '¿Me puedo probar este pantalón?' },
             { target: '这个帽子很漂亮。', base: 'Este gorro es muy lindo.' },
           ],
         },
-        takeaways: ['Nombrás pantalones, polleras y gorros.', 'Pedís probarte algo con 试试.'],
+        takeaways: ['Nombras pantalones, faldas y gorros.', 'Pides probarte algo con 试试.'],
         exercises: [
           ex.imageChoice('👖', '裤子', ['裙子', '帽子', '鞋'], ['zh-kuzi'], {
             id: 'zh.ex.hur0bhshzo7613',
@@ -227,7 +227,7 @@ export const ZH_A2_U08: ZhUnitDef = {
           ex.imageChoice('🧢', '帽子', ['裤子', '裙子', '鞋'], ['zh-maozi'], {
             id: 'zh.ex.ztn45pi1qq60kf',
           }),
-          ex.translationChoice('裙子', 'pollera', ['pantalón', 'gorro', 'zapatos'], ['zh-qunzi'], {
+          ex.translationChoice('裙子', 'falda', ['pantalón', 'gorro', 'zapatos'], ['zh-qunzi'], {
             id: 'zh.ex.1cziee8y9sjryx',
           }),
           ex.listenChoice(
@@ -238,13 +238,13 @@ export const ZH_A2_U08: ZhUnitDef = {
           ),
           ex.fillBlank(
             '我想买一___裙子。',
-            'Quiero comprar una pollera.',
+            'Quiero comprar una falda.',
             '条',
             ['本', '张', '杯'],
             ['zh-qunzi'],
             {
               id: 'zh.ex.ismjkbnvah23fd',
-              explanation: 'Las prendas largas (pantalones, polleras) se cuentan con 条.',
+              explanation: 'Las prendas largas (pantalones, faldas) se cuentan con 条.',
             },
           ),
           tone('帽子', 'màozi', ['māozi', 'máozi', 'mǎozi'], ['zh-maozi'], {
@@ -253,7 +253,7 @@ export const ZH_A2_U08: ZhUnitDef = {
           ex.matchPairs(
             [
               ['裤子', 'pantalón'],
-              ['裙子', 'pollera'],
+              ['裙子', 'falda'],
               ['帽子', 'gorro'],
               ['试', 'probar (ropa)'],
             ],
@@ -262,7 +262,7 @@ export const ZH_A2_U08: ZhUnitDef = {
           ),
           reply(
             '你想试试吗？',
-            '¿Te lo querés probar? (Respondé que sí.)',
+            '¿Te lo quieres probar? (Responde que sí.)',
             'xiǎng, wǒ shìshi',
             '想，我试试',
             ['zh-shi-probar'],
@@ -272,7 +272,7 @@ export const ZH_A2_U08: ZhUnitDef = {
             },
           ),
           write(
-            '¿Me puedo probar esta pollera?',
+            '¿Me puedo probar esta falda?',
             'wǒ kěyǐ shìshi zhè tiáo qúnzi ma',
             '我可以试试这条裙子吗',
             ['zh-shi-probar', 'zh-qunzi'],
@@ -296,10 +296,10 @@ export const ZH_A2_U08: ZhUnitDef = {
               target: '这条裤子不合适，我想换一条。',
               base: 'Este pantalón no me queda bien; quiero cambiarlo.',
             },
-            { target: '你选哪个？', base: '¿Cuál elegís?' },
+            { target: '你选哪个？', base: '¿Cuál eliges?' },
           ],
         },
-        takeaways: ['Decís si algo te queda bien con 合适.', 'Cambiás y elegís con 换 y 选.'],
+        takeaways: ['Dices si algo te queda bien con 合适.', 'Cambias y eliges con 换 y 选.'],
         exercises: [
           ex.translationChoice('合适', 'quedar bien', ['caro', 'barato', 'nuevo'], ['zh-heshi'], {
             id: 'zh.ex.pg34m1rrubipdz',
@@ -317,7 +317,7 @@ export const ZH_A2_U08: ZhUnitDef = {
           ),
           ex.fillBlank(
             '这条裙子太大了，我想___一条小的。',
-            'Esta pollera es muy grande: quiero cambiarla por una más chica.',
+            'Esta falda es muy grande: quiero cambiarla por una más chica.',
             '换',
             ['卖', '教', '回'],
             ['zh-huan'],
@@ -325,7 +325,7 @@ export const ZH_A2_U08: ZhUnitDef = {
           ),
           ex.fillBlank(
             '红色的和白色的，你___哪个？',
-            'El rojo y el blanco: ¿cuál elegís?',
+            'El rojo y el blanco: ¿cuál eliges?',
             '选',
             ['教', '合适', '回'],
             ['zh-xuan'],
@@ -357,7 +357,7 @@ export const ZH_A2_U08: ZhUnitDef = {
           ),
           reply(
             '这条裤子怎么样？',
-            '¿Qué tal este pantalón? (Respondé que te queda muy bien.)',
+            '¿Qué tal este pantalón? (Responde que te queda muy bien.)',
             'hěn héshì',
             '很合适',
             ['zh-heshi'],
@@ -388,7 +388,7 @@ export const ZH_A2_U08: ZhUnitDef = {
             { target: '这件最贵。', base: 'Esta es la más cara.' },
           ],
         },
-        takeaways: ['Comparás con 比…一点儿 y 比…多了.', 'Usás 更 (aún más) y 最 (el más).'],
+        takeaways: ['Comparas con 比…一点儿 y 比…多了.', 'Usas 更 (aún más) y 最 (el más).'],
         exercises: [
           ex.translationChoice('最', 'el más', ['aún más', 'tan', 'un poco'], ['zh-zui'], {
             id: 'zh.ex.vbw80q26dr78ay',
@@ -440,7 +440,7 @@ export const ZH_A2_U08: ZhUnitDef = {
           tone('最', 'zuì', ['zuī', 'zuí', 'zuǐ'], ['zh-zui'], { id: 'zh.ex.t42vvbcq5vw9n9' }),
           reply(
             '这三个，哪个最便宜？',
-            'De estos tres, ¿cuál es el más barato? (Respondé que el blanco.)',
+            'De estos tres, ¿cuál es el más barato? (Responde que el blanco.)',
             'báisè de zuì piányi',
             '白色的最便宜',
             ['zh-zui'],
@@ -473,7 +473,7 @@ export const ZH_A2_U08: ZhUnitDef = {
             { target: '我常常在网上买东西。', base: 'Compro seguido por internet.' },
           ],
         },
-        takeaways: ['Decís «no tan… como» con 没有…那么.', 'Hablás de compras por internet.'],
+        takeaways: ['Dices «no tan… como» con 没有…那么.', 'Hablas de compras por internet.'],
         exercises: [
           ex.translationChoice(
             '网上',
@@ -539,7 +539,7 @@ export const ZH_A2_U08: ZhUnitDef = {
           ),
           reply(
             '网上的东西贵吗？',
-            '¿Las cosas por internet son caras? (Respondé que no son tan caras como en la tienda.)',
+            '¿Las cosas por internet son caras? (Responde que no son tan caras como en la tienda.)',
             'méiyǒu shāngdiàn de nàme guì',
             '没有商店的那么贵',
             ['zh-name', 'zh-wangshang'],
@@ -566,16 +566,16 @@ export const ZH_A2_U08: ZhUnitDef = {
       // ------------------------------------------------------------------------------------ L5
       {
         title: '打折和付钱',
-        objective: 'Entender descuentos y decir cómo pagás.',
+        objective: 'Entender descuentos y decir cómo pagas.',
         intro: {
           explanation:
-            '打折 es hacer descuento. Ojo: 打八折 no es 80 % de descuento: pagás el 80 % (o sea, 20 % menos); 打五折 es la mitad. 付 es pagar, con 现金 (efectivo) o con 卡 (tarjeta).',
+            '打折 es hacer descuento. Ojo: 打八折 no es 80 % de descuento: pagas el 80 % (o sea, 20 % menos); 打五折 es la mitad. 付 es pagar, con 现金 (efectivo) o con 卡 (tarjeta).',
           examples: [
-            { target: '今天打八折。', base: 'Hoy pagás el 80 % (20 % de descuento).' },
+            { target: '今天打八折。', base: 'Hoy pagas el 80 % (20 % de descuento).' },
             { target: '我付现金。', base: 'Pago en efectivo.' },
           ],
         },
-        takeaways: ['Entendés 打八折 y 打五折.', 'Decís si pagás en efectivo o con tarjeta.'],
+        takeaways: ['Entiendes 打八折 y 打五折.', 'Dices si pagas en efectivo o con tarjeta.'],
         exercises: [
           ex.translationChoice(
             '现金',
@@ -610,13 +610,13 @@ export const ZH_A2_U08: ZhUnitDef = {
           ),
           ex.fillBlank(
             '一百块的衣服打八折，你付___块。',
-            'Una prenda de 100 yuanes con «打八折»: ¿cuánto pagás?',
+            'Una prenda de 100 yuanes con «打八折»: ¿cuánto pagas?',
             '八十',
             ['二十', '八', '十八'],
             ['zh-dazhe'],
             {
               id: 'zh.ex.ytt13db500z7j7',
-              explanation: '打八折 es pagar el 80 %: de 100 yuanes pagás 80.',
+              explanation: '打八折 es pagar el 80 %: de 100 yuanes pagas 80.',
             },
           ),
           tone('卡', 'kǎ', ['kā', 'ká', 'kà'], ['zh-ka'], { id: 'zh.ex.s3pgo1gvbxgt7n' }),
@@ -635,7 +635,7 @@ export const ZH_A2_U08: ZhUnitDef = {
             '¿Qué tiene el descuento más grande?',
             'Los pantalones: se paga la mitad',
             [
-              'Las polleras: se paga la mitad',
+              'Las faldas: se paga la mitad',
               'Los gorros: se paga el 50 %',
               'Todo tiene el mismo descuento',
             ],
@@ -644,7 +644,7 @@ export const ZH_A2_U08: ZhUnitDef = {
           ),
           reply(
             '你付现金吗？',
-            '¿Pagás en efectivo? (Respondé que sí.)',
+            '¿Pagas en efectivo? (Responde que sí.)',
             'wǒ fù xiànjīn',
             '我付现金',
             ['zh-xianjin', 'zh-fu'],

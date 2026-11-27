@@ -9,34 +9,65 @@ type ErrorKey = ErrorCode | 'connection';
 /** Idioma de las traducciones de un curso (shared/languages.ts `support`; sin el campo, español). */
 const supportOf = (code: string) => languageConfig(code).support?.code ?? 'es';
 
+/** Nombres de los idiomas en portugués e italiano (completo y corto), por código del curso. */
+const PT_LANGUAGES: Record<string, { name: string; short: string }> = {
+  en: { name: 'inglês', short: 'inglês' },
+  it: { name: 'italiano', short: 'italiano' },
+  pt: { name: 'português', short: 'português' },
+  zh: { name: 'chinês (mandarim)', short: 'chinês' },
+  fr: { name: 'francês', short: 'francês' },
+  es: { name: 'espanhol', short: 'espanhol' },
+};
+const IT_LANGUAGES: Record<string, { name: string; short: string }> = {
+  en: { name: 'inglese', short: 'inglese' },
+  it: { name: 'italiano', short: 'italiano' },
+  pt: { name: 'portoghese', short: 'portoghese' },
+  zh: { name: 'cinese (mandarino)', short: 'cinese' },
+  fr: { name: 'francese', short: 'francese' },
+  es: { name: 'spagnolo', short: 'spagnolo' },
+};
+const mapLanguage = (
+  map: Record<string, { name: string; short: string }>,
+  code: string | null | undefined,
+  short: boolean,
+) => {
+  const config = languageConfig(code);
+  const entry = map[config.code];
+  return entry ? (short ? entry.short : entry.name) : config.name;
+};
+const ptLanguage = (code: string | null | undefined, short = false) =>
+  mapLanguage(PT_LANGUAGES, code, short);
+const itLanguage = (code: string | null | undefined, short = false) =>
+  mapLanguage(IT_LANGUAGES, code, short);
+
 /** Mensajes de error de las partidas, por código estable del protocolo (no se tocan los códigos). */
 export const battleErrorStrings = defineStrings<Record<ErrorKey, string>>({
   es: {
-    connection: 'No pudimos conectar con el servidor de partidas. Revisá tu conexión.',
-    unauthorized: 'Tu sesión expiró. Volvé a iniciar sesión.',
-    protocol_mismatch: 'Hay una versión nueva de Polygo. Actualizá la app para jugar.',
-    onboarding_required: 'Completá tu perfil antes de jugar.',
+    connection: 'No pudimos conectar con el servidor de partidas. Revisa tu conexión.',
+    unauthorized: 'Tu sesión expiró. Vuelve a iniciar sesión.',
+    protocol_mismatch: 'Hay una versión nueva de PolyGo. Actualiza la app para jugar.',
+    onboarding_required: 'Completa tu perfil antes de jugar.',
     language_unavailable: 'Ranked todavía no está disponible para tu idioma.',
     already_in_battle: 'Ya estás en una partida.',
     not_in_battle: 'La partida ya no existe.',
     stale_question: 'Esa pregunta ya pasó.',
     battle_over: 'La partida terminó.',
     invalid_payload: 'Algo salió mal con esa respuesta.',
-    server_error: 'El servidor de partidas tuvo un problema. Probá de nuevo.',
-    match_rate_limited: 'Jugaste muchas partidas hoy. Volvé mañana para seguir subiendo.',
-    challenge_not_found: 'No encontramos ese código. Revisá que esté bien escrito.',
-    challenge_expired: 'Ese desafío venció o se canceló. Pedile a tu amigo uno nuevo.',
+    server_error: 'El servidor de partidas tuvo un problema. Inténtalo de nuevo.',
+    match_rate_limited: 'Jugaste muchas partidas hoy. Vuelve mañana para seguir subiendo.',
+    challenge_not_found: 'No encontramos ese código. Revisa que esté bien escrito.',
+    challenge_expired: 'Ese desafío venció o se canceló. Pídele a tu amigo uno nuevo.',
     challenge_taken: 'Alguien más ya entró a ese desafío.',
-    own_challenge: 'Ese es tu propio desafío: compartilo con un amigo.',
-    host_gone: 'Tu amigo ya no está esperando. Pedile que vuelva a abrir el desafío.',
+    own_challenge: 'Ese es tu propio desafío: compártelo con un amigo.',
+    host_gone: 'Tu amigo ya no está esperando. Pídele que vuelva a abrir el desafío.',
     language_mismatch: 'Tu amigo está aprendiendo otro idioma, así que no pueden jugar juntos.',
-    challenge_declined: 'Tu amigo no puede jugar ahora. Probá más tarde.',
-    not_friends: 'Sólo podés invitar a jugadores de tu lista de amigos.',
+    challenge_declined: 'Tu amigo no puede jugar ahora. Inténtalo más tarde.',
+    not_friends: 'Sólo puedes invitar a jugadores de tu lista de amigos.',
   },
   en: {
     connection: 'We couldn’t reach the match server. Check your connection.',
     unauthorized: 'Your session expired. Please sign in again.',
-    protocol_mismatch: 'A new version of Polygo is out. Update the app to play.',
+    protocol_mismatch: 'A new version of PolyGo is out. Update the app to play.',
     onboarding_required: 'Finish setting up your profile before playing.',
     language_unavailable: 'Ranked isn’t available for your language yet.',
     already_in_battle: 'You’re already in a match.',
@@ -56,6 +87,54 @@ export const battleErrorStrings = defineStrings<Record<ErrorKey, string>>({
     challenge_declined: 'Your friend can’t play right now. Try again later.',
     not_friends: 'You can only invite players from your friends list.',
   },
+  'pt-BR': {
+    connection: 'Não conseguimos conectar ao servidor de partidas. Verifique sua conexão.',
+    unauthorized: 'Sua sessão expirou. Entre de novo.',
+    protocol_mismatch: 'Tem uma versão nova do PolyGo. Atualize o app para jogar.',
+    onboarding_required: 'Complete seu perfil antes de jogar.',
+    language_unavailable: 'O Ranked ainda não está disponível para o seu idioma.',
+    already_in_battle: 'Você já está em uma partida.',
+    not_in_battle: 'Essa partida não existe mais.',
+    stale_question: 'Essa pergunta já passou.',
+    battle_over: 'A partida terminou.',
+    invalid_payload: 'Algo deu errado com essa resposta.',
+    server_error: 'O servidor de partidas teve um problema. Tente de novo.',
+    match_rate_limited: 'Você jogou muitas partidas hoje. Volte amanhã para continuar subindo.',
+    challenge_not_found: 'Não encontramos esse código. Confira se está escrito certo.',
+    challenge_expired: 'Esse desafio expirou ou foi cancelado. Peça um novo ao seu amigo.',
+    challenge_taken: 'Outra pessoa já entrou nesse desafio.',
+    own_challenge: 'Esse é o seu próprio desafio: compartilhe com um amigo.',
+    host_gone: 'Seu amigo não está mais esperando. Peça para ele abrir o desafio de novo.',
+    language_mismatch:
+      'Seu amigo está aprendendo outro idioma, então vocês não podem jogar juntos.',
+    challenge_declined: 'Seu amigo não pode jogar agora. Tente mais tarde.',
+    not_friends: 'Você só pode convidar jogadores da sua lista de amigos.',
+  },
+  it: {
+    connection:
+      'Non siamo riusciti a collegarci al server delle partite. Controlla la connessione.',
+    unauthorized: 'La sessione è scaduta. Accedi di nuovo.',
+    protocol_mismatch: 'È uscita una nuova versione di PolyGo. Aggiorna l’app per giocare.',
+    onboarding_required: 'Completa il tuo profilo prima di giocare.',
+    language_unavailable: 'Ranked non è ancora disponibile per la tua lingua.',
+    already_in_battle: 'Sei già in una partita.',
+    not_in_battle: 'Questa partita non esiste più.',
+    stale_question: 'Quella domanda è già passata.',
+    battle_over: 'La partita è finita.',
+    invalid_payload: 'Qualcosa è andato storto con quella risposta.',
+    server_error: 'Il server delle partite ha avuto un problema. Riprova.',
+    match_rate_limited: 'Oggi hai giocato tante partite. Torna domani per continuare a salire.',
+    challenge_not_found: 'Non abbiamo trovato quel codice. Controlla di averlo scritto bene.',
+    challenge_expired:
+      'Quella sfida è scaduta o è stata annullata. Chiedine una nuova al tuo amico.',
+    challenge_taken: 'Qualcun altro è già entrato in quella sfida.',
+    own_challenge: 'Questa è la tua sfida: condividila con un amico.',
+    host_gone: 'Il tuo amico non ti sta più aspettando. Chiedigli di riaprire la sfida.',
+    language_mismatch:
+      'Il tuo amico sta imparando un’altra lingua, quindi non potete giocare insieme.',
+    challenge_declined: 'Il tuo amico non può giocare ora. Riprova più tardi.',
+    not_friends: 'Puoi invitare solo giocatori della tua lista di amici.',
+  },
 });
 
 /** Por qué se canceló una partida antes de empezar. */
@@ -72,6 +151,19 @@ export const cancelStrings = defineStrings<Record<CancelReason, string>>({
     server_error: 'The server couldn’t start the match. ELO didn’t change.',
     settlement_failed: 'We couldn’t save the result, so the match was voided with no ELO change.',
   },
+  'pt-BR': {
+    ready_timeout: 'Um de vocês não confirmou a tempo. O ELO não mudou.',
+    opponent_left: 'Seu rival saiu antes de começar. O ELO não mudou.',
+    server_error: 'O servidor não conseguiu iniciar a partida. O ELO não mudou.',
+    settlement_failed: 'Não conseguimos salvar o resultado, então a partida foi anulada sem ELO.',
+  },
+  it: {
+    ready_timeout: 'Uno dei due non ha confermato in tempo. L’ELO non è cambiato.',
+    opponent_left: 'Il tuo avversario è uscito prima dell’inizio. L’ELO non è cambiato.',
+    server_error: 'Il server non è riuscito ad avviare la partita. L’ELO non è cambiato.',
+    settlement_failed:
+      'Non siamo riusciti a salvare il risultato, quindi la partita è stata annullata senza ELO.',
+  },
 });
 
 /** Textos de los componentes de src/features/battle y de la disponibilidad de Ranked. */
@@ -80,7 +172,7 @@ export const battleStrings = defineStrings({
     rankedUnavailableTitle: 'Ranked no está disponible en esta versión',
     /** Nombre del idioma dentro de una frase: «italiano». */
     languageInSentence: (code: string | null | undefined) => languageName(code, 'es').toLowerCase(),
-    you: 'Vos',
+    you: 'Tú',
     back: 'Volver',
     victory: '¡Victoria!',
     defeat: 'Derrota',
@@ -103,19 +195,19 @@ export const battleStrings = defineStrings({
     lineA11y: (name: string, score: number, correct: number, answered: number) =>
       `${name}: ${score} puntos, ${correct} de ${answered} correctas`,
     placedA11y: (rank: string, elo: number) => `Te posicionaste en ${rank} con ${elo} de ELO`,
-    stillUnplaced: 'Seguís sin posicionar',
+    stillUnplaced: 'Sigues sin posicionar',
     placedOverline: '¡POSICIONADO!',
     unplacedOverline: 'SIN POSICIONAR',
     noRankYet: 'Todavía sin rango',
     placedHint: 'Ya estás en el ranking. Cada victoria te acerca al próximo rango.',
-    unplacedHint: 'Ganá una partida para entrar al ranking en Bronce. Perder ahora no te resta.',
+    unplacedHint: 'Gana una partida para entrar al ranking en Bronce. Perder ahora no te resta.',
     eloChangeA11y: (before: number, after: number, delta: string) =>
       `ELO ${before} a ${after}, ${delta}`,
 
     // ResultHero
     nextOneIsYours: 'La próxima es tuya.',
-    foxWin: 'El zorro de Polygo festejando',
-    foxLoss: 'El zorro de Polygo, triste',
+    foxWin: 'El zorro de PolyGo festejando',
+    foxLoss: 'El zorro de PolyGo, triste',
     eloBeforeAfterA11y: (before: number, after: number) =>
       `ELO anterior ${before}, ELO actual ${after}`,
     previousElo: 'ELO anterior',
@@ -139,19 +231,19 @@ export const battleStrings = defineStrings({
     time: 'TIEMPO',
     secondsLeft: (s: number) => `Quedan ${s} segundos`,
     opponentDisconnected: (name: string, s: number) =>
-      `${name} se desconectó. Si no vuelve en ${s} s, ganás por abandono.`,
+      `${name} se desconectó. Si no vuelve en ${s} s, ganas por abandono.`,
     scoreA11y: (name: string, score: number) => `${name}: ${score} puntos`,
 
     // QuestionCard (consignas en mayúsculas según el idioma de la partida)
-    listenAndChoose: 'ESCUCHÁ Y ELEGÍ QUÉ SIGNIFICA',
+    listenAndChoose: 'ESCUCHA Y ELIGE QUÉ SIGNIFICA',
     howDoYouSay: (code: string) => `¿CÓMO SE DICE ${languageConfig(code).inName.toUpperCase()}?`,
     writeTheWord: (code: string) =>
-      `ESCRIBÍ LA PALABRA ${languageConfig(code).inName.toUpperCase()}`,
+      `ESCRIBE LA PALABRA ${languageConfig(code).inName.toUpperCase()}`,
     // La traducción está en el idioma de apoyo del curso: español, o inglés en el curso de español.
     chooseTranslation: (code: string) =>
-      `ELEGÍ LA TRADUCCIÓN ${languageConfig(supportOf(code)).alName.toUpperCase()}`,
+      `ELIGE LA TRADUCCIÓN ${languageConfig(supportOf(code)).alName.toUpperCase()}`,
     chooseTheWord: (code: string) =>
-      `ELEGÍ LA PALABRA ${languageConfig(code).inName.toUpperCase()}`,
+      `ELIGE LA PALABRA ${languageConfig(code).inName.toUpperCase()}`,
     streakA11y: (streak: number, bonus: number) =>
       `Racha de ${streak} correctas: la próxima suma ${bonus} extra`,
     streakChip: (streak: number, bonus: number) => `🔥 Racha x${streak} · +${bonus}`,
@@ -202,8 +294,8 @@ export const battleStrings = defineStrings({
       `ELO ${before} to ${after}, ${delta}`,
 
     nextOneIsYours: 'You’ll get the next one.',
-    foxWin: 'The Polygo fox celebrating',
-    foxLoss: 'The Polygo fox, feeling sad',
+    foxWin: 'The PolyGo fox celebrating',
+    foxLoss: 'The PolyGo fox, feeling sad',
     eloBeforeAfterA11y: (before: number, after: number) =>
       `Previous ELO ${before}, current ELO ${after}`,
     previousElo: 'Previous ELO',
@@ -250,5 +342,170 @@ export const battleStrings = defineStrings({
     submit: 'Submit',
 
     wordRushDescription: 'The same match as Ranked: head-to-head mini-games, no ELO.',
+  },
+  'pt-BR': {
+    rankedUnavailableTitle: 'O Ranked não está disponível nesta versão',
+    languageInSentence: (code: string | null | undefined) => ptLanguage(code),
+    you: 'Você',
+    back: 'Voltar',
+    victory: 'Vitória!',
+    defeat: 'Derrota',
+    draw: 'Empate',
+
+    practiceDone: 'Treino concluído',
+    practiceSubtitle: 'Sem ELO: é só para treinar.',
+    youForfeited: 'Você abandonou a partida.',
+    opponentForfeited: (name: string | undefined) => `${name ?? 'Seu rival'} abandonou a partida.`,
+    friendlySubtitle: 'Desafio amistoso: não mexe no ELO.',
+    unratedSubtitle: 'Partida sem ELO: seu ELO não mudou.',
+    calibrationSubtitle: (used: number, limit: number) => `Calibração ${used} de ${limit}.`,
+    newAchievements: 'Novas conquistas',
+    achievementsUnlocked: (n: number): string =>
+      n === 1 ? 'CONQUISTA DESBLOQUEADA' : 'CONQUISTAS DESBLOQUEADAS',
+    practiceAgain: 'Treinar de novo',
+    newChallenge: 'Novo desafio',
+    playAgain: 'Jogar outra',
+    lineA11y: (name: string, score: number, correct: number, answered: number) =>
+      `${name}: ${score} pontos, ${correct} de ${answered} corretas`,
+    placedA11y: (rank: string, elo: number) => `Você se classificou em ${rank} com ${elo} ELO`,
+    stillUnplaced: 'Você continua sem classificação',
+    placedOverline: 'CLASSIFICADO!',
+    unplacedOverline: 'SEM CLASSIFICAÇÃO',
+    noRankYet: 'Ainda sem rank',
+    placedHint: 'Você já está no ranking. Cada vitória deixa você mais perto do próximo rank.',
+    unplacedHint:
+      'Vença uma partida para entrar no ranking, começando no Bronze. Perder agora não tira nada de você.',
+    eloChangeA11y: (before: number, after: number, delta: string) =>
+      `ELO de ${before} para ${after}, ${delta}`,
+
+    nextOneIsYours: 'A próxima é sua.',
+    foxWin: 'A raposa do PolyGo comemorando',
+    foxLoss: 'A raposa do PolyGo, triste',
+    eloBeforeAfterA11y: (before: number, after: number) =>
+      `ELO anterior ${before}, ELO atual ${after}`,
+    previousElo: 'ELO anterior',
+    currentElo: 'ELO atual',
+    placedIn: 'Você se classificou em',
+    promotedTo: 'Você subiu para',
+    demotedTo: 'Você caiu para',
+
+    rankUpDivision: 'VOCÊ SUBIU!',
+    rankUpTier: 'NOVO RANK!',
+    rankUpPlaced: 'VOCÊ ENTROU NO RANKING!',
+    rankUpFrom: (from: string) => `Você deixou ${from} para trás`,
+    rankUpContinue: 'Bora!',
+    rankUpA11y: (rank: string) => `Você subiu para ${rank}!`,
+    yourDivision: 'Sua divisão',
+    topOfLadder: 'Você está no topo do ranking.',
+    eloToNext: (n: number, next: string) => `${n === 1 ? 'Falta' : 'Faltam'} ${n} ELO para ${next}`,
+
+    time: 'TEMPO',
+    secondsLeft: (s: number) => `Faltam ${s} segundos`,
+    opponentDisconnected: (name: string, s: number) =>
+      `${name} se desconectou. Se não voltar em ${s} s, você vence por abandono.`,
+    scoreA11y: (name: string, score: number) => `${name}: ${score} pontos`,
+
+    listenAndChoose: 'OUÇA E ESCOLHA O QUE SIGNIFICA',
+    howDoYouSay: (code: string) => `COMO SE DIZ EM ${ptLanguage(code, true).toUpperCase()}?`,
+    writeTheWord: (code: string) => `ESCREVA A PALAVRA EM ${ptLanguage(code, true).toUpperCase()}`,
+    chooseTranslation: (code: string) =>
+      `ESCOLHA A TRADUÇÃO EM ${ptLanguage(supportOf(code), true).toUpperCase()}`,
+    chooseTheWord: (code: string) => `ESCOLHA A PALAVRA EM ${ptLanguage(code, true).toUpperCase()}`,
+    streakA11y: (streak: number, bonus: number) =>
+      `Sequência de ${streak} acertos: a próxima vale ${bonus} a mais`,
+    streakChip: (streak: number, bonus: number) => `🔥 Sequência x${streak} · +${bonus}`,
+    listenAgain: 'Ouvir de novo',
+    listenSlowly: 'Ouvir devagar',
+    imageA11y: (prompt: string) => `Imagem: ${prompt}`,
+    onStreak: (points: number) => `Pegando fogo! +${points}`,
+    nice: (points: number) => `Boa! +${points}`,
+    spelled: (text: string, points: number) => `Escreve-se “${text}” · ${points}`,
+    yourAnswer: 'Sua resposta',
+    submit: 'Responder',
+
+    wordRushDescription: 'A mesma partida do Ranked: os minijogos cara a cara, sem ELO.',
+  },
+  it: {
+    rankedUnavailableTitle: 'Ranked non è disponibile in questa versione',
+    languageInSentence: (code: string | null | undefined) => itLanguage(code),
+    you: 'Tu',
+    back: 'Indietro',
+    victory: 'Vittoria!',
+    defeat: 'Sconfitta',
+    draw: 'Pareggio',
+
+    practiceDone: 'Allenamento completato',
+    practiceSubtitle: 'Niente ELO: serve solo per allenarti.',
+    youForfeited: 'Hai abbandonato la partita.',
+    opponentForfeited: (name: string | undefined) =>
+      `${name ?? 'Il tuo avversario'} ha abbandonato la partita.`,
+    friendlySubtitle: 'Sfida amichevole: l’ELO non cambia.',
+    unratedSubtitle: 'Partita senza ELO: il tuo ELO non è cambiato.',
+    calibrationSubtitle: (used: number, limit: number) => `Calibrazione ${used} di ${limit}.`,
+    newAchievements: 'Nuovi traguardi',
+    achievementsUnlocked: (n: number): string =>
+      n === 1 ? 'TRAGUARDO SBLOCCATO' : 'TRAGUARDI SBLOCCATI',
+    practiceAgain: 'Allenati di nuovo',
+    newChallenge: 'Nuova sfida',
+    playAgain: 'Gioca ancora',
+    lineA11y: (name: string, score: number, correct: number, answered: number) =>
+      `${name}: ${score} punti, ${correct} corrette su ${answered}`,
+    placedA11y: (rank: string, elo: number) => `Ora sei in ${rank} con ${elo} ELO`,
+    stillUnplaced: 'Sei ancora non classificato',
+    placedOverline: 'CLASSIFICATO!',
+    unplacedOverline: 'NON CLASSIFICATO',
+    noRankYet: 'Ancora senza rango',
+    placedHint: 'Ora sei in classifica. Ogni vittoria ti avvicina al prossimo rango.',
+    unplacedHint:
+      'Vinci una partita per entrare in classifica nel Bronzo. Perdere ora non ti toglie nulla.',
+    eloChangeA11y: (before: number, after: number, delta: string) =>
+      `ELO da ${before} a ${after}, ${delta}`,
+
+    nextOneIsYours: 'La prossima è tua.',
+    foxWin: 'La volpe di PolyGo che festeggia',
+    foxLoss: 'La volpe di PolyGo, triste',
+    eloBeforeAfterA11y: (before: number, after: number) =>
+      `ELO precedente ${before}, ELO attuale ${after}`,
+    previousElo: 'ELO precedente',
+    currentElo: 'ELO attuale',
+    placedIn: 'Sei stato classificato in',
+    promotedTo: 'Sei salito a',
+    demotedTo: 'Sei sceso a',
+
+    rankUpDivision: 'SEI SALITO!',
+    rankUpTier: 'NUOVO RANGO!',
+    rankUpPlaced: 'SEI ENTRATO IN CLASSIFICA!',
+    rankUpFrom: (from: string) => `Ti sei lasciato alle spalle ${from}`,
+    rankUpContinue: 'Andiamo!',
+    rankUpA11y: (rank: string) => `Sei salito a ${rank}!`,
+    yourDivision: 'La tua divisione',
+    topOfLadder: 'Sei in cima alla classifica.',
+    eloToNext: (n: number, next: string) => `${n === 1 ? 'Manca' : 'Mancano'} ${n} ELO per ${next}`,
+
+    time: 'TEMPO',
+    secondsLeft: (s: number) => `Mancano ${s} secondi`,
+    opponentDisconnected: (name: string, s: number) =>
+      `${name} si è disconnesso. Se non torna entro ${s} s, vinci per abbandono.`,
+    scoreA11y: (name: string, score: number) => `${name}: ${score} punti`,
+
+    listenAndChoose: 'ASCOLTA E SCEGLI COSA SIGNIFICA',
+    howDoYouSay: (code: string) => `COME SI DICE IN ${itLanguage(code, true).toUpperCase()}?`,
+    writeTheWord: (code: string) => `SCRIVI LA PAROLA IN ${itLanguage(code, true).toUpperCase()}`,
+    chooseTranslation: (code: string) =>
+      `SCEGLI LA TRADUZIONE IN ${itLanguage(supportOf(code), true).toUpperCase()}`,
+    chooseTheWord: (code: string) => `SCEGLI LA PAROLA IN ${itLanguage(code, true).toUpperCase()}`,
+    streakA11y: (streak: number, bonus: number) =>
+      `Serie di ${streak} risposte giuste: la prossima vale ${bonus} in più`,
+    streakChip: (streak: number, bonus: number) => `🔥 Serie x${streak} · +${bonus}`,
+    listenAgain: 'Ascolta di nuovo',
+    listenSlowly: 'Ascolta lentamente',
+    imageA11y: (prompt: string) => `Immagine: ${prompt}`,
+    onStreak: (points: number) => `Che serie! +${points}`,
+    nice: (points: number) => `Bene! +${points}`,
+    spelled: (text: string, points: number) => `Si scrive «${text}» · ${points}`,
+    yourAnswer: 'La tua risposta',
+    submit: 'Rispondi',
+
+    wordRushDescription: 'La stessa partita di Ranked: i minigiochi faccia a faccia, senza ELO.',
   },
 });

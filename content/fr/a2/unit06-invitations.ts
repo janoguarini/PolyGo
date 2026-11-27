@@ -54,7 +54,7 @@ export const FR_A2_U06: FrUnitDef = {
       "Invitar, aceptar y rechazar (ça te dit de…?, avec plaisir, d'accord, désolé, je ne peux pas); el futur simple (j'irai, je ferai, je serai, je viendrai, il y aura, ce sera); dans + tiempo; prochain; le rendez-vous. Cultura: el apéro.",
     emoji: '🎉',
     objective:
-      'Podés invitar a alguien, aceptar o rechazar con cortesía, proponer otro día y contar tus planes en futuro.',
+      'Puedes invitar a alguien, aceptar o rechazar con cortesía, proponer otro día y contar tus planes en futuro.',
     grammar: {
       title: 'Ça te dit de…? · el futur simple',
       explanation:
@@ -77,18 +77,18 @@ export const FR_A2_U06: FrUnitDef = {
       w(
         'fr-ca-te-dit-de',
         'ça te dit de…?',
-        '¿tenés ganas de…?',
+        '¿tienes ganas de…?',
         "Ça te dit d'aller au cinéma samedi?",
-        '¿Tenés ganas de ir al cine el sábado?',
+        '¿Tienes ganas de ir al cine el sábado?',
         ['invitations'],
-        { acceptedTranslations: ['¿te pinta…?', '¿te gustaría…?'] },
+        { acceptedTranslations: ['¿te pinta…?', '¿te gustaría…?', '¿tenés ganas de…?'] },
       ),
       w(
         'fr-avec-plaisir',
         'avec plaisir',
         'con mucho gusto',
         'Ça te dit de dîner avec nous? — Avec plaisir!',
-        '¿Tenés ganas de cenar con nosotros? — ¡Con mucho gusto!',
+        '¿Tienes ganas de cenar con nosotros? — ¡Con mucho gusto!',
         ['invitations'],
         { acceptedTranslations: ['con gusto'] },
       ),
@@ -97,7 +97,7 @@ export const FR_A2_U06: FrUnitDef = {
         "d'accord",
         'de acuerdo',
         "D'accord, à huit heures devant la gare.",
-        'Dale, a las ocho delante de la estación.',
+        'De acuerdo, a las ocho delante de la estación.',
         ['invitations'],
         { acceptedTranslations: ['dale', 'bueno', 'está bien'] },
       ),
@@ -108,7 +108,7 @@ export const FR_A2_U06: FrUnitDef = {
         'Désolée, je ne peux pas ce soir.',
         'Perdón, esta noche no puedo.',
         ['invitations', 'courtesy'],
-        { acceptedTranslations: ['lo siento', 'perdoná'], acceptedTexts: ['désolée'] },
+        { acceptedTranslations: ['lo siento', 'perdoná', 'perdona'], acceptedTexts: ['désolée'] },
       ),
       w(
         'fr-je-ne-peux-pas',
@@ -123,7 +123,7 @@ export const FR_A2_U06: FrUnitDef = {
         'je suis libre',
         'estoy libre',
         'Je suis libre dimanche après-midi.',
-        'Estoy libre el domingo a la tarde.',
+        'Estoy libre el domingo por la tarde.',
         ['invitations'],
       ),
       w(
@@ -185,7 +185,7 @@ export const FR_A2_U06: FrUnitDef = {
         'la fête',
         'la fiesta',
         'La fête est samedi soir.',
-        'La fiesta es el sábado a la noche.',
+        'La fiesta es el sábado por la noche.',
         ['invitations', 'f'],
         { emoji: '🎉' },
       ),
@@ -241,23 +241,23 @@ export const FR_A2_U06: FrUnitDef = {
         objective: 'Invitar a un amigo y aceptar una invitación.',
         intro: {
           explanation:
-            "Para invitar a un amigo: ça te dit de + infinitivo (¿tenés ganas de…?, ¿te pinta…?). Delante de vocal, de se vuelve d': ça te dit d'aller au cinéma? Para aceptar: avec plaisir (con mucho gusto) o d'accord (de acuerdo, dale). En d'accord, la d final no suena. Inviter es invitar: je voudrais inviter Julien.",
+            "Para invitar a un amigo: ça te dit de + infinitivo (¿tienes ganas de…?, ¿te gustaría…?). Delante de vocal, de se vuelve d': ça te dit d'aller au cinéma? Para aceptar: avec plaisir (con mucho gusto) o d'accord (de acuerdo, dale). En d'accord, la d final no suena. Inviter es invitar: je voudrais inviter Julien.",
           examples: [
             {
               target: "Ça te dit d'aller au cinéma? — Avec plaisir!",
-              base: '¿Tenés ganas de ir al cine? — ¡Con mucho gusto!',
+              base: '¿Tienes ganas de ir al cine? — ¡Con mucho gusto!',
             },
-            { target: "Ça te dit de danser? — D'accord!", base: '¿Te pinta bailar? — ¡Dale!' },
+            { target: "Ça te dit de danser? — D'accord!", base: '¿Quieres bailar? — ¡De acuerdo!' },
           ],
         },
         takeaways: [
-          'Invitás con ça te dit de + infinitivo.',
-          "Aceptás con avec plaisir o d'accord.",
+          'Invitas con ça te dit de + infinitivo.',
+          "Aceptas con avec plaisir o d'accord.",
         ],
         exercises: [
           ex.translationChoice(
             'ça te dit de…?',
-            '¿tenés ganas de…?',
+            '¿tienes ganas de…?',
             ['con mucho gusto', 'de acuerdo', 'la fiesta'],
             ['fr-ca-te-dit-de'],
             { id: 'fr.ex.o0783sedk8yt88' },
@@ -265,13 +265,13 @@ export const FR_A2_U06: FrUnitDef = {
           ex.translationChoice(
             'avec plaisir',
             'con mucho gusto',
-            ['de acuerdo', 'invitar', '¿tenés ganas de…?'],
+            ['de acuerdo', 'invitar', '¿tienes ganas de…?'],
             ['fr-avec-plaisir'],
             { id: 'fr.ex.h3xo7eb22htmq2' },
           ),
           ex.matchPairs(
             [
-              ['ça te dit de…?', '¿tenés ganas de…?'],
+              ['ça te dit de…?', '¿tienes ganas de…?'],
               ['avec plaisir', 'con mucho gusto'],
               ["d'accord", 'de acuerdo'],
               ['la fête', 'la fiesta'],
@@ -287,7 +287,7 @@ export const FR_A2_U06: FrUnitDef = {
           ),
           ex.fillBlank(
             'Ça te dit de ___ au cinéma?',
-            '¿Tenés ganas de ir al cine?',
+            '¿Tienes ganas de ir al cine?',
             'aller',
             ['vais', 'va', 'allez'],
             ['fr-ca-te-dit-de'],
@@ -298,7 +298,7 @@ export const FR_A2_U06: FrUnitDef = {
           ),
           ex.fillBlank(
             'Ça te dit de dîner avec nous? — ___!',
-            '¿Tenés ganas de cenar con nosotros? — ¡Con mucho gusto!',
+            '¿Tienes ganas de cenar con nosotros? — ¡Con mucho gusto!',
             'Avec plaisir',
             ['De rien', 'Enchanté', 'Au revoir'],
             ['fr-avec-plaisir'],
@@ -322,7 +322,7 @@ export const FR_A2_U06: FrUnitDef = {
             { id: 'fr.ex.jk3mlgvbbftipr' },
           ),
           ex.translateWrite(
-            '¿Tenés ganas de bailar?',
+            '¿Tienes ganas de bailar?',
             'Ça te dit de danser?',
             ['fr-ca-te-dit-de'],
             {
@@ -331,7 +331,7 @@ export const FR_A2_U06: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Ça te dit d'aller à la plage demain?",
-            '¿Tenés ganas de ir a la playa mañana? (Aceptá con mucho gusto.)',
+            '¿Tienes ganas de ir a la playa mañana? (Acepta con mucho gusto.)',
             'Avec plaisir!',
             ['Oui, avec plaisir!', "D'accord, avec plaisir!", 'Oui, avec plaisir. Merci!'],
             ['fr-avec-plaisir'],
@@ -346,7 +346,7 @@ export const FR_A2_U06: FrUnitDef = {
         objective: 'Rechazar una invitación con cortesía y proponer otro día.',
         intro: {
           explanation:
-            'Para decir que no con cortesía: désolé (désolée si sos mujer: se escribe con otra e, pero suena igual) + je ne peux pas y una razón. Para proponer otro día: je suis libre samedi. Prochain va después del día o del mes: samedi prochain, le mois prochain; con un sustantivo femenino, prochaine: la semaine prochaine. En peux, la x final no suena.',
+            'Para decir que no con cortesía: désolé (désolée si eres mujer: se escribe con otra e, pero suena igual) + je ne peux pas y una razón. Para proponer otro día: je suis libre samedi. Prochain va después del día o del mes: samedi prochain, le mois prochain; con un sustantivo femenino, prochaine: la semaine prochaine. En peux, la x final no suena.',
           examples: [
             {
               target: 'Désolée, je ne peux pas. Je travaille.',
@@ -356,8 +356,8 @@ export const FR_A2_U06: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Rechazás con désolé, je ne peux pas y una razón.',
-          'Proponés otro día con je suis libre y prochain.',
+          'Rechazas con désolé, je ne peux pas y una razón.',
+          'Propones otro día con je suis libre y prochain.',
         ],
         exercises: [
           ex.translationChoice(
@@ -370,7 +370,7 @@ export const FR_A2_U06: FrUnitDef = {
           ex.translationChoice(
             'je ne peux pas',
             'no puedo',
-            ['estoy libre', 'perdón', '¿tenés ganas de…?'],
+            ['estoy libre', 'perdón', '¿tienes ganas de…?'],
             ['fr-je-ne-peux-pas'],
             { id: 'fr.ex.m673irp7n4nppf' },
           ),
@@ -424,7 +424,7 @@ export const FR_A2_U06: FrUnitDef = {
             CINEMA,
             '¿Cuándo van a ir al cine?',
             'El sábado a las ocho.',
-            ['El viernes a la noche.', 'El domingo a las ocho.', 'No van a ir.'],
+            ['El viernes por la noche.', 'El domingo a las ocho.', 'No van a ir.'],
             ['fr-je-suis-libre', 'fr-d-accord'],
             'Julien está libre el sábado («samedi je suis libre») y Camille cierra: «Samedi, huit heures».',
           ),
@@ -443,7 +443,7 @@ export const FR_A2_U06: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Ça te dit de jouer au foot dimanche?',
-            '¿Tenés ganas de jugar al fútbol el domingo? (Decí que no podés y que estás libre el sábado que viene.)',
+            '¿Tienes ganas de jugar al fútbol el domingo? (Di que no puedes y que estás libre el sábado que viene.)',
             'Désolé, je ne peux pas. Je suis libre samedi prochain.',
             [
               'Désolée, je ne peux pas. Je suis libre samedi prochain.',
@@ -470,8 +470,8 @@ export const FR_A2_U06: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Usás j'irai, je ferai, je serai y je viendrai para tus planes.",
-          'Distinguís je ferai (futuro) de je fais (presente).',
+          "Usas j'irai, je ferai, je serai y je viendrai para tus planes.",
+          'Distingues je ferai (futuro) de je fais (presente).',
         ],
         exercises: [
           ex.translationChoice("j'irai", 'iré', ['haré', 'seré', 'vendré'], ['fr-j-irai'], {
@@ -559,7 +559,7 @@ export const FR_A2_U06: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Qu'est-ce que tu fais samedi?",
-            '¿Qué hacés el sábado? (Respondé que vas a hacer las compras, en futur simple.)',
+            '¿Qué haces el sábado? (Responde que vas a hacer las compras, en futur simple.)',
             'Samedi, je ferai les courses.',
             [
               'Samedi je ferai les courses.',
@@ -585,8 +585,8 @@ export const FR_A2_U06: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Anunciás con il y aura y ce sera.',
-          'Decís cuándo pasa algo con dans + tiempo.',
+          'Anuncias con il y aura y ce sera.',
+          'Dices cuándo pasa algo con dans + tiempo.',
         ],
         exercises: [
           ex.translationChoice('il y aura', 'habrá', ['había', 'hay', 'será'], ['fr-il-y-aura'], {
@@ -599,7 +599,7 @@ export const FR_A2_U06: FrUnitDef = {
             {
               id: 'fr.ex.gtcc0u6gn5xxb2',
               explanation:
-                'Il y aura (futuro), il y a (presente), il y avait (pasado): escuchá el final.',
+                'Il y aura (futuro), il y a (presente), il y avait (pasado): escucha el final.',
             },
           ),
           ex.fillBlank(
@@ -680,7 +680,7 @@ export const FR_A2_U06: FrUnitDef = {
           ),
           ex.shortAnswer(
             "La fête, c'est quand?",
-            '¿Cuándo es la fiesta? (Respondé que es dentro de dos días.)',
+            '¿Cuándo es la fiesta? (Responde que es dentro de dos días.)',
             "C'est dans deux jours.",
             ['Dans deux jours.', 'La fête est dans deux jours.', 'Elle est dans deux jours.'],
             ['fr-dans-deux-jours'],
@@ -708,8 +708,8 @@ export const FR_A2_U06: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Fijás lugar y hora con on se retrouve.',
-          'Armás un plan completo: invitación, respuesta, lugar y hora.',
+          'Fijas lugar y hora con on se retrouve.',
+          'Armas un plan completo: invitación, respuesta, lugar y hora.',
         ],
         exercises: [
           ex.translationChoice(
@@ -760,7 +760,7 @@ export const FR_A2_U06: FrUnitDef = {
             INVITATION,
             '¿Cuándo es la fiesta de Chloé?',
             'El sábado a las ocho, dentro de dos días.',
-            ['El jueves a la noche.', 'Dentro de dos semanas.', 'El domingo a la tarde.'],
+            ['El jueves por la noche.', 'Dentro de dos semanas.', 'El domingo por la tarde.'],
             ['fr-dans-deux-jours'],
             'Escribe «Dans deux jours» y «samedi à huit heures».',
           ),
@@ -787,7 +787,7 @@ export const FR_A2_U06: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Ça te dit de prendre l'apéro samedi?",
-            '¿Tenés ganas de tomar algo el sábado? (Aceptá y preguntá dónde se encuentran.)',
+            '¿Tienes ganas de tomar algo el sábado? (Acepta y pregunta dónde se encuentran.)',
             'Avec plaisir! On se retrouve où?',
             [
               "D'accord! On se retrouve où?",

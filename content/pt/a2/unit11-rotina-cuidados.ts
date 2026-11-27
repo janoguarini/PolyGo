@@ -85,7 +85,7 @@ export const PT_A2_U11: PtUnitDef = {
       'Los verbos reflexivos (me levanto, me deito, me sinto), tomar banho, la frecuencia, la duración con há / faz y desde, y el falso amigo academia.',
     emoji: '⏰',
     objective:
-      'Podés contar tu rutina con verbos reflexivos, decir con qué frecuencia hacés algo y desde hace cuánto tiempo.',
+      'Puedes contar tu rutina con verbos reflexivos, decir con qué frecuencia haces algo y desde hace cuánto tiempo.',
     grammar: {
       title: 'Reflexivos · frecuencia y duración',
       explanation:
@@ -164,7 +164,7 @@ export const PT_A2_U11: PtUnitDef = {
         'tomo banho',
         'me baño / me ducho',
         'Eu tomo banho de manhã.',
-        'Me baño a la mañana.',
+        'Me baño por la mañana.',
         ['routine'],
         {
           acceptedTexts: ['tomar banho', 'toma banho'],
@@ -193,7 +193,7 @@ export const PT_A2_U11: PtUnitDef = {
         'nunca',
         'nunca',
         'Eu nunca bebo café à noite.',
-        'Nunca tomo café a la noche.',
+        'Nunca tomo café por la noche.',
         ['frequency'],
       ),
       w(
@@ -224,7 +224,7 @@ export const PT_A2_U11: PtUnitDef = {
         'há muito tempo',
         'hace mucho tiempo',
         'Moro aqui há muito tempo.',
-        'Vivo acá hace mucho tiempo.',
+        'Vivo aquí hace mucho tiempo.',
         ['duration'],
         {
           acceptedTexts: ['faz muito tempo'],
@@ -251,7 +251,7 @@ export const PT_A2_U11: PtUnitDef = {
         'academia',
         'gimnasio',
         'Eu vou à academia de manhã.',
-        'Voy al gimnasio a la mañana.',
+        'Voy al gimnasio por la mañana.',
         ['health', 'places'],
         {
           acceptedTranslations: ['gym'],
@@ -276,12 +276,12 @@ export const PT_A2_U11: PtUnitDef = {
               target: 'Eu acordo cedo e me levanto às seis.',
               base: 'Me despierto temprano y me levanto a las seis.',
             },
-            { target: 'Você se levanta tarde no domingo?', base: '¿Te levantás tarde el domingo?' },
+            { target: 'Você se levanta tarde no domingo?', base: '¿Te levantas tarde el domingo?' },
           ],
         },
         takeaways: [
-          'Contás tu mañana: me levanto, me visto.',
-          'Ponés el pronombre antes del verbo.',
+          'Cuentas tu mañana: me levanto, me visto.',
+          'Pones el pronombre antes del verbo.',
         ],
         exercises: [
           ex.translationChoice(
@@ -350,7 +350,7 @@ export const PT_A2_U11: PtUnitDef = {
           ),
           ex.shortAnswer(
             'A que horas você se levanta? (7h)',
-            '¿A qué hora te levantás? (Respondé que a las siete.)',
+            '¿A qué hora te levantas? (Responde que a las siete.)',
             'Eu me levanto às sete.',
             ['Me levanto às sete.', 'Às sete.', 'Eu me levanto às sete horas.'],
             ['pt-me-levanto'],
@@ -373,12 +373,12 @@ export const PT_A2_U11: PtUnitDef = {
           examples: [
             {
               target: 'À noite eu tomo banho e me deito.',
-              base: 'A la noche me baño y me acuesto.',
+              base: 'Por la noche me baño y me acuesto.',
             },
             { target: 'Ela se deita muito tarde.', base: 'Ella se acuesta muy tarde.' },
           ],
         },
-        takeaways: ['Decís «bañarse»: tomar banho.', 'Decís a qué hora te acostás: me deito.'],
+        takeaways: ['Dices «bañarse»: tomar banho.', 'Dices a qué hora te acuestas: me deito.'],
         exercises: [
           ex.translationChoice(
             'me deito',
@@ -402,7 +402,7 @@ export const PT_A2_U11: PtUnitDef = {
           ),
           ex.fillBlank(
             'Eu ___ banho de manhã.',
-            'Me baño a la mañana.',
+            'Me baño por la mañana.',
             'tomo',
             ['me tomo', 'faço', 'me lavo'],
             ['pt-tomo-banho'],
@@ -442,14 +442,14 @@ export const PT_A2_U11: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Você toma banho de manhã ou à noite?',
-            '¿Te bañás a la mañana o a la noche? (Respondé que a la noche.)',
+            '¿Te bañas por la mañana o por la noche? (Responde que por la noche.)',
             'Eu tomo banho à noite.',
             ['Tomo banho à noite.', 'À noite.'],
             ['pt-tomo-banho'],
             { id: 'pt.ex.e5lcn34f7cbmgq' },
           ),
           ex.translateWrite(
-            'A la noche me baño y me acuesto.',
+            'Por la noche me baño y me acuesto.',
             'À noite eu tomo banho e me deito.',
             ['pt-tomo-banho', 'pt-me-deito'],
             {
@@ -466,7 +466,7 @@ export const PT_A2_U11: PtUnitDef = {
       // ------------------------------------------------------------------------------------ L3
       {
         title: 'Às vezes, nunca, toda semana',
-        objective: 'Decir con qué frecuencia hacés algo.',
+        objective: 'Decir con qué frecuencia haces algo.',
         intro: {
           explanation:
             'De más a menos: sempre (siempre), toda semana (todas las semanas), às vezes (a veces), de vez em quando (de vez en cuando), nunca. Para contar veces: uma vez por semana, duas vezes por semana.',
@@ -479,8 +479,8 @@ export const PT_A2_U11: PtUnitDef = {
           ],
         },
         takeaways: [
-          'Decís la frecuencia: às vezes, nunca, toda semana.',
-          'Contás veces: duas vezes por semana.',
+          'Dices la frecuencia: às vezes, nunca, toda semana.',
+          'Cuentas veces: duas vezes por semana.',
         ],
         exercises: [
           ex.translationChoice(
@@ -555,7 +555,7 @@ export const PT_A2_U11: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Com que frequência você vai ao cinema? (às vezes)',
-            '¿Con qué frecuencia vas al cine? (Respondé que a veces.)',
+            '¿Con qué frecuencia vas al cine? (Responde que a veces.)',
             'Eu vou ao cinema às vezes.',
             ['Às vezes.', 'Às vezes eu vou ao cinema.', 'Vou às vezes.', 'Vou ao cinema às vezes.'],
             ['pt-as-vezes'],
@@ -580,7 +580,7 @@ export const PT_A2_U11: PtUnitDef = {
       // ------------------------------------------------------------------------------------ L4
       {
         title: 'Há dois anos, desde março',
-        objective: 'Decir desde hace cuánto tiempo hacés algo.',
+        objective: 'Decir desde hace cuánto tiempo haces algo.',
         intro: {
           explanation:
             '«Hace» + tiempo se dice há o faz: moro aqui há dois anos, faz dois anos que moro aqui. Para preguntar: há quanto tempo…? Desde es igual: desde março. Faz tempo que não… es «hace tiempo que no…».',
@@ -593,8 +593,8 @@ export const PT_A2_U11: PtUnitDef = {
           ],
         },
         takeaways: [
-          'Decís la duración: há dois anos, desde março.',
-          'Preguntás: há quanto tempo…?',
+          'Dices la duración: há dois anos, desde março.',
+          'Preguntas: há quanto tempo…?',
         ],
         exercises: [
           ex.translationChoice(
@@ -609,7 +609,7 @@ export const PT_A2_U11: PtUnitDef = {
           ex.translationChoice(
             'faz tempo',
             'hace tiempo',
-            ['hace calor', 'a tiempo', 'tenés tiempo'],
+            ['hace calor', 'a tiempo', 'tienes tiempo'],
             ['pt-faz-tempo'],
             { id: 'pt.ex.pu51bciltm2dp7' },
           ),
@@ -633,7 +633,7 @@ export const PT_A2_U11: PtUnitDef = {
           ),
           ex.fillBlank(
             'Eu trabalho aqui ___ março.',
-            'Trabajo acá desde marzo.',
+            'Trabajo aquí desde marzo.',
             'desde',
             ['há', 'faz', 'em'],
             ['pt-desde'],
@@ -667,7 +667,7 @@ export const PT_A2_U11: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Há quanto tempo você estuda português? (três meses)',
-            '¿Hace cuánto estudiás portugués? (Respondé que hace tres meses.)',
+            '¿Hace cuánto estudias portugués? (Responde que hace tres meses.)',
             'Eu estudo português há três meses.',
             [
               'Há três meses.',
@@ -697,7 +697,7 @@ export const PT_A2_U11: PtUnitDef = {
       // ------------------------------------------------------------------------------------ L5
       {
         title: 'Me sinto melhor',
-        objective: 'Contar cómo te sentís y tus hábitos de salud.',
+        objective: 'Contar cómo te sientes y tus hábitos de salud.',
         intro: {
           explanation:
             'Sentir-se es «sentirse»: eu me sinto bem, ela se sente cansada. Falso amigo: academia es el «gimnasio» (la academia de idiomas es escola de idiomas).',
@@ -706,10 +706,10 @@ export const PT_A2_U11: PtUnitDef = {
               target: 'Depois da academia eu me sinto muito melhor.',
               base: 'Después del gimnasio me siento mucho mejor.',
             },
-            { target: 'Você se sente cansado?', base: '¿Te sentís cansado?' },
+            { target: 'Você se sente cansado?', base: '¿Te sientes cansado?' },
           ],
         },
-        takeaways: ['Decís cómo te sentís: me sinto…', 'Sabés que academia es «gimnasio».'],
+        takeaways: ['Dices cómo te sientes: me sinto…', 'Sabes que academia es «gimnasio».'],
         exercises: [
           ex.translationChoice(
             'academia',
@@ -728,7 +728,7 @@ export const PT_A2_U11: PtUnitDef = {
             ['pt-me-sinto'],
             {
               id: 'pt.ex.egmgi3depquue9',
-              explanation: 'Me sinto es cómo te sentís; «sentarse» es sentar-se (eu me sento).',
+              explanation: 'Me sinto es cómo te sientes; «sentarse» es sentar-se (eu me sento).',
             },
           ),
           ex.listenChoice(
@@ -785,7 +785,7 @@ export const PT_A2_U11: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Como você se sente hoje? (bem)',
-            '¿Cómo te sentís hoy? (Respondé que te sentís bien.)',
+            '¿Cómo te sientes hoy? (Responde que te sientes bien.)',
             'Eu me sinto bem.',
             [
               'Me sinto bem.',

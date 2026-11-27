@@ -17,19 +17,19 @@ const w = (
 /** Variante de Brasil. Redactada sin revisión de un hablante nativo: necesita revisión lingüística. */
 export const unit02: UnitDef = {
   position: 2,
-  title: '¿Quién sos y de dónde sos?',
+  title: '¿Quién eres y de dónde eres?',
   titleEn: 'Quem é você e de onde você é?',
-  description: 'El verbo ser, decir de dónde sos y hablar de otras personas.',
+  description: 'El verbo ser, decir de dónde eres y hablar de otras personas.',
   emoji: '🌍',
   objective:
-    'Podés decir quién sos y de dónde sos, preguntarle lo mismo a otra persona y hablar de alguien con ele y ela.',
+    'Puedes decir quién eres y de dónde eres, preguntarle lo mismo a otra persona y hablar de alguien con ele y ela.',
   grammar: {
     title: 'Ser con eu, você, ele y ela',
     explanation:
-      'Eu sou (yo soy) y, para você, ele y ela, la misma forma: é. En Brasil você es el «vos» de todos los días y va con el verbo como ele: você é.',
+      'Eu sou (yo soy) y, para você, ele y ela, la misma forma: é. En Brasil você es el «tú» de todos los días y va con el verbo como ele: você é.',
     examples: [
       { target: 'Eu sou argentina.', base: 'Yo soy argentina.' },
-      { target: 'Você é brasileiro?', base: '¿Vos sos brasileño?' },
+      { target: 'Você é brasileiro?', base: '¿Tú eres brasileño?' },
       { target: 'Ela é professora.', base: 'Ella es profesora.' },
     ],
   },
@@ -42,16 +42,16 @@ export const unit02: UnitDef = {
     w(
       'pt-e-ser',
       'é',
-      'es / sos (con você)',
+      'es / eres (con você)',
       'Ela é minha amiga.',
       'Ella es mi amiga.',
       ['verbs', 'to-be'],
       {
-        acceptedTranslations: ['es', 'sos'],
+        acceptedTranslations: ['es', 'sos', 'es / sos (con você)', 'eres'],
       },
     ),
-    w('pt-voce', 'você', 'vos', 'Você é brasileiro?', '¿Vos sos brasileño?', ['pronouns'], {
-      acceptedTranslations: ['tú', 'usted'],
+    w('pt-voce', 'você', 'tú', 'Você é brasileiro?', '¿Tú eres brasileño?', ['pronouns'], {
+      acceptedTranslations: ['tú', 'usted', 'vos'],
     }),
     w('pt-ele', 'ele', 'él', 'Ele é o Pedro.', 'Él es Pedro.', ['pronouns']),
     w('pt-ela', 'ela', 'ella', 'Ela é de São Paulo.', 'Ella es de São Paulo.', ['pronouns']),
@@ -100,12 +100,12 @@ export const unit02: UnitDef = {
     w(
       'pt-de-onde',
       'de onde você é?',
-      '¿de dónde sos?',
+      '¿de dónde eres?',
       'Oi! De onde você é?',
-      '¡Hola! ¿De dónde sos?',
+      '¡Hola! ¿De dónde eres?',
       ['questions'],
       {
-        acceptedTranslations: ['¿de dónde eres?'],
+        acceptedTranslations: ['¿de dónde eres?', '¿de dónde sos?'],
       },
     ),
     w('pt-sou-de', 'sou de', 'soy de', 'Sou de Buenos Aires.', 'Soy de Buenos Aires.', [
@@ -115,7 +115,7 @@ export const unit02: UnitDef = {
   lessons: [
     {
       title: 'Eu sou…',
-      objective: 'Decir quién sos con sou.',
+      objective: 'Decir quién eres con sou.',
       intro: {
         explanation:
           'Sou es «soy». En Brasil se dice mucho eu sou + nombre, y es común poner el artículo antes del nombre: eu sou o Lucas, eu sou a Ana.',
@@ -125,11 +125,11 @@ export const unit02: UnitDef = {
         ],
       },
       takeaways: [
-        'Decís quién sos con eu sou.',
-        'Decís a qué te dedicás: estudante, professor, professora.',
+        'Dices quién eres con eu sou.',
+        'Dices a qué te dedicas: estudante, professor, professora.',
       ],
       exercises: [
-        ex.translationChoice('sou', 'soy', ['es / sos (con você)', 'él', 'ella'], ['pt-sou']),
+        ex.translationChoice('sou', 'soy', ['es / eres (con você)', 'él', 'ella'], ['pt-sou']),
         ex.translationChoice(
           'estudante',
           'estudiante',
@@ -173,22 +173,22 @@ export const unit02: UnitDef = {
     },
     {
       title: 'Você, ele, ela',
-      objective: 'Hablar de vos y de otras personas con é.',
+      objective: 'Hablar de ti y de otras personas con é.',
       intro: {
         explanation:
-          'Você es «vos» y se conjuga como ele (él) y ela (ella): você é, ele é, ela é. Tu existe, pero en gran parte de Brasil se usa você.',
+          'Você es «tú» y se conjuga como ele (él) y ela (ella): você é, ele é, ela é. Tu existe, pero en gran parte de Brasil se usa você.',
         examples: [
-          { target: 'Você é o Pedro?', base: '¿Vos sos Pedro?' },
+          { target: 'Você é o Pedro?', base: '¿Tú eres Pedro?' },
           { target: 'Ela é de São Paulo.', base: 'Ella es de São Paulo.' },
         ],
       },
-      takeaways: ['Usás é con você, ele y ela.', 'Tratás a la gente de você.'],
+      takeaways: ['Usas é con você, ele y ela.', 'Tratas a la gente de você.'],
       exercises: [
-        ex.translationChoice('você', 'vos', ['él', 'ella', 'yo'], ['pt-voce']),
-        ex.translationChoice('ela', 'ella', ['él', 'vos', 'amiga'], ['pt-ela']),
+        ex.translationChoice('você', 'tú', ['él', 'ella', 'yo'], ['pt-voce']),
+        ex.translationChoice('ela', 'ella', ['él', 'tú', 'amiga'], ['pt-ela']),
         ex.fillBlank(
           'Você ___ o Pedro?',
-          '¿Vos sos Pedro?',
+          '¿Tú eres Pedro?',
           'é',
           ['sou', 'e', 'são'],
           ['pt-e-ser', 'pt-voce'],
@@ -201,7 +201,7 @@ export const unit02: UnitDef = {
         ex.matchPairs(
           [
             ['eu', 'yo'],
-            ['você', 'vos'],
+            ['você', 'tú'],
             ['ele', 'él'],
             ['ela', 'ella'],
           ],
@@ -217,7 +217,7 @@ export const unit02: UnitDef = {
           'pt-e-ser',
           'pt-professora',
         ]),
-        ex.translateWrite('¿Vos sos Pedro?', 'Você é o Pedro?', ['pt-voce', 'pt-e-ser'], {
+        ex.translateWrite('¿Tú eres Pedro?', 'Você é o Pedro?', ['pt-voce', 'pt-e-ser'], {
           acceptedAnswers: ['Você é Pedro?'],
         }),
       ],
@@ -231,14 +231,14 @@ export const unit02: UnitDef = {
         examples: [
           {
             target: 'Você é professor? — Não, não sou professor.',
-            base: '¿Sos profesor? — No, no soy profesor.',
+            base: '¿Eres profesor? — No, no soy profesor.',
           },
           { target: 'Ele não é meu amigo.', base: 'Él no es mi amigo.' },
         ],
       },
       takeaways: [
-        'Negás con não antes del verbo.',
-        'Preguntás con la misma oración y entonación de pregunta.',
+        'Niegas con não antes del verbo.',
+        'Preguntas con la misma oración y entonación de pregunta.',
       ],
       exercises: [
         ex.fillBlank(
@@ -254,7 +254,7 @@ export const unit02: UnitDef = {
         ex.translationChoice(
           'ele não é',
           'él no es',
-          ['ella es', 'vos sos', 'yo no soy'],
+          ['ella es', 'tú eres', 'yo no soy'],
           ['pt-ele', 'pt-nao'],
         ),
         ex.listenChoice('não sou', ['eu sou', 'você é', 'ela é'], ['pt-nao', 'pt-sou']),
@@ -273,7 +273,7 @@ export const unit02: UnitDef = {
         ),
         ex.shortAnswer(
           'Você é professor?',
-          '¿Sos profesor? (Respondé que no.)',
+          '¿Eres profesor? (Responde que no.)',
           'Não, não sou professor.',
           ['Não sou professor.', 'Não, não sou.', 'Não.'],
           ['pt-nao', 'pt-sou', 'pt-professor'],
@@ -306,8 +306,8 @@ export const unit02: UnitDef = {
         ],
       },
       takeaways: [
-        'Decís tu nacionalidad con sou + nacionalidad.',
-        'Cambiás -o por -a para una mujer.',
+        'Dices tu nacionalidad con sou + nacionalidad.',
+        'Cambias -o por -a para una mujer.',
       ],
       exercises: [
         ex.imageChoice(
@@ -357,25 +357,25 @@ export const unit02: UnitDef = {
     },
     {
       title: 'De onde você é?',
-      objective: 'Preguntar y decir de dónde sos.',
+      objective: 'Preguntar y decir de dónde eres.',
       intro: {
         explanation:
-          'De onde você é? es «¿de dónde sos?». Se responde sou de + ciudad o país: sou de Rosario, sou da Argentina (de + a = da).',
+          'De onde você é? es «¿de dónde eres?». Se responde sou de + ciudad o país: sou de Rosario, sou da Argentina (de + a = da).',
         examples: [
-          { target: 'De onde você é?', base: '¿De dónde sos?' },
+          { target: 'De onde você é?', base: '¿De dónde eres?' },
           { target: 'Sou de Buenos Aires.', base: 'Soy de Buenos Aires.' },
           { target: 'Sou da Argentina.', base: 'Soy de Argentina.', note: 'de + a = da' },
         ],
       },
       takeaways: [
-        'Preguntás de dónde es alguien con de onde você é?',
-        'Respondés con sou de + ciudad.',
+        'Preguntas de dónde es alguien con de onde você é?',
+        'Respondes con sou de + ciudad.',
       ],
       exercises: [
         ex.translationChoice(
           'de onde você é?',
-          '¿de dónde sos?',
-          ['¿todo bien?', '¿cómo te llamás?', 'soy de'],
+          '¿de dónde eres?',
+          ['¿todo bien?', '¿cómo te llamas?', 'soy de'],
           ['pt-de-onde'],
         ),
         ex.listenChoice(
@@ -398,7 +398,7 @@ export const unit02: UnitDef = {
         ex.orderWords('Sou de Buenos Aires.', 'Soy de Buenos Aires.', ['pt-sou-de']),
         ex.matchPairs(
           [
-            ['de onde você é?', '¿de dónde sos?'],
+            ['de onde você é?', '¿de dónde eres?'],
             ['sou de', 'soy de'],
             ['brasileiro', 'brasileño'],
             ['ele', 'él'],
@@ -407,12 +407,12 @@ export const unit02: UnitDef = {
         ),
         ex.shortAnswer(
           'Oi! De onde você é?',
-          '¡Hola! ¿De dónde sos? (Respondé que sos de Córdoba.)',
+          '¡Hola! ¿De dónde eres? (Responde que eres de Córdoba.)',
           'Sou de Córdoba.',
           ['Eu sou de Córdoba.', 'Sou de Cordoba.', 'Eu sou de Cordoba.'],
           ['pt-de-onde', 'pt-sou-de'],
         ),
-        ex.translateWrite('¿De dónde sos?', 'De onde você é?', ['pt-de-onde']),
+        ex.translateWrite('¿De dónde eres?', 'De onde você é?', ['pt-de-onde']),
         ex.translateWrite('Ella es de São Paulo.', 'Ela é de São Paulo.', ['pt-ela', 'pt-e-ser'], {
           acceptedAnswers: ['Ela é de Sao Paulo.'],
         }),

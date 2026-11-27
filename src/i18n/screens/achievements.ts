@@ -9,7 +9,7 @@ export const achievementsScreenStrings = defineStrings({
     title: 'Logros',
     levels: (levels: number, max: number) => `${levels} de ${max} niveles`,
     levelsA11y: 'Niveles de logros alcanzados',
-    hint: 'Cada logro sube de nivel a medida que avanzás. ¡Seguí sumando!',
+    hint: 'Cada logro sube de nivel a medida que avanzas. ¡Sigue sumando!',
     categories: {
       streak: 'Constancia',
       learning: 'Lecciones',
@@ -28,6 +28,32 @@ export const achievementsScreenStrings = defineStrings({
       learning: 'Lessons',
       vocabulary: 'Vocabulary',
       competitive: 'Competitive',
+    },
+  },
+  'pt-BR': {
+    loading: 'Carregando conquistas…',
+    title: 'Conquistas',
+    levels: (levels: number, max: number) => `${levels} de ${max} níveis`,
+    levelsA11y: 'Níveis de conquistas alcançados',
+    hint: 'Cada conquista sobe de nível conforme você avança. Continue assim!',
+    categories: {
+      streak: 'Constância',
+      learning: 'Lições',
+      vocabulary: 'Vocabulário',
+      competitive: 'Competitivo',
+    },
+  },
+  it: {
+    loading: 'Caricamento traguardi…',
+    title: 'Traguardi',
+    levels: (levels: number, max: number) => `${levels} di ${max} livelli`,
+    levelsA11y: 'Livelli raggiunti nei traguardi',
+    hint: 'Ogni traguardo sale di livello man mano che avanzi. Continua così!',
+    categories: {
+      streak: 'Costanza',
+      learning: 'Lezioni',
+      vocabulary: 'Vocabolario',
+      competitive: 'Competitivo',
     },
   },
 });

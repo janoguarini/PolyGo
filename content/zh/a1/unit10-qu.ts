@@ -26,7 +26,7 @@ const tone = (
 ): ExerciseDef => ({
   type: 'listen_choice',
   skill: 'listening',
-  prompt: 'Escuchá y elegí el tono correcto',
+  prompt: 'Escucha y elige el tono correcto',
   payload: { type: 'listen_choice', audioText: hanzi, options: [pinyin, ...others] },
   answer: pinyin,
   words,
@@ -59,14 +59,14 @@ export const unit10: UnitDef = {
     'Decir adónde vas con 去, lugares de la ciudad, cómo vas (坐地铁, 走路) y si queda cerca o lejos.',
   emoji: '🚇',
   objective:
-    'Podés decir adónde vas (我去商店), cómo vas (我坐地铁去学校), preguntar 怎么去？ y decir si un lugar queda cerca (近) o lejos (远).',
+    'Puedes decir adónde vas (我去商店), cómo vas (我坐地铁去学校), preguntar 怎么去？ y decir si un lugar queda cerca (近) o lejos (远).',
   grammar: {
     title: '去 + lugar y 坐 + vehículo + 去',
     explanation:
       '去 (qù) es «ir» y va directo con el lugar, sin preposición: 我去学校. El medio de transporte va antes: 坐 (zuò, «tomar, ir sentado en») + vehículo + 去 + lugar: 我坐地铁去学校. Para preguntar cómo: 你怎么去？',
     examples: [
       { target: '你去哪儿？我去商店。', base: '¿Adónde vas? Voy a la tienda.' },
-      { target: '我坐地铁去学校。', base: 'Voy a la escuela en subte.' },
+      { target: '我坐地铁去学校。', base: 'Voy a la escuela en metro.' },
       { target: '医院远吗？不远，很近。', base: '¿El hospital queda lejos? No, queda muy cerca.' },
     ],
   },
@@ -77,7 +77,7 @@ export const unit10: UnitDef = {
   },
   words: [
     w('zh-qu', '去', 'qù', 'ir', '我去学校。', 'Voy a la escuela.', ['verbs']),
-    w('zh-lai', '来', 'lái', 'venir', '你来我家吗？', '¿Venís a mi casa?', ['verbs']),
+    w('zh-lai', '来', 'lái', 'venir', '你来我家吗？', '¿Vienes a mi casa?', ['verbs']),
     w('zh-shangdian', '商店', 'shāngdiàn', 'tienda', '我去商店。', 'Voy a la tienda.', ['places'], {
       emoji: '🏬',
     }),
@@ -126,23 +126,23 @@ export const unit10: UnitDef = {
       'zuò',
       'tomar (un transporte)',
       '我坐地铁去学校。',
-      'Voy a la escuela en subte.',
+      'Voy a la escuela en metro.',
       ['verbs', 'transport'],
       { acceptedTranslations: ['sentarse', 'ir en'] },
     ),
-    w('zh-ditie', '地铁', 'dìtiě', 'subte', '我坐地铁。', 'Tomo el subte.', ['transport'], {
-      acceptedTranslations: ['metro', 'subterráneo'],
+    w('zh-ditie', '地铁', 'dìtiě', 'metro', '我坐地铁。', 'Tomo el metro.', ['transport'], {
+      acceptedTranslations: ['subte', 'subterráneo'],
       emoji: '🚇',
     }),
     w(
       'zh-gongjiaoche',
       '公交车',
       'gōngjiāochē',
-      'colectivo',
+      'autobús',
       '我坐公交车去商店。',
-      'Voy a la tienda en colectivo.',
+      'Voy a la tienda en autobús.',
       ['transport'],
-      { acceptedTranslations: ['autobús', 'bus', 'micro'], emoji: '🚌' },
+      { acceptedTranslations: ['colectivo', 'bus', 'micro'], emoji: '🚌' },
     ),
     w(
       'zh-chuzuche',
@@ -184,7 +184,7 @@ export const unit10: UnitDef = {
           { target: '我去学校。', base: 'Voy a la escuela.' },
         ],
       },
-      takeaways: ['Decís adónde vas con 去 + lugar.', 'Preguntás adónde con 去哪儿？'],
+      takeaways: ['Dices adónde vas con 去 + lugar.', 'Preguntas adónde con 去哪儿？'],
       exercises: [
         ex.translationChoice('去', 'ir', ['venir', 'estar en', 'tener'], ['zh-qu']),
         ex.imageChoice('🏫', '学校', ['商店', '超市', '医院'], ['zh-xuexiao']),
@@ -216,10 +216,10 @@ export const unit10: UnitDef = {
           '医院 (yīyuàn) es «hospital» y 饭馆 (fànguǎn) «restaurante» (饭 es comida, como en 米饭). 来 (lái) es «venir»: 你来我家吗？ Las ciudades van igual: 我去北京.',
         examples: [
           { target: '饭馆在那儿。', base: 'El restaurante está allá.' },
-          { target: '你来我家吗？', base: '¿Venís a mi casa?' },
+          { target: '你来我家吗？', base: '¿Vienes a mi casa?' },
         ],
       },
-      takeaways: ['Nombrás hospital y restaurante.', 'Distinguís 去 (ir) y 来 (venir).'],
+      takeaways: ['Nombras hospital y restaurante.', 'Distingues 去 (ir) y 来 (venir).'],
       exercises: [
         ex.imageChoice('🏥', '医院', ['饭馆', '学校', '商店'], ['zh-yiyuan']),
         ex.translationChoice(
@@ -229,7 +229,7 @@ export const unit10: UnitDef = {
           ['zh-fanguan'],
         ),
         ex.translationChoice('来', 'venir', ['ir', 'tener ganas de', 'comer'], ['zh-lai'], {
-          explanation: '来 es venir (hacia acá); 去 es ir (hacia allá).',
+          explanation: '来 es venir (hacia aquí); 去 es ir (hacia allá).',
         }),
         tone('来', 'lái', ['lāi', 'lǎi', 'lài'], ['zh-lai']),
         ex.listenChoice(
@@ -246,7 +246,7 @@ export const unit10: UnitDef = {
           ],
           ['zh-shangdian', 'zh-chaoshi', 'zh-yiyuan', 'zh-fanguan'],
         ),
-        ex.orderWords('你 来 我 家 吗？', '¿Venís a mi casa?', ['zh-lai', 'zh-jia', 'zh-ma']),
+        ex.orderWords('你 来 我 家 吗？', '¿Vienes a mi casa?', ['zh-lai', 'zh-jia', 'zh-ma']),
         write('Voy a Pekín.', 'wǒ qù Běijīng', '我去北京', ['zh-qu', 'zh-beijing'], {
           accepted: ['wǒ qù běijīng'],
         }),
@@ -262,22 +262,17 @@ export const unit10: UnitDef = {
       objective: 'Decir en qué vas.',
       intro: {
         explanation:
-          '坐 (zuò) es «sentarse» y también «tomar» un transporte: 坐地铁 «tomar el subte», 坐公交车 «tomar el colectivo», 坐出租车 «tomar un taxi». El transporte va antes de 去: 我坐地铁去学校.',
+          '坐 (zuò) es «sentarse» y también «tomar» un transporte: 坐地铁 «tomar el metro», 坐公交车 «tomar el autobús», 坐出租车 «tomar un taxi». El transporte va antes de 去: 我坐地铁去学校.',
         examples: [
-          { target: '我坐地铁去学校。', base: 'Voy a la escuela en subte.' },
+          { target: '我坐地铁去学校。', base: 'Voy a la escuela en metro.' },
           { target: '我坐出租车去医院。', base: 'Voy al hospital en taxi.' },
         ],
       },
-      takeaways: ['Nombrás subte, colectivo y taxi.', 'Decís en qué vas con 坐 + vehículo + 去.'],
+      takeaways: ['Nombras metro, autobús y taxi.', 'Dices en qué vas con 坐 + vehículo + 去.'],
       exercises: [
         ex.imageChoice('🚇', '地铁', ['公交车', '出租车', '商店'], ['zh-ditie']),
         ex.imageChoice('🚕', '出租车', ['地铁', '公交车', '电视'], ['zh-chuzuche']),
-        ex.translationChoice(
-          '公交车',
-          'colectivo',
-          ['taxi', 'subte', 'tienda'],
-          ['zh-gongjiaoche'],
-        ),
+        ex.translationChoice('公交车', 'autobús', ['taxi', 'metro', 'tienda'], ['zh-gongjiaoche']),
         tone('坐', 'zuò', ['zuō', 'zuó', 'zuǒ'], ['zh-zuo']),
         ex.listenChoice(
           '我坐公交车去商店。',
@@ -286,7 +281,7 @@ export const unit10: UnitDef = {
         ),
         ex.fillBlank(
           '我___地铁去学校。',
-          'Voy a la escuela en subte.',
+          'Voy a la escuela en metro.',
           '坐',
           ['去', '在', '要'],
           ['zh-zuo', 'zh-ditie', 'zh-qu', 'zh-xuexiao'],
@@ -297,13 +292,13 @@ export const unit10: UnitDef = {
           ['zh-zuo', 'zh-chuzuche', 'zh-qu', 'zh-yiyuan'],
           { explanation: 'Primero cómo (坐出租车), después adónde (去医院).' },
         ),
-        write('Tomo el subte.', 'wǒ zuò dìtiě', '我坐地铁', ['zh-zuo', 'zh-ditie']),
-        write(
-          'Voy a la escuela en colectivo.',
-          'wǒ zuò gōngjiāochē qù xuéxiào',
-          '我坐公交车去学校',
-          ['zh-zuo', 'zh-gongjiaoche', 'zh-qu', 'zh-xuexiao'],
-        ),
+        write('Tomo el metro.', 'wǒ zuò dìtiě', '我坐地铁', ['zh-zuo', 'zh-ditie']),
+        write('Voy a la escuela en autobús.', 'wǒ zuò gōngjiāochē qù xuéxiào', '我坐公交车去学校', [
+          'zh-zuo',
+          'zh-gongjiaoche',
+          'zh-qu',
+          'zh-xuexiao',
+        ]),
       ],
     },
     {
@@ -317,7 +312,7 @@ export const unit10: UnitDef = {
           { target: '我走路去。', base: 'Voy caminando.' },
         ],
       },
-      takeaways: ['Preguntás cómo con 怎么 + verbo.', 'Decís que vas caminando con 走路去.'],
+      takeaways: ['Preguntas cómo con 怎么 + verbo.', 'Dices que vas caminando con 走路去.'],
       exercises: [
         ex.translationChoice('怎么', '¿cómo?', ['¿qué?', '¿dónde?', '¿quién?'], ['zh-zenme']),
         ex.imageChoice('🚶', '走路', ['坐', '睡觉', '工作'], ['zh-zoulu']),
@@ -359,10 +354,10 @@ export const unit10: UnitDef = {
           { target: '医院远吗？不远。', base: '¿El hospital queda lejos? No.' },
         ],
       },
-      takeaways: ['Decís si algo está cerca o lejos.', 'Usás 很 y no 是 con 远 y 近.'],
+      takeaways: ['Dices si algo está cerca o lejos.', 'Usas 很 y no 是 con 远 y 近.'],
       exercises: [
         ex.translationChoice('远', 'lejos', ['cerca', 'muy', 'grande'], ['zh-yuan']),
-        ex.translationChoice('近', 'cerca', ['lejos', 'acá', 'dentro de'], ['zh-jin']),
+        ex.translationChoice('近', 'cerca', ['lejos', 'aquí', 'dentro de'], ['zh-jin']),
         tone('远', 'yuǎn', ['yuān', 'yuán', 'yuàn'], ['zh-yuan']),
         ex.listenChoice(
           '学校很近。',

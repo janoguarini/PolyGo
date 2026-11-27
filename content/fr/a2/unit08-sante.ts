@@ -60,7 +60,7 @@ export const FR_A2_U08: FrUnitDef = {
       "Avoir mal à con contracción (à la tête, au dos, aux dents); je me sens bien / mal; en la consulta y en la farmacia (vous avez mal où?, depuis quand?); el imperativo con vous (reposez-vous, buvez de l'eau). Géneros distintos: le dos, la dent.",
     emoji: '🩺',
     objective:
-      'Podés decir qué te duele y cómo te sentís, explicarle al médico desde cuándo estás mal y entender y dar consejos de salud.',
+      'Puedes decir qué te duele y cómo te sientes, explicarle al médico desde cuándo estás mal y entender y dar consejos de salud.',
     grammar: {
       title: 'Avoir mal à · el imperativo con vous',
       explanation:
@@ -160,7 +160,7 @@ export const FR_A2_U08: FrUnitDef = {
         'le médicament',
         'el remedio',
         'Prenez le médicament le matin.',
-        'Tome el remedio a la mañana.',
+        'Tome el remedio por la mañana.',
         ['health', 'm'],
         { acceptedTranslations: ['el medicamento'], emoji: '💊' },
       ),
@@ -169,7 +169,7 @@ export const FR_A2_U08: FrUnitDef = {
         "l'ordonnance",
         'la receta (médica)',
         'Voici votre ordonnance, madame.',
-        'Acá tiene su receta, señora.',
+        'Aquí tiene su receta, señora.',
         ['health', 'f'],
         { acceptedTranslations: ['la receta'] },
       ),
@@ -206,7 +206,7 @@ export const FR_A2_U08: FrUnitDef = {
         'Vous êtes fatigué: reposez-vous!',
         'Está cansado: ¡descanse!',
         ['health', 'imperative'],
-        { acceptedTranslations: ['descansen', 'descansá'] },
+        { acceptedTranslations: ['descansen', 'descansá', 'descansa'] },
       ),
       w(
         'fr-en-forme',
@@ -231,8 +231,8 @@ export const FR_A2_U08: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Decís qué te duele con j'ai mal à.",
-          'Usás au con masculinos y à la con femeninos.',
+          "Dices qué te duele con j'ai mal à.",
+          'Usas au con masculinos y à la con femeninos.',
         ],
         exercises: [
           ex.translationChoice(
@@ -314,7 +314,7 @@ export const FR_A2_U08: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Tu as mal où?',
-            '¿Dónde te duele? (Respondé que te duele la garganta.)',
+            '¿Dónde te duele? (Responde que te duele la garganta.)',
             "J'ai mal à la gorge.",
             ['À la gorge.'],
             ['fr-j-ai-mal-a', 'fr-la-gorge'],
@@ -327,7 +327,7 @@ export const FR_A2_U08: FrUnitDef = {
       {
         title: 'Un rhume et de la fièvre',
         objective:
-          'Hablar de los dientes, la pierna y el brazo, y decir que tenés fiebre o un resfrío.',
+          'Hablar de los dientes, la pierna y el brazo, y decir que tienes fiebre o un resfrío.',
         intro: {
           explanation:
             "À + les se contrae en aux: j'ai mal aux dents. Delante de vocal hay liaison: aux yeux se une con un sonido z. La dent (el diente) es femenino. Para la fiebre y el resfrío se usa avoir: j'ai de la fièvre (tengo fiebre), j'ai un rhume (estoy resfriado). En bras, la s final no suena.",
@@ -337,8 +337,8 @@ export const FR_A2_U08: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Usás aux con los plurales: aux dents, aux yeux.',
-          "Decís j'ai de la fièvre y j'ai un rhume.",
+          'Usas aux con los plurales: aux dents, aux yeux.',
+          "Dices j'ai de la fièvre y j'ai un rhume.",
         ],
         exercises: [
           ex.translationChoice(
@@ -414,7 +414,7 @@ export const FR_A2_U08: FrUnitDef = {
           }),
           ex.shortAnswer(
             'Ça va?',
-            '¿Cómo va? (Respondé que no: que estás resfriado.)',
+            '¿Cómo va? (Responde que no: que estás resfriado.)',
             "Non, j'ai un rhume.",
             ["Non, ça ne va pas. J'ai un rhume.", "J'ai un rhume."],
             ['fr-le-rhume'],
@@ -426,7 +426,7 @@ export const FR_A2_U08: FrUnitDef = {
       // ------------------------------------------------------------------------------------ L3
       {
         title: 'Je me sens fatigué',
-        objective: 'Decir cómo te sentís: bien, mal, cansado, enfermo o en forma.',
+        objective: 'Decir cómo te sientes: bien, mal, cansado, enfermo o en forma.',
         intro: {
           explanation:
             'Je me sens + adjetivo es me siento: je me sens bien, je me sens mal, je me sens fatigué. Malade es enfermo (je suis malade) y en forme, en forma o con energía. Fatigué concuerda: una mujer dice fatiguée, que suena igual.',
@@ -435,7 +435,7 @@ export const FR_A2_U08: FrUnitDef = {
             { target: "Aujourd'hui, je suis en forme!", base: '¡Hoy estoy con todas las pilas!' },
           ],
         },
-        takeaways: ['Decís cómo te sentís con je me sens.', 'Usás malade, fatigué y en forme.'],
+        takeaways: ['Dices cómo te sientes con je me sens.', 'Usas malade, fatigué y en forme.'],
         exercises: [
           ex.translationChoice(
             'je me sens',
@@ -515,7 +515,7 @@ export const FR_A2_U08: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Tu es en forme aujourd'hui?",
-            '¿Estás en forma hoy? (Respondé que no, que estás enfermo.)',
+            '¿Estás en forma hoy? (Responde que no, que estás enfermo.)',
             'Non, je suis malade.',
             ['Non, je me sens malade.', "Non, aujourd'hui je suis malade.", 'Je suis malade.'],
             ['fr-malade'],
@@ -533,12 +533,12 @@ export const FR_A2_U08: FrUnitDef = {
             "En la consulta se usa vous: vous avez mal où? (¿dónde le duele?), depuis quand? (¿desde cuándo?). Se responde con depuis + presente: j'ai mal à la tête depuis hier. Cultura: en Francia, el médico te da l'ordonnance (la receta) y en la pharmacie, la de la cruz verde, te dan le médicament. Falso amigo: l'ordonnance no es una ordenanza.",
           examples: [
             { target: 'Vous avez mal où?', base: '¿Dónde le duele?' },
-            { target: 'Voici votre ordonnance.', base: 'Acá tiene su receta.' },
+            { target: 'Voici votre ordonnance.', base: 'Aquí tiene su receta.' },
           ],
         },
         takeaways: [
-          'Explicás qué te duele y desde cuándo con depuis.',
-          "Entendés l'ordonnance y le médicament.",
+          'Explicas qué te duele y desde cuándo con depuis.',
+          "Entiendes l'ordonnance y le médicament.",
         ],
         exercises: [
           ex.translationChoice(
@@ -588,8 +588,8 @@ export const FR_A2_U08: FrUnitDef = {
             'fr.ex.qrb8f9s8vv3d9m',
             CONSULTATION,
             '¿Cuándo tiene que tomar el remedio?',
-            'A la mañana y a la noche.',
-            ['Sólo a la mañana.', 'Al mediodía.', 'Cuando le duela la cabeza.'],
+            'Por la mañana y por la noche.',
+            ['Sólo por la mañana.', 'Al mediodía.', 'Cuando le duela la cabeza.'],
             ['fr-le-medicament', 'fr-l-ordonnance'],
             'El médico dice «prenez ce médicament le matin et le soir».',
           ),
@@ -619,7 +619,7 @@ export const FR_A2_U08: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Vous avez mal depuis quand?',
-            '¿Desde cuándo le duele? (Respondé que desde hace tres días.)',
+            '¿Desde cuándo le duele? (Responde que desde hace tres días.)',
             "J'ai mal depuis trois jours.",
             ['Depuis trois jours.'],
             ['fr-j-ai-mal-a', 'fr-depuis'],
@@ -641,8 +641,8 @@ export const FR_A2_U08: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Entendés los consejos del médico en imperativo.',
-          'Aconsejás con reposez-vous, buvez, prenez y ne mangez pas.',
+          'Entiendes los consejos del médico en imperativo.',
+          'Aconsejas con reposez-vous, buvez, prenez y ne mangez pas.',
         ],
         exercises: [
           ex.translationChoice(
@@ -688,9 +688,9 @@ export const FR_A2_U08: FrUnitDef = {
             'fr.ex.61f2vpe9y0kb5k',
             MESSAGE,
             '¿Qué le aconseja el médico a Thomas?',
-            'Que descanse, tome mucha agua y tome el remedio a la noche.',
+            'Que descanse, tome mucha agua y tome el remedio por la noche.',
             [
-              'Que vaya a trabajar y tome el remedio a la mañana.',
+              'Que vaya a trabajar y tome el remedio por la mañana.',
               'Que no tome agua.',
               'Que vuelva a la consulta mañana.',
             ],
@@ -708,7 +708,7 @@ export const FR_A2_U08: FrUnitDef = {
           ),
           ex.orderWords(
             'Prenez le médicament le matin et le soir.',
-            'Tome el remedio a la mañana y a la noche.',
+            'Tome el remedio por la mañana y por la noche.',
             ['fr-le-medicament'],
             { id: 'fr.ex.31ffpc5d7s3dwl' },
           ),

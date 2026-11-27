@@ -50,11 +50,11 @@ export const ZH_A2_U09: ZhUnitDef = {
       'Mensajes, fotos y videos, internet y contraseñas, cargar el celular y el primer 把.',
     emoji: '📱',
     objective:
-      'Podés mandar mensajes, fotos y correos, pedir la contraseña del wifi, decir con qué hacés algo (用) y usar 把 para decir qué hacés con una cosa.',
+      'Puedes mandar mensajes, fotos y correos, pedir la contraseña del wifi, decir con qué haces algo (用) y usar 把 para decir qué haces con una cosa.',
     grammar: {
       title: '发给 + persona · 用 + cosa + verbo · 把',
       explanation:
-        'Quien recibe va después del verbo con 给 (发给你) o antes con 给 (给你发). 用 + cosa + verbo dice con qué: 我用手机上网. Con 把 la cosa va antes del verbo cuando hacés algo con ella: 把照片发给我. Después del verbo siempre va algo más (给我, 了…).',
+        'Quien recibe va después del verbo con 给 (发给你) o antes con 给 (给你发). 用 + cosa + verbo dice con qué: 我用手机上网. Con 把 la cosa va antes del verbo cuando haces algo con ella: 把照片发给我. Después del verbo siempre va algo más (给我, 了…).',
       examples: [
         { target: '我一会儿发给你。', base: 'Te lo mando en un rato.' },
         { target: '我用手机拍照片。', base: 'Saco fotos con el celular.' },
@@ -134,7 +134,7 @@ export const ZH_A2_U09: ZhUnitDef = {
         'shìpín',
         'video',
         '你看这个视频！',
-        '¡Mirá este video!',
+        '¡Mira este video!',
         ['technology'],
         { emoji: '🎬' },
       ),
@@ -156,7 +156,7 @@ export const ZH_A2_U09: ZhUnitDef = {
         'shàngwǎng',
         'conectarse a internet',
         '这儿可以上网吗？',
-        '¿Acá hay internet?',
+        '¿Aquí hay internet?',
         ['technology'],
         {
           acceptedTranslations: ['navegar por internet', 'usar internet'],
@@ -203,7 +203,7 @@ export const ZH_A2_U09: ZhUnitDef = {
         'kāi',
         'prender (abrir)',
         '我开电脑上网。',
-        'Prendo la compu y me conecto.',
+        'Prendo la computadora y me conecto.',
         ['verbs'],
         {
           acceptedTranslations: ['abrir', 'encender', 'prender'],
@@ -215,7 +215,7 @@ export const ZH_A2_U09: ZhUnitDef = {
         'guān',
         'apagar (cerrar)',
         '晚上我关手机。',
-        'A la noche apago el celular.',
+        'Por la noche apago el celular.',
         ['verbs'],
         {
           acceptedTranslations: ['cerrar', 'apagar'],
@@ -256,11 +256,11 @@ export const ZH_A2_U09: ZhUnitDef = {
           explanation:
             '发 es mandar (un mensaje, una foto). Quien recibe va con 给, antes del verbo (给你发消息) o después (发给你). 号码 es el número de teléfono: 你的手机号码是多少？',
           examples: [
-            { target: '我晚上给你发消息。', base: 'A la noche te mando un mensaje.' },
+            { target: '我晚上给你发消息。', base: 'Por la noche te mando un mensaje.' },
             { target: '你的手机号码是多少？', base: '¿Cuál es tu número de celular?' },
           ],
         },
-        takeaways: ['Mandás mensajes con 发 y 给.', 'Pedís un número con 号码是多少？'],
+        takeaways: ['Mandas mensajes con 发 y 给.', 'Pides un número con 号码是多少？'],
         exercises: [
           ex.translationChoice('消息', 'mensaje', ['foto', 'video', 'contraseña'], ['zh-xiaoxi'], {
             id: 'zh.ex.mkdoskw3nt65tq',
@@ -310,7 +310,7 @@ export const ZH_A2_U09: ZhUnitDef = {
           }),
           reply(
             '你给我发消息了吗？',
-            '¿Me mandaste un mensaje? (Respondé que sí, que ya te lo mandaste.)',
+            '¿Me mandaste un mensaje? (Responde que sí, que ya te lo mandaste.)',
             'wǒ yǐjīng fā le',
             '我已经发了',
             ['zh-fa'],
@@ -341,10 +341,10 @@ export const ZH_A2_U09: ZhUnitDef = {
             '照片 es la foto y 拍, sacar fotos o filmar: 拍照片. 视频 es un video y 下载, descargar. Las fotos se cuentan con 张: 一张照片.',
           examples: [
             { target: '我拍了很多照片。', base: 'Saqué muchas fotos.' },
-            { target: '你看这个视频！', base: '¡Mirá este video!' },
+            { target: '你看这个视频！', base: '¡Mira este video!' },
           ],
         },
-        takeaways: ['Sacás fotos con 拍.', 'Hablás de videos y descargas.'],
+        takeaways: ['Sacas fotos con 拍.', 'Hablas de videos y descargas.'],
         exercises: [
           ex.translationChoice(
             '照片',
@@ -381,7 +381,7 @@ export const ZH_A2_U09: ZhUnitDef = {
           ),
           ex.fillBlank(
             '你看看这个___，很好玩！',
-            'Mirá este video: ¡es muy divertido!',
+            'Mira este video: ¡es muy divertido!',
             '视频',
             ['号码', '护照', '筷子'],
             ['zh-shipin'],
@@ -405,7 +405,7 @@ export const ZH_A2_U09: ZhUnitDef = {
           ),
           reply(
             '你拍照片了吗？',
-            '¿Sacaste fotos? (Respondé que sí, muchas.)',
+            '¿Sacaste fotos? (Responde que sí, muchas.)',
             'pāi le hěn duō',
             '拍了很多',
             ['zh-pai', 'zh-zhaopian'],
@@ -437,13 +437,13 @@ export const ZH_A2_U09: ZhUnitDef = {
         objective: 'Pedir internet, la contraseña y un lugar para cargar el celular.',
         intro: {
           explanation:
-            '上网 es conectarse a internet; 密码, la contraseña (también la del wifi); 充电, cargar la batería. 用 es usar, y 用 + cosa + verbo dice con qué hacés algo: 我用手机上网.',
+            '上网 es conectarse a internet; 密码, la contraseña (también la del wifi); 充电, cargar la batería. 用 es usar, y 用 + cosa + verbo dice con qué haces algo: 我用手机上网.',
           examples: [
-            { target: '这儿可以上网吗？', base: '¿Acá hay internet?' },
+            { target: '这儿可以上网吗？', base: '¿Aquí hay internet?' },
             { target: '我用手机拍照片。', base: 'Saco fotos con el celular.' },
           ],
         },
-        takeaways: ['Pedís el wifi y la contraseña.', 'Decís con qué hacés algo con 用.'],
+        takeaways: ['Pides el wifi y la contraseña.', 'Dices con qué haces algo con 用.'],
         exercises: [
           ex.translationChoice(
             '密码',
@@ -477,7 +477,7 @@ export const ZH_A2_U09: ZhUnitDef = {
             ['zh-yong'],
             {
               id: 'zh.ex.ts5w20x76dhxox',
-              explanation: '用 + cosa + verbo: con qué hacés algo.',
+              explanation: '用 + cosa + verbo: con qué haces algo.',
             },
           ),
           ex.fillBlank(
@@ -501,7 +501,7 @@ export const ZH_A2_U09: ZhUnitDef = {
             '8888',
             ['8000', '1234', 'No tienen wifi'],
             ['zh-mima'],
-            'El mozo dice: «密码是八八八八». El 8 es un número de buena suerte en China.',
+            'El mesero dice: «密码是八八八八». El 8 es un número de buena suerte en China.',
           ),
           question(
             'zh.ex.mjn4mkyi43st7y',
@@ -514,7 +514,7 @@ export const ZH_A2_U09: ZhUnitDef = {
           ),
           reply(
             '你用什么上网？',
-            '¿Con qué te conectás a internet? (Respondé que con el celular.)',
+            '¿Con qué te conectas a internet? (Responde que con el celular.)',
             'wǒ yòng shǒujī shàngwǎng',
             '我用手机上网',
             ['zh-yong', 'zh-shangwang'],
@@ -545,11 +545,11 @@ export const ZH_A2_U09: ZhUnitDef = {
           explanation:
             '开 es abrir o prender y 关, cerrar o apagar: 开电脑, 关手机. 电子邮件 es el correo electrónico.',
           examples: [
-            { target: '我开电脑上网。', base: 'Prendo la compu y me conecto.' },
-            { target: '晚上我关手机。', base: 'A la noche apago el celular.' },
+            { target: '我开电脑上网。', base: 'Prendo la computadora y me conecto.' },
+            { target: '晚上我关手机。', base: 'Por la noche apago el celular.' },
           ],
         },
-        takeaways: ['Prendés y apagás con 开 y 关.', 'Mandás un 电子邮件.'],
+        takeaways: ['Prendes y apagas con 开 y 关.', 'Mandas un 电子邮件.'],
         exercises: [
           ex.translationChoice(
             '关',
@@ -575,7 +575,7 @@ export const ZH_A2_U09: ZhUnitDef = {
           ),
           ex.fillBlank(
             '我___电脑上网。',
-            'Prendo la compu y me conecto.',
+            'Prendo la computadora y me conecto.',
             '开',
             ['关', '发', '拍'],
             ['zh-kai'],
@@ -608,7 +608,7 @@ export const ZH_A2_U09: ZhUnitDef = {
           ),
           reply(
             '你开电脑了吗？',
-            '¿Prendiste la compu? (Respondé que todavía no.)',
+            '¿Prendiste la computadora? (Responde que todavía no.)',
             'hái méi kāi',
             '还没开',
             ['zh-kai'],
@@ -624,7 +624,7 @@ export const ZH_A2_U09: ZhUnitDef = {
               ],
             },
           ),
-          write('Apagá el celular.', 'nǐ guān shǒujī ba', '你关手机吧', ['zh-guan'], {
+          write('Apaga el celular.', 'nǐ guān shǒujī ba', '你关手机吧', ['zh-guan'], {
             id: 'zh.ex.jwmxn2u7w2zngf',
             accepted: ['guān shǒujī', '关手机', 'qǐng guān shǒujī', '请关手机'],
           }),
@@ -634,18 +634,18 @@ export const ZH_A2_U09: ZhUnitDef = {
       // ------------------------------------------------------------------------------------ L5
       {
         title: '把照片发给我',
-        objective: 'Decir qué hacés con una cosa usando 把.',
+        objective: 'Decir qué haces con una cosa usando 把.',
         intro: {
           explanation:
-            'Con 把 la cosa va antes del verbo, cuando hacés algo con ella (la mandás, la das, la apagás): 把照片发给我 (mandame la foto). Estructura: 把 + cosa + verbo + algo más (给我, 了…). El verbo nunca queda solo.',
+            'Con 把 la cosa va antes del verbo, cuando haces algo con ella (la mandas, la das, la apagas): 把照片发给我 (mándame la foto). Estructura: 把 + cosa + verbo + algo más (给我, 了…). El verbo nunca queda solo.',
           examples: [
             { target: '请把手机给我。', base: 'Dame el celular, por favor.' },
             { target: '我把照片发给你了。', base: 'Te mandé las fotos.' },
           ],
         },
         takeaways: [
-          'Usás 把 + cosa + verbo + algo más.',
-          'Entendés mensajes y pedidos sobre tecnología.',
+          'Usas 把 + cosa + verbo + algo más.',
+          'Entiendes mensajes y pedidos sobre tecnología.',
         ],
         exercises: [
           ex.listenChoice(
@@ -669,7 +669,7 @@ export const ZH_A2_U09: ZhUnitDef = {
           ),
           ex.fillBlank(
             '我把电脑关___。',
-            'Apagué la compu.',
+            'Apagué la computadora.',
             '了',
             ['吗', '的', '呢'],
             ['zh-ba-objeto', 'zh-guan'],
@@ -722,7 +722,7 @@ export const ZH_A2_U09: ZhUnitDef = {
           ),
           reply(
             '照片呢？',
-            '¿Y las fotos? (Respondé que ya se las mandaste.)',
+            '¿Y las fotos? (Responde que ya se las mandaste.)',
             'wǒ yǐjīng bǎ zhàopiàn fā gěi nǐ le',
             '我已经把照片发给你了',
             ['zh-ba-objeto'],
@@ -738,7 +738,7 @@ export const ZH_A2_U09: ZhUnitDef = {
               ],
             },
           ),
-          write('Pasame el libro.', 'bǎ shū gěi wǒ', '把书给我', ['zh-ba-objeto'], {
+          write('Pásame el libro.', 'bǎ shū gěi wǒ', '把书给我', ['zh-ba-objeto'], {
             id: 'zh.ex.ysja36jpd31z1e',
             accepted: ['qǐng bǎ shū gěi wǒ', '请把书给我', 'nǐ bǎ shū gěi wǒ', '你把书给我'],
           }),

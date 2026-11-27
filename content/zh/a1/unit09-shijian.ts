@@ -26,7 +26,7 @@ const tone = (
 ): ExerciseDef => ({
   type: 'listen_choice',
   skill: 'listening',
-  prompt: 'Escuchá y elegí el tono correcto',
+  prompt: 'Escucha y elige el tono correcto',
   payload: { type: 'listen_choice', audioText: hanzi, options: [pinyin, ...others] },
   answer: pinyin,
   words,
@@ -58,7 +58,7 @@ export const unit09: UnitDef = {
   description: 'Preguntar y decir la hora con 几点, los días con 星期 y la fecha con 月 y 号.',
   emoji: '🕗',
   objective:
-    'Podés preguntar y decir la hora (现在几点？八点半), decir a qué hora hacés algo, nombrar los días con 星期 y decir la fecha.',
+    'Puedes preguntar y decir la hora (现在几点？八点半), decir a qué hora haces algo, nombrar los días con 星期 y decir la fecha.',
   grammar: {
     title: '几点, 星期几 y 几月几号',
     explanation:
@@ -154,7 +154,7 @@ export const unit09: UnitDef = {
           { target: '现在两点。', base: 'Son las dos.', note: 'liǎng diǎn' },
         ],
       },
-      takeaways: ['Preguntás la hora con 现在几点？', 'Decís la hora con número + 点 (y 两点).'],
+      takeaways: ['Preguntas la hora con 现在几点？', 'Dices la hora con número + 点 (y 两点).'],
       exercises: [
         ex.translationChoice(
           '现在',
@@ -202,7 +202,7 @@ export const unit09: UnitDef = {
           { target: '八点十分', base: 'las ocho y diez' },
         ],
       },
-      takeaways: ['Decís y media con 半.', 'Decís minutos con 分.'],
+      takeaways: ['Dices y media con 半.', 'Dices minutos con 分.'],
       exercises: [
         ex.translationChoice(
           '半',
@@ -242,18 +242,18 @@ export const unit09: UnitDef = {
     },
     {
       title: '几点…？',
-      objective: 'Decir a qué hora hacés algo.',
+      objective: 'Decir a qué hora haces algo.',
       intro: {
         explanation:
-          'Para decir a qué hora hacés algo, la hora va antes del verbo, como las demás palabras de tiempo: 我七点起床 «me levanto a las siete». Para preguntar: 你几点工作？',
+          'Para decir a qué hora haces algo, la hora va antes del verbo, como las demás palabras de tiempo: 我七点起床 «me levanto a las siete». Para preguntar: 你几点工作？',
         examples: [
           { target: '我七点起床。', base: 'Me levanto a las siete.' },
-          { target: '你几点工作？', base: '¿A qué hora trabajás?' },
+          { target: '你几点工作？', base: '¿A qué hora trabajas?' },
         ],
       },
       takeaways: [
-        'Decís a qué hora hacés algo con la hora antes del verbo.',
-        'Preguntás con 几点 + verbo.',
+        'Dices a qué hora haces algo con la hora antes del verbo.',
+        'Preguntas con 几点 + verbo.',
       ],
       exercises: [
         ex.listenChoice(
@@ -274,7 +274,7 @@ export const unit09: UnitDef = {
           ['zh-qi', 'zh-dian', 'zh-qichuang'],
           { skill: 'vocabulary' },
         ),
-        ex.orderWords('你 几 点 吃 早饭？', '¿A qué hora desayunás?', [
+        ex.orderWords('你 几 点 吃 早饭？', '¿A qué hora desayunas?', [
           'zh-jidian',
           'zh-chi',
           'zh-zaofan',
@@ -292,7 +292,7 @@ export const unit09: UnitDef = {
           'zh-dian',
           'zh-qichuang',
         ]),
-        write('¿A qué hora trabajás?', 'nǐ jǐ diǎn gōngzuò', '你几点工作', [
+        write('¿A qué hora trabajas?', 'nǐ jǐ diǎn gōngzuò', '你几点工作', [
           'zh-ni',
           'zh-jidian',
           'zh-gongzuo',
@@ -310,7 +310,7 @@ export const unit09: UnitDef = {
           { target: '今天星期一。', base: 'Hoy es lunes.' },
         ],
       },
-      takeaways: ['Nombrás los días con 星期 + número.', 'Sabés que el domingo es 星期天.'],
+      takeaways: ['Nombras los días con 星期 + número.', 'Sabes que el domingo es 星期天.'],
       exercises: [
         ex.translationChoice('星期一', 'lunes', ['martes', 'viernes', 'domingo'], ['zh-xingqiyi']),
         ex.translationChoice('星期天', 'domingo', ['sábado', 'lunes', 'semana'], ['zh-xingqitian']),
@@ -358,14 +358,14 @@ export const unit09: UnitDef = {
           { target: '今天五月三号。', base: 'Hoy es 3 de mayo.' },
         ],
       },
-      takeaways: ['Distinguís 今天, 明天 y 昨天.', 'Decís la fecha con 月 y 号.'],
+      takeaways: ['Distingues 今天, 明天 y 昨天.', 'Dices la fecha con 月 y 号.'],
       exercises: [
         ex.translationChoice(
           '明天',
           'mañana (el día siguiente)',
-          ['ayer', 'hoy', 'a la mañana'],
+          ['ayer', 'hoy', 'por la mañana'],
           ['zh-mingtian'],
-          { explanation: '明天 es el día siguiente; «a la mañana» es 早上.' },
+          { explanation: '明天 es el día siguiente; «por la mañana» es 早上.' },
         ),
         ex.translationChoice(
           '昨天',

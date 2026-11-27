@@ -19,14 +19,14 @@ import type { WritingRequirement, WritingTaskDef } from '../../../shared/writing
 const common = (minSentences: number): WritingRequirement[] => [
   {
     id: 'sentences',
-    label: `Escribís al menos ${minSentences} oraciones`,
+    label: `Escribes al menos ${minSentences} oraciones`,
     kind: 'min_sentences',
     min: minSentences,
   },
   { id: 'capital', label: 'Cada oración empieza con mayúscula', kind: 'capital_start' },
   {
     id: 'punctuation',
-    label: 'Terminás con punto, signo de exclamación o de pregunta',
+    label: 'Terminas con punto, signo de exclamación o de pregunta',
     kind: 'end_punctuation',
   },
 ];
@@ -43,12 +43,12 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'b2-u01-l05',
     title: 'Aclarar un malentendido',
     instructions:
-      'Un compañero se ofendió por un mensaje tuyo. Escribile un correo breve y con tacto: reconocé que el mensaje sonó mal, explicá qué quisiste decir y proponé hablar.',
+      'Un compañero se ofendió por un mensaje tuyo. Escríbele un correo breve y con tacto: reconoce que el mensaje sonó mal, explica qué quisiste decir y propón hablar.',
     prompts: ['What did you write?', 'What did you actually mean?', 'What can you do now?'],
     requirements: [
       {
         id: 'mean',
-        label: 'Aclarás tu intención (I didn’t mean to…)',
+        label: 'Aclaras tu intención (I didn’t mean to…)',
         kind: 'pattern',
         patterns: [
           ["didn't|did", 'not|mean', 'mean|to'],
@@ -57,13 +57,13 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'actually',
-        label: 'Corregís la idea equivocada con actually',
+        label: 'Corriges la idea equivocada con actually',
         kind: 'pattern',
         patterns: [['actually']],
       },
       {
         id: 'apology',
-        label: 'Pedís disculpas (sorry, apologize)',
+        label: 'Pides disculpas (sorry, apologize)',
         kind: 'pattern',
         patterns: [['sorry|apologize']],
       },
@@ -85,7 +85,7 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'b2-u02-l05',
     title: 'Responder a una oferta con condiciones',
     instructions:
-      'Te ofrecieron un trabajo. Respondé con un correo formal: agradecé, poné una condición para aceptar (as long as, provided that) y decí qué pasa si no se cumple (otherwise).',
+      'Te ofrecieron un trabajo. Responde con un correo formal: agradece, pon una condición para aceptar (as long as, provided that) y di qué pasa si no se cumple (otherwise).',
     prompts: [
       'What do you like about the offer?',
       'What do you ask for?',
@@ -94,13 +94,13 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
     requirements: [
       {
         id: 'greeting',
-        label: 'Empezás con un saludo formal (Dear…)',
+        label: 'Empiezas con un saludo formal (Dear…)',
         kind: 'pattern',
         patterns: [['dear']],
       },
       {
         id: 'condition',
-        label: 'Ponés una condición con as long as o provided that',
+        label: 'Pones una condición con as long as o provided that',
         kind: 'pattern',
         patterns: [
           ['as', 'long', 'as'],
@@ -109,13 +109,13 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'otherwise',
-        label: 'Decís qué pasa si no se cumple (otherwise)',
+        label: 'Dices qué pasa si no se cumple (otherwise)',
         kind: 'pattern',
         patterns: [['otherwise']],
       },
       {
         id: 'closing',
-        label: 'Cerrás de forma formal (Kind regards, Best wishes…)',
+        label: 'Cierras de forma formal (Kind regards, Best wishes…)',
         kind: 'pattern',
         patterns: [['regards'], ['best', 'wishes'], ['yours', 'sincerely']],
       },
@@ -137,7 +137,7 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'b2-u03-l05',
     title: 'Un informe breve sobre tu ciudad',
     instructions:
-      'Escribí un informe breve para una revista sobre los cambios en tu ciudad o tu barrio: qué se hizo, qué se está haciendo y qué se espera. Usá la voz pasiva.',
+      'Escribe un informe breve para una revista sobre los cambios en tu ciudad o tu barrio: qué se hizo, qué se está haciendo y qué se espera. Usa la voz pasiva.',
     prompts: [
       'What has been built or changed?',
       'What is being done now?',
@@ -146,19 +146,19 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
     requirements: [
       {
         id: 'perfect-passive',
-        label: 'Contás algo que ya se hizo (has / have been + participio)',
+        label: 'Cuentas algo que ya se hizo (has / have been + participio)',
         kind: 'pattern',
         patterns: [['has|have', 'been', '<WORD>']],
       },
       {
         id: 'continuous-passive',
-        label: 'Contás algo que se está haciendo (is / are being + participio)',
+        label: 'Cuentas algo que se está haciendo (is / are being + participio)',
         kind: 'pattern',
         patterns: [['is|are', 'being', '<WORD>']],
       },
       {
         id: 'expected',
-        label: 'Decís lo que se espera o se dice (is expected to, it is said that…)',
+        label: 'Dices lo que se espera o se dice (is expected to, it is said that…)',
         kind: 'pattern',
         patterns: [
           ['expected', 'to'],
@@ -183,24 +183,24 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'b2-u04-l05',
     title: 'Tu opinión sobre una tecnología',
     instructions:
-      'Elegí una tecnología que usás todos los días (una app, la inteligencia artificial, el teléfono). Explicá qué es, por qué dependés de ella y qué te preocupa. Usá oraciones de relativo con comas.',
+      'Elige una tecnología que usas todos los días (una app, la inteligencia artificial, el teléfono). Explica qué es, por qué dependes de ella y qué te preocupa. Usa oraciones de relativo con comas.',
     prompts: ['What technology do you rely on?', 'Why is it useful?', 'What worries you about it?'],
     requirements: [
       {
         id: 'relative',
-        label: 'Agregás información entre comas con which o who',
+        label: 'Agregas información entre comas con which o who',
         kind: 'pattern',
         patterns: [['which|who|whose']],
       },
       {
         id: 'rely',
-        label: 'Decís de qué dependés (rely on)',
+        label: 'Dices de qué dependes (rely on)',
         kind: 'pattern',
         patterns: [['rely|relies', 'on']],
       },
       {
         id: 'worry',
-        label: 'Decís qué te preocupa (privacy, data, I worry about…)',
+        label: 'Dices qué te preocupa (privacy, data, I worry about…)',
         kind: 'pattern',
         patterns: [['privacy|data|worry|worried']],
       },
@@ -222,24 +222,24 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'b2-u05-l05',
     title: 'Un reclamo con una propuesta',
     instructions:
-      'Compraste algo caro que se rompió enseguida. Escribí un reclamo formal: contá qué pasó, compará con lo que esperabas y proponé una solución (que te lo arreglen o te lo cambien).',
+      'Compraste algo caro que se rompió enseguida. Escribe un reclamo formal: cuenta qué pasó, compara con lo que esperabas y propón una solución (que te lo arreglen o te lo cambien).',
     prompts: ['What did you buy?', 'What went wrong?', 'What would you like the shop to do?'],
     requirements: [
       {
         id: 'greeting',
-        label: 'Empezás con un saludo formal (Dear…)',
+        label: 'Empiezas con un saludo formal (Dear…)',
         kind: 'pattern',
         patterns: [['dear']],
       },
       {
         id: 'causative',
-        label: 'Pedís que te lo arreglen o cambien (have / get it repaired, replaced…)',
+        label: 'Pides que te lo arreglen o cambien (have / get it repaired, replaced…)',
         kind: 'pattern',
         patterns: [['have|get|had|got', 'it|them', '<WORD>']],
       },
       {
         id: 'comparison',
-        label: 'Comparás con matices (twice as, nowhere near as, by far…)',
+        label: 'Comparas con matices (twice as, nowhere near as, by far…)',
         kind: 'pattern',
         patterns: [
           ['twice', 'as'],
@@ -265,12 +265,12 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'b2-u06-l05',
     title: 'Hacer las paces',
     instructions:
-      'Te peleaste con un amigo. Escribile un mensaje: reconocé lo que deberías haber hecho distinto, mostrá que entendés cómo se sintió y proponé reconciliarse.',
+      'Te peleaste con un amigo. Escríbele un mensaje: reconoce lo que deberías haber hecho distinto, muestra que entiendes cómo se sintió y propón reconciliarse.',
     prompts: ['What happened?', 'What should you have done?', 'How might your friend have felt?'],
     requirements: [
       {
         id: 'should-have',
-        label: 'Reconocés tu error con should / shouldn’t have',
+        label: 'Reconoces tu error con should / shouldn’t have',
         kind: 'pattern',
         patterns: [
           ["should|shouldn't", 'have', '<WORD>'],
@@ -279,7 +279,7 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'deduction',
-        label: 'Deducís cómo se sintió con must / might have',
+        label: 'Deduces cómo se sintió con must / might have',
         kind: 'pattern',
         patterns: [
           ['must|might|could', 'have', '<WORD>'],
@@ -288,7 +288,7 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'make-up',
-        label: 'Proponés reconciliarse o verse (make up, coffee, meet…)',
+        label: 'Propones reconciliarse o verse (make up, coffee, meet…)',
         kind: 'pattern',
         patterns: [['make|made', 'up'], ['coffee|meet|talk']],
       },
@@ -310,24 +310,24 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'b2-u07-l05',
     title: 'Un artículo de opinión sobre el medioambiente',
     instructions:
-      'Escribí un artículo breve de opinión sobre un problema ambiental (las sequías, la contaminación, la energía). Presentá el problema, reconocé una dificultad y proponé una solución.',
+      'Escribe un artículo breve de opinión sobre un problema ambiental (las sequías, la contaminación, la energía). Presenta el problema, reconoce una dificultad y propón una solución.',
     prompts: ['What is the problem?', 'What makes it hard to tackle?', 'What should we do?'],
     requirements: [
       {
         id: 'concession',
-        label: 'Contrastás con despite, in spite of o even though',
+        label: 'Contrastas con despite, in spite of o even though',
         kind: 'pattern',
         patterns: [['despite'], ['in', 'spite', 'of'], ['even', 'though']],
       },
       {
         id: 'whereas',
-        label: 'Comparás dos ideas opuestas con whereas',
+        label: 'Comparas dos ideas opuestas con whereas',
         kind: 'pattern',
         patterns: [['whereas']],
       },
       {
         id: 'solution',
-        label: 'Proponés una solución (should, need to, tackle…)',
+        label: 'Propones una solución (should, need to, tackle…)',
         kind: 'pattern',
         patterns: [['should|tackle'], ['need', 'to']],
       },
@@ -350,24 +350,24 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'b2-u08-l05',
     title: 'Contar una noticia',
     instructions:
-      'Contá una noticia (real o inventada) como en un diario: qué se afirmó, quién lo negó o lo admitió y qué advirtió alguien. Usá verbos de reporte en lugar de say.',
+      'Cuenta una noticia (real o inventada) como en un diario: qué se afirmó, quién lo negó o lo admitió y qué advirtió alguien. Usa verbos de reporte en lugar de say.',
     prompts: ['What was the rumor?', 'Who denied or admitted something?', 'What did they warn?'],
     requirements: [
       {
         id: 'claim',
-        label: 'Contás lo que alguien afirmó (claimed, suggested)',
+        label: 'Cuentas lo que alguien afirmó (claimed, suggested)',
         kind: 'pattern',
         patterns: [['claimed|claims|suggested|suggests']],
       },
       {
         id: 'deny-admit',
-        label: 'Usás denied o admitted (+ -ing o that)',
+        label: 'Usas denied o admitted (+ -ing o that)',
         kind: 'pattern',
         patterns: [['denied|denies|admitted|admits']],
       },
       {
         id: 'warn',
-        label: 'Contás una advertencia o una negativa (warned… not to, refused to)',
+        label: 'Cuentas una advertencia o una negativa (warned… not to, refused to)',
         kind: 'pattern',
         patterns: [
           ['warned|warns', '<WORD>', 'not', 'to'],
@@ -392,7 +392,7 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'b2-u09-l05',
     title: 'Mirar atrás',
     instructions:
-      'Mirá hacia atrás en tu educación (el colegio, la facultad, un curso). Contá una decisión, imaginá qué habría pasado con otra elección y decí qué aprendiste.',
+      'Mira hacia atrás en tu educación (el colegio, la facultad, un curso). Cuenta una decisión, imagina qué habría pasado con otra elección y di qué aprendiste.',
     prompts: [
       'What decision do you look back on?',
       'What would have happened otherwise?',
@@ -401,7 +401,7 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
     requirements: [
       {
         id: 'third',
-        label: 'Usás el tercer condicional (If I had…, I would have…)',
+        label: 'Usas el tercer condicional (If I had…, I would have…)',
         kind: 'pattern',
         patterns: [
           ['would', 'have', '<WORD>'],
@@ -411,7 +411,7 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'if-had',
-        label: 'Empezás la condición con if + had',
+        label: 'Empiezas la condición con if + had',
         kind: 'pattern',
         patterns: [
           ['if', '<WORD>', "had|hadn’t|hadn't"],
@@ -420,7 +420,7 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'wish',
-        label: 'Lamentás algo con I wish o If only',
+        label: 'Lamentas algo con I wish o If only',
         kind: 'pattern',
         patterns: [['wish'], ['if', 'only']],
       },
@@ -442,7 +442,7 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'b2-u10-l05',
     title: 'Una argumentación',
     instructions:
-      'Elegí un tema (¿Hay que prohibir los teléfonos en el colegio? ¿Trabajar cuatro días por semana?). Defendé tu postura con dos razones, reconocé la postura contraria y cerrá con una conclusión.',
+      'Elige un tema (¿Hay que prohibir los teléfonos en el colegio? ¿Trabajar cuatro días por semana?). Defiende tu postura con dos razones, reconoce la postura contraria y cierra con una conclusión.',
     prompts: [
       'What is your position?',
       'What do people on the other side say?',
@@ -451,25 +451,25 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
     requirements: [
       {
         id: 'add',
-        label: 'Sumás una razón con moreover o furthermore',
+        label: 'Sumas una razón con moreover o furthermore',
         kind: 'pattern',
         patterns: [['moreover|furthermore']],
       },
       {
         id: 'concede',
-        label: 'Reconocés la otra postura (admittedly) y la rebatís (nevertheless, however)',
+        label: 'Reconoces la otra postura (admittedly) y la rebates (nevertheless, however)',
         kind: 'pattern',
         patterns: [['admittedly']],
       },
       {
         id: 'rebut',
-        label: 'Rebatís con nevertheless o however',
+        label: 'Rebates con nevertheless o however',
         kind: 'pattern',
         patterns: [['nevertheless|however']],
       },
       {
         id: 'conclude',
-        label: 'Concluís con to sum up o all things considered',
+        label: 'Concluyes con to sum up o all things considered',
         kind: 'pattern',
         patterns: [
           ['to', 'sum', 'up'],
@@ -494,7 +494,7 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'b2-u11-l05',
     title: 'El comienzo de un relato',
     instructions:
-      'Escribí el comienzo de un relato (real o inventado). Empezá con una oración con participio, agregá una inversión para crear tensión y usá al menos una expresión idiomática.',
+      'Escribe el comienzo de un relato (real o inventado). Empieza con una oración con participio, agrega una inversión para crear tensión y usa al menos una expresión idiomática.',
     prompts: [
       'Where does the story start?',
       'What happens out of the blue?',
@@ -503,13 +503,13 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
     requirements: [
       {
         id: 'participle',
-        label: 'Usás una oración con participio (Having…, Walking…)',
+        label: 'Usas una oración con participio (Having…, Walking…)',
         kind: 'pattern',
         patterns: [['having', '<WORD>'], ['walking|looking|sitting|standing|running']],
       },
       {
         id: 'inversion',
-        label: 'Usás una inversión (Never had…, Hardly had…, Little did…)',
+        label: 'Usas una inversión (Never had…, Hardly had…, Little did…)',
         kind: 'pattern',
         patterns: [
           ['never', 'had|have|has'],
@@ -520,7 +520,7 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'idiom',
-        label: 'Usás una expresión (out of the blue, burst into tears, break the ice…)',
+        label: 'Usas una expresión (out of the blue, burst into tears, break the ice…)',
         kind: 'pattern',
         patterns: [
           ['out', 'of', 'the', 'blue'],
@@ -550,7 +550,7 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'b2-u12-l05',
     title: 'Recomendar una opción',
     instructions:
-      'Un amigo tiene que elegir entre dos opciones (dos trabajos, dos ciudades, dos cursos). Escribile comparando las dos, con sus pros y contras, y recomendale una.',
+      'Un amigo tiene que elegir entre dos opciones (dos trabajos, dos ciudades, dos cursos). Escríbele comparando las dos, con sus pros y contras, y recomiéndale una.',
     prompts: [
       'What can your friend choose?',
       'What are the pros and cons?',
@@ -559,7 +559,7 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
     requirements: [
       {
         id: 'pros-cons',
-        label: 'Hablás de pros y contras o del costo a cambio (trade-off)',
+        label: 'Hablas de pros y contras o del costo a cambio (trade-off)',
         kind: 'pattern',
         patterns: [
           ['pros', 'and', 'cons'],
@@ -569,13 +569,13 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'contrast',
-        label: 'Comparás con whereas, however u on the other hand',
+        label: 'Comparas con whereas, however u on the other hand',
         kind: 'pattern',
         patterns: [['whereas|however'], ['on', 'the', 'other', 'hand']],
       },
       {
         id: 'recommend',
-        label: 'Recomendás una opción (I would…, I recommend, you should…)',
+        label: 'Recomiendas una opción (I would…, I recommend, you should…)',
         kind: 'pattern',
         patterns: [['recommend'], ['you', 'should'], ['if', 'i', 'were', 'you']],
       },
@@ -600,7 +600,7 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
     block: 1,
     title: 'Una propuesta para tu trabajo o tu estudio',
     instructions:
-      'Escribí una propuesta para mejorar algo en tu trabajo, tu facultad o tu barrio. Explicá la situación, tu idea, sus condiciones y por qué conviene.',
+      'Escribe una propuesta para mejorar algo en tu trabajo, tu facultad o tu barrio. Explica la situación, tu idea, sus condiciones y por qué conviene.',
     prompts: ['What is the problem now?', 'What is your proposal?', 'Why is it a good idea?'],
     requirements: [
       {
@@ -656,7 +656,7 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
     block: 2,
     title: 'Discrepar con diplomacia',
     instructions:
-      'Un colega publicó una opinión con la que no estás de acuerdo (por ejemplo, «Las redes sociales son la mejor fuente de noticias»). Respondele con respeto: reconocé lo que tiene de cierto y explicá por qué pensás distinto.',
+      'Un colega publicó una opinión con la que no estás de acuerdo (por ejemplo, «Las redes sociales son la mejor fuente de noticias»). Respóndele con respeto: reconoce lo que tiene de cierto y explica por qué piensas distinto.',
     prompts: ['What do you agree with?', 'Why do you see it differently?', 'What do you suggest?'],
     requirements: [
       {
@@ -709,7 +709,7 @@ export const EN_B2_WRITING_TASKS: readonly WritingTaskDef[] = [
     block: 3,
     title: 'Un artículo de opinión: ventajas y desventajas',
     instructions:
-      'Escribí un artículo de opinión sobre un tema que te interese (el trabajo remoto, la inteligencia artificial en la educación, la universidad gratuita). Presentá ventajas y desventajas, tu postura y una conclusión.',
+      'Escribe un artículo de opinión sobre un tema que te interese (el trabajo remoto, la inteligencia artificial en la educación, la universidad gratuita). Presenta ventajas y desventajas, tu postura y una conclusión.',
     prompts: [
       'What are the main advantages?',
       'What are the disadvantages?',

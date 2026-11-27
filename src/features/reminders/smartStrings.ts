@@ -11,10 +11,10 @@ export const smartStrings = defineStrings({
     streak: (days: number): [Msg, Msg] => [
       {
         title: `🔥 Tus ${days} días de racha dependen de hoy`,
-        body: 'Una lección corta y la seguís estirando.',
+        body: 'Una lección corta y la sigues alargando.',
       },
       {
-        title: `🔥 ${days} días seguidos. ¿Hoy cortás?`,
+        title: `🔥 ${days} días seguidos. ¿Hoy la cortas?`,
         body: 'Dos minutos alcanzan para mantenerla viva.',
       },
     ],
@@ -26,45 +26,45 @@ export const smartStrings = defineStrings({
             ? 'Te falta 1 para completar la misión de hoy.'
             : `Te faltan ${left} para completar la misión de hoy.`,
       },
-      { title: '🎯 ¡Estás a nada!', body: 'Terminá tu misión de hoy y sumá Polys.' },
+      { title: '🎯 ¡Estás a nada!', body: 'Termina tu misión de hoy y suma Polys.' },
     ],
     chest: (): [Msg, Msg] => [
       {
         title: '🎁 Tu cofre te está esperando',
-        body: 'Completaste las misiones: abrilo y mirá qué te tocó.',
+        body: 'Completaste las misiones: ábrelo y mira qué te tocó.',
       },
       { title: '🎁 Hay un cofre sin abrir', body: '¿Te toca el premio grande hoy?' },
     ],
     rank: (points: number, next: string): [Msg, Msg] => [
       { title: `⚔️ Estás a ${points} de ELO de ${next}`, body: '¿Una partida de 60 segundos?' },
       {
-        title: `⚔️ ${next} está ahí nomás`,
-        body: `Te faltan ${points} puntos. Una victoria y subís.`,
+        title: `⚔️ ${next} está muy cerca`,
+        body: `Te faltan ${points} puntos. Una victoria y subes.`,
       },
     ],
     lesson: (title: string, language: string): [Msg, Msg] => [
-      { title: '📚 Tu próxima lección', body: `Te espera «${title}». ¡Seguí con el ${language}!` },
-      { title: `📚 «${title}» está lista`, body: 'Cinco minutos y la terminás.' },
+      { title: '📚 Tu próxima lección', body: `Te espera «${title}». ¡Sigue con el ${language}!` },
+      { title: `📚 «${title}» está lista`, body: 'Cinco minutos y la terminas.' },
     ],
     word: (flag: string, word: string): [Msg, Msg] => [
       {
         title: `${flag} Palabra del día: ${word}`,
-        body: '¿Sabés qué significa? Entrá y descubrila.',
+        body: '¿Sabes qué significa? Entra y descúbrela.',
       },
       { title: `${flag} ¿Qué significa «${word}»?`, body: 'La palabra de hoy te está esperando.' },
     ],
     comeback: (language: string): [Msg, Msg] => [
       {
         title: '🦊 ¡Te extraño!',
-        body: `Tu ${language} te está esperando. Una lección y retomás.`,
+        body: `Tu ${language} te está esperando. Una lección y retomas.`,
       },
-      { title: '🦊 ¿Seguimos?', body: `Volvé al ${language} con una lección cortita.` },
+      { title: '🦊 ¿Seguimos?', body: `Vuelve al ${language} con una lección cortita.` },
     ],
     smartChannelName: 'Avisos personalizados',
     smartChannelDescription: 'Un aviso por día a tu hora de práctica, con lo que más te sirve.',
     smartToggle: 'Avisos inteligentes',
     smartHint:
-      'Un segundo aviso a la hora en que solés practicar, con lo que más te sirve ese día.',
+      'Un segundo aviso a la hora en que sueles practicar, con lo que más te sirve ese día.',
   },
   en: {
     streak: (days: number): [Msg, Msg] => [
@@ -112,5 +112,139 @@ export const smartStrings = defineStrings({
     smartToggle: 'Smart reminders',
     smartHint:
       'A second reminder at the time you usually practice, with what helps you most that day.',
+  },
+  'pt-BR': {
+    streak: (days: number): [Msg, Msg] => [
+      {
+        title: `🔥 Seus ${days} dias de sequência dependem de hoje`,
+        body: 'Uma lição rápida e ela continua crescendo.',
+      },
+      {
+        title: `🔥 ${days} dias seguidos. Vai parar hoje?`,
+        body: 'Dois minutinhos bastam para mantê-la viva.',
+      },
+    ],
+    mission: (left: number): [Msg, Msg] => [
+      {
+        title: '🎯 Missão quase completa',
+        body:
+          left === 1
+            ? 'Falta 1 para completar a missão de hoje.'
+            : `Faltam ${left} para completar a missão de hoje.`,
+      },
+      { title: '🎯 Falta pouquinho!', body: 'Termine sua missão de hoje e ganhe Polys.' },
+    ],
+    chest: (): [Msg, Msg] => [
+      {
+        title: '🎁 Seu baú está esperando',
+        body: 'Você completou as missões: abra e veja o que ganhou.',
+      },
+      { title: '🎁 Tem um baú fechado', body: 'Será que hoje sai o prêmio grande?' },
+    ],
+    rank: (points: number, next: string): [Msg, Msg] => [
+      {
+        title: `⚔️ ${points === 1 ? 'Falta' : 'Faltam'} ${points} ELO para ${next}`,
+        body: 'Uma partida de 60 segundos?',
+      },
+      {
+        title: `⚔️ ${next} está logo ali`,
+        body: `${points === 1 ? 'Falta 1 ponto' : `Faltam ${points} pontos`}. Uma vitória e você sobe.`,
+      },
+    ],
+    lesson: (title: string, language: string): [Msg, Msg] => [
+      {
+        title: '📚 Sua próxima lição',
+        body: `«${title}» está te esperando. Continue com o ${language}!`,
+      },
+      { title: `📚 «${title}» está pronta`, body: 'Cinco minutos e você termina.' },
+    ],
+    word: (flag: string, word: string): [Msg, Msg] => [
+      {
+        title: `${flag} Palavra do dia: ${word}`,
+        body: 'Você sabe o que significa? Entre e descubra.',
+      },
+      { title: `${flag} O que significa «${word}»?`, body: 'A palavra de hoje está te esperando.' },
+    ],
+    comeback: (language: string): [Msg, Msg] => [
+      {
+        title: '🦊 Que saudade!',
+        body: `Seu ${language} está te esperando. Uma lição e você retoma.`,
+      },
+      { title: '🦊 Vamos continuar?', body: `Volte ao ${language} com uma lição rapidinha.` },
+    ],
+    smartChannelName: 'Avisos personalizados',
+    smartChannelDescription: 'Um aviso por dia no seu horário de prática, com o que mais te ajuda.',
+    smartToggle: 'Avisos inteligentes',
+    smartHint:
+      'Um segundo aviso no horário em que você costuma praticar, com o que mais te ajuda naquele dia.',
+  },
+  it: {
+    streak: (days: number): [Msg, Msg] => [
+      {
+        title: `🔥 La tua serie di ${days} giorni dipende da oggi`,
+        body: 'Una lezione breve e continui ad allungarla.',
+      },
+      {
+        title: `🔥 ${days} giorni di fila. Oggi ti fermi?`,
+        body: 'Bastano due minuti per tenerla viva.',
+      },
+    ],
+    mission: (left: number): [Msg, Msg] => [
+      {
+        title: '🎯 Missione quasi completata',
+        body:
+          left === 1
+            ? 'Ti manca 1 per completare la missione di oggi.'
+            : `Ti mancano ${left} per completare la missione di oggi.`,
+      },
+      { title: '🎯 Ci sei quasi!', body: 'Finisci la missione di oggi e guadagna Polys.' },
+    ],
+    chest: (): [Msg, Msg] => [
+      {
+        title: '🎁 Il tuo forziere ti aspetta',
+        body: 'Hai completato le missioni: aprilo e scopri cosa hai vinto.',
+      },
+      { title: '🎁 C’è un forziere da aprire', body: 'Oggi tocca a te il premio grosso?' },
+    ],
+    rank: (points: number, next: string): [Msg, Msg] => [
+      {
+        title: `⚔️ ${points === 1 ? 'Ti manca' : 'Ti mancano'} ${points} ELO per ${next}`,
+        body: 'Una partita da 60 secondi?',
+      },
+      {
+        title: `⚔️ ${next} è a un passo`,
+        body: `${points === 1 ? 'Ti manca 1 punto' : `Ti mancano ${points} punti`}. Una vittoria e sali.`,
+      },
+    ],
+    lesson: (title: string, language: string): [Msg, Msg] => [
+      {
+        title: '📚 La tua prossima lezione',
+        body: `Ti aspetta «${title}». Continua a studiare ${language}!`,
+      },
+      { title: `📚 «${title}» è pronta`, body: 'Cinque minuti e l’hai finita.' },
+    ],
+    word: (flag: string, word: string): [Msg, Msg] => [
+      {
+        title: `${flag} Parola del giorno: ${word}`,
+        body: 'Sai cosa significa? Entra e scoprilo.',
+      },
+      { title: `${flag} Cosa significa «${word}»?`, body: 'La parola di oggi ti aspetta.' },
+    ],
+    comeback: (language: string): [Msg, Msg] => [
+      {
+        title: '🦊 Mi manchi!',
+        body: `Il tuo ${language} ti aspetta. Una lezione e riparti.`,
+      },
+      {
+        title: '🦊 Continuiamo?',
+        body: `Torna a studiare ${language} con una lezione veloce.`,
+      },
+    ],
+    smartChannelName: 'Avvisi personalizzati',
+    smartChannelDescription:
+      'Un avviso al giorno all’ora in cui fai pratica, con ciò che ti serve di più.',
+    smartToggle: 'Avvisi intelligenti',
+    smartHint:
+      'Un secondo avviso all’ora in cui di solito fai pratica, con ciò che ti serve di più quel giorno.',
   },
 });

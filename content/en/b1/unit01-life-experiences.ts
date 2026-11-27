@@ -81,11 +81,11 @@ export const EN_B1_U01: B1UnitDef = {
       'Contar experiencias con el present perfect y decir cuándo pasaron con el past simple; logros y recuerdos.',
     emoji: '🌍',
     objective:
-      'Podés contar experiencias de tu vida, decir si alguna vez hiciste algo y explicar cuándo y cómo pasó.',
+      'Puedes contar experiencias de tu vida, decir si alguna vez hiciste algo y explicar cuándo y cómo pasó.',
     grammar: {
       title: 'Present perfect y past simple',
       explanation:
-        'El present perfect (have/has + participio) cuenta una experiencia sin decir cuándo: I have climbed a mountain. Si decís cuándo (last year, in 2020, two years ago), usás el past simple: I climbed it last year.',
+        'El present perfect (have/has + participio) cuenta una experiencia sin decir cuándo: I have climbed a mountain. Si dices cuándo (last year, in 2020, two years ago), usas el past simple: I climbed it last year.',
       examples: [
         { target: 'I have been to Brazil.', base: 'Estuve en Brasil (alguna vez).' },
         { target: 'I went there last year.', base: 'Fui el año pasado.' },
@@ -190,7 +190,7 @@ export const EN_B1_U01: B1UnitDef = {
         '/praʊd/',
         undefined,
         'I am very proud of you.',
-        'Estoy muy orgulloso de vos.',
+        'Estoy muy orgulloso de ti.',
         ['experiences', 'feelings'],
         ['orgulloso', 'orgullosa'],
       ),
@@ -238,13 +238,13 @@ export const EN_B1_U01: B1UnitDef = {
       w(
         'en-graduate',
         'graduate',
-        'recibirse / graduarse',
+        'graduarse',
         '/ˈɡrædʒueɪt/',
         '🎓',
         'She wants to graduate next year.',
-        'Quiere recibirse el año que viene.',
+        'Quiere graduarse el año que viene.',
         ['experiences', 'studies'],
-        ['recibirse', 'graduarse'],
+        ['recibirse', 'recibirse / graduarse'],
       ),
       w(
         'en-achievement',
@@ -296,8 +296,8 @@ export const EN_B1_U01: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Preguntás por experiencias: Have you ever…?',
-          'Usás participios irregulares: written, spoken, taken, given.',
+          'Preguntas por experiencias: Have you ever…?',
+          'Usas participios irregulares: written, spoken, taken, given.',
         ],
         exercises: [
           ex.matchPairs(
@@ -380,7 +380,7 @@ export const EN_B1_U01: B1UnitDef = {
       {
         title: 'Been y gone',
         objective:
-          'Distinguir been to (fue y volvió) de gone to (se fue y sigue allá); contar lo que llevás hecho.',
+          'Distinguir been to (fue y volvió) de gone to (se fue y sigue allá); contar lo que llevas hecho.',
         intro: {
           explanation:
             'Been to dice que alguien fue a un lugar y ya volvió: I have been to Spain. Gone to dice que se fue y todavía está allá: She has gone to the bank (no está). So far (hasta ahora) suma lo hecho hasta hoy.',
@@ -390,8 +390,8 @@ export const EN_B1_U01: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Diferenciás been to (ya volvió) de gone to (sigue allá).',
-          'Contás lo que hiciste hasta ahora con so far.',
+          'Diferencias been to (ya volvió) de gone to (sigue allá).',
+          'Cuentas lo que hiciste hasta ahora con so far.',
         ],
         exercises: [
           ex.translationChoice(
@@ -503,8 +503,8 @@ export const EN_B1_U01: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Pasás del present perfect al past simple para dar detalles.',
-          'Contás la primera vez que hiciste algo: It was the first time…',
+          'Pasas del present perfect al past simple para dar detalles.',
+          'Cuentas la primera vez que hiciste algo: It was the first time…',
         ],
         exercises: [
           ex.fillBlank(
@@ -599,7 +599,7 @@ export const EN_B1_U01: B1UnitDef = {
         objective: 'Contar logros y momentos importantes de la vida.',
         intro: {
           explanation:
-            'Para contar logros: I have graduated, I have won a prize. Para decir cómo te sentís: I am proud of… (estoy orgulloso de…). Win es irregular: won (pasado y participio).',
+            'Para contar logros: I have graduated, I have won a prize. Para decir cómo te sientes: I am proud of… (estoy orgulloso de…). Win es irregular: won (pasado y participio).',
           examples: [
             { target: 'I have won a prize.', base: 'Gané un premio.' },
             {
@@ -609,8 +609,8 @@ export const EN_B1_U01: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Contás logros: I have graduated, I have won a prize.',
-          'Decís de qué estás orgulloso: I am proud of…',
+          'Cuentas logros: I have graduated, I have won a prize.',
+          'Dices de qué estás orgulloso: I am proud of…',
         ],
         exercises: [
           ex.matchPairs(
@@ -618,7 +618,7 @@ export const EN_B1_U01: B1UnitDef = {
               ['prize', 'premio'],
               ['proud', 'orgulloso / orgullosa'],
               ['achievement', 'logro'],
-              ['graduate', 'recibirse / graduarse'],
+              ['graduate', 'graduarse'],
             ],
             ['en-prize', 'en-proud', 'en-achievement', 'en-graduate'],
             { id: 'en.ex.i0sj975q5s1whq' },
@@ -686,15 +686,10 @@ export const EN_B1_U01: B1UnitDef = {
               ],
             },
           ),
-          ex.translateWrite(
-            'Estoy muy orgullosa de vos.',
-            'I am very proud of you.',
-            ['en-proud'],
-            {
-              id: 'en.ex.fdo7j9q4xj0ork',
-              acceptedAnswers: ["I'm very proud of you."],
-            },
-          ),
+          ex.translateWrite('Estoy muy orgullosa de ti.', 'I am very proud of you.', ['en-proud'], {
+            id: 'en.ex.fdo7j9q4xj0ork',
+            acceptedAnswers: ["I'm very proud of you."],
+          }),
         ],
       },
 
@@ -704,18 +699,18 @@ export const EN_B1_U01: B1UnitDef = {
         objective: 'Contar una experiencia importante: qué pasó, cuándo y cómo te sentiste.',
         intro: {
           explanation:
-            'Para contar un recuerdo: presentalo con el present perfect o con una frase como My best memory is…, y contá los detalles en past simple. Unforgettable (inolvidable) y adventure (aventura) ayudan a describirlo.',
+            'Para contar un recuerdo: preséntalo con el present perfect o con una frase como My best memory is…, y cuenta los detalles en past simple. Unforgettable (inolvidable) y adventure (aventura) ayudan a describirlo.',
           examples: [
             {
               target: 'My best memory is the day I graduated.',
-              base: 'Mi mejor recuerdo es el día que me recibí.',
+              base: 'Mi mejor recuerdo es el día que me gradué.',
             },
             { target: 'It was an unforgettable adventure.', base: 'Fue una aventura inolvidable.' },
           ],
         },
         takeaways: [
-          'Contás un recuerdo con detalles en past simple.',
-          'Lo describís: unforgettable, an adventure.',
+          'Cuentas un recuerdo con detalles en past simple.',
+          'Lo describes: unforgettable, an adventure.',
         ],
         exercises: [
           ex.translationChoice(
@@ -730,7 +725,7 @@ export const EN_B1_U01: B1UnitDef = {
             MEMORY,
             '¿Cuál es el mejor recuerdo de Mia?',
             'El día que conoció a su cantante favorita',
-            ['Su primer viaje a Londres', 'El día que se recibió', 'Un premio que ganó'],
+            ['Su primer viaje a Londres', 'El día que se graduó', 'Un premio que ganó'],
             ['en-memory', 'en-met'],
             'Mia dice: «The day I met my favorite singer».',
           ),
@@ -780,7 +775,7 @@ export const EN_B1_U01: B1UnitDef = {
             },
           ),
           ex.shortAnswer(
-            "What's your best memory? (el día que te recibiste)",
+            "What's your best memory? (el día que te graduaste)",
             '¿Cuál es tu mejor recuerdo?',
             'The day I graduated.',
             [

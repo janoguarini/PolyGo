@@ -84,11 +84,11 @@ export const EN_B1_U05: B1UnitDef = {
       'Obligaciones y permisos (have to, must, allowed to), exámenes y materias, avisos de trabajo, el CV y una entrevista.',
     emoji: '💼',
     objective:
-      'Podés hablar de obligaciones y normas en el trabajo o el estudio, entender un aviso de trabajo y responder en una entrevista.',
+      'Puedes hablar de obligaciones y normas en el trabajo o el estudio, entender un aviso de trabajo y responder en una entrevista.',
     grammar: {
       title: 'Obligación y permiso',
       explanation:
-        "Have to y must: obligación (must, sobre todo en normas escritas). Don't have to: no hace falta (no es obligatorio). Mustn't y not allowed to: está prohibido. Allowed to: tenés permiso.",
+        "Have to y must: obligación (must, sobre todo en normas escritas). Don't have to: no hace falta (no es obligatorio). Mustn't y not allowed to: está prohibido. Allowed to: tienes permiso.",
       examples: [
         {
           target: 'I have to wear a uniform at work.',
@@ -127,7 +127,7 @@ export const EN_B1_U05: B1UnitDef = {
         '/əˈlaʊd tu/',
         undefined,
         'Are we allowed to eat here?',
-        '¿Podemos comer acá?',
+        '¿Podemos comer aquí?',
         ['work', 'modals'],
         ['tener permiso', 'permitido'],
       ),
@@ -138,7 +138,7 @@ export const EN_B1_U05: B1UnitDef = {
         '/ˌsiː ˈviː/',
         '📄',
         'Send us your CV.',
-        'Mandanos tu currículum.',
+        'Mándanos tu currículum.',
         ['work'],
         ['currículum vitae', 'CV'],
       ),
@@ -215,7 +215,7 @@ export const EN_B1_U05: B1UnitDef = {
         '/ˈfɪl ˈɪn/',
         '📝',
         'Please fill in this form.',
-        'Por favor, completá este formulario.',
+        'Por favor, completa este formulario.',
         ['work', 'phrasal-verbs'],
         ['completar', 'rellenar'],
       ),
@@ -237,7 +237,7 @@ export const EN_B1_U05: B1UnitDef = {
         '/rɪˈspɑnsəbəl fɔr/',
         undefined,
         'He is responsible for the money.',
-        'Está a cargo de la plata.',
+        'Está a cargo de el dinero.',
         ['work'],
         ['a cargo de', 'responsable de', 'encargado de'],
       ),
@@ -315,8 +315,8 @@ export const EN_B1_U05: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Contás tus obligaciones con have to y must.',
-          "Decís que algo no hace falta con don't have to.",
+          'Cuentas tus obligaciones con have to y must.',
+          "Dices que algo no hace falta con don't have to.",
         ],
         exercises: [
           ex.fillBlank(
@@ -377,7 +377,7 @@ export const EN_B1_U05: B1UnitDef = {
           ),
           ex.shortAnswer(
             'Do you have to work on Saturdays? (no, no hace falta)',
-            '¿Tenés que trabajar los sábados?',
+            '¿Tienes que trabajar los sábados?',
             "No, I don't have to.",
             ["No, I don't.", 'No.', "No, I don't have to work on Saturdays."],
             ['en-dont-have-to', 'en-saturday'],
@@ -403,7 +403,7 @@ export const EN_B1_U05: B1UnitDef = {
           explanation:
             "En normas escritas se usa must (obligación) y mustn't (prohibición). Para hablar de permisos: be allowed to (I am allowed to…, We aren't allowed to…). Are we allowed to…? pregunta si algo está permitido.",
           examples: [
-            { target: 'You must wash your cup.', base: 'Tenés que lavar tu taza.' },
+            { target: 'You must wash your cup.', base: 'Tienes que lavar tu taza.' },
             {
               target: 'We are not allowed to use our phones in class.',
               base: 'No nos dejan usar el teléfono en clase.',
@@ -411,8 +411,8 @@ export const EN_B1_U05: B1UnitDef = {
           ],
         },
         takeaways: [
-          "Entendés normas con must y mustn't.",
-          'Preguntás qué está permitido: Are we allowed to…?',
+          "Entiendes normas con must y mustn't.",
+          'Preguntas qué está permitido: Are we allowed to…?',
         ],
         exercises: [
           ex.fillBlank(
@@ -425,7 +425,7 @@ export const EN_B1_U05: B1UnitDef = {
           ),
           ex.fillBlank(
             'You ___ use your phone in the exam. It is not allowed.',
-            'No podés usar el teléfono en el examen. No está permitido.',
+            'No puedes usar el teléfono en el examen. No está permitido.',
             "mustn't",
             ["don't have to", 'must', 'should'],
             ['en-mustnt', 'en-exam'],
@@ -446,7 +446,7 @@ export const EN_B1_U05: B1UnitDef = {
             'en.ex.xk8ecjoxr78r65',
             RULES,
             '¿Qué no se puede hacer los viernes?',
-            'Dejar comida en la heladera',
+            'Dejar comida en el refrigerador',
             ['Tomar café', 'Usar la cocina', 'Lavar las tazas'],
             ['en-allowed-to', 'en-friday'],
             'El cartel dice: «You are not allowed to leave food in the fridge on Fridays».',
@@ -478,7 +478,7 @@ export const EN_B1_U05: B1UnitDef = {
           ),
           ex.shortAnswer(
             'Are you allowed to use your phone at work? (no, no está permitido)',
-            '¿Podés usar el teléfono en el trabajo?',
+            '¿Puedes usar el teléfono en el trabajo?',
             "No, I'm not allowed to.",
             ["No, I'm not.", 'No, I am not allowed to.', "No, we aren't allowed to."],
             ['en-allowed-to', 'en-phone'],
@@ -512,7 +512,7 @@ export const EN_B1_U05: B1UnitDef = {
             { target: 'My favorite subject is history.', base: 'Mi materia favorita es historia.' },
           ],
         },
-        takeaways: ['Hablás de exámenes y materias.', 'Contás si aprobaste o desaprobaste.'],
+        takeaways: ['Hablas de exámenes y materias.', 'Cuentas si aprobaste o desaprobaste.'],
         exercises: [
           ex.matchPairs(
             [
@@ -604,7 +604,7 @@ export const EN_B1_U05: B1UnitDef = {
           examples: [
             {
               target: 'Fill in the form and send your CV.',
-              base: 'Completá el formulario y mandá tu currículum.',
+              base: 'Completa el formulario y manda tu currículum.',
             },
             {
               target: 'They are hiring part-time employees.',
@@ -613,8 +613,8 @@ export const EN_B1_U05: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Entendés un aviso de trabajo.',
-          'Explicás cómo postularse: fill in, send your CV, before the deadline.',
+          'Entiendes un aviso de trabajo.',
+          'Explicas cómo postularse: fill in, send your CV, before the deadline.',
         ],
         exercises: [
           ex.matchPairs(
@@ -632,7 +632,7 @@ export const EN_B1_U05: B1UnitDef = {
           }),
           ex.fillBlank(
             'Please ___ in this form.',
-            'Por favor, completá este formulario.',
+            'Por favor, completa este formulario.',
             'fill',
             ['find', 'make', 'take'],
             ['en-fill-in'],
@@ -651,7 +651,7 @@ export const EN_B1_U05: B1UnitDef = {
             JOB_AD,
             '¿Qué trabajo ofrece el aviso?',
             'Recepcionista de hotel los fines de semana',
-            ['Recepcionista de tiempo completo', 'Mozo en un restaurante', 'Profesor de inglés'],
+            ['Recepcionista de tiempo completo', 'Mesero en un restaurante', 'Profesor de inglés'],
             ['en-part-time', 'en-hire'],
             'El aviso dice: «Hotel receptionist – part-time… for weekends».',
           ),
@@ -702,10 +702,10 @@ export const EN_B1_U05: B1UnitDef = {
       {
         title: 'La entrevista',
         objective:
-          'Responder en una entrevista: tu experiencia, tus tareas y por qué querés el puesto.',
+          'Responder en una entrevista: tu experiencia, tus tareas y por qué quieres el puesto.',
         intro: {
           explanation:
-            'En una entrevista contás tu experiencia (I worked in… for three years), tus tareas (I was responsible for…) y qué buscás (a full-time job). Make a decision es tomar una decisión.',
+            'En una entrevista cuentas tu experiencia (I worked in… for three years), tus tareas (I was responsible for…) y qué buscas (a full-time job). Make a decision es tomar una decisión.',
           examples: [
             { target: 'I was responsible for the orders.', base: 'Estaba a cargo de los pedidos.' },
             {
@@ -715,8 +715,8 @@ export const EN_B1_U05: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Contás tu experiencia y tus tareas en una entrevista.',
-          "Entendés qué va a pasar después: We'll make a decision…",
+          'Cuentas tu experiencia y tus tareas en una entrevista.',
+          "Entiendes qué va a pasar después: We'll make a decision…",
         ],
         exercises: [
           ex.translationChoice(
@@ -730,7 +730,7 @@ export const EN_B1_U05: B1UnitDef = {
             'en.ex.8vftyuzb9r3u10',
             INTERVIEW,
             '¿De qué estaba a cargo Sofía en su último trabajo?',
-            'De la plata y los pedidos',
+            'De el dinero y los pedidos',
             ['De los empleados', 'De la limpieza', 'De las entrevistas'],
             ['en-responsible-for'],
             'Sofía dice: «I was responsible for the money and the orders».',
@@ -746,7 +746,7 @@ export const EN_B1_U05: B1UnitDef = {
           ),
           ex.fillBlank(
             'He is ___ for the money.',
-            'Está a cargo de la plata.',
+            'Está a cargo de el dinero.',
             'responsible',
             ['allowed', 'interested', 'proud'],
             ['en-responsible-for', 'en-money'],
@@ -782,7 +782,7 @@ export const EN_B1_U05: B1UnitDef = {
           ),
           ex.shortAnswer(
             'Tell me about your last job. (trabajaste en un negocio tres años)',
-            'Contame sobre tu último trabajo.',
+            'Cuéntame sobre tu último trabajo.',
             'I worked in a shop for three years.',
             [
               'I worked in a store for three years.',

@@ -197,15 +197,15 @@ export function unlockHint(item: CosmeticItem): string {
     case 'free':
       return 'Disponible para todos.';
     case 'polys':
-      return `Desbloquealo por ${item.price} Polys.`;
+      return `Desbloquéalo por ${item.price} Polys.`;
     case 'plus':
       return 'Disponible para suscriptores PolyGo Plus.';
     case 'referral': {
       const n = REFERRAL_ITEM_MILESTONE[item.id as CosmeticId] ?? 10;
-      return `Conseguí ${n} amigos válidos para desbloquearlo.`;
+      return `Consigue ${n} amigos válidos para desbloquearlo.`;
     }
     case 'rank':
-      return 'Ganá una partida ranked para estrenar tu marco de rango.';
+      return 'Gana una partida ranked para estrenar tu marco de rango.';
     case 'event':
       return 'Se gana en un evento por tiempo limitado.';
     case 'season':

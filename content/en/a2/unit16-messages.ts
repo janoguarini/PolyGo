@@ -89,7 +89,7 @@ export const EN_A2_U16: ExpansionUnitDef = {
       'Mensajes y correos, pedir algo con Could you…?, hablar por teléfono y reservar un hotel.',
     emoji: '✉️',
     objective:
-      'Podés escribir y entender mensajes y correos cortos, hablar por teléfono y reservar un hotel.',
+      'Puedes escribir y entender mensajes y correos cortos, hablar por teléfono y reservar un hotel.',
     grammar: {
       title: 'Correos y pedidos',
       explanation:
@@ -142,13 +142,13 @@ export const EN_A2_U16: ExpansionUnitDef = {
       w(
         'en-take-care',
         'take care',
-        'cuidate',
+        'cuídate',
         '/ˈteɪk ˈkɛr/',
         '👋',
         'Take care, Ana!',
-        '¡Cuidate, Ana!',
+        '¡Cuídate, Ana!',
         ['messages'],
-        ['cuídate', 'cuídese'],
+        ['cuídate', 'cuídese', 'cuidate'],
       ),
       w(
         'en-best-wishes',
@@ -168,7 +168,7 @@ export const EN_A2_U16: ExpansionUnitDef = {
         '/rɪˈplaɪ/',
         undefined,
         'Please reply soon.',
-        'Por favor, respondé pronto.',
+        'Por favor, responde pronto.',
         ['messages', 'verbs'],
         ['responder', 'contestar'],
       ),
@@ -190,7 +190,7 @@ export const EN_A2_U16: ExpansionUnitDef = {
         '/ˈkɔl ˈbæk/',
         undefined,
         'Can you call me back?',
-        '¿Me podés devolver la llamada?',
+        '¿Me puedes devolver la llamada?',
         ['phone'],
         ['volver a llamar'],
       ),
@@ -213,7 +213,7 @@ export const EN_A2_U16: ExpansionUnitDef = {
         'Hold on, please.',
         'Un momento, por favor.',
         ['phone'],
-        ['un momento', 'espere', 'esperá'],
+        ['un momento', 'espere', 'espera', 'esperá'],
       ),
       w(
         'en-could-you',
@@ -286,15 +286,15 @@ export const EN_A2_U16: ExpansionUnitDef = {
         objective: 'Escribir y entender mensajes cortos entre amigos.',
         intro: {
           explanation:
-            'Un mensaje informal empieza con Hi y el nombre, y termina con See you soon! (¡hasta pronto!) o Take care! (¡cuidate!). Para agradecer: Thanks for… (gracias por…).',
+            'Un mensaje informal empieza con Hi y el nombre, y termina con See you soon! (¡hasta pronto!) o Take care! (¡cuídate!). Para agradecer: Thanks for… (gracias por…).',
           examples: [
             { target: 'Thanks for your message!', base: '¡Gracias por tu mensaje!' },
             { target: 'See you soon!', base: '¡Hasta pronto!' },
           ],
         },
         takeaways: [
-          'Escribís y entendés mensajes cortos entre amigos.',
-          'Agradecés con Thanks for… y te despedís con See you soon o Take care.',
+          'Escribes y entiendes mensajes cortos entre amigos.',
+          'Agradeces con Thanks for… y te despides con See you soon o Take care.',
         ],
         exercises: [
           ex.translationChoice(
@@ -309,7 +309,7 @@ export const EN_A2_U16: ExpansionUnitDef = {
               ['message', 'mensaje'],
               ['reply', 'responder (un mensaje)'],
               ['send', 'enviar / mandar'],
-              ['take care', 'cuidate'],
+              ['take care', 'cuídate'],
             ],
             ['en-message', 'en-reply', 'en-send', 'en-take-care'],
             { id: 'en.ex.fr0q2y2g56gbgb' },
@@ -371,7 +371,7 @@ export const EN_A2_U16: ExpansionUnitDef = {
             },
           ),
           ex.translateWrite(
-            '¡Cuidate! Hasta pronto.',
+            '¡Cuídate! Hasta pronto.',
             'Take care! See you soon.',
             ['en-take-care', 'en-soon'],
             {
@@ -397,8 +397,8 @@ export const EN_A2_U16: ExpansionUnitDef = {
           ],
         },
         takeaways: [
-          'Empezás un correo con Dear… y lo terminás con Best wishes.',
-          'Pedís algo con cortesía: Could you…?',
+          'Empiezas un correo con Dear… y lo terminas con Best wishes.',
+          'Pides algo con cortesía: Could you…?',
         ],
         exercises: [
           ex.fillBlank(
@@ -485,15 +485,15 @@ export const EN_A2_U16: ExpansionUnitDef = {
         objective: 'Pedir hablar con alguien y dejar un mensaje.',
         intro: {
           explanation:
-            'Al teléfono: Can I speak to…? (¿puedo hablar con…?). Si la persona no está, podés dejar un mensaje (leave a message) o pedir que te devuelva la llamada (call me back). Hold on, please = un momento, por favor.',
+            'Al teléfono: Can I speak to…? (¿puedo hablar con…?). Si la persona no está, puedes dejar un mensaje (leave a message) o pedir que te devuelva la llamada (call me back). Hold on, please = un momento, por favor.',
           examples: [
             { target: 'Can I speak to Emma, please?', base: '¿Puedo hablar con Emma, por favor?' },
             { target: 'Hold on, please.', base: 'Un momento, por favor.' },
           ],
         },
         takeaways: [
-          'Pedís hablar con alguien y dejás un mensaje.',
-          'Entendés Hold on y pedís que te llamen: call me back.',
+          'Pides hablar con alguien y dejas un mensaje.',
+          'Entiendes Hold on y pides que te llamen: call me back.',
         ],
         exercises: [
           ex.translationChoice(
@@ -505,7 +505,7 @@ export const EN_A2_U16: ExpansionUnitDef = {
           ),
           ex.fillBlank(
             'Can you call me ___ later?',
-            '¿Me podés devolver la llamada más tarde?',
+            '¿Me puedes devolver la llamada más tarde?',
             'back',
             ['up', 'on', 'in'],
             ['en-call-back', 'en-later'],
@@ -513,7 +513,7 @@ export const EN_A2_U16: ExpansionUnitDef = {
           ),
           ex.fillBlank(
             "She isn't here. Would you like to ___ a message?",
-            'No está. ¿Querés dejarle un mensaje?',
+            'No está. ¿Quieres dejarle un mensaje?',
             'leave',
             ['send', 'make', 'have'],
             ['en-leave-a-message'],
@@ -553,7 +553,7 @@ export const EN_A2_U16: ExpansionUnitDef = {
           ),
           ex.shortAnswer(
             "Emma isn't here. Would you like to leave a message? (sí: que te llame)",
-            'Emma no está. ¿Querés dejarle un mensaje?',
+            'Emma no está. ¿Quieres dejarle un mensaje?',
             'Yes, could she call me back, please?',
             [
               'Yes, please. Could she call me back?',
@@ -587,8 +587,8 @@ export const EN_A2_U16: ExpansionUnitDef = {
           ],
         },
         takeaways: [
-          'Reservás una habitación de hotel.',
-          'Entendés el check in, el check out y la recepción.',
+          'Reservas una habitación de hotel.',
+          'Entiendes el check in, el check out y la recepción.',
         ],
         exercises: [
           ex.matchPairs(
@@ -687,15 +687,15 @@ export const EN_A2_U16: ExpansionUnitDef = {
         objective: 'Entender un correo y responderlo.',
         intro: {
           explanation:
-            'Para responder un correo: agradecé (Thanks for your email), contestá lo que te preguntan y despedite (Best wishes / See you soon). Si te piden algo, decí qué vas a hacer con will: I’ll send you the photos tonight.',
+            'Para responder un correo: agradece (Thanks for your email), contesta lo que te preguntan y despídete (Best wishes / See you soon). Si te piden algo, di qué vas a hacer con will: I’ll send you the photos tonight.',
           examples: [
             { target: 'Thanks for your email.', base: 'Gracias por tu correo.' },
             { target: "I'll send you the photos tonight.", base: 'Esta noche te mando las fotos.' },
           ],
         },
         takeaways: [
-          'Respondés un correo: agradecés, contestás y te despedís.',
-          'Decís qué vas a hacer con will: I’ll send…',
+          'Respondes un correo: agradeces, contestas y te despides.',
+          'Dices qué vas a hacer con will: I’ll send…',
         ],
         exercises: [
           question(

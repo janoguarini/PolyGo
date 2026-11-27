@@ -83,7 +83,7 @@ export const IT_A2_U04: ItUnitDef = {
       'Contar cómo era tu vida de chico con el imperfetto: dónde vivías, qué hacías, qué había y qué te gustaba.',
     emoji: '🧸',
     objective:
-      'Podés contar cómo eras de chico o chica, dónde vivías, qué hacías por lo general y qué había en tu barrio o tu pueblo, y entender los recuerdos de otra persona.',
+      'Puedes contar cómo eras de chico o chica, dónde vivías, qué hacías por lo general y qué había en tu barrio o tu pueblo, y entender los recuerdos de otra persona.',
     grammar: {
       title: 'Imperfetto: hábitos y descripciones',
       explanation:
@@ -94,7 +94,7 @@ export const IT_A2_U04: ItUnitDef = {
           target: 'Di solito giocavo a calcio con mio fratello.',
           base: 'Por lo general jugaba al fútbol con mi hermano.',
         },
-        { target: "Non c'era l'autobus.", base: 'No había colectivo.' },
+        { target: "Non c'era l'autobus.", base: 'No había autobús.' },
       ],
     },
     review: {
@@ -199,11 +199,11 @@ export const IT_A2_U04: ItUnitDef = {
         'bambino',
         'niño',
         'Il bambino è in piazza.',
-        'El nene está en la plaza.',
+        'El niño está en la plaza.',
         ['family'],
         {
           acceptedTexts: ['bambina'],
-          acceptedTranslations: ['niña', 'nene', 'nena', 'chico', 'chica'],
+          acceptedTranslations: ['niña', 'nene', 'niño', 'nena', 'chico', 'chica'],
           emoji: '🧒',
         },
       ),
@@ -242,7 +242,7 @@ export const IT_A2_U04: ItUnitDef = {
             { target: 'Eravamo sette fratelli.', base: 'Éramos siete hermanos.' },
           ],
         },
-        takeaways: ['Usás ero, era y eravamo.', 'Decís da piccolo / da piccola.'],
+        takeaways: ['Usas ero, era y eravamo.', 'Dices da piccolo / da piccola.'],
         exercises: [
           ex.translationChoice(
             'da piccolo',
@@ -286,7 +286,7 @@ export const IT_A2_U04: ItUnitDef = {
           ),
           ex.fillBlank(
             'Mio nonno ___ un bambino molto timido.',
-            'Mi abuelo era un nene muy tímido.',
+            'Mi abuelo era un niño muy tímido.',
             'era',
             ['ero', 'eravamo', 'sono'],
             ['it-era', 'it-bambino'],
@@ -310,7 +310,7 @@ export const IT_A2_U04: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Com’eri da piccolo?',
-            '¿Cómo eras de chico? (Respondé que eras muy tímido o tímida.)',
+            '¿Cómo eras de chico? (Responde que eras muy tímido o tímida.)',
             'Ero molto timido.',
             ['Ero molto timida.', 'Da piccolo ero molto timido.', 'Da piccola ero molto timida.'],
             ['it-ero', 'it-da-piccolo'],
@@ -351,8 +351,8 @@ export const IT_A2_U04: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Contás hábitos con -avo: abitavo, giocavo, andavo.',
-          'Decís di solito y giocare a calcio.',
+          'Cuentas hábitos con -avo: abitavo, giocavo, andavo.',
+          'Dices di solito y giocare a calcio.',
         ],
         exercises: [
           ex.translationChoice(
@@ -433,7 +433,7 @@ export const IT_A2_U04: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Dove abitavi da piccolo?',
-            '¿Dónde vivías de chico? (Respondé que vivías en Rosario.)',
+            '¿Dónde vivías de chico? (Responde que vivías en Rosario.)',
             'Abitavo a Rosario.',
             ['Da piccolo abitavo a Rosario.', 'Da piccola abitavo a Rosario.', 'A Rosario.'],
             ['it-abitavo'],
@@ -465,7 +465,7 @@ export const IT_A2_U04: ItUnitDef = {
             { target: 'Mi piaceva molto la scuola.', base: 'Me gustaba mucho la escuela.' },
           ],
         },
-        takeaways: ["Usás avevo, facevo y c'era.", 'Decís lo que te gustaba con mi piaceva.'],
+        takeaways: ["Usas avevo, facevo y c'era.", 'Dices lo que te gustaba con mi piaceva.'],
         exercises: [
           ex.translationChoice(
             "c'era",
@@ -539,7 +539,7 @@ export const IT_A2_U04: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Avevi un animale?',
-            '¿Tenías un animal? (Respondé que sí, que tenías un perro.)',
+            '¿Tenías un animal? (Responde que sí, que tenías un perro.)',
             'Sì, avevo un cane.',
             ['Avevo un cane.', 'Sì, avevo un cane da piccolo.', 'Sì, avevo un cane da piccola.'],
             ['it-avevo', 'it-cane'],
@@ -573,8 +573,8 @@ export const IT_A2_U04: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Sabés que campagna es «campo» y paese, «pueblo».',
-          'Entendés a alguien mayor que cuenta su infancia.',
+          'Sabes que campagna es «campo» y paese, «pueblo».',
+          'Entiendes a alguien mayor que cuenta su infancia.',
         ],
         exercises: [
           ex.translationChoice(
@@ -623,8 +623,8 @@ export const IT_A2_U04: ItUnitDef = {
             'it.ex.jg1ggb2fftipvk',
             NONNA,
             '¿Cómo iba a la escuela?',
-            'A pie, porque no había colectivo',
-            ['En colectivo', 'En la bicicleta de su hermano', 'No iba a la escuela'],
+            'A pie, porque no había autobús',
+            ['En autobús', 'En la bicicleta de su hermano', 'No iba a la escuela'],
             ['it-andavo', 'it-c-era'],
             'La abuela dice: «ci andavo a piedi. Non c’era l’autobus».',
           ),
@@ -639,7 +639,7 @@ export const IT_A2_U04: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Dove abitava tua nonna?',
-            '¿Dónde vivía tu abuela? (Respondé que vivía en un pueblo, en el campo.)',
+            '¿Dónde vivía tu abuela? (Responde que vivía en un pueblo, en el campo.)',
             'Abitava in un paese in campagna.',
             ['Mia nonna abitava in un paese in campagna.', 'In un paese in campagna.'],
             ['it-paese', 'it-campagna'],
@@ -662,7 +662,7 @@ export const IT_A2_U04: ItUnitDef = {
         objective: 'Contar un recuerdo de tu infancia.',
         intro: {
           explanation:
-            'Para contar recuerdos combinás todo: quando ero piccolo (cuando era chico) + lo que hacías (andavo, giocavo, facevo) + lo que había (c’era) + lo que te gustaba (mi piaceva).',
+            'Para contar recuerdos combinas todo: quando ero piccolo (cuando era chico) + lo que hacías (andavo, giocavo, facevo) + lo que había (c’era) + lo que te gustaba (mi piaceva).',
           examples: [
             {
               target: 'Quando ero piccola, abitavo a Roma.',
@@ -675,8 +675,8 @@ export const IT_A2_U04: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Contás un recuerdo con el imperfetto.',
-          'Combinás quando ero piccolo, di solito y mi piaceva.',
+          'Cuentas un recuerdo con el imperfetto.',
+          'Combinas quando ero piccolo, di solito y mi piaceva.',
         ],
         exercises: [
           ex.fillBlank(
@@ -737,7 +737,7 @@ export const IT_A2_U04: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Cosa facevi d’estate da piccolo?',
-            '¿Qué hacías en verano de chico? (Respondé que ibas al mar.)',
+            '¿Qué hacías en verano de chico? (Responde que ibas al mar.)',
             'Andavo al mare.',
             [
               'D’estate andavo al mare.',

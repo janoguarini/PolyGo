@@ -23,14 +23,14 @@ export const unit08: UnitDef = {
     'Contar tu día: despertarte, trabajar o estudiar, almorzar y cenar, con verbos en -ar, -er e -ir.',
   emoji: '🌅',
   objective:
-    'Podés contar qué hacés en un día normal con verbos en presente (falo, escrevo, durmo) y decir dónde vivís con moro em.',
+    'Puedes contar qué haces en un día normal con verbos en presente (falo, escrevo, durmo) y decir dónde vives con moro em.',
   grammar: {
     title: 'Presente: -ar, -er, -ir',
     explanation:
       'Con eu casi todos los verbos terminan en -o: falo, escrevo, durmo. Con você, ele y ela, en -a (los de -ar) o en -e (los de -er e -ir): fala, escreve, dorme. En Brasil «tú» casi no se usa: se dice você con el verbo como ele.',
     examples: [
       { target: 'Eu falo português.', base: 'Yo hablo portugués.' },
-      { target: 'Você fala espanhol?', base: '¿Vos hablás español?' },
+      { target: 'Você fala espanhol?', base: '¿Tú hablas español?' },
       { target: 'Eu moro em São Paulo.', base: 'Vivo en San Pablo.' },
     ],
   },
@@ -71,14 +71,14 @@ export const unit08: UnitDef = {
     w(
       'pt-de-manha',
       'de manhã',
-      'a la mañana',
+      'por la mañana',
       'De manhã eu tomo café.',
       'A la mañana tomo café.',
       ['time'],
-      { acceptedTranslations: ['por la mañana', 'de mañana'] },
+      { acceptedTranslations: ['por la mañana', 'de mañana', 'a la mañana'] },
     ),
-    w('pt-a-noite', 'à noite', 'a la noche', 'À noite eu leio.', 'A la noche leo.', ['time'], {
-      acceptedTranslations: ['por la noche', 'de noche'],
+    w('pt-a-noite', 'à noite', 'por la noche', 'À noite eu leio.', 'Por la noche leo.', ['time'], {
+      acceptedTranslations: ['por la noche', 'de noche', 'a la noche'],
     }),
     w('pt-falo', 'falo', 'hablo', 'Falo português e espanhol.', 'Hablo portugués y español.', [
       'verbs',
@@ -86,18 +86,18 @@ export const unit08: UnitDef = {
     w(
       'pt-fala',
       'fala',
-      'habla / hablás (con você)',
+      'habla / hablas (con você)',
       'Você fala espanhol?',
-      '¿Vos hablás español?',
+      '¿Tú hablas español?',
       ['verbs'],
-      { acceptedTranslations: ['habla', 'hablás'] },
+      { acceptedTranslations: ['habla', 'hablás', 'habla / hablás (con você)', 'hablas'] },
     ),
     w(
       'pt-leio',
       'leio',
       'leo',
       'À noite eu leio um livro.',
-      'A la noche leo un libro.',
+      'Por la noche leo un libro.',
       ['verbs'],
       {
         emoji: '📖',
@@ -108,7 +108,7 @@ export const unit08: UnitDef = {
       'escrevo',
       'escribo',
       'Escrevo com a caneta.',
-      'Escribo con la lapicera.',
+      'Escribo con el bolígrafo.',
       ['verbs'],
       { emoji: '✍️' },
     ),
@@ -148,7 +148,7 @@ export const unit08: UnitDef = {
       'assisto',
       'miro (la tele)',
       'À noite eu assisto TV.',
-      'A la noche miro la tele.',
+      'Por la noche miro la tele.',
       ['verbs'],
       { acceptedTranslations: ['miro', 'veo'], emoji: '📺' },
     ),
@@ -183,7 +183,7 @@ export const unit08: UnitDef = {
       objective: 'Contar cómo empieza tu día.',
       intro: {
         explanation:
-          'Acordo es «me despierto», sin pronombre reflexivo. Desayunar se dice tomar café da manhã: eu tomo café da manhã. De manhã es «a la mañana».',
+          'Acordo es «me despierto», sin pronombre reflexivo. Desayunar se dice tomar café da manhã: eu tomo café da manhã. De manhã es «por la mañana».',
         examples: [
           { target: 'Eu acordo às sete.', base: 'Me despierto a las siete.' },
           {
@@ -193,8 +193,8 @@ export const unit08: UnitDef = {
         ],
       },
       takeaways: [
-        'Decís que te despertás con acordo.',
-        'Decís que desayunás con tomo café da manhã.',
+        'Dices que te despiertas con acordo.',
+        'Dices que desayunas con tomo café da manhã.',
       ],
       exercises: [
         ex.imageChoice('⏰', 'acordo', ['durmo', 'leio', 'trabalho'], ['pt-acordo']),
@@ -207,8 +207,8 @@ export const unit08: UnitDef = {
         ),
         ex.translationChoice(
           'de manhã',
-          'a la mañana',
-          ['a la noche', 'todos los días', 'siempre'],
+          'por la mañana',
+          ['por la noche', 'todos los días', 'siempre'],
           ['pt-de-manha'],
         ),
         ex.listenChoice(
@@ -229,7 +229,7 @@ export const unit08: UnitDef = {
           ['pt-de-manha', 'pt-acordo', 'pt-tomo-cafe'],
         ),
         ex.translateWrite(
-          'Me despierto a la mañana.',
+          'Me despierto por la mañana.',
           'Acordo de manhã.',
           ['pt-acordo', 'pt-de-manha'],
           {
@@ -252,10 +252,10 @@ export const unit08: UnitDef = {
           'Los verbos terminan en -ar (falar), -er (escrever, ler) o -ir (dormir). Con eu terminan en -o: falo, escrevo, durmo. Ler («leer») es irregular: eu leio.',
         examples: [
           { target: 'Falo português.', base: 'Hablo portugués.' },
-          { target: 'À noite eu leio e depois durmo.', base: 'A la noche leo y después duermo.' },
+          { target: 'À noite eu leio e depois durmo.', base: 'Por la noche leo y después duermo.' },
         ],
       },
-      takeaways: ['Conjugás verbos en -ar, -er e -ir con eu.', 'Decís qué hacés a la noche.'],
+      takeaways: ['Conjugas verbos en -ar, -er e -ir con eu.', 'Dices qué haces por la noche.'],
       exercises: [
         ex.translationChoice('leio', 'leo', ['escribo', 'duermo', 'hablo'], ['pt-leio']),
         ex.imageChoice('😴', 'durmo', ['leio', 'escrevo', 'falo'], ['pt-durmo']),
@@ -282,20 +282,20 @@ export const unit08: UnitDef = {
           ],
           ['pt-falo', 'pt-leio', 'pt-escrevo', 'pt-durmo'],
         ),
-        ex.orderWords('À noite eu leio e depois durmo.', 'A la noche leo y después duermo.', [
+        ex.orderWords('À noite eu leio e depois durmo.', 'Por la noche leo y después duermo.', [
           'pt-a-noite',
           'pt-leio',
           'pt-depois',
           'pt-durmo',
         ]),
         ex.translateWrite(
-          'Escribo con la lapicera.',
+          'Escribo con el bolígrafo.',
           'Escrevo com a caneta.',
           ['pt-escrevo', 'pt-caneta'],
           { acceptedAnswers: ['Eu escrevo com a caneta.'] },
         ),
         ex.translateWrite(
-          'A la noche leo un libro.',
+          'Por la noche leo un libro.',
           'À noite eu leio um livro.',
           ['pt-a-noite', 'pt-leio', 'pt-livro'],
           { acceptedAnswers: ['À noite leio um livro.', 'Eu leio um livro à noite.'] },
@@ -309,21 +309,21 @@ export const unit08: UnitDef = {
         explanation:
           'Con você, ele y ela el verbo termina en -a en los verbos de -ar (fala) y en -e en los demás (escreve, dorme). En Brasil a un amigo también se le dice você.',
         examples: [
-          { target: 'Você fala espanhol?', base: '¿Vos hablás español?' },
+          { target: 'Você fala espanhol?', base: '¿Tú hablas español?' },
           { target: 'Ela fala muito bem.', base: 'Ella habla muy bien.' },
         ],
       },
-      takeaways: ['Preguntás con você fala…?', 'Hablás de otra persona con ele / ela fala.'],
+      takeaways: ['Preguntas con você fala…?', 'Hablas de otra persona con ele / ela fala.'],
       exercises: [
         ex.translationChoice(
           'falo',
           'hablo',
-          ['habla / hablás (con você)', 'leo', 'vivo (en un lugar)'],
+          ['habla / hablas (con você)', 'leo', 'vivo (en un lugar)'],
           ['pt-falo'],
         ),
         ex.translationChoice(
           'fala',
-          'habla / hablás (con você)',
+          'habla / hablas (con você)',
           ['hablo', 'duermo', 'escribo'],
           ['pt-fala'],
         ),
@@ -334,7 +334,7 @@ export const unit08: UnitDef = {
         ),
         ex.fillBlank(
           'Você ___ português?',
-          '¿Vos hablás portugués?',
+          '¿Tú hablas portugués?',
           'fala',
           ['falo', 'sou', 'tenho'],
           ['pt-voce', 'pt-fala'],
@@ -354,7 +354,7 @@ export const unit08: UnitDef = {
         ]),
         ex.shortAnswer(
           'Você fala português?',
-          '¿Hablás portugués? (Respondé que sí, que hablás portugués.)',
+          '¿Hablas portugués? (Responde que sí, que hablas portugués.)',
           'Sim, falo português.',
           ['Sim, eu falo português.', 'Falo.', 'Sim, falo.', 'Sim.'],
           ['pt-sim', 'pt-falo'],
@@ -368,16 +368,16 @@ export const unit08: UnitDef = {
     },
     {
       title: 'Trabalho e estudo',
-      objective: 'Decir qué hacés durante el día y dónde vivís.',
+      objective: 'Decir qué haces durante el día y dónde vives.',
       intro: {
         explanation:
-          'Trabalho es «trabajo» y estudo «estudio». Para decir dónde vivís se usa morar: eu moro em Buenos Aires. Almoço es «almuerzo» y janto «ceno».',
+          'Trabalho es «trabajo» y estudo «estudio». Para decir dónde vives se usa morar: eu moro em Buenos Aires. Almoço es «almuerzo» y janto «ceno».',
         examples: [
           { target: 'Eu moro em Buenos Aires.', base: 'Vivo en Buenos Aires.' },
           { target: 'Almoço e depois trabalho.', base: 'Almuerzo y después trabajo.' },
         ],
       },
-      takeaways: ['Decís si trabajás o estudiás.', 'Decís dónde vivís con moro em.'],
+      takeaways: ['Dices si trabajas o estudias.', 'Dices dónde vives con moro em.'],
       exercises: [
         ex.imageChoice('💼', 'trabalho', ['estudo', 'durmo', 'janto'], ['pt-trabalho']),
         ex.translationChoice(
@@ -398,7 +398,7 @@ export const unit08: UnitDef = {
           'moro',
           ['sou', 'estou', 'tenho'],
           ['pt-moro'],
-          { explanation: 'Para decir dónde vivís se usa morar: eu moro em…' },
+          { explanation: 'Para decir dónde vives se usa morar: eu moro em…' },
         ),
         ex.matchPairs(
           [
@@ -411,7 +411,7 @@ export const unit08: UnitDef = {
         ),
         ex.shortAnswer(
           'Onde você mora?',
-          '¿Dónde vivís? (Respondé que vivís en Buenos Aires.)',
+          '¿Dónde vives? (Responde que vives en Buenos Aires.)',
           'Moro em Buenos Aires.',
           ['Eu moro em Buenos Aires.', 'Em Buenos Aires.'],
           ['pt-moro'],
@@ -433,14 +433,14 @@ export const unit08: UnitDef = {
         ],
       },
       takeaways: [
-        'Contás tu rutina con todo dia y depois.',
-        'Sabés que assistir TV es mirar la tele.',
+        'Cuentas tu rutina con todo dia y depois.',
+        'Sabes que assistir TV es mirar la tele.',
       ],
       exercises: [
         ex.translationChoice(
           'todo dia',
           'todos los días',
-          ['a la mañana', 'siempre', 'después'],
+          ['por la mañana', 'siempre', 'después'],
           ['pt-todo-dia'],
         ),
         ex.translationChoice(

@@ -47,10 +47,10 @@ export const ZH_A1_U13: ZhUnitDef = {
     position: 13,
     title: 'Trabajo, estudios e idiomas',
     titleEn: '工作 Work and languages',
-    description: 'El plural con 们, 都, las profesiones, dónde trabajás y qué idiomas hablás.',
+    description: 'El plural con 们, 都, las profesiones, dónde trabajas y qué idiomas hablas.',
     emoji: '💼',
     objective:
-      'Podés hablar de varias personas, decir de qué trabajás y dónde, y contar qué idiomas hablás.',
+      'Puedes hablar de varias personas, decir de qué trabajas y dónde, y contar qué idiomas hablas.',
     grammar: {
       title: '们 · 都 · 在 + lugar + verbo',
       explanation:
@@ -85,7 +85,7 @@ export const ZH_A1_U13: ZhUnitDef = {
           acceptedTranslations: ['todos', 'ambos', 'los dos'],
         },
       ),
-      w('zh-zuo-hacer', '做', 'zuò', 'hacer', '你做什么工作？', '¿De qué trabajás?', [
+      w('zh-zuo-hacer', '做', 'zuò', 'hacer', '你做什么工作？', '¿De qué trabajas?', [
         'verbs',
         'work',
       ]),
@@ -121,11 +121,21 @@ export const ZH_A1_U13: ZhUnitDef = {
         'zh-fuwuyuan',
         '服务员',
         'fúwùyuán',
-        'mozo / moza',
+        'mesero / mesera',
         '她是饭馆的服务员。',
-        'Ella es moza en un restaurante.',
+        'Ella es mesera en un restaurante.',
         ['work', 'food'],
-        { acceptedTranslations: ['mozo', 'moza', 'camarero', 'camarera', 'mesero'] },
+        {
+          acceptedTranslations: [
+            'mozo',
+            'moza',
+            'camarero',
+            'camarera',
+            'mesero',
+            'mesera',
+            'mozo / moza',
+          ],
+        },
       ),
       w(
         'zh-gongsi',
@@ -200,7 +210,7 @@ export const ZH_A1_U13: ZhUnitDef = {
           acceptedTranslations: ['un poquito'],
         },
       ),
-      w('zh-nali', '哪里', 'nǎlǐ', '¿dónde?', '你在哪里工作？', '¿Dónde trabajás?', ['questions'], {
+      w('zh-nali', '哪里', 'nǎlǐ', '¿dónde?', '你在哪里工作？', '¿Dónde trabajas?', ['questions'], {
         acceptedTranslations: ['dónde'],
       }),
     ],
@@ -217,9 +227,9 @@ export const ZH_A1_U13: ZhUnitDef = {
             { target: '他们都是老师。', base: 'Todos ellos son profesores.' },
           ],
         },
-        takeaways: ['Usás 我们, 你们 y 他们.', 'Decís «todos» con 都, antes del verbo.'],
+        takeaways: ['Usas 我们, 你们 y 他们.', 'Dices «todos» con 都, antes del verbo.'],
         exercises: [
-          ex.translationChoice('你们', 'ustedes', ['ellos', 'nosotros', 'vos'], ['zh-nimen'], {
+          ex.translationChoice('你们', 'ustedes', ['ellos', 'nosotros', 'tú'], ['zh-nimen'], {
             id: 'zh.ex.aj6h2dnphvgrow',
           }),
           ex.translationChoice('他们', 'ellos', ['ustedes', 'nosotros', 'ella'], ['zh-tamen'], {
@@ -263,7 +273,7 @@ export const ZH_A1_U13: ZhUnitDef = {
           ),
           reply(
             '你们是中国人吗？',
-            '¿Ustedes son chinos? (Respondé que no, que son argentinos.)',
+            '¿Ustedes son chinos? (Responde que no, que son argentinos.)',
             'bù, wǒmen shì Āgēntíng rén',
             '不，我们是阿根廷人',
             ['zh-nimen', 'zh-women'],
@@ -297,13 +307,13 @@ export const ZH_A1_U13: ZhUnitDef = {
           explanation:
             '做 es «hacer». Para preguntar el trabajo se dice 你做什么工作？ y se responde con 是 + profesión: 我是医生. Las profesiones no cambian en femenino: 医生 es médico y médica.',
           examples: [
-            { target: '你做什么工作？——我是护士。', base: '¿De qué trabajás? — Soy enfermera.' },
+            { target: '你做什么工作？——我是护士。', base: '¿De qué trabajas? — Soy enfermera.' },
             { target: '我爸爸是司机。', base: 'Mi papá es chofer.' },
           ],
         },
         takeaways: [
-          'Preguntás el trabajo con 你做什么工作？',
-          'Decís profesiones con 是: 我是医生.',
+          'Preguntas el trabajo con 你做什么工作？',
+          'Dices profesiones con 是: 我是医生.',
         ],
         exercises: [
           ex.translationChoice(
@@ -318,7 +328,7 @@ export const ZH_A1_U13: ZhUnitDef = {
           ex.translationChoice(
             '司机',
             'chofer',
-            ['mozo / moza', 'médico', 'empresa'],
+            ['mesero / mesera', 'médico', 'empresa'],
             ['zh-siji'],
             {
               id: 'zh.ex.7w599ggvrgnwm0',
@@ -332,7 +342,7 @@ export const ZH_A1_U13: ZhUnitDef = {
           ),
           ex.fillBlank(
             '你做___工作？',
-            '¿De qué trabajás?',
+            '¿De qué trabajas?',
             '什么',
             ['谁', '哪', '几'],
             ['zh-zuo-hacer'],
@@ -343,7 +353,7 @@ export const ZH_A1_U13: ZhUnitDef = {
           ),
           ex.fillBlank(
             'A：你做什么工作？ B：我___服务员。',
-            'A: ¿De qué trabajás? B: Soy mozo.',
+            'A: ¿De qué trabajas? B: Soy mesero.',
             '是',
             ['在', '有', '很'],
             ['zh-fuwuyuan'],
@@ -357,14 +367,14 @@ export const ZH_A1_U13: ZhUnitDef = {
               ['医生', 'médico'],
               ['护士', 'enfermero/a'],
               ['司机', 'chofer'],
-              ['服务员', 'mozo / moza'],
+              ['服务员', 'mesero / mesera'],
             ],
             ['zh-yisheng', 'zh-hushi', 'zh-siji', 'zh-fuwuyuan'],
             { id: 'zh.ex.fwjjiup3ze3skj' },
           ),
           reply(
             '你做什么工作？',
-            '¿De qué trabajás? (Respondé que sos estudiante.)',
+            '¿De qué trabajas? (Responde que eres estudiante.)',
             'wǒ shì xuésheng',
             '我是学生',
             ['zh-zuo-hacer', 'zh-xuesheng'],
@@ -390,11 +400,11 @@ export const ZH_A1_U13: ZhUnitDef = {
             { target: '我在公司工作。', base: 'Trabajo en una empresa.' },
             {
               target: '你在哪里工作？——我在大学工作。',
-              base: '¿Dónde trabajás? — En la universidad.',
+              base: '¿Dónde trabajas? — En la universidad.',
             },
           ],
         },
-        takeaways: ['Decís dónde trabajás con 在 + lugar + 工作.', 'Preguntás «dónde» con 哪里.'],
+        takeaways: ['Dices dónde trabajas con 在 + lugar + 工作.', 'Preguntas «dónde» con 哪里.'],
         exercises: [
           ex.translationChoice(
             '公司',
@@ -436,7 +446,7 @@ export const ZH_A1_U13: ZhUnitDef = {
               explanation: 'El lugar va con 在 y antes del verbo: 在医院工作.',
             },
           ),
-          ex.orderWords('你 在 哪里 工作？', '¿Dónde trabajás?', ['zh-nali'], {
+          ex.orderWords('你 在 哪里 工作？', '¿Dónde trabajas?', ['zh-nali'], {
             id: 'zh.ex.b33c4c73i31qz4',
             explanation: 'Primero 在 + lugar, después el verbo: 在哪里工作.',
           }),
@@ -445,7 +455,7 @@ export const ZH_A1_U13: ZhUnitDef = {
           }),
           reply(
             '你在哪里工作？',
-            '¿Dónde trabajás? (Respondé que en una empresa.)',
+            '¿Dónde trabajas? (Responde que en una empresa.)',
             'wǒ zài gōngsī gōngzuò',
             '我在公司工作',
             ['zh-gongsi', 'zh-nali'],
@@ -469,19 +479,19 @@ export const ZH_A1_U13: ZhUnitDef = {
       // ------------------------------------------------------------------------------------ L4
       {
         title: '你会说英语吗？',
-        objective: 'Decir qué idiomas hablás y cuánto.',
+        objective: 'Decir qué idiomas hablas y cuánto.',
         intro: {
           explanation:
             '会 + 说 + idioma es «saber hablar un idioma». 语 significa «idioma»: 英语 (inglés), 西班牙语 (español). 一点儿 (un poco) va antes del idioma: 我会说一点儿中文.',
           examples: [
             {
               target: '你会说英语吗？——会，我会说一点儿。',
-              base: '¿Hablás inglés? — Sí, un poco.',
+              base: '¿Hablas inglés? — Sí, un poco.',
             },
             { target: '我会说西班牙语。', base: 'Hablo español.' },
           ],
         },
-        takeaways: ['Decís qué idiomas hablás con 会说.', 'Matizás con 一点儿 (un poco).'],
+        takeaways: ['Dices qué idiomas hablas con 会说.', 'Matizas con 一点儿 (un poco).'],
         exercises: [
           ex.translationChoice(
             '英语',
@@ -551,7 +561,7 @@ export const ZH_A1_U13: ZhUnitDef = {
           ),
           reply(
             '你会说英语吗？',
-            '¿Sabés hablar inglés? (Respondé que sí, un poco.)',
+            '¿Sabes hablar inglés? (Responde que sí, un poco.)',
             'huì, wǒ huì shuō yìdiǎnr',
             '会，我会说一点儿',
             ['zh-yidianr', 'zh-hui'],
@@ -585,8 +595,8 @@ export const ZH_A1_U13: ZhUnitDef = {
           ],
         },
         takeaways: [
-          'Te presentás con 认识你很高兴.',
-          'Entendés de qué trabaja alguien en una charla.',
+          'Te presentas con 认识你很高兴.',
+          'Entiendes de qué trabaja alguien en una charla.',
         ],
         exercises: [
           ex.translationChoice(
@@ -648,13 +658,13 @@ export const ZH_A1_U13: ZhUnitDef = {
             PADRES,
             '¿Cuándo trabajan los padres de Wang Ming?',
             'Todos los días',
-            ['Sólo el fin de semana', 'Sólo a la mañana', 'No trabajan'],
+            ['Sólo el fin de semana', 'Sólo por la mañana', 'No trabajan'],
             ['zh-tamen', 'zh-dou'],
             'Wang Ming dice: «他们每天都工作».',
           ),
           reply(
             '他们是谁？',
-            '¿Quiénes son? (Respondé que son tus compañeros de clase.)',
+            '¿Quiénes son? (Responde que son tus compañeros de clase.)',
             'tāmen shì wǒ de tóngxué',
             '他们是我的同学',
             ['zh-tongxue', 'zh-tamen'],

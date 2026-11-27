@@ -27,7 +27,7 @@ export const unit12: UnitDef = {
     'Preguntar quién, qué, cuándo, por qué, cómo y cuál, y preguntar cuánto cuesta algo en un negocio.',
   emoji: '❓',
   objective:
-    'Podés hacer preguntas con chi, cosa, quando, perché, come y quale, preguntar quanto costa? / quanto costano? y decir si algo es caro o economico.',
+    'Puedes hacer preguntas con chi, cosa, quando, perché, come y quale, preguntar quanto costa? / quanto costano? y decir si algo es caro o economico.',
   grammar: {
     title: 'Palabras para preguntar · quanto costa / quanto costano',
     explanation:
@@ -36,7 +36,7 @@ export const unit12: UnitDef = {
       { target: 'Quando parti? — Domani.', base: '¿Cuándo te vas? — Mañana.' },
       {
         target: 'Perché studi italiano? — Perché voglio viaggiare.',
-        base: '¿Por qué estudiás italiano? — Porque quiero viajar.',
+        base: '¿Por qué estudias italiano? — Porque quiero viajar.',
       },
       { target: 'Quanto costa il biglietto?', base: '¿Cuánto cuesta el boleto?' },
     ],
@@ -55,18 +55,18 @@ export const unit12: UnitDef = {
       '¿Quién es él? — Es mi hermano.',
       ['questions'],
     ),
-    w('it-cosa', 'cosa?', '¿qué?', 'Cosa mangi?', '¿Qué comés?', ['questions'], {
+    w('it-cosa', 'cosa?', '¿qué?', 'Cosa mangi?', '¿Qué comes?', ['questions'], {
       acceptedTexts: ['che cosa?'],
     }),
     w(
       'it-cosa-fai',
       'cosa fai?',
-      '¿qué hacés?',
+      '¿qué haces?',
       'Cosa fai oggi?',
-      '¿Qué hacés hoy?',
+      '¿Qué haces hoy?',
       ['questions'],
       {
-        acceptedTranslations: ['¿qué haces?'],
+        acceptedTranslations: ['¿qué haces?', '¿qué hacés?'],
       },
     ),
     w('it-quando', 'quando?', '¿cuándo?', 'Quando vai a Roma?', '¿Cuándo vas a Roma?', [
@@ -77,12 +77,12 @@ export const unit12: UnitDef = {
       'perché',
       '¿por qué? / porque',
       'Perché studi italiano?',
-      '¿Por qué estudiás italiano?',
+      '¿Por qué estudias italiano?',
       ['questions'],
       { acceptedTranslations: ['¿por qué?', 'porque'] },
     ),
     w('it-come', 'come?', '¿cómo?', 'Come vai a scuola?', '¿Cómo vas a la escuela?', ['questions']),
-    w('it-quale', 'quale?', '¿cuál?', 'Quale preferisci?', '¿Cuál preferís?', ['questions']),
+    w('it-quale', 'quale?', '¿cuál?', 'Quale preferisci?', '¿Cuál prefieres?', ['questions']),
     w(
       'it-quanto-costa',
       'quanto costa?',
@@ -115,12 +115,12 @@ export const unit12: UnitDef = {
     w(
       'it-maglietta',
       'maglietta',
-      'remera',
+      'camiseta',
       'La maglietta è rossa.',
-      'La remera es roja.',
+      'La camiseta es roja.',
       ['shopping', 'clothes'],
       {
-        acceptedTranslations: ['camiseta', 'playera'],
+        acceptedTranslations: ['camiseta', 'playera', 'remera'],
         emoji: '👕',
       },
     ),
@@ -163,13 +163,13 @@ export const unit12: UnitDef = {
       objective: 'Preguntar quién y qué.',
       intro: {
         explanation:
-          'Chi? es «¿quién?» (se lee «qui»: ch suena como k) y cosa? es «¿qué?» (también che cosa?). Cosa fai? es «¿qué hacés?».',
+          'Chi? es «¿quién?» (se lee «qui»: ch suena como k) y cosa? es «¿qué?» (también che cosa?). Cosa fai? es «¿qué haces?».',
         examples: [
           { target: 'Chi è lei? — È mia sorella.', base: '¿Quién es ella? — Es mi hermana.' },
-          { target: 'Cosa fai oggi?', base: '¿Qué hacés hoy?' },
+          { target: 'Cosa fai oggi?', base: '¿Qué haces hoy?' },
         ],
       },
-      takeaways: ['Preguntás quién con chi?', 'Preguntás qué con cosa?'],
+      takeaways: ['Preguntas quién con chi?', 'Preguntas qué con cosa?'],
       exercises: [
         ex.translationChoice('chi?', '¿quién?', ['¿qué?', '¿cuándo?', '¿cuál?'], ['it-chi'], {
           explanation: 'Ch en italiano suena como k: chi se lee «qui».',
@@ -189,15 +189,15 @@ export const unit12: UnitDef = {
         ),
         ex.fillBlank(
           '___ mangi? — Un panino.',
-          '¿Qué comés? — Un sándwich.',
+          '¿Qué comes? — Un sándwich.',
           'Cosa',
           ['Chi', 'Quale', 'Quando'],
           ['it-cosa', 'it-panino'],
         ),
-        ex.orderWords('Cosa fai oggi?', '¿Qué hacés hoy?', ['it-cosa-fai', 'it-oggi']),
+        ex.orderWords('Cosa fai oggi?', '¿Qué haces hoy?', ['it-cosa-fai', 'it-oggi']),
         ex.shortAnswer(
           'Cosa fai oggi?',
-          '¿Qué hacés hoy? (Respondé que trabajás.)',
+          '¿Qué haces hoy? (Responde que trabajas.)',
           'Lavoro.',
           ['Oggi lavoro.', 'Io lavoro.', 'Lavoro oggi.'],
           ['it-lavoro', 'it-oggi'],
@@ -215,11 +215,11 @@ export const unit12: UnitDef = {
           { target: 'Quando vai a Roma?', base: '¿Cuándo vas a Roma?' },
           {
             target: 'Perché studi italiano? — Perché mi piace.',
-            base: '¿Por qué estudiás italiano? — Porque me gusta.',
+            base: '¿Por qué estudias italiano? — Porque me gusta.',
           },
         ],
       },
-      takeaways: ['Preguntás cuándo con quando?', 'Preguntás y respondés con perché.'],
+      takeaways: ['Preguntas cuándo con quando?', 'Preguntas y respondes con perché.'],
       exercises: [
         ex.translationChoice(
           'quando?',
@@ -253,7 +253,7 @@ export const unit12: UnitDef = {
           ['it-studio', 'it-perche', 'it-voglio', 'it-viaggiare'],
           { explanation: 'Para responder «porque» también se usa perché.' },
         ),
-        ex.orderWords('Perché non vuoi giocare?', '¿Por qué no querés jugar?', [
+        ex.orderWords('Perché non vuoi giocare?', '¿Por qué no quieres jugar?', [
           'it-perche',
           'it-non',
           'it-vuoi',
@@ -261,12 +261,12 @@ export const unit12: UnitDef = {
         ]),
         ex.shortAnswer(
           'Quando lavori?',
-          '¿Cuándo trabajás? (Respondé que el lunes.)',
+          '¿Cuándo trabajas? (Responde que el lunes.)',
           'Lunedì.',
           ['Lavoro lunedì.', 'Il lunedì.', 'Lavoro il lunedì.'],
           ['it-lunedi', 'it-lavoro'],
         ),
-        ex.translateWrite('¿Por qué no querés cantar?', 'Perché non vuoi cantare?', [
+        ex.translateWrite('¿Por qué no quieres cantar?', 'Perché non vuoi cantare?', [
           'it-perche',
           'it-non',
           'it-vuoi',
@@ -285,7 +285,7 @@ export const unit12: UnitDef = {
           { target: 'Qual è il tuo numero?', base: '¿Cuál es tu número?' },
         ],
       },
-      takeaways: ['Preguntás cómo con come?', 'Preguntás cuál con quale? / qual è?'],
+      takeaways: ['Preguntas cómo con come?', 'Preguntas cuál con quale? / qual è?'],
       exercises: [
         ex.translationChoice('come?', '¿cómo?', ['¿cuándo?', '¿dónde?', '¿quién?'], ['it-come']),
         ex.translationChoice(
@@ -320,7 +320,7 @@ export const unit12: UnitDef = {
         ex.orderWords('Come vai a casa?', '¿Cómo vas a casa?', ['it-come', 'it-vai', 'it-a-casa']),
         ex.shortAnswer(
           'Va bene domani?',
-          '¿Te viene bien mañana? (Respondé que sí, está bien.)',
+          '¿Te viene bien mañana? (Responde que sí, está bien.)',
           'Sì, va bene.',
           ['Va bene.', 'Sì, domani va bene.'],
           ['it-si', 'it-va-bene'],
@@ -337,14 +337,14 @@ export const unit12: UnitDef = {
         examples: [
           {
             target: 'Quanto costa la maglietta? — Quindici euro.',
-            base: '¿Cuánto cuesta la remera? — Quince euros.',
+            base: '¿Cuánto cuesta la camiseta? — Quince euros.',
           },
           { target: 'Quanto costano le scarpe?', base: '¿Cuánto cuestan los zapatos?' },
         ],
       },
       takeaways: [
-        'Preguntás el precio con quanto costa?',
-        'Usás quanto costano? con varias cosas.',
+        'Preguntas el precio con quanto costa?',
+        'Usas quanto costano? con varias cosas.',
       ],
       exercises: [
         ex.imageChoice('🎫', 'biglietto', ['maglietta', 'scarpe', 'chiave'], ['it-biglietto']),
@@ -368,7 +368,7 @@ export const unit12: UnitDef = {
           ['it-quanto-costano', 'it-scarpe'],
           { explanation: 'Le scarpe es plural: quanto costano?' },
         ),
-        ex.orderWords('Quanto costa la maglietta?', '¿Cuánto cuesta la remera?', [
+        ex.orderWords('Quanto costa la maglietta?', '¿Cuánto cuesta la camiseta?', [
           'it-quanto-costa',
           'it-maglietta',
         ]),
@@ -393,7 +393,7 @@ export const unit12: UnitDef = {
           { target: 'Cinque euro? Va bene.', base: '¿Cinco euros? Está bien.' },
         ],
       },
-      takeaways: ['Decís si algo es caro o barato.', 'Aceptás un precio con va bene.'],
+      takeaways: ['Dices si algo es caro o barato.', 'Aceptas un precio con va bene.'],
       exercises: [
         ex.translationChoice('economico', 'barato', ['caro', 'rico', 'cerca'], ['it-economico'], {
           explanation: 'Barato es economico; caro es igual que en español.',
@@ -419,14 +419,14 @@ export const unit12: UnitDef = {
           ['Vai', 'Vado', 'È'],
           ['it-cinque', 'it-va-bene'],
         ),
-        ex.orderWords('La maglietta è troppo cara.', 'La remera es demasiado cara.', [
+        ex.orderWords('La maglietta è troppo cara.', 'La camiseta es demasiado cara.', [
           'it-maglietta',
           'it-troppo',
           'it-caro',
         ]),
         ex.shortAnswer(
           'Il biglietto costa venti euro.',
-          'El boleto cuesta veinte euros. (Respondé que es demasiado caro.)',
+          'El boleto cuesta veinte euros. (Responde que es demasiado caro.)',
           'È troppo caro!',
           ['È troppo caro.', 'Troppo caro!', 'Troppo caro.'],
           ['it-troppo', 'it-caro'],

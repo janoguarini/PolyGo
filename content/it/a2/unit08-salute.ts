@@ -86,17 +86,17 @@ export const IT_A2_U08: ItUnitDef = {
     title: 'Salud y bienestar',
     titleEn: 'Salute e benessere',
     description:
-      'Decir qué te duele y qué síntomas tenés, entender al médico y al farmacéutico, y dar consejos con el imperativo.',
+      'Decir qué te duele y qué síntomas tienes, entender al médico y al farmacéutico, y dar consejos con el imperativo.',
     emoji: '🩺',
     objective:
-      'Podés decir qué te duele y cómo te sentís, entender las indicaciones del médico y de la farmacia, y dar consejos de salud con el imperativo (riposati, prenda…).',
+      'Puedes decir qué te duele y cómo te sientes, entender las indicaciones del médico y de la farmacia, y dar consejos de salud con el imperativo (riposati, prenda…).',
     grammar: {
       title: 'Mi fa male · ho mal di · imperativo con tu y con Lei',
       explanation:
         'Para el dolor: mi fa male + la parte del cuerpo (mi fa male la schiena) o ho mal di + parte, sin artículo (ho mal di testa, di gola). Imperativo con tu: -are → -a (mangia), -ere / -ire → -i (prendi, bevi, dormi); en negativo, non + infinitivo (non mangiare!). Con Lei (usted) se invierte: -are → -i (mangi), -ere / -ire → -a (prenda, beva). Con un reflexivo, el pronombre va pegado: riposati! Al médico se va con da: vado dal medico.',
       examples: [
         { target: 'Mi fa male la schiena.', base: 'Me duele la espalda.' },
-        { target: 'Riposati e non uscire stasera!', base: '¡Descansá y no salgas esta noche!' },
+        { target: 'Riposati e non uscire stasera!', base: '¡Descansa y no salgas esta noche!' },
         { target: 'Prenda questo sciroppo, signora.', base: 'Tome este jarabe, señora.' },
       ],
     },
@@ -205,27 +205,27 @@ export const IT_A2_U08: ItUnitDef = {
       w(
         'it-prendi',
         'prendi',
-        'tomá',
+        'toma',
         'Prendi un’aspirina.',
-        'Tomate una aspirina.',
+        'Tómate una aspirina.',
         ['health', 'imperative'],
         {
-          acceptedTranslations: ['toma'],
+          acceptedTranslations: ['toma', 'tomá'],
         },
       ),
-      w('it-bevi', 'bevi', 'bebé (de beber)', 'Bevi tanta acqua.', 'Tomá mucha agua.', [
+      w('it-bevi', 'bevi', 'bebé (de beber)', 'Bevi tanta acqua.', 'Toma mucha agua.', [
         'health',
         'imperative',
       ]),
       w(
         'it-riposati',
         'riposati',
-        'descansá',
+        'descansa',
         'Riposati un po’.',
-        'Descansá un poco.',
+        'Descansa un poco.',
         ['health', 'imperative'],
         {
-          acceptedTranslations: ['descansa'],
+          acceptedTranslations: ['descansa', 'descansá'],
         },
       ),
       w(
@@ -262,8 +262,8 @@ export const IT_A2_U08: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Decís mi fa male la… y ho mal di…',
-          'Nombrás la gola, la pancia y la schiena.',
+          'Dices mi fa male la… y ho mal di…',
+          'Nombras la gola, la pancia y la schiena.',
         ],
         exercises: [
           ex.translationChoice(
@@ -327,7 +327,7 @@ export const IT_A2_U08: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Cosa ti fa male?',
-            '¿Qué te duele? (Respondé que te duele la espalda.)',
+            '¿Qué te duele? (Responde que te duele la espalda.)',
             'Mi fa male la schiena.',
             ['La schiena.', 'Ho mal di schiena.'],
             ['it-mi-fa-male', 'it-schiena'],
@@ -352,7 +352,7 @@ export const IT_A2_U08: ItUnitDef = {
             { target: 'Domani vado dal medico.', base: 'Mañana voy al médico.' },
           ],
         },
-        takeaways: ['Contás síntomas: ho la febbre, la tosse.', 'Decís vado dal medico.'],
+        takeaways: ['Cuentas síntomas: ho la febbre, la tosse.', 'Dices vado dal medico.'],
         exercises: [
           ex.translationChoice(
             'raffreddore',
@@ -428,7 +428,7 @@ export const IT_A2_U08: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Hai la febbre?',
-            '¿Tenés fiebre? (Respondé que sí, un poco.)',
+            '¿Tienes fiebre? (Responde que sí, un poco.)',
             "Sì, ho un po' di febbre.",
             [
               'Sì, ho un po’ di febbre.',
@@ -467,7 +467,7 @@ export const IT_A2_U08: ItUnitDef = {
             { target: 'Ha la ricetta del medico?', base: '¿Tiene la receta del médico?' },
           ],
         },
-        takeaways: ['Entendés prenda y beva.', 'Pedís algo en la farmacia.'],
+        takeaways: ['Entiendes prenda y beva.', 'Pides algo en la farmacia.'],
         exercises: [
           ex.translationChoice(
             'ricetta',
@@ -548,7 +548,7 @@ export const IT_A2_U08: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Cosa mi consiglia?',
-            '¿Qué me aconseja? (Sos el médico: decile al paciente que tome mucha agua.)',
+            '¿Qué me aconseja? (Eres el médico: dile al paciente que tome mucha agua.)',
             'Beva molta acqua.',
             ['Beva molta acqua!', 'Beva tanta acqua.'],
             ['it-prenda'],
@@ -569,26 +569,26 @@ export const IT_A2_U08: ItUnitDef = {
         objective: 'Dar consejos a un amigo con el imperativo.',
         intro: {
           explanation:
-            'Con tu: -are → -a (mangia), -ere / -ire → -i (prendi, bevi, dormi). En negativo: non + infinitivo (non mangiare!, non uscire!). Con un reflexivo, el pronombre va pegado al final: riposati! (descansá).',
+            'Con tu: -are → -a (mangia), -ere / -ire → -i (prendi, bevi, dormi). En negativo: non + infinitivo (non mangiare!, non uscire!). Con un reflexivo, el pronombre va pegado al final: riposati! (descansa).',
           examples: [
-            { target: 'Riposati e bevi tanto tè.', base: 'Descansá y tomá mucho té.' },
+            { target: 'Riposati e bevi tanto tè.', base: 'Descansa y toma mucho té.' },
             { target: 'Non mangiare troppo!', base: '¡No comas demasiado!' },
           ],
         },
-        takeaways: ['Aconsejás con prendi, bevi, riposati.', 'Prohibís con non + infinitivo.'],
+        takeaways: ['Aconsejas con prendi, bevi, riposati.', 'Prohíbes con non + infinitivo.'],
         exercises: [
           ex.translationChoice(
             'riposati',
-            'descansá',
-            ['repetí', 'respirá', 'reíte'],
+            'descansa',
+            ['repite', 'respira', 'reíte'],
             ['it-riposati'],
             { id: 'it.ex.4q15surn8hgg7r' },
           ),
           ex.matchPairs(
             [
-              ['prendi', 'tomá'],
+              ['prendi', 'toma'],
               ['bevi', 'bebé (de beber)'],
-              ['riposati', 'descansá'],
+              ['riposati', 'descansa'],
               ['non mangiare', 'no comas'],
             ],
             ['it-prendi', 'it-bevi', 'it-riposati', 'it-non-mangiare'],
@@ -613,7 +613,7 @@ export const IT_A2_U08: ItUnitDef = {
           ),
           ex.fillBlank(
             '___ un’aspirina e vai a letto.',
-            'Tomate una aspirina y andá a la cama.',
+            'Tómate una aspirina y ve a la cama.',
             'Prendi',
             ['Prendo', 'Preso', 'Prendere'],
             ['it-prendi'],
@@ -662,13 +662,13 @@ export const IT_A2_U08: ItUnitDef = {
         objective: 'Decir que estás mejor y entender consejos para estar bien.',
         intro: {
           explanation:
-            'Cuando te recuperás: sto meglio (estoy mejor). Los carteles y las revistas dan consejos con el imperativo con tu: dormi, mangia, cammina, fai una pausa.',
+            'Cuando te recuperas: sto meglio (estoy mejor). Los carteles y las revistas dan consejos con el imperativo con tu: dormi, mangia, cammina, fai una pausa.',
           examples: [
             { target: 'Oggi sto meglio, grazie.', base: 'Hoy estoy mejor, gracias.' },
-            { target: 'Bevi molta acqua e riposati.', base: 'Tomá mucha agua y descansá.' },
+            { target: 'Bevi molta acqua e riposati.', base: 'Toma mucha agua y descansa.' },
           ],
         },
-        takeaways: ['Decís sto meglio.', 'Entendés consejos de salud con el imperativo.'],
+        takeaways: ['Dices sto meglio.', 'Entiendes consejos de salud con el imperativo.'],
         exercises: [
           ex.translationChoice(
             'sto meglio',
@@ -720,13 +720,13 @@ export const IT_A2_U08: ItUnitDef = {
           ),
           ex.orderWords(
             'Bevi molta acqua e riposati.',
-            'Tomá mucha agua y descansá.',
+            'Toma mucha agua y descansa.',
             ['it-bevi', 'it-riposati'],
             { id: 'it.ex.psijxw5urpkk09' },
           ),
           ex.shortAnswer(
             'Come stai oggi?',
-            '¿Cómo estás hoy? (Respondé que estás mejor, gracias.)',
+            '¿Cómo estás hoy? (Responde que estás mejor, gracias.)',
             'Sto meglio, grazie.',
             ['Oggi sto meglio, grazie.', 'Sto meglio.', 'Oggi sto meglio.'],
             ['it-sto-meglio'],

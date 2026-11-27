@@ -40,7 +40,7 @@ export const ZH_A2_U01: ZhUnitDef = {
     description: 'Contar el fin de semana con 了, decir qué ya hiciste y qué todavía no.',
     emoji: '🏔️',
     objective:
-      'Podés contar qué hiciste el fin de semana, qué ya hiciste (已经…了) y qué todavía no (还没…呢).',
+      'Puedes contar qué hiciste el fin de semana, qué ya hiciste (已经…了) y qué todavía no (还没…呢).',
     grammar: {
       title: '了 · 已经…了 · 还没…呢',
       explanation:
@@ -195,11 +195,14 @@ export const ZH_A2_U01: ZhUnitDef = {
           explanation:
             'Para contar qué hiciste se pone 了 después del verbo o al final: 我休息了. Si el objeto lleva número, 了 va pegado al verbo: 我看了两个电影. 上个星期 es la semana pasada.',
           examples: [
-            { target: '周末你做什么了？——我休息了。', base: '¿Qué hiciste el finde? — Descansé.' },
+            {
+              target: '周末你做什么了？——我休息了。',
+              base: '¿Qué hiciste el fin de semana? — Descansé.',
+            },
             { target: '上个星期我看了两个电影。', base: 'La semana pasada vi dos películas.' },
           ],
         },
-        takeaways: ['Contás lo que hiciste con 了.', 'Nombrás actividades del tiempo libre.'],
+        takeaways: ['Cuentas lo que hiciste con 了.', 'Nombras actividades del tiempo libre.'],
         exercises: [
           ex.translationChoice(
             '休息',
@@ -252,7 +255,7 @@ export const ZH_A2_U01: ZhUnitDef = {
           ),
           reply(
             '周末你做什么了？',
-            '¿Qué hiciste el fin de semana? (Respondé que descansaste en casa.)',
+            '¿Qué hiciste el fin de semana? (Responde que descansaste en casa.)',
             'wǒ zài jiā xiūxi le',
             '我在家休息了',
             ['zh-xiuxi'],
@@ -299,8 +302,8 @@ export const ZH_A2_U01: ZhUnitDef = {
           ],
         },
         takeaways: [
-          'Contás tareas de la casa con 打扫 y 洗.',
-          'Decís «hacer la tarea» con 写作业.',
+          'Cuentas tareas de la casa con 打扫 y 洗.',
+          'Dices «hacer la tarea» con 写作业.',
         ],
         exercises: [
           ex.translationChoice(
@@ -358,7 +361,7 @@ export const ZH_A2_U01: ZhUnitDef = {
           ),
           reply(
             '你写作业了吗？',
-            '¿Hiciste la tarea? (Respondé que sí, que la escribiste.)',
+            '¿Hiciste la tarea? (Responde que sí, que la escribiste.)',
             'xiě le',
             '写了',
             ['zh-xie-escribir', 'zh-zuoye'],
@@ -386,7 +389,7 @@ export const ZH_A2_U01: ZhUnitDef = {
             { target: '我还没写作业呢。', base: 'Todavía no hice la tarea.' },
           ],
         },
-        takeaways: ['Decís «ya» con 已经…了.', 'Decís «todavía no» con 还没…呢.'],
+        takeaways: ['Dices «ya» con 已经…了.', 'Dices «todavía no» con 还没…呢.'],
         exercises: [
           ex.translationChoice(
             '已经',
@@ -446,7 +449,7 @@ export const ZH_A2_U01: ZhUnitDef = {
           }),
           reply(
             '你吃饭了吗？',
-            '¿Comiste? (Respondé que todavía no.)',
+            '¿Comiste? (Responde que todavía no.)',
             'hái méi chī ne',
             '还没吃呢',
             ['zh-hai-mei'],
@@ -489,7 +492,7 @@ export const ZH_A2_U01: ZhUnitDef = {
             { target: '我们明天见面吧！', base: '¡Veámonos mañana!' },
           ],
         },
-        takeaways: ['Decís cuándo volvés con 回家, 早 y 晚.', 'Quedás para verte con 见面.'],
+        takeaways: ['Dices cuándo vuelves con 回家, 早 y 晚.', 'Quedas para verte con 见面.'],
         exercises: [
           ex.translationChoice(
             '见面',
@@ -526,7 +529,7 @@ export const ZH_A2_U01: ZhUnitDef = {
           ),
           ex.fillBlank(
             '你几点___家？',
-            '¿A qué hora volvés a casa?',
+            '¿A qué hora vuelves a casa?',
             '回',
             ['见面', '走', '打扫'],
             ['zh-hui-volver'],
@@ -556,7 +559,7 @@ export const ZH_A2_U01: ZhUnitDef = {
           ),
           reply(
             '你昨天几点回家？',
-            '¿A qué hora volviste ayer a casa? (Respondé que volviste muy tarde.)',
+            '¿A qué hora volviste ayer a casa? (Responde que volviste muy tarde.)',
             'hěn wǎn',
             '很晚',
             ['zh-wan-tarde', 'zh-hui-volver'],
@@ -584,13 +587,16 @@ export const ZH_A2_U01: ZhUnitDef = {
         objective: 'Entender relatos y mensajes sobre lo que alguien hizo.',
         intro: {
           explanation:
-            'Repasá cómo se cuenta el pasado: verbo + 了, 没 + verbo, 已经…了 y 还没…呢. 好玩 es «divertido»: 爬山很好玩.',
+            'Repasa cómo se cuenta el pasado: verbo + 了, 没 + verbo, 已经…了 y 还没…呢. 好玩 es «divertido»: 爬山很好玩.',
           examples: [
             { target: '爬山很好玩！', base: '¡Ir a la montaña es muy divertido!' },
             { target: '作业还没写呢。', base: 'La tarea todavía no la hice.' },
           ],
         },
-        takeaways: ['Entendés qué hizo alguien y qué le falta.', 'Contás tu semana con 了 y 还没.'],
+        takeaways: [
+          'Entiendes qué hizo alguien y qué le falta.',
+          'Cuentas tu semana con 了 y 还没.',
+        ],
         exercises: [
           ex.listenChoice(
             '爬山很好玩！',
@@ -633,7 +639,7 @@ export const ZH_A2_U01: ZhUnitDef = {
             'zh.ex.zyfsn0p5ubn0ky',
             MENSAJE,
             '¿Qué le falta hacer a Wang Ming?',
-            'La tarea, que la hace a la noche',
+            'La tarea, que la hace por la noche',
             ['Lavar la ropa', 'Limpiar el cuarto', 'Nada'],
             ['zh-hai-mei', 'zh-zuoye'],
             'El mensaje dice: «作业还没写呢，晚上写».',
@@ -651,7 +657,7 @@ export const ZH_A2_U01: ZhUnitDef = {
             'zh.ex.5ysy3408c49lt0',
             COMIDA,
             '¿Qué propone Anna y qué problema tiene Wang Ming?',
-            'Verse a la noche, pero él vuelve tarde a casa',
+            'Verse por la noche, pero él vuelve tarde a casa',
             [
               'Comer juntos ahora, pero él ya comió',
               'Verse mañana, pero él trabaja',
@@ -662,7 +668,7 @@ export const ZH_A2_U01: ZhUnitDef = {
           ),
           reply(
             '你上个星期做什么了？',
-            '¿Qué hiciste la semana pasada? (Respondé que fuiste a pasear por las tiendas.)',
+            '¿Qué hiciste la semana pasada? (Responde que fuiste a pasear por las tiendas.)',
             'wǒ qù guàngjiē le',
             '我去逛街了',
             ['zh-guangjie', 'zh-shang-ge-xingqi'],

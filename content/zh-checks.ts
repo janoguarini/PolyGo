@@ -34,7 +34,7 @@ const PRODUCTION = new Set(['translate_write', 'short_answer']);
 const CONTACT = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}|\b\d{3}-\d{4}\b|https?:\/\//i;
 const MIN_WORDS = 14;
 const MAX_WORDS = 20;
-const TONE_PROMPT = 'Escuchá y elegí el tono correcto';
+const TONE_PROMPT = 'Escucha y elige el tono correcto';
 
 /** Tradicionales frecuentes: ninguno puede aparecer (el curso es en simplificado). */
 export const TRADITIONAL = new Set([

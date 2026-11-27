@@ -102,7 +102,7 @@ export const EN_B1_U06: B1UnitDef = {
       'El primer condicional (if, unless), problemas de viaje, recorrer una ciudad, dinero y propinas y las costumbres de otros países.',
     emoji: '🧳',
     objective:
-      'Podés resolver problemas de viaje, decir qué vas a hacer si pasa algo y explicar costumbres de un lugar.',
+      'Puedes resolver problemas de viaje, decir qué vas a hacer si pasa algo y explicar costumbres de un lugar.',
     grammar: {
       title: 'Primer condicional',
       explanation:
@@ -189,7 +189,7 @@ export const EN_B1_U06: B1UnitDef = {
         '/ˈlʌɡɪdʒ/',
         '🧳',
         'Can I leave my luggage here?',
-        '¿Puedo dejar mi equipaje acá?',
+        '¿Puedo dejar mi equipaje aquí?',
         ['travel'],
       ),
       w(
@@ -199,7 +199,7 @@ export const EN_B1_U06: B1UnitDef = {
         '/ɑn ˈtaɪm/',
         '🕒',
         'The bus arrived on time.',
-        'El colectivo llegó a horario.',
+        'El autobús llegó a horario.',
         ['travel', 'time'],
         ['a tiempo', 'puntual'],
       ),
@@ -264,7 +264,7 @@ export const EN_B1_U06: B1UnitDef = {
         '/tɪp/',
         '💡',
         'Do people leave a tip here?',
-        '¿Acá se deja propina?',
+        '¿Aquí se deja propina?',
         ['travel', 'money'],
         ['propina', 'consejo'],
       ),
@@ -326,13 +326,13 @@ export const EN_B1_U06: B1UnitDef = {
             },
             {
               target: "You will miss the train if you don't hurry.",
-              base: 'Vas a perder el tren si no te apurás.',
+              base: 'Vas a perder el tren si no te apuras.',
             },
           ],
         },
         takeaways: [
-          'Decís qué va a pasar si se cumple algo: If…, … will…',
-          'Usás el presente después de if.',
+          'Dices qué va a pasar si se cumple algo: If…, … will…',
+          'Usas el presente después de if.',
         ],
         exercises: [
           ex.fillBlank(
@@ -356,7 +356,7 @@ export const EN_B1_U06: B1UnitDef = {
           ),
           ex.fillBlank(
             '___ you leave now, you will arrive on time.',
-            'Si salís ahora, vas a llegar a horario.',
+            'Si sales ahora, vas a llegar a horario.',
             'If',
             ['Until', 'Because', 'Before'],
             ['en-if', 'en-leave'],
@@ -425,13 +425,13 @@ export const EN_B1_U06: B1UnitDef = {
             { target: 'Our flight is delayed.', base: 'Nuestro vuelo está demorado.' },
             {
               target: "We'll miss the bus unless we take a taxi.",
-              base: 'Vamos a perder el colectivo a menos que tomemos un taxi.',
+              base: 'Vamos a perder el autobús a menos que tomemos un taxi.',
             },
           ],
         },
         takeaways: [
-          'Entendés y contás demoras y cancelaciones.',
-          'Usás unless para decir «a menos que».',
+          'Entiendes y cuentas demoras y cancelaciones.',
+          'Usas unless para decir «a menos que».',
         ],
         exercises: [
           ex.matchPairs(
@@ -477,7 +477,7 @@ export const EN_B1_U06: B1UnitDef = {
             AIRPORT,
             '¿Qué propone Tom?',
             'Tomar un taxi y avisar al hotel',
-            ['Esperar el colectivo', 'Volver a casa', 'Cambiar de vuelo'],
+            ['Esperar el autobús', 'Volver a casa', 'Cambiar de vuelo'],
             ['en-unless'],
             "Tom dice: «Unless we take a taxi. I'll call the hotel and tell them we'll be late».",
           ),
@@ -489,7 +489,7 @@ export const EN_B1_U06: B1UnitDef = {
           ),
           ex.orderWords(
             'Can I leave my luggage here?',
-            '¿Puedo dejar mi equipaje acá?',
+            '¿Puedo dejar mi equipaje aquí?',
             ['en-luggage', 'en-leave'],
             { id: 'en.ex.i91c441bue95lj' },
           ),
@@ -528,7 +528,7 @@ export const EN_B1_U06: B1UnitDef = {
         objective: 'Organizar un día de turismo: reservas, visitas guiadas y recuerdos.',
         intro: {
           explanation:
-            'Go sightseeing es salir a recorrer y conocer lugares. Una visita guiada tiene un guide (guía). Reservation es una reserva (de hotel, de mesa). Souvenir es un recuerdo que comprás en el viaje.',
+            'Go sightseeing es salir a recorrer y conocer lugares. Una visita guiada tiene un guide (guía). Reservation es una reserva (de hotel, de mesa). Souvenir es un recuerdo que compras en el viaje.',
           examples: [
             { target: 'We went sightseeing all day.', base: 'Recorrimos la ciudad todo el día.' },
             {
@@ -537,7 +537,7 @@ export const EN_B1_U06: B1UnitDef = {
             },
           ],
         },
-        takeaways: ['Organizás un día de turismo.', 'Entendés el programa de una visita guiada.'],
+        takeaways: ['Organizas un día de turismo.', 'Entiendes el programa de una visita guiada.'],
         exercises: [
           ex.translationChoice(
             'reservation',
@@ -624,12 +624,12 @@ export const EN_B1_U06: B1UnitDef = {
             'Currency es la moneda de un país; exchange money es cambiar dinero. Tip es propina (y también «consejo»: travel tips). Local es «del lugar»: the local currency, a local restaurant.',
           examples: [
             { target: 'Where can I exchange money?', base: '¿Dónde puedo cambiar dinero?' },
-            { target: 'Do people leave a tip here?', base: '¿Acá se deja propina?' },
+            { target: 'Do people leave a tip here?', base: '¿Aquí se deja propina?' },
           ],
         },
         takeaways: [
-          'Preguntás por la moneda local y dónde cambiar dinero.',
-          'Preguntás si se deja propina.',
+          'Preguntas por la moneda local y dónde cambiar dinero.',
+          'Preguntas si se deja propina.',
         ],
         exercises: [
           ex.matchPairs(
@@ -736,7 +736,7 @@ export const EN_B1_U06: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Explicás qué es de buena y de mala educación en un lugar.',
+          'Explicas qué es de buena y de mala educación en un lugar.',
           'Das consejos de viaje con if.',
         ],
         exercises: [

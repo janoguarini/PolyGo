@@ -111,11 +111,11 @@ export const PT_A2_U12: PtUnitDef = {
       'Dar una opinión, acordar y discrepar, condicionales sencillos (se…), y resolver problemas de todos los días: algo se rompió, no funciona o se cortó internet.',
     emoji: '💡',
     objective:
-      'Podés dar y pedir opiniones, decir si estás de acuerdo, plantear condiciones simples y explicar un problema para que te lo resuelvan.',
+      'Puedes dar y pedir opiniones, decir si estás de acuerdo, plantear condiciones simples y explicar un problema para que te lo resuelvan.',
     grammar: {
       title: 'Opinar · condicionales sencillos',
       explanation:
-        'Opinar: acho que + verbo (acho que é melhor), na minha opinião. Acordar: concordo; discrepar: discordo. Condición posible: se + presente y el resultado en presente o con vou + verbo (se você tem tempo, a gente vai). Expresiones fijas muy usadas: se der («si se puede»), se você quiser («si querés»).',
+        'Opinar: acho que + verbo (acho que é melhor), na minha opinião. Acordar: concordo; discrepar: discordo. Condición posible: se + presente y el resultado en presente o con vou + verbo (se você tem tempo, a gente vai). Expresiones fijas muy usadas: se der («si se puede»), se você quiser («si quieres»).',
       examples: [
         {
           target: 'Acho que morar no centro é melhor.',
@@ -123,7 +123,7 @@ export const PT_A2_U12: PtUnitDef = {
         },
         {
           target: 'Se você tem tempo, a gente pode almoçar.',
-          base: 'Si tenés tiempo, podemos almorzar.',
+          base: 'Si tienes tiempo, podemos almorzar.',
         },
         {
           target: 'O meu celular quebrou e não funciona.',
@@ -164,7 +164,7 @@ export const PT_A2_U12: PtUnitDef = {
         'concordo',
         'estoy de acuerdo',
         'Concordo com você.',
-        'Estoy de acuerdo con vos.',
+        'Estoy de acuerdo contigo.',
         ['opinions'],
         {
           acceptedTexts: ['concorda'],
@@ -214,9 +214,9 @@ export const PT_A2_U12: PtUnitDef = {
       w(
         'pt-se-voce-quiser',
         'se você quiser',
-        'si querés',
+        'si quieres',
         'Se você quiser, eu te ajudo.',
-        'Si querés, te ayudo.',
+        'Si quieres, te ayudo.',
         ['conditions'],
         {
           acceptedTexts: ['se quiser'],
@@ -280,7 +280,7 @@ export const PT_A2_U12: PtUnitDef = {
         'consertar',
         'arreglar / reparar',
         'Você pode consertar o meu computador?',
-        '¿Podés arreglar mi computadora?',
+        '¿Puedes arreglar mi computadora?',
         ['problems'],
         {
           acceptedTexts: ['consertei', 'consertou'],
@@ -326,7 +326,7 @@ export const PT_A2_U12: PtUnitDef = {
             { target: 'O que você acha do filme?', base: '¿Qué te parece la película?' },
           ],
         },
-        takeaways: ['Das tu opinión: acho que…, na minha opinião…', 'Preguntás: o que você acha?'],
+        takeaways: ['Das tu opinión: acho que…, na minha opinião…', 'Preguntas: o que você acha?'],
         exercises: [
           ex.translationChoice(
             'acho que',
@@ -396,7 +396,7 @@ export const PT_A2_U12: PtUnitDef = {
           ),
           ex.shortAnswer(
             'O que você acha do português? (bonito)',
-            '¿Qué te parece el portugués? (Respondé que creés que es muy lindo.)',
+            '¿Qué te parece el portugués? (Responde que crees que es muy lindo.)',
             'Acho que é muito bonito.',
             [
               'Eu acho que é muito bonito.',
@@ -420,9 +420,9 @@ export const PT_A2_U12: PtUnitDef = {
         objective: 'Decir si estás de acuerdo.',
         intro: {
           explanation:
-            '«Estoy de acuerdo» es un solo verbo: concordo (com você). «No estoy de acuerdo»: discordo. Si te da igual: tanto faz. Si no sabés: sei lá (informal). Vale a pena es «vale la pena».',
+            '«Estoy de acuerdo» es un solo verbo: concordo (com você). «No estoy de acuerdo»: discordo. Si te da igual: tanto faz. Si no sabes: sei lá (informal). Vale a pena es «vale la pena».',
           examples: [
-            { target: 'Concordo com você.', base: 'Estoy de acuerdo con vos.' },
+            { target: 'Concordo com você.', base: 'Estoy de acuerdo contigo.' },
             {
               target: 'Pizza ou hambúrguer? Tanto faz.',
               base: '¿Pizza o hamburguesa? Me da igual.',
@@ -430,8 +430,8 @@ export const PT_A2_U12: PtUnitDef = {
           ],
         },
         takeaways: [
-          'Acordás y discrepás: concordo, discordo.',
-          'Decís que te da igual: tanto faz.',
+          'Acuerdas y discrepas: concordo, discordo.',
+          'Dices que te da igual: tanto faz.',
         ],
         exercises: [
           ex.translationChoice(
@@ -468,7 +468,7 @@ export const PT_A2_U12: PtUnitDef = {
           ),
           ex.fillBlank(
             'Eu ___ com você: é muito caro.',
-            'Estoy de acuerdo con vos: es muy caro.',
+            'Estoy de acuerdo contigo: es muy caro.',
             'concordo',
             ['discordo', 'acho', 'tanto faz'],
             ['pt-concordo'],
@@ -503,7 +503,7 @@ export const PT_A2_U12: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Acho que o curso é caro, mas é muito bom.',
-            'Creo que el curso es caro, pero es muy bueno. (Decí que estás de acuerdo y que vale la pena.)',
+            'Creo que el curso es caro, pero es muy bueno. (Di que estás de acuerdo y que vale la pena.)',
             'Concordo, vale a pena.',
             [
               'Concordo! Vale a pena.',
@@ -515,7 +515,7 @@ export const PT_A2_U12: PtUnitDef = {
             { id: 'pt.ex.5r4vj6u9scyuik' },
           ),
           ex.translateWrite(
-            'No estoy de acuerdo con vos.',
+            'No estoy de acuerdo contigo.',
             'Eu discordo de você.',
             ['pt-discordo'],
             {
@@ -536,13 +536,13 @@ export const PT_A2_U12: PtUnitDef = {
         objective: 'Plantear condiciones sencillas.',
         intro: {
           explanation:
-            'Una condición posible: se + presente y el resultado en presente o con vou + verbo: se você tem tempo, a gente vai. Hay expresiones fijas que vas a oír siempre: se você quiser («si querés») y se der («si se puede»).',
+            'Una condición posible: se + presente y el resultado en presente o con vou + verbo: se você tem tempo, a gente vai. Hay expresiones fijas que vas a oír siempre: se você quiser («si quieres») y se der («si se puede»).',
           examples: [
-            { target: 'Se você quiser, eu te ajudo.', base: 'Si querés, te ayudo.' },
+            { target: 'Se você quiser, eu te ajudo.', base: 'Si quieres, te ayudo.' },
             { target: 'Se der, eu passo aí amanhã.', base: 'Si puedo, paso mañana.' },
           ],
         },
-        takeaways: ['Planteás una condición con se.', 'Usás se der y se você quiser.'],
+        takeaways: ['Planteas una condición con se.', 'Usas se der y se você quiser.'],
         exercises: [
           ex.translationChoice(
             'se der',
@@ -553,8 +553,8 @@ export const PT_A2_U12: PtUnitDef = {
           ),
           ex.translationChoice(
             'se você quiser',
-            'si querés',
-            ['si quisiste', 'se quiere', 'si vos querías'],
+            'si quieres',
+            ['si quisiste', 'se quiere', 'si tú querías'],
             ['pt-se-voce-quiser'],
             {
               id: 'pt.ex.rl4bflr9z28ivh',
@@ -568,7 +568,7 @@ export const PT_A2_U12: PtUnitDef = {
           ),
           ex.fillBlank(
             'Se você ___ tempo, a gente almoça junto.',
-            'Si tenés tiempo, almorzamos juntos.',
+            'Si tienes tiempo, almorzamos juntos.',
             'tem',
             ['tinha', 'teve', 'ter'],
             ['pt-tem'],
@@ -586,8 +586,8 @@ export const PT_A2_U12: PtUnitDef = {
             'pt.ex.rswm7byd11k3ma',
             SUPORTE,
             '¿Qué ofrece la empresa?',
-            'Mandar un técnico mañana a la mañana',
-            ['Devolverle la plata', 'Cambiar el contrato', 'Mandar un técnico hoy'],
+            'Mandar un técnico mañana por la mañana',
+            ['Devolverle el dinero', 'Cambiar el contrato', 'Mandar un técnico hoy'],
             ['pt-se-voce-quiser', 'pt-internet-caiu', 'pt-nao-funciona'],
             'La atendente dice: «Se o senhor quiser, um técnico pode ir amanhã de manhã».',
           ),
@@ -602,20 +602,20 @@ export const PT_A2_U12: PtUnitDef = {
           ),
           ex.orderWords(
             'Se você quiser eu te ajudo.',
-            'Si querés, te ayudo.',
+            'Si quieres, te ayudo.',
             ['pt-se-voce-quiser'],
             { id: 'pt.ex.31pgoln9l40905' },
           ),
           ex.shortAnswer(
             'Você vem à festa amanhã?',
-            '¿Venís a la fiesta mañana? (Respondé que si podés, vas.)',
+            '¿Vienes a la fiesta mañana? (Responde que si puedes, vas.)',
             'Se der, eu vou.',
             ['Se der, vou.', 'Se der, eu vou sim.', 'Vou, se der.', 'Se der, eu vou!'],
             ['pt-se-der'],
             { id: 'pt.ex.shqdyueq60scxa' },
           ),
           ex.translateWrite(
-            'Si querés, te llamo mañana.',
+            'Si quieres, te llamo mañana.',
             'Se você quiser, eu te ligo amanhã.',
             ['pt-se-voce-quiser'],
             {
@@ -643,8 +643,8 @@ export const PT_A2_U12: PtUnitDef = {
           ],
         },
         takeaways: [
-          'Explicás un problema: quebrou, não funciona.',
-          'Pedís que lo arreglen: consertar.',
+          'Explicas un problema: quebrou, não funciona.',
+          'Pides que lo arreglen: consertar.',
         ],
         exercises: [
           ex.translationChoice(
@@ -687,7 +687,7 @@ export const PT_A2_U12: PtUnitDef = {
           ),
           ex.fillBlank(
             'Você pode ___ o meu computador?',
-            '¿Podés arreglar mi computadora?',
+            '¿Puedes arreglar mi computadora?',
             'consertar',
             ['quebrar', 'funcionar', 'apagar'],
             ['pt-consertar', 'pt-computador'],
@@ -712,7 +712,7 @@ export const PT_A2_U12: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Por que você não respondeu? (celular quebrou)',
-            '¿Por qué no contestaste? (Respondé que se te rompió el celular.)',
+            '¿Por qué no contestaste? (Responde que se te rompió el celular.)',
             'O meu celular quebrou.',
             [
               'Meu celular quebrou.',
@@ -742,8 +742,8 @@ export const PT_A2_U12: PtUnitDef = {
           ],
         },
         takeaways: [
-          'Hacés un reclamo: fazer uma reclamação.',
-          'Explicás que todavía no se resolvió: ainda não…',
+          'Haces un reclamo: fazer uma reclamação.',
+          'Explicas que todavía no se resolvió: ainda não…',
         ],
         exercises: [
           ex.translationChoice(
@@ -805,7 +805,7 @@ export const PT_A2_U12: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Atendimento, bom dia. Como posso ajudar?',
-            'Atención al cliente, buen día. ¿En qué puedo ayudar? (Decí que querés hacer un reclamo: se cortó internet.)',
+            'Atención al cliente, buenos días. ¿En qué puedo ayudar? (Di que quieres hacer un reclamo: se cortó internet.)',
             'Quero fazer uma reclamação. A internet caiu.',
             [
               'Bom dia, quero fazer uma reclamação. A internet caiu.',

@@ -281,7 +281,7 @@ const MAP_TABLE: Record<number, { lesson: number; title: string; primary: string
   3: { lesson: 6, title: 'En contexto: tarjetas de jugadores', primary: ['cR01', 'cL03'] },
   4: { lesson: 6, title: 'En contexto: la familia de Ana', primary: ['cR03', 'cL05'] },
   5: { lesson: 7, title: 'En contexto: ¿cuál es el tuyo?', primary: ['cR05', 'cL01'] },
-  6: { lesson: 6, title: 'En contexto: un departamento en alquiler', primary: ['cR03', 'cL04'] },
+  6: { lesson: 6, title: 'En contexto: un apartamento en alquiler', primary: ['cR03', 'cL04'] },
   7: { lesson: 6, title: 'En contexto: en el café', primary: ['cR01', 'cL05'] },
   8: { lesson: 6, title: 'En contexto: la semana de Tom', primary: ['cR02', 'cL06'] },
   9: { lesson: 7, title: 'En contexto: el programa del museo', primary: ['cR01', 'cL03'] },

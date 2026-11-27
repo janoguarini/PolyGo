@@ -4,7 +4,7 @@ import { defineStrings } from '..';
 export const resetPasswordStrings = defineStrings({
   es: {
     title: 'Nueva contraseña',
-    subtitle: 'Elegí una contraseña que no uses en otros sitios.',
+    subtitle: 'Elige una contraseña que no uses en otros sitios.',
     password: 'Contraseña nueva',
     passwordHint: 'Mínimo 6 caracteres.',
     confirmPassword: 'Repetir contraseña',
@@ -19,5 +19,23 @@ export const resetPasswordStrings = defineStrings({
     confirmPassword: 'Confirm password',
     save: 'Save password',
     cancel: 'Cancel and sign out',
+  },
+  'pt-BR': {
+    title: 'Nova senha',
+    subtitle: 'Escolha uma senha que você não use em outros sites.',
+    password: 'Nova senha',
+    passwordHint: 'Mínimo de 6 caracteres.',
+    confirmPassword: 'Repetir senha',
+    save: 'Salvar senha',
+    cancel: 'Cancelar e sair',
+  },
+  it: {
+    title: 'Nuova password',
+    subtitle: 'Scegli una password che non usi su altri siti.',
+    password: 'Nuova password',
+    passwordHint: 'Almeno 6 caratteri.',
+    confirmPassword: 'Ripeti la password',
+    save: 'Salva password',
+    cancel: 'Annulla ed esci',
   },
 });

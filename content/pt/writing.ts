@@ -16,14 +16,14 @@ import type { WritingRequirement, WritingTaskDef } from '../../shared/writing';
 const common = (minSentences: number): WritingRequirement[] => [
   {
     id: 'sentences',
-    label: `Escribís al menos ${minSentences} oraciones`,
+    label: `Escribes al menos ${minSentences} oraciones`,
     kind: 'min_sentences',
     min: minSentences,
   },
   { id: 'capital', label: 'Cada oración empieza con mayúscula', kind: 'capital_start' },
   {
     id: 'punctuation',
-    label: 'Terminás con punto, signo de exclamación o de pregunta',
+    label: 'Terminas con punto, signo de exclamación o de pregunta',
     kind: 'end_punctuation',
   },
 ];
@@ -43,20 +43,20 @@ export const PT_WRITING_TASKS: readonly WritingTaskDef[] = [
     kind: 'guided',
     codes: [],
     lesson: 'pt-a1-u02-l05',
-    title: 'Presentate',
+    title: 'Preséntate',
     instructions:
-      'Presentate en portugués (con datos reales o inventados): saludá, decí tu nombre, de dónde sos y qué sos (estudiante, profesor…).',
+      'Preséntate en portugués (con datos reales o inventados): saluda, di tu nombre, de dónde eres y qué eres (estudiante, profesor…).',
     prompts: ['Como você se chama?', 'De onde você é?'],
     requirements: [
       {
         id: 'name',
-        label: 'Decís tu nombre (meu nome é…)',
+        label: 'Dices tu nombre (meu nome é…)',
         kind: 'pattern',
         patterns: [['meu', 'nome', 'é']],
       },
       {
         id: 'origin',
-        label: 'Decís de dónde sos (sou de…)',
+        label: 'Dices de dónde eres (sou de…)',
         kind: 'pattern',
         patterns: [
           ['sou', 'de'],
@@ -75,18 +75,18 @@ export const PT_WRITING_TASKS: readonly WritingTaskDef[] = [
     codes: [],
     lesson: 'pt-a1-u04-l05',
     title: 'Tu familia',
-    instructions: 'Describí a tu familia: quiénes son y cómo se llaman. Usá meu y minha.',
+    instructions: 'Describe a tu familia: quiénes son y cómo se llaman. Usa meu y minha.',
     prompts: ['Como se chama a sua mãe?', 'Você tem irmãos?'],
     requirements: [
       {
         id: 'possessive',
-        label: 'Usás meu o minha (meu pai, minha irmã…)',
+        label: 'Usas meu o minha (meu pai, minha irmã…)',
         kind: 'pattern',
         patterns: [['meu|minha|meus|minhas', '<WORD>']],
       },
       {
         id: 'name',
-        label: 'Decís cómo se llama alguien (se chama…)',
+        label: 'Dices cómo se llama alguien (se chama…)',
         kind: 'pattern',
         patterns: [['se', 'chama']],
       },
@@ -103,18 +103,18 @@ export const PT_WRITING_TASKS: readonly WritingTaskDef[] = [
     codes: [],
     lesson: 'pt-a1-u06-l05',
     title: 'Tu casa',
-    instructions: 'Describí tu casa o tu departamento: qué cuartos tiene y qué hay en cada uno.',
+    instructions: 'Describe tu casa o tu apartamento: qué cuartos tiene y qué hay en cada uno.',
     prompts: ['Como é o seu quarto?', 'O que tem na cozinha?'],
     requirements: [
       {
         id: 'there-is',
-        label: 'Decís qué hay con tem o há',
+        label: 'Dices qué hay con tem o há',
         kind: 'pattern',
         patterns: [['tem'], ['há']],
       },
       {
         id: 'room',
-        label: 'Nombrás un cuarto con no / na (no quarto, na cozinha…)',
+        label: 'Nombras un cuarto con no / na (no quarto, na cozinha…)',
         kind: 'pattern',
         patterns: [['no|na', 'quarto|cozinha|sala|banheiro']],
       },
@@ -132,18 +132,18 @@ export const PT_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'pt-a1-u08-l05',
     title: 'Tu rutina',
     instructions:
-      'Contá un día normal tuyo: a qué hora te despertás, qué hacés a la mañana y a la noche.',
+      'Cuenta un día normal tuyo: a qué hora te despiertas, qué haces por la mañana y por la noche.',
     prompts: ['Você trabalha?', 'Você janta em casa?'],
     requirements: [
       {
         id: 'verbs',
-        label: 'Usás al menos un verbo de la rutina (acordo, trabalho, estudo, janto…)',
+        label: 'Usas al menos un verbo de la rutina (acordo, trabalho, estudo, janto…)',
         kind: 'pattern',
         patterns: [['acordo|trabalho|estudo|almoço|janto|leio|escrevo|durmo|assisto|tomo']],
       },
       {
         id: 'time',
-        label: 'Decís cuándo (de manhã, à noite, todo dia…)',
+        label: 'Dices cuándo (de manhã, à noite, todo dia…)',
         kind: 'pattern',
         patterns: [['de', 'manhã'], ['à', 'noite'], ['todo', 'dia'], ['sempre']],
       },
@@ -161,12 +161,12 @@ export const PT_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'pt-a1-u13-l05',
     title: 'Tu trabajo y el de tu familia',
     instructions:
-      'Contá a qué te dedicás vos y otras personas de tu familia, y dónde trabajan. Usá al menos un verbo en plural (nós…, eles…).',
+      'Cuenta a qué te dedicas tú y otras personas de tu familia, y dónde trabajan. Usa al menos un verbo en plural (nós…, eles…).',
     prompts: ['O que você faz?', 'Onde vocês trabalham?'],
     requirements: [
       {
         id: 'job',
-        label: 'Decís una profesión (sou professor, ela é médica…)',
+        label: 'Dices una profesión (sou professor, ela é médica…)',
         kind: 'pattern',
         patterns: [
           [
@@ -177,7 +177,7 @@ export const PT_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'plural',
-        label: 'Usás un verbo en plural (trabalhamos, trabalham, somos, são)',
+        label: 'Usas un verbo en plural (trabalhamos, trabalham, somos, são)',
         kind: 'pattern',
         patterns: [['trabalhamos|trabalham|somos|são']],
       },
@@ -195,24 +195,24 @@ export const PT_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'pt-a1-u16-l05',
     title: 'Un mensaje para salir',
     instructions:
-      'Escribile un mensaje corto a un amigo para proponerle un plan: qué día, adónde (ao / à) y cómo van.',
+      'Escríbele un mensaje corto a un amigo para proponerle un plan: qué día, adónde (ao / à) y cómo van.',
     prompts: ['Vamos ao cinema?', 'Como a gente vai?'],
     requirements: [
       {
         id: 'propose',
-        label: 'Proponés un plan con vamos…?',
+        label: 'Propones un plan con vamos…?',
         kind: 'pattern',
         patterns: [['vamos']],
       },
       {
         id: 'where',
-        label: 'Decís adónde con ao o à',
+        label: 'Dices adónde con ao o à',
         kind: 'pattern',
         patterns: [['ao|à', '<WORD>']],
       },
       {
         id: 'day',
-        label: 'Decís qué día (no sábado, amanhã…)',
+        label: 'Dices qué día (no sábado, amanhã…)',
         kind: 'pattern',
         patterns: [[DAYS]],
       },
@@ -232,19 +232,19 @@ export const PT_WRITING_TASKS: readonly WritingTaskDef[] = [
     block: 1,
     title: 'Texto libre: yo',
     instructions:
-      'Escribí un texto libre sobre vos: quién sos, tu familia, tu rutina, lo que te gusta y qué hacés en tu tiempo libre. No hay respuesta correcta: compará con el modelo y revisá la lista.',
+      'Escribe un texto libre sobre ti: quién eres, tu familia, tu rutina, lo que te gusta y qué haces en tu tiempo libre. No hay respuesta correcta: compara con el modelo y revisa la lista.',
     prompts: ['Quem é você?', 'O que você gosta de fazer?', 'O que você faz no fim de semana?'],
     requirements: [
       {
         id: 'likes',
-        label: 'Pista: contá algo que te gusta (gosto de…)',
+        label: 'Pista: cuenta algo que te gusta (gosto de…)',
         kind: 'pattern',
         patterns: [['gosto', 'de|do|da']],
         optional: true,
       },
       {
         id: 'state',
-        label: 'Pista: decí cómo estás hoy (estou…)',
+        label: 'Pista: di cómo estás hoy (estou…)',
         kind: 'pattern',
         patterns: [['estou']],
         optional: true,
@@ -269,18 +269,18 @@ export const PT_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'pt-a2-u01-l05',
     title: 'Tu fin de semana',
     instructions:
-      'Contá qué hiciste el fin de semana pasado (real o inventado), en orden, con el pretérito perfeito.',
+      'Cuenta qué hiciste el fin de semana pasado (real o inventado), en orden, con el pretérito perfeito.',
     prompts: ['Como foi o seu fim de semana?', 'O que você fez no sábado?'],
     requirements: [
       {
         id: 'past',
-        label: 'Usás el perfeito (falei, comi, saí, joguei…)',
+        label: 'Usas el perfeito (falei, comi, saí, joguei…)',
         kind: 'pattern',
         patterns: [[PERFEITO]],
       },
       {
         id: 'when',
-        label: 'Decís cuándo (no sábado, ontem, na semana passada…)',
+        label: 'Dices cuándo (no sábado, ontem, na semana passada…)',
         kind: 'pattern',
         patterns: [['no', 'sábado|domingo'], ['ontem'], ['semana', 'passada']],
       },
@@ -300,24 +300,24 @@ export const PT_WRITING_TASKS: readonly WritingTaskDef[] = [
     codes: [],
     lesson: 'pt-a2-u02-l05',
     title: 'Un viaje',
-    instructions: 'Contá un viaje que hiciste: adónde fuiste, cómo, qué conociste y cómo fue.',
+    instructions: 'Cuenta un viaje que hiciste: adónde fuiste, cómo, qué conociste y cómo fue.',
     prompts: ['Para onde você foi?', 'O que você conheceu?', 'Como foi a viagem?'],
     requirements: [
       {
         id: 'went',
-        label: 'Decís adónde fuiste (fui para…, viajei para…)',
+        label: 'Dices adónde fuiste (fui para…, viajei para…)',
         kind: 'pattern',
         patterns: [['fui|viajei', 'para|a|ao|à']],
       },
       {
         id: 'visited',
-        label: 'Decís qué conociste (conheci…)',
+        label: 'Dices qué conociste (conheci…)',
         kind: 'pattern',
         patterns: [['conheci']],
       },
       {
         id: 'opinion',
-        label: 'Decís cómo fue (foi ótima, foi legal…)',
+        label: 'Dices cómo fue (foi ótima, foi legal…)',
         kind: 'pattern',
         patterns: [['foi|foram', '<WORD>']],
       },
@@ -335,30 +335,30 @@ export const PT_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'pt-a2-u03-l05',
     title: 'Un correo para reservar',
     instructions:
-      'Escribí un correo a una posada para reservar una habitación: saludá, decí qué querés, para cuántas noches y preguntá qué incluye.',
+      'Escribe un correo a una posada para reservar una habitación: saluda, di qué quieres, para cuántas noches y pregunta qué incluye.',
     prompts: ['Para quantas noites?', 'O café da manhã está incluído?'],
     requirements: [
       {
         id: 'greeting',
-        label: 'Saludás (Olá, Bom dia, Prezados…)',
+        label: 'Saludas (Olá, Bom dia, Prezados…)',
         kind: 'pattern',
         patterns: [['olá|oi|prezados|prezada|prezado'], ['bom', 'dia'], ['boa', 'tarde|noite']],
       },
       {
         id: 'polite',
-        label: 'Pedís con cortesía (gostaria de…, poderia…)',
+        label: 'Pides con cortesía (gostaria de…, poderia…)',
         kind: 'pattern',
         patterns: [['gostaria'], ['poderia']],
       },
       {
         id: 'room',
-        label: 'Decís qué habitación (quarto de casal…)',
+        label: 'Dices qué habitación (quarto de casal…)',
         kind: 'pattern',
         patterns: [['quarto']],
       },
       {
         id: 'question',
-        label: 'Hacés una pregunta (…?)',
+        label: 'Haces una pregunta (…?)',
         kind: 'pattern',
         patterns: [['incluído|incluída|diária|quanto']],
       },
@@ -376,18 +376,18 @@ export const PT_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'pt-a2-u04-l05',
     title: 'Tu infancia',
     instructions:
-      'Contá cómo era tu vida de chico: dónde vivías, cómo eras y qué hacías siempre. Usá el imperfeito.',
+      'Cuenta cómo era tu vida de niño: dónde vivías, cómo eras y qué hacías siempre. Usa el imperfeito.',
     prompts: ['Onde você morava?', 'Do que você brincava?'],
     requirements: [
       {
         id: 'imperfect',
-        label: 'Usás el imperfeito (era, tinha, morava, brincava, ia…)',
+        label: 'Usas el imperfeito (era, tinha, morava, brincava, ia…)',
         kind: 'pattern',
         patterns: [['era|tinha|morava|brincava|brincávamos|gostava|ia|costumava|estudava|jogava']],
       },
       {
         id: 'child',
-        label: 'Ubicás el recuerdo (quando eu era criança, naquela época…)',
+        label: 'Ubicas el recuerdo (quando eu era criança, naquela época…)',
         kind: 'pattern',
         patterns: [['quando', 'eu', 'era'], ['naquela', 'época'], ['antigamente']],
       },
@@ -408,24 +408,24 @@ export const PT_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'pt-a2-u05-l05',
     title: 'Algo que te pasó',
     instructions:
-      'Contá algo que te pasó (una sorpresa, un problema, algo gracioso): describí la escena con estava y contá qué pasó, con conectores.',
+      'Cuenta algo que te pasó (una sorpresa, un problema, algo gracioso): describe la escena con estava y cuenta qué pasó, con conectores.',
     prompts: ['Onde você estava?', 'O que aconteceu?', 'E no final?'],
     requirements: [
       {
         id: 'scene',
-        label: 'Describís la escena (eu estava…, estava chovendo…)',
+        label: 'Describes la escena (eu estava…, estava chovendo…)',
         kind: 'pattern',
         patterns: [['estava']],
       },
       {
         id: 'event',
-        label: 'Contás qué pasó con el perfeito (perdi, caí, vi, encontrei…)',
+        label: 'Cuentas qué pasó con el perfeito (perdi, caí, vi, encontrei…)',
         kind: 'pattern',
         patterns: [['perdi|caí|caiu|vi|ouvi|encontrei|percebi|cheguei|chegou|aconteceu|peguei']],
       },
       {
         id: 'connector',
-        label: 'Usás un conector (primeiro, então, de repente, no final…)',
+        label: 'Usas un conector (primeiro, então, de repente, no final…)',
         kind: 'pattern',
         patterns: [['primeiro|então|enquanto|depois'], ['de', 'repente'], ['no', 'final']],
       },
@@ -447,12 +447,12 @@ export const PT_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'pt-a2-u06-l05',
     title: 'Invitar y responder',
     instructions:
-      'Escribí dos mensajes: uno para invitar a un amigo (qué, cuándo, dónde) y la respuesta de tu amigo (acepta o rechaza con cortesía).',
+      'Escribe dos mensajes: uno para invitar a un amigo (qué, cuándo, dónde) y la respuesta de tu amigo (acepta o rechaza con cortesía).',
     prompts: ['Topa?', 'Que dia?', 'Que pena, não posso…'],
     requirements: [
       {
         id: 'plan',
-        label: 'Contás el plan con vou / vamos + verbo',
+        label: 'Cuentas el plan con vou / vamos + verbo',
         kind: 'pattern',
         patterns: [
           [
@@ -463,13 +463,13 @@ export const PT_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'invite',
-        label: 'Invitás (topa?, você quer…?, vamos…?)',
+        label: 'Invitas (topa?, você quer…?, vamos…?)',
         kind: 'pattern',
         patterns: [['topa'], ['você', 'quer'], ['quer', 'ir|vir'], ['vamos']],
       },
       {
         id: 'answer',
-        label: 'Respondés (com certeza, bora, que pena, combinado…)',
+        label: 'Respondes (com certeza, bora, que pena, combinado…)',
         kind: 'pattern',
         patterns: [['bora|combinado|topo'], ['com', 'certeza'], ['que', 'pena'], ['não', 'posso']],
       },
@@ -487,30 +487,30 @@ export const PT_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'pt-a2-u07-l05',
     title: 'Un correo para una pasantía',
     instructions:
-      'Escribí un correo formal para postularte a una pasantía: saludo formal, qué estudiás, por qué te interesa y despedida formal.',
+      'Escribe un correo formal para postularte a una pasantía: saludo formal, qué estudias, por qué te interesa y despedida formal.',
     prompts: ['O que você estuda?', 'Por que você quer a vaga?'],
     requirements: [
       {
         id: 'greeting',
-        label: 'Saludás con formalidad (Prezados, Prezada…)',
+        label: 'Saludas con formalidad (Prezados, Prezada…)',
         kind: 'pattern',
         patterns: [['prezados|prezada|prezado']],
       },
       {
         id: 'studies',
-        label: 'Decís qué estudiás (faculdade, curso…)',
+        label: 'Dices qué estudias (faculdade, curso…)',
         kind: 'pattern',
         patterns: [['faculdade|curso|estudo|estudante']],
       },
       {
         id: 'goal',
-        label: 'Decís qué querés (gostaria de…, pretendo…)',
+        label: 'Dices qué quieres (gostaria de…, pretendo…)',
         kind: 'pattern',
         patterns: [['gostaria'], ['pretendo']],
       },
       {
         id: 'closing',
-        label: 'Te despedís con formalidad (Atenciosamente)',
+        label: 'Te despides con formalidad (Atenciosamente)',
         kind: 'pattern',
         patterns: [['atenciosamente']],
       },
@@ -532,7 +532,7 @@ export const PT_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'pt-a2-u08-l05',
     title: 'Consejos de salud',
     instructions:
-      'Un amigo está resfriado. Escribile un mensaje: preguntá cómo está y dale al menos dos consejos con el imperativo.',
+      'Un amigo está resfriado. Escríbele un mensaje: pregunta cómo está y dale al menos dos consejos con el imperativo.',
     prompts: ['Como você está?', 'Você está com febre?'],
     requirements: [
       {
@@ -550,7 +550,7 @@ export const PT_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'wish',
-        label: 'Te despedís deseando que se mejore (melhoras!)',
+        label: 'Te despides deseando que se mejore (melhoras!)',
         kind: 'pattern',
         patterns: [['melhoras']],
       },
@@ -570,14 +570,14 @@ export const PT_WRITING_TASKS: readonly WritingTaskDef[] = [
     kind: 'guided',
     codes: [],
     lesson: 'pt-a2-u09-l05',
-    title: 'Recomendá una tienda o un producto',
+    title: 'Recomienda una tienda o un producto',
     instructions:
-      'Recomendale a alguien una tienda, un restaurante o un producto: comparalo con otro y decí por qué es el mejor.',
+      'Recomiéndale a alguien una tienda, un restaurante o un producto: compáralo con otro y di por qué es el mejor.',
     prompts: ['Qual é o melhor?', 'Por quê?'],
     requirements: [
       {
         id: 'compare',
-        label: 'Comparás (mais… do que, menos… do que, tão… quanto)',
+        label: 'Comparas (mais… do que, menos… do que, tão… quanto)',
         kind: 'pattern',
         patterns: [
           ['mais|menos', '<WORD>', 'do|que'],
@@ -586,7 +586,7 @@ export const PT_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'best',
-        label: 'Decís cuál es el mejor (o melhor, o mais…)',
+        label: 'Dices cuál es el mejor (o melhor, o mais…)',
         kind: 'pattern',
         patterns: [['o|a', 'melhor|mais|pior']],
       },
@@ -609,18 +609,18 @@ export const PT_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'pt-a2-u10-l05',
     title: 'Un mensaje a un amigo',
     instructions:
-      'Escribile un mensaje a un amigo: contale que se te quedó el celular sin batería o se te olvidó la contraseña, y pedile que te llame o te mande algo.',
+      'Escríbele un mensaje a un amigo: cuéntale que se te quedó el celular sin batería o se te olvidó la contraseña, y pídele que te llame o te mande algo.',
     prompts: ['O que aconteceu?', 'O que você quer?'],
     requirements: [
       {
         id: 'pronoun',
-        label: 'Usás me o te antes del verbo (me manda, te ligo…)',
+        label: 'Usas me o te antes del verbo (me manda, te ligo…)',
         kind: 'pattern',
         patterns: [['me|te', 'manda|mando|liga|ligo|ajuda|ajudo|mandar|ligar']],
       },
       {
         id: 'tech',
-        label: 'Nombrás algo de tecnología (celular, senha, carregador…)',
+        label: 'Nombras algo de tecnología (celular, senha, carregador…)',
         kind: 'pattern',
         patterns: [['celular|senha|carregador|computador|aplicativo|mensagem|áudio|zap|tela']],
       },
@@ -638,7 +638,7 @@ export const PT_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'pt-a2-u12-l05',
     title: 'Tu opinión',
     instructions:
-      'Respondé en un foro: ¿es mejor vivir en el centro o en un barrio tranquilo? Da tu opinión, una razón y algo con lo que estés o no estés de acuerdo.',
+      'Responde en un foro: ¿es mejor vivir en el centro o en un barrio tranquilo? Da tu opinión, una razón y algo con lo que estés o no estés de acuerdo.',
     prompts: ['O que você acha?', 'Por quê?'],
     requirements: [
       {
@@ -652,7 +652,7 @@ export const PT_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'agree',
-        label: 'Decís si estás de acuerdo (concordo, discordo)',
+        label: 'Dices si estás de acuerdo (concordo, discordo)',
         kind: 'pattern',
         patterns: [['concordo|discordo']],
       },
@@ -679,19 +679,19 @@ export const PT_WRITING_TASKS: readonly WritingTaskDef[] = [
     block: 1,
     title: 'Texto libre: organizar un viaje',
     instructions:
-      'Escribile a un amigo para organizar un viaje juntos: adónde van a ir, cómo, dónde se van a quedar y qué van a hacer. No hay respuesta correcta: compará con el modelo y revisá la lista.',
+      'Escríbele a un amigo para organizar un viaje juntos: adónde van a ir, cómo, dónde se van a quedar y qué van a hacer. No hay respuesta correcta: compara con el modelo y revisa la lista.',
     prompts: ['Para onde a gente vai?', 'Onde a gente vai ficar?', 'O que a gente vai fazer?'],
     requirements: [
       {
         id: 'future',
-        label: 'Pista: usá vou / vamos + verbo',
+        label: 'Pista: usa vou / vamos + verbo',
         kind: 'pattern',
         patterns: [['vou|vamos|vai', '<WORD>']],
         optional: true,
       },
       {
         id: 'stay',
-        label: 'Pista: decí dónde se quedan (pousada, hotel…)',
+        label: 'Pista: di dónde se quedan (pousada, hotel…)',
         kind: 'pattern',
         patterns: [['pousada|hotel|quarto']],
         optional: true,
@@ -713,21 +713,21 @@ export const PT_WRITING_TASKS: readonly WritingTaskDef[] = [
     codes: [],
     lesson: 'pt-a2-u12-final',
     block: 2,
-    title: 'Texto libre: un día que no olvidás',
+    title: 'Texto libre: un día que no olvidas',
     instructions:
-      'Contá un día importante de tu vida (real o inventado): cómo era tu vida en esa época, qué pasó, cómo te sentiste y qué pensás hoy. No hay respuesta correcta: compará con el modelo y revisá la lista.',
+      'Cuenta un día importante de tu vida (real o inventado): cómo era tu vida en esa época, qué pasó, cómo te sentiste y qué piensas hoy. No hay respuesta correcta: compara con el modelo y revisa la lista.',
     prompts: ['Quando foi?', 'O que aconteceu?', 'O que você acha hoje?'],
     requirements: [
       {
         id: 'past',
-        label: 'Pista: combiná el imperfeito (era, tinha) y el perfeito (fui, conheci)',
+        label: 'Pista: combina el imperfeito (era, tinha) y el perfeito (fui, conheci)',
         kind: 'pattern',
         patterns: [['era|tinha|morava|estava'], [PERFEITO]],
         optional: true,
       },
       {
         id: 'opinion',
-        label: 'Pista: cerrá con tu opinión (acho que…)',
+        label: 'Pista: cierra con tu opinión (acho que…)',
         kind: 'pattern',
         patterns: [
           ['acho', 'que'],

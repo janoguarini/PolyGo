@@ -48,14 +48,17 @@ export const FR_A1_U03: FrUnitDef = {
       "Números del 1 al 12 y el 20, avoir en singular y la edad con avoir (j'ai vingt ans). Six y dix, deux y douze, liaison deux‿ans.",
     emoji: '🔢',
     objective:
-      'Podés contar del uno al doce y el veinte, decir cuántos años tenés y preguntar la edad de otra persona.',
+      'Puedes contar del uno al doce y el veinte, decir cuántos años tienes y preguntar la edad de otra persona.',
     grammar: {
       title: 'Avoir y la edad',
       explanation:
         "La edad se dice con avoir (tener), no con être: j'ai vingt ans, nunca «je suis vingt». Avoir en singular: j'ai (je se vuelve j' delante de vocal), tu as, il a, elle a. Ans es la forma plural de an (año): un an, deux ans. Para preguntar: quel âge as-tu? (con inversión y guion) o, más coloquial, tu as quel âge? Ojo con la liaison: deux‿ans, trois‿ans, six‿ans y dix‿ans se unen con un sonido z; huit ans y vingt ans hacen sonar la t; neuf ans se dice con un sonido v.",
       examples: [
         { target: "J'ai vingt ans.", base: 'Tengo veinte años.' },
-        { target: "Quel âge as-tu? — J'ai douze ans.", base: '¿Cuántos años tenés? — Tengo doce.' },
+        {
+          target: "Quel âge as-tu? — J'ai douze ans.",
+          base: '¿Cuántos años tienes? — Tengo doce.',
+        },
         { target: 'Il a six ans.', base: 'Tiene seis años.' },
       ],
     },
@@ -102,7 +105,7 @@ export const FR_A1_U03: FrUnitDef = {
       w('fr-neuf', 'neuf', 'nueve', 'Il a neuf ans.', 'Tiene nueve años.', ['numbers'], {
         emoji: '9️⃣',
       }),
-      w('fr-dix', 'dix', 'diez', 'Tu as dix ans?', '¿Tenés diez años?', ['numbers'], {
+      w('fr-dix', 'dix', 'diez', 'Tu as dix ans?', '¿Tienes diez años?', ['numbers'], {
         emoji: '🔟',
       }),
       w('fr-onze', 'onze', 'once', "J'ai onze ans.", 'Tengo once años.', ['numbers']),
@@ -113,14 +116,14 @@ export const FR_A1_U03: FrUnitDef = {
         "j'ai",
         'tengo',
         "J'ai vingt ans. Et toi?",
-        'Tengo veinte años. ¿Y vos?',
+        'Tengo veinte años. ¿Y tú?',
         ['verbs'],
         {
           acceptedTranslations: ['yo tengo'],
         },
       ),
-      w('fr-tu-as', 'tu as', 'tenés', 'Tu as quel âge?', '¿Cuántos años tenés?', ['verbs'], {
-        acceptedTranslations: ['tienes', 'tú tienes'],
+      w('fr-tu-as', 'tu as', 'tienes', 'Tu as quel âge?', '¿Cuántos años tienes?', ['verbs'], {
+        acceptedTranslations: ['tú tienes', 'tenés'],
       }),
       w(
         'fr-il-a',
@@ -134,11 +137,11 @@ export const FR_A1_U03: FrUnitDef = {
       w(
         'fr-quel-age',
         'quel âge as-tu?',
-        '¿cuántos años tenés?',
+        '¿cuántos años tienes?',
         "Quel âge as-tu? — J'ai douze ans.",
-        '¿Cuántos años tenés? — Tengo doce.',
+        '¿Cuántos años tienes? — Tengo doce.',
         ['questions'],
-        { acceptedTranslations: ['¿cuántos años tienes?', '¿qué edad tenés?'] },
+        { acceptedTranslations: ['¿cuántos años tenés?', '¿qué edad tenés?', '¿qué edad tienes?'] },
       ),
       w('fr-un-an', 'un an', 'un año', 'Il a un an.', 'Tiene un año.', ['time', 'm']),
     ],
@@ -156,8 +159,8 @@ export const FR_A1_U03: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Contás del uno al cinco en francés.',
-          'Usás un o une según el género de la palabra.',
+          'Cuentas del uno al cinco en francés.',
+          'Usas un o une según el género de la palabra.',
         ],
         exercises: [
           ex.translationChoice('trois', 'tres', ['dos', 'cuatro', 'cinco'], ['fr-trois'], {
@@ -218,7 +221,7 @@ export const FR_A1_U03: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Deux et deux?',
-            '¿Dos más dos? (Escribí el resultado en letras.)',
+            '¿Dos más dos? (Escribe el resultado en letras.)',
             'quatre',
             ['Quatre.', 'Deux et deux, quatre.'],
             ['fr-quatre'],
@@ -233,15 +236,15 @@ export const FR_A1_U03: FrUnitDef = {
         objective: 'Contar del seis al diez y distinguir six de dix.',
         intro: {
           explanation:
-            'Six, sept, huit, neuf, dix. En sept la p no suena. La h de huit es muda y la t suena. Six y dix cambian según lo que sigue: solos, la x suena como s; delante de consonante no suena (six villes); delante de vocal se une con un sonido z (six‿ans, dix‿ans). Escuchá bien la primera consonante: six empieza con s, dix con d.',
+            'Six, sept, huit, neuf, dix. En sept la p no suena. La h de huit es muda y la t suena. Six y dix cambian según lo que sigue: solos, la x suena como s; delante de consonante no suena (six villes); delante de vocal se une con un sonido z (six‿ans, dix‿ans). Escucha bien la primera consonante: six empieza con s, dix con d.',
           examples: [
             { target: 'Six, sept, huit, neuf, dix.', base: 'Seis, siete, ocho, nueve, diez.' },
             { target: 'Cinq et cinq, dix.', base: 'Cinco más cinco, diez.' },
           ],
         },
         takeaways: [
-          'Contás del seis al diez.',
-          'Distinguís six de dix y sabés que su x cambia según lo que sigue.',
+          'Cuentas del seis al diez.',
+          'Distingues six de dix y sabes que su x cambia según lo que sigue.',
         ],
         exercises: [
           ex.translationChoice('huit', 'ocho', ['seis', 'siete', 'nueve'], ['fr-huit'], {
@@ -294,7 +297,7 @@ export const FR_A1_U03: FrUnitDef = {
           }),
           ex.shortAnswer(
             'Quatre et quatre?',
-            '¿Cuatro más cuatro? (Escribí el resultado en letras.)',
+            '¿Cuatro más cuatro? (Escribe el resultado en letras.)',
             'huit',
             ['Huit.', 'Quatre et quatre, huit.'],
             ['fr-huit'],
@@ -316,8 +319,8 @@ export const FR_A1_U03: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Decís tu edad con j'ai + número + ans.",
-          'Distinguís deux de douze al escuchar.',
+          "Dices tu edad con j'ai + número + ans.",
+          'Distingues deux de douze al escuchar.',
         ],
         exercises: [
           ex.translationChoice('douze', 'doce', ['dos', 'once', 'veinte'], ['fr-douze'], {
@@ -392,37 +395,37 @@ export const FR_A1_U03: FrUnitDef = {
         objective: 'Preguntar la edad y decir la edad de otra persona.',
         intro: {
           explanation:
-            "Avoir en singular: j'ai, tu as, il a, elle a. En tu as la s final no suena.Para preguntar la edad: quel âge as-tu? (el verbo va antes del sujeto, unido con guion) o, entre amigos, tu as quel âge? Il a y elle a se distinguen solo por el pronombre: escuchalo bien.",
+            "Avoir en singular: j'ai, tu as, il a, elle a. En tu as la s final no suena.Para preguntar la edad: quel âge as-tu? (el verbo va antes del sujeto, unido con guion) o, entre amigos, tu as quel âge? Il a y elle a se distinguen solo por el pronombre: escúchalo bien.",
           examples: [
-            { target: 'Quel âge as-tu?', base: '¿Cuántos años tenés?' },
+            { target: 'Quel âge as-tu?', base: '¿Cuántos años tienes?' },
             { target: 'Il a huit ans.', base: 'Tiene ocho años.' },
           ],
         },
         takeaways: [
-          'Preguntás la edad con quel âge as-tu? o tu as quel âge?',
-          'Decís la edad de otra persona con il a o elle a.',
+          'Preguntas la edad con quel âge as-tu? o tu as quel âge?',
+          'Dices la edad de otra persona con il a o elle a.',
         ],
         exercises: [
           ex.translationChoice(
             'quel âge as-tu?',
-            '¿cuántos años tenés?',
-            ['¿de dónde sos?', '¿cómo te llamás?', '¿cómo va?'],
+            '¿cuántos años tienes?',
+            ['¿de dónde eres?', '¿cómo te llamas?', '¿cómo va?'],
             ['fr-quel-age'],
             { id: 'fr.ex.dr6oz664tzzzpk' },
           ),
           ex.matchPairs(
             [
               ["j'ai", 'tengo'],
-              ['tu as', 'tenés'],
+              ['tu as', 'tienes'],
               ['il a', 'él tiene'],
-              ['quel âge as-tu?', '¿cuántos años tenés?'],
+              ['quel âge as-tu?', '¿cuántos años tienes?'],
             ],
             ['fr-j-ai', 'fr-tu-as', 'fr-il-a', 'fr-quel-age'],
             { id: 'fr.ex.7up2fwldia5phd' },
           ),
           ex.fillBlank(
             'Tu ___ quel âge?',
-            '¿Cuántos años tenés?',
+            '¿Cuántos años tienes?',
             'as',
             ['es', 'a', 'ai'],
             ['fr-tu-as', 'fr-quel-age'],
@@ -483,7 +486,7 @@ export const FR_A1_U03: FrUnitDef = {
           }),
           ex.shortAnswer(
             'Quel âge as-tu?',
-            '¿Cuántos años tenés? (Respondé que tenés veinte años.)',
+            '¿Cuántos años tienes? (Responde que tienes veinte años.)',
             "J'ai vingt ans.",
             ["Moi, j'ai vingt ans.", 'Vingt ans.'],
             ['fr-j-ai', 'fr-vingt'],
@@ -498,7 +501,7 @@ export const FR_A1_U03: FrUnitDef = {
         objective: 'Repasar los números y entender edades en un mensaje y en una conversación.',
         intro: {
           explanation:
-            "Ya podés presentarte completo: je m'appelle…, j'ai… ans, je suis de…, j'habite à… Recordá la liaison delante de ans: deux‿ans, trois‿ans, six‿ans y dix‿ans con sonido z, huit ans y vingt ans con t, neuf ans con v. Y para preguntar: tu as quel âge?",
+            "Ya puedes presentarte completo: je m'appelle…, j'ai… ans, je suis de…, j'habite à… Recuerda la liaison delante de ans: deux‿ans, trois‿ans, six‿ans y dix‿ans con sonido z, huit ans y vingt ans con t, neuf ans con v. Y para preguntar: tu as quel âge?",
           examples: [
             {
               target: "Je m'appelle Clara. J'ai vingt ans.",
@@ -508,8 +511,8 @@ export const FR_A1_U03: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Entendés edades en un texto y en un diálogo.',
-          'Pronunciás la liaison de los números delante de ans.',
+          'Entiendes edades en un texto y en un diálogo.',
+          'Pronuncias la liaison de los números delante de ans.',
         ],
         exercises: [
           question(
@@ -550,13 +553,13 @@ export const FR_A1_U03: FrUnitDef = {
           ),
           ex.fillBlank(
             'Quel ___ as-tu?',
-            '¿Cuántos años tenés?',
+            '¿Cuántos años tienes?',
             'âge',
             ['ans', 'an', 'un'],
             ['fr-quel-age'],
             { id: 'fr.ex.54oynvg5hpixrd', skill: 'vocabulary' },
           ),
-          ex.translationChoice('tu as', 'tenés', ['tengo', 'él tiene', 'sos'], ['fr-tu-as'], {
+          ex.translationChoice('tu as', 'tienes', ['tengo', 'él tiene', 'eres'], ['fr-tu-as'], {
             id: 'fr.ex.1xpuo9l97ur64c',
           }),
           ex.matchPairs(
@@ -572,13 +575,13 @@ export const FR_A1_U03: FrUnitDef = {
           ex.orderWords('Elle a quatre ans.', 'Tiene cuatro años.', ['fr-il-a', 'fr-quatre'], {
             id: 'fr.ex.5j2shrh6ptwfrg',
           }),
-          ex.translateWrite('¿Cuántos años tenés?', 'Quel âge as-tu?', ['fr-quel-age'], {
+          ex.translateWrite('¿Cuántos años tienes?', 'Quel âge as-tu?', ['fr-quel-age'], {
             id: 'fr.ex.zt6cn2t4bk3ee2',
             acceptedAnswers: ['Tu as quel âge?'],
           }),
           ex.shortAnswer(
             'Paul a quel âge?',
-            '¿Cuántos años tiene Paul? (Respondé que tiene doce años.)',
+            '¿Cuántos años tiene Paul? (Responde que tiene doce años.)',
             'Il a douze ans.',
             ['Paul a douze ans.', 'Douze ans.'],
             ['fr-il-a', 'fr-douze'],

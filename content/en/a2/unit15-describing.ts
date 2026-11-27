@@ -68,7 +68,7 @@ export const EN_A2_U15: ExpansionUnitDef = {
     description:
       'El aspecto y el carácter de una persona, tu barrio y cómo comparar personas y lugares.',
     emoji: '🧑‍🦱',
-    objective: 'Podés describir a una persona y un lugar, y compararlos.',
+    objective: 'Puedes describir a una persona y un lugar, y compararlos.',
     grammar: {
       title: 'Look like y be like',
       explanation:
@@ -108,13 +108,13 @@ export const EN_A2_U15: ExpansionUnitDef = {
       w(
         'en-glasses',
         'glasses',
-        'anteojos',
+        'lentes',
         '/ˈɡlæsəz/',
         '👓',
         'She wears glasses.',
-        'Ella usa anteojos.',
+        'Ella usa lentes.',
         ['description'],
-        ['lentes', 'gafas'],
+        ['lentes', 'gafas', 'anteojos'],
       ),
       w(
         'en-curly',
@@ -277,15 +277,15 @@ export const EN_A2_U15: ExpansionUnitDef = {
         objective: 'Preguntar y decir cómo es alguien físicamente.',
         intro: {
           explanation:
-            'Para preguntar por el aspecto de alguien: What does he look like? Se responde con be (He is tall and thin) o con have para el pelo, la barba o los anteojos (She has curly hair. He has a beard).',
+            'Para preguntar por el aspecto de alguien: What does he look like? Se responde con be (He is tall and thin) o con have para el pelo, la barba o los lentes (She has curly hair. He has a beard).',
           examples: [
             { target: 'What does she look like?', base: '¿Cómo es (físicamente)?' },
             { target: 'She has long blond hair.', base: 'Tiene el pelo largo y rubio.' },
           ],
         },
         takeaways: [
-          'Preguntás por el aspecto con What does he look like?',
-          'Describís el pelo y la cara con have: She has curly hair.',
+          'Preguntas por el aspecto con What does he look like?',
+          'Describes el pelo y la cara con have: She has curly hair.',
         ],
         exercises: [
           ex.imageChoice('🧔', 'beard', ['glasses', 'hair', 'hat'], ['en-beard'], {
@@ -303,7 +303,7 @@ export const EN_A2_U15: ExpansionUnitDef = {
             {
               id: 'en.ex.5zvq6a03ji7gt0',
               explanation:
-                'Para el pelo, la barba o los anteojos se usa have/has: She has blond hair.',
+                'Para el pelo, la barba o los lentes se usa have/has: She has blond hair.',
             },
           ),
           ex.fillBlank(
@@ -351,7 +351,7 @@ export const EN_A2_U15: ExpansionUnitDef = {
               acceptedAnswers: ['My dad has a beard.'],
             },
           ),
-          ex.translateWrite('Ella usa anteojos.', 'She wears glasses.', ['en-glasses', 'en-wear'], {
+          ex.translateWrite('Ella usa lentes.', 'She wears glasses.', ['en-glasses', 'en-wear'], {
             id: 'en.ex.bp1aaj7q1r7f61',
             acceptedAnswers: ['She has glasses.'],
           }),
@@ -371,8 +371,8 @@ export const EN_A2_U15: ExpansionUnitDef = {
           ],
         },
         takeaways: [
-          'Distinguís What is she like? (carácter) de What does she look like? (aspecto).',
-          'Describís el carácter: friendly, kind, funny, shy.',
+          'Distingues What is she like? (carácter) de What does she look like? (aspecto).',
+          'Describes el carácter: friendly, kind, funny, shy.',
         ],
         exercises: [
           ex.translationChoice(
@@ -435,11 +435,7 @@ export const EN_A2_U15: ExpansionUnitDef = {
             NEW_COWORKER,
             '¿Cómo es Emma físicamente?',
             'Baja y con el pelo enrulado',
-            [
-              'Alta y con el pelo enrulado',
-              'Baja y rubia, con el pelo lacio',
-              'Alta y con anteojos',
-            ],
+            ['Alta y con el pelo enrulado', 'Baja y rubia, con el pelo lacio', 'Alta y con lentes'],
             ['en-look-like', 'en-curly', 'en-short'],
             'Leo responde: «No, she’s short, and she has curly hair».',
           ),
@@ -474,7 +470,7 @@ export const EN_A2_U15: ExpansionUnitDef = {
         objective: 'Describir un barrio y un lugar.',
         intro: {
           explanation:
-            'Un lugar se describe con be + adjetivo (The street is quiet) o con el adjetivo antes del sustantivo (a quiet street). Con there is y there are contás qué hay en tu barrio (neighborhood).',
+            'Un lugar se describe con be + adjetivo (The street is quiet) o con el adjetivo antes del sustantivo (a quiet street). Con there is y there are cuentas qué hay en tu barrio (neighborhood).',
           examples: [
             { target: 'I live in a quiet neighborhood.', base: 'Vivo en un barrio tranquilo.' },
             {
@@ -484,8 +480,8 @@ export const EN_A2_U15: ExpansionUnitDef = {
           ],
         },
         takeaways: [
-          'Describís un lugar: quiet, noisy, crowded, modern, dirty.',
-          'Contás qué hay en tu barrio con there is y there are.',
+          'Describes un lugar: quiet, noisy, crowded, modern, dirty.',
+          'Cuentas qué hay en tu barrio con there is y there are.',
         ],
         exercises: [
           ex.imageChoice('🔊', 'noisy', ['quiet', 'dirty', 'modern'], ['en-noisy'], {
@@ -500,7 +496,7 @@ export const EN_A2_U15: ExpansionUnitDef = {
           ),
           ex.fillBlank(
             "It's very ___ here. I can't sleep!",
-            '¡Hay mucho ruido acá! No puedo dormir.',
+            '¡Hay mucho ruido aquí! No puedo dormir.',
             'noisy',
             ['quiet', 'modern', 'early'],
             ['en-noisy', 'en-sleep'],
@@ -581,7 +577,7 @@ export const EN_A2_U15: ExpansionUnitDef = {
         objective: 'Comparar personas y lugares con los comparativos.',
         intro: {
           explanation:
-            'Con lo que aprendiste en «Comparar» podés comparar personas y lugares. Los adjetivos cortos terminados en -y cambian la y por -ier: noisy → noisier, funny → funnier. Y los cortos con una vocal y una consonante la duplican: thin → thinner.',
+            'Con lo que aprendiste en «Comparar» puedes comparar personas y lugares. Los adjetivos cortos terminados en -y cambian la y por -ier: noisy → noisier, funny → funnier. Y los cortos con una vocal y una consonante la duplican: thin → thinner.',
           examples: [
             { target: 'My brother is thinner than me.', base: 'Mi hermano es más flaco que yo.' },
             {
@@ -591,8 +587,8 @@ export const EN_A2_U15: ExpansionUnitDef = {
           ],
         },
         takeaways: [
-          'Comparás personas: taller than, funnier than.',
-          'Comparás lugares: quieter than, the most crowded.',
+          'Comparas personas: taller than, funnier than.',
+          'Comparas lugares: quieter than, the most crowded.',
         ],
         exercises: [
           ex.fillBlank(
@@ -666,8 +662,8 @@ export const EN_A2_U15: ExpansionUnitDef = {
             'Mia dice: «Madrid is warmer». La ciudad con más gente es Londres: «It’s the most crowded city I know».',
           ),
           ex.shortAnswer(
-            'Who is taller, you or your mother? (vos)',
-            '¿Quién es más alto, vos o tu mamá?',
+            'Who is taller, you or your mother? (tú)',
+            '¿Quién es más alto, tú o tu mamá?',
             "I'm taller than my mother.",
             ["I'm taller.", 'Me.', "I'm taller than her.", 'I am.'],
             ['en-tall', 'en-than'],
@@ -690,18 +686,18 @@ export const EN_A2_U15: ExpansionUnitDef = {
         objective: 'Describir a una persona: aspecto y carácter.',
         intro: {
           explanation:
-            'Para describir a una persona, empezá por el aspecto (He is tall. He has dark hair.) y seguí por el carácter (He is friendly and funny). Uní las ideas con and, but y because.',
+            'Para describir a una persona, empieza por el aspecto (He is tall. He has dark hair.) y sigue por el carácter (He is friendly and funny). Une las ideas con and, but y because.',
           examples: [
             {
               target: 'He has dark hair and he wears glasses.',
-              base: 'Tiene el pelo oscuro y usa anteojos.',
+              base: 'Tiene el pelo oscuro y usa lentes.',
             },
             { target: "She's shy, but she's very kind.", base: 'Es tímida, pero es muy amable.' },
           ],
         },
         takeaways: [
-          'Describís a una persona: aspecto y carácter.',
-          'Unís ideas con and, but y because.',
+          'Describes a una persona: aspecto y carácter.',
+          'Unes ideas con and, but y because.',
         ],
         exercises: [
           question(
@@ -720,7 +716,7 @@ export const EN_A2_U15: ExpansionUnitDef = {
           question(
             'en.ex.bh66m057i0oqeo',
             GRANDFATHER,
-            '¿Por qué usa anteojos?',
+            '¿Por qué usa lentes?',
             'Porque lee mucho',
             ['Porque es viejo', 'Porque maneja', 'Porque mira películas'],
             ['en-glasses', 'en-because'],

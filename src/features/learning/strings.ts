@@ -4,7 +4,7 @@ import {
   type Skill,
   type StimulusVisualKind,
 } from '@shared/exercises';
-import type { LanguageConfig } from '@shared/languages';
+import { languageConfig, type LanguageConfig } from '@shared/languages';
 
 import { defineStrings } from '@/i18n';
 import { languageName } from '@/i18n/languages';
@@ -20,6 +20,32 @@ import type { LessonKind } from './path';
 
 const enName = (lang: LanguageConfig) => languageName(lang.code, 'en');
 
+/** Nombres de los idiomas en minúscula, para usarlos dentro de una frase en portugués e italiano. */
+const PT_NAMES: Record<string, string> = {
+  en: 'inglês',
+  it: 'italiano',
+  pt: 'português',
+  zh: 'chinês',
+  fr: 'francês',
+  es: 'espanhol',
+};
+const IT_NAMES: Record<string, string> = {
+  en: 'inglese',
+  it: 'italiano',
+  pt: 'portoghese',
+  zh: 'cinese',
+  fr: 'francese',
+  es: 'spagnolo',
+};
+const ptName = (code: string | null | undefined) => {
+  const config = languageConfig(code);
+  return PT_NAMES[config.code] ?? config.name;
+};
+const itName = (code: string | null | undefined) => {
+  const config = languageConfig(code);
+  return IT_NAMES[config.code] ?? config.name;
+};
+
 /** Zona de respuesta (AnswerInput). */
 export const answerInputStrings = defineStrings({
   es: {
@@ -28,11 +54,11 @@ export const answerInputStrings = defineStrings({
     yourAnswer: (lang: LanguageConfig) =>
       `Tu respuesta ${lang.script === 'han' ? 'en pinyin' : lang.inName}`,
     pinyinPlaceholder: 'Ej.: ni3 hao3',
-    placeholder: 'Escribí acá…',
+    placeholder: 'Escribe aquí…',
     yourSentence: 'Tu oración',
-    tapInOrder: 'Tocá las palabras en orden',
+    tapInOrder: 'Toca las palabras en orden',
     matchHint: (lang: LanguageConfig) =>
-      `Uní cada significado con su palabra ${lang.inName}. Tocá la palabra para escucharla.`,
+      `Une cada significado con su palabra ${lang.inName}. Toca la palabra para escucharla.`,
     matchedWith: (left: string, right: string) => `${left}, unido con ${right}`,
     tapToHear: 'Reproduce la pronunciación',
   },
@@ -49,6 +75,34 @@ export const answerInputStrings = defineStrings({
       `Match each meaning with its word in ${enName(lang)}. Tap the word to hear it.`,
     matchedWith: (left: string, right: string) => `${left}, matched with ${right}`,
     tapToHear: 'Plays the pronunciation',
+  },
+  'pt-BR': {
+    check: 'Verificar',
+    completeWord: 'Palavra completa',
+    yourAnswer: (lang: LanguageConfig) =>
+      `Sua resposta ${lang.script === 'han' ? 'em pinyin' : `em ${ptName(lang.code)}`}`,
+    pinyinPlaceholder: 'Ex.: ni3 hao3',
+    placeholder: 'Escreva aqui…',
+    yourSentence: 'Sua frase',
+    tapInOrder: 'Toque nas palavras na ordem certa',
+    matchHint: (lang: LanguageConfig) =>
+      `Ligue cada significado à palavra em ${ptName(lang.code)}. Toque na palavra para ouvir.`,
+    matchedWith: (left: string, right: string) => `${left}, ligado a ${right}`,
+    tapToHear: 'Reproduz a pronúncia',
+  },
+  it: {
+    check: 'Controlla',
+    completeWord: 'Parola completa',
+    yourAnswer: (lang: LanguageConfig) =>
+      `La tua risposta ${lang.script === 'han' ? 'in pinyin' : `in ${itName(lang.code)}`}`,
+    pinyinPlaceholder: 'Es.: ni3 hao3',
+    placeholder: 'Scrivi qui…',
+    yourSentence: 'La tua frase',
+    tapInOrder: 'Tocca le parole nell’ordine giusto',
+    matchHint: (lang: LanguageConfig) =>
+      `Abbina ogni significato alla sua parola in ${itName(lang.code)}. Tocca la parola per ascoltarla.`,
+    matchedWith: (left: string, right: string) => `${left}, abbinato a ${right}`,
+    tapToHear: 'Riproduce la pronuncia',
   },
 });
 
@@ -68,6 +122,20 @@ export const answerRecapStrings = defineStrings({
     correctAnswer: 'CORRECT ANSWER',
     alsoSaid: 'ALSO SAID',
   },
+  'pt-BR': {
+    pairs: 'PARES',
+    yourAnswer: 'SUA RESPOSTA',
+    yourAnswerCorrect: '✓ SUA RESPOSTA',
+    correctAnswer: 'RESPOSTA CORRETA',
+    alsoSaid: 'TAMBÉM SE DIZ',
+  },
+  it: {
+    pairs: 'COPPIE',
+    yourAnswer: 'LA TUA RISPOSTA',
+    yourAnswerCorrect: '✓ LA TUA RISPOSTA',
+    correctAnswer: 'RISPOSTA CORRETTA',
+    alsoSaid: 'SI DICE ANCHE',
+  },
 });
 
 /** Feedback tras responder (FeedbackPanel). */
@@ -86,6 +154,20 @@ export const feedbackStrings = defineStrings({
     synthesizedVoice: 'synthesized voice',
     continue: 'Continue',
   },
+  'pt-BR': {
+    typo: 'Boa! Cuidado com a ortografia',
+    correct: 'Correto!',
+    incorrect: 'Resposta incorreta',
+    synthesizedVoice: 'voz sintetizada',
+    continue: 'Continuar',
+  },
+  it: {
+    typo: 'Bene! Occhio all’ortografia',
+    correct: 'Corretto!',
+    incorrect: 'Risposta sbagliata',
+    synthesizedVoice: 'voce sintetizzata',
+    continue: 'Continua',
+  },
 });
 
 /** Parlante de pronunciación (SpeakButton). */
@@ -98,30 +180,38 @@ export const speakStrings = defineStrings({
     slow: 'Listen slowly (synthesized voice)',
     normal: 'Listen to the pronunciation (synthesized voice)',
   },
+  'pt-BR': {
+    slow: 'Ouvir devagar (voz sintetizada)',
+    normal: 'Ouvir a pronúncia (voz sintetizada)',
+  },
+  it: {
+    slow: 'Ascolta lentamente (voce sintetizzata)',
+    normal: 'Ascolta la pronuncia (voce sintetizzata)',
+  },
 });
 
 /** Práctica de escritura (WritingPracticeCard y WritingTask). */
 export const writingStrings = defineStrings({
   es: {
-    practiceLabel: 'Practicá escribiendo',
-    practiceOverline: 'PRACTICÁ ESCRIBIENDO',
-    practiceOptional: 'Opcional: escribís a tu ritmo y no se guarda.',
+    practiceLabel: 'Practica escribiendo',
+    practiceOverline: 'PRACTICA ESCRIBIENDO',
+    practiceOptional: 'Opcional: escribes a tu ritmo y no se guarda.',
     guided: 'ESCRITURA GUIADA',
     free: 'ESCRITURA LIBRE',
-    privacy: 'Podés inventar los datos. Tu texto no se envía ni se guarda: queda en tu teléfono.',
+    privacy: 'Puedes inventar los datos. Tu texto no se envía ni se guarda: queda en tu teléfono.',
     yourText: (lang: LanguageConfig) => `Tu texto ${lang.inName}`,
-    placeholder: 'Escribí acá…',
+    placeholder: 'Escribe aquí…',
     checkGuided: 'Revisar mi texto',
     checkFree: 'Terminé: comparar',
     requirementsGuided: 'LO QUE PEDÍA LA CONSIGNA',
     requirementsFree: 'PISTAS',
     complete: 'Tu texto tiene todo lo que pedía la consigna.',
-    incomplete: 'Te falta algo de la consigna: revisá los puntos sin marcar.',
+    incomplete: 'Te falta algo de la consigna: revisa los puntos sin marcar.',
     disclaimer:
       'Esta revisión sólo busca lo que pide la consigna; no corrige la gramática ni dice si el texto está bien escrito.',
     modelOverline: 'UN EJEMPLO PARA COMPARAR',
     modelNote: 'Es un ejemplo, no la única respuesta posible.',
-    selfCheck: 'REVISÁ VOS',
+    selfCheck: 'REVISA TÚ',
   },
   en: {
     practiceLabel: 'Practice writing',
@@ -144,6 +234,49 @@ export const writingStrings = defineStrings({
     modelOverline: 'AN EXAMPLE TO COMPARE',
     modelNote: 'It’s one example, not the only possible answer.',
     selfCheck: 'CHECK IT YOURSELF',
+  },
+  'pt-BR': {
+    practiceLabel: 'Pratique escrevendo',
+    practiceOverline: 'PRATIQUE ESCREVENDO',
+    practiceOptional: 'Opcional: escreva no seu ritmo. Nada é salvo.',
+    guided: 'ESCRITA GUIADA',
+    free: 'ESCRITA LIVRE',
+    privacy: 'Pode inventar os dados. Seu texto não é enviado nem salvo: ele fica no seu celular.',
+    yourText: (lang: LanguageConfig) => `Seu texto em ${ptName(lang.code)}`,
+    placeholder: 'Escreva aqui…',
+    checkGuided: 'Revisar meu texto',
+    checkFree: 'Terminei: comparar',
+    requirementsGuided: 'O QUE A TAREFA PEDIA',
+    requirementsFree: 'DICAS',
+    complete: 'Seu texto tem tudo o que a tarefa pedia.',
+    incomplete: 'Falta algo da tarefa: confira os pontos não marcados.',
+    disclaimer:
+      'Esta revisão só procura o que a tarefa pede; não corrige a gramática nem diz se o texto está bem escrito.',
+    modelOverline: 'UM EXEMPLO PARA COMPARAR',
+    modelNote: 'É um exemplo, não a única resposta possível.',
+    selfCheck: 'CONFIRA VOCÊ MESMO',
+  },
+  it: {
+    practiceLabel: 'Esercitati a scrivere',
+    practiceOverline: 'ESERCITATI A SCRIVERE',
+    practiceOptional: 'Facoltativo: scrivi con calma. Non viene salvato nulla.',
+    guided: 'SCRITTURA GUIDATA',
+    free: 'SCRITTURA LIBERA',
+    privacy:
+      'Puoi inventare i dati. Il tuo testo non viene inviato né salvato: resta sul tuo telefono.',
+    yourText: (lang: LanguageConfig) => `Il tuo testo in ${itName(lang.code)}`,
+    placeholder: 'Scrivi qui…',
+    checkGuided: 'Controlla il mio testo',
+    checkFree: 'Fatto: confronta',
+    requirementsGuided: 'COSA CHIEDEVA LA CONSEGNA',
+    requirementsFree: 'SUGGERIMENTI',
+    complete: 'Il tuo testo contiene tutto ciò che chiedeva la consegna.',
+    incomplete: 'Manca qualcosa della consegna: controlla i punti non spuntati.',
+    disclaimer:
+      'Questo controllo cerca solo ciò che chiede la consegna: non corregge la grammatica e non dice se il testo è scritto bene.',
+    modelOverline: 'UN ESEMPIO DA CONFRONTARE',
+    modelNote: 'È un esempio, non l’unica risposta possibile.',
+    selfCheck: 'CONTROLLA TU',
   },
 });
 
@@ -179,11 +312,11 @@ export const stimulusStrings = defineStrings({
     stopAudio: 'Detener el audio',
     playAudio: 'Escuchar el audio (voz sintetizada)',
     playSlow: 'Escuchar más despacio (voz sintetizada)',
-    audioError: 'No se pudo reproducir el audio. Tocá el parlante para intentar de nuevo.',
+    audioError: 'No se pudo reproducir el audio. Toca el altavoz para intentarlo de nuevo.',
     playing: (slow: boolean, line: number, total: number) =>
       `Reproduciendo${slow ? ' despacio' : ''}… ${line} de ${total}`,
-    listenAgain: 'Podés volver a escucharlo las veces que quieras.',
-    tapToListen: 'Tocá el parlante para escuchar.',
+    listenAgain: 'Puedes volver a escucharlo las veces que quieras.',
+    tapToListen: 'Toca el altavoz para escuchar.',
     speakers: (names: string[]) =>
       names.length > 1 ? `Hablan: ${names.join(' y ')}` : `Habla: ${names[0]}`,
     synthesizedVoice: 'voz sintetizada',
@@ -239,6 +372,96 @@ export const stimulusStrings = defineStrings({
     transcriptLabel: 'Audio transcript',
     transcript: 'TRANSCRIPT',
   },
+  'pt-BR': {
+    documents: {
+      message: 'MENSAGEM',
+      email: 'E-MAIL',
+      post: 'POST',
+      notice: 'AVISO',
+      sign: 'PLACA',
+      menu: 'CARDÁPIO',
+      schedule: 'HORÁRIOS',
+      description: 'DESCRIÇÃO',
+      directions: 'INSTRUÇÕES',
+      postcard: 'CARTÃO-POSTAL',
+      ad: 'ANÚNCIO',
+      form: 'FORMULÁRIO',
+    } as Record<ReadingDocument, string>,
+    visuals: {
+      photo: 'FOTO',
+      illustration: 'ILUSTRAÇÃO',
+      floor_plan: 'PLANTA',
+      map: 'MAPA',
+    } as Record<StimulusVisualKind, string>,
+    toRead: (document: string) => `${document.toLowerCase()} para ler`,
+    from: (name: string) => `De: ${name}`,
+    to: (name: string) => `Para: ${name}`,
+    question: 'PERGUNTA',
+    conversation: 'CONVERSA',
+    voiceMessage: 'MENSAGEM DE VOZ',
+    stopAudio: 'Parar o áudio',
+    playAudio: 'Ouvir o áudio (voz sintetizada)',
+    playSlow: 'Ouvir mais devagar (voz sintetizada)',
+    audioError: 'Não foi possível tocar o áudio. Toque no alto-falante para tentar de novo.',
+    playing: (slow: boolean, line: number, total: number) =>
+      `Reproduzindo${slow ? ' devagar' : ''}… ${line} de ${total}`,
+    listenAgain: 'Você pode ouvir de novo quantas vezes quiser.',
+    tapToListen: 'Toque no alto-falante para ouvir.',
+    speakers: (names: string[]) =>
+      names.length > 1 ? `Falam: ${names.join(' e ')}` : `Fala: ${names[0]}`,
+    synthesizedVoice: 'voz sintetizada',
+    noVoice: (lang: LanguageConfig) =>
+      `Seu dispositivo não tem uma voz em ${ptName(lang.code)} instalada: pode soar com outra voz do sistema.`,
+    oneVoice: (lang: LanguageConfig) =>
+      `Seu dispositivo tem só uma voz em ${ptName(lang.code)}: os dois falantes usam a mesma voz, só que com outro tom.`,
+    transcriptLabel: 'Transcrição do áudio',
+    transcript: 'TRANSCRIÇÃO',
+  },
+  it: {
+    documents: {
+      message: 'MESSAGGIO',
+      email: 'EMAIL',
+      post: 'POST',
+      notice: 'AVVISO',
+      sign: 'CARTELLO',
+      menu: 'MENÙ',
+      schedule: 'ORARI',
+      description: 'DESCRIZIONE',
+      directions: 'INDICAZIONI',
+      postcard: 'CARTOLINA',
+      ad: 'ANNUNCIO',
+      form: 'MODULO',
+    } as Record<ReadingDocument, string>,
+    visuals: {
+      photo: 'FOTO',
+      illustration: 'ILLUSTRAZIONE',
+      floor_plan: 'PIANTINA',
+      map: 'MAPPA',
+    } as Record<StimulusVisualKind, string>,
+    toRead: (document: string) => `${document.toLowerCase()} da leggere`,
+    from: (name: string) => `Da: ${name}`,
+    to: (name: string) => `A: ${name}`,
+    question: 'DOMANDA',
+    conversation: 'CONVERSAZIONE',
+    voiceMessage: 'MESSAGGIO VOCALE',
+    stopAudio: 'Ferma l’audio',
+    playAudio: 'Ascolta l’audio (voce sintetizzata)',
+    playSlow: 'Ascolta più lentamente (voce sintetizzata)',
+    audioError: 'Impossibile riprodurre l’audio. Tocca l’altoparlante per riprovare.',
+    playing: (slow: boolean, line: number, total: number) =>
+      `Riproduzione${slow ? ' lenta' : ''}… ${line} di ${total}`,
+    listenAgain: 'Puoi riascoltarlo tutte le volte che vuoi.',
+    tapToListen: 'Tocca l’altoparlante per ascoltare.',
+    speakers: (names: string[]) =>
+      names.length > 1 ? `Parlano: ${names.join(' e ')}` : `Parla: ${names[0]}`,
+    synthesizedVoice: 'voce sintetizzata',
+    noVoice: (lang: LanguageConfig) =>
+      `Il tuo dispositivo non ha una voce in ${itName(lang.code)} installata: potrebbe usare un’altra voce di sistema.`,
+    oneVoice: (lang: LanguageConfig) =>
+      `Il tuo dispositivo ha una sola voce in ${itName(lang.code)}: i due interlocutori usano la stessa voce, solo con un tono diverso.`,
+    transcriptLabel: 'Trascrizione dell’audio',
+    transcript: 'TRASCRIZIONE',
+  },
 });
 
 /** Racha (streak.ts y DailyCelebration). */
@@ -247,18 +470,18 @@ export const streakStrings = defineStrings({
     dayLabels: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
     days: (n: number) => `${n} ${n === 1 ? 'día' : 'días'}`,
     goalMet: '¡Objetivo cumplido!',
-    streakStarted: '¡Arrancaste tu racha!',
+    streakStarted: '¡Empezaste tu racha!',
     inARow: (days: string) => `¡${days} seguidos!`,
     goalToday: (minutes: number) => `Hoy ya practicaste tus ${minutes} minutos.`,
-    comeBackSecond: 'Volvé mañana para sumar el segundo día.',
-    comeBack: 'Volvé mañana para no cortarla.',
+    comeBackSecond: 'Vuelve mañana para sumar el segundo día.',
+    comeBack: 'Vuelve mañana para no perderla.',
     continue: 'Continuar',
     streakLabel: (days: string) => `Racha de ${days}`,
     yourWeek: 'Tu semana',
     alsoGoal: (minutes: number) => `Y cumpliste tu objetivo de ${minutes} minutos.`,
     remindTitle: '¿Te recordamos mañana?',
     remindBody: (time: string) =>
-      `Un aviso a las ${time} sólo si todavía no practicaste. Podés cambiar el horario en Perfil.`,
+      `Un aviso a las ${time} sólo si todavía no practicaste. Puedes cambiar el horario en Perfil.`,
     enableReminder: 'Activar recordatorio',
     noPermission: 'Sin permiso para notificaciones no podemos recordarte.',
     reminderSet: (time: string) => `Listo: te avisamos a las ${time}.`,
@@ -311,6 +534,74 @@ export const streakStrings = defineStrings({
     dayA11y: (date: string, state: 'studied' | 'frozen' | 'none') =>
       `${date}: ${state === 'studied' ? 'studied' : state === 'frozen' ? 'streak freeze' : 'no activity'}`,
   },
+  'pt-BR': {
+    dayLabels: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+    days: (n: number) => `${n} ${n === 1 ? 'dia' : 'dias'}`,
+    goalMet: 'Meta cumprida!',
+    streakStarted: 'Você começou sua sequência!',
+    inARow: (days: string) => `${days} seguidos!`,
+    goalToday: (minutes: number) => `Hoje você já praticou seus ${minutes} minutos.`,
+    comeBackSecond: 'Volte amanhã para somar o segundo dia.',
+    comeBack: 'Volte amanhã para não perder a sequência.',
+    continue: 'Continuar',
+    streakLabel: (days: string) => `Sequência de ${days}`,
+    yourWeek: 'Sua semana',
+    alsoGoal: (minutes: number) => `E você cumpriu sua meta de ${minutes} minutos.`,
+    remindTitle: 'Quer um lembrete amanhã?',
+    remindBody: (time: string) =>
+      `Um aviso às ${time}, só se você ainda não tiver praticado. Você pode mudar o horário em Perfil.`,
+    enableReminder: 'Ativar lembrete',
+    noPermission: 'Sem permissão para notificações, não conseguimos te lembrar.',
+    reminderSet: (time: string) => `Pronto: vamos te avisar às ${time}.`,
+    calendarTitle: 'Sua sequência',
+    streakCount: (n: number): string => (n === 1 ? 'dia seguido' : 'dias seguidos'),
+    weekLabels: ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+    close: 'Fechar',
+    prevMonth: 'Mês anterior',
+    nextMonth: 'Próximo mês',
+    legendStudied: 'Estudou',
+    legendFrozen: 'Protetor',
+    legendToday: 'Hoje',
+    loadError: 'Não conseguimos carregar sua atividade.',
+    retry: 'Tentar de novo',
+    openCalendarHint: 'Abre o calendário da sua sequência',
+    dayA11y: (date: string, state: 'studied' | 'frozen' | 'none') =>
+      `${date}: ${state === 'studied' ? 'você estudou' : state === 'frozen' ? 'protetor de sequência' : 'sem atividade'}`,
+  },
+  it: {
+    dayLabels: ['D', 'L', 'M', 'M', 'G', 'V', 'S'],
+    days: (n: number) => `${n} ${n === 1 ? 'giorno' : 'giorni'}`,
+    goalMet: 'Obiettivo raggiunto!',
+    streakStarted: 'Hai iniziato la tua serie!',
+    inARow: (days: string) => `${days} di fila!`,
+    goalToday: (minutes: number) => `Oggi hai già fatto i tuoi ${minutes} minuti di pratica.`,
+    comeBackSecond: 'Torna domani per aggiungere il secondo giorno.',
+    comeBack: 'Torna domani per non interromperla.',
+    continue: 'Continua',
+    streakLabel: (days: string) => `Serie di ${days}`,
+    yourWeek: 'La tua settimana',
+    alsoGoal: (minutes: number) => `E hai raggiunto il tuo obiettivo di ${minutes} minuti.`,
+    remindTitle: 'Te lo ricordiamo domani?',
+    remindBody: (time: string) =>
+      `Un avviso alle ${time}, solo se non ti sei ancora esercitato. Puoi cambiare l’orario nel Profilo.`,
+    enableReminder: 'Attiva promemoria',
+    noPermission: 'Senza il permesso per le notifiche non possiamo ricordartelo.',
+    reminderSet: (time: string) => `Fatto: ti avviseremo alle ${time}.`,
+    calendarTitle: 'La tua serie',
+    streakCount: (n: number): string => (n === 1 ? 'giorno di fila' : 'giorni di fila'),
+    weekLabels: ['L', 'M', 'M', 'G', 'V', 'S', 'D'],
+    close: 'Chiudi',
+    prevMonth: 'Mese precedente',
+    nextMonth: 'Mese successivo',
+    legendStudied: 'Studiato',
+    legendFrozen: 'Protezione',
+    legendToday: 'Oggi',
+    loadError: 'Non siamo riusciti a caricare la tua attività.',
+    retry: 'Riprova',
+    openCalendarHint: 'Apre il calendario della tua serie',
+    dayA11y: (date: string, state: 'studied' | 'frozen' | 'none') =>
+      `${date}: ${state === 'studied' ? 'hai studiato' : state === 'frozen' ? 'protezione della serie' : 'nessuna attività'}`,
+  },
 });
 
 /** Enunciado del ejercicio (ExercisePrompt). */
@@ -321,7 +612,7 @@ export const promptStrings = defineStrings({
     inSupport: (code: string) => `EN ${languageName(code, 'es').toUpperCase()}`,
     maskedLabel: (masked: string) => `Palabra incompleta: ${masked.replace(/_/g, ' guion bajo ')}`,
     hint: (hint: string) => `Pista: ${hint}`,
-    listenAgain: 'Tocá para volver a escuchar · 🐢 más despacio',
+    listenAgain: 'Toca para volver a escuchar · 🐢 más despacio',
   },
   en: {
     image: 'Exercise image',
@@ -329,6 +620,20 @@ export const promptStrings = defineStrings({
     maskedLabel: (masked: string) => `Incomplete word: ${masked.replace(/_/g, ' blank ')}`,
     hint: (hint: string) => `Hint: ${hint}`,
     listenAgain: 'Tap to listen again · 🐢 slower',
+  },
+  'pt-BR': {
+    image: 'Imagem do exercício',
+    inSupport: (code: string) => `EM ${ptName(code).toUpperCase()}`,
+    maskedLabel: (masked: string) => `Palavra incompleta: ${masked.replace(/_/g, ' lacuna ')}`,
+    hint: (hint: string) => `Dica: ${hint}`,
+    listenAgain: 'Toque para ouvir de novo · 🐢 mais devagar',
+  },
+  it: {
+    image: 'Immagine dell’esercizio',
+    inSupport: (code: string) => `IN ${itName(code).toUpperCase()}`,
+    maskedLabel: (masked: string) => `Parola incompleta: ${masked.replace(/_/g, ' spazio vuoto ')}`,
+    hint: (hint: string) => `Suggerimento: ${hint}`,
+    listenAgain: 'Tocca per riascoltare · 🐢 più lentamente',
   },
 });
 
@@ -340,7 +645,7 @@ export const playerStrings = defineStrings({
     mistakeReview: 'REPASO DE ERRORES',
     showPinyin: 'Mostrar pinyin',
     pinyin: 'Pinyin',
-    checkFailed: 'No pudimos comprobar tu respuesta. Revisá tu conexión.',
+    checkFailed: 'No pudimos comprobar tu respuesta. Revisa tu conexión.',
     checking: 'Comprobando…',
     retry: 'Reintentar',
   },
@@ -354,6 +659,26 @@ export const playerStrings = defineStrings({
     checking: 'Checking…',
     retry: 'Try again',
   },
+  'pt-BR': {
+    exit: 'Sair da sessão',
+    progress: 'Progresso da sessão',
+    mistakeReview: 'REVISÃO DE ERROS',
+    showPinyin: 'Mostrar pinyin',
+    pinyin: 'Pinyin',
+    checkFailed: 'Não conseguimos verificar sua resposta. Confira sua conexão.',
+    checking: 'Verificando…',
+    retry: 'Tentar de novo',
+  },
+  it: {
+    exit: 'Esci dalla sessione',
+    progress: 'Avanzamento della sessione',
+    mistakeReview: 'RIPASSO DEGLI ERRORI',
+    showPinyin: 'Mostra pinyin',
+    pinyin: 'Pinyin',
+    checkFailed: 'Non siamo riusciti a controllare la tua risposta. Controlla la connessione.',
+    checking: 'Controllo in corso…',
+    retry: 'Riprova',
+  },
 });
 
 /** Resultados de una sesión (SessionResults). */
@@ -362,7 +687,7 @@ export const resultsStrings = defineStrings({
     perfect: '¡Perfecto!',
     great: '¡Muy bien!',
     good: 'Buen trabajo',
-    keepGoing: 'Seguí practicando',
+    keepGoing: 'Sigue practicando',
     back: 'Volver',
     accuracy: 'Precisión',
     firstTry: 'en el primer intento',
@@ -372,7 +697,7 @@ export const resultsStrings = defineStrings({
     learned: 'QUÉ APRENDISTE',
     saving: 'Guardando tu progreso…',
     saveFailed: 'No se pudo guardar',
-    notLost: 'Tu sesión no se perdió: podés reintentar.',
+    notLost: 'Tu sesión no se perdió: puedes reintentar.',
     retry: 'Reintentar',
     newAchievements: 'Logros nuevos',
     unlocked: (n: number): string => (n === 1 ? 'LOGRO DESBLOQUEADO' : 'LOGROS DESBLOQUEADOS'),
@@ -402,6 +727,51 @@ export const resultsStrings = defineStrings({
     mistakesHint: 'They’ll show up in your reviews so they stick.',
     starsA11y: (n: number) => (n === 1 ? '1 star out of 3' : `${n} stars out of 3`),
   },
+  'pt-BR': {
+    perfect: 'Perfeito!',
+    great: 'Muito bem!',
+    good: 'Bom trabalho',
+    keepGoing: 'Continue praticando',
+    back: 'Voltar',
+    accuracy: 'Precisão',
+    firstTry: 'na primeira tentativa',
+    correct: 'Corretas',
+    time: 'Tempo',
+    learnedLabel: 'O que você aprendeu',
+    learned: 'O QUE VOCÊ APRENDEU',
+    saving: 'Salvando seu progresso…',
+    saveFailed: 'Não foi possível salvar',
+    notLost: 'Sua sessão não foi perdida: você pode tentar de novo.',
+    retry: 'Tentar de novo',
+    newAchievements: 'Novas conquistas',
+    unlocked: (n: number): string =>
+      n === 1 ? 'CONQUISTA DESBLOQUEADA' : 'CONQUISTAS DESBLOQUEADAS',
+    wordsToReview: 'PALAVRAS PARA REVISAR',
+    mistakesHint: 'Elas vão aparecer nas suas revisões para você fixar.',
+    starsA11y: (n: number) => (n === 1 ? '1 estrela de 3' : `${n} estrelas de 3`),
+  },
+  it: {
+    perfect: 'Perfetto!',
+    great: 'Ottimo lavoro!',
+    good: 'Bel lavoro',
+    keepGoing: 'Continua a esercitarti',
+    back: 'Indietro',
+    accuracy: 'Precisione',
+    firstTry: 'al primo tentativo',
+    correct: 'Corrette',
+    time: 'Tempo',
+    learnedLabel: 'Cosa hai imparato',
+    learned: 'COSA HAI IMPARATO',
+    saving: 'Salvataggio dei progressi…',
+    saveFailed: 'Impossibile salvare',
+    notLost: 'La tua sessione non è andata persa: puoi riprovare.',
+    retry: 'Riprova',
+    newAchievements: 'Nuovi traguardi',
+    unlocked: (n: number): string => (n === 1 ? 'TRAGUARDO SBLOCCATO' : 'TRAGUARDI SBLOCCATI'),
+    wordsToReview: 'PAROLE DA RIPASSARE',
+    mistakesHint: 'Compariranno nei tuoi ripassi, così le fissi bene.',
+    starsA11y: (n: number) => (n === 1 ? '1 stella su 3' : `${n} stelle su 3`),
+  },
 });
 
 /** Mapa de aprendizaje (LessonPath). */
@@ -418,10 +788,10 @@ export const pathStrings = defineStrings({
     locked: 'Bloqueada',
     nextLesson: 'Siguiente lección',
     completedStars: (stars: number) => `Completada, ${stars} de 3 estrellas`,
-    lockedPrevious: 'Completá las lecciones anteriores para desbloquearla.',
+    lockedPrevious: 'Completa las lecciones anteriores para desbloquearla.',
     preparingRange: (from: number, to: number, level: string) =>
       `Estamos preparando las unidades ${from}–${to} de ${level}.`,
-    finishLevel: (level: string, next: string) => `Terminá el nivel ${level} para pasar a ${next}.`,
+    finishLevel: (level: string, next: string) => `Termina el nivel ${level} para pasar a ${next}.`,
     preparingLevel: (next: string) => `Estamos preparando las unidades del nivel ${next}.`,
     soonLocked: 'Próximamente. Bloqueada',
     soon: 'Próximamente',
@@ -432,21 +802,21 @@ export const pathStrings = defineStrings({
     moreUnits: '🚧 Más unidades en camino',
     pathContinues: '🚀 Tu camino sigue',
     pendingDescription: (level: string, from: number, to: number) =>
-      `El nivel ${level} todavía no está completo: estamos preparando las unidades ${from} a ${to}. Mientras tanto, repasá para no perder la racha.`,
+      `El nivel ${level} todavía no está completo: estamos preparando las unidades ${from} a ${to}. Mientras tanto, repasa para no perder la racha.`,
     nextReadyDescription: (level: string, next: string) =>
-      `Cuando termines ${level}, seguís directo con las unidades de ${next}.`,
+      `Cuando termines ${level}, sigues directo con las unidades de ${next}.`,
     nextPendingDescription:
-      'Estamos preparando las próximas unidades. Mientras tanto, repasá y jugá ranked para no perder la racha.',
+      'Estamos preparando las próximas unidades. Mientras tanto, repasa y juega ranked para no perder la racha.',
     lessonsCount: (n: number) => `${n} lecciones`,
     unitProgress: (label: string) => `Progreso de la unidad: ${label}`,
     statusLocked: 'Bloqueado',
     statusPending: 'Sin completar',
     statusDone: 'Completado',
     starsOf: (n: number) => `${n} de 3 estrellas`,
-    currentHint: 'Hacela sin errores para ganar las 3 estrellas y volverla dorada.',
+    currentHint: 'Hazla sin errores para ganar las 3 estrellas y volverla dorada.',
     perfectHint: '¡Perfecta, sin ningún error! Esta lección ya es dorada.',
     bestHint: (percent: number) =>
-      `Mejor precisión: ${percent} %. Hacela sin errores para ganar las 3 estrellas y volverla dorada.`,
+      `Mejor precisión: ${percent} %. Hazla sin errores para ganar las 3 estrellas y volverla dorada.`,
     start: 'Empezar lección',
     redo: 'Repasar de nuevo',
     energyCost: (energy: number, max: number) => `Completarla usa 1 de energía (${energy}/${max})`,
@@ -496,6 +866,99 @@ export const pathStrings = defineStrings({
     redo: 'Practice again',
     energyCost: (energy: number, max: number) => `Completing it uses 1 energy (${energy}/${max})`,
   },
+  'pt-BR': {
+    kinds: {
+      review: 'REVISÃO',
+      listening: 'AUDIÇÃO',
+      words: 'PALAVRAS',
+      final: 'REVISÃO FINAL',
+    } as Record<Exclude<LessonKind, 'lesson'>, string>,
+    lessonN: (n: number) => `LIÇÃO ${n}`,
+    unitN: (n: number) => `UNIDADE ${n}`,
+    locked: 'Bloqueada',
+    nextLesson: 'Próxima lição',
+    completedStars: (stars: number) => `Concluída, ${stars} de 3 estrelas`,
+    lockedPrevious: 'Conclua as lições anteriores para desbloqueá-la.',
+    preparingRange: (from: number, to: number, level: string) =>
+      `Estamos preparando as unidades ${from}–${to} do ${level}.`,
+    finishLevel: (level: string, next: string) =>
+      `Termine o nível ${level} para passar para o ${next}.`,
+    preparingLevel: (next: string) => `Estamos preparando as unidades do nível ${next}.`,
+    soonLocked: 'Em breve. Bloqueada',
+    soon: 'Em breve',
+    levelN: (level: string) => `NÍVEL ${level}`,
+    levelUnits: (level: string, n: number, total: number) =>
+      `NÍVEL ${level} · ${n} DE ${total} UNIDADES`,
+    nextLevel: (next: string) => `PRÓXIMO NÍVEL · ${next}`,
+    moreUnits: '🚧 Mais unidades a caminho',
+    pathContinues: '🚀 Sua trilha continua',
+    pendingDescription: (level: string, from: number, to: number) =>
+      `O nível ${level} ainda não está completo: estamos preparando as unidades ${from} a ${to}. Enquanto isso, revise para não perder a sequência.`,
+    nextReadyDescription: (level: string, next: string) =>
+      `Quando terminar o ${level}, você segue direto para as unidades do ${next}.`,
+    nextPendingDescription:
+      'Estamos preparando as próximas unidades. Enquanto isso, revise e jogue Ranked para não perder a sequência.',
+    lessonsCount: (n: number) => `${n} lições`,
+    unitProgress: (label: string) => `Progresso da unidade: ${label}`,
+    statusLocked: 'Bloqueado',
+    statusPending: 'Não concluído',
+    statusDone: 'Concluído',
+    starsOf: (n: number) => `${n} de 3 estrelas`,
+    currentHint: 'Faça sem erros para ganhar as 3 estrelas e deixá-la dourada.',
+    perfectHint: 'Perfeita, sem nenhum erro! Esta lição já está dourada.',
+    bestHint: (percent: number) =>
+      `Melhor precisão: ${percent}%. Faça sem erros para ganhar as 3 estrelas e deixá-la dourada.`,
+    start: 'Começar lição',
+    redo: 'Praticar de novo',
+    energyCost: (energy: number, max: number) => `Concluí-la usa 1 de energia (${energy}/${max})`,
+  },
+  it: {
+    kinds: {
+      review: 'RIPASSO',
+      listening: 'ASCOLTO',
+      words: 'PAROLE',
+      final: 'RIPASSO FINALE',
+    } as Record<Exclude<LessonKind, 'lesson'>, string>,
+    lessonN: (n: number) => `LEZIONE ${n}`,
+    unitN: (n: number) => `UNITÀ ${n}`,
+    locked: 'Bloccata',
+    nextLesson: 'Prossima lezione',
+    completedStars: (stars: number) => `Completata, ${stars} stelle su 3`,
+    lockedPrevious: 'Completa le lezioni precedenti per sbloccarla.',
+    preparingRange: (from: number, to: number, level: string) =>
+      `Stiamo preparando le unità ${from}–${to} del livello ${level}.`,
+    finishLevel: (level: string, next: string) =>
+      `Completa il livello ${level} per passare al livello ${next}.`,
+    preparingLevel: (next: string) => `Stiamo preparando le unità del livello ${next}.`,
+    soonLocked: 'Prossimamente. Bloccata',
+    soon: 'Prossimamente',
+    levelN: (level: string) => `LIVELLO ${level}`,
+    levelUnits: (level: string, n: number, total: number) =>
+      `LIVELLO ${level} · ${n} DI ${total} UNITÀ`,
+    nextLevel: (next: string) => `PROSSIMO LIVELLO · ${next}`,
+    moreUnits: '🚧 Altre unità in arrivo',
+    pathContinues: '🚀 Il tuo percorso continua',
+    pendingDescription: (level: string, from: number, to: number) =>
+      `Il livello ${level} non è ancora completo: stiamo preparando le unità da ${from} a ${to}. Nel frattempo, ripassa per non perdere la serie.`,
+    nextReadyDescription: (level: string, next: string) =>
+      `Quando completi il livello ${level}, passi subito alle unità del livello ${next}.`,
+    nextPendingDescription:
+      'Stiamo preparando le prossime unità. Nel frattempo, ripassa e gioca a Ranked per non perdere la serie.',
+    lessonsCount: (n: number) => `${n} lezioni`,
+    unitProgress: (label: string) => `Avanzamento dell’unità: ${label}`,
+    statusLocked: 'Bloccato',
+    statusPending: 'Non completato',
+    statusDone: 'Completato',
+    starsOf: (n: number) => `${n} stelle su 3`,
+    currentHint: 'Completala senza errori per ottenere tutte e 3 le stelle e renderla dorata.',
+    perfectHint: 'Perfetta, senza nemmeno un errore! Questa lezione è già dorata.',
+    bestHint: (percent: number) =>
+      `Precisione migliore: ${percent}%. Completala senza errori per ottenere tutte e 3 le stelle e renderla dorata.`,
+    start: 'Inizia la lezione',
+    redo: 'Ripassa di nuovo',
+    energyCost: (energy: number, max: number) =>
+      `Completarla consuma 1 di energia (${energy}/${max})`,
+  },
 });
 
 /** Cabecera del mapa (LearnHero). */
@@ -509,10 +972,10 @@ export const heroStrings = defineStrings({
       C1: 'Avanzado',
       C2: 'Maestría',
     } as Record<string, string>,
-    a11y: 'Tu camino de aprendizaje. Completá unidades y ganá XP.',
+    a11y: 'Tu camino de aprendizaje. Completa unidades y gana XP.',
     titleTop: 'Tu camino de',
     titleAccent: 'aprendizaje',
-    subtitle: 'Completá unidades y ganá XP',
+    subtitle: 'Completa unidades y gana XP',
     levelA11y: (level: string, name: string, completed: number, total: number, percent: number) =>
       `Nivel ${level}${name ? `, ${name}` : ''}: ${completed} de ${total} lecciones, ${percent} %`,
   },
@@ -532,6 +995,38 @@ export const heroStrings = defineStrings({
     levelA11y: (level: string, name: string, completed: number, total: number, percent: number) =>
       `Level ${level}${name ? `, ${name}` : ''}: ${completed} of ${total} lessons, ${percent}%`,
   },
+  'pt-BR': {
+    levelNames: {
+      A1: 'Iniciante',
+      A2: 'Elementar',
+      B1: 'Intermediário',
+      B2: 'Intermediário avançado',
+      C1: 'Avançado',
+      C2: 'Proficiente',
+    } as Record<string, string>,
+    a11y: 'Sua trilha de aprendizado. Conclua unidades e ganhe XP.',
+    titleTop: 'Sua trilha de',
+    titleAccent: 'aprendizado',
+    subtitle: 'Conclua unidades e ganhe XP',
+    levelA11y: (level: string, name: string, completed: number, total: number, percent: number) =>
+      `Nível ${level}${name ? `, ${name}` : ''}: ${completed} de ${total} lições, ${percent}%`,
+  },
+  it: {
+    levelNames: {
+      A1: 'Principiante',
+      A2: 'Elementare',
+      B1: 'Intermedio',
+      B2: 'Intermedio superiore',
+      C1: 'Avanzato',
+      C2: 'Padronanza',
+    } as Record<string, string>,
+    a11y: 'Il tuo percorso di apprendimento. Completa le unità e guadagna XP.',
+    titleTop: 'Il tuo percorso di',
+    titleAccent: 'apprendimento',
+    subtitle: 'Completa le unità e guadagna XP',
+    levelA11y: (level: string, name: string, completed: number, total: number, percent: number) =>
+      `Livello ${level}${name ? `, ${name}` : ''}: ${completed} di ${total} lezioni, ${percent}%`,
+  },
 });
 
 /** Estadísticas de aprendizaje (LearningStats). */
@@ -548,7 +1043,7 @@ export const statsStrings = defineStrings({
       `estrellas · ${golden} ${golden === 1 ? 'lección dorada' : 'lecciones doradas'}`,
     starsProgress: 'Estrellas conseguidas',
     starsExplain:
-      'Cada lección da hasta 3 estrellas: la tercera, sólo si la hacés sin ningún error.',
+      'Cada lección da hasta 3 estrellas: la tercera, sólo si la haces sin ningún error.',
     lessons: 'Lecciones',
     streak: 'Racha',
     streakValue: (days: number) => `${days} d`,
@@ -559,7 +1054,7 @@ export const statsStrings = defineStrings({
     toReview: 'Para repasar',
     time: 'Tiempo',
     accuracyBySkill: 'PRECISIÓN POR HABILIDAD',
-    noSkills: 'Completá una lección para ver tu precisión por habilidad.',
+    noSkills: 'Completa una lección para ver tu precisión por habilidad.',
     skillAnswers: (percent: number, answers: number) => `${percent}% · ${answers} resp.`,
     accuracyIn: (skill: string) => `Precisión en ${skill}`,
     firstAttempt: 'Calculada sobre el primer intento de cada ejercicio.',
@@ -601,6 +1096,76 @@ export const statsStrings = defineStrings({
     frequentMistakes: 'COMMON MISTAKES',
     mistakesCount: (n: number) => `(${n} mistakes)`,
   },
+  'pt-BR': {
+    skills: {
+      vocabulary: 'Vocabulário',
+      translation: 'Tradução',
+      listening: 'Compreensão auditiva',
+      grammar: 'Gramática',
+      sentence_building: 'Construção de frases',
+      reading: 'Compreensão de leitura',
+    } as Record<Skill, string>,
+    loadError: 'Não conseguimos carregar seu progresso.',
+    loading: 'Carregando progresso…',
+    levelInProgress: (level: string) => `Nível ${level} · em andamento`,
+    starsA11y: (earned: number, max: number, golden: number) =>
+      `${earned} de ${max} estrelas, ${golden} lições douradas`,
+    starsCaption: (golden: number) =>
+      `estrelas · ${golden} ${golden === 1 ? 'lição dourada' : 'lições douradas'}`,
+    starsProgress: 'Estrelas conquistadas',
+    starsExplain: 'Cada lição dá até 3 estrelas: a terceira, só se você fizer sem nenhum erro.',
+    lessons: 'Lições',
+    streak: 'Sequência',
+    streakValue: (days: number) => `${days} d`,
+    studied: 'Estudadas',
+    wordsSeen: 'palavras vistas',
+    mastered: 'Dominadas',
+    byEvidence: 'segundo suas respostas',
+    toReview: 'Para revisar',
+    time: 'Tempo',
+    accuracyBySkill: 'PRECISÃO POR HABILIDADE',
+    noSkills: 'Conclua uma lição para ver sua precisão por habilidade.',
+    skillAnswers: (percent: number, answers: number) => `${percent}% · ${answers} resp.`,
+    accuracyIn: (skill: string) => `Precisão em ${skill}`,
+    firstAttempt: 'Calculada com base na primeira tentativa de cada exercício.',
+    frequentMistakes: 'ERROS FREQUENTES',
+    mistakesCount: (n: number) => `(${n} erros)`,
+  },
+  it: {
+    skills: {
+      vocabulary: 'Vocabolario',
+      translation: 'Traduzione',
+      listening: 'Comprensione orale',
+      grammar: 'Grammatica',
+      sentence_building: 'Costruzione di frasi',
+      reading: 'Comprensione scritta',
+    } as Record<Skill, string>,
+    loadError: 'Non siamo riusciti a caricare i tuoi progressi.',
+    loading: 'Caricamento dei progressi…',
+    levelInProgress: (level: string) => `Livello ${level} · in corso`,
+    starsA11y: (earned: number, max: number, golden: number) =>
+      `${earned} stelle su ${max}, ${golden} lezioni dorate`,
+    starsCaption: (golden: number) =>
+      `stelle · ${golden} ${golden === 1 ? 'lezione dorata' : 'lezioni dorate'}`,
+    starsProgress: 'Stelle ottenute',
+    starsExplain: 'Ogni lezione dà fino a 3 stelle: la terza solo se la completi senza errori.',
+    lessons: 'Lezioni',
+    streak: 'Serie',
+    streakValue: (days: number) => `${days} g`,
+    studied: 'Studiate',
+    wordsSeen: 'parole viste',
+    mastered: 'Padroneggiate',
+    byEvidence: 'in base alle tue risposte',
+    toReview: 'Da ripassare',
+    time: 'Tempo',
+    accuracyBySkill: 'PRECISIONE PER ABILITÀ',
+    noSkills: 'Completa una lezione per vedere la tua precisione per abilità.',
+    skillAnswers: (percent: number, answers: number) => `${percent}% · ${answers} risp.`,
+    accuracyIn: (skill: string) => `Precisione in ${skill}`,
+    firstAttempt: 'Calcolata sul primo tentativo di ogni esercizio.',
+    frequentMistakes: 'ERRORI FREQUENTI',
+    mistakesCount: (n: number) => `(${n} errori)`,
+  },
 });
 
 /** Dominio estimado (MasteryCard). */
@@ -621,11 +1186,11 @@ export const masteryStrings = defineStrings({
     } as Record<string, string>,
     a11y: 'Dominio estimado',
     overline: 'DOMINIO',
-    none: 'Todavía no hay evidencia para estimar tu dominio. Completá lecciones y repasos.',
+    none: 'Todavía no hay evidencia para estimar tu dominio. Completa lecciones y repasos.',
     retention: (percent: string, units: number) =>
       `Retención estimada: ${percent} (sobre ${units} con repasos espaciados suficientes).`,
     speed: (percent: string, units: number) =>
-      `Velocidad de recuperación: respondés en ${percent} del tiempo recomendado (mediana de ${units}).`,
+      `Velocidad de recuperación: respondes en ${percent} del tiempo recomendado (mediana de ${units}).`,
     updating: 'Algunas estimaciones se están actualizando.',
     byUnit: 'PROGRESO POR UNIDAD',
     unitMastered: (mastered: number, total: number) => `${mastered} / ${total} dominadas`,
@@ -661,20 +1226,88 @@ export const masteryStrings = defineStrings({
     masteredIn: (title: string) => `Mastered in ${title}`,
     toReinforce: 'TO REINFORCE',
   },
+  'pt-BR': {
+    states: {
+      mastered: { label: 'Dominadas', hint: 'demonstradas sem ajuda no nível-alvo' },
+      in_progress: { label: 'Em progresso', hint: 'com evidência suficiente' },
+      weak: { label: 'Pontos fracos', hint: 'desempenho baixo' },
+      insufficient: { label: 'Evidência insuficiente', hint: 'ainda não dá para estimar' },
+      no_evidence: { label: 'Sem evidência', hint: 'vistas, sem respostas válidas' },
+    } as Record<keyof MasteryCounts, { label: string; hint: string }>,
+    dimensions: {
+      vocabulary: 'Vocabulário',
+      production: 'Produção',
+      grammar: 'Gramática',
+      comprehension: 'Compreensão',
+    } as Record<string, string>,
+    a11y: 'Domínio estimado',
+    overline: 'DOMÍNIO',
+    none: 'Ainda não há evidência para estimar seu domínio. Conclua lições e revisões.',
+    retention: (percent: string, units: number) =>
+      `Retenção estimada: ${percent} (em ${units} com revisões espaçadas suficientes).`,
+    speed: (percent: string, units: number) =>
+      `Velocidade de recuperação: você responde em ${percent} do tempo recomendado (mediana de ${units}).`,
+    updating: 'Algumas estimativas estão sendo atualizadas.',
+    byUnit: 'PROGRESSO POR UNIDADE',
+    unitMastered: (mastered: number, total: number) => `${mastered} / ${total} dominadas`,
+    unitWeak: (n: number) => ` · ${n} fracas`,
+    masteredIn: (title: string) => `Dominadas em ${title}`,
+    toReinforce: 'PARA REFORÇAR',
+  },
+  it: {
+    states: {
+      mastered: { label: 'Padroneggiate', hint: 'dimostrate senza aiuto al livello obiettivo' },
+      in_progress: { label: 'In corso', hint: 'con prove sufficienti' },
+      weak: { label: 'Punti deboli', hint: 'rendimento basso' },
+      insufficient: { label: 'Prove insufficienti', hint: 'non bastano ancora per una stima' },
+      no_evidence: { label: 'Nessuna prova', hint: 'viste, senza risposte che contano' },
+    } as Record<keyof MasteryCounts, { label: string; hint: string }>,
+    dimensions: {
+      vocabulary: 'Vocabolario',
+      production: 'Produzione',
+      grammar: 'Grammatica',
+      comprehension: 'Comprensione',
+    } as Record<string, string>,
+    a11y: 'Padronanza stimata',
+    overline: 'PADRONANZA',
+    none: 'Non ci sono ancora abbastanza prove per stimare la tua padronanza. Completa lezioni e ripassi.',
+    retention: (percent: string, units: number) =>
+      `Memorizzazione stimata: ${percent} (su ${units} con abbastanza ripassi distanziati).`,
+    speed: (percent: string, units: number) =>
+      `Velocità di richiamo: ${percent} del tempo consigliato (mediana di ${units}).`,
+    updating: 'Alcune stime sono in fase di aggiornamento.',
+    byUnit: 'AVANZAMENTO PER UNITÀ',
+    unitMastered: (mastered: number, total: number) => `${mastered} / ${total} padroneggiate`,
+    unitWeak: (n: number) => ` · ${n} deboli`,
+    masteredIn: (title: string) => `Padroneggiate in ${title}`,
+    toReinforce: 'DA RAFFORZARE',
+  },
 });
 
 /** Ejercicios de práctica que arma la app (review.ts). */
 export const reviewBuilderStrings = defineStrings({
   es: {
     meaning: (word: string) => `¿Qué significa «${word}»?`,
-    listen: 'Escuchá y elegí lo que oís',
-    writePinyin: 'Escribí en pinyin',
-    writeIn: (lang: LanguageConfig) => `Escribí ${lang.inName}`,
+    listen: 'Escucha y elige lo que oyes',
+    writePinyin: 'Escribe en pinyin',
+    writeIn: (lang: LanguageConfig) => `Escribe ${lang.inName}`,
   },
   en: {
     meaning: (word: string) => `What does “${word}” mean?`,
     listen: 'Listen and choose what you hear',
     writePinyin: 'Write it in pinyin',
     writeIn: (lang: LanguageConfig) => `Write it in ${enName(lang)}`,
+  },
+  'pt-BR': {
+    meaning: (word: string) => `O que significa “${word}”?`,
+    listen: 'Ouça e escolha o que você ouvir',
+    writePinyin: 'Escreva em pinyin',
+    writeIn: (lang: LanguageConfig) => `Escreva em ${ptName(lang.code)}`,
+  },
+  it: {
+    meaning: (word: string) => `Che cosa significa «${word}»?`,
+    listen: 'Ascolta e scegli ciò che senti',
+    writePinyin: 'Scrivi in pinyin',
+    writeIn: (lang: LanguageConfig) => `Scrivi in ${itName(lang.code)}`,
   },
 });

@@ -61,11 +61,11 @@ function questionsOf(
 
 /** Preguntas sobre un texto escrito. */
 export const readingQuestions = (stimulus: ReadingStimulus, questions: ContextQuestion[]) =>
-  questionsOf(stimulus, questions, 'Leé el texto y respondé.');
+  questionsOf(stimulus, questions, 'Lee el texto y responde.');
 
 /** Preguntas sobre un mensaje oral. */
 export const listeningQuestions = (stimulus: ListeningStimulus, questions: ContextQuestion[]) =>
-  questionsOf(stimulus, questions, 'Escuchá y respondé.');
+  questionsOf(stimulus, questions, 'Escucha y responde.');
 
 /** Velocidad A1 del audio sintetizado: un poco más lenta que la normal, nunca acelerada. */
 export const A1_LISTENING_RATE = 0.85;

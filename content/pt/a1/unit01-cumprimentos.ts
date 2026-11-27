@@ -25,7 +25,7 @@ export const unit01: UnitDef = {
   description: 'Saludar, despedirte, agradecer y presentarte en portugués de Brasil.',
   emoji: '👋',
   objective:
-    'Podés saludar según el momento del día, presentarte, preguntar cómo está alguien y responder con cortesía.',
+    'Puedes saludar según el momento del día, presentarte, preguntar cómo está alguien y responder con cortesía.',
   grammar: {
     title: 'Obrigado / obrigada',
     explanation:
@@ -43,10 +43,10 @@ export const unit01: UnitDef = {
     w('pt-oi', 'oi', 'hola (informal)', 'Oi, Lucas!', '¡Hola, Lucas!', ['greetings'], {
       acceptedTranslations: ['hola'],
     }),
-    w('pt-tchau', 'tchau', 'chau', 'Tchau, até amanhã!', '¡Chau, hasta mañana!', ['greetings'], {
-      acceptedTranslations: ['adiós'],
+    w('pt-tchau', 'tchau', 'chao', 'Tchau, até amanhã!', '¡Chao, hasta mañana!', ['greetings'], {
+      acceptedTranslations: ['adiós', 'chau'],
     }),
-    w('pt-ate-logo', 'até logo', 'hasta luego', 'Tchau, até logo!', '¡Chau, hasta luego!', [
+    w('pt-ate-logo', 'até logo', 'hasta luego', 'Tchau, até logo!', '¡Chao, hasta luego!', [
       'greetings',
     ]),
     w('pt-sim', 'sim', 'sí', 'Sim, obrigado.', 'Sí, gracias.', ['basics'], { emoji: '✅' }),
@@ -120,12 +120,12 @@ export const unit01: UnitDef = {
     w(
       'pt-como-voce-se-chama',
       'como você se chama?',
-      '¿cómo te llamás?',
+      '¿cómo te llamas?',
       'Oi! Como você se chama?',
-      '¡Hola! ¿Cómo te llamás?',
+      '¡Hola! ¿Cómo te llamas?',
       ['introductions'],
       {
-        acceptedTranslations: ['¿cómo te llamas?'],
+        acceptedTranslations: ['¿cómo te llamas?', '¿cómo te llamás?'],
       },
     ),
     w(
@@ -153,8 +153,8 @@ export const unit01: UnitDef = {
       },
     ),
     w('pt-bem', 'bem', 'bien', 'Estou bem, obrigado.', 'Estoy bien, gracias.', ['basics']),
-    w('pt-e-voce', 'e você?', '¿y vos?', 'Tudo bem. E você?', 'Todo bien. ¿Y vos?', ['questions'], {
-      acceptedTranslations: ['¿y tú?', 'y vos', 'y tú'],
+    w('pt-e-voce', 'e você?', '¿y tú?', 'Tudo bem. E você?', 'Todo bien. ¿Y tú?', ['questions'], {
+      acceptedTranslations: ['¿y tú?', 'y vos', 'y tú', '¿y vos?'],
     }),
     w('pt-tambem', 'também', 'también', 'Eu também estou bem.', 'Yo también estoy bien.', [
       'basics',
@@ -169,20 +169,20 @@ export const unit01: UnitDef = {
           'En Brasil se saluda con oi y se despide con tchau, que se escribe así pero suena como «chau». Ojo con não: la «ão» se dice por la nariz.',
         examples: [
           { target: 'Oi, Lucas!', base: '¡Hola, Lucas!' },
-          { target: 'Tchau, até logo!', base: '¡Chau, hasta luego!' },
+          { target: 'Tchau, até logo!', base: '¡Chao, hasta luego!' },
           { target: 'Não, obrigada.', base: 'No, gracias.' },
         ],
       },
-      takeaways: ['Saludás con oi y te despedís con tchau o até logo.', 'Decís sim y não.'],
+      takeaways: ['Saludas con oi y te despides con tchau o até logo.', 'Dices sim y não.'],
       exercises: [
-        ex.translationChoice('oi', 'hola (informal)', ['chau', 'sí', 'hasta luego'], ['pt-oi']),
+        ex.translationChoice('oi', 'hola (informal)', ['chao', 'sí', 'hasta luego'], ['pt-oi']),
         ex.imageChoice('✅', 'sim', ['não', 'oi', 'tchau'], ['pt-sim']),
         ex.imageChoice('❌', 'não', ['sim', 'oi', 'bem'], ['pt-nao']),
         ex.listenChoice('tchau', ['oi', 'sim', 'não'], ['pt-tchau']),
         ex.matchPairs(
           [
             ['oi', 'hola'],
-            ['tchau', 'chau'],
+            ['tchau', 'chao'],
             ['até logo', 'hasta luego'],
             ['sim', 'sí'],
           ],
@@ -190,7 +190,7 @@ export const unit01: UnitDef = {
         ),
         ex.fillBlank(
           'Tchau, até ___!',
-          '¡Chau, hasta luego!',
+          '¡Chao, hasta luego!',
           'logo',
           ['bem', 'sim', 'oi'],
           ['pt-ate-logo'],
@@ -207,7 +207,7 @@ export const unit01: UnitDef = {
       objective: 'Saludar según el momento del día.',
       intro: {
         explanation:
-          'Bom dia es para la mañana y boa tarde para la tarde. Boa noite sirve para saludar y para despedirte a la noche. Fijate: bom con día, boa con tarde y noite.',
+          'Bom dia es para la mañana y boa tarde para la tarde. Boa noite sirve para saludar y para despedirte por la noche. Fíjate: bom con día, boa con tarde y noite.',
         examples: [
           { target: 'Bom dia, professora!', base: '¡Buenos días, profesora!' },
           { target: 'Boa tarde, senhor Silva.', base: 'Buenas tardes, señor Silva.' },
@@ -215,7 +215,7 @@ export const unit01: UnitDef = {
         ],
       },
       takeaways: [
-        'Saludás con bom dia, boa tarde y boa noite.',
+        'Saludas con bom dia, boa tarde y boa noite.',
         'Boa noite sirve para saludar y para despedirte.',
       ],
       exercises: [
@@ -264,8 +264,8 @@ export const unit01: UnitDef = {
         ],
       },
       takeaways: [
-        'Agradecés con obrigado u obrigada, según quién habla.',
-        'Respondés de nada y te disculpás con desculpa.',
+        'Agradeces con obrigado u obrigada, según quién habla.',
+        'Respondes de nada y te disculpas con desculpa.',
       ],
       exercises: [
         ex.translationChoice(
@@ -298,7 +298,7 @@ export const unit01: UnitDef = {
           [
             ['obrigado', 'gracias'],
             ['desculpa', 'perdón'],
-            ['tchau', 'chau'],
+            ['tchau', 'chao'],
             ['sim', 'sí'],
           ],
           ['pt-obrigado', 'pt-desculpa', 'pt-tchau', 'pt-sim'],
@@ -318,17 +318,17 @@ export const unit01: UnitDef = {
       objective: 'Decir tu nombre y preguntar el de otra persona.',
       intro: {
         explanation:
-          'Para presentarte decís meu nome é + tu nombre. Para preguntar: como você se chama? Al conocer a alguien se dice prazer o muito prazer.',
+          'Para presentarte dices meu nome é + tu nombre. Para preguntar: como você se chama? Al conocer a alguien se dice prazer o muito prazer.',
         examples: [
           { target: 'Meu nome é Rafael.', base: 'Mi nombre es Rafael.' },
-          { target: 'Oi! Como você se chama?', base: '¡Hola! ¿Cómo te llamás?' },
+          { target: 'Oi! Como você se chama?', base: '¡Hola! ¿Cómo te llamas?' },
           { target: 'Muito prazer!', base: '¡Mucho gusto!' },
         ],
       },
       takeaways: [
-        'Te presentás con meu nome é + tu nombre.',
-        'Preguntás el nombre con como você se chama?',
-        'Al conocer a alguien decís prazer.',
+        'Te presentas con meu nome é + tu nombre.',
+        'Preguntas el nombre con como você se chama?',
+        'Al conocer a alguien dices prazer.',
       ],
       exercises: [
         ex.translationChoice(
@@ -367,7 +367,7 @@ export const unit01: UnitDef = {
         ),
         ex.shortAnswer(
           'Oi! Como você se chama?',
-          '¡Hola! ¿Cómo te llamás? (Respondé que te llamás Ana.)',
+          '¡Hola! ¿Cómo te llamas? (Responde que te llamas Ana.)',
           'Meu nome é Ana.',
           ['Eu me chamo Ana.', 'Me chamo Ana.', 'Eu sou a Ana.', 'Sou a Ana.'],
           ['pt-meu-nome-e', 'pt-como-voce-se-chama'],
@@ -376,7 +376,7 @@ export const unit01: UnitDef = {
               'También se dice eu me chamo Ana. En Brasil es común poner el artículo: eu sou a Ana.',
           },
         ),
-        ex.translateWrite('¿Cómo te llamás?', 'Como você se chama?', ['pt-como-voce-se-chama'], {
+        ex.translateWrite('¿Cómo te llamas?', 'Como você se chama?', ['pt-como-voce-se-chama'], {
           acceptedAnswers: ['Qual é o seu nome?', 'Qual o seu nome?'],
         }),
       ],
@@ -389,20 +389,20 @@ export const unit01: UnitDef = {
           'Tudo bem? es la forma más común de preguntar cómo está alguien. Se responde tudo bem o tudo bom, y se devuelve con e você?',
         examples: [
           { target: 'Oi, Marina! Tudo bem?', base: '¡Hola, Marina! ¿Todo bien?' },
-          { target: 'Tudo bem. E você?', base: 'Todo bien. ¿Y vos?' },
+          { target: 'Tudo bem. E você?', base: 'Todo bien. ¿Y tú?' },
           { target: 'Eu também estou bem.', base: 'Yo también estoy bien.' },
         ],
       },
       takeaways: [
-        'Preguntás tudo bem? y respondés tudo bem.',
-        'Devolvés la pregunta con e você?',
-        'Decís «también» con também.',
+        'Preguntas tudo bem? y respondes tudo bem.',
+        'Devuelves la pregunta con e você?',
+        'Dices «también» con também.',
       ],
       exercises: [
         ex.translationChoice(
           'tudo bem?',
           '¿todo bien?',
-          ['¿cómo te llamás?', '¿y vos?', 'hasta luego'],
+          ['¿cómo te llamas?', '¿y tú?', 'hasta luego'],
           ['pt-tudo-bem'],
         ),
         ex.translationChoice('também', 'también', ['bien', 'yo', 'sí'], ['pt-tambem']),
@@ -417,13 +417,13 @@ export const unit01: UnitDef = {
           },
         ),
         ex.listenChoice('e você?', ['tudo bem?', 'obrigado', 'até logo'], ['pt-e-voce']),
-        ex.orderWords('Tudo bem, e você?', 'Todo bien, ¿y vos?', ['pt-tudo-bem', 'pt-e-voce']),
+        ex.orderWords('Tudo bem, e você?', 'Todo bien, ¿y tú?', ['pt-tudo-bem', 'pt-e-voce']),
         ex.matchPairs(
           [
             ['bem', 'bien'],
             ['também', 'también'],
             ['eu', 'yo'],
-            ['e você?', '¿y vos?'],
+            ['e você?', '¿y tú?'],
           ],
           ['pt-bem', 'pt-tambem', 'pt-eu', 'pt-e-voce'],
         ),

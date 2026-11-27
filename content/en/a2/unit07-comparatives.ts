@@ -443,14 +443,14 @@ export const unit07: UnitDef = {
         ),
         ex.fillBlank(
           'Is the train ___ than the bus?',
-          '¿El tren es más rápido que el colectivo?',
+          '¿El tren es más rápido que el autobús?',
           'faster',
           ['fast', 'fastest', 'more fast'],
           ['en-fast', 'en-train', 'en-bus'],
         ),
         ex.shortAnswer(
           'Who is taller, you or your father? (mi papá)',
-          '¿Quién es más alto, vos o tu papá?',
+          '¿Quién es más alto, tú o tu papá?',
           'My father is taller.',
           ['My father.', 'My dad.', 'My dad is taller.', 'My father is taller than me.'],
           ['en-tall', 'en-father', 'en-who'],

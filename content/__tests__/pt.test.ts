@@ -1,3 +1,4 @@
+import { withNeutralSpanish } from '../../scripts/neutral-patch';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -190,7 +191,7 @@ describe('portugués A1 U13–U16 y A2 (content/pt-course.ts)', () => {
 
   it('la carga es la salida exacta del generador y no publica nada', () => {
     const { sql, document } = ptSql();
-    expect(sql).toBe(migration);
+    expect(sql).toBe(withNeutralSpanish(migration));
     expect(document.units.map((u) => u.id)).toEqual(
       PT_PATH.map((p) => key(p.level, p.unit.position)),
     );

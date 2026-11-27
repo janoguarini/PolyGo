@@ -92,14 +92,14 @@ export const IT_A2_U07: ItUnitDef = {
     title: 'Trabajo y estudios',
     titleEn: 'Lavoro e studio',
     description:
-      'Contar qué hacés actualmente y desde cuándo, entender un aviso y una entrevista de trabajo, y hablar de la universidad.',
+      'Contar qué haces actualmente y desde cuándo, entender un aviso y una entrevista de trabajo, y hablar de la universidad.',
     emoji: '🎓',
     objective:
-      'Podés decir qué estás haciendo ahora y desde hace cuánto (lavoro qui da due anni), hablar de tu trabajo o tus estudios, entender un aviso y una entrevista, y decir lo que tenés que hacer.',
+      'Puedes decir qué estás haciendo ahora y desde hace cuánto (lavoro qui da due anni), hablar de tu trabajo o tus estudios, entender un aviso y una entrevista, y decir lo que tienes que hacer.',
     grammar: {
       title: 'Stare + gerundio · presente + da · dovere y potere',
       explanation:
-        'Sto studiando es «estoy estudiando»: stare en presente + gerundio. Para algo que empezó en el pasado y sigue: presente + da + tiempo: lavoro qui da due anni (trabajo acá desde hace dos años). No confundir con fa: sono arrivato due anni fa (llegué hace dos años). Dovere (tener que): devo, devi, deve, dobbiamo, dovete, devono. Potere: posso, puoi, può, possiamo, potete, possono. Ojo: il colloquio es la entrevista de trabajo.',
+        'Sto studiando es «estoy estudiando»: stare en presente + gerundio. Para algo que empezó en el pasado y sigue: presente + da + tiempo: lavoro qui da due anni (trabajo aquí desde hace dos años). No confundir con fa: sono arrivato due anni fa (llegué hace dos años). Dovere (tener que): devo, devi, deve, dobbiamo, dovete, devono. Potere: posso, puoi, può, possiamo, potete, possono. Ojo: il colloquio es la entrevista de trabajo.',
       examples: [
         { target: 'Sto studiando per un esame.', base: 'Estoy estudiando para un examen.' },
         {
@@ -157,7 +157,7 @@ export const IT_A2_U07: ItUnitDef = {
         'da due anni',
         'desde hace dos años',
         'Lavoro qui da due anni.',
-        'Trabajo acá desde hace dos años.',
+        'Trabajo aquí desde hace dos años.',
         ['time'],
         {
           acceptedTranslations: ['hace dos años que'],
@@ -223,11 +223,11 @@ export const IT_A2_U07: ItUnitDef = {
       w(
         'it-devi',
         'devi',
-        'tenés que',
+        'tienes que',
         'Devi studiare di più.',
-        'Tenés que estudiar más.',
+        'Tienes que estudiar más.',
         ['verbs'],
-        { acceptedTranslations: ['debés'] },
+        { acceptedTranslations: ['debés', 'debes', 'tenés que'] },
       ),
       w(
         'it-dobbiamo',
@@ -279,8 +279,8 @@ export const IT_A2_U07: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Decís qué estás haciendo: sto + -ando / -endo.',
-          'Hablás de la universidad y los exámenes.',
+          'Dices qué estás haciendo: sto + -ando / -endo.',
+          'Hablas de la universidad y los exámenes.',
         ],
         exercises: [
           ex.translationChoice(
@@ -349,7 +349,7 @@ export const IT_A2_U07: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Cosa stai facendo?',
-            '¿Qué estás haciendo? (Respondé que estás estudiando.)',
+            '¿Qué estás haciendo? (Responde que estás estudiando.)',
             'Sto studiando.',
             ['Sto studiando per un esame.', 'Io sto studiando.'],
             ['it-sto-studiando'],
@@ -365,10 +365,10 @@ export const IT_A2_U07: ItUnitDef = {
       // ------------------------------------------------------------------------------------ L2
       {
         title: 'Da due anni',
-        objective: 'Decir desde hace cuánto hacés algo.',
+        objective: 'Decir desde hace cuánto haces algo.',
         intro: {
           explanation:
-            'Para algo que empezó antes y sigue ahora: presente + da + tiempo. Lavoro qui da due anni = trabajo acá desde hace dos años. Ojo: con algo terminado se usa fa (sono arrivato due anni fa). Attualmente es «actualmente, en este momento».',
+            'Para algo que empezó antes y sigue ahora: presente + da + tiempo. Lavoro qui da due anni = trabajo aquí desde hace dos años. Ojo: con algo terminado se usa fa (sono arrivato due anni fa). Attualmente es «actualmente, en este momento».',
           examples: [
             {
               target: 'Studio italiano da due anni.',
@@ -380,7 +380,7 @@ export const IT_A2_U07: ItUnitDef = {
             },
           ],
         },
-        takeaways: ['Decís desde cuándo: presente + da.', 'Distinguís da due anni de due anni fa.'],
+        takeaways: ['Dices desde cuándo: presente + da.', 'Distingues da due anni de due anni fa.'],
         exercises: [
           ex.translationChoice(
             'da due anni',
@@ -395,7 +395,7 @@ export const IT_A2_U07: ItUnitDef = {
           ),
           ex.fillBlank(
             'Lavoro qui ___ tre anni.',
-            'Trabajo acá desde hace tres años.',
+            'Trabajo aquí desde hace tres años.',
             'da',
             ['fa', 'tra', 'per'],
             ['it-da-due-anni'],
@@ -463,7 +463,7 @@ export const IT_A2_U07: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Da quanto tempo studi italiano?',
-            '¿Desde hace cuánto estudiás italiano? (Respondé que desde hace dos años.)',
+            '¿Desde hace cuánto estudias italiano? (Responde que desde hace dos años.)',
             'Studio italiano da due anni.',
             ['Da due anni.', 'Studio italiano da due anni!'],
             ['it-da-due-anni'],
@@ -493,7 +493,7 @@ export const IT_A2_U07: ItUnitDef = {
             { target: 'Lo stipendio è buono.', base: 'El sueldo es bueno.' },
           ],
         },
-        takeaways: ['Sabés que colloquio es «entrevista».', 'Entendés un aviso de trabajo.'],
+        takeaways: ['Sabes que colloquio es «entrevista».', 'Entiendes un aviso de trabajo.'],
         exercises: [
           ex.translationChoice(
             'colloquio',
@@ -540,7 +540,7 @@ export const IT_A2_U07: ItUnitDef = {
             'it.ex.9f5evt9yys5yso',
             ANNUNCIO,
             '¿Qué buscan en el restaurante?',
-            'Un mozo o una moza',
+            'Un mesero o una mesera',
             ['Un cocinero', 'Un jefe de cocina', 'Un vendedor'],
             ['it-cameriere'],
             'El aviso dice: «Cercasi cameriere o cameriera per ristorante in centro».',
@@ -569,7 +569,7 @@ export const IT_A2_U07: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Com’è il tuo orario?',
-            '¿Cómo es tu horario? (Respondé que trabajás de nueve a cinco.)',
+            '¿Cómo es tu horario? (Responde que trabajas de nueve a cinco.)',
             'Lavoro dalle nove alle cinque.',
             ['Dalle nove alle cinque.', 'Il mio orario è dalle nove alle cinque.'],
             ['it-orario'],
@@ -587,7 +587,7 @@ export const IT_A2_U07: ItUnitDef = {
       // ------------------------------------------------------------------------------------ L4
       {
         title: 'Devi, dobbiamo, può',
-        objective: 'Decir lo que tenés que hacer y lo que se puede.',
+        objective: 'Decir lo que tienes que hacer y lo que se puede.',
         intro: {
           explanation:
             'Dovere (tener que): devo, devi, deve, dobbiamo, dovete, devono. Potere: posso, puoi, può, possiamo, potete, possono. Van con infinitivo: dobbiamo finire, può venire.',
@@ -596,7 +596,7 @@ export const IT_A2_U07: ItUnitDef = {
             { target: 'Il capo può venire domani?', base: '¿El jefe puede venir mañana?' },
           ],
         },
-        takeaways: ['Conjugás dovere y potere.', 'Hablás de tus compañeros y tu jefe.'],
+        takeaways: ['Conjugas dovere y potere.', 'Hablas de tus compañeros y tu jefe.'],
         exercises: [
           ex.translationChoice(
             'dobbiamo',
@@ -607,7 +607,7 @@ export const IT_A2_U07: ItUnitDef = {
           ),
           ex.fillBlank(
             'Tu ___ studiare di più.',
-            'Vos tenés que estudiar más.',
+            'Tú tienes que estudiar más.',
             'devi',
             ['devo', 'dobbiamo', 'può'],
             ['it-devi'],
@@ -658,7 +658,7 @@ export const IT_A2_U07: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Puoi venire stasera?',
-            '¿Podés venir esta noche? (Respondé que no, que tenés que trabajar.)',
+            '¿Puedes venir esta noche? (Responde que no, que tienes que trabajar.)',
             'No, devo lavorare.',
             [
               'No, mi dispiace, devo lavorare.',
@@ -680,7 +680,7 @@ export const IT_A2_U07: ItUnitDef = {
       // ------------------------------------------------------------------------------------ L5
       {
         title: 'Mi sono laureato',
-        objective: 'Hablar de tus estudios y de lo que hacés hoy.',
+        objective: 'Hablar de tus estudios y de lo que haces hoy.',
         intro: {
           explanation:
             'La laurea es el título universitario; laurearsi es recibirse: mi sono laureato / laureata (me recibí). Para presentarte en lo profesional: mi sono laureato in…, attualmente lavoro…, da…',
@@ -690,8 +690,8 @@ export const IT_A2_U07: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Decís que te recibiste: mi sono laureato / laureata.',
-          'Te presentás en lo profesional.',
+          'Dices que te recibiste: mi sono laureato / laureata.',
+          'Te presentas en lo profesional.',
         ],
         exercises: [
           ex.translationChoice(
@@ -749,7 +749,7 @@ export const IT_A2_U07: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Cosa fai attualmente?',
-            '¿Qué hacés actualmente? (Respondé que estás estudiando en la universidad.)',
+            '¿Qué haces actualmente? (Responde que estás estudiando en la universidad.)',
             'Attualmente sto studiando all’università.',
             [
               "Sto studiando all'università.",

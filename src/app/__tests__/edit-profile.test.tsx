@@ -64,8 +64,16 @@ jest.mock('@/features/profile/avatarUpload', () => ({
   uploadAvatarPhoto: jest.fn(),
 }));
 
+// gcTime infinito: sin timers de recolección (5 min por defecto) que dejen a Jest esperando al terminar.
+const newClient = () =>
+  new QueryClient({
+    defaultOptions: {
+      queries: { gcTime: Infinity },
+      mutations: { retry: false, gcTime: Infinity },
+    },
+  });
 const wrapper = ({ children }: { children: ReactNode }) => (
-  <QueryClientProvider client={new QueryClient()}>{children}</QueryClientProvider>
+  <QueryClientProvider client={newClient()}>{children}</QueryClientProvider>
 );
 
 beforeEach(() => {

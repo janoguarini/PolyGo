@@ -4,7 +4,7 @@ import type { ExerciseDef } from './types';
 /**
  * Atajos para escribir ejercicios. Las opciones se guardan con la respuesta primero;
  * la app las mezcla en tiempo de ejecución. Cada idioma tiene los suyos (exercisesFor): cambian
- * las consignas («Traducí al italiano») y, en chino, cómo se arman las oraciones y qué se escribe.
+ * las consignas («Traduce al italiano») y, en chino, cómo se arman las oraciones y qué se escribe.
  */
 
 type Extra = Pick<
@@ -59,13 +59,13 @@ function promptsFor(language: LanguageConfig) {
   return {
     image: '¿Qué muestra la imagen?',
     meaning: (word: string) => `¿Qué significa «${word}»?`,
-    translate: han ? 'Escribí en pinyin' : `Traducí ${language.alName}`,
-    complete: 'Escribí la palabra completa',
-    fill: 'Completá la frase',
-    order: 'Ordená las palabras',
-    listen: 'Escuchá y elegí lo que oís',
-    match: 'Uní cada palabra con su significado',
-    answer: `Respondé ${writeIn}`,
+    translate: han ? 'Escribe en pinyin' : `Traduce ${language.alName}`,
+    complete: 'Escribe la palabra completa',
+    fill: 'Completa la frase',
+    order: 'Ordena las palabras',
+    listen: 'Escucha y elige lo que oyes',
+    match: 'Une cada palabra con su significado',
+    answer: `Responde ${writeIn}`,
   };
 }
 

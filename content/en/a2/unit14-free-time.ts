@@ -62,7 +62,7 @@ export const EN_A2_U14: ExpansionUnitDef = {
     titleEn: 'Free time and invitations',
     description: 'Pasatiempos, invitar, proponer planes, aceptar o rechazar y quedar para verse.',
     emoji: '🎟️',
-    objective: 'Podés hablar de tus pasatiempos, invitar a alguien y aceptar o rechazar un plan.',
+    objective: 'Puedes hablar de tus pasatiempos, invitar a alguien y aceptar o rechazar un plan.',
     grammar: {
       title: 'Invitar y proponer',
       explanation:
@@ -268,18 +268,18 @@ export const EN_A2_U14: ExpansionUnitDef = {
       // ------------------------------------------------------------------------------------ L1
       {
         title: 'Pasatiempos',
-        objective: 'Contar qué hacés en tu tiempo libre y con qué frecuencia.',
+        objective: 'Contar qué haces en tu tiempo libre y con qué frecuencia.',
         intro: {
           explanation:
-            'Para hablar de tus pasatiempos (hobbies) usás el presente simple y expresiones de frecuencia: often (a menudo), once a week (una vez por semana), twice a week (dos veces por semana).',
+            'Para hablar de tus pasatiempos (hobbies) usas el presente simple y expresiones de frecuencia: often (a menudo), once a week (una vez por semana), twice a week (dos veces por semana).',
           examples: [
             { target: 'My hobby is cooking.', base: 'Mi pasatiempo es cocinar.' },
             { target: 'I go to the gym once a week.', base: 'Voy al gimnasio una vez por semana.' },
           ],
         },
         takeaways: [
-          'Contás qué hacés en tu tiempo libre.',
-          'Decís con qué frecuencia: often, once a week, twice a week.',
+          'Cuentas qué haces en tu tiempo libre.',
+          'Dices con qué frecuencia: often, once a week, twice a week.',
         ],
         exercises: [
           ex.imageChoice('🎸', 'guitar', ['music', 'game', 'bike'], ['en-guitar'], {
@@ -368,8 +368,8 @@ export const EN_A2_U14: ExpansionUnitDef = {
           ],
         },
         takeaways: [
-          'Invitás con Would you like to…?',
-          "Aceptás con I'd love to y rechazás con Sorry, I can't.",
+          'Invitas con Would you like to…?',
+          "Aceptas con I'd love to y rechazas con Sorry, I can't.",
         ],
         exercises: [
           ex.translationChoice(
@@ -471,8 +471,8 @@ export const EN_A2_U14: ExpansionUnitDef = {
           ],
         },
         takeaways: [
-          "Proponés planes con Let's… y How about…?",
-          'Decís que hacen algo juntos: together.',
+          "Propones planes con Let's… y How about…?",
+          'Dices que hacen algo juntos: together.',
         ],
         exercises: [
           ex.fillBlank(
@@ -568,8 +568,8 @@ export const EN_A2_U14: ExpansionUnitDef = {
           ],
         },
         takeaways: [
-          'Proponés un lugar y una hora para encontrarse.',
-          'Preguntás si alguien está listo: Are you ready?',
+          'Propones un lugar y una hora para encontrarse.',
+          'Preguntas si alguien está listo: Are you ready?',
         ],
         exercises: [
           ex.translationChoice(
@@ -628,7 +628,7 @@ export const EN_A2_U14: ExpansionUnitDef = {
           ),
           ex.orderWords(
             'What time do you want to meet?',
-            '¿A qué hora querés que nos encontremos?',
+            '¿A qué hora quieres que nos encontremos?',
             ['en-meet', 'en-what-time'],
             {
               id: 'en.ex.a2773hwmvf083d',
@@ -636,7 +636,7 @@ export const EN_A2_U14: ExpansionUnitDef = {
           ),
           ex.shortAnswer(
             'Where do you want to meet? (en el parque)',
-            '¿Dónde querés que nos encontremos?',
+            '¿Dónde quieres que nos encontremos?',
             "Let's meet at the park.",
             ['At the park.', 'In the park.', "Let's meet in the park.", 'The park.'],
             ['en-meet', 'en-park'],
@@ -654,7 +654,7 @@ export const EN_A2_U14: ExpansionUnitDef = {
         objective: 'Entender una invitación escrita y responderla.',
         intro: {
           explanation:
-            'Una invitación dice qué es, cuándo y dónde. Para responder, agradecé y aceptá o rechazá dando una razón: Thank you! I’d love to go. / Sorry, I can’t. I have to work.',
+            'Una invitación dice qué es, cuándo y dónde. Para responder, agradece y acepta o rechaza dando una razón: Thank you! I’d love to go. / Sorry, I can’t. I have to work.',
           examples: [
             { target: "Thank you! I'd love to go.", base: '¡Gracias! Me encantaría ir.' },
             {
@@ -664,8 +664,8 @@ export const EN_A2_U14: ExpansionUnitDef = {
           ],
         },
         takeaways: [
-          'Entendés una invitación escrita: qué, cuándo y dónde.',
-          'Aceptás o rechazás una invitación dando una razón.',
+          'Entiendes una invitación escrita: qué, cuándo y dónde.',
+          'Aceptas o rechazas una invitación dando una razón.',
         ],
         exercises: [
           question(
@@ -723,7 +723,7 @@ export const EN_A2_U14: ExpansionUnitDef = {
             },
           ),
           ex.shortAnswer(
-            'Would you like to go to the concert? (no: tenés que trabajar)',
+            'Would you like to go to the concert? (no: tienes que trabajar)',
             '¿Te gustaría ir al recital?',
             "Sorry, I can't. I have to work.",
             [

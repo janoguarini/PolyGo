@@ -14,7 +14,7 @@ export const deleteAccountStrings = defineStrings({
     ],
     matchesNote:
       'Las partidas que jugaste quedan en el historial de tus rivales sin tu nombre ni avatar.',
-    confirmLabel: (username: string) => `Para confirmar, escribí tu usuario: ${username}`,
+    confirmLabel: (username: string) => `Para confirmar, escribe tu usuario: ${username}`,
     confirmHint: 'El botón de eliminar se habilita cuando coincide',
     deleteForever: 'Eliminar mi cuenta para siempre',
     cancel: 'Cancelar',
@@ -34,5 +34,39 @@ export const deleteAccountStrings = defineStrings({
     confirmHint: 'The delete button turns on when it matches',
     deleteForever: 'Delete my account forever',
     cancel: 'Cancel',
+  },
+  'pt-BR': {
+    title: 'Excluir conta',
+    cannotUndo: 'Isso não pode ser desfeito',
+    deletedPermanently: 'São apagados de forma permanente:',
+    whatIsDeleted: [
+      'Sua conta, e-mail e senha.',
+      'Seu perfil, avatar e ajustes de privacidade.',
+      'Seu progresso: lições, palavras, revisões, sequência e conquistas.',
+      'Seu ELO, seu rank e seu histórico de rating.',
+    ],
+    matchesNote:
+      'As partidas que você jogou ficam no histórico dos seus rivais, sem seu nome nem avatar.',
+    confirmLabel: (username: string) => `Para confirmar, digite seu usuário: ${username}`,
+    confirmHint: 'O botão de excluir é liberado quando o usuário coincide',
+    deleteForever: 'Excluir minha conta para sempre',
+    cancel: 'Cancelar',
+  },
+  it: {
+    title: 'Elimina account',
+    cannotUndo: 'Questa azione non si può annullare',
+    deletedPermanently: 'Vengono eliminati in modo permanente:',
+    whatIsDeleted: [
+      'Il tuo account, email e password.',
+      'Il tuo profilo, avatar e impostazioni della privacy.',
+      'I tuoi progressi: lezioni, parole, ripassi, serie e traguardi.',
+      'Il tuo ELO, il tuo rango e il tuo storico del rating.',
+    ],
+    matchesNote:
+      'Le partite che hai giocato restano nello storico dei tuoi avversari, senza il tuo nome né avatar.',
+    confirmLabel: (username: string) => `Per confermare, scrivi il tuo nome utente: ${username}`,
+    confirmHint: 'Il pulsante per eliminare si attiva quando corrisponde',
+    deleteForever: 'Elimina il mio account per sempre',
+    cancel: 'Annulla',
   },
 });

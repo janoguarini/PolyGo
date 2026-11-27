@@ -30,6 +30,52 @@ const EN_SOURCES: Record<XpSource, string> = {
   daily_challenge: 'Daily challenge',
 };
 
+const PT_TITLES: Record<string, string> = {
+  Novato: 'Novato',
+  Principiante: 'Iniciante',
+  Aprendiz: 'Aprendiz',
+  Explorador: 'Explorador',
+  Intermedio: 'Intermediário',
+  Avanzado: 'Avançado',
+  Experto: 'Craque',
+  Especialista: 'Especialista',
+  Maestro: 'Mestre',
+  'Gran Maestro': 'Grão-Mestre',
+  'Políglota Élite': 'Poliglota de Elite',
+};
+
+const IT_TITLES: Record<string, string> = {
+  Novato: 'Novellino',
+  Principiante: 'Principiante',
+  Aprendiz: 'Apprendista',
+  Explorador: 'Esploratore',
+  Intermedio: 'Intermedio',
+  Avanzado: 'Avanzato',
+  Experto: 'Esperto',
+  Especialista: 'Specialista',
+  Maestro: 'Maestro',
+  'Gran Maestro': 'Gran Maestro',
+  'Políglota Élite': 'Poliglotta d’élite',
+};
+
+const PT_SOURCES: Record<XpSource, string> = {
+  lesson_first: 'Lição concluída',
+  lesson_repeat: 'Prática de lição',
+  review: 'Revisão concluída',
+  ranked_win: 'Vitória no Ranked',
+  ranked_loss: 'Partida Ranked',
+  daily_challenge: 'Desafio diário',
+};
+
+const IT_SOURCES: Record<XpSource, string> = {
+  lesson_first: 'Lezione completata',
+  lesson_repeat: 'Ripetizione della lezione',
+  review: 'Ripasso completato',
+  ranked_win: 'Vittoria Ranked',
+  ranked_loss: 'Partita Ranked',
+  daily_challenge: 'Sfida del giorno',
+};
+
 export const xpStrings = defineStrings({
   es: {
     /** Recibe el título guardado (en español) y lo devuelve tal cual. */
@@ -81,5 +127,55 @@ export const xpStrings = defineStrings({
     rewardLevelUp: (n: number) => `YOU REACHED LEVEL ${n}!`,
     rewardA11y: (gained: number, level: number) =>
       `You earned ${gained} experience. Level ${level}`,
+  },
+  'pt-BR': {
+    title: (title: string) => PT_TITLES[title] ?? title,
+    titleA11y: (title: string) => `Título: ${title}`,
+    sourceLabel: (source: XpSource, fallback: string) => PT_SOURCES[source] ?? fallback,
+    experience: 'Experiência',
+    level: (n: number) => `Nível ${n}`,
+    levelCaps: 'NÍVEL',
+    levelMaxA11y: (n: number) => `Nível ${n}, máximo`,
+    levelA11y: (level: number, into: number, need: number, remaining: number) =>
+      `Nível ${level}. ${into} de ${need} XP. Faltam ${remaining} XP para o nível ${level + 1}`,
+    sampleData: 'Dados de exemplo',
+    maxReached: 'Nível máximo alcançado',
+    remaining: (xp: string, nextLevel: number) => `Faltam ${xp} XP para o nível ${nextLevel}`,
+    toastA11y: (preview: boolean, total: number, label: string) =>
+      `${preview ? 'Prévia: ' : ''}Você ganhou ${total} de experiência: ${label}`,
+    levelUp: (preview: boolean) =>
+      preview ? 'PREVIEW · VOCÊ SUBIU DE NÍVEL!' : 'VOCÊ SUBIU DE NÍVEL!',
+    levelUpHint: 'Cada lição, revisão e partida te deixa mais perto do próximo nível.',
+    continue: 'Continuar',
+    rewardTitle: 'EXPERIÊNCIA',
+    rewardAdding: 'Somando experiência…',
+    rewardLevelUp: (n: number) => `VOCÊ CHEGOU AO NÍVEL ${n}!`,
+    rewardA11y: (gained: number, level: number) =>
+      `Você ganhou ${gained} de experiência. Nível ${level}`,
+  },
+  it: {
+    title: (title: string) => IT_TITLES[title] ?? title,
+    titleA11y: (title: string) => `Titolo: ${title}`,
+    sourceLabel: (source: XpSource, fallback: string) => IT_SOURCES[source] ?? fallback,
+    experience: 'Esperienza',
+    level: (n: number) => `Livello ${n}`,
+    levelCaps: 'LIVELLO',
+    levelMaxA11y: (n: number) => `Livello ${n}, massimo`,
+    levelA11y: (level: number, into: number, need: number, remaining: number) =>
+      `Livello ${level}. ${into} di ${need} XP. Mancano ${remaining} XP al livello ${level + 1}`,
+    sampleData: 'Dati di esempio',
+    maxReached: 'Livello massimo raggiunto',
+    remaining: (xp: string, nextLevel: number) => `Mancano ${xp} XP al livello ${nextLevel}`,
+    toastA11y: (preview: boolean, total: number, label: string) =>
+      `${preview ? 'Anteprima: ' : ''}Hai guadagnato ${total} di esperienza: ${label}`,
+    levelUp: (preview: boolean) =>
+      preview ? 'PREVIEW · SEI SALITO DI LIVELLO!' : 'SEI SALITO DI LIVELLO!',
+    levelUpHint: 'Ogni lezione, ripasso e partita ti avvicina al prossimo livello.',
+    continue: 'Continua',
+    rewardTitle: 'ESPERIENZA',
+    rewardAdding: 'Sto sommando l’esperienza…',
+    rewardLevelUp: (n: number) => `HAI RAGGIUNTO IL LIVELLO ${n}!`,
+    rewardA11y: (gained: number, level: number) =>
+      `Hai guadagnato ${gained} di esperienza. Livello ${level}`,
   },
 });

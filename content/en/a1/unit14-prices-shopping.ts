@@ -168,7 +168,7 @@ const words: WordDef[] = [
     id: 'en-here-you-are',
     text: 'here you are',
     translation: 'aquí tiene',
-    acceptedTranslations: ['aquí tenés', 'tome'],
+    acceptedTranslations: ['aquí tienes', 'aquí tenés', 'tome'],
     ipa: '/ˈhɪr ju ˌɑr/',
     exampleEn: 'Here you are. Ten dollars.',
     exampleEs: 'Aquí tiene. Diez dólares.',
@@ -213,8 +213,8 @@ export const EN_A1_U14: PlannedWrittenUnitDef = {
           ],
         },
         takeaways: [
-          'Contás de diez en diez hasta one hundred.',
-          'Armás los números del 21 al 99 con guion: forty-two.',
+          'Cuentas de diez en diez hasta one hundred.',
+          'Armas los números del 21 al 99 con guion: forty-two.',
         ],
         exercises: [
           ex.translationChoice(
@@ -295,8 +295,8 @@ export const EN_A1_U14: PlannedWrittenUnitDef = {
           ],
         },
         takeaways: [
-          'Decís un precio con to be: The coffee is three dollars.',
-          'Entendés de oído precios con dólares y centavos.',
+          'Dices un precio con to be: The coffee is three dollars.',
+          'Entiendes de oído precios con dólares y centavos.',
         ],
         exercises: [
           ex.translationChoice('price', 'precio', ['dinero', 'dólar', 'barato'], ['en-price'], {
@@ -364,7 +364,7 @@ export const EN_A1_U14: PlannedWrittenUnitDef = {
           ),
           ex.shortAnswer(
             'The pen is $2. The book is $15. Is the pen expensive?',
-            'La lapicera cuesta 2 dólares. El libro, 15. ¿La lapicera es cara?',
+            'El bolígrafo cuesta 2 dólares. El libro, 15. ¿El bolígrafo es caro?',
             'No, it is not.',
             [
               'No.',
@@ -403,14 +403,14 @@ export const EN_A1_U14: PlannedWrittenUnitDef = {
           ],
         },
         takeaways: [
-          'Preguntás un precio con How much is…?',
-          'Preguntás una cantidad con How many + plural.',
+          'Preguntas un precio con How much is…?',
+          'Preguntas una cantidad con How many + plural.',
         ],
         exercises: [
           ex.translationChoice(
             'How much is the coffee?',
             '¿Cuánto cuesta el café?',
-            ['¿Cuántos cafés hay?', '¿Dónde está el café?', '¿Querés un café?'],
+            ['¿Cuántos cafés hay?', '¿Dónde está el café?', '¿Quieres un café?'],
             ['en-how-much', 'en-coffee'],
             { id: 'en.ex.4hmjysurd9mwf3' },
           ),
@@ -513,8 +513,8 @@ export const EN_A1_U14: PlannedWrittenUnitDef = {
           ],
         },
         takeaways: [
-          'Pedís cantidades con a cup of, a glass of, a bottle of y a kilo of.',
-          "Pedís con cortesía con I'd like.",
+          'Pides cantidades con a cup of, a glass of, a bottle of y a kilo of.',
+          "Pides con cortesía con I'd like.",
         ],
         exercises: [
           ex.imageChoice(
@@ -618,15 +618,15 @@ export const EN_A1_U14: PlannedWrittenUnitDef = {
         objective: 'Pedir, preguntar el precio y pagar en una tienda.',
         intro: {
           explanation:
-            "En una tienda se pide con I'd like y se pregunta el precio con How much is it? El vendedor pregunta Anything else? (¿algo más?). Si no querés nada más: No, that's all, thank you. Al pagar o entregar algo se dice Here you are (aquí tiene).",
+            "En una tienda se pide con I'd like y se pregunta el precio con How much is it? El vendedor pregunta Anything else? (¿algo más?). Si no quieres nada más: No, that's all, thank you. Al pagar o entregar algo se dice Here you are (aquí tiene).",
           examples: [
             { target: 'Anything else?', base: '¿Algo más?' },
             { target: "No, that's all. Here you are.", base: 'No, eso es todo. Aquí tiene.' },
           ],
         },
         takeaways: [
-          "Hacés un pedido completo: I'd like…, How much is it?, That's all.",
-          'Entendés lo que pregunta el vendedor y respondés con Here you are al pagar.',
+          "Haces un pedido completo: I'd like…, How much is it?, That's all.",
+          'Entiendes lo que pregunta el vendedor y respondes con Here you are al pagar.',
         ],
         exercises: [
           ex.translationChoice(

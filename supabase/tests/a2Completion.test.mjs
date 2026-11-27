@@ -3,6 +3,7 @@
 // así se comprueba fila a fila que sólo agrega y no publica nada. La última parte publica las unidades
 // DENTRO de esta base desechable (nunca en otra parte) para jugar cada lección con la corrección del
 // servidor y comprobar que el desbloqueo del A2 las encadena después de U12.
+import { withNeutralSpanish } from '../../scripts/neutral-patch.ts';
 import { test, before } from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
@@ -83,7 +84,7 @@ before(async () => {
 
 test('la migración es la salida exacta del generador y no tiene sentencias destructivas', () => {
   const { sql } = a2ExpansionSql();
-  assert.equal(migration(MIGRATION), sql);
+  assert.equal(withNeutralSpanish(migration(MIGRATION)), sql);
   const text = sql
     .replace(/\$content\$[\s\S]*?\$content\$/, '')
     .split('\n')

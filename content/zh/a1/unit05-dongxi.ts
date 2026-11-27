@@ -26,7 +26,7 @@ const tone = (
 ): ExerciseDef => ({
   type: 'listen_choice',
   skill: 'listening',
-  prompt: 'Escuchá y elegí el tono correcto',
+  prompt: 'Escucha y elige el tono correcto',
   payload: { type: 'listen_choice', audioText: hanzi, options: [pinyin, ...others] },
   answer: pinyin,
   words,
@@ -60,7 +60,7 @@ export const unit05: UnitDef = {
     'Preguntar qué es algo con 这 y 那, contar cosas con 本, 个 y 杯, y decir de quién es.',
   emoji: '🎒',
   objective:
-    'Podés preguntar qué es algo con 这 / 那 y 什么, contar cosas con el clasificador correcto (本, 个, 杯) y preguntar de quién es con 谁的.',
+    'Puedes preguntar qué es algo con 这 / 那 y 什么, contar cosas con el clasificador correcto (本, 个, 杯) y preguntar de quién es con 谁的.',
   grammar: {
     title: '这 / 那 y los clasificadores',
     explanation:
@@ -95,8 +95,8 @@ export const unit05: UnitDef = {
     w('zh-shu', '书', 'shū', 'libro', '这是我的书。', 'Este es mi libro.', ['objects'], {
       emoji: '📕',
     }),
-    w('zh-bi', '笔', 'bǐ', 'lapicera', '那是笔。', 'Eso es una lapicera.', ['objects'], {
-      acceptedTranslations: ['bolígrafo', 'birome', 'lápiz'],
+    w('zh-bi', '笔', 'bǐ', 'bolígrafo', '那是笔。', 'Eso es un bolígrafo.', ['objects'], {
+      acceptedTranslations: ['lapicera', 'birome', 'lápiz'],
       emoji: '🖊️',
     }),
     w(
@@ -163,10 +163,10 @@ export const unit05: UnitDef = {
           '这 (zhè) es «esto / este» y 那 (nà) «eso / ese». Para preguntar qué es algo: 这是什么？ Se responde con la misma estructura: 这是书 «esto es un libro». Ojo: 那 (nà, cuarto tono) no es 哪 (nǎ, «¿cuál?»).',
         examples: [
           { target: '这是什么？', base: '¿Qué es esto?' },
-          { target: '那是笔。', base: 'Eso es una lapicera.' },
+          { target: '那是笔。', base: 'Eso es un bolígrafo.' },
         ],
       },
-      takeaways: ['Preguntás qué es algo con 这是什么？', 'Distinguís 那 (nà) de 哪 (nǎ).'],
+      takeaways: ['Preguntas qué es algo con 这是什么？', 'Distingues 那 (nà) de 哪 (nǎ).'],
       exercises: [
         ex.translationChoice('这', 'este / esto', ['ese / eso', '¿cuál?', 'qué'], ['zh-zhe']),
         ex.imageChoice('📕', '书', ['笔', '手机', '包'], ['zh-shu']),
@@ -201,18 +201,18 @@ export const unit05: UnitDef = {
     },
     {
       title: '手机、包、电脑',
-      objective: 'Nombrar las cosas que llevás encima.',
+      objective: 'Nombrar las cosas que llevas encima.',
       intro: {
         explanation:
-          '东西 (dōngxi) significa «cosa»: 那是什么东西？ «¿qué cosa es esa?». Con 的 decís de quién es: 我的手机 «mi celular».',
+          '东西 (dōngxi) significa «cosa»: 那是什么东西？ «¿qué cosa es esa?». Con 的 dices de quién es: 我的手机 «mi celular».',
         examples: [
           { target: '这是我的手机。', base: 'Este es mi celular.' },
           { target: '那是什么东西？', base: '¿Qué cosa es esa?' },
         ],
       },
       takeaways: [
-        'Nombrás celular, bolso y computadora.',
-        'Preguntás qué cosa es algo con 什么东西.',
+        'Nombras celular, bolso y computadora.',
+        'Preguntas qué cosa es algo con 什么东西.',
       ],
       exercises: [
         ex.imageChoice('📱', '手机', ['电脑', '包', '书'], ['zh-shouji']),
@@ -251,7 +251,7 @@ export const unit05: UnitDef = {
           { target: '这本书是中文书。', base: 'Este libro es un libro en chino.' },
         ],
       },
-      takeaways: ['Contás libros con 本.', 'Usás 个 para casi todo lo demás.'],
+      takeaways: ['Cuentas libros con 本.', 'Usas 个 para casi todo lo demás.'],
       exercises: [
         ex.translationChoice('本', 'clasificador de libros', ['libro', 'agua', 'cosa'], ['zh-ben']),
         ex.fillBlank(
@@ -306,7 +306,7 @@ export const unit05: UnitDef = {
           { target: '这是你的水吗？', base: '¿Esta es tu agua?' },
         ],
       },
-      takeaways: ['Contás bebidas con 杯.', 'Decís 一杯 como yì bēi.'],
+      takeaways: ['Cuentas bebidas con 杯.', 'Dices 一杯 como yì bēi.'],
       exercises: [
         ex.imageChoice('💧', '水', ['书', '笔', '包'], ['zh-shui']),
         ex.translationChoice('杯', 'vaso / taza', ['agua', 'libro', 'cosa'], ['zh-bei']),
@@ -343,7 +343,7 @@ export const unit05: UnitDef = {
           { target: '是我的。', base: 'Es mío.' },
         ],
       },
-      takeaways: ['Preguntás quién es alguien con 谁.', 'Preguntás de quién es algo con 谁的.'],
+      takeaways: ['Preguntas quién es alguien con 谁.', 'Preguntas de quién es algo con 谁的.'],
       exercises: [
         ex.translationChoice('谁', 'quién', ['qué', '¿cuál?', 'cosa'], ['zh-shei']),
         tone('谁', 'shéi', ['shēi', 'shěi', 'shèi'], ['zh-shei']),

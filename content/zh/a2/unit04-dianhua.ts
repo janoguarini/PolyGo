@@ -41,7 +41,7 @@ export const ZH_A2_U04: ZhUnitDef = {
     description: 'Acciones en curso con 在 y 正在, llamadas, esperar y encontrarse en un lugar.',
     emoji: '📞',
     objective:
-      'Podés decir qué estás haciendo ahora, atender y hacer una llamada, pedir que te esperen y decir dónde estás.',
+      'Puedes decir qué estás haciendo ahora, atender y hacer una llamada, pedir que te esperen y decir dónde estás.',
     grammar: {
       title: '在 / 正在 + verbo (+ 呢) · 给 + persona + 打电话',
       explanation:
@@ -49,7 +49,7 @@ export const ZH_A2_U04: ZhUnitDef = {
       examples: [
         { target: '你在做什么呢？——我在跑步。', base: '¿Qué estás haciendo? — Estoy corriendo.' },
         { target: '她正在洗澡呢。', base: 'Se está bañando.' },
-        { target: '我晚上给你打电话。', base: 'A la noche te llamo.' },
+        { target: '我晚上给你打电话。', base: 'Por la noche te llamo.' },
       ],
     },
     review: {
@@ -119,8 +119,8 @@ export const ZH_A2_U04: ZhUnitDef = {
           acceptedTranslations: ['hola (al teléfono)', '¿sí?'],
         },
       ),
-      w('zh-zhao', '找', 'zhǎo', 'buscar', '你找谁？', '¿Con quién querés hablar?', ['verbs']),
-      w('zh-deng', '等', 'děng', 'esperar', '请等一会儿。', 'Esperá un ratito, por favor.', [
+      w('zh-zhao', '找', 'zhǎo', 'buscar', '你找谁？', '¿Con quién quieres hablar?', ['verbs']),
+      w('zh-deng', '等', 'děng', 'esperar', '请等一会儿。', 'Espera un ratito, por favor.', [
         'verbs',
       ]),
       w(
@@ -183,7 +183,7 @@ export const ZH_A2_U04: ZhUnitDef = {
         'fāngbiàn',
         'conveniente (cómodo)',
         '你现在方便吗？',
-        '¿Podés hablar ahora?',
+        '¿Puedes hablar ahora?',
         ['adjectives'],
         {
           acceptedTranslations: ['conveniente', 'cómodo', 'práctico'],
@@ -218,7 +218,7 @@ export const ZH_A2_U04: ZhUnitDef = {
             { target: '他正在玩游戏。', base: 'Está jugando a un juego.' },
           ],
         },
-        takeaways: ['Decís lo que hacés ahora con 在 / 正在.', 'Lo negás con 没在.'],
+        takeaways: ['Dices lo que haces ahora con 在 / 正在.', 'Lo niegas con 没在.'],
         exercises: [
           ex.translationChoice(
             '正在',
@@ -272,7 +272,7 @@ export const ZH_A2_U04: ZhUnitDef = {
           ),
           reply(
             '你在做什么呢？',
-            '¿Qué estás haciendo? (Respondé que estás corriendo.)',
+            '¿Qué estás haciendo? (Responde que estás corriendo.)',
             'wǒ zài pǎobù',
             '我在跑步',
             ['zh-paobu', 'zh-zhengzai'],
@@ -301,13 +301,13 @@ export const ZH_A2_U04: ZhUnitDef = {
         objective: 'Hacer y atender una llamada.',
         intro: {
           explanation:
-            '打电话 es llamar por teléfono, y a quién se llama va con 给: 给妈妈打电话. Al atender se dice 喂 (wéi). 你找谁？ es «¿con quién querés hablar?» (literalmente, «¿a quién buscás?»).',
+            '打电话 es llamar por teléfono, y a quién se llama va con 给: 给妈妈打电话. Al atender se dice 喂 (wéi). 你找谁？ es «¿con quién quieres hablar?» (literalmente, «¿a quién buscas?»).',
           examples: [
             { target: '喂，你好！', base: '¿Hola? ¡Buenas!' },
             { target: '我给妈妈打电话。', base: 'Llamo a mi mamá.' },
           ],
         },
-        takeaways: ['Atendés con 喂 y preguntás 你找谁？', 'Decís a quién llamás con 给…打电话.'],
+        takeaways: ['Atiendes con 喂 y preguntas 你找谁？', 'Dices a quién llamas con 给…打电话.'],
         exercises: [
           ex.translationChoice(
             '打电话',
@@ -340,7 +340,7 @@ export const ZH_A2_U04: ZhUnitDef = {
           ),
           ex.fillBlank(
             'A：喂，你___谁？ B：我找李华。',
-            'A: ¿Hola? ¿Con quién querés hablar? B: Con Li Hua.',
+            'A: ¿Hola? ¿Con quién quieres hablar? B: Con Li Hua.',
             '找',
             ['回', '见面', '叫'],
             ['zh-zhao', 'zh-wei'],
@@ -352,13 +352,13 @@ export const ZH_A2_U04: ZhUnitDef = {
           }),
           ex.orderWords(
             '我 晚上 给 你 打电话。',
-            'A la noche te llamo.',
+            'Por la noche te llamo.',
             ['zh-dadianhua', 'zh-gei'],
             { id: 'zh.ex.l74gfzwmmkhhkd' },
           ),
           reply(
             '喂，你找谁？',
-            '¿Hola? ¿Con quién querés hablar? (Decí que buscás a Wang Ming.)',
+            '¿Hola? ¿Con quién quieres hablar? (Di que buscas a Wang Ming.)',
             'wǒ zhǎo Wáng Míng',
             '我找王明',
             ['zh-zhao'],
@@ -395,11 +395,11 @@ export const ZH_A2_U04: ZhUnitDef = {
           explanation:
             '等 es esperar: 等我！ 一会儿 es «un ratito»: 请等一会儿. 马上 es «enseguida»: 我马上来 (¡ya voy!).',
           examples: [
-            { target: '请等一会儿。', base: 'Esperá un ratito, por favor.' },
+            { target: '请等一会儿。', base: 'Espera un ratito, por favor.' },
             { target: '我马上来！', base: '¡Ya voy!' },
           ],
         },
-        takeaways: ['Pedís que te esperen con 等一会儿.', 'Decís «ya voy» con 马上.'],
+        takeaways: ['Pides que te esperen con 等一会儿.', 'Dices «ya voy» con 马上.'],
         exercises: [
           ex.translationChoice('等', 'esperar', ['buscar', 'correr', 'volver'], ['zh-deng'], {
             id: 'zh.ex.3nxut9empgueoi',
@@ -419,7 +419,7 @@ export const ZH_A2_U04: ZhUnitDef = {
           ),
           ex.fillBlank(
             '你等我，我___来！',
-            'Esperame, ¡ya voy!',
+            'Espérame, ¡ya voy!',
             '马上',
             ['刚才', '已经', '去年'],
             ['zh-mashang'],
@@ -451,13 +451,13 @@ export const ZH_A2_U04: ZhUnitDef = {
           ),
           reply(
             '你什么时候来？',
-            '¿Cuándo venís? (Respondé que enseguida.)',
+            '¿Cuándo vienes? (Responde que enseguida.)',
             'wǒ mǎshàng lái',
             '我马上来',
             ['zh-mashang'],
             { id: 'zh.ex.951r4z8t0umajx', accepted: ['mǎshàng lái', '马上来', 'mǎshàng', '马上'] },
           ),
-          write('Esperame un ratito.', 'děng wǒ yíhuìr', '等我一会儿', ['zh-deng', 'zh-yihuir'], {
+          write('Espérame un ratito.', 'děng wǒ yíhuìr', '等我一会儿', ['zh-deng', 'zh-yihuir'], {
             id: 'zh.ex.njh3xklcmj5u33',
             accepted: ['nǐ děng wǒ yíhuìr', '你等我一会儿', 'qǐng děng wǒ yíhuìr', '请等我一会儿'],
           }),
@@ -476,7 +476,7 @@ export const ZH_A2_U04: ZhUnitDef = {
             { target: '我家在三楼。', base: 'Vivo en el tercer piso.' },
           ],
         },
-        takeaways: ['Decís dónde esperás con 在门口.', 'Decís el piso con número + 楼.'],
+        takeaways: ['Dices dónde esperas con 在门口.', 'Dices el piso con número + 楼.'],
         exercises: [
           ex.translationChoice(
             '门口',
@@ -498,7 +498,7 @@ export const ZH_A2_U04: ZhUnitDef = {
           ),
           ex.fillBlank(
             '他正在___呢，等一会儿吧。',
-            'Se está bañando; esperá un rato.',
+            'Se está bañando; espera un rato.',
             '洗澡',
             ['门口', '楼', '一会儿'],
             ['zh-xizao'],
@@ -530,13 +530,13 @@ export const ZH_A2_U04: ZhUnitDef = {
             MENSAJE,
             '¿Qué va a hacer Li Hua?',
             'Esperarla un rato',
-            ['Irse enseguida', 'Llamarla a la noche', 'Volver mañana'],
+            ['Irse enseguida', 'Llamarla por la noche', 'Volver mañana'],
             ['zh-deng', 'zh-yihuir'],
             'Li Hua escribe: «我等你一会儿».',
           ),
           reply(
             '你家在几楼？',
-            '¿En qué piso vivís? (Respondé: en el tercero.)',
+            '¿En qué piso vives? (Responde: en el tercero.)',
             'sān lóu',
             '三楼',
             ['zh-lou'],
@@ -561,15 +561,15 @@ export const ZH_A2_U04: ZhUnitDef = {
         objective: 'Preguntar si alguien puede hablar y entender llamadas.',
         intro: {
           explanation:
-            '方便 es «cómodo, conveniente»: 你现在方便吗？ (¿podés hablar ahora?). 有事 es «tener algo que hacer o que decir»: 我有事. Para que el otro hable: 你说吧 (dale, decime).',
+            '方便 es «cómodo, conveniente»: 你现在方便吗？ (¿puedes hablar ahora?). 有事 es «tener algo que hacer o que decir»: 我有事. Para que el otro hable: 你说吧 (adelante, dime).',
           examples: [
-            { target: '你现在方便吗？', base: '¿Podés hablar ahora?' },
+            { target: '你现在方便吗？', base: '¿Puedes hablar ahora?' },
             { target: '对不起，我今天有事。', base: 'Perdón, hoy tengo algo que hacer.' },
           ],
         },
         takeaways: [
-          'Preguntás si es buen momento con 方便吗？',
-          'Entendés quién hace qué en una llamada.',
+          'Preguntas si es buen momento con 方便吗？',
+          'Entiendes quién hace qué en una llamada.',
         ],
         exercises: [
           ex.translationChoice(
@@ -638,7 +638,7 @@ export const ZH_A2_U04: ZhUnitDef = {
           ),
           reply(
             '你现在方便吗？',
-            '¿Podés hablar ahora? (Respondé que sí, que te diga.)',
+            '¿Puedes hablar ahora? (Responde que sí, que te diga.)',
             'fāngbiàn, nǐ shuō ba',
             '方便，你说吧',
             ['zh-fangbian'],

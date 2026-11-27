@@ -23,7 +23,7 @@ const w = (
 const tone = (hanzi: string, pinyin: string, others: string[], words: string[]): ExerciseDef => ({
   type: 'listen_choice',
   skill: 'listening',
-  prompt: 'Escuchá y elegí el tono correcto',
+  prompt: 'Escucha y elige el tono correcto',
   payload: { type: 'listen_choice', audioText: hanzi, options: [pinyin, ...others] },
   answer: pinyin,
   words,
@@ -55,7 +55,7 @@ export const unit01: UnitDef = {
   description: 'Los cuatro tonos, saludar, agradecer, disculparte y decir tu nombre.',
   emoji: '👋',
   objective:
-    'Podés distinguir los cuatro tonos, saludar, agradecer, disculparte, decir tu nombre y responder que estás bien.',
+    'Puedes distinguir los cuatro tonos, saludar, agradecer, disculparte, decir tu nombre y responder que estás bien.',
   grammar: {
     title: 'Los tonos',
     explanation:
@@ -63,7 +63,7 @@ export const unit01: UnitDef = {
     examples: [
       { target: '妈 mā', base: 'mamá' },
       { target: '马 mǎ', base: 'caballo' },
-      { target: '骂 mà', base: 'retar' },
+      { target: '骂 mà', base: 'regañar' },
     ],
   },
   review: {
@@ -88,7 +88,7 @@ export const unit01: UnitDef = {
       },
     ),
     w('zh-zai-jian', '再见', 'zàijiàn', 'adiós', '老师，再见！', '¡Adiós, profe!', ['greetings'], {
-      acceptedTranslations: ['chau', 'hasta luego'],
+      acceptedTranslations: ['chau', 'hasta luego', 'chao'],
     }),
     w('zh-laoshi', '老师', 'lǎoshī', 'profesor/a', '老师好！', '¡Hola, profe!', ['people'], {
       acceptedTranslations: ['profesor', 'profesora', 'docente'],
@@ -107,7 +107,7 @@ export const unit01: UnitDef = {
       'Perdón, profe.',
       ['courtesy'],
       {
-        acceptedTranslations: ['lo siento', 'disculpá'],
+        acceptedTranslations: ['lo siento', 'disculpá', 'disculpa'],
       },
     ),
     w(
@@ -123,12 +123,12 @@ export const unit01: UnitDef = {
       },
     ),
     w('zh-wo', '我', 'wǒ', 'yo', '我叫王明。', 'Me llamo Wang Ming.', ['pronouns']),
-    w('zh-ni', '你', 'nǐ', 'vos', '你好！', '¡Hola!', ['pronouns'], {
-      acceptedTranslations: ['tú'],
+    w('zh-ni', '你', 'nǐ', 'tú', '你好！', '¡Hola!', ['pronouns'], {
+      acceptedTranslations: ['vos'],
     }),
     w('zh-jiao', '叫', 'jiào', 'llamarse', '我叫王明。', 'Me llamo Wang Ming.', ['introductions']),
-    w('zh-shenme', '什么', 'shénme', 'qué', '你叫什么名字？', '¿Cómo te llamás?', ['questions']),
-    w('zh-mingzi', '名字', 'míngzi', 'nombre', '你叫什么名字？', '¿Cómo te llamás?', [
+    w('zh-shenme', '什么', 'shénme', 'qué', '你叫什么名字？', '¿Cómo te llamas?', ['questions']),
+    w('zh-mingzi', '名字', 'míngzi', 'nombre', '你叫什么名字？', '¿Cómo te llamas?', [
       'introductions',
     ]),
     w('zh-hen', '很', 'hěn', 'muy', '我很好。', 'Estoy bien.', ['basics']),
@@ -139,12 +139,12 @@ export const unit01: UnitDef = {
       'zh-ni-ne',
       '你呢',
       'nǐ ne',
-      '¿y vos?',
+      '¿y tú?',
       '我很好，你呢？',
-      'Estoy bien, ¿y vos?',
+      'Estoy bien, ¿y tú?',
       ['questions'],
       {
-        acceptedTranslations: ['¿y tú?', 'y vos', 'y tú'],
+        acceptedTranslations: ['¿y vos?', 'y vos', 'y tú'],
       },
     ),
     w('zh-ye', '也', 'yě', 'también', '我也很好。', 'Yo también estoy bien.', ['basics']),
@@ -155,7 +155,7 @@ export const unit01: UnitDef = {
       objective: 'Saludar y despedirte.',
       intro: {
         explanation:
-          '你好 (nǐ hǎo) es «hola». Con un profesor o alguien mayor se usa 您好 (nín hǎo), más respetuoso. Arriba de los caracteres vas a ver el pinyin, que indica cómo se pronuncian. Para escribir el pinyin podés usar números de tono: ni3 hao3.',
+          '你好 (nǐ hǎo) es «hola». Con un profesor o alguien mayor se usa 您好 (nín hǎo), más respetuoso. Arriba de los caracteres vas a ver el pinyin, que indica cómo se pronuncian. Para escribir el pinyin puedes usar números de tono: ni3 hao3.',
         examples: [
           { target: '你好！', base: '¡Hola!' },
           { target: '老师，您好！', base: '¡Hola, profe!' },
@@ -163,9 +163,9 @@ export const unit01: UnitDef = {
         ],
       },
       takeaways: [
-        'Saludás con 你好 y, con respeto, con 您好.',
-        'Te despedís con 再见.',
-        'Escribís pinyin con números de tono (ni3 hao3).',
+        'Saludas con 你好 y, con respeto, con 您好.',
+        'Te despides con 再见.',
+        'Escribes pinyin con números de tono (ni3 hao3).',
       ],
       exercises: [
         ex.translationChoice('你好', 'hola', ['adiós', 'gracias', 'perdón'], ['zh-ni-hao']),
@@ -204,15 +204,15 @@ export const unit01: UnitDef = {
       objective: 'Distinguir de oído los cuatro tonos.',
       intro: {
         explanation:
-          'El mismo sonido con otro tono es otra palabra. 1.º alto y parejo (ā), 2.º sube como una pregunta (á), 3.º baja y vuelve a subir (ǎ), 4.º baja seco (à). Escuchá cada palabra y fijate en la melodía.',
+          'El mismo sonido con otro tono es otra palabra. 1.º alto y parejo (ā), 2.º sube como una pregunta (á), 3.º baja y vuelve a subir (ǎ), 4.º baja seco (à). Escucha cada palabra y fíjate en la melodía.',
         examples: [
-          { target: '妈 mā · 麻 má · 马 mǎ · 骂 mà', base: 'mamá · cáñamo · caballo · retar' },
+          { target: '妈 mā · 麻 má · 马 mǎ · 骂 mà', base: 'mamá · cáñamo · caballo · regañar' },
           { target: '谢谢 xièxie', base: 'gracias', note: 'la segunda sílaba es neutra' },
         ],
       },
       takeaways: [
-        'Reconocés los cuatro tonos y el neutro.',
-        'Sabés que un tono distinto cambia la palabra.',
+        'Reconoces los cuatro tonos y el neutro.',
+        'Sabes que un tono distinto cambia la palabra.',
       ],
       exercises: [
         tone('你', 'nǐ', ['nī', 'ní', 'nì'], ['zh-ni']),
@@ -226,7 +226,7 @@ export const unit01: UnitDef = {
           explanation:
             'La segunda sílaba de 谢谢 es neutra: se dice corta y sin tono (xie4xie5 o xie4xie).',
         }),
-        write('Vos', 'nǐ', '你', ['zh-ni']),
+        write('Tú', 'nǐ', '你', ['zh-ni']),
       ],
     },
     {
@@ -241,8 +241,8 @@ export const unit01: UnitDef = {
         ],
       },
       takeaways: [
-        'Respondés 不客气 cuando te agradecen.',
-        'Te disculpás con 对不起 y respondés 没关系.',
+        'Respondes 不客气 cuando te agradecen.',
+        'Te disculpas con 对不起 y respondes 没关系.',
       ],
       exercises: [
         ex.translationChoice(
@@ -295,15 +295,15 @@ export const unit01: UnitDef = {
       objective: 'Decir tu nombre y preguntar el de otra persona.',
       intro: {
         explanation:
-          'Para decir tu nombre: 我叫 + nombre («yo me llamo…»). Para preguntar: 你叫什么名字？, literalmente «¿vos te llamás qué nombre?». La pregunta va en el mismo lugar que la respuesta.',
+          'Para decir tu nombre: 我叫 + nombre («yo me llamo…»). Para preguntar: 你叫什么名字？, literalmente «¿tú te llamas qué nombre?». La pregunta va en el mismo lugar que la respuesta.',
         examples: [
           { target: '我叫王明。', base: 'Me llamo Wang Ming.' },
-          { target: '你叫什么名字？', base: '¿Cómo te llamás?' },
+          { target: '你叫什么名字？', base: '¿Cómo te llamas?' },
         ],
       },
-      takeaways: ['Te presentás con 我叫 + tu nombre.', 'Preguntás el nombre con 你叫什么名字？'],
+      takeaways: ['Te presentas con 我叫 + tu nombre.', 'Preguntas el nombre con 你叫什么名字？'],
       exercises: [
-        ex.translationChoice('我', 'yo', ['vos', 'qué', 'nombre'], ['zh-wo']),
+        ex.translationChoice('我', 'yo', ['tú', 'qué', 'nombre'], ['zh-wo']),
         ex.translationChoice('名字', 'nombre', ['profesor/a', 'qué', 'yo'], ['zh-mingzi']),
         ex.listenChoice(
           '你叫什么名字？',
@@ -313,7 +313,7 @@ export const unit01: UnitDef = {
         ex.orderWords('我 叫 王明。', 'Me llamo Wang Ming.', ['zh-wo', 'zh-jiao']),
         ex.fillBlank(
           '你叫___名字？',
-          '¿Cómo te llamás?',
+          '¿Cómo te llamas?',
           '什么',
           ['我', '好', '也'],
           ['zh-shenme'],
@@ -322,7 +322,7 @@ export const unit01: UnitDef = {
               'En chino la palabra de pregunta va donde iría la respuesta: 你叫什么名字？ → 我叫王明。',
           },
         ),
-        ex.orderWords('你 叫 什么 名字？', '¿Cómo te llamás?', [
+        ex.orderWords('你 叫 什么 名字？', '¿Cómo te llamas?', [
           'zh-ni',
           'zh-jiao',
           'zh-shenme',
@@ -341,18 +341,18 @@ export const unit01: UnitDef = {
         explanation:
           'Para decir que estás bien: 我很好. En chino no hace falta un verbo «estar» y antes de 好 casi siempre va 很 (muy), aunque se traduce simplemente «bien». Para devolver la pregunta: 你呢？',
         examples: [
-          { target: '我很好，你呢？', base: 'Estoy bien, ¿y vos?' },
+          { target: '我很好，你呢？', base: 'Estoy bien, ¿y tú?' },
           { target: '我也很好。', base: 'Yo también estoy bien.' },
         ],
       },
       takeaways: [
-        'Decís que estás bien con 我很好.',
-        'Devolvés la pregunta con 你呢？',
-        'Decís «también» con 也, antes del verbo o adjetivo.',
+        'Dices que estás bien con 我很好.',
+        'Devuelves la pregunta con 你呢？',
+        'Dices «también» con 也, antes del verbo o adjetivo.',
       ],
       exercises: [
         ex.translationChoice('很', 'muy', ['también', 'bien', 'yo'], ['zh-hen']),
-        ex.translationChoice('也', 'también', ['muy', '¿y vos?', 'bien'], ['zh-ye']),
+        ex.translationChoice('也', 'también', ['muy', '¿y tú?', 'bien'], ['zh-ye']),
         ex.fillBlank('我___好。', 'Estoy bien.', '很', ['也', '叫', '我'], ['zh-hen', 'zh-hao'], {
           skill: 'grammar',
           explanation: 'Antes de un adjetivo como 好 se pone 很: 我很好. Sin 很 suena incompleto.',
@@ -372,11 +372,11 @@ export const unit01: UnitDef = {
             ['很', 'muy'],
             ['好', 'bien'],
             ['也', 'también'],
-            ['你呢', '¿y vos?'],
+            ['你呢', '¿y tú?'],
           ],
           ['zh-hen', 'zh-hao', 'zh-ye', 'zh-ni-ne'],
         ),
-        write('¿Y vos?', 'nǐ ne', '你呢', ['zh-ni-ne']),
+        write('¿Y tú?', 'nǐ ne', '你呢', ['zh-ni-ne']),
         write('Estoy bien.', 'wǒ hěn hǎo', '我很好', ['zh-wo', 'zh-hen', 'zh-hao'], {
           accepted: ['hěn hǎo', 'hěnhǎo'],
           explanation: 'Se dice 我很好 (wǒ hěn hǎo): sin verbo «estar» y con 很 antes de 好.',

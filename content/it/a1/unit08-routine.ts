@@ -23,14 +23,14 @@ export const unit08: UnitDef = {
     'Contar tu día: despertarte, desayunar, trabajar o estudiar, con verbos en -are, -ere e -ire.',
   emoji: '🌅',
   objective:
-    'Podés contar qué hacés en un día normal con verbos en presente (parlo, leggo, dormo) y con mi sveglio / mi alzo.',
+    'Puedes contar qué haces en un día normal con verbos en presente (parlo, leggo, dormo) y con mi sveglio / mi alzo.',
   grammar: {
     title: 'Presente: -are, -ere, -ire y verbos reflexivos',
     explanation:
       'Con io casi todos los verbos terminan en -o: parlo, leggo, dormo. Con tu terminan en -i: parli, leggi, dormi. Con lui / lei, en -a (los de -are) o en -e (los de -ere e -ire): parla, legge, dorme. Los reflexivos llevan mi delante, como en español: mi sveglio, mi alzo.',
     examples: [
       { target: 'Io parlo italiano.', base: 'Yo hablo italiano.' },
-      { target: 'Tu parli spagnolo?', base: '¿Vos hablás español?' },
+      { target: 'Tu parli spagnolo?', base: '¿Tú hablas español?' },
       {
         target: 'La mattina mi sveglio alle sette.',
         base: 'A la mañana me despierto a las siete.',
@@ -89,8 +89,8 @@ export const unit08: UnitDef = {
     w('it-parlo', 'parlo', 'hablo', 'Parlo italiano e spagnolo.', 'Hablo italiano y español.', [
       'verbs',
     ]),
-    w('it-parli', 'parli', 'hablás', 'Tu parli italiano?', '¿Vos hablás italiano?', ['verbs'], {
-      acceptedTranslations: ['hablas'],
+    w('it-parli', 'parli', 'hablas', 'Tu parli italiano?', '¿Tú hablas italiano?', ['verbs'], {
+      acceptedTranslations: ['hablas', 'hablás'],
     }),
     w('it-parla', 'parla', 'habla', 'Lei parla molto bene.', 'Ella habla muy bien.', ['verbs']),
     w(
@@ -109,7 +109,7 @@ export const unit08: UnitDef = {
       'scrivo',
       'escribo',
       'Scrivo con la penna.',
-      'Escribo con la lapicera.',
+      'Escribo con el bolígrafo.',
       ['verbs'],
       { emoji: '✍️' },
     ),
@@ -177,8 +177,8 @@ export const unit08: UnitDef = {
         ],
       },
       takeaways: [
-        'Decís que te despertás y te levantás.',
-        'Decís que desayunás con faccio colazione.',
+        'Dices que te despiertas y te levantas.',
+        'Dices que desayunas con faccio colazione.',
       ],
       exercises: [
         ex.imageChoice('⏰', 'mi sveglio', ['dormo', 'leggo', 'lavoro'], ['it-mi-sveglio']),
@@ -235,7 +235,7 @@ export const unit08: UnitDef = {
           { target: 'La sera leggo e poi dormo.', base: 'A la noche leo y después duermo.' },
         ],
       },
-      takeaways: ['Conjugás verbos en -are, -ere e -ire con io.', 'Decís qué hacés a la noche.'],
+      takeaways: ['Conjugas verbos en -are, -ere e -ire con io.', 'Dices qué haces a la noche.'],
       exercises: [
         ex.translationChoice('leggo', 'leo', ['escribo', 'duermo', 'hablo'], ['it-leggo']),
         ex.imageChoice('😴', 'dormo', ['leggo', 'scrivo', 'parlo'], ['it-dormo']),
@@ -268,7 +268,7 @@ export const unit08: UnitDef = {
           'it-poi',
           'it-dormo',
         ]),
-        ex.translateWrite('Escribo con la lapicera.', 'Scrivo con la penna.', [
+        ex.translateWrite('Escribo con el bolígrafo.', 'Scrivo con la penna.', [
           'it-scrivo',
           'it-penna',
         ]),
@@ -287,14 +287,14 @@ export const unit08: UnitDef = {
         explanation:
           'Con tu el verbo termina en -i: parli, leggi, dormi. Con lui o lei termina en -a en los verbos de -are (parla) y en -e en los demás (legge, dorme). Como en español, el pronombre se puede omitir.',
         examples: [
-          { target: 'Tu parli spagnolo?', base: '¿Vos hablás español?' },
+          { target: 'Tu parli spagnolo?', base: '¿Tú hablas español?' },
           { target: 'Lei parla molto bene.', base: 'Ella habla muy bien.' },
         ],
       },
-      takeaways: ['Preguntás con tu parli…?', 'Hablás de otra persona con parla.'],
+      takeaways: ['Preguntas con tu parli…?', 'Hablas de otra persona con parla.'],
       exercises: [
-        ex.translationChoice('parli', 'hablás', ['hablo', 'habla', 'leo'], ['it-parli']),
-        ex.translationChoice('parla', 'habla', ['hablás', 'hablo', 'duermo'], ['it-parla']),
+        ex.translationChoice('parli', 'hablas', ['hablo', 'habla', 'leo'], ['it-parli']),
+        ex.translationChoice('parla', 'habla', ['hablas', 'hablo', 'duermo'], ['it-parla']),
         ex.listenChoice(
           'Tu parli italiano?',
           ['Io parlo italiano.', 'Lei parla italiano.', 'Tu sei italiano?'],
@@ -302,7 +302,7 @@ export const unit08: UnitDef = {
         ),
         ex.fillBlank(
           'Tu ___ spagnolo?',
-          '¿Vos hablás español?',
+          '¿Tú hablas español?',
           'parli',
           ['parlo', 'parla', 'sei'],
           ['it-parli', 'it-spagnolo'],
@@ -323,7 +323,7 @@ export const unit08: UnitDef = {
         ]),
         ex.shortAnswer(
           'Parli italiano?',
-          '¿Hablás italiano? (Respondé que sí.)',
+          '¿Hablas italiano? (Responde que sí.)',
           'Sì, parlo italiano.',
           ['Sì, io parlo italiano.', "Sì, parlo un po' di italiano.", 'Sì.'],
           ['it-si', 'it-parlo', 'it-italiano'],
@@ -338,7 +338,7 @@ export const unit08: UnitDef = {
     },
     {
       title: 'Lavoro e studio',
-      objective: 'Decir qué hacés durante el día.',
+      objective: 'Decir qué haces durante el día.',
       intro: {
         explanation:
           'Lavoro es «trabajo» y studio «estudio». A casa es «en casa» (y también «a casa»): lavoro a casa. Mangio es «como» y bevo «tomo, bebo».',
@@ -350,7 +350,7 @@ export const unit08: UnitDef = {
           },
         ],
       },
-      takeaways: ['Decís si trabajás o estudiás.', 'Decís qué comés y qué tomás.'],
+      takeaways: ['Dices si trabajas o estudias.', 'Dices qué comes y qué tomas.'],
       exercises: [
         ex.imageChoice('💼', 'lavoro', ['studio', 'dormo', 'mangio'], ['it-lavoro']),
         ex.translationChoice('studio', 'estudio', ['trabajo', 'escribo', 'leo'], ['it-studio']),
@@ -384,7 +384,7 @@ export const unit08: UnitDef = {
         ),
         ex.shortAnswer(
           'Lavori o studi?',
-          '¿Trabajás o estudiás? (Respondé que estudiás.)',
+          '¿Trabajas o estudias? (Responde que estudias.)',
           'Studio.',
           ['Io studio.', 'Studio italiano.', 'Sono studente.', 'Sono studentessa.'],
           ['it-studio'],
@@ -405,7 +405,7 @@ export const unit08: UnitDef = {
           { target: 'Faccio colazione, poi lavoro.', base: 'Desayuno, después trabajo.' },
         ],
       },
-      takeaways: ['Contás tu rutina con ogni giorno y poi.', 'Ubicás sempre después del verbo.'],
+      takeaways: ['Cuentas tu rutina con ogni giorno y poi.', 'Ubicas sempre después del verbo.'],
       exercises: [
         ex.translationChoice(
           'ogni giorno',

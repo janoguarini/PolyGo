@@ -51,7 +51,7 @@ export const FR_A1_U13: FrUnitDef = {
       'Profesiones con género, la profesión sin artículo con être, être y avoir en plural (ils‿ont / ils sont), je commence y je finis. Falso amigo: le bureau.',
     emoji: '💼',
     objective:
-      'Podés preguntar y decir a qué se dedica alguien, dónde trabaja y a qué hora empieza y termina, y hablar de tu familia en plural.',
+      'Puedes preguntar y decir a qué se dedica alguien, dónde trabaja y a qué hora empieza y termina, y hablar de tu familia en plural.',
     grammar: {
       title: 'Je suis médecin · nous sommes, ils ont · je finis',
       explanation:
@@ -99,12 +99,12 @@ export const FR_A1_U13: FrUnitDef = {
       w(
         'fr-qu-est-ce-que-tu-fais-dans-la-vie',
         "qu'est-ce que tu fais dans la vie?",
-        '¿a qué te dedicás?',
+        '¿a qué te dedicas?',
         "Qu'est-ce que tu fais dans la vie? — Je suis professeur.",
-        '¿A qué te dedicás? — Soy profesor.',
+        '¿A qué te dedicas? — Soy profesor.',
         ['work', 'questions'],
         {
-          acceptedTranslations: ['¿a qué te dedicas?', '¿de qué trabajás?'],
+          acceptedTranslations: ['¿a qué te dedicás?', '¿de qué trabajás?', '¿de qué trabajas?'],
           acceptedTexts: ["qu'est-ce que tu fais dans la vie?"],
         },
       ),
@@ -135,12 +135,12 @@ export const FR_A1_U13: FrUnitDef = {
       w(
         'fr-le-serveur',
         'le serveur',
-        'el mozo',
+        'el mesero',
         'Le serveur travaille le soir.',
-        'El mozo trabaja a la noche.',
+        'El mesero trabaja por la noche.',
         ['work'],
         {
-          acceptedTranslations: ['la moza', 'el camarero', 'la camarera'],
+          acceptedTranslations: ['la moza', 'el camarero', 'la camarera', 'el mozo', 'la mesera'],
           acceptedTexts: ['la serveuse'],
         },
       ),
@@ -236,7 +236,7 @@ export const FR_A1_U13: FrUnitDef = {
           acceptedTranslations: ['nosotros somos'],
         },
       ),
-      w('fr-ils-sont', 'ils sont', 'ellos son', 'Ils sont serveurs.', 'Son mozos.', ['verbs'], {
+      w('fr-ils-sont', 'ils sont', 'ellos son', 'Ils sont serveurs.', 'Son meseros.', ['verbs'], {
         acceptedTranslations: ['ellas son'],
         acceptedTexts: ['elles sont'],
       }),
@@ -298,18 +298,18 @@ export const FR_A1_U13: FrUnitDef = {
         objective: 'Preguntar y decir a qué se dedica alguien.',
         intro: {
           explanation:
-            "Para preguntar la profesión: qu'est-ce que tu fais dans la vie? (literalmente, «¿qué hacés en la vida?»). Se responde con je suis + profesión, sin artículo: je suis médecin, nunca «je suis un médecin». Con c'est, en cambio, sí va el artículo: c'est un médecin. Médecin sirve también para una mujer: elle est médecin.",
+            "Para preguntar la profesión: qu'est-ce que tu fais dans la vie? (literalmente, «¿qué haces en la vida?»). Se responde con je suis + profesión, sin artículo: je suis médecin, nunca «je suis un médecin». Con c'est, en cambio, sí va el artículo: c'est un médecin. Médecin sirve también para una mujer: elle est médecin.",
           examples: [
             {
               target: "Qu'est-ce que tu fais dans la vie? — Je suis professeur.",
-              base: '¿A qué te dedicás? — Soy profesor.',
+              base: '¿A qué te dedicas? — Soy profesor.',
             },
             { target: 'Ma sœur est médecin.', base: 'Mi hermana es médica.' },
           ],
         },
         takeaways: [
-          "Preguntás la profesión con qu'est-ce que tu fais dans la vie?",
-          "Decís je suis médecin sin artículo, pero c'est un médecin.",
+          "Preguntas la profesión con qu'est-ce que tu fais dans la vie?",
+          "Dices je suis médecin sin artículo, pero c'est un médecin.",
         ],
         exercises: [
           ex.translationChoice(
@@ -321,8 +321,8 @@ export const FR_A1_U13: FrUnitDef = {
           ),
           ex.translationChoice(
             "qu'est-ce que tu fais dans la vie?",
-            '¿a qué te dedicás?',
-            ['¿cómo te llamás?', '¿de dónde sos?', '¿qué hacés hoy?'],
+            '¿a qué te dedicas?',
+            ['¿cómo te llamas?', '¿de dónde eres?', '¿qué haces hoy?'],
             ['fr-qu-est-ce-que-tu-fais-dans-la-vie'],
             { id: 'fr.ex.e6eejqj863to4v' },
           ),
@@ -355,7 +355,7 @@ export const FR_A1_U13: FrUnitDef = {
           ),
           ex.fillBlank(
             "Qu'est-ce que tu fais dans la ___? — Je suis ingénieur.",
-            '¿A qué te dedicás? — Soy ingeniero.',
+            '¿A qué te dedicas? — Soy ingeniero.',
             'vie',
             ['ville', 'famille', 'semaine'],
             ['fr-qu-est-ce-que-tu-fais-dans-la-vie', 'fr-l-ingenieur'],
@@ -386,7 +386,7 @@ export const FR_A1_U13: FrUnitDef = {
           }),
           ex.shortAnswer(
             "Qu'est-ce que tu fais dans la vie?",
-            '¿A qué te dedicás? (Respondé que sos ingeniero.)',
+            '¿A qué te dedicas? (Responde que eres ingeniero.)',
             'Je suis ingénieur.',
             ['Je suis ingénieure.', 'Moi, je suis ingénieur.'],
             ['fr-l-ingenieur', 'fr-qu-est-ce-que-tu-fais-dans-la-vie'],
@@ -403,18 +403,21 @@ export const FR_A1_U13: FrUnitDef = {
           explanation:
             'Muchas profesiones cambian en femenino: -eur pasa a -euse (serveur, serveuse; vendeur, vendeuse), -ier a -ière (infirmier, infirmière) y -er a -ère (boulanger, boulangère). En el femenino la r final suena: boulangère, infirmière; en boulanger e infirmier, no. Médecin no cambia.',
           examples: [
-            { target: 'Il est serveur et elle est serveuse.', base: 'Él es mozo y ella es moza.' },
+            {
+              target: 'Il est serveur et elle est serveuse.',
+              base: 'Él es mesero y ella es mesera.',
+            },
             { target: 'Mon père est boulanger.', base: 'Mi papá es panadero.' },
           ],
         },
         takeaways: [
-          'Formás el femenino: serveuse, vendeuse, infirmière, boulangère.',
-          'Oís la r final en el femenino: boulangère.',
+          'Formas el femenino: serveuse, vendeuse, infirmière, boulangère.',
+          'Oyes la r final en el femenino: boulangère.',
         ],
         exercises: [
           ex.translationChoice(
             'le serveur',
-            'el mozo',
+            'el mesero',
             ['el vendedor', 'el panadero', 'el enfermero'],
             ['fr-le-serveur'],
             {
@@ -423,7 +426,7 @@ export const FR_A1_U13: FrUnitDef = {
           ),
           ex.matchPairs(
             [
-              ['le serveur', 'el mozo'],
+              ['le serveur', 'el mesero'],
               ['le vendeur', 'el vendedor'],
               ["l'infirmier", 'el enfermero'],
               ['le boulanger', 'el panadero'],
@@ -465,7 +468,7 @@ export const FR_A1_U13: FrUnitDef = {
           ex.translationChoice(
             'le vendeur',
             'el vendedor',
-            ['el mozo', 'el panadero', 'el médico'],
+            ['el mesero', 'el panadero', 'el médico'],
             ['fr-le-vendeur'],
             {
               id: 'fr.ex.vdci5xvstkmleh',
@@ -473,7 +476,7 @@ export const FR_A1_U13: FrUnitDef = {
           ),
           ex.fillBlank(
             'Il est serveur et elle est ___.',
-            'Él es mozo y ella es moza.',
+            'Él es mesero y ella es mesera.',
             'serveuse',
             ['serveur', 'serveure', 'vendeur'],
             ['fr-le-serveur'],
@@ -492,7 +495,7 @@ export const FR_A1_U13: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Ta mère est infirmière?',
-            '¿Tu mamá es enfermera? (Respondé que sí, que es enfermera.)',
+            '¿Tu mamá es enfermera? (Responde que sí, que es enfermera.)',
             'Oui, elle est infirmière.',
             ['Oui, ma mère est infirmière.', 'Oui, elle est infirmière!'],
             ['fr-l-infirmier'],
@@ -514,8 +517,8 @@ export const FR_A1_U13: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Decís dónde trabajás: au bureau, à l'hôpital, dans une entreprise.",
-          'Recordás que le bureau es la oficina.',
+          "Dices dónde trabajas: au bureau, à l'hôpital, dans une entreprise.",
+          'Recuerdas que le bureau es la oficina.',
         ],
         exercises: [
           ex.translationChoice(
@@ -604,7 +607,7 @@ export const FR_A1_U13: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Tu travailles où?',
-            '¿Dónde trabajás? (Respondé que trabajás en una empresa.)',
+            '¿Dónde trabajas? (Responde que trabajas en una empresa.)',
             'Je travaille dans une entreprise.',
             ['Dans une entreprise.', 'Je travaille dans une grande entreprise.'],
             ['fr-l-entreprise'],
@@ -626,8 +629,8 @@ export const FR_A1_U13: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Conjugás être y avoir con nous, ils y elles.',
-          'Distinguís ils ont (sonido z) de ils sont (sonido s).',
+          'Conjugas être y avoir con nous, ils y elles.',
+          'Distingues ils ont (sonido z) de ils sont (sonido s).',
         ],
         exercises: [
           ex.translationChoice(
@@ -726,7 +729,7 @@ export const FR_A1_U13: FrUnitDef = {
       // ------------------------------------------------------------------------------------ L5
       {
         title: 'Je commence, je finis',
-        objective: 'Decir a qué hora empezás y terminás de trabajar.',
+        objective: 'Decir a qué hora empiezas y terminas de trabajar.',
         intro: {
           explanation:
             'Je commence es un verbo en -er, como je parle. Je finis es un verbo en -ir: je finis, tu finis, il finit; las tres formas suenan igual. Con la hora: je commence à neuf heures, je finis à cinq heures. En Francia, la jornada legal es de 35 horas por semana.',
@@ -736,8 +739,8 @@ export const FR_A1_U13: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Decís a qué hora empezás con je commence à…',
-          'Conjugás je finis, tu finis, il finit.',
+          'Dices a qué hora empiezas con je commence à…',
+          'Conjugas je finis, tu finis, il finit.',
         ],
         exercises: [
           ex.translationChoice(
@@ -811,7 +814,7 @@ export const FR_A1_U13: FrUnitDef = {
             FAMILLE,
             '¿Qué hace la chica que escribe?',
             'Es vendedora en una tienda.',
-            ['Es profesora.', 'Es panadera.', 'Es moza.'],
+            ['Es profesora.', 'Es panadera.', 'Es mesera.'],
             ['fr-le-vendeur', 'fr-je-finis'],
             'Escribe «Moi, je suis vendeuse dans un magasin».',
           ),
@@ -826,7 +829,7 @@ export const FR_A1_U13: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Tu commences à quelle heure?',
-            '¿A qué hora empezás? (Respondé que empezás a las nueve.)',
+            '¿A qué hora empiezas? (Responde que empiezas a las nueve.)',
             'Je commence à neuf heures.',
             ['À neuf heures.', 'Je commence le travail à neuf heures.'],
             ['fr-je-commence'],

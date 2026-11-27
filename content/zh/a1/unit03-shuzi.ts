@@ -26,7 +26,7 @@ const tone = (
 ): ExerciseDef => ({
   type: 'listen_choice',
   skill: 'listening',
-  prompt: 'Escuchá y elegí el tono correcto',
+  prompt: 'Escucha y elige el tono correcto',
   payload: { type: 'listen_choice', audioText: hanzi, options: [pinyin, ...others] },
   answer: pinyin,
   words,
@@ -52,18 +52,18 @@ export const unit03: UnitDef = {
   position: 3,
   title: 'Números y edad',
   titleEn: '数字和年龄',
-  description: 'Contar hasta veinte, preguntar la edad y decir cuántos años tenés.',
+  description: 'Contar hasta veinte, preguntar la edad y decir cuántos años tienes.',
   emoji: '🔢',
   objective:
-    'Podés contar hasta veinte, armar números con 十, preguntar la edad y decir cuántos años tenés.',
+    'Puedes contar hasta veinte, armar números con 十, preguntar la edad y decir cuántos años tienes.',
   grammar: {
     title: 'Números con 十 y la edad con 岁',
     explanation:
       'Los números se arman como una cuenta: 十八 = 10 + 8, 二十 = 2 × 10. La edad no lleva verbo: 我二十岁 «yo veinte años». Para contar cosas, «dos» es 两: 两岁.',
     examples: [
       { target: '我二十岁。', base: 'Tengo veinte años.' },
-      { target: '你几岁？', base: '¿Cuántos años tenés? (a un chico)' },
-      { target: '你多大？', base: '¿Qué edad tenés? (a un joven o adulto)' },
+      { target: '你几岁？', base: '¿Cuántos años tienes? (a un chico)' },
+      { target: '你多大？', base: '¿Qué edad tienes? (a un joven o adulto)' },
     ],
   },
   review: {
@@ -94,8 +94,8 @@ export const unit03: UnitDef = {
       'numbers',
     ]),
     w('zh-sui', '岁', 'suì', 'años (de edad)', '我二十岁。', 'Tengo veinte años.', ['time']),
-    w('zh-ji', '几', 'jǐ', '¿cuántos?', '你几岁？', '¿Cuántos años tenés?', ['questions']),
-    w('zh-duo-da', '多大', 'duō dà', '¿qué edad?', '你多大？', '¿Qué edad tenés?', ['questions']),
+    w('zh-ji', '几', 'jǐ', '¿cuántos?', '你几岁？', '¿Cuántos años tienes?', ['questions']),
+    w('zh-duo-da', '多大', 'duō dà', '¿qué edad?', '你多大？', '¿Qué edad tienes?', ['questions']),
     w('zh-jinnian', '今年', 'jīnnián', 'este año', '我今年十八岁。', 'Tengo dieciocho años.', [
       'time',
     ]),
@@ -112,7 +112,7 @@ export const unit03: UnitDef = {
           { target: '十五', base: 'quince' },
         ],
       },
-      takeaways: ['Contás del uno al cinco.', 'Distinguís 四 (sì) de 十 (shí) por el tono.'],
+      takeaways: ['Cuentas del uno al cinco.', 'Distingues 四 (sì) de 十 (shí) por el tono.'],
       exercises: [
         ex.imageChoice('2️⃣', '二', ['三', '一', '五'], ['zh-er']),
         ex.imageChoice('4️⃣', '四', ['五', '三', '二'], ['zh-si']),
@@ -143,7 +143,7 @@ export const unit03: UnitDef = {
           { target: '十个学生', base: 'diez estudiantes' },
         ],
       },
-      takeaways: ['Contás del seis al diez.', 'Reconocés los números de oído.'],
+      takeaways: ['Cuentas del seis al diez.', 'Reconoces los números de oído.'],
       exercises: [
         ex.imageChoice('7️⃣', '七', ['六', '八', '九'], ['zh-qi']),
         ex.imageChoice('🔟', '十', ['九', '八', '七'], ['zh-shi-10']),
@@ -180,7 +180,7 @@ export const unit03: UnitDef = {
           { target: '二十', base: 'veinte' },
         ],
       },
-      takeaways: ['Armás del 11 al 20 con 十.', 'Distinguís 十二 (12) de 二十 (20).'],
+      takeaways: ['Armas del 11 al 20 con 十.', 'Distingues 十二 (12) de 二十 (20).'],
       exercises: [
         ex.translationChoice(
           '十八',
@@ -224,14 +224,14 @@ export const unit03: UnitDef = {
         explanation:
           'La edad se dice sin verbo: 我二十岁 «yo veinte años». A un chico se le pregunta 你几岁？ (几 es para números chicos); a un joven o adulto, 你多大？',
         examples: [
-          { target: '你多大？', base: '¿Qué edad tenés?' },
+          { target: '你多大？', base: '¿Qué edad tienes?' },
           { target: '我十八岁。', base: 'Tengo dieciocho años.' },
-          { target: '你几岁？', base: '¿Cuántos años tenés?', note: 'a un chico' },
+          { target: '你几岁？', base: '¿Cuántos años tienes?', note: 'a un chico' },
         ],
       },
       takeaways: [
-        'Decís tu edad con número + 岁.',
-        'Preguntás 你多大？ a adultos y 你几岁？ a chicos.',
+        'Dices tu edad con número + 岁.',
+        'Preguntas 你多大？ a adultos y 你几岁？ a chicos.',
       ],
       exercises: [
         ex.translationChoice('岁', 'años (de edad)', ['este año', '¿cuántos?', 'diez'], ['zh-sui']),
@@ -255,7 +255,7 @@ export const unit03: UnitDef = {
         ),
         ex.fillBlank(
           '你___岁？',
-          '¿Cuántos años tenés? (a un chico)',
+          '¿Cuántos años tienes? (a un chico)',
           '几',
           ['什么', '哪', '吗'],
           ['zh-ji', 'zh-sui'],
@@ -270,7 +270,9 @@ export const unit03: UnitDef = {
           'zh-ba',
           'zh-sui',
         ]),
-        write('¿Qué edad tenés?', 'nǐ duō dà', '你多大', ['zh-duo-da'], { accepted: ['nǐ duōdà'] }),
+        write('¿Qué edad tienes?', 'nǐ duō dà', '你多大', ['zh-duo-da'], {
+          accepted: ['nǐ duōdà'],
+        }),
         write(
           'Tengo veinte años.',
           'wǒ èrshí suì',
@@ -298,8 +300,8 @@ export const unit03: UnitDef = {
         ],
       },
       takeaways: [
-        'Usás 两 para «dos» antes de una medida.',
-        'Decís tu edad con 今年 + número + 岁.',
+        'Usas 两 para «dos» antes de una medida.',
+        'Dices tu edad con 今年 + número + 岁.',
       ],
       exercises: [
         ex.translationChoice(

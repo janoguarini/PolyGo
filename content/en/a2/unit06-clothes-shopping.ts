@@ -6,7 +6,7 @@ export const unit06: UnitDef = {
   position: 6,
   title: 'Ropa y compras',
   titleEn: 'Clothes and shopping',
-  description: 'La ropa, los talles, los precios y cómo pagar.',
+  description: 'La ropa, las tallas, los precios y cómo pagar.',
   emoji: '👕',
   words: [
     w(
@@ -22,13 +22,13 @@ export const unit06: UnitDef = {
     w(
       'en-t-shirt',
       'T-shirt',
-      'remera',
+      'camiseta',
       '/ˈtiˌʃɜrt/',
       '👕',
       'I bought a cheap T-shirt.',
-      'Me compré una remera barata.',
+      'Me compré una camiseta barata.',
       ['clothes'],
-      ['camiseta', 'playera'],
+      ['camiseta', 'playera', 'remera'],
       ['t shirt', 'tshirt'],
     ),
     w('en-shirt', 'shirt', 'camisa', '/ʃɜrt/', '👔', 'I like your shirt.', 'Me gusta tu camisa.', [
@@ -59,13 +59,13 @@ export const unit06: UnitDef = {
     w(
       'en-skirt',
       'skirt',
-      'pollera / falda',
+      'falda',
       '/skɜrt/',
       undefined,
       'She is wearing a green skirt.',
-      'Tiene puesta una pollera verde.',
+      'Tiene puesta una falda verde.',
       ['clothes'],
-      ['pollera', 'falda'],
+      ['falda', 'pollera', 'pollera / falda'],
     ),
     w(
       'en-shoes',
@@ -81,13 +81,13 @@ export const unit06: UnitDef = {
     w(
       'en-jacket',
       'jacket',
-      'campera',
+      'chaqueta',
       '/ˈdʒækɪt/',
       '🧥',
       'I am wearing my new jacket.',
-      'Tengo puesta mi campera nueva.',
+      'Tengo puesta mi chaqueta nueva.',
       ['clothes'],
-      ['chaqueta', 'chamarra'],
+      ['chaqueta', 'chamarra', 'campera'],
     ),
     w(
       'en-hat',
@@ -107,20 +107,20 @@ export const unit06: UnitDef = {
       '/wɛr/',
       undefined,
       'I am wearing a red jacket.',
-      'Tengo puesta una campera roja.',
+      'Tengo puesta una chaqueta roja.',
       ['clothes', 'verbs'],
       ['usar', 'llevar puesto', 'tener puesto', 'vestir'],
     ),
     w(
       'en-size',
       'size',
-      'talle / tamaño',
+      'talla / tamaño',
       '/saɪz/',
       '📏',
       'What size are you?',
-      '¿Qué talle sos?',
+      '¿Qué talla eres?',
       ['shopping'],
-      ['talle', 'tamaño', 'talla'],
+      ['talle', 'tamaño', 'talla', 'talle / tamaño'],
     ),
     w(
       'en-price',
@@ -139,7 +139,7 @@ export const unit06: UnitDef = {
       '/tʃip/',
       undefined,
       'This T-shirt is very cheap.',
-      'Esta remera es muy barata.',
+      'Esta camiseta es muy barata.',
       ['shopping'],
       ['barato', 'barata'],
     ),
@@ -150,7 +150,7 @@ export const unit06: UnitDef = {
       '/ɪkˈspɛnsɪv/',
       '💎',
       'This jacket is very expensive.',
-      'Esta campera es muy cara.',
+      'Esta chaqueta es muy cara.',
       ['shopping'],
       ['caro', 'cara'],
     ),
@@ -177,13 +177,13 @@ export const unit06: UnitDef = {
     w(
       'en-money',
       'money',
-      'plata / dinero',
+      'dinero',
       '/ˈmʌni/',
       '💰',
       "I don't have money.",
-      'No tengo plata.',
+      'No tengo dinero.',
       ['shopping'],
-      ['plata', 'dinero'],
+      ['plata', 'plata / dinero'],
     ),
     w(
       'en-try-on',
@@ -230,14 +230,14 @@ export const unit06: UnitDef = {
           [
             ['shirt', 'camisa'],
             ['pants', 'pantalón'],
-            ['skirt', 'pollera / falda'],
+            ['skirt', 'falda'],
             ['hat', 'sombrero / gorro'],
           ],
           ['en-shirt', 'en-pants', 'en-skirt', 'en-hat'],
         ),
         ex.fillBlank(
           'I am wearing a red ___.',
-          'Tengo puesta una campera roja.',
+          'Tengo puesta una chaqueta roja.',
           'jacket',
           ['shoes', 'pants', 'clothes'],
           ['en-jacket', 'en-wear', 'en-red'],
@@ -264,7 +264,7 @@ export const unit06: UnitDef = {
       ],
     },
     {
-      title: '¿Qué tenés puesto?',
+      title: '¿Qué tienes puesto?',
       objective: 'Wear: usar ropa siempre o tenerla puesta ahora.',
       exercises: [
         ex.fillBlank(
@@ -284,7 +284,7 @@ export const unit06: UnitDef = {
         ex.translationChoice(
           'clothes',
           'ropa',
-          ['tela', 'talle / tamaño', 'precio'],
+          ['tela', 'talla / tamaño', 'precio'],
           ['en-clothes'],
         ),
         ex.fillBlank(
@@ -297,7 +297,7 @@ export const unit06: UnitDef = {
             explanation: 'Shoes y pants son plurales en inglés: these shoes are…',
           },
         ),
-        ex.orderWords('I am wearing my new jacket.', 'Tengo puesta mi campera nueva.', [
+        ex.orderWords('I am wearing my new jacket.', 'Tengo puesta mi chaqueta nueva.', [
           'en-wear',
           'en-jacket',
           'en-my',
@@ -307,7 +307,7 @@ export const unit06: UnitDef = {
           ['I like your bag.', 'I love your hat.', 'I like your shirt.'],
           ['en-hat', 'en-like'],
         ),
-        ex.translateWrite('Ella tiene puesta una pollera verde.', 'She is wearing a green skirt.', [
+        ex.translateWrite('Ella tiene puesta una falda verde.', 'She is wearing a green skirt.', [
           'en-skirt',
           'en-wear',
           'en-green',
@@ -316,7 +316,7 @@ export const unit06: UnitDef = {
     },
     {
       title: 'En el negocio',
-      objective: 'Pedir un talle y probarte ropa.',
+      objective: 'Pedir una talla y probarte ropa.',
       exercises: [
         ex.fillBlank(
           'Can I ___ on this shirt?',
@@ -330,23 +330,23 @@ export const unit06: UnitDef = {
         ),
         ex.fillBlank(
           'What ___ are you? Medium.',
-          '¿Qué talle sos? Mediano.',
+          '¿Qué talla eres? Mediano.',
           'size',
           ['price', 'money', 'card'],
           ['en-size', 'en-what'],
           { skill: 'vocabulary' },
         ),
-        ex.translationChoice('size', 'talle / tamaño', ['precio', 'tarjeta', 'ropa'], ['en-size']),
+        ex.translationChoice('size', 'talla / tamaño', ['precio', 'tarjeta', 'ropa'], ['en-size']),
         ex.fillBlank(
           'It is very small. Do you have a bigger ___?',
-          'Es muy chico. ¿Tenés un talle más grande?',
+          'Es muy chico. ¿Tienes una talla más grande?',
           'size',
           ['price', 'cash', 'hat'],
           ['en-size', 'en-small'],
           { skill: 'vocabulary' },
         ),
         ex.shortAnswer(
-          'Can I help you? (busco una campera)',
+          'Can I help you? (busco una chaqueta)',
           '¿Te puedo ayudar?',
           'I am looking for a jacket.',
           [
@@ -361,7 +361,7 @@ export const unit06: UnitDef = {
           ['Can I buy it?', 'Can I pay by card?', 'Can I try them on?'],
           ['en-try-on', 'en-can'],
         ),
-        ex.orderWords('Do you have this dress in red?', '¿Tenés este vestido en rojo?', [
+        ex.orderWords('Do you have this dress in red?', '¿Tienes este vestido en rojo?', [
           'en-dress',
           'en-this',
           'en-red',
@@ -376,12 +376,12 @@ export const unit06: UnitDef = {
         ex.translationChoice(
           'cheap',
           'barato / barata',
-          ['caro / cara', 'precio', 'plata / dinero'],
+          ['caro / cara', 'precio', 'dinero'],
           ['en-cheap'],
         ),
         ex.fillBlank(
           'This jacket is very ___. It costs 500 dollars!',
-          'Esta campera es muy cara. ¡Cuesta 500 dólares!',
+          'Esta chaqueta es muy cara. ¡Cuesta 500 dólares!',
           'expensive',
           ['cheap', 'small', 'size'],
           ['en-expensive', 'en-jacket'],
@@ -410,7 +410,7 @@ export const unit06: UnitDef = {
             ['cheap', 'barato / barata'],
             ['expensive', 'caro / cara'],
             ['price', 'precio'],
-            ['money', 'plata / dinero'],
+            ['money', 'dinero'],
           ],
           ['en-cheap', 'en-expensive', 'en-price', 'en-money'],
         ),

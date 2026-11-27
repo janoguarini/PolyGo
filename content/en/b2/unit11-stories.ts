@@ -126,7 +126,7 @@ export const EN_B2_U11: B2UnitDef = {
       'Hablar de novelas y personajes, contar una historia con participios e inversión (Never had I…, Hardly had… when…) y expresiones idiomáticas frecuentes.',
     emoji: '📚',
     objective:
-      'Podés comentar un libro, contar una historia con recursos narrativos y entender expresiones idiomáticas frecuentes.',
+      'Puedes comentar un libro, contar una historia con recursos narrativos y entender expresiones idiomáticas frecuentes.',
     grammar: {
       title: 'Participios e inversión narrativa',
       explanation:
@@ -334,13 +334,13 @@ export const EN_B2_U11: B2UnitDef = {
       w(
         'en-the-last-straw',
         'the last straw',
-        'la gota que rebalsó el vaso',
+        'la gota que colmó el vaso',
         '/ðə ˈlæst ˈstrɔ/',
         '🥤',
         'The noise at three in the morning was the last straw.',
-        'El ruido a las tres de la mañana fue la gota que rebalsó el vaso.',
+        'El ruido a las tres de la mañana fue la gota que colmó el vaso.',
         ['idioms'],
-        ['la gota que colmó el vaso'],
+        ['la gota que rebalsó el vaso'],
       ),
     ],
     lessons: [
@@ -363,7 +363,7 @@ export const EN_B2_U11: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Comentás una novela: trama, personajes y capítulos.',
+          'Comentas una novela: trama, personajes y capítulos.',
           'Das tu opinión sobre un libro.',
         ],
         exercises: [
@@ -475,8 +475,8 @@ export const EN_B2_U11: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Hablás del narrador y de los giros de una historia.',
-          'Contás cómo resultó algo con turn out y cuándo salieron con set off.',
+          'Hablas del narrador y de los giros de una historia.',
+          'Cuentas cómo resultó algo con turn out y cuándo salieron con set off.',
         ],
         exercises: [
           ex.matchPairs(
@@ -572,7 +572,7 @@ export const EN_B2_U11: B2UnitDef = {
         objective: 'Contar una historia con oraciones con participio y expresiones vivas.',
         intro: {
           explanation:
-            'Con un participio resumís una acción del mismo sujeto: Walking past the lighthouse, she noticed a light (mientras pasaba…). Having + participio cuenta lo que pasó antes: Having missed the train, she walked. Expresiones que dan vida a un relato: out of the blue (de la nada), break the ice (romper el hielo), burst into tears (ponerse a llorar).',
+            'Con un participio resumes una acción del mismo sujeto: Walking past the lighthouse, she noticed a light (mientras pasaba…). Having + participio cuenta lo que pasó antes: Having missed the train, she walked. Expresiones que dan vida a un relato: out of the blue (de la nada), break the ice (romper el hielo), burst into tears (ponerse a llorar).',
           examples: [
             {
               target: 'Having missed the last train, Elena set off on foot.',
@@ -585,8 +585,8 @@ export const EN_B2_U11: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Unís acciones con un participio: Walking…, Having…',
-          'Contás con expresiones como out of the blue y burst into tears.',
+          'Unes acciones con un participio: Walking…, Having…',
+          'Cuentas con expresiones como out of the blue y burst into tears.',
         ],
         exercises: [
           ex.fillBlank(
@@ -691,7 +691,7 @@ export const EN_B2_U11: B2UnitDef = {
         objective: 'Dar dramatismo a un relato con la inversión.',
         intro: {
           explanation:
-            'En los relatos, si empezás con never, hardly, no sooner o little, se invierten el auxiliar y el sujeto: Never had she felt so alone (= She had never felt so alone). Hardly had… when… y No sooner had… than…: una cosa pasó apenas terminó la otra. Little did I know…: poco me imaginaba.',
+            'En los relatos, si empiezas con never, hardly, no sooner o little, se invierten el auxiliar y el sujeto: Never had she felt so alone (= She had never felt so alone). Hardly had… when… y No sooner had… than…: una cosa pasó apenas terminó la otra. Little did I know…: poco me imaginaba.',
           examples: [
             { target: 'Never had she felt so alone.', base: 'Nunca se había sentido tan sola.' },
             {
@@ -701,8 +701,8 @@ export const EN_B2_U11: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Invertís auxiliar y sujeto después de never, hardly y no sooner.',
-          'Anticipás un giro con Little did I know…',
+          'Inviertes auxiliar y sujeto después de never, hardly y no sooner.',
+          'Anticipas un giro con Little did I know…',
         ],
         exercises: [
           ex.matchPairs(
@@ -792,8 +792,8 @@ export const EN_B2_U11: B2UnitDef = {
             { id: 'en.ex.gl390rm70x7ju7' },
           ),
           ex.shortAnswer(
-            'She had never seen such a beautiful place. (reescribilo empezando con Never had…)',
-            'Reescribí con inversión: «Nunca había visto un lugar tan lindo».',
+            'She had never seen such a beautiful place. (reescríbelo empezando con Never had…)',
+            'Reescribe con inversión: «Nunca había visto un lugar tan lindo».',
             'Never had she seen such a beautiful place.',
             [
               'Never had she seen such a beautiful place!',
@@ -824,7 +824,7 @@ export const EN_B2_U11: B2UnitDef = {
         objective: 'Entender y usar expresiones idiomáticas frecuentes.',
         intro: {
           explanation:
-            'Las expresiones idiomáticas no se traducen palabra por palabra. A piece of cake es pan comido; once in a blue moon, muy de vez en cuando; the last straw, la gota que rebalsó el vaso. Usalas en situaciones informales y con moderación.',
+            'Las expresiones idiomáticas no se traducen palabra por palabra. A piece of cake es pan comido; once in a blue moon, muy de vez en cuando; the last straw, la gota que colmó el vaso. Úsalas en situaciones informales y con moderación.',
           examples: [
             { target: 'The exam was a piece of cake.', base: 'El examen fue pan comido.' },
             {
@@ -834,15 +834,15 @@ export const EN_B2_U11: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Entendés expresiones idiomáticas frecuentes.',
-          'Usás algunas en situaciones informales.',
+          'Entiendes expresiones idiomáticas frecuentes.',
+          'Usas algunas en situaciones informales.',
         ],
         exercises: [
           ex.matchPairs(
             [
               ['a piece of cake', 'pan comido / muy fácil'],
               ['once in a blue moon', 'muy de vez en cuando'],
-              ['the last straw', 'la gota que rebalsó el vaso'],
+              ['the last straw', 'la gota que colmó el vaso'],
               ['break the ice', 'romper el hielo'],
             ],
             [
@@ -910,7 +910,7 @@ export const EN_B2_U11: B2UnitDef = {
           ),
           ex.orderWords(
             'That was the last straw.',
-            'Esa fue la gota que rebalsó el vaso.',
+            'Esa fue la gota que colmó el vaso.',
             ['en-the-last-straw'],
             { id: 'en.ex.vkmvs8jy0ab8af' },
           ),

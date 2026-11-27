@@ -63,11 +63,11 @@ export const FR_A1_U02: FrUnitDef = {
       "Être en singular y vous êtes, nacionalidades con género, je suis de, j'habite à, je parle y ne… pas. Liaison vous‿êtes y consonante final del femenino.",
     emoji: '🌎',
     objective:
-      'Podés decir quién sos, tu nacionalidad, de dónde sos, dónde vivís y qué idiomas hablás, y preguntárselo a otra persona.',
+      'Puedes decir quién eres, tu nacionalidad, de dónde eres, dónde vives y qué idiomas hablas, y preguntárselo a otra persona.',
     grammar: {
       title: 'Être · nacionalidades · ne… pas',
       explanation:
-        "El verbo être (ser) en singular: je suis, tu es, il est, elle est, y vous êtes para usted. Las nacionalidades concuerdan con la persona: il est argentin, elle est argentine; en el femenino la consonante final sí suena (argentine, française, étudiante). Con una profesión no va artículo: je suis étudiant. Para el origen: je suis de + ciudad; para dónde vivís: j'habite à + ciudad. La negación rodea al verbo: je ne suis pas, je ne parle pas; delante de vocal, ne se vuelve n': il n'est pas. Los idiomas y las nacionalidades se escriben en minúscula.",
+        "El verbo être (ser) en singular: je suis, tu es, il est, elle est, y vous êtes para usted. Las nacionalidades concuerdan con la persona: il est argentin, elle est argentine; en el femenino la consonante final sí suena (argentine, française, étudiante). Con una profesión no va artículo: je suis étudiant. Para el origen: je suis de + ciudad; para dónde vives: j'habite à + ciudad. La negación rodea al verbo: je ne suis pas, je ne parle pas; delante de vocal, ne se vuelve n': il n'est pas. Los idiomas y las nacionalidades se escriben en minúscula.",
       examples: [
         { target: 'Je suis argentine.', base: 'Soy argentina.' },
         { target: "Vous êtes d'où?", base: '¿De dónde es usted?' },
@@ -91,8 +91,8 @@ export const FR_A1_U02: FrUnitDef = {
           acceptedTranslations: ['yo soy'],
         },
       ),
-      w('fr-tu-es', 'tu es', 'sos', 'Tu es étudiant?', '¿Sos estudiante?', ['verbs'], {
-        acceptedTranslations: ['eres', 'tú eres', 'vos sos'],
+      w('fr-tu-es', 'tu es', 'eres', 'Tu es étudiant?', '¿Eres estudiante?', ['verbs'], {
+        acceptedTranslations: ['tú eres', 'vos sos', 'sos'],
       }),
       w('fr-il-est', 'il est', 'él es', 'Hugo? Il est français.', '¿Hugo? Es francés.', ['verbs']),
       w('fr-elle-est', 'elle est', 'ella es', 'Elle est italienne.', 'Es italiana.', ['verbs']),
@@ -153,11 +153,11 @@ export const FR_A1_U02: FrUnitDef = {
       w(
         'fr-tu-es-d-ou',
         "tu es d'où?",
-        '¿de dónde sos?',
+        '¿de dónde eres?',
         "Salut! Tu es d'où?",
-        '¡Hola! ¿De dónde sos?',
+        '¡Hola! ¿De dónde eres?',
         ['questions'],
-        { acceptedTranslations: ['¿de dónde eres?'] },
+        { acceptedTranslations: ['¿de dónde sos?'] },
       ),
       w(
         'fr-je-suis-de',
@@ -226,7 +226,7 @@ export const FR_A1_U02: FrUnitDef = {
       // ------------------------------------------------------------------------------------ L1
       {
         title: 'Je suis, tu es',
-        objective: 'Decir quién sos y qué hacés con el verbo être.',
+        objective: 'Decir quién eres y qué haces con el verbo être.',
         intro: {
           explanation:
             'Être es ser: je suis, tu es, il est (él), elle est (ella). Tu es e il est suenan igual: la s y la t finales no se pronuncian. Con una profesión no va artículo: je suis étudiant (soy estudiante). En el femenino se agrega una e y la t final sí suena: étudiante. Para decir «yo también»: moi aussi.',
@@ -236,24 +236,24 @@ export const FR_A1_U02: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Decís quién sos con je suis y hablás de otro con il est o elle est.',
-          'Sabés que en étudiante la t final suena y en étudiant no.',
+          'Dices quién eres con je suis y hablas de otro con il est o elle est.',
+          'Sabes que en étudiante la t final suena y en étudiant no.',
         ],
         exercises: [
-          ex.translationChoice('je suis', 'soy', ['sos', 'él es', 'ella es'], ['fr-je-suis'], {
+          ex.translationChoice('je suis', 'soy', ['eres', 'él es', 'ella es'], ['fr-je-suis'], {
             id: 'fr.ex.5n9ore5ewx9bui',
           }),
           ex.translationChoice(
             'elle est',
             'ella es',
-            ['él es', 'soy', 'sos'],
+            ['él es', 'soy', 'eres'],
             ['fr-elle-est', 'fr-il-est'],
             { id: 'fr.ex.kqrduwkez1vmg1', explanation: 'Il es él; elle, ella.' },
           ),
           ex.matchPairs(
             [
               ['je suis', 'soy'],
-              ['tu es', 'sos'],
+              ['tu es', 'eres'],
               ['il est', 'él es'],
               ['elle est', 'ella es'],
             ],
@@ -282,7 +282,7 @@ export const FR_A1_U02: FrUnitDef = {
           ),
           ex.fillBlank(
             'Tu ___ étudiante?',
-            '¿Sos estudiante?',
+            '¿Eres estudiante?',
             'es',
             ['suis', 'est', 'va'],
             ['fr-tu-es'],
@@ -317,7 +317,7 @@ export const FR_A1_U02: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Je suis étudiant. Et toi?',
-            'Soy estudiante. ¿Y vos? (Respondé que vos también sos estudiante; sos mujer.)',
+            'Soy estudiante. ¿Y tú? (Responde que tú también eres estudiante; eres mujer.)',
             'Moi aussi, je suis étudiante.',
             [
               'Moi aussi!',
@@ -345,8 +345,8 @@ export const FR_A1_U02: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Decís tu nacionalidad en masculino o en femenino.',
-          'Preguntás con vous êtes y unís vous‿êtes con un sonido z.',
+          'Dices tu nacionalidad en masculino o en femenino.',
+          'Preguntas con vous êtes y unes vous‿êtes con un sonido z.',
         ],
         exercises: [
           ex.translationChoice(
@@ -411,11 +411,11 @@ export const FR_A1_U02: FrUnitDef = {
           ex.translationChoice(
             'vous êtes',
             'usted es',
-            ['sos', 'soy', 'ella es'],
+            ['eres', 'soy', 'ella es'],
             ['fr-vous-etes'],
             {
               id: 'fr.ex.bgjfk3jd6cwhq8',
-              explanation: 'Vous êtes es usted es (o ustedes son); tu es, sos.',
+              explanation: 'Vous êtes es usted es (o ustedes son); tu es, eres.',
             },
           ),
           ex.fillBlank(
@@ -444,33 +444,33 @@ export const FR_A1_U02: FrUnitDef = {
       // ------------------------------------------------------------------------------------ L3
       {
         title: "Tu es d'où?",
-        objective: 'Decir de dónde sos y en qué ciudad vivís.',
+        objective: 'Decir de dónde eres y en qué ciudad vives.',
         intro: {
           explanation:
-            "Para preguntar el origen: tu es d'où? (o vous êtes d'où?). Se responde je suis de + ciudad. Para la ciudad donde vivís: j'habite à + ciudad (nunca «en» delante de una ciudad). La h de habite es muda: je se vuelve j' y se dice como si empezara con vocal. La ville es la ciudad y le pays, el país (la s final no suena).",
+            "Para preguntar el origen: tu es d'où? (o vous êtes d'où?). Se responde je suis de + ciudad. Para la ciudad donde vives: j'habite à + ciudad (nunca «en» delante de una ciudad). La h de habite es muda: je se vuelve j' y se dice como si empezara con vocal. La ville es la ciudad y le pays, el país (la s final no suena).",
           examples: [
             {
               target: "Tu es d'où? — Je suis de Rosario.",
-              base: '¿De dónde sos? — Soy de Rosario.',
+              base: '¿De dónde eres? — Soy de Rosario.',
             },
             { target: "J'habite à Paris.", base: 'Vivo en París.' },
           ],
         },
         takeaways: [
-          'Decís de dónde sos con je suis de.',
-          "Decís dónde vivís con j'habite à + ciudad.",
+          'Dices de dónde eres con je suis de.',
+          "Dices dónde vives con j'habite à + ciudad.",
         ],
         exercises: [
           ex.translationChoice(
             "tu es d'où?",
-            '¿de dónde sos?',
-            ['¿cómo te llamás?', '¿cómo va?', 'soy de'],
+            '¿de dónde eres?',
+            ['¿cómo te llamas?', '¿cómo va?', 'soy de'],
             ['fr-tu-es-d-ou'],
             { id: 'fr.ex.0qy0tftepbnpu3' },
           ),
           ex.matchPairs(
             [
-              ["tu es d'où?", '¿de dónde sos?'],
+              ["tu es d'où?", '¿de dónde eres?'],
               ['je suis de', 'soy de'],
               ["j'habite à", 'vivo en'],
               ['le pays', 'el país'],
@@ -540,7 +540,7 @@ export const FR_A1_U02: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Tu es d'où?",
-            '¿De dónde sos? (Respondé que sos de Rosario.)',
+            '¿De dónde eres? (Responde que eres de Rosario.)',
             'Je suis de Rosario.',
             ['Je suis de Rosario!', 'Moi, je suis de Rosario.'],
             ['fr-je-suis-de'],
@@ -552,7 +552,7 @@ export const FR_A1_U02: FrUnitDef = {
       // ------------------------------------------------------------------------------------ L4
       {
         title: 'Je parle, je ne parle pas',
-        objective: 'Decir qué idiomas hablás y negar con ne… pas.',
+        objective: 'Decir qué idiomas hablas y negar con ne… pas.',
         intro: {
           explanation:
             "Je parle + idioma: je parle espagnol (la e final de parle no suena). El idioma es igual a la nacionalidad en masculino y va en minúscula: français, espagnol, italien, anglais. Para negar, ne… pas rodea al verbo: je ne parle pas italien, je ne suis pas française. Delante de vocal, ne se vuelve n': il n'est pas. Non sirve para responder solo; con un verbo, ne… pas.",
@@ -562,8 +562,8 @@ export const FR_A1_U02: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Decís qué idiomas hablás con je parle.',
-          "Negás con ne… pas alrededor del verbo (n' delante de vocal).",
+          'Dices qué idiomas hablas con je parle.',
+          "Niegas con ne… pas alrededor del verbo (n' delante de vocal).",
         ],
         exercises: [
           ex.translationChoice('je parle', 'hablo', ['vivo en', 'soy', 'soy de'], ['fr-je-parle'], {
@@ -643,7 +643,7 @@ export const FR_A1_U02: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Tu parles italien?',
-            '¿Hablás italiano? (Respondé que no, que no hablás italiano.)',
+            '¿Hablas italiano? (Responde que no, que no hablas italiano.)',
             'Non, je ne parle pas italien.',
             ['Non. Je ne parle pas italien.', 'Je ne parle pas italien.'],
             ['fr-ne-pas', 'fr-je-parle'],
@@ -658,18 +658,18 @@ export const FR_A1_U02: FrUnitDef = {
         objective: 'Presentarte con nacionalidad, ciudad e idiomas, y entender una presentación.',
         intro: {
           explanation:
-            "Una presentación completa: je m'appelle…, je suis + nacionalidad, je suis de…, j'habite à…, je parle… Para preguntar a un amigo: tu es d'où? tu habites où? tu parles français? Con vous: vous êtes d'où? Recordá: tu habites, tu parles llevan una s final que no suena.",
+            "Una presentación completa: je m'appelle…, je suis + nacionalidad, je suis de…, j'habite à…, je parle… Para preguntar a un amigo: tu es d'où? tu habites où? tu parles français? Con vous: vous êtes d'où? Recuerda: tu habites, tu parles llevan una s final que no suena.",
           examples: [
             {
               target: "Je m'appelle Diego. Je suis argentin.",
               base: 'Me llamo Diego. Soy argentino.',
             },
-            { target: 'Tu habites où?', base: '¿Dónde vivís?' },
+            { target: 'Tu habites où?', base: '¿Dónde vives?' },
           ],
         },
         takeaways: [
-          'Te presentás con nombre, nacionalidad, ciudad e idiomas.',
-          'Entendés una presentación corta escrita.',
+          'Te presentas con nombre, nacionalidad, ciudad e idiomas.',
+          'Entiendes una presentación corta escrita.',
         ],
         exercises: [
           question(
@@ -707,7 +707,7 @@ export const FR_A1_U02: FrUnitDef = {
           ),
           ex.fillBlank(
             'Tu ___ où?',
-            '¿Dónde vivís?',
+            '¿Dónde vives?',
             'habites',
             ['habite', 'parles', 'suis'],
             ['fr-j-habite-a'],
@@ -747,7 +747,7 @@ export const FR_A1_U02: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Vous êtes française?',
-            '¿Usted es francesa? (Respondé que no, que sos argentina.)',
+            '¿Usted es francesa? (Responde que no, que eres argentina.)',
             'Non, je ne suis pas française. Je suis argentine.',
             [
               'Non, je suis argentine.',

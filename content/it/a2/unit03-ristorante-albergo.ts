@@ -106,7 +106,7 @@ export const IT_A2_U03: ItUnitDef = {
       'Reservar una mesa o una habitación, pedir con cortesía (mi porta…?, potrei…?), entender el menú italiano y pagar la cuenta.',
     emoji: '🍝',
     objective:
-      'Podés reservar una habitación o una mesa, pedir en un restaurante con cortesía tratando de usted (Lei), entender el orden del menú y la cuenta (il coperto, la mancia) y pagar.',
+      'Puedes reservar una habitación o una mesa, pedir en un restaurante con cortesía tratando de usted (Lei), entender el orden del menú y la cuenta (il coperto, la mancia) y pagar.',
     grammar: {
       title: 'Pedidos corteses con Lei · potrei, mi porta…?',
       explanation:
@@ -231,12 +231,12 @@ export const IT_A2_U03: ItUnitDef = {
       w(
         'it-burro',
         'burro',
-        'manteca',
+        'mantequilla',
         'Pane e burro, per favore.',
-        'Pan y manteca, por favor.',
+        'Pan y mantequilla, por favor.',
         ['food'],
         {
-          acceptedTranslations: ['mantequilla'],
+          acceptedTranslations: ['mantequilla', 'manteca'],
           emoji: '🧈',
         },
       ),
@@ -299,7 +299,7 @@ export const IT_A2_U03: ItUnitDef = {
             { target: 'La colazione è compresa?', base: '¿El desayuno está incluido?' },
           ],
         },
-        takeaways: ['Reservás con vorrei prenotare…', 'Preguntás qué está compreso.'],
+        takeaways: ['Reservas con vorrei prenotare…', 'Preguntas qué está compreso.'],
         exercises: [
           ex.translationChoice(
             'prenotare',
@@ -377,7 +377,7 @@ export const IT_A2_U03: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Ha prenotato?',
-            '¿Tiene reserva? (Respondé que sí, que reservaste una habitación simple.)',
+            '¿Tiene reserva? (Responde que sí, que reservaste una habitación simple.)',
             'Sì, ho prenotato una camera singola.',
             ['Ho prenotato una camera singola.', 'Sì, una camera singola.'],
             ['it-ho-prenotato', 'it-camera-singola'],
@@ -407,8 +407,8 @@ export const IT_A2_U03: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Leés un menú: primi, secondi, contorni, dolci.',
-          'Pedís un plato de cada parte.',
+          'Lees un menú: primi, secondi, contorni, dolci.',
+          'Pides un plato de cada parte.',
         ],
         exercises: [
           ex.translationChoice(
@@ -486,7 +486,7 @@ export const IT_A2_U03: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Prende un dolce?',
-            '¿Va a pedir postre? (Respondé que sí, un tiramisú.)',
+            '¿Va a pedir postre? (Responde que sí, un tiramisú.)',
             'Sì, un tiramisù.',
             [
               'Sì, prendo un tiramisù.',
@@ -519,25 +519,25 @@ export const IT_A2_U03: ItUnitDef = {
         objective: 'Pedir con cortesía tratando de usted.',
         intro: {
           explanation:
-            'Al mozo se le habla de Lei (usted), con el verbo en tercera persona: mi porta il conto? (¿me trae la cuenta?). Para pedir con cortesía: potrei avere…? o posso avere…? Y ojo: il burro es la manteca; el burro, el animal, es l’asino.',
+            'Al mesero se le habla de Lei (usted), con el verbo en tercera persona: mi porta il conto? (¿me trae la cuenta?). Para pedir con cortesía: potrei avere…? o posso avere…? Y ojo: il burro es la mantequilla; el burro, el animal, es l’asino.',
           examples: [
             { target: 'Mi porta il conto, per favore?', base: '¿Me trae la cuenta, por favor?' },
             { target: 'Potrei avere un’acqua?', base: '¿Podría tomar un agua?' },
           ],
         },
         takeaways: [
-          'Pedís con mi porta…?, potrei avere…? y posso avere…?',
-          'Sabés que burro es «manteca».',
+          'Pides con mi porta…?, potrei avere…? y posso avere…?',
+          'Sabes que burro es «mantequilla».',
         ],
         exercises: [
           ex.translationChoice(
             'burro',
-            'manteca',
+            'mantequilla',
             ['burro (el animal)', 'queso', 'pan'],
             ['it-burro'],
             {
               id: 'it.ex.6bopdzf8udp9i2',
-              explanation: 'Falso amigo: il burro es la manteca.',
+              explanation: 'Falso amigo: il burro es la mantequilla.',
             },
           ),
           ex.translationChoice('potrei', 'podría', ['puedo', 'pude', 'quiero'], ['it-potrei'], {
@@ -566,7 +566,7 @@ export const IT_A2_U03: ItUnitDef = {
           ),
           ex.fillBlank(
             'Pane e ___, per favore.',
-            'Pan y manteca, por favor.',
+            'Pan y mantequilla, por favor.',
             'burro',
             ['latte', 'zucchero', 'dolce'],
             ['it-burro'],
@@ -580,15 +580,15 @@ export const IT_A2_U03: ItUnitDef = {
             TAVOLO,
             '¿Qué pide la clienta para comer?',
             'Un primer plato: espaguetis',
-            ['Un segundo: pollo', 'Sólo pan y manteca', 'Un postre'],
+            ['Un segundo: pollo', 'Sólo pan y mantequilla', 'Un postre'],
             ['it-il-primo'],
             'La clienta dice: «Per me un primo, gli spaghetti».',
           ),
           question(
             'it.ex.n7fwkhbsvmuj2t',
             TAVOLO,
-            '¿Qué más le pide al mozo?',
-            'Un poco de pan y manteca',
+            '¿Qué más le pide al mesero?',
+            'Un poco de pan y mantequilla',
             ['La cuenta', 'Más espaguetis', 'Un burro'],
             ['it-mi-porta', 'it-burro'],
             'La clienta dice: «mi porta anche un po’ di pane e burro?».',
@@ -604,7 +604,7 @@ export const IT_A2_U03: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Desidera?',
-            '¿Qué desea? (Pedile la cuenta al mozo con cortesía.)',
+            '¿Qué desea? (Pídele la cuenta al mesero con cortesía.)',
             'Mi porta il conto, per favore?',
             [
               'Il conto, per favore.',
@@ -640,8 +640,8 @@ export const IT_A2_U03: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Entendés il coperto y la mancia.',
-          'Decís cómo pagás: in contanti, con la carta.',
+          'Entiendes il coperto y la mancia.',
+          'Dices cómo pagas: in contanti, con la carta.',
         ],
         exercises: [
           ex.translationChoice(
@@ -688,11 +688,11 @@ export const IT_A2_U03: ItUnitDef = {
           question(
             'it.ex.6t7ivhd1dccgw5',
             RECENSIONE,
-            '¿Qué opina Valeria de la comida y del mozo?',
-            'La comida, riquísima; el mozo, muy simpático',
+            '¿Qué opina Valeria de la comida y del mesero?',
+            'La comida, riquísima; el mesero, muy simpático',
             [
-              'La comida, cara; el mozo, antipático',
-              'La comida, normal; el mozo, lento',
+              'La comida, cara; el mesero, antipático',
+              'La comida, normal; el mesero, lento',
               'No habla de la comida',
             ],
             ['it-simpatico'],
@@ -722,7 +722,7 @@ export const IT_A2_U03: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Paga in contanti?',
-            '¿Paga en efectivo? (Respondé que no, que con tarjeta.)',
+            '¿Paga en efectivo? (Responde que no, que con tarjeta.)',
             'No, con la carta.',
             ['No, pago con la carta.', 'Con la carta.', 'No, con la carta, per favore.'],
             ['it-con-la-carta'],
@@ -743,7 +743,7 @@ export const IT_A2_U03: ItUnitDef = {
         objective: 'Resolver una reserva y una comida de principio a fin.',
         intro: {
           explanation:
-            'Repasá todo el recorrido: reservar (ho prenotato un tavolo), pedir (per me un primo, mi porta…?), y pagar (il conto, con la carta). En el hotel: una camera singola o doppia, con la colazione compresa.',
+            'Repasa todo el recorrido: reservar (ho prenotato un tavolo), pedir (per me un primo, mi porta…?), y pagar (il conto, con la carta). En el hotel: una camera singola o doppia, con la colazione compresa.',
           examples: [
             { target: 'Ho prenotato un tavolo per due.', base: 'Reservé una mesa para dos.' },
             {
@@ -752,7 +752,7 @@ export const IT_A2_U03: ItUnitDef = {
             },
           ],
         },
-        takeaways: ['Hacés una reserva completa.', 'Entendés una reseña de un restaurante.'],
+        takeaways: ['Haces una reserva completa.', 'Entiendes una reseña de un restaurante.'],
         exercises: [
           ex.fillBlank(
             'Vorrei una camera ___ per una persona.',
@@ -806,7 +806,7 @@ export const IT_A2_U03: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Quante notti?',
-            '¿Cuántas noches? (Respondé que dos noches, viernes y sábado.)',
+            '¿Cuántas noches? (Responde que dos noches, viernes y sábado.)',
             'Due notti, venerdì e sabato.',
             ['Due notti.', 'Due notti: venerdì e sabato.', 'Per due notti, venerdì e sabato.'],
             ['it-due', 'it-venerdi'],

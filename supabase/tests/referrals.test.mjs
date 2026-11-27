@@ -56,7 +56,12 @@ const claim = (u, code) => rpc(u, 'select public.claim_referral($1) as r', [code
 const status = (u) => rpc(u, 'select public.get_referral_status() as r');
 const syncRef = (u) => rpc(u, 'select public.sync_referral() as r');
 const balance = async (u) =>
-  (await one(`select coalesce((select balance from public.poly_wallets where user_id = $1), 0) as b`, [u])).b;
+  (
+    await one(
+      `select coalesce((select balance from public.poly_wallets where user_id = $1), 0) as b`,
+      [u],
+    )
+  ).b;
 /** Días de Plus que le quedan (redondeado; null = sin vencimiento, 0 = sin Plus). */
 const plusDaysLeft = async (u) => {
   const row = await one(
@@ -146,16 +151,25 @@ test('auto-invitación, código inválido y atribución duplicada', async () => 
   // Una sola vez y para siempre: ni repetir ni cambiar de referente.
   await assert.rejects(claim(u, await codeOf(ref)), /already_attributed/);
   await assert.rejects(claim(u, await codeOf(other)), /already_attributed/);
-  const row = await one(`select referrer_id from public.referral_attributions where invitee_id = $1`, [u]);
+  const row = await one(
+    `select referrer_id from public.referral_attributions where invitee_id = $1`,
+    [u],
+  );
   assert.equal(row.referrer_id, ref);
   // La app no puede escribir ni leer las atribuciones directamente.
   await assert.rejects(
     rpc(u, `update public.referral_attributions set referrer_id = $1`, [other]),
     /permission denied/,
   );
-  await assert.rejects(rpc(u, `select count(*) as r from public.referral_attributions`), /permission denied/);
+  await assert.rejects(
+    rpc(u, `select count(*) as r from public.referral_attributions`),
+    /permission denied/,
+  );
   // Ni la función interna de premios.
-  await assert.rejects(rpc(u, `select public.refresh_referrals($1) as r`, [u]), /permission denied/);
+  await assert.rejects(
+    rpc(u, `select public.refresh_referrals($1) as r`, [u]),
+    /permission denied/,
+  );
 });
 
 test('sólo cuentas nuevas y referentes más antiguos', async () => {
@@ -188,10 +202,9 @@ test('hitos 3, 5 y 10: premios exactos, una sola vez y persistentes', async () =
   assert.equal(await balance(ref), start);
   assert.equal(await plusDaysLeft(ref), 7);
   assert.equal(s.milestones[0].plus_days, 7);
-  assert.deepEqual(
-    (await rpc(ref, 'select public.get_profile_flair($1) as r', [ref])).badges,
-    ['recruiter'],
-  );
+  assert.deepEqual((await rpc(ref, 'select public.get_profile_flair($1) as r', [ref])).badges, [
+    'recruiter',
+  ]);
 
   // 5 → 750 Polys + Embajador + skin Explorador Social.
   await validInvite(ref);
@@ -199,7 +212,12 @@ test('hitos 3, 5 y 10: premios exactos, una sola vez y persistentes', async () =
   s = await status(ref);
   assert.equal(await balance(ref), start + 750);
   const owned = async () =>
-    (await db.query(`select item_id from public.user_cosmetics where user_id = $1 order by item_id`, [ref])).rows.map((r) => r.item_id);
+    (
+      await db.query(
+        `select item_id from public.user_cosmetics where user_id = $1 order by item_id`,
+        [ref],
+      )
+    ).rows.map((r) => r.item_id);
   assert.deepEqual(await owned(), ['skin-social-explorer']);
 
   // 10 → 30 días de Plus (se suman a los 7), Leyenda del Equipo, marco Leyenda e Invitador Élite.
@@ -208,17 +226,25 @@ test('hitos 3, 5 y 10: premios exactos, una sola vez y persistentes', async () =
   assert.equal(s.qualified, 10);
   assert.equal(await balance(ref), start + 750);
   assert.equal(await plusDaysLeft(ref), 37);
-  assert.deepEqual(await owned(), ['frame_referral_legend', 'skin-social-explorer', 'skin-team-legend']);
-  assert.deepEqual(
-    (await rpc(ref, 'select public.get_profile_flair($1) as r', [ref])).badges,
-    ['recruiter', 'ambassador', 'elite_inviter'],
-  );
+  assert.deepEqual(await owned(), [
+    'frame_referral_legend',
+    'skin-social-explorer',
+    'skin-team-legend',
+  ]);
+  assert.deepEqual((await rpc(ref, 'select public.get_profile_flair($1) as r', [ref])).badges, [
+    'recruiter',
+    'ambassador',
+    'elite_inviter',
+  ]);
   assert.ok(s.milestones.every((m) => m.granted_at !== null));
 
   // Idempotencia: reconsultar no vuelve a pagar nada.
   for (let i = 0; i < 3; i++) await status(ref);
   assert.equal(await balance(ref), start + 750);
-  const rewards = await one(`select count(*)::int as c from public.referral_rewards where user_id = $1`, [ref]);
+  const rewards = await one(
+    `select count(*)::int as c from public.referral_rewards where user_id = $1`,
+    [ref],
+  );
   assert.equal(rewards.c, 3);
   const tx = await one(
     `select count(*)::int as c from public.poly_transactions where user_id = $1 and reason = 'referral'`,
@@ -227,8 +253,12 @@ test('hitos 3, 5 y 10: premios exactos, una sola vez y persistentes', async () =
   assert.equal(tx.c, 1);
 
   // Si un invitado borra su cuenta deja de contar, pero el premio no se repite al volver a 10.
-  const gone = (await db.query(
-    `select invitee_id from public.referral_attributions where referrer_id = $1 limit 1`, [ref])).rows[0].invitee_id;
+  const gone = (
+    await db.query(
+      `select invitee_id from public.referral_attributions where referrer_id = $1 limit 1`,
+      [ref],
+    )
+  ).rows[0].invitee_id;
   await db.query(`delete from auth.users where id = $1`, [gone]);
   assert.equal((await status(ref)).qualified, 9);
   await validInvite(ref);
@@ -278,7 +308,9 @@ test('días de Plus: Plus manual sin vencimiento no cambia; vencido arranca de n
   for (let i = 0; i < 3; i++) await validInvite(expired);
   await status(expired);
   assert.equal(await plusDaysLeft(expired), 7);
-  const row = await one(`select source from public.user_entitlements where user_id = $1`, [expired]);
+  const row = await one(`select source from public.user_entitlements where user_id = $1`, [
+    expired,
+  ]);
   assert.equal(row.source, 'referral');
   // La app no puede regalarse días.
   await assert.rejects(
@@ -300,10 +332,16 @@ test('perfil: insignia Plus visible y premios no comprables', async () => {
   flair = await rpc(viewer, 'select public.get_profile_flair($1) as r', [ref]);
   assert.equal(flair.plus, true);
   // Plus no desbloquea premios de invitación y nada de eso se compra.
-  await db.query(`insert into public.poly_wallets (user_id, balance) values ($1, 99999)
-    on conflict (user_id) do update set balance = 99999`, [ref]);
+  await db.query(
+    `insert into public.poly_wallets (user_id, balance) values ($1, 99999)
+    on conflict (user_id) do update set balance = 99999`,
+    [ref],
+  );
   for (const id of ['frame_referral_legend', 'skin-team-legend', 'skin-social-explorer']) {
-    await assert.rejects(rpc(ref, 'select public.buy_cosmetic($1) as r', [id]), /item_not_for_sale/);
+    await assert.rejects(
+      rpc(ref, 'select public.buy_cosmetic($1) as r', [id]),
+      /item_not_for_sale/,
+    );
   }
   await assert.rejects(
     rpc(ref, `select public.equip_cosmetic('frame', 'frame_referral_legend') as r`),

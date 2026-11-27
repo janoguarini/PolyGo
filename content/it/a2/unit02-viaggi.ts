@@ -102,7 +102,7 @@ export const IT_A2_U02: ItUnitDef = {
       'Contar un viaje con el passato prossimo con essere (sono partito, siamo arrivati), entender el aeropuerto y decir hace cuánto pasó algo.',
     emoji: '✈️',
     objective:
-      'Podés contar un viaje (cuándo saliste y llegaste, dónde estuviste y cuánto te quedaste), entender anuncios del aeropuerto y decir hace cuánto pasó algo (due anni fa).',
+      'Puedes contar un viaje (cuándo saliste y llegaste, dónde estuviste y cuánto te quedaste), entender anuncios del aeropuerto y decir hace cuánto pasó algo (due anni fa).',
     grammar: {
       title: 'Passato prossimo con essere',
       explanation:
@@ -232,12 +232,12 @@ export const IT_A2_U02: ItUnitDef = {
       w(
         'it-valigia',
         'valigia',
-        'valija',
+        'maleta',
         'La mia valigia è rossa.',
-        'Mi valija es roja.',
+        'Mi maleta es roja.',
         ['travel'],
         {
-          acceptedTranslations: ['maleta'],
+          acceptedTranslations: ['maleta', 'valija'],
           emoji: '🧳',
         },
       ),
@@ -301,8 +301,8 @@ export const IT_A2_U02: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Usás essere con partire, arrivare, tornare y andare.',
-          'Hacés concordar el participio: arrivato, arrivata, arrivati.',
+          'Usas essere con partire, arrivare, tornare y andare.',
+          'Haces concordar el participio: arrivato, arrivata, arrivati.',
         ],
         exercises: [
           ex.translationChoice(
@@ -370,7 +370,7 @@ export const IT_A2_U02: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Quando sei arrivato?',
-            '¿Cuándo llegaste? (Respondé que llegaste ayer.)',
+            '¿Cuándo llegaste? (Responde que llegaste ayer.)',
             'Sono arrivato ieri.',
             [
               'Sono arrivata ieri.',
@@ -399,15 +399,15 @@ export const IT_A2_U02: ItUnitDef = {
         objective: 'Usar el vocabulario del viaje y entender anuncios del aeropuerto.',
         intro: {
           explanation:
-            'Para viajar: il viaggio, la valigia (la valija), l’aereo, l’aeroporto y il volo (el vuelo). En los anuncios vas a oír parte (sale) y in ritardo (demorado).',
+            'Para viajar: il viaggio, la valigia (la maleta), l’aereo, l’aeroporto y il volo (el vuelo). En los anuncios vas a oír parte (sale) y in ritardo (demorado).',
           examples: [
             { target: 'Il volo parte alle undici.', base: 'El vuelo sale a las once.' },
-            { target: 'La mia valigia è rossa.', base: 'Mi valija es roja.' },
+            { target: 'La mia valigia è rossa.', base: 'Mi maleta es roja.' },
           ],
         },
         takeaways: [
-          'Nombrás el aereo, la valigia y il volo.',
-          'Entendés un anuncio de salida o de demora.',
+          'Nombras el aereo, la valigia y il volo.',
+          'Entiendes un anuncio de salida o de demora.',
         ],
         exercises: [
           ex.imageChoice('✈️', 'aereo', ['treno', 'valigia', 'volo'], ['it-aereo'], {
@@ -420,7 +420,7 @@ export const IT_A2_U02: ItUnitDef = {
             [
               ['viaggio', 'viaje'],
               ['aeroporto', 'aeropuerto'],
-              ['valigia', 'valija'],
+              ['valigia', 'maleta'],
               ['volo', 'vuelo'],
             ],
             ['it-viaggio', 'it-aeroporto', 'it-valigia', 'it-volo'],
@@ -467,7 +467,7 @@ export const IT_A2_U02: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Come sei andato a Roma?',
-            '¿Cómo fuiste a Roma? (Respondé que fuiste en avión.)',
+            '¿Cómo fuiste a Roma? (Responde que fuiste en avión.)',
             'Sono andato in aereo.',
             [
               'Sono andata in aereo.',
@@ -479,7 +479,7 @@ export const IT_A2_U02: ItUnitDef = {
             { id: 'it.ex.9t3u4nq8j8w494' },
           ),
           ex.translateWrite(
-            'Mi valija es roja.',
+            'Mi maleta es roja.',
             'La mia valigia è rossa.',
             ['it-valigia', 'it-rosso'],
             { id: 'it.ex.hi3d0t0pvj9rep' },
@@ -503,8 +503,8 @@ export const IT_A2_U02: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Decís dónde estuviste: sono stato / stata.',
-          'Decís que te quedaste: sono rimasto / rimasta.',
+          'Dices dónde estuviste: sono stato / stata.',
+          'Dices que te quedaste: sono rimasto / rimasta.',
         ],
         exercises: [
           ex.translationChoice(
@@ -567,7 +567,7 @@ export const IT_A2_U02: ItUnitDef = {
             'it.ex.smd1jghmkpe9jf',
             VIAGGIO,
             '¿Qué problema tuvo Giulia?',
-            'Su valija llegó dos días después',
+            'Su maleta llegó dos días después',
             ['Perdió el vuelo', 'Llegó dos días tarde', 'Se quedó en Buenos Aires'],
             ['it-valigia', 'it-sono-arrivato'],
             'Giulia dice: «la mia valigia è arrivata due giorni dopo!».',
@@ -582,7 +582,7 @@ export const IT_A2_U02: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Dove sei stato in vacanza?',
-            '¿Dónde estuviste de vacaciones? (Respondé que estuviste en Sicilia.)',
+            '¿Dónde estuviste de vacaciones? (Responde que estuviste en Sicilia.)',
             'Sono stato in Sicilia.',
             [
               'Sono stata in Sicilia.',
@@ -612,7 +612,7 @@ export const IT_A2_U02: ItUnitDef = {
             { target: 'Ieri sera sono uscita con Sara.', base: 'Anoche salí con Sara.' },
           ],
         },
-        takeaways: ['Sabés que salire es «subir».', 'Decís «salí» con sono uscito / uscita.'],
+        takeaways: ['Sabes que salire es «subir».', 'Dices «salí» con sono uscito / uscita.'],
         exercises: [
           ex.translationChoice(
             'sono salito',
@@ -644,7 +644,7 @@ export const IT_A2_U02: ItUnitDef = {
           ),
           ex.fillBlank(
             "Sono ___ dall'autobus in piazza.",
-            'Me bajé del colectivo en la plaza.',
+            'Me bajé del autobús en la plaza.',
             'sceso',
             ['salito', 'uscito', 'stato'],
             ['it-sono-sceso', 'it-autobus'],
@@ -689,7 +689,7 @@ export const IT_A2_U02: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Sei uscito ieri sera?',
-            '¿Saliste anoche? (Respondé que no, que te quedaste en casa.)',
+            '¿Saliste anoche? (Responde que no, que te quedaste en casa.)',
             'No, sono rimasto a casa.',
             ['No, sono rimasta a casa.', 'Sono rimasto a casa.', 'Sono rimasta a casa.'],
             ['it-sono-rimasto', 'it-sono-uscito'],
@@ -722,7 +722,7 @@ export const IT_A2_U02: ItUnitDef = {
             { target: 'Siamo partiti due giorni fa.', base: 'Partimos hace dos días.' },
           ],
         },
-        takeaways: ['Decís hace cuánto con … fa.', 'Entendés un relato de viaje en pasado.'],
+        takeaways: ['Dices hace cuánto con … fa.', 'Entiendes un relato de viaje en pasado.'],
         exercises: [
           ex.translationChoice(
             'due anni fa',
@@ -777,7 +777,7 @@ export const IT_A2_U02: ItUnitDef = {
             PRIMO,
             '¿Qué se trajo Diego de ese viaje?',
             'Muchos amigos nuevos',
-            ['Una valija nueva', 'Muchos libros', 'Nada: no salió nunca'],
+            ['Una maleta nueva', 'Muchos libros', 'Nada: no salió nunca'],
             ['it-sono-uscito', 'it-sono-tornato'],
             'Diego escribe: «Sono uscito tutte le sere e sono tornato a casa con tanti amici nuovi».',
           ),
@@ -789,7 +789,7 @@ export const IT_A2_U02: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Quando sei arrivato in Italia?',
-            '¿Cuándo llegaste a Italia? (Respondé que llegaste hace dos semanas.)',
+            '¿Cuándo llegaste a Italia? (Responde que llegaste hace dos semanas.)',
             'Sono arrivato due settimane fa.',
             [
               'Sono arrivata due settimane fa.',

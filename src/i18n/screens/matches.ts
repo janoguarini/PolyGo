@@ -7,7 +7,7 @@ export const matchesScreenStrings = defineStrings({
     loading: 'Cargando partidas…',
     emptyTitle: 'Sin partidas todavía',
     emptyBody:
-      'Cuando juegues Word Rush vas a ver acá cada resultado y cuánto ELO ganaste o perdiste.',
+      'Cuando juegues Word Rush verás aquí cada resultado y cuánto ELO ganaste o perdiste.',
     loadMore: 'Cargar más',
   },
   en: {
@@ -17,5 +17,21 @@ export const matchesScreenStrings = defineStrings({
     emptyBody:
       'Once you play Word Rush, you’ll see every result here and how much ELO you won or lost.',
     loadMore: 'Load more',
+  },
+  'pt-BR': {
+    title: 'Histórico de partidas',
+    loading: 'Carregando partidas…',
+    emptyTitle: 'Nenhuma partida ainda',
+    emptyBody:
+      'Quando você jogar Word Rush, vai ver aqui cada resultado e quanto ELO ganhou ou perdeu.',
+    loadMore: 'Carregar mais',
+  },
+  it: {
+    title: 'Storico partite',
+    loading: 'Caricamento partite…',
+    emptyTitle: 'Ancora nessuna partita',
+    emptyBody:
+      'Quando giocherai a Word Rush, qui vedrai ogni risultato e quanto ELO hai guadagnato o perso.',
+    loadMore: 'Carica altre',
   },
 });

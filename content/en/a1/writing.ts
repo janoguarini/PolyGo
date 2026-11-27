@@ -19,14 +19,14 @@ import type { WritingRequirement, WritingTaskDef } from '../../../shared/writing
 const common = (minSentences: number): WritingRequirement[] => [
   {
     id: 'sentences',
-    label: `Escribís al menos ${minSentences} oraciones`,
+    label: `Escribes al menos ${minSentences} oraciones`,
     kind: 'min_sentences',
     min: minSentences,
   },
   { id: 'capital', label: 'Cada oración empieza con mayúscula', kind: 'capital_start' },
   {
     id: 'punctuation',
-    label: 'Terminás con punto, signo de exclamación o de pregunta',
+    label: 'Terminas con punto, signo de exclamación o de pregunta',
     kind: 'end_punctuation',
   },
 ];
@@ -41,20 +41,20 @@ export const EN_A1_WRITING_TASKS: readonly WritingTaskDef[] = [
     kind: 'guided',
     codes: ['p08', 'v01'],
     lesson: 'a1-u01-l05',
-    title: 'Saludá y decí cómo estás',
+    title: 'Saluda y di cómo estás',
     instructions:
-      'Respondé a Tom con tus datos (podés inventarlos): saludá, decí tu nombre y cómo estás.',
+      'Responde a Tom con tus datos (puedes inventarlos): saluda, di tu nombre y cómo estás.',
     prompts: ['Hello! My name is Tom. How are you?'],
     requirements: [
       {
         id: 'greeting',
-        label: 'Saludás (Hello, Hi, Good morning…)',
+        label: 'Saludas (Hello, Hi, Good morning…)',
         kind: 'pattern',
         patterns: [['hello|hi'], ['good', 'morning|afternoon|evening']],
       },
       {
         id: 'name',
-        label: 'Decís tu nombre (My name is… / I am…)',
+        label: 'Dices tu nombre (My name is… / I am…)',
         kind: 'pattern',
         patterns: [
           ['my', 'name', 'is', '<WORD>'],
@@ -64,7 +64,7 @@ export const EN_A1_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'state',
-        label: 'Decís cómo estás (I am fine, I am good…)',
+        label: 'Dices cómo estás (I am fine, I am good…)',
         kind: 'pattern',
         patterns: [
           ['fine|good'],
@@ -84,12 +84,12 @@ export const EN_A1_WRITING_TASKS: readonly WritingTaskDef[] = [
     codes: ['p08', 'g16', 'v03'],
     lesson: 'a1-u03-l04',
     title: 'Tu edad y tu país',
-    instructions: 'Respondé las dos preguntas con oraciones completas (podés inventar los datos).',
+    instructions: 'Responde las dos preguntas con oraciones completas (puedes inventar los datos).',
     prompts: ['How old are you?', 'Where are you from?'],
     requirements: [
       {
         id: 'age',
-        label: 'Decís tu edad con I am + número (sin have)',
+        label: 'Dices tu edad con I am + número (sin have)',
         kind: 'pattern',
         patterns: [
           ['i', 'am', '<NUMBER>'],
@@ -98,7 +98,7 @@ export const EN_A1_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'from',
-        label: 'Decís de dónde sos con I am from…',
+        label: 'Dices de dónde eres con I am from…',
         kind: 'pattern',
         patterns: [
           ['i', 'am', 'from', '<WORD>'],
@@ -118,12 +118,12 @@ export const EN_A1_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'a1-u04-l05',
     title: 'Tu familia',
     instructions:
-      'Escribí sobre tu familia (real o inventada): cuántos hermanos o hermanas tenés y cómo se llama alguien de tu familia.',
+      'Escribe sobre tu familia (real o inventada): cuántos hermanos o hermanas tienes y cómo se llama alguien de tu familia.',
     prompts: ['Do you have a brother?', 'Do you have a sister?', "What is your mother's name?"],
     requirements: [
       {
         id: 'have',
-        label: 'Usás I have para decir qué familiares tenés',
+        label: 'Usas I have para decir qué familiares tienes',
         kind: 'pattern',
         patterns: [
           ['i', 'have', '<WORD>'],
@@ -132,7 +132,7 @@ export const EN_A1_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'family-word',
-        label: 'Nombrás a un familiar (mother, brother, sister…)',
+        label: 'Nombras a un familiar (mother, brother, sister…)',
         kind: 'pattern',
         patterns: [
           ['mother|father|brother|brothers|sister|sisters|grandmother|grandfather|parents|baby'],
@@ -140,7 +140,7 @@ export const EN_A1_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'possessive',
-        label: 'Decís un nombre con his, her o my (Her name is…)',
+        label: 'Dices un nombre con his, her o my (Her name is…)',
         kind: 'pattern',
         patterns: [['his|her|my|our|their', 'name', 'is']],
       },
@@ -157,12 +157,12 @@ export const EN_A1_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'a1-u08-l05',
     title: 'Tu rutina',
     instructions:
-      'Contá tres cosas que hacés todos los días (pueden ser inventadas). Usá always, usually o never al menos una vez.',
+      'Cuenta tres cosas que haces todos los días (pueden ser inventadas). Usa always, usually o never al menos una vez.',
     prompts: ['What do you do every day?'],
     requirements: [
       {
         id: 'routine-verb',
-        label: 'Usás un verbo de rutina (get up, work, study, read…)',
+        label: 'Usas un verbo de rutina (get up, work, study, read…)',
         kind: 'pattern',
         patterns: [
           ['i', '<WORD>'],
@@ -171,7 +171,7 @@ export const EN_A1_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'frequency',
-        label: 'Usás always, usually o never antes del verbo',
+        label: 'Usas always, usually o never antes del verbo',
         kind: 'pattern',
         patterns: [['i', 'always|usually|never', '<WORD>']],
       },
@@ -188,12 +188,12 @@ export const EN_A1_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'a1-u11-l05',
     title: 'Lo que te gusta',
     instructions:
-      'Escribí qué te gusta y qué no (puede ser inventado). Usá like, love o hate, y une dos ideas con and o but.',
+      'Escribe qué te gusta y qué no (puede ser inventado). Usa like, love o hate, y une dos ideas con and o but.',
     prompts: ['What do you like?', 'What is your favorite sport?'],
     requirements: [
       {
         id: 'like',
-        label: 'Usás like, love o hate',
+        label: 'Usas like, love o hate',
         kind: 'pattern',
         patterns: [
           ['i', 'like|love|hate'],
@@ -202,7 +202,7 @@ export const EN_A1_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'connector',
-        label: 'Unís dos ideas con and o but',
+        label: 'Unes dos ideas con and o but',
         kind: 'pattern',
         patterns: [['and|but']],
       },
@@ -219,12 +219,12 @@ export const EN_A1_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'a1-u12-l05',
     title: 'Preguntar y responder',
     instructions:
-      'Escribí dos preguntas para conocer a alguien (nombre, edad, país…) y respondé una con tus datos (podés inventarlos).',
+      'Escribe dos preguntas para conocer a alguien (nombre, edad, país…) y responde una con tus datos (puedes inventarlos).',
     prompts: [],
     requirements: [
       {
         id: 'wh-question',
-        label: 'Escribís una pregunta con What, Where, How old…',
+        label: 'Escribes una pregunta con What, Where, How old…',
         kind: 'pattern',
         patterns: [
           ['what|where|when|who|which|how', '<WORD>'],
@@ -233,13 +233,13 @@ export const EN_A1_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'two-questions',
-        label: 'Escribís dos preguntas (con signo de pregunta)',
+        label: 'Escribes dos preguntas (con signo de pregunta)',
         kind: 'min_sentences',
         min: 3,
       },
       {
         id: 'answer',
-        label: 'Respondés con una oración tuya (I am…, My name is…)',
+        label: 'Respondes con una oración tuya (I am…, My name is…)',
         kind: 'pattern',
         patterns: [
           ['i', 'am|have|live|like'],
@@ -264,9 +264,9 @@ export const EN_A1_WRITING_TASKS: readonly WritingTaskDef[] = [
     codes: ['p02', 'p03'],
     block: 1,
     lesson: 'a1-u04-final',
-    title: 'Bloque 1: presentate y presentá a alguien',
+    title: 'Bloque 1: preséntate y presenta a alguien',
     instructions:
-      'Escribí 4 o 5 oraciones: quién sos (nombre, edad, país) y una persona de tu familia o un amigo. Podés inventar los datos.',
+      'Escribe 4 o 5 oraciones: quién eres (nombre, edad, país) y una persona de tu familia o un amigo. Puedes inventar los datos.',
     prompts: [
       'What is your name?',
       'How old are you?',
@@ -320,7 +320,7 @@ export const EN_A1_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'a1-u07-final',
     title: 'Bloque 2: tu habitación y un pedido',
     instructions:
-      'Escribí 3 oraciones sobre tu habitación (qué hay y dónde está) y después un pedido breve en un café.',
+      'Escribe 3 oraciones sobre tu habitación (qué hay y dónde está) y después un pedido breve en un café.',
     prompts: ['What is in your bedroom?', 'Where is your bed?'],
     requirements: [
       {
@@ -368,7 +368,7 @@ export const EN_A1_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'a1-u09-final',
     title: 'Bloque 3: tu semana y una nota',
     instructions:
-      'Contá en 3 oraciones qué hacés en la semana (días y horas) y escribí una nota breve del tipo «Back at five».',
+      'Cuenta en 3 oraciones qué haces en la semana (días y horas) y escribe una nota breve del tipo «Back at five».',
     prompts: ['What do you do on Monday?', 'What time do you get up?'],
     glossary: [{ term: 'Back at five.', meaning: 'Vuelvo a las cinco.' }],
     requirements: [
@@ -388,7 +388,7 @@ export const EN_A1_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'hint-note',
-        label: 'Pista: ¿tu nota dice cuándo volvés (back at…)?',
+        label: 'Pista: ¿tu nota dice cuándo vuelves (back at…)?',
         kind: 'pattern',
         patterns: [['back', 'at']],
         optional: true,
@@ -410,7 +410,7 @@ export const EN_A1_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'a1-u12-final',
     title: 'Bloque 4: una publicación y una postal',
     instructions:
-      'Escribí una publicación breve sobre tus gustos con una pregunta para tus amigos, y una postal corta desde una ciudad.',
+      'Escribe una publicación breve sobre tus gustos con una pregunta para tus amigos, y una postal corta desde una ciudad.',
     prompts: ['What do you like?', 'What can you do?'],
     requirements: [
       {

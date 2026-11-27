@@ -18,14 +18,14 @@ import type { WritingRequirement, WritingTaskDef } from '../../../shared/writing
 const common = (minSentences: number): WritingRequirement[] => [
   {
     id: 'sentences',
-    label: `Escribís al menos ${minSentences} oraciones`,
+    label: `Escribes al menos ${minSentences} oraciones`,
     kind: 'min_sentences',
     min: minSentences,
   },
   { id: 'capital', label: 'Cada oración empieza con mayúscula', kind: 'capital_start' },
   {
     id: 'punctuation',
-    label: 'Terminás con punto, signo de exclamación o de pregunta',
+    label: 'Terminas con punto, signo de exclamación o de pregunta',
     kind: 'end_punctuation',
   },
 ];
@@ -53,24 +53,24 @@ export const EN_B1_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'b1-u01-l05',
     title: 'Una experiencia inolvidable',
     instructions:
-      'Contá una experiencia importante de tu vida (real o inventada): presentala con el present perfect y contá los detalles en past simple, con cuándo pasó y cómo te sentiste.',
+      'Cuenta una experiencia importante de tu vida (real o inventada): preséntala con el present perfect y cuenta los detalles en past simple, con cuándo pasó y cómo te sentiste.',
     prompts: ['What is your best memory?', 'When was it?', 'How did you feel?'],
     requirements: [
       {
         id: 'perfect',
-        label: 'Usás el present perfect (I have been, I have climbed…)',
+        label: 'Usas el present perfect (I have been, I have climbed…)',
         kind: 'pattern',
         patterns: PRESENT_PERFECT,
       },
       {
         id: 'when',
-        label: 'Decís cuándo pasó (two years ago, last summer, in 2019…)',
+        label: 'Dices cuándo pasó (two years ago, last summer, in 2019…)',
         kind: 'pattern',
         patterns: [['<WORD>', 'ago'], ['last', '<WORD>'], ['in', '<NUMBER>'], ['yesterday']],
       },
       {
         id: 'feeling',
-        label: 'Decís cómo te sentiste (proud, happy, excited, nervous…)',
+        label: 'Dices cómo te sentiste (proud, happy, excited, nervous…)',
         kind: 'pattern',
         patterns: [['proud|happy|excited|nervous|scared|amazing|unforgettable']],
       },
@@ -92,7 +92,7 @@ export const EN_B1_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'b1-u02-l05',
     title: 'Tu pasatiempo',
     instructions:
-      'Escribile a un amigo sobre un pasatiempo que empezaste: desde cuándo lo hacés, qué venís haciendo y qué disfrutás de él.',
+      'Escríbele a un amigo sobre un pasatiempo que empezaste: desde cuándo lo haces, qué vienes haciendo y qué disfrutas de él.',
     prompts: [
       'What is your hobby?',
       'How long have you been doing it?',
@@ -101,13 +101,13 @@ export const EN_B1_WRITING_TASKS: readonly WritingTaskDef[] = [
     requirements: [
       {
         id: 'since-for',
-        label: 'Decís desde cuándo con for o since',
+        label: 'Dices desde cuándo con for o since',
         kind: 'pattern',
         patterns: [['for|since']],
       },
       {
         id: 'continuous',
-        label: 'Usás have been + -ing (I have been learning…)',
+        label: 'Usas have been + -ing (I have been learning…)',
         kind: 'pattern',
         patterns: [
           ['have|has', 'been', '<WORD>'],
@@ -116,7 +116,7 @@ export const EN_B1_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'enjoy',
-        label: 'Decís qué disfrutás (I enjoy / I love + -ing)',
+        label: 'Dices qué disfrutas (I enjoy / I love + -ing)',
         kind: 'pattern',
         patterns: [['enjoy|love|like', '<WORD>']],
       },
@@ -138,12 +138,12 @@ export const EN_B1_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'b1-u03-l05',
     title: 'Una anécdota',
     instructions:
-      'Contá una anécdota (real o inventada): qué estabas haciendo, qué pasó, qué ya había pasado antes y cómo terminó.',
+      'Cuenta una anécdota (real o inventada): qué estabas haciendo, qué pasó, qué ya había pasado antes y cómo terminó.',
     prompts: ['What were you doing?', 'What happened?', 'How did it end?'],
     requirements: [
       {
         id: 'scene',
-        label: 'Armás la escena con was/were + -ing',
+        label: 'Armas la escena con was/were + -ing',
         kind: 'pattern',
         patterns: [
           [
@@ -154,7 +154,7 @@ export const EN_B1_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'past-perfect',
-        label: 'Usás had + participio (had left, had forgotten…)',
+        label: 'Usas had + participio (had left, had forgotten…)',
         kind: 'pattern',
         patterns: [
           ['had', PARTICIPLES],
@@ -163,7 +163,7 @@ export const EN_B1_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'sequence',
-        label: 'Ordenás los hechos (when, by the time, as soon as, afterwards, eventually…)',
+        label: 'Ordenas los hechos (when, by the time, as soon as, afterwards, eventually…)',
         kind: 'pattern',
         patterns: [['by', 'the', 'time'], ['as', 'soon', 'as'], ['afterwards|eventually|then']],
       },
@@ -185,24 +185,24 @@ export const EN_B1_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'b1-u04-l05',
     title: 'Tus objetivos',
     instructions:
-      'Escribí tus objetivos para el año que viene: qué vas a hacer, qué podría pasar y qué vas a hacer cuando termines algo.',
+      'Escribe tus objetivos para el año que viene: qué vas a hacer, qué podría pasar y qué vas a hacer cuando termines algo.',
     prompts: ['What is your goal?', 'What are you going to do?', 'What might change?'],
     requirements: [
       {
         id: 'going-to',
-        label: 'Contás una intención con going to',
+        label: 'Cuentas una intención con going to',
         kind: 'pattern',
         patterns: [['going', 'to']],
       },
       {
         id: 'might',
-        label: 'Contás algo posible con might',
+        label: 'Cuentas algo posible con might',
         kind: 'pattern',
         patterns: [['might']],
       },
       {
         id: 'when',
-        label: 'Usás when / as soon as + presente y will',
+        label: 'Usas when / as soon as + presente y will',
         kind: 'pattern',
         patterns: [
           ['when|until', '<WORD>', '<WORD>'],
@@ -227,7 +227,7 @@ export const EN_B1_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'b1-u05-l05',
     title: 'Postularte a un trabajo',
     instructions:
-      'Escribí un correo formal para postularte a un trabajo (real o inventado): saludá, decí a qué trabajo te postulás, contá tu experiencia y despedite.',
+      'Escribe un correo formal para postularte a un trabajo (real o inventado): saluda, di a qué trabajo te postulas, cuenta tu experiencia y despídete.',
     prompts: [
       'Which job do you want?',
       'What experience do you have?',
@@ -236,25 +236,25 @@ export const EN_B1_WRITING_TASKS: readonly WritingTaskDef[] = [
     requirements: [
       {
         id: 'greeting',
-        label: 'Empezás con un saludo formal (Dear…)',
+        label: 'Empiezas con un saludo formal (Dear…)',
         kind: 'pattern',
         patterns: [['dear']],
       },
       {
         id: 'apply',
-        label: 'Decís a qué te postulás (I would like to apply for…)',
+        label: 'Dices a qué te postulas (I would like to apply for…)',
         kind: 'pattern',
         patterns: [['apply', 'for']],
       },
       {
         id: 'experience',
-        label: 'Contás tu experiencia (I worked… / I was responsible for…)',
+        label: 'Cuentas tu experiencia (I worked… / I was responsible for…)',
         kind: 'pattern',
         patterns: [['responsible', 'for'], ['worked'], ['experience']],
       },
       {
         id: 'closing',
-        label: 'Te despedís de forma formal (I look forward to hearing from you / Best wishes)',
+        label: 'Te despides de forma formal (I look forward to hearing from you / Best wishes)',
         kind: 'pattern',
         patterns: [
           ['look', 'forward'],
@@ -279,24 +279,24 @@ export const EN_B1_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'b1-u06-l05',
     title: 'Consejos para un visitante',
     instructions:
-      'Escribile a alguien que va a visitar tu ciudad o tu país: dale consejos con if y contale una costumbre (qué es de buena o de mala educación).',
+      'Escríbele a alguien que va a visitar tu ciudad o tu país: dale consejos con if y cuéntale una costumbre (qué es de buena o de mala educación).',
     prompts: ['What should a tourist do?', 'What is polite in your country?', 'What is rude?'],
     requirements: [
       {
         id: 'if-will',
-        label: 'Usás el primer condicional (If you…, you will…)',
+        label: 'Usas el primer condicional (If you…, you will…)',
         kind: 'pattern',
         patterns: [['if', '<WORD>'], ['unless']],
       },
       {
         id: 'will',
-        label: 'Usás will para el resultado',
+        label: 'Usas will para el resultado',
         kind: 'pattern',
         patterns: [['will'], ["you'll"], ["it'll"]],
       },
       {
         id: 'custom',
-        label: 'Explicás una costumbre (polite, rude, tradition)',
+        label: 'Explicas una costumbre (polite, rude, tradition)',
         kind: 'pattern',
         patterns: [['polite|rude|tradition']],
       },
@@ -314,7 +314,7 @@ export const EN_B1_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'b1-u07-l05',
     title: 'Consejos a un amigo estresado',
     instructions:
-      'Un amigo te cuenta que está muy estresado. Respondele con al menos dos consejos (should, ought to, had better) y una comparación.',
+      'Un amigo te cuenta que está muy estresado. Respóndele con al menos dos consejos (should, ought to, had better) y una comparación.',
     prompts: ['What should your friend do?', 'What is better for him?'],
     requirements: [
       {
@@ -325,7 +325,7 @@ export const EN_B1_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'better',
-        label: "Advertís con had better (You'd better…)",
+        label: "Adviertes con had better (You'd better…)",
         kind: 'pattern',
         patterns: [
           ["you'd", 'better'],
@@ -334,7 +334,7 @@ export const EN_B1_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'compare',
-        label: 'Comparás (as … as, much better, the more…, the better…)',
+        label: 'Comparas (as … as, much better, the more…, the better…)',
         kind: 'pattern',
         patterns: [
           ['as', '<WORD>', 'as'],
@@ -356,18 +356,18 @@ export const EN_B1_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'b1-u08-l05',
     title: 'Recomendar una app',
     instructions:
-      'Recomendá una app o un aparato que uses: qué hace (which / that), cómo lo usás y para quién es (people who…).',
+      'Recomienda una app o un aparato que uses: qué hace (which / that), cómo lo usas y para quién es (people who…).',
     prompts: ['What does the app do?', 'How do you use it?', 'Who is it good for?'],
     requirements: [
       {
         id: 'which',
-        label: 'Explicás qué hace con which o that (an app which helps you…)',
+        label: 'Explicas qué hace con which o that (an app which helps you…)',
         kind: 'pattern',
         patterns: [['app|device|phone|computer|thing', 'which|that']],
       },
       {
         id: 'who',
-        label: 'Decís para quién es con who (people who…)',
+        label: 'Dices para quién es con who (people who…)',
         kind: 'pattern',
         patterns: [['people|person|students|friends', 'who']],
       },
@@ -389,12 +389,12 @@ export const EN_B1_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'b1-u09-l05',
     title: 'Tu barrio y el medioambiente',
     instructions:
-      'Contá qué se hace en tu barrio o tu ciudad por el medioambiente (con la voz pasiva) y proponé una idea para mejorar.',
+      'Cuenta qué se hace en tu barrio o tu ciudad por el medioambiente (con la voz pasiva) y propón una idea para mejorar.',
     prompts: ['What is recycled in your city?', 'What was done last year?', 'What should we do?'],
     requirements: [
       {
         id: 'passive',
-        label: 'Usás la voz pasiva (is recycled, was built…)',
+        label: 'Usas la voz pasiva (is recycled, was built…)',
         kind: 'pattern',
         patterns: [
           [
@@ -405,7 +405,7 @@ export const EN_B1_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'proposal',
-        label: 'Proponés algo (we should…, we have to…, if we…)',
+        label: 'Propones algo (we should…, we have to…, if we…)',
         kind: 'pattern',
         patterns: [['should'], ['have', 'to'], ['if', 'we']],
       },
@@ -423,18 +423,18 @@ export const EN_B1_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'b1-u10-l05',
     title: 'Lo que te contaron',
     instructions:
-      'Contá una conversación reciente en estilo indirecto: qué te dijo alguien (said / told me) y qué te preguntó (asked if…).',
+      'Cuenta una conversación reciente en estilo indirecto: qué te dijo alguien (said / told me) y qué te preguntó (asked if…).',
     prompts: ['Who called you?', 'What did they say?', 'What did they ask?'],
     requirements: [
       {
         id: 'said',
-        label: 'Usás said (that) o told me (that)',
+        label: 'Usas said (that) o told me (that)',
         kind: 'pattern',
         patterns: [['said'], ['told', '<WORD>']],
       },
       {
         id: 'asked',
-        label: 'Contás una pregunta con asked if / asked where…',
+        label: 'Cuentas una pregunta con asked if / asked where…',
         kind: 'pattern',
         patterns: [
           ['asked', 'if|where|what|when|why|how'],
@@ -459,7 +459,7 @@ export const EN_B1_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'b1-u11-l05',
     title: 'Tu opinión',
     instructions:
-      'Elegí un tema (vivir en una ciudad grande o chica, trabajar desde casa, las redes sociales…) y escribí tu opinión con una ventaja, una desventaja y qué harías vos.',
+      'Elige un tema (vivir en una ciudad grande o chica, trabajar desde casa, las redes sociales…) y escribe tu opinión con una ventaja, una desventaja y qué harías tú.',
     prompts: ['What do you think?', 'What is one advantage?', 'What would you do?'],
     requirements: [
       {
@@ -473,13 +473,13 @@ export const EN_B1_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'contrast',
-        label: 'Mostrás los dos lados (advantage, disadvantage, on the other hand)',
+        label: 'Muestras los dos lados (advantage, disadvantage, on the other hand)',
         kind: 'pattern',
         patterns: [['advantage|disadvantage'], ['on', 'the', 'other', 'hand']],
       },
       {
         id: 'would',
-        label: 'Usás el segundo condicional (If I…, I would…)',
+        label: 'Usas el segundo condicional (If I…, I would…)',
         kind: 'pattern',
         patterns: [['would'], ["i'd"]],
       },
@@ -497,24 +497,24 @@ export const EN_B1_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'b1-u12-l03',
     title: 'Un reclamo formal',
     instructions:
-      'Escribí un correo para reclamar por algo que compraste y no funciona: qué compraste, qué problema tiene y qué pedís (un reembolso o un cambio).',
+      'Escribe un correo para reclamar por algo que compraste y no funciona: qué compraste, qué problema tiene y qué pides (un reembolso o un cambio).',
     prompts: ['What did you buy?', 'What is the problem?', 'What would you like?'],
     requirements: [
       {
         id: 'greeting',
-        label: 'Empezás con un saludo formal (Dear…)',
+        label: 'Empiezas con un saludo formal (Dear…)',
         kind: 'pattern',
         patterns: [['dear']],
       },
       {
         id: 'problem',
-        label: 'Explicás el problema (stopped working, broke, broken…)',
+        label: 'Explicas el problema (stopped working, broke, broken…)',
         kind: 'pattern',
         patterns: [["stopped|broke|broken|problem|doesn't|didn't"]],
       },
       {
         id: 'request',
-        label: 'Pedís algo con cortesía (I would like a refund / Could you replace it?)',
+        label: 'Pides algo con cortesía (I would like a refund / Could you replace it?)',
         kind: 'pattern',
         patterns: [
           ['would', 'like'],
@@ -543,7 +543,7 @@ export const EN_B1_WRITING_TASKS: readonly WritingTaskDef[] = [
     block: 1,
     title: 'Tu vida hasta ahora y tus planes',
     instructions:
-      'Escribí un texto sobre vos: algo que hiciste en tu vida, algo que venís haciendo últimamente, una anécdota corta y tus planes para el futuro.',
+      'Escribe un texto sobre ti: algo que hiciste en tu vida, algo que vienes haciendo últimamente, una anécdota corta y tus planes para el futuro.',
     prompts: [
       'What have you done in your life?',
       'What have you been doing lately?',
@@ -559,7 +559,7 @@ export const EN_B1_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'continuous',
-        label: '¿Contaste algo que venís haciendo (have been + -ing)?',
+        label: '¿Contaste algo que vienes haciendo (have been + -ing)?',
         kind: 'pattern',
         patterns: [['been', '<WORD>']],
         optional: true,
@@ -596,7 +596,7 @@ export const EN_B1_WRITING_TASKS: readonly WritingTaskDef[] = [
     block: 2,
     title: 'Un correo a alguien que viene de visita',
     instructions:
-      'Un amigo de otro país viene a visitarte. Escribile un correo: qué tiene que hacer o no hace falta que haga, consejos de viaje y de salud, y cómo van a seguir en contacto.',
+      'Un amigo de otro país viene a visitarte. Escríbele un correo: qué tiene que hacer o no hace falta que haga, consejos de viaje y de salud, y cómo van a seguir en contacto.',
     prompts: [
       'What does your friend have to do?',
       'What should he bring?',
@@ -649,7 +649,7 @@ export const EN_B1_WRITING_TASKS: readonly WritingTaskDef[] = [
     block: 3,
     title: 'Un problema de tu ciudad',
     instructions:
-      'Elegí un problema de tu ciudad (el transporte, la basura, el ruido…). Explicá la causa, contá qué se hizo, da tu opinión y proponé una solución.',
+      'Elige un problema de tu ciudad (el transporte, la basura, el ruido…). Explica la causa, cuenta qué se hizo, da tu opinión y propón una solución.',
     prompts: ['What is the problem?', 'Why is it a problem?', 'What would you do?'],
     requirements: [
       {

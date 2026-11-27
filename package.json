@@ -83,6 +83,7 @@
     "content:sql": "tsx scripts/build-content-sql.ts",
     "content:dump": "tsx scripts/dump-content.ts",
     "content:diff": "tsx scripts/build-content-diff-sql.ts",
+    "content:neutral": "tsx scripts/build-neutral-spanish-sql.ts",
     "content:catalog": "tsx scripts/build-catalog-sql.ts",
     "content:ids": "tsx scripts/content-ids.ts",
     "content:comprehension": "tsx scripts/build-comprehension-sql.ts",
@@ -130,6 +131,8 @@
     },
     "setupFiles": [
       "<rootDir>/jest.setup.ts"
-    ]
+    ],
+    "maxWorkers": "50%",
+    "workerIdleMemoryLimit": "1GB"
   }
 }

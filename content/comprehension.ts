@@ -210,7 +210,7 @@ export const COMPREHENSION_OBJECTIVES: readonly ObjectiveDef[] = CONTEXT_LESSONS
           language,
           level,
           cefrActivity: meta.activity satisfies CefrActivity,
-          canDo: `Podés ${meta.objective.charAt(0).toLowerCase()}${meta.objective.slice(1)}.`,
+          canDo: `Puedes ${meta.objective.charAt(0).toLowerCase()}${meta.objective.slice(1)}.`,
           description:
             `Código curricular ${curriculumCode(language, level, code)} del mapa curricular de ` +
             `inglés A1 (docs/polygo-ingles-a1-mapa-curricular.md). Borrador: pendiente de revisión ` +

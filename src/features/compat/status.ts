@@ -31,7 +31,7 @@ const serverSchema = z.object({
 });
 
 export const DEFAULT_UPDATE_MESSAGE =
-  'Hay una versión nueva de PolyGo. Actualizala desde la tienda para seguir aprendiendo.';
+  'Hay una versión nueva de PolyGo. Actualízala desde la tienda para seguir aprendiendo.';
 
 /** Estado cuando no hay respuesta válida del servidor: nunca bloquea. */
 export function unavailableCompatibility(

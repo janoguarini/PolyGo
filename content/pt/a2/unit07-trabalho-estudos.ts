@@ -102,7 +102,7 @@ export const PT_A2_U07: PtUnitDef = {
       'El futuro do presente en lo formal (será, terá), la facultad, la pasantía, la entrevista y los falsos amigos vaga, pretender y prova.',
     emoji: '🎓',
     objective:
-      'Podés hablar de tu trabajo y tus estudios, entender un aviso de trabajo y un correo formal, y contar qué tenés pensado hacer.',
+      'Puedes hablar de tu trabajo y tus estudios, entender un aviso de trabajo y un correo formal, y contar qué tienes pensado hacer.',
     grammar: {
       title: 'Futuro do presente (formal)',
       explanation:
@@ -304,7 +304,7 @@ export const PT_A2_U07: PtUnitDef = {
             },
           ],
         },
-        takeaways: ['Hablás de la facultad y tu carrera.', 'Decís que aprobaste: passei na prova.'],
+        takeaways: ['Hablas de la facultad y tu carrera.', 'Dices que aprobaste: passei na prova.'],
         exercises: [
           ex.translationChoice(
             'prova',
@@ -368,7 +368,7 @@ export const PT_A2_U07: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Você passou na prova?',
-            '¿Aprobaste el examen? (Respondé que sí, que aprobaste.)',
+            '¿Aprobaste el examen? (Responde que sí, que aprobaste.)',
             'Sim, eu passei!',
             ['Passei!', 'Sim, passei na prova!', 'Sim, eu passei na prova.', 'Passei, sim!'],
             ['pt-passar-na-prova'],
@@ -389,7 +389,7 @@ export const PT_A2_U07: PtUnitDef = {
       // ------------------------------------------------------------------------------------ L2
       {
         title: 'No trabalho',
-        objective: 'Hablar de tu trabajo y de la gente con la que trabajás.',
+        objective: 'Hablar de tu trabajo y de la gente con la que trabajas.',
         intro: {
           explanation:
             'O chefe / a chefe (el jefe, la jefa), o colega (el compañero de trabajo), a reunião (la reunión). O salário es el sueldo. Uno va na reunião o à reunião.',
@@ -400,13 +400,13 @@ export const PT_A2_U07: PtUnitDef = {
             },
             {
               target: 'Os meus colegas são muito legais.',
-              base: 'Mis compañeros son muy buena onda.',
+              base: 'Mis compañeros son muy simpáticos.',
             },
           ],
         },
         takeaways: [
-          'Nombrás a la gente del trabajo: chefe, colega.',
-          'Hablás de reuniones y del sueldo.',
+          'Nombras a la gente del trabajo: chefe, colega.',
+          'Hablas de reuniones y del sueldo.',
         ],
         exercises: [
           ex.translationChoice(
@@ -466,13 +466,13 @@ export const PT_A2_U07: PtUnitDef = {
           ),
           ex.orderWords(
             'Os meus colegas são muito legais.',
-            'Mis compañeros son muy buena onda.',
+            'Mis compañeros son muy simpáticos.',
             ['pt-colega'],
             { id: 'pt.ex.rk8tu591oc42j7' },
           ),
           ex.shortAnswer(
             'Como é a sua chefe? (simpática)',
-            '¿Cómo es tu jefa? (Respondé que es muy simpática.)',
+            '¿Cómo es tu jefa? (Responde que es muy simpática.)',
             'Ela é muito simpática.',
             [
               'A minha chefe é muito simpática.',
@@ -504,7 +504,7 @@ export const PT_A2_U07: PtUnitDef = {
         objective: 'Entender un aviso de trabajo.',
         intro: {
           explanation:
-            'Falso amigo: vaga es una «vacante» o un «puesto»: tem uma vaga de estágio. Estágio es la pasantía. Para postularte mandás o currículo y después tenés a entrevista.',
+            'Falso amigo: vaga es una «vacante» o un «puesto»: tem uma vaga de estágio. Estágio es la pasantía. Para postularte mandas o currículo y después tienes a entrevista.',
           examples: [
             {
               target: 'Tem uma vaga de estágio na empresa.',
@@ -513,7 +513,7 @@ export const PT_A2_U07: PtUnitDef = {
             { target: 'Mandei o meu currículo ontem.', base: 'Ayer mandé mi currículum.' },
           ],
         },
-        takeaways: ['Entendés un aviso: vaga, estágio, salário.', 'Sabés que vaga es «vacante».'],
+        takeaways: ['Entiendes un aviso: vaga, estágio, salário.', 'Sabes que vaga es «vacante».'],
         exercises: [
           ex.translationChoice(
             'vaga',
@@ -585,7 +585,7 @@ export const PT_A2_U07: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Você já mandou o currículo?',
-            '¿Ya mandaste el currículum? (Respondé que sí, que lo mandaste ayer.)',
+            '¿Ya mandaste el currículum? (Responde que sí, que lo mandaste ayer.)',
             'Sim, eu mandei ontem.',
             [
               'Já, mandei ontem.',
@@ -624,8 +624,8 @@ export const PT_A2_U07: PtUnitDef = {
           ],
         },
         takeaways: [
-          'Entendés el futuro formal: será, terá.',
-          'Sabés que al hablar se dice vai ser.',
+          'Entiendes el futuro formal: será, terá.',
+          'Sabes que al hablar se dice vai ser.',
         ],
         exercises: [
           ex.translationChoice('terá', 'tendrá', ['tenía', 'tuvo', 'será'], ['pt-tera'], {
@@ -688,7 +688,7 @@ export const PT_A2_U07: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Quando será a reunião? (sexta, 15h)',
-            '¿Cuándo será la reunión? (Respondé que será el viernes a las tres.)',
+            '¿Cuándo será la reunión? (Responde que será el viernes a las tres.)',
             'A reunião será na sexta às três.',
             [
               'Será na sexta às três.',
@@ -730,7 +730,7 @@ export const PT_A2_U07: PtUnitDef = {
             },
           ],
         },
-        takeaways: ['Contás tu formación: me formei em…', 'Contás tus planes con pretendo.'],
+        takeaways: ['Cuentas tu formación: me formei em…', 'Cuentas tus planes con pretendo.'],
         exercises: [
           ex.translationChoice(
             'pretendo',
@@ -804,7 +804,7 @@ export const PT_A2_U07: PtUnitDef = {
           ),
           ex.shortAnswer(
             'O que você pretende fazer no ano que vem? (estágio)',
-            '¿Qué tenés pensado hacer el año que viene? (Respondé que una pasantía.)',
+            '¿Qué tienes pensado hacer el año que viene? (Responde que una pasantía.)',
             'Eu pretendo fazer um estágio.',
             [
               'Pretendo fazer um estágio.',

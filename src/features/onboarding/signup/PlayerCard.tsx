@@ -2,6 +2,9 @@ import { StyleSheet, Text as RNText, View } from 'react-native';
 import Animated, { ZoomIn } from 'react-native-reanimated';
 
 import { Avatar, BrandCard, Text, radii, spacing, themedStyles } from '@/design-system';
+import { useStrings } from '@/i18n';
+
+import { signupStrings } from './strings';
 
 /** Tu tarjeta de jugador armándose en vivo mientras escribís el nombre: así te ven los rivales. */
 export function PlayerCard({
@@ -20,16 +23,17 @@ export function PlayerCard({
   goal: number;
 }) {
   const styles = useStyles();
+  const t = useStrings(signupStrings);
   return (
     <Animated.View entering={ZoomIn.springify().damping(12)}>
       <BrandCard glow contentStyle={styles.card}>
         <Avatar avatarId={avatarId} size={84} />
         <View style={styles.info}>
           <Text variant="overline" color="primarySoft">
-            JUGADOR
+            {t.player}
           </Text>
           <Text variant="title" color="textStrong" numberOfLines={1}>
-            {username.trim() ? username.trim() : 'tu_nombre'}
+            {username.trim() ? username.trim() : t.namePlaceholder}
           </Text>
           <View style={styles.chips}>
             <View style={styles.chip}>
@@ -45,7 +49,7 @@ export function PlayerCard({
             </View>
             <View style={styles.chip}>
               <Text variant="caption" color="textStrong">
-                🔥 {goal} min
+                🔥 {goal} {t.minutes}
               </Text>
             </View>
           </View>

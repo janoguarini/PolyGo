@@ -19,7 +19,8 @@ before(async () => {
 });
 
 const run = (job, limit = 500) => h.service(() => h.call('learning_run_job', [job, limit]));
-const lastRun = (job) => h.one('select * from public.learning_job_runs where job = $1 order by id desc limit 1', [job]);
+const lastRun = (job) =>
+  h.one('select * from public.learning_job_runs where job = $1 order by id desc limit 1', [job]);
 
 async function learnerWithLesson() {
   const user = await h.learner(lesson);
@@ -42,28 +43,56 @@ test('interruptores: con todo apagado sólo trabaja la cola del motor; el resto 
   await assert.rejects(run('mastery_queue', 0), /invalid_request/);
   // Sólo service_role.
   const user = await h.learner();
-  await assert.rejects(as(db, 'authenticated', user, () => h.call('learning_run_job', ['mastery_queue', 10])), /permission denied/);
+  await assert.rejects(
+    as(db, 'authenticated', user, () => h.call('learning_run_job', ['mastery_queue', 10])),
+    /permission denied/,
+  );
 });
 
 test('cola del motor: lotes, una unidad con error no deshace el lote y se reintenta hasta 5 veces', async () => {
   const user = await learnerWithLesson();
-  const pending = (await h.one('select count(*)::int n from public.knowledge_recompute_queue where user_id = $1 and processed_at is null', [user])).n;
+  const pending = (
+    await h.one(
+      'select count(*)::int n from public.knowledge_recompute_queue where user_id = $1 and processed_at is null',
+      [user],
+    )
+  ).n;
   assert.ok(pending > 2);
   // Unidad envenenada: una dimensión inexistente hace fallar mastery_recompute_unit (FK).
-  const concept = (await h.one('select concept_id from public.knowledge_recompute_queue where user_id = $1 limit 1', [user])).concept_id;
-  await db.query(`insert into public.knowledge_recompute_queue (user_id, concept_id, dimension, enqueued_at)
-                  values ($1, $2, 'bogus', now() - interval '1 day')`, [user, concept]);
+  const concept = (
+    await h.one(
+      'select concept_id from public.knowledge_recompute_queue where user_id = $1 limit 1',
+      [user],
+    )
+  ).concept_id;
+  await db.query(
+    `insert into public.knowledge_recompute_queue (user_id, concept_id, dimension, enqueued_at)
+                  values ($1, $2, 'bogus', now() - interval '1 day')`,
+    [user, concept],
+  );
   const r1 = await run('mastery_queue', 2);
   assert.equal(r1.status, 'ok');
   assert.equal(r1.failed, 1);
   assert.equal(r1.processed, 1, 'lote de 2: la envenenada falla y la otra se procesa');
-  const poison = await h.one(`select * from public.knowledge_recompute_queue where dimension = 'bogus'`);
+  const poison = await h.one(
+    `select * from public.knowledge_recompute_queue where dimension = 'bogus'`,
+  );
   assert.equal(poison.attempts, 1);
   assert.match(poison.last_error, /foreign key|violates/);
   for (let i = 0; i < 6; i++) await run('mastery_queue', 1000);
-  const after = await h.one(`select * from public.knowledge_recompute_queue where dimension = 'bogus'`);
+  const after = await h.one(
+    `select * from public.knowledge_recompute_queue where dimension = 'bogus'`,
+  );
   assert.equal(after.attempts, 5, 'deja de reintentar a los 5');
-  assert.equal((await h.one('select count(*)::int n from public.knowledge_recompute_queue where user_id = $1 and processed_at is null and dimension <> $2', [user, 'bogus'])).n, 0);
+  assert.equal(
+    (
+      await h.one(
+        'select count(*)::int n from public.knowledge_recompute_queue where user_id = $1 and processed_at is null and dimension <> $2',
+        [user, 'bogus'],
+      )
+    ).n,
+    0,
+  );
   const status = await h.service(() => h.call('learning_jobs_status', []));
   assert.equal(status.mastery_queue.gave_up, 1);
   assert.equal(status.last_runs.mastery_queue.status, 'ok');
@@ -82,11 +111,16 @@ test('migración por lotes: un usuario por transacción, reintento con espera y 
     create trigger test_fail_migration before update on public.srs_user_head for each row execute function public.test_fail_migration();`);
   try {
     await db.query('call public.srs_v2_process_migrations(50)');
-    const q = await h.all('select user_id, status, attempts, last_error, next_attempt_at from public.srs_migration_queue where user_id = any($1)', [[ok, bad]]);
+    const q = await h.all(
+      'select user_id, status, attempts, last_error, next_attempt_at from public.srs_migration_queue where user_id = any($1)',
+      [[ok, bad]],
+    );
     const qOk = q.find((x) => x.user_id === ok);
     const qBad = q.find((x) => x.user_id === bad);
     assert.equal(qOk.status, 'done');
-    assert.ok((await h.one('select v2_since from public.srs_user_head where user_id = $1', [ok])).v2_since);
+    assert.ok(
+      (await h.one('select v2_since from public.srs_user_head where user_id = $1', [ok])).v2_since,
+    );
     assert.equal(qBad.status, 'failed');
     assert.equal(qBad.attempts, 1);
     assert.match(qBad.last_error, /falla inyectada/);
@@ -95,12 +129,23 @@ test('migración por lotes: un usuario por transacción, reintento con espera y 
     assert.equal(bh?.v2_since ?? null, null, 'la falla no deja al usuario a medio migrar');
     // Sin esperar no se reintenta.
     await db.query('call public.srs_v2_process_migrations(50)');
-    assert.equal((await h.one('select attempts from public.srs_migration_queue where user_id = $1', [bad])).attempts, 1);
+    assert.equal(
+      (await h.one('select attempts from public.srs_migration_queue where user_id = $1', [bad]))
+        .attempts,
+      1,
+    );
     for (let i = 0; i < 6; i++) {
-      await db.query('update public.srs_migration_queue set next_attempt_at = now() - interval $$1 second$$ where user_id = $1', [bad]);
+      await db.query(
+        'update public.srs_migration_queue set next_attempt_at = now() - interval $$1 second$$ where user_id = $1',
+        [bad],
+      );
       await db.query('call public.srs_v2_process_migrations(50)');
     }
-    assert.equal((await h.one('select attempts from public.srs_migration_queue where user_id = $1', [bad])).attempts, 5);
+    assert.equal(
+      (await h.one('select attempts from public.srs_migration_queue where user_id = $1', [bad]))
+        .attempts,
+      5,
+    );
     const run = await lastRun('srs_migrations');
     assert.equal(run.status, 'ok');
     const status = await h.service(() => h.call('learning_jobs_status', []));
@@ -110,7 +155,9 @@ test('migración por lotes: un usuario por transacción, reintento con espera y 
     assert.equal(sweep.status, 'ok');
     assert.equal(sweep.processed, 0);
   } finally {
-    await db.exec('drop trigger test_fail_migration on public.srs_user_head; drop function public.test_fail_migration();');
+    await db.exec(
+      'drop trigger test_fail_migration on public.srs_user_head; drop function public.test_fail_migration();',
+    );
     await h.setEnabled(false);
   }
 });

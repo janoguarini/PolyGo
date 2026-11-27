@@ -22,6 +22,26 @@ export const lessonStrings = defineStrings({
     nextLesson: 'Next lesson',
     backToPath: 'Back to my path',
   },
+  'pt-BR': {
+    exitTitle: 'Sair da lição?',
+    exitMessage: 'Você vai perder o progresso desta lição.',
+    stay: 'Continuar',
+    leave: 'Sair',
+    loading: 'Carregando lição…',
+    loadError: 'Não conseguimos carregar a lição.',
+    nextLesson: 'Próxima lição',
+    backToPath: 'Voltar à trilha',
+  },
+  it: {
+    exitTitle: 'Vuoi uscire dalla lezione?',
+    exitMessage: 'Perderai i progressi di questa lezione.',
+    stay: 'Continua',
+    leave: 'Esci',
+    loading: 'Caricamento della lezione…',
+    loadError: 'Non siamo riusciti a caricare la lezione.',
+    nextLesson: 'Prossima lezione',
+    backToPath: 'Torna al percorso',
+  },
 });
 
 /** Explicación de una lección (src/app/lesson-intro/[id].tsx). */
@@ -42,6 +62,22 @@ export const lessonIntroStrings = defineStrings({
     noIntro: 'This lesson doesn’t have a written explanation yet.',
     learned: 'WHAT YOU LEARNED',
   },
+  'pt-BR': {
+    loading: 'Carregando explicação…',
+    loadError: 'Não conseguimos carregar a explicação.',
+    back: 'Voltar',
+    overline: 'EXPLICAÇÃO DA LIÇÃO',
+    noIntro: 'Esta lição ainda não tem uma explicação escrita.',
+    learned: 'O QUE VOCÊ APRENDEU',
+  },
+  it: {
+    loading: 'Caricamento della spiegazione…',
+    loadError: 'Non siamo riusciti a caricare la spiegazione.',
+    back: 'Indietro',
+    overline: 'SPIEGAZIONE DELLA LEZIONE',
+    noIntro: 'Questa lezione non ha ancora una spiegazione scritta.',
+    learned: 'COSA HAI IMPARATO',
+  },
 });
 
 /** Tarea de escritura (src/app/writing/[id].tsx). */
@@ -49,11 +85,21 @@ export const writingTaskScreenStrings = defineStrings({
   es: {
     back: 'Volver',
     notFoundTitle: 'No encontramos esta tarea',
-    notFoundMessage: 'Volvé e intentá de nuevo.',
+    notFoundMessage: 'Vuelve e inténtalo de nuevo.',
   },
   en: {
     back: 'Back',
     notFoundTitle: 'We couldn’t find this task',
     notFoundMessage: 'Go back and try again.',
+  },
+  'pt-BR': {
+    back: 'Voltar',
+    notFoundTitle: 'Não encontramos esta tarefa',
+    notFoundMessage: 'Volte e tente de novo.',
+  },
+  it: {
+    back: 'Indietro',
+    notFoundTitle: 'Non abbiamo trovato questa attività',
+    notFoundMessage: 'Torna indietro e riprova.',
   },
 });

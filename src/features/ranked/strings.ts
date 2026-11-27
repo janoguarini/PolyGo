@@ -3,6 +3,7 @@ import { getRank, type RankInfo, type TierId } from '@shared/ranking';
 import {
   defineStrings,
   getInterfaceLanguage,
+  stringsFor,
   useInterfaceLanguage,
   type InterfaceLanguage,
 } from '@/i18n';
@@ -36,16 +37,38 @@ export const tierNames = defineStrings<Record<TierId, string>>({
     master: 'Master',
     grandmaster: 'Grandmaster',
   },
+  'pt-BR': {
+    bronze: 'Bronze',
+    silver: 'Prata',
+    gold: 'Ouro',
+    platinum: 'Platina',
+    emerald: 'Esmeralda',
+    diamond: 'Diamante',
+    master: 'Mestre',
+    grandmaster: 'Grão-Mestre',
+  },
+  it: {
+    bronze: 'Bronzo',
+    silver: 'Argento',
+    gold: 'Oro',
+    platinum: 'Platino',
+    emerald: 'Smeraldo',
+    diamond: 'Diamante',
+    master: 'Maestro',
+    grandmaster: 'Gran Maestro',
+  },
 });
 
 const unplacedNames = defineStrings({
   es: { unplaced: 'Sin posicionar' },
   en: { unplaced: 'Unranked' },
+  'pt-BR': { unplaced: 'Sem classificação' },
+  it: { unplaced: 'Non classificato' },
 });
 
-/** «Oro» / «Gold». */
+/** «Oro» / «Gold» / «Ouro» / «Oro». */
 export function tierName(tier: TierId, ui: InterfaceLanguage): string {
-  return tierNames[ui][tier];
+  return stringsFor(tierNames, ui)[tier];
 }
 
 /** Etiqueta de un rango ya calculado: «Plata II» / «Silver II», «Maestro» / «Master». */
@@ -64,7 +87,7 @@ export function rankLabelForRating(rating: number, ui: InterfaceLanguage): strin
 
 /** «Sin posicionar» / «Unranked». */
 export function unplacedLabel(ui: InterfaceLanguage): string {
-  return unplacedNames[ui].unplaced;
+  return stringsFor(unplacedNames, ui).unplaced;
 }
 
 /** Fuera de React (utilidades, formateadores). */
@@ -92,14 +115,14 @@ export const rankedStrings = defineStrings({
     // RankCard
     currentRank: 'RANGO ACTUAL',
     eloA11y: (elo: number) => `${elo} puntos de ELO`,
-    firstWinHint: 'Ganá tu primera partida para entrar al ranking en Bronce.',
+    firstWinHint: 'Gana tu primera partida para entrar al ranking en Bronce.',
     progressA11y: 'Progreso al siguiente rango',
     maxRank: 'Rango máximo alcanzado',
     eloToNextRank: (n: number) => `${n} ELO para el siguiente rango`,
     // TierLadder
     ladderA11y: (names: string) => `Rangos: ${names}`,
     // Leaderboard
-    you: 'Vos',
+    you: 'Tú',
     openProfileHint: 'Abre el perfil del jugador',
     rowA11y: (
       place: number,
@@ -126,5 +149,41 @@ export const rankedStrings = defineStrings({
       rank: string,
       elo: number,
     ) => `Rank ${place}, ${name}${language ? `, ${language}` : ''}, ${rank}, ${elo} ELO`,
+  },
+  'pt-BR': {
+    currentRank: 'RANK ATUAL',
+    eloA11y: (elo: number) => `${elo} pontos de ELO`,
+    firstWinHint: 'Vença sua primeira partida para entrar no ranking, começando no Bronze.',
+    progressA11y: 'Progresso até o próximo rank',
+    maxRank: 'Rank máximo alcançado',
+    eloToNextRank: (n: number) => `${n} ELO para o próximo rank`,
+    ladderA11y: (names: string) => `Ranks: ${names}`,
+    you: 'Você',
+    openProfileHint: 'Abre o perfil do jogador',
+    rowA11y: (
+      place: number,
+      name: string,
+      language: string | undefined,
+      rank: string,
+      elo: number,
+    ) => `Posição ${place}, ${name}${language ? `, ${language}` : ''}, ${rank}, ${elo} ELO`,
+  },
+  it: {
+    currentRank: 'RANGO ATTUALE',
+    eloA11y: (elo: number) => `${elo} punti ELO`,
+    firstWinHint: 'Vinci la tua prima partita per entrare in classifica nel Bronzo.',
+    progressA11y: 'Progresso verso il rango successivo',
+    maxRank: 'Rango massimo raggiunto',
+    eloToNextRank: (n: number) => `${n} ELO al rango successivo`,
+    ladderA11y: (names: string) => `Ranghi: ${names}`,
+    you: 'Tu',
+    openProfileHint: 'Apre il profilo del giocatore',
+    rowA11y: (
+      place: number,
+      name: string,
+      language: string | undefined,
+      rank: string,
+      elo: number,
+    ) => `Posizione ${place}, ${name}${language ? `, ${language}` : ''}, ${rank}, ${elo} ELO`,
   },
 });

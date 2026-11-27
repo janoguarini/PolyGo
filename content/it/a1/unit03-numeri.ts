@@ -19,15 +19,15 @@ export const unit03: UnitDef = {
   position: 3,
   title: 'Números y edad',
   titleEn: 'Numeri ed età',
-  description: 'Contar hasta veinte y decir cuántos años tenés.',
+  description: 'Contar hasta veinte y decir cuántos años tienes.',
   emoji: '🔢',
-  objective: 'Podés contar hasta veinte, preguntar la edad y decir cuántos años tenés.',
+  objective: 'Puedes contar hasta veinte, preguntar la edad y decir cuántos años tienes.',
   grammar: {
     title: 'Avere … anni',
     explanation:
       'Como en español, la edad se dice con avere (tener): ho venti anni. Ho se escribe con h, pero la h no suena.',
     examples: [
-      { target: 'Quanti anni hai?', base: '¿Cuántos años tenés?' },
+      { target: 'Quanti anni hai?', base: '¿Cuántos años tienes?' },
       { target: 'Ho diciotto anni.', base: 'Tengo dieciocho años.' },
     ],
   },
@@ -67,9 +67,17 @@ export const unit03: UnitDef = {
     ),
     w('it-venti', 'venti', 'veinte', 'Ho venti anni.', 'Tengo veinte años.', ['numbers']),
     w('it-ho', 'ho', 'tengo', 'Ho venti anni.', 'Tengo veinte años.', ['verbs', 'to-have']),
-    w('it-hai', 'hai', 'tenés', 'Quanti anni hai?', '¿Cuántos años tenés?', ['verbs', 'to-have'], {
-      acceptedTranslations: ['tienes'],
-    }),
+    w(
+      'it-hai',
+      'hai',
+      'tienes',
+      'Quanti anni hai?',
+      '¿Cuántos años tienes?',
+      ['verbs', 'to-have'],
+      {
+        acceptedTranslations: ['tienes', 'tenés'],
+      },
+    ),
     w('it-ha', 'ha', 'tiene', 'Marco ha dieci anni.', 'Marco tiene diez años.', [
       'verbs',
       'to-have',
@@ -78,12 +86,12 @@ export const unit03: UnitDef = {
     w(
       'it-quanti-anni-hai',
       'quanti anni hai?',
-      '¿cuántos años tenés?',
+      '¿cuántos años tienes?',
       'Ciao! Quanti anni hai?',
-      '¡Hola! ¿Cuántos años tenés?',
+      '¡Hola! ¿Cuántos años tienes?',
       ['questions'],
       {
-        acceptedTranslations: ['¿cuántos años tienes?'],
+        acceptedTranslations: ['¿cuántos años tienes?', '¿cuántos años tenés?'],
       },
     ),
   ],
@@ -99,7 +107,7 @@ export const unit03: UnitDef = {
           { target: 'Due caffè, per favore.', base: 'Dos cafés, por favor.' },
         ],
       },
-      takeaways: ['Contás del uno al cinco.', 'Pedís dos o tres cosas con un número.'],
+      takeaways: ['Cuentas del uno al cinco.', 'Pides dos o tres cosas con un número.'],
       exercises: [
         ex.imageChoice('2️⃣', 'due', ['tre', 'uno', 'cinque'], ['it-due']),
         ex.imageChoice('4️⃣', 'quattro', ['cinque', 'tre', 'due'], ['it-quattro']),
@@ -133,13 +141,13 @@ export const unit03: UnitDef = {
       objective: 'Contar del seis al diez.',
       intro: {
         explanation:
-          'Sei (seis) es igual a sei (sos) de la unidad anterior: el contexto los distingue. Sette, otto y dieci llevan doble consonante o «ci», que suena «chi».',
+          'Sei (seis) es igual a sei (eres) de la unidad anterior: el contexto los distingue. Sette, otto y dieci llevan doble consonante o «ci», que suena «chi».',
         examples: [
           { target: 'Sei, sette, otto.', base: 'Seis, siete, ocho.' },
           { target: 'Dieci euro.', base: 'Diez euros.' },
         ],
       },
-      takeaways: ['Contás del seis al diez.', 'Sabés que sei puede ser «seis» o «sos».'],
+      takeaways: ['Cuentas del seis al diez.', 'Sabes que sei puede ser «seis» o «eres».'],
       exercises: [
         ex.imageChoice('7️⃣', 'sette', ['sei', 'otto', 'nove'], ['it-sette']),
         ex.imageChoice('🔟', 'dieci', ['nove', 'otto', 'sette'], ['it-dieci']),
@@ -153,7 +161,7 @@ export const unit03: UnitDef = {
           ['it-sei-numero', 'it-ho', 'it-anni'],
           {
             skill: 'vocabulary',
-            explanation: 'Acá sei es el número seis. En «tu sei» es el verbo: «vos sos».',
+            explanation: 'Aquí sei es el número seis. En «tu sei» es el verbo: «tú eres».',
           },
         ),
         ex.matchPairs(
@@ -182,7 +190,7 @@ export const unit03: UnitDef = {
           { target: 'Lei ha diciotto anni.', base: 'Ella tiene dieciocho años.' },
         ],
       },
-      takeaways: ['Decís 15, 18 y 20.', 'Reconocés los números de oído.'],
+      takeaways: ['Dices 15, 18 y 20.', 'Reconoces los números de oído.'],
       exercises: [
         ex.translationChoice('venti', 'veinte', ['quince', 'dieciocho', 'diez'], ['it-venti']),
         ex.translationChoice(
@@ -219,22 +227,22 @@ export const unit03: UnitDef = {
       objective: 'Preguntar y decir la edad.',
       intro: {
         explanation:
-          'La edad se dice con avere (tener): ho (tengo), hai (tenés), ha (tiene) + número + anni. La h de ho, hai y ha no se pronuncia.',
+          'La edad se dice con avere (tener): ho (tengo), hai (tienes), ha (tiene) + número + anni. La h de ho, hai y ha no se pronuncia.',
         examples: [
-          { target: 'Quanti anni hai?', base: '¿Cuántos años tenés?' },
+          { target: 'Quanti anni hai?', base: '¿Cuántos años tienes?' },
           { target: 'Ho venti anni.', base: 'Tengo veinte años.' },
           { target: 'Marco ha dieci anni.', base: 'Marco tiene diez años.' },
         ],
       },
-      takeaways: ['Preguntás la edad con quanti anni hai?', 'Respondés con ho + número + anni.'],
+      takeaways: ['Preguntas la edad con quanti anni hai?', 'Respondes con ho + número + anni.'],
       exercises: [
         ex.translationChoice(
           'quanti anni hai?',
-          '¿cuántos años tenés?',
-          ['¿de dónde sos?', '¿cómo estás?', 'tengo'],
+          '¿cuántos años tienes?',
+          ['¿de dónde eres?', '¿cómo estás?', 'tengo'],
           ['it-quanti-anni-hai'],
         ),
-        ex.translationChoice('ho', 'tengo', ['tenés', 'tiene', 'soy'], ['it-ho']),
+        ex.translationChoice('ho', 'tengo', ['tienes', 'tiene', 'soy'], ['it-ho']),
         ex.fillBlank(
           '___ venti anni.',
           'Tengo veinte años.',
@@ -266,20 +274,20 @@ export const unit03: UnitDef = {
         ]),
         ex.shortAnswer(
           'Quanti anni hai?',
-          '¿Cuántos años tenés? (Respondé que tenés quince.)',
+          '¿Cuántos años tienes? (Responde que tienes quince.)',
           'Ho quindici anni.',
           ['Io ho quindici anni.', 'Quindici anni.', 'Quindici.'],
           ['it-ho', 'it-quindici', 'it-anni'],
         ),
-        ex.translateWrite('¿Cuántos años tenés?', 'Quanti anni hai?', ['it-quanti-anni-hai']),
+        ex.translateWrite('¿Cuántos años tienes?', 'Quanti anni hai?', ['it-quanti-anni-hai']),
       ],
     },
     {
       title: 'Presentarte completo',
-      objective: 'Decir tu nombre, de dónde sos y cuántos años tenés.',
+      objective: 'Decir tu nombre, de dónde eres y cuántos años tienes.',
       intro: {
         explanation:
-          'Ya podés presentarte entero: mi chiamo + nombre, sono di + ciudad y ho + edad. Recordá: la edad va con ho, el origen con sono.',
+          'Ya puedes presentarte entero: mi chiamo + nombre, sono di + ciudad y ho + edad. Recuerda: la edad va con ho, el origen con sono.',
         examples: [
           {
             target: 'Mi chiamo Ana, sono di Rosario e ho vent’anni.',
@@ -289,11 +297,11 @@ export const unit03: UnitDef = {
         ],
       },
       takeaways: [
-        'Te presentás con nombre, origen y edad.',
-        'Usás sono para el origen y ho para la edad.',
+        'Te presentas con nombre, origen y edad.',
+        'Usas sono para el origen y ho para la edad.',
       ],
       exercises: [
-        ex.translationChoice('hai', 'tenés', ['tengo', 'tiene', 'sos'], ['it-hai']),
+        ex.translationChoice('hai', 'tienes', ['tengo', 'tiene', 'eres'], ['it-hai']),
         ex.fillBlank(
           'Sono di Rosario e ___ venti anni.',
           'Soy de Rosario y tengo veinte años.',
@@ -318,7 +326,7 @@ export const unit03: UnitDef = {
         ex.matchPairs(
           [
             ['ho', 'tengo'],
-            ['hai', 'tenés'],
+            ['hai', 'tienes'],
             ['ha', 'tiene'],
             ['anni', 'años'],
           ],

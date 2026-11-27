@@ -19,21 +19,21 @@ export interface FriendDailyMission {
 export const FRIEND_DAILY_MISSIONS: readonly FriendDailyMission[] = [
   {
     id: 'play_3',
-    title: 'Jugá 3 partidas',
+    title: 'Juega 3 partidas',
     description: 'Ranked o amistosos',
     target: 3,
     reward: 10,
   },
   {
     id: 'review_20',
-    title: 'Repasá 20 palabras',
+    title: 'Repasa 20 palabras',
     description: 'Respuestas en sesiones de repaso',
     target: 20,
     reward: 10,
   },
   {
     id: 'friendly_1',
-    title: 'Jugá un amistoso',
+    title: 'Juega un amistoso',
     description: 'Un desafío terminado contra alguien de tu lista',
     target: 1,
     reward: 15,

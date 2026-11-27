@@ -81,10 +81,10 @@ export const IT_A2_U09: ItUnitDef = {
     title: 'Compras y servicios',
     titleEn: 'Negozi e servizi',
     description:
-      'Comparar productos y precios, elegir el mejor, comprar ropa (talles, probador, descuentos) y hacer las compras en el mercado.',
+      'Comparar productos y precios, elegir el mejor, comprar ropa (tallas, probador, descuentos) y hacer las compras en el mercado.',
     emoji: '🛍️',
     objective:
-      'Podés comparar (più caro di, meno caro), decir cuál es el mejor o el peor, comprar ropa preguntando el talle y el descuento, y pedir cantidades en el mercado (un etto, ne vorrei tre).',
+      'Puedes comparar (più caro di, meno caro), decir cuál es el mejor o el peor, comprar ropa preguntando la talla y el descuento, y pedir cantidades en el mercado (un etto, ne vorrei tre).',
     grammar: {
       title: 'Comparativos y superlativos · ne',
       explanation:
@@ -107,7 +107,7 @@ export const IT_A2_U09: ItUnitDef = {
     review: {
       status: 'draft',
       notes:
-        'A2 nuevo (U9). Sin revisión nativa: revisar los talles, cosa le do?, delle mele y el uso de ne.',
+        'A2 nuevo (U9). Sin revisión nativa: revisar los tallas, cosa le do?, delle mele y el uso de ne.',
     },
     words: [
       w(
@@ -178,12 +178,12 @@ export const IT_A2_U09: ItUnitDef = {
       w(
         'it-giacca',
         'giacca',
-        'campera',
+        'chaqueta',
         'La giacca è nera.',
-        'La campera es negra.',
+        'La chaqueta es negra.',
         ['clothes', 'shopping'],
         {
-          acceptedTranslations: ['saco', 'chaqueta'],
+          acceptedTranslations: ['saco', 'chaqueta', 'campera'],
           emoji: '🧥',
         },
       ),
@@ -204,16 +204,21 @@ export const IT_A2_U09: ItUnitDef = {
         'provare',
         'probar',
         'Posso provare la giacca?',
-        '¿Puedo probarme la campera?',
+        '¿Puedo probarme la chaqueta?',
         ['shopping', 'verbs'],
         {
           acceptedTranslations: ['probarse'],
         },
       ),
-      w('it-taglia', 'taglia', 'talle', 'Che taglia porta?', '¿Qué talle usa?', [
-        'clothes',
-        'shopping',
-      ]),
+      w(
+        'it-taglia',
+        'taglia',
+        'talla',
+        'Che taglia porta?',
+        '¿Qué talla usa?',
+        ['clothes', 'shopping'],
+        { acceptedTranslations: ['talle'] },
+      ),
       w('it-camerino', 'camerino', 'probador', 'Il camerino è lì.', 'El probador está ahí.', [
         'clothes',
         'shopping',
@@ -280,7 +285,7 @@ export const IT_A2_U09: ItUnitDef = {
             },
           ],
         },
-        takeaways: ['Comparás con più / meno … di.', 'Unís di con el artículo: del, della.'],
+        takeaways: ['Comparas con più / meno … di.', 'Unes di con el artículo: del, della.'],
         exercises: [
           ex.translationChoice('meno', 'menos', ['más', 'mejor', 'muy'], ['it-meno'], {
             id: 'it.ex.3plhhvhz6j5qds',
@@ -343,7 +348,7 @@ export const IT_A2_U09: ItUnitDef = {
           ),
           ex.shortAnswer(
             'È più grande Roma o Firenze?',
-            '¿Qué ciudad es más grande, Roma o Florencia? (Respondé que Roma es más grande que Florencia.)',
+            '¿Qué ciudad es más grande, Roma o Florencia? (Responde que Roma es más grande que Florencia.)',
             'Roma è più grande di Firenze.',
             ['Roma è più grande.', 'Roma.'],
             ['it-piu'],
@@ -370,10 +375,10 @@ export const IT_A2_U09: ItUnitDef = {
               target: 'È il ristorante migliore della città.',
               base: 'Es el mejor restaurante de la ciudad.',
             },
-            { target: 'La giacca è bellissima!', base: '¡La campera es hermosísima!' },
+            { target: 'La giacca è bellissima!', base: '¡La chaqueta es hermosísima!' },
           ],
         },
-        takeaways: ['Usás migliore y peggiore.', 'Decís il più… y -issimo.'],
+        takeaways: ['Usas migliore y peggiore.', 'Dices il più… y -issimo.'],
         exercises: [
           ex.translationChoice(
             'migliore',
@@ -436,7 +441,7 @@ export const IT_A2_U09: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Com’è la giacca?',
-            '¿Cómo es la campera? (Respondé que es hermosísima.)',
+            '¿Cómo es la chaqueta? (Responde que es hermosísima.)',
             'È bellissima!',
             ['È bellissima.', 'Bellissima!', 'La giacca è bellissima!'],
             ['it-bellissimo', 'it-giacca'],
@@ -460,16 +465,16 @@ export const IT_A2_U09: ItUnitDef = {
       // ------------------------------------------------------------------------------------ L3
       {
         title: 'Posso provare?',
-        objective: 'Comprar ropa: talle y probador.',
+        objective: 'Comprar ropa: talla y probador.',
         intro: {
           explanation:
-            'En una tienda de ropa: posso provare…? (¿puedo probarme…?), che taglia porta? (¿qué talle usa?) e il camerino (el probador). I pantaloni va en plural, como en español «los pantalones».',
+            'En una tienda de ropa: posso provare…? (¿puedo probarme…?), che taglia porta? (¿qué talla usa?) e il camerino (el probador). I pantaloni va en plural, como en español «los pantalones».',
           examples: [
             { target: 'Posso provare questi pantaloni?', base: '¿Puedo probarme este pantalón?' },
             { target: 'Il camerino è lì, a destra.', base: 'El probador está ahí, a la derecha.' },
           ],
         },
-        takeaways: ['Pedís probarte algo con posso provare…?', 'Entendés che taglia porta?'],
+        takeaways: ['Pides probarte algo con posso provare…?', 'Entiendes che taglia porta?'],
         exercises: [
           ex.imageChoice('🧥', 'giacca', ['pantaloni', 'maglietta', 'scarpe'], ['it-giacca'], {
             id: 'it.ex.48tnet1y0ymmkj',
@@ -477,7 +482,7 @@ export const IT_A2_U09: ItUnitDef = {
           ex.imageChoice('👖', 'pantaloni', ['giacca', 'maglietta', 'borsa'], ['it-pantaloni'], {
             id: 'it.ex.ly5so086zh1on7',
           }),
-          ex.translationChoice('taglia', 'talle', ['tajada', 'corte', 'tela'], ['it-taglia'], {
+          ex.translationChoice('taglia', 'talla', ['tajada', 'corte', 'tela'], ['it-taglia'], {
             id: 'it.ex.4bqkv0r3debtx2',
           }),
           ex.listenChoice(
@@ -505,23 +510,23 @@ export const IT_A2_U09: ItUnitDef = {
             'it.ex.2vi0anne45zxqc',
             NEGOZIO,
             '¿Qué busca la clienta?',
-            'Una campera',
-            ['Un pantalón', 'Zapatos', 'Una remera'],
+            'Una chaqueta',
+            ['Un pantalón', 'Zapatos', 'Una camiseta'],
             ['it-giacca', 'it-bellissimo'],
             'La clienta dice: «cerco una giacca. Questa nera è bellissima».',
           ),
           question(
             'it.ex.7l8pj4dzgfqdiu',
             NEGOZIO,
-            '¿Qué problema tiene con la primera campera?',
-            'Le queda un poco ajustada y pide un talle más grande',
+            '¿Qué problema tiene con la primera chaqueta?',
+            'Le queda un poco ajustada y pide una talla más grande',
             ['No le gusta el color', 'Es demasiado cara', 'Le queda grande'],
             ['it-taglia', 'it-provare', 'it-camerino', 'it-sconto'],
             'La clienta dice: «è un po’ stretta. Avete una taglia più grande?».',
           ),
           ex.shortAnswer(
             'Che taglia porta?',
-            '¿Qué talle usa? (Respondé que usás el 40.)',
+            '¿Qué talla usa? (Responde que usas el 40.)',
             'Porto la 40.',
             ['La 40.', 'Porto la quaranta.', 'La quaranta.'],
             ['it-taglia'],
@@ -551,7 +556,7 @@ export const IT_A2_U09: ItUnitDef = {
             { target: 'A luglio ci sono i saldi.', base: 'En julio hay liquidaciones.' },
           ],
         },
-        takeaways: ['Entendés lo sconto y i saldi.', 'Leés un cartel de liquidación.'],
+        takeaways: ['Entiendes lo sconto y i saldi.', 'Lees un cartel de liquidación.'],
         exercises: [
           ex.translationChoice(
             'saldi',
@@ -628,7 +633,7 @@ export const IT_A2_U09: ItUnitDef = {
           ),
           ex.shortAnswer(
             'C’è uno sconto?',
-            '¿Hay descuento? (Respondé que sí, del treinta por ciento.)',
+            '¿Hay descuento? (Responde que sí, del treinta por ciento.)',
             'Sì, del trenta per cento.',
             [
               'Sì, c’è lo sconto del trenta per cento.',
@@ -662,7 +667,7 @@ export const IT_A2_U09: ItUnitDef = {
             },
           ],
         },
-        takeaways: ['Pedís por chilo y por etto.', 'Usás ne con una cantidad.'],
+        takeaways: ['Pides por chilo y por etto.', 'Usas ne con una cantidad.'],
         exercises: [
           ex.translationChoice(
             'un etto',
@@ -739,7 +744,7 @@ export const IT_A2_U09: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Quanti anni hai?',
-            '¿Cuántos años tenés? (Respondé con ne que tenés veinte.)',
+            '¿Cuántos años tienes? (Responde con ne que tienes veinte.)',
             'Ne ho venti.',
             ['Ne ho venti!', 'Ho venti anni.'],
             ['it-ne'],

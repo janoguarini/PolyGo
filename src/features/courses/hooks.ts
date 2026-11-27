@@ -1,19 +1,27 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
+import { AppState } from 'react-native';
 
 import type { CourseDef } from '@shared/courses';
 
 import { useAuth } from '@/features/auth/AuthProvider';
-import { setTargetLanguage, type MyProfile } from '@/features/profile/api';
-import { profileKeys, useMyProfile, useSwitchStudy } from '@/features/profile/hooks';
+import { setTargetLanguage } from '@/features/profile/api';
+import { useMyProfile, useSwitchStudy } from '@/features/profile/hooks';
 import {
   getInterfaceLanguage,
-  isInterfaceLanguage,
   setInterfaceLanguage,
+  setPendingInterfaceLanguage,
+  useInterfaceLanguageHydrated,
+  usePendingInterfaceLanguage,
   type InterfaceLanguage,
 } from '@/i18n';
 
-import { fetchMyCourses, saveInterfaceLanguage, setActiveCourse } from './api';
+import { fetchMyCourses, setActiveCourse } from './api';
+import {
+  chooseInterfaceLanguage,
+  profileLanguageDecision,
+  syncPendingInterfaceLanguage,
+} from './interfaceLanguageSync';
 import { languageStartLevel, type CourseProfile } from './level';
 
 /** Dentro de ['profile']: cambiar de idioma (useSetTargetLanguage) ya invalida ['profile']. */
@@ -60,37 +68,56 @@ export function useLanguageStartLevels(): ((language: string) => string) | undef
  */
 export function useApplyProfileInterfaceLanguage() {
   const me = useMyProfile();
+  const qc = useQueryClient();
+  const { session } = useAuth();
+  const userId = session?.user.id;
+  const hydrated = useInterfaceLanguageHydrated();
+  const pending = usePendingInterfaceLanguage();
+  const profileLoaded = Boolean(me.data);
   const saved = (me.data?.profile as CourseProfile | undefined)?.interface_language;
+  // Cada recarga del perfil (dataUpdatedAt) es una ocasión de reintentar una elección pendiente.
+  const updatedAt = me.dataUpdatedAt;
   useEffect(() => {
-    if (isInterfaceLanguage(saved) && saved !== getInterfaceLanguage()) {
-      void setInterfaceLanguage(saved);
-    }
-  }, [saved]);
+    if (!hydrated || !userId || !profileLoaded) return;
+    const decision = profileLanguageDecision({
+      saved,
+      userId,
+      current: getInterfaceLanguage(),
+      pending,
+    });
+    if (decision.action === 'discard-pending') void setPendingInterfaceLanguage(null);
+    else if (decision.action === 'sync') void syncPendingInterfaceLanguage({ userId, qc });
+    else if (decision.action === 'apply') void setInterfaceLanguage(decision.lang);
+  }, [hydrated, userId, profileLoaded, saved, pending, updatedAt, qc]);
+
+  // Al volver la app a primer plano (p. ej. con conexión otra vez), reintenta sin esperar.
+  useEffect(() => {
+    if (!userId) return;
+    const sub = AppState.addEventListener('change', (state) => {
+      if (state === 'active') void syncPendingInterfaceLanguage({ userId, qc, force: true });
+    });
+    return () => sub.remove();
+  }, [userId, qc]);
+}
+
+/** Elección manual del idioma de la interfaz para la cuenta actual (ver interfaceLanguageSync.ts). */
+export function useChooseInterfaceLanguage() {
+  const qc = useQueryClient();
+  const { session } = useAuth();
+  const userId = session?.user.id;
+  return useCallback(
+    (language: InterfaceLanguage) => chooseInterfaceLanguage(language, { userId, qc }),
+    [userId, qc],
+  );
 }
 
 /**
- * Cambia el idioma de la interfaz: al instante en el dispositivo y en el perfil en caché, y después en
- * la base (si la migración no está aplicada, queda sólo en el dispositivo). El caché se actualiza antes
- * para que useApplyProfileInterfaceLanguage no vuelva al valor anterior mientras responde el servidor.
+ * Cambia el idioma de la interfaz desde Ajustes: al instante en el dispositivo y después en la base.
+ * Nunca falla: si la base no responde o no lo acepta, la elección queda pendiente y se reintenta.
  */
 export function useChangeInterfaceLanguage() {
-  const qc = useQueryClient();
-  const { session } = useAuth();
-  const key = profileKeys.me(session?.user.id ?? 'anonymous');
-  return useMutation({
-    mutationFn: async (language: InterfaceLanguage) => {
-      await setInterfaceLanguage(language);
-      const cached = qc.getQueryData<MyProfile>(key);
-      // Sólo si el perfil ya tiene la columna (migración aplicada).
-      if (cached && 'interface_language' in cached.profile) {
-        qc.setQueryData<MyProfile>(key, {
-          ...cached,
-          profile: { ...cached.profile, interface_language: language } as MyProfile['profile'],
-        });
-      }
-      return saveInterfaceLanguage(language);
-    },
-  });
+  const choose = useChooseInterfaceLanguage();
+  return useMutation({ mutationFn: (language: InterfaceLanguage) => choose(language) });
 }
 
 /**

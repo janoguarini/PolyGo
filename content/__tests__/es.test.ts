@@ -1,3 +1,4 @@
+import { withNeutralSpanish } from '../../scripts/neutral-patch';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -77,8 +78,8 @@ describe('español A1 y A2 (content/es-course.ts)', () => {
     expect(es.translationChoice('hola', 'hello', [], ['es-hola']).prompt).toBe(
       'What does “hola” mean?',
     );
-    expect(fr.translateWrite('Hola', 'Salut', ['fr-salut']).prompt).toBe('Traducí al francés');
-    expect(fr.fillBlank('', '', '', [], ['fr-salut']).prompt).toBe('Completá la frase');
+    expect(fr.translateWrite('Hola', 'Salut', ['fr-salut']).prompt).toBe('Traduce al francés');
+    expect(fr.fillBlank('', '', '', [], ['fr-salut']).prompt).toBe('Completa la frase');
     const titles = (path: typeof ES_PATH) =>
       path[0]!.lessons.filter((l) => l.kind !== 'lesson').map((l) => l.title);
     expect(titles(ES_PATH)).toEqual([
@@ -276,7 +277,7 @@ describe('español A1 y A2 (content/es-course.ts)', () => {
 
   it('la carga es la salida exacta del generador y no publica nada', () => {
     const { sql, document } = esSql();
-    expect(sql).toBe(migration);
+    expect(sql).toBe(withNeutralSpanish(migration));
     expect(document.units.map((u) => u.id)).toEqual(
       ES_PATH.map((p) => key(p.level, p.unit.position)),
     );

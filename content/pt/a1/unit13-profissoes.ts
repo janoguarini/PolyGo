@@ -57,7 +57,7 @@ export const PT_A1_U13: PtUnitDef = {
       'Nós, eles, elas, vocês y a gente; ser y los verbos en -ar en plural; nosso y nossa; profesiones y lugares de trabajo.',
     emoji: '💼',
     objective:
-      'Podés decir a qué te dedicás vos y otras personas, hablar en plural (nós trabalhamos, eles trabalham) y usar a gente como en Brasil.',
+      'Puedes decir a qué te dedicas tú y otras personas, hablar en plural (nós trabalhamos, eles trabalham) y usar a gente como en Brasil.',
     grammar: {
       title: 'Pronombres plurales · ser y -ar en plural',
       explanation:
@@ -104,7 +104,7 @@ export const PT_A1_U13: PtUnitDef = {
         'trabalhamos',
         'trabajamos',
         'Nós trabalhamos de manhã.',
-        'Trabajamos a la mañana.',
+        'Trabajamos por la mañana.',
         ['verbs', 'work'],
       ),
       w(
@@ -112,7 +112,7 @@ export const PT_A1_U13: PtUnitDef = {
         'trabalham',
         'trabajan',
         'Eles trabalham à noite.',
-        'Ellos trabajan a la noche.',
+        'Ellos trabajan por la noche.',
         ['verbs', 'work'],
       ),
       w('pt-nosso', 'nosso', 'nuestro', 'O nosso cachorro é preto.', 'Nuestro perro es negro.', [
@@ -124,11 +124,19 @@ export const PT_A1_U13: PtUnitDef = {
       w(
         'pt-o-que-voce-faz',
         'o que você faz?',
-        '¿a qué te dedicás?',
+        '¿a qué te dedicas?',
         'O que você faz? — Sou professora.',
-        '¿A qué te dedicás? — Soy profesora.',
+        '¿A qué te dedicas? — Soy profesora.',
         ['work', 'questions'],
-        { acceptedTranslations: ['¿qué hacés?', '¿de qué trabajás?'] },
+        {
+          acceptedTranslations: [
+            '¿qué hacés?',
+            '¿de qué trabajás?',
+            '¿a qué te dedicás?',
+            '¿qué haces?',
+            '¿de qué trabajas?',
+          ],
+        },
       ),
       w('pt-medico', 'médico', 'médico', 'Meu pai é médico.', 'Mi papá es médico.', ['work'], {
         acceptedTexts: ['médica'],
@@ -156,13 +164,13 @@ export const PT_A1_U13: PtUnitDef = {
       w(
         'pt-garcom',
         'garçom',
-        'mozo',
+        'mesero',
         'O garçom é muito legal.',
-        'El mozo es muy buena onda.',
+        'El mesero es muy simpático.',
         ['work', 'food'],
         {
           acceptedTexts: ['garçonete'],
-          acceptedTranslations: ['camarero', 'mesero', 'moza'],
+          acceptedTranslations: ['camarero', 'mesero', 'moza', 'mozo'],
           emoji: '🤵',
         },
       ),
@@ -180,7 +188,7 @@ export const PT_A1_U13: PtUnitDef = {
         'motorista',
         'conductor / chofer',
         'Meu pai é motorista de ônibus.',
-        'Mi papá es chofer de colectivo.',
+        'Mi papá es chofer de autobús.',
         ['work', 'transport'],
         { acceptedTranslations: ['conductor', 'chofer', 'conductora'], emoji: '🚌' },
       ),
@@ -207,7 +215,7 @@ export const PT_A1_U13: PtUnitDef = {
             { target: 'Elas são brasileiras.', base: 'Ellas son brasileñas.' },
           ],
         },
-        takeaways: ['Usás nós, eles, elas y vocês.', 'Conjugás ser en plural: somos, são.'],
+        takeaways: ['Usas nós, eles, elas y vocês.', 'Conjugas ser en plural: somos, são.'],
         exercises: [
           ex.translationChoice(
             'eles',
@@ -265,7 +273,7 @@ export const PT_A1_U13: PtUnitDef = {
           }),
           ex.shortAnswer(
             'Vocês são argentinos?',
-            '¿Ustedes son argentinos? (Respondé que sí, que son argentinos.)',
+            '¿Ustedes son argentinos? (Responde que sí, que son argentinos.)',
             'Sim, nós somos argentinos.',
             ['Sim, somos argentinos.', 'Somos argentinos.', 'Nós somos argentinos.', 'Sim, somos.'],
             ['pt-nos', 'pt-somos'],
@@ -285,13 +293,13 @@ export const PT_A1_U13: PtUnitDef = {
           explanation:
             'En plural, los verbos en -ar terminan en -amos (nós) y en -am (eles, elas, vocês): nós trabalhamos, eles trabalham. En Brasil se dice mucho a gente en lugar de nós, con el verbo como ele: a gente trabalha.',
           examples: [
-            { target: 'Nós trabalhamos de manhã.', base: 'Trabajamos a la mañana.' },
+            { target: 'Nós trabalhamos de manhã.', base: 'Trabajamos por la mañana.' },
             { target: 'A gente trabalha em casa.', base: 'Trabajamos en casa.' },
           ],
         },
         takeaways: [
-          'Conjugás -ar en plural: trabalhamos, trabalham.',
-          'Decís «nosotros» como en Brasil: a gente + verbo en singular.',
+          'Conjugas -ar en plural: trabalhamos, trabalham.',
+          'Dices «nosotros» como en Brasil: a gente + verbo en singular.',
         ],
         exercises: [
           ex.translationChoice(
@@ -315,7 +323,7 @@ export const PT_A1_U13: PtUnitDef = {
           ),
           ex.fillBlank(
             'Eles ___ à noite.',
-            'Ellos trabajan a la noche.',
+            'Ellos trabajan por la noche.',
             'trabalham',
             ['trabalhamos', 'trabalho', 'trabalha'],
             ['pt-eles', 'pt-trabalham', 'pt-a-noite'],
@@ -349,7 +357,7 @@ export const PT_A1_U13: PtUnitDef = {
           ),
           ex.orderWords(
             'Elas trabalham de manhã.',
-            'Ellas trabajan a la mañana.',
+            'Ellas trabajan por la mañana.',
             ['pt-elas', 'pt-trabalham'],
             {
               id: 'pt.ex.c87wp40dim86zk',
@@ -357,7 +365,7 @@ export const PT_A1_U13: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Vocês trabalham à noite?',
-            '¿Ustedes trabajan a la noche? (Respondé que no, que trabajan a la mañana.)',
+            '¿Ustedes trabajan por la noche? (Responde que no, que trabajan por la mañana.)',
             'Não, nós trabalhamos de manhã.',
             [
               'Não, trabalhamos de manhã.',
@@ -386,18 +394,18 @@ export const PT_A1_U13: PtUnitDef = {
         objective: 'Preguntar y decir a qué se dedica alguien.',
         intro: {
           explanation:
-            'O que você faz? es «¿a qué te dedicás?». La profesión va sin artículo: sou médico, ela é enfermeira. Muchas tienen femenino en -a: o engenheiro, a engenheira.',
+            'O que você faz? es «¿a qué te dedicas?». La profesión va sin artículo: sou médico, ela é enfermeira. Muchas tienen femenino en -a: o engenheiro, a engenheira.',
           examples: [
             {
               target: 'O que você faz? — Sou engenheira.',
-              base: '¿A qué te dedicás? — Soy ingeniera.',
+              base: '¿A qué te dedicas? — Soy ingeniera.',
             },
             { target: 'Meu pai é médico.', base: 'Mi papá es médico.' },
           ],
         },
         takeaways: [
-          'Preguntás la profesión con o que você faz?',
-          'Decís profesiones sin artículo y en femenino.',
+          'Preguntas la profesión con o que você faz?',
+          'Dices profesiones sin artículo y en femenino.',
         ],
         exercises: [
           ex.imageChoice('🩺', 'médico', ['enfermeiro', 'engenheiro', 'professor'], ['pt-medico'], {
@@ -414,8 +422,8 @@ export const PT_A1_U13: PtUnitDef = {
           ),
           ex.translationChoice(
             'o que você faz?',
-            '¿a qué te dedicás?',
-            ['¿dónde vivís?', '¿cómo te llamás?', '¿de dónde sos?'],
+            '¿a qué te dedicas?',
+            ['¿dónde vives?', '¿cómo te llamas?', '¿de dónde eres?'],
             ['pt-o-que-voce-faz'],
             { id: 'pt.ex.5r2palfdur6879' },
           ),
@@ -446,12 +454,12 @@ export const PT_A1_U13: PtUnitDef = {
             ['pt-enfermeiro', 'pt-engenheiro', 'pt-cozinheiro', 'pt-professor'],
             { id: 'pt.ex.bagsipby3sfvfp' },
           ),
-          ex.orderWords('O que você faz?', '¿A qué te dedicás?', ['pt-o-que-voce-faz'], {
+          ex.orderWords('O que você faz?', '¿A qué te dedicas?', ['pt-o-que-voce-faz'], {
             id: 'pt.ex.97kq5pgp2z4bbm',
           }),
           ex.shortAnswer(
             'O que você faz?',
-            '¿A qué te dedicás? (Respondé que sos estudiante.)',
+            '¿A qué te dedicas? (Responde que eres estudiante.)',
             'Eu sou estudante.',
             ['Sou estudante.', 'Estudante.'],
             ['pt-o-que-voce-faz', 'pt-estudante'],
@@ -474,15 +482,15 @@ export const PT_A1_U13: PtUnitDef = {
         objective: 'Decir dónde trabaja cada uno y evitar falsos amigos.',
         intro: {
           explanation:
-            'Falsos amigos: escritório es la «oficina» (el escritorio, el mueble, es mesa) y motorista es quien maneja un auto o un colectivo. En el restaurante trabajan o garçom / a garçonete (el mozo, la moza) y o cozinheiro.',
+            'Falsos amigos: escritório es la «oficina» (el escritorio, el mueble, es mesa) y motorista es quien maneja un auto o un autobús. En el restaurante trabajan o garçom / a garçonete (el mesero, la mesera) y o cozinheiro.',
           examples: [
             { target: 'Eu trabalho em um escritório.', base: 'Trabajo en una oficina.' },
-            { target: 'Ele é motorista de ônibus.', base: 'Él es chofer de colectivo.' },
+            { target: 'Ele é motorista de ônibus.', base: 'Él es chofer de autobús.' },
           ],
         },
         takeaways: [
-          'Sabés que escritório es «oficina».',
-          'Nombrás trabajos del restaurante y del transporte.',
+          'Sabes que escritório es «oficina».',
+          'Nombras trabajos del restaurante y del transporte.',
         ],
         exercises: [
           ex.translationChoice(
@@ -498,7 +506,7 @@ export const PT_A1_U13: PtUnitDef = {
           ex.translationChoice(
             'motorista',
             'conductor / chofer',
-            ['motociclista', 'mecánico', 'mozo'],
+            ['motociclista', 'mecánico', 'mesero'],
             ['pt-motorista'],
             {
               id: 'pt.ex.voq05pvbxtmet2',
@@ -554,7 +562,7 @@ export const PT_A1_U13: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Onde você trabalha?',
-            '¿Dónde trabajás? (Respondé que en una oficina.)',
+            '¿Dónde trabajas? (Responde que en una oficina.)',
             'Eu trabalho em um escritório.',
             [
               'Trabalho em um escritório.',
@@ -566,7 +574,7 @@ export const PT_A1_U13: PtUnitDef = {
             { id: 'pt.ex.w69ygpsd8w0mdg' },
           ),
           ex.translateWrite(
-            'Él es chofer de colectivo.',
+            'Él es chofer de autobús.',
             'Ele é motorista de ônibus.',
             ['pt-motorista', 'pt-onibus'],
             {
@@ -588,7 +596,7 @@ export const PT_A1_U13: PtUnitDef = {
             { target: 'A nossa família é grande.', base: 'Nuestra familia es grande.' },
           ],
         },
-        takeaways: ['Usás nosso y nossa según la cosa.', 'Entendés una presentación de un grupo.'],
+        takeaways: ['Usas nosso y nossa según la cosa.', 'Entiendes una presentación de un grupo.'],
         exercises: [
           ex.fillBlank(
             'A ___ casa é grande.',
@@ -617,7 +625,7 @@ export const PT_A1_U13: PtUnitDef = {
             PERFIL,
             '¿Qué hacen Rita y Caio?',
             'Caio es cocinero y Rita es moza',
-            ['Los dos son cocineros', 'Rita es cocinera y Caio es mozo', 'Son médicos'],
+            ['Los dos son cocineros', 'Rita es cocinera y Caio es mesero', 'Son médicos'],
             ['pt-cozinheiro', 'pt-garcom'],
             'La publicación dice: «O Caio é cozinheiro e eu sou garçonete».',
           ),
@@ -634,7 +642,7 @@ export const PT_A1_U13: PtUnitDef = {
             'pt.ex.gmulbwiq4zp2zk',
             FAMILIA,
             '¿A qué se dedica el papá de Lucas?',
-            'Es chofer de colectivo',
+            'Es chofer de autobús',
             ['Es médico', 'Es estudiante', 'Es ingeniero'],
             ['pt-motorista'],
             'Lucas dice: «meu pai é motorista de ônibus».',
@@ -658,7 +666,7 @@ export const PT_A1_U13: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Onde vocês moram?',
-            '¿Dónde viven ustedes? (Respondé que viven en Córdoba.)',
+            '¿Dónde viven ustedes? (Responde que viven en Córdoba.)',
             'Nós moramos em Córdoba.',
             ['Moramos em Córdoba.', 'A gente mora em Córdoba.', 'Em Córdoba.'],
             ['pt-nos', 'pt-a-gente'],

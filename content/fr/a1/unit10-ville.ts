@@ -75,11 +75,11 @@ export const FR_A1_U10: FrUnitDef = {
       'Aller en presente; à + le = au, à + les = aux (au cinéma, à la gare); lugares de la ciudad; près de, loin; indicaciones con tournez, allez, prenez. Ils vont / ils sont y liaison nous‿allons. Género distinto: la banque.',
     emoji: '🏙️',
     objective:
-      'Podés decir adónde vas, nombrar los lugares de la ciudad, decir si quedan cerca o lejos y pedir y dar indicaciones simples.',
+      'Puedes decir adónde vas, nombrar los lugares de la ciudad, decir si quedan cerca o lejos y pedir y dar indicaciones simples.',
     grammar: {
       title: 'Aller + à · au, à la, aux',
       explanation:
-        "Aller es irregular: je vais, tu vas, il / elle va, nous allons, vous allez, ils / elles vont. Para decir adónde se usa à, que se contrae con le y les: à + le = au (au cinéma), à + les = aux (aux Galeries Lafayette); con la y l' no cambia (à la gare). Lo mismo con de: de + le = du (près du musée). Para dar indicaciones a alguien que tratás de vous, el imperativo es el mismo verbo sin el pronombre: tournez, allez, prenez. Liaison: nous‿allons y vous‿allez se unen con sonido z.",
+        "Aller es irregular: je vais, tu vas, il / elle va, nous allons, vous allez, ils / elles vont. Para decir adónde se usa à, que se contrae con le y les: à + le = au (au cinéma), à + les = aux (aux Galeries Lafayette); con la y l' no cambia (à la gare). Lo mismo con de: de + le = du (près du musée). Para dar indicaciones a alguien que tratas de vous, el imperativo es el mismo verbo sin el pronombre: tournez, allez, prenez. Liaison: nous‿allons y vous‿allez se unen con sonido z.",
       examples: [
         { target: 'Je vais au cinéma.', base: 'Voy al cine.' },
         { target: 'Nous allons à la gare.', base: 'Vamos a la estación.' },
@@ -198,7 +198,7 @@ export const FR_A1_U10: FrUnitDef = {
         'la boulangerie',
         'la panadería',
         'Le matin, je vais à la boulangerie.',
-        'A la mañana voy a la panadería.',
+        'Por la mañana voy a la panadería.',
         ['places', 'f'],
         { emoji: '🥖' },
       ),
@@ -271,7 +271,7 @@ export const FR_A1_U10: FrUnitDef = {
         'Tournez à droite, ensuite allez tout droit.',
         'Doble a la derecha y después siga derecho.',
         ['directions', 'imperative'],
-        { acceptedTranslations: ['doblá', 'gire'] },
+        { acceptedTranslations: ['doblá', 'gire', 'dobla'] },
       ),
     ],
     lessons: [
@@ -288,8 +288,8 @@ export const FR_A1_U10: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Decís je vais, tu vas, il va.',
-          'Usás au con los masculinos (au cinéma) y à la con los femeninos (à la gare).',
+          'Dices je vais, tu vas, il va.',
+          'Usas au con los masculinos (au cinéma) y à la con los femeninos (à la gare).',
         ],
         exercises: [
           ex.translationChoice('je vais', 'voy', ['vas', 'él va', 'trabajo'], ['fr-je-vais'], {
@@ -367,7 +367,7 @@ export const FR_A1_U10: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Tu vas au cinéma demain?',
-            '¿Vas al cine mañana? (Respondé que sí.)',
+            '¿Vas al cine mañana? (Responde que sí.)',
             'Oui, je vais au cinéma demain.',
             ['Oui, demain, je vais au cinéma.', 'Oui, je vais au cinéma.'],
             ['fr-je-vais', 'fr-le-cinema'],
@@ -389,8 +389,8 @@ export const FR_A1_U10: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Conjugás nous allons, vous allez, ils vont.',
-          'Distinguís ils vont de ils sont y usás aux con los plurales.',
+          'Conjugas nous allons, vous allez, ils vont.',
+          'Distingues ils vont de ils sont y usas aux con los plurales.',
         ],
         exercises: [
           ex.translationChoice(
@@ -441,7 +441,7 @@ export const FR_A1_U10: FrUnitDef = {
           ),
           ex.fillBlank(
             'Le matin, je vais ___ boulangerie.',
-            'A la mañana voy a la panadería.',
+            'Por la mañana voy a la panadería.',
             'à la',
             ['au', 'à le', 'aux'],
             ['fr-la-boulangerie'],
@@ -464,8 +464,8 @@ export const FR_A1_U10: FrUnitDef = {
             'fr.ex.jc9w8lnk8bs243',
             SAMEDI,
             '¿Cuándo van Marc y Julie al supermercado?',
-            'Los sábados a la mañana.',
-            ['Los domingos.', 'Hoy a la tarde.', 'Mañana a la noche.'],
+            'Los sábados por la mañana.',
+            ['Los domingos.', 'Hoy por la tarde.', 'Mañana por la noche.'],
             ['fr-ils-vont', 'fr-le-supermarche'],
             'Paul dice «Ils vont au supermarché le samedi matin».',
           ),
@@ -477,7 +477,7 @@ export const FR_A1_U10: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Vous allez où samedi?',
-            '¿Adónde van el sábado? (Respondé que van a la panadería.)',
+            '¿Adónde van el sábado? (Responde que van a la panadería.)',
             'Nous allons à la boulangerie.',
             [
               'On va à la boulangerie.',
@@ -506,8 +506,8 @@ export const FR_A1_U10: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Decís la banque y le musée con el género correcto.',
-          'Ubicás un lugar con près de, du y loin.',
+          'Dices la banque y le musée con el género correcto.',
+          'Ubicas un lugar con près de, du y loin.',
         ],
         exercises: [
           ex.translationChoice(
@@ -597,7 +597,7 @@ export const FR_A1_U10: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Le musée est loin?',
-            '¿El museo queda lejos? (Respondé que no, que está cerca de la estación.)',
+            '¿El museo queda lejos? (Responde que no, que está cerca de la estación.)',
             'Non, il est près de la gare.',
             ["Non, c'est près de la gare.", 'Non, le musée est près de la gare.'],
             ['fr-pres-de', 'fr-loin'],
@@ -612,7 +612,7 @@ export const FR_A1_U10: FrUnitDef = {
         objective: 'Dar indicaciones simples con el imperativo.',
         intro: {
           explanation:
-            'Para indicar el camino a alguien que tratás de vous se usa el imperativo, que es el verbo sin el pronombre: tournez (doble), allez (vaya), prenez (tome). Con à gauche (a la izquierda), à droite (a la derecha) y tout droit (derecho). Ojo: en tout droit la t final no suena; en à droite, sí, porque va seguida de e.',
+            'Para indicar el camino a alguien que tratas de vous se usa el imperativo, que es el verbo sin el pronombre: tournez (doble), allez (vaya), prenez (tome). Con à gauche (a la izquierda), à droite (a la derecha) y tout droit (derecho). Ojo: en tout droit la t final no suena; en à droite, sí, porque va seguida de e.',
           examples: [
             { target: 'Allez tout droit.', base: 'Vaya derecho.' },
             {
@@ -623,7 +623,7 @@ export const FR_A1_U10: FrUnitDef = {
         },
         takeaways: [
           'Das indicaciones con tournez, allez y prenez.',
-          'Distinguís tout droit (derecho) de à droite (a la derecha).',
+          'Distingues tout droit (derecho) de à droite (a la derecha).',
         ],
         exercises: [
           ex.translationChoice(
@@ -706,7 +706,7 @@ export const FR_A1_U10: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Pardon, la gare, s'il vous plaît?",
-            'Disculpe, ¿la estación, por favor? (Indicale que vaya derecho.)',
+            'Disculpe, ¿la estación, por favor? (Indícale que vaya derecho.)',
             'Allez tout droit.',
             ['Tout droit.'],
             ['fr-tout-droit'],
@@ -734,8 +734,8 @@ export const FR_A1_U10: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Pedís una indicación con pardon y s'il vous plaît.",
-          'Entendés y das un camino corto con ensuite.',
+          "Pides una indicación con pardon y s'il vous plaît.",
+          'Entiendes y das un camino corto con ensuite.',
         ],
         exercises: [
           ex.listenChoice(
@@ -822,7 +822,7 @@ export const FR_A1_U10: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Où est le supermarché, s'il vous plaît?",
-            '¿Dónde está el supermercado, por favor? (Indicale que doble a la derecha y después siga derecho.)',
+            '¿Dónde está el supermercado, por favor? (Indícale que doble a la derecha y después siga derecho.)',
             'Tournez à droite, ensuite allez tout droit.',
             [
               'Tournez à droite et allez tout droit.',

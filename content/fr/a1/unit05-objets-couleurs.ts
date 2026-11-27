@@ -48,15 +48,15 @@ export const FR_A1_U05: FrUnitDef = {
       "Objetos de todos los días con c'est / ce sont, un / une / des y le / la / les; los colores y la concordancia (vert / verte). La s del plural no suena.",
     emoji: '🎨',
     objective:
-      'Podés nombrar objetos, preguntar qué es algo, decir de qué color es y describirlo con chico o grande.',
+      'Puedes nombrar objetos, preguntar qué es algo, decir de qué color es y describirlo con chico o grande.',
     grammar: {
       title: "Artículos · c'est / ce sont · el color después del sustantivo",
       explanation:
-        "Cada sustantivo tiene género: un / le con masculinos, une / la con femeninos, l' delante de vocal y des / les en plural. A veces el género no coincide con el español: la couleur (el color), le stylo (la birome). Para nombrar algo: c'est + un / une (singular) y ce sont + des (plural); se pregunta qu'est-ce que c'est? El color va después del sustantivo y concuerda: un sac vert, une chaise verte, des chaises vertes. Petit y grand van antes: un petit livre, une grande table. La s del plural no suena: livre y livres se dicen igual, la diferencia se oye en le / les.",
+        "Cada sustantivo tiene género: un / le con masculinos, une / la con femeninos, l' delante de vocal y des / les en plural. A veces el género no coincide con el español: la couleur (el color), le stylo (el bolígrafo). Para nombrar algo: c'est + un / une (singular) y ce sont + des (plural); se pregunta qu'est-ce que c'est? El color va después del sustantivo y concuerda: un sac vert, une chaise verte, des chaises vertes. Petit y grand van antes: un petit livre, une grande table. La s del plural no suena: livre y livres se dicen igual, la diferencia se oye en le / les.",
       examples: [
         {
           target: "Qu'est-ce que c'est? — C'est un stylo.",
-          base: '¿Qué es esto? — Es una birome.',
+          base: '¿Qué es esto? — Es un bolígrafo.',
         },
         { target: 'Ce sont des clés.', base: 'Son llaves.' },
         { target: "C'est une petite table blanche.", base: 'Es una mesa chica y blanca.' },
@@ -65,7 +65,7 @@ export const FR_A1_U05: FrUnitDef = {
     review: {
       status: 'draft',
       notes:
-        "A1 nuevo (U5). Sin revisión nativa: revisar «birome» como traducción de stylo, el uso de c'est bleu como respuesta a de quelle couleur…? y el anuncio de venta.",
+        "A1 nuevo (U5). Sin revisión nativa: revisar «bolígrafo» como traducción de stylo, el uso de c'est bleu como respuesta a de quelle couleur…? y el anuncio de venta.",
     },
     words: [
       w('fr-c-est', "c'est", 'esto es', "C'est mon sac.", 'Es mi bolso.', ['basics'], {
@@ -106,11 +106,11 @@ export const FR_A1_U05: FrUnitDef = {
       w(
         'fr-le-stylo',
         'le stylo',
-        'la birome',
+        'el bolígrafo',
         'Le stylo est bleu.',
-        'La birome es azul.',
+        'El bolígrafo es azul.',
         ['objects', 'm'],
-        { acceptedTranslations: ['la lapicera', 'el bolígrafo'], emoji: '🖊️' },
+        { acceptedTranslations: ['la lapicera', 'la birome'], emoji: '🖊️' },
       ),
       w(
         'fr-le-sac',
@@ -183,7 +183,7 @@ export const FR_A1_U05: FrUnitDef = {
         'noir',
         'negro',
         'Ce sont des stylos noirs.',
-        'Son biromes negras.',
+        'Son bolígrafos negros.',
         ['colors'],
         {
           acceptedTranslations: ['negra'],
@@ -234,7 +234,7 @@ export const FR_A1_U05: FrUnitDef = {
         objective: "Nombrar objetos con c'est un / une y preguntar qué es algo.",
         intro: {
           explanation:
-            "Para nombrar un objeto: c'est + un / une + sustantivo. Un va con los masculinos y une con los femeninos, y el género no siempre coincide con el español: le stylo es masculino (la birome). Para preguntar: qu'est-ce que c'est? En qu'est-ce que c'est la s de est no suena: se dice todo en un solo bloque. Ojo: para presentar un objeto no se usa il est (nunca «il est un stylo»).",
+            "Para nombrar un objeto: c'est + un / une + sustantivo. Un va con los masculinos y une con los femeninos, y el género no siempre coincide con el español: le stylo es masculino (el bolígrafo). Para preguntar: qu'est-ce que c'est? En qu'est-ce que c'est la s de est no suena: se dice todo en un solo bloque. Ojo: para presentar un objeto no se usa il est (nunca «il est un stylo»).",
           examples: [
             {
               target: "Qu'est-ce que c'est? — C'est un sac.",
@@ -244,14 +244,14 @@ export const FR_A1_U05: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Nombrás objetos con c'est un o c'est une.",
-          "Preguntás qué es algo con qu'est-ce que c'est?",
+          "Nombras objetos con c'est un o c'est une.",
+          "Preguntas qué es algo con qu'est-ce que c'est?",
         ],
         exercises: [
           ex.translationChoice(
             'le livre',
             'el libro',
-            ['la llave', 'el bolso', 'la birome'],
+            ['la llave', 'el bolso', 'el bolígrafo'],
             ['fr-le-livre'],
             { id: 'fr.ex.y74sq9sgtcf9ve' },
           ),
@@ -261,7 +261,7 @@ export const FR_A1_U05: FrUnitDef = {
           ex.matchPairs(
             [
               ['le livre', 'el libro'],
-              ['le stylo', 'la birome'],
+              ['le stylo', 'el bolígrafo'],
               ['le sac', 'el bolso'],
               ['la clé', 'la llave'],
             ],
@@ -288,7 +288,7 @@ export const FR_A1_U05: FrUnitDef = {
           ex.translationChoice(
             "qu'est-ce que c'est?",
             '¿qué es esto?',
-            ['esto es', '¿cómo te llamás?', '¿de dónde sos?'],
+            ['esto es', '¿cómo te llamas?', '¿de dónde eres?'],
             ['fr-qu-est-ce-que-c-est'],
             { id: 'fr.ex.83owt515z557ak' },
           ),
@@ -301,7 +301,7 @@ export const FR_A1_U05: FrUnitDef = {
           ),
           ex.fillBlank(
             '___ un stylo.',
-            'Es una birome.',
+            'Es un bolígrafo.',
             "C'est",
             ['Il est', 'Je suis', 'Tu es'],
             ['fr-c-est', 'fr-le-stylo'],
@@ -316,7 +316,7 @@ export const FR_A1_U05: FrUnitDef = {
           }),
           ex.shortAnswer(
             "Qu'est-ce que c'est? 🔑",
-            '¿Qué es esto? (Respondé que es una llave.)',
+            '¿Qué es esto? (Responde que es una llave.)',
             "C'est une clé.",
             ["C'est une clé!", "C'est la clé."],
             ['fr-c-est', 'fr-la-cle'],
@@ -338,8 +338,8 @@ export const FR_A1_U05: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Elegís le, la, les o des según el género y el número.',
-          "Usás c'est con un objeto y ce sont con varios.",
+          'Eliges le, la, les o des según el género y el número.',
+          "Usas c'est con un objeto y ce sont con varios.",
         ],
         exercises: [
           ex.translationChoice(
@@ -401,14 +401,14 @@ export const FR_A1_U05: FrUnitDef = {
           ),
           ex.fillBlank(
             'Ce sont ___ stylos.',
-            'Son biromes.',
+            'Son bolígrafos.',
             'des',
             ['un', 'une', 'le'],
             ['fr-ce-sont', 'fr-le-stylo'],
             {
               id: 'fr.ex.dml5da44ht2e3s',
               explanation:
-                'El plural de un / une es des. En español no se dice («son biromes»), pero en francés no se puede omitir.',
+                'El plural de un / une es des. En español no se dice («son bolígrafos»), pero en francés no se puede omitir.',
             },
           ),
           ex.orderWords(
@@ -422,7 +422,7 @@ export const FR_A1_U05: FrUnitDef = {
           }),
           ex.shortAnswer(
             "Qu'est-ce que c'est? 🔑🔑",
-            '¿Qué es esto? (Respondé que son llaves.)',
+            '¿Qué es esto? (Responde que son llaves.)',
             'Ce sont des clés.',
             ['Ce sont des clés!'],
             ['fr-ce-sont', 'fr-la-cle'],
@@ -447,8 +447,8 @@ export const FR_A1_U05: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Ponés el color después del sustantivo.',
-          'Preguntás el color con de quelle couleur est…?',
+          'Pones el color después del sustantivo.',
+          'Preguntas el color con de quelle couleur est…?',
         ],
         exercises: [
           ex.imageChoice('🔴', 'rouge', ['vert', 'bleu', 'jaune'], ['fr-rouge'], {
@@ -515,7 +515,7 @@ export const FR_A1_U05: FrUnitDef = {
           ),
           ex.shortAnswer(
             'De quelle couleur est ton sac?',
-            '¿De qué color es tu bolso? (Respondé que es azul.)',
+            '¿De qué color es tu bolso? (Responde que es azul.)',
             'Il est bleu.',
             ['Mon sac est bleu.', "C'est bleu.", 'Bleu.'],
             ['fr-bleu', 'fr-la-couleur'],
@@ -530,15 +530,15 @@ export const FR_A1_U05: FrUnitDef = {
         objective: 'Hacer concordar el color y el tamaño con el sustantivo.',
         intro: {
           explanation:
-            'Los adjetivos concuerdan: + e en femenino y + s en plural (un sac vert, une chaise verte, des chaises vertes). Blanc es irregular: blanche. Escuchá la diferencia: en vert, petit y grand la consonante final no suena, pero en verte, petite y grande sí. En noir / noire y bleu / bleue no se oye ningún cambio. Petit y grand van antes del sustantivo: un petit livre, une grande table.',
+            'Los adjetivos concuerdan: + e en femenino y + s en plural (un sac vert, une chaise verte, des chaises vertes). Blanc es irregular: blanche. Escucha la diferencia: en vert, petit y grand la consonante final no suena, pero en verte, petite y grande sí. En noir / noire y bleu / bleue no se oye ningún cambio. Petit y grand van antes del sustantivo: un petit livre, une grande table.',
           examples: [
             { target: 'La table est blanche.', base: 'La mesa es blanca.' },
             { target: "C'est un petit livre vert.", base: 'Es un libro verde chico.' },
           ],
         },
         takeaways: [
-          'Hacés concordar el adjetivo: vert, verte, verts, vertes.',
-          'Ponés petit y grand antes del sustantivo y el color después.',
+          'Haces concordar el adjetivo: vert, verte, verts, vertes.',
+          'Pones petit y grand antes del sustantivo y el color después.',
         ],
         exercises: [
           ex.translationChoice('blanc', 'blanco', ['negro', 'amarillo', 'azul'], ['fr-blanc'], {
@@ -621,7 +621,7 @@ export const FR_A1_U05: FrUnitDef = {
             { id: 'fr.ex.iqrxxb0dgvur0m' },
           ),
           ex.translateWrite(
-            'Tengo una birome verde.',
+            'Tengo un bolígrafo verde.',
             "J'ai un stylo vert.",
             ['fr-vert', 'fr-le-stylo'],
             {
@@ -638,15 +638,15 @@ export const FR_A1_U05: FrUnitDef = {
         objective: 'Entender y describir objetos con su color y su tamaño.',
         intro: {
           explanation:
-            "Ya podés describir objetos completos: artículo + (petit / grand) + sustantivo + color, con concordancia. Una table blanche, des chaises noires, un grand sac rouge. Recordá que la s del plural no suena: para saber si es uno o varios, escuchá el artículo (le / les, un / des) y c'est / ce sont.",
+            "Ya puedes describir objetos completos: artículo + (petit / grand) + sustantivo + color, con concordancia. Una table blanche, des chaises noires, un grand sac rouge. Recuerda que la s del plural no suena: para saber si es uno o varios, escucha el artículo (le / les, un / des) y c'est / ce sont.",
           examples: [
             { target: 'Un grand sac rouge.', base: 'Un bolso rojo grande.' },
             { target: 'Ce sont des clés jaunes.', base: 'Son llaves amarillas.' },
           ],
         },
         takeaways: [
-          'Describís un objeto con su tamaño y su color.',
-          'Distinguís singular y plural por el artículo, no por la s.',
+          'Describes un objeto con su tamaño y su color.',
+          'Distingues singular y plural por el artículo, no por la s.',
         ],
         exercises: [
           question(
@@ -722,7 +722,7 @@ export const FR_A1_U05: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Qu'est-ce que c'est? 📕",
-            '¿Qué es esto? (Respondé que es un libro rojo.)',
+            '¿Qué es esto? (Responde que es un libro rojo.)',
             "C'est un livre rouge.",
             ["C'est un livre rouge!", "C'est le livre rouge."],
             ['fr-c-est', 'fr-le-livre', 'fr-rouge'],

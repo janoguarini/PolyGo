@@ -85,7 +85,7 @@ export const PT_A2_U06: PtUnitDef = {
       'El futuro próximo (vou + verbo), invitar, aceptar y rechazar como en Brasil (topa?, bora!, que pena, combinado) y el churrasco.',
     emoji: '🎉',
     objective:
-      'Podés contar tus planes, invitar a alguien, aceptar o rechazar una invitación con cortesía y arreglar día y hora.',
+      'Puedes contar tus planes, invitar a alguien, aceptar o rechazar una invitación con cortesía y arreglar día y hora.',
     grammar: {
       title: 'Futuro próximo: ir + infinitivo',
       explanation:
@@ -125,25 +125,33 @@ export const PT_A2_U06: PtUnitDef = {
       w(
         'pt-topa',
         'topa?',
-        '¿te prendés? / ¿te sumás?',
+        '¿te apuntas? / ¿te sumas?',
         'Vamos à praia amanhã. Topa?',
-        'Vamos a la playa mañana. ¿Te prendés?',
+        'Vamos a la playa mañana. ¿Te apuntas?',
         ['social'],
         {
           acceptedTexts: ['topo', 'topa'],
-          acceptedTranslations: ['¿te sumás?', '¿te prendés?', '¿te animás?'],
+          acceptedTranslations: [
+            '¿te sumás?',
+            '¿te prendés?',
+            '¿te animás?',
+            '¿te prendés? / ¿te sumás?',
+            '¿te sumas?',
+            '¿te apuntas?',
+            '¿te animas?',
+          ],
         },
       ),
       w(
         'pt-bora',
         'bora!',
-        '¡dale! / ¡vamos!',
+        '¡vamos! / ¡de acuerdo!',
         'Cinema hoje? Bora!',
-        '¿Cine hoy? ¡Dale!',
+        '¿Cine hoy? ¡De acuerdo!',
         ['social'],
         {
           acceptedTexts: ['bora'],
-          acceptedTranslations: ['¡dale!', 'dale'],
+          acceptedTranslations: ['¡dale!', 'dale', '¡dale! / ¡vamos!'],
         },
       ),
       w(
@@ -218,7 +226,7 @@ export const PT_A2_U06: PtUnitDef = {
         'com certeza',
         'seguro / claro que sí',
         'Você vem? — Com certeza!',
-        '¿Venís? — ¡Seguro!',
+        '¿Vienes? — ¡Seguro!',
         ['social'],
         {
           acceptedTranslations: ['seguro', 'claro que sí', 'por supuesto'],
@@ -280,8 +288,8 @@ export const PT_A2_U06: PtUnitDef = {
           ],
         },
         takeaways: [
-          'Contás planes con vou + verbo.',
-          'Ubicás el plan: semana que vem, depois de amanhã.',
+          'Cuentas planes con vou + verbo.',
+          'Ubicas el plan: semana que vem, depois de amanhã.',
         ],
         exercises: [
           ex.translationChoice(
@@ -296,7 +304,7 @@ export const PT_A2_U06: PtUnitDef = {
           ex.translationChoice(
             'depois de amanhã',
             'pasado mañana',
-            ['anteayer', 'después del almuerzo', 'mañana a la mañana'],
+            ['anteayer', 'después del almuerzo', 'mañana por la mañana'],
             ['pt-depois-de-amanha'],
             {
               id: 'pt.ex.ujtzrxo38pdlyn',
@@ -322,7 +330,7 @@ export const PT_A2_U06: PtUnitDef = {
           ),
           ex.fillBlank(
             'Vocês ___ sair hoje à noite?',
-            '¿Ustedes van a salir hoy a la noche?',
+            '¿Ustedes van a salir hoy por la noche?',
             'vão',
             ['vai', 'vamos', 'vou'],
             ['pt-vao'],
@@ -344,7 +352,7 @@ export const PT_A2_U06: PtUnitDef = {
           ),
           ex.shortAnswer(
             'O que você vai fazer no fim de semana? (estudar)',
-            '¿Qué vas a hacer el fin de semana? (Respondé que vas a estudiar.)',
+            '¿Qué vas a hacer el fin de semana? (Responde que vas a estudiar.)',
             'Eu vou estudar.',
             ['Vou estudar.', 'No fim de semana eu vou estudar.', 'No fim de semana vou estudar.'],
             ['pt-vou'],
@@ -372,11 +380,11 @@ export const PT_A2_U06: PtUnitDef = {
         objective: 'Invitar a alguien.',
         intro: {
           explanation:
-            'Para invitar: você quer…?, vamos…? o, entre amigos, topa? («¿te prendés?»). Convidar es «invitar» y o convite, «la invitación». El churrasco es el asado brasileño.',
+            'Para invitar: você quer…?, vamos…? o, entre amigos, topa? («¿te apuntas?»). Convidar es «invitar» y o convite, «la invitación». El churrasco es el asado brasileño.',
           examples: [
             {
               target: 'Vou fazer um churrasco no sábado. Topa?',
-              base: 'El sábado hago un asado. ¿Te prendés?',
+              base: 'El sábado hago un asado. ¿Te apuntas?',
             },
             {
               target: 'Eu quero convidar você para a minha festa.',
@@ -384,7 +392,7 @@ export const PT_A2_U06: PtUnitDef = {
             },
           ],
         },
-        takeaways: ['Invitás con topa? o você quer…?', 'Nombrás planes: festa, churrasco.'],
+        takeaways: ['Invitas con topa? o você quer…?', 'Nombras planes: festa, churrasco.'],
         exercises: [
           ex.translationChoice(
             'convite',
@@ -395,8 +403,8 @@ export const PT_A2_U06: PtUnitDef = {
           ),
           ex.translationChoice(
             'topa?',
-            '¿te prendés? / ¿te sumás?',
-            ['¿te gusta?', '¿tocás?', '¿te encontrás?'],
+            '¿te apuntas? / ¿te sumas?',
+            ['¿te gusta?', '¿tocas?', '¿te encuentras?'],
             ['pt-topa'],
             {
               id: 'pt.ex.31dvr64gv3k6di',
@@ -436,7 +444,7 @@ export const PT_A2_U06: PtUnitDef = {
             'pt.ex.9ukpqgww1439kp',
             CONVITE,
             '¿Qué organiza Larissa?',
-            'Una fiesta de cumpleaños en su departamento',
+            'Una fiesta de cumpleaños en su apartamento',
             ['Un asado en el parque', 'Una cena en un restaurante', 'Un viaje'],
             ['pt-festa', 'pt-convite'],
             'Escribe: «sábado que vem é o meu aniversário! Vou fazer uma festa no meu apartamento».',
@@ -452,7 +460,7 @@ export const PT_A2_U06: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Convide um amigo para a praia. (amanhã)',
-            'Invitá a un amigo a la playa mañana.',
+            'Invita a un amigo a la playa mañana.',
             'Vamos à praia amanhã? Topa?',
             [
               'Vamos à praia amanhã?',
@@ -485,15 +493,15 @@ export const PT_A2_U06: PtUnitDef = {
         objective: 'Aceptar una invitación y cerrar el plan.',
         intro: {
           explanation:
-            'Para aceptar: com certeza! («¡seguro!»), bora! (de vamos embora, muy informal: «¡dale!») o eu topo! Para cerrar día y hora: combinado! («¡quedamos así!»). Marcar es «arreglar un encuentro»: vamos marcar um café?',
+            'Para aceptar: com certeza! («¡seguro!»), bora! (de vamos embora, muy informal: «¡vamos!») o eu topo! Para cerrar día y hora: combinado! («¡quedamos así!»). Marcar es «arreglar un encuentro»: vamos marcar um café?',
           examples: [
-            { target: 'Churrasco no sábado? Bora!', base: '¿Asado el sábado? ¡Dale!' },
+            { target: 'Churrasco no sábado? Bora!', base: '¿Asado el sábado? ¡De acuerdo!' },
             { target: 'Sábado às oito? Combinado!', base: '¿Sábado a las ocho? ¡Quedamos así!' },
           ],
         },
         takeaways: [
-          'Aceptás: com certeza, bora, eu topo.',
-          'Cerrás el plan: combinado, vamos marcar.',
+          'Aceptas: com certeza, bora, eu topo.',
+          'Cierras el plan: combinado, vamos marcar.',
         ],
         exercises: [
           ex.translationChoice(
@@ -534,7 +542,7 @@ export const PT_A2_U06: PtUnitDef = {
           ),
           ex.fillBlank(
             'Cinema hoje? ___!',
-            '¿Cine hoy? ¡Dale!',
+            '¿Cine hoy? ¡De acuerdo!',
             'Bora',
             ['Que pena', 'Não posso', 'Outro dia'],
             ['pt-bora'],
@@ -560,17 +568,17 @@ export const PT_A2_U06: PtUnitDef = {
           ),
           ex.matchPairs(
             [
-              ['bora!', '¡dale! / ¡vamos!'],
+              ['bora!', '¡vamos! / ¡de acuerdo!'],
               ['combinado', 'trato hecho / quedamos así'],
               ['com certeza', 'seguro / claro que sí'],
-              ['topa?', '¿te prendés? / ¿te sumás?'],
+              ['topa?', '¿te apuntas? / ¿te sumas?'],
             ],
             ['pt-bora', 'pt-combinado', 'pt-com-certeza', 'pt-topa'],
             { id: 'pt.ex.9z7i3iy3au3fgy' },
           ),
           ex.shortAnswer(
             'Churrasco no domingo, às duas. Você vem?',
-            'Asado el domingo a las dos. ¿Venís? (Aceptá con entusiasmo.)',
+            'Asado el domingo a las dos. ¿Vienes? (Acepta con entusiasmo.)',
             'Com certeza!',
             ['Bora!', 'Com certeza! Combinado.', 'Eu topo!', 'Combinado!', 'Vou, com certeza!'],
             ['pt-com-certeza'],
@@ -603,7 +611,7 @@ export const PT_A2_U06: PtUnitDef = {
             },
           ],
         },
-        takeaways: ['Rechazás con que pena, não posso.', 'Proponés otro día: fica para outro dia.'],
+        takeaways: ['Rechazas con que pena, não posso.', 'Propones otro día: fica para outro dia.'],
         exercises: [
           ex.translationChoice(
             'que pena',
@@ -674,7 +682,7 @@ export const PT_A2_U06: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Vamos ao cinema hoje?',
-            '¿Vamos al cine hoy? (Rechazá: qué lástima, no podés, vas a estudiar.)',
+            '¿Vamos al cine hoy? (Rechaza: qué lástima, no puedes, vas a estudiar.)',
             'Que pena, não posso. Vou estudar.',
             [
               'Que pena, eu não posso. Vou estudar.',
@@ -700,18 +708,18 @@ export const PT_A2_U06: PtUnitDef = {
       // ------------------------------------------------------------------------------------ L5
       {
         title: 'Estou a fim de…',
-        objective: 'Decir que tenés ganas de algo y combinar todo.',
+        objective: 'Decir que tienes ganas de algo y combinar todo.',
         intro: {
           explanation:
             'A fim de es «con ganas de»: estou a fim de sair («tengo ganas de salir»); não estou a fim es una forma informal de decir que no. Con la invitación, la respuesta y el día, el plan está completo.',
           examples: [
             { target: 'Estou a fim de comer uma pizza.', base: 'Tengo ganas de comer una pizza.' },
-            { target: 'Você está a fim de sair hoje?', base: '¿Tenés ganas de salir hoy?' },
+            { target: 'Você está a fim de sair hoje?', base: '¿Tienes ganas de salir hoy?' },
           ],
         },
         takeaways: [
-          'Decís que tenés ganas: estou a fim de…',
-          'Armás un plan completo con día, hora y lugar.',
+          'Dices que tienes ganas: estou a fim de…',
+          'Armas un plan completo con día, hora y lugar.',
         ],
         exercises: [
           ex.translationChoice(
@@ -772,7 +780,7 @@ export const PT_A2_U06: PtUnitDef = {
           }),
           ex.shortAnswer(
             'Você está a fim de jantar fora?',
-            '¿Tenés ganas de cenar afuera? (Aceptá y proponé el sábado.)',
+            '¿Tienes ganas de cenar afuera? (Acepta y propón el sábado.)',
             'Com certeza! Vamos no sábado?',
             [
               'Bora! Vamos no sábado?',

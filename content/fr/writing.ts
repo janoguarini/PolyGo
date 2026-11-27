@@ -17,14 +17,14 @@ import type { WritingRequirement, WritingTaskDef } from '../../shared/writing';
 const common = (minSentences: number): WritingRequirement[] => [
   {
     id: 'sentences',
-    label: `Escribís al menos ${minSentences} oraciones`,
+    label: `Escribes al menos ${minSentences} oraciones`,
     kind: 'min_sentences',
     min: minSentences,
   },
   { id: 'capital', label: 'Cada oración empieza con mayúscula', kind: 'capital_start' },
   {
     id: 'punctuation',
-    label: 'Terminás con punto, signo de exclamación o de pregunta',
+    label: 'Terminas con punto, signo de exclamación o de pregunta',
     kind: 'end_punctuation',
   },
 ];
@@ -128,21 +128,21 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     kind: 'guided',
     codes: [],
     lesson: 'fr-a1-u02-l05',
-    title: 'Presentate',
+    title: 'Preséntate',
     instructions:
-      'Presentate en francés (con datos reales o inventados): saludá, decí cómo te llamás, de dónde sos o dónde vivís y qué idioma hablás.',
+      'Preséntate en francés (con datos reales o inventados): saluda, di cómo te llamas, de dónde eres o dónde vives y qué idioma hablas.',
     prompts: ["Tu t'appelles comment?", "Tu es d'où?"],
     glossary: [{ term: 'Rosario', meaning: 'Rosario (ciudad argentina)' }],
     requirements: [
       {
         id: 'name',
-        label: "Decís cómo te llamás (je m'appelle…)",
+        label: "Dices cómo te llamas (je m'appelle…)",
         kind: 'pattern',
         patterns: [['je', "m'appelle"]],
       },
       {
         id: 'origin',
-        label: "Decís de dónde sos o dónde vivís (je suis de… / j'habite à…)",
+        label: "Dices de dónde eres o dónde vives (je suis de… / j'habite à…)",
         kind: 'pattern',
         patterns: [
           ['je', 'suis', 'de'],
@@ -165,18 +165,18 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     codes: [],
     lesson: 'fr-a1-u04-l05',
     title: 'Tu familia',
-    instructions: 'Presentá a tu familia: quiénes son y cómo se llaman. Usá mon, ma y mes.',
+    instructions: 'Presenta a tu familia: quiénes son y cómo se llaman. Usa mon, ma y mes.',
     prompts: ["Ta mère s'appelle comment?", 'Tu as des frères?'],
     requirements: [
       {
         id: 'possessive',
-        label: 'Usás mon, ma o mes (mon père, ma sœur…)',
+        label: 'Usas mon, ma o mes (mon père, ma sœur…)',
         kind: 'pattern',
         patterns: [['mon|ma|mes', '<WORD>']],
       },
       {
         id: 'name',
-        label: "Decís cómo se llama alguien (il s'appelle… / elle s'appelle…)",
+        label: "Dices cómo se llama alguien (il s'appelle… / elle s'appelle…)",
         kind: 'pattern',
         patterns: [["s'appelle"]],
       },
@@ -197,12 +197,12 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'fr-a1-u06-l05',
     title: 'Tu casa',
     instructions:
-      'Describí tu casa o tu departamento: qué habitaciones tiene y qué hay en cada una.',
+      'Describe tu casa o tu apartamento: qué habitaciones tiene y qué hay en cada una.',
     prompts: ["Qu'est-ce qu'il y a dans la cuisine?", 'Où est le lit?'],
     requirements: [
       {
         id: 'there-is',
-        label: "Decís qué hay con il y a (o il n'y a pas de)",
+        label: "Dices qué hay con il y a (o il n'y a pas de)",
         kind: 'pattern',
         patterns: [
           ['il', 'y', 'a'],
@@ -211,7 +211,7 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'room',
-        label: 'Nombrás una habitación con dans (dans la cuisine, dans ma chambre…)',
+        label: 'Nombras una habitación con dans (dans la cuisine, dans ma chambre…)',
         kind: 'pattern',
         patterns: [
           ['dans', 'la|le|ma|mon|une|un', 'cuisine|chambre|salon|maison|salle'],
@@ -235,18 +235,18 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'fr-a1-u08-l05',
     title: 'Tu día',
     instructions:
-      "Contá un día normal: qué hacés a la mañana, a la tarde y a la noche. Ordená las acciones con d'abord y ensuite.",
+      "Cuenta un día normal: qué haces por la mañana, por la tarde y por la noche. Ordena las acciones con d'abord y ensuite.",
     prompts: ['Le matin, tu bois un café?', 'Le soir, tu regardes la télé?'],
     requirements: [
       {
         id: 'reflexive',
-        label: 'Usás un verbo con me (je me lève, je me couche)',
+        label: 'Usas un verbo con me (je me lève, je me couche)',
         kind: 'pattern',
         patterns: [['me', 'lève|couche']],
       },
       {
         id: 'order',
-        label: "Ordenás con d'abord o ensuite",
+        label: "Ordenas con d'abord o ensuite",
         kind: 'pattern',
         patterns: [["d'abord|ensuite"]],
       },
@@ -267,18 +267,18 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'fr-a1-u11-l05',
     title: 'Tu tiempo libre',
     instructions:
-      "Contá qué te gusta y qué no te gusta hacer en tu tiempo libre. Recordá: j'aime le sport (con artículo).",
+      "Cuenta qué te gusta y qué no te gusta hacer en tu tiempo libre. Recuerda: j'aime le sport (con artículo).",
     prompts: ['Tu aimes le sport?', "Qu'est-ce que tu fais le week-end?"],
     requirements: [
       {
         id: 'likes',
-        label: "Decís qué te gusta (j'aime, j'adore, je préfère, je déteste…)",
+        label: "Dices qué te gusta (j'aime, j'adore, je préfère, je déteste…)",
         kind: 'pattern',
         patterns: [["j'aime|j'adore|aime|adore|préfère|déteste"]],
       },
       {
         id: 'activity',
-        label: 'Contás una actividad con faire o jouer (je fais du sport, je joue au foot…)',
+        label: 'Cuentas una actividad con faire o jouer (je fais du sport, je joue au foot…)',
         kind: 'pattern',
         patterns: [['fais|fait|joue', 'du|de|au']],
       },
@@ -299,18 +299,18 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'fr-a1-u12-l05',
     title: 'En una tienda',
     instructions:
-      'Escribí lo que le decís a un vendedor: qué buscás, preguntá el precio y reaccioná.',
+      'Escribe lo que le dices a un vendedor: qué buscas, pregunta el precio y reacciona.',
     prompts: ['Vous cherchez un sac?', "C'est combien?"],
     requirements: [
       {
         id: 'looking',
-        label: 'Decís qué buscás (je cherche…)',
+        label: 'Dices qué buscas (je cherche…)',
         kind: 'pattern',
         patterns: [['je', 'cherche']],
       },
       {
         id: 'question',
-        label: 'Hacés una pregunta (combien, pourquoi, comment, quel…)',
+        label: 'Haces una pregunta (combien, pourquoi, comment, quel…)',
         kind: 'pattern',
         patterns: [['combien|pourquoi|comment|quel|quelle|qui']],
       },
@@ -328,18 +328,18 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'fr-a1-u13-l05',
     title: 'Tu trabajo',
     instructions:
-      'Contá qué hacés (trabajo o estudio), dónde y cuándo empezás y terminás. Agregá a alguien de tu familia.',
+      'Cuenta qué haces (trabajo o estudio), dónde y cuándo empiezas y terminas. Agrega a alguien de tu familia.',
     prompts: ["Qu'est-ce que tu fais dans la vie?"],
     requirements: [
       {
         id: 'job',
-        label: 'Decís un oficio sin artículo (je suis professeur…)',
+        label: 'Dices un oficio sin artículo (je suis professeur…)',
         kind: 'pattern',
         patterns: [['suis|est|sommes|sont', METIERS]],
       },
       {
         id: 'work',
-        label: 'Decís dónde trabajás o estudiás (je travaille dans… / à…)',
+        label: 'Dices dónde trabajas o estudias (je travaille dans… / à…)',
         kind: 'pattern',
         patterns: [['travaille|travaillons|travaillent', 'dans|à|au|aux|chez']],
       },
@@ -358,20 +358,20 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     kind: 'guided',
     codes: [],
     lesson: 'fr-a1-u14-l05',
-    title: 'Describí a alguien',
+    title: 'Describe a alguien',
     instructions:
-      'Describí a un amigo o a alguien de tu familia: cómo es físicamente y cómo es su carácter.',
+      'Describe a un amigo o a alguien de tu familia: cómo es físicamente y cómo es su carácter.',
     prompts: ['Comment est-il?'],
     requirements: [
       {
         id: 'description',
-        label: 'Describís con il est / elle est + adjetivo',
+        label: 'Describes con il est / elle est + adjetivo',
         kind: 'pattern',
         patterns: [['il|elle', 'est', '<WORD>']],
       },
       {
         id: 'hair-eyes',
-        label: 'Nombrás el pelo o los ojos (il a les cheveux… / les yeux…)',
+        label: 'Nombras el pelo o los ojos (il a les cheveux… / les yeux…)',
         kind: 'pattern',
         patterns: [['les', 'cheveux|yeux']],
       },
@@ -392,18 +392,18 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'fr-a1-u17-l05',
     title: 'Tus planes',
     instructions:
-      'Contá tus planes para el fin de semana o las vacaciones: adónde vas, con quién y en qué medio de transporte.',
+      'Cuenta tus planes para el fin de semana o las vacaciones: adónde vas, con quién y en qué medio de transporte.',
     prompts: ['Tu vas où ce week-end?', 'Tu prends le train?'],
     requirements: [
       {
         id: 'near-future',
-        label: 'Usás aller + infinitivo (je vais visiter…, on va prendre…)',
+        label: 'Usas aller + infinitivo (je vais visiter…, on va prendre…)',
         kind: 'pattern',
         patterns: [['vais|vas|va|allons|allez|vont', INFINITIFS]],
       },
       {
         id: 'transport',
-        label: 'Nombrás un medio de transporte (le train, en voiture, à pied…)',
+        label: 'Nombras un medio de transporte (le train, en voiture, à pied…)',
         kind: 'pattern',
         patterns: [['train|bus|voiture|avion|métro|vélo|pied']],
       },
@@ -427,20 +427,20 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     block: 1,
     title: 'Texto libre: yo',
     instructions:
-      'Escribí un texto libre sobre vos: quién sos, tu familia, tu día, lo que te gusta y tus planes. No hay respuesta correcta: compará con el modelo y revisá la lista.',
+      'Escribe un texto libre sobre ti: quién eres, tu familia, tu día, lo que te gusta y tus planes. No hay respuesta correcta: compara con el modelo y revisa la lista.',
     prompts: ["Tu t'appelles comment?", "Qu'est-ce que tu aimes?", 'Tu vas où ce week-end?'],
     glossary: [{ term: 'Rosario', meaning: 'Rosario (ciudad argentina)' }],
     requirements: [
       {
         id: 'likes',
-        label: "Pista: contá algo que te gusta (j'aime…, j'adore…)",
+        label: "Pista: cuenta algo que te gusta (j'aime…, j'adore…)",
         kind: 'pattern',
         patterns: [["j'aime|j'adore"]],
         optional: true,
       },
       {
         id: 'plans',
-        label: 'Pista: contá un plan (je vais + infinitivo)',
+        label: 'Pista: cuenta un plan (je vais + infinitivo)',
         kind: 'pattern',
         patterns: [['vais|va', INFINITIFS]],
         optional: true,
@@ -465,18 +465,18 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'fr-a2-u01-l05',
     title: 'Tu fin de semana',
     instructions:
-      'Contá qué hiciste el fin de semana pasado: qué hiciste cada día y con quién. Usá el passé composé con avoir.',
+      'Cuenta qué hiciste el fin de semana pasado: qué hiciste cada día y con quién. Usa el passé composé con avoir.',
     prompts: ["Qu'est-ce que tu as fait samedi?", 'Et dimanche?'],
     requirements: [
       {
         id: 'past',
-        label: "Usás el passé composé con avoir (j'ai mangé, j'ai vu…)",
+        label: "Usas el passé composé con avoir (j'ai mangé, j'ai vu…)",
         kind: 'pattern',
         patterns: [["j'ai|ai|as|a|avons|avez|ont", PARTICIPES_AVOIR]],
       },
       {
         id: 'time',
-        label: 'Ubicás los hechos en el tiempo (samedi, dimanche, hier, le soir…)',
+        label: 'Ubicas los hechos en el tiempo (samedi, dimanche, hier, le soir…)',
         kind: 'pattern',
         patterns: [['samedi|dimanche|hier|soir|matin|après-midi|week-end']],
       },
@@ -497,7 +497,7 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'fr-a2-u02-l05',
     title: 'Un viaje',
     instructions:
-      'Contá un viaje que hiciste: adónde fuiste, cuándo saliste y llegaste, cuánto te quedaste. Usá être con los verbos de movimiento.',
+      'Cuenta un viaje que hiciste: adónde fuiste, cuándo saliste y llegaste, cuánto te quedaste. Usa être con los verbos de movimiento.',
     prompts: ['Tu es allé où?', 'Tu es resté combien de temps?'],
     glossary: [
       { term: 'Buenos Aires', meaning: 'Buenos Aires' },
@@ -506,13 +506,13 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     requirements: [
       {
         id: 'etre',
-        label: 'Usás être + participio (je suis allé, je suis arrivée…)',
+        label: 'Usas être + participio (je suis allé, je suis arrivée…)',
         kind: 'pattern',
         patterns: [['suis|es|est|sommes|êtes|sont', PARTICIPES_ETRE]],
       },
       {
         id: 'ago',
-        label: 'Decís cuándo fue (il y a…, hier, le week-end dernier…)',
+        label: 'Dices cuándo fue (il y a…, hier, le week-end dernier…)',
         kind: 'pattern',
         patterns: [['il', 'y', 'a'], ['hier'], ['dernier|dernière']],
       },
@@ -533,18 +533,18 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'fr-a2-u03-l05',
     title: 'Reservar un hotel',
     instructions:
-      'Escribile al hotel para reservar una habitación: para cuántas noches, cómo la querés y una pregunta amable.',
+      'Escríbele al hotel para reservar una habitación: para cuántas noches, cómo la quieres y una pregunta amable.',
     prompts: ['Pour combien de nuits?'],
     requirements: [
       {
         id: 'polite',
-        label: "Pedís con cortesía (je voudrais, j'aimerais, pourriez-vous…)",
+        label: "Pides con cortesía (je voudrais, j'aimerais, pourriez-vous…)",
         kind: 'pattern',
         patterns: [["voudrais|j'aimerais|pourrais|pourriez-vous|pourriez"]],
       },
       {
         id: 'book',
-        label: 'Decís qué querés reservar (réserver une chambre…)',
+        label: 'Dices qué quieres reservar (réserver une chambre…)',
         kind: 'pattern',
         patterns: [['réserver']],
       },
@@ -565,12 +565,12 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'fr-a2-u04-l05',
     title: 'Cuando eras chico',
     instructions:
-      'Contá cómo era tu vida cuando eras chico: dónde vivías, cómo era el lugar y qué hacías siempre. Usá el imparfait.',
+      'Cuenta cómo era tu vida cuando eras chico: dónde vivías, cómo era el lugar y qué hacías siempre. Usa el imparfait.',
     prompts: ['Quand tu étais petit, tu habitais où?', "Qu'est-ce que tu faisais d'habitude?"],
     requirements: [
       {
         id: 'imparfait',
-        label: "Usás el imparfait (j'étais, j'habitais, il y avait, je jouais…)",
+        label: "Usas el imparfait (j'étais, j'habitais, il y avait, je jouais…)",
         kind: 'pattern',
         patterns: [
           [
@@ -580,7 +580,7 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'habit',
-        label: "Marcás la costumbre (d'habitude, quand, avant, chaque…)",
+        label: "Marcas la costumbre (d'habitude, quand, avant, chaque…)",
         kind: 'pattern',
         patterns: [["d'habitude|quand|avant|chaque"]],
       },
@@ -601,24 +601,24 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'fr-a2-u05-l05',
     title: '¿Qué pasó?',
     instructions:
-      'Contá algo que te pasó: describí la escena con el imparfait y los hechos con el passé composé. Usá un conector como soudain.',
+      'Cuenta algo que te pasó: describe la escena con el imparfait y los hechos con el passé composé. Usa un conector como soudain.',
     prompts: ["Qu'est-ce qui s'est passé?"],
     requirements: [
       {
         id: 'scene',
-        label: 'Describís la escena en imparfait (il pleuvait, je rentrais…)',
+        label: 'Describes la escena en imparfait (il pleuvait, je rentrais…)',
         kind: 'pattern',
         patterns: [['pleuvait|rentrais|dormais|regardais|faisait|était|étais|avait']],
       },
       {
         id: 'event',
-        label: "Contás el hecho en passé composé (quelqu'un a volé…, j'ai perdu…)",
+        label: "Cuentas el hecho en passé composé (quelqu'un a volé…, j'ai perdu…)",
         kind: 'pattern',
         patterns: [["j'ai|ai|a|avons|ont", PARTICIPES_AVOIR + '|volé']],
       },
       {
         id: 'connector',
-        label: 'Usás un conector (soudain, tout à coup, alors, heureusement…)',
+        label: 'Usas un conector (soudain, tout à coup, alors, heureusement…)',
         kind: 'pattern',
         patterns: [['soudain|alors|heureusement|malheureusement'], ['tout', 'à', 'coup']],
       },
@@ -639,18 +639,18 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'fr-a2-u06-l05',
     title: 'Una invitación',
     instructions:
-      'Escribile a un amigo para invitarlo a una fiesta: cuándo es, qué va a haber y dónde se encuentran.',
+      'Escríbele a un amigo para invitarlo a una fiesta: cuándo es, qué va a haber y dónde se encuentran.',
     prompts: ['Ça te dit de venir samedi?'],
     requirements: [
       {
         id: 'invite',
-        label: "Invitás (ça te dit de…? / je t'invite…)",
+        label: "Invitas (ça te dit de…? / je t'invite…)",
         kind: 'pattern',
         patterns: [['ça', 'te', 'dit'], ["t'invite"], ['inviter']],
       },
       {
         id: 'future',
-        label: 'Usás el futuro (je ferai, il y aura, ce sera…)',
+        label: 'Usas el futuro (je ferai, il y aura, ce sera…)',
         kind: 'pattern',
         patterns: [['ferai|serai|viendrai|irai|aura|sera|viendra']],
       },
@@ -671,18 +671,18 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'fr-a2-u07-l05',
     title: 'Pedir una pasantía',
     instructions:
-      'Escribile a una empresa para pedir una pasantía: presentate, contá qué estudiás desde cuándo y qué querés hacer.',
+      'Escríbele a una empresa para pedir una pasantía: preséntate, cuenta qué estudias desde cuándo y qué quieres hacer.',
     prompts: ['Tu fais un stage depuis quand?'],
     requirements: [
       {
         id: 'modal',
-        label: 'Usás devoir, pouvoir o vouloir (je veux, je peux, je dois…)',
+        label: 'Usas devoir, pouvoir o vouloir (je veux, je peux, je dois…)',
         kind: 'pattern',
         patterns: [['dois|peux|veux|faut']],
       },
       {
         id: 'since',
-        label: 'Decís desde cuándo o durante cuánto tiempo (depuis…, pendant…)',
+        label: 'Dices desde cuándo o durante cuánto tiempo (depuis…, pendant…)',
         kind: 'pattern',
         patterns: [['depuis|pendant']],
       },
@@ -703,18 +703,18 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'fr-a2-u08-l05',
     title: 'Estás enfermo',
     instructions:
-      'Escribile a un compañero de trabajo para avisar que no vas: qué te duele, cómo te sentís y qué vas a hacer.',
+      'Escríbele a un compañero de trabajo para avisar que no vas: qué te duele, cómo te sientes y qué vas a hacer.',
     prompts: ['Ça va? Tu es malade?'],
     requirements: [
       {
         id: 'pain',
-        label: "Decís qué te duele (j'ai mal à la tête, au dos…)",
+        label: "Dices qué te duele (j'ai mal à la tête, au dos…)",
         kind: 'pattern',
         patterns: [["j'ai", 'mal']],
       },
       {
         id: 'feel',
-        label: 'Decís cómo te sentís (je me sens…)',
+        label: 'Dices cómo te sientes (je me sens…)',
         kind: 'pattern',
         patterns: [['me', 'sens']],
       },
@@ -735,12 +735,12 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'fr-a2-u09-l05',
     title: 'Comparar antes de comprar',
     instructions:
-      'Contá una compra: compará dos prendas (precio, calidad) y decí cuál elegís y cómo pagás.',
+      'Cuenta una compra: compara dos prendas (precio, calidad) y di cuál eliges y cómo pagas.',
     prompts: ['Quelle robe est la plus chère?'],
     requirements: [
       {
         id: 'compare',
-        label: 'Comparás (plus… que, moins… que, aussi… que, meilleur…)',
+        label: 'Comparas (plus… que, moins… que, aussi… que, meilleur…)',
         kind: 'pattern',
         patterns: [
           ['plus|moins|aussi', '<WORD>', 'que'],
@@ -749,7 +749,7 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'shop',
-        label: 'Usás una palabra de la tienda (la taille, la pointure, payer par carte…)',
+        label: 'Usas una palabra de la tienda (la taille, la pointure, payer par carte…)',
         kind: 'pattern',
         patterns: [['taille|pointure|carte|soldes|cabine']],
       },
@@ -770,12 +770,12 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'fr-a2-u10-l05',
     title: 'Un problema con la tecnología',
     instructions:
-      'Escribile a un amigo: contale qué problema tenés con la compu o el celular y cómo lo vas a contactar. Usá un pronombre (le, la, les, lui, leur, te).',
+      'Escríbele a un amigo: cuéntale qué problema tienes con la computadora o el celular y cómo lo vas a contactar. Usa un pronombre (le, la, les, lui, leur, te).',
     prompts: ['Ton ordinateur marche?'],
     requirements: [
       {
         id: 'pronoun',
-        label: "Usás un pronombre antes del verbo (je t'appelle, je lui écris, je les vois…)",
+        label: "Usas un pronombre antes del verbo (je t'appelle, je lui écris, je les vois…)",
         kind: 'pattern',
         patterns: [
           ["t'appelle|l'appelle|t'écris|t'envoie|l'envoie"],
@@ -785,7 +785,7 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'tech',
-        label: "Nombrás algo de tecnología (l'ordinateur, le portable, le mot de passe…)",
+        label: "Nombras algo de tecnología (l'ordinateur, le portable, le mot de passe…)",
         kind: 'pattern',
         patterns: [["l'ordinateur|portable|mail|message|l'appli|l'écran|ordinateur|passe"]],
       },
@@ -806,12 +806,12 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'fr-a2-u11-l05',
     title: 'Una pareja',
     instructions:
-      'Contá cómo se conocieron dos personas (vos y tu pareja, tus padres, unos amigos) y cómo es la relación hoy. Usá una negación (ne… jamais, ne… plus…).',
+      'Cuenta cómo se conocieron dos personas (tú y tu pareja, tus padres, unos amigos) y cómo es la relación hoy. Usa una negación (ne… jamais, ne… plus…).',
     prompts: ['Ils se sont rencontrés où?'],
     requirements: [
       {
         id: 'reflexive',
-        label: "Usás un verbo pronominal (on s'est rencontrés, on s'entend bien…)",
+        label: "Usas un verbo pronominal (on s'est rencontrés, on s'entend bien…)",
         kind: 'pattern',
         patterns: [
           ["s'est", '<WORD>'],
@@ -821,7 +821,7 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'negation',
-        label: 'Usás una negación (ne… jamais, ne… plus, ne… rien, ne… personne)',
+        label: 'Usas una negación (ne… jamais, ne… plus, ne… rien, ne… personne)',
         kind: 'pattern',
         patterns: [['jamais|plus|rien|personne']],
       },
@@ -842,7 +842,7 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'fr-a2-u12-l05',
     title: 'Tu opinión',
     instructions:
-      'Contá un problema de tu ciudad, tu trabajo o tu casa, dá tu opinión y proponé una solución.',
+      'Cuenta un problema de tu ciudad, tu trabajo o tu casa, dá tu opinión y propón una solución.',
     prompts: ['Quel est le problème?'],
     requirements: [
       {
@@ -856,7 +856,7 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'advice',
-        label: 'Proponés una solución (on pourrait…, tu devrais…)',
+        label: 'Propones una solución (on pourrait…, tu devrais…)',
         kind: 'pattern',
         patterns: [['pourrait|devrais|devrait|devriez']],
       },
@@ -877,19 +877,19 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'fr-a2-u13-l05',
     title: 'Una nota con indicaciones',
     instructions:
-      'Un amigo se queda en tu casa unos días. Dejale una nota: qué tiene que hacer y qué no (con el imperativo de tu) y usá al menos un pronombre tónico (chez moi, avec moi, pour toi…).',
+      'Un amigo se queda en tu casa unos días. Déjale una nota: qué tiene que hacer y qué no (con el imperativo de tu) y usa al menos un pronombre tónico (chez moi, avec moi, pour toi…).',
     prompts: ["Qu'est-ce qu'il faut faire chez toi?"],
     requirements: [
       {
         id: 'imperative',
-        label: 'Usás el imperativo con tu (prends, regarde, attends, dépêche-toi…)',
+        label: 'Usas el imperativo con tu (prends, regarde, attends, dépêche-toi…)',
         kind: 'pattern',
         patterns: IMPERATIF_TU,
       },
       {
         id: 'tonic',
         label:
-          'Usás un pronombre tónico después de una preposición (chez moi, avec toi, sans eux…)',
+          'Usas un pronombre tónico después de una preposición (chez moi, avec toi, sans eux…)',
         kind: 'pattern',
         patterns: [['avec|pour|sans|chez', 'moi|toi|lui|elle|nous|vous|eux|elles']],
       },
@@ -913,12 +913,12 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     block: 1,
     title: 'Texto libre: un fin de semana especial',
     instructions:
-      'Contá un fin de semana que pasó (qué hiciste, adónde fuiste) y otro que se viene (qué vas a hacer). No hay respuesta correcta: compará con el modelo y revisá la lista.',
+      'Cuenta un fin de semana que pasó (qué hiciste, adónde fuiste) y otro que se viene (qué vas a hacer). No hay respuesta correcta: compara con el modelo y revisa la lista.',
     prompts: ["Qu'est-ce que tu as fait le week-end dernier?", 'Et le week-end prochain?'],
     requirements: [
       {
         id: 'past',
-        label: "Pista: contá el pasado (j'ai fait…, je suis allé…)",
+        label: "Pista: cuenta el pasado (j'ai fait…, je suis allé…)",
         kind: 'pattern',
         patterns: [
           ["j'ai", PARTICIPES_AVOIR],
@@ -928,7 +928,7 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'future',
-        label: 'Pista: usá el futuro (je ferai, il y aura…)',
+        label: 'Pista: usa el futuro (je ferai, il y aura…)',
         kind: 'pattern',
         patterns: [['ferai|serai|viendrai|irai|aura|sera']],
         optional: true,
@@ -950,9 +950,9 @@ export const FR_WRITING_TASKS: readonly WritingTaskDef[] = [
     codes: [],
     lesson: 'fr-a2-u12-final',
     block: 1,
-    title: 'Texto libre: un día que no olvidás',
+    title: 'Texto libre: un día que no olvidas',
     instructions:
-      'Contá un día especial de tu vida: dónde estabas, cómo era todo, qué pasó y qué pensás hoy de ese día. No hay respuesta correcta: compará con el modelo y revisá la lista.',
+      'Cuenta un día especial de tu vida: dónde estabas, cómo era todo, qué pasó y qué piensas hoy de ese día. No hay respuesta correcta: compara con el modelo y revisa la lista.',
     prompts: ['Tu étais où?', "Qu'est-ce qui s'est passé?", "Qu'est-ce que tu en penses?"],
     glossary: [{ term: 'la tour Eiffel', meaning: 'la torre Eiffel' }],
     requirements: [

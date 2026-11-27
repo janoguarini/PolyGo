@@ -16,7 +16,7 @@ end;
 $$;
 
 insert into public.word_rush_sentences (id, language_code, level, unit_id, tokens, answer, accepted_answers, translation, is_published)
-values ('en.wr.u01-is-your-name-tom', 'en', 'A1', 'a1-u01', array['Is', 'your', 'name', 'Tom']::text[], 'Is your name Tom?', '{}'::text[], '¿Te llamás Tom?', true)
+values ('en.wr.u01-is-your-name-tom', 'en', 'A1', 'a1-u01', array['Is', 'your', 'name', 'Tom']::text[], 'Is your name Tom?', '{}'::text[], '¿Te llamas Tom?', true)
 on conflict (id) do update set language_code = excluded.language_code, level = excluded.level,
   unit_id = excluded.unit_id, tokens = excluded.tokens, answer = excluded.answer,
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
@@ -28,7 +28,7 @@ on conflict (id) do update set language_code = excluded.language_code, level = e
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
   is_published = excluded.is_published;
 insert into public.word_rush_sentences (id, language_code, level, unit_id, tokens, answer, accepted_answers, translation, is_published)
-values ('en.wr.u01-excuse-me-are-you-ana', 'en', 'A1', 'a1-u01', array['Excuse', 'me', 'are', 'you', 'Ana']::text[], 'Excuse me, are you Ana?', '{}'::text[], 'Disculpá, ¿sos Ana?', true)
+values ('en.wr.u01-excuse-me-are-you-ana', 'en', 'A1', 'a1-u01', array['Excuse', 'me', 'are', 'you', 'Ana']::text[], 'Excuse me, are you Ana?', '{}'::text[], 'Disculpa, ¿eres Ana?', true)
 on conflict (id) do update set language_code = excluded.language_code, level = excluded.level,
   unit_id = excluded.unit_id, tokens = excluded.tokens, answer = excluded.answer,
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
@@ -94,7 +94,7 @@ on conflict (id) do update set language_code = excluded.language_code, level = e
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
   is_published = excluded.is_published;
 insert into public.word_rush_sentences (id, language_code, level, unit_id, tokens, answer, accepted_answers, translation, is_published)
-values ('en.wr.u02-you-are-my-friend', 'en', 'A1', 'a1-u02', array['You', 'are', 'my', 'friend']::text[], 'You are my friend.', '{}'::text[], 'Sos mi amigo.', true)
+values ('en.wr.u02-you-are-my-friend', 'en', 'A1', 'a1-u02', array['You', 'are', 'my', 'friend']::text[], 'You are my friend.', '{}'::text[], 'Eres mi amigo.', true)
 on conflict (id) do update set language_code = excluded.language_code, level = excluded.level,
   unit_id = excluded.unit_id, tokens = excluded.tokens, answer = excluded.answer,
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
@@ -148,7 +148,7 @@ on conflict (id) do update set language_code = excluded.language_code, level = e
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
   is_published = excluded.is_published;
 insert into public.word_rush_sentences (id, language_code, level, unit_id, tokens, answer, accepted_answers, translation, is_published)
-values ('en.wr.u03-are-you-from-spain', 'en', 'A1', 'a1-u03', array['Are', 'you', 'from', 'Spain']::text[], 'Are you from Spain?', '{}'::text[], '¿Sos de España?', true)
+values ('en.wr.u03-are-you-from-spain', 'en', 'A1', 'a1-u03', array['Are', 'you', 'from', 'Spain']::text[], 'Are you from Spain?', '{}'::text[], '¿Eres de España?', true)
 on conflict (id) do update set language_code = excluded.language_code, level = excluded.level,
   unit_id = excluded.unit_id, tokens = excluded.tokens, answer = excluded.answer,
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
@@ -478,7 +478,7 @@ on conflict (id) do update set language_code = excluded.language_code, level = e
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
   is_published = excluded.is_published;
 insert into public.word_rush_sentences (id, language_code, level, unit_id, tokens, answer, accepted_answers, translation, is_published)
-values ('en.wr.u08-do-you-work-at-home', 'en', 'A1', 'a1-u08', array['Do', 'you', 'work', 'at', 'home']::text[], 'Do you work at home?', '{}'::text[], '¿Trabajás desde casa?', true)
+values ('en.wr.u08-do-you-work-at-home', 'en', 'A1', 'a1-u08', array['Do', 'you', 'work', 'at', 'home']::text[], 'Do you work at home?', '{}'::text[], '¿Trabajas desde casa?', true)
 on conflict (id) do update set language_code = excluded.language_code, level = excluded.level,
   unit_id = excluded.unit_id, tokens = excluded.tokens, answer = excluded.answer,
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
@@ -514,7 +514,7 @@ on conflict (id) do update set language_code = excluded.language_code, level = e
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
   is_published = excluded.is_published;
 insert into public.word_rush_sentences (id, language_code, level, unit_id, tokens, answer, accepted_answers, translation, is_published)
-values ('en.wr.u08-where-do-you-live', 'en', 'A1', 'a1-u08', array['Where', 'do', 'you', 'live']::text[], 'Where do you live?', '{}'::text[], '¿Dónde vivís?', true)
+values ('en.wr.u08-where-do-you-live', 'en', 'A1', 'a1-u08', array['Where', 'do', 'you', 'live']::text[], 'Where do you live?', '{}'::text[], '¿Dónde vives?', true)
 on conflict (id) do update set language_code = excluded.language_code, level = excluded.level,
   unit_id = excluded.unit_id, tokens = excluded.tokens, answer = excluded.answer,
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
@@ -574,7 +574,7 @@ on conflict (id) do update set language_code = excluded.language_code, level = e
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
   is_published = excluded.is_published;
 insert into public.word_rush_sentences (id, language_code, level, unit_id, tokens, answer, accepted_answers, translation, is_published)
-values ('en.wr.u09-what-time-do-you-eat-lunch', 'en', 'A1', 'a1-u09', array['What', 'time', 'do', 'you', 'eat', 'lunch']::text[], 'What time do you eat lunch?', '{}'::text[], '¿A qué hora almorzás?', true)
+values ('en.wr.u09-what-time-do-you-eat-lunch', 'en', 'A1', 'a1-u09', array['What', 'time', 'do', 'you', 'eat', 'lunch']::text[], 'What time do you eat lunch?', '{}'::text[], '¿A qué hora almuerzas?', true)
 on conflict (id) do update set language_code = excluded.language_code, level = excluded.level,
   unit_id = excluded.unit_id, tokens = excluded.tokens, answer = excluded.answer,
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
@@ -616,7 +616,7 @@ on conflict (id) do update set language_code = excluded.language_code, level = e
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
   is_published = excluded.is_published;
 insert into public.word_rush_sentences (id, language_code, level, unit_id, tokens, answer, accepted_answers, translation, is_published)
-values ('en.wr.u10-turn-left-at-the-bank', 'en', 'A1', 'a1-u10', array['Turn', 'left', 'at', 'the', 'bank']::text[], 'Turn left at the bank.', '{}'::text[], 'Doblá a la izquierda en el banco.', true)
+values ('en.wr.u10-turn-left-at-the-bank', 'en', 'A1', 'a1-u10', array['Turn', 'left', 'at', 'the', 'bank']::text[], 'Turn left at the bank.', '{}'::text[], 'Dobla a la izquierda en el banco.', true)
 on conflict (id) do update set language_code = excluded.language_code, level = excluded.level,
   unit_id = excluded.unit_id, tokens = excluded.tokens, answer = excluded.answer,
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
@@ -634,7 +634,7 @@ on conflict (id) do update set language_code = excluded.language_code, level = e
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
   is_published = excluded.is_published;
 insert into public.word_rush_sentences (id, language_code, level, unit_id, tokens, answer, accepted_answers, translation, is_published)
-values ('en.wr.u10-go-straight-on', 'en', 'A1', 'a1-u10', array['Go', 'straight', 'on']::text[], 'Go straight on.', '{}'::text[], 'Seguí derecho.', true)
+values ('en.wr.u10-go-straight-on', 'en', 'A1', 'a1-u10', array['Go', 'straight', 'on']::text[], 'Go straight on.', '{}'::text[], 'Sigue derecho.', true)
 on conflict (id) do update set language_code = excluded.language_code, level = excluded.level,
   unit_id = excluded.unit_id, tokens = excluded.tokens, answer = excluded.answer,
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
@@ -676,7 +676,7 @@ on conflict (id) do update set language_code = excluded.language_code, level = e
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
   is_published = excluded.is_published;
 insert into public.word_rush_sentences (id, language_code, level, unit_id, tokens, answer, accepted_answers, translation, is_published)
-values ('en.wr.u11-can-you-swim', 'en', 'A1', 'a1-u11', array['Can', 'you', 'swim']::text[], 'Can you swim?', '{}'::text[], '¿Sabés nadar?', true)
+values ('en.wr.u11-can-you-swim', 'en', 'A1', 'a1-u11', array['Can', 'you', 'swim']::text[], 'Can you swim?', '{}'::text[], '¿Sabes nadar?', true)
 on conflict (id) do update set language_code = excluded.language_code, level = excluded.level,
   unit_id = excluded.unit_id, tokens = excluded.tokens, answer = excluded.answer,
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
@@ -742,7 +742,7 @@ on conflict (id) do update set language_code = excluded.language_code, level = e
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
   is_published = excluded.is_published;
 insert into public.word_rush_sentences (id, language_code, level, unit_id, tokens, answer, accepted_answers, translation, is_published)
-values ('en.wr.u12-can-you-repeat-that-please', 'en', 'A1', 'a1-u12', array['Can', 'you', 'repeat', 'that', 'please']::text[], 'Can you repeat that, please?', '{}'::text[], '¿Podés repetir eso, por favor?', true)
+values ('en.wr.u12-can-you-repeat-that-please', 'en', 'A1', 'a1-u12', array['Can', 'you', 'repeat', 'that', 'please']::text[], 'Can you repeat that, please?', '{}'::text[], '¿Puedes repetir eso, por favor?', true)
 on conflict (id) do update set language_code = excluded.language_code, level = excluded.level,
   unit_id = excluded.unit_id, tokens = excluded.tokens, answer = excluded.answer,
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
@@ -766,25 +766,25 @@ on conflict (id) do update set language_code = excluded.language_code, level = e
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
   is_published = excluded.is_published;
 insert into public.word_rush_sentences (id, language_code, level, unit_id, tokens, answer, accepted_answers, translation, is_published)
-values ('en.wr.u12-do-you-speak-spanish', 'en', 'A1', 'a1-u12', array['Do', 'you', 'speak', 'Spanish']::text[], 'Do you speak Spanish?', '{}'::text[], '¿Hablás español?', true)
+values ('en.wr.u12-do-you-speak-spanish', 'en', 'A1', 'a1-u12', array['Do', 'you', 'speak', 'Spanish']::text[], 'Do you speak Spanish?', '{}'::text[], '¿Hablas español?', true)
 on conflict (id) do update set language_code = excluded.language_code, level = excluded.level,
   unit_id = excluded.unit_id, tokens = excluded.tokens, answer = excluded.answer,
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
   is_published = excluded.is_published;
 insert into public.word_rush_sentences (id, language_code, level, unit_id, tokens, answer, accepted_answers, translation, is_published)
-values ('en.wr.u12-how-many-brothers-do-you-have', 'en', 'A1', 'a1-u12', array['How', 'many', 'brothers', 'do', 'you', 'have']::text[], 'How many brothers do you have?', '{}'::text[], '¿Cuántos hermanos tenés?', true)
+values ('en.wr.u12-how-many-brothers-do-you-have', 'en', 'A1', 'a1-u12', array['How', 'many', 'brothers', 'do', 'you', 'have']::text[], 'How many brothers do you have?', '{}'::text[], '¿Cuántos hermanos tienes?', true)
 on conflict (id) do update set language_code = excluded.language_code, level = excluded.level,
   unit_id = excluded.unit_id, tokens = excluded.tokens, answer = excluded.answer,
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
   is_published = excluded.is_published;
 insert into public.word_rush_sentences (id, language_code, level, unit_id, tokens, answer, accepted_answers, translation, is_published)
-values ('en.wr.u12-when-do-you-work', 'en', 'A1', 'a1-u12', array['When', 'do', 'you', 'work']::text[], 'When do you work?', '{}'::text[], '¿Cuándo trabajás?', true)
+values ('en.wr.u12-when-do-you-work', 'en', 'A1', 'a1-u12', array['When', 'do', 'you', 'work']::text[], 'When do you work?', '{}'::text[], '¿Cuándo trabajas?', true)
 on conflict (id) do update set language_code = excluded.language_code, level = excluded.level,
   unit_id = excluded.unit_id, tokens = excluded.tokens, answer = excluded.answer,
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
   is_published = excluded.is_published;
 insert into public.word_rush_sentences (id, language_code, level, unit_id, tokens, answer, accepted_answers, translation, is_published)
-values ('en.wr.u12-which-book-do-you-want', 'en', 'A1', 'a1-u12', array['Which', 'book', 'do', 'you', 'want']::text[], 'Which book do you want?', '{}'::text[], '¿Qué libro querés?', true)
+values ('en.wr.u12-which-book-do-you-want', 'en', 'A1', 'a1-u12', array['Which', 'book', 'do', 'you', 'want']::text[], 'Which book do you want?', '{}'::text[], '¿Qué libro quieres?', true)
 on conflict (id) do update set language_code = excluded.language_code, level = excluded.level,
   unit_id = excluded.unit_id, tokens = excluded.tokens, answer = excluded.answer,
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
@@ -802,7 +802,7 @@ on conflict (id) do update set language_code = excluded.language_code, level = e
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,
   is_published = excluded.is_published;
 insert into public.word_rush_sentences (id, language_code, level, unit_id, tokens, answer, accepted_answers, translation, is_published)
-values ('en.wr.u12-please-speak-slowly', 'en', 'A1', 'a1-u12', array['Please', 'speak', 'slowly']::text[], 'Please speak slowly.', array['Speak slowly, please.']::text[], 'Hablá despacio, por favor.', true)
+values ('en.wr.u12-please-speak-slowly', 'en', 'A1', 'a1-u12', array['Please', 'speak', 'slowly']::text[], 'Please speak slowly.', array['Speak slowly, please.']::text[], 'Habla despacio, por favor.', true)
 on conflict (id) do update set language_code = excluded.language_code, level = excluded.level,
   unit_id = excluded.unit_id, tokens = excluded.tokens, answer = excluded.answer,
   accepted_answers = excluded.accepted_answers, translation = excluded.translation,

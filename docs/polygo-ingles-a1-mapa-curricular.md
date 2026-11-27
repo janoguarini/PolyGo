@@ -285,7 +285,7 @@ Marcas en la columna "Estado" de las tablas siguientes:
 | **U6 Casa** | L1–L3 Casa, habitaciones, muebles | v06 | — | C |
 | | L4 Hay una cama | g10 | — | C |
 | | L5 ¿Dónde está? | g11 | p04 | M: PW sobre una escena |
-| | **L6 En contexto: un departamento en alquiler** | cR03, cL04 | p04 | N: aviso con plano, y oír dónde está algo |
+| | **L6 En contexto: un apartamento en alquiler** | cR03, cL04 | p04 | N: aviso con plano, y oír dónde está algo |
 | **U7 Comida** | L1–L2 Bebidas y comida | v07 | — | C |
 | | L3 Comer y beber | v07 | g12 | C |
 | | L4 Quiero un café | g23 | p10 | M: **agregar *I'd like*** y SIT |

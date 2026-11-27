@@ -73,11 +73,11 @@ export const IT_A2_U01: ItUnitDef = {
       'Contar lo que hiciste con el passato prossimo: participios regulares e irregulares, già, non… ancora y las expresiones del pasado.',
     emoji: '🗓️',
     objective:
-      'Podés contar qué hiciste el fin de semana o ayer (ho dormito, abbiamo preso il treno), decir lo que ya hiciste y lo que todavía no, y entender el relato de otra persona.',
+      'Puedes contar qué hiciste el fin de semana o ayer (ho dormito, abbiamo preso il treno), decir lo que ya hiciste y lo que todavía no, y entender el relato de otra persona.',
     grammar: {
       title: 'Passato prossimo con avere',
       explanation:
-        'Para contar algo terminado: avere en presente + participio. Los regulares: -are → -ato (parlato), -ere → -uto (bevuto), -ire → -ito (dormito). Irregulares frecuentes: fatto, letto, scritto, preso, visto. Con avere el participio no cambia: Sara ha letto, loro hanno letto. Donde en el Río de la Plata decimos «comí», en italiano se dice ho mangiato. Già y ancora van entre avere y el participio: ho già mangiato, non ho ancora mangiato.',
+        'Para contar algo terminado: avere en presente + participio. Los regulares: -are → -ato (parlato), -ere → -uto (bevuto), -ire → -ito (dormito). Irregulares frecuentes: fatto, letto, scritto, preso, visto. Con avere el participio no cambia: Sara ha letto, loro hanno letto. Donde en español solemos decir «comí», en italiano se dice ho mangiato. Già y ancora van entre avere y el participio: ho già mangiato, non ho ancora mangiato.',
       examples: [
         { target: 'Sabato ho dormito fino alle dieci.', base: 'El sábado dormí hasta las diez.' },
         { target: 'Abbiamo preso il treno per Como.', base: 'Tomamos el tren a Como.' },
@@ -206,8 +206,8 @@ export const IT_A2_U01: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Formás el passato prossimo con ho + participio.',
-          'Conocés los participios en -ato, -uto, -ito.',
+          'Formas el passato prossimo con ho + participio.',
+          'Conoces los participios en -ato, -uto, -ito.',
         ],
         exercises: [
           ex.translationChoice(
@@ -274,7 +274,7 @@ export const IT_A2_U01: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Hai dormito bene?',
-            '¿Dormiste bien? (Respondé que sí, que dormiste mucho.)',
+            '¿Dormiste bien? (Responde que sí, que dormiste mucho.)',
             'Sì, ho dormito molto.',
             ['Sì, ho dormito molto bene.', 'Ho dormito molto.', 'Sì, ho dormito bene.'],
             ['it-ho-dormito'],
@@ -305,8 +305,8 @@ export const IT_A2_U01: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Usás fatto, letto, scritto y preso.',
-          'Decís que hiciste las compras: ho fatto la spesa.',
+          'Usas fatto, letto, scritto y preso.',
+          'Dices que hiciste las compras: ho fatto la spesa.',
         ],
         exercises: [
           ex.translationChoice(
@@ -379,7 +379,7 @@ export const IT_A2_U01: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Cosa hai fatto ieri?',
-            '¿Qué hiciste ayer? (Respondé que hiciste las compras.)',
+            '¿Qué hiciste ayer? (Responde que hiciste las compras.)',
             'Ieri ho fatto la spesa.',
             ['Ho fatto la spesa.', 'Ho fatto la spesa ieri.'],
             ['it-ho-fatto', 'it-la-spesa'],
@@ -407,11 +407,11 @@ export const IT_A2_U01: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Contás en plural: abbiamo, hanno + participio.',
-          'Sabés que con avere el participio no concuerda.',
+          'Cuentas en plural: abbiamo, hanno + participio.',
+          'Sabes que con avere el participio no concuerda.',
         ],
         exercises: [
-          ex.translationChoice('hanno', 'tienen', ['tenemos', 'tiene', 'tenés'], ['it-hanno'], {
+          ex.translationChoice('hanno', 'tienen', ['tenemos', 'tiene', 'tienes'], ['it-hanno'], {
             id: 'it.ex.8omhnhg3jh9uh2',
           }),
           ex.fillBlank(
@@ -457,7 +457,7 @@ export const IT_A2_U01: ItUnitDef = {
             DIARIO,
             '¿Cómo fueron Sara y sus amigos a Como?',
             'En tren',
-            ['En auto', 'En colectivo', 'En bicicleta'],
+            ['En auto', 'En autobús', 'En bicicleta'],
             ['it-ho-preso', 'it-abbiamo', 'it-scorso'],
             'Sara escribe: «abbiamo preso il treno per Como».',
           ),
@@ -481,7 +481,7 @@ export const IT_A2_U01: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Cosa avete mangiato?',
-            '¿Qué comieron ustedes? (Respondé que comieron una pizza.)',
+            '¿Qué comieron ustedes? (Responde que comieron una pizza.)',
             'Abbiamo mangiato una pizza.',
             ['Noi abbiamo mangiato una pizza.', 'Abbiamo mangiato la pizza.', 'Una pizza.'],
             ['it-abbiamo', 'it-ho-mangiato'],
@@ -518,7 +518,7 @@ export const IT_A2_U01: ItUnitDef = {
             },
           ],
         },
-        takeaways: ['Decís ho già + participio.', 'Decís non ho ancora + participio.'],
+        takeaways: ['Dices ho già + participio.', 'Dices non ho ancora + participio.'],
         exercises: [
           ex.translationChoice('già', 'ya', ['todavía', 'nunca', 'después'], ['it-gia'], {
             id: 'it.ex.4oql9ertyxxfor',
@@ -581,7 +581,7 @@ export const IT_A2_U01: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Hai già mangiato?',
-            '¿Ya comiste? (Respondé que no, que todavía no comiste.)',
+            '¿Ya comiste? (Responde que no, que todavía no comiste.)',
             'No, non ho ancora mangiato.',
             ['Non ho ancora mangiato.', 'No, non ancora.', 'Non ancora.'],
             ['it-ancora', 'it-ho-mangiato'],
@@ -614,8 +614,8 @@ export const IT_A2_U01: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Decís cuándo: stamattina, ieri sera, sabato scorso.',
-          'Entendés un relato de fin de semana.',
+          'Dices cuándo: stamattina, ieri sera, sabato scorso.',
+          'Entiendes un relato de fin de semana.',
         ],
         exercises: [
           ex.translationChoice(
@@ -687,7 +687,7 @@ export const IT_A2_U01: ItUnitDef = {
             LUNEDI,
             '¿Y el domingo?',
             'Vio el partido con su hermano',
-            ['Fue a la cancha con su papá', 'Hizo las compras', 'Durmió todo el día'],
+            ['Fue al estadio con su papá', 'Hizo las compras', 'Durmió todo el día'],
             ['it-partita'],
             'Davide dice: «Ho visto la partita con mio fratello».',
           ),
@@ -702,7 +702,7 @@ export const IT_A2_U01: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Cosa hai fatto ieri sera?',
-            '¿Qué hiciste anoche? (Respondé que viste el partido.)',
+            '¿Qué hiciste anoche? (Responde que viste el partido.)',
             'Ieri sera ho visto la partita.',
             [
               'Ho visto la partita.',

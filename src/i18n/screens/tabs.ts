@@ -16,4 +16,18 @@ export const tabsStrings = defineStrings({
     friends: 'Friends',
     profile: 'Profile',
   },
+  'pt-BR': {
+    learn: 'Aprender',
+    review: 'Revisão',
+    ranked: 'Ranked',
+    friends: 'Amigos',
+    profile: 'Perfil',
+  },
+  it: {
+    learn: 'Impara',
+    review: 'Ripasso',
+    ranked: 'Ranked',
+    friends: 'Amici',
+    profile: 'Profilo',
+  },
 });

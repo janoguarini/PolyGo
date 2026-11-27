@@ -1,3 +1,4 @@
+import { withNeutralSpanish } from '../../scripts/neutral-patch';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -125,7 +126,7 @@ describe('inglés B1 (content/b1.ts)', () => {
 
   it('la carga es la salida exacta del generador, amplía el nivel y no publica nada', () => {
     const { sql, document } = b1Sql();
-    expect(sql).toBe(migration);
+    expect(sql).toBe(withNeutralSpanish(migration));
     expect(sql).toContain(B1_LEVEL_SQL);
     expect(document.units.map((u) => u.id)).toEqual(
       units.map((u) => `b1-u${String(u.position).padStart(2, '0')}`),

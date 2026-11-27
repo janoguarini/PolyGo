@@ -1,5 +1,6 @@
 /// <reference types="node" />
 // Lee las migraciones generadas: necesita los tipos de Node.
+import { applyNeutralPatch } from '../../scripts/neutral-patch';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -331,10 +332,14 @@ describe('versiones de los 4.198 ítems', () => {
 // --- Migraciones generadas (V4) ------------------------------------------------------------------
 
 describe('migraciones de versiones', () => {
+  // Lo que dejan en la base las cargas históricas más la corrección de español neutro
+  // (scripts/neutral-patch.ts, 20270104120000_neutral_spanish_content).
   const payloads = VERSION_FILES.map(
     (f) =>
-      JSON.parse(
-        /\$content\$([\s\S]*?)\$content\$/.exec(readFileSync(join(MIGRATIONS, f), 'utf8'))![1]!,
+      applyNeutralPatch(
+        JSON.parse(
+          /\$content\$([\s\S]*?)\$content\$/.exec(readFileSync(join(MIGRATIONS, f), 'utf8'))![1]!,
+        ),
       ).catalog as {
         versions: VersionRow[];
         current_versions: { item_id: string; content_hash: string }[];

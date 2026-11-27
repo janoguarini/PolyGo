@@ -84,17 +84,17 @@ export const EN_B1_U11: B1UnitDef = {
       'Dar tu opinión, acordar y discrepar, ventajas y desventajas, imaginar con el segundo condicional, relaciones y deseos.',
     emoji: '💬',
     objective:
-      'Podés dar y defender tu opinión, aconsejar a alguien con if I were you, hablar de tus relaciones y expresar deseos.',
+      'Puedes dar y defender tu opinión, aconsejar a alguien con if I were you, hablar de tus relaciones y expresar deseos.',
     grammar: {
       title: 'Segundo condicional',
       explanation:
-        'If + past simple, would + verbo: una situación imaginaria o poco probable. If I had more time, I would travel more (no tengo tiempo). Con be se usa were para todos: If I were you, I would talk to her (yo que vos…).',
+        'If + past simple, would + verbo: una situación imaginaria o poco probable. If I had more time, I would travel more (no tengo tiempo). Con be se usa were para todos: If I were you, I would talk to her (yo que tú…).',
       examples: [
         {
           target: 'If I had more time, I would travel more.',
           base: 'Si tuviera más tiempo, viajaría más.',
         },
-        { target: 'If I were you, I would talk to her.', base: 'Yo que vos, hablaría con ella.' },
+        { target: 'If I were you, I would talk to her.', base: 'Yo que tú, hablaría con ella.' },
         { target: 'I wish I had more free time.', base: 'Ojalá tuviera más tiempo libre.' },
       ],
     },
@@ -121,7 +121,7 @@ export const EN_B1_U11: B1UnitDef = {
         '/əˈɡri/',
         '👍',
         'I agree with you.',
-        'Estoy de acuerdo con vos.',
+        'Estoy de acuerdo contigo.',
         ['opinions', 'verbs'],
       ),
       w(
@@ -169,13 +169,13 @@ export const EN_B1_U11: B1UnitDef = {
       w(
         'en-if-i-were-you',
         'if I were you',
-        'yo que vos / si fuera vos',
+        'yo que tú / si fuera tú',
         '/ɪf aɪ wɜr ju/',
         undefined,
         'If I were you, I would rest.',
-        'Yo que vos, descansaría.',
+        'Yo que tú, descansaría.',
         ['conditionals', 'advice'],
-        ['yo que vos', 'si fuera vos', 'yo que tú'],
+        ['yo que tú', 'si fuera tú', 'yo que vos', 'si fuera vos', 'yo que vos / si fuera vos'],
       ),
       w(
         'en-wish',
@@ -237,7 +237,7 @@ export const EN_B1_U11: B1UnitDef = {
         '/ˈɑrɡju/',
         '😤',
         'They argue about money.',
-        'Discuten por plata.',
+        'Discuten por dinero.',
         ['relationships', 'verbs'],
         ['discutir', 'pelearse'],
       ),
@@ -300,7 +300,7 @@ export const EN_B1_U11: B1UnitDef = {
     lessons: [
       // ------------------------------------------------------------------------------------ L1
       {
-        title: '¿Qué opinás?',
+        title: '¿Qué opinas?',
         objective: 'Dar tu opinión y decir si estás de acuerdo.',
         intro: {
           explanation:
@@ -310,12 +310,12 @@ export const EN_B1_U11: B1UnitDef = {
               target: 'In my opinion, it is a good idea.',
               base: 'En mi opinión, es una buena idea.',
             },
-            { target: "I don't agree with you.", base: 'No estoy de acuerdo con vos.' },
+            { target: "I don't agree with you.", base: 'No estoy de acuerdo contigo.' },
           ],
         },
         takeaways: [
           'Das tu opinión: In my opinion…, I think…',
-          'Acordás y discrepás: I agree, I disagree.',
+          'Acuerdas y discrepas: I agree, I disagree.',
         ],
         exercises: [
           ex.matchPairs(
@@ -330,7 +330,7 @@ export const EN_B1_U11: B1UnitDef = {
           ),
           ex.fillBlank(
             'I ___ with you. It is a great idea.',
-            'Estoy de acuerdo con vos. Es una gran idea.',
+            'Estoy de acuerdo contigo. Es una gran idea.',
             'agree',
             ['am agree', 'agrees', 'agreeing'],
             ['en-agree'],
@@ -427,8 +427,8 @@ export const EN_B1_U11: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Presentás ventajas y desventajas.',
-          'Mostrás los dos lados con on the other hand.',
+          'Presentas ventajas y desventajas.',
+          'Muestras los dos lados con on the other hand.',
         ],
         exercises: [
           ex.translationChoice(
@@ -440,7 +440,7 @@ export const EN_B1_U11: B1UnitDef = {
           ),
           ex.fillBlank(
             'One ___ of working from home is that you save time.',
-            'Una ventaja de trabajar desde casa es que ahorrás tiempo.',
+            'Una ventaja de trabajar desde casa es que ahorras tiempo.',
             'advantage',
             ['disadvantage', 'opinion', 'idea'],
             ['en-advantage'],
@@ -448,7 +448,7 @@ export const EN_B1_U11: B1UnitDef = {
           ),
           ex.fillBlank(
             'The apartment is cheap. On the other ___, it is very small.',
-            'El departamento es barato. Por otro lado, es muy chico.',
+            'El apartamento es barato. Por otro lado, es muy chico.',
             'hand',
             ['side', 'way', 'part'],
             ['en-on-the-other-hand', 'en-cheap'],
@@ -520,18 +520,18 @@ export const EN_B1_U11: B1UnitDef = {
         objective: 'Imaginar situaciones y aconsejar con el segundo condicional e if I were you.',
         intro: {
           explanation:
-            "Para algo imaginario: If + pasado, would + verbo. If I had a million dollars, I would travel. If I were you (yo que vos) sirve para aconsejar: If I were you, I would talk to her. I would se contrae en I'd.",
+            "Para algo imaginario: If + pasado, would + verbo. If I had a million dollars, I would travel. If I were you (yo que tú) sirve para aconsejar: If I were you, I would talk to her. I would se contrae en I'd.",
           examples: [
             {
               target: 'If I had more time, I would travel more.',
               base: 'Si tuviera más tiempo, viajaría más.',
             },
-            { target: "If I were you, I'd talk to her.", base: 'Yo que vos, hablaría con ella.' },
+            { target: "If I were you, I'd talk to her.", base: 'Yo que tú, hablaría con ella.' },
           ],
         },
         takeaways: [
-          'Imaginás situaciones con if + pasado y would.',
-          'Aconsejás con If I were you, I would…',
+          'Imaginas situaciones con if + pasado y would.',
+          'Aconsejas con If I were you, I would…',
         ],
         exercises: [
           ex.fillBlank(
@@ -547,7 +547,7 @@ export const EN_B1_U11: B1UnitDef = {
           ),
           ex.fillBlank(
             'If I won a lot of money, I ___ buy a house.',
-            'Si ganara mucha plata, me compraría una casa.',
+            'Si ganara mucho dinero, me compraría una casa.',
             'would',
             ['will', 'did', 'can'],
             ['en-won', 'en-house'],
@@ -555,7 +555,7 @@ export const EN_B1_U11: B1UnitDef = {
           ),
           ex.fillBlank(
             'If I ___ you, I would talk to her.',
-            'Yo que vos, hablaría con ella.',
+            'Yo que tú, hablaría con ella.',
             'were',
             ['was being', 'am', 'be'],
             ['en-if-i-were-you', 'en-talk'],
@@ -595,7 +595,7 @@ export const EN_B1_U11: B1UnitDef = {
           ),
           ex.orderWords(
             'If I were you I would rest.',
-            'Yo que vos, descansaría.',
+            'Yo que tú, descansaría.',
             ['en-if-i-were-you', 'en-rest'],
             { id: 'en.ex.viae7dsbvdn21m' },
           ),
@@ -613,7 +613,7 @@ export const EN_B1_U11: B1UnitDef = {
             { id: 'en.ex.lwt6y1awipnb03' },
           ),
           ex.translateWrite(
-            'Yo que vos, iría al médico.',
+            'Yo que tú, iría al médico.',
             'If I were you, I would see a doctor.',
             ['en-if-i-were-you', 'en-doctor'],
             {
@@ -645,8 +645,8 @@ export const EN_B1_U11: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Contás cómo te llevás con la gente.',
-          'Pedís perdón y decís en quién confiás.',
+          'Cuentas cómo te llevas con la gente.',
+          'Pides perdón y dices en quién confías.',
         ],
         exercises: [
           ex.matchPairs(
@@ -669,7 +669,7 @@ export const EN_B1_U11: B1UnitDef = {
           ),
           ex.fillBlank(
             'They often ___ about money.',
-            'Discuten seguido por plata.',
+            'Discuten seguido por dinero.',
             'argue',
             ['agree', 'trust', 'support'],
             ['en-argue', 'en-money'],
@@ -754,8 +754,8 @@ export const EN_B1_U11: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Expresás deseos con I wish + pasado.',
-          'Decís qué preferirías con would rather.',
+          'Expresas deseos con I wish + pasado.',
+          'Dices qué preferirías con would rather.',
         ],
         exercises: [
           ex.translationChoice(
@@ -789,7 +789,7 @@ export const EN_B1_U11: B1UnitDef = {
             WISHES,
             '¿Qué desea Rosa?',
             'Tener más tiempo libre',
-            ['Trabajar más', 'Vivir cerca del mar', 'Tener más plata'],
+            ['Trabajar más', 'Vivir cerca del mar', 'Tener más dinero'],
             ['en-wish'],
             'Rosa escribe: «I wish I had more free time».',
           ),
@@ -820,7 +820,7 @@ export const EN_B1_U11: B1UnitDef = {
           ),
           ex.shortAnswer(
             'Would you like to go out tonight? (preferirías quedarte en casa)',
-            '¿Querés salir esta noche?',
+            '¿Quieres salir esta noche?',
             'I would rather stay at home.',
             [
               "I'd rather stay at home.",

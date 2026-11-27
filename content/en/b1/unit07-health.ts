@@ -78,7 +78,7 @@ export const EN_B1_U07: B1UnitDef = {
     description:
       'Síntomas y la farmacia, consejos (should, ought to, had better), hábitos saludables, comparaciones y el estrés.',
     emoji: '🧘',
-    objective: 'Podés explicar síntomas, dar y pedir consejos de salud y comparar hábitos.',
+    objective: 'Puedes explicar síntomas, dar y pedir consejos de salud y comparar hábitos.',
     grammar: {
       title: 'Consejos y comparaciones',
       explanation:
@@ -298,7 +298,7 @@ export const EN_B1_U07: B1UnitDef = {
         objective: 'Explicar síntomas en una farmacia o con el médico.',
         intro: {
           explanation:
-            "Para contar cómo estás: I have a cold (tengo un resfrío), I have a bad cough (tengo mucha tos), I have a pain in my back. Con el present perfect decís desde cuándo: I've had a cough for three days.",
+            "Para contar cómo estás: I have a cold (tengo un resfrío), I have a bad cough (tengo mucha tos), I have a pain in my back. Con el present perfect dices desde cuándo: I've had a cough for three days.",
           examples: [
             {
               target: "I've had a bad cough for three days.",
@@ -308,8 +308,8 @@ export const EN_B1_U07: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Explicás tus síntomas y desde cuándo los tenés.',
-          'Te arreglás en una farmacia.',
+          'Explicas tus síntomas y desde cuándo los tienes.',
+          'Te arreglas en una farmacia.',
         ],
         exercises: [
           ex.matchPairs(
@@ -373,7 +373,7 @@ export const EN_B1_U07: B1UnitDef = {
             { id: 'en.ex.73lk31vpj3cuc3' },
           ),
           ex.shortAnswer(
-            "What's the matter? (tenés un resfrío)",
+            "What's the matter? (tienes un resfrío)",
             '¿Qué te pasa?',
             'I have a cold.',
             ["I've got a cold.", 'I think I have a cold.', 'A cold.'],
@@ -412,7 +412,7 @@ export const EN_B1_U07: B1UnitDef = {
         },
         takeaways: [
           'Das consejos con should y ought to.',
-          'Advertís con had better y had better not.',
+          'Adviertes con had better y had better not.',
         ],
         exercises: [
           ex.fillBlank(
@@ -428,7 +428,7 @@ export const EN_B1_U07: B1UnitDef = {
           ),
           ex.fillBlank(
             "You have a fever. You'd ___ see a doctor.",
-            'Tenés fiebre. Más vale que vayas al médico.',
+            'Tienes fiebre. Más vale que vayas al médico.',
             'better',
             ['best', 'good', 'well'],
             ['en-had-better', 'en-doctor', 'en-fever'],
@@ -436,7 +436,7 @@ export const EN_B1_U07: B1UnitDef = {
           ),
           ex.fillBlank(
             "It's very cold. You'd better ___ go out without a jacket.",
-            'Hace mucho frío. Mejor que no salgas sin campera.',
+            'Hace mucho frío. Mejor que no salgas sin chaqueta.',
             'not',
             ["don't", 'no', "didn't"],
             ['en-had-better', 'en-jacket'],
@@ -523,8 +523,8 @@ export const EN_B1_U07: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Hablás de tus hábitos de alimentación y ejercicio.',
-          'Usás healthy, diet, work out y lose weight.',
+          'Hablas de tus hábitos de alimentación y ejercicio.',
+          'Usas healthy, diet, work out y lose weight.',
         ],
         exercises: [
           ex.matchPairs(
@@ -588,7 +588,7 @@ export const EN_B1_U07: B1UnitDef = {
           ),
           ex.shortAnswer(
             'How often do you exercise? (tres veces por semana)',
-            '¿Con qué frecuencia hacés ejercicio?',
+            '¿Con qué frecuencia haces ejercicio?',
             'Three times a week.',
             ['I exercise three times a week.', 'I work out three times a week.'],
             ['en-exercise', 'en-times'],
@@ -621,13 +621,13 @@ export const EN_B1_U07: B1UnitDef = {
             },
             {
               target: 'The more you sleep, the better you feel.',
-              base: 'Cuanto más dormís, mejor te sentís.',
+              base: 'Cuanto más duermes, mejor te sientes.',
             },
           ],
         },
         takeaways: [
-          'Comparás con as … as y not as … as.',
-          'Matizás: much better, a bit healthier, the more…, the better…',
+          'Comparas con as … as y not as … as.',
+          'Matizas: much better, a bit healthier, the more…, the better…',
         ],
         exercises: [
           ex.fillBlank(
@@ -663,7 +663,7 @@ export const EN_B1_U07: B1UnitDef = {
           ),
           ex.fillBlank(
             'The more you sleep, the ___ you feel.',
-            'Cuanto más dormís, mejor te sentís.',
+            'Cuanto más duermes, mejor te sientes.',
             'better',
             ['good', 'best', 'well'],
             ['en-better', 'en-sleep'],
@@ -685,9 +685,9 @@ export const EN_B1_U07: B1UnitDef = {
           question(
             'en.ex.29p4k1z5tahkh4',
             HABITS,
-            '¿Qué pasa cuanto más dormís, según el texto?',
-            'Te sentís mejor',
-            ['Tenés más hambre', 'Bajás de peso', 'Tenés menos estrés'],
+            '¿Qué pasa cuanto más duermes, según el texto?',
+            'Te sientes mejor',
+            ['Tienes más hambre', 'Bajas de peso', 'Tienes menos estrés'],
             ['en-better', 'en-sleep'],
             'El texto dice: «The more you sleep, the better you feel».',
           ),
@@ -739,7 +739,7 @@ export const EN_B1_U07: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Contás cómo te sentís cuando estás estresado.',
+          'Cuentas cómo te sientes cuando estás estresado.',
           'Das consejos para relajarse.',
         ],
         exercises: [
@@ -796,13 +796,13 @@ export const EN_B1_U07: B1UnitDef = {
           ),
           ex.orderWords(
             'You need to relax a bit.',
-            'Necesitás relajarte un poco.',
+            'Necesitas relajarte un poco.',
             ['en-relax', 'en-a-bit', 'en-need'],
             { id: 'en.ex.c8ve4ksh5fhnnt' },
           ),
           ex.shortAnswer(
-            'How do you relax? (escuchás música)',
-            '¿Cómo te relajás?',
+            'How do you relax? (escuchas música)',
+            '¿Cómo te relajas?',
             'I listen to music.',
             ['I relax with music.', 'I listen to music to relax.', 'Listening to music.'],
             ['en-relax', 'en-listen'],

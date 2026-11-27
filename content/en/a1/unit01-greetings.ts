@@ -8,11 +8,11 @@ export const unit01: UnitDef = {
   description: 'Saludar, despedirte, ser amable y presentarte.',
   emoji: '👋',
   objective:
-    'Podés saludar según el momento del día, presentarte, preguntar cómo está alguien y responder con cortesía.',
+    'Puedes saludar según el momento del día, presentarte, preguntar cómo está alguien y responder con cortesía.',
   grammar: {
     title: 'My name is… / I am…',
     explanation:
-      "Para decir tu nombre usás my name is o I am (I'm). Para devolver un saludo agregás too: nice to meet you too.",
+      "Para decir tu nombre usas my name is o I am (I'm). Para devolver un saludo agregas too: nice to meet you too.",
     examples: [
       { target: 'My name is Tom.', base: 'Mi nombre es Tom.' },
       { target: "I'm fine, thank you.", base: 'Estoy bien, gracias.' },
@@ -56,11 +56,11 @@ export const unit01: UnitDef = {
     {
       id: 'en-bye',
       text: 'bye',
-      translation: 'chau',
-      acceptedTranslations: ['adiós'],
+      translation: 'chao',
+      acceptedTranslations: ['adiós', 'chau'],
       ipa: '/baɪ/',
       exampleEn: 'Bye, Mom!',
-      exampleEs: '¡Chau, mamá!',
+      exampleEs: '¡Chao, mamá!',
       tags: ['greetings'],
     },
     {
@@ -166,7 +166,7 @@ export const unit01: UnitDef = {
       id: 'en-excuse-me',
       text: 'excuse me',
       translation: 'disculpe',
-      acceptedTranslations: ['permiso', 'disculpá'],
+      acceptedTranslations: ['permiso', 'disculpa', 'disculpá'],
       ipa: '/ɪkˈskjuz mi/',
       exampleEn: 'Excuse me, where is the bank?',
       exampleEs: 'Disculpe, ¿dónde está el banco?',
@@ -247,24 +247,24 @@ export const unit01: UnitDef = {
       translation: 'y',
       ipa: '/ænd/',
       exampleEn: "I'm fine. And you?",
-      exampleEs: 'Estoy bien. ¿Y vos?',
+      exampleEs: 'Estoy bien. ¿Y tú?',
       tags: ['grammar'],
     },
   ],
   lessons: [
     {
-      title: 'Hola y chau',
+      title: 'Hola y adiós',
       objective: 'Saludar y despedirte; decir sí y no.',
       intro: {
         explanation:
           'Hello y hi son «hola»; hi es más informal. Para despedirte: goodbye o, más informal, bye.',
         examples: [
           { target: 'Hello, Ana!', base: '¡Hola, Ana!' },
-          { target: 'Bye, Mom!', base: '¡Chau, mamá!' },
+          { target: 'Bye, Mom!', base: '¡Chao, mamá!' },
           { target: 'No, thank you.', base: 'No, gracias.' },
         ],
       },
-      takeaways: ['Saludás con hello o hi.', 'Te despedís con goodbye o bye.', 'Decís yes y no.'],
+      takeaways: ['Saludas con hello o hi.', 'Te despides con goodbye o bye.', 'Dices yes y no.'],
       exercises: [
         ex.translationChoice('hello', 'hola', ['adiós', 'sí', 'gracias'], ['en-hello']),
         ex.translationChoice('goodbye', 'adiós', ['hola', 'por favor', 'sí'], ['en-goodbye']),
@@ -275,14 +275,14 @@ export const unit01: UnitDef = {
         ex.matchPairs(
           [
             ['hello', 'hola'],
-            ['bye', 'chau'],
+            ['bye', 'chao'],
             ['yes', 'sí'],
             ['goodbye', 'adiós'],
           ],
           ['en-hello', 'en-bye', 'en-yes', 'en-goodbye'],
         ),
         ex.completeWord('g__dbye', 'goodbye', 'adiós', ['en-goodbye']),
-        ex.translateWrite('Chau', 'bye', ['en-bye'], {
+        ex.translateWrite('Chao', 'bye', ['en-bye'], {
           acceptedAnswers: ['goodbye', 'bye bye'],
           explanation: 'Bye es más informal que goodbye; las dos sirven para despedirte.',
         }),
@@ -307,8 +307,8 @@ export const unit01: UnitDef = {
         ],
       },
       takeaways: [
-        'Saludás con good morning, good afternoon o good evening según la hora.',
-        'Usás good night sólo para despedirte.',
+        'Saludas con good morning, good afternoon o good evening según la hora.',
+        'Usas good night sólo para despedirte.',
       ],
       exercises: [
         ex.imageChoice(
@@ -390,9 +390,9 @@ export const unit01: UnitDef = {
         ],
       },
       takeaways: [
-        'Pedís algo con please y agradecés con thank you.',
-        "Respondés you're welcome.",
-        'Te disculpás con sorry o excuse me.',
+        'Pides algo con please y agradeces con thank you.',
+        "Respondes you're welcome.",
+        'Te disculpas con sorry o excuse me.',
       ],
       exercises: [
         ex.translationChoice(
@@ -456,7 +456,7 @@ export const unit01: UnitDef = {
           { target: 'Nice to meet you too.', base: 'Igualmente.' },
         ],
       },
-      takeaways: ['Te presentás con my name is + tu nombre.', 'Respondés nice to meet you too.'],
+      takeaways: ['Te presentas con my name is + tu nombre.', 'Respondes nice to meet you too.'],
       exercises: [
         ex.translationChoice('name', 'nombre', ['número', 'amigo', 'país'], ['en-name']),
         ex.fillBlank(
@@ -502,18 +502,18 @@ export const unit01: UnitDef = {
           "How are you? es «¿cómo estás?». Se responde I'm fine o I'm good, y se devuelve la pregunta con and you?",
         examples: [
           { target: 'How are you?', base: '¿Cómo estás?' },
-          { target: "I'm fine, thank you. And you?", base: 'Estoy bien, gracias. ¿Y vos?' },
+          { target: "I'm fine, thank you. And you?", base: 'Estoy bien, gracias. ¿Y tú?' },
         ],
       },
       takeaways: [
-        "Preguntás how are you? y respondés I'm fine.",
-        'Devolvés la pregunta con and you?',
+        "Preguntas how are you? y respondes I'm fine.",
+        'Devuelves la pregunta con and you?',
       ],
       exercises: [
         ex.translationChoice(
           'How are you?',
           '¿Cómo estás?',
-          ['¿Cómo te llamás?', '¿De dónde sos?', '¿Cuántos años tenés?'],
+          ['¿Cómo te llamas?', '¿De dónde eres?', '¿Cuántos años tienes?'],
           ['en-how-are-you'],
         ),
         ex.fillBlank(
@@ -559,7 +559,7 @@ export const unit01: UnitDef = {
           ['en-fine', 'en-and', 'en-good', 'en-how-are-you'],
         ),
         ex.completeWord('f__e', 'fine', 'bien', ['en-fine']),
-        ex.translateWrite('¿Y vos?', 'And you?', ['en-and'], {
+        ex.translateWrite('¿Y tú?', 'And you?', ['en-and'], {
           acceptedAnswers: ['How about you?'],
           consolidate: false,
         }),

@@ -305,13 +305,13 @@ export const unit05: UnitDef = {
           ['en-that'],
         ),
         ex.fillBlank(
-          '___ is my phone. (está acá, en mi mano)',
+          '___ is my phone. (está aquí, en mi mano)',
           'Este es mi teléfono.',
           'This',
           ['That', 'These', 'Those'],
           ['en-this', 'en-phone'],
           {
-            explanation: 'This = algo cerca de vos. That = algo lejos.',
+            explanation: 'This = algo cerca de ti. That = algo lejos.',
           },
         ),
         ex.fillBlank(
@@ -335,7 +335,7 @@ export const unit05: UnitDef = {
       objective: 'Hablar de varias cosas con these y those.',
       exercises: [
         ex.fillBlank(
-          '___ are my keys. (acá)',
+          '___ are my keys. (aquí)',
           'Estas son mis llaves.',
           'These',
           ['This', 'That', 'Those'],

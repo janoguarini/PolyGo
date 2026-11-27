@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Polygo",
+    "name": "PolyGo",
     "slug": "polygo",
     "owner": "lichigap",
     "version": "0.1.0",
@@ -9,12 +9,21 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
     "backgroundColor": "#0B0A1A",
+    "locales": {
+      "es": "./locales/es.json",
+      "en": "./locales/en.json",
+      "pt-BR": "./locales/pt-BR.json",
+      "it": "./locales/it.json"
+    },
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.polygoidiomas.app",
       "usesAppleSignIn": true,
       "config": {
         "usesNonExemptEncryption": false
+      },
+      "infoPlist": {
+        "CFBundleAllowMixedLocalizations": true
       }
     },
     "android": {
@@ -80,7 +89,7 @@
             {
               "name": "PolygoQuiz",
               "displayName": "Pregunta rápida",
-              "description": "Respondé preguntas de vocabulario desde la pantalla de inicio.",
+              "description": "Responde preguntas de vocabulario desde la pantalla de inicio.",
               "ios": {
                 "supportedFamilies": [
                   "systemMedium",
@@ -110,7 +119,7 @@
       [
         "expo-image-picker",
         {
-          "photosPermission": "Polygo usa tus fotos sólo para que elijas tu foto de perfil.",
+          "photosPermission": "PolyGo usa tus fotos sólo para que elijas tu foto de perfil.",
           "cameraPermission": false,
           "microphonePermission": false
         }
@@ -135,7 +144,25 @@
         }
       ],
       "expo-status-bar",
-      "expo-localization",
+      [
+        "expo-localization",
+        {
+          "supportedLocales": {
+            "ios": [
+              "es",
+              "en",
+              "pt-BR",
+              "it"
+            ],
+            "android": [
+              "es",
+              "en",
+              "pt-BR",
+              "it"
+            ]
+          }
+        }
+      ],
       "expo-sharing"
     ],
     "experiments": {

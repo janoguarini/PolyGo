@@ -134,7 +134,11 @@ test('el aviso trae el idioma del duelo y el historial entre los dos amigos', as
   const [host, guest] = await friends('h2h');
   await register(guest, 'ExponentPushToken[h2h1]');
   // Dos partidas terminadas: una gana cada uno, más una ganada por el invitado.
-  for (const [hostResult, guestResult] of [['win', 'loss'], ['loss', 'win'], ['loss', 'win']]) {
+  for (const [hostResult, guestResult] of [
+    ['win', 'loss'],
+    ['loss', 'win'],
+    ['loss', 'win'],
+  ]) {
     const { rows } = await db.query(
       `insert into public.battles (language_code, mode, is_ranked, status, protocol_version, started_at, ended_at)
        values ('en', 'word_rush', false, 'completed', 1, now(), now()) returning id`,

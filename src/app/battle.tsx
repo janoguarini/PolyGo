@@ -40,6 +40,7 @@ import { arcade, arcadeText } from '@/features/battle/arcade/theme';
 import { battleGivesXp, isRankedSearch, matchLabel, ratingNote } from '@/features/battle/labels';
 import { rankedDisabled } from '@/features/battle/availability';
 import { battleErrorMessage, battleServerConfigured } from '@/features/battle/client';
+import { usesArcadeShell } from '@/features/battle/format';
 import { playerLook } from '@/features/battle/rivalLook';
 import { BattleHud } from '@/features/battle/components/BattleHud';
 import { BattleResult } from '@/features/battle/components/BattleResult';
@@ -286,15 +287,18 @@ function BattleView({
 
   // Word Rush: desde el rival encontrado hasta el «¡Tiempo!», pantalla completa oscura (la misma
   // identidad que el juego, sin saltos de tema). La práctica sola entra directo a la cuenta regresiva.
-  const inGame =
-    state.phase === 'found' || state.phase === 'countdown' || state.phase === 'playing';
   // La búsqueda de Ranked también va con la identidad oscura (ArcadeSearching), y desde el primer
   // instante: mientras conecta y entra a la cola ya se ve «Buscando rival» (sin «Preparando…»).
   const rankedSearch = isRankedSearch(state, rankedRoute);
-  const wordRushShell =
-    session.arcadeAnswer !== undefined &&
-    !state.friendly &&
-    ((inGame && (state.arcade !== null || state.phase === 'countdown')) || rankedSearch);
+  // Los amistosos que el servidor juega en Arcade (60 s) van a la misma pantalla que Ranked, con sus
+  // reglas; los del formato clásico (sin servidor), a la pantalla clásica de 75 s (format.ts).
+  const wordRushShell = usesArcadeShell({
+    arcadeCapable: session.arcadeAnswer !== undefined,
+    friendly: state.friendly,
+    hasArcade: state.arcade !== null,
+    phase: state.phase,
+    rankedSearch,
+  });
   if (wordRushShell && session.arcadeAnswer) {
     return (
       <View style={styles.arcadeRoot}>
@@ -491,7 +495,7 @@ function Body({
               placed={opponent?.isBot || (opponent?.gamesPlayed ?? 0) > 0}
             />
           </View>
-          {/* Formato clásico de 75 s (desafíos con amigos): Word Rush se presenta en ArcadeLobby. */}
+          {/* Formato clásico de 75 s (sin servidor de partidas): Arcade se presenta en ArcadeLobby. */}
           <Text color="textMuted" align="center">
             {t.rules}
           </Text>

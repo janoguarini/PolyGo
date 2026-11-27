@@ -107,7 +107,7 @@ export const IT_A2_U05: ItUnitDef = {
       'Contar algo que te pasó: la escena con el imperfetto (pioveva, stavo leggendo) y el hecho con el passato prossimo (all’improvviso è caduto…).',
     emoji: '💬',
     objective:
-      'Podés contar algo que te pasó (perdiste algo, te robaron, te caíste): describir la escena, decir qué estabas haciendo, qué pasó de repente y cómo terminó.',
+      'Puedes contar algo que te pasó (perdiste algo, te robaron, te caíste): describir la escena, decir qué estabas haciendo, qué pasó de repente y cómo terminó.',
     grammar: {
       title: 'Imperfetto y passato prossimo · stavo + gerundio',
       explanation:
@@ -217,7 +217,7 @@ export const IT_A2_U05: ItUnitDef = {
         'è caduto',
         'se cayó',
         'Il bambino è caduto.',
-        'El nene se cayó.',
+        'El niño se cayó.',
         ['past'],
         {
           acceptedTexts: ['è caduta', 'sono caduto', 'sono caduta'],
@@ -261,12 +261,12 @@ export const IT_A2_U05: ItUnitDef = {
             { target: 'Ho chiamato subito.', base: 'Llamé enseguida.' },
           ],
         },
-        takeaways: ["Preguntás cos'è successo?", 'Contás que perdiste, encontraste o llamaste.'],
+        takeaways: ["Preguntas cos'è successo?", 'Cuentas que perdiste, encontraste o llamaste.'],
         exercises: [
           ex.translationChoice(
             "cos'è successo?",
             '¿qué pasó?',
-            ['¿qué es eso?', '¿cómo te fue?', '¿qué hacés?'],
+            ['¿qué es eso?', '¿cómo te fue?', '¿qué haces?'],
             ['it-cos-e-successo'],
             {
               id: 'it.ex.2c2lyfgkjrnjub',
@@ -333,7 +333,7 @@ export const IT_A2_U05: ItUnitDef = {
           ),
           ex.shortAnswer(
             "Cos'è successo?",
-            '¿Qué pasó? (Respondé que perdiste la billetera.)',
+            '¿Qué pasó? (Responde que perdiste la billetera.)',
             'Ho perso il portafoglio.',
             ['Ho perso il mio portafoglio.', 'Ho perso il portafoglio!'],
             ['it-ho-perso', 'it-portafoglio'],
@@ -359,13 +359,13 @@ export const IT_A2_U05: ItUnitDef = {
             { target: 'Stavo camminando in centro.', base: 'Estaba caminando por el centro.' },
             {
               target: 'Mentre ero in autobus, ho visto Marco.',
-              base: 'Mientras estaba en el colectivo, vi a Marco.',
+              base: 'Mientras estaba en el autobús, vi a Marco.',
             },
           ],
         },
         takeaways: [
-          'Decís qué estabas haciendo: stavo + -ando / -endo.',
-          'Usás mentre para la escena.',
+          'Dices qué estabas haciendo: stavo + -ando / -endo.',
+          'Usas mentre para la escena.',
         ],
         exercises: [
           ex.translationChoice(
@@ -388,7 +388,7 @@ export const IT_A2_U05: ItUnitDef = {
           ),
           ex.fillBlank(
             'Mentre ___ in autobus, ho visto Marco.',
-            'Mientras estaba en el colectivo, vi a Marco.',
+            'Mientras estaba en el autobús, vi a Marco.',
             'ero',
             ['sono', 'ho', 'siamo'],
             ['it-mentre', 'it-ero'],
@@ -420,11 +420,11 @@ export const IT_A2_U05: ItUnitDef = {
             'it.ex.q28n2jg3hd55h8',
             TELEFONO,
             '¿Qué estaba haciendo Marta cuando pasó?',
-            'Estaba leyendo en el colectivo',
+            'Estaba leyendo en el autobús',
             [
               'Estaba durmiendo en el tren',
               'Estaba hablando por teléfono',
-              'Estaba bajando del colectivo',
+              'Estaba bajando del autobús',
             ],
             ['it-stavo', 'it-all-improvviso'],
             'Marta dice: «C’era tanta gente e io stavo leggendo. All’improvviso non c’era più!».',
@@ -437,14 +437,14 @@ export const IT_A2_U05: ItUnitDef = {
             [
               'Porque encontró la billetera',
               'Porque la policía llegó enseguida',
-              'Porque no tenía plata',
+              'Porque no tenía dinero',
             ],
             ['it-per-fortuna', 'it-subito'],
             'Marta dice: «Per fortuna i documenti erano a casa».',
           ),
           ex.shortAnswer(
             'Cosa stavi facendo?',
-            '¿Qué estabas haciendo? (Respondé que estabas leyendo.)',
+            '¿Qué estabas haciendo? (Responde que estabas leyendo.)',
             'Stavo leggendo.',
             ['Stavo leggendo un libro.', 'Io stavo leggendo.'],
             ['it-stavo'],
@@ -475,8 +475,8 @@ export const IT_A2_U05: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Usás el imperfetto para la escena y el passato prossimo para el hecho.',
-          "Usás all'improvviso para el momento clave.",
+          'Usas el imperfetto para la escena y el passato prossimo para el hecho.',
+          "Usas all'improvviso para el momento clave.",
         ],
         exercises: [
           ex.translationChoice(
@@ -559,7 +559,7 @@ export const IT_A2_U05: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Che tempo faceva?',
-            '¿Qué tiempo hacía? (Respondé que llovía y hacía frío.)',
+            '¿Qué tiempo hacía? (Responde que llovía y hacía frío.)',
             'Pioveva e faceva freddo.',
             ['Faceva freddo e pioveva.', 'Pioveva.'],
             ['it-pioveva'],
@@ -593,8 +593,8 @@ export const IT_A2_U05: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Sabés que imbarazzato es «avergonzado».',
-          'Unís causa y consecuencia con quindi.',
+          'Sabes que imbarazzato es «avergonzado».',
+          'Unes causa y consecuencia con quindi.',
         ],
         exercises: [
           ex.translationChoice(
@@ -643,7 +643,7 @@ export const IT_A2_U05: ItUnitDef = {
             DIARIO,
             '¿Qué le pasó a Giorgio?',
             'Se cayó delante de sus compañeros de trabajo',
-            ['Llegó tarde y lo retaron', 'Perdió la billetera', 'Se mojó con la lluvia'],
+            ['Llegó tarde y lo regañaron', 'Perdió la billetera', 'Se mojó con la lluvia'],
             ['it-e-caduto', 'it-mentre'],
             'Giorgio escribe: «Mentre correvo verso l’ufficio, sono caduto davanti a tutti i colleghi!».',
           ),
@@ -667,14 +667,14 @@ export const IT_A2_U05: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Eri imbarazzato?',
-            '¿Estabas avergonzado? (Respondé que sí, muy avergonzado o avergonzada.)',
+            '¿Estabas avergonzado? (Responde que sí, muy avergonzado o avergonzada.)',
             'Sì, ero molto imbarazzato.',
             ['Sì, ero molto imbarazzata.', 'Ero molto imbarazzato.', 'Ero molto imbarazzata.'],
             ['it-imbarazzato'],
             { id: 'it.ex.s1llnaklqryb2l' },
           ),
           ex.translateWrite(
-            'Llovía, así que tomé el colectivo.',
+            'Llovía, así que tomé el autobús.',
             "Pioveva, quindi ho preso l'autobus.",
             ['it-pioveva', 'it-quindi', 'it-ho-preso'],
             {
@@ -704,8 +704,8 @@ export const IT_A2_U05: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Contás un hecho con escena, momento clave y final.',
-          'Usás mentre, all’improvviso, quindi y per fortuna.',
+          'Cuentas un hecho con escena, momento clave y final.',
+          'Usas mentre, all’improvviso, quindi y per fortuna.',
         ],
         exercises: [
           ex.matchPairs(
@@ -767,7 +767,7 @@ export const IT_A2_U05: ItUnitDef = {
           ),
           ex.shortAnswer(
             "Cos'è successo ieri?",
-            '¿Qué pasó ayer? (Respondé que te robaron la billetera en el colectivo.)',
+            '¿Qué pasó ayer? (Responde que te robaron la billetera en el autobús.)',
             'Mi hanno rubato il portafoglio in autobus.',
             [
               'In autobus mi hanno rubato il portafoglio.',

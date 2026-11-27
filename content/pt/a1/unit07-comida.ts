@@ -22,7 +22,7 @@ export const unit07: UnitDef = {
   description: 'El desayuno, pedir con quero y queria, con o sin algo, y pedir la cuenta.',
   emoji: '🍞',
   objective:
-    'Podés nombrar lo que comés en el desayuno, pedir con quero o queria (más amable), decir con o sin qué y pedir la cuenta.',
+    'Puedes nombrar lo que comes en el desayuno, pedir con quero o queria (más amable), decir con o sin qué y pedir la cuenta.',
   grammar: {
     title: 'Quero y queria',
     explanation:
@@ -142,8 +142,8 @@ export const unit07: UnitDef = {
         ],
       },
       takeaways: [
-        'Nombrás lo que comés en el desayuno.',
-        'Sabés que café da manhã es el desayuno.',
+        'Nombras lo que comes en el desayuno.',
+        'Sabes que café da manhã es el desayuno.',
       ],
       exercises: [
         ex.translationChoice(
@@ -175,16 +175,16 @@ export const unit07: UnitDef = {
     },
     {
       title: 'Eu quero…',
-      objective: 'Decir qué querés comer o tomar.',
+      objective: 'Decir qué quieres comer o tomar.',
       intro: {
         explanation:
           'Quero es «quiero». Con amigos o en casa alcanza con quero; para pedir en un bar es más amable queria (lo vemos en la próxima lección).',
         examples: [
           { target: 'Quero um suco, por favor.', base: 'Quiero un jugo, por favor.' },
-          { target: 'Você quer água?', base: '¿Querés agua?' },
+          { target: 'Você quer água?', base: '¿Quieres agua?' },
         ],
       },
-      takeaways: ['Decís qué querés con quero.', 'Nombrás jugo y agua.'],
+      takeaways: ['Dices qué quieres con quero.', 'Nombras jugo y agua.'],
       exercises: [
         ex.translationChoice('quero', 'quiero', ['quisiera', 'tengo', 'soy'], ['pt-quero']),
         ex.imageChoice('🧃', 'suco', ['água', 'leite', 'café'], ['pt-suco']),
@@ -230,13 +230,13 @@ export const unit07: UnitDef = {
           { target: 'Para mim, um suco.', base: 'Para mí, un jugo.' },
         ],
       },
-      takeaways: ['Pedís con amabilidad con queria.', 'Pedís sin verbo con para mim….'],
+      takeaways: ['Pides con amabilidad con queria.', 'Pides sin verbo con para mim….'],
       exercises: [
         ex.translationChoice('queria', 'quisiera', ['quiero', 'tengo', 'para mí'], ['pt-queria']),
         ex.translationChoice(
           'para mim',
           'para mí',
-          ['para vos', 'por favor', 'yo'],
+          ['para ti', 'por favor', 'yo'],
           ['pt-para-mim'],
         ),
         ex.listenChoice(
@@ -269,7 +269,7 @@ export const unit07: UnitDef = {
         ),
         ex.shortAnswer(
           'O que você quer?',
-          '¿Qué querés? (Pedí amablemente un pan de queso.)',
+          '¿Qué quieres? (Pide amablemente un pan de queso.)',
           'Eu queria um pão de queijo.',
           [
             'Queria um pão de queijo.',
@@ -286,7 +286,7 @@ export const unit07: UnitDef = {
     },
     {
       title: 'Com ou sem?',
-      objective: 'Decir con o sin qué lo querés y si está rico.',
+      objective: 'Decir con o sin qué lo quieres y si está rico.',
       intro: {
         explanation:
           'Com es «con» y sem, «sin». Gostoso es «rico». Ojo con dos falsos amigos: polvo es el pulpo, y esquisito significa «raro», no «exquisito».',
@@ -295,7 +295,7 @@ export const unit07: UnitDef = {
           { target: 'O polvo é muito gostoso.', base: 'El pulpo es muy rico.' },
         ],
       },
-      takeaways: ['Pedís com o sem.', 'Decís que algo está rico con gostoso.'],
+      takeaways: ['Pides com o sem.', 'Dices que algo está rico con gostoso.'],
       exercises: [
         ex.translationChoice('sem', 'sin', ['con', 'para mí', 'también'], ['pt-sem']),
         ex.translationChoice('polvo', 'pulpo', ['polvo (tierra)', 'pollo', 'pan'], ['pt-polvo'], {
@@ -331,13 +331,13 @@ export const unit07: UnitDef = {
       objective: 'Pedir la cuenta.',
       intro: {
         explanation:
-          'Para pagar: a conta, por favor. Para agradecer, recordá: obrigado si sos hombre, obrigada si sos mujer.',
+          'Para pagar: a conta, por favor. Para agradecer, recuerda: obrigado si eres hombre, obrigada si eres mujer.',
         examples: [
           { target: 'A conta, por favor.', base: 'La cuenta, por favor.' },
           { target: 'Eu queria a conta, por favor.', base: 'Quisiera la cuenta, por favor.' },
         ],
       },
-      takeaways: ['Pedís la cuenta.', 'Pedís una comida completa con amabilidad.'],
+      takeaways: ['Pides la cuenta.', 'Pides una comida completa con amabilidad.'],
       exercises: [
         ex.translationChoice(
           'a conta',
@@ -380,7 +380,7 @@ export const unit07: UnitDef = {
         ),
         ex.shortAnswer(
           'Mais alguma coisa?',
-          '¿Algo más? (Pedí la cuenta.)',
+          '¿Algo más? (Pide la cuenta.)',
           'A conta, por favor.',
           [
             'A conta.',

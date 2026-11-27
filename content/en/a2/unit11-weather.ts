@@ -41,7 +41,7 @@ export const unit11: UnitDef = {
       '/reɪn/',
       '🌧️',
       'It is raining. Take an umbrella.',
-      'Está lloviendo. Llevá un paraguas.',
+      'Está lloviendo. Lleva un paraguas.',
       ['weather'],
       ['lluvia', 'llover'],
     ),
@@ -74,7 +74,7 @@ export const unit11: UnitDef = {
       '/snoʊ/',
       '❄️',
       'It snows a lot in winter here.',
-      'Acá nieva mucho en invierno.',
+      'Aquí nieva mucho en invierno.',
       ['weather'],
       ['nieve', 'nevar'],
     ),
@@ -105,7 +105,7 @@ export const unit11: UnitDef = {
       '/koʊld/',
       '🥶',
       'It is very cold. Put on your jacket.',
-      'Hace mucho frío. Ponete la campera.',
+      'Hace mucho frío. Ponte la chaqueta.',
       ['weather'],
       ['frío', 'fría'],
     ),
@@ -149,7 +149,7 @@ export const unit11: UnitDef = {
       '/ʌmˈbrɛlə/',
       '☂️',
       'Take an umbrella.',
-      'Llevá un paraguas.',
+      'Lleva un paraguas.',
       ['weather'],
     ),
     w(
@@ -255,11 +255,11 @@ export const unit11: UnitDef = {
     },
     {
       title: 'Frío y calor',
-      objective: 'La temperatura y cómo te sentís.',
+      objective: 'La temperatura y cómo te sientes.',
       exercises: [
         ex.fillBlank(
           'Put on your jacket. It is very ___.',
-          'Ponete la campera. Hace mucho frío.',
+          'Ponte la chaqueta. Hace mucho frío.',
           'cold',
           ['hot', 'warm', 'sunny'],
           ['en-cold', 'en-jacket'],
@@ -316,7 +316,7 @@ export const unit11: UnitDef = {
         ex.imageChoice('❄️', 'snow', ['rain', 'sun', 'storm'], ['en-snow']),
         ex.fillBlank(
           'It is ___ now. Take an umbrella.',
-          'Está lloviendo. Llevá un paraguas.',
+          'Está lloviendo. Lleva un paraguas.',
           'raining',
           ['rain', 'rains', 'rainy'],
           ['en-rain', 'en-umbrella', 'en-now'],
@@ -326,7 +326,7 @@ export const unit11: UnitDef = {
         ),
         ex.fillBlank(
           'It ___ a lot in winter here.',
-          'Acá nieva mucho en invierno.',
+          'Aquí nieva mucho en invierno.',
           'snows',
           ['snow', 'snowing', 'snowy'],
           ['en-snow', 'en-winter'],

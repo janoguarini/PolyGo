@@ -1,7 +1,8 @@
 import { getRank } from '@shared/ranking';
 
+import { achievementTitleFromEs } from '@/features/profile/strings';
 import { getRankLabelForRating } from '@/features/ranked/strings';
-import { getStrings } from '@/i18n';
+import { getInterfaceLanguage, getStrings } from '@/i18n';
 
 import type { FriendEntry } from './api';
 import type { FriendActivity } from './social';
@@ -55,8 +56,10 @@ export function activityText(event: FriendActivity): string | null {
     case 'lessons_week':
       return t.lessonsWeek(n);
     case 'achievement':
-      // El nombre del logro viene de la base (en español).
-      return event.label ? t.achievement(event.label) : null;
+      // El nombre del logro viene de la base (en español): se traduce por familia y nivel.
+      return event.label
+        ? t.achievement(achievementTitleFromEs(event.label, getInterfaceLanguage()))
+        : null;
     case 'streak':
       return t.streak(n);
     case 'new_friend':

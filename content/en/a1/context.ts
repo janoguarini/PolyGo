@@ -27,13 +27,13 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
     objective: 'Entender un saludo escrito y una presentación oral.',
     intro: {
       explanation:
-        'Vas a leer un mensaje y a escuchar a dos personas que se conocen. No hace falta entender cada palabra: buscá quién habla, cuándo y qué quiere.',
+        'Vas a leer un mensaje y a escuchar a dos personas que se conocen. No hace falta entender cada palabra: busca quién habla, cuándo y qué quiere.',
       examples: [
         { target: 'Nice to meet you.', base: 'Encantado de conocerte.' },
-        { target: 'Fine, thank you. And you?', base: 'Bien, gracias. ¿Y vos?' },
+        { target: 'Fine, thank you. And you?', base: 'Bien, gracias. ¿Y tú?' },
       ],
     },
-    takeaways: ['Ahora podés entender quién saluda, cuándo y qué pregunta en un mensaje corto.'],
+    takeaways: ['Ahora puedes entender quién saluda, cuándo y qué pregunta en un mensaje corto.'],
     curriculumLesson: 6,
     plannedBefore: [],
     curriculum: { primary: ['cL05', 'cR02'], secondary: ['v01'] },
@@ -131,17 +131,17 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
     unit: 2,
     status: 'draft',
     title: 'En contexto: ¿quién es quién?',
-    objective: 'Entender una ficha sobre personas y preguntas con «to be» dirigidas a vos.',
+    objective: 'Entender una ficha sobre personas y preguntas con «to be» dirigidas a ti.',
     intro: {
       explanation:
-        'Vas a leer una ficha sobre dos personas y a escuchar a una profesora que te hace preguntas. Fijate en quién es quién y en qué te preguntan a vos.',
+        'Vas a leer una ficha sobre dos personas y a escuchar a una profesora que te hace preguntas. Fíjate en quién es quién y en qué te preguntan a ti.',
       examples: [
         { target: 'He is not happy.', base: 'Él no está contento.' },
-        { target: 'Are you a student?', base: '¿Sos estudiante?' },
+        { target: 'Are you a student?', base: '¿Eres estudiante?' },
       ],
     },
     takeaways: [
-      'Ahora podés entender quién es quién en un texto corto y qué te preguntan con «to be».',
+      'Ahora puedes entender quién es quién en un texto corto y qué te preguntan con «to be».',
     ],
     curriculumLesson: 6,
     plannedBefore: [],
@@ -198,7 +198,7 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
         {
           kind: 'listening',
           id: 'en.stim.a1-u02-teacher-questions',
-          setting: 'Primer día de clase: la profesora te habla a vos.',
+          setting: 'Primer día de clase: la profesora te habla a ti.',
           speakers: [{ name: 'Kate', voice: 'a' }],
           rate: A1_LISTENING_RATE,
           lines: [
@@ -219,8 +219,8 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
           {
             id: 'en.ex.xi7fc124gjv0hs',
             question: '¿Qué te pregunta Kate primero?',
-            answer: 'Si sos estudiante',
-            wrong: ['Si estás cansado', 'Cómo te llamás'],
+            answer: 'Si eres estudiante',
+            wrong: ['Si estás cansado', 'Cómo te llamas'],
             concepts: ['en-are', 'en-student'],
             why: 'Primero pregunta «Are you a student?»; después, si estás cansado.',
           },
@@ -230,7 +230,7 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
             answer: 'No, I am not.',
             wrong: ['No, she is not.', 'No, you are not.'],
             concepts: ['en-am', 'en-not', 'en-tired'],
-            why: 'Te pregunta a vos («Are you tired?»): se responde con «I am» o «I am not».',
+            why: 'Te pregunta a ti («Are you tired?»): se responde con «I am» o «I am not».',
           },
         ],
       ),
@@ -245,13 +245,13 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
     objective: 'Entender datos de jugadores: número, edad y país.',
     intro: {
       explanation:
-        'Vas a leer las tarjetas de tres jugadores de un equipo infantil y a escuchar a un entrenador hablar con un chico nuevo. Prestá atención a los números.',
+        'Vas a leer las tarjetas de tres jugadores de un equipo infantil y a escuchar a un entrenador hablar con un chico nuevo. Presta atención a los números.',
       examples: [
         { target: 'I am from Mexico.', base: 'Soy de México.' },
         { target: 'He is twelve years old.', base: 'Tiene doce años.' },
       ],
     },
-    takeaways: ['Ahora podés encontrar y comparar números, edades y países en un texto corto.'],
+    takeaways: ['Ahora puedes encontrar y comparar números, edades y países en un texto corto.'],
     curriculumLesson: 6,
     plannedBefore: [],
     curriculum: { primary: ['cR01', 'cL03'], secondary: ['v03'] },
@@ -358,13 +358,13 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
     objective: 'Entender una descripción y una conversación sobre una familia.',
     intro: {
       explanation:
-        'Vas a leer cómo describe Ana a su familia y a escuchar una conversación sobre una foto. Fijate en las relaciones: quién es hermano, abuela o bebé de quién.',
+        'Vas a leer cómo describe Ana a su familia y a escuchar una conversación sobre una foto. Fíjate en las relaciones: quién es hermano, abuela o bebé de quién.',
       examples: [
         { target: 'My sister has a baby.', base: 'Mi hermana tiene un bebé.' },
         { target: 'Who is he?', base: '¿Quién es él?' },
       ],
     },
-    takeaways: ['Ahora podés entender quién es quién en una familia descripta en inglés.'],
+    takeaways: ['Ahora puedes entender quién es quién en una familia descripta en inglés.'],
     curriculumLesson: 6,
     plannedBefore: [],
     curriculum: { primary: ['cR03', 'cL05'], secondary: ['v04'] },
@@ -474,13 +474,13 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
     objective: 'Entender mensajes sobre objetos: de quién son, cómo son.',
     intro: {
       explanation:
-        'Vas a leer un mensaje y escuchar una conversación sobre cosas que alguien encontró. Fijate en el color, el tamaño y de quién es cada cosa.',
+        'Vas a leer un mensaje y escuchar una conversación sobre cosas que alguien encontró. Fíjate en el color, el tamaño y de quién es cada cosa.',
       examples: [
         { target: 'Is this your book?', base: '¿Este es tu libro?' },
         { target: 'That phone is black.', base: 'Ese teléfono es negro.' },
       ],
     },
-    takeaways: ['Ahora podés entender de quién es un objeto y cómo es, en un mensaje corto.'],
+    takeaways: ['Ahora puedes entender de quién es un objeto y cómo es, en un mensaje corto.'],
     curriculumLesson: 7,
     plannedBefore: ['U5 L6 Uno, dos, muchos (plurales, g05)'],
     curriculum: { primary: ['cR05', 'cL01'], secondary: ['g06'] },
@@ -517,7 +517,7 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
           },
           {
             id: 'en.ex.tc8m7y4n9igolj',
-            question: '¿De quién es la lapicera negra?',
+            question: '¿De quién es el bolígrafo negro?',
             answer: 'De Mia',
             wrong: ['De Ben', 'De la profesora'],
             concepts: ['en-black', 'en-pen', 'en-my'],
@@ -584,17 +584,17 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
   {
     unit: 6,
     status: 'draft',
-    title: 'En contexto: un departamento en alquiler',
+    title: 'En contexto: un apartamento en alquiler',
     objective: 'Entender un aviso de alquiler y dónde está cada cosa.',
     intro: {
       explanation:
-        'Vas a leer un aviso de un departamento y a escuchar a la dueña mostrarlo. Buscá cuántas habitaciones hay y dónde está cada cosa.',
+        'Vas a leer un aviso de un apartamento y a escuchar a la dueña mostrarlo. Busca cuántas habitaciones hay y dónde está cada cosa.',
       examples: [
         { target: 'There are two bedrooms.', base: 'Hay dos dormitorios.' },
         { target: 'The keys are on the table.', base: 'Las llaves están sobre la mesa.' },
       ],
     },
-    takeaways: ['Ahora podés entender qué tiene una casa y dónde está cada cosa.'],
+    takeaways: ['Ahora puedes entender qué tiene una casa y dónde está cada cosa.'],
     curriculumLesson: 6,
     plannedBefore: [],
     curriculum: { primary: ['cR03', 'cL04'], secondary: ['p04'] },
@@ -610,7 +610,7 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
           kind: 'reading',
           id: 'en.stim.a1-u06-rental-ad',
           document: 'ad',
-          setting: 'Un aviso de un departamento en alquiler.',
+          setting: 'Un aviso de un apartamento en alquiler.',
           title: 'Apartment',
           lines: [
             'Small apartment.',
@@ -623,7 +623,7 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
         [
           {
             id: 'en.ex.j57dtqsdfox60t',
-            question: '¿Cuántos dormitorios tiene el departamento?',
+            question: '¿Cuántos dormitorios tiene el apartamento?',
             answer: 'Dos',
             wrong: ['Uno', 'Tres'],
             concepts: ['en-there-are', 'en-bedroom'],
@@ -631,7 +631,7 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
           },
           {
             id: 'en.ex.0rfgsc91m7fo0f',
-            question: '¿Qué mueble hay en el living?',
+            question: '¿Qué mueble hay en la sala?',
             answer: 'Un sofá',
             wrong: ['Una cama', 'Una mesa'],
             concepts: ['en-sofa', 'en-living-room', 'en-in'],
@@ -651,14 +651,17 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
         {
           kind: 'listening',
           id: 'en.stim.a1-u06-house-tour',
-          setting: 'Nora le muestra el departamento a Sara.',
+          setting: 'Nora le muestra el apartamento a Sara.',
           speakers: [
             { name: 'Nora', voice: 'a' },
             { name: 'Sara', voice: 'b' },
           ],
           rate: A1_LISTENING_RATE,
           lines: [
-            { speaker: 'Nora', text: 'This is the living room. The kitchen is next to the living room.' },
+            {
+              speaker: 'Nora',
+              text: 'This is the living room. The kitchen is next to the living room.',
+            },
             { speaker: 'Sara', text: 'Where is the bathroom?' },
             { speaker: 'Nora', text: 'The bathroom is next to the bedroom.' },
             { speaker: 'Sara', text: 'And the keys?' },
@@ -669,7 +672,7 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
           {
             id: 'en.ex.djri0furyacy0t',
             question: '¿Dónde está la cocina?',
-            answer: 'Al lado del living',
+            answer: 'Al lado de la sala',
             wrong: ['Al lado del dormitorio', 'Al lado del baño'],
             concepts: ['en-kitchen', 'en-next-to', 'en-living-room'],
             why: '«The kitchen is next to the living room».',
@@ -703,13 +706,13 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
     objective: 'Entender un menú y un pedido en un café.',
     intro: {
       explanation:
-        'Vas a leer el menú de un café y a escuchar a una clienta pedir. Fijate qué hay en cada comida del día y qué pide ella.',
+        'Vas a leer el menú de un café y a escuchar a una clienta pedir. Fíjate qué hay en cada comida del día y qué pide ella.',
       examples: [
         { target: 'I want eggs and bread, please.', base: 'Quiero huevos y pan, por favor.' },
-        { target: 'Are you hungry?', base: '¿Tenés hambre?' },
+        { target: 'Are you hungry?', base: '¿Tienes hambre?' },
       ],
     },
-    takeaways: ['Ahora podés entender un menú sencillo y un pedido en un café.'],
+    takeaways: ['Ahora puedes entender un menú sencillo y un pedido en un café.'],
     curriculumLesson: 6,
     plannedBefore: [],
     curriculum: { primary: ['cR01', 'cL05'], secondary: ['p10'] },
@@ -821,13 +824,13 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
     objective: 'Entender un mensaje escrito y uno de voz sobre rutinas.',
     intro: {
       explanation:
-        'Vas a leer un mensaje de Tom sobre su rutina y a escuchar un mensaje de voz que le deja a su mamá. Fijate qué hace siempre, qué no hace y dónde.',
+        'Vas a leer un mensaje de Tom sobre su rutina y a escuchar un mensaje de voz que le deja a su mamá. Fíjate qué hace siempre, qué no hace y dónde.',
       examples: [
         { target: 'I never watch TV.', base: 'Nunca miro televisión.' },
         { target: "She doesn't work.", base: 'Ella no trabaja.' },
       ],
     },
-    takeaways: ['Ahora podés entender qué hace alguien todos los días y qué no hace nunca.'],
+    takeaways: ['Ahora puedes entender qué hace alguien todos los días y qué no hace nunca.'],
     curriculumLesson: 6,
     plannedBefore: [],
     curriculum: { primary: ['cR02', 'cL06'], secondary: ['g12'] },
@@ -876,7 +879,7 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
             answer: 'Estudia en la escuela',
             wrong: ['Trabaja todos los días', 'Estudia en casa'],
             concepts: ['en-doesnt', 'en-work', 'en-school'],
-            why: '«My sister doesn\'t work. She studies at school».',
+            why: "«My sister doesn't work. She studies at school».",
           },
         ],
       ),
@@ -898,8 +901,8 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
           {
             id: 'en.ex.i94dczua9ctapi',
             question: '¿Dónde vive Tom?',
-            answer: 'En un departamento chico',
-            wrong: ['En una casa grande', 'En un departamento grande'],
+            answer: 'En un apartamento chico',
+            wrong: ['En una casa grande', 'En un apartamento grande'],
             concepts: ['en-live', 'en-small', 'en-apartment'],
             why: '«I live in a small apartment».',
           },
@@ -932,13 +935,13 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
     objective: 'Entender un horario y un anuncio con días y horas.',
     intro: {
       explanation:
-        'Vas a leer el horario de un museo y a escuchar un anuncio. Buscá qué días abre, a qué hora y cuándo cierra.',
+        'Vas a leer el horario de un museo y a escuchar un anuncio. Busca qué días abre, a qué hora y cuándo cierra.',
       examples: [
-        { target: 'The museum opens at nine o\'clock.', base: 'El museo abre a las nueve.' },
+        { target: "The museum opens at nine o'clock.", base: 'El museo abre a las nueve.' },
         { target: 'at half past ten', base: 'a las diez y media' },
       ],
     },
-    takeaways: ['Ahora podés encontrar días y horarios en un programa y en un anuncio.'],
+    takeaways: ['Ahora puedes encontrar días y horarios en un programa y en un anuncio.'],
     curriculumLesson: 7,
     plannedBefore: ['U9 L6 Meses y fechas (v09)'],
     curriculum: { primary: ['cR01', 'cL03'], secondary: ['v09'] },
@@ -978,7 +981,7 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
             answer: 'A las 9',
             wrong: ['A las 10', 'A las 5'],
             concepts: ['en-saturday', 'en-oclock'],
-            why: '«Saturday and Sunday: 9 o\'clock to 5 o\'clock»: abre a las 9 y cierra a las 5.',
+            why: "«Saturday and Sunday: 9 o'clock to 5 o'clock»: abre a las 9 y cierra a las 5.",
           },
           {
             id: 'en.ex.i60vjk21r8ybso',
@@ -998,7 +1001,10 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
           speakers: [{ name: 'Anuncio', voice: 'a' }],
           rate: A1_LISTENING_RATE,
           lines: [
-            { speaker: 'Anuncio', text: "Good afternoon. Today the museum closes at five o'clock." },
+            {
+              speaker: 'Anuncio',
+              text: "Good afternoon. Today the museum closes at five o'clock.",
+            },
             { speaker: 'Anuncio', text: "Tomorrow, Sunday, the museum opens at nine o'clock." },
             { speaker: 'Anuncio', text: 'Thank you.' },
           ],
@@ -1010,7 +1016,7 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
             answer: 'A las 5',
             wrong: ['A las 9', 'A las 6'],
             concepts: ['en-today', 'en-five', 'en-oclock'],
-            why: '«Today the museum closes at five o\'clock».',
+            why: "«Today the museum closes at five o'clock».",
           },
           {
             id: 'en.ex.gcyrko2vbwvha5',
@@ -1026,7 +1032,7 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
             answer: 'Abre el museo',
             wrong: ['Cierra el museo', 'Empieza una visita para chicos'],
             concepts: ['en-tomorrow', 'en-nine', 'en-at'],
-            why: '«The museum opens at nine o\'clock».',
+            why: "«The museum opens at nine o'clock».",
           },
         ],
       ),
@@ -1041,13 +1047,13 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
     objective: 'Entender carteles e indicaciones para llegar a un lugar.',
     intro: {
       explanation:
-        'Vas a leer un cartel, escuchar a alguien que pide indicaciones en la calle y seguir unas indicaciones escritas. Fijate hacia dónde hay que ir y si queda cerca o lejos.',
+        'Vas a leer un cartel, escuchar a alguien que pide indicaciones en la calle y seguir unas indicaciones escritas. Fíjate hacia dónde hay que ir y si queda cerca o lejos.',
       examples: [
-        { target: 'Go straight on and turn left.', base: 'Seguí derecho y doblá a la izquierda.' },
+        { target: 'Go straight on and turn left.', base: 'Sigue derecho y dobla a la izquierda.' },
         { target: 'The hotel is far.', base: 'El hotel queda lejos.' },
       ],
     },
-    takeaways: ['Ahora podés entender indicaciones sencillas para llegar a un lugar.'],
+    takeaways: ['Ahora puedes entender indicaciones sencillas para llegar a un lugar.'],
     curriculumLesson: 6,
     plannedBefore: [],
     curriculum: { primary: ['cR06', 'cL04', 'cR01'], secondary: ['g19'] },
@@ -1075,7 +1081,7 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
         [
           {
             id: 'en.ex.py9y4uvzvfe4wc',
-            question: 'Si querés ir al parque, ¿hacia dónde tenés que doblar?',
+            question: 'Si quieres ir al parque, ¿hacia dónde tienes que doblar?',
             answer: 'A la derecha',
             wrong: ['A la izquierda', 'No hay que doblar: es derecho'],
             concepts: ['en-park', 'en-turn', 'en-right'],
@@ -1133,14 +1139,14 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
             id: 'en.ex.vnpfm05s1qx28q',
             question: '¿Cómo se llega al cine?',
             answer: 'Derecho y después a la izquierda',
-            wrong: ['Derecho y después a la derecha', 'En colectivo'],
+            wrong: ['Derecho y después a la derecha', 'En autobús'],
             concepts: ['en-straight-on', 'en-turn', 'en-left'],
             why: '«Go straight on and turn left».',
           },
           {
             id: 'en.ex.0911px10w8v7to',
             question: '¿Qué le aconseja Joe para ir al hotel?',
-            answer: 'Tomar el colectivo, porque queda lejos',
+            answer: 'Tomar el autobús, porque queda lejos',
             wrong: ['Ir caminando, porque queda cerca', 'Doblar a la izquierda en el cine'],
             concepts: ['en-far', 'en-bus', 'en-hotel'],
             why: '«The hotel is far. Take the bus».',
@@ -1200,13 +1206,13 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
     objective: 'Entender una publicación y una conversación sobre gustos.',
     intro: {
       explanation:
-        'Vas a leer lo que cuenta Lily sobre sus pasatiempos y a escuchar a dos amigos hablar de lo que les gusta. Fijate qué les encanta, qué odian y qué saben hacer.',
+        'Vas a leer lo que cuenta Lily sobre sus pasatiempos y a escuchar a dos amigos hablar de lo que les gusta. Fíjate qué les encanta, qué odian y qué saben hacer.',
       examples: [
         { target: "I can't play football.", base: 'No sé jugar al fútbol.' },
         { target: 'My favorite sport is swimming.', base: 'Mi deporte favorito es la natación.' },
       ],
     },
-    takeaways: ['Ahora podés entender qué le gusta a alguien, qué odia y qué sabe hacer.'],
+    takeaways: ['Ahora puedes entender qué le gusta a alguien, qué odia y qué sabe hacer.'],
     curriculumLesson: 6,
     plannedBefore: [],
     curriculum: { primary: ['cR02', 'cL05'], secondary: ['p06'] },
@@ -1246,7 +1252,7 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
             answer: 'Jugar al fútbol',
             wrong: ['Nadar', 'Cantar'],
             concepts: ['en-can', 'en-football', 'en-but'],
-            why: '«I can\'t play football»; en cambio, nada muy bien y canta todos los días.',
+            why: "«I can't play football»; en cambio, nada muy bien y canta todos los días.",
           },
           {
             id: 'en.ex.4a6l6g4jc1omw4',
@@ -1298,7 +1304,7 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
             answer: 'Bailar',
             wrong: ['Jugar al fútbol', 'Cantar'],
             concepts: ['en-can', 'en-dance'],
-            why: '«No, I can\'t. But I can dance!».',
+            why: "«No, I can't. But I can dance!».",
           },
         ],
       ),
@@ -1310,16 +1316,19 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
     unit: 12,
     status: 'draft',
     title: 'En contexto: una conversación completa',
-    objective: 'Entender una conversación en clase y las preguntas que te hacen a vos.',
+    objective: 'Entender una conversación en clase y las preguntas que te hacen a ti.',
     intro: {
       explanation:
-        'Vas a escuchar a una profesora que te habla a vos y una conversación en clase. Fijate qué te pregunta, qué te pide y qué problema tiene cada uno.',
+        'Vas a escuchar a una profesora que te habla a ti y una conversación en clase. Fíjate qué te pregunta, qué te pide y qué problema tiene cada uno.',
       examples: [
         { target: "I don't understand.", base: 'No entiendo.' },
-        { target: 'Can you speak slowly, please?', base: '¿Podés hablar más despacio, por favor?' },
+        {
+          target: 'Can you speak slowly, please?',
+          base: '¿Puedes hablar más despacio, por favor?',
+        },
       ],
     },
-    takeaways: ['Ahora podés entender cuándo alguien no entiende y qué pide para resolverlo.'],
+    takeaways: ['Ahora puedes entender cuándo alguien no entiende y qué pide para resolverlo.'],
     curriculumLesson: 7,
     plannedBefore: ['U12 L6 Mensajes y postales (p09, cR02)'],
     curriculum: { primary: ['cL02', 'cL05'], secondary: ['v12'] },
@@ -1334,7 +1343,7 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
         {
           kind: 'listening',
           id: 'en.stim.a1-u12-teacher-to-you',
-          setting: 'En clase, la profesora te habla a vos.',
+          setting: 'En clase, la profesora te habla a ti.',
           speakers: [{ name: 'Ms. Park', voice: 'b' }],
           rate: A1_LISTENING_RATE,
           lines: [
@@ -1347,8 +1356,8 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
           {
             id: 'en.ex.y258gw5mlmpoxl',
             question: '¿Qué te pregunta primero la profesora?',
-            answer: 'Cómo te llamás',
-            wrong: ['Cómo estás', 'De dónde sos'],
+            answer: 'Cómo te llamas',
+            wrong: ['Cómo estás', 'De dónde eres'],
             concepts: ['en-what', 'en-your', 'en-name'],
             why: 'Primero pregunta «What is your name?».',
           },
@@ -1358,7 +1367,7 @@ export const EN_A1_CONTEXT_LESSONS: ContextLessonDef[] = [
             answer: 'Yes, I do.',
             wrong: ['Yes, I am.', 'Yes, it is.'],
             concepts: ['en-do', 'en-speak', 'en-spanish'],
-            why: 'A «Do you speak Spanish?» se responde con «do»: «Yes, I do» o «No, I don\'t».',
+            why: "A «Do you speak Spanish?» se responde con «do»: «Yes, I do» o «No, I don't».",
           },
           {
             id: 'en.ex.umf74h75lqm3r1',

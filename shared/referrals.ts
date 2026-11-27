@@ -42,9 +42,9 @@ export const REFERRALS = {
 export const REFERRAL_GOAL = REFERRALS.milestones[REFERRALS.milestones.length - 1]!.at;
 
 export const BADGES: Record<BadgeId, { name: string; description: string }> = {
-  recruiter: { name: 'Reclutador', description: '3 amigos aprendiendo con vos' },
-  ambassador: { name: 'Embajador PolyGo', description: '5 amigos aprendiendo con vos' },
-  elite_inviter: { name: 'Invitador Élite', description: '10 amigos aprendiendo con vos' },
+  recruiter: { name: 'Reclutador', description: '3 amigos aprendiendo contigo' },
+  ambassador: { name: 'Embajador PolyGo', description: '5 amigos aprendiendo contigo' },
+  elite_inviter: { name: 'Invitador Élite', description: '10 amigos aprendiendo contigo' },
 };
 
 /** Paso que le falta a una invitación pendiente (lo calcula el servidor). */
@@ -87,4 +87,4 @@ export function nextMilestone(qualified: number): ReferralMilestone | null {
 }
 
 export const INVITE_SHARE_MESSAGE =
-  '¡Estoy aprendiendo idiomas en PolyGo! Sumate con mi invitación y desbloqueemos recompensas juntos. 🚀';
+  '¡Estoy aprendiendo idiomas en PolyGo! Súmate con mi invitación y desbloqueemos recompensas juntos. 🚀';

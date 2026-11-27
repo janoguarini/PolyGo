@@ -79,7 +79,7 @@ export const EN_B1_U10: B1UnitDef = {
       'Titulares y artículos, contar lo que alguien dijo o preguntó (estilo indirecto), sucesos y noticias falsas.',
     emoji: '📰',
     objective:
-      'Podés entender titulares y noticias breves, contar lo que otra persona dijo o preguntó y distinguir una fuente confiable.',
+      'Puedes entender titulares y noticias breves, contar lo que otra persona dijo o preguntó y distinguir una fuente confiable.',
     grammar: {
       title: 'Estilo indirecto',
       explanation:
@@ -198,7 +198,7 @@ export const EN_B1_U10: B1UnitDef = {
         '/ˈæksədənt/',
         '🚑',
         'There was an accident on the road.',
-        'Hubo un accidente en la ruta.',
+        'Hubo un accidente en la carretera.',
         ['news'],
       ),
       w(
@@ -273,7 +273,7 @@ export const EN_B1_U10: B1UnitDef = {
         '/sɔrs/',
         undefined,
         'Always check the source.',
-        'Siempre fijate la fuente.',
+        'Siempre fíjate la fuente.',
         ['news', 'media'],
       ),
     ],
@@ -281,7 +281,7 @@ export const EN_B1_U10: B1UnitDef = {
       // ------------------------------------------------------------------------------------ L1
       {
         title: 'Titulares',
-        objective: 'Entender titulares y hablar de cómo te informás.',
+        objective: 'Entender titulares y hablar de cómo te informas.',
         intro: {
           explanation:
             'Los titulares (headlines) son cortos: usan el presente para hechos recientes (Local team wins the cup) y to o will para el futuro (New line will open). The news son las noticias o el noticiero; newspaper, el diario; article, una nota.',
@@ -297,8 +297,8 @@ export const EN_B1_U10: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Entendés titulares cortos.',
-          'Contás cómo te informás: the news, a newspaper, an article.',
+          'Entiendes titulares cortos.',
+          'Cuentas cómo te informas: the news, a newspaper, an article.',
         ],
         exercises: [
           ex.matchPairs(
@@ -359,7 +359,7 @@ export const EN_B1_U10: B1UnitDef = {
           }),
           ex.shortAnswer(
             'How do you get the news? (lees el diario por internet)',
-            '¿Cómo te informás?',
+            '¿Cómo te informas?',
             'I read the newspaper online.',
             ['I read the news online.', 'I read newspapers online.', 'Online.'],
             ['en-newspaper', 'en-online'],
@@ -393,8 +393,8 @@ export const EN_B1_U10: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Contás lo que alguien dijo con said y told.',
-          'Pasás el verbo un tiempo atrás: is → was, will → would, can → could.',
+          'Cuentas lo que alguien dijo con said y told.',
+          'Pasas el verbo un tiempo atrás: is → was, will → would, can → could.',
         ],
         exercises: [
           ex.fillBlank(
@@ -504,8 +504,8 @@ export const EN_B1_U10: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Contás preguntas de sí o no con asked if.',
-          'Contás preguntas de información: asked where / what / when…',
+          'Cuentas preguntas de sí o no con asked if.',
+          'Cuentas preguntas de información: asked where / what / when…',
         ],
         exercises: [
           ex.fillBlank(
@@ -521,7 +521,7 @@ export const EN_B1_U10: B1UnitDef = {
           ),
           ex.fillBlank(
             '«Where do you live?» → He asked me where I ___.',
-            '«¿Dónde vivís?» → Me preguntó dónde vivía.',
+            '«¿Dónde vives?» → Me preguntó dónde vivía.',
             'lived',
             ['live', 'did live', 'do live'],
             ['en-ask', 'en-live'],
@@ -542,7 +542,7 @@ export const EN_B1_U10: B1UnitDef = {
             'en.ex.2ia38vi91u2dsh',
             BOSS,
             '¿Qué preguntó Kate?',
-            'Si iban a ganar más plata',
+            'Si iban a ganar más dinero',
             [
               'Si podía trabajar desde casa',
               'Cuándo era la próxima reunión',
@@ -615,8 +615,8 @@ export const EN_B1_U10: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Entendés noticias de accidentes e incendios.',
-          'Decís de dónde viene la información: according to.',
+          'Entiendes noticias de accidentes e incendios.',
+          'Dices de dónde viene la información: according to.',
         ],
         exercises: [
           ex.matchPairs(
@@ -631,7 +631,7 @@ export const EN_B1_U10: B1UnitDef = {
           ),
           ex.fillBlank(
             'There was an ___ on the road this morning.',
-            'Esta mañana hubo un accidente en la ruta.',
+            'Esta mañana hubo un accidente en la carretera.',
             'accident',
             ['article', 'headline', 'newspaper'],
             ['en-accident'],
@@ -712,18 +712,18 @@ export const EN_B1_U10: B1UnitDef = {
         objective: 'Hablar de política, anuncios y noticias falsas; revisar la fuente.',
         intro: {
           explanation:
-            'Government (gobierno), president (presidente) y election (elecciones) son palabras frecuentes en las noticias. Announce es anunciar. Fake news son noticias falsas: antes de compartir, check the source (revisá la fuente).',
+            'Government (gobierno), president (presidente) y election (elecciones) son palabras frecuentes en las noticias. Announce es anunciar. Fake news son noticias falsas: antes de compartir, check the source (revisa la fuente).',
           examples: [
             {
               target: 'The government announced new rules.',
               base: 'El gobierno anunció nuevas normas.',
             },
-            { target: 'Always check the source.', base: 'Siempre revisá la fuente.' },
+            { target: 'Always check the source.', base: 'Siempre revisa la fuente.' },
           ],
         },
         takeaways: [
-          'Entendés noticias sobre el gobierno y las elecciones.',
-          'Reconocés noticias falsas y revisás la fuente.',
+          'Entiendes noticias sobre el gobierno y las elecciones.',
+          'Reconoces noticias falsas y revisas la fuente.',
         ],
         exercises: [
           ex.translationChoice(
@@ -789,7 +789,7 @@ export const EN_B1_U10: B1UnitDef = {
           ),
           ex.shortAnswer(
             'What should you do before you share a story? (revisar la fuente)',
-            '¿Qué tenés que hacer antes de compartir una noticia?',
+            '¿Qué tienes que hacer antes de compartir una noticia?',
             'Check the source.',
             [
               'You should check the source.',

@@ -47,7 +47,7 @@ const words: WordDef[] = [
     translation: 'deletrear',
     ipa: '/spɛl/',
     exampleEn: 'Please spell your name.',
-    exampleEs: 'Por favor, deletreá tu nombre.',
+    exampleEs: 'Por favor, deletrea tu nombre.',
     tags: ['alphabet', 'verbs'],
   },
   {
@@ -218,8 +218,8 @@ export const EN_A1_U13: PlannedWrittenUnitDef = {
           ],
         },
         takeaways: [
-          'Reconocés las letras del alfabeto inglés por su nombre.',
-          'Distinguís de oído la E de la I y la G de la J.',
+          'Reconoces las letras del alfabeto inglés por su nombre.',
+          'Distingues de oído la E de la I y la G de la J.',
         ],
         exercises: [
           ex.translationChoice(
@@ -290,14 +290,14 @@ export const EN_A1_U13: PlannedWrittenUnitDef = {
           ],
         },
         takeaways: [
-          'Preguntás cómo se escribe algo con How do you spell it?',
-          'Deletreás un nombre y usás double para las letras repetidas.',
+          'Preguntas cómo se escribe algo con How do you spell it?',
+          'Deletreas un nombre y usas double para las letras repetidas.',
         ],
         exercises: [
           ex.translationChoice(
             'How do you spell it?',
             '¿Cómo se escribe?',
-            ['¿Cómo estás?', '¿Cuántos años tenés?', '¿De dónde sos?'],
+            ['¿Cómo estás?', '¿Cuántos años tienes?', '¿De dónde eres?'],
             ['en-how-do-you-spell-it'],
             { id: 'en.ex.94ynk81pklno83' },
           ),
@@ -385,8 +385,8 @@ export const EN_A1_U13: PlannedWrittenUnitDef = {
           ],
         },
         takeaways: [
-          'Decís la nacionalidad con to be y mayúscula: I am Argentinian.',
-          'Preguntás la nacionalidad con What is your nationality?',
+          'Dices la nacionalidad con to be y mayúscula: I am Argentinian.',
+          'Preguntas la nacionalidad con What is your nationality?',
         ],
         exercises: [
           ex.translationChoice(
@@ -486,8 +486,8 @@ export const EN_A1_U13: PlannedWrittenUnitDef = {
           ],
         },
         takeaways: [
-          'Pedís un teléfono, un correo o una dirección con What is your…?',
-          'Reconocés un número de teléfono y un correo en un texto.',
+          'Pides un teléfono, un correo o una dirección con What is your…?',
+          'Reconoces un número de teléfono y un correo en un texto.',
         ],
         exercises: [
           ex.translationChoice(
@@ -577,15 +577,15 @@ export const EN_A1_U13: PlannedWrittenUnitDef = {
         objective: 'Completar y leer un formulario con datos personales.',
         intro: {
           explanation:
-            'Un formulario (form) pide los datos campo por campo: First name es el nombre de pila; Surname, el apellido; Age, la edad, y City, la ciudad. Se completa con el dato solo, sin oración: Surname: Ruiz. Practicás con el formulario de Sofia Ruiz, una persona inventada.',
+            'Un formulario (form) pide los datos campo por campo: First name es el nombre de pila; Surname, el apellido; Age, la edad, y City, la ciudad. Se completa con el dato solo, sin oración: Surname: Ruiz. Practicas con el formulario de Sofia Ruiz, una persona inventada.',
           examples: [
             { target: 'First name: Sofia. Surname: Ruiz.', base: 'Nombre: Sofia. Apellido: Ruiz.' },
             { target: 'What is your surname?', base: '¿Cuál es tu apellido?' },
           ],
         },
         takeaways: [
-          'Entendés los campos de un formulario: first name, surname, age, city.',
-          'Sacás de un formulario el dato que te piden.',
+          'Entiendes los campos de un formulario: first name, surname, age, city.',
+          'Sacas de un formulario el dato que te piden.',
         ],
         exercises: [
           ex.translationChoice(

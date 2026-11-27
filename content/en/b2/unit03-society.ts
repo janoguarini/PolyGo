@@ -151,7 +151,7 @@ export const EN_B2_U03: B2UnitDef = {
       'Cambios en la sociedad, generaciones y costumbres, cifras y encuestas, y la voz pasiva avanzada: has been done, is being done, it is said that…',
     emoji: '🏙️',
     objective:
-      'Podés hablar de cambios sociales, entender una noticia con cifras y contar lo que se dice o se espera con la voz pasiva.',
+      'Puedes hablar de cambios sociales, entender una noticia con cifras y contar lo que se dice o se espera con la voz pasiva.',
     grammar: {
       title: 'Voz pasiva avanzada',
       explanation:
@@ -383,8 +383,8 @@ export const EN_B2_U03: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Hablás de la sociedad, las generaciones y sus costumbres.',
-          'Describís tendencias con el present perfect.',
+          'Hablas de la sociedad, las generaciones y sus costumbres.',
+          'Describes tendencias con el present perfect.',
         ],
         exercises: [
           ex.matchPairs(
@@ -497,8 +497,8 @@ export const EN_B2_U03: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Entendés datos de una encuesta: majority, minority, average.',
-          'Contás aumentos y caídas con rise y decline.',
+          'Entiendes datos de una encuesta: majority, minority, average.',
+          'Cuentas aumentos y caídas con rise y decline.',
         ],
         exercises: [
           ex.matchPairs(
@@ -617,8 +617,8 @@ export const EN_B2_U03: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Contás lo que se dice o se cree: It is said that…',
-          'Contás lo que se espera: …is expected to…',
+          'Cuentas lo que se dice o se cree: It is said that…',
+          'Cuentas lo que se espera: …is expected to…',
         ],
         exercises: [
           ex.fillBlank(
@@ -746,8 +746,8 @@ export const EN_B2_U03: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Contás obras en marcha con is being + participio.',
-          'Contás lo que ya se hizo con has been + participio.',
+          'Cuentas obras en marcha con is being + participio.',
+          'Cuentas lo que ya se hizo con has been + participio.',
         ],
         exercises: [
           ex.matchPairs(
@@ -793,7 +793,7 @@ export const EN_B2_U03: B2UnitDef = {
           question(
             'en.ex.3twmmv9e5pq993',
             RADIO,
-            '¿Por qué los jóvenes comparten departamento hasta los treinta, según el informe?',
+            '¿Por qué los jóvenes comparten apartamento hasta los treinta, según el informe?',
             'Porque la vivienda es muy cara',
             [
               'Porque no consiguen trabajo',
@@ -882,8 +882,8 @@ export const EN_B2_U03: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Hablás de la diversidad de un lugar.',
-          'Opinás sobre lo que se debería hacer con should be + participio.',
+          'Hablas de la diversidad de un lugar.',
+          'Opinas sobre lo que se debería hacer con should be + participio.',
         ],
         exercises: [
           ex.translationChoice(

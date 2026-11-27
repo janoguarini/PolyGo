@@ -20,7 +20,7 @@ it('Google avisa que hay que actualizar la app, sin pedirle nada a Supabase', as
   const error = await signInWithGoogle().catch((e: unknown) => e);
   expect(error).toMatchObject({ code: 'oauth_unavailable' });
   expect(toUserMessage(error)).toBe(
-    'Esta versión de la app todavía no permite entrar con Google. Actualizala o usá tu email.',
+    'Esta versión de la app todavía no permite entrar con Google. Actualízala o usa tu email.',
   );
   expect(mockAuth.signInWithOAuth).not.toHaveBeenCalled();
 });

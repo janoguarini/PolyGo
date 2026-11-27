@@ -1,3 +1,4 @@
+import { withNeutralSpanish } from '../../scripts/neutral-patch';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -120,7 +121,7 @@ describe('unidades nuevas de A2 (content/a2-expansion.ts)', () => {
 
   it('la migración es la salida exacta del generador y no publica nada', () => {
     const { sql, document } = a2ExpansionSql();
-    expect(sql).toBe(migration);
+    expect(sql).toBe(withNeutralSpanish(migration));
     expect(document.units.map((u) => u.id)).toEqual([
       'a2-u13',
       'a2-u14',

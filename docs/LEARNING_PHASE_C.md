@@ -120,7 +120,7 @@ comprensión visible (`user_objective_state` y Display apagados).
 | U3 Números y países | `a1-u03-context` Tarjetas de jugadores | ficha · 3 | Ray (a) + Max (b) · 3 | read-player-cards, understand-age-and-country | TTS | ídem + corrección |
 | U4 Familia | `a1-u04-context` La familia de Ana | publicación · 3 | Tom (a) + Ana (b) · 3 | read-family-description, understand-family-conversation | TTS | ídem |
 | U5 Objetos | `a1-u05-context` ¿Cuál es el tuyo? | mensaje · 3 | Leo (a) + Kim (b) · 3 | read-message-about-objects, understand-whose-object | TTS | ídem + corrección |
-| U6 Casa | `a1-u06-context` Un departamento en alquiler | aviso · 3 | Nora (a) + Sara (b) · 3 | read-rental-ad, understand-where-things-are | TTS | ídem |
+| U6 Casa | `a1-u06-context` Un apartamento en alquiler | aviso · 3 | Nora (a) + Sara (b) · 3 | read-rental-ad, understand-where-things-are | TTS | ídem |
 | U7 Comida | `a1-u07-context` En el café | menú · 3 | Paul (a) + Emma (b) · 3 | read-simple-menu, understand-cafe-order | TTS | ídem + corrección + UI |
 | U8 Rutinas | `a1-u08-context` La semana de Tom | mensaje · 3 | mensaje de voz, Tom (a) · 3 | read-routine-message, understand-routine-voice-message | TTS | ídem |
 | U9 Horarios | `a1-u09-context` El programa del museo | horario · 3 | anuncio, una voz · 3 | read-opening-hours, understand-time-announcement | TTS | ídem + corrección |
@@ -371,7 +371,7 @@ lecciones nuevas planificadas antes). Los ids (`a1-uNN-context`) no dependen de 
 | U3 | ídem | tarjetas de jugadores | fichas | entrenador–chico | una pregunta medía el país |
 | U4 | ídem | la familia de Ana | publicación | conversación con foto | texto y audio se contradecían (bebé varón / nena) |
 | U5 | ídem | ¿cuál es el tuyo? | mensaje | conversación | es L7 en el mapa (L6 = plurales) |
-| U6 | ídem | un departamento en alquiler | aviso | recorrido | ninguno (falta el plano) |
+| U6 | ídem | un apartamento en alquiler | aviso | recorrido | ninguno (falta el plano) |
 | U7 | ídem | en el café | menú | pedido | una pregunta era reconocer «apple» |
 | U8 | ídem | la semana de Tom | mensaje | mensaje de voz | texto y audio se contradecían (trabaja todos los días / no; estudia en casa / en la escuela) |
 | U9 | ídem | el programa del museo | horario | anuncio | es L7 en el mapa (L6 = meses y fechas) |
@@ -388,7 +388,7 @@ lecciones nuevas planificadas antes). Los ids (`a1-uNN-context`) no dependen de 
 | U3 | L6 | En contexto: tarjetas de jugadores | fichas → cR01; entrenador–chico → cL03 | v03 | tarjetas de un equipo infantil · diálogo (2 voces) | 6 | Corregido (1 pregunta) |
 | U4 | L6 | En contexto: la familia de Ana | publicación → cR03; foto familiar → cL05 | v04 | publicación de Ana · diálogo sobre una foto (2 voces; **la foto no existe**) | 6 | Corregido (coherencia) · Pendiente de recurso técnico |
 | U5 | **L7** | En contexto: ¿cuál es el tuyo? | mensaje → cR05; diálogo → cL01 | g06 | objetos encontrados (mensaje) · ordenar la mesa (2 voces) | 6 | Corregido (número de lección) · L6 «Uno, dos, muchos»: No implementado |
-| U6 | L6 | En contexto: un departamento en alquiler | aviso → cR03; recorrido → cL04 | p04 | aviso (**sin plano**) · recorrido por la casa (2 voces) | 6 | Alineado · Pendiente de recurso técnico (plano) |
+| U6 | L6 | En contexto: un apartamento en alquiler | aviso → cR03; recorrido → cL04 | p04 | aviso (**sin plano**) · recorrido por la casa (2 voces) | 6 | Alineado · Pendiente de recurso técnico (plano) |
 | U7 | L6 | En contexto: en el café | menú → cR01; pedido → cL05 | p10 | menú · camarero y clienta (2 voces) | 6 | Corregido (1 pregunta) |
 | U8 | L6 | En contexto: la semana de Tom | mensaje → cR02; mensaje de voz → cL06 | g12 | mensaje a un amigo · mensaje de voz a la mamá (1 voz) | 6 | Corregido (coherencia) |
 | U9 | **L7** | En contexto: el programa del museo | horario → cR01; anuncio → cL03 | v09 | horario en la puerta · anuncio por parlantes (1 voz) | 6 | Corregido (número de lección) · L6 «Meses y fechas»: No implementado |

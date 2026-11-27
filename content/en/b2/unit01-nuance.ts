@@ -118,11 +118,11 @@ export const EN_B2_U01: B2UnitDef = {
       'Malentendidos, tono e indirectas; remember, stop o try con -ing o infinitivo; ser directo sin ser brusco.',
     emoji: '🗣️',
     objective:
-      'Podés aclarar un malentendido, entender una indirecta y decir algo difícil con tacto.',
+      'Puedes aclarar un malentendido, entender una indirecta y decir algo difícil con tacto.',
     grammar: {
       title: 'Verbos con -ing o infinitivo',
       explanation:
-        'Algunos verbos cambian de sentido según lo que sigue. Remember / forget + -ing: algo que ya pasó (I remember meeting her). Remember / forget + to: algo que tenés que hacer (Remember to call him). Stop + -ing: dejar de hacer; stop + to: parar para hacer otra cosa. Try + -ing: probar algo; try + to: intentar. Regret + -ing: lamentar algo que hiciste. Mean to: tener la intención.',
+        'Algunos verbos cambian de sentido según lo que sigue. Remember / forget + -ing: algo que ya pasó (I remember meeting her). Remember / forget + to: algo que tienes que hacer (Remember to call him). Stop + -ing: dejar de hacer; stop + to: parar para hacer otra cosa. Try + -ing: probar algo; try + to: intentar. Regret + -ing: lamentar algo que hiciste. Mean to: tener la intención.',
       examples: [
         {
           target: 'I remember meeting her, but I forgot to ask her name.',
@@ -243,7 +243,7 @@ export const EN_B2_U01: B2UnitDef = {
         '/sim/',
         undefined,
         'You seem worried. Is everything OK?',
-        'Parecés preocupado. ¿Está todo bien?',
+        'Pareces preocupado. ¿Está todo bien?',
         ['communication', 'verbs'],
       ),
       w(
@@ -308,7 +308,7 @@ export const EN_B2_U01: B2UnitDef = {
         '/ˈtæktfəl/',
         undefined,
         'Try to be tactful when you give feedback.',
-        'Tratá de tener tacto cuando des tu opinión.',
+        'Trata de tener tacto cuando des tu opinión.',
         ['communication', 'adjectives'],
         ['con tacto', 'diplomático'],
       ),
@@ -352,7 +352,7 @@ export const EN_B2_U01: B2UnitDef = {
         objective: 'Aclarar un malentendido y explicar lo que quisiste decir.',
         intro: {
           explanation:
-            'Cuando algo se entiende mal, en inglés aclarás la intención con mean to: I didn’t mean to sound rude (no fue mi intención). Actually corrige una idea equivocada: Actually, I wasn’t angry (en realidad). Un misunderstanding es un malentendido y el tone, el tono de lo que decís.',
+            'Cuando algo se entiende mal, en inglés aclaras la intención con mean to: I didn’t mean to sound rude (no fue mi intención). Actually corrige una idea equivocada: Actually, I wasn’t angry (en realidad). Un misunderstanding es un malentendido y el tone, el tono de lo que dices.',
           examples: [
             {
               target: "I didn't mean to sound rude.",
@@ -365,8 +365,8 @@ export const EN_B2_U01: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Aclarás tu intención con I didn’t mean to…',
-          'Corregís una idea equivocada con actually.',
+          'Aclaras tu intención con I didn’t mean to…',
+          'Corriges una idea equivocada con actually.',
         ],
         exercises: [
           ex.matchPairs(
@@ -480,8 +480,8 @@ export const EN_B2_U01: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Reconocés una indirecta y el sarcasmo.',
-          'Contás lo que no sabés seguro con apparently y seem.',
+          'Reconoces una indirecta y el sarcasmo.',
+          'Cuentas lo que no sabes seguro con apparently y seem.',
         ],
         exercises: [
           ex.matchPairs(
@@ -499,7 +499,7 @@ export const EN_B2_U01: B2UnitDef = {
           }),
           ex.fillBlank(
             'You ___ worried. Is everything OK?',
-            'Parecés preocupado. ¿Está todo bien?',
+            'Pareces preocupado. ¿Está todo bien?',
             'seem',
             ['look like', 'imply', 'mean'],
             ['en-seem'],
@@ -575,7 +575,7 @@ export const EN_B2_U01: B2UnitDef = {
         objective: 'Usar remember, forget, stop, try y regret con -ing o con infinitivo.',
         intro: {
           explanation:
-            'Con -ing hablás de algo que ya hiciste o de la actividad misma: I remember meeting her (me acuerdo de haberla conocido), I regret saying it (me arrepiento de haberlo dicho), We stopped talking (dejamos de hablar). Con to + verbo hablás de lo que hay que hacer o del propósito: Remember to call (acordate de llamar), We stopped to talk (paramos para hablar). Try + -ing es probar algo; try to, intentar.',
+            'Con -ing hablas de algo que ya hiciste o de la actividad misma: I remember meeting her (me acuerdo de haberla conocido), I regret saying it (me arrepiento de haberlo dicho), We stopped talking (dejamos de hablar). Con to + verbo hablas de lo que hay que hacer o del propósito: Remember to call (acuérdate de llamar), We stopped to talk (paramos para hablar). Try + -ing es probar algo; try to, intentar.',
           examples: [
             {
               target: 'I remember meeting her, but I forgot to ask her name.',
@@ -588,8 +588,8 @@ export const EN_B2_U01: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Distinguís remember doing (ya pasó) de remember to do (hay que hacerlo).',
-          'Usás stop, try y regret con el sentido correcto.',
+          'Distingues remember doing (ya pasó) de remember to do (hay que hacerlo).',
+          'Usas stop, try y regret con el sentido correcto.',
         ],
         exercises: [
           ex.fillBlank(
@@ -605,11 +605,14 @@ export const EN_B2_U01: B2UnitDef = {
           ),
           ex.fillBlank(
             'Please remember ___ the door when you leave.',
-            'Por favor, acordate de cerrar la puerta cuando te vayas.',
+            'Por favor, acuérdate de cerrar la puerta cuando te vayas.',
             'to close',
             ['closing', 'close', 'closed'],
             ['en-remember-doing'],
-            { id: 'en.ex.fwwv8d88sbffar', explanation: 'Remember + to: algo que tenés que hacer.' },
+            {
+              id: 'en.ex.fwwv8d88sbffar',
+              explanation: 'Remember + to: algo que tienes que hacer.',
+            },
           ),
           ex.fillBlank(
             'We were tired, so we stopped ___ a coffee.',
@@ -630,7 +633,7 @@ export const EN_B2_U01: B2UnitDef = {
             ['en-regret'],
             {
               id: 'en.ex.9tq0c5z9imvp74',
-              explanation: 'Regret + -ing: te arrepentís de algo que hiciste.',
+              explanation: 'Regret + -ing: te arrepientes de algo que hiciste.',
             },
           ),
           question(
@@ -671,13 +674,13 @@ export const EN_B2_U01: B2UnitDef = {
           ),
           ex.orderWords(
             'Remember to call your grandmother tonight.',
-            'Acordate de llamar a tu abuela esta noche.',
+            'Acuérdate de llamar a tu abuela esta noche.',
             ['en-remember-doing'],
             { id: 'en.ex.rh90u4zugcwu6g' },
           ),
           ex.shortAnswer(
             'Are you still smoking? (dejaste de fumar hace dos años)',
-            '¿Fumás?',
+            '¿Fumas?',
             'No, I stopped smoking two years ago.',
             [
               'I stopped smoking two years ago.',
@@ -708,7 +711,7 @@ export const EN_B2_U01: B2UnitDef = {
         objective: 'Decir algo difícil de forma clara y amable.',
         intro: {
           explanation:
-            'Straightforward es claro y directo (algo bueno); blunt es tan directo que puede ofender; tactful es tener tacto. Para señalar un problema usás point out, y para sacar un tema, bring up. Tend to (soler) suaviza una crítica: You tend to interrupt people suena mejor que You always interrupt.',
+            'Straightforward es claro y directo (algo bueno); blunt es tan directo que puede ofender; tactful es tener tacto. Para señalar un problema usas point out, y para sacar un tema, bring up. Tend to (soler) suaviza una crítica: You tend to interrupt people suena mejor que You always interrupt.',
           examples: [
             {
               target: 'She pointed out a mistake in my report.',
@@ -721,8 +724,8 @@ export const EN_B2_U01: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Distinguís straightforward, blunt y tactful.',
-          'Señalás un problema con point out y lo suavizás con tend to.',
+          'Distingues straightforward, blunt y tactful.',
+          'Señalas un problema con point out y lo suavizas con tend to.',
         ],
         exercises: [
           ex.matchPairs(
@@ -832,7 +835,7 @@ export const EN_B2_U01: B2UnitDef = {
       // ------------------------------------------------------------------------------------ L5
       {
         title: 'Más allá de las palabras',
-        objective: 'Interpretar el lenguaje corporal y suavizar lo que decís.',
+        objective: 'Interpretar el lenguaje corporal y suavizar lo que dices.',
         intro: {
           explanation:
             'El body language (lenguaje corporal) también comunica. Para hablar de lo que ves sin afirmarlo: He seems nervous, She tends to look away. Para suavizar una opinión: I’d say…, It seems to me that…, a bit. Y si no se entendió tu idea: I couldn’t get my point across.',
@@ -848,8 +851,8 @@ export const EN_B2_U01: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Describís el lenguaje corporal con seem y tend to.',
-          'Suavizás una opinión y explicás si una idea no se entendió.',
+          'Describes el lenguaje corporal con seem y tend to.',
+          'Suavizas una opinión y explicas si una idea no se entendió.',
         ],
         exercises: [
           ex.translationChoice(
@@ -933,7 +936,7 @@ export const EN_B2_U01: B2UnitDef = {
             { id: 'en.ex.9jgcdbvgj8ld45' },
           ),
           ex.translateWrite(
-            'Parecés preocupado. ¿Está todo bien?',
+            'Pareces preocupado. ¿Está todo bien?',
             'You seem worried. Is everything OK?',
             ['en-seem'],
             {

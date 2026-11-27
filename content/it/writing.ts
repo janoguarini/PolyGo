@@ -16,14 +16,14 @@ import type { WritingRequirement, WritingTaskDef } from '../../shared/writing';
 const common = (minSentences: number): WritingRequirement[] => [
   {
     id: 'sentences',
-    label: `Escribís al menos ${minSentences} oraciones`,
+    label: `Escribes al menos ${minSentences} oraciones`,
     kind: 'min_sentences',
     min: minSentences,
   },
   { id: 'capital', label: 'Cada oración empieza con mayúscula', kind: 'capital_start' },
   {
     id: 'punctuation',
-    label: 'Terminás con punto, signo de exclamación o de pregunta',
+    label: 'Terminas con punto, signo de exclamación o de pregunta',
     kind: 'end_punctuation',
   },
 ];
@@ -57,20 +57,20 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
     kind: 'guided',
     codes: [],
     lesson: 'it-a1-u02-l05',
-    title: 'Presentate',
+    title: 'Preséntate',
     instructions:
-      'Presentate en italiano (con datos reales o inventados): saludá, decí cómo te llamás, de dónde sos y qué sos (studente, studentessa…).',
+      'Preséntate en italiano (con datos reales o inventados): saluda, di cómo te llamas, de dónde eres y qué eres (studente, studentessa…).',
     prompts: ['Come ti chiami?', 'Di dove sei?'],
     requirements: [
       {
         id: 'name',
-        label: 'Decís cómo te llamás (mi chiamo…)',
+        label: 'Dices cómo te llamas (mi chiamo…)',
         kind: 'pattern',
         patterns: [['mi', 'chiamo']],
       },
       {
         id: 'origin',
-        label: 'Decís de dónde sos (sono di…)',
+        label: 'Dices de dónde eres (sono di…)',
         kind: 'pattern',
         patterns: [['sono', 'di']],
       },
@@ -86,18 +86,18 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
     codes: [],
     lesson: 'it-a1-u04-l05',
     title: 'Tu familia',
-    instructions: 'Describí a tu familia: quiénes son y cómo se llaman. Usá mio y mia.',
+    instructions: 'Describe a tu familia: quiénes son y cómo se llaman. Usa mio y mia.',
     prompts: ['Come si chiama tua madre?', 'Hai fratelli?'],
     requirements: [
       {
         id: 'possessive',
-        label: 'Usás mio o mia (mio padre, mia sorella…)',
+        label: 'Usas mio o mia (mio padre, mia sorella…)',
         kind: 'pattern',
         patterns: [['mio|mia|miei', '<WORD>']],
       },
       {
         id: 'name',
-        label: 'Decís cómo se llama alguien (si chiama…)',
+        label: 'Dices cómo se llama alguien (si chiama…)',
         kind: 'pattern',
         patterns: [['si', 'chiama']],
       },
@@ -115,18 +115,18 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'it-a1-u06-l05',
     title: 'Tu casa',
     instructions:
-      'Describí tu casa o tu departamento: qué habitaciones tiene y qué hay en cada una.',
+      'Describe tu casa o tu apartamento: qué habitaciones tiene y qué hay en cada una.',
     prompts: ['Cosa c’è in cucina?', "Dov'è il letto?"],
     requirements: [
       {
         id: 'there-is',
-        label: "Decís qué hay con c'è o ci sono",
+        label: "Dices qué hay con c'è o ci sono",
         kind: 'pattern',
         patterns: [["c'è"], ['ci', 'sono']],
       },
       {
         id: 'room',
-        label: 'Nombrás una habitación con nel / nella (nel soggiorno, nella cucina…)',
+        label: 'Nombras una habitación con nel / nella (nel soggiorno, nella cucina…)',
         kind: 'pattern',
         patterns: [['nel|nella', 'soggiorno|cucina|camera|bagno']],
       },
@@ -146,18 +146,18 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
     codes: [],
     lesson: 'it-a1-u08-l05',
     title: 'Tu rutina',
-    instructions: 'Contá qué hacés en un día normal: a la mañana, después y a la noche.',
+    instructions: 'Cuenta qué haces en un día normal: a la mañana, después y a la noche.',
     prompts: ['Ti svegli presto?', 'Lavori o studi?'],
     requirements: [
       {
         id: 'reflexive',
-        label: 'Usás un verbo reflexivo (mi sveglio, mi alzo)',
+        label: 'Usas un verbo reflexivo (mi sveglio, mi alzo)',
         kind: 'pattern',
         patterns: [['mi', 'sveglio|alzo']],
       },
       {
         id: 'moment',
-        label: 'Decís cuándo (la mattina, la sera)',
+        label: 'Dices cuándo (la mattina, la sera)',
         kind: 'pattern',
         patterns: [['la', 'mattina|sera']],
       },
@@ -174,18 +174,18 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
     codes: [],
     lesson: 'it-a1-u11-l05',
     title: 'Lo que te gusta',
-    instructions: 'Contá qué te gusta y qué no: comidas, actividades, animales…',
+    instructions: 'Cuenta qué te gusta y qué no: comidas, actividades, animales…',
     prompts: ['Cosa ti piace?', 'Ti piace cucinare?'],
     requirements: [
       {
         id: 'likes',
-        label: 'Decís qué te gusta (mi piace / mi piacciono)',
+        label: 'Dices qué te gusta (mi piace / mi piacciono)',
         kind: 'pattern',
         patterns: [['mi', 'piace|piacciono']],
       },
       {
         id: 'dislikes',
-        label: 'Decís qué no te gusta (non mi piace…)',
+        label: 'Dices qué no te gusta (non mi piace…)',
         kind: 'pattern',
         patterns: [['non', 'mi', 'piace|piacciono']],
       },
@@ -206,12 +206,12 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'it-a1-u13-l05',
     title: 'Tu trabajo y el de tu familia',
     instructions:
-      'Contá de qué trabajás vos (o qué estudiás) y de qué trabajan otras personas de tu familia, y dónde.',
+      'Cuenta de qué trabajas tú (o qué estudias) y de qué trabajan otras personas de tu familia, y dónde.',
     prompts: ['Che lavoro fai?', 'Dove lavorano i tuoi genitori?'],
     requirements: [
       {
         id: 'job',
-        label: 'Decís una profesión (sono infermiere, faccio il cuoco…)',
+        label: 'Dices una profesión (sono infermiere, faccio il cuoco…)',
         kind: 'pattern',
         patterns: [
           [
@@ -223,7 +223,7 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'place',
-        label: 'Decís dónde trabaja alguien (lavoro in…, lavorano in…)',
+        label: 'Dices dónde trabaja alguien (lavoro in…, lavorano in…)',
         kind: 'pattern',
         patterns: [['lavoro|lavora|lavoriamo|lavorano', 'in|a']],
       },
@@ -241,12 +241,12 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'it-a1-u16-l05',
     title: 'Un mensaje para salir',
     instructions:
-      'Escribile a un amigo para salir el fin de semana: adónde van, cómo van y qué hacen después.',
+      'Escríbele a un amigo para salir el fin de semana: adónde van, cómo van y qué hacen después.',
     prompts: ['Dove andiamo sabato?', 'Come andiamo?'],
     requirements: [
       {
         id: 'place',
-        label: 'Decís adónde (al mare, alla stazione, in montagna…)',
+        label: 'Dices adónde (al mare, alla stazione, in montagna…)',
         kind: 'pattern',
         patterns: [
           ['al|alla', '<WORD>'],
@@ -255,7 +255,7 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'transport',
-        label: 'Decís cómo van (in treno, a piedi…)',
+        label: 'Dices cómo van (in treno, a piedi…)',
         kind: 'pattern',
         patterns: [
           ['in', 'treno|autobus|macchina|bicicletta'],
@@ -279,19 +279,19 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
     block: 1,
     title: 'Texto libre: yo',
     instructions:
-      'Escribí un texto libre sobre vos: quién sos, tu familia, tu rutina, lo que te gusta y algo que hiciste ayer. No hay respuesta correcta: compará con el modelo y revisá la lista.',
+      'Escribe un texto libre sobre ti: quién eres, tu familia, tu rutina, lo que te gusta y algo que hiciste ayer. No hay respuesta correcta: compara con el modelo y revisa la lista.',
     prompts: ['Chi sei?', 'Cosa ti piace?', 'Cosa hai fatto ieri?'],
     requirements: [
       {
         id: 'likes',
-        label: 'Pista: contá algo que te gusta (mi piace…)',
+        label: 'Pista: cuenta algo que te gusta (mi piace…)',
         kind: 'pattern',
         patterns: [['mi', 'piace|piacciono']],
         optional: true,
       },
       {
         id: 'yesterday',
-        label: 'Pista: contá algo de ayer (ieri ho… / ieri sono andato…)',
+        label: 'Pista: cuenta algo de ayer (ieri ho… / ieri sono andato…)',
         kind: 'pattern',
         patterns: [['ieri']],
         optional: true,
@@ -315,18 +315,18 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
     codes: [],
     lesson: 'it-a2-u01-l05',
     title: 'Tu fin de semana',
-    instructions: 'Contá qué hiciste el fin de semana pasado: qué hiciste cada día y con quién.',
+    instructions: 'Cuenta qué hiciste el fin de semana pasado: qué hiciste cada día y con quién.',
     prompts: ['Cosa hai fatto sabato?', 'E domenica?'],
     requirements: [
       {
         id: 'past',
-        label: 'Usás el passato prossimo con avere (ho dormito, ho fatto…)',
+        label: 'Usas el passato prossimo con avere (ho dormito, ho fatto…)',
         kind: 'pattern',
         patterns: [['ho|abbiamo|hai|ha|hanno', PARTICIPI_AVERE]],
       },
       {
         id: 'when',
-        label: 'Decís cuándo (ieri, stamattina, sabato scorso…)',
+        label: 'Dices cuándo (ieri, stamattina, sabato scorso…)',
         kind: 'pattern',
         patterns: [['ieri'], ['stamattina'], ['scorso|scorsa']],
       },
@@ -343,18 +343,18 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
     codes: [],
     lesson: 'it-a2-u02-l05',
     title: 'Un viaje',
-    instructions: 'Contá un viaje: adónde fuiste, cuándo, cuánto te quedaste y cuándo volviste.',
+    instructions: 'Cuenta un viaje: adónde fuiste, cuándo, cuánto te quedaste y cuándo volviste.',
     prompts: ['Dove sei andato?', 'Quando sei tornato?'],
     requirements: [
       {
         id: 'essere',
-        label: 'Usás el passato prossimo con essere (sono andata, siamo partiti…)',
+        label: 'Usas el passato prossimo con essere (sono andata, siamo partiti…)',
         kind: 'pattern',
         patterns: [['sono|siamo|è|sei', PARTICIPI_ESSERE]],
       },
       {
         id: 'ago',
-        label: 'Decís hace cuánto con fa (due anni fa…)',
+        label: 'Dices hace cuánto con fa (due anni fa…)',
         kind: 'pattern',
         patterns: [['fa']],
       },
@@ -375,18 +375,18 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'it-a2-u03-l05',
     title: 'Un correo para reservar',
     instructions:
-      'Escribile a un hotel para reservar una habitación: qué habitación querés, para qué días, y preguntá algo con cortesía.',
+      'Escríbele a un hotel para reservar una habitación: qué habitación quieres, para qué días, y pregunta algo con cortesía.',
     prompts: ['Che camera desidera?', 'Per quante notti?'],
     requirements: [
       {
         id: 'book',
-        label: 'Pedís la reserva con vorrei prenotare…',
+        label: 'Pides la reserva con vorrei prenotare…',
         kind: 'pattern',
         patterns: [['vorrei', 'prenotare']],
       },
       {
         id: 'room',
-        label: 'Decís qué habitación (camera doppia / singola)',
+        label: 'Dices qué habitación (camera doppia / singola)',
         kind: 'pattern',
         patterns: [['camera', 'doppia|singola']],
       },
@@ -407,18 +407,18 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'it-a2-u04-l05',
     title: 'Cuando eras chico',
     instructions:
-      'Contá cómo era tu vida de chico o chica: dónde vivías, qué hacías por lo general y qué te gustaba.',
+      'Cuenta cómo era tu vida de chico o chica: dónde vivías, qué hacías por lo general y qué te gustaba.',
     prompts: ['Dove abitavi da piccolo?', 'Cosa facevi d’estate?'],
     requirements: [
       {
         id: 'imperfetto',
-        label: 'Usás el imperfetto (abitavo, giocavo, avevo, ero…)',
+        label: 'Usas el imperfetto (abitavo, giocavo, avevo, ero…)',
         kind: 'pattern',
         patterns: [['ero|era|eravamo|avevo|aveva|abitavo|giocavo|andavo|facevo']],
       },
       {
         id: 'when',
-        label: 'Ubicás el recuerdo (quando ero piccolo, da piccola…)',
+        label: 'Ubicas el recuerdo (quando ero piccolo, da piccola…)',
         kind: 'pattern',
         patterns: [
           ['quando', 'ero'],
@@ -438,18 +438,19 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
     codes: [],
     lesson: 'it-a2-u05-l05',
     title: 'Algo que te pasó',
-    instructions: 'Contá algo que te pasó: cómo era la escena, qué pasó de repente y cómo terminó.',
+    instructions:
+      'Cuenta algo que te pasó: cómo era la escena, qué pasó de repente y cómo terminó.',
     prompts: ['Cos’è successo?', 'Che tempo faceva?'],
     requirements: [
       {
         id: 'scene',
-        label: 'Describís la escena en imperfetto (pioveva, ero, stavo…)',
+        label: 'Describes la escena en imperfetto (pioveva, ero, stavo…)',
         kind: 'pattern',
         patterns: [["pioveva|ero|era|stavo|c'era"]],
       },
       {
         id: 'event',
-        label: 'Contás el hecho en passato prossimo (è caduto, ho perso…)',
+        label: 'Cuentas el hecho en passato prossimo (è caduto, ho perso…)',
         kind: 'pattern',
         patterns: [
           ['è|sono|ho', 'successo|caduto|caduta|perso|trovato|chiamato|arrivato|arrivata|visto'],
@@ -457,7 +458,7 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'connector',
-        label: "Usás un conector (mentre, all'improvviso, per fortuna, quindi)",
+        label: "Usas un conector (mentre, all'improvviso, per fortuna, quindi)",
         kind: 'pattern',
         patterns: [['mentre'], ["all'improvviso"], ['per', 'fortuna'], ['quindi']],
       },
@@ -478,12 +479,12 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'it-a2-u06-l05',
     title: 'Invitar y responder',
     instructions:
-      'Escribí dos mensajes: en uno invitás a un amigo a algo (fiesta, cine, aperitivo) y en el otro tu amigo responde que sí o que no puede.',
+      'Escribe dos mensajes: en uno invitas a un amigo a algo (fiesta, cine, aperitivo) y en el otro tu amigo responde que sí o que no puede.',
     prompts: ['Ti va di venire?', 'Che ne dici di sabato?'],
     requirements: [
       {
         id: 'invite',
-        label: 'Invitás con ti va di…? o che ne dici di…?',
+        label: 'Invitas con ti va di…? o che ne dici di…?',
         kind: 'pattern',
         patterns: [
           ['ti', 'va', 'di'],
@@ -492,7 +493,7 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'answer',
-        label: "Respondés con volentieri, d'accordo o mi dispiace",
+        label: "Respondes con volentieri, d'accordo o mi dispiace",
         kind: 'pattern',
         patterns: [['volentieri'], ["d'accordo"], ['mi', 'dispiace']],
       },
@@ -510,18 +511,18 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'it-a2-u07-l05',
     title: 'Un correo para un trabajo',
     instructions:
-      'Escribí un correo formal para pedir una entrevista: quién sos, qué hacés actualmente y desde cuándo, y qué estudiaste.',
+      'Escribe un correo formal para pedir una entrevista: quién eres, qué haces actualmente y desde cuándo, y qué estudiaste.',
     prompts: ['Cosa fa attualmente?', 'Da quanto tempo?'],
     requirements: [
       {
         id: 'now',
-        label: 'Decís qué hacés ahora (attualmente…)',
+        label: 'Dices qué haces ahora (attualmente…)',
         kind: 'pattern',
         patterns: [['attualmente']],
       },
       {
         id: 'since',
-        label: 'Decís desde cuándo con da (da due anni…)',
+        label: 'Dices desde cuándo con da (da due anni…)',
         kind: 'pattern',
         patterns: [['da', '<WORD>', 'anni|anno|mesi|settimane']],
       },
@@ -539,7 +540,7 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'it-a2-u08-l05',
     title: 'Consejos para un amigo enfermo',
     instructions:
-      'Un amigo está enfermo. Escribile un mensaje con consejos: qué tiene que hacer y qué no.',
+      'Un amigo está enfermo. Escríbele un mensaje con consejos: qué tiene que hacer y qué no.',
     prompts: ['Cosa ti fa male?', 'Hai la febbre?'],
     requirements: [
       {
@@ -550,7 +551,7 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'negative',
-        label: 'Decís qué no tiene que hacer (non uscire, non mangiare…)',
+        label: 'Dices qué no tiene que hacer (non uscire, non mangiare…)',
         kind: 'pattern',
         patterns: [['non', 'mangiare|bere|uscire|lavorare|prendere']],
       },
@@ -571,18 +572,18 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'it-a2-u09-l05',
     title: 'Recomendar una tienda',
     instructions:
-      'Recomendale a un amigo una tienda o un mercado: comparalo con otro lugar y decí por qué es el mejor.',
+      'Recomiéndale a un amigo una tienda o un mercado: compáralo con otro lugar y di por qué es el mejor.',
     prompts: ['Dove fai la spesa?', 'Perché è il migliore?'],
     requirements: [
       {
         id: 'compare',
-        label: 'Comparás con più / meno (più buona, meno cara…)',
+        label: 'Comparas con più / meno (più buona, meno cara…)',
         kind: 'pattern',
         patterns: [['più|meno', '<WORD>']],
       },
       {
         id: 'best',
-        label: 'Decís cuál es el mejor (il migliore, la più…)',
+        label: 'Dices cuál es el mejor (il migliore, la più…)',
         kind: 'pattern',
         patterns: [['migliore'], ['il|la', 'più']],
       },
@@ -600,18 +601,18 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'it-a2-u10-l05',
     title: 'Un mensaje con pronombres',
     instructions:
-      'Escribile a una amiga: contale un problema con el celular, decile cuándo la llamás y qué vas a hacer con otras personas o cosas.',
+      'Escríbele a una amiga: cuéntale un problema con el celular, dile cuándo la llamas y qué vas a hacer con otras personas o cosas.',
     prompts: ['Quando mi chiami?', 'Hai sentito Marco?'],
     requirements: [
       {
         id: 'you',
-        label: 'Usás ti (ti chiamo, ti scrivo…)',
+        label: 'Usas ti (ti chiamo, ti scrivo…)',
         kind: 'pattern',
         patterns: [['ti', 'chiamo|scrivo|mando|telefono']],
       },
       {
         id: 'pronoun',
-        label: 'Usás lo, la, gli o le antes del verbo',
+        label: 'Usas lo, la, gli o le antes del verbo',
         kind: 'pattern',
         patterns: [['lo|la|gli|le', 'chiamo|vedo|scrivo|telefono|mando|porto|carico']],
       },
@@ -629,7 +630,7 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'it-a2-u12-l05',
     title: 'Tu opinión',
     instructions:
-      'Opiná sobre una costumbre italiana (el capuchino después del almuerzo, el aperitivo…): qué pensás vos y qué piensa otra persona.',
+      'Opina sobre una costumbre italiana (el capuchino después del almuerzo, el aperitivo…): qué piensas tú y qué piensa otra persona.',
     prompts: ['Cosa ne pensi?', 'Sei d’accordo?'],
     requirements: [
       {
@@ -644,13 +645,13 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'connector',
-        label: 'Usás un conector (invece, comunque, purtroppo, ma)',
+        label: 'Usas un conector (invece, comunque, purtroppo, ma)',
         kind: 'pattern',
         patterns: [['invece'], ['comunque'], ['purtroppo'], ['ma']],
       },
       {
         id: 'conditional',
-        label: 'Usás el condizionale (sarebbe, dovresti, preferirei…)',
+        label: 'Usas el condizionale (sarebbe, dovresti, preferirei…)',
         kind: 'pattern',
         patterns: [['sarebbe|dovresti|preferirei|piacerebbe|vorrei|potrei']],
       },
@@ -671,19 +672,19 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
     block: 1,
     title: 'Texto libre: organizar un viaje',
     instructions:
-      'Escribile a un amigo para organizar un viaje juntos: adónde van a ir, cómo, dónde se van a quedar y qué van a hacer. No hay respuesta correcta: compará con el modelo y revisá la lista.',
+      'Escríbele a un amigo para organizar un viaje juntos: adónde van a ir, cómo, dónde se van a quedar y qué van a hacer. No hay respuesta correcta: compara con el modelo y revisa la lista.',
     prompts: ['Dove andiamo?', 'Come andiamo?', 'Cosa facciamo?'],
     requirements: [
       {
         id: 'future',
-        label: 'Pista: usá el futuro (andremo, partiremo, sarà…)',
+        label: 'Pista: usa el futuro (andremo, partiremo, sarà…)',
         kind: 'pattern',
         patterns: [['andremo|andrò|faremo|farò|sarà|partiremo|verrò|mangeremo']],
         optional: true,
       },
       {
         id: 'stay',
-        label: 'Pista: decí dónde se van a quedar (albergo, camera…)',
+        label: 'Pista: di dónde se van a quedar (albergo, camera…)',
         kind: 'pattern',
         patterns: [['albergo|camera|casa']],
         optional: true,
@@ -705,9 +706,9 @@ export const IT_WRITING_TASKS: readonly WritingTaskDef[] = [
     codes: [],
     lesson: 'it-a2-u12-final',
     block: 1,
-    title: 'Texto libre: un día que no olvidás',
+    title: 'Texto libre: un día que no olvidas',
     instructions:
-      'Contá un día especial de tu vida: dónde estabas, cómo era todo, qué pasó y qué pensás hoy de ese día. No hay respuesta correcta: compará con el modelo y revisá la lista.',
+      'Cuenta un día especial de tu vida: dónde estabas, cómo era todo, qué pasó y qué piensas hoy de ese día. No hay respuesta correcta: compara con el modelo y revisa la lista.',
     prompts: ['Dove eri?', 'Cos’è successo?', 'Cosa ne pensi oggi?'],
     glossary: [{ term: 'Colosseo', meaning: 'el Coliseo' }],
     requirements: [

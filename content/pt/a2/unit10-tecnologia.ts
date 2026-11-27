@@ -97,14 +97,14 @@ export const PT_A2_U10: PtUnitDef = {
       'Los pronombres de objeto como en Brasil (te ligo, me manda), el celular, las apps, las contraseñas y los falsos amigos ligar, apagar, desligar y tela.',
     emoji: '📱',
     objective:
-      'Podés llamar y mandar mensajes, resolver problemas simples con el celular o la computadora y usar los pronombres te, me, o / a.',
+      'Puedes llamar y mandar mensajes, resolver problemas simples con el celular o la computadora y usar los pronombres te, me, o / a.',
     grammar: {
       title: 'Pronombres de objeto en Brasil',
       explanation:
         'En Brasil me, te y nos van antes del verbo: te ligo, me manda, vou te mandar. Para «lo / la» lo formal es o / a (eu o conheço) y en el habla se dice ele / ela después del verbo (eu vi ele ontem). Ligar para alguien es «llamarlo».',
       examples: [
         { target: 'Te ligo em dez minutos.', base: 'Te llamo en diez minutos.' },
-        { target: 'Me manda uma mensagem?', base: '¿Me mandás un mensaje?' },
+        { target: 'Me manda uma mensagem?', base: '¿Me mandas un mensaje?' },
         { target: 'Eu vi ele ontem.', base: 'Lo vi ayer.' },
       ],
     },
@@ -135,19 +135,25 @@ export const PT_A2_U10: PtUnitDef = {
           emoji: '📞',
         },
       ),
-      w('pt-te-ligo', 'te ligo', 'te llamo', 'Te ligo à noite.', 'Te llamo a la noche.', [
+      w('pt-te-ligo', 'te ligo', 'te llamo', 'Te ligo à noite.', 'Te llamo por la noche.', [
         'technology',
         'pronouns',
       ]),
       w(
         'pt-me-manda',
         'me manda',
-        'mandame / me mandás',
+        'mándame / me mandas',
         'Me manda o endereço?',
-        '¿Me mandás la dirección?',
+        '¿Me mandas la dirección?',
         ['technology', 'pronouns'],
         {
-          acceptedTranslations: ['mandame', 'me mandás'],
+          acceptedTranslations: [
+            'mandame',
+            'me mandás',
+            'mandame / me mandás',
+            'mándame',
+            'me mandas',
+          ],
         },
       ),
       w(
@@ -172,7 +178,7 @@ export const PT_A2_U10: PtUnitDef = {
         'baixar',
         'descargar / bajar',
         'Baixe o aplicativo.',
-        'Descargá la aplicación.',
+        'Descarga la aplicación.',
         ['technology'],
         {
           acceptedTexts: ['baixe', 'baixei'],
@@ -195,7 +201,7 @@ export const PT_A2_U10: PtUnitDef = {
         'carregador',
         'cargador',
         'Você tem um carregador?',
-        '¿Tenés un cargador?',
+        '¿Tienes un cargador?',
         ['technology'],
         { emoji: '🔌' },
       ),
@@ -235,7 +241,7 @@ export const PT_A2_U10: PtUnitDef = {
         'desligar',
         'apagar / cortar',
         'Desligue o computador, por favor.',
-        'Apagá la computadora, por favor.',
+        'Apaga la computadora, por favor.',
         ['technology'],
         {
           acceptedTexts: ['desligado', 'desligue'],
@@ -265,7 +271,9 @@ export const PT_A2_U10: PtUnitDef = {
           acceptedTranslations: ['mensaje de voz'],
         },
       ),
-      w('pt-te', 'te', 'te / a vos', 'Eu te ajudo.', 'Yo te ayudo.', ['pronouns']),
+      w('pt-te', 'te', 'te / a ti', 'Eu te ajudo.', 'Yo te ayudo.', ['pronouns'], {
+        acceptedTranslations: ['te / a vos'],
+      }),
     ],
     lessons: [
       // ------------------------------------------------------------------------------------ L1
@@ -280,7 +288,7 @@ export const PT_A2_U10: PtUnitDef = {
             { target: 'Vou ligar para o meu pai.', base: 'Voy a llamar a mi papá.' },
           ],
         },
-        takeaways: ['Llamás a alguien: ligar para…', 'Ponés te antes del verbo: te ligo.'],
+        takeaways: ['Llamas a alguien: ligar para…', 'Pones te antes del verbo: te ligo.'],
         exercises: [
           ex.translationChoice(
             'ligar',
@@ -334,7 +342,7 @@ export const PT_A2_U10: PtUnitDef = {
             '¿Por qué Nanda no vio el mensaje?',
             'Porque su celular estaba apagado',
             [
-              'Porque estaba en el colectivo',
+              'Porque estaba en el autobús',
               'Porque no tiene WhatsApp',
               'Porque se olvidó la contraseña',
             ],
@@ -346,7 +354,7 @@ export const PT_A2_U10: PtUnitDef = {
             ZAP,
             '¿Qué propone Nanda al final?',
             'Llamarlo en diez minutos',
-            ['Escuchar el audio después', 'Verse en el colectivo', 'Mandarle un audio'],
+            ['Escuchar el audio después', 'Verse en el autobús', 'Mandarle un audio'],
             ['pt-te-ligo', 'pt-audio'],
             'Escribe: «Melhor me ligar… Te ligo em dez minutos!».',
           ),
@@ -358,7 +366,7 @@ export const PT_A2_U10: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Você pode falar agora?',
-            '¿Podés hablar ahora? (Respondé que no, que lo llamás más tarde.)',
+            '¿Puedes hablar ahora? (Responde que no, que lo llamas más tarde.)',
             'Agora não, te ligo depois.',
             [
               'Não, te ligo depois.',
@@ -386,23 +394,23 @@ export const PT_A2_U10: PtUnitDef = {
         objective: 'Pedir y mandar mensajes con me y te.',
         intro: {
           explanation:
-            'Me y te van antes del verbo: me manda (mandame), te mando (te mando), vou te mandar. En Brasil todo el mundo usa WhatsApp: se le dice zap, y se mandan muchos áudios (mensajes de voz).',
+            'Me y te van antes del verbo: me manda (mándame), te mando (te mando), vou te mandar. En Brasil todo el mundo usa WhatsApp: se le dice zap, y se mandan muchos áudios (mensajes de voz).',
           examples: [
             {
               target: 'Me manda o endereço no zap?',
-              base: '¿Me mandás la dirección por WhatsApp?',
+              base: '¿Me mandas la dirección por WhatsApp?',
             },
             { target: 'Vou te mandar um áudio.', base: 'Te voy a mandar un audio.' },
           ],
         },
         takeaways: [
-          'Pedís que te manden algo: me manda…',
-          'Ofrecés mandar algo: te mando, vou te mandar.',
+          'Pides que te manden algo: me manda…',
+          'Ofreces mandar algo: te mando, vou te mandar.',
         ],
         exercises: [
           ex.translationChoice(
             'me manda',
-            'mandame / me mandás',
+            'mándame / me mandas',
             ['me manda (a mí)', 'te mando', 'mandé'],
             ['pt-me-manda'],
             { id: 'pt.ex.dnes6sk51wrcs9' },
@@ -422,7 +430,7 @@ export const PT_A2_U10: PtUnitDef = {
           ),
           ex.fillBlank(
             '___ manda o endereço, por favor?',
-            '¿Me mandás la dirección, por favor?',
+            '¿Me mandas la dirección, por favor?',
             'Me',
             ['Eu', 'Mim', 'Te'],
             ['pt-me-manda'],
@@ -455,7 +463,7 @@ export const PT_A2_U10: PtUnitDef = {
           ),
           ex.orderWords(
             'Me manda uma mensagem quando chegar.',
-            'Mandame un mensaje cuando llegues.',
+            'Mándame un mensaje cuando llegues.',
             ['pt-me-manda', 'pt-mensagem'],
             {
               id: 'pt.ex.8ktg3o8qbd9v9u',
@@ -463,7 +471,7 @@ export const PT_A2_U10: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Qual é o endereço da festa?',
-            '¿Cuál es la dirección de la fiesta? (Respondé que se la mandás por WhatsApp.)',
+            '¿Cuál es la dirección de la fiesta? (Responde que se la mandas por WhatsApp.)',
             'Te mando no zap.',
             [
               'Eu te mando no zap.',
@@ -475,7 +483,7 @@ export const PT_A2_U10: PtUnitDef = {
             { id: 'pt.ex.61mvcmma3wnqy8' },
           ),
           ex.translateWrite(
-            '¿Me mandás un mensaje?',
+            '¿Me mandas un mensaje?',
             'Me manda uma mensagem?',
             ['pt-me-manda', 'pt-mensagem'],
             {
@@ -497,11 +505,11 @@ export const PT_A2_U10: PtUnitDef = {
             { target: 'Esqueci a minha senha.', base: 'Me olvidé la contraseña.' },
             {
               target: 'Baixe o aplicativo e crie uma conta.',
-              base: 'Descargá la aplicación y creá una cuenta.',
+              base: 'Descarga la aplicación y crea una cuenta.',
             },
           ],
         },
-        takeaways: ['Hablás de apps y contraseñas.', 'Sabés que apagar es «borrar».'],
+        takeaways: ['Hablas de apps y contraseñas.', 'Sabes que apagar es «borrar».'],
         exercises: [
           ex.translationChoice('senha', 'contraseña', ['seña', 'señal', 'firma'], ['pt-senha'], {
             id: 'pt.ex.mu7ikiucpm4uyl',
@@ -561,7 +569,7 @@ export const PT_A2_U10: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Por que você não entra no aplicativo?',
-            '¿Por qué no entrás en la aplicación? (Respondé que te olvidaste la contraseña.)',
+            '¿Por qué no entras en la aplicación? (Responde que te olvidaste la contraseña.)',
             'Esqueci a minha senha.',
             [
               'Eu esqueci a minha senha.',
@@ -573,7 +581,7 @@ export const PT_A2_U10: PtUnitDef = {
             { id: 'pt.ex.t4c3tlavknzxow' },
           ),
           ex.translateWrite(
-            'Descargá la aplicación.',
+            'Descarga la aplicación.',
             'Baixe o aplicativo.',
             ['pt-baixar', 'pt-aplicativo'],
             {
@@ -599,7 +607,7 @@ export const PT_A2_U10: PtUnitDef = {
             { target: 'Cadê o carregador?', base: '¿Dónde está el cargador?' },
           ],
         },
-        takeaways: ['Describís un problema: a tela, a bateria.', 'Sabés que desligar es «apagar».'],
+        takeaways: ['Describes un problema: a tela, a bateria.', 'Sabes que desligar es «apagar».'],
         exercises: [
           ex.translationChoice(
             'tela',
@@ -667,7 +675,7 @@ export const PT_A2_U10: PtUnitDef = {
           ),
           ex.shortAnswer(
             'O seu celular está sem bateria?',
-            '¿Tu celular se quedó sin batería? (Preguntá dónde está el cargador.)',
+            '¿Tu celular se quedó sin batería? (Pregunta dónde está el cargador.)',
             'Cadê o carregador?',
             [
               'Onde está o carregador?',
@@ -679,7 +687,7 @@ export const PT_A2_U10: PtUnitDef = {
             { id: 'pt.ex.rou8dbpe2aa2xa' },
           ),
           ex.translateWrite(
-            'Apagá la computadora, por favor.',
+            'Apaga la computadora, por favor.',
             'Desligue o computador, por favor.',
             ['pt-desligar', 'pt-computador'],
             {
@@ -702,7 +710,7 @@ export const PT_A2_U10: PtUnitDef = {
             { target: 'Você viu a Nanda? — Vi ela ontem.', base: '¿Viste a Nanda? — La vi ayer.' },
           ],
         },
-        takeaways: ['Reconocés o / a en lo formal.', 'Decís «lo vi» como en Brasil: eu vi ele.'],
+        takeaways: ['Reconoces o / a en lo formal.', 'Dices «lo vi» como en Brasil: eu vi ele.'],
         exercises: [
           ex.fillBlank(
             'Você viu o Gui? — Vi ___ ontem.',
@@ -760,7 +768,7 @@ export const PT_A2_U10: PtUnitDef = {
           }),
           ex.shortAnswer(
             'Você conhece a Nanda?',
-            '¿Conocés a Nanda? (Respondé en el habla de Brasil que sí, que la conocés de la facultad.)',
+            '¿Conoces a Nanda? (Responde en el habla de Brasil que sí, que la conoces de la facultad.)',
             'Conheço, sim. Conheço ela da faculdade.',
             [
               'Sim, conheço ela da faculdade.',

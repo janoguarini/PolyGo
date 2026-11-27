@@ -1,3 +1,4 @@
+import { withNeutralSpanish } from '../../scripts/neutral-patch';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -100,7 +101,7 @@ describe('chino A1 U13–U16 y A2 (content/zh-course.ts)', () => {
         expect([
           u.position,
           l.title,
-          l.exercises.some((e) => e.prompt === 'Escuchá y elegí el tono correcto'),
+          l.exercises.some((e) => e.prompt === 'Escucha y elige el tono correcto'),
         ]).toEqual([u.position, l.title, true]);
     }
   });
@@ -280,7 +281,7 @@ describe('chino A1 U13–U16 y A2 (content/zh-course.ts)', () => {
 
   it('la carga es la salida exacta del generador y no publica nada', () => {
     const { sql, document } = zhSql();
-    expect(sql).toBe(migration);
+    expect(sql).toBe(withNeutralSpanish(migration));
     expect(document.units.map((u) => u.id)).toEqual(
       ZH_PATH.map((p) => key(p.level, p.unit.position)),
     );

@@ -78,7 +78,7 @@ test('actividad: sólo cuenta como subida si cambia el rango visible', () => {
 });
 
 test('tiempos relativos', () => {
-  expect(timeAgo(ago(10_000), NOW)).toBe('recién');
+  expect(timeAgo(ago(10_000), NOW)).toBe('hace un momento');
   expect(timeAgo(ago(30 * MIN), NOW)).toBe('hace 30 min');
   expect(timeAgo(ago(25 * 60 * MIN), NOW)).toBe('ayer');
   expect(endsInLabel(NOW + 3 * 24 * 60 * MIN, NOW)).toBe('Terminan en 3 días');

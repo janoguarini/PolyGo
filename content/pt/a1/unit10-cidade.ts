@@ -26,7 +26,7 @@ export const unit10: UnitDef = {
     'Lugares de la ciudad, preguntar dónde queda algo, decir adónde vas y dar direcciones.',
   emoji: '🏙️',
   objective:
-    'Podés preguntar onde fica…?, decir adónde vas con vou para… y entender à direita, à esquerda, reto, perto y longe.',
+    'Puedes preguntar onde fica…?, decir adónde vas con vou para… y entender à direita, à esquerda, reto, perto y longe.',
   grammar: {
     title: 'Onde fica…? / vou para…',
     explanation:
@@ -96,18 +96,18 @@ export const unit10: UnitDef = {
         emoji: '🏫',
       },
     ),
-    w('pt-onibus', 'ônibus', 'colectivo', 'Eu vou de ônibus.', 'Voy en colectivo.', ['transport'], {
-      acceptedTranslations: ['autobús', 'bus', 'micro'],
+    w('pt-onibus', 'ônibus', 'autobús', 'Eu vou de ônibus.', 'Voy en autobús.', ['transport'], {
+      acceptedTranslations: ['autobús', 'bus', 'micro', 'colectivo'],
       emoji: '🚌',
     }),
     w(
       'pt-ponto',
       'ponto de ônibus',
-      'parada de colectivo',
+      'parada de autobús',
       'Onde fica o ponto de ônibus?',
-      '¿Dónde queda la parada de colectivo?',
+      '¿Dónde queda la parada de autobús?',
       ['transport'],
-      { acceptedTranslations: ['parada de autobús', 'parada'], emoji: '🚏' },
+      { acceptedTranslations: ['parada de autobús', 'parada', 'parada de colectivo'], emoji: '🚏' },
     ),
     w(
       'pt-onde-fica',
@@ -172,7 +172,7 @@ export const unit10: UnitDef = {
           { target: 'São Paulo é uma cidade grande.', base: 'San Pablo es una ciudad grande.' },
         ],
       },
-      takeaways: ['Nombrás lugares de la ciudad.', 'Sabés que la tienda es loja.'],
+      takeaways: ['Nombras lugares de la ciudad.', 'Sabes que la tienda es loja.'],
       exercises: [
         ex.imageChoice('🚉', 'estação', ['loja', 'praça', 'escola'], ['pt-estacao']),
         ex.imageChoice('🥖', 'padaria', ['loja', 'estação', 'rua'], ['pt-padaria']),
@@ -215,7 +215,7 @@ export const unit10: UnitDef = {
           { target: 'Onde fica a escola?', base: '¿Dónde queda la escuela?' },
         ],
       },
-      takeaways: ['Preguntás dónde queda algo con onde fica?', 'Pedís permiso con com licença.'],
+      takeaways: ['Preguntas dónde queda algo con onde fica?', 'Pides permiso con com licença.'],
       exercises: [
         ex.translationChoice(
           'onde fica?',
@@ -268,20 +268,20 @@ export const unit10: UnitDef = {
       objective: 'Decir adónde vas y cómo.',
       intro: {
         explanation:
-          'Ir: eu vou, você vai. Adónde se dice con para + artículo: vou para a escola, vou para o trabalho; a casa es vou para casa (sin artículo). En qué vas: de ônibus («en colectivo»).',
+          'Ir: eu vou, você vai. Adónde se dice con para + artículo: vou para a escola, vou para o trabalho; a casa es vou para casa (sin artículo). En qué vas: de ônibus («en autobús»).',
         examples: [
           { target: 'Aonde você vai? Vou para casa.', base: '¿Adónde vas? Voy a casa.' },
-          { target: 'Eu vou para a escola de ônibus.', base: 'Voy a la escuela en colectivo.' },
+          { target: 'Eu vou para a escola de ônibus.', base: 'Voy a la escuela en autobús.' },
         ],
       },
-      takeaways: ['Decís adónde vas con vou para…', 'Decís que vas en colectivo con de ônibus.'],
+      takeaways: ['Dices adónde vas con vou para…', 'Dices que vas en autobús con de ônibus.'],
       exercises: [
         ex.translationChoice('vou', 'voy', ['va / vas (con você)', 'soy', 'tengo'], ['pt-vou']),
         ex.imageChoice('🚌', 'ônibus', ['estação', 'loja', 'rua'], ['pt-onibus']),
         ex.translationChoice(
           'ponto de ônibus',
-          'parada de colectivo',
-          ['estación', 'colectivo', 'calle'],
+          'parada de autobús',
+          ['estación', 'autobús', 'calle'],
           ['pt-ponto'],
         ),
         ex.listenChoice(
@@ -298,7 +298,7 @@ export const unit10: UnitDef = {
         ),
         ex.fillBlank(
           'Vou para a escola de ___.',
-          'Voy a la escuela en colectivo.',
+          'Voy a la escuela en autobús.',
           'ônibus',
           ['rua', 'loja', 'praça'],
           ['pt-vou', 'pt-escola', 'pt-onibus'],
@@ -306,7 +306,7 @@ export const unit10: UnitDef = {
         ),
         ex.shortAnswer(
           'Aonde você vai?',
-          '¿Adónde vas? (Respondé que vas a casa.)',
+          '¿Adónde vas? (Responde que vas a casa.)',
           'Vou para casa.',
           ['Eu vou para casa.', 'Para casa.', 'Vou pra casa.', 'Eu vou pra casa.'],
           ['pt-vou'],
@@ -335,7 +335,7 @@ export const unit10: UnitDef = {
           },
         ],
       },
-      takeaways: ['Entendés à direita y à esquerda.', 'Das la indicación siga reto.'],
+      takeaways: ['Entiendes à direita y à esquerda.', 'Das la indicación siga reto.'],
       exercises: [
         ex.imageChoice('➡️', 'à direita', ['à esquerda', 'reto', 'perto'], ['pt-a-direita']),
         ex.imageChoice('⬅️', 'à esquerda', ['à direita', 'reto', 'longe'], ['pt-a-esquerda']),
@@ -390,8 +390,8 @@ export const unit10: UnitDef = {
         ],
       },
       takeaways: [
-        'Decís si algo está cerca o lejos.',
-        'Preguntás y entendés indicaciones completas.',
+        'Dices si algo está cerca o lejos.',
+        'Preguntas y entiendes indicaciones completas.',
       ],
       exercises: [
         ex.translationChoice(
@@ -425,12 +425,12 @@ export const unit10: UnitDef = {
         ),
         ex.orderWords(
           'Com licença, o ponto de ônibus fica longe?',
-          'Permiso, ¿la parada de colectivo queda lejos?',
+          'Permiso, ¿la parada de autobús queda lejos?',
           ['pt-com-licenca', 'pt-ponto', 'pt-longe'],
         ),
         ex.shortAnswer(
           'Com licença, onde fica a padaria?',
-          'Permiso, ¿dónde queda la panadería? (Respondé que queda a la derecha.)',
+          'Permiso, ¿dónde queda la panadería? (Responde que queda a la derecha.)',
           'Fica à direita.',
           ['A padaria fica à direita.', 'À direita.', 'É à direita.'],
           ['pt-a-direita', 'pt-padaria'],

@@ -72,6 +72,217 @@ const NAMES_EN: Record<CosmeticId, string> = {
   bg_gold: 'Gold',
 };
 
+const NAMES_PT: Record<CosmeticId, string> = {
+  'skin-classic': 'Clássico',
+  'skin-ninja': 'Ninja',
+  'skin-explorer': 'Explorador',
+  'skin-academic': 'Acadêmico',
+  'skin-samurai': 'Samurai',
+  'skin-cyber': 'Cyber',
+  'skin-guardian': 'Guardião',
+  'skin-omega': 'Ômega',
+  'skin-social-explorer': 'Explorador Social',
+  'skin-team-legend': 'Lenda da Equipe',
+  'skin-aztec': 'Asteca',
+  'skin-dragon': 'Dragão',
+  'skin-king': 'Rei',
+  'skin-titan': 'Titã',
+  'skin-diamond': 'Diamante',
+  frame_basic: 'Básico',
+  frame_leaf: 'Folha',
+  frame_stellar: 'Estelar',
+  frame_crystal: 'Cristal',
+  frame_elite: 'Elite',
+  frame_diamond: 'Diamante',
+  frame_master: 'Mestre',
+  frame_plus: 'PolyGo Plus',
+  frame_referral_legend: 'Lenda',
+  frame_event: 'Evento',
+  frame_rank: 'Moldura de ranking',
+  bg_solid: 'Sólido',
+  bg_mountain: 'Montanha',
+  bg_forest: 'Floresta',
+  bg_aurora: 'Aurora',
+  bg_neon: 'Cidade Neon',
+  bg_space: 'Espaço',
+  bg_temple: 'Templo',
+  bg_galaxy: 'Galáxia',
+  bg_dimension: 'Dimensão',
+  frame_mint: 'Menta',
+  frame_coral: 'Coral',
+  frame_sky: 'Céu',
+  frame_sun: 'Sol',
+  frame_sunset: 'Pôr do sol',
+  frame_ocean: 'Oceano',
+  frame_aurora: 'Aurora Clássica',
+  frame_galaxy: 'Galáxia Clássica',
+  frame_fire: 'Fogo',
+  frame_crown: 'Realeza',
+  frame_legend: 'Lenda da Temporada',
+  frame_founder: 'Fundador',
+  bg_ocean: 'Mar Profundo',
+  bg_wine: 'Vinho',
+  bg_sunset: 'Pôr do Sol Clássico',
+  bg_gold: 'Ouro',
+};
+
+const NAMES_IT: Record<CosmeticId, string> = {
+  'skin-classic': 'Classico',
+  'skin-ninja': 'Ninja',
+  'skin-explorer': 'Esploratore',
+  'skin-academic': 'Accademico',
+  'skin-samurai': 'Samurai',
+  'skin-cyber': 'Cyber',
+  'skin-guardian': 'Guardiano',
+  'skin-omega': 'Omega',
+  'skin-social-explorer': 'Esploratore Social',
+  'skin-team-legend': 'Leggenda della Squadra',
+  'skin-aztec': 'Azteco',
+  'skin-dragon': 'Drago',
+  'skin-king': 'Re',
+  'skin-titan': 'Titano',
+  'skin-diamond': 'Diamante',
+  frame_basic: 'Base',
+  frame_leaf: 'Foglia',
+  frame_stellar: 'Stellare',
+  frame_crystal: 'Cristallo',
+  frame_elite: 'Élite',
+  frame_diamond: 'Diamante',
+  frame_master: 'Maestro',
+  frame_plus: 'PolyGo Plus',
+  frame_referral_legend: 'Leggenda',
+  frame_event: 'Evento',
+  frame_rank: 'Cornice di rango',
+  bg_solid: 'Tinta unita',
+  bg_mountain: 'Montagna',
+  bg_forest: 'Foresta',
+  bg_aurora: 'Aurora',
+  bg_neon: 'Città Neon',
+  bg_space: 'Spazio',
+  bg_temple: 'Tempio',
+  bg_galaxy: 'Galassia',
+  bg_dimension: 'Dimensione',
+  frame_mint: 'Menta',
+  frame_coral: 'Corallo',
+  frame_sky: 'Cielo',
+  frame_sun: 'Sole',
+  frame_sunset: 'Tramonto',
+  frame_ocean: 'Oceano',
+  frame_aurora: 'Aurora Classica',
+  frame_galaxy: 'Galassia Classica',
+  frame_fire: 'Fuoco',
+  frame_crown: 'Regalità',
+  frame_legend: 'Leggenda della Stagione',
+  frame_founder: 'Fondatore',
+  bg_ocean: 'Mare Profondo',
+  bg_wine: 'Vino',
+  bg_sunset: 'Tramonto Classico',
+  bg_gold: 'Oro',
+};
+
+const RARITY_PT: Record<CosmeticRarity, string> = {
+  free: 'Grátis',
+  common: 'Comum',
+  rare: 'Raro',
+  epic: 'Épico',
+  legendary: 'Lendário',
+  mythic: 'Mítico',
+  exclusive: 'Exclusivo',
+  limited: 'Limitado',
+};
+
+const RARITY_IT: Record<CosmeticRarity, string> = {
+  free: 'Gratis',
+  common: 'Comune',
+  rare: 'Raro',
+  epic: 'Epico',
+  legendary: 'Leggendario',
+  mythic: 'Mitico',
+  exclusive: 'Esclusivo',
+  limited: 'Limitato',
+};
+
+const SOURCE_PT: Record<CosmeticSource, string> = {
+  free: 'Grátis',
+  polys: 'Na loja',
+  season: 'Recompensa de temporada',
+  premium: 'Edição especial',
+  plus: 'Exclusivo do PolyGo Plus',
+  referral: 'Recompensa por convite',
+  event: 'Recompensa de evento',
+  rank: 'Progressão competitiva',
+};
+
+const SOURCE_IT: Record<CosmeticSource, string> = {
+  free: 'Gratis',
+  polys: 'Nel negozio',
+  season: 'Ricompensa stagionale',
+  premium: 'Edizione speciale',
+  plus: 'Esclusiva PolyGo Plus',
+  referral: 'Ricompensa per inviti',
+  event: 'Ricompensa evento',
+  rank: 'Progressione competitiva',
+};
+
+function unlockHintPt(item: CosmeticItem): string {
+  if (!item.available) return 'Arte em produção: em breve.';
+  switch (item.source) {
+    case 'free':
+      return 'Disponível para todos.';
+    case 'polys':
+      return `Desbloqueie por ${item.price} Polys.`;
+    case 'plus':
+      return 'Disponível para assinantes do PolyGo Plus.';
+    case 'referral': {
+      const n = REFERRAL_ITEM_MILESTONE[item.id as CosmeticId] ?? 10;
+      return `Traga ${n} amigos válidos para desbloquear.`;
+    }
+    case 'rank':
+      return 'Vença uma partida ranqueada para estrear sua moldura de ranking.';
+    case 'event':
+      return 'Conquistado em um evento por tempo limitado.';
+    case 'season':
+      return 'Esta foi uma recompensa de temporada.';
+    case 'premium':
+      return 'Edição especial.';
+  }
+}
+
+function unlockHintIt(item: CosmeticItem): string {
+  if (!item.available) return 'Grafica in lavorazione: in arrivo.';
+  switch (item.source) {
+    case 'free':
+      return 'Disponibile per tutti.';
+    case 'polys':
+      return `Sbloccalo per ${item.price} Polys.`;
+    case 'plus':
+      return 'Disponibile per gli abbonati a PolyGo Plus.';
+    case 'referral': {
+      const n = REFERRAL_ITEM_MILESTONE[item.id as CosmeticId] ?? 10;
+      return `Porta ${n} amici validi per sbloccarlo.`;
+    }
+    case 'rank':
+      return 'Vinci una partita classificata per sfoggiare la tua cornice di rango.';
+    case 'event':
+      return 'Si ottiene in un evento a tempo limitato.';
+    case 'season':
+      return 'Era una ricompensa stagionale.';
+    case 'premium':
+      return 'Edizione speciale.';
+  }
+}
+
+const nameIn = (table: Record<CosmeticId, string>) => (id: string, fallback: string) =>
+  table[id as CosmeticId] ?? fallback;
+const namePt = nameIn(NAMES_PT);
+const nameIt = nameIn(NAMES_IT);
+
+/** Nombre traducido a partir del nombre en español (lo que devuelve skinsCompatibleWith). */
+const nameFromEsIn = (lookup: (id: string, fallback: string) => string) => (name: string) => {
+  const item = COSMETICS.find((c) => c.name === name);
+  return item ? lookup(item.id, name) : name;
+};
+
 const RARITY_EN: Record<CosmeticRarity, string> = {
   free: 'Free',
   common: 'Common',
@@ -148,6 +359,28 @@ const STATUS_EN: Record<keyof typeof STATUS_ES, string> = {
   season: 'Season',
 };
 
+const STATUS_PT: Record<keyof typeof STATUS_ES, string> = {
+  equipped: 'Equipado',
+  unlocked: 'Desbloqueado',
+  plus: 'Exclusivo Plus',
+  referral: 'Convites',
+  event: 'Evento',
+  rank: 'Ranked',
+  missing_art: 'Em breve',
+  season: 'Temporada',
+};
+
+const STATUS_IT: Record<keyof typeof STATUS_ES, string> = {
+  equipped: 'Equipaggiato',
+  unlocked: 'Sbloccato',
+  plus: 'Esclusiva Plus',
+  referral: 'Inviti',
+  event: 'Evento',
+  rank: 'Ranked',
+  missing_art: 'In arrivo',
+  season: 'Stagione',
+};
+
 const statusText = (table: Record<keyof typeof STATUS_ES, string>) => (status: CosmeticStatus) => {
   switch (status.kind) {
     case 'equipped':
@@ -177,10 +410,10 @@ export const cosmeticStrings = defineStrings({
       `¡${name} es tuyo! Quedó en tu inventario: se puede usar con un avatar que combine.`,
     unlockFor: (price: number) => `Desbloquear por ${price}`,
     buyHint: (price: number, balance: number) =>
-      `Cuesta ${price} Polys. Tenés ${balance}. Queda equipado al comprarlo si combina con tu avatar.`,
+      `Cuesta ${price} Polys. Tienes ${balance}. Queda equipado al comprarlo si combina con tu avatar.`,
     previewBuy: 'PREVIEW: comprar está deshabilitado.',
     short: (missing: number) =>
-      `Te faltan ${missing} Polys. Ganalos con misiones, lecciones y rachas.`,
+      `Te faltan ${missing} Polys. Gánalos con misiones, lecciones y rachas.`,
     plusExclusive: 'Exclusivo de PolyGo Plus',
     referralReward: 'Recompensa de invitación',
     plusBody: (name: string) =>
@@ -193,7 +426,7 @@ export const cosmeticStrings = defineStrings({
     competitiveBody:
       'Se ganan sólo compitiendo. Con el Marco de rango equipado, tu marco cambia solo con tu ELO real.',
     ladderA11y: (tier: string, reached: boolean, current: boolean) =>
-      `${tier}: ${reached ? (current ? 'tu rango actual' : 'alcanzado') : `bloqueado. Necesitás alcanzar el rango ${tier}`}`,
+      `${tier}: ${reached ? (current ? 'tu rango actual' : 'alcanzado') : `bloqueado. Necesitas alcanzar el rango ${tier}`}`,
   },
   en: {
     name: (item: Pick<CosmeticItem, 'id' | 'name'>) => nameEn(item.id, item.name),
@@ -228,5 +461,72 @@ export const cosmeticStrings = defineStrings({
       'You can only earn these by competing. With the Rank frame equipped, your frame changes on its own with your real ELO.',
     ladderA11y: (tier: string, reached: boolean, current: boolean) =>
       `${tier}: ${reached ? (current ? 'your current rank' : 'reached') : `locked. Reach ${tier} to unlock it`}`,
+  },
+  'pt-BR': {
+    name: (item: Pick<CosmeticItem, 'id' | 'name'>) => namePt(item.id, item.name),
+    nameFromEs: (name: string) => nameFromEsIn(namePt)(name),
+    rarity: (r: CosmeticRarity) => RARITY_PT[r],
+    source: (s: CosmeticSource) => SOURCE_PT[s],
+    unlockHint: (item: CosmeticItem) => unlockHintPt(item),
+    status: statusText(STATUS_PT),
+    tileA11y: (name: string, rarity: string, status: string) => `${name}, ${rarity}. ${status}`,
+    pricePolys: (price: number) => `${price} Polys`,
+    none: 'Nenhum',
+    noneA11y: (equipped: boolean) => `Nenhum${equipped ? ', equipado' : ''}`,
+    combos: (skins: string) => `Combina com Clássico, os avatares básicos e ${skins}.`,
+    stored: (name: string) =>
+      `${name} é seu! Ficou no seu inventário: dá para usar com um avatar que combine.`,
+    unlockFor: (price: number) => `Desbloquear por ${price}`,
+    buyHint: (price: number, balance: number) =>
+      `Custa ${price} Polys. Você tem ${balance}. Ele é equipado ao comprar, se combinar com seu avatar.`,
+    previewBuy: 'PREVIEW: comprar está desativado.',
+    short: (missing: number) => `Faltam ${missing} Polys. Ganhe com missões, lições e sequências.`,
+    plusExclusive: 'Exclusivo do PolyGo Plus',
+    referralReward: 'Recompensa por convite',
+    plusBody: (name: string) =>
+      `${name} é a identidade de quem aprende com o Plus: não dá vantagem no ranked e fica ativo enquanto sua assinatura estiver em dia.`,
+    referralBody: (name: string) =>
+      `${name} não se compra com Polys, nem com dinheiro, nem com o Plus. É para quem traz amigos para o PolyGo.`,
+    learnPlus: 'Conhecer o PolyGo Plus',
+    inviteFriends: 'Convidar amigos',
+    competitiveFrames: 'Molduras competitivas',
+    competitiveBody:
+      'Só se ganham competindo. Com a Moldura de ranking equipada, sua moldura muda sozinha conforme seu ELO real.',
+    ladderA11y: (tier: string, reached: boolean, current: boolean) =>
+      `${tier}: ${reached ? (current ? 'seu rank atual' : 'alcançado') : `bloqueado. Você precisa alcançar o rank ${tier}`}`,
+  },
+  it: {
+    name: (item: Pick<CosmeticItem, 'id' | 'name'>) => nameIt(item.id, item.name),
+    nameFromEs: (name: string) => nameFromEsIn(nameIt)(name),
+    rarity: (r: CosmeticRarity) => RARITY_IT[r],
+    source: (s: CosmeticSource) => SOURCE_IT[s],
+    unlockHint: (item: CosmeticItem) => unlockHintIt(item),
+    status: statusText(STATUS_IT),
+    tileA11y: (name: string, rarity: string, status: string) => `${name}, ${rarity}. ${status}`,
+    pricePolys: (price: number) => `${price} Polys`,
+    none: 'Nessuno',
+    noneA11y: (equipped: boolean) => `Nessuno${equipped ? ', equipaggiato' : ''}`,
+    combos: (skins: string) => `Si abbina a Classico, agli avatar base e a ${skins}.`,
+    stored: (name: string) =>
+      `${name} è tuo! È nel tuo inventario: puoi usarlo con un avatar abbinato.`,
+    unlockFor: (price: number) => `Sblocca per ${price}`,
+    buyHint: (price: number, balance: number) =>
+      `Costa ${price} Polys. Ne hai ${balance}. Se si abbina al tuo avatar, viene equipaggiato appena lo compri.`,
+    previewBuy: 'PREVIEW: gli acquisti sono disattivati.',
+    short: (missing: number) =>
+      `Ti mancano ${missing} Polys. Guadagnali con missioni, lezioni e serie.`,
+    plusExclusive: 'Esclusiva PolyGo Plus',
+    referralReward: 'Ricompensa per inviti',
+    plusBody: (name: string) =>
+      `${name} è il look di chi impara con Plus: non dà vantaggi nel ranked e resta attivo finché il tuo abbonamento è valido.`,
+    referralBody: (name: string) =>
+      `${name} non si compra con i Polys, né con soldi, né con Plus. È per chi porta amici su PolyGo.`,
+    learnPlus: 'Scopri PolyGo Plus',
+    inviteFriends: 'Invita amici',
+    competitiveFrames: 'Cornici competitive',
+    competitiveBody:
+      'Si ottengono solo competendo. Con la Cornice di rango equipaggiata, la tua cornice cambia da sola in base al tuo ELO reale.',
+    ladderA11y: (tier: string, reached: boolean, current: boolean) =>
+      `${tier}: ${reached ? (current ? 'il tuo rango attuale' : 'raggiunto') : `bloccato. Raggiungi il rango ${tier} per sbloccarlo`}`,
   },
 });

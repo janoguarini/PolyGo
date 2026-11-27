@@ -19,10 +19,10 @@ export const unit04: UnitDef = {
   position: 4,
   title: 'La familia',
   titleEn: 'A família',
-  description: 'Nombrar a tu familia, decir cuántos hermanos tenés y cómo se llaman.',
+  description: 'Nombrar a tu familia, decir cuántos hermanos tienes y cómo se llaman.',
   emoji: '👨‍👩‍👧',
   objective:
-    'Podés presentar a tu familia, decir cuántos hermanos tenés y cómo se llaman tus familiares.',
+    'Puedes presentar a tu familia, decir cuántos hermanos tienes y cómo se llaman tus familiares.',
   grammar: {
     title: 'Meu / minha',
     explanation:
@@ -148,8 +148,8 @@ export const unit04: UnitDef = {
         ],
       },
       takeaways: [
-        'Nombrás a tu madre, tu padre y tus padres.',
-        'Distinguís pais (padres) de país.',
+        'Nombras a tu madre, tu padre y tus padres.',
+        'Distingues pais (padres) de país.',
       ],
       exercises: [
         ex.translationChoice('mãe', 'madre', ['padre', 'hermana', 'abuela'], ['pt-mae']),
@@ -198,15 +198,15 @@ export const unit04: UnitDef = {
       objective: 'Hablar de tus hermanos.',
       intro: {
         explanation:
-          'Irmão es hermano e irmã, hermana (las dos con ~). Con tenho decís cuántos tenés: tenho um irmão, tenho duas irmãs. Si no tenés: sou filho único (o filha única).',
+          'Irmão es hermano e irmã, hermana (las dos con ~). Con tenho dices cuántos tienes: tenho um irmão, tenho duas irmãs. Si no tienes: sou filho único (o filha única).',
         examples: [
           { target: 'Tenho um irmão e uma irmã.', base: 'Tengo un hermano y una hermana.' },
           { target: 'Sou filha única.', base: 'Soy hija única.' },
         ],
       },
       takeaways: [
-        'Decís cuántos hermanos tenés con tenho.',
-        'Decís que sos hijo único con filho único.',
+        'Dices cuántos hermanos tienes con tenho.',
+        'Dices que eres hijo único con filho único.',
       ],
       exercises: [
         ex.translationChoice('irmão', 'hermano', ['hermana', 'padre', 'abuelo'], ['pt-irmao']),
@@ -255,7 +255,7 @@ export const unit04: UnitDef = {
           { target: 'Ela é minha filha.', base: 'Ella es mi hija.' },
         ],
       },
-      takeaways: ['Distinguís avô y avó.', 'Nombrás a tus hijos con filho y filha.'],
+      takeaways: ['Distingues avô y avó.', 'Nombras a tus hijos con filho y filha.'],
       exercises: [
         ex.imageChoice('👵', 'avó', ['avô', 'mãe', 'filha'], ['pt-avo-f'], {
           explanation:
@@ -302,8 +302,8 @@ export const unit04: UnitDef = {
         ],
       },
       takeaways: [
-        'Elegís meu o minha según la palabra.',
-        'Presentás a tus familiares con su edad.',
+        'Eliges meu o minha según la palabra.',
+        'Presentas a tus familiares con su edad.',
       ],
       exercises: [
         ex.translationChoice(
@@ -374,14 +374,14 @@ export const unit04: UnitDef = {
         ],
       },
       takeaways: [
-        'Decís cómo se llama alguien con se chama.',
-        'Presentás a tu familia con nombre y edad.',
+        'Dices cómo se llama alguien con se chama.',
+        'Presentas a tu familia con nombre y edad.',
       ],
       exercises: [
         ex.translationChoice(
           'se chama',
           'se llama',
-          ['mi nombre es', '¿cómo te llamás?', 'tiene'],
+          ['mi nombre es', '¿cómo te llamas?', 'tiene'],
           ['pt-se-chama'],
         ),
         ex.fillBlank(
@@ -391,7 +391,7 @@ export const unit04: UnitDef = {
           ['me chamo', 'tem', 'sou'],
           ['pt-se-chama', 'pt-mae'],
           {
-            explanation: 'Para otra persona: se chama. Me chamo es sólo para vos mismo.',
+            explanation: 'Para otra persona: se chama. Me chamo es sólo para ti mismo.',
           },
         ),
         ex.listenChoice(
@@ -415,7 +415,7 @@ export const unit04: UnitDef = {
         ),
         ex.shortAnswer(
           'Como se chama a sua mãe?',
-          '¿Cómo se llama tu madre? (Respondé que se llama Ana.)',
+          '¿Cómo se llama tu madre? (Responde que se llama Ana.)',
           'Minha mãe se chama Ana.',
           ['Ela se chama Ana.', 'Se chama Ana.', 'A minha mãe se chama Ana.', 'Ana.'],
           ['pt-se-chama', 'pt-mae', 'pt-minha'],

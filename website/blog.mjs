@@ -1,4 +1,4 @@
-// Blog de Polygo: artículos en src/blog/posts/<slug>.html y sus datos en src/blog/posts.json.
+// Blog de PolyGo: artículos en src/blog/posts/<slug>.html y sus datos en src/blog/posts.json.
 // Cada artículo sale como página propia (/blog/<slug>) con datos estructurados para Google
 // (BlogPosting, BreadcrumbList y FAQPage a partir de sus <details class="faq-item">).
 import { readFileSync } from 'node:fs';
@@ -15,8 +15,8 @@ function longDate(iso, lang) {
 }
 
 const UI = {
-  es: { home: 'Inicio', blog: 'Blog', updated: 'Actualizado el', read: 'min de lectura', related: 'Seguí leyendo', cta: 'Probá Polygo gratis', ctaBody: 'Lecciones de 5 minutos, repaso inteligente y partidas 1 contra 1 de 60 segundos. En iPhone y Android.', faq: 'Preguntas frecuentes' },
-  en: { home: 'Home', blog: 'Blog', updated: 'Updated', read: 'min read', related: 'Keep reading', cta: 'Try Polygo for free', ctaBody: 'Five-minute lessons, smart review and 60-second 1v1 matches. On iPhone and Android.', faq: 'FAQ' },
+  es: { home: 'Inicio', blog: 'Blog', updated: 'Actualizado el', read: 'min de lectura', related: 'Sigue leyendo', cta: 'Prueba PolyGo gratis', ctaBody: 'Lecciones de 5 minutos, repaso inteligente y partidas 1 contra 1 de 60 segundos. En iPhone y Android.', faq: 'Preguntas frecuentes' },
+  en: { home: 'Home', blog: 'Blog', updated: 'Updated', read: 'min read', related: 'Keep reading', cta: 'Try PolyGo for free', ctaBody: 'Five-minute lessons, smart review and 60-second 1v1 matches. On iPhone and Android.', faq: 'FAQ' },
 };
 
 export function loadPosts(src) {
@@ -147,7 +147,7 @@ export function indexSource(posts) {
 
 export function postJsonLd(p, siteUrl) {
   const url = `${siteUrl}/blog/${p.slug}`;
-  const org = { '@type': 'Organization', name: 'Polygo', url: `${siteUrl}/`, logo: `${siteUrl}/assets/img/icon-512.png` };
+  const org = { '@type': 'Organization', name: 'PolyGo', url: `${siteUrl}/`, logo: `${siteUrl}/assets/img/icon-512.png` };
   const faq = [...p.body.matchAll(/<details class="faq-item">\s*<summary>(.*?)<\/summary>\s*<p>(.*?)<\/p>/gs)].map(
     ([, q, a]) => ({
       '@type': 'Question',
@@ -190,7 +190,7 @@ export function indexJsonLd(posts, siteUrl) {
     {
       '@context': 'https://schema.org',
       '@type': 'Blog',
-      name: 'Blog de Polygo',
+      name: 'Blog de PolyGo',
       url: `${siteUrl}/blog/`,
       inLanguage: 'es',
       blogPost: posts.map((p) => ({
@@ -206,9 +206,9 @@ export function indexJsonLd(posts, siteUrl) {
 
 /** /llms.txt: resumen del sitio para asistentes de IA (formato llmstxt.org). */
 export function llmsTxt(posts, siteUrl) {
-  return `# Polygo
+  return `# PolyGo
 
-> Polygo es una app gratuita para iPhone y Android para aprender idiomas jugando: lecciones cortas, repaso con repetición espaciada y partidas competitivas 1 contra 1 en vivo (Word Rush, 60 segundos) con ELO y rangos de Bronce a Gran Maestro.
+> PolyGo es una app gratuita para iPhone y Android para aprender idiomas jugando: lecciones cortas, repaso con repetición espaciada y partidas competitivas 1 contra 1 en vivo (Word Rush, 60 segundos) con ELO y rangos de Bronce a Gran Maestro.
 
 Datos clave:
 - Idiomas: inglés, italiano, portugués, chino mandarín y francés para hispanohablantes; español para angloparlantes. Cursos desde cero (A1) y A2; inglés también B1 y B2.
@@ -225,7 +225,7 @@ ${posts.map((p) => `- [${p.h1}](${siteUrl}/blog/${p.slug}): ${p.description}`).j
 
 ## Páginas
 
-- [Inicio](${siteUrl}/): qué es Polygo y cómo funciona.
+- [Inicio](${siteUrl}/): qué es PolyGo y cómo funciona.
 - [Blog](${siteUrl}/blog/): todas las guías.
 - [Privacidad](${siteUrl}/privacidad)
 - [Términos y condiciones](${siteUrl}/terminos)

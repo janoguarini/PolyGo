@@ -56,6 +56,97 @@ const EN_TIER_DESCRIPTIONS: Record<string, (n: number, tier: AchievementTier) =>
   },
 };
 
+const PT_FAMILY_TITLES: Record<string, string> = {
+  best_streak_days: 'Pegando fogo',
+  goal_days: 'Focado na meta',
+  lessons_completed: 'Erudito',
+  perfect_lessons: 'Perfeccionista',
+  stars_earned: 'Colecionador',
+  fast_answers: 'Relâmpago',
+  words_seen: 'Explorador',
+  words_mastered: 'Memória de elefante',
+  reviews_completed: 'Revisor',
+  games_played: 'Gladiador',
+  wins: 'Campeão',
+  best_win_streak: 'Imparável',
+  peak_rating: 'Alpinista',
+};
+
+const IT_FAMILY_TITLES: Record<string, string> = {
+  best_streak_days: 'In fiamme',
+  goal_days: 'Obiettivo centrato',
+  lessons_completed: 'Erudito',
+  perfect_lessons: 'Perfezionista',
+  stars_earned: 'Collezionista',
+  fast_answers: 'Fulmine',
+  words_seen: 'Esploratore',
+  words_mastered: 'Memoria di ferro',
+  reviews_completed: 'Ripassatore',
+  games_played: 'Gladiatore',
+  wins: 'Campione',
+  best_win_streak: 'Inarrestabile',
+  peak_rating: 'Scalatore',
+};
+
+const FAMILY_TITLES: Partial<Record<InterfaceLanguage, Record<string, string>>> = {
+  en: EN_FAMILY_TITLES,
+  'pt-BR': PT_FAMILY_TITLES,
+  it: IT_FAMILY_TITLES,
+};
+
+const LEVEL_WORD: Partial<Record<InterfaceLanguage, string>> = {
+  en: 'Level',
+  'pt-BR': 'Nível',
+  it: 'Livello',
+};
+
+const PT_TIER_DESCRIPTIONS: Record<string, (n: number, tier: AchievementTier) => string> = {
+  best_streak_days: (n) => `Estude ${n} dias seguidos.`,
+  goal_days: (n) => `Cumpra sua meta diária em ${n} ${s(n, 'dia', 'dias')}.`,
+  lessons_completed: (n) =>
+    n === 1 ? 'Complete sua primeira lição.' : `Complete ${n} lições diferentes.`,
+  perfect_lessons: (n) =>
+    n === 1
+      ? 'Termine uma lição sem erros (lição dourada).'
+      : `Termine ${n} lições diferentes sem erros.`,
+  stars_earned: (n) => `Junte ${n} estrelas na trilha de lições.`,
+  fast_answers: (n) => `Responda certo ${n} vezes em menos de 2 segundos.`,
+  words_seen: (n) => `Estude ${n} palavras.`,
+  words_mastered: (n) => `Domine ${n} palavras com revisões espaçadas.`,
+  reviews_completed: (n) =>
+    n === 1 ? 'Complete sua primeira revisão.' : `Complete ${n} revisões.`,
+  games_played: (n) => `Jogue ${n} partidas ranked.`,
+  wins: (n) => (n === 1 ? 'Vença uma partida ranked.' : `Vença ${n} partidas ranked.`),
+  best_win_streak: (n) => `Vença ${n} partidas ranked seguidas.`,
+  peak_rating: (n, tier) => {
+    const id = tier.id.replace(/^peak_/, '') as TierId;
+    return `Chegue a ${tierName(id, 'pt-BR') ?? id} (${n} ELO).`;
+  },
+};
+
+const IT_TIER_DESCRIPTIONS: Record<string, (n: number, tier: AchievementTier) => string> = {
+  best_streak_days: (n) => `Studia per ${n} giorni di fila.`,
+  goal_days: (n) => `Raggiungi il tuo obiettivo giornaliero per ${n} ${s(n, 'giorno', 'giorni')}.`,
+  lessons_completed: (n) =>
+    n === 1 ? 'Completa la tua prima lezione.' : `Completa ${n} lezioni diverse.`,
+  perfect_lessons: (n) =>
+    n === 1
+      ? 'Finisci una lezione senza errori (lezione d’oro).'
+      : `Finisci ${n} lezioni diverse senza errori.`,
+  stars_earned: (n) => `Raccogli ${n} stelle nel percorso delle lezioni.`,
+  fast_answers: (n) => `Rispondi correttamente ${n} volte in meno di 2 secondi.`,
+  words_seen: (n) => `Studia ${n} parole.`,
+  words_mastered: (n) => `Padroneggia ${n} parole con ripassi distanziati.`,
+  reviews_completed: (n) => (n === 1 ? 'Completa il tuo primo ripasso.' : `Completa ${n} ripassi.`),
+  games_played: (n) => `Gioca ${n} partite ranked.`,
+  wins: (n) => (n === 1 ? 'Vinci una partita ranked.' : `Vinci ${n} partite ranked.`),
+  best_win_streak: (n) => `Vinci ${n} partite ranked di fila.`,
+  peak_rating: (n, tier) => {
+    const id = tier.id.replace(/^peak_/, '') as TierId;
+    return `Raggiungi ${tierName(id, 'it') ?? id} (${n} ELO).`;
+  },
+};
+
 type Family = Pick<AchievementFamilyDef, 'metric' | 'title'>;
 
 export const achievementStrings = defineStrings({
@@ -92,6 +183,41 @@ export const achievementStrings = defineStrings({
     loadError: 'We couldn’t load your achievements.',
     loading: 'Loading achievements…',
   },
+  'pt-BR': {
+    familyTitle: (family: Family) => PT_FAMILY_TITLES[family.metric] ?? family.title,
+    tierDescription: (family: Family, tier: AchievementTier) =>
+      PT_TIER_DESCRIPTIONS[family.metric]?.(tier.threshold, tier) ?? tier.description,
+    familyA11y: (title: string, level: number, max: number) => `${title}, nível ${level} de ${max}`,
+    nextA11y: (description: string, value: number, threshold: number) =>
+      `Próximo: ${description} Progresso ${value} de ${threshold}.`,
+    complete: 'Completo.',
+    completeBang: 'Completo!',
+    levelOf: (level: number, max: number) => `Nível ${level}/${max}`,
+    pendingRanked: 'Disponível quando o Ranked abrir',
+    progressOf: (title: string) => `Progresso de ${title}`,
+    ribbon: (level: number) => `NV ${level}`,
+    seeAllA11y: 'Ver todas as conquistas.',
+    loadError: 'Não conseguimos carregar suas conquistas.',
+    loading: 'Carregando conquistas…',
+  },
+  it: {
+    familyTitle: (family: Family) => IT_FAMILY_TITLES[family.metric] ?? family.title,
+    tierDescription: (family: Family, tier: AchievementTier) =>
+      IT_TIER_DESCRIPTIONS[family.metric]?.(tier.threshold, tier) ?? tier.description,
+    familyA11y: (title: string, level: number, max: number) =>
+      `${title}, livello ${level} di ${max}`,
+    nextA11y: (description: string, value: number, threshold: number) =>
+      `Prossimo: ${description} Progresso ${value} di ${threshold}.`,
+    complete: 'Completato.',
+    completeBang: 'Completato!',
+    levelOf: (level: number, max: number) => `Livello ${level}/${max}`,
+    pendingRanked: 'Disponibile quando apre il Ranked',
+    progressOf: (title: string) => `Progresso di ${title}`,
+    ribbon: (level: number) => `LIV ${level}`,
+    seeAllA11y: 'Vedi tutti i traguardi.',
+    loadError: 'Non siamo riusciti a caricare i tuoi traguardi.',
+    loading: 'Caricamento traguardi…',
+  },
 });
 
 // --- Insignias de invitaciones (shared/referrals.ts, en español): por id.
@@ -100,6 +226,18 @@ const BADGE_NAMES_EN: Record<BadgeId, string> = {
   recruiter: 'Recruiter',
   ambassador: 'PolyGo Ambassador',
   elite_inviter: 'Elite Inviter',
+};
+
+const BADGE_NAMES_PT: Record<BadgeId, string> = {
+  recruiter: 'Recrutador',
+  ambassador: 'Embaixador PolyGo',
+  elite_inviter: 'Convidador de elite',
+};
+
+const BADGE_NAMES_IT: Record<BadgeId, string> = {
+  recruiter: 'Reclutatore',
+  ambassador: 'Ambasciatore PolyGo',
+  elite_inviter: 'Invitatore d’élite',
 };
 
 /** Tarjeta del jugador y tarjeta de rango (ProfileHeader). */
@@ -111,11 +249,11 @@ export const headerStrings = defineStrings({
     badgeName: (_id: BadgeId, fallback: string) => fallback,
     badgeA11y: (name: string) => `Insignia: ${name}`,
     plusSubscriber: 'Suscriptor PolyGo Plus',
-    unplacedA11y: 'Sin posicionar: ganá una partida ranked para entrar al ranking',
+    unplacedA11y: 'Sin posicionar: gana una partida ranked para entrar al ranking',
     rankA11y: (rank: string, rating: number, next: string | null, toNext: number) =>
       `${rank}, liga actual, ${rating} ELO.${next ? ` Faltan ${toNext} ELO para ${next}.` : ''} Ver clasificación`,
     unplaced: 'Sin posicionar',
-    winARanked: 'Ganá una ranked',
+    winARanked: 'Gana una ranked',
     toNext: (toNext: number, next: string) => `Faltan ${toNext} ELO para ${next}`,
     maxRank: 'Rango máximo',
     rankProgress: 'Progreso al siguiente rango',
@@ -136,6 +274,40 @@ export const headerStrings = defineStrings({
     maxRank: 'Top rank',
     rankProgress: 'Progress to next rank',
   },
+  'pt-BR': {
+    customizeA11y: 'Personalizar avatar, moldura e fundo',
+    countryA11y: (region: string) => `País: ${region}`,
+    editProfile: 'Editar perfil',
+    badgeName: (id: BadgeId, fallback: string) => BADGE_NAMES_PT[id] ?? fallback,
+    badgeA11y: (name: string) => `Insígnia: ${name}`,
+    plusSubscriber: 'Assinante PolyGo Plus',
+    unplacedA11y: 'Sem classificação: vença uma partida ranked para entrar no ranking',
+    rankA11y: (rank: string, rating: number, next: string | null, toNext: number) =>
+      `${rank}, rank atual, ${rating} ELO.${next ? ` ${toNext === 1 ? 'Falta' : 'Faltam'} ${toNext} ELO para ${next}.` : ''} Ver classificação`,
+    unplaced: 'Sem classificação',
+    winARanked: 'Vença uma ranked',
+    toNext: (toNext: number, next: string) =>
+      `${toNext === 1 ? 'Falta' : 'Faltam'} ${toNext} ELO para ${next}`,
+    maxRank: 'Rank máximo',
+    rankProgress: 'Progresso até o próximo rank',
+  },
+  it: {
+    customizeA11y: 'Personalizza avatar, cornice e sfondo',
+    countryA11y: (region: string) => `Paese: ${region}`,
+    editProfile: 'Modifica profilo',
+    badgeName: (id: BadgeId, fallback: string) => BADGE_NAMES_IT[id] ?? fallback,
+    badgeA11y: (name: string) => `Distintivo: ${name}`,
+    plusSubscriber: 'Abbonato PolyGo Plus',
+    unplacedA11y: 'Non classificato: vinci una partita ranked per entrare in classifica',
+    rankA11y: (rank: string, rating: number, next: string | null, toNext: number) =>
+      `${rank}, rango attuale, ${rating} ELO.${next ? ` ${toNext === 1 ? 'Manca' : 'Mancano'} ${toNext} ELO per ${next}.` : ''} Vedi classifica`,
+    unplaced: 'Non classificato',
+    winARanked: 'Vinci una ranked',
+    toNext: (toNext: number, next: string) =>
+      `${toNext === 1 ? 'Manca' : 'Mancano'} ${toNext} ELO per ${next}`,
+    maxRank: 'Rango massimo',
+    rankProgress: 'Progresso verso il rango successivo',
+  },
 });
 
 /** Secciones del perfil propio (ProfileSections). */
@@ -153,12 +325,12 @@ export const sectionsStrings = defineStrings({
     previewTitle: 'PREVIEW',
     previewLanguage: 'Cambiar de idioma está deshabilitado en la vista previa de QA.',
     switchErrorTitle: 'No pudimos cambiar el idioma',
-    switchErrorMessage: 'Probá de nuevo en un rato.',
-    progressError: 'No pudimos cargar tu progreso. Tocá para reintentar.',
+    switchErrorMessage: 'Inténtalo de nuevo en un rato.',
+    progressError: 'No pudimos cargar tu progreso. Toca para reintentar.',
     loadingLanguages: 'Cargando tus idiomas…',
     languageA11y: (name: string, level: string | null, percent: number, current: boolean) =>
       `${name}${level ? `, nivel ${level}, ${percent} por ciento` : ''}${
-        current ? ', idioma actual' : '. Tocá para estudiarlo'
+        current ? ', idioma actual' : '. Toca para estudiarlo'
       }`,
     studying: 'Estudiando',
     levelProgress: (level: string) => `Progreso de ${level}`,
@@ -168,7 +340,7 @@ export const sectionsStrings = defineStrings({
     reachLevel: (level: number) => `Llegar al nivel ${level}`,
     xpLeft: (xp: number) => `Faltan ${xp} XP`,
     enterRanking: 'Entrar al ranking',
-    winARanked: 'Ganá una ranked',
+    winARanked: 'Gana una ranked',
     climbTo: (rank: string) => `Subir a ${rank}`,
     eloLeft: (elo: number) => `Faltan ${elo} ELO`,
     nextGoals: 'Próximos objetivos',
@@ -220,18 +392,98 @@ export const sectionsStrings = defineStrings({
     plusActive: 'Your subscription is active.',
     plusPitch: 'Unlimited energy, smart review, custom widgets and more.',
   },
+  'pt-BR': {
+    streak: 'Sequência',
+    streakA11y: (days: number) => `Sequência de ${days} ${days === 1 ? 'dia' : 'dias'}`,
+    settings: 'Configurações',
+    wins: 'Vitórias',
+    games: 'Partidas',
+    winRate: 'Taxa de vitória',
+    myLanguages: 'Meus idiomas',
+    done: 'Pronto',
+    manage: 'Gerenciar',
+    previewTitle: 'PREVIEW',
+    previewLanguage: 'Trocar de idioma está desativado na prévia de QA.',
+    switchErrorTitle: 'Não conseguimos trocar o idioma',
+    switchErrorMessage: 'Tente de novo daqui a pouco.',
+    progressError: 'Não conseguimos carregar seu progresso. Toque para tentar de novo.',
+    loadingLanguages: 'Carregando seus idiomas…',
+    languageA11y: (name: string, level: string | null, percent: number, current: boolean) =>
+      `${name}${level ? `, nível ${level}, ${percent} por cento` : ''}${
+        current ? ', idioma atual' : '. Toque para estudar'
+      }`,
+    studying: 'Estudando',
+    levelProgress: (level: string) => `Progresso do ${level}`,
+    achievements: 'Conquistas',
+    achievementsCount: (unlocked: number, total: number) => `Conquistas (${unlocked}/${total})`,
+    seeAll: 'Ver todas',
+    reachLevel: (level: number) => `Chegar ao nível ${level}`,
+    xpLeft: (xp: number) => `Faltam ${xp} XP`,
+    enterRanking: 'Entrar no ranking',
+    winARanked: 'Vença uma ranked',
+    climbTo: (rank: string) => `Subir para ${rank}`,
+    eloLeft: (elo: number) => `${elo === 1 ? 'Falta' : 'Faltam'} ${elo} ELO`,
+    nextGoals: 'Próximos objetivos',
+    goalA11y: (title: string, detail: string, percent: number) =>
+      `${title}. ${detail}. ${percent} por cento`,
+    plusActiveA11y: 'Sua assinatura PolyGo Plus',
+    plusLearnA11y: 'Conhecer o PolyGo Plus',
+    plusUntil: (date: string) => `Ativo até ${date}.`,
+    plusActive: 'Sua assinatura está ativa.',
+    plusPitch: 'Energia ilimitada, revisão inteligente, widgets personalizados e mais.',
+  },
+  it: {
+    streak: 'Serie',
+    streakA11y: (days: number) => `Serie di ${days} ${days === 1 ? 'giorno' : 'giorni'}`,
+    settings: 'Impostazioni',
+    wins: 'Vittorie',
+    games: 'Partite',
+    winRate: 'Win rate',
+    myLanguages: 'Le mie lingue',
+    done: 'Fatto',
+    manage: 'Gestisci',
+    previewTitle: 'PREVIEW',
+    previewLanguage: 'Il cambio di lingua è disattivato nell’anteprima di QA.',
+    switchErrorTitle: 'Non siamo riusciti a cambiare la lingua',
+    switchErrorMessage: 'Riprova tra poco.',
+    progressError: 'Non siamo riusciti a caricare i tuoi progressi. Tocca per riprovare.',
+    loadingLanguages: 'Caricamento delle tue lingue…',
+    languageA11y: (name: string, level: string | null, percent: number, current: boolean) =>
+      `${name}${level ? `, livello ${level}, ${percent} per cento` : ''}${
+        current ? ', lingua attuale' : '. Tocca per studiarla'
+      }`,
+    studying: 'Stai studiando',
+    levelProgress: (level: string) => `Progresso di ${level}`,
+    achievements: 'Traguardi',
+    achievementsCount: (unlocked: number, total: number) => `Traguardi (${unlocked}/${total})`,
+    seeAll: 'Vedi tutti',
+    reachLevel: (level: number) => `Raggiungi il livello ${level}`,
+    xpLeft: (xp: number) => `Mancano ${xp} XP`,
+    enterRanking: 'Entra in classifica',
+    winARanked: 'Vinci una ranked',
+    climbTo: (rank: string) => `Sali a ${rank}`,
+    eloLeft: (elo: number) => `${elo === 1 ? 'Manca' : 'Mancano'} ${elo} ELO`,
+    nextGoals: 'Prossimi obiettivi',
+    goalA11y: (title: string, detail: string, percent: number) =>
+      `${title}. ${detail}. ${percent} per cento`,
+    plusActiveA11y: 'Il tuo abbonamento PolyGo Plus',
+    plusLearnA11y: 'Scopri PolyGo Plus',
+    plusUntil: (date: string) => `Attivo. Scadenza: ${date}.`,
+    plusActive: 'Il tuo abbonamento è attivo.',
+    plusPitch: 'Energia illimitata, ripasso intelligente, widget personalizzati e altro.',
+  },
 });
 
 /** Selector de idiomas (LanguagesRow). */
 export const languagesRowStrings = defineStrings({
   es: {
     switchErrorTitle: 'No pudimos cambiar el idioma',
-    switchErrorMessage: 'Probá de nuevo en un rato.',
+    switchErrorMessage: 'Inténtalo de nuevo en un rato.',
     soon: 'Próximamente',
     beta: 'Beta',
     noRanked: 'Sin ranked aún',
     currentSuffix: ', idioma actual',
-    hint: 'Cambia el idioma que estudiás',
+    hint: 'Cambia el idioma que estudias',
   },
   en: {
     switchErrorTitle: 'We couldn’t switch the language',
@@ -241,6 +493,24 @@ export const languagesRowStrings = defineStrings({
     noRanked: 'No ranked yet',
     currentSuffix: ', current language',
     hint: 'Changes the language you study',
+  },
+  'pt-BR': {
+    switchErrorTitle: 'Não conseguimos trocar o idioma',
+    switchErrorMessage: 'Tente de novo daqui a pouco.',
+    soon: 'Em breve',
+    beta: 'Beta',
+    noRanked: 'Sem ranked ainda',
+    currentSuffix: ', idioma atual',
+    hint: 'Troca o idioma que você estuda',
+  },
+  it: {
+    switchErrorTitle: 'Non siamo riusciti a cambiare la lingua',
+    switchErrorMessage: 'Riprova tra poco.',
+    soon: 'Prossimamente',
+    beta: 'Beta',
+    noRanked: 'Ranked non ancora disponibile',
+    currentSuffix: ', lingua attuale',
+    hint: 'Cambia la lingua che studi',
   },
 });
 
@@ -270,6 +540,30 @@ export const periodStatsStrings = defineStrings({
     close: 'Close',
     periodCaps: 'PERIOD',
   },
+  'pt-BR': {
+    period: (days: number | null) => (days === null ? 'Desde sempre' : `Últimos ${days} dias`),
+    games: 'Partidas',
+    wins: 'Vitórias',
+    elo: 'ELO',
+    bestStreak: 'Melhor sequência',
+    stats: 'Estatísticas',
+    periodA11y: (label: string) => `Período: ${label}. Alterar`,
+    loadError: 'Não conseguimos carregar suas estatísticas.',
+    close: 'Fechar',
+    periodCaps: 'PERÍODO',
+  },
+  it: {
+    period: (days: number | null) => (days === null ? 'Da sempre' : `Ultimi ${days} giorni`),
+    games: 'Partite',
+    wins: 'Vittorie',
+    elo: 'ELO',
+    bestStreak: 'Serie max',
+    stats: 'Statistiche',
+    periodA11y: (label: string) => `Periodo: ${label}. Cambia`,
+    loadError: 'Non siamo riusciti a caricare le tue statistiche.',
+    close: 'Chiudi',
+    periodCaps: 'PERIODO',
+  },
 });
 
 const RESULTS_ES: Record<MatchResult, string> = {
@@ -278,6 +572,12 @@ const RESULTS_ES: Record<MatchResult, string> = {
   draw: 'Empate',
 };
 const RESULTS_EN: Record<MatchResult, string> = { win: 'Win', loss: 'Loss', draw: 'Draw' };
+const RESULTS_PT: Record<MatchResult, string> = { win: 'Vitória', loss: 'Derrota', draw: 'Empate' };
+const RESULTS_IT: Record<MatchResult, string> = {
+  win: 'Vittoria',
+  loss: 'Sconfitta',
+  draw: 'Pareggio',
+};
 
 /** Historial competitivo, partidas y gráfico de ELO. */
 export const historyStrings = defineStrings({
@@ -302,13 +602,13 @@ export const historyStrings = defineStrings({
     evolutionEmpty: 'Tu evolución aparece después de tu primera partida ranked.',
     recentMatches: 'ÚLTIMAS PARTIDAS',
     matchesError: 'No pudimos cargar tus partidas.',
-    matchesEmpty: 'Todavía no jugaste partidas. Las vas a ver acá cuando abra Ranked.',
+    matchesEmpty: 'Todavía no jugaste partidas. Las verás aquí cuando abra Ranked.',
     fullHistory: 'Ver historial completo',
     start: (date: string) => `Inicio · ${date}`,
     chartA11y: (games: number, from: number, to: number, total: string) =>
       `Evolución del ELO en ${games} partidas: de ${from} a ${to}, ${total}.`,
     chartFooter: (games: number, total: string) =>
-      `${games} ${games === 1 ? 'partida' : 'partidas'} · ${total} en total · tocá el gráfico para ver cada una`,
+      `${games} ${games === 1 ? 'partida' : 'partidas'} · ${total} en total · toca el gráfico para ver cada una`,
   },
   en: {
     result: (r: MatchResult | null) => (r ? RESULTS_EN[r] : 'No result'),
@@ -338,6 +638,63 @@ export const historyStrings = defineStrings({
     chartFooter: (games: number, total: string) =>
       `${games} ${games === 1 ? 'match' : 'matches'} · ${total} overall · tap the chart to see each one`,
   },
+  'pt-BR': {
+    result: (r: MatchResult | null) => (r ? RESULTS_PT[r] : 'Sem resultado'),
+    deletedPlayer: 'Jogador excluído',
+    matchA11y: (
+      result: string,
+      forfeited: boolean,
+      opponent: string,
+      score: number,
+      opponentScore: number,
+      delta: string | null,
+    ) =>
+      `${result}${forfeited ? ' por abandono' : ''} contra ${opponent}, ${score} a ${opponentScore}${delta ? `, ${delta} ELO` : ''}`,
+    noElo: ' · sem ELO',
+    noEloA11y: ', sem ELO',
+    eloEvolution: 'EVOLUÇÃO DO ELO',
+    evolutionError: 'Não conseguimos carregar sua evolução.',
+    loading: 'Carregando…',
+    evolutionEmpty: 'Sua evolução aparece depois da sua primeira partida ranked.',
+    recentMatches: 'ÚLTIMAS PARTIDAS',
+    matchesError: 'Não conseguimos carregar suas partidas.',
+    matchesEmpty:
+      'Você ainda não jogou nenhuma partida. Elas vão aparecer aqui quando o Ranked abrir.',
+    fullHistory: 'Ver histórico completo',
+    start: (date: string) => `Início · ${date}`,
+    chartA11y: (games: number, from: number, to: number, total: string) =>
+      `Evolução do ELO em ${games} ${games === 1 ? 'partida' : 'partidas'}: de ${from} a ${to}, ${total}.`,
+    chartFooter: (games: number, total: string) =>
+      `${games} ${games === 1 ? 'partida' : 'partidas'} · ${total} no total · toque no gráfico para ver cada uma`,
+  },
+  it: {
+    result: (r: MatchResult | null) => (r ? RESULTS_IT[r] : 'Nessun risultato'),
+    deletedPlayer: 'Giocatore eliminato',
+    matchA11y: (
+      result: string,
+      forfeited: boolean,
+      opponent: string,
+      score: number,
+      opponentScore: number,
+      delta: string | null,
+    ) =>
+      `${result}${forfeited ? ' per abbandono' : ''} contro ${opponent}, ${score} a ${opponentScore}${delta ? `, ${delta} ELO` : ''}`,
+    noElo: ' · senza ELO',
+    noEloA11y: ', senza ELO',
+    eloEvolution: 'ANDAMENTO ELO',
+    evolutionError: 'Non siamo riusciti a caricare il tuo andamento.',
+    loading: 'Caricamento…',
+    evolutionEmpty: 'Il tuo andamento compare dopo la tua prima partita ranked.',
+    recentMatches: 'ULTIME PARTITE',
+    matchesError: 'Non siamo riusciti a caricare le tue partite.',
+    matchesEmpty: 'Non hai ancora giocato partite. Le vedrai qui quando aprirà il Ranked.',
+    fullHistory: 'Vedi lo storico completo',
+    start: (date: string) => `Inizio · ${date}`,
+    chartA11y: (games: number, from: number, to: number, total: string) =>
+      `Andamento dell’ELO in ${games} ${games === 1 ? 'partita' : 'partite'}: da ${from} a ${to}, ${total}.`,
+    chartFooter: (games: number, total: string) =>
+      `${games} ${games === 1 ? 'partita' : 'partite'} · ${total} in totale · tocca il grafico per vederle una per una`,
+  },
 });
 
 const REASONS_ES: Record<ReportReason, string> = {
@@ -353,6 +710,20 @@ const REASONS_EN: Record<ReportReason, string> = {
   hateful: 'Offensive or hateful',
   impersonation: 'Pretending to be someone else',
   other: 'Something else',
+};
+const REASONS_PT: Record<ReportReason, string> = {
+  sexual: 'Conteúdo sexual',
+  violent: 'Violência',
+  hateful: 'Ofensiva ou discriminatória',
+  impersonation: 'Está se passando por outra pessoa',
+  other: 'Outro motivo',
+};
+const REASONS_IT: Record<ReportReason, string> = {
+  sexual: 'Contenuti sessuali',
+  violent: 'Violenza',
+  hateful: 'Offensiva o discriminatoria',
+  impersonation: 'Si spaccia per un’altra persona',
+  other: 'Altro motivo',
 };
 
 /** Reportar la foto de otro jugador (ReportPhotoButton). */
@@ -381,24 +752,69 @@ export const reportStrings = defineStrings({
     send: 'Send report',
     cancel: 'Cancel',
   },
+  'pt-BR': {
+    reason: (r: ReportReason) => REASONS_PT[r],
+    hidden: 'Obrigado por avisar. A foto foi ocultada.',
+    review: 'Obrigado por avisar. Vamos analisar a foto.',
+    triggerA11y: (username: string) => `Denunciar a foto de perfil de ${username}`,
+    trigger: 'Denunciar foto',
+    title: 'Denunciar foto de perfil',
+    body: (username: string) =>
+      `Por que a foto de @${username} não deveria aparecer? Sua denúncia é anônima.`,
+    send: 'Enviar denúncia',
+    cancel: 'Cancelar',
+  },
+  it: {
+    reason: (r: ReportReason) => REASONS_IT[r],
+    hidden: 'Grazie per la segnalazione. La foto è stata nascosta.',
+    review: 'Grazie per la segnalazione. Controlleremo la foto.',
+    triggerA11y: (username: string) => `Segnala la foto profilo di ${username}`,
+    trigger: 'Segnala foto',
+    title: 'Segnala foto profilo',
+    body: (username: string) =>
+      `Perché la foto di @${username} non dovrebbe essere visibile? La tua segnalazione è anonima.`,
+    send: 'Invia segnalazione',
+    cancel: 'Annulla',
+  },
 });
 
 /** Subida de la foto de perfil (avatarUpload). */
 export const avatarUploadStrings = defineStrings({
   es: { processError: 'No se pudo procesar la imagen.' },
   en: { processError: 'We couldn’t process the image.' },
+  'pt-BR': { processError: 'Não foi possível processar a imagem.' },
+  it: { processError: 'Non è stato possibile elaborare l’immagine.' },
 });
 
 // --- Títulos de logro que llegan del servidor (title_es = «Erudito · Nivel 2»): por id de nivel.
 
-/** «Erudito · Nivel 2» / «Scholar · Level 2». Sin coincidencia, el título que mandó el servidor. */
+/**
+ * «Erudito · Nivel 2» / «Scholar · Level 2» / «Erudito · Nível 2» / «Erudito · Livello 2». Sin
+ * coincidencia, el título que mandó el servidor.
+ */
 export function achievementTitleById(id: string, fallback: string, ui: InterfaceLanguage): string {
-  if (ui === 'es') return fallback;
+  const titles = FAMILY_TITLES[ui];
+  const levelWord = LEVEL_WORD[ui];
+  if (!titles || !levelWord) return fallback;
   for (const family of ACHIEVEMENT_FAMILIES) {
     const i = family.tiers.findIndex((t) => t.id === id);
-    if (i >= 0) return `${EN_FAMILY_TITLES[family.metric] ?? family.title} · Level ${i + 1}`;
+    if (i >= 0) return `${titles[family.metric] ?? family.title} · ${levelWord} ${i + 1}`;
   }
   return fallback;
+}
+
+/**
+ * Título de logro que llega sólo como texto en español («Erudito · Nivel 2», el title_es de
+ * shared/achievements.ts `tierTitle`), sin id: p. ej. el feed de amigos. Se reconoce la familia y el
+ * nivel y se traduce; si no coincide, queda el texto del servidor.
+ */
+export function achievementTitleFromEs(title: string, ui: InterfaceLanguage): string {
+  if (ui === 'es') return title;
+  const match = /^(.*) · Nivel (\d+)$/.exec(title);
+  if (!match) return title;
+  const family = ACHIEVEMENT_FAMILIES.find((f) => f.title === match[1]);
+  const tier = family?.tiers[Number(match[2]) - 1];
+  return tier ? achievementTitleById(tier.id, title, ui) : title;
 }
 
 export function useAchievementTitle() {

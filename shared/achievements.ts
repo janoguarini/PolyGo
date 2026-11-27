@@ -49,7 +49,7 @@ export const ACHIEVEMENT_FAMILIES: readonly AchievementFamilyDef[] = [
     icon: 'flame',
     category: 'streak',
     colors: ['#FB923C', '#C2410C'],
-    tiers: tiers('streak', [3, 7, 14, 30, 60, 100, 180, 365], (n) => `Estudiá ${n} días seguidos.`),
+    tiers: tiers('streak', [3, 7, 14, 30, 60, 100, 180, 365], (n) => `Estudia ${n} días seguidos.`),
   },
   {
     metric: 'goal_days',
@@ -72,7 +72,7 @@ export const ACHIEVEMENT_FAMILIES: readonly AchievementFamilyDef[] = [
     tiers: tiers(
       'lessons',
       [1, 5, 15, 30, 60, 120],
-      (n) => (n === 1 ? 'Completá tu primera lección.' : `Completá ${n} lecciones distintas.`),
+      (n) => (n === 1 ? 'Completa tu primera lección.' : `Completa ${n} lecciones distintas.`),
       { 1: 'first_lesson' },
     ),
   },
@@ -87,8 +87,8 @@ export const ACHIEVEMENT_FAMILIES: readonly AchievementFamilyDef[] = [
       [1, 5, 15, 25, 50, 100],
       (n) =>
         n === 1
-          ? 'Terminá una lección sin errores (lección dorada).'
-          : `Terminá ${n} lecciones distintas sin errores.`,
+          ? 'Termina una lección sin errores (lección dorada).'
+          : `Termina ${n} lecciones distintas sin errores.`,
       { 1: 'perfect_lesson', 25: 'golden_25' },
     ),
   },
@@ -101,7 +101,7 @@ export const ACHIEVEMENT_FAMILIES: readonly AchievementFamilyDef[] = [
     tiers: tiers(
       'stars',
       [10, 30, 75, 120, 200, 300],
-      (n) => `Juntá ${n} estrellas en el camino de lecciones.`,
+      (n) => `Junta ${n} estrellas en el camino de lecciones.`,
     ),
   },
   {
@@ -113,7 +113,7 @@ export const ACHIEVEMENT_FAMILIES: readonly AchievementFamilyDef[] = [
     tiers: tiers(
       'fast',
       [10, 50, 150, 400, 1000],
-      (n) => `Respondé bien ${n} veces en menos de 2 segundos.`,
+      (n) => `Responde bien ${n} veces en menos de 2 segundos.`,
     ),
   },
   {
@@ -122,7 +122,7 @@ export const ACHIEVEMENT_FAMILIES: readonly AchievementFamilyDef[] = [
     icon: 'eye',
     category: 'vocabulary',
     colors: ['#22D3EE', '#0E7490'],
-    tiers: tiers('words', [25, 50, 100, 200], (n) => `Estudiá ${n} palabras.`),
+    tiers: tiers('words', [25, 50, 100, 200], (n) => `Estudia ${n} palabras.`),
   },
   {
     metric: 'words_mastered',
@@ -133,7 +133,7 @@ export const ACHIEVEMENT_FAMILIES: readonly AchievementFamilyDef[] = [
     tiers: tiers(
       'mastered',
       [10, 25, 50, 100, 200],
-      (n) => `Dominá ${n} palabras con repasos espaciados.`,
+      (n) => `Domina ${n} palabras con repasos espaciados.`,
     ),
   },
   {
@@ -143,7 +143,7 @@ export const ACHIEVEMENT_FAMILIES: readonly AchievementFamilyDef[] = [
     category: 'vocabulary',
     colors: ['#2DD4BF', '#0F766E'],
     tiers: tiers('reviews', [1, 5, 15, 40, 100], (n) =>
-      n === 1 ? 'Completá tu primer repaso.' : `Completá ${n} repasos.`,
+      n === 1 ? 'Completa tu primer repaso.' : `Completa ${n} repasos.`,
     ),
   },
   {
@@ -152,7 +152,7 @@ export const ACHIEVEMENT_FAMILIES: readonly AchievementFamilyDef[] = [
     icon: 'shield',
     category: 'competitive',
     colors: ['#94A3B8', '#475569'],
-    tiers: tiers('games', [5, 25, 50, 100, 250, 500], (n) => `Jugá ${n} partidas ranked.`, {
+    tiers: tiers('games', [5, 25, 50, 100, 250, 500], (n) => `Juega ${n} partidas ranked.`, {
       5: 'placement_done',
     }),
   },
@@ -165,7 +165,7 @@ export const ACHIEVEMENT_FAMILIES: readonly AchievementFamilyDef[] = [
     tiers: tiers(
       'wins',
       [1, 10, 25, 50, 100, 250],
-      (n) => (n === 1 ? 'Ganá una partida ranked.' : `Ganá ${n} partidas ranked.`),
+      (n) => (n === 1 ? 'Gana una partida ranked.' : `Gana ${n} partidas ranked.`),
       { 1: 'first_win' },
     ),
   },
@@ -175,7 +175,7 @@ export const ACHIEVEMENT_FAMILIES: readonly AchievementFamilyDef[] = [
     icon: 'trending-up',
     category: 'competitive',
     colors: ['#F87171', '#B91C1C'],
-    tiers: tiers('win_streak', [3, 5, 10, 15, 20], (n) => `Ganá ${n} partidas ranked seguidas.`),
+    tiers: tiers('win_streak', [3, 5, 10, 15, 20], (n) => `Gana ${n} partidas ranked seguidas.`),
   },
   {
     metric: 'peak_rating',
@@ -187,7 +187,7 @@ export const ACHIEVEMENT_FAMILIES: readonly AchievementFamilyDef[] = [
     tiers: TIERS.filter((t) => t.minRating > 0).map((t) => ({
       id: `peak_${t.id}`,
       threshold: t.minRating,
-      description: `Llegá a ${t.name} (${t.minRating} de ELO).`,
+      description: `Llega a ${t.name} (${t.minRating} de ELO).`,
     })),
   },
 ];

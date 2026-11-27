@@ -114,7 +114,7 @@ export const PT_A2_U04: PtUnitDef = {
       'El pretérito imperfeito (era, tinha, morava, brincava, ia), costumava, el barrio, los vecinos y el falso amigo brincar.',
     emoji: '🧸',
     objective:
-      'Podés contar cómo era tu vida de chico, qué hacías siempre y cómo eran las personas y los lugares de antes.',
+      'Puedes contar cómo era tu vida de niño, qué hacías siempre y cómo eran las personas y los lugares de antes.',
     grammar: {
       title: 'Pretérito imperfeito',
       explanation:
@@ -181,7 +181,7 @@ export const PT_A2_U04: PtUnitDef = {
         'costumava',
         'solía',
         'Eu costumava ler à noite.',
-        'Solía leer a la noche.',
+        'Solía leer por la noche.',
         ['past'],
       ),
       w(
@@ -288,7 +288,7 @@ export const PT_A2_U04: PtUnitDef = {
       // ------------------------------------------------------------------------------------ L1
       {
         title: 'Quando eu era criança',
-        objective: 'Describir cómo eras de chico con era y tinha.',
+        objective: 'Describir cómo eras de niño con era y tinha.',
         intro: {
           explanation:
             'Para describir el pasado se usa el imperfeito. Ser → era («era») y ter → tinha («tenía»): eu era tímido, eu tinha um cachorro. Quando eu era criança es «cuando era chico».',
@@ -301,8 +301,8 @@ export const PT_A2_U04: PtUnitDef = {
           ],
         },
         takeaways: [
-          'Describís el pasado con era y tinha.',
-          'Empezás un recuerdo: quando eu era criança…',
+          'Describes el pasado con era y tinha.',
+          'Empiezas un recuerdo: quando eu era criança…',
         ],
         exercises: [
           ex.translationChoice(
@@ -350,8 +350,8 @@ export const PT_A2_U04: PtUnitDef = {
             'pt.ex.et942cuegtn3f5',
             FOTO,
             '¿Cómo era la chica de la foto?',
-            'Bajita y con anteojos',
-            ['Alta y con anteojos', 'Bajita y rubia', 'Muy tímida'],
+            'Bajita y con lentes',
+            ['Alta y con lentes', 'Bajita y rubia', 'Muy tímida'],
             ['pt-era', 'pt-ia'],
             'La descripción dice: «Eu era baixinha e usava óculos».',
           ),
@@ -374,7 +374,7 @@ export const PT_A2_U04: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Como você era quando era criança? (tímido)',
-            '¿Cómo eras de chico? (Respondé que eras muy tímido.)',
+            '¿Cómo eras de niño? (Responde que eras muy tímido.)',
             'Eu era muito tímido.',
             [
               'Era muito tímido.',
@@ -414,8 +414,8 @@ export const PT_A2_U04: PtUnitDef = {
           ],
         },
         takeaways: [
-          'Contás costumbres: morava, brincava, gostava de.',
-          'Distinguís brincar (jugar de chico) y jogar.',
+          'Cuentas costumbres: morava, brincava, gostava de.',
+          'Distingues brincar (jugar de niño) y jogar.',
         ],
         exercises: [
           ex.translationChoice(
@@ -467,7 +467,7 @@ export const PT_A2_U04: PtUnitDef = {
           question(
             'pt.ex.3pb84oe7hars33',
             VOVO,
-            '¿Dónde vivía el abuelo de chico?',
+            '¿Dónde vivía el abuelo de niño?',
             'En el campo, en el interior de Minas',
             ['En el centro de una ciudad', 'Cerca de la playa', 'En São Paulo'],
             ['pt-morava', 'pt-fazenda'],
@@ -478,17 +478,13 @@ export const PT_A2_U04: PtUnitDef = {
             VOVO,
             '¿Qué hacían los chicos?',
             'Jugaban en el río y ayudaban con los animales',
-            [
-              'Miraban televisión',
-              'Jugaban al fútbol en la calle',
-              'Iban a la escuela en colectivo',
-            ],
+            ['Miraban televisión', 'Jugaban al fútbol en la calle', 'Iban a la escuela en autobús'],
             ['pt-brincava'],
             'Dice: «A gente brincava no rio e ajudava o meu pai com os animais».',
           ),
           ex.shortAnswer(
             'Onde você morava quando era criança? (Rosario)',
-            '¿Dónde vivías de chico? (Respondé que vivías en Rosario.)',
+            '¿Dónde vivías de niño? (Responde que vivías en Rosario.)',
             'Eu morava em Rosario.',
             ['Morava em Rosario.', 'Quando eu era criança, eu morava em Rosario.', 'Em Rosario.'],
             ['pt-morava'],
@@ -525,8 +521,8 @@ export const PT_A2_U04: PtUnitDef = {
           ],
         },
         takeaways: [
-          'Describís un barrio y a sus vecinos.',
-          'Decís que te acordás de algo: eu lembro de…',
+          'Describes un barrio y a sus vecinos.',
+          'Dices que te acuerdas de algo: eu lembro de…',
         ],
         exercises: [
           ex.imageChoice('🏘️', 'bairro', ['fazenda', 'brinquedo', 'criança'], ['pt-bairro'], {
@@ -573,7 +569,7 @@ export const PT_A2_U04: PtUnitDef = {
             'pt.ex.ajopiiqdyg6b1x',
             BAIRRO,
             '¿Qué hacían los vecinos?',
-            'Charlaban en la vereda',
+            'Charlaban en la acera',
             ['Jugaban en la calle', 'Trabajaban en el campo', 'Iban a la playa'],
             ['pt-vizinho'],
             'Dice: «Os vizinhos conversavam na calçada».',
@@ -589,7 +585,7 @@ export const PT_A2_U04: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Você lembra da sua primeira escola?',
-            '¿Te acordás de tu primera escuela? (Respondé que sí, que te acordás de todo.)',
+            '¿Te acuerdas de tu primera escuela? (Responde que sí, que te acuerdas de todo.)',
             'Sim, eu lembro de tudo.',
             [
               'Lembro, sim! Lembro de tudo.',
@@ -627,7 +623,7 @@ export const PT_A2_U04: PtUnitDef = {
             },
           ],
         },
-        takeaways: ['Contás costumbres con costumava e ia.', 'Comparás con antigamente.'],
+        takeaways: ['Cuentas costumbres con costumava e ia.', 'Comparas con antigamente.'],
         exercises: [
           ex.translationChoice(
             'costumava',
@@ -676,7 +672,7 @@ export const PT_A2_U04: PtUnitDef = {
             ENTREVISTA,
             '¿Cómo iba Dona Rosa a la escuela?',
             'Caminando',
-            ['En colectivo', 'En bicicleta', 'En auto con su papá'],
+            ['En autobús', 'En bicicleta', 'En auto con su papá'],
             ['pt-costumava'],
             'Dona Rosa dice: «A gente costumava ir a pé».',
           ),
@@ -700,7 +696,7 @@ export const PT_A2_U04: PtUnitDef = {
           ),
           ex.shortAnswer(
             'O que você costumava fazer no verão? (ir à praia)',
-            '¿Qué solías hacer en verano? (Respondé que solías ir a la playa.)',
+            '¿Qué solías hacer en verano? (Responde que solías ir a la playa.)',
             'Eu costumava ir à praia.',
             ['Costumava ir à praia.', 'Eu ia à praia.', 'No verão eu costumava ir à praia.'],
             ['pt-costumava'],
@@ -738,8 +734,8 @@ export const PT_A2_U04: PtUnitDef = {
           ],
         },
         takeaways: [
-          'Contás tu infancia con el imperfeito.',
-          'Nombrás juguetes, lugares y personas de antes.',
+          'Cuentas tu infancia con el imperfeito.',
+          'Nombras juguetes, lugares y personas de antes.',
         ],
         exercises: [
           ex.translationChoice(
@@ -787,7 +783,7 @@ export const PT_A2_U04: PtUnitDef = {
           question(
             'pt.ex.9j5foovxii8tgb',
             VOVO,
-            '¿Cómo describe el abuelo su vida de chico?',
+            '¿Cómo describe el abuelo su vida de niño?',
             'Simple, pero feliz',
             ['Difícil y triste', 'Muy moderna', 'Aburrida'],
             ['pt-era'],
@@ -803,7 +799,7 @@ export const PT_A2_U04: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Qual era o seu brinquedo favorito? (uma bola)',
-            '¿Cuál era tu juguete favorito? (Respondé que era una pelota.)',
+            '¿Cuál era tu juguete favorito? (Responde que era una pelota.)',
             'Era uma bola.',
             [
               'O meu brinquedo favorito era uma bola.',

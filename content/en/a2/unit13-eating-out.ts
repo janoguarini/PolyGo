@@ -50,7 +50,7 @@ export const EN_A2_U13: ExpansionUnitDef = {
     titleEn: 'Eating out',
     description: 'El menú, some y any, much y many, pedir en un restaurante y pagar la cuenta.',
     emoji: '🍽️',
-    objective: 'Podés leer un menú, pedir la comida con cortesía y pedir la cuenta.',
+    objective: 'Puedes leer un menú, pedir la comida con cortesía y pedir la cuenta.',
     grammar: {
       title: 'Some, any, much y many',
       explanation:
@@ -58,7 +58,7 @@ export const EN_A2_U13: ExpansionUnitDef = {
       examples: [
         { target: 'There is some milk.', base: 'Hay algo de leche.' },
         { target: "We don't have any bread.", base: 'No tenemos nada de pan.' },
-        { target: "There aren't many people here.", base: 'No hay mucha gente acá.' },
+        { target: "There aren't many people here.", base: 'No hay mucha gente aquí.' },
       ],
     },
     review: {
@@ -129,7 +129,7 @@ export const EN_A2_U13: ExpansionUnitDef = {
         '/dɪˈzɜrt/',
         '🍰',
         'What do you want for dessert?',
-        '¿Qué querés de postre?',
+        '¿Qué quieres de postre?',
         ['food'],
       ),
       w(
@@ -235,7 +235,7 @@ export const EN_A2_U13: ExpansionUnitDef = {
         '/ˈmɛni/',
         undefined,
         "There aren't many people here.",
-        'No hay mucha gente acá.',
+        'No hay mucha gente aquí.',
         ['quantity', 'grammar'],
         ['muchos', 'muchas'],
       ),
@@ -265,8 +265,8 @@ export const EN_A2_U13: ExpansionUnitDef = {
           ],
         },
         takeaways: [
-          'Nombrás los platos de un menú: soup, salad, meat, fish, dessert.',
-          'Pedís ver el menú con Can I see the menu, please?',
+          'Nombras los platos de un menú: soup, salad, meat, fish, dessert.',
+          'Pides ver el menú con Can I see the menu, please?',
         ],
         exercises: [
           ex.imageChoice('🐟', 'fish', ['meat', 'soup', 'salad'], ['en-fish'], {
@@ -338,8 +338,8 @@ export const EN_A2_U13: ExpansionUnitDef = {
           ],
         },
         takeaways: [
-          'Usás some en afirmativas: There is some cheese.',
-          'Usás any en negativas y preguntas: Is there any juice?',
+          'Usas some en afirmativas: There is some cheese.',
+          'Usas any en negativas y preguntas: Is there any juice?',
         ],
         exercises: [
           ex.fillBlank(
@@ -388,7 +388,7 @@ export const EN_A2_U13: ExpansionUnitDef = {
           ),
           ex.orderWords(
             "I don't have any money.",
-            'No tengo nada de plata.',
+            'No tengo nada de dinero.',
             ['en-any', 'en-money'],
             {
               id: 'en.ex.4lk02460h5tr4o',
@@ -427,14 +427,14 @@ export const EN_A2_U13: ExpansionUnitDef = {
           ],
         },
         takeaways: [
-          'Pedís una mesa: A table for two, please.',
-          'Pedís con cortesía: Could I have the fish, please?',
-          'Decís si la comida está delicious o es spicy.',
+          'Pides una mesa: A table for two, please.',
+          'Pides con cortesía: Could I have the fish, please?',
+          'Dices si la comida está delicious o es spicy.',
         ],
         exercises: [
           ex.fillBlank(
             '___ the soup, please?',
-            'Situación: estás en un restaurante y querés pedir la sopa con cortesía.',
+            'Situación: estás en un restaurante y quieres pedir la sopa con cortesía.',
             'Could I have',
             ['Could you have', 'Do I have', 'Have I'],
             ['en-could-i-have', 'en-soup'],
@@ -531,13 +531,13 @@ export const EN_A2_U13: ExpansionUnitDef = {
           explanation:
             'Many va con lo que se cuenta (many people, many eggs) y much con lo que no se cuenta (much water, much money), sobre todo en negativas y preguntas. A lot of sirve para los dos, sobre todo en afirmativas.',
           examples: [
-            { target: "There aren't many people here.", base: 'No hay mucha gente acá.' },
+            { target: "There aren't many people here.", base: 'No hay mucha gente aquí.' },
             { target: 'I drink a lot of water.', base: 'Tomo mucha agua.' },
           ],
         },
         takeaways: [
-          'Usás many con lo que se cuenta y much con lo que no.',
-          'Usás a lot of en afirmativas: a lot of vegetables.',
+          'Usas many con lo que se cuenta y much con lo que no.',
+          'Usas a lot of en afirmativas: a lot of vegetables.',
         ],
         exercises: [
           ex.fillBlank(
@@ -590,14 +590,14 @@ export const EN_A2_U13: ExpansionUnitDef = {
           ),
           ex.shortAnswer(
             'How much water do you drink? (a lot)',
-            '¿Cuánta agua tomás?',
+            '¿Cuánta agua tomas?',
             'I drink a lot of water.',
             ['A lot.', 'A lot of water.', 'I drink a lot.'],
             ['en-a-lot-of', 'en-water', 'en-how-much'],
             { id: 'en.ex.021t1jw5zkq7wp' },
           ),
           ex.translateWrite(
-            'No hay muchos restaurantes acá.',
+            'No hay muchos restaurantes aquí.',
             "There aren't many restaurants here.",
             ['en-many', 'en-restaurant'],
             { id: 'en.ex.754woqd9su8y6c' },
@@ -620,7 +620,7 @@ export const EN_A2_U13: ExpansionUnitDef = {
             { target: 'Can I pay by card?', base: '¿Puedo pagar con tarjeta?' },
           ],
         },
-        takeaways: ['Leés un menú con precios.', 'Pedís la cuenta y preguntás cómo pagar.'],
+        takeaways: ['Lees un menú con precios.', 'Pides la cuenta y preguntas cómo pagar.'],
         exercises: [
           ex.translationChoice(
             'the bill',
@@ -643,7 +643,7 @@ export const EN_A2_U13: ExpansionUnitDef = {
           question(
             'en.ex.agwsxzzpu3i54g',
             MENU,
-            'No comés carne ni pescado y querés un plato del menú. ¿Cuál pedís?',
+            'No comes carne ni pescado y quieres un plato del menú. ¿Cuál pides?',
             'La ensalada verde',
             ['El pollo con arroz', 'El pescado con verduras', 'Un café'],
             ['en-salad'],

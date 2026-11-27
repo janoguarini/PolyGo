@@ -93,11 +93,11 @@ export const EN_B1_U08: B1UnitDef = {
       'Explicar qué es algo o quién es alguien (who, which, that, where), aparatos, internet, redes sociales y videollamadas.',
     emoji: '📱',
     objective:
-      'Podés explicar para qué sirve un aparato o una app, resolver problemas simples de tecnología y contar cómo te comunicás.',
+      'Puedes explicar para qué sirve un aparato o una app, resolver problemas simples de tecnología y contar cómo te comunicas.',
     grammar: {
       title: 'Oraciones de relativo',
       explanation:
-        'Who se refiere a personas (the woman who lives next door); which y that, a cosas (an app which/that helps you); where, a lugares (the cafe where we met). Así explicás qué es algo sin empezar otra oración.',
+        'Who se refiere a personas (the woman who lives next door); which y that, a cosas (an app which/that helps you); where, a lugares (the cafe where we met). Así explicas qué es algo sin empezar otra oración.',
       examples: [
         { target: 'She is the teacher who helped me.', base: 'Es la profesora que me ayudó.' },
         {
@@ -119,7 +119,7 @@ export const EN_B1_U08: B1UnitDef = {
         '/dɪˈvaɪs/',
         undefined,
         'A tablet is a device which you can carry.',
-        'Una tableta es un aparato que podés llevar.',
+        'Una tableta es un aparato que puedes llevar.',
         ['technology'],
         ['dispositivo', 'aparato'],
       ),
@@ -161,7 +161,7 @@ export const EN_B1_U08: B1UnitDef = {
         '/ˈtɜrn ˈɑn/',
         undefined,
         'Turn on the light, please.',
-        'Prendé la luz, por favor.',
+        'Prende la luz, por favor.',
         ['technology', 'phrasal-verbs'],
         ['prender', 'encender'],
       ),
@@ -193,7 +193,7 @@ export const EN_B1_U08: B1UnitDef = {
         '/ˈdaʊnˌloʊd/',
         '⬇️',
         'You can download the app for free.',
-        'Podés descargar la app gratis.',
+        'Puedes descargar la app gratis.',
         ['technology', 'verbs'],
         ['descargar', 'bajar'],
       ),
@@ -321,8 +321,8 @@ export const EN_B1_U08: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Explicás qué es algo con which y that.',
-          'Prendés y apagás aparatos: turn on, turn off.',
+          'Explicas qué es algo con which y that.',
+          'Prendes y apagas aparatos: turn on, turn off.',
         ],
         exercises: [
           ex.matchPairs(
@@ -351,7 +351,7 @@ export const EN_B1_U08: B1UnitDef = {
           ),
           ex.fillBlank(
             "It's dark. Can you turn ___ the light?",
-            'Está oscuro. ¿Podés prender la luz?',
+            'Está oscuro. ¿Puedes prender la luz?',
             'on',
             ['off', 'up', 'in'],
             ['en-turn-on', 'en-dark'],
@@ -395,7 +395,7 @@ export const EN_B1_U08: B1UnitDef = {
             { id: 'en.ex.fzd3zzrbrjlped' },
           ),
           ex.translateWrite(
-            'Apagá la computadora, por favor.',
+            'Apaga la computadora, por favor.',
             'Turn off the computer, please.',
             ['en-turn-off', 'en-computer'],
             {
@@ -429,8 +429,8 @@ export const EN_B1_U08: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Describís personas con who y lugares con where.',
-          'Hablás de cómo seguís en contacto: a video call.',
+          'Describes personas con who y lugares con where.',
+          'Hablas de cómo sigues en contacto: a video call.',
         ],
         exercises: [
           ex.fillBlank(
@@ -536,14 +536,14 @@ export const EN_B1_U08: B1UnitDef = {
           examples: [
             {
               target: 'You can download the app for free.',
-              base: 'Podés descargar la app gratis.',
+              base: 'Puedes descargar la app gratis.',
             },
             { target: 'I have forgotten my password.', base: 'Me olvidé la contraseña.' },
           ],
         },
         takeaways: [
-          'Descargás y subís archivos: download, upload.',
-          "Explicás un problema: I can't log in, I have forgotten my password.",
+          'Descargas y subes archivos: download, upload.',
+          "Explicas un problema: I can't log in, I have forgotten my password.",
         ],
         exercises: [
           ex.matchPairs(
@@ -558,7 +558,7 @@ export const EN_B1_U08: B1UnitDef = {
           ),
           ex.fillBlank(
             'You can ___ the app for free.',
-            'Podés descargar la app gratis.',
+            'Puedes descargar la app gratis.',
             'download',
             ['upload', 'turn on', 'log in'],
             ['en-download', 'en-app'],
@@ -634,7 +634,7 @@ export const EN_B1_U08: B1UnitDef = {
       // ------------------------------------------------------------------------------------ L4
       {
         title: 'Redes sociales',
-        objective: 'Hablar de cómo usás las redes: publicar, compartir, seguidores.',
+        objective: 'Hablar de cómo usas las redes: publicar, compartir, seguidores.',
         intro: {
           explanation:
             'Social media son las redes sociales. Post es publicar (y una publicación); share, compartir; follower, seguidor. Online es «en línea» o «por internet»: I buy clothes online.',
@@ -646,7 +646,10 @@ export const EN_B1_U08: B1UnitDef = {
             },
           ],
         },
-        takeaways: ['Contás cómo usás las redes sociales.', 'Usás post, share, follower y online.'],
+        takeaways: [
+          'Cuentas cómo usas las redes sociales.',
+          'Usas post, share, follower y online.',
+        ],
         exercises: [
           ex.translationChoice(
             'share',
@@ -703,7 +706,7 @@ export const EN_B1_U08: B1UnitDef = {
           ),
           ex.shortAnswer(
             'How much time do you spend on social media? (una hora por día)',
-            '¿Cuánto tiempo pasás en las redes?',
+            '¿Cuánto tiempo pasas en las redes?',
             'One hour a day.',
             ['About one hour a day.', 'I spend one hour a day on social media.', 'An hour a day.'],
             ['en-social-media'],
@@ -724,10 +727,10 @@ export const EN_B1_U08: B1UnitDef = {
       // ------------------------------------------------------------------------------------ L5
       {
         title: 'Recomendar una app',
-        objective: 'Explicar qué hace una app y a quién se la recomendás.',
+        objective: 'Explicar qué hace una app y a quién se la recomiendas.',
         intro: {
           explanation:
-            'Para recomendar: It is an app which/that helps you… I recommend it to people who… Así combinás which/that (para la app) y who (para la gente).',
+            'Para recomendar: It is an app which/that helps you… I recommend it to people who… Así combinas which/that (para la app) y who (para la gente).',
           examples: [
             {
               target: 'It is an app which helps you plan your meals.',
@@ -740,8 +743,8 @@ export const EN_B1_U08: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Explicás qué hace una app con which o that.',
-          'Decís a quién se la recomendás con who.',
+          'Explicas qué hace una app con which o that.',
+          'Dices a quién se la recomiendas con who.',
         ],
         exercises: [
           question(
@@ -780,7 +783,7 @@ export const EN_B1_U08: B1UnitDef = {
           ),
           ex.fillBlank(
             'You can use the app ___ without internet.',
-            'Podés usar la app por internet o sin internet.',
+            'Puedes usar la app por internet o sin internet.',
             'online or',
             ['offline and', 'turn on or', 'log in or'],
             ['en-online', 'en-app'],
@@ -804,7 +807,7 @@ export const EN_B1_U08: B1UnitDef = {
           ),
           ex.shortAnswer(
             'Which app do you use to learn English? (PolyGo, una app que te ayuda a aprender palabras)',
-            '¿Qué app usás para aprender inglés?',
+            '¿Qué app usas para aprender inglés?',
             'PolyGo. It is an app that helps you learn words.',
             [
               'PolyGo. It is an app which helps you learn words.',

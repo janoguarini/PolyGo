@@ -14,9 +14,9 @@ export const coachStrings = defineStrings({
     overline: 'TU COACH POLYGO',
     groups: { mastered: 'Dominadas', due: 'Para repasar hoy', struggling: 'Te cuestan' },
     groupsHint: {
-      mastered: 'Las sabés',
+      mastered: 'Las sabes',
       due: 'Que no se olviden',
-      struggling: 'Te equivocás seguido',
+      struggling: 'Te equivocas a menudo',
     },
     bubbleFocus: (topics: string[]) =>
       topics.length === 1
@@ -24,12 +24,12 @@ export const coachStrings = defineStrings({
         : `Te están costando ${topics.slice(0, -1).join(', ')} y ${topics[topics.length - 1]}. Armé una sesión para reforzarlos.`,
     bubbleMaintenance: (n: number) =>
       n === 1
-        ? 'No tenés temas flojos. Hay 1 palabra que se te resiste: la entrenamos.'
-        : `No tenés temas flojos. Hay ${n} palabras que se te resisten: las entrenamos.`,
+        ? 'No tienes temas flojos. Hay 1 palabra que se te resiste: la entrenamos.'
+        : `No tienes temas flojos. Hay ${n} palabras que se te resisten: las entrenamos.`,
     bubbleClean:
-      'Sin errores para entrenar. Seguí con tus lecciones y repasos: te aviso si algo te cuesta.',
+      'Sin errores para entrenar. Sigue con tus lecciones y repasos: te aviso si algo te cuesta.',
     bubbleNew: (studied: number, needed: number) =>
-      `Te estoy conociendo: llevás ${studied} de ${needed} palabras. Con un poco más de práctica te armo tu plan.`,
+      `Te estoy conociendo: llevas ${studied} de ${needed} palabras. Con un poco más de práctica te armo tu plan.`,
     sessionFocus: 'Tu sesión personalizada',
     sessionMaintenance: 'Sesión de mantenimiento',
     alsoInPlus: 'También incluye PolyGo Plus',
@@ -49,9 +49,9 @@ export const coachStrings = defineStrings({
     found: (topics: string[]) =>
       `Te están costando ${list(topics, 'y')}. Armé una sesión corta para reforzar${topics.length === 1 ? 'lo' : 'los'}.`,
     allGoodBody:
-      'No encontré temas con errores repetidos. Seguí practicando: si algo empieza a costarte, te aviso.',
+      'No encontré temas con errores repetidos. Sigue practicando: si algo empieza a costarte, te aviso.',
     newBody: (studied: number, needed: number) =>
-      `Necesito un poco más de práctica tuya para recomendarte algo preciso: llevás ${studied} de ${needed} palabras.`,
+      `Necesito un poco más de práctica tuya para recomendarte algo preciso: llevas ${studied} de ${needed} palabras.`,
     goLearn: 'Seguir aprendiendo',
     // Números
     mastered: 'dominadas',
@@ -83,7 +83,7 @@ export const coachStrings = defineStrings({
     trialNote: 'La sesión gratis se descuenta recién cuando empieza.',
     lockedTitle: 'Tu plan ya está listo',
     lockedBody: (limit: number) =>
-      `Usaste tus ${limit} sesiones gratis. Con Plus entrenás tus puntos débiles todos los días, sin límite.`,
+      `Usaste tus ${limit} sesiones gratis. Con Plus entrenas tus puntos débiles todos los días, sin límite.`,
     unlock: 'Desbloquear Coach ilimitado',
     unlockSub: 'Además: energía ilimitada y sin anuncios',
     // Progreso
@@ -108,7 +108,7 @@ export const coachStrings = defineStrings({
       n === 1 ? 'Te queda 1 sesión gratis' : `Te quedan ${n} sesiones gratis`,
     resultLast: 'Usaste tus sesiones gratis',
     resultLastBody:
-      'Tu plan sigue guardado. Con Plus seguís entrenando tus puntos débiles cuando quieras.',
+      'Tu plan sigue guardado. Con Plus sigues entrenando tus puntos débiles cuando quieras.',
     resultPlus: 'Sesiones ilimitadas con Plus',
     seePlan: 'Ver mi plan',
     fairPlay:
@@ -214,5 +214,208 @@ export const coachStrings = defineStrings({
     seePlan: 'See my plan',
     fairPlay:
       'The Coach uses your lessons and reviews. Ranked doesn’t change: paying never gives an edge in matches.',
+  },
+  'pt-BR': {
+    title: 'Coach',
+    back: 'Voltar',
+    loadError: 'Não conseguimos carregar seu diagnóstico.',
+    overline: 'SEU COACH POLYGO',
+    groups: { mastered: 'Dominadas', due: 'Para revisar hoje', struggling: 'Difíceis' },
+    groupsHint: {
+      mastered: 'Você já sabe',
+      due: 'Para não esquecer',
+      struggling: 'Você erra com frequência',
+    },
+    bubbleFocus: (topics: string[]) =>
+      topics.length === 1
+        ? `${topics[0]} está sendo difícil para você. Montei uma sessão para reforçar.`
+        : `${topics.slice(0, -1).join(', ')} e ${topics[topics.length - 1]} estão sendo difíceis para você. Montei uma sessão para reforçar.`,
+    bubbleMaintenance: (n: number) =>
+      n === 1
+        ? 'Nenhum tema fraco. Tem 1 palavra que está resistindo: vamos treiná-la.'
+        : `Nenhum tema fraco. Tem ${n} palavras que estão resistindo: vamos treiná-las.`,
+    bubbleClean:
+      'Sem erros para treinar. Continue com suas lições e revisões: eu aviso se algo ficar difícil.',
+    bubbleNew: (studied: number, needed: number) =>
+      `Estou te conhecendo: você já tem ${studied} de ${needed} palavras. Com um pouco mais de prática, eu monto seu plano.`,
+    sessionFocus: 'Sua sessão personalizada',
+    sessionMaintenance: 'Sessão de manutenção',
+    alsoInPlus: 'Também incluído no PolyGo Plus',
+    perkSmart: 'Revisão inteligente',
+    perkEnergy: 'Energia ilimitada',
+    perkAds: 'Sem anúncios',
+    unlimited: 'Ilimitado',
+    freeLeft: (n: number) => `${n} grátis`,
+    unlimitedA11y: 'Sessões ilimitadas com o PolyGo Plus',
+    freeLeftA11y: (n: number, limit: number) => `Restam ${n} de ${limit} sessões grátis`,
+    headlineOk: (n: number) =>
+      n === 1 ? 'Encontrei 1 tema para melhorar' : `Encontrei ${n} temas para melhorar`,
+    headlineGood: 'Você está mandando muito bem!',
+    headlineNew: 'Estou te conhecendo',
+    found: (topics: string[]) =>
+      `${list(topics, 'e')} ${topics.length === 1 ? 'está sendo difícil' : 'estão sendo difíceis'} para você. Montei uma sessão curta para reforçar.`,
+    allGoodBody:
+      'Não encontrei temas com erros repetidos. Continue praticando: se algo começar a ficar difícil, eu aviso.',
+    newBody: (studied: number, needed: number) =>
+      `Preciso de um pouco mais de prática sua para recomendar algo certeiro: você já estudou ${studied} de ${needed} palavras.`,
+    goLearn: 'Continuar aprendendo',
+    mastered: 'dominadas',
+    ofTotal: (total: number) => `/${total}`,
+    groupsA11y: (m: number, d: number, s: number, total: number) =>
+      `De ${total} palavras: ${m} dominadas, ${d} para revisar hoje e ${s} difíceis para você`,
+    struggle: (n: number): string => (n === 1 ? 'palavra difícil' : 'palavras difíceis'),
+    studied: (n: number): string => (n === 1 ? 'palavra estudada' : 'palavras estudadas'),
+    toImprove: (n: number): string => (n === 1 ? 'tema para melhorar' : 'temas para melhorar'),
+    plan: 'Seu plano de melhoria',
+    priority: (i: number): string =>
+      i === 0 ? 'Prioridade alta' : i === 1 ? 'Prioridade média' : 'Reforçar',
+    accuracy: (p: number) => `${p}% de acertos`,
+    struggling: (n: number) => (n === 1 ? '1 palavra difícil' : `${n} palavras difíceis`),
+    areaA11y: (i: number, title: string, accuracy: string, struggling: string, priority: string) =>
+      `${i}. ${title}. ${accuracy}. ${struggling}. ${priority}.`,
+    words: 'Palavras que vamos treinar',
+    strengths: 'Seus pontos fortes',
+    session: 'Sua sessão personalizada',
+    minutes: (low: number, high: number) => (low === high ? `~${low} min` : `${low}–${high} min`),
+    exercises: (n: number) => `${n} ${n === 1 ? 'exercício' : 'exercícios'}`,
+    focusOn: 'Focada nos seus erros reais',
+    start: 'Começar minha sessão',
+    startSubPlus: 'Sessões ilimitadas com o Plus',
+    startSubTrial: (n: number, limit: number) =>
+      n === 1 ? `Sua última sessão grátis de ${limit}` : `Grátis · restam ${n} de ${limit}`,
+    trialNote: 'A sessão grátis só é descontada quando ela começa.',
+    lockedTitle: 'Seu plano já está pronto',
+    lockedBody: (limit: number) =>
+      `Você usou suas ${limit} sessões grátis. Com o Plus, você treina seus pontos fracos todos os dias, sem limite.`,
+    unlock: 'Desbloquear Coach ilimitado',
+    unlockSub: 'E mais: energia ilimitada e sem anúncios',
+    progress: 'Seu progresso com o Coach',
+    lastSession: 'Última sessão',
+    delta: (d: number) =>
+      d >= 0 ? `+${d} pts desde sua primeira sessão` : `${d} pts desde sua primeira sessão`,
+    sessionsDone: (n: number) => (n === 1 ? '1 sessão concluída' : `${n} sessões concluídas`),
+    notFinished: 'Não concluída',
+    trialTag: 'Grátis',
+    resultGreat: 'Sessão brilhante!',
+    resultGood: 'Bom progresso!',
+    resultTough: 'Cada erro conta',
+    resultBody: (p: number): string =>
+      p >= 85
+        ? `Você acertou ${p}% na primeira tentativa. Seu Coach já atualizou seu plano com esse resultado.`
+        : p >= 60
+          ? `Você acertou ${p}%. Seu Coach já sabe o que reforçar na próxima sessão.`
+          : `Você acertou ${p}%. Essas palavras voltam na sua próxima sessão até você pegar o jeito.`,
+    resultLeft: (n: number): string =>
+      n === 1 ? 'Resta 1 sessão grátis' : `Restam ${n} sessões grátis`,
+    resultLast: 'Você usou suas sessões grátis',
+    resultLastBody:
+      'Seu plano continua salvo. Com o Plus, você continua treinando seus pontos fracos quando quiser.',
+    resultPlus: 'Sessões ilimitadas com o Plus',
+    seePlan: 'Ver meu plano',
+    fairPlay:
+      'O Coach usa suas lições e revisões. O Ranked não muda: pagar nunca dá vantagem nas partidas.',
+  },
+  it: {
+    title: 'Coach',
+    back: 'Indietro',
+    loadError: 'Non siamo riusciti a caricare la tua diagnosi.',
+    overline: 'IL TUO COACH POLYGO',
+    groups: { mastered: 'Padroneggiate', due: 'Da ripassare oggi', struggling: 'Difficili' },
+    groupsHint: {
+      mastered: 'Le sai',
+      due: 'Per non dimenticarle',
+      struggling: 'Sbagli spesso',
+    },
+    bubbleFocus: (topics: string[]) =>
+      topics.length === 1
+        ? `${topics[0]} ti sta dando filo da torcere. Ho preparato una sessione per rinforzarlo.`
+        : `${topics.slice(0, -1).join(', ')} e ${topics[topics.length - 1]} ti stanno dando filo da torcere. Ho preparato una sessione per rinforzarli.`,
+    bubbleMaintenance: (n: number) =>
+      n === 1
+        ? 'Nessun argomento debole. C’è 1 parola che ti sfugge: alleniamola.'
+        : `Nessun argomento debole. Ci sono ${n} parole che ti sfuggono: alleniamole.`,
+    bubbleClean:
+      'Nessun errore da allenare. Continua con lezioni e ripassi: ti avviso se qualcosa diventa difficile.',
+    bubbleNew: (studied: number, needed: number) =>
+      `Ti sto conoscendo: sei a ${studied} parole su ${needed}. Con un po’ più di pratica preparo il tuo piano.`,
+    sessionFocus: 'La tua sessione personalizzata',
+    sessionMaintenance: 'Sessione di mantenimento',
+    alsoInPlus: 'Incluso anche in PolyGo Plus',
+    perkSmart: 'Ripasso intelligente',
+    perkEnergy: 'Energia illimitata',
+    perkAds: 'Senza pubblicità',
+    unlimited: 'Illimitato',
+    freeLeft: (n: number) => `${n} gratis`,
+    unlimitedA11y: 'Sessioni illimitate con PolyGo Plus',
+    freeLeftA11y: (n: number, limit: number) => `Ti restano ${n} sessioni gratis su ${limit}`,
+    headlineOk: (n: number) =>
+      n === 1 ? 'Ho trovato 1 argomento da migliorare' : `Ho trovato ${n} argomenti da migliorare`,
+    headlineGood: 'Stai andando alla grande!',
+    headlineNew: 'Ti sto conoscendo',
+    found: (topics: string[]) =>
+      `${list(topics, 'e')} ${topics.length === 1 ? 'ti sta' : 'ti stanno'} dando filo da torcere. Ho preparato una sessione breve per rinforzar${topics.length === 1 ? 'lo' : 'li'}.`,
+    allGoodBody:
+      'Non ho trovato argomenti con errori ripetuti. Continua a esercitarti: se qualcosa inizia a diventare difficile, ti avviso.',
+    newBody: (studied: number, needed: number) =>
+      `Mi serve un po’ più di pratica da parte tua per consigliarti qualcosa di preciso: sei a ${studied} parole su ${needed}.`,
+    goLearn: 'Continua a imparare',
+    mastered: 'padroneggiate',
+    ofTotal: (total: number) => `/${total}`,
+    groupsA11y: (m: number, d: number, s: number, total: number) =>
+      `Su ${total} parole: ${m} padroneggiate, ${d} da ripassare oggi e ${s} difficili per te`,
+    struggle: (n: number): string => (n === 1 ? 'parola difficile' : 'parole difficili'),
+    studied: (n: number): string => (n === 1 ? 'parola studiata' : 'parole studiate'),
+    toImprove: (n: number): string =>
+      n === 1 ? 'argomento da migliorare' : 'argomenti da migliorare',
+    plan: 'Il tuo piano di miglioramento',
+    priority: (i: number): string =>
+      i === 0 ? 'Priorità alta' : i === 1 ? 'Priorità media' : 'Da rinforzare',
+    accuracy: (p: number) => `${p}% di risposte giuste`,
+    struggling: (n: number) => (n === 1 ? '1 parola difficile' : `${n} parole difficili`),
+    areaA11y: (i: number, title: string, accuracy: string, struggling: string, priority: string) =>
+      `${i}. ${title}. ${accuracy}. ${struggling}. ${priority}.`,
+    words: 'Parole che alleneremo',
+    strengths: 'I tuoi punti di forza',
+    session: 'La tua sessione personalizzata',
+    minutes: (low: number, high: number) => (low === high ? `~${low} min` : `${low}–${high} min`),
+    exercises: (n: number) => `${n} ${n === 1 ? 'esercizio' : 'esercizi'}`,
+    focusOn: 'Concentrata sui tuoi errori reali',
+    start: 'Inizia la mia sessione',
+    startSubPlus: 'Sessioni illimitate con Plus',
+    startSubTrial: (n: number, limit: number) =>
+      n === 1
+        ? `La tua ultima sessione gratis su ${limit}`
+        : `Gratis · te ne restano ${n} su ${limit}`,
+    trialNote: 'La sessione gratis viene scalata solo quando inizia.',
+    lockedTitle: 'Il tuo piano è pronto',
+    lockedBody: (limit: number) =>
+      `Hai usato le tue ${limit} sessioni gratis. Con Plus alleni i tuoi punti deboli ogni giorno, senza limiti.`,
+    unlock: 'Sblocca il Coach illimitato',
+    unlockSub: 'In più: energia illimitata e senza pubblicità',
+    progress: 'I tuoi progressi con il Coach',
+    lastSession: 'Ultima sessione',
+    delta: (d: number) =>
+      d >= 0 ? `+${d} pt dalla tua prima sessione` : `${d} pt dalla tua prima sessione`,
+    sessionsDone: (n: number) => (n === 1 ? '1 sessione completata' : `${n} sessioni completate`),
+    notFinished: 'Non completata',
+    trialTag: 'Gratis',
+    resultGreat: 'Sessione brillante!',
+    resultGood: 'Bei progressi!',
+    resultTough: 'Ogni errore conta',
+    resultBody: (p: number): string =>
+      p >= 85
+        ? `Risposte giuste al primo tentativo: ${p}%. Il tuo Coach ha già aggiornato il piano con questo risultato.`
+        : p >= 60
+          ? `Risposte giuste: ${p}%. Il tuo Coach sa già cosa rinforzare nella prossima sessione.`
+          : `Risposte giuste: ${p}%. Quelle parole tornano nella prossima sessione finché non ti vengono.`,
+    resultLeft: (n: number): string =>
+      n === 1 ? 'Ti resta 1 sessione gratis' : `Ti restano ${n} sessioni gratis`,
+    resultLast: 'Hai usato le tue sessioni gratis',
+    resultLastBody:
+      'Il tuo piano resta salvato. Con Plus continui ad allenare i tuoi punti deboli quando vuoi.',
+    resultPlus: 'Sessioni illimitate con Plus',
+    seePlan: 'Vedi il mio piano',
+    fairPlay:
+      'Il Coach usa le tue lezioni e i tuoi ripassi. Il Ranked non cambia: pagare non dà mai vantaggi nelle partite.',
   },
 });

@@ -77,10 +77,10 @@ export const EN_B1_U02: B1UnitDef = {
     title: 'Hábitos y aficiones',
     titleEn: 'Habits and hobbies',
     description:
-      'Desde cuándo hacés algo (for, since), lo que venís haciendo (have been + -ing) y lo que te gusta, empezás o dejás de hacer.',
+      'Desde cuándo haces algo (for, since), lo que vienes haciendo (have been + -ing) y lo que te gusta, empiezas o dejas de hacer.',
     emoji: '🎸',
     objective:
-      'Podés contar desde cuándo hacés algo, qué venís haciendo últimamente y qué hábitos empezaste o dejaste.',
+      'Puedes contar desde cuándo haces algo, qué vienes haciendo últimamente y qué hábitos empezaste o dejaste.',
     grammar: {
       title: 'Present perfect continuous',
       explanation:
@@ -90,10 +90,10 @@ export const EN_B1_U02: B1UnitDef = {
           target: "I've been playing the guitar for three years.",
           base: 'Toco la guitarra desde hace tres años.',
         },
-        { target: 'She has been working here since March.', base: 'Trabaja acá desde marzo.' },
+        { target: 'She has been working here since March.', base: 'Trabaja aquí desde marzo.' },
         {
           target: 'How long have you been learning English?',
-          base: '¿Hace cuánto que aprendés inglés?',
+          base: '¿Hace cuánto que aprendes inglés?',
         },
       ],
     },
@@ -109,7 +109,7 @@ export const EN_B1_U02: B1UnitDef = {
         '/sɪns/',
         undefined,
         'I have lived here since 2020.',
-        'Vivo acá desde 2020.',
+        'Vivo aquí desde 2020.',
         ['time', 'grammar'],
       ),
       w(
@@ -119,7 +119,7 @@ export const EN_B1_U02: B1UnitDef = {
         '/fɔr/',
         undefined,
         'I have lived here for two years.',
-        'Vivo acá desde hace dos años.',
+        'Vivo aquí desde hace dos años.',
         ['time', 'grammar'],
         ['durante', 'hace'],
       ),
@@ -130,7 +130,7 @@ export const EN_B1_U02: B1UnitDef = {
         '/haʊ ˈlɔŋ/',
         '⏳',
         'How long have you lived here?',
-        '¿Hace cuánto que vivís acá?',
+        '¿Hace cuánto que vives aquí?',
         ['time', 'questions'],
         ['cuánto tiempo', 'hace cuánto'],
       ),
@@ -184,7 +184,7 @@ export const EN_B1_U02: B1UnitDef = {
         '/kip/',
         undefined,
         'Keep trying!',
-        '¡Seguí intentando!',
+        '¡Sigue intentando!',
         ['habits', 'verbs'],
         ['seguir', 'mantener'],
       ),
@@ -236,7 +236,7 @@ export const EN_B1_U02: B1UnitDef = {
         '/ˈɪnstrəmənt/',
         '🎻',
         'Do you play an instrument?',
-        '¿Tocás algún instrumento?',
+        '¿Tocas algún instrumento?',
         ['hobbies', 'music'],
       ),
       w(
@@ -268,7 +268,7 @@ export const EN_B1_U02: B1UnitDef = {
         '/stɑp/',
         '🛑',
         'Stop talking, please.',
-        'Dejá de hablar, por favor.',
+        'Deja de hablar, por favor.',
         ['habits', 'verbs'],
         ['parar', 'dejar de'],
       ),
@@ -298,18 +298,18 @@ export const EN_B1_U02: B1UnitDef = {
       // ------------------------------------------------------------------------------------ L1
       {
         title: 'For, since y how long',
-        objective: 'Decir desde cuándo hacés algo con for, since y how long.',
+        objective: 'Decir desde cuándo haces algo con for, since y how long.',
         intro: {
           explanation:
             'Para algo que empezó en el pasado y sigue: have/has + participio. For va con un período (for two years, for a long time) y since con el momento en que empezó (since 2020, since March). Para preguntar: How long…?',
           examples: [
-            { target: 'I have lived here for two years.', base: 'Vivo acá desde hace dos años.' },
-            { target: 'She has worked here since March.', base: 'Trabaja acá desde marzo.' },
+            { target: 'I have lived here for two years.', base: 'Vivo aquí desde hace dos años.' },
+            { target: 'She has worked here since March.', base: 'Trabaja aquí desde marzo.' },
           ],
         },
         takeaways: [
-          'Usás for con un período y since con un comienzo.',
-          'Preguntás How long have you…?',
+          'Usas for con un período y since con un comienzo.',
+          'Preguntas How long have you…?',
         ],
         exercises: [
           ex.fillBlank(
@@ -336,7 +336,7 @@ export const EN_B1_U02: B1UnitDef = {
           ),
           ex.fillBlank(
             '___ have you had this car?',
-            '¿Hace cuánto que tenés este auto?',
+            '¿Hace cuánto que tienes este auto?',
             'How long',
             ['How much', 'How many', 'When'],
             ['en-how-long', 'en-car'],
@@ -364,20 +364,20 @@ export const EN_B1_U02: B1UnitDef = {
           ),
           ex.orderWords(
             'How long have you lived here?',
-            '¿Hace cuánto que vivís acá?',
+            '¿Hace cuánto que vives aquí?',
             ['en-how-long', 'en-live'],
             { id: 'en.ex.r6g29l1tatpzon' },
           ),
           ex.shortAnswer(
             'How long have you had your phone? (dos años)',
-            '¿Hace cuánto que tenés tu teléfono?',
+            '¿Hace cuánto que tienes tu teléfono?',
             'For two years.',
             ['I have had it for two years.', "I've had it for two years.", 'Two years.'],
             ['en-for', 'en-phone'],
             { id: 'en.ex.fd6wi64sr986jk' },
           ),
           ex.translateWrite(
-            'Vivo acá desde 2020.',
+            'Vivo aquí desde 2020.',
             'I have lived here since 2020.',
             ['en-since', 'en-live'],
             {
@@ -394,8 +394,8 @@ export const EN_B1_U02: B1UnitDef = {
 
       // ------------------------------------------------------------------------------------ L2
       {
-        title: 'Lo que venís haciendo',
-        objective: 'Contar lo que venís haciendo con have been + -ing.',
+        title: 'Lo que vienes haciendo',
+        objective: 'Contar lo que vienes haciendo con have been + -ing.',
         intro: {
           explanation:
             "El present perfect continuous (have/has been + -ing) cuenta una actividad que empezó antes y sigue ahora, o que hiciste mucho últimamente: I have been studying a lot lately. Con I, you, we y they: have been (I've been); con he, she e it: has been.",
@@ -406,13 +406,13 @@ export const EN_B1_U02: B1UnitDef = {
             },
             {
               target: 'How long have you been learning English?',
-              base: '¿Hace cuánto que aprendés inglés?',
+              base: '¿Hace cuánto que aprendes inglés?',
             },
           ],
         },
         takeaways: [
-          'Contás lo que venís haciendo: I have been working a lot.',
-          'Preguntás How long have you been…?',
+          'Cuentas lo que vienes haciendo: I have been working a lot.',
+          'Preguntas How long have you been…?',
         ],
         exercises: [
           ex.fillBlank(
@@ -436,7 +436,7 @@ export const EN_B1_U02: B1UnitDef = {
           ),
           ex.fillBlank(
             'How long have you been ___ English?',
-            '¿Hace cuánto que aprendés inglés?',
+            '¿Hace cuánto que aprendes inglés?',
             'learning',
             ['learn', 'learned', 'learns'],
             ['en-how-long', 'en-learn'],
@@ -506,7 +506,7 @@ export const EN_B1_U02: B1UnitDef = {
 
       // ------------------------------------------------------------------------------------ L3
       {
-        title: 'Lo que disfrutás',
+        title: 'Lo que disfrutas',
         objective: 'Hablar de gustos y habilidades con verbos + -ing, good at e interested in.',
         intro: {
           explanation:
@@ -520,8 +520,8 @@ export const EN_B1_U02: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Usás -ing después de enjoy, stop y avoid.',
-          'Decís en qué sos bueno y qué te interesa: good at, interested in.',
+          'Usas -ing después de enjoy, stop y avoid.',
+          'Dices en qué eres bueno y qué te interesa: good at, interested in.',
         ],
         exercises: [
           ex.fillBlank(
@@ -584,7 +584,7 @@ export const EN_B1_U02: B1UnitDef = {
           ),
           ex.shortAnswer(
             'What are you good at? (cocinar)',
-            '¿En qué sos bueno?',
+            '¿En qué eres bueno?',
             "I'm good at cooking.",
             ['I am good at cooking.', 'Cooking.', "I'm very good at cooking."],
             ['en-good-at', 'en-cook'],
@@ -616,8 +616,8 @@ export const EN_B1_U02: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Contás un hábito nuevo (take up) y uno que dejaste (give up).',
-          'Elegís -ing o to: stop eating, decide to eat.',
+          'Cuentas un hábito nuevo (take up) y uno que dejaste (give up).',
+          'Eliges -ing o to: stop eating, decide to eat.',
         ],
         exercises: [
           ex.matchPairs(
@@ -715,18 +715,18 @@ export const EN_B1_U02: B1UnitDef = {
       // ------------------------------------------------------------------------------------ L5
       {
         title: 'Practicar y mejorar',
-        objective: 'Contar cómo aprendés algo nuevo: practicar, mejorar, seguir intentando.',
+        objective: 'Contar cómo aprendes algo nuevo: practicar, mejorar, seguir intentando.',
         intro: {
           explanation:
-            'Para hablar de un aprendizaje: practice (practicar), improve (mejorar), skill (habilidad). Keep + -ing es seguir haciendo algo: Keep practicing! Con el present perfect contás el resultado: My English has improved.',
+            'Para hablar de un aprendizaje: practice (practicar), improve (mejorar), skill (habilidad). Keep + -ing es seguir haciendo algo: Keep practicing! Con el present perfect cuentas el resultado: My English has improved.',
           examples: [
             { target: 'My English has improved a lot.', base: 'Mi inglés mejoró mucho.' },
-            { target: 'Keep practicing every day.', base: 'Seguí practicando todos los días.' },
+            { target: 'Keep practicing every day.', base: 'Sigue practicando todos los días.' },
           ],
         },
         takeaways: [
-          'Contás cómo practicás y cuánto mejoraste.',
-          'Animás a alguien: Keep practicing!',
+          'Cuentas cómo practicas y cuánto mejoraste.',
+          'Animas a alguien: Keep practicing!',
         ],
         exercises: [
           ex.translationChoice(
@@ -764,7 +764,7 @@ export const EN_B1_U02: B1UnitDef = {
           ),
           ex.fillBlank(
             "Don't stop now. ___ practicing!",
-            'No pares ahora. ¡Seguí practicando!',
+            'No pares ahora. ¡Sigue practicando!',
             'Keep',
             ['Give', 'Take', 'Avoid'],
             ['en-keep', 'en-practice'],

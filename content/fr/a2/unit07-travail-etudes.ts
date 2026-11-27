@@ -14,7 +14,7 @@ import { dialogue, ex, question, reading, w } from '../helpers';
 const ANNONCE = reading(
   'fr.stim.a2-u7-annonce',
   'ad',
-  'Un aviso de empleo en la vidriera de un café.',
+  'Un aviso de empleo en la vitrina de un café.',
   [
     'Le Café Margot cherche un serveur ou une serveuse.',
     'Emploi à Lyon, du mardi au samedi, le soir.',
@@ -75,15 +75,15 @@ export const FR_A2_U07: FrUnitDef = {
       "Devoir, pouvoir, vouloir + infinitivo e il faut; depuis + presente frente a il y a y pendant; d'abord, ensuite, enfin, parce que; la entrevista, la pasantía, el CV. Falsos amigos: le stage, réussir un examen.",
     emoji: '🎓',
     objective:
-      'Podés decir lo que tenés que hacer, lo que podés y lo que querés, contar desde cuándo trabajás o estudiás y hablar de una entrevista, una pasantía o un examen.',
+      'Puedes decir lo que tienes que hacer, lo que puedes y lo que quieres, contar desde cuándo trabajas o estudias y hablar de una entrevista, una pasantía o un examen.',
     grammar: {
       title: 'Devoir, pouvoir, vouloir + infinitivo · depuis',
       explanation:
-        'Je dois (tengo que), je peux (puedo) y je veux (quiero) van seguidos de un infinitivo: je dois travailler, je peux venir. Con tu, las formas son iguales: tu dois, tu peux, tu veux. Il faut + infinitivo es la obligación general (hay que): il faut envoyer un CV; il faut + sustantivo, lo que hace falta: il faut un diplôme. Para algo que empezó y sigue, el francés usa el presente con depuis: je travaille ici depuis deux ans (trabajo acá desde hace dos años). Para algo terminado, passé composé con il y a (hace) o pendant (durante).',
+        'Je dois (tengo que), je peux (puedo) y je veux (quiero) van seguidos de un infinitivo: je dois travailler, je peux venir. Con tu, las formas son iguales: tu dois, tu peux, tu veux. Il faut + infinitivo es la obligación general (hay que): il faut envoyer un CV; il faut + sustantivo, lo que hace falta: il faut un diplôme. Para algo que empezó y sigue, el francés usa el presente con depuis: je travaille ici depuis deux ans (trabajo aquí desde hace dos años). Para algo terminado, passé composé con il y a (hace) o pendant (durante).',
       examples: [
         { target: 'Je dois travailler samedi.', base: 'Tengo que trabajar el sábado.' },
         { target: 'Il faut envoyer ton CV.', base: 'Hay que mandar tu currículum.' },
-        { target: 'Je travaille ici depuis deux ans.', base: 'Trabajo acá desde hace dos años.' },
+        { target: 'Je travaille ici depuis deux ans.', base: 'Trabajo aquí desde hace dos años.' },
       ],
     },
     review: {
@@ -124,7 +124,7 @@ export const FR_A2_U07: FrUnitDef = {
         'il faut',
         'hay que',
         'Il faut prendre le métro.',
-        'Hay que tomar el subte.',
+        'Hay que tomar el metro.',
         ['obligation'],
         { acceptedTranslations: ['es necesario'] },
       ),
@@ -133,7 +133,7 @@ export const FR_A2_U07: FrUnitDef = {
         'depuis',
         'desde hace',
         'Je travaille ici depuis deux ans.',
-        'Trabajo acá desde hace dos años.',
+        'Trabajo aquí desde hace dos años.',
         ['time'],
         { acceptedTranslations: ['desde'] },
       ),
@@ -251,18 +251,18 @@ export const FR_A2_U07: FrUnitDef = {
       // ------------------------------------------------------------------------------------ L1
       {
         title: 'Je dois, je peux, je veux',
-        objective: 'Decir lo que tenés que hacer, lo que podés y lo que querés.',
+        objective: 'Decir lo que tienes que hacer, lo que puedes y lo que quieres.',
         intro: {
           explanation:
             'Je dois (tengo que), je peux (puedo) y je veux (quiero) van seguidos de un infinitivo: je dois travailler, je peux venir, je veux partir. Con tu, las formas son iguales: tu dois, tu peux, tu veux. En la negación, ne… pas rodea al verbo conjugado: je ne peux pas venir. Pronunciación: peux y veux sólo se distinguen por la primera consonante (p / v), y la x final no suena.',
           examples: [
             { target: 'Je dois travailler samedi.', base: 'Tengo que trabajar el sábado.' },
-            { target: 'Tu peux venir à la réunion?', base: '¿Podés venir a la reunión?' },
+            { target: 'Tu peux venir à la réunion?', base: '¿Puedes venir a la reunión?' },
           ],
         },
         takeaways: [
-          'Usás je dois, je peux y je veux + infinitivo.',
-          'Distinguís peux y veux al oído.',
+          'Usas je dois, je peux y je veux + infinitivo.',
+          'Distingues peux y veux al oído.',
         ],
         exercises: [
           ex.translationChoice(
@@ -304,7 +304,7 @@ export const FR_A2_U07: FrUnitDef = {
           ),
           ex.fillBlank(
             'Tu peux ___ à la réunion?',
-            '¿Podés venir a la reunión?',
+            '¿Puedes venir a la reunión?',
             'venir',
             ['viendrai', 'vas'],
             ['fr-je-peux', 'fr-la-reunion'],
@@ -337,7 +337,7 @@ export const FR_A2_U07: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Tu peux venir samedi?',
-            '¿Podés venir el sábado? (Respondé que no, que tenés que trabajar.)',
+            '¿Puedes venir el sábado? (Responde que no, que tienes que trabajar.)',
             'Non, je dois travailler.',
             [
               'Non, désolé, je dois travailler.',
@@ -368,8 +368,8 @@ export const FR_A2_U07: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Decís lo que hay que hacer con il faut + infinitivo.',
-          "Hablás de l'emploi, le CV, l'entretien y le salaire.",
+          'Dices lo que hay que hacer con il faut + infinitivo.',
+          "Hablas de l'emploi, le CV, l'entretien y le salaire.",
         ],
         exercises: [
           ex.translationChoice(
@@ -448,7 +448,7 @@ export const FR_A2_U07: FrUnitDef = {
             { id: 'fr.ex.n5gl9tg7e31ikv' },
           ),
           ex.translateWrite(
-            'Hay que tomar el subte.',
+            'Hay que tomar el metro.',
             'Il faut prendre le métro.',
             ['fr-il-faut'],
             {
@@ -457,7 +457,7 @@ export const FR_A2_U07: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Qu'est-ce qu'il faut pour l'emploi?",
-            '¿Qué hace falta para el puesto? (Respondé que hace falta un currículum.)',
+            '¿Qué hace falta para el puesto? (Responde que hace falta un currículum.)',
             'Il faut un CV.',
             ['Un CV.', "Pour l'emploi, il faut un CV."],
             ['fr-il-faut', 'fr-le-cv'],
@@ -469,14 +469,14 @@ export const FR_A2_U07: FrUnitDef = {
       // ------------------------------------------------------------------------------------ L3
       {
         title: 'Depuis deux ans',
-        objective: 'Decir desde cuándo hacés algo y cuánto duró.',
+        objective: 'Decir desde cuándo haces algo y cuánto duró.',
         intro: {
           explanation:
-            "Para algo que empezó en el pasado y sigue hoy, el francés usa el presente con depuis: je travaille ici depuis deux ans (trabajo acá desde hace dos años). Para algo terminado, passé composé con pendant (durante): j'ai fait un stage pendant six mois. Falso amigo: le stage es la pasantía, y le collègue (la collègue), el compañero o la compañera de trabajo.",
+            "Para algo que empezó en el pasado y sigue hoy, el francés usa el presente con depuis: je travaille ici depuis deux ans (trabajo aquí desde hace dos años). Para algo terminado, passé composé con pendant (durante): j'ai fait un stage pendant six mois. Falso amigo: le stage es la pasantía, y le collègue (la collègue), el compañero o la compañera de trabajo.",
           examples: [
             {
               target: 'Je travaille ici depuis deux ans.',
-              base: 'Trabajo acá desde hace dos años.',
+              base: 'Trabajo aquí desde hace dos años.',
             },
             {
               target: "J'ai fait un stage pendant six mois.",
@@ -485,8 +485,8 @@ export const FR_A2_U07: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Usás depuis + presente para algo que sigue.',
-          'Usás pendant para una duración cerrada.',
+          'Usas depuis + presente para algo que sigue.',
+          'Usas pendant para una duración cerrada.',
         ],
         exercises: [
           ex.translationChoice(
@@ -517,7 +517,7 @@ export const FR_A2_U07: FrUnitDef = {
           ),
           ex.fillBlank(
             'Je travaille ici ___ trois ans.',
-            'Trabajo acá desde hace tres años.',
+            'Trabajo aquí desde hace tres años.',
             'depuis',
             ['pendant', 'dans'],
             ['fr-depuis'],
@@ -576,7 +576,7 @@ export const FR_A2_U07: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Tu habites à Lyon depuis quand?',
-            '¿Desde cuándo vivís en Lyon? (Respondé que desde hace dos años.)',
+            '¿Desde cuándo vives en Lyon? (Responde que desde hace dos años.)',
             "J'habite à Lyon depuis deux ans.",
             ['Depuis deux ans.', "J'habite ici depuis deux ans."],
             ['fr-depuis'],
@@ -600,7 +600,7 @@ export const FR_A2_U07: FrUnitDef = {
             },
           ],
         },
-        takeaways: ['Decís aprobar con réussir.', "Hablás de l'université, l'examen y le diplôme."],
+        takeaways: ['Dices aprobar con réussir.', "Hablas de l'université, l'examen y le diplôme."],
         exercises: [
           ex.translationChoice(
             'réussir',
@@ -679,7 +679,7 @@ export const FR_A2_U07: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Tu as réussi l'examen?",
-            '¿Aprobaste el examen? (Respondé que sí.)',
+            '¿Aprobaste el examen? (Responde que sí.)',
             "Oui, j'ai réussi l'examen.",
             ["Oui, j'ai réussi!", "Oui, j'ai réussi."],
             ['fr-reussir', 'fr-l-examen'],
@@ -707,7 +707,7 @@ export const FR_A2_U07: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Ordenás los pasos con d'abord, ensuite y enfin.",
+          "Ordenas los pasos con d'abord, ensuite y enfin.",
           'Das razones con parce que.',
         ],
         exercises: [
@@ -775,7 +775,7 @@ export const FR_A2_U07: FrUnitDef = {
           ),
           ex.orderWords(
             'Ma collègue travaille ici depuis cinq ans.',
-            'Mi compañera de trabajo trabaja acá desde hace cinco años.',
+            'Mi compañera de trabajo trabaja aquí desde hace cinco años.',
             ['fr-le-collegue', 'fr-depuis'],
             { id: 'fr.ex.4os21zh20vgn9k' },
           ),
@@ -803,7 +803,7 @@ export const FR_A2_U07: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Pourquoi tu ne peux pas venir?',
-            '¿Por qué no podés venir? (Respondé que es porque tenés que estudiar.)',
+            '¿Por qué no puedes venir? (Responde que es porque tienes que estudiar.)',
             'Parce que je dois étudier.',
             [
               'Je ne peux pas venir parce que je dois étudier.',

@@ -99,7 +99,7 @@ export const FR_A2_U12: FrUnitDef = {
       "Dar la opinión (à mon avis, je pense que, je suis d'accord), aconsejar con el condicional (tu devrais, on pourrait), si + presente → futuro, reclamar (ça ne marche pas) y discurso indirecto (il dit que). Donc, pourtant, enfin.",
     emoji: '💬',
     objective:
-      'Podés dar tu opinión y decir si estás de acuerdo, aconsejar y proponer soluciones, hablar de lo que vas a hacer según el clima, reclamar en un negocio cuando algo no funciona y contar lo que te dijo otra persona.',
+      'Puedes dar tu opinión y decir si estás de acuerdo, aconsejar y proponer soluciones, hablar de lo que vas a hacer según el clima, reclamar en un negocio cuando algo no funciona y contar lo que te dijo otra persona.',
     grammar: {
       title: 'Condicional para aconsejar · si + presente · il dit que',
       explanation:
@@ -133,7 +133,7 @@ export const FR_A2_U12: FrUnitDef = {
         'je pense que',
         'creo que',
         'Je pense que tu as raison.',
-        'Creo que tenés razón.',
+        'Creo que tienes razón.',
         ['opinion'],
         { acceptedTranslations: ['pienso que'] },
       ),
@@ -142,7 +142,7 @@ export const FR_A2_U12: FrUnitDef = {
         "je suis d'accord",
         'estoy de acuerdo',
         "Je suis d'accord avec toi.",
-        'Estoy de acuerdo con vos.',
+        'Estoy de acuerdo contigo.',
         ['opinion'],
         { emoji: '👍' },
       ),
@@ -226,11 +226,11 @@ export const FR_A2_U12: FrUnitDef = {
       w(
         'fr-rembourser',
         'rembourser',
-        'devolver la plata',
+        'devolver el dinero',
         "Pourriez-vous me rembourser, s'il vous plaît?",
-        '¿Podría devolverme la plata, por favor?',
+        '¿Podría devolverme el dinero, por favor?',
         ['problems', 'verbs'],
-        { acceptedTranslations: ['reembolsar', 'devolver el dinero'] },
+        { acceptedTranslations: ['reembolsar', 'devolver la plata'] },
       ),
       w(
         'fr-il-dit-que',
@@ -281,12 +281,12 @@ export const FR_A2_U12: FrUnitDef = {
               target: "À mon avis, le train est meilleur que l'avion.",
               base: 'En mi opinión, el tren es mejor que el avión.',
             },
-            { target: 'Je pense que tu as raison.', base: 'Creo que tenés razón.' },
+            { target: 'Je pense que tu as raison.', base: 'Creo que tienes razón.' },
           ],
         },
         takeaways: [
           'Das tu opinión con à mon avis y je pense que.',
-          "Decís je suis d'accord o je ne suis pas d'accord y nombrás ventajas y desventajas.",
+          "Dices je suis d'accord o je ne suis pas d'accord y nombras ventajas y desventajas.",
         ],
         exercises: [
           ex.translationChoice(
@@ -318,7 +318,7 @@ export const FR_A2_U12: FrUnitDef = {
           ),
           ex.fillBlank(
             'Je pense que tu ___ raison.',
-            'Creo que tenés razón.',
+            'Creo que tienes razón.',
             'as',
             ['es', 'fais'],
             ['fr-je-pense-que'],
@@ -329,7 +329,7 @@ export const FR_A2_U12: FrUnitDef = {
           ),
           ex.fillBlank(
             "Je ne suis pas d'accord ___ toi.",
-            'No estoy de acuerdo con vos.',
+            'No estoy de acuerdo contigo.',
             'avec',
             ['de', 'à', 'en'],
             ['fr-je-suis-d-accord'],
@@ -384,7 +384,7 @@ export const FR_A2_U12: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Tu es d'accord avec moi?",
-            '¿Estás de acuerdo conmigo? (Respondé que sí, que estás de acuerdo con él o ella.)',
+            '¿Estás de acuerdo conmigo? (Responde que sí, que estás de acuerdo con él o ella.)',
             "Oui, je suis d'accord avec toi.",
             ["Oui, je suis d'accord.", "Je suis d'accord avec toi."],
             ['fr-je-suis-d-accord'],
@@ -399,7 +399,7 @@ export const FR_A2_U12: FrUnitDef = {
         objective: 'Aconsejar y proponer soluciones con el condicional.',
         intro: {
           explanation:
-            'Para aconsejar se usa el condicional: tu devrais + infinitivo (deberías) y, con vous, vous devriez. Para proponer algo: on pourrait + infinitivo (podríamos). Tu devrais es un consejo; tu dois, una obligación (tenés que). El condicional termina en -ais / -ait (devrais, pourrait, aimerais) y esa terminación suena como la è de mère: on pourrait no suena igual que on peut. Le problème es masculino, como en español, y la solution, femenino.',
+            'Para aconsejar se usa el condicional: tu devrais + infinitivo (deberías) y, con vous, vous devriez. Para proponer algo: on pourrait + infinitivo (podríamos). Tu devrais es un consejo; tu dois, una obligación (tienes que). El condicional termina en -ais / -ait (devrais, pourrait, aimerais) y esa terminación suena como la è de mère: on pourrait no suena igual que on peut. Le problème es masculino, como en español, y la solution, femenino.',
           examples: [
             {
               target: 'Tu es fatigué? Tu devrais dormir.',
@@ -412,8 +412,8 @@ export const FR_A2_U12: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Aconsejás con tu devrais o vous devriez + infinitivo.',
-          'Proponés una solución con on pourrait + infinitivo.',
+          'Aconsejas con tu devrais o vous devriez + infinitivo.',
+          'Propones una solución con on pourrait + infinitivo.',
         ],
         exercises: [
           ex.translationChoice(
@@ -443,7 +443,7 @@ export const FR_A2_U12: FrUnitDef = {
             {
               id: 'fr.ex.tncayvhblny9mi',
               explanation:
-                'Escuchá el final: pourrait termina con el sonido de la è (condicional); peut no.',
+                'Escucha el final: pourrait termina con el sonido de la è (condicional); peut no.',
             },
           ),
           ex.fillBlank(
@@ -498,7 +498,7 @@ export const FR_A2_U12: FrUnitDef = {
             'fr.ex.5temtuy63dyv62',
             VOISIN,
             '¿Qué solución propone Léa?',
-            'Que el vecino toque a la tarde.',
+            'Que el vecino toque por la tarde.',
             ['Que Hugo se mude.', 'Llamar a la policía.', 'Que Hugo toque con el vecino.'],
             ['fr-on-pourrait', 'fr-la-solution', 'fr-tu-devrais'],
             "Léa dice «on pourrait trouver une solution ensemble: il pourrait jouer l'après-midi».",
@@ -511,7 +511,7 @@ export const FR_A2_U12: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Qu'est-ce qu'on fait ce soir?",
-            '¿Qué hacemos esta noche? (Proponé ir al cine.)',
+            '¿Qué hacemos esta noche? (Propón ir al cine.)',
             'On pourrait aller au cinéma.',
             ['On pourrait aller au cinéma ce soir.', 'Ce soir, on pourrait aller au cinéma.'],
             ['fr-on-pourrait'],
@@ -539,8 +539,8 @@ export const FR_A2_U12: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Hacés planes condicionados con si + presente y futuro: s'il pleut, on restera…",
-          'Unís una causa y su consecuencia con donc.',
+          "Haces planes condicionados con si + presente y futuro: s'il pleut, on restera…",
+          'Unes una causa y su consecuencia con donc.',
         ],
         exercises: [
           ex.translationChoice(
@@ -591,7 +591,7 @@ export const FR_A2_U12: FrUnitDef = {
             {
               id: 'fr.ex.58etsccarkmcab',
               explanation:
-                "En s'il la i de si desaparece y la s se pega a il: escuchá esa s al principio.",
+                "En s'il la i de si desaparece y la s se pega a il: escucha esa s al principio.",
             },
           ),
           ex.fillBlank(
@@ -623,7 +623,7 @@ export const FR_A2_U12: FrUnitDef = {
             { id: 'fr.ex.xhj7v8zaajsjhx' },
           ),
           ex.translateWrite(
-            'Si llueve, voy a tomar el colectivo.',
+            'Si llueve, voy a tomar el autobús.',
             "S'il pleut, je prendrai le bus.",
             ['fr-s-il-pleut'],
             {
@@ -633,7 +633,7 @@ export const FR_A2_U12: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Qu'est-ce que tu feras s'il pleut demain?",
-            '¿Qué vas a hacer si mañana llueve? (Respondé que te vas a quedar en casa.)',
+            '¿Qué vas a hacer si mañana llueve? (Responde que te vas a quedar en casa.)',
             "S'il pleut, je resterai à la maison.",
             [
               'Je resterai à la maison.',
@@ -650,24 +650,24 @@ export const FR_A2_U12: FrUnitDef = {
       {
         title: 'Ça ne marche pas',
         objective:
-          'Reclamar en un negocio cuando algo no funciona y pedir que te devuelvan la plata.',
+          'Reclamar en un negocio cuando algo no funciona y pedir que te devuelvan el dinero.',
         intro: {
           explanation:
-            "Marcher es caminar, pero con un aparato es funcionar: ça ne marche pas (no funciona), mon portable ne marche pas. Para reclamar, con vous y cortesía: Bonjour, monsieur. Pourriez-vous me rembourser? (¿podría devolverme la plata?). Enfin es por fin (Enfin une bonne nouvelle!) o finalmente al terminar una lista: d'abord…, ensuite…, enfin…",
+            "Marcher es caminar, pero con un aparato es funcionar: ça ne marche pas (no funciona), mon portable ne marche pas. Para reclamar, con vous y cortesía: Bonjour, monsieur. Pourriez-vous me rembourser? (¿podría devolverme el dinero?). Enfin es por fin (Enfin une bonne nouvelle!) o finalmente al terminar una lista: d'abord…, ensuite…, enfin…",
           examples: [
             {
               target: 'Bonjour, monsieur. Mon portable ne marche pas.',
-              base: 'Buen día, señor. Mi celular no funciona.',
+              base: 'Buenos días, señor. Mi celular no funciona.',
             },
             {
               target: "Pourriez-vous me rembourser, s'il vous plaît?",
-              base: '¿Podría devolverme la plata, por favor?',
+              base: '¿Podría devolverme el dinero, por favor?',
             },
           ],
         },
         takeaways: [
-          'Explicás el problema con ça ne marche pas.',
-          'Pedís con cortesía que te devuelvan la plata con pourriez-vous me rembourser?',
+          'Explicas el problema con ça ne marche pas.',
+          'Pides con cortesía que te devuelvan el dinero con pourriez-vous me rembourser?',
         ],
         exercises: [
           ex.translationChoice(
@@ -682,7 +682,7 @@ export const FR_A2_U12: FrUnitDef = {
           ),
           ex.translationChoice(
             'rembourser',
-            'devolver la plata',
+            'devolver el dinero',
             ['pagar con tarjeta', 'comprar', 'probarse'],
             ['fr-rembourser'],
             { id: 'fr.ex.juhyqn6k1gdygc' },
@@ -705,12 +705,12 @@ export const FR_A2_U12: FrUnitDef = {
             {
               id: 'fr.ex.9mpozycaj9ff93',
               explanation:
-                'Escuchá el ne y la palabra marche. Ojo: ça marche! también significa «¡dale!, de acuerdo».',
+                'Escucha el ne y la palabra marche. Ojo: ça marche! también significa «¡vale!, de acuerdo».',
             },
           ),
           ex.fillBlank(
             "Pourriez-vous me ___, s'il vous plaît?",
-            '¿Podría devolverme la plata, por favor?',
+            '¿Podría devolverme el dinero, por favor?',
             'rembourser',
             ['rembourse', 'payer'],
             ['fr-rembourser'],
@@ -722,7 +722,7 @@ export const FR_A2_U12: FrUnitDef = {
           ),
           ex.fillBlank(
             "D'abord, j'ai appelé. Ensuite, j'ai envoyé un mail. ___, ils m'ont remboursé!",
-            'Primero llamé. Después mandé un mail. ¡Por fin me devolvieron la plata!',
+            'Primero llamé. Después mandé un mail. ¡Por fin me devolvieron el dinero!',
             'Enfin',
             ["D'abord", 'Avant', 'Demain'],
             ['fr-enfin', 'fr-rembourser'],
@@ -745,7 +745,7 @@ export const FR_A2_U12: FrUnitDef = {
             'fr.ex.p9g4ap6cldcvbb',
             MAGASIN,
             '¿Qué hace el vendedor?',
-            'Le devuelve la plata.',
+            'Le devuelve el dinero.',
             [
               'Le da otra computadora.',
               'Le dice que vuelva el sábado.',
@@ -762,7 +762,7 @@ export const FR_A2_U12: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Bonjour, madame. Quel est le problème?',
-            'Buen día, señora. ¿Cuál es el problema? (Respondé que tu celular no funciona.)',
+            'Buenos días, señora. ¿Cuál es el problema? (Responde que tu celular no funciona.)',
             'Mon portable ne marche pas.',
             ['Mon téléphone ne marche pas.', 'Bonjour. Mon portable ne marche pas.'],
             ['fr-ca-ne-marche-pas'],
@@ -784,8 +784,8 @@ export const FR_A2_U12: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Contás lo que dice o dijo otra persona con il dit que y elle m'a dit que.",
-          'Marcás un contraste con pourtant.',
+          "Cuentas lo que dice o dijo otra persona con il dit que y elle m'a dit que.",
+          'Marcas un contraste con pourtant.',
         ],
         exercises: [
           ex.translationChoice(
@@ -885,7 +885,7 @@ export const FR_A2_U12: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Qu'est-ce que Thomas dit?",
-            '¿Qué dice Thomas? (Respondé que dice que está enfermo.)',
+            '¿Qué dice Thomas? (Responde que dice que está enfermo.)',
             "Il dit qu'il est malade.",
             ["Thomas dit qu'il est malade."],
             ['fr-il-dit-que'],

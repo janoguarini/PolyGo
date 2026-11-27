@@ -52,8 +52,10 @@ export const MODULES = [
 
 export type ModuleId = (typeof MODULES)[number]['id'];
 
-const items = (rows: { key: string; count: number }[] | null | undefined, label: (k: string) => string) =>
-  (rows ?? []).map((r) => ({ key: r.key, label: label(r.key), value: Number(r.count) }));
+const items = (
+  rows: { key: string; count: number }[] | null | undefined,
+  label: (k: string) => string,
+) => (rows ?? []).map((r) => ({ key: r.key, label: label(r.key), value: Number(r.count) }));
 
 const openUser = (id: unknown) => router.push(`/admin/user/${String(id)}` as Href);
 
@@ -121,22 +123,54 @@ function Overview() {
             <KpiGrid>
               <Kpi label="Registros" value={c.signups} previous={p.signups} />
               <Kpi label="Activos" value={c.active_users} previous={p.active_users} />
-              <Kpi label="Activos por día" value={c.avg_daily_active} previous={p.avg_daily_active} format={fmtDec} />
+              <Kpi
+                label="Activos por día"
+                value={c.avg_daily_active}
+                previous={p.avg_daily_active}
+                format={fmtDec}
+              />
               <Kpi label="Sesiones" value={c.sessions} previous={p.sessions} />
-              <Kpi label="Sesiones por usuario" value={c.sessions_per_learner} previous={p.sessions_per_learner} format={fmtDec} />
-              <Kpi label="Duración de sesión" value={c.avg_session_seconds} previous={p.avg_session_seconds} format={fmtSeconds} />
+              <Kpi
+                label="Sesiones por usuario"
+                value={c.sessions_per_learner}
+                previous={p.sessions_per_learner}
+                format={fmtDec}
+              />
+              <Kpi
+                label="Duración de sesión"
+                value={c.avg_session_seconds}
+                previous={p.avg_session_seconds}
+                format={fmtSeconds}
+              />
               <Kpi label="Lecciones" value={c.lessons_completed} previous={p.lessons_completed} />
               <Kpi label="Repasos" value={c.reviews_completed} previous={p.reviews_completed} />
-              <Kpi label="Ejercicios" value={c.exercises_answered} previous={p.exercises_answered} />
+              <Kpi
+                label="Ejercicios"
+                value={c.exercises_answered}
+                previous={p.exercises_answered}
+              />
               <Kpi label="Partidas" value={c.battles} previous={p.battles} />
               <Kpi label="Completadas" value={c.battles_completed} previous={p.battles_completed} />
-              <Kpi label="Abandonadas" value={c.battles_forfeited} previous={p.battles_forfeited} invert />
+              <Kpi
+                label="Abandonadas"
+                value={c.battles_forfeited}
+                previous={p.battles_forfeited}
+                invert
+              />
             </KpiGrid>
             <Overline>Negocio</Overline>
             <KpiGrid>
-              <Kpi label="Suscripciones iniciadas" value={c.paid_subs_started} previous={p.paid_subs_started} />
+              <Kpi
+                label="Suscripciones iniciadas"
+                value={c.paid_subs_started}
+                previous={p.paid_subs_started}
+              />
               <Kpi label="MRR" value={null} unavailable={d.unavailable.mrr} />
-              <Kpi label="Ingresos publicitarios" value={null} unavailable={d.unavailable.ads_revenue} />
+              <Kpi
+                label="Ingresos publicitarios"
+                value={null}
+                unavailable={d.unavailable.ads_revenue}
+              />
             </KpiGrid>
             <Section title="Usuarios activos" hint="por día (por semana si el período es largo)">
               <Columns data={compactSeries(d.series, 'active', 'avg')} format={fmtDec} />
@@ -208,7 +242,7 @@ function Users() {
       />
       <AdminAsync query={query}>
         {(d) => (
-          <Section title={`${fmtInt(d.total)} usuarios`} hint="Tocá uno para ver su ficha">
+          <Section title={`${fmtInt(d.total)} usuarios`} hint="Toca uno para ver su ficha">
             <Rows
               empty="Ningún usuario coincide."
               rows={(d.rows as Json[]).map((r) => ({
@@ -227,7 +261,17 @@ function Users() {
   );
 }
 
-function Pager({ offset, total, size, onChange }: { offset: number; total: number; size: number; onChange: (n: number) => void }) {
+function Pager({
+  offset,
+  total,
+  size,
+  onChange,
+}: {
+  offset: number;
+  total: number;
+  size: number;
+  onChange: (n: number) => void;
+}) {
   if (total <= size) return null;
   return (
     <Chips
@@ -257,10 +301,30 @@ function Growth() {
             <KpiGrid>
               <Kpi label="Registrados" value={d.total_users} />
               <Kpi label="Registros del período" value={d.signups} />
-              <Kpi label="Onboarding completado" value={pctOf(f.onboarding_completed, f.signups)} format={fmtPct} hint={`${fmtInt(f.onboarding_completed)} de ${fmtInt(f.signups)}`} />
-              <Kpi label="Min. hasta onboarding" value={f.median_minutes_to_onboarding} format={fmtDec} hint="mediana" />
-              <Kpi label="Horas hasta 1.ª lección" value={f.median_hours_to_first_lesson} format={fmtDec} hint="mediana" />
-              <Kpi label="Horas hasta 1.ª partida" value={f.median_hours_to_first_battle} format={fmtDec} hint="mediana" />
+              <Kpi
+                label="Onboarding completado"
+                value={pctOf(f.onboarding_completed, f.signups)}
+                format={fmtPct}
+                hint={`${fmtInt(f.onboarding_completed)} de ${fmtInt(f.signups)}`}
+              />
+              <Kpi
+                label="Min. hasta onboarding"
+                value={f.median_minutes_to_onboarding}
+                format={fmtDec}
+                hint="mediana"
+              />
+              <Kpi
+                label="Horas hasta 1.ª lección"
+                value={f.median_hours_to_first_lesson}
+                format={fmtDec}
+                hint="mediana"
+              />
+              <Kpi
+                label="Horas hasta 1.ª partida"
+                value={f.median_hours_to_first_battle}
+                format={fmtDec}
+                hint="mediana"
+              />
               <Kpi label="Nunca hicieron lección" value={d.never.never_lesson} />
               <Kpi label="Nunca jugaron Ranked" value={d.never.never_ranked} />
               <Kpi label="Abandonaron (14 días)" value={d.never.abandoned_14d} />
@@ -313,7 +377,11 @@ function Growth() {
 function Learning() {
   const base = usePeriodArgs();
   const [level, setLevel] = useState<'' | 'A1' | 'A2' | 'B1' | 'B2'>('');
-  const q = useAdmin('admin_learning', { ...base, p_filters: { ...base.p_filters, ...(level ? { level } : {}) }, p_min_attempts: 5 });
+  const q = useAdmin('admin_learning', {
+    ...base,
+    p_filters: { ...base.p_filters, ...(level ? { level } : {}) },
+    p_min_attempts: 5,
+  });
   return (
     <>
       <Chips
@@ -334,7 +402,11 @@ function Learning() {
             <>
               <KpiGrid>
                 <Kpi label="Lecciones" value={t.lessons_completed} />
-                <Kpi label="Lecciones iniciadas" value={null} unavailable={d.unavailable.lessons_started} />
+                <Kpi
+                  label="Lecciones iniciadas"
+                  value={null}
+                  unavailable={d.unavailable.lessons_started}
+                />
                 <Kpi label="Repasos" value={t.reviews_completed} />
                 <Kpi label="Usuarios" value={t.learners} />
                 <Kpi label="Unidades completadas" value={t.units_completed} />
@@ -350,25 +422,76 @@ function Learning() {
                 <Columns data={compactSeries(d.series, 'lessons')} />
               </Section>
               <Section title="Por curso">
-                <Rows rows={(d.by_course as Json[]).map((r) => ({ key: r.language, label: langName(r.language), sub: `${fmtInt(r.learners)} usuarios · ${fmtPct(r.accuracy)} · ${fmtSeconds(r.avg_seconds)}`, value: fmtInt(r.lessons) }))} />
+                <Rows
+                  rows={(d.by_course as Json[]).map((r) => ({
+                    key: r.language,
+                    label: langName(r.language),
+                    sub: `${fmtInt(r.learners)} usuarios · ${fmtPct(r.accuracy)} · ${fmtSeconds(r.avg_seconds)}`,
+                    value: fmtInt(r.lessons),
+                  }))}
+                />
               </Section>
               <Section title="Por nivel">
-                <Rows rows={(d.by_level as Json[]).map((r) => ({ key: r.level, label: r.level, sub: `${fmtInt(r.learners)} usuarios · precisión ${fmtPct(r.accuracy)}`, value: fmtInt(r.lessons) }))} />
+                <Rows
+                  rows={(d.by_level as Json[]).map((r) => ({
+                    key: r.level,
+                    label: r.level,
+                    sub: `${fmtInt(r.learners)} usuarios · precisión ${fmtPct(r.accuracy)}`,
+                    value: fmtInt(r.lessons),
+                  }))}
+                />
               </Section>
               <Section title="Por habilidad">
-                <Rows rows={(d.by_skill as Json[]).map((r) => ({ key: r.skill, label: r.skill, sub: `precisión ${fmtPct(r.accuracy)} · ${fmtMs(r.avg_ms)}`, value: fmtInt(r.answers) }))} />
+                <Rows
+                  rows={(d.by_skill as Json[]).map((r) => ({
+                    key: r.skill,
+                    label: r.skill,
+                    sub: `precisión ${fmtPct(r.accuracy)} · ${fmtMs(r.avg_ms)}`,
+                    value: fmtInt(r.answers),
+                  }))}
+                />
               </Section>
               <Section title="Por tipo de ejercicio">
-                <Rows rows={(d.by_type as Json[]).map((r) => ({ key: r.type, label: r.type, sub: `precisión ${fmtPct(r.accuracy)} · ${fmtMs(r.avg_ms)}`, value: fmtInt(r.answers) }))} />
+                <Rows
+                  rows={(d.by_type as Json[]).map((r) => ({
+                    key: r.type,
+                    label: r.type,
+                    sub: `precisión ${fmtPct(r.accuracy)} · ${fmtMs(r.avg_ms)}`,
+                    value: fmtInt(r.answers),
+                  }))}
+                />
               </Section>
               <Section title="Ejercicios más difíciles" hint="con al menos 5 intentos">
-                <Rows empty="Ninguno alcanza el mínimo de intentos." rows={(d.hardest_exercises as Json[]).map((r) => ({ key: r.exercise_id, label: String(r.exercise_id), sub: `${r.type ?? '—'} · ${langName(r.language)} ${r.level ?? ''} · ${fmtInt(r.attempts)} intentos`, value: fmtPct(r.accuracy) }))} />
+                <Rows
+                  empty="Ninguno alcanza el mínimo de intentos."
+                  rows={(d.hardest_exercises as Json[]).map((r) => ({
+                    key: r.exercise_id,
+                    label: String(r.exercise_id),
+                    sub: `${r.type ?? '—'} · ${langName(r.language)} ${r.level ?? ''} · ${fmtInt(r.attempts)} intentos`,
+                    value: fmtPct(r.accuracy),
+                  }))}
+                />
               </Section>
               <Section title="Lecciones más difíciles">
-                <Rows empty="Pocas lecciones para comparar." rows={(d.hardest_lessons as Json[]).map((r) => ({ key: r.lesson_id, label: r.title ?? r.lesson_id, sub: `${langName(r.language)} ${r.level ?? ''} · ${fmtInt(r.completions)} completadas`, value: fmtPct(r.accuracy) }))} />
+                <Rows
+                  empty="Pocas lecciones para comparar."
+                  rows={(d.hardest_lessons as Json[]).map((r) => ({
+                    key: r.lesson_id,
+                    label: r.title ?? r.lesson_id,
+                    sub: `${langName(r.language)} ${r.level ?? ''} · ${fmtInt(r.completions)} completadas`,
+                    value: fmtPct(r.accuracy),
+                  }))}
+                />
               </Section>
               <Section title="Lecciones más hechas">
-                <Rows rows={(d.top_lessons as Json[]).map((r) => ({ key: r.lesson_id, label: r.title ?? r.lesson_id, sub: `${langName(r.language)} ${r.level ?? ''} · ${fmtInt(r.learners)} usuarios`, value: fmtInt(r.completions) }))} />
+                <Rows
+                  rows={(d.top_lessons as Json[]).map((r) => ({
+                    key: r.lesson_id,
+                    label: r.title ?? r.lesson_id,
+                    sub: `${langName(r.language)} ${r.level ?? ''} · ${fmtInt(r.learners)} usuarios`,
+                    value: fmtInt(r.completions),
+                  }))}
+                />
               </Section>
               <Section title="Rachas">
                 <KpiGrid>
@@ -376,7 +499,13 @@ function Learning() {
                   <Kpi label="Racha media" value={d.streaks.avg_current} format={fmtDec} />
                   <Kpi label="Mejor racha" value={d.streaks.max_best} />
                 </KpiGrid>
-                <BarList items={(d.streaks.buckets as Json[]).map((b) => ({ key: b.bucket, label: `${b.bucket} días`, value: Number(b.users) }))} />
+                <BarList
+                  items={(d.streaks.buckets as Json[]).map((b) => ({
+                    key: b.bucket,
+                    label: `${b.bucket} días`,
+                    value: Number(b.users),
+                  }))}
+                />
               </Section>
               <Unavailable items={d.unavailable} />
             </>
@@ -392,7 +521,11 @@ const WEEKDAYS = ['', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
 function Ranked() {
   const q = useAdmin('admin_ranked', usePeriodArgs());
   const [lbLang, setLbLang] = useState<'' | 'en' | 'pt' | 'it' | 'zh' | 'fr' | 'es'>('');
-  const lb = useAdmin('admin_leaderboard', { p_language: lbLang || null, p_include_internal: false, p_limit: 50 });
+  const lb = useAdmin('admin_leaderboard', {
+    p_language: lbLang || null,
+    p_include_internal: false,
+    p_limit: 50,
+  });
   return (
     <>
       <AdminAsync query={q}>
@@ -418,7 +551,11 @@ function Ranked() {
                 <Kpi label="Partidas por jugador" value={t.battles_per_player} format={fmtDec} />
                 <Kpi label="Duración media" value={t.avg_duration_seconds} format={fmtSeconds} />
                 <Kpi label="Emparejado → inicio" value={t.avg_prep_seconds} format={fmtSeconds} />
-                <Kpi label="Matchmaking" value={null} unavailable={d.unavailable.matchmaking_time} />
+                <Kpi
+                  label="Matchmaking"
+                  value={null}
+                  unavailable={d.unavailable.matchmaking_time}
+                />
               </KpiGrid>
               <Overline>Resultados</Overline>
               <KpiGrid>
@@ -429,8 +566,16 @@ function Ranked() {
                 <Kpi label="% vs bot" value={t.win_rate_vs_bot} format={fmtPct} />
                 <Kpi label="% vs humano" value={t.win_rate_vs_human} format={fmtPct} />
                 <Kpi label="Precisión" value={t.accuracy} format={fmtPct} />
-                <Kpi label="Diferencia de ELO" value={t.avg_rating_gap_human} hint="humano vs humano" />
-                <Kpi label="Dejaron tras perder" value={t.quit_after_loss} hint={`de ${fmtInt(t.quit_after_loss_base)}`} />
+                <Kpi
+                  label="Diferencia de ELO"
+                  value={t.avg_rating_gap_human}
+                  hint="humano vs humano"
+                />
+                <Kpi
+                  label="Dejaron tras perder"
+                  value={t.quit_after_loss}
+                  hint={`de ${fmtInt(t.quit_after_loss_base)}`}
+                />
               </KpiGrid>
               <Overline>ELO y ligas</Overline>
               <KpiGrid>
@@ -447,31 +592,84 @@ function Ranked() {
                 <Columns data={compactSeries(d.series, 'battles')} />
               </Section>
               <Section title="Usuarios por liga">
-                <BarList max={8} items={(e.by_tier as Json[]).map((b) => ({ key: b.tier, label: tierName(b.tier), value: Number(b.players) }))} />
+                <BarList
+                  max={8}
+                  items={(e.by_tier as Json[]).map((b) => ({
+                    key: b.tier,
+                    label: tierName(b.tier),
+                    value: Number(b.players),
+                  }))}
+                />
               </Section>
               <Section title="Por hora" hint="hora de Buenos Aires">
-                <Columns data={Array.from({ length: 24 }, (_, h) => ({ label: `${h} h`, value: hours.get(h) ?? 0 }))} />
+                <Columns
+                  data={Array.from({ length: 24 }, (_, h) => ({
+                    label: `${h} h`,
+                    value: hours.get(h) ?? 0,
+                  }))}
+                />
               </Section>
               <Section title="Por día de la semana">
-                <BarList max={7} items={[1, 2, 3, 4, 5, 6, 7].map((w) => ({ key: String(w), label: WEEKDAYS[w] ?? '', value: wd.get(w) ?? 0 }))} />
+                <BarList
+                  max={7}
+                  items={[1, 2, 3, 4, 5, 6, 7].map((w) => ({
+                    key: String(w),
+                    label: WEEKDAYS[w] ?? '',
+                    value: wd.get(w) ?? 0,
+                  }))}
+                />
               </Section>
               <Section title="Por idioma">
-                <Rows rows={(d.by_language as Json[]).map((r) => ({ key: r.language, label: langName(r.language), sub: `${fmtInt(r.players)} jugadores · precisión ${fmtPct(r.accuracy)} · victorias ${fmtPct(r.win_rate)}`, value: fmtInt(r.battles) }))} />
+                <Rows
+                  rows={(d.by_language as Json[]).map((r) => ({
+                    key: r.language,
+                    label: langName(r.language),
+                    sub: `${fmtInt(r.players)} jugadores · precisión ${fmtPct(r.accuracy)} · victorias ${fmtPct(r.win_rate)}`,
+                    value: fmtInt(r.battles),
+                  }))}
+                />
               </Section>
               <Section title="Por tipo">
-                <Rows rows={(d.by_type as Json[]).map((r) => ({ key: r.type, label: r.type === 'amistosa' ? 'Amistosa' : r.type === 'ranked_bot' ? 'Ranked vs bot' : 'Ranked humano', sub: `victorias ${fmtPct(r.win_rate)} · precisión ${fmtPct(r.accuracy)}`, value: fmtInt(r.battles) }))} />
+                <Rows
+                  rows={(d.by_type as Json[]).map((r) => ({
+                    key: r.type,
+                    label:
+                      r.type === 'amistosa'
+                        ? 'Amistosa'
+                        : r.type === 'ranked_bot'
+                          ? 'Ranked vs bot'
+                          : 'Ranked humano',
+                    sub: `victorias ${fmtPct(r.win_rate)} · precisión ${fmtPct(r.accuracy)}`,
+                    value: fmtInt(r.battles),
+                  }))}
+                />
               </Section>
               <Section title="Por país">
-                <BarList items={(d.by_country as Json[]).map((r) => ({ key: r.country, label: countryName(r.country), value: Number(r.battles) }))} />
+                <BarList
+                  items={(d.by_country as Json[]).map((r) => ({
+                    key: r.country,
+                    label: countryName(r.country),
+                    value: Number(r.battles),
+                  }))}
+                />
               </Section>
               <Unavailable items={d.unavailable} />
             </>
           );
         }}
       </AdminAsync>
-      <Section title="Ranking" hint={lbLang ? langName(lbLang) : 'global (mejor rating de cada usuario), sin internas'}>
+      <Section
+        title="Ranking"
+        hint={lbLang ? langName(lbLang) : 'global (mejor rating de cada usuario), sin internas'}
+      >
         <Chips
-          options={[{ id: '', label: 'Global' }, ...(['en', 'pt', 'it', 'zh', 'fr', 'es'] as const).map((l) => ({ id: l, label: langName(l) }))]}
+          options={[
+            { id: '', label: 'Global' },
+            ...(['en', 'pt', 'it', 'zh', 'fr', 'es'] as const).map((l) => ({
+              id: l,
+              label: langName(l),
+            })),
+          ]}
           value={lbLang}
           onChange={setLbLang}
         />
@@ -499,7 +697,9 @@ const retLine = (r: Json) =>
   DAYS.map((k) => `${k.toUpperCase()} ${r?.[k]?.eligible ? fmtPct(r[k].pct) : '—'}`).join(' · ');
 
 function Retention() {
-  const [segment, setSegment] = useState<'' | 'platform' | 'country' | 'course' | 'plan' | 'played_ranked' | 'first_lesson'>('');
+  const [segment, setSegment] = useState<
+    '' | 'platform' | 'country' | 'course' | 'plan' | 'played_ranked' | 'first_lesson'
+  >('');
   const q = useAdmin('admin_retention', { ...usePeriodArgs(), p_segment: segment || null });
   return (
     <AdminAsync query={q}>
@@ -516,7 +716,12 @@ function Retention() {
             <Section title="Cohortes semanales">
               <Rows
                 empty="Nadie se registró en el período."
-                rows={(d.cohorts as Json[]).map((c) => ({ key: c.cohort_week, label: `Semana del ${c.cohort_week} · ${fmtInt(c.size)} usuarios`, sub: retLine(c.retention), value: '' }))}
+                rows={(d.cohorts as Json[]).map((c) => ({
+                  key: c.cohort_week,
+                  label: `Semana del ${c.cohort_week} · ${fmtInt(c.size)} usuarios`,
+                  sub: retLine(c.retention),
+                  value: '',
+                }))}
               />
             </Section>
             <Section title="Por segmento">
@@ -534,7 +739,14 @@ function Retention() {
                 onChange={setSegment}
               />
               {segment ? (
-                <Rows rows={((d.segments ?? []) as Json[]).map((s) => ({ key: s.segment, label: `${s.segment} · ${fmtInt(s.size)}`, sub: retLine(s.retention), value: '' }))} />
+                <Rows
+                  rows={((d.segments ?? []) as Json[]).map((s) => ({
+                    key: s.segment,
+                    label: `${s.segment} · ${fmtInt(s.size)}`,
+                    sub: retLine(s.retention),
+                    value: '',
+                  }))}
+                />
               ) : null}
             </Section>
             <Overline>Uso en el período</Overline>
@@ -542,7 +754,11 @@ function Retention() {
               <Kpi label="Activos" value={g.active_users} />
               <Kpi label="Días activos por usuario" value={g.avg_active_days} format={fmtDec} />
               <Kpi label="Sesiones por usuario" value={g.sessions_per_user} format={fmtDec} />
-              <Kpi label="Días entre actividades" value={g.avg_days_between_activity} format={fmtDec} />
+              <Kpi
+                label="Días entre actividades"
+                value={g.avg_days_between_activity}
+                format={fmtDec}
+              />
               <Kpi label="Sólo aprenden" value={g.learn_only} />
               <Kpi label="Sólo juegan" value={g.play_only} />
               <Kpi label="Aprenden y juegan" value={g.learn_and_play} />
@@ -550,7 +766,14 @@ function Retention() {
               <Kpi label="Dejaron de jugar" value={g.stopped_playing} />
             </KpiGrid>
             <Section title="Frecuencia y Plus">
-              <Rows rows={(g.frequency as Json[]).map((r) => ({ key: r.bucket, label: r.bucket, sub: `${fmtPct(r.plus_pct)} con Plus`, value: fmtInt(r.users) }))} />
+              <Rows
+                rows={(g.frequency as Json[]).map((r) => ({
+                  key: r.bucket,
+                  label: r.bucket,
+                  sub: `${fmtPct(r.plus_pct)} con Plus`,
+                  value: fmtInt(r.users),
+                }))}
+              />
             </Section>
             <Unavailable items={d.unavailable} />
           </>
@@ -599,7 +822,10 @@ function Social() {
               <Kpi label="Pendientes" value={r.pending} />
               <Kpi label="Rechazados" value={r.rejected} />
             </KpiGrid>
-            <Section title="¿Qué retiene más?" hint={`Activos entre el día 1 y 7 · base ${fmtInt(r7.base_users)} usuarios (correlación, no causa)`}>
+            <Section
+              title="¿Qué retiene más?"
+              hint={`Activos entre el día 1 y 7 · base ${fmtInt(r7.base_users)} usuarios (correlación, no causa)`}
+            >
               <BarList
                 format={fmtPct}
                 items={[
@@ -643,10 +869,22 @@ function Monetization() {
               <Kpi label="Ingresos publicitarios" value={null} unavailable={u.ads} />
             </KpiGrid>
             <Section title="Plus por fuente" hint="Manual, promocional y referido no son ingresos">
-              <BarList items={(p.by_source as Json[]).map((r) => ({ key: r.source, label: r.source, value: Number(r.active) }))} />
+              <BarList
+                items={(p.by_source as Json[]).map((r) => ({
+                  key: r.source,
+                  label: r.source,
+                  value: Number(r.active),
+                }))}
+              />
             </Section>
             <Section title="Plus pago por producto">
-              <BarList items={(p.by_product as Json[]).map((r) => ({ key: r.product, label: r.product, value: Number(r.active) }))} />
+              <BarList
+                items={(p.by_product as Json[]).map((r) => ({
+                  key: r.product,
+                  label: r.product,
+                  value: Number(r.active),
+                }))}
+              />
             </Section>
             <Section title="Notas">
               {Object.values(d.notes as Record<string, string>).map((n) => (
@@ -678,7 +916,10 @@ function Marketing() {
             <Kpi label="Instalaciones" value={null} unavailable={d.unavailable.installs} />
             <Kpi label="ROI" value={null} unavailable={d.unavailable.spend} />
           </KpiGrid>
-          <Section title="Ranking de referidores" hint="Para medir influencers: un código de referido por cada uno">
+          <Section
+            title="Ranking de referidores"
+            hint="Para medir influencers: un código de referido por cada uno"
+          >
             <Rows
               empty="Nadie se registró con código en el período."
               rows={(d.referrers as Json[]).map((r) => ({
@@ -706,13 +947,24 @@ function Notifications() {
           <KpiGrid>
             <Kpi label="Tokens activos" value={d.tokens.active} />
             <Kpi label="Tokens inactivos" value={d.tokens.inactive} />
-            <Kpi label="Usuarios alcanzables" value={d.tokens.users_reachable} hint={`de ${fmtInt(d.tokens.users_total)}`} />
+            <Kpi
+              label="Usuarios alcanzables"
+              value={d.tokens.users_reachable}
+              hint={`de ${fmtInt(d.tokens.users_total)}`}
+            />
             <Kpi label="Apagaron desafíos" value={d.preferences.challenge_notifications_off} />
             <Kpi label="Push de desafío" value={d.challenge_pushes_sent} />
             <Kpi label="Abiertas / CTR" value={null} unavailable={d.unavailable.delivered_opened} />
           </KpiGrid>
           <Section title="Tokens por plataforma">
-            <Rows rows={(d.tokens.by_platform as Json[]).map((r) => ({ key: r.platform, label: platformName(r.platform), sub: `${fmtInt(r.inactive)} inactivos`, value: fmtInt(r.active) }))} />
+            <Rows
+              rows={(d.tokens.by_platform as Json[]).map((r) => ({
+                key: r.platform,
+                label: platformName(r.platform),
+                sub: `${fmtInt(r.inactive)} inactivos`,
+                value: fmtInt(r.active),
+              }))}
+            />
           </Section>
           <Unavailable items={d.unavailable} />
         </>
@@ -739,19 +991,60 @@ function Health() {
             <Kpi label="Crashes" value={null} unavailable={d.unavailable.crashes} />
           </KpiGrid>
           <Section title="Versiones de la app (30 días)">
-            <Rows empty="Sin sesiones con datos de cliente." rows={(d.app_versions_30d as Json[]).map((r, i) => ({ key: String(i), label: `${platformName(r.platform)} ${r.app_version}`, sub: `contrato ${r.contract ?? '—'} · ${fmtInt(r.users)} usuarios`, value: fmtInt(r.sessions) }))} />
+            <Rows
+              empty="Sin sesiones con datos de cliente."
+              rows={(d.app_versions_30d as Json[]).map((r, i) => ({
+                key: String(i),
+                label: `${platformName(r.platform)} ${r.app_version}`,
+                sub: `contrato ${r.contract ?? '—'} · ${fmtInt(r.users)} usuarios`,
+                value: fmtInt(r.sessions),
+              }))}
+            />
           </Section>
           <Section title="Partidas trabadas">
-            <Rows empty="Ninguna. ✓" rows={(d.battles.stuck as Json[]).map((r) => ({ key: r.battle_id, label: `${r.status} · ${langName(r.language)}`, sub: fmtDateTime(r.created_at), value: r.vs_bot ? 'bot' : '' }))} />
+            <Rows
+              empty="Ninguna. ✓"
+              rows={(d.battles.stuck as Json[]).map((r) => ({
+                key: r.battle_id,
+                label: `${r.status} · ${langName(r.language)}`,
+                sub: fmtDateTime(r.created_at),
+                value: r.vs_bot ? 'bot' : '',
+              }))}
+            />
           </Section>
           <Section title="Trabajos de aprendizaje">
-            <Rows empty="Sin corridas." rows={(d.learning_jobs.recent_runs as Json[]).map((r, i) => ({ key: String(i), label: `${r.job} · ${r.status}`, sub: `${fmtDateTime(r.started_at)}${r.error ? ` · ${r.error}` : ''}`, value: `${fmtInt(r.processed)}/${fmtInt(r.failed)}` }))} />
+            <Rows
+              empty="Sin corridas."
+              rows={(d.learning_jobs.recent_runs as Json[]).map((r, i) => ({
+                key: String(i),
+                label: `${r.job} · ${r.status}`,
+                sub: `${fmtDateTime(r.started_at)}${r.error ? ` · ${r.error}` : ''}`,
+                value: `${fmtInt(r.processed)}/${fmtInt(r.failed)}`,
+              }))}
+            />
           </Section>
           <Section title="Consultas más lentas" hint="pg_stat_statements, promedio por llamada">
-            <Rows empty="Sin datos." rows={((d.database.slow_queries ?? []) as Json[]).slice(0, 10).map((r, i) => ({ key: String(i), label: String(r.query).slice(0, 90), sub: `${fmtInt(r.calls)} llamadas`, value: `${fmtDec(r.mean_ms)} ms` }))} />
+            <Rows
+              empty="Sin datos."
+              rows={((d.database.slow_queries ?? []) as Json[])
+                .slice(0, 10)
+                .map((r, i) => ({
+                  key: String(i),
+                  label: String(r.query).slice(0, 90),
+                  sub: `${fmtInt(r.calls)} llamadas`,
+                  value: `${fmtDec(r.mean_ms)} ms`,
+                }))}
+            />
           </Section>
           <Section title="Tablas más grandes">
-            <Rows rows={(d.database.largest_tables as Json[]).map((r) => ({ key: r.table, label: r.table, sub: `${fmtInt(r.rows_estimate)} filas (est.)`, value: fmtBytes(r.bytes) }))} />
+            <Rows
+              rows={(d.database.largest_tables as Json[]).map((r) => ({
+                key: r.table,
+                label: r.table,
+                sub: `${fmtInt(r.rows_estimate)} filas (est.)`,
+                value: fmtBytes(r.bytes),
+              }))}
+            />
           </Section>
           <Unavailable items={d.unavailable} />
         </>
@@ -778,15 +1071,29 @@ function Content() {
             />
           </Section>
           <Section title="Cursos">
-            <Rows rows={(d.courses as Json[]).map((c) => ({ key: c.code, label: `${langName(c.target)} desde ${langName(c.source)}`, sub: c.code, value: `${fmtInt(c.enrolled)} inscriptos` }))} />
+            <Rows
+              rows={(d.courses as Json[]).map((c) => ({
+                key: c.code,
+                label: `${langName(c.target)} desde ${langName(c.source)}`,
+                sub: c.code,
+                value: `${fmtInt(c.enrolled)} inscriptos`,
+              }))}
+            />
           </Section>
           <KpiGrid>
             <Kpi label="Avatares por revisar" value={d.reports.avatar_pending} />
-            <Kpi label="Errores de contenido" value={null} unavailable={d.unavailable.content_error_reports} />
+            <Kpi
+              label="Errores de contenido"
+              value={null}
+              unavailable={d.unavailable.content_error_reports}
+            />
           </KpiGrid>
           <Section title="Unidades" hint="Empezaron / completaron (usuarios reales)">
             <Chips
-              options={(['en', 'pt', 'it', 'zh', 'fr', 'es'] as const).map((l) => ({ id: l, label: langName(l) }))}
+              options={(['en', 'pt', 'it', 'zh', 'fr', 'es'] as const).map((l) => ({
+                id: l,
+                label: langName(l),
+              }))}
               value={lang}
               onChange={setLang}
             />
@@ -822,14 +1129,45 @@ function Audit() {
             <Kpi label="Acciones registradas" value={d.actions_total} />
           </KpiGrid>
           <Section title="Superadmin y cuentas internas">
-            <Rows rows={(d.superadmins as Json[]).map((s) => ({ key: s.user_id, label: `Superadmin: ${s.label}`, sub: s.user_id, value: '' }))} />
-            <Rows rows={(d.internal_accounts as Json[]).map((s) => ({ key: s.user_id, label: `Interna: ${s.label}`, sub: s.user_id, value: '', onPress: () => openUser(s.user_id) }))} />
+            <Rows
+              rows={(d.superadmins as Json[]).map((s) => ({
+                key: s.user_id,
+                label: `Superadmin: ${s.label}`,
+                sub: s.user_id,
+                value: '',
+              }))}
+            />
+            <Rows
+              rows={(d.internal_accounts as Json[]).map((s) => ({
+                key: s.user_id,
+                label: `Interna: ${s.label}`,
+                sub: s.user_id,
+                value: '',
+                onPress: () => openUser(s.user_id),
+              }))}
+            />
           </Section>
           <Section title="Eventos de seguridad">
-            <Rows empty="Sin eventos." rows={(d.security_events as Json[]).map((e) => ({ key: String(e.id), label: EVENT[e.event] ?? e.event, sub: `${fmtDateTime(e.created_at)} · ${e.username ?? String(e.user_id ?? '—').slice(0, 8)} · ${e.aal ?? '—'}`, value: '' }))} />
+            <Rows
+              empty="Sin eventos."
+              rows={(d.security_events as Json[]).map((e) => ({
+                key: String(e.id),
+                label: EVENT[e.event] ?? e.event,
+                sub: `${fmtDateTime(e.created_at)} · ${e.username ?? String(e.user_id ?? '—').slice(0, 8)} · ${e.aal ?? '—'}`,
+                value: '',
+              }))}
+            />
           </Section>
           <Section title="Auditoría del panel" hint="últimas 50 consultas">
-            <Rows empty="Sin acciones." rows={(d.actions as Json[]).map((a) => ({ key: String(a.id), label: a.action, sub: `${fmtDateTime(a.created_at)}${a.params ? ` · ${JSON.stringify(a.params).slice(0, 80)}` : ''}`, value: '' }))} />
+            <Rows
+              empty="Sin acciones."
+              rows={(d.actions as Json[]).map((a) => ({
+                key: String(a.id),
+                label: a.action,
+                sub: `${fmtDateTime(a.created_at)}${a.params ? ` · ${JSON.stringify(a.params).slice(0, 80)}` : ''}`,
+                value: '',
+              }))}
+            />
           </Section>
         </>
       )}
@@ -858,8 +1196,16 @@ export function UserDetailView({ id }: { id: string }) {
             </Text>
             <KpiGrid>
               <Kpi label="Plan" value={d.plan === 'plus' ? 'Plus' : 'Free'} format={String} />
-              <Kpi label="Nivel" value={d.xp?.level ?? null} hint={d.xp ? `${fmtInt(d.xp.total_xp)} XP` : undefined} />
-              <Kpi label="Racha" value={d.streak?.current ?? 0} hint={`mejor: ${fmtInt(d.streak?.best ?? 0)}`} />
+              <Kpi
+                label="Nivel"
+                value={d.xp?.level ?? null}
+                hint={d.xp ? `${fmtInt(d.xp.total_xp)} XP` : undefined}
+              />
+              <Kpi
+                label="Racha"
+                value={d.streak?.current ?? 0}
+                hint={`mejor: ${fmtInt(d.streak?.best ?? 0)}`}
+              />
               <Kpi label="Lecciones" value={d.learning.lessons_completed} />
               <Kpi label="Repasos" value={d.learning.reviews_completed} />
               <Kpi label="Precisión" value={d.learning.accuracy} format={fmtPct} />
@@ -871,29 +1217,74 @@ export function UserDetailView({ id }: { id: string }) {
                 rows={[
                   { key: 'id', label: 'ID', sub: p.id, value: '' },
                   { key: 'reg', label: 'Registro', value: fmtDateTime(p.created_at) },
-                  { key: 'onb', label: 'Onboarding', value: p.onboarding_completed_at ? fmtDateTime(p.onboarding_completed_at) : 'sin completar' },
-                  { key: 'login', label: 'Último login', value: fmtDateTime(d.auth?.last_sign_in_at) },
+                  {
+                    key: 'onb',
+                    label: 'Onboarding',
+                    value: p.onboarding_completed_at
+                      ? fmtDateTime(p.onboarding_completed_at)
+                      : 'sin completar',
+                  },
+                  {
+                    key: 'login',
+                    label: 'Último login',
+                    value: fmtDateTime(d.auth?.last_sign_in_at),
+                  },
                   { key: 'seen', label: 'Última presencia', value: fmtDateTime(d.presence) },
-                  { key: 'prov', label: 'Acceso con', value: (d.auth?.providers ?? []).join(', ') || '—' },
+                  {
+                    key: 'prov',
+                    label: 'Acceso con',
+                    value: (d.auth?.providers ?? []).join(', ') || '—',
+                  },
                   { key: 'country', label: 'País', value: countryName(p.country) },
                   { key: 'platform', label: 'Plataforma', value: platformName(p.platform) },
                   { key: 'ui', label: 'Idioma de la app', value: langName(p.interface_language) },
                   { key: 'target', label: 'Idioma objetivo', value: langName(p.target_language) },
                   { key: 'course', label: 'Curso activo', value: p.active_course ?? '—' },
-                  { key: 'acq', label: 'Adquisición', value: d.acquisition.source === 'referral' ? `referido por ${d.social.referred_by ?? '—'}` : 'desconocida' },
+                  {
+                    key: 'acq',
+                    label: 'Adquisición',
+                    value:
+                      d.acquisition.source === 'referral'
+                        ? `referido por ${d.social.referred_by ?? '—'}`
+                        : 'desconocida',
+                  },
                   { key: 'friends', label: 'Amigos', value: fmtInt(d.social.friends) },
                   { key: 'ach', label: 'Logros', value: fmtInt(d.achievements) },
                 ]}
               />
             </Section>
             <Section title="Ranked por idioma">
-              <Rows empty="Sin rating." rows={(d.ratings as Json[]).map((r) => ({ key: r.language, label: `${langName(r.language)} · ${tierName(r.tier)}`, sub: `${fmtInt(r.games)} partidas · ${fmtInt(r.wins)}V ${fmtInt(r.losses)}D · pico ${fmtInt(r.peak)}`, value: fmtInt(r.rating) }))} />
+              <Rows
+                empty="Sin rating."
+                rows={(d.ratings as Json[]).map((r) => ({
+                  key: r.language,
+                  label: `${langName(r.language)} · ${tierName(r.tier)}`,
+                  sub: `${fmtInt(r.games)} partidas · ${fmtInt(r.wins)}V ${fmtInt(r.losses)}D · pico ${fmtInt(r.peak)}`,
+                  value: fmtInt(r.rating),
+                }))}
+              />
             </Section>
             <Section title="Suscripción" hint="estado actual">
-              <Rows empty="Nunca tuvo Plus." rows={(d.entitlements as Json[]).map((e, i) => ({ key: String(i), label: `${e.entitlement} · ${e.source}`, sub: `${e.product_id ?? '—'} · desde ${fmtDateTime(e.starts_at)} · vence ${fmtDateTime(e.expires_at)} · renueva ${e.will_renew === null ? '—' : e.will_renew ? 'sí' : 'no'}`, value: '' }))} />
+              <Rows
+                empty="Nunca tuvo Plus."
+                rows={(d.entitlements as Json[]).map((e, i) => ({
+                  key: String(i),
+                  label: `${e.entitlement} · ${e.source}`,
+                  sub: `${e.product_id ?? '—'} · desde ${fmtDateTime(e.starts_at)} · vence ${fmtDateTime(e.expires_at)} · renueva ${e.will_renew === null ? '—' : e.will_renew ? 'sí' : 'no'}`,
+                  value: '',
+                }))}
+              />
             </Section>
             <Section title="Historial de aprendizaje" hint="últimas 20 sesiones">
-              <Rows empty="Sin sesiones." rows={(d.recent_sessions as Json[]).map((s, i) => ({ key: String(i), label: s.kind === 'lesson' ? (s.lesson_title ?? 'Lección') : 'Repaso', sub: `${fmtDateTime(s.completed_at)} · ${fmtInt(s.answers)} respuestas · ${fmtSeconds(s.duration_seconds)}`, value: fmtPct(s.first_try_accuracy) }))} />
+              <Rows
+                empty="Sin sesiones."
+                rows={(d.recent_sessions as Json[]).map((s, i) => ({
+                  key: String(i),
+                  label: s.kind === 'lesson' ? (s.lesson_title ?? 'Lección') : 'Repaso',
+                  sub: `${fmtDateTime(s.completed_at)} · ${fmtInt(s.answers)} respuestas · ${fmtSeconds(s.duration_seconds)}`,
+                  value: fmtPct(s.first_try_accuracy),
+                }))}
+              />
             </Section>
             <Section title="Historial de partidas" hint="últimas 20">
               <AdminAsync query={battles}>
@@ -904,7 +1295,10 @@ export function UserDetailView({ id }: { id: string }) {
                       key: r.battle_id,
                       label: `${RESULT[r.result] ?? '—'} vs ${r.opponent ?? '—'}${r.opponent_is_bot ? ' (bot)' : ''}`,
                       sub: `${fmtDateTime(r.created_at)} · ${langName(r.language)} · ${!r.ranked ? 'amistosa' : 'ranked'} · ${r.status} · ${r.score ?? '—'}–${r.opponent_score ?? '—'}`,
-                      value: r.rating_after != null && r.rating_before != null ? `${r.rating_before}→${r.rating_after}` : '—',
+                      value:
+                        r.rating_after != null && r.rating_before != null
+                          ? `${r.rating_before}→${r.rating_after}`
+                          : '—',
                     }))}
                   />
                 )}
@@ -916,4 +1310,3 @@ export function UserDetailView({ id }: { id: string }) {
     </AdminAsync>
   );
 }
-

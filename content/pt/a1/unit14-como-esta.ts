@@ -12,7 +12,7 @@ import { dialogue, ex, PT_A1_RATE, question, reading, w } from '../helpers';
 
 const LIGACAO = dialogue(
   'pt.stim.a1-u14-ligacao',
-  'Marina llama a su mamá a la noche.',
+  'Marina llama a su mamá por la noche.',
   [
     ['Mãe', 'Oi, filha! Tudo bem?'],
     ['Marina', 'Tudo bem, mãe. Mas estou muito cansada.'],
@@ -25,7 +25,7 @@ const LIGACAO = dialogue(
 const COLEGA = reading(
   'pt.stim.a1-u14-colega',
   'message',
-  'Tiago le cuenta a una amiga cómo es su nuevo compañero de departamento.',
+  'Tiago le cuenta a una amiga cómo es su nuevo compañero de apartamento.',
   [
     'Oi, Laura! O meu colega de apartamento é o Rafael.',
     'Ele é alto, moreno e muito simpático.',
@@ -72,7 +72,7 @@ export const PT_A1_U14: PtUnitDef = {
       'Estar para cómo estás ahora, estar com fome / sede, ser para describir, la concordancia de los adjetivos y el falso amigo chato.',
     emoji: '😊',
     objective:
-      'Podés decir cómo estás (estou cansado, estou com fome), describir personas y cosas con ser y elegir entre ser y estar.',
+      'Puedes decir cómo estás (estou cansado, estou com fome), describir personas y cosas con ser y elegir entre ser y estar.',
     grammar: {
       title: 'Ser y estar · estar com · concordancia',
       explanation:
@@ -80,7 +80,7 @@ export const PT_A1_U14: PtUnitDef = {
       examples: [
         { target: 'Ele é alto e simpático.', base: 'Él es alto y simpático.' },
         { target: 'Hoje eu estou cansada.', base: 'Hoy estoy cansada.' },
-        { target: 'Você está com fome?', base: '¿Tenés hambre?' },
+        { target: 'Você está com fome?', base: '¿Tienes hambre?' },
       ],
     },
     review: {
@@ -130,7 +130,7 @@ export const PT_A1_U14: PtUnitDef = {
         'com sede',
         'con sed',
         'Você está com sede?',
-        '¿Tenés sed?',
+        '¿Tienes sed?',
         ['feelings', 'food'],
         { acceptedTranslations: ['tener sed'], emoji: '🥤' },
       ),
@@ -239,8 +239,8 @@ export const PT_A1_U14: PtUnitDef = {
           ],
         },
         takeaways: [
-          'Decís cómo estás con estou.',
-          'Hacés concordar el adjetivo: cansado, cansada.',
+          'Dices cómo estás con estou.',
+          'Haces concordar el adjetivo: cansado, cansada.',
         ],
         exercises: [
           ex.translationChoice('estou', 'estoy', ['soy', 'tengo', 'voy'], ['pt-estou'], {
@@ -284,7 +284,7 @@ export const PT_A1_U14: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Tudo bem? Você está cansado?',
-            '¿Todo bien? ¿Estás cansado? (Respondé que no, que estás feliz.)',
+            '¿Todo bien? ¿Estás cansado? (Responde que no, que estás feliz.)',
             'Não, estou feliz.',
             ['Não, eu estou feliz.', 'Estou feliz.', 'Não. Estou feliz.'],
             ['pt-estou', 'pt-feliz'],
@@ -300,18 +300,18 @@ export const PT_A1_U14: PtUnitDef = {
       // ------------------------------------------------------------------------------------ L2
       {
         title: 'Estou com fome',
-        objective: 'Decir que tenés hambre o sed.',
+        objective: 'Decir que tienes hambre o sed.',
         intro: {
           explanation:
             '«Tengo hambre» no se dice con ter: se dice estou com fome («estoy con hambre»). Igual con la sed: estou com sede.',
           examples: [
             { target: 'Estou com fome. Quero comer.', base: 'Tengo hambre. Quiero comer.' },
-            { target: 'Você está com sede?', base: '¿Tenés sed?' },
+            { target: 'Você está com sede?', base: '¿Tienes sed?' },
           ],
         },
         takeaways: [
-          'Decís que tenés hambre: estou com fome.',
-          'Decís que tenés sed: estou com sede.',
+          'Dices que tienes hambre: estou com fome.',
+          'Dices que tienes sed: estou com sede.',
         ],
         exercises: [
           ex.translationChoice(
@@ -342,7 +342,7 @@ export const PT_A1_U14: PtUnitDef = {
           ),
           ex.fillBlank(
             'Você ___ com fome?',
-            '¿Tenés hambre?',
+            '¿Tienes hambre?',
             'está',
             ['tem', 'é', 'estou'],
             ['pt-com-fome', 'pt-esta'],
@@ -376,7 +376,7 @@ export const PT_A1_U14: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Você está com fome?',
-            '¿Tenés hambre? (Respondé que no, que tenés sed.)',
+            '¿Tienes hambre? (Responde que no, que tienes sed.)',
             'Não, estou com sede.',
             ['Não, eu estou com sede.', 'Estou com sede.', 'Não. Estou com sede.'],
             ['pt-com-sede', 'pt-estou'],
@@ -402,8 +402,8 @@ export const PT_A1_U14: PtUnitDef = {
           ],
         },
         takeaways: [
-          'Describís personas con ser.',
-          'Hacés concordar el adjetivo en género y número.',
+          'Describes personas con ser.',
+          'Haces concordar el adjetivo en género y número.',
         ],
         exercises: [
           ex.translationChoice('baixo', 'bajo', ['alto', 'feo', 'grande'], ['pt-baixo'], {
@@ -468,7 +468,7 @@ export const PT_A1_U14: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Como é o seu pai? (alto)',
-            '¿Cómo es tu papá? (Respondé que es alto.)',
+            '¿Cómo es tu papá? (Responde que es alto.)',
             'Ele é alto.',
             ['O meu pai é alto.', 'Meu pai é alto.', 'É alto.'],
             ['pt-alto'],
@@ -499,8 +499,8 @@ export const PT_A1_U14: PtUnitDef = {
           ],
         },
         takeaways: [
-          'Describís cosas: novo, velho, pequeno, grande.',
-          'Sabés que chato es «aburrido».',
+          'Describes cosas: novo, velho, pequeno, grande.',
+          'Sabes que chato es «aburrido».',
         ],
         exercises: [
           ex.translationChoice(
@@ -547,7 +547,7 @@ export const PT_A1_U14: PtUnitDef = {
           ),
           ex.fillBlank(
             'O quarto é muito ___, mas a sala é grande.',
-            'El dormitorio es muy chico, pero el living es grande.',
+            'El dormitorio es muy chico, pero la sala es grande.',
             'pequeno',
             ['pequena', 'grande', 'alto'],
             ['pt-pequeno', 'pt-grande', 'pt-quarto'],
@@ -573,7 +573,7 @@ export const PT_A1_U14: PtUnitDef = {
           ),
           ex.shortAnswer(
             'O filme é bom?',
-            '¿La película es buena? (Respondé que no, que es aburrida.)',
+            '¿La película es buena? (Responde que no, que es aburrida.)',
             'Não, é chato.',
             ['Não, o filme é chato.', 'Não, é muito chato.', 'É chato.', 'Não. É chato.'],
             ['pt-chato'],
@@ -601,7 +601,7 @@ export const PT_A1_U14: PtUnitDef = {
             { target: 'O Rafael fala pouco.', base: 'Rafael habla poco.' },
           ],
         },
-        takeaways: ['Elegís entre ser y estar.', 'Decís poco o mucho con pouco y muito.'],
+        takeaways: ['Eliges entre ser y estar.', 'Dices poco o mucho con pouco y muito.'],
         exercises: [
           ex.fillBlank(
             'Hoje a Laura ___ triste.',
@@ -646,7 +646,7 @@ export const PT_A1_U14: PtUnitDef = {
             'pt.ex.tu3zpkjuztfwix',
             COLEGA,
             '¿Qué dice Tiago de cómo habla Rafael?',
-            'Que habla poco, pero es buena onda',
+            'Que habla poco, pero es simpático',
             ['Que habla mucho', 'Que habla poco y es aburrido', 'Que no habla portugués'],
             ['pt-pouco'],
             'El mensaje dice: «fala pouco, mas é legal».',
@@ -661,7 +661,7 @@ export const PT_A1_U14: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Como você está hoje?',
-            '¿Cómo estás hoy? (Respondé que estás un poco cansado.)',
+            '¿Cómo estás hoy? (Responde que estás un poco cansado.)',
             'Estou um pouco cansado.',
             [
               'Hoje estou um pouco cansado.',

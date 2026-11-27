@@ -27,7 +27,10 @@ import { createDb } from './harness.mjs';
 import { rightAnswer, TZ } from './learningHelpers.mjs';
 import { startEmulator } from './edge/postgrestEmulator.mjs';
 import { loadEdgeFunction } from './edge/runEdgeFunction.mjs';
-import { WORD_RUSH_PROTOCOL_VERSION as PROTOCOL_VERSION, WORD_RUSH } from '../../shared/protocol.ts';
+import {
+  WORD_RUSH_PROTOCOL_VERSION as PROTOCOL_VERSION,
+  WORD_RUSH,
+} from '../../shared/protocol.ts';
 import {
   generateQuestions,
   localRushWords,

@@ -26,7 +26,7 @@ const tone = (
 ): ExerciseDef => ({
   type: 'listen_choice',
   skill: 'listening',
-  prompt: 'Escuchá y elegí el tono correcto',
+  prompt: 'Escucha y elige el tono correcto',
   payload: { type: 'listen_choice', audioText: hanzi, options: [pinyin, ...others] },
   answer: pinyin,
   words,
@@ -53,12 +53,12 @@ const write = (
  */
 export const unit02: UnitDef = {
   position: 2,
-  title: '¿Quién sos y de dónde sos?',
+  title: '¿Quién eres y de dónde eres?',
   titleEn: '你是哪国人？',
   description: 'Ser con 是, negar con 不, preguntar con 吗 y decir tu nacionalidad.',
   emoji: '🌍',
   objective:
-    'Podés decir qué sos y de dónde sos, negar, hacer preguntas de sí o no y hablar de alguien con 他 y 她.',
+    'Puedes decir qué eres y de dónde eres, negar, hacer preguntas de sí o no y hablar de alguien con 他 y 她.',
   grammar: {
     title: '是, 不 y 吗',
     explanation:
@@ -66,7 +66,7 @@ export const unit02: UnitDef = {
     examples: [
       { target: '我是学生。', base: 'Soy estudiante.' },
       { target: '我不是老师。', base: 'No soy profesor/a.' },
-      { target: '你是中国人吗？', base: '¿Sos chino/a?' },
+      { target: '你是中国人吗？', base: '¿Eres chino/a?' },
     ],
   },
   review: {
@@ -76,10 +76,10 @@ export const unit02: UnitDef = {
   },
   words: [
     w('zh-shi', '是', 'shì', 'ser', '我是学生。', 'Soy estudiante.', ['verbs'], {
-      acceptedTranslations: ['es', 'soy', 'sos'],
+      acceptedTranslations: ['es', 'soy', 'sos', 'eres'],
     }),
     w('zh-bu', '不', 'bù', 'no (negación)', '我不是老师。', 'No soy profesor/a.', ['grammar']),
-    w('zh-ma', '吗', 'ma', 'partícula de pregunta', '你是学生吗？', '¿Sos estudiante?', [
+    w('zh-ma', '吗', 'ma', 'partícula de pregunta', '你是学生吗？', '¿Eres estudiante?', [
       'grammar',
       'particle',
     ]),
@@ -117,10 +117,10 @@ export const unit02: UnitDef = {
       ['countries'],
       { emoji: '🇲🇽' },
     ),
-    w('zh-na', '哪', 'nǎ', '¿cuál?', '你是哪国人？', '¿De qué país sos?', ['questions'], {
+    w('zh-na', '哪', 'nǎ', '¿cuál?', '你是哪国人？', '¿De qué país eres?', ['questions'], {
       acceptedTranslations: ['¿qué?'],
     }),
-    w('zh-guo', '国', 'guó', 'país', '你是哪国人？', '¿De qué país sos?', ['countries']),
+    w('zh-guo', '国', 'guó', 'país', '你是哪国人？', '¿De qué país eres?', ['countries']),
     w('zh-xuesheng', '学生', 'xuésheng', 'estudiante', '我是学生。', 'Soy estudiante.', ['people']),
     w('zh-ta-he', '他', 'tā', 'él', '他是我朋友。', 'Él es mi amigo.', ['pronouns']),
     w('zh-ta-she', '她', 'tā', 'ella', '她是老师。', 'Ella es profesora.', ['pronouns']),
@@ -131,16 +131,16 @@ export const unit02: UnitDef = {
   lessons: [
     {
       title: '我是学生',
-      objective: 'Decir qué sos con 是.',
+      objective: 'Decir qué eres con 是.',
       intro: {
         explanation:
-          '是 (shì) es «ser» y sirve para todas las personas: 我是, 你是, 他是. Para tu nombre ya conocés 叫; 是 es para lo que sos: estudiante, profesor, de dónde.',
+          '是 (shì) es «ser» y sirve para todas las personas: 我是, 你是, 他是. Para tu nombre ya conoces 叫; 是 es para lo que eres: estudiante, profesor, de dónde.',
         examples: [
           { target: '我是学生。', base: 'Soy estudiante.' },
-          { target: '你是老师。', base: 'Vos sos profesor/a.' },
+          { target: '你是老师。', base: 'Tú eres profesor/a.' },
         ],
       },
-      takeaways: ['Decís qué sos con 是.', 'Usás 叫 para el nombre y 是 para lo demás.'],
+      takeaways: ['Dices qué eres con 是.', 'Usas 叫 para el nombre y 是 para lo demás.'],
       exercises: [
         ex.translationChoice('是', 'ser', ['no (negación)', 'persona', 'estudiante'], ['zh-shi']),
         ex.translationChoice(
@@ -162,7 +162,7 @@ export const unit02: UnitDef = {
           ['zh-shi', 'zh-xuesheng'],
           {
             skill: 'grammar',
-            explanation: 'Para decir qué sos se usa 是. 叫 es sólo para el nombre: 我叫王明.',
+            explanation: 'Para decir qué eres se usa 是. 叫 es sólo para el nombre: 我叫王明.',
           },
         ),
         ex.orderWords('我 是 老师。', 'Soy profesor/a.', ['zh-wo', 'zh-shi', 'zh-laoshi']),
@@ -176,13 +176,13 @@ export const unit02: UnitDef = {
       objective: 'Negar con 不 y preguntar con 吗.',
       intro: {
         explanation:
-          'Para negar, 不 (bù) va antes del verbo: 我不是老师. Antes de un cuarto tono como 是 se pronuncia bú. Para una pregunta de sí o no, agregás 吗 (ma) al final, sin cambiar el orden.',
+          'Para negar, 不 (bù) va antes del verbo: 我不是老师. Antes de un cuarto tono como 是 se pronuncia bú. Para una pregunta de sí o no, agregas 吗 (ma) al final, sin cambiar el orden.',
         examples: [
           { target: '我不是老师。', base: 'No soy profesor/a.', note: 'bú shì' },
-          { target: '你是学生吗？', base: '¿Sos estudiante?' },
+          { target: '你是学生吗？', base: '¿Eres estudiante?' },
         ],
       },
-      takeaways: ['Negás con 不 antes del verbo.', 'Preguntás sí o no con 吗 al final.'],
+      takeaways: ['Niegas con 不 antes del verbo.', 'Preguntas sí o no con 吗 al final.'],
       exercises: [
         ex.translationChoice('不', 'no (negación)', ['ser', 'persona', 'también'], ['zh-bu']),
         ex.fillBlank(
@@ -203,17 +203,17 @@ export const unit02: UnitDef = {
         ),
         ex.fillBlank(
           '你是学生___？',
-          '¿Sos estudiante?',
+          '¿Eres estudiante?',
           '吗',
           ['呢', '不', '是'],
           ['zh-ma', 'zh-shi'],
           {
             skill: 'grammar',
             explanation:
-              '吗 al final convierte la oración en pregunta de sí o no. 呢 es para «¿y vos?».',
+              '吗 al final convierte la oración en pregunta de sí o no. 呢 es para «¿y tú?».',
           },
         ),
-        ex.orderWords('你 是 老师 吗？', '¿Sos profesor/a?', [
+        ex.orderWords('你 是 老师 吗？', '¿Eres profesor/a?', [
           'zh-ni',
           'zh-shi',
           'zh-laoshi',
@@ -236,7 +236,11 @@ export const unit02: UnitDef = {
             explanation: '不 antes de 是 se dice bú (sube): wǒ bú shì.',
           },
         ),
-        write('¿Sos profesor?', 'nǐ shì lǎoshī ma', '你是老师吗', ['zh-shi', 'zh-ma', 'zh-laoshi']),
+        write('¿Eres profesor?', 'nǐ shì lǎoshī ma', '你是老师吗', [
+          'zh-shi',
+          'zh-ma',
+          'zh-laoshi',
+        ]),
       ],
     },
     {
@@ -250,10 +254,10 @@ export const unit02: UnitDef = {
           { target: '她是老师。', base: 'Ella es profesora.' },
         ],
       },
-      takeaways: ['Hablás de alguien con 他 o 她.', 'Presentás a un amigo con 他是我朋友.'],
+      takeaways: ['Hablas de alguien con 他 o 她.', 'Presentas a un amigo con 他是我朋友.'],
       exercises: [
-        ex.translationChoice('他', 'él', ['ella', 'yo', 'vos'], ['zh-ta-he']),
-        ex.translationChoice('她', 'ella', ['él', 'amigo/a', 'vos'], ['zh-ta-she'], {
+        ex.translationChoice('他', 'él', ['ella', 'yo', 'tú'], ['zh-ta-he']),
+        ex.translationChoice('她', 'ella', ['él', 'amigo/a', 'tú'], ['zh-ta-she'], {
           explanation: '她 tiene 女 (mujer) a la izquierda: es «ella».',
         }),
         ex.translationChoice(
@@ -302,8 +306,8 @@ export const unit02: UnitDef = {
         ],
       },
       takeaways: [
-        'Decís tu nacionalidad con país + 人.',
-        'Sabés que no cambia para varón o mujer.',
+        'Dices tu nacionalidad con país + 人.',
+        'Sabes que no cambia para varón o mujer.',
       ],
       exercises: [
         ex.translationChoice('中国', 'China', ['España', 'México', 'Argentina'], ['zh-zhongguo']),
@@ -338,16 +342,16 @@ export const unit02: UnitDef = {
     },
     {
       title: '你是哪国人？',
-      objective: 'Preguntar y decir de qué país sos.',
+      objective: 'Preguntar y decir de qué país eres.',
       intro: {
         explanation:
-          '哪 (nǎ) es «¿cuál?». 你是哪国人？ es «¿de qué país sos?» (literalmente «¿sos persona de qué país?»). Se responde poniendo el país donde estaba 哪国.',
+          '哪 (nǎ) es «¿cuál?». 你是哪国人？ es «¿de qué país eres?» (literalmente «¿eres persona de qué país?»). Se responde poniendo el país donde estaba 哪国.',
         examples: [
-          { target: '你是哪国人？', base: '¿De qué país sos?' },
+          { target: '你是哪国人？', base: '¿De qué país eres?' },
           { target: '我是墨西哥人。', base: 'Soy mexicano/a.' },
         ],
       },
-      takeaways: ['Preguntás la nacionalidad con 你是哪国人？', 'Respondés con 我是 + país + 人.'],
+      takeaways: ['Preguntas la nacionalidad con 你是哪国人？', 'Respondes con 我是 + país + 人.'],
       exercises: [
         ex.translationChoice('哪', '¿cuál?', ['país', 'persona', 'no (negación)'], ['zh-na']),
         ex.translationChoice('国', 'país', ['persona', 'China', '¿cuál?'], ['zh-guo']),
@@ -358,7 +362,7 @@ export const unit02: UnitDef = {
         ),
         ex.fillBlank(
           '你是___国人？',
-          '¿De qué país sos?',
+          '¿De qué país eres?',
           '哪',
           ['什么', '吗', '不'],
           ['zh-na', 'zh-guo'],
@@ -368,7 +372,7 @@ export const unit02: UnitDef = {
               'Para el país se pregunta con 哪国. Con 哪 no hace falta 吗: ya es una pregunta.',
           },
         ),
-        ex.orderWords('你 是 哪 国 人？', '¿De qué país sos?', ['zh-na', 'zh-guo', 'zh-ren']),
+        ex.orderWords('你 是 哪 国 人？', '¿De qué país eres?', ['zh-na', 'zh-guo', 'zh-ren']),
         ex.matchPairs(
           [
             ['哪', '¿cuál?'],
@@ -379,7 +383,7 @@ export const unit02: UnitDef = {
           ['zh-na', 'zh-guo', 'zh-ren', 'zh-shi'],
         ),
         write(
-          '¿De qué país sos?',
+          '¿De qué país eres?',
           'nǐ shì nǎ guó rén',
           '你是哪国人',
           ['zh-na', 'zh-guo', 'zh-ren'],

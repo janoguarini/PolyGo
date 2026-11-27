@@ -25,7 +25,7 @@ export const unit10: UnitDef = {
   description: 'Lugares de la ciudad, preguntar dónde está algo, ir a un lugar y dar direcciones.',
   emoji: '🏙️',
   objective:
-    "Podés preguntar dov'è…?, decir adónde vas con vado a / vado in y entender a destra, a sinistra, sempre dritto, vicino y lontano.",
+    "Puedes preguntar dov'è…?, decir adónde vas con vado a / vado in y entender a destra, a sinistra, sempre dritto, vicino y lontano.",
   grammar: {
     title: 'Andare: vado a… / vado in…',
     explanation:
@@ -142,7 +142,7 @@ export const unit10: UnitDef = {
       'sempre dritto',
       'todo derecho',
       'Vai sempre dritto.',
-      'Andá todo derecho.',
+      'Ve todo derecho.',
       ['directions'],
       { acceptedTranslations: ['todo recto', 'siempre derecho'], emoji: '⬆️' },
     ),
@@ -159,13 +159,13 @@ export const unit10: UnitDef = {
       objective: 'Nombrar lugares de la ciudad.',
       intro: {
         explanation:
-          'Algunos lugares se parecen al español: ristorante, supermercato, stazione. Otros no: el hotel también se dice albergo, la calle es strada y el banco (de plata) es banca.',
+          'Algunos lugares se parecen al español: ristorante, supermercato, stazione. Otros no: el hotel también se dice albergo, la calle es strada y el banco (de dinero) es banca.',
         examples: [
           { target: 'Il ristorante è in piazza.', base: 'El restaurante está en la plaza.' },
           { target: 'Roma è una città molto bella.', base: 'Roma es una ciudad muy linda.' },
         ],
       },
-      takeaways: ['Nombrás lugares de la ciudad.', 'Sabés que el banco es banca.'],
+      takeaways: ['Nombras lugares de la ciudad.', 'Sabes que el banco es banca.'],
       exercises: [
         ex.imageChoice('🚉', 'stazione', ['banca', 'piazza', 'albergo'], ['it-stazione']),
         ex.imageChoice('🏦', 'banca', ['ospedale', 'stazione', 'strada'], ['it-banca']),
@@ -211,8 +211,8 @@ export const unit10: UnitDef = {
         ],
       },
       takeaways: [
-        "Preguntás dónde está algo con dov'è?",
-        'Le hablás de usted a un desconocido con scusi.',
+        "Preguntas dónde está algo con dov'è?",
+        'Le hablas de usted a un desconocido con scusi.',
       ],
       exercises: [
         ex.translationChoice(
@@ -272,10 +272,10 @@ export const unit10: UnitDef = {
           { target: 'Vado in banca.', base: 'Voy al banco.' },
         ],
       },
-      takeaways: ['Decís adónde vas con vado.', 'Elegís entre a (ciudades, casa) e in (lugares).'],
+      takeaways: ['Dices adónde vas con vado.', 'Eliges entre a (ciudades, casa) e in (lugares).'],
       exercises: [
         ex.translationChoice('vado', 'voy', ['vas', 'tengo', 'soy'], ['it-vado']),
-        ex.translationChoice('vai', 'vas', ['voy', 'sos', 'tenés'], ['it-vai']),
+        ex.translationChoice('vai', 'vas', ['voy', 'eres', 'tienes'], ['it-vai']),
         ex.listenChoice(
           'Dove vai?',
           ['Dove sei?', 'Di dove sei?', 'Dove vado?'],
@@ -299,7 +299,7 @@ export const unit10: UnitDef = {
         ]),
         ex.shortAnswer(
           'Dove vai?',
-          '¿Adónde vas? (Respondé que vas a casa.)',
+          '¿Adónde vas? (Responde que vas a casa.)',
           'Vado a casa.',
           ['Io vado a casa.', 'A casa.'],
           ['it-vado', 'it-a-casa'],
@@ -317,10 +317,10 @@ export const unit10: UnitDef = {
           'Para dar direcciones: a destra («a la derecha»), a sinistra («a la izquierda») y sempre dritto («todo derecho»). Ojo: sinistra se parece a «siniestra», que en español también quiere decir izquierda.',
         examples: [
           { target: 'La banca è a destra.', base: 'El banco está a la derecha.' },
-          { target: 'Vai sempre dritto.', base: 'Andá todo derecho.' },
+          { target: 'Vai sempre dritto.', base: 'Ve todo derecho.' },
         ],
       },
-      takeaways: ['Entendés a destra y a sinistra.', 'Das la indicación sempre dritto.'],
+      takeaways: ['Entiendes a destra y a sinistra.', 'Das la indicación sempre dritto.'],
       exercises: [
         ex.imageChoice(
           '➡️',
@@ -355,7 +355,7 @@ export const unit10: UnitDef = {
         ),
         ex.orderWords(
           'Vai sempre dritto e poi a destra.',
-          'Andá todo derecho y después a la derecha.',
+          'Ve todo derecho y después a la derecha.',
           ['it-vai', 'it-sempre-dritto', 'it-poi', 'it-a-destra'],
         ),
         ex.translateWrite('El banco está a la izquierda.', 'La banca è a sinistra.', [
@@ -381,8 +381,8 @@ export const unit10: UnitDef = {
         ],
       },
       takeaways: [
-        'Decís si algo está cerca o lejos.',
-        'Preguntás y entendés indicaciones completas.',
+        'Dices si algo está cerca o lejos.',
+        'Preguntas y entiendes indicaciones completas.',
       ],
       exercises: [
         ex.translationChoice(
@@ -426,7 +426,7 @@ export const unit10: UnitDef = {
         ]),
         ex.shortAnswer(
           "Scusi, dov'è la stazione?",
-          'Disculpe, ¿dónde está la estación? (Respondé que está a la derecha.)',
+          'Disculpe, ¿dónde está la estación? (Responde que está a la derecha.)',
           'È a destra.',
           ['La stazione è a destra.', 'A destra.'],
           ['it-a-destra', 'it-stazione'],

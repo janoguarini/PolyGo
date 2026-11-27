@@ -26,7 +26,7 @@ export const unit05: UnitDef = {
     'Nombrar objetos con su artículo, en singular y en plural, y decir de qué color son.',
   emoji: '🎒',
   objective:
-    'Podés preguntar qué es algo, nombrar objetos con el artículo correcto (il, lo, la, l’, i, gli, le) y decir de qué color son.',
+    'Puedes preguntar qué es algo, nombrar objetos con el artículo correcto (il, lo, la, l’, i, gli, le) y decir de qué color son.',
   grammar: {
     title: 'Los artículos il, lo, la, l’ y sus plurales',
     explanation:
@@ -34,7 +34,7 @@ export const unit05: UnitDef = {
     examples: [
       { target: 'il libro → i libri', base: 'el libro → los libros' },
       { target: 'lo zaino → gli zaini', base: 'la mochila → las mochilas' },
-      { target: 'la penna → le penne', base: 'la lapicera → las lapiceras' },
+      { target: 'la penna → le penne', base: 'el bolígrafo → los bolígrafos' },
       { target: "l'orologio → gli orologi", base: 'el reloj → los relojes' },
     ],
   },
@@ -46,8 +46,8 @@ export const unit05: UnitDef = {
     w('it-libro', 'libro', 'libro', 'Il libro è rosso.', 'El libro es rojo.', ['objects'], {
       emoji: '📕',
     }),
-    w('it-penna', 'penna', 'lapicera', 'La penna è nera.', 'La lapicera es negra.', ['objects'], {
-      acceptedTranslations: ['bolígrafo', 'birome'],
+    w('it-penna', 'penna', 'bolígrafo', 'La penna è nera.', 'El bolígrafo es negro.', ['objects'], {
+      acceptedTranslations: ['bolígrafo', 'birome', 'lapicera'],
       emoji: '🖊️',
     }),
     w(
@@ -62,7 +62,7 @@ export const unit05: UnitDef = {
     w('it-zaino', 'zaino', 'mochila', 'Lo zaino è blu.', 'La mochila es azul.', ['objects'], {
       emoji: '🎒',
     }),
-    w('it-chiave', 'chiave', 'llave', 'La chiave è qui.', 'La llave está acá.', ['objects'], {
+    w('it-chiave', 'chiave', 'llave', 'La chiave è qui.', 'La llave está aquí.', ['objects'], {
       emoji: '🔑',
     }),
     w('it-orologio', 'orologio', 'reloj', "L'orologio è nero.", 'El reloj es negro.', ['objects'], {
@@ -81,7 +81,7 @@ export const unit05: UnitDef = {
     w('it-lo', 'lo', 'artículo masculino ante s + consonante o z (el)', 'lo zaino', 'la mochila', [
       'articles',
     ]),
-    w('it-la', 'la', 'artículo femenino (la)', 'la penna', 'la lapicera', ['articles']),
+    w('it-la', 'la', 'artículo femenino (la)', 'la penna', 'el bolígrafo', ['articles']),
     w('it-l-art', "l'", 'artículo ante vocal (el / la)', "l'orologio", 'el reloj', ['articles']),
     w('it-i', 'i', 'artículo masculino plural (los)', 'i libri', 'los libros', ['articles']),
     w(
@@ -92,12 +92,12 @@ export const unit05: UnitDef = {
       'las mochilas',
       ['articles'],
     ),
-    w('it-le', 'le', 'artículo femenino plural (las)', 'le penne', 'las lapiceras', ['articles']),
+    w('it-le', 'le', 'artículo femenino plural (las)', 'le penne', 'los bolígrafos', ['articles']),
     w('it-rosso', 'rosso', 'rojo', 'Il libro è rosso.', 'El libro es rojo.', ['colors'], {
       acceptedTexts: ['rossa'],
       emoji: '🔴',
     }),
-    w('it-blu', 'blu', 'azul', 'La penna è blu.', 'La lapicera es azul.', ['colors'], {
+    w('it-blu', 'blu', 'azul', 'La penna è blu.', 'El bolígrafo es azul.', ['colors'], {
       emoji: '🔵',
     }),
     w(
@@ -149,16 +149,16 @@ export const unit05: UnitDef = {
           "Para preguntar qué es algo: che cos'è? Se responde con è + la cosa: è un libro, è la penna. Il va con la mayoría de las palabras masculinas y la con las femeninas.",
         examples: [
           { target: "Che cos'è? È un libro.", base: '¿Qué es? Es un libro.' },
-          { target: 'La chiave è qui.', base: 'La llave está acá.' },
+          { target: 'La chiave è qui.', base: 'La llave está aquí.' },
         ],
       },
       takeaways: [
-        "Preguntás qué es algo con che cos'è?",
-        'Usás il con masculinos y la con femeninos.',
+        "Preguntas qué es algo con che cos'è?",
+        'Usas il con masculinos y la con femeninos.',
       ],
       exercises: [
         ex.imageChoice('📕', 'libro', ['penna', 'chiave', 'zaino'], ['it-libro']),
-        ex.translationChoice('penna', 'lapicera', ['llave', 'libro', 'mochila'], ['it-penna']),
+        ex.translationChoice('penna', 'bolígrafo', ['llave', 'libro', 'mochila'], ['it-penna']),
         ex.imageChoice('🔑', 'chiave', ['penna', 'libro', 'orologio'], ['it-chiave']),
         ex.listenChoice(
           "Che cos'è?",
@@ -167,7 +167,7 @@ export const unit05: UnitDef = {
         ),
         ex.fillBlank(
           'È ___ penna.',
-          'Es la lapicera.',
+          'Es el bolígrafo.',
           'la',
           ['il', 'lo', 'i'],
           ['it-la', 'it-penna'],
@@ -188,7 +188,7 @@ export const unit05: UnitDef = {
         }),
         ex.shortAnswer(
           "Che cos'è? 🔑",
-          '¿Qué es? (Respondé que es una llave.)',
+          '¿Qué es? (Responde que es una llave.)',
           'È una chiave.',
           ['Una chiave.', 'È la chiave.', 'La chiave.'],
           ['it-che-cos-e', 'it-chiave', 'it-una'],
@@ -202,13 +202,13 @@ export const unit05: UnitDef = {
         explanation:
           "Lo va con las palabras masculinas que empiezan con s + consonante o con z: lo zaino. Delante de vocal, il y la se vuelven l': l'orologio, l'amica.",
         examples: [
-          { target: 'Lo zaino è qui.', base: 'La mochila está acá.' },
+          { target: 'Lo zaino è qui.', base: 'La mochila está aquí.' },
           { target: "L'orologio di Luca.", base: 'El reloj de Luca.' },
         ],
       },
       takeaways: [
-        'Usás lo con las palabras que empiezan con z o s + consonante.',
-        "Usás l' ante vocal.",
+        'Usas lo con las palabras que empiezan con z o s + consonante.',
+        "Usas l' ante vocal.",
       ],
       exercises: [
         ex.imageChoice('🎒', 'zaino', ['orologio', 'ombrello', 'quaderno'], ['it-zaino']),
@@ -264,16 +264,22 @@ export const unit05: UnitDef = {
           "En plural: il → i, lo y l' (masculinos) → gli, la y l' (femeninos) → le. Las palabras en -o pasan a -i, las en -a a -e y las en -e a -i: i libri, le penne, le chiavi.",
         examples: [
           { target: 'Ho i libri.', base: 'Tengo los libros.' },
-          { target: 'Le chiavi sono qui.', base: 'Las llaves están acá.' },
+          { target: 'Le chiavi sono qui.', base: 'Las llaves están aquí.' },
         ],
       },
       takeaways: [
-        'Pasás los artículos al plural: i, gli, le.',
-        'Cambiás la última letra de la palabra.',
+        'Pasas los artículos al plural: i, gli, le.',
+        'Cambias la última letra de la palabra.',
       ],
       exercises: [
         ex.fillBlank('___ libri', 'los libros', 'i', ['gli', 'le', 'il'], ['it-i', 'it-libro']),
-        ex.fillBlank('___ penne', 'las lapiceras', 'le', ['i', 'gli', 'la'], ['it-le', 'it-penna']),
+        ex.fillBlank(
+          '___ penne',
+          'los bolígrafos',
+          'le',
+          ['i', 'gli', 'la'],
+          ['it-le', 'it-penna'],
+        ),
         ex.fillBlank(
           '___ zaini',
           'las mochilas',
@@ -302,7 +308,7 @@ export const unit05: UnitDef = {
           ],
           ['it-i', 'it-le', 'it-gli', 'it-chiave'],
         ),
-        ex.orderWords('Ho due libri e tre penne.', 'Tengo dos libros y tres lapiceras.', [
+        ex.orderWords('Ho due libri e tre penne.', 'Tengo dos libros y tres bolígrafos.', [
           'it-ho',
           'it-due',
           'it-libro',
@@ -323,10 +329,10 @@ export const unit05: UnitDef = {
           'Los colores van después de la palabra y concuerdan como cualquier adjetivo: rosso con masculinos, rossa con femeninos. Blu no cambia nunca.',
         examples: [
           { target: 'Lo zaino è rosso.', base: 'La mochila es roja.', note: 'zaino es masculino' },
-          { target: 'La penna è nera.', base: 'La lapicera es negra.' },
+          { target: 'La penna è nera.', base: 'El bolígrafo es negro.' },
         ],
       },
-      takeaways: ['Nombrás cinco colores.', 'Sabés que blu no cambia.'],
+      takeaways: ['Nombras cinco colores.', 'Sabes que blu no cambia.'],
       exercises: [
         ex.imageChoice('🔴', 'rosso', ['blu', 'giallo', 'nero'], ['it-rosso']),
         ex.imageChoice('🟡', 'giallo', ['bianco', 'rosso', 'blu'], ['it-giallo']),
@@ -361,17 +367,17 @@ export const unit05: UnitDef = {
           { target: 'La chiave è gialla.', base: 'La llave es amarilla.' },
         ],
       },
-      takeaways: ['Preguntás de qué color es algo.', 'Hacés concordar el color con la palabra.'],
+      takeaways: ['Preguntas de qué color es algo.', 'Haces concordar el color con la palabra.'],
       exercises: [
         ex.translationChoice(
           'di che colore è?',
           '¿de qué color es?',
-          ['¿qué es?', '¿de dónde sos?', '¿cómo estás?'],
+          ['¿qué es?', '¿de dónde eres?', '¿cómo estás?'],
           ['it-di-che-colore'],
         ),
         ex.fillBlank(
           'La penna è ___.',
-          'La lapicera es roja.',
+          'El bolígrafo es rojo.',
           'rossa',
           ['rosso', 'rossi', 'rosse'],
           ['it-rosso', 'it-penna'],
@@ -405,12 +411,12 @@ export const unit05: UnitDef = {
         ),
         ex.shortAnswer(
           'Di che colore è lo zaino? 🎒⚫',
-          '¿De qué color es la mochila? (Respondé que es negra.)',
+          '¿De qué color es la mochila? (Responde que es negra.)',
           'È nero.',
           ['Nero.', 'Lo zaino è nero.'],
           ['it-di-che-colore', 'it-nero', 'it-zaino'],
         ),
-        ex.translateWrite('La lapicera es azul.', 'La penna è blu.', [
+        ex.translateWrite('El bolígrafo es azul.', 'La penna è blu.', [
           'it-la',
           'it-penna',
           'it-blu',

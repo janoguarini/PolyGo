@@ -1,3 +1,4 @@
+import { applyNeutralPatch } from '../../scripts/neutral-patch';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -180,8 +181,11 @@ describe('conjuntos de opciones del currículo', () => {
 describe('migraciones de conjuntos', () => {
   const written: OptionSetPlan = { option_sets: [], placement_option_sets: [] };
   for (const f of SET_FILES) {
-    const c = JSON.parse(
-      /\$content\$([\s\S]*?)\$content\$/.exec(readFileSync(join(MIGRATIONS, f), 'utf8'))![1]!,
+    // Cargas históricas más la corrección de español neutro (scripts/neutral-patch.ts).
+    const c = applyNeutralPatch(
+      JSON.parse(
+        /\$content\$([\s\S]*?)\$content\$/.exec(readFileSync(join(MIGRATIONS, f), 'utf8'))![1]!,
+      ),
     ).catalog as OptionSetPlan;
     written.option_sets.push(...c.option_sets);
     written.placement_option_sets.push(...c.placement_option_sets);

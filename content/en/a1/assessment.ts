@@ -104,7 +104,7 @@ const q = (
 ): ExerciseDef => ({
   type: 'context_choice',
   skill: stimulus.kind === 'reading' ? 'reading' : 'listening',
-  prompt: stimulus.kind === 'reading' ? 'Leé y respondé' : 'Escuchá y respondé',
+  prompt: stimulus.kind === 'reading' ? 'Lee y responde' : 'Escucha y responde',
   payload: { type: 'context_choice', stimulus, question, options: [answer, ...distractors] },
   answer,
   words: [],
@@ -120,9 +120,9 @@ const item = (key: string, code: string, format: MapFormat, exercise: ExerciseDe
   exercise,
 });
 
-const NUM = 'Escribí el número en letras, en inglés.';
-const NEG = 'Escribí la oración en negativa.';
-const ASK = 'Escribí la oración como pregunta.';
+const NUM = 'Escribe el número en letras, en inglés.';
+const NEG = 'Escribe la oración en negativa.';
+const ASK = 'Escribe la oración como pregunta.';
 
 // =========================================================================== CP1 (U1–U3, U13, U4)
 const CP1_CARD = read(
@@ -158,7 +158,7 @@ const CP1_TALK = hear(
 );
 const CP1_TO_YOU = hear(
   'en.stim.a1-cp1-receptionist',
-  'En la recepción de un hotel, el recepcionista te habla a vos.',
+  'En la recepción de un hotel, el recepcionista te habla a ti.',
   [['Paul', 'Good evening! Your surname, please? And how do you spell it?']],
   { Paul: 'a' },
 );
@@ -170,7 +170,7 @@ const CP1_NUMBER = hear(
 );
 const CP1_WORD = hear(
   'en.stim.a1-cp1-thank-you',
-  'Una chica te da tu lapicera.',
+  'Una chica te da tu bolígrafo.',
   [['Lily', 'Thank you!']],
   { Lily: 'a' },
 );
@@ -201,7 +201,7 @@ export const CP1: AssessmentFormDef = {
       'FF',
       pw(
         '📝 Form\nSofia Ruiz · Puebla, Mexico\nNationality: ?',
-        'Completá el campo del formulario con el dato de Sofia.',
+        'Completa el campo del formulario con el dato de Sofia.',
         'Mexican',
         [],
         ['en-mexican', 'en-nationality'],
@@ -215,7 +215,7 @@ export const CP1: AssessmentFormDef = {
       'PW',
       pw(
         '👨 + 👩 = 👪\n👨 = ?',
-        'Escribí en inglés quién es el hombre en esta familia (una palabra).',
+        'Escribe en inglés quién es el hombre en esta familia (una palabra).',
         'father',
         ['the father', 'dad'],
         ['en-father'],
@@ -269,7 +269,7 @@ export const CP1: AssessmentFormDef = {
       'PW',
       pw(
         '👴 Juan\n⬇️\n👨 Max\n⬇️\n👦 Leo',
-        "Mirá el árbol y escribí quién es Juan para Leo. Usá 's.",
+        "Mira el árbol y escribe quién es Juan para Leo. Usa 's.",
         "Juan is Leo's grandfather.",
         ["He is Leo's grandfather.", "He's Leo's grandfather."],
         ['en-grandfather'],
@@ -293,7 +293,7 @@ export const CP1: AssessmentFormDef = {
       'GW',
       pw(
         '"I am twelve."',
-        'Escribí la pregunta que corresponde a esta respuesta.',
+        'Escribe la pregunta que corresponde a esta respuesta.',
         'How old are you?',
         [],
         ['en-how-old'],
@@ -320,7 +320,7 @@ export const CP1: AssessmentFormDef = {
         CP1_TO_YOU,
         '¿Qué te pide Paul después de preguntarte el apellido?',
         'Que lo deletrees',
-        ['Que digas tu edad', 'Que des tu teléfono', 'Que digas de dónde sos'],
+        ['Que digas tu edad', 'Que des tu teléfono', 'Que digas de dónde eres'],
         ['en-surname', 'en-how-do-you-spell-it'],
         '«How do you spell it?» pide deletrear el apellido.',
       ),
@@ -409,7 +409,7 @@ export const CP1: AssessmentFormDef = {
       'FF',
       pw(
         '📝 Form\nSofia Ruiz · 29 · Puebla, Mexico\nFirst name: ?',
-        'Completá el campo del formulario con el dato de Sofia.',
+        'Completa el campo del formulario con el dato de Sofia.',
         'Sofia',
         [],
         ['en-first-name'],
@@ -422,7 +422,7 @@ export const CP1: AssessmentFormDef = {
       'PW',
       pw(
         '👩‍🏫 Rosa · 😊',
-        'Escribí dos datos de Rosa: qué es y cómo está (usá she).',
+        'Escribe dos datos de Rosa: qué es y cómo está (usa she).',
         'She is a teacher and she is happy.',
         [
           'She is a teacher. She is happy.',
@@ -438,7 +438,7 @@ export const CP1: AssessmentFormDef = {
 };
 
 // =========================================================================== CP2 (U5–U7, U14)
-const CP2_AD = read('en.stim.a1-cp2-flat-ad', 'ad', 'Un aviso de un departamento en alquiler.', [
+const CP2_AD = read('en.stim.a1-cp2-flat-ad', 'ad', 'Un aviso de un apartamento en alquiler.', [
   'Small apartment',
   'Two bedrooms, a kitchen and a bathroom.',
   'There is a sofa in the living room.',
@@ -508,7 +508,7 @@ export const CP2: AssessmentFormDef = {
       'PW',
       pw(
         '🔑',
-        'Escribí en inglés qué es (una palabra).',
+        'Escribe en inglés qué es (una palabra).',
         'key',
         ['a key', 'It is a key.', "It's a key."],
         ['en-key'],
@@ -520,7 +520,7 @@ export const CP2: AssessmentFormDef = {
       'PW',
       pw(
         '🛋️',
-        'Escribí en inglés qué es (una palabra).',
+        'Escribe en inglés qué es (una palabra).',
         'sofa',
         ['a sofa', 'It is a sofa.', "It's a sofa."],
         ['en-sofa'],
@@ -532,7 +532,7 @@ export const CP2: AssessmentFormDef = {
       'PW',
       pw(
         '🧀',
-        'Escribí en inglés qué es (una palabra).',
+        'Escribe en inglés qué es (una palabra).',
         'cheese',
         ['It is cheese.', "It's cheese."],
         ['en-cheese'],
@@ -556,7 +556,7 @@ export const CP2: AssessmentFormDef = {
       'PW',
       pw(
         '👶 👶 👶',
-        'Escribí en inglés cuántos son y qué son (plural).',
+        'Escribe en inglés cuántos son y qué son (plural).',
         'three children',
         ['3 children', 'They are three children.'],
         ['en-children', 'en-three'],
@@ -592,7 +592,7 @@ export const CP2: AssessmentFormDef = {
       'PW',
       pw(
         '🛏️\n👜',
-        'Mirá la escena y escribí dónde está el bolso.',
+        'Mira la escena y escribe dónde está el bolso.',
         'The bag is under the bed.',
         ['It is under the bed.', "It's under the bed.", 'Under the bed.'],
         ['en-bag', 'en-under', 'en-bed'],
@@ -604,7 +604,7 @@ export const CP2: AssessmentFormDef = {
       'PW',
       pw(
         '📕 (red, big)',
-        'Escribí en inglés: «a» + los dos adjetivos + el objeto.',
+        'Escribe en inglés: «a» + los dos adjetivos + el objeto.',
         'a big red book',
         [],
         ['en-big', 'en-red', 'en-book'],
@@ -615,7 +615,7 @@ export const CP2: AssessmentFormDef = {
       'g23',
       'SIT',
       sit(
-        'en un café pedís un jugo con cortesía.',
+        'en un café pides un jugo con cortesía.',
         '___ a juice, please.',
         "I'd like",
         ['I like', 'I have', 'I am'],
@@ -630,7 +630,7 @@ export const CP2: AssessmentFormDef = {
         CP2_WORD,
         '¿Qué te pide Tom?',
         'Una taza',
-        ['Un vaso de agua', 'Una lapicera', 'Una llave'],
+        ['Un vaso de agua', 'Un bolígrafo', 'Una llave'],
         ['en-cup'],
         'Tom dice «A cup, please».',
       ),
@@ -693,7 +693,7 @@ export const CP2: AssessmentFormDef = {
       'RQ',
       q(
         CP2_AD,
-        '¿Qué NO tiene el departamento?',
+        '¿Qué NO tiene el apartamento?',
         'Jardín',
         ['Sofá', 'Cocina', 'Baño'],
         ['en-garden', 'en-there-is'],
@@ -719,7 +719,7 @@ export const CP2: AssessmentFormDef = {
       'PW',
       pw(
         '🛏️ 🪑 🪑',
-        'Escribí qué hay en la habitación, con there is o there are.',
+        'Escribe qué hay en la habitación, con there is o there are.',
         'There is a bed and two chairs.',
         [
           'There is one bed and two chairs.',
@@ -735,7 +735,7 @@ export const CP2: AssessmentFormDef = {
       'PW',
       pw(
         '🥛 🍎',
-        'Situación: en un café. Pedí leche y una manzana, con cortesía.',
+        'Situación: en un café. Pide leche y una manzana, con cortesía.',
         "I'd like milk and an apple, please.",
         [
           "I'd like a milk and an apple, please.",
@@ -798,7 +798,7 @@ export const CP3: AssessmentFormDef = {
       'PW',
       pw(
         '🏃 ⚽',
-        'Escribí en inglés la acción (un verbo).',
+        'Escribe en inglés la acción (un verbo).',
         'play',
         ['to play', 'play football', 'I play football.'],
         ['en-play'],
@@ -810,7 +810,7 @@ export const CP3: AssessmentFormDef = {
       'PW',
       pw(
         '🕗',
-        'Escribí la hora en inglés.',
+        'Escribe la hora en inglés.',
         "It is eight o'clock.",
         ["It's eight o'clock.", "eight o'clock", 'It is eight.', "It's eight."],
         ['en-oclock', 'en-eight'],
@@ -846,7 +846,7 @@ export const CP3: AssessmentFormDef = {
       'PW',
       pw(
         'I / get up / at seven ✔✔✔ (siempre)',
-        'Escribí la oración con el adverbio de frecuencia en su lugar.',
+        'Escribe la oración con el adverbio de frecuencia en su lugar.',
         'I always get up at seven.',
         [],
         ['en-always', 'en-get-up'],
@@ -957,7 +957,7 @@ const CP4_POST = read(
 );
 const CP4_TEACHER = hear(
   'en.stim.a1-cp4-teacher',
-  'La profesora te habla a vos en clase.',
+  'La profesora te habla a ti en clase.',
   [['Ms. Park', 'Please read the question again, slowly.']],
   { 'Ms. Park': 'a' },
 );
@@ -992,7 +992,7 @@ export const CP4: AssessmentFormDef = {
       'PW',
       pw(
         '🚌',
-        'Escribí en inglés qué es (una palabra).',
+        'Escribe en inglés qué es (una palabra).',
         'bus',
         ['a bus', 'It is a bus.', "It's a bus."],
         ['en-bus'],
@@ -1004,7 +1004,7 @@ export const CP4: AssessmentFormDef = {
       'PW',
       pw(
         '💃 🎶',
-        'Escribí en inglés la actividad (un verbo).',
+        'Escribe en inglés la actividad (un verbo).',
         'dance',
         ['to dance', 'dancing'],
         ['en-dance'],
@@ -1028,7 +1028,7 @@ export const CP4: AssessmentFormDef = {
       'GW',
       pw(
         'Answer: "The bank is near the park."',
-        'Escribí la pregunta que corresponde a esta respuesta.',
+        'Escribe la pregunta que corresponde a esta respuesta.',
         'Where is the bank?',
         [],
         ['en-where', 'en-bank'],
@@ -1052,7 +1052,7 @@ export const CP4: AssessmentFormDef = {
       'GW',
       pw(
         'Do you like music? (Sí, me encanta.)',
-        'Respondé con love y un pronombre.',
+        'Responde con love y un pronombre.',
         'Yes, I love it.',
         ['I love it.', 'Yes, I love music.'],
         ['en-love', 'en-music'],
@@ -1064,7 +1064,7 @@ export const CP4: AssessmentFormDef = {
       'PW',
       pw(
         '🧍 ⬅️ 🏥',
-        'Mirá la flecha y escribí la indicación para llegar al hospital.',
+        'Mira la flecha y escribe la indicación para llegar al hospital.',
         'Turn left.',
         ['Turn left to the hospital.', 'Go left.'],
         ['en-turn', 'en-left'],
@@ -1088,7 +1088,7 @@ export const CP4: AssessmentFormDef = {
       'GW',
       pw(
         "I like tea. I don't like coffee.",
-        'Uní las dos oraciones en una sola con but.',
+        'Une las dos oraciones en una sola con but.',
         "I like tea, but I don't like coffee.",
         ['I like tea but I do not like coffee.'],
         ['en-but'],
@@ -1165,7 +1165,7 @@ export const CP4: AssessmentFormDef = {
       'GW',
       pw(
         '👦 Tom · 📞 ?',
-        'Escribí la pregunta para saber el número de teléfono de Tom.',
+        'Escribe la pregunta para saber el número de teléfono de Tom.',
         'What is your phone number?',
         ["What's your phone number?", "What is Tom's phone number?", "What's Tom's phone number?"],
         ['en-what', 'en-phone-number'],
@@ -1176,7 +1176,7 @@ export const CP4: AssessmentFormDef = {
       'p11',
       'SIT',
       sit(
-        'en un chat Ben usa una palabra que no conocés.',
+        'en un chat Ben usa una palabra que no conoces.',
         'You: ___',
         'What does it mean?',
         ['How old are you?', 'Where is it?', 'I am fine, thank you.'],
@@ -1248,7 +1248,7 @@ const FA_SHOP = hear(
 );
 const FA_TEACHER = hear(
   'en.stim.a1-fa-teacher',
-  'El profesor te habla a vos.',
+  'El profesor te habla a ti.',
   [['Mr. Lee', 'Hello! Where are you from? And how old are you?']],
   { 'Mr. Lee': 'a' },
 );
@@ -1277,7 +1277,7 @@ const FA_WORD = hear('en.stim.a1-fa-sorry', 'Alguien te pisa sin querer.', [['Ma
 const FB_SIGN = read(
   'en.stim.a1-fb-pool-sign',
   'notice',
-  'Un cartel en la puerta de una pileta.',
+  'Un cartel en la puerta de una piscina.',
   ['Monday to Saturday: 8 to 8', 'Children: two dollars'],
   {},
 );
@@ -1295,7 +1295,7 @@ const FB_MSG = read(
 const FB_DESC = read(
   'en.stim.a1-fb-my-apartment',
   'description',
-  'Ana describe su departamento.',
+  'Ana describe su apartamento.',
   [
     'My apartment is big. It has three bedrooms.',
     'The bathroom is next to the kitchen.',
@@ -1335,7 +1335,7 @@ const FB_SHOP = hear(
 );
 const FB_TEACHER = hear(
   'en.stim.a1-fb-teacher',
-  'La profesora te habla a vos.',
+  'La profesora te habla a ti.',
   [['Ms. Park', 'Good morning! What is your name? And how do you spell it?']],
   { 'Ms. Park': 'a' },
 );
@@ -1359,7 +1359,7 @@ const FB_VOICE = hear(
 );
 const FB_WORD = hear(
   'en.stim.a1-fb-excuse-me',
-  'Alguien quiere pasar en el colectivo.',
+  'Alguien quiere pasar en el autobús.',
   [['Kim', 'Excuse me!']],
   { Kim: 'a' },
 );
@@ -1386,7 +1386,7 @@ export const FINAL_A: AssessmentFormDef = {
       'v01',
       'SIT',
       sit(
-        'te vas a dormir y saludás a tu familia.',
+        'te vas a dormir y saludas a tu familia.',
         '___, Tom!',
         'Good night',
         ['Good morning', 'Hello', 'Thank you'],
@@ -1399,7 +1399,7 @@ export const FINAL_A: AssessmentFormDef = {
       'FF',
       pw(
         '📝 Form\nSofia Ruiz · 29 · Puebla, Mexico\nSurname: ?',
-        'Completá el campo del formulario con el dato de Sofia.',
+        'Completa el campo del formulario con el dato de Sofia.',
         'Ruiz',
         [],
         ['en-surname'],
@@ -1418,7 +1418,7 @@ export const FINAL_A: AssessmentFormDef = {
       'PW',
       pw(
         '👵',
-        'Escribí en inglés quién es en una familia (una palabra).',
+        'Escribe en inglés quién es en una familia (una palabra).',
         'grandmother',
         ['a grandmother', 'the grandmother', 'grandma'],
         ['en-grandmother'],
@@ -1430,7 +1430,7 @@ export const FINAL_A: AssessmentFormDef = {
       'PW',
       pw(
         '📱',
-        'Escribí en inglés qué es (una palabra).',
+        'Escribe en inglés qué es (una palabra).',
         'phone',
         ['a phone', 'It is a phone.', "It's a phone."],
         ['en-phone'],
@@ -1442,7 +1442,7 @@ export const FINAL_A: AssessmentFormDef = {
       'PW',
       pw(
         '🚪',
-        'Escribí en inglés qué es (una palabra).',
+        'Escribe en inglés qué es (una palabra).',
         'door',
         ['a door', 'It is a door.', "It's a door."],
         ['en-door'],
@@ -1454,7 +1454,7 @@ export const FINAL_A: AssessmentFormDef = {
       'PW',
       pw(
         '🍌',
-        'Escribí en inglés qué es (una palabra).',
+        'Escribe en inglés qué es (una palabra).',
         'banana',
         ['a banana', 'It is a banana.', "It's a banana."],
         ['en-banana'],
@@ -1466,7 +1466,7 @@ export const FINAL_A: AssessmentFormDef = {
       'PW',
       pw(
         '👨‍🍳 🍳',
-        'Escribí en inglés la acción (un verbo).',
+        'Escribe en inglés la acción (un verbo).',
         'cook',
         ['to cook', 'cooking'],
         ['en-cook'],
@@ -1478,7 +1478,7 @@ export const FINAL_A: AssessmentFormDef = {
       'PW',
       pw(
         '📅 March 3',
-        'Escribí la fecha en inglés con el ordinal.',
+        'Escribe la fecha en inglés con el ordinal.',
         'March third',
         ['March 3rd', 'the third of March', 'on March third'],
         ['en-march', 'en-third'],
@@ -1490,7 +1490,7 @@ export const FINAL_A: AssessmentFormDef = {
       'PW',
       pw(
         '🏨',
-        'Escribí en inglés qué es (una palabra).',
+        'Escribe en inglés qué es (una palabra).',
         'hotel',
         ['a hotel', 'It is a hotel.', "It's a hotel."],
         ['en-hotel'],
@@ -1502,7 +1502,7 @@ export const FINAL_A: AssessmentFormDef = {
       'PW',
       pw(
         '⚽',
-        'Escribí en inglés qué deporte es.',
+        'Escribe en inglés qué deporte es.',
         'football',
         ['It is football.', "It's football.", 'soccer'],
         ['en-football'],
@@ -1526,7 +1526,7 @@ export const FINAL_A: AssessmentFormDef = {
       'PW',
       pw(
         '😴',
-        'Escribí cómo está esta persona (I am…).',
+        'Escribe cómo está esta persona (I am…).',
         'I am tired.',
         ["I'm tired.", 'tired'],
         ['en-tired'],
@@ -1538,7 +1538,7 @@ export const FINAL_A: AssessmentFormDef = {
       'PW',
       pw(
         '🧑‍⚕️',
-        'Escribí en inglés qué es (una profesión).',
+        'Escribe en inglés qué es (una profesión).',
         'doctor',
         ['a doctor', 'He is a doctor.', 'She is a doctor.'],
         ['en-doctor'],
@@ -1563,7 +1563,7 @@ export const FINAL_A: AssessmentFormDef = {
       'TR',
       pw(
         'I am not a teacher.',
-        'Escribí la oración en afirmativa.',
+        'Escribe la oración en afirmativa.',
         'I am a teacher.',
         ["I'm a teacher."],
         ['en-am', 'en-teacher'],
@@ -1593,7 +1593,7 @@ export const FINAL_A: AssessmentFormDef = {
       'PW',
       pw(
         '👩 👩',
-        'Escribí en inglés cuántas son y qué son (plural).',
+        'Escribe en inglés cuántas son y qué son (plural).',
         'two women',
         ['2 women', 'They are two women.'],
         ['en-women', 'en-two'],
@@ -1605,7 +1605,7 @@ export const FINAL_A: AssessmentFormDef = {
       'FB',
       fb(
         '___ is my bag, here.',
-        'Este es mi bolso, acá.',
+        'Este es mi bolso, aquí.',
         'This',
         ['These', 'Those', 'They'],
         ['en-this'],
@@ -1629,7 +1629,7 @@ export const FINAL_A: AssessmentFormDef = {
       'PW',
       pw(
         '👩 Rosa ➜ 📕',
-        "Escribí de quién es el libro. Usá 's.",
+        "Escribe de quién es el libro. Usa 's.",
         "It is Rosa's book.",
         ["It's Rosa's book.", "Rosa's book", "The book is Rosa's."],
         ['en-book'],
@@ -1665,7 +1665,7 @@ export const FINAL_A: AssessmentFormDef = {
       'PW',
       pw(
         '🛏️\n📱',
-        'Mirá la escena y escribí dónde está el teléfono.',
+        'Mira la escena y escribe dónde está el teléfono.',
         'The phone is under the bed.',
         ['It is under the bed.', "It's under the bed.", 'Under the bed.'],
         ['en-phone', 'en-under', 'en-bed'],
@@ -1695,7 +1695,7 @@ export const FINAL_A: AssessmentFormDef = {
       'PW',
       pw(
         'She / is / tired ❌❌❌ (nunca)',
-        'Escribí la oración con el adverbio de frecuencia en su lugar.',
+        'Escribe la oración con el adverbio de frecuencia en su lugar.',
         'She is never tired.',
         ["She's never tired."],
         ['en-never', 'en-tired'],
@@ -1719,7 +1719,7 @@ export const FINAL_A: AssessmentFormDef = {
       'GW',
       pw(
         'Answer: "I live in London."',
-        'Escribí la pregunta que corresponde a esta respuesta.',
+        'Escribe la pregunta que corresponde a esta respuesta.',
         'Where do you live?',
         [],
         ['en-where', 'en-live'],
@@ -1737,7 +1737,7 @@ export const FINAL_A: AssessmentFormDef = {
       'GW',
       pw(
         'Do you like movies? (No, las odio.)',
-        'Respondé con hate y un pronombre.',
+        'Responde con hate y un pronombre.',
         'No, I hate them.',
         ['I hate them.', 'No, I hate movies.'],
         ['en-hate', 'en-them'],
@@ -1749,7 +1749,7 @@ export const FINAL_A: AssessmentFormDef = {
       'PW',
       pw(
         '🧍 ⬆️ 🏦',
-        'Mirá la flecha y escribí la indicación para llegar al banco.',
+        'Mira la flecha y escribe la indicación para llegar al banco.',
         'Go straight on.',
         ['Go straight.', 'Straight on.'],
         ['en-straight-on'],
@@ -1761,7 +1761,7 @@ export const FINAL_A: AssessmentFormDef = {
       'PW',
       pw(
         '📱 (black, small)',
-        'Escribí en inglés: «a» + los dos adjetivos + el objeto.',
+        'Escribe en inglés: «a» + los dos adjetivos + el objeto.',
         'a small black phone',
         [],
         ['en-small', 'en-black', 'en-phone'],
@@ -1773,7 +1773,7 @@ export const FINAL_A: AssessmentFormDef = {
       'FB',
       fb(
         "I can't do it. Can you help ___?",
-        'No puedo hacerlo. ¿Me ayudás?',
+        'No puedo hacerlo. ¿Me ayudas?',
         'me',
         ['my', 'I', 'they'],
         ['en-me', 'en-help'],
@@ -1785,7 +1785,7 @@ export const FINAL_A: AssessmentFormDef = {
       'GW',
       pw(
         'I study English. I like it.',
-        'Uní las dos oraciones con because.',
+        'Une las dos oraciones con because.',
         'I study English because I like it.',
         [],
         ['en-because'],
@@ -1796,7 +1796,7 @@ export const FINAL_A: AssessmentFormDef = {
       'g23',
       'SIT',
       sit(
-        'en un café pedís agua con cortesía.',
+        'en un café pides agua con cortesía.',
         '___ a glass of water, please.',
         "I'd like",
         ['I like', 'I have', 'I am'],
@@ -1824,8 +1824,8 @@ export const FINAL_A: AssessmentFormDef = {
       q(
         FA_TEACHER,
         '¿Qué dos cosas te pregunta el profesor?',
-        'De dónde sos y cuántos años tenés',
-        ['Tu nombre y tu edad', 'Dónde vivís y tu teléfono', 'Tu nombre y cómo se escribe'],
+        'De dónde eres y cuántos años tienes',
+        ['Tu nombre y tu edad', 'Dónde vives y tu teléfono', 'Tu nombre y cómo se escribe'],
         ['en-where', 'en-how-old'],
         '«Where are you from? And how old are you?»',
       ),
@@ -1958,7 +1958,7 @@ export const FINAL_A: AssessmentFormDef = {
       'FF',
       pw(
         '📝 Form\nSofia Ruiz · 29 · Puebla, Mexico\nCity: ?',
-        'Completá el campo del formulario con el dato de Sofia.',
+        'Completa el campo del formulario con el dato de Sofia.',
         'Puebla',
         [],
         ['en-city'],
@@ -1971,7 +1971,7 @@ export const FINAL_A: AssessmentFormDef = {
       'PW',
       pw(
         '👨‍🏫 Tom · 🇬🇧',
-        'Escribí dos datos de Tom: qué es y de dónde es (usá he).',
+        'Escribe dos datos de Tom: qué es y de dónde es (usa he).',
         'He is a teacher and he is from England.',
         [
           'He is a teacher. He is from England.',
@@ -1989,7 +1989,7 @@ export const FINAL_A: AssessmentFormDef = {
       'PW',
       pw(
         '🛋️ 🪑',
-        'Escribí qué hay en el living, con there is.',
+        'Escribe qué hay en la sala, con there is.',
         'There is a sofa and a chair.',
         [
           'There is a chair and a sofa.',
@@ -2005,7 +2005,7 @@ export const FINAL_A: AssessmentFormDef = {
       'GW',
       pw(
         '👧 Ana · 🎂 ?',
-        'Escribí la pregunta para saber la edad de Ana.',
+        'Escribe la pregunta para saber la edad de Ana.',
         'How old are you?',
         ['How old is Ana?', 'How old is she?'],
         ['en-how-old'],
@@ -2017,7 +2017,7 @@ export const FINAL_A: AssessmentFormDef = {
       'PW',
       pw(
         '🍵 🍞',
-        'Situación: en un café. Pedí un té y pan, con cortesía.',
+        'Situación: en un café. Pide un té y pan, con cortesía.',
         "I'd like a tea and bread, please.",
         [
           "I'd like tea and bread, please.",
@@ -2033,7 +2033,7 @@ export const FINAL_A: AssessmentFormDef = {
       'p11',
       'SIT',
       sit(
-        'en un chat no entendés lo que escribió Ben.',
+        'en un chat no entiendes lo que escribió Ben.',
         'You: ___',
         "Sorry, I don't understand.",
         ['Nice to meet you.', 'See you on Monday!', 'I am fine.'],
@@ -2064,7 +2064,7 @@ export const FINAL_B: AssessmentFormDef = {
       'v01',
       'SIT',
       sit(
-        'llegás a la oficina a las 8 de la mañana.',
+        'llegas a la oficina a las 8 de la mañana.',
         '___, Mr. Lee!',
         'Good morning',
         ['Good night', 'Goodbye', "You're welcome"],
@@ -2077,7 +2077,7 @@ export const FINAL_B: AssessmentFormDef = {
       'FF',
       pw(
         '📝 Form\nSofia Ruiz · 29 · Puebla, Mexico\nCountry: ?',
-        'Completá el campo del formulario con el dato de Sofia.',
+        'Completa el campo del formulario con el dato de Sofia.',
         'Mexico',
         [],
         ['en-country', 'en-mexico'],
@@ -2096,7 +2096,7 @@ export const FINAL_B: AssessmentFormDef = {
       'PW',
       pw(
         '👴',
-        'Escribí en inglés quién es en una familia (una palabra).',
+        'Escribe en inglés quién es en una familia (una palabra).',
         'grandfather',
         ['a grandfather', 'the grandfather', 'grandpa'],
         ['en-grandfather'],
@@ -2108,7 +2108,7 @@ export const FINAL_B: AssessmentFormDef = {
       'PW',
       pw(
         '📕',
-        'Escribí en inglés qué es (una palabra).',
+        'Escribe en inglés qué es (una palabra).',
         'book',
         ['a book', 'It is a book.', "It's a book."],
         ['en-book'],
@@ -2120,7 +2120,7 @@ export const FINAL_B: AssessmentFormDef = {
       'PW',
       pw(
         '🪟',
-        'Escribí en inglés qué es (una palabra).',
+        'Escribe en inglés qué es (una palabra).',
         'window',
         ['a window', 'It is a window.', "It's a window."],
         ['en-window'],
@@ -2132,7 +2132,7 @@ export const FINAL_B: AssessmentFormDef = {
       'PW',
       pw(
         '🥚',
-        'Escribí en inglés qué es (una palabra).',
+        'Escribe en inglés qué es (una palabra).',
         'egg',
         ['an egg', 'It is an egg.', "It's an egg."],
         ['en-egg'],
@@ -2144,7 +2144,7 @@ export const FINAL_B: AssessmentFormDef = {
       'PW',
       pw(
         '🍽️ 😋',
-        'Escribí en inglés la acción (un verbo).',
+        'Escribe en inglés la acción (un verbo).',
         'eat',
         ['to eat', 'eating'],
         ['en-eat'],
@@ -2156,7 +2156,7 @@ export const FINAL_B: AssessmentFormDef = {
       'PW',
       pw(
         '📅 July 2',
-        'Escribí la fecha en inglés con el ordinal.',
+        'Escribe la fecha en inglés con el ordinal.',
         'July second',
         ['July 2nd', 'the second of July', 'on July second'],
         ['en-july', 'en-second'],
@@ -2168,7 +2168,7 @@ export const FINAL_B: AssessmentFormDef = {
       'PW',
       pw(
         '🏥',
-        'Escribí en inglés qué es (una palabra).',
+        'Escribe en inglés qué es (una palabra).',
         'hospital',
         ['a hospital', 'It is a hospital.', "It's a hospital."],
         ['en-hospital'],
@@ -2180,7 +2180,7 @@ export const FINAL_B: AssessmentFormDef = {
       'PW',
       pw(
         '🎵 🎧',
-        'Escribí en inglés qué es (una palabra).',
+        'Escribe en inglés qué es (una palabra).',
         'music',
         ['It is music.', "It's music."],
         ['en-music'],
@@ -2191,7 +2191,7 @@ export const FINAL_B: AssessmentFormDef = {
       'v12',
       'SIT',
       sit(
-        'no sabés qué significa una palabra.',
+        'no sabes qué significa una palabra.',
         'What does it ___?',
         'mean',
         ['speak', 'know', 'help'],
@@ -2204,7 +2204,7 @@ export const FINAL_B: AssessmentFormDef = {
       'PW',
       pw(
         '😀',
-        'Escribí cómo está esta persona (I am…).',
+        'Escribe cómo está esta persona (I am…).',
         'I am happy.',
         ["I'm happy.", 'happy'],
         ['en-happy'],
@@ -2216,7 +2216,7 @@ export const FINAL_B: AssessmentFormDef = {
       'PW',
       pw(
         '👩‍⚕️ 💉',
-        'Escribí en inglés qué es (una profesión del hospital, no doctor).',
+        'Escribe en inglés qué es (una profesión del hospital, no doctor).',
         'nurse',
         ['a nurse', 'She is a nurse.'],
         ['en-nurse'],
@@ -2241,7 +2241,7 @@ export const FINAL_B: AssessmentFormDef = {
       'TR',
       pw(
         'She is not tired.',
-        'Escribí la oración en afirmativa.',
+        'Escribe la oración en afirmativa.',
         'She is tired.',
         ["She's tired."],
         ['en-is', 'en-tired'],
@@ -2271,7 +2271,7 @@ export const FINAL_B: AssessmentFormDef = {
       'PW',
       pw(
         '👨 👨 👨',
-        'Escribí en inglés cuántos son y qué son (plural).',
+        'Escribe en inglés cuántos son y qué son (plural).',
         'three men',
         ['3 men', 'They are three men.'],
         ['en-men', 'en-three'],
@@ -2283,7 +2283,7 @@ export const FINAL_B: AssessmentFormDef = {
       'FB',
       fb(
         '___ are my keys, here.',
-        'Estas son mis llaves, acá.',
+        'Estas son mis llaves, aquí.',
         'These',
         ['This', 'That', 'It'],
         ['en-these'],
@@ -2307,7 +2307,7 @@ export const FINAL_B: AssessmentFormDef = {
       'PW',
       pw(
         '👦 Leo ➜ 🎒',
-        "Escribí de quién es el bolso (bag). Usá 's.",
+        "Escribe de quién es el bolso (bag). Usa 's.",
         "It is Leo's bag.",
         ["It's Leo's bag.", "Leo's bag", "The bag is Leo's."],
         ['en-bag'],
@@ -2337,7 +2337,7 @@ export const FINAL_B: AssessmentFormDef = {
       'PW',
       pw(
         '🔑 📕',
-        'Mirá la escena y escribí dónde está la llave (con next to).',
+        'Mira la escena y escribe dónde está la llave (con next to).',
         'The key is next to the book.',
         ['It is next to the book.', "It's next to the book.", 'Next to the book.'],
         ['en-key', 'en-next-to'],
@@ -2373,7 +2373,7 @@ export const FINAL_B: AssessmentFormDef = {
       'PW',
       pw(
         'We / play / football ✔✔ (normalmente)',
-        'Escribí la oración con el adverbio de frecuencia en su lugar.',
+        'Escribe la oración con el adverbio de frecuencia en su lugar.',
         'We usually play football.',
         [],
         ['en-usually'],
@@ -2397,7 +2397,7 @@ export const FINAL_B: AssessmentFormDef = {
       'GW',
       pw(
         'Answer: "My name is Kate."',
-        'Escribí la pregunta que corresponde a esta respuesta.',
+        'Escribe la pregunta que corresponde a esta respuesta.',
         'What is your name?',
         ["What's your name?"],
         ['en-what', 'en-name'],
@@ -2421,7 +2421,7 @@ export const FINAL_B: AssessmentFormDef = {
       'GW',
       pw(
         'Do you like apples? (Sí, me encantan.)',
-        'Respondé con love y un pronombre.',
+        'Responde con love y un pronombre.',
         'Yes, I love them.',
         ['I love them.', 'Yes, I love apples.'],
         ['en-love', 'en-them'],
@@ -2433,7 +2433,7 @@ export const FINAL_B: AssessmentFormDef = {
       'PW',
       pw(
         '🧍 ➡️ 🏨',
-        'Mirá la flecha y escribí la indicación para llegar al hotel.',
+        'Mira la flecha y escribe la indicación para llegar al hotel.',
         'Turn right.',
         ['Turn right to the hotel.', 'Go right.'],
         ['en-turn', 'en-right'],
@@ -2445,7 +2445,7 @@ export const FINAL_B: AssessmentFormDef = {
       'PW',
       pw(
         '👜 (big, white)',
-        'Escribí en inglés: «a» + los dos adjetivos + el objeto.',
+        'Escribe en inglés: «a» + los dos adjetivos + el objeto.',
         'a big white bag',
         [],
         ['en-big', 'en-white', 'en-bag'],
@@ -2469,7 +2469,7 @@ export const FINAL_B: AssessmentFormDef = {
       'GW',
       pw(
         "I can swim. I can't dance.",
-        'Uní las dos oraciones con but.',
+        'Une las dos oraciones con but.',
         "I can swim, but I can't dance.",
         ['I can swim but I cannot dance.'],
         ['en-but'],
@@ -2480,7 +2480,7 @@ export const FINAL_B: AssessmentFormDef = {
       'g23',
       'SIT',
       sit(
-        'en una tienda pedís una botella de agua con cortesía.',
+        'en una tienda pides una botella de agua con cortesía.',
         '___ a bottle of water, please.',
         "I'd like",
         ['I like', 'I am', 'I have'],
@@ -2509,7 +2509,7 @@ export const FINAL_B: AssessmentFormDef = {
         FB_TEACHER,
         '¿Qué te pide la profesora después de tu nombre?',
         'Que lo deletrees',
-        ['Que digas tu edad', 'Que digas de dónde sos', 'Que lo repitas despacio'],
+        ['Que digas tu edad', 'Que digas de dónde eres', 'Que lo repitas despacio'],
         ['en-name', 'en-how-do-you-spell-it'],
         '«And how do you spell it?»',
       ),
@@ -2590,7 +2590,7 @@ export const FINAL_B: AssessmentFormDef = {
       q(
         FB_MSG,
         '¿Dónde se encuentran antes del partido?',
-        'En la estación de colectivos, a las 3:30',
+        'En la estación de autobuses, a las 3:30',
         ['En el parque, a las 4', 'En la estación, a las 4', 'En el parque, a las 3:30'],
         ['en-station', 'en-half-past', 'en-bus'],
         '«See you at the bus station at half past three!»',
@@ -2604,7 +2604,7 @@ export const FINAL_B: AssessmentFormDef = {
         FB_DESC,
         '¿Qué está al lado de la cocina?',
         'El baño',
-        ['El living', 'Un dormitorio', 'El sofá'],
+        ['La sala', 'Un dormitorio', 'El sofá'],
         ['en-bathroom', 'en-next-to', 'en-kitchen'],
         '«The bathroom is next to the kitchen».',
       ),
@@ -2642,7 +2642,7 @@ export const FINAL_B: AssessmentFormDef = {
       'FF',
       pw(
         '📝 Form\nSofia Ruiz · 29 · Puebla, Mexico\nAge: ?',
-        'Completá el campo del formulario con el dato de Sofia.',
+        'Completa el campo del formulario con el dato de Sofia.',
         '29',
         ['twenty-nine', 'twenty nine'],
         ['en-age'],
@@ -2655,7 +2655,7 @@ export const FINAL_B: AssessmentFormDef = {
       'PW',
       pw(
         '👩‍⚕️ Ana · 😴',
-        'Escribí dos datos de Ana: qué es y cómo está (usá she).',
+        'Escribe dos datos de Ana: qué es y cómo está (usa she).',
         'She is a nurse and she is tired.',
         [
           'She is a nurse. She is tired.',
@@ -2673,7 +2673,7 @@ export const FINAL_B: AssessmentFormDef = {
       'PW',
       pw(
         '🛏️ 🛏️ 🪟',
-        'Escribí qué hay en el dormitorio, con there are y there is.',
+        'Escribe qué hay en el dormitorio, con there are y there is.',
         'There are two beds and a window.',
         [
           'There are two beds and one window.',
@@ -2689,7 +2689,7 @@ export const FINAL_B: AssessmentFormDef = {
       'GW',
       pw(
         '👦 Tom · 🌍 ?',
-        'Escribí la pregunta para saber de dónde es Tom.',
+        'Escribe la pregunta para saber de dónde es Tom.',
         'Where are you from?',
         ['Where is Tom from?', 'Where is he from?'],
         ['en-where', 'en-from'],
@@ -2701,7 +2701,7 @@ export const FINAL_B: AssessmentFormDef = {
       'PW',
       pw(
         '🧃 🍎',
-        'Situación: en un café. Pedí un jugo y una manzana, con cortesía.',
+        'Situación: en un café. Pide un jugo y una manzana, con cortesía.',
         "I'd like a juice and an apple, please.",
         [
           "I'd like juice and an apple, please.",

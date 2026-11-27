@@ -1,0 +1,9 @@
+{
+  "ios": {
+    "CFBundleDisplayName": "PolyGo",
+    "NSPhotoLibraryUsageDescription": "PolyGo usa le tue foto solo per farti scegliere l’immagine del profilo."
+  },
+  "android": {
+    "app_name": "PolyGo"
+  }
+}

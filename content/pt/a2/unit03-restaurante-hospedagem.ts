@@ -103,11 +103,11 @@ export const PT_A2_U03: PtUnitDef = {
       'Pedir con cortesía (gostaria de, poderia), la carta, pagar y dejar propina, reservar una posada y el falso amigo sobremesa.',
     emoji: '🍽️',
     objective:
-      'Podés pedir en un restaurante con cortesía, entender una carta, pagar y reservar una habitación preguntando qué incluye.',
+      'Puedes pedir en un restaurante con cortesía, entender una carta, pagar y reservar una habitación preguntando qué incluye.',
     grammar: {
       title: 'Pedidos corteses: gostaria de, poderia',
       explanation:
-        'Para pedir con cortesía: eu gostaria de + verbo o + cosa (gostaria de um café) y poderia…? («¿podría…?»): poderia me trazer a conta? En el habla también va pode me trazer…? y o queria… (que ya conocés). Gostaria de + o = gostaria do.',
+        'Para pedir con cortesía: eu gostaria de + verbo o + cosa (gostaria de um café) y poderia…? («¿podría…?»): poderia me trazer a conta? En el habla también va pode me trazer…? y o queria… (que ya conoces). Gostaria de + o = gostaria do.',
       examples: [
         { target: 'Eu gostaria do prato do dia.', base: 'Quisiera el plato del día.' },
         { target: 'Poderia me trazer o cardápio?', base: '¿Me podría traer la carta?' },
@@ -295,8 +295,8 @@ export const PT_A2_U03: PtUnitDef = {
           ],
         },
         takeaways: [
-          'Entendés una carta: prato, sobremesa, garrafa.',
-          'Sabés que sobremesa es «postre».',
+          'Entiendes una carta: prato, sobremesa, garrafa.',
+          'Sabes que sobremesa es «postre».',
         ],
         exercises: [
           ex.translationChoice(
@@ -312,7 +312,7 @@ export const PT_A2_U03: PtUnitDef = {
           ex.translationChoice(
             'cardápio',
             'carta / menú',
-            ['cuenta', 'plato', 'mozo'],
+            ['cuenta', 'plato', 'mesero'],
             ['pt-cardapio'],
             { id: 'pt.ex.ggiznhfdj8tvy4' },
           ),
@@ -336,7 +336,7 @@ export const PT_A2_U03: PtUnitDef = {
             'pt.ex.k982gfu528vv39',
             CARDAPIO,
             '¿Qué trae el plato del día?',
-            'Porotos, arroz, pollo y ensalada',
+            'Frijoles, arroz, pollo y ensalada',
             ['Pescado para dos personas', 'Flan o helado', 'Pan de queso'],
             ['pt-prato'],
             'La carta dice: «Prato do dia: feijão, arroz, frango e salada».',
@@ -364,7 +364,7 @@ export const PT_A2_U03: PtUnitDef = {
           ),
           ex.shortAnswer(
             'O que você quer de sobremesa? (🍮)',
-            '¿Qué querés de postre? (Respondé que querés flan: pudim.)',
+            '¿Qué quieres de postre? (Responde que quieres flan: pudim.)',
             'Eu quero pudim.',
             ['Quero pudim.', 'Pudim.', 'Eu quero um pudim.', 'Pudim, por favor.'],
             ['pt-sobremesa'],
@@ -393,7 +393,7 @@ export const PT_A2_U03: PtUnitDef = {
             { target: 'Poderia me trazer a conta?', base: '¿Me podría traer la cuenta?' },
           ],
         },
-        takeaways: ['Pedís con gostaria de.', 'Pedís un favor con poderia…?'],
+        takeaways: ['Pides con gostaria de.', 'Pides un favor con poderia…?'],
         exercises: [
           ex.translationChoice('trazer', 'traer', ['llevar', 'tomar', 'pedir'], ['pt-trazer'], {
             id: 'pt.ex.9yr98sj8t3h95h',
@@ -453,7 +453,7 @@ export const PT_A2_U03: PtUnitDef = {
           question(
             'pt.ex.0zd44hk66rqtwl',
             PEDIDO,
-            '¿Qué le pide al mozo al final?',
+            '¿Qué le pide al mesero al final?',
             'Más pan de queso',
             ['El postre', 'La cuenta', 'La carta'],
             ['pt-poderia', 'pt-trazer'],
@@ -461,7 +461,7 @@ export const PT_A2_U03: PtUnitDef = {
           ),
           ex.shortAnswer(
             'O que o senhor deseja? (prato do dia)',
-            '¿Qué desea? (Pedí el plato del día con cortesía.)',
+            '¿Qué desea? (Pide el plato del día con cortesía.)',
             'Eu gostaria do prato do dia.',
             [
               'Gostaria do prato do dia.',
@@ -502,7 +502,7 @@ export const PT_A2_U03: PtUnitDef = {
             },
           ],
         },
-        takeaways: ['Decís cómo pagás: com cartão, em dinheiro.', 'Entendés los 10% de serviço.'],
+        takeaways: ['Dices cómo pagas: com cartão, em dinheiro.', 'Entiendes los 10% de serviço.'],
         exercises: [
           ex.imageChoice('💳', 'cartão', ['dinheiro', 'gorjeta', 'garrafa'], ['pt-cartao'], {
             id: 'pt.ex.jytfr9nk5b53zl',
@@ -565,7 +565,7 @@ export const PT_A2_U03: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Cartão ou dinheiro?',
-            '¿Tarjeta o efectivo? (Respondé que pagás con tarjeta.)',
+            '¿Tarjeta o efectivo? (Responde que pagas con tarjeta.)',
             'Cartão, por favor.',
             ['Com cartão.', 'Vou pagar com cartão.', 'Cartão.', 'Com cartão, por favor.'],
             ['pt-cartao'],
@@ -594,8 +594,8 @@ export const PT_A2_U03: PtUnitDef = {
           ],
         },
         takeaways: [
-          'Reservás una habitación: quarto de casal.',
-          'Preguntás el precio: quanto é a diária?',
+          'Reservas una habitación: quarto de casal.',
+          'Preguntas el precio: quanto é a diária?',
         ],
         exercises: [
           ex.translationChoice(
@@ -610,7 +610,7 @@ export const PT_A2_U03: PtUnitDef = {
           ex.translationChoice(
             'pousada',
             'posada (hotel chico)',
-            ['casa de familia', 'departamento', 'parada'],
+            ['casa de familia', 'apartamento', 'parada'],
             ['pt-pousada'],
             {
               id: 'pt.ex.5lrps0rfmsk35b',
@@ -669,7 +669,7 @@ export const PT_A2_U03: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Para quantas noites?',
-            '¿Para cuántas noches? (Respondé que para dos noches.)',
+            '¿Para cuántas noches? (Responde que para dos noches.)',
             'Para duas noites.',
             ['Duas noites.', 'São duas noites.', 'Para duas noites, por favor.'],
             ['pt-diaria'],
@@ -702,7 +702,7 @@ export const PT_A2_U03: PtUnitDef = {
             },
           ],
         },
-        takeaways: ['Preguntás qué está incluído.', 'Hacés el check-in con tu reserva.'],
+        takeaways: ['Preguntas qué está incluído.', 'Haces el check-in con tu reserva.'],
         exercises: [
           ex.fillBlank(
             'O café da manhã está ___?',
@@ -773,7 +773,7 @@ export const PT_A2_U03: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Boa tarde! Em que posso ajudar?',
-            '¡Buenas tardes! ¿En qué puedo ayudar? (Decí que reservaste una habitación.)',
+            '¡Buenas tardes! ¿En qué puedo ayudar? (Di que reservaste una habitación.)',
             'Eu reservei um quarto.',
             [
               'Boa tarde, eu reservei um quarto.',

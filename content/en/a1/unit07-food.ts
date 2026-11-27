@@ -27,7 +27,7 @@ export const unit07: UnitDef = {
   position: 7,
   title: 'Comida y bebidas',
   titleEn: 'Food and drinks',
-  description: 'Pedir comida, decir qué querés y hablar de las comidas del día.',
+  description: 'Pedir comida, decir qué quieres y hablar de las comidas del día.',
   emoji: '🍎',
   words: [
     w(
@@ -178,7 +178,7 @@ export const unit07: UnitDef = {
       '/ˈθɜrsti/',
       undefined,
       'Are you thirsty?',
-      '¿Tenés sed?',
+      '¿Tienes sed?',
       ['adjectives'],
       ['sediento', 'sedienta'],
     ),
@@ -245,7 +245,7 @@ export const unit07: UnitDef = {
     },
     {
       title: 'Comer y beber',
-      objective: 'Decir qué comés y qué tomás.',
+      objective: 'Decir qué comes y qué tomas.',
       exercises: [
         ex.translationChoice(
           'eat',
@@ -297,7 +297,7 @@ export const unit07: UnitDef = {
     },
     {
       title: 'Quiero un café',
-      objective: 'Pedir lo que querés con want y please.',
+      objective: 'Pedir lo que quieres con want y please.',
       exercises: [
         ex.translationChoice(
           'I want a coffee.',
@@ -343,7 +343,7 @@ export const unit07: UnitDef = {
         ),
         ex.shortAnswer(
           'Do you want a coffee? (No, quiero un té.)',
-          '¿Querés un café?',
+          '¿Quieres un café?',
           'No, I want a tea.',
           ['No, I want tea.', 'No, a tea, please.', 'No, tea please.'],
           ['en-want', 'en-tea', 'en-no'],
@@ -352,7 +352,7 @@ export const unit07: UnitDef = {
     },
     {
       title: 'Comidas del día',
-      objective: 'Desayuno, almuerzo, cena y decir si tenés hambre o sed.',
+      objective: 'Desayuno, almuerzo, cena y decir si tienes hambre o sed.',
       exercises: [
         ex.imageChoice('🥐', 'breakfast', ['lunch', 'dinner', 'bread'], ['en-breakfast']),
         ex.matchPairs(
@@ -393,7 +393,7 @@ export const unit07: UnitDef = {
           'en-eat',
           'en-kitchen',
         ]),
-        ex.translateWrite('¿Tenés hambre?', 'Are you hungry?', ['en-hungry', 'en-are']),
+        ex.translateWrite('¿Tienes hambre?', 'Are you hungry?', ['en-hungry', 'en-are']),
         ex.completeWord('br__kfast', 'breakfast', 'desayuno', ['en-breakfast']),
       ],
     },

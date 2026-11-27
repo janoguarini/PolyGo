@@ -27,7 +27,7 @@ export const unit08: UnitDef = {
   position: 8,
   title: 'Rutinas y presente simple',
   titleEn: 'Routines and present simple',
-  description: 'Contar qué hacés todos los días, preguntar y negar en presente.',
+  description: 'Contar qué haces todos los días, preguntar y negar en presente.',
   emoji: '⏰',
   words: [
     w(
@@ -178,7 +178,7 @@ export const unit08: UnitDef = {
       '/du/',
       undefined,
       'Do you work?',
-      '¿Trabajás?',
+      '¿Trabajas?',
       ['grammar', 'verbs'],
       ['hacer'],
     ),
@@ -189,7 +189,7 @@ export const unit08: UnitDef = {
       '/dʌz/',
       undefined,
       'Does she live here?',
-      '¿Ella vive acá?',
+      '¿Ella vive aquí?',
       ['grammar'],
       ['hace'],
     ),
@@ -361,7 +361,7 @@ export const unit08: UnitDef = {
         ex.translationChoice(
           "I don't drink coffee.",
           'No tomo café.',
-          ['Tomo café.', 'No quiero café.', '¿Tomás café?'],
+          ['Tomo café.', 'No quiero café.', '¿Tomas café?'],
           ['en-dont', 'en-drink'],
         ),
         ex.fillBlank(
@@ -413,12 +413,12 @@ export const unit08: UnitDef = {
       ],
     },
     {
-      title: '¿Trabajás? Siempre, normalmente, nunca',
+      title: '¿Trabajas? Siempre, normalmente, nunca',
       objective: 'Preguntar con do/does y decir con qué frecuencia.',
       exercises: [
         ex.fillBlank(
           '___ you work?',
-          '¿Trabajás?',
+          '¿Trabajas?',
           'Do',
           ['Does', 'Are', 'Is'],
           ['en-do', 'en-work'],
@@ -468,7 +468,7 @@ export const unit08: UnitDef = {
         ),
         ex.shortAnswer(
           'Do you study English? (Sí.)',
-          '¿Estudiás inglés?',
+          '¿Estudias inglés?',
           'Yes, I do.',
           ['Yes.', 'Yes, I study English.'],
           ['en-do', 'en-study', 'en-yes'],

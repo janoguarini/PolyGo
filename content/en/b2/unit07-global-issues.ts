@@ -153,7 +153,7 @@ export const EN_B2_U07: B2UnitDef = {
       'El calentamiento global, sequías e inundaciones, energía renovable, pobreza y especies en peligro, y el contraste con despite, even though y whereas.',
     emoji: '🌍',
     objective:
-      'Podés hablar de problemas ambientales y globales, sus causas y consecuencias, y matizar con despite, even though y whereas.',
+      'Puedes hablar de problemas ambientales y globales, sus causas y consecuencias, y matizar con despite, even though y whereas.',
     grammar: {
       title: 'Concesivas y contraste',
       explanation:
@@ -372,7 +372,7 @@ export const EN_B2_U07: B2UnitDef = {
         objective: 'Hablar del calentamiento global, las emisiones y sus consecuencias.',
         intro: {
           explanation:
-            'Global warming es el calentamiento global, causado sobre todo por las emissions (emisiones) de CO2. Tu carbon footprint es tu huella de carbono: cuánto contaminás con lo que hacés. Una consequence es una consecuencia: Floods are a consequence of global warming.',
+            'Global warming es el calentamiento global, causado sobre todo por las emissions (emisiones) de CO2. Tu carbon footprint es tu huella de carbono: cuánto contaminas con lo que haces. Una consequence es una consecuencia: Floods are a consequence of global warming.',
           examples: [
             {
               target: 'Global warming is changing the weather.',
@@ -385,8 +385,8 @@ export const EN_B2_U07: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Hablás del calentamiento global y las emisiones.',
-          'Explicás tu huella de carbono y las consecuencias.',
+          'Hablas del calentamiento global y las emisiones.',
+          'Explicas tu huella de carbono y las consecuencias.',
         ],
         exercises: [
           ex.matchPairs(
@@ -455,7 +455,7 @@ export const EN_B2_U07: B2UnitDef = {
           ),
           ex.shortAnswer(
             'How can you reduce your carbon footprint? (comer menos carne)',
-            '¿Cómo podés reducir tu huella de carbono?',
+            '¿Cómo puedes reducir tu huella de carbono?',
             'I can eat less meat.',
             ['By eating less meat.', 'Eat less meat.', 'I can reduce it by eating less meat.'],
             ['en-carbon-footprint'],
@@ -495,8 +495,8 @@ export const EN_B2_U07: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Entendés noticias sobre sequías, inundaciones y escasez.',
-          'Hablás de amenazas y consecuencias del clima extremo.',
+          'Entiendes noticias sobre sequías, inundaciones y escasez.',
+          'Hablas de amenazas y consecuencias del clima extremo.',
         ],
         exercises: [
           ex.matchPairs(
@@ -612,8 +612,8 @@ export const EN_B2_U07: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Usás despite / in spite of con un sustantivo o -ing.',
-          'Usás even though y even if con una oración.',
+          'Usas despite / in spite of con un sustantivo o -ing.',
+          'Usas even though y even if con una oración.',
         ],
         exercises: [
           ex.fillBlank(
@@ -752,8 +752,8 @@ export const EN_B2_U07: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Hablás de energía renovable y de un futuro sostenible.',
-          'Comparás dos ideas opuestas con whereas.',
+          'Hablas de energía renovable y de un futuro sostenible.',
+          'Comparas dos ideas opuestas con whereas.',
         ],
         exercises: [
           ex.matchPairs(
@@ -879,8 +879,8 @@ export const EN_B2_U07: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Relacionás problemas globales: connected, consequence, threat.',
-          'Hablás de especies en peligro y de la pobreza.',
+          'Relacionas problemas globales: connected, consequence, threat.',
+          'Hablas de especies en peligro y de la pobreza.',
         ],
         exercises: [
           ex.translationChoice(

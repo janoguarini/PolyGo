@@ -121,7 +121,7 @@ describe('mapa de aprendizaje', () => {
       );
     }
 
-    expect(screen.getByText('Completá las lecciones anteriores para desbloquearla.')).toBeTruthy();
+    expect(screen.getByText('Completa las lecciones anteriores para desbloquearla.')).toBeTruthy();
     expect(screen.queryByRole('button', { name: 'Empezar lección' })).toBeNull();
     await fireEvent.press(screen.getByRole('button', { name: 'LECCIÓN 3: Me llamo…. Bloqueada' }));
     expect(onSelectedChange).toHaveBeenCalledWith(null);

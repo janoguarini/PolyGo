@@ -26,7 +26,7 @@ const tone = (
 ): ExerciseDef => ({
   type: 'listen_choice',
   skill: 'listening',
-  prompt: 'Escuchá y elegí el tono correcto',
+  prompt: 'Escucha y elige el tono correcto',
   payload: { type: 'listen_choice', audioText: hanzi, options: [pinyin, ...others] },
   answer: pinyin,
   words,
@@ -59,7 +59,7 @@ export const unit06: UnitDef = {
     'Decir dónde está algo o alguien con 在, preguntar con 哪儿 y ubicar con 里, 上 y 下.',
   emoji: '🏠',
   objective:
-    'Podés decir y preguntar dónde está algo o alguien con 在 y 哪儿, ubicarlo con 里, 上 y 下, y decir qué hay en un lugar con 有.',
+    'Puedes decir y preguntar dónde está algo o alguien con 在 y 哪儿, ubicarlo con 里, 上 y 下, y decir qué hay en un lugar con 有.',
   grammar: {
     title: '在 + lugar + 里 / 上 / 下',
     explanation:
@@ -82,8 +82,8 @@ export const unit06: UnitDef = {
     w('zh-nar', '哪儿', 'nǎr', 'dónde', '你在哪儿？', '¿Dónde estás?', ['questions'], {
       acceptedTranslations: ['¿dónde?'],
     }),
-    w('zh-zher', '这儿', 'zhèr', 'acá', '我在这儿。', 'Estoy acá.', ['places'], {
-      acceptedTranslations: ['aquí'],
+    w('zh-zher', '这儿', 'zhèr', 'aquí', '我在这儿。', 'Estoy aquí.', ['places'], {
+      acceptedTranslations: ['acá'],
     }),
     w('zh-nar-alla', '那儿', 'nàr', 'allá', '你的书在那儿。', 'Tu libro está allá.', ['places'], {
       acceptedTranslations: ['ahí', 'allí'],
@@ -158,7 +158,7 @@ export const unit06: UnitDef = {
           { target: '我在家。', base: 'Estoy en casa.' },
         ],
       },
-      takeaways: ['Decís dónde estás con 在.', 'Preguntás dónde con 哪儿.'],
+      takeaways: ['Dices dónde estás con 在.', 'Preguntas dónde con 哪儿.'],
       exercises: [
         ex.translationChoice('在', 'estar en', ['tener', 'ser', 'dónde'], ['zh-zai']),
         ex.translationChoice('哪儿', 'dónde', ['¿cuál?', 'qué', 'quién'], ['zh-nar']),
@@ -191,19 +191,19 @@ export const unit06: UnitDef = {
     },
     {
       title: '这儿、那儿',
-      objective: 'Decir acá y allá.',
+      objective: 'Decir aquí y allá.',
       intro: {
         explanation:
-          '这儿 (zhèr) es «acá» y 那儿 (nàr) «allá»: son 这 y 那 con 儿, la terminación típica del norte de China. 我在这儿 «estoy acá».',
+          '这儿 (zhèr) es «aquí» y 那儿 (nàr) «allá»: son 这 y 那 con 儿, la terminación típica del norte de China. 我在这儿 «estoy aquí».',
         examples: [
-          { target: '我在这儿。', base: 'Estoy acá.' },
+          { target: '我在这儿。', base: 'Estoy aquí.' },
           { target: '你的书在那儿。', base: 'Tu libro está allá.' },
         ],
       },
-      takeaways: ['Decís acá con 这儿 y allá con 那儿.', 'Distinguís 那儿 (nàr) de 哪儿 (nǎr).'],
+      takeaways: ['Dices aquí con 这儿 y allá con 那儿.', 'Distingues 那儿 (nàr) de 哪儿 (nǎr).'],
       exercises: [
-        ex.translationChoice('这儿', 'acá', ['allá', 'dónde', 'este / esto'], ['zh-zher']),
-        ex.translationChoice('那儿', 'allá', ['acá', 'dónde', 'ese / eso'], ['zh-nar-alla']),
+        ex.translationChoice('这儿', 'aquí', ['allá', 'dónde', 'este / esto'], ['zh-zher']),
+        ex.translationChoice('那儿', 'allá', ['aquí', 'dónde', 'ese / eso'], ['zh-nar-alla']),
         ex.listenChoice(
           '我在这儿。',
           ['我在那儿。', '我在家。', '你在哪儿？'],
@@ -218,13 +218,13 @@ export const unit06: UnitDef = {
           ['zh-nar-alla', 'zh-shouji'],
           { skill: 'vocabulary' },
         ),
-        ex.orderWords('我 的 包 在 这儿。', 'Mi bolso está acá.', [
+        ex.orderWords('我 的 包 在 这儿。', 'Mi bolso está aquí.', [
           'zh-de',
           'zh-bao',
           'zh-zai',
           'zh-zher',
         ]),
-        write('Estoy acá.', 'wǒ zài zhèr', '我在这儿', ['zh-wo', 'zh-zai', 'zh-zher']),
+        write('Estoy aquí.', 'wǒ zài zhèr', '我在这儿', ['zh-wo', 'zh-zai', 'zh-zher']),
         write(
           'Mi papá está allá.',
           'wǒ bàba zài nàr',
@@ -246,8 +246,8 @@ export const unit06: UnitDef = {
         ],
       },
       takeaways: [
-        'Nombrás habitación, cocina y muebles.',
-        'Reconocés el 子 neutro de 桌子 y 椅子.',
+        'Nombras habitación, cocina y muebles.',
+        'Reconoces el 子 neutro de 桌子 y 椅子.',
       ],
       exercises: [
         ex.translationChoice('厨房', 'cocina', ['habitación', 'mesa', 'cama'], ['zh-chufang']),
@@ -285,10 +285,10 @@ export const unit06: UnitDef = {
           { target: '手机在桌子上。', base: 'El celular está sobre la mesa.' },
         ],
       },
-      takeaways: ['Ubicás cosas con 里 y 上.', 'Ponés la posición después del lugar.'],
+      takeaways: ['Ubicas cosas con 里 y 上.', 'Pones la posición después del lugar.'],
       exercises: [
         ex.imageChoice('🐱', '猫', ['狗', '床', '书'], ['zh-mao']),
-        ex.translationChoice('里', 'dentro de', ['encima de', 'acá', 'dónde'], ['zh-li']),
+        ex.translationChoice('里', 'dentro de', ['encima de', 'aquí', 'dónde'], ['zh-li']),
         ex.translationChoice('上', 'encima de', ['dentro de', 'allá', 'cama'], ['zh-shang']),
         ex.fillBlank(
           '书在包___。',
@@ -344,7 +344,7 @@ export const unit06: UnitDef = {
           { target: '厨房里有猫吗？', base: '¿Hay un gato en la cocina?' },
         ],
       },
-      takeaways: ['Ubicás cosas debajo con 下.', 'Decís qué hay con lugar + 有.'],
+      takeaways: ['Ubicas cosas debajo con 下.', 'Dices qué hay con lugar + 有.'],
       exercises: [
         ex.imageChoice('🐶', '狗', ['猫', '床', '桌子'], ['zh-gou']),
         ex.translationChoice('下', 'debajo de', ['encima de', 'dentro de', 'dónde'], ['zh-xia']),

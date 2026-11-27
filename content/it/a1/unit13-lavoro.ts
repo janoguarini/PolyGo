@@ -68,7 +68,7 @@ export const IT_A1_U13: ItUnitDef = {
       'Noi, voi y loro; essere y los verbos en -are en plural; nostro y nostra; profesiones y lugares de trabajo.',
     emoji: '💼',
     objective:
-      'Podés decir de qué trabajás vos y otras personas, hablar en plural (noi lavoriamo, loro lavorano) y presentar a tu grupo.',
+      'Puedes decir de qué trabajas tú y otras personas, hablar en plural (noi lavoriamo, loro lavorano) y presentar a tu grupo.',
     grammar: {
       title: 'Pronombres plurales · essere y -are en plural',
       explanation:
@@ -139,11 +139,19 @@ export const IT_A1_U13: ItUnitDef = {
       w(
         'it-che-lavoro-fai',
         'che lavoro fai?',
-        '¿de qué trabajás?',
+        '¿de qué trabajas?',
         'Che lavoro fai? — Sono insegnante.',
-        '¿De qué trabajás? — Soy docente.',
+        '¿De qué trabajas? — Soy docente.',
         ['work', 'questions'],
-        { acceptedTranslations: ['¿a qué te dedicás?', '¿en qué trabajás?'] },
+        {
+          acceptedTranslations: [
+            '¿a qué te dedicás?',
+            '¿a qué te dedicas?',
+            '¿en qué trabajás?',
+            '¿en qué trabajas?',
+            '¿de qué trabajás?',
+          ],
+        },
       ),
       w('it-medico', 'medico', 'médico', 'Mio padre è medico.', 'Mi papá es médico.', ['work'], {
         acceptedTranslations: ['médica', 'doctor', 'doctora'],
@@ -161,13 +169,13 @@ export const IT_A1_U13: ItUnitDef = {
       w(
         'it-cameriere',
         'cameriere',
-        'mozo',
+        'mesero',
         'La cameriera è italiana.',
-        'La moza es italiana.',
+        'La mesera es italiana.',
         ['work', 'food'],
         {
           acceptedTexts: ['cameriera'],
-          acceptedTranslations: ['moza', 'camarero', 'camarera', 'mesero'],
+          acceptedTranslations: ['moza', 'camarero', 'camarera', 'mesero', 'mozo'],
           emoji: '🤵',
         },
       ),
@@ -254,7 +262,7 @@ export const IT_A1_U13: ItUnitDef = {
             { target: 'Voi siete italiani?', base: '¿Ustedes son italianos?' },
           ],
         },
-        takeaways: ['Usás noi, voi y loro.', 'Conjugás essere en plural: siamo, siete, sono.'],
+        takeaways: ['Usas noi, voi y loro.', 'Conjugas essere en plural: siamo, siete, sono.'],
         exercises: [
           ex.translationChoice(
             'loro',
@@ -330,7 +338,7 @@ export const IT_A1_U13: ItUnitDef = {
           }),
           ex.shortAnswer(
             'Voi siete argentini?',
-            '¿Ustedes son argentinos? (Respondé que sí, que son argentinos.)',
+            '¿Ustedes son argentinos? (Responde que sí, que son argentinos.)',
             'Sì, noi siamo argentini.',
             [
               'Sì, siamo argentini.',
@@ -361,14 +369,14 @@ export const IT_A1_U13: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Conjugás -are en plural: lavoriamo, lavorate, lavorano.',
-          'Decís cuándo y dónde trabaja un grupo.',
+          'Conjugas -are en plural: lavoriamo, lavorate, lavorano.',
+          'Dices cuándo y dónde trabaja un grupo.',
         ],
         exercises: [
           ex.translationChoice(
             'lavoriamo',
             'trabajamos',
-            ['trabajan', 'trabajo', 'trabajás'],
+            ['trabajan', 'trabajo', 'trabajas'],
             ['it-lavoriamo'],
             {
               id: 'it.ex.2q6l9ksg5is79q',
@@ -426,7 +434,7 @@ export const IT_A1_U13: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Voi lavorate la sera?',
-            '¿Ustedes trabajan a la noche? (Respondé que no, que trabajan a la mañana.)',
+            '¿Ustedes trabajan a la noche? (Responde que no, que trabajan a la mañana.)',
             'No, noi lavoriamo la mattina.',
             ['No, lavoriamo la mattina.', 'Lavoriamo la mattina.', 'Noi lavoriamo la mattina.'],
             ['it-noi', 'it-lavoriamo', 'it-la-mattina'],
@@ -450,18 +458,18 @@ export const IT_A1_U13: ItUnitDef = {
         objective: 'Preguntar y decir de qué trabaja alguien.',
         intro: {
           explanation:
-            'Che lavoro fai? es «¿de qué trabajás?». Se responde con sono y la profesión sin artículo (sono medico) o con faccio y artículo (faccio il cuoco). En femenino, -o pasa a -a (cuoca) y -iere a -iera (infermiera); insegnante no cambia.',
+            'Che lavoro fai? es «¿de qué trabajas?». Se responde con sono y la profesión sin artículo (sono medico) o con faccio y artículo (faccio il cuoco). En femenino, -o pasa a -a (cuoca) y -iere a -iera (infermiera); insegnante no cambia.',
           examples: [
             {
               target: 'Che lavoro fai? — Sono infermiera.',
-              base: '¿De qué trabajás? — Soy enfermera.',
+              base: '¿De qué trabajas? — Soy enfermera.',
             },
             { target: 'Faccio il cuoco.', base: 'Soy cocinero.' },
           ],
         },
         takeaways: [
-          'Preguntás la profesión con che lavoro fai?',
-          'Decís profesiones con sono o con faccio il / la.',
+          'Preguntas la profesión con che lavoro fai?',
+          'Dices profesiones con sono o con faccio il / la.',
         ],
         exercises: [
           ex.imageChoice('🩺', 'medico', ['cuoco', 'insegnante', 'infermiere'], ['it-medico'], {
@@ -472,8 +480,8 @@ export const IT_A1_U13: ItUnitDef = {
           }),
           ex.translationChoice(
             'che lavoro fai?',
-            '¿de qué trabajás?',
-            ['¿dónde vivís?', '¿cómo te llamás?', '¿qué hora es?'],
+            '¿de qué trabajas?',
+            ['¿dónde vives?', '¿cómo te llamas?', '¿qué hora es?'],
             ['it-che-lavoro-fai'],
             { id: 'it.ex.fhayws66t1wnox' },
           ),
@@ -519,7 +527,7 @@ export const IT_A1_U13: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Che lavoro fai?',
-            '¿De qué trabajás? (Respondé que sos estudiante.)',
+            '¿De qué trabajas? (Responde que eres estudiante.)',
             'Sono studente.',
             [
               'Sono studentessa.',
@@ -549,7 +557,7 @@ export const IT_A1_U13: ItUnitDef = {
         objective: 'Decir dónde trabaja cada uno.',
         intro: {
           explanation:
-            'Se dice lavoro in ufficio, in negozio, in ospedale (sin artículo). Ojo: negozio es la tienda, el local; el cameriere (el mozo) no tiene nada que ver con la camera (la habitación).',
+            'Se dice lavoro in ufficio, in negozio, in ospedale (sin artículo). Ojo: negozio es la tienda, el local; el cameriere (el mesero) no tiene nada que ver con la camera (la habitación).',
           examples: [
             { target: 'Lavoro in ufficio.', base: 'Trabajo en una oficina.' },
             {
@@ -559,8 +567,8 @@ export const IT_A1_U13: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Decís dónde trabajás: in ufficio, in negozio.',
-          'Nombrás trabajos de la tienda y del restaurante.',
+          'Dices dónde trabajas: in ufficio, in negozio.',
+          'Nombras trabajos de la tienda y del restaurante.',
         ],
         exercises: [
           ex.translationChoice(
@@ -635,7 +643,7 @@ export const IT_A1_U13: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Dove lavori?',
-            '¿Dónde trabajás? (Respondé que en una oficina.)',
+            '¿Dónde trabajas? (Responde que en una oficina.)',
             'Lavoro in ufficio.',
             ['In ufficio.', 'Lavoro in un ufficio.', 'Io lavoro in ufficio.'],
             ['it-ufficio'],
@@ -669,8 +677,8 @@ export const IT_A1_U13: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Usás il nostro y la nostra según la cosa.',
-          'Entendés una presentación de un grupo.',
+          'Usas il nostro y la nostra según la cosa.',
+          'Entiendes una presentación de un grupo.',
         ],
         exercises: [
           ex.fillBlank(
@@ -707,7 +715,7 @@ export const IT_A1_U13: ItUnitDef = {
             POST,
             '¿Qué hacen Anna y Pietro en el restaurante?',
             'Pietro es cocinero y Anna es moza',
-            ['Los dos son cocineros', 'Anna es cocinera y Pietro es mozo', 'Los dos son mozos'],
+            ['Los dos son cocineros', 'Anna es cocinera y Pietro es mesero', 'Los dos son meseros'],
             ['it-cuoco', 'it-cameriere'],
             'Anna escribe: «Pietro è il cuoco e io sono la cameriera».',
           ),
@@ -748,7 +756,7 @@ export const IT_A1_U13: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Lavorate insieme?',
-            '¿Trabajan juntos? (Respondé que sí, que trabajan en su restaurante.)',
+            '¿Trabajan juntos? (Responde que sí, que trabajan en su restaurante.)',
             'Sì, lavoriamo nel nostro ristorante.',
             [
               'Sì, noi lavoriamo nel nostro ristorante.',

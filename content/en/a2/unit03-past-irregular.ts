@@ -115,7 +115,7 @@ export const unit03: UnitDef = {
       '/tʊk/',
       undefined,
       'We took the bus to the city.',
-      'Tomamos el colectivo a la ciudad.',
+      'Tomamos el autobús a la ciudad.',
       ['past', 'irregular'],
       ['tomé', 'tomó', 'llevé', 'llevó'],
     ),
@@ -315,7 +315,7 @@ export const unit03: UnitDef = {
         ),
         ex.fillBlank(
           'We ___ the bus to the city.',
-          'Tomamos el colectivo a la ciudad.',
+          'Tomamos el autobús a la ciudad.',
           'took',
           ['taked', 'take', 'drank'],
           ['en-took', 'en-bus', 'en-city'],
@@ -340,7 +340,7 @@ export const unit03: UnitDef = {
           ['traje / trajo (bring)', 'hice / hizo (make)', 'tomé / llevé (take)'],
           ['en-bought'],
         ),
-        ex.orderWords('She made a cake for my birthday.', 'Hizo una torta para mi cumpleaños.', [
+        ex.orderWords('She made a cake for my birthday.', 'Hizo un pastel para mi cumpleaños.', [
           'en-made',
           'en-birthday',
         ]),

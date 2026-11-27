@@ -1,3 +1,4 @@
+import { withNeutralSpanish } from '../../scripts/neutral-patch';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -232,7 +233,7 @@ describe('francés A1 y A2 (content/fr-course.ts)', () => {
 
   it('la carga es la salida exacta del generador y no publica nada', () => {
     const { sql, document } = frSql();
-    expect(sql).toBe(migration);
+    expect(sql).toBe(withNeutralSpanish(migration));
     expect(document.units.map((u) => u.id)).toEqual(
       FR_PATH.map((p) => key(p.level, p.unit.position)),
     );

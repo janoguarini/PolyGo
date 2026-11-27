@@ -19,15 +19,15 @@ export const unit03: UnitDef = {
   position: 3,
   title: 'Números y edad',
   titleEn: 'Números e idade',
-  description: 'Contar hasta veinte y decir cuántos años tenés.',
+  description: 'Contar hasta veinte y decir cuántos años tienes.',
   emoji: '🔢',
-  objective: 'Podés contar hasta veinte, preguntar la edad y decir cuántos años tenés.',
+  objective: 'Puedes contar hasta veinte, preguntar la edad y decir cuántos años tienes.',
   grammar: {
     title: 'Ter … anos',
     explanation:
       'La edad se dice con ter (tener): eu tenho vinte anos. Con você, ele y ela: tem. Um y dois cambian con palabras femeninas: uma, duas.',
     examples: [
-      { target: 'Quantos anos você tem?', base: '¿Cuántos años tenés?' },
+      { target: 'Quantos anos você tem?', base: '¿Cuántos años tienes?' },
       { target: 'Eu tenho dezoito anos.', base: 'Tengo dieciocho años.' },
       { target: 'Tenho duas irmãs.', base: 'Tengo dos hermanas.' },
     ],
@@ -72,24 +72,24 @@ export const unit03: UnitDef = {
     w(
       'pt-tem',
       'tem',
-      'tiene / tenés (con você)',
+      'tiene / tienes (con você)',
       'Ele tem dez anos.',
       'Él tiene diez años.',
       ['verbs', 'to-have'],
       {
-        acceptedTranslations: ['tiene', 'tenés'],
+        acceptedTranslations: ['tiene', 'tenés', 'tiene / tenés (con você)', 'tienes'],
       },
     ),
     w('pt-anos', 'anos', 'años', 'Tenho trinta anos.', 'Tengo treinta años.', ['time']),
     w(
       'pt-quantos-anos',
       'quantos anos você tem?',
-      '¿cuántos años tenés?',
+      '¿cuántos años tienes?',
       'Quantos anos você tem?',
-      '¿Cuántos años tenés?',
+      '¿Cuántos años tienes?',
       ['questions'],
       {
-        acceptedTranslations: ['¿cuántos años tienes?'],
+        acceptedTranslations: ['¿cuántos años tienes?', '¿cuántos años tenés?'],
       },
     ),
   ],
@@ -106,8 +106,8 @@ export const unit03: UnitDef = {
         ],
       },
       takeaways: [
-        'Contás del uno al cinco.',
-        'Sabés que um y dois cambian en femenino: uma, duas.',
+        'Cuentas del uno al cinco.',
+        'Sabes que um y dois cambian en femenino: uma, duas.',
       ],
       exercises: [
         ex.imageChoice('2️⃣', 'dois', ['três', 'um', 'cinco'], ['pt-dois']),
@@ -148,7 +148,7 @@ export const unit03: UnitDef = {
           { target: 'Dez reais.', base: 'Diez reales.' },
         ],
       },
-      takeaways: ['Contás del seis al diez.', 'Reconocés los números de oído.'],
+      takeaways: ['Cuentas del seis al diez.', 'Reconoces los números de oído.'],
       exercises: [
         ex.imageChoice('7️⃣', 'sete', ['seis', 'oito', 'nove'], ['pt-sete']),
         ex.imageChoice('🔟', 'dez', ['nove', 'oito', 'sete'], ['pt-dez']),
@@ -179,7 +179,7 @@ export const unit03: UnitDef = {
           { target: 'Ela tem dezoito anos.', base: 'Ella tiene dieciocho años.' },
         ],
       },
-      takeaways: ['Decís 15, 18 y 20.', 'Reconocés los números de oído.'],
+      takeaways: ['Dices 15, 18 y 20.', 'Reconoces los números de oído.'],
       exercises: [
         ex.translationChoice('vinte', 'veinte', ['quince', 'dieciocho', 'diez'], ['pt-vinte']),
         ex.translationChoice('quinze', 'quince', ['veinte', 'cinco', 'dieciocho'], ['pt-quinze']),
@@ -211,28 +211,28 @@ export const unit03: UnitDef = {
       objective: 'Preguntar y decir la edad.',
       intro: {
         explanation:
-          'La edad va con ter: eu tenho (tengo) y você / ele / ela tem (tenés / tiene) + número + anos.',
+          'La edad va con ter: eu tenho (tengo) y você / ele / ela tem (tienes / tiene) + número + anos.',
         examples: [
-          { target: 'Quantos anos você tem?', base: '¿Cuántos años tenés?' },
+          { target: 'Quantos anos você tem?', base: '¿Cuántos años tienes?' },
           { target: 'Tenho vinte anos.', base: 'Tengo veinte años.' },
           { target: 'Ele tem dez anos.', base: 'Él tiene diez años.' },
         ],
       },
       takeaways: [
-        'Preguntás la edad con quantos anos você tem?',
-        'Respondés con tenho + número + anos.',
+        'Preguntas la edad con quantos anos você tem?',
+        'Respondes con tenho + número + anos.',
       ],
       exercises: [
         ex.translationChoice(
           'quantos anos você tem?',
-          '¿cuántos años tenés?',
-          ['¿de dónde sos?', '¿todo bien?', 'tengo'],
+          '¿cuántos años tienes?',
+          ['¿de dónde eres?', '¿todo bien?', 'tengo'],
           ['pt-quantos-anos'],
         ),
         ex.translationChoice(
           'tenho',
           'tengo',
-          ['tiene / tenés (con você)', 'soy', 'años'],
+          ['tiene / tienes (con você)', 'soy', 'años'],
           ['pt-tenho'],
         ),
         ex.fillBlank(
@@ -265,20 +265,20 @@ export const unit03: UnitDef = {
         ]),
         ex.shortAnswer(
           'Quantos anos você tem?',
-          '¿Cuántos años tenés? (Respondé que tenés quince.)',
+          '¿Cuántos años tienes? (Responde que tienes quince.)',
           'Tenho quinze anos.',
           ['Eu tenho quinze anos.', 'Quinze anos.', 'Quinze.'],
           ['pt-tenho', 'pt-quinze', 'pt-anos'],
         ),
-        ex.translateWrite('¿Cuántos años tenés?', 'Quantos anos você tem?', ['pt-quantos-anos']),
+        ex.translateWrite('¿Cuántos años tienes?', 'Quantos anos você tem?', ['pt-quantos-anos']),
       ],
     },
     {
       title: 'Apresentação completa',
-      objective: 'Decir tu nombre, de dónde sos y cuántos años tenés.',
+      objective: 'Decir tu nombre, de dónde eres y cuántos años tienes.',
       intro: {
         explanation:
-          'Ya podés presentarte entero: meu nome é + nombre, sou de + ciudad y tenho + edad. El origen va con ser y la edad con ter.',
+          'Ya puedes presentarte entero: meu nome é + nombre, sou de + ciudad y tenho + edad. El origen va con ser y la edad con ter.',
         examples: [
           {
             target: 'Meu nome é Ana, sou de Rosario e tenho vinte anos.',
@@ -288,8 +288,8 @@ export const unit03: UnitDef = {
         ],
       },
       takeaways: [
-        'Te presentás con nombre, origen y edad.',
-        'Usás sou para el origen y tenho para la edad.',
+        'Te presentas con nombre, origen y edad.',
+        'Usas sou para el origen y tenho para la edad.',
       ],
       exercises: [
         ex.translationChoice('anos', 'años', ['tengo', 'veinte', 'nueve'], ['pt-anos']),
@@ -325,7 +325,7 @@ export const unit03: UnitDef = {
         ),
         ex.shortAnswer(
           'Oi! Como você se chama?',
-          '¡Hola! ¿Cómo te llamás? (Respondé que te llamás Ana y tenés veinte años.)',
+          '¡Hola! ¿Cómo te llamas? (Responde que te llamas Ana y tienes veinte años.)',
           'Meu nome é Ana e tenho vinte anos.',
           [
             'Eu me chamo Ana e tenho vinte anos.',

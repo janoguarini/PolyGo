@@ -26,7 +26,7 @@ const tone = (
 ): ExerciseDef => ({
   type: 'listen_choice',
   skill: 'listening',
-  prompt: 'Escuchá y elegí el tono correcto',
+  prompt: 'Escucha y elige el tono correcto',
   payload: { type: 'listen_choice', audioText: hanzi, options: [pinyin, ...others] },
   answer: pinyin,
   words,
@@ -59,15 +59,15 @@ export const unit08: UnitDef = {
     'Contar tu rutina: levantarte, desayunar, trabajar o estudiar, con la palabra de tiempo antes del verbo.',
   emoji: '🌅',
   objective:
-    'Podés contar qué hacés en un día normal (起床, 工作, 学习, 睡觉) y cuándo (每天, 早上, 晚上), con el tiempo antes del verbo.',
+    'Puedes contar qué haces en un día normal (起床, 工作, 学习, 睡觉) y cuándo (每天, 早上, 晚上), con el tiempo antes del verbo.',
   grammar: {
     title: 'Tiempo antes del verbo',
     explanation:
       'En chino la palabra de tiempo va antes del verbo, nunca al final: 我每天学习中文 («yo todos los días estudio chino»). También puede ir al principio de la oración: 早上我喝咖啡. El verbo no cambia nunca.',
     examples: [
       { target: '我每天学习中文。', base: 'Estudio chino todos los días.' },
-      { target: '早上我喝咖啡。', base: 'A la mañana tomo café.' },
-      { target: '我晚上看电视。', base: 'A la noche miro la tele.' },
+      { target: '早上我喝咖啡。', base: 'Por la mañana tomo café.' },
+      { target: '我晚上看电视。', base: 'Por la noche miro la tele.' },
     ],
   },
   review: {
@@ -90,24 +90,33 @@ export const unit08: UnitDef = {
       'zh-zaoshang',
       '早上',
       'zǎoshang',
-      'a la mañana',
+      'por la mañana',
       '早上我喝咖啡。',
-      'A la mañana tomo café.',
+      'Por la mañana tomo café.',
       ['time'],
-      { acceptedTranslations: ['por la mañana'] },
+      { acceptedTranslations: ['a la mañana'] },
     ),
-    w('zh-xiawu', '下午', 'xiàwǔ', 'a la tarde', '我下午工作。', 'A la tarde trabajo.', ['time'], {
-      acceptedTranslations: ['por la tarde'],
-    }),
+    w(
+      'zh-xiawu',
+      '下午',
+      'xiàwǔ',
+      'por la tarde',
+      '我下午工作。',
+      'Por la tarde trabajo.',
+      ['time'],
+      {
+        acceptedTranslations: ['a la tarde'],
+      },
+    ),
     w(
       'zh-wanshang',
       '晚上',
       'wǎnshang',
-      'a la noche',
+      'por la noche',
       '我晚上看电视。',
-      'A la noche miro la tele.',
+      'Por la noche miro la tele.',
       ['time'],
-      { acceptedTranslations: ['por la noche'] },
+      { acceptedTranslations: ['a la noche'] },
     ),
     w(
       'zh-qichuang',
@@ -115,7 +124,7 @@ export const unit08: UnitDef = {
       'qǐchuáng',
       'levantarse',
       '我早上起床。',
-      'Me levanto a la mañana.',
+      'Me levanto por la mañana.',
       ['verbs', 'routine'],
       { emoji: '⏰' },
     ),
@@ -144,7 +153,7 @@ export const unit08: UnitDef = {
       'Estudio chino todos los días.',
       ['verbs'],
     ),
-    w('zh-kan', '看', 'kàn', 'mirar / leer', '我晚上看书。', 'A la noche leo.', ['verbs'], {
+    w('zh-kan', '看', 'kàn', 'mirar / leer', '我晚上看书。', 'Por la noche leo.', ['verbs'], {
       acceptedTranslations: ['mirar', 'ver', 'leer'],
     }),
     w(
@@ -153,11 +162,11 @@ export const unit08: UnitDef = {
       'diànshì',
       'tele',
       '我晚上看电视。',
-      'A la noche miro la tele.',
+      'Por la noche miro la tele.',
       ['things'],
       { acceptedTranslations: ['televisión'], emoji: '📺' },
     ),
-    w('zh-shuo', '说', 'shuō', 'hablar', '你说中文吗？', '¿Hablás chino?', ['verbs'], {
+    w('zh-shuo', '说', 'shuō', 'hablar', '你说中文吗？', '¿Hablas chino?', ['verbs'], {
       acceptedTranslations: ['decir'],
     }),
     w(
@@ -178,7 +187,7 @@ export const unit08: UnitDef = {
       'shuìjiào',
       'dormir',
       '我晚上睡觉。',
-      'A la noche duermo.',
+      'Por la noche duermo.',
       ['verbs'],
       {
         emoji: '😴',
@@ -223,19 +232,19 @@ export const unit08: UnitDef = {
       objective: 'Contar cómo empieza tu día.',
       intro: {
         explanation:
-          '起床 (qǐchuáng) es «levantarse». 早饭 (zǎofàn) es «desayuno»: 吃早饭 es «desayunar». 早上 (zǎoshang) «a la mañana» va antes del verbo: 我早上起床.',
+          '起床 (qǐchuáng) es «levantarse». 早饭 (zǎofàn) es «desayuno»: 吃早饭 es «desayunar». 早上 (zǎoshang) «por la mañana» va antes del verbo: 我早上起床.',
         examples: [
-          { target: '我早上起床。', base: 'Me levanto a la mañana.' },
-          { target: '早上我吃早饭。', base: 'A la mañana desayuno.' },
+          { target: '我早上起床。', base: 'Me levanto por la mañana.' },
+          { target: '早上我吃早饭。', base: 'Por la mañana desayuno.' },
         ],
       },
-      takeaways: ['Decís que te levantás con 起床.', 'Ponés el tiempo antes del verbo.'],
+      takeaways: ['Dices que te levantas con 起床.', 'Pones el tiempo antes del verbo.'],
       exercises: [
         ex.imageChoice('⏰', '起床', ['睡觉', '工作', '吃'], ['zh-qichuang']),
         ex.translationChoice(
           '早上',
-          'a la mañana',
-          ['a la noche', 'a la tarde', 'todos los días'],
+          'por la mañana',
+          ['por la noche', 'por la tarde', 'todos los días'],
           ['zh-zaoshang'],
         ),
         ex.translationChoice('早饭', 'desayuno', ['arroz', 'fideos', 'cocina'], ['zh-zaofan']),
@@ -247,7 +256,7 @@ export const unit08: UnitDef = {
         ),
         ex.fillBlank(
           '我早上吃___。',
-          'A la mañana desayuno.',
+          'Por la mañana desayuno.',
           '早饭',
           ['水', '茶', '书'],
           ['zh-zaoshang', 'zh-chi', 'zh-zaofan'],
@@ -255,12 +264,12 @@ export const unit08: UnitDef = {
         ),
         ex.orderWords(
           '我 早上 吃 早饭。',
-          'A la mañana desayuno.',
+          'Por la mañana desayuno.',
           ['zh-zaoshang', 'zh-chi', 'zh-zaofan'],
           { explanation: 'El tiempo va antes del verbo: 我早上吃早饭.' },
         ),
         write(
-          'Me levanto a la mañana.',
+          'Me levanto por la mañana.',
           'wǒ zǎoshang qǐchuáng',
           '我早上起床',
           ['zh-wo', 'zh-zaoshang', 'zh-qichuang'],
@@ -273,7 +282,7 @@ export const unit08: UnitDef = {
     },
     {
       title: '工作和学习',
-      objective: 'Decir si trabajás o estudiás.',
+      objective: 'Decir si trabajas o estudias.',
       intro: {
         explanation:
           '工作 (gōngzuò) es «trabajar» y también «trabajo». 学习 (xuéxí) es «estudiar»: 学 es el mismo de 学生 (estudiante). 在家 (zài jiā) es «en casa» y va antes del verbo: 我在家工作.',
@@ -282,7 +291,7 @@ export const unit08: UnitDef = {
           { target: '我学习中文。', base: 'Estudio chino.' },
         ],
       },
-      takeaways: ['Decís si trabajás o estudiás.', 'Decís dónde con 在家 antes del verbo.'],
+      takeaways: ['Dices si trabajas o estudias.', 'Dices dónde con 在家 antes del verbo.'],
       exercises: [
         ex.imageChoice('💼', '工作', ['学习', '睡觉', '做饭'], ['zh-gongzuo']),
         ex.translationChoice('学习', 'estudiar', ['trabajar', 'dormir', 'hablar'], ['zh-xuexi']),
@@ -315,16 +324,16 @@ export const unit08: UnitDef = {
     },
     {
       title: '看和说',
-      objective: 'Decir qué mirás, leés y hablás.',
+      objective: 'Decir qué miras, lees y hablas.',
       intro: {
         explanation:
           '看 (kàn) es «mirar»: 看电视 «mirar la tele». Con un libro es «leer»: 看书. 说 (shuō) es «hablar, decir»: 说中文 «hablar chino».',
         examples: [
-          { target: '我晚上看电视。', base: 'A la noche miro la tele.' },
-          { target: '你说中文吗？', base: '¿Hablás chino?' },
+          { target: '我晚上看电视。', base: 'Por la noche miro la tele.' },
+          { target: '你说中文吗？', base: '¿Hablas chino?' },
         ],
       },
-      takeaways: ['Usás 看 para mirar la tele y leer un libro.', 'Decís qué idioma hablás con 说.'],
+      takeaways: ['Usas 看 para mirar la tele y leer un libro.', 'Dices qué idioma hablas con 说.'],
       exercises: [
         ex.imageChoice('📺', '电视', ['书', '手机', '电脑'], ['zh-dianshi']),
         ex.translationChoice('看', 'mirar / leer', ['hablar', 'comer', 'tener'], ['zh-kan']),
@@ -337,22 +346,22 @@ export const unit08: UnitDef = {
         ),
         ex.fillBlank(
           '我晚上___电视。',
-          'A la noche miro la tele.',
+          'Por la noche miro la tele.',
           '看',
           ['说', '吃', '喝'],
           ['zh-wanshang', 'zh-kan', 'zh-dianshi'],
           { skill: 'vocabulary' },
         ),
-        ex.orderWords('我 晚上 看 书。', 'A la noche leo.', ['zh-wanshang', 'zh-kan', 'zh-shu']),
+        ex.orderWords('我 晚上 看 书。', 'Por la noche leo.', ['zh-wanshang', 'zh-kan', 'zh-shu']),
         write(
-          'A la noche miro la tele.',
+          'Por la noche miro la tele.',
           'wǒ wǎnshang kàn diànshì',
           '我晚上看电视',
           ['zh-wanshang', 'zh-kan', 'zh-dianshi'],
           { accepted: ['wǎnshang wǒ kàn diànshì', '晚上我看电视'] },
         ),
         write(
-          '¿Hablás chino?',
+          '¿Hablas chino?',
           'nǐ shuō Zhōngwén ma',
           '你说中文吗',
           ['zh-ni', 'zh-shuo', 'zh-zhongwen', 'zh-ma'],
@@ -362,21 +371,24 @@ export const unit08: UnitDef = {
     },
     {
       title: '下午和晚上',
-      objective: 'Ubicar lo que hacés en la tarde y en la noche.',
+      objective: 'Ubicar lo que haces en la tarde y en la noche.',
       intro: {
         explanation:
-          '下午 (xiàwǔ) es «a la tarde» y 晚上 (wǎnshang) «a la noche». 做饭 (zuò fàn) es «cocinar» y 睡觉 (shuìjiào) «dormir». Todos van con el tiempo adelante: 我晚上做饭.',
+          '下午 (xiàwǔ) es «por la tarde» y 晚上 (wǎnshang) «por la noche». 做饭 (zuò fàn) es «cocinar» y 睡觉 (shuìjiào) «dormir». Todos van con el tiempo adelante: 我晚上做饭.',
         examples: [
-          { target: '我下午工作。', base: 'A la tarde trabajo.' },
-          { target: '我晚上做饭。', base: 'A la noche cocino.' },
+          { target: '我下午工作。', base: 'Por la tarde trabajo.' },
+          { target: '我晚上做饭。', base: 'Por la noche cocino.' },
         ],
       },
-      takeaways: ['Decís qué hacés a la tarde y a la noche.', 'Decís que cocinás y que dormís.'],
+      takeaways: [
+        'Dices qué haces por la tarde y por la noche.',
+        'Dices que cocinas y que duermes.',
+      ],
       exercises: [
         ex.translationChoice(
           '下午',
-          'a la tarde',
-          ['a la mañana', 'a la noche', 'después'],
+          'por la tarde',
+          ['por la mañana', 'por la noche', 'después'],
           ['zh-xiawu'],
         ),
         ex.imageChoice('😴', '睡觉', ['起床', '做饭', '工作'], ['zh-shuijiao']),
@@ -389,22 +401,22 @@ export const unit08: UnitDef = {
         ),
         ex.matchPairs(
           [
-            ['早上', 'a la mañana'],
-            ['下午', 'a la tarde'],
-            ['晚上', 'a la noche'],
+            ['早上', 'por la mañana'],
+            ['下午', 'por la tarde'],
+            ['晚上', 'por la noche'],
             ['睡觉', 'dormir'],
           ],
           ['zh-zaoshang', 'zh-xiawu', 'zh-wanshang', 'zh-shuijiao'],
         ),
-        ex.orderWords('我 下午 工作。', 'A la tarde trabajo.', ['zh-xiawu', 'zh-gongzuo']),
+        ex.orderWords('我 下午 工作。', 'Por la tarde trabajo.', ['zh-xiawu', 'zh-gongzuo']),
         write(
-          'A la noche cocino.',
+          'Por la noche cocino.',
           'wǒ wǎnshang zuò fàn',
           '我晚上做饭',
           ['zh-wanshang', 'zh-zuofan'],
           { accepted: ['wǎnshang wǒ zuò fàn', '晚上我做饭'] },
         ),
-        write('A la tarde estudio.', 'wǒ xiàwǔ xuéxí', '我下午学习', ['zh-xiawu', 'zh-xuexi'], {
+        write('Por la tarde estudio.', 'wǒ xiàwǔ xuéxí', '我下午学习', ['zh-xiawu', 'zh-xuexi'], {
           accepted: ['xiàwǔ wǒ xuéxí', '下午我学习'],
         }),
       ],
@@ -420,12 +432,12 @@ export const unit08: UnitDef = {
           { target: '我起床，然后吃早饭。', base: 'Me levanto y después desayuno.' },
         ],
       },
-      takeaways: ['Contás tu rutina con 每天 y 然后.', 'Ponés 常常 antes del verbo.'],
+      takeaways: ['Cuentas tu rutina con 每天 y 然后.', 'Pones 常常 antes del verbo.'],
       exercises: [
         ex.translationChoice(
           '每天',
           'todos los días',
-          ['a la mañana', 'seguido (a menudo)', 'después'],
+          ['por la mañana', 'seguido (a menudo)', 'después'],
           ['zh-meitian'],
         ),
         ex.translationChoice(

@@ -63,12 +63,12 @@ describe('QuestionCard: consigna de la traducción según el idioma de apoyo del
 
   it('español (desde inglés): la traducción es al inglés', async () => {
     await render(inLanguage('es'));
-    expect(screen.getByText('ELEGÍ LA TRADUCCIÓN AL INGLÉS')).toBeTruthy();
+    expect(screen.getByText('ELIGE LA TRADUCCIÓN AL INGLÉS')).toBeTruthy();
   });
 
   it('francés (desde español): la traducción es al español', async () => {
     await render(inLanguage('fr'));
-    expect(screen.getByText('ELEGÍ LA TRADUCCIÓN AL ESPAÑOL')).toBeTruthy();
+    expect(screen.getByText('ELIGE LA TRADUCCIÓN AL ESPAÑOL')).toBeTruthy();
   });
 
   it('en inglés: CHOOSE THE ENGLISH TRANSLATION en el curso de español', async () => {

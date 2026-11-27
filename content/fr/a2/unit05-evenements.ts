@@ -71,7 +71,7 @@ export const FR_A2_U05: FrUnitDef = {
       "Contar un hecho: imparfait para la escena (il pleuvait, j'étais en train de…) y passé composé para lo que pasó (soudain, tout à coup, alors).",
     emoji: '📰',
     objective:
-      'Podés preguntar qué pasó y contar un hecho (un robo, una pérdida, un accidente): cómo era la escena, qué pasó de repente, qué hiciste y cómo terminó.',
+      'Puedes preguntar qué pasó y contar un hecho (un robo, una pérdida, un accidente): cómo era la escena, qué pasó de repente, qué hiciste y cómo terminó.',
     grammar: {
       title: 'Imparfait y passé composé: la escena y el hecho',
       explanation:
@@ -247,7 +247,7 @@ export const FR_A2_U05: FrUnitDef = {
         objective: 'Preguntar qué pasó y contar una pérdida o un robo.',
         intro: {
           explanation:
-            "Para preguntar qué pasó: qu'est-ce qui s'est passé? El hecho se cuenta en passé composé: j'ai perdu (perdre, perder) y on m'a volé (me robaron; on sirve para alguien que no conocés). Falso amigo: voler es robar, y también volar. Le portefeuille es la billetera, y la police, la policía.",
+            "Para preguntar qué pasó: qu'est-ce qui s'est passé? El hecho se cuenta en passé composé: j'ai perdu (perdre, perder) y on m'a volé (me robaron; on sirve para alguien que no conoces). Falso amigo: voler es robar, y también volar. Le portefeuille es la billetera, y la police, la policía.",
           examples: [
             {
               target: "Qu'est-ce qui s'est passé? — J'ai perdu mon portefeuille.",
@@ -257,14 +257,14 @@ export const FR_A2_U05: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Preguntás qu'est-ce qui s'est passé?",
-          "Contás una pérdida con j'ai perdu y un robo con on m'a volé.",
+          "Preguntas qu'est-ce qui s'est passé?",
+          "Cuentas una pérdida con j'ai perdu y un robo con on m'a volé.",
         ],
         exercises: [
           ex.translationChoice(
             "qu'est-ce qui s'est passé?",
             '¿qué pasó?',
-            ['¿qué es esto?', '¿qué hora es?', '¿a qué te dedicás?'],
+            ['¿qué es esto?', '¿qué hora es?', '¿a qué te dedicas?'],
             ['fr-qu-est-ce-qui-s-est-passe'],
             { id: 'fr.ex.o614p3wb98yekj' },
           ),
@@ -331,7 +331,7 @@ export const FR_A2_U05: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Qu'est-ce qui s'est passé?",
-            '¿Qué pasó? (Respondé que te robaron la billetera.)',
+            '¿Qué pasó? (Responde que te robaron la billetera.)',
             "On m'a volé mon portefeuille.",
             ["On m'a volé mon portefeuille!", "Quelqu'un a volé mon portefeuille."],
             ['fr-voler', 'fr-le-portefeuille'],
@@ -356,8 +356,8 @@ export const FR_A2_U05: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Describís la escena con el imparfait: il pleuvait.',
-          'Decís qué estabas haciendo con être en train de.',
+          'Describes la escena con el imparfait: il pleuvait.',
+          'Dices qué estabas haciendo con être en train de.',
         ],
         exercises: [
           ex.translationChoice(
@@ -442,7 +442,7 @@ export const FR_A2_U05: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Quel temps faisait-il hier?',
-            '¿Qué tiempo hacía ayer? (Respondé que llovía.)',
+            '¿Qué tiempo hacía ayer? (Responde que llovía.)',
             'Il pleuvait.',
             ['Hier, il pleuvait.', 'Il pleuvait hier.'],
             ['fr-il-pleuvait'],
@@ -470,8 +470,8 @@ export const FR_A2_U05: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Marcás el hecho con soudain o tout à coup.',
-          "Contás la consecuencia con alors y decís j'ai eu peur.",
+          'Marcas el hecho con soudain o tout à coup.',
+          "Cuentas la consecuencia con alors y dices j'ai eu peur.",
         ],
         exercises: [
           ex.translationChoice(
@@ -558,7 +558,7 @@ export const FR_A2_U05: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Qu'est-ce que tu as vu?",
-            '¿Qué viste? (Respondé que viste un accidente.)',
+            '¿Qué viste? (Responde que viste un accidente.)',
             "J'ai vu un accident.",
             ['Un accident.', "J'ai vu un accident!"],
             ['fr-l-accident'],
@@ -583,8 +583,8 @@ export const FR_A2_U05: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Comentás con heureusement o malheureusement.',
-          'Hablás de le voisin y la voisine.',
+          'Comentas con heureusement o malheureusement.',
+          'Hablas de le voisin y la voisine.',
         ],
         exercises: [
           ex.translationChoice(
@@ -638,7 +638,7 @@ export const FR_A2_U05: FrUnitDef = {
             METRO,
             '¿Qué le robaron a Marc?',
             'La billetera.',
-            ['El teléfono.', 'El bolso.', 'El pasaje de subte.'],
+            ['El teléfono.', 'El bolso.', 'El pasaje de metro.'],
             ['fr-voler', 'fr-le-portefeuille'],
             "Marc dice «On m'a volé mon portefeuille dans le métro!».",
           ),
@@ -659,7 +659,7 @@ export const FR_A2_U05: FrUnitDef = {
             [
               'Porque encontró la billetera.',
               'Porque la policía atrapó al ladrón.',
-              'Porque no había gente en el subte.',
+              'Porque no había gente en el metro.',
             ],
             ['fr-heureusement'],
             'Dice «Heureusement, mon téléphone était dans ma poche»: a la billetera la sacaron del bolso.',
@@ -675,7 +675,7 @@ export const FR_A2_U05: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Tu as appelé la police?',
-            '¿Llamaste a la policía? (Respondé que sí.)',
+            '¿Llamaste a la policía? (Responde que sí.)',
             "Oui, j'ai appelé la police.",
             ["Oui, j'ai appelé la police!", "Oui, j'ai appelé la police, merci."],
             ['fr-la-police'],
@@ -690,7 +690,7 @@ export const FR_A2_U05: FrUnitDef = {
         objective: 'Contar un hecho completo, de la escena al final.',
         intro: {
           explanation:
-            "Un relato completo tiene cuatro partes: la escena en imparfait (il pleuvait, pendant que je rentrais…), el hecho en passé composé (soudain, j'ai vu…), la consecuencia (alors, j'ai appelé…) y tu comentario (heureusement…). Escuchá bien: je rentrais (imparfait) y je suis rentré (passé composé) no suenan igual.",
+            "Un relato completo tiene cuatro partes: la escena en imparfait (il pleuvait, pendant que je rentrais…), el hecho en passé composé (soudain, j'ai vu…), la consecuencia (alors, j'ai appelé…) y tu comentario (heureusement…). Escucha bien: je rentrais (imparfait) y je suis rentré (passé composé) no suenan igual.",
           examples: [
             {
               target: 'Pendant que je rentrais à la maison, il pleuvait.',
@@ -703,8 +703,8 @@ export const FR_A2_U05: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Ordenás un relato: escena, hecho, consecuencia y comentario.',
-          'Elegís imparfait para la escena y passé composé para el hecho.',
+          'Ordenas un relato: escena, hecho, consecuencia y comentario.',
+          'Eliges imparfait para la escena y passé composé para el hecho.',
         ],
         exercises: [
           ex.listenChoice(
@@ -804,7 +804,7 @@ export const FR_A2_U05: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Qu'est-ce que tu faisais quand l'accident est arrivé?",
-            '¿Qué estabas haciendo cuando pasó el accidente? (Respondé que estabas trabajando.)',
+            '¿Qué estabas haciendo cuando pasó el accidente? (Responde que estabas trabajando.)',
             "J'étais en train de travailler.",
             ['Je travaillais.', "J'étais en train de travailler!"],
             ['fr-etre-en-train-de'],

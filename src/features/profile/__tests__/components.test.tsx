@@ -81,7 +81,7 @@ describe('FamilyRow', () => {
     await render(<FamilyRow progress={progress('lessons_completed')} rankedAvailable={false} />);
     expect(screen.getByText('Erudito')).toBeTruthy();
     expect(screen.getByText('Nivel 1/6')).toBeTruthy();
-    expect(screen.getByText('Completá 5 lecciones distintas.')).toBeTruthy();
+    expect(screen.getByText('Completa 5 lecciones distintas.')).toBeTruthy();
     expect(screen.getByText('2/5')).toBeTruthy();
   });
 

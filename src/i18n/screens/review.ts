@@ -16,20 +16,20 @@ export const reviewStrings = defineStrings({
     } as Record<ReviewMode, string>,
     plusTitle: (title: string) => `${title} es de PolyGo Plus`,
     topicUpsell:
-      'Repasá sólo las palabras de la unidad que elijas. El repaso espaciado, la práctica libre y tus puntos débiles siguen siendo gratis.',
+      'Repasa sólo las palabras de la unidad que elijas. El repaso espaciado, la práctica libre y tus puntos débiles siguen siendo gratis.',
     smartUpsell:
       'Arma cada sesión con tus errores frecuentes, las palabras que te cuestan y las que estás por olvidar. El repaso espaciado, la práctica libre y tus puntos débiles siguen siendo gratis.',
     coachUpsell:
-      'Ya usaste tus sesiones de prueba del Coach. Con Plus entrenás tus puntos débiles sin límite. Tu diagnóstico, el repaso espaciado y tus puntos débiles siguen siendo gratis.',
+      'Ya usaste tus sesiones de prueba del Coach. Con Plus entrenas tus puntos débiles sin límite. Tu diagnóstico, el repaso espaciado y tus puntos débiles siguen siendo gratis.',
     coachEmpty: 'Esos temas ya no tienen palabras para reforzar. ¡Bien!',
-    discoverPlus: 'Conocé PolyGo Plus',
+    discoverPlus: 'Descubre PolyGo Plus',
     back: 'Volver',
     verifyError: 'No pudimos verificar tu suscripción.',
     preparing: 'Preparando repaso…',
     previousSaveError:
-      'No pudimos guardar tu repaso anterior. Sus respuestas no se pierden: podés reintentar.',
+      'No pudimos guardar tu repaso anterior. Sus respuestas no se pierden: puedes reintentar.',
     prepareError:
-      'No pudimos preparar el repaso. Lo que ya respondiste no se pierde: podés reintentar.',
+      'No pudimos preparar el repaso. Lo que ya respondiste no se pierde: puedes reintentar.',
     unavailableTitle: 'Repasos en preparación',
     unavailableMessage: (code: string) =>
       `Todavía no hay ejercicios de repaso para ${languageName(code, 'es')}. Tu progreso en este idioma se guarda igual; los repasos llegan cuando su contenido esté publicado.`,
@@ -38,13 +38,13 @@ export const reviewStrings = defineStrings({
     upToDate: 'Estás al día',
     exhaustedMessage: 'Cubriste tu meta diaria de repasos. Lo que falta vuelve mañana, en orden.',
     smartEmpty:
-      'No hay palabras vencidas, con errores frecuentes ni por olvidar. Completá lecciones y volvé más tarde.',
+      'No hay palabras vencidas, con errores frecuentes ni por olvidar. Completa lecciones y vuelve más tarde.',
     topicEmpty: 'Todavía no hay palabras de esta unidad para repasar.',
     reviewEmpty:
-      'No tenés nada para repasar ahora. Lo que estudies volverá cuando toque repasarlo.',
+      'No tienes nada para repasar ahora. Lo que estudies volverá cuando toque repasarlo.',
     exitReviewTitle: '¿Salir del repaso?',
     exitReviewMessage:
-      'Las respuestas que ya comprobaste quedan guardadas: podés retomar este repaso hoy.',
+      'Las respuestas que ya comprobaste quedan guardadas: puedes retomar este repaso hoy.',
     stay: 'Seguir',
     leave: 'Salir',
     done: 'Listo',
@@ -55,11 +55,11 @@ export const reviewStrings = defineStrings({
     preparingPractice: 'Preparando práctica…',
     practiceError: 'No pudimos preparar la práctica.',
     nothingToPractice: 'Nada para practicar',
-    nothingToPracticeMessage: 'Completá lecciones para sumar palabras a tu práctica.',
+    nothingToPracticeMessage: 'Completa lecciones para sumar palabras a tu práctica.',
     exitPracticeTitle: '¿Salir de la práctica?',
-    exitPracticeMessage: 'Podés volver cuando quieras.',
+    exitPracticeMessage: 'Puedes volver cuando quieras.',
     practiceMistakesHint:
-      'Esta práctica no cambia tus repasos: seguí con el repaso espaciado para fijarlas.',
+      'Esta práctica no cambia tus repasos: sigue con el repaso espaciado para fijarlas.',
   },
   en: {
     titles: {
@@ -117,6 +117,118 @@ export const reviewStrings = defineStrings({
     practiceMistakesHint:
       'This practice doesn’t change your reviews. Keep up your spaced review to make them stick.',
   },
+  'pt-BR': {
+    titles: {
+      review: 'Revisão de vocabulário',
+      practice: 'Prática livre',
+      mistakes: 'Seus pontos fracos',
+      smart: 'Revisão inteligente',
+      topic: 'Revisão por tema',
+      coach: 'Sessão do Coach',
+    } as Record<ReviewMode, string>,
+    plusTitle: (title: string) => `${title} faz parte do PolyGo Plus`,
+    topicUpsell:
+      'Revise só as palavras da unidade que você escolher. A revisão espaçada, a prática livre e seus pontos fracos continuam grátis.',
+    smartUpsell:
+      'Monta cada sessão com seus erros frequentes, as palavras que você acha difíceis e as que está quase esquecendo. A revisão espaçada, a prática livre e seus pontos fracos continuam grátis.',
+    coachUpsell:
+      'Você já usou suas sessões de teste do Coach. Com o Plus, você treina seus pontos fracos sem limite. Seu diagnóstico, a revisão espaçada e seus pontos fracos continuam grátis.',
+    coachEmpty: 'Esses temas não têm mais palavras para reforçar. Mandou bem!',
+    discoverPlus: 'Conheça o PolyGo Plus',
+    back: 'Voltar',
+    verifyError: 'Não conseguimos verificar sua assinatura.',
+    preparing: 'Preparando a revisão…',
+    previousSaveError:
+      'Não conseguimos salvar sua revisão anterior. As respostas não se perdem: você pode tentar de novo.',
+    prepareError:
+      'Não conseguimos preparar a revisão. O que você já respondeu não se perde: você pode tentar de novo.',
+    unavailableTitle: 'Revisões em preparação',
+    unavailableMessage: (code: string) =>
+      `Ainda não há exercícios de revisão de ${languageName(code, 'pt-BR')}. Seu progresso neste idioma fica salvo do mesmo jeito; as revisões chegam quando o conteúdo for publicado.`,
+    exhaustedTitle: 'Você já revisou tudo de hoje',
+    nothingToReview: 'Nada para revisar',
+    upToDate: 'Você está em dia',
+    exhaustedMessage: 'Você bateu sua meta diária de revisões. O que falta volta amanhã, na ordem.',
+    smartEmpty:
+      'Não há palavras vencidas, com erros frequentes ou quase esquecidas. Complete lições e volte mais tarde.',
+    topicEmpty: 'Ainda não há palavras desta unidade para revisar.',
+    reviewEmpty:
+      'Você não tem nada para revisar agora. O que você estudar volta quando for hora de revisar.',
+    exitReviewTitle: 'Sair da revisão?',
+    exitReviewMessage:
+      'As respostas que você já conferiu ficam salvas: você pode retomar esta revisão hoje.',
+    stay: 'Continuar',
+    leave: 'Sair',
+    done: 'Pronto',
+    strugglingOverline: 'ESTÁ DIFÍCIL',
+    strugglingBody: 'Essas palavras estão resistindo. Voltar à explicação da lição costuma ajudar.',
+    seeExplanation: (word: string) => 'Ver a explicação · ' + word,
+    preparingPractice: 'Preparando a prática…',
+    practiceError: 'Não conseguimos preparar a prática.',
+    nothingToPractice: 'Nada para praticar',
+    nothingToPracticeMessage: 'Complete lições para adicionar palavras à sua prática.',
+    exitPracticeTitle: 'Sair da prática?',
+    exitPracticeMessage: 'Você pode voltar quando quiser.',
+    practiceMistakesHint:
+      'Esta prática não muda suas revisões: continue com a revisão espaçada para fixá-las.',
+  },
+  it: {
+    titles: {
+      review: 'Ripasso del vocabolario',
+      practice: 'Pratica libera',
+      mistakes: 'I tuoi punti deboli',
+      smart: 'Ripasso intelligente',
+      topic: 'Ripasso per argomento',
+      coach: 'Sessione con il Coach',
+    } as Record<ReviewMode, string>,
+    plusTitle: (title: string) => `${title} fa parte di PolyGo Plus`,
+    topicUpsell:
+      'Ripassa solo le parole dell’unità che scegli. Il ripasso a intervalli, la pratica libera e i tuoi punti deboli restano gratis.',
+    smartUpsell:
+      'Crea ogni sessione con i tuoi errori frequenti, le parole che trovi difficili e quelle che stai per dimenticare. Il ripasso a intervalli, la pratica libera e i tuoi punti deboli restano gratis.',
+    coachUpsell:
+      'Hai già usato le sessioni di prova del Coach. Con Plus alleni i tuoi punti deboli senza limiti. La tua diagnosi, il ripasso a intervalli e i tuoi punti deboli restano gratis.',
+    coachEmpty: 'Questi argomenti non hanno più parole da rinforzare. Ottimo!',
+    discoverPlus: 'Scopri PolyGo Plus',
+    back: 'Indietro',
+    verifyError: 'Non siamo riusciti a verificare il tuo abbonamento.',
+    preparing: 'Sto preparando il ripasso…',
+    previousSaveError:
+      'Non siamo riusciti a salvare il ripasso precedente. Le risposte non vanno perse: puoi riprovare.',
+    prepareError:
+      'Non siamo riusciti a preparare il ripasso. Quello che hai già risposto non va perso: puoi riprovare.',
+    unavailableTitle: 'Ripassi in arrivo',
+    unavailableMessage: (code: string) =>
+      `Non ci sono ancora esercizi di ripasso per ${languageName(code, 'it')}. I tuoi progressi in questa lingua vengono salvati comunque; i ripassi arriveranno quando i contenuti saranno pubblicati.`,
+    exhaustedTitle: 'Hai già ripassato tutto per oggi',
+    nothingToReview: 'Niente da ripassare',
+    upToDate: 'Sei in pari',
+    exhaustedMessage:
+      'Hai raggiunto il tuo obiettivo giornaliero di ripasso. Il resto torna domani, in ordine.',
+    smartEmpty:
+      'Non ci sono parole scadute, con errori frequenti o che stai per dimenticare. Completa le lezioni e torna più tardi.',
+    topicEmpty: 'Non ci sono ancora parole di questa unità da ripassare.',
+    reviewEmpty:
+      'Non hai niente da ripassare adesso. Quello che studi tornerà quando sarà il momento di ripassarlo.',
+    exitReviewTitle: 'Uscire dal ripasso?',
+    exitReviewMessage:
+      'Le risposte che hai già verificato restano salvate: puoi riprendere questo ripasso oggi.',
+    stay: 'Continua',
+    leave: 'Esci',
+    done: 'Fatto',
+    strugglingOverline: 'TI METTONO IN DIFFICOLTÀ',
+    strugglingBody:
+      'Queste parole ti resistono. Tornare alla spiegazione della lezione di solito aiuta.',
+    seeExplanation: (word: string) => 'Vedi la spiegazione · ' + word,
+    preparingPractice: 'Sto preparando la pratica…',
+    practiceError: 'Non siamo riusciti a preparare la pratica.',
+    nothingToPractice: 'Niente da praticare',
+    nothingToPracticeMessage: 'Completa le lezioni per aggiungere parole alla tua pratica.',
+    exitPracticeTitle: 'Uscire dalla pratica?',
+    exitPracticeMessage: 'Puoi tornare quando vuoi.',
+    practiceMistakesHint:
+      'Questa pratica non cambia i tuoi ripassi: continua con il ripasso a intervalli per fissarle.',
+  },
 });
 
 /** Repaso por tema (src/app/review-topics.tsx). Lo ven todos; repasar es de Plus. */
@@ -127,9 +239,9 @@ export const reviewTopicsStrings = defineStrings({
     loadError: 'No pudimos cargar tus temas.',
     emptyTitle: 'Todavía no hay temas',
     emptyMessage:
-      'Completá lecciones: cada unidad en la que estudies palabras aparece acá para repasarla.',
+      'Completa lecciones: cada unidad en la que estudies palabras aparece aquí para repasarla.',
     goToPath: 'Ir a mi camino',
-    heroTitle: 'Elegí un tema y entrenalo',
+    heroTitle: 'Elige un tema y entrénalo',
     heroStats: (topics: number, started: number, weak: number) =>
       [
         `${topics} ${topics === 1 ? 'tema' : 'temas'}`,
@@ -141,7 +253,7 @@ export const reviewTopicsStrings = defineStrings({
     wordsOf: (n: number, total: number) => `${n} de ${total} palabras`,
     lessons: (n: number) => `${n} ${n === 1 ? 'lección' : 'lecciones'}`,
     notStarted: 'Por empezar',
-    recommended: 'Recomendado para vos',
+    recommended: 'Recomendado para ti',
     level: (level: string) => `NIVEL ${level}`,
     words: (n: number) => `${n} ${n === 1 ? 'palabra' : 'palabras'}`,
     struggling: (n: number) => (n === 1 ? '1 te cuesta' : `${n} te cuestan`),
@@ -150,7 +262,7 @@ export const reviewTopicsStrings = defineStrings({
     cardA11y: (title: string, detail: string, locked: boolean) =>
       `${title}. ${detail}.${locked ? ' Con PolyGo Plus.' : ''}`,
     unlock: 'Desbloquear repaso por tema',
-    unlockSub: 'Con PolyGo Plus · cancelá cuando quieras',
+    unlockSub: 'Con PolyGo Plus · cancela cuando quieras',
     legend: { mastered: 'Dominadas', due: 'Para hoy', struggling: 'Te cuestan' },
     note: 'Hasta 15 palabras del tema: primero las que te tocan y las que más te cuestan. No usa energía.',
   },
@@ -185,5 +297,71 @@ export const reviewTopicsStrings = defineStrings({
     unlockSub: 'With PolyGo Plus · cancel anytime',
     legend: { mastered: 'Mastered', due: 'Due today', struggling: 'Hard' },
     note: 'Up to 15 words from the topic: due ones first, then the hardest. Doesn’t use energy.',
+  },
+  'pt-BR': {
+    title: 'Revisão por tema',
+    plus: 'Plus',
+    loadError: 'Não conseguimos carregar seus temas.',
+    emptyTitle: 'Ainda não há temas',
+    emptyMessage:
+      'Complete lições: cada unidade em que você estudar palavras aparece aqui para revisar.',
+    goToPath: 'Ir para minha trilha',
+    heroTitle: 'Escolha um tema e treine',
+    heroStats: (topics: number, started: number, weak: number) =>
+      [
+        `${topics} ${topics === 1 ? 'tema' : 'temas'}`,
+        `${started} ${started === 1 ? 'iniciado' : 'iniciados'}`,
+        weak > 0 ? `${weak} para reforçar` : null,
+      ]
+        .filter(Boolean)
+        .join(' · '),
+    wordsOf: (n: number, total: number) => `${n} de ${total} palavras`,
+    lessons: (n: number) => `${n} ${n === 1 ? 'lição' : 'lições'}`,
+    notStarted: 'Não iniciado',
+    recommended: 'Recomendado para você',
+    level: (level: string) => `NÍVEL ${level}`,
+    words: (n: number) => `${n} ${n === 1 ? 'palavra' : 'palavras'}`,
+    struggling: (n: number) => (n === 1 ? '1 está difícil' : `${n} estão difíceis`),
+    dueToday: (n: number) => `${n} para hoje`,
+    allGood: 'Em dia',
+    cardA11y: (title: string, detail: string, locked: boolean) =>
+      `${title}. ${detail}.${locked ? ' Com PolyGo Plus.' : ''}`,
+    unlock: 'Desbloquear revisão por tema',
+    unlockSub: 'Com PolyGo Plus · cancele quando quiser',
+    legend: { mastered: 'Dominadas', due: 'Para hoje', struggling: 'Difíceis' },
+    note: 'Até 15 palavras do tema: primeiro as que estão na hora de revisar e as mais difíceis. Não gasta energia.',
+  },
+  it: {
+    title: 'Ripasso per argomento',
+    plus: 'Plus',
+    loadError: 'Non siamo riusciti a caricare i tuoi argomenti.',
+    emptyTitle: 'Ancora nessun argomento',
+    emptyMessage:
+      'Completa le lezioni: ogni unità in cui studi delle parole compare qui da ripassare.',
+    goToPath: 'Vai al mio percorso',
+    heroTitle: 'Scegli un argomento e allenalo',
+    heroStats: (topics: number, started: number, weak: number) =>
+      [
+        `${topics} ${topics === 1 ? 'argomento' : 'argomenti'}`,
+        `${started} ${started === 1 ? 'iniziato' : 'iniziati'}`,
+        weak > 0 ? `${weak} da rinforzare` : null,
+      ]
+        .filter(Boolean)
+        .join(' · '),
+    wordsOf: (n: number, total: number) => `${n} su ${total} parole`,
+    lessons: (n: number) => `${n} ${n === 1 ? 'lezione' : 'lezioni'}`,
+    notStarted: 'Da iniziare',
+    recommended: 'Consigliato per te',
+    level: (level: string) => `LIVELLO ${level}`,
+    words: (n: number) => `${n} ${n === 1 ? 'parola' : 'parole'}`,
+    struggling: (n: number) => (n === 1 ? '1 difficile' : `${n} difficili`),
+    dueToday: (n: number) => `${n} per oggi`,
+    allGood: 'In pari',
+    cardA11y: (title: string, detail: string, locked: boolean) =>
+      `${title}. ${detail}.${locked ? ' Con PolyGo Plus.' : ''}`,
+    unlock: 'Sblocca il ripasso per argomento',
+    unlockSub: 'Con PolyGo Plus · disdici quando vuoi',
+    legend: { mastered: 'Padroneggiate', due: 'Per oggi', struggling: 'Difficili' },
+    note: 'Fino a 15 parole dell’argomento: prima quelle da ripassare e le più difficili. Non consuma energia.',
   },
 });

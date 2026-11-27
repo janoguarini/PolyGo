@@ -81,7 +81,7 @@ export const EN_B1_U09: B1UnitDef = {
       'El planeta y la contaminación, la voz pasiva (is made, was built), reciclar, ahorrar energía y proyectos de la comunidad.',
     emoji: '🌱',
     objective:
-      'Podés hablar de problemas del medioambiente, explicar cómo se hace algo con la voz pasiva y proponer soluciones simples.',
+      'Puedes hablar de problemas del medioambiente, explicar cómo se hace algo con la voz pasiva y proponer soluciones simples.',
     grammar: {
       title: 'Voz pasiva',
       explanation:
@@ -89,7 +89,7 @@ export const EN_B1_U09: B1UnitDef = {
       examples: [
         {
           target: 'Plastic bottles are recycled here.',
-          base: 'Acá se reciclan las botellas de plástico.',
+          base: 'Aquí se reciclan las botellas de plástico.',
         },
         { target: 'This house was built in 1950.', base: 'Esta casa fue construida en 1950.' },
         {
@@ -182,7 +182,7 @@ export const EN_B1_U09: B1UnitDef = {
         '/træʃ/',
         '🗑️',
         'Please put your trash in the bin.',
-        'Por favor, tirá la basura en el tacho.',
+        'Por favor, tira la basura en el tacho.',
         ['environment'],
         ['residuos'],
       ),
@@ -301,7 +301,7 @@ export const EN_B1_U09: B1UnitDef = {
         objective: 'Hablar de problemas del medioambiente.',
         intro: {
           explanation:
-            'Palabras para hablar del planeta: the environment (el medioambiente), pollution (la contaminación), climate change (el cambio climático), forest (bosque). Con have to y must decís lo que hay que hacer: We have to protect the planet.',
+            'Palabras para hablar del planeta: the environment (el medioambiente), pollution (la contaminación), climate change (el cambio climático), forest (bosque). Con have to y must dices lo que hay que hacer: We have to protect the planet.',
           examples: [
             {
               target: 'There is a lot of pollution in big cities.',
@@ -314,8 +314,8 @@ export const EN_B1_U09: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Nombrás problemas del medioambiente.',
-          'Decís qué hay que hacer: We have to protect the planet.',
+          'Nombras problemas del medioambiente.',
+          'Dices qué hay que hacer: We have to protect the planet.',
         ],
         exercises: [
           ex.matchPairs(
@@ -389,14 +389,14 @@ export const EN_B1_U09: B1UnitDef = {
           examples: [
             {
               target: 'Plastic bottles are recycled here.',
-              base: 'Acá se reciclan las botellas de plástico.',
+              base: 'Aquí se reciclan las botellas de plástico.',
             },
             { target: 'This bag is made of paper.', base: 'Esta bolsa está hecha de papel.' },
           ],
         },
         takeaways: [
-          'Explicás cómo se hace algo: is/are + participio.',
-          'Decís de qué está hecho algo: made of.',
+          'Explicas cómo se hace algo: is/are + participio.',
+          'Dices de qué está hecho algo: made of.',
         ],
         exercises: [
           ex.fillBlank(
@@ -412,7 +412,7 @@ export const EN_B1_U09: B1UnitDef = {
           ),
           ex.fillBlank(
             'Plastic bottles are ___ here.',
-            'Acá se reciclan las botellas de plástico.',
+            'Aquí se reciclan las botellas de plástico.',
             'recycled',
             ['recycle', 'recycling', 'recycles'],
             ['en-recycle', 'en-plastic'],
@@ -428,7 +428,7 @@ export const EN_B1_U09: B1UnitDef = {
           ),
           ex.fillBlank(
             "Don't ___ water when you wash the dishes.",
-            'No desperdicies agua cuando lavás los platos.',
+            'No desperdicies agua cuando lavas los platos.',
             'waste',
             ['save', 'recycle', 'protect'],
             ['en-waste', 'en-water'],
@@ -472,7 +472,7 @@ export const EN_B1_U09: B1UnitDef = {
             },
           ),
           ex.translateWrite(
-            'Acá se recicla el vidrio.',
+            'Aquí se recicla el vidrio.',
             'Glass is recycled here.',
             ['en-recycle'],
             {
@@ -499,8 +499,8 @@ export const EN_B1_U09: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Contás la historia de un lugar: It was built in…',
-          'Decís quién lo hizo con by.',
+          'Cuentas la historia de un lugar: It was built in…',
+          'Dices quién lo hizo con by.',
         ],
         exercises: [
           ex.translationChoice(
@@ -554,7 +554,7 @@ export const EN_B1_U09: B1UnitDef = {
             BRIDGE,
             '¿Quién puede usar el puente hoy?',
             'Sólo la gente a pie y en bici',
-            ['Todos, también los autos', 'Nadie', 'Sólo los colectivos'],
+            ['Todos, también los autos', 'Nadie', 'Sólo los autobuses'],
             ['en-allowed-to'],
             'La guía dice: «only by people on foot and bikes. Cars are not allowed».',
           ),
@@ -601,7 +601,7 @@ export const EN_B1_U09: B1UnitDef = {
           'Proponer soluciones: reducir, proteger, ahorrar energía, usar transporte público.',
         intro: {
           explanation:
-            'Para proponer soluciones: reduce (reducir), protect (proteger), save energy (ahorrar energía), use public transport. Con el primer condicional mostrás el resultado: If more people ride bikes, the air will be cleaner.',
+            'Para proponer soluciones: reduce (reducir), protect (proteger), save energy (ahorrar energía), use public transport. Con el primer condicional muestras el resultado: If more people ride bikes, the air will be cleaner.',
           examples: [
             {
               target: 'We should save energy at home.',
@@ -614,8 +614,8 @@ export const EN_B1_U09: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Proponés soluciones con should y have to.',
-          'Mostrás el resultado con if + will.',
+          'Propones soluciones con should y have to.',
+          'Muestras el resultado con if + will.',
         ],
         exercises: [
           ex.matchPairs(
@@ -649,7 +649,7 @@ export const EN_B1_U09: B1UnitDef = {
             TRANSPORT,
             '¿Por qué Ben va al trabajo en auto?',
             'Porque es mucho más rápido',
-            ['Porque no hay colectivos', 'Porque vive lejos', 'Porque llueve'],
+            ['Porque no hay autobuses', 'Porque vive lejos', 'Porque llueve'],
             ['en-public-transport'],
             'Ben dice: «I always drive to work. It is much faster».',
           ),
@@ -724,8 +724,8 @@ export const EN_B1_U09: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Contás un proyecto de tu comunidad.',
-          'Usás la pasiva para contar qué se hizo.',
+          'Cuentas un proyecto de tu comunidad.',
+          'Usas la pasiva para contar qué se hizo.',
         ],
         exercises: [
           ex.translationChoice(

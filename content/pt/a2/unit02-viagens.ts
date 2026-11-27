@@ -121,7 +121,7 @@ export const PT_A2_U02: PtUnitDef = {
       'El perfeito irregular (fui, foi, fiz, fez, tive, estive), conhecer un lugar, el aeropuerto y el falso amigo mala.',
     emoji: '✈️',
     objective:
-      'Podés contar un viaje (adónde fuiste, qué hiciste, qué conociste), entender un aviso del aeropuerto y explicar un problema de viaje.',
+      'Puedes contar un viaje (adónde fuiste, qué hiciste, qué conociste), entender un aviso del aeropuerto y explicar un problema de viaje.',
     grammar: {
       title: 'Perfeito irregular: fui, fiz, tive, estive',
       explanation:
@@ -164,7 +164,7 @@ export const PT_A2_U02: PtUnitDef = {
         'tive',
         'tuve',
         'Tive um problema com a mala.',
-        'Tuve un problema con la valija.',
+        'Tuve un problema con la maleta.',
         ['past'],
       ),
       w(
@@ -208,8 +208,8 @@ export const PT_A2_U02: PtUnitDef = {
         },
       ),
       w('pt-voo', 'voo', 'vuelo', 'O voo foi rápido.', 'El vuelo fue rápido.', ['travel']),
-      w('pt-mala', 'mala', 'valija', 'A minha mala é azul.', 'Mi valija es azul.', ['travel'], {
-        acceptedTranslations: ['maleta'],
+      w('pt-mala', 'mala', 'maleta', 'A minha mala é azul.', 'Mi maleta es azul.', ['travel'], {
+        acceptedTranslations: ['maleta', 'valija'],
         emoji: '🧳',
       }),
       w(
@@ -217,7 +217,7 @@ export const PT_A2_U02: PtUnitDef = {
         'passaporte',
         'pasaporte',
         'Você tem o passaporte?',
-        '¿Tenés el pasaporte?',
+        '¿Tienes el pasaporte?',
         ['travel'],
         {
           emoji: '🛂',
@@ -271,7 +271,7 @@ export const PT_A2_U02: PtUnitDef = {
             { target: 'Como foi a viagem?', base: '¿Cómo fue el viaje?' },
           ],
         },
-        takeaways: ['Contás adónde fuiste: fui para…', 'Decís cómo fue: foi ótimo.'],
+        takeaways: ['Cuentas adónde fuiste: fui para…', 'Dices cómo fue: foi ótimo.'],
         exercises: [
           ex.translationChoice(
             'férias',
@@ -283,7 +283,7 @@ export const PT_A2_U02: PtUnitDef = {
           ex.translationChoice(
             'viagem',
             'viaje',
-            ['valija', 'vuelo', 'vacaciones'],
+            ['maleta', 'vuelo', 'vacaciones'],
             ['pt-viagem'],
             { id: 'pt.ex.ovrkukhopa992i' },
           ),
@@ -340,7 +340,7 @@ export const PT_A2_U02: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Como foi a viagem? (😀)',
-            '¿Cómo fue el viaje? (Respondé que fue buenísimo.)',
+            '¿Cómo fue el viaje? (Responde que fue buenísimo.)',
             'Foi ótima!',
             [
               'Foi ótima.',
@@ -375,22 +375,22 @@ export const PT_A2_U02: PtUnitDef = {
         objective: 'Moverte en el aeropuerto.',
         intro: {
           explanation:
-            'En el aeropuerto: o voo (el vuelo), o passaporte, a mala. Falso amigo: mala es la «valija», no algo malo. Pegar un transporte es «tomarlo»: peguei um táxi.',
+            'En el aeropuerto: o voo (el vuelo), o passaporte, a mala. Falso amigo: mala es la «maleta», no algo malo. Pegar un transporte es «tomarlo»: peguei um táxi.',
           examples: [
-            { target: 'A minha mala é azul.', base: 'Mi valija es azul.' },
+            { target: 'A minha mala é azul.', base: 'Mi maleta es azul.' },
             { target: 'Peguei um táxi para o aeroporto.', base: 'Tomé un taxi al aeropuerto.' },
           ],
         },
-        takeaways: ['Nombrás lo que llevás a un viaje.', 'Sabés que mala es «valija».'],
+        takeaways: ['Nombras lo que llevas a un viaje.', 'Sabes que mala es «maleta».'],
         exercises: [
           ex.translationChoice(
             'mala',
-            'valija',
+            'maleta',
             ['mala (adjetivo)', 'mochila', 'cartera'],
             ['pt-mala'],
             {
               id: 'pt.ex.8lrb22ge78y8zx',
-              explanation: 'Falso amigo: mala es la valija.',
+              explanation: 'Falso amigo: mala es la maleta.',
             },
           ),
           ex.imageChoice('🛂', 'passaporte', ['mala', 'voo', 'aeroporto'], ['pt-passaporte'], {
@@ -399,7 +399,7 @@ export const PT_A2_U02: PtUnitDef = {
           ex.imageChoice('🛫', 'aeroporto', ['viagem', 'passaporte', 'estação'], ['pt-aeroporto'], {
             id: 'pt.ex.6a61mfw1zx9u92',
           }),
-          ex.translationChoice('voo', 'vuelo', ['viaje', 'avión', 'valija'], ['pt-voo'], {
+          ex.translationChoice('voo', 'vuelo', ['viaje', 'avión', 'maleta'], ['pt-voo'], {
             id: 'pt.ex.vphx4g4bh5x2ob',
           }),
           ex.listenChoice(
@@ -419,7 +419,7 @@ export const PT_A2_U02: PtUnitDef = {
             'A los pasajeros del vuelo a Recife',
             [
               'A los pasajeros que llegan de Recife',
-              'A los que perdieron una valija',
+              'A los que perdieron una maleta',
               'A los empleados del aeropuerto',
             ],
             ['pt-voo'],
@@ -430,7 +430,7 @@ export const PT_A2_U02: PtUnitDef = {
             AVISO,
             '¿Qué tienen que tener en la mano?',
             'El pasaporte o el documento',
-            ['El pasaje impreso', 'La valija', 'El celular'],
+            ['El pasaje impreso', 'La maleta', 'El celular'],
             ['pt-passaporte'],
             'Dice: «tenham o passaporte ou a identidade na mão».',
           ),
@@ -447,7 +447,7 @@ export const PT_A2_U02: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Você tem o passaporte?',
-            '¿Tenés el pasaporte? (Respondé que sí, que está en la valija.)',
+            '¿Tienes el pasaporte? (Responde que sí, que está en la maleta.)',
             'Sim, está na mala.',
             [
               'Tenho, está na mala.',
@@ -458,7 +458,7 @@ export const PT_A2_U02: PtUnitDef = {
             ['pt-passaporte', 'pt-mala'],
             { id: 'pt.ex.26euil7oo6moub' },
           ),
-          ex.translateWrite('Mi valija es azul.', 'A minha mala é azul.', ['pt-mala'], {
+          ex.translateWrite('Mi maleta es azul.', 'A minha mala é azul.', ['pt-mala'], {
             id: 'pt.ex.xvborg2w9oi5ik',
             acceptedAnswers: ['Minha mala é azul.'],
           }),
@@ -477,7 +477,7 @@ export const PT_A2_U02: PtUnitDef = {
             { target: 'Eu fiz muitas fotos.', base: 'Saqué muchas fotos.' },
           ],
         },
-        takeaways: ['Preguntás o que você fez?', 'Contás qué hiciste con fiz.'],
+        takeaways: ['Preguntas o que você fez?', 'Cuentas qué hiciste con fiz.'],
         exercises: [
           ex.translationChoice(
             'fiz',
@@ -546,7 +546,7 @@ export const PT_A2_U02: PtUnitDef = {
           ),
           ex.shortAnswer(
             'O que você fez no sábado? (o jantar)',
-            '¿Qué hiciste el sábado? (Respondé que hiciste la cena.)',
+            '¿Qué hiciste el sábado? (Responde que hiciste la cena.)',
             'Eu fiz o jantar.',
             ['Fiz o jantar.', 'No sábado eu fiz o jantar.', 'No sábado fiz o jantar.'],
             ['pt-fiz'],
@@ -571,11 +571,11 @@ export const PT_A2_U02: PtUnitDef = {
           explanation:
             'Ter en pasado: eu tive, ele teve («tuve un problema»). Estar en pasado: eu estive, ele esteve («estuve en Recife»). Estive sirve para decir en qué lugares estuviste.',
           examples: [
-            { target: 'Eu tive um problema com a mala.', base: 'Tuve un problema con la valija.' },
+            { target: 'Eu tive um problema com a mala.', base: 'Tuve un problema con la maleta.' },
             { target: 'Já estive em Recife duas vezes.', base: 'Ya estuve en Recife dos veces.' },
           ],
         },
-        takeaways: ['Contás un problema con tive.', 'Decís dónde estuviste con estive.'],
+        takeaways: ['Cuentas un problema con tive.', 'Dices dónde estuviste con estive.'],
         exercises: [
           ex.translationChoice('estive', 'estuve', ['tuve', 'estoy', 'fui'], ['pt-estive'], {
             id: 'pt.ex.y8lvj2wn1hjd01',
@@ -610,7 +610,7 @@ export const PT_A2_U02: PtUnitDef = {
             'pt.ex.hozuya7ak1pweh',
             MALA,
             '¿Qué problema tuvo Rodrigo?',
-            'Su valija no llegó',
+            'Su maleta no llegó',
             ['Perdió el vuelo', 'Perdió el pasaporte', 'El hotel estaba cerrado'],
             ['pt-tive', 'pt-mala'],
             'Rodrigo escribe: «A minha mala não chegou!».',
@@ -619,11 +619,11 @@ export const PT_A2_U02: PtUnitDef = {
             'pt.ex.kv90uxvw2g6kfg',
             MALA,
             '¿Cómo terminó el problema?',
-            'Encontraron la valija y la mandaron al hotel',
+            'Encontraron la maleta y la mandaron al hotel',
             [
-              'Nunca encontraron la valija',
+              'Nunca encontraron la maleta',
               'Rodrigo volvió al aeropuerto al otro día',
-              'La compañía le dio otra valija',
+              'La compañía le dio otra maleta',
             ],
             ['pt-mala'],
             'Dice: «eles acharam a mala e mandaram para o meu hotel».',
@@ -633,7 +633,7 @@ export const PT_A2_U02: PtUnitDef = {
             MALA,
             '¿Qué consejo da Rodrigo?',
             'Llevar siempre ropa en la mochila',
-            ['Llegar dos horas antes', 'Viajar sin valija', 'Llevar el pasaporte en la mano'],
+            ['Llegar dos horas antes', 'Viajar sin maleta', 'Llevar el pasaporte en la mano'],
             ['pt-mala'],
             'Su consejo: «leve sempre uma roupa na mochila».',
           ),
@@ -647,7 +647,7 @@ export const PT_A2_U02: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Você já esteve em Salvador?',
-            '¿Ya estuviste en Salvador? (Respondé que sí, el año pasado.)',
+            '¿Ya estuviste en Salvador? (Responde que sí, el año pasado.)',
             'Sim, eu estive em Salvador no ano passado.',
             [
               'Sim, estive lá no ano passado.',
@@ -685,7 +685,7 @@ export const PT_A2_U02: PtUnitDef = {
             { target: 'Lá eu conheci o Rio e Salvador.', base: 'Allá conocí Río y Salvador.' },
           ],
         },
-        takeaways: ['Contás un viaje: viajei, conheci, fui.', 'Ubicás el viaje: no ano passado.'],
+        takeaways: ['Cuentas un viaje: viajei, conheci, fui.', 'Ubicas el viaje: no ano passado.'],
         exercises: [
           ex.translationChoice(
             'conheci',
@@ -734,7 +734,7 @@ export const PT_A2_U02: PtUnitDef = {
             FERIAS,
             '¿Cómo fue el vuelo?',
             'Rápido: solo dos horas',
-            ['Largo: diez horas', 'Tuvo un problema', 'Fueron en colectivo'],
+            ['Largo: diez horas', 'Tuvo un problema', 'Fueron en autobús'],
             ['pt-voo', 'pt-foi'],
             'Bete dice: «O voo foi rápido, só duas horas».',
           ),
@@ -748,7 +748,7 @@ export const PT_A2_U02: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Para onde você viajou no ano passado? (Recife)',
-            '¿Adónde viajaste el año pasado? (Respondé que a Recife.)',
+            '¿Adónde viajaste el año pasado? (Responde que a Recife.)',
             'Eu viajei para Recife.',
             [
               'Viajei para Recife.',

@@ -6,6 +6,7 @@
 // Las lecciones «En contexto» se cargan SIN publicar. Para probar la corrección, la última parte del
 // archivo las publica dentro de esta base desechable (nunca en otra parte): así se ejerce el camino
 // que tendrían después de una revisión pedagógica, sin cambiar nada fuera de PGlite.
+import { withNeutralSpanish } from '../../scripts/neutral-patch.ts';
 import { test, before } from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash, randomUUID } from 'node:crypto';
@@ -60,7 +61,7 @@ test('la migración de contenido es la salida exacta del generador (determinista
   const a = comprehensionSql().sql;
   const b = comprehensionSql().sql;
   assert.equal(a, b);
-  assert.equal(migration(CONTENT), a);
+  assert.equal(withNeutralSpanish(migration(CONTENT)), a);
   // La migración de la C.1 no se tocó.
   assert.equal(createHash('sha256').update(migration(CONTENT_C1)).digest('hex'), CONTENT_C1_SHA256);
 });

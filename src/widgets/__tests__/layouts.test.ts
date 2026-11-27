@@ -135,7 +135,7 @@ describe.each(['ios', 'android'] as const)('widgets %s', (platform) => {
 
   it('Palabra: las props iniciales invitan a abrir la app', () => {
     const shown = texts(word(registered.PolygoWord!.initialProps as WordCardProps, {}));
-    expect(shown).toContain('Abrí Polygo');
+    expect(shown).toContain('Abre PolyGo');
   });
 
   it('Pregunta rápida: responder, ver la corrección, avanzar y terminar la ronda', () => {
@@ -171,7 +171,7 @@ describe.each(['ios', 'android'] as const)('widgets %s', (platform) => {
 
   it('Pregunta rápida: sin preguntas pide abrir la app', () => {
     const tree = quiz(registered.PolygoQuiz!.initialProps as QuizProps, {});
-    expect(texts(tree)).toContain('Abrí Polygo para cargar preguntas');
+    expect(texts(tree)).toContain('Abre PolyGo para cargar preguntas');
     expect(buttons(tree)).toHaveLength(0);
   });
 });

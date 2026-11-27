@@ -43,15 +43,15 @@ export const ZH_A2_U06: ZhUnitDef = {
       'Preguntar si alguien puede, contar planes, invitar, aceptar o rechazar y recibir visitas.',
     emoji: '🎉',
     objective:
-      'Podés preguntar si alguien tiene tiempo, contar tus planes, invitar, aceptar o rechazar con amabilidad y recibir a alguien en tu casa.',
+      'Puedes preguntar si alguien tiene tiempo, contar tus planes, invitar, aceptar o rechazar con amabilidad y recibir a alguien en tu casa.',
     grammar: {
       title: 'A-不-A · 打算 · 还是 · 进来 / 出去',
       explanation:
         'Se pregunta repitiendo el verbo con 不 (去不去, 想不想) o con 没 si es 有 (有没有空), sin 吗. 打算 + verbo es un plan. 还是 es «o» en preguntas. Después de un verbo de movimiento, 来 indica hacia quien habla y 去, hacia afuera: 进来, 出去, 回来, 上来.',
       examples: [
-        { target: '你有没有空？', base: '¿Tenés tiempo?' },
-        { target: '你喝茶还是喝咖啡？', base: '¿Tomás té o café?' },
-        { target: '欢迎，欢迎！请进来！', base: '¡Bienvenido! ¡Pasá!' },
+        { target: '你有没有空？', base: '¿Tienes tiempo?' },
+        { target: '你喝茶还是喝咖啡？', base: '¿Tomas té o café?' },
+        { target: '欢迎，欢迎！请进来！', base: '¡Bienvenido! ¡Pasa!' },
       ],
     },
     review: {
@@ -66,7 +66,7 @@ export const ZH_A2_U06: ZhUnitDef = {
         'yǒu kòng',
         'tener tiempo libre',
         '你明天有没有空？',
-        '¿Mañana tenés tiempo?',
+        '¿Mañana tienes tiempo?',
         ['social', 'time'],
         {
           acceptedTranslations: ['estar libre'],
@@ -93,7 +93,7 @@ export const ZH_A2_U06: ZhUnitDef = {
         'dǎsuan',
         'pensar hacer (planear)',
         '周末你打算做什么？',
-        '¿Qué tenés pensado hacer el fin de semana?',
+        '¿Qué tienes pensado hacer el fin de semana?',
         ['verbs'],
         {
           acceptedTranslations: ['planear', 'tener pensado'],
@@ -130,7 +130,7 @@ export const ZH_A2_U06: ZhUnitDef = {
         'háishi',
         'o (en preguntas)',
         '你喝茶还是喝咖啡？',
-        '¿Tomás té o café?',
+        '¿Tomas té o café?',
         ['grammar'],
         {
           acceptedTranslations: ['o'],
@@ -169,10 +169,10 @@ export const ZH_A2_U06: ZhUnitDef = {
         'jìnlái',
         'pasar (entrar)',
         '请进来！',
-        '¡Pasá!',
+        '¡Pasa!',
         ['verbs', 'directions'],
         {
-          acceptedTranslations: ['entrar', 'pasá'],
+          acceptedTranslations: ['entrar', 'pasá', 'pasa'],
         },
       ),
       w('zh-chuqu', '出去', 'chūqù', 'salir', '我们出去吃饭吧。', 'Salgamos a comer.', [
@@ -183,24 +183,24 @@ export const ZH_A2_U06: ZhUnitDef = {
         'zh-huilai',
         '回来',
         'huílái',
-        'volver (acá)',
+        'volver (aquí)',
         '妈妈，你几点回来？',
-        'Mamá, ¿a qué hora volvés?',
+        'Mamá, ¿a qué hora vuelves?',
         ['verbs', 'directions'],
         {
-          acceptedTranslations: ['regresar'],
+          acceptedTranslations: ['regresar', 'volver (acá)'],
         },
       ),
       w(
         'zh-shanglai',
         '上来',
         'shànglái',
-        'subir (acá)',
+        'subir (aquí)',
         '我在三楼，你上来吧！',
-        'Estoy en el tercer piso, ¡subí!',
+        'Estoy en el tercer piso, ¡sube!',
         ['verbs', 'directions'],
         {
-          acceptedTranslations: ['subir'],
+          acceptedTranslations: ['subir', 'subir (acá)'],
         },
       ),
       w(
@@ -225,11 +225,11 @@ export const ZH_A2_U06: ZhUnitDef = {
           explanation:
             'Una forma muy común de preguntar es repetir el verbo con 不 en el medio: 你去不去？ (¿vas o no?), 你想不想来？ Con 有 se usa 没: 你有没有空？ Estas preguntas no llevan 吗.',
           examples: [
-            { target: '你下个星期有没有空？', base: '¿La semana que viene tenés tiempo?' },
-            { target: '你想不想去？', base: '¿Querés ir?' },
+            { target: '你下个星期有没有空？', base: '¿La semana que viene tienes tiempo?' },
+            { target: '你想不想去？', base: '¿Quieres ir?' },
           ],
         },
-        takeaways: ['Preguntás con 去不去 y 有没有.', 'Hablás de tu tiempo libre con 有空.'],
+        takeaways: ['Preguntas con 去不去 y 有没有.', 'Hablas de tu tiempo libre con 有空.'],
         exercises: [
           ex.translationChoice(
             '有空',
@@ -255,7 +255,7 @@ export const ZH_A2_U06: ZhUnitDef = {
           ),
           ex.fillBlank(
             '你有___有时间？',
-            '¿Tenés tiempo?',
+            '¿Tienes tiempo?',
             '没',
             ['不', '也', '了'],
             ['zh-shijian'],
@@ -264,7 +264,7 @@ export const ZH_A2_U06: ZhUnitDef = {
               explanation: 'Con 有 la pregunta es 有没有; con otros verbos, 去不去, 想不想.',
             },
           ),
-          ex.fillBlank('你想___想去？', '¿Querés ir?', '不', ['没', '吗', '也'], ['zh-xiang'], {
+          ex.fillBlank('你想___想去？', '¿Quieres ir?', '不', ['没', '吗', '也'], ['zh-xiang'], {
             id: 'zh.ex.k3j5l4bvg79uqq',
             explanation: 'Pregunta A-不-A: 想不想, sin 吗 al final.',
           }),
@@ -283,7 +283,7 @@ export const ZH_A2_U06: ZhUnitDef = {
           ),
           reply(
             '你明天有没有空？',
-            '¿Mañana tenés tiempo? (Respondé que sí.)',
+            '¿Mañana tienes tiempo? (Responde que sí.)',
             'yǒu kòng',
             '有空',
             ['zh-youkong'],
@@ -320,11 +320,11 @@ export const ZH_A2_U06: ZhUnitDef = {
           explanation:
             '打算 + verbo es «tener pensado, planear»: 我打算去北京. 聚会 es una reunión o juntada, y 参加 es ir a algo organizado o participar: 参加聚会.',
           examples: [
-            { target: '周末你打算做什么？', base: '¿Qué tenés pensado hacer el fin de semana?' },
+            { target: '周末你打算做什么？', base: '¿Qué tienes pensado hacer el fin de semana?' },
             { target: '我想参加你的聚会。', base: 'Quiero ir a tu reunión.' },
           ],
         },
-        takeaways: ['Contás planes con 打算.', 'Decís que vas a una reunión con 参加.'],
+        takeaways: ['Cuentas planes con 打算.', 'Dices que vas a una reunión con 参加.'],
         exercises: [
           ex.translationChoice(
             '聚会',
@@ -361,7 +361,7 @@ export const ZH_A2_U06: ZhUnitDef = {
           ),
           ex.fillBlank(
             '你想___我们的聚会吗？',
-            '¿Querés venir a nuestra reunión?',
+            '¿Quieres venir a nuestra reunión?',
             '参加',
             ['打算', '有空', '时间'],
             ['zh-canjia', 'zh-juhui'],
@@ -383,7 +383,7 @@ export const ZH_A2_U06: ZhUnitDef = {
           ),
           reply(
             '周末你打算做什么？',
-            '¿Qué tenés pensado hacer el fin de semana? (Respondé que vas a ir a una reunión.)',
+            '¿Qué tienes pensado hacer el fin de semana? (Responde que vas a ir a una reunión.)',
             'wǒ dǎsuan qù cānjiā jùhuì',
             '我打算去参加聚会',
             ['zh-dasuan', 'zh-canjia', 'zh-juhui'],
@@ -414,11 +414,11 @@ export const ZH_A2_U06: ZhUnitDef = {
           explanation:
             '还是 es «o» en una pregunta con dos opciones: 你喝茶还是喝咖啡？ Para aceptar: 当然！ (¡claro!). Para rechazar con amabilidad: 可惜我有事 (qué lástima, tengo algo que hacer).',
           examples: [
-            { target: '你喝茶还是喝咖啡？', base: '¿Tomás té o café?' },
+            { target: '你喝茶还是喝咖啡？', base: '¿Tomas té o café?' },
             { target: '可惜我星期六有事。', base: 'Qué lástima, el sábado tengo algo que hacer.' },
           ],
         },
-        takeaways: ['Ofrecés opciones con 还是.', 'Aceptás con 当然 y rechazás con 可惜.'],
+        takeaways: ['Ofreces opciones con 还是.', 'Aceptas con 当然 y rechazas con 可惜.'],
         exercises: [
           ex.translationChoice('还是', 'o (en preguntas)', ['y', 'con', 'también'], ['zh-haishi'], {
             id: 'zh.ex.m0a9fiihy4q2mw',
@@ -451,7 +451,7 @@ export const ZH_A2_U06: ZhUnitDef = {
           ),
           ex.fillBlank(
             'A：你想来吗？ B：___想！',
-            'A: ¿Querés venir? B: ¡Claro que sí!',
+            'A: ¿Quieres venir? B: ¡Claro que sí!',
             '当然',
             ['可惜', '还是', '打算'],
             ['zh-dangran'],
@@ -475,7 +475,7 @@ export const ZH_A2_U06: ZhUnitDef = {
           ),
           reply(
             '你喝茶还是喝咖啡？',
-            '¿Tomás té o café? (Respondé que té.)',
+            '¿Tomas té o café? (Responde que té.)',
             'wǒ hē chá',
             '我喝茶',
             ['zh-haishi'],
@@ -503,13 +503,13 @@ export const ZH_A2_U06: ZhUnitDef = {
         objective: 'Recibir visitas e indicar movimientos.',
         intro: {
           explanation:
-            'Después de un verbo de movimiento, 来 indica hacia quien habla y 去, hacia afuera o lejos: 进来 (pasá, entrá acá), 出去 (salir), 回来 (volver acá), 上来 (subí). Al recibir a alguien: 欢迎！请进来！',
+            'Después de un verbo de movimiento, 来 indica hacia quien habla y 去, hacia afuera o lejos: 进来 (pasa, entra aquí), 出去 (salir), 回来 (volver aquí), 上来 (sube). Al recibir a alguien: 欢迎！请进来！',
           examples: [
-            { target: '欢迎，欢迎！请进来！', base: '¡Bienvenido! ¡Pasá!' },
+            { target: '欢迎，欢迎！请进来！', base: '¡Bienvenido! ¡Pasa!' },
             { target: '我们出去吃饭吧。', base: 'Salgamos a comer.' },
           ],
         },
-        takeaways: ['Recibís con 欢迎 y 请进来.', 'Usás 来 y 去 según la dirección.'],
+        takeaways: ['Recibes con 欢迎 y 请进来.', 'Usas 来 y 去 según la dirección.'],
         exercises: [
           ex.translationChoice(
             '欢迎',
@@ -521,7 +521,7 @@ export const ZH_A2_U06: ZhUnitDef = {
           ex.translationChoice(
             '出去',
             'salir',
-            ['pasar (entrar)', 'volver (acá)', 'subir (acá)'],
+            ['pasar (entrar)', 'volver (aquí)', 'subir (aquí)'],
             ['zh-chuqu'],
             { id: 'zh.ex.hjghs6plmgc9i3' },
           ),
@@ -530,7 +530,7 @@ export const ZH_A2_U06: ZhUnitDef = {
           }),
           ex.fillBlank(
             '我在三楼，你___吧！',
-            'Estoy en el tercer piso, ¡subí!',
+            'Estoy en el tercer piso, ¡sube!',
             '上来',
             ['出去', '进来', '回来'],
             ['zh-shanglai'],
@@ -541,7 +541,7 @@ export const ZH_A2_U06: ZhUnitDef = {
           ),
           ex.fillBlank(
             '妈妈，你几点___？',
-            'Mamá, ¿a qué hora volvés?',
+            'Mamá, ¿a qué hora vuelves?',
             '回来',
             ['出去', '上来', '进来'],
             ['zh-huilai'],
@@ -573,14 +573,14 @@ export const ZH_A2_U06: ZhUnitDef = {
           ),
           reply(
             '我们出去吃饭吧？',
-            '¿Salimos a comer? (Respondé que bueno, que salgan.)',
+            '¿Salimos a comer? (Responde que bueno, que salgan.)',
             'hǎo, wǒmen chūqù chīfàn ba',
             '好，我们出去吃饭吧',
             ['zh-chuqu'],
             { id: 'zh.ex.9jiyfikjksxlfe', accepted: ['hǎo', '好', 'hǎo, chūqù ba', '好，出去吧'] },
           ),
           write(
-            '¡Bienvenido! ¡Pasá!',
+            '¡Bienvenido! ¡Pasa!',
             'huānyíng, qǐng jìnlái',
             '欢迎，请进来',
             ['zh-huanying', 'zh-jinlai'],
@@ -612,7 +612,7 @@ export const ZH_A2_U06: ZhUnitDef = {
             },
           ],
         },
-        takeaways: ['Proponés otra vez con 下次.', 'Entendés si alguien acepta o rechaza.'],
+        takeaways: ['Propones otra vez con 下次.', 'Entiendes si alguien acepta o rechaza.'],
         exercises: [
           ex.translationChoice(
             '下次',
@@ -682,7 +682,7 @@ export const ZH_A2_U06: ZhUnitDef = {
           ),
           reply(
             '星期六你来不来我家？',
-            '¿Venís el sábado a mi casa? (Rechazá con amabilidad: qué lástima, tenés algo que hacer, la próxima.)',
+            '¿Vienes el sábado a mi casa? (Rechaza con amabilidad: qué lástima, tienes algo que hacer, la próxima.)',
             'kěxī wǒ yǒu shì, xià cì ba',
             '可惜我有事，下次吧',
             ['zh-kexi', 'zh-xiaci'],

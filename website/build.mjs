@@ -1,4 +1,4 @@
-// Arma el sitio estático de Polygo (website/dist) sin dependencias: sólo Node.
+// Arma el sitio estático de PolyGo (website/dist) sin dependencias: sólo Node.
 //   node website/build.mjs
 // Configuración en website/site.config.json; cada campo se puede pisar con una variable de entorno
 // (SITE_URL, APP_STORE_URL, PLAY_STORE_URL, CONTACT_EMAIL, OWNER_NAME), útil para que Netlify y
@@ -30,39 +30,39 @@ const PAGES = [
   {
     file: 'index.html',
     path: '/',
-    title: 'Polygo · Aprendé idiomas jugando y competí en vivo',
+    title: 'PolyGo · Aprende idiomas jugando y compite en vivo',
     description:
-      'Aprendé inglés, italiano, portugués, francés y chino jugando: lecciones cortas, repaso inteligente y partidas 1 contra 1 de 60 segundos con ELO y rangos. Gratis en iPhone y Android.',
+      'Aprende inglés, italiano, portugués, francés y chino jugando: lecciones cortas, repaso inteligente y partidas 1 contra 1 de 60 segundos con ELO y rangos. Gratis en iPhone y Android.',
     priority: '1.0',
   },
   {
     file: 'privacidad.html',
     path: '/privacidad',
-    title: 'Política de privacidad · Polygo',
-    description: 'Qué datos guarda Polygo, para qué los usa y cómo borrar tu cuenta.',
+    title: 'Política de privacidad · PolyGo',
+    description: 'Qué datos guarda PolyGo, para qué los usa y cómo borrar tu cuenta.',
     priority: '0.3',
   },
   {
     file: 'borrar-cuenta.html',
     path: '/borrar-cuenta',
-    title: 'Borrar tu cuenta · Polygo',
-    description: 'Cómo eliminar tu cuenta de Polygo y todos tus datos, desde la app o por email.',
+    title: 'Borrar tu cuenta · PolyGo',
+    description: 'Cómo eliminar tu cuenta de PolyGo y todos tus datos, desde la app o por email.',
     priority: '0.3',
   },
   {
     file: 'terminos.html',
     path: '/terminos',
-    title: 'Términos y condiciones · Polygo',
+    title: 'Términos y condiciones · PolyGo',
     description:
-      'Las reglas de uso de Polygo: tu cuenta, juego limpio, Ranked, Polys, la suscripción PolyGo Plus y cómo cancelarla.',
+      'Las reglas de uso de PolyGo: tu cuenta, juego limpio, Ranked, Polys, la suscripción PolyGo Plus y cómo cancelarla.',
     priority: '0.3',
   },
   {
     file: 'soporte.html',
     path: '/soporte',
-    title: 'Soporte · Polygo',
+    title: 'Soporte · PolyGo',
     description:
-      'Ayuda con Polygo: contacto, contraseña, cancelar o restaurar PolyGo Plus, reembolsos y cómo borrar tu cuenta.',
+      'Ayuda con PolyGo: contacto, contraseña, cancelar o restaurar PolyGo Plus, reembolsos y cómo borrar tu cuenta.',
     priority: '0.4',
   },
 ];
@@ -73,7 +73,7 @@ PAGES.push({
   out: 'blog/index.html',
   source: indexSource(POSTS),
   path: '/blog/',
-  title: 'Blog de Polygo · Guías para aprender idiomas',
+  title: 'Blog de PolyGo · Guías para aprender idiomas',
   description:
     'Guías para aprender inglés, italiano, portugués, francés y chino mandarín: vocabulario, pronunciación, frases clave, métodos de estudio y cómo practicar compitiendo.',
   priority: '0.8',
@@ -143,7 +143,7 @@ function jsonLd(page) {
   const app = {
     '@context': 'https://schema.org',
     '@type': 'MobileApplication',
-    name: 'Polygo',
+    name: 'PolyGo',
     operatingSystem: 'iOS, Android',
     applicationCategory: 'EducationalApplication',
     inLanguage: 'es',
@@ -194,7 +194,7 @@ cpSync(join(src, 'assets'), join(out, 'assets'), { recursive: true });
 mkdirSync(join(out, 'blog'), { recursive: true });
 for (const page of PAGES) writeFileSync(join(out, page.out ?? page.file), render(page));
 if (existsSync(join(src, '404.html'))) {
-  writeFileSync(join(out, '404.html'), render({ ...PAGES[0], file: '404.html', path: '/404', title: 'Página no encontrada · Polygo' }));
+  writeFileSync(join(out, '404.html'), render({ ...PAGES[0], file: '404.html', path: '/404', title: 'Página no encontrada · PolyGo' }));
 }
 
 const today = new Date().toISOString().slice(0, 10);

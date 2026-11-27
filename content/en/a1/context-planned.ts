@@ -31,7 +31,7 @@ export const EN_A1_PLANNED_UNITS: PlannedUnitDef[] = [
     titleEn: 'Letters and personal details',
     description: 'El alfabeto, deletrear y dar datos personales en un formulario.',
     emoji: '🔤',
-    objective: 'Podés deletrear un nombre y entender un formulario con datos personales.',
+    objective: 'Puedes deletrear un nombre y entender un formulario con datos personales.',
     plannedLessons: [
       'U13 L1 El alfabeto (v02)',
       'U13 L2 Deletrear (v02)',
@@ -48,7 +48,7 @@ export const EN_A1_PLANNED_UNITS: PlannedUnitDef[] = [
     titleEn: 'Prices and shopping',
     description: 'Los números hasta el 100, los precios y cómo pedir en una tienda.',
     emoji: '🛍️',
-    objective: 'Podés entender precios y lo que se pide en una tienda.',
+    objective: 'Puedes entender precios y lo que se pide en una tienda.',
     plannedLessons: [
       'U14 L1 Del 21 al 100 (v03)',
       'U14 L2 Precios y dinero (v03)',
@@ -71,14 +71,14 @@ export const EN_A1_PLANNED_CONTEXT_LESSONS: ContextLessonDef[] = [
     objective: 'Entender una ficha de registro y las preguntas de un recepcionista.',
     intro: {
       explanation:
-        'Vas a leer la ficha de registro de Sofia Ruiz, una huésped inventada, y a escuchar al recepcionista del hotel. En el audio la huésped sos vos: prestá atención a qué te pregunta y qué te pide.',
+        'Vas a leer la ficha de registro de Sofia Ruiz, una huésped inventada, y a escuchar al recepcionista del hotel. En el audio la huésped eres tú: presta atención a qué te pregunta y qué te pide.',
       examples: [
         { target: 'What is your surname?', base: '¿Cuál es tu apellido?' },
         { target: 'How do you spell it?', base: '¿Cómo se escribe?' },
       ],
     },
     takeaways: [
-      'Ahora podés entender los datos de una ficha de hotel y lo que te pregunta un recepcionista.',
+      'Ahora puedes entender los datos de una ficha de hotel y lo que te pregunta un recepcionista.',
     ],
     curriculumLesson: 6,
     plannedBefore: EN_A1_PLANNED_UNITS[0]!.plannedLessons,
@@ -164,7 +164,7 @@ export const EN_A1_PLANNED_CONTEXT_LESSONS: ContextLessonDef[] = [
           kind: 'listening',
           id: 'en.stim.a1-u13-reception',
           setting:
-            'Sos Sofia Ruiz, la huésped de la ficha. Llegás al hotel y el recepcionista te habla a vos.',
+            'Eres Sofia Ruiz, la huésped de la ficha. Llegas al hotel y el recepcionista te habla a ti.',
           speakers: [{ name: 'Mark', voice: 'a' }],
           rate: A1_LISTENING_RATE,
           lines: [
@@ -199,7 +199,7 @@ export const EN_A1_PLANNED_CONTEXT_LESSONS: ContextLessonDef[] = [
             answer: 'I am from Mexico.',
             wrong: ['I am Sofia Ruiz.', 'I am fine, thank you.'],
             concepts: ['en-where', 'en-from'],
-            why: '«Where are you from?» pregunta de dónde sos: Sofia es de México.',
+            why: '«Where are you from?» pregunta de dónde eres: Sofia es de México.',
           },
           {
             id: 'en.ex.f4xt6m9qpxob7q',
@@ -222,13 +222,13 @@ export const EN_A1_PLANNED_CONTEXT_LESSONS: ContextLessonDef[] = [
     objective: 'Entender precios en un cartel, una compra en una tienda y un anuncio.',
     intro: {
       explanation:
-        'Vas a leer los precios de una tienda, a escuchar a un cliente con la vendedora y un anuncio de un supermercado. Fijate en qué se compra y cuánto cuesta.',
+        'Vas a leer los precios de una tienda, a escuchar a un cliente con la vendedora y un anuncio de un supermercado. Fíjate en qué se compra y cuánto cuesta.',
       examples: [
         { target: 'How much is this bag?', base: '¿Cuánto cuesta esta bolsa?' },
         { target: "I'd like a white cup, please.", base: 'Quisiera una taza blanca, por favor.' },
       ],
     },
-    takeaways: ['Ahora podés entender precios, qué pide un cliente y cuánto paga.'],
+    takeaways: ['Ahora puedes entender precios, qué pide un cliente y cuánto paga.'],
     curriculumLesson: 6,
     plannedBefore: EN_A1_PLANNED_UNITS[1]!.plannedLessons,
     curriculum: { primary: ['cL05', 'cL03', 'cR01'], secondary: ['p10'] },
@@ -285,7 +285,7 @@ export const EN_A1_PLANNED_CONTEXT_LESSONS: ContextLessonDef[] = [
           },
           {
             id: 'en.ex.gzzrzq21i18kmn',
-            question: '¿Cuánto pagás por dos tazas blancas?',
+            question: '¿Cuánto pagas por dos tazas blancas?',
             answer: '10 dólares',
             wrong: ['12 dólares', '16 dólares'],
             concepts: ['en-two', 'en-white', 'en-cup'],
@@ -375,7 +375,7 @@ export const EN_A1_PLANNED_CONTEXT_LESSONS: ContextLessonDef[] = [
           },
           {
             id: 'en.ex.0oghles4rn3866',
-            question: '¿Qué podés comprar con 3 dólares?',
+            question: '¿Qué puedes comprar con 3 dólares?',
             answer: 'Dos botellas de leche',
             wrong: ['Una botella de leche', 'El queso'],
             concepts: ['en-two', 'en-milk', 'en-three'],

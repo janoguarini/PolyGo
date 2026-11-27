@@ -58,11 +58,11 @@ export const IT_A1_U16: ItUnitDef = {
       'Decir cómo vas a los lugares, adónde vas el fin de semana (al mare, alla stazione) y contar algo que hiciste ayer.',
     emoji: '🚆',
     objective:
-      'Podés decir cómo vas a un lugar (in treno, a piedi), adónde van vos y otros (andiamo al mare, vanno in montagna) y contar en pocas palabras qué hiciste ayer (ho mangiato, sono andato).',
+      'Puedes decir cómo vas a un lugar (in treno, a piedi), adónde van tú y otros (andiamo al mare, vanno in montagna) y contar en pocas palabras qué hiciste ayer (ho mangiato, sono andato).',
     grammar: {
       title: 'In treno · al / alla · un primer passato prossimo',
       explanation:
-        'El transporte va con in y sin artículo: in treno, in autobus, in macchina; pero a piedi. «Tomar» el colectivo es prendere: prendo l’autobus. A + il = al, a + la = alla: vado al cinema, alla stazione; pero in montagna. Andare: vado, vai, va, andiamo, andate, vanno. Para contar lo que hiciste: avere + participio (ho mangiato, ho visto); con andare se usa essere y el participio concuerda: sono andato / sono andata.',
+        'El transporte va con in y sin artículo: in treno, in autobus, in macchina; pero a piedi. «Tomar» el autobús es prendere: prendo l’autobus. A + il = al, a + la = alla: vado al cinema, alla stazione; pero in montagna. Andare: vado, vai, va, andiamo, andate, vanno. Para contar lo que hiciste: avere + participio (ho mangiato, ho visto); con andare se usa essere y el participio concuerda: sono andato / sono andata.',
       examples: [
         { target: 'Andiamo a Roma in treno.', base: 'Vamos a Roma en tren.' },
         { target: 'Sabato vado al mare.', base: 'El sábado voy al mar.' },
@@ -87,12 +87,12 @@ export const IT_A1_U16: ItUnitDef = {
       w(
         'it-autobus',
         'autobus',
-        'colectivo',
+        'autobús',
         'Prendo l’autobus ogni giorno.',
-        'Tomo el colectivo todos los días.',
+        'Tomo el autobús todos los días.',
         ['transport'],
         {
-          acceptedTranslations: ['autobús', 'ómnibus', 'bus'],
+          acceptedTranslations: ['autobús', 'ómnibus', 'bus', 'colectivo'],
           emoji: '🚌',
         },
       ),
@@ -233,15 +233,15 @@ export const IT_A1_U16: ItUnitDef = {
         objective: 'Decir cómo vas a los lugares.',
         intro: {
           explanation:
-            'El transporte va con in y sin artículo: in treno, in autobus, in macchina, in bicicletta; caminando es a piedi. Ojo: macchina es el auto (no una máquina). «Tomar» el colectivo es prendere: prendo l’autobus.',
+            'El transporte va con in y sin artículo: in treno, in autobus, in macchina, in bicicletta; caminando es a piedi. Ojo: macchina es el auto (no una máquina). «Tomar» el autobús es prendere: prendo l’autobus.',
           examples: [
             { target: 'Vado a scuola a piedi.', base: 'Voy a la escuela a pie.' },
-            { target: 'Prendo l’autobus ogni giorno.', base: 'Tomo el colectivo todos los días.' },
+            { target: 'Prendo l’autobus ogni giorno.', base: 'Tomo el autobús todos los días.' },
           ],
         },
         takeaways: [
-          'Decís cómo vas: in treno, in macchina, a piedi.',
-          'Sabés que macchina es «auto».',
+          'Dices cómo vas: in treno, in macchina, a piedi.',
+          'Sabes que macchina es «auto».',
         ],
         exercises: [
           ex.imageChoice('🚆', 'treno', ['autobus', 'macchina', 'bicicletta'], ['it-treno'], {
@@ -254,7 +254,7 @@ export const IT_A1_U16: ItUnitDef = {
           ex.matchPairs(
             [
               ['treno', 'tren'],
-              ['autobus', 'colectivo'],
+              ['autobus', 'autobús'],
               ['macchina', 'auto'],
               ['a piedi', 'a pie'],
             ],
@@ -291,7 +291,7 @@ export const IT_A1_U16: ItUnitDef = {
           ),
           ex.orderWords(
             'Prendo l’autobus ogni giorno.',
-            'Tomo el colectivo todos los días.',
+            'Tomo el autobús todos los días.',
             ['it-autobus', 'it-prendo'],
             {
               id: 'it.ex.bc1ufcxs97vefa',
@@ -299,7 +299,7 @@ export const IT_A1_U16: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Come vai in ufficio?',
-            '¿Cómo vas a la oficina? (Respondé que vas en colectivo.)',
+            '¿Cómo vas a la oficina? (Responde que vas en autobús.)',
             'Vado in autobus.',
             [
               'Vado in ufficio in autobus.',
@@ -334,7 +334,7 @@ export const IT_A1_U16: ItUnitDef = {
             { target: 'Andiamo alla stazione.', base: 'Vamos a la estación.' },
           ],
         },
-        takeaways: ['Usás al y alla para decir adónde vas.', 'Decís in montagna y al mare.'],
+        takeaways: ['Usas al y alla para decir adónde vas.', 'Dices in montagna y al mare.'],
         exercises: [
           ex.fillBlank(
             'Vado ___ cinema.',
@@ -389,7 +389,7 @@ export const IT_A1_U16: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Dove vai stasera?',
-            '¿Adónde vas esta noche? (Respondé que vas al cine.)',
+            '¿Adónde vas esta noche? (Responde que vas al cine.)',
             'Vado al cinema.',
             ['Stasera vado al cinema.', 'Al cinema.'],
             ['it-al', 'it-cinema'],
@@ -418,7 +418,7 @@ export const IT_A1_U16: ItUnitDef = {
             { target: 'Voi andate al mare?', base: '¿Ustedes van al mar?' },
           ],
         },
-        takeaways: ['Conjugás andare: andiamo, andate, vanno.', 'Entendés cómo viaja un grupo.'],
+        takeaways: ['Conjugas andare: andiamo, andate, vanno.', 'Entiendes cómo viaja un grupo.'],
         exercises: [
           ex.translationChoice('vanno', 'van', ['vamos', 'va', 'vas'], ['it-vanno'], {
             id: 'it.ex.hghef30bmcrjco',
@@ -453,7 +453,7 @@ export const IT_A1_U16: ItUnitDef = {
             VIAGGIO,
             '¿Cómo va Marco a Roma con su familia?',
             'En tren, porque es más cómodo',
-            ['En auto', 'En colectivo', 'En bicicleta'],
+            ['En auto', 'En autobús', 'En bicicleta'],
             ['it-treno', 'it-andiamo'],
             'Marco dice: «No, andiamo in treno. È più comodo».',
           ),
@@ -462,13 +462,13 @@ export const IT_A1_U16: ItUnitDef = {
             VIAGGIO,
             '¿Y cómo van a la estación?',
             'A pie, porque está cerca',
-            ['En auto, porque está lejos', 'En colectivo', 'En tren'],
+            ['En auto, porque está lejos', 'En autobús', 'En tren'],
             ['it-a-piedi', 'it-alla'],
             'Marco responde: «A piedi! È vicino».',
           ),
           ex.orderWords(
             'Loro vanno al cinema in autobus.',
-            'Ellos van al cine en colectivo.',
+            'Ellos van al cine en autobús.',
             ['it-vanno', 'it-autobus'],
             {
               id: 'it.ex.tco6cdc0osx8fo',
@@ -476,7 +476,7 @@ export const IT_A1_U16: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Come andate a Roma?',
-            '¿Cómo van ustedes a Roma? (Respondé que van en tren.)',
+            '¿Cómo van ustedes a Roma? (Responde que van en tren.)',
             'Andiamo in treno.',
             ['Andiamo a Roma in treno.', 'In treno.', 'Noi andiamo in treno.'],
             ['it-andiamo', 'it-treno'],
@@ -506,7 +506,10 @@ export const IT_A1_U16: ItUnitDef = {
             { target: 'Cosa hai fatto ieri?', base: '¿Qué hiciste ayer?' },
           ],
         },
-        takeaways: ['Preguntás cosa hai fatto?', 'Contás algo de ayer con ho mangiato y ho visto.'],
+        takeaways: [
+          'Preguntas cosa hai fatto?',
+          'Cuentas algo de ayer con ho mangiato y ho visto.',
+        ],
         exercises: [
           ex.translationChoice('ieri', 'ayer', ['hoy', 'mañana', 'después'], ['it-ieri'], {
             id: 'it.ex.zye33j1mcfiiov',
@@ -521,7 +524,7 @@ export const IT_A1_U16: ItUnitDef = {
           ex.translationChoice(
             'cosa hai fatto?',
             '¿qué hiciste?',
-            ['¿qué hacés?', '¿qué querés?', '¿dónde estás?'],
+            ['¿qué haces?', '¿qué quieres?', '¿dónde estás?'],
             ['it-cosa-hai-fatto'],
             {
               id: 'it.ex.it7ovtfxsasvun',
@@ -574,7 +577,7 @@ export const IT_A1_U16: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Cosa hai fatto ieri?',
-            '¿Qué hiciste ayer? (Respondé que comiste una pizza.)',
+            '¿Qué hiciste ayer? (Responde que comiste una pizza.)',
             'Ieri ho mangiato una pizza.',
             ['Ho mangiato una pizza.', 'Ho mangiato una pizza ieri.'],
             ['it-ho-mangiato', 'it-cosa-hai-fatto'],
@@ -605,8 +608,8 @@ export const IT_A1_U16: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Decís adónde fuiste: sono andato / sono andata.',
-          'Sabés que guardare es «mirar».',
+          'Dices adónde fuiste: sono andato / sono andata.',
+          'Sabes que guardare es «mirar».',
         ],
         exercises: [
           ex.translationChoice(
@@ -673,7 +676,7 @@ export const IT_A1_U16: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Dove sei andato ieri?',
-            '¿Adónde fuiste ayer? (Respondé que fuiste a la montaña.)',
+            '¿Adónde fuiste ayer? (Responde que fuiste a la montaña.)',
             'Sono andato in montagna.',
             [
               'Sono andata in montagna.',

@@ -156,7 +156,7 @@ describe('SessionPlayer con corrección del servidor', () => {
     await choose('chau');
     await check();
     await screen.findByRole('button', { name: 'Reintentar' });
-    expect(screen.getByText('No pudimos comprobar tu respuesta. Revisá tu conexión.')).toBeTruthy();
+    expect(screen.getByText('No pudimos comprobar tu respuesta. Revisa tu conexión.')).toBeTruthy();
     // Sin veredicto todavía: nada avanzó.
     expect(screen.queryByRole('button', { name: 'Continuar' })).toBeNull();
     await doubleTap('Reintentar');

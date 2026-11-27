@@ -41,7 +41,7 @@ export const ZH_A2_U10: ZhUnitDef = {
       'Antes y ahora, cosas que cambian, la pareja y los vecinos, «cuando…» y «mientras…».',
     emoji: '🔄',
     objective:
-      'Podés contar cómo eran las cosas antes y cómo son ahora, decir qué cambia cada vez más, hablar de parejas, hijos y vecinos, y contar qué hacías de chico.',
+      'Puedes contar cómo eran las cosas antes y cómo son ahora, decir qué cambia cada vez más, hablar de parejas, hijos y vecinos, y contar qué hacías de chico.',
     grammar: {
       title: '以前…现在…了 · 越来越 · …的时候 · 一边…一边',
       explanation:
@@ -232,7 +232,7 @@ export const ZH_A2_U10: ZhUnitDef = {
             { target: '我不吃肉了。', base: 'Ya no como carne.' },
           ],
         },
-        takeaways: ['Contrastás 以前 y 现在.', 'Decís «ya no» con 不…了.'],
+        takeaways: ['Contrastas 以前 y 现在.', 'Dices «ya no» con 不…了.'],
         exercises: [
           ex.translationChoice(
             '以前',
@@ -294,7 +294,7 @@ export const ZH_A2_U10: ZhUnitDef = {
           }),
           reply(
             '你以前喝咖啡吗？',
-            '¿Antes tomabas café? (Respondé que antes no, pero ahora sí.)',
+            '¿Antes tomabas café? (Responde que antes no, pero ahora sí.)',
             'yǐqián bù hē, xiànzài hē le',
             '以前不喝，现在喝了',
             ['zh-yiqian'],
@@ -330,7 +330,7 @@ export const ZH_A2_U10: ZhUnitDef = {
             },
           ],
         },
-        takeaways: ['Decís «cada vez más» con 越来越.', 'Contás qué empezaste con 开始.'],
+        takeaways: ['Dices «cada vez más» con 越来越.', 'Cuentas qué empezaste con 开始.'],
         exercises: [
           ex.translationChoice(
             '越来越',
@@ -389,7 +389,7 @@ export const ZH_A2_U10: ZhUnitDef = {
           }),
           reply(
             '你的中文怎么样？',
-            '¿Cómo va tu chino? (Respondé que cada vez mejor.)',
+            '¿Cómo va tu chino? (Responde que cada vez mejor.)',
             'yuèláiyuè hǎo',
             '越来越好',
             ['zh-yuelaiyue'],
@@ -422,8 +422,8 @@ export const ZH_A2_U10: ZhUnitDef = {
           ],
         },
         takeaways: [
-          'Nombrás novio, novia y vecinos.',
-          'Decís con quién se casa alguien con 跟…结婚.',
+          'Nombras novio, novia y vecinos.',
+          'Dices con quién se casa alguien con 跟…结婚.',
         ],
         exercises: [
           ex.translationChoice(
@@ -483,7 +483,7 @@ export const ZH_A2_U10: ZhUnitDef = {
           ),
           reply(
             '你姐姐结婚了吗？',
-            '¿Tu hermana se casó? (Respondé que todavía no.)',
+            '¿Tu hermana se casó? (Responde que todavía no.)',
             'hái méi jiéhūn',
             '还没结婚',
             ['zh-jiehun'],
@@ -518,7 +518,7 @@ export const ZH_A2_U10: ZhUnitDef = {
             { target: '我奶奶年轻的时候是老师。', base: 'Mi abuela, de joven, era profesora.' },
           ],
         },
-        takeaways: ['Decís «cuando…» con …的时候.', 'Hablás de jóvenes, mayores e hijos.'],
+        takeaways: ['Dices «cuando…» con …的时候.', 'Hablas de jóvenes, mayores e hijos.'],
         exercises: [
           ex.translationChoice(
             '年轻',
@@ -542,7 +542,7 @@ export const ZH_A2_U10: ZhUnitDef = {
           ),
           ex.fillBlank(
             '吃饭___，别看手机。',
-            'Cuando comés, no mires el celular.',
+            'Cuando comes, no mires el celular.',
             '的时候',
             ['一会儿', '马上', '刚才'],
             ['zh-deshihou'],
@@ -589,7 +589,7 @@ export const ZH_A2_U10: ZhUnitDef = {
           ),
           reply(
             '你小的时候喜欢做什么？',
-            '¿Qué te gustaba hacer de chico? (Respondé que te gustaba nadar.)',
+            '¿Qué te gustaba hacer de chico? (Responde que te gustaba nadar.)',
             'wǒ xǐhuan yóuyǒng',
             '我喜欢游泳',
             ['zh-deshihou'],
@@ -618,18 +618,18 @@ export const ZH_A2_U10: ZhUnitDef = {
       // ------------------------------------------------------------------------------------ L5
       {
         title: '一边…一边',
-        objective: 'Decir qué hacés a la vez y entender relatos de cambios.',
+        objective: 'Decir qué haces a la vez y entender relatos de cambios.',
         intro: {
           explanation:
             '一边 A 一边 B es hacer dos cosas a la vez: 我一边吃饭一边看电视 (como mientras miro la tele).',
           examples: [
             { target: '她一边听音乐一边做饭。', base: 'Cocina mientras escucha música.' },
-            { target: '别一边走路一边看手机！', base: '¡No mires el celular mientras caminás!' },
+            { target: '别一边走路一边看手机！', base: '¡No mires el celular mientras caminas!' },
           ],
         },
         takeaways: [
-          'Contás dos acciones a la vez con 一边…一边.',
-          'Entendés relatos de cambios y de familia.',
+          'Cuentas dos acciones a la vez con 一边…一边.',
+          'Entiendes relatos de cambios y de familia.',
         ],
         exercises: [
           ex.translationChoice(
@@ -704,7 +704,7 @@ export const ZH_A2_U10: ZhUnitDef = {
           ),
           reply(
             '你吃饭的时候看电视吗？',
-            '¿Mirás la tele cuando comés? (Respondé que sí: comés mientras mirás la tele.)',
+            '¿Miras la tele cuando comes? (Responde que sí: comes mientras miras la tele.)',
             'wǒ yìbiān chīfàn yìbiān kàn diànshì',
             '我一边吃饭一边看电视',
             ['zh-yibian'],
@@ -714,7 +714,7 @@ export const ZH_A2_U10: ZhUnitDef = {
             },
           ),
           write(
-            'No mires el celular mientras caminás.',
+            'No mires el celular mientras caminas.',
             'bié yìbiān zǒulù yìbiān kàn shǒujī',
             '别一边走路一边看手机',
             ['zh-yibian', 'zh-bie'],

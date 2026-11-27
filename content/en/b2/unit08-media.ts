@@ -124,7 +124,7 @@ export const EN_B2_U08: B2UnitDef = {
       'Rumores y publicaciones virales, fuentes confiables y sesgadas, y estilo indirecto con claim, deny, admit, warn, accuse y refuse.',
     emoji: '📰',
     objective:
-      'Podés reconocer información engañosa, contar con precisión lo que dijo alguien y opinar sobre las fuentes.',
+      'Puedes reconocer información engañosa, contar con precisión lo que dijo alguien y opinar sobre las fuentes.',
     grammar: {
       title: 'Verbos de reporte',
       explanation:
@@ -323,7 +323,7 @@ export const EN_B2_U08: B2UnitDef = {
         '/ˈfækt ˌtʃɛk/',
         '🔍',
         'Always fact-check a story before you share it.',
-        'Verificá siempre una noticia antes de compartirla.',
+        'Verifica siempre una noticia antes de compartirla.',
         ['media', 'verbs'],
         ['verificar', 'chequear'],
         ['fact check'],
@@ -361,8 +361,8 @@ export const EN_B2_U08: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Contás que algo se volvió viral y se difundió.',
-          'Reconocés rumores, desinformación y clickbait.',
+          'Cuentas que algo se volvió viral y se difundió.',
+          'Reconoces rumores, desinformación y clickbait.',
         ],
         exercises: [
           ex.matchPairs(
@@ -484,8 +484,8 @@ export const EN_B2_U08: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Contás lo que alguien afirmó o sugirió con claim y suggest.',
-          'Contás advertencias e insistencias con warn e insist.',
+          'Cuentas lo que alguien afirmó o sugirió con claim y suggest.',
+          'Cuentas advertencias e insistencias con warn e insist.',
         ],
         exercises: [
           ex.matchPairs(
@@ -608,8 +608,8 @@ export const EN_B2_U08: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Contás acusaciones con accuse someone of + -ing.',
-          'Usás deny y admit con -ing y refuse con to.',
+          'Cuentas acusaciones con accuse someone of + -ing.',
+          'Usas deny y admit con -ing y refuse con to.',
         ],
         exercises: [
           ex.matchPairs(
@@ -713,13 +713,13 @@ export const EN_B2_U08: B2UnitDef = {
             { target: 'Is this a reliable source?', base: '¿Es una fuente confiable?' },
             {
               target: 'Always fact-check a story before you share it.',
-              base: 'Verificá siempre una noticia antes de compartirla.',
+              base: 'Verifica siempre una noticia antes de compartirla.',
             },
           ],
         },
         takeaways: [
-          'Evaluás si una fuente es confiable o parcial.',
-          'Detectás números y títulos engañosos y verificás antes de compartir.',
+          'Evalúas si una fuente es confiable o parcial.',
+          'Detectas números y títulos engañosos y verificas antes de compartir.',
         ],
         exercises: [
           ex.matchPairs(
@@ -797,7 +797,7 @@ export const EN_B2_U08: B2UnitDef = {
           ),
           ex.shortAnswer(
             'Why don’t you trust that website? (porque no es una fuente confiable)',
-            '¿Por qué no confiás en esa página?',
+            '¿Por qué no confías en esa página?',
             "Because it isn't a reliable source.",
             [
               'Because it is not a reliable source.',
@@ -825,7 +825,7 @@ export const EN_B2_U08: B2UnitDef = {
         objective: 'Opinar sobre los medios y contar una noticia con verbos de reporte.',
         intro: {
           explanation:
-            'The audience es el público de un programa, un medio o un espectáculo. Para contar una noticia con precisión, combinás los verbos de la unidad: The mayor denied the rumor, admitted that…, insisted that…, warned people not to…',
+            'The audience es el público de un programa, un medio o un espectáculo. Para contar una noticia con precisión, combinas los verbos de la unidad: The mayor denied the rumor, admitted that…, insisted that…, warned people not to…',
           examples: [
             {
               target: 'The program has a large audience.',
@@ -838,8 +838,8 @@ export const EN_B2_U08: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Hablás del público de los medios.',
-          'Contás una noticia combinando claim, deny, admit, insist y warn.',
+          'Hablas del público de los medios.',
+          'Cuentas una noticia combinando claim, deny, admit, insist y warn.',
         ],
         exercises: [
           ex.translationChoice(

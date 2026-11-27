@@ -22,12 +22,54 @@ function missionTitleEn(id: MissionId, target: number): string {
   }
 }
 
+/** Títulos en portugués (Brasil) por id de misión. */
+function missionTitlePt(id: MissionId, target: number): string {
+  switch (id) {
+    case 'lessons':
+      return `Complete ${target} ${s(target, 'lição', 'lições')}`;
+    case 'minutes':
+      return `Estude por ${target} minutos`;
+    case 'correct':
+      return `Acerte ${target} respostas`;
+    case 'perfect':
+      return 'Termine uma lição sem erros';
+    case 'ranked_play':
+      return `Jogue ${target} ${s(target, 'partida', 'partidas')} Ranked`;
+    case 'ranked_win':
+      return 'Vença uma partida Ranked';
+  }
+}
+
+/** Títulos en italiano por id de misión. */
+function missionTitleIt(id: MissionId, target: number): string {
+  switch (id) {
+    case 'lessons':
+      return `Completa ${target} ${s(target, 'lezione', 'lezioni')}`;
+    case 'minutes':
+      return `Studia per ${target} minuti`;
+    case 'correct':
+      return `Dai ${target} risposte corrette`;
+    case 'perfect':
+      return 'Finisci una lezione senza errori';
+    case 'ranked_play':
+      return `Gioca ${target} ${s(target, 'partita', 'partite')} Ranked`;
+    case 'ranked_win':
+      return 'Vinci una partita Ranked';
+  }
+}
+
 export const missionStrings = defineStrings({
   es: {
     title: (id: MissionId, target: number) => missionTitle(id, target),
   },
   en: {
     title: (id: MissionId, target: number) => missionTitleEn(id, target),
+  },
+  'pt-BR': {
+    title: (id: MissionId, target: number) => missionTitlePt(id, target),
+  },
+  it: {
+    title: (id: MissionId, target: number) => missionTitleIt(id, target),
   },
 });
 
@@ -36,7 +78,7 @@ export const dailyRewardStrings = defineStrings({
   es: {
     days: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
     intro: (total: number, days: number, bonus: number) =>
-      `Completá las ${total} misiones y abrí el cofre del día.\nAbrilo ${days} días de la semana y ganás ${bonus} Polys extra.`,
+      `Completa las ${total} misiones y abre el cofre del día.\nÁbrelo ${days} días de la semana y gana ${bonus} Polys extra.`,
     weekA11y: (opened: number) => `Cofres de esta semana: ${opened} abiertos`,
     dayA11y: (day: string, today: boolean, open: boolean, polys: number | null, past: boolean) =>
       `${day}${today ? ', hoy' : ''}: ${
@@ -51,7 +93,7 @@ export const dailyRewardStrings = defineStrings({
     opened: '¡Cofre abierto!',
     alreadyOpened: 'Ya abriste el cofre de hoy. ¡Mañana hay misiones nuevas!',
     claim: 'Reclamar recompensa',
-    completeMissions: (done: number, total: number) => `Completá las misiones · ${done}/${total}`,
+    completeMissions: (done: number, total: number) => `Completa las misiones · ${done}/${total}`,
   },
   en: {
     days: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
@@ -72,5 +114,47 @@ export const dailyRewardStrings = defineStrings({
     alreadyOpened: 'You already opened today’s chest. New missions tomorrow!',
     claim: 'Claim reward',
     completeMissions: (done: number, total: number) => `Complete the missions · ${done}/${total}`,
+  },
+  'pt-BR': {
+    days: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+    intro: (total: number, days: number, bonus: number) =>
+      `Complete as ${total} missões e abra o baú do dia.\nAbra ${days} dias na semana e ganhe ${bonus} Polys extras.`,
+    weekA11y: (opened: number) => `Baús desta semana: ${opened} abertos`,
+    dayA11y: (day: string, today: boolean, open: boolean, polys: number | null, past: boolean) =>
+      `${day}${today ? ', hoje' : ''}: ${
+        open ? `baú aberto, ${polys} Polys` : past ? 'não aberto' : 'baú de 10 a 20 Polys'
+      }`,
+    weekError: 'Não conseguimos carregar sua semana. Você ainda pode abrir o baú de hoje.',
+    weeklyClaimed: (bonus: number) => `Bônus semanal resgatado: +${bonus} Polys`,
+    weeklyProgress: (opened: number, days: number) => `Bônus semanal: ${opened}/${days} baús`,
+    weeklyA11y: 'Progresso do bônus semanal',
+    jackpot: 'Baú da sorte!',
+    includesWeekly: (bonus: number) => `Inclui o bônus semanal (+${bonus})`,
+    opened: 'Baú aberto!',
+    alreadyOpened: 'Você já abriu o baú de hoje. Amanhã tem missões novas!',
+    claim: 'Resgatar recompensa',
+    completeMissions: (done: number, total: number) => `Complete as missões · ${done}/${total}`,
+  },
+  it: {
+    days: ['Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab', 'Dom'],
+    intro: (total: number, days: number, bonus: number) =>
+      `Completa tutte le ${total} missioni e apri il forziere del giorno.\nAprilo ${days} giorni a settimana e ottieni ${bonus} Polys extra.`,
+    weekA11y: (opened: number) => `Forzieri di questa settimana: ${opened} aperti`,
+    dayA11y: (day: string, today: boolean, open: boolean, polys: number | null, past: boolean) =>
+      `${day}${today ? ', oggi' : ''}: ${
+        open ? `forziere aperto, ${polys} Polys` : past ? 'non aperto' : 'forziere da 10 a 20 Polys'
+      }`,
+    weekError:
+      'Non siamo riusciti a caricare la tua settimana. Puoi comunque aprire il forziere di oggi.',
+    weeklyClaimed: (bonus: number) => `Bonus settimanale riscattato: +${bonus} Polys`,
+    weeklyProgress: (opened: number, days: number) =>
+      `Bonus settimanale: ${opened}/${days} forzieri`,
+    weeklyA11y: 'Progressi del bonus settimanale',
+    jackpot: 'Forziere fortunato!',
+    includesWeekly: (bonus: number) => `Include il bonus settimanale (+${bonus})`,
+    opened: 'Forziere aperto!',
+    alreadyOpened: 'Hai già aperto il forziere di oggi. Domani ci sono nuove missioni!',
+    claim: 'Riscatta ricompensa',
+    completeMissions: (done: number, total: number) => `Completa le missioni · ${done}/${total}`,
   },
 });

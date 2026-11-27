@@ -62,7 +62,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 2,
               "type": "fill_blank",
               "skill": "grammar",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "I ___ a brother.",
@@ -92,7 +92,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 3,
               "type": "fill_blank",
               "skill": "vocabulary",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "I'm ___, thank you.",
@@ -128,11 +128,11 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 4,
               "type": "fill_blank",
               "skill": "grammar",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "___ you work?",
-                "translation": "¿Trabajás?",
+                "translation": "¿Trabajas?",
                 "options": [
                   "Do",
                   "Does",
@@ -158,11 +158,11 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 5,
               "type": "fill_blank",
               "skill": "vocabulary",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "___ left at the bank.",
-                "translation": "Doblá a la izquierda en el banco.",
+                "translation": "Dobla a la izquierda en el banco.",
                 "options": [
                   "Turn",
                   "Go",
@@ -188,7 +188,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 6,
               "type": "order_words",
               "skill": "sentence_building",
-              "prompt": "Ordená las palabras",
+              "prompt": "Ordena las palabras",
               "payload": {
                 "type": "order_words",
                 "tokens": [
@@ -223,7 +223,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 7,
               "type": "fill_blank",
               "skill": "vocabulary",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "We arrived at the hotel and ___ we walked to the park.",
@@ -253,7 +253,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 8,
               "type": "order_words",
               "skill": "sentence_building",
-              "prompt": "Ordená las palabras",
+              "prompt": "Ordena las palabras",
               "payload": {
                 "type": "order_words",
                 "tokens": [
@@ -264,7 +264,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
                   "and",
                   "left"
                 ],
-                "translation": "Armamos las valijas y nos fuimos."
+                "translation": "Hicimos las maletas y nos fuimos."
               },
               "answer": "We packed our suitcases and left.",
               "acceptedAnswers": [],
@@ -284,7 +284,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 9,
               "type": "short_answer",
               "skill": "sentence_building",
-              "prompt": "Respondé en inglés",
+              "prompt": "Responde en inglés",
               "payload": {
                 "type": "short_answer",
                 "question": "Are you studying now? (sí)",
@@ -318,7 +318,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 10,
               "type": "order_words",
               "skill": "sentence_building",
-              "prompt": "Ordená las palabras",
+              "prompt": "Ordena las palabras",
               "payload": {
                 "type": "order_words",
                 "tokens": [
@@ -349,11 +349,11 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 11,
               "type": "short_answer",
               "skill": "sentence_building",
-              "prompt": "Respondé en inglés",
+              "prompt": "Responde en inglés",
               "payload": {
                 "type": "short_answer",
                 "question": "What do you do? (soy enfermera)",
-                "translation": "¿A qué te dedicás?"
+                "translation": "¿A qué te dedicas?"
               },
               "answer": "I am a nurse.",
               "acceptedAnswers": [
@@ -376,7 +376,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 12,
               "type": "fill_blank",
               "skill": "grammar",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "It will be ___ tomorrow, with a lot of sun.",
@@ -435,13 +435,13 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
                 "type": "translation_choice",
                 "word": "tu as",
                 "options": [
-                  "tenés",
+                  "tienes",
                   "tengo",
                   "él tiene",
-                  "sos"
+                  "eres"
                 ]
               },
-              "answer": "tenés",
+              "answer": "tienes",
               "acceptedAnswers": [],
               "explanation": null,
               "difficulty": 1,
@@ -459,7 +459,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 2,
               "type": "fill_blank",
               "skill": "grammar",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "Qu'est-ce que c'est? — ___ un téléphone.",
@@ -489,7 +489,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 3,
               "type": "fill_blank",
               "skill": "vocabulary",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "Une bouteille de ___, s'il vous plaît.",
@@ -525,11 +525,11 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 4,
               "type": "fill_blank",
               "skill": "grammar",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "Tu as ___ de frères?",
-                "translation": "¿Cuántos hermanos tenés?",
+                "translation": "¿Cuántos hermanos tienes?",
                 "options": [
                   "combien",
                   "comment",
@@ -555,7 +555,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 5,
               "type": "fill_blank",
               "skill": "vocabulary",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "Le 21 ___, c'est la Fête de la musique.",
@@ -585,7 +585,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 6,
               "type": "order_words",
               "skill": "sentence_building",
-              "prompt": "Ordená las palabras",
+              "prompt": "Ordena las palabras",
               "payload": {
                 "type": "order_words",
                 "tokens": [
@@ -622,7 +622,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 7,
               "type": "fill_blank",
               "skill": "vocabulary",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "Le train est arrivé ___.",
@@ -651,7 +651,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 8,
               "type": "order_words",
               "skill": "sentence_building",
-              "prompt": "Ordená las palabras",
+              "prompt": "Ordena las palabras",
               "payload": {
                 "type": "order_words",
                 "tokens": [
@@ -682,7 +682,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 9,
               "type": "context_choice",
               "skill": "reading",
-              "prompt": "Leé y respondé",
+              "prompt": "Lee y responde",
               "payload": {
                 "type": "context_choice",
                 "stimulus": {
@@ -704,9 +704,9 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
                 "question": "¿Cuándo es la fiesta de Chloé?",
                 "options": [
                   "El sábado a las ocho, dentro de dos días.",
-                  "El jueves a la noche.",
+                  "El jueves por la noche.",
                   "Dentro de dos semanas.",
-                  "El domingo a la tarde."
+                  "El domingo por la tarde."
                 ]
               },
               "answer": "El sábado a las ocho, dentro de dos días.",
@@ -733,7 +733,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 10,
               "type": "order_words",
               "skill": "sentence_building",
-              "prompt": "Ordená las palabras",
+              "prompt": "Ordena las palabras",
               "payload": {
                 "type": "order_words",
                 "tokens": [
@@ -764,7 +764,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 11,
               "type": "context_choice",
               "skill": "reading",
-              "prompt": "Leé y respondé",
+              "prompt": "Lee y responde",
               "payload": {
                 "type": "context_choice",
                 "stimulus": {
@@ -807,7 +807,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 12,
               "type": "fill_blank",
               "skill": "grammar",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "Hugo ___ qu'il est malade.",
@@ -865,13 +865,13 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
                 "type": "translation_choice",
                 "word": "hai",
                 "options": [
-                  "tenés",
+                  "tienes",
                   "tengo",
                   "tiene",
-                  "sos"
+                  "eres"
                 ]
               },
-              "answer": "tenés",
+              "answer": "tienes",
               "acceptedAnswers": [],
               "explanation": null,
               "difficulty": 1,
@@ -889,11 +889,11 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 2,
               "type": "fill_blank",
               "skill": "grammar",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "La penna è ___.",
-                "translation": "La lapicera es roja.",
+                "translation": "El bolígrafo es rojo.",
                 "options": [
                   "rossa",
                   "rosso",
@@ -919,7 +919,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 3,
               "type": "fill_blank",
               "skill": "vocabulary",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "Un ___, per favore.",
@@ -955,7 +955,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 4,
               "type": "fill_blank",
               "skill": "grammar",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "Oggi non ___, domani sì.",
@@ -985,7 +985,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 5,
               "type": "fill_blank",
               "skill": "vocabulary",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "Mio fratello è ___ in un negozio.",
@@ -1015,7 +1015,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 6,
               "type": "order_words",
               "skill": "sentence_building",
-              "prompt": "Ordená las palabras",
+              "prompt": "Ordena las palabras",
               "payload": {
                 "type": "order_words",
                 "tokens": [
@@ -1051,7 +1051,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 7,
               "type": "fill_blank",
               "skill": "vocabulary",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "Sono ___ sul treno a Milano.",
@@ -1081,7 +1081,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 8,
               "type": "order_words",
               "skill": "sentence_building",
-              "prompt": "Ordená las palabras",
+              "prompt": "Ordena las palabras",
               "payload": {
                 "type": "order_words",
                 "tokens": [
@@ -1112,7 +1112,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 9,
               "type": "context_choice",
               "skill": "reading",
-              "prompt": "Leé y respondé",
+              "prompt": "Lee y responde",
               "payload": {
                 "type": "context_choice",
                 "stimulus": {
@@ -1131,7 +1131,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
                 "question": "¿Qué le pasó a Giorgio?",
                 "options": [
                   "Se cayó delante de sus compañeros de trabajo",
-                  "Llegó tarde y lo retaron",
+                  "Llegó tarde y lo regañaron",
                   "Perdió la billetera",
                   "Se mojó con la lluvia"
                 ]
@@ -1160,7 +1160,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 10,
               "type": "order_words",
               "skill": "sentence_building",
-              "prompt": "Ordená las palabras",
+              "prompt": "Ordena las palabras",
               "payload": {
                 "type": "order_words",
                 "tokens": [
@@ -1170,7 +1170,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
                   "e",
                   "riposati"
                 ],
-                "translation": "Tomá mucha agua y descansá."
+                "translation": "Toma mucha agua y descansa."
               },
               "answer": "Bevi molta acqua e riposati.",
               "acceptedAnswers": [],
@@ -1190,7 +1190,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 11,
               "type": "context_choice",
               "skill": "reading",
-              "prompt": "Leé y respondé",
+              "prompt": "Lee y responde",
               "payload": {
                 "type": "context_choice",
                 "stimulus": {
@@ -1232,7 +1232,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 12,
               "type": "fill_blank",
               "skill": "grammar",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "Vai in palestra? — Sì, ___ vado ogni giorno.",
@@ -1315,11 +1315,11 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 2,
               "type": "fill_blank",
               "skill": "grammar",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "A caneta é ___.",
-                "translation": "La lapicera es roja.",
+                "translation": "El bolígrafo es rojo.",
                 "options": [
                   "vermelha",
                   "vermelho",
@@ -1345,7 +1345,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 3,
               "type": "fill_blank",
               "skill": "vocabulary",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "Almoço e ___ trabalho.",
@@ -1381,7 +1381,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 4,
               "type": "fill_blank",
               "skill": "grammar",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "Hoje eu não ___, amanhã sim.",
@@ -1411,7 +1411,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 5,
               "type": "fill_blank",
               "skill": "vocabulary",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "Ela trabalha em um ___ no centro.",
@@ -1441,7 +1441,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 6,
               "type": "order_words",
               "skill": "sentence_building",
-              "prompt": "Ordená las palabras",
+              "prompt": "Ordena las palabras",
               "payload": {
                 "type": "order_words",
                 "tokens": [
@@ -1479,7 +1479,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 7,
               "type": "fill_blank",
               "skill": "vocabulary",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "A ___ foi longa, mas legal.",
@@ -1509,7 +1509,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 8,
               "type": "order_words",
               "skill": "sentence_building",
-              "prompt": "Ordená las palabras",
+              "prompt": "Ordena las palabras",
               "payload": {
                 "type": "order_words",
                 "tokens": [
@@ -1540,7 +1540,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 9,
               "type": "context_choice",
               "skill": "reading",
-              "prompt": "Leé y respondé",
+              "prompt": "Lee y responde",
               "payload": {
                 "type": "context_choice",
                 "stimulus": {
@@ -1589,7 +1589,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 10,
               "type": "order_words",
               "skill": "sentence_building",
-              "prompt": "Ordená las palabras",
+              "prompt": "Ordena las palabras",
               "payload": {
                 "type": "order_words",
                 "tokens": [
@@ -1600,7 +1600,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
                   "para",
                   "amanhã"
                 ],
-                "translation": "Ya saqué turno para mañana."
+                "translation": "Ya pedí cita para mañana."
               },
               "answer": "Já marquei uma consulta para amanhã.",
               "acceptedAnswers": [],
@@ -1620,7 +1620,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 11,
               "type": "context_choice",
               "skill": "reading",
-              "prompt": "Leé y respondé",
+              "prompt": "Lee y responde",
               "payload": {
                 "type": "context_choice",
                 "stimulus": {
@@ -1662,7 +1662,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 12,
               "type": "fill_blank",
               "skill": "grammar",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "Ela ___ sente cansada hoje.",
@@ -1745,7 +1745,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 2,
               "type": "fill_blank",
               "skill": "grammar",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "这是___的电脑？",
@@ -1775,7 +1775,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 3,
               "type": "fill_blank",
               "skill": "vocabulary",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "这个苹果很___。",
@@ -1811,7 +1811,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 4,
               "type": "fill_blank",
               "skill": "grammar",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "她___漂亮。",
@@ -1841,7 +1841,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 5,
               "type": "fill_blank",
               "skill": "vocabulary",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "她是我的___，我们都是大学生。",
@@ -1871,7 +1871,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 6,
               "type": "order_words",
               "skill": "sentence_building",
-              "prompt": "Ordená las palabras",
+              "prompt": "Ordena las palabras",
               "payload": {
                 "type": "order_words",
                 "tokens": [
@@ -1908,7 +1908,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 7,
               "type": "fill_blank",
               "skill": "vocabulary",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "我不能吃___的。",
@@ -1938,7 +1938,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 8,
               "type": "order_words",
               "skill": "sentence_building",
-              "prompt": "Ordená las palabras",
+              "prompt": "Ordena las palabras",
               "payload": {
                 "type": "order_words",
                 "tokens": [
@@ -1948,7 +1948,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
                   "你",
                   "打电话"
                 ],
-                "translation": "A la noche te llamo."
+                "translation": "Por la noche te llamo."
               },
               "answer": "我晚上给你打电话。",
               "acceptedAnswers": [],
@@ -1968,7 +1968,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 9,
               "type": "context_choice",
               "skill": "reading",
-              "prompt": "Leé y respondé",
+              "prompt": "Lee y responde",
               "payload": {
                 "type": "context_choice",
                 "stimulus": {
@@ -2016,7 +2016,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 10,
               "type": "order_words",
               "skill": "sentence_building",
-              "prompt": "Ordená las palabras",
+              "prompt": "Ordena las palabras",
               "payload": {
                 "type": "order_words",
                 "tokens": [
@@ -2048,7 +2048,7 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 11,
               "type": "context_choice",
               "skill": "reading",
-              "prompt": "Leé y respondé",
+              "prompt": "Lee y responde",
               "payload": {
                 "type": "context_choice",
                 "stimulus": {
@@ -2090,11 +2090,11 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
               "position": 12,
               "type": "fill_blank",
               "skill": "grammar",
-              "prompt": "Completá la frase",
+              "prompt": "Completa la frase",
               "payload": {
                 "type": "fill_blank",
                 "sentence": "先写作业，___玩游戏。",
-                "translation": "Primero hacé la tarea y después jugá.",
+                "translation": "Primero haz la tarea y después juega.",
                 "options": [
                   "再",
                   "先",

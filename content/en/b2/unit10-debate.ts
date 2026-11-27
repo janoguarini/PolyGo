@@ -132,11 +132,11 @@ export const EN_B2_U10: B2UnitDef = {
       'Sumar argumentos, reconocer y rebatir, defender una postura y concluir, con conectores y oraciones como What matters is… o The reason why… is…',
     emoji: '⚖️',
     objective:
-      'Podés defender una opinión con argumentos, reconocer la postura contraria, rebatirla y sacar una conclusión.',
+      'Puedes defender una opinión con argumentos, reconocer la postura contraria, rebatirla y sacar una conclusión.',
     grammar: {
       title: 'Oraciones escindidas y conectores',
       explanation:
-        'Para enfatizar una parte de la oración, la «partís» en dos: What matters is the result (lo que importa es…), What worries me is… (lo que me preocupa es…), The reason why… is that… (la razón por la que… es que…), It is… that… (It is the cost of ignorance that should worry us). Conectores formales: moreover y furthermore suman; as a result da la consecuencia; admittedly reconoce un punto contrario y nevertheless lo rebate; on the contrary dice que es todo lo opuesto.',
+        'Para enfatizar una parte de la oración, la «partes» en dos: What matters is the result (lo que importa es…), What worries me is… (lo que me preocupa es…), The reason why… is that… (la razón por la que… es que…), It is… that… (It is the cost of ignorance that should worry us). Conectores formales: moreover y furthermore suman; as a result da la consecuencia; admittedly reconoce un punto contrario y nevertheless lo rebate; on the contrary dice que es todo lo opuesto.',
       examples: [
         {
           target: 'What worries me is the customers.',
@@ -371,8 +371,8 @@ export const EN_B2_U10: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Sumás argumentos con moreover y furthermore.',
-          'Presentás consecuencias con as a result.',
+          'Sumas argumentos con moreover y furthermore.',
+          'Presentas consecuencias con as a result.',
         ],
         exercises: [
           ex.matchPairs(
@@ -498,8 +498,8 @@ export const EN_B2_U10: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Enfatizás con What… is y The reason why… is that…',
-          'Reformulás una idea con in other words.',
+          'Enfatizas con What… is y The reason why… is that…',
+          'Reformulas una idea con in other words.',
         ],
         exercises: [
           ex.fillBlank(
@@ -580,8 +580,8 @@ export const EN_B2_U10: B2UnitDef = {
             { id: 'en.ex.udyq574nuoy8a4' },
           ),
           ex.shortAnswer(
-            'Why are you studying English? (la razón es que querés trabajar en el exterior)',
-            '¿Por qué estudiás inglés?',
+            'Why are you studying English? (la razón es que quieres trabajar en el exterior)',
+            '¿Por qué estudias inglés?',
             'The reason why I am studying English is that I want to work abroad.',
             [
               "The reason why I'm studying English is that I want to work abroad.",
@@ -619,8 +619,8 @@ export const EN_B2_U10: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Concedés un punto con admittedly y lo rebatís con nevertheless.',
-          'Decís que es todo lo contrario con on the contrary.',
+          'Concedes un punto con admittedly y lo rebates con nevertheless.',
+          'Dices que es todo lo contrario con on the contrary.',
         ],
         exercises: [
           ex.matchPairs(
@@ -700,7 +700,7 @@ export const EN_B2_U10: B2UnitDef = {
             { id: 'en.ex.022jgvrta1eca7' },
           ),
           ex.shortAnswer(
-            "You don't agree with me, do you? (entendés su punto de vista, pero no estás de acuerdo)",
+            "You don't agree with me, do you? (entiendes su punto de vista, pero no estás de acuerdo)",
             'No estás de acuerdo conmigo, ¿no?',
             'I understand your point of view, but I disagree.',
             [
@@ -732,7 +732,7 @@ export const EN_B2_U10: B2UnitDef = {
         objective: 'Evaluar si un argumento es válido y convincente.',
         intro: {
           explanation:
-            'A valid point es un argumento válido; convincing, convincente. An assumption es una suposición que no se demostró. Take into account es tener en cuenta: We need to take the costs into account (fijate que el objeto puede ir en el medio).',
+            'A valid point es un argumento válido; convincing, convincente. An assumption es una suposición que no se demostró. Take into account es tener en cuenta: We need to take the costs into account (fíjate que el objeto puede ir en el medio).',
           examples: [
             {
               target: "That's just an assumption. Where is the evidence?",
@@ -745,8 +745,8 @@ export const EN_B2_U10: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Evaluás argumentos: valid, convincing, assumption.',
-          'Pedís que se tenga algo en cuenta con take into account.',
+          'Evalúas argumentos: valid, convincing, assumption.',
+          'Pides que se tenga algo en cuenta con take into account.',
         ],
         exercises: [
           ex.matchPairs(
@@ -866,8 +866,8 @@ export const EN_B2_U10: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Comparás pros y contras con outweigh.',
-          'Concluís con to sum up y all things considered.',
+          'Comparas pros y contras con outweigh.',
+          'Concluyes con to sum up y all things considered.',
         ],
         exercises: [
           ex.translationChoice(
@@ -939,7 +939,7 @@ export const EN_B2_U10: B2UnitDef = {
             { id: 'en.ex.7aaywl0mx76dmg' },
           ),
           ex.shortAnswer(
-            'So, should we buy the house? (en resumen, creés que sí)',
+            'So, should we buy the house? (en resumen, crees que sí)',
             'Entonces, ¿compramos la casa?',
             'To sum up, I think we should.',
             [

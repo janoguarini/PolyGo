@@ -53,13 +53,13 @@ export const IT_A1_U14: ItUnitDef = {
   support: ['verdi', 'timida', 'bevi', 'prendiamo', 'acque', 'oh'],
   unit: {
     position: 14,
-    title: '¿Cómo sos? ¿Cómo estás?',
+    title: '¿Cómo eres? ¿Cómo estás?',
     titleEn: 'Come sei?',
     description:
       'Describir a una persona, decir cómo estás (sono stanco, sto male) y hablar de hambre, sed, frío y calor.',
     emoji: '🙂',
     objective:
-      'Podés describir cómo es una persona, decir cómo estás y si tenés hambre, sed, frío o calor, sin confundir essere, stare y avere.',
+      'Puedes describir cómo es una persona, decir cómo estás y si tienes hambre, sed, frío o calor, sin confundir essere, stare y avere.',
     grammar: {
       title: 'Essere, stare y avere · concordancia de los adjetivos',
       explanation:
@@ -269,8 +269,8 @@ export const IT_A1_U14: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Decís cómo estás con sono: stanco, felice, malato.',
-          'Decís cómo te sentís con sto bene / sto male.',
+          'Dices cómo estás con sono: stanco, felice, malato.',
+          'Dices cómo te sientes con sto bene / sto male.',
         ],
         exercises: [
           ex.translationChoice('stanco', 'cansado', ['feliz', 'enfermo', 'triste'], ['it-stanco'], {
@@ -333,7 +333,7 @@ export const IT_A1_U14: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Come stai oggi?',
-            '¿Cómo estás hoy? (Respondé que no te sentís bien, que estás enfermo o enferma.)',
+            '¿Cómo estás hoy? (Responde que no te sientes bien, que estás enfermo o enferma.)',
             'Non sto bene, sono malato.',
             [
               'Non sto bene, sono malata.',
@@ -360,7 +360,7 @@ export const IT_A1_U14: ItUnitDef = {
       // ------------------------------------------------------------------------------------ L2
       {
         title: 'Ho fame, ho sete',
-        objective: 'Decir si tenés hambre, sed, frío o calor.',
+        objective: 'Decir si tienes hambre, sed, frío o calor.',
         intro: {
           explanation:
             'Hambre, sed, frío y calor van con avere, como en español: ho fame, ho sete, ho freddo, ho caldo. Ojo: caldo no es el caldo de la sopa, es «calor» o «caliente»: ho caldo es «tengo calor».',
@@ -369,7 +369,7 @@ export const IT_A1_U14: ItUnitDef = {
             { target: 'Ho caldo, vorrei un gelato.', base: 'Tengo calor, quisiera un helado.' },
           ],
         },
-        takeaways: ['Decís ho fame, ho sete, ho freddo y ho caldo.', 'Sabés que caldo es «calor».'],
+        takeaways: ['Dices ho fame, ho sete, ho freddo y ho caldo.', 'Sabes que caldo es «calor».'],
         exercises: [
           ex.translationChoice(
             'ho caldo',
@@ -392,7 +392,7 @@ export const IT_A1_U14: ItUnitDef = {
           ),
           ex.fillBlank(
             'Hai ___? Ecco un panino.',
-            '¿Tenés hambre? Acá tenés un sándwich.',
+            '¿Tienes hambre? Aquí tienes un sándwich.',
             'fame',
             ['sete', 'freddo', 'caldo'],
             ['it-ho-fame', 'it-panino'],
@@ -426,7 +426,7 @@ export const IT_A1_U14: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Hai fame?',
-            '¿Tenés hambre? (Respondé que no, que tenés sed.)',
+            '¿Tienes hambre? (Responde que no, que tienes sed.)',
             'No, ho sete.',
             ['No, non ho fame, ho sete.', 'Ho sete.', 'No, io ho sete.'],
             ['it-ho-sete'],
@@ -452,8 +452,8 @@ export const IT_A1_U14: ItUnitDef = {
           ],
         },
         takeaways: [
-          "Preguntás com'è? y describís con è y ha.",
-          'Hacés concordar el adjetivo: basso, bassa, bassi.',
+          "Preguntas com'è? y describes con è y ha.",
+          'Haces concordar el adjetivo: basso, bassa, bassi.',
         ],
         exercises: [
           ex.translationChoice(
@@ -521,7 +521,7 @@ export const IT_A1_U14: ItUnitDef = {
           }),
           ex.shortAnswer(
             "Com'è tuo fratello?",
-            '¿Cómo es tu hermano? (Respondé que es alto y que tiene el pelo negro.)',
+            '¿Cómo es tu hermano? (Responde que es alto y que tiene el pelo negro.)',
             'È alto e ha i capelli neri.',
             ['Mio fratello è alto e ha i capelli neri.', 'Lui è alto e ha i capelli neri.'],
             ['it-com-e', 'it-capelli'],
@@ -550,7 +550,7 @@ export const IT_A1_U14: ItUnitDef = {
             { target: "È carina ma un po' timida.", base: 'Es linda pero un poco tímida.' },
           ],
         },
-        takeaways: ['Describís el carácter con simpatico y carino.', "Matizás con un po' y ma."],
+        takeaways: ['Describes el carácter con simpatico y carino.', "Matizas con un po' y ma."],
         exercises: [
           ex.translationChoice('carino', 'lindo', ['cariño', 'caro', 'cansado'], ['it-carino'], {
             id: 'it.ex.ptt2cpiiknr5w9',
@@ -611,7 +611,7 @@ export const IT_A1_U14: ItUnitDef = {
           ),
           ex.shortAnswer(
             "Com'è la tua amica?",
-            '¿Cómo es tu amiga? (Respondé que es simpática pero un poco tímida.)',
+            '¿Cómo es tu amiga? (Responde que es simpática pero un poco tímida.)',
             "È simpatica ma un po' timida.",
             [
               'È simpatica, ma un po’ timida.',
@@ -641,10 +641,10 @@ export const IT_A1_U14: ItUnitDef = {
       // ------------------------------------------------------------------------------------ L5
       {
         title: 'Essere, stare, avere',
-        objective: 'Elegir el verbo justo para decir cómo estás y cómo sos.',
+        objective: 'Elegir el verbo justo para decir cómo estás y cómo eres.',
         intro: {
           explanation:
-            'Tres verbos donde el español dice «estar» o «tener»: essere para cómo sos y cómo estás (è alta, sono stanco), stare para la salud (sto male) y avere para hambre, sed, frío y calor (ho freddo).',
+            'Tres verbos donde el español dice «estar» o «tener»: essere para cómo eres y cómo estás (è alta, sono stanco), stare para la salud (sto male) y avere para hambre, sed, frío y calor (ho freddo).',
           examples: [
             { target: 'Paolo è malato e ha freddo.', base: 'Paolo está enfermo y tiene frío.' },
             {
@@ -654,8 +654,8 @@ export const IT_A1_U14: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Elegís entre essere, stare y avere.',
-          'Entendés una llamada sobre cómo está alguien.',
+          'Eliges entre essere, stare y avere.',
+          'Entiendes una llamada sobre cómo está alguien.',
         ],
         exercises: [
           ex.fillBlank(
@@ -723,7 +723,7 @@ export const IT_A1_U14: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Come sta tua madre?',
-            '¿Cómo está tu mamá? (Respondé que está bien, pero un poco cansada.)',
+            '¿Cómo está tu mamá? (Responde que está bien, pero un poco cansada.)',
             "Sta bene, ma è un po' stanca.",
             [
               "Sta bene ma è un po' stanca.",

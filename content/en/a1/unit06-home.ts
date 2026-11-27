@@ -37,13 +37,13 @@ export const unit06: UnitDef = {
       ...w(
         'en-apartment',
         'apartment',
-        'departamento',
+        'apartamento',
         '/əˈpɑrtmənt/',
         '🏢',
         'We live in an apartment.',
-        'Vivimos en un departamento.',
+        'Vivimos en un apartamento.',
         ['home'],
-        ['piso', 'apartamento'],
+        ['piso', 'departamento'],
       ),
       acceptedTexts: ['flat'],
     },
@@ -92,13 +92,13 @@ export const unit06: UnitDef = {
     w(
       'en-living-room',
       'living room',
-      'living / sala de estar',
+      'sala de estar',
       '/ˈlɪvɪŋ ˌrum/',
       '🛋️',
       'The sofa is in the living room.',
-      'El sillón está en el living.',
+      'El sillón está en la sala.',
       ['home'],
-      ['living', 'sala de estar', 'salón'],
+      ['living / sala de estar', 'living', 'sala', 'salón'],
     ),
     w('en-door', 'door', 'puerta', '/dɔr/', '🚪', 'The door is red.', 'La puerta es roja.', [
       'home',
@@ -234,14 +234,14 @@ export const unit06: UnitDef = {
   lessons: [
     {
       title: 'Mi casa',
-      objective: 'Casa, departamento, puerta, ventana y jardín.',
+      objective: 'Casa, apartamento, puerta, ventana y jardín.',
       exercises: [
         ex.imageChoice('🏠', 'house', ['apartment', 'room', 'garden'], ['en-house']),
         ex.imageChoice('🚪', 'door', ['window', 'table', 'bed'], ['en-door']),
         ex.imageChoice('🌳', 'garden', ['house', 'kitchen', 'window'], ['en-garden']),
         ex.translationChoice(
           'apartment',
-          'departamento',
+          'apartamento',
           ['casa', 'habitación', 'jardín'],
           ['en-apartment'],
         ),
@@ -277,7 +277,7 @@ export const unit06: UnitDef = {
         ),
         ex.translationChoice(
           'living room',
-          'living / sala de estar',
+          'sala de estar',
           ['cocina', 'dormitorio', 'baño'],
           ['en-living-room'],
         ),

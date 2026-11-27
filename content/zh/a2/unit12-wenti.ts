@@ -51,7 +51,7 @@ export const ZH_A2_U12: ZhUnitDef = {
       'Dar tu opinión, contar un problema (se rompió, lo perdí, me lo robaron) y buscar una solución.',
     emoji: '🛠️',
     objective:
-      'Podés dar tu opinión y decir si estás de acuerdo, contar qué te pasó (丢了, 坏了, 被偷了), proponer una solución y hablar de condiciones con 如果…就….',
+      'Puedes dar tu opinión y decir si estás de acuerdo, contar qué te pasó (丢了, 坏了, 被偷了), proponer una solución y hablar de condiciones con 如果…就….',
     grammar: {
       title: '觉得 · 但是 · 被 · 如果…就…',
       explanation:
@@ -128,7 +128,7 @@ export const ZH_A2_U12: ZhUnitDef = {
         'huài',
         'roto (romperse)',
         '我的电脑坏了。',
-        'Se me rompió la compu.',
+        'Se me rompió la computadora.',
         ['problems'],
         {
           acceptedTranslations: ['roto', 'romperse', 'malo'],
@@ -168,7 +168,7 @@ export const ZH_A2_U12: ZhUnitDef = {
         'zěnme bàn',
         '¿qué hago?',
         '我的电脑坏了，怎么办？',
-        'Se me rompió la compu, ¿qué hago?',
+        'Se me rompió la computadora, ¿qué hago?',
         ['questions', 'problems'],
         {
           acceptedTranslations: ['qué hago', '¿qué hacemos?'],
@@ -253,8 +253,8 @@ export const ZH_A2_U12: ZhUnitDef = {
           ],
         },
         takeaways: [
-          'Opinás con 我觉得….',
-          'Decís si estás de acuerdo con 同意 y matizás con 但是.',
+          'Opinas con 我觉得….',
+          'Dices si estás de acuerdo con 同意 y matizas con 但是.',
         ],
         exercises: [
           ex.translationChoice(
@@ -310,7 +310,7 @@ export const ZH_A2_U12: ZhUnitDef = {
           ),
           reply(
             '你觉得中文怎么样？',
-            '¿Qué te parece el chino? (Respondé que te parece muy interesante.)',
+            '¿Qué te parece el chino? (Responde que te parece muy interesante.)',
             'wǒ juéde hěn yǒu yìsi',
             '我觉得很有意思',
             ['zh-juede'],
@@ -343,15 +343,15 @@ export const ZH_A2_U12: ZhUnitDef = {
         objective: 'Preguntar qué pasó y contar un problema.',
         intro: {
           explanation:
-            '怎么了？ es «¿qué pasó?, ¿qué te pasa?». Los problemas se cuentan con 了 (cambio): 我的护照丢了 (perdí el pasaporte), 电脑坏了 (se rompió la compu), 我忘了 (me olvidé).',
+            '怎么了？ es «¿qué pasó?, ¿qué te pasa?». Los problemas se cuentan con 了 (cambio): 我的护照丢了 (perdí el pasaporte), 电脑坏了 (se rompió la computadora), 我忘了 (me olvidé).',
           examples: [
             { target: '你怎么了？——我的护照丢了！', base: '¿Qué te pasa? — ¡Perdí el pasaporte!' },
-            { target: '我的电脑坏了。', base: 'Se me rompió la compu.' },
+            { target: '我的电脑坏了。', base: 'Se me rompió la computadora.' },
           ],
         },
         takeaways: [
-          'Preguntás 怎么了？',
-          'Contás que algo se perdió, se rompió o te lo olvidaste.',
+          'Preguntas 怎么了？',
+          'Cuentas que algo se perdió, se rompió o te lo olvidaste.',
         ],
         exercises: [
           ex.translationChoice(
@@ -376,7 +376,7 @@ export const ZH_A2_U12: ZhUnitDef = {
           ),
           ex.fillBlank(
             '我的电脑___了，不能开了。',
-            'Se me rompió la compu: ya no prende.',
+            'Se me rompió la computadora: ya no prende.',
             '坏',
             ['丢', '忘', '旧'],
             ['zh-huai'],
@@ -402,7 +402,7 @@ export const ZH_A2_U12: ZhUnitDef = {
           }),
           reply(
             '你怎么了？',
-            '¿Qué te pasa? (Respondé que perdiste el pasaporte.)',
+            '¿Qué te pasa? (Responde que perdiste el pasaporte.)',
             'wǒ de hùzhào diū le',
             '我的护照丢了',
             ['zh-diu', 'zh-zenmele'],
@@ -429,7 +429,7 @@ export const ZH_A2_U12: ZhUnitDef = {
             { target: '我的月饼被弟弟吃了。', base: 'Mi hermano se comió mi pastel de luna.' },
           ],
         },
-        takeaways: ['Contás algo que te hicieron con 被.', 'Usás 被 + (quién) + verbo + 了.'],
+        takeaways: ['Cuentas algo que te hicieron con 被.', 'Usas 被 + (quién) + verbo + 了.'],
         exercises: [
           ex.translationChoice('偷', 'robar', ['perder', 'comprar', 'vender'], ['zh-tou-robar'], {
             id: 'zh.ex.yqef2yfmzaoamt',
@@ -444,7 +444,7 @@ export const ZH_A2_U12: ZhUnitDef = {
           ),
           ex.fillBlank(
             '我的钱___偷了！',
-            '¡Me robaron la plata!',
+            '¡Me robaron el dinero!',
             '被',
             ['把', '给', '跟'],
             ['zh-bei-pasiva'],
@@ -466,7 +466,7 @@ export const ZH_A2_U12: ZhUnitDef = {
           ),
           ex.orderWords(
             '我 的 电脑 被 偷 了。',
-            'Me robaron la compu.',
+            'Me robaron la computadora.',
             ['zh-bei-pasiva', 'zh-tou-robar'],
             { id: 'zh.ex.te1mozf3ysg4qy' },
           ),
@@ -485,7 +485,7 @@ export const ZH_A2_U12: ZhUnitDef = {
           ),
           reply(
             '你的手机呢？',
-            '¿Y tu celular? (Respondé que te lo robaron.)',
+            '¿Y tu celular? (Responde que te lo robaron.)',
             'bèi tōu le',
             '被偷了',
             ['zh-bei-pasiva', 'zh-tou-robar'],
@@ -517,11 +517,11 @@ export const ZH_A2_U12: ZhUnitDef = {
           explanation:
             '怎么办？ es «¿qué hago?, ¿qué hacemos?». 办法 es la solución o la manera: 我有一个办法. 修 es arreglar. 可能 es «tal vez, puede ser»: 可能是充电的问题.',
           examples: [
-            { target: '我的电脑坏了，怎么办？', base: 'Se me rompió la compu, ¿qué hago?' },
+            { target: '我的电脑坏了，怎么办？', base: 'Se me rompió la computadora, ¿qué hago?' },
             { target: '我有一个办法。', base: 'Tengo una solución.' },
           ],
         },
-        takeaways: ['Pedís ayuda con 怎么办？', 'Proponés una solución con 办法 y 修.'],
+        takeaways: ['Pides ayuda con 怎么办？', 'Propones una solución con 办法 y 修.'],
         exercises: [
           ex.translationChoice(
             '办法',
@@ -568,8 +568,8 @@ export const ZH_A2_U12: ZhUnitDef = {
             'zh.ex.0h458eg1yruk97',
             ARREGLO,
             '¿Qué problema tiene Wang Ming?',
-            'Se le rompió la compu y no prende',
-            ['Perdió la compu', 'Le robaron la compu', 'No sabe usar la compu'],
+            'Se le rompió la computadora y no prende',
+            ['Perdió la computadora', 'Le robaron la computadora', 'No sabe usar la computadora'],
             ['zh-huai'],
             'Wang Ming dice: «我的电脑坏了，不能开了».',
           ),
@@ -578,13 +578,13 @@ export const ZH_A2_U12: ZhUnitDef = {
             ARREGLO,
             '¿Qué solución propone Li Hua?',
             'Ir a ver a su hermano, que sabe arreglar computadoras',
-            ['Comprar una compu nueva', 'Cargar la compu', 'Llamar a la tienda'],
+            ['Comprar una computadora nueva', 'Cargar la computadora', 'Llamar a la tienda'],
             ['zh-banfa', 'zh-xiu'],
             'Li Hua dice: «我有个办法：我们去找我哥哥，他会修电脑».',
           ),
           reply(
             '我的手机坏了，怎么办？',
-            'Se me rompió el celular, ¿qué hago? (Aconsejale que lo lleve a arreglar.)',
+            'Se me rompió el celular, ¿qué hago? (Aconséjale que lo lleve a arreglar.)',
             'nǐ qù xiū ba',
             '你去修吧',
             ['zh-xiu', 'zh-zenmeban'],
@@ -619,7 +619,7 @@ export const ZH_A2_U12: ZhUnitDef = {
             { target: '别担心，我有办法。', base: 'No te preocupes, tengo una solución.' },
           ],
         },
-        takeaways: ['Decís condiciones con 如果…就….', 'Tranquilizás a alguien con 别担心.'],
+        takeaways: ['Dices condiciones con 如果…就….', 'Tranquilizas a alguien con 别担心.'],
         exercises: [
           ex.translationChoice(
             '担心',
@@ -645,7 +645,7 @@ export const ZH_A2_U12: ZhUnitDef = {
           ),
           ex.fillBlank(
             '如果你有空，我们___一起去吧。',
-            'Si tenés tiempo, vamos juntos.',
+            'Si tienes tiempo, vamos juntos.',
             '就',
             ['被', '把', '比'],
             ['zh-jiu-entonces', 'zh-ruguo'],
@@ -667,7 +667,7 @@ export const ZH_A2_U12: ZhUnitDef = {
             'zh.ex.4zfo6f256px946',
             PROBLEMA,
             '¿Qué hacen primero, según Zhang Li?',
-            'Preguntarle al mozo',
+            'Preguntarle al mesero',
             ['Ir a comprar otro celular', 'Volver a casa', 'Llamar a la mamá de Anna'],
             ['zh-danxin', 'zh-xian'],
             'Zhang Li dice: «别担心。我们先去问问服务员吧».',
@@ -696,7 +696,7 @@ export const ZH_A2_U12: ZhUnitDef = {
           ),
           reply(
             '如果明天下雨，你去吗？',
-            'Si mañana llueve, ¿vas? (Respondé que si llueve, no vas.)',
+            'Si mañana llueve, ¿vas? (Responde que si llueve, no vas.)',
             'rúguǒ xià yǔ, wǒ jiù bú qù',
             '如果下雨，我就不去',
             ['zh-ruguo', 'zh-jiu-entonces'],

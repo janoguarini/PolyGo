@@ -127,7 +127,7 @@ describe('signInWithApple', () => {
     );
     const error = await signInWithApple().catch((e: unknown) => e);
     expect(toUserMessage(error)).toBe(
-      'Apple no pudo completar el inicio de sesión. Intentá de nuevo.',
+      'Apple no pudo completar el inicio de sesión. Inténtalo de nuevo.',
     );
     expect(mockAuth.signInWithIdToken).not.toHaveBeenCalled();
   });
@@ -147,7 +147,9 @@ describe('signInWithApple', () => {
         error: { name: 'AuthApiError', code, message: 'Bad ID token' },
       });
       const error = await signInWithApple().catch((e: unknown) => e);
-      expect(toUserMessage(error)).toBe('No pudimos validar tu cuenta de Apple. Intentá de nuevo.');
+      expect(toUserMessage(error)).toBe(
+        'No pudimos validar tu cuenta de Apple. Inténtalo de nuevo.',
+      );
     }
   });
 
@@ -158,7 +160,7 @@ describe('signInWithApple', () => {
       error: { name: 'AuthRetryableFetchError', message: 'Network request failed' },
     });
     const error = await signInWithApple().catch((e: unknown) => e);
-    expect(toUserMessage(error)).toBe('No hay conexión con el servidor. Revisá tu internet.');
+    expect(toUserMessage(error)).toBe('No hay conexión con el servidor. Revisa tu internet.');
   });
 
   it('con Apple apagado en Supabase lo dice sin culpar al usuario', async () => {
@@ -192,7 +194,7 @@ describe('signInWithApple', () => {
     isAvailable.mockResolvedValue(false);
     const error = await signInWithApple().catch((e: unknown) => e);
     expect(toUserMessage(error)).toBe(
-      'Esta versión de la app todavía no permite entrar con Apple. Actualizala o usá tu email.',
+      'Esta versión de la app todavía no permite entrar con Apple. Actualízala o usa tu email.',
     );
     expect(signInAsync).not.toHaveBeenCalled();
   });

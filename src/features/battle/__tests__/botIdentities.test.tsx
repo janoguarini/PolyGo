@@ -348,7 +348,7 @@ describe('rival encontrado (lobby)', () => {
     expect(screen.getByTestId('fondo:bg_aurora')).toBeTruthy();
     expect(screen.getByText('avatar:cat-red marco:frame_master')).toBeTruthy();
     expect(screen.getByTestId(`fondo:${FEDE.backgroundId}`)).toBeTruthy();
-    expect(screen.getByLabelText('Vos, 182 ELO')).toBeTruthy();
+    expect(screen.getByLabelText('Tú, 182 ELO')).toBeTruthy();
     expect(screen.getByLabelText('Fede Martínez, 174 ELO')).toBeTruthy();
   });
 });

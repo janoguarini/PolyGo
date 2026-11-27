@@ -23,7 +23,7 @@ const KEYS = dialogue(
   ],
 );
 
-const CAR = dialogue('en.stim.b1-u12-car', 'Ben llama a Lucy desde la ruta.', [
+const CAR = dialogue('en.stim.b1-u12-car', 'Ben llama a Lucy desde la carretera.', [
   ['Ben', "Lucy, I'm going to be late. My car has broken down."],
   ['Lucy', 'Oh no! Have you run out of gas again?'],
   ['Ben', 'No, I have plenty of gas. It must be the battery.'],
@@ -83,7 +83,7 @@ export const EN_B1_U12: B1UnitDef = {
       "Deducir qué pasa (must be, can't be), cosas que se rompen, reclamos, causas y contrastes (because of, although, however) y soluciones.",
     emoji: '🛠️',
     objective:
-      'Podés explicar un problema, sacar conclusiones, hacer un reclamo formal y proponer una solución.',
+      'Puedes explicar un problema, sacar conclusiones, hacer un reclamo formal y proponer una solución.',
     grammar: {
       title: 'Deducción y conectores',
       explanation:
@@ -115,7 +115,7 @@ export const EN_B1_U12: B1UnitDef = {
         '/ˈmʌst bi/',
         undefined,
         'You must be tired after the trip.',
-        'Debés estar cansado después del viaje.',
+        'Debes estar cansado después del viaje.',
         ['deduction', 'modals'],
         ['debe ser', 'seguro que es', 'debe estar'],
       ),
@@ -157,7 +157,7 @@ export const EN_B1_U12: B1UnitDef = {
         '/ˈbreɪk ˈdaʊn/',
         '🚗',
         'My car broke down on the road.',
-        'Se me rompió el auto en la ruta.',
+        'Se me rompió el auto en la carretera.',
         ['problems', 'phrasal-verbs'],
         ['romperse', 'descomponerse'],
       ),
@@ -178,7 +178,7 @@ export const EN_B1_U12: B1UnitDef = {
         '/fɪks/',
         '🔧',
         'Can you fix my bike?',
-        '¿Podés arreglar mi bici?',
+        '¿Puedes arreglar mi bici?',
         ['problems', 'verbs'],
         ['arreglar', 'reparar'],
       ),
@@ -303,25 +303,25 @@ export const EN_B1_U12: B1UnitDef = {
           examples: [
             {
               target: 'You must be tired after the trip.',
-              base: 'Debés estar cansado después del viaje.',
+              base: 'Debes estar cansado después del viaje.',
             },
             { target: "That can't be true!", base: '¡Eso no puede ser cierto!' },
           ],
         },
         takeaways: [
-          "Sacás conclusiones con must be y can't be.",
-          'Decís lo que es posible con might be.',
+          "Sacas conclusiones con must be y can't be.",
+          'Dices lo que es posible con might be.',
         ],
         exercises: [
           ex.fillBlank(
             'You worked all day. You ___ be tired.',
-            'Trabajaste todo el día. Debés estar cansado.',
+            'Trabajaste todo el día. Debes estar cansado.',
             'must',
             ["can't", 'should', 'have to'],
             ['en-must-be', 'en-tired'],
             {
               id: 'en.ex.oklnlxw6m2a5lu',
-              explanation: 'Must be: casi seguro de que sí (por lo que sabés).',
+              explanation: 'Must be: casi seguro de que sí (por lo que sabes).',
             },
           ),
           ex.fillBlank(
@@ -369,7 +369,7 @@ export const EN_B1_U12: B1UnitDef = {
           ),
           ex.orderWords(
             'You must be very happy.',
-            'Debés estar muy contento.',
+            'Debes estar muy contento.',
             ['en-must-be', 'en-happy'],
             { id: 'en.ex.o6th0270c2ybzi' },
           ),
@@ -394,15 +394,15 @@ export const EN_B1_U12: B1UnitDef = {
         objective: 'Explicar que algo se rompió o se acabó y pedir que lo arreglen.',
         intro: {
           explanation:
-            'Break down es romperse una máquina (un auto, una heladera): My car has broken down. Run out of es quedarse sin algo: We have run out of milk. Fix es arreglar y replace, reemplazar.',
+            'Break down es romperse una máquina (un auto, un refrigerador): My car has broken down. Run out of es quedarse sin algo: We have run out of milk. Fix es arreglar y replace, reemplazar.',
           examples: [
             { target: 'My car has broken down.', base: 'Se me rompió el auto.' },
             { target: 'We have run out of milk.', base: 'Nos quedamos sin leche.' },
           ],
         },
         takeaways: [
-          'Explicás que algo se rompió o se acabó.',
-          'Pedís que lo arreglen o lo cambien: fix, replace.',
+          'Explicas que algo se rompió o se acabó.',
+          'Pides que lo arreglen o lo cambien: fix, replace.',
         ],
         exercises: [
           ex.matchPairs(
@@ -439,7 +439,7 @@ export const EN_B1_U12: B1UnitDef = {
             CAR,
             '¿Qué le pasó a Ben?',
             'Se le rompió el auto',
-            ['Se quedó sin nafta', 'Perdió el tren', 'Tuvo un accidente'],
+            ['Se quedó sin gasolina', 'Perdió el tren', 'Tuvo un accidente'],
             ['en-break-down'],
             'Ben dice: «My car has broken down».',
           ),
@@ -448,7 +448,7 @@ export const EN_B1_U12: B1UnitDef = {
             CAR,
             '¿Cuál cree Ben que es el problema?',
             'La batería',
-            ['La nafta', 'Las ruedas', 'El motor'],
+            ['La gasolina', 'Las ruedas', 'El motor'],
             ['en-must-be', 'en-problem'],
             'Ben dice: «I have plenty of gas. It must be the battery».',
           ),
@@ -463,7 +463,7 @@ export const EN_B1_U12: B1UnitDef = {
             { id: 'en.ex.7rn7zftwe8rruj' },
           ),
           ex.translateWrite(
-            '¿Podés arreglar mi bici?',
+            '¿Puedes arreglar mi bici?',
             'Can you fix my bike?',
             ['en-fix', 'en-bike'],
             {
@@ -503,8 +503,8 @@ export const EN_B1_U12: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Hacés un reclamo con cortesía.',
-          'Pedís un reembolso o un cambio y mostrás el ticket.',
+          'Haces un reclamo con cortesía.',
+          'Pides un reembolso o un cambio y muestras el ticket.',
         ],
         exercises: [
           ex.matchPairs(
@@ -532,7 +532,7 @@ export const EN_B1_U12: B1UnitDef = {
           ),
           ex.fillBlank(
             'Do you have the ___? — Yes, here it is.',
-            '¿Tiene el ticket? — Sí, acá está.',
+            '¿Tiene el ticket? — Sí, aquí está.',
             'receipt',
             ['refund', 'complaint', 'problem'],
             ['en-receipt'],
@@ -573,7 +573,7 @@ export const EN_B1_U12: B1UnitDef = {
             { id: 'en.ex.z041pggn3hp5ja' },
           ),
           ex.shortAnswer(
-            'How can I help you? (querés hacer un reclamo)',
+            'How can I help you? (quieres hacer un reclamo)',
             '¿En qué lo puedo ayudar?',
             'I would like to make a complaint.',
             ["I'd like to make a complaint.", 'I want to make a complaint.'],
@@ -615,8 +615,8 @@ export const EN_B1_U12: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Explicás causas con because of y consecuencias con therefore.',
-          'Mostrás contrastes con although y however.',
+          'Explicas causas con because of y consecuencias con therefore.',
+          'Muestras contrastes con although y however.',
         ],
         exercises: [
           ex.matchPairs(
@@ -669,9 +669,9 @@ export const EN_B1_U12: B1UnitDef = {
           question(
             'en.ex.q8lzsavk7cjs4b',
             STORM,
-            '¿Hace falta comprar un pasaje nuevo para el colectivo?',
-            'No: los pasajes de hoy sirven en los colectivos',
-            ['Sí, en la entrada', 'Sí, más caro', 'No, el colectivo es gratis para todos'],
+            '¿Hace falta comprar un pasaje nuevo para el autobús?',
+            'No: los pasajes de hoy sirven en los autobuses',
+            ['Sí, en la entrada', 'Sí, más caro', 'No, el autobús es gratis para todos'],
             ['en-therefore', 'en-however'],
             'El aviso dice: «Tickets for today can be used on the buses. Therefore, you do not need to buy a new ticket».',
           ),
@@ -718,7 +718,7 @@ export const EN_B1_U12: B1UnitDef = {
         objective: 'Proponer soluciones con los condicionales y sort out.',
         intro: {
           explanation:
-            "Sort out es resolver un problema: Don't worry, we'll sort it out. Para proponer soluciones usás los dos condicionales: If we call the mechanic, he will fix it (posible). If I had more money, I would buy a new car (imaginario).",
+            "Sort out es resolver un problema: Don't worry, we'll sort it out. Para proponer soluciones usas los dos condicionales: If we call the mechanic, he will fix it (posible). If I had more money, I would buy a new car (imaginario).",
           examples: [
             {
               target: "Don't worry, we'll sort it out.",
@@ -730,7 +730,7 @@ export const EN_B1_U12: B1UnitDef = {
             },
           ],
         },
-        takeaways: ['Proponés soluciones con if.', "Tranquilizás a alguien: We'll sort it out."],
+        takeaways: ['Propones soluciones con if.', "Tranquilizas a alguien: We'll sort it out."],
         exercises: [
           ex.translationChoice(
             'solution',
@@ -749,7 +749,7 @@ export const EN_B1_U12: B1UnitDef = {
           ),
           ex.fillBlank(
             'If you call the mechanic, he ___ fix it today.',
-            'Si llamás al mecánico, lo va a arreglar hoy.',
+            'Si llamas al mecánico, lo va a arreglar hoy.',
             'will',
             ['would', 'did', 'was'],
             ['en-fix', 'en-if'],
@@ -760,7 +760,7 @@ export const EN_B1_U12: B1UnitDef = {
           ),
           ex.fillBlank(
             'If I had more money, I ___ buy a new car.',
-            'Si tuviera más plata, me compraría un auto nuevo.',
+            'Si tuviera más dinero, me compraría un auto nuevo.',
             'would',
             ['will', 'can', 'am'],
             ['en-car', 'en-if'],
@@ -774,7 +774,7 @@ export const EN_B1_U12: B1UnitDef = {
             CAR,
             '¿Qué le aconseja Lucy a Ben?',
             'Que llame al mecánico',
-            ['Que cargue nafta', 'Que vuelva caminando', 'Que compre otro auto'],
+            ['Que cargue gasolina', 'Que vuelva caminando', 'Que compre otro auto'],
             ['en-fix', 'en-solution'],
             "Lucy dice: «Call the mechanic. I'm sure he can fix it».",
           ),

@@ -23,7 +23,7 @@ const PolygoQuiz = (props: QuizProps) => {
   const total = props.questions.length;
   // Textos en el idioma de la interfaz (los manda la app); las props viejas no los traen.
   const ui = props.ui || {
-    empty: 'Abrí Polygo para cargar preguntas',
+    empty: 'Abre PolyGo para cargar preguntas',
     done: 'RONDA TERMINADA',
     again: 'Otra ronda',
     question: 'PREGUNTA',

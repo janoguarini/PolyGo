@@ -61,7 +61,7 @@ export const FR_A1_U16: FrUnitDef = {
       'Quel temps fait-il? Il fait beau / mauvais / froid / chaud, il pleut, il neige, il y a du soleil / du vent; las estaciones (en été, pero au printemps); la mer, la montagne, la plage. Los hemisferios.',
     emoji: '☀️',
     objective:
-      'Podés preguntar y decir qué tiempo hace, hablar de las estaciones y contar si preferís el mar o la montaña.',
+      'Puedes preguntar y decir qué tiempo hace, hablar de las estaciones y contar si prefieres el mar o la montaña.',
     grammar: {
       title: 'Il fait + adjetivo · en / au + estación',
       explanation:
@@ -199,7 +199,7 @@ export const FR_A1_U16: FrUnitDef = {
         'la plage',
         'la playa',
         'Le matin, je vais à la plage.',
-        'A la mañana voy a la playa.',
+        'Por la mañana voy a la playa.',
         ['places', 'f'],
       ),
     ],
@@ -220,8 +220,8 @@ export const FR_A1_U16: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Preguntás quel temps fait-il?',
-          'Respondés con il fait beau, mauvais, froid o chaud.',
+          'Preguntas quel temps fait-il?',
+          'Respondes con il fait beau, mauvais, froid o chaud.',
         ],
         exercises: [
           ex.translationChoice(
@@ -307,7 +307,7 @@ export const FR_A1_U16: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Quel temps fait-il?',
-            '¿Qué tiempo hace? (Respondé que hace mucho frío.)',
+            '¿Qué tiempo hace? (Responde que hace mucho frío.)',
             'Il fait très froid.',
             ["Il fait très froid aujourd'hui.", "Aujourd'hui, il fait très froid."],
             ['fr-il-fait-froid', 'fr-quel-temps-fait-il'],
@@ -328,7 +328,7 @@ export const FR_A1_U16: FrUnitDef = {
             { target: 'Il y a du soleil et du vent.', base: 'Hay sol y viento.' },
           ],
         },
-        takeaways: ['Decís il pleut e il neige.', 'Usás il y a du soleil e il y a du vent.'],
+        takeaways: ['Dices il pleut e il neige.', 'Usas il y a du soleil e il y a du vent.'],
         exercises: [
           ex.translationChoice(
             'il pleut',
@@ -404,7 +404,7 @@ export const FR_A1_U16: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Quel temps fait-il à Paris?',
-            '¿Qué tiempo hace en París? (Respondé que hay viento y llueve.)',
+            '¿Qué tiempo hace en París? (Responde que hay viento y llueve.)',
             'Il y a du vent et il pleut.',
             [
               'Il pleut et il y a du vent.',
@@ -430,8 +430,8 @@ export const FR_A1_U16: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Nombrás le printemps, l'été, l'automne y l'hiver.",
-          'Decís en été, en automne, en hiver, pero au printemps.',
+          "Nombras le printemps, l'été, l'automne y l'hiver.",
+          'Dices en été, en automne, en hiver, pero au printemps.',
         ],
         exercises: [
           ex.translationChoice(
@@ -514,7 +514,7 @@ export const FR_A1_U16: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Quel temps fait-il en hiver?',
-            '¿Qué tiempo hace en invierno? (Respondé que hace frío y nieva.)',
+            '¿Qué tiempo hace en invierno? (Responde que hace frío y nieva.)',
             'Il fait froid et il neige.',
             ['En hiver, il fait froid et il neige.', 'Il neige et il fait froid.'],
             ['fr-l-hiver', 'fr-il-neige'],
@@ -526,7 +526,7 @@ export const FR_A1_U16: FrUnitDef = {
       // ------------------------------------------------------------------------------------ L4
       {
         title: 'La mer ou la montagne?',
-        objective: 'Hablar de la playa, el mar y la montaña, y decir qué preferís.',
+        objective: 'Hablar de la playa, el mar y la montaña, y decir qué prefieres.',
         intro: {
           explanation:
             'Ojo con el género: la mer (el mar) es femenino en francés. Mer y mère (madre) suenan igual. La montagne es la montaña y la plage, la playa. Para decir adónde vas: je vais à la mer, à la montagne, à la plage. Para elegir: tu préfères la mer ou la montagne?',
@@ -539,8 +539,8 @@ export const FR_A1_U16: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Decís la mer, la montagne y la plage, todas femeninas.',
-          'Contás adónde vas con je vais à la…',
+          'Dices la mer, la montagne y la plage, todas femeninas.',
+          'Cuentas adónde vas con je vais à la…',
         ],
         exercises: [
           ex.translationChoice(
@@ -626,7 +626,7 @@ export const FR_A1_U16: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Tu préfères la mer ou la montagne?',
-            '¿Preferís el mar o la montaña? (Respondé que preferís el mar.)',
+            '¿Prefieres el mar o la montaña? (Responde que prefieres el mar.)',
             'Je préfère la mer.',
             ['La mer.', 'Je préfère la mer!', 'La mer!'],
             ['fr-la-mer', 'fr-la-montagne'],
@@ -641,7 +641,7 @@ export const FR_A1_U16: FrUnitDef = {
         objective: 'Describir el clima de un lugar y entender la diferencia de hemisferios.',
         intro: {
           explanation:
-            'Francia está en el hemisferio norte: allí julio y agosto son verano y hace calor, mientras que en la Argentina es invierno. Por eso un francés dice en juillet, il fait chaud, y vos, en juillet, il fait froid. Recordá: il fait + adjetivo, il pleut, il neige, il y a du soleil / du vent.',
+            'Francia está en el hemisferio norte: allí julio y agosto son verano y hace calor, mientras que en la Argentina es invierno. Por eso un francés dice en juillet, il fait chaud, y tú, en juillet, il fait froid. Recuerda: il fait + adjetivo, il pleut, il neige, il y a du soleil / du vent.',
           examples: [
             {
               target: 'En France, il fait chaud en juillet.',
@@ -654,8 +654,8 @@ export const FR_A1_U16: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Describís el clima de un lugar y de una estación.',
-          'Sabés que en julio es verano en Francia e invierno en la Argentina.',
+          'Describes el clima de un lugar y de una estación.',
+          'Sabes que en julio es verano en Francia e invierno en la Argentina.',
         ],
         exercises: [
           question(
@@ -746,7 +746,7 @@ export const FR_A1_U16: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Quel temps fait-il aujourd'hui?",
-            '¿Qué tiempo hace hoy? (Respondé que hace buen tiempo y hay sol.)',
+            '¿Qué tiempo hace hoy? (Responde que hace buen tiempo y hay sol.)',
             'Il fait beau et il y a du soleil.',
             [
               "Aujourd'hui, il fait beau et il y a du soleil.",

@@ -55,7 +55,7 @@ export const ZH_A1_U14: ZhUnitDef = {
     description: 'Colores, cosas nuevas y viejas, cómo es una persona, 比 y 跟…一样.',
     emoji: '🎨',
     objective:
-      'Podés describir cosas y personas (colores, tamaño, estatura, pelo), quejarte con 有点儿 y comparar con 比 y 跟…一样.',
+      'Puedes describir cosas y personas (colores, tamaño, estatura, pelo), quejarte con 有点儿 y comparar con 比 y 跟…一样.',
     grammar: {
       title: 'Adjetivo + 的 · 有点儿 · 比 · 跟…一样',
       explanation:
@@ -63,7 +63,7 @@ export const ZH_A1_U14: ZhUnitDef = {
       examples: [
         { target: '我要红色的。', base: 'Quiero el rojo.' },
         { target: '我比我哥哥高。', base: 'Soy más alto que mi hermano.' },
-        { target: '我跟你一样高。', base: 'Soy tan alto como vos.' },
+        { target: '我跟你一样高。', base: 'Soy tan alto como tú.' },
       ],
     },
     review: {
@@ -184,7 +184,7 @@ export const ZH_A1_U14: ZhUnitDef = {
         'bǐ',
         'más que (comparación)',
         '我比你高。',
-        'Soy más alto que vos.',
+        'Soy más alto que tú.',
         ['grammar'],
         {
           acceptedTranslations: ['más que', 'que'],
@@ -253,7 +253,7 @@ export const ZH_A1_U14: ZhUnitDef = {
             { target: '我要红色的。', base: 'Quiero el rojo.' },
           ],
         },
-        takeaways: ['Nombrás cuatro colores.', 'Decís de qué color es algo con 是…的.'],
+        takeaways: ['Nombras cuatro colores.', 'Dices de qué color es algo con 是…的.'],
         exercises: [
           ex.imageChoice('🔴', '红色', ['白色', '黑色', '蓝色'], ['zh-hongse'], {
             id: 'zh.ex.3wu52z4ffsddpx',
@@ -307,7 +307,7 @@ export const ZH_A1_U14: ZhUnitDef = {
           }),
           reply(
             '你的包是什么颜色的？',
-            '¿De qué color es tu bolso? (Respondé que es negro.)',
+            '¿De qué color es tu bolso? (Responde que es negro.)',
             'wǒ de bāo shì hēisè de',
             '我的包是黑色的',
             ['zh-heise', 'zh-yanse'],
@@ -334,7 +334,7 @@ export const ZH_A1_U14: ZhUnitDef = {
             { target: '这件衣服有点儿长。', base: 'Esta ropa es medio larga.' },
           ],
         },
-        takeaways: ['Describís cosas con 新, 旧, 长 y 短.', 'Te quejás con 有点儿 + adjetivo.'],
+        takeaways: ['Describes cosas con 新, 旧, 长 y 短.', 'Te quejas con 有点儿 + adjetivo.'],
         exercises: [
           ex.translationChoice('新', 'nuevo', ['viejo (cosas)', 'largo', 'corto'], ['zh-xin'], {
             id: 'zh.ex.kyavu1dgbtfm9h',
@@ -350,7 +350,7 @@ export const ZH_A1_U14: ZhUnitDef = {
           ),
           ex.fillBlank(
             '我的电脑很___，我想买新的。',
-            'Mi compu es muy vieja; quiero comprar una nueva.',
+            'Mi computadora es muy vieja; quiero comprar una nueva.',
             '旧',
             ['新', '长', '短'],
             ['zh-jiu-viejo', 'zh-xin'],
@@ -390,7 +390,7 @@ export const ZH_A1_U14: ZhUnitDef = {
           ),
           reply(
             '这件衣服怎么样？',
-            '¿Qué tal esta ropa? (Respondé que es medio larga.)',
+            '¿Qué tal esta ropa? (Responde que es medio larga.)',
             'yǒudiǎnr cháng',
             '有点儿长',
             ['zh-youdianr', 'zh-chang'],
@@ -424,7 +424,7 @@ export const ZH_A1_U14: ZhUnitDef = {
             { target: '她头发很长，眼睛很大。', base: 'Tiene el pelo largo y los ojos grandes.' },
           ],
         },
-        takeaways: ['Decís si alguien es alto o bajo.', 'Describís el pelo y los ojos.'],
+        takeaways: ['Dices si alguien es alto o bajo.', 'Describes el pelo y los ojos.'],
         exercises: [
           ex.translationChoice('矮', 'bajo (de estatura)', ['alto', 'largo', 'corto'], ['zh-ai'], {
             id: 'zh.ex.t1kvtmyyj753xc',
@@ -476,7 +476,7 @@ export const ZH_A1_U14: ZhUnitDef = {
           ),
           reply(
             '你哥哥高吗？',
-            '¿Tu hermano mayor es alto? (Respondé que no, que es bajo.)',
+            '¿Tu hermano mayor es alto? (Responde que no, que es bajo.)',
             'bù, tā hěn ǎi',
             '不，他很矮',
             ['zh-ai', 'zh-gao'],
@@ -504,13 +504,13 @@ export const ZH_A1_U14: ZhUnitDef = {
         objective: 'Comparar dos cosas o personas con 比.',
         intro: {
           explanation:
-            'Para comparar: A + 比 + B + adjetivo. 我比你高 es «soy más alto que vos». Con 比 el adjetivo va solo: 我比你很高 está mal.',
+            'Para comparar: A + 比 + B + adjetivo. 我比你高 es «soy más alto que tú». Con 比 el adjetivo va solo: 我比你很高 está mal.',
           examples: [
             { target: '我比我哥哥高。', base: 'Soy más alto que mi hermano mayor.' },
             { target: '白色的比红色的便宜。', base: 'El blanco es más barato que el rojo.' },
           ],
         },
-        takeaways: ['Comparás con A 比 B + adjetivo.', 'No usás 很 en una comparación con 比.'],
+        takeaways: ['Comparas con A 比 B + adjetivo.', 'No usas 很 en una comparación con 比.'],
         exercises: [
           ex.translationChoice(
             '比',
@@ -579,7 +579,7 @@ export const ZH_A1_U14: ZhUnitDef = {
           ),
           reply(
             '你比你弟弟高吗？',
-            '¿Sos más alto que tu hermano menor? (Respondé que sí.)',
+            '¿Eres más alto que tu hermano menor? (Responde que sí.)',
             'wǒ bǐ wǒ dìdi gāo',
             '我比我弟弟高',
             ['zh-bi-comparar', 'zh-gao'],
@@ -606,15 +606,15 @@ export const ZH_A1_U14: ZhUnitDef = {
         objective: 'Decir que dos cosas son iguales y entender una descripción.',
         intro: {
           explanation:
-            'A 跟 B 一样 es «A es igual a B». Con un adjetivo: 我跟你一样高 (soy tan alto como vos). 跟 también es «con»: 我跟朋友去超市.',
+            'A 跟 B 一样 es «A es igual a B». Con un adjetivo: 我跟你一样高 (soy tan alto como tú). 跟 también es «con»: 我跟朋友去超市.',
           examples: [
             { target: '我的包跟你的一样。', base: 'Mi bolso es igual al tuyo.' },
             { target: '我跟我哥哥一样高。', base: 'Soy tan alto como mi hermano mayor.' },
           ],
         },
         takeaways: [
-          'Decís que algo es igual con 跟…一样.',
-          'Entendés cómo describen a una persona.',
+          'Dices que algo es igual con 跟…一样.',
+          'Entiendes cómo describen a una persona.',
         ],
         exercises: [
           ex.translationChoice(
@@ -691,7 +691,7 @@ export const ZH_A1_U14: ZhUnitDef = {
           ),
           reply(
             '你的手机跟我的一样吗？',
-            '¿Tu celular es igual al mío? (Respondé que sí, que es igual.)',
+            '¿Tu celular es igual al mío? (Responde que sí, que es igual.)',
             'yíyàng',
             '一样',
             ['zh-yiyang'],

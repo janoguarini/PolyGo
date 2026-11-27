@@ -92,7 +92,7 @@ it('los cursos para empezar van por idioma de origen: test de nivel o desde A1',
   // Todos los cursos tienen A1 y A2: francés, portugués y chino (desde español) y español (desde
   // inglés) ofrecen el test de nivel.
   expect(screen.getAllByText(/Test de nivel o desde A1/).length).toBe(4);
-  expect(screen.queryByText(/Empezás desde A1/)).toBeNull();
+  expect(screen.queryByText(/Empiezas desde A1/)).toBeNull();
   expect(screen.getByText(/Para hablantes de inglés/)).toBeTruthy();
 });
 
@@ -128,7 +128,7 @@ it('si el cambio falla, avisa que el progreso está a salvo', async () => {
   );
   expect(alert).toHaveBeenCalledWith(
     'No pudimos cambiar de curso',
-    'Tu progreso está a salvo. Probá de nuevo en un rato.',
+    'Tu progreso está a salvo. Vuelve a intentarlo en un rato.',
   );
   alert.mockRestore();
 });

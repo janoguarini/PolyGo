@@ -52,7 +52,7 @@ export const ZH_A1_U16: ZhUnitDef = {
       'Ubicar lugares, dar indicaciones, pedir permiso, proponer planes y contar lo que hiciste.',
     emoji: '🧭',
     objective:
-      'Podés decir dónde está un lugar y cómo llegar, pedir permiso, proponer un plan y contar lo que hiciste (o no) ayer.',
+      'Puedes decir dónde está un lugar y cómo llegar, pedir permiso, proponer un plan y contar lo que hiciste (o no) ayer.',
     grammar: {
       title: 'Lugar + 旁边 · 往 · 可以 · 吧 · 了 y 没',
       explanation:
@@ -135,13 +135,13 @@ export const ZH_A1_U16: ZhUnitDef = {
         'yìzhí',
         'derecho (sin doblar)',
         '一直走。',
-        'Seguí derecho.',
+        'Sigue derecho.',
         ['directions'],
         {
           acceptedTranslations: ['derecho', 'todo recto'],
         },
       ),
-      w('zh-wang', '往', 'wǎng', 'hacia', '往右走。', 'Andá hacia la derecha.', ['directions'], {
+      w('zh-wang', '往', 'wǎng', 'hacia', '往右走。', 'Ve hacia la derecha.', ['directions'], {
         acceptedTranslations: ['para'],
       }),
       w('zh-zou', '走', 'zǒu', 'andar (irse)', '我们走吧。', 'Vamos.', ['verbs'], {
@@ -201,7 +201,7 @@ export const ZH_A1_U16: ZhUnitDef = {
         'kěyǐ',
         'poder (tener permiso)',
         '我可以坐这儿吗？',
-        '¿Me puedo sentar acá?',
+        '¿Me puedo sentar aquí?',
         ['verbs'],
         {
           acceptedTranslations: ['se puede', 'poder'],
@@ -248,7 +248,7 @@ export const ZH_A1_U16: ZhUnitDef = {
             { target: '超市在银行左边。', base: 'El súper está a la izquierda del banco.' },
           ],
         },
-        takeaways: ['Ubicás lugares con 左边, 右边 y 旁边.', 'Nombrás el banco y el parque.'],
+        takeaways: ['Ubicas lugares con 左边, 右边 y 旁边.', 'Nombras el banco y el parque.'],
         exercises: [
           ex.translationChoice(
             '左边',
@@ -299,7 +299,7 @@ export const ZH_A1_U16: ZhUnitDef = {
           ),
           reply(
             '医院在哪儿？',
-            '¿Dónde está el hospital? (Respondé que al lado del banco.)',
+            '¿Dónde está el hospital? (Responde que al lado del banco.)',
             'yīyuàn zài yínháng pángbiān',
             '医院在银行旁边',
             ['zh-yinhang', 'zh-pangbian'],
@@ -334,13 +334,13 @@ export const ZH_A1_U16: ZhUnitDef = {
         objective: 'Dar y entender indicaciones.',
         intro: {
           explanation:
-            '一直走 es «seguí derecho». 往 + dirección + 走 es «andá hacia»: 往左走 (doblá a la izquierda). 前面 es adelante y 后面, atrás: 火车站在前面.',
+            '一直走 es «sigue derecho». 往 + dirección + 走 es «ve hacia»: 往左走 (dobla a la izquierda). 前面 es adelante y 后面, atrás: 火车站在前面.',
           examples: [
-            { target: '一直走，然后往右走。', base: 'Seguí derecho y después doblá a la derecha.' },
+            { target: '一直走，然后往右走。', base: 'Sigue derecho y después dobla a la derecha.' },
             { target: '火车站在前面。', base: 'La estación de tren está adelante.' },
           ],
         },
-        takeaways: ['Indicás el camino con 一直走 y 往左 / 往右走.', 'Usás 前面 y 后面.'],
+        takeaways: ['Indicas el camino con 一直走 y 往左 / 往右走.', 'Usas 前面 y 后面.'],
         exercises: [
           ex.translationChoice(
             '一直',
@@ -372,17 +372,10 @@ export const ZH_A1_U16: ZhUnitDef = {
             ['zh-qianmian', 'zh-houmian', 'zh-huochezhan'],
             { id: 'zh.ex.j84cm81awiu7h1', skill: 'vocabulary' },
           ),
-          ex.fillBlank(
-            '___右走。',
-            'Andá hacia la derecha.',
-            '往',
-            ['在', '是', '有'],
-            ['zh-wang'],
-            {
-              id: 'zh.ex.d3w76zhcdmurwh',
-              explanation: '往 + dirección + 走: «andá hacia…».',
-            },
-          ),
+          ex.fillBlank('___右走。', 'Ve hacia la derecha.', '往', ['在', '是', '有'], ['zh-wang'], {
+            id: 'zh.ex.d3w76zhcdmurwh',
+            explanation: '往 + dirección + 走: «ve hacia…».',
+          }),
           tone('一直', 'yìzhí', ['yìzhī', 'yìzhǐ', 'yìzhì'], ['zh-yizhi'], {
             id: 'zh.ex.3dduicxcdv7rb1',
           }),
@@ -410,7 +403,7 @@ export const ZH_A1_U16: ZhUnitDef = {
           ),
           reply(
             '火车站远吗？',
-            '¿La estación queda lejos? (Respondé que no, que está adelante.)',
+            '¿La estación queda lejos? (Responde que no, que está adelante.)',
             'bù yuǎn, zài qiánmiàn',
             '不远，在前面',
             ['zh-qianmian', 'zh-huochezhan'],
@@ -419,7 +412,7 @@ export const ZH_A1_U16: ZhUnitDef = {
               accepted: ['zài qiánmiàn', '在前面', 'huǒchēzhàn zài qiánmiàn', '火车站在前面'],
             },
           ),
-          write('Seguí derecho.', 'yìzhí zǒu', '一直走', ['zh-yizhi', 'zh-zou'], {
+          write('Sigue derecho.', 'yìzhí zǒu', '一直走', ['zh-yizhi', 'zh-zou'], {
             id: 'zh.ex.9pdz1i9feh9t1f',
           }),
         ],
@@ -431,13 +424,13 @@ export const ZH_A1_U16: ZhUnitDef = {
         objective: 'Pedir y dar permiso; viajar en avión.',
         intro: {
           explanation:
-            '可以 es «poder» en el sentido de tener permiso: 我可以坐这儿吗？ (¿me puedo sentar acá?). 不可以 es «no se puede». 能 (U11) es poder porque hay tiempo o capacidad.',
+            '可以 es «poder» en el sentido de tener permiso: 我可以坐这儿吗？ (¿me puedo sentar aquí?). 不可以 es «no se puede». 能 (U11) es poder porque hay tiempo o capacidad.',
           examples: [
-            { target: '我可以坐这儿吗？——可以。', base: '¿Me puedo sentar acá? — Sí.' },
-            { target: '这儿不可以吃东西。', base: 'Acá no se puede comer.' },
+            { target: '我可以坐这儿吗？——可以。', base: '¿Me puedo sentar aquí? — Sí.' },
+            { target: '这儿不可以吃东西。', base: 'Aquí no se puede comer.' },
           ],
         },
-        takeaways: ['Pedís permiso con 我可以…吗？', 'Decís que algo no se puede con 不可以.'],
+        takeaways: ['Pides permiso con 我可以…吗？', 'Dices que algo no se puede con 不可以.'],
         exercises: [
           ex.translationChoice(
             '可以',
@@ -448,7 +441,7 @@ export const ZH_A1_U16: ZhUnitDef = {
               id: 'zh.ex.qrj1dvgccovorh',
             },
           ),
-          ex.translationChoice('飞机', 'avión', ['tren', 'taxi', 'subte'], ['zh-feiji'], {
+          ex.translationChoice('飞机', 'avión', ['tren', 'taxi', 'metro'], ['zh-feiji'], {
             id: 'zh.ex.oj7tuhtf23zpbf',
           }),
           ex.listenChoice(
@@ -461,7 +454,7 @@ export const ZH_A1_U16: ZhUnitDef = {
           ),
           ex.fillBlank(
             '这儿不___吃东西。',
-            'Acá no se puede comer.',
+            'Aquí no se puede comer.',
             '可以',
             ['会', '想', '喜欢'],
             ['zh-keyi'],
@@ -484,7 +477,7 @@ export const ZH_A1_U16: ZhUnitDef = {
           tone('飞机', 'fēijī', ['fèijī', 'féijí', 'fěijǐ'], ['zh-feiji'], {
             id: 'zh.ex.fr9w06ptpmet9g',
           }),
-          ex.orderWords('我 可以 坐 这儿 吗？', '¿Me puedo sentar acá?', ['zh-keyi'], {
+          ex.orderWords('我 可以 坐 这儿 吗？', '¿Me puedo sentar aquí?', ['zh-keyi'], {
             id: 'zh.ex.yfh4qqsvce6y7i',
           }),
           ex.matchPairs(
@@ -499,7 +492,7 @@ export const ZH_A1_U16: ZhUnitDef = {
           ),
           reply(
             '我可以看你的书吗？',
-            '¿Puedo mirar tu libro? (Respondé que sí.)',
+            '¿Puedo mirar tu libro? (Responde que sí.)',
             'kěyǐ',
             '可以',
             ['zh-keyi'],
@@ -526,7 +519,7 @@ export const ZH_A1_U16: ZhUnitDef = {
             { target: '我们走吧。', base: 'Vamos.' },
           ],
         },
-        takeaways: ['Proponés planes con 吧.', 'Decís «juntos» con 一起, antes del verbo.'],
+        takeaways: ['Propones planes con 吧.', 'Dices «juntos» con 一起, antes del verbo.'],
         exercises: [
           ex.translationChoice('一起', 'juntos', ['solos', 'todos (los dos)', 'con'], ['zh-yiqi'], {
             id: 'zh.ex.rxn6u1nnpk7qa1',
@@ -592,7 +585,7 @@ export const ZH_A1_U16: ZhUnitDef = {
           ),
           reply(
             '明天我们一起去公园，好吗？',
-            'Mañana vamos juntos al parque, ¿dale? (Respondé que bueno, que vayan juntos.)',
+            'Mañana vamos juntos al parque, ¿de acuerdo? (Responde que sí, que vayan juntos.)',
             'hǎo, wǒmen yìqǐ qù ba',
             '好，我们一起去吧',
             ['zh-yiqi', 'zh-ba-propuesta'],
@@ -620,7 +613,7 @@ export const ZH_A1_U16: ZhUnitDef = {
             { target: '我没去银行。', base: 'No fui al banco.' },
           ],
         },
-        takeaways: ['Contás algo que hiciste con verbo + 了.', 'Lo negás con 没, sin 了.'],
+        takeaways: ['Cuentas algo que hiciste con verbo + 了.', 'Lo niegas con 没, sin 了.'],
         exercises: [
           ex.translationChoice(
             '没',
@@ -677,13 +670,13 @@ export const ZH_A1_U16: ZhUnitDef = {
             AYER,
             '¿Fue Li Hua al banco?',
             'No, porque estaba muy ocupado',
-            ['Sí, a la mañana', 'Sí, con Zhang Li', 'No, porque el banco queda lejos'],
+            ['Sí, por la mañana', 'Sí, con Zhang Li', 'No, porque el banco queda lejos'],
             ['zh-mei-pasado', 'zh-yinhang'],
             'Li Hua dice: «没去，太忙了».',
           ),
           reply(
             '你昨天去公园了吗？',
-            '¿Fuiste ayer al parque? (Respondé que no fuiste.)',
+            '¿Fuiste ayer al parque? (Responde que no fuiste.)',
             'méi qù',
             '没去',
             ['zh-mei-pasado'],

@@ -88,7 +88,7 @@ it('ofrece los dos caminos: el test de nivel y empezar desde A1', async () => {
   await render(<CourseStartScreen />);
   expect(screen.getByText('Francés')).toBeTruthy();
   expect(screen.getByText('desde español')).toBeTruthy();
-  expect(screen.getByText('¿Por dónde querés empezar?')).toBeTruthy();
+  expect(screen.getByText('¿Por dónde quieres empezar?')).toBeTruthy();
   expect(
     screen.getByRole('button', {
       name: 'Hacer el test de nivel. Un desafío corto para ubicarte entre A1 – A2. Hasta 12 preguntas, unos 3 minutos.',
@@ -174,7 +174,7 @@ it('un curso en el que ya está inscripto no se vuelve a empezar: conserva su ni
   };
   await render(<CourseStartScreen />);
   expect(screen.getByText('Ya estás en este curso')).toBeTruthy();
-  expect(screen.getByText('Conservás tu nivel (A2) y tu progreso.')).toBeTruthy();
+  expect(screen.getByText('Conservas tu nivel (A2) y tu progreso.')).toBeTruthy();
   await fireEvent.press(screen.getByRole('button', { name: 'Ir al curso' }));
   expect(mockSwitch.mock.calls[0][0]).toMatchObject({ code: 'fr-from-es' });
   expect(mockStart).not.toHaveBeenCalled();

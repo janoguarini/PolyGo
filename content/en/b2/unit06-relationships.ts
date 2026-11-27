@@ -119,7 +119,7 @@ export const EN_B2_U06: B2UnitDef = {
       'Deducir lo que pasó y lamentar lo que hiciste (must have, should have), peleas y reconciliaciones, estados de ánimo y empatía.',
     emoji: '🫂',
     objective:
-      'Podés deducir qué le pasó a alguien, lamentar lo que hiciste, resolver una pelea y hablar de emociones.',
+      'Puedes deducir qué le pasó a alguien, lamentar lo que hiciste, resolver una pelea y hablar de emociones.',
     grammar: {
       title: 'Modales perfectos',
       explanation:
@@ -151,7 +151,7 @@ export const EN_B2_U06: B2UnitDef = {
         '/ˈmʌst əv/',
         undefined,
         'You must have been very tired.',
-        'Debés de haber estado muy cansado.',
+        'Debes de haber estado muy cansado.',
         ['modals', 'deduction'],
         ['debe de haber', 'debe haber'],
       ),
@@ -162,7 +162,7 @@ export const EN_B2_U06: B2UnitDef = {
         '/ˈmaɪt əv/',
         undefined,
         'He might have missed the bus.',
-        'Puede que haya perdido el colectivo.',
+        'Puede que haya perdido el autobús.',
         ['modals', 'deduction'],
         ['puede que haya', 'quizás haya'],
       ),
@@ -293,7 +293,7 @@ export const EN_B2_U06: B2UnitDef = {
         '/ˈlɛt ˈdaʊn/',
         undefined,
         'I trusted you, and you let me down.',
-        'Confié en vos y me fallaste.',
+        'Confié en ti y me fallaste.',
         ['relationships', 'phrasal-verbs'],
         ['decepcionar', 'fallarle a alguien', 'defraudar'],
       ),
@@ -352,17 +352,17 @@ export const EN_B2_U06: B2UnitDef = {
           examples: [
             {
               target: 'You must have been very tired.',
-              base: 'Debés de haber estado muy cansado.',
+              base: 'Debes de haber estado muy cansado.',
             },
             {
               target: 'He might have missed the bus.',
-              base: 'Puede que haya perdido el colectivo.',
+              base: 'Puede que haya perdido el autobús.',
             },
           ],
         },
         takeaways: [
-          'Deducís lo que pasó con must have y can’t have.',
-          'Decís lo que es posible con might have.',
+          'Deduces lo que pasó con must have y can’t have.',
+          'Dices lo que es posible con might have.',
         ],
         exercises: [
           ex.matchPairs(
@@ -377,7 +377,7 @@ export const EN_B2_U06: B2UnitDef = {
           ),
           ex.fillBlank(
             'You worked twelve hours. You must have ___ exhausted.',
-            'Trabajaste doce horas. Debés de haber estado agotado.',
+            'Trabajaste doce horas. Debes de haber estado agotado.',
             'been',
             ['be', 'being', 'was'],
             ['en-must-have'],
@@ -444,7 +444,7 @@ export const EN_B2_U06: B2UnitDef = {
             { id: 'en.ex.798ue2da559hxh' },
           ),
           ex.translateWrite(
-            'Debés de haber estado muy cansado.',
+            'Debes de haber estado muy cansado.',
             'You must have been very tired.',
             ['en-must-have'],
             {
@@ -461,7 +461,7 @@ export const EN_B2_U06: B2UnitDef = {
         objective: 'Lamentar y criticar el pasado con should have y could have.',
         intro: {
           explanation:
-            'Should have + participio: algo que era lo correcto y no pasó (I should have called you = debería haberte llamado). Shouldn’t have: algo que pasó y no tendría que haber pasado. Could have: una posibilidad que no se aprovechó (You could have told me = me lo podrías haber dicho). Si te sentís mal por algo que hiciste, te sentís guilty.',
+            'Should have + participio: algo que era lo correcto y no pasó (I should have called you = debería haberte llamado). Shouldn’t have: algo que pasó y no tendría que haber pasado. Could have: una posibilidad que no se aprovechó (You could have told me = me lo podrías haber dicho). Si te sientes mal por algo que hiciste, te sientes guilty.',
           examples: [
             {
               target: 'I should have called you yesterday.',
@@ -474,8 +474,8 @@ export const EN_B2_U06: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Lamentás lo que hiciste o no hiciste con should / shouldn’t have.',
-          'Reprochás con could have y decís que te sentís culpable.',
+          'Lamentas lo que hiciste o no hiciste con should / shouldn’t have.',
+          'Reprochas con could have y dices que te sientes culpable.',
         ],
         exercises: [
           ex.matchPairs(
@@ -552,7 +552,7 @@ export const EN_B2_U06: B2UnitDef = {
           ),
           ex.shortAnswer(
             'Why do you feel bad? (deberías haber estudiado más)',
-            '¿Por qué te sentís mal?',
+            '¿Por qué te sientes mal?',
             'I should have studied more.',
             [
               "I should've studied more.",
@@ -597,8 +597,8 @@ export const EN_B2_U06: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Contás una pelea con fall out y una reconciliación con make up.',
-          'Reconocés que exageraste y pedís que no lo tomen como algo personal.',
+          'Cuentas una pelea con fall out y una reconciliación con make up.',
+          'Reconoces que exageraste y pides que no lo tomen como algo personal.',
         ],
         exercises: [
           ex.matchPairs(
@@ -676,7 +676,7 @@ export const EN_B2_U06: B2UnitDef = {
           ),
           ex.shortAnswer(
             'Are you still angry with your sister? (no, ya se reconciliaron)',
-            '¿Seguís enojado con tu hermana?',
+            '¿Sigues enojado con tu hermana?',
             'No, we have made up.',
             ["No, we've made up.", 'No, we made up.', 'No. We have made up.'],
             ['en-make-up'],
@@ -706,12 +706,12 @@ export const EN_B2_U06: B2UnitDef = {
               target: "Don't talk to him now. He is in a bad mood.",
               base: 'No le hables ahora. Está de mal humor.',
             },
-            { target: 'I trusted you, and you let me down.', base: 'Confié en vos y me fallaste.' },
+            { target: 'I trusted you, and you let me down.', base: 'Confié en ti y me fallaste.' },
           ],
         },
         takeaways: [
-          'Describís el humor de alguien y lo animás.',
-          'Decís que alguien te falló o que estás agradecido.',
+          'Describes el humor de alguien y lo animas.',
+          'Dices que alguien te falló o que estás agradecido.',
         ],
         exercises: [
           ex.matchPairs(
@@ -741,7 +741,7 @@ export const EN_B2_U06: B2UnitDef = {
           ),
           ex.fillBlank(
             'I trusted you, and you let me ___.',
-            'Confié en vos y me fallaste.',
+            'Confié en ti y me fallaste.',
             'down',
             ['up', 'out', 'off'],
             ['en-let-down'],
@@ -831,8 +831,8 @@ export const EN_B2_U06: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Explicás qué es la empatía y cómo se practica.',
-          'Hablás de tu confianza en vos mismo.',
+          'Explicas qué es la empatía y cómo se practica.',
+          'Hablas de tu confianza en ti mismo.',
         ],
         exercises: [
           ex.translationChoice(
@@ -902,7 +902,7 @@ export const EN_B2_U06: B2UnitDef = {
             { id: 'en.ex.2uo95m5306p2x9' },
           ),
           ex.shortAnswer(
-            'How has learning English helped you? (te dio más confianza en vos mismo)',
+            'How has learning English helped you? (te dio más confianza en ti mismo)',
             '¿En qué te ayudó aprender inglés?',
             'It has given me more self-confidence.',
             [

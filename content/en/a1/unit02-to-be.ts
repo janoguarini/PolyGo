@@ -5,10 +5,10 @@ export const unit02: UnitDef = {
   position: 2,
   title: 'Pronombres y verbo to be',
   titleEn: 'Pronouns and the verb to be',
-  description: 'Yo, vos, él, ella… y cómo decir quién sos y cómo estás.',
+  description: 'Yo, tú, él, ella… y cómo decir quién eres y cómo estás.',
   emoji: '🧍',
   objective:
-    'Podés usar los pronombres y el verbo to be para decir quién sos, cómo estás y hablar de otras personas.',
+    'Puedes usar los pronombres y el verbo to be para decir quién eres, cómo estás y hablar de otras personas.',
   grammar: {
     title: 'To be: am, is, are',
     explanation:
@@ -36,11 +36,11 @@ export const unit02: UnitDef = {
     {
       id: 'en-you',
       text: 'you',
-      translation: 'tú / vos / usted',
-      acceptedTranslations: ['tú', 'vos', 'usted', 'ustedes'],
+      translation: 'tú / usted',
+      acceptedTranslations: ['tú', 'vos', 'usted', 'ustedes', 'tú / vos / usted'],
       ipa: '/ju/',
       exampleEn: 'You are my friend.',
-      exampleEs: 'Sos mi amigo.',
+      exampleEs: 'Eres mi amigo.',
       tags: ['pronouns'],
     },
     {
@@ -115,7 +115,8 @@ export const unit02: UnitDef = {
     {
       id: 'en-are',
       text: 'are',
-      translation: 'sos / son / están (con you, we, they)',
+      translation: 'eres / son / están (con you, we, they)',
+      acceptedTranslations: ['sos / son / están (con you, we, they)'],
       ipa: '/ɑr/',
       exampleEn: 'We are happy.',
       exampleEs: 'Estamos felices.',
@@ -188,28 +189,28 @@ export const unit02: UnitDef = {
   ],
   lessons: [
     {
-      title: 'Yo, vos, él, ella',
+      title: 'Yo, tú, él, ella',
       objective: 'Usar los pronombres I, you, he y she.',
       intro: {
         explanation:
-          'I es «yo» y siempre va con mayúscula. You sirve para vos, tú y usted. He es «él» y she, «ella».',
+          'I es «yo» y siempre va con mayúscula. You sirve para tú, vos y usted. He es «él» y she, «ella».',
         examples: [
           { target: 'I am Ana.', base: 'Yo soy Ana.' },
           { target: 'She is my friend.', base: 'Ella es mi amiga.' },
         ],
       },
-      takeaways: ['Usás I, you, he y she.', 'Escribís I siempre con mayúscula.'],
+      takeaways: ['Usas I, you, he y she.', 'Escribes I siempre con mayúscula.'],
       exercises: [
         ex.imageChoice('👩', 'she', ['he', 'I', 'you'], ['en-she']),
         ex.imageChoice('👨', 'he', ['she', 'we', 'it'], ['en-he']),
-        ex.translationChoice('I', 'yo', ['tú / vos / usted', 'él', 'ella'], ['en-i']),
-        ex.translationChoice('you', 'tú / vos / usted', ['yo', 'ella', 'nosotros'], ['en-you'], {
+        ex.translationChoice('I', 'yo', ['tú / usted', 'él', 'ella'], ['en-i']),
+        ex.translationChoice('you', 'tú / usted', ['yo', 'ella', 'nosotros'], ['en-you'], {
           explanation: 'You sirve para tú, vos, usted y ustedes.',
         }),
         ex.matchPairs(
           [
             ['I', 'yo'],
-            ['you', 'tú / vos'],
+            ['you', 'tú'],
             ['he', 'él'],
             ['she', 'ella'],
           ],
@@ -231,7 +232,7 @@ export const unit02: UnitDef = {
           { target: 'It is a cat.', base: 'Es un gato.' },
         ],
       },
-      takeaways: ['Usás we y they para varias personas.', 'Usás it para cosas y animales.'],
+      takeaways: ['Usas we y they para varias personas.', 'Usas it para cosas y animales.'],
       exercises: [
         ex.translationChoice(
           'we',
@@ -287,7 +288,7 @@ export const unit02: UnitDef = {
           { target: "You're tired.", base: 'Estás cansado.' },
         ],
       },
-      takeaways: ['Usás I am y you are.', 'Sabés que to be es «ser» y «estar».'],
+      takeaways: ['Usas I am y you are.', 'Sabes que to be es «ser» y «estar».'],
       exercises: [
         ex.fillBlank(
           'I ___ happy.',
@@ -356,7 +357,7 @@ export const unit02: UnitDef = {
           { target: "She's my friend.", base: 'Ella es mi amiga.' },
         ],
       },
-      takeaways: ['Usás is con he, she e it.', 'Presentás a otra persona con he is o she is.'],
+      takeaways: ['Usas is con he, she e it.', 'Presentas a otra persona con he is o she is.'],
       exercises: [
         ex.fillBlank(
           'She ___ a teacher.',
@@ -421,8 +422,8 @@ export const unit02: UnitDef = {
         ],
       },
       takeaways: [
-        'Negás con not después de am, is o are.',
-        'Preguntás poniendo el verbo primero: Are you…?',
+        'Niegas con not después de am, is o are.',
+        'Preguntas poniendo el verbo primero: Are you…?',
       ],
       exercises: [
         ex.fillBlank(
@@ -454,10 +455,10 @@ export const unit02: UnitDef = {
             explanation: 'En las preguntas el verbo va antes del sujeto: Are you…?',
           },
         ),
-        ex.orderWords('Are you a student?', '¿Sos estudiante?', ['en-are', 'en-student']),
+        ex.orderWords('Are you a student?', '¿Eres estudiante?', ['en-are', 'en-student']),
         ex.shortAnswer(
           'Are you a teacher?',
-          '¿Sos profesor/a? (respondé sí o no con una respuesta corta)',
+          '¿Eres profesor/a? (responde sí o no con una respuesta corta)',
           'No, I am not.',
           ['Yes, I am.', "No, I'm not."],
           ['en-am', 'en-not'],
@@ -476,7 +477,7 @@ export const unit02: UnitDef = {
           acceptedAnswers: ['I am not tired.'],
           consolidate: false,
         }),
-        ex.translateWrite('¿Sos estudiante?', 'Are you a student?', ['en-are', 'en-student'], {
+        ex.translateWrite('¿Eres estudiante?', 'Are you a student?', ['en-are', 'en-student'], {
           consolidate: false,
         }),
       ],

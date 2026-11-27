@@ -79,7 +79,7 @@ describe('signInWithGoogle', () => {
     const error = await signInWithGoogle().catch((e: unknown) => e);
     expect(error).toMatchObject({ code: 'oauth_failed' });
     expect(toUserMessage(error)).toBe(
-      'Google no pudo completar el inicio de sesión. Intentá de nuevo.',
+      'Google no pudo completar el inicio de sesión. Inténtalo de nuevo.',
     );
     expect(mockAuth.exchangeCodeForSession).not.toHaveBeenCalled();
   });
@@ -108,7 +108,7 @@ describe('signInWithGoogle', () => {
       error: { code: 'flow_state_expired', message: 'flow state has expired' },
     });
     const error = await signInWithGoogle().catch((e: unknown) => e);
-    expect(toUserMessage(error)).toBe('El inicio de sesión tardó demasiado. Intentá de nuevo.');
+    expect(toUserMessage(error)).toBe('El inicio de sesión tardó demasiado. Inténtalo de nuevo.');
 
     // El flujo terminó: un nuevo toque arranca otro intento.
     openAuthSession.mockResolvedValue({ type: 'cancel' });

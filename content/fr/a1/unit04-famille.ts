@@ -48,7 +48,7 @@ export const FR_A1_U04: FrUnitDef = {
       "La familia, los posesivos (mon / ma / mes, ton / ta / tes, son / sa / ses), il s'appelle y j'ai un frère. Falso amigo: les parents. Le fils y la fille.",
     emoji: '👨‍👩‍👧',
     objective:
-      'Podés presentar a tu familia, decir cómo se llaman y cuántos años tienen, y preguntar por la familia de otra persona.',
+      'Puedes presentar a tu familia, decir cómo se llaman y cuántos años tienen, y preguntar por la familia de otra persona.',
     grammar: {
       title: 'Los posesivos',
       explanation:
@@ -222,8 +222,8 @@ export const FR_A1_U04: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Presentás a tu familia con c'est y voici.",
-          'Elegís mon, ma o mes según la palabra que sigue.',
+          "Presentas a tu familia con c'est y voici.",
+          'Eliges mon, ma o mes según la palabra que sigue.',
         ],
         exercises: [
           ex.translationChoice(
@@ -295,7 +295,7 @@ export const FR_A1_U04: FrUnitDef = {
           }),
           ex.shortAnswer(
             "C'est la mère de Léa?",
-            '¿Es la mamá de Léa? (Respondé que no, que es tu mamá.)',
+            '¿Es la mamá de Léa? (Responde que no, que es tu mamá.)',
             "Non, c'est ma mère.",
             ["Non. C'est ma mère.", "C'est ma mère."],
             ['fr-mon-ma', 'fr-la-mere'],
@@ -310,15 +310,15 @@ export const FR_A1_U04: FrUnitDef = {
         objective: 'Hablar de hermanos e hijos con avoir.',
         intro: {
           explanation:
-            "Con avoir decís quién está en tu familia: j'ai un frère, j'ai une sœur. Le fils es el hijo: la l no suena y la s final sí (una excepción). La fille es la hija (también la chica): la ll suena como una y. En sœur, œ es una vocal que no existe en español: se dice con la boca redondeada. L'enfant es el niño o la niña; para preguntar si alguien tiene hijos: vous avez des enfants?",
+            "Con avoir dices quién está en tu familia: j'ai un frère, j'ai une sœur. Le fils es el hijo: la l no suena y la s final sí (una excepción). La fille es la hija (también la chica): la ll suena como una y. En sœur, œ es una vocal que no existe en español: se dice con la boca redondeada. L'enfant es el niño o la niña; para preguntar si alguien tiene hijos: vous avez des enfants?",
           examples: [
             { target: "J'ai un frère et une sœur.", base: 'Tengo un hermano y una hermana.' },
             { target: 'Vous avez des enfants?', base: '¿Tiene hijos?' },
           ],
         },
         takeaways: [
-          "Decís cuántos hermanos o hijos tenés con j'ai.",
-          'Pronunciás le fils con s y la fille con sonido y.',
+          "Dices cuántos hermanos o hijos tienes con j'ai.",
+          'Pronuncias le fils con s y la fille con sonido y.',
         ],
         exercises: [
           ex.translationChoice(
@@ -397,7 +397,7 @@ export const FR_A1_U04: FrUnitDef = {
           }),
           ex.shortAnswer(
             'Tu as des frères?',
-            '¿Tenés hermanos? (Respondé que tenés un hermano y una hermana.)',
+            '¿Tienes hermanos? (Responde que tienes un hermano y una hermana.)',
             "J'ai un frère et une sœur.",
             ["Oui, j'ai un frère et une sœur.", "Oui. J'ai un frère et une sœur."],
             ['fr-le-frere', 'fr-la-soeur'],
@@ -419,8 +419,8 @@ export const FR_A1_U04: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Nombrás a la pareja y a los abuelos.',
-          'Preguntás por la familia de otro con ton, ta y tes.',
+          'Nombras a la pareja y a los abuelos.',
+          'Preguntas por la familia de otro con ton, ta y tes.',
         ],
         exercises: [
           ex.translationChoice(
@@ -471,7 +471,7 @@ export const FR_A1_U04: FrUnitDef = {
           }),
           ex.fillBlank(
             'Voici ___ grands-parents, Hugo!',
-            '¡Acá están tus abuelos, Hugo!',
+            '¡Aquí están tus abuelos, Hugo!',
             'tes',
             ['ton', 'ta', 'mes'],
             ['fr-ton-ta', 'fr-le-grand-pere'],
@@ -494,7 +494,7 @@ export const FR_A1_U04: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Ton grand-père est français?',
-            '¿Tu abuelo es francés? (Respondé que no, que es español.)',
+            '¿Tu abuelo es francés? (Responde que no, que es español.)',
             'Non, il est espagnol.',
             [
               "Non, il n'est pas français. Il est espagnol.",
@@ -520,14 +520,14 @@ export const FR_A1_U04: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Decís cómo se llama alguien con il s'appelle o elle s'appelle.",
-          'Elegís son o sa por la palabra que sigue, no por el dueño.',
+          "Dices cómo se llama alguien con il s'appelle o elle s'appelle.",
+          'Eliges son o sa por la palabra que sigue, no por el dueño.',
         ],
         exercises: [
           ex.translationChoice(
             "il s'appelle",
             'se llama',
-            ['me llamo', '¿cómo te llamás?', 'tiene'],
+            ['me llamo', '¿cómo te llamas?', 'tiene'],
             ['fr-il-s-appelle'],
             { id: 'fr.ex.y25dllu4tha7k3' },
           ),
@@ -606,7 +606,7 @@ export const FR_A1_U04: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Ta mère s'appelle comment?",
-            '¿Cómo se llama tu mamá? (Respondé que se llama Marie.)',
+            '¿Cómo se llama tu mamá? (Responde que se llama Marie.)',
             "Elle s'appelle Marie.",
             ["Ma mère s'appelle Marie.", 'Marie.', "Elle s'appelle Marie!"],
             ['fr-il-s-appelle'],
@@ -621,15 +621,15 @@ export const FR_A1_U04: FrUnitDef = {
         objective: 'Hablar de las mascotas y describir a tu familia.',
         intro: {
           explanation:
-            "Le chien es el perro y le chat, el gato: en chat la t final no suena. Las mascotas también entran en la familia: j'ai un chien, mon chat a trois ans. Con ses hablás de varias cosas de otra persona: Léa et ses parents (Léa y sus padres).",
+            "Le chien es el perro y le chat, el gato: en chat la t final no suena. Las mascotas también entran en la familia: j'ai un chien, mon chat a trois ans. Con ses hablas de varias cosas de otra persona: Léa et ses parents (Léa y sus padres).",
           examples: [
             { target: "J'ai un chien et deux chats.", base: 'Tengo un perro y dos gatos.' },
             { target: 'Mon chat a trois ans.', base: 'Mi gato tiene tres años.' },
           ],
         },
         takeaways: [
-          'Hablás de tus mascotas con le chien y le chat.',
-          'Entendés una descripción corta de una familia.',
+          'Hablas de tus mascotas con le chien y le chat.',
+          'Entiendes una descripción corta de una familia.',
         ],
         exercises: [
           ex.translationChoice(
@@ -679,7 +679,7 @@ export const FR_A1_U04: FrUnitDef = {
           ),
           ex.fillBlank(
             'Voici Léa et ___ parents.',
-            'Acá están Léa y sus padres.',
+            'Aquí están Léa y sus padres.',
             'ses',
             ['son', 'sa', 'mes'],
             ['fr-son-sa', 'fr-les-parents'],
@@ -704,7 +704,7 @@ export const FR_A1_U04: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Vous avez des enfants?',
-            '¿Tiene hijos? (Respondé que sí: un hijo y una hija.)',
+            '¿Tiene hijos? (Responde que sí: un hijo y una hija.)',
             "Oui, j'ai un fils et une fille.",
             [
               "J'ai un fils et une fille.",

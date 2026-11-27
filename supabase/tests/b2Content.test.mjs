@@ -4,6 +4,7 @@
 // publica nada. La última parte, DENTRO de esta base desechable (nunca en otra parte), aplica la
 // publicación del A2 nuevo, la del B1 y la del B2 (supabase/pending/), comprueba que es idempotente y
 // juega cada lección del B2 con la corrección del servidor, encadenada por el desbloqueo.
+import { withNeutralSpanish } from '../../scripts/neutral-patch.ts';
 import { test, before } from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
@@ -98,7 +99,7 @@ before(async () => {
 
 test('la migración es la salida exacta del generador; fuera del CHECK de nivel no tiene sentencias destructivas', () => {
   const { sql } = b2Sql();
-  assert.equal(migration(B2_MIGRATION), sql);
+  assert.equal(withNeutralSpanish(migration(B2_MIGRATION)), sql);
   assert.ok(sql.includes(B2_LEVEL_SQL));
   const text = sql
     .replace(B2_LEVEL_SQL, '')

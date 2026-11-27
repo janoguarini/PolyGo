@@ -16,14 +16,14 @@ import type { WritingRequirement, WritingTaskDef } from '../../../shared/writing
 const common = (minSentences: number): WritingRequirement[] => [
   {
     id: 'sentences',
-    label: `Escribís al menos ${minSentences} oraciones`,
+    label: `Escribes al menos ${minSentences} oraciones`,
     kind: 'min_sentences',
     min: minSentences,
   },
   { id: 'capital', label: 'Cada oración empieza con mayúscula', kind: 'capital_start' },
   {
     id: 'punctuation',
-    label: 'Terminás con punto, signo de exclamación o de pregunta',
+    label: 'Terminas con punto, signo de exclamación o de pregunta',
     kind: 'end_punctuation',
   },
 ];
@@ -44,18 +44,18 @@ export const EN_A2_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'a2-u01-l05',
     title: 'Una fiesta',
     instructions:
-      'Contale a un amigo cómo fue una fiesta o un cumpleaños (real o inventado): dónde fue, cuándo y cómo te sentías.',
+      'Cuéntale a un amigo cómo fue una fiesta o un cumpleaños (real o inventado): dónde fue, cuándo y cómo te sentías.',
     prompts: ['Where was the party?', 'When was it?', 'How were you?'],
     requirements: [
       {
         id: 'was-were',
-        label: 'Usás was o were',
+        label: 'Usas was o were',
         kind: 'pattern',
         patterns: [['was|were']],
       },
       {
         id: 'when',
-        label: 'Decís cuándo fue (yesterday, last week, last night, on Saturday…)',
+        label: 'Dices cuándo fue (yesterday, last week, last night, on Saturday…)',
         kind: 'pattern',
         patterns: [
           ['yesterday'],
@@ -69,7 +69,7 @@ export const EN_A2_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'feeling',
-        label: 'Decís cómo te sentías (happy, tired, excited, bored…)',
+        label: 'Dices cómo te sentías (happy, tired, excited, bored…)',
         kind: 'pattern',
         patterns: [['happy|tired|excited|bored|sad|nervous|angry|busy']],
       },
@@ -87,24 +87,24 @@ export const EN_A2_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'a2-u03-l05',
     title: 'Tu fin de semana',
     instructions:
-      'Contá qué hiciste el fin de semana pasado (podés inventarlo). Usá verbos en pasado y decí cuándo.',
+      'Cuenta qué hiciste el fin de semana pasado (puedes inventarlo). Usa verbos en pasado y di cuándo.',
     prompts: ['What did you do last weekend?', 'Where did you go?', 'Who did you see?'],
     requirements: [
       {
         id: 'past',
-        label: 'Usás al menos un verbo en pasado (went, had, saw, bought…)',
+        label: 'Usas al menos un verbo en pasado (went, had, saw, bought…)',
         kind: 'pattern',
         patterns: [[PAST]],
       },
       {
         id: 'when',
-        label: 'Decís cuándo (last weekend, on Saturday, yesterday…)',
+        label: 'Dices cuándo (last weekend, on Saturday, yesterday…)',
         kind: 'pattern',
         patterns: [['last', 'weekend|week|night'], ['on', 'saturday|sunday|friday'], ['yesterday']],
       },
       {
         id: 'then',
-        label: 'Ordenás lo que hiciste con then o after (opcional)',
+        label: 'Ordenas lo que hiciste con then o after (opcional)',
         kind: 'pattern',
         patterns: [['then'], ['after']],
         optional: true,
@@ -123,12 +123,12 @@ export const EN_A2_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'a2-u04-l05',
     title: 'Un mensaje desde tus vacaciones',
     instructions:
-      'Escribile a un amigo desde un viaje (real o inventado): dónde estás, cómo llegaste y qué hiciste.',
+      'Escríbele a un amigo desde un viaje (real o inventado): dónde estás, cómo llegaste y qué hiciste.',
     prompts: ['Where are you?', 'How did you travel?', 'What did you see?'],
     requirements: [
       {
         id: 'place',
-        label: 'Decís dónde estás (I am in… / I’m at the beach…)',
+        label: 'Dices dónde estás (I am in… / I’m at the beach…)',
         kind: 'pattern',
         patterns: [
           ['i', 'am', 'in|at'],
@@ -137,13 +137,13 @@ export const EN_A2_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'transport',
-        label: 'Decís cómo viajaste con by (by plane, by train, by car…)',
+        label: 'Dices cómo viajaste con by (by plane, by train, by car…)',
         kind: 'pattern',
         patterns: [['by', 'plane|train|car|bus|bike']],
       },
       {
         id: 'past',
-        label: 'Contás algo que hiciste, en pasado',
+        label: 'Cuentas algo que hiciste, en pasado',
         kind: 'pattern',
         patterns: [[PAST]],
       },
@@ -161,24 +161,24 @@ export const EN_A2_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'a2-u08-l05',
     title: 'Tus planes',
     instructions:
-      'Contá tus planes para la semana que viene (podés inventarlos) y algo que creés que va a pasar.',
+      'Cuenta tus planes para la semana que viene (puedes inventarlos) y algo que crees que va a pasar.',
     prompts: ['What are you going to do next week?', 'Do you think it will be a good week?'],
     requirements: [
       {
         id: 'going-to',
-        label: 'Contás un plan con going to',
+        label: 'Cuentas un plan con going to',
         kind: 'pattern',
         patterns: [['going', 'to', '<WORD>']],
       },
       {
         id: 'will',
-        label: 'Hacés una predicción con will o won’t',
+        label: 'Haces una predicción con will o won’t',
         kind: 'pattern',
         patterns: [["will|won't|i'll|it'll|we'll|you'll|he'll|she'll|they'll"]],
       },
       {
         id: 'when',
-        label: 'Decís cuándo (next week, tomorrow, tonight, soon…)',
+        label: 'Dices cuándo (next week, tomorrow, tonight, soon…)',
         kind: 'pattern',
         patterns: [['next', 'week|month|year|weekend'], ['tomorrow'], ['tonight'], ['soon']],
       },
@@ -196,7 +196,7 @@ export const EN_A2_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'a2-u09-l05',
     title: 'Un consejo para un amigo',
     instructions:
-      'Tu amigo te escribe que se siente mal. Respondele: preguntá qué le duele y dale consejos con should y shouldn’t.',
+      'Tu amigo te escribe que se siente mal. Respóndele: pregunta qué le duele y dale consejos con should y shouldn’t.',
     prompts: ["I'm sick. I have a headache and a fever."],
     requirements: [
       {
@@ -207,7 +207,7 @@ export const EN_A2_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'shouldnt',
-        label: 'Decís algo que no debería hacer con shouldn’t',
+        label: 'Dices algo que no debería hacer con shouldn’t',
         kind: 'pattern',
         patterns: [
           ["shouldn't", '<WORD>'],
@@ -216,7 +216,7 @@ export const EN_A2_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'body',
-        label: 'Nombrás el cuerpo o la salud (head, headache, fever, doctor, medicine…)',
+        label: 'Nombras el cuerpo o la salud (head, headache, fever, doctor, medicine…)',
         kind: 'pattern',
         patterns: [['head|headache|fever|doctor|medicine|stomach|back|sick|rest']],
       },
@@ -234,12 +234,12 @@ export const EN_A2_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'a2-u12-l05',
     title: 'Tus experiencias',
     instructions:
-      'Contá dos cosas que hiciste alguna vez y una que nunca hiciste (podés inventarlas).',
+      'Cuenta dos cosas que hiciste alguna vez y una que nunca hiciste (puedes inventarlas).',
     prompts: ['Have you ever been abroad?', 'Have you ever been to a famous city?'],
     requirements: [
       {
         id: 'have-done',
-        label: 'Usás have + participio (I have been, I’ve seen…)',
+        label: 'Usas have + participio (I have been, I’ve seen…)',
         kind: 'pattern',
         patterns: [
           ['i', 'have', 'been|seen|done|eaten|visited|tried|met|played|traveled|lived|had|made'],
@@ -248,7 +248,7 @@ export const EN_A2_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'never',
-        label: 'Decís algo que nunca hiciste (I have never… / I haven’t…)',
+        label: 'Dices algo que nunca hiciste (I have never… / I haven’t…)',
         kind: 'pattern',
         patterns: [['never'], ["haven't"]],
       },
@@ -270,24 +270,24 @@ export const EN_A2_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'a2-u13-l05',
     title: 'Una cena afuera',
     instructions:
-      'Contá una comida en un restaurante (real o inventada): qué pediste, cómo estaba y cómo pagaste.',
+      'Cuenta una comida en un restaurante (real o inventada): qué pediste, cómo estaba y cómo pagaste.',
     prompts: ['What did you order?', 'Was it good?', 'How did you pay?'],
     requirements: [
       {
         id: 'food',
-        label: 'Nombrás lo que comiste (soup, salad, fish, meat, dessert…)',
+        label: 'Nombras lo que comiste (soup, salad, fish, meat, dessert…)',
         kind: 'pattern',
         patterns: [['soup|salad|fish|meat|vegetables|dessert|chicken|rice|bread|cheese|eggs']],
       },
       {
         id: 'opinion',
-        label: 'Decís cómo estaba (delicious, spicy, good…)',
+        label: 'Dices cómo estaba (delicious, spicy, good…)',
         kind: 'pattern',
         patterns: [['delicious|spicy|good|great|amazing|bad|cold|hot']],
       },
       {
         id: 'pay',
-        label: 'Contás cómo pagaste o que pediste la cuenta',
+        label: 'Cuentas cómo pagaste o que pediste la cuenta',
         kind: 'pattern',
         patterns: [['paid|pay|bill|card|cash']],
       },
@@ -305,24 +305,24 @@ export const EN_A2_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'a2-u14-l05',
     title: 'Responder una invitación',
     instructions:
-      'Mia te invita a su cumpleaños. Respondele: agradecé y aceptá, o rechazá con una razón y proponé otro plan.',
+      'Mia te invita a su cumpleaños. Respóndele: agradece y acepta, o rechaza con una razón y propón otro plan.',
     prompts: ['Hi! Would you like to come to my birthday party on Saturday? Mia'],
     requirements: [
       {
         id: 'thanks',
-        label: 'Agradecés (Thank you / Thanks)',
+        label: 'Agradeces (Thank you / Thanks)',
         kind: 'pattern',
         patterns: [['thank', 'you'], ['thanks']],
       },
       {
         id: 'answer',
-        label: 'Aceptás (I’d love to) o rechazás (Sorry, I can’t)',
+        label: 'Aceptas (I’d love to) o rechazas (Sorry, I can’t)',
         kind: 'pattern',
         patterns: [["i'd", 'love', 'to'], ['i', 'would', 'love', 'to'], ["can't"], ['cannot']],
       },
       {
         id: 'plan',
-        label: "Proponés algo con Let's… o How about…? (opcional)",
+        label: "Propones algo con Let's… o How about…? (opcional)",
         kind: 'pattern',
         patterns: [["let's"], ['how', 'about']],
         optional: true,
@@ -340,14 +340,14 @@ export const EN_A2_WRITING_TASKS: readonly WritingTaskDef[] = [
     kind: 'guided',
     codes: [],
     lesson: 'a2-u15-l05',
-    title: 'Describí a alguien',
+    title: 'Describe a alguien',
     instructions:
-      'Describí a una persona que conocés (o inventala): cómo es físicamente y cómo es de carácter.',
+      'Describe a una persona que conoces (o invéntala): cómo es físicamente y cómo es de carácter.',
     prompts: ['What does he or she look like?', 'What is he or she like?'],
     requirements: [
       {
         id: 'looks',
-        label: 'Describís el aspecto (tall, short, thin… / has … hair, a beard, glasses)',
+        label: 'Describes el aspecto (tall, short, thin… / has … hair, a beard, glasses)',
         kind: 'pattern',
         patterns: [
           ['tall|short|thin|young|old'],
@@ -358,13 +358,13 @@ export const EN_A2_WRITING_TASKS: readonly WritingTaskDef[] = [
       },
       {
         id: 'personality',
-        label: 'Describís el carácter (friendly, kind, funny, shy, quiet…)',
+        label: 'Describes el carácter (friendly, kind, funny, shy, quiet…)',
         kind: 'pattern',
         patterns: [['friendly|kind|funny|shy|quiet|nice|interesting']],
       },
       {
         id: 'linker',
-        label: 'Unís ideas con and, but o because (opcional)',
+        label: 'Unes ideas con and, but o because (opcional)',
         kind: 'pattern',
         patterns: [['but'], ['because']],
         optional: true,
@@ -384,30 +384,30 @@ export const EN_A2_WRITING_TASKS: readonly WritingTaskDef[] = [
     lesson: 'a2-u16-l05',
     title: 'Un correo para reservar',
     instructions:
-      'Escribile al Green Hotel para reservar una habitación: saludá, decí qué querés y para cuándo, hacé una pregunta y despedite.',
+      'Escríbele al Green Hotel para reservar una habitación: saluda, di qué quieres y para cuándo, haz una pregunta y despídete.',
     prompts: [],
     requirements: [
       {
         id: 'opening',
-        label: 'Empezás con Dear… o Hello',
+        label: 'Empiezas con Dear… o Hello',
         kind: 'pattern',
         patterns: [['dear'], ['hello'], ['hi']],
       },
       {
         id: 'book',
-        label: 'Pedís la habitación (I’d like to book…)',
+        label: 'Pides la habitación (I’d like to book…)',
         kind: 'pattern',
         patterns: [['book', 'a|the', '<WORD>'], ['book', 'a|the', 'room'], ['room']],
       },
       {
         id: 'could-you',
-        label: 'Hacés un pedido con Could you…?',
+        label: 'Haces un pedido con Could you…?',
         kind: 'pattern',
         patterns: [['could', 'you']],
       },
       {
         id: 'closing',
-        label: 'Terminás con Best wishes o Thank you',
+        label: 'Terminas con Best wishes o Thank you',
         kind: 'pattern',
         patterns: [['best', 'wishes'], ['thank', 'you'], ['thanks']],
       },
@@ -432,7 +432,7 @@ export const EN_A2_WRITING_TASKS: readonly WritingTaskDef[] = [
     block: 1,
     title: 'Un viaje y unas compras',
     instructions:
-      'Escribí un mensaje a un amigo sobre un viaje (real o inventado): adónde fuiste, cómo viajaste, qué hiciste y qué compraste.',
+      'Escribe un mensaje a un amigo sobre un viaje (real o inventado): adónde fuiste, cómo viajaste, qué hiciste y qué compraste.',
     prompts: ['Where did you go?', 'What did you do?', 'What did you buy?'],
     requirements: [
       {
@@ -477,7 +477,7 @@ export const EN_A2_WRITING_TASKS: readonly WritingTaskDef[] = [
     block: 2,
     title: 'Un correo con novedades',
     instructions:
-      'Escribile un correo a un amigo con tus novedades: qué estás haciendo ahora, qué vas a hacer pronto y algo que ya hiciste.',
+      'Escríbele un correo a un amigo con tus novedades: qué estás haciendo ahora, qué vas a hacer pronto y algo que ya hiciste.',
     prompts: [
       'What are you doing these days?',
       'What are you going to do?',
@@ -524,9 +524,9 @@ export const EN_A2_WRITING_TASKS: readonly WritingTaskDef[] = [
     codes: [],
     lesson: 'a2-u17-final',
     block: 3,
-    title: 'Contá una historia',
+    title: 'Cuenta una historia',
     instructions:
-      'Contá una historia corta (real o inventada): dónde estabas y qué estabas haciendo, qué pasó de repente y cómo terminó.',
+      'Cuenta una historia corta (real o inventada): dónde estabas y qué estabas haciendo, qué pasó de repente y cómo terminó.',
     prompts: ['Where were you?', 'What were you doing?', 'What happened?', 'How did it end?'],
     requirements: [
       {

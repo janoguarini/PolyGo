@@ -26,7 +26,7 @@ function Denied({ detail, onRetry }: { detail?: string; onRetry?: () => void }) 
       <ScreenHeader title="Administración" onBack={() => router.back()} />
       <Card>
         <Text variant="heading">Acceso denegado</Text>
-        <Text variant="body">{detail ?? 'Esta cuenta no es la administradora de Polygo.'}</Text>
+        <Text variant="body">{detail ?? 'Esta cuenta no es la administradora de PolyGo.'}</Text>
         {onRetry ? <Button label="Reintentar" variant="secondary" onPress={onRetry} /> : null}
       </Card>
     </Screen>

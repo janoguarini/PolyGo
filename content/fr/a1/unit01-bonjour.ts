@@ -54,13 +54,13 @@ export const FR_A1_U01: FrUnitDef = {
       "Saludar y despedirse, tu y vous, ça va, je m'appelle. Consonantes finales mudas y elisión.",
     emoji: '👋',
     objective:
-      'Podés saludar y despedirte según la hora y la persona, preguntar cómo está alguien, presentarte y decir tu nombre.',
+      'Puedes saludar y despedirte según la hora y la persona, preguntar cómo está alguien, presentarte y decir tu nombre.',
     grammar: {
       title: "Tu y vous · je m'appelle",
       explanation:
         "Con amigos, familia y chicos se usa tu (salut, s'il te plaît, et toi?); con desconocidos, en un negocio o con una persona mayor, vous (bonjour, s'il vous plaît, et vous?), junto con madame o monsieur. Para presentarse: je m'appelle + nombre. Delante de vocal, me se vuelve m' (elisión): je m'appelle, nunca «je me appelle». Muchas consonantes finales no suenan: en salut y en s'il vous plaît, la t final no se pronuncia.",
       examples: [
-        { target: 'Bonjour, madame.', base: 'Buen día, señora.' },
+        { target: 'Bonjour, madame.', base: 'Buenos días, señora.' },
         { target: "Salut! Je m'appelle Lucas.", base: '¡Hola! Me llamo Lucas.' },
         { target: 'Ça va? — Ça va bien, merci.', base: '¿Cómo va? — Bien, gracias.' },
       ],
@@ -71,18 +71,26 @@ export const FR_A1_U01: FrUnitDef = {
         'A1 nuevo (U1). Sin revisión nativa: revisar el registro de bonsoir (desde la tarde-noche) y el uso de salut para despedirse.',
     },
     words: [
-      w('fr-bonjour', 'bonjour', 'hola', 'Bonjour, madame.', 'Buen día, señora.', ['greetings'], {
-        acceptedTranslations: ['buen día', 'buenos días'],
-        emoji: '👋',
-      }),
+      w(
+        'fr-bonjour',
+        'bonjour',
+        'hola',
+        'Bonjour, madame.',
+        'Buenos días, señora.',
+        ['greetings'],
+        {
+          acceptedTranslations: ['buen día', 'buenos días'],
+          emoji: '👋',
+        },
+      ),
       w(
         'fr-salut',
         'salut',
-        'hola o chau (informal)',
+        'hola o adiós (informal)',
         'Salut, Hugo!',
         '¡Hola, Hugo!',
         ['greetings'],
-        { acceptedTranslations: ['hola, informal'] },
+        { acceptedTranslations: ['hola, informal', 'hola o chau (informal)'] },
       ),
       w(
         'fr-bonsoir',
@@ -107,7 +115,7 @@ export const FR_A1_U01: FrUnitDef = {
         'à bientôt',
         'hasta pronto',
         'Au revoir, Marie. À bientôt!',
-        'Chau, Marie. ¡Hasta pronto!',
+        'Adiós, Marie. ¡Hasta pronto!',
         ['greetings'],
         { acceptedTranslations: ['nos vemos'] },
       ),
@@ -162,12 +170,12 @@ export const FR_A1_U01: FrUnitDef = {
       w(
         'fr-et-toi',
         'et toi?',
-        '¿y vos?',
+        '¿y tú?',
         'Ça va bien. Et toi?',
-        'Estoy bien. ¿Y vos?',
+        'Estoy bien. ¿Y tú?',
         ['greetings'],
         {
-          acceptedTranslations: ['¿y tú?'],
+          acceptedTranslations: ['¿y vos?'],
         },
       ),
       w(
@@ -191,11 +199,11 @@ export const FR_A1_U01: FrUnitDef = {
       w(
         'fr-tu-t-appelles-comment',
         "tu t'appelles comment?",
-        '¿cómo te llamás?',
+        '¿cómo te llamas?',
         "Salut! Tu t'appelles comment?",
-        '¡Hola! ¿Cómo te llamás?',
+        '¡Hola! ¿Cómo te llamas?',
         ['introductions', 'questions'],
-        { acceptedTranslations: ['¿cómo te llamas?'], acceptedTexts: ["tu t'appelles comment?"] },
+        { acceptedTranslations: ['¿cómo te llamás?'], acceptedTexts: ["tu t'appelles comment?"] },
       ),
       w(
         'fr-enchante',
@@ -206,7 +214,7 @@ export const FR_A1_U01: FrUnitDef = {
         ['introductions'],
         { acceptedTranslations: ['encantada', 'mucho gusto'], acceptedTexts: ['enchantée'] },
       ),
-      w('fr-madame', 'madame', 'señora', 'Bonjour, madame!', '¡Buen día, señora!', ['courtesy']),
+      w('fr-madame', 'madame', 'señora', 'Bonjour, madame!', '¡Buenos días, señora!', ['courtesy']),
       w('fr-monsieur', 'monsieur', 'señor', 'Merci, monsieur.', 'Gracias, señor.', ['courtesy']),
     ],
     lessons: [
@@ -216,15 +224,15 @@ export const FR_A1_U01: FrUnitDef = {
         objective: 'Saludar y despedirse según la hora y la persona.',
         intro: {
           explanation:
-            'Bonjour sirve todo el día (y se dice siempre al entrar a un negocio); bonsoir, desde la tarde-noche. Salut es informal: hola o chau entre amigos. Para despedirse: au revoir o à bientôt. Con un desconocido se agrega madame o monsieur. Ojo: la t de salut no suena.',
+            'Bonjour sirve todo el día (y se dice siempre al entrar a un negocio); bonsoir, desde la tarde-noche. Salut es informal: hola o adiós entre amigos. Para despedirse: au revoir o à bientôt. Con un desconocido se agrega madame o monsieur. Ojo: la t de salut no suena.',
           examples: [
-            { target: 'Bonjour, madame.', base: 'Buen día, señora.' },
+            { target: 'Bonjour, madame.', base: 'Buenos días, señora.' },
             { target: 'Salut, Hugo!', base: '¡Hola, Hugo!' },
           ],
         },
         takeaways: [
-          'Saludás con bonjour, bonsoir o salut según la hora y la persona.',
-          'Te despedís con au revoir y à bientôt.',
+          'Saludas con bonjour, bonsoir o salut según la hora y la persona.',
+          'Te despides con au revoir y à bientôt.',
         ],
         exercises: [
           ex.translationChoice('bonjour', 'hola', ['adiós', 'gracias', 'de nada'], ['fr-bonjour'], {
@@ -267,7 +275,7 @@ export const FR_A1_U01: FrUnitDef = {
           ),
           ex.fillBlank(
             'Bonjour, ___!',
-            '¡Buen día, señor!',
+            '¡Buenos días, señor!',
             'monsieur',
             ['madame', 'salut', 'bonsoir'],
             ['fr-bonjour', 'fr-monsieur'],
@@ -279,7 +287,7 @@ export const FR_A1_U01: FrUnitDef = {
           ),
           ex.translationChoice(
             'salut',
-            'hola o chau (informal)',
+            'hola o adiós (informal)',
             ['señora', 'señor', 'hasta pronto'],
             ['fr-salut'],
             {
@@ -296,9 +304,14 @@ export const FR_A1_U01: FrUnitDef = {
             ['fr-au-revoir', 'fr-a-bientot'],
             { id: 'fr.ex.vstopr09unwu5v' },
           ),
-          ex.translateWrite('Buen día, señora.', 'Bonjour, madame.', ['fr-bonjour', 'fr-madame'], {
-            id: 'fr.ex.8vgo34w8uex4yl',
-          }),
+          ex.translateWrite(
+            'Buenos días, señora.',
+            'Bonjour, madame.',
+            ['fr-bonjour', 'fr-madame'],
+            {
+              id: 'fr.ex.8vgo34w8uex4yl',
+            },
+          ),
           ex.translateWrite(
             'Adiós, señor.',
             'Au revoir, monsieur.',
@@ -323,8 +336,8 @@ export const FR_A1_U01: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Agradecés con merci y respondés de rien.',
-          "Elegís s'il vous plaît o s'il te plaît según la persona.",
+          'Agradeces con merci y respondes de rien.',
+          "Eliges s'il vous plaît o s'il te plaît según la persona.",
         ],
         exercises: [
           ex.translationChoice('merci', 'gracias', ['de nada', 'adiós', 'sí'], ['fr-merci'], {
@@ -400,7 +413,7 @@ export const FR_A1_U01: FrUnitDef = {
           }),
           ex.shortAnswer(
             'Merci beaucoup!',
-            '¡Muchas gracias! (Respondé «de nada».)',
+            '¡Muchas gracias! (Responde «de nada».)',
             'De rien.',
             ['De rien!'],
             ['fr-de-rien'],
@@ -415,33 +428,33 @@ export const FR_A1_U01: FrUnitDef = {
         objective: 'Preguntar y responder cómo está alguien.',
         intro: {
           explanation:
-            'Ça va? (¿cómo va?) es la pregunta más común; se responde ça va bien o, más corto, ça va. Para devolver la pregunta: et toi? a un amigo y et vous? a alguien con quien usás vous. La ç con cedilla suena como una s: ça, nunca «ka».',
+            'Ça va? (¿cómo va?) es la pregunta más común; se responde ça va bien o, más corto, ça va. Para devolver la pregunta: et toi? a un amigo y et vous? a alguien con quien usas vous. La ç con cedilla suena como una s: ça, nunca «ka».',
           examples: [
             { target: 'Ça va? — Ça va bien, merci.', base: '¿Cómo va? — Bien, gracias.' },
             { target: 'Ça va bien. Et vous?', base: 'Estoy bien. ¿Y usted?' },
           ],
         },
         takeaways: [
-          'Preguntás ça va? y respondés ça va bien.',
-          'Devolvés la pregunta con et toi? o et vous?',
+          'Preguntas ça va? y respondes ça va bien.',
+          'Devuelves la pregunta con et toi? o et vous?',
         ],
         exercises: [
           ex.translationChoice(
             'ça va?',
             '¿cómo va?',
-            ['¿y vos?', '¿cómo te llamás?', 'estoy bien'],
+            ['¿y tú?', '¿cómo te llamas?', 'estoy bien'],
             ['fr-ca-va'],
             { id: 'fr.ex.h8e0s7hf3yzuf7' },
           ),
           ex.translationChoice(
             'et vous?',
             '¿y usted?',
-            ['¿y vos?', '¿cómo va?', 'gracias'],
+            ['¿y tú?', '¿cómo va?', 'gracias'],
             ['fr-et-vous'],
             {
               id: 'fr.ex.5arw8xm8usd39p',
               explanation:
-                'Et vous? es para alguien a quien tratás de vous; et toi?, para un amigo.',
+                'Et vous? es para alguien a quien tratas de vous; et toi?, para un amigo.',
             },
           ),
           ex.listenChoice(
@@ -452,7 +465,7 @@ export const FR_A1_U01: FrUnitDef = {
           ),
           ex.fillBlank(
             'Salut, Léa! Ça va? — Oui, ça va bien. Et ___?',
-            '¡Hola, Léa! ¿Cómo va? — Sí, bien. ¿Y vos?',
+            '¡Hola, Léa! ¿Cómo va? — Sí, bien. ¿Y tú?',
             'toi',
             ['vous', 'moi', 'te'],
             ['fr-et-toi'],
@@ -463,7 +476,7 @@ export const FR_A1_U01: FrUnitDef = {
           ),
           ex.fillBlank(
             'Bonjour, monsieur. Ça va bien, merci. Et ___?',
-            'Buen día, señor. Estoy bien, gracias. ¿Y usted?',
+            'Buenos días, señor. Estoy bien, gracias. ¿Y usted?',
             'vous',
             ['toi', 'moi', 'te'],
             ['fr-et-vous'],
@@ -476,7 +489,7 @@ export const FR_A1_U01: FrUnitDef = {
             [
               ['ça va?', '¿cómo va?'],
               ['ça va bien', 'estoy bien'],
-              ['et toi?', '¿y vos?'],
+              ['et toi?', '¿y tú?'],
               ['et vous?', '¿y usted?'],
             ],
             ['fr-ca-va', 'fr-ca-va-bien', 'fr-et-toi', 'fr-et-vous'],
@@ -511,7 +524,7 @@ export const FR_A1_U01: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Salut! Ça va?',
-            '¡Hola! ¿Cómo va? (Respondé que estás bien y preguntale a tu amigo.)',
+            '¡Hola! ¿Cómo va? (Responde que estás bien y pregúntale a tu amigo.)',
             'Ça va bien, et toi?',
             [
               'Ça va bien. Et toi?',
@@ -534,18 +547,18 @@ export const FR_A1_U01: FrUnitDef = {
             "Para decir tu nombre: je m'appelle + nombre. Me pierde la e delante de vocal (elisión): je m'appelle, nunca «je me appelle». Para preguntar: tu t'appelles comment? Al conocer a alguien se dice enchanté; una mujer escribe enchantée, pero suena igual.",
           examples: [
             { target: "Je m'appelle Ana.", base: 'Me llamo Ana.' },
-            { target: "Tu t'appelles comment?", base: '¿Cómo te llamás?' },
+            { target: "Tu t'appelles comment?", base: '¿Cómo te llamas?' },
           ],
         },
         takeaways: [
-          "Decís tu nombre con je m'appelle.",
-          'Preguntás el nombre y respondés enchanté o enchantée.',
+          "Dices tu nombre con je m'appelle.",
+          'Preguntas el nombre y respondes enchanté o enchantée.',
         ],
         exercises: [
           ex.translationChoice(
             "je m'appelle",
             'me llamo',
-            ['¿cómo te llamás?', 'encantado', 'estoy bien'],
+            ['¿cómo te llamas?', 'encantado', 'estoy bien'],
             ['fr-je-m-appelle'],
             { id: 'fr.ex.o6r30ind500orh' },
           ),
@@ -587,7 +600,7 @@ export const FR_A1_U01: FrUnitDef = {
           ),
           ex.orderWords(
             "Tu t'appelles comment?",
-            '¿Cómo te llamás?',
+            '¿Cómo te llamas?',
             ['fr-tu-t-appelles-comment'],
             { id: 'fr.ex.q40bri6m06m6gl' },
           ),
@@ -619,7 +632,7 @@ export const FR_A1_U01: FrUnitDef = {
           }),
           ex.shortAnswer(
             "Tu t'appelles comment?",
-            '¿Cómo te llamás? (Respondé que te llamás Ana.)',
+            '¿Cómo te llamas? (Responde que te llamas Ana.)',
             "Je m'appelle Ana.",
             ["Je m'appelle Ana.", "Salut! Je m'appelle Ana.", "Salut, je m'appelle Ana."],
             ['fr-je-m-appelle'],
@@ -634,15 +647,15 @@ export const FR_A1_U01: FrUnitDef = {
         objective: 'Saludar, presentarse y despedirse en una conversación.',
         intro: {
           explanation:
-            "Una conversación corta en francés: saludo (bonjour / salut), pregunta (ça va?), presentación (je m'appelle…) y despedida (au revoir, à bientôt). Recordá el registro: tu con amigos, vous con desconocidos. Y merci beaucoup es muchas gracias.",
+            "Una conversación corta en francés: saludo (bonjour / salut), pregunta (ça va?), presentación (je m'appelle…) y despedida (au revoir, à bientôt). Recuerda el registro: tu con amigos, vous con desconocidos. Y merci beaucoup es muchas gracias.",
           examples: [
             { target: 'Bonsoir, madame! Ça va?', base: '¡Buenas noches, señora! ¿Cómo va?' },
             { target: 'Merci beaucoup! À bientôt!', base: '¡Muchas gracias! ¡Hasta pronto!' },
           ],
         },
         takeaways: [
-          'Armás una conversación corta del saludo a la despedida.',
-          'Usás tu o vous según con quién hablás.',
+          'Armas una conversación corta del saludo a la despedida.',
+          'Usas tu o vous según con quién hablas.',
         ],
         exercises: [
           question(
@@ -675,7 +688,7 @@ export const FR_A1_U01: FrUnitDef = {
           ),
           ex.fillBlank(
             "Bonjour, madame! S'il ___ plaît!",
-            '¡Buen día, señora! ¡Por favor!',
+            '¡Buenos días, señora! ¡Por favor!',
             'vous',
             ['te', 'toi', 'moi'],
             ['fr-s-il-vous-plait', 'fr-madame'],
@@ -693,7 +706,7 @@ export const FR_A1_U01: FrUnitDef = {
           ),
           ex.translationChoice(
             "tu t'appelles comment?",
-            '¿cómo te llamás?',
+            '¿cómo te llamas?',
             ['¿cómo va?', '¿y usted?', 'me llamo'],
             ['fr-tu-t-appelles-comment'],
             { id: 'fr.ex.4fuger877se42c' },
@@ -705,7 +718,7 @@ export const FR_A1_U01: FrUnitDef = {
             id: 'fr.ex.r574hc7zaea0ji',
           }),
           ex.translateWrite(
-            'Hola, me llamo Lucas. ¿Cómo te llamás?',
+            'Hola, me llamo Lucas. ¿Cómo te llamas?',
             "Salut, je m'appelle Lucas. Tu t'appelles comment?",
             ['fr-salut', 'fr-je-m-appelle', 'fr-tu-t-appelles-comment'],
             {

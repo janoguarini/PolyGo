@@ -142,7 +142,7 @@ export const unit02: UnitDef = {
       '/weɪt/',
       '⏳',
       'We waited for the bus.',
-      'Esperamos el colectivo.',
+      'Esperamos el autobús.',
       ['verbs'],
     ),
     w(
@@ -310,7 +310,7 @@ export const unit02: UnitDef = {
         ),
         ex.fillBlank(
           'We ___ for the bus.',
-          'Esperamos el colectivo.',
+          'Esperamos el autobús.',
           'waited',
           ['wait', 'waits', 'waiting'],
           ['en-wait', 'en-bus'],

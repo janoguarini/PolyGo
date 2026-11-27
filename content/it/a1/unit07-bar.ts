@@ -23,7 +23,7 @@ export const unit07: UnitDef = {
     'Pedir algo para tomar y comer en un bar italiano, con o sin azúcar, y pedir la cuenta.',
   emoji: '☕',
   objective:
-    'Podés pedir en un bar con vorrei, prendo o per me, decir con o sin qué lo querés y pedir la cuenta.',
+    'Puedes pedir en un bar con vorrei, prendo o per me, decir con o sin qué lo quieres y pedir la cuenta.',
   grammar: {
     title: 'Pedir con vorrei, prendo y per me',
     explanation:
@@ -47,7 +47,7 @@ export const unit07: UnitDef = {
       'cappuccino',
       'capuchino',
       'Un cappuccino e un cornetto.',
-      'Un capuchino y una medialuna.',
+      'Un capuchino y un croissant.',
       ['food'],
     ),
     w('it-te', 'tè', 'té', 'Un tè senza zucchero.', 'Un té sin azúcar.', ['food'], { emoji: '🍵' }),
@@ -72,11 +72,11 @@ export const unit07: UnitDef = {
     w(
       'it-cornetto',
       'cornetto',
-      'medialuna',
+      'croissant',
       'Un cappuccino e un cornetto.',
-      'Un capuchino y una medialuna.',
+      'Un capuchino y un croissant.',
       ['food'],
-      { acceptedTranslations: ['croissant'], emoji: '🥐' },
+      { acceptedTranslations: ['croissant', 'medialuna'], emoji: '🥐' },
     ),
     w('it-panino', 'panino', 'sándwich', 'Vorrei un panino.', 'Quisiera un sándwich.', ['food'], {
       acceptedTranslations: ['sánguche', 'sandwich'],
@@ -125,9 +125,17 @@ export const unit07: UnitDef = {
     w('it-il-conto', 'il conto', 'la cuenta', 'Il conto, per favore.', 'La cuenta, por favor.', [
       'restaurant',
     ]),
-    w('it-ecco', 'ecco', 'acá tiene', 'Ecco il suo caffè.', 'Acá tiene su café.', ['restaurant'], {
-      acceptedTranslations: ['aquí tiene', 'acá tenés'],
-    }),
+    w(
+      'it-ecco',
+      'ecco',
+      'aquí tiene',
+      'Ecco il suo caffè.',
+      'Aquí tiene su café.',
+      ['restaurant'],
+      {
+        acceptedTranslations: ['aquí tiene', 'acá tenés', 'aquí tienes', 'acá tiene'],
+      },
+    ),
   ],
   lessons: [
     {
@@ -135,13 +143,13 @@ export const unit07: UnitDef = {
       objective: 'Nombrar lo que se toma en un bar italiano.',
       intro: {
         explanation:
-          'En Italia un caffè es un espresso chiquito. El cappuccino lleva leche y se toma a la mañana con un cornetto. Ojo: latte es «leche»; si pedís «un latte» te dan un vaso de leche.',
+          'En Italia un caffè es un espresso chiquito. El cappuccino lleva leche y se toma a la mañana con un cornetto. Ojo: latte es «leche»; si pides «un latte» te dan un vaso de leche.',
         examples: [
           { target: 'Un caffè, per favore.', base: 'Un café, por favor.' },
-          { target: 'Un cappuccino e un cornetto.', base: 'Un capuchino y una medialuna.' },
+          { target: 'Un cappuccino e un cornetto.', base: 'Un capuchino y un croissant.' },
         ],
       },
-      takeaways: ['Nombrás lo que se toma en un bar.', 'Sabés que latte es leche.'],
+      takeaways: ['Nombras lo que se toma en un bar.', 'Sabes que latte es leche.'],
       exercises: [
         ex.imageChoice('☕', 'caffè', ['tè', 'latte', 'acqua'], ['it-caffe']),
         ex.imageChoice('🥐', 'cornetto', ['panino', 'gelato', 'caffè'], ['it-cornetto']),
@@ -161,7 +169,7 @@ export const unit07: UnitDef = {
           [
             ['caffè', 'café'],
             ['latte', 'leche'],
-            ['cornetto', 'medialuna'],
+            ['cornetto', 'croissant'],
             ['cappuccino', 'capuchino'],
           ],
           ['it-caffe', 'it-latte', 'it-cornetto', 'it-cappuccino'],
@@ -171,7 +179,7 @@ export const unit07: UnitDef = {
           'it-per-favore',
         ]),
         ex.translateWrite(
-          'Un capuchino y una medialuna',
+          'Un capuchino y un croissant',
           'un cappuccino e un cornetto',
           ['it-cappuccino', 'it-cornetto'],
           { explanation: 'Cornetto es masculino: un cornetto.' },
@@ -189,7 +197,7 @@ export const unit07: UnitDef = {
           { target: "Vorrei un succo d'arancia.", base: 'Quisiera un jugo de naranja.' },
         ],
       },
-      takeaways: ['Pedís con vorrei.', 'Nombrás agua, jugo y sándwich.'],
+      takeaways: ['Pides con vorrei.', 'Nombras agua, jugo y sándwich.'],
       exercises: [
         ex.translationChoice('vorrei', 'quisiera', ['tomo (pido)', 'tengo', 'soy'], ['it-vorrei']),
         ex.imageChoice('🥪', 'panino', ['cornetto', 'gelato', 'caffè'], ['it-panino']),
@@ -233,10 +241,10 @@ export const unit07: UnitDef = {
           { target: 'Per me un cappuccino.', base: 'Para mí un capuchino.' },
         ],
       },
-      takeaways: ['Pedís con prendo.', 'Pedís con per me… sin verbo.'],
+      takeaways: ['Pides con prendo.', 'Pides con per me… sin verbo.'],
       exercises: [
         ex.translationChoice('prendo', 'tomo (pido)', ['quisiera', 'tengo', 'soy'], ['it-prendo']),
-        ex.translationChoice('per me', 'para mí', ['por favor', 'para vos', 'yo'], ['it-per-me']),
+        ex.translationChoice('per me', 'para mí', ['por favor', 'para ti', 'yo'], ['it-per-me']),
         ex.imageChoice('🍨', 'gelato', ['panino', 'cornetto', 'latte'], ['it-gelato']),
         ex.listenChoice(
           'Per me un gelato.',
@@ -252,12 +260,12 @@ export const unit07: UnitDef = {
         ),
         ex.orderWords(
           'Per me un cappuccino e un cornetto.',
-          'Para mí un capuchino y una medialuna.',
+          'Para mí un capuchino y un croissant.',
           ['it-per-me', 'it-cappuccino', 'it-cornetto'],
         ),
         ex.shortAnswer(
           'Cosa prendi?',
-          '¿Qué te pedís? (Respondé que te pedís un helado.)',
+          '¿Qué te pides? (Responde que te pides un helado.)',
           'Prendo un gelato.',
           ['Io prendo un gelato.', 'Un gelato.', 'Per me un gelato.', 'Vorrei un gelato.'],
           ['it-prendo', 'it-gelato'],
@@ -267,7 +275,7 @@ export const unit07: UnitDef = {
     },
     {
       title: 'Con o senza?',
-      objective: 'Decir con o sin qué lo querés y si está rico.',
+      objective: 'Decir con o sin qué lo quieres y si está rico.',
       intro: {
         explanation:
           'Senza es «sin»; con se dice igual que en español. Para la comida, «rico» es buono: il gelato è buono. Bene es «bien» (sto bene), no se usa para la comida.',
@@ -276,7 +284,7 @@ export const unit07: UnitDef = {
           { target: 'Il gelato è molto buono!', base: '¡El helado está muy rico!' },
         ],
       },
-      takeaways: ['Pedís con o senza.', 'Decís que algo está rico con buono.'],
+      takeaways: ['Pides con o senza.', 'Dices que algo está rico con buono.'],
       exercises: [
         ex.translationChoice('senza', 'sin', ['con', 'para mí', 'muy'], ['it-senza']),
         ex.translationChoice('zucchero', 'azúcar', ['leche', 'agua', 'helado'], ['it-zucchero']),
@@ -294,7 +302,7 @@ export const unit07: UnitDef = {
         ),
         ex.fillBlank(
           'Il cornetto è molto ___!',
-          '¡La medialuna está muy rica!',
+          '¡El croissant está muy rico!',
           'buono',
           ['bene', 'buona', 'grazie'],
           ['it-buono', 'it-molto', 'it-cornetto'],
@@ -329,13 +337,13 @@ export const unit07: UnitDef = {
       objective: 'Pedir la cuenta y entender cuando te dan algo.',
       intro: {
         explanation:
-          'Para pagar: il conto, per favore. Cuando te alcanzan algo te dicen ecco («acá tiene»). En muchos bares italianos se paga primero en la caja y después se pide en la barra.',
+          'Para pagar: il conto, per favore. Cuando te alcanzan algo te dicen ecco («aquí tiene»). En muchos bares italianos se paga primero en la caja y después se pide en la barra.',
         examples: [
           { target: 'Il conto, per favore.', base: 'La cuenta, por favor.' },
-          { target: 'Ecco il suo caffè.', base: 'Acá tiene su café.' },
+          { target: 'Ecco il suo caffè.', base: 'Aquí tiene su café.' },
         ],
       },
-      takeaways: ['Pedís la cuenta.', 'Entendés ecco cuando te dan algo.'],
+      takeaways: ['Pides la cuenta.', 'Entiendes ecco cuando te dan algo.'],
       exercises: [
         ex.translationChoice(
           'il conto',
@@ -344,7 +352,12 @@ export const unit07: UnitDef = {
           ['it-il-conto'],
           { explanation: 'Conto es la cuenta; «el cuento» es racconto.' },
         ),
-        ex.translationChoice('ecco', 'acá tiene', ['gracias', 'de nada', 'por favor'], ['it-ecco']),
+        ex.translationChoice(
+          'ecco',
+          'aquí tiene',
+          ['gracias', 'de nada', 'por favor'],
+          ['it-ecco'],
+        ),
         ex.listenChoice(
           'Il conto, per favore.',
           ['Un caffè, per favore.', 'Grazie, arrivederci.', 'Ecco il caffè.'],
@@ -352,7 +365,7 @@ export const unit07: UnitDef = {
         ),
         ex.fillBlank(
           '___ il cappuccino.',
-          'Acá tiene el capuchino.',
+          'Aquí tiene el capuchino.',
           'Ecco',
           ['Vorrei', 'Senza', 'Ciao'],
           ['it-ecco', 'it-cappuccino'],
@@ -364,7 +377,7 @@ export const unit07: UnitDef = {
         ex.matchPairs(
           [
             ['il conto', 'la cuenta'],
-            ['ecco', 'acá tiene'],
+            ['ecco', 'aquí tiene'],
             ['vorrei', 'quisiera'],
             ['prendo', 'tomo (pido)'],
           ],
@@ -372,7 +385,7 @@ export const unit07: UnitDef = {
         ),
         ex.shortAnswer(
           'Desidera?',
-          '¿Qué desea? (Pedí un café y un agua.)',
+          '¿Qué desea? (Pide un café y un agua.)',
           "Vorrei un caffè e un'acqua.",
           [
             "Vorrei un caffè e un'acqua, per favore.",

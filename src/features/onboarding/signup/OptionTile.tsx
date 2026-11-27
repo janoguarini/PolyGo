@@ -11,6 +11,9 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { Text, colors, radii, spacing, themedStyles } from '@/design-system';
+import { useStrings } from '@/i18n';
+
+import { signupStrings } from './strings';
 
 /** Violeta de marca para el brillo de la opción elegida (el mismo en los dos temas). */
 const BRAND = '#8B5CF6';
@@ -25,7 +28,7 @@ export function OptionTile({
   onPress,
   children,
   accent = BRAND,
-  lockLabel = 'PRONTO',
+  lockLabel,
   accessibilityLabel,
   style,
   contentStyle,
@@ -42,6 +45,8 @@ export function OptionTile({
   contentStyle?: StyleProp<ViewStyle>;
 }) {
   const styles = useStyles();
+  const soon = useStrings(signupStrings).soon;
+  const lock = lockLabel ?? soon;
   const scale = useSharedValue(1);
   const animated = useAnimatedStyle(() => ({ transform: [{ scale: scale.value }] }));
 
@@ -61,7 +66,7 @@ export function OptionTile({
     <Animated.View style={[animated, style]}>
       <Pressable
         accessibilityRole="radio"
-        accessibilityLabel={disabled ? `${accessibilityLabel}, ${lockLabel}` : accessibilityLabel}
+        accessibilityLabel={disabled ? `${accessibilityLabel}, ${lock}` : accessibilityLabel}
         accessibilityState={{ selected, disabled }}
         disabled={disabled}
         onPressIn={() => {
@@ -100,7 +105,7 @@ export function OptionTile({
           <View style={styles.lock}>
             <Lock color={colors.textMuted} size={11} />
             <Text variant="overline" color="textMuted">
-              {lockLabel}
+              {lock}
             </Text>
           </View>
         ) : null}

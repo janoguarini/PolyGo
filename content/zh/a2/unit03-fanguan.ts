@@ -43,21 +43,21 @@ export const ZH_A2_U03: ZhUnitDef = {
       'Leer un menú, pedir, decir cómo es la comida, pedir la cuenta y llegar a un hotel.',
     emoji: '🍜',
     objective:
-      'Podés leer un menú sencillo, pedir con 来 y 请, decir si algo es picante o dulce, pedir la cuenta y hacer el check-in en un hotel.',
+      'Puedes leer un menú sencillo, pedir con 来 y 请, decir si algo es picante o dulce, pedir la cuenta y hacer el check-in en un hotel.',
     grammar: {
       title: '请 · 给 + persona · 来 + cantidad · verbo repetido',
       explanation:
-        '请 + verbo es «por favor»: 请给我菜单. 给 es «dar» y, antes de una persona, «a / para»: 给我一双筷子. En un restaurante, 来 + cantidad es pedir: 来一碗米饭. El verbo repetido suaviza: 尝尝 (probá un poco).',
+        '请 + verbo es «por favor»: 请给我菜单. 给 es «dar» y, antes de una persona, «a / para»: 给我一双筷子. En un restaurante, 来 + cantidad es pedir: 来一碗米饭. El verbo repetido suaviza: 尝尝 (prueba un poco).',
       examples: [
         { target: '请给我菜单。', base: 'El menú, por favor.' },
         { target: '来两碗米饭。', base: 'Dos platos de arroz, por favor.' },
-        { target: '你尝尝！', base: '¡Probá un poco!' },
+        { target: '你尝尝！', base: '¡Prueba un poco!' },
       ],
     },
     review: {
       status: 'draft',
       notes:
-        'A2 nuevo (U3). Sin revisión nativa: revisar 来一碗, 买单 y el registro con el mozo y en el hotel.',
+        'A2 nuevo (U3). Sin revisión nativa: revisar 来一碗, 买单 y el registro con el mesero y en el hotel.',
     },
     words: [
       w(
@@ -82,7 +82,7 @@ export const ZH_A2_U03: ZhUnitDef = {
         'diǎn cài',
         'pedir (comida)',
         '服务员，我们点菜！',
-        '¡Mozo, queremos pedir!',
+        '¡Mesero, queremos pedir!',
         ['food'],
         {
           acceptedTranslations: ['pedir', 'ordenar'],
@@ -136,7 +136,7 @@ export const ZH_A2_U03: ZhUnitDef = {
         'cháng',
         'probar (comida)',
         '你尝尝！',
-        '¡Probá un poco!',
+        '¡Prueba un poco!',
         ['verbs', 'food'],
         {
           acceptedTranslations: ['probar', 'degustar'],
@@ -198,7 +198,7 @@ export const ZH_A2_U03: ZhUnitDef = {
         'mǎidān',
         'la cuenta (pagar)',
         '服务员，买单！',
-        '¡Mozo, la cuenta!',
+        '¡Mesero, la cuenta!',
         ['food'],
         {
           acceptedTranslations: ['la cuenta', 'pagar la cuenta'],
@@ -242,7 +242,7 @@ export const ZH_A2_U03: ZhUnitDef = {
             { target: '我不吃肉，我吃鱼。', base: 'No como carne, como pescado.' },
           ],
         },
-        takeaways: ['Reconocés 鱼, 肉 y 鸡蛋 en un menú.', 'Decís qué comés y qué no.'],
+        takeaways: ['Reconoces 鱼, 肉 y 鸡蛋 en un menú.', 'Dices qué comes y qué no.'],
         exercises: [
           ex.imageChoice('🐟', '鱼', ['肉', '鸡蛋', '米饭'], ['zh-yu'], {
             id: 'zh.ex.z2slvhm0rmm8rc',
@@ -287,7 +287,7 @@ export const ZH_A2_U03: ZhUnitDef = {
           ),
           reply(
             '你吃肉吗？',
-            '¿Comés carne? (Respondé que no, que comés pescado.)',
+            '¿Comes carne? (Responde que no, que comes pescado.)',
             'bù chī, wǒ chī yú',
             '不吃，我吃鱼',
             ['zh-rou', 'zh-yu'],
@@ -315,13 +315,13 @@ export const ZH_A2_U03: ZhUnitDef = {
         objective: 'Pedir en un restaurante.',
         intro: {
           explanation:
-            'Para llamar al mozo y pedir: 服务员，我们点菜！ 请 + verbo es «por favor»: 请给我菜单. En un restaurante, 来 + cantidad es pedir algo: 来一碗米饭. 碗 es el tazón o plato hondo y se usa para contar arroz, fideos y sopa.',
+            'Para llamar al mesero y pedir: 服务员，我们点菜！ 请 + verbo es «por favor»: 请给我菜单. En un restaurante, 来 + cantidad es pedir algo: 来一碗米饭. 碗 es el tazón o plato hondo y se usa para contar arroz, fideos y sopa.',
           examples: [
-            { target: '服务员，我们点菜！', base: '¡Mozo, queremos pedir!' },
+            { target: '服务员，我们点菜！', base: '¡Mesero, queremos pedir!' },
             { target: '来两碗米饭。', base: 'Dos platos de arroz, por favor.' },
           ],
         },
-        takeaways: ['Pedís con 来 + cantidad.', 'Usás 请 para pedir con cortesía.'],
+        takeaways: ['Pides con 来 + cantidad.', 'Usas 请 para pedir con cortesía.'],
         exercises: [
           ex.translationChoice(
             '点菜',
@@ -366,14 +366,14 @@ export const ZH_A2_U03: ZhUnitDef = {
           ),
           ex.orderWords(
             '服务员， 我们 点菜。',
-            '¡Mozo, queremos pedir!',
+            '¡Mesero, queremos pedir!',
             ['zh-diancai', 'zh-fuwuyuan'],
             { id: 'zh.ex.ybtjeg6nll0p5a' },
           ),
           tone('请', 'qǐng', ['qīng', 'qíng', 'qìng'], ['zh-qing'], { id: 'zh.ex.dox2ab23cdfmdu' }),
           reply(
             '你们要什么？',
-            '¿Qué van a pedir? (Pedí un plato de fideos.)',
+            '¿Qué van a pedir? (Pide un plato de fideos.)',
             'lái yì wǎn miàntiáo',
             '来一碗面条',
             ['zh-wan-tazon'],
@@ -406,13 +406,13 @@ export const ZH_A2_U03: ZhUnitDef = {
         objective: 'Decir cómo es la comida y ofrecer probar.',
         intro: {
           explanation:
-            '辣 es picante y 甜, dulce. 尝 es probar comida; repetido (尝尝) suena más suave: «probá un poquito». Muchos verbos se repiten así: 看看 (mirá un poco).',
+            '辣 es picante y 甜, dulce. 尝 es probar comida; repetido (尝尝) suena más suave: «prueba un poquito». Muchos verbos se repiten así: 看看 (mira un poco).',
           examples: [
             { target: '这个菜有点儿辣。', base: 'Este plato es medio picante.' },
-            { target: '你尝尝！', base: '¡Probá un poco!' },
+            { target: '你尝尝！', base: '¡Prueba un poco!' },
           ],
         },
-        takeaways: ['Decís si algo es picante o dulce.', 'Suavizás un verbo repitiéndolo: 尝尝.'],
+        takeaways: ['Dices si algo es picante o dulce.', 'Suavizas un verbo repitiéndolo: 尝尝.'],
         exercises: [
           ex.translationChoice('辣', 'picante', ['dulce', 'frío', 'caro'], ['zh-la'], {
             id: 'zh.ex.lmsyjaz4895rup',
@@ -432,13 +432,13 @@ export const ZH_A2_U03: ZhUnitDef = {
           ),
           ex.fillBlank(
             '你尝___，很好吃！',
-            'Probá un poquito: ¡es muy rico!',
+            'Prueba un poquito: ¡es muy rico!',
             '尝',
             ['看', '吃', '喝'],
             ['zh-chang-probar'],
             {
               id: 'zh.ex.hbcx6t6mtwu5du',
-              explanation: 'El verbo repetido suaviza el pedido: 尝尝 = «probá un poco».',
+              explanation: 'El verbo repetido suaviza el pedido: 尝尝 = «prueba un poco».',
             },
           ),
           ex.fillBlank(
@@ -465,13 +465,13 @@ export const ZH_A2_U03: ZhUnitDef = {
           ),
           reply(
             '这个菜辣吗？',
-            '¿Este plato es picante? (Respondé que es medio picante.)',
+            '¿Este plato es picante? (Responde que es medio picante.)',
             'yǒudiǎnr là',
             '有点儿辣',
             ['zh-la'],
             { id: 'zh.ex.m13hf43in7oss0', accepted: ['zhège cài yǒudiǎnr là', '这个菜有点儿辣'] },
           ),
-          write('Probá esto.', 'nǐ chángchang zhège', '你尝尝这个', ['zh-chang-probar'], {
+          write('Prueba esto.', 'nǐ chángchang zhège', '你尝尝这个', ['zh-chang-probar'], {
             id: 'zh.ex.0dc9ymztquwsrx',
             accepted: ['chángchang zhège', '尝尝这个'],
           }),
@@ -487,10 +487,10 @@ export const ZH_A2_U03: ZhUnitDef = {
             '给 es «dar»; antes de una persona es «a / para»: 请给我一双筷子 (dame unos palitos), 妈妈给我做饭 (mamá cocina para mí). Para pedir la cuenta: 服务员，买单！ En China quien invita suele pagar todo: dividir la cuenta es menos común.',
           examples: [
             { target: '请给我一双筷子。', base: 'Por favor, dame unos palitos.' },
-            { target: '服务员，买单！', base: '¡Mozo, la cuenta!' },
+            { target: '服务员，买单！', base: '¡Mesero, la cuenta!' },
           ],
         },
-        takeaways: ['Pedís cosas con 给我….', 'Pedís la cuenta con 买单.'],
+        takeaways: ['Pides cosas con 给我….', 'Pides la cuenta con 买单.'],
         exercises: [
           ex.imageChoice('🥢', '筷子', ['碗', '菜单', '鸡蛋'], ['zh-kuaizi'], {
             id: 'zh.ex.0kqtgbn1gi9bkt',
@@ -550,7 +550,7 @@ export const ZH_A2_U03: ZhUnitDef = {
             ['zh-wan-tazon'],
             'El menú dice «米饭 2块一碗»: dos platos son 4 yuanes.',
           ),
-          reply('你们还要什么？', '¿Algo más? (Pedí la cuenta.)', 'mǎidān', '买单', ['zh-maidan'], {
+          reply('你们还要什么？', '¿Algo más? (Pide la cuenta.)', 'mǎidān', '买单', ['zh-maidan'], {
             id: 'zh.ex.dujqngo67318r6',
             accepted: ['fúwùyuán, mǎidān', '服务员，买单', 'wǒmen mǎidān', '我们买单'],
           }),
@@ -579,7 +579,7 @@ export const ZH_A2_U03: ZhUnitDef = {
             { target: '请给我你的护照。', base: 'Su pasaporte, por favor.' },
           ],
         },
-        takeaways: ['Hacés el check-in en un hotel.', 'Entendés un pedido en un restaurante.'],
+        takeaways: ['Haces el check-in en un hotel.', 'Entiendes un pedido en un restaurante.'],
         exercises: [
           ex.translationChoice(
             '宾馆',
@@ -626,11 +626,11 @@ export const ZH_A2_U03: ZhUnitDef = {
           question(
             'zh.ex.7r0o0xz844whv7',
             RESTAURANTE,
-            '¿Cómo es el pescado, según el mozo?',
+            '¿Cómo es el pescado, según el mesero?',
             'No es picante; es un poco dulce',
             ['Es muy picante', 'Es medio picante', 'No es dulce'],
             ['zh-la', 'zh-tian'],
-            'El mozo dice: «不辣，有点儿甜».',
+            'El mesero dice: «不辣，有点儿甜».',
           ),
           question(
             'zh.ex.7bt2sfo89mq6df',
@@ -643,7 +643,7 @@ export const ZH_A2_U03: ZhUnitDef = {
           ),
           reply(
             '你预订房间了吗？',
-            '¿Reservaste la habitación? (Respondé que sí, que ya reservaste.)',
+            '¿Reservaste la habitación? (Responde que sí, que ya reservaste.)',
             'wǒ yǐjīng yùdìng le',
             '我已经预订了',
             ['zh-yuding'],

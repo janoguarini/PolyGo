@@ -26,7 +26,7 @@ const tone = (
 ): ExerciseDef => ({
   type: 'listen_choice',
   skill: 'listening',
-  prompt: 'Escuchá y elegí el tono correcto',
+  prompt: 'Escucha y elige el tono correcto',
   payload: { type: 'listen_choice', audioText: hanzi, options: [pinyin, ...others] },
   answer: pinyin,
   words,
@@ -59,7 +59,7 @@ export const unit12: UnitDef = {
     'Preguntar cuánto cuesta algo (多少钱), entender precios en 块, opinar con 太…了 y 怎么样 y preguntar «¿y…?» con 呢.',
   emoji: '🛍️',
   objective:
-    'Podés preguntar 多少钱？, entender precios (二十块), decir 太贵了！, preguntar 怎么样？, usar 呢 para «¿y…?» y distinguir 买 (comprar) de 卖 (vender).',
+    'Puedes preguntar 多少钱？, entender precios (二十块), decir 太贵了！, preguntar 怎么样？, usar 呢 para «¿y…?» y distinguir 买 (comprar) de 卖 (vender).',
   grammar: {
     title: '多少钱 · 太 + adjetivo + 了 · 呢',
     explanation:
@@ -92,7 +92,7 @@ export const unit12: UnitDef = {
       'duōshao',
       '¿cuántos?',
       '你有多少钱？',
-      '¿Cuánta plata tenés?',
+      '¿Cuánto dinero tienes?',
       ['questions'],
       { acceptedTranslations: ['¿cuánto?'] },
     ),
@@ -125,7 +125,7 @@ export const unit12: UnitDef = {
       'tài hǎo le',
       '¡buenísimo!',
       '你能来？太好了！',
-      '¿Podés venir? ¡Buenísimo!',
+      '¿Puedes venir? ¡Buenísimo!',
       ['courtesy'],
       { acceptedTranslations: ['¡genial!', '¡excelente!'] },
     ),
@@ -223,7 +223,7 @@ export const unit12: UnitDef = {
           { target: '二十块。', base: 'Veinte yuanes.' },
         ],
       },
-      takeaways: ['Preguntás el precio con 多少钱？', 'Entendés precios con 块.'],
+      takeaways: ['Preguntas el precio con 多少钱？', 'Entiendes precios con 块.'],
       exercises: [
         ex.translationChoice(
           '多少钱',
@@ -277,7 +277,7 @@ export const unit12: UnitDef = {
           { target: '我买这双鞋。', base: 'Compro estos zapatos.' },
         ],
       },
-      takeaways: ['Nombrás ropa y zapatos.', 'Usás los clasificadores 件 y 双.'],
+      takeaways: ['Nombras ropa y zapatos.', 'Usas los clasificadores 件 y 双.'],
       exercises: [
         ex.imageChoice('👕', '衣服', ['鞋', '包', '书'], ['zh-yifu']),
         ex.imageChoice('👟', '鞋', ['衣服', '笔', '手机'], ['zh-xie']),
@@ -336,7 +336,7 @@ export const unit12: UnitDef = {
           { target: '一共五十块。', base: 'En total, cincuenta yuanes.' },
         ],
       },
-      takeaways: ['Decís si algo es caro o barato.', 'Te quejás del precio con 太贵了！'],
+      takeaways: ['Dices si algo es caro o barato.', 'Te quejas del precio con 太贵了！'],
       exercises: [
         ex.translationChoice('贵', 'caro', ['barato', 'lindo', 'grande'], ['zh-gui']),
         ex.translationChoice('便宜', 'barato', ['caro', 'rico (de comer)', 'chico'], ['zh-pianyi']),
@@ -387,10 +387,10 @@ export const unit12: UnitDef = {
           '怎么样 (zěnmeyàng) va al final y pregunta «¿qué tal?»: 这件衣服怎么样？ Para festejar, 太好了！ («¡buenísimo!»): 太 + 好 + 了.',
         examples: [
           { target: '这双鞋怎么样？——很漂亮！', base: '¿Qué tal estos zapatos? — ¡Muy lindos!' },
-          { target: '你能来？太好了！', base: '¿Podés venir? ¡Buenísimo!' },
+          { target: '你能来？太好了！', base: '¿Puedes venir? ¡Buenísimo!' },
         ],
       },
-      takeaways: ['Pedís una opinión con 怎么样？', 'Festejás con 太好了！'],
+      takeaways: ['Pides una opinión con 怎么样？', 'Festejas con 太好了！'],
       exercises: [
         ex.translationChoice(
           '怎么样',
@@ -412,7 +412,7 @@ export const unit12: UnitDef = {
         ),
         ex.fillBlank(
           '你能来？太___了！',
-          '¿Podés venir? ¡Buenísimo!',
+          '¿Puedes venir? ¡Buenísimo!',
           '好',
           ['贵', '大', '忙'],
           ['zh-neng', 'zh-lai', 'zh-tai-hao-le'],
@@ -449,7 +449,7 @@ export const unit12: UnitDef = {
           { target: '我的手机呢？', base: '¿Y mi celular?' },
         ],
       },
-      takeaways: ['Distinguís 买 y 卖 por el tono.', 'Preguntás «¿y…?» con 呢.'],
+      takeaways: ['Distingues 买 y 卖 por el tono.', 'Preguntas «¿y…?» con 呢.'],
       exercises: [
         ex.translationChoice('卖', 'vender', ['comprar', 'comer', 'venir'], ['zh-mai-vender']),
         tone(
@@ -467,13 +467,13 @@ export const unit12: UnitDef = {
         ),
         ex.fillBlank(
           '我很好，你___？',
-          'Estoy bien, ¿y vos?',
+          'Estoy bien, ¿y tú?',
           '呢',
           ['吗', '的', '了'],
           ['zh-hen', 'zh-hao', 'zh-ne'],
-          { explanation: 'Para devolver la pregunta («¿y vos?») se usa 呢, no 吗.' },
+          { explanation: 'Para devolver la pregunta («¿y tú?») se usa 呢, no 吗.' },
         ),
-        ex.orderWords('我 喜欢 喝 茶， 你 呢？', 'Me gusta tomar té, ¿y a vos?', [
+        ex.orderWords('我 喜欢 喝 茶， 你 呢？', 'Me gusta tomar té, ¿y a ti?', [
           'zh-xihuan',
           'zh-he',
           'zh-cha',

@@ -47,7 +47,7 @@ const SAVINGS = reading(
 
 const FLATMATES = dialogue(
   'en.stim.b2-u5-flatmates',
-  'Dos amigos que comparten departamento hablan de plata.',
+  'Dos amigos que comparten apartamento hablan de dinero.',
   [
     ['Jake', "I'm thinking of taking out a loan to buy a car."],
     ['Rita', 'Are you sure? You still have debt on your credit card.'],
@@ -110,11 +110,11 @@ export const EN_B2_U05: B2UnitDef = {
       'Ahorros, préstamos y deudas, gastar menos, marcas y precios, have something done y comparaciones como twice as… as o nowhere near as… as.',
     emoji: '💳',
     objective:
-      'Podés hablar de tu economía, comparar precios con matices y explicar que mandás a hacer o arreglar algo.',
+      'Puedes hablar de tu economía, comparar precios con matices y explicar que mandas a hacer o arreglar algo.',
     grammar: {
       title: 'Have something done y comparación avanzada',
       explanation:
-        'Have / get + objeto + participio: otra persona hace algo por vos (I had my screen replaced = me cambiaron la pantalla; no la cambiaste vos). Para comparar con matices: by far + superlativo (by far the best), twice / three times as … as (el doble de…), nowhere near as … as (ni de cerca tan… como) y the …-er, the …-er (cuanto más…, más…).',
+        'Have / get + objeto + participio: otra persona hace algo por ti (I had my screen replaced = me cambiaron la pantalla; no la cambiaste tú). Para comparar con matices: by far + superlativo (by far the best), twice / three times as … as (el doble de…), nowhere near as … as (ni de cerca tan… como) y the …-er, the …-er (cuanto más…, más…).',
       examples: [
         {
           target: "I'd like to have the screen replaced.",
@@ -163,7 +163,7 @@ export const EN_B2_U05: B2UnitDef = {
         '/loʊn/',
         '🏦',
         'She took out a loan to buy a flat.',
-        'Pidió un préstamo para comprarse un departamento.',
+        'Pidió un préstamo para comprarse un apartamento.',
         ['money'],
       ),
       w(
@@ -346,13 +346,13 @@ export const EN_B2_U05: B2UnitDef = {
             },
             {
               target: 'She took out a loan to buy a flat.',
-              base: 'Pidió un préstamo para comprarse un departamento.',
+              base: 'Pidió un préstamo para comprarse un apartamento.',
             },
           ],
         },
         takeaways: [
-          'Decís si podés permitirte algo con afford.',
-          'Hablás de ahorros, préstamos, deudas e intereses.',
+          'Dices si puedes permitirte algo con afford.',
+          'Hablas de ahorros, préstamos, deudas e intereses.',
         ],
         exercises: [
           ex.matchPairs(
@@ -379,7 +379,7 @@ export const EN_B2_U05: B2UnitDef = {
           ),
           ex.fillBlank(
             'She took ___ a loan to buy a flat.',
-            'Pidió un préstamo para comprarse un departamento.',
+            'Pidió un préstamo para comprarse un apartamento.',
             'out',
             ['on', 'up', 'off'],
             ['en-loan'],
@@ -421,7 +421,7 @@ export const EN_B2_U05: B2UnitDef = {
             id: 'en.ex.zfvt2r1l3x71gy',
           }),
           ex.shortAnswer(
-            'Are you going to buy the new phone? (no, no te lo podés permitir)',
+            'Are you going to buy the new phone? (no, no te lo puedes permitir)',
             '¿Te vas a comprar el teléfono nuevo?',
             "No, I can't afford it.",
             ['No, I cannot afford it.', "I can't afford it.", "No. I can't afford it."],
@@ -449,7 +449,7 @@ export const EN_B2_U05: B2UnitDef = {
         objective: 'Contar cómo ahorrar: recortar gastos, comprar usado y buscar ofertas.',
         intro: {
           explanation:
-            'Cut back on es gastar menos en algo: cut back on subscriptions. Second-hand es de segunda mano, usado. A bargain es una ganga. Para contar lo que hiciste para ahorrar usás el present perfect o el past simple, como siempre.',
+            'Cut back on es gastar menos en algo: cut back on subscriptions. Second-hand es de segunda mano, usado. A bargain es una ganga. Para contar lo que hiciste para ahorrar usas el present perfect o el past simple, como siempre.',
           examples: [
             {
               target: 'We need to cut back on eating out.',
@@ -462,8 +462,8 @@ export const EN_B2_U05: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Contás en qué gastás menos con cut back on.',
-          'Hablás de compras usadas y de gangas.',
+          'Cuentas en qué gastas menos con cut back on.',
+          'Hablas de compras usadas y de gangas.',
         ],
         exercises: [
           ex.matchPairs(
@@ -536,8 +536,8 @@ export const EN_B2_U05: B2UnitDef = {
             { id: 'en.ex.0ld1qp5mry6636' },
           ),
           ex.shortAnswer(
-            'How do you save money? (gastás menos en ropa)',
-            '¿Cómo ahorrás?',
+            'How do you save money? (gastas menos en ropa)',
+            '¿Cómo ahorras?',
             'I cut back on clothes.',
             [
               'I cut back on buying clothes.',
@@ -569,7 +569,7 @@ export const EN_B2_U05: B2UnitDef = {
         objective: 'Explicar que otra persona te hace o te arregla algo: have something done.',
         intro: {
           explanation:
-            'Have / get + objeto + participio: alguien hace algo por vos. I had my phone repaired (me arreglaron el teléfono, no lo arreglé yo). I’m going to get my hair cut (me voy a cortar el pelo, en la peluquería). Compará: I repaired my phone = lo arreglé yo.',
+            'Have / get + objeto + participio: alguien hace algo por ti. I had my phone repaired (me arreglaron el teléfono, no lo arreglé yo). I’m going to get my hair cut (me voy a cortar el pelo, en la peluquería). Compara: I repaired my phone = lo arreglé yo.',
           examples: [
             {
               target: 'I had my phone repaired last week.',
@@ -582,8 +582,8 @@ export const EN_B2_U05: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Contás lo que te hacen con have / get + objeto + participio.',
-          'Distinguís I had it repaired de I repaired it.',
+          'Cuentas lo que te hacen con have / get + objeto + participio.',
+          'Distingues I had it repaired de I repaired it.',
         ],
         exercises: [
           ex.fillBlank(
@@ -650,7 +650,7 @@ export const EN_B2_U05: B2UnitDef = {
           ),
           ex.shortAnswer(
             'Your hair looks great! Did you cut it yourself? (no, te lo cortaron en la peluquería)',
-            '¡Qué lindo pelo! ¿Te lo cortaste vos?',
+            '¡Qué lindo pelo! ¿Te lo cortaste tú?',
             'No, I had it cut at the hairdresser.',
             [
               "No, I had it cut at the hairdresser's.",
@@ -696,8 +696,8 @@ export const EN_B2_U05: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Comparás con by far, twice as… as y nowhere near as… as.',
-          'Hablás de la relación calidad-precio.',
+          'Comparas con by far, twice as… as y nowhere near as… as.',
+          'Hablas de la relación calidad-precio.',
         ],
         exercises: [
           ex.matchPairs(
@@ -777,7 +777,7 @@ export const EN_B2_U05: B2UnitDef = {
           ),
           ex.shortAnswer(
             'Is your new flat bigger than the old one? (sí, el doble de grande)',
-            '¿Tu departamento nuevo es más grande que el viejo?',
+            '¿Tu apartamento nuevo es más grande que el viejo?',
             'Yes, it is twice as big.',
             [
               "Yes, it's twice as big.",
@@ -821,8 +821,8 @@ export const EN_B2_U05: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Opinás sobre marcas y precios como consumidor.',
-          'Decís si algo es una ganga, un robo o demasiado caro.',
+          'Opinas sobre marcas y precios como consumidor.',
+          'Dices si algo es una ganga, un robo o demasiado caro.',
         ],
         exercises: [
           ex.translationChoice(

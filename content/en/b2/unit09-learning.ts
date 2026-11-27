@@ -127,7 +127,7 @@ export const EN_B2_U09: B2UnitDef = {
       'Mirar atrás con el tercer condicional y if only, la forma de pensar y la motivación, estudiar con método y salir de la zona de confort.',
     emoji: '🎓',
     objective:
-      'Podés hablar de tu educación, lamentar decisiones del pasado e imaginar otros resultados, y contar cómo aprendés mejor.',
+      'Puedes hablar de tu educación, lamentar decisiones del pasado e imaginar otros resultados, y contar cómo aprendes mejor.',
     grammar: {
       title: 'Tercer condicional y wish / if only',
       explanation:
@@ -253,7 +253,7 @@ export const EN_B2_U09: B2UnitDef = {
         '/proʊˈkræstəˌneɪt/',
         '⏳',
         'Stop procrastinating and start your homework!',
-        '¡Dejá de postergar y empezá la tarea!',
+        '¡Deja de postergar y empieza la tarea!',
         ['education', 'verbs'],
         ['postergar', 'procrastinar', 'dejar para después'],
       ),
@@ -330,7 +330,7 @@ export const EN_B2_U09: B2UnitDef = {
         '/ˈɡɪv ɪt ə ˈtraɪ/',
         '👍',
         "You've never tried yoga? Give it a try!",
-        '¿Nunca probaste yoga? ¡Probalo!',
+        '¿Nunca probaste yoga? ¡Pruébalo!',
         ['personal-growth', 'collocations'],
         ['probar', 'intentarlo', 'hacer la prueba'],
       ),
@@ -355,8 +355,8 @@ export const EN_B2_U09: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Imaginás otro resultado para el pasado con if + had + participio.',
-          'Usás would have / wouldn’t have + participio en la otra parte.',
+          'Imaginas otro resultado para el pasado con if + had + participio.',
+          'Usas would have / wouldn’t have + participio en la otra parte.',
         ],
         exercises: [
           ex.fillBlank(
@@ -469,8 +469,8 @@ export const EN_B2_U09: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Lamentás el pasado con if only / I wish + past perfect.',
-          'Recordás una época con look back on y contás qué te costaba.',
+          'Lamentas el pasado con if only / I wish + past perfect.',
+          'Recuerdas una época con look back on y cuentas qué te costaba.',
         ],
         exercises: [
           ex.matchPairs(
@@ -550,7 +550,7 @@ export const EN_B2_U09: B2UnitDef = {
           ),
           ex.shortAnswer(
             'Do you regret anything from school? (ojalá hubieras estudiado más)',
-            '¿Te arrepentís de algo del colegio?',
+            '¿Te arrepientes de algo del colegio?',
             'I wish I had studied more.',
             [
               "I wish I'd studied more.",
@@ -595,8 +595,8 @@ export const EN_B2_U09: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Hablás de la mentalidad y la motivación.',
-          'Contás tu progreso con make progress.',
+          'Hablas de la mentalidad y la motivación.',
+          'Cuentas tu progreso con make progress.',
         ],
         exercises: [
           ex.matchPairs(
@@ -700,7 +700,7 @@ export const EN_B2_U09: B2UnitDef = {
       // ------------------------------------------------------------------------------------ L4
       {
         title: 'Estudiar con método',
-        objective: 'Contar cómo organizás el estudio y cómo dejar de postergar.',
+        objective: 'Contar cómo organizas el estudio y cómo dejar de postergar.',
         intro: {
           explanation:
             'Procrastinate es postergar, dejar todo para después. Self-discipline es la autodisciplina, la constancia. Keep track of es llevar la cuenta o el registro de algo. Catch up es ponerse al día: I need to catch up with the classes I missed.',
@@ -716,8 +716,8 @@ export const EN_B2_U09: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Contás cómo organizás tu estudio y llevás la cuenta.',
-          'Hablás de postergar, de la constancia y de ponerte al día.',
+          'Cuentas cómo organizas tu estudio y llevas la cuenta.',
+          'Hablas de postergar, de la constancia y de ponerte al día.',
         ],
         exercises: [
           ex.matchPairs(
@@ -785,12 +785,12 @@ export const EN_B2_U09: B2UnitDef = {
           ),
           ex.orderWords(
             'Stop procrastinating and start your homework.',
-            'Dejá de postergar y empezá la tarea.',
+            'Deja de postergar y empieza la tarea.',
             ['en-procrastinate'],
             { id: 'en.ex.atl8pvfkwfbrjo' },
           ),
           ex.shortAnswer(
-            'Why are you studying on a Saturday? (faltaste a clases y tenés que ponerte al día)',
+            'Why are you studying on a Saturday? (faltaste a clases y tienes que ponerte al día)',
             '¿Por qué estás estudiando un sábado?',
             'I missed some classes, so I need to catch up.',
             [
@@ -822,7 +822,7 @@ export const EN_B2_U09: B2UnitDef = {
         objective: 'Hablar de becas, inscripciones y de animarte a probar algo nuevo.',
         intro: {
           explanation:
-            'A scholarship es una beca. Enroll (in a course) es inscribirse. Your comfort zone es tu zona de confort, y step out of it, salir de ella. Give it a try es probarlo, animarse. Con el tercer condicional contás lo que habría pasado: If I’d known, I wouldn’t have…',
+            'A scholarship es una beca. Enroll (in a course) es inscribirse. Your comfort zone es tu zona de confort, y step out of it, salir de ella. Give it a try es probarlo, animarse. Con el tercer condicional cuentas lo que habría pasado: If I’d known, I wouldn’t have…',
           examples: [
             {
               target: 'She won a scholarship to study abroad.',
@@ -830,13 +830,13 @@ export const EN_B2_U09: B2UnitDef = {
             },
             {
               target: "You've never tried yoga? Give it a try!",
-              base: '¿Nunca probaste yoga? ¡Probalo!',
+              base: '¿Nunca probaste yoga? ¡Pruébalo!',
             },
           ],
         },
         takeaways: [
-          'Hablás de becas e inscripciones.',
-          'Animás a alguien a probar algo fuera de su zona de confort.',
+          'Hablas de becas e inscripciones.',
+          'Animas a alguien a probar algo fuera de su zona de confort.',
         ],
         exercises: [
           ex.matchPairs(
@@ -859,7 +859,7 @@ export const EN_B2_U09: B2UnitDef = {
           ),
           ex.fillBlank(
             "You've never tried yoga? Give it a ___!",
-            '¿Nunca probaste yoga? ¡Probalo!',
+            '¿Nunca probaste yoga? ¡Pruébalo!',
             'try',
             ['test', 'go', 'look'],
             ['en-give-it-a-try'],
@@ -913,7 +913,7 @@ export const EN_B2_U09: B2UnitDef = {
             { id: 'en.ex.5tw32md2yv3our' },
           ),
           ex.shortAnswer(
-            "I'm scared of singing in public. (animalo: que lo pruebe)",
+            "I'm scared of singing in public. (anímalo: que lo pruebe)",
             'Me da miedo cantar en público.',
             'Give it a try!',
             ['Just give it a try!', 'You should give it a try.', 'Give it a try.'],

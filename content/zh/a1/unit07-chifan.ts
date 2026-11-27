@@ -26,7 +26,7 @@ const tone = (
 ): ExerciseDef => ({
   type: 'listen_choice',
   skill: 'listening',
-  prompt: 'Escuchá y elegí el tono correcto',
+  prompt: 'Escucha y elige el tono correcto',
   payload: { type: 'listen_choice', audioText: hanzi, options: [pinyin, ...others] },
   answer: pinyin,
   words,
@@ -55,10 +55,10 @@ export const unit07: UnitDef = {
   position: 7,
   title: 'Comer y beber',
   titleEn: '吃饭',
-  description: 'Comer y beber con 吃 y 喝, pedir con 要, decir qué tenés ganas de comer con 想.',
+  description: 'Comer y beber con 吃 y 喝, pedir con 要, decir qué tienes ganas de comer con 想.',
   emoji: '🍜',
   objective:
-    'Podés decir qué comés y tomás, pedir con 要 (y rechazar con 不要), decir qué tenés ganas de comer con 想 y que algo está rico.',
+    'Puedes decir qué comes y tomas, pedir con 要 (y rechazar con 不要), decir qué tienes ganas de comer con 想 y que algo está rico.',
   grammar: {
     title: '要 y 想 + verbo',
     explanation:
@@ -149,16 +149,16 @@ export const unit07: UnitDef = {
   lessons: [
     {
       title: '吃和喝',
-      objective: 'Decir qué comés y qué tomás.',
+      objective: 'Decir qué comes y qué tomas.',
       intro: {
         explanation:
           '吃 (chī) es «comer» y 喝 (hē) «beber / tomar». El orden es como en español: 我吃米饭 «como arroz». El verbo no cambia con la persona ni con el tiempo.',
         examples: [
           { target: '我吃米饭。', base: 'Como arroz.' },
-          { target: '你喝水吗？', base: '¿Tomás agua?' },
+          { target: '你喝水吗？', base: '¿Tomas agua?' },
         ],
       },
-      takeaways: ['Decís qué comés con 吃 y qué tomás con 喝.', 'Preguntás con 吗 al final.'],
+      takeaways: ['Dices qué comes con 吃 y qué tomas con 喝.', 'Preguntas con 吗 al final.'],
       exercises: [
         ex.translationChoice('吃', 'comer', ['beber', 'tener', 'ser'], ['zh-chi']),
         ex.translationChoice('喝', 'beber', ['comer', 'estar en', 'tener'], ['zh-he']),
@@ -178,7 +178,7 @@ export const unit07: UnitDef = {
         write('Como arroz.', 'wǒ chī mǐfàn', '我吃米饭', ['zh-wo', 'zh-chi', 'zh-mifan'], {
           accepted: ['wǒ chī mǐ fàn'],
         }),
-        write('¿Tomás agua?', 'nǐ hē shuǐ ma', '你喝水吗', ['zh-ni', 'zh-he', 'zh-shui', 'zh-ma']),
+        write('¿Tomas agua?', 'nǐ hē shuǐ ma', '你喝水吗', ['zh-ni', 'zh-he', 'zh-shui', 'zh-ma']),
       ],
     },
     {
@@ -192,7 +192,7 @@ export const unit07: UnitDef = {
           { target: '一杯咖啡', base: 'un café (una taza)', note: 'yì bēi' },
         ],
       },
-      takeaways: ['Nombrás té, café y leche.', 'Contás bebidas con 杯.'],
+      takeaways: ['Nombras té, café y leche.', 'Cuentas bebidas con 杯.'],
       exercises: [
         ex.imageChoice('🍵', '茶', ['咖啡', '牛奶', '水'], ['zh-cha']),
         ex.imageChoice('☕', '咖啡', ['茶', '米饭', '牛奶'], ['zh-kafei']),
@@ -223,7 +223,7 @@ export const unit07: UnitDef = {
           { target: '我不要牛奶。', base: 'No quiero leche.', note: 'bú yào' },
         ],
       },
-      takeaways: ['Pedís con 要.', 'Rechazás con 不要 (bú yào).'],
+      takeaways: ['Pides con 要.', 'Rechazas con 不要 (bú yào).'],
       exercises: [
         ex.translationChoice(
           '要',
@@ -279,7 +279,7 @@ export const unit07: UnitDef = {
     },
     {
       title: '我想…',
-      objective: 'Decir qué tenés ganas de comer y que tenés hambre.',
+      objective: 'Decir qué tienes ganas de comer y que tienes hambre.',
       intro: {
         explanation:
           '想 (xiǎng) + verbo es «tener ganas de»: 我想吃饺子 «tengo ganas de comer jiaozi». 饿 (è) es «tener hambre» y funciona como un adjetivo: va con 很 y sin 是: 我很饿.',
@@ -288,7 +288,7 @@ export const unit07: UnitDef = {
           { target: '我想吃面条。', base: 'Tengo ganas de comer fideos.' },
         ],
       },
-      takeaways: ['Decís qué tenés ganas de comer con 想.', 'Decís que tenés hambre con 我很饿.'],
+      takeaways: ['Dices qué tienes ganas de comer con 想.', 'Dices que tienes hambre con 我很饿.'],
       exercises: [
         ex.translationChoice(
           '想',
@@ -326,7 +326,7 @@ export const unit07: UnitDef = {
           { target: '苹果好吃吗？', base: '¿Las manzanas son ricas?' },
         ],
       },
-      takeaways: ['Decís que algo está rico con 好吃.', 'Usás 好喝 para las bebidas.'],
+      takeaways: ['Dices que algo está rico con 好吃.', 'Usas 好喝 para las bebidas.'],
       exercises: [
         ex.imageChoice('🍎', '苹果', ['饺子', '牛奶', '咖啡'], ['zh-pingguo']),
         ex.translationChoice(
@@ -349,7 +349,7 @@ export const unit07: UnitDef = {
           ['zh-pingguo', 'zh-haochi'],
           { skill: 'vocabulary' },
         ),
-        ex.orderWords('你 想 吃 苹果 吗？', '¿Tenés ganas de comer una manzana?', [
+        ex.orderWords('你 想 吃 苹果 吗？', '¿Tienes ganas de comer una manzana?', [
           'zh-xiang',
           'zh-chi',
           'zh-pingguo',

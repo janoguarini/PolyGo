@@ -23,7 +23,7 @@ import type { ExerciseDef, UnitSupplementDef, WordDef } from '../../types';
  * ESTADO EDITORIAL: borrador, sin revisión pedagógica ni de hablantes nativos. Se carga sin publicar.
  */
 
-const NARROW = 'Escribí en inglés lo que muestra la imagen.';
+const NARROW = 'Escribe en inglés lo que muestra la imagen.';
 
 const listening = (
   id: string,
@@ -51,7 +51,7 @@ const contextQuestion = (
   id,
   type: 'context_choice',
   skill: stimulus.kind === 'reading' ? 'reading' : 'listening',
-  prompt: stimulus.kind === 'reading' ? 'Leé y respondé' : 'Escuchá y respondé',
+  prompt: stimulus.kind === 'reading' ? 'Lee y responde' : 'Escucha y responde',
   payload: { type: 'context_choice', stimulus, question, options: [answer, ...distractors] },
   answer,
   words: [],
@@ -88,7 +88,7 @@ const U1: UnitSupplementDef = {
       exercises: [
         ex.fillBlank(
           '___, Ana!',
-          'Situación: llegás a clase y ves a tu amiga Ana. ¿Qué le decís?',
+          'Situación: llegas a clase y ves a tu amiga Ana. ¿Qué le dices?',
           'Hello',
           ['Goodbye', 'Thank you', "You're welcome"],
           ['en-hello'],
@@ -100,7 +100,7 @@ const U1: UnitSupplementDef = {
         ),
         ex.fillBlank(
           '___, Tom!',
-          'Situación: te vas de la casa de Tom. ¿Qué le decís?',
+          'Situación: te vas de la casa de Tom. ¿Qué le dices?',
           'Bye',
           ['Hello', 'Sorry', 'Please'],
           ['en-bye'],
@@ -114,10 +114,10 @@ const U1: UnitSupplementDef = {
           'en.ex.hiw0f512gznbfk',
           listening('en.stim.a1-u01-lm-goodbye', 'Tom sale de la clase.', 'Tom', 'Goodbye!'),
           '¿Qué significa lo que dice Tom?',
-          'Chau',
+          'Adiós',
           ['Hola', 'Gracias', 'Perdón'],
           ['en-goodbye'],
-          'Tom dice «Goodbye!»: es una despedida (chau).',
+          'Tom dice «Goodbye!»: es una despedida (adiós).',
         ),
       ],
     },
@@ -128,7 +128,7 @@ const U1: UnitSupplementDef = {
       exercises: [
         ex.fillBlank(
           '___, Ana!',
-          'Situación: son las 9 de la mañana y entrás a la oficina. ¿Cómo saludás a Ana?',
+          'Situación: son las 9 de la mañana y entras a la oficina. ¿Cómo saludas a Ana?',
           'Good morning',
           ['Good night', 'Good evening', 'Goodbye'],
           ['en-good-morning'],
@@ -140,7 +140,7 @@ const U1: UnitSupplementDef = {
         ),
         ex.fillBlank(
           '___, Tom!',
-          'Situación: son las 11 de la noche y te vas a dormir. ¿Qué le decís a Tom?',
+          'Situación: son las 11 de la noche y te vas a dormir. ¿Qué le dices a Tom?',
           'Good night',
           ['Good morning', 'Good afternoon', 'Hello'],
           ['en-good-night'],
@@ -152,7 +152,7 @@ const U1: UnitSupplementDef = {
         ),
         ex.shortAnswer(
           '🌙 😴',
-          'Situación: es de noche y te vas a dormir. Escribí en inglés qué le decís a tu familia.',
+          'Situación: es de noche y te vas a dormir. Escribe en inglés qué le dices a tu familia.',
           'Good night.',
           ['Goodnight.', 'Good night, everyone.'],
           ['en-good-night'],
@@ -206,7 +206,7 @@ const U2: UnitSupplementDef = {
         ),
         ex.shortAnswer(
           '👨‍🏫',
-          'Escribí en inglés qué es este hombre. Empezá con He.',
+          'Escribe en inglés qué es este hombre. Empieza con He.',
           'He is a teacher.',
           ["He's a teacher."],
           ['en-he', 'en-is', 'en-teacher'],
@@ -224,7 +224,7 @@ const U2: UnitSupplementDef = {
       exercises: [
         ex.shortAnswer(
           'I am tired.',
-          'Escribí la oración en negativa.',
+          'Escribe la oración en negativa.',
           'I am not tired.',
           ["I'm not tired."],
           ['en-am', 'en-not', 'en-tired'],
@@ -235,7 +235,7 @@ const U2: UnitSupplementDef = {
         ),
         ex.shortAnswer(
           'She is a teacher.',
-          'Escribí la oración como pregunta.',
+          'Escribe la oración como pregunta.',
           'Is she a teacher?',
           [],
           ['en-is', 'en-she', 'en-teacher'],
@@ -246,7 +246,7 @@ const U2: UnitSupplementDef = {
         ),
         ex.shortAnswer(
           'They are students.',
-          'Escribí la oración en negativa.',
+          'Escribe la oración en negativa.',
           'They are not students.',
           ["They aren't students.", "They're not students."],
           ['en-are', 'en-not', 'en-student'],
@@ -254,7 +254,7 @@ const U2: UnitSupplementDef = {
         ),
         ex.shortAnswer(
           'You are happy.',
-          'Escribí la oración como pregunta.',
+          'Escribe la oración como pregunta.',
           'Are you happy?',
           [],
           ['en-are', 'en-you', 'en-happy'],
@@ -380,18 +380,18 @@ const U3: UnitSupplementDef = {
         // PW (cifra → palabra): el mapa evalúa v03 así.
         ex.shortAnswer(
           '13',
-          'Escribí el número en letras, en inglés.',
+          'Escribe el número en letras, en inglés.',
           'thirteen',
           [],
           ['en-thirteen'],
           { id: 'en.ex.l3msnl9xtitww7', explanation: '13 = thirteen (no «threeteen»).' },
         ),
-        ex.shortAnswer('0', 'Escribí el número en letras, en inglés.', 'zero', [], ['en-zero'], {
+        ex.shortAnswer('0', 'Escribe el número en letras, en inglés.', 'zero', [], ['en-zero'], {
           id: 'en.ex.k3c9w3en4n9fbm',
         }),
         ex.shortAnswer(
           '19',
-          'Escribí el número en letras, en inglés.',
+          'Escribe el número en letras, en inglés.',
           'nineteen',
           [],
           ['en-nineteen'],
@@ -452,7 +452,7 @@ const U4: UnitSupplementDef = {
         // PW (árbol familiar): el mapa evalúa g08 así.
         ex.shortAnswer(
           '👵 Rosa\n⬇️\n👩 Maria\n⬇️\n👧 Ana',
-          "Mirá el árbol y escribí quién es Rosa para Ana. Usá 's.",
+          "Mira el árbol y escribe quién es Rosa para Ana. Usa 's.",
           "Rosa is Ana's grandmother.",
           ["She is Ana's grandmother.", "She's Ana's grandmother."],
           ['en-grandmother'],
@@ -549,7 +549,7 @@ const U5: UnitSupplementDef = {
         // PW (imagen → palabra con artículo): el mapa evalúa g04 con FB y PW.
         ex.shortAnswer(
           '📱',
-          'Escribí en inglés qué es, con a o an.',
+          'Escribe en inglés qué es, con a o an.',
           'a phone',
           ['It is a phone.', "It's a phone."],
           ['en-a', 'en-phone'],
@@ -557,7 +557,7 @@ const U5: UnitSupplementDef = {
         ),
         ex.shortAnswer(
           '💻',
-          'Escribí en inglés qué es, con a o an.',
+          'Escribe en inglés qué es, con a o an.',
           'a computer',
           ['It is a computer.', "It's a computer."],
           ['en-a', 'en-computer'],
@@ -577,11 +577,11 @@ const U5: UnitSupplementDef = {
         explanation:
           'Casi siempre el plural se forma con -s: one book, two books. Algunas palabras muy usadas cambian: man → men, woman → women. Children (niños) y people (personas) ya son plurales.',
         examples: [
-          { target: 'one pen, three pens', base: 'una lapicera, tres lapiceras' },
+          { target: 'one pen, three pens', base: 'un bolígrafo, tres bolígrafos' },
           { target: 'These women are teachers.', base: 'Estas mujeres son profesoras.' },
         ],
       },
-      takeaways: ['Formás el plural con -s: books, keys.', 'Usás men, women, children y people.'],
+      takeaways: ['Formas el plural con -s: books, keys.', 'Usas men, women, children y people.'],
       exercises: [
         ex.fillBlank(
           'one book, two ___',
@@ -653,7 +653,7 @@ const U5: UnitSupplementDef = {
         // PW (imagen de varios): el mapa evalúa g05 así.
         ex.shortAnswer(
           '🔑 🔑 🔑',
-          'Escribí en inglés cuántas hay y qué son.',
+          'Escribe en inglés cuántas hay y qué son.',
           'three keys',
           ['3 keys', 'They are three keys.', "They're three keys."],
           ['en-three', 'en-key'],
@@ -687,7 +687,7 @@ const U6: UnitSupplementDef = {
       exercises: [
         ex.shortAnswer(
           '🛏️ 🛏️ 🪑',
-          'Mirá la habitación y escribí qué hay, con there is o there are.',
+          'Mira la habitación y escribe qué hay, con there is o there are.',
           'There are two beds and a chair.',
           [
             'There are two beds and one chair.',
@@ -709,7 +709,7 @@ const U6: UnitSupplementDef = {
       exercises: [
         ex.shortAnswer(
           '📕\n🛏️',
-          'Mirá la escena y escribí dónde está el libro.',
+          'Mira la escena y escribe dónde está el libro.',
           'The book is on the bed.',
           ['It is on the bed.', "It's on the bed.", 'On the bed.'],
           ['en-book', 'en-on', 'en-bed'],
@@ -720,7 +720,7 @@ const U6: UnitSupplementDef = {
         ),
         ex.shortAnswer(
           '🪑\n🔑',
-          'Mirá la escena y escribí dónde está la llave.',
+          'Mira la escena y escribe dónde está la llave.',
           'The key is under the chair.',
           ['It is under the chair.', "It's under the chair.", 'Under the chair.'],
           ['en-key', 'en-under', 'en-chair'],
@@ -766,7 +766,7 @@ const U7: UnitSupplementDef = {
         ),
         ex.fillBlank(
           '___ a tea, please.',
-          'Situación: estás en un café y pedís un té con cortesía.',
+          'Situación: estás en un café y pides un té con cortesía.',
           "I'd like",
           ['I am', 'I like', 'I have'],
           ['en-id-like', 'en-tea'],
@@ -784,7 +784,7 @@ const U7: UnitSupplementDef = {
         // PW (situación): el mapa evalúa p10 así.
         ex.shortAnswer(
           '🍵',
-          'Situación: estás en un café. Pedí esto en inglés, con cortesía.',
+          'Situación: estás en un café. Pide esto en inglés, con cortesía.',
           "I'd like a tea, please.",
           [
             "I'd like tea, please.",
@@ -794,7 +794,7 @@ const U7: UnitSupplementDef = {
             'A tea, please.',
           ],
           ['en-id-like', 'en-tea', 'en-please'],
-          { id: 'en.ex.tpr5z2phcp8u6k', explanation: "I'd like + lo que querés + please." },
+          { id: 'en.ex.tpr5z2phcp8u6k', explanation: "I'd like + lo que quieres + please." },
         ),
       ],
     },
@@ -815,7 +815,7 @@ const U8: UnitSupplementDef = {
       exercises: [
         ex.shortAnswer(
           '😴 🛏️',
-          'Escribí en inglés la acción (un verbo).',
+          'Escribe en inglés la acción (un verbo).',
           'sleep',
           ['to sleep', 'I sleep.'],
           ['en-sleep'],
@@ -823,7 +823,7 @@ const U8: UnitSupplementDef = {
         ),
         ex.shortAnswer(
           '📖 👀',
-          'Escribí en inglés la acción (un verbo).',
+          'Escribe en inglés la acción (un verbo).',
           'read',
           ['to read', 'I read.'],
           ['en-read'],
@@ -838,7 +838,7 @@ const U8: UnitSupplementDef = {
       exercises: [
         ex.shortAnswer(
           'I drink coffee.',
-          'Escribí la oración en negativa.',
+          'Escribe la oración en negativa.',
           "I don't drink coffee.",
           ['I do not drink coffee.'],
           ['en-dont', 'en-drink', 'en-coffee'],
@@ -849,7 +849,7 @@ const U8: UnitSupplementDef = {
         ),
         ex.shortAnswer(
           'She works at home.',
-          'Escribí la oración en negativa.',
+          'Escribe la oración en negativa.',
           "She doesn't work at home.",
           ['She does not work at home.'],
           ['en-doesnt', 'en-work', 'en-home'],
@@ -860,7 +860,7 @@ const U8: UnitSupplementDef = {
         ),
         ex.shortAnswer(
           'You live in Spain.',
-          'Escribí la oración como pregunta.',
+          'Escribe la oración como pregunta.',
           'Do you live in Spain?',
           [],
           ['en-do', 'en-live', 'en-spain'],
@@ -868,7 +868,7 @@ const U8: UnitSupplementDef = {
         ),
         ex.shortAnswer(
           'He reads every day.',
-          'Escribí la oración como pregunta.',
+          'Escribe la oración como pregunta.',
           'Does he read every day?',
           [],
           ['en-does', 'en-read', 'en-every-day'],
@@ -967,7 +967,7 @@ const U9: UnitSupplementDef = {
         // PW (calendario → texto)
         ex.shortAnswer(
           '📅 Saturday · 🌅',
-          'Escribí cuándo es: el día y la parte del día, con on e in.',
+          'Escribe cuándo es: el día y la parte del día, con on e in.',
           'on Saturday in the morning',
           ['On Saturday morning', 'In the morning on Saturday'],
           ['en-saturday', 'en-morning'],
@@ -986,7 +986,7 @@ const U9: UnitSupplementDef = {
       exercises: [
         ex.shortAnswer(
           '🕒',
-          'Escribí la hora en inglés.',
+          'Escribe la hora en inglés.',
           "It is three o'clock.",
           ["It's three o'clock.", "three o'clock", 'It is three.', "It's three."],
           ['en-oclock', 'en-three'],
@@ -994,7 +994,7 @@ const U9: UnitSupplementDef = {
         ),
         ex.shortAnswer(
           '🕥',
-          'Escribí la hora en inglés.',
+          'Escribe la hora en inglés.',
           'It is half past ten.',
           ["It's half past ten.", 'half past ten'],
           ['en-half-past', 'en-ten'],
@@ -1019,9 +1019,9 @@ const U9: UnitSupplementDef = {
         ],
       },
       takeaways: [
-        'Decís los doce meses.',
-        'Usás in con el mes y on con la fecha.',
-        'Decís una fecha con first, second, third…',
+        'Dices los doce meses.',
+        'Usas in con el mes y on con la fecha.',
+        'Dices una fecha con first, second, third…',
       ],
       exercises: [
         ex.matchPairs(
@@ -1099,7 +1099,7 @@ const U9: UnitSupplementDef = {
         // PW (calendario → texto)
         ex.shortAnswer(
           '📅 February 4 · 🎂 Ana',
-          'Mirá el calendario y escribí cuándo es el cumpleaños de Ana.',
+          'Mira el calendario y escribe cuándo es el cumpleaños de Ana.',
           'It is on February fourth.',
           [
             "It's on February fourth.",
@@ -1168,7 +1168,7 @@ const U10: UnitSupplementDef = {
       exercises: [
         ex.shortAnswer(
           '🧍 ⬆️ ⬆️ ➡️ 🏦',
-          'Mirá las flechas y escribí cómo llegar al banco: primero una indicación y después otra.',
+          'Mira las flechas y escribe cómo llegar al banco: primero una indicación y después otra.',
           'Go straight on and turn right.',
           [
             'Go straight on, then turn right.',
@@ -1188,7 +1188,9 @@ const U10: UnitSupplementDef = {
 const U11: UnitSupplementDef = {
   unit: 11,
   words: [
-    word('en-me', 'me', 'me / a mí', '/mi/', 'Can you help me?', '¿Me podés ayudar?', ['pronouns']),
+    word('en-me', 'me', 'me / a mí', '/mi/', 'Can you help me?', '¿Me puedes ayudar?', [
+      'pronouns',
+    ]),
     word(
       'en-them',
       'them',
@@ -1225,7 +1227,7 @@ const U11: UnitSupplementDef = {
         ),
         ex.fillBlank(
           'Can you help ___, please?',
-          '¿Me podés ayudar, por favor?',
+          '¿Me puedes ayudar, por favor?',
           'me',
           ['my', 'I', 'them'],
           ['en-me', 'en-help', 'en-can'],
@@ -1260,7 +1262,7 @@ const U11: UnitSupplementDef = {
       exercises: [
         ex.shortAnswer(
           '🏊',
-          'Escribí en inglés la actividad (un verbo).',
+          'Escribe en inglés la actividad (un verbo).',
           'swim',
           ['to swim', 'swimming'],
           ['en-swim'],
@@ -1268,7 +1270,7 @@ const U11: UnitSupplementDef = {
         ),
         ex.shortAnswer(
           '🎤 🎶',
-          'Escribí en inglés la actividad (un verbo).',
+          'Escribe en inglés la actividad (un verbo).',
           'sing',
           ['to sing', 'singing'],
           ['en-sing'],
@@ -1284,7 +1286,7 @@ const NOTE = {
   kind: 'reading',
   id: 'en.stim.a1-u12-back-at-five',
   document: 'message',
-  setting: 'Una nota en la puerta de la heladera.',
+  setting: 'Una nota en la puerta del refrigerador.',
   from: 'Ana',
   to: 'Tom',
   lines: ['Tom,', 'I am at the supermarket.', 'Back at five.', 'Ana'],
@@ -1349,7 +1351,7 @@ const U12: UnitSupplementDef = {
       exercises: [
         ex.fillBlank(
           'You: ___',
-          'Situación (chat): Ben te escribe una palabra que no conocés. ¿Qué le respondés?',
+          'Situación (chat): Ben te escribe una palabra que no conoces. ¿Qué le respondes?',
           'What does it mean?',
           ['How are you?', 'Nice to meet you.', "You're welcome."],
           ['en-what', 'en-mean'],
@@ -1357,7 +1359,7 @@ const U12: UnitSupplementDef = {
         ),
         ex.fillBlank(
           'You: ___',
-          'Situación (chat): Ben te manda un mensaje largo y no entendés nada.',
+          'Situación (chat): Ben te manda un mensaje largo y no entiendes nada.',
           "Sorry, I don't understand.",
           ['Thank you!', 'Good night!', 'I am fine.'],
           ['en-sorry', 'en-understand'],
@@ -1383,7 +1385,7 @@ const U12: UnitSupplementDef = {
       objective: 'Leer y escribir mensajes muy breves, notas y postales.',
       intro: {
         explanation:
-          'Un mensaje o una nota va al grano: dónde estás y cuándo volvés («Back at five»). Una postal saluda, cuenta algo y se despide («See you on Sunday! Love, Ana»).',
+          'Un mensaje o una nota va al grano: dónde estás y cuándo vuelves («Back at five»). Una postal saluda, cuenta algo y se despide («See you on Sunday! Love, Ana»).',
         examples: [
           {
             target: 'I am at the bank. Back at four.',
@@ -1393,8 +1395,8 @@ const U12: UnitSupplementDef = {
         ],
       },
       takeaways: [
-        'Entendés notas, mensajes y postales breves.',
-        'Escribís una nota del tipo «Back at five».',
+        'Entiendes notas, mensajes y postales breves.',
+        'Escribes una nota del tipo «Back at five».',
       ],
       exercises: [
         ex.translationChoice('postcard', 'postal', ['carta', 'foto', 'libro'], ['en-postcard'], {
@@ -1460,7 +1462,7 @@ const U12: UnitSupplementDef = {
         // GW guiada con datos dados (p09): nota del tipo «back at 5».
         ex.shortAnswer(
           '📝 🛒 Supermarket · 🕔 5:00',
-          'Escribí una nota breve para tu familia: dónde estás y a qué hora volvés.',
+          'Escribe una nota breve para tu familia: dónde estás y a qué hora vuelves.',
           'I am at the supermarket. Back at five.',
           [
             "I'm at the supermarket. Back at five.",
@@ -1475,7 +1477,7 @@ const U12: UnitSupplementDef = {
           {
             id: 'en.ex.tl3nqgwbrkjgyz',
             explanation:
-              'Una nota breve: dónde estás (at the supermarket) y cuándo volvés (back at five).',
+              'Una nota breve: dónde estás (at the supermarket) y cuándo vuelves (back at five).',
           },
         ),
         ex.translateWrite(
@@ -1503,7 +1505,7 @@ const U14: UnitSupplementDef = {
       exercises: [
         ex.shortAnswer(
           '45',
-          'Escribí el número en letras, en inglés.',
+          'Escribe el número en letras, en inglés.',
           'forty-five',
           ['forty five'],
           ['en-forty', 'en-five'],
@@ -1514,7 +1516,7 @@ const U14: UnitSupplementDef = {
         ),
         ex.shortAnswer(
           '99',
-          'Escribí el número en letras, en inglés.',
+          'Escribe el número en letras, en inglés.',
           'ninety-nine',
           ['ninety nine'],
           ['en-ninety', 'en-nine'],

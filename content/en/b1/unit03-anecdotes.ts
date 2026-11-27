@@ -64,7 +64,7 @@ export const EN_B1_U03: B1UnitDef = {
       'Contar anécdotas: lo que estaba pasando, lo que ya había pasado (had + participio) y el orden de los hechos.',
     emoji: '🗯️',
     objective:
-      'Podés contar una anécdota en orden, explicar qué ya había pasado y reaccionar a lo que te cuentan.',
+      'Puedes contar una anécdota en orden, explicar qué ya había pasado y reaccionar a lo que te cuentan.',
     grammar: {
       title: 'Past perfect',
       explanation:
@@ -106,7 +106,7 @@ export const EN_B1_U03: B1UnitDef = {
         '/æz ˈsun æz/',
         undefined,
         'Call me as soon as you arrive.',
-        'Llamame en cuanto llegues.',
+        'Llámame en cuanto llegues.',
         ['stories', 'connectors'],
         ['en cuanto', 'apenas', 'tan pronto como'],
       ),
@@ -117,7 +117,7 @@ export const EN_B1_U03: B1UnitDef = {
         '/bɪˈfɔr/',
         undefined,
         'Wash your hands before eating.',
-        'Lavate las manos antes de comer.',
+        'Lávate las manos antes de comer.',
         ['stories', 'connectors'],
         ['antes', 'antes de'],
       ),
@@ -160,7 +160,7 @@ export const EN_B1_U03: B1UnitDef = {
         '/mɪst/',
         undefined,
         'I missed the bus this morning.',
-        'Perdí el colectivo esta mañana.',
+        'Perdí el autobús esta mañana.',
         ['stories', 'past'],
         ['perdí', 'extrañé'],
       ),
@@ -289,8 +289,8 @@ export const EN_B1_U03: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Armás la escena con was/were + -ing y contás lo que pasó en past simple.',
-          'Decís cómo te sentiste: surprised, embarrassed.',
+          'Armas la escena con was/were + -ing y cuentas lo que pasó en past simple.',
+          'Dices cómo te sentiste: surprised, embarrassed.',
         ],
         exercises: [
           ex.matchPairs(
@@ -388,8 +388,8 @@ export const EN_B1_U03: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Usás had + participio para lo que pasó antes.',
-          'Ordenás dos momentos con by the time y when.',
+          'Usas had + participio para lo que pasó antes.',
+          'Ordenas dos momentos con by the time y when.',
         ],
         exercises: [
           ex.fillBlank(
@@ -457,7 +457,7 @@ export const EN_B1_U03: B1UnitDef = {
             { id: 'en.ex.9h2m7am6um3cg2' },
           ),
           ex.shortAnswer(
-            'Why were you late? (perdiste el colectivo)',
+            'Why were you late? (perdiste el autobús)',
             '¿Por qué llegaste tarde?',
             'I missed the bus.',
             ['Because I missed the bus.', 'I had missed the bus.'],
@@ -499,8 +499,8 @@ export const EN_B1_U03: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Ordenás hechos con before, after y as soon as.',
-          'Usás afterwards y the day before para avanzar o volver en la historia.',
+          'Ordenas hechos con before, after y as soon as.',
+          'Usas afterwards y the day before para avanzar o volver en la historia.',
         ],
         exercises: [
           ex.matchPairs(
@@ -515,7 +515,7 @@ export const EN_B1_U03: B1UnitDef = {
           ),
           ex.fillBlank(
             'Wash your hands before ___.',
-            'Lavate las manos antes de comer.',
+            'Lávate las manos antes de comer.',
             'eating',
             ['eat', 'to eat', 'ate'],
             ['en-before', 'en-eat'],
@@ -569,7 +569,7 @@ export const EN_B1_U03: B1UnitDef = {
             { id: 'en.ex.rbc813bbq5w6ec' },
           ),
           ex.translateWrite(
-            'Llamame en cuanto llegues.',
+            'Llámame en cuanto llegues.',
             'Call me as soon as you arrive.',
             ['en-as-soon-as', 'en-call', 'en-arrive'],
             {
@@ -612,8 +612,8 @@ export const EN_B1_U03: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Contás contratiempos: I missed the bus, we got lost.',
-          'Presentás lo malo y lo bueno: unfortunately, luckily.',
+          'Cuentas contratiempos: I missed the bus, we got lost.',
+          'Presentas lo malo y lo bueno: unfortunately, luckily.',
         ],
         exercises: [
           ex.translationChoice(
@@ -633,7 +633,7 @@ export const EN_B1_U03: B1UnitDef = {
           ),
           ex.fillBlank(
             'I ___ the bus this morning, so I was late.',
-            'Perdí el colectivo esta mañana, así que llegué tarde.',
+            'Perdí el autobús esta mañana, así que llegué tarde.',
             'missed',
             ['lost', 'forgot', 'left'],
             ['en-missed', 'en-bus'],
@@ -670,7 +670,7 @@ export const EN_B1_U03: B1UnitDef = {
           ),
           ex.orderWords(
             'Unfortunately we missed the last bus.',
-            'Lamentablemente perdimos el último colectivo.',
+            'Lamentablemente perdimos el último autobús.',
             ['en-unfortunately', 'en-missed', 'en-bus'],
             { id: 'en.ex.h4ks1bhk1jo0ba' },
           ),
@@ -707,8 +707,8 @@ export const EN_B1_U03: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Contás una anécdota completa y ordenada.',
-          'Cerrás la historia: eventually, in the end.',
+          'Cuentas una anécdota completa y ordenada.',
+          'Cierras la historia: eventually, in the end.',
         ],
         exercises: [
           ex.translationChoice(
@@ -723,7 +723,7 @@ export const EN_B1_U03: B1UnitDef = {
             OLD_FRIEND,
             '¿Por qué Leo no reconoció a Pedro al principio?',
             'No lo veía desde hacía quince años',
-            ['Pedro tenía anteojos', 'Leo no lo conocía', 'Había mucha gente'],
+            ['Pedro tenía lentes', 'Leo no lo conocía', 'Había mucha gente'],
             ['en-recognize'],
             'Leo escribe: «I hadn’t seen him for fifteen years».',
           ),

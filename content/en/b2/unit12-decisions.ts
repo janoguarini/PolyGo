@@ -132,7 +132,7 @@ export const EN_B2_U12: B2UnitDef = {
       'Pesar una decisión, condicionales mixtos, resolver conflictos y defender una postura, e inversión enfática (Not only…, Under no circumstances…).',
     emoji: '🧭',
     objective:
-      'Podés pesar una decisión difícil, imaginar cómo sería tu presente con otras elecciones, mediar en un conflicto y expresarte con énfasis formal.',
+      'Puedes pesar una decisión difícil, imaginar cómo sería tu presente con otras elecciones, mediar en un conflicto y expresarte con énfasis formal.',
     grammar: {
       title: 'Condicionales mixtos e inversión enfática',
       explanation:
@@ -185,7 +185,7 @@ export const EN_B2_U12: B2UnitDef = {
         '/ˈproʊz ən ˈkɑnz/',
         '📋',
         'Write down the pros and cons.',
-        'Anotá los pros y los contras.',
+        'Anota los pros y los contras.',
         ['decisions', 'collocations'],
         ['ventajas y desventajas'],
       ),
@@ -196,7 +196,7 @@ export const EN_B2_U12: B2UnitDef = {
         '/ˈtreɪd ˌɔf/',
         undefined,
         'More money, less free time: that is the trade-off.',
-        'Más plata, menos tiempo libre: ése es el costo.',
+        'Más dinero, menos tiempo libre: ése es el costo.',
         ['decisions'],
         ['costo a cambio', 'equilibrio'],
         ['trade off', 'tradeoff'],
@@ -282,7 +282,7 @@ export const EN_B2_U12: B2UnitDef = {
         '/ˈkɑmən ˈɡraʊnd/',
         '🤝',
         'Try to find some common ground.',
-        'Tratá de encontrar puntos en común.',
+        'Trata de encontrar puntos en común.',
         ['conflict', 'collocations'],
         ['terreno común'],
       ),
@@ -360,7 +360,7 @@ export const EN_B2_U12: B2UnitDef = {
         objective: 'Contar un dilema y pesar los pros y los contras.',
         intro: {
           explanation:
-            'A dilemma es un dilema: dos opciones difíciles. Weigh up es sopesar, evaluar: I’m weighing up the pros and cons (los pros y los contras). A trade-off es lo que perdés a cambio de lo que ganás: More money, less free time.',
+            'A dilemma es un dilema: dos opciones difíciles. Weigh up es sopesar, evaluar: I’m weighing up the pros and cons (los pros y los contras). A trade-off es lo que pierdes a cambio de lo que ganas: More money, less free time.',
           examples: [
             {
               target: 'I am weighing up the pros and cons.',
@@ -368,13 +368,13 @@ export const EN_B2_U12: B2UnitDef = {
             },
             {
               target: 'More money, less free time: that is the trade-off.',
-              base: 'Más plata, menos tiempo libre: ése es el costo.',
+              base: 'Más dinero, menos tiempo libre: ése es el costo.',
             },
           ],
         },
         takeaways: [
-          'Contás un dilema y sopesás los pros y los contras.',
-          'Explicás lo que se pierde a cambio con trade-off.',
+          'Cuentas un dilema y sopesas los pros y los contras.',
+          'Explicas lo que se pierde a cambio con trade-off.',
         ],
         exercises: [
           ex.matchPairs(
@@ -397,7 +397,7 @@ export const EN_B2_U12: B2UnitDef = {
           ),
           ex.fillBlank(
             'More money, less free time: that is the ___.',
-            'Más plata, menos tiempo libre: ése es el costo.',
+            'Más dinero, menos tiempo libre: ése es el costo.',
             'trade-off',
             ['dilemma', 'problem', 'decision'],
             ['en-trade-off'],
@@ -460,7 +460,7 @@ export const EN_B2_U12: B2UnitDef = {
           ),
           ex.orderWords(
             'Write down the pros and cons.',
-            'Anotá los pros y los contras.',
+            'Anota los pros y los contras.',
             ['en-pros-and-cons'],
             { id: 'en.ex.zcziuk11kpovo2' },
           ),
@@ -511,8 +511,8 @@ export const EN_B2_U12: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Imaginás tu presente con un pasado distinto: If I had…, I would be…',
-          'Hablás de tu intuición y de tus dudas.',
+          'Imaginas tu presente con un pasado distinto: If I had…, I would be…',
+          'Hablas de tu intuición y de tus dudas.',
         ],
         exercises: [
           ex.fillBlank(
@@ -645,13 +645,13 @@ export const EN_B2_U12: B2UnitDef = {
             },
             {
               target: 'Try to find some common ground.',
-              base: 'Tratá de encontrar puntos en común.',
+              base: 'Trata de encontrar puntos en común.',
             },
           ],
         },
         takeaways: [
-          'Hablás de un conflicto y de cómo resolverlo.',
-          'Proponés no tomar partido y buscar puntos en común.',
+          'Hablas de un conflicto y de cómo resolverlo.',
+          'Propones no tomar partido y buscar puntos en común.',
         ],
         exercises: [
           ex.matchPairs(
@@ -666,7 +666,7 @@ export const EN_B2_U12: B2UnitDef = {
           ),
           ex.fillBlank(
             'Try to find some common ___.',
-            'Tratá de encontrar puntos en común.',
+            'Trata de encontrar puntos en común.',
             'ground',
             ['point', 'place', 'side'],
             ['en-common-ground'],
@@ -728,7 +728,7 @@ export const EN_B2_U12: B2UnitDef = {
             { id: 'en.ex.unjy9aakck0las' },
           ),
           ex.shortAnswer(
-            'Who is right, your sister or your brother? (no querés tomar partido)',
+            'Who is right, your sister or your brother? (no quieres tomar partido)',
             '¿Quién tiene razón, tu hermana o tu hermano?',
             "I don't want to take sides.",
             [
@@ -740,7 +740,7 @@ export const EN_B2_U12: B2UnitDef = {
             { id: 'en.ex.qcqdt6ym9d60yl' },
           ),
           ex.translateWrite(
-            'Tratá de encontrar puntos en común.',
+            'Trata de encontrar puntos en común.',
             'Try to find some common ground.',
             ['en-common-ground'],
             {
@@ -767,8 +767,8 @@ export const EN_B2_U12: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Defendés a alguien con stand up for.',
-          'Hablás de lo que está en juego y de ceder con back down.',
+          'Defiendes a alguien con stand up for.',
+          'Hablas de lo que está en juego y de ceder con back down.',
         ],
         exercises: [
           ex.matchPairs(
@@ -881,8 +881,8 @@ export const EN_B2_U12: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Enfatizás con Not only…, Under no circumstances… y Only then…',
-          'Escribís condiciones formales con Should you…',
+          'Enfatizas con Not only…, Under no circumstances… y Only then…',
+          'Escribes condiciones formales con Should you…',
         ],
         exercises: [
           ex.matchPairs(
@@ -978,7 +978,7 @@ export const EN_B2_U12: B2UnitDef = {
             { id: 'en.ex.nvpisb94on9uiy' },
           ),
           ex.shortAnswer(
-            'If you have any questions, contact us. (reescribilo empezando con Should you…)',
+            'If you have any questions, contact us. (reescríbelo empezando con Should you…)',
             'Si tiene alguna pregunta, contáctenos.',
             'Should you have any questions, contact us.',
             [

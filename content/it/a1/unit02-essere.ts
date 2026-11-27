@@ -17,12 +17,12 @@ const w = (
 /** Redactada sin revisión de un hablante nativo: necesita revisión lingüística. */
 export const unit02: UnitDef = {
   position: 2,
-  title: '¿Quién sos y de dónde sos?',
+  title: '¿Quién eres y de dónde eres?',
   titleEn: 'Chi sei e di dove sei?',
-  description: 'El verbo essere, decir de dónde sos y hablar de otras personas.',
+  description: 'El verbo essere, decir de dónde eres y hablar de otras personas.',
   emoji: '🌍',
   objective:
-    'Podés decir quién sos y de dónde sos, preguntarle lo mismo a otra persona y hablar de alguien con lui y lei.',
+    'Puedes decir quién eres y de dónde eres, preguntarle lo mismo a otra persona y hablar de alguien con lui y lei.',
   grammar: {
     title: 'Essere (ser) y la concordancia -o / -a',
     explanation:
@@ -39,8 +39,8 @@ export const unit02: UnitDef = {
   },
   words: [
     w('it-sono', 'sono', 'soy', 'Sono Marco.', 'Soy Marco.', ['verbs', 'to-be']),
-    w('it-sei', 'sei', 'sos', 'Sei italiano?', '¿Sos italiano?', ['verbs', 'to-be'], {
-      acceptedTranslations: ['eres'],
+    w('it-sei', 'sei', 'eres', 'Sei italiano?', '¿Eres italiano?', ['verbs', 'to-be'], {
+      acceptedTranslations: ['eres', 'sos'],
     }),
     w('it-e-essere', 'è', 'es', 'Lei è Giulia.', 'Ella es Giulia.', ['verbs', 'to-be']),
     w(
@@ -125,12 +125,12 @@ export const unit02: UnitDef = {
     w(
       'it-di-dove-sei',
       'di dove sei?',
-      '¿de dónde sos?',
+      '¿de dónde eres?',
       'Ciao! Di dove sei?',
-      '¡Hola! ¿De dónde sos?',
+      '¡Hola! ¿De dónde eres?',
       ['questions'],
       {
-        acceptedTranslations: ['¿de dónde eres?'],
+        acceptedTranslations: ['¿de dónde eres?', '¿de dónde sos?'],
       },
     ),
     w('it-sono-di', 'sono di', 'soy de', 'Sono di Buenos Aires.', 'Soy de Buenos Aires.', [
@@ -140,7 +140,7 @@ export const unit02: UnitDef = {
   lessons: [
     {
       title: 'Io sono…',
-      objective: 'Decir quién sos con sono.',
+      objective: 'Decir quién eres con sono.',
       intro: {
         explanation:
           'Sono es «soy». En italiano el pronombre io casi siempre se omite, igual que en español: sono Marco. Studente es para un varón y studentessa, para una mujer.',
@@ -149,9 +149,9 @@ export const unit02: UnitDef = {
           { target: 'Sono una studentessa.', base: 'Soy estudiante.', note: 'lo dice una mujer' },
         ],
       },
-      takeaways: ['Decís quién sos con sono.', 'Usás studente o studentessa según quién habla.'],
+      takeaways: ['Dices quién eres con sono.', 'Usas studente o studentessa según quién habla.'],
       exercises: [
-        ex.translationChoice('sono', 'soy', ['sos', 'es', 'él'], ['it-sono']),
+        ex.translationChoice('sono', 'soy', ['eres', 'es', 'él'], ['it-sono']),
         ex.translationChoice(
           'studentessa',
           'estudiante (mujer)',
@@ -189,21 +189,21 @@ export const unit02: UnitDef = {
     },
     {
       title: 'Tu sei, lui è',
-      objective: 'Hablar de vos y de otras personas con sei y è.',
+      objective: 'Hablar de ti y de otras personas con sei y è.',
       intro: {
         explanation:
-          'Tu sei es «vos sos» y lui è / lei è, «él es / ella es». Ojo: è con tilde es «es»; sin tilde, e significa «y».',
+          'Tu sei es «tú eres» y lui è / lei è, «él es / ella es». Ojo: è con tilde es «es»; sin tilde, e significa «y».',
         examples: [
-          { target: 'Tu sei Luca?', base: '¿Vos sos Luca?' },
+          { target: 'Tu sei Luca?', base: '¿Tú eres Luca?' },
           { target: 'Lui è Paolo.', base: 'Él es Paolo.' },
           { target: 'Lei è la mia amica.', base: 'Ella es mi amiga.' },
         ],
       },
-      takeaways: ['Usás sei con tu y è con lui o lei.', 'Distinguís è (es) de e (y).'],
+      takeaways: ['Usas sei con tu y è con lui o lei.', 'Distingues è (es) de e (y).'],
       exercises: [
         ex.translationChoice('lui', 'él', ['ella', 'yo', 'amigo'], ['it-lui']),
-        ex.translationChoice('lei', 'ella', ['él', 'amiga', 'sos'], ['it-lei']),
-        ex.fillBlank('Tu ___ Luca?', '¿Vos sos Luca?', 'sei', ['sono', 'è', 'non'], ['it-sei'], {
+        ex.translationChoice('lei', 'ella', ['él', 'amiga', 'eres'], ['it-lei']),
+        ex.fillBlank('Tu ___ Luca?', '¿Tú eres Luca?', 'sei', ['sono', 'è', 'non'], ['it-sei'], {
           explanation: 'Con tu el verbo es sei.',
         }),
         ex.fillBlank(
@@ -220,7 +220,7 @@ export const unit02: UnitDef = {
         ex.matchPairs(
           [
             ['sono', 'soy'],
-            ['sei', 'sos'],
+            ['sei', 'eres'],
             ['è', 'es'],
             ['lei', 'ella'],
           ],
@@ -229,7 +229,7 @@ export const unit02: UnitDef = {
         ex.translateWrite('Él es Paolo.', 'Lui è Paolo.', ['it-lui', 'it-e-essere'], {
           acceptedAnswers: ['È Paolo.'],
         }),
-        ex.translateWrite('¿Vos sos Anna?', 'Tu sei Anna?', ['it-sei'], {
+        ex.translateWrite('¿Tú eres Anna?', 'Tu sei Anna?', ['it-sei'], {
           acceptedAnswers: ['Sei Anna?'],
         }),
       ],
@@ -243,20 +243,20 @@ export const unit02: UnitDef = {
         examples: [
           {
             target: 'Sei italiano? — No, non sono italiano.',
-            base: '¿Sos italiano? — No, no soy italiano.',
+            base: '¿Eres italiano? — No, no soy italiano.',
           },
           { target: 'Lui non è un amico.', base: 'Él no es un amigo.' },
         ],
       },
       takeaways: [
-        'Negás con non antes del verbo.',
-        'Preguntás con la misma oración y entonación de pregunta.',
+        'Niegas con non antes del verbo.',
+        'Preguntas con la misma oración y entonación de pregunta.',
       ],
       exercises: [
         ex.translationChoice(
           'non',
           'negación (antes del verbo)',
-          ['sos', 'ella', 'amigo'],
+          ['eres', 'ella', 'amigo'],
           ['it-non'],
         ),
         ex.fillBlank(
@@ -279,7 +279,7 @@ export const unit02: UnitDef = {
         ex.translationChoice('amico', 'amigo', ['amiga', 'él', 'estudiante (varón)'], ['it-amico']),
         ex.shortAnswer(
           'Sei italiano?',
-          '¿Sos italiano? (Respondé que no.)',
+          '¿Eres italiano? (Responde que no.)',
           'No, non sono italiano.',
           ['No, non sono italiano', 'Non sono italiano.', 'No.'],
           ['it-non', 'it-sono', 'it-sei'],
@@ -318,8 +318,8 @@ export const unit02: UnitDef = {
         ],
       },
       takeaways: [
-        'Decís tu nacionalidad con sono + nacionalidad.',
-        'Cambiás -o por -a si hablás de una mujer.',
+        'Dices tu nacionalidad con sono + nacionalidad.',
+        'Cambias -o por -a si hablas de una mujer.',
       ],
       exercises: [
         ex.imageChoice('🇮🇹', 'italiano', ['spagnolo', 'messicano', 'argentino'], ['it-italiano']),
@@ -358,25 +358,25 @@ export const unit02: UnitDef = {
     },
     {
       title: 'Di dove sei?',
-      objective: 'Preguntar y decir de dónde sos.',
+      objective: 'Preguntar y decir de dónde eres.',
       intro: {
         explanation:
-          'Di dove sei? es «¿de dónde sos?». Se responde sono di + ciudad: sono di Roma, sono di Buenos Aires.',
+          'Di dove sei? es «¿de dónde eres?». Se responde sono di + ciudad: sono di Roma, sono di Buenos Aires.',
         examples: [
-          { target: 'Di dove sei?', base: '¿De dónde sos?' },
+          { target: 'Di dove sei?', base: '¿De dónde eres?' },
           { target: 'Sono di Buenos Aires.', base: 'Soy de Buenos Aires.' },
           { target: 'Anche lei è di Roma.', base: 'Ella también es de Roma.' },
         ],
       },
       takeaways: [
-        'Preguntás de dónde es alguien con di dove sei?',
-        'Respondés con sono di + ciudad.',
+        'Preguntas de dónde es alguien con di dove sei?',
+        'Respondes con sono di + ciudad.',
       ],
       exercises: [
         ex.translationChoice(
           'di dove sei?',
-          '¿de dónde sos?',
-          ['¿cómo estás?', '¿cómo te llamás?', 'soy de'],
+          '¿de dónde eres?',
+          ['¿cómo estás?', '¿cómo te llamas?', 'soy de'],
           ['it-di-dove-sei'],
         ),
         ex.listenChoice(
@@ -390,7 +390,7 @@ export const unit02: UnitDef = {
         ex.orderWords('Sono di Buenos Aires.', 'Soy de Buenos Aires.', ['it-sono-di']),
         ex.matchPairs(
           [
-            ['di dove sei?', '¿de dónde sos?'],
+            ['di dove sei?', '¿de dónde eres?'],
             ['sono di', 'soy de'],
             ['amica', 'amiga'],
             ['lui', 'él'],
@@ -399,12 +399,12 @@ export const unit02: UnitDef = {
         ),
         ex.shortAnswer(
           'Ciao! Di dove sei?',
-          '¡Hola! ¿De dónde sos? (Respondé que sos de Córdoba.)',
+          '¡Hola! ¿De dónde eres? (Responde que eres de Córdoba.)',
           'Sono di Córdoba.',
           ['Io sono di Córdoba.', 'Sono di Cordoba.', 'Io sono di Cordoba.'],
           ['it-di-dove-sei', 'it-sono-di'],
         ),
-        ex.translateWrite('¿De dónde sos?', 'Di dove sei?', ['it-di-dove-sei'], {
+        ex.translateWrite('¿De dónde eres?', 'Di dove sei?', ['it-di-dove-sei'], {
           acceptedAnswers: ['Tu di dove sei?'],
         }),
         ex.translateWrite(

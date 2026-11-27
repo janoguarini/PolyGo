@@ -23,10 +23,10 @@ export const unit11: UnitDef = {
   title: 'Gustos',
   titleEn: 'Mi piace',
   description:
-    'Decir lo que te gusta y lo que no, preguntar gustos y decir lo que querés y podés hacer.',
+    'Decir lo que te gusta y lo que no, preguntar gustos y decir lo que quieres y puedes hacer.',
   emoji: '❤️',
   objective:
-    "Podés decir mi piace / mi piacciono / non mi piace, preguntar ti piace?, responder anch'io o neanch'io y usar voglio y posso con un verbo.",
+    "Puedes decir mi piace / mi piacciono / non mi piace, preguntar ti piace?, responder anch'io o neanch'io y usar voglio y posso con un verbo.",
   grammar: {
     title: 'Mi piace / mi piacciono · voglio, posso + infinitivo',
     explanation:
@@ -149,12 +149,12 @@ export const unit11: UnitDef = {
       'hobbies',
     ]),
     w('it-voglio', 'voglio', 'quiero', 'Voglio un caffè.', 'Quiero un café.', ['verbs']),
-    w('it-vuoi', 'vuoi', 'querés', 'Vuoi un gelato?', '¿Querés un helado?', ['verbs'], {
-      acceptedTranslations: ['quieres'],
+    w('it-vuoi', 'vuoi', 'quieres', 'Vuoi un gelato?', '¿Quieres un helado?', ['verbs'], {
+      acceptedTranslations: ['quieres', 'querés'],
     }),
     w('it-posso', 'posso', 'puedo', 'Posso pagare?', '¿Puedo pagar?', ['verbs']),
-    w('it-puoi', 'puoi', 'podés', 'Puoi venire domani?', '¿Podés venir mañana?', ['verbs'], {
-      acceptedTranslations: ['puedes'],
+    w('it-puoi', 'puoi', 'puedes', 'Puoi venire domani?', '¿Puedes venir mañana?', ['verbs'], {
+      acceptedTranslations: ['puedes', 'podés'],
     }),
     w('it-pagare', 'pagare', 'pagar', 'Posso pagare con la carta?', '¿Puedo pagar con tarjeta?', [
       'verbs',
@@ -173,8 +173,8 @@ export const unit11: UnitDef = {
         ],
       },
       takeaways: [
-        'Decís lo que te gusta con mi piace.',
-        'Decís lo que no te gusta con non mi piace.',
+        'Dices lo que te gusta con mi piace.',
+        'Dices lo que no te gusta con non mi piace.',
       ],
       exercises: [
         ex.translationChoice(
@@ -228,7 +228,7 @@ export const unit11: UnitDef = {
           },
         ],
       },
-      takeaways: ['Usás mi piacciono con cosas en plural.', 'Nombrás perros y gatos.'],
+      takeaways: ['Usas mi piacciono con cosas en plural.', 'Nombras perros y gatos.'],
       exercises: [
         ex.imageChoice('🐶', 'cane', ['gatto', 'calcio', 'orologio'], ['it-cane']),
         ex.imageChoice('🐱', 'gatto', ['cane', 'film', 'gelato'], ['it-gatto']),
@@ -293,12 +293,12 @@ export const unit11: UnitDef = {
           },
         ],
       },
-      takeaways: ['Preguntás gustos con ti piace?', "Respondés anch'io o neanch'io."],
+      takeaways: ['Preguntas gustos con ti piace?', "Respondes anch'io o neanch'io."],
       exercises: [
         ex.translationChoice(
           'ti piace?',
           '¿te gusta?',
-          ['¿cómo estás?', '¿querés?', '¿qué es?'],
+          ['¿cómo estás?', '¿quieres?', '¿qué es?'],
           ['it-ti-piace'],
         ),
         ex.imageChoice('💃', 'ballare', ['cantare', 'cucinare', 'dormo'], ['it-ballare']),
@@ -320,12 +320,12 @@ export const unit11: UnitDef = {
           "Anch'io",
           ["Neanch'io", 'Anche tu', 'Per me'],
           ['it-mi-piace', 'it-cantare', 'it-anch-io'],
-          { explanation: "Si a vos también te gusta: anch'io." },
+          { explanation: "Si a ti también te gusta: anch'io." },
         ),
         ex.orderWords('Ti piace cucinare?', '¿Te gusta cocinar?', ['it-ti-piace', 'it-cucinare']),
         ex.shortAnswer(
           'Mi piace ballare. E a te?',
-          'Me gusta bailar. ¿Y a vos? (Respondé que a vos también.)',
+          'Me gusta bailar. ¿Y a ti? (Responde que a ti también.)',
           "Anch'io.",
           ['Anche a me.', "Anch'io!", 'Anche a me piace ballare.', 'Mi piace ballare.'],
           ['it-anch-io'],
@@ -335,19 +335,19 @@ export const unit11: UnitDef = {
     },
     {
       title: 'Voglio…',
-      objective: 'Decir lo que querés hacer.',
+      objective: 'Decir lo que quieres hacer.',
       intro: {
         explanation:
-          'Voglio es «quiero» y vuoi «querés». Van con una cosa (voglio un caffè) o con un verbo en infinitivo (voglio viaggiare). Vorrei («quisiera») es más amable para pedir en un bar.',
+          'Voglio es «quiero» y vuoi «quieres». Van con una cosa (voglio un caffè) o con un verbo en infinitivo (voglio viaggiare). Vorrei («quisiera») es más amable para pedir en un bar.',
         examples: [
           { target: 'Voglio viaggiare in Italia.', base: 'Quiero viajar a Italia.' },
-          { target: 'Vuoi giocare a calcio?', base: '¿Querés jugar al fútbol?' },
+          { target: 'Vuoi giocare a calcio?', base: '¿Quieres jugar al fútbol?' },
         ],
       },
-      takeaways: ['Decís lo que querés hacer con voglio + verbo.', 'Preguntás vuoi…?'],
+      takeaways: ['Dices lo que quieres hacer con voglio + verbo.', 'Preguntas vuoi…?'],
       exercises: [
         ex.translationChoice('voglio', 'quiero', ['quisiera', 'puedo', 'tengo'], ['it-voglio']),
-        ex.translationChoice('vuoi', 'querés', ['quiero', 'podés', 'vas'], ['it-vuoi']),
+        ex.translationChoice('vuoi', 'quieres', ['quiero', 'puedes', 'vas'], ['it-vuoi']),
         ex.imageChoice('✈️', 'viaggiare', ['giocare', 'ballare', 'cucinare'], ['it-viaggiare']),
         ex.listenChoice(
           'Vuoi giocare a calcio?',
@@ -369,7 +369,7 @@ export const unit11: UnitDef = {
         ]),
         ex.shortAnswer(
           'Vuoi un caffè?',
-          '¿Querés un café? (Respondé que sí, un capuchino.)',
+          '¿Quieres un café? (Responde que sí, un capuchino.)',
           'Sì, un cappuccino.',
           [
             'Sì, voglio un cappuccino.',
@@ -389,16 +389,16 @@ export const unit11: UnitDef = {
       objective: 'Pedir permiso y preguntar si alguien puede.',
       intro: {
         explanation:
-          'Posso es «puedo» y puoi «podés». También van con el verbo en infinitivo: posso pagare? («¿puedo pagar?»), puoi venire domani? («¿podés venir mañana?»).',
+          'Posso es «puedo» y puoi «puedes». También van con el verbo en infinitivo: posso pagare? («¿puedo pagar?»), puoi venire domani? («¿puedes venir mañana?»).',
         examples: [
           { target: 'Posso pagare?', base: '¿Puedo pagar?' },
           { target: 'Oggi non posso.', base: 'Hoy no puedo.' },
         ],
       },
-      takeaways: ['Pedís permiso con posso…?', 'Decís que no podés con non posso.'],
+      takeaways: ['Pides permiso con posso…?', 'Dices que no puedes con non posso.'],
       exercises: [
-        ex.translationChoice('posso', 'puedo', ['quiero', 'podés', 'pago'], ['it-posso']),
-        ex.translationChoice('puoi', 'podés', ['puedo', 'querés', 'tenés'], ['it-puoi']),
+        ex.translationChoice('posso', 'puedo', ['quiero', 'puedes', 'pago'], ['it-posso']),
+        ex.translationChoice('puoi', 'puedes', ['puedo', 'quieres', 'tienes'], ['it-puoi']),
         ex.translationChoice('pagare', 'pagar', ['jugar', 'cantar', 'viajar'], ['it-pagare']),
         ex.listenChoice(
           'Posso pagare?',
@@ -415,13 +415,13 @@ export const unit11: UnitDef = {
         ex.matchPairs(
           [
             ['voglio', 'quiero'],
-            ['vuoi', 'querés'],
+            ['vuoi', 'quieres'],
             ['posso', 'puedo'],
-            ['puoi', 'podés'],
+            ['puoi', 'puedes'],
           ],
           ['it-voglio', 'it-vuoi', 'it-posso', 'it-puoi'],
         ),
-        ex.orderWords('Puoi giocare domani?', '¿Podés jugar mañana?', [
+        ex.orderWords('Puoi giocare domani?', '¿Puedes jugar mañana?', [
           'it-puoi',
           'it-giocare',
           'it-domani',

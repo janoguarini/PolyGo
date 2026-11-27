@@ -70,15 +70,15 @@ export const PT_A1_U16: PtUnitDef = {
       'Ir de ônibus, de carro o a pé; las contracciones ao, à, pelo y pela; fazer e ir en plural para proponer planes.',
     emoji: '🚲',
     objective:
-      'Podés decir cómo vas a un lugar, por dónde pasa el colectivo, qué hacés en tu tiempo libre y proponer un plan con vamos…?',
+      'Puedes decir cómo vas a un lugar, por dónde pasa el autobús, qué haces en tu tiempo libre y proponer un plan con vamos…?',
     grammar: {
       title: 'Ir de + transporte · ao, à, pelo, pela · fazer',
       explanation:
         'El transporte va con de (no con «en»): vou de ônibus, de carro, de metrô; caminando es a pé. A + o = ao y a + a = à: vou ao cinema, vou à praia. Por + o = pelo y por + a = pela: passo pela praça. Fazer: eu faço, você / ele faz, nós fazemos. Ir: nós vamos, eles vão.',
       examples: [
-        { target: 'Eu vou para a escola de ônibus.', base: 'Voy a la escuela en colectivo.' },
+        { target: 'Eu vou para a escola de ônibus.', base: 'Voy a la escuela en autobús.' },
         { target: 'Vamos ao cinema?', base: '¿Vamos al cine?' },
-        { target: 'O ônibus passa pela praça.', base: 'El colectivo pasa por la plaza.' },
+        { target: 'O ônibus passa pela praça.', base: 'El autobús pasa por la plaza.' },
       ],
     },
     review: {
@@ -90,9 +90,20 @@ export const PT_A1_U16: PtUnitDef = {
         acceptedTranslations: ['coche'],
         emoji: '🚗',
       }),
-      w('pt-metro', 'metrô', 'subte', 'A gente vai de metrô.', 'Vamos en subte.', ['transport'], {
-        emoji: '🚇',
-      }),
+      // «metro / subte»: la palabra neutra primero. «metro» solo sería un cognado y el generador dejaría
+      // de producir sus ejercicios de traducción (docs/NEUTRAL_SPANISH.md).
+      w(
+        'pt-metro',
+        'metrô',
+        'metro / subte',
+        'A gente vai de metrô.',
+        'Vamos en metro.',
+        ['transport'],
+        {
+          acceptedTranslations: ['subte'],
+          emoji: '🚇',
+        },
+      ),
       w(
         'pt-bicicleta',
         'bicicleta',
@@ -149,7 +160,7 @@ export const PT_A1_U16: PtUnitDef = {
         'pela',
         'por la (por + a)',
         'O ônibus passa pela praça.',
-        'El colectivo pasa por la plaza.',
+        'El autobús pasa por la plaza.',
         ['contractions'],
         {
           acceptedTranslations: ['por la'],
@@ -174,19 +185,19 @@ export const PT_A1_U16: PtUnitDef = {
         'tempo livre',
         'tiempo libre',
         'O que você faz no seu tempo livre?',
-        '¿Qué hacés en tu tiempo libre?',
+        '¿Qué haces en tu tiempo libre?',
         ['free-time'],
       ),
       w('pt-faco', 'faço', 'hago', 'Eu faço o almoço.', 'Yo hago el almuerzo.', ['verbs']),
       w(
         'pt-faz',
         'faz',
-        'hace / hacés (con você)',
+        'hace / haces (con você)',
         'O que ele faz no sábado?',
         '¿Qué hace él el sábado?',
         ['verbs'],
         {
-          acceptedTranslations: ['hace', 'hacés'],
+          acceptedTranslations: ['hace', 'hacés', 'hace / hacés (con você)', 'haces'],
         },
       ),
       w(
@@ -209,14 +220,14 @@ export const PT_A1_U16: PtUnitDef = {
           explanation:
             'En portugués el transporte va con de, no con «en»: vou de ônibus, de carro, de metrô, de bicicleta. Caminando se dice a pé.',
           examples: [
-            { target: 'Eu vou para a escola de ônibus.', base: 'Voy a la escuela en colectivo.' },
+            { target: 'Eu vou para a escola de ônibus.', base: 'Voy a la escuela en autobús.' },
             {
               target: 'A padaria é perto: vou a pé.',
               base: 'La panadería está cerca: voy caminando.',
             },
           ],
         },
-        takeaways: ['Decís cómo vas: de ônibus, de carro, a pé.', 'Nombrás medios de transporte.'],
+        takeaways: ['Dices cómo vas: de ônibus, de carro, a pé.', 'Nombras medios de transporte.'],
         exercises: [
           ex.imageChoice('🚗', 'carro', ['trem', 'avião', 'metrô'], ['pt-carro'], {
             id: 'pt.ex.6z5pxbr8b9jja3',
@@ -227,7 +238,7 @@ export const PT_A1_U16: PtUnitDef = {
           ex.imageChoice('✈️', 'avião', ['trem', 'carro', 'bicicleta'], ['pt-aviao'], {
             id: 'pt.ex.li8wgu6qho2blc',
           }),
-          ex.translationChoice('trem', 'tren', ['avión', 'auto', 'subte'], ['pt-trem'], {
+          ex.translationChoice('trem', 'tren', ['avión', 'auto', 'metro'], ['pt-trem'], {
             id: 'pt.ex.y3b5zrzpak8sxz',
           }),
           ex.listenChoice(
@@ -262,13 +273,13 @@ export const PT_A1_U16: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Como você vai para o trabalho? (🚌)',
-            '¿Cómo vas al trabajo? (Respondé que vas en colectivo.)',
+            '¿Cómo vas al trabajo? (Responde que vas en autobús.)',
             'Eu vou de ônibus.',
             ['Vou de ônibus.', 'De ônibus.', 'Eu vou para o trabalho de ônibus.'],
             ['pt-onibus', 'pt-vou'],
             { id: 'pt.ex.ukooev1m04bu67' },
           ),
-          ex.translateWrite('Voy en subte.', 'Eu vou de metrô.', ['pt-metro'], {
+          ex.translateWrite('Voy en metro.', 'Eu vou de metrô.', ['pt-metro'], {
             id: 'pt.ex.31prfi37dkwqk8',
             acceptedAnswers: ['Vou de metrô.'],
           }),
@@ -288,8 +299,8 @@ export const PT_A1_U16: PtUnitDef = {
           ],
         },
         takeaways: [
-          'Usás ao con masculino y à con femenino.',
-          'Decís adónde vas el fin de semana.',
+          'Usas ao con masculino y à con femenino.',
+          'Dices adónde vas el fin de semana.',
         ],
         exercises: [
           ex.translationChoice('cinema', 'cine', ['teatro', 'cama', 'cocina'], ['pt-cinema'], {
@@ -328,7 +339,7 @@ export const PT_A1_U16: PtUnitDef = {
           ),
           ex.fillBlank(
             'Eu vou ___ restaurante à noite.',
-            'Voy al restaurante a la noche.',
+            'Voy al restaurante por la noche.',
             'ao',
             ['à', 'da', 'na'],
             ['pt-ao', 'pt-a-noite'],
@@ -344,7 +355,7 @@ export const PT_A1_U16: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Aonde você vai no sábado? (🎬)',
-            '¿Adónde vas el sábado? (Respondé que vas al cine.)',
+            '¿Adónde vas el sábado? (Responde que vas al cine.)',
             'Eu vou ao cinema.',
             ['Vou ao cinema.', 'Ao cinema.', 'No sábado eu vou ao cinema.', 'Vou pro cinema.'],
             ['pt-ao', 'pt-cinema'],
@@ -365,11 +376,11 @@ export const PT_A1_U16: PtUnitDef = {
           explanation:
             'Por + o se une en pelo y por + a, en pela: o ônibus passa pela praça. Falso amigo: pelo no es el pelo (eso es cabelo). Passear es «pasear»: eu passeio pelo centro.',
           examples: [
-            { target: 'O ônibus passa pela praça.', base: 'El colectivo pasa por la plaza.' },
+            { target: 'O ônibus passa pela praça.', base: 'El autobús pasa por la plaza.' },
             { target: 'Eu gosto de passear pelo centro.', base: 'Me gusta pasear por el centro.' },
           ],
         },
-        takeaways: ['Usás pelo y pela para «por el» y «por la».', 'Decís dónde te gusta pasear.'],
+        takeaways: ['Usas pelo y pela para «por el» y «por la».', 'Dices dónde te gusta pasear.'],
         exercises: [
           ex.translationChoice(
             'pelo',
@@ -400,7 +411,7 @@ export const PT_A1_U16: PtUnitDef = {
           ),
           ex.fillBlank(
             'O metrô passa ___ centro.',
-            'El subte pasa por el centro.',
+            'El metro pasa por el centro.',
             'pelo',
             ['pela', 'ao', 'do'],
             ['pt-pelo', 'pt-metro'],
@@ -409,7 +420,7 @@ export const PT_A1_U16: PtUnitDef = {
           question(
             'pt.ex.a64w265o2phz6f',
             CAMINHO,
-            '¿Por dónde pasa el colectivo 42?',
+            '¿Por dónde pasa el autobús 42?',
             'Por la plaza y por el mercado',
             ['Por la estación y la panadería', 'Por la playa', 'Por el centro y la escuela'],
             ['pt-pela', 'pt-pelo'],
@@ -420,7 +431,7 @@ export const PT_A1_U16: PtUnitDef = {
             CAMINHO,
             '¿Cómo llega Sofia desde la parada hasta la casa?',
             'Camina cinco minutos',
-            ['Toma el subte', 'Va en bicicleta', 'Toma otro colectivo'],
+            ['Toma el metro', 'Va en bicicleta', 'Toma otro autobús'],
             ['pt-a-pe'],
             'El mensaje dice: «vai a pé: são cinco minutos».',
           ),
@@ -434,14 +445,14 @@ export const PT_A1_U16: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Onde você gosta de passear? (🏖️)',
-            '¿Dónde te gusta pasear? (Respondé que por la playa.)',
+            '¿Dónde te gusta pasear? (Responde que por la playa.)',
             'Eu gosto de passear pela praia.',
             ['Gosto de passear pela praia.', 'Pela praia.'],
             ['pt-passear', 'pt-pela'],
             { id: 'pt.ex.ksrxkqp220578b' },
           ),
           ex.translateWrite(
-            'El colectivo pasa por la plaza.',
+            'El autobús pasa por la plaza.',
             'O ônibus passa pela praça.',
             ['pt-pela', 'pt-praca'],
             {
@@ -454,21 +465,21 @@ export const PT_A1_U16: PtUnitDef = {
       // ------------------------------------------------------------------------------------ L4
       {
         title: 'O que você faz no tempo livre?',
-        objective: 'Contar qué hacés en tu tiempo libre con fazer.',
+        objective: 'Contar qué haces en tu tiempo libre con fazer.',
         intro: {
           explanation:
             'Fazer es irregular: eu faço, você / ele / ela faz, nós fazemos. Tempo livre es «tiempo libre»: o que você faz no seu tempo livre?',
           examples: [
-            { target: 'O que você faz no fim de semana?', base: '¿Qué hacés el fin de semana?' },
+            { target: 'O que você faz no fim de semana?', base: '¿Qué haces el fin de semana?' },
             { target: 'Eu faço o almoço no domingo.', base: 'Yo hago el almuerzo el domingo.' },
           ],
         },
-        takeaways: ['Conjugás fazer: faço, faz, fazemos.', 'Contás qué hacés en tu tiempo libre.'],
+        takeaways: ['Conjugas fazer: faço, faz, fazemos.', 'Cuentas qué haces en tu tiempo libre.'],
         exercises: [
           ex.translationChoice(
             'faço',
             'hago',
-            ['hace / hacés (con você)', 'hacemos', 'tengo'],
+            ['hace / haces (con você)', 'hacemos', 'tengo'],
             ['pt-faco'],
             {
               id: 'pt.ex.22mj81ia0zzdl6',
@@ -495,7 +506,7 @@ export const PT_A1_U16: PtUnitDef = {
           ),
           ex.fillBlank(
             'Eu ___ o jantar à noite.',
-            'Yo hago la cena a la noche.',
+            'Yo hago la cena por la noche.',
             'faço',
             ['faz', 'fazemos', 'fazer'],
             ['pt-faco'],
@@ -529,7 +540,7 @@ export const PT_A1_U16: PtUnitDef = {
           question(
             'pt.ex.ubein513fmxnly',
             DOMINGO,
-            '¿Qué hace la familia a la mañana?',
+            '¿Qué hace la familia por la mañana?',
             'Pasea en bicicleta por la playa',
             ['Va al cine', 'Va al mercado en auto', 'Mira una película'],
             ['pt-passear', 'pt-bicicleta', 'pt-pela', 'pt-vamos'],
@@ -537,14 +548,14 @@ export const PT_A1_U16: PtUnitDef = {
           ),
           ex.shortAnswer(
             'O que você faz no seu tempo livre? (📖)',
-            '¿Qué hacés en tu tiempo libre? (Respondé que leés.)',
+            '¿Qué haces en tu tiempo libre? (Responde que lees.)',
             'Eu leio.',
             ['Leio.', 'Eu leio livros.', 'Leio livros.', 'No meu tempo livre eu leio.'],
             ['pt-tempo-livre', 'pt-leio'],
             { id: 'pt.ex.pgrlqua96xepy1' },
           ),
           ex.translateWrite(
-            '¿Qué hacés el domingo?',
+            '¿Qué haces el domingo?',
             'O que você faz no domingo?',
             ['pt-faz', 'pt-domingo'],
             {
@@ -566,7 +577,7 @@ export const PT_A1_U16: PtUnitDef = {
             { target: 'Eles vão de trem para São Paulo.', base: 'Ellos van en tren a São Paulo.' },
           ],
         },
-        takeaways: ['Proponés un plan con vamos…?', 'Decís adónde van otros con vão.'],
+        takeaways: ['Propones un plan con vamos…?', 'Dices adónde van otros con vão.'],
         exercises: [
           ex.translationChoice('vão', 'van', ['vamos', 'voy', 'va / vas (con você)'], ['pt-vao'], {
             id: 'pt.ex.c0nugw8evgdhso',
@@ -598,7 +609,7 @@ export const PT_A1_U16: PtUnitDef = {
             SABADO,
             '¿Qué le propone Nina a Léo?',
             'Ir al cine el sábado',
-            ['Ir a la playa el domingo', 'Tomar el subte al centro', 'Quedarse en casa'],
+            ['Ir a la playa el domingo', 'Tomar el metro al centro', 'Quedarse en casa'],
             ['pt-vamos', 'pt-cinema'],
             'Nina pregunta: «Vamos ao cinema?».',
           ),
@@ -607,7 +618,7 @@ export const PT_A1_U16: PtUnitDef = {
             SABADO,
             '¿Cómo van a ir al cine?',
             'Caminando, porque está cerca',
-            ['En subte', 'En auto', 'En colectivo'],
+            ['En metro', 'En auto', 'En autobús'],
             ['pt-a-pe', 'pt-metro'],
             'Léo propone el metrô, pero Nina dice: «vamos a pé. O cinema é perto».',
           ),
@@ -621,7 +632,7 @@ export const PT_A1_U16: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Vamos ao cinema hoje?',
-            '¿Vamos al cine hoy? (Aceptá y proponé ir en subte.)',
+            '¿Vamos al cine hoy? (Acepta y propón ir en metro.)',
             'Vamos! Vamos de metrô?',
             [
               'Vamos! A gente vai de metrô?',

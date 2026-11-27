@@ -370,7 +370,7 @@ export const unit12: UnitDef = {
         ),
         ex.fillBlank(
           'She has ___ arrived. She is here now.',
-          'Recién llegó. Ahora está acá.',
+          'Recién llegó. Ahora está aquí.',
           'just',
           ['yet', 'ever', 'once'],
           ['en-just', 'en-arrive', 'en-now'],

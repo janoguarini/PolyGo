@@ -9,7 +9,7 @@ import { dialogue, ex, question, reading, w } from '../helpers';
  * ESTADO EDITORIAL: borrador, sin revisión de hablantes nativos. Se carga sin publicar.
  */
 
-const SEGUNDA = dialogue('pt.stim.a2-u1-segunda', 'Lunes a la mañana, en la oficina.', [
+const SEGUNDA = dialogue('pt.stim.a2-u1-segunda', 'Lunes por la mañana, en la oficina.', [
   ['Renata', 'Bom dia, Fábio! Como foi o fim de semana?'],
   ['Fábio', 'Ótimo! No sábado eu joguei futebol com uns amigos e depois a gente comeu uma pizza.'],
   ['Renata', 'Que legal! E no domingo?'],
@@ -20,7 +20,7 @@ const SEGUNDA = dialogue('pt.stim.a2-u1-segunda', 'Lunes a la mañana, en la ofi
 const MENSAGEM = reading(
   'pt.stim.a2-u1-mensagem',
   'message',
-  'Camila le escribe a su hermano un domingo a la noche.',
+  'Camila le escribe a su hermano un domingo por la noche.',
   [
     'Oi, Dani! Você já falou com a mamãe hoje?',
     'Eu liguei, mas ela não atendeu.',
@@ -95,7 +95,7 @@ export const PT_A2_U01: PtUnitDef = {
       'El pretérito perfeito de los verbos regulares (falei, comi, saí), ontem, a semana passada, já y ainda não.',
     emoji: '🗓️',
     objective:
-      'Podés contar qué hiciste ayer o el fin de semana, preguntarle a otro qué hizo y decir lo que ya hiciste y lo que todavía no.',
+      'Puedes contar qué hiciste ayer o el fin de semana, preguntarle a otro qué hizo y decir lo que ya hiciste y lo que todavía no.',
     grammar: {
       title: 'Pretérito perfeito regular',
       explanation:
@@ -120,7 +120,7 @@ export const PT_A2_U01: PtUnitDef = {
         'Anoche salí.',
         ['time'],
         {
-          acceptedTranslations: ['ayer a la noche'],
+          acceptedTranslations: ['ayer a la noche', 'ayer por la noche'],
         },
       ),
       w(
@@ -242,8 +242,8 @@ export const PT_A2_U01: PtUnitDef = {
           ],
         },
         takeaways: [
-          'Contás qué hiciste con -ei: falei, trabalhei.',
-          'Preguntás con -ou: você falou?',
+          'Cuentas qué hiciste con -ei: falei, trabalhei.',
+          'Preguntas con -ou: você falou?',
         ],
         exercises: [
           ex.translationChoice(
@@ -320,7 +320,7 @@ export const PT_A2_U01: PtUnitDef = {
           ),
           ex.shortAnswer(
             'O que você fez ontem? (estudar)',
-            '¿Qué hiciste ayer? (Respondé que estudiaste mucho.)',
+            '¿Qué hiciste ayer? (Responde que estudiaste mucho.)',
             'Eu estudei muito.',
             ['Estudei muito.', 'Ontem eu estudei muito.', 'Ontem estudei muito.'],
             ['pt-estudei'],
@@ -355,14 +355,14 @@ export const PT_A2_U01: PtUnitDef = {
           ],
         },
         takeaways: [
-          'Contás con -i: comi, saí, dormi.',
-          'Preguntás con -eu / -iu: você comeu? você saiu?',
+          'Cuentas con -i: comi, saí, dormi.',
+          'Preguntas con -eu / -iu: você comeu? você saiu?',
         ],
         exercises: [
           ex.translationChoice(
             'ontem à noite',
             'anoche',
-            ['ayer', 'esta noche', 'a la noche'],
+            ['ayer', 'esta noche', 'por la noche'],
             ['pt-ontem-a-noite'],
             {
               id: 'pt.ex.czhwwq77dtpxeh',
@@ -428,7 +428,7 @@ export const PT_A2_U01: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Você saiu ontem à noite?',
-            '¿Saliste anoche? (Respondé que no, que te quedaste: viste una película.)',
+            '¿Saliste anoche? (Responde que no, que te quedaste: viste una película.)',
             'Não, eu assisti a um filme.',
             [
               'Não, assisti a um filme.',
@@ -469,7 +469,7 @@ export const PT_A2_U01: PtUnitDef = {
             { target: 'No sábado a gente comeu uma pizza.', base: 'El sábado comimos una pizza.' },
           ],
         },
-        takeaways: ['Preguntás cómo fue el fin de semana.', 'Contás varias cosas en orden.'],
+        takeaways: ['Preguntas cómo fue el fin de semana.', 'Cuentas varias cosas en orden.'],
         exercises: [
           ex.listenChoice(
             'Como foi o fim de semana?',
@@ -537,7 +537,7 @@ export const PT_A2_U01: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Como foi o seu domingo? (dormir muito)',
-            '¿Cómo fue tu domingo? (Respondé que dormiste mucho.)',
+            '¿Cómo fue tu domingo? (Responde que dormiste mucho.)',
             'Eu dormi muito.',
             [
               'Dormi muito.',
@@ -575,7 +575,7 @@ export const PT_A2_U01: PtUnitDef = {
             { target: 'Ainda não comi nada hoje.', base: 'Todavía no comí nada hoy.' },
           ],
         },
-        takeaways: ['Preguntás con já: você já comeu?', 'Respondés ainda não + perfeito.'],
+        takeaways: ['Preguntas con já: você já comeu?', 'Respondes ainda não + perfeito.'],
         exercises: [
           ex.translationChoice(
             'ainda não',
@@ -646,7 +646,7 @@ export const PT_A2_U01: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Você já almoçou?',
-            '¿Ya almorzaste? (Respondé que todavía no.)',
+            '¿Ya almorzaste? (Responde que todavía no.)',
             'Ainda não.',
             ['Não, ainda não.', 'Ainda não almocei.', 'Não, ainda não almocei.'],
             ['pt-ainda-nao'],
@@ -674,8 +674,8 @@ export const PT_A2_U01: PtUnitDef = {
           ],
         },
         takeaways: [
-          'Contás en plural: falamos, falaram.',
-          'Ubicás en el tiempo: ontem, na semana passada.',
+          'Cuentas en plural: falamos, falaram.',
+          'Ubicas en el tiempo: ontem, na semana passada.',
         ],
         exercises: [
           ex.translationChoice(
@@ -720,7 +720,7 @@ export const PT_A2_U01: PtUnitDef = {
             'Porque el viernes trabajó hasta tarde',
             [
               'Porque estaba enfermo',
-              'Porque salió el viernes a la noche',
+              'Porque salió el viernes por la noche',
               'Porque cocinó todo el día',
             ],
             ['pt-trabalhei'],
@@ -745,7 +745,7 @@ export const PT_A2_U01: PtUnitDef = {
           ),
           ex.shortAnswer(
             'O que vocês fizeram no sábado? (jogar futebol)',
-            '¿Qué hicieron ustedes el sábado? (Respondé que jugaron al fútbol.)',
+            '¿Qué hicieron ustedes el sábado? (Responde que jugaron al fútbol.)',
             'Nós jogamos futebol.',
             ['Jogamos futebol.', 'A gente jogou futebol.', 'No sábado nós jogamos futebol.'],
             ['pt-joguei', 'pt-nos'],

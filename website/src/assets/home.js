@@ -1,4 +1,4 @@
-// Portada de Polygo: aparición al hacer scroll, contadores y profundidad leve en la portada.
+// Portada de PolyGo: aparición al hacer scroll, contadores y profundidad leve en la portada.
 // Sin dependencias. Con «reducir movimiento» todo se muestra quieto.
 (() => {
   document.documentElement.classList.remove('no-js');

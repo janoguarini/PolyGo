@@ -62,7 +62,7 @@ export const FR_A1_U09: FrUnitDef = {
       "La hora con il est… heures, et quart, et demie, moins le quart, midi y minuit; à quelle heure?; los días sin artículo (lundi) y con artículo para lo habitual (le lundi); aujourd'hui, demain, quand. Liaison deux‿heures, neuf heures.",
     emoji: '🕐',
     objective:
-      'Podés decir y preguntar la hora, decir a qué hora hacés algo y hablar de los días de la semana, de hoy y de mañana.',
+      'Puedes decir y preguntar la hora, decir a qué hora haces algo y hablar de los días de la semana, de hoy y de mañana.',
     grammar: {
       title: 'Il est… heures · lundi / le lundi',
       explanation:
@@ -93,7 +93,7 @@ export const FR_A1_U09: FrUnitDef = {
         "l'heure",
         'la hora',
         "Tu as l'heure? — Oui, il est deux heures.",
-        '¿Tenés hora? — Sí, son las dos.',
+        '¿Tienes hora? — Sí, son las dos.',
         ['time', 'f'],
         { acceptedTexts: ["l'heure"] },
       ),
@@ -141,7 +141,7 @@ export const FR_A1_U09: FrUnitDef = {
         'mercredi',
         'miércoles',
         "Le mercredi, je travaille l'après-midi.",
-        'Los miércoles trabajo a la tarde.',
+        'Los miércoles trabajo por la tarde.',
         ['days'],
       ),
       w(
@@ -207,7 +207,7 @@ export const FR_A1_U09: FrUnitDef = {
         'quand',
         'cuándo',
         'Tu travailles quand? — Le lundi.',
-        '¿Cuándo trabajás? — Los lunes.',
+        '¿Cuándo trabajas? — Los lunes.',
         ['questions'],
       ),
       w(
@@ -215,7 +215,7 @@ export const FR_A1_U09: FrUnitDef = {
         'à quelle heure?',
         '¿a qué hora?',
         'Tu te lèves à quelle heure?',
-        '¿A qué hora te levantás?',
+        '¿A qué hora te levantas?',
         ['questions', 'time'],
       ),
     ],
@@ -236,14 +236,14 @@ export const FR_A1_U09: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Preguntás quelle heure est-il? y respondés il est… heures.',
-          'Usás midi y minuit sin heures.',
+          'Preguntas quelle heure est-il? y respondes il est… heures.',
+          'Usas midi y minuit sin heures.',
         ],
         exercises: [
           ex.translationChoice(
             'quelle heure est-il?',
             '¿qué hora es?',
-            ['¿cómo te llamás?', '¿cuántos años tenés?', '¿de dónde sos?'],
+            ['¿cómo te llamas?', '¿cuántos años tienes?', '¿de dónde eres?'],
             ['fr-quelle-heure-est-il'],
             { id: 'fr.ex.gegzu7jrxlqqc1' },
           ),
@@ -315,7 +315,7 @@ export const FR_A1_U09: FrUnitDef = {
           }),
           ex.shortAnswer(
             'Quelle heure est-il?',
-            '¿Qué hora es? (Respondé que es medianoche.)',
+            '¿Qué hora es? (Responde que es medianoche.)',
             'Il est minuit.',
             ['Minuit.'],
             ['fr-quelle-heure-est-il', 'fr-minuit'],
@@ -337,8 +337,8 @@ export const FR_A1_U09: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Agregás et quart, et demie o moins le quart a la hora.',
-          'Escribís et demie con heures y et demi con midi y minuit.',
+          'Agregas et quart, et demie o moins le quart a la hora.',
+          'Escribes et demie con heures y et demi con midi y minuit.',
         ],
         exercises: [
           ex.translationChoice(
@@ -426,7 +426,7 @@ export const FR_A1_U09: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Quelle heure est-il?',
-            '¿Qué hora es? (Respondé que son las siete y media.)',
+            '¿Qué hora es? (Responde que son las siete y media.)',
             'Il est sept heures et demie.',
             ['Sept heures et demie.'],
             ['fr-et-demie', 'fr-quelle-heure-est-il'],
@@ -451,8 +451,8 @@ export const FR_A1_U09: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Nombrás los siete días, en minúscula.',
-          'Decís un día concreto sin artículo: lundi, je travaille.',
+          'Nombras los siete días, en minúscula.',
+          'Dices un día concreto sin artículo: lundi, je travaille.',
         ],
         exercises: [
           ex.translationChoice('lundi', 'lunes', ['martes', 'miércoles', 'domingo'], ['fr-lundi'], {
@@ -524,7 +524,7 @@ export const FR_A1_U09: FrUnitDef = {
           }),
           ex.shortAnswer(
             'Tu travailles samedi?',
-            '¿Trabajás el sábado? (Respondé que no, que trabajás el jueves.)',
+            '¿Trabajas el sábado? (Responde que no, que trabajas el jueves.)',
             'Non, je travaille jeudi.',
             ['Non, jeudi.', 'Non, je ne travaille pas samedi. Je travaille jeudi.'],
             ['fr-jeudi', 'fr-samedi'],
@@ -536,7 +536,7 @@ export const FR_A1_U09: FrUnitDef = {
       // ------------------------------------------------------------------------------------ L4
       {
         title: "Aujourd'hui, demain, le week-end",
-        objective: 'Hablar de hoy, de mañana y de lo que hacés cada semana.',
+        objective: 'Hablar de hoy, de mañana y de lo que haces cada semana.',
         intro: {
           explanation:
             "Aujourd'hui es hoy y demain, mañana (el día siguiente; no lo confundas con le matin, la mañana). Con artículo, un día es una costumbre: le lundi, je travaille (todos los lunes). Lo mismo con le week-end. Para preguntar cuándo: quand? (la d final no suena): tu travailles quand?",
@@ -546,8 +546,8 @@ export const FR_A1_U09: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Decís aujourd'hui, demain y le week-end.",
-          'Usás le lundi para algo que hacés todos los lunes y preguntás con quand?',
+          "Dices aujourd'hui, demain y le week-end.",
+          'Usas le lundi para algo que haces todos los lunes y preguntas con quand?',
         ],
         exercises: [
           ex.translationChoice(
@@ -590,7 +590,7 @@ export const FR_A1_U09: FrUnitDef = {
           ),
           ex.fillBlank(
             'Tu travailles ___? — Le mardi.',
-            '¿Cuándo trabajás? — Los martes.',
+            '¿Cuándo trabajas? — Los martes.',
             'quand',
             ['où', 'comment', 'quel'],
             ['fr-quand', 'fr-mardi'],
@@ -626,7 +626,7 @@ export const FR_A1_U09: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Aujourd'hui, c'est lundi. Et demain?",
-            'Hoy es lunes. ¿Y mañana? (Respondé qué día es mañana.)',
+            'Hoy es lunes. ¿Y mañana? (Responde qué día es mañana.)',
             "Demain, c'est mardi.",
             ["C'est mardi.", 'Mardi.'],
             ['fr-demain', 'fr-mardi'],
@@ -638,18 +638,18 @@ export const FR_A1_U09: FrUnitDef = {
       // ------------------------------------------------------------------------------------ L5
       {
         title: 'À quelle heure?',
-        objective: 'Preguntar y decir a qué hora hacés algo.',
+        objective: 'Preguntar y decir a qué hora haces algo.',
         intro: {
           explanation:
             'Para decir a qué hora pasa algo se usa à + hora: je me lève à sept heures, je mange à midi. La pregunta es à quelle heure? En lo oral suele ir al final: tu te lèves à quelle heure? Quelle va con e porque heure es femenino.',
           examples: [
-            { target: 'Tu te lèves à quelle heure?', base: '¿A qué hora te levantás?' },
+            { target: 'Tu te lèves à quelle heure?', base: '¿A qué hora te levantas?' },
             { target: 'Je me couche à minuit.', base: 'Me acuesto a medianoche.' },
           ],
         },
         takeaways: [
-          'Preguntás à quelle heure? y respondés con à + hora.',
-          'Contás tu horario de la semana y del fin de semana.',
+          'Preguntas à quelle heure? y respondes con à + hora.',
+          'Cuentas tu horario de la semana y del fin de semana.',
         ],
         exercises: [
           ex.translationChoice(
@@ -679,7 +679,7 @@ export const FR_A1_U09: FrUnitDef = {
           ),
           ex.fillBlank(
             'Tu te couches à ___ heure?',
-            '¿A qué hora te acostás?',
+            '¿A qué hora te acuestas?',
             'quelle',
             ['quel', 'quand', 'où'],
             ['fr-a-quelle-heure'],
@@ -690,7 +690,7 @@ export const FR_A1_U09: FrUnitDef = {
           ),
           ex.orderWords(
             'Tu te lèves à quelle heure?',
-            '¿A qué hora te levantás?',
+            '¿A qué hora te levantas?',
             ['fr-a-quelle-heure'],
             { id: 'fr.ex.wu8j60uxsj98w3' },
           ),
@@ -736,7 +736,7 @@ export const FR_A1_U09: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Tu te couches à quelle heure?',
-            '¿A qué hora te acostás? (Respondé que a las once y media.)',
+            '¿A qué hora te acuestas? (Responde que a las once y media.)',
             'Je me couche à onze heures et demie.',
             ['À onze heures et demie.', 'Onze heures et demie.'],
             ['fr-a-quelle-heure', 'fr-et-demie'],

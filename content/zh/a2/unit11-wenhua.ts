@@ -51,7 +51,7 @@ export const ZH_A2_U11: ZhUnitDef = {
       'El Año Nuevo chino, la Fiesta de Medio Otoño, regalos y tradiciones, por qué y en qué orden.',
     emoji: '🧧',
     objective:
-      'Podés contar cómo se festeja el Año Nuevo chino y la Fiesta de Medio Otoño, preguntar y explicar por qué, decir en qué orden se hacen las cosas y hablar de regalos.',
+      'Puedes contar cómo se festeja el Año Nuevo chino y la Fiesta de Medio Otoño, preguntar y explicar por qué, decir en qué orden se hacen las cosas y hablar de regalos.',
     grammar: {
       title: '为什么 · 因为…所以… · 先…再… · adjetivos repetidos',
       explanation:
@@ -89,7 +89,7 @@ export const ZH_A2_U11: ZhUnitDef = {
         'guònián',
         'festejar el Año Nuevo',
         '你在哪儿过年？',
-        '¿Dónde pasás el Año Nuevo?',
+        '¿Dónde pasas el Año Nuevo?',
         ['culture'],
         {
           acceptedTranslations: ['pasar el Año Nuevo'],
@@ -248,7 +248,7 @@ export const ZH_A2_U11: ZhUnitDef = {
         'zài',
         'después (otra vez)',
         '先写作业，再玩游戏。',
-        'Primero la tarea y después jugás.',
+        'Primero la tarea y después juegas.',
         ['grammar'],
         {
           acceptedTranslations: ['luego', 'otra vez', 'de nuevo'],
@@ -274,7 +274,7 @@ export const ZH_A2_U11: ZhUnitDef = {
         objective: 'Contar cómo se festeja el Año Nuevo chino.',
         intro: {
           explanation:
-            '春节 es el Año Nuevo chino (en enero o febrero, según la luna) y 过年, festejarlo. Todos 放假 (tienen vacaciones) y muchos vuelven a su ciudad. A los chicos se les da un 红包: un sobre rojo con plata.',
+            '春节 es el Año Nuevo chino (en enero o febrero, según la luna) y 过年, festejarlo. Todos 放假 (tienen vacaciones) y muchos vuelven a su ciudad. A los chicos se les da un 红包: un sobre rojo con dinero.',
           examples: [
             { target: '春节的时候我们放假。', base: 'En Año Nuevo chino tenemos vacaciones.' },
             {
@@ -283,7 +283,7 @@ export const ZH_A2_U11: ZhUnitDef = {
             },
           ],
         },
-        takeaways: ['Hablás del 春节 y de 过年.', 'Sabés qué es un 红包.'],
+        takeaways: ['Hablas del 春节 y de 过年.', 'Sabes qué es un 红包.'],
         exercises: [
           ex.translationChoice(
             '春节',
@@ -320,7 +320,7 @@ export const ZH_A2_U11: ZhUnitDef = {
           ),
           ex.fillBlank(
             '你在哪儿___？',
-            '¿Dónde pasás el Año Nuevo?',
+            '¿Dónde pasas el Año Nuevo?',
             '过年',
             ['红包', '春天', '生日'],
             ['zh-guonian'],
@@ -344,7 +344,7 @@ export const ZH_A2_U11: ZhUnitDef = {
           ),
           reply(
             '春节的时候你放假吗？',
-            '¿Tenés vacaciones en Año Nuevo chino? (Respondé que sí.)',
+            '¿Tienes vacaciones en Año Nuevo chino? (Responde que sí.)',
             'fàngjià',
             '放假',
             ['zh-fangjia'],
@@ -388,7 +388,7 @@ export const ZH_A2_U11: ZhUnitDef = {
             { target: '因为下雨了，所以我不去。', base: 'Como llueve, no voy.' },
           ],
         },
-        takeaways: ['Preguntás con 为什么.', 'Explicás con 因为…所以….'],
+        takeaways: ['Preguntas con 为什么.', 'Explicas con 因为…所以….'],
         exercises: [
           ex.translationChoice(
             '为什么',
@@ -441,7 +441,7 @@ export const ZH_A2_U11: ZhUnitDef = {
           ),
           reply(
             '你为什么学中文？',
-            '¿Por qué estudiás chino? (Respondé que porque te gusta China.)',
+            '¿Por qué estudias chino? (Responde que porque te gusta China.)',
             'yīnwèi wǒ xǐhuan Zhōngguó',
             '因为我喜欢中国',
             ['zh-yinwei', 'zh-weishenme'],
@@ -486,7 +486,7 @@ export const ZH_A2_U11: ZhUnitDef = {
             },
           ],
         },
-        takeaways: ['Hablás del 中秋节 y los 月饼.', 'Reconocés adjetivos repetidos como 甜甜的.'],
+        takeaways: ['Hablas del 中秋节 y los 月饼.', 'Reconoces adjetivos repetidos como 甜甜的.'],
         exercises: [
           ex.translationChoice(
             '月饼',
@@ -550,7 +550,7 @@ export const ZH_A2_U11: ZhUnitDef = {
           ),
           reply(
             '中秋节你们吃什么？',
-            '¿Qué comen en la Fiesta de Medio Otoño? (Respondé: pasteles de luna.)',
+            '¿Qué comen en la Fiesta de Medio Otoño? (Responde: pasteles de luna.)',
             'wǒmen chī yuèbing',
             '我们吃月饼',
             ['zh-yuebing'],
@@ -585,8 +585,8 @@ export const ZH_A2_U11: ZhUnitDef = {
           ],
         },
         takeaways: [
-          'Decís a quién regalás algo con 送.',
-          'Conocés algunas tradiciones con los regalos.',
+          'Dices a quién regalas algo con 送.',
+          'Conoces algunas tradiciones con los regalos.',
         ],
         exercises: [
           ex.translationChoice(
@@ -621,7 +621,7 @@ export const ZH_A2_U11: ZhUnitDef = {
             ['zh-song'],
             {
               id: 'zh.ex.miul19e5t8puaf',
-              explanation: '送 + persona + cosa: a quién le regalás qué.',
+              explanation: '送 + persona + cosa: a quién le regalas qué.',
             },
           ),
           ex.fillBlank(
@@ -658,7 +658,7 @@ export const ZH_A2_U11: ZhUnitDef = {
           ),
           reply(
             '你想送他什么？',
-            '¿Qué le querés regalar? (Respondé que un libro.)',
+            '¿Qué le quieres regalar? (Responde que un libro.)',
             'wǒ xiǎng sòng tā yì běn shū',
             '我想送他一本书',
             ['zh-song'],
@@ -703,8 +703,8 @@ export const ZH_A2_U11: ZhUnitDef = {
           ],
         },
         takeaways: [
-          'Ordenás acciones con 先…再….',
-          'Entendés cómo se festejan las fiestas chinas.',
+          'Ordenas acciones con 先…再….',
+          'Entiendes cómo se festejan las fiestas chinas.',
         ],
         exercises: [
           ex.translationChoice(
@@ -724,7 +724,7 @@ export const ZH_A2_U11: ZhUnitDef = {
           ),
           ex.fillBlank(
             '先写作业，___玩游戏。',
-            'Primero hacé la tarea y después jugá.',
+            'Primero haz la tarea y después juega.',
             '再',
             ['先', '也', '都'],
             ['zh-zai-despues', 'zh-xian'],
@@ -770,7 +770,7 @@ export const ZH_A2_U11: ZhUnitDef = {
           ),
           reply(
             '中国的节日怎么样？',
-            '¿Qué tal las fiestas chinas? (Respondé que son muy interesantes.)',
+            '¿Qué tal las fiestas chinas? (Responde que son muy interesantes.)',
             'hěn yǒu yìsi',
             '很有意思',
             ['zh-youyisi'],

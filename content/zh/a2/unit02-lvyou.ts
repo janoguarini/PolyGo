@@ -50,7 +50,7 @@ export const ZH_A2_U02: ZhUnitDef = {
     description: 'Contar experiencias con 过, cuántas veces, de dónde a dónde y cómo viajaste.',
     emoji: '🧳',
     objective:
-      'Podés contar lugares donde estuviste (过) y cuántas veces, decir de dónde a dónde y cuánto tardaste, y preguntar cómo y cuándo llegó alguien (是…的).',
+      'Puedes contar lugares donde estuviste (过) y cuántas veces, decir de dónde a dónde y cuánto tardaste, y preguntar cómo y cuándo llegó alguien (是…的).',
     grammar: {
       title: '过 · 次 · 从…到… · 是…的',
       explanation:
@@ -139,7 +139,7 @@ export const ZH_A2_U02: ZhUnitDef = {
         'cóng',
         'desde',
         '从这儿到学校很近。',
-        'De acá a la escuela es cerca.',
+        'De aquí a la escuela es cerca.',
         ['grammar'],
         {
           acceptedTranslations: ['de'],
@@ -190,7 +190,7 @@ export const ZH_A2_U02: ZhUnitDef = {
         'jīchǎng',
         'aeropuerto',
         '我是坐地铁去机场的。',
-        'Fui al aeropuerto en subte.',
+        'Fui al aeropuerto en metro.',
         ['places', 'travel'],
         {
           emoji: '🛫',
@@ -214,7 +214,7 @@ export const ZH_A2_U02: ZhUnitDef = {
         'xíngli',
         'equipaje',
         '我有两件行李。',
-        'Tengo dos valijas.',
+        'Tengo dos maletas.',
         ['travel'],
         {
           acceptedTranslations: ['valija', 'maleta'],
@@ -248,7 +248,7 @@ export const ZH_A2_U02: ZhUnitDef = {
             { target: '你吃过饺子吗？——没吃过。', base: '¿Probaste alguna vez jiaozi? — Nunca.' },
           ],
         },
-        takeaways: ['Contás experiencias con 过.', 'Decís que nunca hiciste algo con 没…过.'],
+        takeaways: ['Cuentas experiencias con 过.', 'Dices que nunca hiciste algo con 没…过.'],
         exercises: [
           ex.translationChoice(
             '外国',
@@ -297,13 +297,13 @@ export const ZH_A2_U02: ZhUnitDef = {
           }),
           ex.orderWords(
             '你 去 过 什么 地方？',
-            '¿Qué lugares conocés?',
+            '¿Qué lugares conoces?',
             ['zh-guo-exp', 'zh-difang'],
             { id: 'zh.ex.ttsmd8hr2h4m7w' },
           ),
           reply(
             '你去过外国吗？',
-            '¿Fuiste alguna vez al extranjero? (Respondé que nunca.)',
+            '¿Fuiste alguna vez al extranjero? (Responde que nunca.)',
             'méi qù guo',
             '没去过',
             ['zh-guo-exp', 'zh-waiguo'],
@@ -341,7 +341,7 @@ export const ZH_A2_U02: ZhUnitDef = {
             { target: '我想去中国旅游。', base: 'Quiero ir de viaje a China.' },
           ],
         },
-        takeaways: ['Decís cuántas veces con 次.', 'Hablás de viajes con 旅游.'],
+        takeaways: ['Dices cuántas veces con 次.', 'Hablas de viajes con 旅游.'],
         exercises: [
           ex.translationChoice(
             '次',
@@ -396,7 +396,7 @@ export const ZH_A2_U02: ZhUnitDef = {
           ),
           reply(
             '你去过长城吗？',
-            '¿Fuiste a la Gran Muralla? (Respondé que sí, una vez.)',
+            '¿Fuiste a la Gran Muralla? (Responde que sí, una vez.)',
             'qù guo, qù guo yí cì',
             '去过，去过一次',
             ['zh-changcheng', 'zh-ci'],
@@ -437,7 +437,7 @@ export const ZH_A2_U02: ZhUnitDef = {
             { target: '飞机几点到？', base: '¿A qué hora llega el avión?' },
           ],
         },
-        takeaways: ['Decís un recorrido con 从…到….', 'Decís cuántas horas dura con 个小时.'],
+        takeaways: ['Dices un recorrido con 从…到….', 'Dices cuántas horas dura con 个小时.'],
         exercises: [
           ex.translationChoice('从', 'desde', ['hasta (llegar a)', 'hacia', 'con'], ['zh-cong'], {
             id: 'zh.ex.29eaip6vkju3ej',
@@ -497,7 +497,7 @@ export const ZH_A2_U02: ZhUnitDef = {
           ),
           reply(
             '从北京到上海坐飞机几个小时？',
-            '¿Cuántas horas son de Pekín a Shanghái en avión? (Respondé: dos horas.)',
+            '¿Cuántas horas son de Pekín a Shanghái en avión? (Responde: dos horas.)',
             'liǎng ge xiǎoshí',
             '两个小时',
             ['zh-xiaoshi', 'zh-shanghai'],
@@ -532,8 +532,8 @@ export const ZH_A2_U02: ZhUnitDef = {
           ],
         },
         takeaways: [
-          'Preguntás detalles de algo pasado con 是…的.',
-          'Respondés cómo y cuándo llegaste.',
+          'Preguntas detalles de algo pasado con 是…的.',
+          'Respondes cómo y cuándo llegaste.',
         ],
         exercises: [
           ex.translationChoice(
@@ -580,7 +580,7 @@ export const ZH_A2_U02: ZhUnitDef = {
           ),
           reply(
             '你是怎么去机场的？',
-            '¿Cómo fuiste al aeropuerto? (Respondé que en subte.)',
+            '¿Cómo fuiste al aeropuerto? (Responde que en metro.)',
             'wǒ shì zuò dìtiě qù de',
             '我是坐地铁去的',
             ['zh-jichang', 'zh-ditie'],
@@ -620,10 +620,10 @@ export const ZH_A2_U02: ZhUnitDef = {
             '护照 es el pasaporte y 行李, el equipaje (se cuenta con 件: 两件行李). 票 es el boleto o la entrada, y se cuenta con 张: 两张票.',
           examples: [
             { target: '你的护照呢？', base: '¿Y tu pasaporte?' },
-            { target: '我有两件行李。', base: 'Tengo dos valijas.' },
+            { target: '我有两件行李。', base: 'Tengo dos maletas.' },
           ],
         },
-        takeaways: ['Te arreglás en el aeropuerto.', 'Contás boletos con 张 y equipaje con 件.'],
+        takeaways: ['Te arreglas en el aeropuerto.', 'Cuentas boletos con 张 y equipaje con 件.'],
         exercises: [
           ex.translationChoice(
             '护照',
@@ -656,8 +656,8 @@ export const ZH_A2_U02: ZhUnitDef = {
             'zh.ex.pdni3mck6a7xc0',
             AEROPUERTO,
             '¿Cuánto equipaje lleva Zhang Li?',
-            'Una valija',
-            ['Dos valijas', 'Nada', 'Tres valijas'],
+            'Una maleta',
+            ['Dos maletas', 'Nada', 'Tres maletas'],
             ['zh-xingli'],
             'A «你有几件行李？» Zhang Li responde «一件».',
           ),
@@ -685,7 +685,7 @@ export const ZH_A2_U02: ZhUnitDef = {
           ),
           reply(
             '你有几件行李？',
-            '¿Cuántas valijas tenés? (Respondé: dos.)',
+            '¿Cuántas maletas tienes? (Responde: dos.)',
             'liǎng jiàn',
             '两件',
             ['zh-xingli'],

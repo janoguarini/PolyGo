@@ -31,7 +31,7 @@ export const unit09: UnitDef = {
       '/maʊθ/',
       '👄',
       'Open your mouth, please.',
-      'Abrí la boca, por favor.',
+      'Abre la boca, por favor.',
       ['body'],
     ),
     w(
@@ -46,7 +46,7 @@ export const unit09: UnitDef = {
       ['diente'],
       ['tooth'],
     ),
-    w('en-hand', 'hand', 'mano', '/hænd/', '✋', 'Wash your hands.', 'Lavate las manos.', ['body']),
+    w('en-hand', 'hand', 'mano', '/hænd/', '✋', 'Wash your hands.', 'Lávate las manos.', ['body']),
     w('en-arm', 'arm', 'brazo', '/ɑrm/', '💪', 'My arm hurts.', 'Me duele el brazo.', ['body']),
     w(
       'en-leg',
@@ -128,7 +128,7 @@ export const unit09: UnitDef = {
       'Me duele la cabeza.',
       ['health'],
     ),
-    w('en-fever', 'fever', 'fiebre', '/ˈfivər/', '🌡️', 'You have a fever.', 'Tenés fiebre.', [
+    w('en-fever', 'fever', 'fiebre', '/ˈfivər/', '🌡️', 'You have a fever.', 'Tienes fiebre.', [
       'health',
     ]),
     w(
@@ -149,7 +149,7 @@ export const unit09: UnitDef = {
       '/ˈmɛdəsən/',
       '💊',
       'Take this medicine three times a day.',
-      'Tomá este remedio tres veces por día.',
+      'Toma este remedio tres veces por día.',
       ['health'],
       ['remedio', 'medicamento', 'medicina'],
     ),
@@ -320,7 +320,7 @@ export const unit09: UnitDef = {
       exercises: [
         ex.fillBlank(
           'You have a fever. You ___ go to the doctor.',
-          'Tenés fiebre. Deberías ir al médico.',
+          'Tienes fiebre. Deberías ir al médico.',
           'should',
           ["shouldn't", 'did', 'are'],
           ['en-should', 'en-fever', 'en-doctor'],
@@ -344,7 +344,7 @@ export const unit09: UnitDef = {
         ),
         ex.fillBlank(
           'Take this ___ three times a day.',
-          'Tomá este remedio tres veces por día.',
+          'Toma este remedio tres veces por día.',
           'medicine',
           ['doctor', 'fever', 'headache'],
           ['en-medicine', 'en-take', 'en-three'],
@@ -377,7 +377,7 @@ export const unit09: UnitDef = {
       exercises: [
         ex.shortAnswer(
           'How do you feel today? (mejor)',
-          '¿Cómo te sentís hoy?',
+          '¿Cómo te sientes hoy?',
           'I feel better.',
           ['Better.', 'Better, thank you.', 'I feel better, thank you.', 'I feel better today.'],
           ['en-better'],

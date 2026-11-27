@@ -181,7 +181,7 @@ export const unit08: UnitDef = {
       '/muv/',
       '📦',
       'We are going to move to a new apartment.',
-      'Nos vamos a mudar a un departamento nuevo.',
+      'Nos vamos a mudar a un apartamento nuevo.',
       ['verbs', 'home'],
       ['mudarse', 'mover', 'moverse'],
     ),
@@ -300,7 +300,7 @@ export const unit08: UnitDef = {
         ),
         ex.fillBlank(
           'We are going to ___ to a new apartment.',
-          'Nos vamos a mudar a un departamento nuevo.',
+          'Nos vamos a mudar a un apartamento nuevo.',
           'move',
           ['moving', 'moved', 'moves'],
           ['en-move', 'en-apartment', 'en-new', 'en-going-to'],

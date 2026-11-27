@@ -19,10 +19,10 @@ export const unit04: UnitDef = {
   position: 4,
   title: 'La familia',
   titleEn: 'La famiglia',
-  description: 'Nombrar a tu familia, decir cuántos hermanos tenés y cómo se llaman.',
+  description: 'Nombrar a tu familia, decir cuántos hermanos tienes y cómo se llaman.',
   emoji: '👨‍👩‍👧',
   objective:
-    'Podés presentar a tu familia, decir cuántos hermanos tenés y cómo se llaman tus familiares.',
+    'Puedes presentar a tu familia, decir cuántos hermanos tienes y cómo se llaman tus familiares.',
   grammar: {
     title: 'Mio, mia y el artículo',
     explanation:
@@ -117,7 +117,7 @@ export const unit04: UnitDef = {
       'mia',
       'mi (femenino)',
       'Mia sorella è qui.',
-      'Mi hermana está acá.',
+      'Mi hermana está aquí.',
       ['possessives'],
       {
         acceptedTranslations: ['mi'],
@@ -158,8 +158,8 @@ export const unit04: UnitDef = {
         ],
       },
       takeaways: [
-        'Nombrás a tu madre, tu padre y tus padres.',
-        'Sabés que genitori son tus padres.',
+        'Nombras a tu madre, tu padre y tus padres.',
+        'Sabes que genitori son tus padres.',
       ],
       exercises: [
         ex.translationChoice(
@@ -213,15 +213,15 @@ export const unit04: UnitDef = {
       objective: 'Hablar de tus hermanos.',
       intro: {
         explanation:
-          'Fratello es hermano y sorella, hermana. Con ho (tengo) decís cuántos tenés: ho un fratello, ho due sorelle. Si no tenés hermanos: sono figlio unico (o figlia unica).',
+          'Fratello es hermano y sorella, hermana. Con ho (tengo) dices cuántos tienes: ho un fratello, ho due sorelle. Si no tienes hermanos: sono figlio unico (o figlia unica).',
         examples: [
           { target: 'Ho un fratello e una sorella.', base: 'Tengo un hermano y una hermana.' },
           { target: 'Sono figlia unica.', base: 'Soy hija única.' },
         ],
       },
       takeaways: [
-        'Decís cuántos hermanos tenés con ho.',
-        'Decís que sos hijo único con figlio unico.',
+        'Dices cuántos hermanos tienes con ho.',
+        'Dices que eres hijo único con figlio unico.',
       ],
       exercises: [
         ex.translationChoice(
@@ -267,13 +267,13 @@ export const unit04: UnitDef = {
       objective: 'Hablar de abuelos e hijos.',
       intro: {
         explanation:
-          'Nonno y nonna son los abuelos; figlio y figlia, los hijos. Como en italiano casi todo cambia -o / -a, podés adivinar muchos femeninos.',
+          'Nonno y nonna son los abuelos; figlio y figlia, los hijos. Como en italiano casi todo cambia -o / -a, puedes adivinar muchos femeninos.',
         examples: [
           { target: 'Mia nonna è di Napoli.', base: 'Mi abuela es de Nápoles.' },
           { target: 'Lei è mia figlia.', base: 'Ella es mi hija.' },
         ],
       },
-      takeaways: ['Nombrás a tus abuelos y a tus hijos.', 'Cambiás -o por -a para el femenino.'],
+      takeaways: ['Nombras a tus abuelos y a tus hijos.', 'Cambias -o por -a para el femenino.'],
       exercises: [
         ex.imageChoice('👵', 'nonna', ['nonno', 'madre', 'figlia'], ['it-nonna']),
         ex.imageChoice('👴', 'nonno', ['nonna', 'padre', 'figlio'], ['it-nonno']),
@@ -316,8 +316,8 @@ export const unit04: UnitDef = {
         ],
       },
       takeaways: [
-        'Elegís mio o mia según la palabra.',
-        'No ponés artículo con un familiar en singular.',
+        'Eliges mio o mia según la palabra.',
+        'No pones artículo con un familiar en singular.',
       ],
       exercises: [
         ex.translationChoice('mia', 'mi (femenino)', ['mi (masculino)', 'tu', 'una'], ['it-mia']),
@@ -382,14 +382,14 @@ export const unit04: UnitDef = {
         ],
       },
       takeaways: [
-        'Decís cómo se llama alguien con si chiama.',
-        'Presentás a tu familia con nombre y edad.',
+        'Dices cómo se llama alguien con si chiama.',
+        'Presentas a tu familia con nombre y edad.',
       ],
       exercises: [
         ex.translationChoice(
           'si chiama',
           'se llama',
-          ['me llamo', '¿cómo te llamás?', 'tiene'],
+          ['me llamo', '¿cómo te llamas?', 'tiene'],
           ['it-si-chiama'],
         ),
         ex.fillBlank(
@@ -399,7 +399,7 @@ export const unit04: UnitDef = {
           ['mi chiamo', 'ti chiami', 'ha'],
           ['it-si-chiama', 'it-madre'],
           {
-            explanation: 'Para otra persona: si chiama. Mi chiamo es sólo para vos mismo.',
+            explanation: 'Para otra persona: si chiama. Mi chiamo es sólo para ti mismo.',
           },
         ),
         ex.listenChoice(
@@ -423,7 +423,7 @@ export const unit04: UnitDef = {
         ),
         ex.shortAnswer(
           'Come si chiama tua madre?',
-          '¿Cómo se llama tu madre? (Respondé que se llama Ana.)',
+          '¿Cómo se llama tu madre? (Responde que se llama Ana.)',
           'Mia madre si chiama Ana.',
           ['Si chiama Ana.', 'Lei si chiama Ana.', 'Ana.'],
           ['it-si-chiama', 'it-madre', 'it-mia'],

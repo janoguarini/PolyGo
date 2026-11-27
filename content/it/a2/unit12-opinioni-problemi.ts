@@ -112,7 +112,7 @@ export const IT_A2_U12: ItUnitDef = {
       'Dar tu opinión y estar o no de acuerdo, expresar deseos y dar consejos con el condicional, y resolver un problema en una tienda.',
     emoji: '💡',
     objective:
-      'Podés dar tu opinión (secondo me…), decir si estás de acuerdo, expresar deseos y consejos (mi piacerebbe, dovresti) y resolver un problema con algo que compraste (non funziona, vorrei il rimborso).',
+      'Puedes dar tu opinión (secondo me…), decir si estás de acuerdo, expresar deseos y consejos (mi piacerebbe, dovresti) y resolver un problema con algo que compraste (non funziona, vorrei il rimborso).',
     grammar: {
       title: 'Opiniones · condizionale presente · conectores',
       explanation:
@@ -159,7 +159,7 @@ export const IT_A2_U12: ItUnitDef = {
         "sono d'accordo",
         'estoy de acuerdo',
         "Sono d'accordo con te.",
-        'Estoy de acuerdo con vos.',
+        'Estoy de acuerdo contigo.',
         ['opinions'],
         {
           acceptedTexts: ['sono d’accordo'],
@@ -224,7 +224,7 @@ export const IT_A2_U12: ItUnitDef = {
         'comunque',
         'de todos modos',
         'Comunque prova!',
-        '¡De todos modos, probá!',
+        '¡De todos modos, prueba!',
         ['connectors'],
         {
           acceptedTranslations: ['igual', 'de todas formas'],
@@ -260,7 +260,7 @@ export const IT_A2_U12: ItUnitDef = {
         'cambiare',
         'cambiar',
         'Vorrei cambiare la giacca.',
-        'Quisiera cambiar la campera.',
+        'Quisiera cambiar la chaqueta.',
         ['problems', 'shopping'],
       ),
       w(
@@ -296,13 +296,13 @@ export const IT_A2_U12: ItUnitDef = {
           explanation:
             'Para opinar: secondo me (para mí), penso di sì / penso di no (creo que sí / que no). Para responder: sono d’accordo o non sono d’accordo. Invece es «en cambio».',
           examples: [
-            { target: "Non sono d'accordo con te.", base: 'No estoy de acuerdo con vos.' },
+            { target: "Non sono d'accordo con te.", base: 'No estoy de acuerdo contigo.' },
             { target: 'Secondo me è una bella idea.', base: 'Para mí es una buena idea.' },
           ],
         },
         takeaways: [
-          'Opinás con secondo me y penso di sì.',
-          "Decís sono d'accordo / non sono d'accordo.",
+          'Opinas con secondo me y penso di sì.',
+          "Dices sono d'accordo / non sono d'accordo.",
         ],
         exercises: [
           ex.translationChoice(
@@ -370,7 +370,7 @@ export const IT_A2_U12: ItUnitDef = {
           ),
           ex.shortAnswer(
             "Sei d'accordo?",
-            '¿Estás de acuerdo? (Respondé que sí, que estás de acuerdo.)',
+            '¿Estás de acuerdo? (Responde que sí, que estás de acuerdo.)',
             "Sì, sono d'accordo.",
             ['Sì, sono d’accordo.', "Sono d'accordo.", 'Sono d’accordo.'],
             ['it-sono-d-accordo'],
@@ -400,7 +400,7 @@ export const IT_A2_U12: ItUnitDef = {
             { target: 'Purtroppo adesso non posso.', base: 'Lamentablemente ahora no puedo.' },
           ],
         },
-        takeaways: ['Expresás deseos con mi piacerebbe y preferirei.', 'Usás purtroppo.'],
+        takeaways: ['Expresas deseos con mi piacerebbe y preferirei.', 'Usas purtroppo.'],
         exercises: [
           ex.translationChoice(
             'mi piacerebbe',
@@ -478,7 +478,7 @@ export const IT_A2_U12: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Cosa ti piacerebbe fare?',
-            '¿Qué te gustaría hacer? (Respondé que te gustaría viajar a Italia.)',
+            '¿Qué te gustaría hacer? (Responde que te gustaría viajar a Italia.)',
             'Mi piacerebbe viaggiare in Italia.',
             ['Mi piacerebbe andare in Italia.', 'Viaggiare in Italia.'],
             ['it-mi-piacerebbe', 'it-viaggiare'],
@@ -512,15 +512,15 @@ export const IT_A2_U12: ItUnitDef = {
               target: 'Secondo me dovresti parlare con il capo.',
               base: 'Para mí deberías hablar con el jefe.',
             },
-            { target: 'Comunque prova!', base: '¡Igual probá!' },
+            { target: 'Comunque prova!', base: '¡Igual prueba!' },
           ],
         },
-        takeaways: ['Aconsejás con dovresti y sarebbe meglio.', 'Usás comunque.'],
+        takeaways: ['Aconsejas con dovresti y sarebbe meglio.', 'Usas comunque.'],
         exercises: [
           ex.translationChoice(
             'dovresti',
             'deberías',
-            ['debiste', 'debés', 'debía'],
+            ['debiste', 'debes', 'debía'],
             ['it-dovresti'],
             { id: 'it.ex.7s8tnshgtj7fhr' },
           ),
@@ -613,10 +613,10 @@ export const IT_A2_U12: ItUnitDef = {
             'Para un problema: non funziona (no anda), si è rotto / si è rotta (se rompió; el participio concuerda con la cosa). Para pedir una solución: vorrei cambiare… (quisiera cambiar…).',
           examples: [
             { target: 'Il mio cellulare si è rotto.', base: 'Se me rompió el celular.' },
-            { target: 'Vorrei cambiare la giacca.', base: 'Quisiera cambiar la campera.' },
+            { target: 'Vorrei cambiare la giacca.', base: 'Quisiera cambiar la chaqueta.' },
           ],
         },
-        takeaways: ['Decís non funziona y si è rotto / rotta.', 'Pedís cambiar algo.'],
+        takeaways: ['Dices non funziona y si è rotto / rotta.', 'Pides cambiar algo.'],
         exercises: [
           ex.translationChoice(
             'non funziona',
@@ -683,14 +683,14 @@ export const IT_A2_U12: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Qual è il problema?',
-            '¿Cuál es el problema? (Respondé que el celular no funciona.)',
+            '¿Cuál es el problema? (Responde que el celular no funciona.)',
             'Il cellulare non funziona.',
             ['Il mio cellulare non funziona.', 'Non funziona il cellulare.'],
             ['it-non-funziona', 'it-problema'],
             { id: 'it.ex.xuwkchv1y7nrfi' },
           ),
           ex.translateWrite(
-            'Quisiera cambiar la campera.',
+            'Quisiera cambiar la chaqueta.',
             'Vorrei cambiare la giacca.',
             ['it-cambiare', 'it-giacca'],
             { id: 'it.ex.o26f0avrq3a11y' },
@@ -704,7 +704,7 @@ export const IT_A2_U12: ItUnitDef = {
         objective: 'Resolver un reclamo y opinar sobre costumbres.',
         intro: {
           explanation:
-            'Lo scontrino es el ticket de compra (no un «descuento», que es lo sconto). Con el ticket podés pedir il rimborso (que te devuelvan la plata) o cambiare il prodotto. Para elegir con cortesía: preferirei…',
+            'Lo scontrino es el ticket de compra (no un «descuento», que es lo sconto). Con el ticket puedes pedir il rimborso (que te devuelvan el dinero) o cambiare il prodotto. Para elegir con cortesía: preferirei…',
           examples: [
             { target: 'Ha lo scontrino?', base: '¿Tiene el ticket?' },
             {
@@ -713,7 +713,7 @@ export const IT_A2_U12: ItUnitDef = {
             },
           ],
         },
-        takeaways: ['Pedís il rimborso o cambiar algo.', 'Distinguís lo scontrino de lo sconto.'],
+        takeaways: ['Pides il rimborso o cambiar algo.', 'Distingues lo scontrino de lo sconto.'],
         exercises: [
           ex.translationChoice(
             'scontrino',
@@ -744,7 +744,7 @@ export const IT_A2_U12: ItUnitDef = {
           ),
           ex.fillBlank(
             'Ha lo ___? Senza non posso cambiare la giacca.',
-            '¿Tiene el ticket? Sin él no puedo cambiarle la campera.',
+            '¿Tiene el ticket? Sin él no puedo cambiarle la chaqueta.',
             'scontrino',
             ['sconto', 'rimborso', 'conto'],
             ['it-scontrino', 'it-cambiare'],
@@ -754,7 +754,7 @@ export const IT_A2_U12: ItUnitDef = {
             'it.ex.1gius4if0si773',
             RECLAMO,
             '¿Qué le ofrece el vendedor?',
-            'Cambiar los auriculares o devolverle la plata',
+            'Cambiar los auriculares o devolverle el dinero',
             ['Arreglarlos', 'Un descuento', 'Nada, porque no tiene ticket'],
             ['it-cambiare', 'it-rimborso'],
             'El vendedor pregunta: «Preferisce cambiarle o vuole il rimborso?».',
@@ -772,10 +772,10 @@ export const IT_A2_U12: ItUnitDef = {
             'it.ex.42yqpkscskkqdh',
             OPINIONI,
             '¿Qué dice Luca de lo que pasa en los bares?',
-            'Que nadie dice nada, pero algunos mozos sonríen',
+            'Que nadie dice nada, pero algunos meseros sonríen',
             [
               'Que no te sirven el capuchino a la tarde',
-              'Que los mozos se enojan',
+              'Que los meseros se enojan',
               'Que es más caro a la tarde',
             ],
             ['it-comunque'],
@@ -789,7 +789,7 @@ export const IT_A2_U12: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Preferisce cambiarle o vuole il rimborso?',
-            '¿Prefiere cambiarlos o quiere el reembolso? (Respondé que preferirías el reembolso.)',
+            '¿Prefiere cambiarlos o quiere el reembolso? (Responde que preferirías el reembolso.)',
             'Preferirei il rimborso.',
             ['Preferirei il rimborso, grazie.', 'Il rimborso, per favore.'],
             ['it-preferirei', 'it-rimborso'],

@@ -37,15 +37,25 @@ export async function fetchMyCourses(userId: string): Promise<CourseEnrollment[]
 }
 
 /**
- * Guarda el idioma de la interfaz en el perfil. false = la migración no está aplicada (queda sólo en
- * el dispositivo).
+ * La base rechazó el idioma (set_interface_language / complete_onboarding_v2 lanzan
+ * interface_language_invalid, 22023): pasa con pt-BR / it mientras no esté aplicada
+ * 20270103120000_interface_languages_pt_it.
+ */
+export function isUnsupportedInterfaceLanguage(error: unknown): boolean {
+  const e = error as { code?: string; message?: string } | null;
+  return e?.code === '22023' && (e.message ?? '').includes('interface_language_invalid');
+}
+
+/**
+ * Guarda el idioma de la interfaz en el perfil. false = la base no lo puede guardar todavía (sin la
+ * migración del modelo de cursos, o sin la de pt-BR / it): queda sólo en el dispositivo.
  */
 export async function saveInterfaceLanguage(language: InterfaceLanguage): Promise<boolean> {
   try {
     await callPendingRpc('set_interface_language', { p_language: language });
     return true;
   } catch (error) {
-    if (isMissingRpc(error)) return false;
+    if (isMissingRpc(error) || isUnsupportedInterfaceLanguage(error)) return false;
     throw error;
   }
 }

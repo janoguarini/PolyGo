@@ -26,7 +26,7 @@ const tone = (
 ): ExerciseDef => ({
   type: 'listen_choice',
   skill: 'listening',
-  prompt: 'Escuchá y elegí el tono correcto',
+  prompt: 'Escucha y elige el tono correcto',
   payload: { type: 'listen_choice', audioText: hanzi, options: [pinyin, ...others] },
   answer: pinyin,
   words,
@@ -56,17 +56,17 @@ export const unit11: UnitDef = {
   title: 'Gustos y habilidades',
   titleEn: '喜欢',
   description:
-    'Decir lo que te gusta con 喜欢, lo que sabés hacer con 会, lo que podés con 能 y cómo estás con 很 + adjetivo.',
+    'Decir lo que te gusta con 喜欢, lo que sabes hacer con 会, lo que puedes con 能 y cómo estás con 很 + adjetivo.',
   emoji: '❤️',
   objective:
-    'Podés decir 我喜欢… / 我不喜欢…, contar lo que sabés hacer (我会游泳), decir si podés (我今天不能去) y describir con 很 + adjetivo (我很忙).',
+    'Puedes decir 我喜欢… / 我不喜欢…, contar lo que sabes hacer (我会游泳), decir si puedes (我今天不能去) y describir con 很 + adjetivo (我很忙).',
   grammar: {
     title: '喜欢 + cosa o verbo · 会 y 能 · 很 + adjetivo',
     explanation:
       '喜欢 (xǐhuan) es «gustar» y funciona como un verbo común: 我喜欢猫 («me gustan los gatos», literalmente «yo gusto gatos»); también va con otro verbo: 我喜欢看电影. 会 (huì) es «saber hacer algo aprendido» (我会游泳) y 能 (néng) es «poder» en ese momento (我今天不能去). Los adjetivos van con 很 y sin 是: 我很忙.',
     examples: [
       { target: '我喜欢听音乐。', base: 'Me gusta escuchar música.' },
-      { target: '你会说中文吗？', base: '¿Sabés hablar chino?' },
+      { target: '你会说中文吗？', base: '¿Sabes hablar chino?' },
       { target: '今天我很累。', base: 'Hoy estoy muy cansado/a.' },
     ],
   },
@@ -143,7 +143,7 @@ export const unit11: UnitDef = {
       'tiàowǔ',
       'bailar',
       '你会跳舞吗？',
-      '¿Sabés bailar?',
+      '¿Sabes bailar?',
       ['verbs', 'hobbies'],
       {
         emoji: '💃',
@@ -166,7 +166,7 @@ export const unit11: UnitDef = {
     w('zh-hui', '会', 'huì', 'saber (hacer algo)', '我会游泳。', 'Sé nadar.', ['verbs'], {
       acceptedTranslations: ['saber'],
     }),
-    w('zh-neng', '能', 'néng', 'poder', '明天你能来吗？', '¿Mañana podés venir?', ['verbs']),
+    w('zh-neng', '能', 'néng', 'poder', '明天你能来吗？', '¿Mañana puedes venir?', ['verbs']),
     w(
       'zh-mang',
       '忙',
@@ -246,7 +246,7 @@ export const unit11: UnitDef = {
           { target: '我不喜欢牛奶。', base: 'No me gusta la leche.' },
         ],
       },
-      takeaways: ['Decís lo que te gusta con 喜欢.', 'Negás con 不喜欢.'],
+      takeaways: ['Dices lo que te gusta con 喜欢.', 'Niegas con 不喜欢.'],
       exercises: [
         ex.translationChoice(
           '喜欢',
@@ -299,7 +299,7 @@ export const unit11: UnitDef = {
           { target: '他非常喜欢踢足球。', base: 'A él le encanta jugar al fútbol.' },
         ],
       },
-      takeaways: ['Nombrás pasatiempos.', 'Decís que algo te encanta con 非常喜欢.'],
+      takeaways: ['Nombras pasatiempos.', 'Dices que algo te encanta con 非常喜欢.'],
       exercises: [
         ex.imageChoice('🎤', '唱歌', ['跳舞', '游泳', '睡觉'], ['zh-changge']),
         ex.imageChoice('💃', '跳舞', ['唱歌', '走路', '做饭'], ['zh-tiaowu']),
@@ -341,16 +341,16 @@ export const unit11: UnitDef = {
     },
     {
       title: '我会游泳',
-      objective: 'Decir lo que sabés hacer.',
+      objective: 'Decir lo que sabes hacer.',
       intro: {
         explanation:
           '会 (huì) es «saber hacer» algo que se aprende: nadar, manejar, un idioma. Va antes del verbo: 我会游泳. Se niega con 不, que antes del cuarto tono de 会 se dice bú: 我不会开车 (wǒ bú huì kāichē).',
         examples: [
           { target: '我会游泳。', base: 'Sé nadar.' },
-          { target: '你会说中文吗？', base: '¿Sabés hablar chino?' },
+          { target: '你会说中文吗？', base: '¿Sabes hablar chino?' },
         ],
       },
-      takeaways: ['Decís lo que sabés hacer con 会.', 'Decís lo que no sabés con 不会.'],
+      takeaways: ['Dices lo que sabes hacer con 会.', 'Dices lo que no sabes con 不会.'],
       exercises: [
         ex.translationChoice(
           '会',
@@ -392,16 +392,16 @@ export const unit11: UnitDef = {
     },
     {
       title: '你能来吗？',
-      objective: 'Decir si podés hacer algo.',
+      objective: 'Decir si puedes hacer algo.',
       intro: {
         explanation:
-          '能 (néng) es «poder»: si es posible en ese momento. 我今天不能去 «hoy no puedo ir». Compará: 我会游泳 (sé nadar) y 今天我不能游泳 (hoy no puedo nadar).',
+          '能 (néng) es «poder»: si es posible en ese momento. 我今天不能去 «hoy no puedo ir». Compara: 我会游泳 (sé nadar) y 今天我不能游泳 (hoy no puedo nadar).',
         examples: [
-          { target: '明天你能来吗？', base: '¿Mañana podés venir?' },
+          { target: '明天你能来吗？', base: '¿Mañana puedes venir?' },
           { target: '今天我不能去。', base: 'Hoy no puedo ir.' },
         ],
       },
-      takeaways: ['Preguntás si alguien puede con 能…吗？', 'Distinguís 会 (saber) y 能 (poder).'],
+      takeaways: ['Preguntas si alguien puede con 能…吗？', 'Distingues 会 (saber) y 能 (poder).'],
       exercises: [
         ex.translationChoice('能', 'poder', ['saber (hacer algo)', 'venir', 'tener'], ['zh-neng']),
         tone('能', 'néng', ['nēng', 'něng', 'nèng'], ['zh-neng']),
@@ -426,14 +426,14 @@ export const unit11: UnitDef = {
           ['zh-hui', 'zh-shuo', 'zh-zhongwen'],
           { explanation: 'Un idioma se aprende: 会.' },
         ),
-        ex.orderWords('你 明天 能 来 吗？', '¿Podés venir mañana?', [
+        ex.orderWords('你 明天 能 来 吗？', '¿Puedes venir mañana?', [
           'zh-mingtian',
           'zh-neng',
           'zh-lai',
           'zh-ma',
         ]),
         write(
-          '¿Mañana podés venir?',
+          '¿Mañana puedes venir?',
           'míngtiān nǐ néng lái ma',
           '明天你能来吗',
           ['zh-mingtian', 'zh-neng', 'zh-lai', 'zh-ma'],
@@ -461,7 +461,7 @@ export const unit11: UnitDef = {
           { target: '我的房间很小。', base: 'Mi habitación es chica.' },
         ],
       },
-      takeaways: ['Decís cómo estás con 很 + adjetivo.', 'Describís cosas como grandes o chicas.'],
+      takeaways: ['Dices cómo estás con 很 + adjetivo.', 'Describes cosas como grandes o chicas.'],
       exercises: [
         ex.imageChoice('😩', '累', ['高兴', '饿', '忙'], ['zh-lei']),
         ex.imageChoice('😊', '高兴', ['累', '饿', '漂亮'], ['zh-gaoxing']),

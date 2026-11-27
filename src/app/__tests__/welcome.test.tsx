@@ -74,7 +74,7 @@ it('avisa si el usuario cancela y muestra los errores', async () => {
   mockSignInWithGoogle.mockRejectedValueOnce({ code: 'oauth_failed', message: 'x' });
   await fireEvent.press(googleButton());
   expect(
-    await screen.findByText('Google no pudo completar el inicio de sesión. Intentá de nuevo.'),
+    await screen.findByText('Google no pudo completar el inicio de sesión. Inténtalo de nuevo.'),
   ).toBeTruthy();
 });
 
@@ -152,7 +152,7 @@ describe('Sign in with Apple', () => {
     await renderWelcome();
     await fireEvent.press(screen.getByRole('button', { name: 'Continuar con Apple' }));
     expect(
-      await screen.findByText('No pudimos validar tu cuenta de Apple. Intentá de nuevo.'),
+      await screen.findByText('No pudimos validar tu cuenta de Apple. Inténtalo de nuevo.'),
     ).toBeTruthy();
     expect(googleButton()).toBeEnabled();
   });

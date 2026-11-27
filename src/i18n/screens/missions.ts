@@ -18,4 +18,20 @@ export const missionsScreenStrings = defineStrings({
     missionA11y: (title: string, progress: number, target: number, done: boolean, polys: number) =>
       `${title}: ${progress} of ${target}${done ? ', complete' : ''}. Earns ${polys} Polys`,
   },
+  'pt-BR': {
+    loading: 'Carregando missões…',
+    title: 'Recompensa diária',
+    today: 'MISSÕES DE HOJE',
+    resetHint: 'As missões mudam todos os dias à meia-noite.',
+    missionA11y: (title: string, progress: number, target: number, done: boolean, polys: number) =>
+      `${title}: ${progress} de ${target}${done ? ', concluída' : ''}. Dá ${polys} Polys`,
+  },
+  it: {
+    loading: 'Caricamento missioni…',
+    title: 'Ricompensa giornaliera',
+    today: 'MISSIONI DI OGGI',
+    resetHint: 'Le missioni cambiano ogni giorno a mezzanotte.',
+    missionA11y: (title: string, progress: number, target: number, done: boolean, polys: number) =>
+      `${title}: ${progress} su ${target}${done ? ', completata' : ''}. Dà ${polys} Polys`,
+  },
 });

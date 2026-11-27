@@ -49,7 +49,7 @@ export const FR_A1_U11: FrUnitDef = {
       'Aimer, adorer, détester y préférer + le / la o + infinitivo; faire du sport; jouer au foot y jouer de la guitare; avec; pas du tout. Terminaciones mudas y liaison ils‿aiment.',
     emoji: '❤️',
     objective:
-      'Podés decir qué te gusta, qué te encanta, qué odiás y qué preferís hacer en tu tiempo libre, y preguntárselo a otra persona.',
+      'Puedes decir qué te gusta, qué te encanta, qué odias y qué prefieres hacer en tu tiempo libre, y preguntárselo a otra persona.',
     grammar: {
       title: 'Aimer + le / la · faire du · jouer au / jouer de la',
       explanation:
@@ -136,7 +136,7 @@ export const FR_A1_U11: FrUnitDef = {
         'la musique',
         'la música',
         "J'écoute de la musique le soir.",
-        'Escucho música a la noche.',
+        'Escucho música por la noche.',
         ['hobbies', 'f'],
         {
           emoji: '🎵',
@@ -170,7 +170,7 @@ export const FR_A1_U11: FrUnitDef = {
         'lire',
         'leer',
         "J'aime lire le soir.",
-        'Me gusta leer a la noche.',
+        'Me gusta leer por la noche.',
         ['hobbies', 'verbs'],
         {
           emoji: '📖',
@@ -223,12 +223,12 @@ export const FR_A1_U11: FrUnitDef = {
       w(
         'fr-tu-fais',
         'tu fais',
-        'hacés',
+        'haces',
         "Qu'est-ce que tu fais le week-end?",
-        '¿Qué hacés el fin de semana?',
+        '¿Qué haces el fin de semana?',
         ['verbs'],
         {
-          acceptedTranslations: ['haces', 'tú haces', 'vos hacés'],
+          acceptedTranslations: ['tú haces', 'vos hacés', 'hacés'],
         },
       ),
       w(
@@ -269,7 +269,7 @@ export const FR_A1_U11: FrUnitDef = {
       // ------------------------------------------------------------------------------------ L1
       {
         title: "J'aime, je déteste",
-        objective: 'Decir qué te gusta, qué te encanta y qué odiás.',
+        objective: 'Decir qué te gusta, qué te encanta y qué odias.',
         intro: {
           explanation:
             "Para los gustos: j'aime (me gusta), j'adore (me encanta), je déteste (odio). Para preguntar: tu aimes…? Van con el artículo definido, como en español: j'aime la musique, tu aimes le sport? Para negar, ne… pas alrededor del verbo (ne se vuelve n' delante de vocal): je n'aime pas. Y pas du tout es «para nada». Pronunciación: j'aime y tu aimes suenan igual, porque la es final no suena.",
@@ -282,8 +282,8 @@ export const FR_A1_U11: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Decís tus gustos con j'aime, j'adore y je déteste + le / la.",
-          "Negás con je n'aime pas y reforzás con pas du tout.",
+          "Dices tus gustos con j'aime, j'adore y je déteste + le / la.",
+          "Niegas con je n'aime pas y refuerzas con pas du tout.",
         ],
         exercises: [
           ex.translationChoice(
@@ -375,7 +375,7 @@ export const FR_A1_U11: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Tu aimes le sport?',
-            '¿Te gusta el deporte? (Respondé que no te gusta para nada.)',
+            '¿Te gusta el deporte? (Responde que no te gusta para nada.)',
             "Non, je n'aime pas du tout le sport.",
             [
               "Je n'aime pas du tout le sport.",
@@ -392,7 +392,7 @@ export const FR_A1_U11: FrUnitDef = {
       // ------------------------------------------------------------------------------------ L2
       {
         title: 'Lire, danser, voyager',
-        objective: 'Decir qué actividades te gustan y cuáles preferís.',
+        objective: 'Decir qué actividades te gustan y cuáles prefieres.',
         intro: {
           explanation:
             "Después de aimer, adorer, détester y préférer puede ir un verbo en infinitivo, sin preposición: j'aime lire, j'adore danser. Muchos infinitivos terminan en -er, y la r final no suena: danser, voyager, cuisiner. Ojo con je préfère: la primera e lleva tilde aguda (é, cerrada) y la segunda, grave (è, abierta).",
@@ -402,8 +402,8 @@ export const FR_A1_U11: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Usás aimer, adorer o préférer + infinitivo: j'aime lire.",
-          'Decís qué preferís con je préfère.',
+          "Usas aimer, adorer o préférer + infinitivo: j'aime lire.",
+          'Dices qué prefieres con je préfère.',
         ],
         exercises: [
           ex.translationChoice('lire', 'leer', ['bailar', 'viajar', 'cocinar'], ['fr-lire'], {
@@ -421,7 +421,7 @@ export const FR_A1_U11: FrUnitDef = {
           ),
           ex.fillBlank(
             "J'aime ___ le soir.",
-            'Me gusta leer a la noche.',
+            'Me gusta leer por la noche.',
             'lire',
             ['danser', 'voyager', 'cuisiner'],
             ['fr-lire'],
@@ -456,7 +456,7 @@ export const FR_A1_U11: FrUnitDef = {
           ),
           ex.orderWords(
             'Je préfère lire le soir.',
-            'Prefiero leer a la noche.',
+            'Prefiero leer por la noche.',
             ['fr-je-prefere', 'fr-lire'],
             {
               id: 'fr.ex.8phtri4wiwqnju',
@@ -477,7 +477,7 @@ export const FR_A1_U11: FrUnitDef = {
           }),
           ex.shortAnswer(
             'Tu préfères lire ou voyager?',
-            '¿Preferís leer o viajar? (Respondé que preferís viajar.)',
+            '¿Prefieres leer o viajar? (Responde que prefieres viajar.)',
             'Je préfère voyager.',
             ['Moi, je préfère voyager.', 'Je préfère voyager!'],
             ['fr-je-prefere', 'fr-voyager'],
@@ -489,26 +489,26 @@ export const FR_A1_U11: FrUnitDef = {
       // ------------------------------------------------------------------------------------ L3
       {
         title: 'Je fais du sport',
-        objective: 'Preguntar y decir qué hacés en tu tiempo libre.',
+        objective: 'Preguntar y decir qué haces en tu tiempo libre.',
         intro: {
           explanation:
             "Faire es hacer: je fais, tu fais, il fait. Las tres formas suenan igual: la s y la t finales no se pronuncian. Para preguntar: qu'est-ce que tu fais? Con actividades se usa du (de + le) o de la: je fais du sport. Con aimer, en cambio, va le: j'aime le sport. Avec es con: avec Hugo, avec mon frère.",
           examples: [
-            { target: "Qu'est-ce que tu fais le week-end?", base: '¿Qué hacés el fin de semana?' },
+            { target: "Qu'est-ce que tu fais le week-end?", base: '¿Qué haces el fin de semana?' },
             { target: 'Je fais du sport avec Hugo.', base: 'Hago deporte con Hugo.' },
           ],
         },
         takeaways: [
-          "Preguntás qu'est-ce que tu fais? y respondés je fais…",
-          "Decís je fais du sport, pero j'aime le sport.",
+          "Preguntas qu'est-ce que tu fais? y respondes je fais…",
+          "Dices je fais du sport, pero j'aime le sport.",
         ],
         exercises: [
-          ex.translationChoice('je fais', 'hago', ['hacés', 'tengo', 'voy'], ['fr-je-fais'], {
+          ex.translationChoice('je fais', 'hago', ['haces', 'tengo', 'voy'], ['fr-je-fais'], {
             id: 'fr.ex.hid5vnh1kvrl0o',
           }),
           ex.fillBlank(
             "Qu'est-ce que tu ___ le week-end?",
-            '¿Qué hacés el fin de semana?',
+            '¿Qué haces el fin de semana?',
             'fais',
             ['fait', 'vas', 'as'],
             ['fr-tu-fais'],
@@ -520,7 +520,7 @@ export const FR_A1_U11: FrUnitDef = {
           ex.matchPairs(
             [
               ['je fais', 'hago'],
-              ['tu fais', 'hacés'],
+              ['tu fais', 'haces'],
               ['avec', 'con'],
               ['le temps libre', 'el tiempo libre'],
             ],
@@ -585,7 +585,7 @@ export const FR_A1_U11: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Qu'est-ce que tu fais le week-end?",
-            '¿Qué hacés el fin de semana? (Respondé que hacés deporte.)',
+            '¿Qué haces el fin de semana? (Responde que haces deporte.)',
             'Je fais du sport.',
             ['Le week-end, je fais du sport.', 'Je fais du sport le week-end.'],
             ['fr-je-fais', 'fr-le-sport'],
@@ -597,7 +597,7 @@ export const FR_A1_U11: FrUnitDef = {
       // ------------------------------------------------------------------------------------ L4
       {
         title: 'Jouer au foot, jouer de la guitare',
-        objective: 'Decir qué deporte jugás y qué instrumento tocás.',
+        objective: 'Decir qué deporte juegas y qué instrumento tocas.',
         intro: {
           explanation:
             'Jouer es jugar y también tocar un instrumento, pero cambia la preposición. Con deportes, jouer à: à + le = au (je joue au foot, au tennis). Con instrumentos, jouer de: de la guitare, du piano (de + le = du). El foot es el deporte más popular de Francia.',
@@ -607,8 +607,8 @@ export const FR_A1_U11: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Decís jouer au + deporte: je joue au foot.',
-          'Decís jouer de la / du + instrumento: je joue de la guitare.',
+          'Dices jouer au + deporte: je joue au foot.',
+          'Dices jouer de la / du + instrumento: je joue de la guitare.',
         ],
         exercises: [
           ex.translationChoice('jouer', 'jugar', ['bailar', 'leer', 'viajar'], ['fr-jouer'], {
@@ -703,7 +703,7 @@ export const FR_A1_U11: FrUnitDef = {
         objective: 'Contar qué te gusta hacer y qué no, y preguntarle a otra persona.',
         intro: {
           explanation:
-            "Para hablar de tu tiempo libre combinás todo: j'aime + le / la o + infinitivo, je fais du sport, je joue au foot. En la negación el artículo no cambia: je n'aime pas le foot. Con ils y elles hay liaison: en ils aiment, la s se une a la vocal con un sonido z; en il aime no hay ningún sonido z.",
+            "Para hablar de tu tiempo libre combinas todo: j'aime + le / la o + infinitivo, je fais du sport, je joue au foot. En la negación el artículo no cambia: je n'aime pas le foot. Con ils y elles hay liaison: en ils aiment, la s se une a la vocal con un sonido z; en il aime no hay ningún sonido z.",
           examples: [
             { target: 'Ils aiment le foot.', base: 'A ellos les gusta el fútbol.' },
             {
@@ -713,8 +713,8 @@ export const FR_A1_U11: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Contás qué te gusta y qué no con j'aime, je n'aime pas y je préfère.",
-          'Distinguís il aime de ils aiment por la liaison con sonido z.',
+          "Cuentas qué te gusta y qué no con j'aime, je n'aime pas y je préfère.",
+          'Distingues il aime de ils aiment por la liaison con sonido z.',
         ],
         exercises: [
           question(
@@ -777,7 +777,7 @@ export const FR_A1_U11: FrUnitDef = {
                 "Hacer deporte es faire du sport; «j'aime du sport» o «je joue du sport» no existen.",
             },
           ),
-          ex.translationChoice('tu fais', 'hacés', ['hago', 'te gusta', 'jugás'], ['fr-tu-fais'], {
+          ex.translationChoice('tu fais', 'haces', ['hago', 'te gusta', 'juegas'], ['fr-tu-fais'], {
             id: 'fr.ex.t047ivkhv0yyau',
           }),
           ex.translateWrite(
@@ -791,7 +791,7 @@ export const FR_A1_U11: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Tu aimes danser?',
-            '¿Te gusta bailar? (Respondé que sí, que te encanta bailar.)',
+            '¿Te gusta bailar? (Responde que sí, que te encanta bailar.)',
             "Oui, j'adore danser!",
             ["Oui, j'adore danser.", "J'adore danser!", "Oui, j'adore!", "Oui, j'adore ça!"],
             ['fr-j-adore', 'fr-danser'],

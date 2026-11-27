@@ -52,7 +52,7 @@ export const FR_A1_U14: FrUnitDef = {
       'Describir el físico y el carácter de alguien: comment est-il?, avoir les cheveux / les yeux, très y assez. Femeninos irregulares y posición del adjetivo. Falsos amigos: gentil y drôle.',
     emoji: '🧑',
     objective:
-      'Podés preguntar cómo es una persona y describir su físico (altura, pelo, ojos) y su carácter, con muy y bastante.',
+      'Puedes preguntar cómo es una persona y describir su físico (altura, pelo, ojos) y su carácter, con muy y bastante.',
     grammar: {
       title: 'El adjetivo: concordancia y lugar',
       explanation:
@@ -224,7 +224,7 @@ export const FR_A1_U14: FrUnitDef = {
         objective: 'Preguntar cómo es alguien y describirlo como joven, viejo o lindo.',
         intro: {
           explanation:
-            'Para preguntar cómo es una persona: comment est-il? (él) o comment est-elle? (ella). El verbo va antes del pronombre y se une con un guion (inversión). Respondés con il est / elle est + adjetivo; muy es très. El adjetivo concuerda: beau → belle, vieux → vieille; jeune no cambia. Con personas, grand es alto y petit, bajo.',
+            'Para preguntar cómo es una persona: comment est-il? (él) o comment est-elle? (ella). El verbo va antes del pronombre y se une con un guion (inversión). Respondes con il est / elle est + adjetivo; muy es très. El adjetivo concuerda: beau → belle, vieux → vieille; jeune no cambia. Con personas, grand es alto y petit, bajo.',
           examples: [
             {
               target: 'Comment est-il? — Il est grand et beau.',
@@ -234,8 +234,8 @@ export const FR_A1_U14: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Preguntás comment est-il? o comment est-elle?',
-          'Describís con il est / elle est + jeune, vieux, beau y très.',
+          'Preguntas comment est-il? o comment est-elle?',
+          'Describes con il est / elle est + jeune, vieux, beau y très.',
         ],
         exercises: [
           ex.translationChoice(
@@ -307,7 +307,7 @@ export const FR_A1_U14: FrUnitDef = {
           }),
           ex.shortAnswer(
             'Comment est ton père?',
-            '¿Cómo es tu papá? (Respondé que es alto y lindo.)',
+            '¿Cómo es tu papá? (Responde que es alto y lindo.)',
             'Il est grand et beau.',
             ['Mon père est grand et beau.', 'Il est beau et grand.'],
             ['fr-beau', 'fr-comment-est-il'],
@@ -329,8 +329,8 @@ export const FR_A1_U14: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Describís el pelo y los ojos con avoir les cheveux / les yeux.',
-          'Usás mince y assez para la figura.',
+          'Describes el pelo y los ojos con avoir les cheveux / les yeux.',
+          'Usas mince y assez para la figura.',
         ],
         exercises: [
           ex.translationChoice(
@@ -418,7 +418,7 @@ export const FR_A1_U14: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Comment est ton frère?',
-            '¿Cómo es tu hermano? (Respondé que es rubio y tiene el pelo corto.)',
+            '¿Cómo es tu hermano? (Responde que es rubio y tiene el pelo corto.)',
             'Il est blond et il a les cheveux courts.',
             [
               'Il est blond, il a les cheveux courts.',
@@ -444,8 +444,8 @@ export const FR_A1_U14: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Describís el carácter con sympa, gentil, drôle, timide, sérieux y sportif.',
-          'Recordás que gentil es amable y drôle, gracioso.',
+          'Describes el carácter con sympa, gentil, drôle, timide, sérieux y sportif.',
+          'Recuerdas que gentil es amable y drôle, gracioso.',
         ],
         exercises: [
           ex.translationChoice(
@@ -527,7 +527,7 @@ export const FR_A1_U14: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Comment est ton ami?',
-            '¿Cómo es tu amigo? (Respondé que es simpático pero tímido.)',
+            '¿Cómo es tu amigo? (Responde que es simpático pero tímido.)',
             'Il est sympa mais timide.',
             [
               'Il est sympa, mais timide.',
@@ -557,8 +557,8 @@ export const FR_A1_U14: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Ponés beau, jeune, vieux, petit y grand antes del sustantivo.',
-          'Usás belle, vieille, gentille, sportive y sérieuse con el femenino.',
+          'Pones beau, jeune, vieux, petit y grand antes del sustantivo.',
+          'Usas belle, vieille, gentille, sportive y sérieuse con el femenino.',
         ],
         exercises: [
           ex.fillBlank(
@@ -651,7 +651,7 @@ export const FR_A1_U14: FrUnitDef = {
         objective: 'Describir a una persona completa: físico y carácter.',
         intro: {
           explanation:
-            'Para describir a alguien, combinás todo: elle est grande et mince, elle a les cheveux blonds, elle est très gentille. Escuchá el final del adjetivo: en el masculino la consonante final no suena (blond, brun, court) y en el femenino sí (blonde, courte); brune suena distinto de brun, que tiene vocal nasal.',
+            'Para describir a alguien, combinas todo: elle est grande et mince, elle a les cheveux blonds, elle est très gentille. Escucha el final del adjetivo: en el masculino la consonante final no suena (blond, brun, court) y en el femenino sí (blonde, courte); brune suena distinto de brun, que tiene vocal nasal.',
           examples: [
             { target: 'Elle est blonde et assez grande.', base: 'Es rubia y bastante alta.' },
             {
@@ -661,8 +661,8 @@ export const FR_A1_U14: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Describís a una persona con su físico y su carácter.',
-          'Distinguís al oído el masculino y el femenino: blond / blonde.',
+          'Describes a una persona con su físico y su carácter.',
+          'Distingues al oído el masculino y el femenino: blond / blonde.',
         ],
         exercises: [
           question(
@@ -752,7 +752,7 @@ export const FR_A1_U14: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Comment est ta sœur?',
-            '¿Cómo es tu hermana? (Respondé que es alta, morocha y muy simpática.)',
+            '¿Cómo es tu hermana? (Responde que es alta, morocha y muy simpática.)',
             'Elle est grande, brune et très sympa.',
             [
               'Ma sœur est grande, brune et très sympa.',

@@ -152,7 +152,7 @@ export const EN_B2_U04: B2UnitDef = {
       'Investigación y descubrimientos, inventos, inteligencia artificial y privacidad, y oraciones de relativo con comas, whose y which.',
     emoji: '🔬',
     objective:
-      'Podés contar un descubrimiento, opinar sobre la tecnología y dar información extra con oraciones de relativo.',
+      'Puedes contar un descubrimiento, opinar sobre la tecnología y dar información extra con oraciones de relativo.',
     grammar: {
       title: 'Oraciones de relativo avanzadas',
       explanation:
@@ -343,7 +343,7 @@ export const EN_B2_U04: B2UnitDef = {
         '/ˌaʊtˈdeɪtɪd/',
         '📟',
         'Your phone is so outdated!',
-        '¡Tu teléfono es re anticuado!',
+        '¡Tu teléfono es muy anticuado!',
         ['technology', 'adjectives'],
         ['anticuado', 'desactualizado', 'obsoleto'],
       ),
@@ -380,8 +380,8 @@ export const EN_B2_U04: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Hablás de experimentos, pruebas y descubrimientos.',
-          'Usás evidence como incontable: some evidence, no evidence.',
+          'Hablas de experimentos, pruebas y descubrimientos.',
+          'Usas evidence como incontable: some evidence, no evidence.',
         ],
         exercises: [
           ex.matchPairs(
@@ -491,8 +491,8 @@ export const EN_B2_U04: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Contás quién tuvo una idea con come up with.',
-          'Unís una persona con algo suyo con whose.',
+          'Cuentas quién tuvo una idea con come up with.',
+          'Unes una persona con algo suyo con whose.',
         ],
         exercises: [
           ex.matchPairs(
@@ -621,8 +621,8 @@ export const EN_B2_U04: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Agregás información extra entre comas con which y who.',
-          'Retomás toda una idea con which y hablás de partes con most of which.',
+          'Agregas información extra entre comas con which y who.',
+          'Retomas toda una idea con which y hablas de partes con most of which.',
         ],
         exercises: [
           ex.fillBlank(
@@ -740,8 +740,8 @@ export const EN_B2_U04: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Hablás de la inteligencia artificial, los datos y la privacidad.',
-          'Decís de qué dependés con rely on.',
+          'Hablas de la inteligencia artificial, los datos y la privacidad.',
+          'Dices de qué dependes con rely on.',
         ],
         exercises: [
           ex.matchPairs(
@@ -823,7 +823,7 @@ export const EN_B2_U04: B2UnitDef = {
           ),
           ex.shortAnswer(
             'What do you think about apps that collect your data? (te preocupa tu privacidad)',
-            '¿Qué pensás de las aplicaciones que recogen tus datos?',
+            '¿Qué piensas de las aplicaciones que recogen tus datos?',
             'I worry about my privacy.',
             [
               'I am worried about my privacy.',
@@ -854,7 +854,7 @@ export const EN_B2_U04: B2UnitDef = {
         objective: 'Hablar de tecnología nueva y vieja y de cómo seguirle el ritmo.',
         intro: {
           explanation:
-            'Keep up with es mantenerse al día, seguir el ritmo: It’s hard to keep up with technology. Algo outdated está anticuado; algo cutting-edge es de vanguardia. Con which podés agregar un comentario: My phone, which I bought ten years ago, still works.',
+            'Keep up with es mantenerse al día, seguir el ritmo: It’s hard to keep up with technology. Algo outdated está anticuado; algo cutting-edge es de vanguardia. Con which puedes agregar un comentario: My phone, which I bought ten years ago, still works.',
           examples: [
             {
               target: "It's hard to keep up with technology.",
@@ -867,8 +867,8 @@ export const EN_B2_U04: B2UnitDef = {
           ],
         },
         takeaways: [
-          'Contás si te cuesta seguirle el ritmo a la tecnología.',
-          'Describís algo como outdated o cutting-edge.',
+          'Cuentas si te cuesta seguirle el ritmo a la tecnología.',
+          'Describes algo como outdated o cutting-edge.',
         ],
         exercises: [
           ex.translationChoice(
@@ -930,7 +930,7 @@ export const EN_B2_U04: B2UnitDef = {
           ),
           ex.shortAnswer(
             'Why do you want a new laptop? (el tuyo está muy anticuado)',
-            '¿Por qué querés una computadora nueva?',
+            '¿Por qué quieres una computadora nueva?',
             'Mine is very outdated.',
             [
               'My laptop is very outdated.',

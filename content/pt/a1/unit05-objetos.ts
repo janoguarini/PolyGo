@@ -26,14 +26,14 @@ export const unit05: UnitDef = {
   description: 'Nombrar objetos con su artículo, decir de qué color son y de quién son.',
   emoji: '🎒',
   objective:
-    'Podés preguntar qué es algo, nombrar objetos con o / a / um / uma, decir de qué color son y de quién son con do / da.',
+    'Puedes preguntar qué es algo, nombrar objetos con o / a / um / uma, decir de qué color son y de quién son con do / da.',
   grammar: {
     title: 'Artículos y de + artículo',
     explanation:
       'El artículo es o (masculino), a (femenino), os y as en plural; um y uma son «un» y «una». De se junta con el artículo: de + o = do, de + a = da. En Brasil los nombres de persona suelen llevar artículo: o livro do João.',
     examples: [
       { target: 'o livro → os livros', base: 'el libro → los libros' },
-      { target: 'a caneta → as canetas', base: 'la lapicera → las lapiceras' },
+      { target: 'a caneta → as canetas', base: 'el bolígrafo → los bolígrafos' },
       { target: 'A chave é da Ana.', base: 'La llave es de Ana.' },
     ],
   },
@@ -43,21 +43,23 @@ export const unit05: UnitDef = {
   },
   words: [
     w('pt-o', 'o', 'artículo masculino (el)', 'o livro', 'el libro', ['articles']),
-    w('pt-a', 'a', 'artículo femenino (la)', 'a caneta', 'la lapicera', ['articles']),
+    w('pt-a', 'a', 'artículo femenino (la)', 'a caneta', 'el bolígrafo', ['articles']),
     w('pt-os', 'os', 'artículo masculino plural (los)', 'os livros', 'los libros', ['articles']),
-    w('pt-as', 'as', 'artículo femenino plural (las)', 'as canetas', 'las lapiceras', ['articles']),
+    w('pt-as', 'as', 'artículo femenino plural (las)', 'as canetas', 'los bolígrafos', [
+      'articles',
+    ]),
     w('pt-livro', 'livro', 'libro', 'O livro é vermelho.', 'El libro es rojo.', ['objects'], {
       emoji: '📕',
     }),
     w(
       'pt-caneta',
       'caneta',
-      'lapicera',
+      'bolígrafo',
       'A caneta é preta.',
-      'La lapicera es negra.',
+      'El bolígrafo es negro.',
       ['objects'],
       {
-        acceptedTranslations: ['bolígrafo', 'birome'],
+        acceptedTranslations: ['bolígrafo', 'birome', 'lapicera'],
         emoji: '🖊️',
       },
     ),
@@ -85,17 +87,17 @@ export const unit05: UnitDef = {
     w(
       'pt-oculos',
       'óculos',
-      'anteojos',
+      'lentes',
       'Os óculos são pretos.',
-      'Los anteojos son negros.',
+      'Los lentes son negros.',
       ['objects'],
-      { acceptedTranslations: ['lentes', 'gafas'], emoji: '👓' },
+      { acceptedTranslations: ['lentes', 'gafas', 'anteojos'], emoji: '👓' },
     ),
     w('pt-vermelho', 'vermelho', 'rojo', 'O livro é vermelho.', 'El libro es rojo.', ['colors'], {
       acceptedTexts: ['vermelha'],
       emoji: '🔴',
     }),
-    w('pt-azul', 'azul', 'azul', 'A caneta é azul.', 'La lapicera es azul.', ['colors'], {
+    w('pt-azul', 'azul', 'azul', 'A caneta é azul.', 'El bolígrafo es azul.', ['colors'], {
       emoji: '🔵',
     }),
     w(
@@ -107,7 +109,7 @@ export const unit05: UnitDef = {
       ['colors'],
       { acceptedTexts: ['amarela'], emoji: '🟡' },
     ),
-    w('pt-preto', 'preto', 'negro', 'A caneta é preta.', 'La lapicera es negra.', ['colors'], {
+    w('pt-preto', 'preto', 'negro', 'A caneta é preta.', 'El bolígrafo es negro.', ['colors'], {
       acceptedTexts: ['preta'],
       emoji: '⚫',
     }),
@@ -131,7 +133,7 @@ export const unit05: UnitDef = {
       'de quem é?',
       '¿de quién es?',
       'De quem é a caneta?',
-      '¿De quién es la lapicera?',
+      '¿De quién es el bolígrafo?',
       ['questions'],
     ),
     w(
@@ -152,16 +154,16 @@ export const unit05: UnitDef = {
           'Para preguntar qué es algo: o que é isso? En portugués el artículo es o (masculino) y a (femenino): o livro, a caneta. Se responde con é + la cosa: é um livro.',
         examples: [
           { target: 'O que é isso? É um livro.', base: '¿Qué es eso? Es un libro.' },
-          { target: 'A caneta é azul.', base: 'La lapicera es azul.' },
+          { target: 'A caneta é azul.', base: 'El bolígrafo es azul.' },
         ],
       },
       takeaways: [
-        'Preguntás qué es algo con o que é isso?',
-        'Usás o con masculinos y a con femeninos.',
+        'Preguntas qué es algo con o que é isso?',
+        'Usas o con masculinos y a con femeninos.',
       ],
       exercises: [
         ex.imageChoice('📕', 'livro', ['caneta', 'chave', 'caderno'], ['pt-livro']),
-        ex.translationChoice('caneta', 'lapicera', ['llave', 'libro', 'cuaderno'], ['pt-caneta']),
+        ex.translationChoice('caneta', 'bolígrafo', ['llave', 'libro', 'cuaderno'], ['pt-caneta']),
         ex.imageChoice('🔑', 'chave', ['caneta', 'livro', 'óculos'], ['pt-chave']),
         ex.listenChoice(
           'O que é isso?',
@@ -170,7 +172,7 @@ export const unit05: UnitDef = {
         ),
         ex.fillBlank(
           'É ___ caneta.',
-          'Es la lapicera.',
+          'Es el bolígrafo.',
           'a',
           ['o', 'os', 'um'],
           ['pt-a', 'pt-caneta'],
@@ -189,7 +191,7 @@ export const unit05: UnitDef = {
         ex.translateWrite('La llave', 'a chave', ['pt-a', 'pt-chave']),
         ex.shortAnswer(
           'O que é isso? 📕',
-          '¿Qué es eso? (Respondé que es un libro.)',
+          '¿Qué es eso? (Responde que es un libro.)',
           'É um livro.',
           ['Um livro.', 'É o livro.', 'O livro.', 'Isso é um livro.'],
           ['pt-o-que-e', 'pt-livro', 'pt-um'],
@@ -201,18 +203,18 @@ export const unit05: UnitDef = {
       objective: 'Usar um / uma y los artículos en plural.',
       intro: {
         explanation:
-          'Um y uma son «un» y «una». En plural el artículo es os o as: os livros, as canetas. Ojo: borracha es la goma de borrar, y óculos (anteojos) va siempre en plural: os óculos.',
+          'Um y uma son «un» y «una». En plural el artículo es os o as: os livros, as canetas. Ojo: borracha es la goma de borrar, y óculos (lentes) va siempre en plural: os óculos.',
         examples: [
           { target: 'Tenho uma borracha.', base: 'Tengo una goma de borrar.' },
           { target: 'Tenho dois cadernos.', base: 'Tengo dos cuadernos.' },
         ],
       },
-      takeaways: ['Usás um, uma, os y as.', 'Sabés que borracha es la goma de borrar.'],
+      takeaways: ['Usas um, uma, os y as.', 'Sabes que borracha es la goma de borrar.'],
       exercises: [
         ex.translationChoice(
           'borracha',
           'goma de borrar',
-          ['borracho/a', 'lapicera', 'cuaderno'],
+          ['borracho/a', 'bolígrafo', 'cuaderno'],
           ['pt-borracha'],
           { explanation: 'Falso amigo: borracha es la goma de borrar. «Borracho» es bêbado.' },
         ),
@@ -238,7 +240,7 @@ export const unit05: UnitDef = {
         ),
         ex.fillBlank(
           '___ canetas',
-          'las lapiceras',
+          'los bolígrafos',
           'as',
           ['os', 'a', 'o'],
           ['pt-as', 'pt-caneta'],
@@ -249,7 +251,7 @@ export const unit05: UnitDef = {
           ['pt-tenho', 'pt-dois', 'pt-caderno'],
           { acceptedAnswers: ['Eu tenho dois cadernos.'] },
         ),
-        ex.translateWrite('Los anteojos', 'os óculos', ['pt-os', 'pt-oculos'], {
+        ex.translateWrite('Los lentes', 'os óculos', ['pt-os', 'pt-oculos'], {
           explanation: 'Óculos va siempre en plural: os óculos.',
         }),
       ],
@@ -262,10 +264,10 @@ export const unit05: UnitDef = {
           'Los colores van después de la palabra y concuerdan: o livro vermelho, a caneta vermelha. Azul no cambia en singular. Para las cosas, «negro» es preto.',
         examples: [
           { target: 'O livro é vermelho.', base: 'El libro es rojo.' },
-          { target: 'A caneta é preta.', base: 'La lapicera es negra.' },
+          { target: 'A caneta é preta.', base: 'El bolígrafo es negro.' },
         ],
       },
-      takeaways: ['Nombrás cinco colores.', 'Usás preto para el negro de las cosas.'],
+      takeaways: ['Nombras cinco colores.', 'Usas preto para el negro de las cosas.'],
       exercises: [
         ex.imageChoice('🔴', 'vermelho', ['azul', 'amarelo', 'preto'], ['pt-vermelho']),
         ex.imageChoice('🟡', 'amarelo', ['branco', 'vermelho', 'azul'], ['pt-amarelo']),
@@ -297,16 +299,19 @@ export const unit05: UnitDef = {
         explanation:
           'De se junta con el artículo: de + o = do, de + a = da. En Brasil los nombres suelen llevar artículo, así que se dice o livro do João, a chave da Ana. Para preguntar: de quem é?',
         examples: [
-          { target: 'De quem é a caneta? É da Ana.', base: '¿De quién es la lapicera? Es de Ana.' },
+          {
+            target: 'De quem é a caneta? É da Ana.',
+            base: '¿De quién es el bolígrafo? Es de Ana.',
+          },
           { target: 'O caderno é do João.', base: 'El cuaderno es de João.' },
         ],
       },
-      takeaways: ['Preguntás de quién es algo.', 'Juntás de + o = do y de + a = da.'],
+      takeaways: ['Preguntas de quién es algo.', 'Juntas de + o = do y de + a = da.'],
       exercises: [
         ex.translationChoice(
           'de quem é?',
           '¿de quién es?',
-          ['¿qué es eso?', '¿de dónde sos?', '¿cómo te llamás?'],
+          ['¿qué es eso?', '¿de dónde eres?', '¿cómo te llamas?'],
           ['pt-de-quem'],
         ),
         ex.fillBlank(
@@ -335,14 +340,14 @@ export const unit05: UnitDef = {
           [
             ['o livro do João', 'el libro de João'],
             ['a chave da Ana', 'la llave de Ana'],
-            ['os óculos', 'los anteojos'],
+            ['os óculos', 'los lentes'],
             ['a borracha', 'la goma de borrar'],
           ],
           ['pt-do', 'pt-da', 'pt-oculos', 'pt-borracha'],
         ),
         ex.shortAnswer(
           'De quem é a caneta?',
-          '¿De quién es la lapicera? (Respondé que es de Ana.)',
+          '¿De quién es el bolígrafo? (Responde que es de Ana.)',
           'É da Ana.',
           ['A caneta é da Ana.', 'Da Ana.', 'É de Ana.'],
           ['pt-de-quem', 'pt-da', 'pt-caneta'],
@@ -362,23 +367,23 @@ export const unit05: UnitDef = {
       objective: 'Describir tus cosas con posesivo y color.',
       intro: {
         explanation:
-          'Juntá todo: meu caderno branco, minha caneta preta. En plural el color también cambia: os óculos pretos, as chaves amarelas.',
+          'Junta todo: meu caderno branco, minha caneta preta. En plural el color también cambia: os óculos pretos, as chaves amarelas.',
         examples: [
-          { target: 'Minha caneta é azul.', base: 'Mi lapicera es azul.' },
+          { target: 'Minha caneta é azul.', base: 'Mi bolígrafo es azul.' },
           {
             target: 'Os óculos do meu pai são pretos.',
-            base: 'Los anteojos de mi papá son negros.',
+            base: 'Los lentes de mi papá son negros.',
           },
         ],
       },
       takeaways: [
-        'Describís tus cosas con meu / minha y un color.',
-        'Hacés concordar el color en plural.',
+        'Describes tus cosas con meu / minha y un color.',
+        'Haces concordar el color en plural.',
       ],
       exercises: [
         ex.fillBlank(
           'A caneta é ___.',
-          'La lapicera es roja.',
+          'El bolígrafo es rojo.',
           'vermelha',
           ['vermelho', 'vermelhos', 'vermelhas'],
           ['pt-vermelho', 'pt-caneta'],
@@ -386,7 +391,7 @@ export const unit05: UnitDef = {
         ),
         ex.fillBlank(
           'Os óculos são ___.',
-          'Los anteojos son negros.',
+          'Los lentes son negros.',
           'pretos',
           ['preto', 'preta', 'pretas'],
           ['pt-preto', 'pt-oculos'],
@@ -400,7 +405,7 @@ export const unit05: UnitDef = {
         ex.translationChoice(
           'o que é isso?',
           '¿qué es eso?',
-          ['¿de quién es?', '¿todo bien?', '¿y vos?'],
+          ['¿de quién es?', '¿todo bien?', '¿y tú?'],
           ['pt-o-que-e'],
         ),
         ex.orderWords('Meu caderno é branco.', 'Mi cuaderno es blanco.', [
@@ -416,14 +421,14 @@ export const unit05: UnitDef = {
           ['pt-minha', 'pt-chave', 'pt-azul'],
         ),
         ex.translateWrite(
-          'Mi lapicera es negra.',
+          'Mi bolígrafo es negro.',
           'Minha caneta é preta.',
           ['pt-minha', 'pt-caneta', 'pt-preto'],
           { acceptedAnswers: ['A minha caneta é preta.'] },
         ),
         ex.shortAnswer(
           'De que cor é o livro? 📘',
-          '¿De qué color es el libro? (Respondé que es azul.)',
+          '¿De qué color es el libro? (Responde que es azul.)',
           'É azul.',
           ['O livro é azul.', 'Azul.'],
           ['pt-azul', 'pt-livro'],

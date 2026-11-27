@@ -121,7 +121,7 @@ export const IT_A2_U10: ItUnitDef = {
       'Hablar del celular, los mensajes y las llamadas, y usar los pronombres: ti chiamo, lo vedo, gli scrivo, le telefono.',
     emoji: '📱',
     objective:
-      'Podés hablar del celular y la compu, mandar y responder mensajes, arreglar una llamada y usar los pronombres para no repetir a quién (ti chiamo, la vedo, gli scrivo).',
+      'Puedes hablar del celular y la compu, mandar y responder mensajes, arreglar una llamada y usar los pronombres para no repetir a quién (ti chiamo, la vedo, gli scrivo).',
     grammar: {
       title: 'Pronombres de objeto directo e indirecto',
       explanation:
@@ -299,8 +299,8 @@ export const IT_A2_U10: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Nombrás il cellulare, il portatile y la batteria.',
-          'Decís que tenés que cargar el celular.',
+          'Nombras il cellulare, il portatile y la batteria.',
+          'Dices que tienes que cargar el celular.',
         ],
         exercises: [
           ex.imageChoice(
@@ -366,7 +366,7 @@ export const IT_A2_U10: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Hai il portatile?',
-            '¿Tenés la notebook? (Respondé que sí, que está en la mochila.)',
+            '¿Tienes la notebook? (Responde que sí, que está en la mochila.)',
             'Sì, è nello zaino.',
             ['Sì, il portatile è nello zaino.', 'È nello zaino.'],
             ['it-portatile', 'it-zaino'],
@@ -399,7 +399,7 @@ export const IT_A2_U10: ItUnitDef = {
             },
           ],
         },
-        takeaways: ['Usás mandare, rispondere y scaricare.', 'Hablás de llamadas y videollamadas.'],
+        takeaways: ['Usas mandare, rispondere y scaricare.', 'Hablas de llamadas y videollamadas.'],
         exercises: [
           ex.translationChoice(
             'scaricare',
@@ -456,7 +456,7 @@ export const IT_A2_U10: ItUnitDef = {
           question(
             'it.ex.e933e57yzv5ekf',
             MUSEO,
-            '¿Qué pasa si no tenés wifi?',
+            '¿Qué pasa si no tienes wifi?',
             'No hay problema: hay una red gratis en todo el museo',
             ['No se puede usar la app', 'Hay que pagar la red', 'Hay que pedirlo en la entrada'],
             ['it-cellulare'],
@@ -464,7 +464,7 @@ export const IT_A2_U10: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Hai scaricato l’app?',
-            '¿Descargaste la app? (Respondé que todavía no.)',
+            '¿Descargaste la app? (Responde que todavía no.)',
             'No, non ancora.',
             ['Non ancora.', 'No, non l’ho ancora scaricata.', "No, non l'ho ancora scaricata."],
             ['it-scaricare', 'it-ancora'],
@@ -487,22 +487,22 @@ export const IT_A2_U10: ItUnitDef = {
         objective: 'Usar mi y ti para quedar en contacto.',
         intro: {
           explanation:
-            'Los pronombres van antes del verbo: ti chiamo (te llamo), ti scrivo (te escribo), mi mandi un messaggio? (¿me mandás un mensaje?). Ojo: ti chiamo es «te llamo», no «te llamás» (ti chiami).',
+            'Los pronombres van antes del verbo: ti chiamo (te llamo), ti scrivo (te escribo), mi mandi un messaggio? (¿me mandas un mensaje?). Ojo: ti chiamo es «te llamo», no «te llamas» (ti chiami).',
           examples: [
             { target: 'Ti chiamo stasera, va bene?', base: 'Te llamo esta noche, ¿está bien?' },
-            { target: 'Mi mandi un messaggio?', base: '¿Me mandás un mensaje?' },
+            { target: 'Mi mandi un messaggio?', base: '¿Me mandas un mensaje?' },
           ],
         },
-        takeaways: ['Decís ti chiamo y ti scrivo.', 'Pedís mi mandi…?'],
+        takeaways: ['Dices ti chiamo y ti scrivo.', 'Pides mi mandi…?'],
         exercises: [
           ex.translationChoice(
             'ti chiamo',
             'te llamo',
-            ['me llamo', 'se llama', 'te llamás'],
+            ['me llamo', 'se llama', 'te llamas'],
             ['it-ti-chiamo'],
             {
               id: 'it.ex.wun0wm9mmn1m9l',
-              explanation: 'Ti chiamo es «te llamo» (por teléfono). «Te llamás» es ti chiami.',
+              explanation: 'Ti chiamo es «te llamo» (por teléfono). «Te llamas» es ti chiami.',
             },
           ),
           ex.fillBlank(
@@ -515,7 +515,7 @@ export const IT_A2_U10: ItUnitDef = {
           ),
           ex.fillBlank(
             'Mi ___ un messaggio?',
-            '¿Me mandás un mensaje?',
+            '¿Me mandas un mensaje?',
             'mandi',
             ['mando', 'manda', 'mandare'],
             ['it-mandare', 'it-messaggio'],
@@ -559,7 +559,7 @@ export const IT_A2_U10: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Mi chiami stasera?',
-            '¿Me llamás esta noche? (Respondé que sí, a las nueve.)',
+            '¿Me llamas esta noche? (Responde que sí, a las nueve.)',
             'Sì, ti chiamo alle nove.',
             ['Ti chiamo alle nove.', 'Sì, ti chiamo stasera alle nove.'],
             ['it-ti-chiamo'],
@@ -588,16 +588,16 @@ export const IT_A2_U10: ItUnitDef = {
             },
             {
               target: 'Chiami Anna? — Sì, la chiamo subito.',
-              base: '¿Llamás a Anna? — Sí, la llamo enseguida.',
+              base: '¿Llamas a Anna? — Sí, la llamo enseguida.',
             },
           ],
         },
-        takeaways: ['Usás lo y la antes del verbo.', 'Entendés indicaciones en la oficina.'],
+        takeaways: ['Usas lo y la antes del verbo.', 'Entiendes indicaciones en la oficina.'],
         exercises: [
           ex.translationChoice(
             'la chiamo',
             'la llamo',
-            ['la llama', 'me llamo', 'la llamás'],
+            ['la llama', 'me llamo', 'la llamas'],
             ['it-la-chiamo'],
             { id: 'it.ex.i2c3u5sdisdv01' },
           ),
@@ -613,7 +613,7 @@ export const IT_A2_U10: ItUnitDef = {
           ),
           ex.fillBlank(
             'Chiami Anna? — Sì, ___ chiamo subito.',
-            '¿Llamás a Anna? — Sí, la llamo enseguida.',
+            '¿Llamas a Anna? — Sí, la llamo enseguida.',
             'la',
             ['lo', 'gli', 'ti'],
             ['it-la-chiamo'],
@@ -652,7 +652,7 @@ export const IT_A2_U10: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Vedi Sara domani?',
-            '¿Ves a Sara mañana? (Respondé que sí, que la ves a la tarde.)',
+            '¿Ves a Sara mañana? (Responde que sí, que la ves a la tarde.)',
             'Sì, la vedo il pomeriggio.',
             [
               'La vedo il pomeriggio.',
@@ -684,12 +684,12 @@ export const IT_A2_U10: ItUnitDef = {
           examples: [
             {
               target: 'Scrivi a Marco? — Sì, gli scrivo stasera.',
-              base: '¿Le escribís a Marco? — Sí, le escribo esta noche.',
+              base: '¿Le escribes a Marco? — Sí, le escribo esta noche.',
             },
             { target: 'Le telefono domani mattina.', base: 'La llamo mañana a la mañana.' },
           ],
         },
-        takeaways: ['Usás gli para él y le para ella.', 'Distinguís la chiamo de le telefono.'],
+        takeaways: ['Usas gli para él y le para ella.', 'Distingues la chiamo de le telefono.'],
         exercises: [
           ex.translationChoice(
             'gli scrivo',
@@ -702,7 +702,7 @@ export const IT_A2_U10: ItUnitDef = {
           ),
           ex.fillBlank(
             'Scrivi a Marco? — Sì, ___ scrivo stasera.',
-            '¿Le escribís a Marco? — Sí, le escribo esta noche.',
+            '¿Le escribes a Marco? — Sí, le escribo esta noche.',
             'gli',
             ['le', 'lo', 'la'],
             ['it-gli-scrivo'],
@@ -713,7 +713,7 @@ export const IT_A2_U10: ItUnitDef = {
           ),
           ex.fillBlank(
             'Telefoni alla nonna? — Sì, ___ telefono domani.',
-            '¿La llamás a la abuela? — Sí, la llamo mañana.',
+            '¿La llamas a la abuela? — Sí, la llamo mañana.',
             'le',
             ['gli', 'la', 'lo'],
             ['it-le-telefono', 'it-nonna'],
@@ -754,7 +754,7 @@ export const IT_A2_U10: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Hai scritto al nonno?',
-            '¿Le escribiste al abuelo? (Respondé que todavía no, que le escribís mañana.)',
+            '¿Le escribiste al abuelo? (Responde que todavía no, que le escribes mañana.)',
             'Non ancora, gli scrivo domani.',
             ['No, non ancora: gli scrivo domani.', 'Gli scrivo domani.', 'No, gli scrivo domani.'],
             ['it-gli-scrivo', 'it-ancora'],

@@ -8,7 +8,7 @@ export const usernameSchema = z
   .string()
   .trim()
   .toLowerCase()
-  .regex(USERNAME_REGEX, 'Usá de 3 a 20 caracteres: letras minúsculas, números o "_".');
+  .regex(USERNAME_REGEX, 'Usa de 3 a 20 caracteres: letras minúsculas, números o "_".');
 
 /**
  * Nombres parecidos a `raw` para sugerir cuando el elegido ya existe: el mismo nombre normalizado

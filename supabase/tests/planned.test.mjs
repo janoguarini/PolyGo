@@ -4,6 +4,7 @@
 //
 // Todo se carga SIN publicar. La última parte del archivo publica U13 y U14 dentro de esta base
 // desechable (nunca en otra parte) para jugar las 20 lecciones con la corrección del servidor.
+import { withNeutralSpanish } from '../../scripts/neutral-patch.ts';
 import { test, before } from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash, randomUUID } from 'node:crypto';
@@ -93,7 +94,7 @@ async function errorOf(promise) {
 test('la migración es la salida exacta del generador (determinista) y es la última de contenido de la fase C', () => {
   const a = plannedUnitsSql().sql;
   assert.equal(a, plannedUnitsSql().sql);
-  assert.equal(migration(C3), a);
+  assert.equal(withNeutralSpanish(migration(C3)), a);
   const files = readdirSync(migrationsDir)
     .filter((f) => f.endsWith('.sql'))
     .sort();
@@ -133,7 +134,7 @@ test('la migración es la salida exacta del generador (determinista) y es la úl
   ]);
   // La C.2 no se tocó (ni su archivo ni su generador).
   assert.equal(createHash('sha256').update(migration(C2)).digest('hex'), C2_SHA256);
-  assert.equal(migration(C2), comprehensionSql().sql);
+  assert.equal(withNeutralSpanish(migration(C2)), comprehensionSql().sql);
 });
 
 test('sin sentencias destructivas ni cambios fuera del contenido', () => {

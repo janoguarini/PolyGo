@@ -23,7 +23,7 @@ import { RankEmblem, TIER_COLORS } from '@/design-system';
 import { mascotCelebrate } from '@/design-system/imageData.generated';
 import { SKIN_IMAGES } from '@/design-system/skinImages';
 import { useRankLabels } from '@/features/ranked/strings';
-import { useInterfaceLanguage, useStrings } from '@/i18n';
+import { LOCALES, useInterfaceLanguage, useStrings } from '@/i18n';
 import { useLanguageName } from '@/i18n/languages';
 
 import { shareStrings } from './strings';
@@ -46,7 +46,8 @@ export function useShareTexts(a: ShareAchievement) {
   const ui = useInterfaceLanguage();
   const lang = (code: string) => {
     const name = languageName(code);
-    return ui === 'es' ? name.toLowerCase() : name;
+    // En español, portugués e italiano el nombre del idioma va en minúscula dentro de la frase.
+    return ui === 'en' ? name : name.toLocaleLowerCase(LOCALES[ui]);
   };
   switch (a.kind) {
     case 'rank':

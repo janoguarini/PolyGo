@@ -23,10 +23,10 @@ export const unit09: UnitDef = {
   title: 'Horas y días',
   titleEn: 'Horas e dias',
   description:
-    'Decir y preguntar la hora, a qué hora hacés algo y los días de la semana (segunda-feira…).',
+    'Decir y preguntar la hora, a qué hora haces algo y los días de la semana (segunda-feira…).',
   emoji: '🕗',
   objective:
-    'Podés preguntar y decir la hora (que horas são? são oito horas), decir a qué hora hacés algo (às nove) y nombrar los días de la semana.',
+    'Puedes preguntar y decir la hora (que horas são? são oito horas), decir a qué hora haces algo (às nove) y nombrar los días de la semana.',
   grammar: {
     title: 'São… horas / é uma hora / às…',
     explanation:
@@ -84,7 +84,7 @@ export const unit09: UnitDef = {
       'a que horas?',
       '¿a qué hora?',
       'A que horas você trabalha?',
-      '¿A qué hora trabajás?',
+      '¿A qué hora trabajas?',
       ['time', 'questions'],
     ),
     w('pt-as-hora', 'às', 'a las', 'Trabalho às nove.', 'Trabajo a las nueve.', ['time']),
@@ -125,7 +125,7 @@ export const unit09: UnitDef = {
       'sexta-feira',
       'viernes',
       'Sexta-feira à noite eu janto fora.',
-      'El viernes a la noche ceno afuera.',
+      'El viernes por la noche ceno afuera.',
       ['days'],
       { acceptedTexts: ['sexta'] },
     ),
@@ -160,14 +160,14 @@ export const unit09: UnitDef = {
         ],
       },
       takeaways: [
-        'Preguntás la hora con que horas são?',
-        'Decís la hora con são… horas y é uma hora.',
+        'Preguntas la hora con que horas são?',
+        'Dices la hora con são… horas y é uma hora.',
       ],
       exercises: [
         ex.translationChoice(
           'que horas são?',
           '¿qué hora es?',
-          ['¿cuántos años tenés?', '¿todo bien?', '¿dónde está?'],
+          ['¿cuántos años tienes?', '¿todo bien?', '¿dónde está?'],
           ['pt-que-horas-sao'],
         ),
         ex.listenChoice(
@@ -207,7 +207,7 @@ export const unit09: UnitDef = {
         ),
         ex.shortAnswer(
           'Que horas são?',
-          '¿Qué hora es? (Respondé que son las cuatro.)',
+          '¿Qué hora es? (Responde que son las cuatro.)',
           'São quatro horas.',
           ['São quatro.', 'Quatro horas.'],
           ['pt-sao', 'pt-quatro'],
@@ -228,7 +228,7 @@ export const unit09: UnitDef = {
           { target: 'São onze e quinze.', base: 'Son las once y cuarto.' },
         ],
       },
-      takeaways: ['Decís y media y y cuarto.', 'Contás hasta las doce y decís mediodía.'],
+      takeaways: ['Dices y media y y cuarto.', 'Cuentas hasta las doce y dices mediodía.'],
       exercises: [
         ex.translationChoice('e meia', 'y media', ['y cuarto', 'a las', 'son'], ['pt-e-meia']),
         ex.translationChoice('onze', 'once', ['doce', 'diez', 'quince'], ['pt-onze']),
@@ -262,16 +262,16 @@ export const unit09: UnitDef = {
     },
     {
       title: 'A que horas?',
-      objective: 'Decir a qué hora hacés algo.',
+      objective: 'Decir a qué hora haces algo.',
       intro: {
         explanation:
           'Para preguntar cuándo pasa algo: a que horas? Se responde con às + número: às nove («a las nueve»). Con la una: à uma. Y ao meio-dia: «al mediodía».',
         examples: [
-          { target: 'A que horas você trabalha?', base: '¿A qué hora trabajás?' },
+          { target: 'A que horas você trabalha?', base: '¿A qué hora trabajas?' },
           { target: 'Eu acordo às sete.', base: 'Me despierto a las siete.' },
         ],
       },
-      takeaways: ['Preguntás a que horas…?', 'Decís a qué hora hacés algo con às.'],
+      takeaways: ['Preguntas a que horas…?', 'Dices a qué hora haces algo con às.'],
       exercises: [
         ex.translationChoice('às', 'a las', ['son', 'y media', 'hoy'], ['pt-as-hora']),
         ex.translationChoice(
@@ -300,13 +300,13 @@ export const unit09: UnitDef = {
           ['pt-almoco', 'pt-meio-dia'],
           { skill: 'vocabulary' },
         ),
-        ex.orderWords('A que horas você janta?', '¿A qué hora cenás?', [
+        ex.orderWords('A que horas você janta?', '¿A qué hora cenas?', [
           'pt-a-que-horas',
           'pt-voce',
         ]),
         ex.shortAnswer(
           'A que horas você acorda?',
-          '¿A qué hora te despertás? (Respondé que a las siete.)',
+          '¿A qué hora te despiertas? (Responde que a las siete.)',
           'Acordo às sete.',
           ['Às sete.', 'Eu acordo às sete.', 'Acordo às sete horas.'],
           ['pt-acordo', 'pt-as-hora', 'pt-sete'],
@@ -330,7 +330,7 @@ export const unit09: UnitDef = {
           { target: 'Terça-feira eu estudo.', base: 'El martes estudio.' },
         ],
       },
-      takeaways: ['Nombrás los días de lunes a viernes.', 'Sabés que segunda-feira es lunes.'],
+      takeaways: ['Nombras los días de lunes a viernes.', 'Sabes que segunda-feira es lunes.'],
       exercises: [
         ex.translationChoice(
           'segunda-feira',
@@ -393,20 +393,20 @@ export const unit09: UnitDef = {
       objective: 'Hablar de hoy, mañana y el fin de semana.',
       intro: {
         explanation:
-          'Hoje es «hoy» y amanhã «mañana» (el día siguiente; «a la mañana» es de manhã). Sábado y domingo se escriben como en español. «El fin de semana» es no fim de semana.',
+          'Hoje es «hoy» y amanhã «mañana» (el día siguiente; «por la mañana» es de manhã). Sábado y domingo se escriben como en español. «El fin de semana» es no fim de semana.',
         examples: [
           { target: 'Amanhã é sábado.', base: 'Mañana es sábado.' },
           { target: 'No fim de semana eu durmo muito.', base: 'El fin de semana duermo mucho.' },
         ],
       },
-      takeaways: ['Distinguís amanhã y de manhã.', 'Hablás del fin de semana.'],
+      takeaways: ['Distingues amanhã y de manhã.', 'Hablas del fin de semana.'],
       exercises: [
         ex.translationChoice(
           'amanhã',
           'mañana (el día siguiente)',
-          ['a la mañana', 'hoy', 'siempre'],
+          ['por la mañana', 'hoy', 'siempre'],
           ['pt-amanha'],
-          { explanation: 'Amanhã es el día siguiente; «a la mañana» es de manhã.' },
+          { explanation: 'Amanhã es el día siguiente; «por la mañana» es de manhã.' },
         ),
         ex.translationChoice(
           'fim de semana',
@@ -435,7 +435,7 @@ export const unit09: UnitDef = {
         ),
         ex.shortAnswer(
           'Que dia é hoje?',
-          '¿Qué día es hoy? (Respondé que hoy es domingo.)',
+          '¿Qué día es hoy? (Responde que hoy es domingo.)',
           'Hoje é domingo.',
           ['É domingo.', 'Domingo.'],
           ['pt-hoje', 'pt-domingo'],

@@ -28,6 +28,7 @@ import { PLANNED_OBJECTIVES } from '../../content/planned-objectives.ts';
 import { catalogPayload, FULL_CATALOG_SQL, PLACEMENTS_SQL } from '../../scripts/catalog-sql.ts';
 import { VERSIONS_SQL } from '../../scripts/versions-sql.ts';
 import { GRADING_MODES, gradingSpecFor } from '../../shared/grading.ts';
+import { NEUTRAL_ITEMS, neutralAddedVersions, withNeutralSpanish } from './neutralHistory.mjs';
 
 let db;
 let alice;
@@ -269,11 +270,21 @@ test('ref_grading_modes: los esquemas de shared/grading.ts, inmutables', async (
   });
 });
 
-test('versiones cargadas: 4.198, una por ítem, iguales a content/ y con el hash recalculable', async () => {
-  const loaded = await all(`select item_id, version, content_hash, ${CONTENT_COLUMNS}, grading_spec,
-      generator, generator_version, grading_mode_id
-    from public.exercise_item_versions order by item_id`);
+test('versiones cargadas: 4.198, una vigente por ítem, iguales a content/ y con el hash recalculable', async () => {
+  // La vigente de cada ítem es la de content/. Los ítems que corrigió el español neutro
+  // (20270104120000) tienen además su versión 1 de antes: son exactamente las que agregó la corrección.
+  const loaded = await all(`select v.item_id, v.version, v.content_hash, ${CONTENT_COLUMNS
+    .split(',')
+    .map((c) => `v.${c.trim()}`)
+    .join(', ')}, v.grading_spec, v.generator, v.generator_version, v.grading_mode_id
+    from public.exercise_items i join public.exercise_item_versions v on v.id = i.current_version_id
+    order by v.item_id`);
   assert.equal(loaded.length, 4198 + PHASE_C_ITEMS + PLANNED_ITEMS);
+  const total = await one(`select count(*)::int n,
+      count(*) filter (where version > 1)::int later from public.exercise_item_versions`);
+  const added = await neutralAddedVersions(db);
+  assert.ok(added > 0);
+  assert.deepEqual(total, { n: loaded.length + added, later: added });
   const expected = [
     ...versions.versions,
     ...phaseC.versions.versions,
@@ -281,7 +292,8 @@ test('versiones cargadas: 4.198, una por ítem, iguales a content/ y con el hash
   ].sort((a, b) => (a.item_id < b.item_id ? -1 : 1));
   for (const [i, row] of loaded.entries()) {
     const { version, grading_mode_id, ...rest } = row;
-    assert.equal(version, 1, row.item_id);
+    if (!NEUTRAL_ITEMS.has(row.item_id)) assert.equal(version, 1, row.item_id);
+    else assert.ok(version <= 2, row.item_id);
     assert.deepEqual(rest, expected[i], row.item_id);
     assert.equal(grading_mode_id, `${row.grading_spec.mode}.v${row.grading_spec.mode_version}`);
     // V4: el hash se calcula en Node; recalcularlo desde lo que guardó la base da lo mismo.
@@ -290,8 +302,8 @@ test('versiones cargadas: 4.198, una por ítem, iguales a content/ y con el hash
     if (variable.has(row.item_id) || outside.has(row.item_id))
       assert.ok(!('options' in row.payload), row.item_id);
   }
-  const modes =
-    await all(`select grading_mode_id m, count(*)::int n from public.exercise_item_versions
+  const modes = await all(`select v.grading_mode_id m, count(*)::int n
+    from public.exercise_items i join public.exercise_item_versions v on v.id = i.current_version_id
     group by 1 order by 1`);
   // exact_option: 1.499 escritos + 958 generados (176 de distractores variables); normalized_text:
   // 772 + 530; pair_set: 139 + 300.
@@ -331,7 +343,7 @@ test('cada ejercicio publicado apunta a su ítem y a su versión, también los 1
     (select count(*)::int from public.exercise_items) items`);
   // Los ítems de la fase C (y de la C.3) tienen versión vigente pero ninguna ubicación publicada.
   assert.deepEqual(totals, {
-    versions: 4198 + PHASE_C_ITEMS + PLANNED_ITEMS,
+    versions: 4198 + PHASE_C_ITEMS + PLANNED_ITEMS + (await neutralAddedVersions(db)),
     with_current: 4198 + PHASE_C_ITEMS + PLANNED_ITEMS,
     items_placed: 4198,
     items: 4198 + PHASE_C_ITEMS + PLANNED_ITEMS,
@@ -412,8 +424,11 @@ test('las migraciones de ubicaciones y versiones son idempotentes', async () => 
   await db.exec(migration('20261107150000_learning_item_versions.sql'));
   await db.exec(migration('20261107150100_learning_item_placements.sql'));
   await db.exec(migration('20261108120000_learning_grading_modes.sql'));
-  for (const f of VERSION_FILES) await db.exec(migration(f));
-  for (const f of VERSION_FILES) await db.exec(migration(f));
+  // Las cargas de versiones, con la corrección de español neutro aplicada a su documento: la carga
+  // histórica tal cual fallaría a propósito (su copia de exercises ya no coincide con la versión vigente).
+  for (const f of VERSION_FILES) await db.exec(withNeutralSpanish(migration(f)));
+  for (const f of VERSION_FILES) await db.exec(withNeutralSpanish(migration(f)));
+  await db.exec(migration('20270104120000_neutral_spanish_content.sql'));
   assert.deepEqual(await snapshot(), before);
 });
 
@@ -514,7 +529,11 @@ test('versiones: inmutables; un escrito no tiene generador; grading_spec con un 
 
 test('deduplicación por (ítem, hash), numeración e idempotencia; A → B → A reutiliza A', async () => {
   // Un escrito con copias en la consolidación: todas sus ubicaciones comparten la versión.
-  const id = catalog.placements.find((p) => p.kind === 'copy').item_id;
+  // Uno con varias ubicaciones que la corrección de español neutro no tocó (todos los que tienen
+  // copias cambiaron de texto): una sola versión de partida.
+  const id = catalog.items.find(
+    (i) => !NEUTRAL_ITEMS.has(i.id) && placementsOf(i.id).length > 1,
+  ).id;
   const placements = placementsOf(id);
   assert.ok(placements.length > 1, 'el escrito tiene copias en la consolidación');
   const a = versions.versions.find((v) => v.item_id === id);
@@ -569,7 +588,9 @@ test('deduplicación por (ítem, hash), numeración e idempotencia; A → B → 
       docSql(VERSIONS_SQL, {
         versions: [],
         current_versions: [],
-        placement_versions: [{ exercise_id: id, item_id: id, content_hash: b.content_hash }],
+        placement_versions: [
+          { exercise_id: placements[0], item_id: id, content_hash: b.content_hash },
+        ],
       }),
     );
     assert.match(String(sum?.message), /no coincide con su versión/);
@@ -577,9 +598,7 @@ test('deduplicación por (ítem, hash), numeración e idempotencia; A → B → 
 });
 
 test('procedencia (V6): fuera del hash, inmutable; A → B → A conserva la de A', async () => {
-  const a = versions.versions.find(
-    (v) => v.generator && items.get(v.item_id).type === 'complete_word',
-  );
+  const a = versions.versions.find((v) => v.generator && !NEUTRAL_ITEMS.has(v.item_id));
   const id = a.item_id;
   assert.equal(a.generator_version, '1.0.0');
   await inRollback(async () => {
@@ -672,7 +691,11 @@ test('V5 resuelto: los 176 tienen versión y sus 371 ubicaciones, conjunto propi
        where item_id = any($1) and item_version_id is not null and option_set_id is not null) placements`,
     [[...variable]],
   );
-  assert.deepEqual(r, { items: 176, versions: 176, placements: 371 });
+  assert.deepEqual(r, {
+    items: 176,
+    versions: 176 + (await neutralAddedVersions(db, variable)),
+    placements: 371,
+  });
   // El intento no se tocó: lo que se mostró vive en exercise_presentations y el vínculo, aparte
   // (supabase/tests/presentations.test.mjs).
   const cols = await all(`select column_name c from information_schema.columns

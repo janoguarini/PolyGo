@@ -27,18 +27,18 @@ export const unit12: UnitDef = {
     'Preguntar qué, quién, cuándo, por qué y cuál, preguntar cuánto cuesta algo y el falso amigo apelido.',
   emoji: '❓',
   objective:
-    'Podés preguntar con o que, quem, quando, por que y qual, responder con porque, preguntar quanto custa? / quanto custam? y decir si algo es caro o barato.',
+    'Puedes preguntar con o que, quem, quando, por que y qual, responder con porque, preguntar quanto custa? / quanto custam? y decir si algo es caro o barato.',
   grammar: {
     title: 'Palabras para preguntar · por que / porque',
     explanation:
       'La palabra de pregunta va al principio: o que? (¿qué?), quem? (¿quién?), quando? (¿cuándo?), qual? (¿cuál?). Para «¿por qué?» se escribe por que, separado; para responder, porque, junto. El precio: quanto custa? con una cosa y quanto custam? con varias.',
     examples: [
-      { target: 'O que você faz? — Eu estudo.', base: '¿Qué hacés? — Estudio.' },
+      { target: 'O que você faz? — Eu estudo.', base: '¿Qué haces? — Estudio.' },
       {
         target: 'Por que você estuda português? — Porque eu gosto.',
-        base: '¿Por qué estudiás portugués? — Porque me gusta.',
+        base: '¿Por qué estudias portugués? — Porque me gusta.',
       },
-      { target: 'Quanto custa a camiseta?', base: '¿Cuánto cuesta la remera?' },
+      { target: 'Quanto custa a camiseta?', base: '¿Cuánto cuesta la camiseta?' },
     ],
   },
   review: {
@@ -47,7 +47,7 @@ export const unit12: UnitDef = {
       'Pendiente de revisión por un hablante nativo o docente de portugués de Brasil (por que / porque, reais, tá bom).',
   },
   words: [
-    w('pt-o-que', 'o que?', '¿qué?', 'O que você quer?', '¿Qué querés?', ['questions'], {
+    w('pt-o-que', 'o que?', '¿qué?', 'O que você quer?', '¿Qué quieres?', ['questions'], {
       acceptedTexts: ['que?', 'o quê?'],
     }),
     w(
@@ -71,7 +71,7 @@ export const unit12: UnitDef = {
       'por que?',
       '¿por qué?',
       'Por que você estuda português?',
-      '¿Por qué estudiás portugués?',
+      '¿Por qué estudias portugués?',
       ['questions'],
     ),
     w('pt-porque', 'porque', 'porque', 'Eu estudo porque gosto.', 'Estudio porque me gusta.', [
@@ -111,12 +111,13 @@ export const unit12: UnitDef = {
     w(
       'pt-camiseta',
       'camiseta',
-      'remera',
+      // «camiseta / remera»: la palabra neutra primero; «camiseta» sola sería un cognado (ver pt-metro).
+      'camiseta / remera',
       'A camiseta é azul.',
-      'La remera es azul.',
+      'La camiseta es azul.',
       ['shopping', 'clothes'],
       {
-        acceptedTranslations: ['playera'],
+        acceptedTranslations: ['remera', 'playera'],
         emoji: '👕',
       },
     ),
@@ -165,13 +166,13 @@ export const unit12: UnitDef = {
       objective: 'Preguntar qué y quién.',
       intro: {
         explanation:
-          'O que? es «¿qué?» (o que você quer? «¿qué querés?») y quem? es «¿quién?». Al final de la frase, que lleva acento: você quer o quê?',
+          'O que? es «¿qué?» (o que você quer? «¿qué quieres?») y quem? es «¿quién?». Al final de la frase, que lleva acento: você quer o quê?',
         examples: [
-          { target: 'O que você quer?', base: '¿Qué querés?' },
+          { target: 'O que você quer?', base: '¿Qué quieres?' },
           { target: 'Quem é ela? — É minha irmã.', base: '¿Quién es ella? — Es mi hermana.' },
         ],
       },
-      takeaways: ['Preguntás qué con o que?', 'Preguntás quién con quem?'],
+      takeaways: ['Preguntas qué con o que?', 'Preguntas quién con quem?'],
       exercises: [
         ex.translationChoice('quem?', '¿quién?', ['¿qué?', '¿cuándo?', '¿cuál?'], ['pt-quem']),
         ex.translationChoice('o que?', '¿qué?', ['¿quién?', '¿dónde?', '¿cuánto?'], ['pt-o-que']),
@@ -189,15 +190,15 @@ export const unit12: UnitDef = {
         ),
         ex.fillBlank(
           'O ___ você quer? — Um café.',
-          '¿Qué querés? — Un café.',
+          '¿Qué quieres? — Un café.',
           'que',
           ['quem', 'qual', 'quando'],
           ['pt-o-que', 'pt-quero'],
         ),
-        ex.orderWords('O que você quer comer?', '¿Qué querés comer?', ['pt-o-que', 'pt-voce']),
+        ex.orderWords('O que você quer comer?', '¿Qué quieres comer?', ['pt-o-que', 'pt-voce']),
         ex.shortAnswer(
           'O que você estuda?',
-          '¿Qué estudiás? (Respondé que estudiás portugués.)',
+          '¿Qué estudias? (Responde que estudias portugués.)',
           'Eu estudo português.',
           ['Estudo português.', 'Português.'],
           ['pt-estudo'],
@@ -214,17 +215,17 @@ export const unit12: UnitDef = {
         examples: [
           {
             target: 'Quando você trabalha? — Segunda-feira.',
-            base: '¿Cuándo trabajás? — El lunes.',
+            base: '¿Cuándo trabajas? — El lunes.',
           },
           {
             target: 'Por que você estuda? — Porque eu gosto.',
-            base: '¿Por qué estudiás? — Porque me gusta.',
+            base: '¿Por qué estudias? — Porque me gusta.',
           },
         ],
       },
       takeaways: [
-        'Preguntás cuándo con quando?',
-        'Distinguís por que? (pregunta) y porque (respuesta).',
+        'Preguntas cuándo con quando?',
+        'Distingues por que? (pregunta) y porque (respuesta).',
       ],
       exercises: [
         ex.translationChoice(
@@ -264,14 +265,14 @@ export const unit12: UnitDef = {
           ['pt-por-que', 'pt-gosta-de', 'pt-leite'],
           { explanation: 'Para preguntar va separado: por que?' },
         ),
-        ex.orderWords('Quando você trabalha?', '¿Cuándo trabajás?', [
+        ex.orderWords('Quando você trabalha?', '¿Cuándo trabajas?', [
           'pt-quando',
           'pt-voce',
           'pt-trabalho',
         ]),
         ex.shortAnswer(
           'Por que você estuda português?',
-          '¿Por qué estudiás portugués? (Respondé que porque te gusta.)',
+          '¿Por qué estudias portugués? (Responde que porque te gusta.)',
           'Porque eu gosto.',
           ['Porque gosto.', 'Porque eu gosto de português.', 'Porque gosto de português.'],
           ['pt-porque', 'pt-gosto-de'],
@@ -296,8 +297,8 @@ export const unit12: UnitDef = {
         ],
       },
       takeaways: [
-        'Preguntás cuál con qual?',
-        'Sabés que apelido es «apodo» y sobrenome «apellido».',
+        'Preguntas cuál con qual?',
+        'Sabes que apelido es «apodo» y sobrenome «apellido».',
       ],
       exercises: [
         ex.translationChoice('qual?', '¿cuál?', ['¿cuánto?', '¿cómo?', '¿quién?'], ['pt-qual']),
@@ -335,7 +336,7 @@ export const unit12: UnitDef = {
         ex.orderWords('Meu apelido é Juca.', 'Mi apodo es Juca.', ['pt-meu', 'pt-apelido']),
         ex.shortAnswer(
           'Qual é o seu sobrenome?',
-          '¿Cuál es tu apellido? (Respondé que es García.)',
+          '¿Cuál es tu apellido? (Responde que es García.)',
           'Meu sobrenome é García.',
           ['É García.', 'García.', 'Meu sobrenome é Garcia.', 'É Garcia.', 'Garcia.'],
           ['pt-meu', 'pt-sobrenome'],
@@ -359,12 +360,12 @@ export const unit12: UnitDef = {
         examples: [
           {
             target: 'Quanto custa a camiseta? — Vinte reais.',
-            base: '¿Cuánto cuesta la remera? — Veinte reales.',
+            base: '¿Cuánto cuesta la camiseta? — Veinte reales.',
           },
           { target: 'Quanto custam os sapatos?', base: '¿Cuánto cuestan los zapatos?' },
         ],
       },
-      takeaways: ['Preguntás el precio con quanto custa?', 'Entendés precios en reais.'],
+      takeaways: ['Preguntas el precio con quanto custa?', 'Entiendes precios en reais.'],
       exercises: [
         ex.imageChoice('👕', 'camiseta', ['sapato', 'passagem', 'caneta'], ['pt-camiseta']),
         ex.imageChoice('👞', 'sapato', ['camiseta', 'chave', 'cama'], ['pt-sapato']),
@@ -387,7 +388,7 @@ export const unit12: UnitDef = {
           ['pt-quanto-custam', 'pt-sapato'],
           { explanation: 'Os sapatos es plural: quanto custam?' },
         ),
-        ex.orderWords('Quanto custa a camiseta?', '¿Cuánto cuesta la remera?', [
+        ex.orderWords('Quanto custa a camiseta?', '¿Cuánto cuesta la camiseta?', [
           'pt-quanto-custa',
           'pt-camiseta',
         ]),
@@ -412,7 +413,7 @@ export const unit12: UnitDef = {
           { target: 'Cinco reais? Tá bom.', base: '¿Cinco reales? Está bien.' },
         ],
       },
-      takeaways: ['Decís si algo es caro o barato.', 'Aceptás un precio con tá bom.'],
+      takeaways: ['Dices si algo es caro o barato.', 'Aceptas un precio con tá bom.'],
       exercises: [
         ex.translationChoice(
           'tá bom',
@@ -445,14 +446,14 @@ export const unit12: UnitDef = {
           ['É', 'Tem', 'Tudo'],
           ['pt-vinte', 'pt-ta-bom'],
         ),
-        ex.orderWords('A camiseta é muito cara.', 'La remera es muy cara.', [
+        ex.orderWords('A camiseta é muito cara.', 'La camiseta es muy cara.', [
           'pt-camiseta',
           'pt-muito',
           'pt-caro',
         ]),
         ex.shortAnswer(
           'A passagem custa vinte reais.',
-          'El pasaje cuesta veinte reales. (Respondé que está bien.)',
+          'El pasaje cuesta veinte reales. (Responde que está bien.)',
           'Tá bom.',
           ['Tá bom!', 'Está bom.', 'Tá bom, obrigado.', 'Tá bom, obrigada.'],
           ['pt-ta-bom'],

@@ -6,6 +6,9 @@ import Animated, { FadeInDown, ZoomIn } from 'react-native-reanimated';
 
 import { Text, TextField, colors, radii, spacing, themedStyles } from '@/design-system';
 import type { UsernameCheck } from '@/features/profile/useUsernameCheck';
+import { useStrings } from '@/i18n';
+
+import { signupStrings } from './strings';
 
 /**
  * Nombre de jugador con comprobación en vivo: tilde verde si está libre; si ya existe, tres nombres
@@ -27,6 +30,7 @@ export function UsernameField({
 }) {
   const styles = useStyles();
   const { status, suggestions } = check;
+  const t = useStrings(signupStrings);
 
   useEffect(() => {
     if (status === 'available')
@@ -38,26 +42,26 @@ export function UsernameField({
   const error =
     submitError ??
     (status === 'invalid'
-      ? check.message
+      ? t.usernameRule
       : status === 'taken'
-        ? 'Ese nombre ya existe.'
+        ? t.usernameExists
         : status === 'error'
-          ? 'No pudimos comprobar el nombre. Revisá tu conexión.'
+          ? t.usernameCheckFailed
           : undefined);
 
   const trailing =
     status === 'checking' ? (
-      <ActivityIndicator color={colors.primarySoft} accessibilityLabel="Comprobando nombre" />
+      <ActivityIndicator color={colors.primarySoft} accessibilityLabel={t.usernameChecking} />
     ) : status === 'available' && !submitError ? (
       <Animated.View
         entering={ZoomIn.springify().damping(9)}
         accessible
-        accessibilityLabel="Nombre disponible"
+        accessibilityLabel={t.usernameAvailableA11y}
       >
         <CircleCheck color={colors.success} size={26} strokeWidth={2.5} />
       </Animated.View>
     ) : status === 'taken' || submitError ? (
-      <View accessible accessibilityLabel="Nombre no disponible">
+      <View accessible accessibilityLabel={t.usernameUnavailableA11y}>
         <CircleX color={colors.danger} size={24} />
       </View>
     ) : null;
@@ -65,13 +69,13 @@ export function UsernameField({
   return (
     <View style={styles.wrap}>
       <TextField
-        label="Nombre de jugador"
+        label={t.usernameLabel}
         value={value}
         onChangeText={onChange}
         error={error}
         success={status === 'available' && !submitError}
         trailing={trailing}
-        hint="3 a 20 caracteres: letras minúsculas, números o _"
+        hint={t.usernameHint}
         autoCapitalize="none"
         autoCorrect={false}
         maxLength={20}
@@ -81,7 +85,7 @@ export function UsernameField({
       {status === 'available' && !submitError ? (
         <Animated.View entering={FadeInDown.springify()} style={styles.okRow}>
           <Text variant="caption" color="success" accessibilityLiveRegion="polite">
-            ✅ ¡{check.name} está disponible!
+            {t.usernameAvailable(check.name ?? value)}
           </Text>
         </Animated.View>
       ) : null}
@@ -91,7 +95,7 @@ export function UsernameField({
           <View style={styles.suggestionsTitle}>
             <Sparkles color={colors.primarySoft} size={14} />
             <Text variant="caption" color="textMuted">
-              Probá con uno de estos:
+              {t.suggestionsTitle}
             </Text>
           </View>
           <View style={styles.chips}>
@@ -104,7 +108,7 @@ export function UsernameField({
               >
                 <Pressable
                   accessibilityRole="button"
-                  accessibilityLabel={`Usar ${s}`}
+                  accessibilityLabel={t.useSuggestion(s)}
                   onPress={() => {
                     void Haptics.selectionAsync();
                     onChange(s);

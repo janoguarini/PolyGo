@@ -52,7 +52,7 @@ export const FR_A1_U07: FrUnitDef = {
       "Comida y bebida, je voudrais y je prends en el café, los partitivos (du pain, de la viande, de l'eau, des légumes), pas de y las cantidades (beaucoup de, un peu de). Vocales nasales.",
     emoji: '🥐',
     objective:
-      'Podés pedir algo de comer y de tomar en un café, decir qué comés y qué no, y hablar de cantidades.',
+      'Puedes pedir algo de comer y de tomar en un café, decir qué comes y qué no, y hablar de cantidades.',
     grammar: {
       title: 'Los partitivos · pas de · beaucoup de, un peu de',
       explanation:
@@ -109,11 +109,11 @@ export const FR_A1_U07: FrUnitDef = {
       w(
         'fr-le-croissant',
         'le croissant',
-        'la medialuna',
+        'el cruasán',
         'Je prends un croissant.',
-        'Pido una medialuna.',
+        'Pido un cruasán.',
         ['food', 'm'],
-        { acceptedTranslations: ['el cruasán'], emoji: '🥐' },
+        { acceptedTranslations: ['la medialuna'], emoji: '🥐' },
       ),
       w(
         'fr-la-pomme',
@@ -203,7 +203,7 @@ export const FR_A1_U07: FrUnitDef = {
         objective: 'Pedir algo en un café con je voudrais.',
         intro: {
           explanation:
-            "Para pedir con cortesía se usa je voudrais (quisiera) + un / une, y siempre s'il vous plaît. En Francia, un café es un espresso chico; le croissant es la medialuna. Pronunciación: en pain y en croissant la n no suena como n: la vocal sale por la nariz (es una vocal nasal).",
+            "Para pedir con cortesía se usa je voudrais (quisiera) + un / une, y siempre s'il vous plaît. En Francia, un café es un espresso chico; le croissant es el cruasán. Pronunciación: en pain y en croissant la n no suena como n: la vocal sale por la nariz (es una vocal nasal).",
           examples: [
             {
               target: "Je voudrais un café, s'il vous plaît.",
@@ -211,13 +211,13 @@ export const FR_A1_U07: FrUnitDef = {
             },
             {
               target: "Un thé et un croissant, s'il vous plaît.",
-              base: 'Un té y una medialuna, por favor.',
+              base: 'Un té y un cruasán, por favor.',
             },
           ],
         },
         takeaways: [
-          "Pedís con je voudrais y s'il vous plaît.",
-          'Nombrás el café, el té, el pan y la medialuna.',
+          "Pides con je voudrais y s'il vous plaît.",
+          'Nombras el café, el té, el pan y el cruasán.',
         ],
         exercises: [
           ex.imageChoice('☕', 'le café', ['le thé', 'le pain', 'le croissant'], ['fr-le-cafe'], {
@@ -225,7 +225,7 @@ export const FR_A1_U07: FrUnitDef = {
           }),
           ex.translationChoice(
             'le croissant',
-            'la medialuna',
+            'el cruasán',
             ['el pan', 'el té', 'el café'],
             ['fr-le-croissant'],
             { id: 'fr.ex.gdyaaak04kbnag' },
@@ -235,7 +235,7 @@ export const FR_A1_U07: FrUnitDef = {
               ['le café', 'el café'],
               ['le thé', 'el té'],
               ['le pain', 'el pan'],
-              ['le croissant', 'la medialuna'],
+              ['le croissant', 'el cruasán'],
             ],
             ['fr-le-cafe', 'fr-le-the', 'fr-le-pain', 'fr-le-croissant'],
             { id: 'fr.ex.2req414my3upwy' },
@@ -259,7 +259,7 @@ export const FR_A1_U07: FrUnitDef = {
           ),
           ex.fillBlank(
             "Je ___ un croissant, s'il vous plaît.",
-            'Quisiera una medialuna, por favor.',
+            'Quisiera un cruasán, por favor.',
             'voudrais',
             ['suis', 'habite', 'parle'],
             ['fr-je-voudrais', 'fr-le-croissant'],
@@ -287,7 +287,7 @@ export const FR_A1_U07: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Bonjour, madame! Un café?',
-            '¡Buen día, señora! ¿Un café? (Respondé que no, que querés un té, por favor.)',
+            '¡Buenos días, señora! ¿Un café? (Responde que no, que quieres un té, por favor.)',
             "Non, merci. Je voudrais un thé, s'il vous plaît.",
             [
               "Non, je voudrais un thé, s'il vous plaît.",
@@ -303,7 +303,7 @@ export const FR_A1_U07: FrUnitDef = {
       // ------------------------------------------------------------------------------------ L2
       {
         title: 'Je mange, je bois',
-        objective: "Decir qué comés y qué tomás con du, de la y de l'.",
+        objective: "Decir qué comes y qué tomas con du, de la y de l'.",
         intro: {
           explanation:
             "Para una cantidad que no se cuenta (pan, agua, queso) el francés usa el partitivo: du con masculinos, de la con femeninos y de l' delante de vocal. En español no se dice nada («como queso»), pero en francés hace falta: je mange du fromage. Con algo que se cuenta, un / une: je mange une pomme. Ojo con el género: l'eau es femenino y le lait, masculino (la leche). Eau suena como una o.",
@@ -313,8 +313,8 @@ export const FR_A1_U07: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Usás du, de la o de l' con lo que no se cuenta.",
-          'Decís qué comés con je mange y qué tomás con je bois.',
+          "Usas du, de la o de l' con lo que no se cuenta.",
+          'Dices qué comes con je mange y qué tomas con je bois.',
         ],
         exercises: [
           ex.translationChoice(
@@ -362,7 +362,7 @@ export const FR_A1_U07: FrUnitDef = {
           ),
           ex.fillBlank(
             'Tu bois ___ lait?',
-            '¿Tomás leche?',
+            '¿Tomas leche?',
             'du',
             ['de la', 'une', 'des'],
             ['fr-le-lait', 'fr-je-bois'],
@@ -397,7 +397,7 @@ export const FR_A1_U07: FrUnitDef = {
       // ------------------------------------------------------------------------------------ L3
       {
         title: 'Viande, poisson, légumes',
-        objective: 'Hablar de carne, pescado y verduras, y decir qué no comés.',
+        objective: 'Hablar de carne, pescado y verduras, y decir qué no comes.',
         intro: {
           explanation:
             "En plural el partitivo es des: je mange des légumes. En la negación, du / de la / de l' / des pasan a de: je ne mange pas de viande, je ne bois pas de vin. Dos falsos amigos: le poisson es el pescado y les légumes son las verduras (no las legumbres). Vin, viande y pain tienen vocales nasales: la n no se pronuncia como n.",
@@ -407,8 +407,8 @@ export const FR_A1_U07: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Usás des con los plurales: des légumes.',
-          'Decís qué no comés con ne… pas de.',
+          'Usas des con los plurales: des légumes.',
+          'Dices qué no comes con ne… pas de.',
         ],
         exercises: [
           ex.translationChoice(
@@ -493,7 +493,7 @@ export const FR_A1_U07: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Tu manges de la viande?',
-            '¿Comés carne? (Respondé que no, que no comés carne.)',
+            '¿Comes carne? (Responde que no, que no comes carne.)',
             'Non, je ne mange pas de viande.',
             ['Je ne mange pas de viande.', 'Non, je ne mange pas de viande!'],
             ['fr-la-viande', 'fr-je-mange'],
@@ -521,8 +521,8 @@ export const FR_A1_U07: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Usás beaucoup de y un peu de sin artículo.',
-          'Pedís en un café con je prends o je voudrais.',
+          'Usas beaucoup de y un peu de sin artículo.',
+          'Pides en un café con je prends o je voudrais.',
         ],
         exercises: [
           ex.translationChoice(
@@ -577,8 +577,8 @@ export const FR_A1_U07: FrUnitDef = {
             'fr.ex.f73lmrh37f78ge',
             CAFE,
             '¿Qué pide Thomas para él?',
-            'Un café y una medialuna.',
-            ['Un té y una medialuna.', 'Un café con leche.', 'Pan y queso.'],
+            'Un café y un cruasán.',
+            ['Un té y un cruasán.', 'Un café con leche.', 'Pan y queso.'],
             ['fr-je-voudrais', 'fr-le-cafe', 'fr-le-croissant'],
             "Thomas dice «Je voudrais un café et un croissant, s'il vous plaît».",
           ),
@@ -593,7 +593,7 @@ export const FR_A1_U07: FrUnitDef = {
           ),
           ex.fillBlank(
             'Je ___ un croissant et un café.',
-            'Pido una medialuna y un café.',
+            'Pido un cruasán y un café.',
             'prends',
             ['mange', 'bois', 'suis'],
             ['fr-je-prends', 'fr-le-croissant'],
@@ -627,13 +627,13 @@ export const FR_A1_U07: FrUnitDef = {
         objective: 'Leer una carta y pedir comida y bebida en un café.',
         intro: {
           explanation:
-            "En un café o un restaurante de Francia se pide con je voudrais o je prends, y siempre con s'il vous plaît. Un dato cultural: la carafe d'eau (una jarra de agua de la canilla) es gratis; si querés agua mineral, pedís une bouteille d'eau.",
+            "En un café o un restaurante de Francia se pide con je voudrais o je prends, y siempre con s'il vous plaît. Un dato cultural: la carafe d'eau (una jarra de agua de la canilla) es gratis; si quieres agua mineral, pides une bouteille d'eau.",
           examples: [
             { target: 'Je prends du poisson et des légumes.', base: 'Pido pescado y verduras.' },
             { target: "Une carafe d'eau, s'il vous plaît.", base: 'Una jarra de agua, por favor.' },
           ],
         },
-        takeaways: ['Entendés una carta con precios.', 'Pedís comida y bebida en un café.'],
+        takeaways: ['Entiendes una carta con precios.', 'Pides comida y bebida en un café.'],
         exercises: [
           question(
             'fr.ex.k8xeulx3aofdit',
@@ -649,7 +649,7 @@ export const FR_A1_U07: FrUnitDef = {
             MENU,
             '¿Qué plato viene con verduras?',
             'El pescado.',
-            ['El pan con queso.', 'La carne.', 'La medialuna.'],
+            ['El pan con queso.', 'La carne.', 'El cruasán.'],
             ['fr-le-poisson', 'fr-les-legumes'],
             'La carta dice «Poisson et légumes: douze euros».',
           ),
@@ -709,7 +709,7 @@ export const FR_A1_U07: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Qu'est-ce que vous prenez?",
-            '¿Qué va a tomar? (Pedí un café y una medialuna.)',
+            '¿Qué va a tomar? (Pide un café y un cruasán.)',
             "Je prends un café et un croissant, s'il vous plaît.",
             [
               "Je voudrais un café et un croissant, s'il vous plaît.",

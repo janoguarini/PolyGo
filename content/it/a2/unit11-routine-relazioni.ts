@@ -89,10 +89,10 @@ export const IT_A2_U11: ItUnitDef = {
     title: 'Rutina y relaciones',
     titleEn: 'Routine e relazioni',
     description:
-      'Contar tu rutina con los reflexivos en presente y en pasado, decir con qué frecuencia hacés algo y hablar de pareja y familia.',
+      'Contar tu rutina con los reflexivos en presente y en pasado, decir con qué frecuencia haces algo y hablar de pareja y familia.',
     emoji: '💞',
     objective:
-      'Podés contar tu rutina y la de otros (si alza, ci alziamo), lo que hiciste esta mañana (mi sono alzata tardi), cada cuánto hacés algo y cómo se conocieron dos personas.',
+      'Puedes contar tu rutina y la de otros (si alza, ci alziamo), lo que hiciste esta mañana (mi sono alzata tardi), cada cuánto haces algo y cómo se conocieron dos personas.',
     grammar: {
       title: 'Reflexivos y recíprocos · ci de lugar · frecuencia',
       explanation:
@@ -112,10 +112,15 @@ export const IT_A2_U11: ItUnitDef = {
         'A2 nuevo (U11). Sin revisión nativa: revisar fidanzato (novio / prometido), dai miei genitori y el registro del mensaje.',
     },
     words: [
-      w('it-ti-alzi', 'ti alzi', 'te levantás', 'A che ora ti alzi?', '¿A qué hora te levantás?', [
-        'verbs',
-        'routine',
-      ]),
+      w(
+        'it-ti-alzi',
+        'ti alzi',
+        'te levantas',
+        'A che ora ti alzi?',
+        '¿A qué hora te levantas?',
+        ['verbs', 'routine'],
+        { acceptedTranslations: ['te levantás'] },
+      ),
       w(
         'it-si-alza',
         'si alza',
@@ -266,25 +271,25 @@ export const IT_A2_U11: ItUnitDef = {
           explanation:
             'Los reflexivos cambian el pronombre con cada persona: mi alzo, ti alzi, si alza, ci alziamo, vi alzate, si alzano. Igual con lavarsi y vestirsi: mi lavo, mi vesto.',
           examples: [
-            { target: 'A che ora ti alzi?', base: '¿A qué hora te levantás?' },
+            { target: 'A che ora ti alzi?', base: '¿A qué hora te levantas?' },
             { target: 'Mio padre si alza alle sei.', base: 'Mi papá se levanta a las seis.' },
           ],
         },
         takeaways: [
-          'Conjugás los reflexivos: ti alzi, si alza, ci alziamo.',
-          'Contás la rutina de la mañana.',
+          'Conjugas los reflexivos: ti alzi, si alza, ci alziamo.',
+          'Cuentas la rutina de la mañana.',
         ],
         exercises: [
           ex.translationChoice(
             'si alza',
             'se levanta',
-            ['se lava', 'te levantás', 'me levanto'],
+            ['se lava', 'te levantas', 'me levanto'],
             ['it-si-alza'],
             { id: 'it.ex.jansgxg7rrhcgc' },
           ),
           ex.matchPairs(
             [
-              ['ti alzi', 'te levantás'],
+              ['ti alzi', 'te levantas'],
               ['si alza', 'se levanta'],
               ['ci alziamo', 'nos levantamos'],
               ['mi vesto', 'me visto'],
@@ -336,7 +341,7 @@ export const IT_A2_U11: ItUnitDef = {
           ),
           ex.shortAnswer(
             'A che ora ti alzi?',
-            '¿A qué hora te levantás? (Respondé que a las siete.)',
+            '¿A qué hora te levantas? (Responde que a las siete.)',
             'Mi alzo alle sette.',
             ['Alle sette.', 'Di solito mi alzo alle sette.'],
             ['it-ti-alzi', 'it-mi-alzo'],
@@ -354,7 +359,7 @@ export const IT_A2_U11: ItUnitDef = {
       // ------------------------------------------------------------------------------------ L2
       {
         title: 'Presto, tardi, spesso',
-        objective: 'Decir cuándo y cada cuánto hacés algo.',
+        objective: 'Decir cuándo y cada cuánto haces algo.',
         intro: {
           explanation:
             'Presto es «temprano» (y a presto, «hasta pronto»); tardi, «tarde». Para la frecuencia: sempre, spesso (seguido; no «espeso»), qualche volta (a veces), non… mai (nunca): non vado mai al cinema.',
@@ -364,8 +369,8 @@ export const IT_A2_U11: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Decís presto y tardi.',
-          'Decís cada cuánto: sempre, spesso, qualche volta, mai.',
+          'Dices presto y tardi.',
+          'Dices cada cuánto: sempre, spesso, qualche volta, mai.',
         ],
         exercises: [
           ex.translationChoice(
@@ -434,7 +439,7 @@ export const IT_A2_U11: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Vai spesso al cinema?',
-            '¿Vas seguido al cine? (Respondé que a veces.)',
+            '¿Vas seguido al cine? (Responde que a veces.)',
             'Qualche volta.',
             ['Ci vado qualche volta.', 'Sì, qualche volta.', 'Vado al cinema qualche volta.'],
             ['it-qualche-volta'],
@@ -463,7 +468,10 @@ export const IT_A2_U11: ItUnitDef = {
             { target: 'Ci siamo alzati alle otto.', base: 'Nos levantamos a las ocho.' },
           ],
         },
-        takeaways: ['Contás tu mañana: mi sono alzato / alzata.', 'Hacés concordar el participio.'],
+        takeaways: [
+          'Cuentas tu mañana: mi sono alzato / alzata.',
+          'Haces concordar el participio.',
+        ],
         exercises: [
           ex.translationChoice(
             'mi sono alzato',
@@ -510,7 +518,7 @@ export const IT_A2_U11: ItUnitDef = {
             [
               'Se levantó temprano y fue al gimnasio',
               'No salió de casa',
-              'Se quedó dormida en el colectivo',
+              'Se quedó dormida en el autobús',
             ],
             ['it-mi-sono-alzato', 'it-tardi', 'it-moglie'],
             'Laura escribe: «stamattina mi sono alzata tardi e sono uscita di corsa».',
@@ -526,7 +534,7 @@ export const IT_A2_U11: ItUnitDef = {
           ),
           ex.shortAnswer(
             'A che ora ti sei alzato?',
-            '¿A qué hora te levantaste? (Respondé que a las nueve.)',
+            '¿A qué hora te levantaste? (Responde que a las nueve.)',
             'Mi sono alzato alle nove.',
             ['Mi sono alzata alle nove.', 'Alle nove.'],
             ['it-mi-sono-alzato'],
@@ -560,8 +568,8 @@ export const IT_A2_U11: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Contás cómo se conocieron: ci siamo conosciuti.',
-          'Nombrás fidanzato, marito y moglie.',
+          'Cuentas cómo se conocieron: ci siamo conosciuti.',
+          'Nombras fidanzato, marito y moglie.',
         ],
         exercises: [
           ex.translationChoice(
@@ -628,7 +636,7 @@ export const IT_A2_U11: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Dove vi siete conosciuti?',
-            '¿Dónde se conocieron? (Respondé que se conocieron en la universidad.)',
+            '¿Dónde se conocieron? (Responde que se conocieron en la universidad.)',
             "Ci siamo conosciuti all'università.",
             [
               'Ci siamo conosciuti all’università.',
@@ -666,7 +674,7 @@ export const IT_A2_U11: ItUnitDef = {
             { target: 'Ci sentiamo stasera!', base: '¡Hablamos esta noche!' },
           ],
         },
-        takeaways: ['Usás ci en vez de repetir el lugar.', 'Te despedís con ci sentiamo.'],
+        takeaways: ['Usas ci en vez de repetir el lugar.', 'Te despides con ci sentiamo.'],
         exercises: [
           ex.translationChoice(
             'ci vado',
@@ -733,7 +741,7 @@ export const IT_A2_U11: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Vai spesso al mare?',
-            '¿Vas seguido al mar? (Respondé que sí, que vas todos los veranos.)',
+            '¿Vas seguido al mar? (Responde que sí, que vas todos los veranos.)',
             'Sì, ci vado ogni estate.',
             ['Ci vado ogni estate.', 'Sì, ci vado tutte le estati.'],
             ['it-ci-vado', 'it-spesso'],

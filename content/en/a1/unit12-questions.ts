@@ -90,7 +90,7 @@ export const unit12: UnitDef = {
       '/haʊ ˈmɛni/',
       undefined,
       'How many brothers do you have?',
-      '¿Cuántos hermanos tenés?',
+      '¿Cuántos hermanos tienes?',
       ['questions'],
       ['cuántos', 'cuántas'],
     ),
@@ -111,7 +111,7 @@ export const unit12: UnitDef = {
       '/hɛlp/',
       '🆘',
       'Can you help me?',
-      '¿Me podés ayudar?',
+      '¿Me puedes ayudar?',
       ['classroom', 'verbs'],
       ['ayuda', 'ayudar'],
     ),
@@ -126,7 +126,7 @@ export const unit12: UnitDef = {
       ['classroom', 'verbs'],
       ['comprender'],
     ),
-    w('en-speak', 'speak', 'hablar', '/spik/', '🗣️', 'Do you speak Spanish?', '¿Hablás español?', [
+    w('en-speak', 'speak', 'hablar', '/spik/', '🗣️', 'Do you speak Spanish?', '¿Hablas español?', [
       'classroom',
       'verbs',
     ]),
@@ -137,7 +137,7 @@ export const unit12: UnitDef = {
       '/rɪˈpit/',
       '🔁',
       'Can you repeat, please?',
-      '¿Podés repetir, por favor?',
+      '¿Puedes repetir, por favor?',
       ['classroom', 'verbs'],
     ),
     w(
@@ -147,7 +147,7 @@ export const unit12: UnitDef = {
       '/ˈsloʊli/',
       '🐢',
       'Please speak slowly.',
-      'Por favor, hablá despacio.',
+      'Por favor, habla despacio.',
       ['classroom'],
       ['lentamente', 'lento'],
     ),
@@ -158,7 +158,7 @@ export const unit12: UnitDef = {
       '/əˈɡɛn/',
       undefined,
       'Say it again, please.',
-      'Decilo otra vez, por favor.',
+      'Dilo otra vez, por favor.',
       ['classroom'],
       ['otra vez', 'de nuevo'],
     ),
@@ -302,7 +302,7 @@ export const unit12: UnitDef = {
         ),
         ex.fillBlank(
           'How ___ brothers do you have?',
-          '¿Cuántos hermanos tenés?',
+          '¿Cuántos hermanos tienes?',
           'many',
           ['much', 'old', 'time'],
           ['en-how-many', 'en-brother'],
@@ -357,21 +357,21 @@ export const unit12: UnitDef = {
         ),
         ex.translationChoice(
           'Can you repeat, please?',
-          '¿Podés repetir, por favor?',
-          ['¿Podés ayudarme?', '¿Hablás despacio?', '¿Qué significa?'],
+          '¿Puedes repetir, por favor?',
+          ['¿Puedes ayudarme?', '¿Hablas despacio?', '¿Qué significa?'],
           ['en-repeat', 'en-can'],
         ),
         ex.imageChoice('🐢', 'slowly', ['again', 'help', 'well'], ['en-slowly']),
         ex.fillBlank(
           'Please speak ___.',
-          'Por favor, hablá despacio.',
+          'Por favor, habla despacio.',
           'slowly',
           ['slow', 'again', 'well'],
           ['en-slowly', 'en-speak'],
         ),
         ex.fillBlank(
           'Say it ___, please.',
-          'Decilo otra vez, por favor.',
+          'Dilo otra vez, por favor.',
           'again',
           ['slowly', 'too', 'very'],
           ['en-again'],
@@ -382,7 +382,7 @@ export const unit12: UnitDef = {
           ['Can you hear me?', 'Can I help you?', 'Can you help him?'],
           ['en-help', 'en-can'],
         ),
-        ex.orderWords('Can you speak slowly, please?', '¿Podés hablar despacio, por favor?', [
+        ex.orderWords('Can you speak slowly, please?', '¿Puedes hablar despacio, por favor?', [
           'en-speak',
           'en-slowly',
           'en-can',
@@ -424,8 +424,8 @@ export const unit12: UnitDef = {
         ),
         ex.translationChoice(
           'Do you speak Spanish?',
-          '¿Hablás español?',
-          ['¿Sabés inglés?', '¿Hablás inglés?', '¿Entendés español?'],
+          '¿Hablas español?',
+          ['¿Sabes inglés?', '¿Hablas inglés?', '¿Entiendes español?'],
           ['en-speak', 'en-spanish'],
         ),
         ex.fillBlank(
@@ -449,28 +449,28 @@ export const unit12: UnitDef = {
       exercises: [
         ex.shortAnswer(
           'Hi! What is your name? (Ana)',
-          '¡Hola! ¿Cómo te llamás?',
+          '¡Hola! ¿Cómo te llamas?',
           'My name is Ana.',
           ["I'm Ana.", 'I am Ana.', 'Ana.'],
           ['en-what', 'en-name'],
         ),
         ex.shortAnswer(
           'Where are you from? (Argentina)',
-          '¿De dónde sos?',
+          '¿De dónde eres?',
           'I am from Argentina.',
           ["I'm from Argentina.", 'From Argentina.', 'Argentina.'],
           ['en-where', 'en-from', 'en-argentina'],
         ),
         ex.shortAnswer(
           'Do you speak English? (un poco)',
-          '¿Hablás inglés?',
+          '¿Hablas inglés?',
           'Yes, a little.',
           ['A little.', 'Yes, I speak a little English.', 'I speak a little English.'],
           ['en-speak', 'en-english'],
         ),
         ex.fillBlank(
           '___ do you study English? Because I love travelling.',
-          '¿Por qué estudiás inglés? Porque me encanta viajar.',
+          '¿Por qué estudias inglés? Porque me encanta viajar.',
           'Why',
           ['What', 'When', 'Which'],
           ['en-why', 'en-because', 'en-travel'],
@@ -488,7 +488,7 @@ export const unit12: UnitDef = {
           'en-nice-to-meet-you',
           'en-too',
         ]),
-        ex.translateWrite('¿Me podés ayudar, por favor?', 'Can you help me, please?', [
+        ex.translateWrite('¿Me puedes ayudar, por favor?', 'Can you help me, please?', [
           'en-help',
           'en-can',
           'en-please',

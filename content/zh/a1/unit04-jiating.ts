@@ -26,7 +26,7 @@ const tone = (
 ): ExerciseDef => ({
   type: 'listen_choice',
   skill: 'listening',
-  prompt: 'Escuchá y elegí el tono correcto',
+  prompt: 'Escucha y elige el tono correcto',
   payload: { type: 'listen_choice', audioText: hanzi, options: [pinyin, ...others] },
   answer: pinyin,
   words,
@@ -55,10 +55,10 @@ export const unit04: UnitDef = {
   position: 4,
   title: 'La familia',
   titleEn: '我的家',
-  description: 'Nombrar a tu familia, decir cuántos hermanos tenés y de quién es algo.',
+  description: 'Nombrar a tu familia, decir cuántos hermanos tienes y de quién es algo.',
   emoji: '👨‍👩‍👧',
   objective:
-    'Podés nombrar a tu familia, decir cuántos hermanos tenés (o que no tenés) y marcar de quién es algo con 的.',
+    'Puedes nombrar a tu familia, decir cuántos hermanos tienes (o que no tienes) y marcar de quién es algo con 的.',
   grammar: {
     title: '有 / 没有 y el clasificador 个',
     explanation:
@@ -149,7 +149,7 @@ export const unit04: UnitDef = {
           { target: '我妈妈很好。', base: 'Mi mamá está bien.' },
         ],
       },
-      takeaways: ['Nombrás a tu papá y tu mamá.', 'Decís «mi mamá» con 我妈妈.'],
+      takeaways: ['Nombras a tu papá y tu mamá.', 'Dices «mi mamá» con 我妈妈.'],
       exercises: [
         ex.translationChoice('爸爸', 'papá', ['mamá', 'hermano mayor', 'amigo/a'], ['zh-baba']),
         ex.translationChoice('妈妈', 'mamá', ['papá', 'hermana mayor', 'profesor/a'], ['zh-mama']),
@@ -193,8 +193,8 @@ export const unit04: UnitDef = {
         ],
       },
       takeaways: [
-        'Nombrás a tus hermanos según si son mayores o menores.',
-        'Presentás a un hermano con 他是我….',
+        'Nombras a tus hermanos según si son mayores o menores.',
+        'Presentas a un hermano con 他是我….',
       ],
       exercises: [
         ex.translationChoice(
@@ -241,16 +241,16 @@ export const unit04: UnitDef = {
     },
     {
       title: '我有…',
-      objective: 'Decir cuántos hermanos tenés con 有 y 个.',
+      objective: 'Decir cuántos hermanos tienes con 有 y 个.',
       intro: {
         explanation:
-          '有 (yǒu) es «tener». Para contar personas, entre el número y la palabra va 个: 两个哥哥 «dos hermanos mayores». «Dos» acá es 两. Antes de 个, 一 se dice yí: 一个 (yí ge).',
+          '有 (yǒu) es «tener». Para contar personas, entre el número y la palabra va 个: 两个哥哥 «dos hermanos mayores». «Dos» aquí es 两. Antes de 个, 一 se dice yí: 一个 (yí ge).',
         examples: [
           { target: '我有两个哥哥。', base: 'Tengo dos hermanos mayores.' },
           { target: '我有一个弟弟。', base: 'Tengo un hermano menor.', note: 'yí ge' },
         ],
       },
-      takeaways: ['Decís que tenés algo con 有.', 'Contás personas con número + 个.'],
+      takeaways: ['Dices que tienes algo con 有.', 'Cuentas personas con número + 个.'],
       exercises: [
         ex.translationChoice('有', 'tener', ['no tener', 'ser', 'nosotros'], ['zh-you']),
         ex.fillBlank(
@@ -324,16 +324,16 @@ export const unit04: UnitDef = {
     },
     {
       title: '没有',
-      objective: 'Decir que no tenés algo y preguntar si alguien tiene.',
+      objective: 'Decir que no tienes algo y preguntar si alguien tiene.',
       intro: {
         explanation:
           '有 se niega siempre con 没: 没有 (méiyǒu). «不有» no existe. Para preguntar: 你有姐姐吗？',
         examples: [
           { target: '我没有妹妹。', base: 'No tengo hermanas menores.' },
-          { target: '你有姐姐吗？', base: '¿Tenés una hermana mayor?' },
+          { target: '你有姐姐吗？', base: '¿Tienes una hermana mayor?' },
         ],
       },
-      takeaways: ['Negás 有 con 没有.', 'Preguntás si alguien tiene algo con 有…吗？'],
+      takeaways: ['Niegas 有 con 没有.', 'Preguntas si alguien tiene algo con 有…吗？'],
       exercises: [
         ex.translationChoice('没有', 'no tener', ['tener', 'no (negación)', 'ser'], ['zh-meiyou']),
         ex.fillBlank(
@@ -359,7 +359,7 @@ export const unit04: UnitDef = {
         ]),
         ex.fillBlank(
           '你有弟弟___？',
-          '¿Tenés un hermano menor?',
+          '¿Tienes un hermano menor?',
           '吗',
           ['呢', '不', '的'],
           ['zh-you', 'zh-didi', 'zh-ma'],
@@ -376,7 +376,7 @@ export const unit04: UnitDef = {
             explanation: 'Con 有 la negación es 没: 我没有弟弟.',
           },
         ),
-        write('¿Tenés una hermana mayor?', 'nǐ yǒu jiějie ma', '你有姐姐吗', [
+        write('¿Tienes una hermana mayor?', 'nǐ yǒu jiějie ma', '你有姐姐吗', [
           'zh-you',
           'zh-jiejie',
           'zh-ma',
@@ -395,8 +395,8 @@ export const unit04: UnitDef = {
         ],
       },
       takeaways: [
-        'Marcás de quién es algo con 的.',
-        'Decís cuántos son en tu familia con 家有 … 个人.',
+        'Marcas de quién es algo con 的.',
+        'Dices cuántos son en tu familia con 家有 … 个人.',
       ],
       exercises: [
         ex.translationChoice(
@@ -405,7 +405,7 @@ export const unit04: UnitDef = {
           ['tener', 'nosotros', 'familia / casa'],
           ['zh-de'],
         ),
-        ex.translationChoice('我们', 'nosotros', ['yo', 'familia / casa', 'vos'], ['zh-women']),
+        ex.translationChoice('我们', 'nosotros', ['yo', 'familia / casa', 'tú'], ['zh-women']),
         ex.fillBlank(
           '他是我___朋友。',
           'Él es mi amigo.',

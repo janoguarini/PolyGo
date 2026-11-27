@@ -170,13 +170,13 @@ export const unit10: UnitDef = {
     w(
       'en-bus',
       'bus',
-      'colectivo / autobús',
+      'autobús',
       '/bʌs/',
       '🚌',
       'I go to work by bus.',
-      'Voy a trabajar en colectivo.',
+      'Voy a trabajar en autobús.',
       ['transport'],
-      ['autobús', 'colectivo', 'bus'],
+      ['colectivo / autobús', 'colectivo', 'bus'],
     ),
     w(
       'en-near',
@@ -196,10 +196,10 @@ export const unit10: UnitDef = {
       '/fɑr/',
       undefined,
       'The hospital is far from here.',
-      'El hospital está lejos de acá.',
+      'El hospital está lejos de aquí.',
       ['directions'],
     ),
-    w('en-left', 'left', 'izquierda', '/lɛft/', '⬅️', 'Turn left.', 'Doblá a la izquierda.', [
+    w('en-left', 'left', 'izquierda', '/lɛft/', '⬅️', 'Turn left.', 'Dobla a la izquierda.', [
       'directions',
     ]),
     w(
@@ -219,7 +219,7 @@ export const unit10: UnitDef = {
       '/tɜrn/',
       undefined,
       'Turn right at the bank.',
-      'Doblá a la derecha en el banco.',
+      'Dobla a la derecha en el banco.',
       ['directions', 'verbs'],
       ['doblar', 'girar'],
     ),
@@ -230,7 +230,7 @@ export const unit10: UnitDef = {
       '/streɪt ɑn/',
       '⬆️',
       'Go straight on.',
-      'Seguí derecho.',
+      'Sigue derecho.',
       ['directions'],
       ['derecho', 'todo recto', 'recto'],
     ),
@@ -297,14 +297,14 @@ export const unit10: UnitDef = {
     },
     {
       title: 'Viajar por la ciudad',
-      objective: 'Estación, hotel y colectivo.',
+      objective: 'Estación, hotel y autobús.',
       exercises: [
         ex.imageChoice('🚌', 'bus', ['station', 'street', 'hotel'], ['en-bus']),
         ex.imageChoice('🚉', 'station', ['bus', 'bank', 'park'], ['en-station']),
         ex.imageChoice('🏨', 'hotel', ['hospital', 'house', 'school'], ['en-hotel']),
         ex.fillBlank(
           'I go to work ___ bus.',
-          'Voy a trabajar en colectivo.',
+          'Voy a trabajar en autobús.',
           'by',
           ['in', 'on', 'at'],
           ['en-bus', 'en-go', 'en-work'],
@@ -349,7 +349,7 @@ export const unit10: UnitDef = {
         ),
         ex.fillBlank(
           'The hospital is far ___ here.',
-          'El hospital está lejos de acá.',
+          'El hospital está lejos de aquí.',
           'from',
           ['of', 'to', 'at'],
           ['en-far', 'en-hospital', 'en-from'],
@@ -377,7 +377,7 @@ export const unit10: UnitDef = {
       ],
     },
     {
-      title: 'Doblá a la izquierda',
+      title: 'Dobla a la izquierda',
       objective: 'Dar indicaciones: left, right, turn y straight on.',
       exercises: [
         ex.imageChoice('⬅️', 'left', ['right', 'straight on', 'near'], ['en-left']),
@@ -385,7 +385,7 @@ export const unit10: UnitDef = {
         ex.imageChoice('⬆️', 'straight on', ['left', 'right', 'turn'], ['en-straight-on']),
         ex.fillBlank(
           '___ left at the bank.',
-          'Doblá a la izquierda en el banco.',
+          'Dobla a la izquierda en el banco.',
           'Turn',
           ['Go', 'Is', 'Take'],
           ['en-turn', 'en-left', 'en-bank'],
@@ -411,12 +411,12 @@ export const unit10: UnitDef = {
           ],
           ['en-straight-on', 'en-turn', 'en-right'],
         ),
-        ex.orderWords('Turn right at the school.', 'Doblá a la derecha en la escuela.', [
+        ex.orderWords('Turn right at the school.', 'Dobla a la derecha en la escuela.', [
           'en-turn',
           'en-right',
           'en-school',
         ]),
-        ex.translateWrite('Doblá a la izquierda.', 'Turn left.', ['en-turn', 'en-left']),
+        ex.translateWrite('Dobla a la izquierda.', 'Turn left.', ['en-turn', 'en-left']),
       ],
     },
   ],

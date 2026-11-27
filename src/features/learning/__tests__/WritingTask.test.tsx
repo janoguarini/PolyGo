@@ -27,7 +27,7 @@ describe('WritingTask', () => {
     await type('I have 31 years. I am from Peru.');
     await fireEvent.press(screen.getByRole('button', { name: 'Revisar mi texto' }));
     expect(screen.getByText(/Te falta algo de la consigna/)).toBeTruthy();
-    expect(screen.getByText('○ Decís tu edad con I am + número (sin have)')).toBeTruthy();
+    expect(screen.getByText('○ Dices tu edad con I am + número (sin have)')).toBeTruthy();
   });
 
   it('libre: no hay veredicto; muestra el modelo y la lista de control para marcar', async () => {
@@ -64,7 +64,7 @@ describe('WritingPracticeCard (acceso desde los resultados de la lección)', () 
 
   it('ofrece la tarea guiada de la lección y abre su pantalla', async () => {
     await render(<WritingPracticeCard lessonId="a1-u03-l04" />);
-    expect(screen.getByText('PRACTICÁ ESCRIBIENDO')).toBeTruthy();
+    expect(screen.getByText('PRACTICA ESCRIBIENDO')).toBeTruthy();
     await fireEvent.press(screen.getByRole('button', { name: 'Tu edad y tu país' }));
     expect(router.push).toHaveBeenCalledWith({
       pathname: '/writing/[id]',
@@ -75,10 +75,10 @@ describe('WritingPracticeCard (acceso desde los resultados de la lección)', () 
   it('en el repaso final del bloque ofrece la tarea libre; en otras lecciones no muestra nada', async () => {
     await render(<WritingPracticeCard lessonId="a1-u04-final" />);
     expect(
-      screen.getByRole('button', { name: 'Bloque 1: presentate y presentá a alguien' }),
+      screen.getByRole('button', { name: 'Bloque 1: preséntate y presenta a alguien' }),
     ).toBeTruthy();
     screen.unmount();
     await render(<WritingPracticeCard lessonId="a1-u02-l01" />);
-    expect(screen.queryByText('PRACTICÁ ESCRIBIENDO')).toBeNull();
+    expect(screen.queryByText('PRACTICA ESCRIBIENDO')).toBeNull();
   });
 });

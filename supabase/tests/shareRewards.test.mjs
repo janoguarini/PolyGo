@@ -14,8 +14,12 @@ before(async () => {
 
 const one = async (sql, params = []) => (await db.query(sql, params)).rows[0];
 const claim = (u, kind, ref) =>
-  as(db, 'authenticated', u, async () =>
-    (await db.query('select public.claim_share_reward($1, $2) as r', [kind, ref])).rows[0].r,
+  as(
+    db,
+    'authenticated',
+    u,
+    async () =>
+      (await db.query('select public.claim_share_reward($1, $2) as r', [kind, ref])).rows[0].r,
   );
 const rejects = (promise, code) =>
   assert.rejects(promise, (err) => {
@@ -45,7 +49,9 @@ test('el monto y los umbrales replican shared/', async () => {
   assert.equal(PLANNED_UNITS_PER_LEVEL, 12);
   // Los umbrales de la función son los de TIERS (sin Bronce).
   const def = (
-    await one(`select pg_get_functiondef('public.claim_share_reward(text,text)'::regprocedure) as d`)
+    await one(
+      `select pg_get_functiondef('public.claim_share_reward(text,text)'::regprocedure) as d`,
+    )
   ).d;
   for (const t of TIERS.filter((t) => t.id !== 'bronze')) {
     assert.ok(def.includes(`('${t.id}', ${t.minRating})`), t.id);

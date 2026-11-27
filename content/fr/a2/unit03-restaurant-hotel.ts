@@ -92,11 +92,11 @@ export const FR_A2_U03: FrUnitDef = {
       "Reservar y pedir con cortesía: j'aimerais, je pourrais, pourriez-vous…? La carte y le menu, l'entrée, la cuenta y el service compris.",
     emoji: '🍽️',
     objective:
-      'Podés reservar una mesa o una habitación, pedir cosas en el hotel, elegir de la carta, pedir la carne a tu gusto y pagar la cuenta con cortesía.',
+      'Puedes reservar una mesa o una habitación, pedir cosas en el hotel, elegir de la carta, pedir la carne a tu gusto y pagar la cuenta con cortesía.',
     grammar: {
       title: "El condicional de cortesía: j'aimerais, je pourrais, pourriez-vous…?",
       explanation:
-        "Para pedir con amabilidad, el francés usa el condicional, como el español «me gustaría» o «¿podría…?». Ya conocés je voudrais (quisiera). Ahora sumás j'aimerais (me gustaría), je pourrais (yo podría) y pourriez-vous…? (¿podría usted…?), que van con un sustantivo o con un verbo en infinitivo: j'aimerais réserver, pourriez-vous me donner…? En el hotel y en el restaurante se usa siempre vous. Las terminaciones -ais y -ez se escriben distinto, pero la s y la z finales no suenan.",
+        "Para pedir con amabilidad, el francés usa el condicional, como el español «me gustaría» o «¿podría…?». Ya conoces je voudrais (quisiera). Ahora sumas j'aimerais (me gustaría), je pourrais (yo podría) y pourriez-vous…? (¿podría usted…?), que van con un sustantivo o con un verbo en infinitivo: j'aimerais réserver, pourriez-vous me donner…? En el hotel y en el restaurante se usa siempre vous. Las terminaciones -ais y -ez se escriben distinto, pero la s y la z finales no suenan.",
       examples: [
         {
           target: "J'aimerais réserver une table pour ce soir.",
@@ -268,7 +268,7 @@ export const FR_A2_U03: FrUnitDef = {
         objective: 'Reservar una mesa o una habitación con cortesía.',
         intro: {
           explanation:
-            "Para reservar con amabilidad: j'aimerais (me gustaría) + réserver o + lo que querés. Es más suave que je veux y tan cortés como je voudrais. En el hotel: une chambre double (habitación doble) y la nuit (la noche que dormís allí; para la hora del día ya conocés le soir). Ojo con el número: deux (dos) y douze (doce) se distinguen por la vocal y por la z de douze.",
+            "Para reservar con amabilidad: j'aimerais (me gustaría) + réserver o + lo que quieres. Es más suave que je veux y tan cortés como je voudrais. En el hotel: une chambre double (habitación doble) y la nuit (la noche que duermes allí; para la hora del día ya conoces le soir). Ojo con el número: deux (dos) y douze (doce) se distinguen por la vocal y por la z de douze.",
           examples: [
             {
               target: "J'aimerais réserver une table pour deux.",
@@ -281,8 +281,8 @@ export const FR_A2_U03: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Reservás con j'aimerais réserver…",
-          'Pedís una chambre double y decís cuántas nuits.',
+          "Reservas con j'aimerais réserver…",
+          'Pides una chambre double y dices cuántas nuits.',
         ],
         exercises: [
           ex.translationChoice(
@@ -384,7 +384,7 @@ export const FR_A2_U03: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Bonsoir! Combien de nuits?',
-            '¡Buenas noches! ¿Cuántas noches? (Respondé: dos noches, por favor.)',
+            '¡Buenas noches! ¿Cuántas noches? (Responde: dos noches, por favor.)',
             "Deux nuits, s'il vous plaît.",
             ['Deux nuits.', 'Deux nuits, merci.', "Bonsoir! Deux nuits, s'il vous plaît."],
             ['fr-la-nuit'],
@@ -409,8 +409,8 @@ export const FR_A2_U03: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Pedís algo con pourriez-vous…? o je pourrais…?',
-          "Ubicás la habitación con l'étage y l'ascenseur.",
+          'Pides algo con pourriez-vous…? o je pourrais…?',
+          "Ubicas la habitación con l'étage y l'ascenseur.",
         ],
         exercises: [
           ex.translationChoice(
@@ -500,7 +500,7 @@ export const FR_A2_U03: FrUnitDef = {
           ),
           ex.shortAnswer(
             'La chambre est à quel étage?',
-            '¿En qué piso está la habitación? (Respondé: en el tercer piso.)',
+            '¿En qué piso está la habitación? (Responde: en el tercer piso.)',
             'Elle est au troisième étage.',
             ['Au troisième étage.', 'La chambre est au troisième étage.', 'Au troisième.'],
             ['fr-l-etage'],
@@ -528,8 +528,8 @@ export const FR_A2_U03: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Distinguís la carte (la carta) de le menu (el menú del día).',
-          "Ordenás la comida: l'entrée, le plat, le dessert.",
+          'Distingues la carte (la carta) de le menu (el menú del día).',
+          "Ordenas la comida: l'entrée, le plat, le dessert.",
         ],
         exercises: [
           ex.translationChoice(
@@ -619,7 +619,7 @@ export const FR_A2_U03: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Et comme dessert?',
-            '¿Y de postre? (Pedí una tarta de manzana.)',
+            '¿Y de postre? (Pide una tarta de manzana.)',
             "Une tarte aux pommes, s'il vous plaît.",
             [
               'Une tarte aux pommes.',
@@ -636,10 +636,10 @@ export const FR_A2_U03: FrUnitDef = {
       // ------------------------------------------------------------------------------------ L4
       {
         title: 'Pedir la comida',
-        objective: 'Pedir los platos y decir cómo querés la carne.',
+        objective: 'Pedir los platos y decir cómo quieres la carne.',
         intro: {
           explanation:
-            'El mozo pregunta vous avez choisi? (¿ya eligieron?). Para la carne hay tres puntos: saignant (jugoso, rojo por dentro), à point (a punto) y bien cuit (bien cocido). En Francia la carne se sirve más cruda que en Argentina: un steak à point es bastante rosado. La gn de saignant suena como la ñ. Saignant concuerda: la viande saignante, y en el femenino la t final sí suena.',
+            'El mesero pregunta vous avez choisi? (¿ya eligieron?). Para la carne hay tres puntos: saignant (jugoso, rojo por dentro), à point (a punto) y bien cuit (bien cocido). En Francia la carne se sirve más cruda que en Argentina: un steak à point es bastante rosado. La gn de saignant suena como la ñ. Saignant concuerda: la viande saignante, y en el femenino la t final sí suena.',
           examples: [
             { target: "Un steak saignant, s'il vous plaît.", base: 'Un bife jugoso, por favor.' },
             {
@@ -649,8 +649,8 @@ export const FR_A2_U03: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Pedís la carne saignant, à point o bien cuit.',
-          "Pedís con je voudrais, j'aimerais o pourriez-vous…?",
+          'Pides la carne saignant, à point o bien cuit.',
+          "Pides con je voudrais, j'aimerais o pourriez-vous…?",
         ],
         exercises: [
           ex.translationChoice(
@@ -688,7 +688,7 @@ export const FR_A2_U03: FrUnitDef = {
             ['fr-pourriez-vous'],
             {
               id: 'fr.ex.l6im968qbh163m',
-              explanation: 'Le pedís algo al mozo: pourriez-vous + infinitivo.',
+              explanation: 'Le pides algo al mesero: pourriez-vous + infinitivo.',
             },
           ),
           ex.matchPairs(
@@ -717,12 +717,12 @@ export const FR_A2_U03: FrUnitDef = {
             'A punto.',
             ['Jugosa.', 'Bien cocida.', 'No lo dice.'],
             ['fr-saignant'],
-            'El mozo pregunta «Saignant ou à point?» y ella responde «À point».',
+            'El mesero pregunta «Saignant ou à point?» y ella responde «À point».',
           ),
           question(
             'fr.ex.5lzvawdd5gbziu',
             BISTROT,
-            '¿Qué más le pide Camille al mozo?',
+            '¿Qué más le pide Camille al mesero?',
             'Una jarra de agua.',
             ['La cuenta.', 'Una botella de vino.', 'La carta de postres.'],
             ['fr-pourriez-vous'],
@@ -742,7 +742,7 @@ export const FR_A2_U03: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Et la viande, saignante ou à point?',
-            '¿Y la carne, jugosa o a punto? (Pedila jugosa.)',
+            '¿Y la carne, jugosa o a punto? (Pídela jugosa.)',
             "Saignante, s'il vous plaît.",
             ['Saignante.', 'Saignante, merci.', "Saignant, s'il vous plaît.", 'Saignant.'],
             ['fr-saignant'],
@@ -764,8 +764,8 @@ export const FR_A2_U03: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Pedís l'addition con cortesía.",
-          'Sabés que el service está compris y le pourboire es opcional.',
+          "Pides l'addition con cortesía.",
+          'Sabes que el service está compris y le pourboire es opcional.',
         ],
         exercises: [
           ex.translationChoice(

@@ -93,7 +93,7 @@ export const IT_A1_U15: ItUnitDef = {
       'Contar hasta cien, decir la fecha y tu cumpleaños, preguntar qué tiempo hace y hablar de las estaciones.',
     emoji: '📅',
     objective:
-      'Podés decir la fecha y cuándo es tu cumpleaños, contar hasta cien y decir qué tiempo hace (fa caldo, piove, nevica) en cada estación.',
+      'Puedes decir la fecha y cuándo es tu cumpleaños, contar hasta cien y decir qué tiempo hace (fa caldo, piove, nevica) en cada estación.',
     grammar: {
       title: 'La fecha · fare con el clima',
       explanation:
@@ -252,7 +252,7 @@ export const IT_A1_U15: ItUnitDef = {
             { target: 'Il biglietto costa cento euro.', base: 'El boleto cuesta cien euros.' },
           ],
         },
-        takeaways: ['Contás de diez en diez hasta cento.', 'Decís edades y precios más grandes.'],
+        takeaways: ['Cuentas de diez en diez hasta cento.', 'Dices edades y precios más grandes.'],
         exercises: [
           ex.translationChoice(
             'cinquanta',
@@ -304,7 +304,7 @@ export const IT_A1_U15: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Quanti anni ha tuo padre?',
-            '¿Cuántos años tiene tu papá? (Respondé que tiene cincuenta años.)',
+            '¿Cuántos años tiene tu papá? (Responde que tiene cincuenta años.)',
             'Ha cinquanta anni.',
             ['Mio padre ha cinquanta anni.', 'Cinquanta anni.', 'Cinquanta.'],
             ['it-cinquanta', 'it-ha'],
@@ -332,8 +332,8 @@ export const IT_A1_U15: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Decís la fecha con il + número + mes (il primo para el 1).',
-          'Decís en qué mes es algo: a luglio, in luglio.',
+          'Dices la fecha con il + número + mes (il primo para el 1).',
+          'Dices en qué mes es algo: a luglio, in luglio.',
         ],
         exercises: [
           ex.translationChoice('gennaio', 'enero', ['junio', 'julio', 'mayo'], ['it-gennaio'], {
@@ -401,7 +401,7 @@ export const IT_A1_U15: ItUnitDef = {
           question(
             'it.ex.c8v5xpaedhj7we',
             INVITO,
-            '¿Por qué la pileta es una buena idea?',
+            '¿Por qué la piscina es una buena idea?',
             'Porque hace calor',
             ['Porque llueve', 'Porque hace frío', 'Porque es invierno'],
             ['it-fa-caldo'],
@@ -409,7 +409,7 @@ export const IT_A1_U15: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Quando è il tuo compleanno?',
-            '¿Cuándo es tu cumpleaños? (Respondé que es el 1 de mayo.)',
+            '¿Cuándo es tu cumpleaños? (Responde que es el 1 de mayo.)',
             'Il mio compleanno è il primo maggio.',
             ['È il primo maggio.', 'Il primo maggio.'],
             ['it-compleanno', 'it-il-primo', 'it-maggio'],
@@ -440,14 +440,14 @@ export const IT_A1_U15: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Preguntás che tempo fa?',
-          'Decís fa caldo, fa freddo, piove, nevica y c’è il sole.',
+          'Preguntas che tempo fa?',
+          'Dices fa caldo, fa freddo, piove, nevica y c’è il sole.',
         ],
         exercises: [
           ex.translationChoice(
             'che tempo fa?',
             '¿qué tiempo hace?',
-            ['¿qué hora es?', '¿cuánto tiempo?', '¿qué hacés?'],
+            ['¿qué hora es?', '¿cuánto tiempo?', '¿qué haces?'],
             ['it-che-tempo-fa'],
             {
               id: 'it.ex.nx0d2mkypr8npv',
@@ -508,7 +508,7 @@ export const IT_A1_U15: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Che tempo fa oggi?',
-            '¿Qué tiempo hace hoy? (Respondé que hace frío y llueve.)',
+            '¿Qué tiempo hace hoy? (Responde que hace frío y llueve.)',
             'Fa freddo e piove.',
             ['Oggi fa freddo e piove.', 'Piove e fa freddo.', 'Oggi piove e fa freddo.'],
             ['it-fa-freddo', 'it-piove'],
@@ -532,7 +532,7 @@ export const IT_A1_U15: ItUnitDef = {
         objective: 'Hablar de las estaciones y del clima en cada una.',
         intro: {
           explanation:
-            "Las estaciones: la primavera, l'estate (el verano, femenino), l'autunno y l'inverno. «En verano» es d'estate o in estate. Y recordá: en la Argentina diciembre es verano; en Italia, invierno.",
+            "Las estaciones: la primavera, l'estate (el verano, femenino), l'autunno y l'inverno. «En verano» es d'estate o in estate. Y recuerda: en la Argentina diciembre es verano; en Italia, invierno.",
           examples: [
             { target: "D'estate fa caldo.", base: 'En verano hace calor.' },
             {
@@ -541,7 +541,7 @@ export const IT_A1_U15: ItUnitDef = {
             },
           ],
         },
-        takeaways: ["Nombrás l'estate y l'inverno.", 'Comparás el clima de los dos hemisferios.'],
+        takeaways: ["Nombras l'estate y l'inverno.", 'Comparas el clima de los dos hemisferios.'],
         exercises: [
           ex.translationChoice(
             "l'estate",
@@ -613,7 +613,7 @@ export const IT_A1_U15: ItUnitDef = {
           ),
           ex.shortAnswer(
             "Ti piace l'inverno?",
-            '¿Te gusta el invierno? (Respondé que no, que te gusta el verano.)',
+            '¿Te gusta el invierno? (Responde que no, que te gusta el verano.)',
             "No, mi piace l'estate.",
             [
               'No, mi piace l’estate.',
@@ -648,8 +648,8 @@ export const IT_A1_U15: ItUnitDef = {
           ],
         },
         takeaways: [
-          'Entendés un aviso de cierre por un feriado.',
-          'Decís fechas especiales del año.',
+          'Entiendes un aviso de cierre por un feriado.',
+          'Dices fechas especiales del año.',
         ],
         exercises: [
           ex.listenChoice(
@@ -717,7 +717,7 @@ export const IT_A1_U15: ItUnitDef = {
           ),
           ex.shortAnswer(
             'Che tempo fa a Ferragosto?',
-            '¿Qué tiempo hace en Ferragosto? (Respondé que hace mucho calor.)',
+            '¿Qué tiempo hace en Ferragosto? (Responde que hace mucho calor.)',
             'Fa molto caldo.',
             ['A Ferragosto fa molto caldo.', 'Fa caldo.'],
             ['it-fa-caldo'],

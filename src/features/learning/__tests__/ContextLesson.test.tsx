@@ -81,8 +81,7 @@ async function setup(
 
 const choose = (text: string) => fireEvent.press(screen.getByRole('radio', { name: text }));
 const check = () => fireEvent.press(screen.getByRole('button', { name: 'Comprobar' }));
-const next = async () =>
-  fireEvent.press(await screen.findByRole('button', { name: 'Continuar' }));
+const next = async () => fireEvent.press(await screen.findByRole('button', { name: 'Continuar' }));
 const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const wrongOf = (e: Exercise) => payload(e).options.find((o) => o !== e.answer)!;
 
@@ -111,7 +110,10 @@ describe('lectura en contexto', () => {
     expect(screen.getByText(first!.explanation!)).toBeTruthy();
     await next();
     expect(onFinished).toHaveBeenCalledTimes(1);
-    expect(onFinished.mock.calls[0]![0].attempts[0]).toMatchObject({ correct: true, firstTry: true });
+    expect(onFinished.mock.calls[0]![0].attempts[0]).toMatchObject({
+      correct: true,
+      firstTry: true,
+    });
   });
 
   it('una respuesta equivocada vuelve al final y el reintento no cuenta como primer intento', async () => {
@@ -160,8 +162,12 @@ describe('escucha en contexto', () => {
     expect(screen.getByText(/voz sintetizada/)).toBeTruthy();
 
     // Repetir y repetir despacio.
-    await fireEvent.press(screen.getByRole('button', { name: 'Escuchar el audio (voz sintetizada)' }));
-    await fireEvent.press(screen.getByRole('button', { name: 'Escuchar más despacio (voz sintetizada)' }));
+    await fireEvent.press(
+      screen.getByRole('button', { name: 'Escuchar el audio (voz sintetizada)' }),
+    );
+    await fireEvent.press(
+      screen.getByRole('button', { name: 'Escuchar más despacio (voz sintetizada)' }),
+    );
     expect(dialogue).toHaveBeenCalledTimes(3);
     expect(dialogue.mock.calls[2]![2].slow).toBe(true);
 
@@ -170,7 +176,9 @@ describe('escucha en contexto', () => {
     await check();
     expect(await screen.findByText('TRANSCRIPCIÓN')).toBeTruthy();
     for (const l of p.stimulus.lines)
-      expect(screen.getByText(new RegExp(`${escape(l.speaker)}:\\s+${escape(l.text)}`))).toBeTruthy();
+      expect(
+        screen.getByText(new RegExp(`${escape(l.speaker)}:\\s+${escape(l.text)}`)),
+      ).toBeTruthy();
 
     // La segunda pregunta del mismo audio no lo vuelve a reproducir sola.
     await next();
@@ -189,7 +197,7 @@ describe('escucha en contexto', () => {
     expect(screen.getByText(/Reproduciendo… 2 de/)).toBeTruthy();
     await fireEvent.press(screen.getByRole('button', { name: 'Detener el audio' }));
     expect(stop).toHaveBeenCalled();
-    expect(screen.getByText('Podés volver a escucharlo las veces que quieras.')).toBeTruthy();
+    expect(screen.getByText('Puedes volver a escucharlo las veces que quieras.')).toBeTruthy();
   });
 
   it('si el audio falla, lo dice y se puede reintentar', async () => {
@@ -203,7 +211,9 @@ describe('escucha en contexto', () => {
       h.onDone?.();
       return jest.fn();
     });
-    await fireEvent.press(screen.getByRole('button', { name: 'Escuchar el audio (voz sintetizada)' }));
+    await fireEvent.press(
+      screen.getByRole('button', { name: 'Escuchar el audio (voz sintetizada)' }),
+    );
     expect(screen.queryByText(/No se pudo reproducir el audio/)).toBeNull();
   });
 
@@ -320,18 +330,27 @@ describe('payload desde la base', () => {
 
   it('rechaza estímulos incompletos o un audio acelerado', () => {
     const p = payload(all[0]!);
-    expect(() => parseExercise(row({ ...p, stimulus: { ...p.stimulus, lines: [] } }), [])).toThrow();
+    expect(() =>
+      parseExercise(row({ ...p, stimulus: { ...p.stimulus, lines: [] } }), []),
+    ).toThrow();
     expect(() => parseExercise(row({ ...p, question: '' }), [])).toThrow();
     const l = payload(listening[0]!);
-    expect(() => parseExercise(row({ ...l, stimulus: { ...l.stimulus, rate: 1.5 } }), [])).toThrow();
+    expect(() =>
+      parseExercise(row({ ...l, stimulus: { ...l.stimulus, rate: 1.5 } }), []),
+    ).toThrow();
   });
 });
 
 describe('fase C.2: U13 (registro en un hotel) y U14 (cliente y vendedor)', () => {
-  const lessonOf = (unit: number) => COMPREHENSION_PATH.find((p) => p.unit.position === unit)!.lessons[0]!;
+  const lessonOf = (unit: number) =>
+    COMPREHENSION_PATH.find((p) => p.unit.position === unit)!.lessons[0]!;
   const exercisesOf = (unit: number) => {
     const l = lessonOf(unit);
-    return l.exercises.map((def, i) => ({ ...toExercise(def, i), id: pathExerciseId(l.id, i), lessonId: l.id }));
+    return l.exercises.map((def, i) => ({
+      ...toExercise(def, i),
+      id: pathExerciseId(l.id, i),
+      lessonId: l.id,
+    }));
   };
   const u13 = exercisesOf(13);
   const u14 = exercisesOf(14);
@@ -351,7 +370,8 @@ describe('fase C.2: U13 (registro en un hotel) y U14 (cliente y vendedor)', () =
   });
 
   it('el payload de la base de todas sus preguntas pasa la validación de la app (también «form»)', () => {
-    for (const e of [...u13, ...u14]) expect(parseExercise(dbRow(e), []).payload).toEqual(e.payload);
+    for (const e of [...u13, ...u14])
+      expect(parseExercise(dbRow(e), []).payload).toEqual(e.payload);
   });
 
   it('U13: la ficha se muestra como FORMULARIO, con los datos ficticios de la huésped', async () => {
@@ -404,17 +424,21 @@ describe('fase C.2: U13 (registro en un hotel) y U14 (cliente y vendedor)', () =
   it.each([
     ['U13', u13],
     ['U14', u14],
-  ])('%s se completa de punta a punta con el reproductor de siempre', async (_unit, exercises) => {
-    const onFinished = await setup(exercises);
-    for (const e of exercises) {
-      expect(screen.getByText(payload(e).question)).toBeTruthy();
-      await choose(e.answer);
-      await check();
-      await next();
-    }
-    const { attempts } = onFinished.mock.calls[0]![0];
-    expect(attempts).toHaveLength(exercises.length);
-    expect(attempts.every((a) => a.correct && a.firstTry)).toBe(true);
-    // Una sesión completa (hasta 9 preguntas) supera los 5 s por defecto con la suite entera en paralelo.
-  }, 30_000);
+  ])(
+    '%s se completa de punta a punta con el reproductor de siempre',
+    async (_unit, exercises) => {
+      const onFinished = await setup(exercises);
+      for (const e of exercises) {
+        expect(screen.getByText(payload(e).question)).toBeTruthy();
+        await choose(e.answer);
+        await check();
+        await next();
+      }
+      const { attempts } = onFinished.mock.calls[0]![0];
+      expect(attempts).toHaveLength(exercises.length);
+      expect(attempts.every((a) => a.correct && a.firstTry)).toBe(true);
+      // Una sesión completa (hasta 9 preguntas) supera los 5 s por defecto con la suite entera en paralelo.
+    },
+    30_000,
+  );
 });

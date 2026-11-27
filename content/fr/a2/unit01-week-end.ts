@@ -11,16 +11,20 @@ import { dialogue, ex, question, reading, w } from '../helpers';
  * ESTADO EDITORIAL: borrador, sin revisión de hablantes nativos. Se carga sin publicar.
  */
 
-const LUNDI = dialogue('fr.stim.a2-u1-lundi', 'El lunes a la mañana, dos compañeros de oficina.', [
-  ['Nicolas', "Salut, Claire! Qu'est-ce que tu as fait le week-end dernier?"],
+const LUNDI = dialogue(
+  'fr.stim.a2-u1-lundi',
+  'El lunes por la mañana, dos compañeros de oficina.',
   [
-    'Claire',
-    "Samedi, j'ai fait le ménage et j'ai rangé mon appartement. Le soir, j'ai vu un film avec Paul.",
+    ['Nicolas', "Salut, Claire! Qu'est-ce que tu as fait le week-end dernier?"],
+    [
+      'Claire',
+      "Samedi, j'ai fait le ménage et j'ai rangé mon appartement. Le soir, j'ai vu un film avec Paul.",
+    ],
+    ['Nicolas', 'Et dimanche?'],
+    ['Claire', "Dimanche, j'ai dormi jusqu'à midi. Ensuite, j'ai lu un livre. Et toi?"],
+    ['Nicolas', "Moi, j'ai pris le train pour Lyon et j'ai mangé avec mes parents."],
   ],
-  ['Nicolas', 'Et dimanche?'],
-  ['Claire', "Dimanche, j'ai dormi jusqu'à midi. Ensuite, j'ai lu un livre. Et toi?"],
-  ['Nicolas', "Moi, j'ai pris le train pour Lyon et j'ai mangé avec mes parents."],
-]);
+);
 
 const PARIS = reading(
   'fr.stim.a2-u1-paris',
@@ -46,7 +50,7 @@ export const FR_A2_U01: FrUnitDef = {
       "Passé composé con avoir: participios en -é, -i, -u e irregulares (fait, pris); je n'ai pas mangé; déjà y pas encore; faire les courses y faire le ménage. Je parle / j'ai parlé, j'ai bu / j'ai vu.",
     emoji: '🗓️',
     objective:
-      'Podés contar qué hiciste ayer o el fin de semana pasado, decir lo que no hiciste y preguntar si alguien ya hizo algo.',
+      'Puedes contar qué hiciste ayer o el fin de semana pasado, decir lo que no hiciste y preguntar si alguien ya hizo algo.',
     grammar: {
       title: 'El passé composé con avoir',
       explanation:
@@ -95,7 +99,7 @@ export const FR_A2_U01: FrUnitDef = {
         "j'ai regardé",
         'miré',
         "Hier soir, j'ai regardé un film.",
-        'Ayer a la noche miré una película.',
+        'Ayer por la noche miré una película.',
         ['past'],
       ),
       w(
@@ -146,7 +150,7 @@ export const FR_A2_U01: FrUnitDef = {
         "j'ai pris",
         'tomé',
         "J'ai pris le métro ce matin.",
-        'Esta mañana tomé el subte.',
+        'Esta mañana tomé el metro.',
         ['past'],
         { acceptedTranslations: ['agarré'] },
       ),
@@ -194,7 +198,7 @@ export const FR_A2_U01: FrUnitDef = {
         objective: 'Contar qué hiciste ayer con verbos en -er.',
         intro: {
           explanation:
-            "El passé composé cuenta acciones terminadas: avoir en presente + participio. Los verbos en -er hacen el participio en -é: manger → mangé, parler → parlé, regarder → regardé. Hier es ayer; le week-end dernier, el fin de semana pasado (dernier va después). Escuchá la diferencia: je parle termina en l; j'ai parlé termina en é y empieza con j'ai.",
+            "El passé composé cuenta acciones terminadas: avoir en presente + participio. Los verbos en -er hacen el participio en -é: manger → mangé, parler → parlé, regarder → regardé. Hier es ayer; le week-end dernier, el fin de semana pasado (dernier va después). Escucha la diferencia: je parle termina en l; j'ai parlé termina en é y empieza con j'ai.",
           examples: [
             { target: "Hier, j'ai mangé avec Léa.", base: 'Ayer comí con Léa.' },
             {
@@ -204,8 +208,8 @@ export const FR_A2_U01: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Contás el pasado con j'ai + participio: j'ai mangé.",
-          "Distinguís je parle (presente) de j'ai parlé (pasado).",
+          "Cuentas el pasado con j'ai + participio: j'ai mangé.",
+          "Distingues je parle (presente) de j'ai parlé (pasado).",
         ],
         exercises: [
           ex.translationChoice('hier', 'ayer', ['mañana', 'hoy', 'ahora'], ['fr-hier'], {
@@ -250,7 +254,7 @@ export const FR_A2_U01: FrUnitDef = {
             {
               id: 'fr.ex.nw2gxir3iv398d',
               explanation:
-                "Después de j'ai va el participio: mangé. Mangé, manger y mangez suenan igual: fijate en la escritura.",
+                "Después de j'ai va el participio: mangé. Mangé, manger y mangez suenan igual: fíjate en la escritura.",
             },
           ),
           ex.fillBlank(
@@ -274,7 +278,7 @@ export const FR_A2_U01: FrUnitDef = {
           ),
           ex.orderWords(
             "Hier soir j'ai parlé avec Claire.",
-            'Ayer a la noche hablé con Claire.',
+            'Ayer por la noche hablé con Claire.',
             ['fr-j-ai-parle', 'fr-hier'],
             { id: 'fr.ex.f1i1v7joquxx98' },
           ),
@@ -286,7 +290,7 @@ export const FR_A2_U01: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Qu'est-ce que tu as regardé hier?",
-            '¿Qué miraste ayer? (Respondé que miraste una película.)',
+            '¿Qué miraste ayer? (Responde que miraste una película.)',
             "Hier, j'ai regardé un film.",
             ["J'ai regardé un film.", "J'ai regardé un film hier."],
             ['fr-j-ai-regarde', 'fr-hier'],
@@ -308,8 +312,8 @@ export const FR_A2_U01: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Usás los participios fini, dormi, bu, lu y vu.',
-          "Distinguís j'ai bu de j'ai vu.",
+          'Usas los participios fini, dormi, bu, lu y vu.',
+          "Distingues j'ai bu de j'ai vu.",
         ],
         exercises: [
           ex.translationChoice("j'ai dormi", 'dormí', ['terminé', 'leí', 'vi'], ['fr-j-ai-dormi'], {
@@ -357,7 +361,7 @@ export const FR_A2_U01: FrUnitDef = {
             ['fr-j-ai-dormi'],
             {
               id: 'fr.ex.6chbtj1zmrackk',
-              explanation: 'Escuchá nous / vous y la liaison: nous‿avons, vous‿avez.',
+              explanation: 'Escucha nous / vous y la liaison: nous‿avons, vous‿avez.',
             },
           ),
           ex.orderWords(
@@ -367,14 +371,14 @@ export const FR_A2_U01: FrUnitDef = {
             { id: 'fr.ex.r9an833kdmznw9' },
           ),
           ex.translateWrite(
-            'Ayer a la noche vi una película.',
+            'Ayer por la noche vi una película.',
             "Hier soir, j'ai vu un film.",
             ['fr-j-ai-vu', 'fr-hier'],
             { id: 'fr.ex.mymacoemgkkqbd', acceptedAnswers: ["J'ai vu un film hier soir."] },
           ),
           ex.shortAnswer(
             'Tu as bu un café ce matin?',
-            '¿Tomaste un café esta mañana? (Respondé que sí.)',
+            '¿Tomaste un café esta mañana? (Responde que sí.)',
             "Oui, j'ai bu un café.",
             ["Oui, j'ai bu un café ce matin.", "Oui, j'ai bu un café."],
             ['fr-j-ai-bu'],
@@ -389,15 +393,15 @@ export const FR_A2_U01: FrUnitDef = {
         objective: 'Contar las tareas de la casa con fait y pris.',
         intro: {
           explanation:
-            "Faire y prendre tienen participios irregulares: faire → fait, prendre → pris. Faire les courses es hacer las compras (de la comida): falso amigo, no tiene nada que ver con carreras. Faire le ménage es limpiar la casa y ranger, ordenar (j'ai rangé ma chambre). Escuchá la diferencia: je fais les courses (presente) y j'ai fait les courses (pasado).",
+            "Faire y prendre tienen participios irregulares: faire → fait, prendre → pris. Faire les courses es hacer las compras (de la comida): falso amigo, no tiene nada que ver con carreras. Faire le ménage es limpiar la casa y ranger, ordenar (j'ai rangé ma chambre). Escucha la diferencia: je fais les courses (presente) y j'ai fait les courses (pasado).",
           examples: [
             { target: "Samedi, j'ai fait les courses.", base: 'El sábado hice las compras.' },
-            { target: "Hier, j'ai pris le métro.", base: 'Ayer tomé el subte.' },
+            { target: "Hier, j'ai pris le métro.", base: 'Ayer tomé el metro.' },
           ],
         },
         takeaways: [
-          "Contás lo que hiciste con j'ai fait y j'ai pris.",
-          'Decís faire les courses (compras) y faire le ménage (limpieza).',
+          "Cuentas lo que hiciste con j'ai fait y j'ai pris.",
+          'Dices faire les courses (compras) y faire le ménage (limpieza).',
         ],
         exercises: [
           ex.translationChoice(
@@ -440,7 +444,7 @@ export const FR_A2_U01: FrUnitDef = {
           ),
           ex.fillBlank(
             "Ce matin, j'ai ___ le bus.",
-            'Esta mañana tomé el colectivo.',
+            'Esta mañana tomé el autobús.',
             'pris',
             ['prends', 'prendre'],
             ['fr-j-ai-pris'],
@@ -482,7 +486,7 @@ export const FR_A2_U01: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Qu'est-ce que tu as fait samedi?",
-            '¿Qué hiciste el sábado? (Respondé que limpiaste la casa.)',
+            '¿Qué hiciste el sábado? (Responde que limpiaste la casa.)',
             "Samedi, j'ai fait le ménage.",
             ["J'ai fait le ménage.", "J'ai fait le ménage samedi."],
             ['fr-j-ai-fait', 'fr-faire-le-menage'],
@@ -507,8 +511,8 @@ export const FR_A2_U01: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Negás el pasado con ne… pas alrededor de avoir: je n'ai pas fini.",
-          'Preguntás con déjà y respondés pas encore.',
+          "Niegas el pasado con ne… pas alrededor de avoir: je n'ai pas fini.",
+          'Preguntas con déjà y respondes pas encore.',
         ],
         exercises: [
           ex.translationChoice('déjà', 'ya', ['todavía no', 'ayer', 'ahora'], ['fr-deja'], {
@@ -540,7 +544,7 @@ export const FR_A2_U01: FrUnitDef = {
             'fr.ex.4rakamdk34ktk4',
             LUNDI,
             '¿Qué hizo Claire el sábado durante el día?',
-            'Limpió y ordenó su departamento.',
+            'Limpió y ordenó su apartamento.',
             ['Hizo las compras.', 'Tomó el tren a Lyon.', 'Durmió hasta el mediodía.'],
             ['fr-faire-le-menage', 'fr-ranger'],
             "Claire dice «Samedi, j'ai fait le ménage et j'ai rangé mon appartement».",
@@ -548,7 +552,7 @@ export const FR_A2_U01: FrUnitDef = {
           question(
             'fr.ex.e38tye4swrfeyg',
             LUNDI,
-            '¿Qué hizo Claire el sábado a la noche?',
+            '¿Qué hizo Claire el sábado por la noche?',
             'Vio una película con Paul.',
             ['Leyó un libro.', 'Comió con sus padres.', 'Se quedó durmiendo.'],
             ['fr-j-ai-vu'],
@@ -584,7 +588,7 @@ export const FR_A2_U01: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Tu as déjà fait les courses?',
-            '¿Ya hiciste las compras? (Respondé que no, todavía no.)',
+            '¿Ya hiciste las compras? (Responde que no, todavía no.)',
             'Non, pas encore.',
             ["Non, je n'ai pas encore fait les courses.", 'Pas encore.'],
             ['fr-pas-encore', 'fr-faire-les-courses'],
@@ -606,13 +610,13 @@ export const FR_A2_U01: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Conjugás avoir para cada persona: nous avons vu, ils ont pris.',
-          'Escuchás la liaison de ils‿ont frente a ils sont.',
+          'Conjugas avoir para cada persona: nous avons vu, ils ont pris.',
+          'Escuchas la liaison de ils‿ont frente a ils sont.',
         ],
         exercises: [
           ex.fillBlank(
             'Nous ___ pris le métro.',
-            'Tomamos el subte.',
+            'Tomamos el metro.',
             'avons',
             ['avez', 'ont', 'sommes'],
             ['fr-j-ai-pris'],
@@ -645,8 +649,8 @@ export const FR_A2_U01: FrUnitDef = {
             'fr.ex.hzv863ejk4bk79',
             PARIS,
             '¿Cómo se movieron Léa y Hugo por París el sábado?',
-            'En subte.',
-            ['A pie.', 'En auto.', 'En colectivo.'],
+            'En metro.',
+            ['A pie.', 'En auto.', 'En autobús.'],
             ['fr-j-ai-pris'],
             'Léa escribe «nous avons pris le métro».',
           ),
@@ -654,7 +658,7 @@ export const FR_A2_U01: FrUnitDef = {
             'fr.ex.2oeytme6yvwllc',
             PARIS,
             '¿Qué hicieron el domingo?',
-            'Tomaron un café y comieron medialunas.',
+            'Tomaron un café y comieron cruasanes.',
             ['Visitaron la torre Eiffel.', 'Hicieron las compras.', 'Se quedaron en el hotel.'],
             ['fr-j-ai-bu', 'fr-j-ai-mange'],
             'Escribe «nous avons bu un café et nous avons mangé des croissants».',
@@ -697,7 +701,7 @@ export const FR_A2_U01: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Qu'est-ce que vous avez fait le week-end dernier?",
-            '¿Qué hicieron el fin de semana pasado? (Respondé que miraron una película.)',
+            '¿Qué hicieron el fin de semana pasado? (Responde que miraron una película.)',
             'Nous avons regardé un film.',
             [
               'On a regardé un film.',

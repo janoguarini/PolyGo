@@ -115,7 +115,7 @@ export const unit09: UnitDef = {
       '/ˈwikˌɛnd/',
       '🎉',
       'What do you do on the weekend?',
-      '¿Qué hacés el fin de semana?',
+      '¿Qué haces el fin de semana?',
       ['time'],
     ),
     w('en-today', 'today', 'hoy', '/təˈdeɪ/', undefined, 'Today is Monday.', 'Hoy es lunes.', [
@@ -353,7 +353,7 @@ export const unit09: UnitDef = {
         ex.translationChoice(
           'What time is it?',
           '¿Qué hora es?',
-          ['¿Qué día es?', '¿A qué hora es?', '¿Cuántos años tenés?'],
+          ['¿Qué día es?', '¿A qué hora es?', '¿Cuántos años tienes?'],
           ['en-what-time', 'en-time'],
         ),
         ex.imageChoice(
@@ -421,7 +421,7 @@ export const unit09: UnitDef = {
           ['Who', 'Where', 'How'],
           ['en-what-time', 'en-breakfast'],
         ),
-        ex.orderWords('What time do you get up?', '¿A qué hora te levantás?', [
+        ex.orderWords('What time do you get up?', '¿A qué hora te levantas?', [
           'en-what-time',
           'en-get-up',
           'en-do',
@@ -443,7 +443,7 @@ export const unit09: UnitDef = {
         ),
         ex.shortAnswer(
           'What time do you wake up? (7:00)',
-          '¿A qué hora te despertás?',
+          '¿A qué hora te despiertas?',
           "I wake up at seven o'clock.",
           ['I wake up at seven.', "At seven o'clock.", 'At seven.', 'At 7.'],
           ['en-what-time', 'en-wake-up', 'en-at'],

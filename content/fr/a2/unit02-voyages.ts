@@ -63,10 +63,10 @@ export const FR_A2_U02: FrUnitDef = {
     title: 'Viajes',
     titleEn: 'Voyages',
     description:
-      "Passé composé con être (aller, partir, arriver, rester, rentrer, venir, tomber) y la concordancia; il y a + tiempo = hace; el aeropuerto, el hotel, la valija; en retard / à l'heure. Cultura: el TGV y la SNCF.",
+      "Passé composé con être (aller, partir, arriver, rester, rentrer, venir, tomber) y la concordancia; il y a + tiempo = hace; el aeropuerto, el hotel, la maleta; en retard / à l'heure. Cultura: el TGV y la SNCF.",
     emoji: '✈️',
     objective:
-      'Podés contar un viaje: adónde fuiste, cuándo llegaste y volviste, cuánto te quedaste y si el vuelo o el tren llegó a tiempo.',
+      'Puedes contar un viaje: adónde fuiste, cuándo llegaste y volviste, cuánto te quedaste y si el vuelo o el tren llegó a tiempo.',
     grammar: {
       title: 'El passé composé con être',
       explanation:
@@ -127,7 +127,7 @@ export const FR_A2_U02: FrUnitDef = {
         'je suis rentré',
         'volví',
         'Je suis rentré à la maison en bus.',
-        'Volví a casa en colectivo.',
+        'Volví a casa en autobús.',
         ['past', 'movement'],
         { acceptedTranslations: ['regresé'], acceptedTexts: ['je suis rentrée'] },
       ),
@@ -169,11 +169,11 @@ export const FR_A2_U02: FrUnitDef = {
       w(
         'fr-la-valise',
         'la valise',
-        'la valija',
+        'la maleta',
         'Ma valise est très grande.',
-        'Mi valija es muy grande.',
+        'Mi maleta es muy grande.',
         ['travel', 'f'],
-        { acceptedTranslations: ['la maleta'], emoji: '🧳' },
+        { acceptedTranslations: ['la valija'], emoji: '🧳' },
       ),
       w(
         'fr-le-passeport',
@@ -252,8 +252,8 @@ export const FR_A2_U02: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Usás être con aller, partir y arriver: je suis allé.',
-          'Hacés concordar el participio: elle est partie, ils sont arrivés.',
+          'Usas être con aller, partir y arriver: je suis allé.',
+          'Haces concordar el participio: elle est partie, ils sont arrivés.',
         ],
         exercises: [
           ex.translationChoice(
@@ -308,7 +308,7 @@ export const FR_A2_U02: FrUnitDef = {
             ['fr-je-suis-parti'],
             {
               id: 'fr.ex.q0d8bsewgfanid',
-              explanation: 'Escuchá el auxiliar: il est o ils sont. La s de partis no suena.',
+              explanation: 'Escucha el auxiliar: il est o ils sont. La s de partis no suena.',
             },
           ),
           ex.listenChoice(
@@ -333,7 +333,7 @@ export const FR_A2_U02: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Où est-ce que tu es allé le week-end dernier?',
-            '¿Adónde fuiste el fin de semana pasado? (Respondé que fuiste a Marsella.)',
+            '¿Adónde fuiste el fin de semana pasado? (Responde que fuiste a Marsella.)',
             'Je suis allé à Marseille.',
             [
               'Je suis allée à Marseille.',
@@ -360,8 +360,8 @@ export const FR_A2_U02: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Contás tu estadía con je suis resté y je suis rentré.',
-          'Ponés el participio en plural con nous y ils: nous sommes restés.',
+          'Cuentas tu estadía con je suis resté y je suis rentré.',
+          'Pones el participio en plural con nous y ils: nous sommes restés.',
         ],
         exercises: [
           ex.translationChoice(
@@ -374,11 +374,11 @@ export const FR_A2_U02: FrUnitDef = {
           ex.translationChoice(
             'le séjour',
             'la estadía',
-            ['el living', 'el vuelo', 'la valija'],
+            ['la sala', 'el vuelo', 'la maleta'],
             ['fr-le-sejour'],
             {
               id: 'fr.ex.zmjrkkss19wp3k',
-              explanation: 'Le séjour es la estadía (y también el living de una casa).',
+              explanation: 'Le séjour es la estadía (y también la sala de una casa).',
             },
           ),
           ex.matchPairs(
@@ -449,7 +449,7 @@ export const FR_A2_U02: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Tu es resté à l'hôtel?",
-            '¿Te quedaste en el hotel? (Respondé que sí.)',
+            '¿Te quedaste en el hotel? (Responde que sí.)',
             "Oui, je suis resté à l'hôtel.",
             ["Oui, je suis restée à l'hôtel.", 'Oui, je suis resté.', 'Oui, je suis restée.'],
             ['fr-je-suis-reste', 'fr-l-hotel'],
@@ -464,7 +464,7 @@ export const FR_A2_U02: FrUnitDef = {
         objective: 'Decir hace cuánto pasó algo y hablar del equipaje.',
         intro: {
           explanation:
-            "Il y a + tiempo significa «hace»: il y a deux ans (hace dos años), il y a une semaine. Ya conocés il y a como «hay»: con una cantidad de tiempo y un verbo en pasado, es «hace». À l'étranger es en el exterior o al exterior: partir à l'étranger. Para viajar llevás la valise (la valija) y le passeport.",
+            "Il y a + tiempo significa «hace»: il y a deux ans (hace dos años), il y a une semaine. Ya conoces il y a como «hay»: con una cantidad de tiempo y un verbo en pasado, es «hace». À l'étranger es en el exterior o al exterior: partir à l'étranger. Para viajar llevas la valise (la maleta) y le passeport.",
           examples: [
             {
               target: "Il y a deux ans, je suis parti à l'étranger.",
@@ -472,13 +472,13 @@ export const FR_A2_U02: FrUnitDef = {
             },
             {
               target: 'Mon passeport est dans la valise.',
-              base: 'Mi pasaporte está en la valija.',
+              base: 'Mi pasaporte está en la maleta.',
             },
           ],
         },
         takeaways: [
-          'Decís hace cuánto con il y a: il y a deux ans.',
-          "Nombrás la valise, le passeport y l'étranger.",
+          'Dices hace cuánto con il y a: il y a deux ans.',
+          "Nombras la valise, le passeport y l'étranger.",
         ],
         exercises: [
           ex.translationChoice(
@@ -502,7 +502,7 @@ export const FR_A2_U02: FrUnitDef = {
             [
               ['il y a deux ans', 'hace dos años'],
               ["l'étranger", 'el exterior'],
-              ['la valise', 'la valija'],
+              ['la valise', 'la maleta'],
               ['le passeport', 'el pasaporte'],
             ],
             ['fr-il-y-a-deux-ans', 'fr-l-etranger', 'fr-la-valise', 'fr-le-passeport'],
@@ -521,7 +521,7 @@ export const FR_A2_U02: FrUnitDef = {
           ),
           ex.fillBlank(
             'Où est mon ___? — Dans la valise!',
-            '¿Dónde está mi pasaporte? — ¡En la valija!',
+            '¿Dónde está mi pasaporte? — ¡En la maleta!',
             'passeport',
             ['billet', 'vol'],
             ['fr-le-passeport', 'fr-la-valise'],
@@ -558,7 +558,7 @@ export const FR_A2_U02: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Tu as ton passeport?',
-            '¿Tenés tu pasaporte? (Respondé que sí, que está en la valija.)',
+            '¿Tienes tu pasaporte? (Responde que sí, que está en la maleta.)',
             'Oui, il est dans la valise.',
             [
               'Oui, il est dans ma valise.',
@@ -584,8 +584,8 @@ export const FR_A2_U02: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Decís si algo está en retard o llegó à l'heure.",
-          'Entendés una conversación sobre un viaje con demoras.',
+          "Dices si algo está en retard o llegó à l'heure.",
+          'Entiendes una conversación sobre un viaje con demoras.',
         ],
         exercises: [
           ex.translationChoice(
@@ -627,9 +627,9 @@ export const FR_A2_U02: FrUnitDef = {
             AEROPORT,
             '¿Qué problema tiene Julie?',
             'Su vuelo está atrasado.',
-            ['Perdió la valija.', 'No tiene el pasaporte.', 'Su tren no llegó.'],
+            ['Perdió la maleta.', 'No tiene el pasaporte.', 'Su tren no llegó.'],
             ['fr-le-vol', 'fr-en-retard'],
-            'Dice «mon vol est en retard» y, sobre la valija, «Elle est avec moi».',
+            'Dice «mon vol est en retard» y, sobre la maleta, «Elle est avec moi».',
           ),
           question(
             'fr.ex.6sgq6lvqsu0bfs',
@@ -676,7 +676,7 @@ export const FR_A2_U02: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Le train est à l'heure?",
-            '¿El tren está a tiempo? (Respondé que no, que está atrasado.)',
+            '¿El tren está a tiempo? (Responde que no, que está atrasado.)',
             'Non, il est en retard.',
             ['Non, le train est en retard.'],
             ['fr-en-retard'],
@@ -697,12 +697,12 @@ export const FR_A2_U02: FrUnitDef = {
               target: 'Nous sommes allés à Rome il y a deux ans.',
               base: 'Fuimos a Roma hace dos años.',
             },
-            { target: 'Léa est partie avec sa valise.', base: 'Léa se fue con su valija.' },
+            { target: 'Léa est partie avec sa valise.', base: 'Léa se fue con su maleta.' },
           ],
         },
         takeaways: [
-          "Elegís être o avoir según el verbo: je suis allé, j'ai visité.",
-          'Hacés concordar el participio sólo con être.',
+          "Eliges être o avoir según el verbo: je suis allé, j'ai visité.",
+          'Haces concordar el participio sólo con être.',
         ],
         exercises: [
           ex.fillBlank(
@@ -733,7 +733,7 @@ export const FR_A2_U02: FrUnitDef = {
             ['fr-je-suis-rentre', 'fr-je-suis-reste'],
             {
               id: 'fr.ex.ku217u8eep4xgc',
-              explanation: 'Rentrée tiene una vocal nasal; restée, no: escuchá la primera sílaba.',
+              explanation: 'Rentrée tiene una vocal nasal; restée, no: escucha la primera sílaba.',
             },
           ),
           question(
@@ -796,7 +796,7 @@ export const FR_A2_U02: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Où est-ce que tu es allé en vacances?',
-            '¿Adónde fuiste de vacaciones? (Respondé que fuiste a Niza y te quedaste una semana.)',
+            '¿Adónde fuiste de vacaciones? (Responde que fuiste a Niza y te quedaste una semana.)',
             'Je suis allé à Nice et je suis resté une semaine.',
             [
               'Je suis allée à Nice et je suis restée une semaine.',

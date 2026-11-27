@@ -1,7 +1,16 @@
 import type { ReactNode } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
-import { Card, ErrorState, LoadingState, Text, colors, radii, spacing, themedStyles } from '@/design-system';
+import {
+  Card,
+  ErrorState,
+  LoadingState,
+  Text,
+  colors,
+  radii,
+  spacing,
+  themedStyles,
+} from '@/design-system';
 
 import { AdminError, PRESETS, useAdminPrefs, type Json } from './api';
 import { deltaPct, fmtInt, num } from './format';
@@ -29,7 +38,11 @@ export function Kpi({
   const d = previous === undefined || noData ? null : deltaPct(value, previous);
   const good = d === null ? null : invert ? d < 0 : d > 0;
   return (
-    <View style={styles.kpi} accessible accessibilityLabel={`${label}: ${noData ? 'sin datos' : format(value)}`}>
+    <View
+      style={styles.kpi}
+      accessible
+      accessibilityLabel={`${label}: ${noData ? 'sin datos' : format(value)}`}
+    >
       <Text variant="overline" numberOfLines={2} style={styles.kpiLabel}>
         {label.toUpperCase()}
       </Text>
@@ -44,7 +57,8 @@ export function Kpi({
       )}
       {d !== null ? (
         <Text variant="caption" color={d === 0 ? 'textMuted' : good ? 'success' : 'danger'}>
-          {d > 0 ? '▲' : d < 0 ? '▼' : '■'} {Math.abs(d).toLocaleString('es-AR')} % vs {format(previous)}
+          {d > 0 ? '▲' : d < 0 ? '▼' : '■'} {Math.abs(d).toLocaleString('es-AR')} % vs{' '}
+          {format(previous)}
         </Text>
       ) : previous !== undefined && !noData ? (
         <Text variant="caption">anterior: {format(previous)}</Text>
@@ -58,7 +72,15 @@ export function KpiGrid({ children }: { children: ReactNode }) {
   return <View style={layout.grid}>{children}</View>;
 }
 
-export function Section({ title, hint, children }: { title: string; hint?: string; children: ReactNode }) {
+export function Section({
+  title,
+  hint,
+  children,
+}: {
+  title: string;
+  hint?: string;
+  children: ReactNode;
+}) {
   return (
     <Card style={layout.section}>
       <Text variant="heading">{title}</Text>
@@ -93,7 +115,12 @@ export function BarList({
   const sorted = [...items].sort((a, b) => b.value - a.value);
   const shown = sorted.slice(0, maxItems);
   const rest = sorted.slice(maxItems);
-  if (rest.length) shown.push({ key: '__o', label: `Otros (${rest.length})`, value: rest.reduce((a, b) => a + b.value, 0) });
+  if (rest.length)
+    shown.push({
+      key: '__o',
+      label: `Otros (${rest.length})`,
+      value: rest.reduce((a, b) => a + b.value, 0),
+    });
   const top = Math.max(1, ...shown.map((i) => i.value));
   return (
     <View style={{ gap: spacing.sm }}>
@@ -199,7 +226,12 @@ export function Rows({
           </View>
         );
         return r.onPress ? (
-          <Pressable key={r.key} accessibilityRole="button" onPress={r.onPress} style={({ pressed }) => ({ opacity: pressed ? 0.7 : 1 })}>
+          <Pressable
+            key={r.key}
+            accessibilityRole="button"
+            onPress={r.onPress}
+            style={({ pressed }) => ({ opacity: pressed ? 0.7 : 1 })}
+          >
             {body}
           </Pressable>
         ) : (
@@ -290,7 +322,7 @@ export function AdminAsync({
     const denied = query.error instanceof AdminError && query.error.denied;
     return denied ? (
       <Text variant="body" color="danger">
-        La base negó el acceso. Cerrá sesión y volvé a entrar.
+        La base negó el acceso. Cierra sesión y vuelve a entrar.
       </Text>
     ) : (
       <ErrorState onRetry={() => void query.refetch()} />
@@ -326,14 +358,30 @@ const useStyles = themedStyles(() =>
     kpiLabel: { color: colors.textMuted },
     barRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
     barLabel: { width: 96 },
-    barTrack: { flex: 1, height: 10, borderRadius: 4, backgroundColor: colors.surfaceRaised, overflow: 'hidden' },
+    barTrack: {
+      flex: 1,
+      height: 10,
+      borderRadius: 4,
+      backgroundColor: colors.surfaceRaised,
+      overflow: 'hidden',
+    },
     barFill: { height: '100%', borderRadius: 4, backgroundColor: colors.primaryBright },
     barValue: { minWidth: 48, textAlign: 'right', fontVariant: ['tabular-nums'] },
     cols: { flexDirection: 'row', alignItems: 'flex-end', gap: 2 },
     colSlot: { flex: 1, justifyContent: 'flex-end', height: '100%' },
     col: { backgroundColor: colors.primaryBright, borderTopLeftRadius: 3, borderTopRightRadius: 3 },
-    colAxis: { flexDirection: 'row', justifyContent: 'space-between', marginTop: spacing.xs, gap: spacing.sm },
-    row: { flexDirection: 'row', alignItems: 'center', gap: spacing.md, paddingVertical: spacing.sm },
+    colAxis: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginTop: spacing.xs,
+      gap: spacing.sm,
+    },
+    row: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: spacing.md,
+      paddingVertical: spacing.sm,
+    },
     rowBorder: { borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: colors.border },
     chips: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.xs },
     chip: {

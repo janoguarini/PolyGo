@@ -82,10 +82,10 @@ export const PT_A2_U08: PtUnitDef = {
     title: 'Salud y bienestar',
     titleEn: 'Saúde',
     description:
-      'Estar com dor de…, el cuerpo, los síntomas, la farmacia, pedir un turno y el imperativo para indicaciones y consejos.',
+      'Estar com dor de…, el cuerpo, los síntomas, la farmacia, pedir una cita y el imperativo para indicaciones y consejos.',
     emoji: '🩺',
     objective:
-      'Podés decir qué te duele y qué síntomas tenés, pedir un turno, entender indicaciones de un remedio y dar consejos de salud.',
+      'Puedes decir qué te duele y qué síntomas tienes, pedir una cita, entender indicaciones de un remedio y dar consejos de salud.',
     grammar: {
       title: 'Imperativo · estar com dor de',
       explanation:
@@ -94,7 +94,7 @@ export const PT_A2_U08: PtUnitDef = {
         { target: 'Estou com dor de cabeça.', base: 'Me duele la cabeza.' },
         {
           target: 'Tome este remédio e beba muita água.',
-          base: 'Tomá este remedio y tomá mucha agua.',
+          base: 'Toma este remedio y toma mucha agua.',
         },
         { target: 'Não coma muito hoje.', base: 'No comas mucho hoy.' },
       ],
@@ -167,7 +167,7 @@ export const PT_A2_U08: PtUnitDef = {
         'remédio',
         'remedio / medicamento',
         'Tome o remédio depois do almoço.',
-        'Tomá el remedio después del almuerzo.',
+        'Toma el remedio después del almuerzo.',
         ['health'],
         {
           acceptedTranslations: ['remedio', 'medicamento'],
@@ -188,45 +188,45 @@ export const PT_A2_U08: PtUnitDef = {
       w(
         'pt-tome',
         'tome',
-        'tomá / tome',
+        'toma / tome',
         'Tome um comprimido.',
-        'Tomá una pastilla.',
+        'Toma una pastilla.',
         ['health', 'imperative'],
         {
-          acceptedTranslations: ['tomá'],
+          acceptedTranslations: ['tomá', 'tomá / tome', 'toma'],
         },
       ),
       w(
         'pt-beba',
         'beba',
-        'tomá (un líquido) / bebé',
+        'toma (un líquido) / bebe',
         'Beba muita água.',
-        'Tomá mucha agua.',
+        'Toma mucha agua.',
         ['health', 'imperative'],
         {
-          acceptedTranslations: ['bebé'],
+          acceptedTranslations: ['bebé', 'tomá (un líquido) / bebé', 'bebe'],
         },
       ),
       w(
         'pt-descanse',
         'descanse',
-        'descansá / descanse',
+        'descansa / descanse',
         'Descanse em casa.',
-        'Descansá en casa.',
+        'Descansa en casa.',
         ['health', 'imperative'],
         {
-          acceptedTranslations: ['descansá'],
+          acceptedTranslations: ['descansá', 'descansá / descanse', 'descansa'],
         },
       ),
       w(
         'pt-evite',
         'evite',
-        'evitá / evite',
+        'evita / evite',
         'Evite café à noite.',
-        'Evitá el café a la noche.',
+        'Evita el café por la noche.',
         ['health', 'imperative'],
         {
-          acceptedTranslations: ['evitá'],
+          acceptedTranslations: ['evitá', 'evitá / evite', 'evita'],
         },
       ),
       w(
@@ -244,12 +244,12 @@ export const PT_A2_U08: PtUnitDef = {
       w(
         'pt-consulta',
         'consulta',
-        'turno (médico)',
+        'cita (médica)',
         'Marquei uma consulta para amanhã.',
-        'Saqué turno para mañana.',
+        'Pedí cita para mañana.',
         ['health'],
         {
-          acceptedTranslations: ['turno', 'cita médica'],
+          acceptedTranslations: ['turno', 'cita médica', 'turno (médico)', 'cita'],
         },
       ),
     ],
@@ -266,7 +266,7 @@ export const PT_A2_U08: PtUnitDef = {
             { target: 'Ele está com dor nas costas.', base: 'A él le duele la espalda.' },
           ],
         },
-        takeaways: ['Decís qué te duele: estou com dor de…', 'Sabés que costas es «espalda».'],
+        takeaways: ['Dices qué te duele: estou com dor de…', 'Sabes que costas es «espalda».'],
         exercises: [
           ex.translationChoice(
             'costas',
@@ -328,7 +328,7 @@ export const PT_A2_U08: PtUnitDef = {
           ),
           ex.shortAnswer(
             'O que você tem? (🤕)',
-            '¿Qué te pasa? (Respondé que te duele la cabeza.)',
+            '¿Qué te pasa? (Responde que te duele la cabeza.)',
             'Estou com dor de cabeça.',
             ['Eu estou com dor de cabeça.', 'Dor de cabeça.', 'Tô com dor de cabeça.'],
             ['pt-dor', 'pt-cabeca'],
@@ -358,7 +358,7 @@ export const PT_A2_U08: PtUnitDef = {
             { target: 'Acho que é um resfriado.', base: 'Creo que es un resfrío.' },
           ],
         },
-        takeaways: ['Contás síntomas con estou com…', 'Distinguís resfriado y gripe.'],
+        takeaways: ['Cuentas síntomas con estou com…', 'Distingues resfriado y gripe.'],
         exercises: [
           ex.imageChoice('🤒', 'febre', ['resfriado', 'dor', 'remédio'], ['pt-febre'], {
             id: 'pt.ex.ap8b19rdho9wsh',
@@ -416,7 +416,7 @@ export const PT_A2_U08: PtUnitDef = {
           }),
           ex.shortAnswer(
             'Como você está? (🤒 febre)',
-            '¿Cómo estás? (Respondé que tenés fiebre.)',
+            '¿Cómo estás? (Responde que tienes fiebre.)',
             'Estou com febre.',
             ['Eu estou com febre.', 'Tô com febre.', 'Não estou bem, estou com febre.'],
             ['pt-febre'],
@@ -444,12 +444,12 @@ export const PT_A2_U08: PtUnitDef = {
           examples: [
             {
               target: 'Tome um comprimido de oito em oito horas.',
-              base: 'Tomá una pastilla cada ocho horas.',
+              base: 'Toma una pastilla cada ocho horas.',
             },
-            { target: 'Beba muita água.', base: 'Tomá mucha agua.' },
+            { target: 'Beba muita água.', base: 'Toma mucha agua.' },
           ],
         },
-        takeaways: ['Entendés indicaciones: tome, beba.', 'Comprás un remedio en la farmacia.'],
+        takeaways: ['Entiendes indicaciones: tome, beba.', 'Compras un remedio en la farmacia.'],
         exercises: [
           ex.translationChoice(
             'remédio',
@@ -473,7 +473,7 @@ export const PT_A2_U08: PtUnitDef = {
           ),
           ex.fillBlank(
             '___ este remédio de oito em oito horas.',
-            'Tomá este remedio cada ocho horas.',
+            'Toma este remedio cada ocho horas.',
             'Tome',
             ['Toma', 'Tomei', 'Beba'],
             ['pt-tome', 'pt-remedio'],
@@ -481,7 +481,7 @@ export const PT_A2_U08: PtUnitDef = {
           ),
           ex.fillBlank(
             '___ muita água, por favor.',
-            'Tomá mucha agua, por favor.',
+            'Toma mucha agua, por favor.',
             'Beba',
             ['Bebe', 'Tome', 'Bebi'],
             ['pt-beba'],
@@ -513,13 +513,13 @@ export const PT_A2_U08: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Onde eu compro o remédio?',
-            '¿Dónde compro el remedio? (Respondé que en la farmacia.)',
+            '¿Dónde compro el remedio? (Responde que en la farmacia.)',
             'Na farmácia.',
             ['Compre na farmácia.', 'Você compra na farmácia.', 'Na farmácia da esquina.'],
             ['pt-farmacia', 'pt-remedio'],
             { id: 'pt.ex.8j10q4fab6x20j' },
           ),
-          ex.translateWrite('Tomá mucha agua.', 'Beba muita água.', ['pt-beba'], {
+          ex.translateWrite('Toma mucha agua.', 'Beba muita água.', ['pt-beba'], {
             id: 'pt.ex.1wg55esz9lj3it',
             acceptedAnswers: ['Bebe muita água.'],
           }),
@@ -532,11 +532,11 @@ export const PT_A2_U08: PtUnitDef = {
         objective: 'Dar consejos de salud (y en negativo).',
         intro: {
           explanation:
-            'Para aconsejar: descanse (descansá), evite (evitá), coma frutas. En negativo se agrega não: não tome café, não coma doce. A alguien enfermo se le dice melhoras! («¡que te mejores!»).',
+            'Para aconsejar: descanse (descansa), evite (evita), coma frutas. En negativo se agrega não: não tome café, não coma doce. A alguien enfermo se le dice melhoras! («¡que te mejores!»).',
           examples: [
             {
               target: 'Descanse e evite café à noite.',
-              base: 'Descansá y evitá el café a la noche.',
+              base: 'Descansa y evita el café por la noche.',
             },
             {
               target: 'Não coma muito hoje. Melhoras!',
@@ -544,7 +544,7 @@ export const PT_A2_U08: PtUnitDef = {
             },
           ],
         },
-        takeaways: ['Das consejos: descanse, evite.', 'Saludás a un enfermo: melhoras!'],
+        takeaways: ['Das consejos: descanse, evite.', 'Saludas a un enfermo: melhoras!'],
         exercises: [
           ex.translationChoice(
             'melhoras!',
@@ -555,8 +555,8 @@ export const PT_A2_U08: PtUnitDef = {
           ),
           ex.translationChoice(
             'evite',
-            'evitá / evite',
-            ['invitá', 'esperá', 'comé'],
+            'evita / evite',
+            ['invita', 'espera', 'come'],
             ['pt-evite'],
             { id: 'pt.ex.g1xfkwdn8cbhk2' },
           ),
@@ -572,7 +572,7 @@ export const PT_A2_U08: PtUnitDef = {
           ),
           ex.fillBlank(
             '___ café à noite.',
-            'Evitá el café a la noche.',
+            'Evita el café por la noche.',
             'Evite',
             ['Evita', 'Descanse', 'Beba'],
             ['pt-evite'],
@@ -593,7 +593,7 @@ export const PT_A2_U08: PtUnitDef = {
             'Que no vaya: que descanse dos días en casa',
             [
               'Que puede ir a trabajar',
-              'Que vaya solo a la tarde',
+              'Que vaya solo por la tarde',
               'Que vuelva al consultorio mañana',
             ],
             ['pt-descanse'],
@@ -610,17 +610,17 @@ export const PT_A2_U08: PtUnitDef = {
           ),
           ex.matchPairs(
             [
-              ['tome', 'tomá / tome'],
-              ['beba', 'tomá (un líquido) / bebé'],
-              ['descanse', 'descansá / descanse'],
-              ['evite', 'evitá / evite'],
+              ['tome', 'toma / tome'],
+              ['beba', 'toma (un líquido) / bebe'],
+              ['descanse', 'descansa / descanse'],
+              ['evite', 'evita / evite'],
             ],
             ['pt-tome', 'pt-beba', 'pt-descanse', 'pt-evite'],
             { id: 'pt.ex.4pijuw2p0gv9pw' },
           ),
           ex.shortAnswer(
             'Estou com um resfriado.',
-            'Estoy resfriado. (Aconsejá: descansá y tomá mucha agua.)',
+            'Estoy resfriado. (Aconseja: descansa y toma mucha agua.)',
             'Descanse e beba muita água.',
             [
               'Descanse e beba muita água. Melhoras!',
@@ -631,7 +631,7 @@ export const PT_A2_U08: PtUnitDef = {
             { id: 'pt.ex.frh3cipvwbmhk3' },
           ),
           ex.translateWrite(
-            'Descansá en casa. ¡Que te mejores!',
+            'Descansa en casa. ¡Que te mejores!',
             'Descanse em casa. Melhoras!',
             ['pt-descanse', 'pt-melhoras'],
             {
@@ -648,20 +648,20 @@ export const PT_A2_U08: PtUnitDef = {
         objective: 'Pedir un turno y avisar que estás enfermo.',
         intro: {
           explanation:
-            'Una consulta es el «turno» con el médico; «sacar turno» es marcar uma consulta. Por teléfono: eu gostaria de marcar uma consulta. Para avisar: hoje não vou trabalhar, estou doente.',
+            'Una consulta es la «cita» con el médico; «pedir cita» es marcar uma consulta. Por teléfono: eu gostaria de marcar uma consulta. Para avisar: hoje não vou trabalhar, estou doente.',
           examples: [
-            { target: 'Eu gostaria de marcar uma consulta.', base: 'Quisiera sacar un turno.' },
+            { target: 'Eu gostaria de marcar uma consulta.', base: 'Quisiera pedir una cita.' },
             {
               target: 'Já marquei uma consulta para as onze.',
-              base: 'Ya saqué turno para las once.',
+              base: 'Ya pedí cita para las once.',
             },
           ],
         },
-        takeaways: ['Pedís un turno: marcar uma consulta.', 'Avisás que no vas a trabajar.'],
+        takeaways: ['Pides una cita: marcar uma consulta.', 'Avisas que no vas a trabajar.'],
         exercises: [
           ex.translationChoice(
             'consulta',
-            'turno (médico)',
+            'cita (médica)',
             ['pregunta', 'cuenta', 'receta'],
             ['pt-consulta'],
             { id: 'pt.ex.4eii22per04bz9' },
@@ -678,7 +678,7 @@ export const PT_A2_U08: PtUnitDef = {
           ),
           ex.fillBlank(
             'Eu gostaria de ___ uma consulta para amanhã.',
-            'Quisiera sacar un turno para mañana.',
+            'Quisiera pedir una cita para mañana.',
             'marcar',
             ['tomar', 'fazer', 'pegar'],
             ['pt-consulta', 'pt-marcar'],
@@ -688,15 +688,15 @@ export const PT_A2_U08: PtUnitDef = {
             'pt.ex.ws4idt701kpwa7',
             DENTISTA,
             '¿Por qué llama Hugo?',
-            'Para sacar turno: le duele mucho una muela',
-            ['Para cancelar un turno', 'Para preguntar un precio', 'Para comprar un remedio'],
+            'Para pedir cita: le duele mucho una muela',
+            ['Para cancelar una cita', 'Para preguntar un precio', 'Para comprar un remedio'],
             ['pt-consulta', 'pt-dente'],
             'Hugo dice: «Eu gostaria de marcar uma consulta. Estou com muita dor de dente».',
           ),
           question(
             'pt.ex.mifdz2loajz8np',
             DENTISTA,
-            '¿Para cuándo es el turno?',
+            '¿Para cuándo es la cita?',
             'Para hoy a las cuatro de la tarde',
             ['Para mañana a las cuatro', 'Para hoy a las once', 'Para el lunes'],
             ['pt-consulta'],
@@ -713,13 +713,13 @@ export const PT_A2_U08: PtUnitDef = {
           ),
           ex.orderWords(
             'Já marquei uma consulta para amanhã.',
-            'Ya saqué turno para mañana.',
+            'Ya pedí cita para mañana.',
             ['pt-consulta'],
             { id: 'pt.ex.ipsnxhiafz3qbe' },
           ),
           ex.shortAnswer(
             'Consultório, bom dia!',
-            'Consultorio, ¡buen día! (Pedí un turno para mañana.)',
+            'Consultorio, ¡buenos días! (Pide una cita para mañana.)',
             'Bom dia, eu gostaria de marcar uma consulta para amanhã.',
             [
               'Eu gostaria de marcar uma consulta para amanhã.',

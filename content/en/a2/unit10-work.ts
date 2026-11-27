@@ -6,7 +6,7 @@ export const unit10: UnitDef = {
   position: 10,
   title: 'Trabajo y obligaciones',
   titleEn: 'Work and obligations',
-  description: 'Profesiones, la oficina y lo que tenés que hacer: have to y must.',
+  description: 'Profesiones, la oficina y lo que tienes que hacer: have to y must.',
   emoji: '💼',
   words: [
     w(
@@ -67,13 +67,13 @@ export const unit10: UnitDef = {
     w(
       'en-waiter',
       'waiter',
-      'mozo / moza',
+      'mesero / mesera',
       '/ˈweɪtər/',
       undefined,
       'The waiter brought our food.',
-      'El mozo nos trajo la comida.',
+      'El mesero nos trajo la comida.',
       ['jobs'],
-      ['mozo', 'moza', 'camarero', 'mesero'],
+      ['mesero', 'mesera', 'camarero', 'mozo', 'moza', 'mozo / moza'],
       ['waitress'],
     ),
     w(
@@ -117,7 +117,7 @@ export const unit10: UnitDef = {
       '/ˈdraɪvər/',
       undefined,
       'My father is a bus driver.',
-      'Mi papá es chofer de colectivo.',
+      'Mi papá es chofer de autobús.',
       ['jobs'],
       ['chofer', 'conductor', 'conductora'],
     ),
@@ -139,7 +139,7 @@ export const unit10: UnitDef = {
       '/mʌst/',
       undefined,
       'You must be on time.',
-      'Tenés que llegar a horario.',
+      'Tienes que llegar a horario.',
       ['work', 'grammar'],
       ['deber', 'tener que'],
     ),
@@ -150,7 +150,7 @@ export const unit10: UnitDef = {
       '/ˈmʌsənt/',
       '🚫',
       "You mustn't use your phone in the meeting.",
-      'No podés usar el teléfono en la reunión.',
+      'No puedes usar el teléfono en la reunión.',
       ['work', 'grammar'],
       ['está prohibido', 'no se puede', 'no deber'],
     ),
@@ -179,13 +179,13 @@ export const unit10: UnitDef = {
     w(
       'en-earn',
       'earn',
-      'ganar (plata)',
+      'ganar (dinero)',
       '/ɜrn/',
       undefined,
       'How much do you earn a month?',
-      '¿Cuánto ganás por mes?',
+      '¿Cuánto ganas por mes?',
       ['work', 'verbs'],
-      ['ganar'],
+      ['ganar', 'ganar (plata)'],
     ),
     w(
       'en-salary',
@@ -245,7 +245,7 @@ export const unit10: UnitDef = {
         ex.matchPairs(
           [
             ['nurse', 'enfermero / enfermera'],
-            ['waiter', 'mozo / moza'],
+            ['waiter', 'mesero / mesera'],
             ['lawyer', 'abogado / abogada'],
             ['engineer', 'ingeniero / ingeniera'],
           ],
@@ -264,7 +264,7 @@ export const unit10: UnitDef = {
         ),
         ex.fillBlank(
           'The ___ brought our food.',
-          'El mozo nos trajo la comida.',
+          'El mesero nos trajo la comida.',
           'waiter',
           ['lawyer', 'engineer', 'boss'],
           ['en-waiter'],
@@ -272,7 +272,7 @@ export const unit10: UnitDef = {
         ),
         ex.fillBlank(
           'My father is a bus ___.',
-          'Mi papá es chofer de colectivo.',
+          'Mi papá es chofer de autobús.',
           'driver',
           ['waiter', 'nurse', 'job'],
           ['en-driver', 'en-bus', 'en-father'],
@@ -372,14 +372,14 @@ export const unit10: UnitDef = {
         ),
         ex.fillBlank(
           "You don't have to ___ a uniform.",
-          'No tenés que usar uniforme.',
+          'No tienes que usar uniforme.',
           'wear',
           ['wears', 'wearing', 'wore'],
           ['en-have-to', 'en-wear'],
         ),
         ex.fillBlank(
           '___ you have to work tomorrow?',
-          '¿Tenés que trabajar mañana?',
+          '¿Tienes que trabajar mañana?',
           'Do',
           ['Are', 'Have', 'Does'],
           ['en-have-to', 'en-do', 'en-tomorrow'],
@@ -389,7 +389,7 @@ export const unit10: UnitDef = {
         ),
         ex.shortAnswer(
           'Do you have to work on Sunday? (no)',
-          '¿Tenés que trabajar el domingo?',
+          '¿Tienes que trabajar el domingo?',
           "No, I don't.",
           ['No.', "No, I don't have to."],
           ['en-have-to', 'en-sunday'],
@@ -414,7 +414,7 @@ export const unit10: UnitDef = {
       exercises: [
         ex.fillBlank(
           'You ___ be at the airport two hours before the flight.',
-          'Tenés que estar en el aeropuerto dos horas antes del vuelo.',
+          'Tienes que estar en el aeropuerto dos horas antes del vuelo.',
           'must',
           ["mustn't", 'are', 'does'],
           ['en-must', 'en-airport', 'en-flight', 'en-two'],
@@ -424,7 +424,7 @@ export const unit10: UnitDef = {
         ),
         ex.fillBlank(
           'You ___ use your phone in the meeting.',
-          'No podés usar el teléfono en la reunión.',
+          'No puedes usar el teléfono en la reunión.',
           "mustn't",
           ['must', 'have to', 'do'],
           ['en-mustnt', 'en-phone', 'en-meeting'],
@@ -460,7 +460,7 @@ export const unit10: UnitDef = {
           ['You must be at home.', "You mustn't be on time.", 'We must be on time.'],
           ['en-must'],
         ),
-        ex.translateWrite('No tenés que venir.', "You don't have to come.", ['en-have-to']),
+        ex.translateWrite('No tienes que venir.', "You don't have to come.", ['en-have-to']),
       ],
     },
     {
@@ -477,12 +477,12 @@ export const unit10: UnitDef = {
         ),
         ex.fillBlank(
           'How much do you ___ a month?',
-          '¿Cuánto ganás por mes?',
+          '¿Cuánto ganas por mes?',
           'earn',
           ['win', 'buy', 'sell'],
           ['en-earn', 'en-how-much'],
           {
-            explanation: 'Ganar plata trabajando = earn. Win es ganar un partido o un premio.',
+            explanation: 'Ganar dinero trabajando = earn. Win es ganar un partido o un premio.',
           },
         ),
         ex.translationChoice(
@@ -501,7 +501,7 @@ export const unit10: UnitDef = {
         ),
         ex.shortAnswer(
           'What do you do? (soy enfermera)',
-          '¿A qué te dedicás?',
+          '¿A qué te dedicas?',
           'I am a nurse.',
           ['A nurse.', 'I work as a nurse.'],
           ['en-nurse', 'en-do'],

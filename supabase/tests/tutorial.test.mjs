@@ -35,12 +35,18 @@ test('el usuario no puede escribir la columna directamente', async () => {
 });
 
 const tutorial = (u) =>
-  as(db, 'authenticated', u, async () =>
-    (await db.query('select public.finish_tutorial() as r')).rows[0].r,
+  as(
+    db,
+    'authenticated',
+    u,
+    async () => (await db.query('select public.finish_tutorial() as r')).rows[0].r,
   );
 const syncPolys = (u) =>
-  as(db, 'authenticated', u, async () =>
-    (await db.query(`select public.sync_polys('UTC') as r`)).rows[0].r,
+  as(
+    db,
+    'authenticated',
+    u,
+    async () => (await db.query(`select public.sync_polys('UTC') as r`)).rows[0].r,
   );
 
 test('las 100 Polys de bienvenida llegan al cerrar el tutorial, no al entrar', async () => {

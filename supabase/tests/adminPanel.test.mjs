@@ -109,8 +109,12 @@ before(async () => {
   r1 = await createUser(db, 'r1@test.dev');
   r2 = await createUser(db, 'r2@test.dev');
   await db.query(`update public.profiles set username = 'normal' where id = $1`, [normal]);
-  await db.query(`update public.profiles set username = 'real_uno', region = 'AR' where id = $1`, [r1]);
-  await db.query(`update public.profiles set username = 'real_dos', region = 'MX' where id = $1`, [r2]);
+  await db.query(`update public.profiles set username = 'real_uno', region = 'AR' where id = $1`, [
+    r1,
+  ]);
+  await db.query(`update public.profiles set username = 'real_dos', region = 'MX' where id = $1`, [
+    r2,
+  ]);
 });
 
 // =====================================================================================
@@ -120,7 +124,9 @@ before(async () => {
 test('la migración carga exactamente un superadmin: el UID de janitogap', async () => {
   const { rows } = await db.query('select user_id::text, label from admin.superadmins');
   assert.deepEqual(rows, [{ user_id: ADMIN, label: 'janitogap' }]);
-  const internal = await db.query('select user_id::text from admin.internal_accounts order by label');
+  const internal = await db.query(
+    'select user_id::text from admin.internal_accounts order by label',
+  );
   assert.deepEqual(
     internal.rows.map((r) => r.user_id),
     [HOLA, ADMIN, TESTER],
@@ -141,7 +147,10 @@ test('sin la cuenta de janitogap la migración no falla y no hay superadmin', as
 
 test('schema admin: sin USAGE ni privilegios para public, anon y authenticated', async () => {
   for (const role of ['anon', 'authenticated']) {
-    assert.equal((await one(`select has_schema_privilege($1, 'admin', 'USAGE') as ok`, [role])).ok, false);
+    assert.equal(
+      (await one(`select has_schema_privilege($1, 'admin', 'USAGE') as ok`, [role])).ok,
+      false,
+    );
     const { rows } = await db.query(
       `select c.relname from pg_class c join pg_namespace n on n.oid = c.relnamespace
        where n.nspname = 'admin' and c.relkind = 'r'
@@ -184,7 +193,10 @@ test('toda public.admin_*: SECURITY DEFINER, search_path vacío, sólo authentic
   );
   for (const r of rows) {
     assert.equal(r.prosecdef, true, `${r.proname} no es security definer`);
-    assert.ok(r.proconfig?.some((c) => c === 'search_path=""' || c === 'search_path='), r.proname);
+    assert.ok(
+      r.proconfig?.some((c) => c === 'search_path=""' || c === 'search_path='),
+      r.proname,
+    );
     assert.equal(r.anon_exec, false, `${r.proname}: anon puede ejecutar`);
     assert.equal(r.public_exec, false, `${r.proname}: PUBLIC puede ejecutar`);
     assert.equal(r.auth_exec, true, `${r.proname}: authenticated no puede ejecutar`);
@@ -225,9 +237,16 @@ test('las cuentas internas (hola, janotester) tampoco son administradoras', asyn
 });
 
 test('session_check: usuario común → forbidden, sin datos, y deja un evento de seguridad (con límite)', async () => {
-  const before = (await one(`select count(*)::int n from admin.security_events where user_id = $1`, [normal])).n;
+  const before = (
+    await one(`select count(*)::int n from admin.security_events where user_id = $1`, [normal])
+  ).n;
   for (let i = 0; i < 3; i++) {
-    const { r } = await asUser('authenticated', normal, 'aal2', 'select public.admin_session_check() as r');
+    const { r } = await asUser(
+      'authenticated',
+      normal,
+      'aal2',
+      'select public.admin_session_check() as r',
+    );
     assert.deepEqual(r, { allowed: false, reason: 'forbidden' });
   }
   const after = await db.query(
@@ -253,10 +272,22 @@ test('nadie puede darse el rol: ni escribir admin.*, ni llamar la guardia, ni ha
   }
   // El username no es editable por el usuario y el nombre visible no da permisos.
   await rejects(
-    asUser('authenticated', normal, 'aal2', `update public.profiles set username = 'janitogap2' where id = $1`, [normal]),
+    asUser(
+      'authenticated',
+      normal,
+      'aal2',
+      `update public.profiles set username = 'janitogap2' where id = $1`,
+      [normal],
+    ),
     /permission denied/,
   );
-  await asUser('authenticated', normal, 'aal2', `update public.profiles set display_name = 'janitogap' where id = $1`, [normal]);
+  await asUser(
+    'authenticated',
+    normal,
+    'aal2',
+    `update public.profiles set display_name = 'janitogap' where id = $1`,
+    [normal],
+  );
   await rejects(callRpc('authenticated', normal, 'aal2', rpcs()[1]), /admin_forbidden/);
   // Ninguna RPC del panel recibe un usuario/rol para decidir el acceso.
   const { rows } = await db.query(
@@ -264,7 +295,10 @@ test('nadie puede darse el rol: ni escribir admin.*, ni llamar la guardia, ni ha
      where n.nspname = 'public' and p.proname like 'admin\\_%'`,
   );
   for (const r of rows) {
-    assert.ok(!r.args.some((a) => /username|role|admin|aal|uid/i.test(a)), `${r.proname}: ${r.args}`);
+    assert.ok(
+      !r.args.some((a) => /username|role|admin|aal|uid/i.test(a)),
+      `${r.proname}: ${r.args}`,
+    );
   }
   assert.equal((await one('select count(*)::int n from admin.superadmins')).n, 1);
 });
@@ -280,27 +314,45 @@ test('janitogap sin MFA (aal1 o sin claim) accede a todas las RPC', async () => 
       assert.ok(r && typeof r === 'object', `${rpc[0]} (${aal ?? 'sin aal'})`);
     }
   }
-  const { r } = await asUser('authenticated', ADMIN, 'aal1', 'select public.admin_session_check() as r');
+  const { r } = await asUser(
+    'authenticated',
+    ADMIN,
+    'aal1',
+    'select public.admin_session_check() as r',
+  );
   assert.equal(r.allowed, true);
   assert.equal(r.reason, 'ok');
 });
 
 test('la guardia ya no mira el aal; sigue exigiendo UID fijo + fila en superadmins', async () => {
-  const def = (await one(`select pg_get_functiondef('admin.assert_superadmin(text,jsonb)'::regprocedure) d`)).d;
+  const def = (
+    await one(`select pg_get_functiondef('admin.assert_superadmin(text,jsonb)'::regprocedure) d`)
+  ).d;
   assert.doesNotMatch(def, /aal2/);
   assert.match(def, /admin\.caller_is_superadmin\(\)/);
-  const caller = (await one(`select pg_get_functiondef('admin.caller_is_superadmin()'::regprocedure) d`)).d;
+  const caller = (
+    await one(`select pg_get_functiondef('admin.caller_is_superadmin()'::regprocedure) d`)
+  ).d;
   assert.match(caller, /admin\.superadmin_uid\(\)/);
   assert.match(caller, /admin\.superadmins/);
   // Los permisos no cambiaron con el create or replace.
   for (const role of ['anon', 'authenticated']) {
     assert.equal(
-      (await one(`select has_function_privilege($1, 'admin.assert_superadmin(text,jsonb)', 'EXECUTE') ok`, [role])).ok,
+      (
+        await one(
+          `select has_function_privilege($1, 'admin.assert_superadmin(text,jsonb)', 'EXECUTE') ok`,
+          [role],
+        )
+      ).ok,
       false,
     );
   }
   assert.equal(
-    (await one(`select has_function_privilege('anon', 'public.admin_session_check()', 'EXECUTE') ok`)).ok,
+    (
+      await one(
+        `select has_function_privilege('anon', 'public.admin_session_check()', 'EXECUTE') ok`,
+      )
+    ).ok,
     false,
   );
 });
@@ -318,18 +370,29 @@ test('janitogap accede a todas las RPC y queda auditado', async () => {
     const { r: out } = await callRpc('authenticated', ADMIN, 'aal2', rpc);
     assert.ok(out && typeof out === 'object', rpc[0]);
   }
-  const actions = await db.query(`select distinct action from admin.audit_log where user_id = $1`, [ADMIN]);
+  const actions = await db.query(`select distinct action from admin.audit_log where user_id = $1`, [
+    ADMIN,
+  ]);
   assert.ok(actions.rows.length >= rpcs().length);
   // La misma lectura repetida en menos de un minuto se registra una vez.
   const n0 = (await one(`select count(*)::int n from admin.audit_log where action = 'health'`)).n;
   await asAdmin('select public.admin_health()');
   await asAdmin('select public.admin_health()');
-  assert.equal((await one(`select count(*)::int n from admin.audit_log where action = 'health'`)).n, n0);
+  assert.equal(
+    (await one(`select count(*)::int n from admin.audit_log where action = 'health'`)).n,
+    n0,
+  );
 });
 
 test('validaciones: período inválido, orden inválido y segmento inválido', async () => {
-  await rejects(asAdmin('select public.admin_overview($1, $2)', ['2026-02-01', '2026-01-01']), /admin_bad_range/);
-  await rejects(asAdmin('select public.admin_overview($1, $2)', ['2020-01-01', '2026-01-01']), /admin_bad_range/);
+  await rejects(
+    asAdmin('select public.admin_overview($1, $2)', ['2026-02-01', '2026-01-01']),
+    /admin_bad_range/,
+  );
+  await rejects(
+    asAdmin('select public.admin_overview($1, $2)', ['2020-01-01', '2026-01-01']),
+    /admin_bad_range/,
+  );
   await rejects(
     asAdmin(`select public.admin_users_list(null, '{}', true, 'id; drop table x', 10, 0)`),
     /admin_bad_sort/,
@@ -476,25 +539,47 @@ test('métricas: excluyen cuentas internas, cuentan lo real y no inventan ingres
   const { r: mon } = await asAdmin('select public.admin_monetization($1, $1) as r', [today]);
   assert.equal(mon.plus.active_paid, 1);
   assert.equal(mon.plus.will_not_renew, 1);
-  assert.deepEqual(mon.plus.by_source, [{ source: 'app_store', active: 1 }], 'el Plus manual interno no aparece');
+  assert.deepEqual(
+    mon.plus.by_source,
+    [{ source: 'app_store', active: 1 }],
+    'el Plus manual interno no aparece',
+  );
   assert.ok(mon.unavailable.revenue);
 });
 
 test('usuarios: búsqueda, filtros, internas marcadas y ficha sin email ni tokens', async () => {
-  const { r: found } = await asAdmin(`select public.admin_users_list('janitogap', '{}', true, 'username', 10, 0) as r`);
+  const { r: found } = await asAdmin(
+    `select public.admin_users_list('janitogap', '{}', true, 'username', 10, 0) as r`,
+  );
   // Encuentra la cuenta (marcada interna) y también al usuario común que se puso ese nombre visible.
   assert.equal(found.rows.find((x) => x.username === 'janitogap').internal, true);
   assert.ok(found.rows.some((x) => x.username === 'normal' && !x.internal));
-  const { r: hidden } = await asAdmin(`select public.admin_users_list('janitogap', '{}', false, 'username', 10, 0) as r`);
+  const { r: hidden } = await asAdmin(
+    `select public.admin_users_list('janitogap', '{}', false, 'username', 10, 0) as r`,
+  );
   assert.ok(!hidden.rows.some((x) => x.internal), 'sin las cuentas internas');
   // Los comodines se escapan: '%' no lista a todos.
-  const { r: pct } = await asAdmin(`select public.admin_users_list('%', '{}', true, 'username', 10, 0) as r`);
+  const { r: pct } = await asAdmin(
+    `select public.admin_users_list('%', '{}', true, 'username', 10, 0) as r`,
+  );
   assert.equal(pct.total, 0);
-  const { r: plus } = await asAdmin(`select public.admin_users_list(null, '{"plan":"plus"}', false, 'username', 10, 0) as r`);
-  assert.deepEqual(plus.rows.map((x) => x.username), ['real_uno']);
-  const { r: mx } = await asAdmin(`select public.admin_users_list(null, '{"country":"MX"}', false, 'username', 10, 0) as r`);
-  assert.deepEqual(mx.rows.map((x) => x.username), ['real_dos']);
-  const { r: lim } = await asAdmin(`select public.admin_users_list(null, '{}', true, 'username', 5000, 0) as r`);
+  const { r: plus } = await asAdmin(
+    `select public.admin_users_list(null, '{"plan":"plus"}', false, 'username', 10, 0) as r`,
+  );
+  assert.deepEqual(
+    plus.rows.map((x) => x.username),
+    ['real_uno'],
+  );
+  const { r: mx } = await asAdmin(
+    `select public.admin_users_list(null, '{"country":"MX"}', false, 'username', 10, 0) as r`,
+  );
+  assert.deepEqual(
+    mx.rows.map((x) => x.username),
+    ['real_dos'],
+  );
+  const { r: lim } = await asAdmin(
+    `select public.admin_users_list(null, '{}', true, 'username', 5000, 0) as r`,
+  );
   assert.equal(lim.limit, 100, 'límite máximo por página');
 
   const { r: detail } = await asAdmin('select public.admin_user_detail($1) as r', [ADMIN]);
@@ -529,7 +614,9 @@ test('retención: Dn = activo exactamente el día n, sólo con el día ya cerrad
     );
   }
   const signup = (await one('select (admin.today() - 10)::text d')).d;
-  const { r } = await asAdmin(`select public.admin_retention($1, $1, '{}', 'country') as r`, [signup]);
+  const { r } = await asAdmin(`select public.admin_retention($1, $1, '{}', 'country') as r`, [
+    signup,
+  ]);
   assert.equal(r.cohorts.length, 1);
   assert.equal(r.overall.d1.retained, 1);
   assert.equal(r.overall.d3.retained, 1);
@@ -545,7 +632,11 @@ test('ligas: los umbrales de admin.tier_index son los TIERS de shared/ranking.ts
     assert.equal((await one('select admin.tier_index($1) n', [t.minRating])).n, i + 1, t.id);
     assert.equal((await one('select admin.tier_id($1) id', [t.minRating])).id, t.id);
     if (t.minRating > 0) {
-      assert.equal((await one('select admin.tier_index($1) n', [t.minRating - 1])).n, i, `${t.id} - 1`);
+      assert.equal(
+        (await one('select admin.tier_index($1) n', [t.minRating - 1])).n,
+        i,
+        `${t.id} - 1`,
+      );
     }
   }
 });

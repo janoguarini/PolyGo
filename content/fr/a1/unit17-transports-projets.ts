@@ -62,13 +62,13 @@ export const FR_A1_U17: FrUnitDef = {
       'Medios de transporte (en bus, en train, pero à pied y à vélo), prendre en presente y el futuro próximo con aller + infinitivo. Ce soir, ce week-end, la semaine prochaine. Liaison en‿avion; il prend / ils prennent.',
     emoji: '🚆',
     objective:
-      'Podés decir cómo vas a un lugar, comprar un pasaje y contar qué vas a hacer esta noche, el fin de semana o en las vacaciones.',
+      'Puedes decir cómo vas a un lugar, comprar un pasaje y contar qué vas a hacer esta noche, el fin de semana o en las vacaciones.',
     grammar: {
       title: 'Prendre · aller + infinitivo',
       explanation:
-        'Prendre es irregular: je prends, tu prends, il prend (suenan igual: la s y la d finales no se pronuncian), nous prenons, vous prenez, ils prennent (acá suena la doble n). Con los transportes con motor se usa en (en bus, en train, en voiture, en avion, en métro), pero à pied y à vélo. Para los planes cercanos, el futuro próximo: aller en presente + infinitivo (je vais partir, tu vas rester, on va visiter). En la negación, ne… pas rodea a aller: je ne vais pas partir.',
+        'Prendre es irregular: je prends, tu prends, il prend (suenan igual: la s y la d finales no se pronuncian), nous prenons, vous prenez, ils prennent (aquí suena la doble n). Con los transportes con motor se usa en (en bus, en train, en voiture, en avion, en métro), pero à pied y à vélo. Para los planes cercanos, el futuro próximo: aller en presente + infinitivo (je vais partir, tu vas rester, on va visiter). En la negación, ne… pas rodea a aller: je ne vais pas partir.',
       examples: [
-        { target: 'Nous prenons le métro.', base: 'Tomamos el subte.' },
+        { target: 'Nous prenons le métro.', base: 'Tomamos el metro.' },
         {
           target: 'Ce week-end, on va visiter Paris.',
           base: 'Este fin de semana vamos a visitar París.',
@@ -85,11 +85,11 @@ export const FR_A1_U17: FrUnitDef = {
       w(
         'fr-le-bus',
         'le bus',
-        'el colectivo',
+        'el autobús',
         'Je prends le bus à huit heures.',
-        'Tomo el colectivo a las ocho.',
+        'Tomo el autobús a las ocho.',
         ['transport', 'm'],
-        { acceptedTranslations: ['el bus', 'el autobús'], emoji: '🚌' },
+        { acceptedTranslations: ['el bus', 'el colectivo'], emoji: '🚌' },
       ),
       w(
         'fr-le-train',
@@ -121,11 +121,11 @@ export const FR_A1_U17: FrUnitDef = {
       w(
         'fr-le-metro',
         'le métro',
-        'el subte',
+        'el metro',
         'Il prend le métro tous les jours.',
-        'Toma el subte todos los días.',
+        'Toma el metro todos los días.',
         ['transport', 'm'],
-        { acceptedTranslations: ['el metro'], emoji: '🚇' },
+        { acceptedTranslations: ['el subte'], emoji: '🚇' },
       ),
       w(
         'fr-le-velo',
@@ -168,7 +168,7 @@ export const FR_A1_U17: FrUnitDef = {
         'partir',
         'irse',
         'Je vais partir demain matin.',
-        'Me voy a ir mañana a la mañana.',
+        'Me voy a ir mañana por la mañana.',
         ['verbs', 'movement'],
         { acceptedTranslations: ['salir'] },
       ),
@@ -245,7 +245,7 @@ export const FR_A1_U17: FrUnitDef = {
         'maintenant',
         'ahora',
         'Je prends le bus maintenant.',
-        'Tomo el colectivo ahora.',
+        'Tomo el autobús ahora.',
         ['time'],
       ),
     ],
@@ -256,21 +256,21 @@ export const FR_A1_U17: FrUnitDef = {
         objective: 'Nombrar los medios de transporte y decir cómo vas a un lugar.',
         intro: {
           explanation:
-            'Para decir cómo viajás, con los transportes con motor se usa en: en bus, en train, en voiture, en avion, en métro. Pero se dice à pied y à vélo. Ojo con la pronunciación: en bus la s final sí suena (es una excepción), y en en avion hay liaison: la n de en se une con la a de avion.',
+            'Para decir cómo viajas, con los transportes con motor se usa en: en bus, en train, en voiture, en avion, en métro. Pero se dice à pied y à vélo. Ojo con la pronunciación: en bus la s final sí suena (es una excepción), y en en avion hay liaison: la n de en se une con la a de avion.',
           examples: [
-            { target: 'Je vais à la gare en bus.', base: 'Voy a la estación en colectivo.' },
+            { target: 'Je vais à la gare en bus.', base: 'Voy a la estación en autobús.' },
             { target: 'Je vais au travail à pied.', base: 'Voy al trabajo a pie.' },
           ],
         },
         takeaways: [
-          'Decís en bus, en train, en voiture, en avion y en métro.',
-          'Pero decís à pied y à vélo.',
+          'Dices en bus, en train, en voiture, en avion y en métro.',
+          'Pero dices à pied y à vélo.',
         ],
         exercises: [
           ex.translationChoice(
             'le train',
             'el tren',
-            ['el auto', 'el avión', 'el subte'],
+            ['el auto', 'el avión', 'el metro'],
             ['fr-le-train'],
             { id: 'fr.ex.txos547owj05ib' },
           ),
@@ -279,8 +279,8 @@ export const FR_A1_U17: FrUnitDef = {
           }),
           ex.matchPairs(
             [
-              ['le bus', 'el colectivo'],
-              ['le métro', 'el subte'],
+              ['le bus', 'el autobús'],
+              ['le métro', 'el metro'],
               ['le vélo', 'la bici'],
               ["l'avion", 'el avión'],
             ],
@@ -295,7 +295,7 @@ export const FR_A1_U17: FrUnitDef = {
           ),
           ex.fillBlank(
             'Je vais au travail ___ bus.',
-            'Voy al trabajo en colectivo.',
+            'Voy al trabajo en autobús.',
             'en',
             ['à', 'au', 'dans'],
             ['fr-le-bus'],
@@ -331,7 +331,7 @@ export const FR_A1_U17: FrUnitDef = {
             { id: 'fr.ex.qc0jp20c90ns69' },
           ),
           ex.translateWrite(
-            'Voy a la estación en colectivo.',
+            'Voy a la estación en autobús.',
             'Je vais à la gare en bus.',
             ['fr-le-bus'],
             { id: 'fr.ex.gigvbk0d5tz3yl' },
@@ -354,12 +354,12 @@ export const FR_A1_U17: FrUnitDef = {
             'Prendre (tomar) es irregular. Je prends, tu prends e il prend suenan igual: la s y la d finales no se pronuncian y termina en una vocal nasal. En plural cambia: nous prenons, vous prenez, ils prennent (en ils prennent suena la doble n). Le billet es el pasaje o la entrada (y también el billete de dinero). Maintenant es ahora.',
           examples: [
             { target: 'Nous prenons le train.', base: 'Tomamos el tren.' },
-            { target: 'Ils prennent le métro maintenant.', base: 'Ahora ellos toman el subte.' },
+            { target: 'Ils prennent le métro maintenant.', base: 'Ahora ellos toman el metro.' },
           ],
         },
         takeaways: [
-          'Conjugás prendre: je prends, nous prenons, ils prennent.',
-          "Pedís un billet pour Lyon, s'il vous plaît.",
+          'Conjugas prendre: je prends, nous prenons, ils prennent.',
+          "Pides un billet pour Lyon, s'il vous plaît.",
         ],
         exercises: [
           ex.translationChoice('prendre', 'tomar', ['viajar', 'buscar', 'mirar'], ['fr-prendre'], {
@@ -368,7 +368,7 @@ export const FR_A1_U17: FrUnitDef = {
           ex.translationChoice(
             'le billet',
             'el pasaje',
-            ['el colectivo', 'la estación de tren', 'la calle'],
+            ['el autobús', 'la estación de tren', 'la calle'],
             ['fr-le-billet'],
             { id: 'fr.ex.j0edhvldbrw788' },
           ),
@@ -385,7 +385,7 @@ export const FR_A1_U17: FrUnitDef = {
           ),
           ex.fillBlank(
             'Ils ___ le métro.',
-            'Ellos toman el subte.',
+            'Ellos toman el metro.',
             'prennent',
             ['prenons', 'prenez', 'prend'],
             ['fr-prendre', 'fr-le-metro'],
@@ -433,7 +433,7 @@ export const FR_A1_U17: FrUnitDef = {
             { id: 'fr.ex.b8degnopy4u1m7' },
           ),
           ex.translateWrite(
-            'Ahora tomamos el subte.',
+            'Ahora tomamos el metro.',
             'Maintenant, nous prenons le métro.',
             ['fr-prendre', 'fr-le-metro', 'fr-maintenant'],
             {
@@ -447,7 +447,7 @@ export const FR_A1_U17: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Tu prends le bus ou le train?',
-            '¿Tomás el colectivo o el tren? (Respondé que tomás el tren.)',
+            '¿Tomas el autobús o el tren? (Responde que tomas el tren.)',
             'Je prends le train.',
             ['Le train.', 'Je prends le train!'],
             ['fr-prendre', 'fr-le-train'],
@@ -469,8 +469,8 @@ export const FR_A1_U17: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Contás un plan con aller + infinitivo: je vais partir.',
-          'Decís «vamos a…» con on va: on va rester.',
+          'Cuentas un plan con aller + infinitivo: je vais partir.',
+          'Dices «vamos a…» con on va: on va rester.',
         ],
         exercises: [
           ex.translationChoice('partir', 'irse', ['quedarse', 'visitar', 'tomar'], ['fr-partir'], {
@@ -518,7 +518,7 @@ export const FR_A1_U17: FrUnitDef = {
           ),
           ex.listenChoice('Ils vont rester.', ['Il va rester.', 'Elle va rester.'], ['fr-rester'], {
             id: 'fr.ex.5jzr4jjjv6vr51',
-            explanation: 'Il va y ils vont suenan distinto: escuchá el final, va o vont.',
+            explanation: 'Il va y ils vont suenan distinto: escucha el final, va o vont.',
           }),
           ex.orderWords(
             'Nous allons visiter le musée demain.',
@@ -534,7 +534,7 @@ export const FR_A1_U17: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Tu vas partir demain?',
-            '¿Te vas a ir mañana? (Respondé que no, que te vas a quedar.)',
+            '¿Te vas a ir mañana? (Responde que no, que te vas a quedar.)',
             'Non, je vais rester.',
             ['Non, je ne vais pas partir, je vais rester.', 'Non. Je vais rester.'],
             ['fr-rester', 'fr-partir'],
@@ -549,7 +549,7 @@ export const FR_A1_U17: FrUnitDef = {
         objective: 'Ubicar los planes en el tiempo.',
         intro: {
           explanation:
-            'Ce soir es esta noche; ce week-end, este fin de semana; la semaine prochaine, la semana que viene (prochaine va después de semaine). No confundas ce soir (esta noche) con le soir (a la noche, todos los días). Con estos marcadores se usa el futuro próximo: ce soir, je vais rester à la maison.',
+            'Ce soir es esta noche; ce week-end, este fin de semana; la semaine prochaine, la semana que viene (prochaine va después de semaine). No confundas ce soir (esta noche) con le soir (por la noche, todos los días). Con estos marcadores se usa el futuro próximo: ce soir, je vais rester à la maison.',
           examples: [
             { target: 'Ce soir, on va au cinéma.', base: 'Esta noche vamos al cine.' },
             {
@@ -559,8 +559,8 @@ export const FR_A1_U17: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Ubicás un plan con ce soir, ce week-end o la semaine prochaine.',
-          'Distinguís ce soir (esta noche) de le soir (todas las noches).',
+          'Ubicas un plan con ce soir, ce week-end o la semaine prochaine.',
+          'Distingues ce soir (esta noche) de le soir (todas las noches).',
         ],
         exercises: [
           ex.translationChoice(
@@ -599,7 +599,7 @@ export const FR_A1_U17: FrUnitDef = {
             {
               id: 'fr.ex.voljj8j80aktzd',
               skill: 'vocabulary',
-              explanation: 'Esta noche es ce soir. Le soir es «a la noche» como costumbre.',
+              explanation: 'Esta noche es ce soir. Le soir es «por la noche» como costumbre.',
             },
           ),
           ex.listenChoice(
@@ -608,7 +608,7 @@ export const FR_A1_U17: FrUnitDef = {
             ['fr-ce-week-end', 'fr-partir'],
             {
               id: 'fr.ex.02eaauraixgra1',
-              explanation: 'Escuchá ce o le: ce week-end es este fin de semana.',
+              explanation: 'Escucha ce o le: ce week-end es este fin de semana.',
             },
           ),
           question(
@@ -653,7 +653,7 @@ export const FR_A1_U17: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Qu'est-ce que tu vas faire ce soir?",
-            '¿Qué vas a hacer esta noche? (Respondé que te vas a quedar en casa.)',
+            '¿Qué vas a hacer esta noche? (Responde que te vas a quedar en casa.)',
             'Ce soir, je vais rester à la maison.',
             ['Je vais rester à la maison.', 'Je vais rester à la maison ce soir.'],
             ['fr-ce-soir', 'fr-rester'],
@@ -678,8 +678,8 @@ export const FR_A1_U17: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Decís les vacances siempre en plural: partir en vacances.',
-          'Despedís a un viajero con bon voyage!',
+          'Dices les vacances siempre en plural: partir en vacances.',
+          'Despides a un viajero con bon voyage!',
         ],
         exercises: [
           ex.translationChoice(
@@ -727,7 +727,7 @@ export const FR_A1_U17: FrUnitDef = {
             VACANCES,
             '¿Cómo van a viajar a Niza?',
             'En avión, porque en auto es lejos.',
-            ['En auto.', 'En tren, porque es más barato.', 'En colectivo.'],
+            ['En auto.', 'En tren, porque es más barato.', 'En autobús.'],
             ['fr-l-avion', 'fr-la-voiture'],
             "Camille escribe «On va prendre l'avion: en voiture, c'est loin».",
           ),
@@ -761,7 +761,7 @@ export const FR_A1_U17: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Comment est-ce que tu vas voyager?',
-            '¿Cómo vas a viajar? (Respondé que vas a tomar el tren.)',
+            '¿Cómo vas a viajar? (Responde que vas a tomar el tren.)',
             'Je vais prendre le train.',
             ['On va prendre le train.', 'Je vais voyager en train.', 'En train.'],
             ['fr-prendre', 'fr-le-train'],

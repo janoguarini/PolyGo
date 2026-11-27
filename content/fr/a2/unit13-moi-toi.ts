@@ -56,17 +56,17 @@ export const FR_A2_U13: FrUnitDef = {
       "Los pronombres tónicos (moi, toi, eux…), después de avec, pour, sans y chez, y para responder (c'est moi, moi aussi, moi non plus). El imperativo con tu y nous (regarde, prends, allons-y) y con pronombres (dépêche-toi, aide-moi).",
     emoji: '👉',
     objective:
-      "Podés remarcar de quién hablás (moi, je…; lui, il…), usar los pronombres después de una preposición (avec moi, chez toi, sans eux), estar de acuerdo con moi aussi y moi non plus, y dar indicaciones o consejos a un amigo con el imperativo de tu y de nous, en afirmativo y en negativo (regarde, allons-y, n'oublie pas, dépêche-toi).",
+      "Puedes remarcar de quién hablas (moi, je…; lui, il…), usar los pronombres después de una preposición (avec moi, chez toi, sans eux), estar de acuerdo con moi aussi y moi non plus, y dar indicaciones o consejos a un amigo con el imperativo de tu y de nous, en afirmativo y en negativo (regarde, allons-y, n'oublie pas, dépêche-toi).",
     grammar: {
       title: 'Pronombres tónicos · imperativo con tu y nous',
       explanation:
         "Los pronombres tónicos son moi, toi, lui, elle, nous, vous, eux y elles. No reemplazan al sujeto (je, tu, il, ils…), lo acompañan: moi, je préfère le thé. Se usan después de una preposición (avec moi, pour toi, sans eux, chez moi = en mi casa), solos para responder (c'est moi, moi aussi, moi non plus) y después de c'est. El imperativo es el presente sin el sujeto: tu prends → prends, nous allons → allons. En los verbos en -er (y en aller) la s de tu se cae: tu regardes → regarde, tu vas → va, salvo delante de y: vas-y. Être, avoir y savoir son irregulares: sois, aie, sache. En afirmativo el pronombre va después, con guion, y me o te pasan a moi o toi: dépêche-toi, aide-moi. En negativo vuelve adelante: ne te dépêche pas.",
       examples: [
-        { target: 'Moi, je préfère le cinéma. Et toi?', base: 'Yo prefiero el cine. ¿Y vos?' },
-        { target: 'Tu viens chez moi samedi?', base: '¿Venís a mi casa el sábado?' },
+        { target: 'Moi, je préfère le cinéma. Et toi?', base: 'Yo prefiero el cine. ¿Y tú?' },
+        { target: 'Tu viens chez moi samedi?', base: '¿Vienes a mi casa el sábado?' },
         {
           target: "Dépêche-toi, on est en retard! — Ne t'inquiète pas.",
-          base: '¡Apurate, llegamos tarde! — No te preocupes.',
+          base: '¡Apúrate, llegamos tarde! — No te preocupes.',
         },
       ],
     },
@@ -77,19 +77,11 @@ export const FR_A2_U13: FrUnitDef = {
     },
     words: [
       w('fr-moi', 'moi', 'yo', 'Moi, je suis argentin.', 'Yo soy argentino.', ['pronouns']),
-      w(
-        'fr-toi',
-        'toi',
-        'vos',
-        "C'est toi sur la photo?",
-        '¿Sos vos el de la foto?',
-        ['pronouns'],
-        {
-          acceptedTranslations: ['ti'],
-          // «Vos» suelto también es sujeto (tu): al escribir la palabra, tu es correcto.
-          acceptedTexts: ['tu'],
-        },
-      ),
+      w('fr-toi', 'toi', 'ti', "C'est toi sur la photo?", '¿Eres tú el de la foto?', ['pronouns'], {
+        acceptedTranslations: ['vos'],
+        // «Vos» suelto también es sujeto (tu): al escribir la palabra, tu es correcto.
+        acceptedTexts: ['tu'],
+      }),
       w(
         'fr-c-est-moi',
         "c'est moi",
@@ -103,7 +95,7 @@ export const FR_A2_U13: FrUnitDef = {
         'chez moi',
         'en mi casa',
         'Tu viens chez moi ce soir?',
-        '¿Venís a mi casa esta noche?',
+        '¿Vienes a mi casa esta noche?',
         ['pronouns', 'home'],
         { acceptedTranslations: ['a mi casa'], emoji: '🏠' },
       ),
@@ -112,10 +104,10 @@ export const FR_A2_U13: FrUnitDef = {
         'avec moi',
         'conmigo',
         'Tu viens au cinéma avec moi?',
-        '¿Venís al cine conmigo?',
+        '¿Vienes al cine conmigo?',
         ['pronouns'],
       ),
-      w('fr-sans', 'sans', 'sin', 'Je ne pars pas sans toi.', 'No me voy sin vos.', ['basics']),
+      w('fr-sans', 'sans', 'sin', 'Je ne pars pas sans toi.', 'No me voy sin ti.', ['basics']),
       w(
         'fr-eux',
         'eux',
@@ -145,24 +137,30 @@ export const FR_A2_U13: FrUnitDef = {
       w(
         'fr-regarde',
         'regarde',
-        'mirá',
+        'mira',
         'Regarde, il neige!',
-        '¡Mirá, está nevando!',
+        '¡Mira, está nevando!',
         ['imperative'],
-        { emoji: '👀' },
+        { acceptedTranslations: ['mirá'], emoji: '👀' },
       ),
       w(
         'fr-prends',
         'prends',
-        'tomá',
+        'toma',
         'Prends le bus, il est tard!',
-        '¡Tomate el colectivo, es tarde!',
+        '¡Toma el autobús, es tarde!',
         ['imperative'],
-        { acceptedTranslations: ['tomate', 'agarrá'] },
+        { acceptedTranslations: ['tomate', 'agarrá', 'tomá'] },
       ),
-      w('fr-attends', 'attends', 'esperá', "Attends-moi, s'il te plaît!", '¡Esperame, por favor!', [
-        'imperative',
-      ]),
+      w(
+        'fr-attends',
+        'attends',
+        'espera',
+        "Attends-moi, s'il te plaît!",
+        '¡Espérame, por favor!',
+        ['imperative'],
+        { acceptedTranslations: ['esperá'] },
+      ),
       w(
         'fr-allons-y',
         'allons-y',
@@ -174,19 +172,20 @@ export const FR_A2_U13: FrUnitDef = {
       w(
         'fr-vas-y',
         'vas-y',
-        'dale',
+        'adelante',
         "Tu veux parler? Vas-y, j'écoute.",
-        '¿Querés hablar? Dale, te escucho.',
+        '¿Quieres hablar? Adelante, te escucho.',
         ['imperative'],
-        { acceptedTranslations: ['andá'] },
+        { acceptedTranslations: ['andá', 'dale', 've'] },
       ),
       w(
         'fr-sois-sage',
         'sois sage',
-        'portate bien',
+        'pórtate bien',
         'Sois sage avec ta grand-mère!',
-        '¡Portate bien con tu abuela!',
+        '¡Pórtate bien con tu abuela!',
         ['imperative'],
+        { acceptedTranslations: ['portate bien'] },
       ),
       w(
         'fr-n-oublie-pas',
@@ -200,28 +199,29 @@ export const FR_A2_U13: FrUnitDef = {
       w(
         'fr-depeche-toi',
         'dépêche-toi',
-        'apurate',
+        'apúrate',
         'Dépêche-toi, on est en retard!',
-        '¡Apurate, llegamos tarde!',
+        '¡Apúrate, llegamos tarde!',
         ['imperative'],
-        { emoji: '🏃' },
+        { acceptedTranslations: ['apurate'], emoji: '🏃' },
       ),
       w(
         'fr-assieds-toi',
         'assieds-toi',
-        'sentate',
+        'siéntate',
         'Assieds-toi, on mange!',
-        '¡Sentate, vamos a comer!',
+        '¡Siéntate, vamos a comer!',
         ['imperative'],
-        { emoji: '🪑' },
+        { acceptedTranslations: ['sentate'], emoji: '🪑' },
       ),
       w(
         'fr-aide-moi',
         'aide-moi',
-        'ayudame',
+        'ayúdame',
         "Aide-moi avec la valise, s'il te plaît.",
-        'Ayudame con la valija, por favor.',
+        'Ayúdame con la maleta, por favor.',
         ['imperative'],
+        { acceptedTranslations: ['ayudame'] },
       ),
       w(
         'fr-ne-t-inquiete-pas',
@@ -236,26 +236,26 @@ export const FR_A2_U13: FrUnitDef = {
       // ------------------------------------------------------------------------------------ L1
       {
         title: 'Moi, je suis de Buenos Aires',
-        objective: "Remarcar de quién hablás con moi, toi, lui y elle, y responder con c'est moi.",
+        objective: "Remarcar de quién hablas con moi, toi, lui y elle, y responder con c'est moi.",
         intro: {
           explanation:
             "En francés el sujeto (je, tu, il, elle) nunca va solo ni separado del verbo. Para remarcarlo, como cuando en español decimos «yo» con énfasis, se agrega el pronombre tónico adelante, con coma: moi, je suis argentine; toi, tu travailles où? Para responder a «¿quién es?» también se usa el tónico: c'est moi (soy yo), c'est lui (es él). Moi y toi ya los usabas en et toi?: son los mismos. Lui (él) y elle (ella) sirven tanto de tónicos como en lui, il… / elle, elle…",
           examples: [
-            { target: 'Moi, je suis argentine. Et toi?', base: 'Yo soy argentina. ¿Y vos?' },
+            { target: 'Moi, je suis argentine. Et toi?', base: 'Yo soy argentina. ¿Y tú?' },
             { target: "Qui est-ce? — C'est moi, Paul.", base: '¿Quién es? — Soy yo, Paul.' },
           ],
         },
         takeaways: [
-          'Remarcás el sujeto con moi, je… o toi, tu…',
-          "Respondés a qui est-ce? con c'est moi, c'est lui o c'est elle.",
+          'Remarcas el sujeto con moi, je… o toi, tu…',
+          "Respondes a qui est-ce? con c'est moi, c'est lui o c'est elle.",
         ],
         exercises: [
-          ex.translationChoice('moi', 'yo', ['vos', 'él', 'nosotros'], ['fr-moi'], {
+          ex.translationChoice('moi', 'yo', ['tú', 'él', 'nosotros'], ['fr-moi'], {
             id: 'fr.ex.sptuxgsqybcyfe',
           }),
           ex.fillBlank(
             '___, je suis argentine. Et toi?',
-            'Yo soy argentina. ¿Y vos?',
+            'Yo soy argentina. ¿Y tú?',
             'Moi',
             ['Je', 'Me', 'Mon'],
             ['fr-moi'],
@@ -279,7 +279,7 @@ export const FR_A2_U13: FrUnitDef = {
           ex.matchPairs(
             [
               ['moi', 'yo'],
-              ['toi', 'vos'],
+              ['toi', 'tú'],
               ['lui', 'él'],
               ['elle', 'ella'],
             ],
@@ -310,18 +310,18 @@ export const FR_A2_U13: FrUnitDef = {
           ex.translationChoice(
             "c'est moi",
             'soy yo',
-            ['es mío', 'sos vos', 'es él'],
+            ['es mío', 'eres tú', 'es él'],
             ['fr-c-est-moi'],
             {
               id: 'fr.ex.yf1cz1t5hy2bvm',
               explanation: "C'est moi es «soy yo». «Es mío» se dice c'est à moi.",
             },
           ),
-          ex.orderWords("C'est toi sur la photo?", '¿Sos vos el de la foto?', ['fr-toi'], {
+          ex.orderWords("C'est toi sur la photo?", '¿Eres tú el de la foto?', ['fr-toi'], {
             id: 'fr.ex.02g6yk6apqk8na',
           }),
           ex.translateWrite(
-            'Yo soy de Buenos Aires. ¿Y vos?',
+            'Yo soy de Buenos Aires. ¿Y tú?',
             'Moi, je suis de Buenos Aires. Et toi?',
             ['fr-moi', 'fr-toi'],
             {
@@ -334,7 +334,7 @@ export const FR_A2_U13: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Qui est-ce sur la photo? C'est toi?",
-            '¿Quién es el de la foto? ¿Sos vos? (Respondé que sí, que sos vos.)',
+            '¿Quién es el de la foto? ¿Eres tú? (Responde que sí, que eres tú.)',
             "Oui, c'est moi.",
             ["Oui, c'est moi!", "C'est moi."],
             ['fr-c-est-moi'],
@@ -349,9 +349,9 @@ export const FR_A2_U13: FrUnitDef = {
         objective: 'Usar los pronombres tónicos después de avec, pour, sans y chez.',
         intro: {
           explanation:
-            'Después de una preposición va siempre el pronombre tónico: avec moi (conmigo), avec toi (con vos), pour lui (para él), sans elle (sin ella). En francés no hay una palabra como «conmigo»: se dice avec moi. Chez + pronombre es «en la casa de»: chez moi (en mi casa o a mi casa), chez toi, chez eux. En plural, eux es «ellos» (también para un grupo mixto) y elles, «ellas»; nous y vous no cambian. Ojo: ils es sujeto (ils travaillent), pero después de avec se dice avec eux.',
+            'Después de una preposición va siempre el pronombre tónico: avec moi (conmigo), avec toi (contigo), pour lui (para él), sans elle (sin ella). En francés no hay una palabra como «conmigo»: se dice avec moi. Chez + pronombre es «en la casa de»: chez moi (en mi casa o a mi casa), chez toi, chez eux. En plural, eux es «ellos» (también para un grupo mixto) y elles, «ellas»; nous y vous no cambian. Ojo: ils es sujeto (ils travaillent), pero después de avec se dice avec eux.',
           examples: [
-            { target: 'Tu viens au cinéma avec moi?', base: '¿Venís al cine conmigo?' },
+            { target: 'Tu viens au cinéma avec moi?', base: '¿Vienes al cine conmigo?' },
             {
               target: 'Mes frères? Je vais au marché avec eux.',
               base: '¿Mis hermanos? Voy al mercado con ellos.',
@@ -359,8 +359,8 @@ export const FR_A2_U13: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Después de avec, pour, sans y chez usás moi, toi, lui, elle, nous, vous, eux, elles.',
-          'Invitás con tu viens chez moi? y decís con quién vas con avec eux o avec elles.',
+          'Después de avec, pour, sans y chez usas moi, toi, lui, elle, nous, vous, eux, elles.',
+          'Invitas con tu viens chez moi? y dices con quién vas con avec eux o avec elles.',
         ],
         exercises: [
           ex.translationChoice(
@@ -372,7 +372,7 @@ export const FR_A2_U13: FrUnitDef = {
           ),
           ex.fillBlank(
             'Tu viens au cinéma avec ___?',
-            '¿Venís al cine conmigo?',
+            '¿Vienes al cine conmigo?',
             'moi',
             ['me', 'je', 'mon'],
             ['fr-avec-moi'],
@@ -384,7 +384,7 @@ export const FR_A2_U13: FrUnitDef = {
           ),
           ex.fillBlank(
             'Ce livre est pour ___, Hugo.',
-            'Este libro es para vos, Hugo.',
+            'Este libro es para ti, Hugo.',
             'toi',
             ['tu', 'te', 'ton'],
             ['fr-toi'],
@@ -453,7 +453,7 @@ export const FR_A2_U13: FrUnitDef = {
             },
           ),
           ex.translateWrite(
-            '¿Venís a mi casa el sábado?',
+            '¿Vienes a mi casa el sábado?',
             'Tu viens chez moi samedi?',
             ['fr-chez-moi'],
             {
@@ -466,7 +466,7 @@ export const FR_A2_U13: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Tu vas au cinéma avec qui?',
-            '¿Con quién vas al cine? (Respondé que vas con ellos, tus hermanos.)',
+            '¿Con quién vas al cine? (Responde que vas con ellos, tus hermanos.)',
             'Je vais au cinéma avec eux.',
             ['Avec eux.', 'Je vais avec eux.', 'Je vais au cinéma avec mes frères.'],
             ['fr-eux'],
@@ -481,7 +481,7 @@ export const FR_A2_U13: FrUnitDef = {
         objective: 'Estar de acuerdo o no con moi aussi, moi non plus y pas moi.',
         intro: {
           explanation:
-            "Para estar de acuerdo con una frase afirmativa se dice moi aussi (yo también): j'aime le chocolat. — Moi aussi! Con una frase negativa, el acuerdo es moi non plus (yo tampoco): je n'aime pas le café. — Moi non plus. Para no estar de acuerdo: pas moi (yo no) después de una afirmativa. Funciona con todos los tónicos: lui aussi, eux non plus, nous aussi. El tónico también va primero cuando comparás a dos personas: moi, je préfère le cinéma; Julie, elle, préfère le marché.",
+            "Para estar de acuerdo con una frase afirmativa se dice moi aussi (yo también): j'aime le chocolat. — Moi aussi! Con una frase negativa, el acuerdo es moi non plus (yo tampoco): je n'aime pas le café. — Moi non plus. Para no estar de acuerdo: pas moi (yo no) después de una afirmativa. Funciona con todos los tónicos: lui aussi, eux non plus, nous aussi. El tónico también va primero cuando comparas a dos personas: moi, je préfère le cinéma; Julie, elle, préfère le marché.",
           examples: [
             {
               target: "J'aime le chocolat. — Moi aussi!",
@@ -494,8 +494,8 @@ export const FR_A2_U13: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Respondés moi aussi a una afirmativa y moi non plus a una negativa.',
-          'Comparás gustos con moi, je… y lui, il…',
+          'Respondes moi aussi a una afirmativa y moi non plus a una negativa.',
+          'Comparas gustos con moi, je… y lui, il…',
         ],
         exercises: [
           ex.translationChoice(
@@ -581,7 +581,7 @@ export const FR_A2_U13: FrUnitDef = {
           ),
           ex.shortAnswer(
             "J'aime le chocolat. Et toi?",
-            'Me gusta el chocolate. ¿Y a vos? (Respondé que a vos también.)',
+            'Me gusta el chocolate. ¿Y a ti? (Responde que a ti también.)',
             'Moi aussi.',
             ['Moi aussi!', "Moi aussi, j'aime le chocolat."],
             ['fr-moi-aussi'],
@@ -589,7 +589,7 @@ export const FR_A2_U13: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Je ne bois pas de café. Et toi?',
-            'No tomo café. ¿Y vos? (Respondé que vos tampoco.)',
+            'No tomo café. ¿Y tú? (Responde que tú tampoco.)',
             'Moi non plus.',
             ['Moi non plus!', 'Moi non plus, je ne bois pas de café.'],
             ['fr-moi-non-plus'],
@@ -604,9 +604,9 @@ export const FR_A2_U13: FrUnitDef = {
         objective: 'Dar indicaciones a un amigo con el imperativo de tu y proponer con el de nous.',
         intro: {
           explanation:
-            "El imperativo de tu y de nous es el presente sin el sujeto: tu prends → prends (tomá), tu attends → attends (esperá), nous allons → allons (vamos). En los verbos en -er la s de tu se cae: tu regardes → regarde, tu manges → mange; también en aller: va! Delante de y vuelve la s, que se oye como z: vas-y (dale), y con nous, allons-y (vamos). Regarde y regardes suenan igual: la diferencia es sólo escrita. Être y avoir son irregulares: sois sage (portate bien), n'aie pas peur (no tengas miedo). En negativo se usa ne… pas como siempre: n'oublie pas, ne regarde pas.",
+            "El imperativo de tu y de nous es el presente sin el sujeto: tu prends → prends (toma), tu attends → attends (espera), nous allons → allons (vamos). En los verbos en -er la s de tu se cae: tu regardes → regarde, tu manges → mange; también en aller: va! Delante de y vuelve la s, que se oye como z: vas-y (dale), y con nous, allons-y (vamos). Regarde y regardes suenan igual: la diferencia es sólo escrita. Être y avoir son irregulares: sois sage (pórtate bien), n'aie pas peur (no tengas miedo). En negativo se usa ne… pas como siempre: n'oublie pas, ne regarde pas.",
           examples: [
-            { target: 'Regarde, il neige!', base: '¡Mirá, está nevando!' },
+            { target: 'Regarde, il neige!', base: '¡Mira, está nevando!' },
             {
               target: 'Le film commence à huit heures: allons-y!',
               base: 'La película empieza a las ocho: ¡vamos!',
@@ -615,12 +615,12 @@ export const FR_A2_U13: FrUnitDef = {
         },
         takeaways: [
           'Das una indicación a un amigo con regarde, prends o attends (sin tu y sin la s de -er).',
-          "Proponés con allons-y y avisás con n'oublie pas.",
+          "Propones con allons-y y avisas con n'oublie pas.",
         ],
         exercises: [
           ex.fillBlank(
             "___ la photo, Hugo! C'est toi?",
-            '¡Mirá la foto, Hugo! ¿Sos vos?',
+            '¡Mira la foto, Hugo! ¿Eres tú?',
             'Regarde',
             ['Regardes', 'Tu regardes'],
             ['fr-regarde'],
@@ -632,7 +632,7 @@ export const FR_A2_U13: FrUnitDef = {
           ),
           ex.fillBlank(
             '___ le bus, il est tard!',
-            '¡Tomate el colectivo, es tarde!',
+            '¡Toma el autobús, es tarde!',
             'Prends',
             ['Prend', 'Tu prends'],
             ['fr-prends'],
@@ -642,7 +642,7 @@ export const FR_A2_U13: FrUnitDef = {
                 'Prendre no es de -er: la s se queda (tu prends → prends). Prend es de il.',
             },
           ),
-          ex.translationChoice('allons-y', 'vamos', ['andá', 'esperá', 'vení'], ['fr-allons-y'], {
+          ex.translationChoice('allons-y', 'vamos', ['ve', 'espera', 'ven'], ['fr-allons-y'], {
             id: 'fr.ex.nlqokgfi0wfawc',
           }),
           ex.fillBlank(
@@ -680,27 +680,27 @@ export const FR_A2_U13: FrUnitDef = {
           ),
           ex.translationChoice(
             'sois sage',
-            'portate bien',
-            ['sé sabio', 'sentate', 'tranquilo'],
+            'pórtate bien',
+            ['sé sabio', 'siéntate', 'tranquilo'],
             ['fr-sois-sage'],
             {
               id: 'fr.ex.ks9f77moqi0wb9',
               explanation:
-                'A un chico, sois sage es «portate bien». Sois es el imperativo irregular de être (tu es → sois).',
+                'A un chico, sois sage es «pórtate bien». Sois es el imperativo irregular de être (tu es → sois).',
             },
           ),
           ex.matchPairs(
             [
-              ['regarde', 'mirá'],
-              ['prends', 'tomá'],
-              ['attends', 'esperá'],
-              ['vas-y', 'dale'],
+              ['regarde', 'mira'],
+              ['prends', 'toma'],
+              ['attends', 'espera'],
+              ['vas-y', 'adelante'],
             ],
             ['fr-regarde', 'fr-prends', 'fr-attends', 'fr-vas-y'],
             { id: 'fr.ex.4dpzl7w0lpyqto' },
           ),
           ex.translateWrite(
-            '¡Esperá, Léa! ¡No te olvides la llave!',
+            '¡Espera, Léa! ¡No te olvides la llave!',
             "Attends, Léa! N'oublie pas la clé!",
             ['fr-attends', 'fr-n-oublie-pas'],
             {
@@ -713,7 +713,7 @@ export const FR_A2_U13: FrUnitDef = {
           ),
           ex.shortAnswer(
             'On va au cinéma ou on reste à la maison?',
-            '¿Vamos al cine o nos quedamos en casa? (Proponé ir al cine con el imperativo de nous.)',
+            '¿Vamos al cine o nos quedamos en casa? (Propón ir al cine con el imperativo de nous.)',
             'Allons au cinéma!',
             ['Allons au cinéma.', 'Allons au cinéma, Hugo!'],
             ['fr-allons-y'],
@@ -728,9 +728,9 @@ export const FR_A2_U13: FrUnitDef = {
         objective: 'Usar el imperativo con pronombres en afirmativo y en negativo.',
         intro: {
           explanation:
-            "En el imperativo afirmativo el pronombre va después del verbo, con guion, y me y te pasan a moi y toi: aide-moi (ayudame), attends-moi (esperame), dépêche-toi (apurate), assieds-toi (sentate). En negativo el pronombre vuelve adelante, como en el presente, y otra vez es me o te: ne te dépêche pas (no te apures), ne m'attends pas. Por eso no te preocupes es ne t'inquiète pas, con la elisión de te. Con vous es igual: dépêchez-vous, ne vous dépêchez pas.",
+            "En el imperativo afirmativo el pronombre va después del verbo, con guion, y me y te pasan a moi y toi: aide-moi (ayúdame), attends-moi (espérame), dépêche-toi (apúrate), assieds-toi (siéntate). En negativo el pronombre vuelve adelante, como en el presente, y otra vez es me o te: ne te dépêche pas (no te apures), ne m'attends pas. Por eso no te preocupes es ne t'inquiète pas, con la elisión de te. Con vous es igual: dépêchez-vous, ne vous dépêchez pas.",
           examples: [
-            { target: 'Dépêche-toi, on est en retard!', base: '¡Apurate, llegamos tarde!' },
+            { target: 'Dépêche-toi, on est en retard!', base: '¡Apúrate, llegamos tarde!' },
             {
               target: "Ne t'inquiète pas, tout va bien.",
               base: 'No te preocupes, todo está bien.',
@@ -738,13 +738,13 @@ export const FR_A2_U13: FrUnitDef = {
           ],
         },
         takeaways: [
-          'En afirmativo decís dépêche-toi o aide-moi, con el pronombre después.',
-          "En negativo decís ne te dépêche pas o ne t'inquiète pas, con el pronombre adelante.",
+          'En afirmativo dices dépêche-toi o aide-moi, con el pronombre después.',
+          "En negativo dices ne te dépêche pas o ne t'inquiète pas, con el pronombre adelante.",
         ],
         exercises: [
           ex.fillBlank(
             'Assieds-___, Paul, on mange!',
-            '¡Sentate, Paul, vamos a comer!',
+            '¡Siéntate, Paul, vamos a comer!',
             'toi',
             ['te', 'tu', 'moi'],
             ['fr-assieds-toi'],
@@ -768,7 +768,7 @@ export const FR_A2_U13: FrUnitDef = {
           ),
           ex.fillBlank(
             "Aide-___ avec la valise, s'il te plaît!",
-            '¡Ayudame con la valija, por favor!',
+            '¡Ayúdame con la maleta, por favor!',
             'moi',
             ['me', 'je'],
             ['fr-aide-moi'],
@@ -789,9 +789,9 @@ export const FR_A2_U13: FrUnitDef = {
           ),
           ex.matchPairs(
             [
-              ['dépêche-toi', 'apurate'],
-              ['assieds-toi', 'sentate'],
-              ['aide-moi', 'ayudame'],
+              ['dépêche-toi', 'apúrate'],
+              ['assieds-toi', 'siéntate'],
+              ['aide-moi', 'ayúdame'],
               ["ne t'inquiète pas", 'no te preocupes'],
             ],
             ['fr-depeche-toi', 'fr-assieds-toi', 'fr-aide-moi', 'fr-ne-t-inquiete-pas'],
@@ -826,10 +826,10 @@ export const FR_A2_U13: FrUnitDef = {
               'Que la llame por teléfono',
             ],
             ['fr-ne-t-inquiete-pas', 'fr-sois-sage'],
-            "«Ne t'inquiète pas pour moi et sois sage!»: no te preocupes por mí y portate bien.",
+            "«Ne t'inquiète pas pour moi et sois sage!»: no te preocupes por mí y pórtate bien.",
           ),
           ex.translateWrite(
-            '¡Apurate, Hugo! ¡Llegamos tarde!',
+            '¡Apúrate, Hugo! ¡Llegamos tarde!',
             'Dépêche-toi, Hugo! On est en retard!',
             ['fr-depeche-toi'],
             {
@@ -842,7 +842,7 @@ export const FR_A2_U13: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Je suis en retard! Qu'est-ce que je fais?",
-            '¡Llego tarde! ¿Qué hago? (Respondé «no te preocupes».)',
+            '¡Llego tarde! ¿Qué hago? (Responde «no te preocupes».)',
             "Ne t'inquiète pas!",
             ["Ne t'inquiète pas.", "Ne t'inquiète pas, ça va."],
             ['fr-ne-t-inquiete-pas'],

@@ -106,40 +106,73 @@ test('restricciones de integridad de concepts', async () => {
     delete from public.concepts where id = '${word.id}';`;
   const L = word.language_code;
   const cases = [
-    ['léxico sin palabra', 'concepts_lexical_word_check',
+    [
+      'léxico sin palabra',
+      'concepts_lexical_word_check',
       `insert into public.concepts (id, language_code, kind, level, status)
-       values ('xx-nada', '${L}', 'lexical', 'A1', 'active')`],
-    ['no léxico con palabra', 'concepts_lexical_word_check',
+       values ('xx-nada', '${L}', 'lexical', 'A1', 'active')`,
+    ],
+    [
+      'no léxico con palabra',
+      'concepts_lexical_word_check',
       `${free} insert into public.concepts (id, language_code, kind, word_id, level, status)
-       values ('${L}.gram.x', '${L}', 'grammar', '${word.id}', 'A1', 'draft')`],
-    ['palabra de otro idioma', 'concepts_word_fkey',
+       values ('${L}.gram.x', '${L}', 'grammar', '${word.id}', 'A1', 'draft')`,
+    ],
+    [
+      'palabra de otro idioma',
+      'concepts_word_fkey',
       `${free} insert into public.concepts (id, language_code, kind, word_id, level, status)
-       values ('${word.id}', '${other.code}', 'lexical', '${word.id}', 'A1', 'active')`],
+       values ('${word.id}', '${other.code}', 'lexical', '${word.id}', 'A1', 'active')`,
+    ],
     // Tres barreras independientes: PK (id = palabra), unique de word_id e id = word_id.
-    ['segundo concepto para la misma palabra', 'concepts_pkey',
+    [
+      'segundo concepto para la misma palabra',
+      'concepts_pkey',
       `insert into public.concepts (id, language_code, kind, word_id, level, status)
-       values ('${word.id}', '${L}', 'lexical', '${word.id}', 'A1', 'active')`],
-    ['segundo concepto con otro id', 'concepts_lexical_id_check|concepts_word_id_key',
+       values ('${word.id}', '${L}', 'lexical', '${word.id}', 'A1', 'active')`,
+    ],
+    [
+      'segundo concepto con otro id',
+      'concepts_lexical_id_check|concepts_word_id_key',
       `insert into public.concepts (id, language_code, kind, word_id, level, status)
-       values ('dup', '${L}', 'lexical', '${word.id}', 'A1', 'active')`],
-    ['id léxico distinto del de la palabra', 'concepts_lexical_id_check',
+       values ('dup', '${L}', 'lexical', '${word.id}', 'A1', 'active')`,
+    ],
+    [
+      'id léxico distinto del de la palabra',
+      'concepts_lexical_id_check',
       `${free} insert into public.concepts (id, language_code, kind, word_id, level, status)
-       values ('${word.id}-otro', '${L}', 'lexical', '${word.id}', 'A1', 'active')`],
-    ['tipo inexistente', 'concepts_kind_fkey',
+       values ('${word.id}-otro', '${L}', 'lexical', '${word.id}', 'A1', 'active')`,
+    ],
+    [
+      'tipo inexistente',
+      'concepts_kind_fkey',
       `insert into public.concepts (id, language_code, kind, level, status)
-       values ('${L}.x.y', '${L}', 'semantic', 'A1', 'draft')`],
-    ['nivel inexistente', 'concepts_level_fkey',
+       values ('${L}.x.y', '${L}', 'semantic', 'A1', 'draft')`,
+    ],
+    [
+      'nivel inexistente',
+      'concepts_level_fkey',
       `insert into public.concepts (id, language_code, kind, level, status)
-       values ('${L}.gram.y', '${L}', 'grammar', 'A0', 'draft')`],
-    ['estado inválido', 'concepts_status_check',
+       values ('${L}.gram.y', '${L}', 'grammar', 'A0', 'draft')`,
+    ],
+    [
+      'estado inválido',
+      'concepts_status_check',
       `insert into public.concepts (id, language_code, kind, level, status)
-       values ('${L}.gram.z', '${L}', 'grammar', 'A1', 'published')`],
-    ['padre de otro idioma', 'concepts_parent_fkey',
+       values ('${L}.gram.z', '${L}', 'grammar', 'A1', 'published')`,
+    ],
+    [
+      'padre de otro idioma',
+      'concepts_parent_fkey',
       `insert into public.concepts (id, language_code, kind, parent_id, level, status)
-       values ('${other.code}.gram.hijo', '${other.code}', 'grammar', '${word.id}', 'A1', 'draft')`],
-    ['idioma inexistente', 'concepts_language_code_fkey',
+       values ('${other.code}.gram.hijo', '${other.code}', 'grammar', '${word.id}', 'A1', 'draft')`,
+    ],
+    [
+      'idioma inexistente',
+      'concepts_language_code_fkey',
       `insert into public.concepts (id, language_code, kind, level, status)
-       values ('qq.gram.x', 'qq', 'grammar', 'A1', 'draft')`],
+       values ('qq.gram.x', 'qq', 'grammar', 'A1', 'draft')`,
+    ],
   ];
   for (const [name, constraint, sql] of cases) {
     const err = await rejected(sql);
@@ -156,12 +189,15 @@ test('restricciones de integridad de concepts', async () => {
 
 test('una palabra con concepto no se puede borrar ni pasar a otro idioma', async () => {
   const word = await one('select id, language_code from public.concepts order by id limit 1');
-  const other = await one(`select code from public.languages where code <> $1 order by code limit 1`, [
-    word.language_code,
-  ]);
+  const other = await one(
+    `select code from public.languages where code <> $1 order by code limit 1`,
+    [word.language_code],
+  );
   assert.ok(await rejected(`delete from public.words where id = '${word.id}'`));
   assert.ok(
-    await rejected(`update public.words set language_code = '${other.code}' where id = '${word.id}'`),
+    await rejected(
+      `update public.words set language_code = '${other.code}' where id = '${word.id}'`,
+    ),
   );
 });
 

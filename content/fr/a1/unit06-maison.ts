@@ -26,7 +26,7 @@ const CLES = dialogue(
 const APPART = reading(
   'fr.stim.a1-u6-appart',
   'message',
-  'Sophie le escribe a su amigo Thomas sobre su nuevo departamento.',
+  'Sophie le escribe a su amigo Thomas sobre su nuevo apartamento.',
   [
     'Salut, Thomas!',
     "J'habite à Lyon, dans un petit appartement.",
@@ -49,13 +49,13 @@ export const FR_A1_U06: FrUnitDef = {
       "Las partes de la casa, il y a / il n'y a pas de, où est…? y las preposiciones de lugar (dans, sur, sous, à côté de, devant, derrière). Sur y sous no suenan igual.",
     emoji: '🏠',
     objective:
-      'Podés describir tu casa o tu departamento, decir qué hay y qué no hay, y preguntar y decir dónde está algo.',
+      'Puedes describir tu casa o tu apartamento, decir qué hay y qué no hay, y preguntar y decir dónde está algo.',
     grammar: {
       title: "Il y a / il n'y a pas de · où est…? · preposiciones de lugar",
       explanation:
         "Il y a (hay) sirve para singular y plural: il y a une chambre, il y a deux chambres. En la negación, un / une / des pasan a de: il n'y a pas de fenêtre (nunca «pas une fenêtre»). Para ubicar algo: où est…? (o où sont…? en plural) y la respuesta con il / elle est + dans, sur, sous, devant, derrière o à côté de. De + le se contrae en du: à côté du lit; con la y l' no cambia: à côté de la porte.",
       examples: [
-        { target: 'Il y a deux chambres et un salon.', base: 'Hay dos dormitorios y un living.' },
+        { target: 'Il y a deux chambres et un salon.', base: 'Hay dos dormitorios y una sala.' },
         { target: "Il n'y a pas de fenêtre.", base: 'No hay ventana.' },
         {
           target: 'Où est le chat? — Il est sous le lit.',
@@ -66,7 +66,7 @@ export const FR_A1_U06: FrUnitDef = {
     review: {
       status: 'draft',
       notes:
-        'A1 nuevo (U6). Sin revisión nativa: revisar «living» como traducción de le salon y la explicación de la u de sur frente a la ou de sous.',
+        'A1 nuevo (U6). Sin revisión nativa: revisar «sala» como traducción de le salon y la explicación de la u de sur frente a la ou de sous.',
     },
     words: [
       w(
@@ -81,11 +81,11 @@ export const FR_A1_U06: FrUnitDef = {
       w(
         'fr-l-appartement',
         "l'appartement",
-        'el departamento',
+        'el apartamento',
         "J'habite dans un petit appartement.",
-        'Vivo en un departamento chico.',
+        'Vivo en un apartamento chico.',
         ['home', 'm'],
-        { acceptedTranslations: ['el apartamento'], acceptedTexts: ["l'appartement"] },
+        { acceptedTranslations: ['el departamento'], acceptedTexts: ["l'appartement"] },
       ),
       w(
         'fr-la-chambre',
@@ -101,7 +101,7 @@ export const FR_A1_U06: FrUnitDef = {
         'la cuisine',
         'la cocina',
         'La cuisine est à côté du salon.',
-        'La cocina está al lado del living.',
+        'La cocina está al lado de la sala.',
         ['home', 'f'],
         { emoji: '🍳' },
       ),
@@ -117,11 +117,11 @@ export const FR_A1_U06: FrUnitDef = {
       w(
         'fr-le-salon',
         'le salon',
-        'el living',
+        'la sala',
         'Le chat est dans le salon.',
-        'El gato está en el living.',
+        'El gato está en la sala.',
         ['home', 'm'],
-        { acceptedTranslations: ['la sala', 'la sala de estar'], emoji: '🛋️' },
+        { acceptedTranslations: ['la sala de estar', 'el living'], emoji: '🛋️' },
       ),
       w(
         'fr-le-lit',
@@ -215,7 +215,7 @@ export const FR_A1_U06: FrUnitDef = {
         'derrière',
         'detrás de',
         'La cuisine est derrière le salon.',
-        'La cocina está detrás del living.',
+        'La cocina está detrás de la sala.',
         ['prepositions'],
         { acceptedTranslations: ['atrás de'] },
       ),
@@ -225,18 +225,18 @@ export const FR_A1_U06: FrUnitDef = {
       // ------------------------------------------------------------------------------------ L1
       {
         title: 'La maison',
-        objective: 'Nombrar la casa, el departamento y sus ambientes.',
+        objective: 'Nombrar la casa, el apartamento y sus ambientes.',
         intro: {
           explanation:
-            "Las partes de la casa: la cuisine (la cocina), la salle de bains (el baño), le salon (el living) y la chambre, que es un falso amigo: no es una cámara, es el dormitorio. Appartement empieza con vocal: l'appartement, un appartement. En bains, la s final no suena.",
+            "Las partes de la casa: la cuisine (la cocina), la salle de bains (el baño), le salon (la sala) y la chambre, que es un falso amigo: no es una cámara, es el dormitorio. Appartement empieza con vocal: l'appartement, un appartement. En bains, la s final no suena.",
           examples: [
             { target: "C'est ma chambre.", base: 'Es mi dormitorio.' },
-            { target: "C'est un petit appartement.", base: 'Es un departamento chico.' },
+            { target: "C'est un petit appartement.", base: 'Es un apartamento chico.' },
           ],
         },
         takeaways: [
-          'Nombrás la casa y sus ambientes.',
-          'Recordás que la chambre es el dormitorio.',
+          'Nombras la casa y sus ambientes.',
+          'Recuerdas que la chambre es el dormitorio.',
         ],
         exercises: [
           ex.translationChoice(
@@ -262,8 +262,8 @@ export const FR_A1_U06: FrUnitDef = {
             [
               ['la cuisine', 'la cocina'],
               ['la salle de bains', 'el baño'],
-              ['le salon', 'el living'],
-              ["l'appartement", 'el departamento'],
+              ['le salon', 'la sala'],
+              ["l'appartement", 'el apartamento'],
             ],
             ['fr-la-cuisine', 'fr-la-salle-de-bains', 'fr-le-salon', 'fr-l-appartement'],
             { id: 'fr.ex.ibb5ldgkb8lgai' },
@@ -276,7 +276,7 @@ export const FR_A1_U06: FrUnitDef = {
           ),
           ex.fillBlank(
             "C'est un petit ___.",
-            'Es un departamento chico.',
+            'Es un apartamento chico.',
             'appartement',
             ['maison', 'cuisine', 'chambre'],
             ['fr-l-appartement'],
@@ -289,7 +289,7 @@ export const FR_A1_U06: FrUnitDef = {
           ),
           ex.translationChoice(
             'le salon',
-            'el living',
+            'la sala',
             ['el baño', 'la cocina', 'la casa'],
             ['fr-le-salon'],
             { id: 'fr.ex.5d19bt054x76ll' },
@@ -331,8 +331,8 @@ export const FR_A1_U06: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Decís qué hay con il y a.',
-          "Decís qué no hay con il n'y a pas de, sin un / une.",
+          'Dices qué hay con il y a.',
+          "Dices qué no hay con il n'y a pas de, sin un / une.",
         ],
         exercises: [
           ex.translationChoice(
@@ -392,7 +392,7 @@ export const FR_A1_U06: FrUnitDef = {
           ex.translationChoice(
             'la fenêtre',
             'la ventana',
-            ['la puerta', 'el living', 'la cama'],
+            ['la puerta', 'la sala', 'la cama'],
             ['fr-la-fenetre'],
             { id: 'fr.ex.hytwpvjemgookn' },
           ),
@@ -414,7 +414,7 @@ export const FR_A1_U06: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Il y a une salle de bains?',
-            '¿Hay un baño? (Respondé que no hay baño.)',
+            '¿Hay un baño? (Responde que no hay baño.)',
             "Non, il n'y a pas de salle de bains.",
             ["Il n'y a pas de salle de bains.", "Non, il n'y a pas de salle de bains!"],
             ['fr-il-n-y-a-pas-de', 'fr-la-salle-de-bains'],
@@ -429,7 +429,7 @@ export const FR_A1_U06: FrUnitDef = {
         objective: 'Preguntar dónde está algo y responder con dans, sur y sous.',
         intro: {
           explanation:
-            'Para preguntar: où est…? (¿dónde está…?) y où sont…? en plural. Se responde con il / elle est + dans (adentro de), sur (sobre) o sous (debajo de). Escuchá bien sur y sous: la u de sur se dice con los labios redondeados como para una u pero la lengua adelante, como para una i; la ou de sous es la u del español. Où lleva tilde para diferenciarse de ou (o), pero suenan igual.',
+            'Para preguntar: où est…? (¿dónde está…?) y où sont…? en plural. Se responde con il / elle est + dans (adentro de), sur (sobre) o sous (debajo de). Escucha bien sur y sous: la u de sur se dice con los labios redondeados como para una u pero la lengua adelante, como para una i; la ou de sous es la u del español. Où lleva tilde para diferenciarse de ou (o), pero suenan igual.',
           examples: [
             {
               target: 'Où est le chat? — Il est sous le lit.',
@@ -439,8 +439,8 @@ export const FR_A1_U06: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Preguntás dónde está algo con où est…?',
-          'Distinguís sur y sous al escuchar y al hablar.',
+          'Preguntas dónde está algo con où est…?',
+          'Distingues sur y sous al escuchar y al hablar.',
         ],
         exercises: [
           ex.translationChoice('où', 'dónde', ['sobre', 'debajo de', 'adentro de'], ['fr-ou'], {
@@ -522,7 +522,7 @@ export const FR_A1_U06: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Où est le chat? 🐈🛏️',
-            '¿Dónde está el gato? (Respondé que está debajo de la cama.)',
+            '¿Dónde está el gato? (Responde que está debajo de la cama.)',
             'Il est sous le lit.',
             ['Le chat est sous le lit.', 'Sous le lit.'],
             ['fr-sous', 'fr-le-lit'],
@@ -547,8 +547,8 @@ export const FR_A1_U06: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Ubicás algo con à côté de, devant y derrière.',
-          'Contraés de + le en du: à côté du lit.',
+          'Ubicas algo con à côté de, devant y derrière.',
+          'Contraes de + le en du: à côté du lit.',
         ],
         exercises: [
           ex.translationChoice(
@@ -642,27 +642,27 @@ export const FR_A1_U06: FrUnitDef = {
         objective: 'Describir una vivienda: qué ambientes tiene y dónde están las cosas.',
         intro: {
           explanation:
-            "Para describir dónde vivís: j'habite dans un appartement / une maison, il y a… y il n'y a pas de… Después ubicás las cosas con las preposiciones: la cuisine est à côté du salon. Un dato cultural: en Francia muchos anuncios cuentan los ambientes sin el baño ni la cocina (un «trois pièces» tiene living y dos dormitorios).",
+            "Para describir dónde vives: j'habite dans un appartement / une maison, il y a… y il n'y a pas de… Después ubicas las cosas con las preposiciones: la cuisine est à côté du salon. Un dato cultural: en Francia muchos anuncios cuentan los ambientes sin el baño ni la cocina (un «trois pièces» tiene living y dos dormitorios).",
           examples: [
             {
               target: "J'habite dans un petit appartement.",
-              base: 'Vivo en un departamento chico.',
+              base: 'Vivo en un apartamento chico.',
             },
             {
               target: 'La cuisine est à côté du salon.',
-              base: 'La cocina está al lado del living.',
+              base: 'La cocina está al lado de la sala.',
             },
           ],
         },
         takeaways: [
-          'Describís tu casa con il y a y las preposiciones.',
-          'Entendés un mensaje que describe una vivienda.',
+          'Describes tu casa con il y a y las preposiciones.',
+          'Entiendes un mensaje que describe una vivienda.',
         ],
         exercises: [
           question(
             'fr.ex.ok3567z0j39ga5',
             APPART,
-            '¿Cuántos dormitorios tiene el departamento de Sophie?',
+            '¿Cuántos dormitorios tiene el apartamento de Sophie?',
             'Dos.',
             ['Uno.', 'Tres.', 'No lo dice.'],
             ['fr-la-chambre', 'fr-il-y-a', 'fr-l-appartement'],
@@ -681,8 +681,8 @@ export const FR_A1_U06: FrUnitDef = {
             'fr.ex.6dji5itov9i229',
             APPART,
             '¿Dónde vive Sophie?',
-            'En un departamento chico en Lyon.',
-            ['En una casa grande en Lyon.', 'En un departamento grande en París.', 'Con Thomas.'],
+            'En un apartamento chico en Lyon.',
+            ['En una casa grande en Lyon.', 'En un apartamento grande en París.', 'Con Thomas.'],
             ['fr-l-appartement', 'fr-dans'],
             "Sophie escribe «J'habite à Lyon, dans un petit appartement».",
           ),
@@ -716,7 +716,7 @@ export const FR_A1_U06: FrUnitDef = {
           ),
           ex.orderWords(
             'Il y a un grand salon.',
-            'Hay un living grande.',
+            'Hay una sala grande.',
             ['fr-il-y-a', 'fr-le-salon'],
             {
               id: 'fr.ex.5t1qp8ybn1ddly',
@@ -742,7 +742,7 @@ export const FR_A1_U06: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Où est ton téléphone?',
-            '¿Dónde está tu teléfono? (Respondé que está en tu bolso.)',
+            '¿Dónde está tu teléfono? (Responde que está en tu bolso.)',
             'Il est dans mon sac.',
             ['Mon téléphone est dans mon sac.', 'Dans mon sac.'],
             ['fr-ou', 'fr-dans'],

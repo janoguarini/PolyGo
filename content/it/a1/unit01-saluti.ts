@@ -25,14 +25,14 @@ export const unit01: UnitDef = {
   description: 'Saludar según la hora, despedirte, ser amable y presentarte.',
   emoji: '👋',
   objective:
-    'Podés saludar según el momento del día, presentarte, preguntar cómo está alguien y responder con cortesía.',
+    'Puedes saludar según el momento del día, presentarte, preguntar cómo está alguien y responder con cortesía.',
   grammar: {
     title: 'Mi chiamo… (me llamo)',
     explanation:
       'Para decir tu nombre se usa chiamarsi, igual que «llamarse»: mi chiamo Ana. Para preguntar el nombre a alguien de confianza: come ti chiami?',
     examples: [
       { target: 'Mi chiamo Marco.', base: 'Me llamo Marco.' },
-      { target: 'Come ti chiami?', base: '¿Cómo te llamás?' },
+      { target: 'Come ti chiami?', base: '¿Cómo te llamas?' },
     ],
   },
   review: {
@@ -41,12 +41,12 @@ export const unit01: UnitDef = {
   },
   words: [
     w('it-ciao', 'ciao', 'hola (informal)', 'Ciao, Marco!', '¡Hola, Marco!', ['greetings'], {
-      acceptedTranslations: ['hola', 'chau'],
+      acceptedTranslations: ['hola', 'chau', 'chao'],
     }),
     w('it-arrivederci', 'arrivederci', 'adiós', 'Arrivederci, signora!', '¡Adiós, señora!', [
       'greetings',
     ]),
-    w('it-a-presto', 'a presto', 'hasta pronto', 'Ciao, a presto!', '¡Chau, hasta pronto!', [
+    w('it-a-presto', 'a presto', 'hasta pronto', 'Ciao, a presto!', '¡Chao, hasta pronto!', [
       'greetings',
     ]),
     w('it-si', 'sì', 'sí', 'Sì, grazie.', 'Sí, gracias.', ['basics'], { emoji: '✅' }),
@@ -98,12 +98,12 @@ export const unit01: UnitDef = {
     w(
       'it-come-ti-chiami',
       'come ti chiami?',
-      '¿cómo te llamás?',
+      '¿cómo te llamas?',
       'Ciao! Come ti chiami?',
-      '¡Hola! ¿Cómo te llamás?',
+      '¡Hola! ¿Cómo te llamas?',
       ['introductions'],
       {
-        acceptedTranslations: ['¿cómo te llamas?'],
+        acceptedTranslations: ['¿cómo te llamas?', '¿cómo te llamás?'],
       },
     ),
     w(
@@ -128,17 +128,9 @@ export const unit01: UnitDef = {
     ),
     w('it-bene', 'bene', 'bien', 'Sto bene, grazie.', 'Estoy bien, gracias.', ['basics']),
     w('it-molto', 'molto', 'muy', 'Molto bene!', '¡Muy bien!', ['basics']),
-    w(
-      'it-e-tu',
-      'e tu?',
-      '¿y vos?',
-      'Bene, grazie. E tu?',
-      'Bien, gracias. ¿Y vos?',
-      ['questions'],
-      {
-        acceptedTranslations: ['¿y tú?', 'y vos', 'y tú'],
-      },
-    ),
+    w('it-e-tu', 'e tu?', '¿y tú?', 'Bene, grazie. E tu?', 'Bien, gracias. ¿Y tú?', ['questions'], {
+      acceptedTranslations: ['¿y tú?', 'y vos', 'y tú', '¿y vos?'],
+    }),
     w('it-anche', 'anche', 'también', 'Anch’io sto bene.', 'Yo también estoy bien.', ['basics']),
   ],
   lessons: [
@@ -147,17 +139,17 @@ export const unit01: UnitDef = {
       objective: 'Saludar y despedirte; decir sí y no.',
       intro: {
         explanation:
-          'Ciao sirve para saludar y para despedirte entre amigos. Con alguien que no conocés, para despedirte usá arrivederci.',
+          'Ciao sirve para saludar y para despedirte entre amigos. Con alguien que no conoces, para despedirte usa arrivederci.',
         examples: [
           { target: 'Ciao, Marco!', base: '¡Hola, Marco!' },
           { target: 'Arrivederci, signora!', base: '¡Adiós, señora!' },
-          { target: 'Ciao, a presto!', base: '¡Chau, hasta pronto!' },
+          { target: 'Ciao, a presto!', base: '¡Chao, hasta pronto!' },
         ],
       },
       takeaways: [
-        'Saludás y te despedís con ciao.',
-        'Te despedís con arrivederci de alguien que no conocés.',
-        'Decís sì (con tilde) y no.',
+        'Saludas y te despides con ciao.',
+        'Te despides con arrivederci de alguien que no conoces.',
+        'Dices sì (con tilde) y no.',
       ],
       exercises: [
         ex.translationChoice('ciao', 'hola (informal)', ['adiós', 'gracias', 'sí'], ['it-ciao']),
@@ -181,7 +173,7 @@ export const unit01: UnitDef = {
         ),
         ex.fillBlank(
           'Ciao, a ___!',
-          '¡Chau, hasta pronto!',
+          '¡Chao, hasta pronto!',
           'presto',
           ['bene', 'grazie', 'sì'],
           ['it-a-presto'],
@@ -207,8 +199,8 @@ export const unit01: UnitDef = {
         ],
       },
       takeaways: [
-        'Saludás con buongiorno a la mañana y con buonasera desde la tarde.',
-        'Usás buonanotte sólo para despedirte a la noche.',
+        'Saludas con buongiorno a la mañana y con buonasera desde la tarde.',
+        'Usas buonanotte sólo para despedirte a la noche.',
       ],
       exercises: [
         ex.imageChoice(
@@ -272,9 +264,9 @@ export const unit01: UnitDef = {
         ],
       },
       takeaways: [
-        'Pedís algo con per favore.',
-        'Agradecés con grazie y respondés prego.',
-        'Te disculpás con scusa.',
+        'Pides algo con per favore.',
+        'Agradeces con grazie y respondes prego.',
+        'Te disculpas con scusa.',
       ],
       exercises: [
         ex.translationChoice(
@@ -289,7 +281,7 @@ export const unit01: UnitDef = {
           ['gracias', 'perdón (informal)', 'hasta pronto'],
           ['it-prego'],
           {
-            explanation: 'Prego se parece a «ruego», pero acá significa «de nada».',
+            explanation: 'Prego se parece a «ruego», pero aquí significa «de nada».',
           },
         ),
         ex.listenChoice('per favore', ['prego', 'piacere', 'buonasera'], ['it-per-favore']),
@@ -330,14 +322,14 @@ export const unit01: UnitDef = {
           'Mi chiamo + nombre es «me llamo». Para preguntar: come ti chiami? Al conocer a alguien se responde piacere.',
         examples: [
           { target: 'Mi chiamo Giulia.', base: 'Me llamo Giulia.' },
-          { target: 'Ciao! Come ti chiami?', base: '¡Hola! ¿Cómo te llamás?' },
+          { target: 'Ciao! Come ti chiami?', base: '¡Hola! ¿Cómo te llamas?' },
           { target: 'Piacere!', base: '¡Mucho gusto!' },
         ],
       },
       takeaways: [
-        'Te presentás con mi chiamo + tu nombre.',
-        'Preguntás el nombre con come ti chiami?',
-        'Al conocer a alguien decís piacere.',
+        'Te presentas con mi chiamo + tu nombre.',
+        'Preguntas el nombre con come ti chiami?',
+        'Al conocer a alguien dices piacere.',
       ],
       exercises: [
         ex.translationChoice(
@@ -382,15 +374,15 @@ export const unit01: UnitDef = {
         ),
         ex.shortAnswer(
           'Ciao! Come ti chiami?',
-          '¡Hola! ¿Cómo te llamás? (Respondé que te llamás Ana.)',
+          '¡Hola! ¿Cómo te llamas? (Responde que te llamas Ana.)',
           'Mi chiamo Ana.',
           ['Io mi chiamo Ana.', 'Sono Ana.', 'Io sono Ana.'],
           ['it-mi-chiamo', 'it-come-ti-chiami'],
           {
-            explanation: 'También podés decir sono Ana («soy Ana»).',
+            explanation: 'También puedes decir sono Ana («soy Ana»).',
           },
         ),
-        ex.translateWrite('¿Cómo te llamás?', 'Come ti chiami?', ['it-come-ti-chiami']),
+        ex.translateWrite('¿Cómo te llamas?', 'Come ti chiami?', ['it-come-ti-chiami']),
       ],
     },
     {
@@ -401,20 +393,20 @@ export const unit01: UnitDef = {
           'Come stai? es «¿cómo estás?» entre personas de confianza. Se responde bene (bien) o molto bene (muy bien), y se devuelve la pregunta con e tu?',
         examples: [
           { target: 'Ciao, Anna! Come stai?', base: '¡Hola, Anna! ¿Cómo estás?' },
-          { target: 'Bene, grazie. E tu?', base: 'Bien, gracias. ¿Y vos?' },
+          { target: 'Bene, grazie. E tu?', base: 'Bien, gracias. ¿Y tú?' },
           { target: 'Anch’io sto bene.', base: 'Yo también estoy bien.' },
         ],
       },
       takeaways: [
-        'Preguntás come stai? y respondés bene o molto bene.',
-        'Devolvés la pregunta con e tu?',
-        'Decís «también» con anche.',
+        'Preguntas come stai? y respondes bene o molto bene.',
+        'Devuelves la pregunta con e tu?',
+        'Dices «también» con anche.',
       ],
       exercises: [
         ex.translationChoice(
           'come stai?',
           '¿cómo estás?',
-          ['¿cómo te llamás?', '¿y vos?', 'hasta pronto'],
+          ['¿cómo te llamas?', '¿y tú?', 'hasta pronto'],
           ['it-come-stai'],
         ),
         ex.translationChoice('anche', 'también', ['muy', 'bien', 'yo'], ['it-anche']),
@@ -437,7 +429,7 @@ export const unit01: UnitDef = {
             ['bene', 'bien'],
             ['molto', 'muy'],
             ['anche', 'también'],
-            ['e tu?', '¿y vos?'],
+            ['e tu?', '¿y tú?'],
           ],
           ['it-bene', 'it-molto', 'it-anche', 'it-e-tu'],
         ),
@@ -455,7 +447,7 @@ export const unit01: UnitDef = {
           ],
           ['it-come-stai', 'it-bene'],
         ),
-        ex.translateWrite('Muy bien, ¿y vos?', 'Molto bene, e tu?', [
+        ex.translateWrite('Muy bien, ¿y tú?', 'Molto bene, e tu?', [
           'it-molto',
           'it-bene',
           'it-e-tu',

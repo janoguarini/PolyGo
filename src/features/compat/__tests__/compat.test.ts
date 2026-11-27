@@ -85,7 +85,7 @@ test('7: versión inferior a la mínima → aviso con mensaje del servidor', asy
     '1',
     1,
   );
-  expect(d.message).toMatch(/Actualizala/);
+  expect(d.message).toMatch(/Actualízala/);
   expect(d.updateUrl).toBeNull();
 });
 

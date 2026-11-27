@@ -46,14 +46,14 @@ export const ZH_A2_U07: ZhUnitDef = {
       'Horarios de trabajo, reuniones, exámenes, resultados de una acción y cómo se hace algo.',
     emoji: '💼',
     objective:
-      'Podés hablar de tu horario y tus compañeros, de exámenes y estudios, decir si terminaste o entendiste algo y contar cuánto tiempo estudiaste o trabajaste.',
+      'Puedes hablar de tu horario y tus compañeros, de exámenes y estudios, decir si terminaste o entendiste algo y contar cuánto tiempo estudiaste o trabajaste.',
     grammar: {
       title: 'Complementos de resultado · 得 de grado · duración con 了',
       explanation:
         'Un verbo o adjetivo después del verbo dice el resultado: 做完 (terminar), 听懂 (entender lo que se oye), 写错 (escribir mal), 准备好 (dejar listo); se niegan con 没 (没听懂). Cómo se hace algo: verbo + 得 + adjetivo (说得很好). Cuánto duró: verbo + 了 + tiempo (学了两年).',
       examples: [
         { target: '我做完作业了。', base: 'Terminé la tarea.' },
-        { target: '你中文说得很好！', base: '¡Hablás muy bien chino!' },
+        { target: '你中文说得很好！', base: '¡Hablas muy bien chino!' },
         { target: '我学了两年中文。', base: 'Estudié chino dos años.' },
       ],
     },
@@ -203,13 +203,13 @@ export const ZH_A2_U07: ZhUnitDef = {
         'de',
         'partícula de grado (得)',
         '你说得很好！',
-        '¡Hablás muy bien!',
+        '¡Hablas muy bien!',
         ['particle', 'grammar'],
         {
           acceptedTranslations: ['partícula 得'],
         },
       ),
-      w('zh-bang', '帮', 'bāng', 'ayudar', '你能帮我吗？', '¿Me podés ayudar?', ['verbs']),
+      w('zh-bang', '帮', 'bāng', 'ayudar', '你能帮我吗？', '¿Me puedes ayudar?', ['verbs']),
       w(
         'zh-wenti',
         '问题',
@@ -236,7 +236,7 @@ export const ZH_A2_U07: ZhUnitDef = {
             { target: '经理在开会。', base: 'La gerente está en una reunión.' },
           ],
         },
-        takeaways: ['Decís tu horario con 上班 y 下班.', 'Hablás de tus compañeros y del gerente.'],
+        takeaways: ['Dices tu horario con 上班 y 下班.', 'Hablas de tus compañeros y del gerente.'],
         exercises: [
           ex.translationChoice(
             '上班',
@@ -264,7 +264,7 @@ export const ZH_A2_U07: ZhUnitDef = {
           ),
           ex.fillBlank(
             '经理正在___，请等一会儿。',
-            'La gerente está en una reunión; esperá un rato.',
+            'La gerente está en una reunión; espera un rato.',
             '开会',
             ['下班', '同事', '经理'],
             ['zh-kaihui', 'zh-jingli'],
@@ -299,7 +299,7 @@ export const ZH_A2_U07: ZhUnitDef = {
           ),
           reply(
             '你几点下班？',
-            '¿A qué hora salís del trabajo? (Respondé: a las seis.)',
+            '¿A qué hora sales del trabajo? (Responde: a las seis.)',
             'liù diǎn xiàbān',
             '六点下班',
             ['zh-xiaban'],
@@ -333,7 +333,7 @@ export const ZH_A2_U07: ZhUnitDef = {
             { target: '陈老师教我们中文。', base: 'El profesor Chen nos enseña chino.' },
           ],
         },
-        takeaways: ['Hablás de exámenes con 考试 y 准备.', 'Decís quién enseña con 教.'],
+        takeaways: ['Hablas de exámenes con 考试 y 准备.', 'Dices quién enseña con 教.'],
         exercises: [
           ex.translationChoice(
             '考试',
@@ -392,7 +392,7 @@ export const ZH_A2_U07: ZhUnitDef = {
           ),
           reply(
             '你什么时候毕业？',
-            '¿Cuándo te recibís? (Respondé que el año que viene.)',
+            '¿Cuándo te recibes? (Responde que el año que viene.)',
             'míngnián bìyè',
             '明年毕业',
             ['zh-biye'],
@@ -425,7 +425,7 @@ export const ZH_A2_U07: ZhUnitDef = {
             { target: '老师说的我没听懂。', base: 'No entendí lo que dijo el profesor.' },
           ],
         },
-        takeaways: ['Decís el resultado con 完, 懂 y 错.', 'Lo negás con 没.'],
+        takeaways: ['Dices el resultado con 完, 懂 y 错.', 'Lo niegas con 没.'],
         exercises: [
           ex.translationChoice(
             '懂',
@@ -476,7 +476,7 @@ export const ZH_A2_U07: ZhUnitDef = {
           ),
           reply(
             '你听懂了吗？',
-            '¿Entendiste? (Respondé que no entendiste.)',
+            '¿Entendiste? (Responde que no entendiste.)',
             'méi tīng dǒng',
             '没听懂',
             ['zh-dong'],
@@ -518,11 +518,14 @@ export const ZH_A2_U07: ZhUnitDef = {
           explanation:
             'Para decir cómo se hace algo: verbo + 得 + adjetivo: 他跑得很快 (corre rápido). Si hay objeto, va antes: 你中文说得很好. 帮 es ayudar y 问题, pregunta o problema: 我有一个问题.',
           examples: [
-            { target: '你中文说得很好！', base: '¡Hablás muy bien chino!' },
-            { target: '我有一个问题，你能帮我吗？', base: 'Tengo una pregunta, ¿me podés ayudar?' },
+            { target: '你中文说得很好！', base: '¡Hablas muy bien chino!' },
+            {
+              target: '我有一个问题，你能帮我吗？',
+              base: 'Tengo una pregunta, ¿me puedes ayudar?',
+            },
           ],
         },
-        takeaways: ['Decís cómo se hace algo con 得.', 'Pedís ayuda con 帮.'],
+        takeaways: ['Dices cómo se hace algo con 得.', 'Pides ayuda con 帮.'],
         exercises: [
           ex.translationChoice('帮', 'ayudar', ['preguntar', 'enseñar', 'esperar'], ['zh-bang'], {
             id: 'zh.ex.9sdrdb00oaim61',
@@ -558,7 +561,7 @@ export const ZH_A2_U07: ZhUnitDef = {
           ),
           ex.fillBlank(
             '我有一个___，你能帮我吗？',
-            'Tengo una pregunta: ¿me podés ayudar?',
+            'Tengo una pregunta: ¿me puedes ayudar?',
             '问题',
             ['考试', '同事', '经理'],
             ['zh-wenti', 'zh-bang'],
@@ -578,7 +581,7 @@ export const ZH_A2_U07: ZhUnitDef = {
           ),
           reply(
             '你中文说得怎么样？',
-            '¿Qué tal hablás chino? (Respondé que no muy bien.)',
+            '¿Qué tal hablas chino? (Responde que no muy bien.)',
             'shuō de bú tài hǎo',
             '说得不太好',
             ['zh-de-grado'],
@@ -594,7 +597,7 @@ export const ZH_A2_U07: ZhUnitDef = {
               ],
             },
           ),
-          write('¿Me podés ayudar?', 'nǐ néng bāng wǒ ma', '你能帮我吗', ['zh-bang'], {
+          write('¿Me puedes ayudar?', 'nǐ néng bāng wǒ ma', '你能帮我吗', ['zh-bang'], {
             id: 'zh.ex.ez2fnmgir5n950',
             accepted: [
               'nǐ kěyǐ bāng wǒ ma',
@@ -619,8 +622,8 @@ export const ZH_A2_U07: ZhUnitDef = {
           ],
         },
         takeaways: [
-          'Contás cuánto duró algo con verbo + 了 + tiempo.',
-          'Entendés charlas sobre trabajo y estudio.',
+          'Cuentas cuánto duró algo con verbo + 了 + tiempo.',
+          'Entiendes charlas sobre trabajo y estudio.',
         ],
         exercises: [
           ex.listenChoice(
@@ -691,7 +694,7 @@ export const ZH_A2_U07: ZhUnitDef = {
           ),
           reply(
             '你学了几年中文？',
-            '¿Cuántos años estudiaste chino? (Respondé: un año.)',
+            '¿Cuántos años estudiaste chino? (Responde: un año.)',
             'wǒ xué le yì nián',
             '我学了一年',
             ['zh-le'],

@@ -3,9 +3,9 @@ import { defineStrings } from '..';
 /** Crear cuenta (src/app/(auth)/sign-up.tsx). */
 export const signUpStrings = defineStrings({
   es: {
-    checkEmailTitle: 'Revisá tu email',
+    checkEmailTitle: 'Revisa tu email',
     checkEmailMessage: (email: string) =>
-      `Enviamos un enlace de confirmación a ${email}. Abrilo desde este teléfono para activar tu cuenta.`,
+      `Enviamos un enlace de confirmación a ${email}. Ábrelo desde este teléfono para activar tu cuenta.`,
     goToSignIn: 'Ir a iniciar sesión',
     title: 'Crear cuenta',
     email: 'Email',
@@ -13,8 +13,8 @@ export const signUpStrings = defineStrings({
     passwordHint: 'Mínimo 6 caracteres.',
     confirmPassword: 'Repetir contraseña',
     submit: 'Crear cuenta',
-    haveAccount: '¿Ya tenés cuenta? ',
-    signIn: 'Iniciá sesión',
+    haveAccount: '¿Ya tienes cuenta? ',
+    signIn: 'Inicia sesión',
   },
   en: {
     checkEmailTitle: 'Check your email',
@@ -29,5 +29,33 @@ export const signUpStrings = defineStrings({
     submit: 'Create account',
     haveAccount: 'Already have an account? ',
     signIn: 'Sign in',
+  },
+  'pt-BR': {
+    checkEmailTitle: 'Confira seu e-mail',
+    checkEmailMessage: (email: string) =>
+      `Enviamos um link de confirmação para ${email}. Abra pelo celular para ativar sua conta.`,
+    goToSignIn: 'Ir para o login',
+    title: 'Criar conta',
+    email: 'E-mail',
+    password: 'Senha',
+    passwordHint: 'Mínimo de 6 caracteres.',
+    confirmPassword: 'Repetir senha',
+    submit: 'Criar conta',
+    haveAccount: 'Já tem conta? ',
+    signIn: 'Entrar',
+  },
+  it: {
+    checkEmailTitle: 'Controlla la tua email',
+    checkEmailMessage: (email: string) =>
+      `Abbiamo inviato un link di conferma a ${email}. Aprilo da questo telefono per attivare il tuo account.`,
+    goToSignIn: 'Vai all’accesso',
+    title: 'Crea account',
+    email: 'Email',
+    password: 'Password',
+    passwordHint: 'Almeno 6 caratteri.',
+    confirmPassword: 'Ripeti la password',
+    submit: 'Crea account',
+    haveAccount: 'Hai già un account? ',
+    signIn: 'Accedi',
   },
 });

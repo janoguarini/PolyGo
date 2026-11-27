@@ -116,7 +116,7 @@ describe('Word Rush antes de jugar (identidad oscura, un solo modo)', () => {
     expect(screen.queryByLabelText(/^Formatos de la partida/)).toBeNull();
     expect(screen.queryByText(/cuatro formatos/)).toBeNull();
     expect(screen.getByText('Partida sin ELO: ganes o pierdas, tu ELO no cambia.')).toBeTruthy();
-    expect(screen.getByText('Confirmá en 10 s o la partida se cancela.')).toBeTruthy();
+    expect(screen.getByText('Confirma en 10 s o la partida se cancela.')).toBeTruthy();
     await fireEvent.press(screen.getByRole('button', { name: '¡Listo!' }));
     expect(onReady).toHaveBeenCalledTimes(1);
     expect(allText()).not.toMatch(/arcade/i);
@@ -137,7 +137,7 @@ describe('Word Rush antes de jugar (identidad oscura, un solo modo)', () => {
       <ArcadeLobby state={state} now={100_000} onReady={jest.fn()} />,
     );
     expect(screen.getByLabelText('Empieza en 3')).toBeTruthy();
-    expect(screen.getByText('Preparate')).toBeTruthy();
+    expect(screen.getByText('Prepárate')).toBeTruthy();
     await rerender(<ArcadeLobby state={state} now={102_100} onReady={jest.fn()} />);
     expect(screen.getByLabelText('Empieza en 1')).toBeTruthy();
     await rerender(<ArcadeLobby state={state} now={103_000} onReady={jest.fn()} />);

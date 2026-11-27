@@ -30,7 +30,7 @@ export const unit04: UnitDef = {
   description: 'Presentar a tu familia y hablar de otras personas.',
   emoji: '👨‍👩‍👧',
   objective:
-    'Podés presentar a tu familia, decir de quién es algo con his, her, our y their, y cuántos familiares tenés.',
+    'Puedes presentar a tu familia, decir de quién es algo con his, her, our y their, y cuántos familiares tienes.',
   grammar: {
     title: 'His / her y have / has',
     explanation:
@@ -245,8 +245,8 @@ export const unit04: UnitDef = {
         ],
       },
       takeaways: [
-        'Nombrás a tu madre, tu padre y tus padres.',
-        'Sabés que parents son tus padres.',
+        'Nombras a tu madre, tu padre y tus padres.',
+        'Sabes que parents son tus padres.',
       ],
       exercises: [
         ex.imageChoice('👨‍👩‍👧‍👦', 'family', ['friend', 'student', 'name'], ['en-family']),
@@ -284,7 +284,7 @@ export const unit04: UnitDef = {
           { target: 'My grandmother is happy.', base: 'Mi abuela está feliz.' },
         ],
       },
-      takeaways: ['Nombrás a tus hermanos y abuelos.', 'Decís cómo está un familiar con is.'],
+      takeaways: ['Nombras a tus hermanos y abuelos.', 'Dices cómo está un familiar con is.'],
       exercises: [
         ex.imageChoice(
           '👵',
@@ -338,8 +338,8 @@ export const unit04: UnitDef = {
         ],
       },
       takeaways: [
-        'Nombrás a las personas: man, woman, boy, girl.',
-        'Preguntás quién es alguien con Who is…?',
+        'Nombras a las personas: man, woman, boy, girl.',
+        'Preguntas quién es alguien con Who is…?',
       ],
       exercises: [
         ex.imageChoice('👩', 'woman', ['man', 'girl', 'boy'], ['en-woman']),
@@ -400,7 +400,7 @@ export const unit04: UnitDef = {
           { target: 'Our mother is a teacher.', base: 'Nuestra madre es profesora.' },
         ],
       },
-      takeaways: ['Elegís his o her según quién es el dueño.', 'Usás our y their.'],
+      takeaways: ['Eliges his o her según quién es el dueño.', 'Usas our y their.'],
       exercises: [
         ex.translationChoice(
           'his',
@@ -489,7 +489,7 @@ export const unit04: UnitDef = {
           { target: 'She has a brother.', base: 'Ella tiene un hermano.' },
         ],
       },
-      takeaways: ['Usás have y has según la persona.', 'Decís cuántos familiares tenés.'],
+      takeaways: ['Usas have y has según la persona.', 'Dices cuántos familiares tienes.'],
       exercises: [
         ex.fillBlank(
           'I ___ a brother.',
@@ -535,7 +535,7 @@ export const unit04: UnitDef = {
         ]),
         ex.shortAnswer(
           'Do you have a brother? (Sí, tengo uno.)',
-          '¿Tenés un hermano?',
+          '¿Tienes un hermano?',
           'Yes, I have one brother.',
           ['Yes, I have a brother.', 'Yes, I have one.', 'Yes.'],
           ['en-have', 'en-brother', 'en-yes'],

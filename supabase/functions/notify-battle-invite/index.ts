@@ -40,6 +40,8 @@ interface Claim {
   code?: string;
   expires_at?: number;
   language_code?: string | null;
+  /** Desde 20270103120000_interface_languages_pt_it; sin la migración no viene. */
+  interface_language?: string | null;
   h2h?: { host_wins: number; invitee_wins: number } | null;
 }
 
@@ -80,7 +82,12 @@ Deno.serve(async (req: Request) => {
   const ttl = Math.max(30, Math.floor(((claim.expires_at ?? Date.now()) - Date.now()) / 1000));
   // Texto llamativo con el historial entre los dos (message.ts); sin historial, A/B al azar.
   const msg = challengeMessage(
-    { host: claim.host_username ?? '', languageCode: claim.language_code, h2h: claim.h2h },
+    {
+      host: claim.host_username ?? '',
+      languageCode: claim.language_code,
+      h2h: claim.h2h,
+      interfaceLanguage: claim.interface_language,
+    },
     Math.random() < 0.5 ? 0 : 1,
   );
   const messages = claim.tokens.map((to) => ({

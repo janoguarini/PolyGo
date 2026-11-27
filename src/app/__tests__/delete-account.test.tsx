@@ -48,7 +48,7 @@ it('explica qué se borra y que no se puede deshacer', async () => {
 
 it('sólo se habilita al escribir el usuario exacto y borra una vez', async () => {
   await render(<DeleteAccountScreen />, { wrapper });
-  const input = screen.getByLabelText(/escribí tu usuario: ana_92/);
+  const input = screen.getByLabelText(/escribe tu usuario: ana_92/);
 
   expect(deleteButton()).toBeDisabled();
   await fireEvent.press(deleteButton());

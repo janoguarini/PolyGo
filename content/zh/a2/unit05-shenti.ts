@@ -43,11 +43,11 @@ export const ZH_A2_U05: ZhUnitDef = {
     description: 'Decir qué te duele, contar que te enfermaste, ir al médico y dar consejos.',
     emoji: '🩺',
     objective:
-      'Podés decir qué te duele y cómo te sentís, avisar que estás enfermo, entender al médico y dar consejos con 应该 y 别.',
+      'Puedes decir qué te duele y cómo te sientes, avisar que estás enfermo, entender al médico y dar consejos con 应该 y 别.',
     grammar: {
       title: 'Parte del cuerpo + 疼 · 应该 · 别 · 多 + verbo',
       explanation:
-        'Lo que duele va antes de 疼: 我头疼. 感冒了 / 生病了 cuentan un cambio (me resfrié, me enfermé). 应该 + verbo es un consejo (deberías); 别 + verbo pide que no se haga algo; 多 + verbo es «hacé más…»: 多喝水.',
+        'Lo que duele va antes de 疼: 我头疼. 感冒了 / 生病了 cuentan un cambio (me resfrié, me enfermé). 应该 + verbo es un consejo (deberías); 别 + verbo pide que no se haga algo; 多 + verbo es «haz más…»: 多喝水.',
       examples: [
         { target: '我头疼，嗓子也疼。', base: 'Me duele la cabeza y también la garganta.' },
         { target: '你应该多休息。', base: 'Deberías descansar más.' },
@@ -148,7 +148,7 @@ export const ZH_A2_U05: ZhUnitDef = {
         'shēntǐ',
         'cuerpo (la salud)',
         '你身体好吗？',
-        '¿Cómo andás de salud?',
+        '¿Cómo andas de salud?',
         ['body', 'health'],
         {
           acceptedTranslations: ['cuerpo', 'salud'],
@@ -216,7 +216,7 @@ export const ZH_A2_U05: ZhUnitDef = {
             { target: '我肚子有点儿疼。', base: 'Me duele un poco la panza.' },
           ],
         },
-        takeaways: ['Nombrás la cabeza, la panza y la garganta.', 'Decís qué te duele con 疼.'],
+        takeaways: ['Nombras la cabeza, la panza y la garganta.', 'Dices qué te duele con 疼.'],
         exercises: [
           ex.translationChoice('头', 'cabeza', ['panza', 'garganta', 'ojos'], ['zh-tou'], {
             id: 'zh.ex.xpsuf80el869sl',
@@ -266,7 +266,7 @@ export const ZH_A2_U05: ZhUnitDef = {
           ),
           reply(
             '你哪儿疼？',
-            '¿Qué te duele? (Respondé que la cabeza.)',
+            '¿Qué te duele? (Responde que la cabeza.)',
             'wǒ tóu téng',
             '我头疼',
             ['zh-tou', 'zh-teng'],
@@ -285,16 +285,16 @@ export const ZH_A2_U05: ZhUnitDef = {
       // ------------------------------------------------------------------------------------ L2
       {
         title: '我感冒了',
-        objective: 'Contar que te enfermaste y cómo te sentís.',
+        objective: 'Contar que te enfermaste y cómo te sientes.',
         intro: {
           explanation:
-            '感冒 es el resfrío y 发烧, tener fiebre. Con 了 se cuenta el cambio: 我感冒了 (me resfrié), 我生病了 (me enfermé). 不舒服 es «sentirse mal».',
+            '感冒 es el resfriado y 发烧, tener fiebre. Con 了 se cuenta el cambio: 我感冒了 (me resfrié), 我生病了 (me enfermé). 不舒服 es «sentirse mal».',
           examples: [
             { target: '我感冒了。', base: 'Me resfrié.' },
             { target: '我今天不舒服。', base: 'Hoy me siento mal.' },
           ],
         },
-        takeaways: ['Contás que te enfermaste con 了.', 'Decís que te sentís mal con 不舒服.'],
+        takeaways: ['Cuentas que te enfermaste con 了.', 'Dices que te sientes mal con 不舒服.'],
         exercises: [
           ex.translationChoice(
             '感冒',
@@ -357,7 +357,7 @@ export const ZH_A2_U05: ZhUnitDef = {
           ),
           reply(
             '你今天怎么不来学校？',
-            '¿Cómo es que hoy no venís a la escuela? (Respondé que te resfriaste.)',
+            '¿Cómo es que hoy no vienes a la escuela? (Responde que te resfriaste.)',
             'wǒ gǎnmào le',
             '我感冒了',
             ['zh-ganmao'],
@@ -385,7 +385,7 @@ export const ZH_A2_U05: ZhUnitDef = {
             { target: '你吃药了吗？', base: '¿Tomaste el remedio?' },
           ],
         },
-        takeaways: ['Decís que vas al médico con 看病.', 'Decís «tomar un remedio» con 吃药.'],
+        takeaways: ['Dices que vas al médico con 看病.', 'Dices «tomar un remedio» con 吃药.'],
         exercises: [
           ex.translationChoice('药', 'remedio', ['comida', 'agua', 'té'], ['zh-yao-remedio'], {
             id: 'zh.ex.nxixbikipgdcj2',
@@ -418,7 +418,7 @@ export const ZH_A2_U05: ZhUnitDef = {
           ),
           ex.fillBlank(
             '你___好吗？',
-            '¿Cómo andás de salud?',
+            '¿Cómo andas de salud?',
             '身体',
             ['肚子', '药', '嗓子'],
             ['zh-shenti'],
@@ -435,7 +435,7 @@ export const ZH_A2_U05: ZhUnitDef = {
           }),
           reply(
             '你身体怎么样？',
-            '¿Cómo andás de salud? (Respondé que muy bien.)',
+            '¿Cómo andas de salud? (Responde que muy bien.)',
             'hěn hǎo',
             '很好',
             ['zh-shenti'],
@@ -464,13 +464,13 @@ export const ZH_A2_U05: ZhUnitDef = {
         objective: 'Dar consejos y pedir que no hagan algo.',
         intro: {
           explanation:
-            '应该 + verbo es un consejo, «deberías»: 你应该多休息. 别 + verbo pide que alguien no haga algo: 别去！ 多 + verbo es «hacé más…»: 多喝水 (tomá mucha agua).',
+            '应该 + verbo es un consejo, «deberías»: 你应该多休息. 别 + verbo pide que alguien no haga algo: 别去！ 多 + verbo es «haz más…»: 多喝水 (toma mucha agua).',
           examples: [
             { target: '你应该多喝水。', base: 'Deberías tomar mucha agua.' },
             { target: '别吃辣的！', base: '¡No comas picante!' },
           ],
         },
-        takeaways: ['Aconsejás con 应该 y 多 + verbo.', 'Pedís que no hagan algo con 别.'],
+        takeaways: ['Aconsejas con 应该 y 多 + verbo.', 'Pides que no hagan algo con 别.'],
         exercises: [
           ex.translationChoice(
             '应该',
@@ -496,7 +496,7 @@ export const ZH_A2_U05: ZhUnitDef = {
           ),
           ex.fillBlank(
             '你发烧了，___去学校了。',
-            'Tenés fiebre: no vayas a la escuela.',
+            'Tienes fiebre: no vayas a la escuela.',
             '别',
             ['没', '不是', '还没'],
             ['zh-bie'],
@@ -538,7 +538,7 @@ export const ZH_A2_U05: ZhUnitDef = {
           ),
           reply(
             '我感冒了。',
-            'Estoy resfriado. (Aconsejale que descanse más.)',
+            'Estoy resfriado. (Aconséjale que descanse más.)',
             'nǐ yīnggāi duō xiūxi',
             '你应该多休息',
             ['zh-yinggai'],
@@ -575,7 +575,7 @@ export const ZH_A2_U05: ZhUnitDef = {
             { target: '他身体很健康。', base: 'Él es muy sano.' },
           ],
         },
-        takeaways: ['Hablás de hábitos sanos.', 'Entendés un aviso de enfermedad y consejos.'],
+        takeaways: ['Hablas de hábitos sanos.', 'Entiendes un aviso de enfermedad y consejos.'],
         exercises: [
           ex.translationChoice(
             '运动',
@@ -641,7 +641,7 @@ export const ZH_A2_U05: ZhUnitDef = {
           ),
           reply(
             '你每天运动吗？',
-            '¿Hacés ejercicio todos los días? (Respondé que sí, media hora.)',
+            '¿Haces ejercicio todos los días? (Responde que sí, media hora.)',
             'wǒ měitiān yùndòng bàn ge xiǎoshí',
             '我每天运动半个小时',
             ['zh-yundong'],

@@ -25,13 +25,13 @@ export const unit06: UnitDef = {
   description: 'Las partes de la casa, los muebles, decir qué hay y dónde está cada cosa.',
   emoji: '🏠',
   objective:
-    'Podés describir tu casa con tem / há y decir dónde está algo con no / na, em cima de y embaixo de.',
+    'Puedes describir tu casa con tem / há y decir dónde está algo con no / na, em cima de y embaixo de.',
   grammar: {
     title: 'Tem / há y em + artículo',
     explanation:
       'Para decir «hay», en Brasil se usa casi siempre tem; há es más formal. Em («en») se junta con el artículo: em + o = no, em + a = na. Para ubicar algo: está + no / na / em cima de / embaixo de.',
     examples: [
-      { target: 'Na sala tem um sofá.', base: 'En el living hay un sillón.' },
+      { target: 'Na sala tem um sofá.', base: 'En la sala hay un sillón.' },
       { target: 'O livro está no quarto.', base: 'El libro está en el dormitorio.' },
       { target: 'A chave está em cima da mesa.', base: 'La llave está encima de la mesa.' },
     ],
@@ -56,17 +56,9 @@ export const unit06: UnitDef = {
     w('pt-banheiro', 'banheiro', 'baño', 'O banheiro é ali.', 'El baño es ahí.', ['home'], {
       emoji: '🛁',
     }),
-    w(
-      'pt-sala',
-      'sala',
-      'living',
-      'Na sala tem um sofá.',
-      'En el living hay un sillón.',
-      ['home'],
-      {
-        acceptedTranslations: ['sala', 'sala de estar'],
-      },
-    ),
+    w('pt-sala', 'sala', 'sala', 'Na sala tem um sofá.', 'En la sala hay un sillón.', ['home'], {
+      acceptedTranslations: ['sala', 'sala de estar', 'living'],
+    }),
     w('pt-mesa', 'mesa', 'mesa', 'Tem uma mesa na cozinha.', 'Hay una mesa en la cocina.', [
       'home',
     ]),
@@ -84,17 +76,9 @@ export const unit06: UnitDef = {
         emoji: '🛏️',
       },
     ),
-    w(
-      'pt-sofa',
-      'sofá',
-      'sillón',
-      'Na sala tem um sofá.',
-      'En el living hay un sillón.',
-      ['home'],
-      {
-        emoji: '🛋️',
-      },
-    ),
+    w('pt-sofa', 'sofá', 'sillón', 'Na sala tem um sofá.', 'En la sala hay un sillón.', ['home'], {
+      emoji: '🛋️',
+    }),
     w('pt-janela', 'janela', 'ventana', 'A janela é branca.', 'La ventana es blanca.', ['home']),
     w('pt-porta', 'porta', 'puerta', 'A porta é azul.', 'La puerta es azul.', ['home'], {
       emoji: '🚪',
@@ -144,15 +128,15 @@ export const unit06: UnitDef = {
       objective: 'Nombrar las partes de la casa.',
       intro: {
         explanation:
-          'Las partes de la casa. Quarto es el dormitorio (el número cuatro es quatro) y banheiro, el baño. Sala es el living.',
+          'Las partes de la casa. Quarto es el dormitorio (el número cuatro es quatro) y banheiro, el baño. Sala es la sala.',
         examples: [
           { target: 'A cozinha é grande.', base: 'La cocina es grande.' },
           { target: 'Meu quarto é pequeno.', base: 'Mi dormitorio es chico.' },
         ],
       },
-      takeaways: ['Nombrás las partes de la casa.', 'Sabés que quarto es el dormitorio.'],
+      takeaways: ['Nombras las partes de la casa.', 'Sabes que quarto es el dormitorio.'],
       exercises: [
-        ex.translationChoice('cozinha', 'cocina', ['baño', 'dormitorio', 'living'], ['pt-cozinha']),
+        ex.translationChoice('cozinha', 'cocina', ['baño', 'dormitorio', 'sala'], ['pt-cozinha']),
         ex.translationChoice('quarto', 'dormitorio', ['cuatro', 'cocina', 'baño'], ['pt-quarto'], {
           explanation: 'Quarto es el dormitorio. El número cuatro es quatro.',
         }),
@@ -163,7 +147,7 @@ export const unit06: UnitDef = {
             ['quarto', 'dormitorio'],
             ['cozinha', 'cocina'],
             ['banheiro', 'baño'],
-            ['sala', 'living'],
+            ['sala', 'sala'],
           ],
           ['pt-quarto', 'pt-cozinha', 'pt-banheiro', 'pt-sala'],
         ),
@@ -192,7 +176,7 @@ export const unit06: UnitDef = {
           { target: 'A janela é branca.', base: 'La ventana es blanca.' },
         ],
       },
-      takeaways: ['Nombrás seis muebles y partes de la casa.', 'Sabés que cadeira es la silla.'],
+      takeaways: ['Nombras seis muebles y partes de la casa.', 'Sabes que cadeira es la silla.'],
       exercises: [
         ex.imageChoice('🪑', 'cadeira', ['mesa', 'cama', 'sofá'], ['pt-cadeira']),
         ex.imageChoice('🛋️', 'sofá', ['cama', 'cadeira', 'porta'], ['pt-sofa']),
@@ -225,13 +209,13 @@ export const unit06: UnitDef = {
         explanation:
           'Para decir «hay», en Brasil se usa casi siempre tem: tem um sofá na sala. Há significa lo mismo, pero es más formal o escrito. Ninguno cambia en plural: tem duas cadeiras (con femeninas, «dos» es duas).',
         examples: [
-          { target: 'Na sala tem um sofá.', base: 'En el living hay un sillón.' },
+          { target: 'Na sala tem um sofá.', base: 'En la sala hay un sillón.' },
           { target: 'Há três quartos.', base: 'Hay tres dormitorios.' },
         ],
       },
-      takeaways: ['Decís qué hay con tem.', 'Reconocés há en textos más formales.'],
+      takeaways: ['Dices qué hay con tem.', 'Reconoces há en textos más formales.'],
       exercises: [
-        ex.translationChoice('há', 'hay', ['tengo', 'es / sos', 'dónde'], ['pt-ha']),
+        ex.translationChoice('há', 'hay', ['tengo', 'es / eres', 'dónde'], ['pt-ha']),
         ex.fillBlank(
           'Na cozinha ___ uma mesa.',
           'En la cocina hay una mesa.',
@@ -291,7 +275,7 @@ export const unit06: UnitDef = {
           { target: 'O livro está no quarto.', base: 'El libro está en el dormitorio.' },
         ],
       },
-      takeaways: ['Decís dónde está algo con está + no / na.', 'Juntás em + o = no y em + a = na.'],
+      takeaways: ['Dices dónde está algo con está + no / na.', 'Juntas em + o = no y em + a = na.'],
       exercises: [
         ex.translationChoice(
           'na cozinha',
@@ -309,7 +293,7 @@ export const unit06: UnitDef = {
         ),
         ex.fillBlank(
           'A chave está ___ sala.',
-          'La llave está en el living.',
+          'La llave está en la sala.',
           'na',
           ['no', 'em', 'da'],
           ['pt-esta', 'pt-sala', 'pt-chave'],
@@ -362,8 +346,8 @@ export const unit06: UnitDef = {
         ],
       },
       takeaways: [
-        'Preguntás dónde está algo con onde está…?',
-        'Ubicás cosas con em cima de y embaixo de.',
+        'Preguntas dónde está algo con onde está…?',
+        'Ubicas cosas con em cima de y embaixo de.',
       ],
       exercises: [
         ex.translationChoice('onde', 'dónde', ['qué', 'de quién', 'cómo'], ['pt-onde']),
@@ -401,7 +385,7 @@ export const unit06: UnitDef = {
         ]),
         ex.shortAnswer(
           'Onde está a chave? 🔑',
-          '¿Dónde está la llave? (Respondé que está encima de la mesa.)',
+          '¿Dónde está la llave? (Responde que está encima de la mesa.)',
           'Está em cima da mesa.',
           ['A chave está em cima da mesa.', 'Em cima da mesa.'],
           ['pt-onde', 'pt-em-cima', 'pt-mesa'],

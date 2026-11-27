@@ -32,7 +32,7 @@ const MAGASIN = dialogue(
 const ANNONCE = reading(
   'fr.stim.a1-u12-annonce',
   'ad',
-  'Un cartel en la vidriera de una tienda.',
+  'Un cartel en la vitrina de una tienda.',
   [
     'Livres, stylos et sacs: pas chers!',
     'Le livre: quinze euros.',
@@ -54,13 +54,13 @@ export const FR_A1_U12: FrUnitDef = {
       "Tres maneras de preguntar (entonación, est-ce que, inversión); qui, qu'est-ce que, comment, pourquoi / parce que, combien, quel / quelle; números hasta 100 y precios en euros. Falso amigo: le magasin.",
     emoji: '🛍️',
     objective:
-      'Podés hacer preguntas de distintas maneras, preguntar y entender precios hasta 100 euros y pedir lo que buscás en una tienda.',
+      'Puedes hacer preguntas de distintas maneras, preguntar y entender precios hasta 100 euros y pedir lo que buscas en una tienda.',
     grammar: {
       title: 'Tres maneras de preguntar · quel / quelle · los números',
       explanation:
         "Una pregunta de sí o no se hace de tres maneras: con la entonación (tu parles français?, lo más común al hablar), con est-ce que delante (est-ce que tu parles français?, neutro) o con inversión del verbo y el pronombre unidos por un guion (parles-tu français?, más formal y escrito). Para pedir información: qui (quién), qu'est-ce que (qué), comment (cómo), pourquoi (por qué, y se responde parce que), combien (cuánto; combien de + sustantivo, sin artículo). Quel concuerda con el sustantivo: quel sac, quelle couleur, y suenan igual. Los números siguen una lógica propia: 70 es soixante-dix (60 + 10), 80 es quatre-vingts (4 × 20) y 90, quatre-vingt-dix.",
       examples: [
-        { target: 'Est-ce que tu parles français?', base: '¿Hablás francés?' },
+        { target: 'Est-ce que tu parles français?', base: '¿Hablas francés?' },
         {
           target: "Pourquoi tu aimes Paris? — Parce que c'est une grande ville.",
           base: '¿Por qué te gusta París? — Porque es una ciudad grande.',
@@ -90,7 +90,7 @@ export const FR_A1_U12: FrUnitDef = {
         "qu'est-ce que",
         'qué (para preguntar)',
         "Qu'est-ce que tu cherches?",
-        '¿Qué buscás?',
+        '¿Qué buscas?',
         ['questions'],
         {
           acceptedTexts: ["qu'est-ce que"],
@@ -101,7 +101,7 @@ export const FR_A1_U12: FrUnitDef = {
         'pourquoi',
         'por qué',
         'Pourquoi tu habites à Lyon?',
-        '¿Por qué vivís en Lyon?',
+        '¿Por qué vives en Lyon?',
         ['questions'],
       ),
       w(
@@ -117,7 +117,7 @@ export const FR_A1_U12: FrUnitDef = {
         'comment',
         'cómo',
         'Comment est ton appartement?',
-        '¿Cómo es tu departamento?',
+        '¿Cómo es tu apartamento?',
         ['questions'],
       ),
       w(
@@ -125,7 +125,7 @@ export const FR_A1_U12: FrUnitDef = {
         'combien',
         'cuánto',
         'Tu as combien de livres?',
-        '¿Cuántos libros tenés?',
+        '¿Cuántos libros tienes?',
         ['questions', 'shopping'],
         {
           acceptedTranslations: ['cuántos', 'cuánta', 'cuántas'],
@@ -136,7 +136,7 @@ export const FR_A1_U12: FrUnitDef = {
         "c'est combien?",
         '¿cuánto cuesta?',
         "Le croissant, c'est combien?",
-        '¿Cuánto cuesta la medialuna?',
+        '¿Cuánto cuesta el cruasán?',
         ['shopping', 'questions'],
         {
           acceptedTranslations: ['¿cuánto es?', '¿cuánto sale?'],
@@ -148,7 +148,7 @@ export const FR_A1_U12: FrUnitDef = {
         'quel',
         'cuál (+ sustantivo)',
         'Quel sac tu préfères?',
-        '¿Qué bolso preferís?',
+        '¿Qué bolso prefieres?',
         ['questions'],
         {
           acceptedTranslations: ['qué + sustantivo', 'cuáles'],
@@ -257,14 +257,14 @@ export const FR_A1_U12: FrUnitDef = {
           explanation:
             "Una pregunta de sí o no se hace de tres maneras: con la entonación (tu parles français?, lo más común al hablar), con est-ce que (est-ce que tu parles français?) o con inversión (parles-tu français?, más formal). Para pedir información: qui es quién, qu'est-ce que es qué y comment es cómo. En qui y en qu'est-ce que, qu suena como una k.",
           examples: [
-            { target: 'Est-ce que tu parles français?', base: '¿Hablás francés?' },
-            { target: 'Parles-tu français?', base: '¿Hablás francés? (formal)' },
+            { target: 'Est-ce que tu parles français?', base: '¿Hablas francés?' },
+            { target: 'Parles-tu français?', base: '¿Hablas francés? (formal)' },
             { target: "Qui est-ce? — C'est ma sœur.", base: '¿Quién es? — Es mi hermana.' },
           ],
         },
         takeaways: [
-          'Preguntás sí o no con la entonación, con est-ce que o con inversión.',
-          "Preguntás quién, qué y cómo con qui, qu'est-ce que y comment.",
+          'Preguntas sí o no con la entonación, con est-ce que o con inversión.',
+          "Preguntas quién, qué y cómo con qui, qu'est-ce que y comment.",
         ],
         exercises: [
           ex.translationChoice(
@@ -293,7 +293,7 @@ export const FR_A1_U12: FrUnitDef = {
           ),
           ex.fillBlank(
             '___ tu manges? — Je mange un croissant.',
-            '¿Qué comés? — Como una medialuna.',
+            '¿Qué comes? — Como un cruasán.',
             "Qu'est-ce que",
             ['Qui', 'Comment', 'Quand'],
             ['fr-qu-est-ce-que'],
@@ -325,7 +325,7 @@ export const FR_A1_U12: FrUnitDef = {
           ),
           ex.fillBlank(
             '___ tu parles français?',
-            '¿Hablás francés?',
+            '¿Hablas francés?',
             'Est-ce que',
             ["Qu'est-ce que", 'Qui', 'Comment'],
             ['fr-qu-est-ce-que'],
@@ -337,7 +337,7 @@ export const FR_A1_U12: FrUnitDef = {
           ),
           ex.orderWords(
             'Comment est ton appartement?',
-            '¿Cómo es tu departamento?',
+            '¿Cómo es tu apartamento?',
             ['fr-comment'],
             {
               id: 'fr.ex.dwze4a8yep9vvy',
@@ -349,7 +349,7 @@ export const FR_A1_U12: FrUnitDef = {
           }),
           ex.shortAnswer(
             "Qu'est-ce que tu manges le matin?",
-            '¿Qué comés a la mañana? (Respondé que comés pan.)',
+            '¿Qué comes por la mañana? (Responde que comes pan.)',
             'Je mange du pain.',
             ['Le matin, je mange du pain.', 'Je mange du pain le matin.'],
             ['fr-qu-est-ce-que'],
@@ -370,12 +370,12 @@ export const FR_A1_U12: FrUnitDef = {
               target: "Pourquoi tu aimes Lyon? — Parce que c'est une grande ville.",
               base: '¿Por qué te gusta Lyon? — Porque es una ciudad grande.',
             },
-            { target: 'Quelle couleur tu préfères?', base: '¿Qué color preferís?' },
+            { target: 'Quelle couleur tu préfères?', base: '¿Qué color prefieres?' },
           ],
         },
         takeaways: [
-          'Preguntás pourquoi? y respondés parce que…',
-          'Usás quel o quelle según el género del sustantivo.',
+          'Preguntas pourquoi? y respondes parce que…',
+          'Usas quel o quelle según el género del sustantivo.',
         ],
         exercises: [
           ex.translationChoice(
@@ -410,7 +410,7 @@ export const FR_A1_U12: FrUnitDef = {
           ),
           ex.fillBlank(
             '___ couleur tu préfères?',
-            '¿Qué color preferís?',
+            '¿Qué color prefieres?',
             'Quelle',
             ['Quel', 'Quels', 'Qui'],
             ['fr-quel'],
@@ -422,7 +422,7 @@ export const FR_A1_U12: FrUnitDef = {
           ),
           ex.fillBlank(
             '___ sac tu préfères?',
-            '¿Qué bolso preferís?',
+            '¿Qué bolso prefieres?',
             'Quel',
             ['Quelle', 'Quelles', "Qu'est-ce que"],
             ['fr-quel'],
@@ -447,7 +447,7 @@ export const FR_A1_U12: FrUnitDef = {
               id: 'fr.ex.3m6vlpxouvnwp3',
             },
           ),
-          ex.orderWords('Quel sac tu préfères?', '¿Qué bolso preferís?', ['fr-quel'], {
+          ex.orderWords('Quel sac tu préfères?', '¿Qué bolso prefieres?', ['fr-quel'], {
             id: 'fr.ex.1u58gbw9cr7o7h',
           }),
           ex.translateWrite(
@@ -464,7 +464,7 @@ export const FR_A1_U12: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Pourquoi tu aimes Paris?',
-            '¿Por qué te gusta París? (Respondé: porque es una ciudad grande.)',
+            '¿Por qué te gusta París? (Responde: porque es una ciudad grande.)',
             "Parce que c'est une grande ville.",
             [
               "J'aime Paris parce que c'est une grande ville.",
@@ -489,8 +489,8 @@ export const FR_A1_U12: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Contás de diez en diez hasta cent.',
-          'Armás soixante-dix y quatre-vingts sumando y multiplicando.',
+          'Cuentas de diez en diez hasta cent.',
+          'Armas soixante-dix y quatre-vingts sumando y multiplicando.',
         ],
         exercises: [
           ex.translationChoice('treize', 'trece', ['tres', 'treinta', 'doce'], ['fr-treize'], {
@@ -560,7 +560,7 @@ export const FR_A1_U12: FrUnitDef = {
           }),
           ex.shortAnswer(
             'Quel âge a ton grand-père?',
-            '¿Cuántos años tiene tu abuelo? (Respondé que tiene sesenta años.)',
+            '¿Cuántos años tiene tu abuelo? (Responde que tiene sesenta años.)',
             'Il a soixante ans.',
             ['Mon grand-père a soixante ans.', 'Soixante ans.'],
             ['fr-soixante'],
@@ -575,15 +575,15 @@ export const FR_A1_U12: FrUnitDef = {
         objective: 'Buscar algo en una tienda y preguntar el precio.',
         intro: {
           explanation:
-            "Al entrar a un magasin (falso amigo: es la tienda) se saluda con bonjour. Para pedir: je cherche + lo que buscás. Para el precio: c'est combien? Con euros hay liaison: deux euros y trois euros se unen con un sonido z; vingt euros y cent euros, con un sonido t. Y si es mucho: c'est cher!",
+            "Al entrar a un magasin (falso amigo: es la tienda) se saluda con bonjour. Para pedir: je cherche + lo que buscas. Para el precio: c'est combien? Con euros hay liaison: deux euros y trois euros se unen con un sonido z; vingt euros y cent euros, con un sonido t. Y si es mucho: c'est cher!",
           examples: [
-            { target: 'Bonjour! Je cherche un sac.', base: '¡Buen día! Busco un bolso.' },
+            { target: 'Bonjour! Je cherche un sac.', base: '¡Buenos días! Busco un bolso.' },
             { target: "C'est combien? — Trente euros.", base: '¿Cuánto cuesta? — Treinta euros.' },
           ],
         },
         takeaways: [
-          'Pedís lo que buscás con je cherche.',
-          "Preguntás el precio con c'est combien? y entendés la respuesta en euros.",
+          'Pides lo que buscas con je cherche.',
+          "Preguntas el precio con c'est combien? y entiendes la respuesta en euros.",
         ],
         exercises: [
           ex.translationChoice(
@@ -607,7 +607,7 @@ export const FR_A1_U12: FrUnitDef = {
           ),
           ex.fillBlank(
             'Bonjour, madame. Je ___ un sac noir.',
-            'Buen día, señora. Busco un bolso negro.',
+            'Buenos días, señora. Busco un bolso negro.',
             'cherche',
             ['cherches', 'cherchez'],
             ['fr-je-cherche'],
@@ -618,7 +618,7 @@ export const FR_A1_U12: FrUnitDef = {
           ),
           ex.fillBlank(
             "Le croissant, c'est ___?",
-            '¿Cuánto cuesta la medialuna?',
+            '¿Cuánto cuesta el cruasán?',
             'combien',
             ['comment', 'quand', 'qui'],
             ['fr-c-est-combien'],
@@ -671,7 +671,7 @@ export const FR_A1_U12: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Le livre, c'est combien?",
-            '¿Cuánto cuesta el libro? (Respondé que cuesta quince euros.)',
+            '¿Cuánto cuesta el libro? (Responde que cuesta quince euros.)',
             "C'est quinze euros.",
             ['Quinze euros.', "Le livre, c'est quinze euros."],
             ['fr-l-euro', 'fr-quinze'],
@@ -686,15 +686,15 @@ export const FR_A1_U12: FrUnitDef = {
         objective: 'Comprar, comparar precios y preguntar cuántos.',
         intro: {
           explanation:
-            "Combien sirve para el precio y para la cantidad: combien de + sustantivo, sin artículo (combien de livres?). Para comparar: c'est cher, ce n'est pas cher. Y para elegir: quel sac? quelle couleur? Recordá que en un magasin se usa vous y se saluda al entrar y al salir.",
+            "Combien sirve para el precio y para la cantidad: combien de + sustantivo, sin artículo (combien de livres?). Para comparar: c'est cher, ce n'est pas cher. Y para elegir: quel sac? quelle couleur? Recuerda que en un magasin se usa vous y se saluda al entrar y al salir.",
           examples: [
-            { target: 'Tu as combien de livres?', base: '¿Cuántos libros tenés?' },
-            { target: "Le stylo? Ce n'est pas cher.", base: '¿La birome? No es cara.' },
+            { target: 'Tu as combien de livres?', base: '¿Cuántos libros tienes?' },
+            { target: "Le stylo? Ce n'est pas cher.", base: '¿El bolígrafo? No es caro.' },
           ],
         },
         takeaways: [
-          'Preguntás cuántos con combien de + sustantivo.',
-          'Comprás en una tienda: buscás, preguntás el precio y elegís.',
+          'Preguntas cuántos con combien de + sustantivo.',
+          'Compras en una tienda: buscas, preguntas el precio y eliges.',
         ],
         exercises: [
           question(
@@ -732,7 +732,7 @@ export const FR_A1_U12: FrUnitDef = {
           ),
           ex.fillBlank(
             'Tu as ___ de frères?',
-            '¿Cuántos hermanos tenés?',
+            '¿Cuántos hermanos tienes?',
             'combien',
             ['comment', 'quel', 'qui'],
             ['fr-combien'],
@@ -755,13 +755,13 @@ export const FR_A1_U12: FrUnitDef = {
           ex.translationChoice('cher', 'caro', ['barato', 'grande', 'chico'], ['fr-cher'], {
             id: 'fr.ex.rjsnrcq8mpmdv1',
           }),
-          ex.translateWrite('¿Qué libro preferís?', 'Quel livre tu préfères?', ['fr-quel'], {
+          ex.translateWrite('¿Qué libro prefieres?', 'Quel livre tu préfères?', ['fr-quel'], {
             id: 'fr.ex.1egf8312uqjsse',
             acceptedAnswers: ['Quel livre est-ce que tu préfères?', 'Quel livre préfères-tu?'],
           }),
           ex.shortAnswer(
             "Qu'est-ce que tu cherches?",
-            '¿Qué buscás? (Respondé que buscás la panadería.)',
+            '¿Qué buscas? (Responde que buscas la panadería.)',
             'Je cherche la boulangerie.',
             ['Je cherche une boulangerie.', "Je cherche la boulangerie, s'il vous plaît."],
             ['fr-je-cherche', 'fr-qu-est-ce-que'],

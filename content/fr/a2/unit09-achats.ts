@@ -26,7 +26,7 @@ const BOUTIQUE = dialogue('fr.stim.a2-u9-boutique', 'Camille entra a una tienda 
 const PUBLICITE = reading(
   'fr.stim.a2-u9-soldes',
   'ad',
-  'Un cartel en la vidriera de una tienda de ropa.',
+  'Un cartel en la vitrina de una tienda de ropa.',
   [
     "Soldes d'hiver: du 8 janvier au 4 février!",
     'Les vestes: moins 50 %.',
@@ -64,7 +64,7 @@ export const FR_A2_U09: FrUnitDef = {
       'La ropa, el talle y el número; comparar con plus, moins, aussi… que, meilleur y le plus; el pronombre en con cantidades; pagar. Falsos amigos: la robe, les soldes.',
     emoji: '👗',
     objective:
-      'Podés comprar ropa y zapatos: pedir tu talle y tu número, probarte algo, comparar precios y calidad, decir cuántos te llevás y pagar.',
+      'Puedes comprar ropa y zapatos: pedir tu talle y tu número, probarte algo, comparar precios y calidad, decir cuántos te llevas y pagar.',
     grammar: {
       title: 'Comparar · meilleur · el pronombre en',
       explanation:
@@ -72,7 +72,7 @@ export const FR_A2_U09: FrUnitDef = {
       examples: [
         {
           target: 'La veste est plus chère que la chemise.',
-          base: 'La campera es más cara que la camisa.',
+          base: 'La chaqueta es más cara que la camisa.',
         },
         {
           target: "C'est la meilleure boulangerie de la ville.",
@@ -92,7 +92,7 @@ export const FR_A2_U09: FrUnitDef = {
         'plus… que',
         'más… que',
         'La veste est plus chère que la chemise.',
-        'La campera es más cara que la camisa.',
+        'La chaqueta es más cara que la camisa.',
         ['comparison'],
       ),
       w(
@@ -108,7 +108,7 @@ export const FR_A2_U09: FrUnitDef = {
         'aussi… que',
         'tan… como',
         "Ici, les chaussures sont aussi chères qu'à Paris.",
-        'Acá los zapatos son tan caros como en París.',
+        'Aquí los zapatos son tan caros como en París.',
         ['comparison'],
       ),
       w(
@@ -116,7 +116,7 @@ export const FR_A2_U09: FrUnitDef = {
         'meilleur',
         'mejor',
         'Ce croissant est meilleur que le croissant du supermarché.',
-        'Esta medialuna es mejor que la del supermercado.',
+        'Este cruasán es mejor que el del supermercado.',
         ['comparison'],
         { acceptedTexts: ['meilleure'] },
       ),
@@ -125,7 +125,7 @@ export const FR_A2_U09: FrUnitDef = {
         'le plus',
         'el más',
         "C'est la veste la plus chère du magasin.",
-        'Es la campera más cara de la tienda.',
+        'Es la chaqueta más cara de la tienda.',
         ['comparison'],
         { acceptedTranslations: ['la más'], acceptedTexts: ['la plus'] },
       ),
@@ -220,11 +220,11 @@ export const FR_A2_U09: FrUnitDef = {
       w(
         'fr-la-veste',
         'la veste',
-        'la campera',
+        'la chaqueta',
         'Il fait froid: prends ta veste!',
-        'Hace frío: ¡llevá la campera!',
+        'Hace frío: ¡lleva la chaqueta!',
         ['clothes', 'f'],
-        { acceptedTranslations: ['la chaqueta', 'el saco'], emoji: '🧥' },
+        { acceptedTranslations: ['el saco', 'la campera'], emoji: '🧥' },
       ),
       w(
         'fr-payer-par-carte',
@@ -252,21 +252,21 @@ export const FR_A2_U09: FrUnitDef = {
         objective: 'Nombrar la ropa y los zapatos y decir de qué color son.',
         intro: {
           explanation:
-            'La chemise es la camisa, le pantalon el pantalón, la veste la campera y les chaussures los zapatos. Ojo con dos falsos amigos: la robe es el vestido (la ropa en general es les vêtements) y les soldes son las rebajas (el sueldo es le salaire). El color va después y concuerda: une veste noire, des chaussures noires. La ch de chemise y de chaussures suena como la sh de show. En Francia hay soldes dos veces por año: en enero y en verano, entre fines de junio y julio.',
+            'La chemise es la camisa, le pantalon el pantalón, la veste la chaqueta y les chaussures los zapatos. Ojo con dos falsos amigos: la robe es el vestido (la ropa en general es les vêtements) y les soldes son las rebajas (el sueldo es le salaire). El color va después y concuerda: une veste noire, des chaussures noires. La ch de chemise y de chaussures suena como la sh de show. En Francia hay soldes dos veces por año: en enero y en verano, entre fines de junio y julio.',
           examples: [
             { target: 'Je cherche une robe rouge.', base: 'Busco un vestido rojo.' },
             { target: 'Les soldes commencent en janvier.', base: 'Las rebajas empiezan en enero.' },
           ],
         },
         takeaways: [
-          'Nombrás la ropa: la chemise, le pantalon, la robe, la veste, les chaussures.',
-          'Sabés que la robe es el vestido y les soldes, las rebajas.',
+          'Nombras la ropa: la chemise, le pantalon, la robe, la veste, les chaussures.',
+          'Sabes que la robe es el vestido y les soldes, las rebajas.',
         ],
         exercises: [
           ex.translationChoice(
             'la robe',
             'el vestido',
-            ['la ropa', 'la camisa', 'la campera'],
+            ['la ropa', 'la camisa', 'la chaqueta'],
             ['fr-la-robe'],
             {
               id: 'fr.ex.dpz62u473xqb5x',
@@ -278,7 +278,7 @@ export const FR_A2_U09: FrUnitDef = {
             [
               ['la chemise', 'la camisa'],
               ['le pantalon', 'el pantalón'],
-              ['la veste', 'la campera'],
+              ['la veste', 'la chaqueta'],
               ['les chaussures', 'los zapatos'],
             ],
             ['fr-la-chemise', 'fr-le-pantalon', 'fr-la-veste', 'fr-les-chaussures'],
@@ -303,7 +303,7 @@ export const FR_A2_U09: FrUnitDef = {
           ),
           ex.fillBlank(
             'Ma veste est ___.',
-            'Mi campera es negra.',
+            'Mi chaqueta es negra.',
             'noire',
             ['noir', 'noirs', 'noires'],
             ['fr-la-veste'],
@@ -353,15 +353,15 @@ export const FR_A2_U09: FrUnitDef = {
         objective: 'Pedir tu talle o tu número y probarte ropa.',
         intro: {
           explanation:
-            "Para probarte algo: je peux essayer…? (después de je peux va el infinitivo). La taille es el talle de la ropa y la pointure, el número de los zapatos; las dos se preguntan con vous faites quelle…? y se responden con je fais du + número: je fais du 38. Te probás la ropa en la cabine d'essayage. Pronunciación: una s sola entre vocales suena como z (chemise), pero la ss de essayer suena s.",
+            "Para probarte algo: je peux essayer…? (después de je peux va el infinitivo). La taille es el talle de la ropa y la pointure, el número de los zapatos; las dos se preguntan con vous faites quelle…? y se responden con je fais du + número: je fais du 38. Te pruebas la ropa en la cabine d'essayage. Pronunciación: una s sola entre vocales suena como z (chemise), pero la ss de essayer suena s.",
           examples: [
             { target: 'Je peux essayer cette robe?', base: '¿Puedo probarme este vestido?' },
             { target: 'Vous faites quelle pointure?', base: '¿Qué número calza?' },
           ],
         },
         takeaways: [
-          'Pedís probarte algo con je peux essayer…?',
-          'Decís tu talle y tu número con je fais du…',
+          'Pides probarte algo con je peux essayer…?',
+          'Dices tu talle y tu número con je fais du…',
         ],
         exercises: [
           ex.translationChoice(
@@ -445,7 +445,7 @@ export const FR_A2_U09: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Vous faites quelle pointure?',
-            '¿Qué número calza? (Respondé que calzás 39.)',
+            '¿Qué número calza? (Responde que calzas 39.)',
             'Je fais du 39.',
             ['Je fais du trente-neuf.', 'Du 39.', 'Du trente-neuf.'],
             ['fr-la-pointure'],
@@ -464,7 +464,7 @@ export const FR_A2_U09: FrUnitDef = {
           examples: [
             {
               target: 'La veste est plus chère que la chemise.',
-              base: 'La campera es más cara que la camisa.',
+              base: 'La chaqueta es más cara que la camisa.',
             },
             {
               target: 'Le vélo est moins cher que la voiture.',
@@ -473,8 +473,8 @@ export const FR_A2_U09: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Comparás con plus, moins y aussi + adjetivo + que.',
-          'Decís que algo es barato con bon marché, que no cambia.',
+          'Comparas con plus, moins y aussi + adjetivo + que.',
+          'Dices que algo es barato con bon marché, que no cambia.',
         ],
         exercises: [
           ex.translationChoice(
@@ -496,7 +496,7 @@ export const FR_A2_U09: FrUnitDef = {
           ),
           ex.fillBlank(
             'La veste est ___ chère que la chemise.',
-            'La campera es más cara que la camisa.',
+            'La chaqueta es más cara que la camisa.',
             'plus',
             ['moins', 'aussi', 'très'],
             ['fr-plus-que'],
@@ -521,7 +521,7 @@ export const FR_A2_U09: FrUnitDef = {
           ),
           ex.fillBlank(
             "Ici, les chaussures sont aussi ___ qu'à Paris.",
-            'Acá los zapatos son tan caros como en París.',
+            'Aquí los zapatos son tan caros como en París.',
             'chères',
             ['cher', 'chère', 'chers'],
             ['fr-aussi-que', 'fr-les-chaussures'],
@@ -548,7 +548,7 @@ export const FR_A2_U09: FrUnitDef = {
             { id: 'fr.ex.vsaumm1srjjt90' },
           ),
           ex.translateWrite(
-            'Los zapatos son más caros que la campera.',
+            'Los zapatos son más caros que la chaqueta.',
             'Les chaussures sont plus chères que la veste.',
             ['fr-plus-que', 'fr-les-chaussures'],
             { id: 'fr.ex.0dbbx8s8x2qwtk' },
@@ -579,18 +579,18 @@ export const FR_A2_U09: FrUnitDef = {
             },
             {
               target: "C'est la veste la plus chère du magasin.",
-              base: 'Es la campera más cara de la tienda.',
+              base: 'Es la chaqueta más cara de la tienda.',
             },
           ],
         },
         takeaways: [
-          'Usás meilleur o meilleure, nunca «plus bon».',
-          'Armás el superlativo con le plus o la plus.',
+          'Usas meilleur o meilleure, nunca «plus bon».',
+          'Armas el superlativo con le plus o la plus.',
         ],
         exercises: [
           ex.fillBlank(
             'Ce croissant est ___ que le croissant du supermarché.',
-            'Esta medialuna es mejor que la del supermercado.',
+            'Este cruasán es mejor que el del supermercado.',
             'meilleur',
             ['plus bon', 'meilleure', 'plus bien'],
             ['fr-meilleur'],
@@ -636,7 +636,7 @@ export const FR_A2_U09: FrUnitDef = {
             BOUTIQUE,
             '¿Qué busca Camille?',
             'Un vestido para una fiesta.',
-            ['Una campera para el invierno.', 'Zapatos para una fiesta.', 'Una camisa roja.'],
+            ['Una chaqueta para el invierno.', 'Zapatos para una fiesta.', 'Una camisa roja.'],
             ['fr-la-robe'],
             'Camille dice «Je cherche une robe pour une fête».',
           ),
@@ -688,16 +688,16 @@ export const FR_A2_U09: FrUnitDef = {
       // ------------------------------------------------------------------------------------ L5
       {
         title: 'En la caja',
-        objective: 'Decir cuántos te llevás con en y pagar.',
+        objective: 'Decir cuántos te llevas con en y pagar.',
         intro: {
           explanation:
-            "Para no repetir el sustantivo con una cantidad, el francés usa en delante del verbo: des chemises? J'en prends deux (me llevo dos). En con je se apostrofa: j'en. Para pagar: payer par carte (con tarjeta: en francés par, no «avec») o en espèces (en efectivo). Escuchá bien: j'en prends tiene la vocal nasal de en, como en vent; je prends no la tiene.",
+            "Para no repetir el sustantivo con una cantidad, el francés usa en delante del verbo: des chemises? J'en prends deux (me llevo dos). En con je se apostrofa: j'en. Para pagar: payer par carte (con tarjeta: en francés par, no «avec») o en espèces (en efectivo). Escucha bien: j'en prends tiene la vocal nasal de en, como en vent; je prends no la tiene.",
           examples: [
             { target: "Des chemises? J'en prends deux.", base: '¿Camisas? Me llevo dos.' },
             { target: 'Je peux payer par carte?', base: '¿Puedo pagar con tarjeta?' },
           ],
         },
-        takeaways: ["Decís cuántos te llevás con j'en prends…", 'Pagás par carte o en espèces.'],
+        takeaways: ["Dices cuántos te llevas con j'en prends…", 'Pagas par carte o en espèces.'],
         exercises: [
           ex.translationChoice(
             "j'en prends deux",
@@ -773,7 +773,7 @@ export const FR_A2_U09: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Des chemises? Vous en voulez combien?',
-            '¿Camisas? ¿Cuántas quiere? (Respondé que te llevás dos.)',
+            '¿Camisas? ¿Cuántas quiere? (Responde que te llevas dos.)',
             "J'en prends deux.",
             ["J'en prends deux, merci.", "J'en voudrais deux.", 'Deux, merci.'],
             ['fr-j-en-prends-deux'],

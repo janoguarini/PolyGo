@@ -19,21 +19,21 @@ export const MAX_STREAK_FREEZES = 2;
 
 const plural = (n: number, one: string, many: string) => (n === 1 ? one : many);
 
-/** Texto de la misión según su meta, p. ej. "Completá 2 lecciones". */
+/** Texto de la misión según su meta, p. ej. "Completa 2 lecciones". */
 export function missionTitle(id: MissionId, target: number): string {
   switch (id) {
     case 'lessons':
-      return `Completá ${target} ${plural(target, 'lección', 'lecciones')}`;
+      return `Completa ${target} ${plural(target, 'lección', 'lecciones')}`;
     case 'minutes':
-      return `Estudiá ${target} minutos`;
+      return `Estudia ${target} minutos`;
     case 'correct':
-      return `Acertá ${target} respuestas`;
+      return `Acierta ${target} respuestas`;
     case 'perfect':
-      return 'Terminá una lección sin errores';
+      return 'Termina una lección sin errores';
     case 'ranked_play':
-      return `Jugá ${target} ${plural(target, 'partida', 'partidas')} ranked`;
+      return `Juega ${target} ${plural(target, 'partida', 'partidas')} ranked`;
     case 'ranked_win':
-      return 'Ganá una partida ranked';
+      return 'Gana una partida ranked';
   }
 }
 

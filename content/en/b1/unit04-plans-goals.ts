@@ -76,10 +76,10 @@ export const EN_B1_U04: B1UnitDef = {
     title: 'Planes y objetivos',
     titleEn: 'Plans and goals',
     description:
-      'Hablar del futuro: lo que vas a hacer, lo que ya arreglaste, lo que decidís en el momento y lo que puede pasar; metas y proyectos.',
+      'Hablar del futuro: lo que vas a hacer, lo que ya arreglaste, lo que decides en el momento y lo que puede pasar; metas y proyectos.',
     emoji: '🎯',
     objective:
-      'Podés contar tus planes y objetivos, decir qué ya arreglaste y qué podría pasar, y hablar de proyectos a largo plazo.',
+      'Puedes contar tus planes y objetivos, decir qué ya arreglaste y qué podría pasar, y hablar de proyectos a largo plazo.',
     grammar: {
       title: 'Formas de futuro',
       explanation:
@@ -127,7 +127,7 @@ export const EN_B1_U04: B1UnitDef = {
         '/əˈtʃiv/',
         undefined,
         'You can achieve your goals.',
-        'Podés lograr tus objetivos.',
+        'Puedes lograr tus objetivos.',
         ['plans', 'verbs'],
         ['lograr', 'alcanzar', 'conseguir'],
       ),
@@ -300,8 +300,8 @@ export const EN_B1_U04: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Contás lo que ya arreglaste: I am meeting…, I have an appointment.',
-          'Contás intenciones con going to.',
+          'Cuentas lo que ya arreglaste: I am meeting…, I have an appointment.',
+          'Cuentas intenciones con going to.',
         ],
         exercises: [
           ex.fillBlank(
@@ -367,7 +367,7 @@ export const EN_B1_U04: B1UnitDef = {
           ),
           ex.shortAnswer(
             'Are you doing anything tomorrow? (sí, me encuentro con Ana)',
-            '¿Tenés algo mañana?',
+            '¿Tienes algo mañana?',
             "Yes, I'm meeting Ana.",
             [
               'Yes, I am meeting Ana.',
@@ -398,15 +398,15 @@ export const EN_B1_U04: B1UnitDef = {
         objective: 'Decidir en el momento con will y hablar de lo posible con might.',
         intro: {
           explanation:
-            "Will sirve para una decisión que tomás en el momento (I'll call you) y para predicciones (It will be fine). Might dice que algo es posible, pero no seguro: I might go. Definitely (seguro) y probably (probablemente) dicen qué tan seguro estás.",
+            "Will sirve para una decisión que tomas en el momento (I'll call you) y para predicciones (It will be fine). Might dice que algo es posible, pero no seguro: I might go. Definitely (seguro) y probably (probablemente) dicen qué tan seguro estás.",
           examples: [
             { target: 'I might go to the concert.', base: 'Puede que vaya al recital.' },
             { target: "I'll definitely call you tonight.", base: 'Te llamo seguro esta noche.' },
           ],
         },
         takeaways: [
-          'Decidís en el momento con will.',
-          'Decís qué es posible (might) y qué es seguro (definitely).',
+          'Decides en el momento con will.',
+          'Dices qué es posible (might) y qué es seguro (definitely).',
         ],
         exercises: [
           ex.translationChoice(
@@ -418,7 +418,7 @@ export const EN_B1_U04: B1UnitDef = {
           ),
           ex.fillBlank(
             'Take an umbrella. It ___ rain later.',
-            'Llevá un paraguas. Puede que llueva más tarde.',
+            'Lleva un paraguas. Puede que llueva más tarde.',
             'might',
             ['must', 'is', 'did'],
             ['en-might', 'en-umbrella'],
@@ -492,7 +492,7 @@ export const EN_B1_U04: B1UnitDef = {
       // ------------------------------------------------------------------------------------ L3
       {
         title: 'Metas',
-        objective: 'Contar tus metas y cómo pensás lograrlas.',
+        objective: 'Contar tus metas y cómo piensas lograrlas.',
         intro: {
           explanation:
             'Para hablar de metas: My goal is to… (mi objetivo es…), achieve (lograr), the first step (el primer paso). Look forward to va con -ing o con un sustantivo: I look forward to seeing you.',
@@ -505,8 +505,8 @@ export const EN_B1_U04: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Contás una meta: My goal is to…',
-          'Decís qué esperás con ganas: I look forward to…',
+          'Cuentas una meta: My goal is to…',
+          'Dices qué esperas con ganas: I look forward to…',
         ],
         exercises: [
           ex.matchPairs(
@@ -606,8 +606,8 @@ export const EN_B1_U04: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Contás proyectos de vida con going to.',
-          'Usás apply for, set up, save, get married y retire.',
+          'Cuentas proyectos de vida con going to.',
+          'Usas apply for, set up, save, get married y retire.',
         ],
         exercises: [
           ex.matchPairs(
@@ -659,7 +659,7 @@ export const EN_B1_U04: B1UnitDef = {
             GOALS,
             '¿Para qué va a ahorrar Ana?',
             'Para un viaje a Japón',
-            ['Para un curso en Londres', 'Para un auto', 'Para un departamento'],
+            ['Para un curso en Londres', 'Para un auto', 'Para un apartamento'],
             ['en-save', 'en-goal'],
             'Ana escribe: «I am going to save money for a trip to Japan».',
           ),
@@ -725,8 +725,8 @@ export const EN_B1_U04: B1UnitDef = {
           ],
         },
         takeaways: [
-          'Usás el presente después de when, as soon as y until para hablar del futuro.',
-          'Escribís un pedido formal: I would like to apply for…',
+          'Usas el presente después de when, as soon as y until para hablar del futuro.',
+          'Escribes un pedido formal: I would like to apply for…',
         ],
         exercises: [
           ex.fillBlank(

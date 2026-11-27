@@ -96,7 +96,7 @@ export const FR_A2_U11: FrUnitDef = {
       "Pronominales en passé composé (je me suis levée, on s'est rencontrés), recíprocos, el pronombre y (j'y vais), qui / que y la negación ampliada (ne… jamais, plus, rien, personne).",
     emoji: '🤝',
     objective:
-      'Podés contar tu rutina y lo que hiciste con verbos pronominales, hablar de tus relaciones (cómo se conocieron, si se llevan bien), usar y para un lugar, unir frases con qui y que y negar con ne… jamais, ne… plus, ne… rien y ne… personne.',
+      'Puedes contar tu rutina y lo que hiciste con verbos pronominales, hablar de tus relaciones (cómo se conocieron, si se llevan bien), usar y para un lugar, unir frases con qui y que y negar con ne… jamais, ne… plus, ne… rien y ne… personne.',
     grammar: {
       title: 'Pronominales con être · y · qui / que · ne… jamais',
       explanation:
@@ -213,7 +213,7 @@ export const FR_A2_U11: FrUnitDef = {
         'ne… jamais',
         'nunca',
         'Je ne bois jamais de café le soir.',
-        'Nunca tomo café a la noche.',
+        'Nunca tomo café por la noche.',
         ['negation', 'frequency'],
       ),
       w('fr-ne-plus', 'ne… plus', 'ya no', "Je n'habite plus à Paris.", 'Ya no vivo en París.', [
@@ -245,7 +245,7 @@ export const FR_A2_U11: FrUnitDef = {
         ['frequency'],
         { acceptedTranslations: ['rara vez'] },
       ),
-      w('fr-quelque-chose', 'quelque chose', 'algo', 'Tu veux quelque chose?', '¿Querés algo?', [
+      w('fr-quelque-chose', 'quelque chose', 'algo', 'Tu veux quelque chose?', '¿Quieres algo?', [
         'basics',
       ]),
     ],
@@ -263,8 +263,8 @@ export const FR_A2_U11: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Contás tu mañana con je me réveille y je me suis levé o levée.',
-          'Decís con qué frecuencia hacés algo con parfois y rarement.',
+          'Cuentas tu mañana con je me réveille y je me suis levé o levée.',
+          'Dices con qué frecuencia haces algo con parfois y rarement.',
         ],
         exercises: [
           ex.translationChoice(
@@ -305,7 +305,7 @@ export const FR_A2_U11: FrUnitDef = {
             {
               id: 'fr.ex.ae7jeu6job1wea',
               explanation:
-                'Prestá atención al suis: je me suis levé es pasado; je me lève, presente.',
+                'Presta atención al suis: je me suis levé es pasado; je me lève, presente.',
             },
           ),
           ex.fillBlank(
@@ -370,7 +370,7 @@ export const FR_A2_U11: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Tu te réveilles à quelle heure?',
-            '¿A qué hora te despertás? (Respondé que te despertás a las siete.)',
+            '¿A qué hora te despiertas? (Responde que te despiertas a las siete.)',
             'Je me réveille à sept heures.',
             [
               'Je me réveille à 7 heures.',
@@ -399,8 +399,8 @@ export const FR_A2_U11: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Contás cómo se conocieron con on s'est rencontrés y ils se sont mariés.",
-          'Hablás de tu copain o tu copine y de lo que hacen ensemble.',
+          "Cuentas cómo se conocieron con on s'est rencontrés y ils se sont mariés.",
+          'Hablas de tu copain o tu copine y de lo que hacen ensemble.',
         ],
         exercises: [
           ex.translationChoice(
@@ -435,7 +435,7 @@ export const FR_A2_U11: FrUnitDef = {
             {
               id: 'fr.ex.8kjszdzs0vjbmq',
               explanation:
-                'Escuchá el se: ils se sont mariés es se casaron; ils sont mariés, están casados.',
+                'Escucha el se: ils se sont mariés es se casaron; ils sont mariés, están casados.',
             },
           ),
           ex.fillBlank(
@@ -502,7 +502,7 @@ export const FR_A2_U11: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Claire et Paul se sont mariés quand?',
-            '¿Cuándo se casaron Claire y Paul? (Respondé que se casaron en mayo.)',
+            '¿Cuándo se casaron Claire y Paul? (Responde que se casaron en mayo.)',
             'Ils se sont mariés en mai.',
             ['En mai.', 'Claire et Paul se sont mariés en mai.'],
             ['fr-se-marier'],
@@ -514,7 +514,7 @@ export const FR_A2_U11: FrUnitDef = {
       // ------------------------------------------------------------------------------------ L3
       {
         title: "On s'entend bien",
-        objective: 'Decir cómo te llevás con alguien y hablar de lo que hacen juntos.',
+        objective: 'Decir cómo te llevas con alguien y hablar de lo que hacen juntos.',
         intro: {
           explanation:
             "Con los verbos recíprocos, se significa el uno al otro: on se voit le samedi (nos vemos), ils se parlent (se hablan), on s'entend bien (nos llevamos bien), ils se disputent (se pelean). Entendre es oír, pero s'entendre bien es llevarse bien: je m'entends, on s'entend, ils s'entendent. En il s'entend la d no suena; en ils s'entendent sí se oye la d (la terminación -ent es muda). En pasado: on s'est disputés.",
@@ -524,8 +524,8 @@ export const FR_A2_U11: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Decís cómo te llevás con alguien con s'entendre bien y se disputer.",
-          'Usás se para hablar de lo que dos personas hacen el uno con el otro.',
+          "Dices cómo te llevas con alguien con s'entendre bien y se disputer.",
+          'Usas se para hablar de lo que dos personas hacen el uno con el otro.',
         ],
         exercises: [
           ex.translationChoice(
@@ -620,7 +620,7 @@ export const FR_A2_U11: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Tu t'entends bien avec tes parents?",
-            '¿Te llevás bien con tus padres? (Respondé que sí, muy bien.)',
+            '¿Te llevas bien con tus padres? (Responde que sí, muy bien.)',
             "Oui, je m'entends très bien avec mes parents.",
             ["Oui, je m'entends bien avec mes parents.", 'Oui, très bien.'],
             ['fr-s-entendre-bien'],
@@ -645,8 +645,8 @@ export const FR_A2_U11: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Evitás repetir el lugar con y: j'y vais, on y va.",
-          'Unís dos frases con qui (sujeto) y que (objeto).',
+          "Evitas repetir el lugar con y: j'y vais, on y va.",
+          'Unes dos frases con qui (sujeto) y que (objeto).',
         ],
         exercises: [
           ex.translationChoice(
@@ -718,9 +718,9 @@ export const FR_A2_U11: FrUnitDef = {
             POST,
             '¿Cómo va Camille a lo de sus padres?',
             'En bici.',
-            ['En colectivo.', 'A pie.', 'En auto.'],
+            ['En autobús.', 'A pie.', 'En auto.'],
             ['fr-j-y-vais'],
-            "Dice «je vais chez mes parents. J'y vais à vélo». En colectivo van a la playa.",
+            "Dice «je vais chez mes parents. J'y vais à vélo». En autobús van a la playa.",
           ),
           ex.orderWords(
             "J'y vais avec mon copain.",
@@ -742,7 +742,7 @@ export const FR_A2_U11: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Tu vas souvent au cinéma?',
-            '¿Vas seguido al cine? (Respondé que vas a veces.)',
+            '¿Vas seguido al cine? (Responde que vas a veces.)',
             "J'y vais parfois.",
             [
               'Parfois.',
@@ -764,13 +764,13 @@ export const FR_A2_U11: FrUnitDef = {
           explanation:
             "Como ne… pas, estas negaciones rodean al verbo: je ne bois jamais de café (nunca), je n'habite plus à Paris (ya no), je ne fais rien (nada), je ne vois personne (nadie). En el passé composé, rien va antes del participio (je n'ai rien mangé) y personne, después (je n'ai vu personne). Lo contrario de ne… rien es quelque chose (algo). Ne se vuelve n' delante de vocal: en je n'ai rien vu, esa n es lo único que se oye de la negación. En lo oral el ne a veces se cae, pero se escribe siempre.",
           examples: [
-            { target: 'Je ne bois jamais de café le soir.', base: 'Nunca tomo café a la noche.' },
+            { target: 'Je ne bois jamais de café le soir.', base: 'Nunca tomo café por la noche.' },
             { target: "Il n'y a personne dans la cuisine.", base: 'No hay nadie en la cocina.' },
           ],
         },
         takeaways: [
-          'Negás con ne… jamais, ne… plus, ne… rien y ne… personne alrededor del verbo.',
-          'Ofrecés o preguntás por quelque chose y respondés ne… rien.',
+          'Niegas con ne… jamais, ne… plus, ne… rien y ne… personne alrededor del verbo.',
+          'Ofreces o preguntas por quelque chose y respondes ne… rien.',
         ],
         exercises: [
           ex.matchPairs(
@@ -812,7 +812,7 @@ export const FR_A2_U11: FrUnitDef = {
             {
               id: 'fr.ex.5sal1xk1lmsnv8',
               explanation:
-                "Escuchá la n de je n'ai y la r de rien: je n'ai rien mangé (no comí nada) / j'ai bien mangé (comí bien).",
+                "Escucha la n de je n'ai y la r de rien: je n'ai rien mangé (no comí nada) / j'ai bien mangé (comí bien).",
             },
           ),
           ex.fillBlank(
@@ -829,7 +829,7 @@ export const FR_A2_U11: FrUnitDef = {
           ),
           ex.fillBlank(
             'Tu veux ___? — Non merci, je ne veux rien.',
-            '¿Querés algo? — No, gracias, no quiero nada.',
+            '¿Quieres algo? — No, gracias, no quiero nada.',
             'quelque chose',
             ['rien', 'personne', "quelqu'un"],
             ['fr-quelque-chose', 'fr-ne-rien'],
@@ -874,7 +874,7 @@ export const FR_A2_U11: FrUnitDef = {
           ),
           ex.shortAnswer(
             "Qu'est-ce que tu as fait hier soir?",
-            '¿Qué hiciste anoche? (Respondé que no hiciste nada.)',
+            '¿Qué hiciste anoche? (Responde que no hiciste nada.)',
             "Je n'ai rien fait.",
             ['Rien.', "Je n'ai rien fait hier soir.", "Hier soir, je n'ai rien fait."],
             ['fr-ne-rien'],

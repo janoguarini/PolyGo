@@ -61,7 +61,7 @@ export const FR_A1_U15: FrUnitDef = {
       "Los meses (en minúscula, en + mes), la fecha (le 14 juillet, pero le premier mai), le mois, l'année y l'anniversaire (cumpleaños). El 14 de julio y la Fête de la musique.",
     emoji: '📅',
     objective:
-      'Podés decir los meses, preguntar y decir la fecha, y hablar de cumpleaños y fechas importantes.',
+      'Puedes decir los meses, preguntar y decir la fecha, y hablar de cumpleaños y fechas importantes.',
     grammar: {
       title: 'La fecha: le + número + mes',
       explanation:
@@ -220,8 +220,8 @@ export const FR_A1_U15: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Decís los meses de janvier a juin, con minúscula.',
-          'Usás en + mes: en mai, en juin.',
+          'Dices los meses de janvier a juin, con minúscula.',
+          'Usas en + mes: en mai, en juin.',
         ],
         exercises: [
           ex.translationChoice('janvier', 'enero', ['junio', 'febrero', 'mayo'], ['fr-janvier'], {
@@ -295,7 +295,7 @@ export const FR_A1_U15: FrUnitDef = {
           }),
           ex.shortAnswer(
             'Tu vas à Paris quand?',
-            '¿Cuándo vas a París? (Respondé que vas en junio.)',
+            '¿Cuándo vas a París? (Responde que vas en junio.)',
             'Je vais à Paris en juin.',
             ['En juin.', 'Je vais en juin.', 'En juin, je vais à Paris.'],
             ['fr-juin'],
@@ -316,7 +316,7 @@ export const FR_A1_U15: FrUnitDef = {
             { target: 'Il y a douze mois dans une année.', base: 'Un año tiene doce meses.' },
           ],
         },
-        takeaways: ['Decís los meses de juillet a décembre.', "Usás le mois y l'année."],
+        takeaways: ['Dices los meses de juillet a décembre.', "Usas le mois y l'année."],
         exercises: [
           ex.translationChoice('août', 'agosto', ['julio', 'octubre', 'abril'], ['fr-aout'], {
             id: 'fr.ex.4vhspyw1qkifia',
@@ -403,7 +403,7 @@ export const FR_A1_U15: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Tu vas à Marseille en juillet?',
-            '¿Vas a Marsella en julio? (Respondé que no, que vas en agosto.)',
+            '¿Vas a Marsella en julio? (Responde que no, que vas en agosto.)',
             'Non, je vais à Marseille en août.',
             ['Non, en août.', 'Non, je vais en août.', 'Non, je vais à Marseille en août.'],
             ['fr-aout', 'fr-juillet'],
@@ -428,14 +428,14 @@ export const FR_A1_U15: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Preguntás quelle est la date? y respondés nous sommes le…',
-          'Decís le premier para el día 1 y el número para los demás.',
+          'Preguntas quelle est la date? y respondes nous sommes le…',
+          'Dices le premier para el día 1 y el número para los demás.',
         ],
         exercises: [
           ex.translationChoice(
             'quelle est la date?',
             '¿qué fecha es?',
-            ['¿qué hora es?', '¿cuántos años tenés?', '¿cuándo vas?'],
+            ['¿qué hora es?', '¿cuántos años tienes?', '¿cuándo vas?'],
             ['fr-quelle-est-la-date'],
             { id: 'fr.ex.jtr260nd7tp61a' },
           ),
@@ -516,7 +516,7 @@ export const FR_A1_U15: FrUnitDef = {
           ),
           ex.shortAnswer(
             'Quelle est la date?',
-            '¿Qué fecha es? (Respondé que es 12 de octubre.)',
+            '¿Qué fecha es? (Responde que es 12 de octubre.)',
             'Nous sommes le douze octobre.',
             [
               "C'est le douze octobre.",
@@ -547,8 +547,8 @@ export const FR_A1_U15: FrUnitDef = {
           ],
         },
         takeaways: [
-          "Preguntás c'est quand, ton anniversaire? y respondés con la fecha.",
-          'Saludás con joyeux anniversaire!',
+          "Preguntas c'est quand, ton anniversaire? y respondes con la fecha.",
+          'Saludas con joyeux anniversaire!',
         ],
         exercises: [
           ex.translationChoice(
@@ -632,7 +632,7 @@ export const FR_A1_U15: FrUnitDef = {
           ),
           ex.shortAnswer(
             "C'est quand, ton anniversaire?",
-            '¿Cuándo es tu cumpleaños? (Respondé que es el 1 de agosto.)',
+            '¿Cuándo es tu cumpleaños? (Responde que es el 1 de agosto.)',
             "C'est le premier août.",
             [
               'Le premier août.',
@@ -664,8 +664,8 @@ export const FR_A1_U15: FrUnitDef = {
           ],
         },
         takeaways: [
-          'Conocés el 14 de julio y la Fête de la musique.',
-          'Leés y escribís fechas con le, en y le premier.',
+          'Conoces el 14 de julio y la Fête de la musique.',
+          'Lees y escribes fechas con le, en y le premier.',
         ],
         exercises: [
           question(
@@ -754,7 +754,7 @@ export const FR_A1_U15: FrUnitDef = {
           ),
           ex.shortAnswer(
             "C'est quand, la Fête de la musique?",
-            '¿Cuándo es la Fiesta de la Música? (Respondé con la fecha.)',
+            '¿Cuándo es la Fiesta de la Música? (Responde con la fecha.)',
             "C'est le 21 juin.",
             [
               'Le 21 juin.',

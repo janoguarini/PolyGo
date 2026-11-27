@@ -23,7 +23,7 @@ const LOJA = dialogue('pt.stim.a2-u9-loja', 'En una tienda de ropa.', [
 const LIQUIDACAO = reading(
   'pt.stim.a2-u9-liquidacao',
   'ad',
-  'Un cartel en la vidriera de una zapatería.',
+  'Un cartel en la vitrina de una zapatería.',
   [
     'Liquidação de verão!',
     'Tênis e sandálias com até 50% de desconto.',
@@ -91,7 +91,7 @@ export const PT_A2_U09: PtUnitDef = {
       'Comparar (mais… do que, tão… quanto, melhor, pior), el superlativo, probarse y cambiar ropa, los descuentos y los falsos amigos calça y tênis.',
     emoji: '🛍️',
     objective:
-      'Podés comparar productos y precios, elegir el mejor, probarte ropa, pedir otro talle y cambiar algo que compraste.',
+      'Puedes comparar productos y precios, elegir el mejor, probarte ropa, pedir otra talla y cambiar algo que compraste.',
     grammar: {
       title: 'Comparativos y superlativos',
       explanation:
@@ -119,7 +119,7 @@ export const PT_A2_U09: PtUnitDef = {
         'mais barato',
         'más barato',
         'O pão aqui é mais barato.',
-        'Acá el pan es más barato.',
+        'Aquí el pan es más barato.',
         ['comparisons'],
         {
           acceptedTexts: ['mais barata'],
@@ -159,7 +159,7 @@ export const PT_A2_U09: PtUnitDef = {
         'maior',
         'más grande / mayor',
         'Você tem um tamanho maior?',
-        '¿Tenés un talle más grande?',
+        '¿Tienes una talla más grande?',
         ['comparisons'],
         {
           acceptedTranslations: ['más grande', 'mayor'],
@@ -191,12 +191,12 @@ export const PT_A2_U09: PtUnitDef = {
       w(
         'pt-tamanho',
         'tamanho',
-        'talle / tamaño',
+        'talla / tamaño',
         'Qual é o seu tamanho?',
-        '¿Cuál es tu talle?',
+        '¿Cuál es tu talla?',
         ['shopping', 'clothes'],
         {
-          acceptedTranslations: ['talle', 'tamaño', 'talla'],
+          acceptedTranslations: ['talle', 'tamaño', 'talla', 'talle / tamaño'],
         },
       ),
       w(
@@ -204,7 +204,7 @@ export const PT_A2_U09: PtUnitDef = {
         'trocar',
         'cambiar (un producto)',
         'Posso trocar esta camiseta?',
-        '¿Puedo cambiar esta remera?',
+        '¿Puedo cambiar esta camiseta?',
         ['shopping'],
         {
           acceptedTranslations: ['cambiar'],
@@ -277,7 +277,7 @@ export const PT_A2_U09: PtUnitDef = {
           examples: [
             {
               target: 'A camiseta azul é mais barata do que a preta.',
-              base: 'La remera azul es más barata que la negra.',
+              base: 'La camiseta azul es más barata que la negra.',
             },
             {
               target: 'Esta loja é menos cara do que aquela.',
@@ -285,7 +285,7 @@ export const PT_A2_U09: PtUnitDef = {
             },
           ],
         },
-        takeaways: ['Comparás con mais… do que.', 'Comparás con menos… do que.'],
+        takeaways: ['Comparas con mais… do que.', 'Comparas con menos… do que.'],
         exercises: [
           ex.translationChoice(
             'do que',
@@ -309,7 +309,7 @@ export const PT_A2_U09: PtUnitDef = {
           ),
           ex.fillBlank(
             'A camiseta é mais barata ___ que o sapato.',
-            'La remera es más barata que el zapato.',
+            'La camiseta es más barata que el zapato.',
             'do',
             ['de', 'da', 'o'],
             ['pt-do-que', 'pt-mais-barato'],
@@ -333,7 +333,7 @@ export const PT_A2_U09: PtUnitDef = {
           ),
           ex.orderWords(
             'O ônibus é mais barato do que o táxi.',
-            'El colectivo es más barato que el taxi.',
+            'El autobús es más barato que el taxi.',
             ['pt-mais-barato', 'pt-do-que'],
             {
               id: 'pt.ex.r16bhrgnorj8mo',
@@ -341,7 +341,7 @@ export const PT_A2_U09: PtUnitDef = {
           ),
           ex.shortAnswer(
             'O metrô é mais caro do que o ônibus?',
-            '¿El subte es más caro que el colectivo? (Respondé que no, que es más barato.)',
+            '¿El metro es más caro que el autobús? (Responde que no, que es más barato.)',
             'Não, é mais barato.',
             [
               'Não, o metrô é mais barato.',
@@ -352,7 +352,7 @@ export const PT_A2_U09: PtUnitDef = {
             { id: 'pt.ex.ul2wu1vrg5cuwv' },
           ),
           ex.translateWrite(
-            'La remera es más barata que el zapato.',
+            'La camiseta es más barata que el zapato.',
             'A camiseta é mais barata do que o sapato.',
             ['pt-mais-barato', 'pt-do-que'],
             {
@@ -375,10 +375,10 @@ export const PT_A2_U09: PtUnitDef = {
               target: 'Este restaurante é melhor do que aquele.',
               base: 'Este restaurante es mejor que aquel.',
             },
-            { target: 'Você tem um tamanho maior?', base: '¿Tenés un talle más grande?' },
+            { target: 'Você tem um tamanho maior?', base: '¿Tienes una talla más grande?' },
           ],
         },
-        takeaways: ['Usás melhor, pior, maior y menor.', 'Pedís un talle más grande o más chico.'],
+        takeaways: ['Usas melhor, pior, maior y menor.', 'Pides una talla más grande o más chica.'],
         exercises: [
           ex.translationChoice(
             'maior',
@@ -431,7 +431,11 @@ export const PT_A2_U09: PtUnitDef = {
             TROCA,
             '¿Por qué vuelve la clienta a la tienda?',
             'Las zapatillas le quedaron chicas y quiere un número más grande',
-            ['Las zapatillas le quedaron grandes', 'Quiere otro color', 'Quiere devolver la plata'],
+            [
+              'Las zapatillas le quedaron grandes',
+              'Quiere otro color',
+              'Quiere devolver el dinero',
+            ],
             ['pt-maior', 'pt-trocar', 'pt-tenis'],
             'Dice: «comprei este tênis ontem, mas ficou pequeno. Posso trocar por um número maior?».',
           ),
@@ -445,7 +449,7 @@ export const PT_A2_U09: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Este tamanho está bom?',
-            '¿Este talle está bien? (Respondé que no, que querés uno más grande.)',
+            '¿Esta talla está bien? (Responde que no, que quieres una más grande.)',
             'Não, eu queria um tamanho maior.',
             [
               'Não, quero um tamanho maior.',
@@ -457,7 +461,7 @@ export const PT_A2_U09: PtUnitDef = {
             { id: 'pt.ex.ojuyhg713hh98h' },
           ),
           ex.translateWrite(
-            '¿Tenés un talle más chico?',
+            '¿Tienes una talla más chica?',
             'Você tem um tamanho menor?',
             ['pt-menor', 'pt-tamanho'],
             {
@@ -471,16 +475,16 @@ export const PT_A2_U09: PtUnitDef = {
       // ------------------------------------------------------------------------------------ L3
       {
         title: 'Posso provar?',
-        objective: 'Probarte ropa y pedir otro talle.',
+        objective: 'Probarte ropa y pedir otra talla.',
         intro: {
           explanation:
             'Provar es «probarse» (y «probar» comida): posso provar esta calça? Falsos amigos: calça es el «pantalón» y tênis, las «zapatillas». O tamanho es el talle; en calzado se dice o número.',
           examples: [
             { target: 'Posso provar esta calça?', base: '¿Me puedo probar este pantalón?' },
-            { target: 'Qual é o seu tamanho?', base: '¿Cuál es tu talle?' },
+            { target: 'Qual é o seu tamanho?', base: '¿Cuál es tu talla?' },
           ],
         },
-        takeaways: ['Pedís probarte algo: posso provar…?', 'Sabés que calça es «pantalón».'],
+        takeaways: ['Pides probarte algo: posso provar…?', 'Sabes que calça es «pantalón».'],
         exercises: [
           ex.translationChoice('calça', 'pantalón', ['calza', 'calzado', 'media'], ['pt-calca'], {
             id: 'pt.ex.kqrilxqpux8l85',
@@ -508,7 +512,7 @@ export const PT_A2_U09: PtUnitDef = {
           ),
           ex.fillBlank(
             'Qual é o seu ___? — M.',
-            '¿Cuál es tu talle? — M.',
+            '¿Cuál es tu talla? — M.',
             'tamanho',
             ['número', 'preço', 'troca'],
             ['pt-tamanho'],
@@ -518,8 +522,8 @@ export const PT_A2_U09: PtUnitDef = {
             'pt.ex.e56sgoctr69cuk',
             LOJA,
             '¿Qué quiere la clienta?',
-            'Probarse un pantalón en un talle más grande',
-            ['Comprar unas zapatillas', 'Cambiar una remera', 'Pagar en cuotas'],
+            'Probarse un pantalón en una talla más grande',
+            ['Comprar unas zapatillas', 'Cambiar una camiseta', 'Pagar en cuotas'],
             ['pt-provar', 'pt-calca', 'pt-tamanho', 'pt-desconto'],
             'Dice: «Posso provar esta calça? Mas eu queria um tamanho maior».',
           ),
@@ -533,7 +537,7 @@ export const PT_A2_U09: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Posso ajudar? (provar 👖)',
-            '¿Te ayudo? (Preguntá si te podés probar el pantalón.)',
+            '¿Te ayudo? (Pregunta si te puedes probar el pantalón.)',
             'Posso provar esta calça?',
             [
               'Eu posso provar esta calça?',
@@ -566,26 +570,26 @@ export const PT_A2_U09: PtUnitDef = {
             { target: 'A loja está em liquidação.', base: 'La tienda está de liquidación.' },
             {
               target: 'Posso trocar por um tamanho maior?',
-              base: '¿Lo puedo cambiar por un talle más grande?',
+              base: '¿Lo puedo cambiar por una talla más grande?',
             },
           ],
         },
         takeaways: [
-          'Entendés ofertas: desconto, liquidação.',
-          'Cambiás un producto: posso trocar?',
+          'Entiendes ofertas: desconto, liquidação.',
+          'Cambias un producto: posso trocar?',
         ],
         exercises: [
           ex.translationChoice(
             'trocar',
             'cambiar (un producto)',
-            ['tocar', 'trabar', 'devolver la plata'],
+            ['tocar', 'trabar', 'devolver el dinero'],
             ['pt-trocar'],
             { id: 'pt.ex.9edp3b8vyzd1d8' },
           ),
           ex.translationChoice(
             'liquidação',
             'liquidación / rebajas',
-            ['factura', 'caja', 'vidriera'],
+            ['factura', 'caja', 'vitrina'],
             ['pt-liquidacao'],
             { id: 'pt.ex.f95qr2xfedmmil' },
           ),
@@ -639,7 +643,7 @@ export const PT_A2_U09: PtUnitDef = {
           ),
           ex.shortAnswer(
             'O tênis ficou pequeno. O que você pergunta?',
-            'Las zapatillas te quedaron chicas. (Preguntá si las podés cambiar por un número más grande.)',
+            'Las zapatillas te quedaron chicas. (Pregunta si las puedes cambiar por un número más grande.)',
             'Posso trocar por um número maior?',
             [
               'Posso trocar por um tamanho maior?',
@@ -674,14 +678,14 @@ export const PT_A2_U09: PtUnitDef = {
             },
           ],
         },
-        takeaways: ['Decís que algo es igual: tão… quanto.', 'Elegís lo mejor: o melhor, o mais…'],
+        takeaways: ['Dices que algo es igual: tão… quanto.', 'Eliges lo mejor: o melhor, o mais…'],
         exercises: [
           ex.translationChoice('tão', 'tan', ['tanto', 'también', 'todo'], ['pt-tao'], {
             id: 'pt.ex.zn0d95g57gkf0h',
           }),
           ex.fillBlank(
             'A camiseta é tão bonita ___ a calça.',
-            'La remera es tan linda como el pantalón.',
+            'La camiseta es tan linda como el pantalón.',
             'quanto',
             ['de', 'do que', 'que'],
             ['pt-tao'],
@@ -738,7 +742,7 @@ export const PT_A2_U09: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Qual é o melhor restaurante da sua cidade? (Casa Nova)',
-            '¿Cuál es el mejor restaurante de tu ciudad? (Respondé que es Casa Nova.)',
+            '¿Cuál es el mejor restaurante de tu ciudad? (Responde que es Casa Nova.)',
             'O melhor restaurante é o Casa Nova.',
             ['É o Casa Nova.', 'O Casa Nova.', 'O melhor é o Casa Nova.'],
             ['pt-melhor'],

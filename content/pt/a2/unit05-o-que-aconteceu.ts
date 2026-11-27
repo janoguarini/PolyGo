@@ -114,7 +114,7 @@ export const PT_A2_U05: PtUnitDef = {
       'Imperfeito para la escena y perfeito para lo que pasó, estava + gerundio, los conectores del relato y el falso amigo perceber.',
     emoji: '💬',
     objective:
-      'Podés contar algo que te pasó: describir la escena, decir qué pasó de repente y ordenar el relato con primeiro, então y no final.',
+      'Puedes contar algo que te pasó: describir la escena, decir qué pasó de repente y ordenar el relato con primeiro, então y no final.',
     grammar: {
       title: 'Imperfeito y perfeito · estava + gerundio',
       explanation:
@@ -128,7 +128,7 @@ export const PT_A2_U05: PtUnitDef = {
           target: 'Estava chovendo e eu caí na rua.',
           base: 'Estaba lloviendo y me caí en la calle.',
         },
-        { target: 'De repente, o ônibus parou.', base: 'De repente, el colectivo frenó.' },
+        { target: 'De repente, o ônibus parou.', base: 'De repente, el autobús frenó.' },
       ],
     },
     review: {
@@ -162,7 +162,7 @@ export const PT_A2_U05: PtUnitDef = {
         'de repente',
         'de repente',
         'De repente, o ônibus parou.',
-        'De repente, el colectivo frenó.',
+        'De repente, el autobús frenó.',
         ['connectors'],
       ),
       w(
@@ -235,7 +235,7 @@ export const PT_A2_U05: PtUnitDef = {
         'chegou',
         'llegó / llegaste (con você)',
         'O ônibus chegou atrasado.',
-        'El colectivo llegó tarde.',
+        'El autobús llegó tarde.',
         ['past'],
         {
           acceptedTexts: ['cheguei'],
@@ -275,7 +275,7 @@ export const PT_A2_U05: PtUnitDef = {
             { target: 'O celular caiu no chão.', base: 'El celular se cayó al piso.' },
           ],
         },
-        takeaways: ['Preguntás o que aconteceu?', 'Contás un hecho: perdi, caiu, encontrei.'],
+        takeaways: ['Preguntas o que aconteceu?', 'Cuentas un hecho: perdi, caiu, encontrei.'],
         exercises: [
           ex.translationChoice(
             'aconteceu',
@@ -324,19 +324,19 @@ export const PT_A2_U05: PtUnitDef = {
             CELULAR,
             '¿Qué le pasó a Rafa?',
             'Perdió el celular',
-            ['Se cayó del colectivo', 'Encontró un celular', 'Perdió la llave'],
+            ['Se cayó del autobús', 'Encontró un celular', 'Perdió la llave'],
             ['pt-perdi', 'pt-aconteceu', 'pt-percebi'],
             'Rafa dice: «Perdi o meu celular!».',
           ),
           ex.orderWords(
             'Eu perdi o celular no ônibus.',
-            'Perdí el celular en el colectivo.',
+            'Perdí el celular en el autobús.',
             ['pt-perdi'],
             { id: 'pt.ex.ew21kgh1k7siaz' },
           ),
           ex.shortAnswer(
             'O que aconteceu? (🔑 perder)',
-            '¿Qué pasó? (Respondé que perdiste la llave.)',
+            '¿Qué pasó? (Responde que perdiste la llave.)',
             'Eu perdi a chave.',
             [
               'Perdi a chave.',
@@ -374,8 +374,8 @@ export const PT_A2_U05: PtUnitDef = {
           ],
         },
         takeaways: [
-          'Describís la escena: estava + gerundio.',
-          'Interrumpís con el perfeito: quando vi…',
+          'Describes la escena: estava + gerundio.',
+          'Interrumpes con el perfeito: quando vi…',
         ],
         exercises: [
           ex.translationChoice(
@@ -399,7 +399,7 @@ export const PT_A2_U05: PtUnitDef = {
           ),
           ex.fillBlank(
             'Eu ___ no ônibus quando o celular caiu.',
-            'Estaba en el colectivo cuando se cayó el celular.',
+            'Estaba en el autobús cuando se cayó el celular.',
             'estava',
             ['estive', 'estou', 'fui'],
             ['pt-estava', 'pt-caiu'],
@@ -427,7 +427,7 @@ export const PT_A2_U05: PtUnitDef = {
           question(
             'pt.ex.ibgj3a6310uta7',
             CELULAR,
-            '¿Qué estaba haciendo Rafa en el colectivo?',
+            '¿Qué estaba haciendo Rafa en el autobús?',
             'Estaba escuchando música',
             ['Estaba hablando por teléfono', 'Estaba durmiendo', 'Estaba leyendo'],
             ['pt-estava'],
@@ -450,7 +450,7 @@ export const PT_A2_U05: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Onde você estava quando eu liguei? (no ônibus)',
-            '¿Dónde estabas cuando te llamé? (Respondé que estabas en el colectivo.)',
+            '¿Dónde estabas cuando te llamé? (Responde que estabas en el autobús.)',
             'Eu estava no ônibus.',
             ['Estava no ônibus.', 'No ônibus.'],
             ['pt-estava'],
@@ -487,7 +487,7 @@ export const PT_A2_U05: PtUnitDef = {
           ],
         },
         takeaways: [
-          'Ordenás un relato: primeiro, depois, no final.',
+          'Ordenas un relato: primeiro, depois, no final.',
           'Das una consecuencia con então.',
         ],
         exercises: [
@@ -536,7 +536,7 @@ export const PT_A2_U05: PtUnitDef = {
             ATRASO,
             '¿Por qué Paulo tomó un taxi?',
             'Porque llovía mucho',
-            ['Porque perdió el colectivo', 'Porque había un accidente', 'Porque estaba cansado'],
+            ['Porque perdió el autobús', 'Porque había un accidente', 'Porque estaba cansado'],
             ['pt-entao', 'pt-peguei'],
             'Escribe que empezó a llover mucho: «Então peguei um táxi».',
           ),
@@ -561,7 +561,7 @@ export const PT_A2_U05: PtUnitDef = {
           ),
           ex.shortAnswer(
             'Você chegou tarde. Por quê? (chovia → táxi)',
-            'Llegaste tarde. ¿Por qué? (Respondé que llovía, así que tomaste un taxi.)',
+            'Llegaste tarde. ¿Por qué? (Responde que llovía, así que tomaste un taxi.)',
             'Estava chovendo, então peguei um táxi.',
             [
               'Estava chovendo, então eu peguei um táxi.',
@@ -602,7 +602,7 @@ export const PT_A2_U05: PtUnitDef = {
             },
           ],
         },
-        takeaways: ['Contás una sorpresa con de repente.', 'Unís dos acciones con enquanto.'],
+        takeaways: ['Cuentas una sorpresa con de repente.', 'Unes dos acciones con enquanto.'],
         exercises: [
           ex.translationChoice(
             'enquanto',
@@ -673,7 +673,7 @@ export const PT_A2_U05: PtUnitDef = {
           ),
           ex.shortAnswer(
             'O que você ouviu? (um barulho)',
-            '¿Qué oíste? (Respondé que oíste un ruido.)',
+            '¿Qué oíste? (Responde que oíste un ruido.)',
             'Eu ouvi um barulho.',
             ['Ouvi um barulho.', 'Um barulho.', 'De repente, ouvi um barulho.'],
             ['pt-ouvi'],
@@ -709,7 +709,7 @@ export const PT_A2_U05: PtUnitDef = {
             { target: 'Desculpa, foi sem querer!', base: '¡Perdón, fue sin querer!' },
           ],
         },
-        takeaways: ['Decís que te diste cuenta: percebi que…', 'Te disculpás: foi sem querer.'],
+        takeaways: ['Dices que te diste cuenta: percebi que…', 'Te disculpas: foi sem querer.'],
         exercises: [
           ex.translationChoice(
             'percebi',
@@ -736,7 +736,7 @@ export const PT_A2_U05: PtUnitDef = {
           ),
           ex.fillBlank(
             'Quando eu desci do ônibus, ___ que estava sem o celular.',
-            'Cuando bajé del colectivo, me di cuenta de que no tenía el celular.',
+            'Cuando bajé del autobús, me di cuenta de que no tenía el celular.',
             'percebi',
             ['perdi', 'percebeu', 'ouvi'],
             ['pt-percebi'],
@@ -746,8 +746,8 @@ export const PT_A2_U05: PtUnitDef = {
             'pt.ex.oc41r067ymm8z9',
             CELULAR,
             '¿Cuándo se dio cuenta Rafa de que no tenía el celular?',
-            'Cuando bajó del colectivo',
-            ['Cuando llegó a su casa', 'Cuando subió al colectivo', 'Cuando quiso escuchar música'],
+            'Cuando bajó del autobús',
+            ['Cuando llegó a su casa', 'Cuando subió al autobús', 'Cuando quiso escuchar música'],
             ['pt-percebi'],
             'Rafa dice: «Quando eu desci, percebi que o celular não estava no bolso».',
           ),
@@ -756,7 +756,7 @@ export const PT_A2_U05: PtUnitDef = {
             CELULAR,
             '¿Qué le aconseja Duda?',
             'Llamar a la empresa de colectivos',
-            ['Comprar otro celular', 'Volver al colectivo', 'Ir a la policía'],
+            ['Comprar otro celular', 'Volver al autobús', 'Ir a la policía'],
             ['pt-aconteceu'],
             'Duda dice: «Liga para a empresa de ônibus. Às vezes alguém encontra e devolve».',
           ),
@@ -765,7 +765,7 @@ export const PT_A2_U05: PtUnitDef = {
           }),
           ex.shortAnswer(
             'Você caiu? O que aconteceu? (chovia)',
-            '¿Te caíste? ¿Qué pasó? (Respondé que estaba lloviendo y te caíste en la calle.)',
+            '¿Te caíste? ¿Qué pasó? (Responde que estaba lloviendo y te caíste en la calle.)',
             'Estava chovendo e eu caí na rua.',
             [
               'Estava chovendo e caí na rua.',

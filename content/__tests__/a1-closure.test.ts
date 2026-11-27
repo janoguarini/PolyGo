@@ -1,3 +1,4 @@
+import { withNeutralSpanish } from '../../scripts/neutral-patch';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -143,7 +144,7 @@ describe('agregados del mapa (content/en/a1/closure.ts)', () => {
   });
 
   it('la migración es la salida exacta del generador', () => {
-    expect(a1ClosureSql().sql).toBe(migration);
+    expect(a1ClosureSql().sql).toBe(withNeutralSpanish(migration));
   });
 
   describe('el validador detecta', () => {

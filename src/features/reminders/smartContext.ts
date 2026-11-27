@@ -5,6 +5,8 @@ import { getRank, isPlaced } from '@shared/ranking';
 import { useCurriculum, useStudyLanguage, useWordOfTheDay } from '@/features/learning/hooks';
 import { useDailyMissions } from '@/features/missions/api';
 import { useMyProfile } from '@/features/profile/hooks';
+import { rankLabel } from '@/features/ranked/strings';
+import { useInterfaceLanguage } from '@/i18n';
 import { useLanguageName } from '@/i18n/languages';
 import { flagPayload } from '@/lib/analytics';
 
@@ -28,6 +30,7 @@ export function useSmartInput(
   const wordOfDay = useWordOfTheDay().data;
   const study = useStudyLanguage();
   const languageName = useLanguageName();
+  const ui = useInterfaceLanguage();
   const [practiceTimes, setPracticeTimes] = useState<number[] | null>(null);
 
   // Se relee al cambiar la racha de hoy (o sea, después de practicar).
@@ -52,7 +55,9 @@ export function useSmartInput(
       .map((m) => m.target - m.progress)
       .filter((left) => left > 0 && left <= 2);
     const rank = rating && isPlaced(rating) ? getRank(rating.rating) : null;
-    const nextName = rank?.nextStepMin != null ? getRank(rank.nextStepMin).label : null;
+    // Nombre en el idioma de la interfaz («Silver II», «Prata II»…): `getRank().label` es el español
+    // de shared/ranking.ts, que comparte el servidor de partidas.
+    const nextName = rank?.nextStepMin != null ? rankLabel(getRank(rank.nextStepMin), ui) : null;
     const lesson = curriculum ? Object.values(curriculum.currentByLevel)[0] : undefined;
 
     return {
@@ -72,5 +77,16 @@ export function useSmartInput(
       practiceTimes,
       priority: normalizePriority(flagPayload(PRIORITY_FLAG)),
     };
-  }, [streakDays, activeToday, missions, rating, curriculum, wordOfDay, name, flag, practiceTimes]);
+  }, [
+    streakDays,
+    activeToday,
+    missions,
+    rating,
+    curriculum,
+    wordOfDay,
+    name,
+    flag,
+    practiceTimes,
+    ui,
+  ]);
 }

@@ -15,11 +15,15 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import { COSMETICS, RARITY_LABEL, type CosmeticItem } from '@shared/cosmetics';
+import { COSMETICS, type CosmeticItem } from '@shared/cosmetics';
 
 import { Avatar, PolyCoin, Text, colors, radii, spacing, themedStyles } from '@/design-system';
 import { SKIN_IMAGES } from '@/design-system/skinImages';
+import { cosmeticStrings } from '@/features/cosmetics/strings';
 import { RARITY_COLORS } from '@/features/cosmetics/visuals';
+import { useStrings } from '@/i18n';
+
+import { signupStrings } from './strings';
 
 /** La skin gratis con la que arranca toda cuenta nueva (la base sólo deja poner skins tuyas). */
 export const STARTER_SKIN = 'skin-classic';
@@ -30,10 +34,10 @@ const COLLECTION: CosmeticItem[] = COSMETICS.filter(
     c.kind === 'skin' && c.available && !c.retired && c.id !== STARTER_SKIN && SKIN_IMAGES[c.id],
 );
 
-function unlockLine(item: CosmeticItem): string {
-  if (item.source === 'plus') return `${item.name}: exclusiva de PolyGo Plus 👑`;
-  if (item.price) return `${item.name}: desbloqueala con ${item.price} Polys en la Tienda 🛍️`;
-  return `${item.name}: se gana jugando 🏆`;
+function unlockLine(item: CosmeticItem, t: (typeof signupStrings)['es'], name: string): string {
+  if (item.source === 'plus') return t.unlockPlus(name);
+  if (item.price) return t.unlockPrice(name, item.price);
+  return t.unlockPlay(name);
 }
 
 /**
@@ -42,7 +46,11 @@ function unlockLine(item: CosmeticItem): string {
  */
 export function SkinPicker({ selected }: { selected: string }) {
   const styles = useStyles();
-  const [hint, setHint] = useState<string | null>(null);
+  const t = useStrings(signupStrings);
+  const c = useStrings(cosmeticStrings);
+  // Se guarda la skin tocada (no el texto): si cambia el idioma, el aviso se traduce.
+  const [hintItem, setHintItem] = useState<CosmeticItem | null>(null);
+  const hint = hintItem ? unlockLine(hintItem, t, c.name(hintItem)) : null;
   const pulse = useSharedValue(1);
   useEffect(() => {
     pulse.value = withRepeat(
@@ -64,17 +72,17 @@ export function SkinPicker({ selected }: { selected: string }) {
         </Animated.View>
         <Animated.View entering={FadeInDown.delay(200).springify()} style={styles.freeTag}>
           <Text variant="overline" color="textStrong">
-            ✨ CLÁSICO · ¡GRATIS!
+            {t.freeTag}
           </Text>
         </Animated.View>
       </View>
 
       <View style={styles.sectionTitle}>
         <Text variant="heading" color="textStrong">
-          🔓 Desbloqueá más looks
+          {t.unlockMore}
         </Text>
         <Text variant="caption" color="textMuted">
-          Ganá Polys jugando y armá tu colección.
+          {t.unlockMoreHint}
         </Text>
       </View>
 
@@ -94,7 +102,7 @@ export function SkinPicker({ selected }: { selected: string }) {
             index={i}
             onPress={() => {
               void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
-              setHint(unlockLine(item));
+              setHintItem(item);
             }}
           />
         ))}
@@ -113,6 +121,10 @@ function LockedSkin({
   onPress: () => void;
 }) {
   const styles = useStyles();
+  const t = useStrings(signupStrings);
+  const c = useStrings(cosmeticStrings);
+  const name = c.name(item);
+  const rarity = c.rarity(item.rarity);
   const color = RARITY_COLORS[item.rarity];
   const shake = useSharedValue(0);
   const shaking = useAnimatedStyle(() => ({ transform: [{ translateX: shake.value }] }));
@@ -123,7 +135,7 @@ function LockedSkin({
     >
       <Pressable
         accessibilityRole="button"
-        accessibilityLabel={`${item.name}, ${RARITY_LABEL[item.rarity]}, bloqueada`}
+        accessibilityLabel={t.lockedA11y(name, rarity)}
         onPress={() => {
           shake.set(
             withSequence(
@@ -157,10 +169,10 @@ function LockedSkin({
           </View>
         </View>
         <Text variant="caption" color="textStrong" numberOfLines={1}>
-          {item.name}
+          {name}
         </Text>
         <Text variant="overline" style={{ color }} numberOfLines={1}>
-          {RARITY_LABEL[item.rarity].toUpperCase()}
+          {rarity.toUpperCase()}
         </Text>
         <View style={styles.price}>
           {item.source === 'plus' ? (
