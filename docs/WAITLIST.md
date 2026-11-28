@@ -77,7 +77,7 @@ Secretos / variables:
 "launch": { "mode": "waitlist" },
 "waitlist": {
   "endpoint": "https://wtymosvsymzoosxscnxi.supabase.co/functions/v1/waitlist-join",
-  "minCountToShow": 50,
+  "minCountToShow": 20,
   "consentVersion": "waitlist-2026-11-27"
 }
 ```
