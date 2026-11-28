@@ -30,6 +30,22 @@ export interface PlayerInfo {
    * en memoria; no lo lee ni lo escribe la base salvo como argumento de rush_common_unit_ids.
    */
   curriculumApi?: number;
+  /**
+   * Ranked compartido (docs/RANKED_SHARED_POOL.md): curso con el que estudia este idioma
+   * (public.user_course_for), p. ej. 'en-from-pt'. Decide en qué idioma ve los textos de apoyo; el
+   * contenido en el idioma que se aprende es el del curso canónico para todos. Ausente o desconocido:
+   * el canónico.
+   */
+  courseCode?: string | null;
+}
+
+/** Curso de public.courses (sólo lo que usa el servidor de partidas). */
+export interface CourseInfo {
+  code: string;
+  targetLanguage: string;
+  sourceLanguage: string;
+  /** El curso canónico del idioma: de él sale el contenido de Ranked. */
+  isDefault: boolean;
 }
 
 /** Un jugador humano de la partida, para calcular el vocabulario común (rush_common_unit_ids). */
@@ -119,7 +135,16 @@ export class StaleRatingError extends Error {
 export interface BattleStore {
   /** null si el usuario no existe o no completó el onboarding. */
   getPlayer(userId: string): Promise<PlayerInfo | null>;
-  loadWords(languageCode: string): Promise<RushWord[]>;
+  /**
+   * Ranked compartido: el catálogo de cursos (public.courses). Si falla, el servidor juega como antes
+   * de los cursos por idioma (un solo curso por idioma, textos canónicos).
+   */
+  courses(): Promise<CourseInfo[]>;
+  /**
+   * Palabras publicadas del idioma; con `courseCode`, sólo las de ese curso (words.course_code). Sin
+   * curso, todas las del idioma (como antes de los cursos por idioma).
+   */
+  loadWords(languageCode: string, courseCode?: string | null): Promise<RushWord[]>;
   /**
    * Fases C.7/C.8: unidades cuyo contenido pueden usar TODOS los humanos de la partida, cada uno con el
    * nivel de su cliente (public.rush_common_unit_ids). Sin conjunto, lanza: la partida no se crea
@@ -131,8 +156,12 @@ export interface BattleStore {
    * curso) más el banco propio de Word Rush (Fase 5, ver wordRushBank.ts; si no se puede leer, sólo
    * las lecciones). Sólo lectura; el filtro de
    * nivel y de ambigüedad lo hace shared/arcade.ts (sentencePool).
+   *
+   * Con `course` (ranked compartido): sólo las lecciones de ese curso; las frases del banco, con la
+   * consigna de su idioma de apoyo (word_rush_sentence_translations) si no es el canónico, y sin las
+   * que no la tienen. Sin curso: como antes.
    */
-  loadSentences(languageCode: string): Promise<ArcadeSentence[]>;
+  loadSentences(languageCode: string, course?: CourseInfo | null): Promise<ArcadeSentence[]>;
   /** protocolVersion: 2 (Word Rush) o 3 (Arcade), se guarda en battles.protocol_version. */
   startBattle(
     battleId: string,

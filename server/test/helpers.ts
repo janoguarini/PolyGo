@@ -5,6 +5,7 @@ import {
   ChallengeError,
   StaleRatingError,
   type BattleStore,
+  type CourseInfo,
   type PlayerInfo,
   type RushPlayer,
   type SettlementContextRow,
@@ -121,12 +122,28 @@ export class FakeStore implements BattleStore {
   /** battle id → protocol_version guardada al empezar. */
   protocolOf = new Map<string, number>();
 
-  async loadWords() {
-    return this.words;
+  /**
+   * Ranked compartido: catálogo de cursos (public.courses). Vacío por defecto: el servidor juega como
+   * antes de los cursos por idioma (todo el idioma, textos canónicos), y así los tests de siempre.
+   */
+  courseCatalog: CourseInfo[] = [];
+  /** Palabras y frases por curso (loadWords/loadSentences con curso); sin entrada, las de siempre. */
+  wordsByCourse = new Map<string, RushWord[]>();
+  sentencesByCourse = new Map<string, ArcadeSentence[]>();
+  /** Llamadas a loadWords: [idioma, curso]. */
+  wordLoads: [string, string | null][] = [];
+
+  async courses() {
+    return this.courseCatalog;
   }
 
-  async loadSentences() {
-    return this.sentences;
+  async loadWords(languageCode = 'en', courseCode?: string | null) {
+    this.wordLoads.push([languageCode, courseCode ?? null]);
+    return (courseCode && this.wordsByCourse.get(courseCode)) || this.words;
+  }
+
+  async loadSentences(_languageCode = 'en', course?: CourseInfo | null) {
+    return (course && this.sentencesByCourse.get(course.code)) || this.sentences;
   }
 
   /**

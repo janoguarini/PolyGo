@@ -18,6 +18,7 @@ import {
   StaleRatingError,
   type BattleStore,
   type BotBattleStart,
+  type CourseInfo,
   type Logger,
   type PlayerInfo,
   type SettleResponse,
@@ -58,6 +59,59 @@ async function loadWordRushBank(
     sentences: (sentences.data ?? []) as WordRushSentenceRow[],
     variants: (variants.data ?? []) as WordRushVariantRow[],
   };
+}
+
+/**
+ * Ranked compartido: las frases del banco de Word Rush del idioma con la consigna en `sourceLanguage`
+ * (public.word_rush_sentence_translations, supabase/pending/20270110120100). Sólo para los textos de
+ * apoyo de un curso que no es el canónico: el servidor las cruza por id con las canónicas. Lanza si
+ * cualquiera de las lecturas falla (también si la tabla no existe).
+ */
+export async function loadBankSupport(
+  db: SupabaseClient<Database>,
+  languageCode: string,
+  sourceLanguage: string,
+): Promise<ArcadeSentence[]> {
+  const untyped = db as unknown as SupabaseClient;
+  const [sentences, translations] = await Promise.all([
+    untyped
+      .from('word_rush_sentences')
+      .select('id, unit_id, tokens, answer, accepted_answers')
+      .eq('language_code', languageCode)
+      .eq('is_published', true),
+    untyped
+      .from('word_rush_sentence_translations')
+      .select('sentence_id, translation')
+      .eq('source_language', sourceLanguage),
+  ]);
+  if (sentences.error) throw sentences.error;
+  if (translations.error) throw translations.error;
+  const byId = new Map<string, string>();
+  for (const t of (translations.data ?? []) as { sentence_id: unknown; translation: unknown }[]) {
+    if (
+      typeof t.sentence_id === 'string' &&
+      typeof t.translation === 'string' &&
+      t.translation.trim()
+    ) {
+      byId.set(t.sentence_id, t.translation);
+    }
+  }
+  const out: ArcadeSentence[] = [];
+  for (const row of (sentences.data ?? []) as Record<string, unknown>[]) {
+    const translation = typeof row.id === 'string' ? byId.get(row.id) : undefined;
+    if (!translation || typeof row.answer !== 'string' || !Array.isArray(row.tokens)) continue;
+    out.push({
+      id: row.id as string,
+      tokens: (row.tokens as unknown[]).filter((t): t is string => typeof t === 'string'),
+      answer: row.answer,
+      acceptedAnswers: Array.isArray(row.accepted_answers)
+        ? (row.accepted_answers as unknown[]).filter((t): t is string => typeof t === 'string')
+        : [],
+      translation,
+      unitId: typeof row.unit_id === 'string' ? row.unit_id : null,
+    });
+  }
+  return out;
 }
 
 export function createSupabaseStore(
@@ -112,6 +166,19 @@ export function createSupabaseStore(
         );
       }
 
+      // Ranked compartido: el curso con que estudia este idioma (textos de apoyo). Si la función no está
+      // o falla, juega con los textos canónicos: nunca impide entrar a la cola.
+      let courseCode: string | null = null;
+      const { data: course, error: courseError } = await (db as unknown as SupabaseClient).rpc(
+        'user_course_for',
+        { p_user: userId, p_language: profile.target_language },
+      );
+      if (courseError) {
+        logger.warn('user_course_unavailable', { userId, err: courseError.message });
+      } else if (typeof course === 'string') {
+        courseCode = course;
+      }
+
       return {
         userId,
         username: profile.username,
@@ -124,17 +191,50 @@ export function createSupabaseStore(
         wins: rating.wins,
         botCalibrationLeft: Math.max(0, BOT_CALIBRATION.ratedGames - (used ?? 0)),
         recentScores,
+        courseCode,
       } satisfies PlayerInfo;
     },
 
-    async loadWords(languageCode) {
-      const { data, error } = await db
+    async courses() {
+      // courses todavía no está en los tipos generados (src/lib/database.generated.ts).
+      const { data, error } = await (db as unknown as SupabaseClient)
+        .from('courses')
+        .select('code, target_language, source_language, is_default');
+      if (error) throw error;
+      return ((data ?? []) as Record<string, unknown>[])
+        .filter(
+          (c) =>
+            typeof c.code === 'string' &&
+            typeof c.target_language === 'string' &&
+            typeof c.source_language === 'string',
+        )
+        .map((c): CourseInfo => ({
+          code: c.code as string,
+          targetLanguage: c.target_language as string,
+          sourceLanguage: c.source_language as string,
+          isDefault: c.is_default === true,
+        }));
+    },
+
+    async loadWords(languageCode, courseCode) {
+      // words.course_code (20270108120000) todavía no está en los tipos generados.
+      let query = (db as unknown as SupabaseClient)
         .from('words')
         .select('id, text, translation_es, unit_id, emoji')
         .eq('language_code', languageCode)
         .eq('is_published', true);
+      // Ranked compartido: sólo el curso pedido.
+      if (courseCode) query = query.eq('course_code', courseCode);
+      const { data, error } = await query;
       if (error) throw error;
-      return (data ?? []).map((w): RushWord => ({
+      type WordRow = {
+        id: string;
+        text: string;
+        translation_es: string;
+        unit_id: string | null;
+        emoji: string | null;
+      };
+      return ((data ?? []) as WordRow[]).map((w): RushWord => ({
         id: w.id,
         text: w.text,
         translationEs: w.translation_es,
@@ -156,13 +256,19 @@ export function createSupabaseStore(
       return new Set(data);
     },
 
-    async loadSentences(languageCode) {
+    async loadSentences(languageCode, course) {
       // Tres lecturas simples (unidades → lecciones → ejercicios), todas publicadas y del curso.
-      const { data: units, error: unitsError } = await db
+      let unitsQuery = (db as unknown as SupabaseClient)
         .from('curriculum_units')
         .select('id')
         .eq('language_code', languageCode)
         .eq('is_published', true);
+      // Ranked compartido: sólo las lecciones del curso pedido (curriculum_units.course_code).
+      if (course) unitsQuery = unitsQuery.eq('course_code', course.code);
+      const { data: units, error: unitsError } = (await unitsQuery) as {
+        data: { id: string }[] | null;
+        error: { message: string } | null;
+      };
       if (unitsError) throw unitsError;
       const unitIds = (units ?? []).map((u) => u.id);
       if (unitIds.length === 0) return [];
@@ -203,6 +309,27 @@ export function createSupabaseStore(
           translation: payload.translation,
           unitId: unitOf.get(e.lesson_id) ?? null,
         });
+      }
+
+      // Ranked compartido: un curso que no es el canónico sólo aporta sus textos de apoyo. Sus frases del
+      // banco son las del canónico (mismo id, mismo inglés) con la consigna en su idioma
+      // (word_rush_sentence_translations); sin esa consigna, la frase no está en la lista y el servidor
+      // muestra la canónica (y lo registra).
+      if (course && !course.isDefault) {
+        try {
+          return [
+            ...sentences,
+            ...(await loadBankSupport(db, languageCode, course.sourceLanguage)),
+          ];
+        } catch (err) {
+          logger.warn('word_rush_translations_unavailable', {
+            languageCode,
+            course: course.code,
+            err: String((err as { message?: unknown } | null)?.message ?? err),
+            code: (err as { code?: unknown } | null)?.code ?? null,
+          });
+          return sentences;
+        }
       }
 
       // Fase 5: el banco propio de Word Rush. Si no se puede leer (tablas sin crear, red, permisos),

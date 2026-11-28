@@ -201,6 +201,11 @@ export interface ArcadeSentence {
   translation: string;
   /** Unidad (curriculum_units.id): de ahí sale el nivel. */
   unitId: string | null;
+  /**
+   * Ranked compartido (docs/RANKED_SHARED_POOL.md): la consigna de esta misma frase (mismo inglés) en
+   * el curso de otro asiento, por código de curso. Ausente en las partidas de un solo curso.
+   */
+  support?: Readonly<Record<string, string>>;
 }
 
 /**
@@ -269,25 +274,51 @@ const LEADING_ARTICLE = /^(?:el|la|los|las|un|una|unos|unas|the|a|an|to)\s+/;
  * («la mañana» ~ «mañana»). Es deliberadamente amplio: ante la duda, dos palabras se tratan como
  * confundibles y nunca se usan una como «mentira» o distractor de la otra.
  */
-export function translationKeys(translation: string): string[] {
+export function translationKeys(translation: string, articles: RegExp = LEADING_ARTICLE): string[] {
   const keys = new Set<string>();
   for (const alternative of rushLabel(translation).split(/[/;]/)) {
     const meaning = norm(alternative.split(',')[0] ?? '')
-      .replace(/[¿?¡!.…]/g, '')
+      .replace(/[¿?¡!.…  ]/g, '')
       .replace(/\s+/g, ' ')
       .trim();
     if (!meaning) continue;
     keys.add(meaning);
-    const bare = meaning.replace(LEADING_ARTICLE, '');
+    const bare = meaning.replace(articles, '');
     if (bare) keys.add(bare);
   }
   return [...keys];
 }
 
 /** Si dos traducciones comparten algún significado (ver translationKeys). */
-export function translationsOverlap(a: string, b: string): boolean {
-  const keys = new Set(translationKeys(a));
-  return translationKeys(b).some((k) => keys.has(k));
+export function translationsOverlap(
+  a: string,
+  b: string,
+  articles: RegExp = LEADING_ARTICLE,
+): boolean {
+  const keys = new Set(translationKeys(a, articles));
+  return translationKeys(b, articles).some((k) => keys.has(k));
+}
+
+/**
+ * Artículos de los idiomas de apoyo de los cursos localizados (portugués, italiano, francés), además de
+ * los de siempre: sólo para comparar las traducciones de otro curso (ver supportOverlap).
+ */
+const SUPPORT_LEADING_ARTICLE =
+  /^(?:(?:el|la|los|las|un|una|unos|unas|the|a|an|to|o|os|as|um|uma|uns|umas|il|lo|gli|i|le|uno|les|une|des)\s+|l['’]\s*)/;
+
+/**
+ * Ranked compartido: si dos palabras se confunden en el idioma de apoyo de algún asiento. Sólo compara
+ * los cursos que tienen las dos (sin `support`, es siempre false: la regla de siempre no cambia).
+ */
+function supportOverlap(a: RushWord, b: RushWord): boolean {
+  if (!a.support || !b.support) return false;
+  for (const [course, translation] of Object.entries(a.support)) {
+    const other = b.support[course];
+    if (other !== undefined && translationsOverlap(translation, other, SUPPORT_LEADING_ARTICLE)) {
+      return true;
+    }
+  }
+  return false;
 }
 
 /**
@@ -304,10 +335,37 @@ function usableWords(words: readonly RushWord[]): RushWord[] {
     if (isDescriptiveTranslation(translation) || translationKeys(translation).length === 0)
       continue;
     seen.add(key);
-    result.push({ ...w, translationEs: translation });
+    // Ranked compartido: las traducciones de otros cursos, igual que la canónica (sin aclaraciones);
+    // una vacía se descarta y ese asiento ve la canónica (localizeChallenge).
+    let support: Record<string, string> | undefined;
+    if (w.support) {
+      support = {};
+      for (const [course, value] of Object.entries(w.support)) {
+        const label = rushLabel(value);
+        if (norm(label)) support[course] = label;
+      }
+    }
+    result.push({ ...w, translationEs: translation, ...(support ? { support } : {}) });
   }
   return result;
 }
+
+/** Cursos de otros asientos presentes en un mazo (ordenados), para localizar cada desafío. */
+function supportCourses(
+  items: readonly { support?: Readonly<Record<string, string>> }[],
+): string[] {
+  const courses = new Set<string>();
+  for (const item of items)
+    for (const course of Object.keys(item.support ?? {})) courses.add(course);
+  return [...courses].sort();
+}
+
+/** Traducción de una palabra o frase para un curso; sin ella, la canónica. */
+const supportOf = (
+  item: { support?: Readonly<Record<string, string>> },
+  course: string,
+  canonical: string,
+) => item.support?.[course] ?? canonical;
 
 // ---------------------------------------------------------------------------------------------
 // Desafíos
@@ -326,6 +384,8 @@ export type ArcadeChallenge =
       truthful: boolean;
       /** La traducción correcta (se revela al responder). */
       translation: string;
+      /** Ranked compartido: lo mismo en el idioma de apoyo de cada otro curso (ver localizeChallenge). */
+      localized?: Record<string, { candidate: string; translation: string }>;
     }
   | {
       index: number;
@@ -335,6 +395,8 @@ export type ArcadeChallenge =
       prompt: string;
       options: string[];
       correctOption: number;
+      /** Ranked compartido: las mismas opciones, en el mismo orden, por curso. */
+      localized?: Record<string, { options: string[] }>;
     }
   | {
       index: number;
@@ -347,6 +409,8 @@ export type ArcadeChallenge =
       right: string[];
       /** solution[i] = índice en `right` de la traducción de left[i]. */
       solution: number[];
+      /** Ranked compartido: las mismas traducciones, en el mismo orden, por curso. */
+      localized?: Record<string, { right: string[] }>;
     }
   | {
       index: number;
@@ -356,6 +420,8 @@ export type ArcadeChallenge =
       tokens: string[];
       translation: string;
       answers: string[];
+      /** Ranked compartido: la consigna por curso. */
+      localized?: Record<string, { translation: string }>;
     };
 
 /** Lo que el cliente ve de un desafío: nunca la respuesta. */
@@ -682,6 +748,14 @@ export function createChallengeStream(
   const sentenceDeck = cycler(sentences, random, (s) => s.id, options.recent?.sentences);
   const challenges: ArcadeChallenge[] = [];
   const distractorCount = rules.audioOptions - 1;
+  // Ranked compartido: los cursos de los otros asientos. Vacío en una partida de un solo curso: ningún
+  // desafío lleva `localized` y todo queda exactamente como siempre (misma fuente `random`, mismo orden).
+  const wordCourses = supportCourses([...usable, ...sentences]);
+  const sentenceCourses = wordCourses;
+  const localize = <T>(courses: readonly string[], make: (course: string) => T) =>
+    courses.length === 0
+      ? {}
+      : { localized: Object.fromEntries(courses.map((course) => [course, make(course)])) };
 
   const build = (index: number): ArcadeChallenge => {
     const kind = rotation.next();
@@ -691,14 +765,19 @@ export function createChallengeStream(
         const others = distinctFrom(usable, [word]);
         const truthful = others.length === 0 || random() < 0.5;
         const lie = others.length > 0 ? others[Math.floor(random() * others.length)]! : word;
+        const shown = truthful ? word : lie;
         return {
           index,
           kind,
           wordId: word.id,
           prompt: word.text,
-          candidate: truthful ? word.translationEs : lie.translationEs,
+          candidate: shown.translationEs,
           truthful,
           translation: word.translationEs,
+          ...localize(wordCourses, (course) => ({
+            candidate: supportOf(shown, course, shown.translationEs),
+            translation: supportOf(word, course, word.translationEs),
+          })),
         };
       }
       case 'audio': {
@@ -716,10 +795,10 @@ export function createChallengeStream(
             distractorCount,
           );
         }
-        const options = shuffle(
-          [word.translationEs, ...distractors.map((w) => w.translationEs)],
-          random,
-        );
+        // Se mezclan las palabras (misma permutación que mezclar sus traducciones): así cada curso
+        // recibe las mismas opciones en el mismo orden y la opción correcta tiene el mismo índice.
+        const optionWords = shuffle([word, ...distractors], random);
+        const options = optionWords.map((w) => w.translationEs);
         return {
           index,
           kind,
@@ -727,6 +806,9 @@ export function createChallengeStream(
           prompt: word.text,
           options,
           correctOption: options.indexOf(word.translationEs),
+          ...localize(wordCourses, (course) => ({
+            options: optionWords.map((w) => supportOf(w, course, w.translationEs)),
+          })),
         };
       }
       case 'connect': {
@@ -750,6 +832,9 @@ export function createChallengeStream(
           left: left.map((w) => w.text),
           right: right.map((w) => w.translationEs),
           solution: left.map((w) => right.indexOf(w)),
+          ...localize(wordCourses, (course) => ({
+            right: right.map((w) => supportOf(w, course, w.translationEs)),
+          })),
         };
       }
       case 'sentence': {
@@ -766,6 +851,9 @@ export function createChallengeStream(
           tokens,
           translation: sentence.translation,
           answers: [sentence.answer, ...sentence.acceptedAnswers],
+          ...localize(sentenceCourses, (course) => ({
+            translation: supportOf(sentence, course, sentence.translation),
+          })),
         };
       }
     }
@@ -807,6 +895,38 @@ export function generateChallenges(
   const stream = createChallengeStream(words, sentences, random, rules, options);
   stream.ensure(count);
   return stream.challenges.slice(0, count);
+}
+
+/**
+ * Ranked compartido (docs/RANKED_SHARED_POOL.md): el mismo desafío con los textos de apoyo del curso de
+ * un asiento. Mismo índice, mismo formato, mismo inglés, mismas fichas, mismo orden de opciones y misma
+ * respuesta correcta: sólo cambian las traducciones, así la corrección es la misma para los dos
+ * asientos. Sin curso, o sin textos para ese curso (el canónico o una partida de un solo curso),
+ * devuelve el desafío tal cual.
+ */
+export function localizeChallenge(
+  challenge: ArcadeChallenge,
+  course: string | null | undefined,
+): ArcadeChallenge {
+  if (!course) return challenge;
+  switch (challenge.kind) {
+    case 'swipe': {
+      const l = challenge.localized?.[course];
+      return l ? { ...challenge, candidate: l.candidate, translation: l.translation } : challenge;
+    }
+    case 'audio': {
+      const l = challenge.localized?.[course];
+      return l ? { ...challenge, options: [...l.options] } : challenge;
+    }
+    case 'connect': {
+      const l = challenge.localized?.[course];
+      return l ? { ...challenge, right: [...l.right] } : challenge;
+    }
+    case 'sentence': {
+      const l = challenge.localized?.[course];
+      return l ? { ...challenge, translation: l.translation } : challenge;
+    }
+  }
 }
 
 /** Vista para el cliente: sin respuesta. `solved` sólo en Connect. */
@@ -982,7 +1102,9 @@ function distinctFrom(words: readonly RushWord[], taken: readonly RushWord[]): R
       (t) =>
         w.id !== t.id &&
         norm(w.text) !== norm(t.text) &&
-        !translationsOverlap(w.translationEs, t.translationEs),
+        !translationsOverlap(w.translationEs, t.translationEs) &&
+        // Ranked compartido: tampoco se confunden en el idioma de apoyo de ningún asiento.
+        !supportOverlap(w, t),
     ),
   );
 }

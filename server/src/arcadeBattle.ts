@@ -3,6 +3,7 @@ import {
   arcadeScore,
   gradeArcade,
   isFrenzy,
+  localizeChallenge,
   toChallengeView,
   type ArcadeAnswerResult,
   type ArcadeRules,
@@ -46,6 +47,11 @@ interface ArcadeSeat {
   shownUpTo: number;
   /** Sólo bots: cómo juega. */
   brain: ArcadeBotBrain | null;
+  /**
+   * Ranked compartido: curso del jugador (sus textos de apoyo). null = los canónicos. El desafío es el
+   * mismo para todos; sólo cambia lo que se le muestra (localizeChallenge).
+   */
+  course: string | null;
 }
 
 /**
@@ -102,6 +108,7 @@ export class ArcadeBattle extends Battle {
         attempts: 0,
         shownUpTo: 0,
         brain: p.isBot ? new ArcadeBotBrain(p.rating, random) : null,
+        course: p.isBot ? null : (p.courseCode ?? null),
       });
     }
   }
@@ -138,7 +145,9 @@ export class ArcadeBattle extends Battle {
     }
     if (!Number.isInteger(challengeIndex)) return reply({ ok: false, code: 'invalid_payload' });
     if (challengeIndex !== state.current) return reply({ ok: false, code: 'stale_question' });
-    const challenge = this.stream.at(state.current);
+    // Se corrige el desafío que vio este jugador: mismos índices que el canónico, así que la corrección
+    // es la misma; sólo la solución revelada de Swipe sale en su idioma de apoyo.
+    const challenge = this.challengeFor(state, state.current);
     const outcome = gradeArcade(challenge, answer, new Set(state.solved.keys()));
     if (!outcome.valid) return reply({ ok: false, code: 'invalid_payload' });
     const result = this.resolve(seat, state, challenge, outcome);
@@ -200,10 +209,17 @@ export class ArcadeBattle extends Battle {
     this.stream.ensure(end);
     const views: ChallengeView[] = [];
     for (let i = state.current; i < end; i++) {
-      views.push(toChallengeView(this.stream.at(i), i === state.current ? [...state.solved] : []));
+      views.push(
+        toChallengeView(this.challengeFor(state, i), i === state.current ? [...state.solved] : []),
+      );
     }
     state.shownUpTo = Math.max(state.shownUpTo, end);
     return views;
+  }
+
+  /** El desafío `index` como lo ve este jugador (con los textos de apoyo de su curso). */
+  private challengeFor(state: ArcadeSeat, index: number): ArcadeChallenge {
+    return localizeChallenge(this.stream.at(index), state.course);
   }
 
   /** Puntúa con el reloj del servidor y avanza el progreso del jugador. */
@@ -268,7 +284,7 @@ export class ArcadeBattle extends Battle {
     // Pasó al siguiente: entra en la ventana el que viene después (el actual ya lo tenía).
     if (done && seat.connected) {
       const enteringIndex = state.current + this.arcadeRules.lookahead - 1;
-      const entering = this.stream.at(enteringIndex);
+      const entering = this.challengeFor(state, enteringIndex);
       state.shownUpTo = Math.max(state.shownUpTo, enteringIndex + 1);
       this.hooks.send(seat.info.userId, 'arcade:challenge', toChallengeView(entering));
     }

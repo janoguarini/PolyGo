@@ -46,10 +46,12 @@ import {
 import { systemClock, type Clock } from './clock';
 import { Matchmaker, type QueueEntry } from './matchmaking';
 import { settleBattle } from './settlement';
+import { canonicalCourse, seatCourse, withSentenceSupport, withWordSupport } from './sharedPool';
 import {
   ChallengeError,
   consoleLogger,
   type BattleStore,
+  type CourseInfo,
   type Logger,
   type PlayerInfo,
   type VerifyToken,
@@ -334,20 +336,70 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
     }
   }
 
-  async function wordsFor(languageCode: string): Promise<RushWord[]> {
-    const cached = wordCache.get(languageCode);
+  /** Sin curso (catálogo sin leer): como antes de los cursos por idioma, todo el idioma. */
+  const cacheKey = (languageCode: string, course: CourseInfo | null) =>
+    course ? `${languageCode}:${course.code}` : languageCode;
+
+  async function wordsFor(
+    languageCode: string,
+    course: CourseInfo | null = null,
+  ): Promise<RushWord[]> {
+    const key = cacheKey(languageCode, course);
+    const cached = wordCache.get(key);
     if (cached && clock.now() - cached.loadedAt < wordCacheMs) return cached.words;
-    const words = await store.loadWords(languageCode);
-    wordCache.set(languageCode, { words, loadedAt: clock.now() });
+    const words = course
+      ? await store.loadWords(languageCode, course.code)
+      : await store.loadWords(languageCode);
+    wordCache.set(key, { words, loadedAt: clock.now() });
     return words;
   }
 
-  async function sentencesFor(languageCode: string): Promise<ArcadeSentence[]> {
-    const cached = sentenceCache.get(languageCode);
+  async function sentencesFor(
+    languageCode: string,
+    course: CourseInfo | null = null,
+  ): Promise<ArcadeSentence[]> {
+    const key = cacheKey(languageCode, course);
+    const cached = sentenceCache.get(key);
     if (cached && clock.now() - cached.loadedAt < wordCacheMs) return cached.sentences;
-    const sentences = await store.loadSentences(languageCode);
-    sentenceCache.set(languageCode, { sentences, loadedAt: clock.now() });
+    const sentences = course
+      ? await store.loadSentences(languageCode, course)
+      : await store.loadSentences(languageCode);
+    sentenceCache.set(key, { sentences, loadedAt: clock.now() });
     return sentences;
+  }
+
+  /**
+   * Ranked compartido: catálogo de cursos (cacheado como el contenido). Si no se puede leer, null: la
+   * partida se arma como antes de los cursos por idioma (todo el idioma, textos canónicos).
+   */
+  let courseCache: { courses: CourseInfo[]; loadedAt: number } | null = null;
+  async function courseCatalog(): Promise<CourseInfo[] | null> {
+    if (courseCache && clock.now() - courseCache.loadedAt < wordCacheMs) return courseCache.courses;
+    try {
+      const courses = await store.courses();
+      courseCache = { courses, loadedAt: clock.now() };
+      return courses;
+    } catch (err) {
+      logger.warn('courses_unavailable', { err: String((err as Error)?.message ?? err) });
+      return null;
+    }
+  }
+
+  /** Lo que falta en un curso de apoyo (el asiento ve el texto canónico): se registra, no se bloquea. */
+  function logMissingSupport(
+    languageCode: string,
+    course: string,
+    kind: 'words' | 'sentences',
+    missing: readonly string[],
+  ) {
+    if (missing.length === 0) return;
+    logger.warn('shared_pool_support_missing', {
+      languageCode,
+      course,
+      kind,
+      count: missing.length,
+      sample: missing.slice(0, 10),
+    });
   }
 
   /**
@@ -374,16 +426,55 @@ export function createBattleServer(options: BattleServerOptions): BattleServer {
       humans.map((p) => ({ userId: p.userId, curriculumApi: p.curriculumApi ?? 0 })),
     );
     const inUnits = (unitId: string | null | undefined) => unitId != null && units.has(unitId);
-    const words = (await wordsFor(languageCode)).filter((w) => inUnits(w.unitId));
+    // Ranked compartido (docs/RANKED_SHARED_POOL.md): el contenido sale siempre del curso canónico del
+    // idioma (rush_common_unit_ids devuelve sus unidades), igual para todos los asientos. Los asientos de
+    // otro curso del mismo idioma reciben además sus textos de apoyo (support). Una partida de un solo
+    // curso canónico no lleva support: todo queda como siempre.
+    const catalog = await courseCatalog();
+    const canonical = canonicalCourse(catalog, languageCode);
+    const seats = players.map((p) => ({ player: p, course: seatCourse(catalog, languageCode, p) }));
+    const foreign = [
+      ...new Map(
+        seats.flatMap((s) => (s.course ? [[s.course.code, s.course] as const] : [])),
+      ).values(),
+    ];
+    // Lo que cada asiento ve sale de su `courseCode` (ArcadeBattle): null = textos canónicos.
+    players = seats.map(({ player: p, course }) =>
+      p.isBot || (p.courseCode ?? null) === (course?.code ?? null)
+        ? p
+        : { ...p, courseCode: course?.code ?? null },
+    );
+    let words = (await wordsFor(languageCode, canonical)).filter((w) => inUnits(w.unitId));
     let battle: Battle;
     if (protocolVersion === ARCADE_PROTOCOL_VERSION) {
+      let canonicalSentences = (await sentencesFor(languageCode, canonical)).filter((s) =>
+        inUnits(s.unitId),
+      );
+      for (const course of foreign) {
+        const w = withWordSupport(words, course.code, await wordsFor(languageCode, course));
+        words = w.words;
+        logMissingSupport(languageCode, course.code, 'words', w.missing);
+        const s = withSentenceSupport(
+          canonicalSentences,
+          course.code,
+          await sentencesFor(languageCode, course),
+        );
+        canonicalSentences = s.sentences;
+        // Sólo las que pueden salir (nivel, fichas, conectores): el resto no importa.
+        logMissingSupport(
+          languageCode,
+          course.code,
+          'sentences',
+          sentencePool(
+            canonicalSentences.filter((x) => s.missing.includes(x.id)),
+            languageCode,
+            rating,
+          ).map((x) => x.id),
+        );
+      }
       // Word Rush: la misma secuencia para todos, como flujo continuo. Las frases pasan por el mismo
       // filtro de unidades; sin frases suficientes, Sentence Rush queda fuera (nunca se inventan).
-      const sentences = sentencePool(
-        (await sentencesFor(languageCode)).filter((s) => inUnits(s.unitId)),
-        languageCode,
-        rating,
-      );
+      const sentences = sentencePool(canonicalSentences, languageCode, rating);
       if (aborted()) return null;
       const stream = createChallengeStream(
         rushPool(words, rating),
