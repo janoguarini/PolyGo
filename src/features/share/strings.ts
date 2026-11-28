@@ -119,4 +119,32 @@ export const shareStrings = defineStrings({
     levelDoneTitle: (level: string) => `Hai finito ${level}!`,
     streakMilestone: (days: number) => `Traguardo di ${days} giorni!`,
   },
+  fr: {
+    rankOverline: 'NOUVEAU RANG',
+    streakOverline: 'SÉRIE',
+    levelOverline: 'NIVEAU TERMINÉ',
+    rankHeadline: (rank: string) => `J’ai atteint ${rank} !`,
+    rankSub: 'en parties Ranked',
+    streakHeadline: (days: number) => `${days} jours d’affilée !`,
+    streakSub: (language: string) => `en ${language}`,
+    levelHeadline: (level: string) => `J’ai terminé le niveau ${level} !`,
+    levelSub: (language: string) => `en ${language}`,
+    joinWithCode: (code: string) => `Rejoins-moi avec mon code ${code}`,
+    shareTitle: 'Dis-le à tes amis !',
+    shareBody: (polys: number) => `Partage ton succès et gagne ${polys} Polys.`,
+    shareBodyDone: 'Partage ton succès avec tes amis.',
+    shareButton: (polys: number) => `Partager · +${polys}`,
+    shareButtonDone: 'Partager',
+    notNow: 'Pas maintenant',
+    shareError: 'Impossible de partager. Réessaie.',
+    shareDialogTitle: 'Partager un succès',
+    shareMessage: (code: string | null) =>
+      code
+        ? `Regarde mon succès sur PolyGo ! Rejoins-moi avec mon code ${code} 👉 https://polygoidiomas.com`
+        : 'Regarde mon succès sur PolyGo ! 👉 https://polygoidiomas.com',
+    cardA11y: (headline: string, sub: string) => `Carte à partager : ${headline} ${sub}`,
+    shareAchievement: 'Partager le succès',
+    levelDoneTitle: (level: string) => `Tu as terminé ${level} !`,
+    streakMilestone: (days: number) => `Cap des ${days} jours !`,
+  },
 });

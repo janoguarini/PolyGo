@@ -41,7 +41,7 @@ test('set_interface_language acepta los cuatro idiomas y rechaza el resto', asyn
     await rpc(u, 'select public.set_interface_language($1)', [lang]);
     assert.equal(await uiOf(u), lang);
   }
-  for (const bad of ['pt', 'fr', 'PT-BR', '']) {
+  for (const bad of ['pt', 'de', 'FR', 'PT-BR', '']) {
     await assert.rejects(
       rpc(u, 'select public.set_interface_language($1)', [bad]),
       /interface_language_invalid/,
@@ -84,7 +84,7 @@ test('complete_onboarding_v2 acepta pt-BR e it', async () => {
   await assert.rejects(
     rpc(
       bad,
-      `select public.complete_onboarding_v2('v2_bad_ui', 'bolt', 'en-from-es', 'A1', 10::smallint, 'fr')`,
+      `select public.complete_onboarding_v2('v2_bad_ui', 'bolt', 'en-from-es', 'A1', 10::smallint, 'de')`,
     ),
     /interface_language_invalid/,
   );

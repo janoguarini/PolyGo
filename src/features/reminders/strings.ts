@@ -106,4 +106,28 @@ export const reminderStrings = defineStrings({
     blocked: 'Le notifiche di PolyGo sono disattivate nelle impostazioni del telefono.',
     openSettings: 'Apri impostazioni',
   },
+  fr: {
+    generic: [
+      { title: 'C’est l’heure de pratiquer', body: 'Une petite leçon et ta série gagne un jour.' },
+      { title: 'Ton parcours t’attend', body: 'Cinq minutes aujourd’hui, ça change tout.' },
+      { title: 'Reviens sur PolyGo', body: 'Révise tes mots avant de les oublier.' },
+    ],
+    streakAlertTitle: (hours: number) =>
+      `🔥 Plus que ${hours} ${hours === 1 ? 'heure' : 'heures'} pour ta série`,
+    streakAlertSaved: (days: string) =>
+      `Fais une leçon pour prolonger ta série de ${days}. Sinon, un protecteur sera utilisé.`,
+    streakAlertBody: (days: string) =>
+      `Fais une leçon avant minuit pour ne pas perdre ta série de ${days}.`,
+    dailyChannelName: 'Rappel quotidien',
+    dailyChannelDescription: 'Un rappel par jour pour garder ta série.',
+    streakChannelName: 'Série en danger',
+    streakChannelDescription: 'Te prévient quand il reste peu d’heures avant la fin de ta série.',
+    dailyReminder: 'Rappel quotidien',
+    enabledHint: (time: string) => `On te prévient à ${time} si tu n’as pas encore pratiqué.`,
+    disabledHint: 'Un rappel par jour pour garder ta série.',
+    schedule: 'Horaire',
+    denied: 'Sans l’autorisation des notifications, on ne peut pas te le rappeler.',
+    blocked: 'Les notifications de PolyGo sont désactivées dans les réglages du téléphone.',
+    openSettings: 'Ouvrir les réglages',
+  },
 });

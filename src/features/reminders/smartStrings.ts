@@ -247,4 +247,63 @@ export const smartStrings = defineStrings({
     smartHint:
       'Un secondo avviso all’ora in cui di solito fai pratica, con ciò che ti serve di più quel giorno.',
   },
+  fr: {
+    streak: (days: number): [Msg, Msg] => [
+      {
+        title: `🔥 Ta série de ${days} jours dépend d’aujourd’hui`,
+        body: 'Une petite leçon et elle continue de grandir.',
+      },
+      {
+        title: `🔥 ${days} jours d’affilée. Tu t’arrêtes ?`,
+        body: 'Deux minutes suffisent pour la garder en vie.',
+      },
+    ],
+    mission: (left: number): [Msg, Msg] => [
+      {
+        title: '🎯 Mission presque terminée',
+        body: `Encore ${left} pour finir la mission du jour.`,
+      },
+      { title: '🎯 Tu y es presque !', body: 'Termine ta mission du jour et gagne des Polys.' },
+    ],
+    chest: (): [Msg, Msg] => [
+      {
+        title: '🎁 Ton coffre t’attend',
+        body: 'Missions terminées : ouvre-le et découvre ton gain.',
+      },
+      { title: '🎁 Un coffre reste à ouvrir', body: 'Et si c’était le gros lot aujourd’hui ?' },
+    ],
+    rank: (points: number, next: string): [Msg, Msg] => [
+      {
+        title: `⚔️ Plus que ${points} ELO avant ${next}`,
+        body: 'Une partie de 60 secondes ?',
+      },
+      {
+        title: `⚔️ ${next} est tout proche`,
+        body: `Encore ${points} ${points === 1 ? 'point' : 'points'}. Une victoire et tu montes.`,
+      },
+    ],
+    lesson: (title: string, language: string): [Msg, Msg] => [
+      { title: '📚 Ta prochaine leçon', body: `« ${title} » t’attend. Continue ton ${language} !` },
+      { title: `📚 « ${title} » est prête`, body: 'Cinq minutes et c’est fini.' },
+    ],
+    word: (flag: string, word: string): [Msg, Msg] => [
+      {
+        title: `${flag} Mot du jour : ${word}`,
+        body: 'Tu sais ce que ça veut dire ? Viens voir.',
+      },
+      { title: `${flag} Que veut dire « ${word} » ?`, body: 'Le mot du jour t’attend.' },
+    ],
+    comeback: (language: string): [Msg, Msg] => [
+      {
+        title: '🦊 Tu me manques !',
+        body: `Ton ${language} t’attend. Une leçon et c’est reparti.`,
+      },
+      { title: '🦊 On continue ?', body: `Reviens à ton ${language} avec une petite leçon.` },
+    ],
+    smartChannelName: 'Rappels personnalisés',
+    smartChannelDescription: 'Un rappel par jour à ton heure de pratique, avec ce qui t’aide le plus.',
+    smartToggle: 'Rappels intelligents',
+    smartHint:
+      'Un deuxième rappel à l’heure où tu pratiques d’habitude, avec ce qui t’aide le plus ce jour-là.',
+  },
 });

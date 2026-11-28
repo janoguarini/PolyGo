@@ -1,4 +1,6 @@
-# Interfaz en cuatro idiomas (es / en / pt-BR / it): guía
+# Interfaz en cinco idiomas (es / en / pt-BR / it / fr): guía
+
+> 2026-11-27: se agregó el francés (`fr`, Francia, «tu»). Mismo modelo que pt-BR / it: `defineStrings` exige `fr`, `locales/fr.json`, `supportedLocales`, avisos de `notify-battle-invite`. La base acepta `fr` desde `20270108120000_courses_per_language.sql` (sin aplicar). Tipografía francesa: espacio duro (U+00A0) antes de ? ! : ; % y dentro de « ».
 
 Decisión del dueño (2026-11-21): toda la app en inglés además de en español. Ampliación (2026-11-26):
 portugués de Brasil e italiano. Infraestructura en `src/i18n/` (sin dependencias). Plan:
@@ -100,7 +102,7 @@ pick(ui, { es: 'Hola', en: 'Hi', 'pt-BR': 'Oi', it: 'Ciao' });
   inicio («Start lesson»). Etiquetas en mayúsculas se mantienen si el español las tiene.
 - Español neutro con tuteo (puedes, toca, elige; nunca voseo): docs/NEUTRAL_SPANISH.md. Lo controla
   `shared/neutralSpanish.ts` en los tests.
-- Portugués de Brasil con «você», tono de app de juegos. Italiano informal («tu»).
+- Portugués de Brasil con «você», tono de app de juegos. Italiano informal («tu»). Francés de Francia, informal («tu»).
 - No traducir literalmente: «Seguí practicando» → «Keep practicing» / «Continue praticando» /
   «Continua a esercitarti».
 - Marca: siempre **PolyGo** (también PolyGo Plus). Polys, Ranked, Word Rush, ELO, XP quedan igual. Los
@@ -117,6 +119,8 @@ pick(ui, { es: 'Hola', en: 'Hi', 'pt-BR': 'Oi', it: 'Ciao' });
   | repaso                | revisão                                                                | ripasso                                                                  |
   | camino                | trilha                                                                 | percorso                                                                 |
   | Bronce … Gran Maestro | Bronze, Prata, Ouro, Platina, Esmeralda, Diamante, Mestre, Grão-Mestre | Bronzo, Argento, Oro, Platino, Smeraldo, Diamante, Maestro, Gran Maestro |
+
+- Francés: racha → série · rango → rang · logros → succès · cofre → coffre · repaso → révision · camino → parcours · protector → protection · rangos Bronze, Argent, Or, Platine, Émeraude, Diamant, Maître, Grand Maître.
 
 ## Qué no se toca
 

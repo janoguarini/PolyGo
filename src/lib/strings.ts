@@ -260,4 +260,70 @@ export const errorStrings = defineStrings({
     network: 'Nessuna connessione con il server. Controlla la tua connessione internet.',
     unexpectedRetry: 'Si è verificato un errore imprevisto. Riprova.',
   },
+  fr: {
+    auth: {
+      invalid_credentials: 'E-mail ou mot de passe incorrect.',
+      email_not_confirmed:
+        'Confirme ton e-mail avant de te connecter. Jette un œil à ta boîte de réception.',
+      user_already_exists: 'Un compte existe déjà avec cet e-mail.',
+      email_exists: 'Un compte existe déjà avec cet e-mail.',
+      weak_password: 'Ce mot de passe est trop faible.',
+      over_email_send_rate_limit: 'Trop d’e-mails envoyés. Attends quelques minutes.',
+      over_request_rate_limit: 'Trop de tentatives. Attends quelques minutes.',
+      same_password: 'Le nouveau mot de passe doit être différent de l’ancien.',
+      otp_expired: 'Ce lien a expiré. Demandes-en un nouveau.',
+      flow_state_not_found:
+        'Ce lien n’est plus valide. Demandes-en un nouveau depuis cet appareil.',
+      flow_state_expired: 'La connexion a pris trop de temps. Réessaie.',
+      bad_code_verifier: 'Impossible de terminer la connexion. Réessaie.',
+      provider_disabled: 'Ce mode de connexion n’est pas disponible pour l’instant.',
+      oauth_failed: 'Google n’a pas pu terminer la connexion. Réessaie.',
+      oauth_invalid_callback: 'La réponse de Google n’est pas valide. Réessaie.',
+      oauth_browser_busy:
+        'Impossible d’ouvrir le navigateur. Ferme les autres fenêtres de connexion et réessaie.',
+      oauth_unavailable:
+        'Cette version de l’appli ne permet pas encore de se connecter avec Google. Mets-la à jour ou utilise ton e-mail.',
+      apple_failed: 'Apple n’a pas pu terminer la connexion. Réessaie.',
+      apple_invalid_token: 'Impossible de vérifier ton compte Apple. Réessaie.',
+      apple_unavailable:
+        'Cette version de l’appli ne permet pas encore de se connecter avec Apple. Mets-la à jour ou utilise ton e-mail.',
+    },
+    rpc: {
+      username_taken: 'Ce nom d’utilisateur est déjà pris.',
+      language_unavailable: 'Cette langue n’est pas encore disponible.',
+      not_authenticated: 'Ta session a expiré. Reconnecte-toi.',
+      cannot_report_self: 'Tu ne peux pas signaler ta propre photo.',
+      report_rate_limited: 'Tu as envoyé beaucoup de signalements aujourd’hui. Réessaie demain.',
+      invalid_reason: 'Choisis un motif pour le signalement.',
+      missions_incomplete: 'Il te reste des missions avant de pouvoir ouvrir le coffre.',
+      already_claimed: 'Tu as déjà ouvert le coffre du jour.',
+      insufficient_polys: 'Tu n’as pas assez de Polys.',
+      freezes_full: 'Tu as déjà le maximum de protections.',
+      item_owned: 'Tu l’as déjà.',
+      item_not_for_sale: 'Cet objet ne s’achète pas avec des Polys.',
+      item_not_found: 'Cet objet n’est plus dans la boutique.',
+      item_not_owned: 'Tu dois d’abord l’obtenir.',
+      cosmetic_incompatible:
+        'Ce cadre ou ce fond ne va pas avec ton avatar. Choisis-en un compatible.',
+      streak_not_repairable: 'Il n’y a plus de série à récupérer.',
+      cannot_block_self: 'Tu ne peux pas te bloquer toi-même.',
+      block_limit: 'Tu as atteint le maximum d’utilisateurs bloqués.',
+      user_not_found: 'Ce joueur n’existe plus.',
+      cannot_friend_self: 'Tu ne peux pas t’ajouter toi-même.',
+      friend_limit: 'Tu as atteint le maximum de 200 amis.',
+      friend_request_rate_limited:
+        'Tu as envoyé beaucoup de demandes aujourd’hui. Réessaie demain.',
+      friend_request_not_found: 'Cette demande n’est plus disponible.',
+      challenge_incomplete: 'Tu n’as pas encore terminé ce défi.',
+      not_friends: 'Tu ne peux inviter que des joueurs de ta liste d’amis.',
+      language_mismatch:
+        'Ton ami apprend une autre langue, donc vous ne pouvez pas jouer ensemble.',
+      match_rate_limited: 'Tu as envoyé beaucoup de défis cette dernière heure. Attends un peu.',
+      no_energy:
+        'Tu n’avais plus d’énergie avant l’enregistrement (tu l’as utilisée sur un autre appareil ?). Tu en récupères 1 toutes les 3 heures.',
+    },
+    unexpected: 'Une erreur inattendue s’est produite.',
+    network: 'Impossible de joindre le serveur. Vérifie ta connexion internet.',
+    unexpectedRetry: 'Une erreur inattendue s’est produite. Réessaie.',
+  },
 });

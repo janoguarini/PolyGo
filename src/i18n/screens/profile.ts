@@ -18,4 +18,8 @@ export const profileScreenStrings = defineStrings({
     learning: 'Apprendimento',
     competitiveHistory: 'Storico competitivo',
   },
+  fr: {
+    learning: 'Apprentissage',
+    competitiveHistory: 'Historique compétitif',
+  },
 });

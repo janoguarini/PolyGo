@@ -34,4 +34,12 @@ export const forgotPasswordStrings = defineStrings({
     send: 'Invia link',
     resend: 'Invia di nuovo il link',
   },
+  fr: {
+    title: 'Mot de passe oublié',
+    subtitle: 'On t’envoie un lien pour choisir un nouveau mot de passe.',
+    email: 'E-mail',
+    sent: 'Si un compte existe avec cet e-mail, tu vas recevoir un lien. Ouvre-le sur ce téléphone.',
+    send: 'Envoyer le lien',
+    resend: 'Renvoyer le lien',
+  },
 });

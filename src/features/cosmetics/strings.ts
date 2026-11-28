@@ -381,6 +381,119 @@ const STATUS_IT: Record<keyof typeof STATUS_ES, string> = {
   season: 'Stagione',
 };
 
+const NAMES_FR: Record<CosmeticId, string> = {
+  'skin-classic': 'Classique',
+  'skin-ninja': 'Ninja',
+  'skin-explorer': 'Explorateur',
+  'skin-academic': 'Érudit',
+  'skin-samurai': 'Samouraï',
+  'skin-cyber': 'Cyber',
+  'skin-guardian': 'Gardien',
+  'skin-omega': 'Oméga',
+  'skin-social-explorer': 'Explorateur social',
+  'skin-team-legend': 'Légende de l’équipe',
+  'skin-aztec': 'Aztèque',
+  'skin-dragon': 'Dragon',
+  'skin-king': 'Roi',
+  'skin-titan': 'Titan',
+  'skin-diamond': 'Diamant',
+  frame_basic: 'Basique',
+  frame_leaf: 'Feuille',
+  frame_stellar: 'Stellaire',
+  frame_crystal: 'Cristal',
+  frame_elite: 'Élite',
+  frame_diamond: 'Diamant',
+  frame_master: 'Maître',
+  frame_plus: 'PolyGo Plus',
+  frame_referral_legend: 'Légende',
+  frame_event: 'Événement',
+  frame_rank: 'Cadre de rang',
+  bg_solid: 'Uni',
+  bg_mountain: 'Montagne',
+  bg_forest: 'Forêt',
+  bg_aurora: 'Aurore',
+  bg_neon: 'Ville néon',
+  bg_space: 'Espace',
+  bg_temple: 'Temple',
+  bg_galaxy: 'Galaxie',
+  bg_dimension: 'Dimension',
+  frame_mint: 'Menthe',
+  frame_coral: 'Corail',
+  frame_sky: 'Ciel',
+  frame_sun: 'Soleil',
+  frame_sunset: 'Coucher de soleil',
+  frame_ocean: 'Océan',
+  frame_aurora: 'Aurore classique',
+  frame_galaxy: 'Galaxie classique',
+  frame_fire: 'Feu',
+  frame_crown: 'Royauté',
+  frame_legend: 'Légende de la saison',
+  frame_founder: 'Fondateur',
+  bg_ocean: 'Grands fonds',
+  bg_wine: 'Bordeaux',
+  bg_sunset: 'Coucher de soleil classique',
+  bg_gold: 'Or',
+};
+
+const RARITY_FR: Record<CosmeticRarity, string> = {
+  free: 'Gratuit',
+  common: 'Commun',
+  rare: 'Rare',
+  epic: 'Épique',
+  legendary: 'Légendaire',
+  mythic: 'Mythique',
+  exclusive: 'Exclusif',
+  limited: 'Limité',
+};
+
+const SOURCE_FR: Record<CosmeticSource, string> = {
+  free: 'Gratuit',
+  polys: 'En boutique',
+  season: 'Récompense de saison',
+  premium: 'Édition spéciale',
+  plus: 'Exclusivité PolyGo Plus',
+  referral: 'Récompense de parrainage',
+  event: 'Récompense d’événement',
+  rank: 'Progression compétitive',
+};
+
+function unlockHintFr(item: CosmeticItem): string {
+  if (!item.available) return 'Visuel en préparation : bientôt disponible.';
+  switch (item.source) {
+    case 'free':
+      return 'Disponible pour tout le monde.';
+    case 'polys':
+      return `Débloque-le pour ${item.price} Polys.`;
+    case 'plus':
+      return 'Disponible pour les abonnés PolyGo Plus.';
+    case 'referral': {
+      const n = REFERRAL_ITEM_MILESTONE[item.id as CosmeticId] ?? 10;
+      return `Invite ${n} amis valides pour le débloquer.`;
+    }
+    case 'rank':
+      return 'Gagne une partie classée pour étrenner ton cadre de rang.';
+    case 'event':
+      return 'Obtenu lors d’un événement à durée limitée.';
+    case 'season':
+      return 'C’était une récompense de saison.';
+    case 'premium':
+      return 'Édition spéciale.';
+  }
+}
+
+const nameFr = nameIn(NAMES_FR);
+
+const STATUS_FR: Record<keyof typeof STATUS_ES, string> = {
+  equipped: 'Équipé',
+  unlocked: 'Débloqué',
+  plus: 'Exclusivité Plus',
+  referral: 'Parrainages',
+  event: 'Événement',
+  rank: 'Ranked',
+  missing_art: 'Bientôt',
+  season: 'Saison',
+};
+
 const statusText = (table: Record<keyof typeof STATUS_ES, string>) => (status: CosmeticStatus) => {
   switch (status.kind) {
     case 'equipped':
@@ -528,5 +641,39 @@ export const cosmeticStrings = defineStrings({
       'Si ottengono solo competendo. Con la Cornice di rango equipaggiata, la tua cornice cambia da sola in base al tuo ELO reale.',
     ladderA11y: (tier: string, reached: boolean, current: boolean) =>
       `${tier}: ${reached ? (current ? 'il tuo rango attuale' : 'raggiunto') : `bloccato. Raggiungi il rango ${tier} per sbloccarlo`}`,
+  },
+  fr: {
+    name: (item: Pick<CosmeticItem, 'id' | 'name'>) => nameFr(item.id, item.name),
+    nameFromEs: (name: string) => nameFromEsIn(nameFr)(name),
+    rarity: (r: CosmeticRarity) => RARITY_FR[r],
+    source: (s: CosmeticSource) => SOURCE_FR[s],
+    unlockHint: (item: CosmeticItem) => unlockHintFr(item),
+    status: statusText(STATUS_FR),
+    tileA11y: (name: string, rarity: string, status: string) => `${name}, ${rarity}. ${status}`,
+    pricePolys: (price: number) => `${price} Polys`,
+    none: 'Aucun',
+    noneA11y: (equipped: boolean) => `Aucun${equipped ? ', équipé' : ''}`,
+    combos: (skins: string) => `Va avec Classique, les avatars de base et ${skins}.`,
+    stored: (name: string) =>
+      `${name} est à toi ! Il est dans ton inventaire : tu peux l’utiliser avec un avatar assorti.`,
+    unlockFor: (price: number) => `Débloquer pour ${price}`,
+    buyHint: (price: number, balance: number) =>
+      `Coûte ${price} Polys. Tu en as ${balance}. S’il va avec ton avatar, il est équipé dès l’achat.`,
+    previewBuy: 'PREVIEW : les achats sont désactivés.',
+    short: (missing: number) =>
+      `Il te manque ${missing} Polys. Gagne-les avec les missions, les leçons et les séries.`,
+    plusExclusive: 'Exclusivité PolyGo Plus',
+    referralReward: 'Récompense de parrainage',
+    plusBody: (name: string) =>
+      `${name} est le look de celles et ceux qui apprennent avec Plus : aucun avantage en ranked, et il reste actif tant que ton abonnement l’est.`,
+    referralBody: (name: string) =>
+      `${name} ne s’achète ni avec des Polys, ni avec de l’argent, ni avec Plus. Il est réservé à celles et ceux qui font venir des amis sur PolyGo.`,
+    learnPlus: 'Découvrir PolyGo Plus',
+    inviteFriends: 'Inviter des amis',
+    competitiveFrames: 'Cadres compétitifs',
+    competitiveBody:
+      'Ils se gagnent uniquement en compétition. Avec le Cadre de rang équipé, ton cadre change tout seul selon ton vrai ELO.',
+    ladderA11y: (tier: string, reached: boolean, current: boolean) =>
+      `${tier} : ${reached ? (current ? 'ton rang actuel' : 'atteint') : `verrouillé. Atteins le rang ${tier} pour le débloquer`}`,
   },
 });

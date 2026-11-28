@@ -40,4 +40,14 @@ export const compatStrings = defineStrings({
     goToStore: 'Vai allo store',
     retry: 'Ho aggiornato, riprova',
   },
+  fr: {
+    title: 'Mets à jour PolyGo',
+    defaultMessage:
+      'Une nouvelle version de PolyGo est disponible. Mets-la à jour depuis le store pour continuer à apprendre.',
+    yourVersion: 'TA VERSION',
+    unknownVersion: 'inconnue',
+    minVersion: 'VERSION MINIMALE',
+    goToStore: 'Aller au store',
+    retry: 'C’est fait, réessayer',
+  },
 });

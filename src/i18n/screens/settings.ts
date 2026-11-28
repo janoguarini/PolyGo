@@ -249,4 +249,70 @@ export const settingsStrings = defineStrings({
     openPhoneSettings: 'Apri le impostazioni del telefono',
     challengePushA11y: 'Avvisami con una notifica quando un amico mi sfida',
   },
+  fr: {
+    title: 'Réglages',
+    reminder: 'RAPPEL',
+    appearance: 'APPARENCE',
+    themes: {
+      dark: { title: 'Sombre', description: 'Fond sombre, le classique de PolyGo.' },
+      light: { title: 'Clair', description: 'Fond clair, idéal en pleine lumière.' },
+      system: {
+        title: 'Automatique',
+        description: 'Suit le mode clair ou sombre de ton téléphone.',
+      },
+    },
+    interfaceLanguage: 'LANGUE DE L’APPLI',
+    interfaceLanguageHint:
+      'Boutons, écrans et messages. Ça ne change pas ton cours : chaque cours est enseigné depuis sa propre langue.',
+    sound: 'SON',
+    soundEffects: 'Effets sonores',
+    soundEffectsHint:
+      'Sons pour les bonnes et mauvaises réponses et pour la fin d’une leçon ou d’une partie. La prononciation est toujours audible.',
+    privacy: 'CONFIDENTIALITÉ',
+    usageData: 'Partager les données d’utilisation',
+    usageDataHint:
+      'Ça nous aide à améliorer PolyGo : les écrans que tu utilises et où tu bloques. Jamais ton e-mail ni tes réponses.',
+    visibility: {
+      public: {
+        title: 'Public',
+        description: 'N’importe quel joueur voit ton profil et tes statistiques.',
+      },
+      friends: {
+        title: 'Amis uniquement',
+        description: 'Tes amis voient tout ; les autres, seulement le nom, l’avatar et le rang.',
+      },
+      private: {
+        title: 'Privé',
+        description:
+          'Les autres ne voient que ton nom, ton avatar et ton rang ; pas tes statistiques ni tes succès.',
+      },
+    },
+    showCountry: 'Afficher mon pays',
+    showCountryOn: 'Le drapeau apparaît sur ton profil public.',
+    showCountryNone: 'Choisis ton pays dans Modifier le profil.',
+    showCountryA11y: 'Afficher mon pays sur mon profil public',
+    showOnline: 'Afficher quand je suis en ligne',
+    showOnlineHint: 'Tes amis voient que tu es en ligne et peuvent t’inviter à un match amical.',
+    showOnlineA11y: 'Montrer à mes amis quand je suis en ligne',
+    blocked: 'UTILISATEURS BLOQUÉS',
+    account: 'COMPTE',
+    editProfile: 'Modifier le profil',
+    replayTutorial: 'Refaire le tutoriel',
+    signOut: 'Se déconnecter',
+    deleteAccount: 'Supprimer le compte',
+    deleteAccountHint: 'Ouvre l’écran pour supprimer ton compte et tes données',
+    privacyPolicy: 'Politique de confidentialité',
+    privacyPolicyHint: 'Ouvre la politique de confidentialité dans le navigateur',
+    terms: 'Conditions générales',
+    termsHint: 'Ouvre les conditions générales dans le navigateur',
+    support: 'Aide et assistance',
+    supportHint: 'Ouvre la page d’assistance dans le navigateur',
+    challengePush: 'Me prévenir quand un ami me défie',
+    pushBlocked: 'Les notifications de PolyGo sont désactivées sur ce téléphone.',
+    pushUnsupported:
+      'Les notifications n’arrivent que dans l’appli installée (pas sur le web ni dans Expo Go).',
+    pushOn: 'Une notification avec l’invitation, même quand l’appli est fermée.',
+    openPhoneSettings: 'Ouvrir les réglages du téléphone',
+    challengePushA11y: 'M’envoyer une notification quand un ami me défie',
+  },
 });

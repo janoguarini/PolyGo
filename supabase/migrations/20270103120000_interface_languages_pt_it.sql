@@ -1,5 +1,11 @@
 -- =====================================================================
--- Idiomas de interfaz pt-BR e it (además de es y en). NO APLICADA EN PRODUCCIÓN.
+-- Idiomas de interfaz pt-BR e it (además de es y en).
+--
+-- PRODUCCIÓN (2026-11-27): NUNCA SE EJECUTÓ. Está en el historial como REEMPLAZADA para que nadie la
+-- aplique: el CHECK, set_interface_language y complete_onboarding_v2 los reemplazó
+-- 20270108120000_courses_per_language (con fr), y claim_battle_invite_push, 20270111130000_claim_push_interface_language.
+-- Ejecutarla hoy volvería a versiones viejas de esas funciones. En una base nueva (PGlite, local) se
+-- aplica en orden como siempre y las siguientes la pisan.
 --
 -- La app ya puede mostrarse en portugués de Brasil e italiano (src/i18n/index.ts). Hasta esta
 -- migración la base sólo aceptaba 'es' / 'en' en profiles.interface_language, set_interface_language

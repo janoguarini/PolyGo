@@ -42,4 +42,14 @@ export const signInStrings = defineStrings({
     noAccount: 'Non hai un account? ',
     signUp: 'Registrati',
   },
+  fr: {
+    title: 'Connexion',
+    subtitle: 'Ton rang t’attend.',
+    email: 'E-mail',
+    password: 'Mot de passe',
+    submit: 'Se connecter',
+    forgotPassword: 'Mot de passe oublié ?',
+    noAccount: 'Pas encore de compte ? ',
+    signUp: 'Inscris-toi',
+  },
 });

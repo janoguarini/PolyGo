@@ -111,6 +111,32 @@ export const friendsFormatStrings = defineStrings({
     endsInHours: (n: number) => `Terminano tra ${n} h`,
     endsSoon: 'Terminano tra meno di un’ora',
   },
+  fr: {
+    unranked: 'Sans rang',
+    unplaced: 'Non classé',
+    online: 'En ligne',
+    offline: 'Hors ligne',
+    seenMinutes: (n: number) => `Il y a ${n} min`,
+    seenHours: (n: number) => `Il y a ${n} h`,
+    seenDays: (n: number) => (n === 1 ? 'Il y a 1 jour' : `Il y a ${n} jours`),
+    rankUp: (rank: string) => `est passé ${rank}`,
+    winsWeek: (n: number) =>
+      n === 1 ? 'a gagné 1 match cette semaine' : `a gagné ${n} matchs cette semaine`,
+    reviewsWeek: (n: number) =>
+      n === 1 ? 'a révisé 1 mot cette semaine' : `a révisé ${n} mots cette semaine`,
+    lessonsWeek: (n: number) =>
+      n === 1 ? 'a terminé 1 leçon cette semaine' : `a terminé ${n} leçons cette semaine`,
+    achievement: (label: string) => `a débloqué « ${label} »`,
+    streak: (n: number) => `a atteint une série de ${n} jours`,
+    newFriend: 'est maintenant ton ami',
+    justNow: 'à l’instant',
+    agoMinutes: (n: number) => `il y a ${n} min`,
+    agoHours: (n: number) => `il y a ${n} h`,
+    agoDays: (n: number) => (n === 1 ? 'hier' : `il y a ${n} jours`),
+    endsInDays: (n: number) => `Se terminent dans ${n} jours`,
+    endsInHours: (n: number) => `Se terminent dans ${n} h`,
+    endsSoon: 'Se terminent dans moins d’une heure',
+  },
 });
 
 /** Textos de los componentes de Amigos (src/features/friends). */
@@ -459,6 +485,90 @@ export const friendsStrings = defineStrings({
     channelName: 'Sfide degli amici',
     channelDescription: 'Quando un amico ti invita a un’amichevole.',
   },
+  fr: {
+    removeConfirm: (username: string) =>
+      `Retirer @${username} de tes amis ? On ne le prévient pas.`,
+    removeYes: 'Oui, retirer',
+    cancel: 'Annuler',
+    areFriends: 'Vous êtes amis',
+    areFriendsHint: 'Touche pour le retirer de tes amis',
+    requestSentCancel: 'Demande envoyée · annuler',
+    incomingRequest: (username: string) => `@${username} t’a envoyé une demande d’ami.`,
+    decline: 'Refuser',
+    accept: 'Accepter',
+    addFriend: 'Ajouter en ami',
+    challengedYou: (username: string) => `@${username} t’a défié`,
+    friendlyNoElo: 'Match amical · ne touche pas à l’ELO',
+    notNow: 'Pas maintenant',
+    play: 'Jouer',
+    acceptChallengeA11y: (username: string) => `Accepter le défi de ${username}`,
+    challengeSent: 'Défi envoyé',
+    challenge: 'Défier',
+    challengeA11y: (username: string) => `Défier ${username} en match amical`,
+    challengeAFriend: 'Défier un ami',
+    onlineCount: (n: number) => `${n} en ligne`,
+    addFriends: 'Ajouter des amis',
+    noneOnline:
+      'Aucun de tes amis n’est en ligne pour l’instant. Tu peux créer un code et le leur envoyer.',
+    moreOnline: (n: number) => `Et ${n} autres en ligne : retrouve-les dans « Mes amis ».`,
+    challengeWithCode: 'Défier avec un code',
+    challengeWithCodeHint: 'Choisis le mode et crée un code à partager',
+    loadingMissions: 'Chargement des missions',
+    missionsError: 'Impossible de charger les missions du jour.',
+    retry: 'Réessayer',
+    newEveryDay: (endsIn: string) => `${endsIn} · nouvelles chaque jour.`,
+    missionProgressA11y: (title: string, progress: number, target: number) =>
+      `${title} : ${progress} sur ${target}`,
+    claimA11y: (n: number) => `Récupérer ${n} Polys`,
+    rewardClaimed: 'Récompense récupérée',
+    rewardA11y: (n: number) => `Récompense : ${n} Polys`,
+    friendsDone: (first: string, others: number, done: number) =>
+      `${first}${others > 0 ? ` et ${others} autres` : ''} ${done === 1 ? 'l’a déjà terminée' : 'l’ont déjà terminée'}`,
+    loadingActivity: 'Chargement de l’activité',
+    activityError: 'Impossible de charger l’activité.',
+    activityEmpty:
+      'Rien de neuf pour l’instant. Quand tes amis monteront de rang, gagneront des matchs ou débloqueront des succès, tu le verras ici.',
+    activityA11y: (username: string, text: string, ago: string) =>
+      `${username} ${text}, ${ago}. Voir le profil`,
+    showLess: 'Voir moins',
+    showAllActivity: (n: number) => `Voir toute l’activité (${n})`,
+    shareCodeMessage: (username: string | null | undefined, code: string) =>
+      `Ajoute-moi sur PolyGo ! Cherche @${username} ou utilise mon code ${code}.`,
+    yourFriendCode: 'TON CODE AMI',
+    yourCodeA11y: (spelled: string) => `Ton code : ${spelled}`,
+    addWithCode: (username: string | null | undefined) =>
+      `On peut t’ajouter avec ce code${username ? ` ou en cherchant @${username}` : ''}.`,
+    shareMyCode: 'Partager mon code',
+    viewProfile: 'Voir le profil',
+    searchPlaceholder: 'Nom d’utilisateur ou code PG-…',
+    searchA11y: 'Chercher des joueurs par nom d’utilisateur ou code',
+    clearSearch: 'Effacer la recherche',
+    typeTwoLetters: 'Écris au moins 2 lettres.',
+    searching: 'Recherche en cours',
+    noResults: 'Aucun résultat',
+    noResultsHint: 'Aucun joueur trouvé avec ce nom ou ce code.',
+    playersCount: (n: number) => (n === 1 ? '1 JOUEUR' : `${n} JOUEURS`),
+    pushTitle: 'Sache quand on te défie',
+    dontShowAgain: 'Ne plus afficher',
+    pushBlocked:
+      'Les notifications de PolyGo sont désactivées sur ton téléphone. Active-les dans les réglages pour savoir quand un ami t’invite à jouer.',
+    pushAsk:
+      'On t’envoie une notification quand un ami t’invite à un match amical, même si l’app est fermée.',
+    openPhoneSettings: 'Ouvrir les réglages du téléphone',
+    enablePush: 'Activer les notifications',
+    nowFriends: (username: string) => `Toi et @${username}, vous êtes amis !`,
+    declinedRequest: (username: string) => `Tu as refusé la demande de @${username}.`,
+    declineRequestA11y: (username: string) => `Refuser la demande de ${username}`,
+    acceptRequestA11y: (username: string) => `Accepter la demande de ${username}`,
+    cancelRequestA11y: (username: string) => `Annuler ta demande à ${username}`,
+    canceledRequest: (username: string) => `Tu as annulé ta demande à @${username}.`,
+    friendsTag: 'Amis',
+    pendingTag: 'En attente',
+    addUserA11y: (username: string) => `Ajouter ${username}`,
+    requestSent: (username: string) => `Tu as envoyé une demande d’ami à @${username}.`,
+    channelName: 'Défis entre amis',
+    channelDescription: 'Quand un ami t’invite à un match amical.',
+  },
 });
 
 /**
@@ -496,6 +606,14 @@ export const friendMissionStrings = defineStrings({
     friendly_1: {
       title: 'Gioca un’amichevole',
       description: 'Una sfida completata contro qualcuno della tua lista',
+    },
+  },
+  fr: {
+    play_3: { title: 'Joue 3 matchs', description: 'Ranked ou matchs amicaux' },
+    review_20: { title: 'Révise 20 mots', description: 'Réponses en séances de révision' },
+    friendly_1: {
+      title: 'Joue un match amical',
+      description: 'Un défi terminé contre quelqu’un de ta liste',
     },
   },
 });

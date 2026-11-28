@@ -152,6 +152,48 @@ const avatarNameIn =
 const avatarNamePt = avatarNameIn(ANIMALS_PT, COLORS_PT);
 const avatarNameIt = avatarNameIn(ANIMALS_IT, COLORS_IT);
 
+const COUNTRIES_FR: Record<string, string> = {
+  AR: 'Argentine',
+  BO: 'Bolivie',
+  CL: 'Chili',
+  CO: 'Colombie',
+  CR: 'Costa Rica',
+  CU: 'Cuba',
+  EC: 'Équateur',
+  SV: 'Salvador',
+  ES: 'Espagne',
+  GT: 'Guatemala',
+  HN: 'Honduras',
+  MX: 'Mexique',
+  NI: 'Nicaragua',
+  PA: 'Panama',
+  PY: 'Paraguay',
+  PE: 'Pérou',
+  PR: 'Porto Rico',
+  DO: 'République dominicaine',
+  UY: 'Uruguay',
+  VE: 'Venezuela',
+  BR: 'Brésil',
+  US: 'États-Unis',
+  GB: 'Royaume-Uni',
+  IT: 'Italie',
+  FR: 'France',
+  DE: 'Allemagne',
+};
+const ANIMALS_FR: Record<string, Gendered> = {
+  fox: { name: 'Renard', feminine: false },
+  panda: { name: 'Panda', feminine: false },
+  dog: { name: 'Chien', feminine: false },
+  cat: { name: 'Chat', feminine: false },
+  lion: { name: 'Lion', feminine: false },
+};
+const COLORS_FR: Record<string, [string, string]> = {
+  violet: ['violet', 'violette'],
+  yellow: ['jaune', 'jaune'],
+  red: ['rouge', 'rouge'],
+};
+const avatarNameFr = avatarNameIn(ANIMALS_FR, COLORS_FR);
+
 type RarityFilter = CosmeticRarity | 'all';
 
 /** Personalización (src/app/edit-profile.tsx). */
@@ -443,6 +485,80 @@ export const editProfileStrings = defineStrings({
       mythic: 'Mitici',
       exclusive: 'Esclusivi',
       limited: 'Limitati',
+    },
+  },
+  fr: {
+    tabs: { avatar: 'Avatars', frame: 'Cadres', background: 'Fonds' },
+    nameEmpty: 'Ton nom ne peut pas être vide.',
+    tryingOn: (names: string[]) =>
+      `Tu essaies ${names.join(' et ')} : ${
+        names.length > 1
+          ? 'il faut les acheter pour les enregistrer.'
+          : 'il faut l’acheter pour l’enregistrer.'
+      }`,
+    blockedByAvatar:
+      'Ce cadre ou ce fond va avec la skin que tu essaies : il sera enregistré quand tu l’auras.',
+    previewSave:
+      'PREVIEW : l’enregistrement est désactivé (cette build utilise la vraie base). Tu peux tout essayer dans l’aperçu.',
+    save: 'Enregistrer',
+    buyAndSave: (price: number) => `Acheter et enregistrer · ${price}`,
+    buyingOnSave: (names: string[]) =>
+      `En enregistrant, tu achètes et équipes ${names.join(' et ')}${names.length > 1 ? ' d’un coup' : ''}.`,
+    notEnough: (missing: number) => `Il te manque ${missing} Polys pour l’acheter.`,
+    droppedOnSave: (names: string[], avatar: string) =>
+      `${names.join(' et ')} ${names.length > 1 ? 'ne vont' : 'ne va'} pas avec ${avatar || 'cet avatar'} : à l’enregistrement, retour au modèle de base.`,
+    title: 'Personnalisation',
+    balanceA11y: (balance: number) => `Tu as ${balance} Polys`,
+    previewA11y: 'Aperçu de ton profil',
+    collection: 'Collection',
+    basicAvatars: 'AVATARS DE BASE',
+    avatarName: (id: AvatarId, fallback: string) => avatarNameFr(id, fallback),
+    photoA11y: (hasPhoto: boolean) =>
+      hasPhoto ? 'Ta photo. Touche pour en choisir une autre' : 'Choisir une photo dans la galerie',
+    gallery: 'Galerie',
+    removePhoto: 'Retirer la photo',
+    skinPhotoHint: 'Avec une skin équipée, ta photo reste enregistrée : reviens-y quand tu veux.',
+    avatarHint: 'Choisis une skin, un avatar ou importe une photo de toi.',
+    displayName: 'Nom affiché',
+    displayNameHint: 'Ton nom d’utilisateur et ton code ne changent pas.',
+    titleCaps: 'TITRE',
+    titleHint:
+      'Il s’affiche sous ton nom. Tu les débloques en montant de niveau ; en Automatique, c’est le plus élevé que tu as qui s’affiche.',
+    titleA11y: 'Titre',
+    auto: 'Automatique',
+    autoA11y: (title: string) => `Automatique : ${title}`,
+    lockedTitleA11y: (title: string, level: number) => `${title}, se débloque au niveau ${level}`,
+    levelShort: (level: number) => ` · Niv. ${level}`,
+    countryCaps: 'PAYS',
+    countryHint:
+      'Il s’affiche à côté de ton nom. Sur ton profil public, il n’apparaît que si tu l’actives dans Réglages.',
+    countryA11y: 'Pays',
+    noCountry: 'Aucun pays',
+    countryName: (code: string, fallback: string) => COUNTRIES_FR[code] ?? fallback,
+    dailyGoal: 'OBJECTIF QUOTIDIEN',
+    minutesPerDay: (minutes: number) => `${minutes} minutes par jour`,
+    groups: { cosmetic: 'COSMÉTIQUES', exclusive: 'EXCLUSIFS', competitive: 'COMPÉTITIF' },
+    compatPrefix: (kind: 'frame' | 'background') =>
+      `${kind === 'frame' ? 'Cadres' : 'Fonds'} qui vont avec `,
+    yourAvatar: 'ton avatar',
+    compatHidden: (hidden: number) =>
+      hidden > 0
+        ? `${hidden} ${hidden <= 1 ? 'autre va' : 'autres vont'} avec d’autres avatars ; ce que tu as déjà reste dans ton inventaire.`
+        : 'Avec un autre avatar, tu en verras d’autres.',
+    noRarity: 'Aucun objet de cette rareté.',
+    loadout: { avatar: 'Avatar', frame: 'Cadre', background: 'Fond' },
+    basic: 'Basique',
+    solid: 'Uni',
+    rarityFilters: {
+      all: 'Tous',
+      free: 'Gratuits',
+      common: 'Communs',
+      rare: 'Rares',
+      epic: 'Épiques',
+      legendary: 'Légendaires',
+      mythic: 'Mythiques',
+      exclusive: 'Exclusifs',
+      limited: 'Limités',
     },
   },
 });

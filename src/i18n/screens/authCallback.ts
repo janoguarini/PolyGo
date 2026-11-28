@@ -26,4 +26,10 @@ export const authCallbackStrings = defineStrings({
     errorTitle: 'Non siamo riusciti a verificare il link',
     backHome: 'Torna all’inizio',
   },
+  fr: {
+    invalidLink: 'Ce lien n’est pas valide ou il est incomplet.',
+    verifying: 'Vérification du lien…',
+    errorTitle: 'Impossible de vérifier le lien',
+    backHome: 'Retour à l’accueil',
+  },
 });

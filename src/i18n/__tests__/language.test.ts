@@ -45,6 +45,8 @@ describe('detección del idioma del sistema', () => {
     ['pt_BR', 'pt-BR'],
     ['it-IT', 'it'],
     ['it', 'it'],
+    ['fr-FR', 'fr'],
+    ['fr-CA', 'fr'],
   ])('%s → %s', (tag, lang) => {
     expect(interfaceLanguageForLocale(tag)).toBe(lang);
   });
@@ -52,13 +54,14 @@ describe('detección del idioma del sistema', () => {
   it('idiomas no soportados no dan idioma; la sugerencia final es español', () => {
     expect(interfaceLanguageForLocale('de-DE')).toBeNull();
     expect(interfaceLanguageForLocale('')).toBeNull();
-    expect(deviceInterfaceLanguage(['de-DE', 'fr-FR'])).toBe('es');
+    expect(deviceInterfaceLanguage(['de-DE', 'ja-JP'])).toBe('es');
     expect(deviceInterfaceLanguage([])).toBe('es');
   });
 
   it('toma el primer idioma preferido que se soporta', () => {
     expect(deviceInterfaceLanguage(['de-DE', 'it-IT', 'en-US'])).toBe('it');
     expect(deviceInterfaceLanguage(['ja-JP', 'pt-BR'])).toBe('pt-BR');
+    expect(deviceInterfaceLanguage(['de-DE', 'fr-FR', 'en-US'])).toBe('fr');
   });
 });
 
@@ -122,21 +125,23 @@ describe('hidratación y persistencia', () => {
     expect(again.getPendingInterfaceLanguage()).toBeNull();
   });
 
-  it('isInterfaceLanguage acepta los cuatro códigos y nada más', () => {
+  it('isInterfaceLanguage acepta los cinco códigos y nada más', () => {
     const { isInterfaceLanguage } = load();
-    for (const l of ['es', 'en', 'pt-BR', 'it']) expect(isInterfaceLanguage(l)).toBe(true);
-    for (const l of ['pt', 'PT-BR', 'fr', '', null, 3]) expect(isInterfaceLanguage(l)).toBe(false);
+    for (const l of ['es', 'en', 'pt-BR', 'it', 'fr']) expect(isInterfaceLanguage(l)).toBe(true);
+    for (const l of ['pt', 'PT-BR', 'de', 'FR', '', null, 3])
+      expect(isInterfaceLanguage(l)).toBe(false);
   });
 
   it('cada idioma tiene etiqueta propia, bandera y locale', () => {
     const { INTERFACE_LANGUAGES, INTERFACE_LANGUAGE_LABELS, INTERFACE_LANGUAGE_FLAGS, LOCALES } =
       load();
-    expect(INTERFACE_LANGUAGES).toEqual(['es', 'en', 'pt-BR', 'it']);
+    expect(INTERFACE_LANGUAGES).toEqual(['es', 'en', 'pt-BR', 'it', 'fr']);
     expect(INTERFACE_LANGUAGE_LABELS).toEqual({
       es: 'Español',
       en: 'English',
       'pt-BR': 'Português (Brasil)',
       it: 'Italiano',
+      fr: 'Français',
     });
     for (const l of INTERFACE_LANGUAGES) {
       expect(INTERFACE_LANGUAGE_FLAGS[l]).toBeTruthy();

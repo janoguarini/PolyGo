@@ -42,4 +42,14 @@ export const addFriendsStrings = defineStrings({
     declinedNote:
       'Se qualcuno rifiuta la tua richiesta non te lo diciamo: la vedrai in attesa per 7 giorni e poi sparirà. A quel punto potrai inviarla di nuovo.',
   },
+  fr: {
+    title: 'Ajouter des amis',
+    received: 'Demandes reçues',
+    receivedEmpty: 'Tu n’as pas de nouvelle demande.',
+    sent: 'Demandes envoyées',
+    pending: 'En attente',
+    sentEmpty: 'Tu n’as aucune demande en attente.',
+    declinedNote:
+      'Si quelqu’un refuse ta demande, on ne te prévient pas : elle reste en attente pendant 7 jours, puis disparaît. Tu pourras alors la renvoyer.',
+  },
 });

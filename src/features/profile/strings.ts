@@ -88,16 +88,34 @@ const IT_FAMILY_TITLES: Record<string, string> = {
   peak_rating: 'Scalatore',
 };
 
+const FR_FAMILY_TITLES: Record<string, string> = {
+  best_streak_days: 'En feu',
+  goal_days: 'Objectif atteint',
+  lessons_completed: 'Érudit',
+  perfect_lessons: 'Perfectionniste',
+  stars_earned: 'Collectionneur',
+  fast_answers: 'Éclair',
+  words_seen: 'Explorateur',
+  words_mastered: 'Mémoire d’éléphant',
+  reviews_completed: 'Réviseur',
+  games_played: 'Gladiateur',
+  wins: 'Champion',
+  best_win_streak: 'Inarrêtable',
+  peak_rating: 'Grimpeur',
+};
+
 const FAMILY_TITLES: Partial<Record<InterfaceLanguage, Record<string, string>>> = {
   en: EN_FAMILY_TITLES,
   'pt-BR': PT_FAMILY_TITLES,
   it: IT_FAMILY_TITLES,
+  fr: FR_FAMILY_TITLES,
 };
 
 const LEVEL_WORD: Partial<Record<InterfaceLanguage, string>> = {
   en: 'Level',
   'pt-BR': 'Nível',
   it: 'Livello',
+  fr: 'Niveau',
 };
 
 const PT_TIER_DESCRIPTIONS: Record<string, (n: number, tier: AchievementTier) => string> = {
@@ -144,6 +162,31 @@ const IT_TIER_DESCRIPTIONS: Record<string, (n: number, tier: AchievementTier) =>
   peak_rating: (n, tier) => {
     const id = tier.id.replace(/^peak_/, '') as TierId;
     return `Raggiungi ${tierName(id, 'it') ?? id} (${n} ELO).`;
+  },
+};
+
+const sFr = (n: number, one: string, many: string) => (n <= 1 ? one : many);
+
+const FR_TIER_DESCRIPTIONS: Record<string, (n: number, tier: AchievementTier) => string> = {
+  best_streak_days: (n) => `Étudie ${n} ${sFr(n, 'jour', 'jours')} d’affilée.`,
+  goal_days: (n) => `Atteins ton objectif quotidien ${n} ${sFr(n, 'jour', 'jours')}.`,
+  lessons_completed: (n) =>
+    n === 1 ? 'Termine ta première leçon.' : `Termine ${n} leçons différentes.`,
+  perfect_lessons: (n) =>
+    n === 1
+      ? 'Termine une leçon sans faute (leçon dorée).'
+      : `Termine ${n} leçons différentes sans faute.`,
+  stars_earned: (n) => `Récolte ${n} ${sFr(n, 'étoile', 'étoiles')} sur le parcours de leçons.`,
+  fast_answers: (n) => `Réponds juste ${n} fois en moins de 2 secondes.`,
+  words_seen: (n) => `Étudie ${n} ${sFr(n, 'mot', 'mots')}.`,
+  words_mastered: (n) => `Maîtrise ${n} ${sFr(n, 'mot', 'mots')} grâce aux révisions espacées.`,
+  reviews_completed: (n) => (n === 1 ? 'Termine ta première révision.' : `Termine ${n} révisions.`),
+  games_played: (n) => `Joue ${n} ${sFr(n, 'partie', 'parties')} Ranked.`,
+  wins: (n) => (n === 1 ? 'Gagne une partie Ranked.' : `Gagne ${n} parties Ranked.`),
+  best_win_streak: (n) => `Gagne ${n} parties Ranked d’affilée.`,
+  peak_rating: (n, tier) => {
+    const id = tier.id.replace(/^peak_/, '') as TierId;
+    return `Atteins ${tierName(id, 'fr') ?? id} (${n} ELO).`;
   },
 };
 
@@ -218,6 +261,24 @@ export const achievementStrings = defineStrings({
     loadError: 'Non siamo riusciti a caricare i tuoi traguardi.',
     loading: 'Caricamento traguardi…',
   },
+  fr: {
+    familyTitle: (family: Family) => FR_FAMILY_TITLES[family.metric] ?? family.title,
+    tierDescription: (family: Family, tier: AchievementTier) =>
+      FR_TIER_DESCRIPTIONS[family.metric]?.(tier.threshold, tier) ?? tier.description,
+    familyA11y: (title: string, level: number, max: number) =>
+      `${title}, niveau ${level} sur ${max}`,
+    nextA11y: (description: string, value: number, threshold: number) =>
+      `Prochain : ${description} Progression ${value} sur ${threshold}.`,
+    complete: 'Terminé.',
+    completeBang: 'Terminé !',
+    levelOf: (level: number, max: number) => `Niveau ${level}/${max}`,
+    pendingRanked: 'Disponible à l’ouverture du Ranked',
+    progressOf: (title: string) => `Progression de ${title}`,
+    ribbon: (level: number) => `NIV ${level}`,
+    seeAllA11y: 'Voir tous les succès.',
+    loadError: 'Impossible de charger tes succès.',
+    loading: 'Chargement des succès…',
+  },
 });
 
 // --- Insignias de invitaciones (shared/referrals.ts, en español): por id.
@@ -238,6 +299,12 @@ const BADGE_NAMES_IT: Record<BadgeId, string> = {
   recruiter: 'Reclutatore',
   ambassador: 'Ambasciatore PolyGo',
   elite_inviter: 'Invitatore d’élite',
+};
+
+const BADGE_NAMES_FR: Record<BadgeId, string> = {
+  recruiter: 'Recruteur',
+  ambassador: 'Ambassadeur PolyGo',
+  elite_inviter: 'Parrain d’élite',
 };
 
 /** Tarjeta del jugador y tarjeta de rango (ProfileHeader). */
@@ -307,6 +374,22 @@ export const headerStrings = defineStrings({
       `${toNext === 1 ? 'Manca' : 'Mancano'} ${toNext} ELO per ${next}`,
     maxRank: 'Rango massimo',
     rankProgress: 'Progresso verso il rango successivo',
+  },
+  fr: {
+    customizeA11y: 'Personnaliser l’avatar, le cadre et le fond',
+    countryA11y: (region: string) => `Pays : ${region}`,
+    editProfile: 'Modifier le profil',
+    badgeName: (id: BadgeId, fallback: string) => BADGE_NAMES_FR[id] ?? fallback,
+    badgeA11y: (name: string) => `Badge : ${name}`,
+    plusSubscriber: 'Abonné PolyGo Plus',
+    unplacedA11y: 'Non classé : gagne une partie Ranked pour entrer au classement',
+    rankA11y: (rank: string, rating: number, next: string | null, toNext: number) =>
+      `${rank}, rang actuel, ${rating} ELO.${next ? ` Encore ${toNext} ELO avant ${next}.` : ''} Voir le classement`,
+    unplaced: 'Non classé',
+    winARanked: 'Gagne une Ranked',
+    toNext: (toNext: number, next: string) => `Encore ${toNext} ELO avant ${next}`,
+    maxRank: 'Rang max',
+    rankProgress: 'Progression vers le rang suivant',
   },
 });
 
@@ -472,6 +555,46 @@ export const sectionsStrings = defineStrings({
     plusActive: 'Il tuo abbonamento è attivo.',
     plusPitch: 'Energia illimitata, ripasso intelligente, widget personalizzati e altro.',
   },
+  fr: {
+    streak: 'Série',
+    streakA11y: (days: number) => `Série de ${days} ${days <= 1 ? 'jour' : 'jours'}`,
+    settings: 'Réglages',
+    wins: 'Victoires',
+    games: 'Parties',
+    winRate: 'Win rate',
+    myLanguages: 'Mes langues',
+    done: 'OK',
+    manage: 'Gérer',
+    previewTitle: 'PREVIEW',
+    previewLanguage: 'Le changement de langue est désactivé dans l’aperçu QA.',
+    switchErrorTitle: 'Impossible de changer de langue',
+    switchErrorMessage: 'Réessaie dans un moment.',
+    progressError: 'Impossible de charger ta progression. Touche pour réessayer.',
+    loadingLanguages: 'Chargement de tes langues…',
+    languageA11y: (name: string, level: string | null, percent: number, current: boolean) =>
+      `${name}${level ? `, niveau ${level}, ${percent} pour cent` : ''}${
+        current ? ', langue actuelle' : '. Touche pour l’étudier'
+      }`,
+    studying: 'En cours',
+    levelProgress: (level: string) => `Progression ${level}`,
+    achievements: 'Succès',
+    achievementsCount: (unlocked: number, total: number) => `Succès (${unlocked}/${total})`,
+    seeAll: 'Tout voir',
+    reachLevel: (level: number) => `Atteindre le niveau ${level}`,
+    xpLeft: (xp: number) => `Encore ${xp} XP`,
+    enterRanking: 'Entrer au classement',
+    winARanked: 'Gagne une Ranked',
+    climbTo: (rank: string) => `Monter en ${rank}`,
+    eloLeft: (elo: number) => `Encore ${elo} ELO`,
+    nextGoals: 'Prochains objectifs',
+    goalA11y: (title: string, detail: string, percent: number) =>
+      `${title}. ${detail}. ${percent} pour cent`,
+    plusActiveA11y: 'Ton abonnement PolyGo Plus',
+    plusLearnA11y: 'Découvrir PolyGo Plus',
+    plusUntil: (date: string) => `Actif jusqu’au ${date}.`,
+    plusActive: 'Ton abonnement est actif.',
+    plusPitch: 'Énergie illimitée, révision intelligente, widgets personnalisés et plus encore.',
+  },
 });
 
 /** Selector de idiomas (LanguagesRow). */
@@ -511,6 +634,15 @@ export const languagesRowStrings = defineStrings({
     noRanked: 'Ranked non ancora disponibile',
     currentSuffix: ', lingua attuale',
     hint: 'Cambia la lingua che studi',
+  },
+  fr: {
+    switchErrorTitle: 'Impossible de changer de langue',
+    switchErrorMessage: 'Réessaie dans un moment.',
+    soon: 'Bientôt',
+    beta: 'Bêta',
+    noRanked: 'Pas encore de Ranked',
+    currentSuffix: ', langue actuelle',
+    hint: 'Change la langue que tu étudies',
   },
 });
 
@@ -564,6 +696,18 @@ export const periodStatsStrings = defineStrings({
     close: 'Chiudi',
     periodCaps: 'PERIODO',
   },
+  fr: {
+    period: (days: number | null) => (days === null ? 'Depuis toujours' : `${days} derniers jours`),
+    games: 'Parties',
+    wins: 'Victoires',
+    elo: 'ELO',
+    bestStreak: 'Série max',
+    stats: 'Statistiques',
+    periodA11y: (label: string) => `Période : ${label}. Changer`,
+    loadError: 'Impossible de charger tes statistiques.',
+    close: 'Fermer',
+    periodCaps: 'PÉRIODE',
+  },
 });
 
 const RESULTS_ES: Record<MatchResult, string> = {
@@ -577,6 +721,11 @@ const RESULTS_IT: Record<MatchResult, string> = {
   win: 'Vittoria',
   loss: 'Sconfitta',
   draw: 'Pareggio',
+};
+const RESULTS_FR: Record<MatchResult, string> = {
+  win: 'Victoire',
+  loss: 'Défaite',
+  draw: 'Match nul',
 };
 
 /** Historial competitivo, partidas y gráfico de ELO. */
@@ -695,6 +844,34 @@ export const historyStrings = defineStrings({
     chartFooter: (games: number, total: string) =>
       `${games} ${games === 1 ? 'partita' : 'partite'} · ${total} in totale · tocca il grafico per vederle una per una`,
   },
+  fr: {
+    result: (r: MatchResult | null) => (r ? RESULTS_FR[r] : 'Aucun résultat'),
+    deletedPlayer: 'Joueur supprimé',
+    matchA11y: (
+      result: string,
+      forfeited: boolean,
+      opponent: string,
+      score: number,
+      opponentScore: number,
+      delta: string | null,
+    ) =>
+      `${result}${forfeited ? ' par abandon' : ''} contre ${opponent}, ${score} à ${opponentScore}${delta ? `, ${delta} ELO` : ''}`,
+    noElo: ' · sans ELO',
+    noEloA11y: ', sans ELO',
+    eloEvolution: 'ÉVOLUTION DE L’ELO',
+    evolutionError: 'Impossible de charger ton évolution.',
+    loading: 'Chargement…',
+    evolutionEmpty: 'Ton évolution apparaît après ta première partie Ranked.',
+    recentMatches: 'DERNIÈRES PARTIES',
+    matchesError: 'Impossible de charger tes parties.',
+    matchesEmpty: 'Tu n’as pas encore joué de partie. Tu les verras ici à l’ouverture du Ranked.',
+    fullHistory: 'Voir tout l’historique',
+    start: (date: string) => `Début · ${date}`,
+    chartA11y: (games: number, from: number, to: number, total: string) =>
+      `Évolution de l’ELO sur ${games} ${games <= 1 ? 'partie' : 'parties'} : de ${from} à ${to}, ${total}.`,
+    chartFooter: (games: number, total: string) =>
+      `${games} ${games <= 1 ? 'partie' : 'parties'} · ${total} au total · touche le graphique pour voir chaque partie`,
+  },
 });
 
 const REASONS_ES: Record<ReportReason, string> = {
@@ -724,6 +901,13 @@ const REASONS_IT: Record<ReportReason, string> = {
   hateful: 'Offensiva o discriminatoria',
   impersonation: 'Si spaccia per un’altra persona',
   other: 'Altro motivo',
+};
+const REASONS_FR: Record<ReportReason, string> = {
+  sexual: 'Contenu sexuel',
+  violent: 'Violence',
+  hateful: 'Offensante ou discriminatoire',
+  impersonation: 'Se fait passer pour quelqu’un d’autre',
+  other: 'Autre raison',
 };
 
 /** Reportar la foto de otro jugador (ReportPhotoButton). */
@@ -776,6 +960,18 @@ export const reportStrings = defineStrings({
     send: 'Invia segnalazione',
     cancel: 'Annulla',
   },
+  fr: {
+    reason: (r: ReportReason) => REASONS_FR[r],
+    hidden: 'Merci pour ton signalement. La photo a été masquée.',
+    review: 'Merci pour ton signalement. On va vérifier la photo.',
+    triggerA11y: (username: string) => `Signaler la photo de profil de ${username}`,
+    trigger: 'Signaler la photo',
+    title: 'Signaler une photo de profil',
+    body: (username: string) =>
+      `Pourquoi la photo de @${username} ne devrait-elle pas être visible ? Ton signalement est anonyme.`,
+    send: 'Envoyer le signalement',
+    cancel: 'Annuler',
+  },
 });
 
 /** Subida de la foto de perfil (avatarUpload). */
@@ -784,6 +980,7 @@ export const avatarUploadStrings = defineStrings({
   en: { processError: 'We couldn’t process the image.' },
   'pt-BR': { processError: 'Não foi possível processar a imagem.' },
   it: { processError: 'Non è stato possibile elaborare l’immagine.' },
+  fr: { processError: 'Impossible de traiter l’image.' },
 });
 
 // --- Títulos de logro que llegan del servidor (title_es = «Erudito · Nivel 2»): por id de nivel.

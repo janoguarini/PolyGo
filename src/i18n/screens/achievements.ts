@@ -56,4 +56,17 @@ export const achievementsScreenStrings = defineStrings({
       competitive: 'Competitivo',
     },
   },
+  fr: {
+    loading: 'Chargement des succès…',
+    title: 'Succès',
+    levels: (levels: number, max: number) => `${levels} niveaux sur ${max}`,
+    levelsA11y: 'Niveaux de succès atteints',
+    hint: 'Chaque succès monte de niveau à mesure que tu progresses. Continue comme ça !',
+    categories: {
+      streak: 'Régularité',
+      learning: 'Leçons',
+      vocabulary: 'Vocabulaire',
+      competitive: 'Compétitif',
+    },
+  },
 });

@@ -320,4 +320,78 @@ export const battleScreenStrings = defineStrings({
     playerA11y: (name: string, elo: string | null) =>
       `${name}, ${elo !== null ? `${elo} ELO` : 'non classificato'}`,
   },
+  fr: {
+    noMatchesIn: (code: string | null | undefined) =>
+      `Pas encore de matchs en ${languageName(code, 'fr').toLowerCase()}`,
+    noMatchesBody:
+      'Les matchs s’ouvrent quand le niveau A1 de cette langue est complet. Pour jouer, passe à une autre langue depuis ton profil.',
+    back: 'Retour',
+    serverMissingDev:
+      'EXPO_PUBLIC_BATTLE_SERVER_URL manque ou est invalide (en développement, ça peut être http). Les défis entre amis marchent toujours.',
+    serverMissing:
+      'Impossible de connecter cette version de PolyGo au serveur de matchs. Tu peux toujours défier tes amis.',
+    leaveTitle: 'Abandonner le match ?',
+    leaveFriendly: 'Abandonner compte comme une défaite dans le défi (l’ELO ne bouge pas).',
+    leaveRanked: 'Abandonner compte comme une défaite et te fait perdre de l’ELO.',
+    keepPlaying: 'Continuer à jouer',
+    forfeit: 'Abandonner',
+    exit: 'Quitter',
+    forfeitHint: 'Abandonner compte comme une défaite',
+    exitHint: 'Revient à l’écran précédent',
+    labelFriendly: 'DÉFI · SANS ELO',
+    labelPractice: 'WORD RUSH · ENTRAÎNEMENT',
+    labelUnrated: 'WORD RUSH · SANS ELO',
+    labelCalibration: (used: number, limit: number) => `RANKED · CALIBRAGE ${used}/${limit}`,
+    labelRanked: 'RANKED · WORD RUSH',
+    noteUnrated: 'Match sans ELO : que tu gagnes ou que tu perdes, ton ELO ne change pas.',
+    noteCalibration: (used: number, limit: number) =>
+      `Match de calibrage ${used} sur ${limit} : il fait bouger ton ELO.`,
+    noteCompetitive: 'Match classé : il fait bouger ton ELO.',
+    preparing: 'Préparation du match…',
+    declinedTitle: (name: string | undefined) =>
+      name ? `@${name} ne peut pas jouer maintenant` : 'Ton ami ne peut pas jouer maintenant',
+    challengeFailedTitle: 'Impossible de rejoindre le défi',
+    createOwnChallenge: 'Créer mon propre défi',
+    searching: 'Recherche d’un adversaire…',
+    waitingA11y: (mm: number, ss: string) => `En attente depuis ${mm} minutes ${ss} secondes`,
+    searchingSub: (language: string | null) =>
+      language
+        ? `On cherche quelqu’un de ton niveau en ${language}`
+        : 'On cherche quelqu’un de ton niveau',
+    cancelSearch: 'Annuler la recherche',
+    opponentFound: 'Adversaire trouvé !',
+    you: 'Toi',
+    rules:
+      '75 secondes, les mêmes questions pour vous deux. Bonne réponse +100 (+50 pour la rapidité), mauvaise −50. Enchaîne les bonnes réponses : la série rapporte jusqu’à +30.',
+    waitingOpponent: 'En attente de ton adversaire…',
+    ready: 'Prêt !',
+    confirmIn: (s: number) => `Confirme d’ici ${s} s ou le match est annulé.`,
+    go: 'Go !',
+    timeUp: 'Temps écoulé ! Calcul du résultat…',
+    allAnswered: 'Tu as tout répondu. En attente de la fin…',
+    cancelledTitle: 'Match annulé',
+    missedEndTitle: 'Tu as raté la fin',
+    missedEndBody:
+      'Le match s’est terminé pendant que tu étais déconnecté. Regarde le résultat dans ton historique.',
+    newChallenge: 'Nouveau défi',
+    practiceAgain: 'S’entraîner encore',
+    findAnother: 'Chercher un autre match',
+    shareMessage: (code: string, language: string, link: string) =>
+      `Je te défie sur PolyGo ! Un duel de 60 secondes en ${languageName(language, 'fr').toLowerCase()}, toi contre moi. Entre le code ${code} (Ranked → J’ai un code) ou touche : ${link}`,
+    waitingFor: (name: string) => `En attente de @${name}`,
+    inviteSent:
+      'Ton invitation est arrivée dans l’app. Dès qu’elle est acceptée, le match démarre tout seul.',
+    inviteNote:
+      'Match amical : l’ELO ne bouge pas. Garde cet écran ouvert : si tu le fermes, l’invitation est annulée.',
+    cancelInvite: 'Annuler l’invitation',
+    challengeCreated: 'Défi créé',
+    passCode: 'Donne ce code à ton ami. Dès qu’il entre, le match démarre tout seul.',
+    codeA11y: (spelled: string) => `Code ${spelled}`,
+    shareChallenge: 'Partager le défi',
+    codeNote:
+      'Match amical : l’ELO ne bouge pas. Garde cet écran ouvert pendant que tu attends ; le code expire dans 15 minutes.',
+    cancelChallenge: 'Annuler le défi',
+    playerA11y: (name: string, elo: string | null) =>
+      `${name}, ${elo !== null ? `${elo} ELO` : 'non classé'}`,
+  },
 });

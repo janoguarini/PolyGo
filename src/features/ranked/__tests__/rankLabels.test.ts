@@ -8,7 +8,7 @@ import { languageName, languageShortName } from '@/i18n/languages';
  * Los rangos se muestran en el idioma de la interfaz por id de tier; shared/ranking.ts (que usa el
  * servidor de partidas) sigue en español y no cambia.
  */
-describe('nombres de rango en los cuatro idiomas', () => {
+describe('nombres de rango en los cinco idiomas', () => {
   const expected = {
     es: ['Bronce', 'Plata', 'Oro', 'Platino', 'Esmeralda', 'Diamante', 'Maestro', 'Gran Maestro'],
     en: ['Bronze', 'Silver', 'Gold', 'Platinum', 'Emerald', 'Diamond', 'Master', 'Grandmaster'],
@@ -23,6 +23,7 @@ describe('nombres de rango en los cuatro idiomas', () => {
       'Grão-Mestre',
     ],
     it: ['Bronzo', 'Argento', 'Oro', 'Platino', 'Smeraldo', 'Diamante', 'Maestro', 'Gran Maestro'],
+    fr: ['Bronze', 'Argent', 'Or', 'Platine', 'Émeraude', 'Diamant', 'Maître', 'Grand Maître'],
   } as const;
 
   it.each(INTERFACE_LANGUAGES)('%s', (ui) => {
@@ -39,6 +40,8 @@ describe('nombres de rango en los cuatro idiomas', () => {
     expect(rankLabel(rank, 'pt-BR')).toBe('Prata III');
     expect(rankLabel(rank, 'it')).toBe('Argento III');
     expect(rankLabelForRating(2300, 'pt-BR')).toBe('Grão-Mestre');
+    expect(rankLabel(rank, 'fr')).toBe('Argent III');
+    expect(rankLabelForRating(2300, 'fr')).toBe('Grand Maître');
   });
 
   it('sin posicionar', () => {
@@ -47,6 +50,7 @@ describe('nombres de rango en los cuatro idiomas', () => {
       'Unranked',
       'Sem classificação',
       'Non classificato',
+      'Non classé',
     ]);
   });
 });
@@ -58,12 +62,14 @@ describe('nombres de idiomas según la interfaz', () => {
       'English',
       'Inglês',
       'Inglese',
+      'Anglais',
     ]);
     expect(INTERFACE_LANGUAGES.map((ui) => languageShortName('zh', ui))).toEqual([
       'Chino',
       'Chinese',
       'Chinês',
       'Cinese',
+      'Chinois',
     ]);
     expect(languageName('es', 'it')).toBe('Spagnolo');
   });

@@ -34,4 +34,12 @@ export const matchesScreenStrings = defineStrings({
       'Quando giocherai a Word Rush, qui vedrai ogni risultato e quanto ELO hai guadagnato o perso.',
     loadMore: 'Carica altre',
   },
+  fr: {
+    title: 'Historique des matchs',
+    loading: 'Chargement des matchs…',
+    emptyTitle: 'Pas encore de matchs',
+    emptyBody:
+      'Quand tu joueras à Word Rush, tu verras ici chaque résultat et l’ELO gagné ou perdu.',
+    loadMore: 'Charger plus',
+  },
 });

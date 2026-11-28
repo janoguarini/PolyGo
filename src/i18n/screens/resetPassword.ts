@@ -38,4 +38,13 @@ export const resetPasswordStrings = defineStrings({
     save: 'Salva password',
     cancel: 'Annulla ed esci',
   },
+  fr: {
+    title: 'Nouveau mot de passe',
+    subtitle: 'Choisis un mot de passe que tu n’utilises pas ailleurs.',
+    password: 'Nouveau mot de passe',
+    passwordHint: '6 caractères minimum.',
+    confirmPassword: 'Confirme le mot de passe',
+    save: 'Enregistrer le mot de passe',
+    cancel: 'Annuler et se déconnecter',
+  },
 });

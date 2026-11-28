@@ -59,4 +59,19 @@ export const blockStrings = defineStrings({
     empty: 'Non hai bloccato nessuno. Per bloccare qualcuno, apri il suo profilo dalla classifica.',
     unblock: 'Sblocca',
   },
+  fr: {
+    blockA11y: (username: string) => `Bloquer ${username}`,
+    block: 'Bloquer',
+    confirmTitle: (username: string) => `Bloquer @${username} ?`,
+    effectRanked: '• Vous ne vous affronterez plus en Ranked.',
+    effectChallenges: '• Il ne pourra plus rejoindre tes défis.',
+    effectVisibility: '• Tu ne le verras plus dans le classement ni sur son profil.',
+    noNotice: 'On ne le prévient pas. Tu peux le débloquer quand tu veux dans les Réglages.',
+    confirm: 'Oui, bloquer',
+    cancel: 'Annuler',
+    loadError: 'Impossible de charger les utilisateurs bloqués.',
+    empty:
+      'Tu n’as bloqué personne. Pour bloquer quelqu’un, ouvre son profil depuis le classement.',
+    unblock: 'Débloquer',
+  },
 });

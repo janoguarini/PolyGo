@@ -82,4 +82,24 @@ export const friendsScreenStrings = defineStrings({
       `${username}, ${presence}${elo ? `, ${elo}` : ''}. Vedi profilo`,
     streakA11y: (n: number) => `Serie di ${n} ${n === 1 ? 'giorno' : 'giorni'}`,
   },
+  fr: {
+    title: 'Amis',
+    subtitle: 'Affronte tes amis et apprends avec eux.',
+    add: 'Ajouter',
+    requestsA11y: (n: number) => `${n} demandes d’ami. Voir`,
+    wantsToBeFriend: (username: string) => `@${username} veut être ton ami`,
+    requestsCount: (n: number) => `${n} demandes d’ami`,
+    dailyMissions: 'MISSIONS DU JOUR',
+    myFriends: 'Mes amis',
+    seeAllA11y: (showingAll: boolean): string =>
+      showingAll ? 'Voir moins d’amis' : 'Voir tous tes amis',
+    seeAll: (showingAll: boolean): string => (showingAll ? 'Voir moins' : 'Tout voir'),
+    emptyTitle: 'Pas encore d’amis',
+    emptyMessage: 'Cherche-les par nom d’utilisateur ou partage ton code ami.',
+    addFriends: 'Ajouter des amis',
+    recentActivity: 'ACTIVITÉ RÉCENTE',
+    friendA11y: (username: string, presence: string, elo: string | null) =>
+      `${username}, ${presence}${elo ? `, ${elo}` : ''}. Voir le profil`,
+    streakA11y: (n: number) => `Série de ${n} ${n === 1 ? 'jour' : 'jours'}`,
+  },
 });

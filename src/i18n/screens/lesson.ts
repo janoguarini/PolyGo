@@ -42,6 +42,16 @@ export const lessonStrings = defineStrings({
     nextLesson: 'Prossima lezione',
     backToPath: 'Torna al percorso',
   },
+  fr: {
+    exitTitle: 'Quitter la leçon ?',
+    exitMessage: 'Tu vas perdre ta progression dans cette leçon.',
+    stay: 'Continuer',
+    leave: 'Quitter',
+    loading: 'Chargement de la leçon…',
+    loadError: 'Impossible de charger la leçon.',
+    nextLesson: 'Leçon suivante',
+    backToPath: 'Retour au parcours',
+  },
 });
 
 /** Explicación de una lección (src/app/lesson-intro/[id].tsx). */
@@ -78,6 +88,14 @@ export const lessonIntroStrings = defineStrings({
     noIntro: 'Questa lezione non ha ancora una spiegazione scritta.',
     learned: 'COSA HAI IMPARATO',
   },
+  fr: {
+    loading: 'Chargement de l’explication…',
+    loadError: 'Impossible de charger l’explication.',
+    back: 'Retour',
+    overline: 'EXPLICATION DE LA LEÇON',
+    noIntro: 'Cette leçon n’a pas encore d’explication écrite.',
+    learned: 'CE QUE TU AS APPRIS',
+  },
 });
 
 /** Tarea de escritura (src/app/writing/[id].tsx). */
@@ -101,5 +119,10 @@ export const writingTaskScreenStrings = defineStrings({
     back: 'Indietro',
     notFoundTitle: 'Non abbiamo trovato questa attività',
     notFoundMessage: 'Torna indietro e riprova.',
+  },
+  fr: {
+    back: 'Retour',
+    notFoundTitle: 'On n’a pas trouvé cet exercice',
+    notFoundMessage: 'Reviens en arrière et réessaie.',
   },
 });

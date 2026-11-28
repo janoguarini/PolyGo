@@ -19,7 +19,7 @@ export interface ChallengeMessage {
   variant: string;
 }
 
-export type PushLanguage = 'es' | 'en' | 'pt-BR' | 'it';
+export type PushLanguage = 'es' | 'en' | 'pt-BR' | 'it' | 'fr';
 
 const FLAGS: Record<string, string> = {
   en: '🇺🇸',
@@ -42,7 +42,7 @@ export function pushLanguage(
   ctx: Pick<ChallengeContext, 'languageCode' | 'interfaceLanguage'>,
 ): PushLanguage {
   const ui = ctx.interfaceLanguage;
-  if (ui === 'es' || ui === 'en' || ui === 'pt-BR' || ui === 'it') return ui;
+  if (ui === 'es' || ui === 'en' || ui === 'pt-BR' || ui === 'it' || ui === 'fr') return ui;
   return ctx.languageCode === 'es' ? 'en' : 'es';
 }
 
@@ -138,6 +138,28 @@ const TEXTS: Record<PushLanguage, Texts> = {
     newB: (h, f) => [
       `🔥 ${h} vuole giocare con te`,
       `${f} Duello da ${SECONDS} secondi. Tocca e dimostra chi ne sa di più!`,
+    ],
+  },
+  fr: {
+    lead: (h, iw, hw) => [
+      `😤 ${h} veut sa revanche`,
+      `Tu mènes ${iw}–${hw}. Défends ton titre ! 🏆`,
+    ],
+    behind: (h, hw, iw) => [
+      `⚔️ ${h} te défie encore`,
+      `${h} mène ${hw}–${iw}. Tu relèves le défi ? 💪`,
+    ],
+    tie: (h, hw, iw) => [
+      `⚖️ Match décisif contre ${h}`,
+      `Vous êtes à ${hw}–${iw}. Ce duel décide qui est le boss.`,
+    ],
+    newA: (h, f) => [
+      `⚔️ ${h} te défie en duel`,
+      `${f} ${SECONDS} secondes, face à face. Tu acceptes ou tu te caches ?`,
+    ],
+    newB: (h, f) => [
+      `🔥 ${h} veut jouer avec toi`,
+      `${f} Duel de ${SECONDS} secondes. Touche et montre qui en sait le plus !`,
     ],
   },
 };

@@ -139,6 +139,41 @@ export const energyStrings = defineStrings({
       `Completare una lezione costa ${cost} di energia; sbagliare non costa di più.`,
     badgeA11y: 'Funzione di PolyGo Plus',
   },
+  fr: {
+    statusPlus: 'Illimitée avec PolyGo Plus',
+    statusFull: 'Énergie au max',
+    statusNext: (wait: string) => `Prochaine dans ${wait}`,
+    statusEmpty: (next: string) => `Plus d’énergie · ${next}`,
+    a11yPlus: 'Énergie illimitée avec PolyGo Plus',
+    a11y: (energy: number, max: number, status: string) =>
+      `Énergie ${energy} sur ${max}. ${status}`,
+    chipLabel: 'Énergie',
+    chipHideHint: 'Masque les détails',
+    chipShowHint: 'Montre comment marche l’énergie',
+    loading: 'Chargement de ton énergie…',
+    errorTitle: 'Impossible de lire ton énergie',
+    errorBody:
+      'Tu peux continuer à utiliser PolyGo : quand tu enregistres une leçon, le serveur la vérifie quand même.',
+    retry: 'Réessayer',
+    unlimited: 'Énergie illimitée',
+    amount: (energy: number, max: number) => `Énergie ${energy} sur ${max}`,
+    stale: 'Hors ligne : ce n’est peut-être pas à jour.',
+    plusBody: 'Termine autant de leçons que tu veux.',
+    rules: (cost: number, hours: number, max: number) =>
+      `Terminer une leçon coûte ${cost}. Se tromper, entrer dans une leçon ou en sortir ne coûte rien. Tu en récupères 1 toutes les ${hours} heures, jusqu’à ${max}. Ranked, la révision et Amis n’utilisent jamais d’énergie.`,
+    plusLinkA11y: 'Découvre PolyGo Plus : énergie illimitée',
+    plusLink: 'Pas envie d’attendre ? Découvre PolyGo Plus',
+    outTitle: 'Tu n’as plus d’énergie',
+    outWait: (wait: string) => `Tu en récupères 1 dans ${wait} et tu pourras continuer cette leçon.`,
+    outRecharging: 'Elle est déjà en train de se recharger.',
+    outMeanwhile: 'En attendant, la révision et Ranked sont gratuits et n’utilisent pas d’énergie.',
+    reviewFree: 'Réviser gratuitement',
+    playRanked: 'Jouer en Ranked',
+    backToPath: 'Retour au parcours',
+    outFooter: (cost: number) =>
+      `Terminer une leçon coûte ${cost} d’énergie ; te tromper ne coûte rien de plus.`,
+    badgeA11y: 'Fonction PolyGo Plus',
+  },
 });
 
 const LESS_THAN_A_MINUTE = {
@@ -146,6 +181,7 @@ const LESS_THAN_A_MINUTE = {
   en: 'less than 1 min',
   'pt-BR': 'menos de 1 min',
   it: 'meno di 1 min',
+  fr: 'moins d’1 min',
 } as const;
 
 /** `formatEnergyWait` (shared, en español) según el idioma de la interfaz: «2 h 10 min». */

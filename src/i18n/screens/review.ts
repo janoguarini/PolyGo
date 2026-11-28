@@ -229,6 +229,62 @@ export const reviewStrings = defineStrings({
     practiceMistakesHint:
       'Questa pratica non cambia i tuoi ripassi: continua con il ripasso a intervalli per fissarle.',
   },
+  fr: {
+    titles: {
+      review: 'Révision du vocabulaire',
+      practice: 'Entraînement libre',
+      mistakes: 'Tes points faibles',
+      smart: 'Révision intelligente',
+      topic: 'Révision par thème',
+      coach: 'Session avec le Coach',
+    } as Record<ReviewMode, string>,
+    plusTitle: (title: string) => `${title} fait partie de PolyGo Plus`,
+    topicUpsell:
+      'Révise seulement les mots de l’unité que tu choisis. La révision espacée, l’entraînement libre et tes points faibles restent gratuits.',
+    smartUpsell:
+      'Chaque session se construit avec tes erreurs fréquentes, les mots qui te posent problème et ceux que tu es sur le point d’oublier. La révision espacée, l’entraînement libre et tes points faibles restent gratuits.',
+    coachUpsell:
+      'Tu as déjà utilisé tes sessions d’essai du Coach. Avec Plus, tu travailles tes points faibles sans limite. Ton diagnostic, la révision espacée et tes points faibles restent gratuits.',
+    coachEmpty: 'Ces thèmes n’ont plus de mots à renforcer. Bravo !',
+    discoverPlus: 'Découvre PolyGo Plus',
+    back: 'Retour',
+    verifyError: 'Impossible de vérifier ton abonnement.',
+    preparing: 'Préparation de la révision…',
+    previousSaveError:
+      'Impossible d’enregistrer ta révision précédente. Tes réponses ne sont pas perdues : tu peux réessayer.',
+    prepareError:
+      'Impossible de préparer la révision. Ce que tu as déjà répondu n’est pas perdu : tu peux réessayer.',
+    unavailableTitle: 'Révisions en préparation',
+    unavailableMessage: (code: string) =>
+      `Il n’y a pas encore d’exercices de révision en ${languageName(code, 'fr').toLocaleLowerCase('fr')}. Ta progression dans cette langue est quand même enregistrée ; les révisions arriveront quand leur contenu sera publié.`,
+    exhaustedTitle: 'Tu as fini tes révisions du jour',
+    nothingToReview: 'Rien à réviser',
+    upToDate: 'Tu es à jour',
+    exhaustedMessage:
+      'Tu as atteint ton objectif quotidien de révisions. Le reste revient demain, dans l’ordre.',
+    smartEmpty:
+      'Aucun mot à réviser, souvent raté ou sur le point d’être oublié. Termine des leçons et reviens plus tard.',
+    topicEmpty: 'Il n’y a pas encore de mots de cette unité à réviser.',
+    reviewEmpty:
+      'Tu n’as rien à réviser pour l’instant. Ce que tu étudies reviendra quand ce sera le moment de le réviser.',
+    exitReviewTitle: 'Quitter la révision ?',
+    exitReviewMessage:
+      'Les réponses déjà vérifiées sont enregistrées : tu peux reprendre cette révision aujourd’hui.',
+    stay: 'Continuer',
+    leave: 'Quitter',
+    done: 'Terminé',
+    strugglingOverline: 'ÇA COINCE',
+    strugglingBody: 'Ces mots te résistent. Revoir l’explication de la leçon aide souvent.',
+    seeExplanation: (word: string) => 'Voir l’explication · ' + word,
+    preparingPractice: 'Préparation de l’entraînement…',
+    practiceError: 'Impossible de préparer l’entraînement.',
+    nothingToPractice: 'Rien à pratiquer',
+    nothingToPracticeMessage: 'Termine des leçons pour ajouter des mots à ton entraînement.',
+    exitPracticeTitle: 'Quitter l’entraînement ?',
+    exitPracticeMessage: 'Tu peux revenir quand tu veux.',
+    practiceMistakesHint:
+      'Cet entraînement ne change pas tes révisions : continue la révision espacée pour bien les retenir.',
+  },
 });
 
 /** Repaso por tema (src/app/review-topics.tsx). Lo ven todos; repasar es de Plus. */
@@ -363,5 +419,38 @@ export const reviewTopicsStrings = defineStrings({
     unlockSub: 'Con PolyGo Plus · disdici quando vuoi',
     legend: { mastered: 'Padroneggiate', due: 'Per oggi', struggling: 'Difficili' },
     note: 'Fino a 15 parole dell’argomento: prima quelle da ripassare e le più difficili. Non consuma energia.',
+  },
+  fr: {
+    title: 'Révision par thème',
+    plus: 'Plus',
+    loadError: 'Impossible de charger tes thèmes.',
+    emptyTitle: 'Pas encore de thèmes',
+    emptyMessage:
+      'Termine des leçons : chaque unité où tu étudies des mots apparaît ici pour la réviser.',
+    goToPath: 'Aller à mon parcours',
+    heroTitle: 'Choisis un thème et entraîne-toi',
+    heroStats: (topics: number, started: number, weak: number) =>
+      [
+        `${topics} ${topics <= 1 ? 'thème' : 'thèmes'}`,
+        `${started} ${started <= 1 ? 'commencé' : 'commencés'}`,
+        weak > 0 ? `${weak} à renforcer` : null,
+      ]
+        .filter(Boolean)
+        .join(' · '),
+    wordsOf: (n: number, total: number) => `${n} ${n <= 1 ? 'mot' : 'mots'} sur ${total}`,
+    lessons: (n: number) => `${n} ${n <= 1 ? 'leçon' : 'leçons'}`,
+    notStarted: 'À commencer',
+    recommended: 'Recommandé pour toi',
+    level: (level: string) => `NIVEAU ${level}`,
+    words: (n: number) => `${n} ${n <= 1 ? 'mot' : 'mots'}`,
+    struggling: (n: number) => (n <= 1 ? `${n} difficile` : `${n} difficiles`),
+    dueToday: (n: number) => `${n} pour aujourd’hui`,
+    allGood: 'À jour',
+    cardA11y: (title: string, detail: string, locked: boolean) =>
+      `${title}. ${detail}.${locked ? ' Avec PolyGo Plus.' : ''}`,
+    unlock: 'Débloquer la révision par thème',
+    unlockSub: 'Avec PolyGo Plus · résiliable à tout moment',
+    legend: { mastered: 'Maîtrisés', due: 'Pour aujourd’hui', struggling: 'Difficiles' },
+    note: 'Jusqu’à 15 mots du thème : d’abord ceux à réviser et les plus difficiles. Ça n’utilise pas d’énergie.',
   },
 });

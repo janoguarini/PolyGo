@@ -58,6 +58,24 @@ function missionTitleIt(id: MissionId, target: number): string {
   }
 }
 
+/** Títulos en francés por id de misión. */
+function missionTitleFr(id: MissionId, target: number): string {
+  switch (id) {
+    case 'lessons':
+      return `Termine ${target} ${s(target, 'leçon', 'leçons')}`;
+    case 'minutes':
+      return `Étudie pendant ${target} minutes`;
+    case 'correct':
+      return `Donne ${target} bonnes réponses`;
+    case 'perfect':
+      return 'Termine une leçon sans faute';
+    case 'ranked_play':
+      return `Joue ${target} ${s(target, 'partie', 'parties')} Ranked`;
+    case 'ranked_win':
+      return 'Gagne une partie Ranked';
+  }
+}
+
 export const missionStrings = defineStrings({
   es: {
     title: (id: MissionId, target: number) => missionTitle(id, target),
@@ -70,6 +88,9 @@ export const missionStrings = defineStrings({
   },
   it: {
     title: (id: MissionId, target: number) => missionTitleIt(id, target),
+  },
+  fr: {
+    title: (id: MissionId, target: number) => missionTitleFr(id, target),
   },
 });
 
@@ -156,5 +177,26 @@ export const dailyRewardStrings = defineStrings({
     alreadyOpened: 'Hai già aperto il forziere di oggi. Domani ci sono nuove missioni!',
     claim: 'Riscatta ricompensa',
     completeMissions: (done: number, total: number) => `Completa le missioni · ${done}/${total}`,
+  },
+  fr: {
+    days: ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'],
+    intro: (total: number, days: number, bonus: number) =>
+      `Termine les ${total} missions et ouvre le coffre du jour.\nOuvre-le ${days} jours dans la semaine et gagne ${bonus} Polys en plus.`,
+    weekA11y: (opened: number) => `Coffres de la semaine : ${opened} ouverts`,
+    dayA11y: (day: string, today: boolean, open: boolean, polys: number | null, past: boolean) =>
+      `${day}${today ? ', aujourd’hui' : ''} : ${
+        open ? `coffre ouvert, ${polys} Polys` : past ? 'pas ouvert' : 'coffre de 10 à 20 Polys'
+      }`,
+    weekError: 'Impossible de charger ta semaine. Tu peux quand même ouvrir le coffre du jour.',
+    weeklyClaimed: (bonus: number) => `Bonus de la semaine récupéré : +${bonus} Polys`,
+    weeklyProgress: (opened: number, days: number) =>
+      `Bonus de la semaine : ${opened}/${days} coffres`,
+    weeklyA11y: 'Progression du bonus de la semaine',
+    jackpot: 'Coffre chanceux !',
+    includesWeekly: (bonus: number) => `Inclut le bonus de la semaine (+${bonus})`,
+    opened: 'Coffre ouvert !',
+    alreadyOpened: 'Tu as déjà ouvert le coffre du jour. Nouvelles missions demain !',
+    claim: 'Récupérer la récompense',
+    completeMissions: (done: number, total: number) => `Termine les missions · ${done}/${total}`,
   },
 });

@@ -104,6 +104,32 @@ const IT_LEVELS: Record<string, { name: string; meaning: string }> = {
   },
 };
 
+const FR_LEVELS: Record<string, { name: string; meaning: string }> = {
+  A1: {
+    name: 'Débutant',
+    meaning:
+      'Tu comprends et utilises des phrases très simples pour te présenter et parler du quotidien.',
+  },
+  A2: {
+    name: 'Élémentaire',
+    meaning:
+      'Tu te débrouilles dans des situations simples et courantes, et tu sais raconter ce que tu as fait.',
+  },
+  B1: {
+    name: 'Intermédiaire',
+    meaning:
+      'Tu t’en sors dans la plupart des situations et tu donnes ton avis avec des phrases simples.',
+  },
+  B2: {
+    name: 'Intermédiaire avancé',
+    meaning: 'Tu parles avec aisance de sujets variés et tu comprends des textes plus complexes.',
+  },
+  C1: {
+    name: 'Avancé',
+    meaning: 'Tu utilises la langue avec aisance et précision dans presque tous les contextes.',
+  },
+};
+
 const levelInfo = (table: typeof ES_LEVELS, level: string) =>
   table[level] ?? { name: level, meaning: '' };
 
@@ -139,6 +165,14 @@ const IT_DIMENSIONS: Record<PlacementDimension, string> = {
   context: 'Uso nel contesto',
 };
 
+const FR_DIMENSIONS: Record<PlacementDimension, string> = {
+  vocabulary: 'Vocabulaire',
+  grammar: 'Grammaire',
+  sentences: 'Compréhension des phrases',
+  structures: 'Structure des phrases',
+  context: 'Usage en contexte',
+};
+
 const lowerPt = (s: string) => s.toLocaleLowerCase('pt-BR');
 const lowerIt = (s: string) => s.toLocaleLowerCase('it');
 /** «dall'inglese», «dallo spagnolo», «dal francese». */
@@ -147,6 +181,18 @@ const fromIt = (language: string) => {
   if (/^[aeiouh]/.test(l)) return `dall’${l}`;
   if (/^(s[^aeiou]|z|gn|ps|x|y)/.test(l)) return `dallo ${l}`;
   return `dal ${l}`;
+};
+const lowerFr = (s: string) => s.toLocaleLowerCase('fr');
+const frElides = (l: string) => /^[aeiouyhéèêàâîôû]/.test(l);
+/** «d’anglais», «de français». */
+const ofFr = (language: string) => {
+  const l = lowerFr(language);
+  return frElides(l) ? `d’${l}` : `de ${l}`;
+};
+/** «depuis l’anglais», «depuis le français». */
+const fromFr = (language: string) => {
+  const l = lowerFr(language);
+  return frElides(l) ? `depuis l’${l}` : `depuis le ${l}`;
 };
 
 /** Qué dice el resultado según lo que demostró (shared/placement.ts PlacementResult). */
@@ -297,6 +343,41 @@ export const courseStartStrings = defineStrings({
     startErrorMessage: 'Controlla la connessione e riprova. Non è stato modificato nulla.',
     retry: 'Riprova',
     cancel: 'Annulla',
+  },
+  fr: {
+    title: 'Nouveau cours',
+    loading: 'Préparation du cours…',
+    notFoundTitle: 'Cours indisponible',
+    notFoundMessage: 'Ce cours n’est pas disponible pour le moment.',
+    back: 'Retour',
+    heroOverline: 'TU COMMENCES UN NOUVEAU COURS',
+    fromLanguage: (source: string) => fromFr(source),
+    levelsLabel: 'Niveaux',
+    rankedLabel: 'Ranked',
+    rankedYes: 'Disponible',
+    rankedNo: 'Pas encore de Ranked',
+    question: 'Par où veux-tu commencer ?',
+    testTitle: 'Passer le test de niveau',
+    testBody: (levels: string, max: number) =>
+      `Un petit défi pour te situer entre ${levels}. Jusqu’à ${max} questions, environ 3 minutes.`,
+    testBadge: 'SI TU T’Y CONNAIS DÉJÀ UN PEU',
+    testHint: 'Ouvre le test de niveau. Rien n’est enregistré avant que tu confirmes le résultat.',
+    testSoon: 'Le test de niveau arrive avec la prochaine mise à jour du serveur.',
+    singleLevel: (level: string) =>
+      `Pour l’instant, ce cours n’a que le niveau ${level} : tu commences depuis le début.`,
+    fromStartTitle: (level: string) => `Je préfère commencer au niveau ${level}`,
+    fromStartBody: (title: string) => `Dès la première unité : « ${title} ».`,
+    fromStartBodyPlain: 'Dès la première unité du cours.',
+    fromStartHint: 'Commence ce cours depuis le début. Tes autres cours ne changent pas.',
+    starting: 'C’est parti…',
+    keepNote: 'Ton XP, ton niveau de joueur et tes autres cours ne changent pas.',
+    alreadyTitle: 'Tu suis déjà ce cours',
+    alreadyMessage: (level: string) => `Tu gardes ton niveau (${level}) et ta progression.`,
+    goToCourse: 'Aller au cours',
+    startErrorTitle: 'Impossible de commencer le cours',
+    startErrorMessage: 'Vérifie ta connexion et réessaie. Rien n’a été modifié.',
+    retry: 'Réessayer',
+    cancel: 'Annuler',
   },
 });
 
@@ -541,5 +622,68 @@ export const placementStrings = defineStrings({
     ok: 'Capito',
     noTestTitle: 'Questo corso non ha un test di livello',
     noTestMessage: 'Per ora ha un solo livello: inizi dal principio.',
+  },
+  fr: {
+    title: (language: string) => `Test de niveau ${ofFr(language)}`,
+    introOverline: 'DÉFI DE NIVEAU',
+    introTitle: 'Quel est ton niveau ?',
+    introBody: 'Réponds à quelques questions courtes et on te dit par où commencer.',
+    whatWeCheck: 'CE QU’ON VA ÉVALUER',
+    dimension: (d: PlacementDimension) => FR_DIMENSIONS[d],
+    ruleHarder: 'Si tu réponds bien, les questions deviennent plus difficiles.',
+    ruleStop:
+      'Si quelque chose te pose problème, le test s’arrête plus tôt : pas besoin de tout savoir.',
+    ruleSafe:
+      'Ça ne rapporte pas d’XP et ne change pas tes autres cours. Si tu quittes, rien n’est enregistré.',
+    duration: (max: number) => `Jusqu’à ${max} questions · environ 3 minutes`,
+    startChallenge: 'Commencer le défi',
+    exit: 'Quitter le test',
+    exitTitle: 'Quitter le test ?',
+    exitMessage: 'Rien ne sera enregistré. Tu peux le refaire quand tu veux.',
+    exitConfirm: 'Quitter',
+    exitCancel: 'Continuer',
+    progress: (n: number, max: number) => `Question ${n}, ${max} au maximum`,
+    questionChip: (n: number) => `Question ${n}`,
+    bandChip: (level: string) => `Niveau ${level}`,
+    correct: 'Correct !',
+    typo: 'Bien ! Attention à l’orthographe',
+    incorrect: 'Ce n’était pas ça',
+    levelUp: (level: string) => `Tu passes au niveau ${level} !`,
+    next: 'Suivant',
+    seeResult: 'Voir mon résultat',
+    resultOverline: 'TON RÉSULTAT',
+    estimated: 'Ton niveau estimé est',
+    levelA11y: (level: string, name: string) => `Ton niveau estimé est ${level}, ${name}`,
+    levelName: (level: string) => levelInfo(FR_LEVELS, level).name,
+    levelMeaning: (level: string) => levelInfo(FR_LEVELS, level).meaning,
+    explain: ({ level, mastered, partial, topReached }: Explain) =>
+      topReached
+        ? `Tu as tout bien répondu sur ce que le cours propose pour l’instant. Tu commences au niveau ${level}, le plus haut disponible, pour consolider ce que tu sais déjà.`
+        : mastered.length > 0
+          ? `Tu as bien répondu à l’essentiel de ${mastered.join(' et ')}${partial ? ` et à une partie de ${level}` : ''}. Tu peux commencer directement au niveau ${level}.`
+          : partial
+            ? `Tu connais déjà une partie des bases. Commencer au niveau ${level} t’aide à les consolider : tu vas avancer vite.`
+            : `Tu vas construire les bases depuis le début, à ton rythme.`,
+    score: (correct: number, answered: number) =>
+      `${correct} ${correct <= 1 ? 'bonne réponse' : 'bonnes réponses'} sur ${answered}`,
+    startPoint: 'PAR OÙ TU COMMENCES',
+    startUnit: (level: string, title: string) => `Niveau ${level} · Unité 1 : « ${title} »`,
+    disclaimer:
+      'C’est une estimation pour choisir par où commencer, pas un certificat officiel. Tu peux changer en commençant au niveau A1.',
+    startCourse: 'Commencer le cours',
+    startFromA1: 'Je préfère commencer au niveau A1',
+    retake: 'Refaire le test',
+    saving: 'Enregistrement de ton résultat…',
+    saveError:
+      'Impossible d’enregistrer ton résultat. Vérifie ta connexion et réessaie : tes réponses sont toujours là.',
+    saveUnsupported:
+      'Pour enregistrer le résultat du test, il faut une mise à jour du serveur. En attendant, tu peux commencer au niveau A1.',
+    retry: 'Réessayer',
+    alreadyTitle: 'Tu avais déjà ce cours',
+    alreadyMessage: (level: string) =>
+      `On a gardé ton niveau (${level}) et ta progression. Le résultat de ce test ne les change pas.`,
+    ok: 'Compris',
+    noTestTitle: 'Ce cours n’a pas de test de niveau',
+    noTestMessage: 'Pour l’instant, il n’a qu’un seul niveau : tu commences depuis le début.',
   },
 });

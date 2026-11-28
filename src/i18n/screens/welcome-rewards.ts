@@ -114,4 +114,36 @@ export const welcomeRewardsStrings = defineStrings({
     alreadyClaimed: 'Hai già riscattato la ricompensa di oggi. Torna domani!',
     loadError: 'Non siamo riusciti a caricare le tue ricompense.',
   },
+  fr: {
+    title: 'Récompense du jour',
+    back: 'Retour',
+    heroTitle: 'Ta prochaine récompense t’attend !',
+    heroSubtitle: (total: number) => `Connecte-toi ${total} jours et débloque des prix spéciaux.`,
+    chestA11y: 'Coffre légendaire de récompenses',
+    calendarTitle: 'Ta semaine de cadeaux',
+    progress: (claimed: number, total: number) => `${claimed}/${total}`,
+    day: (n: number) => `Jour ${n}`,
+    dayA11y: (n: number, label: string, state: 'claimed' | 'today' | 'locked') =>
+      `Jour ${n} : ${label}. ${
+        state === 'claimed'
+          ? 'Récupérée'
+          : state === 'today'
+            ? 'Disponible aujourd’hui'
+            : 'Verrouillée'
+      }`,
+    todayTag: 'AUJOURD’HUI',
+    claimedTag: 'Récupérée',
+    legendTag: 'RÉCOMPENSE LÉGENDAIRE',
+    legendToday: 'Disponible aujourd’hui !',
+    legendLocked: (n: number) => `Récupère les ${n} jours précédents`,
+    polys: (n: number) => `${n} Polys`,
+    claim: 'Récupérer la récompense',
+    claimHint: 'Récupère la récompense du jour',
+    comeBack: 'Reviens demain pour la suivante',
+    completed: 'Tu as terminé la semaine de bienvenue !',
+    got: (label: string) => `Tu as gagné ${label} !`,
+    gotRepeated: (polys: number) => `Tu l’avais déjà : voici ${polys} Polys`,
+    alreadyClaimed: 'Tu as déjà récupéré la récompense du jour. Reviens demain !',
+    loadError: 'Impossible de charger tes récompenses.',
+  },
 });

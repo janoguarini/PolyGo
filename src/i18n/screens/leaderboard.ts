@@ -50,4 +50,16 @@ export const leaderboardScreenStrings = defineStrings({
     emptyTitle: 'Ancora nessun giocatore',
     emptyBody: 'Vinci una ranked e inaugura la classifica.',
   },
+  fr: {
+    title: 'Classement',
+    winToEnter: 'Gagne un match Ranked pour entrer dans le classement.',
+    global: 'Mondial',
+    pickLanguageHint: 'Touche à nouveau pour choisir une autre langue',
+    playerColumn: 'JOUEUR',
+    rankColumn: 'RANG',
+    loading: 'Chargement du classement…',
+    loadError: 'Impossible de charger le classement.',
+    emptyTitle: 'Pas encore de joueurs',
+    emptyBody: 'Gagne un match Ranked et inaugure le classement.',
+  },
 });

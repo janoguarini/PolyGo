@@ -38,4 +38,13 @@ export const designSystemStrings = defineStrings({
     retry: 'Riprova',
     back: 'Indietro',
   },
+  fr: {
+    loading: 'Chargement…',
+    errorTitle: 'Un problème est survenu',
+    errorMessage: 'Impossible de charger ces informations.',
+    offlineTitle: 'Pas de connexion',
+    offlineMessage: 'Vérifie ta connexion internet et réessaie.',
+    retry: 'Réessayer',
+    back: 'Retour',
+  },
 });

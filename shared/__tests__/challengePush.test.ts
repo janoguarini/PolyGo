@@ -58,10 +58,17 @@ describe('idioma del aviso de desafío', () => {
   it('sin idioma de interfaz (perfiles viejos) sigue la regla anterior', () => {
     expect(pushLanguage({ languageCode: 'es', interfaceLanguage: null })).toBe('en');
     expect(pushLanguage({ languageCode: 'it' })).toBe('es');
-    expect(pushLanguage({ languageCode: 'it', interfaceLanguage: 'fr' })).toBe('es');
+    expect(pushLanguage({ languageCode: 'it', interfaceLanguage: 'de' })).toBe('es');
   });
 
-  it.each(['es', 'en', 'pt-BR', 'it'] as const)('%s: todas las variantes tienen texto', (ui) => {
+  it('interfaz en francés: el aviso va en francés', () => {
+    expect(pushLanguage({ languageCode: 'en', interfaceLanguage: 'fr' })).toBe('fr');
+    expect(
+      challengeMessage({ host: 'ana', languageCode: 'en', interfaceLanguage: 'fr' }, 1).title,
+    ).toBe('🔥 @ana veut jouer avec toi');
+  });
+
+  it.each(['es', 'en', 'pt-BR', 'it', 'fr'] as const)('%s: todas las variantes tienen texto', (ui) => {
     const variants = [
       challengeMessage({ host: 'x', interfaceLanguage: ui }, 0),
       challengeMessage({ host: 'x', interfaceLanguage: ui }, 1),

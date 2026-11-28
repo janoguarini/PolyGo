@@ -27,4 +27,11 @@ export const rootStrings = defineStrings({
     loading: 'Preparazione di PolyGo…',
     profileError: 'Non siamo riusciti a caricare il tuo profilo.',
   },
+  fr: {
+    crashTitle: 'Un problème est survenu',
+    crashMessage:
+      'PolyGo a rencontré une erreur inattendue. Ta progression enregistrée est intacte.',
+    loading: 'Préparation de PolyGo…',
+    profileError: 'Impossible de charger ton profil.',
+  },
 });

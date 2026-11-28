@@ -7,16 +7,16 @@ import { deviceStorage } from '@/lib/secureStorage';
  * de origen del aprendizaje y del idioma que se aprende: lo elige el onboarding (Español → es,
  * English → en) y se puede cambiar en Ajustes.
  *
- * Sin librerías: cada área declara sus textos con `defineStrings({ es, en, 'pt-BR', it })` junto a su
+ * Sin librerías: cada área declara sus textos con `defineStrings({ es, en, 'pt-BR', it, fr })` junto a su
  * código, y TypeScript exige que cada idioma tenga exactamente las claves (y las firmas de las
  * funciones) de `es`. Las pantallas los leen con `useStrings(def)`; el código que no es React, con
  * `getStrings(def)`.
  *
  * Los códigos son los mismos que guarda la base (profiles.interface_language): 'es', 'en', 'pt-BR',
- * 'it'. Los valores viejos ('es' / 'en') siguen valiendo tal cual.
+ * 'it', 'fr'. Los valores viejos ('es' / 'en') siguen valiendo tal cual.
  */
 
-export const INTERFACE_LANGUAGES = ['es', 'en', 'pt-BR', 'it'] as const;
+export const INTERFACE_LANGUAGES = ['es', 'en', 'pt-BR', 'it', 'fr'] as const;
 export type InterfaceLanguage = (typeof INTERFACE_LANGUAGES)[number];
 
 /** Cada idioma, en su propia lengua (así se reconoce en cualquier interfaz). */
@@ -25,6 +25,7 @@ export const INTERFACE_LANGUAGE_LABELS: Record<InterfaceLanguage, string> = {
   en: 'English',
   'pt-BR': 'Português (Brasil)',
   it: 'Italiano',
+  fr: 'Français',
 };
 
 /** Bandera de cada idioma de interfaz (selector de Ajustes y del registro). */
@@ -33,6 +34,7 @@ export const INTERFACE_LANGUAGE_FLAGS: Record<InterfaceLanguage, string> = {
   en: '🇺🇸',
   'pt-BR': '🇧🇷',
   it: '🇮🇹',
+  fr: '🇫🇷',
 };
 
 export const isInterfaceLanguage = (v: unknown): v is InterfaceLanguage =>
@@ -44,6 +46,7 @@ export const LOCALES: Record<InterfaceLanguage, string> = {
   en: 'en',
   'pt-BR': 'pt-BR',
   it: 'it',
+  fr: 'fr',
 };
 
 /**
@@ -63,6 +66,8 @@ export function interfaceLanguageForLocale(
       return 'pt-BR';
     case 'it':
       return 'it';
+    case 'fr':
+      return 'fr';
     default:
       return null;
   }
@@ -226,6 +231,7 @@ export interface StringsDef<T> {
   en: NoInfer<T>;
   'pt-BR': NoInfer<T>;
   it: NoInfer<T>;
+  fr: NoInfer<T>;
 }
 
 /** Declara los textos de un área. Cada idioma debe tener la misma forma que `es`. */
@@ -234,7 +240,7 @@ export function defineStrings<T>(def: StringsDef<T>): StringsDef<T> {
 }
 
 /**
- * Textos de `def` en `lang`. TypeScript y src/i18n/__tests__/strings.test.ts exigen los cuatro
+ * Textos de `def` en `lang`. TypeScript y src/i18n/__tests__/strings.test.ts exigen los cinco
  * idiomas; el respaldo en español sólo cubre un objeto armado a mano fuera de `defineStrings`.
  */
 export function stringsFor<T>(def: StringsDef<T>, lang: InterfaceLanguage): T {

@@ -129,6 +129,39 @@ export const authStrings = defineStrings({
       step4: '4. Riavvia con: npx expo start --clear',
     },
   },
+  fr: {
+    validation: {
+      invalidEmail: 'Saisis un e-mail valide.',
+      passwordMin: '6 caractères minimum.',
+      passwordMax: '72 caractères maximum.',
+      passwordRequired: 'Saisis ton mot de passe.',
+      passwordsDontMatch: 'Les mots de passe ne correspondent pas.',
+    },
+    google: {
+      label: 'Continuer avec Google',
+      hint: 'Ouvre Google pour choisir ton compte, puis te ramène sur PolyGo',
+      cancelled: 'Tu as annulé la connexion avec Google. Tu peux réessayer ou utiliser ton e-mail.',
+    },
+    apple: {
+      label: 'Continuer avec Apple',
+      hint: 'Ouvre la fenêtre d’Apple pour te connecter avec ton identifiant Apple',
+      cancelled:
+        'Tu as annulé la connexion avec Apple. Tu peux réessayer ou utiliser un autre moyen.',
+    },
+    dividerEmail: 'ou avec ton e-mail',
+    dividerContinueWith: 'ou continue avec',
+    configMissing: {
+      title: 'Backend non configuré',
+      message:
+        'PolyGo a besoin d’un projet Supabase pour inscrire les utilisateurs et enregistrer la progression.',
+      missingVariables: 'VARIABLES MANQUANTES OU NON VALIDES',
+      howToFix: 'Comment corriger',
+      step1: '1. Copie .env.example en .env à la racine du projet.',
+      step2: '2. Renseigne l’URL et l’anon key de ton projet Supabase.',
+      step3: '3. Applique les migrations de supabase/migrations.',
+      step4: '4. Redémarre avec : npx expo start --clear',
+    },
+  },
 });
 
 /** Pantalla de bienvenida (features/auth/welcome). */
@@ -186,5 +219,19 @@ export const welcomeStrings = defineStrings({
     ],
     createAccount: 'Crea account',
     haveAccount: 'Ho già un account',
+  },
+  fr: {
+    heroLabel:
+      'Le renard de PolyGo qui fait la fête devant un globe terrestre, avec des blasons de rang',
+    headlineLine1: 'Apprends en jouant.',
+    headlineLine2: 'Affronte les autres pour grimper.',
+    subtitle: 'Défie de vrais joueurs, progresse en langues\net conquiers de nouveaux rangs.',
+    features: [
+      { title: 'Apprends', text: 'Des leçons courtes et efficaces' },
+      { title: 'Affronte', text: 'Des duels 1 vs 1 en temps réel' },
+      { title: 'Monte en rang', text: 'De Bronze à Grand Maître' },
+    ],
+    createAccount: 'Créer un compte',
+    haveAccount: 'J’ai déjà un compte',
   },
 });

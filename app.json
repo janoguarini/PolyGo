@@ -13,7 +13,8 @@
       "es": "./locales/es.json",
       "en": "./locales/en.json",
       "pt-BR": "./locales/pt-BR.json",
-      "it": "./locales/it.json"
+      "it": "./locales/it.json",
+      "fr": "./locales/fr.json"
     },
     "ios": {
       "supportsTablet": false,
@@ -152,13 +153,15 @@
               "es",
               "en",
               "pt-BR",
-              "it"
+              "it",
+              "fr"
             ],
             "android": [
               "es",
               "en",
               "pt-BR",
-              "it"
+              "it",
+              "fr"
             ]
           }
         }

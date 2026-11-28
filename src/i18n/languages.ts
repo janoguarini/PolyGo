@@ -35,9 +35,17 @@ const NAMES: Record<Exclude<InterfaceLanguage, 'es'>, Names> = {
     fr: { name: 'Francese', short: 'Francese' },
     es: { name: 'Spagnolo', short: 'Spagnolo' },
   },
+  fr: {
+    en: { name: 'Anglais', short: 'Anglais' },
+    it: { name: 'Italien', short: 'Italien' },
+    pt: { name: 'Portugais', short: 'Portugais' },
+    zh: { name: 'Chinois mandarin', short: 'Chinois' },
+    fr: { name: 'Français', short: 'Français' },
+    es: { name: 'Espagnol', short: 'Espagnol' },
+  },
 };
 
-/** «Inglés» / «English» / «Inglês» / «Inglese». */
+/** «Inglés» / «English» / «Inglês» / «Inglese» / «Anglais». */
 export function languageName(code: string | null | undefined, ui: InterfaceLanguage): string {
   const config = languageConfig(code);
   if (ui === 'es') return config.name;

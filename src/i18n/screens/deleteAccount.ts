@@ -69,4 +69,21 @@ export const deleteAccountStrings = defineStrings({
     deleteForever: 'Elimina il mio account per sempre',
     cancel: 'Annulla',
   },
+  fr: {
+    title: 'Supprimer le compte',
+    cannotUndo: 'Cette action est irréversible',
+    deletedPermanently: 'Seront supprimés définitivement :',
+    whatIsDeleted: [
+      'Ton compte, ton e-mail et ton mot de passe.',
+      'Ton profil, ton avatar et tes réglages de confidentialité.',
+      'Ta progression : leçons, mots, révisions, série et succès.',
+      'Ton ELO, ton rang et ton historique de classement.',
+    ],
+    matchesNote:
+      'Les parties que tu as jouées restent dans l’historique de tes adversaires, sans ton nom ni ton avatar.',
+    confirmLabel: (username: string) => `Pour confirmer, écris ton nom d’utilisateur : ${username}`,
+    confirmHint: 'Le bouton de suppression s’active quand ça correspond',
+    deleteForever: 'Supprimer mon compte pour toujours',
+    cancel: 'Annuler',
+  },
 });

@@ -55,4 +55,17 @@ export const adsStrings = defineStrings({
     debugRewardedEnergy: 'Rewarded energia',
     debugRewardedFrame: 'Rewarded cornice',
   },
+  fr: {
+    privacy: 'Confidentialité des pubs',
+    privacyHint: 'Consulte ou modifie ton consentement pour les pubs',
+    debugTitle: 'Pubs de test (développement uniquement)',
+    debugState: (status: string, eligibility: string, canRequest: string, ump: string) =>
+      `État : ${status} · éligibilité : ${eligibility} · canRequestAds : ${canRequest} · UMP : ${ump}`,
+    debugWatched: (label: string) =>
+      `${label} : vidéo terminée (événement client). Rien n’a été crédité.`,
+    debugLoad: 'Charger les pubs',
+    debugLoadRequested: 'Chargement demandé. Attends quelques secondes, puis essaie d’en afficher une.',
+    debugRewardedEnergy: 'Rewarded énergie',
+    debugRewardedFrame: 'Rewarded cadre',
+  },
 });

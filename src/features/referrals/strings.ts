@@ -95,4 +95,26 @@ export const referralStrings = defineStrings({
     errorInvalidCode: 'Non abbiamo trovato questo codice. Controllalo e riprova.',
     errorGeneric: 'Non siamo riusciti a registrare l’invito. Riprova tra un po’.',
   },
+  fr: {
+    badges: {
+      recruiter: { name: 'Recruteur', description: '3 amis qui apprennent avec toi' },
+      ambassador: { name: 'Ambassadeur PolyGo', description: '5 amis qui apprennent avec toi' },
+      elite_inviter: { name: 'Parrain d’élite', description: '10 amis qui apprennent avec toi' },
+    },
+    missingStep: {
+      verify_email: 'Doit encore vérifier son e-mail',
+      onboarding: 'Doit encore terminer l’inscription',
+      first_activity: 'Doit encore faire sa première leçon',
+    },
+    validating: 'Validation…',
+    shareMessage:
+      'J’apprends des langues sur PolyGo ! Rejoins-moi avec mon invitation et débloquons des récompenses ensemble. 🚀',
+    errorSelf: 'Tu ne peux pas utiliser ton propre code.',
+    errorAlreadyAttributed: 'Ton compte a déjà une invitation enregistrée.',
+    errorWindowClosed:
+      'Les codes d’invitation ne s’utilisent que dans les premiers jours d’un nouveau compte.',
+    errorNotEligible: 'Ce code n’est pas valable pour ton compte.',
+    errorInvalidCode: 'Code introuvable. Vérifie-le et réessaie.',
+    errorGeneric: 'Impossible d’enregistrer l’invitation. Réessaie dans un moment.',
+  },
 });

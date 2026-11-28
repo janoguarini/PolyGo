@@ -115,4 +115,32 @@ export const rankedScreenStrings = defineStrings({
     challengeFriendHint: 'Crea un codice da condividere con un amico',
     haveCode: 'Ho un codice',
   },
+  fr: {
+    leaderboardA11y: (position: number | null | undefined) =>
+      position ? `Classement : tu es ${position}e au monde` : 'Classement',
+    top: 'Top',
+    seasonEnds: (season: string, date: string) => `${season} · Se termine le ${date}`,
+    modeWordRush: 'MODE · WORD RUSH',
+    comingSoon: (code: string | null | undefined) =>
+      `Ranked en ${languageName(code, 'fr').toLowerCase()} arrive bientôt`,
+    comingSoonBody:
+      'Les matchs s’ouvrent quand le niveau A1 de cette langue est complet. Pour jouer maintenant, passe à une autre langue depuis ton profil : ta progression dans chaque langue est sauvegardée.',
+    goToProfile: 'Aller au profil',
+    disabledBody:
+      'Les matchs Ranked et l’entraînement sont désactivés dans cette version de PolyGo. Tu peux toujours défier tes amis : ces matchs ne touchent pas à l’ELO.',
+    gameMode: 'MODE DE JEU',
+    findMatch: 'Trouver un match',
+    findMatchHint: 'Cherche un adversaire avec un ELO proche du tien',
+    practiceNoElo: 'S’entraîner sans ELO',
+    practiceHint: 'Un match Word Rush de 60 secondes contre la montre, sans adversaire',
+    playWithFriend: 'JOUER AVEC UN AMI',
+    playWithFriendBody:
+      'Envoie-lui un code et jouez le même match en direct. Match amical : l’ELO ne bouge pas.',
+    challengeCode: 'Code du défi',
+    joinChallenge: 'Rejoindre le défi',
+    back: 'Retour',
+    challengeFriend: 'Défier un ami',
+    challengeFriendHint: 'Crée un code à partager avec un ami',
+    haveCode: 'J’ai un code',
+  },
 });

@@ -130,4 +130,36 @@ export const tourStrings = defineStrings({
     start: 'Iniziamo!',
     finish: 'Si gioca!',
   },
+  fr: {
+    intro: {
+      title: 'Salut !',
+      body: 'Je te montre comment marche PolyGo en moins d’une minute.',
+    },
+    lesson: {
+      title: 'Ta prochaine leçon',
+      body: 'Touche-la pour commencer. Sans faute, tu gagnes 3 étoiles et le cercle devient doré.',
+    },
+    stats: {
+      title: 'Énergie, Polys et série',
+      body: 'Chaque leçon utilise de l’énergie, tu gagnes des Polys pour la boutique et ta série grandit si tu pratiques tous les jours.',
+    },
+    review: {
+      title: 'Tu as oublié un mot ?',
+      body: 'Ici, tu révises ce que tu as appris juste avant de l’oublier. Quelques minutes par jour suffisent.',
+    },
+    ranked: {
+      title: 'Ranked',
+      body: 'Des parties de 60 secondes contre d’autres joueurs. Gagne de l’ELO et grimpe du Bronze jusqu’au sommet.',
+    },
+    done: {
+      title: 'Tout est prêt !',
+      body: 'Fais ta première leçon et lance ta série dès aujourd’hui.',
+    },
+    step: (n: number, total: number) => `${n} SUR ${total}`,
+    stepA11y: (n: number, total: number) => `Étape ${n} sur ${total}`,
+    skip: 'Passer',
+    next: 'Suivant',
+    start: 'C’est parti !',
+    finish: 'À toi de jouer !',
+  },
 });

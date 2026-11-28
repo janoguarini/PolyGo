@@ -57,6 +57,16 @@ export const tierNames = defineStrings<Record<TierId, string>>({
     master: 'Maestro',
     grandmaster: 'Gran Maestro',
   },
+  fr: {
+    bronze: 'Bronze',
+    silver: 'Argent',
+    gold: 'Or',
+    platinum: 'Platine',
+    emerald: 'Émeraude',
+    diamond: 'Diamant',
+    master: 'Maître',
+    grandmaster: 'Grand Maître',
+  },
 });
 
 const unplacedNames = defineStrings({
@@ -64,6 +74,7 @@ const unplacedNames = defineStrings({
   en: { unplaced: 'Unranked' },
   'pt-BR': { unplaced: 'Sem classificação' },
   it: { unplaced: 'Non classificato' },
+  fr: { unplaced: 'Non classé' },
 });
 
 /** «Oro» / «Gold» / «Ouro» / «Oro». */
@@ -185,5 +196,23 @@ export const rankedStrings = defineStrings({
       rank: string,
       elo: number,
     ) => `Posizione ${place}, ${name}${language ? `, ${language}` : ''}, ${rank}, ${elo} ELO`,
+  },
+  fr: {
+    currentRank: 'RANG ACTUEL',
+    eloA11y: (elo: number) => `${elo} points d’ELO`,
+    firstWinHint: 'Gagne ton premier match pour entrer dans le classement en Bronze.',
+    progressA11y: 'Progression vers le rang suivant',
+    maxRank: 'Rang maximum atteint',
+    eloToNextRank: (n: number) => `${n} ELO avant le rang suivant`,
+    ladderA11y: (names: string) => `Rangs : ${names}`,
+    you: 'Toi',
+    openProfileHint: 'Ouvre le profil du joueur',
+    rowA11y: (
+      place: number,
+      name: string,
+      language: string | undefined,
+      rank: string,
+      elo: number,
+    ) => `Place ${place}, ${name}${language ? `, ${language}` : ''}, ${rank}, ${elo} ELO`,
   },
 });

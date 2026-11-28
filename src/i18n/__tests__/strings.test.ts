@@ -14,8 +14,8 @@ import {
 /**
  * Todos los textos de la interfaz (docs/MULTILINGUAL_ONBOARDING_PLAN.md §3.3): los archivos
  * `src/i18n/screens/*.ts` y cada `strings.ts` / `*Strings.ts` dentro de `src/`. TypeScript ya exige la
- * misma forma; esto lo comprueba en ejecución (claves, tipos, largo de listas y aridad) para los cuatro
- * idiomas, y busca restos de español en en, pt-BR e it, también en lo que devuelven las funciones.
+ * misma forma; esto lo comprueba en ejecución (claves, tipos, largo de listas y aridad) para los cinco
+ * idiomas, y busca restos de español en en, pt-BR, it y fr, también en lo que devuelven las funciones.
  */
 
 const SRC = join(__dirname, '../..');
@@ -45,11 +45,14 @@ const isDef = (v: unknown): v is StringsDef<unknown> =>
   Object.keys(v).length === INTERFACE_LANGUAGES.length;
 
 /**
- * Lo que delata español en cada idioma. Portugués e italiano comparten muchas palabras con el
- * español («para», «que», «una», «del», «está»), así que sólo cuentan las que no existen en ese idioma.
+ * Lo que delata español en cada idioma. Portugués, italiano y francés comparten muchas palabras con
+ * el español («para», «que», «una», «del», «está»; en francés «que», «tu», «y», «es»), así que sólo
+ * cuentan las que no existen en ese idioma.
  */
 const VOSEO =
   'querés|tenés|podés|sabés|tocá|elegí|ganá|jugá|probá|revisá|seguí|volvé|hacé|abrí|actualizá|desafiá|aprendé|competí|subí|acá|vos';
+/** «vos» también es un posesivo francés: para fr queda fuera del voseo. */
+const VOSEO_FR = VOSEO.replace(/\|vos$/, '');
 const SPANISH: Record<Exclude<InterfaceLanguage, 'es'>, RegExp> = {
   en: new RegExp(
     `[¿¡ñ]|\\b(el|los|las|para|tu|tus|que|con|una|del|está|más|también|${VOSEO})\\b`,
@@ -62,6 +65,12 @@ const SPANISH: Record<Exclude<InterfaceLanguage, 'es'>, RegExp> = {
   ),
   it: new RegExp(
     `[¿¡ñ]|(?<!-)\\b(el|los|las|unos|unas|y|más|también|está|ahora|todavía|hoy|aquí|${VOSEO})\\b`,
+    'i',
+  ),
+  // Sin «y», «que», «tu», «es», «con» ni «vos», que también son francés («il y a», «tu es», «vos amis»).
+  // Límites con letras acentuadas: \b no las ve, y «réel» o «hélas» no son «el» ni «las».
+  fr: new RegExp(
+    `[¿¡ñ]|(?<![\\wÀ-ÿœ’'-])(el|los|las|del|una|unos|unas|para|más|también|está|ahora|todavía|hoy|aquí|${VOSEO_FR})(?![\\wÀ-ÿœ])`,
     'i',
   ),
 };
@@ -167,7 +176,7 @@ function loadDefs() {
 describe('textos de la interfaz', () => {
   const { defs, missing } = loadDefs();
 
-  it('hay archivos de textos y todos exportan defineStrings con los cuatro idiomas', () => {
+  it('hay archivos de textos y todos exportan defineStrings con los cinco idiomas', () => {
     expect(defs.length).toBeGreaterThan(80);
     expect(missing).toEqual([]);
   });
@@ -221,11 +230,18 @@ describe('textos de la interfaz', () => {
   });
 
   it('getStrings sigue el idioma actual', () => {
-    const def = { es: { a: 'hola' }, en: { a: 'hello' }, 'pt-BR': { a: 'olá' }, it: { a: 'ciao' } };
+    const def = {
+      es: { a: 'hola' },
+      en: { a: 'hello' },
+      'pt-BR': { a: 'olá' },
+      it: { a: 'ciao' },
+      fr: { a: 'salut' },
+    };
     for (const [lang, text] of [
       ['en', 'hello'],
       ['pt-BR', 'olá'],
       ['it', 'ciao'],
+      ['fr', 'salut'],
       ['es', 'hola'],
     ] as const) {
       __setInterfaceLanguageForTests(lang);
@@ -238,8 +254,10 @@ describe('textos de la interfaz', () => {
       a: string;
     }>;
     expect(stringsFor(partial, 'it').a).toBe('hola');
+    expect(stringsFor(partial, 'fr').a).toBe('hola');
     expect(stringsFor(partial, 'en').a).toBe('hello');
-    expect(pick('pt-BR', { es: 1, en: 2, 'pt-BR': 3, it: 4 })).toBe(3);
-    expect(pick('it', { es: 1, en: 2, 'pt-BR': 3, it: 4 })).toBe(4);
+    expect(pick('pt-BR', { es: 1, en: 2, 'pt-BR': 3, it: 4, fr: 5 })).toBe(3);
+    expect(pick('it', { es: 1, en: 2, 'pt-BR': 3, it: 4, fr: 5 })).toBe(4);
+    expect(pick('fr', { es: 1, en: 2, 'pt-BR': 3, it: 4, fr: 5 })).toBe(5);
   });
 });

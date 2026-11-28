@@ -58,4 +58,18 @@ export const signUpStrings = defineStrings({
     haveAccount: 'Hai già un account? ',
     signIn: 'Accedi',
   },
+  fr: {
+    checkEmailTitle: 'Vérifie tes e-mails',
+    checkEmailMessage: (email: string) =>
+      `On a envoyé un lien de confirmation à ${email}. Ouvre-le sur ce téléphone pour activer ton compte.`,
+    goToSignIn: 'Aller à la connexion',
+    title: 'Créer un compte',
+    email: 'E-mail',
+    password: 'Mot de passe',
+    passwordHint: '6 caractères minimum.',
+    confirmPassword: 'Confirme le mot de passe',
+    submit: 'Créer un compte',
+    haveAccount: 'Déjà un compte ? ',
+    signIn: 'Connecte-toi',
+  },
 });
