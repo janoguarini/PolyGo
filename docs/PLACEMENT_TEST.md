@@ -116,3 +116,8 @@ ni más que el contenido publicado.
   hoy hereda ese nivel (comportamiento previo, Fase 3). Se corrige al aplicar el modelo de cursos.
 - Las preguntas del test también aparecen después en sus lecciones (son contenido real del curso).
 - Revisión pedagógica humana del banco y QA visual en dispositivo: pendientes.
+
+
+## Inglés para hablantes de portugués, italiano y francés (2026-11-27)
+
+en-from-pt, en-from-it y en-from-fr tienen banco (A1–B1: 6 bandas, 18 preguntas), sacado de sus lecciones publicadas (content/en-src/course.ts). Los niveles de cada banco son los del curso (shared/courses.ts `courseLevels`), no los del idioma de destino: estos cursos llegan a B1 aunque el inglés desde español publique A1–A2.

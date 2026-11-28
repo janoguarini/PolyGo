@@ -1,0 +1,140 @@
+{
+ "unit": "a2-u05",
+ "strings": {
+  "08c0085697": "Le présent continu",
+  "2a5b357fdb": "Raconter ce qui se passe maintenant : am/is/are + -ing.",
+  "078f91fbc8": "maintenant",
+  "da255ce0c2": "en ce moment même",
+  "1b079633ee": "Maintenant, je lis un livre.",
+  "b7e18c2977": "en ce moment",
+  "1a1af3ae32": "En ce moment, je suis en train de travailler.",
+  "8cc4027411": "toujours / encore",
+  "b92bbbf57f": "encore",
+  "27300d8818": "J’attends toujours le bus.",
+  "79b5feb7c7": "regarder (faire attention)",
+  "cb7387e4cb": "faire attention",
+  "0d883cc4be": "Regarde ! Il fait du vélo.",
+  "f198cfa0aa": "De ma fenêtre, je vois les montagnes.",
+  "867a81954c": "entendre",
+  "4d7387af6c": "J’entends de la musique.",
+  "0d6f33a298": "écrire",
+  "c5e6cebbe4": "Il est en train d’écrire un e-mail.",
+  "4533eba61a": "courir",
+  "ad17167b89": "Il est en train de courir dans le parc.",
+  "706f2912c9": "s’asseoir",
+  "95ba7e3220": "être assis",
+  "e3a70be9e3": "Je suis assis sur le canapé.",
+  "cc0573da8e": "être debout",
+  "a1f7e27ecd": "se tenir debout",
+  "1763ab798e": "se lever",
+  "cda6536a50": "Deux enfants sont debout à côté de la porte.",
+  "1bc4661484": "conduire",
+  "577d624bbe": "rouler",
+  "e532d04729": "Elle est en train de conduire pour aller au travail.",
+  "1e44a8189e": "faire du (vélo, cheval)",
+  "fba7fc3bbe": "monter (à vélo, à cheval)",
+  "bc9333f43c": "Elle fait du vélo tous les week-ends.",
+  "478c75a815": "vélo",
+  "7d443d0e06": "bicyclette",
+  "0b1ee3952c": "Je vais à l’école à vélo.",
+  "c207c65155": "prendre / emporter",
+  "eb755e0530": "emporter",
+  "de1f454e62": "attraper",
+  "da188fbeb6": "Je suis en train de prendre une douche.",
+  "ff30b7c184": "faire / préparer",
+  "350c9835f3": "préparer",
+  "a217d0e485": "Maman est en train de faire un gâteau.",
+  "bb4eb4cc81": "apprendre",
+  "1c644aff86": "Nous sommes en train d’apprendre l’anglais.",
+  "1df0606c44": "rire",
+  "6ca12c9e04": "rigoler",
+  "9fc020dfdf": "Les enfants sont en train de rire dans le jardin.",
+  "950ad7904c": "pleurer",
+  "d69840d6c5": "Le bébé est en train de pleurer.",
+  "2c130660ee": "sourire",
+  "9ebcbef444": "un sourire",
+  "c891b934da": "Tout le monde sourit.",
+  "85200b15b2": "douche / se doucher",
+  "185d3736f5": "douche",
+  "d107587ece": "se doucher",
+  "418cc0f9dd": "Ce qui se passe maintenant",
+  "855b9a93f1": "am/is/are + verbe-ing.",
+  "bfb14fd3a5": "Présent continu : am/is/are + verbe-ing. Pour ce qui se passe maintenant, comme « être en train de » en français.",
+  "94c3d4b7d0": "Elle est en train de préparer le dîner.",
+  "adfaec00ce": "Maintenant, ils sont en train de jouer au foot.",
+  "cf03b9b5d5": "Que veut dire « now » ?",
+  "c644aec8ae": "Je suis en train d’apprendre l’anglais.",
+  "7de1de2055": "L’orthographe du -ing",
+  "fce389ff3b": "write → writing, run → running, sit → sitting.",
+  "a321ed4ed4": "en train d’écrire",
+  "31361d92a2": "S’il finit par -e, on enlève le e : write → writing.",
+  "9f9f7e6604": "en train de courir",
+  "0236cc4c54": "Voyelle + consonne à la fin : on double la consonne (run → running).",
+  "dc452e30cb": "Aujourd’hui, elle rit beaucoup.",
+  "8baa130591": "Qu’est-ce que tu es en train de faire ?",
+  "3645460bdd": "Questions et négations avec -ing.",
+  "0fa09829d9": "Elle est en train de conduire pour aller au travail ?",
+  "f1e23c8ac2": "Je ne suis pas en train de travailler. Je prends une douche.",
+  "b7919fc75f": "Tu es en train d’étudier maintenant ?",
+  "bc855eba28": "Il est en train de conduire ?",
+  "f16b35e0f7": "Maintenant ou toujours",
+  "d39eac85e2": "Présent simple (habitudes) ou continu (maintenant).",
+  "6e3420b876": "D’habitude, je vais au travail à pied, mais aujourd’hui, je conduis.",
+  "0abffa099c": "Pour les habitudes (every weekend), on utilise le présent simple, pas le continu.",
+  "7eca652fc6": "Look! indique que ça se passe maintenant : présent continu.",
+  "1ffe022947": "Que veut dire « at the moment » ?",
+  "532a469324": "il y a un moment",
+  "6dbbfbab44": "Qu’est-ce que tu vois ?",
+  "6c809ab051": "Décrire ce qui se passe dans une scène.",
+  "d8ef16fe1f": "Que veut dire « smile » ?",
+  "e811517959": "See = voir (sans effort). Look at = regarder quelque chose exprès.",
+  "7322ba7c6f": "Préparer à manger, c’est make, pas do : make a cake. (En français, les deux se disent « faire ».)",
+  "e0b6ed420f": "Je suis en train de regarder une photo."
+ },
+ "accepted": {
+  "now": [
+   "en ce moment même"
+  ],
+  "still": [
+   "toujours",
+   "encore"
+  ],
+  "look": [
+   "faire attention"
+  ],
+  "sit": [
+   "être assis",
+   "être assise"
+  ],
+  "stand": [
+   "se tenir debout",
+   "se lever"
+  ],
+  "drive": [
+   "rouler"
+  ],
+  "ride": [
+   "monter",
+   "faire du vélo"
+  ],
+  "bike": [
+   "bicyclette"
+  ],
+  "take": [
+   "emporter"
+  ],
+  "make": [
+   "préparer"
+  ],
+  "laugh": [
+   "rigoler"
+  ],
+  "smile": [
+   "un sourire"
+  ],
+  "shower": [
+   "se doucher"
+  ]
+ },
+ "notes": "1) El francés no tiene presente continuo: las oraciones usan «être en train de» cuando hace falta que lleve al -ing, y la explicación bfb14fd3a5 lo compara con esa forma. 2) still → «toujours / encore» («J’attends toujours le bus»). 3) ride → «faire du (vélo, cheval)». 4) hints de ortografía (escribiendo/corriendo) → «en train d’écrire / en train de courir». 5) make/do: recordé que en francés ambos son «faire». Las oraciones sin «en train de» (8baa130591 título → la puse con «en train de» para que lleve a What are you doing?). Fuente: b7919fc75f / bc855eba28 llevan «(sí)/(no)» en español en el en de contexto; "
+}

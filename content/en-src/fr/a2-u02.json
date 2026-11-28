@@ -1,0 +1,147 @@
+{
+ "unit": "a2-u02",
+ "strings": {
+  "2778357166": "as fait",
+  "554ff30c4d": "Le prétérit : verbes réguliers",
+  "a9e256f682": "Raconter ce que tu as fait avec -ed, did et didn’t.",
+  "afbfa50610": "visiter / rendre visite",
+  "42884acd7a": "Dimanche, nous avons visité un musée.",
+  "f223ae0eb6": "nettoyer",
+  "bbf247fa73": "Hier, j’ai nettoyé la cuisine.",
+  "efb62f29e8": "marcher",
+  "3bf3af0591": "aller à pied",
+  "1591ab4c33": "se promener",
+  "07c9842f98": "Nous avons marché jusqu’au parc.",
+  "d6cb6a68bb": "parler / discuter",
+  "739b81aa9c": "discuter",
+  "187dafa2aa": "bavarder",
+  "bcfb0d23fe": "Nous avons discuté pendant deux heures.",
+  "e5dcea1ee2": "Hier soir, j’ai écouté de la musique.",
+  "93984397fb": "appeler",
+  "11371198cc": "téléphoner",
+  "bee75bd033": "Elle a appelé sa mère.",
+  "9414d9d81d": "commencer",
+  "96ef4ea0fe": "démarrer",
+  "e1fef6aa4a": "Le cours a commencé à neuf heures.",
+  "a77e805516": "finir / terminer",
+  "6484627d63": "terminer",
+  "e794a2199f": "Il a fini son travail à six heures.",
+  "843981aea1": "arriver",
+  "096ea372f5": "Nous sommes arrivés à l’hôtel à dix heures.",
+  "e702f3b939": "rester / séjourner",
+  "98bc41589e": "séjourner",
+  "5ba749804c": "loger",
+  "afbaf8a1e8": "Nous avons séjourné dans un petit hôtel.",
+  "5d47f96d43": "ouvrir",
+  "206b98681f": "Elle a ouvert la fenêtre.",
+  "65cb34a1d0": "fermer",
+  "ca569c1cbc": "Il a fermé la porte.",
+  "94fb693851": "attendre",
+  "6dcfe7f4e2": "Nous avons attendu le bus.",
+  "a22eadd095": "demander / poser (une question)",
+  "34318baaeb": "demander",
+  "16442e8138": "poser une question",
+  "af51d22f16": "Elle a posé une question au professeur.",
+  "18f940660e": "avoir besoin de",
+  "2815fe4ff2": "J’avais besoin d’aide pour mes devoirs.",
+  "52f1b12f95": "essayer",
+  "e0ea7cf2ee": "essayer de",
+  "1a2bf4b26a": "tenter",
+  "ff57740275": "J’ai essayé de t’appeler.",
+  "e5072b324b": "auxiliaire du passé (a fait)",
+  "c2d924aa4e": "a fait",
+  "bb04968fd4": "ai fait",
+  "0fcf7f7369": "Tu as appelé ta mère ?",
+  "2f3ca6fc1c": "ne… pas + verbe au passé",
+  "032366f070": "Hier, je n’ai pas regardé la télé.",
+  "31f920a5c0": "ensuite / puis",
+  "e73c8c4f3a": "ensuite",
+  "5ac675ba63": "puis",
+  "ed0c4cfaf1": "alors",
+  "e411241881": "Nous avons déjeuné, puis nous avons marché jusqu’au parc.",
+  "fc082fd149": "après",
+  "4b51cf575c": "Après le déjeuner, nous avons visité le musée.",
+  "c87f15e197": "Ce que tu as fait hier",
+  "9f5cdabe0e": "Le passé régulier : verbe + -ed.",
+  "e93998a8b5": "Hier, j’ai joué au foot.",
+  "edc8fd4c19": "Passé des verbes réguliers : verbe + -ed (play → played). C’est pareil pour toutes les personnes. Là où le français dit « j’ai joué », l’anglais dit simplement played.",
+  "848cd6efbb": "L’année dernière, elle a travaillé dans une banque.",
+  "61b3f43a25": "Que veut dire « visit » ?",
+  "3a9541dafd": "Hier soir, ils ont regardé un film.",
+  "c5281956e5": "Hier, j’ai nettoyé la maison.",
+  "d0ae0939f5": "L’orthographe du -ed",
+  "1fb2c6a21e": "study → studied, live → lived, try → tried.",
+  "1a3717b0dd": "j’ai étudié (study)",
+  "3d09e287ca": "Consonne + y → -ied : study → studied.",
+  "82ded357ca": "J’ai vécu au Mexique pendant deux ans.",
+  "4868497725": "Si le verbe finit par -e, on ajoute seulement -d : live → lived.",
+  "aa5a09c63e": "Elle a appelé son amie.",
+  "e3b86b73f9": "j’ai essayé (try)",
+  "c89d8b9348": "Did et didn't",
+  "b90ae1b705": "Questions et négations au passé.",
+  "c3659556cd": "Did + verbe sans -ed : Did you call…? (et non « Did you called »).",
+  "c3edae5ee0": "Le film t’a plu ?",
+  "ab4717d064": "Elle n’a pas travaillé le matin.",
+  "c11da9d963": "Tu as étudié hier ?",
+  "2cc643adbf": "Ils sont arrivés tôt ?",
+  "c45600fa27": "Je n’ai pas fini les devoirs.",
+  "11af67c100": "Une journée de balade",
+  "77deecfa4b": "Raconter une journée dans l’ordre : then et after.",
+  "107cf70cc7": "Nous sommes arrivés à l’hôtel, puis nous avons marché jusqu’au parc.",
+  "b78aa77373": "After s’utilise avec quelque chose derrière (after lunch), comme « après ». Then s’utilise seul pour continuer le récit, comme « ensuite ».",
+  "98e1051019": "Que veut dire « arrive » ?",
+  "045c42e8a7": "sortir",
+  "dc3f518fe3": "Nous avons marché jusqu’à la gare.",
+  "62d46625ba": "Parler et demander",
+  "fb17f6542f": "talk, listen, ask et need au passé.",
+  "38bd9bf539": "Listen s’utilise avec to : listen to music (« écouter de la musique », sans to en français).",
+  "c89dff29b9": "Hier, j’ai parlé avec mon amie."
+ },
+ "accepted": {
+  "visit": [
+   "visiter",
+   "rendre visite à"
+  ],
+  "walk": [
+   "aller à pied",
+   "se promener"
+  ],
+  "talk": [
+   "parler",
+   "discuter",
+   "bavarder"
+  ],
+  "call": [
+   "téléphoner"
+  ],
+  "start": [
+   "démarrer"
+  ],
+  "finish": [
+   "terminer"
+  ],
+  "stay": [
+   "rester",
+   "séjourner",
+   "loger"
+  ],
+  "ask": [
+   "demander",
+   "poser une question"
+  ],
+  "need": [
+   "avoir besoin"
+  ],
+  "try": [
+   "essayer de",
+   "tenter"
+  ],
+  "then": [
+   "ensuite",
+   "puis",
+   "alors",
+   "après"
+  ]
+ },
+ "notes": "1) wait → «attendre»: falso amigo clásico en francés (attend ≠ attendre; attend = assister à). No hay texto de explicación en esta unidad donde decirlo; quizá agregarlo en una futura. 2) need → «avoir besoin de» (no hay verbo simple). 3) ask → «demander / poser (une question)»; «Le hizo una pregunta al profesor» → «Elle a posé une question au professeur». 4) En la explicación de -ed agregué que donde el francés usa passé composé («j’ai joué») el inglés usa simplemente played (trampa clave). 5) «auxiliar del pasado (hizo)» → «auxiliaire du passé (a fait)»; hizo/hice/hiciste → a fait/ai fait/as fait. 6) stay → «rester / séjourner» (rest ≠ rester no aparece aquí). 7) listen to: aclaré que en francés «écouter» va sin preposición. Fuente: 2cc643adbf/c11da9d963 llevan «(no)/(sí)» en español en el en de contexto."
+}

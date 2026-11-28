@@ -1,0 +1,1402 @@
+{
+ "unit": "b1-u09",
+ "level": "B1",
+ "titleEn": "The environment and society",
+ "strings": [
+  {
+   "id": "82738f0480",
+   "es": "Medioambiente y sociedad",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "The environment and society"
+  },
+  {
+   "id": "afc4f4a253",
+   "es": "El planeta y la contaminación, la voz pasiva (is made, was built), reciclar, ahorrar energía y proyectos de la comunidad.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "01e91ea270",
+   "es": "Puedes hablar de problemas del medioambiente, explicar cómo se hace algo con la voz pasiva y proponer soluciones simples.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "a3b8ef8ca2",
+   "es": "Voz pasiva",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "59d4803a3f",
+   "es": "La pasiva pone el foco en lo que recibe la acción: be + participio. Presente: Paper is recycled. Pasado: The bridge was built in 1890. Si importa quién lo hizo, va con by: It was designed by a famous engineer.",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "746eefbff1",
+   "es": "Aquí se reciclan las botellas de plástico.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "Plastic bottles are recycled here."
+  },
+  {
+   "id": "f3369de4d4",
+   "es": "Esta casa fue construida en 1950.",
+   "kinds": [
+    "example",
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "This house was built in 1950."
+  },
+  {
+   "id": "2f0218a2e7",
+   "es": "El parque fue limpiado por voluntarios.",
+   "kinds": [
+    "example",
+    "exercise.source"
+   ],
+   "en": "The park was cleaned by volunteers."
+  },
+  {
+   "id": "6fd6ac6ba5",
+   "es": "medioambiente",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "environment"
+  },
+  {
+   "id": "1f183d32df",
+   "es": "medio ambiente",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "environment"
+  },
+  {
+   "id": "c66fbbdcb5",
+   "es": "Tenemos que cuidar el medioambiente.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "We have to protect the environment."
+  },
+  {
+   "id": "38d70806cc",
+   "es": "contaminación",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "pollution"
+  },
+  {
+   "id": "4fab9117e3",
+   "es": "Hay mucha contaminación en las ciudades grandes.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "There is a lot of pollution in big cities."
+  },
+  {
+   "id": "2b5b66f775",
+   "es": "cambio climático",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "climate change"
+  },
+  {
+   "id": "6dece283b1",
+   "es": "El cambio climático es un gran problema.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "Climate change is a big problem."
+  },
+  {
+   "id": "02f2d916bc",
+   "es": "planeta",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "planet"
+  },
+  {
+   "id": "6ec1dde1f5",
+   "es": "Tenemos un solo planeta.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We only have one planet."
+  },
+  {
+   "id": "e374d73432",
+   "es": "bosque",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "forest"
+  },
+  {
+   "id": "b3190fd933",
+   "es": "selva",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "forest"
+  },
+  {
+   "id": "0f9fdf8d81",
+   "es": "Caminamos por el bosque.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We walked in the forest."
+  },
+  {
+   "id": "6f32f2d6c7",
+   "es": "reciclar",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "recycle"
+  },
+  {
+   "id": "2b5d0ac20e",
+   "es": "Reciclamos papel y vidrio.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We recycle paper and glass."
+  },
+  {
+   "id": "7ee2ca577f",
+   "es": "plástico",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "plastic"
+  },
+  {
+   "id": "3e96fe5682",
+   "es": "Las botellas de plástico son malas para el mar.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Plastic bottles are bad for the sea."
+  },
+  {
+   "id": "801372e2c9",
+   "es": "basura",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "trash"
+  },
+  {
+   "id": "cf5b18b9fb",
+   "es": "residuos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "trash"
+  },
+  {
+   "id": "a0bdf063cb",
+   "es": "Por favor, tira la basura en el tacho.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Please put your trash in the bin."
+  },
+  {
+   "id": "463dd102e5",
+   "es": "desperdiciar / desperdicio",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "waste"
+  },
+  {
+   "id": "57839a69b0",
+   "es": "desperdiciar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "waste"
+  },
+  {
+   "id": "c259ab5307",
+   "es": "desperdicio",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "waste"
+  },
+  {
+   "id": "ca29235b1e",
+   "es": "malgastar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "waste"
+  },
+  {
+   "id": "4e087ced47",
+   "es": "No desperdicies agua.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Don't waste water."
+  },
+  {
+   "id": "8f96176602",
+   "es": "hecho de",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "made of"
+  },
+  {
+   "id": "d7175e1148",
+   "es": "hecha de",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "made of"
+  },
+  {
+   "id": "ca050fe8c1",
+   "es": "Esta bolsa está hecha de papel.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "This bag is made of paper."
+  },
+  {
+   "id": "a455280574",
+   "es": "construido / construyó (build)",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "built"
+  },
+  {
+   "id": "a498e6a680",
+   "es": "construido",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "built"
+  },
+  {
+   "id": "5633df159c",
+   "es": "construida",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "built"
+  },
+  {
+   "id": "faef938682",
+   "es": "construyó",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "built"
+  },
+  {
+   "id": "8fdb631172",
+   "es": "producido / produjo",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "produced"
+  },
+  {
+   "id": "17b49295a0",
+   "es": "producido",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "produced"
+  },
+  {
+   "id": "8a935282ee",
+   "es": "producida",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "produced"
+  },
+  {
+   "id": "4c96f420e6",
+   "es": "produjo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "produced"
+  },
+  {
+   "id": "8baa1977e8",
+   "es": "Este café se produce en Colombia.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "This coffee is produced in Colombia."
+  },
+  {
+   "id": "a8a654e9b6",
+   "es": "energía",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "energy"
+  },
+  {
+   "id": "fac75e6519",
+   "es": "Deberíamos ahorrar energía en casa.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "We should save energy at home."
+  },
+  {
+   "id": "a4d1cd4a85",
+   "es": "reducir",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "reduce"
+  },
+  {
+   "id": "26caed7af7",
+   "es": "disminuir",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "reduce"
+  },
+  {
+   "id": "1dd1428484",
+   "es": "Queremos reducir nuestra basura.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We want to reduce our trash."
+  },
+  {
+   "id": "97fb658fce",
+   "es": "proteger / cuidar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "protect"
+  },
+  {
+   "id": "9792626300",
+   "es": "proteger",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "protect"
+  },
+  {
+   "id": "63188461f3",
+   "es": "cuidar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "protect"
+  },
+  {
+   "id": "256309831a",
+   "es": "Tenemos que proteger los bosques.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "We must protect the forests."
+  },
+  {
+   "id": "6413735016",
+   "es": "transporte público",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "public transport"
+  },
+  {
+   "id": "459d97021b",
+   "es": "Uso el transporte público todos los días.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I use public transport every day."
+  },
+  {
+   "id": "8015f8f55a",
+   "es": "comunidad",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "community"
+  },
+  {
+   "id": "962607a08b",
+   "es": "Nuestra comunidad tiene una huerta grande.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "Our community has a big garden."
+  },
+  {
+   "id": "db5d890cab",
+   "es": "voluntario / voluntaria",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "volunteer"
+  },
+  {
+   "id": "61f8dbbfa9",
+   "es": "voluntario",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "volunteer"
+  },
+  {
+   "id": "c5422fa1fe",
+   "es": "voluntaria",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "volunteer"
+  },
+  {
+   "id": "16a3b10136",
+   "es": "hacer voluntariado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "volunteer"
+  },
+  {
+   "id": "cd073f37d2",
+   "es": "Trabaja de voluntaria en el hospital.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "She works as a volunteer at the hospital."
+  },
+  {
+   "id": "4ea2a71209",
+   "es": "El planeta",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "a7ecc3f8c5",
+   "es": "Hablar de problemas del medioambiente.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "849618ba42",
+   "es": "Palabras para hablar del planeta: the environment (el medioambiente), pollution (la contaminación), climate change (el cambio climático), forest (bosque). Con have to y must dices lo que hay que hacer: We have to protect the planet.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "a5fe92e53f",
+   "es": "Nombras problemas del medioambiente.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "aa27f59436",
+   "es": "Dices qué hay que hacer: We have to protect the planet.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "dd6ea13c0b",
+   "es": "El cambio climático es un gran problema para el planeta.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Climate change is a big problem for the planet."
+  },
+  {
+   "id": "2be20cd35e",
+   "es": "la contaminación",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What is a big problem in your city? (la contaminación)"
+  },
+  {
+   "id": "b77947a10c",
+   "es": "¿Cuál es un gran problema en tu ciudad?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What is a big problem in your city? (la contaminación)"
+  },
+  {
+   "id": "f52a7b6557",
+   "es": "Se recicla…",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "8f81c19fc4",
+   "es": "Explicar cómo se hace algo con la pasiva en presente.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "550b6ea8fc",
+   "es": "La pasiva en presente: is/are + participio. Paper is recycled (se recicla el papel). Plastic bottles are collected on Mondays (las botellas se recogen los lunes). Made of: hecho de (This bag is made of paper).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "c480ac896d",
+   "es": "Explicas cómo se hace algo: is/are + participio.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "64948f46c7",
+   "es": "Dices de qué está hecho algo: made of.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "36b6ddb7b1",
+   "es": "En este edificio se recicla el papel.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Paper is recycled in this building."
+  },
+  {
+   "id": "0e36e2e297",
+   "es": "Pasiva en presente: is/are + participio. Paper es singular: is.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "is"
+  },
+  {
+   "id": "4bfd32cd85",
+   "es": "No desperdicies agua cuando lavas los platos.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Don't waste water when you wash the dishes."
+  },
+  {
+   "id": "e4e6d64da2",
+   "es": "Un aviso del edificio sobre el reciclaje.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u9-recycling"
+  },
+  {
+   "id": "79bc22742d",
+   "es": "¿Qué días se recogen el papel y el plástico?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u9-recycling"
+  },
+  {
+   "id": "0b5d357c67",
+   "es": "Los lunes",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u9-recycling"
+  },
+  {
+   "id": "9867025588",
+   "es": "Los jueves",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "32a0969083",
+   "es": "Los lunes y los jueves",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0f12a6642c",
+   "es": "El aviso dice: «Paper and plastic are collected on Mondays».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u9-recycling"
+  },
+  {
+   "id": "1a83b82936",
+   "es": "¿Qué hay que hacer con los restos de comida?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u9-recycling"
+  },
+  {
+   "id": "554a6d856a",
+   "es": "Tirarlos en los contenedores verdes de la calle",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u9-recycling"
+  },
+  {
+   "id": "09a826817c",
+   "es": "Dejarlos con el papel",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "18a2f33414",
+   "es": "Dejarlos los jueves",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "95feec03fc",
+   "es": "Tirarlos con el vidrio",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "08731e09b4",
+   "es": "El aviso dice: «Food waste is not collected here: please use the green bins in the street».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u9-recycling"
+  },
+  {
+   "id": "801bacb1a6",
+   "es": "Esta bolsa está hecha de plástico.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "This bag is made of plastic."
+  },
+  {
+   "id": "fd649d2c7c",
+   "es": "Aquí se recicla el vidrio.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "Glass is recycled here."
+  },
+  {
+   "id": "b69a77e228",
+   "es": "Fue construido…",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "bb1b3933f5",
+   "es": "Contar la historia de algo con la pasiva en pasado y by.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "6f6a6dc370",
+   "es": "La pasiva en pasado: was/were + participio. The bridge was built in 1890 (fue construido). Si importa quién lo hizo: by. It was designed by a famous engineer. Build: built; produce: produced.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "c25ed1b043",
+   "es": "Cuentas la historia de un lugar: It was built in…",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "09761fd312",
+   "es": "Dices quién lo hizo con by.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "0688984536",
+   "es": "¿Qué significa «built»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "341834f6ba",
+   "es": "Este puente fue construido en 1890.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "This bridge was built in 1890."
+  },
+  {
+   "id": "8d840b7718",
+   "es": "Pasiva en pasado: was/were + participio.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "was"
+  },
+  {
+   "id": "8297d42c63",
+   "es": "Estos autos fueron producidos en Japón.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "These cars were produced in Japan."
+  },
+  {
+   "id": "d5ff483a3a",
+   "es": "El parque fue limpiado por cincuenta voluntarios.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "The park was cleaned by fifty volunteers."
+  },
+  {
+   "id": "044d4f775c",
+   "es": "En la pasiva, quien hace la acción va con by.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "by"
+  },
+  {
+   "id": "2c2752377d",
+   "es": "Una guía habla en un paseo por la ciudad.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u9-bridge"
+  },
+  {
+   "id": "8dd65d0952",
+   "es": "Guide",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b1-u9-bridge"
+  },
+  {
+   "id": "fd74bc9cdd",
+   "es": "Tourist",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b1-u9-bridge"
+  },
+  {
+   "id": "19e43e1247",
+   "es": "¿Cuándo se construyó el puente?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u9-bridge"
+  },
+  {
+   "id": "956f2db503",
+   "es": "En 1890",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u9-bridge"
+  },
+  {
+   "id": "140ab25b6a",
+   "es": "En 1980",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1a10991687",
+   "es": "En 1819",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8d2d5d651d",
+   "es": "La guía dice: «This bridge was built in 1890».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u9-bridge"
+  },
+  {
+   "id": "f9fe5b8bf4",
+   "es": "¿Quién puede usar el puente hoy?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u9-bridge"
+  },
+  {
+   "id": "7bbae0c800",
+   "es": "Sólo la gente a pie y en bici",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u9-bridge"
+  },
+  {
+   "id": "0079d06030",
+   "es": "Todos, también los autos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4c55cc40e9",
+   "es": "Sólo los autobuses",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3db5f38f2d",
+   "es": "La guía dice: «only by people on foot and bikes. Cars are not allowed».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u9-bridge"
+  },
+  {
+   "id": "9165ed04b0",
+   "es": "El museo fue construido por un ingeniero famoso.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "The museum was built by a famous engineer."
+  },
+  {
+   "id": "962686c9b4",
+   "es": "en 1890",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "When was this bridge built? (en 1890)"
+  },
+  {
+   "id": "532c907ee0",
+   "es": "¿Cuándo se construyó este puente?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "When was this bridge built? (en 1890)"
+  },
+  {
+   "id": "71c027404a",
+   "es": "¿Qué podemos hacer?",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "eb244967ef",
+   "es": "Proponer soluciones: reducir, proteger, ahorrar energía, usar transporte público.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "cdc4590f3b",
+   "es": "Para proponer soluciones: reduce (reducir), protect (proteger), save energy (ahorrar energía), use public transport. Con el primer condicional muestras el resultado: If more people ride bikes, the air will be cleaner.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "2c4a72f05f",
+   "es": "Si usamos el transporte público, habrá menos contaminación.",
+   "kinds": [
+    "example",
+    "exercise.source"
+   ],
+   "en": "If we use public transport, there will be less pollution."
+  },
+  {
+   "id": "2f09ea2747",
+   "es": "Propones soluciones con should y have to.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "1a473422f0",
+   "es": "Muestras el resultado con if + will.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "ff0422e0c7",
+   "es": "Queremos reducir el plástico que usamos.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "We want to reduce the plastic we use."
+  },
+  {
+   "id": "6af3206ac9",
+   "es": "Dos amigos discuten cómo ir al trabajo.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u9-transport"
+  },
+  {
+   "id": "2bcf0fa541",
+   "es": "¿Por qué Ben va al trabajo en auto?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u9-transport"
+  },
+  {
+   "id": "6a241dfa2e",
+   "es": "Porque es mucho más rápido",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u9-transport"
+  },
+  {
+   "id": "c52c2e4672",
+   "es": "Porque no hay autobuses",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e041e2fb91",
+   "es": "Porque vive lejos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9bae537c47",
+   "es": "Porque llueve",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "cbec6b94bc",
+   "es": "Ben dice: «I always drive to work. It is much faster».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u9-transport"
+  },
+  {
+   "id": "72a9ed6cbf",
+   "es": "¿Qué le propone Emma?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u9-transport"
+  },
+  {
+   "id": "97526da5ab",
+   "es": "Ir en bici",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u9-transport"
+  },
+  {
+   "id": "af05b10d5c",
+   "es": "Ir caminando",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7727a9535a",
+   "es": "Tomar el tren",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c32d4102ec",
+   "es": "Trabajar desde casa",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7b7bd00476",
+   "es": "Emma dice: «What about a bike? If more people ride bikes, the air will be cleaner».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u9-transport"
+  },
+  {
+   "id": "1891307f61",
+   "es": "usando el transporte público",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "How can we reduce pollution? (usando el transporte público)"
+  },
+  {
+   "id": "d48d3b7ff4",
+   "es": "¿Cómo podemos reducir la contaminación?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How can we reduce pollution? (usando el transporte público)"
+  },
+  {
+   "id": "de3da9666b",
+   "es": "En comunidad",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "941f2a7bcd",
+   "es": "Contar un proyecto de la comunidad con la pasiva y con voluntarios.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "5ab266980a",
+   "es": "Community es la comunidad (los vecinos, el barrio). Volunteer es voluntario y también hacer voluntariado. Para contar un proyecto se usa mucho la pasiva: The park was cleaned, a hundred trees were planted.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "9d0f802850",
+   "es": "Cuentas un proyecto de tu comunidad.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "cc5edbd958",
+   "es": "Usas la pasiva para contar qué se hizo.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "14fd5253c2",
+   "es": "¿Qué significa «community»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "2db5681b1b",
+   "es": "vecino / vecina",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5160b260d8",
+   "es": "Una vecina cuenta un proyecto del barrio.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u9-park"
+  },
+  {
+   "id": "d3c8636056",
+   "es": "¿Quién limpió el parque?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u9-park"
+  },
+  {
+   "id": "45592ccf10",
+   "es": "Cincuenta voluntarios",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u9-park"
+  },
+  {
+   "id": "d4081dff03",
+   "es": "Los chicos de la escuela",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b90ac69022",
+   "es": "La municipalidad",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0342a6c245",
+   "es": "Rosa sola",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5b695a994b",
+   "es": "Rosa escribe: «Last Saturday our park was cleaned by fifty volunteers!».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u9-park"
+  },
+  {
+   "id": "8ac2dd5c12",
+   "es": "¿Qué hicieron los chicos de la escuela?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u9-park"
+  },
+  {
+   "id": "37c421f60d",
+   "es": "Plantaron cien árboles",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u9-park"
+  },
+  {
+   "id": "89c6435e46",
+   "es": "Juntaron la basura",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6991067891",
+   "es": "Limpiaron el parque",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "353fc9618a",
+   "es": "Reciclaron botellas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "bfcdb6593c",
+   "es": "Rosa escribe: «a hundred new trees were planted by children from the local school».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u9-park"
+  },
+  {
+   "id": "3c48829f1c",
+   "es": "Se juntaron más de doscientas bolsas de basura.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "More than two hundred bags of trash were collected."
+  },
+  {
+   "id": "ec7aca5fdc",
+   "es": "Bags es plural: were + participio.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "were"
+  },
+  {
+   "id": "42ef2c4948",
+   "es": "Los árboles fueron plantados por voluntarios.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "The trees were planted by volunteers."
+  },
+  {
+   "id": "972d592056",
+   "es": "sí, en una escuela",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Have you ever worked as a volunteer? (sí, en una escuela)"
+  },
+  {
+   "id": "0dee3075da",
+   "es": "¿Alguna vez trabajaste de voluntario?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Have you ever worked as a volunteer? (sí, en una escuela)"
+  },
+  {
+   "id": "d62fca136e",
+   "es": "Tu barrio y el medioambiente",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "3caa03cd60",
+   "es": "Cuenta qué se hace en tu barrio o tu ciudad por el medioambiente (con la voz pasiva) y propón una idea para mejorar.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "7d3c0f7bf3",
+   "es": "Usas la voz pasiva (is recycled, was built…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "1c81b5a055",
+   "es": "Propones algo (we should…, we have to…, if we…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "e0fbb05ea4",
+   "es": "Usé la voz pasiva.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "857cdb247a",
+   "es": "Conté algo que se hizo.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "07b2c90e08",
+   "es": "Propuse una idea.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.b1-u9-recycling": {
+   "setting": "Un aviso del edificio sobre el reciclaje.",
+   "lines": [
+    "Recycling in our building",
+    "Paper and plastic are collected on Mondays.",
+    "Glass bottles are collected on Thursdays.",
+    "Food waste is not collected here: please use the green bins in the street.",
+    "Thank you for helping to protect the environment!"
+   ]
+  },
+  "en.stim.b1-u9-bridge": {
+   "setting": "Una guía habla en un paseo por la ciudad.",
+   "lines": [
+    "Guide: This bridge was built in 1890.",
+    "Guide: It was designed by a famous engineer, and it was made of iron.",
+    "Tourist: Is it still used today?",
+    "Guide: Yes, but only by people on foot and bikes. Cars are not allowed."
+   ]
+  },
+  "en.stim.b1-u9-transport": {
+   "setting": "Dos amigos discuten cómo ir al trabajo.",
+   "lines": [
+    "Ben: I always drive to work. It is much faster.",
+    "Emma: But cars produce a lot of pollution. Why don’t you use public transport?",
+    "Ben: The bus takes an hour!",
+    "Emma: What about a bike? If more people ride bikes, the air will be cleaner.",
+    "Ben: Maybe you are right. I will try it next week."
+   ]
+  },
+  "en.stim.b1-u9-park": {
+   "setting": "Una vecina cuenta un proyecto del barrio.",
+   "lines": [
+    "Last Saturday our park was cleaned by fifty volunteers!",
+    "More than two hundred bags of trash were collected.",
+    "Then a hundred new trees were planted by children from the local school.",
+    "Our community has worked really hard. Thank you, everyone!"
+   ]
+  }
+ }
+}

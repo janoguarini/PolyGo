@@ -1,0 +1,1475 @@
+{
+ "unit": "b1-u08",
+ "level": "B1",
+ "titleEn": "Technology and communication",
+ "strings": [
+  {
+   "id": "37930ae887",
+   "es": "Tecnología y comunicación",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Technology and communication"
+  },
+  {
+   "id": "4cfbf8b23a",
+   "es": "Explicar qué es algo o quién es alguien (who, which, that, where), aparatos, internet, redes sociales y videollamadas.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "8de9d8ef7b",
+   "es": "Puedes explicar para qué sirve un aparato o una app, resolver problemas simples de tecnología y contar cómo te comunicas.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "86ac161f76",
+   "es": "Oraciones de relativo",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "55adf8c680",
+   "es": "Who se refiere a personas (the woman who lives next door); which y that, a cosas (an app which/that helps you); where, a lugares (the cafe where we met). Así explicas qué es algo sin empezar otra oración.",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "7b397721bc",
+   "es": "Es la profesora que me ayudó.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "She is the teacher who helped me."
+  },
+  {
+   "id": "388791506a",
+   "es": "Es una app que te ayuda a aprender palabras.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "This is an app that helps you learn words."
+  },
+  {
+   "id": "0e28d93ab9",
+   "es": "Ese es el café donde nos conocimos.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "That is the cafe where we met."
+  },
+  {
+   "id": "ec2a032a99",
+   "es": "dispositivo / aparato",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "device"
+  },
+  {
+   "id": "b7042ce21d",
+   "es": "dispositivo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "device"
+  },
+  {
+   "id": "44956c31a4",
+   "es": "aparato",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "device"
+  },
+  {
+   "id": "ff52933b17",
+   "es": "Una tableta es un aparato que puedes llevar.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "A tablet is a device which you can carry."
+  },
+  {
+   "id": "74b14b3288",
+   "es": "pantalla",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "screen"
+  },
+  {
+   "id": "e7df15f0d0",
+   "es": "La pantalla de mi teléfono está rota.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "The screen of my phone is broken."
+  },
+  {
+   "id": "8351291b00",
+   "es": "batería",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "battery"
+  },
+  {
+   "id": "a60cac8f15",
+   "es": "pila",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "battery"
+  },
+  {
+   "id": "22b02a736b",
+   "es": "Tengo poca batería.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My battery is low."
+  },
+  {
+   "id": "7b9b1961c3",
+   "es": "cargador",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "charger"
+  },
+  {
+   "id": "eb0da05286",
+   "es": "¿Puedo usar tu cargador?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Can I use your charger?"
+  },
+  {
+   "id": "243229fb90",
+   "es": "prender / encender",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "turn on"
+  },
+  {
+   "id": "934a0de506",
+   "es": "prender",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "turn on"
+  },
+  {
+   "id": "84f9c8a246",
+   "es": "encender",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "turn on"
+  },
+  {
+   "id": "05d0b7e396",
+   "es": "Prende la luz, por favor.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Turn on the light, please."
+  },
+  {
+   "id": "7988683f33",
+   "es": "apagar",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "turn off"
+  },
+  {
+   "id": "f8899799ec",
+   "es": "Por favor, apaguen los teléfonos.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "Please turn off your phones."
+  },
+  {
+   "id": "5ca58a4f26",
+   "es": "aplicación / app",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "app"
+  },
+  {
+   "id": "bfcf335131",
+   "es": "aplicación",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "app"
+  },
+  {
+   "id": "a172cedcae",
+   "es": "app",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "app"
+  },
+  {
+   "id": "987b5e039e",
+   "es": "Uso una app para aprender inglés.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I use an app to learn English."
+  },
+  {
+   "id": "c1650e3810",
+   "es": "descargar / bajar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "download"
+  },
+  {
+   "id": "f3ffeb2819",
+   "es": "descargar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "download"
+  },
+  {
+   "id": "502f70bb67",
+   "es": "bajar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "download"
+  },
+  {
+   "id": "f554bbd71d",
+   "es": "Puedes descargar la app gratis.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "You can download the app for free."
+  },
+  {
+   "id": "e899fdf209",
+   "es": "subir (a internet)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "upload"
+  },
+  {
+   "id": "54923886bb",
+   "es": "Anoche subí las fotos.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I uploaded the photos last night."
+  },
+  {
+   "id": "edf9cf9071",
+   "es": "contraseña",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "password"
+  },
+  {
+   "id": "6d5074b4bf",
+   "es": "clave",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "password"
+  },
+  {
+   "id": "a260e0db72",
+   "es": "Me olvidé la contraseña.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "I have forgotten my password."
+  },
+  {
+   "id": "2c38430e90",
+   "es": "iniciar sesión / entrar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "log in"
+  },
+  {
+   "id": "189b734330",
+   "es": "iniciar sesión",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "log in"
+  },
+  {
+   "id": "ff24436dc6",
+   "es": "entrar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "log in"
+  },
+  {
+   "id": "4f689ebeb3",
+   "es": "No puedo entrar a mi cuenta.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I can't log in to my account."
+  },
+  {
+   "id": "9106079f51",
+   "es": "en línea / por internet",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "online"
+  },
+  {
+   "id": "a62ce4a106",
+   "es": "en línea",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "online"
+  },
+  {
+   "id": "427bf2415d",
+   "es": "por internet",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "online"
+  },
+  {
+   "id": "f6fc84c9f2",
+   "es": "online",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "online"
+  },
+  {
+   "id": "3c24049678",
+   "es": "Compro la ropa por internet.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I buy my clothes online."
+  },
+  {
+   "id": "3cf69c7307",
+   "es": "redes sociales",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "social media"
+  },
+  {
+   "id": "380abd2e4f",
+   "es": "Paso demasiado tiempo en las redes sociales.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I spend too much time on social media."
+  },
+  {
+   "id": "053a0aa247",
+   "es": "publicar / publicación",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "post"
+  },
+  {
+   "id": "54d850ca16",
+   "es": "publicar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "post"
+  },
+  {
+   "id": "9f85968b4c",
+   "es": "publicación",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "post"
+  },
+  {
+   "id": "a80a7c8e10",
+   "es": "posteo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "post"
+  },
+  {
+   "id": "576886a1d1",
+   "es": "Publica una foto todos los días.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "She posts a photo every day."
+  },
+  {
+   "id": "9c22bc8b1a",
+   "es": "seguidor / seguidora",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "follower"
+  },
+  {
+   "id": "dfd6ede0f8",
+   "es": "seguidor",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "follower"
+  },
+  {
+   "id": "d3a60a9316",
+   "es": "seguidora",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "follower"
+  },
+  {
+   "id": "f0eb0c3712",
+   "es": "Tiene muchos seguidores.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "He has a lot of followers."
+  },
+  {
+   "id": "24aa517bc5",
+   "es": "compartir",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "share"
+  },
+  {
+   "id": "df76741ff6",
+   "es": "Comparto mis fotos con mi familia.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I share my photos with my family."
+  },
+  {
+   "id": "206ca8dbc4",
+   "es": "videollamada",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "video call"
+  },
+  {
+   "id": "69528e1545",
+   "es": "Hacemos una videollamada todos los domingos.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We have a video call every Sunday."
+  },
+  {
+   "id": "1022c30a85",
+   "es": "seguir en contacto",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "keep in touch"
+  },
+  {
+   "id": "f53fead68c",
+   "es": "mantenerse en contacto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "keep in touch"
+  },
+  {
+   "id": "f88d3092ec",
+   "es": "estar en contacto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "keep in touch"
+  },
+  {
+   "id": "8b5f355742",
+   "es": "¡Sigamos en contacto!",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Let's keep in touch!"
+  },
+  {
+   "id": "8cb4e45384",
+   "es": "Aparatos",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "ea5cfc9bbd",
+   "es": "Hablar de aparatos y explicar para qué sirven con which y that.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "f70cef6f41",
+   "es": "Para explicar qué es una cosa: which o that + verbo (a device which/that you can carry). Turn on es prender; turn off, apagar. El objeto puede ir en el medio: turn it on, turn the light off.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "27323daf3f",
+   "es": "Un cargador es algo que le da energía al teléfono.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "A charger is a thing which gives power to your phone."
+  },
+  {
+   "id": "dd138c1765",
+   "es": "Explicas qué es algo con which y that.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "78f9daa3c2",
+   "es": "Prendes y apagas aparatos: turn on, turn off.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "b920e1f29c",
+   "es": "Para cosas: which o that. Who es para personas.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "which"
+  },
+  {
+   "id": "8e835a1dcf",
+   "es": "Está oscuro. ¿Puedes prender la luz?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "It's dark. Can you turn on the light?"
+  },
+  {
+   "id": "1448b14336",
+   "es": "Por favor, apaguen los teléfonos durante la película.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Please turn off your phones during the movie."
+  },
+  {
+   "id": "507b767439",
+   "es": "algo que le da energía a tu teléfono",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What is a charger? (algo que le da energía a tu teléfono)"
+  },
+  {
+   "id": "86982f953b",
+   "es": "¿Qué es un cargador?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What is a charger? (algo que le da energía a tu teléfono)"
+  },
+  {
+   "id": "0fee37fc3e",
+   "es": "Apaga la computadora, por favor.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "Turn off the computer, please."
+  },
+  {
+   "id": "36360a3ed3",
+   "es": "Gente y lugares",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "4567da7fab",
+   "es": "Describir personas con who y lugares con where; seguir en contacto.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "b9c269c7ed",
+   "es": "Who explica quién es una persona: my friend who lives in Italy. Where explica un lugar: the cafe where we met. Para no perder el contacto: keep in touch, a video call (una videollamada).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "4d2b5b2ef8",
+   "es": "Tengo un amigo que vive en Italia.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I have a friend who lives in Italy."
+  },
+  {
+   "id": "a444e7819a",
+   "es": "Describes personas con who y lugares con where.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "34730ffc2d",
+   "es": "Hablas de cómo sigues en contacto: a video call.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "2d05d415c8",
+   "es": "Para personas: who (o that).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "who"
+  },
+  {
+   "id": "b257f0138a",
+   "es": "Para lugares: where.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "where"
+  },
+  {
+   "id": "b5f44bc5dd",
+   "es": "Tom hace una videollamada con su abuela.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u8-call"
+  },
+  {
+   "id": "51eb49b3a0",
+   "es": "Grandma",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b1-u8-call"
+  },
+  {
+   "id": "b04742a394",
+   "es": "¿Qué problema tiene la abuela al principio?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u8-call"
+  },
+  {
+   "id": "e944c6f934",
+   "es": "Oye a Tom, pero no lo ve",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u8-call"
+  },
+  {
+   "id": "7c778fb6ac",
+   "es": "No oye a Tom",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a12e06761d",
+   "es": "No tiene batería",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "bd7ca1a5eb",
+   "es": "No sabe prender la computadora",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b2ebf59df3",
+   "es": "La abuela dice: «I can hear you, but I can’t see you».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u8-call"
+  },
+  {
+   "id": "0bf407cbee",
+   "es": "¿Qué proponen al final?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u8-call"
+  },
+  {
+   "id": "807e2bfe0f",
+   "es": "Hacer una videollamada todos los domingos",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u8-call"
+  },
+  {
+   "id": "c5423fc82c",
+   "es": "Visitarse los domingos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f7db1e09b9",
+   "es": "Llamarse por teléfono",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "79ef17f473",
+   "es": "Escribirse mensajes",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "dea0de0cb5",
+   "es": "Tom dice: «It's the best way to keep in touch. Let's do it every Sunday!».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u8-call"
+  },
+  {
+   "id": "5dd7b270fd",
+   "es": "la chica que vive al lado",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Who is Ana? (la chica que vive al lado)"
+  },
+  {
+   "id": "ac556bc9fe",
+   "es": "Es el restaurante donde trabajo.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "It is the restaurant where I work."
+  },
+  {
+   "id": "57e8a431de",
+   "es": "Internet",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "0b3d9bbbdc",
+   "es": "Usar apps y resolver problemas con contraseñas y el inicio de sesión.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "d640633a11",
+   "es": "Download es descargar y upload, subir. Log in es entrar a una cuenta (log in to your account). Password es la contraseña. Para pedir ayuda: I can't log in. I have forgotten my password.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "49127d6900",
+   "es": "Descargas y subes archivos: download, upload.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "cbe342a7bd",
+   "es": "Explicas un problema: I can't log in, I have forgotten my password.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "ee194bb91e",
+   "es": "Anoche subí las fotos de la fiesta.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I uploaded the photos from the party last night."
+  },
+  {
+   "id": "c9840b7dc8",
+   "es": "Un empleado llama al servicio técnico de su empresa.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u8-help"
+  },
+  {
+   "id": "be91940b79",
+   "es": "Support",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b1-u8-help"
+  },
+  {
+   "id": "cbfb76f779",
+   "es": "¿Qué problema tiene Leo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u8-help"
+  },
+  {
+   "id": "36bf162f2d",
+   "es": "No puede entrar a su computadora",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u8-help"
+  },
+  {
+   "id": "bbf824f788",
+   "es": "Se le rompió la pantalla",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "24fe492458",
+   "es": "No le llegan los mails",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2d3a0ccbcc",
+   "es": "No tiene internet",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3c3198b5d3",
+   "es": "Leo dice: «I can't log in to my computer».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u8-help"
+  },
+  {
+   "id": "435f6a7368",
+   "es": "¿Por qué no puede entrar?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u8-help"
+  },
+  {
+   "id": "af1c4ef4dc",
+   "es": "Se olvidó la contraseña nueva",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u8-help"
+  },
+  {
+   "id": "3f151f5a94",
+   "es": "Nunca tuvo contraseña",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a6e7c371d0",
+   "es": "La computadora está apagada",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ab7f7be964",
+   "es": "La app no funciona",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c5dc058054",
+   "es": "Leo dice: «I think I have forgotten the new one» (la contraseña que cambió ayer).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u8-help"
+  },
+  {
+   "id": "2a657d94e8",
+   "es": "Redes sociales",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "e623d49e3d",
+   "es": "Hablar de cómo usas las redes: publicar, compartir, seguidores.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "6adbd3593a",
+   "es": "Social media son las redes sociales. Post es publicar (y una publicación); share, compartir; follower, seguidor. Online es «en línea» o «por internet»: I buy clothes online.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "04b88da258",
+   "es": "Paso demasiado tiempo en las redes.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I spend too much time on social media."
+  },
+  {
+   "id": "d770f8b7c8",
+   "es": "Cuentas cómo usas las redes sociales.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "5101dd7724",
+   "es": "Usas post, share, follower y online.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "c78b6b3266",
+   "es": "¿Qué significa «share»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "5e8d9ed92b",
+   "es": "Tiene miles de seguidores.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "He has thousands of followers."
+  },
+  {
+   "id": "df4c6b2ce9",
+   "es": "Una persona cuenta por qué usa menos las redes.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u8-social"
+  },
+  {
+   "id": "50b0e8f752",
+   "es": "¿Qué decidió Kate el mes pasado?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u8-social"
+  },
+  {
+   "id": "b0d58afc67",
+   "es": "Pasar menos tiempo en las redes sociales",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u8-social"
+  },
+  {
+   "id": "476fef5c2a",
+   "es": "Cerrar sus cuentas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "45f67891b3",
+   "es": "Comprar un teléfono nuevo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6f1f79dda6",
+   "es": "Publicar más fotos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6f36af4b0f",
+   "es": "Kate escribe: «Last month I decided to spend less time on social media».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u8-social"
+  },
+  {
+   "id": "669d5dc20a",
+   "es": "¿Con quién sigue compartiendo fotos?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u8-social"
+  },
+  {
+   "id": "e063f709b3",
+   "es": "Con la gente que es importante para ella",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u8-social"
+  },
+  {
+   "id": "b2bc6915ae",
+   "es": "Con todos sus seguidores",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "bc3a56f606",
+   "es": "Con nadie",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "71a231091d",
+   "es": "Sólo con su familia",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e2f9f5645a",
+   "es": "Kate escribe: «I still share photos with the people who are important to me».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u8-social"
+  },
+  {
+   "id": "0c70e12d61",
+   "es": "una hora por día",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "How much time do you spend on social media? (una hora por día)"
+  },
+  {
+   "id": "c1d057b4c0",
+   "es": "¿Cuánto tiempo pasas en las redes?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How much time do you spend on social media? (una hora por día)"
+  },
+  {
+   "id": "e410de287e",
+   "es": "Recomendar una app",
+   "kinds": [
+    "lesson.title",
+    "writing.title"
+   ]
+  },
+  {
+   "id": "f3035f7b30",
+   "es": "Explicar qué hace una app y a quién se la recomiendas.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "33b12b10a0",
+   "es": "Para recomendar: It is an app which/that helps you… I recommend it to people who… Así combinas which/that (para la app) y who (para la gente).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "11a83a6713",
+   "es": "Es una app que te ayuda a planificar las comidas.",
+   "kinds": [
+    "example"
+   ],
+   "en": "It is an app which helps you plan your meals."
+  },
+  {
+   "id": "1fc3bca5f2",
+   "es": "Se la recomiendo a la gente que viaja mucho.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I recommend it to people who travel a lot."
+  },
+  {
+   "id": "5926e67142",
+   "es": "Explicas qué hace una app con which o that.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "ce74385450",
+   "es": "Dices a quién se la recomiendas con who.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "381aaacca6",
+   "es": "Una opinión sobre una aplicación.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u8-app"
+  },
+  {
+   "id": "2c0752bb23",
+   "es": "¿Para qué sirve la app?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u8-app"
+  },
+  {
+   "id": "3070a6d242",
+   "es": "Para planificar las comidas de la semana",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u8-app"
+  },
+  {
+   "id": "9753e64f7d",
+   "es": "Para aprender a cocinar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1384c57687",
+   "es": "Para comprar comida por internet",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a3e612a685",
+   "es": "Para contar calorías",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "82344eab44",
+   "es": "Rosa escribe: «This is an app which helps you plan your meals for the week».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u8-app"
+  },
+  {
+   "id": "fd9729a3ad",
+   "es": "¿Qué no le gusta a Rosa?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u8-app"
+  },
+  {
+   "id": "bbfa791218",
+   "es": "Que usa mucha batería",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u8-app"
+  },
+  {
+   "id": "be63b42d32",
+   "es": "Que cuesta caro",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f9b2399dae",
+   "es": "Que sólo funciona en línea",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3da0916847",
+   "es": "Que es difícil de usar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f24b7ac6e7",
+   "es": "Rosa escribe: «The only thing that I don’t like is the battery: it uses a lot».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u8-app"
+  },
+  {
+   "id": "838005b03e",
+   "es": "Puedes usar la app por internet o sin internet.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "You can use the app online or without internet."
+  },
+  {
+   "id": "2dc3bdd73d",
+   "es": "Esta es la app que uso todos los días.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "This is the app that I use every day."
+  },
+  {
+   "id": "b0f285a2e4",
+   "es": "PolyGo, una app que te ayuda a aprender palabras",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Which app do you use to learn English? (PolyGo, una app que te ayuda a aprender palabras)"
+  },
+  {
+   "id": "5e3f3208c8",
+   "es": "¿Qué app usas para aprender inglés?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Which app do you use to learn English? (PolyGo, una app que te ayuda a aprender palabras)"
+  },
+  {
+   "id": "c1f423634c",
+   "es": "Es una app que te ayuda a ahorrar.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "It is an app that helps you save money."
+  },
+  {
+   "id": "27b57266f2",
+   "es": "Recomienda una app o un aparato que uses: qué hace (which / that), cómo lo usas y para quién es (people who…).",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "d0294af4b5",
+   "es": "Explicas qué hace con which o that (an app which helps you…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "1a44b68550",
+   "es": "Dices para quién es con who (people who…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "241e4b971e",
+   "es": "Expliqué qué hace con which o that.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "0d5d8ff483",
+   "es": "Dije para quién es con who.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "38841aa986",
+   "es": "Conté cómo la uso.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "58387adb2c",
+   "es": "Un correo a alguien que viene de visita",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "c46e48636c",
+   "es": "Un amigo de otro país viene a visitarte. Escríbele un correo: qué tiene que hacer o no hace falta que haga, consejos de viaje y de salud, y cómo van a seguir en contacto.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "d60ddbac2f",
+   "es": "¿Usaste have to, don't have to o must?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "0fe3cad7d2",
+   "es": "¿Diste un consejo con if?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "0f308699f2",
+   "es": "¿Usaste who, which o where para explicar algo?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "2d7d9beba7",
+   "es": "Expliqué qué tiene que hacer y qué no hace falta.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "62cf4cbfeb",
+   "es": "Usé who, which o where.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.b1-u8-call": {
+   "setting": "Tom hace una videollamada con su abuela.",
+   "lines": [
+    "Grandma: Tom? I can hear you, but I can’t see you.",
+    "Tom: Grandma, you have to turn on the camera. Touch the button which is at the bottom of the screen.",
+    "Grandma: Oh! Now I can see you. This video call is wonderful.",
+    "Tom: It's the best way to keep in touch. Let's do it every Sunday!"
+   ]
+  },
+  "en.stim.b1-u8-help": {
+   "setting": "Un empleado llama al servicio técnico de su empresa.",
+   "lines": [
+    "Leo: Hi. I can't log in to my computer.",
+    "Support: Have you changed your password recently?",
+    "Leo: Yes, yesterday. I think I have forgotten the new one.",
+    "Support: No problem. I'll send you an email with a link that will help you."
+   ]
+  },
+  "en.stim.b1-u8-social": {
+   "setting": "Una persona cuenta por qué usa menos las redes.",
+   "lines": [
+    "Last month I decided to spend less time on social media.",
+    "I turned off my phone notifications, and I only check my apps at night.",
+    "I still share photos with the people who are important to me.",
+    "I have fewer followers now, but I have more time to read and see my friends."
+   ]
+  },
+  "en.stim.b1-u8-app": {
+   "setting": "Una opinión sobre una aplicación.",
+   "lines": [
+    "Five stars!",
+    "This is an app which helps you plan your meals for the week.",
+    "You can download it for free, and it works online and offline.",
+    "The only thing that I don’t like is the battery: it uses a lot.",
+    "I recommend it to people who don’t have much time to cook."
+   ]
+  }
+ }
+}

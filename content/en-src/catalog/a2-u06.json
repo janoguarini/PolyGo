@@ -1,0 +1,828 @@
+{
+ "unit": "a2-u06",
+ "level": "A2",
+ "titleEn": "Clothes and shopping",
+ "strings": [
+  {
+   "id": "aa7d4e33b6",
+   "es": "Ropa y compras",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Clothes and shopping"
+  },
+  {
+   "id": "7506f423d5",
+   "es": "La ropa, las tallas, los precios y cómo pagar.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "019e93ad37",
+   "es": "ropa",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "clothes"
+  },
+  {
+   "id": "88fa353482",
+   "es": "Siempre usa ropa negra.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "He always wears black clothes."
+  },
+  {
+   "id": "d9b7f7bc1c",
+   "es": "camiseta",
+   "kinds": [
+    "word.translation",
+    "word.accepted"
+   ],
+   "en": "T-shirt"
+  },
+  {
+   "id": "17bc7e94b3",
+   "es": "playera",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "T-shirt"
+  },
+  {
+   "id": "4ca3386d7f",
+   "es": "remera",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "T-shirt"
+  },
+  {
+   "id": "af30b56856",
+   "es": "Me compré una camiseta barata.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I bought a cheap T-shirt."
+  },
+  {
+   "id": "4a3fd2fd07",
+   "es": "camisa",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "shirt"
+  },
+  {
+   "id": "9c22fb9218",
+   "es": "Me gusta tu camisa.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I like your shirt."
+  },
+  {
+   "id": "3e15c11478",
+   "es": "pantalón",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "pants"
+  },
+  {
+   "id": "b9a352a319",
+   "es": "pantalones",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "pants"
+  },
+  {
+   "id": "2adbb22197",
+   "es": "Hoy tengo puesto un pantalón blanco.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Today I am wearing white pants."
+  },
+  {
+   "id": "7faa0110ef",
+   "es": "vestido",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "dress"
+  },
+  {
+   "id": "b0a2739273",
+   "es": "Tiene puesto un vestido azul.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She is wearing a blue dress."
+  },
+  {
+   "id": "215e563b87",
+   "es": "falda",
+   "kinds": [
+    "word.translation",
+    "word.accepted",
+    "exercise.pair"
+   ],
+   "en": "skirt"
+  },
+  {
+   "id": "b0d42c9fdf",
+   "es": "pollera",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "skirt"
+  },
+  {
+   "id": "4efbadd1ca",
+   "es": "pollera / falda",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "skirt"
+  },
+  {
+   "id": "a9dda96599",
+   "es": "Tiene puesta una falda verde.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She is wearing a green skirt."
+  },
+  {
+   "id": "308c058318",
+   "es": "zapatos",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "shoes"
+  },
+  {
+   "id": "8867f47e4d",
+   "es": "calzado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "shoes"
+  },
+  {
+   "id": "1b152d94eb",
+   "es": "Estos zapatos son nuevos.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "These shoes are new."
+  },
+  {
+   "id": "38dc2ff198",
+   "es": "chaqueta",
+   "kinds": [
+    "word.translation",
+    "word.accepted"
+   ],
+   "en": "jacket"
+  },
+  {
+   "id": "9accfb3823",
+   "es": "chamarra",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "jacket"
+  },
+  {
+   "id": "b67fceff2e",
+   "es": "campera",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "jacket"
+  },
+  {
+   "id": "171fdff6be",
+   "es": "Tengo puesta mi chaqueta nueva.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I am wearing my new jacket."
+  },
+  {
+   "id": "1a2c6e819d",
+   "es": "sombrero / gorro",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "hat"
+  },
+  {
+   "id": "a1ef919687",
+   "es": "sombrero",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "hat"
+  },
+  {
+   "id": "33c0b9ae4a",
+   "es": "gorro",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "hat"
+  },
+  {
+   "id": "2dc56434dc",
+   "es": "gorra",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "hat"
+  },
+  {
+   "id": "057bb7fec8",
+   "es": "Me gusta tu sombrero.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I like your hat."
+  },
+  {
+   "id": "0a22b395dd",
+   "es": "tener puesto / usar (ropa)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "wear"
+  },
+  {
+   "id": "11b62529c7",
+   "es": "usar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "wear"
+  },
+  {
+   "id": "2132eda4a1",
+   "es": "llevar puesto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "wear"
+  },
+  {
+   "id": "cdd92c4173",
+   "es": "tener puesto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "wear"
+  },
+  {
+   "id": "2750fe6450",
+   "es": "vestir",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "wear"
+  },
+  {
+   "id": "3e2c95bdfb",
+   "es": "Tengo puesta una chaqueta roja.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I am wearing a red jacket."
+  },
+  {
+   "id": "4243a15771",
+   "es": "talla / tamaño",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "size"
+  },
+  {
+   "id": "3d5070a08f",
+   "es": "talle",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "size"
+  },
+  {
+   "id": "7fd42368b7",
+   "es": "tamaño",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "size"
+  },
+  {
+   "id": "48c96bd517",
+   "es": "talla",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "size"
+  },
+  {
+   "id": "4785705382",
+   "es": "talle / tamaño",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "size"
+  },
+  {
+   "id": "4702e331ba",
+   "es": "¿Qué talla eres?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "What size are you?"
+  },
+  {
+   "id": "4352d11792",
+   "es": "El precio es diez dólares.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "The price is ten dollars."
+  },
+  {
+   "id": "28358b3b23",
+   "es": "barato / barata",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "cheap"
+  },
+  {
+   "id": "397737c5fe",
+   "es": "barata",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "cheap"
+  },
+  {
+   "id": "3679f37b9f",
+   "es": "Esta camiseta es muy barata.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "This T-shirt is very cheap."
+  },
+  {
+   "id": "ad3cc1d1ee",
+   "es": "caro / cara",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "expensive"
+  },
+  {
+   "id": "f61f5c5e22",
+   "es": "cara",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "expensive"
+  },
+  {
+   "id": "85af8692d8",
+   "es": "Esta chaqueta es muy cara.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "This jacket is very expensive."
+  },
+  {
+   "id": "37e4f313e9",
+   "es": "comprar",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "buy"
+  },
+  {
+   "id": "34cb6a6b36",
+   "es": "Quiero comprar estos zapatos.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I want to buy these shoes."
+  },
+  {
+   "id": "60bb0d14da",
+   "es": "pagar",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "pay"
+  },
+  {
+   "id": "8e0f1b0d23",
+   "es": "¿Puedo pagar con tarjeta?",
+   "kinds": [
+    "word.example",
+    "exercise.translation",
+    "example"
+   ],
+   "en": "Can I pay by card?"
+  },
+  {
+   "id": "bd6835f399",
+   "es": "plata",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "money"
+  },
+  {
+   "id": "a933652a32",
+   "es": "plata / dinero",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "money"
+  },
+  {
+   "id": "07c4302e50",
+   "es": "No tengo dinero.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I don't have money."
+  },
+  {
+   "id": "d772e6e649",
+   "es": "probarse (ropa)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "try on"
+  },
+  {
+   "id": "4a5fd17708",
+   "es": "probarse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "try on"
+  },
+  {
+   "id": "4216428381",
+   "es": "¿Me puedo probar esta camisa?",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Can I try on this shirt?"
+  },
+  {
+   "id": "78984d52ad",
+   "es": "tarjeta",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.cue"
+   ],
+   "en": "card"
+  },
+  {
+   "id": "eedcc32175",
+   "es": "efectivo",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "cash"
+  },
+  {
+   "id": "7edfcb6405",
+   "es": "en efectivo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "cash"
+  },
+  {
+   "id": "2c951af1f7",
+   "es": "Pagué en efectivo.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I paid in cash."
+  },
+  {
+   "id": "3a283c9c0e",
+   "es": "La ropa",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "0ef9781c11",
+   "es": "Las prendas de todos los días.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "3731844095",
+   "es": "«a» va con una sola prenda: a jacket. Shoes, pants y clothes son plurales.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "jacket"
+  },
+  {
+   "id": "a67411fd41",
+   "es": "¿Qué tienes puesto?",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "2993ef84a3",
+   "es": "Wear: usar ropa siempre o tenerla puesta ahora.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "4b10a8cadc",
+   "es": "¿Qué significa «clothes»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "b771de6c9c",
+   "es": "tela",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1a2cf43c39",
+   "es": "Shoes y pants son plurales en inglés: these shoes are…",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "are"
+  },
+  {
+   "id": "cd2a8bfe8a",
+   "es": "Ella tiene puesta una falda verde.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "She is wearing a green skirt."
+  },
+  {
+   "id": "68fefd852b",
+   "es": "En el negocio",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "8eb6afb1ac",
+   "es": "Pedir una talla y probarte ropa.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "d228e91e6a",
+   "es": "Probarse ropa = try on.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "try"
+  },
+  {
+   "id": "00eea86339",
+   "es": "¿Qué talla eres? Mediano.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What size are you? Medium."
+  },
+  {
+   "id": "ba03e492d1",
+   "es": "¿Qué significa «size»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "024186f8bd",
+   "es": "Es muy chico. ¿Tienes una talla más grande?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "It is very small. Do you have a bigger size?"
+  },
+  {
+   "id": "6738e27ab3",
+   "es": "busco una chaqueta",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Can I help you? (busco una chaqueta)"
+  },
+  {
+   "id": "aaa081fa52",
+   "es": "¿Te puedo ayudar?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Can I help you? (busco una chaqueta)"
+  },
+  {
+   "id": "7ab79ade3b",
+   "es": "¿Tienes este vestido en rojo?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Do you have this dress in red?"
+  },
+  {
+   "id": "5283d25435",
+   "es": "Caro o barato",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "e807d6150f",
+   "es": "Preguntar y comentar precios.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "eda106556d",
+   "es": "¿Qué significa «cheap»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "643d5c9ac9",
+   "es": "Esta chaqueta es muy cara. ¡Cuesta 500 dólares!",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "This jacket is very expensive. It costs 500 dollars!"
+  },
+  {
+   "id": "a761ad3316",
+   "es": "¿Cuánto salen estos zapatos?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How much are these shoes?"
+  },
+  {
+   "id": "d56c0b86d0",
+   "es": "How much is + una cosa; how much are + varias (these shoes).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "are"
+  },
+  {
+   "id": "781f4f8279",
+   "es": "Es muy caro.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "It is very expensive."
+  },
+  {
+   "id": "3acaa7d088",
+   "es": "Pagar",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "0e1e1e4ba1",
+   "es": "Con tarjeta o en efectivo.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "274810e156",
+   "es": "Pagar con tarjeta = pay by card; en efectivo = pay in cash.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "pay"
+  },
+  {
+   "id": "5aff65ce94",
+   "es": "¿Efectivo o tarjeta?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Cash or card? (tarjeta)"
+  },
+  {
+   "id": "ddad19e3db",
+   "es": "¿Puedo pagar en efectivo?",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "Can I pay in cash?"
+  },
+  {
+   "id": "69c698d124",
+   "es": "Un viaje y unas compras",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "d89f303837",
+   "es": "Escribe un mensaje a un amigo sobre un viaje (real o inventado): adónde fuiste, cómo viajaste, qué hiciste y qué compraste.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "3094ed1839",
+   "es": "¿Usaste verbos en pasado?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "5cd439190a",
+   "es": "¿Dijiste cómo viajaste (by…)?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "c7d63d07a7",
+   "es": "¿Contaste qué compraste?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "41184ff66b",
+   "es": "¿Escribiste al menos 4 oraciones?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "c774fb1c2a",
+   "es": "Conté adónde fui y cómo viajé.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "d0ed33224d",
+   "es": "Conté qué compré.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {}
+}

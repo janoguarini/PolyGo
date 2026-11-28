@@ -1,0 +1,1539 @@
+{
+ "unit": "a2-u16",
+ "level": "A2",
+ "titleEn": "Messages, emails and calls",
+ "strings": [
+  {
+   "id": "a8ea64639c",
+   "es": "Mensajes, correos y llamadas",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Messages, emails and calls"
+  },
+  {
+   "id": "b077b4932d",
+   "es": "Mensajes y correos, pedir algo con Could you…?, hablar por teléfono y reservar un hotel.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "4de0621fb3",
+   "es": "Puedes escribir y entender mensajes y correos cortos, hablar por teléfono y reservar un hotel.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "577be0251b",
+   "es": "Correos y pedidos",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "92d60667ef",
+   "es": "Un correo empieza con Dear + nombre y termina con Best wishes. Para pedir algo con cortesía se usa Could you + verbo…? (¿podrías…?).",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "6d42050a7e",
+   "es": "Querida Ana:",
+   "kinds": [
+    "example"
+   ],
+   "en": "Dear Ana,"
+  },
+  {
+   "id": "fa36516364",
+   "es": "¿Podrías mandarme las fotos, por favor?",
+   "kinds": [
+    "example"
+   ],
+   "en": "Could you send me the photos, please?"
+  },
+  {
+   "id": "26ac42ae15",
+   "es": "Saludos, Leo",
+   "kinds": [
+    "example",
+    "word.example"
+   ],
+   "en": "Best wishes, Leo"
+  },
+  {
+   "id": "5db3a62806",
+   "es": "mensaje",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "message"
+  },
+  {
+   "id": "476810d323",
+   "es": "Recibí tu mensaje.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I got your message."
+  },
+  {
+   "id": "ba7b890b57",
+   "es": "querido / querida (en cartas)",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "dear"
+  },
+  {
+   "id": "187a89472c",
+   "es": "querido",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "dear"
+  },
+  {
+   "id": "c8052a6dee",
+   "es": "querida",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "dear"
+  },
+  {
+   "id": "9cf2e615ce",
+   "es": "estimado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "dear"
+  },
+  {
+   "id": "2c1e7cf41c",
+   "es": "estimada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "dear"
+  },
+  {
+   "id": "42ee608d8b",
+   "es": "Querida Ana, ¿cómo estás?",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Dear Ana, how are you?"
+  },
+  {
+   "id": "0ec41e6d1e",
+   "es": "gracias por",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "thanks for"
+  },
+  {
+   "id": "c57aeabe59",
+   "es": "¡Gracias por tu mensaje!",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "Thanks for your message!"
+  },
+  {
+   "id": "a8242f2ac8",
+   "es": "cuídate",
+   "kinds": [
+    "word.translation",
+    "word.accepted",
+    "exercise.pair"
+   ],
+   "en": "take care"
+  },
+  {
+   "id": "0ef0f8b699",
+   "es": "cuídese",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "take care"
+  },
+  {
+   "id": "c5fefc8a51",
+   "es": "cuidate",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "take care"
+  },
+  {
+   "id": "1fd9d366c2",
+   "es": "¡Cuídate, Ana!",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Take care, Ana!"
+  },
+  {
+   "id": "472340aa4f",
+   "es": "saludos / cariños (al despedirse)",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "best wishes"
+  },
+  {
+   "id": "b2ac0b5d6f",
+   "es": "saludos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "best wishes"
+  },
+  {
+   "id": "d05e8a7145",
+   "es": "cariños",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "best wishes"
+  },
+  {
+   "id": "450652f93c",
+   "es": "responder (un mensaje)",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "reply"
+  },
+  {
+   "id": "6a7d0511a3",
+   "es": "Por favor, responde pronto.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Please reply soon."
+  },
+  {
+   "id": "640af179b0",
+   "es": "enviar / mandar",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "send"
+  },
+  {
+   "id": "4ed33f9103",
+   "es": "enviar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "send"
+  },
+  {
+   "id": "287aff41e1",
+   "es": "mandar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "send"
+  },
+  {
+   "id": "92a59b0cf8",
+   "es": "Mando muchos mensajes.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I send a lot of messages."
+  },
+  {
+   "id": "bd2222da03",
+   "es": "devolver la llamada",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "call back"
+  },
+  {
+   "id": "4749e6ab64",
+   "es": "volver a llamar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "call back"
+  },
+  {
+   "id": "0e2bf79643",
+   "es": "¿Me puedes devolver la llamada?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Can you call me back?"
+  },
+  {
+   "id": "c26dafb886",
+   "es": "dejar un mensaje",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "leave a message"
+  },
+  {
+   "id": "8fe71f245f",
+   "es": "¿Puedo dejar un mensaje?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Can I leave a message?"
+  },
+  {
+   "id": "ee8c6be850",
+   "es": "un momento (al teléfono)",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "hold on"
+  },
+  {
+   "id": "805119e7bf",
+   "es": "un momento",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "hold on"
+  },
+  {
+   "id": "56840351b9",
+   "es": "espere",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "hold on"
+  },
+  {
+   "id": "020c5079d2",
+   "es": "espera",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "hold on"
+  },
+  {
+   "id": "c83aa801da",
+   "es": "esperá",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "hold on"
+  },
+  {
+   "id": "bddf8d1c65",
+   "es": "Un momento, por favor.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "Hold on, please."
+  },
+  {
+   "id": "bca65292dd",
+   "es": "¿podrías…? / ¿podría…?",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "could you"
+  },
+  {
+   "id": "4d4f2c6a04",
+   "es": "podrías",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "could you"
+  },
+  {
+   "id": "51b29124f6",
+   "es": "podría",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "could you"
+  },
+  {
+   "id": "f6c94e626a",
+   "es": "¿Podrías ayudarme, por favor?",
+   "kinds": [
+    "word.example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "Could you help me, please?"
+  },
+  {
+   "id": "8fa5120d19",
+   "es": "reservar una habitación",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "book a room"
+  },
+  {
+   "id": "cd1953d120",
+   "es": "Quisiera reservar una habitación.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I'd like to book a room."
+  },
+  {
+   "id": "b9fb66f51b",
+   "es": "habitación doble",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "double room"
+  },
+  {
+   "id": "1a84a365a7",
+   "es": "Queremos una habitación doble.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We want a double room."
+  },
+  {
+   "id": "ae9f338f3b",
+   "es": "registrarse (en un hotel)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "check in"
+  },
+  {
+   "id": "98cd647840",
+   "es": "registrarse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "check in"
+  },
+  {
+   "id": "2e7e2d63ad",
+   "es": "hacer el check-in",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "check in"
+  },
+  {
+   "id": "cdfe8f716e",
+   "es": "Pueden registrarse a las dos.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "You can check in at two."
+  },
+  {
+   "id": "6a924f331c",
+   "es": "dejar la habitación (en un hotel)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "check out"
+  },
+  {
+   "id": "f73b3387b9",
+   "es": "dejar la habitación",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "check out"
+  },
+  {
+   "id": "086e3f0bea",
+   "es": "hacer el check-out",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "check out"
+  },
+  {
+   "id": "cd0238ef53",
+   "es": "Dejamos la habitación el domingo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We check out on Sunday."
+  },
+  {
+   "id": "b8c911b018",
+   "es": "recepción",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "reception"
+  },
+  {
+   "id": "50e8e6e259",
+   "es": "La llave está en recepción.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The key is at reception."
+  },
+  {
+   "id": "945f0d23f4",
+   "es": "Un mensaje a un amigo",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "e6b99a6ddc",
+   "es": "Escribir y entender mensajes cortos entre amigos.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "4592e37c65",
+   "es": "Un mensaje informal empieza con Hi y el nombre, y termina con See you soon! (¡hasta pronto!) o Take care! (¡cuídate!). Para agradecer: Thanks for… (gracias por…).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "10d44286bc",
+   "es": "Escribes y entiendes mensajes cortos entre amigos.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "3730edc9bf",
+   "es": "Agradeces con Thanks for… y te despides con See you soon o Take care.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "acde5f4b5b",
+   "es": "¿Qué significa «send»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "74d137a723",
+   "es": "recibir",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0a3b6675ca",
+   "es": "Gracias por… = Thanks for… (o Thank you for…).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "for"
+  },
+  {
+   "id": "e3174b7c16",
+   "es": "Leo le escribe a Mia después de una fiesta.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a2-u16-chat"
+  },
+  {
+   "id": "de36cbc663",
+   "es": "¿Qué le agradece Leo a Mia?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u16-chat"
+  },
+  {
+   "id": "a54532c479",
+   "es": "Las fotos de la fiesta",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u16-chat"
+  },
+  {
+   "id": "8cc97c9610",
+   "es": "Un regalo de cumpleaños",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a34886b30b",
+   "es": "La invitación a la fiesta",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "954839122a",
+   "es": "Una llamada",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "aae263307f",
+   "es": "Leo escribe: «Thanks for the photos from the party».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u16-chat"
+  },
+  {
+   "id": "1a4f066e95",
+   "es": "¿Por qué Leo no llama ahora?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u16-chat"
+  },
+  {
+   "id": "9e72bdef9d",
+   "es": "Porque está trabajando",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u16-chat"
+  },
+  {
+   "id": "8b0e5dc0d7",
+   "es": "Porque está en una fiesta",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c62a41804d",
+   "es": "Porque no tiene teléfono",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8aa3a6058e",
+   "es": "Porque está durmiendo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e041875c3d",
+   "es": "Leo escribe: «I’m at work now. I’ll call you later».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u16-chat"
+  },
+  {
+   "id": "b8e372acc5",
+   "es": "Le mando un mensaje todos los días.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I send her a message every day."
+  },
+  {
+   "id": "09413007e6",
+   "es": "¡Cuídate! Hasta pronto.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "Take care! See you soon."
+  },
+  {
+   "id": "fd3dbc3552",
+   "es": "Un correo",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "55ca817894",
+   "es": "Empezar y terminar un correo, y pedir algo con Could you…?",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "0cf4d3d979",
+   "es": "Un correo empieza con Dear + nombre (Dear Leo,) y termina con Best wishes, + tu nombre. Para pedir algo con cortesía: Could you…? (¿podrías…?) + el verbo.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "6699213b31",
+   "es": "Querido Leo:",
+   "kinds": [
+    "example"
+   ],
+   "en": "Dear Leo,"
+  },
+  {
+   "id": "4faecb3574",
+   "es": "Empiezas un correo con Dear… y lo terminas con Best wishes.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "93578f56a1",
+   "es": "Pides algo con cortesía: Could you…?",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "9dda524526",
+   "es": "¿Qué significa «best wishes»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "c7079cc39a",
+   "es": "hasta pronto",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f469978cbb",
+   "es": "Emma le escribe a Leo después de un viaje.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a2-u16-email"
+  },
+  {
+   "id": "592f7e013f",
+   "es": "¿Qué le pide Emma a Leo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u16-email"
+  },
+  {
+   "id": "e8ab56c683",
+   "es": "Que le mande sus fotos",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u16-email"
+  },
+  {
+   "id": "a3fb19d655",
+   "es": "Que la llame",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6a7e30ad3e",
+   "es": "Que le preste su teléfono",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8c336e86d2",
+   "es": "Que viaje con ella a la montaña",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3daba3614f",
+   "es": "Emma escribe: «Could you send me your photos?».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u16-email"
+  },
+  {
+   "id": "acfadc3557",
+   "es": "¿Por qué Emma no tiene fotos?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u16-email"
+  },
+  {
+   "id": "e7396ce1de",
+   "es": "Perdió el teléfono",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u16-email"
+  },
+  {
+   "id": "72b17c6301",
+   "es": "No le gusta sacar fotos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d5a664c574",
+   "es": "No fue al viaje",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "03f84189cb",
+   "es": "Las borró",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "afd3de3bb6",
+   "es": "Emma escribe: «I lost my phone on the last day».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u16-email"
+  },
+  {
+   "id": "ad4c2136d9",
+   "es": "¿Podrías mandarme las fotos?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Could you send me the photos?"
+  },
+  {
+   "id": "cd7b361357",
+   "es": "Saludos, Ana",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "Best wishes, Ana"
+  },
+  {
+   "id": "1990391a66",
+   "es": "Al teléfono",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "d6fb16e48b",
+   "es": "Pedir hablar con alguien y dejar un mensaje.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "16a0aa6f75",
+   "es": "Al teléfono: Can I speak to…? (¿puedo hablar con…?). Si la persona no está, puedes dejar un mensaje (leave a message) o pedir que te devuelva la llamada (call me back). Hold on, please = un momento, por favor.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "1284ca7712",
+   "es": "¿Puedo hablar con Emma, por favor?",
+   "kinds": [
+    "example"
+   ],
+   "en": "Can I speak to Emma, please?"
+  },
+  {
+   "id": "d4e703300e",
+   "es": "Pides hablar con alguien y dejas un mensaje.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "38b0b1b70d",
+   "es": "Entiendes Hold on y pides que te llamen: call me back.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "6c5d0739fc",
+   "es": "¿Qué significa «hold on»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "a0cdd22de2",
+   "es": "¿Me puedes devolver la llamada más tarde?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Can you call me back later?"
+  },
+  {
+   "id": "967710a55e",
+   "es": "No está. ¿Quieres dejarle un mensaje?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She isn't here. Would you like to leave a message?"
+  },
+  {
+   "id": "cdedbc6376",
+   "es": "Dejar un mensaje = leave a message.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "leave"
+  },
+  {
+   "id": "e8eb56e747",
+   "es": "Leo llama a un hotel para hablar con Emma.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a2-u16-phone"
+  },
+  {
+   "id": "0769869a31",
+   "es": "¿Qué pide Leo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u16-phone"
+  },
+  {
+   "id": "aa3780fb46",
+   "es": "Que Emma lo llame",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u16-phone"
+  },
+  {
+   "id": "bb899b2a4e",
+   "es": "Hablar con Kate",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7e083920c7",
+   "es": "Reservar una habitación",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1475b41cf1",
+   "es": "Que Emma le mande un correo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e95b4ca350",
+   "es": "Emma no está y Leo deja un mensaje: «Could she call me back?».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u16-phone"
+  },
+  {
+   "id": "1f084d6f60",
+   "es": "¿Qué hace Kate primero?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u16-phone"
+  },
+  {
+   "id": "bdb9df0269",
+   "es": "Le pide que espere un momento",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u16-phone"
+  },
+  {
+   "id": "c176270b00",
+   "es": "Le corta la llamada",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "269a8d58ab",
+   "es": "Le da el número de Emma",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0f49b2dcc4",
+   "es": "Le pide su dirección",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "78390fbb45",
+   "es": "Kate dice: «Hold on, please».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u16-phone"
+  },
+  {
+   "id": "adce397082",
+   "es": "¿Podrías devolverme la llamada?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Could you call me back?"
+  },
+  {
+   "id": "0182265cf7",
+   "es": "sí: que te llame",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Emma isn't here. Would you like to leave a message? (sí: que te llame)"
+  },
+  {
+   "id": "c4358f25c5",
+   "es": "Emma no está. ¿Quieres dejarle un mensaje?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Emma isn't here. Would you like to leave a message? (sí: que te llame)"
+  },
+  {
+   "id": "158be3291d",
+   "es": "Reservar un hotel",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "799fe11b45",
+   "es": "Reservar una habitación y entender las reglas del hotel.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "1cedb6675b",
+   "es": "Para reservar: I'd like to book a room. Una habitación para dos personas es a double room. Check in es registrarte al llegar y check out, dejar la habitación al irte.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "efaa77ebba",
+   "es": "Quisiera reservar una habitación doble.",
+   "kinds": [
+    "example",
+    "exercise.source"
+   ],
+   "en": "I'd like to book a double room."
+  },
+  {
+   "id": "803ed0728e",
+   "es": "Reservas una habitación de hotel.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "ce7d7412cb",
+   "es": "Entiendes el check in, el check out y la recepción.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "3924caa8d0",
+   "es": "Quisiera reservar una habitación para el viernes.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I'd like to book a room for Friday."
+  },
+  {
+   "id": "9e76003cc7",
+   "es": "Book, además de «libro», es «reservar»: book a room.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "book"
+  },
+  {
+   "id": "3d883196be",
+   "es": "Pueden registrarse a las dos, cuando lleguen.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "You can check in at two, when you arrive."
+  },
+  {
+   "id": "6631eafbe3",
+   "es": "Dejamos la habitación el domingo a la mañana y vamos al aeropuerto.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "We check out on Sunday morning and go to the airport."
+  },
+  {
+   "id": "d4837d5a3e",
+   "es": "Leo escribe a un hotel para reservar.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a2-u16-booking"
+  },
+  {
+   "id": "bc3facc2d5",
+   "es": "¿Cuántas noches quiere quedarse Leo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u16-booking"
+  },
+  {
+   "id": "658116fe1a",
+   "es": "Una",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0b6f9b6719",
+   "es": "Catorce",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a5a0e75f2b",
+   "es": "Leo escribe: «I’d like to book a double room for two nights».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u16-booking"
+  },
+  {
+   "id": "d71cc0405d",
+   "es": "¿Qué le pide Leo al hotel?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u16-booking"
+  },
+  {
+   "id": "ad140f7d90",
+   "es": "Que le digan el precio",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u16-booking"
+  },
+  {
+   "id": "7595848a4b",
+   "es": "La dirección del hotel",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "561065eb44",
+   "es": "La hora del check out",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "23f58f10fd",
+   "es": "Una habitación con desayuno",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "98cf3da770",
+   "es": "Leo escribe: «Could you send me the price, please?».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u16-booking"
+  },
+  {
+   "id": "27f2e8eeb9",
+   "es": "a las once",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What time is check out? (a las once)"
+  },
+  {
+   "id": "c9a17bb03c",
+   "es": "¿A qué hora hay que dejar la habitación?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What time is check out? (a las once)"
+  },
+  {
+   "id": "741e723d91",
+   "es": "Responder un correo",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "5bf151e00c",
+   "es": "Entender un correo y responderlo.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "59ee33ec60",
+   "es": "Para responder un correo: agradece (Thanks for your email), contesta lo que te preguntan y despídete (Best wishes / See you soon). Si te piden algo, di qué vas a hacer con will: I’ll send you the photos tonight.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "eb5c6cb170",
+   "es": "Gracias por tu correo.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Thanks for your email."
+  },
+  {
+   "id": "d6511ab958",
+   "es": "Esta noche te mando las fotos.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I'll send you the photos tonight."
+  },
+  {
+   "id": "025ac8bc7b",
+   "es": "Respondes un correo: agradeces, contestas y te despides.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "b4d10ccd61",
+   "es": "Dices qué vas a hacer con will: I’ll send…",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "9c9300021a",
+   "es": "El hotel le responde a Leo.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a2-u16-hotel-reply"
+  },
+  {
+   "id": "d28b64388e",
+   "es": "¿Cuánto cuesta la habitación por noche?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u16-hotel-reply"
+  },
+  {
+   "id": "99ac8df15c",
+   "es": "90 dólares, con desayuno",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u16-hotel-reply"
+  },
+  {
+   "id": "8857b0990a",
+   "es": "90 dólares, sin desayuno",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d6f1ce5ce4",
+   "es": "180 dólares, con desayuno",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "39821e8d77",
+   "es": "9 dólares, con desayuno",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "080a086b62",
+   "es": "Kate escribe: «The price is $90 a night, with breakfast».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u16-hotel-reply"
+  },
+  {
+   "id": "feb1c87fe2",
+   "es": "¿Desde qué hora puede registrarse Leo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u16-hotel-reply"
+  },
+  {
+   "id": "150c4b7e10",
+   "es": "Desde las dos",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u16-hotel-reply"
+  },
+  {
+   "id": "9512eee9d2",
+   "es": "Desde las once",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "838e7cecc3",
+   "es": "Antes de las dos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "172da6508e",
+   "es": "Desde las nueve",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "260416abbc",
+   "es": "Kate escribe: «You can check in after two». Las once es la hora límite para dejar la habitación.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u16-hotel-reply"
+  },
+  {
+   "id": "ee3c120e76",
+   "es": "Gracias por tu correo. Esta noche te mando las fotos.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Thanks for your email. I'll send you the photos tonight."
+  },
+  {
+   "id": "72ac1185c9",
+   "es": "Después de will (I'll) va el verbo en su forma base.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "send"
+  },
+  {
+   "id": "d28e4ecbbd",
+   "es": "Recibí tu mensaje, pero no puedo responder ahora. Estoy manejando.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I got your message, but I can't reply now. I'm driving."
+  },
+  {
+   "id": "37a737cf83",
+   "es": "Esta noche te devuelvo la llamada.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I'll call you back tonight."
+  },
+  {
+   "id": "204080bc92",
+   "es": "sí, esta noche",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Could you send me the photos? (sí, esta noche)"
+  },
+  {
+   "id": "db44216bd1",
+   "es": "Querida Emma, gracias por tu correo.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "Dear Emma, thanks for your email."
+  },
+  {
+   "id": "629af6cb16",
+   "es": "Un correo para reservar",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "247b850dad",
+   "es": "Escríbele al Green Hotel para reservar una habitación: saluda, di qué quieres y para cuándo, haz una pregunta y despídete.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "2622d09e92",
+   "es": "Empiezas con Dear… o Hello",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "c129b886f1",
+   "es": "Pides la habitación (I’d like to book…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "2112a0b8e8",
+   "es": "Haces un pedido con Could you…?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "5d2f21aeee",
+   "es": "Terminas con Best wishes o Thank you",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "5cb61ea5c2",
+   "es": "Saludé y me despedí.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "783c17fd9d",
+   "es": "Dije qué habitación quiero y cuándo.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "8b1eabb936",
+   "es": "Pedí algo con Could you…?",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.a2-u16-chat": {
+   "setting": "Leo le escribe a Mia después de una fiesta.",
+   "lines": [
+    "Hi Mia!",
+    "Thanks for the photos from the party.",
+    "They are amazing!",
+    "I'm at work now. I'll call you later.",
+    "See you soon!"
+   ]
+  },
+  "en.stim.a2-u16-email": {
+   "setting": "Emma le escribe a Leo después de un viaje.",
+   "lines": [
+    "Dear Leo,",
+    "Thanks for your email.",
+    "The trip to the mountains was amazing!",
+    "Could you send me your photos? I lost my phone on the last day.",
+    "Best wishes,",
+    "Emma"
+   ]
+  },
+  "en.stim.a2-u16-phone": {
+   "setting": "Leo llama a un hotel para hablar con Emma.",
+   "lines": [
+    "Kate: Hello, Green Hotel.",
+    "Leo: Hi. Can I speak to Emma Brown, please?",
+    "Kate: Hold on, please. Sorry, she isn't here. Would you like to leave a message?",
+    "Leo: Yes. Could she call me back? My name is Leo.",
+    "Kate: Sure. Goodbye!"
+   ]
+  },
+  "en.stim.a2-u16-booking": {
+   "setting": "Leo escribe a un hotel para reservar.",
+   "lines": [
+    "Hello,",
+    "I'd like to book a double room for two nights, from Friday 12 May to Sunday 14 May.",
+    "We arrive on Friday at eight in the evening.",
+    "Could you send me the price, please?",
+    "Best wishes,",
+    "Leo Torres"
+   ]
+  },
+  "en.stim.a2-u16-hotel-reply": {
+   "setting": "El hotel le responde a Leo.",
+   "lines": [
+    "Dear Leo,",
+    "Thanks for your email.",
+    "We have a double room for Friday and Saturday.",
+    "The price is $90 a night, with breakfast.",
+    "You can check in after two and check out before eleven.",
+    "Best wishes,",
+    "Kate, Green Hotel"
+   ]
+  }
+ }
+}

@@ -1,0 +1,861 @@
+{
+ "unit": "a2-u08",
+ "level": "A2",
+ "titleEn": "Future: going to and will",
+ "strings": [
+  {
+   "id": "7497ebe38c",
+   "es": "Planes y futuro",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Future: going to and will"
+  },
+  {
+   "id": "998286cde7",
+   "es": "Planes con going to, predicciones y promesas con will.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "7aab2e5136",
+   "es": "ir a (planes)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "going to"
+  },
+  {
+   "id": "7553008230",
+   "es": "ir a",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "going to"
+  },
+  {
+   "id": "9197521965",
+   "es": "voy a",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "going to"
+  },
+  {
+   "id": "bbd0cdd566",
+   "es": "vamos a",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "going to"
+  },
+  {
+   "id": "254d8c1efb",
+   "es": "Voy a visitar a mi abuela.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I am going to visit my grandmother."
+  },
+  {
+   "id": "b830ca39c2",
+   "es": "auxiliar del futuro",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "will"
+  },
+  {
+   "id": "ac69da97e9",
+   "es": "Creo que va a estar divertido.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I think it will be fun."
+  },
+  {
+   "id": "2f4721bf56",
+   "es": "no + verbo en futuro",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "won't"
+  },
+  {
+   "id": "8f8413b1cc",
+   "es": "No va a venir. Está muy ocupada.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "She won't come. She is very busy."
+  },
+  {
+   "id": "e10d5578d4",
+   "es": "esta noche",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "tonight"
+  },
+  {
+   "id": "9fae61bf6d",
+   "es": "Va a estudiar esta noche.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "She is going to study tonight."
+  },
+  {
+   "id": "658a7b3f1e",
+   "es": "la semana que viene",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "next week"
+  },
+  {
+   "id": "f4b2612b54",
+   "es": "la próxima semana",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "next week"
+  },
+  {
+   "id": "d78f5353d6",
+   "es": "semana que viene",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "next week"
+  },
+  {
+   "id": "4f166d5bb1",
+   "es": "Ojalá vengas la semana que viene.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I hope you will come next week."
+  },
+  {
+   "id": "e646351b70",
+   "es": "el mes que viene",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "next month"
+  },
+  {
+   "id": "43d7e74cbf",
+   "es": "el próximo mes",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "next month"
+  },
+  {
+   "id": "46102549e3",
+   "es": "mes que viene",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "next month"
+  },
+  {
+   "id": "49c68e478d",
+   "es": "Nos vemos el mes que viene.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "We will see you next month."
+  },
+  {
+   "id": "9b4a1db57d",
+   "es": "el año que viene",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "next year"
+  },
+  {
+   "id": "1b60ab2e53",
+   "es": "el próximo año",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "next year"
+  },
+  {
+   "id": "a3f9261ed7",
+   "es": "año que viene",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "next year"
+  },
+  {
+   "id": "b1f55e93d8",
+   "es": "El año que viene vamos a viajar a España.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "We are going to travel to Spain next year."
+  },
+  {
+   "id": "5f14a26bd0",
+   "es": "pronto",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "soon"
+  },
+  {
+   "id": "3f094e18e9",
+   "es": "¡Hasta pronto!",
+   "kinds": [
+    "word.example",
+    "exercise.translation",
+    "example"
+   ],
+   "en": "See you soon!"
+  },
+  {
+   "id": "49c6b0482f",
+   "es": "más tarde",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "later"
+  },
+  {
+   "id": "48ac2dd495",
+   "es": "Te llamo más tarde.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I will call you later."
+  },
+  {
+   "id": "64879f7d6b",
+   "es": "plan",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "plan"
+  },
+  {
+   "id": "e449fcf8f8",
+   "es": "planear",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "plan"
+  },
+  {
+   "id": "bf83bc92b2",
+   "es": "¿Cuál es tu plan para el fin de semana?",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "What is your plan for the weekend?"
+  },
+  {
+   "id": "286732e6cd",
+   "es": "quizás / tal vez",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "maybe"
+  },
+  {
+   "id": "bca1c5906f",
+   "es": "quizás",
+   "kinds": [
+    "word.accepted",
+    "exercise.option",
+    "exercise.cue"
+   ],
+   "en": "maybe"
+  },
+  {
+   "id": "7689da0297",
+   "es": "tal vez",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "maybe"
+  },
+  {
+   "id": "0798120d10",
+   "es": "capaz",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "maybe"
+  },
+  {
+   "id": "55ccf19617",
+   "es": "Quizás nos mudemos el año que viene.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Maybe we will move next year."
+  },
+  {
+   "id": "e9588514ac",
+   "es": "probablemente",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "probably"
+  },
+  {
+   "id": "2a4417b380",
+   "es": "Probablemente lleguen tarde.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "They will probably arrive late."
+  },
+  {
+   "id": "284673dc01",
+   "es": "seguro / segura",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "sure"
+  },
+  {
+   "id": "b7bc7e4756",
+   "es": "seguro",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "sure"
+  },
+  {
+   "id": "22bed3883a",
+   "es": "segura",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "sure"
+  },
+  {
+   "id": "6480ba515a",
+   "es": "No estoy seguro de la fecha.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I am not sure about the date."
+  },
+  {
+   "id": "626843f1ff",
+   "es": "pensar / creer",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "think"
+  },
+  {
+   "id": "3a4e1d9e10",
+   "es": "pensar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "think"
+  },
+  {
+   "id": "d9efa28123",
+   "es": "creer",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "think"
+  },
+  {
+   "id": "5df8c31b67",
+   "es": "esperar (desear) / ojalá",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "hope"
+  },
+  {
+   "id": "ba6cac3a57",
+   "es": "ojalá",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "hope"
+  },
+  {
+   "id": "2e305924ce",
+   "es": "esperanza",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "hope"
+  },
+  {
+   "id": "ca37f95d46",
+   "es": "Ojalá puedas venir a mi fiesta.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I hope you can come to my party."
+  },
+  {
+   "id": "770eae3bd2",
+   "es": "invitar",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "invite"
+  },
+  {
+   "id": "e47c577ad5",
+   "es": "¿Vas a invitar a tus amigos?",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Are you going to invite your friends?"
+  },
+  {
+   "id": "bf4787fd99",
+   "es": "mudarse / mover",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "move"
+  },
+  {
+   "id": "601fd3a9f7",
+   "es": "mudarse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "move"
+  },
+  {
+   "id": "ff5c2cf0f1",
+   "es": "mover",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "move"
+  },
+  {
+   "id": "8654ac95fc",
+   "es": "moverse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "move"
+  },
+  {
+   "id": "5683e5cce8",
+   "es": "Nos vamos a mudar a un apartamento nuevo.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "We are going to move to a new apartment."
+  },
+  {
+   "id": "f173e195fb",
+   "es": "futuro",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "future"
+  },
+  {
+   "id": "41636f9ec3",
+   "es": "En el futuro quiero vivir en el exterior.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "In the future, I want to live abroad."
+  },
+  {
+   "id": "76b9987407",
+   "es": "decidir",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "word.accepted"
+   ],
+   "en": "decide"
+  },
+  {
+   "id": "9b96dd5169",
+   "es": "Decidí estudiar inglés todos los días.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I decided to study English every day."
+  },
+  {
+   "id": "0aa302ea56",
+   "es": "prometer / promesa",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "promise"
+  },
+  {
+   "id": "5763f2ae9d",
+   "es": "prometer",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "promise"
+  },
+  {
+   "id": "2b9af20ea7",
+   "es": "promesa",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "promise"
+  },
+  {
+   "id": "2f4f3afb20",
+   "es": "Te prometo que no voy a llegar tarde.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I promise I won't be late."
+  },
+  {
+   "id": "15a9316f95",
+   "es": "Going to: planes",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "86594e8fbd",
+   "es": "Hablar de planes con going to.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "e46ca349bc",
+   "es": "Planes: am/is/are + going to + verbo.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "to"
+  },
+  {
+   "id": "cba8c83964",
+   "es": "¿Qué significa «tonight»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "f811ef63dd",
+   "es": "Voy a cocinar esta noche.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I am going to cook tonight."
+  },
+  {
+   "id": "8a59b24f0b",
+   "es": "¿Qué vas a hacer?",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "db22fd5082",
+   "es": "Preguntas y negaciones con going to.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "1e0a2a01e2",
+   "es": "Mañana no voy a trabajar.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I'm not going to work tomorrow."
+  },
+  {
+   "id": "473b71db75",
+   "es": "¿Vas a venir a la fiesta?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Are you going to come to the party?"
+  },
+  {
+   "id": "31004622e5",
+   "es": "¿Qué significa «move»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "a966d64b71",
+   "es": "ver una película",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What are you going to do next weekend? (ver una película)"
+  },
+  {
+   "id": "c96bcd5ba4",
+   "es": "¿Qué vas a hacer el fin de semana que viene?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What are you going to do next weekend? (ver una película)"
+  },
+  {
+   "id": "6cef4ccc10",
+   "es": "Will",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "fba0137746",
+   "es": "Predicciones, decisiones del momento y promesas.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "255a6b02f4",
+   "es": "Will + verbo: predicciones (I think it will…) y decisiones del momento.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "will"
+  },
+  {
+   "id": "d64ddb1e25",
+   "es": "Suena el teléfono. — ¡Yo atiendo!",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "The phone is ringing. — I will answer it!"
+  },
+  {
+   "id": "94e4269e2e",
+   "es": "Te llamo mañana.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I will call you tomorrow."
+  },
+  {
+   "id": "d152787d9f",
+   "es": "Después de will el verbo va en forma base: will call.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "call"
+  },
+  {
+   "id": "f8742937fe",
+   "es": "¿Qué significa «think»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "f5c649041e",
+   "es": "Te ayudo.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I will help you."
+  },
+  {
+   "id": "97259ead90",
+   "es": "Quizás, seguro, pronto",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "f9d5780e47",
+   "es": "Qué tan seguro estás de lo que va a pasar.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "4bffde6d42",
+   "es": "Quizás vaya a la playa. No estoy seguro.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Maybe I will go to the beach. I am not sure."
+  },
+  {
+   "id": "9db104b874",
+   "es": "Probably va después de will: will probably arrive.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "probably"
+  },
+  {
+   "id": "9631fe74c5",
+   "es": "Ahora estoy ocupado. Te llamo más tarde.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I am busy now. I will call you later."
+  },
+  {
+   "id": "d77bf8c295",
+   "es": "Hasta pronto.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "See you soon."
+  },
+  {
+   "id": "8b1a710c60",
+   "es": "El futuro",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "5f066c1615",
+   "es": "Sueños, decisiones y promesas.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "6574b8a1f8",
+   "es": "I hope… = ojalá… / espero que…",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "hope"
+  },
+  {
+   "id": "86218d2c64",
+   "es": "¿Qué significa «promise»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "cfb72aa652",
+   "es": "¿Vas a estudiar inglés el año que viene?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Will you study English next year? (sí)"
+  },
+  {
+   "id": "5c3facdeed",
+   "es": "No voy a llegar tarde.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I won't be late."
+  },
+  {
+   "id": "63a51bb882",
+   "es": "Tus planes",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "24efa35d74",
+   "es": "Cuenta tus planes para la semana que viene (puedes inventarlos) y algo que crees que va a pasar.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "761a03e552",
+   "es": "Cuentas un plan con going to",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "5533d77be9",
+   "es": "Haces una predicción con will o won’t",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "a3968595c0",
+   "es": "Dices cuándo (next week, tomorrow, tonight, soon…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "0f9d3294f8",
+   "es": "Conté un plan con going to.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "a8d952f82c",
+   "es": "Hice una predicción con will.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "71999b2a0d",
+   "es": "Dije cuándo.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {}
+}

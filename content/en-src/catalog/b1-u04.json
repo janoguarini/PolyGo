@@ -1,0 +1,1484 @@
+{
+ "unit": "b1-u04",
+ "level": "B1",
+ "titleEn": "Plans and goals",
+ "strings": [
+  {
+   "id": "d6c9fd6f36",
+   "es": "Planes y objetivos",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Plans and goals"
+  },
+  {
+   "id": "208043e848",
+   "es": "Hablar del futuro: lo que vas a hacer, lo que ya arreglaste, lo que decides en el momento y lo que puede pasar; metas y proyectos.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "c01f61a817",
+   "es": "Puedes contar tus planes y objetivos, decir qué ya arreglaste y qué podría pasar, y hablar de proyectos a largo plazo.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "0b778279b8",
+   "es": "Formas de futuro",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "cdfa8d4ffc",
+   "es": "Going to: una intención (I am going to save money). Present continuous: algo ya arreglado, con día y hora (I am meeting Ana on Friday). Will: una decisión en el momento o una predicción (I will help you). Might: algo posible (I might go).",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "a558ca8a50",
+   "es": "El sábado me encuentro con mi hermana.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I'm meeting my sister on Saturday."
+  },
+  {
+   "id": "4d66616456",
+   "es": "Hace frío. Cierro la ventana.",
+   "kinds": [
+    "example"
+   ],
+   "en": "It's cold. I'll close the window."
+  },
+  {
+   "id": "380843e833",
+   "es": "Puede que vaya al recital.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I might go to the concert."
+  },
+  {
+   "id": "bdd14cdef8",
+   "es": "puede que / podría",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "might"
+  },
+  {
+   "id": "7c38e95076",
+   "es": "puede que",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "might"
+  },
+  {
+   "id": "61de9c9508",
+   "es": "Puede que llueva mañana.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "It might rain tomorrow."
+  },
+  {
+   "id": "c60e8ffb78",
+   "es": "objetivo / meta",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "goal"
+  },
+  {
+   "id": "dfe62c1beb",
+   "es": "objetivo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "goal"
+  },
+  {
+   "id": "ea3bd73e2b",
+   "es": "meta",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "goal"
+  },
+  {
+   "id": "b14c17159c",
+   "es": "Mi objetivo es hablar bien inglés.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "My goal is to speak English well."
+  },
+  {
+   "id": "f6739632d7",
+   "es": "lograr / alcanzar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "achieve"
+  },
+  {
+   "id": "ed7cb60185",
+   "es": "lograr",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "achieve"
+  },
+  {
+   "id": "4020b717c5",
+   "es": "alcanzar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "achieve"
+  },
+  {
+   "id": "17cd4391c8",
+   "es": "conseguir",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "achieve"
+  },
+  {
+   "id": "ad554823d7",
+   "es": "Puedes lograr tus objetivos.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "You can achieve your goals."
+  },
+  {
+   "id": "0bd376eab1",
+   "es": "ahorrar / guardar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "save"
+  },
+  {
+   "id": "38039a4821",
+   "es": "ahorrar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "save"
+  },
+  {
+   "id": "2fcad64bb1",
+   "es": "guardar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "save"
+  },
+  {
+   "id": "b29852d101",
+   "es": "Estoy ahorrando para un auto.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I am saving money for a car."
+  },
+  {
+   "id": "0219fda54b",
+   "es": "postularse a / solicitar",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "apply for"
+  },
+  {
+   "id": "db96e8a318",
+   "es": "postularse a",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "apply for"
+  },
+  {
+   "id": "4e3345f81f",
+   "es": "solicitar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "apply for"
+  },
+  {
+   "id": "c7661c2b13",
+   "es": "postularse para",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "apply for"
+  },
+  {
+   "id": "44cea8cae8",
+   "es": "Se postuló a un trabajo nuevo.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "She applied for a new job."
+  },
+  {
+   "id": "a4a670183a",
+   "es": "curso",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "course"
+  },
+  {
+   "id": "a0823ad394",
+   "es": "Estoy haciendo un curso de cocina.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I am taking a cooking course."
+  },
+  {
+   "id": "29114b2e6a",
+   "es": "turno / cita",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "appointment"
+  },
+  {
+   "id": "dc453d0c72",
+   "es": "turno",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "appointment"
+  },
+  {
+   "id": "76ba03ff49",
+   "es": "cita",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "appointment"
+  },
+  {
+   "id": "66abdbdc83",
+   "es": "Tengo turno con el médico el lunes.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I have a doctor’s appointment on Monday."
+  },
+  {
+   "id": "c3bb6c2802",
+   "es": "tener ganas de / esperar con ganas",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "look forward to"
+  },
+  {
+   "id": "a3a9c8bed2",
+   "es": "tener ganas de",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "look forward to"
+  },
+  {
+   "id": "4f059a8a53",
+   "es": "esperar con ganas",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "look forward to"
+  },
+  {
+   "id": "9335774490",
+   "es": "Tengo ganas de verte.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I look forward to seeing you."
+  },
+  {
+   "id": "b06b2843e7",
+   "es": "en el futuro",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "in the future"
+  },
+  {
+   "id": "d219fec3af",
+   "es": "Quiero vivir en el exterior en el futuro.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I want to live abroad in the future."
+  },
+  {
+   "id": "6cd31dec38",
+   "es": "algún día",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "someday"
+  },
+  {
+   "id": "0204bde3a5",
+   "es": "Algún día voy a visitar Japón.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Someday I will visit Japan."
+  },
+  {
+   "id": "60d2e985d1",
+   "es": "seguro / sin duda",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "definitely"
+  },
+  {
+   "id": "ef568495e9",
+   "es": "sin duda",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "definitely"
+  },
+  {
+   "id": "bf72cb4d18",
+   "es": "definitivamente",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "definitely"
+  },
+  {
+   "id": "5295084cb7",
+   "es": "Te llamo seguro.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I will definitely call you."
+  },
+  {
+   "id": "98dd952f5d",
+   "es": "empresa propia",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "business"
+  },
+  {
+   "id": "8b7b1b5cb6",
+   "es": "Mi tío tiene un negocio chico.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My uncle has a small business."
+  },
+  {
+   "id": "2ba8ce5a23",
+   "es": "montar / poner (un negocio)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "set up"
+  },
+  {
+   "id": "31ffa9e6f7",
+   "es": "poner",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "set up"
+  },
+  {
+   "id": "507bc52351",
+   "es": "armar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "set up"
+  },
+  {
+   "id": "5c56f16eff",
+   "es": "Montaron un negocio el año pasado.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "They set up a business last year."
+  },
+  {
+   "id": "c52eb849c6",
+   "es": "jubilarse",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "retire"
+  },
+  {
+   "id": "b28e3bc6e0",
+   "es": "Mi madre quiere jubilarse pronto.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My mother wants to retire soon."
+  },
+  {
+   "id": "4dd09b8f65",
+   "es": "paso",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "step"
+  },
+  {
+   "id": "792b3b14e3",
+   "es": "Este es el primer paso.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "This is the first step."
+  },
+  {
+   "id": "5c8b00e993",
+   "es": "casarse",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "get married"
+  },
+  {
+   "id": "33b8122cbf",
+   "es": "Se casan en junio.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "They are getting married in June."
+  },
+  {
+   "id": "66071bc374",
+   "es": "hasta (que)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "until"
+  },
+  {
+   "id": "b513bb817e",
+   "es": "hasta",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "until"
+  },
+  {
+   "id": "0c170cc299",
+   "es": "hasta que",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "until"
+  },
+  {
+   "id": "6c84635a03",
+   "es": "Voy a esperar hasta que llegues.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I will wait until you arrive."
+  },
+  {
+   "id": "6e4a2c007b",
+   "es": "Lo que ya arreglaste",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "c5bcd4708b",
+   "es": "Hablar de intenciones (going to) y de planes arreglados (present continuous).",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "d7dd93398e",
+   "es": "Going to cuenta una intención: I am going to study more. El present continuous cuenta algo ya arreglado, casi siempre con día u hora: I am meeting my sister on Saturday. Appointment es un turno (con el médico, el dentista…).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "66096a33c0",
+   "es": "Tengo turno con el médico a las diez.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I have a doctor’s appointment at ten."
+  },
+  {
+   "id": "c00b5f1f73",
+   "es": "Cuentas lo que ya arreglaste: I am meeting…, I have an appointment.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "0a50252e79",
+   "es": "Cuentas intenciones con going to.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "9f02899a47",
+   "es": "El sábado almuerzo con mi hermana. Ya está arreglado.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I am meeting my sister for lunch on Saturday. It's all arranged."
+  },
+  {
+   "id": "8d24d9db02",
+   "es": "Un plan ya arreglado, con día: present continuous.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "am meeting"
+  },
+  {
+   "id": "270ac32e9b",
+   "es": "Mañana tengo turno con el médico a las diez.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I have a doctor’s appointment at ten tomorrow."
+  },
+  {
+   "id": "bbdc47fdc7",
+   "es": "El año que viene voy a estudiar más.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Next year I am going to study more."
+  },
+  {
+   "id": "9ad79bd3da",
+   "es": "Sam y Lucy arman el fin de semana.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u4-weekend"
+  },
+  {
+   "id": "7f6066a09f",
+   "es": "¿Qué arregló Lucy para el sábado?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u4-weekend"
+  },
+  {
+   "id": "0c21917ded",
+   "es": "Almorzar con su hermana",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u4-weekend"
+  },
+  {
+   "id": "7202ef5c54",
+   "es": "Ir a un recital",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e116f1a30a",
+   "es": "Ir al médico",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b4910433ce",
+   "es": "Lucy dice: «I'm meeting my sister for lunch».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u4-weekend"
+  },
+  {
+   "id": "bc18133cc0",
+   "es": "¿Qué decide Lucy al final?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u4-weekend"
+  },
+  {
+   "id": "d498d80799",
+   "es": "Ir al recital con Sam después del almuerzo",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u4-weekend"
+  },
+  {
+   "id": "1107aedfbe",
+   "es": "Ir sola al parque",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "54977cdb00",
+   "es": "Cancelar el almuerzo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6ab5ec6921",
+   "es": "Lucy dice: «I'll come with you after lunch!».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u4-weekend"
+  },
+  {
+   "id": "4af65d3cc2",
+   "es": "El viernes que viene viajamos a España.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "We are traveling to Spain next Friday."
+  },
+  {
+   "id": "d774b19f24",
+   "es": "sí, me encuentro con Ana",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Are you doing anything tomorrow? (sí, me encuentro con Ana)"
+  },
+  {
+   "id": "bd02f8c69f",
+   "es": "¿Tienes algo mañana?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Are you doing anything tomorrow? (sí, me encuentro con Ana)"
+  },
+  {
+   "id": "5b8c6c05fc",
+   "es": "Seguro, quizás",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "c6842ef5e7",
+   "es": "Decidir en el momento con will y hablar de lo posible con might.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "8f4dbcae0a",
+   "es": "Will sirve para una decisión que tomas en el momento (I'll call you) y para predicciones (It will be fine). Might dice que algo es posible, pero no seguro: I might go. Definitely (seguro) y probably (probablemente) dicen qué tan seguro estás.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "23b33f7cdc",
+   "es": "Te llamo seguro esta noche.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I'll definitely call you tonight."
+  },
+  {
+   "id": "f82fa05c41",
+   "es": "Decides en el momento con will.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "0038e7fa7c",
+   "es": "Dices qué es posible (might) y qué es seguro (definitely).",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "73f7446b88",
+   "es": "¿Qué significa «might»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "30ee55c630",
+   "es": "tiene que",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9aae0b6aed",
+   "es": "va a",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "49495243a8",
+   "es": "Lleva un paraguas. Puede que llueva más tarde.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Take an umbrella. It might rain later."
+  },
+  {
+   "id": "043abf7192",
+   "es": "Might + verbo: algo posible, no seguro.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "might"
+  },
+  {
+   "id": "6e682c0a06",
+   "es": "Suena el teléfono. Yo atiendo.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "The phone is ringing. I will answer it."
+  },
+  {
+   "id": "88205217da",
+   "es": "Una decisión en el momento: will (I'll).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "will"
+  },
+  {
+   "id": "28b6f73079",
+   "es": "No te preocupes. Te llamo seguro.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Don't worry. I will definitely call you."
+  },
+  {
+   "id": "6e3f40fb71",
+   "es": "Todavía no estoy seguro. Puede que vaya a la fiesta.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I'm not sure yet. I might go to the party."
+  },
+  {
+   "id": "ccc79b7ca3",
+   "es": "Si no estás seguro, might: algo posible.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "might"
+  },
+  {
+   "id": "546137f28f",
+   "es": "Puede que me quede en casa esta noche.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I might stay at home tonight."
+  },
+  {
+   "id": "d022988ab7",
+   "es": "¿Vas a ir a la fiesta?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Are you going to the party? (quizás)"
+  },
+  {
+   "id": "792d8c616e",
+   "es": "Metas",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "00cffe1a3d",
+   "es": "Contar tus metas y cómo piensas lograrlas.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "eb76231a9b",
+   "es": "Para hablar de metas: My goal is to… (mi objetivo es…), achieve (lograr), the first step (el primer paso). Look forward to va con -ing o con un sustantivo: I look forward to seeing you.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "993618ea2a",
+   "es": "Cuentas una meta: My goal is to…",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "348fc7956a",
+   "es": "Dices qué esperas con ganas: I look forward to…",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "c930280a2d",
+   "es": "Look forward to + -ing (el to es una preposición).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "seeing"
+  },
+  {
+   "id": "ed9b7601bb",
+   "es": "Aprender las palabras es el primer paso.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Learning the words is the first step."
+  },
+  {
+   "id": "966426465d",
+   "es": "hablar bien inglés",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What's your goal? (hablar bien inglés)"
+  },
+  {
+   "id": "ae15325517",
+   "es": "¿Cuál es tu objetivo?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What's your goal? (hablar bien inglés)"
+  },
+  {
+   "id": "06c1fb9363",
+   "es": "Proyectos de vida",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "d2730dd01f",
+   "es": "Hablar de grandes proyectos: estudiar, ahorrar, montar un negocio, casarse, jubilarse.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "85952b488a",
+   "es": "Proyectos frecuentes: save money (ahorrar), apply for a course or a job (postularse), set up a business (montar un negocio), get married (casarse), retire (jubilarse). Se combinan con going to y con el present perfect continuous: I have been saving for two years.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "5159af40b0",
+   "es": "Voy a montar mi propio negocio.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I'm going to set up my own business."
+  },
+  {
+   "id": "cf7fd05540",
+   "es": "Cuentas proyectos de vida con going to.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "9e13ce3eae",
+   "es": "Usas apply for, set up, save, get married y retire.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "d227cf8f8f",
+   "es": "Me voy a postular a un trabajo en una empresa grande.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I'm going to apply for a job in a big company."
+  },
+  {
+   "id": "2c05017652",
+   "es": "Quieren montar un negocio chico.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "They want to set up a small business."
+  },
+  {
+   "id": "1c745843b2",
+   "es": "Pedro le cuenta a Mia su proyecto.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u4-cafe"
+  },
+  {
+   "id": "a432d817e8",
+   "es": "Pedro",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b1-u4-cafe"
+  },
+  {
+   "id": "cf7a0d127c",
+   "es": "¿Qué proyecto tiene Pedro?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u4-cafe"
+  },
+  {
+   "id": "589a23e3c0",
+   "es": "Abrir un cafe cerca de la universidad",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u4-cafe"
+  },
+  {
+   "id": "d4b8cf00aa",
+   "es": "Estudiar en la universidad",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "46bf0b2c52",
+   "es": "Trabajar en un cafe",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "65f807bdfa",
+   "es": "Viajar al exterior",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4c0e754de9",
+   "es": "Pedro dice: «I'm going to set up my own business. A small cafe near the university».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u4-cafe"
+  },
+  {
+   "id": "4af7a869e3",
+   "es": "¿Cuándo va a abrir el cafe?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u4-cafe"
+  },
+  {
+   "id": "343f68b138",
+   "es": "Apenas tenga suficiente dinero",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u4-cafe"
+  },
+  {
+   "id": "99d61f7f1e",
+   "es": "El año que viene",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0cf1975452",
+   "es": "En dos años",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2993b52258",
+   "es": "Cuando termine de estudiar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7a6a2c622d",
+   "es": "Pedro dice: «As soon as I have enough money. I've been saving for two years».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u4-cafe"
+  },
+  {
+   "id": "8f30bcd144",
+   "es": "Ana comparte sus objetivos para el año que viene.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u4-goals"
+  },
+  {
+   "id": "8d60b19652",
+   "es": "¿Para qué va a ahorrar Ana?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u4-goals"
+  },
+  {
+   "id": "0876bb3caf",
+   "es": "Para un viaje a Japón",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u4-goals"
+  },
+  {
+   "id": "8a6af13785",
+   "es": "Para un curso en Londres",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c33ffea7a2",
+   "es": "Para un auto",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "837c505073",
+   "es": "Para un apartamento",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e7dd9f7aa2",
+   "es": "Ana escribe: «I am going to save money for a trip to Japan».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u4-goals"
+  },
+  {
+   "id": "70a589e003",
+   "es": "Mi madre quiere jubilarse el año que viene.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "My mother wants to retire next year."
+  },
+  {
+   "id": "49d0fe6474",
+   "es": "Cuando termine…",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "1f420eff2e",
+   "es": "Hablar de lo que vas a hacer después de otra cosa: when, as soon as, until + presente.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "a14fe32f3d",
+   "es": "Después de when, as soon as, before, after y until, el futuro va en PRESENTE: When I finish the course, I will look for a job (no «when I will finish»). Until es «hasta (que)».",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "3ce3bfc9da",
+   "es": "Cuando termine el curso, voy a buscar trabajo.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "When I finish the course, I will look for a job."
+  },
+  {
+   "id": "b39471f068",
+   "es": "Usas el presente después de when, as soon as y until para hablar del futuro.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "e3873a7714",
+   "es": "Escribes un pedido formal: I would like to apply for…",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "3ea5d0a68f",
+   "es": "Después de when, el futuro va en presente: when I finish.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "finish"
+  },
+  {
+   "id": "c90c52e07a",
+   "es": "Te llamo apenas llegue a casa.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I'll call you as soon as I get home."
+  },
+  {
+   "id": "91172c04b3",
+   "es": "Kate escribe a una escuela de idiomas.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u4-course"
+  },
+  {
+   "id": "993ed380a1",
+   "es": "¿Por qué quiere Kate hacer el curso?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u4-course"
+  },
+  {
+   "id": "7e788565f5",
+   "es": "Quiere trabajar en el exterior en el futuro",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u4-course"
+  },
+  {
+   "id": "4a312e213e",
+   "es": "Quiere ser profesora",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "26acb80931",
+   "es": "Necesita un trabajo de enfermera",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0a2c554b56",
+   "es": "Va a jubilarse",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "220786d501",
+   "es": "Kate escribe: «my goal is to work abroad in the future».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u4-course"
+  },
+  {
+   "id": "78fb051a74",
+   "es": "¿Cuándo está libre Kate?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u4-course"
+  },
+  {
+   "id": "47a82837f7",
+   "es": "De julio a septiembre",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u4-course"
+  },
+  {
+   "id": "3af316a4b6",
+   "es": "Todo el año",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ac885698b5",
+   "es": "Sólo en julio",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "215d0b8e8b",
+   "es": "Desde septiembre",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "15d8a5d574",
+   "es": "Kate escribe: «I am free from July until September».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u4-course"
+  },
+  {
+   "id": "4fd27bc996",
+   "es": "Quisiera postularme al curso.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I would like to apply for the course."
+  },
+  {
+   "id": "84ff259fb0",
+   "es": "buscar trabajo",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What will you do when you finish school? (buscar trabajo)"
+  },
+  {
+   "id": "446e7cc454",
+   "es": "¿Qué vas a hacer cuando termines la escuela?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What will you do when you finish school? (buscar trabajo)"
+  },
+  {
+   "id": "839e3f9268",
+   "es": "Cuando termine el curso, voy a viajar.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "When I finish the course, I will travel."
+  },
+  {
+   "id": "3c034833a3",
+   "es": "Tus objetivos",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "bf5667114f",
+   "es": "Escribe tus objetivos para el año que viene: qué vas a hacer, qué podría pasar y qué vas a hacer cuando termines algo.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "521576033c",
+   "es": "Cuentas una intención con going to",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "a2b35f1d2d",
+   "es": "Cuentas algo posible con might",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "43e4e88fe3",
+   "es": "Usas when / as soon as + presente y will",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "ba4d54f1a8",
+   "es": "Conté una intención con going to.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "e8e332534c",
+   "es": "Usé might para algo posible.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "95075a18ec",
+   "es": "Usé when + presente.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "6c6943c33d",
+   "es": "Tu vida hasta ahora y tus planes",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "58c5f26254",
+   "es": "Escribe un texto sobre ti: algo que hiciste en tu vida, algo que vienes haciendo últimamente, una anécdota corta y tus planes para el futuro.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "6e89677e5b",
+   "es": "¿Usaste el present perfect?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "23664e7d0c",
+   "es": "¿Contaste algo que vienes haciendo (have been + -ing)?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "f206b06572",
+   "es": "¿Contaste tus planes (going to, will, might)?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "cdc7957e33",
+   "es": "Conté experiencias con el present perfect.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "c6bc974321",
+   "es": "Conté algo que vengo haciendo.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "8f50d8cc33",
+   "es": "Incluí una anécdota y mis planes.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.b1-u4-weekend": {
+   "setting": "Sam y Lucy arman el fin de semana.",
+   "lines": [
+    "Sam: Are you doing anything on Saturday?",
+    "Lucy: I'm meeting my sister for lunch. Why?",
+    "Sam: There's a concert in the park. I'm going in the evening.",
+    "Lucy: Sounds great. I'll come with you after lunch!"
+   ]
+  },
+  "en.stim.b1-u4-cafe": {
+   "setting": "Pedro le cuenta a Mia su proyecto.",
+   "lines": [
+    "Mia: What are your plans for the future?",
+    "Pedro: I'm going to set up my own business. A small cafe near the university.",
+    "Mia: Wow! When are you going to open it?",
+    "Pedro: As soon as I have enough money. I've been saving for two years.",
+    "Mia: I'm sure you'll achieve it."
+   ]
+  },
+  "en.stim.b1-u4-goals": {
+   "setting": "Ana comparte sus objetivos para el año que viene.",
+   "lines": [
+    "My goals for next year:",
+    "I am going to save money for a trip to Japan.",
+    "I want to apply for an English course in London.",
+    "I will probably change jobs, but I am not sure yet.",
+    "I might also take up running. One step at a time!"
+   ]
+  },
+  "en.stim.b1-u4-course": {
+   "setting": "Kate escribe a una escuela de idiomas.",
+   "lines": [
+    "Dear Sir or Madam,",
+    "I would like to apply for the summer English course.",
+    "I am a nurse, and my goal is to work abroad in the future.",
+    "I am free from July until September.",
+    "I look forward to hearing from you.",
+    "Best wishes, Kate Brown"
+   ]
+  }
+ }
+}

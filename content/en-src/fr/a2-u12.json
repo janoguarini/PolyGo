@@ -1,0 +1,187 @@
+{
+  "unit": "a2-u12",
+  "strings": {
+    "4f37915cec": "Expériences de vie",
+    "57d6e4eb01": "Ce que tu as déjà fait : have you ever…?, already, yet et just.",
+    "8420e9b03c": "déjà / un jour (expérience)",
+    "aa6934ecf4": "Tu es déjà allé au Mexique ?",
+    "dc6ad0e70a": "été / allé (be)",
+    "2e7f8e8c72": "été",
+    "0bd7668e29": "allé",
+    "66959b88c0": "Je suis allé en Espagne deux fois.",
+    "ec10868a03": "vu (see)",
+    "179077dedb": "vu",
+    "506e0ca10a": "Elle a vu ce film trois fois.",
+    "0b472e916e": "fait (do)",
+    "e3dc8f246e": "fait",
+    "27cef37733": "J’ai fait mes devoirs.",
+    "1b9f12db2c": "mangé (eat)",
+    "ca02844258": "mangé",
+    "10fb04eaa5": "Tu as déjà mangé des sushis ?",
+    "6604bcc464": "ne… pas + participe (I, you, we, they)",
+    "6faaae1cb1": "Je n’ai pas encore mangé.",
+    "10b1a7f773": "ne… pas + participe (he, she, it)",
+    "468af99099": "Il n’a pas encore appelé.",
+    "6663103a3e": "déjà",
+    "aca03b3730": "J’ai déjà fini. On y va !",
+    "334374d99c": "pas encore / déjà (dans les questions)",
+    "3507791f4a": "pas encore",
+    "1966dc7f30": "Tu as déjà fait tes devoirs ?",
+    "6235543d7c": "venir de / tout juste",
+    "98103f9959": "tout juste",
+    "cbb2cf0755": "venir de",
+    "b2b6abf016": "vient de",
+    "1d064ef40e": "Elle vient d’arriver.",
+    "fd44175327": "récemment / dernièrement",
+    "1ab067826c": "dernièrement",
+    "58d2998b5b": "il y a peu",
+    "750e3b36c3": "récemment",
+    "8f93d7ce63": "Tu as vu de bons films récemment ?",
+    "e30a9aff55": "deux fois",
+    "d4c028ac38": "fois",
+    "102619278c": "Combien de fois tu es allé en Espagne ?",
+    "b61e6288bd": "expérience",
+    "2bae73a247": "C’était la meilleure expérience de ma vie.",
+    "d036968052": "vie",
+    "b028f3d4e3": "C’était le meilleur jour de ma vie.",
+    "cb9c245f6c": "monde",
+    "dcd184e789": "Mon rêve, c’est de voyager à travers le monde.",
+    "cacf292666": "célèbre / connu",
+    "71ff5fad81": "célèbre",
+    "a121ece34f": "connue",
+    "54fc49ba20": "Tu as déjà rencontré une personne célèbre ?",
+    "05ddb39bd2": "rêve / rêver",
+    "2ffbe0e5c9": "rêve",
+    "24d6f7fdeb": "rêver",
+    "5c2df198ed": "incroyable / génial",
+    "b94f105936": "incroyable",
+    "3d2e93b307": "génial",
+    "cae248db6b": "étonnant",
+    "ea7e59bb59": "C’était un voyage incroyable !",
+    "a5a512d9f0": "dangereux / dangereuse",
+    "615144215d": "dangereux",
+    "4ea8450224": "dangereuse",
+    "20e43bfb6a": "Conduire vite, c’est dangereux.",
+    "ee9371bc29": "Have you ever…?",
+    "d99e631e53": "Poser des questions sur les expériences de la vie.",
+    "7da7292f04": "Have you ever + participe = « tu as déjà… ? ». Ça sert pour les expériences de la vie, sans dire quand. Attention : le passé composé ressemble au present perfect, mais avec un moment précis, l’anglais utilise le prétérit : « Hier, j’ai mangé » = Yesterday I ate.",
+    "85a7f972d8": "Have been to = être allé à / en (un lieu).",
+    "71911eb47e": "Que veut dire « ever » ?",
+    "8404f5828e": "Tu es déjà allé en Angleterre ?",
+    "cd8cd1e7a9": "Tu es déjà allé en Argentine ?",
+    "7229c4dfde": "Les participes",
+    "2551e6d31a": "been, seen, done, eaten et met.",
+    "f888706067": "Have + participe : eat → ate (passé) → eaten (participe).",
+    "9c9a7a3611": "Il n’a jamais rencontré de personne célèbre.",
+    "b4a4b38579": "Beaucoup de verbes irréguliers ont un participe identique au passé : meet → met → met.",
+    "9a50b244ac": "Nous sommes allés une fois dans ce restaurant.",
+    "3b9a688d8a": "Déjà, pas encore, venir de",
+    "f34218a800": "already, yet, just et recently.",
+    "87807a08de": "Already (déjà) se place entre have et le participe.",
+    "e8df193bc3": "Yet se place à la fin : dans les phrases négatives (pas encore) et dans les questions (… déjà ?).",
+    "37c1cb6376": "Elle vient d’arriver. Elle est ici maintenant.",
+    "38a4a938e7": "Que veut dire « already » ?",
+    "c35cb08faf": "Je l’ai déjà fait.",
+    "13631d406a": "Une fois, deux fois",
+    "ec6197f83e": "Dire combien de fois tu as fait quelque chose.",
+    "dda766d0d0": "Que veut dire « twice » ?",
+    "0b6396df64": "une fois",
+    "cf0fa83bb2": "Je suis allé au Brésil une fois.",
+    "327e14997b": "Une fois = once ; deux fois = twice ; trois fois = three times.",
+    "ef03dfc63c": "Elle a vu le film trois fois.",
+    "bb55fcf9d1": "Combien de fois tu es allé à la plage ?",
+    "d6cec9f43d": "Je n’ai jamais vu de personne célèbre.",
+    "a7dff2fcdf": "Rêves, voyages et la meilleure chose qui te soit arrivée.",
+    "51a430e21e": "Que veut dire « world » ?",
+    "c32bc1c4a2": "Je ne suis jamais allé en Angleterre.",
+    "44734d372f": "Tes expériences",
+    "c3991e890a": "Raconte deux choses que tu as déjà faites et une que tu n’as jamais faite (tu peux les inventer).",
+    "936aa468f9": "Tu utilises have + participe (I have been, I’ve seen…)",
+    "28ecf25b00": "Tu dis quelque chose que tu n’as jamais fait (I have never… / I haven’t…)",
+    "6bb083dbc8": "J’ai raconté des expériences avec have + participe.",
+    "c3008063bc": "J’ai dit quelque chose que je n’ai jamais fait.",
+    "5d1e8f8658": "J’ai utilisé ever, never ou twice.",
+    "ecb1ca4227": "Un e-mail avec des nouvelles",
+    "6a11b177f2": "Écris un e-mail à un ami avec tes nouvelles : ce que tu fais en ce moment, ce que tu vas faire bientôt et quelque chose que tu as déjà fait.",
+    "b57bd3727a": "Tu as raconté ce que tu fais en ce moment (am/is/are + -ing) ?",
+    "90f978368d": "Tu as raconté un projet (going to / will) ?",
+    "46bdd3fbc6": "Tu as utilisé have + participe ?",
+    "0acc33b5ce": "J’ai raconté ce que je fais en ce moment.",
+    "8791ba41ac": "J’ai raconté un projet.",
+    "29065499ec": "J’ai raconté quelque chose que j’ai déjà fait."
+  },
+  "accepted": {
+    "ever": [
+      "déjà",
+      "un jour",
+      "jamais"
+    ],
+    "been": [
+      "été",
+      "allé"
+    ],
+    "seen": [
+      "vu"
+    ],
+    "done": [
+      "fait"
+    ],
+    "eaten": [
+      "mangé"
+    ],
+    "already": [
+      "déjà"
+    ],
+    "yet": [
+      "pas encore",
+      "déjà",
+      "encore"
+    ],
+    "just": [
+      "venir de",
+      "vient de",
+      "tout juste",
+      "juste"
+    ],
+    "recently": [
+      "récemment",
+      "dernièrement",
+      "il y a peu"
+    ],
+    "twice": [
+      "deux fois"
+    ],
+    "times": [
+      "fois"
+    ],
+    "experience": [
+      "expérience"
+    ],
+    "life": [
+      "vie"
+    ],
+    "world": [
+      "monde"
+    ],
+    "famous": [
+      "célèbre",
+      "connu",
+      "connue"
+    ],
+    "dream": [
+      "rêve",
+      "rêver"
+    ],
+    "amazing": [
+      "incroyable",
+      "génial",
+      "étonnant",
+      "extraordinaire"
+    ],
+    "dangerous": [
+      "dangereux",
+      "dangereuse"
+    ]
+  },
+  "notes": "1) Trampa clave: el passé composé (avoir/être + participe) se parece al present perfect, pero se usa también para el pasado terminado. La explicación 7da7292f04 se amplió con esa advertencia («Hier, j’ai mangé» = Yesterday I ate). Para las experiencias, el francés natural es «Tu es déjà allé… ?», «Je ne suis jamais allé…», que lleva bien a have + participio; donde el español usa pretérito simple («Estuve en España dos veces», «Hice la tarea») el francés ya usa passé composé, así que no hubo que forzar nada. 2) ever y already son ambos «déjà» en francés: ever → «déjà / un jour (expérience)» y already → «déjà», para que las opciones sigan distintas. 3) just: «recién» (rioplatense) → «tout juste»; la traducción principal es «venir de» («Elle vient d’arriver»). 4) famous: «famoso / famosa» → «célèbre / connu»; las aceptadas → «célèbre», «connue». 5) 8f93d7ce63: el inglés dice «any good movies» (plural) → «de bons films». 6) Fuente: los en de 8404f5828e «Have you ever been to England? (no)» y bb55fcf9d1 «… (dos veces)» llevan anotaciones en español dentro del inglés (la cue «dos veces» → «deux fois»). 4f37915cec es a la vez unit.title y lesson.title. Se mantuvieron los lugares (Mexique, Espagne, Brésil, Argentine)."
+}

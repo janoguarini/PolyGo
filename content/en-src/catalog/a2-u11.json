@@ -1,0 +1,735 @@
+{
+ "unit": "a2-u11",
+ "level": "A2",
+ "titleEn": "Weather and seasons",
+ "strings": [
+  {
+   "id": "30ecf0c72d",
+   "es": "El clima y las estaciones",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Weather and seasons"
+  },
+  {
+   "id": "8696ae6125",
+   "es": "Cómo está el tiempo, frío y calor, las estaciones y el pronóstico.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "f386dfbe60",
+   "es": "tiempo (clima)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "weather"
+  },
+  {
+   "id": "74db6eaea6",
+   "es": "clima",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "weather"
+  },
+  {
+   "id": "90f34221d3",
+   "es": "¿Cómo está el tiempo hoy?",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "What's the weather like today?"
+  },
+  {
+   "id": "8db59feb4d",
+   "es": "sol",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "sun"
+  },
+  {
+   "id": "4047f11b26",
+   "es": "Hoy no hay sol.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "There is no sun today."
+  },
+  {
+   "id": "fd4fecd90e",
+   "es": "soleado",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "sunny"
+  },
+  {
+   "id": "e51dce67ff",
+   "es": "soleada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "sunny"
+  },
+  {
+   "id": "eb274800a2",
+   "es": "con sol",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "sunny"
+  },
+  {
+   "id": "a931165fb9",
+   "es": "Hoy hace sol.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "It is sunny today."
+  },
+  {
+   "id": "b952b8f2e4",
+   "es": "lluvia / llover",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "rain"
+  },
+  {
+   "id": "61e9b538f9",
+   "es": "lluvia",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "rain"
+  },
+  {
+   "id": "e96fbc2df1",
+   "es": "llover",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "rain"
+  },
+  {
+   "id": "2c8a681b29",
+   "es": "Está lloviendo. Lleva un paraguas.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "It is raining. Take an umbrella."
+  },
+  {
+   "id": "0191cafdfc",
+   "es": "nublado",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "cloudy"
+  },
+  {
+   "id": "865105b8fd",
+   "es": "nublada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "cloudy"
+  },
+  {
+   "id": "82fb78ffb5",
+   "es": "Hoy está nublado.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "It is cloudy today."
+  },
+  {
+   "id": "f8bd071697",
+   "es": "ventoso",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "windy"
+  },
+  {
+   "id": "4fa365fb58",
+   "es": "con viento",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "windy"
+  },
+  {
+   "id": "e423a2e22d",
+   "es": "ventosa",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "windy"
+  },
+  {
+   "id": "27da4f314c",
+   "es": "Hace frío y hay viento.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "It is cold and windy."
+  },
+  {
+   "id": "81f81eb2e3",
+   "es": "nieve / nevar",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "snow"
+  },
+  {
+   "id": "158ebdd116",
+   "es": "nieve",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "snow"
+  },
+  {
+   "id": "f2d6de36d7",
+   "es": "nevar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "snow"
+  },
+  {
+   "id": "275ef3cb80",
+   "es": "Aquí nieva mucho en invierno.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "It snows a lot in winter here."
+  },
+  {
+   "id": "33be749e95",
+   "es": "tormenta",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "storm"
+  },
+  {
+   "id": "debc93a194",
+   "es": "Anoche hubo una gran tormenta.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "There was a big storm last night."
+  },
+  {
+   "id": "cdc0b78149",
+   "es": "cielo",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "sky"
+  },
+  {
+   "id": "6114c97586",
+   "es": "Hoy el cielo está muy azul.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "The sky is very blue today."
+  },
+  {
+   "id": "1aad41df28",
+   "es": "frío / fría",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "cold"
+  },
+  {
+   "id": "fa54a38a73",
+   "es": "frío",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "cold"
+  },
+  {
+   "id": "57424dfbe6",
+   "es": "fría",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "cold"
+  },
+  {
+   "id": "e209319f9f",
+   "es": "Hace mucho frío. Ponte la chaqueta.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "It is very cold. Put on your jacket."
+  },
+  {
+   "id": "d193ce5f28",
+   "es": "caluroso / caliente",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "hot"
+  },
+  {
+   "id": "bd1eec4a7d",
+   "es": "calor",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "hot"
+  },
+  {
+   "id": "8bd3ae2dfa",
+   "es": "caliente",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "hot"
+  },
+  {
+   "id": "cf4ccfb2bb",
+   "es": "caluroso",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "hot"
+  },
+  {
+   "id": "efe1af866a",
+   "es": "calurosa",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "hot"
+  },
+  {
+   "id": "3d3b890e30",
+   "es": "En verano hace mucho calor.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "It is very hot in summer."
+  },
+  {
+   "id": "66551729df",
+   "es": "templado / cálido",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "warm"
+  },
+  {
+   "id": "b1288d70db",
+   "es": "templado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "warm"
+  },
+  {
+   "id": "c499744d81",
+   "es": "cálido",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "warm"
+  },
+  {
+   "id": "c522489a8d",
+   "es": "cálida",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "warm"
+  },
+  {
+   "id": "e3c5da0682",
+   "es": "tibio",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "warm"
+  },
+  {
+   "id": "f82741289b",
+   "es": "La semana que viene va a estar templado.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The weather will be warm next week."
+  },
+  {
+   "id": "a1083493cf",
+   "es": "grado",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "degree"
+  },
+  {
+   "id": "4353d29998",
+   "es": "grados",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "degree"
+  },
+  {
+   "id": "7c76571dc9",
+   "es": "¡Hoy hace 30 grados!",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "It is 30 degrees today!"
+  },
+  {
+   "id": "e1534634f2",
+   "es": "paraguas",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "umbrella"
+  },
+  {
+   "id": "2954fdc91b",
+   "es": "Lleva un paraguas.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Take an umbrella."
+  },
+  {
+   "id": "251f80756d",
+   "es": "estación (del año)",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "season"
+  },
+  {
+   "id": "b9e06f6279",
+   "es": "Mi estación favorita es la primavera.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "My favorite season is spring."
+  },
+  {
+   "id": "a62ee5ab3e",
+   "es": "primavera",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "spring"
+  },
+  {
+   "id": "22cf3c54a0",
+   "es": "Me encanta la primavera.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I love spring."
+  },
+  {
+   "id": "50a35e862d",
+   "es": "verano",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "summer"
+  },
+  {
+   "id": "293b2033c4",
+   "es": "otoño",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "fall"
+  },
+  {
+   "id": "9326dad171",
+   "es": "Me encanta el otoño.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I love the fall."
+  },
+  {
+   "id": "25cab50dac",
+   "es": "invierno",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "winter"
+  },
+  {
+   "id": "870bc1e120",
+   "es": "En invierno hace frío.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "It is cold in winter."
+  },
+  {
+   "id": "777032213b",
+   "es": "En Argentina, julio es un mes frío.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "In Argentina, July is a cold month."
+  },
+  {
+   "id": "df1c3efc33",
+   "es": "¿Qué tiempo hace?",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "ef19e08bf2",
+   "es": "Sol, nubes y lluvia.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "a06db5e63a",
+   "es": "What's the weather like? = ¿Cómo está el tiempo?",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "weather"
+  },
+  {
+   "id": "e446e366a7",
+   "es": "Hoy está nublado. Hay muchas nubes.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "It is cloudy today. There are a lot of clouds."
+  },
+  {
+   "id": "8f0b111d57",
+   "es": "Frío y calor",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "4bd0594939",
+   "es": "La temperatura y cómo te sientes.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "1f042ea785",
+   "es": "Ponte la chaqueta. Hace mucho frío.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Put on your jacket. It is very cold."
+  },
+  {
+   "id": "1e9c5a50e3",
+   "es": "Para el clima se usa it is: it is cold = hace frío.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "cold"
+  },
+  {
+   "id": "08079639eb",
+   "es": "Tengo calor. ¿Puedo abrir la ventana?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I am hot. Can I open the window?"
+  },
+  {
+   "id": "7a3d4fdbc9",
+   "es": "Tener calor = be hot (I am hot). Tener frío = be cold.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "hot"
+  },
+  {
+   "id": "8b3460d1b7",
+   "es": "¿Qué significa «warm»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "5e02f3faf8",
+   "es": "Tengo frío.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I am cold."
+  },
+  {
+   "id": "473c39fb2b",
+   "es": "Lluvia, nieve y tormenta",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "d06720ec58",
+   "es": "El mal tiempo.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "8f235ca51a",
+   "es": "Llover = rain. Está lloviendo = it is raining.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "raining"
+  },
+  {
+   "id": "4f6e6d1144",
+   "es": "Las estaciones",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "b3adeb8223",
+   "es": "Primavera, verano, otoño e invierno.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "9a256957c0",
+   "es": "Con las estaciones se usa in: in summer.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "summer"
+  },
+  {
+   "id": "8d651f653f",
+   "es": "¿Qué significa «winter»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "e83664255c",
+   "es": "summer",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What is your favorite season? (summer)"
+  },
+  {
+   "id": "35c3176145",
+   "es": "¿Cuál es tu estación favorita?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What is your favorite season? (summer)"
+  },
+  {
+   "id": "abe2a8c58a",
+   "es": "El pronóstico",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "69c29adfff",
+   "es": "El tiempo que hizo y el que va a hacer.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "0380f5dcee",
+   "es": "Mañana va a estar soleado.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "It will be sunny tomorrow, with a lot of sun."
+  },
+  {
+   "id": "d01d162c6a",
+   "es": "Hoy no hay sol. Está nublado.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "There is no sun today. It is cloudy."
+  },
+  {
+   "id": "1f6ec8752d",
+   "es": "Ayer llovió todo el día.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Yesterday it rained all day."
+  },
+  {
+   "id": "91f7a67ad8",
+   "es": "hace frío",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What's the weather like today? (hace frío)"
+  },
+  {
+   "id": "86bf3099f5",
+   "es": "Mañana va a llover.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "It will rain tomorrow."
+  }
+ ],
+ "stimuli": {}
+}

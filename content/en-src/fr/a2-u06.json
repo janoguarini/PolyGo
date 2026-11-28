@@ -1,0 +1,163 @@
+{
+ "unit": "a2-u06",
+ "strings": {
+  "3731844095": "« a » va avec un seul vêtement : a jacket. Shoes, pants et clothes sont au pluriel (en français on dit « un pantalon », mais en anglais pants est toujours au pluriel).",
+  "4216428381": "Je peux essayer cette chemise ?",
+  "aa7d4e33b6": "Vêtements et shopping",
+  "7506f423d5": "Les vêtements, les tailles, les prix et comment payer.",
+  "019e93ad37": "vêtements",
+  "88fa353482": "Il porte toujours des vêtements noirs.",
+  "d9b7f7bc1c": "tee-shirt",
+  "17bc7e94b3": "",
+  "4ca3386d7f": "",
+  "af30b56856": "Je me suis acheté un tee-shirt pas cher.",
+  "4a3fd2fd07": "chemise",
+  "9c22fb9218": "J’aime bien ta chemise.",
+  "3e15c11478": "pantalon",
+  "b9a352a319": "",
+  "2adbb22197": "Aujourd’hui, je porte un pantalon blanc.",
+  "7faa0110ef": "robe",
+  "b0a2739273": "Elle porte une robe bleue.",
+  "215e563b87": "jupe",
+  "b0d42c9fdf": "",
+  "4efbadd1ca": "",
+  "a9dda96599": "Elle porte une jupe verte.",
+  "308c058318": "chaussures",
+  "8867f47e4d": "souliers",
+  "1b152d94eb": "Ces chaussures sont neuves.",
+  "38dc2ff198": "veste",
+  "9accfb3823": "blouson",
+  "b67fceff2e": "",
+  "171fdff6be": "Je porte ma nouvelle veste.",
+  "1a2c6e819d": "chapeau / bonnet",
+  "a1ef919687": "chapeau",
+  "33c0b9ae4a": "bonnet",
+  "2dc56434dc": "casquette",
+  "057bb7fec8": "J’aime bien ton chapeau.",
+  "0a22b395dd": "porter (des vêtements)",
+  "11b62529c7": "porter",
+  "2132eda4a1": "avoir sur soi",
+  "cdd92c4173": "être habillé en",
+  "2750fe6450": "s’habiller",
+  "3e2c95bdfb": "Je porte une veste rouge.",
+  "4243a15771": "taille / grandeur",
+  "3d5070a08f": "pointure",
+  "7fd42368b7": "grandeur",
+  "48c96bd517": "taille",
+  "4785705382": "pointure / grandeur",
+  "4702e331ba": "Vous faites quelle taille ?",
+  "4352d11792": "Le prix est de dix dollars.",
+  "28358b3b23": "pas cher / pas chère",
+  "397737c5fe": "bon marché",
+  "3679f37b9f": "Ce tee-shirt n’est vraiment pas cher.",
+  "ad3cc1d1ee": "cher / chère",
+  "f61f5c5e22": "chère",
+  "85af8692d8": "Cette veste est très chère.",
+  "37e4f313e9": "acheter",
+  "34cb6a6b36": "Je veux acheter ces chaussures.",
+  "60bb0d14da": "payer",
+  "8e0f1b0d23": "Je peux payer par carte ?",
+  "bd6835f399": "fric",
+  "a933652a32": "argent",
+  "07c4302e50": "Je n’ai pas d’argent.",
+  "d772e6e649": "essayer (un vêtement)",
+  "4a5fd17708": "essayer",
+  "78984d52ad": "carte",
+  "eedcc32175": "espèces",
+  "7edfcb6405": "en espèces",
+  "2c951af1f7": "J’ai payé en espèces.",
+  "3a283c9c0e": "Les vêtements",
+  "0ef9781c11": "Les vêtements de tous les jours.",
+  "a67411fd41": "Qu’est-ce que tu portes ?",
+  "2993ef84a3": "Wear : porter des vêtements d’habitude ou en ce moment.",
+  "4b10a8cadc": "Que veut dire « clothes » ?",
+  "b771de6c9c": "tissu",
+  "1a2cf43c39": "Shoes et pants sont au pluriel en anglais : these shoes are…",
+  "cd2a8bfe8a": "Elle porte une jupe verte.",
+  "68fefd852b": "Au magasin",
+  "8eb6afb1ac": "Demander une taille et essayer des vêtements.",
+  "d228e91e6a": "Essayer un vêtement = try on.",
+  "00eea86339": "Vous faites quelle taille ? Du M.",
+  "ba03e492d1": "Que veut dire « size » ?",
+  "024186f8bd": "C’est très petit. Vous avez une taille plus grande ?",
+  "6738e27ab3": "je cherche une veste",
+  "aaa081fa52": "Je peux vous aider ?",
+  "7ab79ade3b": "Vous avez cette robe en rouge ?",
+  "5283d25435": "Cher ou pas cher",
+  "e807d6150f": "Demander et commenter les prix.",
+  "eda106556d": "Que veut dire « cheap » ?",
+  "643d5c9ac9": "Cette veste est très chère. Elle coûte 500 dollars !",
+  "a761ad3316": "Combien coûtent ces chaussures ?",
+  "d56c0b86d0": "How much is + une seule chose ; how much are + plusieurs (these shoes).",
+  "781f4f8279": "C’est très cher.",
+  "3acaa7d088": "Payer",
+  "0e1e1e4ba1": "Par carte ou en espèces.",
+  "274810e156": "Payer par carte = pay by card ; en espèces = pay in cash.",
+  "5aff65ce94": "En espèces ou par carte ?",
+  "ddad19e3db": "Je peux payer en espèces ?",
+  "69c698d124": "Un voyage et des achats",
+  "d89f303837": "Écris un message à un ami sur un voyage (vrai ou inventé) : où tu es allé, comment tu as voyagé, ce que tu as fait et ce que tu as acheté.",
+  "3094ed1839": "Tu as utilisé des verbes au passé ?",
+  "5cd439190a": "Tu as dit comment tu as voyagé (by…) ?",
+  "c7d63d07a7": "Tu as raconté ce que tu as acheté ?",
+  "41184ff66b": "Tu as écrit au moins 4 phrases ?",
+  "c774fb1c2a": "J’ai raconté où je suis allé et comment j’ai voyagé.",
+  "d0ed33224d": "J’ai raconté ce que j’ai acheté."
+ },
+ "accepted": {
+  "T-shirt": [
+   "t-shirt",
+   "maillot"
+  ],
+  "clothes": [
+   "habits",
+   "fringues"
+  ],
+  "shoes": [
+   "souliers"
+  ],
+  "jacket": [
+   "blouson"
+  ],
+  "hat": [
+   "chapeau",
+   "bonnet",
+   "casquette"
+  ],
+  "wear": [
+   "porter",
+   "avoir sur soi",
+   "être habillé en",
+   "s’habiller"
+  ],
+  "size": [
+   "taille",
+   "pointure",
+   "grandeur"
+  ],
+  "cheap": [
+   "bon marché",
+   "pas chère"
+  ],
+  "expensive": [
+   "chère"
+  ],
+  "money": [
+   "fric",
+   "sous"
+  ],
+  "try on": [
+   "essayer"
+  ],
+  "card": [
+   "carte bancaire",
+   "carte bleue"
+  ],
+  "cash": [
+   "en espèces",
+   "liquide",
+   "en liquide"
+  ]
+ },
+ "notes": "1) Variantes solo hispanas vacías: playera, remera (T-shirt), pantalones (pants: en francés «un pantalon» es singular), pollera y «pollera / falda» (skirt), campera (jacket). chamarra → «blouson». 2) pants → «pantalon» (singular en francés); en 3731844095 aclaré que pants siempre es plural en inglés. 3) cheap → «pas cher / pas chère» (lo natural en francés; «bon marché» en aceptadas). 4) size: talle → «pointure» (calzado), tamaño → «grandeur». 5) En la tienda usé «vous» (cliente ↔ vendedor), lo natural en Francia; el resto de la app sigue con «tu». money: plata → «fric», «plata / dinero» → «argent». cash → «espèces». Falso amigo: distractor «tela» → «tissu» (fabric ≠ fabrique). Fuente: aaa081fa52 y 5aff65ce94 llevan pistas en español dentro del en de contexto («(busco una chaqueta)», «(tarjeta)»); d89f303837 pide contar un viaje en la unidad de ropa (parece tarea de repaso), traducida tal cual."
+}

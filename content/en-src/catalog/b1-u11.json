@@ -1,0 +1,1602 @@
+{
+ "unit": "b1-u11",
+ "level": "B1",
+ "titleEn": "Opinions and relationships",
+ "strings": [
+  {
+   "id": "a42eddee79",
+   "es": "Opiniones y relaciones",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Opinions and relationships"
+  },
+  {
+   "id": "6e44fe4499",
+   "es": "Dar tu opinión, acordar y discrepar, ventajas y desventajas, imaginar con el segundo condicional, relaciones y deseos.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "0e1628cea5",
+   "es": "Puedes dar y defender tu opinión, aconsejar a alguien con if I were you, hablar de tus relaciones y expresar deseos.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "7d38e397a7",
+   "es": "Segundo condicional",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "a9cde2b2a6",
+   "es": "If + past simple, would + verbo: una situación imaginaria o poco probable. If I had more time, I would travel more (no tengo tiempo). Con be se usa were para todos: If I were you, I would talk to her (yo que tú…).",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "01fe69cd99",
+   "es": "Si tuviera más tiempo, viajaría más.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "If I had more time, I would travel more."
+  },
+  {
+   "id": "64b58a0601",
+   "es": "Yo que tú, hablaría con ella.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "If I were you, I would talk to her."
+  },
+  {
+   "id": "a5f563eb39",
+   "es": "Ojalá tuviera más tiempo libre.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I wish I had more free time."
+  },
+  {
+   "id": "275c4a95d3",
+   "es": "en mi opinión",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "in my opinion"
+  },
+  {
+   "id": "08bf689a6f",
+   "es": "para mí",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "in my opinion"
+  },
+  {
+   "id": "5c382904d8",
+   "es": "a mi parecer",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "in my opinion"
+  },
+  {
+   "id": "404ff5c960",
+   "es": "En mi opinión, es una buena idea.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "In my opinion, it is a good idea."
+  },
+  {
+   "id": "989ba1bae4",
+   "es": "estar de acuerdo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "agree"
+  },
+  {
+   "id": "38a5a82769",
+   "es": "Estoy de acuerdo contigo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I agree with you."
+  },
+  {
+   "id": "034307fa93",
+   "es": "no estar de acuerdo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "disagree"
+  },
+  {
+   "id": "4fd38c6a68",
+   "es": "discrepar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "disagree"
+  },
+  {
+   "id": "a1bf6fad6e",
+   "es": "No estoy de acuerdo con esa idea.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I disagree with that idea."
+  },
+  {
+   "id": "3cb0b60b56",
+   "es": "por otro lado",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "on the other hand"
+  },
+  {
+   "id": "2584a0170b",
+   "es": "en cambio",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "on the other hand"
+  },
+  {
+   "id": "d197511f69",
+   "es": "La ciudad es ruidosa. Por otro lado, hay más trabajo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The city is noisy. On the other hand, there are more jobs."
+  },
+  {
+   "id": "73d78a0dd2",
+   "es": "ventaja",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "advantage"
+  },
+  {
+   "id": "abf5af9742",
+   "es": "Una ventaja de la ciudad es el transporte.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "One advantage of the city is the transport."
+  },
+  {
+   "id": "c47bfe6bd4",
+   "es": "desventaja",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "disadvantage"
+  },
+  {
+   "id": "da01b24334",
+   "es": "La desventaja principal es el precio.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The main disadvantage is the price."
+  },
+  {
+   "id": "da646e70e7",
+   "es": "yo que tú / si fuera tú",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "if I were you"
+  },
+  {
+   "id": "c51b47ddff",
+   "es": "yo que tú",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "if I were you"
+  },
+  {
+   "id": "0ae1ae9adc",
+   "es": "si fuera tú",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "if I were you"
+  },
+  {
+   "id": "0b1b29d1b2",
+   "es": "yo que vos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "if I were you"
+  },
+  {
+   "id": "9884a9f0ee",
+   "es": "si fuera vos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "if I were you"
+  },
+  {
+   "id": "822a4ccece",
+   "es": "yo que vos / si fuera vos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "if I were you"
+  },
+  {
+   "id": "8e7a58e15d",
+   "es": "Yo que tú, descansaría.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "If I were you, I would rest."
+  },
+  {
+   "id": "d0404a216d",
+   "es": "ojalá / desear (algo difícil)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "wish"
+  },
+  {
+   "id": "59802883bd",
+   "es": "desear",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "wish"
+  },
+  {
+   "id": "ac9651e338",
+   "es": "Ojalá tuviera más tiempo.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I wish I had more time."
+  },
+  {
+   "id": "063fecd6ff",
+   "es": "preferiría",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "would rather"
+  },
+  {
+   "id": "85970e17a4",
+   "es": "prefiero",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "would rather"
+  },
+  {
+   "id": "e587bf8b9d",
+   "es": "Preferiría quedarme en casa.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I would rather stay at home."
+  },
+  {
+   "id": "c1ce6993ec",
+   "es": "relación",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "relationship"
+  },
+  {
+   "id": "21520ba7e1",
+   "es": "Tienen una buena relación.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "They have a good relationship."
+  },
+  {
+   "id": "b49dbcdc55",
+   "es": "pareja / compañero",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "partner"
+  },
+  {
+   "id": "15d3c90249",
+   "es": "pareja",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "partner"
+  },
+  {
+   "id": "901557d80a",
+   "es": "compañero",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "partner"
+  },
+  {
+   "id": "6ba12de395",
+   "es": "compañera",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "partner"
+  },
+  {
+   "id": "b6d7c07973",
+   "es": "Ella es mi pareja, Alex.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "This is my partner, Alex."
+  },
+  {
+   "id": "66fd4ad168",
+   "es": "llevarse bien con",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "get on with"
+  },
+  {
+   "id": "5a7166d0e7",
+   "es": "Me llevo bien con mi hermana.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I get on well with my sister."
+  },
+  {
+   "id": "b1fd24587c",
+   "es": "discutir / pelearse",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "argue"
+  },
+  {
+   "id": "da85544205",
+   "es": "discutir",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "argue"
+  },
+  {
+   "id": "c139576c98",
+   "es": "pelearse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "argue"
+  },
+  {
+   "id": "779c9750a9",
+   "es": "Discuten por dinero.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "They argue about money."
+  },
+  {
+   "id": "19337bc2d0",
+   "es": "confiar en / confianza",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "trust"
+  },
+  {
+   "id": "6ca772ed75",
+   "es": "confiar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "trust"
+  },
+  {
+   "id": "4336925e52",
+   "es": "confiar en",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "trust"
+  },
+  {
+   "id": "fe9ac39d94",
+   "es": "confianza",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "trust"
+  },
+  {
+   "id": "b501fba762",
+   "es": "Confío en mi mejor amigo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I trust my best friend."
+  },
+  {
+   "id": "052d0d36eb",
+   "es": "pedir perdón / disculparse",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "apologize"
+  },
+  {
+   "id": "29e4b62f38",
+   "es": "pedir perdón",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "apologize"
+  },
+  {
+   "id": "103f2886c8",
+   "es": "disculparse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "apologize"
+  },
+  {
+   "id": "beb3fefc69",
+   "es": "pedir disculpas",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "apologize"
+  },
+  {
+   "id": "5d018d1f37",
+   "es": "Quiero pedir perdón.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I want to apologize."
+  },
+  {
+   "id": "c99463ad52",
+   "es": "apoyar / apoyo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "support"
+  },
+  {
+   "id": "9d778f9d0d",
+   "es": "apoyar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "support"
+  },
+  {
+   "id": "ba9132d9bd",
+   "es": "apoyo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "support"
+  },
+  {
+   "id": "fe10dbfb73",
+   "es": "Mi familia siempre me apoya.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My family always supports me."
+  },
+  {
+   "id": "7838501a1c",
+   "es": "sincero / honesto",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "honest"
+  },
+  {
+   "id": "1d1d545283",
+   "es": "sincero",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "honest"
+  },
+  {
+   "id": "fee06edfca",
+   "es": "sincera",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "honest"
+  },
+  {
+   "id": "2137b0941e",
+   "es": "honesto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "honest"
+  },
+  {
+   "id": "1d2e2e492d",
+   "es": "honesta",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "honest"
+  },
+  {
+   "id": "100f1defe8",
+   "es": "Por favor, sé sincero conmigo.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Please be honest with me."
+  },
+  {
+   "id": "74dd963bbf",
+   "es": "celoso / celosa / envidioso",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "jealous"
+  },
+  {
+   "id": "33ddd33e99",
+   "es": "celoso",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "jealous"
+  },
+  {
+   "id": "41a639b1a1",
+   "es": "celosa",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "jealous"
+  },
+  {
+   "id": "334eb16e29",
+   "es": "envidioso",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "jealous"
+  },
+  {
+   "id": "3749bc32e8",
+   "es": "No seas celoso.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Don't be jealous."
+  },
+  {
+   "id": "39013bbd3a",
+   "es": "¿Qué opinas?",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "f8c71b6f43",
+   "es": "Dar tu opinión y decir si estás de acuerdo.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "ba4b62bcca",
+   "es": "Para opinar: In my opinion… / I think… Para acordar: I agree (with you). Para discrepar con cortesía: I don't agree o I disagree. Ojo: en inglés no se dice «I am agree».",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "e41c3e0b24",
+   "es": "No estoy de acuerdo contigo.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I don't agree with you."
+  },
+  {
+   "id": "7925b694ce",
+   "es": "Das tu opinión: In my opinion…, I think…",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "f56addf350",
+   "es": "Acuerdas y discrepas: I agree, I disagree.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "720b5366e9",
+   "es": "Estoy de acuerdo contigo. Es una gran idea.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I agree with you. It is a great idea."
+  },
+  {
+   "id": "17b9ef081e",
+   "es": "Agree es un verbo: I agree (no «I am agree»).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "agree"
+  },
+  {
+   "id": "dc3be7f0d0",
+   "es": "En mi opinión, es mejor vivir cerca del mar.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "In my opinion, it is better to live near the sea."
+  },
+  {
+   "id": "b60c13664a",
+   "es": "Dos amigos discuten dónde es mejor vivir.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u11-debate"
+  },
+  {
+   "id": "3f17590297",
+   "es": "¿Qué opina Tom?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u11-debate"
+  },
+  {
+   "id": "c0c27449bc",
+   "es": "Que es mejor vivir en una ciudad grande",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u11-debate"
+  },
+  {
+   "id": "50f31c0b7e",
+   "es": "Que es mejor vivir cerca del mar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "01e7cb3510",
+   "es": "Que las ciudades son caras",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "29f1df0b8c",
+   "es": "Que no hay trabajo en la ciudad",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e328ee0463",
+   "es": "Tom dice: «In my opinion, it is better to live in a big city».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u11-debate"
+  },
+  {
+   "id": "4fcea3eb8e",
+   "es": "¿Por qué Emma no está de acuerdo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u11-debate"
+  },
+  {
+   "id": "914080602d",
+   "es": "Las ciudades son ruidosas y caras",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u11-debate"
+  },
+  {
+   "id": "0f1a186326",
+   "es": "No hay trabajo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "59a180a1c7",
+   "es": "Hay poco para hacer",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6aedf53890",
+   "es": "El transporte es malo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5153662e96",
+   "es": "Emma dice: «I don't agree. Cities are noisy and expensive».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u11-debate"
+  },
+  {
+   "id": "6acecd75e7",
+   "es": "sí, totalmente",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Do you agree with me? (sí, totalmente)"
+  },
+  {
+   "id": "4b71732a27",
+   "es": "¿Estás de acuerdo conmigo?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Do you agree with me? (sí, totalmente)"
+  },
+  {
+   "id": "309ab68b72",
+   "es": "Ventajas y desventajas",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "2e8b7acd44",
+   "es": "Comparar opciones con ventajas, desventajas y on the other hand.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "fdf2e6442a",
+   "es": "Para comparar dos opciones: One advantage is… (una ventaja es…), The main disadvantage is… (la desventaja principal es…). On the other hand (por otro lado) presenta el otro punto de vista.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "7ef7a66430",
+   "es": "Es barato. Por otro lado, queda lejos.",
+   "kinds": [
+    "example"
+   ],
+   "en": "It is cheap. On the other hand, it is far."
+  },
+  {
+   "id": "1fa9c4e202",
+   "es": "Presentas ventajas y desventajas.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "d06673ae17",
+   "es": "Muestras los dos lados con on the other hand.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "55f05c3dbd",
+   "es": "¿Qué significa «disadvantage»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "9ea4c003f1",
+   "es": "opinión",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b96a16661c",
+   "es": "Una ventaja de trabajar desde casa es que ahorras tiempo.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "One advantage of working from home is that you save time."
+  },
+  {
+   "id": "623c433d6d",
+   "es": "El apartamento es barato. Por otro lado, es muy chico.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "The apartment is cheap. On the other hand, it is very small."
+  },
+  {
+   "id": "c368d27a1b",
+   "es": "¿Qué ventaja de la ciudad acepta Tom?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u11-debate"
+  },
+  {
+   "id": "be0781c9ae",
+   "es": "Hay más trabajo",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u11-debate"
+  },
+  {
+   "id": "8f4de137c5",
+   "es": "Es más tranquila",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7148263671",
+   "es": "Es más barata",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "765d5326ea",
+   "es": "Está cerca del mar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3c8bad92dd",
+   "es": "Tom dice: «On the other hand, there are more jobs».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u11-debate"
+  },
+  {
+   "id": "9dcc10b746",
+   "es": "La desventaja principal de la ciudad es el ruido.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "The main disadvantage of the city is the noise."
+  },
+  {
+   "id": "b45cef4e33",
+   "es": "hay más trabajo",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What is one advantage of living in a city? (hay más trabajo)"
+  },
+  {
+   "id": "50d2b5d313",
+   "es": "¿Cuál es una ventaja de vivir en una ciudad?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What is one advantage of living in a city? (hay más trabajo)"
+  },
+  {
+   "id": "b11b95580b",
+   "es": "Es barato. Por otro lado, es muy chico.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "It is cheap. On the other hand, it is very small."
+  },
+  {
+   "id": "a3d1466d9b",
+   "es": "Si fuera…",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "28b7725e79",
+   "es": "Imaginar situaciones y aconsejar con el segundo condicional e if I were you.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "9b772cc0bc",
+   "es": "Para algo imaginario: If + pasado, would + verbo. If I had a million dollars, I would travel. If I were you (yo que tú) sirve para aconsejar: If I were you, I would talk to her. I would se contrae en I'd.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "4a17a9bd74",
+   "es": "Imaginas situaciones con if + pasado y would.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "515600b96a",
+   "es": "Aconsejas con If I were you, I would…",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "a16b96a546",
+   "es": "Segundo condicional: if + pasado (had), would + verbo.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "had"
+  },
+  {
+   "id": "0dd6d54a7a",
+   "es": "Si ganara mucho dinero, me compraría una casa.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "If I won a lot of money, I would buy a house."
+  },
+  {
+   "id": "483dfccbcf",
+   "es": "En el segundo condicional se usa were con todas las personas: If I were you.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "were"
+  },
+  {
+   "id": "4c1ff28f71",
+   "es": "Sam y Lucy imaginan qué harían con mucho dinero.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u11-money"
+  },
+  {
+   "id": "e8ffe964ca",
+   "es": "¿Qué haría Sam con un millón de dólares?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u11-money"
+  },
+  {
+   "id": "3f0885b2d2",
+   "es": "Le compraría una casa a sus padres",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u11-money"
+  },
+  {
+   "id": "07881b7e19",
+   "es": "Viajaría por el mundo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "cff61180d7",
+   "es": "Ahorraría todo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "53902b2a57",
+   "es": "Montaría un negocio",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ba54367393",
+   "es": "Sam dice: «If I had that money, I would buy a house for my parents».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u11-money"
+  },
+  {
+   "id": "d9386c1d56",
+   "es": "Una consulta en un foro y una respuesta.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u11-roommate"
+  },
+  {
+   "id": "d0c9bbb864",
+   "es": "¿Qué le aconseja Ben a Lucy?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u11-roommate"
+  },
+  {
+   "id": "1d92b87233",
+   "es": "Hablar con calma con su amiga",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u11-roommate"
+  },
+  {
+   "id": "e2859136e6",
+   "es": "Mudarse enseguida",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "04b5659474",
+   "es": "Limpiar ella la cocina",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "75c37ab1e8",
+   "es": "No decir nada",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c9e04a8d26",
+   "es": "Ben responde: «If I were you, I would talk to her calmly».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u11-roommate"
+  },
+  {
+   "id": "bcee85ba45",
+   "es": "viajarías por el mundo",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What would you do if you had a million dollars? (viajarías por el mundo)"
+  },
+  {
+   "id": "ec655559a9",
+   "es": "¿Qué harías si tuvieras un millón de dólares?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What would you do if you had a million dollars? (viajarías por el mundo)"
+  },
+  {
+   "id": "6ad3f8574c",
+   "es": "Yo que tú, iría al médico.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "If I were you, I would see a doctor."
+  },
+  {
+   "id": "32cad51040",
+   "es": "Relaciones",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "49f1620e9e",
+   "es": "Hablar de amistades y relaciones: llevarse bien, discutir, confiar, pedir perdón.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "5cd2b35759",
+   "es": "Get on (well) with es llevarse bien con alguien. Argue es discutir. Trust es confiar (I trust you). Apologize es pedir perdón: I want to apologize for yesterday. Support es apoyar.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "41ee68e1d6",
+   "es": "Quiero pedirte perdón por lo de ayer.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I want to apologize for yesterday."
+  },
+  {
+   "id": "88ece5f63a",
+   "es": "Cuentas cómo te llevas con la gente.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "3b0b776565",
+   "es": "Pides perdón y dices en quién confías.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "725b25aacf",
+   "es": "Discuten seguido por dinero.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "They often argue about money."
+  },
+  {
+   "id": "293b877f89",
+   "es": "Él es mi pareja, Alex. Estamos juntos desde hace cinco años.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "This is my partner, Alex. We have been together for five years."
+  },
+  {
+   "id": "245c4bef90",
+   "es": "Mia le escribe a su mejor amiga después de una pelea.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u11-sorry"
+  },
+  {
+   "id": "67651a0477",
+   "es": "¿Para qué le escribe Mia a Kate?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u11-sorry"
+  },
+  {
+   "id": "fc838503a0",
+   "es": "Para pedirle perdón por lo de ayer",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u11-sorry"
+  },
+  {
+   "id": "a31121ffba",
+   "es": "Para invitarla a salir",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9b9a82da01",
+   "es": "Para contarle una noticia",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9cb38fa7b4",
+   "es": "Para pedirle ayuda",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f96d782782",
+   "es": "Mia escribe: «I want to apologize for yesterday».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u11-sorry"
+  },
+  {
+   "id": "4c97b165a3",
+   "es": "¿Qué dice Mia sobre Kate?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u11-sorry"
+  },
+  {
+   "id": "af194ebc58",
+   "es": "Que siempre la apoyó y que confía en ella",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u11-sorry"
+  },
+  {
+   "id": "c50a50fe3f",
+   "es": "Que está celosa",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4ecc55f002",
+   "es": "Que no la extraña",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "91300e1ff3",
+   "es": "Que nunca la escucha",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4ec5175caa",
+   "es": "Mia escribe: «You have always supported me, and I trust you more than anyone».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u11-sorry"
+  },
+  {
+   "id": "24ef2c7663",
+   "es": "Confío en mi mejor amiga.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I trust my best friend."
+  },
+  {
+   "id": "b04ef09963",
+   "es": "Quiero pedirte perdón.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I want to apologize."
+  },
+  {
+   "id": "80be5d22b2",
+   "es": "Deseos y preferencias",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "d5482d371c",
+   "es": "Expresar deseos (I wish) y preferencias (would rather).",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "068c16826c",
+   "es": "I wish + pasado expresa un deseo sobre el presente que no es real: I wish I had more time (ojalá tuviera…). Would rather + verbo es «preferiría»: I would rather stay at home. Jealous es celoso o envidioso.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "3fd8a53122",
+   "es": "Preferiría vivir cerca del mar.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I would rather live near the sea."
+  },
+  {
+   "id": "3bee363271",
+   "es": "Expresas deseos con I wish + pasado.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "5a7e7dda4d",
+   "es": "Dices qué preferirías con would rather.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "e10adad82a",
+   "es": "¿Qué significa «jealous»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "0bdf36b8a4",
+   "es": "I wish + pasado: un deseo sobre algo que hoy no es así.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "had"
+  },
+  {
+   "id": "e39ebda083",
+   "es": "Esta noche preferiría quedarme en casa.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I would rather stay at home tonight."
+  },
+  {
+   "id": "d51b5255ad",
+   "es": "Rosa escribe sobre lo que le gustaría cambiar.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u11-wishes"
+  },
+  {
+   "id": "b4fad5e7d1",
+   "es": "¿Qué desea Rosa?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u11-wishes"
+  },
+  {
+   "id": "b34f6188b3",
+   "es": "Tener más tiempo libre",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u11-wishes"
+  },
+  {
+   "id": "280fe1c4c7",
+   "es": "Trabajar más",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "554dc512e8",
+   "es": "Vivir cerca del mar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "86449922d1",
+   "es": "Tener más dinero",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "25618eb2dc",
+   "es": "Rosa escribe: «I wish I had more free time».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u11-wishes"
+  },
+  {
+   "id": "3c457e939f",
+   "es": "¿Cómo preferiría pasar el tiempo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u11-wishes"
+  },
+  {
+   "id": "1ba2a1392f",
+   "es": "Con su familia",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u11-wishes"
+  },
+  {
+   "id": "3e251c7f32",
+   "es": "Pintando",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a127f47bf6",
+   "es": "En el trabajo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c19f7516aa",
+   "es": "Viajando sola",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d52ee70ed1",
+   "es": "Rosa escribe: «I would rather spend more time with my family».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u11-wishes"
+  },
+  {
+   "id": "35e99de2fc",
+   "es": "Ojalá viviera cerca de la playa.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I wish I lived near the beach."
+  },
+  {
+   "id": "15512bc40a",
+   "es": "preferirías quedarte en casa",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Would you like to go out tonight? (preferirías quedarte en casa)"
+  },
+  {
+   "id": "d8de0660c1",
+   "es": "¿Quieres salir esta noche?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Would you like to go out tonight? (preferirías quedarte en casa)"
+  },
+  {
+   "id": "3d0db8e222",
+   "es": "Tu opinión",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "b551b748d2",
+   "es": "Elige un tema (vivir en una ciudad grande o chica, trabajar desde casa, las redes sociales…) y escribe tu opinión con una ventaja, una desventaja y qué harías tú.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "b046d8e80f",
+   "es": "Das tu opinión (In my opinion… / I think…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "d4335d30af",
+   "es": "Muestras los dos lados (advantage, disadvantage, on the other hand)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "16d92ff624",
+   "es": "Usas el segundo condicional (If I…, I would…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "7706f53a1d",
+   "es": "Mostré una ventaja y una desventaja.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "8e8ba3780c",
+   "es": "Usé would.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.b1-u11-debate": {
+   "setting": "Dos amigos discuten dónde es mejor vivir.",
+   "lines": [
+    "Tom: In my opinion, it is better to live in a big city. There is so much to do.",
+    "Emma: I don't agree. Cities are noisy and expensive.",
+    "Tom: That is true. On the other hand, there are more jobs.",
+    "Emma: I agree with you about that. But I prefer to live near the sea."
+   ]
+  },
+  "en.stim.b1-u11-money": {
+   "setting": "Sam y Lucy imaginan qué harían con mucho dinero.",
+   "lines": [
+    "Sam: What would you do if you had a million dollars?",
+    "Lucy: I would travel around the world. And you?",
+    "Sam: If I had that money, I would buy a house for my parents.",
+    "Lucy: That is so nice of you!"
+   ]
+  },
+  "en.stim.b1-u11-roommate": {
+   "setting": "Una consulta en un foro y una respuesta.",
+   "lines": [
+    "Help! I share an apartment with a friend, but we have problems all the time. She never cleans the kitchen. What should I do? – Lucy",
+    "Reply: If I were you, I would talk to her calmly. Maybe you could make a list of jobs for each person. If she doesn’t change, it might be time to find a new place. – Ben"
+   ]
+  },
+  "en.stim.b1-u11-sorry": {
+   "setting": "Mia le escribe a su mejor amiga después de una pelea.",
+   "lines": [
+    "Hi Kate, I want to apologize for yesterday.",
+    "I was tired, and I said things that I didn’t mean.",
+    "You have always supported me, and I trust you more than anyone.",
+    "I hope we can talk soon. I really miss you."
+   ]
+  },
+  "en.stim.b1-u11-wishes": {
+   "setting": "Rosa escribe sobre lo que le gustaría cambiar.",
+   "lines": [
+    "I wish I had more free time.",
+    "I work all day, and I would rather spend more time with my family.",
+    "If I had more time, I would learn to paint."
+   ]
+  }
+ }
+}

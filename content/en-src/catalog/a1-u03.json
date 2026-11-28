@@ -1,0 +1,1418 @@
+{
+ "unit": "a1-u03",
+ "level": "A1",
+ "titleEn": "Numbers, ages and countries",
+ "strings": [
+  {
+   "id": "6daaeeac6a",
+   "es": "Números, edades y países",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Numbers, ages and countries"
+  },
+  {
+   "id": "15667bc06d",
+   "es": "Contar hasta veinte, decir tu edad y de dónde eres.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "c038941693",
+   "es": "Puedes contar hasta veinte, decir tu edad y de dónde eres.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "d6cc222b25",
+   "es": "La edad con to be",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "9d87afe5ab",
+   "es": "En inglés la edad va con to be, no con have: I am ten (years old). El origen también: I am from Argentina.",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "0357f95072",
+   "es": "Tengo veinte años.",
+   "kinds": [
+    "example",
+    "word.example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "I'm twenty years old."
+  },
+  {
+   "id": "bf0ec3694e",
+   "es": "uno",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "one"
+  },
+  {
+   "id": "020e857bd3",
+   "es": "Tengo un hermano.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I have one brother."
+  },
+  {
+   "id": "c1299854f2",
+   "es": "dos",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "two"
+  },
+  {
+   "id": "f015b099c0",
+   "es": "Dos cafés, por favor.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "Two coffees, please."
+  },
+  {
+   "id": "3d5f1d095f",
+   "es": "tres",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair",
+    "exercise.hint"
+   ],
+   "en": "three"
+  },
+  {
+   "id": "3bd9f11d60",
+   "es": "Tengo tres años.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I am three years old."
+  },
+  {
+   "id": "0b701c8a16",
+   "es": "cuatro",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "four"
+  },
+  {
+   "id": "2660f4f47d",
+   "es": "Somos cuatro amigos.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We are four friends."
+  },
+  {
+   "id": "216e1e3f8f",
+   "es": "cinco",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "five"
+  },
+  {
+   "id": "94b04fd7b1",
+   "es": "Cinco más cinco es diez.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Five plus five is ten."
+  },
+  {
+   "id": "061b38e441",
+   "es": "seis",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "six"
+  },
+  {
+   "id": "2a347e9971",
+   "es": "Ella tiene seis años.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She is six."
+  },
+  {
+   "id": "f9d87cb669",
+   "es": "siete",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "seven"
+  },
+  {
+   "id": "96291162d9",
+   "es": "Siete días.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "Seven days."
+  },
+  {
+   "id": "7812878c84",
+   "es": "ocho",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair",
+    "exercise.hint"
+   ],
+   "en": "eight"
+  },
+  {
+   "id": "9915e3e9be",
+   "es": "Él tiene ocho años.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "He is eight years old."
+  },
+  {
+   "id": "2dd0926fc0",
+   "es": "nueve",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "nine"
+  },
+  {
+   "id": "c662759816",
+   "es": "Nueve estudiantes.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Nine students."
+  },
+  {
+   "id": "c1f77d7c22",
+   "es": "diez",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "ten"
+  },
+  {
+   "id": "2523307035",
+   "es": "Tengo diez años.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I am ten years old."
+  },
+  {
+   "id": "200651a8b2",
+   "es": "once",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "eleven"
+  },
+  {
+   "id": "9ccc6c57a7",
+   "es": "Tom tiene once años.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Tom is eleven."
+  },
+  {
+   "id": "dfc34170bb",
+   "es": "doce",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "twelve"
+  },
+  {
+   "id": "5053e96c6c",
+   "es": "Ella tiene doce años.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She is twelve years old."
+  },
+  {
+   "id": "4f67642c07",
+   "es": "quince",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "fifteen"
+  },
+  {
+   "id": "4cfa72db42",
+   "es": "Tengo quince años.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I am fifteen."
+  },
+  {
+   "id": "5a60571c09",
+   "es": "veinte",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair",
+    "exercise.hint"
+   ],
+   "en": "twenty"
+  },
+  {
+   "id": "a1eeac912d",
+   "es": "Somos veinte estudiantes.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We are twenty students."
+  },
+  {
+   "id": "e055d9e795",
+   "es": "viejo; (edad) años",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "old"
+  },
+  {
+   "id": "b3d59a6fe4",
+   "es": "viejo",
+   "kinds": [
+    "word.accepted",
+    "exercise.option"
+   ],
+   "en": "old"
+  },
+  {
+   "id": "29124d08ab",
+   "es": "vieja",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "old"
+  },
+  {
+   "id": "f5b8fbdc12",
+   "es": "año",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "year"
+  },
+  {
+   "id": "e8e7931e8b",
+   "es": "Un año, dos años.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "One year, two years."
+  },
+  {
+   "id": "b229bf14df",
+   "es": "¿cuántos años…?",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "how old"
+  },
+  {
+   "id": "cd8781997b",
+   "es": "dónde",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "where"
+  },
+  {
+   "id": "f807b06016",
+   "es": "de (origen)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "from"
+  },
+  {
+   "id": "1e06e6dac2",
+   "es": "desde",
+   "kinds": [
+    "word.accepted",
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "from"
+  },
+  {
+   "id": "9cb5061c74",
+   "es": "Soy de México.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I am from Mexico."
+  },
+  {
+   "id": "3681435f9d",
+   "es": "España es un país.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Spain is a country."
+  },
+  {
+   "id": "ea0b937ea3",
+   "es": "Argentina",
+   "kinds": [
+    "word.translation",
+    "exercise.cue"
+   ],
+   "en": "Argentina"
+  },
+  {
+   "id": "7b59034ae5",
+   "es": "Soy de Argentina.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I am from Argentina."
+  },
+  {
+   "id": "f85c9fe369",
+   "es": "España",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "Spain"
+  },
+  {
+   "id": "4667ebbfd5",
+   "es": "Ana es de España.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Ana is from Spain."
+  },
+  {
+   "id": "6f7fbf5319",
+   "es": "México",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "Mexico"
+  },
+  {
+   "id": "30c3395f8d",
+   "es": "Somos de México.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We are from Mexico."
+  },
+  {
+   "id": "20d1a5eb0b",
+   "es": "Estados Unidos",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "the United States"
+  },
+  {
+   "id": "8631f9f45c",
+   "es": "Tom es de Estados Unidos.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Tom is from the United States."
+  },
+  {
+   "id": "9503ec9797",
+   "es": "Inglaterra",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "England"
+  },
+  {
+   "id": "b92d87f8e8",
+   "es": "Londres está en Inglaterra.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "London is in England."
+  },
+  {
+   "id": "976393f9a9",
+   "es": "cero",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "zero"
+  },
+  {
+   "id": "094a043df4",
+   "es": "Cero, uno, dos.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Zero, one, two."
+  },
+  {
+   "id": "26cc870d30",
+   "es": "trece",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "thirteen"
+  },
+  {
+   "id": "df6b67fa97",
+   "es": "Ella tiene trece.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She is thirteen."
+  },
+  {
+   "id": "a47e8406c4",
+   "es": "catorce",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "fourteen"
+  },
+  {
+   "id": "cd11e9a1db",
+   "es": "Tengo catorce años.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I am fourteen."
+  },
+  {
+   "id": "b2feac371b",
+   "es": "dieciséis",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "sixteen"
+  },
+  {
+   "id": "b557efa6cb",
+   "es": "Él tiene dieciséis.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "He is sixteen."
+  },
+  {
+   "id": "88d8f449e6",
+   "es": "diecisiete",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "seventeen"
+  },
+  {
+   "id": "740797ff77",
+   "es": "Ella tiene diecisiete.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She is seventeen."
+  },
+  {
+   "id": "7a50064241",
+   "es": "dieciocho",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "eighteen"
+  },
+  {
+   "id": "01bcd38124",
+   "es": "Tengo dieciocho años.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I am eighteen years old."
+  },
+  {
+   "id": "accb35887e",
+   "es": "diecinueve",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "nineteen"
+  },
+  {
+   "id": "751169c169",
+   "es": "Ella tiene diecinueve.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She is nineteen."
+  },
+  {
+   "id": "d01b6bbe37",
+   "es": "Del 1 al 5",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "d7fec82202",
+   "es": "Contar del uno al cinco.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "eb7b967a5e",
+   "es": "One, two, three, four, five. Three empieza con th: la lengua va entre los dientes.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "c0eb19827a",
+   "es": "Uno, dos, tres.",
+   "kinds": [
+    "example"
+   ],
+   "en": "One, two, three."
+  },
+  {
+   "id": "eb7dc4414b",
+   "es": "Cuentas del uno al cinco.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "3a92027c77",
+   "es": "Pronuncias three con la lengua entre los dientes.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "952fea5b3e",
+   "es": "¿Qué significa «four»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "2b1b6d4aa6",
+   "es": "Cinco",
+   "kinds": [
+    "exercise.source",
+    "exercise.option"
+   ],
+   "en": "five"
+  },
+  {
+   "id": "8c1fa99b2b",
+   "es": "Tres",
+   "kinds": [
+    "exercise.source",
+    "exercise.option"
+   ],
+   "en": "three"
+  },
+  {
+   "id": "f015874604",
+   "es": "Del 6 al 10",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "8105a21e89",
+   "es": "Contar del seis al diez.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "c6ef20048b",
+   "es": "Six, seven, eight, nine, ten. Eight se escribe con gh, pero suena «éit».",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "3c47938172",
+   "es": "Diez dólares.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Ten dollars."
+  },
+  {
+   "id": "c22c31c9ac",
+   "es": "Cuentas del seis al diez.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "e3f091edc0",
+   "es": "Escribes eight con gh.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "4cd5355409",
+   "es": "¿Qué significa «eight»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "536c0534dc",
+   "es": "Seis",
+   "kinds": [
+    "exercise.source",
+    "exercise.option"
+   ],
+   "en": "six"
+  },
+  {
+   "id": "531cdab476",
+   "es": "cinco + cinco = diez",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "five + five = ten"
+  },
+  {
+   "id": "e4d325e7b2",
+   "es": "Ocho",
+   "kinds": [
+    "exercise.source",
+    "exercise.option"
+   ],
+   "en": "eight"
+  },
+  {
+   "id": "a6fae06424",
+   "es": "Diez",
+   "kinds": [
+    "exercise.source",
+    "exercise.option"
+   ],
+   "en": "ten"
+  },
+  {
+   "id": "c61370f2be",
+   "es": "Hasta veinte",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "6229a53104",
+   "es": "Usar números más grandes: 11, 12, 15 y 20.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "a5e477299e",
+   "es": "Eleven y twelve son especiales. Del 13 al 19 terminan en -teen: fifteen. Twenty es veinte. Ojo: fifteen (15) y fifty (50) suenan parecido.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "4c2f4ca4a8",
+   "es": "Tengo doce amigos.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I have twelve friends."
+  },
+  {
+   "id": "586f72a296",
+   "es": "Quince dólares.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Fifteen dollars."
+  },
+  {
+   "id": "675fe5bb5c",
+   "es": "Dices 11, 12, 15 y 20.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "d67ee95f17",
+   "es": "Reconoces la terminación -teen.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "0aab35acb7",
+   "es": "¿Qué significa «twelve»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "4cded86440",
+   "es": "Fifteen (15) lleva el acento al final: fif-TEEN.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "fifteen"
+  },
+  {
+   "id": "303253f9ec",
+   "es": "diez + diez = veinte",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "ten + ten = twenty"
+  },
+  {
+   "id": "c4317da67b",
+   "es": "diez + uno = once",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "ten + one = eleven"
+  },
+  {
+   "id": "41d79f81ca",
+   "es": "Doce",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "twelve"
+  },
+  {
+   "id": "7ad8a5dcca",
+   "es": "Veinte",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "twenty"
+  },
+  {
+   "id": "4a1239e413",
+   "es": "Quince",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "fifteen"
+  },
+  {
+   "id": "0d4ebbf512",
+   "es": "¿Qué significa «thirteen»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "7dab6d074c",
+   "es": "Del 13 al 19 terminan en -teen, con el acento al final: seven-TEEN.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "seventeen"
+  },
+  {
+   "id": "2414fe70a9",
+   "es": "nueve + nueve = dieciocho",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "nine + nine = eighteen"
+  },
+  {
+   "id": "e1681b2985",
+   "es": "diez + seis = dieciséis",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "ten + six = sixteen"
+  },
+  {
+   "id": "d37934f063",
+   "es": "Escribe el número en letras, en inglés.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "13"
+  },
+  {
+   "id": "564a44cede",
+   "es": "13 = thirteen (no «threeteen»).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "thirteen"
+  },
+  {
+   "id": "6cd5148e62",
+   "es": "Preguntar y decir la edad.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "606e2c59c5",
+   "es": "Para la edad se usa to be, no have: I am ten (years old). Se pregunta How old are you? Decir «I have ten years» es un error típico.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "df89535b97",
+   "es": "Tengo doce años.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I'm twelve years old."
+  },
+  {
+   "id": "d584acda1f",
+   "es": "Preguntas la edad con How old are you?",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "a43c501c1f",
+   "es": "Respondes con I am + edad, sin have.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "c492f36d99",
+   "es": "¿Qué significa «How old are you?»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "26e7b01a6a",
+   "es": "En inglés la edad se dice con to be: I am 20 years old (no se usa have).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "old"
+  },
+  {
+   "id": "38f19a9646",
+   "es": "Para la edad se usa to be: I am ten (years old).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "I am ten years old."
+  },
+  {
+   "id": "3b250b604b",
+   "es": "Tom tiene 11. ¿Cuántos años tiene Tom?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Tom is 11. How old is Tom?"
+  },
+  {
+   "id": "6cfcf30505",
+   "es": "¿Qué significa «year»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "c973c3157d",
+   "es": "edad",
+   "kinds": [
+    "exercise.option",
+    "word.translation",
+    "exercise.pair"
+   ]
+  },
+  {
+   "id": "10db4c9389",
+   "es": "La edad va con to be: I am twenty. «I have twenty years» no se dice.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "I'm twenty years old."
+  },
+  {
+   "id": "fb605dd960",
+   "es": "Decir de qué país eres.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "adf96619d0",
+   "es": "Where are you from? es «¿de dónde eres?». Se responde I am from + país. Los países van con mayúscula y algunos con the: the United States.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "d465e9d3b9",
+   "es": "Ella es de Estados Unidos.",
+   "kinds": [
+    "example"
+   ],
+   "en": "She is from the United States."
+  },
+  {
+   "id": "9ee15f6e4c",
+   "es": "Preguntas el origen con Where are you from?",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "b4b4a02c4c",
+   "es": "Respondes con I am from + país.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "982c5f526f",
+   "es": "¿Qué significa «Where are you from?»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "0ab1c91058",
+   "es": "¿Dónde estás?",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a918998f79",
+   "es": "Para decir tu origen se usa from: I am from Mexico.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "from"
+  },
+  {
+   "id": "aaa6db460e",
+   "es": "Ana es de España. ¿De dónde es Ana?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Ana is from Spain. Where is Ana from?"
+  },
+  {
+   "id": "7042201d0b",
+   "es": "Ella es de España.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "She is from Spain."
+  },
+  {
+   "id": "1c8b13dfc5",
+   "es": "En contexto: tarjetas de jugadores",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "4e2a981c06",
+   "es": "Entender datos de jugadores: número, edad y país.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "c2d52983a7",
+   "es": "Vas a leer las tarjetas de tres jugadores de un equipo infantil y a escuchar a un entrenador hablar con un chico nuevo. Presta atención a los números.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "ebdc628903",
+   "es": "Tiene doce años.",
+   "kinds": [
+    "example"
+   ],
+   "en": "He is twelve years old."
+  },
+  {
+   "id": "dafb89a226",
+   "es": "Ahora puedes encontrar y comparar números, edades y países en un texto corto.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "d44eb4c35e",
+   "es": "Las tarjetas de tres jugadores de un equipo de fútbol infantil.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u03-player-cards"
+  },
+  {
+   "id": "81447e8b44",
+   "es": "¿De dónde es el jugador número 3?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u03-player-cards"
+  },
+  {
+   "id": "2581ef0103",
+   "es": "De Argentina",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u03-player-cards"
+  },
+  {
+   "id": "aee18edf6b",
+   "es": "De Inglaterra",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "741a8fda7e",
+   "es": "De España",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f489ec0d4d",
+   "es": "La tarjeta del 3 es la de Pablo: «From Spain».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u03-player-cards"
+  },
+  {
+   "id": "b437edea1a",
+   "es": "¿Quién es el más chico de los tres?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u03-player-cards"
+  },
+  {
+   "id": "52d7d8604b",
+   "es": "Lucas",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u03-player-cards"
+  },
+  {
+   "id": "c6fcb8c1b2",
+   "es": "Pablo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d9dacb3ee1",
+   "es": "Emma",
+   "kinds": [
+    "exercise.option",
+    "context.speaker"
+   ]
+  },
+  {
+   "id": "0c1cb10f54",
+   "es": "Emma tiene 11 años; Lucas y Pablo tienen 12.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u03-player-cards"
+  },
+  {
+   "id": "f0c4a3fe84",
+   "es": "¿Qué tienen en común Lucas y Pablo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u03-player-cards"
+  },
+  {
+   "id": "67d8923c52",
+   "es": "La edad",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u03-player-cards"
+  },
+  {
+   "id": "e0ae8e9021",
+   "es": "El país",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "575150f85a",
+   "es": "El número",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "aa12bd0c4a",
+   "es": "Los dos tienen 12 años, pero son de países distintos y tienen otro número.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u03-player-cards"
+  },
+  {
+   "id": "7c7a93e52f",
+   "es": "Un entrenador habla con un chico nuevo del equipo.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u03-new-player"
+  },
+  {
+   "id": "cc172a7c82",
+   "es": "Ray",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.a1-u03-new-player"
+  },
+  {
+   "id": "a1a5936d3b",
+   "es": "Max",
+   "kinds": [
+    "context.speaker",
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u03-new-player"
+  },
+  {
+   "id": "109ae8b452",
+   "es": "¿Quién es mayor, Max o su amigo Leo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u03-new-player"
+  },
+  {
+   "id": "6edd574266",
+   "es": "Tienen la misma edad",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5bc426e8d8",
+   "es": "Leo",
+   "kinds": [
+    "exercise.option",
+    "context.speaker"
+   ]
+  },
+  {
+   "id": "e26494a2d8",
+   "es": "Max dice «I am ten» y su amigo Leo tiene «eleven»: Leo es mayor.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u03-new-player"
+  },
+  {
+   "id": "d877acda0a",
+   "es": "¿Cuántos años tiene el amigo de Max?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u03-new-player"
+  },
+  {
+   "id": "d88f6d8372",
+   "es": "Once",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d8c9ba4e0d",
+   "es": "Max tiene diez; su amigo Leo, «eleven»: once.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u03-new-player"
+  },
+  {
+   "id": "457376e425",
+   "es": "¿Qué número le da el entrenador a Max?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u03-new-player"
+  },
+  {
+   "id": "e3e593bd02",
+   "es": "El 10",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u03-new-player"
+  },
+  {
+   "id": "6a9d1c589c",
+   "es": "El 8",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "68d8bf9789",
+   "es": "El 11",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "714e9dd2ba",
+   "es": "Ray dice «Your number is eight».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u03-new-player"
+  },
+  {
+   "id": "4f5dab9747",
+   "es": "Tu edad y tu país",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "a16151e067",
+   "es": "Responde las dos preguntas con oraciones completas (puedes inventar los datos).",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "c8734ab227",
+   "es": "Dices tu edad con I am + número (sin have)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "de7b3052bd",
+   "es": "Dices de dónde eres con I am from…",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "81f5aa7624",
+   "es": "Usé I am para la edad (no I have).",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "3743482ce8",
+   "es": "Dije el país con from.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.a1-u03-player-cards": {
+   "setting": "Las tarjetas de tres jugadores de un equipo de fútbol infantil.",
+   "lines": [
+    "Lucas: number 7. From Argentina. 12 years old.",
+    "Emma: number 10. From England. 11 years old.",
+    "Pablo: number 3. From Spain. 12 years old."
+   ]
+  },
+  "en.stim.a1-u03-new-player": {
+   "setting": "Un entrenador habla con un chico nuevo del equipo.",
+   "lines": [
+    "Ray: Hello, Max! Where are you from?",
+    "Max: I am from Mexico.",
+    "Ray: How old are you?",
+    "Max: I am ten. My friend Leo is eleven.",
+    "Ray: OK, Max. Your number is eight."
+   ]
+  }
+ }
+}

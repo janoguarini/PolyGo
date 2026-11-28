@@ -1,0 +1,965 @@
+{
+ "unit": "a2-u01",
+ "level": "A2",
+ "titleEn": "Was and were",
+ "strings": [
+  {
+   "id": "a965a7e99f",
+   "es": "El pasado de to be",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Was and were"
+  },
+  {
+   "id": "1a3e1386f5",
+   "es": "Contar dónde estabas y cómo te sentías: was, were, yesterday y ago.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "a8d876a0a8",
+   "es": "era / estaba (I, he, she, it)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "was"
+  },
+  {
+   "id": "49eaab7e75",
+   "es": "era",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "was"
+  },
+  {
+   "id": "fe32f47ebc",
+   "es": "estaba",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "was"
+  },
+  {
+   "id": "89da15a63c",
+   "es": "estuve",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "was"
+  },
+  {
+   "id": "cac4e74fa2",
+   "es": "fue",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "was"
+  },
+  {
+   "id": "5cac3f77f3",
+   "es": "Ayer estuve en casa.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I was at home yesterday."
+  },
+  {
+   "id": "d8241f7548",
+   "es": "eran / estaban (you, we, they)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "were"
+  },
+  {
+   "id": "d01a9d7197",
+   "es": "eran",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "were"
+  },
+  {
+   "id": "a7517e0e51",
+   "es": "estaban",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "were"
+  },
+  {
+   "id": "c1aa1f48a7",
+   "es": "éramos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "were"
+  },
+  {
+   "id": "eac612bd89",
+   "es": "estábamos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "were"
+  },
+  {
+   "id": "41ff4fa574",
+   "es": "estuvieron",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "were"
+  },
+  {
+   "id": "2c8275d37f",
+   "es": "Estábamos muy felices.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We were very happy."
+  },
+  {
+   "id": "54c38390d4",
+   "es": "no era / no estaba (I, he, she, it)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "wasn't"
+  },
+  {
+   "id": "902a826576",
+   "es": "no era",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "wasn't"
+  },
+  {
+   "id": "8dc45a7dad",
+   "es": "no estaba",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "wasn't"
+  },
+  {
+   "id": "0d489f3ebf",
+   "es": "Ella no estaba en la escuela.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She wasn't at school."
+  },
+  {
+   "id": "34bd6fc500",
+   "es": "no eran / no estaban (you, we, they)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "weren't"
+  },
+  {
+   "id": "b712975ff1",
+   "es": "no eran",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "weren't"
+  },
+  {
+   "id": "31fc5bc466",
+   "es": "no estaban",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "weren't"
+  },
+  {
+   "id": "df3355bb5f",
+   "es": "No estaban cansados.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "They weren't tired."
+  },
+  {
+   "id": "7fba6b396b",
+   "es": "ayer",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "yesterday"
+  },
+  {
+   "id": "467b871320",
+   "es": "Ayer fue lunes.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Yesterday was Monday."
+  },
+  {
+   "id": "5fd14e2dd9",
+   "es": "anoche",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "last night"
+  },
+  {
+   "id": "548e609348",
+   "es": "Anoche estaba cansado.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I was tired last night."
+  },
+  {
+   "id": "b45e773796",
+   "es": "la semana pasada",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "last week"
+  },
+  {
+   "id": "11b30ed799",
+   "es": "semana pasada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "last week"
+  },
+  {
+   "id": "81ce164b6e",
+   "es": "La semana pasada estuvimos en España.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We were in Spain last week."
+  },
+  {
+   "id": "6fffd5a2ab",
+   "es": "el año pasado",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "last year"
+  },
+  {
+   "id": "2ab0d3e4e0",
+   "es": "año pasado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "last year"
+  },
+  {
+   "id": "8823e4e6e1",
+   "es": "El año pasado era estudiante.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Last year I was a student."
+  },
+  {
+   "id": "ebcc2629d2",
+   "es": "hace (tiempo)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "ago"
+  },
+  {
+   "id": "c5d756cbd6",
+   "es": "Estuve en México hace dos años.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I was in Mexico two years ago."
+  },
+  {
+   "id": "363daf8726",
+   "es": "nacido / nacida",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "born"
+  },
+  {
+   "id": "84065ed0ca",
+   "es": "nacido",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "born"
+  },
+  {
+   "id": "b0a2a088b5",
+   "es": "nacida",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "born"
+  },
+  {
+   "id": "68c10e1ce7",
+   "es": "nací",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "born"
+  },
+  {
+   "id": "d41e2a53f3",
+   "es": "Nací en Argentina.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I was born in Argentina."
+  },
+  {
+   "id": "cd99961a52",
+   "es": "cumpleaños",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "birthday"
+  },
+  {
+   "id": "a30eb69778",
+   "es": "Mi cumpleaños fue el domingo.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "My birthday was on Sunday."
+  },
+  {
+   "id": "5911d0156c",
+   "es": "fiesta",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "party"
+  },
+  {
+   "id": "0d7574fb95",
+   "es": "La fiesta fue divertida.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The party was fun."
+  },
+  {
+   "id": "5dbfdad98b",
+   "es": "ocupado / ocupada",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "busy"
+  },
+  {
+   "id": "d178403131",
+   "es": "ocupado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "busy"
+  },
+  {
+   "id": "f4a10d57a1",
+   "es": "ocupada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "busy"
+  },
+  {
+   "id": "97a254b407",
+   "es": "Ayer estaba ocupado.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I was busy yesterday."
+  },
+  {
+   "id": "6dba6550d1",
+   "es": "aburrido / aburrida",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "bored"
+  },
+  {
+   "id": "bbca7cb490",
+   "es": "aburrido",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "bored"
+  },
+  {
+   "id": "2347ccc445",
+   "es": "aburrida",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "bored"
+  },
+  {
+   "id": "981ea765f9",
+   "es": "Estábamos aburridos en casa.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We were bored at home."
+  },
+  {
+   "id": "7c3567d83a",
+   "es": "enojado / enojada",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "angry"
+  },
+  {
+   "id": "be0c8a4bff",
+   "es": "enojado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "angry"
+  },
+  {
+   "id": "bdf6e5ad5f",
+   "es": "enojada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "angry"
+  },
+  {
+   "id": "12cf1f9e3c",
+   "es": "enfadado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "angry"
+  },
+  {
+   "id": "92d205892c",
+   "es": "enfadada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "angry"
+  },
+  {
+   "id": "c195ea721b",
+   "es": "Mi papá estaba enojado.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My father was angry."
+  },
+  {
+   "id": "a3a9ad788c",
+   "es": "triste",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "sad"
+  },
+  {
+   "id": "36de4171de",
+   "es": "Anoche estaba triste.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She was sad last night."
+  },
+  {
+   "id": "a949bfda67",
+   "es": "entusiasmado / emocionado",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "excited"
+  },
+  {
+   "id": "3c2018d814",
+   "es": "entusiasmado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "excited"
+  },
+  {
+   "id": "1dd8effc8e",
+   "es": "entusiasmada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "excited"
+  },
+  {
+   "id": "07c43d9ca9",
+   "es": "emocionado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "excited"
+  },
+  {
+   "id": "a4c7edaa3d",
+   "es": "emocionada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "excited"
+  },
+  {
+   "id": "0576f8d213",
+   "es": "Los chicos estaban muy entusiasmados.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The children were very excited."
+  },
+  {
+   "id": "2b1f3d6457",
+   "es": "nervioso / nerviosa",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "nervous"
+  },
+  {
+   "id": "bb271d4f77",
+   "es": "nervioso",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "nervous"
+  },
+  {
+   "id": "8e5fc29d9e",
+   "es": "nerviosa",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "nervous"
+  },
+  {
+   "id": "cd33c4493c",
+   "es": "Estaba nervioso antes del examen.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I was nervous before the test."
+  },
+  {
+   "id": "5471750512",
+   "es": "tarde (con retraso)",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "late"
+  },
+  {
+   "id": "c33691fc78",
+   "es": "Llegué tarde al trabajo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I was late for work."
+  },
+  {
+   "id": "c4301ea823",
+   "es": "temprano",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "early"
+  },
+  {
+   "id": "fb3e20a57d",
+   "es": "Llegamos temprano a la fiesta.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We were early for the party."
+  },
+  {
+   "id": "98caf4d839",
+   "es": "Was y were",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "bb7c2f6e11",
+   "es": "El pasado de to be: I was, you were.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "077c574355",
+   "es": "El pasado de am/is es was (I, he, she, it). El de are es were (you, we, they).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "was"
+  },
+  {
+   "id": "ffbd0cedfd",
+   "es": "Ellos estaban en la fiesta.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "They were at the party."
+  },
+  {
+   "id": "75b789a211",
+   "es": "Ella estaba muy feliz.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She was very happy."
+  },
+  {
+   "id": "4568962de0",
+   "es": "¿Qué significa «yesterday»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "257a1b2dd6",
+   "es": "Ayer estaba cansado.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I was tired yesterday."
+  },
+  {
+   "id": "b696e87a74",
+   "es": "Wasn't y weren't",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "7b1b544059",
+   "es": "Negar y preguntar en pasado.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "471690e1ba",
+   "es": "Él no estaba en la escuela ayer.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "He wasn't at school yesterday."
+  },
+  {
+   "id": "97562e3a85",
+   "es": "No llegamos tarde.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "We weren't late."
+  },
+  {
+   "id": "ada422e26a",
+   "es": "¿Estabas en casa anoche?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Were you at home last night?"
+  },
+  {
+   "id": "a83448e484",
+   "es": "Para preguntar se invierte el orden: you were → Were you…?",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Were"
+  },
+  {
+   "id": "a4dd0ecfd0",
+   "es": "¿Ella estaba en la fiesta?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Was she at the party?"
+  },
+  {
+   "id": "769e0bd945",
+   "es": "Ella no estaba ocupada.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "She wasn't busy."
+  },
+  {
+   "id": "947654ba74",
+   "es": "Ayer, anoche, hace…",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "fe07ed98f8",
+   "es": "Decir cuándo pasó algo.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "286cdfee98",
+   "es": "Estuve en España hace dos años.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I was in Spain two years ago."
+  },
+  {
+   "id": "3cdf39edef",
+   "es": "Ago va después del tiempo: two years ago = hace dos años.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "ago"
+  },
+  {
+   "id": "2403c11861",
+   "es": "La semana pasada estuvimos en México.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "We were in Mexico last week."
+  },
+  {
+   "id": "26470f3b20",
+   "es": "Nací en 2005.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I was born in 2005."
+  },
+  {
+   "id": "6b45f22c09",
+   "es": "Con años se usa in: in 2005. Nacer = be born (I was born).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "in"
+  },
+  {
+   "id": "61c570fe2c",
+   "es": "¿Dónde naciste?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Where were you born? (Argentina)"
+  },
+  {
+   "id": "4b6647b51a",
+   "es": "Ella nació en Inglaterra.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She was born in England."
+  },
+  {
+   "id": "164d2b8c82",
+   "es": "Anoche estuve en casa.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I was at home last night."
+  },
+  {
+   "id": "2ef2c19a7c",
+   "es": "Cómo te sentías",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "a52f7b4114",
+   "es": "Estados de ánimo en pasado.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "b568b56c38",
+   "es": "Estaba triste porque su amiga no estaba.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She was sad because her friend wasn't there."
+  },
+  {
+   "id": "04e816310b",
+   "es": "No me aburrí. ¡La película fue divertida!",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I wasn't bored. The movie was fun!"
+  },
+  {
+   "id": "2ced58a228",
+   "es": "Ayer estaba muy ocupado.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I was very busy yesterday."
+  },
+  {
+   "id": "83c830ffe5",
+   "es": "La fiesta de cumpleaños",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "8254d52933",
+   "es": "Contar cómo fue un evento.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "698b0e3239",
+   "es": "¿Qué significa «early»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "953260b404",
+   "es": "No llegué tarde. ¡Llegué temprano!",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I wasn't late. I was early!"
+  },
+  {
+   "id": "6fe0ae7270",
+   "es": "¿La fiesta fue divertida?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Was the party fun? (sí)"
+  },
+  {
+   "id": "a5393742a9",
+   "es": "last week",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "When was your birthday? (last week)"
+  },
+  {
+   "id": "08fe3328cc",
+   "es": "¿Cuándo fue tu cumpleaños?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "When was your birthday? (last week)"
+  },
+  {
+   "id": "b856f0d469",
+   "es": "¿Estuviste en la fiesta anoche?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Were you at the party last night?"
+  },
+  {
+   "id": "affaef139d",
+   "es": "Una fiesta",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "df4143b3a7",
+   "es": "Cuéntale a un amigo cómo fue una fiesta o un cumpleaños (real o inventado): dónde fue, cuándo y cómo te sentías.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "689fd91862",
+   "es": "Usas was o were",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "94beb507a8",
+   "es": "Dices cuándo fue (yesterday, last week, last night, on Saturday…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "a5739666b3",
+   "es": "Dices cómo te sentías (happy, tired, excited, bored…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "6542ab6614",
+   "es": "Usé was y were.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "e20ad0dd6b",
+   "es": "Dije cuándo fue.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "35310fd873",
+   "es": "Dije cómo me sentía.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {}
+}

@@ -2628,5 +2628,1946 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
         ]
       }
     ]
+  },
+  "en-from-pt": {
+    "courseCode": "en-from-pt",
+    "version": "placement-v1",
+    "levels": [
+      {
+        "level": "A1",
+        "firstUnitTitle": "Cumprimentos e apresentações",
+        "units": 14
+      },
+      {
+        "level": "A2",
+        "firstUnitTitle": "O passado de to be",
+        "units": 17
+      },
+      {
+        "level": "B1",
+        "firstUnitTitle": "Experiências de vida",
+        "units": 12
+      }
+    ],
+    "bands": [
+      {
+        "level": "A1",
+        "half": 1,
+        "items": [
+          {
+            "sourceId": "ept.ex.we4zomscicfwsg",
+            "dimension": "vocabulary",
+            "unit": 2,
+            "exercise": {
+              "id": "placement.ept.ex.we4zomscicfwsg",
+              "lessonId": null,
+              "position": 1,
+              "type": "translation_choice",
+              "skill": "vocabulary",
+              "prompt": "O que significa “friend”?",
+              "payload": {
+                "type": "translation_choice",
+                "word": "friend",
+                "options": [
+                  "amigo / amiga",
+                  "professor / professora",
+                  "estudante",
+                  "nome"
+                ]
+              },
+              "answer": "amigo / amiga",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 12,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "ept.ex.e18xoxd43bb1vf",
+            "dimension": "grammar",
+            "unit": 4,
+            "exercise": {
+              "id": "placement.ept.ex.e18xoxd43bb1vf",
+              "lessonId": null,
+              "position": 2,
+              "type": "fill_blank",
+              "skill": "grammar",
+              "prompt": "Complete a frase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "I ___ a brother.",
+                "translation": "Tenho um irmão.",
+                "options": [
+                  "have",
+                  "has",
+                  "am",
+                  "is"
+                ]
+              },
+              "answer": "have",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "ept.ex.54g4iknoscze26",
+            "dimension": "sentences",
+            "unit": 7,
+            "exercise": {
+              "id": "placement.ept.ex.54g4iknoscze26",
+              "lessonId": null,
+              "position": 3,
+              "type": "fill_blank",
+              "skill": "vocabulary",
+              "prompt": "Complete a frase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "I am ___. I want water.",
+                "translation": "Estou com sede. Quero água.",
+                "options": [
+                  "thirsty",
+                  "hungry",
+                  "tired",
+                  "happy"
+                ]
+              },
+              "answer": "thirsty",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          }
+        ]
+      },
+      {
+        "level": "A1",
+        "half": 2,
+        "items": [
+          {
+            "sourceId": "ept.ex.0u2xawo0n92gf5",
+            "dimension": "grammar",
+            "unit": 9,
+            "exercise": {
+              "id": "placement.ept.ex.0u2xawo0n92gf5",
+              "lessonId": null,
+              "position": 4,
+              "type": "fill_blank",
+              "skill": "grammar",
+              "prompt": "Complete a frase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "My birthday is ___ May.",
+                "translation": "Meu aniversário é em maio.",
+                "options": [
+                  "in",
+                  "on",
+                  "at",
+                  "to"
+                ]
+              },
+              "answer": "in",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "ept.ex.ar8j75bcbfrs2j",
+            "dimension": "sentences",
+            "unit": 11,
+            "exercise": {
+              "id": "placement.ept.ex.ar8j75bcbfrs2j",
+              "lessonId": null,
+              "position": 5,
+              "type": "fill_blank",
+              "skill": "vocabulary",
+              "prompt": "Complete a frase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "Blue is my ___ color.",
+                "translation": "Azul é a minha cor favorita.",
+                "options": [
+                  "favorite",
+                  "fun",
+                  "very",
+                  "like"
+                ]
+              },
+              "answer": "favorite",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "ept.ex.ocs7ffjet8v06a",
+            "dimension": "structures",
+            "unit": 13,
+            "exercise": {
+              "id": "placement.ept.ex.ocs7ffjet8v06a",
+              "lessonId": null,
+              "position": 6,
+              "type": "order_words",
+              "skill": "sentence_building",
+              "prompt": "Ordene as palavras",
+              "payload": {
+                "type": "order_words",
+                "tokens": [
+                  "What",
+                  "is",
+                  "your",
+                  "email"
+                ],
+                "translation": "Qual é o seu e-mail?"
+              },
+              "answer": "What is your email?",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 25,
+              "wordIds": []
+            }
+          }
+        ]
+      },
+      {
+        "level": "A2",
+        "half": 1,
+        "items": [
+          {
+            "sourceId": "ept.ex.opblhtnb8esgrz",
+            "dimension": "sentences",
+            "unit": 4,
+            "exercise": {
+              "id": "placement.ept.ex.opblhtnb8esgrz",
+              "lessonId": null,
+              "position": 7,
+              "type": "fill_blank",
+              "skill": "vocabulary",
+              "prompt": "Complete a frase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "Can you take a ___ of us?",
+                "translation": "Você pode tirar uma foto da gente?",
+                "options": [
+                  "photo",
+                  "map",
+                  "ticket",
+                  "trip"
+                ]
+              },
+              "answer": "photo",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "ept.ex.qh05pkb0ps8xwd",
+            "dimension": "structures",
+            "unit": 5,
+            "exercise": {
+              "id": "placement.ept.ex.qh05pkb0ps8xwd",
+              "lessonId": null,
+              "position": 8,
+              "type": "order_words",
+              "skill": "sentence_building",
+              "prompt": "Ordene as palavras",
+              "payload": {
+                "type": "order_words",
+                "tokens": [
+                  "The",
+                  "children",
+                  "are",
+                  "laughing",
+                  "in",
+                  "the",
+                  "garden"
+                ],
+                "translation": "As crianças estão rindo no jardim."
+              },
+              "answer": "The children are laughing in the garden.",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 25,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "ept.ex.6ve6t10aknlf1e",
+            "dimension": "context",
+            "unit": 7,
+            "exercise": {
+              "id": "placement.ept.ex.6ve6t10aknlf1e",
+              "lessonId": null,
+              "position": 9,
+              "type": "short_answer",
+              "skill": "sentence_building",
+              "prompt": "Responda em inglês",
+              "payload": {
+                "type": "short_answer",
+                "question": "Who is taller, you or your father? (meu pai)",
+                "translation": "Quem é mais alto, você ou seu pai?"
+              },
+              "answer": "My father is taller.",
+              "acceptedAnswers": [
+                "My father.",
+                "My dad.",
+                "My dad is taller.",
+                "My father is taller than me."
+              ],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 30,
+              "wordIds": []
+            }
+          }
+        ]
+      },
+      {
+        "level": "A2",
+        "half": 2,
+        "items": [
+          {
+            "sourceId": "ept.ex.3a6rx38jzedqyr",
+            "dimension": "structures",
+            "unit": 12,
+            "exercise": {
+              "id": "placement.ept.ex.3a6rx38jzedqyr",
+              "lessonId": null,
+              "position": 10,
+              "type": "order_words",
+              "skill": "sentence_building",
+              "prompt": "Ordene as palavras",
+              "payload": {
+                "type": "order_words",
+                "tokens": [
+                  "I",
+                  "have",
+                  "never",
+                  "seen",
+                  "a",
+                  "famous",
+                  "person"
+                ],
+                "translation": "Nunca vi uma pessoa famosa."
+              },
+              "answer": "I have never seen a famous person.",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 25,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "ept.ex.yls6q6pg4eop7c",
+            "dimension": "context",
+            "unit": 14,
+            "exercise": {
+              "id": "placement.ept.ex.yls6q6pg4eop7c",
+              "lessonId": null,
+              "position": 11,
+              "type": "context_choice",
+              "skill": "reading",
+              "prompt": "Leia e responda",
+              "payload": {
+                "type": "context_choice",
+                "stimulus": {
+                  "kind": "reading",
+                  "id": "ept.stim.a2-u14-party",
+                  "document": "message",
+                  "setting": "Mia escreve para os amigos.",
+                  "from": "Mia",
+                  "lines": [
+                    "Hi friends!",
+                    "It's my birthday on Saturday!",
+                    "Would you like to come to my party?",
+                    "It's at my house at eight.",
+                    "We can dance and sing together. I hope you're free!",
+                    "Mia"
+                  ]
+                },
+                "question": "O que a Mia está comemorando?",
+                "options": [
+                  "O aniversário dela",
+                  "Uma festa do trabalho",
+                  "Que ela se mudou",
+                  "Um show"
+                ]
+              },
+              "answer": "O aniversário dela",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 45,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "ept.ex.54j5prnk3sfn61",
+            "dimension": "grammar",
+            "unit": 16,
+            "exercise": {
+              "id": "placement.ept.ex.54j5prnk3sfn61",
+              "lessonId": null,
+              "position": 12,
+              "type": "fill_blank",
+              "skill": "grammar",
+              "prompt": "Complete a frase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "Thanks for your email. I'll ___ you the photos tonight.",
+                "translation": "Obrigado pelo seu e-mail. Hoje à noite eu te mando as fotos.",
+                "options": [
+                  "send",
+                  "sending",
+                  "sends",
+                  "reply"
+                ]
+              },
+              "answer": "send",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          }
+        ]
+      },
+      {
+        "level": "B1",
+        "half": 1,
+        "items": [
+          {
+            "sourceId": "ept.ex.47esoui7nigrri",
+            "dimension": "structures",
+            "unit": 2,
+            "exercise": {
+              "id": "placement.ept.ex.47esoui7nigrri",
+              "lessonId": null,
+              "position": 13,
+              "type": "order_words",
+              "skill": "sentence_building",
+              "prompt": "Ordene as palavras",
+              "payload": {
+                "type": "order_words",
+                "tokens": [
+                  "I",
+                  "practice",
+                  "the",
+                  "piano",
+                  "every",
+                  "day"
+                ],
+                "translation": "Pratico piano todos os dias."
+              },
+              "answer": "I practice the piano every day.",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 25,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "ept.ex.862tq5jnc3fclg",
+            "dimension": "context",
+            "unit": 4,
+            "exercise": {
+              "id": "placement.ept.ex.862tq5jnc3fclg",
+              "lessonId": null,
+              "position": 14,
+              "type": "context_choice",
+              "skill": "reading",
+              "prompt": "Leia e responda",
+              "payload": {
+                "type": "context_choice",
+                "stimulus": {
+                  "kind": "reading",
+                  "id": "ept.stim.b1-u4-course",
+                  "document": "email",
+                  "setting": "Kate escreve para uma escola de idiomas.",
+                  "from": "Kate Brown",
+                  "title": "Summer course",
+                  "lines": [
+                    "Dear Sir or Madam,",
+                    "I would like to apply for the summer English course.",
+                    "I am a nurse, and my goal is to work abroad in the future.",
+                    "I am free from July until September.",
+                    "I look forward to hearing from you.",
+                    "Best wishes, Kate Brown"
+                  ]
+                },
+                "question": "Por que a Kate quer fazer o curso?",
+                "options": [
+                  "Quer trabalhar no exterior no futuro",
+                  "Quer ser professora",
+                  "Precisa de um emprego de enfermeira",
+                  "Vai se aposentar"
+                ]
+              },
+              "answer": "Quer trabalhar no exterior no futuro",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 60,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "ept.ex.5ak0yaj1p8ijse",
+            "dimension": "grammar",
+            "unit": 5,
+            "exercise": {
+              "id": "placement.ept.ex.5ak0yaj1p8ijse",
+              "lessonId": null,
+              "position": 15,
+              "type": "fill_blank",
+              "skill": "grammar",
+              "prompt": "Complete a frase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "Are we ___ to eat in the classroom?",
+                "translation": "A gente pode comer na sala de aula?",
+                "options": [
+                  "allowed",
+                  "must",
+                  "have",
+                  "need"
+                ]
+              },
+              "answer": "allowed",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          }
+        ]
+      },
+      {
+        "level": "B1",
+        "half": 2,
+        "items": [
+          {
+            "sourceId": "ept.ex.rsandeikh8i015",
+            "dimension": "structures",
+            "unit": 8,
+            "exercise": {
+              "id": "placement.ept.ex.rsandeikh8i015",
+              "lessonId": null,
+              "position": 16,
+              "type": "order_words",
+              "skill": "sentence_building",
+              "prompt": "Ordene as palavras",
+              "payload": {
+                "type": "order_words",
+                "tokens": [
+                  "This",
+                  "is",
+                  "the",
+                  "app",
+                  "that",
+                  "I",
+                  "use",
+                  "every",
+                  "day"
+                ],
+                "translation": "Este é o app que eu uso todos os dias."
+              },
+              "answer": "This is the app that I use every day.",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 25,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "ept.ex.sftxlrwi799fc0",
+            "dimension": "context",
+            "unit": 10,
+            "exercise": {
+              "id": "placement.ept.ex.sftxlrwi799fc0",
+              "lessonId": null,
+              "position": 17,
+              "type": "context_choice",
+              "skill": "reading",
+              "prompt": "Leia e responda",
+              "payload": {
+                "type": "context_choice",
+                "stimulus": {
+                  "kind": "reading",
+                  "id": "ept.stim.b1-u10-fake",
+                  "document": "post",
+                  "setting": "Um jornalista escreve sobre notícias falsas.",
+                  "from": "Ben",
+                  "title": "Check before you share",
+                  "lines": [
+                    "Last week, a lot of people shared an article which said that the city zoo was closing.",
+                    "It was fake news. The zoo explained that it was open as usual.",
+                    "Before you share a story, check the source.",
+                    "Is it a real newspaper? Has the story been on other news sites?"
+                  ]
+                },
+                "question": "O que dizia a matéria falsa?",
+                "options": [
+                  "Que o zoológico ia fechar",
+                  "Que o zoológico era de graça",
+                  "Que iam abrir um zoológico novo",
+                  "Que havia um incêndio"
+                ]
+              },
+              "answer": "Que o zoológico ia fechar",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 60,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "ept.ex.gil9q53d8cvmcq",
+            "dimension": "grammar",
+            "unit": 11,
+            "exercise": {
+              "id": "placement.ept.ex.gil9q53d8cvmcq",
+              "lessonId": null,
+              "position": 18,
+              "type": "fill_blank",
+              "skill": "grammar",
+              "prompt": "Complete a frase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "I wish I ___ more free time.",
+                "translation": "Quem me dera ter mais tempo livre.",
+                "options": [
+                  "had",
+                  "have",
+                  "will have",
+                  "having"
+                ]
+              },
+              "answer": "had",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "en-from-it": {
+    "courseCode": "en-from-it",
+    "version": "placement-v1",
+    "levels": [
+      {
+        "level": "A1",
+        "firstUnitTitle": "Saluti e presentazioni",
+        "units": 14
+      },
+      {
+        "level": "A2",
+        "firstUnitTitle": "Il passato di to be",
+        "units": 17
+      },
+      {
+        "level": "B1",
+        "firstUnitTitle": "Esperienze di vita",
+        "units": 12
+      }
+    ],
+    "bands": [
+      {
+        "level": "A1",
+        "half": 1,
+        "items": [
+          {
+            "sourceId": "eit.ex.uph3x0xi2dstaw",
+            "dimension": "vocabulary",
+            "unit": 2,
+            "exercise": {
+              "id": "placement.eit.ex.uph3x0xi2dstaw",
+              "lessonId": null,
+              "position": 1,
+              "type": "translation_choice",
+              "skill": "vocabulary",
+              "prompt": "Che cosa significa “friend”?",
+              "payload": {
+                "type": "translation_choice",
+                "word": "friend",
+                "options": [
+                  "amico / amica",
+                  "professore / professoressa",
+                  "studente",
+                  "nome"
+                ]
+              },
+              "answer": "amico / amica",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 12,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "eit.ex.rx73idq2oewgpf",
+            "dimension": "grammar",
+            "unit": 4,
+            "exercise": {
+              "id": "placement.eit.ex.rx73idq2oewgpf",
+              "lessonId": null,
+              "position": 2,
+              "type": "fill_blank",
+              "skill": "grammar",
+              "prompt": "Completa la frase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "I ___ a brother.",
+                "translation": "Ho un fratello.",
+                "options": [
+                  "have",
+                  "has",
+                  "am",
+                  "is"
+                ]
+              },
+              "answer": "have",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "eit.ex.3qumpun963q8kc",
+            "dimension": "sentences",
+            "unit": 7,
+            "exercise": {
+              "id": "placement.eit.ex.3qumpun963q8kc",
+              "lessonId": null,
+              "position": 3,
+              "type": "fill_blank",
+              "skill": "vocabulary",
+              "prompt": "Completa la frase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "I am ___. I want water.",
+                "translation": "Ho sete. Voglio dell’acqua.",
+                "options": [
+                  "thirsty",
+                  "hungry",
+                  "tired",
+                  "happy"
+                ]
+              },
+              "answer": "thirsty",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          }
+        ]
+      },
+      {
+        "level": "A1",
+        "half": 2,
+        "items": [
+          {
+            "sourceId": "eit.ex.y36tcjxmt24hld",
+            "dimension": "grammar",
+            "unit": 9,
+            "exercise": {
+              "id": "placement.eit.ex.y36tcjxmt24hld",
+              "lessonId": null,
+              "position": 4,
+              "type": "fill_blank",
+              "skill": "grammar",
+              "prompt": "Completa la frase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "My birthday is ___ May.",
+                "translation": "Il mio compleanno è a maggio.",
+                "options": [
+                  "in",
+                  "on",
+                  "at",
+                  "to"
+                ]
+              },
+              "answer": "in",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "eit.ex.8yg88afcoig9ez",
+            "dimension": "sentences",
+            "unit": 11,
+            "exercise": {
+              "id": "placement.eit.ex.8yg88afcoig9ez",
+              "lessonId": null,
+              "position": 5,
+              "type": "fill_blank",
+              "skill": "vocabulary",
+              "prompt": "Completa la frase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "Blue is my ___ color.",
+                "translation": "Il blu è il mio colore preferito.",
+                "options": [
+                  "favorite",
+                  "fun",
+                  "very",
+                  "like"
+                ]
+              },
+              "answer": "favorite",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "eit.ex.v0d3anjlxz1dqh",
+            "dimension": "structures",
+            "unit": 13,
+            "exercise": {
+              "id": "placement.eit.ex.v0d3anjlxz1dqh",
+              "lessonId": null,
+              "position": 6,
+              "type": "order_words",
+              "skill": "sentence_building",
+              "prompt": "Metti le parole in ordine",
+              "payload": {
+                "type": "order_words",
+                "tokens": [
+                  "What",
+                  "is",
+                  "your",
+                  "email"
+                ],
+                "translation": "Qual è la tua email?"
+              },
+              "answer": "What is your email?",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 25,
+              "wordIds": []
+            }
+          }
+        ]
+      },
+      {
+        "level": "A2",
+        "half": 1,
+        "items": [
+          {
+            "sourceId": "eit.ex.lb30mq4ab9wmzt",
+            "dimension": "sentences",
+            "unit": 4,
+            "exercise": {
+              "id": "placement.eit.ex.lb30mq4ab9wmzt",
+              "lessonId": null,
+              "position": 7,
+              "type": "fill_blank",
+              "skill": "vocabulary",
+              "prompt": "Completa la frase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "Can you take a ___ of us?",
+                "translation": "Ci fai una foto?",
+                "options": [
+                  "photo",
+                  "map",
+                  "ticket",
+                  "trip"
+                ]
+              },
+              "answer": "photo",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "eit.ex.4ej9gn6fp655yo",
+            "dimension": "structures",
+            "unit": 5,
+            "exercise": {
+              "id": "placement.eit.ex.4ej9gn6fp655yo",
+              "lessonId": null,
+              "position": 8,
+              "type": "order_words",
+              "skill": "sentence_building",
+              "prompt": "Metti le parole in ordine",
+              "payload": {
+                "type": "order_words",
+                "tokens": [
+                  "The",
+                  "children",
+                  "are",
+                  "laughing",
+                  "in",
+                  "the",
+                  "garden"
+                ],
+                "translation": "I bambini stanno ridendo in giardino."
+              },
+              "answer": "The children are laughing in the garden.",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 25,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "eit.ex.qpbkto91y0ybve",
+            "dimension": "context",
+            "unit": 7,
+            "exercise": {
+              "id": "placement.eit.ex.qpbkto91y0ybve",
+              "lessonId": null,
+              "position": 9,
+              "type": "short_answer",
+              "skill": "sentence_building",
+              "prompt": "Rispondi in inglese",
+              "payload": {
+                "type": "short_answer",
+                "question": "Who is taller, you or your father? (mio padre)",
+                "translation": "Chi è più alto, tu o tuo padre?"
+              },
+              "answer": "My father is taller.",
+              "acceptedAnswers": [
+                "My father.",
+                "My dad.",
+                "My dad is taller.",
+                "My father is taller than me."
+              ],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 30,
+              "wordIds": []
+            }
+          }
+        ]
+      },
+      {
+        "level": "A2",
+        "half": 2,
+        "items": [
+          {
+            "sourceId": "eit.ex.r38qnnkbpvwwec",
+            "dimension": "structures",
+            "unit": 12,
+            "exercise": {
+              "id": "placement.eit.ex.r38qnnkbpvwwec",
+              "lessonId": null,
+              "position": 10,
+              "type": "order_words",
+              "skill": "sentence_building",
+              "prompt": "Metti le parole in ordine",
+              "payload": {
+                "type": "order_words",
+                "tokens": [
+                  "I",
+                  "have",
+                  "never",
+                  "seen",
+                  "a",
+                  "famous",
+                  "person"
+                ],
+                "translation": "Non ho mai visto una persona famosa."
+              },
+              "answer": "I have never seen a famous person.",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 25,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "eit.ex.dhazm9pif7ynh4",
+            "dimension": "context",
+            "unit": 14,
+            "exercise": {
+              "id": "placement.eit.ex.dhazm9pif7ynh4",
+              "lessonId": null,
+              "position": 11,
+              "type": "context_choice",
+              "skill": "reading",
+              "prompt": "Leggi e rispondi",
+              "payload": {
+                "type": "context_choice",
+                "stimulus": {
+                  "kind": "reading",
+                  "id": "eit.stim.a2-u14-party",
+                  "document": "message",
+                  "setting": "Mia scrive ai suoi amici.",
+                  "from": "Mia",
+                  "lines": [
+                    "Hi friends!",
+                    "It's my birthday on Saturday!",
+                    "Would you like to come to my party?",
+                    "It's at my house at eight.",
+                    "We can dance and sing together. I hope you're free!",
+                    "Mia"
+                  ]
+                },
+                "question": "Che cosa festeggia Mia?",
+                "options": [
+                  "Il suo compleanno",
+                  "Una festa di lavoro",
+                  "Che ha cambiato casa",
+                  "Un concerto"
+                ]
+              },
+              "answer": "Il suo compleanno",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 45,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "eit.ex.ianx861ab66vx9",
+            "dimension": "grammar",
+            "unit": 16,
+            "exercise": {
+              "id": "placement.eit.ex.ianx861ab66vx9",
+              "lessonId": null,
+              "position": 12,
+              "type": "fill_blank",
+              "skill": "grammar",
+              "prompt": "Completa la frase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "Thanks for your email. I'll ___ you the photos tonight.",
+                "translation": "Grazie per la tua email. Stasera ti mando le foto.",
+                "options": [
+                  "send",
+                  "sending",
+                  "sends",
+                  "reply"
+                ]
+              },
+              "answer": "send",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          }
+        ]
+      },
+      {
+        "level": "B1",
+        "half": 1,
+        "items": [
+          {
+            "sourceId": "eit.ex.rvhvo25mi65hja",
+            "dimension": "structures",
+            "unit": 2,
+            "exercise": {
+              "id": "placement.eit.ex.rvhvo25mi65hja",
+              "lessonId": null,
+              "position": 13,
+              "type": "order_words",
+              "skill": "sentence_building",
+              "prompt": "Metti le parole in ordine",
+              "payload": {
+                "type": "order_words",
+                "tokens": [
+                  "I",
+                  "practice",
+                  "the",
+                  "piano",
+                  "every",
+                  "day"
+                ],
+                "translation": "Mi esercito al pianoforte tutti i giorni."
+              },
+              "answer": "I practice the piano every day.",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 25,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "eit.ex.t62dv85vm1gyd6",
+            "dimension": "context",
+            "unit": 4,
+            "exercise": {
+              "id": "placement.eit.ex.t62dv85vm1gyd6",
+              "lessonId": null,
+              "position": 14,
+              "type": "context_choice",
+              "skill": "reading",
+              "prompt": "Leggi e rispondi",
+              "payload": {
+                "type": "context_choice",
+                "stimulus": {
+                  "kind": "reading",
+                  "id": "eit.stim.b1-u4-course",
+                  "document": "email",
+                  "setting": "Kate scrive a una scuola di lingue.",
+                  "from": "Kate Brown",
+                  "title": "Summer course",
+                  "lines": [
+                    "Dear Sir or Madam,",
+                    "I would like to apply for the summer English course.",
+                    "I am a nurse, and my goal is to work abroad in the future.",
+                    "I am free from July until September.",
+                    "I look forward to hearing from you.",
+                    "Best wishes, Kate Brown"
+                  ]
+                },
+                "question": "Perché Kate vuole fare il corso?",
+                "options": [
+                  "In futuro vuole lavorare all’estero",
+                  "Vuole diventare insegnante",
+                  "Ha bisogno di un lavoro da infermiera",
+                  "Sta per andare in pensione"
+                ]
+              },
+              "answer": "In futuro vuole lavorare all’estero",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 60,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "eit.ex.eq7of2gvgv4988",
+            "dimension": "grammar",
+            "unit": 5,
+            "exercise": {
+              "id": "placement.eit.ex.eq7of2gvgv4988",
+              "lessonId": null,
+              "position": 15,
+              "type": "fill_blank",
+              "skill": "grammar",
+              "prompt": "Completa la frase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "Are we ___ to eat in the classroom?",
+                "translation": "Si può mangiare in aula?",
+                "options": [
+                  "allowed",
+                  "must",
+                  "have",
+                  "need"
+                ]
+              },
+              "answer": "allowed",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          }
+        ]
+      },
+      {
+        "level": "B1",
+        "half": 2,
+        "items": [
+          {
+            "sourceId": "eit.ex.q1swsyy64n8w0l",
+            "dimension": "structures",
+            "unit": 8,
+            "exercise": {
+              "id": "placement.eit.ex.q1swsyy64n8w0l",
+              "lessonId": null,
+              "position": 16,
+              "type": "order_words",
+              "skill": "sentence_building",
+              "prompt": "Metti le parole in ordine",
+              "payload": {
+                "type": "order_words",
+                "tokens": [
+                  "This",
+                  "is",
+                  "the",
+                  "app",
+                  "that",
+                  "I",
+                  "use",
+                  "every",
+                  "day"
+                ],
+                "translation": "Questa è l’app che uso ogni giorno."
+              },
+              "answer": "This is the app that I use every day.",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 25,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "eit.ex.i1th892pjv9ts7",
+            "dimension": "context",
+            "unit": 10,
+            "exercise": {
+              "id": "placement.eit.ex.i1th892pjv9ts7",
+              "lessonId": null,
+              "position": 17,
+              "type": "context_choice",
+              "skill": "reading",
+              "prompt": "Leggi e rispondi",
+              "payload": {
+                "type": "context_choice",
+                "stimulus": {
+                  "kind": "reading",
+                  "id": "eit.stim.b1-u10-fake",
+                  "document": "post",
+                  "setting": "Un giornalista scrive sulle notizie false.",
+                  "from": "Ben",
+                  "title": "Check before you share",
+                  "lines": [
+                    "Last week, a lot of people shared an article which said that the city zoo was closing.",
+                    "It was fake news. The zoo explained that it was open as usual.",
+                    "Before you share a story, check the source.",
+                    "Is it a real newspaper? Has the story been on other news sites?"
+                  ]
+                },
+                "question": "Che cosa diceva l’articolo falso?",
+                "options": [
+                  "Che lo zoo stava per chiudere",
+                  "Che lo zoo era gratis",
+                  "Che aprivano uno zoo nuovo",
+                  "Che c’era un incendio"
+                ]
+              },
+              "answer": "Che lo zoo stava per chiudere",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 60,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "eit.ex.d1je7z64u6sbae",
+            "dimension": "grammar",
+            "unit": 11,
+            "exercise": {
+              "id": "placement.eit.ex.d1je7z64u6sbae",
+              "lessonId": null,
+              "position": 18,
+              "type": "fill_blank",
+              "skill": "grammar",
+              "prompt": "Completa la frase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "I wish I ___ more free time.",
+                "translation": "Magari avessi più tempo libero.",
+                "options": [
+                  "had",
+                  "have",
+                  "will have",
+                  "having"
+                ]
+              },
+              "answer": "had",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "en-from-fr": {
+    "courseCode": "en-from-fr",
+    "version": "placement-v1",
+    "levels": [
+      {
+        "level": "A1",
+        "firstUnitTitle": "Salutations et présentations",
+        "units": 14
+      },
+      {
+        "level": "A2",
+        "firstUnitTitle": "Le passé de to be",
+        "units": 17
+      },
+      {
+        "level": "B1",
+        "firstUnitTitle": "Expériences de vie",
+        "units": 12
+      }
+    ],
+    "bands": [
+      {
+        "level": "A1",
+        "half": 1,
+        "items": [
+          {
+            "sourceId": "efr.ex.9t444fl39bpoog",
+            "dimension": "vocabulary",
+            "unit": 2,
+            "exercise": {
+              "id": "placement.efr.ex.9t444fl39bpoog",
+              "lessonId": null,
+              "position": 1,
+              "type": "translation_choice",
+              "skill": "vocabulary",
+              "prompt": "Que veut dire « friend » ?",
+              "payload": {
+                "type": "translation_choice",
+                "word": "friend",
+                "options": [
+                  "ami / amie",
+                  "professeur / professeure",
+                  "étudiant / étudiante",
+                  "nom"
+                ]
+              },
+              "answer": "ami / amie",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 12,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "efr.ex.kqkrb1pct2kjnd",
+            "dimension": "grammar",
+            "unit": 4,
+            "exercise": {
+              "id": "placement.efr.ex.kqkrb1pct2kjnd",
+              "lessonId": null,
+              "position": 2,
+              "type": "fill_blank",
+              "skill": "grammar",
+              "prompt": "Complète la phrase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "I ___ a brother.",
+                "translation": "J’ai un frère.",
+                "options": [
+                  "have",
+                  "has",
+                  "am",
+                  "is"
+                ]
+              },
+              "answer": "have",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "efr.ex.8qmw3d9ofq9ay2",
+            "dimension": "sentences",
+            "unit": 7,
+            "exercise": {
+              "id": "placement.efr.ex.8qmw3d9ofq9ay2",
+              "lessonId": null,
+              "position": 3,
+              "type": "fill_blank",
+              "skill": "vocabulary",
+              "prompt": "Complète la phrase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "I am ___. I want water.",
+                "translation": "J’ai soif. Je veux de l’eau.",
+                "options": [
+                  "thirsty",
+                  "hungry",
+                  "tired",
+                  "happy"
+                ]
+              },
+              "answer": "thirsty",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          }
+        ]
+      },
+      {
+        "level": "A1",
+        "half": 2,
+        "items": [
+          {
+            "sourceId": "efr.ex.jau5skbbopoyh2",
+            "dimension": "grammar",
+            "unit": 9,
+            "exercise": {
+              "id": "placement.efr.ex.jau5skbbopoyh2",
+              "lessonId": null,
+              "position": 4,
+              "type": "fill_blank",
+              "skill": "grammar",
+              "prompt": "Complète la phrase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "My birthday is ___ May.",
+                "translation": "Mon anniversaire est en mai.",
+                "options": [
+                  "in",
+                  "on",
+                  "at",
+                  "to"
+                ]
+              },
+              "answer": "in",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "efr.ex.w9ocrkic0goab6",
+            "dimension": "sentences",
+            "unit": 11,
+            "exercise": {
+              "id": "placement.efr.ex.w9ocrkic0goab6",
+              "lessonId": null,
+              "position": 5,
+              "type": "fill_blank",
+              "skill": "vocabulary",
+              "prompt": "Complète la phrase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "Blue is my ___ color.",
+                "translation": "Le bleu est ma couleur préférée.",
+                "options": [
+                  "favorite",
+                  "fun",
+                  "very",
+                  "like"
+                ]
+              },
+              "answer": "favorite",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "efr.ex.zfm1z2kjk6eluf",
+            "dimension": "structures",
+            "unit": 13,
+            "exercise": {
+              "id": "placement.efr.ex.zfm1z2kjk6eluf",
+              "lessonId": null,
+              "position": 6,
+              "type": "order_words",
+              "skill": "sentence_building",
+              "prompt": "Remets les mots dans l’ordre",
+              "payload": {
+                "type": "order_words",
+                "tokens": [
+                  "What",
+                  "is",
+                  "your",
+                  "email"
+                ],
+                "translation": "Quelle est ton adresse e-mail ?"
+              },
+              "answer": "What is your email?",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 25,
+              "wordIds": []
+            }
+          }
+        ]
+      },
+      {
+        "level": "A2",
+        "half": 1,
+        "items": [
+          {
+            "sourceId": "efr.ex.36gkoot0scwo6a",
+            "dimension": "sentences",
+            "unit": 4,
+            "exercise": {
+              "id": "placement.efr.ex.36gkoot0scwo6a",
+              "lessonId": null,
+              "position": 7,
+              "type": "fill_blank",
+              "skill": "vocabulary",
+              "prompt": "Complète la phrase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "Can you take a ___ of us?",
+                "translation": "Tu peux nous prendre en photo ?",
+                "options": [
+                  "photo",
+                  "map",
+                  "ticket",
+                  "trip"
+                ]
+              },
+              "answer": "photo",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "efr.ex.90zd4ac320p974",
+            "dimension": "structures",
+            "unit": 5,
+            "exercise": {
+              "id": "placement.efr.ex.90zd4ac320p974",
+              "lessonId": null,
+              "position": 8,
+              "type": "order_words",
+              "skill": "sentence_building",
+              "prompt": "Remets les mots dans l’ordre",
+              "payload": {
+                "type": "order_words",
+                "tokens": [
+                  "The",
+                  "children",
+                  "are",
+                  "laughing",
+                  "in",
+                  "the",
+                  "garden"
+                ],
+                "translation": "Les enfants sont en train de rire dans le jardin."
+              },
+              "answer": "The children are laughing in the garden.",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 25,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "efr.ex.2f8nu9v8vd7hf2",
+            "dimension": "context",
+            "unit": 7,
+            "exercise": {
+              "id": "placement.efr.ex.2f8nu9v8vd7hf2",
+              "lessonId": null,
+              "position": 9,
+              "type": "short_answer",
+              "skill": "sentence_building",
+              "prompt": "Réponds en anglais",
+              "payload": {
+                "type": "short_answer",
+                "question": "Who is taller, you or your father? (mon père)",
+                "translation": "Qui est le plus grand, toi ou ton père ?"
+              },
+              "answer": "My father is taller.",
+              "acceptedAnswers": [
+                "My father.",
+                "My dad.",
+                "My dad is taller.",
+                "My father is taller than me."
+              ],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 30,
+              "wordIds": []
+            }
+          }
+        ]
+      },
+      {
+        "level": "A2",
+        "half": 2,
+        "items": [
+          {
+            "sourceId": "efr.ex.929ogbbc43hj4p",
+            "dimension": "structures",
+            "unit": 12,
+            "exercise": {
+              "id": "placement.efr.ex.929ogbbc43hj4p",
+              "lessonId": null,
+              "position": 10,
+              "type": "order_words",
+              "skill": "sentence_building",
+              "prompt": "Remets les mots dans l’ordre",
+              "payload": {
+                "type": "order_words",
+                "tokens": [
+                  "I",
+                  "have",
+                  "never",
+                  "seen",
+                  "a",
+                  "famous",
+                  "person"
+                ],
+                "translation": "Je n’ai jamais vu de personne célèbre."
+              },
+              "answer": "I have never seen a famous person.",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 25,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "efr.ex.9y9f8xck8ym4sn",
+            "dimension": "context",
+            "unit": 14,
+            "exercise": {
+              "id": "placement.efr.ex.9y9f8xck8ym4sn",
+              "lessonId": null,
+              "position": 11,
+              "type": "context_choice",
+              "skill": "reading",
+              "prompt": "Lis et réponds",
+              "payload": {
+                "type": "context_choice",
+                "stimulus": {
+                  "kind": "reading",
+                  "id": "efr.stim.a2-u14-party",
+                  "document": "message",
+                  "setting": "Mia écrit à ses amis.",
+                  "from": "Mia",
+                  "lines": [
+                    "Hi friends!",
+                    "It's my birthday on Saturday!",
+                    "Would you like to come to my party?",
+                    "It's at my house at eight.",
+                    "We can dance and sing together. I hope you're free!",
+                    "Mia"
+                  ]
+                },
+                "question": "Que fête Mia ?",
+                "options": [
+                  "Son anniversaire",
+                  "Une fête du travail",
+                  "Son déménagement",
+                  "Un concert"
+                ]
+              },
+              "answer": "Son anniversaire",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 45,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "efr.ex.63m0tmjbv99rgc",
+            "dimension": "grammar",
+            "unit": 16,
+            "exercise": {
+              "id": "placement.efr.ex.63m0tmjbv99rgc",
+              "lessonId": null,
+              "position": 12,
+              "type": "fill_blank",
+              "skill": "grammar",
+              "prompt": "Complète la phrase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "Thanks for your email. I'll ___ you the photos tonight.",
+                "translation": "Merci pour ton e-mail. Je t’envoie les photos ce soir.",
+                "options": [
+                  "send",
+                  "sending",
+                  "sends",
+                  "reply"
+                ]
+              },
+              "answer": "send",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          }
+        ]
+      },
+      {
+        "level": "B1",
+        "half": 1,
+        "items": [
+          {
+            "sourceId": "efr.ex.v6yx1fk8n2c6l2",
+            "dimension": "structures",
+            "unit": 2,
+            "exercise": {
+              "id": "placement.efr.ex.v6yx1fk8n2c6l2",
+              "lessonId": null,
+              "position": 13,
+              "type": "order_words",
+              "skill": "sentence_building",
+              "prompt": "Remets les mots dans l’ordre",
+              "payload": {
+                "type": "order_words",
+                "tokens": [
+                  "I",
+                  "practice",
+                  "the",
+                  "piano",
+                  "every",
+                  "day"
+                ],
+                "translation": "Je fais du piano tous les jours."
+              },
+              "answer": "I practice the piano every day.",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 25,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "efr.ex.u1vreocjj1z5io",
+            "dimension": "context",
+            "unit": 4,
+            "exercise": {
+              "id": "placement.efr.ex.u1vreocjj1z5io",
+              "lessonId": null,
+              "position": 14,
+              "type": "context_choice",
+              "skill": "reading",
+              "prompt": "Lis et réponds",
+              "payload": {
+                "type": "context_choice",
+                "stimulus": {
+                  "kind": "reading",
+                  "id": "efr.stim.b1-u4-course",
+                  "document": "email",
+                  "setting": "Kate écrit à une école de langues.",
+                  "from": "Kate Brown",
+                  "title": "Summer course",
+                  "lines": [
+                    "Dear Sir or Madam,",
+                    "I would like to apply for the summer English course.",
+                    "I am a nurse, and my goal is to work abroad in the future.",
+                    "I am free from July until September.",
+                    "I look forward to hearing from you.",
+                    "Best wishes, Kate Brown"
+                  ]
+                },
+                "question": "Pourquoi Kate veut-elle suivre ce cours ?",
+                "options": [
+                  "Elle veut travailler à l’étranger plus tard",
+                  "Elle veut devenir professeure",
+                  "Elle a besoin d’un poste d’infirmière",
+                  "Elle va prendre sa retraite"
+                ]
+              },
+              "answer": "Elle veut travailler à l’étranger plus tard",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 60,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "efr.ex.1x057qy3veib3q",
+            "dimension": "grammar",
+            "unit": 5,
+            "exercise": {
+              "id": "placement.efr.ex.1x057qy3veib3q",
+              "lessonId": null,
+              "position": 15,
+              "type": "fill_blank",
+              "skill": "grammar",
+              "prompt": "Complète la phrase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "Are we ___ to eat in the classroom?",
+                "translation": "On a le droit de manger dans la salle de classe ?",
+                "options": [
+                  "allowed",
+                  "must",
+                  "have",
+                  "need"
+                ]
+              },
+              "answer": "allowed",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          }
+        ]
+      },
+      {
+        "level": "B1",
+        "half": 2,
+        "items": [
+          {
+            "sourceId": "efr.ex.yf9afb1my7qht1",
+            "dimension": "structures",
+            "unit": 8,
+            "exercise": {
+              "id": "placement.efr.ex.yf9afb1my7qht1",
+              "lessonId": null,
+              "position": 16,
+              "type": "order_words",
+              "skill": "sentence_building",
+              "prompt": "Remets les mots dans l’ordre",
+              "payload": {
+                "type": "order_words",
+                "tokens": [
+                  "This",
+                  "is",
+                  "the",
+                  "app",
+                  "that",
+                  "I",
+                  "use",
+                  "every",
+                  "day"
+                ],
+                "translation": "C’est l’appli que j’utilise tous les jours."
+              },
+              "answer": "This is the app that I use every day.",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 25,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "efr.ex.zzxhgxdcg6r3hp",
+            "dimension": "context",
+            "unit": 10,
+            "exercise": {
+              "id": "placement.efr.ex.zzxhgxdcg6r3hp",
+              "lessonId": null,
+              "position": 17,
+              "type": "context_choice",
+              "skill": "reading",
+              "prompt": "Lis et réponds",
+              "payload": {
+                "type": "context_choice",
+                "stimulus": {
+                  "kind": "reading",
+                  "id": "efr.stim.b1-u10-fake",
+                  "document": "post",
+                  "setting": "Un journaliste écrit sur les fausses informations.",
+                  "from": "Ben",
+                  "title": "Check before you share",
+                  "lines": [
+                    "Last week, a lot of people shared an article which said that the city zoo was closing.",
+                    "It was fake news. The zoo explained that it was open as usual.",
+                    "Before you share a story, check the source.",
+                    "Is it a real newspaper? Has the story been on other news sites?"
+                  ]
+                },
+                "question": "Que disait le faux article ?",
+                "options": [
+                  "Que le zoo allait fermer",
+                  "Que le zoo était gratuit",
+                  "Qu’un nouveau zoo ouvrait",
+                  "Qu’il y avait un incendie"
+                ]
+              },
+              "answer": "Que le zoo allait fermer",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 60,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "efr.ex.uyrkr5ot02rjuk",
+            "dimension": "grammar",
+            "unit": 11,
+            "exercise": {
+              "id": "placement.efr.ex.uyrkr5ot02rjuk",
+              "lessonId": null,
+              "position": 18,
+              "type": "fill_blank",
+              "skill": "grammar",
+              "prompt": "Complète la phrase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "I wish I ___ more free time.",
+                "translation": "Si seulement j’avais plus de temps libre.",
+                "options": [
+                  "had",
+                  "have",
+                  "will have",
+                  "having"
+                ]
+              },
+              "answer": "had",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          }
+        ]
+      }
+    ]
   }
 };

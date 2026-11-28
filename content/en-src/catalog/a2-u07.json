@@ -1,0 +1,888 @@
+{
+ "unit": "a2-u07",
+ "level": "A2",
+ "titleEn": "Comparatives and superlatives",
+ "strings": [
+  {
+   "id": "58d55554ec",
+   "es": "Comparar",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Comparatives and superlatives"
+  },
+  {
+   "id": "7190dbde9f",
+   "es": "Más alto que, el más caro, mejor y peor, igual o distinto.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "7c5a215626",
+   "es": "alto / alta",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "tall"
+  },
+  {
+   "id": "175d374a1e",
+   "es": "alto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "tall"
+  },
+  {
+   "id": "478cc1059b",
+   "es": "alta",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "tall"
+  },
+  {
+   "id": "ddd92ab64a",
+   "es": "Mi hermano es más alto que yo.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "My brother is taller than me."
+  },
+  {
+   "id": "902d0d1af8",
+   "es": "bajo / corto",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "short"
+  },
+  {
+   "id": "4666d539e3",
+   "es": "baja",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "short"
+  },
+  {
+   "id": "462d0ccb2d",
+   "es": "corto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "short"
+  },
+  {
+   "id": "cec396807d",
+   "es": "corta",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "short"
+  },
+  {
+   "id": "a5f2883048",
+   "es": "Mi hermana es baja.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My sister is short."
+  },
+  {
+   "id": "f19d4eab98",
+   "es": "largo / larga",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "long"
+  },
+  {
+   "id": "2a0a132ef2",
+   "es": "largo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "long"
+  },
+  {
+   "id": "c76a68c504",
+   "es": "larga",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "long"
+  },
+  {
+   "id": "36b794c3e4",
+   "es": "Esta calle es más larga que mi calle.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "This street is longer than my street."
+  },
+  {
+   "id": "977a5d6fec",
+   "es": "joven",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "young"
+  },
+  {
+   "id": "9f65e61101",
+   "es": "Es la más joven de la familia.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She is the youngest in the family."
+  },
+  {
+   "id": "6303e378fe",
+   "es": "nuevo / nueva",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "new"
+  },
+  {
+   "id": "238b4429a6",
+   "es": "nuevo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "new"
+  },
+  {
+   "id": "dda7c10869",
+   "es": "nueva",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "new"
+  },
+  {
+   "id": "461bcb4bcc",
+   "es": "Mi teléfono nuevo es muy rápido.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My new phone is very fast."
+  },
+  {
+   "id": "70ff1a748c",
+   "es": "rápido / rápida",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "fast"
+  },
+  {
+   "id": "8fd4b28988",
+   "es": "rápido",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "fast"
+  },
+  {
+   "id": "98f07f39f2",
+   "es": "rápida",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "fast"
+  },
+  {
+   "id": "6c525678b3",
+   "es": "Un avión es más rápido que un tren.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "A plane is faster than a train."
+  },
+  {
+   "id": "859838100b",
+   "es": "lento / lenta",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "slow"
+  },
+  {
+   "id": "c7e4b85273",
+   "es": "lenta",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "slow"
+  },
+  {
+   "id": "af55482de1",
+   "es": "El tren es más lento que el auto.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The train is slower than the car."
+  },
+  {
+   "id": "f5c8dafd06",
+   "es": "fácil",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "easy"
+  },
+  {
+   "id": "82ee0e0b4c",
+   "es": "Esta lección es más fácil que la anterior.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "This lesson is easier than the last one."
+  },
+  {
+   "id": "b0cfeb97ad",
+   "es": "difícil",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "difficult"
+  },
+  {
+   "id": "6a4ec0ac09",
+   "es": "Para mí, el inglés es más difícil que el español.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "For me, English is more difficult than Spanish."
+  },
+  {
+   "id": "4c7e7556f4",
+   "es": "hermoso / lindo",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "beautiful"
+  },
+  {
+   "id": "0de2516452",
+   "es": "hermoso",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "beautiful"
+  },
+  {
+   "id": "a2f4bbfcaa",
+   "es": "hermosa",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "beautiful"
+  },
+  {
+   "id": "955cd2727e",
+   "es": "lindo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "beautiful"
+  },
+  {
+   "id": "6bab3007f5",
+   "es": "linda",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "beautiful"
+  },
+  {
+   "id": "473eacf12c",
+   "es": "La playa es más linda que la ciudad.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The beach is more beautiful than the city."
+  },
+  {
+   "id": "33e6521013",
+   "es": "interesante",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "interesting"
+  },
+  {
+   "id": "ede557c206",
+   "es": "Este libro es más interesante que la película.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "This book is more interesting than the movie."
+  },
+  {
+   "id": "43c97b114b",
+   "es": "mejor (que)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "better"
+  },
+  {
+   "id": "a922247821",
+   "es": "mejor",
+   "kinds": [
+    "word.accepted",
+    "exercise.cue"
+   ],
+   "en": "better"
+  },
+  {
+   "id": "5d54329353",
+   "es": "Mi inglés es mejor que el año pasado.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "My English is better than last year."
+  },
+  {
+   "id": "6efee746c0",
+   "es": "el mejor / la mejor",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "best"
+  },
+  {
+   "id": "e0c95ed969",
+   "es": "el mejor",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "best"
+  },
+  {
+   "id": "b97e9ca47b",
+   "es": "la mejor",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "best"
+  },
+  {
+   "id": "15b649706d",
+   "es": "El domingo es el mejor día de la semana.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Sunday is the best day of the week."
+  },
+  {
+   "id": "ac681660c7",
+   "es": "peor (que)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "worse"
+  },
+  {
+   "id": "edaf909abd",
+   "es": "peor",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "worse"
+  },
+  {
+   "id": "e7c1628957",
+   "es": "Esta película es peor que la primera.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "This movie is worse than the first one."
+  },
+  {
+   "id": "4b84380f87",
+   "es": "el peor / la peor",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "worst"
+  },
+  {
+   "id": "b04d59cba4",
+   "es": "el peor",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "worst"
+  },
+  {
+   "id": "e073eb9237",
+   "es": "la peor",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "worst"
+  },
+  {
+   "id": "49d31be221",
+   "es": "Fue el peor día de mi vida.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "It was the worst day of my life."
+  },
+  {
+   "id": "041e32a1a2",
+   "es": "que (al comparar)",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "than"
+  },
+  {
+   "id": "c57b7501cd",
+   "es": "que",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "than"
+  },
+  {
+   "id": "5abe317bcd",
+   "es": "más",
+   "kinds": [
+    "word.translation",
+    "word.accepted",
+    "exercise.option"
+   ],
+   "en": "more"
+  },
+  {
+   "id": "56b9cae5fc",
+   "es": "Este libro es más interesante.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "This book is more interesting."
+  },
+  {
+   "id": "98bc78c1f2",
+   "es": "el más / la más",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "most"
+  },
+  {
+   "id": "6bf3455094",
+   "es": "el más",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "most"
+  },
+  {
+   "id": "869383a195",
+   "es": "la más",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "most"
+  },
+  {
+   "id": "8609c4fe20",
+   "es": "Este es el hotel más caro de la ciudad.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "This is the most expensive hotel in the city."
+  },
+  {
+   "id": "f2168cd78f",
+   "es": "mismo / misma",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "same"
+  },
+  {
+   "id": "7850454930",
+   "es": "mismo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "same"
+  },
+  {
+   "id": "a83fe6d953",
+   "es": "misma",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "same"
+  },
+  {
+   "id": "af5d4bb635",
+   "es": "igual",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "same"
+  },
+  {
+   "id": "bf929e1239",
+   "es": "Estamos en la misma clase.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "We are in the same class."
+  },
+  {
+   "id": "280b8dae7e",
+   "es": "distinto / diferente",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "different"
+  },
+  {
+   "id": "b72802bda9",
+   "es": "distinto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "different"
+  },
+  {
+   "id": "5d2246262f",
+   "es": "distinta",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "different"
+  },
+  {
+   "id": "7730dc207d",
+   "es": "diferente",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "different"
+  },
+  {
+   "id": "74ce077192",
+   "es": "Mi hermano y yo somos muy distintos.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "My brother and I are very different."
+  },
+  {
+   "id": "205fc78007",
+   "es": "Más alto que",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "75e2b2b429",
+   "es": "Adjetivos cortos: -er + than.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "ed151f885b",
+   "es": "Adjetivo corto + -er + than: tall → taller than.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "taller"
+  },
+  {
+   "id": "4c90708360",
+   "es": "Para comparar, «que» es than (no that ni then).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "than"
+  },
+  {
+   "id": "2c2a1fcd22",
+   "es": "Mi hermana es más joven que yo.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "My sister is younger than me."
+  },
+  {
+   "id": "35bc39d940",
+   "es": "más grande",
+   "kinds": [
+    "exercise.hint"
+   ],
+   "en": "bigger"
+  },
+  {
+   "id": "8b9674ab6c",
+   "es": "Vocal + consonante al final: se duplica (big → bigger).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "bigger"
+  },
+  {
+   "id": "084ed7f892",
+   "es": "Mi casa es más chica que tu casa.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "My house is smaller than your house."
+  },
+  {
+   "id": "be68727172",
+   "es": "Más interesante",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "8876c3e9d7",
+   "es": "Adjetivos largos: more + adjetivo + than.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "7f21f3e7cd",
+   "es": "Adjetivos largos: more + adjetivo + than (more interesting than).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "more"
+  },
+  {
+   "id": "45efc63a7d",
+   "es": "Consonante + y → -ier: easy → easier.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "easier"
+  },
+  {
+   "id": "71ef25414f",
+   "es": "¿Qué significa «beautiful»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "2926b71421",
+   "es": "Mi teléfono nuevo es más caro que el viejo.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "My new phone is more expensive than my old phone."
+  },
+  {
+   "id": "5c3ed9b272",
+   "es": "Es más interesante.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "It is more interesting."
+  },
+  {
+   "id": "e532aa2ac6",
+   "es": "El más alto",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "27538bde78",
+   "es": "Superlativos: the + -est / the most.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "5467af86e7",
+   "es": "Es el estudiante más alto de la clase.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "He is the tallest student in the class."
+  },
+  {
+   "id": "5210185347",
+   "es": "Superlativo: the + adjetivo corto + -est (the tallest).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "tallest"
+  },
+  {
+   "id": "e9e155b164",
+   "es": "Adjetivos largos: the most + adjetivo (the most expensive).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "most"
+  },
+  {
+   "id": "740bbec089",
+   "es": "¡El domingo es el mejor día de la semana!",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Sunday is the best day of the week!"
+  },
+  {
+   "id": "2011af4018",
+   "es": "Good → better → the best. Son irregulares.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "best"
+  },
+  {
+   "id": "56d7868679",
+   "es": "Es la mejor película.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "It is the best movie."
+  },
+  {
+   "id": "0de38c97e9",
+   "es": "Mejor y peor",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "f89cfc0e2b",
+   "es": "Comparar con better y worse.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "54a1795113",
+   "es": "¿Qué significa «than»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "f58f54bde4",
+   "es": "¿El tren es más rápido que el autobús?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Is the train faster than the bus?"
+  },
+  {
+   "id": "cb59033a58",
+   "es": "mi papá",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Who is taller, you or your father? (mi papá)"
+  },
+  {
+   "id": "21f0f3a09c",
+   "es": "¿Quién es más alto, tú o tu papá?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Who is taller, you or your father? (mi papá)"
+  },
+  {
+   "id": "3288d0ebff",
+   "es": "Hoy me siento mejor.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I feel better today."
+  },
+  {
+   "id": "9aa643283d",
+   "es": "Igual o distinto",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "bac73d5dae",
+   "es": "The same, different y más comparaciones.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "14743e0b9e",
+   "es": "Siempre the same: the same class.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "same"
+  },
+  {
+   "id": "17c9b2bc2e",
+   "es": "¿Qué significa «different»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "daffdbad5c",
+   "es": "Tenemos la misma película favorita.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "We have the same favorite movie."
+  },
+  {
+   "id": "005acfacbf",
+   "es": "Es muy fácil.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "It is very easy."
+  }
+ ],
+ "stimuli": {}
+}

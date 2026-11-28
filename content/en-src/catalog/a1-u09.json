@@ -1,0 +1,1559 @@
+{
+ "unit": "a1-u09",
+ "level": "A1",
+ "titleEn": "Times and days",
+ "strings": [
+  {
+   "id": "0cf99ce375",
+   "es": "Horarios y días",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Times and days"
+  },
+  {
+   "id": "100db73751",
+   "es": "Los días de la semana, decir la hora y hablar de tus horarios.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "6020ac9750",
+   "es": "lunes",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "Monday"
+  },
+  {
+   "id": "52e920a59d",
+   "es": "Trabajo el lunes.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I work on Monday."
+  },
+  {
+   "id": "bd539dd597",
+   "es": "martes",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.hint"
+   ],
+   "en": "Tuesday"
+  },
+  {
+   "id": "5787e008ee",
+   "es": "El martes es un buen día.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Tuesday is a good day."
+  },
+  {
+   "id": "ba08108cd6",
+   "es": "miércoles",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "Wednesday"
+  },
+  {
+   "id": "150a096d74",
+   "es": "Estudiamos el miércoles.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We study on Wednesday."
+  },
+  {
+   "id": "15b84102a7",
+   "es": "jueves",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "Thursday"
+  },
+  {
+   "id": "c1a243207c",
+   "es": "Nos vemos el jueves.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "See you on Thursday."
+  },
+  {
+   "id": "5b456b3ff1",
+   "es": "viernes",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "Friday"
+  },
+  {
+   "id": "30d36917cd",
+   "es": "El viernes es mi día favorito.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Friday is my favorite day."
+  },
+  {
+   "id": "04bc66d1db",
+   "es": "sábado",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.hint"
+   ],
+   "en": "Saturday"
+  },
+  {
+   "id": "e43ded8186",
+   "es": "Juego al fútbol el sábado.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I play football on Saturday."
+  },
+  {
+   "id": "7800630f3d",
+   "es": "domingo",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "Sunday"
+  },
+  {
+   "id": "280c39ba8c",
+   "es": "No trabajo el domingo.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I don't work on Sunday."
+  },
+  {
+   "id": "bfbf44740f",
+   "es": "día",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "day"
+  },
+  {
+   "id": "81d8754496",
+   "es": "Hay siete días en una semana.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "There are seven days in a week."
+  },
+  {
+   "id": "02fe327721",
+   "es": "semana",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "week"
+  },
+  {
+   "id": "f3661126a2",
+   "es": "Estudio cinco días por semana.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I study five days a week."
+  },
+  {
+   "id": "d9c1178307",
+   "es": "fin de semana",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "weekend"
+  },
+  {
+   "id": "b31904a83a",
+   "es": "¿Qué haces el fin de semana?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "What do you do on the weekend?"
+  },
+  {
+   "id": "b40f9b6bd6",
+   "es": "hoy",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "today"
+  },
+  {
+   "id": "fe8094e67c",
+   "es": "Hoy es lunes.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Today is Monday."
+  },
+  {
+   "id": "15e48e9dfa",
+   "es": "mañana (el día siguiente)",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "tomorrow"
+  },
+  {
+   "id": "f968682da3",
+   "es": "mañana",
+   "kinds": [
+    "word.accepted",
+    "exercise.option"
+   ],
+   "en": "tomorrow"
+  },
+  {
+   "id": "ad76d135d7",
+   "es": "¡Hasta mañana!",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "See you tomorrow!"
+  },
+  {
+   "id": "a79d89aa51",
+   "es": "mañana (parte del día)",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "morning"
+  },
+  {
+   "id": "079fb4c071",
+   "es": "Estudio a la mañana.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I study in the morning."
+  },
+  {
+   "id": "dfc02909a3",
+   "es": "tarde",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair",
+    "word.accepted"
+   ],
+   "en": "afternoon"
+  },
+  {
+   "id": "50caf70ced",
+   "es": "Él trabaja a la tarde.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "He works in the afternoon."
+  },
+  {
+   "id": "5d73546ea4",
+   "es": "noche (temprano)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "evening"
+  },
+  {
+   "id": "89a1392ae7",
+   "es": "noche",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "evening"
+  },
+  {
+   "id": "726eda4af1",
+   "es": "tardecita",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "evening"
+  },
+  {
+   "id": "8e3ac21cb8",
+   "es": "Miramos la tele a la noche.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "We watch TV in the evening."
+  },
+  {
+   "id": "1660077953",
+   "es": "hora / tiempo",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "time"
+  },
+  {
+   "id": "ddb5eb1d15",
+   "es": "hora",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "time"
+  },
+  {
+   "id": "666a9f6761",
+   "es": "tiempo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "time"
+  },
+  {
+   "id": "08d07a783a",
+   "es": "¿Qué hora es?",
+   "kinds": [
+    "word.example",
+    "lesson.title",
+    "exercise.option"
+   ],
+   "en": "What time is it?"
+  },
+  {
+   "id": "3dc10d6e07",
+   "es": "¿a qué hora? / ¿qué hora?",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "what time"
+  },
+  {
+   "id": "061ee8439d",
+   "es": "a qué hora",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "what time"
+  },
+  {
+   "id": "ee75b8c489",
+   "es": "qué hora",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "what time"
+  },
+  {
+   "id": "30513d13a3",
+   "es": "¿A qué hora es el desayuno?",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "What time is breakfast?"
+  },
+  {
+   "id": "c2c411e8e9",
+   "es": "en punto",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "o'clock"
+  },
+  {
+   "id": "751b48156e",
+   "es": "Son las ocho en punto.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "It is eight o'clock."
+  },
+  {
+   "id": "82a8a10e7c",
+   "es": "y media",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "half past"
+  },
+  {
+   "id": "c029edec56",
+   "es": "Son las nueve y media.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "It is half past nine."
+  },
+  {
+   "id": "9cec0503cb",
+   "es": "a las / a la (hora)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "at"
+  },
+  {
+   "id": "ca978112ca",
+   "es": "a",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "at"
+  },
+  {
+   "id": "05e9bb9ad0",
+   "es": "El almuerzo es a la una.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Lunch is at one."
+  },
+  {
+   "id": "0710eab930",
+   "es": "enero",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "January"
+  },
+  {
+   "id": "0b2ffa90d3",
+   "es": "(enero)",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I work in January."
+  },
+  {
+   "id": "75e6c84820",
+   "es": "febrero",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "February"
+  },
+  {
+   "id": "71f8bcb63b",
+   "es": "(febrero)",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We study in February."
+  },
+  {
+   "id": "934ded44ae",
+   "es": "marzo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "March"
+  },
+  {
+   "id": "1d2eeae0c9",
+   "es": "(marzo)",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I go to Spain in March."
+  },
+  {
+   "id": "d6c025ab87",
+   "es": "abril",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "April"
+  },
+  {
+   "id": "c724d32719",
+   "es": "(abril)",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My birthday is in April."
+  },
+  {
+   "id": "74831bf043",
+   "es": "mayo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "May"
+  },
+  {
+   "id": "049b7aa058",
+   "es": "(mayo)",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We study in May."
+  },
+  {
+   "id": "2ca1f6ef2c",
+   "es": "junio",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "June"
+  },
+  {
+   "id": "af3c5ee265",
+   "es": "(junio)",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I study in June."
+  },
+  {
+   "id": "901be86d45",
+   "es": "julio",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "July"
+  },
+  {
+   "id": "2e52be8ffe",
+   "es": "(julio)",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "They go to Spain in July."
+  },
+  {
+   "id": "bd9ed22b98",
+   "es": "agosto",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "August"
+  },
+  {
+   "id": "276bc76941",
+   "es": "(agosto)",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We go to England in August."
+  },
+  {
+   "id": "d6b09def59",
+   "es": "septiembre",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "September"
+  },
+  {
+   "id": "15a30125a7",
+   "es": "(septiembre)",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I study in September."
+  },
+  {
+   "id": "785c07307d",
+   "es": "octubre",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "October"
+  },
+  {
+   "id": "3d6e0ced80",
+   "es": "(octubre)",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Her birthday is in October."
+  },
+  {
+   "id": "a648ead98e",
+   "es": "noviembre",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "November"
+  },
+  {
+   "id": "8b1a595af0",
+   "es": "(noviembre)",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I work in November."
+  },
+  {
+   "id": "a2ee6272e9",
+   "es": "diciembre",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "December"
+  },
+  {
+   "id": "1a1690c9be",
+   "es": "(diciembre)",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We go home in December."
+  },
+  {
+   "id": "7e430bb38a",
+   "es": "primero / primera",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "first"
+  },
+  {
+   "id": "61d9ba3136",
+   "es": "el primero de mayo",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "May first"
+  },
+  {
+   "id": "01c5df80d8",
+   "es": "segundo / segunda",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "second"
+  },
+  {
+   "id": "a1c8122465",
+   "es": "el 2 de junio",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "June second"
+  },
+  {
+   "id": "f1e63cb14d",
+   "es": "tercero / tercera",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "third"
+  },
+  {
+   "id": "56cdf0812d",
+   "es": "el 3 de marzo",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "March third"
+  },
+  {
+   "id": "97f30b2283",
+   "es": "cuarto / cuarta",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "fourth"
+  },
+  {
+   "id": "fe3ab29492",
+   "es": "el 4 de julio",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "July fourth"
+  },
+  {
+   "id": "ad510e275b",
+   "es": "quinto / quinta",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "fifth"
+  },
+  {
+   "id": "8b744d5d74",
+   "es": "el 5 de abril",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "April fifth"
+  },
+  {
+   "id": "fde9c765a0",
+   "es": "De lunes a miércoles",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "ce73b03e9f",
+   "es": "Los primeros días de la semana.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "e83ec921e6",
+   "es": "¿Qué significa «Monday»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "c65754be8d",
+   "es": "¿Qué significa «Tuesday»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "d33c561ce4",
+   "es": "¿Qué significa «Wednesday»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "0ec83a32f7",
+   "es": "Se pronuncia \"wénzdei\": la primera d no suena.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Wednesday"
+  },
+  {
+   "id": "54ef71cb00",
+   "es": "Con los días se usa on: on Monday, on Friday.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "on"
+  },
+  {
+   "id": "0aafb476bf",
+   "es": "Hoy es miércoles.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "Today is Wednesday."
+  },
+  {
+   "id": "cc87ebe342",
+   "es": "Los días se escriben con mayúscula en inglés.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Today is Wednesday."
+  },
+  {
+   "id": "fa9dcc314e",
+   "es": "De jueves a domingo",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "54dd1a8f45",
+   "es": "El resto de la semana y el fin de semana.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "f5206892f5",
+   "es": "El sábado y el domingo son el fin de semana.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Saturday and Sunday are the weekend."
+  },
+  {
+   "id": "aee4e8b486",
+   "es": "Hoy, mañana y las partes del día",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "ae44adfeff",
+   "es": "Today, tomorrow, morning, afternoon y evening.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "2f9a43fd7c",
+   "es": "¿Qué significa «tomorrow»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "7be052d079",
+   "es": "¿Qué significa «today»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "1ac5100554",
+   "es": "In the morning, in the afternoon, in the evening.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "in"
+  },
+  {
+   "id": "4350b1e8f6",
+   "es": "Mañana es viernes.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "Tomorrow is Friday."
+  },
+  {
+   "id": "2feacb28ea",
+   "es": "Vamos a la escuela el lunes.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "We go to school on Monday."
+  },
+  {
+   "id": "810727307d",
+   "es": "Días: on. On Monday, on Friday.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "on"
+  },
+  {
+   "id": "cf424c75ca",
+   "es": "Ella trabaja a la tarde.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She works in the afternoon."
+  },
+  {
+   "id": "2804ccb0a4",
+   "es": "Partes del día: in the morning, in the afternoon.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "in"
+  },
+  {
+   "id": "c118610f4c",
+   "es": "La escuela es a las ocho.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "School is at eight o'clock."
+  },
+  {
+   "id": "32e47bfbe4",
+   "es": "La hora: at. At eight o'clock.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "at"
+  },
+  {
+   "id": "2da4de429e",
+   "es": "Estudio los lunes y los miércoles.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I study on Monday and Wednesday."
+  },
+  {
+   "id": "606640a56c",
+   "es": "Escribe cuándo es: el día y la parte del día, con on e in.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "📅 Saturday · 🌅"
+  },
+  {
+   "id": "c9ccb4ae59",
+   "es": "On + día; in + parte del día: on Saturday in the morning.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "on Saturday in the morning"
+  },
+  {
+   "id": "d7cb3d807f",
+   "es": "Decir la hora con o'clock y half past.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "3b3b0fda71",
+   "es": "¿Qué significa «What time is it?»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "706866848a",
+   "es": "¿Qué día es?",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "924e13117e",
+   "es": "¿A qué hora es?",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e58f689418",
+   "es": "Son las siete en punto.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "It is seven o'clock."
+  },
+  {
+   "id": "b6a8b09b3c",
+   "es": "Son las diez y media.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "It is half past ten."
+  },
+  {
+   "id": "139392c8b6",
+   "es": "Half past + hora = y media: half past ten = 10:30.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "half"
+  },
+  {
+   "id": "71f80ebfb1",
+   "es": "Son las tres en punto.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "It is three o'clock."
+  },
+  {
+   "id": "efb8c3016b",
+   "es": "Escribe la hora en inglés.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "🕒"
+  },
+  {
+   "id": "8006d5d4a3",
+   "es": "10:30 = half past ten.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "It is half past ten."
+  },
+  {
+   "id": "fbbb277652",
+   "es": "¿A qué hora?",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "c459461524",
+   "es": "Preguntar y decir horarios con what time y at.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "a7ccfcb627",
+   "es": "Con la hora se usa at: at one, at half past seven.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "at"
+  },
+  {
+   "id": "329c7d0958",
+   "es": "¿A qué hora te levantas?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What time do you get up?"
+  },
+  {
+   "id": "6b8e4b46d8",
+   "es": "Trabajo de lunes a viernes.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I work from Monday to Friday."
+  },
+  {
+   "id": "507f74088d",
+   "es": "De lunes a viernes = from Monday to Friday.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "to"
+  },
+  {
+   "id": "d36c2a837a",
+   "es": "7:00",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What time do you wake up? (7:00)"
+  },
+  {
+   "id": "3e816e4519",
+   "es": "¿A qué hora te despiertas?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What time do you wake up? (7:00)"
+  },
+  {
+   "id": "51cbf66deb",
+   "es": "Ceno a las ocho y media.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I eat dinner at half past eight."
+  },
+  {
+   "id": "4876fbb479",
+   "es": "Meses y fechas",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "b1d0c8d8ed",
+   "es": "Decir los meses y las fechas, y preguntar cuándo es algo.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "60ac524397",
+   "es": "Los meses se escriben con mayúscula. Con el mes solo se usa in (in May); con la fecha, on (on May third). En la fecha se dice el número ordinal: first, second, third, fourth, fifth… (del 4 en adelante, casi siempre -th).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "c0cdaa140c",
+   "es": "Mi cumpleaños es en mayo.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "My birthday is in May."
+  },
+  {
+   "id": "8c8c5cf871",
+   "es": "Es el 3 de mayo.",
+   "kinds": [
+    "example"
+   ],
+   "en": "It is on May third."
+  },
+  {
+   "id": "d7093a25a5",
+   "es": "Dices los doce meses.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "822f8eef36",
+   "es": "Usas in con el mes y on con la fecha.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "46144093b2",
+   "es": "Dices una fecha con first, second, third…",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "b1177ac5f0",
+   "es": "¿Qué significa «month»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "f1308241eb",
+   "es": "mes",
+   "kinds": [
+    "exercise.option",
+    "word.translation"
+   ],
+   "en": "month"
+  },
+  {
+   "id": "d25d4c9243",
+   "es": "Con el mes solo: in. In May.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "in"
+  },
+  {
+   "id": "0c426856b4",
+   "es": "Su cumpleaños es el 2 de abril.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Her birthday is on April second."
+  },
+  {
+   "id": "7970490980",
+   "es": "Con la fecha (mes + día): on. On April second.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "on"
+  },
+  {
+   "id": "a469c08453",
+   "es": "Mira el calendario y escribe cuándo es el cumpleaños de Ana.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "📅 February 4 · 🎂 Ana"
+  },
+  {
+   "id": "cee80f2053",
+   "es": "Fecha con on y el ordinal: on February fourth.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "It is on February fourth."
+  },
+  {
+   "id": "1d1957e62f",
+   "es": "Mi cumpleaños es en julio.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "My birthday is in July."
+  },
+  {
+   "id": "1d3557367c",
+   "es": "En contexto: el programa del museo",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "ddf11ed7ca",
+   "es": "Entender un horario y un anuncio con días y horas.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "d7f8953135",
+   "es": "Vas a leer el horario de un museo y a escuchar un anuncio. Busca qué días abre, a qué hora y cuándo cierra.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "de40f044ac",
+   "es": "El museo abre a las nueve.",
+   "kinds": [
+    "example"
+   ],
+   "en": "The museum opens at nine o'clock."
+  },
+  {
+   "id": "8622965417",
+   "es": "a las diez y media",
+   "kinds": [
+    "example"
+   ],
+   "en": "at half past ten"
+  },
+  {
+   "id": "f9e255edd6",
+   "es": "Ahora puedes encontrar días y horarios en un programa y en un anuncio.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "5561cb0876",
+   "es": "El horario de un museo, en la puerta de entrada.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u09-museum-hours"
+  },
+  {
+   "id": "fc6496089b",
+   "es": "¿Qué día no se puede visitar el museo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u09-museum-hours"
+  },
+  {
+   "id": "1045b78c70",
+   "es": "El sábado",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u09-museum-hours"
+  },
+  {
+   "id": "36b9065179",
+   "es": "El domingo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ed9cd8c623",
+   "es": "El lunes",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b580e855e7",
+   "es": "«Monday: no visits».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u09-museum-hours"
+  },
+  {
+   "id": "10a05454ee",
+   "es": "¿A qué hora abre el sábado?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u09-museum-hours"
+  },
+  {
+   "id": "bf656253f3",
+   "es": "A las 10",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u09-museum-hours"
+  },
+  {
+   "id": "1c729c15f4",
+   "es": "A las 9",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2cf6fd6dc2",
+   "es": "A las 5",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2382ca24f8",
+   "es": "«Saturday and Sunday: 9 o'clock to 5 o'clock»: abre a las 9 y cierra a las 5.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u09-museum-hours"
+  },
+  {
+   "id": "79f0745c9e",
+   "es": "¿Cuándo es la visita para chicos?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u09-museum-hours"
+  },
+  {
+   "id": "bd9e39f70e",
+   "es": "El domingo a las 10:30",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u09-museum-hours"
+  },
+  {
+   "id": "a57466b96f",
+   "es": "El sábado a las 10:30",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0caa39e8e8",
+   "es": "El sábado a las 9",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "86215b27c9",
+   "es": "«Saturday at half past ten»: el sábado a las diez y media.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u09-museum-hours"
+  },
+  {
+   "id": "87b5379edb",
+   "es": "Un anuncio por los parlantes del museo.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u09-museum-announcement"
+  },
+  {
+   "id": "5cb1cf9d81",
+   "es": "Anuncio",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.a1-u09-museum-announcement"
+  },
+  {
+   "id": "18898b66f0",
+   "es": "¿A qué hora cierra hoy el museo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u09-museum-announcement"
+  },
+  {
+   "id": "e14dacec05",
+   "es": "A las 6",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "08ba1e3c67",
+   "es": "«Today the museum closes at five o'clock».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u09-museum-announcement"
+  },
+  {
+   "id": "5d2c36df52",
+   "es": "¿Qué día es mañana?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u09-museum-announcement"
+  },
+  {
+   "id": "424e93aa51",
+   "es": "Domingo",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u09-museum-announcement"
+  },
+  {
+   "id": "f7a8575b1a",
+   "es": "Sábado",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d0e8086218",
+   "es": "Lunes",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2de279dabc",
+   "es": "«Tomorrow, Sunday»: mañana es domingo (hoy, sábado).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u09-museum-announcement"
+  },
+  {
+   "id": "d95c83b8c0",
+   "es": "¿Qué pasa mañana a las 9?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u09-museum-announcement"
+  },
+  {
+   "id": "74acc0af33",
+   "es": "Cierra el museo",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u09-museum-announcement"
+  },
+  {
+   "id": "46473bbccd",
+   "es": "Empieza una visita para chicos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8a485220d3",
+   "es": "Abre el museo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "62b462b378",
+   "es": "«The museum opens at nine o'clock».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u09-museum-announcement"
+  },
+  {
+   "id": "c8d1f431c5",
+   "es": "Bloque 3: tu semana y una nota",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "214e45f44c",
+   "es": "Cuenta en 3 oraciones qué haces en la semana (días y horas) y escribe una nota breve del tipo «Back at five».",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "bd1fd9731d",
+   "es": "Vuelvo a las cinco.",
+   "kinds": [
+    "writing.glossary",
+    "word.example"
+   ],
+   "en": "Back at five."
+  },
+  {
+   "id": "d6d273681c",
+   "es": "Pista: ¿usaste on con un día (on Monday)?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "541b35e9a3",
+   "es": "Pista: ¿usaste at con una hora (at seven)?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "5a66ab89e5",
+   "es": "Pista: ¿tu nota dice cuándo vuelves (back at…)?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "0533c7ab08",
+   "es": "Usé on con los días y at con la hora.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "33af645a1e",
+   "es": "Mi nota dice dónde estoy y cuándo vuelvo.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.a1-u09-museum-hours": {
+   "setting": "El horario de un museo, en la puerta de entrada.",
+   "lines": [
+    "Tuesday to Friday: 10 o'clock to 6 o'clock",
+    "Saturday and Sunday: 9 o'clock to 5 o'clock",
+    "Monday: no visits",
+    "Tour for children: Saturday at half past ten"
+   ]
+  },
+  "en.stim.a1-u09-museum-announcement": {
+   "setting": "Un anuncio por los parlantes del museo.",
+   "lines": [
+    "Anuncio: Good afternoon. Today the museum closes at five o'clock.",
+    "Anuncio: Tomorrow, Sunday, the museum opens at nine o'clock.",
+    "Anuncio: Thank you."
+   ]
+  }
+ }
+}

@@ -1,0 +1,1521 @@
+{
+ "unit": "a1-u05",
+ "level": "A1",
+ "titleEn": "Everyday objects",
+ "strings": [
+  {
+   "id": "bb352e725c",
+   "es": "Objetos cotidianos",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Everyday objects"
+  },
+  {
+   "id": "654e173f93",
+   "es": "Nombrar objetos, señalar cosas cerca y lejos, y describir colores y tamaños.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "4a1e8c16a9",
+   "es": "libro",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "book"
+  },
+  {
+   "id": "4b5b7eeebe",
+   "es": "Este es mi libro.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "This is my book."
+  },
+  {
+   "id": "3654cc25fa",
+   "es": "bolígrafo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "pen"
+  },
+  {
+   "id": "dc8beaca31",
+   "es": "birome",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "pen"
+  },
+  {
+   "id": "11f2d84bf4",
+   "es": "lapicera",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "pen"
+  },
+  {
+   "id": "56132e5142",
+   "es": "Tengo un bolígrafo rojo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I have a red pen."
+  },
+  {
+   "id": "c368f6c7b6",
+   "es": "teléfono",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "phone"
+  },
+  {
+   "id": "c3ada42de2",
+   "es": "celular",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "phone"
+  },
+  {
+   "id": "0d766c3cae",
+   "es": "¿Dónde está mi teléfono?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Where is my phone?"
+  },
+  {
+   "id": "87d3b9ce32",
+   "es": "bolso",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "bag"
+  },
+  {
+   "id": "7d4cdc7e88",
+   "es": "bolsa",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "bag"
+  },
+  {
+   "id": "c5fa8aba36",
+   "es": "cartera",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "bag"
+  },
+  {
+   "id": "7946db2ee9",
+   "es": "Su bolso es negro.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Her bag is black."
+  },
+  {
+   "id": "d3598d9fa1",
+   "es": "llave",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "key"
+  },
+  {
+   "id": "331a79f5ec",
+   "es": "Esta es la llave.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "This is the key."
+  },
+  {
+   "id": "a619c02c7f",
+   "es": "taza",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "cup"
+  },
+  {
+   "id": "0e39cbb9de",
+   "es": "Una taza de té, por favor.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "A cup of tea, please."
+  },
+  {
+   "id": "0c3f93b4c0",
+   "es": "computadora",
+   "kinds": [
+    "word.translation",
+    "exercise.hint"
+   ],
+   "en": "computer"
+  },
+  {
+   "id": "7fc696a776",
+   "es": "ordenador",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "computer"
+  },
+  {
+   "id": "539a4f6bcc",
+   "es": "La computadora es nueva.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The computer is new."
+  },
+  {
+   "id": "a100595449",
+   "es": "un / una (antes de consonante)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "a"
+  },
+  {
+   "id": "68bca10eea",
+   "es": "un",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "a"
+  },
+  {
+   "id": "161f0e5ed4",
+   "es": "una",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "a"
+  },
+  {
+   "id": "d55cb46373",
+   "es": "Tengo un libro.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I have a book."
+  },
+  {
+   "id": "6f7bcb9fc4",
+   "es": "un / una (antes de vocal)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "an"
+  },
+  {
+   "id": "2a3b1942b7",
+   "es": "Ella tiene una manzana.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "She has an apple."
+  },
+  {
+   "id": "d8ef2345c2",
+   "es": "este / esta",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "this"
+  },
+  {
+   "id": "be39af6105",
+   "es": "esto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "this"
+  },
+  {
+   "id": "b3aa33b34e",
+   "es": "este",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "this"
+  },
+  {
+   "id": "2d98c0c559",
+   "es": "esta",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "this"
+  },
+  {
+   "id": "5ecd4f1362",
+   "es": "Este es mi bolso.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "This is my bag."
+  },
+  {
+   "id": "04cec35e09",
+   "es": "ese / esa / aquel",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "that"
+  },
+  {
+   "id": "b7505a8df3",
+   "es": "ese",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "that"
+  },
+  {
+   "id": "fde99480a4",
+   "es": "esa",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "that"
+  },
+  {
+   "id": "bab36672e7",
+   "es": "aquel",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "that"
+  },
+  {
+   "id": "8483ea2120",
+   "es": "Ese es tu teléfono.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "That is your phone."
+  },
+  {
+   "id": "733a9cde8f",
+   "es": "estos / estas",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "these"
+  },
+  {
+   "id": "4fdac094bb",
+   "es": "estos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "these"
+  },
+  {
+   "id": "683fdf9973",
+   "es": "estas",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "these"
+  },
+  {
+   "id": "b09f094307",
+   "es": "Estas son mis llaves.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "These are my keys."
+  },
+  {
+   "id": "4355cda656",
+   "es": "esos / esas",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "those"
+  },
+  {
+   "id": "854757292f",
+   "es": "esos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "those"
+  },
+  {
+   "id": "980404b3de",
+   "es": "esas",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "those"
+  },
+  {
+   "id": "61a97e0624",
+   "es": "aquellos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "those"
+  },
+  {
+   "id": "87b7f157c4",
+   "es": "Esos son sus libros.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Those are her books."
+  },
+  {
+   "id": "49bfb8998b",
+   "es": "rojo",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "red"
+  },
+  {
+   "id": "a691c809be",
+   "es": "roja",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "red"
+  },
+  {
+   "id": "9769885606",
+   "es": "El bolígrafo es rojo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The pen is red."
+  },
+  {
+   "id": "a4bd1d3a69",
+   "es": "azul",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "blue"
+  },
+  {
+   "id": "674696bee3",
+   "es": "Mi bolso es azul.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My bag is blue."
+  },
+  {
+   "id": "ec061fafb7",
+   "es": "verde",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "green"
+  },
+  {
+   "id": "098854f0c1",
+   "es": "El libro es verde.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The book is green."
+  },
+  {
+   "id": "f59e28f8bb",
+   "es": "negro",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "black"
+  },
+  {
+   "id": "ef9ab3d75b",
+   "es": "negra",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "black"
+  },
+  {
+   "id": "dbd7bbca3d",
+   "es": "Su teléfono es negro.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "His phone is black."
+  },
+  {
+   "id": "d599668f93",
+   "es": "blanco",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "white"
+  },
+  {
+   "id": "91262d0ed1",
+   "es": "blanca",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "white"
+  },
+  {
+   "id": "d170a97c05",
+   "es": "La taza es blanca.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The cup is white."
+  },
+  {
+   "id": "34ca6bb103",
+   "es": "grande",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "big"
+  },
+  {
+   "id": "a758a1cbfd",
+   "es": "Es un bolso grande.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "It is a big bag."
+  },
+  {
+   "id": "dbd1c1170f",
+   "es": "chico / pequeño",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "small"
+  },
+  {
+   "id": "8d34b7b6ce",
+   "es": "pequeño",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "small"
+  },
+  {
+   "id": "91b00b35a1",
+   "es": "pequeña",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "small"
+  },
+  {
+   "id": "8b150b1c01",
+   "es": "La llave es chica.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The key is small."
+  },
+  {
+   "id": "97d2bc85dc",
+   "es": "el / la / los / las",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "the"
+  },
+  {
+   "id": "780696cf2f",
+   "es": "El libro es azul.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "The book is blue."
+  },
+  {
+   "id": "91f31e1f61",
+   "es": "hombres",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "men"
+  },
+  {
+   "id": "833c45e300",
+   "es": "Los hombres están felices.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The men are happy."
+  },
+  {
+   "id": "3c28de6f96",
+   "es": "mujeres",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "women"
+  },
+  {
+   "id": "c7b55bffcf",
+   "es": "Dos mujeres son profesoras.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Two women are teachers."
+  },
+  {
+   "id": "54097d59eb",
+   "es": "niños / chicos",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "children"
+  },
+  {
+   "id": "7af44bdfd5",
+   "es": "niños",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "children"
+  },
+  {
+   "id": "2001008b32",
+   "es": "chicos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "children"
+  },
+  {
+   "id": "816a1b99ac",
+   "es": "hijos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "children"
+  },
+  {
+   "id": "96b24a077f",
+   "es": "Los chicos están cansados.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The children are tired."
+  },
+  {
+   "id": "4c83d1f1d3",
+   "es": "personas / gente",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "people"
+  },
+  {
+   "id": "52b3ff555c",
+   "es": "personas",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "people"
+  },
+  {
+   "id": "e5be6b2fc6",
+   "es": "gente",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "people"
+  },
+  {
+   "id": "e7b867788b",
+   "es": "Somos cuatro personas.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "We are four people."
+  },
+  {
+   "id": "38bf4d5b0e",
+   "es": "Cosas de todos los días",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "20a305c897",
+   "es": "Nombrar objetos comunes.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "28aa6eb4d0",
+   "es": "¿Qué significa «bag»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "1a1e11bb5c",
+   "es": "A o an",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "34590931f6",
+   "es": "Elegir a o an según el sonido de la palabra.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "142b1639dd",
+   "es": "A va antes de un sonido de consonante: a book, a pen.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "a"
+  },
+  {
+   "id": "e0d780716c",
+   "es": "An va antes de un sonido de vocal: an apple, an English book.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "an"
+  },
+  {
+   "id": "8ea2a5952b",
+   "es": "Es un teléfono.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "It is a phone."
+  },
+  {
+   "id": "4ceef49926",
+   "es": "Es profesor de inglés.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "He is an English teacher."
+  },
+  {
+   "id": "586398f9e6",
+   "es": "English empieza con sonido de vocal: an English teacher.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "an"
+  },
+  {
+   "id": "15ee97c428",
+   "es": "¿Qué significa «a bag»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "974d18aea5",
+   "es": "un bolso",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "a bag"
+  },
+  {
+   "id": "11da18a75b",
+   "es": "una llave",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "39996aa47a",
+   "es": "mi bolso",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "716ba359fb",
+   "es": "el teléfono",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5482db0f90",
+   "es": "Tengo una llave chica.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I have a small key."
+  },
+  {
+   "id": "cf68acd68a",
+   "es": "Tengo un bolígrafo.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I have a pen."
+  },
+  {
+   "id": "86955fc963",
+   "es": "¿Qué significa «the»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "95ab00d0fe",
+   "es": "un / una",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "290061d0f1",
+   "es": "Tengo un bolso y un teléfono. El teléfono es rojo.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I have a bag and a phone. The phone is red."
+  },
+  {
+   "id": "38d22ab472",
+   "es": "La primera vez se dice a phone; cuando ya sabemos de qué teléfono hablamos, the phone.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "The"
+  },
+  {
+   "id": "a81d354cff",
+   "es": "Escribe en inglés qué es, con a o an.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "📱"
+  },
+  {
+   "id": "5610946b66",
+   "es": "Esto y eso",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "ac80a2abae",
+   "es": "Señalar cosas cerca (this) y lejos (that).",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "a7efe6103a",
+   "es": "¿Qué significa «this»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "7e204ff828",
+   "es": "¿Qué significa «that»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "2a9c59400f",
+   "es": "está aquí, en mi mano",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "___ is my phone. (está aquí, en mi mano)"
+  },
+  {
+   "id": "bb22758094",
+   "es": "Este es mi teléfono.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "This is my phone. (está aquí, en mi mano)"
+  },
+  {
+   "id": "1990fcf908",
+   "es": "This = algo cerca de ti. That = algo lejos.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "This"
+  },
+  {
+   "id": "75564bd746",
+   "es": "está allá",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "___ is your bag. (está allá)"
+  },
+  {
+   "id": "195ffb704c",
+   "es": "Ese es tu bolso.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "That is your bag. (está allá)"
+  },
+  {
+   "id": "0eeacad98c",
+   "es": "Esa es mi computadora.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "That is my computer."
+  },
+  {
+   "id": "f946f40df9",
+   "es": "Estos y esos",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "6cd13615e3",
+   "es": "Hablar de varias cosas con these y those.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "1ccb361834",
+   "es": "aquí",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "___ are my keys. (aquí)"
+  },
+  {
+   "id": "9f221a6b8c",
+   "es": "Plural: this → these (cerca), that → those (lejos).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "These"
+  },
+  {
+   "id": "528b1a5483",
+   "es": "allá",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "___ are her books. (allá)"
+  },
+  {
+   "id": "737dbee36a",
+   "es": "Estos son mis bolígrafos.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "These are my pens."
+  },
+  {
+   "id": "b0f027ac3e",
+   "es": "Con these y those se usa are.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "are"
+  },
+  {
+   "id": "e9847c48d8",
+   "es": "Estas son nuestras tazas.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "These are our cups."
+  },
+  {
+   "id": "67da9c4f39",
+   "es": "Esas son tus llaves.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "Those are your keys."
+  },
+  {
+   "id": "bda75ce050",
+   "es": "Colores y tamaños",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "e638ea745a",
+   "es": "Describir objetos por color y tamaño.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "665741f3f2",
+   "es": "El adjetivo va antes del sustantivo y no cambia en plural: a big bag, two big bags.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "big"
+  },
+  {
+   "id": "e59293801d",
+   "es": "Mi teléfono es negro.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "My phone is black."
+  },
+  {
+   "id": "ef6587d89c",
+   "es": "Tengo un libro rojo.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I have a red book."
+  },
+  {
+   "id": "5759b11aee",
+   "es": "En inglés el color va antes: a red book (no a book red).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "I have a red book."
+  },
+  {
+   "id": "04c111f1d1",
+   "es": "¿De qué color es la taza?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What color is the cup? ☕⚪"
+  },
+  {
+   "id": "ff9b9da4d4",
+   "es": "Uno, dos, muchos",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "d5b31a1a1d",
+   "es": "Formar plurales regulares e irregulares frecuentes.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "e22d462343",
+   "es": "Casi siempre el plural se forma con -s: one book, two books. Algunas palabras muy usadas cambian: man → men, woman → women. Children (niños) y people (personas) ya son plurales.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "4921036e23",
+   "es": "un bolígrafo, tres bolígrafos",
+   "kinds": [
+    "example"
+   ],
+   "en": "one pen, three pens"
+  },
+  {
+   "id": "8f6e6918d1",
+   "es": "Estas mujeres son profesoras.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "These women are teachers."
+  },
+  {
+   "id": "722e9ea561",
+   "es": "Formas el plural con -s: books, keys.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "2d1aa64dc2",
+   "es": "Usas men, women, children y people.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "50c8b45908",
+   "es": "un libro, dos libros",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "one book, two books"
+  },
+  {
+   "id": "9066a5baa0",
+   "es": "Plural regular: book → books.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "books"
+  },
+  {
+   "id": "8a1fdfdc51",
+   "es": "¿Qué significa «children»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "284cb96230",
+   "es": "Tom y Leo son hombres.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Tom and Leo are men."
+  },
+  {
+   "id": "43cbbe0331",
+   "es": "Man es irregular: un hombre = a man; dos = two men.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "men"
+  },
+  {
+   "id": "79f5b2439c",
+   "es": "Ana y Kate son mujeres.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Ana and Kate are women."
+  },
+  {
+   "id": "f5c015ae31",
+   "es": "Woman → women: cambia la vocal y se pronuncia «uímin».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "women"
+  },
+  {
+   "id": "fff3bb486d",
+   "es": "People ya es plural: no lleva -s.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "people"
+  },
+  {
+   "id": "5692b42b1a",
+   "es": "Escribe en inglés cuántas hay y qué son.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "🔑 🔑 🔑"
+  },
+  {
+   "id": "785e5e89bb",
+   "es": "Plural regular: key → keys.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "three keys"
+  },
+  {
+   "id": "63209fef50",
+   "es": "Dos mujeres y tres niños",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "two women and three children"
+  },
+  {
+   "id": "6999fe0b6a",
+   "es": "Women y children son plurales irregulares: sin -s.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "two women and three children"
+  },
+  {
+   "id": "000d42b488",
+   "es": "En contexto: ¿cuál es el tuyo?",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "5a8f536b10",
+   "es": "Entender mensajes sobre objetos: de quién son, cómo son.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "0a8187cf59",
+   "es": "Vas a leer un mensaje y escuchar una conversación sobre cosas que alguien encontró. Fíjate en el color, el tamaño y de quién es cada cosa.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "3c62267e8c",
+   "es": "¿Este es tu libro?",
+   "kinds": [
+    "example"
+   ],
+   "en": "Is this your book?"
+  },
+  {
+   "id": "11fd09448e",
+   "es": "Ese teléfono es negro.",
+   "kinds": [
+    "example"
+   ],
+   "en": "That phone is black."
+  },
+  {
+   "id": "64e5ff4a0d",
+   "es": "Ahora puedes entender de quién es un objeto y cómo es, en un mensaje corto.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "68dedbfbae",
+   "es": "Mia encontró cosas en el aula y le escribe a Ben.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u05-found-objects"
+  },
+  {
+   "id": "566e8b0d1c",
+   "es": "¿Cómo es el libro que encontró Mia?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u05-found-objects"
+  },
+  {
+   "id": "ec8f37e44f",
+   "es": "Grande y azul",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u05-found-objects"
+  },
+  {
+   "id": "da5a9a6728",
+   "es": "Chico y azul",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2f9386bcec",
+   "es": "Grande y negro",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5e4918380f",
+   "es": "«It is a big blue book».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u05-found-objects"
+  },
+  {
+   "id": "55a272725e",
+   "es": "¿De quién es el bolígrafo negro?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u05-found-objects"
+  },
+  {
+   "id": "36b8d58bc1",
+   "es": "De Mia",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u05-found-objects"
+  },
+  {
+   "id": "e6c8dd16eb",
+   "es": "De Ben",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "fc671e2180",
+   "es": "De la profesora",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1a86a5f828",
+   "es": "Mia escribe «That black pen is my pen».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u05-found-objects"
+  },
+  {
+   "id": "77d8f628f8",
+   "es": "¿Qué quiere saber Mia sobre las llaves?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u05-found-objects"
+  },
+  {
+   "id": "fb0f90439e",
+   "es": "Dónde están",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u05-found-objects"
+  },
+  {
+   "id": "7e94f3b390",
+   "es": "Si son de Ben",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "cdf1bc1879",
+   "es": "De qué color son",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b88f05737a",
+   "es": "Pregunta «Are they your keys?»: si son de Ben.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u05-found-objects"
+  },
+  {
+   "id": "3567d5c9f9",
+   "es": "Leo y Kim ordenan la mesa después de una reunión.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u05-whose-cup"
+  },
+  {
+   "id": "d25949ef9e",
+   "es": "Kim",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.a1-u05-whose-cup"
+  },
+  {
+   "id": "ba55d6b1af",
+   "es": "¿De qué color es el teléfono de Kim?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u05-whose-cup"
+  },
+  {
+   "id": "6723390ac7",
+   "es": "Negro",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u05-whose-cup"
+  },
+  {
+   "id": "7913a179fb",
+   "es": "Blanco",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7069e90c20",
+   "es": "Rojo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "52371f1b39",
+   "es": "Kim dice «my phone is white»; el negro no es suyo.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u05-whose-cup"
+  },
+  {
+   "id": "02c3e09f6d",
+   "es": "¿Qué objeto es de Kim?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u05-whose-cup"
+  },
+  {
+   "id": "163d3385d4",
+   "es": "La taza",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u05-whose-cup"
+  },
+  {
+   "id": "219e405600",
+   "es": "El teléfono negro",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "cef81cc874",
+   "es": "La computadora",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2367fe1463",
+   "es": "A «And this cup?» responde «Yes, it is my cup».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u05-whose-cup"
+  },
+  {
+   "id": "e8699cc856",
+   "es": "¿Cómo termina la conversación?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u05-whose-cup"
+  },
+  {
+   "id": "d91d39270b",
+   "es": "Kim le agradece a Leo",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u05-whose-cup"
+  },
+  {
+   "id": "99c030d54e",
+   "es": "Kim le pide perdón a Leo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "006ba2ef5f",
+   "es": "Leo se despide de Kim",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2838354686",
+   "es": "Kim termina con «Thank you!».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u05-whose-cup"
+  }
+ ],
+ "stimuli": {
+  "en.stim.a1-u05-found-objects": {
+   "setting": "Mia encontró cosas en el aula y le escribe a Ben.",
+   "lines": [
+    "Hi, Ben! Is this your book?",
+    "It is a big blue book.",
+    "That black pen is my pen.",
+    "And these keys? Are they your keys?"
+   ]
+  },
+  "en.stim.a1-u05-whose-cup": {
+   "setting": "Leo y Kim ordenan la mesa después de una reunión.",
+   "lines": [
+    "Leo: Kim, is that your phone?",
+    "Kim: No, my phone is white. That phone is black.",
+    "Leo: And this cup?",
+    "Kim: Yes, it is my cup. Thank you!"
+   ]
+  }
+ }
+}

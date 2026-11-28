@@ -1,0 +1,1145 @@
+{
+ "unit": "a1-u07",
+ "level": "A1",
+ "titleEn": "Food and drinks",
+ "strings": [
+  {
+   "id": "4fed3e747e",
+   "es": "Comida y bebidas",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Food and drinks"
+  },
+  {
+   "id": "8aaee66622",
+   "es": "Pedir comida, decir qué quieres y hablar de las comidas del día.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "5f1da0912e",
+   "es": "agua",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "water"
+  },
+  {
+   "id": "49f4c9bcf1",
+   "es": "Un vaso de agua, por favor.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "A glass of water, please."
+  },
+  {
+   "id": "850f7dc439",
+   "es": "café",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.hint"
+   ],
+   "en": "coffee"
+  },
+  {
+   "id": "392eb42bd3",
+   "es": "Quiero un café.",
+   "kinds": [
+    "word.example",
+    "exercise.option"
+   ],
+   "en": "I want a coffee."
+  },
+  {
+   "id": "7e6e466f7e",
+   "es": "té",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "tea"
+  },
+  {
+   "id": "bc9d411cfb",
+   "es": "Ella toma té.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She drinks tea."
+  },
+  {
+   "id": "25e4131c13",
+   "es": "leche",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "milk"
+  },
+  {
+   "id": "d7bea43b68",
+   "es": "La leche está en la cocina.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The milk is in the kitchen."
+  },
+  {
+   "id": "e3e327cadc",
+   "es": "jugo",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "juice"
+  },
+  {
+   "id": "00da2e9152",
+   "es": "zumo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "juice"
+  },
+  {
+   "id": "9b0a236880",
+   "es": "Un jugo de naranja, por favor.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "An orange juice, please."
+  },
+  {
+   "id": "00e37ffae0",
+   "es": "pan",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "bread"
+  },
+  {
+   "id": "d61e02042a",
+   "es": "Hay pan sobre la mesa.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "There is bread on the table."
+  },
+  {
+   "id": "5795b07249",
+   "es": "manzana",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "apple"
+  },
+  {
+   "id": "02f0ad033d",
+   "es": "Tengo una manzana.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I have an apple."
+  },
+  {
+   "id": "b493d48364",
+   "es": "banana",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "banana"
+  },
+  {
+   "id": "98dbeafb3d",
+   "es": "plátano",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "banana"
+  },
+  {
+   "id": "6bff847ec0",
+   "es": "banano",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "banana"
+  },
+  {
+   "id": "8db3835efe",
+   "es": "El bebé quiere una banana.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The baby wants a banana."
+  },
+  {
+   "id": "31a12dd0e5",
+   "es": "huevo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "egg"
+  },
+  {
+   "id": "43c241da09",
+   "es": "Dos huevos, por favor.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Two eggs, please."
+  },
+  {
+   "id": "a00d52243f",
+   "es": "queso",
+   "kinds": [
+    "word.translation",
+    "exercise.hint"
+   ],
+   "en": "cheese"
+  },
+  {
+   "id": "362f74a8ab",
+   "es": "Me gusta el queso.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I like cheese."
+  },
+  {
+   "id": "359ee8d482",
+   "es": "pollo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "chicken"
+  },
+  {
+   "id": "f5ef9a7b51",
+   "es": "Pollo con arroz, por favor.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Chicken and rice, please."
+  },
+  {
+   "id": "b4441a9b8b",
+   "es": "arroz",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "rice"
+  },
+  {
+   "id": "a046374ab6",
+   "es": "Comemos arroz.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We eat rice."
+  },
+  {
+   "id": "4948388a01",
+   "es": "desayuno",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.hint"
+   ],
+   "en": "breakfast"
+  },
+  {
+   "id": "6ad0593c38",
+   "es": "El desayuno es a las ocho.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Breakfast is at eight."
+  },
+  {
+   "id": "dada2a1ebf",
+   "es": "almuerzo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "lunch"
+  },
+  {
+   "id": "8a44d42c6f",
+   "es": "El almuerzo está listo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Lunch is ready."
+  },
+  {
+   "id": "507f8ded27",
+   "es": "cena",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "dinner"
+  },
+  {
+   "id": "6c49ac4b5a",
+   "es": "La cena está en la cocina.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Dinner is in the kitchen."
+  },
+  {
+   "id": "868507cb69",
+   "es": "comer",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "eat"
+  },
+  {
+   "id": "a9becf2e48",
+   "es": "Como una manzana.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I eat an apple."
+  },
+  {
+   "id": "db8a9d9236",
+   "es": "beber / tomar",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "drink"
+  },
+  {
+   "id": "da3b67e06b",
+   "es": "beber",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "drink"
+  },
+  {
+   "id": "43a4caf12a",
+   "es": "tomar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "drink"
+  },
+  {
+   "id": "f2ea482521",
+   "es": "Tomamos agua.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "We drink water."
+  },
+  {
+   "id": "a22b096455",
+   "es": "querer",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "want"
+  },
+  {
+   "id": "2812cc950d",
+   "es": "quiero",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "want"
+  },
+  {
+   "id": "a8447d360f",
+   "es": "Quiero un café, por favor.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I want a coffee, please."
+  },
+  {
+   "id": "853e5a6623",
+   "es": "con hambre",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "hungry"
+  },
+  {
+   "id": "1bdecbe9fa",
+   "es": "hambriento",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "hungry"
+  },
+  {
+   "id": "d334b4d9ac",
+   "es": "hambrienta",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "hungry"
+  },
+  {
+   "id": "71813657b5",
+   "es": "Tengo hambre.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I am hungry."
+  },
+  {
+   "id": "70901576e6",
+   "es": "con sed",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "thirsty"
+  },
+  {
+   "id": "c64f7c89ea",
+   "es": "sediento",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "thirsty"
+  },
+  {
+   "id": "53c1b05f78",
+   "es": "sedienta",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "thirsty"
+  },
+  {
+   "id": "631acdfc85",
+   "es": "¿Tienes sed?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Are you thirsty?"
+  },
+  {
+   "id": "f63b916ad4",
+   "es": "Bebidas",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "82f60894ff",
+   "es": "Agua, café, té, leche y jugo.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "1e77af4695",
+   "es": "¿Qué significa «water»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "30e6e5f784",
+   "es": "Un jugo, por favor.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "A juice, please."
+  },
+  {
+   "id": "56dd40554f",
+   "es": "Comida",
+   "kinds": [
+    "lesson.title",
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c97b1b9fc2",
+   "es": "Pan, fruta, huevos, queso, pollo y arroz.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "1d78eabc7a",
+   "es": "Apple empieza con sonido de vocal: an apple.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "an"
+  },
+  {
+   "id": "b3ed26df7c",
+   "es": "Comer y beber",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "20cade521b",
+   "es": "Decir qué comes y qué tomas.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "0195671139",
+   "es": "¿Qué significa «eat»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "b8df7e5e86",
+   "es": "¿Qué significa «drink»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "7057dc0f3b",
+   "es": "cocinar",
+   "kinds": [
+    "exercise.option",
+    "word.translation",
+    "exercise.pair",
+    "exercise.cue"
+   ]
+  },
+  {
+   "id": "a1596b7b20",
+   "es": "Como una manzana todos los días.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I eat an apple every day."
+  },
+  {
+   "id": "ce577957ff",
+   "es": "Ellos comen pollo con arroz.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "They eat chicken and rice."
+  },
+  {
+   "id": "15b6831393",
+   "es": "Comemos pan con queso.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "We eat bread and cheese."
+  },
+  {
+   "id": "7e88f05001",
+   "es": "\"Con\" en comidas suele decirse and: bread and cheese.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "We eat bread and cheese."
+  },
+  {
+   "id": "168c4325b4",
+   "es": "Quiero un café",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "daca98be16",
+   "es": "Pedir lo que quieres con want y please.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "72d93d74e9",
+   "es": "¿Qué significa «I want a coffee.»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "e42af963f6",
+   "es": "Tomo un café.",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0308827cf6",
+   "es": "Tengo un café.",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0cdbd6db96",
+   "es": "Hay un café.",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "dbab772a0a",
+   "es": "Quiero un jugo, por favor.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I want a juice, please."
+  },
+  {
+   "id": "80cb598941",
+   "es": "Ella quiere una banana.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She wants a banana."
+  },
+  {
+   "id": "81d52ca3d7",
+   "es": "Con he, she e it el verbo lleva -s: she wants, he eats.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "wants"
+  },
+  {
+   "id": "1f69616fe3",
+   "es": "Quiero dos huevos, por favor.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I want two eggs, please."
+  },
+  {
+   "id": "3377145a1e",
+   "es": "Quiero agua, por favor.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I want water, please."
+  },
+  {
+   "id": "0078a9e65f",
+   "es": "No, quiero un té.",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Do you want a coffee? (No, quiero un té.)"
+  },
+  {
+   "id": "6c00ddf6c5",
+   "es": "¿Quieres un café?",
+   "kinds": [
+    "exercise.translation",
+    "exercise.option"
+   ],
+   "en": "Do you want a coffee? (No, quiero un té.)"
+  },
+  {
+   "id": "19807cec53",
+   "es": "¿Qué significa «I'd like»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "f02915974d",
+   "es": "quisiera",
+   "kinds": [
+    "exercise.option",
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "I'd like"
+  },
+  {
+   "id": "7bf1380633",
+   "es": "me gusta",
+   "kinds": [
+    "exercise.option",
+    "word.accepted"
+   ]
+  },
+  {
+   "id": "87aa4e6ae2",
+   "es": "odio",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3c2d26e626",
+   "es": "I'd like = I would like: una forma amable de pedir.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "I'd like"
+  },
+  {
+   "id": "465c1a75d0",
+   "es": "Quisiera un café, por favor.",
+   "kinds": [
+    "exercise.translation",
+    "word.example"
+   ],
+   "en": "I'd like a coffee, please."
+  },
+  {
+   "id": "d47af93b5d",
+   "es": "Para pedir: I'd like a coffee. I like coffee = me gusta el café.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "I'd like"
+  },
+  {
+   "id": "9e46658b33",
+   "es": "Situación: estás en un café y pides un té con cortesía.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I'd like a tea, please."
+  },
+  {
+   "id": "453a4f2326",
+   "es": "Para pedir con cortesía: I'd like…, please.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "I'd like"
+  },
+  {
+   "id": "5485a5717a",
+   "es": "Situación: estás en un café. Pide esto en inglés, con cortesía.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "🍵"
+  },
+  {
+   "id": "b3e868f511",
+   "es": "I'd like + lo que quieres + please.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "I'd like a tea, please."
+  },
+  {
+   "id": "250cb05a02",
+   "es": "Comidas del día",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "a1e0d4123c",
+   "es": "Desayuno, almuerzo, cena y decir si tienes hambre o sed.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "f597cd9b53",
+   "es": "Tengo sed. Quiero agua.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I am thirsty. I want water."
+  },
+  {
+   "id": "e904d3ed34",
+   "es": "En inglés el hambre y la sed van con to be: I am hungry (no I have hunger).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "am"
+  },
+  {
+   "id": "a8a77edf2c",
+   "es": "Cenamos en la cocina.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "We eat dinner in the kitchen."
+  },
+  {
+   "id": "4407f15dc8",
+   "es": "¿Tienes hambre?",
+   "kinds": [
+    "exercise.source",
+    "example"
+   ],
+   "en": "Are you hungry?"
+  },
+  {
+   "id": "cf68f6b642",
+   "es": "En contexto: en el café",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "87621b5e7b",
+   "es": "Entender un menú y un pedido en un café.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "04e017b4ae",
+   "es": "Vas a leer el menú de un café y a escuchar a una clienta pedir. Fíjate qué hay en cada comida del día y qué pide ella.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "3e2503b7ee",
+   "es": "Quiero huevos y pan, por favor.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I want eggs and bread, please."
+  },
+  {
+   "id": "9acc7608f8",
+   "es": "Ahora puedes entender un menú sencillo y un pedido en un café.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "860864740b",
+   "es": "El menú de un café.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u07-cafe-menu"
+  },
+  {
+   "id": "97ab0b028d",
+   "es": "¿Qué se puede comer en el almuerzo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u07-cafe-menu"
+  },
+  {
+   "id": "e28472c694",
+   "es": "Huevos",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u07-cafe-menu"
+  },
+  {
+   "id": "e41bd72d68",
+   "es": "Pan con queso",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "692b4c995d",
+   "es": "Pollo con arroz",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8ff7953b00",
+   "es": "Debajo de «LUNCH» dice «Chicken and rice»; los huevos y el pan son del desayuno.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u07-cafe-menu"
+  },
+  {
+   "id": "b258d3e790",
+   "es": "¿Qué se puede tomar en el almuerzo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u07-cafe-menu"
+  },
+  {
+   "id": "b86ac17304",
+   "es": "Agua",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u07-cafe-menu"
+  },
+  {
+   "id": "2650206c93",
+   "es": "Jugo de manzana",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4d666367de",
+   "es": "Té con leche",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b44a78b9ae",
+   "es": "Debajo de «LUNCH» sólo hay «Water»; el jugo y el té son del desayuno.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u07-cafe-menu"
+  },
+  {
+   "id": "631ae6433a",
+   "es": "¿Qué comida del día no aparece en el menú?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u07-cafe-menu"
+  },
+  {
+   "id": "60f5dddab0",
+   "es": "La cena",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u07-cafe-menu"
+  },
+  {
+   "id": "9707911a4d",
+   "es": "El desayuno",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "15f49d8776",
+   "es": "El almuerzo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "01a0b4b771",
+   "es": "Sólo hay «BREAKFAST» y «LUNCH»: no hay cena (dinner).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u07-cafe-menu"
+  },
+  {
+   "id": "def1ba04c2",
+   "es": "Paul atiende a Emma en un café.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u07-cafe-order"
+  },
+  {
+   "id": "818b5cc5f2",
+   "es": "Paul",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.a1-u07-cafe-order"
+  },
+  {
+   "id": "93fe022736",
+   "es": "¿Qué quiere comer Emma?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u07-cafe-order"
+  },
+  {
+   "id": "175aa05f01",
+   "es": "Huevos con pan",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "83ea686f40",
+   "es": "Emma dice «I want eggs and bread, please».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u07-cafe-order"
+  },
+  {
+   "id": "5e282d05f4",
+   "es": "¿Qué quiere tomar?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u07-cafe-order"
+  },
+  {
+   "id": "9fdc19ab24",
+   "es": "Café con leche",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u07-cafe-order"
+  },
+  {
+   "id": "e29973e58d",
+   "es": "«Tea with milk, please. No coffee».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u07-cafe-order"
+  },
+  {
+   "id": "bbbce9ed1d",
+   "es": "¿Qué le pregunta Paul a Emma al principio?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u07-cafe-order"
+  },
+  {
+   "id": "64b8272a10",
+   "es": "Si tiene sed",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u07-cafe-order"
+  },
+  {
+   "id": "cec622631b",
+   "es": "Si tiene hambre",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "98678e7b6a",
+   "es": "Si quiere café",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1e69b8543d",
+   "es": "Paul pregunta «Are you hungry?».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u07-cafe-order"
+  },
+  {
+   "id": "56931af219",
+   "es": "Bloque 2: tu habitación y un pedido",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "703069d70d",
+   "es": "Escribe 3 oraciones sobre tu habitación (qué hay y dónde está) y después un pedido breve en un café.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "fdf924fda3",
+   "es": "Pista: ¿usaste there is o there are?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "b1e4596333",
+   "es": "Pista: ¿dijiste dónde está algo (in, on, under, next to)?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "dd99c38b3a",
+   "es": "Pista: ¿pediste con I'd like… please?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "9b340cfca6",
+   "es": "Dije qué hay en la habitación.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "4b18666293",
+   "es": "Dije dónde está una cosa.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "e5d0375e33",
+   "es": "Mi pedido tiene please.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.a1-u07-cafe-menu": {
+   "setting": "El menú de un café.",
+   "lines": [
+    "BREAKFAST",
+    "Coffee or tea with milk",
+    "Bread and cheese",
+    "Eggs",
+    "Apple juice",
+    "LUNCH",
+    "Chicken and rice",
+    "Water"
+   ]
+  },
+  "en.stim.a1-u07-cafe-order": {
+   "setting": "Paul atiende a Emma en un café.",
+   "lines": [
+    "Paul: Good morning! Are you hungry?",
+    "Emma: Yes, I am. I want eggs and bread, please.",
+    "Paul: And to drink?",
+    "Emma: Tea with milk, please. No coffee.",
+    "Paul: OK. Eggs, bread and tea."
+   ]
+  }
+ }
+}

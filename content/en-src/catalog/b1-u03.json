@@ -1,0 +1,1426 @@
+{
+ "unit": "b1-u03",
+ "level": "B1",
+ "titleEn": "Anecdotes",
+ "strings": [
+  {
+   "id": "e37795da1e",
+   "es": "Anécdotas",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Anecdotes"
+  },
+  {
+   "id": "8d4704fd33",
+   "es": "Contar anécdotas: lo que estaba pasando, lo que ya había pasado (had + participio) y el orden de los hechos.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "731d5fa307",
+   "es": "Puedes contar una anécdota en orden, explicar qué ya había pasado y reaccionar a lo que te cuentan.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "59209a2701",
+   "es": "Past perfect",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "3c2359b93a",
+   "es": "Had + participio cuenta algo que pasó ANTES de otro momento del pasado: When I got to the station, the train had left (el tren se fue antes de que yo llegara). Es igual para todas las personas: I had, she had, they had.",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "aeca5a77f2",
+   "es": "Cuando llegué, el tren ya se había ido.",
+   "kinds": [
+    "example"
+   ],
+   "en": "When I arrived, the train had left."
+  },
+  {
+   "id": "f9ed787ea0",
+   "es": "Me di cuenta de que me había olvidado las llaves.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I realized I had forgotten my keys."
+  },
+  {
+   "id": "dfc92bfcf4",
+   "es": "Para cuando llegamos, la película había empezado.",
+   "kinds": [
+    "example",
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "By the time we got there, the movie had started."
+  },
+  {
+   "id": "e38904fe37",
+   "es": "para cuando",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "by the time"
+  },
+  {
+   "id": "9172a8ba12",
+   "es": "en cuanto / apenas",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "as soon as"
+  },
+  {
+   "id": "4af5d5579d",
+   "es": "en cuanto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "as soon as"
+  },
+  {
+   "id": "5f593cb79b",
+   "es": "apenas",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "as soon as"
+  },
+  {
+   "id": "f8eed7490a",
+   "es": "tan pronto como",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "as soon as"
+  },
+  {
+   "id": "73e52ebee8",
+   "es": "Llámame en cuanto llegues.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "Call me as soon as you arrive."
+  },
+  {
+   "id": "00f5d90edc",
+   "es": "antes (de)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "before"
+  },
+  {
+   "id": "60a6c2661d",
+   "es": "antes",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "before"
+  },
+  {
+   "id": "a22b00e31c",
+   "es": "antes de",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "before"
+  },
+  {
+   "id": "5f4918f22c",
+   "es": "Lávate las manos antes de comer.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Wash your hands before eating."
+  },
+  {
+   "id": "807a3ef25e",
+   "es": "después / luego",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "afterwards"
+  },
+  {
+   "id": "1b736573c2",
+   "es": "Vimos una película y después cenamos.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "We watched a movie, and afterwards we had dinner."
+  },
+  {
+   "id": "51af73dcfb",
+   "es": "el día anterior",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "the day before"
+  },
+  {
+   "id": "ffd7372f1f",
+   "es": "Había estudiado mucho el día anterior.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I had studied a lot the day before."
+  },
+  {
+   "id": "5a2b3b42db",
+   "es": "me di cuenta / se dio cuenta",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "realized"
+  },
+  {
+   "id": "996689d012",
+   "es": "me di cuenta",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "realized"
+  },
+  {
+   "id": "d06b79ff41",
+   "es": "se dio cuenta",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "realized"
+  },
+  {
+   "id": "b401b6f51a",
+   "es": "Me di cuenta de que me había olvidado el bolso.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I realized I had forgotten my bag."
+  },
+  {
+   "id": "964a1e1269",
+   "es": "perdí (un transporte) / extrañé",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "missed"
+  },
+  {
+   "id": "c9fd033d5d",
+   "es": "extrañé",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "missed"
+  },
+  {
+   "id": "71bc067897",
+   "es": "Perdí el autobús esta mañana.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I missed the bus this morning."
+  },
+  {
+   "id": "128a6a170f",
+   "es": "olvidado (forget)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "forgotten"
+  },
+  {
+   "id": "def7e9595b",
+   "es": "olvidado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "forgotten"
+  },
+  {
+   "id": "0037be13d7",
+   "es": "Me había olvidado de su cumpleaños.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I had forgotten her birthday."
+  },
+  {
+   "id": "bb005202bc",
+   "es": "perderse",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "get lost"
+  },
+  {
+   "id": "dc08d27dbc",
+   "es": "Es fácil perderse en esta ciudad.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "It is easy to get lost in this city."
+  },
+  {
+   "id": "52912ec10d",
+   "es": "anécdota",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "anecdote"
+  },
+  {
+   "id": "fd65f97801",
+   "es": "Nos contó una anécdota graciosa.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "He told us a funny anecdote."
+  },
+  {
+   "id": "133de440fb",
+   "es": "avergonzado / avergonzada",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "embarrassed"
+  },
+  {
+   "id": "658180e743",
+   "es": "con vergüenza",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "embarrassed"
+  },
+  {
+   "id": "183952e971",
+   "es": "avergonzada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "embarrassed"
+  },
+  {
+   "id": "3792eadaac",
+   "es": "Estaba muy avergonzado.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I was very embarrassed."
+  },
+  {
+   "id": "8c2b0144b9",
+   "es": "sorprendido / sorprendida",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "surprised"
+  },
+  {
+   "id": "262bf764bc",
+   "es": "sorprendida",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "surprised"
+  },
+  {
+   "id": "235fd5d9d7",
+   "es": "Nos sorprendió verlo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We were surprised to see him."
+  },
+  {
+   "id": "83fa8128bd",
+   "es": "raro / extraño",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "strange"
+  },
+  {
+   "id": "424bda6cb8",
+   "es": "raro",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "strange"
+  },
+  {
+   "id": "43b4757ab7",
+   "es": "extraño",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "strange"
+  },
+  {
+   "id": "75c88fc5c2",
+   "es": "Pasó algo raro.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "A strange thing happened."
+  },
+  {
+   "id": "c49d117c5c",
+   "es": "con suerte / afortunado",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "lucky"
+  },
+  {
+   "id": "6d4e201e6c",
+   "es": "afortunado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "lucky"
+  },
+  {
+   "id": "14244a2b2e",
+   "es": "afortunada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "lucky"
+  },
+  {
+   "id": "84f801e18f",
+   "es": "¡Tuviste mucha suerte!",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "You were very lucky!"
+  },
+  {
+   "id": "26fecae8c6",
+   "es": "lamentablemente / por desgracia",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "unfortunately"
+  },
+  {
+   "id": "d57bd114ad",
+   "es": "lamentablemente",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "unfortunately"
+  },
+  {
+   "id": "0ca588cda7",
+   "es": "por desgracia",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "unfortunately"
+  },
+  {
+   "id": "ead6a776e2",
+   "es": "desafortunadamente",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "unfortunately"
+  },
+  {
+   "id": "b5ecfa13a6",
+   "es": "Lamentablemente, empezó a llover.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Unfortunately, it started to rain."
+  },
+  {
+   "id": "cc8b155199",
+   "es": "reconocer",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "recognize"
+  },
+  {
+   "id": "24a12da769",
+   "es": "¡No te reconocí!",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I didn't recognize you!"
+  },
+  {
+   "id": "7457c90324",
+   "es": "al fin / con el tiempo",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "eventually"
+  },
+  {
+   "id": "322f73da29",
+   "es": "al fin",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "eventually"
+  },
+  {
+   "id": "7fad4335d5",
+   "es": "con el tiempo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "eventually"
+  },
+  {
+   "id": "de7ff3a803",
+   "es": "Al fin encontramos el hotel.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "Eventually, we found the hotel."
+  },
+  {
+   "id": "3a9a77bfc7",
+   "es": "La escena",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "db436b24e7",
+   "es": "Armar la escena de una anécdota con el past continuous y el past simple.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "8ab8949dd1",
+   "es": "Una anécdota suele empezar con la escena (past continuous: I was having lunch) y sigue con lo que pasó (past simple: when a man said my name). Para reaccionar: strange (raro), surprised (sorprendido), embarrassed (avergonzado).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "ad46b9ebd8",
+   "es": "Estaba almorzando cuando un hombre dijo mi nombre.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I was having lunch when a man said my name."
+  },
+  {
+   "id": "be06e88c9b",
+   "es": "Hoy pasó algo raro.",
+   "kinds": [
+    "example",
+    "exercise.source"
+   ],
+   "en": "A strange thing happened today."
+  },
+  {
+   "id": "e38eeb5ccf",
+   "es": "Armas la escena con was/were + -ing y cuentas lo que pasó en past simple.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "abff68e49e",
+   "es": "Dices cómo te sentiste: surprised, embarrassed.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "244b43b337",
+   "es": "La escena (lo que estaba pasando) va en past continuous.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "was having"
+  },
+  {
+   "id": "202eff3490",
+   "es": "Volvíamos caminando a casa cuando empezó a llover.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "We were walking home when it started to rain."
+  },
+  {
+   "id": "2d07ea3123",
+   "es": "Estaba caminando por el parque cuando vi a un viejo amigo.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I was walking in the park when I saw an old friend."
+  },
+  {
+   "id": "fbb6f3317c",
+   "es": "Lo que interrumpe la escena va en past simple.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "saw"
+  },
+  {
+   "id": "2700557567",
+   "es": "muy avergonzado",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "How did you feel? (muy avergonzado)"
+  },
+  {
+   "id": "f47dbced03",
+   "es": "¿Cómo te sentiste?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How did you feel? (muy avergonzado)"
+  },
+  {
+   "id": "ee6d021be2",
+   "es": "Lo que ya había pasado",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "f617f2346a",
+   "es": "Contar algo que pasó antes de otro hecho del pasado con had + participio.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "028dd00214",
+   "es": "Had + participio (past perfect) va con lo que pasó primero: When I got to the station, the train had left. By the time (para cuando) introduce el segundo momento: By the time we arrived, the movie had started.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "c2e9708521",
+   "es": "Cuando llegué, el tren se había ido.",
+   "kinds": [
+    "example"
+   ],
+   "en": "When I arrived, the train had left."
+  },
+  {
+   "id": "a9d2307ccc",
+   "es": "Usas had + participio para lo que pasó antes.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "e0e8167bac",
+   "es": "Ordenas dos momentos con by the time y when.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "f64efb38ee",
+   "es": "Cuando llegué a la estación, el tren ya se había ido.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "When I got to the station, the train had left."
+  },
+  {
+   "id": "7be33ddf13",
+   "es": "Past perfect: had + participio para lo que pasó primero.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "had"
+  },
+  {
+   "id": "e6e8428d56",
+   "es": "Me di cuenta de que me había olvidado las llaves en casa.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I realized I had forgotten my keys at home."
+  },
+  {
+   "id": "4f3fe3e1c5",
+   "es": "Forget: forgot (pasado), forgotten (participio).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "forgotten"
+  },
+  {
+   "id": "cc23d17e97",
+   "es": "Ben le cuenta a Lucy por qué llegó tarde.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u3-train"
+  },
+  {
+   "id": "b78a38b95f",
+   "es": "¿Por qué Ben perdió el tren?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u3-train"
+  },
+  {
+   "id": "24ad551f5c",
+   "es": "Cuando llegó a la estación, el tren ya se había ido",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u3-train"
+  },
+  {
+   "id": "d5e6fa065f",
+   "es": "El tren no llegó",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f250d14be6",
+   "es": "Se olvidó del horario",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4171ca7623",
+   "es": "Se quedó dormido",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7d521ffe24",
+   "es": "Ben dice: «By the time I got to the station, it had already left».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u3-train"
+  },
+  {
+   "id": "580dbd1321",
+   "es": "¿Qué pasó con el tren siguiente?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u3-train"
+  },
+  {
+   "id": "9eb862b768",
+   "es": "También llegó tarde",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u3-train"
+  },
+  {
+   "id": "57056c8e8b",
+   "es": "Llegó temprano",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "bc6773408d",
+   "es": "No vino",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b6530c4e13",
+   "es": "Estaba lleno",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "070189b9f4",
+   "es": "Ben dice: «Unfortunately, it was late too».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u3-train"
+  },
+  {
+   "id": "ee6a4776dd",
+   "es": "La película había empezado para cuando llegamos.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "The movie had started by the time we arrived."
+  },
+  {
+   "id": "af0b571ff2",
+   "es": "perdiste el autobús",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Why were you late? (perdiste el autobús)"
+  },
+  {
+   "id": "233a9baa33",
+   "es": "¿Por qué llegaste tarde?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Why were you late? (perdiste el autobús)"
+  },
+  {
+   "id": "b51885176e",
+   "es": "Cuando llegué, la clase había empezado.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "When I arrived, the class had started."
+  },
+  {
+   "id": "34c40fde8f",
+   "es": "Antes, después y apenas",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "414232ce18",
+   "es": "Ordenar los hechos con before, after, as soon as, afterwards y the day before.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "922fe067aa",
+   "es": "Before y after pueden ir con -ing: before eating, after finishing. As soon as es «apenas, en cuanto»: As soon as I got home, I called you. Afterwards (después) y the day before (el día anterior) también ordenan una historia.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "825bcfc3c2",
+   "es": "Apenas llegué a casa, te llamé.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "As soon as I got home, I called you."
+  },
+  {
+   "id": "c44f690418",
+   "es": "Ordenas hechos con before, after y as soon as.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "e8cf8c7cda",
+   "es": "Usas afterwards y the day before para avanzar o volver en la historia.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "0826e2608f",
+   "es": "Después de before y after, el verbo va con -ing.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "eating"
+  },
+  {
+   "id": "52961965e1",
+   "es": "Estaba cansado porque había dormido mal la noche anterior.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I was tired because I had slept badly the night before."
+  },
+  {
+   "id": "d387a7894c",
+   "es": "Kate cuenta un problema en un viaje.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u3-lost"
+  },
+  {
+   "id": "1cc7b3ddd1",
+   "es": "¿Por qué no pudieron usar el mapa del teléfono?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u3-lost"
+  },
+  {
+   "id": "732a7e2c4a",
+   "es": "Kate se había olvidado de cargar el teléfono",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u3-lost"
+  },
+  {
+   "id": "7784e332fb",
+   "es": "No había internet",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "85f328ffb9",
+   "es": "El teléfono se rompió",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2a155c71d4",
+   "es": "Perdieron el teléfono",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7aeaf5601c",
+   "es": "Kate dice: «I had forgotten to charge it».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u3-lost"
+  },
+  {
+   "id": "baed3ddcff",
+   "es": "¿Qué hizo Kate apenas llegaron al hotel?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u3-lost"
+  },
+  {
+   "id": "feae80b551",
+   "es": "Cargó el teléfono",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u3-lost"
+  },
+  {
+   "id": "001e789b70",
+   "es": "Llamó a su familia",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8d10906588",
+   "es": "Compró un mapa",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5fd0a0ac96",
+   "es": "Se fue a dormir",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8c93679934",
+   "es": "Kate dice: «As soon as we got to the hotel, I charged my phone!».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u3-lost"
+  },
+  {
+   "id": "d023c6c009",
+   "es": "Por suerte, por desgracia",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "92b6864fd7",
+   "es": "Contar contratiempos: perderse, perder el tren, darse cuenta de algo.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "f44b62a61d",
+   "es": "Unfortunately (lamentablemente) presenta lo malo y luckily (por suerte), lo bueno. Miss es perder un transporte (I missed the bus); get lost es perderse. Realize es darse cuenta: I realized I had lost my keys.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "bee67b003f",
+   "es": "Lamentablemente, nos perdimos.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Unfortunately, we got lost."
+  },
+  {
+   "id": "363d5daf80",
+   "es": "Por suerte, una mujer nos indicó el camino.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Luckily, a woman showed us the way."
+  },
+  {
+   "id": "72fc85eb57",
+   "es": "Cuentas contratiempos: I missed the bus, we got lost.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "192ebe39ee",
+   "es": "Presentas lo malo y lo bueno: unfortunately, luckily.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "97e68f9d55",
+   "es": "¿Qué significa «unfortunately»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "746569015e",
+   "es": "Perdí el autobús esta mañana, así que llegué tarde.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I missed the bus this morning, so I was late."
+  },
+  {
+   "id": "c628a79e12",
+   "es": "Un transporte se pierde con miss: I missed the bus. Lose es perder un objeto.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "missed"
+  },
+  {
+   "id": "a0f18990ae",
+   "es": "Mia cuenta algo que le pasó el sábado.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u3-party"
+  },
+  {
+   "id": "a2cf377f98",
+   "es": "¿Qué error cometió Mia?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u3-party"
+  },
+  {
+   "id": "d43d2f49d8",
+   "es": "Fue a la fiesta el día equivocado",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u3-party"
+  },
+  {
+   "id": "530609a0fc",
+   "es": "Se olvidó del regalo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9963366c58",
+   "es": "Se perdió en el camino",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d1e72c5ed8",
+   "es": "Llegó muy tarde",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "048af922e7",
+   "es": "Mia escribe: «I realized that I had come on the wrong day».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u3-party"
+  },
+  {
+   "id": "d005cd1505",
+   "es": "¿Cómo se sintió Mia?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u3-party"
+  },
+  {
+   "id": "b3b43a0ad4",
+   "es": "Muy avergonzada",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u3-party"
+  },
+  {
+   "id": "bc273dbe61",
+   "es": "Enojada",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4275a5d131",
+   "es": "Mia escribe: «I was so embarrassed, but we laughed a lot».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u3-party"
+  },
+  {
+   "id": "caf2ca62db",
+   "es": "Lamentablemente perdimos el último autobús.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Unfortunately we missed the last bus."
+  },
+  {
+   "id": "a3ef915dfb",
+   "es": "Nos perdimos en Roma.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "We got lost in Rome."
+  },
+  {
+   "id": "7a26a8ef60",
+   "es": "Me di cuenta de que había perdido la llave.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I realized I had lost the key."
+  },
+  {
+   "id": "14c75e7cf1",
+   "es": "Tu anécdota",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "e84e3beb66",
+   "es": "Contar una anécdota completa, con escena, hechos ordenados y final.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "358b017d73",
+   "es": "Una buena anécdota tiene escena (was/were + -ing), hechos (past simple), lo que ya había pasado (had + participio) y un final (eventually, in the end). Recognize es reconocer a alguien.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "8f4f4bde0d",
+   "es": "Al principio no lo reconocí.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "At first I didn't recognize him."
+  },
+  {
+   "id": "97a40430e1",
+   "es": "Cuentas una anécdota completa y ordenada.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "21e7f02625",
+   "es": "Cierras la historia: eventually, in the end.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "5335a447eb",
+   "es": "¿Qué significa «anecdote»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "0285d31712",
+   "es": "Leo le escribe a su hermana.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u3-friend"
+  },
+  {
+   "id": "b1c103fd79",
+   "es": "¿Por qué Leo no reconoció a Pedro al principio?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u3-friend"
+  },
+  {
+   "id": "3387245c1f",
+   "es": "No lo veía desde hacía quince años",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u3-friend"
+  },
+  {
+   "id": "ee8d0f6483",
+   "es": "Pedro tenía lentes",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1ad57f64ad",
+   "es": "Leo no lo conocía",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0b8392b75c",
+   "es": "Había mucha gente",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f8ed6e96ab",
+   "es": "Leo escribe: «I hadn’t seen him for fifteen years».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u3-friend"
+  },
+  {
+   "id": "59befd456f",
+   "es": "¿Qué hicieron después?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u3-friend"
+  },
+  {
+   "id": "7fffa24c5c",
+   "es": "Fueron a tomar un café y charlaron horas",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u3-friend"
+  },
+  {
+   "id": "41cb09b66e",
+   "es": "Almorzaron juntos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ed4451c67c",
+   "es": "Fueron a la escuela",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8fbb7a6183",
+   "es": "Se despidieron enseguida",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1a73c5e326",
+   "es": "Leo escribe: «Afterwards, we went for a coffee and talked for hours».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u3-friend"
+  },
+  {
+   "id": "0b59307d21",
+   "es": "No lo veía desde hacía años.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I hadn't seen him for years."
+  },
+  {
+   "id": "1fd0a6127b",
+   "es": "al fin encontraron el hotel",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What happened in the end? (al fin encontraron el hotel)"
+  },
+  {
+   "id": "ce9f4edbdc",
+   "es": "Una anécdota",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "972c4e8983",
+   "es": "Cuenta una anécdota (real o inventada): qué estabas haciendo, qué pasó, qué ya había pasado antes y cómo terminó.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "578cfdf100",
+   "es": "Armas la escena con was/were + -ing",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "ff672e3fc0",
+   "es": "Usas had + participio (had left, had forgotten…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "d8d8a01201",
+   "es": "Ordenas los hechos (when, by the time, as soon as, afterwards, eventually…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "8cc678d9e1",
+   "es": "Armé la escena con was/were + -ing.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "021373750c",
+   "es": "Usé had + participio para algo que ya había pasado.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "3c9c7d3106",
+   "es": "Ordené los hechos y conté el final.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.b1-u3-train": {
+   "setting": "Ben le cuenta a Lucy por qué llegó tarde.",
+   "lines": [
+    "Lucy: Why were you so late yesterday?",
+    "Ben: I missed the train. By the time I got to the station, it had already left.",
+    "Lucy: Oh no! What did you do?",
+    "Ben: I waited for the next one. Unfortunately, it was late too."
+   ]
+  },
+  "en.stim.b1-u3-lost": {
+   "setting": "Kate cuenta un problema en un viaje.",
+   "lines": [
+    "Kate: On our first day in Rome, we got lost.",
+    "Kate: We wanted to use the map on my phone, but I had forgotten to charge it.",
+    "Kate: Luckily, a woman saw us and showed us the way.",
+    "Kate: As soon as we got to the hotel, I charged my phone!"
+   ]
+  },
+  "en.stim.b1-u3-party": {
+   "setting": "Mia cuenta algo que le pasó el sábado.",
+   "lines": [
+    "On Saturday I went to my friend Rosa’s birthday party.",
+    "When I arrived, the house was dark and quiet.",
+    "I rang the bell, and Rosa opened the door in her pajamas.",
+    "Then I realized that I had come on the wrong day. The party was the next Saturday!",
+    "I was so embarrassed, but we laughed a lot."
+   ]
+  },
+  "en.stim.b1-u3-friend": {
+   "setting": "Leo le escribe a su hermana.",
+   "lines": [
+    "Hi Emma,",
+    "A strange thing happened today. I was having lunch in a restaurant when a man said my name.",
+    "At first I didn’t recognize him. Then I realized it was Pedro, my best friend from school!",
+    "I hadn’t seen him for fifteen years. Afterwards, we went for a coffee and talked for hours.",
+    "Leo"
+   ]
+  }
+ }
+}

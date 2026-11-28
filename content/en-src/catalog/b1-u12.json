@@ -1,0 +1,1536 @@
+{
+ "unit": "b1-u12",
+ "level": "B1",
+ "titleEn": "Problems and solutions",
+ "strings": [
+  {
+   "id": "40cb2b2d28",
+   "es": "Problemas y soluciones",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Problems and solutions"
+  },
+  {
+   "id": "7425c7902e",
+   "es": "Deducir qué pasa (must be, can't be), cosas que se rompen, reclamos, causas y contrastes (because of, although, however) y soluciones.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "46e3b6bd15",
+   "es": "Puedes explicar un problema, sacar conclusiones, hacer un reclamo formal y proponer una solución.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "ef96bf0f59",
+   "es": "Deducción y conectores",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "cf01676224",
+   "es": "Must be: estás casi seguro de que es así; can't be: estás casi seguro de que no; might be: es posible. Conectores: because of + sustantivo (causa), therefore (consecuencia), although + oración y however al empezar otra oración (contraste).",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "379c59c443",
+   "es": "No pueden ser mías. Deben ser de Tom.",
+   "kinds": [
+    "example"
+   ],
+   "en": "They can't be mine. They must be Tom's."
+  },
+  {
+   "id": "4e703dba9f",
+   "es": "Por la tormenta, los trenes están cancelados.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Because of the storm, the trains are canceled."
+  },
+  {
+   "id": "fd98029c4b",
+   "es": "Aunque era caro, se rompió a la semana.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Although it was expensive, it broke after a week."
+  },
+  {
+   "id": "513ec58e79",
+   "es": "debe ser / seguro que es",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "must be"
+  },
+  {
+   "id": "906102b116",
+   "es": "debe ser",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "must be"
+  },
+  {
+   "id": "5233ec4eb3",
+   "es": "seguro que es",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "must be"
+  },
+  {
+   "id": "129d9d074e",
+   "es": "debe estar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "must be"
+  },
+  {
+   "id": "8adc71fc43",
+   "es": "Debes estar cansado después del viaje.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "You must be tired after the trip."
+  },
+  {
+   "id": "580652d0e9",
+   "es": "no puede ser",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "can't be"
+  },
+  {
+   "id": "bc4ed1f0dd",
+   "es": "no puede estar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "can't be"
+  },
+  {
+   "id": "4b215ecbf5",
+   "es": "¡Eso no puede ser cierto!",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "That can't be true!"
+  },
+  {
+   "id": "835b578bd5",
+   "es": "problema",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "problem"
+  },
+  {
+   "id": "fb9917724c",
+   "es": "Tenemos un problema con la calefacción.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We have a problem with the heating."
+  },
+  {
+   "id": "be9fb31de2",
+   "es": "solución",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "solution"
+  },
+  {
+   "id": "be04a72a50",
+   "es": "Hay una solución para cada problema.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "There is a solution for every problem."
+  },
+  {
+   "id": "7c54af6b3a",
+   "es": "romperse / descomponerse (una máquina)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "break down"
+  },
+  {
+   "id": "f6eb5116b1",
+   "es": "romperse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "break down"
+  },
+  {
+   "id": "681027e042",
+   "es": "descomponerse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "break down"
+  },
+  {
+   "id": "a27472877a",
+   "es": "Se me rompió el auto en la carretera.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My car broke down on the road."
+  },
+  {
+   "id": "144b8d6d84",
+   "es": "quedarse sin",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "run out of"
+  },
+  {
+   "id": "3af6db9250",
+   "es": "Nos quedamos sin leche.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "We have run out of milk."
+  },
+  {
+   "id": "1308e681a7",
+   "es": "arreglar / reparar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "fix"
+  },
+  {
+   "id": "df348514de",
+   "es": "arreglar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "fix"
+  },
+  {
+   "id": "1275f7f105",
+   "es": "reparar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "fix"
+  },
+  {
+   "id": "a4e2d93037",
+   "es": "¿Puedes arreglar mi bici?",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "Can you fix my bike?"
+  },
+  {
+   "id": "b3e706eb41",
+   "es": "reemplazar / cambiar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "replace"
+  },
+  {
+   "id": "8e74660b93",
+   "es": "reemplazar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "replace"
+  },
+  {
+   "id": "d897e7b005",
+   "es": "Tenemos que cambiar la batería.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We need to replace the battery."
+  },
+  {
+   "id": "a3bb09a32a",
+   "es": "resolver / solucionar",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "sort out"
+  },
+  {
+   "id": "439c363507",
+   "es": "resolver",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "sort out"
+  },
+  {
+   "id": "89ade739ff",
+   "es": "solucionar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "sort out"
+  },
+  {
+   "id": "0f58f1dbd7",
+   "es": "No te preocupes, lo vamos a resolver.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "Don't worry, we'll sort it out."
+  },
+  {
+   "id": "d702e1be6a",
+   "es": "quejarse / reclamar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "complain"
+  },
+  {
+   "id": "47d32cc55c",
+   "es": "quejarse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "complain"
+  },
+  {
+   "id": "a2b189196c",
+   "es": "reclamar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "complain"
+  },
+  {
+   "id": "6a6db2be07",
+   "es": "Se quejó por el ruido.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "He complained about the noise."
+  },
+  {
+   "id": "65d8d19820",
+   "es": "queja / reclamo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "complaint"
+  },
+  {
+   "id": "7aea994169",
+   "es": "queja",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "complaint"
+  },
+  {
+   "id": "5160a8a433",
+   "es": "reclamo",
+   "kinds": [
+    "word.accepted",
+    "exercise.option"
+   ],
+   "en": "complaint"
+  },
+  {
+   "id": "0c2dfc0732",
+   "es": "Quisiera hacer un reclamo.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I would like to make a complaint."
+  },
+  {
+   "id": "9ffcd0e403",
+   "es": "reembolso / devolución (del dinero)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "refund"
+  },
+  {
+   "id": "d07ebd1054",
+   "es": "reembolso",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "refund"
+  },
+  {
+   "id": "a8fcb22775",
+   "es": "devolución",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "refund"
+  },
+  {
+   "id": "9665e1fe07",
+   "es": "¿Me pueden devolver el dinero, por favor?",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "Can I have a refund, please?"
+  },
+  {
+   "id": "00b3e7e824",
+   "es": "ticket / recibo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "receipt"
+  },
+  {
+   "id": "55135f8578",
+   "es": "recibo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "receipt"
+  },
+  {
+   "id": "a6b3e0ef2b",
+   "es": "comprobante",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "receipt"
+  },
+  {
+   "id": "2a84af3444",
+   "es": "¿Tiene el ticket?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Do you have the receipt?"
+  },
+  {
+   "id": "a427fee163",
+   "es": "por / a causa de",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "because of"
+  },
+  {
+   "id": "c5138d1add",
+   "es": "a causa de",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "because of"
+  },
+  {
+   "id": "3f48f87540",
+   "es": "debido a",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "because of"
+  },
+  {
+   "id": "f0beca7cbf",
+   "es": "El vuelo se atrasó por la nieve.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "The flight was late because of the snow."
+  },
+  {
+   "id": "a8f8b18794",
+   "es": "por lo tanto",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "therefore"
+  },
+  {
+   "id": "9410b07246",
+   "es": "por eso",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "therefore"
+  },
+  {
+   "id": "54c2112bcd",
+   "es": "por consiguiente",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "therefore"
+  },
+  {
+   "id": "4a5d2d72b7",
+   "es": "Es tarde. Por lo tanto, los negocios están cerrados.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "It is late. Therefore, the shops are closed."
+  },
+  {
+   "id": "83b5f381c8",
+   "es": "aunque",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "although"
+  },
+  {
+   "id": "81e07131ca",
+   "es": "Aunque hacía frío, fuimos a la playa.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Although it was cold, we went to the beach."
+  },
+  {
+   "id": "e98bc86c88",
+   "es": "sin embargo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "however"
+  },
+  {
+   "id": "20395687e5",
+   "es": "no obstante",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "however"
+  },
+  {
+   "id": "d39150d715",
+   "es": "El hotel era lindo. Sin embargo, era caro.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "The hotel was nice. However, it was expensive."
+  },
+  {
+   "id": "021299a6a9",
+   "es": "Debe ser…",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "c5ca7c3099",
+   "es": "Sacar conclusiones con must be, might be y can't be.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "90e4e4c88d",
+   "es": "Para deducir: must be (estás casi seguro de que sí), might be (es posible) y can't be (estás casi seguro de que no). You must be tired = seguro que estás cansado. That can't be true = eso no puede ser cierto.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "f11145aaca",
+   "es": "Sacas conclusiones con must be y can't be.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "12863467bf",
+   "es": "Dices lo que es posible con might be.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "ed4df95722",
+   "es": "Trabajaste todo el día. Debes estar cansado.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "You worked all day. You must be tired."
+  },
+  {
+   "id": "8fd523676c",
+   "es": "Must be: casi seguro de que sí (por lo que sabes).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "must"
+  },
+  {
+   "id": "bf19457bf7",
+   "es": "Esta semana está en España. No puede ser ella la de la calle.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She is in Spain this week. That can't be her in the street."
+  },
+  {
+   "id": "a132da0931",
+   "es": "Can't be: casi seguro de que no.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "can't"
+  },
+  {
+   "id": "92615f1741",
+   "es": "No sé dónde está Tom. Puede que esté en el gimnasio.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I'm not sure where Tom is. He might be at the gym."
+  },
+  {
+   "id": "d8f3645d43",
+   "es": "Dos compañeros encuentran unas llaves en la oficina.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u12-keys"
+  },
+  {
+   "id": "746ce65467",
+   "es": "¿Por qué Leo dice que las llaves no son suyas?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u12-keys"
+  },
+  {
+   "id": "24a19088f6",
+   "es": "Porque tiene las suyas con él",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u12-keys"
+  },
+  {
+   "id": "3763509e68",
+   "es": "Porque no tiene llaves",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "db7ed25a2b",
+   "es": "Porque son de Emma",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "fe01fd653b",
+   "es": "Porque son de otro color",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "beb8a0e056",
+   "es": "Leo dice: «They can't be mine. I have mine here».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u12-keys"
+  },
+  {
+   "id": "7524bb6ea8",
+   "es": "¿De quién cree Emma que son las llaves?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u12-keys"
+  },
+  {
+   "id": "4f7bfe60fb",
+   "es": "De Tom, que se sienta al lado",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u12-keys"
+  },
+  {
+   "id": "2163e6bb0c",
+   "es": "De la gerente",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f604573065",
+   "es": "De Leo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8636a818bb",
+   "es": "De ella",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3b534de6c3",
+   "es": "Emma dice: «They must be Tom’s. He sits next to me».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u12-keys"
+  },
+  {
+   "id": "9a9500ff54",
+   "es": "Debes estar muy contento.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "You must be very happy."
+  },
+  {
+   "id": "f9bac917a3",
+   "es": "seguro que es de Ana",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Whose phone is this? (seguro que es de Ana)"
+  },
+  {
+   "id": "6f7dd28445",
+   "es": "¿De quién es este teléfono?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Whose phone is this? (seguro que es de Ana)"
+  },
+  {
+   "id": "d9f80f0953",
+   "es": "Se rompió",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "6db93c3dc4",
+   "es": "Explicar que algo se rompió o se acabó y pedir que lo arreglen.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "0735536de5",
+   "es": "Break down es romperse una máquina (un auto, un refrigerador): My car has broken down. Run out of es quedarse sin algo: We have run out of milk. Fix es arreglar y replace, reemplazar.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "9c74904942",
+   "es": "Se me rompió el auto.",
+   "kinds": [
+    "example"
+   ],
+   "en": "My car has broken down."
+  },
+  {
+   "id": "3be5d7673f",
+   "es": "Explicas que algo se rompió o se acabó.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "38b53493bd",
+   "es": "Pides que lo arreglen o lo cambien: fix, replace.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "d71b3dff8e",
+   "es": "Se me rompió el auto otra vez.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "My car has broken down again."
+  },
+  {
+   "id": "bdc7f907a5",
+   "es": "Nos quedamos sin café.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "We have run out of coffee."
+  },
+  {
+   "id": "f07ab50c00",
+   "es": "Ben llama a Lucy desde la carretera.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u12-car"
+  },
+  {
+   "id": "b988d112d6",
+   "es": "¿Qué le pasó a Ben?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u12-car"
+  },
+  {
+   "id": "af7f165a98",
+   "es": "Se le rompió el auto",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u12-car"
+  },
+  {
+   "id": "2c9ada4aca",
+   "es": "Se quedó sin gasolina",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ba322123e7",
+   "es": "Perdió el tren",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "39d5aa756b",
+   "es": "Tuvo un accidente",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e84a6c8a67",
+   "es": "Ben dice: «My car has broken down».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u12-car"
+  },
+  {
+   "id": "896456fe22",
+   "es": "¿Cuál cree Ben que es el problema?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u12-car"
+  },
+  {
+   "id": "7bd533c600",
+   "es": "La batería",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u12-car"
+  },
+  {
+   "id": "8cbb75eab4",
+   "es": "La gasolina",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d3cdcc6e97",
+   "es": "Las ruedas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1b365081a1",
+   "es": "El motor",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a6343d5147",
+   "es": "Ben dice: «I have plenty of gas. It must be the battery».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u12-car"
+  },
+  {
+   "id": "919f64363a",
+   "es": "Hacer un reclamo",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "7e6c1fd48a",
+   "es": "Reclamar con cortesía y pedir un reembolso o un cambio.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "dc72b01ed4",
+   "es": "Complain es quejarse y a complaint, un reclamo. Para reclamar con cortesía: I would like to make a complaint. Could you replace it? I would like a refund (que te devuelvan el dinero). The receipt es el ticket.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "920be20fb9",
+   "es": "Haces un reclamo con cortesía.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "2184063bda",
+   "es": "Pides un reembolso o un cambio y muestras el ticket.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "b4583a7d58",
+   "es": "Complaint es el sustantivo (un reclamo); complain, el verbo (quejarse).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "complaint"
+  },
+  {
+   "id": "4b7a3933c5",
+   "es": "¿Tiene el ticket? — Sí, aquí está.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Do you have the receipt? — Yes, here it is."
+  },
+  {
+   "id": "b11dd86484",
+   "es": "Kate escribe a una tienda para reclamar.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u12-complaint"
+  },
+  {
+   "id": "3993681326",
+   "es": "¿Qué problema tienen los auriculares de Kate?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u12-complaint"
+  },
+  {
+   "id": "efc2af1ed9",
+   "es": "Dejaron de funcionar a la semana",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u12-complaint"
+  },
+  {
+   "id": "e8a1d66eb2",
+   "es": "Llegaron rotos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9de82a08d5",
+   "es": "Eran del color equivocado",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e8b2efc818",
+   "es": "Nunca llegaron",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "98c380f386",
+   "es": "Kate escribe: «they stopped working after a week».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u12-complaint"
+  },
+  {
+   "id": "4a6335ce9a",
+   "es": "¿Qué pide Kate?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u12-complaint"
+  },
+  {
+   "id": "39fb04c6ff",
+   "es": "Que le devuelvan el dinero o que se los cambien",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u12-complaint"
+  },
+  {
+   "id": "6103d4f6cd",
+   "es": "Unos auriculares más caros",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1ff7c97a42",
+   "es": "Que la llamen",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d3edc5db2d",
+   "es": "Un descuento",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "11c4be777c",
+   "es": "Kate escribe: «I would like a refund, or could you replace them, please?».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u12-complaint"
+  },
+  {
+   "id": "09bb65dfe0",
+   "es": "quieres hacer un reclamo",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "How can I help you? (quieres hacer un reclamo)"
+  },
+  {
+   "id": "0c85998ec5",
+   "es": "¿En qué lo puedo ayudar?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How can I help you? (quieres hacer un reclamo)"
+  },
+  {
+   "id": "6c589ee745",
+   "es": "¿Podría cambiarlo, por favor?",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "Could you replace it, please?"
+  },
+  {
+   "id": "4713463f51",
+   "es": "Causas y contrastes",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "fe5caf66ff",
+   "es": "Explicar causas, consecuencias y contrastes con conectores.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "d52fae4ff2",
+   "es": "Because of va con un sustantivo (because of the storm); because, con una oración. Therefore (por lo tanto) da la consecuencia. Although (aunque) une dos ideas en una oración; however (sin embargo) empieza la oración siguiente.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "60315dc685",
+   "es": "Explicas causas con because of y consecuencias con therefore.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "d0595cb37e",
+   "es": "Muestras contrastes con although y however.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "d96589d297",
+   "es": "Because of + sustantivo (the snow); because + oración (because it snowed).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "because of"
+  },
+  {
+   "id": "5d64f98fb3",
+   "es": "Un aviso en la estación de tren.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u12-storm"
+  },
+  {
+   "id": "ea3b754292",
+   "es": "¿Por qué se cancelaron los trenes?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u12-storm"
+  },
+  {
+   "id": "c20981fd21",
+   "es": "Por la tormenta",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u12-storm"
+  },
+  {
+   "id": "5d9ab2e05b",
+   "es": "Por un accidente",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7d203db17d",
+   "es": "Por obras",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d6260be224",
+   "es": "Por falta de pasajeros",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1281a1722c",
+   "es": "El aviso dice: «Because of the storm, all trains to the coast are canceled today».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u12-storm"
+  },
+  {
+   "id": "e4f58f01b9",
+   "es": "¿Hace falta comprar un pasaje nuevo para el autobús?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u12-storm"
+  },
+  {
+   "id": "698463a0eb",
+   "es": "No: los pasajes de hoy sirven en los autobuses",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u12-storm"
+  },
+  {
+   "id": "2ee109f718",
+   "es": "Sí, en la entrada",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d216c97707",
+   "es": "Sí, más caro",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b0d0359fd5",
+   "es": "No, el autobús es gratis para todos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4e162e9640",
+   "es": "El aviso dice: «Tickets for today can be used on the buses. Therefore, you do not need to buy a new ticket».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u12-storm"
+  },
+  {
+   "id": "d9714af89d",
+   "es": "Aunque estaba cansado, fui a trabajar.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "Although I was tired, I went to work."
+  },
+  {
+   "id": "bb63ffa9cf",
+   "es": "Buscar soluciones",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "c118e671c9",
+   "es": "Proponer soluciones con los condicionales y sort out.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "75d739276b",
+   "es": "Sort out es resolver un problema: Don't worry, we'll sort it out. Para proponer soluciones usas los dos condicionales: If we call the mechanic, he will fix it (posible). If I had more money, I would buy a new car (imaginario).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "590afb6958",
+   "es": "Propones soluciones con if.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "9d4d06a62f",
+   "es": "Tranquilizas a alguien: We'll sort it out.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "1199874e8f",
+   "es": "¿Qué significa «solution»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "57710c0959",
+   "es": "Si llamas al mecánico, lo va a arreglar hoy.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "If you call the mechanic, he will fix it today."
+  },
+  {
+   "id": "16d9abaee9",
+   "es": "Primer condicional (posible): if + presente, will.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "will"
+  },
+  {
+   "id": "315eb647aa",
+   "es": "Si tuviera más dinero, me compraría un auto nuevo.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "If I had more money, I would buy a new car."
+  },
+  {
+   "id": "5e1406c39a",
+   "es": "Segundo condicional (imaginario): if + pasado, would.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "would"
+  },
+  {
+   "id": "1c2f523fc6",
+   "es": "¿Qué le aconseja Lucy a Ben?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u12-car"
+  },
+  {
+   "id": "7d83ae8962",
+   "es": "Que llame al mecánico",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u12-car"
+  },
+  {
+   "id": "2a73705bc3",
+   "es": "Que cargue gasolina",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b11a4cbe15",
+   "es": "Que vuelva caminando",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "09fc081bef",
+   "es": "Que compre otro auto",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e382a50a30",
+   "es": "Lucy dice: «Call the mechanic. I'm sure he can fix it».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u12-car"
+  },
+  {
+   "id": "e81a302f0a",
+   "es": "Tenemos un problema con internet.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "We have a problem with the internet."
+  },
+  {
+   "id": "24c716f897",
+   "es": "llamar a la empresa",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "The internet isn't working. What should we do? (llamar a la empresa)"
+  },
+  {
+   "id": "ef285d2a25",
+   "es": "Internet no funciona. ¿Qué hacemos?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "The internet isn't working. What should we do? (llamar a la empresa)"
+  },
+  {
+   "id": "2f144a3190",
+   "es": "Un reclamo formal",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "afd8c8d637",
+   "es": "Escribe un correo para reclamar por algo que compraste y no funciona: qué compraste, qué problema tiene y qué pides (un reembolso o un cambio).",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "0c0497d28e",
+   "es": "Explicas el problema (stopped working, broke, broken…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "e90c8a165d",
+   "es": "Pides algo con cortesía (I would like a refund / Could you replace it?)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "10339f7ba7",
+   "es": "Saludé de forma formal.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "58ed1a4d91",
+   "es": "Expliqué el problema.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "68244b506c",
+   "es": "Pedí un reembolso o un cambio con cortesía.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "1e815e7f4c",
+   "es": "Un problema de tu ciudad",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "772b501cbd",
+   "es": "Elige un problema de tu ciudad (el transporte, la basura, el ruido…). Explica la causa, cuenta qué se hizo, da tu opinión y propón una solución.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "080fd6b465",
+   "es": "¿Explicaste la causa (because, because of)?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "c660ff71db",
+   "es": "¿Mostraste un contraste (although, however, on the other hand)?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "088327f703",
+   "es": "¿Diste tu opinión?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "060ad02e11",
+   "es": "¿Propusiste una solución (if…, would / will)?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "cd893d2d8c",
+   "es": "Expliqué el problema y su causa.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "5aa777fba9",
+   "es": "Mostré un contraste.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "1d5ece27a6",
+   "es": "Di mi opinión y una solución.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.b1-u12-keys": {
+   "setting": "Dos compañeros encuentran unas llaves en la oficina.",
+   "lines": [
+    "Emma: Whose keys are these? They were on my desk.",
+    "Leo: They can't be mine. I have mine here.",
+    "Emma: They must be Tom’s. He sits next to me.",
+    "Leo: They might be the manager's. She was here this morning."
+   ]
+  },
+  "en.stim.b1-u12-car": {
+   "setting": "Ben llama a Lucy desde la carretera.",
+   "lines": [
+    "Ben: Lucy, I'm going to be late. My car has broken down.",
+    "Lucy: Oh no! Have you run out of gas again?",
+    "Ben: No, I have plenty of gas. It must be the battery.",
+    "Lucy: Call the mechanic. I'm sure he can fix it."
+   ]
+  },
+  "en.stim.b1-u12-complaint": {
+   "setting": "Kate escribe a una tienda para reclamar.",
+   "lines": [
+    "Dear Sir or Madam,",
+    "I bought some headphones from your website on May 3rd. They were expensive, but they stopped working after a week.",
+    "I would like a refund, or could you replace them, please? I have attached the receipt.",
+    "I look forward to hearing from you.",
+    "Kate Brown"
+   ]
+  },
+  "en.stim.b1-u12-storm": {
+   "setting": "Un aviso en la estación de tren.",
+   "lines": [
+    "Because of the storm, all trains to the coast are canceled today.",
+    "However, there are extra buses every hour from the main entrance.",
+    "Tickets for today can be used on the buses. Therefore, you do not need to buy a new ticket.",
+    "We are sorry for any problems."
+   ]
+  }
+ }
+}

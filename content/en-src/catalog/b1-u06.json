@@ -1,0 +1,1442 @@
+{
+ "unit": "b1-u06",
+ "level": "B1",
+ "titleEn": "Travel and culture",
+ "strings": [
+  {
+   "id": "8177900fb9",
+   "es": "Viajes y cultura",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Travel and culture"
+  },
+  {
+   "id": "7d1910c009",
+   "es": "El primer condicional (if, unless), problemas de viaje, recorrer una ciudad, dinero y propinas y las costumbres de otros países.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "cec0d35d15",
+   "es": "Puedes resolver problemas de viaje, decir qué vas a hacer si pasa algo y explicar costumbres de un lugar.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "1f04dbb5d3",
+   "es": "Primer condicional",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "1104aa6af8",
+   "es": "If + presente, will + verbo: una condición posible y su resultado. If it rains, we will stay at the hotel. Unless es «a menos que» (= if not): We will miss the bus unless we take a taxi.",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "ae2503278e",
+   "es": "Si llueve, vamos a visitar el museo.",
+   "kinds": [
+    "example"
+   ],
+   "en": "If it rains, we will visit the museum."
+  },
+  {
+   "id": "f77a808475",
+   "es": "Si espera diez minutos, la habitación va a estar lista.",
+   "kinds": [
+    "example"
+   ],
+   "en": "If you wait ten minutes, the room will be ready."
+  },
+  {
+   "id": "c254ecb979",
+   "es": "Vamos a llegar tarde a menos que tomemos un taxi.",
+   "kinds": [
+    "example",
+    "exercise.source"
+   ],
+   "en": "We'll be late unless we take a taxi."
+  },
+  {
+   "id": "40054ab672",
+   "es": "si (condición)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "if"
+  },
+  {
+   "id": "97a62ad21d",
+   "es": "si",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "if"
+  },
+  {
+   "id": "1ba346839d",
+   "es": "Si estás cansado, podemos volver a casa.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "If you are tired, we can go home."
+  },
+  {
+   "id": "ab217bbba4",
+   "es": "a menos que / salvo que",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "unless"
+  },
+  {
+   "id": "dad5ab4ea5",
+   "es": "a menos que",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "unless"
+  },
+  {
+   "id": "7f04aa8209",
+   "es": "salvo que",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "unless"
+  },
+  {
+   "id": "f604d33fad",
+   "es": "Voy a ir a menos que llueva.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I will go unless it rains."
+  },
+  {
+   "id": "a2d5331ede",
+   "es": "reserva",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "reservation"
+  },
+  {
+   "id": "2ffc41ed8b",
+   "es": "Tenemos una reserva por dos noches.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "We have a reservation for two nights."
+  },
+  {
+   "id": "e6c18c0ef9",
+   "es": "demorado / retrasado",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "delayed"
+  },
+  {
+   "id": "e88be7f952",
+   "es": "demorado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "delayed"
+  },
+  {
+   "id": "d5ddb6d977",
+   "es": "retrasado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "delayed"
+  },
+  {
+   "id": "c766747918",
+   "es": "atrasado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "delayed"
+  },
+  {
+   "id": "a58ece1520",
+   "es": "Nuestro tren está demorado.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Our train is delayed."
+  },
+  {
+   "id": "6f234ec846",
+   "es": "cancelado / cancelada",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "canceled"
+  },
+  {
+   "id": "72ade12c52",
+   "es": "cancelado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "canceled"
+  },
+  {
+   "id": "48a17f781a",
+   "es": "cancelada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "canceled"
+  },
+  {
+   "id": "52b69095f2",
+   "es": "El vuelo fue cancelado.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "The flight was canceled."
+  },
+  {
+   "id": "4ed130c30d",
+   "es": "equipaje",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "luggage"
+  },
+  {
+   "id": "3b65279e19",
+   "es": "¿Puedo dejar mi equipaje aquí?",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Can I leave my luggage here?"
+  },
+  {
+   "id": "ca7b316b33",
+   "es": "a horario / puntual",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "on time"
+  },
+  {
+   "id": "398b31642f",
+   "es": "a tiempo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "on time"
+  },
+  {
+   "id": "ad106d1eac",
+   "es": "puntual",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "on time"
+  },
+  {
+   "id": "a597e31b60",
+   "es": "El autobús llegó a horario.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The bus arrived on time."
+  },
+  {
+   "id": "1aea6083a6",
+   "es": "hacer turismo / recorrer",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "go sightseeing"
+  },
+  {
+   "id": "bc824c1106",
+   "es": "hacer turismo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "go sightseeing"
+  },
+  {
+   "id": "450d000473",
+   "es": "recorrer",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "go sightseeing"
+  },
+  {
+   "id": "37dafde3fb",
+   "es": "Recorrimos la ciudad todo el día.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "We went sightseeing all day."
+  },
+  {
+   "id": "1461e7d9cb",
+   "es": "guía",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "guide"
+  },
+  {
+   "id": "881ce9c8bd",
+   "es": "Nuestro guía hablaba tres idiomas.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Our guide spoke three languages."
+  },
+  {
+   "id": "dad08ec601",
+   "es": "recuerdo (de viaje)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "souvenir"
+  },
+  {
+   "id": "15dacf6574",
+   "es": "souvenir",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "souvenir"
+  },
+  {
+   "id": "ee4cee846b",
+   "es": "Le compré un recuerdo a mi madre.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "I bought a souvenir for my mother."
+  },
+  {
+   "id": "5ef029f718",
+   "es": "moneda (de un país)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "currency"
+  },
+  {
+   "id": "82d92aefc1",
+   "es": "moneda",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "currency"
+  },
+  {
+   "id": "7126d2d85a",
+   "es": "divisa",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "currency"
+  },
+  {
+   "id": "51caf03283",
+   "es": "¿Cuál es la moneda local?",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "What is the local currency?"
+  },
+  {
+   "id": "c881934168",
+   "es": "cambiar (dinero) / intercambio",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "exchange"
+  },
+  {
+   "id": "d3fd787ac1",
+   "es": "cambiar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "exchange"
+  },
+  {
+   "id": "2e03955b44",
+   "es": "intercambio",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "exchange"
+  },
+  {
+   "id": "25369cfca4",
+   "es": "¿Dónde puedo cambiar dinero?",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "Where can I exchange money?"
+  },
+  {
+   "id": "1578fe6225",
+   "es": "propina / consejo",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "tip"
+  },
+  {
+   "id": "6de645e671",
+   "es": "propina",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "tip"
+  },
+  {
+   "id": "55bbc228e0",
+   "es": "consejo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "tip"
+  },
+  {
+   "id": "7362845dc5",
+   "es": "¿Aquí se deja propina?",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "Do people leave a tip here?"
+  },
+  {
+   "id": "f9445fe1f8",
+   "es": "cultura",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "culture"
+  },
+  {
+   "id": "cb92987ea8",
+   "es": "Me encanta aprender sobre otras culturas.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I love learning about other cultures."
+  },
+  {
+   "id": "bb4bcca0b7",
+   "es": "tradición",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "tradition"
+  },
+  {
+   "id": "d5a1f50f63",
+   "es": "Es una tradición antigua.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "It is an old tradition."
+  },
+  {
+   "id": "7a2dac77cb",
+   "es": "educado / cortés",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "polite"
+  },
+  {
+   "id": "5aa67a97d2",
+   "es": "educado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "polite"
+  },
+  {
+   "id": "1e8feb4955",
+   "es": "educada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "polite"
+  },
+  {
+   "id": "6664626421",
+   "es": "cortés",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "polite"
+  },
+  {
+   "id": "56502df55b",
+   "es": "Es de buena educación dar las gracias.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "It is polite to say thank you."
+  },
+  {
+   "id": "100d315904",
+   "es": "maleducado / grosero",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "rude"
+  },
+  {
+   "id": "e70086cdb0",
+   "es": "maleducado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "rude"
+  },
+  {
+   "id": "0a737dcc4c",
+   "es": "grosero",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "rude"
+  },
+  {
+   "id": "353b38aade",
+   "es": "maleducada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "rude"
+  },
+  {
+   "id": "b2d417abc9",
+   "es": "Es de mala educación hablar por teléfono en la cena.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "It is rude to talk on the phone at dinner."
+  },
+  {
+   "id": "3330c55906",
+   "es": "Si pasa esto…",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "8b02457a2f",
+   "es": "Decir qué va a pasar si se cumple una condición: if + presente, will.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "1981e91c67",
+   "es": "El primer condicional une una condición posible (if + presente) con su resultado (will + verbo): If it rains, we will stay at the hotel. El orden se puede invertir: We will stay at the hotel if it rains (sin coma).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "0c8c84a114",
+   "es": "Si llueve, nos quedamos en el hotel.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "If it rains, we will stay at the hotel."
+  },
+  {
+   "id": "6abbf00e6d",
+   "es": "Vas a perder el tren si no te apuras.",
+   "kinds": [
+    "example"
+   ],
+   "en": "You will miss the train if you don't hurry."
+  },
+  {
+   "id": "8bb9804a8b",
+   "es": "Dices qué va a pasar si se cumple algo: If…, … will…",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "3af2ae645c",
+   "es": "Usas el presente después de if.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "12ee94b015",
+   "es": "Después de if va el presente, aunque hable del futuro.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "rains"
+  },
+  {
+   "id": "4fa21a3a15",
+   "es": "Si estás cansado, volvemos a casa.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "If you are tired, we will go home."
+  },
+  {
+   "id": "fd02902e98",
+   "es": "Si sales ahora, vas a llegar a horario.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "If you leave now, you will arrive on time."
+  },
+  {
+   "id": "342d20c797",
+   "es": "¿Qué significa «on time»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "8074d1da8d",
+   "es": "Vamos a ir a la playa si hace sol.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "We will go to the beach if it is sunny."
+  },
+  {
+   "id": "fd6c74a4c9",
+   "es": "ir al museo",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What will you do if it rains tomorrow? (ir al museo)"
+  },
+  {
+   "id": "7712cd62c2",
+   "es": "¿Qué vas a hacer si llueve mañana?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What will you do if it rains tomorrow? (ir al museo)"
+  },
+  {
+   "id": "f9b3be89d3",
+   "es": "Si llueve, nos quedamos en casa.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "If it rains, we will stay at home."
+  },
+  {
+   "id": "07125aff68",
+   "es": "Problemas de viaje",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "6ad05be15b",
+   "es": "Resolver demoras y cancelaciones; usar unless.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "9d2dabac56",
+   "es": "Delayed (demorado) y canceled (cancelado) son las malas noticias de un viaje. Unless es «a menos que» y equivale a if… not: We will miss the bus unless we take a taxi = if we don't take a taxi.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "3ca595e594",
+   "es": "Nuestro vuelo está demorado.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Our flight is delayed."
+  },
+  {
+   "id": "b92c0dfc50",
+   "es": "Vamos a perder el autobús a menos que tomemos un taxi.",
+   "kinds": [
+    "example"
+   ],
+   "en": "We'll miss the bus unless we take a taxi."
+  },
+  {
+   "id": "3318a7ffac",
+   "es": "Entiendes y cuentas demoras y cancelaciones.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "6e633b0e9b",
+   "es": "Usas unless para decir «a menos que».",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "d789fd9185",
+   "es": "El vuelo se canceló por la tormenta.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "The flight was canceled because of the storm."
+  },
+  {
+   "id": "be9cf756b2",
+   "es": "Voy a ir a la playa a menos que llueva.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I'll go to the beach unless it rains."
+  },
+  {
+   "id": "85a166c8ec",
+   "es": "Unless = if not: voy salvo que llueva.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "unless"
+  },
+  {
+   "id": "53ebc11a2c",
+   "es": "En el aeropuerto, después de un anuncio.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u6-airport"
+  },
+  {
+   "id": "d938464d46",
+   "es": "¿Qué problema tienen Emma y Tom?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u6-airport"
+  },
+  {
+   "id": "b250f02ccc",
+   "es": "El vuelo está demorado dos horas",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u6-airport"
+  },
+  {
+   "id": "6e7346a21e",
+   "es": "El vuelo se canceló",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3f51041d13",
+   "es": "Perdieron el equipaje",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "41cdb70c30",
+   "es": "El hotel está lleno",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b8260469e3",
+   "es": "Emma dice: «Our flight is delayed… Two hours».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u6-airport"
+  },
+  {
+   "id": "afa7463535",
+   "es": "¿Qué propone Tom?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u6-airport"
+  },
+  {
+   "id": "6dbe95cb11",
+   "es": "Tomar un taxi y avisar al hotel",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u6-airport"
+  },
+  {
+   "id": "ff4dea2b1b",
+   "es": "Esperar el autobús",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "74955a15a6",
+   "es": "Cambiar de vuelo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "32d633a799",
+   "es": "Tom dice: «Unless we take a taxi. I'll call the hotel and tell them we'll be late».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u6-airport"
+  },
+  {
+   "id": "7c27ab154b",
+   "es": "Recorrer la ciudad",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "9b6861fd45",
+   "es": "Organizar un día de turismo: reservas, visitas guiadas y recuerdos.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "5a6db63352",
+   "es": "Go sightseeing es salir a recorrer y conocer lugares. Una visita guiada tiene un guide (guía). Reservation es una reserva (de hotel, de mesa). Souvenir es un recuerdo que compras en el viaje.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "eed78b942e",
+   "es": "Organizas un día de turismo.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "4e6d510b3c",
+   "es": "Entiendes el programa de una visita guiada.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "41de430b7f",
+   "es": "¿Qué significa «reservation»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "c106cb93e7",
+   "es": "Mañana vamos a recorrer la ciudad vieja.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Tomorrow we are going to go sightseeing in the old city."
+  },
+  {
+   "id": "bdca9e9d56",
+   "es": "El programa de una visita guiada.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u6-tour"
+  },
+  {
+   "id": "f9c57f781b",
+   "es": "¿Dónde empieza la visita?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u6-tour"
+  },
+  {
+   "id": "bd070629f6",
+   "es": "En la plaza principal, con el guía",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u6-tour"
+  },
+  {
+   "id": "beb16cff3f",
+   "es": "En la catedral",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "06bcc72348",
+   "es": "En el mercado",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c4096a1274",
+   "es": "En el museo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "17a1b01a2a",
+   "es": "El programa dice: «10:00 Meet the guide at the main square».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u6-tour"
+  },
+  {
+   "id": "0939606ace",
+   "es": "¿Qué pasa si llueve?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u6-tour"
+  },
+  {
+   "id": "42be53c396",
+   "es": "Visitan el museo de historia en vez del paseo en barco",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u6-tour"
+  },
+  {
+   "id": "e9caa3a266",
+   "es": "Se cancela la visita",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8060d1ec93",
+   "es": "Almuerzan antes",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "aa79ab7870",
+   "es": "Van al mercado",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "cae37ff20c",
+   "es": "El programa dice: «If it rains, we will visit the history museum instead of the boat trip».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u6-tour"
+  },
+  {
+   "id": "1b87befb9b",
+   "es": "sí, por tres noches",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Do you have a reservation? (sí, por tres noches)"
+  },
+  {
+   "id": "5ce67132ae",
+   "es": "¿Tiene una reserva?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Do you have a reservation? (sí, por tres noches)"
+  },
+  {
+   "id": "4eda130363",
+   "es": "Le compré un recuerdo a mi hermana.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I bought a souvenir for my sister."
+  },
+  {
+   "id": "496b806a5e",
+   "es": "Dinero y propinas",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "6a1c43addb",
+   "es": "Cambiar dinero, preguntar por la moneda local y por las propinas.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "0c06499a65",
+   "es": "Currency es la moneda de un país; exchange money es cambiar dinero. Tip es propina (y también «consejo»: travel tips). Local es «del lugar»: the local currency, a local restaurant.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "08977f8713",
+   "es": "Preguntas por la moneda local y dónde cambiar dinero.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "b3752348f2",
+   "es": "Preguntas si se deja propina.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "8fd6d94a4e",
+   "es": "¿Cuál es la moneda local en Japón? El yen.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What is the local currency in Japan? The yen."
+  },
+  {
+   "id": "8d0cf3c5ca",
+   "es": "Un viajero da consejos para visitar Japón.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u6-tips"
+  },
+  {
+   "id": "a11113b05d",
+   "es": "¿Por qué conviene cambiar dinero antes de viajar a Japón?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u6-tips"
+  },
+  {
+   "id": "2f553987ec",
+   "es": "Muchos negocios chicos sólo aceptan efectivo",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u6-tips"
+  },
+  {
+   "id": "29c4c47641",
+   "es": "Es más barato",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5c6b3a60c6",
+   "es": "No hay bancos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6e6a6fae26",
+   "es": "Las tarjetas no sirven en hoteles",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2d1d4c05b9",
+   "es": "Leo escribe: «Many small shops only take cash in the local currency».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u6-tips"
+  },
+  {
+   "id": "5c451963d5",
+   "es": "¿Qué dice Leo sobre las propinas?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u6-tips"
+  },
+  {
+   "id": "d962997125",
+   "es": "Que no hay que dejarlas: a la gente no le gusta",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u6-tips"
+  },
+  {
+   "id": "8144312915",
+   "es": "Que siempre hay que dejar propina",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8c97061711",
+   "es": "Que se deja el diez por ciento",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "141e384546",
+   "es": "Que sólo se dejan en hoteles",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "11fa731c4e",
+   "es": "Leo escribe: «Do not leave a tip in restaurants. People there might not like it».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u6-tips"
+  },
+  {
+   "id": "ab0efdc79e",
+   "es": "Comimos en un restaurante del lugar.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "We ate at a local restaurant."
+  },
+  {
+   "id": "72e81c42a5",
+   "es": "Otras costumbres",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "7ed01dd341",
+   "es": "Explicar costumbres de un lugar: qué es de buena o mala educación.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "d7da150f5e",
+   "es": "Para explicar costumbres: It is polite to… (es de buena educación…), It is rude to… (es de mala educación…). Tradition es una tradición; culture, una cultura. Con el primer condicional das un consejo: If you go into a house, take off your shoes.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "451ff387a2",
+   "es": "Explicas qué es de buena y de mala educación en un lugar.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "6feaa46dd8",
+   "es": "Das consejos de viaje con if.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "bc613e0fdf",
+   "es": "¿Qué significa «rude»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "fce379c3f5",
+   "es": "El mismo viajero explica algunas costumbres de Japón.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u6-customs"
+  },
+  {
+   "id": "a6baa12dc8",
+   "es": "¿Qué hay que hacer al entrar a una casa en Japón?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u6-customs"
+  },
+  {
+   "id": "0a5576ac45",
+   "es": "Sacarse los zapatos",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u6-customs"
+  },
+  {
+   "id": "5c1af18414",
+   "es": "Dar las gracias",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "bbfbc869dd",
+   "es": "Llevar un regalo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b60e9f6c2b",
+   "es": "Dejar propina",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "049b415c17",
+   "es": "Leo escribe: «Take off your shoes when you go into a house. It is an old tradition».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u6-customs"
+  },
+  {
+   "id": "aa5771ba44",
+   "es": "Lucy llega a un hotel.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u6-hotel"
+  },
+  {
+   "id": "ab63c0d065",
+   "es": "Receptionist",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b1-u6-hotel"
+  },
+  {
+   "id": "96fec8ad01",
+   "es": "¿Por qué Lucy tiene que esperar?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u6-hotel"
+  },
+  {
+   "id": "0158d5af8d",
+   "es": "Su habitación todavía no está lista",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u6-hotel"
+  },
+  {
+   "id": "20ae9398c4",
+   "es": "No tiene reserva",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "81f9cc70bf",
+   "es": "Perdió el equipaje",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a639c103d8",
+   "es": "El recepcionista dice: «Your room isn't ready yet. If you wait ten minutes, it will be ready».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u6-hotel"
+  },
+  {
+   "id": "007dc07ab7",
+   "es": "Comer juntos los domingos es una tradición familiar.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Eating together on Sundays is a family tradition."
+  },
+  {
+   "id": "bd200d2eb7",
+   "es": "¿En tu país es de buena educación dejar propina?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Is it polite to leave a tip in your country? (sí)"
+  },
+  {
+   "id": "821192cb97",
+   "es": "Consejos para un visitante",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "1fb482241a",
+   "es": "Escríbele a alguien que va a visitar tu ciudad o tu país: dale consejos con if y cuéntale una costumbre (qué es de buena o de mala educación).",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "a77160b3db",
+   "es": "Usas el primer condicional (If you…, you will…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "bc0a1549dd",
+   "es": "Usas will para el resultado",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "b3f0094bac",
+   "es": "Explicas una costumbre (polite, rude, tradition)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "61660cc2a7",
+   "es": "Di consejos con if.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "fec96ee7bc",
+   "es": "Expliqué una costumbre.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "ac3e6497b1",
+   "es": "Usé will para el resultado.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.b1-u6-airport": {
+   "setting": "En el aeropuerto, después de un anuncio.",
+   "lines": [
+    "Emma: Did you hear that? Our flight is delayed.",
+    "Tom: Again? How long?",
+    "Emma: Two hours. If we wait here, we will miss the bus to the hotel.",
+    "Tom: Unless we take a taxi. I'll call the hotel and tell them we'll be late."
+   ]
+  },
+  "en.stim.b1-u6-tour": {
+   "setting": "El programa de una visita guiada.",
+   "lines": [
+    "Free walking tour of the old city",
+    "10:00 Meet the guide at the main square.",
+    "10:30 Visit the cathedral and the local market.",
+    "12:00 Lunch break (not included).",
+    "13:00 Go sightseeing by boat. Tickets: 15 euros.",
+    "If it rains, we will visit the history museum instead of the boat trip."
+   ]
+  },
+  "en.stim.b1-u6-tips": {
+   "setting": "Un viajero da consejos para visitar Japón.",
+   "lines": [
+    "Going to Japan? Here are my tips about money.",
+    "Exchange some money before you go. Many small shops only take cash in the local currency.",
+    "Do not leave a tip in restaurants. People there might not like it."
+   ]
+  },
+  "en.stim.b1-u6-customs": {
+   "setting": "El mismo viajero explica algunas costumbres de Japón.",
+   "lines": [
+    "More tips about Japan!",
+    "Take off your shoes when you go into a house. It is an old tradition.",
+    "People are very polite, so always say thank you.",
+    "It is rude to talk on the phone on the train."
+   ]
+  },
+  "en.stim.b1-u6-hotel": {
+   "setting": "Lucy llega a un hotel.",
+   "lines": [
+    "Receptionist: Good evening. Do you have a reservation?",
+    "Lucy: Yes, for three nights. The name is Lucy Grant.",
+    "Receptionist: Thank you. Your room isn't ready yet. If you wait ten minutes, it will be ready.",
+    "Lucy: No problem. Can I leave my luggage here?",
+    "Receptionist: Of course."
+   ]
+  }
+ }
+}

@@ -1,0 +1,224 @@
+{
+ "unit": "a2-u03",
+ "strings": {
+  "2234356729": "Qu’est-ce que tu as mangé à midi ?",
+  "9abda82317": "Le prétérit : verbes irréguliers",
+  "fb7d7b4e71": "Les passés qui ne finissent pas en -ed : went, had, saw, bought…",
+  "1edae44be0": "suis allé / est allé (go)",
+  "73405777e7": "suis allé",
+  "8d7161d7ec": "sommes allés",
+  "9415194b01": "sont allés",
+  "357fa939ef": "Dimanche, nous sommes allés au parc.",
+  "0da6e2bb10": "ai eu / a eu (have)",
+  "8da27ba5a3": "ai eu",
+  "cd76c88532": "a eu",
+  "c944b138c3": "avais",
+  "37dd46356e": "avons eu",
+  "ce74d24d38": "On a passé un super moment.",
+  "a197c7ad21": "ai vu / a vu (see)",
+  "c0ff93ea89": "ai vu",
+  "5a722354f0": "a vu",
+  "1958798b45": "avons vu",
+  "78114c716d": "Hier soir, j’ai vu un bon film.",
+  "865b40d044": "ai mangé / a mangé (eat)",
+  "b212373660": "ai mangé",
+  "f8626f3dc1": "a mangé",
+  "79e820cfd6": "avons mangé",
+  "86abb310a2": "Elle a mangé du poulet avec du riz.",
+  "30a17fe478": "ai bu / a bu (drink)",
+  "acd6b30019": "ai bu",
+  "76555532ad": "a bu",
+  "f238820194": "bu",
+  "93606fc681": "avons bu",
+  "6b93f88c67": "Il a bu beaucoup d’eau.",
+  "ec29da5d21": "ai acheté / a acheté (buy)",
+  "1dd30ddb18": "ai acheté",
+  "19a7f8bd2f": "a acheté",
+  "3a0fcfbd73": "avons acheté",
+  "4f69c6f4e0": "Je me suis acheté un nouveau téléphone.",
+  "0285ca30b2": "ai fait / a fait (make)",
+  "148d3d550f": "ai préparé",
+  "e9dada2619": "a préparé",
+  "575d073446": "Mon père a préparé le dîner.",
+  "deaf6ced79": "ai reçu / ai obtenu (get)",
+  "6e98312235": "ai reçu",
+  "f87506a036": "a reçu",
+  "7372d05974": "ai obtenu",
+  "b2256dc365": "a obtenu",
+  "e85e3ee857": "J’ai reçu un e-mail de ma professeure.",
+  "a15f0fec90": "suis venu / est venu (come)",
+  "3958765b23": "suis venu",
+  "130eb7a718": "est venu",
+  "4e657635d6": "sont venus",
+  "dc17ab91a3": "Elle est rentrée à la maison à onze heures.",
+  "54bd16a587": "ai pris / ai emporté (take)",
+  "0158d30a97": "ai emporté",
+  "6abf67c8d3": "a emporté",
+  "fa0c444251": "Nous avons pris le bus pour aller en ville.",
+  "b507032ee9": "ai donné / a donné (give)",
+  "225ed6562f": "ai donné",
+  "d0c97a5884": "a donné",
+  "8b2aee91c5": "ai offert",
+  "aeb894a899": "a offert",
+  "732208d19f": "Elle m’a offert un livre.",
+  "64430c2e3e": "ai dit / a dit (say)",
+  "98d3cd1fef": "ai dit",
+  "94da2c67e6": "a dit",
+  "5cea6e7cf5": "Il a dit bonjour.",
+  "785273a43e": "ai rencontré / ai retrouvé (meet)",
+  "40c0bd8f0c": "ai rencontré",
+  "f2b619485a": "a rencontré",
+  "3170b36f8f": "ai retrouvé",
+  "294c5431bd": "J’ai rencontré mon meilleur ami à l’école.",
+  "c641a390f6": "ai écrit / a écrit (write)",
+  "a215264e4b": "ai écrit",
+  "034433b56c": "a écrit",
+  "4969b22d77": "Elle m’a écrit une lettre.",
+  "bea0e7679a": "ai dormi / a dormi (sleep)",
+  "77f24adc45": "ai dormi",
+  "9d8c77d802": "a dormi",
+  "ee4494fb36": "Il a dormi huit heures.",
+  "2d94cc4f7c": "ai oublié / a oublié (forget)",
+  "5c1d4086a3": "ai oublié",
+  "1a03666a6f": "a oublié",
+  "820ff1e955": "j’ai oublié",
+  "47db5aaf46": "J’ai oublié son nom.",
+  "8261834cc2": "ai trouvé / a trouvé (find)",
+  "5756088664": "ai trouvé",
+  "d5b14013c5": "a trouvé",
+  "2a12dcc641": "J’ai trouvé mes clés sous le lit.",
+  "a35dc8e91d": "ai perdu / a perdu (lose)",
+  "d79f85621f": "ai perdu",
+  "4b426a88c7": "a perdu",
+  "22b6483641": "J’ai perdu mes clés.",
+  "d4e30024b8": "me suis senti / s’est senti (feel)",
+  "0fc530f057": "ai ressenti",
+  "2afc0ec272": "s’est senti",
+  "3fd9aa7686": "je me suis senti",
+  "92a24f9d35": "Je me suis senti fatigué après le travail.",
+  "9132ca1464": "savais / connaissais (know)",
+  "ef65ee1072": "savais",
+  "08ec7b79a7": "connaissais",
+  "469172be50": "ai su",
+  "c69825c35b": "Je savais la réponse.",
+  "c861ea33cc": "Went, had, saw",
+  "5cac2b69d2": "Les irréguliers les plus courants.",
+  "2008acce76": "Hier, je suis allé au cinéma.",
+  "813100b574": "Go est irrégulier : le passé est went (et non « goed »).",
+  "03acd59738": "Je suis allé à l’école.",
+  "fda8f9e58f": "Acheter, faire, prendre",
+  "d4ee5084af": "bought, made, took, drank et got.",
+  "c0fc4fc999": "Buy → bought. Attention : brought est le passé de bring (apporter).",
+  "016381f45a": "En français, « faire » sert pour make et pour do. Préparer quelque chose (make dinner) → made. Do s’utilise pour les tâches : do homework → did.",
+  "ef7b245312": "Que veut dire « bought » ?",
+  "8c06a4d757": "ai apporté / a apporté (bring)",
+  "a970a03fa4": "Elle a fait un gâteau pour mon anniversaire.",
+  "f38dc85d80": "Came, gave, said",
+  "4b1970eca3": "Venir, donner, dire, rencontrer et écrire.",
+  "88f80a8d4b": "Mes amis sont venus à ma fête.",
+  "06133a63fd": "Met = j’ai rencontré quelqu’un (pour la première fois) ou j’ai retrouvé quelqu’un.",
+  "97eaac9b61": "Que veut dire « wrote » ?",
+  "a082679a6e": "ai lu / a lu (read)",
+  "9ed1515819": "pizza",
+  "6802bea91f": "Perdre et trouver",
+  "3429f0fd10": "lost, found, forgot, slept, felt et knew.",
+  "70be9358cb": "Ensuite, je les ai trouvées sous le lit !",
+  "b504989069": "J’ai très bien dormi.",
+  "8987a95973": "Ton week-end",
+  "44593ad6a4": "Raconter ce que tu as fait avec les passés irréguliers.",
+  "bfbba2d9bd": "Qu’est-ce que tu as fait ce week-end ?",
+  "2bc4233a72": "Je ne suis pas allé à la fête.",
+  "1417b6058c": "Après didn't, le verbe reprend sa forme de base : didn't go (et non « didn't went »).",
+  "02210c8aef": "the park",
+  "66b81435f4": "Où es-tu allé samedi ?",
+  "34e3a69b66": "Tu as vu le match ?",
+  "3755aca0e9": "J’ai retrouvé mes amis au cinéma.",
+  "170173fcaa": "Samedi, nous sommes allés au cinéma.",
+  "70139bd8e9": "J’ai acheté du pain.",
+  "07330a7c0a": "Raconte ce que tu as fait le week-end dernier (tu peux l’inventer). Utilise des verbes au passé et dis quand.",
+  "3779ac7a17": "Tu utilises au moins un verbe au passé (went, had, saw, bought…)",
+  "b59b54bdee": "Tu dis quand (last weekend, on Saturday, yesterday…)",
+  "d331f9cbc0": "Tu mets ce que tu as fait dans l’ordre avec then ou after (facultatif)",
+  "9e3a7714e0": "J’ai utilisé des verbes au passé.",
+  "92af46d810": "J’ai dit quand c’est arrivé.",
+  "c173136d8b": "J’ai mis dans l’ordre ce que j’ai fait."
+ },
+ "accepted": {
+  "went": [
+   "suis allée",
+   "est allée",
+   "allé",
+   "allée"
+  ],
+  "had": [
+   "avait"
+  ],
+  "saw": [
+   "vu"
+  ],
+  "ate": [
+   "mangé"
+  ],
+  "drank": [
+   "bu"
+  ],
+  "bought": [
+   "acheté"
+  ],
+  "made": [
+   "ai fait",
+   "a fait",
+   "fait"
+  ],
+  "got": [
+   "reçu",
+   "obtenu"
+  ],
+  "came": [
+   "suis venue",
+   "est venue",
+   "venu"
+  ],
+  "took": [
+   "ai pris",
+   "a pris",
+   "pris"
+  ],
+  "gave": [
+   "donné",
+   "offert"
+  ],
+  "said": [
+   "dit"
+  ],
+  "met": [
+   "a retrouvé",
+   "rencontré"
+  ],
+  "wrote": [
+   "écrit"
+  ],
+  "slept": [
+   "dormi"
+  ],
+  "forgot": [
+   "oublié"
+  ],
+  "found": [
+   "trouvé"
+  ],
+  "lost": [
+   "perdu"
+  ],
+  "felt": [
+   "me suis sentie",
+   "senti"
+  ],
+  "knew": [
+   "savait",
+   "connaissait",
+   "su"
+  ]
+ },
+ "notes": "1) Los pasados se tradujeron con passé composé («ai vu / a vu»), que es lo que el francés usa en la vida diaria; el passé simple («je vis») sonaría literario. knew → imparfait «savais / connaissais». 2) make/do: el francés tiene un solo verbo, «faire»; lo dije en la explicación 016381f45a. 3) Las aceptadas tomé/tomó (drank) no tienen equivalente distinto en francés: quedaron «bu» y «avons bu». 4) feel: «me suis senti / s’est senti»; sentí → «ai ressenti». 5) «La pasamos genial» (We had a great time) → «On a passé un super moment». «Volvió a casa» (came home) → «Elle est rentrée à la maison». Fuente: 34e3a69b66 lleva «(sí)» en español en el en de contexto."
+}

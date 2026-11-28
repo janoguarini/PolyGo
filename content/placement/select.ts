@@ -1,7 +1,7 @@
 import type { Exercise } from '../../shared/exercises';
 import { languageConfig } from '../../shared/languages';
 import { readingDictionary, segmentReadings } from '../../shared/readings';
-import { COURSES as COURSE_CATALOG } from '../../shared/courses';
+import { COURSES as COURSE_CATALOG, courseLevels } from '../../shared/courses';
 import {
   BAND_SIZE,
   PLACEMENT_VERSION,
@@ -10,6 +10,7 @@ import {
   type PlacementDimension,
   type PlacementItem,
 } from '../../shared/placement';
+import { enSrcCourse } from '../en-src/course';
 import { ES_PATH } from '../es-course';
 import { FR_PATH } from '../fr-course';
 import { CURRICULUM_PATH, type PathUnit } from '../index';
@@ -26,7 +27,7 @@ import type { ExerciseDef } from '../types';
  * banks.generated.ts, que es lo que viaja con la app (no se carga el curso entero en el teléfono), y
  * content/__tests__/placement.test.ts comprueba que el archivo esté al día y que cada pregunta exista.
  *
- * - Niveles: los publicados del destino (shared/languages.ts `levels`). Un curso con un solo nivel no
+ * - Niveles: los publicados del curso (shared/courses.ts `courseLevels`: los suyos o los del destino). Un curso con un solo nivel no
  *   tiene banco: no hay nada que distinguir (empieza en A1).
  * - Bandas: cada nivel se parte en dos mitades de unidades; cada banda, 3 preguntas.
  * - Progresión: las dimensiones de cada banda (SLOTS) van de vocabulario y gramática a estructuras y
@@ -67,6 +68,11 @@ const SOURCES: Record<string, CourseSource> = {
   'pt-from-es': pilotPlus('pt', PT_PATH),
   'zh-from-es': pilotPlus('zh', ZH_PATH),
   'es-from-en': { path: ES_PATH, declaredIdsPublished: true },
+  // Inglés para hablantes de portugués, italiano y francés (docs/EN_MULTI_SOURCE.md): A1–B1 cargado y
+  // publicado junto (2026-11-27), todos los ítems con id declarado.
+  'en-from-pt': { path: enSrcCourse('pt').path, declaredIdsPublished: true },
+  'en-from-it': { path: enSrcCourse('it').path, declaredIdsPublished: true },
+  'en-from-fr': { path: enSrcCourse('fr').path, declaredIdsPublished: true },
 };
 
 /** Dimensiones de las tres preguntas de cada banda, de la más fácil a la más difícil. */
@@ -161,7 +167,7 @@ function toExercise(c: Candidate, position: number): Exercise {
 export function buildPlacementBank(courseCode: string): PlacementBank | null {
   const course = COURSE_CATALOG.find((c) => c.code === courseCode);
   if (!course) throw new Error(`unknown course ${courseCode}`);
-  const levels = languageConfig(course.target).levels;
+  const levels = courseLevels(course);
   if (levels.length < 2) return null;
   const source = SOURCES[courseCode];
   if (!source) {

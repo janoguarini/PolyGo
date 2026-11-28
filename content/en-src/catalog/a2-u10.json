@@ -1,0 +1,891 @@
+{
+ "unit": "a2-u10",
+ "level": "A2",
+ "titleEn": "Work and obligations",
+ "strings": [
+  {
+   "id": "69b7b95ad6",
+   "es": "Trabajo y obligaciones",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Work and obligations"
+  },
+  {
+   "id": "49a7d00495",
+   "es": "Profesiones, la oficina y lo que tienes que hacer: have to y must.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "c23675fddd",
+   "es": "trabajo / empleo",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "job"
+  },
+  {
+   "id": "8d38e9323b",
+   "es": "empleo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "job"
+  },
+  {
+   "id": "401c787fa7",
+   "es": "puesto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "job"
+  },
+  {
+   "id": "b7670d5212",
+   "es": "Tengo un trabajo nuevo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I have a new job."
+  },
+  {
+   "id": "0aec0b5b86",
+   "es": "oficina",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "office"
+  },
+  {
+   "id": "2473eeb8c2",
+   "es": "Trabajo en una oficina cerca de mi casa.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I work in an office near my house."
+  },
+  {
+   "id": "895387a36b",
+   "es": "jefe / jefa",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "boss"
+  },
+  {
+   "id": "452b889d10",
+   "es": "jefe",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "boss"
+  },
+  {
+   "id": "752f0d2ec0",
+   "es": "jefa",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "boss"
+  },
+  {
+   "id": "9862da1c35",
+   "es": "Tengo una reunión con mi jefe.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I have a meeting with my boss."
+  },
+  {
+   "id": "e1f9d6b49e",
+   "es": "compañero de trabajo",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "coworker"
+  },
+  {
+   "id": "23f18bef93",
+   "es": "compañera de trabajo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "coworker"
+  },
+  {
+   "id": "2b95df9f30",
+   "es": "colega",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "coworker"
+  },
+  {
+   "id": "48466258a0",
+   "es": "Mis compañeros de trabajo son muy amables.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "My coworkers are very nice."
+  },
+  {
+   "id": "e869472124",
+   "es": "enfermero",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "nurse"
+  },
+  {
+   "id": "9fe1954f4e",
+   "es": "enfermera",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "nurse"
+  },
+  {
+   "id": "e63f93e251",
+   "es": "Es enfermera en el hospital.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She is a nurse at the hospital."
+  },
+  {
+   "id": "88135d3ead",
+   "es": "mesero / mesera",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "waiter"
+  },
+  {
+   "id": "115b9a0353",
+   "es": "mesero",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "waiter"
+  },
+  {
+   "id": "67194d7f4f",
+   "es": "mesera",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "waiter"
+  },
+  {
+   "id": "35de1f4e97",
+   "es": "camarero",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "waiter"
+  },
+  {
+   "id": "d1168ee263",
+   "es": "mozo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "waiter"
+  },
+  {
+   "id": "b4cdcebea5",
+   "es": "moza",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "waiter"
+  },
+  {
+   "id": "7e7dd1e5c5",
+   "es": "El mesero nos trajo la comida.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "The waiter brought our food."
+  },
+  {
+   "id": "22c39a6780",
+   "es": "policía",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "police officer"
+  },
+  {
+   "id": "571ef5c905",
+   "es": "agente de policía",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "police officer"
+  },
+  {
+   "id": "10eb5bb786",
+   "es": "El policía nos ayudó.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The police officer helped us."
+  },
+  {
+   "id": "2a0b219060",
+   "es": "ingeniero",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "engineer"
+  },
+  {
+   "id": "39306b1853",
+   "es": "ingeniera",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "engineer"
+  },
+  {
+   "id": "a992b75198",
+   "es": "Es ingeniera.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "She is an engineer."
+  },
+  {
+   "id": "4f2d5e241d",
+   "es": "abogado / abogada",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "lawyer"
+  },
+  {
+   "id": "ae87211efc",
+   "es": "abogado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "lawyer"
+  },
+  {
+   "id": "053f188f81",
+   "es": "abogada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "lawyer"
+  },
+  {
+   "id": "b53ad9ca2e",
+   "es": "Mi mamá es abogada.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "My mother is a lawyer."
+  },
+  {
+   "id": "b58dafb821",
+   "es": "chofer / conductor",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "driver"
+  },
+  {
+   "id": "4fad8ba129",
+   "es": "chofer",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "driver"
+  },
+  {
+   "id": "0380db97ec",
+   "es": "conductor",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "driver"
+  },
+  {
+   "id": "f248572361",
+   "es": "conductora",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "driver"
+  },
+  {
+   "id": "8d71b4d605",
+   "es": "Mi papá es chofer de autobús.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "My father is a bus driver."
+  },
+  {
+   "id": "b9496b859b",
+   "es": "tener que",
+   "kinds": [
+    "word.translation",
+    "word.accepted"
+   ],
+   "en": "have to"
+  },
+  {
+   "id": "579ec09765",
+   "es": "tengo que",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "have to"
+  },
+  {
+   "id": "d6c41b03a3",
+   "es": "Tengo que trabajar el sábado.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I have to work on Saturday."
+  },
+  {
+   "id": "f64f1180c9",
+   "es": "tener que (regla)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "must"
+  },
+  {
+   "id": "3db199821e",
+   "es": "deber",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "must"
+  },
+  {
+   "id": "7341d45b36",
+   "es": "Tienes que llegar a horario.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "You must be on time."
+  },
+  {
+   "id": "ba38b4e445",
+   "es": "no se puede / está prohibido",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "mustn't"
+  },
+  {
+   "id": "3edee7659d",
+   "es": "está prohibido",
+   "kinds": [
+    "word.accepted",
+    "exercise.option"
+   ],
+   "en": "mustn't"
+  },
+  {
+   "id": "c03ab457f7",
+   "es": "no se puede",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "mustn't"
+  },
+  {
+   "id": "6891f6f7e7",
+   "es": "no deber",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "mustn't"
+  },
+  {
+   "id": "50888ed414",
+   "es": "No puedes usar el teléfono en la reunión.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "You mustn't use your phone in the meeting."
+  },
+  {
+   "id": "d72c264f24",
+   "es": "reunión",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "meeting"
+  },
+  {
+   "id": "41e21fb17c",
+   "es": "La reunión es a las diez.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The meeting is at ten."
+  },
+  {
+   "id": "0d2c3072b0",
+   "es": "mail / correo electrónico",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "email"
+  },
+  {
+   "id": "00d8d3f117",
+   "es": "mail",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "email"
+  },
+  {
+   "id": "31eb60d41c",
+   "es": "correo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "email"
+  },
+  {
+   "id": "82244417f9",
+   "es": "email",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "email"
+  },
+  {
+   "id": "b67d7d1180",
+   "es": "Le mandé el mail a mi jefe.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I sent the email to my boss."
+  },
+  {
+   "id": "87fdc7664b",
+   "es": "ganar (dinero)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "earn"
+  },
+  {
+   "id": "de97b71a30",
+   "es": "ganar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "earn"
+  },
+  {
+   "id": "b07abaf1a8",
+   "es": "ganar (plata)",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "earn"
+  },
+  {
+   "id": "d49e06605b",
+   "es": "¿Cuánto ganas por mes?",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "How much do you earn a month?"
+  },
+  {
+   "id": "cfc1280e94",
+   "es": "sueldo / salario",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "salary"
+  },
+  {
+   "id": "b7543b3bcc",
+   "es": "sueldo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "salary"
+  },
+  {
+   "id": "cec2dbf1d3",
+   "es": "salario",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "salary"
+  },
+  {
+   "id": "bc57d828a1",
+   "es": "Gana un buen sueldo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She earns a good salary."
+  },
+  {
+   "id": "307ca7a624",
+   "es": "empresa",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "company"
+  },
+  {
+   "id": "705ac92922",
+   "es": "compañía",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "company"
+  },
+  {
+   "id": "c3b73a718e",
+   "es": "firma",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "company"
+  },
+  {
+   "id": "0b622df975",
+   "es": "Trabaja para una empresa grande.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "She works for a big company."
+  },
+  {
+   "id": "6e80bb3110",
+   "es": "entrevista",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "interview"
+  },
+  {
+   "id": "1f1347bfe0",
+   "es": "Mañana tengo una entrevista de trabajo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I have a job interview tomorrow."
+  },
+  {
+   "id": "1d259971bc",
+   "es": "tiempo libre",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "free time"
+  },
+  {
+   "id": "31856d5fc8",
+   "es": "ratos libres",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "free time"
+  },
+  {
+   "id": "86deef2dae",
+   "es": "En mi tiempo libre juego al fútbol.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "In my free time I play football."
+  },
+  {
+   "id": "b0dfb0c237",
+   "es": "Profesiones",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "082825a7d7",
+   "es": "Decir a qué se dedica alguien.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "d6367cf1e8",
+   "es": "Las profesiones llevan a/an: an engineer (an antes de sonido vocal).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "engineer"
+  },
+  {
+   "id": "588c0651d6",
+   "es": "En la oficina",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "b04fe50cb1",
+   "es": "Jefes, compañeros, reuniones y mails.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "812617b5b1",
+   "es": "Tengo una reunión con mi jefe a las diez.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I have a meeting with my boss at ten."
+  },
+  {
+   "id": "a5569740c5",
+   "es": "¿Qué significa «boss»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "bdf656d515",
+   "es": "Have to",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "741e5c12e9",
+   "es": "Obligaciones: tener que.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "f72fc1bf91",
+   "es": "Tener que = have to (con he, she, it: has to).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "have"
+  },
+  {
+   "id": "4500b9617f",
+   "es": "Tiene que despertarse a las seis.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She has to wake up at six."
+  },
+  {
+   "id": "6a68617239",
+   "es": "No tienes que usar uniforme.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "You don't have to wear a uniform."
+  },
+  {
+   "id": "caa5afa9d8",
+   "es": "¿Tienes que trabajar mañana?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Do you have to work tomorrow?"
+  },
+  {
+   "id": "7a8d2e9fa0",
+   "es": "Have to pregunta con do/does: Do you have to…?",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Do"
+  },
+  {
+   "id": "6f2e08d47a",
+   "es": "¿Tienes que trabajar el domingo?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Do you have to work on Sunday? (no)"
+  },
+  {
+   "id": "32ab872592",
+   "es": "Tengo que estudiar.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I have to study."
+  },
+  {
+   "id": "8acd12f97e",
+   "es": "Must y mustn't",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "f96b88f76f",
+   "es": "Reglas, prohibiciones y lo que no hace falta.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "ab58b7e27f",
+   "es": "Tienes que estar en el aeropuerto dos horas antes del vuelo.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "You must be at the airport two hours before the flight."
+  },
+  {
+   "id": "67762638a7",
+   "es": "Must = obligación fuerte (una regla). Después va el verbo sin to.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "must"
+  },
+  {
+   "id": "beecab52d2",
+   "es": "No hace falta que vengas temprano. La reunión es a las diez.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "You don't have to come early. The meeting is at ten."
+  },
+  {
+   "id": "c9fd147d54",
+   "es": "Don't have to = no hace falta. Mustn't = está prohibido. ¡No son lo mismo!",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "don't have to"
+  },
+  {
+   "id": "a0ac2427c4",
+   "es": "¿Qué significa «job»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "650d740359",
+   "es": "No tienes que venir.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "You don't have to come."
+  },
+  {
+   "id": "718c63a02f",
+   "es": "Buscar trabajo",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "84e43bb2f9",
+   "es": "Entrevistas, sueldo y tiempo libre.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "4c31c1fe1c",
+   "es": "Mañana tengo una entrevista de trabajo. Estoy nervioso.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I have a job interview tomorrow. I am nervous."
+  },
+  {
+   "id": "73d2174d53",
+   "es": "Ganar dinero trabajando = earn. Win es ganar un partido o un premio.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "earn"
+  },
+  {
+   "id": "28f3e064cc",
+   "es": "¿Qué significa «salary»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "f895262dee",
+   "es": "soy enfermera",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What do you do? (soy enfermera)"
+  },
+  {
+   "id": "eafb1ede64",
+   "es": "¿A qué te dedicas?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What do you do? (soy enfermera)"
+  },
+  {
+   "id": "182c0b8fe2",
+   "es": "Tengo que ir a una entrevista de trabajo.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I have to go to a job interview."
+  },
+  {
+   "id": "7f076e65e4",
+   "es": "Trabajo en una empresa grande.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I work for a big company."
+  }
+ ],
+ "stimuli": {}
+}

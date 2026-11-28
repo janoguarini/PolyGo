@@ -1,0 +1,1496 @@
+{
+ "unit": "b1-u07",
+ "level": "B1",
+ "titleEn": "Health and well-being",
+ "strings": [
+  {
+   "id": "5839914705",
+   "es": "Salud y bienestar",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Health and well-being"
+  },
+  {
+   "id": "57a0a42283",
+   "es": "Síntomas y la farmacia, consejos (should, ought to, had better), hábitos saludables, comparaciones y el estrés.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "cd2c2d5dec",
+   "es": "Puedes explicar síntomas, dar y pedir consejos de salud y comparar hábitos.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "89d7dca8c2",
+   "es": "Consejos y comparaciones",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "5ae7d330ac",
+   "es": "Should y ought to dan consejos (ought to es más formal). Had better ('d better) es un consejo fuerte, casi una advertencia: You'd better see a doctor. Para comparar: as … as (tan … como), not as … as (no tan … como), much / a bit + comparativo (mucho / un poco más).",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "8749565d31",
+   "es": "Más vale que vayas al médico.",
+   "kinds": [
+    "example",
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "You'd better see a doctor."
+  },
+  {
+   "id": "dd7bd87a4f",
+   "es": "Caminar no es tan duro como correr.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "Walking is not as hard as running."
+  },
+  {
+   "id": "00cac08338",
+   "es": "Hoy me siento mucho mejor.",
+   "kinds": [
+    "example",
+    "exercise.source"
+   ],
+   "en": "I feel much better today."
+  },
+  {
+   "id": "83b9847edb",
+   "es": "tendría que / debería (consejo)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "ought to"
+  },
+  {
+   "id": "0c8da91430",
+   "es": "tendría que",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "ought to"
+  },
+  {
+   "id": "d431d2ac2a",
+   "es": "Tendrías que descansar.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "You ought to rest."
+  },
+  {
+   "id": "a490a12d0f",
+   "es": "más vale que / mejor que",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "had better"
+  },
+  {
+   "id": "80c1cf2e02",
+   "es": "más vale que",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "had better"
+  },
+  {
+   "id": "efc581a84a",
+   "es": "mejor que",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "had better"
+  },
+  {
+   "id": "968612fad2",
+   "es": "saludable / sano",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "healthy"
+  },
+  {
+   "id": "20e2034241",
+   "es": "saludable",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "healthy"
+  },
+  {
+   "id": "b278a37566",
+   "es": "sano",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "healthy"
+  },
+  {
+   "id": "7b50943dab",
+   "es": "sana",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "healthy"
+  },
+  {
+   "id": "52bb35a703",
+   "es": "Quiero comer comida saludable.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I want to eat healthy food."
+  },
+  {
+   "id": "f8e1197245",
+   "es": "alimentación / dieta",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "diet"
+  },
+  {
+   "id": "c7b783ad02",
+   "es": "alimentación",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "diet"
+  },
+  {
+   "id": "39450f1e7b",
+   "es": "dieta",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "diet"
+  },
+  {
+   "id": "bb12840cb6",
+   "es": "Una buena alimentación es importante.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "A good diet is important."
+  },
+  {
+   "id": "6e07ac2ede",
+   "es": "ejercicio / hacer ejercicio",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "exercise"
+  },
+  {
+   "id": "5c13325c1f",
+   "es": "ejercicio",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "exercise"
+  },
+  {
+   "id": "556bdeaced",
+   "es": "hacer ejercicio",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "exercise"
+  },
+  {
+   "id": "72160b7f05",
+   "es": "Hago ejercicio tres veces por semana.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I exercise three times a week."
+  },
+  {
+   "id": "deec1e0825",
+   "es": "entrenar / hacer gimnasia",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "work out"
+  },
+  {
+   "id": "fb1e9c0a61",
+   "es": "entrenar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "work out"
+  },
+  {
+   "id": "297ae8f4b9",
+   "es": "hacer gimnasia",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "work out"
+  },
+  {
+   "id": "721015db3d",
+   "es": "Entrena en el gimnasio.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She works out at the gym."
+  },
+  {
+   "id": "cd6cfb1593",
+   "es": "peso",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "weight"
+  },
+  {
+   "id": "a57419ad3e",
+   "es": "El ejercicio es bueno para tu peso.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Exercise is good for your weight."
+  },
+  {
+   "id": "e04f59f2bc",
+   "es": "bajar de peso",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "lose weight"
+  },
+  {
+   "id": "a021e1c974",
+   "es": "adelgazar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "lose weight"
+  },
+  {
+   "id": "1862ee43c0",
+   "es": "Quiere bajar de peso.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "He wants to lose weight."
+  },
+  {
+   "id": "1548605def",
+   "es": "un poquito",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "a bit"
+  },
+  {
+   "id": "66c920908b",
+   "es": "Me siento un poco cansado.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I feel a bit tired."
+  },
+  {
+   "id": "192a22d566",
+   "es": "síntoma",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "symptom"
+  },
+  {
+   "id": "3a14eec377",
+   "es": "¿Qué síntomas tiene?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "What are your symptoms?"
+  },
+  {
+   "id": "67f047db15",
+   "es": "dolor",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "pain"
+  },
+  {
+   "id": "96f1be67fc",
+   "es": "Tengo un dolor en la espalda.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I have a pain in my back."
+  },
+  {
+   "id": "eab79c1ec3",
+   "es": "tos / toser",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "cough"
+  },
+  {
+   "id": "76f762f261",
+   "es": "tos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "cough"
+  },
+  {
+   "id": "773d3626fd",
+   "es": "toser",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "cough"
+  },
+  {
+   "id": "08442c9dcb",
+   "es": "Tengo mucha tos.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I have a bad cough."
+  },
+  {
+   "id": "efb5624730",
+   "es": "un resfrío",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "a cold"
+  },
+  {
+   "id": "2693709c25",
+   "es": "un resfriado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "a cold"
+  },
+  {
+   "id": "d9809f0559",
+   "es": "resfrío",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "a cold"
+  },
+  {
+   "id": "75a0fd1038",
+   "es": "Creo que tengo un resfrío.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I think I have a cold."
+  },
+  {
+   "id": "871218d9cd",
+   "es": "farmacia",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "pharmacy"
+  },
+  {
+   "id": "97bcb08208",
+   "es": "¿Hay una farmacia cerca?",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "Is there a pharmacy near here?"
+  },
+  {
+   "id": "4a70c4253f",
+   "es": "lesionado / herido",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "injured"
+  },
+  {
+   "id": "0bfe0879ee",
+   "es": "lesionado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "injured"
+  },
+  {
+   "id": "567cd932fc",
+   "es": "lesionada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "injured"
+  },
+  {
+   "id": "99ed773ddd",
+   "es": "herido",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "injured"
+  },
+  {
+   "id": "58f4de14e2",
+   "es": "Se lesionó en el partido.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She was injured in the game."
+  },
+  {
+   "id": "fc9945280c",
+   "es": "estrés",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "stress"
+  },
+  {
+   "id": "a6159eadf8",
+   "es": "El estrés es malo para la salud.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Stress is bad for your health."
+  },
+  {
+   "id": "b84a139ddb",
+   "es": "estresado / estresada",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "stressed"
+  },
+  {
+   "id": "bf33e18bfe",
+   "es": "estresado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "stressed"
+  },
+  {
+   "id": "54d825e547",
+   "es": "estresada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "stressed"
+  },
+  {
+   "id": "9244189425",
+   "es": "Estoy muy estresado esta semana.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I am very stressed this week."
+  },
+  {
+   "id": "29a8b25521",
+   "es": "relajarse",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "relax"
+  },
+  {
+   "id": "6355c90157",
+   "es": "descansar un rato",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "relax"
+  },
+  {
+   "id": "bc81804161",
+   "es": "Me relajo con música.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "I relax with music."
+  },
+  {
+   "id": "bbd5c41738",
+   "es": "Síntomas",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "346214cff7",
+   "es": "Explicar síntomas en una farmacia o con el médico.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "205c95f22b",
+   "es": "Para contar cómo estás: I have a cold (tengo un resfrío), I have a bad cough (tengo mucha tos), I have a pain in my back. Con el present perfect dices desde cuándo: I've had a cough for three days.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "507a927e8e",
+   "es": "Hace tres días que tengo mucha tos.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I've had a bad cough for three days."
+  },
+  {
+   "id": "152bf66ece",
+   "es": "Explicas tus síntomas y desde cuándo los tienes.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "d538b3eac5",
+   "es": "Te arreglas en una farmacia.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "9206938a9c",
+   "es": "Have es irregular: had (pasado y participio). I have had → I've had.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "had"
+  },
+  {
+   "id": "92a9f37573",
+   "es": "¿Qué síntomas tiene? — Tengo fiebre y dolor de cabeza.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What are your symptoms? — I have a fever and a headache."
+  },
+  {
+   "id": "50bf630266",
+   "es": "En una farmacia.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u7-pharmacy"
+  },
+  {
+   "id": "8bef5e3f6a",
+   "es": "Pharmacist",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b1-u7-pharmacy"
+  },
+  {
+   "id": "8d96e7b615",
+   "es": "¿Qué síntomas tiene Ben?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u7-pharmacy"
+  },
+  {
+   "id": "9de517d015",
+   "es": "Tos y dolor de garganta",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u7-pharmacy"
+  },
+  {
+   "id": "4752eccd1a",
+   "es": "Fiebre y tos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3a317f02a4",
+   "es": "Dolor de cabeza",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f0f6de0692",
+   "es": "Dolor de espalda",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7ac33d3047",
+   "es": "Ben dice: «I've had a bad cough for three days, and my throat hurts».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u7-pharmacy"
+  },
+  {
+   "id": "7ecbd09f0d",
+   "es": "¿Qué cree Ben que tiene?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u7-pharmacy"
+  },
+  {
+   "id": "b43d8e8995",
+   "es": "Un resfrío",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u7-pharmacy"
+  },
+  {
+   "id": "d4706d112f",
+   "es": "Fiebre",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c15cac2649",
+   "es": "Una lesión",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "31ecf0098f",
+   "es": "Estrés",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "affc1327b4",
+   "es": "Ben dice: «I think it is just a cold».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u7-pharmacy"
+  },
+  {
+   "id": "88dcb333b1",
+   "es": "tienes un resfrío",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What's the matter? (tienes un resfrío)"
+  },
+  {
+   "id": "67f972cfdc",
+   "es": "Consejos",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "4a6b6a0ca4",
+   "es": "Dar consejos con should, ought to y had better.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "bf05d2c781",
+   "es": "Should y ought to dan un consejo: You should rest, You ought to rest. Had better ('d better) es más fuerte, avisa que si no, habrá un problema: You'd better see a doctor. En negativo: You'd better not go.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "1ed8f6779f",
+   "es": "Tendrías que descansar unos días.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "You ought to rest for a few days."
+  },
+  {
+   "id": "9fd479acae",
+   "es": "Mejor que hoy no vayas a trabajar.",
+   "kinds": [
+    "example"
+   ],
+   "en": "You'd better not go to work today."
+  },
+  {
+   "id": "649819002d",
+   "es": "Das consejos con should y ought to.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "751d510a46",
+   "es": "Adviertes con had better y had better not.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "7285230f69",
+   "es": "Ought lleva to: ought to rest. Should va sin to: should rest.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "to"
+  },
+  {
+   "id": "9eff4e905b",
+   "es": "Tienes fiebre. Más vale que vayas al médico.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "You have a fever. You'd better see a doctor."
+  },
+  {
+   "id": "53d266bab5",
+   "es": "Hace mucho frío. Mejor que no salgas sin chaqueta.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "It's very cold. You'd better not go out without a jacket."
+  },
+  {
+   "id": "389416000d",
+   "es": "Had better not + verbo: you'd better not go.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "not"
+  },
+  {
+   "id": "a3fbeff7d4",
+   "es": "¿Qué significa «injured»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "f386dc0348",
+   "es": "Mia le responde a una amiga que se lastimó.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u7-advice"
+  },
+  {
+   "id": "9cb2e2ecb2",
+   "es": "¿Qué le aconseja Mia a Kate?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u7-advice"
+  },
+  {
+   "id": "dbf04db982",
+   "es": "Que descanse la pierna unos días",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u7-advice"
+  },
+  {
+   "id": "73835b84f4",
+   "es": "Que vaya al gimnasio",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "032f18d1dd",
+   "es": "Que vaya al médico hoy",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "61978306a8",
+   "es": "Que camine mucho",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3c67607bd2",
+   "es": "Mia escribe: «You ought to rest your leg for a few days».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u7-advice"
+  },
+  {
+   "id": "5e01db97d7",
+   "es": "¿Qué no debería hacer Kate esta semana?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u7-advice"
+  },
+  {
+   "id": "cfacbbe12e",
+   "es": "Ponerse hielo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0fa9168f71",
+   "es": "Llamar a Mia",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "90de0752dd",
+   "es": "Descansar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "878ce81029",
+   "es": "Mia escribe: «You'd better not go to the gym this week».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u7-advice"
+  },
+  {
+   "id": "e0c601b712",
+   "es": "Me duele la cabeza. ¿Qué hago?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I have a headache. What should I do? (descansar)"
+  },
+  {
+   "id": "894f8f0f53",
+   "es": "Hábitos saludables",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "f56a150a44",
+   "es": "Hablar de alimentación, ejercicio y peso.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "23b829396d",
+   "es": "Healthy es saludable. Diet es la alimentación (no sólo «hacer dieta»). Exercise es hacer ejercicio; work out, entrenar. Lose weight es bajar de peso.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "20b323c121",
+   "es": "Una alimentación saludable es muy importante.",
+   "kinds": [
+    "example"
+   ],
+   "en": "A healthy diet is very important."
+  },
+  {
+   "id": "7c79b0f77e",
+   "es": "Hablas de tus hábitos de alimentación y ejercicio.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "ba00228e48",
+   "es": "Usas healthy, diet, work out y lose weight.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "3ae5aa9f1c",
+   "es": "Entrena en el gimnasio todas las mañanas.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She works out at the gym every morning."
+  },
+  {
+   "id": "58c1a3d335",
+   "es": "Quiere bajar de peso, así que camina todos los días.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "He wants to lose weight, so he walks every day."
+  },
+  {
+   "id": "736e48933b",
+   "es": "Un texto con consejos de una revista de salud.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u7-habits"
+  },
+  {
+   "id": "8fd31c2695",
+   "es": "Según el texto, ¿qué es mejor que cualquier pastilla?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u7-habits"
+  },
+  {
+   "id": "6b47f60a47",
+   "es": "Una alimentación saludable",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u7-habits"
+  },
+  {
+   "id": "3b0651126f",
+   "es": "Dormir bien",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d7fcb63c9b",
+   "es": "Caminar todos los días",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0f854e68ea",
+   "es": "Tomar agua",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "bdb394d897",
+   "es": "El texto dice: «A healthy diet is much better than any pill».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u7-habits"
+  },
+  {
+   "id": "daeb4d7e0f",
+   "es": "tres veces por semana",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "How often do you exercise? (tres veces por semana)"
+  },
+  {
+   "id": "87d5e6a970",
+   "es": "¿Con qué frecuencia haces ejercicio?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How often do you exercise? (tres veces por semana)"
+  },
+  {
+   "id": "57616bd305",
+   "es": "Comparar hábitos",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "6aaa5ff418",
+   "es": "Comparar con as … as, not as … as, much / a bit + comparativo y the more…, the better…",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "1a084ca42d",
+   "es": "As + adjetivo + as: tan … como (Walking is as good as running). Not as … as: no tan … como. Much / a bit delante del comparativo: much better (mucho mejor), a bit tired (un poco cansado). The more…, the better…: cuanto más…, mejor…",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "2d258def8e",
+   "es": "Cuanto más duermes, mejor te sientes.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "The more you sleep, the better you feel."
+  },
+  {
+   "id": "b80e4948d3",
+   "es": "Comparas con as … as y not as … as.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "d2095993b1",
+   "es": "Matizas: much better, a bit healthier, the more…, the better…",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "363d902196",
+   "es": "As … as (tan … como); con el comparativo va than (harder than).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "as"
+  },
+  {
+   "id": "32738a1bfd",
+   "es": "Hoy me siento mucho mejor. ¡Gracias!",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I feel much better today. Thank you!"
+  },
+  {
+   "id": "3b5a16682e",
+   "es": "Much + comparativo: much better (mucho mejor). Very no va con comparativos.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "much"
+  },
+  {
+   "id": "640ab7df72",
+   "es": "Me siento un poco cansado, pero estoy bien.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I feel a bit tired, but I am OK."
+  },
+  {
+   "id": "c78b06ce6b",
+   "es": "Según el texto, ¿qué tiene de bueno caminar?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u7-habits"
+  },
+  {
+   "id": "ddd080d47f",
+   "es": "No es tan duro como correr y es igual de bueno",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u7-habits"
+  },
+  {
+   "id": "bf3d71c6a8",
+   "es": "Es más rápido que correr",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2f8e550d74",
+   "es": "Es mejor que dormir",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b033656b75",
+   "es": "Es la mejor forma de bajar de peso",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "189f7fbdde",
+   "es": "El texto dice: «Walking is not as hard as running, but it is just as good for you».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u7-habits"
+  },
+  {
+   "id": "ff60acf03c",
+   "es": "¿Qué pasa cuanto más duermes, según el texto?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u7-habits"
+  },
+  {
+   "id": "037d6f487a",
+   "es": "Te sientes mejor",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u7-habits"
+  },
+  {
+   "id": "3e815792a5",
+   "es": "Tienes más hambre",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1e1d9f1255",
+   "es": "Bajas de peso",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "dcf4111fe5",
+   "es": "Tienes menos estrés",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d818dde5fd",
+   "es": "El texto dice: «The more you sleep, the better you feel».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u7-habits"
+  },
+  {
+   "id": "6dfac58176",
+   "es": "Mi hermano es tan alto como mi papá.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "My brother is as tall as my father."
+  },
+  {
+   "id": "fea65fcd55",
+   "es": "Estrés y descanso",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "871dce7af0",
+   "es": "Hablar del estrés y de cómo descansar.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "652410b702",
+   "es": "Stress es el estrés; stressed, estresado. Relax es relajarse. Take a few days off es tomarse unos días libres. Para aconsejar: You ought to relax, You need to take a break.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "0d96027590",
+   "es": "Estuve muy estresado últimamente.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I've been so stressed lately."
+  },
+  {
+   "id": "bac3b3c2b1",
+   "es": "Cuentas cómo te sientes cuando estás estresado.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "ae5fd8ad63",
+   "es": "Das consejos para relajarse.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "474240f266",
+   "es": "¿Qué significa «stressed»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "5e8ce66a12",
+   "es": "Dos compañeros de trabajo charlan.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u7-stress"
+  },
+  {
+   "id": "90829e9d8d",
+   "es": "¿Por qué está estresada Lucy?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u7-stress"
+  },
+  {
+   "id": "169f3ae2c7",
+   "es": "Trabaja doce horas por día",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u7-stress"
+  },
+  {
+   "id": "9b430aa66c",
+   "es": "Está enferma",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "65b3621400",
+   "es": "Tiene un examen",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7893669202",
+   "es": "No duerme por un ruido",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "358d688eeb",
+   "es": "Lucy dice: «I've been so stressed lately. I work twelve hours a day».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u7-stress"
+  },
+  {
+   "id": "4a120eb9b9",
+   "es": "¿Qué le aconseja Sam?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u7-stress"
+  },
+  {
+   "id": "0e49398dd3",
+   "es": "Tomarse unos días libres",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u7-stress"
+  },
+  {
+   "id": "40e70f0942",
+   "es": "Trabajar menos horas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2a37053d75",
+   "es": "Hacer ejercicio",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8d9af2e872",
+   "es": "Sam dice: «You ought to take a few days off. You need to relax».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u7-stress"
+  },
+  {
+   "id": "3650b5bcc3",
+   "es": "Me relajo con música y un buen libro.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I relax with music and a good book."
+  },
+  {
+   "id": "e5c17bb298",
+   "es": "Necesitas relajarte un poco.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "You need to relax a bit."
+  },
+  {
+   "id": "3996f5ad0a",
+   "es": "escuchas música",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "How do you relax? (escuchas música)"
+  },
+  {
+   "id": "b7cee399b8",
+   "es": "¿Cómo te relajas?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How do you relax? (escuchas música)"
+  },
+  {
+   "id": "81dd06a261",
+   "es": "Estuve muy estresada últimamente.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I've been very stressed lately."
+  },
+  {
+   "id": "c61860417b",
+   "es": "Consejos a un amigo estresado",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "291c48df3e",
+   "es": "Un amigo te cuenta que está muy estresado. Respóndele con al menos dos consejos (should, ought to, had better) y una comparación.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "89466618bb",
+   "es": "Das un consejo con should u ought to",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "9a46872233",
+   "es": "Adviertes con had better (You'd better…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "e9fd47e286",
+   "es": "Comparas (as … as, much better, the more…, the better…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "8f6b2446f2",
+   "es": "Di consejos con should u ought to.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "c75fde9082",
+   "es": "Advertí con had better.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "df4b0e62fc",
+   "es": "Comparé algo.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.b1-u7-pharmacy": {
+   "setting": "En una farmacia.",
+   "lines": [
+    "Pharmacist: Hello. How can I help you?",
+    "Ben: I've had a bad cough for three days, and my throat hurts.",
+    "Pharmacist: Do you have a fever?",
+    "Ben: No, I think it is just a cold.",
+    "Pharmacist: Take this twice a day. If you don't feel better in a week, you'd better see a doctor."
+   ]
+  },
+  "en.stim.b1-u7-advice": {
+   "setting": "Mia le responde a una amiga que se lastimó.",
+   "lines": [
+    "Oh no, Kate! I am sorry you are injured.",
+    "You ought to rest your leg for a few days.",
+    "You'd better not go to the gym this week.",
+    "Put some ice on it, and call me if you need anything!"
+   ]
+  },
+  "en.stim.b1-u7-habits": {
+   "setting": "Un texto con consejos de una revista de salud.",
+   "lines": [
+    "Five habits for a healthy life",
+    "1. Walk every day. Walking is not as hard as running, but it is just as good for you.",
+    "2. Eat more vegetables. A healthy diet is much better than any pill.",
+    "3. Drink water. It is boring, but it is the best drink.",
+    "4. Sleep well. The more you sleep, the better you feel.",
+    "5. Laugh a lot with your friends. It is good for your body."
+   ]
+  },
+  "en.stim.b1-u7-stress": {
+   "setting": "Dos compañeros de trabajo charlan.",
+   "lines": [
+    "Sam: You look tired. Are you OK?",
+    "Lucy: I've been so stressed lately. I work twelve hours a day.",
+    "Sam: You ought to take a few days off. You need to relax.",
+    "Lucy: You're right. I'll talk to my manager tomorrow."
+   ]
+  }
+ }
+}

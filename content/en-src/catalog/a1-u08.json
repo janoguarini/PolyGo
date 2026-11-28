@@ -1,0 +1,1194 @@
+{
+ "unit": "a1-u08",
+ "level": "A1",
+ "titleEn": "Routines and present simple",
+ "strings": [
+  {
+   "id": "b11467d6c7",
+   "es": "Rutinas y presente simple",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Routines and present simple"
+  },
+  {
+   "id": "4ba937b824",
+   "es": "Contar qué haces todos los días, preguntar y negar en presente.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "a917dc9c89",
+   "es": "despertarse",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "wake up"
+  },
+  {
+   "id": "d7352e07b7",
+   "es": "Me despierto a las siete.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I wake up at seven."
+  },
+  {
+   "id": "c30a1ee17f",
+   "es": "levantarse",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "get up"
+  },
+  {
+   "id": "83dd8af636",
+   "es": "Ella se levanta temprano.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She gets up early."
+  },
+  {
+   "id": "08c85bd37c",
+   "es": "ir",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "go"
+  },
+  {
+   "id": "81366d4524",
+   "es": "Vamos a la escuela.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "We go to school."
+  },
+  {
+   "id": "751f121082",
+   "es": "trabajar / trabajo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "work"
+  },
+  {
+   "id": "b0a4d86b9c",
+   "es": "trabajar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "work"
+  },
+  {
+   "id": "96c39f73a9",
+   "es": "trabajo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "work"
+  },
+  {
+   "id": "bbd4fdfb92",
+   "es": "Mi madre trabaja en un hospital.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My mother works in a hospital."
+  },
+  {
+   "id": "efaed1fbd9",
+   "es": "estudiar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.hint"
+   ],
+   "en": "study"
+  },
+  {
+   "id": "57d31f07bc",
+   "es": "Estudio inglés.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I study English."
+  },
+  {
+   "id": "50e335c488",
+   "es": "vivir",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "live"
+  },
+  {
+   "id": "3f199b54b3",
+   "es": "Viven en México.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "They live in Mexico."
+  },
+  {
+   "id": "f13f8e16a9",
+   "es": "leer",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "read"
+  },
+  {
+   "id": "bcbc9e897e",
+   "es": "Él lee un libro.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "He reads a book."
+  },
+  {
+   "id": "931bd8c8cc",
+   "es": "dormir",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "sleep"
+  },
+  {
+   "id": "1f6d57514c",
+   "es": "El bebé duerme mucho.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The baby sleeps a lot."
+  },
+  {
+   "id": "b9f58376bf",
+   "es": "jugar",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "play"
+  },
+  {
+   "id": "d32b90abcb",
+   "es": "tocar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "play"
+  },
+  {
+   "id": "17b93df2ef",
+   "es": "Los chicos juegan en el jardín.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The boys play in the garden."
+  },
+  {
+   "id": "d57ff0a999",
+   "es": "mirar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "word.accepted"
+   ],
+   "en": "watch"
+  },
+  {
+   "id": "cf542ada13",
+   "es": "ver",
+   "kinds": [
+    "word.accepted",
+    "word.translation"
+   ],
+   "en": "watch"
+  },
+  {
+   "id": "2abe1e8e10",
+   "es": "Miramos la tele después de cenar.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We watch TV after dinner."
+  },
+  {
+   "id": "56e5fa72ae",
+   "es": "escuela",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "school"
+  },
+  {
+   "id": "36eff028d6",
+   "es": "colegio",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "school"
+  },
+  {
+   "id": "47b9f7ebc9",
+   "es": "La escuela está al lado del parque.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The school is next to the park."
+  },
+  {
+   "id": "bcecfd897b",
+   "es": "casa / hogar",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "home"
+  },
+  {
+   "id": "362c118bee",
+   "es": "hogar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "home"
+  },
+  {
+   "id": "329bc26905",
+   "es": "Vuelvo a casa a las cinco.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I go home at five."
+  },
+  {
+   "id": "6df536c8f6",
+   "es": "todos los días",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "every day"
+  },
+  {
+   "id": "c2cd01eb2b",
+   "es": "Estudio todos los días.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I study every day."
+  },
+  {
+   "id": "8d6b69638b",
+   "es": "siempre",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "always"
+  },
+  {
+   "id": "cf3fa61cd6",
+   "es": "Ella siempre toma té.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "She always drinks tea."
+  },
+  {
+   "id": "6b4f985b58",
+   "es": "normalmente",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "usually"
+  },
+  {
+   "id": "dcc949d5c8",
+   "es": "generalmente",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "usually"
+  },
+  {
+   "id": "e9a624a83b",
+   "es": "por lo general",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "usually"
+  },
+  {
+   "id": "3cc86c9b0f",
+   "es": "Normalmente me levanto a las ocho.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I usually get up at eight."
+  },
+  {
+   "id": "f2ca158b12",
+   "es": "nunca",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "never"
+  },
+  {
+   "id": "f8af5412ed",
+   "es": "Él nunca desayuna.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "He never eats breakfast."
+  },
+  {
+   "id": "e3f6024025",
+   "es": "hacer (auxiliar de preguntas)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "do"
+  },
+  {
+   "id": "9ab06b2072",
+   "es": "hacer",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "do"
+  },
+  {
+   "id": "27d1422722",
+   "es": "¿Trabajas?",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Do you work?"
+  },
+  {
+   "id": "48cfaeb5bf",
+   "es": "auxiliar con he, she, it",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "does"
+  },
+  {
+   "id": "bdef2a7f65",
+   "es": "hace",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "does"
+  },
+  {
+   "id": "244cb98538",
+   "es": "¿Ella vive aquí?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Does she live here?"
+  },
+  {
+   "id": "b56e7214b4",
+   "es": "no + verbo (I, you, we, they)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "don't"
+  },
+  {
+   "id": "ad75335554",
+   "es": "No tomo café.",
+   "kinds": [
+    "word.example",
+    "exercise.option",
+    "exercise.source"
+   ],
+   "en": "I don't drink coffee."
+  },
+  {
+   "id": "8175592854",
+   "es": "no + verbo (he, she, it)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "doesn't"
+  },
+  {
+   "id": "a678b15966",
+   "es": "Él no trabaja los domingos.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "He doesn't work on Sunday."
+  },
+  {
+   "id": "c9b2f1d14a",
+   "es": "Mi mañana",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "8c7bdc280b",
+   "es": "Despertarse, levantarse, ir a la escuela o al trabajo.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "cf48de522d",
+   "es": "¿Qué significa «get up»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "6ecc407570",
+   "es": "¿Qué significa «go»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "7ef945baa8",
+   "es": "Me levanto y voy a trabajar.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I get up and go to work."
+  },
+  {
+   "id": "463c055e26",
+   "es": "Se dice go to school, sin the.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "We go to school."
+  },
+  {
+   "id": "c37d4fb6e6",
+   "es": "Lo que hago",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "93733185da",
+   "es": "Trabajar, estudiar, leer, jugar, mirar, dormir y vivir.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "7de2d48c89",
+   "es": "¿Qué significa «live»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "e33f327d3e",
+   "es": "Escribe en inglés la acción (un verbo).",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "😴 🛏️"
+  },
+  {
+   "id": "b00d9bb873",
+   "es": "Ella trabaja",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "6115e67448",
+   "es": "La -s del presente con he, she e it.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "1260fb90ae",
+   "es": "Ella trabaja en una escuela.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She works in a school."
+  },
+  {
+   "id": "b0c13ca8b3",
+   "es": "Con he, she e it el verbo lleva -s: I work, she works.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "works"
+  },
+  {
+   "id": "a1f1e92f5d",
+   "es": "Él lee un libro todos los días.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "He reads a book every day."
+  },
+  {
+   "id": "c20693715d",
+   "es": "Mi padre va a trabajar a las ocho.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "My father goes to work at eight."
+  },
+  {
+   "id": "5e324e1728",
+   "es": "Go → goes y do → does: agregan -es.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "goes"
+  },
+  {
+   "id": "9ee85b3111",
+   "es": "Ana y Tom viven en España.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Ana and Tom live in Spain."
+  },
+  {
+   "id": "b608465dbc",
+   "es": "Ana and Tom = they: el verbo va sin -s.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "live"
+  },
+  {
+   "id": "0d65c4aa72",
+   "es": "Study → studies: la y se cambia por -ies.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "She studies every day."
+  },
+  {
+   "id": "4eb3099d05",
+   "es": "El bebé duerme en el dormitorio.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "The baby sleeps in the bedroom."
+  },
+  {
+   "id": "974360f920",
+   "es": "Mi madre trabaja en casa.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "My mother works at home."
+  },
+  {
+   "id": "e24ac55ee6",
+   "es": "En casa = at home.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "My mother works at home."
+  },
+  {
+   "id": "b3b80ba208",
+   "es": "No tomo café",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "c51e7686f6",
+   "es": "Negar con don't y doesn't.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "baec093a06",
+   "es": "¿Qué significa «I don't drink coffee.»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "2d121377dd",
+   "es": "Tomo café.",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "af1beaddbe",
+   "es": "No quiero café.",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1c1e1b8cfc",
+   "es": "¿Tomas café?",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a1d9e91a99",
+   "es": "No trabajo los domingos.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I don't work on Sunday."
+  },
+  {
+   "id": "927f725915",
+   "es": "Con I, you, we y they: don't + verbo.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "don't"
+  },
+  {
+   "id": "cb2b4bccb8",
+   "es": "Ella no come carne.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She doesn't eat meat."
+  },
+  {
+   "id": "40eed2ef82",
+   "es": "Con he, she e it: doesn't + verbo sin -s (she doesn't eat).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "doesn't"
+  },
+  {
+   "id": "f601784589",
+   "es": "Él no mira televisión.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "He doesn't watch TV."
+  },
+  {
+   "id": "ae0b701996",
+   "es": "Después de doesn't el verbo va sin -s.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "watch"
+  },
+  {
+   "id": "bebb4897eb",
+   "es": "Mi hermano no estudia inglés.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "My brother doesn't study English."
+  },
+  {
+   "id": "52c999c767",
+   "es": "Ella no trabaja.",
+   "kinds": [
+    "exercise.source",
+    "example"
+   ],
+   "en": "She doesn't work."
+  },
+  {
+   "id": "b0ac64773a",
+   "es": "Negativa: don't + verbo. I don't drink coffee.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "I don't drink coffee."
+  },
+  {
+   "id": "5d5276834f",
+   "es": "Con he/she: doesn't + verbo sin -s. She doesn't work.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "She doesn't work at home."
+  },
+  {
+   "id": "c5245e4d74",
+   "es": "Pregunta: Do + you + verbo. Do you live…?",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Do you live in Spain?"
+  },
+  {
+   "id": "8709f24407",
+   "es": "Con he/she: Does + verbo sin -s. Does he read…? (no «Does he reads»).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Does he read every day?"
+  },
+  {
+   "id": "9898b15501",
+   "es": "¿Trabajas? Siempre, normalmente, nunca",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "0c79d66033",
+   "es": "Preguntar con do/does y decir con qué frecuencia.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "8903bb00dd",
+   "es": "Preguntas en presente: Do + I/you/we/they + verbo.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Do"
+  },
+  {
+   "id": "1086bc1355",
+   "es": "¿Ella vive en México?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Does she live in Mexico?"
+  },
+  {
+   "id": "69f7803883",
+   "es": "Con he, she e it: Does + sujeto + verbo sin -s.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Does"
+  },
+  {
+   "id": "e429e2b8c8",
+   "es": "0 veces",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "I ___ eat breakfast. (0 veces)"
+  },
+  {
+   "id": "228b582ec2",
+   "es": "Nunca desayuno.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I never eat breakfast. (0 veces)"
+  },
+  {
+   "id": "1d5e26be44",
+   "es": "Always, usually y never van antes del verbo: I never eat breakfast.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "never"
+  },
+  {
+   "id": "cbe609112e",
+   "es": "Sí.",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Do you study English? (Sí.)"
+  },
+  {
+   "id": "86c494b505",
+   "es": "¿Estudias inglés?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Do you study English? (Sí.)"
+  },
+  {
+   "id": "38ead1d7b4",
+   "es": "Respuesta corta: Yes, I do. / No, I don’t.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Yes, I do."
+  },
+  {
+   "id": "765904d166",
+   "es": "Normalmente me levanto a las siete.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I usually get up at seven."
+  },
+  {
+   "id": "77bf68c585",
+   "es": "En contexto: la semana de Tom",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "9db1083eae",
+   "es": "Entender un mensaje escrito y uno de voz sobre rutinas.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "3f1890ecc7",
+   "es": "Vas a leer un mensaje de Tom sobre su rutina y a escuchar un mensaje de voz que le deja a su mamá. Fíjate qué hace siempre, qué no hace y dónde.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "aec529fbff",
+   "es": "Nunca miro televisión.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I never watch TV."
+  },
+  {
+   "id": "16e7805923",
+   "es": "Ahora puedes entender qué hace alguien todos los días y qué no hace nunca.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "fa28da0b5c",
+   "es": "Tom le escribe a su amigo Sam.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u08-tom-message"
+  },
+  {
+   "id": "14a814bcfb",
+   "es": "¿Qué hace Tom en casa?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u08-tom-message"
+  },
+  {
+   "id": "954905e3bd",
+   "es": "Estudia inglés y lee",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u08-tom-message"
+  },
+  {
+   "id": "129eacb069",
+   "es": "Mira televisión",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "afcf74fe05",
+   "es": "Trabaja con su hermana",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0bd92ff168",
+   "es": "«I study English at home» y «At home, I usually read».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u08-tom-message"
+  },
+  {
+   "id": "09b125ac94",
+   "es": "¿Qué no hace nunca Tom?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u08-tom-message"
+  },
+  {
+   "id": "072ccb90d0",
+   "es": "Mirar televisión",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u08-tom-message"
+  },
+  {
+   "id": "f4e0ac0804",
+   "es": "Leer",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7bee7a6f32",
+   "es": "Trabajar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ea3a9ff761",
+   "es": "«I never watch TV».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u08-tom-message"
+  },
+  {
+   "id": "c29821070f",
+   "es": "¿Qué hace la hermana de Tom?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u08-tom-message"
+  },
+  {
+   "id": "536aec18bf",
+   "es": "Trabaja todos los días",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u08-tom-message"
+  },
+  {
+   "id": "15632bb480",
+   "es": "Estudia en la escuela",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "fc2c654401",
+   "es": "Estudia en casa",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1ed6eef476",
+   "es": "«My sister doesn't work. She studies at school».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u08-tom-message"
+  },
+  {
+   "id": "df2db565c1",
+   "es": "Tom le deja un mensaje de voz a su mamá.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u08-voice-message"
+  },
+  {
+   "id": "70027b0838",
+   "es": "¿Dónde vive Tom?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u08-voice-message"
+  },
+  {
+   "id": "1249a3a347",
+   "es": "En un apartamento chico",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u08-voice-message"
+  },
+  {
+   "id": "03bed2879a",
+   "es": "En una casa grande",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b7118c350c",
+   "es": "En un apartamento grande",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c0733de7d5",
+   "es": "«I live in a small apartment».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u08-voice-message"
+  },
+  {
+   "id": "549d48eeb6",
+   "es": "¿Dónde trabaja Tom?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u08-voice-message"
+  },
+  {
+   "id": "77a716e540",
+   "es": "En la escuela",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u08-voice-message"
+  },
+  {
+   "id": "eb7275ed2e",
+   "es": "En una oficina",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4a8ed7d2c2",
+   "es": "En su casa",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "aef88c8a2c",
+   "es": "«I work at home».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u08-voice-message"
+  },
+  {
+   "id": "d042e14465",
+   "es": "¿Qué hace siempre Tom después de levantarse?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u08-voice-message"
+  },
+  {
+   "id": "e7da824a74",
+   "es": "Lee",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u08-voice-message"
+  },
+  {
+   "id": "8e94b63da0",
+   "es": "Vuelve a dormir",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "71bb79ea18",
+   "es": "«I always get up and read»; televisión no mira.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u08-voice-message"
+  },
+  {
+   "id": "d850a8d528",
+   "es": "Tu rutina",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "6378210839",
+   "es": "Cuenta tres cosas que haces todos los días (pueden ser inventadas). Usa always, usually o never al menos una vez.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "79bdfc54a6",
+   "es": "Usas un verbo de rutina (get up, work, study, read…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "10eb1ffc2c",
+   "es": "Usas always, usually o never antes del verbo",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "a194e47b21",
+   "es": "Puse el adverbio antes del verbo (I always study).",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "ea8007a806",
+   "es": "Escribí tres oraciones.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.a1-u08-tom-message": {
+   "setting": "Tom le escribe a su amigo Sam.",
+   "lines": [
+    "Hi, Sam!",
+    "I work every day and I study English at home.",
+    "At home, I usually read. I never watch TV.",
+    "My sister doesn't work. She studies at school."
+   ]
+  },
+  "en.stim.a1-u08-voice-message": {
+   "setting": "Tom le deja un mensaje de voz a su mamá.",
+   "lines": [
+    "Tom: Hi, Mom. It's Tom.",
+    "Tom: I live in a small apartment. I work at home.",
+    "Tom: I always get up and read. I don't watch TV.",
+    "Tom: Bye!"
+   ]
+  }
+ }
+}

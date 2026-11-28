@@ -1,0 +1,1445 @@
+{
+ "unit": "b1-u01",
+ "level": "B1",
+ "titleEn": "Life experiences",
+ "strings": [
+  {
+   "id": "075cece9d1",
+   "es": "Contar experiencias con el present perfect y decir cuándo pasaron con el past simple; logros y recuerdos.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "907aed2ca2",
+   "es": "Puedes contar experiencias de tu vida, decir si alguna vez hiciste algo y explicar cuándo y cómo pasó.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "42ebac3842",
+   "es": "Present perfect y past simple",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "4dd06d34e7",
+   "es": "El present perfect (have/has + participio) cuenta una experiencia sin decir cuándo: I have climbed a mountain. Si dices cuándo (last year, in 2020, two years ago), usas el past simple: I climbed it last year.",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "edb41cc1ff",
+   "es": "Estuve en Brasil (alguna vez).",
+   "kinds": [
+    "example"
+   ],
+   "en": "I have been to Brazil."
+  },
+  {
+   "id": "e27fd22cc5",
+   "es": "Fui el año pasado.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I went there last year."
+  },
+  {
+   "id": "8db5fd4b45",
+   "es": "¿Alguna vez ganaste un premio?",
+   "kinds": [
+    "example"
+   ],
+   "en": "Have you ever won a prize?"
+  },
+  {
+   "id": "4a29c21388",
+   "es": "ido (go)",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "gone"
+  },
+  {
+   "id": "bef2418649",
+   "es": "se fue",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "gone"
+  },
+  {
+   "id": "8e9b5a734e",
+   "es": "Se fue a la estación.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She has gone to the station."
+  },
+  {
+   "id": "86e6e4e44c",
+   "es": "escrito (write)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "written"
+  },
+  {
+   "id": "45a3954041",
+   "es": "escrito",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "written"
+  },
+  {
+   "id": "d51729985c",
+   "es": "Escribí un mail largo.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I have written a long email."
+  },
+  {
+   "id": "d6396009db",
+   "es": "hablado (speak)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "spoken"
+  },
+  {
+   "id": "605224876d",
+   "es": "hablado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "spoken"
+  },
+  {
+   "id": "7bbfcfd064",
+   "es": "¿Hablaste con tu jefe?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Have you spoken to your boss?"
+  },
+  {
+   "id": "3de728803f",
+   "es": "tomado / llevado (take)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "taken"
+  },
+  {
+   "id": "8496761095",
+   "es": "tomado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "taken"
+  },
+  {
+   "id": "f2258cb889",
+   "es": "llevado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "taken"
+  },
+  {
+   "id": "0c1253be1e",
+   "es": "Saqué muchas fotos.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I have taken a lot of photos."
+  },
+  {
+   "id": "9691d16163",
+   "es": "dado (give)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "given"
+  },
+  {
+   "id": "1bb2d0a82e",
+   "es": "dado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "given"
+  },
+  {
+   "id": "256d8bf3a1",
+   "es": "Mis padres me regalaron una bici.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My parents have given me a bike."
+  },
+  {
+   "id": "947c04f701",
+   "es": "gané / ganado (win)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "won"
+  },
+  {
+   "id": "4d604775ac",
+   "es": "gané",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "won"
+  },
+  {
+   "id": "7dbce4aff9",
+   "es": "ganó",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "won"
+  },
+  {
+   "id": "595462c2e8",
+   "es": "ganado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "won"
+  },
+  {
+   "id": "f78f1bf409",
+   "es": "Nuestro equipo ganó el partido.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Our team won the game."
+  },
+  {
+   "id": "e2410a8e70",
+   "es": "escalar / subir",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "climb"
+  },
+  {
+   "id": "2b663ec1b1",
+   "es": "Quiero escalar esa montaña.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I want to climb that mountain."
+  },
+  {
+   "id": "e6084c09d6",
+   "es": "premio",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "prize"
+  },
+  {
+   "id": "ea6e6bdbc8",
+   "es": "Ganó un premio en la escuela.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She won a prize at school."
+  },
+  {
+   "id": "4c8125a50d",
+   "es": "orgulloso / orgullosa",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "proud"
+  },
+  {
+   "id": "e9e9e613c9",
+   "es": "orgulloso",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "proud"
+  },
+  {
+   "id": "872f52de49",
+   "es": "orgullosa",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "proud"
+  },
+  {
+   "id": "e92443a0c1",
+   "es": "Estoy muy orgulloso de ti.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I am very proud of you."
+  },
+  {
+   "id": "af1b41f507",
+   "es": "la primera vez",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "the first time"
+  },
+  {
+   "id": "faae557979",
+   "es": "Fue la primera vez que vi el mar.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "It was the first time I saw the sea."
+  },
+  {
+   "id": "0000b8a5c9",
+   "es": "hasta ahora",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "so far"
+  },
+  {
+   "id": "bb97495bb3",
+   "es": "hasta el momento",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "so far"
+  },
+  {
+   "id": "10c1cf6209",
+   "es": "Hasta ahora visité tres países.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I have visited three countries so far."
+  },
+  {
+   "id": "06fe5f24d6",
+   "es": "en mi vida",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "in my life"
+  },
+  {
+   "id": "fb3922017a",
+   "es": "Nunca vi nieve en mi vida.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I have never seen snow in my life."
+  },
+  {
+   "id": "0a83cc5770",
+   "es": "inolvidable",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "unforgettable"
+  },
+  {
+   "id": "bf8d4234cb",
+   "es": "Fue un día inolvidable.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "It was an unforgettable day."
+  },
+  {
+   "id": "0ee141128d",
+   "es": "graduarse",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "graduate"
+  },
+  {
+   "id": "3da08f135f",
+   "es": "recibirse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "graduate"
+  },
+  {
+   "id": "da85e17df8",
+   "es": "recibirse / graduarse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "graduate"
+  },
+  {
+   "id": "854963eadb",
+   "es": "Quiere graduarse el año que viene.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She wants to graduate next year."
+  },
+  {
+   "id": "fc9cd747dc",
+   "es": "logro",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "achievement"
+  },
+  {
+   "id": "b356916ea0",
+   "es": "Aprender inglés es un gran logro.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Learning English is a great achievement."
+  },
+  {
+   "id": "0ec4cc78a4",
+   "es": "aventura",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "adventure"
+  },
+  {
+   "id": "8d849db9f8",
+   "es": "Este viaje fue una gran aventura.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "This trip was a great adventure."
+  },
+  {
+   "id": "32659140f7",
+   "es": "recuerdo / memoria",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "memory"
+  },
+  {
+   "id": "b539dc0c70",
+   "es": "recuerdo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "memory"
+  },
+  {
+   "id": "0c9a4577a1",
+   "es": "memoria",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "memory"
+  },
+  {
+   "id": "30b3a38aad",
+   "es": "Tengo un lindo recuerdo de ese día.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I have a good memory of that day."
+  },
+  {
+   "id": "1e580ecef3",
+   "es": "¿Alguna vez…?",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "b31d2788c5",
+   "es": "Preguntar y contar experiencias con el present perfect y participios irregulares.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "3e7cf1e7f2",
+   "es": "Para hablar de experiencias sin decir cuándo pasaron: have/has + participio. Muchos participios son irregulares: go → gone, write → written, speak → spoken, take → taken, give → given.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "c8484cc620",
+   "es": "¿Alguna vez hablaste con una persona famosa?",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "Have you ever spoken to a famous person?"
+  },
+  {
+   "id": "f7d5440bf8",
+   "es": "Escribí una historia (alguna vez).",
+   "kinds": [
+    "example"
+   ],
+   "en": "I have written a story."
+  },
+  {
+   "id": "6248cca2c3",
+   "es": "Preguntas por experiencias: Have you ever…?",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "42313d8f5d",
+   "es": "Usas participios irregulares: written, spoken, taken, given.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "5741a41a64",
+   "es": "Después de have/has va el participio: speak → spoken.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "spoken"
+  },
+  {
+   "id": "b72f54cfdf",
+   "es": "Escribió tres libros.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She has written three books."
+  },
+  {
+   "id": "299ef29fa5",
+   "es": "Write es irregular: wrote (pasado), written (participio).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "written"
+  },
+  {
+   "id": "08c904b0a6",
+   "es": "Saqué muchas fotos en este viaje.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I have taken a lot of photos on this trip."
+  },
+  {
+   "id": "6df93900b2",
+   "es": "¿Alguna vez escribiste una historia?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Have you ever written a story?"
+  },
+  {
+   "id": "c87bae3c28",
+   "es": "no, nunca",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Have you ever spoken to a famous person? (no, nunca)"
+  },
+  {
+   "id": "2a01f4b7ed",
+   "es": "Been y gone",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "5965b9285c",
+   "es": "Distinguir been to (fue y volvió) de gone to (se fue y sigue allá); contar lo que llevas hecho.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "4cd213911e",
+   "es": "Been to dice que alguien fue a un lugar y ya volvió: I have been to Spain. Gone to dice que se fue y todavía está allá: She has gone to the bank (no está). So far (hasta ahora) suma lo hecho hasta hoy.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "cafb7e8551",
+   "es": "Kate se fue al banco (no está).",
+   "kinds": [
+    "example"
+   ],
+   "en": "Kate has gone to the bank."
+  },
+  {
+   "id": "01becaa008",
+   "es": "Diferencias been to (ya volvió) de gone to (sigue allá).",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "dcaa347661",
+   "es": "Cuentas lo que hiciste hasta ahora con so far.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "36b1562afd",
+   "es": "¿Qué significa «gone»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "f2f3bc4a71",
+   "es": "Mamá no está. Se fue al supermercado.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Mom isn't here. She has gone to the supermarket."
+  },
+  {
+   "id": "91cf38dbf5",
+   "es": "Gone to: se fue y todavía no volvió.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "gone"
+  },
+  {
+   "id": "678c770087",
+   "es": "Estuve en México tres veces.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I have been to Mexico three times."
+  },
+  {
+   "id": "7685ee3fcc",
+   "es": "Been to: fuiste y volviste (una experiencia).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "been"
+  },
+  {
+   "id": "7fbb758adc",
+   "es": "Hasta ahora visité cinco países.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I have visited five countries so far."
+  },
+  {
+   "id": "e7966b819a",
+   "es": "So far va con el present perfect; last year, ago y yesterday, con el past simple.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "so far"
+  },
+  {
+   "id": "8bf96d556f",
+   "es": "Sofía cuenta en una red social qué hizo en los últimos años.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u1-post"
+  },
+  {
+   "id": "78b09aa7e8",
+   "es": "¿Cuántos países visitó Sofía hasta ahora?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u1-post"
+  },
+  {
+   "id": "e3af7b64ca",
+   "es": "Sofía escribe: «I have visited six countries so far».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u1-post"
+  },
+  {
+   "id": "6fe32ddb18",
+   "es": "¿Qué todavía no hizo Sofía?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u1-post"
+  },
+  {
+   "id": "4f05dc7724",
+   "es": "Escalar una montaña",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u1-post"
+  },
+  {
+   "id": "3082835b20",
+   "es": "Vivir en el exterior",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6e8a60c523",
+   "es": "Hablar inglés en el trabajo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "aac6d8e55f",
+   "es": "Ir a Perú",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7f29f07f5d",
+   "es": "Sofía escribe: «I have never climbed a mountain, but I want to climb one soon».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u1-post"
+  },
+  {
+   "id": "a560da53cb",
+   "es": "Estuve en Inglaterra dos veces.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I have been to England twice."
+  },
+  {
+   "id": "f8442b9ea4",
+   "es": "se fue al gimnasio",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Where is Tom? (se fue al gimnasio)"
+  },
+  {
+   "id": "4feb061359",
+   "es": "¿Dónde está Tom?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Where is Tom? (se fue al gimnasio)"
+  },
+  {
+   "id": "5b495a8afb",
+   "es": "¿Y cuándo fue?",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "99f3a53860",
+   "es": "Pasar de la experiencia (present perfect) a los detalles (past simple).",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "71c182b19d",
+   "es": "Una conversación sobre experiencias suele empezar con el present perfect (Have you ever…?) y sigue con el past simple para los detalles: When did you go? Who did you go with? Con last year, ago, in 2019 o yesterday va siempre el past simple.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "0552a63f5b",
+   "es": "¿Escalaste alguna vez una montaña? Sí, escalé una el año pasado.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Have you ever climbed a mountain? Yes, I climbed one last year."
+  },
+  {
+   "id": "5c3a5e7531",
+   "es": "Pasas del present perfect al past simple para dar detalles.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "5eaacd3b23",
+   "es": "Cuentas la primera vez que hiciste algo: It was the first time…",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "cddfe5a0af",
+   "es": "Escalé una montaña en Chile hace dos años.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I climbed a mountain in Chile two years ago."
+  },
+  {
+   "id": "b95229b317",
+   "es": "Con ago (hace) va el past simple, no el present perfect.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "climbed"
+  },
+  {
+   "id": "32df0d428d",
+   "es": "¿Alguna vez escalaste una montaña?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Have you ever climbed a mountain?"
+  },
+  {
+   "id": "ead9abcab2",
+   "es": "Fue la primera vez que viajé en avión.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "It was the first time I traveled by plane."
+  },
+  {
+   "id": "b0bb568d1b",
+   "es": "Ben y Kate hablan de experiencias.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u1-climb"
+  },
+  {
+   "id": "2045052bf0",
+   "es": "¿Cuándo escaló Kate la montaña?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u1-climb"
+  },
+  {
+   "id": "7b1fd8f21d",
+   "es": "Hace dos años",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u1-climb"
+  },
+  {
+   "id": "bf4c3f5c5b",
+   "es": "El año pasado",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "fb92f52ca8",
+   "es": "La semana pasada",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "984974530b",
+   "es": "Kate dice: «I climbed one in Chile two years ago».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u1-climb"
+  },
+  {
+   "id": "98325656f5",
+   "es": "¿Cómo se sintió Kate al llegar arriba?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u1-climb"
+  },
+  {
+   "id": "6a7efd703d",
+   "es": "Muy orgullosa",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u1-climb"
+  },
+  {
+   "id": "e1109b1758",
+   "es": "Muy cansada",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "664de83fc9",
+   "es": "Asustada",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "80ee18d678",
+   "es": "Aburrida",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b42a08b25b",
+   "es": "Kate dice: «I felt so proud».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u1-climb"
+  },
+  {
+   "id": "14ecfd22b7",
+   "es": "¿Cuándo fuiste a España?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "When did you go to Spain?"
+  },
+  {
+   "id": "84c6521b57",
+   "es": "sí, el año pasado",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Have you ever been to Spain? (sí, el año pasado)"
+  },
+  {
+   "id": "2f311198c3",
+   "es": "¿Alguna vez estuviste en España?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Have you ever been to Spain? (sí, el año pasado)"
+  },
+  {
+   "id": "469f68b5b6",
+   "es": "Logros",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "e17d2ac842",
+   "es": "Contar logros y momentos importantes de la vida.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "abc12d1885",
+   "es": "Para contar logros: I have graduated, I have won a prize. Para decir cómo te sientes: I am proud of… (estoy orgulloso de…). Win es irregular: won (pasado y participio).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "44a401730c",
+   "es": "Gané un premio.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I have won a prize."
+  },
+  {
+   "id": "a99582e28a",
+   "es": "Mis padres están muy orgullosos de mí.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "My parents are very proud of me."
+  },
+  {
+   "id": "796c43b73f",
+   "es": "Cuentas logros: I have graduated, I have won a prize.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "87684fde6d",
+   "es": "Dices de qué estás orgulloso: I am proud of…",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "f53f43e8c7",
+   "es": "¡Nuestro equipo ganó el partido!",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Our team has won the game!"
+  },
+  {
+   "id": "f8c19e2646",
+   "es": "Win es irregular: won es el pasado y el participio.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "won"
+  },
+  {
+   "id": "681472e519",
+   "es": "Leo le escribe a su abuela.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u1-graduation"
+  },
+  {
+   "id": "fff7c4458d",
+   "es": "¿Qué le regalaron los padres a Leo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u1-graduation"
+  },
+  {
+   "id": "7eec703876",
+   "es": "Una computadora nueva",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u1-graduation"
+  },
+  {
+   "id": "1280a9b54b",
+   "es": "Una bici",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2bfa177ecc",
+   "es": "Un viaje",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ead5d8f47f",
+   "es": "Un teléfono",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "527004cda1",
+   "es": "Leo escribe: «They have given me a new computer as a present».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u1-graduation"
+  },
+  {
+   "id": "b91ed4c832",
+   "es": "¿Cuál es el mayor logro de Leo hasta ahora?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u1-graduation"
+  },
+  {
+   "id": "b9954447a1",
+   "es": "Un premio por su proyecto final",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u1-graduation"
+  },
+  {
+   "id": "a426c07d93",
+   "es": "Recibirse",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "727c321ace",
+   "es": "Un trabajo nuevo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "64e62d155c",
+   "es": "Un viaje al exterior",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "390ec8f1b4",
+   "es": "Leo escribe: «I have also won a prize for my final project. It is my biggest achievement so far».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u1-graduation"
+  },
+  {
+   "id": "1eb0a0b9fc",
+   "es": "Gané un premio en la escuela.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I won a prize at school."
+  },
+  {
+   "id": "89d0543f9c",
+   "es": "Estoy muy orgullosa de ti.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I am very proud of you."
+  },
+  {
+   "id": "de6b642c8d",
+   "es": "Un recuerdo inolvidable",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "6a7ae00b05",
+   "es": "Contar una experiencia importante: qué pasó, cuándo y cómo te sentiste.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "42cb6ffc5c",
+   "es": "Para contar un recuerdo: preséntalo con el present perfect o con una frase como My best memory is…, y cuenta los detalles en past simple. Unforgettable (inolvidable) y adventure (aventura) ayudan a describirlo.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "37c81ef7f9",
+   "es": "Mi mejor recuerdo es el día que me gradué.",
+   "kinds": [
+    "example"
+   ],
+   "en": "My best memory is the day I graduated."
+  },
+  {
+   "id": "4ba4d46f49",
+   "es": "Fue una aventura inolvidable.",
+   "kinds": [
+    "example"
+   ],
+   "en": "It was an unforgettable adventure."
+  },
+  {
+   "id": "ed2a546a93",
+   "es": "Cuentas un recuerdo con detalles en past simple.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "a852e283bd",
+   "es": "Lo describes: unforgettable, an adventure.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "32e21b075d",
+   "es": "¿Qué significa «memory»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "e3951a220a",
+   "es": "Mia le cuenta a Tom su mejor recuerdo.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u1-memory"
+  },
+  {
+   "id": "7cb4ebe938",
+   "es": "¿Cuál es el mejor recuerdo de Mia?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u1-memory"
+  },
+  {
+   "id": "780a2a5564",
+   "es": "El día que conoció a su cantante favorita",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u1-memory"
+  },
+  {
+   "id": "e195c4e40b",
+   "es": "Su primer viaje a Londres",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f064a46f03",
+   "es": "El día que se graduó",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f44d6ca7de",
+   "es": "Un premio que ganó",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "56460fcea8",
+   "es": "Mia dice: «The day I met my favorite singer».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u1-memory"
+  },
+  {
+   "id": "2d616b9317",
+   "es": "¿Qué pasó después del recital?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u1-memory"
+  },
+  {
+   "id": "7f61678ebe",
+   "es": "La cantante salió y les habló",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u1-memory"
+  },
+  {
+   "id": "3b0155a358",
+   "es": "Sacaron miles de fotos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "10c22186c4",
+   "es": "Mia volvió a su casa",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "230e9e2587",
+   "es": "Cantaron todos juntos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "000582cfc2",
+   "es": "Mia dice: «After the concert, she came out and spoke to us».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u1-memory"
+  },
+  {
+   "id": "b4659da760",
+   "es": "Fue un viaje inolvidable.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "It was an unforgettable trip."
+  },
+  {
+   "id": "d1a24346ec",
+   "es": "Íbamos a la playa todos los veranos cuando era chico.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "We went to the beach every summer when I was a child."
+  },
+  {
+   "id": "4c4ab19287",
+   "es": "When I was a child pone la acción en un momento terminado: past simple.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "went"
+  },
+  {
+   "id": "90d6762207",
+   "es": "el día que te graduaste",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What's your best memory? (el día que te graduaste)"
+  },
+  {
+   "id": "2e671c9f11",
+   "es": "¿Cuál es tu mejor recuerdo?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What's your best memory? (el día que te graduaste)"
+  },
+  {
+   "id": "73af4a711d",
+   "es": "Una experiencia inolvidable",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "95da0ac041",
+   "es": "Cuenta una experiencia importante de tu vida (real o inventada): preséntala con el present perfect y cuenta los detalles en past simple, con cuándo pasó y cómo te sentiste.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "50867cb59d",
+   "es": "Usas el present perfect (I have been, I have climbed…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "0f2807b6e1",
+   "es": "Dices cuándo pasó (two years ago, last summer, in 2019…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "bcc7b28fd5",
+   "es": "Dices cómo te sentiste (proud, happy, excited, nervous…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "f9aa87442a",
+   "es": "Escribes al menos 4 oraciones",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "a98533216f",
+   "es": "Presenté la experiencia con el present perfect.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "545ef41f69",
+   "es": "Conté los detalles en past simple y dije cuándo pasó.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "7575a9110c",
+   "es": "Dije cómo me sentí.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.b1-u1-post": {
+   "setting": "Sofía cuenta en una red social qué hizo en los últimos años.",
+   "lines": [
+    "I have visited six countries so far, and I have lived abroad twice.",
+    "I have spoken English at work for three years.",
+    "I have never climbed a mountain, but I want to climb one soon.",
+    "Last year I went to Peru, and it was the first time I saw the Andes.",
+    "It was amazing!"
+   ]
+  },
+  "en.stim.b1-u1-climb": {
+   "setting": "Ben y Kate hablan de experiencias.",
+   "lines": [
+    "Ben: Have you ever climbed a mountain?",
+    "Kate: Yes, I have. I climbed one in Chile two years ago.",
+    "Ben: Really? Was it difficult?",
+    "Kate: Very! But when I got to the top, I felt so proud.",
+    "Ben: I've never done anything like that in my life."
+   ]
+  },
+  "en.stim.b1-u1-graduation": {
+   "setting": "Leo le escribe a su abuela.",
+   "lines": [
+    "Dear Grandma,",
+    "I have some great news: I have graduated! The party was on Saturday, and Mom and Dad came.",
+    "They have given me a new computer as a present.",
+    "I have also won a prize for my final project. It is my biggest achievement so far.",
+    "Love, Leo"
+   ]
+  },
+  "en.stim.b1-u1-memory": {
+   "setting": "Mia le cuenta a Tom su mejor recuerdo.",
+   "lines": [
+    "Tom: What's your best memory?",
+    "Mia: The day I met my favorite singer. I was at a concert in London.",
+    "Mia: After the concert, she came out and spoke to us.",
+    "Tom: Did you take a photo?",
+    "Mia: Yes, I did! I've taken thousands of photos, but that one is my favorite."
+   ]
+  }
+ }
+}

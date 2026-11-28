@@ -1,0 +1,1255 @@
+{
+ "unit": "a1-u11",
+ "level": "A1",
+ "titleEn": "Likes and preferences",
+ "strings": [
+  {
+   "id": "c4207c835a",
+   "es": "Gustos y preferencias",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Likes and preferences"
+  },
+  {
+   "id": "8bdbcddb7f",
+   "es": "Decir qué te gusta, qué no, qué sabes hacer y cuál es tu favorito.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "a2a5023c57",
+   "es": "gustar",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "like"
+  },
+  {
+   "id": "759aadd7ab",
+   "es": "Me gusta la música.",
+   "kinds": [
+    "word.example",
+    "exercise.option"
+   ],
+   "en": "I like music."
+  },
+  {
+   "id": "8e643003b7",
+   "es": "encantar / amar",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "love"
+  },
+  {
+   "id": "b6293aa585",
+   "es": "amar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "love"
+  },
+  {
+   "id": "3d5d4e62df",
+   "es": "encantar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "love"
+  },
+  {
+   "id": "b710dbadca",
+   "es": "me encanta",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "love"
+  },
+  {
+   "id": "7fd777533e",
+   "es": "Me encanta la pizza.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I love pizza."
+  },
+  {
+   "id": "0ee31c0fe5",
+   "es": "odiar",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "hate"
+  },
+  {
+   "id": "a00eb107c0",
+   "es": "Ella odia los lunes.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She hates Mondays."
+  },
+  {
+   "id": "c59e43db0a",
+   "es": "favorito / favorita",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "favorite"
+  },
+  {
+   "id": "20c51f3544",
+   "es": "favorito",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "favorite"
+  },
+  {
+   "id": "e31a9d8b2f",
+   "es": "favorita",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "favorite"
+  },
+  {
+   "id": "cc2d5d9623",
+   "es": "preferido",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "favorite"
+  },
+  {
+   "id": "98b8a75435",
+   "es": "El azul es mi color favorito.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Blue is my favorite color."
+  },
+  {
+   "id": "88752b6636",
+   "es": "música",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "music"
+  },
+  {
+   "id": "5378bfa395",
+   "es": "Escuchamos música.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We listen to music."
+  },
+  {
+   "id": "c1bd80f603",
+   "es": "deporte",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "sport"
+  },
+  {
+   "id": "32c6faba3a",
+   "es": "El fútbol es mi deporte favorito.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Football is my favorite sport."
+  },
+  {
+   "id": "666002eb98",
+   "es": "fútbol",
+   "kinds": [
+    "word.translation",
+    "exercise.cue"
+   ],
+   "en": "football"
+  },
+  {
+   "id": "c5dd6aaa3e",
+   "es": "futbol",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "football"
+  },
+  {
+   "id": "d38602afb6",
+   "es": "Juegan al fútbol el sábado.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "They play football on Saturday."
+  },
+  {
+   "id": "5367db38d0",
+   "es": "película",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "movie"
+  },
+  {
+   "id": "a316b7c3a4",
+   "es": "peli",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "movie"
+  },
+  {
+   "id": "d0607f7ad2",
+   "es": "film",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "movie"
+  },
+  {
+   "id": "2cd201d3ec",
+   "es": "Me gusta esta película.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I like this movie."
+  },
+  {
+   "id": "26a3e844c4",
+   "es": "juego / partido",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "game"
+  },
+  {
+   "id": "249a6890a9",
+   "es": "juego",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "game"
+  },
+  {
+   "id": "237ff46550",
+   "es": "partido",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "game"
+  },
+  {
+   "id": "e06370a898",
+   "es": "Es un juego divertido.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "It is a fun game."
+  },
+  {
+   "id": "52e9833dc9",
+   "es": "bailar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.cue"
+   ],
+   "en": "dance"
+  },
+  {
+   "id": "803831261c",
+   "es": "Me encanta bailar.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I love to dance."
+  },
+  {
+   "id": "c8f1fc284c",
+   "es": "cantar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "sing"
+  },
+  {
+   "id": "b2f01678c9",
+   "es": "Ella canta muy bien.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "She sings very well."
+  },
+  {
+   "id": "3f5c5d6ba9",
+   "es": "nadar",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "swim"
+  },
+  {
+   "id": "47cddcf124",
+   "es": "¿Sabes nadar?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Can you swim?"
+  },
+  {
+   "id": "9c4e3e6abf",
+   "es": "Mi padre cocina la cena.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "My father cooks dinner."
+  },
+  {
+   "id": "2279e634f5",
+   "es": "viajar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "travel"
+  },
+  {
+   "id": "9fc92e3696",
+   "es": "Nos encanta viajar.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "We love to travel."
+  },
+  {
+   "id": "af93a690f8",
+   "es": "poder / saber (hacer algo)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "can"
+  },
+  {
+   "id": "8c2128df69",
+   "es": "poder",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "can"
+  },
+  {
+   "id": "e4c3c15369",
+   "es": "saber",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "can"
+  },
+  {
+   "id": "e6dccda867",
+   "es": "Sé nadar.",
+   "kinds": [
+    "word.example",
+    "exercise.option"
+   ],
+   "en": "I can swim."
+  },
+  {
+   "id": "bd11487b39",
+   "es": "bien (cómo se hace algo)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "well"
+  },
+  {
+   "id": "6bbce3b3b8",
+   "es": "Él cocina bien.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "He cooks well."
+  },
+  {
+   "id": "3e1ab0f835",
+   "es": "divertido",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "fun"
+  },
+  {
+   "id": "7f4b5b713a",
+   "es": "divertida",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "fun"
+  },
+  {
+   "id": "0408d663b4",
+   "es": "diversión",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "fun"
+  },
+  {
+   "id": "0e405340b6",
+   "es": "Bailar es divertido.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Dancing is fun."
+  },
+  {
+   "id": "0db9df7d8e",
+   "es": "pero",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "but"
+  },
+  {
+   "id": "befae89483",
+   "es": "Me gusta el té, pero odio el café.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I like tea, but I hate coffee."
+  },
+  {
+   "id": "68faa687ba",
+   "es": "mucho",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "very much"
+  },
+  {
+   "id": "1da26ce490",
+   "es": "muchísimo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "very much"
+  },
+  {
+   "id": "7da35eca11",
+   "es": "Me gusta mucho.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I like it very much."
+  },
+  {
+   "id": "ddfbd51a92",
+   "es": "también (al final)",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "too"
+  },
+  {
+   "id": "20af4511c7",
+   "es": "también",
+   "kinds": [
+    "word.accepted",
+    "exercise.option"
+   ],
+   "en": "too"
+  },
+  {
+   "id": "e8af731b99",
+   "es": "A mí también me gusta la música.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I like music too."
+  },
+  {
+   "id": "aae4d4371e",
+   "es": "me / a mí",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "me"
+  },
+  {
+   "id": "c97410cd38",
+   "es": "¿Me puedes ayudar?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Can you help me?"
+  },
+  {
+   "id": "cd1e85c352",
+   "es": "los / las (a ellos, a ellas)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "them"
+  },
+  {
+   "id": "b62d73bbc4",
+   "es": "Me encantan. / Los quiero.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I love them."
+  },
+  {
+   "id": "d45e8a935e",
+   "es": "Me gusta",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "c6c8cee09a",
+   "es": "Decir qué te gusta con like.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "0bf4bd3a5a",
+   "es": "¿Qué significa «I like music.»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "9d588a350b",
+   "es": "Me encanta la música.",
+   "kinds": [
+    "exercise.option",
+    "exercise.source"
+   ]
+  },
+  {
+   "id": "46866ab599",
+   "es": "Odio la música.",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0c305b2847",
+   "es": "Escucho música.",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "76b75c93f1",
+   "es": "Me gusta el fútbol.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I like football."
+  },
+  {
+   "id": "5441aa8636",
+   "es": "En inglés la persona es el sujeto: I like football (no \"football likes me\").",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "like"
+  },
+  {
+   "id": "f9b87d4f66",
+   "es": "A ella le gustan las películas.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She likes movies."
+  },
+  {
+   "id": "aafdfcd1f7",
+   "es": "Con he, she e it: likes.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "likes"
+  },
+  {
+   "id": "0674a973a9",
+   "es": "Me gusta el té.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I like tea."
+  },
+  {
+   "id": "4abdb6e4b9",
+   "es": "Me encanta, lo odio",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "71e472939a",
+   "es": "Love, hate y don’t like.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "bd3de94133",
+   "es": "¿Qué significa «love»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "7a8d021bb0",
+   "es": "¿Qué significa «hate»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "4da6713f30",
+   "es": "No me gusta el café.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I don't like coffee."
+  },
+  {
+   "id": "95984f84b2",
+   "es": "Él odia los lunes.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "He hates Mondays."
+  },
+  {
+   "id": "311957bd98",
+   "es": "No me gusta el fútbol.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I don't like football."
+  },
+  {
+   "id": "c2e662c5ec",
+   "es": "El fútbol es divertido. Me encanta.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Football is fun. I love it."
+  },
+  {
+   "id": "1110f5cd43",
+   "es": "Una cosa: it. I love it = me encanta.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "it"
+  },
+  {
+   "id": "908d8cb9f8",
+   "es": "Me encantan las manzanas. Las como todos los días.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I love apples. I eat them every day."
+  },
+  {
+   "id": "e0a4dced8d",
+   "es": "Varias cosas: them. I eat them = las como.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "them"
+  },
+  {
+   "id": "b90bdcddaf",
+   "es": "¿Me puedes ayudar, por favor?",
+   "kinds": [
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "Can you help me, please?"
+  },
+  {
+   "id": "f4a31b5c92",
+   "es": "Después del verbo: me (no I). Help me.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "me"
+  },
+  {
+   "id": "b8950dfffd",
+   "es": "Me gustan mucho.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I like them very much."
+  },
+  {
+   "id": "ad15cf4992",
+   "es": "Sí, me encantan.",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Do you like movies? (Sí, me encantan.)"
+  },
+  {
+   "id": "dfb6606e1e",
+   "es": "¿Te gustan las películas?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Do you like movies? (Sí, me encantan.)"
+  },
+  {
+   "id": "25f197d86e",
+   "es": "Movies es plural: I love them.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Yes, I love them."
+  },
+  {
+   "id": "92e9501f4f",
+   "es": "Pasatiempos",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "d4c59fb2aa",
+   "es": "Bailar, cantar, nadar, cocinar y viajar.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "5dc321931b",
+   "es": "Me gusta bailar.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I like dancing. (bailar)"
+  },
+  {
+   "id": "f905b6a12e",
+   "es": "Después de like, love y hate el verbo suele ir con -ing: I like dancing.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "dancing"
+  },
+  {
+   "id": "d136cf2c0e",
+   "es": "Escribe en inglés la actividad (un verbo).",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "🏊"
+  },
+  {
+   "id": "e71b9d75a6",
+   "es": "Sé nadar",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "a3166eee08",
+   "es": "Decir lo que sabes o puedes hacer con can.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "97ddadff27",
+   "es": "¿Qué significa «I can swim.»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "459d43ede0",
+   "es": "No sé nadar.",
+   "kinds": [
+    "exercise.option",
+    "exercise.source"
+   ]
+  },
+  {
+   "id": "0cfbcc18a9",
+   "es": "Me gusta nadar.",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c36ea7a8eb",
+   "es": "Quiero nadar.",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b155c4d9f3",
+   "es": "Can es igual para todas las personas y va con el verbo sin to: she can sing.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "can"
+  },
+  {
+   "id": "c4b3f00913",
+   "es": "no sé",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "I ___ cook. (no sé)"
+  },
+  {
+   "id": "9805ceea59",
+   "es": "No sé cocinar.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I can't cook. (no sé)"
+  },
+  {
+   "id": "650b1b14de",
+   "es": "Negativo: can't (cannot) + verbo.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "can't"
+  },
+  {
+   "id": "f3fc4a979c",
+   "es": "Él cocina muy bien.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "He cooks very well."
+  },
+  {
+   "id": "6b1b663f31",
+   "es": "Well describe cómo se hace algo; good describe una cosa: a good cook, he cooks well.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "well"
+  },
+  {
+   "id": "ad9c3100fe",
+   "es": "¿Sabes bailar?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Can you dance? (Sí.)"
+  },
+  {
+   "id": "c130b8c115",
+   "es": "Mi favorito",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "0960d23e95",
+   "es": "Favorite, very much, too y but.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "cad3f63d17",
+   "es": "¿Qué significa «favorite»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "ad334e1094",
+   "es": "Me gusta la música. A mi hermana también.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I like music. My sister likes music too."
+  },
+  {
+   "id": "bce2af9a73",
+   "es": "Too = también, y va al final de la frase.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "too"
+  },
+  {
+   "id": "2324ec8f1f",
+   "es": "¿Cuál es tu deporte favorito?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What is your favorite sport? (fútbol)"
+  },
+  {
+   "id": "20b813685e",
+   "es": "Me gusta mucho bailar.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I like dancing very much."
+  },
+  {
+   "id": "d9fa0c55e0",
+   "es": "En contexto: una publicación sobre hobbies",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "0f2509048b",
+   "es": "Entender una publicación y una conversación sobre gustos.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "6445900ccf",
+   "es": "Vas a leer lo que cuenta Lily sobre sus pasatiempos y a escuchar a dos amigos hablar de lo que les gusta. Fíjate qué les encanta, qué odian y qué saben hacer.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "c77907deab",
+   "es": "No sé jugar al fútbol.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I can't play football."
+  },
+  {
+   "id": "55b8233670",
+   "es": "Mi deporte favorito es la natación.",
+   "kinds": [
+    "example"
+   ],
+   "en": "My favorite sport is swimming."
+  },
+  {
+   "id": "a94e8439a9",
+   "es": "Ahora puedes entender qué le gusta a alguien, qué odia y qué sabe hacer.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "76a2229bc8",
+   "es": "Lily publica algo sobre sus pasatiempos.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u11-hobbies-post"
+  },
+  {
+   "id": "03193b516e",
+   "es": "¿Cuál es el deporte favorito de Lily?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u11-hobbies-post"
+  },
+  {
+   "id": "2179b6824c",
+   "es": "La natación",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u11-hobbies-post"
+  },
+  {
+   "id": "d5ecff5716",
+   "es": "El fútbol",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d2adeb5f82",
+   "es": "El baile",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b1973dfd68",
+   "es": "«My favorite sport is swimming».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u11-hobbies-post"
+  },
+  {
+   "id": "bda84dbca7",
+   "es": "¿Qué no sabe hacer Lily?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u11-hobbies-post"
+  },
+  {
+   "id": "bcfc64a2c9",
+   "es": "Jugar al fútbol",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u11-hobbies-post"
+  },
+  {
+   "id": "36a9f15b41",
+   "es": "Nadar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "991226e6cf",
+   "es": "Cantar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2b9532cb4c",
+   "es": "«I can't play football»; en cambio, nada muy bien y canta todos los días.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u11-hobbies-post"
+  },
+  {
+   "id": "3c19ada8e9",
+   "es": "¿Qué odia Lily?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u11-hobbies-post"
+  },
+  {
+   "id": "f553df24be",
+   "es": "Cocinar",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u11-hobbies-post"
+  },
+  {
+   "id": "2c11a365b2",
+   "es": "Viajar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f531978351",
+   "es": "«I hate cooking!».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u11-hobbies-post"
+  },
+  {
+   "id": "a33b0bf1fb",
+   "es": "Dan y Rose charlan sobre lo que les gusta.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u11-likes-chat"
+  },
+  {
+   "id": "b1259567b8",
+   "es": "Dan",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.a1-u11-likes-chat"
+  },
+  {
+   "id": "e10d850954",
+   "es": "Rose",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.a1-u11-likes-chat"
+  },
+  {
+   "id": "689e455cc7",
+   "es": "¿Qué le encanta a Rose?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u11-likes-chat"
+  },
+  {
+   "id": "84fc9b78d9",
+   "es": "Las películas",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u11-likes-chat"
+  },
+  {
+   "id": "ff34d20f78",
+   "es": "Los juegos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7b4f6752d2",
+   "es": "Rose dice «I love movies!».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u11-likes-chat"
+  },
+  {
+   "id": "5680ea4620",
+   "es": "¿Qué le gusta más a Dan?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u11-likes-chat"
+  },
+  {
+   "id": "1c12677c0a",
+   "es": "«I like movies, but I love games»: los juegos le gustan más.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u11-likes-chat"
+  },
+  {
+   "id": "da643ea72c",
+   "es": "¿Qué sabe hacer Rose?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u11-likes-chat"
+  },
+  {
+   "id": "8249e0d1f3",
+   "es": "Bailar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "fd2d5c59ed",
+   "es": "«No, I can't. But I can dance!».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u11-likes-chat"
+  },
+  {
+   "id": "fcd1f79275",
+   "es": "Lo que te gusta",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "ea5b0e14b8",
+   "es": "Escribe qué te gusta y qué no (puede ser inventado). Usa like, love o hate, y une dos ideas con and o but.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "66cfecb4a5",
+   "es": "Usas like, love o hate",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "0782a0ad56",
+   "es": "Unes dos ideas con and o but",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "e6621e1d72",
+   "es": "Usé like, love o hate.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "332b924480",
+   "es": "Usé and o but.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.a1-u11-hobbies-post": {
+   "setting": "Lily publica algo sobre sus pasatiempos.",
+   "lines": [
+    "I love music. I sing every day.",
+    "I like sport, but I can't play football.",
+    "My favorite sport is swimming. I can swim very well.",
+    "But I hate cooking!"
+   ]
+  },
+  "en.stim.a1-u11-likes-chat": {
+   "setting": "Dan y Rose charlan sobre lo que les gusta.",
+   "lines": [
+    "Dan: Do you like movies?",
+    "Rose: Yes, I love movies! And you?",
+    "Dan: I like movies, but I love games. Can you play football?",
+    "Rose: No, I can't. But I can dance!"
+   ]
+  }
+ }
+}

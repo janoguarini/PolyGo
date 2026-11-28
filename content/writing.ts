@@ -3,6 +3,9 @@ import { EN_A1_WRITING_TASKS } from './en/a1/writing';
 import { EN_A2_WRITING_TASKS } from './en/a2/writing';
 import { EN_B1_WRITING_TASKS } from './en/b1/writing';
 import { EN_B2_WRITING_TASKS } from './en/b2/writing';
+import { EN_FROM_FR_WRITING_TASKS } from './en-src/generated/writing-fr';
+import { EN_FROM_IT_WRITING_TASKS } from './en-src/generated/writing-it';
+import { EN_FROM_PT_WRITING_TASKS } from './en-src/generated/writing-pt';
 import { ES_WRITING_TASKS } from './es/writing';
 import { ES_B1_WRITING_TASKS } from './es/b1';
 import { FR_WRITING_TASKS } from './fr/writing';
@@ -30,6 +33,10 @@ export const WRITING_TASKS: readonly WritingTaskDef[] = [
   // Español rioplatense A1 y A2, con apoyo en inglés (docs/ES_A1_A2.md).
   ...ES_WRITING_TASKS,
   ...ES_B1_WRITING_TASKS,
+  // Inglés para hablantes de portugués, italiano y francés, A1–B1 (docs/EN_MULTI_SOURCE.md), generadas.
+  ...EN_FROM_PT_WRITING_TASKS,
+  ...EN_FROM_IT_WRITING_TASKS,
+  ...EN_FROM_FR_WRITING_TASKS,
 ];
 
 export const writingTask = (id: string) => WRITING_TASKS.find((t) => t.id === id);

@@ -1,0 +1,1286 @@
+{
+ "unit": "a1-u13",
+ "level": "A1",
+ "titleEn": "Letters and personal details",
+ "strings": [
+  {
+   "id": "ca306405cb",
+   "es": "Letras y datos personales",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Letters and personal details"
+  },
+  {
+   "id": "f14e4d8098",
+   "es": "El alfabeto, deletrear y dar datos personales en un formulario.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "1195377935",
+   "es": "Puedes deletrear un nombre y entender un formulario con datos personales.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "c9c328075d",
+   "es": "alfabeto",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.hint",
+    "exercise.pair"
+   ],
+   "en": "alphabet"
+  },
+  {
+   "id": "7b377c3416",
+   "es": "abecedario",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "alphabet"
+  },
+  {
+   "id": "88b8493c1c",
+   "es": "A, B, C: el alfabeto.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "A, B, C: the alphabet."
+  },
+  {
+   "id": "600da5ab12",
+   "es": "letra",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "letter"
+  },
+  {
+   "id": "a9b58d7064",
+   "es": "La A es una letra.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "A is a letter."
+  },
+  {
+   "id": "628dba5af6",
+   "es": "deletrear",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "spell"
+  },
+  {
+   "id": "4bea68035b",
+   "es": "Por favor, deletrea tu nombre.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Please spell your name."
+  },
+  {
+   "id": "859cfc2d3b",
+   "es": "¿cómo se escribe?",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "how do you spell it"
+  },
+  {
+   "id": "8a9f9d293f",
+   "es": "¿cómo se deletrea?",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "how do you spell it"
+  },
+  {
+   "id": "b99bd26246",
+   "es": "¿García? ¿Cómo se escribe?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Garcia? How do you spell it?"
+  },
+  {
+   "id": "d8e40a85ee",
+   "es": "doble",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "double"
+  },
+  {
+   "id": "a6e5255f37",
+   "es": "Ross se escribe R-O-doble S.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Ross is R-O-double S."
+  },
+  {
+   "id": "b3ffdefa44",
+   "es": "nacionalidad",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "nationality"
+  },
+  {
+   "id": "f17244938c",
+   "es": "¿Cuál es tu nacionalidad?",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "What is your nationality?"
+  },
+  {
+   "id": "6e69487bca",
+   "es": "argentino / argentina",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "Argentinian"
+  },
+  {
+   "id": "7ad2d966d1",
+   "es": "argentino",
+   "kinds": [
+    "word.accepted",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "Argentinian"
+  },
+  {
+   "id": "f328cecfa1",
+   "es": "Pedro es argentino.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Pedro is Argentinian."
+  },
+  {
+   "id": "aae4f133c2",
+   "es": "mexicano / mexicana",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "Mexican"
+  },
+  {
+   "id": "f71066dbc0",
+   "es": "mexicano",
+   "kinds": [
+    "word.accepted",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "Mexican"
+  },
+  {
+   "id": "620a557de1",
+   "es": "Somos mexicanos.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We are Mexican."
+  },
+  {
+   "id": "309a271c10",
+   "es": "estadounidense",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "American"
+  },
+  {
+   "id": "725645fdb7",
+   "es": "norteamericano",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "American"
+  },
+  {
+   "id": "32e54dd578",
+   "es": "norteamericana",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "American"
+  },
+  {
+   "id": "dc778bee73",
+   "es": "Tom es estadounidense.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Tom is American."
+  },
+  {
+   "id": "8862d79c17",
+   "es": "El siete es un número.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Seven is a number."
+  },
+  {
+   "id": "ac04ec23c4",
+   "es": "número de teléfono",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "phone number"
+  },
+  {
+   "id": "cb0b183761",
+   "es": "¿Cuál es tu número de teléfono?",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "What is your phone number?"
+  },
+  {
+   "id": "e2f6c0d894",
+   "es": "dirección",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "address"
+  },
+  {
+   "id": "c789bfe345",
+   "es": "domicilio",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "address"
+  },
+  {
+   "id": "ffb9553e61",
+   "es": "¿Cuál es tu dirección?",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "What is your address?"
+  },
+  {
+   "id": "304b5cd07c",
+   "es": "formulario",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "form"
+  },
+  {
+   "id": "42496cbd85",
+   "es": "Formulario: nombre, apellido, nacionalidad.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Form: name, surname, nationality."
+  },
+  {
+   "id": "4cb843ae5d",
+   "es": "nombre de pila",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "first name"
+  },
+  {
+   "id": "aa600fa050",
+   "es": "Mi nombre de pila es Ana.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My first name is Ana."
+  },
+  {
+   "id": "db614558c5",
+   "es": "apellido",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair",
+    "exercise.hint"
+   ],
+   "en": "surname"
+  },
+  {
+   "id": "966409ccb4",
+   "es": "Mi apellido es García.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My surname is Garcia."
+  },
+  {
+   "id": "c2586d2c38",
+   "es": "Edad: veinte.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Age: twenty."
+  },
+  {
+   "id": "6d8bf21663",
+   "es": "El alfabeto",
+   "kinds": [
+    "lesson.title",
+    "exercise.source"
+   ]
+  },
+  {
+   "id": "5007f25f70",
+   "es": "Reconocer las letras del alfabeto inglés por su nombre.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "1e71cc9df7",
+   "es": "Las letras se escriben igual que en español, pero sus nombres suenan distinto: la A se dice «éi», la E «i» y la I «ái». Las que más se confunden son la E y la I, y la G («yi») y la J («yéi»).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "f4338c45dc",
+   "es": "A, E, I (se dicen «éi», «i», «ái»).",
+   "kinds": [
+    "example"
+   ],
+   "en": "A, E, I."
+  },
+  {
+   "id": "5087c90dd3",
+   "es": "Me llamo Ana: A-N-A.",
+   "kinds": [
+    "example"
+   ],
+   "en": "My name is Ana: A-N-A."
+  },
+  {
+   "id": "4eea6062cb",
+   "es": "Reconoces las letras del alfabeto inglés por su nombre.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "4a935aac47",
+   "es": "Distingues de oído la E de la I y la G de la J.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "6b20ab6eee",
+   "es": "¿Qué significa «alphabet»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "fe99a36100",
+   "es": "¿Qué significa «letter»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "6c489f6826",
+   "es": "«éi»",
+   "kinds": [
+    "exercise.pair"
+   ],
+   "en": "A"
+  },
+  {
+   "id": "e436cd01af",
+   "es": "«i»",
+   "kinds": [
+    "exercise.pair"
+   ],
+   "en": "E"
+  },
+  {
+   "id": "a4fc851c45",
+   "es": "«ái»",
+   "kinds": [
+    "exercise.pair"
+   ],
+   "en": "I"
+  },
+  {
+   "id": "9b9e8ddac7",
+   "es": "«uái»",
+   "kinds": [
+    "exercise.pair"
+   ],
+   "en": "Y"
+  },
+  {
+   "id": "01a6701d83",
+   "es": "En inglés la E se dice «i» y la I se dice «ái».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "E"
+  },
+  {
+   "id": "3d54075687",
+   "es": "La G se dice «yi» y la J, «yéi».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "G"
+  },
+  {
+   "id": "d591432793",
+   "es": "A, B, C, D, E",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "A, B, C, D, E"
+  },
+  {
+   "id": "f55fb23470",
+   "es": "Alphabet se escribe con ph, que suena como f.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "alphabet"
+  },
+  {
+   "id": "db5d1031ea",
+   "es": "Letra",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "letter"
+  },
+  {
+   "id": "a58e190bbe",
+   "es": "Deletrear",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "115a8148b6",
+   "es": "Pedir que alguien deletree y entender un nombre deletreado.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "7464d348a7",
+   "es": "Para pedir que te deletreen una palabra se pregunta How do you spell it? (¿cómo se escribe?). Se responde letra por letra, y dos letras iguales seguidas se dicen con double: Ross es R-O-double S.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "1f970b73ee",
+   "es": "¿Cómo se escribe?",
+   "kinds": [
+    "example",
+    "exercise.option",
+    "exercise.translation"
+   ],
+   "en": "How do you spell it?"
+  },
+  {
+   "id": "768f2213d0",
+   "es": "Ross: R-O-doble S.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "Ross: R-O-double S."
+  },
+  {
+   "id": "2d9cc721a8",
+   "es": "Preguntas cómo se escribe algo con How do you spell it?",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "a558ab366e",
+   "es": "Deletreas un nombre y usas double para las letras repetidas.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "923cbf7c00",
+   "es": "¿Qué significa «How do you spell it?»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "3640d8750d",
+   "es": "¿Qué significa «spell»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "3ba5486a28",
+   "es": "escuchar",
+   "kinds": [
+    "exercise.option",
+    "word.translation",
+    "exercise.pair",
+    "word.accepted"
+   ]
+  },
+  {
+   "id": "b47aed6ab5",
+   "es": "contar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8a5c59b0d2",
+   "es": "G se dice «yi» y J, «yéi»; C se dice «si» y S, «es».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "G-A-R-C-I-A"
+  },
+  {
+   "id": "03c743c514",
+   "es": "Dos letras iguales seguidas se dicen con double: double S.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "double"
+  },
+  {
+   "id": "e0f89e8d66",
+   "es": "¿Cómo se escribe tu nombre?",
+   "kinds": [
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "How do you spell your name?"
+  },
+  {
+   "id": "e726e16bb1",
+   "es": "Me llamo Ana. ¿Cómo se escribe?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "My name is Ana. How do you spell it?"
+  },
+  {
+   "id": "cd68bad665",
+   "es": "Se deletrea letra por letra: A-N-A.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "A-N-A"
+  },
+  {
+   "id": "d453166e4e",
+   "es": "Nacionalidades",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "41b75ca53c",
+   "es": "Decir la nacionalidad y preguntar la de otra persona.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "f6aaa7a89e",
+   "es": "El país es Mexico; la nacionalidad, Mexican. En inglés las nacionalidades van siempre con mayúscula: I am Argentinian. Spanish y English son también los nombres de los idiomas. Para preguntarla: What is your nationality?",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "2afe364c40",
+   "es": "Soy mexicano.",
+   "kinds": [
+    "example",
+    "exercise.source"
+   ],
+   "en": "I am Mexican."
+  },
+  {
+   "id": "89639f3f07",
+   "es": "Es de España. Es española.",
+   "kinds": [
+    "example"
+   ],
+   "en": "She is from Spain. She is Spanish."
+  },
+  {
+   "id": "796482b6e5",
+   "es": "Dices la nacionalidad con to be y mayúscula: I am Argentinian.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "992b70a059",
+   "es": "Preguntas la nacionalidad con What is your nationality?",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "b44193575b",
+   "es": "¿Qué significa «nationality»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "aa0059156f",
+   "es": "Soy de Argentina. Soy argentino.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I am from Argentina. I am Argentinian."
+  },
+  {
+   "id": "4f0f80db10",
+   "es": "Argentina es el país; Argentinian, la nacionalidad.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Argentinian"
+  },
+  {
+   "id": "7a52cdeb46",
+   "es": "Tom es de Estados Unidos. Es estadounidense.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Tom is from the United States. He is American."
+  },
+  {
+   "id": "f55a82960b",
+   "es": "¿Qué significa «Spanish»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "ab452d89d3",
+   "es": "Spanish es la nacionalidad (español, española) y también el idioma.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Spanish"
+  },
+  {
+   "id": "6ab79df60f",
+   "es": "What is your…? pide un dato: What is your name? What is your nationality?",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "What is your nationality?"
+  },
+  {
+   "id": "8b39754ded",
+   "es": "Pedro es de Argentina. ¿Es argentino?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Pedro is from Argentina. Is he Argentinian?"
+  },
+  {
+   "id": "004d831d21",
+   "es": "Las nacionalidades van con mayúscula y con to be: I am Mexican.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "I am Mexican."
+  },
+  {
+   "id": "2234d5f86a",
+   "es": "Teléfono, email y dirección",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "814a6d2667",
+   "es": "Entender y pedir un número de teléfono, un correo y una dirección.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "47c81a0afd",
+   "es": "Para pedir un dato se usa What is your…?: What is your phone number? What is your email? What is your address? Los números de teléfono se dicen cifra por cifra. Los datos de esta lección son de Sofia Ruiz, una persona inventada.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "db7517a20d",
+   "es": "¿Cuál es tu correo electrónico?",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "What is your email?"
+  },
+  {
+   "id": "ec6a0258af",
+   "es": "Pides un teléfono, un correo o una dirección con What is your…?",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "22285f931f",
+   "es": "Reconoces un número de teléfono y un correo en un texto.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "d3c604a85e",
+   "es": "¿Qué significa «phone number»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "5db1fd52d3",
+   "es": "correo electrónico",
+   "kinds": [
+    "exercise.option",
+    "word.accepted"
+   ]
+  },
+  {
+   "id": "fc66551ee2",
+   "es": "¿Qué significa «address»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "bb55ba378c",
+   "es": "¿Qué significa «number»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "4741f0bcda",
+   "es": "Sofia: Mi número de teléfono es 555-0142.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Sofia: My phone number is 555-0142."
+  },
+  {
+   "id": "1c24ae924c",
+   "es": "Sofia: Mi correo electrónico es sofia.ruiz@example.com.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Sofia: My email is sofia.ruiz@example.com."
+  },
+  {
+   "id": "9e612b21e7",
+   "es": "Teléfono: 555-0142. ¿Cuál es el número de teléfono de Sofia?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Phone: 555-0142. What is Sofia's phone number?"
+  },
+  {
+   "id": "8e29d72d02",
+   "es": "Completar un formulario",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "9f57f614f9",
+   "es": "Completar y leer un formulario con datos personales.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "3dd6df1011",
+   "es": "Un formulario (form) pide los datos campo por campo: First name es el nombre de pila; Surname, el apellido; Age, la edad, y City, la ciudad. Se completa con el dato solo, sin oración: Surname: Ruiz. Practicas con el formulario de Sofia Ruiz, una persona inventada.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "240fcdb528",
+   "es": "Nombre: Sofia. Apellido: Ruiz.",
+   "kinds": [
+    "example"
+   ],
+   "en": "First name: Sofia. Surname: Ruiz."
+  },
+  {
+   "id": "fcb632191c",
+   "es": "¿Cuál es tu apellido?",
+   "kinds": [
+    "example",
+    "exercise.source"
+   ],
+   "en": "What is your surname?"
+  },
+  {
+   "id": "1a9415b37b",
+   "es": "Entiendes los campos de un formulario: first name, surname, age, city.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "26186909e9",
+   "es": "Sacas de un formulario el dato que te piden.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "be0d5b0f65",
+   "es": "¿Qué significa «surname»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "3ead7ee823",
+   "es": "¿Qué significa «form»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "1404dc7297",
+   "es": "Nombre de pila: Sofia. Apellido: Ruiz.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "First name: Sofia. Surname: Ruiz."
+  },
+  {
+   "id": "03e217795a",
+   "es": "Sofia Ruiz. Edad: 29. Ciudad: Puebla.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Sofia Ruiz. Age: 29. City: Puebla."
+  },
+  {
+   "id": "836a693ddd",
+   "es": "Nombre: Sofia. Apellido: Ruiz. Ciudad: Puebla. País: México. ¿De dónde es Sofia?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "First name: Sofia. Surname: Ruiz. City: Puebla. Country: Mexico. Where is Sofia from?"
+  },
+  {
+   "id": "57f5c2168c",
+   "es": "City: Puebla y Country: Mexico. Sofia es de Puebla, en México.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "She is from Puebla, Mexico."
+  },
+  {
+   "id": "4c90561b33",
+   "es": "Nombre: Sofia. Apellido: Ruiz. Edad: 29. ¿Cuál es el apellido de Sofia?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "First name: Sofia. Surname: Ruiz. Age: 29. What is Sofia's surname?"
+  },
+  {
+   "id": "20609ee254",
+   "es": "Surname es el apellido (Ruiz); First name, el nombre de pila (Sofia).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Ruiz."
+  },
+  {
+   "id": "ac9d69ddc6",
+   "es": "En contexto: registro en un hotel",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "6651073d9d",
+   "es": "Entender una ficha de registro y las preguntas de un recepcionista.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "c5b7fad717",
+   "es": "Vas a leer la ficha de registro de Sofia Ruiz, una huésped inventada, y a escuchar al recepcionista del hotel. En el audio la huésped eres tú: presta atención a qué te pregunta y qué te pide.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "4fe06f96b5",
+   "es": "Ahora puedes entender los datos de una ficha de hotel y lo que te pregunta un recepcionista.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "e2b57fc48d",
+   "es": "La ficha que completa una huésped al llegar a un hotel.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u13-hotel-form"
+  },
+  {
+   "id": "704ead2c8e",
+   "es": "¿Cuál es el apellido de la huésped?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u13-hotel-form"
+  },
+  {
+   "id": "bb866952a8",
+   "es": "Sofia",
+   "kinds": [
+    "exercise.option",
+    "context.speaker"
+   ],
+   "en": "en.stim.a1-u13-hotel-form"
+  },
+  {
+   "id": "14f433117f",
+   "es": "Puebla",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7c8c32faff",
+   "es": "Ruiz",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "730b3b1a00",
+   "es": "«Surname» es el apellido: Ruiz. «First name» es el nombre de pila (Sofia) y «City», la ciudad (Puebla).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u13-hotel-form"
+  },
+  {
+   "id": "93780c5467",
+   "es": "¿Qué indica el 12 de la ficha?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u13-hotel-form"
+  },
+  {
+   "id": "b9762ed55d",
+   "es": "Cuántas noches se queda",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u13-hotel-form"
+  },
+  {
+   "id": "e0d46ec1cd",
+   "es": "El número de su habitación",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "81bc0ec2bc",
+   "es": "Su número de teléfono",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "63baba5746",
+   "es": "Dice «Room: 12»: es la habitación. Las noches son 3 («Nights: 3»).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u13-hotel-form"
+  },
+  {
+   "id": "9af3916102",
+   "es": "¿De dónde viene Sofia?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u13-hotel-form"
+  },
+  {
+   "id": "79069dbc18",
+   "es": "De la habitación 12 del hotel",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u13-hotel-form"
+  },
+  {
+   "id": "9bd0dc2976",
+   "es": "De una ciudad de España",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c2a3181d6a",
+   "es": "De Puebla, en México",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "74dc7b5412",
+   "es": "«City: Puebla» y «Country: Mexico» son su ciudad y su país. En el hotel sólo se queda tres noches.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u13-hotel-form"
+  },
+  {
+   "id": "ef32ed0762",
+   "es": "Eres Sofia Ruiz, la huésped de la ficha. Llegas al hotel y el recepcionista te habla a ti.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u13-reception"
+  },
+  {
+   "id": "d7cda0ca2c",
+   "es": "Mark",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.a1-u13-reception"
+  },
+  {
+   "id": "04ad298bcd",
+   "es": "¿Qué te pregunta primero Mark?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u13-reception"
+  },
+  {
+   "id": "a7709f0723",
+   "es": "Tu nombre de pila",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u13-reception"
+  },
+  {
+   "id": "af499eb911",
+   "es": "Tu número de habitación",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0825435e1f",
+   "es": "Tu apellido",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b2c3a70dec",
+   "es": "«What is your surname, please?»: «surname» es el apellido. Mark sólo dice su propio nombre.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u13-reception"
+  },
+  {
+   "id": "d31a354cb6",
+   "es": "R-U-I-Z",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u13-reception"
+  },
+  {
+   "id": "c09e302f15",
+   "es": "S-O-F-I-A",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "aa94a56e81",
+   "es": "M-E-X-I-C-O",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6a39153ce5",
+   "es": "«How do you spell it?» viene después de pedirte el apellido: «it» es tu apellido, Ruiz, y te pide que lo deletrees.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u13-reception"
+  },
+  {
+   "id": "ad06e007c3",
+   "es": "¿Qué respuesta corresponde a su tercera pregunta?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u13-reception"
+  },
+  {
+   "id": "6b04301210",
+   "es": "I am from Mexico.",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u13-reception"
+  },
+  {
+   "id": "ed705f6277",
+   "es": "I am Sofia Ruiz.",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2009eb59d2",
+   "es": "I am fine, thank you.",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b6c65f711a",
+   "es": "«Where are you from?» pregunta de dónde eres: Sofia es de México.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u13-reception"
+  },
+  {
+   "id": "c317289eba",
+   "es": "¿Qué te pide Mark que hagas?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u13-reception"
+  },
+  {
+   "id": "25325c4f62",
+   "es": "Que escribas tu número de teléfono",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u13-reception"
+  },
+  {
+   "id": "0c6f8b5142",
+   "es": "Que escribas tu correo electrónico",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a3ff2d08a1",
+   "es": "Que deletrees tu nombre de pila",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d5e03fac13",
+   "es": "«Please write your phone number here»: te pide el teléfono, no el correo.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u13-reception"
+  }
+ ],
+ "stimuli": {
+  "en.stim.a1-u13-hotel-form": {
+   "setting": "La ficha que completa una huésped al llegar a un hotel.",
+   "lines": [
+    "First name: Sofia",
+    "Surname: Ruiz",
+    "Nationality: Mexican",
+    "City: Puebla",
+    "Country: Mexico",
+    "Phone: 555-0142",
+    "Email: sofia.ruiz@example.com",
+    "Room: 12",
+    "Nights: 3"
+   ]
+  },
+  "en.stim.a1-u13-reception": {
+   "setting": "Eres Sofia Ruiz, la huésped de la ficha. Llegas al hotel y el recepcionista te habla a ti.",
+   "lines": [
+    "Mark: Good evening, and welcome! My name is Mark.",
+    "Mark: What is your surname, please?",
+    "Mark: Thank you. How do you spell it?",
+    "Mark: And where are you from?",
+    "Mark: OK. Please write your phone number here.",
+    "Mark: Your room is number twelve. Here is your key."
+   ]
+  }
+ }
+}

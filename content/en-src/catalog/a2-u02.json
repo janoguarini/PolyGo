@@ -1,0 +1,782 @@
+{
+ "unit": "a2-u02",
+ "level": "A2",
+ "titleEn": "Past simple: regular verbs",
+ "strings": [
+  {
+   "id": "554ff30c4d",
+   "es": "Pasado simple: verbos regulares",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Past simple: regular verbs"
+  },
+  {
+   "id": "a9e256f682",
+   "es": "Contar lo que hiciste con -ed, did y didn’t.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "afbfa50610",
+   "es": "visitar",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "visit"
+  },
+  {
+   "id": "42884acd7a",
+   "es": "El domingo visitamos un museo.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "We visited a museum on Sunday."
+  },
+  {
+   "id": "f223ae0eb6",
+   "es": "limpiar",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "clean"
+  },
+  {
+   "id": "bbf247fa73",
+   "es": "Ayer limpié la cocina.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I cleaned the kitchen yesterday."
+  },
+  {
+   "id": "efb62f29e8",
+   "es": "caminar",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "walk"
+  },
+  {
+   "id": "3bf3af0591",
+   "es": "andar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "walk"
+  },
+  {
+   "id": "1591ab4c33",
+   "es": "pasear",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "walk"
+  },
+  {
+   "id": "07c9842f98",
+   "es": "Caminamos hasta el parque.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We walked to the park."
+  },
+  {
+   "id": "d6cb6a68bb",
+   "es": "charlar / conversar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "talk"
+  },
+  {
+   "id": "739b81aa9c",
+   "es": "charlar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "talk"
+  },
+  {
+   "id": "187dafa2aa",
+   "es": "conversar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "talk"
+  },
+  {
+   "id": "bcfb0d23fe",
+   "es": "Charlamos dos horas.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "We talked for two hours."
+  },
+  {
+   "id": "e5dcea1ee2",
+   "es": "Anoche escuché música.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I listened to music last night."
+  },
+  {
+   "id": "93984397fb",
+   "es": "llamar",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "call"
+  },
+  {
+   "id": "11371198cc",
+   "es": "llamar por teléfono",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "call"
+  },
+  {
+   "id": "bee75bd033",
+   "es": "Llamó a su mamá.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She called her mother."
+  },
+  {
+   "id": "9414d9d81d",
+   "es": "empezar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "start"
+  },
+  {
+   "id": "96ef4ea0fe",
+   "es": "comenzar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "start"
+  },
+  {
+   "id": "e1fef6aa4a",
+   "es": "La clase empezó a las nueve.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "The class started at nine."
+  },
+  {
+   "id": "a77e805516",
+   "es": "terminar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "finish"
+  },
+  {
+   "id": "6484627d63",
+   "es": "acabar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "finish"
+  },
+  {
+   "id": "e794a2199f",
+   "es": "Terminó su trabajo a las seis.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "He finished his work at six."
+  },
+  {
+   "id": "843981aea1",
+   "es": "llegar",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "arrive"
+  },
+  {
+   "id": "096ea372f5",
+   "es": "Llegamos al hotel a las diez.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "We arrived at the hotel at ten."
+  },
+  {
+   "id": "e702f3b939",
+   "es": "quedarse",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "stay"
+  },
+  {
+   "id": "98bc41589e",
+   "es": "alojarse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "stay"
+  },
+  {
+   "id": "5ba749804c",
+   "es": "quedar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "stay"
+  },
+  {
+   "id": "afbaf8a1e8",
+   "es": "Nos quedamos en un hotel chico.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "We stayed at a small hotel."
+  },
+  {
+   "id": "5d47f96d43",
+   "es": "abrir",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "open"
+  },
+  {
+   "id": "206b98681f",
+   "es": "Abrió la ventana.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She opened the window."
+  },
+  {
+   "id": "65cb34a1d0",
+   "es": "cerrar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "close"
+  },
+  {
+   "id": "ca569c1cbc",
+   "es": "Cerró la puerta.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "He closed the door."
+  },
+  {
+   "id": "94fb693851",
+   "es": "esperar",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "word.accepted"
+   ],
+   "en": "wait"
+  },
+  {
+   "id": "6dcfe7f4e2",
+   "es": "Esperamos el autobús.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "We waited for the bus."
+  },
+  {
+   "id": "a22eadd095",
+   "es": "preguntar / pedir",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "ask"
+  },
+  {
+   "id": "34318baaeb",
+   "es": "preguntar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "ask"
+  },
+  {
+   "id": "16442e8138",
+   "es": "pedir",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "ask"
+  },
+  {
+   "id": "af51d22f16",
+   "es": "Le hizo una pregunta al profesor.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "She asked the teacher a question."
+  },
+  {
+   "id": "18f940660e",
+   "es": "necesitar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "need"
+  },
+  {
+   "id": "2815fe4ff2",
+   "es": "Necesitaba ayuda con la tarea.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I needed help with my homework."
+  },
+  {
+   "id": "52f1b12f95",
+   "es": "intentar / probar",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "try"
+  },
+  {
+   "id": "e0ea7cf2ee",
+   "es": "intentar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "try"
+  },
+  {
+   "id": "1a2bf4b26a",
+   "es": "probar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "try"
+  },
+  {
+   "id": "ff57740275",
+   "es": "Intenté llamarte.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I tried to call you."
+  },
+  {
+   "id": "e5072b324b",
+   "es": "auxiliar del pasado (hizo)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "did"
+  },
+  {
+   "id": "c2d924aa4e",
+   "es": "hizo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "did"
+  },
+  {
+   "id": "bb04968fd4",
+   "es": "hice",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "did"
+  },
+  {
+   "id": "2778357166",
+   "es": "hiciste",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "did"
+  },
+  {
+   "id": "0fcf7f7369",
+   "es": "¿Llamaste a tu mamá?",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Did you call your mother?"
+  },
+  {
+   "id": "2f3ca6fc1c",
+   "es": "no + verbo en pasado",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "didn't"
+  },
+  {
+   "id": "032366f070",
+   "es": "Ayer no miré tele.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I didn't watch TV yesterday."
+  },
+  {
+   "id": "31f920a5c0",
+   "es": "después / entonces",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "then"
+  },
+  {
+   "id": "e73c8c4f3a",
+   "es": "después",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "then"
+  },
+  {
+   "id": "5ac675ba63",
+   "es": "luego",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "then"
+  },
+  {
+   "id": "ed0c4cfaf1",
+   "es": "entonces",
+   "kinds": [
+    "word.accepted",
+    "exercise.option"
+   ],
+   "en": "then"
+  },
+  {
+   "id": "e411241881",
+   "es": "Almorzamos y después caminamos al parque.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We had lunch and then we walked to the park."
+  },
+  {
+   "id": "fc082fd149",
+   "es": "después de",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "after"
+  },
+  {
+   "id": "4b51cf575c",
+   "es": "Después del almuerzo visitamos el museo.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "After lunch, we visited the museum."
+  },
+  {
+   "id": "c87f15e197",
+   "es": "Lo que hiciste ayer",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "9f5cdabe0e",
+   "es": "El pasado regular: verbo + -ed.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "e93998a8b5",
+   "es": "Ayer jugué al fútbol.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Yesterday I played football."
+  },
+  {
+   "id": "edc8fd4c19",
+   "es": "Pasado de los verbos regulares: verbo + -ed (play → played). Es igual para todas las personas.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "played"
+  },
+  {
+   "id": "848cd6efbb",
+   "es": "El año pasado trabajó en un banco.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She worked in a bank last year."
+  },
+  {
+   "id": "61b3f43a25",
+   "es": "¿Qué significa «visit»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "3a9541dafd",
+   "es": "Anoche vieron una película.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "They watched a movie last night."
+  },
+  {
+   "id": "c5281956e5",
+   "es": "Ayer limpié la casa.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I cleaned the house yesterday."
+  },
+  {
+   "id": "d0ae0939f5",
+   "es": "La ortografía del -ed",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "1fb2c6a21e",
+   "es": "study → studied, live → lived, try → tried.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "1a3717b0dd",
+   "es": "estudié (study)",
+   "kinds": [
+    "exercise.hint"
+   ],
+   "en": "studied"
+  },
+  {
+   "id": "3d09e287ca",
+   "es": "Consonante + y → -ied: study → studied.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "studied"
+  },
+  {
+   "id": "82ded357ca",
+   "es": "Viví en México dos años.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I lived in Mexico for two years."
+  },
+  {
+   "id": "4868497725",
+   "es": "Si el verbo termina en -e, sólo se agrega -d: live → lived.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "lived"
+  },
+  {
+   "id": "aa5a09c63e",
+   "es": "Llamó a su amiga.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She called her friend."
+  },
+  {
+   "id": "e3b86b73f9",
+   "es": "intenté (try)",
+   "kinds": [
+    "exercise.hint"
+   ],
+   "en": "tried"
+  },
+  {
+   "id": "c89d8b9348",
+   "es": "Did y didn't",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "b90ae1b705",
+   "es": "Preguntas y negaciones en pasado.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "c3659556cd",
+   "es": "Did + verbo sin -ed: Did you call…? (no «Did you called»).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Did"
+  },
+  {
+   "id": "c3edae5ee0",
+   "es": "¿Te gustó la película?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Did you like the movie?"
+  },
+  {
+   "id": "ab4717d064",
+   "es": "Ella no trabajó a la mañana.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She didn't work in the morning."
+  },
+  {
+   "id": "c11da9d963",
+   "es": "¿Estudiaste ayer?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Did you study yesterday? (sí)"
+  },
+  {
+   "id": "2cc643adbf",
+   "es": "¿Llegaron temprano?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Did they arrive early? (no)"
+  },
+  {
+   "id": "c45600fa27",
+   "es": "No terminé la tarea.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I didn't finish the homework."
+  },
+  {
+   "id": "11af67c100",
+   "es": "Un día de paseo",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "77deecfa4b",
+   "es": "Contar un día en orden: then y after.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "107cf70cc7",
+   "es": "Llegamos al hotel y después caminamos al parque.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "We arrived at the hotel and then we walked to the park."
+  },
+  {
+   "id": "b78aa77373",
+   "es": "After va con algo después (after lunch). Then va solo, para seguir el relato.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "After"
+  },
+  {
+   "id": "98e1051019",
+   "es": "¿Qué significa «arrive»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "045c42e8a7",
+   "es": "salir",
+   "kinds": [
+    "exercise.option",
+    "word.accepted"
+   ]
+  },
+  {
+   "id": "dc3f518fe3",
+   "es": "Caminamos a la estación.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "We walked to the station."
+  },
+  {
+   "id": "62d46625ba",
+   "es": "Hablar y preguntar",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "fb17f6542f",
+   "es": "talk, listen, ask y need en pasado.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "38bd9bf539",
+   "es": "Listen va con to: listen to music.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "listened"
+  },
+  {
+   "id": "c89dff29b9",
+   "es": "Ayer charlé con mi amiga.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I talked to my friend yesterday."
+  }
+ ],
+ "stimuli": {}
+}

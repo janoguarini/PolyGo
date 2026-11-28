@@ -1,0 +1,191 @@
+{
+  "unit": "a2-u08",
+  "strings": {
+    "7497ebe38c": "Projets et futur",
+    "998286cde7": "Des projets avec going to, des prédictions et des promesses avec will.",
+    "7aab2e5136": "aller + verbe (projets)",
+    "7553008230": "aller",
+    "9197521965": "je vais",
+    "bbd0cdd566": "on va",
+    "254d8c1efb": "Je vais rendre visite à ma grand-mère.",
+    "b830ca39c2": "auxiliaire du futur",
+    "ac69da97e9": "Je pense que ce sera amusant.",
+    "2f4721bf56": "ne… pas + verbe au futur",
+    "8f8413b1cc": "Elle ne viendra pas. Elle est très occupée.",
+    "e10d5578d4": "ce soir",
+    "9fae61bf6d": "Elle va étudier ce soir.",
+    "658a7b3f1e": "la semaine prochaine",
+    "f4b2612b54": "semaine prochaine",
+    "d78f5353d6": "la semaine qui vient",
+    "4f166d5bb1": "J’espère que tu viendras la semaine prochaine.",
+    "e646351b70": "le mois prochain",
+    "43d7e74cbf": "mois prochain",
+    "46102549e3": "le mois qui vient",
+    "49c68e478d": "On se voit le mois prochain.",
+    "9b4a1db57d": "l’année prochaine",
+    "1b60ab2e53": "l’an prochain",
+    "a3f9261ed7": "année prochaine",
+    "b1f55e93d8": "L’année prochaine, nous allons voyager en Espagne.",
+    "5f14a26bd0": "bientôt",
+    "3f094e18e9": "À bientôt !",
+    "49c6b0482f": "plus tard",
+    "48ac2dd495": "Je t’appellerai plus tard.",
+    "64879f7d6b": "plan / projet",
+    "e449fcf8f8": "planifier",
+    "bf83bc92b2": "Quel est ton plan pour le week-end ?",
+    "286732e6cd": "peut-être",
+    "bca1c5906f": "peut-être",
+    "7689da0297": "",
+    "0798120d10": "",
+    "55ccf19617": "Peut-être qu’on déménagera l’année prochaine.",
+    "e9588514ac": "probablement",
+    "2a4417b380": "Ils arriveront probablement en retard.",
+    "284673dc01": "sûr / sûre",
+    "b7bc7e4756": "sûr",
+    "22bed3883a": "sûre",
+    "6480ba515a": "Je ne suis pas sûr de la date.",
+    "626843f1ff": "penser / croire",
+    "3a4e1d9e10": "penser",
+    "d9efa28123": "croire",
+    "5df8c31b67": "espérer / j’espère que",
+    "ba6cac3a57": "pourvu que",
+    "2e305924ce": "espoir",
+    "ca37f95d46": "J’espère que tu pourras venir à ma fête.",
+    "770eae3bd2": "inviter",
+    "e47c577ad5": "Tu vas inviter tes amis ?",
+    "bf4787fd99": "déménager / bouger",
+    "601fd3a9f7": "déménager",
+    "ff5c2cf0f1": "bouger",
+    "8654ac95fc": "se déplacer",
+    "5683e5cce8": "Nous allons déménager dans un nouvel appartement.",
+    "f173e195fb": "futur / avenir",
+    "41636f9ec3": "À l’avenir, je veux vivre à l’étranger.",
+    "76b9987407": "décider",
+    "9b96dd5169": "J’ai décidé d’étudier l’anglais tous les jours.",
+    "0aa302ea56": "promettre / promesse",
+    "5763f2ae9d": "promettre",
+    "2b9af20ea7": "promesse",
+    "2f4f3afb20": "Je te promets que je ne serai pas en retard.",
+    "15a9316f95": "Going to : les projets",
+    "86594e8fbd": "Parler de ses projets avec going to.",
+    "e46ca349bc": "Projets : am/is/are + going to + verbe (comme « je vais + verbe »).",
+    "cba8c83964": "Que veut dire « tonight » ?",
+    "f811ef63dd": "Je vais cuisiner ce soir.",
+    "8a59b24f0b": "Qu’est-ce que tu vas faire ?",
+    "db22fd5082": "Questions et négations avec going to.",
+    "1e0a2a01e2": "Demain, je ne vais pas travailler.",
+    "473b71db75": "Tu vas venir à la fête ?",
+    "31004622e5": "Que veut dire « move » ?",
+    "a966d64b71": "regarder un film",
+    "c96bcd5ba4": "Qu’est-ce que tu vas faire le week-end prochain ?",
+    "6cef4ccc10": "Will",
+    "fba0137746": "Prédictions, décisions sur le moment et promesses.",
+    "255a6b02f4": "Will + verbe : prédictions (I think it will…) et décisions prises sur le moment.",
+    "d64ddb1e25": "Le téléphone sonne. — Je réponds !",
+    "94e4269e2e": "Je t’appellerai demain.",
+    "d152787d9f": "Après will, le verbe est à la forme de base : will call.",
+    "f8742937fe": "Que veut dire « think » ?",
+    "f5c649041e": "Je t’aiderai.",
+    "97259ead90": "Peut-être, sûr, bientôt",
+    "f9d5780e47": "À quel point tu es sûr de ce qui va se passer.",
+    "4bffde6d42": "Peut-être que j’irai à la plage. Je ne suis pas sûr.",
+    "9db104b874": "Probably se place après will : will probably arrive.",
+    "9631fe74c5": "Je suis occupé maintenant. Je t’appellerai plus tard.",
+    "d77bf8c295": "À bientôt.",
+    "8b1a710c60": "L’avenir",
+    "5f066c1615": "Rêves, décisions et promesses.",
+    "6574b8a1f8": "I hope… = j’espère que…",
+    "86218d2c64": "Que veut dire « promise » ?",
+    "cfb72aa652": "Tu étudieras l’anglais l’année prochaine ?",
+    "5c3facdeed": "Je ne serai pas en retard.",
+    "63a51bb882": "Tes projets",
+    "24efa35d74": "Raconte tes projets pour la semaine prochaine (tu peux les inventer) et quelque chose qui, selon toi, va arriver.",
+    "761a03e552": "Tu racontes un projet avec going to",
+    "5533d77be9": "Tu fais une prédiction avec will ou won’t",
+    "a3968595c0": "Tu dis quand (next week, tomorrow, tonight, soon…)",
+    "0f9d3294f8": "J’ai raconté un projet avec going to.",
+    "a8d952f82c": "J’ai fait une prédiction avec will.",
+    "71999b2a0d": "J’ai dit quand."
+  },
+  "accepted": {
+    "going to": [
+      "aller",
+      "je vais",
+      "on va",
+      "nous allons"
+    ],
+    "tonight": [
+      "ce soir",
+      "cette nuit"
+    ],
+    "next week": [
+      "semaine prochaine",
+      "la semaine qui vient"
+    ],
+    "next month": [
+      "mois prochain",
+      "le mois qui vient"
+    ],
+    "next year": [
+      "l’an prochain",
+      "année prochaine",
+      "l’année qui vient"
+    ],
+    "soon": [
+      "bientôt",
+      "prochainement"
+    ],
+    "later": [
+      "plus tard"
+    ],
+    "plan": [
+      "plan",
+      "projet",
+      "planifier",
+      "programme"
+    ],
+    "maybe": [
+      "peut-être"
+    ],
+    "probably": [
+      "probablement",
+      "sans doute"
+    ],
+    "sure": [
+      "sûr",
+      "sûre",
+      "certain",
+      "certaine"
+    ],
+    "think": [
+      "penser",
+      "croire",
+      "trouver"
+    ],
+    "hope": [
+      "espérer",
+      "espoir",
+      "j’espère"
+    ],
+    "invite": [
+      "inviter"
+    ],
+    "move": [
+      "déménager",
+      "bouger",
+      "se déplacer"
+    ],
+    "future": [
+      "futur",
+      "avenir"
+    ],
+    "decide": [
+      "décider"
+    ],
+    "promise": [
+      "promettre",
+      "promesse"
+    ]
+  },
+  "notes": "1) will se tradujo casi siempre con el futuro simple francés («Je t’appellerai», «Elle ne viendra pas», «Ce sera amusant») y going to con «aller + infinitif» («Je vais…»): en francés la oposición futur simple / futur proche calca bastante bien will / going to y lleva a la respuesta correcta. La explicación e46ca349bc compara con «je vais + verbe». 2) maybe: «quizás», «tal vez» y «capaz» son todos «peut-être» en francés; «tal vez» y «capaz» (aceptadas) quedaron vacías. El par «quizás / tal vez» y la opción «quizás» quedaron ambos «peut-être» (el validador no los ve en el mismo ejercicio). 3) hope: «ojalá» → «pourvu que» (aceptada) y la explicación 6574b8a1f8 → «I hope… = j’espère que…»; las frases con «Ojalá…» pasaron a «J’espère que…», que lleva mejor a I hope. 4) future: «futur / avenir» (en francés el futuro de la vida es «l’avenir»; «À l’avenir…»). 5) d64ddb1e25 «¡Yo atiendo!» → «Je réponds !» (decisión del momento; en francés el presente es lo natural). 6) Fuente: los en de c96bcd5ba4 «… next weekend? (ver una película)» y cfb72aa652 «Will you study English next year? (sí)» llevan pistas en español dentro del inglés de contexto. 7) Fuente: cfb72aa652 en español dice «¿Vas a estudiar…?» (going to) pero el inglés pide will; en francés se usó el futuro simple «Tu étudieras…», que lleva a will."
+}

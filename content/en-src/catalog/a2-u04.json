@@ -1,0 +1,723 @@
+{
+ "unit": "a2-u04",
+ "level": "A2",
+ "titleEn": "Travel and holidays",
+ "strings": [
+  {
+   "id": "59ca635ca6",
+   "es": "Viajes y vacaciones",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Travel and holidays"
+  },
+  {
+   "id": "eba7cc97df",
+   "es": "Transportes, el aeropuerto, pasajes y lugares para ir de vacaciones.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "a191b1334e",
+   "es": "aeropuerto",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "airport"
+  },
+  {
+   "id": "26c435604d",
+   "es": "¿Dónde está el aeropuerto?",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Where is the airport?"
+  },
+  {
+   "id": "3a7c5b16ac",
+   "es": "avión",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "plane"
+  },
+  {
+   "id": "2d9cb0bd39",
+   "es": "Fuimos a España en avión.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "We went to Spain by plane."
+  },
+  {
+   "id": "76abef6399",
+   "es": "tren",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "train"
+  },
+  {
+   "id": "c2dfe3dd50",
+   "es": "El tren sale a las diez.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The train leaves at ten."
+  },
+  {
+   "id": "929260ad9b",
+   "es": "auto",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "car"
+  },
+  {
+   "id": "8fb3aaa2de",
+   "es": "coche",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "car"
+  },
+  {
+   "id": "8c03df8328",
+   "es": "carro",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "car"
+  },
+  {
+   "id": "77f42ac121",
+   "es": "Voy al trabajo en auto.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I go to work by car."
+  },
+  {
+   "id": "bdba7ac527",
+   "es": "pasaje / entrada",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "ticket"
+  },
+  {
+   "id": "72fced00a1",
+   "es": "pasaje",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "ticket"
+  },
+  {
+   "id": "2860a0d319",
+   "es": "boleto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "ticket"
+  },
+  {
+   "id": "f8de98b7b0",
+   "es": "entrada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "ticket"
+  },
+  {
+   "id": "ecc57f0503",
+   "es": "billete",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "ticket"
+  },
+  {
+   "id": "74d54c14d7",
+   "es": "Compré dos pasajes de tren.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I bought two train tickets."
+  },
+  {
+   "id": "bf90404bfc",
+   "es": "pasaporte",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "passport"
+  },
+  {
+   "id": "c50b334f55",
+   "es": "¿Puedo ver su pasaporte, por favor?",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Can I see your passport, please?"
+  },
+  {
+   "id": "f8d4774c04",
+   "es": "maleta",
+   "kinds": [
+    "word.translation",
+    "word.accepted"
+   ],
+   "en": "suitcase"
+  },
+  {
+   "id": "572266cc64",
+   "es": "valija",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "suitcase"
+  },
+  {
+   "id": "271c99ce0d",
+   "es": "Mi maleta es muy grande.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My suitcase is very big."
+  },
+  {
+   "id": "990bfdda5c",
+   "es": "viaje",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "trip"
+  },
+  {
+   "id": "53f7e998cd",
+   "es": "¿Cómo estuvo tu viaje?",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "How was your trip?"
+  },
+  {
+   "id": "94633901c3",
+   "es": "vacaciones",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "vacation"
+  },
+  {
+   "id": "2d7540470a",
+   "es": "Estábamos de vacaciones en México.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "We were on vacation in Mexico."
+  },
+  {
+   "id": "57b124867e",
+   "es": "playa",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "beach"
+  },
+  {
+   "id": "35d4ce1f37",
+   "es": "Fuimos a la playa.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "We went to the beach."
+  },
+  {
+   "id": "febd11d281",
+   "es": "montaña",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "mountain"
+  },
+  {
+   "id": "6152622739",
+   "es": "Me encantan las montañas.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I love the mountains."
+  },
+  {
+   "id": "51609286fb",
+   "es": "mar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "sea"
+  },
+  {
+   "id": "d9d6c83fe1",
+   "es": "El mar estaba muy azul.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The sea was very blue."
+  },
+  {
+   "id": "2738e1f7f1",
+   "es": "mapa",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "map"
+  },
+  {
+   "id": "393806ef13",
+   "es": "¿Tienes un mapa de la ciudad?",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "Do you have a map of the city?"
+  },
+  {
+   "id": "d5672f037d",
+   "es": "turista",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "tourist"
+  },
+  {
+   "id": "36265408bd",
+   "es": "Hay muchos turistas en el museo.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "There are a lot of tourists in the museum."
+  },
+  {
+   "id": "08e81d4e64",
+   "es": "fotografía",
+   "kinds": [
+    "word.accepted",
+    "word.translation"
+   ],
+   "en": "photo"
+  },
+  {
+   "id": "25942b7a60",
+   "es": "¿Nos sacas una foto?",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Can you take a photo of us?"
+  },
+  {
+   "id": "96fc6b4832",
+   "es": "vuelo",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "flight"
+  },
+  {
+   "id": "f83b29f960",
+   "es": "Nuestro vuelo sale a las seis.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Our flight leaves at six."
+  },
+  {
+   "id": "9da67b0396",
+   "es": "salir / irse",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "leave"
+  },
+  {
+   "id": "c7775e500f",
+   "es": "irse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "leave"
+  },
+  {
+   "id": "bca0201624",
+   "es": "partir",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "leave"
+  },
+  {
+   "id": "77be30d01a",
+   "es": "Salimos del hotel a las nueve.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We left the hotel at nine."
+  },
+  {
+   "id": "59b413f978",
+   "es": "en el exterior",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "abroad"
+  },
+  {
+   "id": "a43acb947a",
+   "es": "al exterior",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "abroad"
+  },
+  {
+   "id": "fbb3c66c0a",
+   "es": "en el extranjero",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "abroad"
+  },
+  {
+   "id": "7d634ac49a",
+   "es": "al extranjero",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "abroad"
+  },
+  {
+   "id": "b3da97e31f",
+   "es": "¿Quieres viajar al exterior?",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Do you want to travel abroad?"
+  },
+  {
+   "id": "f680308d94",
+   "es": "en (medio de transporte)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "by"
+  },
+  {
+   "id": "bb51ff53ec",
+   "es": "Fuimos en tren.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "We went by train."
+  },
+  {
+   "id": "d83541a5fb",
+   "es": "hacer la maleta",
+   "kinds": [
+    "word.translation",
+    "word.accepted"
+   ],
+   "en": "pack"
+  },
+  {
+   "id": "40693a9fb0",
+   "es": "empacar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "pack"
+  },
+  {
+   "id": "dbbbab6ad9",
+   "es": "hacer la valija",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "pack"
+  },
+  {
+   "id": "890f1b0bed",
+   "es": "armar la valija",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "pack"
+  },
+  {
+   "id": "fbb1102154",
+   "es": "Anoche hice la maleta.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I packed my suitcase last night."
+  },
+  {
+   "id": "46c93f5c79",
+   "es": "Medios de transporte",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "d15521d11a",
+   "es": "Avión, tren y auto: by + transporte.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "899d180cb4",
+   "es": "Medio de transporte: by + vehículo sin artículo (by car, by train, by plane).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "by"
+  },
+  {
+   "id": "1c9c343fce",
+   "es": "En el aeropuerto",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "85f2315d6b",
+   "es": "Pasaporte, maleta y vuelo.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "c69fca86c6",
+   "es": "¿Qué significa «flight»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "6a530407d1",
+   "es": "Pasajes y planes",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "323a04f5e8",
+   "es": "Comprar pasajes, salir y viajar al exterior.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "26766601c4",
+   "es": "¿Qué significa «trip»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "31e6895f84",
+   "es": "Salimos del hotel a las nueve y fuimos al aeropuerto.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "We left the hotel at nine and went to the airport."
+  },
+  {
+   "id": "7c19178b29",
+   "es": "Leave es irregular: el pasado es left. Ojo: left también significa izquierda.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "left"
+  },
+  {
+   "id": "00c4285274",
+   "es": "fun",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "How was your trip? (fun)"
+  },
+  {
+   "id": "cafcf84357",
+   "es": "Me gusta viajar al exterior.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I like travelling abroad."
+  },
+  {
+   "id": "4284be6013",
+   "es": "Playa o montaña",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "d1ca5838c4",
+   "es": "Lugares para ir de vacaciones.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "b4ed035bcb",
+   "es": "El año pasado fuimos a la playa y nadamos en el mar.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Last year we went to the beach and swam in the sea."
+  },
+  {
+   "id": "45f50ef9bb",
+   "es": "Estar de vacaciones = be on vacation.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "vacation"
+  },
+  {
+   "id": "2a01219dd8",
+   "es": "Fotos y turistas",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "4e358f6763",
+   "es": "Sacar fotos, usar un mapa y contar el viaje.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "94f33b4e9c",
+   "es": "Sacar una foto = take a photo.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "photo"
+  },
+  {
+   "id": "bc559c55a2",
+   "es": "by car",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "How did you go to the airport? (by car)"
+  },
+  {
+   "id": "7a0e0d1a8b",
+   "es": "¿Cómo fuiste al aeropuerto?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How did you go to the airport? (by car)"
+  },
+  {
+   "id": "5ff2e26462",
+   "es": "Hicimos las maletas y nos fuimos.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "We packed our suitcases and left."
+  },
+  {
+   "id": "08a11aa5ac",
+   "es": "Un mensaje desde tus vacaciones",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "3eb1273e65",
+   "es": "Escríbele a un amigo desde un viaje (real o inventado): dónde estás, cómo llegaste y qué hiciste.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "bd9c23ae72",
+   "es": "Dices dónde estás (I am in… / I’m at the beach…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "5921a46167",
+   "es": "Dices cómo viajaste con by (by plane, by train, by car…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "079efb0513",
+   "es": "Cuentas algo que hiciste, en pasado",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "799a75a7cc",
+   "es": "Dije dónde estoy.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "7dcf3bad72",
+   "es": "Dije cómo viajé (by…).",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "f445fe0ee5",
+   "es": "Conté algo que hice.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {}
+}

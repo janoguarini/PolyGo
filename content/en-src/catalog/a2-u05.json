@@ -1,0 +1,733 @@
+{
+ "unit": "a2-u05",
+ "level": "A2",
+ "titleEn": "Present continuous",
+ "strings": [
+  {
+   "id": "08c0085697",
+   "es": "Presente continuo",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Present continuous"
+  },
+  {
+   "id": "2a5b357fdb",
+   "es": "Contar lo que está pasando ahora: am/is/are + -ing.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "078f91fbc8",
+   "es": "ahora",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "now"
+  },
+  {
+   "id": "da255ce0c2",
+   "es": "ahora mismo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "now"
+  },
+  {
+   "id": "1b079633ee",
+   "es": "Ahora estoy leyendo un libro.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I am reading a book now."
+  },
+  {
+   "id": "b7e18c2977",
+   "es": "en este momento",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "at the moment"
+  },
+  {
+   "id": "1a1af3ae32",
+   "es": "En este momento estoy trabajando.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I am working at the moment."
+  },
+  {
+   "id": "8cc4027411",
+   "es": "todavía",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "word.accepted"
+   ],
+   "en": "still"
+  },
+  {
+   "id": "b92bbbf57f",
+   "es": "aún",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "still"
+  },
+  {
+   "id": "27300d8818",
+   "es": "Todavía estoy esperando el autobús.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I am still waiting for the bus."
+  },
+  {
+   "id": "79b5feb7c7",
+   "es": "mirar (prestar atención)",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "look"
+  },
+  {
+   "id": "cb7387e4cb",
+   "es": "fijarse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "look"
+  },
+  {
+   "id": "0d883cc4be",
+   "es": "¡Mira! Está andando en bici.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Look! He is riding his bike."
+  },
+  {
+   "id": "f198cfa0aa",
+   "es": "Desde mi ventana veo las montañas.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I can see the mountains from my window."
+  },
+  {
+   "id": "867a81954c",
+   "es": "oír",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "hear"
+  },
+  {
+   "id": "4d7387af6c",
+   "es": "Oigo música.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I can hear music."
+  },
+  {
+   "id": "0d6f33a298",
+   "es": "escribir",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "write"
+  },
+  {
+   "id": "c5e6cebbe4",
+   "es": "Ahora está escribiendo un mail.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "He is writing an email now."
+  },
+  {
+   "id": "4533eba61a",
+   "es": "correr",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "run"
+  },
+  {
+   "id": "ad17167b89",
+   "es": "Está corriendo en el parque.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "He is running in the park."
+  },
+  {
+   "id": "706f2912c9",
+   "es": "sentarse",
+   "kinds": [
+    "word.translation",
+    "word.accepted",
+    "exercise.pair"
+   ],
+   "en": "sit"
+  },
+  {
+   "id": "95ba7e3220",
+   "es": "estar sentado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "sit"
+  },
+  {
+   "id": "e3a70be9e3",
+   "es": "Estoy sentado en el sillón.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I am sitting on the sofa."
+  },
+  {
+   "id": "cc0573da8e",
+   "es": "estar de pie",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "stand"
+  },
+  {
+   "id": "a1f7e27ecd",
+   "es": "estar parado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "stand"
+  },
+  {
+   "id": "1763ab798e",
+   "es": "pararse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "stand"
+  },
+  {
+   "id": "cda6536a50",
+   "es": "Dos chicos están parados al lado de la puerta.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Two children are standing next to the door."
+  },
+  {
+   "id": "1bc4661484",
+   "es": "manejar",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "drive"
+  },
+  {
+   "id": "577d624bbe",
+   "es": "conducir",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "drive"
+  },
+  {
+   "id": "e532d04729",
+   "es": "Está manejando al trabajo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She is driving to work."
+  },
+  {
+   "id": "1e44a8189e",
+   "es": "andar (en bici, a caballo)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "ride"
+  },
+  {
+   "id": "fba7fc3bbe",
+   "es": "montar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "ride"
+  },
+  {
+   "id": "bc9333f43c",
+   "es": "Anda en bici todos los fines de semana.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "She rides her bike every weekend."
+  },
+  {
+   "id": "478c75a815",
+   "es": "bici",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "bike"
+  },
+  {
+   "id": "7d443d0e06",
+   "es": "bicicleta",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "bike"
+  },
+  {
+   "id": "0b1ee3952c",
+   "es": "Voy a la escuela en bici.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I go to school by bike."
+  },
+  {
+   "id": "c207c65155",
+   "es": "tomar / llevar",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "take"
+  },
+  {
+   "id": "eb755e0530",
+   "es": "llevar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "take"
+  },
+  {
+   "id": "de1f454e62",
+   "es": "agarrar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "take"
+  },
+  {
+   "id": "da188fbeb6",
+   "es": "Me estoy duchando.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I am taking a shower."
+  },
+  {
+   "id": "ff30b7c184",
+   "es": "hacer / preparar",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "make"
+  },
+  {
+   "id": "350c9835f3",
+   "es": "preparar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "make"
+  },
+  {
+   "id": "a217d0e485",
+   "es": "Mamá está haciendo un pastel.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Mom is making a cake."
+  },
+  {
+   "id": "bb4eb4cc81",
+   "es": "aprender",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "learn"
+  },
+  {
+   "id": "1c644aff86",
+   "es": "Estamos aprendiendo inglés.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We are learning English."
+  },
+  {
+   "id": "1df0606c44",
+   "es": "reír",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "laugh"
+  },
+  {
+   "id": "6ca12c9e04",
+   "es": "reírse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "laugh"
+  },
+  {
+   "id": "9fc020dfdf",
+   "es": "Los chicos se están riendo en el jardín.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "The children are laughing in the garden."
+  },
+  {
+   "id": "950ad7904c",
+   "es": "llorar",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "cry"
+  },
+  {
+   "id": "d69840d6c5",
+   "es": "El bebé está llorando.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The baby is crying."
+  },
+  {
+   "id": "2c130660ee",
+   "es": "sonreír",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "smile"
+  },
+  {
+   "id": "9ebcbef444",
+   "es": "sonrisa",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "smile"
+  },
+  {
+   "id": "c891b934da",
+   "es": "Todos están sonriendo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Everyone is smiling."
+  },
+  {
+   "id": "85200b15b2",
+   "es": "ducha / ducharse",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "shower"
+  },
+  {
+   "id": "185d3736f5",
+   "es": "ducha",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "shower"
+  },
+  {
+   "id": "d107587ece",
+   "es": "ducharse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "shower"
+  },
+  {
+   "id": "418cc0f9dd",
+   "es": "Lo que pasa ahora",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "855b9a93f1",
+   "es": "am/is/are + verbo-ing.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "bfb14fd3a5",
+   "es": "Presente continuo: am/is/are + verbo-ing. Para lo que está pasando ahora.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "reading"
+  },
+  {
+   "id": "94c3d4b7d0",
+   "es": "Ella está cocinando la cena.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She is cooking dinner."
+  },
+  {
+   "id": "adfaec00ce",
+   "es": "Ahora están jugando al fútbol.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "They are playing football now."
+  },
+  {
+   "id": "cf03b9b5d5",
+   "es": "¿Qué significa «now»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "c644aec8ae",
+   "es": "Estoy aprendiendo inglés.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I am learning English."
+  },
+  {
+   "id": "7de1de2055",
+   "es": "La ortografía del -ing",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "fce389ff3b",
+   "es": "write → writing, run → running, sit → sitting.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "a321ed4ed4",
+   "es": "escribiendo",
+   "kinds": [
+    "exercise.hint"
+   ],
+   "en": "writing"
+  },
+  {
+   "id": "31361d92a2",
+   "es": "Si termina en -e, se saca la e: write → writing.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "writing"
+  },
+  {
+   "id": "9f9f7e6604",
+   "es": "corriendo",
+   "kinds": [
+    "exercise.hint"
+   ],
+   "en": "running"
+  },
+  {
+   "id": "0236cc4c54",
+   "es": "Vocal + consonante al final: se duplica la consonante (run → running).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "running"
+  },
+  {
+   "id": "dc452e30cb",
+   "es": "Hoy se está riendo mucho.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She is laughing a lot today."
+  },
+  {
+   "id": "8baa130591",
+   "es": "¿Qué estás haciendo?",
+   "kinds": [
+    "lesson.title",
+    "exercise.translation",
+    "exercise.source"
+   ]
+  },
+  {
+   "id": "3645460bdd",
+   "es": "Preguntas y negaciones con -ing.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "0fa09829d9",
+   "es": "¿Ella está manejando al trabajo?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Is she driving to work?"
+  },
+  {
+   "id": "f1e23c8ac2",
+   "es": "No estoy trabajando. Me estoy duchando.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I'm not working. I'm taking a shower."
+  },
+  {
+   "id": "b7919fc75f",
+   "es": "¿Estás estudiando ahora?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Are you studying now? (sí)"
+  },
+  {
+   "id": "bc855eba28",
+   "es": "¿Está manejando?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Is he driving? (no)"
+  },
+  {
+   "id": "f16b35e0f7",
+   "es": "Ahora o siempre",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "d39eac85e2",
+   "es": "Presente simple (rutinas) o continuo (ahora).",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "6e3420b876",
+   "es": "Normalmente camino al trabajo, pero hoy estoy manejando.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I usually walk to work, but today I am driving."
+  },
+  {
+   "id": "0abffa099c",
+   "es": "Para rutinas (every weekend) se usa el presente simple, no el continuo.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "rides"
+  },
+  {
+   "id": "7eca652fc6",
+   "es": "Look! indica que pasa ahora: presente continuo.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "is riding"
+  },
+  {
+   "id": "1ffe022947",
+   "es": "¿Qué significa «at the moment»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "532a469324",
+   "es": "hace un rato",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6dbbfbab44",
+   "es": "¿Qué ves?",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "6c809ab051",
+   "es": "Describir lo que pasa en una escena.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "d8ef16fe1f",
+   "es": "¿Qué significa «smile»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "e811517959",
+   "es": "See = ver (sin esfuerzo). Look at = mirar algo a propósito.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "see"
+  },
+  {
+   "id": "7322ba7c6f",
+   "es": "Preparar comida es make, no do: make a cake.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "making"
+  },
+  {
+   "id": "e0b6ed420f",
+   "es": "Estoy mirando una foto.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I am looking at a photo."
+  }
+ ],
+ "stimuli": {}
+}

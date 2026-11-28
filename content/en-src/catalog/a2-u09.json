@@ -1,0 +1,794 @@
+{
+ "unit": "a2-u09",
+ "level": "A2",
+ "titleEn": "Health and the body",
+ "strings": [
+  {
+   "id": "0a24a42a29",
+   "es": "Salud y cuerpo",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Health and the body"
+  },
+  {
+   "id": "20871d9880",
+   "es": "Partes del cuerpo, qué te duele y consejos con should.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "f5cbe7d881",
+   "es": "cabeza",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "head"
+  },
+  {
+   "id": "cfff26e228",
+   "es": "Me duele la cabeza.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My head hurts."
+  },
+  {
+   "id": "3c52384d87",
+   "es": "ojo",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "eye"
+  },
+  {
+   "id": "198317ad9e",
+   "es": "Tengo ojos verdes.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I have green eyes."
+  },
+  {
+   "id": "e778b2483d",
+   "es": "oreja / oído",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "ear"
+  },
+  {
+   "id": "92e0206061",
+   "es": "oreja",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "ear"
+  },
+  {
+   "id": "1c0e6c4a33",
+   "es": "oído",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "ear"
+  },
+  {
+   "id": "6b6cc62480",
+   "es": "Me duele el oído.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My ear hurts."
+  },
+  {
+   "id": "7ab2d6e73d",
+   "es": "boca",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "mouth"
+  },
+  {
+   "id": "81c7de5ae5",
+   "es": "Abre la boca, por favor.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Open your mouth, please."
+  },
+  {
+   "id": "3d22a85412",
+   "es": "dientes",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "teeth"
+  },
+  {
+   "id": "9200ad2e1a",
+   "es": "diente",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "teeth"
+  },
+  {
+   "id": "f78dd112ce",
+   "es": "Me lavo los dientes todas las mañanas.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I brush my teeth every morning."
+  },
+  {
+   "id": "3ebf7a087f",
+   "es": "mano",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "hand"
+  },
+  {
+   "id": "b48aa016a6",
+   "es": "Lávate las manos.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Wash your hands."
+  },
+  {
+   "id": "a50f147c46",
+   "es": "brazo",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "arm"
+  },
+  {
+   "id": "9a902c71aa",
+   "es": "Me duele el brazo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My arm hurts."
+  },
+  {
+   "id": "d721685100",
+   "es": "pierna",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "leg"
+  },
+  {
+   "id": "76b86dfd9f",
+   "es": "Tengo las piernas cansadas.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My legs are tired."
+  },
+  {
+   "id": "558211ed72",
+   "es": "pie",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "foot"
+  },
+  {
+   "id": "1f9840803b",
+   "es": "Un pie, dos pies.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "One foot, two feet."
+  },
+  {
+   "id": "784166b890",
+   "es": "espalda",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "back"
+  },
+  {
+   "id": "195a4b3d82",
+   "es": "Me duele la espalda.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My back hurts."
+  },
+  {
+   "id": "595d824756",
+   "es": "panza / estómago",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "stomach"
+  },
+  {
+   "id": "e7ec931fce",
+   "es": "panza",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "stomach"
+  },
+  {
+   "id": "e0dc16b8b4",
+   "es": "estómago",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "stomach"
+  },
+  {
+   "id": "c4d40cfb3a",
+   "es": "barriga",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "stomach"
+  },
+  {
+   "id": "e218a290e6",
+   "es": "Me duele la panza.",
+   "kinds": [
+    "word.example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "My stomach hurts."
+  },
+  {
+   "id": "9cbd508282",
+   "es": "pelo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "hair"
+  },
+  {
+   "id": "f082e74f7a",
+   "es": "cabello",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "hair"
+  },
+  {
+   "id": "224086c8f2",
+   "es": "Tiene el pelo largo y negro.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "She has long black hair."
+  },
+  {
+   "id": "8ca44a92a4",
+   "es": "enfermo / enferma",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "sick"
+  },
+  {
+   "id": "fc20a91979",
+   "es": "enfermo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "sick"
+  },
+  {
+   "id": "65e177faaf",
+   "es": "enferma",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "sick"
+  },
+  {
+   "id": "bcbf55ef6f",
+   "es": "Estoy enfermo. No puedo ir a la escuela.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I am sick. I can't go to school."
+  },
+  {
+   "id": "df5e74fcba",
+   "es": "doler",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "hurt"
+  },
+  {
+   "id": "06517fdb74",
+   "es": "lastimar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "hurt"
+  },
+  {
+   "id": "9df31abadc",
+   "es": "Me duele el pie.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "My foot hurts."
+  },
+  {
+   "id": "f53e563d99",
+   "es": "dolor de cabeza",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "headache"
+  },
+  {
+   "id": "12f47127ad",
+   "es": "fiebre",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "fever"
+  },
+  {
+   "id": "685a60a180",
+   "es": "Tienes fiebre.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "You have a fever."
+  },
+  {
+   "id": "44f298fd25",
+   "es": "médico",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "doctor"
+  },
+  {
+   "id": "2a819e0c56",
+   "es": "médica",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "doctor"
+  },
+  {
+   "id": "72f4be89d6",
+   "es": "doctor",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "doctor"
+  },
+  {
+   "id": "2b2f4b3d52",
+   "es": "doctora",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "doctor"
+  },
+  {
+   "id": "61fd8c7d76",
+   "es": "Deberías ir al médico.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "You should go to the doctor."
+  },
+  {
+   "id": "757a69a5fd",
+   "es": "remedio / medicamento",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "medicine"
+  },
+  {
+   "id": "22521a87b2",
+   "es": "remedio",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "medicine"
+  },
+  {
+   "id": "647bfaaf05",
+   "es": "medicamento",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "medicine"
+  },
+  {
+   "id": "bed9ae713b",
+   "es": "medicina",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "medicine"
+  },
+  {
+   "id": "4bcabd66c8",
+   "es": "Toma este remedio tres veces por día.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Take this medicine three times a day."
+  },
+  {
+   "id": "9eec3585cb",
+   "es": "debería / deberías",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "should"
+  },
+  {
+   "id": "a531348a53",
+   "es": "debería",
+   "kinds": [
+    "word.accepted",
+    "exercise.option"
+   ],
+   "en": "should"
+  },
+  {
+   "id": "62f2650a40",
+   "es": "deberías",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "should"
+  },
+  {
+   "id": "358eff0fcc",
+   "es": "Deberías descansar.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "You should rest."
+  },
+  {
+   "id": "fafde46045",
+   "es": "no debería / no deberías",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "shouldn't"
+  },
+  {
+   "id": "0ec5d43434",
+   "es": "no debería",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "shouldn't"
+  },
+  {
+   "id": "575ee69ffa",
+   "es": "no deberías",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "shouldn't"
+  },
+  {
+   "id": "ad7429990f",
+   "es": "No deberías ir a trabajar.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "You shouldn't go to work."
+  },
+  {
+   "id": "2afc85ae1b",
+   "es": "descansar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.cue"
+   ],
+   "en": "rest"
+  },
+  {
+   "id": "93c64c3e55",
+   "es": "descanso",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "rest"
+  },
+  {
+   "id": "9099bf4262",
+   "es": "Deberías descansar y dormir.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "You should rest and sleep."
+  },
+  {
+   "id": "4c01a3227f",
+   "es": "El cuerpo",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "269f0104f2",
+   "es": "Cabeza, ojos, boca y más.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "5ddfce1dbd",
+   "es": "Hair (el pelo de la cabeza) no lleva -s.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "hair"
+  },
+  {
+   "id": "75e42af981",
+   "es": "Manos, pies y espalda",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "a63ecfdeb3",
+   "es": "Más partes del cuerpo y plurales irregulares.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "6f2f0e3828",
+   "es": "Plurales irregulares: foot → feet, tooth → teeth.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "feet"
+  },
+  {
+   "id": "5c35a7d33a",
+   "es": "¿Qué significa «arm»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "a50d02f5fd",
+   "es": "Tengo la espalda y las piernas cansadas.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "My back and my legs are tired."
+  },
+  {
+   "id": "d344ba8ee1",
+   "es": "¿Qué te pasa?",
+   "kinds": [
+    "lesson.title",
+    "exercise.translation"
+   ]
+  },
+  {
+   "id": "4649f99b03",
+   "es": "Decir qué te duele y cómo estás.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "86b1348407",
+   "es": "Tengo dolor de cabeza. Me duele la cabeza.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I have a headache. My head hurts."
+  },
+  {
+   "id": "54778b1308",
+   "es": "Algo me duele = my … hurts (con -s, como cualquier verbo con it).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "hurts"
+  },
+  {
+   "id": "1bcad53c56",
+   "es": "¿Qué significa «fever»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "1f1e8bb53c",
+   "es": "me duele la cabeza",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What's the matter? (me duele la cabeza)"
+  },
+  {
+   "id": "beaa83df5b",
+   "es": "Should y shouldn't",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "c32f656367",
+   "es": "Dar consejos.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "7e0cc1830a",
+   "es": "Tienes fiebre. Deberías ir al médico.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "You have a fever. You should go to the doctor."
+  },
+  {
+   "id": "5bf806c0d8",
+   "es": "Should + verbo = deberías (un consejo).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "should"
+  },
+  {
+   "id": "4fb3a14059",
+   "es": "No deberías ir a trabajar. Estás enfermo.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "You shouldn't go to work. You are sick."
+  },
+  {
+   "id": "bae7af3359",
+   "es": "En el médico",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "1b6b549918",
+   "es": "Una consulta: síntomas, consejos y remedios.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "4dbacf6aaf",
+   "es": "¿Cómo te sientes hoy?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How do you feel today? (mejor)"
+  },
+  {
+   "id": "a67bb59ad4",
+   "es": "El médico dice que debería descansar.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "The doctor says I should rest."
+  },
+  {
+   "id": "39c2886dcf",
+   "es": "¿Tengo que tomar este remedio? — Sí.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Should I take this medicine? — Yes, you should."
+  },
+  {
+   "id": "129a0d8e8e",
+   "es": "Estoy enfermo.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I am sick."
+  },
+  {
+   "id": "e29cf7ff17",
+   "es": "Un consejo para un amigo",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "5d1a06d3a6",
+   "es": "Tu amigo te escribe que se siente mal. Respóndele: pregunta qué le duele y dale consejos con should y shouldn’t.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "fc3f904b08",
+   "es": "Das un consejo con should",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "c6b67ad009",
+   "es": "Dices algo que no debería hacer con shouldn’t",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "b010eb507c",
+   "es": "Nombras el cuerpo o la salud (head, headache, fever, doctor, medicine…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "44ef4989d5",
+   "es": "Di un consejo con should.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "3192bfeb01",
+   "es": "Usé shouldn’t.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "4916e6d19c",
+   "es": "Hablé de la salud.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {}
+}

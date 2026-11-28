@@ -2,9 +2,8 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { checkAnswer } from '../../shared/answers';
-import { COURSES } from '../../shared/courses';
+import { COURSES, courseLevels } from '../../shared/courses';
 import type { UserAnswer } from '../../shared/exercises';
-import { languageConfig } from '../../shared/languages';
 import { BAND_SIZE, PLACEMENT_VERSION, levelRank } from '../../shared/placement';
 import { PLACEMENT_BANKS } from '../placement/banks.generated';
 import { renderPlacementBanks } from '../placement/render';
@@ -34,13 +33,16 @@ it('banks.generated.ts está al día (npm run content:placement)', () => {
 });
 
 it('hay banco para cada curso con dos o más niveles publicados, y sólo para esos', () => {
-  const expected = COURSES.filter((c) => languageConfig(c.target).levels.length >= 2).map(
+  const expected = COURSES.filter((c) => courseLevels(c).length >= 2).map(
     (c) => c.code,
   );
   expect(Object.keys(PLACEMENT_BANKS).sort()).toEqual(expected.sort());
-  // Hoy: los seis cursos tienen A1 y A2 publicados.
+  // Hoy: los seis cursos de siempre (A1 y A2) y el inglés para hablantes de pt / it / fr (A1–B1).
   expect(Object.keys(PLACEMENT_BANKS).sort()).toEqual([
     'en-from-es',
+    'en-from-fr',
+    'en-from-it',
+    'en-from-pt',
     'es-from-en',
     'fr-from-es',
     'it-from-es',
@@ -51,7 +53,7 @@ it('hay banco para cada curso con dos o más niveles publicados, y sólo para es
 
 describe.each(banks.map((b) => [b.courseCode, b] as const))('%s', (courseCode, bank) => {
   const course = COURSES.find((c) => c.code === courseCode)!;
-  const published = languageConfig(course.target).levels;
+  const published = courseLevels(course);
   const items = bank.bands.flatMap((b) => b.items);
 
   it('versión y niveles: exactamente los publicados, en orden', () => {
@@ -89,7 +91,8 @@ describe.each(banks.map((b) => [b.courseCode, b] as const))('%s', (courseCode, b
       for (const item of band.items) {
         if (band.half === 1) expect(item.unit).toBeLessThanOrEqual(middle);
         else expect(item.unit).toBeGreaterThan(middle);
-        const prefix = item.sourceId.startsWith(`${course.target}.ex.`)
+        // Ids declarados (`<espacio>.ex.`: fr.ex., ept.ex.…): el nivel lo comprueba sourceExercise.
+        const prefix = /^[a-z]{2,3}\.ex\./.test(item.sourceId)
           ? null // ids declarados: el nivel lo comprueba sourceExercise + la unidad
           : `${course.target === 'en' ? '' : `${course.target}-`}${band.level.toLowerCase()}-u`;
         if (prefix) expect(item.sourceId.startsWith(prefix)).toBe(true);

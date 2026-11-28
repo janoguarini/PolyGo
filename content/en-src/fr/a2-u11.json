@@ -1,0 +1,172 @@
+{
+  "unit": "a2-u11",
+  "strings": {
+    "30ecf0c72d": "La météo et les saisons",
+    "8696ae6125": "Le temps qu’il fait, le froid et la chaleur, les saisons et les prévisions.",
+    "f386dfbe60": "temps (météo)",
+    "74db6eaea6": "météo",
+    "90f34221d3": "Quel temps fait-il aujourd’hui ?",
+    "8db59feb4d": "soleil",
+    "4047f11b26": "Il n’y a pas de soleil aujourd’hui.",
+    "fd4fecd90e": "ensoleillé",
+    "e51dce67ff": "ensoleillée",
+    "eb274800a2": "avec du soleil",
+    "a931165fb9": "Il y a du soleil aujourd’hui.",
+    "b952b8f2e4": "pluie / pleuvoir",
+    "61e9b538f9": "pluie",
+    "e96fbc2df1": "pleuvoir",
+    "2c8a681b29": "Il pleut. Prends un parapluie.",
+    "0191cafdfc": "nuageux",
+    "865105b8fd": "nuageuse",
+    "82fb78ffb5": "Aujourd’hui, le temps est nuageux.",
+    "f8bd071697": "venteux",
+    "4fa365fb58": "avec du vent",
+    "e423a2e22d": "venteuse",
+    "27da4f314c": "Il fait froid et il y a du vent.",
+    "81f81eb2e3": "neige / neiger",
+    "158ebdd116": "neige",
+    "f2d6de36d7": "neiger",
+    "275ef3cb80": "Ici, il neige beaucoup en hiver.",
+    "33be749e95": "orage / tempête",
+    "debc93a194": "Il y a eu un gros orage hier soir.",
+    "cdc0b78149": "ciel",
+    "6114c97586": "Aujourd’hui, le ciel est très bleu.",
+    "1aad41df28": "froid / froide",
+    "fa54a38a73": "froid",
+    "57424dfbe6": "froide",
+    "e209319f9f": "Il fait très froid. Mets ta veste.",
+    "d193ce5f28": "chaud / brûlant",
+    "bd1eec4a7d": "chaleur",
+    "8bd3ae2dfa": "brûlant",
+    "cf4ccfb2bb": "chaud",
+    "efe1af866a": "chaude",
+    "3d3b890e30": "En été, il fait très chaud.",
+    "66551729df": "doux / tiède",
+    "b1288d70db": "doux",
+    "c499744d81": "tempéré",
+    "c522489a8d": "douce",
+    "e3c5da0682": "tiède",
+    "f82741289b": "La semaine prochaine, il fera doux.",
+    "a1083493cf": "degré",
+    "4353d29998": "degrés",
+    "7c76571dc9": "Il fait 30 degrés aujourd’hui !",
+    "e1534634f2": "parapluie",
+    "2954fdc91b": "Prends un parapluie.",
+    "251f80756d": "saison",
+    "b9e06f6279": "Ma saison préférée, c’est le printemps.",
+    "a62ee5ab3e": "printemps",
+    "22cf3c54a0": "J’adore le printemps.",
+    "50a35e862d": "été",
+    "293b2033c4": "automne",
+    "9326dad171": "J’adore l’automne.",
+    "25cab50dac": "hiver",
+    "870bc1e120": "En hiver, il fait froid.",
+    "777032213b": "En Argentine, juillet est un mois froid.",
+    "df1c3efc33": "Quel temps fait-il ?",
+    "ef19e08bf2": "Soleil, nuages et pluie.",
+    "a06db5e63a": "What's the weather like? = Quel temps fait-il ?",
+    "e446e366a7": "Aujourd’hui, le temps est nuageux. Il y a beaucoup de nuages.",
+    "8f0b111d57": "Froid et chaud",
+    "4bd0594939": "La température et ce que tu ressens.",
+    "1f042ea785": "Mets ta veste. Il fait très froid.",
+    "1e9c5a50e3": "Pour la météo, on utilise it is : it is cold = il fait froid.",
+    "08079639eb": "J’ai chaud. Je peux ouvrir la fenêtre ?",
+    "7a3d4fdbc9": "Avoir chaud = be hot (I am hot), pas have. Avoir froid = be cold.",
+    "8b3460d1b7": "Que veut dire « warm » ?",
+    "5e02f3faf8": "J’ai froid.",
+    "473c39fb2b": "Pluie, neige et orage",
+    "d06720ec58": "Le mauvais temps.",
+    "8f235ca51a": "Pleuvoir = rain. « Il pleut » (en ce moment) = it is raining.",
+    "4f6e6d1144": "Les saisons",
+    "b3adeb8223": "Le printemps, l’été, l’automne et l’hiver.",
+    "9a256957c0": "Avec les saisons, on utilise in : in summer (en été).",
+    "8d651f653f": "Que veut dire « winter » ?",
+    "e83664255c": "summer",
+    "35c3176145": "Quelle est ta saison préférée ?",
+    "abe2a8c58a": "Les prévisions",
+    "69c29adfff": "Le temps qu’il a fait et celui qu’il va faire.",
+    "0380f5dcee": "Demain, il y aura beaucoup de soleil.",
+    "d01d162c6a": "Il n’y a pas de soleil aujourd’hui. Le temps est nuageux.",
+    "1f6ec8752d": "Hier, il a plu toute la journée.",
+    "91f7a67ad8": "il fait froid",
+    "86bf3099f5": "Demain, il pleuvra."
+  },
+  "accepted": {
+    "weather": [
+      "temps",
+      "météo"
+    ],
+    "sun": [
+      "soleil"
+    ],
+    "sunny": [
+      "ensoleillé",
+      "ensoleillée",
+      "beau"
+    ],
+    "rain": [
+      "pluie",
+      "pleuvoir"
+    ],
+    "cloudy": [
+      "nuageux",
+      "nuageuse",
+      "couvert"
+    ],
+    "windy": [
+      "venteux",
+      "venteuse",
+      "avec du vent"
+    ],
+    "snow": [
+      "neige",
+      "neiger"
+    ],
+    "storm": [
+      "orage",
+      "tempête"
+    ],
+    "sky": [
+      "ciel"
+    ],
+    "cold": [
+      "froid",
+      "froide"
+    ],
+    "hot": [
+      "chaud",
+      "chaude",
+      "brûlant",
+      "chaleur"
+    ],
+    "warm": [
+      "doux",
+      "douce",
+      "tiède",
+      "tempéré"
+    ],
+    "degree": [
+      "degré",
+      "degrés"
+    ],
+    "umbrella": [
+      "parapluie"
+    ],
+    "season": [
+      "saison"
+    ],
+    "spring": [
+      "printemps"
+    ],
+    "summer": [
+      "été"
+    ],
+    "fall": [
+      "automne"
+    ],
+    "winter": [
+      "hiver"
+    ]
+  },
+  "notes": "1) hot → «chaud / brûlant» y warm → «doux / tiède» para que los pares froid/chaud/doux sigan distintos; «cálido» (aceptada de warm) → «tempéré», «caliente» → «brûlant», «calor» → «chaleur». 2) La explicación 7a3d4fdbc9 se adaptó: el francés, como el español, usa «avoir chaud / avoir froid», así que se advierte que en inglés es be, no have. 3) 8f235ca51a: «Il pleut» es presente simple en francés pero equivale a it is raining (continuo); se agregó «(en ce moment)». 4) storm: «tormenta» → «orage / tempête» (orage = con rayos, tempête = viento fuerte). 5) Se mantuvo «En Argentine, juillet est un mois froid» (lugar = contexto). 6) Problema del catálogo: 0380f5dcee es «Mañana va a estar soleado.» pero en=«It will be sunny tomorrow, with a lot of sun.» (redundante); se tradujo «Demain, il y aura beaucoup de soleil.» con futuro simple (lleva a will); revisar. También 35c3176145 en=«What is your favorite season? (summer)» y 91f7a67ad8 «(hace frío)» traen anotaciones entre paréntesis (la de summer queda igual; «hace frío» → «il fait froid»)."
+}

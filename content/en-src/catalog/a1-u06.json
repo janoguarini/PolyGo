@@ -1,0 +1,1120 @@
+{
+ "unit": "a1-u06",
+ "level": "A1",
+ "titleEn": "Home and rooms",
+ "strings": [
+  {
+   "id": "44d9fb3aad",
+   "es": "Casa y habitaciones",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Home and rooms"
+  },
+  {
+   "id": "20358eb823",
+   "es": "Describir tu casa, sus habitaciones y dónde están las cosas.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "b3813027ed",
+   "es": "casa",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "word.accepted"
+   ],
+   "en": "house"
+  },
+  {
+   "id": "4233ab73ae",
+   "es": "Mi casa es grande.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My house is big."
+  },
+  {
+   "id": "cfa3b5b6e3",
+   "es": "apartamento",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "apartment"
+  },
+  {
+   "id": "28a5a7578a",
+   "es": "piso",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "apartment"
+  },
+  {
+   "id": "fc703d255d",
+   "es": "departamento",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "apartment"
+  },
+  {
+   "id": "10412ecdf6",
+   "es": "Vivimos en un apartamento.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We live in an apartment."
+  },
+  {
+   "id": "b61071ff60",
+   "es": "habitación",
+   "kinds": [
+    "word.translation",
+    "word.accepted",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "room"
+  },
+  {
+   "id": "b1d9f25b1b",
+   "es": "cuarto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "room"
+  },
+  {
+   "id": "c71b8539a9",
+   "es": "ambiente",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "room"
+  },
+  {
+   "id": "06f86ddef6",
+   "es": "La habitación es chica.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The room is small."
+  },
+  {
+   "id": "91ca29a365",
+   "es": "cocina",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option",
+    "exercise.hint"
+   ],
+   "en": "kitchen"
+  },
+  {
+   "id": "f648dc8c96",
+   "es": "La cocina es blanca.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The kitchen is white."
+  },
+  {
+   "id": "cffd67ea70",
+   "es": "baño",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "bathroom"
+  },
+  {
+   "id": "3b84beb896",
+   "es": "¿Dónde está el baño?",
+   "kinds": [
+    "word.example",
+    "exercise.option"
+   ],
+   "en": "Where is the bathroom?"
+  },
+  {
+   "id": "cbb0e40889",
+   "es": "dormitorio",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "bedroom"
+  },
+  {
+   "id": "4684e9c5cb",
+   "es": "Mi dormitorio es azul.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My bedroom is blue."
+  },
+  {
+   "id": "e0c7f694ff",
+   "es": "sala de estar",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "living room"
+  },
+  {
+   "id": "5a85136610",
+   "es": "living / sala de estar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "living room"
+  },
+  {
+   "id": "a93fcdf7db",
+   "es": "living",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "living room"
+  },
+  {
+   "id": "d3cb0b473d",
+   "es": "sala",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "living room"
+  },
+  {
+   "id": "5270985a34",
+   "es": "salón",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "living room"
+  },
+  {
+   "id": "56703db09c",
+   "es": "El sillón está en la sala.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The sofa is in the living room."
+  },
+  {
+   "id": "5bdd32b21b",
+   "es": "puerta",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "door"
+  },
+  {
+   "id": "4850208503",
+   "es": "La puerta es roja.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The door is red."
+  },
+  {
+   "id": "67a6ddae1c",
+   "es": "ventana",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.hint"
+   ],
+   "en": "window"
+  },
+  {
+   "id": "180783357e",
+   "es": "La ventana es grande.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The window is big."
+  },
+  {
+   "id": "8edc043893",
+   "es": "cama",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "bed"
+  },
+  {
+   "id": "afa4c71524",
+   "es": "La cama está en el dormitorio.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The bed is in the bedroom."
+  },
+  {
+   "id": "73e29454bd",
+   "es": "mesa",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "table"
+  },
+  {
+   "id": "786f12233d",
+   "es": "Las llaves están sobre la mesa.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "The keys are on the table."
+  },
+  {
+   "id": "80d7e5aa33",
+   "es": "silla",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.hint"
+   ],
+   "en": "chair"
+  },
+  {
+   "id": "82af02dc2f",
+   "es": "Hay cuatro sillas.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "There are four chairs."
+  },
+  {
+   "id": "23afaf2a17",
+   "es": "sillón / sofá",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "sofa"
+  },
+  {
+   "id": "dca08d15c7",
+   "es": "sofá",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "sofa"
+  },
+  {
+   "id": "a6c654be62",
+   "es": "sillón",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "sofa"
+  },
+  {
+   "id": "779c8a8cf2",
+   "es": "El gato está en el sillón.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The cat is on the sofa."
+  },
+  {
+   "id": "e240dea5b6",
+   "es": "jardín",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "garden"
+  },
+  {
+   "id": "617e2ca8be",
+   "es": "Nuestra casa tiene jardín.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "Our house has a garden."
+  },
+  {
+   "id": "4b3e3940be",
+   "es": "hay (singular)",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "there is"
+  },
+  {
+   "id": "4e30ea25cd",
+   "es": "hay",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "there is"
+  },
+  {
+   "id": "d6d6cedaff",
+   "es": "Hay una cama en la habitación.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "There is a bed in the room."
+  },
+  {
+   "id": "f1c8353595",
+   "es": "hay (plural)",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "there are"
+  },
+  {
+   "id": "d83c34033a",
+   "es": "Hay dos baños.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "There are two bathrooms."
+  },
+  {
+   "id": "381277087e",
+   "es": "en / dentro de",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "in"
+  },
+  {
+   "id": "dbd3a49d0d",
+   "es": "en",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "in"
+  },
+  {
+   "id": "c58756cb25",
+   "es": "dentro de",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "in"
+  },
+  {
+   "id": "ce94b2da22",
+   "es": "El teléfono está en el bolso.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The phone is in the bag."
+  },
+  {
+   "id": "0f2c366bee",
+   "es": "sobre / encima de",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "on"
+  },
+  {
+   "id": "6919d6353a",
+   "es": "sobre",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "on"
+  },
+  {
+   "id": "7c7227e4e1",
+   "es": "encima de",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "on"
+  },
+  {
+   "id": "26f15ecf4b",
+   "es": "El libro está sobre la mesa.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "The book is on the table."
+  },
+  {
+   "id": "2793fdc348",
+   "es": "debajo de",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "under"
+  },
+  {
+   "id": "6dccbf0067",
+   "es": "abajo de",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "under"
+  },
+  {
+   "id": "d6f7133401",
+   "es": "bajo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "under"
+  },
+  {
+   "id": "fb15af0b90",
+   "es": "El bolso está debajo de la silla.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "The bag is under the chair."
+  },
+  {
+   "id": "e7d576c962",
+   "es": "al lado de",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "next to"
+  },
+  {
+   "id": "ba7b85f1f1",
+   "es": "junto a",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "next to"
+  },
+  {
+   "id": "59b8bbbc01",
+   "es": "La cocina está al lado del baño.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "The kitchen is next to the bathroom."
+  },
+  {
+   "id": "59fcbdb13f",
+   "es": "Mi casa",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "37d6f2587d",
+   "es": "Casa, apartamento, puerta, ventana y jardín.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "bc71278ced",
+   "es": "¿Qué significa «apartment»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "cf6dca1f5f",
+   "es": "¿Qué significa «window»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "9af2ef9426",
+   "es": "Las habitaciones",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "e4d9412a59",
+   "es": "Nombrar las habitaciones de una casa.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "2f6d6c30fa",
+   "es": "¿Qué significa «living room»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "361a7adf63",
+   "es": "¿Qué significa «Where is the bathroom?»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "2b4ff8a751",
+   "es": "¿Dónde está la cocina?",
+   "kinds": [
+    "exercise.option",
+    "context.question"
+   ]
+  },
+  {
+   "id": "3f16d5fbe6",
+   "es": "¿Cómo es el baño?",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2d695df386",
+   "es": "¿Hay un baño?",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b0af18c034",
+   "es": "Mi dormitorio es chico.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "My bedroom is small."
+  },
+  {
+   "id": "0af186e187",
+   "es": "Muebles",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "41a195d62a",
+   "es": "Cama, mesa, silla y sillón.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "47f8b8aab9",
+   "es": "¿Qué significa «table»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "99e791c442",
+   "es": "¿Qué significa «sofa»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "80257131b4",
+   "es": "La mesa es blanca.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "The table is white."
+  },
+  {
+   "id": "f407d64543",
+   "es": "Hay una cama",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "78f5471fb6",
+   "es": "Usar there is y there are.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "0b55a0ee77",
+   "es": "¿Qué significa «there is»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "c0bc1e08f9",
+   "es": "es",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d898de0fb9",
+   "es": "está",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ef88ba93a6",
+   "es": "There is + una cosa. There are + varias cosas.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "is"
+  },
+  {
+   "id": "480ad09198",
+   "es": "Hay dos baños en mi casa.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "There are two bathrooms in my house."
+  },
+  {
+   "id": "f9ad905f4b",
+   "es": "Para decir \"hay\" no se usa have: There are two bathrooms.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "There are"
+  },
+  {
+   "id": "b8de5cb004",
+   "es": "Hay tres habitaciones.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "There are three rooms."
+  },
+  {
+   "id": "91b3810737",
+   "es": "Hay una mesa en la cocina.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "There is a table in the kitchen."
+  },
+  {
+   "id": "d4735e3a26",
+   "es": "2",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "How many bedrooms are there? (2)"
+  },
+  {
+   "id": "ea6ed36d57",
+   "es": "¿Cuántos dormitorios hay?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How many bedrooms are there? (2)"
+  },
+  {
+   "id": "f4e6428f75",
+   "es": "Mira la habitación y escribe qué hay, con there is o there are.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "🛏️ 🛏️ 🪑"
+  },
+  {
+   "id": "8ba90dcabe",
+   "es": "There are + plural (two beds); there is + singular (a chair).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "There are two beds and a chair."
+  },
+  {
+   "id": "e045043ef7",
+   "es": "¿Dónde está?",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "5f3be43e72",
+   "es": "Ubicar cosas con in, on, under y next to.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "d35d0fa78d",
+   "es": "El teléfono está dentro del bolso.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "The phone is in the bag."
+  },
+  {
+   "id": "f72f188043",
+   "es": "Next to = al lado de. Siempre con to: next to the door.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "next"
+  },
+  {
+   "id": "722583b512",
+   "es": "La taza está al lado de la computadora.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "The cup is next to the computer."
+  },
+  {
+   "id": "7f56ffeb74",
+   "es": "Las llaves están debajo de la cama.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "The keys are under the bed."
+  },
+  {
+   "id": "f8d3abd305",
+   "es": "Mira la escena y escribe dónde está el libro.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "📕\n🛏️"
+  },
+  {
+   "id": "3237194ac6",
+   "es": "Arriba de algo, tocándolo: on. The book is on the bed.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "The book is on the bed."
+  },
+  {
+   "id": "4187b15265",
+   "es": "Mira la escena y escribe dónde está la llave.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "🪑\n🔑"
+  },
+  {
+   "id": "b019f6d487",
+   "es": "Debajo: under. The key is under the chair.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "The key is under the chair."
+  },
+  {
+   "id": "ab22f28b2f",
+   "es": "En contexto: un apartamento en alquiler",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "5b7402441e",
+   "es": "Entender un aviso de alquiler y dónde está cada cosa.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "beefbf0592",
+   "es": "Vas a leer un aviso de un apartamento y a escuchar a la dueña mostrarlo. Busca cuántas habitaciones hay y dónde está cada cosa.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "f1d4d25aaf",
+   "es": "Hay dos dormitorios.",
+   "kinds": [
+    "example"
+   ],
+   "en": "There are two bedrooms."
+  },
+  {
+   "id": "77245e03d5",
+   "es": "Ahora puedes entender qué tiene una casa y dónde está cada cosa.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "c4b2b879ca",
+   "es": "Un aviso de un apartamento en alquiler.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u06-rental-ad"
+  },
+  {
+   "id": "c24d7a494d",
+   "es": "¿Cuántos dormitorios tiene el apartamento?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u06-rental-ad"
+  },
+  {
+   "id": "0b796e9af3",
+   "es": "«There are two bedrooms».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u06-rental-ad"
+  },
+  {
+   "id": "bdc2f34cf0",
+   "es": "¿Qué mueble hay en la sala?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u06-rental-ad"
+  },
+  {
+   "id": "61c2d8ae8d",
+   "es": "Una cama",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u06-rental-ad"
+  },
+  {
+   "id": "e2cb7fa569",
+   "es": "Una mesa",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4bc74138b0",
+   "es": "Un sofá",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3721a1a852",
+   "es": "«There is a sofa in the living room».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u06-rental-ad"
+  },
+  {
+   "id": "d165f66041",
+   "es": "¿Tiene jardín?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u06-rental-ad"
+  },
+  {
+   "id": "e6ce8031dc",
+   "es": "Sí, uno grande",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u06-rental-ad"
+  },
+  {
+   "id": "11e0763fe9",
+   "es": "Sí, uno chico",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6026975bbd",
+   "es": "No, no tiene",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "dd0bd73098",
+   "es": "«There is no garden»: no tiene.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u06-rental-ad"
+  },
+  {
+   "id": "50f6a1a9fe",
+   "es": "Nora le muestra el apartamento a Sara.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u06-house-tour"
+  },
+  {
+   "id": "c8ccf6c971",
+   "es": "Nora",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.a1-u06-house-tour"
+  },
+  {
+   "id": "53b1fb4462",
+   "es": "Sara",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.a1-u06-house-tour"
+  },
+  {
+   "id": "9bf0c29a59",
+   "es": "Al lado del dormitorio",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u06-house-tour"
+  },
+  {
+   "id": "02653bcabf",
+   "es": "Al lado de la sala",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e304b22bfc",
+   "es": "Al lado del baño",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3603de4412",
+   "es": "«The kitchen is next to the living room».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u06-house-tour"
+  },
+  {
+   "id": "63b317ab22",
+   "es": "¿Qué quiere saber Sara primero?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u06-house-tour"
+  },
+  {
+   "id": "515c0cbf87",
+   "es": "Dónde está el baño",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u06-house-tour"
+  },
+  {
+   "id": "0fc3a73cf5",
+   "es": "Cuántos dormitorios hay",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "cc6125f4d9",
+   "es": "Dónde está el jardín",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e9bbfe33c0",
+   "es": "Su primera pregunta es «Where is the bathroom?».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u06-house-tour"
+  },
+  {
+   "id": "79e6218227",
+   "es": "¿Dónde están las llaves?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u06-house-tour"
+  },
+  {
+   "id": "c998cba643",
+   "es": "Sobre la mesa de la cocina",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u06-house-tour"
+  },
+  {
+   "id": "5d35a83f26",
+   "es": "Debajo de la mesa",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1177e7dd45",
+   "es": "En el dormitorio",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b8d746c9a7",
+   "es": "«They are on the table, in the kitchen».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u06-house-tour"
+  }
+ ],
+ "stimuli": {
+  "en.stim.a1-u06-rental-ad": {
+   "setting": "Un aviso de un apartamento en alquiler.",
+   "lines": [
+    "Small apartment.",
+    "There are two bedrooms and one bathroom.",
+    "There is a big kitchen.",
+    "There is a sofa in the living room.",
+    "There is no garden."
+   ]
+  },
+  "en.stim.a1-u06-house-tour": {
+   "setting": "Nora le muestra el apartamento a Sara.",
+   "lines": [
+    "Nora: This is the living room. The kitchen is next to the living room.",
+    "Sara: Where is the bathroom?",
+    "Nora: The bathroom is next to the bedroom.",
+    "Sara: And the keys?",
+    "Nora: They are on the table, in the kitchen."
+   ]
+  }
+ }
+}

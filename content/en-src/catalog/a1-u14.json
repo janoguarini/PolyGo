@@ -1,0 +1,1488 @@
+{
+ "unit": "a1-u14",
+ "level": "A1",
+ "titleEn": "Prices and shopping",
+ "strings": [
+  {
+   "id": "71e774b5df",
+   "es": "Precios y compras",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Prices and shopping"
+  },
+  {
+   "id": "a608a9de33",
+   "es": "Los números hasta el 100, los precios y cómo pedir en una tienda.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "92adb46041",
+   "es": "Puedes entender precios y lo que se pide en una tienda.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "37468ef39d",
+   "es": "treinta",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "thirty"
+  },
+  {
+   "id": "d4f6147c25",
+   "es": "Treinta estudiantes.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Thirty students."
+  },
+  {
+   "id": "5827ef592b",
+   "es": "cuarenta",
+   "kinds": [
+    "word.translation",
+    "exercise.hint"
+   ],
+   "en": "forty"
+  },
+  {
+   "id": "1679adc5c0",
+   "es": "Mi papá tiene cuarenta años.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My father is forty."
+  },
+  {
+   "id": "4a09b38890",
+   "es": "cincuenta",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "fifty"
+  },
+  {
+   "id": "ca94efcfea",
+   "es": "Cincuenta libros.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Fifty books."
+  },
+  {
+   "id": "6a1637820b",
+   "es": "sesenta",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "sixty"
+  },
+  {
+   "id": "20c9bf8bbf",
+   "es": "Mi abuelo tiene sesenta años.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My grandfather is sixty."
+  },
+  {
+   "id": "9285ffb018",
+   "es": "setenta",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "seventy"
+  },
+  {
+   "id": "de2a5985ff",
+   "es": "Setenta tazas.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Seventy cups."
+  },
+  {
+   "id": "2d00be65c1",
+   "es": "ochenta",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "eighty"
+  },
+  {
+   "id": "a4082a2c16",
+   "es": "Mi abuela tiene ochenta años.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My grandmother is eighty."
+  },
+  {
+   "id": "f83f490a66",
+   "es": "noventa",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "ninety"
+  },
+  {
+   "id": "553e4c3517",
+   "es": "La computadora cuesta noventa dólares.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The computer is ninety dollars."
+  },
+  {
+   "id": "05a3aa49f9",
+   "es": "cien",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "one hundred"
+  },
+  {
+   "id": "aeb3b917c9",
+   "es": "ciento",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "one hundred"
+  },
+  {
+   "id": "096e1e7b2b",
+   "es": "Cien dólares.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "One hundred dollars."
+  },
+  {
+   "id": "6d1f29a442",
+   "es": "dólar",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "dollar"
+  },
+  {
+   "id": "0eb913d75a",
+   "es": "El libro cuesta diez dólares.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The book is ten dollars."
+  },
+  {
+   "id": "6719e15337",
+   "es": "centavo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "cent"
+  },
+  {
+   "id": "99dc70694e",
+   "es": "Cincuenta centavos.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Fifty cents."
+  },
+  {
+   "id": "0a6766718f",
+   "es": "una taza de",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "a cup of"
+  },
+  {
+   "id": "23aff920e7",
+   "es": "un vaso de",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "a glass of"
+  },
+  {
+   "id": "9959aea0b9",
+   "es": "una botella de",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "a bottle of"
+  },
+  {
+   "id": "3b8c97e5fc",
+   "es": "Una botella de leche.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "A bottle of milk."
+  },
+  {
+   "id": "049c823909",
+   "es": "un kilo de",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "a kilo of"
+  },
+  {
+   "id": "8e8bb9cfe9",
+   "es": "Un kilo de arroz.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "A kilo of rice."
+  },
+  {
+   "id": "61cc4cd1d3",
+   "es": "¿algo más?",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "anything else"
+  },
+  {
+   "id": "f35d2b9499",
+   "es": "¿Algo más?",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "Anything else?"
+  },
+  {
+   "id": "b0164d82e6",
+   "es": "eso es todo",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "that's all"
+  },
+  {
+   "id": "83bd9a13ed",
+   "es": "nada más",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "that's all"
+  },
+  {
+   "id": "a2a8ffbb29",
+   "es": "No, eso es todo, gracias.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "No, that's all, thank you."
+  },
+  {
+   "id": "e5502df274",
+   "es": "aquí tiene",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "here you are"
+  },
+  {
+   "id": "4ed3164abc",
+   "es": "aquí tienes",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "here you are"
+  },
+  {
+   "id": "82572d48e7",
+   "es": "aquí tenés",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "here you are"
+  },
+  {
+   "id": "0693e2b85f",
+   "es": "tome",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "here you are"
+  },
+  {
+   "id": "dcb791c2c4",
+   "es": "Aquí tiene. Diez dólares.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Here you are. Ten dollars."
+  },
+  {
+   "id": "f82e8cad06",
+   "es": "Del 21 al 100",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "4bcd330708",
+   "es": "Contar de diez en diez hasta cien y armar los números del 21 al 99.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "55fcf8491e",
+   "es": "Las decenas terminan en -ty: thirty (30), forty (40), fifty (50). Forty se escribe sin u, aunque four la lleva. Del 21 al 99 se unen con guion: twenty-one, thirty-five. El 100 es one hundred.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "e0bb38014a",
+   "es": "Treinta y cinco estudiantes.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Thirty-five students."
+  },
+  {
+   "id": "24b4b969f8",
+   "es": "Mi abuela tiene noventa años.",
+   "kinds": [
+    "example"
+   ],
+   "en": "My grandmother is ninety."
+  },
+  {
+   "id": "cb3b932643",
+   "es": "Cuentas de diez en diez hasta one hundred.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "4c9e917c00",
+   "es": "Armas los números del 21 al 99 con guion: forty-two.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "a4e1ec41c4",
+   "es": "¿Qué significa «thirty»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "146694126c",
+   "es": "treinta y tres",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "224ba3a0fb",
+   "es": "Fifty (50) lleva el acento al principio: FIF-ty. Fifteen (15) lo lleva al final: fif-TEEN.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "fifty"
+  },
+  {
+   "id": "548bbc5240",
+   "es": "cincuenta + cincuenta = cien",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "fifty + fifty = one hundred"
+  },
+  {
+   "id": "e3bac87c8f",
+   "es": "veinte + veinte = cuarenta",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "twenty + twenty = forty"
+  },
+  {
+   "id": "e178b78797",
+   "es": "Forty se escribe sin u, aunque four sí la lleva.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "forty"
+  },
+  {
+   "id": "2d2a4b7d22",
+   "es": "Ochenta",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "eighty"
+  },
+  {
+   "id": "bad07fa3e2",
+   "es": "Cuarenta y dos",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "forty-two"
+  },
+  {
+   "id": "69756854e7",
+   "es": "Del 21 al 99 la decena y la unidad se unen con guion: forty-two.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "forty-two"
+  },
+  {
+   "id": "46f6a6bb8b",
+   "es": "Forty se escribe sin u (no «fourty»): forty-five.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "forty-five"
+  },
+  {
+   "id": "20206485c9",
+   "es": "Precios y dinero",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "8f615243c2",
+   "es": "Decir y entender precios en dólares y centavos.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "ef0fc1487d",
+   "es": "El símbolo va antes del número ($5), pero se dice después: five dollars. Un dólar tiene cien centavos (cents). Para decir un precio alcanza con to be: The book is twenty dollars. Algo barato es cheap y algo caro, expensive.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "680d126613",
+   "es": "El libro cuesta veinte dólares.",
+   "kinds": [
+    "example"
+   ],
+   "en": "The book is twenty dollars."
+  },
+  {
+   "id": "b8ccfa32fd",
+   "es": "¿Una bolsa grande a diez dólares? ¡Es barata!",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "A big bag, ten dollars? It is cheap!"
+  },
+  {
+   "id": "15f3912ee8",
+   "es": "Dices un precio con to be: The coffee is three dollars.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "d76fbbc1a0",
+   "es": "Entiendes de oído precios con dólares y centavos.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "ebdc3ad65a",
+   "es": "¿Qué significa «price»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "30e41d3ee2",
+   "es": "precio",
+   "kinds": [
+    "exercise.option",
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "price"
+  },
+  {
+   "id": "51a2cff68e",
+   "es": "dinero",
+   "kinds": [
+    "exercise.option",
+    "exercise.pair",
+    "word.translation"
+   ]
+  },
+  {
+   "id": "253ec97368",
+   "es": "barato",
+   "kinds": [
+    "exercise.option",
+    "exercise.pair",
+    "word.accepted"
+   ]
+  },
+  {
+   "id": "3db7429aba",
+   "es": "¿Qué significa «expensive»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "0426491043",
+   "es": "caro",
+   "kinds": [
+    "exercise.option",
+    "word.accepted"
+   ],
+   "en": "expensive"
+  },
+  {
+   "id": "274588803d",
+   "es": "20 dólares: El libro cuesta veinte dólares.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "$20: The book is twenty dollars."
+  },
+  {
+   "id": "1d0d416dea",
+   "es": "Se dice el número y después dollars, en plural.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "dollars"
+  },
+  {
+   "id": "f378f54190",
+   "es": "La computadora es cara.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "The computer is expensive."
+  },
+  {
+   "id": "978360a91f",
+   "es": "El bolígrafo cuesta 2 dólares. El libro, 15. ¿El bolígrafo es caro?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "The pen is $2. The book is $15. Is the pen expensive?"
+  },
+  {
+   "id": "4c8426540a",
+   "es": "La leche cuesta dos dólares.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "The milk is two dollars."
+  },
+  {
+   "id": "649f423875",
+   "es": "Para un precio alcanza con to be: The milk is two dollars.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "The milk is two dollars."
+  },
+  {
+   "id": "9da2a763f2",
+   "es": "How much, how many",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "e67b4b01f3",
+   "es": "Preguntar precios y cantidades con how much y how many.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "f79f46ff8a",
+   "es": "How much pregunta un precio: How much is the bag? How many va con cosas que se cuentan, en plural: How many apples are there? Se responde con el número: There are three apples. / It is ten dollars.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "f250826253",
+   "es": "¿Cuánto cuesta la bolsa?",
+   "kinds": [
+    "example"
+   ],
+   "en": "How much is the bag?"
+  },
+  {
+   "id": "05613ef2e6",
+   "es": "¿Cuántas tazas hay?",
+   "kinds": [
+    "example"
+   ],
+   "en": "How many cups are there?"
+  },
+  {
+   "id": "3379b56c48",
+   "es": "Preguntas un precio con How much is…?",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "c04f148cab",
+   "es": "Preguntas una cantidad con How many + plural.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "d8f4001fa5",
+   "es": "¿Qué significa «How much is the coffee?»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "ceb9262d95",
+   "es": "¿Cuántos cafés hay?",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "10c9ccd368",
+   "es": "¿Dónde está el café?",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "20c366586b",
+   "es": "¿Qué significa «How many?»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "ab580d6f45",
+   "es": "¿Cuántos?",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "How many?"
+  },
+  {
+   "id": "e3638eed24",
+   "es": "¿Quién?",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4cffdefd4c",
+   "es": "¿Dónde?",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "db2b778236",
+   "es": "¿Cuánto cuesta la bolsa negra?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How much is the black bag?"
+  },
+  {
+   "id": "a6046989e5",
+   "es": "Un precio se pregunta con how much.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "much"
+  },
+  {
+   "id": "82f490823a",
+   "es": "¿Cuántas sillas hay?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How many chairs are there?"
+  },
+  {
+   "id": "a80d1426fe",
+   "es": "Las cosas que se cuentan (chairs) van con how many.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "many"
+  },
+  {
+   "id": "84bb00983a",
+   "es": "¿Cuánto cuestan las manzanas?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How much are the apples?"
+  },
+  {
+   "id": "6cd49a2bda",
+   "es": "Hay tres manzanas y dos bananas sobre la mesa. ¿Cuántas manzanas hay?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "There are three apples and two bananas on the table. How many apples are there?"
+  },
+  {
+   "id": "5cbf95804b",
+   "es": "Pan: 4 dólares. ¿Cuánto cuesta el pan?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Bread: $4. How much is the bread?"
+  },
+  {
+   "id": "73f167040f",
+   "es": "¿Cuánto cuesta la computadora?",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "How much is the computer?"
+  },
+  {
+   "id": "2b18fd86e2",
+   "es": "Una taza de, una botella de",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "f3665f5bba",
+   "es": "Pedir cantidades de comida y bebida con I’d like.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "dea05ed04c",
+   "es": "Para pedir una cantidad: a cup of + bebida (a cup of tea), a glass of (water), a bottle of (milk), a kilo of (apples). Para pedir con cortesía se usa I'd like (quisiera): es más amable que I want.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "11e6980d84",
+   "es": "Quisiera una taza de té, por favor.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I'd like a cup of tea, please."
+  },
+  {
+   "id": "579ec60637",
+   "es": "Dos botellas de agua.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Two bottles of water."
+  },
+  {
+   "id": "c9393beccc",
+   "es": "Pides cantidades con a cup of, a glass of, a bottle of y a kilo of.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "926d2baaac",
+   "es": "Pides con cortesía con I'd like.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "e676b5103a",
+   "es": "soy",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "367ae7442e",
+   "es": "Una botella de agua, por favor.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "A bottle of water, please."
+  },
+  {
+   "id": "b008e41d48",
+   "es": "Un kilo de manzanas, por favor.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "A kilo of apples, please."
+  },
+  {
+   "id": "5135f9d050",
+   "es": "Entre la cantidad y lo que se pide va of: a kilo of apples.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "of"
+  },
+  {
+   "id": "95c3cebf36",
+   "es": "Quisiera una taza de té.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I'd like a cup of tea."
+  },
+  {
+   "id": "e5e39b580c",
+   "es": "Quisiera un vaso de agua, por favor.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I'd like a glass of water, please."
+  },
+  {
+   "id": "857cf9e59d",
+   "es": "Dos botellas de leche, por favor.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "Two bottles of milk, please."
+  },
+  {
+   "id": "1940165704",
+   "es": "En plural cambia el recipiente, no lo que hay adentro: two bottles of milk.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Two bottles of milk, please."
+  },
+  {
+   "id": "66bf99d6b8",
+   "es": "En la tienda",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "47d7679f37",
+   "es": "Pedir, preguntar el precio y pagar en una tienda.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "f410bff6a6",
+   "es": "En una tienda se pide con I'd like y se pregunta el precio con How much is it? El vendedor pregunta Anything else? (¿algo más?). Si no quieres nada más: No, that's all, thank you. Al pagar o entregar algo se dice Here you are (aquí tiene).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "6db68828ba",
+   "es": "No, eso es todo. Aquí tiene.",
+   "kinds": [
+    "example",
+    "exercise.source"
+   ],
+   "en": "No, that's all. Here you are."
+  },
+  {
+   "id": "58e14b14d6",
+   "es": "Haces un pedido completo: I'd like…, How much is it?, That's all.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "4cf40847a7",
+   "es": "Entiendes lo que pregunta el vendedor y respondes con Here you are al pagar.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "d89a9253f3",
+   "es": "¿Qué significa «Anything else?»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "895128f9cd",
+   "es": "¿Algo para tomar?",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "86a374a4b2",
+   "es": "¿Qué significa «Here you are.»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "6d01555ca4",
+   "es": "Aquí tiene.",
+   "kinds": [
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "Here you are."
+  },
+  {
+   "id": "b600eea309",
+   "es": "Gracias.",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "267bead7d5",
+   "es": "De nada.",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4fa6d8aa9b",
+   "es": "Hasta luego.",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f11a6f01e8",
+   "es": "Here you are es «aquí tiene». Where are you? pregunta dónde estás.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Here you are."
+  },
+  {
+   "id": "46723b6454",
+   "es": "Eso es todo.",
+   "kinds": [
+    "exercise.pair"
+   ],
+   "en": "That's all."
+  },
+  {
+   "id": "d09fcfae41",
+   "es": "a cup of coffee",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Anything else? (a cup of coffee)"
+  },
+  {
+   "id": "5e3ee9d691",
+   "es": "¿Algo más? (una taza de café)",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Anything else? (a cup of coffee)"
+  },
+  {
+   "id": "850fc88ec6",
+   "es": "Se pide con I'd like + la cantidad: I'd like a cup of coffee, please.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "I'd like a cup of coffee, please."
+  },
+  {
+   "id": "3985caf039",
+   "es": "Una bolsa cuesta 40 dólares y una taza, 8. ¿Cuánto cuestan la bolsa y la taza?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "A bag is $40 and a cup is $8. How much are the bag and the cup?"
+  },
+  {
+   "id": "e10c4f958d",
+   "es": "Cuarenta más ocho: forty-eight dollars.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "They are forty-eight dollars."
+  },
+  {
+   "id": "ac9557652f",
+   "es": "En contexto: cliente y vendedor",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "30513af379",
+   "es": "Entender precios en un cartel, una compra en una tienda y un anuncio.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "63752b9fbe",
+   "es": "Vas a leer los precios de una tienda, a escuchar a un cliente con la vendedora y un anuncio de un supermercado. Fíjate en qué se compra y cuánto cuesta.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "276ccb8124",
+   "es": "¿Cuánto cuesta esta bolsa?",
+   "kinds": [
+    "example"
+   ],
+   "en": "How much is this bag?"
+  },
+  {
+   "id": "480a7abeb4",
+   "es": "Quisiera una taza blanca, por favor.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I'd like a white cup, please."
+  },
+  {
+   "id": "b46810dff6",
+   "es": "Ahora puedes entender precios, qué pide un cliente y cuánto paga.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "95320a4ed7",
+   "es": "Un cartel con precios en la vidriera de una tienda.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u14-shop-prices"
+  },
+  {
+   "id": "c0a63bb1a7",
+   "es": "¿Cuánto cuesta una bolsa chica?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u14-shop-prices"
+  },
+  {
+   "id": "5775223872",
+   "es": "45 dólares",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u14-shop-prices"
+  },
+  {
+   "id": "66aca6cdf1",
+   "es": "8 dólares",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "dee3f45441",
+   "es": "30 dólares",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "80f743515b",
+   "es": "«Small bags: $30». La grande cuesta 45 y 8 es el precio de una taza roja.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u14-shop-prices"
+  },
+  {
+   "id": "15b7f36976",
+   "es": "¿Cuánto pagas por dos tazas blancas?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u14-shop-prices"
+  },
+  {
+   "id": "5d13d97fb8",
+   "es": "10 dólares",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u14-shop-prices"
+  },
+  {
+   "id": "4009bd1208",
+   "es": "12 dólares",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1796a3a0be",
+   "es": "16 dólares",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "dcc3aa5754",
+   "es": "El cartel tiene una oferta: «Two white cups: $10». Sin la oferta serían 12 (dos de 6).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u14-shop-prices"
+  },
+  {
+   "id": "ff55b4ee1c",
+   "es": "¿Qué es lo más caro del cartel?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u14-shop-prices"
+  },
+  {
+   "id": "342b632075",
+   "es": "Una bolsa grande",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u14-shop-prices"
+  },
+  {
+   "id": "b82b27f9f4",
+   "es": "Una bolsa chica",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6308b5ecfc",
+   "es": "Dos tazas blancas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d335658767",
+   "es": "«Big bags: $45» es el precio más alto del cartel.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u14-shop-prices"
+  },
+  {
+   "id": "9f6135607e",
+   "es": "Un cliente entra en la tienda del cartel.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u14-at-the-shop"
+  },
+  {
+   "id": "675fc69c86",
+   "es": "Nina",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.a1-u14-at-the-shop"
+  },
+  {
+   "id": "b5fd03dd91",
+   "es": "Jack",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.a1-u14-at-the-shop"
+  },
+  {
+   "id": "274c2a8c10",
+   "es": "¿Quién es Nina?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u14-at-the-shop"
+  },
+  {
+   "id": "be1f9478e7",
+   "es": "Una clienta",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u14-at-the-shop"
+  },
+  {
+   "id": "605754289f",
+   "es": "Una amiga de Jack",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7a4b53cfa3",
+   "es": "La vendedora",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7eff80210e",
+   "es": "Nina pregunta «Can I help you?», dice los precios y cobra: es la vendedora. Jack es el cliente.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u14-at-the-shop"
+  },
+  {
+   "id": "0a6366d9a7",
+   "es": "¿Qué compra Jack al final?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u14-at-the-shop"
+  },
+  {
+   "id": "82b8f7870e",
+   "es": "Una bolsa grande y una taza blanca",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u14-at-the-shop"
+  },
+  {
+   "id": "00f499fdbc",
+   "es": "Una bolsa chica y dos tazas blancas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "906838f0b9",
+   "es": "Una bolsa chica y una taza blanca",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "730d668a6d",
+   "es": "Pregunta por la bolsa grande, pero dice «I'd like the small bag, please. And a white cup».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u14-at-the-shop"
+  },
+  {
+   "id": "1d2b3f5ae4",
+   "es": "¿Cuánto paga Jack?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u14-at-the-shop"
+  },
+  {
+   "id": "54511a4a7f",
+   "es": "36 dólares",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u14-at-the-shop"
+  },
+  {
+   "id": "f1a883d98f",
+   "es": "Nina dice «thirty-six dollars»: 30 de la bolsa chica y 6 de la taza blanca.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u14-at-the-shop"
+  },
+  {
+   "id": "bca98fc2a0",
+   "es": "Un anuncio por los parlantes de un supermercado.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u14-supermarket-announcement"
+  },
+  {
+   "id": "9102254fba",
+   "es": "¿Cuánto cuesta hoy una bolsa grande de café?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u14-supermarket-announcement"
+  },
+  {
+   "id": "174215c790",
+   "es": "25 dólares",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u14-supermarket-announcement"
+  },
+  {
+   "id": "9f5ecb4bbe",
+   "es": "35 dólares",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d7419dfd03",
+   "es": "15 dólares",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3c1342c45e",
+   "es": "«A big bag of coffee is twenty-five dollars». 15 es el precio del queso.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u14-supermarket-announcement"
+  },
+  {
+   "id": "4c13fb92f8",
+   "es": "¿Qué puedes comprar con 3 dólares?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u14-supermarket-announcement"
+  },
+  {
+   "id": "eaac76ae4e",
+   "es": "Dos botellas de leche",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u14-supermarket-announcement"
+  },
+  {
+   "id": "7a8e11954d",
+   "es": "Una botella de leche",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "79b8e1526a",
+   "es": "El queso",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a28f286f26",
+   "es": "«Two bottles of milk are three dollars»: los 3 dólares son por dos botellas.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u14-supermarket-announcement"
+  },
+  {
+   "id": "515173f0a7",
+   "es": "¿Qué cuesta 15 dólares?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u14-supermarket-announcement"
+  },
+  {
+   "id": "e4fff51215",
+   "es": "El café",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u14-supermarket-announcement"
+  },
+  {
+   "id": "8b1393ab7e",
+   "es": "La leche",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8c0cc19180",
+   "es": "«And the cheese is fifteen dollars».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u14-supermarket-announcement"
+  }
+ ],
+ "stimuli": {
+  "en.stim.a1-u14-shop-prices": {
+   "setting": "Un cartel con precios en la vidriera de una tienda.",
+   "lines": [
+    "Big bags: $45",
+    "Small bags: $30",
+    "Red cups: $8",
+    "White cups: $6",
+    "Two white cups: $10"
+   ]
+  },
+  "en.stim.a1-u14-at-the-shop": {
+   "setting": "Un cliente entra en la tienda del cartel.",
+   "lines": [
+    "Nina: Hello! Can I help you?",
+    "Jack: Yes, please. How much is this big bag?",
+    "Nina: It is forty-five dollars.",
+    "Jack: And the small black bag?",
+    "Nina: That is thirty dollars.",
+    "Jack: OK. I'd like the small bag, please. And a white cup.",
+    "Nina: That is thirty-six dollars, please.",
+    "Jack: Here you are. Thank you!"
+   ]
+  },
+  "en.stim.a1-u14-supermarket-announcement": {
+   "setting": "Un anuncio por los parlantes de un supermercado.",
+   "lines": [
+    "Anuncio: Good morning! Welcome to the supermarket.",
+    "Anuncio: Today, a big bag of coffee is twenty-five dollars.",
+    "Anuncio: Two bottles of milk are three dollars.",
+    "Anuncio: And the cheese is fifteen dollars.",
+    "Anuncio: Thank you!"
+   ]
+  }
+ }
+}

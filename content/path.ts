@@ -1,5 +1,6 @@
 import { languageConfig } from '../shared/languages';
 import { exercisesFor } from './builders';
+import { enSrcPathTexts, type PathTexts } from './en-src/texts';
 import type { ExerciseDef, LessonDef, UnitDef, WordDef } from './types';
 
 /**
@@ -113,7 +114,7 @@ class Generator {
   ) {
     this.byId = new Map(allWords.map((w) => [w.id, w]));
     const config = languageConfig(language);
-    this.ex = exercisesFor(config);
+    this.ex = exercisesFor(config, language);
     this.han = config.script === 'han';
   }
 
@@ -274,7 +275,9 @@ function sentences(
 }
 
 /** Títulos y objetivos de las lecciones generadas, en el idioma de apoyo del curso. */
-function pathTexts(language: string) {
+function pathTexts(language: string): PathTexts {
+  const localized = enSrcPathTexts(language);
+  if (localized) return localized;
   const quote = (title: string) => `«${title}»`;
   if (languageConfig(language).support?.code === 'en') {
     const q = (title: string) => `“${title}”`;

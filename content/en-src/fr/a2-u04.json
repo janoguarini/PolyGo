@@ -1,0 +1,128 @@
+{
+ "unit": "a2-u04",
+ "strings": {
+  "59ca635ca6": "Voyages et vacances",
+  "eba7cc97df": "Les transports, l’aéroport, les billets et les endroits où partir en vacances.",
+  "a191b1334e": "aéroport",
+  "26c435604d": "Où est l’aéroport ?",
+  "3a7c5b16ac": "avion",
+  "2d9cb0bd39": "Nous sommes allés en Espagne en avion.",
+  "76abef6399": "train",
+  "c2dfe3dd50": "Le train part à dix heures.",
+  "929260ad9b": "voiture",
+  "8fb3aaa2de": "auto",
+  "8c03df8328": "",
+  "77f42ac121": "Je vais au travail en voiture.",
+  "bdba7ac527": "billet / ticket",
+  "72fced00a1": "billet",
+  "2860a0d319": "ticket",
+  "f8de98b7b0": "billet d’entrée",
+  "ecc57f0503": "titre de transport",
+  "74d54c14d7": "J’ai acheté deux billets de train.",
+  "bf90404bfc": "passeport",
+  "c50b334f55": "Je peux voir votre passeport, s’il vous plaît ?",
+  "f8d4774c04": "valise",
+  "572266cc64": "bagage",
+  "271c99ce0d": "Ma valise est très grande.",
+  "990bfdda5c": "voyage",
+  "53f7e998cd": "Ton voyage s’est bien passé ?",
+  "94633901c3": "vacances",
+  "2d7540470a": "Nous étions en vacances au Mexique.",
+  "57b124867e": "plage",
+  "35d4ce1f37": "Nous sommes allés à la plage.",
+  "febd11d281": "montagne",
+  "6152622739": "J’adore la montagne.",
+  "51609286fb": "mer",
+  "d9d6c83fe1": "La mer était très bleue.",
+  "2738e1f7f1": "carte / plan",
+  "393806ef13": "Tu as un plan de la ville ?",
+  "d5672f037d": "touriste",
+  "36265408bd": "Il y a beaucoup de touristes au musée.",
+  "08e81d4e64": "photo",
+  "25942b7a60": "Tu peux nous prendre en photo ?",
+  "96fc6b4832": "vol",
+  "f83b29f960": "Notre vol part à six heures.",
+  "9da67b0396": "partir / quitter",
+  "c7775e500f": "s’en aller",
+  "bca0201624": "quitter",
+  "77be30d01a": "Nous avons quitté l’hôtel à neuf heures.",
+  "59b413f978": "à l’étranger",
+  "a43acb947a": "",
+  "fbb3c66c0a": "hors du pays",
+  "7d634ac49a": "",
+  "b3da97e31f": "Tu veux voyager à l’étranger ?",
+  "f680308d94": "en (moyen de transport)",
+  "bb51ff53ec": "Nous y sommes allés en train.",
+  "d83541a5fb": "faire sa valise",
+  "40693a9fb0": "faire ses bagages",
+  "dbbbab6ad9": "",
+  "890f1b0bed": "",
+  "fbb1102154": "Hier soir, j’ai fait ma valise.",
+  "46c93f5c79": "Les moyens de transport",
+  "d15521d11a": "Avion, train et voiture : by + transport.",
+  "899d180cb4": "Moyen de transport : by + véhicule sans article (by car, by train, by plane). Là où le français dit « en voiture », l’anglais dit by car.",
+  "1c9c343fce": "À l’aéroport",
+  "85f2315d6b": "Passeport, valise et vol.",
+  "c69fca86c6": "Que veut dire « flight » ?",
+  "6a530407d1": "Billets et projets",
+  "323a04f5e8": "Acheter des billets, partir et voyager à l’étranger.",
+  "26766601c4": "Que veut dire « trip » ?",
+  "31e6895f84": "Nous avons quitté l’hôtel à neuf heures et nous sommes allés à l’aéroport.",
+  "7c19178b29": "Leave est irrégulier : le passé est left. Attention : left veut aussi dire « gauche ».",
+  "00c4285274": "fun",
+  "cafcf84357": "J’aime voyager à l’étranger.",
+  "4284be6013": "Plage ou montagne",
+  "d1ca5838c4": "Des endroits où partir en vacances.",
+  "b4ed035bcb": "L’année dernière, nous sommes allés à la plage et nous avons nagé dans la mer.",
+  "45f50ef9bb": "Être en vacances = be on vacation (avec on, pas in).",
+  "2a01219dd8": "Photos et touristes",
+  "4e358f6763": "Prendre des photos, utiliser une carte et raconter le voyage.",
+  "94f33b4e9c": "Prendre une photo = take a photo (comme en français, on « prend » la photo).",
+  "bc559c55a2": "by car",
+  "7a0e0d1a8b": "Comment es-tu allé à l’aéroport ?",
+  "5ff2e26462": "Nous avons fait nos valises et nous sommes partis.",
+  "08a11aa5ac": "Un message de tes vacances",
+  "3eb1273e65": "Écris à un ami pendant un voyage (vrai ou inventé) : où tu es, comment tu es arrivé et ce que tu as fait.",
+  "bd9c23ae72": "Tu dis où tu es (I am in… / I’m at the beach…)",
+  "5921a46167": "Tu dis comment tu as voyagé avec by (by plane, by train, by car…)",
+  "079efb0513": "Tu racontes quelque chose que tu as fait, au passé",
+  "799a75a7cc": "J’ai dit où je suis.",
+  "7dcf3bad72": "J’ai dit comment j’ai voyagé (by…).",
+  "f445fe0ee5": "J’ai raconté quelque chose que j’ai fait."
+ },
+ "accepted": {
+  "car": [
+   "auto"
+  ],
+  "ticket": [
+   "billet",
+   "ticket"
+  ],
+  "suitcase": [
+   "bagage"
+  ],
+  "trip": [
+   "séjour"
+  ],
+  "map": [
+   "carte",
+   "plan"
+  ],
+  "leave": [
+   "partir",
+   "quitter",
+   "s’en aller"
+  ],
+  "abroad": [
+   "hors du pays"
+  ],
+  "pack": [
+   "faire ses bagages",
+   "faire ma valise"
+  ],
+  "vacation": [
+   "congés"
+  ]
+ },
+ "notes": "1) map → «carte / plan»: en francés el mapa de una ciudad es «plan», por eso la oración fuente 393806ef13 usa «Tu as un plan de la ville ?». 2) trip → «voyage»; journey ≠ journée no aparece aquí. 3) Variantes solo hispanas vacías: carro (car), hacer la valija / armar la valija (pack), al exterior y al extranjero (abroad, «à l’étranger» ya es la principal). entrada → «billet d’entrée», billete → «titre de transport» para no repetir. 4) by: agregué la comparación «en voiture» → by car. 5) be on vacation: aclaré «on, pas in» porque el francés dice «en vacances». «Salimos del hotel» (We left the hotel) → «Nous avons quitté l’hôtel». «Fuimos en tren» (We went by train) → «Nous y sommes allés en train». «¿Puedo ver su pasaporte?» se dejó con «votre» (registro formal del agente)."
+}

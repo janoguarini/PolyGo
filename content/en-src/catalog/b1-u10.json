@@ -1,0 +1,1526 @@
+{
+ "unit": "b1-u10",
+ "level": "B1",
+ "titleEn": "News and media",
+ "strings": [
+  {
+   "id": "e0f9c7fc95",
+   "es": "Noticias y medios",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "News and media"
+  },
+  {
+   "id": "12df061885",
+   "es": "Titulares y artículos, contar lo que alguien dijo o preguntó (estilo indirecto), sucesos y noticias falsas.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "34f1e819c4",
+   "es": "Puedes entender titulares y noticias breves, contar lo que otra persona dijo o preguntó y distinguir una fuente confiable.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "a31c9e53ce",
+   "es": "Estilo indirecto",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "dab7ff4b38",
+   "es": "Para contar lo que alguien dijo: said (that) + oración, o told + persona + (that). El verbo suele ir un tiempo atrás: «I am tired» → She said she was tired; «I will call» → He said he would call; «I can help» → She said she could help. Preguntas: asked if… / asked where…",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "e86b98777d",
+   "es": "Dijo que estaba cansada.",
+   "kinds": [
+    "example"
+   ],
+   "en": "She said that she was tired."
+  },
+  {
+   "id": "c1c8d27d0e",
+   "es": "Me dijo que iba a llamar.",
+   "kinds": [
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "He told me that he would call."
+  },
+  {
+   "id": "4865f51168",
+   "es": "Preguntaron si estábamos listos.",
+   "kinds": [
+    "example"
+   ],
+   "en": "They asked if we were ready."
+  },
+  {
+   "id": "e56bd68bbf",
+   "es": "las noticias / el noticiero",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "the news"
+  },
+  {
+   "id": "28d5188968",
+   "es": "las noticias",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "the news"
+  },
+  {
+   "id": "51c5fb58e8",
+   "es": "el noticiero",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "the news"
+  },
+  {
+   "id": "c879962f1c",
+   "es": "Miro el noticiero todas las noches.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "I watch the news every night."
+  },
+  {
+   "id": "04067b8079",
+   "es": "diario / periódico",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "newspaper"
+  },
+  {
+   "id": "1123e12d3a",
+   "es": "diario",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "newspaper"
+  },
+  {
+   "id": "91e6b6a758",
+   "es": "periódico",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "newspaper"
+  },
+  {
+   "id": "b1bdc2c593",
+   "es": "Mi abuelo lee el diario todas las mañanas.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My grandfather reads the newspaper every morning."
+  },
+  {
+   "id": "8ab96cae8a",
+   "es": "titular",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "headline"
+  },
+  {
+   "id": "860621faff",
+   "es": "¿Viste los titulares de hoy?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Did you see the headlines today?"
+  },
+  {
+   "id": "b53d6dc70f",
+   "es": "artículo / nota",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "article"
+  },
+  {
+   "id": "a1cb6bd814",
+   "es": "artículo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "article"
+  },
+  {
+   "id": "108ffcf2ca",
+   "es": "nota",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "article"
+  },
+  {
+   "id": "03289ff613",
+   "es": "Leí una nota interesante sobre comida.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "I read an interesting article about food."
+  },
+  {
+   "id": "df7ef32cd4",
+   "es": "periodista",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "journalist"
+  },
+  {
+   "id": "9878f7567a",
+   "es": "Trabaja de periodista.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "She works as a journalist."
+  },
+  {
+   "id": "fbf0ca2c63",
+   "es": "dije / dijo (a alguien) (tell)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "told"
+  },
+  {
+   "id": "dd03b72e1e",
+   "es": "contó",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "told"
+  },
+  {
+   "id": "a36b9c1450",
+   "es": "le dijo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "told"
+  },
+  {
+   "id": "daaea3fa68",
+   "es": "Me contó la noticia.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She told me the news."
+  },
+  {
+   "id": "ebc81c2088",
+   "es": "explicó / expliqué",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "explained"
+  },
+  {
+   "id": "9acdcf786f",
+   "es": "explicó",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "explained"
+  },
+  {
+   "id": "c48c79d910",
+   "es": "expliqué",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "explained"
+  },
+  {
+   "id": "7a07c36e3d",
+   "es": "La profesora explicó el ejercicio.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The teacher explained the exercise."
+  },
+  {
+   "id": "2cbb927429",
+   "es": "anunció / anunciado",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "announced"
+  },
+  {
+   "id": "80cf1c10ed",
+   "es": "anunció",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "announced"
+  },
+  {
+   "id": "39e71f5338",
+   "es": "anunciado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "announced"
+  },
+  {
+   "id": "c48a6b0e69",
+   "es": "La empresa anunció un producto nuevo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The company announced a new product."
+  },
+  {
+   "id": "bee37b9559",
+   "es": "según",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "according to"
+  },
+  {
+   "id": "d7908feaa1",
+   "es": "Según el noticiero, va a llover.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "According to the news, it will rain."
+  },
+  {
+   "id": "5e1a8711a4",
+   "es": "accidente",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "accident"
+  },
+  {
+   "id": "01d992e433",
+   "es": "Hubo un accidente en la carretera.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "There was an accident on the road."
+  },
+  {
+   "id": "7954742462",
+   "es": "incendio / fuego",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "fire"
+  },
+  {
+   "id": "2d14481ac1",
+   "es": "incendio",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "fire"
+  },
+  {
+   "id": "96c37c40af",
+   "es": "fuego",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "fire"
+  },
+  {
+   "id": "66196c972d",
+   "es": "Hubo un incendio en el edificio.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "There was a fire in the building."
+  },
+  {
+   "id": "5552d43865",
+   "es": "rescatado / rescató",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "rescued"
+  },
+  {
+   "id": "4fcb3521ec",
+   "es": "rescatado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "rescued"
+  },
+  {
+   "id": "ecf3e96fbd",
+   "es": "rescatados",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "rescued"
+  },
+  {
+   "id": "b433b0f0ff",
+   "es": "rescató",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "rescued"
+  },
+  {
+   "id": "302313daee",
+   "es": "Los chicos fueron rescatados.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "The children were rescued."
+  },
+  {
+   "id": "d1638f2a89",
+   "es": "gobierno",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "government"
+  },
+  {
+   "id": "73a4faa117",
+   "es": "El gobierno anunció nuevas normas.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "The government announced new rules."
+  },
+  {
+   "id": "8374e1fb95",
+   "es": "presidente / presidenta",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "president"
+  },
+  {
+   "id": "14ce27c896",
+   "es": "presidente",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "president"
+  },
+  {
+   "id": "cb63227f91",
+   "es": "presidenta",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "president"
+  },
+  {
+   "id": "41bf19969b",
+   "es": "El presidente habló por televisión.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The president spoke on TV."
+  },
+  {
+   "id": "de81af206d",
+   "es": "elección / elecciones",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "election"
+  },
+  {
+   "id": "1fb6d676b4",
+   "es": "elección",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "election"
+  },
+  {
+   "id": "421b8b1313",
+   "es": "elecciones",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "election"
+  },
+  {
+   "id": "835c23af27",
+   "es": "Las elecciones son en octubre.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The election is in October."
+  },
+  {
+   "id": "d039da115f",
+   "es": "noticias falsas",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "fake news"
+  },
+  {
+   "id": "d4c7106bfc",
+   "es": "noticia falsa",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "fake news"
+  },
+  {
+   "id": "7ad70119be",
+   "es": "No compartas noticias falsas.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Don't share fake news."
+  },
+  {
+   "id": "9e7c4c7418",
+   "es": "fuente",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "source"
+  },
+  {
+   "id": "b74246d2b4",
+   "es": "Siempre fíjate la fuente.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Always check the source."
+  },
+  {
+   "id": "e1c983199e",
+   "es": "Titulares",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "dac548056a",
+   "es": "Entender titulares y hablar de cómo te informas.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "49efcd1505",
+   "es": "Los titulares (headlines) son cortos: usan el presente para hechos recientes (Local team wins the cup) y to o will para el futuro (New line will open). The news son las noticias o el noticiero; newspaper, el diario; article, una nota.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "aaaa12fa7a",
+   "es": "Entiendes titulares cortos.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "bdd419338c",
+   "es": "Cuentas cómo te informas: the news, a newspaper, an article.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "7edbf05c6d",
+   "es": "Miro el noticiero todas las noches en la tele.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I watch the news every night on TV."
+  },
+  {
+   "id": "0288a5e2c0",
+   "es": "Los titulares de un sitio de noticias.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u10-headlines"
+  },
+  {
+   "id": "d663a7384f",
+   "es": "¿Qué titular habla de precios?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u10-headlines"
+  },
+  {
+   "id": "eedb2283b4",
+   "es": "El de las frutas y las verduras",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u10-headlines"
+  },
+  {
+   "id": "141d509c8b",
+   "es": "El del tren",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "afe7734960",
+   "es": "El del equipo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ec06a8449a",
+   "es": "El del robot",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5d8d62cb3b",
+   "es": "El titular dice: «Prices of fruit and vegetables go up again».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u10-headlines"
+  },
+  {
+   "id": "a6403c37a3",
+   "es": "¿Qué construyeron unos estudiantes?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u10-headlines"
+  },
+  {
+   "id": "619772c45e",
+   "es": "Un robot que ayuda a personas mayores",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u10-headlines"
+  },
+  {
+   "id": "f693c552c1",
+   "es": "Una línea de tren",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2ac5b6cd65",
+   "es": "Un museo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "efd74915eb",
+   "es": "Una escuela nueva",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "36b7318021",
+   "es": "El titular dice: «Students build a robot that helps old people».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u10-headlines"
+  },
+  {
+   "id": "1f77d9b72d",
+   "es": "lees el diario por internet",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "How do you get the news? (lees el diario por internet)"
+  },
+  {
+   "id": "3287fd454d",
+   "es": "¿Cómo te informas?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How do you get the news? (lees el diario por internet)"
+  },
+  {
+   "id": "e7020bf86d",
+   "es": "Leí una nota interesante sobre el medioambiente.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I read an interesting article about the environment."
+  },
+  {
+   "id": "752a248d1e",
+   "es": "Dijo que…",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "d9f6a41c2b",
+   "es": "Contar lo que alguien dijo: said that, told me that.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "aa235f9db2",
+   "es": "Said va sin persona (He said that…) y told, con persona (He told me that…). El verbo va un tiempo atrás: «I am busy» → She said she was busy; «We will hire» → He said they would hire; «You can go» → He told us we could go. That se puede omitir.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "bcb5fe495c",
+   "es": "Dijo que estaba ocupada.",
+   "kinds": [
+    "example"
+   ],
+   "en": "She said that she was busy."
+  },
+  {
+   "id": "cf78937f35",
+   "es": "Nos dijo que podíamos trabajar desde casa.",
+   "kinds": [
+    "example"
+   ],
+   "en": "He told us that we could work from home."
+  },
+  {
+   "id": "4f10c9a9cb",
+   "es": "Cuentas lo que alguien dijo con said y told.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "a03056fa43",
+   "es": "Pasas el verbo un tiempo atrás: is → was, will → would, can → could.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "d4192166d5",
+   "es": "«Estoy ocupada.» → Dijo que estaba ocupada.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "«I am busy.» → She said that she was busy."
+  },
+  {
+   "id": "19b6e788d1",
+   "es": "En estilo indirecto, am/is pasa a was.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "was"
+  },
+  {
+   "id": "d3c3859284",
+   "es": "Told + persona (told me); said sin persona (he said that…).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "told"
+  },
+  {
+   "id": "94edd119ad",
+   "es": "«Te voy a ayudar.» → Dijo que me iba a ayudar.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "«I will help you.» → She said she would help me."
+  },
+  {
+   "id": "fabdd65605",
+   "es": "Will pasa a would.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "would"
+  },
+  {
+   "id": "b5c91d3872",
+   "es": "Mia le cuenta a Sam lo que dijo el jefe.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u10-boss"
+  },
+  {
+   "id": "764293b6f6",
+   "es": "¿Qué dijo el jefe sobre la empresa?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u10-boss"
+  },
+  {
+   "id": "4d5faa2f14",
+   "es": "Que iba a contratar a cinco personas",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u10-boss"
+  },
+  {
+   "id": "118586f284",
+   "es": "Que iba a cerrar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6b31e7771b",
+   "es": "Que iba a subir los sueldos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7514a4b9c0",
+   "es": "Que se mudaba",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "55869766e7",
+   "es": "Mia dice: «He said that the company was going to hire five new people».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u10-boss"
+  },
+  {
+   "id": "bfc68ae368",
+   "es": "¿Qué les dijo sobre los viernes?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u10-boss"
+  },
+  {
+   "id": "5f56502831",
+   "es": "Que podían trabajar desde casa",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u10-boss"
+  },
+  {
+   "id": "c2fe10df28",
+   "es": "Que no se trabaja",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0a220366aa",
+   "es": "Que hay reunión",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4adc8f5d13",
+   "es": "Que salen más temprano",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ae1e57da2d",
+   "es": "Mia dice: «He also told us that we could work from home on Fridays».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u10-boss"
+  },
+  {
+   "id": "ae59fb523a",
+   "es": "Dijo que estaba cansado.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "He said that he was tired."
+  },
+  {
+   "id": "202e69b4e4",
+   "es": "que estaba enferma",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What did Ana say? (que estaba enferma)"
+  },
+  {
+   "id": "986787bc4c",
+   "es": "¿Qué dijo Ana?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What did Ana say? (que estaba enferma)"
+  },
+  {
+   "id": "b3bf04ba71",
+   "es": "Preguntó si…",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "ef34b6f2e4",
+   "es": "Contar lo que alguien preguntó: asked if, asked where.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "a770b8b611",
+   "es": "Una pregunta de sí o no se cuenta con asked if: «Are you ready?» → She asked if we were ready. Con pregunta de información se repite la palabra y se ordena como afirmación: «Where do you live?» → He asked where I lived.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "2b70750cfe",
+   "es": "Preguntó si estábamos listos.",
+   "kinds": [
+    "example"
+   ],
+   "en": "She asked if we were ready."
+  },
+  {
+   "id": "f6ba8eb862",
+   "es": "Me preguntó dónde vivía.",
+   "kinds": [
+    "example"
+   ],
+   "en": "He asked me where I lived."
+  },
+  {
+   "id": "7e8b24c3dc",
+   "es": "Cuentas preguntas de sí o no con asked if.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "92bc6cf172",
+   "es": "Cuentas preguntas de información: asked where / what / when…",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "60e9a324c8",
+   "es": "«¿Están listos?» → Preguntó si estábamos listos.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "«Are you ready?» → She asked if we were ready."
+  },
+  {
+   "id": "3d28402138",
+   "es": "Pregunta de sí o no → asked if.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "if"
+  },
+  {
+   "id": "a513c8bd30",
+   "es": "«¿Dónde vives?» → Me preguntó dónde vivía.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "«Where do you live?» → He asked me where I lived."
+  },
+  {
+   "id": "b270ff4a82",
+   "es": "Sin do/did y con el verbo un tiempo atrás: where I lived.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "lived"
+  },
+  {
+   "id": "e3827dcdbc",
+   "es": "La profesora explicó el ejercicio de nuevo.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "The teacher explained the exercise again."
+  },
+  {
+   "id": "fdf04a2567",
+   "es": "¿Qué preguntó Kate?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u10-boss"
+  },
+  {
+   "id": "fa975064d4",
+   "es": "Si iban a ganar más dinero",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u10-boss"
+  },
+  {
+   "id": "c9f18d8d35",
+   "es": "Si podía trabajar desde casa",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0298544558",
+   "es": "Cuándo era la próxima reunión",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a8aa9cd677",
+   "es": "Dónde iban a trabajar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1e160821f9",
+   "es": "Mia dice: «Kate asked if we would get more money».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u10-boss"
+  },
+  {
+   "id": "b5d097fdff",
+   "es": "Me preguntó si estaba listo.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She asked if I was ready."
+  },
+  {
+   "id": "8b9decccff",
+   "es": "si tenías fiebre",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What did the doctor ask? (si tenías fiebre)"
+  },
+  {
+   "id": "b360f6bb91",
+   "es": "¿Qué preguntó el médico?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What did the doctor ask? (si tenías fiebre)"
+  },
+  {
+   "id": "8317810d89",
+   "es": "Me preguntó dónde trabajaba.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "She asked me where I worked."
+  },
+  {
+   "id": "ff53ed20b0",
+   "es": "Sucesos",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "f2974ca43a",
+   "es": "Entender noticias de sucesos: accidentes, incendios y rescates.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "86f371eb16",
+   "es": "Las noticias de sucesos usan mucho la pasiva: ten people were rescued, nobody was injured. According to (según) dice de dónde viene la información: According to the police…",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "b2b3c72adc",
+   "es": "Según la policía, no hubo heridos.",
+   "kinds": [
+    "example"
+   ],
+   "en": "According to the police, nobody was injured."
+  },
+  {
+   "id": "21575db653",
+   "es": "Entiendes noticias de accidentes e incendios.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "bf7521d124",
+   "es": "Dices de dónde viene la información: according to.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "07fed82726",
+   "es": "Esta mañana hubo un accidente en la carretera.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "There was an accident on the road this morning."
+  },
+  {
+   "id": "3070a1bb44",
+   "es": "Diez personas fueron rescatadas del edificio.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Ten people were rescued from the building."
+  },
+  {
+   "id": "6a95030c1f",
+   "es": "Pasiva en pasado, plural: were + participio.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "were"
+  },
+  {
+   "id": "4292b96205",
+   "es": "Una noticia en la radio.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u10-fire"
+  },
+  {
+   "id": "ed738fe883",
+   "es": "Reporter",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b1-u10-fire"
+  },
+  {
+   "id": "0d6265309d",
+   "es": "¿Dónde empezó el incendio?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u10-fire"
+  },
+  {
+   "id": "a3182761d2",
+   "es": "En un restaurante del centro",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u10-fire"
+  },
+  {
+   "id": "62663a22c4",
+   "es": "En un hotel",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3a0a0dc8d2",
+   "es": "En una escuela",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a716fbff7a",
+   "es": "En un edificio de oficinas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9403be3436",
+   "es": "La noticia dice: «A fire started in a restaurant in the city center last night».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u10-fire"
+  },
+  {
+   "id": "8a291eb2c5",
+   "es": "¿Qué dijo el dueño?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u10-fire"
+  },
+  {
+   "id": "6a5e771845",
+   "es": "Que el restaurante iba a abrir de nuevo el mes que viene",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u10-fire"
+  },
+  {
+   "id": "b75ed2b942",
+   "es": "Que el restaurante cerraba",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "16876acfae",
+   "es": "Que nadie estaba ahí",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "086cb76b33",
+   "es": "Que la policía llegó tarde",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "15653aa1ab",
+   "es": "La noticia dice: «The owner said that the restaurant would open again next month».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u10-fire"
+  },
+  {
+   "id": "53250b55a5",
+   "es": "Fuentes confiables",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "9d924caa9b",
+   "es": "Hablar de política, anuncios y noticias falsas; revisar la fuente.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "bf26dffeea",
+   "es": "Government (gobierno), president (presidente) y election (elecciones) son palabras frecuentes en las noticias. Announce es anunciar. Fake news son noticias falsas: antes de compartir, check the source (revisa la fuente).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "d1c812039c",
+   "es": "Siempre revisa la fuente.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Always check the source."
+  },
+  {
+   "id": "839924168a",
+   "es": "Entiendes noticias sobre el gobierno y las elecciones.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "cb60778db5",
+   "es": "Reconoces noticias falsas y revisas la fuente.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "e47381eec2",
+   "es": "¿Qué significa «source»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "a612522188",
+   "es": "Un periodista escribe sobre noticias falsas.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u10-fake"
+  },
+  {
+   "id": "5aa07b8086",
+   "es": "¿Qué decía la nota falsa?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u10-fake"
+  },
+  {
+   "id": "b2c5d4daf7",
+   "es": "Que el zoológico iba a cerrar",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u10-fake"
+  },
+  {
+   "id": "d254dac4fb",
+   "es": "Que el zoológico era gratis",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c1947ed2b9",
+   "es": "Que abrían un zoológico nuevo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d565656fcc",
+   "es": "Que había un incendio",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b2afd8ebdf",
+   "es": "Ben escribe: «an article which said that the city zoo was closing. It was fake news».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u10-fake"
+  },
+  {
+   "id": "510e4a83b6",
+   "es": "¿Qué aconseja Ben antes de compartir una noticia?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u10-fake"
+  },
+  {
+   "id": "82fecb5bf9",
+   "es": "Revisar la fuente",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u10-fake"
+  },
+  {
+   "id": "9dd6058dd0",
+   "es": "Leer sólo los titulares",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "32ff15892a",
+   "es": "Preguntar a un amigo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6b871509c6",
+   "es": "No leer noticias",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "cc6d774086",
+   "es": "Ben escribe: «Before you share a story, check the source».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u10-fake"
+  },
+  {
+   "id": "86d02c01c2",
+   "es": "El gobierno anunció nuevas normas para las escuelas.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "The government announced new rules for schools."
+  },
+  {
+   "id": "e50bb9d790",
+   "es": "Las elecciones son en octubre. ¿A quién vas a votar?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "The election is in October. Who will you vote for?"
+  },
+  {
+   "id": "b609e6f175",
+   "es": "revisar la fuente",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What should you do before you share a story? (revisar la fuente)"
+  },
+  {
+   "id": "7b7d598c6d",
+   "es": "¿Qué tienes que hacer antes de compartir una noticia?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What should you do before you share a story? (revisar la fuente)"
+  },
+  {
+   "id": "3b5eb4ad91",
+   "es": "Lo que te contaron",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "9b16a9999b",
+   "es": "Cuenta una conversación reciente en estilo indirecto: qué te dijo alguien (said / told me) y qué te preguntó (asked if…).",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "653edd28ef",
+   "es": "Usas said (that) o told me (that)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "43d96eb7e0",
+   "es": "Cuentas una pregunta con asked if / asked where…",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "e483648b6e",
+   "es": "Conté lo que dijo con said o told.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "b3e397cbf0",
+   "es": "Pasé los verbos al pasado.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "d4f256c095",
+   "es": "Conté una pregunta con asked if.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.b1-u10-headlines": {
+   "setting": "Los titulares de un sitio de noticias.",
+   "lines": [
+    "Today’s headlines",
+    "New train line will open in March",
+    "Local team wins the national cup",
+    "Prices of fruit and vegetables go up again",
+    "Students build a robot that helps old people"
+   ]
+  },
+  "en.stim.b1-u10-boss": {
+   "setting": "Mia le cuenta a Sam lo que dijo el jefe.",
+   "lines": [
+    "Sam: What did the boss say at the meeting?",
+    "Mia: He said that the company was going to hire five new people.",
+    "Mia: He also told us that we could work from home on Fridays.",
+    "Sam: Great news! Did anyone ask about the salaries?",
+    "Mia: Yes, Kate asked if we would get more money. He said he didn’t know yet."
+   ]
+  },
+  "en.stim.b1-u10-fire": {
+   "setting": "Una noticia en la radio.",
+   "lines": [
+    "Reporter: A fire started in a restaurant in the city center last night.",
+    "Reporter: According to the police, ten people were rescued, and nobody was badly injured.",
+    "Reporter: The owner said that the restaurant would open again next month."
+   ]
+  },
+  "en.stim.b1-u10-fake": {
+   "setting": "Un periodista escribe sobre noticias falsas.",
+   "lines": [
+    "Last week, a lot of people shared an article which said that the city zoo was closing.",
+    "It was fake news. The zoo explained that it was open as usual.",
+    "Before you share a story, check the source.",
+    "Is it a real newspaper? Has the story been on other news sites?"
+   ]
+  }
+ }
+}

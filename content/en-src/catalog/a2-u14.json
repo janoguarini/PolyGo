@@ -1,0 +1,1436 @@
+{
+ "unit": "a2-u14",
+ "level": "A2",
+ "titleEn": "Free time and invitations",
+ "strings": [
+  {
+   "id": "706f5e4314",
+   "es": "Tiempo libre e invitaciones",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Free time and invitations"
+  },
+  {
+   "id": "7850cfac13",
+   "es": "Pasatiempos, invitar, proponer planes, aceptar o rechazar y quedar para verse.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "a0dd153598",
+   "es": "Puedes hablar de tus pasatiempos, invitar a alguien y aceptar o rechazar un plan.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "85c9110da8",
+   "es": "Invitar y proponer",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "d949d11cb5",
+   "es": "Would you like to + verbo invita (¿te gustaría…?). Let's + verbo y How about + sustantivo o verbo con -ing proponen un plan. Se acepta con I'd love to y se rechaza con Sorry, I can't.",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "d3781d2954",
+   "es": "¿Te gustaría ir al cine?",
+   "kinds": [
+    "example",
+    "word.example"
+   ],
+   "en": "Would you like to go to the cinema?"
+  },
+  {
+   "id": "e3fda78a57",
+   "es": "¡Salgamos esta noche!",
+   "kinds": [
+    "example"
+   ],
+   "en": "Let's go out tonight!"
+  },
+  {
+   "id": "92559874e6",
+   "es": "Perdón, no puedo. Quizás otro día.",
+   "kinds": [
+    "example",
+    "word.example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "Sorry, I can't. Maybe another time."
+  },
+  {
+   "id": "311fb18489",
+   "es": "pasatiempo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "hobby"
+  },
+  {
+   "id": "0834a044f5",
+   "es": "hobby",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "hobby"
+  },
+  {
+   "id": "03bc892b84",
+   "es": "afición",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "hobby"
+  },
+  {
+   "id": "e3882273d0",
+   "es": "Mi pasatiempo es cocinar.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "My hobby is cooking."
+  },
+  {
+   "id": "a0dd395584",
+   "es": "guitarra",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "guitar"
+  },
+  {
+   "id": "a9073621b1",
+   "es": "Toco la guitarra.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I play the guitar."
+  },
+  {
+   "id": "5474f3b03f",
+   "es": "pintar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "paint"
+  },
+  {
+   "id": "a5e387530d",
+   "es": "A ella le gusta pintar los domingos.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She likes to paint on Sundays."
+  },
+  {
+   "id": "8980bb138a",
+   "es": "gimnasio",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "gym"
+  },
+  {
+   "id": "8d1a7d0533",
+   "es": "Voy al gimnasio los lunes.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I go to the gym on Mondays."
+  },
+  {
+   "id": "d3688d05e2",
+   "es": "recital / concierto",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "concert"
+  },
+  {
+   "id": "469df40c34",
+   "es": "recital",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "concert"
+  },
+  {
+   "id": "b0f85d3ba5",
+   "es": "concierto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "concert"
+  },
+  {
+   "id": "bf033b797f",
+   "es": "El recital es el viernes.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The concert is on Friday."
+  },
+  {
+   "id": "bae6f50c3b",
+   "es": "salir (a divertirse)",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "go out"
+  },
+  {
+   "id": "45129624d2",
+   "es": "Salimos los sábados.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We go out on Saturdays."
+  },
+  {
+   "id": "208b6209c4",
+   "es": "¿te gustaría…?",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "would you like to"
+  },
+  {
+   "id": "c7cb9784aa",
+   "es": "te gustaría",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "would you like to"
+  },
+  {
+   "id": "37e1e6c36e",
+   "es": "le gustaría",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "would you like to"
+  },
+  {
+   "id": "5b2ada4154",
+   "es": "vamos a… / hagamos…",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "let's"
+  },
+  {
+   "id": "4708e013ae",
+   "es": "hagamos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "let's"
+  },
+  {
+   "id": "49a84a5c79",
+   "es": "¡Vamos al parque!",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Let's go to the park!"
+  },
+  {
+   "id": "243ee10d06",
+   "es": "¿qué tal si…? / ¿y si…?",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "how about"
+  },
+  {
+   "id": "2f736f8b20",
+   "es": "qué tal si",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "how about"
+  },
+  {
+   "id": "c91cc5ff89",
+   "es": "y si",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "how about"
+  },
+  {
+   "id": "5f69cdb648",
+   "es": "qué tal",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "how about"
+  },
+  {
+   "id": "0b8d92cbb2",
+   "es": "¿Qué tal el domingo?",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "How about Sunday?"
+  },
+  {
+   "id": "a2b7221a93",
+   "es": "me encantaría",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "I'd love to"
+  },
+  {
+   "id": "7c162b357e",
+   "es": "¡Sí, me encantaría!",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Yes, I'd love to!"
+  },
+  {
+   "id": "3c68219095",
+   "es": "otro día / en otro momento",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "another time"
+  },
+  {
+   "id": "8151d8f38e",
+   "es": "otro día",
+   "kinds": [
+    "word.accepted",
+    "exercise.option"
+   ],
+   "en": "another time"
+  },
+  {
+   "id": "f8ba841692",
+   "es": "en otro momento",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "another time"
+  },
+  {
+   "id": "f04b6253bd",
+   "es": "libre / desocupado",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "free"
+  },
+  {
+   "id": "78253216f7",
+   "es": "libre",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "free"
+  },
+  {
+   "id": "f5c2876f2d",
+   "es": "desocupado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "free"
+  },
+  {
+   "id": "08f6d04389",
+   "es": "desocupada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "free"
+  },
+  {
+   "id": "7f5b8ba2bc",
+   "es": "¿Estás libre el sábado?",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Are you free on Saturday?"
+  },
+  {
+   "id": "8ac0d462e4",
+   "es": "juntos / juntas",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "together"
+  },
+  {
+   "id": "841bb71f99",
+   "es": "juntos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "together"
+  },
+  {
+   "id": "d41bd6647e",
+   "es": "juntas",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "together"
+  },
+  {
+   "id": "675b9ced82",
+   "es": "Cocinemos juntos.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Let's cook together."
+  },
+  {
+   "id": "a73c6f06a1",
+   "es": "encontrarse / verse",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "meet"
+  },
+  {
+   "id": "4cf3de137d",
+   "es": "encontrarse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "meet"
+  },
+  {
+   "id": "5abde01ff9",
+   "es": "verse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "meet"
+  },
+  {
+   "id": "d6d3b95a8f",
+   "es": "juntarse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "meet"
+  },
+  {
+   "id": "06765d69e8",
+   "es": "Encontrémonos en la estación.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Let's meet at the station."
+  },
+  {
+   "id": "fd8562ce69",
+   "es": "a menudo / seguido",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "often"
+  },
+  {
+   "id": "505511e9c3",
+   "es": "a menudo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "often"
+  },
+  {
+   "id": "1fc9374e66",
+   "es": "seguido",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "often"
+  },
+  {
+   "id": "cac1e53258",
+   "es": "con frecuencia",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "often"
+  },
+  {
+   "id": "86997ba6df",
+   "es": "Voy seguido al gimnasio.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I often go to the gym."
+  },
+  {
+   "id": "f974a9c579",
+   "es": "una vez por semana",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "once a week"
+  },
+  {
+   "id": "27ee777bb0",
+   "es": "Juego al fútbol una vez por semana.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I play football once a week."
+  },
+  {
+   "id": "cba120707a",
+   "es": "listo / lista",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "ready"
+  },
+  {
+   "id": "fee981365e",
+   "es": "listo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "ready"
+  },
+  {
+   "id": "0296c43c24",
+   "es": "lista",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "ready"
+  },
+  {
+   "id": "2fd8420cdd",
+   "es": "preparado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "ready"
+  },
+  {
+   "id": "9405d4be5e",
+   "es": "preparada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "ready"
+  },
+  {
+   "id": "6207427afe",
+   "es": "¿Estás listo?",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "Are you ready?"
+  },
+  {
+   "id": "8cf969c2a2",
+   "es": "Contar qué haces en tu tiempo libre y con qué frecuencia.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "c91ff706e1",
+   "es": "Para hablar de tus pasatiempos (hobbies) usas el presente simple y expresiones de frecuencia: often (a menudo), once a week (una vez por semana), twice a week (dos veces por semana).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "8f198a500a",
+   "es": "Voy al gimnasio una vez por semana.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I go to the gym once a week."
+  },
+  {
+   "id": "82c4d762b0",
+   "es": "Cuentas qué haces en tu tiempo libre.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "57c006b9d2",
+   "es": "Dices con qué frecuencia: often, once a week, twice a week.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "1597e0c628",
+   "es": "Toco la guitarra todas las noches.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I play the guitar every evening."
+  },
+  {
+   "id": "e02ce04fb4",
+   "es": "dos veces por semana",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "How often do you go to the gym? (dos veces por semana)"
+  },
+  {
+   "id": "826542f61e",
+   "es": "¿Con qué frecuencia vas al gimnasio?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How often do you go to the gym? (dos veces por semana)"
+  },
+  {
+   "id": "46b1b67ef9",
+   "es": "Voy al gimnasio a menudo.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I often go to the gym."
+  },
+  {
+   "id": "3a237d2039",
+   "es": "¿Te gustaría venir?",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "660d6a1391",
+   "es": "Invitar a alguien y aceptar o rechazar una invitación.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "9eb776a185",
+   "es": "Para invitar: Would you like to…? (¿te gustaría…?). Para aceptar: I'd love to! (¡me encantaría!). Para rechazar con amabilidad: Sorry, I can't. Maybe another time.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "db98d4d838",
+   "es": "Invitas con Would you like to…?",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "33875e2c27",
+   "es": "Aceptas con I'd love to y rechazas con Sorry, I can't.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "f69cef0181",
+   "es": "¿Qué significa «I'd love to»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "6b66b0561c",
+   "es": "no puedo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6f8a4935f5",
+   "es": "¿Te gustaría ir a la playa el domingo?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Would you like to go to the beach on Sunday?"
+  },
+  {
+   "id": "46497ec135",
+   "es": "Would you like to…? invita. Do you like…? pregunta si algo te gusta.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Would you like to"
+  },
+  {
+   "id": "c255ede1da",
+   "es": "Mia llama a Leo para invitarlo al cine.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a2-u14-invite"
+  },
+  {
+   "id": "0c0c653db1",
+   "es": "¿Por qué Leo no puede ir el viernes?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u14-invite"
+  },
+  {
+   "id": "47da4c0538",
+   "es": "Tiene que trabajar",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u14-invite"
+  },
+  {
+   "id": "d00e30f0e3",
+   "es": "Está enfermo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2201b99d7f",
+   "es": "Va a un recital",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a29e895a4f",
+   "es": "No le gusta el cine",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "952cabb795",
+   "es": "Leo dice: «I have to work on Friday».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u14-invite"
+  },
+  {
+   "id": "ae33e02031",
+   "es": "¿Qué día pueden ir al cine?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u14-invite"
+  },
+  {
+   "id": "580fa22d69",
+   "es": "El viernes",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e34db89ce7",
+   "es": "Ningún día",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d7a3f02515",
+   "es": "Leo está libre el sábado y dice «I’d love to go!».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u14-invite"
+  },
+  {
+   "id": "3c9305c4c3",
+   "es": "¿Te gustaría ir al parque?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Would you like to go to the park? (sí)"
+  },
+  {
+   "id": "5cd0217b61",
+   "es": "Proponer un plan",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "123c70e4ac",
+   "es": "Proponer planes con Let's… y How about…?",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "2626c6196a",
+   "es": "Para proponer algo: Let's… (¡vamos a…!) o How about…? (¿qué tal si…?). Después de how about va un sustantivo o un verbo con -ing: How about Sunday? How about going out?",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "e0e2febd84",
+   "es": "Propones planes con Let's… y How about…?",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "a5e0002735",
+   "es": "Dices que hacen algo juntos: together.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "7c271a7e0e",
+   "es": "¡Vamos juntos al recital!",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Let's go to the concert together!"
+  },
+  {
+   "id": "786ddd872b",
+   "es": "Let's = let us: propone hacer algo juntos.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Let's"
+  },
+  {
+   "id": "30893711c6",
+   "es": "¿Qué tal si salimos esta noche?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How about going out tonight?"
+  },
+  {
+   "id": "075fc73a79",
+   "es": "Después de how about, el verbo va con -ing.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "going"
+  },
+  {
+   "id": "3bf106bdec",
+   "es": "Leo y Mia hablan del fin de semana.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a2-u14-plans"
+  },
+  {
+   "id": "524d622d87",
+   "es": "¿Qué propone Mia primero?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u14-plans"
+  },
+  {
+   "id": "360e77bc70",
+   "es": "Ir a un recital en el parque",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u14-plans"
+  },
+  {
+   "id": "26dd7c0a9f",
+   "es": "Cenar en un restaurante",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f2a8546999",
+   "es": "Ir al cine",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1cff9df495",
+   "es": "Quedarse en casa",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1d2b15afa3",
+   "es": "Mia dice: «How about a concert? There’s a concert in the park».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u14-plans"
+  },
+  {
+   "id": "8d79f41d57",
+   "es": "¿Qué van a hacer después del recital?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u14-plans"
+  },
+  {
+   "id": "1762c7eac8",
+   "es": "Salir a cenar",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u14-plans"
+  },
+  {
+   "id": "093701bc4b",
+   "es": "Volver a casa",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "98fc4ebe45",
+   "es": "Ir al gimnasio",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "72bde6fc01",
+   "es": "Ir a otro recital",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d405f002b0",
+   "es": "Mia propone: «Let’s go out for dinner after the concert».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u14-plans"
+  },
+  {
+   "id": "001991e069",
+   "es": "¿Qué tal una película esta noche?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How about a movie tonight?"
+  },
+  {
+   "id": "0a8bc1130b",
+   "es": "¡Cocinemos juntos!",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "Let's cook together!"
+  },
+  {
+   "id": "f167684329",
+   "es": "Quedar para verse",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "f287b009a9",
+   "es": "Acordar dónde y a qué hora encontrarse.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "97b950b4b4",
+   "es": "Para quedar se dice el lugar y la hora: Let's meet at the station at seven (encontrémonos en la estación a las siete). Para saber si alguien terminó de prepararse: Are you ready? (¿estás listo?).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "7f14c3527c",
+   "es": "Encontrémonos en la estación a las siete.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "Let's meet at the station at seven."
+  },
+  {
+   "id": "0aea500e40",
+   "es": "Propones un lugar y una hora para encontrarse.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "23ac16afb7",
+   "es": "Preguntas si alguien está listo: Are you ready?",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "6563431095",
+   "es": "¿Qué significa «meet»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "ee0098adf6",
+   "es": "Después de let's va el verbo en su forma base: meet.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "meet"
+  },
+  {
+   "id": "bd2fcaaf82",
+   "es": "¿Estás listo? La película empieza a las nueve.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Are you ready? The movie starts at nine."
+  },
+  {
+   "id": "8cbd248854",
+   "es": "Mia le escribe a Leo antes del recital.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a2-u14-meet"
+  },
+  {
+   "id": "f9a4e9af46",
+   "es": "¿Dónde se van a encontrar?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u14-meet"
+  },
+  {
+   "id": "31ec85f47e",
+   "es": "En el gimnasio",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2bc4ed4b82",
+   "es": "En el recital",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "438d29bd8a",
+   "es": "En la casa de Mia",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7a3e714eae",
+   "es": "Mia escribe: «Let’s meet at the station at 7:30».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u14-meet"
+  },
+  {
+   "id": "ab1d76b853",
+   "es": "¿A qué hora empieza el recital?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u14-meet"
+  },
+  {
+   "id": "920ef8f737",
+   "es": "A las 8",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u14-meet"
+  },
+  {
+   "id": "a27b888823",
+   "es": "A las 7:30",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "802518e9c3",
+   "es": "A las 7",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "82a09885fb",
+   "es": "El mensaje dice: «The concert starts at 8». A las 7:30 se encuentran y a las 7 Mia está lista.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u14-meet"
+  },
+  {
+   "id": "c40996bf41",
+   "es": "¿A qué hora quieres que nos encontremos?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What time do you want to meet?"
+  },
+  {
+   "id": "e2f9367a03",
+   "es": "en el parque",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Where do you want to meet? (en el parque)"
+  },
+  {
+   "id": "2edd8f1bba",
+   "es": "¿Dónde quieres que nos encontremos?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Where do you want to meet? (en el parque)"
+  },
+  {
+   "id": "2da536d554",
+   "es": "¿Estás lista?",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "Are you ready?"
+  },
+  {
+   "id": "c8876c8b49",
+   "es": "Responder una invitación",
+   "kinds": [
+    "lesson.title",
+    "writing.title"
+   ]
+  },
+  {
+   "id": "0673952d44",
+   "es": "Entender una invitación escrita y responderla.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "c6a605d50f",
+   "es": "Una invitación dice qué es, cuándo y dónde. Para responder, agradece y acepta o rechaza dando una razón: Thank you! I’d love to go. / Sorry, I can’t. I have to work.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "f2933e6349",
+   "es": "¡Gracias! Me encantaría ir.",
+   "kinds": [
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "Thank you! I'd love to go."
+  },
+  {
+   "id": "21d98303aa",
+   "es": "Perdón, no puedo. Tengo que trabajar.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Sorry, I can't. I have to work."
+  },
+  {
+   "id": "19e87ac2c9",
+   "es": "Entiendes una invitación escrita: qué, cuándo y dónde.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "89f44428db",
+   "es": "Aceptas o rechazas una invitación dando una razón.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "edf5de31d0",
+   "es": "Mia les escribe a sus amigos.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a2-u14-party"
+  },
+  {
+   "id": "732b8c1799",
+   "es": "¿Qué celebra Mia?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u14-party"
+  },
+  {
+   "id": "d889a323c4",
+   "es": "Su cumpleaños",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u14-party"
+  },
+  {
+   "id": "2fa5c2fbf2",
+   "es": "Una fiesta de trabajo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "cf54a4ca5c",
+   "es": "Que se mudó",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4e7f18baba",
+   "es": "Un recital",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "77bcf12c4d",
+   "es": "Mia escribe: «It’s my birthday on Saturday!».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u14-party"
+  },
+  {
+   "id": "b841bc114e",
+   "es": "¿Dónde es la fiesta?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u14-party"
+  },
+  {
+   "id": "4612ca3c74",
+   "es": "En un restaurante",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b451887f12",
+   "es": "En el parque",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7b3ee5d4ff",
+   "es": "El mensaje dice: «It’s at my house at eight».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u14-party"
+  },
+  {
+   "id": "015449e90e",
+   "es": "¿Te gustaría…?",
+   "kinds": [
+    "exercise.pair"
+   ],
+   "en": "Would you like to…?"
+  },
+  {
+   "id": "048989ba7b",
+   "es": "¡Vamos a…!",
+   "kinds": [
+    "exercise.pair"
+   ],
+   "en": "Let's…"
+  },
+  {
+   "id": "03bbdefb8c",
+   "es": "¿Qué tal si…?",
+   "kinds": [
+    "exercise.pair"
+   ],
+   "en": "How about…?"
+  },
+  {
+   "id": "663139732b",
+   "es": "Me encantaría.",
+   "kinds": [
+    "exercise.pair"
+   ],
+   "en": "I'd love to."
+  },
+  {
+   "id": "e3fe0ce49d",
+   "es": "¿Te gustaría salir el viernes?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Would you like to go out on Friday?"
+  },
+  {
+   "id": "a97090d112",
+   "es": "no: tienes que trabajar",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Would you like to go to the concert? (no: tienes que trabajar)"
+  },
+  {
+   "id": "673a62c9f3",
+   "es": "¿Te gustaría ir al recital?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Would you like to go to the concert? (no: tienes que trabajar)"
+  },
+  {
+   "id": "0e8a5dbf2d",
+   "es": "Mia te invita a su cumpleaños. Respóndele: agradece y acepta, o rechaza con una razón y propón otro plan.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "69caf76dc9",
+   "es": "invitación",
+   "kinds": [
+    "writing.glossary"
+   ],
+   "en": "invitation"
+  },
+  {
+   "id": "3ec385c695",
+   "es": "Agradeces (Thank you / Thanks)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "e56dee629e",
+   "es": "Aceptas (I’d love to) o rechazas (Sorry, I can’t)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "25975e36ae",
+   "es": "Propones algo con Let's… o How about…? (opcional)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "145bc14b7a",
+   "es": "Agradecí.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "277cd4d7fe",
+   "es": "Acepté o rechacé con una razón.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "7311a408a8",
+   "es": "Propuse otro plan.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.a2-u14-invite": {
+   "setting": "Mia llama a Leo para invitarlo al cine.",
+   "lines": [
+    "Mia: Hi Leo! Would you like to go to the cinema on Friday?",
+    "Leo: Sorry, I can't. I have to work on Friday.",
+    "Mia: Are you free on Saturday?",
+    "Leo: Yes, I'm free on Saturday. I'd love to go!"
+   ]
+  },
+  "en.stim.a2-u14-plans": {
+   "setting": "Leo y Mia hablan del fin de semana.",
+   "lines": [
+    "Leo: What do you want to do on Saturday?",
+    "Mia: How about a concert? There's a concert in the park.",
+    "Leo: Great! Let's go together.",
+    "Mia: Yes, and let's go out for dinner after the concert."
+   ]
+  },
+  "en.stim.a2-u14-meet": {
+   "setting": "Mia le escribe a Leo antes del recital.",
+   "lines": [
+    "Hi Leo!",
+    "The concert starts at 8.",
+    "Let's meet at the station at 7:30.",
+    "I'm at the gym now, but I will be ready at 7.",
+    "See you!"
+   ]
+  },
+  "en.stim.a2-u14-party": {
+   "setting": "Mia les escribe a sus amigos.",
+   "lines": [
+    "Hi friends!",
+    "It's my birthday on Saturday!",
+    "Would you like to come to my party?",
+    "It's at my house at eight.",
+    "We can dance and sing together. I hope you're free!",
+    "Mia"
+   ]
+  }
+ }
+}

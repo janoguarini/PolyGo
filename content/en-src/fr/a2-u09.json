@@ -1,0 +1,191 @@
+{
+  "unit": "a2-u09",
+  "strings": {
+    "0a24a42a29": "Santé et corps",
+    "20871d9880": "Les parties du corps, où tu as mal et des conseils avec should.",
+    "f5cbe7d881": "tête",
+    "cfff26e228": "J’ai mal à la tête.",
+    "3c52384d87": "œil",
+    "198317ad9e": "J’ai les yeux verts.",
+    "e778b2483d": "oreille",
+    "92e0206061": "oreille",
+    "1c0e6c4a33": "",
+    "6b6cc62480": "J’ai mal à l’oreille.",
+    "7ab2d6e73d": "bouche",
+    "81c7de5ae5": "Ouvre la bouche, s’il te plaît.",
+    "3d22a85412": "dents",
+    "9200ad2e1a": "dent",
+    "f78dd112ce": "Je me brosse les dents tous les matins.",
+    "3ebf7a087f": "main",
+    "b48aa016a6": "Lave-toi les mains.",
+    "a50f147c46": "bras",
+    "9a902c71aa": "J’ai mal au bras.",
+    "d721685100": "jambe",
+    "76b86dfd9f": "J’ai les jambes fatiguées.",
+    "558211ed72": "pied",
+    "1f9840803b": "Un pied, deux pieds.",
+    "784166b890": "dos",
+    "195a4b3d82": "J’ai mal au dos.",
+    "595d824756": "ventre / estomac",
+    "e7ec931fce": "ventre",
+    "e0dc16b8b4": "estomac",
+    "c4d40cfb3a": "le ventre",
+    "e218a290e6": "J’ai mal au ventre.",
+    "9cbd508282": "cheveux",
+    "f082e74f7a": "cheveu",
+    "224086c8f2": "Elle a les cheveux longs et noirs.",
+    "8ca44a92a4": "malade",
+    "fc20a91979": "malade",
+    "65e177faaf": "",
+    "bcbf55ef6f": "Je suis malade. Je ne peux pas aller à l’école.",
+    "df5e74fcba": "avoir mal / faire mal",
+    "06517fdb74": "blesser",
+    "9df31abadc": "J’ai mal au pied.",
+    "f53e563d99": "mal de tête",
+    "12f47127ad": "fièvre",
+    "685a60a180": "Tu as de la fièvre.",
+    "44f298fd25": "médecin",
+    "2a819e0c56": "",
+    "72f4be89d6": "docteur",
+    "2b2f4b3d52": "docteure",
+    "61fd8c7d76": "Tu devrais aller chez le médecin.",
+    "757a69a5fd": "médicament / remède",
+    "22521a87b2": "remède",
+    "647bfaaf05": "médicament",
+    "bed9ae713b": "médecine",
+    "4bcabd66c8": "Prends ce médicament trois fois par jour.",
+    "9eec3585cb": "je devrais / tu devrais",
+    "a531348a53": "devrais",
+    "62f2650a40": "tu devrais",
+    "358eff0fcc": "Tu devrais te reposer.",
+    "fafde46045": "je ne devrais pas / tu ne devrais pas",
+    "0ec5d43434": "ne devrais pas",
+    "575ee69ffa": "tu ne devrais pas",
+    "ad7429990f": "Tu ne devrais pas aller travailler.",
+    "2afc85ae1b": "se reposer",
+    "93c64c3e55": "repos",
+    "9099bf4262": "Tu devrais te reposer et dormir.",
+    "4c01a3227f": "Le corps",
+    "269f0104f2": "La tête, les yeux, la bouche et plus encore.",
+    "5ddfce1dbd": "Hair (les cheveux) ne prend pas de -s : en anglais, c’est un singulier, alors qu’en français on dit « les cheveux ».",
+    "75e42af981": "Mains, pieds et dos",
+    "a63ecfdeb3": "D’autres parties du corps et des pluriels irréguliers.",
+    "6f2f0e3828": "Pluriels irréguliers : foot → feet, tooth → teeth.",
+    "5c35a7d33a": "Que veut dire « arm » ?",
+    "a50d02f5fd": "J’ai le dos et les jambes fatigués.",
+    "d344ba8ee1": "Qu’est-ce qui ne va pas ?",
+    "4649f99b03": "Dire où tu as mal et comment tu vas.",
+    "86b1348407": "J’ai mal à la tête. Ma tête me fait mal.",
+    "54778b1308": "J’ai mal à… = my … hurts (avec -s, comme tout verbe avec it).",
+    "1bcad53c56": "Que veut dire « fever » ?",
+    "1f1e8bb53c": "j’ai mal à la tête",
+    "beaa83df5b": "Should et shouldn't",
+    "c32f656367": "Donner des conseils.",
+    "7e0cc1830a": "Tu as de la fièvre. Tu devrais aller chez le médecin.",
+    "5bf806c0d8": "Should + verbe = tu devrais (un conseil).",
+    "4fb3a14059": "Tu ne devrais pas aller travailler. Tu es malade.",
+    "bae7af3359": "Chez le médecin",
+    "1b6b549918": "Une consultation : symptômes, conseils et médicaments.",
+    "4dbacf6aaf": "Comment tu te sens aujourd’hui ?",
+    "a67bb59ad4": "Le médecin dit que je devrais me reposer.",
+    "39c2886dcf": "Je devrais prendre ce médicament ? — Oui, tu devrais.",
+    "129a0d8e8e": "Je suis malade.",
+    "e29cf7ff17": "Un conseil pour un ami",
+    "5d1a06d3a6": "Ton ami t’écrit qu’il ne se sent pas bien. Réponds-lui : demande-lui où il a mal et donne-lui des conseils avec should et shouldn’t.",
+    "fc3f904b08": "Tu donnes un conseil avec should",
+    "c6b67ad009": "Tu dis quelque chose qu’il ne devrait pas faire avec shouldn’t",
+    "b010eb507c": "Tu parles du corps ou de la santé (head, headache, fever, doctor, medicine…)",
+    "44ef4989d5": "J’ai donné un conseil avec should.",
+    "3192bfeb01": "J’ai utilisé shouldn’t.",
+    "4916e6d19c": "J’ai parlé de la santé."
+  },
+  "accepted": {
+    "head": [
+      "tête"
+    ],
+    "eye": [
+      "œil",
+      "yeux"
+    ],
+    "ear": [
+      "oreille",
+      "oreilles"
+    ],
+    "mouth": [
+      "bouche"
+    ],
+    "teeth": [
+      "dents",
+      "dent"
+    ],
+    "hand": [
+      "main",
+      "mains"
+    ],
+    "arm": [
+      "bras"
+    ],
+    "leg": [
+      "jambe",
+      "jambes"
+    ],
+    "foot": [
+      "pied"
+    ],
+    "back": [
+      "dos"
+    ],
+    "stomach": [
+      "ventre",
+      "estomac"
+    ],
+    "hair": [
+      "cheveux",
+      "cheveu",
+      "les cheveux"
+    ],
+    "sick": [
+      "malade",
+      "malades"
+    ],
+    "hurt": [
+      "avoir mal",
+      "faire mal",
+      "blesser"
+    ],
+    "headache": [
+      "mal de tête",
+      "migraine"
+    ],
+    "fever": [
+      "fièvre"
+    ],
+    "doctor": [
+      "médecin",
+      "docteur",
+      "docteure"
+    ],
+    "medicine": [
+      "médicament",
+      "remède",
+      "médecine"
+    ],
+    "should": [
+      "devrais",
+      "devrait",
+      "tu devrais",
+      "je devrais"
+    ],
+    "shouldn't": [
+      "ne devrais pas",
+      "ne devrait pas",
+      "tu ne devrais pas"
+    ],
+    "rest": [
+      "se reposer",
+      "reposer",
+      "repos"
+    ]
+  },
+  "notes": "1) hair: la explicación 5ddfce1dbd se adaptó al francés: «les cheveux» es plural en francés y hair nunca lleva -s en inglés. 2) Los «Me duele X» pasaron a «J’ai mal à X» (lo natural); en 86b1348407 la segunda frase «Me duele la cabeza» → «Ma tête me fait mal» para distinguirla de la primera y calcar my head hurts. La explicación 54778b1308 → «J’ai mal à… = my … hurts». 3) rest: falso amigo rest ≠ rester (rester = stay); no hay texto de apoyo donde explicarlo sin agregar información; se tradujo «se reposer». Podría valer una explicación en la lección. 4) Aceptadas sin equivalente francés distinto quedaron vacías: «oído» (en francés es «oreille» también), «enferma» (= malade) y «médica» (= médecin); «doctora» → «docteure». 5) should → «je devrais / tu devrais» (par) y «devrais» (opción), para que sigan distintos. 6) Problemas del catálogo: 4dbacf6aaf tiene en=«How do you feel today? (mejor)» (anotación en español dentro del inglés; la cue «mejor» está en A2 U7 → «mieux»); 39c2886dcf: el español dice «¿Tengo que tomar este remedio? — Sí.» pero el inglés es «Should I take this medicine? — Yes, you should.»; se tradujo según el inglés («Je devrais prendre ce médicament ? — Oui, tu devrais.»). d344ba8ee1 («¿Qué te pasa?») es título y exercise.translation sin en: «Qu’est-ce qui ne va pas ?»."
+}

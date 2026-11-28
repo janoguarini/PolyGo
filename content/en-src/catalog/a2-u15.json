@@ -1,0 +1,1647 @@
+{
+ "unit": "a2-u15",
+ "level": "A2",
+ "titleEn": "Describing people and places",
+ "strings": [
+  {
+   "id": "8fcbe47829",
+   "es": "Cómo es",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Describing people and places"
+  },
+  {
+   "id": "01d31bfa89",
+   "es": "El aspecto y el carácter de una persona, tu barrio y cómo comparar personas y lugares.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "ed66b936f3",
+   "es": "Puedes describir a una persona y un lugar, y compararlos.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "73721f297a",
+   "es": "Look like y be like",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "a6d9d432f9",
+   "es": "What does she look like? pregunta por el aspecto; What is she like?, por el carácter. El aspecto se describe con be (She is tall) y con have (She has curly hair).",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "6a60679481",
+   "es": "¿Cómo es (físicamente)?",
+   "kinds": [
+    "example"
+   ],
+   "en": "What does she look like?"
+  },
+  {
+   "id": "dd69bade82",
+   "es": "Tiene el pelo largo y rubio.",
+   "kinds": [
+    "example",
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "She has long blond hair."
+  },
+  {
+   "id": "489f82d155",
+   "es": "¿Cómo es (de carácter)? Es simpático.",
+   "kinds": [
+    "example"
+   ],
+   "en": "What's he like? He's friendly."
+  },
+  {
+   "id": "d881287aa2",
+   "es": "ser (de aspecto) / parecerse a",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "look like"
+  },
+  {
+   "id": "5862babbde",
+   "es": "parecerse a",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "look like"
+  },
+  {
+   "id": "d31b86ba52",
+   "es": "parecerse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "look like"
+  },
+  {
+   "id": "6fe121ad32",
+   "es": "¿Cómo es ella (físicamente)?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "What does she look like?"
+  },
+  {
+   "id": "dc3352bb0a",
+   "es": "barba",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "beard"
+  },
+  {
+   "id": "b9583edb57",
+   "es": "Mi papá tiene barba.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "My father has a beard."
+  },
+  {
+   "id": "687a110712",
+   "es": "lentes",
+   "kinds": [
+    "word.translation",
+    "word.accepted"
+   ],
+   "en": "glasses"
+  },
+  {
+   "id": "717da21f90",
+   "es": "gafas",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "glasses"
+  },
+  {
+   "id": "09184bbce1",
+   "es": "anteojos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "glasses"
+  },
+  {
+   "id": "73661b0eb0",
+   "es": "Ella usa lentes.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "She wears glasses."
+  },
+  {
+   "id": "11b72737db",
+   "es": "enrulado / rizado",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "curly"
+  },
+  {
+   "id": "863e1c3394",
+   "es": "enrulado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "curly"
+  },
+  {
+   "id": "3054d439d2",
+   "es": "enrulada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "curly"
+  },
+  {
+   "id": "fef5b0ff5c",
+   "es": "rizado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "curly"
+  },
+  {
+   "id": "01e7ba4f9c",
+   "es": "rizada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "curly"
+  },
+  {
+   "id": "5a5cc78c30",
+   "es": "con rulos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "curly"
+  },
+  {
+   "id": "d8477fd985",
+   "es": "Tiene el pelo enrulado.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "He has curly hair."
+  },
+  {
+   "id": "2df5468cfd",
+   "es": "rubio / rubia",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "blond"
+  },
+  {
+   "id": "00aa47c8a6",
+   "es": "rubio",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "blond"
+  },
+  {
+   "id": "a900d6722b",
+   "es": "rubia",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "blond"
+  },
+  {
+   "id": "db83771fb9",
+   "es": "oscuro / morocho",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "dark"
+  },
+  {
+   "id": "056d81558c",
+   "es": "oscuro",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "dark"
+  },
+  {
+   "id": "01fc53cd0a",
+   "es": "oscura",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "dark"
+  },
+  {
+   "id": "45710bf7b4",
+   "es": "morocho",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "dark"
+  },
+  {
+   "id": "ee4a6c341f",
+   "es": "morocha",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "dark"
+  },
+  {
+   "id": "fdd186f7c5",
+   "es": "Tiene el pelo corto y oscuro.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "He has short dark hair."
+  },
+  {
+   "id": "2bebce3c08",
+   "es": "delgado / flaco",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "thin"
+  },
+  {
+   "id": "2eddb42f1c",
+   "es": "delgado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "thin"
+  },
+  {
+   "id": "cfa9ce43d1",
+   "es": "delgada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "thin"
+  },
+  {
+   "id": "aec98ebd92",
+   "es": "flaco",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "thin"
+  },
+  {
+   "id": "589935b962",
+   "es": "flaca",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "thin"
+  },
+  {
+   "id": "0a5a41a16d",
+   "es": "Mi hermano es alto y flaco.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My brother is tall and thin."
+  },
+  {
+   "id": "e67dda1f39",
+   "es": "simpático / amigable",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "friendly"
+  },
+  {
+   "id": "749644678d",
+   "es": "simpático",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "friendly"
+  },
+  {
+   "id": "6428fc3f04",
+   "es": "simpática",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "friendly"
+  },
+  {
+   "id": "f76f6f376d",
+   "es": "amigable",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "friendly"
+  },
+  {
+   "id": "b703781d0c",
+   "es": "Nuestra profesora es muy simpática.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Our teacher is very friendly."
+  },
+  {
+   "id": "7d07faa3b6",
+   "es": "amable",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "kind"
+  },
+  {
+   "id": "54795ebee4",
+   "es": "Mi abuela es muy amable.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "My grandmother is very kind."
+  },
+  {
+   "id": "83e4ebb5cc",
+   "es": "gracioso / graciosa",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "funny"
+  },
+  {
+   "id": "575a5b2f86",
+   "es": "gracioso",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "funny"
+  },
+  {
+   "id": "e8eaa8424d",
+   "es": "graciosa",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "funny"
+  },
+  {
+   "id": "077bcd8051",
+   "es": "chistoso",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "funny"
+  },
+  {
+   "id": "b716a374db",
+   "es": "chistosa",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "funny"
+  },
+  {
+   "id": "9ecdbe8ed5",
+   "es": "Mi hermano es muy gracioso.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My brother is very funny."
+  },
+  {
+   "id": "3aa25169c8",
+   "es": "tímido / tímida",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "shy"
+  },
+  {
+   "id": "2819e0a945",
+   "es": "tímido",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "shy"
+  },
+  {
+   "id": "0fcc50b19c",
+   "es": "tímida",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "shy"
+  },
+  {
+   "id": "000f407e02",
+   "es": "Es tímido, pero es muy buena persona.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "He's shy, but he's very nice."
+  },
+  {
+   "id": "33d9562a70",
+   "es": "tranquilo / silencioso",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "quiet"
+  },
+  {
+   "id": "cbc7a5cc3f",
+   "es": "tranquilo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "quiet"
+  },
+  {
+   "id": "f9d2487cd1",
+   "es": "tranquila",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "quiet"
+  },
+  {
+   "id": "5e948ff3fd",
+   "es": "silencioso",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "quiet"
+  },
+  {
+   "id": "de51912a2a",
+   "es": "silenciosa",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "quiet"
+  },
+  {
+   "id": "0c06edf359",
+   "es": "callado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "quiet"
+  },
+  {
+   "id": "564f3ddf1c",
+   "es": "callada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "quiet"
+  },
+  {
+   "id": "0b1a1ed657",
+   "es": "Vivo en una calle tranquila.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I live in a quiet street."
+  },
+  {
+   "id": "80f14424d7",
+   "es": "ruidoso / ruidosa",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "noisy"
+  },
+  {
+   "id": "504b0ffb2c",
+   "es": "ruidoso",
+   "kinds": [
+    "word.accepted",
+    "exercise.cue"
+   ],
+   "en": "noisy"
+  },
+  {
+   "id": "4906135880",
+   "es": "ruidosa",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "noisy"
+  },
+  {
+   "id": "c51a489006",
+   "es": "La ciudad es muy ruidosa.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The city is very noisy."
+  },
+  {
+   "id": "c8ab4999f3",
+   "es": "lleno de gente",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "crowded"
+  },
+  {
+   "id": "36e05bb2c8",
+   "es": "llena de gente",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "crowded"
+  },
+  {
+   "id": "b4f75fa278",
+   "es": "repleto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "crowded"
+  },
+  {
+   "id": "62565901e3",
+   "es": "repleta",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "crowded"
+  },
+  {
+   "id": "80d1b64442",
+   "es": "En verano la playa está llena de gente.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The beach is very crowded in summer."
+  },
+  {
+   "id": "e8fc0cfd3d",
+   "es": "moderno / moderna",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "modern"
+  },
+  {
+   "id": "6691c9cc54",
+   "es": "moderno",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "modern"
+  },
+  {
+   "id": "7896029033",
+   "es": "moderna",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "modern"
+  },
+  {
+   "id": "07cc95e5bd",
+   "es": "Viven en una casa moderna.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "They live in a modern house."
+  },
+  {
+   "id": "8fb0b1d255",
+   "es": "sucio / sucia",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "dirty"
+  },
+  {
+   "id": "e7e682c78a",
+   "es": "sucio",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "dirty"
+  },
+  {
+   "id": "07eb8e5b40",
+   "es": "sucia",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "dirty"
+  },
+  {
+   "id": "af67d4f70f",
+   "es": "La calle está sucia.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The street is dirty."
+  },
+  {
+   "id": "19e14bb77e",
+   "es": "barrio",
+   "kinds": [
+    "word.translation",
+    "exercise.hint",
+    "exercise.option"
+   ],
+   "en": "neighborhood"
+  },
+  {
+   "id": "50b8f4edaf",
+   "es": "Mi barrio es tranquilo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My neighborhood is quiet."
+  },
+  {
+   "id": "2276b040af",
+   "es": "¿Cómo es físicamente?",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "28ede38161",
+   "es": "Preguntar y decir cómo es alguien físicamente.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "421a763b3f",
+   "es": "Para preguntar por el aspecto de alguien: What does he look like? Se responde con be (He is tall and thin) o con have para el pelo, la barba o los lentes (She has curly hair. He has a beard).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "8af6f25e3f",
+   "es": "Preguntas por el aspecto con What does he look like?",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "a7ab66a3d1",
+   "es": "Describes el pelo y la cara con have: She has curly hair.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "96097dfb98",
+   "es": "Para el pelo, la barba o los lentes se usa have/has: She has blond hair.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "has"
+  },
+  {
+   "id": "fa8717f97a",
+   "es": "¿Cómo es él (físicamente)?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What does he look like?"
+  },
+  {
+   "id": "92ecf2aab2",
+   "es": "Mi hermana tiene el pelo corto y enrulado.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "My sister has short curly hair."
+  },
+  {
+   "id": "b95347ad8c",
+   "es": "¿Cómo es de carácter?",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "3f397476ce",
+   "es": "Describir el carácter de una persona.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "7b6d3a11fe",
+   "es": "What is she like? pregunta por el carácter (¿cómo es como persona?), y What does she look like?, por el aspecto. El carácter se describe con be: She is kind and funny.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "f3d85c84d8",
+   "es": "¿Cómo es tu profesor?",
+   "kinds": [
+    "example"
+   ],
+   "en": "What is your teacher like?"
+  },
+  {
+   "id": "f967886262",
+   "es": "Es muy simpática.",
+   "kinds": [
+    "example"
+   ],
+   "en": "She's very friendly."
+  },
+  {
+   "id": "4f2af404f5",
+   "es": "Distingues What is she like? (carácter) de What does she look like? (aspecto).",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "0e888f31fa",
+   "es": "Describes el carácter: friendly, kind, funny, shy.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "7ca09bd11e",
+   "es": "¿Qué significa «shy»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "b5cf9b8ce2",
+   "es": "Mi hermano me hace reír. Es muy gracioso.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "My brother makes me laugh. He's very funny."
+  },
+  {
+   "id": "a376bf8340",
+   "es": "¿Cómo es tu nueva jefa? Es muy amable.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What is your new boss like? She is very kind."
+  },
+  {
+   "id": "23bb928c5f",
+   "es": "Para el carácter: What is she like? (con be y sin look).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "is"
+  },
+  {
+   "id": "9075b98518",
+   "es": "Mia y Leo hablan de una compañera nueva.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a2-u15-coworker"
+  },
+  {
+   "id": "45537f39a5",
+   "es": "¿Cómo es Emma de carácter?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u15-coworker"
+  },
+  {
+   "id": "cee35c6763",
+   "es": "Amable y graciosa",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u15-coworker"
+  },
+  {
+   "id": "ae312cc4e0",
+   "es": "Tímida y callada",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "39d791416c",
+   "es": "Graciosa, pero poco amable",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "669d5564c8",
+   "es": "Seria y tímida",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c05492cf15",
+   "es": "Leo dice: «She’s very kind and funny».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u15-coworker"
+  },
+  {
+   "id": "2bf155b10e",
+   "es": "¿Cómo es Emma físicamente?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u15-coworker"
+  },
+  {
+   "id": "7a1efc0c7d",
+   "es": "Baja y con el pelo enrulado",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u15-coworker"
+  },
+  {
+   "id": "ad6dfa710e",
+   "es": "Alta y con el pelo enrulado",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "199310f7a9",
+   "es": "Baja y rubia, con el pelo lacio",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2da406a34d",
+   "es": "Alta y con lentes",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "787fdf2a94",
+   "es": "Leo responde: «No, she’s short, and she has curly hair».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u15-coworker"
+  },
+  {
+   "id": "411fb4451c",
+   "es": "simpático y gracioso",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What is your best friend like? (simpático y gracioso)"
+  },
+  {
+   "id": "f0ce63a8fd",
+   "es": "¿Cómo es tu mejor amigo?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What is your best friend like? (simpático y gracioso)"
+  },
+  {
+   "id": "cb63ecf2a6",
+   "es": "Mi barrio",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "4aa3a6eacc",
+   "es": "Describir un barrio y un lugar.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "fd50b9ca71",
+   "es": "Un lugar se describe con be + adjetivo (The street is quiet) o con el adjetivo antes del sustantivo (a quiet street). Con there is y there are cuentas qué hay en tu barrio (neighborhood).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "ad7863c2e1",
+   "es": "Vivo en un barrio tranquilo.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I live in a quiet neighborhood."
+  },
+  {
+   "id": "2feab90c92",
+   "es": "La ciudad es ruidosa y está llena de gente.",
+   "kinds": [
+    "example"
+   ],
+   "en": "The city is noisy and crowded."
+  },
+  {
+   "id": "9175170b7b",
+   "es": "Describes un lugar: quiet, noisy, crowded, modern, dirty.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "3085136e36",
+   "es": "Cuentas qué hay en tu barrio con there is y there are.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "f9504b4101",
+   "es": "¿Qué significa «crowded»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "38f1103a55",
+   "es": "¡Hay mucho ruido aquí! No puedo dormir.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "It's very noisy here. I can't sleep!"
+  },
+  {
+   "id": "09354d3906",
+   "es": "Vivo en un barrio tranquilo. No hay autos.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I live in a quiet neighborhood. There are no cars."
+  },
+  {
+   "id": "dd3721b7c9",
+   "es": "Emma describe su barrio.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a2-u15-neighborhood"
+  },
+  {
+   "id": "6119640e12",
+   "es": "¿Cómo es el barrio de Emma?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u15-neighborhood"
+  },
+  {
+   "id": "7d617bf329",
+   "es": "Tranquilo y con calles limpias",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u15-neighborhood"
+  },
+  {
+   "id": "a6f1b123b7",
+   "es": "Ruidoso y moderno",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "038b42ae08",
+   "es": "Moderno, con calles sucias",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e1ca4ccf7f",
+   "es": "Ruidoso, pero con calles limpias",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1cf4f72b7b",
+   "es": "Emma escribe: «I live in a quiet neighborhood» y «The streets are old, but they are clean».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u15-neighborhood"
+  },
+  {
+   "id": "c5398302cf",
+   "es": "¿Cuándo hay mucha gente en el parque?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u15-neighborhood"
+  },
+  {
+   "id": "91ce498ad8",
+   "es": "Los sábados",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u15-neighborhood"
+  },
+  {
+   "id": "76575a06ae",
+   "es": "Los domingos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3da90a7818",
+   "es": "Todos los días",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "12fcd0c7b7",
+   "es": "Nunca",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8dd16dcdd1",
+   "es": "Emma escribe: «On Saturdays the park is crowded with children».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u15-neighborhood"
+  },
+  {
+   "id": "1b9bd50363",
+   "es": "¿Tu barrio es tranquilo o ruidoso?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Is your neighborhood quiet or noisy? (ruidoso)"
+  },
+  {
+   "id": "149e5d36b9",
+   "es": "La ciudad es moderna, pero sucia.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "The city is modern, but dirty."
+  },
+  {
+   "id": "656590cac1",
+   "es": "Comparar personas y lugares",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "91cf9ef034",
+   "es": "Comparar personas y lugares con los comparativos.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "94fe73c46e",
+   "es": "Con lo que aprendiste en «Comparar» puedes comparar personas y lugares. Los adjetivos cortos terminados en -y cambian la y por -ier: noisy → noisier, funny → funnier. Y los cortos con una vocal y una consonante la duplican: thin → thinner.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "71bc553bd4",
+   "es": "Mi hermano es más flaco que yo.",
+   "kinds": [
+    "example"
+   ],
+   "en": "My brother is thinner than me."
+  },
+  {
+   "id": "468651664f",
+   "es": "La ciudad es más ruidosa que mi barrio.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "The city is noisier than my neighborhood."
+  },
+  {
+   "id": "dce98e50d4",
+   "es": "Comparas personas: taller than, funnier than.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "40d89a8419",
+   "es": "Comparas lugares: quieter than, the most crowded.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "51a953d1c6",
+   "es": "Con than va el comparativo: noisy → noisier (la y cambia por -ier).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "noisier"
+  },
+  {
+   "id": "c726624b1f",
+   "es": "El domingo es el día más tranquilo de la semana.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Sunday is the quietest day of the week."
+  },
+  {
+   "id": "af2951f7df",
+   "es": "Con the va el superlativo: quiet → the quietest.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "quietest"
+  },
+  {
+   "id": "a133b3022a",
+   "es": "Leo es más gracioso que su hermano. Siempre me hace reír.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Leo is funnier than his brother. He always makes me laugh."
+  },
+  {
+   "id": "b1cac517e3",
+   "es": "Mi barrio es más tranquilo que la ciudad.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "My neighborhood is quieter than the city."
+  },
+  {
+   "id": "49a023eee8",
+   "es": "Leo y Mia comparan dos ciudades.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a2-u15-two-cities"
+  },
+  {
+   "id": "64b51db2e0",
+   "es": "¿Qué ciudad le parece más interesante a Mia?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u15-two-cities"
+  },
+  {
+   "id": "1bcadf976b",
+   "es": "Londres",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u15-two-cities"
+  },
+  {
+   "id": "e9c722cbef",
+   "es": "Madrid",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "73fe559ba6",
+   "es": "Las dos por igual",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b25d20e0d6",
+   "es": "Ninguna de las dos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b1ea3c1dae",
+   "es": "Mia dice: «London is more interesting».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u15-two-cities"
+  },
+  {
+   "id": "0d4cb6a18f",
+   "es": "¿Qué dice Mia de Madrid?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u15-two-cities"
+  },
+  {
+   "id": "620d8e0408",
+   "es": "Que es más cálida que Londres",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u15-two-cities"
+  },
+  {
+   "id": "157004161d",
+   "es": "Que es más interesante que Londres",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5858cd59c7",
+   "es": "Que tiene más gente que Londres",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "955dd9d2bd",
+   "es": "Que es la ciudad con más gente que conoce",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "79dafefc22",
+   "es": "Mia dice: «Madrid is warmer». La ciudad con más gente es Londres: «It’s the most crowded city I know».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u15-two-cities"
+  },
+  {
+   "id": "f24f78b755",
+   "es": "¿Quién es más alto, tú o tu mamá?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Who is taller, you or your mother? (tú)"
+  },
+  {
+   "id": "5cb34aebdb",
+   "es": "El parque está más sucio que la calle.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "The park is dirtier than the street."
+  },
+  {
+   "id": "e370e7ec85",
+   "es": "Describir a alguien",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "bee5c5384d",
+   "es": "Describir a una persona: aspecto y carácter.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "923339f508",
+   "es": "Para describir a una persona, empieza por el aspecto (He is tall. He has dark hair.) y sigue por el carácter (He is friendly and funny). Une las ideas con and, but y because.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "21a63a422f",
+   "es": "Tiene el pelo oscuro y usa lentes.",
+   "kinds": [
+    "example"
+   ],
+   "en": "He has dark hair and he wears glasses."
+  },
+  {
+   "id": "b69fe701b5",
+   "es": "Es tímida, pero es muy amable.",
+   "kinds": [
+    "example"
+   ],
+   "en": "She's shy, but she's very kind."
+  },
+  {
+   "id": "b46c3e9a96",
+   "es": "Describes a una persona: aspecto y carácter.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "87e1f3d821",
+   "es": "Unes ideas con and, but y because.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "0721970591",
+   "es": "Leo publica una foto de su abuelo.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a2-u15-grandfather"
+  },
+  {
+   "id": "d1b75eaeda",
+   "es": "¿Cómo es el abuelo de Leo físicamente?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u15-grandfather"
+  },
+  {
+   "id": "7f5b781663",
+   "es": "Bajo, delgado y con barba blanca",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u15-grandfather"
+  },
+  {
+   "id": "d1ae6a4c31",
+   "es": "Alto, delgado y con barba blanca",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ef80d2bbed",
+   "es": "Bajo, delgado y sin barba",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "58161eae55",
+   "es": "Alto y con el pelo enrulado",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "69b4c44147",
+   "es": "Leo escribe: «He is short and thin, and he has a white beard».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u15-grandfather"
+  },
+  {
+   "id": "82ed2ee106",
+   "es": "¿Por qué usa lentes?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u15-grandfather"
+  },
+  {
+   "id": "753bf4ddb8",
+   "es": "Porque lee mucho",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u15-grandfather"
+  },
+  {
+   "id": "5a85e3235d",
+   "es": "Porque es viejo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "102e9d8cdb",
+   "es": "Porque maneja",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7f54547853",
+   "es": "Porque mira películas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2f553d83b0",
+   "es": "Leo escribe: «He wears glasses because he reads a lot».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u15-grandfather"
+  },
+  {
+   "id": "8730609a32",
+   "es": "Es tímido, pero es muy simpático.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "He's shy, but he's very friendly."
+  },
+  {
+   "id": "7c38bea6e1",
+   "es": "Neighborhood se escribe con ei y con oo (en inglés británico: neighbourhood).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "neighborhood"
+  },
+  {
+   "id": "de2eac3a8e",
+   "es": "¿Cómo es tu mejor amigo (físicamente)?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What does your best friend look like?"
+  },
+  {
+   "id": "32024fe139",
+   "es": "alto, con barba",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What does your father look like? (alto, con barba)"
+  },
+  {
+   "id": "b8ef1d25d6",
+   "es": "¿Cómo es tu papá físicamente?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What does your father look like? (alto, con barba)"
+  },
+  {
+   "id": "d574cfef07",
+   "es": "Mi amiga es rubia y muy graciosa.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "My friend is blond and very funny."
+  },
+  {
+   "id": "8dd9bbe25c",
+   "es": "Describe a alguien",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "c071697d69",
+   "es": "Describe a una persona que conoces (o invéntala): cómo es físicamente y cómo es de carácter.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "b644914dd9",
+   "es": "Describes el aspecto (tall, short, thin… / has … hair, a beard, glasses)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "7d7a902e89",
+   "es": "Describes el carácter (friendly, kind, funny, shy, quiet…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "9f65373e30",
+   "es": "Unes ideas con and, but o because (opcional)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "dda67b564b",
+   "es": "Describí el aspecto.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "fe699094d9",
+   "es": "Describí el carácter.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "b758ccf0cc",
+   "es": "Usé and, but o because.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.a2-u15-coworker": {
+   "setting": "Mia y Leo hablan de una compañera nueva.",
+   "lines": [
+    "Mia: Who's that girl?",
+    "Leo: That's Emma. She's my new coworker.",
+    "Mia: What's she like?",
+    "Leo: She's very kind and funny.",
+    "Mia: And what does she look like? Is she tall?",
+    "Leo: No, she's short, and she has curly hair."
+   ]
+  },
+  "en.stim.a2-u15-neighborhood": {
+   "setting": "Emma describe su barrio.",
+   "lines": [
+    "I live in a quiet neighborhood near the station.",
+    "The streets are old, but they are clean.",
+    "There is a small park and a big supermarket.",
+    "On Saturdays the park is crowded with children.",
+    "I love my neighborhood!"
+   ]
+  },
+  "en.stim.a2-u15-two-cities": {
+   "setting": "Leo y Mia comparan dos ciudades.",
+   "lines": [
+    "Leo: Which city do you like more, London or Madrid?",
+    "Mia: Madrid is warmer, but London is more interesting.",
+    "Leo: And which is more crowded?",
+    "Mia: London. It's the most crowded city I know."
+   ]
+  },
+  "en.stim.a2-u15-grandfather": {
+   "setting": "Leo publica una foto de su abuelo.",
+   "lines": [
+    "This is my grandfather, Tom.",
+    "He is eighty years old.",
+    "He is short and thin, and he has a white beard.",
+    "He wears glasses because he reads a lot.",
+    "He's very kind and funny. I love my grandfather!"
+   ]
+  }
+ }
+}

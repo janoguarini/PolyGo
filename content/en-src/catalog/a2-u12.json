@@ -1,0 +1,877 @@
+{
+ "unit": "a2-u12",
+ "level": "A2",
+ "titleEn": "Experiences: present perfect",
+ "strings": [
+  {
+   "id": "4f37915cec",
+   "es": "Experiencias de vida",
+   "kinds": [
+    "unit.title",
+    "lesson.title"
+   ],
+   "en": "Experiences: present perfect"
+  },
+  {
+   "id": "57d6e4eb01",
+   "es": "Lo que hiciste alguna vez: have you ever…?, already, yet y just.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "8420e9b03c",
+   "es": "alguna vez",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "ever"
+  },
+  {
+   "id": "aa6934ecf4",
+   "es": "¿Alguna vez estuviste en México?",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Have you ever been to Mexico?"
+  },
+  {
+   "id": "dc6ad0e70a",
+   "es": "estado / ido (be)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "been"
+  },
+  {
+   "id": "2e7f8e8c72",
+   "es": "estado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "been"
+  },
+  {
+   "id": "0bd7668e29",
+   "es": "ido",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "been"
+  },
+  {
+   "id": "66959b88c0",
+   "es": "Estuve en España dos veces.",
+   "kinds": [
+    "word.example",
+    "exercise.translation",
+    "example"
+   ],
+   "en": "I have been to Spain twice."
+  },
+  {
+   "id": "ec10868a03",
+   "es": "visto (see)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "seen"
+  },
+  {
+   "id": "179077dedb",
+   "es": "visto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "seen"
+  },
+  {
+   "id": "506e0ca10a",
+   "es": "Vio esa película tres veces.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "She has seen that movie three times."
+  },
+  {
+   "id": "0b472e916e",
+   "es": "hecho (do)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "done"
+  },
+  {
+   "id": "e3dc8f246e",
+   "es": "hecho",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "done"
+  },
+  {
+   "id": "27cef37733",
+   "es": "Hice la tarea.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I have done my homework."
+  },
+  {
+   "id": "1b9f12db2c",
+   "es": "comido (eat)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.hint"
+   ],
+   "en": "eaten"
+  },
+  {
+   "id": "ca02844258",
+   "es": "comido",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "eaten"
+  },
+  {
+   "id": "10fb04eaa5",
+   "es": "¿Alguna vez comiste sushi?",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Have you ever eaten sushi?"
+  },
+  {
+   "id": "6604bcc464",
+   "es": "no + participio (I, you, we, they)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "haven't"
+  },
+  {
+   "id": "6faaae1cb1",
+   "es": "Todavía no comí.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I haven't eaten yet."
+  },
+  {
+   "id": "10b1a7f773",
+   "es": "no + participio (he, she, it)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "hasn't"
+  },
+  {
+   "id": "468af99099",
+   "es": "Todavía no llamó.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "He hasn't called yet."
+  },
+  {
+   "id": "6663103a3e",
+   "es": "ya",
+   "kinds": [
+    "word.translation",
+    "word.accepted",
+    "exercise.option"
+   ],
+   "en": "already"
+  },
+  {
+   "id": "aca03b3730",
+   "es": "Ya terminé. ¡Vamos!",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I have already finished. Let's go!"
+  },
+  {
+   "id": "334374d99c",
+   "es": "todavía (no) / ya (en preguntas)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "yet"
+  },
+  {
+   "id": "3507791f4a",
+   "es": "todavía no",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "yet"
+  },
+  {
+   "id": "1966dc7f30",
+   "es": "¿Ya hiciste la tarea?",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Have you done your homework yet?"
+  },
+  {
+   "id": "6235543d7c",
+   "es": "recién / acabar de",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "just"
+  },
+  {
+   "id": "98103f9959",
+   "es": "recién",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "just"
+  },
+  {
+   "id": "cbb2cf0755",
+   "es": "acabar de",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "just"
+  },
+  {
+   "id": "b2b6abf016",
+   "es": "acaba de",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "just"
+  },
+  {
+   "id": "1d064ef40e",
+   "es": "Recién llegó.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She has just arrived."
+  },
+  {
+   "id": "fd44175327",
+   "es": "últimamente / hace poco",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "recently"
+  },
+  {
+   "id": "1ab067826c",
+   "es": "últimamente",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "recently"
+  },
+  {
+   "id": "58d2998b5b",
+   "es": "hace poco",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "recently"
+  },
+  {
+   "id": "750e3b36c3",
+   "es": "recientemente",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "recently"
+  },
+  {
+   "id": "8f93d7ce63",
+   "es": "¿Viste alguna película buena últimamente?",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Have you seen any good movies recently?"
+  },
+  {
+   "id": "e30a9aff55",
+   "es": "dos veces",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.cue"
+   ],
+   "en": "twice"
+  },
+  {
+   "id": "d4c028ac38",
+   "es": "veces",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "times"
+  },
+  {
+   "id": "102619278c",
+   "es": "¿Cuántas veces estuviste en España?",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "How many times have you been to Spain?"
+  },
+  {
+   "id": "b61e6288bd",
+   "es": "experiencia",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "experience"
+  },
+  {
+   "id": "2bae73a247",
+   "es": "Fue la mejor experiencia de mi vida.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "It was the best experience of my life."
+  },
+  {
+   "id": "d036968052",
+   "es": "vida",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "life"
+  },
+  {
+   "id": "b028f3d4e3",
+   "es": "Fue el mejor día de mi vida.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "It was the best day of my life."
+  },
+  {
+   "id": "cb9c245f6c",
+   "es": "mundo",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "world"
+  },
+  {
+   "id": "dcd184e789",
+   "es": "Mi sueño es viajar por el mundo.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "My dream is to travel around the world."
+  },
+  {
+   "id": "cacf292666",
+   "es": "famoso / famosa",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "famous"
+  },
+  {
+   "id": "71ff5fad81",
+   "es": "famoso",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "famous"
+  },
+  {
+   "id": "a121ece34f",
+   "es": "famosa",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "famous"
+  },
+  {
+   "id": "54fc49ba20",
+   "es": "¿Alguna vez conociste a una persona famosa?",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Have you ever met a famous person?"
+  },
+  {
+   "id": "05ddb39bd2",
+   "es": "sueño / soñar",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "dream"
+  },
+  {
+   "id": "2ffbe0e5c9",
+   "es": "sueño",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "dream"
+  },
+  {
+   "id": "24d6f7fdeb",
+   "es": "soñar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "dream"
+  },
+  {
+   "id": "5c2df198ed",
+   "es": "increíble / genial",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "amazing"
+  },
+  {
+   "id": "b94f105936",
+   "es": "increíble",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "amazing"
+  },
+  {
+   "id": "3d2e93b307",
+   "es": "genial",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "amazing"
+  },
+  {
+   "id": "cae248db6b",
+   "es": "asombroso",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "amazing"
+  },
+  {
+   "id": "ea7e59bb59",
+   "es": "¡Fue un viaje increíble!",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "It was an amazing trip!"
+  },
+  {
+   "id": "a5a512d9f0",
+   "es": "peligroso / peligrosa",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "dangerous"
+  },
+  {
+   "id": "615144215d",
+   "es": "peligroso",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "dangerous"
+  },
+  {
+   "id": "4ea8450224",
+   "es": "peligrosa",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "dangerous"
+  },
+  {
+   "id": "20e43bfb6a",
+   "es": "Manejar rápido es peligroso.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Driving fast is dangerous."
+  },
+  {
+   "id": "ee9371bc29",
+   "es": "Have you ever…?",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "d99e631e53",
+   "es": "Preguntar por experiencias de la vida.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "7da7292f04",
+   "es": "Have you ever + participio = ¿alguna vez…? Sirve para experiencias de la vida, sin decir cuándo.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "ever"
+  },
+  {
+   "id": "85a7f972d8",
+   "es": "Have been to = haber estado en (un lugar).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "been"
+  },
+  {
+   "id": "71911eb47e",
+   "es": "¿Qué significa «ever»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "8404f5828e",
+   "es": "¿Alguna vez estuviste en Inglaterra?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Have you ever been to England? (no)"
+  },
+  {
+   "id": "cd8cd1e7a9",
+   "es": "¿Alguna vez estuviste en Argentina?",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "Have you ever been to Argentina?"
+  },
+  {
+   "id": "7229c4dfde",
+   "es": "Participios",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "2551e6d31a",
+   "es": "been, seen, done, eaten y met.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "f888706067",
+   "es": "Have + participio: eat → ate (pasado) → eaten (participio).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "eaten"
+  },
+  {
+   "id": "9c9a7a3611",
+   "es": "Nunca conoció a una persona famosa.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "He has never met a famous person."
+  },
+  {
+   "id": "b4a4b38579",
+   "es": "Muchos irregulares tienen el participio igual al pasado: meet → met → met.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "met"
+  },
+  {
+   "id": "9a50b244ac",
+   "es": "Fuimos una vez a ese restaurante.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "We have been to that restaurant once."
+  },
+  {
+   "id": "3b9a688d8a",
+   "es": "Ya, todavía, recién",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "f34218a800",
+   "es": "already, yet, just y recently.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "87807a08de",
+   "es": "Already (ya) va entre have y el participio.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "already"
+  },
+  {
+   "id": "e8df193bc3",
+   "es": "Yet va al final: en negativas (todavía no) y en preguntas (¿ya…?).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "yet"
+  },
+  {
+   "id": "37c1cb6376",
+   "es": "Recién llegó. Ahora está aquí.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She has just arrived. She is here now."
+  },
+  {
+   "id": "38a4a938e7",
+   "es": "¿Qué significa «already»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "c35cb08faf",
+   "es": "Ya lo hice.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I have already done it."
+  },
+  {
+   "id": "13631d406a",
+   "es": "Una vez, dos veces",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "ec6197f83e",
+   "es": "Contar cuántas veces hiciste algo.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "dda766d0d0",
+   "es": "¿Qué significa «twice»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "0b6396df64",
+   "es": "una vez",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "cf0fa83bb2",
+   "es": "Estuve en Brasil una vez.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I have been to Brazil once."
+  },
+  {
+   "id": "327e14997b",
+   "es": "Una vez = once; dos veces = twice; tres veces = three times.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "once"
+  },
+  {
+   "id": "ef03dfc63c",
+   "es": "Vio la película tres veces.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She has seen the movie three times."
+  },
+  {
+   "id": "bb55fcf9d1",
+   "es": "¿Cuántas veces fuiste a la playa?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How many times have you been to the beach? (dos veces)"
+  },
+  {
+   "id": "d6cec9f43d",
+   "es": "Nunca vi a una persona famosa.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I have never seen a famous person."
+  },
+  {
+   "id": "a7dff2fcdf",
+   "es": "Sueños, viajes y lo mejor que te pasó.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "51a430e21e",
+   "es": "¿Qué significa «world»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "c32bc1c4a2",
+   "es": "Nunca estuve en Inglaterra.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I have never been to England."
+  },
+  {
+   "id": "44734d372f",
+   "es": "Tus experiencias",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "c3991e890a",
+   "es": "Cuenta dos cosas que hiciste alguna vez y una que nunca hiciste (puedes inventarlas).",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "936aa468f9",
+   "es": "Usas have + participio (I have been, I’ve seen…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "28ecf25b00",
+   "es": "Dices algo que nunca hiciste (I have never… / I haven’t…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "6bb083dbc8",
+   "es": "Conté experiencias con have + participio.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "c3008063bc",
+   "es": "Dije algo que nunca hice.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "5d1e8f8658",
+   "es": "Usé ever, never o twice.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "ecb1ca4227",
+   "es": "Un correo con novedades",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "6a11b177f2",
+   "es": "Escríbele un correo a un amigo con tus novedades: qué estás haciendo ahora, qué vas a hacer pronto y algo que ya hiciste.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "b57bd3727a",
+   "es": "¿Contaste qué estás haciendo ahora (am/is/are + -ing)?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "90f978368d",
+   "es": "¿Contaste un plan (going to / will)?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "46bdd3fbc6",
+   "es": "¿Usaste have + participio?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "0acc33b5ce",
+   "es": "Conté qué estoy haciendo ahora.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "8791ba41ac",
+   "es": "Conté un plan.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "29065499ec",
+   "es": "Conté algo que ya hice.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {}
+}

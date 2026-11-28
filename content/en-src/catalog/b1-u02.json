@@ -1,0 +1,1410 @@
+{
+ "unit": "b1-u02",
+ "level": "B1",
+ "titleEn": "Habits and hobbies",
+ "strings": [
+  {
+   "id": "11d532c0b0",
+   "es": "Hábitos y aficiones",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Habits and hobbies"
+  },
+  {
+   "id": "a520bc827a",
+   "es": "Desde cuándo haces algo (for, since), lo que vienes haciendo (have been + -ing) y lo que te gusta, empiezas o dejas de hacer.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "8da8cec949",
+   "es": "Puedes contar desde cuándo haces algo, qué vienes haciendo últimamente y qué hábitos empezaste o dejaste.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "ca8be52bc5",
+   "es": "Present perfect continuous",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "2209578d9c",
+   "es": "Have/has been + verbo con -ing cuenta algo que empezó en el pasado y sigue hasta ahora: I have been learning English for two years. For va con un período (for two years) y since con el comienzo (since 2020).",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "9986afbfe7",
+   "es": "Toco la guitarra desde hace tres años.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I've been playing the guitar for three years."
+  },
+  {
+   "id": "41fcd1feaf",
+   "es": "Trabaja aquí desde marzo.",
+   "kinds": [
+    "example"
+   ],
+   "en": "She has been working here since March."
+  },
+  {
+   "id": "05f9961a99",
+   "es": "¿Hace cuánto que aprendes inglés?",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "How long have you been learning English?"
+  },
+  {
+   "id": "cba255110c",
+   "es": "Vivo aquí desde 2020.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I have lived here since 2020."
+  },
+  {
+   "id": "648f3efe89",
+   "es": "durante / hace (tiempo)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "for"
+  },
+  {
+   "id": "3d64c1cca8",
+   "es": "durante",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "for"
+  },
+  {
+   "id": "ef7ec39377",
+   "es": "Vivo aquí desde hace dos años.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "I have lived here for two years."
+  },
+  {
+   "id": "1935dcc107",
+   "es": "¿cuánto tiempo?",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "how long"
+  },
+  {
+   "id": "4091993c5c",
+   "es": "cuánto tiempo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "how long"
+  },
+  {
+   "id": "a94859dafe",
+   "es": "hace cuánto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "how long"
+  },
+  {
+   "id": "e429c81afb",
+   "es": "¿Hace cuánto que vives aquí?",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "How long have you lived here?"
+  },
+  {
+   "id": "4fe0ce0845",
+   "es": "disfrutar",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "enjoy"
+  },
+  {
+   "id": "4ddcf565cd",
+   "es": "Disfruto cocinar para mis amigos.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "I enjoy cooking for my friends."
+  },
+  {
+   "id": "9e5cef9158",
+   "es": "empezar (un pasatiempo)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "take up"
+  },
+  {
+   "id": "7694dd9b5e",
+   "es": "empezar a hacer",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "take up"
+  },
+  {
+   "id": "0df19ec681",
+   "es": "Quiero empezar yoga.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I want to take up yoga."
+  },
+  {
+   "id": "ea49809d98",
+   "es": "dejar (un hábito) / rendirse",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "give up"
+  },
+  {
+   "id": "13e0f743ae",
+   "es": "dejar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "give up"
+  },
+  {
+   "id": "dc2904ddb5",
+   "es": "rendirse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "give up"
+  },
+  {
+   "id": "2e8e92728a",
+   "es": "abandonar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "give up"
+  },
+  {
+   "id": "f69c3c2c6e",
+   "es": "Mi papá dejó de fumar.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "My father gave up smoking."
+  },
+  {
+   "id": "c73ba28089",
+   "es": "hábito / costumbre",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "habit"
+  },
+  {
+   "id": "d69b696dc8",
+   "es": "hábito",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "habit"
+  },
+  {
+   "id": "41930ce4d1",
+   "es": "costumbre",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "habit"
+  },
+  {
+   "id": "a6cd1e4ee0",
+   "es": "Leer todas las noches es un buen hábito.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Reading every night is a good habit."
+  },
+  {
+   "id": "2bbeead23b",
+   "es": "seguir / mantener",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "keep"
+  },
+  {
+   "id": "3a3499ad31",
+   "es": "seguir",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "keep"
+  },
+  {
+   "id": "d592f6d003",
+   "es": "mantener",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "keep"
+  },
+  {
+   "id": "d91a3b7ea8",
+   "es": "¡Sigue intentando!",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Keep trying!"
+  },
+  {
+   "id": "f45669299f",
+   "es": "practicar",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "practice"
+  },
+  {
+   "id": "9ebc301fcc",
+   "es": "Practico piano todos los días.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I practice the piano every day."
+  },
+  {
+   "id": "f68e7d8383",
+   "es": "mejorar",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "improve"
+  },
+  {
+   "id": "e3606ca871",
+   "es": "Mi inglés mejoró mucho.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "My English has improved a lot."
+  },
+  {
+   "id": "610c01cacb",
+   "es": "habilidad",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "skill"
+  },
+  {
+   "id": "c754b540b7",
+   "es": "destreza",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "skill"
+  },
+  {
+   "id": "74b308bb40",
+   "es": "Cocinar es una habilidad útil.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Cooking is a useful skill."
+  },
+  {
+   "id": "26a2197443",
+   "es": "Me interesa la fotografía.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I am interested in photography."
+  },
+  {
+   "id": "cff413a11d",
+   "es": "instrumento",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "instrument"
+  },
+  {
+   "id": "103e7e5772",
+   "es": "¿Tocas algún instrumento?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Do you play an instrument?"
+  },
+  {
+   "id": "76df02a279",
+   "es": "bueno en / hábil para",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "good at"
+  },
+  {
+   "id": "117c6a5a43",
+   "es": "bueno para",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "good at"
+  },
+  {
+   "id": "8861eb9473",
+   "es": "buena en",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "good at"
+  },
+  {
+   "id": "1095112ddc",
+   "es": "Es buena dibujando.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She is good at drawing."
+  },
+  {
+   "id": "5b2206a316",
+   "es": "interesado en",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "interested in"
+  },
+  {
+   "id": "63fc0902d4",
+   "es": "interesada en",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "interested in"
+  },
+  {
+   "id": "a4fecc6085",
+   "es": "¿Te interesa el arte?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Are you interested in art?"
+  },
+  {
+   "id": "c7ac5471e0",
+   "es": "dejar de / parar",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "stop"
+  },
+  {
+   "id": "d1fbff4734",
+   "es": "parar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "stop"
+  },
+  {
+   "id": "6f6d175621",
+   "es": "dejar de",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "stop"
+  },
+  {
+   "id": "84ce808e55",
+   "es": "Deja de hablar, por favor.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Stop talking, please."
+  },
+  {
+   "id": "e85f375a3a",
+   "es": "evitar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "avoid"
+  },
+  {
+   "id": "829d0e175d",
+   "es": "Evito comer tarde.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I avoid eating late."
+  },
+  {
+   "id": "817bd5e624",
+   "es": "últimamente (en este tiempo)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "lately"
+  },
+  {
+   "id": "ad51492608",
+   "es": "estos días",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "lately"
+  },
+  {
+   "id": "ab3ad3f329",
+   "es": "Estuve muy cansado últimamente.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I have been very tired lately."
+  },
+  {
+   "id": "a8910d28bc",
+   "es": "For, since y how long",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "ca3bfa82c4",
+   "es": "Decir desde cuándo haces algo con for, since y how long.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "9aa90688a5",
+   "es": "Para algo que empezó en el pasado y sigue: have/has + participio. For va con un período (for two years, for a long time) y since con el momento en que empezó (since 2020, since March). Para preguntar: How long…?",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "6dc12fdb3f",
+   "es": "Usas for con un período y since con un comienzo.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "ef9408539b",
+   "es": "Preguntas How long have you…?",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "26907aec3f",
+   "es": "Vivo en esta ciudad desde 2019.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I have lived in this city since 2019."
+  },
+  {
+   "id": "c36e667acf",
+   "es": "Since va con el momento en que empezó (un año, un mes, un día).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "since"
+  },
+  {
+   "id": "310ad8effb",
+   "es": "Conozco a Ana desde hace diez años.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I have known Ana for ten years."
+  },
+  {
+   "id": "63e16dd351",
+   "es": "For va con un período: for ten years, for a week.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "for"
+  },
+  {
+   "id": "393aaee6a6",
+   "es": "¿Hace cuánto que tienes este auto?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How long have you had this car?"
+  },
+  {
+   "id": "b66e1a4bdf",
+   "es": "dos años",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "How long have you had your phone? (dos años)"
+  },
+  {
+   "id": "fbeb06b7c5",
+   "es": "¿Hace cuánto que tienes tu teléfono?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How long have you had your phone? (dos años)"
+  },
+  {
+   "id": "4fa6c63178",
+   "es": "Lo que vienes haciendo",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "0d1252ce9b",
+   "es": "Contar lo que vienes haciendo con have been + -ing.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "b7e7e8ef96",
+   "es": "El present perfect continuous (have/has been + -ing) cuenta una actividad que empezó antes y sigue ahora, o que hiciste mucho últimamente: I have been studying a lot lately. Con I, you, we y they: have been (I've been); con he, she e it: has been.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "f40704045f",
+   "es": "Estuve estudiando mucho últimamente.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I've been studying a lot lately."
+  },
+  {
+   "id": "d8d72d05d4",
+   "es": "Cuentas lo que vienes haciendo: I have been working a lot.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "c56e3299d0",
+   "es": "Preguntas How long have you been…?",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "aa1e9a2f2a",
+   "es": "Present perfect continuous: have/has + been + verbo con -ing.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "been"
+  },
+  {
+   "id": "3ed212f593",
+   "es": "Toca la guitarra desde hace tres años.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She has been playing the guitar for three years."
+  },
+  {
+   "id": "e42df68a3a",
+   "es": "Lucy y Sam hablan de música.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u2-guitar"
+  },
+  {
+   "id": "5db8adf8f6",
+   "es": "¿Hace cuánto que Sam toca la guitarra?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u2-guitar"
+  },
+  {
+   "id": "e72b00e8d8",
+   "es": "Unos tres años",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u2-guitar"
+  },
+  {
+   "id": "71f063bbc3",
+   "es": "Desde enero",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "95917176cc",
+   "es": "Un año",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7235d13add",
+   "es": "Desde que era chico",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "916d486484",
+   "es": "Sam dice: «For about three years».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u2-guitar"
+  },
+  {
+   "id": "968a35eb42",
+   "es": "¿Por qué Sam practica sólo los fines de semana?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u2-guitar"
+  },
+  {
+   "id": "7171396c4a",
+   "es": "Porque estuvo muy ocupado últimamente",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u2-guitar"
+  },
+  {
+   "id": "2017308431",
+   "es": "Porque trabaja de noche",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f914f9f1f1",
+   "es": "Porque no le gusta practicar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1af6c176ac",
+   "es": "Porque la guitarra es nueva",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "272d7dffdc",
+   "es": "Sam dice: «I've been very busy lately, so I only practice on weekends».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u2-guitar"
+  },
+  {
+   "id": "db3cf1d0ae",
+   "es": "Estamos esperando desde hace una hora.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "We have been waiting for an hour."
+  },
+  {
+   "id": "4728831ff4",
+   "es": "estudiando mucho",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What have you been doing lately? (estudiando mucho)"
+  },
+  {
+   "id": "74def187c9",
+   "es": "¿Qué estuviste haciendo últimamente?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What have you been doing lately? (estudiando mucho)"
+  },
+  {
+   "id": "99447d10e6",
+   "es": "Aprendo inglés desde hace dos años.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I have been learning English for two years."
+  },
+  {
+   "id": "8e6cd8dfce",
+   "es": "Lo que disfrutas",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "082fad7fb7",
+   "es": "Hablar de gustos y habilidades con verbos + -ing, good at e interested in.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "d749a2933d",
+   "es": "Después de enjoy, love, like, hate, stop y avoid, el verbo va con -ing: I enjoy cooking. También después de preposiciones: good at singing, interested in learning.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "c84f36abee",
+   "es": "Es buena cantando.",
+   "kinds": [
+    "example"
+   ],
+   "en": "She is good at singing."
+  },
+  {
+   "id": "b711bdaf77",
+   "es": "Usas -ing después de enjoy, stop y avoid.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "a004482746",
+   "es": "Dices en qué eres bueno y qué te interesa: good at, interested in.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "83ad37f6da",
+   "es": "Disfruto mucho cocinar para mis amigos.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I really enjoy cooking for my friends."
+  },
+  {
+   "id": "2acdb52ced",
+   "es": "Después de enjoy, el verbo va con -ing.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "cooking"
+  },
+  {
+   "id": "f02f11d58f",
+   "es": "¿Te interesa la fotografía?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Are you interested in photography?"
+  },
+  {
+   "id": "509ff1b656",
+   "es": "Es muy buena cantando.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She is very good at singing."
+  },
+  {
+   "id": "4aeb969a4b",
+   "es": "Un aviso en el centro cultural del barrio.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u2-club"
+  },
+  {
+   "id": "f2ec06721a",
+   "es": "¿Qué hace falta para entrar al coro?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u2-club"
+  },
+  {
+   "id": "c327830437",
+   "es": "Nada especial: no hace falta leer música",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u2-club"
+  },
+  {
+   "id": "738c68c209",
+   "es": "Saber leer música",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d9a4333984",
+   "es": "Cantar muy bien",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "976af82dd0",
+   "es": "Pagar la primera clase",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4e6caa7291",
+   "es": "El aviso dice: «You don't need to read music, and you don't need to be good at singing».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u2-club"
+  },
+  {
+   "id": "e0512d109d",
+   "es": "¿Cuándo se reúne el coro?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u2-club"
+  },
+  {
+   "id": "06ad324010",
+   "es": "Los martes a las siete",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u2-club"
+  },
+  {
+   "id": "364adc30de",
+   "es": "Los jueves a las siete",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "186e51541c",
+   "es": "Los martes a las nueve",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "98870fe3f5",
+   "es": "El aviso dice: «Our choir meets every Tuesday at seven».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u2-club"
+  },
+  {
+   "id": "269c4027d0",
+   "es": "¿En qué eres bueno?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What are you good at? (cocinar)"
+  },
+  {
+   "id": "537bd70bbb",
+   "es": "Empezar y dejar",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "450a6cf8b9",
+   "es": "Contar hábitos nuevos y hábitos que dejaste: take up, give up, stop, avoid, decide to.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "b6d5f2ff89",
+   "es": "Take up es empezar un pasatiempo; give up, dejar un hábito. Después de decide, want, hope y learn va to + verbo: I decided to take up yoga. Después de stop, give up y avoid va -ing: I stopped eating meat.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "b797dc61f0",
+   "es": "Decidí empezar a correr.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I decided to take up running."
+  },
+  {
+   "id": "88e23ec687",
+   "es": "Cuentas un hábito nuevo (take up) y uno que dejaste (give up).",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "f56e5dfd9d",
+   "es": "Eliges -ing o to: stop eating, decide to eat.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "da06d56af5",
+   "es": "El año pasado decidí empezar a correr.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Last year I decided to take up running."
+  },
+  {
+   "id": "d06a9f3854",
+   "es": "Después de decide va to + verbo.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "to take up"
+  },
+  {
+   "id": "3b31d194d7",
+   "es": "Dejó de tomar café a la noche.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "He stopped drinking coffee at night."
+  },
+  {
+   "id": "de8109c83d",
+   "es": "Stop + -ing: dejar de hacer algo.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "drinking"
+  },
+  {
+   "id": "494d461fff",
+   "es": "Evito comer tarde a la noche.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I avoid eating late at night."
+  },
+  {
+   "id": "eb532e596b",
+   "es": "Tom le cuenta a Kate sus nuevos hábitos.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u2-habits"
+  },
+  {
+   "id": "df7ad20def",
+   "es": "¿Qué hábito dejó Tom?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u2-habits"
+  },
+  {
+   "id": "1e9c354e80",
+   "es": "El azúcar",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u2-habits"
+  },
+  {
+   "id": "b5c9c8e68e",
+   "es": "Caminar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3343927696",
+   "es": "La comida salada",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "bf4e2a4d8b",
+   "es": "Tom dice: «I gave up sugar in March».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u2-habits"
+  },
+  {
+   "id": "eb373a31c8",
+   "es": "¿Qué viene haciendo Tom todos los días?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u2-habits"
+  },
+  {
+   "id": "8d66bbebca",
+   "es": "Camina al trabajo",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u2-habits"
+  },
+  {
+   "id": "1a9ab7bda0",
+   "es": "Va al gimnasio",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4c5510b76b",
+   "es": "Cocina para la familia",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f84bbca645",
+   "es": "Corre en el parque",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "daeccc4515",
+   "es": "Tom dice: «I have been walking to work every day».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u2-habits"
+  },
+  {
+   "id": "60159e0cd9",
+   "es": "Mi hermano dejó el café.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "My brother gave up coffee."
+  },
+  {
+   "id": "660b03ed73",
+   "es": "Quiero empezar a pintar.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I want to take up painting."
+  },
+  {
+   "id": "834bbf068b",
+   "es": "Practicar y mejorar",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "84e7688047",
+   "es": "Contar cómo aprendes algo nuevo: practicar, mejorar, seguir intentando.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "82c18571c4",
+   "es": "Para hablar de un aprendizaje: practice (practicar), improve (mejorar), skill (habilidad). Keep + -ing es seguir haciendo algo: Keep practicing! Con el present perfect cuentas el resultado: My English has improved.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "e12062192d",
+   "es": "Sigue practicando todos los días.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Keep practicing every day."
+  },
+  {
+   "id": "39c7932d8f",
+   "es": "Cuentas cómo practicas y cuánto mejoraste.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "08c8f94ffc",
+   "es": "Animas a alguien: Keep practicing!",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "5111d1e69a",
+   "es": "¿Qué significa «improve»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "e97d2a7ce3",
+   "es": "Ana cuenta en un foro su nueva afición.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u2-photo"
+  },
+  {
+   "id": "b033d9da05",
+   "es": "¿Desde cuándo aprende Ana fotografía?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u2-photo"
+  },
+  {
+   "id": "3f2495695f",
+   "es": "Desde hace tres años",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8757fe7df4",
+   "es": "Desde el mes pasado",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "23f58c71f8",
+   "es": "Desde que era chica",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e88a5858b4",
+   "es": "Ana escribe: «I've been learning photography since January».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u2-photo"
+  },
+  {
+   "id": "e9c051fe4e",
+   "es": "¿Qué disfruta fotografiar Ana?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u2-photo"
+  },
+  {
+   "id": "c53bada9e7",
+   "es": "Gente en la calle",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u2-photo"
+  },
+  {
+   "id": "581cf5dc53",
+   "es": "Paisajes del parque",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1bdc46b28c",
+   "es": "A su familia",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d55f1a3299",
+   "es": "Ana escribe: «I really enjoy taking photos of people in the street».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u2-photo"
+  },
+  {
+   "id": "2f098a12c4",
+   "es": "Mi inglés mejoró mucho este año.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "My English has improved a lot this year."
+  },
+  {
+   "id": "18f50cc9f4",
+   "es": "No pares ahora. ¡Sigue practicando!",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Don't stop now. Keep practicing!"
+  },
+  {
+   "id": "ba26392f06",
+   "es": "practicar todos los días",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "How can I improve my English? (practicar todos los días)"
+  },
+  {
+   "id": "4508383a22",
+   "es": "¿Cómo puedo mejorar mi inglés?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How can I improve my English? (practicar todos los días)"
+  },
+  {
+   "id": "9e39373876",
+   "es": "Tu pasatiempo",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "68ef6a240f",
+   "es": "Escríbele a un amigo sobre un pasatiempo que empezaste: desde cuándo lo haces, qué vienes haciendo y qué disfrutas de él.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "e613c3f3bc",
+   "es": "Dices desde cuándo con for o since",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "61b453bcaf",
+   "es": "Usas have been + -ing (I have been learning…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "6ae56fe999",
+   "es": "Dices qué disfrutas (I enjoy / I love + -ing)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "48127faa54",
+   "es": "Dije desde cuándo hago el pasatiempo (for / since).",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "97204818e2",
+   "es": "Usé have been + -ing.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "7a7ea8f4bc",
+   "es": "Conté qué disfruto.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.b1-u2-guitar": {
+   "setting": "Lucy y Sam hablan de música.",
+   "lines": [
+    "Lucy: How long have you been playing the guitar?",
+    "Sam: For about three years. I took it up when I moved to this city.",
+    "Lucy: Do you practice every day?",
+    "Sam: I try to, but I've been very busy lately, so I only practice on weekends.",
+    "Lucy: Well, you're very good at it!"
+   ]
+  },
+  "en.stim.b1-u2-club": {
+   "setting": "Un aviso en el centro cultural del barrio.",
+   "lines": [
+    "Are you interested in music? Do you enjoy singing?",
+    "Our choir meets every Tuesday at seven.",
+    "You don't need to read music, and you don't need to be good at singing.",
+    "Come and try it! The first class is free."
+   ]
+  },
+  "en.stim.b1-u2-habits": {
+   "setting": "Tom le cuenta a Kate sus nuevos hábitos.",
+   "lines": [
+    "Kate: You look great! What have you been doing?",
+    "Tom: I gave up sugar in March, and I have been walking to work every day.",
+    "Kate: Was it difficult to stop eating sugar?",
+    "Tom: At first, yes. But now I avoid sweet food, and I feel much better."
+   ]
+  },
+  "en.stim.b1-u2-photo": {
+   "setting": "Ana cuenta en un foro su nueva afición.",
+   "lines": [
+    "I've been learning photography since January.",
+    "At first I only took photos with my phone, but now I have a real camera.",
+    "I practice every weekend in the park, and my photos have improved a lot.",
+    "I really enjoy taking photos of people in the street.",
+    "Next month I want to take a course."
+   ]
+  }
+ }
+}

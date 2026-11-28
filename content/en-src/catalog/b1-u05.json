@@ -1,0 +1,1529 @@
+{
+ "unit": "b1-u05",
+ "level": "B1",
+ "titleEn": "Work and studies",
+ "strings": [
+  {
+   "id": "7354c8d06f",
+   "es": "Trabajo y estudios",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Work and studies"
+  },
+  {
+   "id": "c1038f5d52",
+   "es": "Obligaciones y permisos (have to, must, allowed to), exámenes y materias, avisos de trabajo, el CV y una entrevista.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "b47d2d90bd",
+   "es": "Puedes hablar de obligaciones y normas en el trabajo o el estudio, entender un aviso de trabajo y responder en una entrevista.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "93044cc66e",
+   "es": "Obligación y permiso",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "0ae99959ba",
+   "es": "Have to y must: obligación (must, sobre todo en normas escritas). Don't have to: no hace falta (no es obligatorio). Mustn't y not allowed to: está prohibido. Allowed to: tienes permiso.",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "6c7e6cdf51",
+   "es": "Tengo que usar uniforme en el trabajo.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I have to wear a uniform at work."
+  },
+  {
+   "id": "0a8d593bc9",
+   "es": "No hace falta que vengas. No es necesario.",
+   "kinds": [
+    "example"
+   ],
+   "en": "You don't have to come. It's not necessary."
+  },
+  {
+   "id": "0ddb390fc1",
+   "es": "No nos dejan usar el teléfono en clase.",
+   "kinds": [
+    "example"
+   ],
+   "en": "We are not allowed to use our phones in class."
+  },
+  {
+   "id": "171150193b",
+   "es": "no hace falta / no tener que",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "don't have to"
+  },
+  {
+   "id": "a4ff0bfb0e",
+   "es": "no tener que",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "don't have to"
+  },
+  {
+   "id": "d2aa7b76da",
+   "es": "no es necesario",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "don't have to"
+  },
+  {
+   "id": "06764e0781",
+   "es": "No hace falta pagar. Es gratis.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "You don't have to pay. It's free."
+  },
+  {
+   "id": "b0a4f203e2",
+   "es": "tener permiso para",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "allowed to"
+  },
+  {
+   "id": "0cd23a9c08",
+   "es": "tener permiso",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "allowed to"
+  },
+  {
+   "id": "ea6760e5ba",
+   "es": "permitido",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "allowed to"
+  },
+  {
+   "id": "217e24549b",
+   "es": "¿Podemos comer aquí?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Are we allowed to eat here?"
+  },
+  {
+   "id": "e0f4ce44bc",
+   "es": "currículum",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "CV"
+  },
+  {
+   "id": "dbea0b0bc2",
+   "es": "currículum vitae",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "CV"
+  },
+  {
+   "id": "0f5fed1791",
+   "es": "CV",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "CV"
+  },
+  {
+   "id": "25d8534e8a",
+   "es": "Mándanos tu currículum.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Send us your CV."
+  },
+  {
+   "id": "237286193b",
+   "es": "fecha límite / plazo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "deadline"
+  },
+  {
+   "id": "98038194cd",
+   "es": "fecha límite",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "deadline"
+  },
+  {
+   "id": "b4f78ae860",
+   "es": "plazo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "deadline"
+  },
+  {
+   "id": "fd02e305c8",
+   "es": "La fecha límite es el viernes.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The deadline is on Friday."
+  },
+  {
+   "id": "490c7da679",
+   "es": "empleado / empleada",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "employee"
+  },
+  {
+   "id": "0baff97ff7",
+   "es": "empleado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "employee"
+  },
+  {
+   "id": "2de982a97d",
+   "es": "empleada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "employee"
+  },
+  {
+   "id": "d86d21db0f",
+   "es": "La empresa tiene cincuenta empleados.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The company has fifty employees."
+  },
+  {
+   "id": "397e54cd0a",
+   "es": "gerente / encargado",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "manager"
+  },
+  {
+   "id": "98ec4ee87e",
+   "es": "gerente",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "manager"
+  },
+  {
+   "id": "c2c121e023",
+   "es": "encargado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "manager"
+  },
+  {
+   "id": "3d04a54f36",
+   "es": "encargada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "manager"
+  },
+  {
+   "id": "c824abc880",
+   "es": "Necesito hablar con el gerente.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I need to speak to the manager."
+  },
+  {
+   "id": "71f6050213",
+   "es": "de tiempo completo",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "full-time"
+  },
+  {
+   "id": "7923a43ce9",
+   "es": "tiempo completo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "full-time"
+  },
+  {
+   "id": "229455ec51",
+   "es": "jornada completa",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "full-time"
+  },
+  {
+   "id": "cde7e4712f",
+   "es": "Tiene un trabajo de tiempo completo.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "She has a full-time job."
+  },
+  {
+   "id": "6b5d8fbe4c",
+   "es": "de medio tiempo",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "part-time"
+  },
+  {
+   "id": "44a1aff95e",
+   "es": "medio tiempo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "part-time"
+  },
+  {
+   "id": "9ff6735851",
+   "es": "media jornada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "part-time"
+  },
+  {
+   "id": "96669b9891",
+   "es": "Trabajo medio tiempo en un café.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I work part-time in a cafe."
+  },
+  {
+   "id": "23663df4ad",
+   "es": "tomar una decisión",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "make a decision"
+  },
+  {
+   "id": "b9d061259d",
+   "es": "Tengo que tomar una decisión hoy.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I have to make a decision today."
+  },
+  {
+   "id": "cbb9ae876f",
+   "es": "completar (un formulario)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "fill in"
+  },
+  {
+   "id": "34de0426d2",
+   "es": "completar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "fill in"
+  },
+  {
+   "id": "b1f614305a",
+   "es": "rellenar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "fill in"
+  },
+  {
+   "id": "cc9c4d75d4",
+   "es": "Por favor, completa este formulario.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Please fill in this form."
+  },
+  {
+   "id": "a39d9a72cc",
+   "es": "averiguar / enterarse",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "find out"
+  },
+  {
+   "id": "e107e38e93",
+   "es": "averiguar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "find out"
+  },
+  {
+   "id": "d646cb6f71",
+   "es": "enterarse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "find out"
+  },
+  {
+   "id": "110b023979",
+   "es": "descubrir",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "find out"
+  },
+  {
+   "id": "7ece6674aa",
+   "es": "Quiero averiguar más sobre el trabajo.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I want to find out more about the job."
+  },
+  {
+   "id": "1b6f38b590",
+   "es": "a cargo de / responsable de",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "responsible for"
+  },
+  {
+   "id": "445ae2b4c1",
+   "es": "a cargo de",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "responsible for"
+  },
+  {
+   "id": "4e5e9e6076",
+   "es": "responsable de",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "responsible for"
+  },
+  {
+   "id": "144ecd98ee",
+   "es": "encargado de",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "responsible for"
+  },
+  {
+   "id": "8b3cc11f0b",
+   "es": "Está a cargo de el dinero.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "He is responsible for the money."
+  },
+  {
+   "id": "854a557fb0",
+   "es": "examen",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "exam"
+  },
+  {
+   "id": "3846d3cfc7",
+   "es": "Mañana tengo un examen.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I have an exam tomorrow."
+  },
+  {
+   "id": "d32ee4c3f3",
+   "es": "aprobar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "pass"
+  },
+  {
+   "id": "92c248e9d5",
+   "es": "Espero aprobar el examen.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I hope I pass the exam."
+  },
+  {
+   "id": "a828858f7e",
+   "es": "desaprobar / reprobar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "fail"
+  },
+  {
+   "id": "bd01bd6d06",
+   "es": "desaprobar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "fail"
+  },
+  {
+   "id": "68867ba5af",
+   "es": "reprobar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "fail"
+  },
+  {
+   "id": "cbd9cf9879",
+   "es": "Desaprobó la prueba, pero lo intentó de nuevo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "He failed the test, but he tried again."
+  },
+  {
+   "id": "69f09f0f94",
+   "es": "materia / asignatura",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "subject"
+  },
+  {
+   "id": "3aa1015400",
+   "es": "materia",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "subject"
+  },
+  {
+   "id": "7209c125c3",
+   "es": "asignatura",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "subject"
+  },
+  {
+   "id": "6b45de57dc",
+   "es": "Mi materia favorita es matemática.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My favorite subject is math."
+  },
+  {
+   "id": "744a9a0658",
+   "es": "contratar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "hire"
+  },
+  {
+   "id": "434390375a",
+   "es": "La empresa está contratando empleados nuevos.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The company is hiring new employees."
+  },
+  {
+   "id": "e9595338ca",
+   "es": "Tener que y no hace falta",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "729e46fc90",
+   "es": "Hablar de obligaciones y de lo que no es necesario: have to, must, don't have to.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "8026606a72",
+   "es": "Have to y must expresan obligación: I have to wear a uniform. Don't have to NO es una prohibición: dice que algo no hace falta (You don't have to come). En pasado: had to (tuve que).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "342750c0ab",
+   "es": "Cuentas tus obligaciones con have to y must.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "1eb13761a2",
+   "es": "Dices que algo no hace falta con don't have to.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "65cf5025bb",
+   "es": "Have to + verbo: obligación. Must va sin to (I must wear).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "have"
+  },
+  {
+   "id": "6b41e8b747",
+   "es": "Es gratis. No hace falta pagar.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "It's free. You don't have to pay."
+  },
+  {
+   "id": "7310d172eb",
+   "es": "Don't have to: no es necesario (no es una prohibición).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "don't have to"
+  },
+  {
+   "id": "b23db277f2",
+   "es": "Ayer tuve que trabajar hasta tarde.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Yesterday I had to work late."
+  },
+  {
+   "id": "9c3da90104",
+   "es": "Must no tiene pasado: se usa had to.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "had"
+  },
+  {
+   "id": "8318c744dd",
+   "es": "¿Qué significa «don't have to»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "4f0f7d9bf3",
+   "es": "Tenemos que terminar el informe hoy.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "We have to finish the report today."
+  },
+  {
+   "id": "34f8d6dffe",
+   "es": "no, no hace falta",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Do you have to work on Saturdays? (no, no hace falta)"
+  },
+  {
+   "id": "e7be0d0f40",
+   "es": "¿Tienes que trabajar los sábados?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Do you have to work on Saturdays? (no, no hace falta)"
+  },
+  {
+   "id": "3a05c83d8c",
+   "es": "No hace falta que vengas.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "You don't have to come."
+  },
+  {
+   "id": "a9bfa97d5f",
+   "es": "Normas",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "0050fe5f99",
+   "es": "Entender y explicar normas: must, mustn't, allowed to.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "2e1bbd76f7",
+   "es": "En normas escritas se usa must (obligación) y mustn't (prohibición). Para hablar de permisos: be allowed to (I am allowed to…, We aren't allowed to…). Are we allowed to…? pregunta si algo está permitido.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "8be72707b6",
+   "es": "Tienes que lavar tu taza.",
+   "kinds": [
+    "example"
+   ],
+   "en": "You must wash your cup."
+  },
+  {
+   "id": "9ad0d39723",
+   "es": "Entiendes normas con must y mustn't.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "ab1d862a54",
+   "es": "Preguntas qué está permitido: Are we allowed to…?",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "6562a31756",
+   "es": "¿Podemos comer en el aula?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Are we allowed to eat in the classroom?"
+  },
+  {
+   "id": "33cab5716c",
+   "es": "No puedes usar el teléfono en el examen. No está permitido.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "You mustn't use your phone in the exam. It is not allowed."
+  },
+  {
+   "id": "d3290874f6",
+   "es": "Mustn't: está prohibido. Don't have to: no hace falta.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "mustn't"
+  },
+  {
+   "id": "8f8077463b",
+   "es": "Los alumnos tienen que llegar a horario.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Students must arrive on time."
+  },
+  {
+   "id": "9ec73c7dd5",
+   "es": "Un cartel en la cocina de una oficina.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u5-rules"
+  },
+  {
+   "id": "df6bbbcbfd",
+   "es": "¿Qué no se puede hacer los viernes?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u5-rules"
+  },
+  {
+   "id": "9f84dd709b",
+   "es": "Dejar comida en el refrigerador",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u5-rules"
+  },
+  {
+   "id": "f0533d4f5d",
+   "es": "Tomar café",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6de0c8f45f",
+   "es": "Usar la cocina",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2aef3c20f0",
+   "es": "Lavar las tazas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "52e3a046ea",
+   "es": "El cartel dice: «You are not allowed to leave food in the fridge on Fridays».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u5-rules"
+  },
+  {
+   "id": "081dfb270b",
+   "es": "¿Por qué no hace falta traer café?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u5-rules"
+  },
+  {
+   "id": "93b7ac93d1",
+   "es": "Porque el café es gratis",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u5-rules"
+  },
+  {
+   "id": "71da01fd62",
+   "es": "Porque está prohibido",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "172167253f",
+   "es": "Porque no hay café",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3f9cb08361",
+   "es": "Porque hay que comprarlo afuera",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "87a2119a26",
+   "es": "El cartel dice: «You don't have to bring your own coffee. It's free!».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u5-rules"
+  },
+  {
+   "id": "3feb051ce8",
+   "es": "¿Podemos usar diccionario?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Are we allowed to use a dictionary?"
+  },
+  {
+   "id": "4042957726",
+   "es": "no, no está permitido",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Are you allowed to use your phone at work? (no, no está permitido)"
+  },
+  {
+   "id": "2c7cbff05a",
+   "es": "¿Puedes usar el teléfono en el trabajo?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Are you allowed to use your phone at work? (no, no está permitido)"
+  },
+  {
+   "id": "2a3347222a",
+   "es": "No nos dejan comer en clase.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "We are not allowed to eat in class."
+  },
+  {
+   "id": "34c7d88335",
+   "es": "Exámenes y materias",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "740e532200",
+   "es": "Hablar de estudios: materias, exámenes, aprobar y desaprobar.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "22edc44f4d",
+   "es": "Pass an exam es aprobar; fail an exam, desaprobar. Subject es una materia. Para dar ánimo: Don't worry, you'll pass. Para contar lo que tuviste que hacer: I had to study a lot.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "ecf6d0a742",
+   "es": "Mi materia favorita es historia.",
+   "kinds": [
+    "example"
+   ],
+   "en": "My favorite subject is history."
+  },
+  {
+   "id": "bb5fbe08a6",
+   "es": "Hablas de exámenes y materias.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "ca43ce4588",
+   "es": "Cuentas si aprobaste o desaprobaste.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "6e5aef0ad6",
+   "es": "No te preocupes. Estudiaste mucho. Vas a aprobar.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Don't worry. You studied a lot. You'll pass."
+  },
+  {
+   "id": "4600ffb7e4",
+   "es": "Desaprobó el examen, pero lo intentó de nuevo y aprobó.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "He failed the exam, but he tried again and passed."
+  },
+  {
+   "id": "3b216eca28",
+   "es": "Dos compañeros hablan antes de un examen.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u5-exam"
+  },
+  {
+   "id": "2e5fa2a762",
+   "es": "¿Por qué está nerviosa Ana?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u5-exam"
+  },
+  {
+   "id": "631d86b93d",
+   "es": "Mañana tiene el examen de historia y el año pasado lo desaprobó",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u5-exam"
+  },
+  {
+   "id": "1655072df3",
+   "es": "No estudió nada",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "cf90b3de92",
+   "es": "Perdió el diccionario",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8467f1ef0e",
+   "es": "El examen es hoy",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "75808f1585",
+   "es": "Ana dice: «The history exam is tomorrow… I failed it last year».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u5-exam"
+  },
+  {
+   "id": "c47270f46a",
+   "es": "¿Qué está permitido en el examen?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u5-exam"
+  },
+  {
+   "id": "6b0def73ce",
+   "es": "No responder todas las preguntas",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u5-exam"
+  },
+  {
+   "id": "c5a217b6a3",
+   "es": "Usar diccionario",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "547f054013",
+   "es": "Llevar el teléfono",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4fe65858b0",
+   "es": "Trabajar en grupo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e2ef85a7dd",
+   "es": "Ana dice: «we don't have to answer all the questions».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u5-exam"
+  },
+  {
+   "id": "62d8308cb7",
+   "es": "sí, aprobaste",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Did you pass the exam? (sí, aprobaste)"
+  },
+  {
+   "id": "cb547e0de6",
+   "es": "¿Aprobaste el examen?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Did you pass the exam? (sí, aprobaste)"
+  },
+  {
+   "id": "da5650f6b7",
+   "es": "Entender un aviso de trabajo y explicar cómo postularse.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "d979d14e57",
+   "es": "En un aviso: full-time / part-time (tiempo completo / medio tiempo), deadline (fecha límite), hire (contratar). Para postularte: fill in the form (completar el formulario) y send your CV. Find out es averiguar.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "54340763a4",
+   "es": "Completa el formulario y manda tu currículum.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Fill in the form and send your CV."
+  },
+  {
+   "id": "878626b3d9",
+   "es": "Están contratando empleados de medio tiempo.",
+   "kinds": [
+    "example"
+   ],
+   "en": "They are hiring part-time employees."
+  },
+  {
+   "id": "ed9f770c18",
+   "es": "Entiendes un aviso de trabajo.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "937ba9a48c",
+   "es": "Explicas cómo postularse: fill in, send your CV, before the deadline.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "6eae973149",
+   "es": "Trabajo medio tiempo a la mañana, cuatro horas por día.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I work part-time in the mornings, four hours a day."
+  },
+  {
+   "id": "c3ead6b93a",
+   "es": "Un aviso de trabajo.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u5-ad"
+  },
+  {
+   "id": "74040ebdb7",
+   "es": "¿Qué trabajo ofrece el aviso?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u5-ad"
+  },
+  {
+   "id": "c84d051740",
+   "es": "Recepcionista de hotel los fines de semana",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u5-ad"
+  },
+  {
+   "id": "7ff2934534",
+   "es": "Recepcionista de tiempo completo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1f9d7f60ae",
+   "es": "Mesero en un restaurante",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "af7199eaf1",
+   "es": "Profesor de inglés",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "033cbc1b54",
+   "es": "El aviso dice: «Hotel receptionist – part-time… for weekends».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u5-ad"
+  },
+  {
+   "id": "b0f66264d0",
+   "es": "¿Qué hay que hacer para postularse?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u5-ad"
+  },
+  {
+   "id": "a4762d90df",
+   "es": "Completar el formulario de la web y mandar el CV",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u5-ad"
+  },
+  {
+   "id": "8071b0cbb3",
+   "es": "Llamar al hotel",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "891f70a564",
+   "es": "Ir al hotel el 30 de marzo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ec40e4b244",
+   "es": "Mandar un mail con fotos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ad517d7e08",
+   "es": "El aviso dice: «fill in the form on our website and send your CV».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u5-ad"
+  },
+  {
+   "id": "3dd30eb197",
+   "es": "La empresa está contratando empleados.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "The company is hiring employees."
+  },
+  {
+   "id": "a32a4f218d",
+   "es": "La entrevista",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "0d9d4d13ed",
+   "es": "Responder en una entrevista: tu experiencia, tus tareas y por qué quieres el puesto.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "f81d6be7a3",
+   "es": "En una entrevista cuentas tu experiencia (I worked in… for three years), tus tareas (I was responsible for…) y qué buscas (a full-time job). Make a decision es tomar una decisión.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "b84cb63034",
+   "es": "Estaba a cargo de los pedidos.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I was responsible for the orders."
+  },
+  {
+   "id": "e54b987810",
+   "es": "Vamos a tomar una decisión el viernes.",
+   "kinds": [
+    "example"
+   ],
+   "en": "We'll make a decision on Friday."
+  },
+  {
+   "id": "c1195c7af3",
+   "es": "Cuentas tu experiencia y tus tareas en una entrevista.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "dd7d9adb5a",
+   "es": "Entiendes qué va a pasar después: We'll make a decision…",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "547f898684",
+   "es": "¿Qué significa «manager»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "7960ec6de9",
+   "es": "Una entrevista de trabajo.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b1-u5-interview"
+  },
+  {
+   "id": "8b2085f74d",
+   "es": "Manager",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b1-u5-interview"
+  },
+  {
+   "id": "605eeb7b74",
+   "es": "¿De qué estaba a cargo Sofía en su último trabajo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u5-interview"
+  },
+  {
+   "id": "fa1b47c1b0",
+   "es": "De el dinero y los pedidos",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b1-u5-interview"
+  },
+  {
+   "id": "8514303a5a",
+   "es": "De los empleados",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "230c8ee4d2",
+   "es": "De la limpieza",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d77adb56af",
+   "es": "De las entrevistas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "dbaa9ed96a",
+   "es": "Sofía dice: «I was responsible for the money and the orders».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u5-interview"
+  },
+  {
+   "id": "86212975f7",
+   "es": "¿Cuándo van a decidir?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b1-u5-interview"
+  },
+  {
+   "id": "297a1922fe",
+   "es": "La semana que viene",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6cd30eb74b",
+   "es": "En tres días",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b8a9ddf1de",
+   "es": "El gerente dice: «We'll make a decision on Friday».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b1-u5-interview"
+  },
+  {
+   "id": "e1f4a4354d",
+   "es": "En inglés una decisión se hace: make a decision.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "make"
+  },
+  {
+   "id": "3360b9fa4d",
+   "es": "trabajaste en un negocio tres años",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Tell me about your last job. (trabajaste en un negocio tres años)"
+  },
+  {
+   "id": "0e74ea6180",
+   "es": "Cuéntame sobre tu último trabajo.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Tell me about your last job. (trabajaste en un negocio tres años)"
+  },
+  {
+   "id": "38d8a3dd54",
+   "es": "Estaba a cargo de los clientes.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I was responsible for the customers."
+  },
+  {
+   "id": "dadacf1e75",
+   "es": "Postularte a un trabajo",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "eb0a7b01d9",
+   "es": "Escribe un correo formal para postularte a un trabajo (real o inventado): saluda, di a qué trabajo te postulas, cuenta tu experiencia y despídete.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "21f1bed37e",
+   "es": "Empiezas con un saludo formal (Dear…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "37a5d44135",
+   "es": "Dices a qué te postulas (I would like to apply for…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "397744b670",
+   "es": "Cuentas tu experiencia (I worked… / I was responsible for…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "ff0ea349a6",
+   "es": "Te despides de forma formal (I look forward to hearing from you / Best wishes)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "bccf767257",
+   "es": "Saludé y me despedí de forma formal.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "b15d75504a",
+   "es": "Dije a qué trabajo me postulo.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "602597d382",
+   "es": "Conté mi experiencia y mis tareas.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.b1-u5-rules": {
+   "setting": "Un cartel en la cocina de una oficina.",
+   "lines": [
+    "Kitchen rules",
+    "You must wash your cup after using it.",
+    "You are not allowed to leave food in the fridge on Fridays.",
+    "You don't have to bring your own coffee. It's free!",
+    "Please be kind: other people use this kitchen too."
+   ]
+  },
+  "en.stim.b1-u5-exam": {
+   "setting": "Dos compañeros hablan antes de un examen.",
+   "lines": [
+    "Ana: I'm so nervous. The history exam is tomorrow.",
+    "Ben: Don't worry. You studied a lot. You'll pass.",
+    "Ana: I hope so. I failed it last year.",
+    "Ben: We're allowed to use a dictionary, right?",
+    "Ana: No, we aren't. But we don't have to answer all the questions."
+   ]
+  },
+  "en.stim.b1-u5-ad": {
+   "setting": "Un aviso de trabajo.",
+   "lines": [
+    "Hotel receptionist – part-time",
+    "We are hiring! Our hotel needs a friendly receptionist for weekends.",
+    "You must speak English and Spanish. Experience is not necessary.",
+    "To apply, fill in the form on our website and send your CV.",
+    "Deadline: March 30th."
+   ]
+  },
+  "en.stim.b1-u5-interview": {
+   "setting": "Una entrevista de trabajo.",
+   "lines": [
+    "Manager: Tell me about your last job.",
+    "Sofia: I worked in a shop for three years. I was responsible for the money and the orders.",
+    "Manager: Why do you want to work here?",
+    "Sofia: I want to learn new skills, and I prefer a full-time job.",
+    "Manager: Thank you. We'll make a decision on Friday, and we'll call you."
+   ]
+  }
+ }
+}

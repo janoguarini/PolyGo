@@ -1,0 +1,1604 @@
+{
+ "unit": "a1-u12",
+ "level": "A1",
+ "titleEn": "Questions and basic conversations",
+ "strings": [
+  {
+   "id": "d98aea7bc2",
+   "es": "Preguntas y conversaciones básicas",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Questions and basic conversations"
+  },
+  {
+   "id": "a6b09d7053",
+   "es": "Hacer preguntas, pedir ayuda y sostener una conversación simple.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "3af21ea83f",
+   "es": "qué / cuál",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "what"
+  },
+  {
+   "id": "9030c4df6a",
+   "es": "qué",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "what"
+  },
+  {
+   "id": "5b9943e24c",
+   "es": "cuál",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "what"
+  },
+  {
+   "id": "e311c57df6",
+   "es": "cuándo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "when"
+  },
+  {
+   "id": "bad714e3d8",
+   "es": "¿Cuándo es tu cumpleaños?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "When is your birthday?"
+  },
+  {
+   "id": "45bbc6806c",
+   "es": "por qué",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "why"
+  },
+  {
+   "id": "014943e139",
+   "es": "¿Por qué estás cansado?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Why are you tired?"
+  },
+  {
+   "id": "b66afba734",
+   "es": "cuál (entre opciones)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "which"
+  },
+  {
+   "id": "872f5b09a2",
+   "es": "¿Cuál bolso es el tuyo?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Which bag is yours?"
+  },
+  {
+   "id": "0cae025c8b",
+   "es": "cuánto (cuesta)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "how much"
+  },
+  {
+   "id": "13f05111f2",
+   "es": "cuánto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "how much"
+  },
+  {
+   "id": "700b0cfe5e",
+   "es": "cuánta",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "how much"
+  },
+  {
+   "id": "b07d9f263b",
+   "es": "¿Cuánto cuesta?",
+   "kinds": [
+    "word.example",
+    "exercise.option",
+    "exercise.source"
+   ],
+   "en": "How much is it?"
+  },
+  {
+   "id": "463ef3bcd2",
+   "es": "cuántos / cuántas",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "how many"
+  },
+  {
+   "id": "1ba6fd04a0",
+   "es": "cuántos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "how many"
+  },
+  {
+   "id": "4d99eb5629",
+   "es": "cuántas",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "how many"
+  },
+  {
+   "id": "f55fc78790",
+   "es": "¿Cuántos hermanos tienes?",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "How many brothers do you have?"
+  },
+  {
+   "id": "0ecb91a89d",
+   "es": "porque",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "because"
+  },
+  {
+   "id": "5fdec2cbbf",
+   "es": "Estoy cansado porque trabajo mucho.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I am tired because I work a lot."
+  },
+  {
+   "id": "fb26841f4b",
+   "es": "ayuda / ayudar",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "help"
+  },
+  {
+   "id": "4c733765f4",
+   "es": "ayuda",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "help"
+  },
+  {
+   "id": "95609bcf09",
+   "es": "ayudar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "help"
+  },
+  {
+   "id": "da48d17332",
+   "es": "entender",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "understand"
+  },
+  {
+   "id": "b647db14b5",
+   "es": "comprender",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "understand"
+  },
+  {
+   "id": "90e1c208dc",
+   "es": "No entiendo.",
+   "kinds": [
+    "word.example",
+    "exercise.option",
+    "exercise.source",
+    "example"
+   ],
+   "en": "I don't understand."
+  },
+  {
+   "id": "2d6e0ba075",
+   "es": "hablar",
+   "kinds": [
+    "word.translation",
+    "word.accepted"
+   ],
+   "en": "speak"
+  },
+  {
+   "id": "7d2323bece",
+   "es": "¿Hablas español?",
+   "kinds": [
+    "word.example",
+    "exercise.option"
+   ],
+   "en": "Do you speak Spanish?"
+  },
+  {
+   "id": "4b56d912aa",
+   "es": "repetir",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "repeat"
+  },
+  {
+   "id": "cd819bc72d",
+   "es": "¿Puedes repetir, por favor?",
+   "kinds": [
+    "word.example",
+    "exercise.option"
+   ],
+   "en": "Can you repeat, please?"
+  },
+  {
+   "id": "3d9d76375e",
+   "es": "despacio",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "slowly"
+  },
+  {
+   "id": "9ac6dca92c",
+   "es": "lentamente",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "slowly"
+  },
+  {
+   "id": "557e621e77",
+   "es": "lento",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "slowly"
+  },
+  {
+   "id": "3c4801a0a8",
+   "es": "Por favor, habla despacio.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Please speak slowly."
+  },
+  {
+   "id": "45a2a7388b",
+   "es": "otra vez / de nuevo",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "again"
+  },
+  {
+   "id": "c027ba1919",
+   "es": "otra vez",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "again"
+  },
+  {
+   "id": "7bdb86c609",
+   "es": "de nuevo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "again"
+  },
+  {
+   "id": "96005985f7",
+   "es": "Dilo otra vez, por favor.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Say it again, please."
+  },
+  {
+   "id": "30263ebf34",
+   "es": "significar",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "mean"
+  },
+  {
+   "id": "80af595a91",
+   "es": "querer decir",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "mean"
+  },
+  {
+   "id": "73d45906b5",
+   "es": "¿Qué significa \"happy\"?",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "What does \"happy\" mean?"
+  },
+  {
+   "id": "f480c3e5d3",
+   "es": "pregunta",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "question"
+  },
+  {
+   "id": "3f6002cf6e",
+   "es": "Tengo una pregunta.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I have a question."
+  },
+  {
+   "id": "6a54b09461",
+   "es": "respuesta / responder",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "answer"
+  },
+  {
+   "id": "9853528a46",
+   "es": "respuesta",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "answer"
+  },
+  {
+   "id": "6dcde155f1",
+   "es": "responder",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "answer"
+  },
+  {
+   "id": "f7eeb26c66",
+   "es": "contestar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "answer"
+  },
+  {
+   "id": "61a83320d3",
+   "es": "Esa es la respuesta correcta.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "That is the right answer."
+  },
+  {
+   "id": "2381f18059",
+   "es": "palabra",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "word"
+  },
+  {
+   "id": "1adc8b4739",
+   "es": "Esta es una palabra nueva.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "This is a new word."
+  },
+  {
+   "id": "995d014f19",
+   "es": "inglés",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "English"
+  },
+  {
+   "id": "c82da2836b",
+   "es": "Hablo un poco de inglés.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I speak a little English."
+  },
+  {
+   "id": "0c7ab686d8",
+   "es": "español",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "Spanish"
+  },
+  {
+   "id": "6ea1f9b501",
+   "es": "castellano",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "Spanish"
+  },
+  {
+   "id": "87da6bcbc8",
+   "es": "Ella habla español.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She speaks Spanish."
+  },
+  {
+   "id": "8a13323f07",
+   "es": "saber / conocer",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "know"
+  },
+  {
+   "id": "9c7c55a835",
+   "es": "conocer",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "know"
+  },
+  {
+   "id": "8b87af6e69",
+   "es": "No sé.",
+   "kinds": [
+    "word.example",
+    "exercise.option",
+    "exercise.translation"
+   ],
+   "en": "I don't know."
+  },
+  {
+   "id": "41104bdc0d",
+   "es": "postal",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "postcard"
+  },
+  {
+   "id": "efb1a4fc41",
+   "es": "Tengo una postal de Ana.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I have a postcard from Ana."
+  },
+  {
+   "id": "12fd25d505",
+   "es": "nos vemos",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "see you"
+  },
+  {
+   "id": "3787d1fe51",
+   "es": "¡Nos vemos el lunes!",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "See you on Monday!"
+  },
+  {
+   "id": "c7a733d85f",
+   "es": "vuelvo a las / de vuelta a las",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "back at"
+  },
+  {
+   "id": "b9f0e59e10",
+   "es": "vuelvo a las",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "back at"
+  },
+  {
+   "id": "04b9a094c2",
+   "es": "de vuelta a las",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "back at"
+  },
+  {
+   "id": "862e3bfcc8",
+   "es": "Qué, cuándo, por qué",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "7a21ea760b",
+   "es": "Las palabras para preguntar.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "e27c554034",
+   "es": "Para preguntar el nombre se usa What, no Which ni How.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "What"
+  },
+  {
+   "id": "426868f6ac",
+   "es": "¿Cuándo es la fiesta? El sábado.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "When is the party? On Saturday."
+  },
+  {
+   "id": "be279916ab",
+   "es": "¿Por qué estás feliz? ¡Porque es viernes!",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Why are you happy? Because it is Friday!"
+  },
+  {
+   "id": "c61510b176",
+   "es": "¿Qué significa «because»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "de8450f6e8",
+   "es": "Why pregunta (¿por qué?) y because responde (porque).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "because"
+  },
+  {
+   "id": "e3b1e5d409",
+   "es": "Estoy feliz porque es viernes.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I am happy because it is Friday."
+  },
+  {
+   "id": "9155245e91",
+   "es": "Cuál, cuánto, cuántos",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "219dae665e",
+   "es": "Which, how much y how many.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "a91f968cd9",
+   "es": "¿Qué significa «How much is it?»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "ac4f0e4c70",
+   "es": "¿Cuántos son?",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "46ab94f3e9",
+   "es": "¿Qué es?",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "fc14350d90",
+   "es": "¿Cuál es?",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ad9ebedf60",
+   "es": "How many + cosas que se cuentan (brothers, books). How much + precio o cantidades sin contar (water, money).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "many"
+  },
+  {
+   "id": "083d1e7b87",
+   "es": "¿Cuánto cuesta el café?",
+   "kinds": [
+    "exercise.translation",
+    "exercise.option"
+   ],
+   "en": "How much is the coffee?"
+  },
+  {
+   "id": "2dd6759dca",
+   "es": "¿Cuál bolso es el tuyo? ¿El rojo o el azul?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Which bag is yours? The red one or the blue one?"
+  },
+  {
+   "id": "30e00ef250",
+   "es": "Which pregunta entre opciones concretas.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Which"
+  },
+  {
+   "id": "3eeae1d08f",
+   "es": "¿Cuántos días hay en una semana?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How many days are there in a week?"
+  },
+  {
+   "id": "35c358d38f",
+   "es": "En clase",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "f79d67a731",
+   "es": "Pedir ayuda: repetir, hablar despacio y no entender.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "a4e63173e3",
+   "es": "¿Qué significa «I don't understand.»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "e5028dfc58",
+   "es": "No hablo inglés.",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "fc5b4df15d",
+   "es": "Entiendo.",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "04733fb1df",
+   "es": "¿Qué significa «Can you repeat, please?»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "ec3db31daa",
+   "es": "¿Puedes ayudarme?",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1d1592f2f6",
+   "es": "¿Hablas despacio?",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b2a02ee454",
+   "es": "¿Qué significa?",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "dbbda5cf27",
+   "es": "¿Puedes hablar despacio, por favor?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Can you speak slowly, please?"
+  },
+  {
+   "id": "60329db3af",
+   "es": "Situación (chat): Ben te escribe una palabra que no conoces. ¿Qué le respondes?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "You: What does it mean?"
+  },
+  {
+   "id": "3681d339f0",
+   "es": "Situación (chat): Ben te manda un mensaje largo y no entiendes nada.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "You: Sorry, I don't understand."
+  },
+  {
+   "id": "5429f4a3b0",
+   "es": "Situación: en clase, la profesora habla muy rápido.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "You: Can you speak slowly, please?"
+  },
+  {
+   "id": "fb9dd84834",
+   "es": "Palabras y significados",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "c51bfe3f6d",
+   "es": "Preguntar qué significa algo y hablar de idiomas.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "f5f0abf284",
+   "es": "What does … mean? = ¿Qué significa…? Con does, mean va sin -s.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "mean"
+  },
+  {
+   "id": "711994d403",
+   "es": "¿Qué significa «Do you speak Spanish?»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "8c92a4a783",
+   "es": "¿Sabes inglés?",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e1eecb650c",
+   "es": "¿Hablas inglés?",
+   "kinds": [
+    "exercise.option",
+    "exercise.translation"
+   ]
+  },
+  {
+   "id": "1b884dc0b0",
+   "es": "¿Entiendes español?",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "12e7644ecc",
+   "es": "Ella habla inglés y español.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She speaks English and Spanish."
+  },
+  {
+   "id": "8fdd827866",
+   "es": "El idioma (Spanish) no es lo mismo que el país (Spain). Los dos van con mayúscula.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Spanish"
+  },
+  {
+   "id": "bf0854db7e",
+   "es": "Una conversación",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "995f4582a6",
+   "es": "Juntar todo: presentarte, preguntar y responder.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "561a0d1d9c",
+   "es": "¡Hola! ¿Cómo te llamas?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Hi! What is your name? (Ana)"
+  },
+  {
+   "id": "b87f0b5f9d",
+   "es": "un poco",
+   "kinds": [
+    "exercise.cue",
+    "writing.glossary",
+    "word.translation"
+   ],
+   "en": "Do you speak English? (un poco)"
+  },
+  {
+   "id": "f78229d923",
+   "es": "¿Por qué estudias inglés? Porque me encanta viajar.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Why do you study English? Because I love travelling."
+  },
+  {
+   "id": "a26c564ff6",
+   "es": "Un gusto conocerte también.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Nice to meet you, too."
+  },
+  {
+   "id": "dedef62c05",
+   "es": "Mensajes y postales",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "142994da43",
+   "es": "Leer y escribir mensajes muy breves, notas y postales.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "a537b00c3d",
+   "es": "Un mensaje o una nota va al grano: dónde estás y cuándo vuelves («Back at five»). Una postal saluda, cuenta algo y se despide («See you on Sunday! Love, Ana»).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "7b426d8564",
+   "es": "Estoy en el banco. Vuelvo a las cuatro.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I am at the bank. Back at four."
+  },
+  {
+   "id": "b0bc08fda5",
+   "es": "¡Nos vemos el domingo!",
+   "kinds": [
+    "example"
+   ],
+   "en": "See you on Sunday!"
+  },
+  {
+   "id": "921fa5ea0e",
+   "es": "Entiendes notas, mensajes y postales breves.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "2aff589bda",
+   "es": "Escribes una nota del tipo «Back at five».",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "c8bfa6bfaa",
+   "es": "¿Qué significa «postcard»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "f0d7b63c6c",
+   "es": "carta",
+   "kinds": [
+    "exercise.option",
+    "word.accepted"
+   ]
+  },
+  {
+   "id": "6187eb884a",
+   "es": "foto",
+   "kinds": [
+    "exercise.option",
+    "word.translation"
+   ]
+  },
+  {
+   "id": "df5ff2bf99",
+   "es": "¿Qué significa «see you»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "9b3029a0c7",
+   "es": "de vuelta",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9e4a27efbc",
+   "es": "Lee y responde",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "d3c61ea7d1",
+   "es": "Una nota en la puerta del refrigerador.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u12-back-at-five"
+  },
+  {
+   "id": "cc8acdab68",
+   "es": "¿Cuándo vuelve Ana?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u12-back-at-five"
+  },
+  {
+   "id": "de0c3e4678",
+   "es": "A las cinco",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u12-back-at-five"
+  },
+  {
+   "id": "80a18f6f81",
+   "es": "A las cuatro",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "63d2779423",
+   "es": "Mañana",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d3ddba6795",
+   "es": "La nota dice «Back at five»: vuelve a las cinco.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u12-back-at-five"
+  },
+  {
+   "id": "64d40171ed",
+   "es": "¿Dónde está Ana ahora?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u12-back-at-five"
+  },
+  {
+   "id": "84099f82f6",
+   "es": "En el banco",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b1049538d7",
+   "es": "En casa",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8fc27066c3",
+   "es": "La nota dice «I am at the supermarket».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u12-back-at-five"
+  },
+  {
+   "id": "a7ed8310e6",
+   "es": "Ana le manda una postal a Tom desde un viaje.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u12-postcard"
+  },
+  {
+   "id": "14993c9b77",
+   "es": "¿Qué hace Ana todos los días?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u12-postcard"
+  },
+  {
+   "id": "f0300875de",
+   "es": "Va a un museo",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u12-postcard"
+  },
+  {
+   "id": "4d242715b3",
+   "es": "Va al parque",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5d573fd75b",
+   "es": "Trabaja",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "219b955875",
+   "es": "Estudia inglés",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "dc603b40f5",
+   "es": "La postal dice «I go to a museum every day».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u12-postcard"
+  },
+  {
+   "id": "d402e48953",
+   "es": "¿Cuándo se van a ver Ana y Tom?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u12-postcard"
+  },
+  {
+   "id": "55133d4e6e",
+   "es": "Hoy",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "50591e118a",
+   "es": "La postal termina con «See you on Sunday!».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u12-postcard"
+  },
+  {
+   "id": "bda150aa0c",
+   "es": "Escribe una nota breve para tu familia: dónde estás y a qué hora vuelves.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "📝 🛒 Supermarket · 🕔 5:00"
+  },
+  {
+   "id": "70515ead83",
+   "es": "Una nota breve: dónde estás (at the supermarket) y cuándo vuelves (back at five).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "I am at the supermarket. Back at five."
+  },
+  {
+   "id": "922ae9c170",
+   "es": "¡Nos vemos el sábado!",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "See you on Saturday!"
+  },
+  {
+   "id": "6be5f1fabd",
+   "es": "En contexto: una conversación completa",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "a69281445d",
+   "es": "Entender una conversación en clase y las preguntas que te hacen a ti.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "6514321e60",
+   "es": "Vas a escuchar a una profesora que te habla a ti y una conversación en clase. Fíjate qué te pregunta, qué te pide y qué problema tiene cada uno.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "a5f535f9ee",
+   "es": "¿Puedes hablar más despacio, por favor?",
+   "kinds": [
+    "example"
+   ],
+   "en": "Can you speak slowly, please?"
+  },
+  {
+   "id": "13a31a76ce",
+   "es": "Ahora puedes entender cuándo alguien no entiende y qué pide para resolverlo.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "e6b5f46485",
+   "es": "En clase, la profesora te habla a ti.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u12-teacher-to-you"
+  },
+  {
+   "id": "d4732c2617",
+   "es": "Ms. Park",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.a1-u12-teacher-to-you"
+  },
+  {
+   "id": "8f973254e7",
+   "es": "¿Qué te pregunta primero la profesora?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u12-teacher-to-you"
+  },
+  {
+   "id": "ddcf4b1334",
+   "es": "Cómo estás",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u12-teacher-to-you"
+  },
+  {
+   "id": "5bae91c880",
+   "es": "De dónde eres",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e950b7eb45",
+   "es": "Primero pregunta «What is your name?».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u12-teacher-to-you"
+  },
+  {
+   "id": "562efa6d32",
+   "es": "¿Qué respuesta corresponde a su segunda pregunta?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u12-teacher-to-you"
+  },
+  {
+   "id": "27282b999a",
+   "es": "Yes, I do.",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u12-teacher-to-you"
+  },
+  {
+   "id": "cc07850c5e",
+   "es": "Yes, I am.",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "815644d15c",
+   "es": "Yes, it is.",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1aa1cc3318",
+   "es": "A «Do you speak Spanish?» se responde con «do»: «Yes, I do» o «No, I don't».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u12-teacher-to-you"
+  },
+  {
+   "id": "03ca411ba8",
+   "es": "¿Qué te pide que hagas al final?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u12-teacher-to-you"
+  },
+  {
+   "id": "528a0ab494",
+   "es": "Que escribas la palabra",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u12-teacher-to-you"
+  },
+  {
+   "id": "649668954a",
+   "es": "Que traduzcas la palabra al español",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a6a45a5c1e",
+   "es": "Que repitas la palabra despacio",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ec8bfbeb87",
+   "es": "«Please repeat the word slowly».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u12-teacher-to-you"
+  },
+  {
+   "id": "790b0e66a6",
+   "es": "Ben y su profesora conversan en clase.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u12-in-class"
+  },
+  {
+   "id": "030d756286",
+   "es": "Ben",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.a1-u12-in-class"
+  },
+  {
+   "id": "031f11162c",
+   "es": "¿Qué le pide Ben a la profesora?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u12-in-class"
+  },
+  {
+   "id": "a1a3073679",
+   "es": "Que hable más despacio",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u12-in-class"
+  },
+  {
+   "id": "2e59013364",
+   "es": "Que repita la respuesta",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3bd03c93c9",
+   "es": "Que le preste un libro",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6dfbf0d299",
+   "es": "«Can you speak slowly, please?».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u12-in-class"
+  },
+  {
+   "id": "5544fdf261",
+   "es": "¿Cuántos libros tiene Ben?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u12-in-class"
+  },
+  {
+   "id": "479f162a94",
+   "es": "A «How many books do you have?» responde «Three books».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u12-in-class"
+  },
+  {
+   "id": "64657e1e1a",
+   "es": "¿Por qué el libro de inglés es su favorito?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u12-in-class"
+  },
+  {
+   "id": "8355aeff39",
+   "es": "Porque es grande",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u12-in-class"
+  },
+  {
+   "id": "92eecd0cfc",
+   "es": "Porque es divertido",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "01f4959a25",
+   "es": "Porque es nuevo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9ef04ed8f3",
+   "es": "«The English book, because it is fun».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u12-in-class"
+  },
+  {
+   "id": "1e0a460fa4",
+   "es": "Preguntar y responder",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "2ca07ec22f",
+   "es": "Escribe dos preguntas para conocer a alguien (nombre, edad, país…) y responde una con tus datos (puedes inventarlos).",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "4796c60f47",
+   "es": "Escribes una pregunta con What, Where, How old…",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "256b042da5",
+   "es": "Escribes dos preguntas (con signo de pregunta)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "9d8c980062",
+   "es": "Respondes con una oración tuya (I am…, My name is…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "e61e510538",
+   "es": "Mis preguntas terminan con «?».",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "44a28769f8",
+   "es": "Puse el verbo antes del sujeto (Where are you…?).",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "d01fe85d87",
+   "es": "Bloque 4: una publicación y una postal",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "646a6c7acf",
+   "es": "Escribe una publicación breve sobre tus gustos con una pregunta para tus amigos, y una postal corta desde una ciudad.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "7133713902",
+   "es": "Pista: ¿dijiste qué te gusta (I like, I love)?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "6ffe2ddf5e",
+   "es": "Pista: ¿le hiciste una pregunta a tus amigos?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "200ea46dee",
+   "es": "Pista: ¿tu postal se despide (See you…, Love,…)?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "eb8de81e25",
+   "es": "Conté qué me gusta y qué sé hacer.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "0828d59f01",
+   "es": "Hice una pregunta con «?».",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "f204bad57c",
+   "es": "Mi postal saluda y se despide.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.a1-u12-back-at-five": {
+   "setting": "Una nota en la puerta del refrigerador.",
+   "lines": [
+    "Tom,",
+    "I am at the supermarket.",
+    "Back at five.",
+    "Ana"
+   ]
+  },
+  "en.stim.a1-u12-postcard": {
+   "setting": "Ana le manda una postal a Tom desde un viaje.",
+   "lines": [
+    "Hi Tom!",
+    "I am in London. The city is very big and the people are nice.",
+    "I go to a museum every day.",
+    "See you on Sunday!",
+    "Love, Ana"
+   ]
+  },
+  "en.stim.a1-u12-teacher-to-you": {
+   "setting": "En clase, la profesora te habla a ti.",
+   "lines": [
+    "Ms. Park: Good morning! What is your name?",
+    "Ms. Park: Do you speak Spanish?",
+    "Ms. Park: Please repeat the word slowly."
+   ]
+  },
+  "en.stim.a1-u12-in-class": {
+   "setting": "Ben y su profesora conversan en clase.",
+   "lines": [
+    "Ben: Sorry, I don't understand. Can you speak slowly, please?",
+    "Ms. Park: Of course. How many books do you have?",
+    "Ben: Three books.",
+    "Ms. Park: Good. Which book is your favorite?",
+    "Ben: The English book, because it is fun."
+   ]
+  }
+ }
+}

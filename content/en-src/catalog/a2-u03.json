@@ -1,0 +1,1145 @@
+{
+ "unit": "a2-u03",
+ "level": "A2",
+ "titleEn": "Past simple: irregular verbs",
+ "strings": [
+  {
+   "id": "9abda82317",
+   "es": "Pasado simple: verbos irregulares",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Past simple: irregular verbs"
+  },
+  {
+   "id": "fb7d7b4e71",
+   "es": "Los pasados que no terminan en -ed: went, had, saw, bought…",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "1edae44be0",
+   "es": "fui / fue (go)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "went"
+  },
+  {
+   "id": "73405777e7",
+   "es": "fui",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "went"
+  },
+  {
+   "id": "8d7161d7ec",
+   "es": "fuimos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "went"
+  },
+  {
+   "id": "9415194b01",
+   "es": "fueron",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "went"
+  },
+  {
+   "id": "357fa939ef",
+   "es": "El domingo fuimos al parque.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We went to the park on Sunday."
+  },
+  {
+   "id": "0da6e2bb10",
+   "es": "tuve / tuvo (have)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "had"
+  },
+  {
+   "id": "8da27ba5a3",
+   "es": "tuve",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "had"
+  },
+  {
+   "id": "cd76c88532",
+   "es": "tuvo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "had"
+  },
+  {
+   "id": "c944b138c3",
+   "es": "tenía",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "had"
+  },
+  {
+   "id": "37dd46356e",
+   "es": "tuvimos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "had"
+  },
+  {
+   "id": "ce74d24d38",
+   "es": "La pasamos genial.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "We had a great time."
+  },
+  {
+   "id": "a197c7ad21",
+   "es": "vi / vio (see)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "saw"
+  },
+  {
+   "id": "c0ff93ea89",
+   "es": "vi",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "saw"
+  },
+  {
+   "id": "5a722354f0",
+   "es": "vio",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "saw"
+  },
+  {
+   "id": "1958798b45",
+   "es": "vimos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "saw"
+  },
+  {
+   "id": "78114c716d",
+   "es": "Anoche vi una buena película.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I saw a good movie last night."
+  },
+  {
+   "id": "865b40d044",
+   "es": "comí / comió (eat)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "ate"
+  },
+  {
+   "id": "b212373660",
+   "es": "comí",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "ate"
+  },
+  {
+   "id": "f8626f3dc1",
+   "es": "comió",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "ate"
+  },
+  {
+   "id": "79e820cfd6",
+   "es": "comimos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "ate"
+  },
+  {
+   "id": "86abb310a2",
+   "es": "Comió pollo con arroz.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "She ate chicken and rice."
+  },
+  {
+   "id": "30a17fe478",
+   "es": "bebí / bebió (drink)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "drank"
+  },
+  {
+   "id": "acd6b30019",
+   "es": "bebí",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "drank"
+  },
+  {
+   "id": "76555532ad",
+   "es": "bebió",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "drank"
+  },
+  {
+   "id": "f238820194",
+   "es": "tomé",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "drank"
+  },
+  {
+   "id": "93606fc681",
+   "es": "tomó",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "drank"
+  },
+  {
+   "id": "6b93f88c67",
+   "es": "Tomó mucha agua.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "He drank a lot of water."
+  },
+  {
+   "id": "ec29da5d21",
+   "es": "compré / compró (buy)",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "bought"
+  },
+  {
+   "id": "1dd30ddb18",
+   "es": "compré",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "bought"
+  },
+  {
+   "id": "19a7f8bd2f",
+   "es": "compró",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "bought"
+  },
+  {
+   "id": "3a0fcfbd73",
+   "es": "compramos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "bought"
+  },
+  {
+   "id": "4f69c6f4e0",
+   "es": "Me compré un teléfono nuevo.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I bought a new phone."
+  },
+  {
+   "id": "0285ca30b2",
+   "es": "hice / hizo (make)",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "made"
+  },
+  {
+   "id": "148d3d550f",
+   "es": "preparé",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "made"
+  },
+  {
+   "id": "e9dada2619",
+   "es": "preparó",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "made"
+  },
+  {
+   "id": "575d073446",
+   "es": "Mi papá hizo la cena.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "My father made dinner."
+  },
+  {
+   "id": "deaf6ced79",
+   "es": "recibí / conseguí (get)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "got"
+  },
+  {
+   "id": "6e98312235",
+   "es": "recibí",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "got"
+  },
+  {
+   "id": "f87506a036",
+   "es": "recibió",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "got"
+  },
+  {
+   "id": "7372d05974",
+   "es": "conseguí",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "got"
+  },
+  {
+   "id": "b2256dc365",
+   "es": "consiguió",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "got"
+  },
+  {
+   "id": "e85e3ee857",
+   "es": "Recibí un mail de mi profesora.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I got an email from my teacher."
+  },
+  {
+   "id": "a15f0fec90",
+   "es": "vine / vino (come)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "came"
+  },
+  {
+   "id": "3958765b23",
+   "es": "vine",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "came"
+  },
+  {
+   "id": "130eb7a718",
+   "es": "vino",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "came"
+  },
+  {
+   "id": "4e657635d6",
+   "es": "vinieron",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "came"
+  },
+  {
+   "id": "dc17ab91a3",
+   "es": "Volvió a casa a las once.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She came home at eleven."
+  },
+  {
+   "id": "54bd16a587",
+   "es": "tomé / llevé (take)",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "took"
+  },
+  {
+   "id": "0158d30a97",
+   "es": "llevé",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "took"
+  },
+  {
+   "id": "6abf67c8d3",
+   "es": "llevó",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "took"
+  },
+  {
+   "id": "fa0c444251",
+   "es": "Tomamos el autobús a la ciudad.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "We took the bus to the city."
+  },
+  {
+   "id": "b507032ee9",
+   "es": "di / dio (give)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "gave"
+  },
+  {
+   "id": "225ed6562f",
+   "es": "di",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "gave"
+  },
+  {
+   "id": "d0c97a5884",
+   "es": "dio",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "gave"
+  },
+  {
+   "id": "8b2aee91c5",
+   "es": "regalé",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "gave"
+  },
+  {
+   "id": "aeb894a899",
+   "es": "regaló",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "gave"
+  },
+  {
+   "id": "732208d19f",
+   "es": "Me regaló un libro.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "She gave me a book."
+  },
+  {
+   "id": "64430c2e3e",
+   "es": "dije / dijo (say)",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "said"
+  },
+  {
+   "id": "98d3cd1fef",
+   "es": "dije",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "said"
+  },
+  {
+   "id": "94da2c67e6",
+   "es": "dijo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "said"
+  },
+  {
+   "id": "5cea6e7cf5",
+   "es": "Dijo hola.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "He said hello."
+  },
+  {
+   "id": "785273a43e",
+   "es": "conocí / me encontré con (meet)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "met"
+  },
+  {
+   "id": "40c0bd8f0c",
+   "es": "conocí",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "met"
+  },
+  {
+   "id": "f2b619485a",
+   "es": "conoció",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "met"
+  },
+  {
+   "id": "3170b36f8f",
+   "es": "me encontré con",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "met"
+  },
+  {
+   "id": "294c5431bd",
+   "es": "Conocí a mi mejor amigo en la escuela.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I met my best friend at school."
+  },
+  {
+   "id": "c641a390f6",
+   "es": "escribí / escribió (write)",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "wrote"
+  },
+  {
+   "id": "a215264e4b",
+   "es": "escribí",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "wrote"
+  },
+  {
+   "id": "034433b56c",
+   "es": "escribió",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "wrote"
+  },
+  {
+   "id": "4969b22d77",
+   "es": "Me escribió una carta.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "She wrote me a letter."
+  },
+  {
+   "id": "bea0e7679a",
+   "es": "dormí / durmió (sleep)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "slept"
+  },
+  {
+   "id": "77f24adc45",
+   "es": "dormí",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "slept"
+  },
+  {
+   "id": "9d8c77d802",
+   "es": "durmió",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "slept"
+  },
+  {
+   "id": "ee4494fb36",
+   "es": "Durmió ocho horas.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "He slept eight hours."
+  },
+  {
+   "id": "2d94cc4f7c",
+   "es": "olvidé / olvidó (forget)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "forgot"
+  },
+  {
+   "id": "5c1d4086a3",
+   "es": "olvidé",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "forgot"
+  },
+  {
+   "id": "1a03666a6f",
+   "es": "olvidó",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "forgot"
+  },
+  {
+   "id": "820ff1e955",
+   "es": "me olvidé",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "forgot"
+  },
+  {
+   "id": "47db5aaf46",
+   "es": "Me olvidé de su nombre.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I forgot her name."
+  },
+  {
+   "id": "8261834cc2",
+   "es": "encontré / encontró (find)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "found"
+  },
+  {
+   "id": "5756088664",
+   "es": "encontré",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "found"
+  },
+  {
+   "id": "d5b14013c5",
+   "es": "encontró",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "found"
+  },
+  {
+   "id": "2a12dcc641",
+   "es": "Encontré las llaves debajo de la cama.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I found my keys under the bed."
+  },
+  {
+   "id": "a35dc8e91d",
+   "es": "perdí / perdió (lose)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "lost"
+  },
+  {
+   "id": "d79f85621f",
+   "es": "perdí",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "lost"
+  },
+  {
+   "id": "4b426a88c7",
+   "es": "perdió",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "lost"
+  },
+  {
+   "id": "22b6483641",
+   "es": "Perdí las llaves.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I lost my keys."
+  },
+  {
+   "id": "d4e30024b8",
+   "es": "sentí / sintió (feel)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "felt"
+  },
+  {
+   "id": "0fc530f057",
+   "es": "sentí",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "felt"
+  },
+  {
+   "id": "2afc0ec272",
+   "es": "sintió",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "felt"
+  },
+  {
+   "id": "3fd9aa7686",
+   "es": "me sentí",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "felt"
+  },
+  {
+   "id": "92a24f9d35",
+   "es": "Me sentí cansado después del trabajo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I felt tired after work."
+  },
+  {
+   "id": "9132ca1464",
+   "es": "sabía / conocía (know)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "knew"
+  },
+  {
+   "id": "ef65ee1072",
+   "es": "sabía",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "knew"
+  },
+  {
+   "id": "08ec7b79a7",
+   "es": "conocía",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "knew"
+  },
+  {
+   "id": "469172be50",
+   "es": "supe",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "knew"
+  },
+  {
+   "id": "c69825c35b",
+   "es": "Sabía la respuesta.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I knew the answer."
+  },
+  {
+   "id": "c861ea33cc",
+   "es": "Went, had, saw",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "5cac2b69d2",
+   "es": "Los irregulares más usados.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "2008acce76",
+   "es": "Ayer fui al cine.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Yesterday I went to the cinema."
+  },
+  {
+   "id": "813100b574",
+   "es": "Go es irregular: el pasado es went (no «goed»).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "went"
+  },
+  {
+   "id": "03acd59738",
+   "es": "Fui a la escuela.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I went to school."
+  },
+  {
+   "id": "fda8f9e58f",
+   "es": "Comprar, hacer, tomar",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "d4ee5084af",
+   "es": "bought, made, took, drank y got.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "c0fc4fc999",
+   "es": "Buy → bought. Ojo: brought es el pasado de bring (traer).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "bought"
+  },
+  {
+   "id": "016381f45a",
+   "es": "Preparar algo (make dinner) → made. Do se usa para tareas: do homework → did.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "made"
+  },
+  {
+   "id": "ef7b245312",
+   "es": "¿Qué significa «bought»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "8c06a4d757",
+   "es": "traje / trajo (bring)",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a970a03fa4",
+   "es": "Hizo un pastel para mi cumpleaños.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She made a cake for my birthday."
+  },
+  {
+   "id": "f38dc85d80",
+   "es": "Came, gave, said",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "4b1970eca3",
+   "es": "Venir, dar, decir, conocer y escribir.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "88f80a8d4b",
+   "es": "Mis amigos vinieron a mi fiesta.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "My friends came to my party."
+  },
+  {
+   "id": "06133a63fd",
+   "es": "Met = conocí a alguien (por primera vez) o me encontré con alguien.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "met"
+  },
+  {
+   "id": "97eaac9b61",
+   "es": "¿Qué significa «wrote»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "a082679a6e",
+   "es": "leí / leyó (read)",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9ed1515819",
+   "es": "pizza",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What did you eat for lunch? (pizza)"
+  },
+  {
+   "id": "2234356729",
+   "es": "¿Qué comiste al almuerzo?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What did you eat for lunch? (pizza)"
+  },
+  {
+   "id": "6802bea91f",
+   "es": "Perder y encontrar",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "3429f0fd10",
+   "es": "lost, found, forgot, slept, felt y knew.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "70be9358cb",
+   "es": "¡Después las encontré debajo de la cama!",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Then I found them under the bed!"
+  },
+  {
+   "id": "b504989069",
+   "es": "Dormí muy bien.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I slept very well."
+  },
+  {
+   "id": "8987a95973",
+   "es": "Tu fin de semana",
+   "kinds": [
+    "lesson.title",
+    "writing.title"
+   ]
+  },
+  {
+   "id": "44593ad6a4",
+   "es": "Contar qué hiciste con pasados irregulares.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "bfbba2d9bd",
+   "es": "¿Qué hiciste el fin de semana?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What did you do on the weekend?"
+  },
+  {
+   "id": "2bc4233a72",
+   "es": "No fui a la fiesta.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I didn't go to the party."
+  },
+  {
+   "id": "1417b6058c",
+   "es": "Después de didn't el verbo vuelve a la forma base: didn't go (no «didn't went»).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "go"
+  },
+  {
+   "id": "02210c8aef",
+   "es": "the park",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Where did you go on Saturday? (the park)"
+  },
+  {
+   "id": "66b81435f4",
+   "es": "¿Adónde fuiste el sábado?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Where did you go on Saturday? (the park)"
+  },
+  {
+   "id": "34e3a69b66",
+   "es": "¿Viste el partido?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Did you see the game? (sí)"
+  },
+  {
+   "id": "3755aca0e9",
+   "es": "Me encontré con mis amigos en el cine.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I met my friends at the cinema."
+  },
+  {
+   "id": "170173fcaa",
+   "es": "El sábado fuimos al cine.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "We went to the cinema on Saturday."
+  },
+  {
+   "id": "70139bd8e9",
+   "es": "Compré pan.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I bought bread."
+  },
+  {
+   "id": "07330a7c0a",
+   "es": "Cuenta qué hiciste el fin de semana pasado (puedes inventarlo). Usa verbos en pasado y di cuándo.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "3779ac7a17",
+   "es": "Usas al menos un verbo en pasado (went, had, saw, bought…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "b59b54bdee",
+   "es": "Dices cuándo (last weekend, on Saturday, yesterday…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "d331f9cbc0",
+   "es": "Ordenas lo que hiciste con then o after (opcional)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "9e3a7714e0",
+   "es": "Usé verbos en pasado.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "92af46d810",
+   "es": "Dije cuándo pasó.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "c173136d8b",
+   "es": "Ordené lo que hice.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {}
+}

@@ -1,0 +1,1362 @@
+{
+ "unit": "a1-u02",
+ "level": "A1",
+ "titleEn": "Pronouns and the verb to be",
+ "strings": [
+  {
+   "id": "d1bcd12329",
+   "es": "Pronombres y verbo to be",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Pronouns and the verb to be"
+  },
+  {
+   "id": "222399cd59",
+   "es": "Yo, tú, él, ella… y cómo decir quién eres y cómo estás.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "b52cfb595c",
+   "es": "Puedes usar los pronombres y el verbo to be para decir quién eres, cómo estás y hablar de otras personas.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "2f9f4ee924",
+   "es": "To be: am, is, are",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "d2c670c5de",
+   "es": "To be es «ser» y «estar» a la vez. I am; you, we y they are; he, she e it is. Para negar se agrega not y para preguntar el verbo va primero.",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "86871caec2",
+   "es": "Soy estudiante.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I'm a student."
+  },
+  {
+   "id": "118bad8077",
+   "es": "Ella no está cansada.",
+   "kinds": [
+    "example"
+   ],
+   "en": "She is not tired."
+  },
+  {
+   "id": "057932e30c",
+   "es": "¿Estás feliz?",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "Are you happy?"
+  },
+  {
+   "id": "f46015fefc",
+   "es": "Yo soy Ana.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "I am Ana."
+  },
+  {
+   "id": "38040b3470",
+   "es": "tú / usted",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "you"
+  },
+  {
+   "id": "022f7e9f9b",
+   "es": "tú",
+   "kinds": [
+    "word.accepted",
+    "exercise.pair",
+    "exercise.cue"
+   ],
+   "en": "you"
+  },
+  {
+   "id": "d6c1aaf965",
+   "es": "vos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "you"
+  },
+  {
+   "id": "3365689e22",
+   "es": "usted",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "you"
+  },
+  {
+   "id": "b39f8a7e5d",
+   "es": "ustedes",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "you"
+  },
+  {
+   "id": "6a146bd8c1",
+   "es": "tú / vos / usted",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "you"
+  },
+  {
+   "id": "4b3c3b89c9",
+   "es": "Eres mi amigo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "You are my friend."
+  },
+  {
+   "id": "5db9e8bf9e",
+   "es": "Él es profesor.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "He is a teacher."
+  },
+  {
+   "id": "fb2cb45b6b",
+   "es": "ella",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "she"
+  },
+  {
+   "id": "876a15a162",
+   "es": "Ella está feliz.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She is happy."
+  },
+  {
+   "id": "4e9ffda3d4",
+   "es": "eso / ello (cosa o animal)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "it"
+  },
+  {
+   "id": "f45140f001",
+   "es": "eso",
+   "kinds": [
+    "word.accepted",
+    "exercise.option"
+   ],
+   "en": "it"
+  },
+  {
+   "id": "db6f55e10b",
+   "es": "Es mi teléfono.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "It is my phone."
+  },
+  {
+   "id": "fe9467a5ac",
+   "es": "nosotros / nosotras",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "we"
+  },
+  {
+   "id": "9159402996",
+   "es": "nosotros",
+   "kinds": [
+    "word.accepted",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "we"
+  },
+  {
+   "id": "a3db55ab78",
+   "es": "nosotras",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "we"
+  },
+  {
+   "id": "e14fdbf57c",
+   "es": "Somos amigos.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "We are friends."
+  },
+  {
+   "id": "a9b7721d37",
+   "es": "ellos / ellas",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "they"
+  },
+  {
+   "id": "0d2633608e",
+   "es": "ellos",
+   "kinds": [
+    "word.accepted",
+    "exercise.pair"
+   ],
+   "en": "they"
+  },
+  {
+   "id": "c36b195a47",
+   "es": "ellas",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "they"
+  },
+  {
+   "id": "9422560468",
+   "es": "Ellos son estudiantes.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "They are students."
+  },
+  {
+   "id": "5d58dba652",
+   "es": "soy / estoy (con I)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "am"
+  },
+  {
+   "id": "db64595c47",
+   "es": "Estoy cansado.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I am tired."
+  },
+  {
+   "id": "e4b1a419a4",
+   "es": "es / está (con he, she, it)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "is"
+  },
+  {
+   "id": "283e8cd97e",
+   "es": "Ella es estudiante.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "She is a student."
+  },
+  {
+   "id": "dc16236147",
+   "es": "eres / son / están (con you, we, they)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "are"
+  },
+  {
+   "id": "9999066b28",
+   "es": "sos / son / están (con you, we, they)",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "are"
+  },
+  {
+   "id": "bf7a7c705e",
+   "es": "Estamos felices.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "We are happy."
+  },
+  {
+   "id": "c916ec0611",
+   "es": "negación (is not, am not)",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "not"
+  },
+  {
+   "id": "07ad75aebc",
+   "es": "No estoy cansado.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "I am not tired."
+  },
+  {
+   "id": "9f1bd57ca8",
+   "es": "feliz",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "happy"
+  },
+  {
+   "id": "0e02f47425",
+   "es": "contento",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "happy"
+  },
+  {
+   "id": "56c7511a7f",
+   "es": "contenta",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "happy"
+  },
+  {
+   "id": "c3d055d311",
+   "es": "Hoy estoy feliz.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I am happy today."
+  },
+  {
+   "id": "f7a986c481",
+   "es": "cansado / cansada",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "tired"
+  },
+  {
+   "id": "2dff4688ec",
+   "es": "cansado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "tired"
+  },
+  {
+   "id": "6f35ac9efa",
+   "es": "cansada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "tired"
+  },
+  {
+   "id": "b1637eb85e",
+   "es": "Estás cansado.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "You are tired."
+  },
+  {
+   "id": "b45513fe30",
+   "es": "estudiante",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "student"
+  },
+  {
+   "id": "80f7383a4a",
+   "es": "profesor / profesora",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "teacher"
+  },
+  {
+   "id": "48a8d9ca65",
+   "es": "profesor",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "teacher"
+  },
+  {
+   "id": "53004f05db",
+   "es": "profesora",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "teacher"
+  },
+  {
+   "id": "233e1cded6",
+   "es": "maestro",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "teacher"
+  },
+  {
+   "id": "51bb2cc5e8",
+   "es": "maestra",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "teacher"
+  },
+  {
+   "id": "5ca760f715",
+   "es": "amigo / amiga",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "friend"
+  },
+  {
+   "id": "d0711972e2",
+   "es": "amiga",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "friend"
+  },
+  {
+   "id": "2d44e08a4a",
+   "es": "Tom es mi amigo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Tom is my friend."
+  },
+  {
+   "id": "9b144555ba",
+   "es": "Yo, tú, él, ella",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "537ffdea20",
+   "es": "Usar los pronombres I, you, he y she.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "ffc90844ed",
+   "es": "I es «yo» y siempre va con mayúscula. You sirve para tú, vos y usted. He es «él» y she, «ella».",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "a469e055dc",
+   "es": "Ella es mi amiga.",
+   "kinds": [
+    "example"
+   ],
+   "en": "She is my friend."
+  },
+  {
+   "id": "405fd283eb",
+   "es": "Usas I, you, he y she.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "7f82531da1",
+   "es": "Escribes I siempre con mayúscula.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "1866e4133d",
+   "es": "¿Qué significa «I»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "2eedf46651",
+   "es": "¿Qué significa «you»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "f5c99666a3",
+   "es": "You sirve para tú, vos, usted y ustedes.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "you"
+  },
+  {
+   "id": "c007c29745",
+   "es": "Ella",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "she"
+  },
+  {
+   "id": "3986cc3f45",
+   "es": "Él",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "he"
+  },
+  {
+   "id": "7ff22a78c3",
+   "es": "Nosotros, ellos y cosas",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "5dc7deb791",
+   "es": "Usar we, they e it.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "e56351f1e9",
+   "es": "We es «nosotros» y they, «ellos» o «ellas». Para una cosa o un animal se usa it, que en español no se dice.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "3fae8dce1e",
+   "es": "Es un gato.",
+   "kinds": [
+    "example"
+   ],
+   "en": "It is a cat."
+  },
+  {
+   "id": "25113987f7",
+   "es": "Usas we y they para varias personas.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "59845e51b0",
+   "es": "Usas it para cosas y animales.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "404efe855c",
+   "es": "¿Qué significa «we»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "e24351a14a",
+   "es": "¿Qué significa «they»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "2062773c32",
+   "es": "Para cosas se usa it.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "it"
+  },
+  {
+   "id": "d4813bb71e",
+   "es": "Ana y yo = nosotras",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Ana and I = we"
+  },
+  {
+   "id": "4e4f5e5449",
+   "es": "Tom y Ana = ellos",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Tom and Ana = they"
+  },
+  {
+   "id": "c48d21952a",
+   "es": "eso (cosa)",
+   "kinds": [
+    "exercise.pair"
+   ],
+   "en": "it"
+  },
+  {
+   "id": "45c1a68cdf",
+   "es": "Nosotros",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "we"
+  },
+  {
+   "id": "a77350c5f1",
+   "es": "Ellos",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "they"
+  },
+  {
+   "id": "1fd2fae71e",
+   "es": "I am, you are",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "7a7f938518",
+   "es": "Decir cómo estás con am y are.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "1e0595d679",
+   "es": "Con I va am (I am) y con you, are (you are). Al hablar se contraen: I’m, you’re. To be sirve tanto para «ser» como para «estar».",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "b736be4edf",
+   "es": "Estoy feliz.",
+   "kinds": [
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "I am happy."
+  },
+  {
+   "id": "7f5d861aa8",
+   "es": "Usas I am y you are.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "29360b1911",
+   "es": "Sabes que to be es «ser» y «estar».",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "702b63f23f",
+   "es": "Con I siempre va am.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "am"
+  },
+  {
+   "id": "ab6db59923",
+   "es": "am",
+   "kinds": [
+    "exercise.pair"
+   ],
+   "en": "I"
+  },
+  {
+   "id": "fa51fd49ab",
+   "es": "is",
+   "kinds": [
+    "exercise.pair"
+   ],
+   "en": "he"
+  },
+  {
+   "id": "ba78973ddc",
+   "es": "are",
+   "kinds": [
+    "exercise.pair"
+   ],
+   "en": "they"
+  },
+  {
+   "id": "d899037c5c",
+   "es": "I am · he/she/it is · you/we/they are.",
+   "kinds": [
+    "exercise.explanation"
+   ]
+  },
+  {
+   "id": "7c8ff5dd20",
+   "es": "Estás cansada.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "You're tired."
+  },
+  {
+   "id": "954a24eeb1",
+   "es": "He is, she is",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "9a2874b48b",
+   "es": "Hablar de otras personas con is.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "14c6b0c8a8",
+   "es": "Con he, she e it el verbo es is: he is, she is, it is. Al hablar se contrae: he’s, she’s.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "6665ae6fb5",
+   "es": "Usas is con he, she e it.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "10d5ee5f14",
+   "es": "Presentas a otra persona con he is o she is.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "49afaed992",
+   "es": "Ella es profesora.",
+   "kinds": [
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "She is a teacher."
+  },
+  {
+   "id": "a8ecc6c3f6",
+   "es": "Él es mi amigo.",
+   "kinds": [
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "He is my friend."
+  },
+  {
+   "id": "8e41f8f8b8",
+   "es": "¿Qué significa «friend»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "3152f5a45d",
+   "es": "En inglés se pone a antes de una profesión: a student, a teacher.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "She is a student."
+  },
+  {
+   "id": "3f05d16005",
+   "es": "No olvides el artículo: a teacher.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "He is a teacher."
+  },
+  {
+   "id": "cd5a157ec4",
+   "es": "médico / médica",
+   "kinds": [
+    "exercise.pair",
+    "exercise.option",
+    "word.translation"
+   ],
+   "en": "doctor"
+  },
+  {
+   "id": "b17922d213",
+   "es": "enfermero / enfermera",
+   "kinds": [
+    "exercise.pair",
+    "word.translation"
+   ],
+   "en": "nurse"
+  },
+  {
+   "id": "e9d22121db",
+   "es": "ingeniero / ingeniera",
+   "kinds": [
+    "exercise.pair",
+    "exercise.option",
+    "word.translation"
+   ],
+   "en": "engineer"
+  },
+  {
+   "id": "18b91eefe6",
+   "es": "mozo / moza",
+   "kinds": [
+    "exercise.pair",
+    "exercise.option",
+    "word.accepted"
+   ],
+   "en": "waiter"
+  },
+  {
+   "id": "83ae74a93e",
+   "es": "¿Qué significa «engineer»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "995547d6c5",
+   "es": "Escribe en inglés qué es este hombre. Empieza con He.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "👨‍🏫"
+  },
+  {
+   "id": "f2cd82a86e",
+   "es": "Profesión con to be y a: He is a teacher.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "He is a teacher."
+  },
+  {
+   "id": "4fd6d012e8",
+   "es": "Negar y preguntar",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "56ac0ac5cb",
+   "es": "Formar oraciones negativas y preguntas con to be.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "5a2efafe6f",
+   "es": "Para negar, not va después de to be: I am not, she is not (isn’t). Para preguntar, el verbo va primero: Are you tired?",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "282b5e6e14",
+   "es": "¿Ella es estudiante?",
+   "kinds": [
+    "example"
+   ],
+   "en": "Is she a student?"
+  },
+  {
+   "id": "9e9e0dc355",
+   "es": "Niegas con not después de am, is o are.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "471b1dddb6",
+   "es": "Preguntas poniendo el verbo primero: Are you…?",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "c7ac5efea3",
+   "es": "Para negar con to be se usa not después del verbo: I am not.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "not"
+  },
+  {
+   "id": "d46dc857df",
+   "es": "Ella no es profesora.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She is not a teacher."
+  },
+  {
+   "id": "2aa58c0e73",
+   "es": "Él no es estudiante.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "He is not a student."
+  },
+  {
+   "id": "f4b70da7c7",
+   "es": "En las preguntas el verbo va antes del sujeto: Are you…?",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Are"
+  },
+  {
+   "id": "387fad957e",
+   "es": "¿Eres estudiante?",
+   "kinds": [
+    "exercise.translation",
+    "exercise.source",
+    "example"
+   ],
+   "en": "Are you a student?"
+  },
+  {
+   "id": "191332a89e",
+   "es": "¿Eres profesor/a? (responde sí o no con una respuesta corta)",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Are you a teacher?"
+  },
+  {
+   "id": "47a7695c02",
+   "es": "En respuestas cortas se repite el verbo: Yes, I am / No, I am not.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "No, I am not."
+  },
+  {
+   "id": "7753c23342",
+   "es": "¿Qué significa «not»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "959a45d44e",
+   "es": "de",
+   "kinds": [
+    "exercise.option",
+    "word.accepted"
+   ]
+  },
+  {
+   "id": "27efd11f38",
+   "es": "Escribe la oración en negativa.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I am tired."
+  },
+  {
+   "id": "2a3df55477",
+   "es": "Negativa: am + not → I am not (I’m not) tired.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "I am not tired."
+  },
+  {
+   "id": "0b4b9d9518",
+   "es": "Escribe la oración como pregunta.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She is a teacher."
+  },
+  {
+   "id": "27073c594d",
+   "es": "Pregunta con to be: el verbo va primero. Is she…?",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Is she a teacher?"
+  },
+  {
+   "id": "eb51ffd9bf",
+   "es": "They are not = they aren’t = they’re not.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "They are not students."
+  },
+  {
+   "id": "86b61baccf",
+   "es": "Are va antes de you en la pregunta: Are you happy?",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Are you happy?"
+  },
+  {
+   "id": "32a9df0e13",
+   "es": "En contexto: ¿quién es quién?",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "2d2cfffdbc",
+   "es": "Entender una ficha sobre personas y preguntas con «to be» dirigidas a ti.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "c5bb10e3a4",
+   "es": "Vas a leer una ficha sobre dos personas y a escuchar a una profesora que te hace preguntas. Fíjate en quién es quién y en qué te preguntan a ti.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "e4baf8d3c2",
+   "es": "Él no está contento.",
+   "kinds": [
+    "example"
+   ],
+   "en": "He is not happy."
+  },
+  {
+   "id": "c1dbd7f165",
+   "es": "Ahora puedes entender quién es quién en un texto corto y qué te preguntan con «to be».",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "12f4c00645",
+   "es": "Una ficha sobre dos personas de una clase.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u02-class-card"
+  },
+  {
+   "id": "f7e7561531",
+   "es": "¿Quién es el profesor?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u02-class-card"
+  },
+  {
+   "id": "4150950870",
+   "es": "Mia",
+   "kinds": [
+    "exercise.option",
+    "context.speaker"
+   ],
+   "en": "en.stim.a1-u02-class-card"
+  },
+  {
+   "id": "4ecde249d7",
+   "es": "Sam",
+   "kinds": [
+    "exercise.option",
+    "context.speaker"
+   ]
+  },
+  {
+   "id": "08d6d231d9",
+   "es": "Los dos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4d51b054ee",
+   "es": "«Sam is a teacher»; Mia es estudiante.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u02-class-card"
+  },
+  {
+   "id": "aace9e8a4f",
+   "es": "¿Cómo está Sam?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u02-class-card"
+  },
+  {
+   "id": "ed9c860d65",
+   "es": "Contento",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u02-class-card"
+  },
+  {
+   "id": "416a5e0fa5",
+   "es": "Cansado",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d3055e6d54",
+   "es": "«Sam is not happy. He is tired»: está cansado.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u02-class-card"
+  },
+  {
+   "id": "4afc8cfa98",
+   "es": "¿Qué relación hay entre Mia y Sam?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u02-class-card"
+  },
+  {
+   "id": "7274e83c79",
+   "es": "Son amigos",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u02-class-card"
+  },
+  {
+   "id": "814ccef19c",
+   "es": "Son hermanos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ca25622bd3",
+   "es": "No se conocen",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "eea8298a2a",
+   "es": "«Mia and Sam are friends».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u02-class-card"
+  },
+  {
+   "id": "20941233df",
+   "es": "Primer día de clase: la profesora te habla a ti.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u02-teacher-questions"
+  },
+  {
+   "id": "1a5d06a170",
+   "es": "Kate",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.a1-u02-teacher-questions"
+  },
+  {
+   "id": "dce27864f5",
+   "es": "¿Quién te habla?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u02-teacher-questions"
+  },
+  {
+   "id": "66db22ff48",
+   "es": "Una estudiante nueva",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u02-teacher-questions"
+  },
+  {
+   "id": "36bcbda651",
+   "es": "Tu profesora",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "54fe098c73",
+   "es": "Una amiga tuya",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4f5129af9a",
+   "es": "Dice «I am your teacher»: es tu profesora.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u02-teacher-questions"
+  },
+  {
+   "id": "b25699b2ac",
+   "es": "¿Qué te pregunta Kate primero?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u02-teacher-questions"
+  },
+  {
+   "id": "ec811b5818",
+   "es": "Si estás cansado",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u02-teacher-questions"
+  },
+  {
+   "id": "3ad48eddcc",
+   "es": "Si eres estudiante",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "283000a2bd",
+   "es": "Cómo te llamas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0c48d2d48a",
+   "es": "Primero pregunta «Are you a student?»; después, si estás cansado.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u02-teacher-questions"
+  },
+  {
+   "id": "db6048f0af",
+   "es": "¿Qué respuesta corresponde a la segunda pregunta de Kate?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u02-teacher-questions"
+  },
+  {
+   "id": "ab002d6a9c",
+   "es": "No, she is not.",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u02-teacher-questions"
+  },
+  {
+   "id": "4ad57088f6",
+   "es": "No, I am not.",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c0fcb1e7b7",
+   "es": "No, you are not.",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2a022b1a6a",
+   "es": "Te pregunta a ti («Are you tired?»): se responde con «I am» o «I am not».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u02-teacher-questions"
+  }
+ ],
+ "stimuli": {
+  "en.stim.a1-u02-class-card": {
+   "setting": "Una ficha sobre dos personas de una clase.",
+   "lines": [
+    "Sam is a teacher.",
+    "Mia is a student. She is happy.",
+    "Sam is not happy. He is tired.",
+    "Mia and Sam are friends."
+   ]
+  },
+  "en.stim.a1-u02-teacher-questions": {
+   "setting": "Primer día de clase: la profesora te habla a ti.",
+   "lines": [
+    "Kate: Hello! My name is Kate. I am your teacher.",
+    "Kate: Are you a student?",
+    "Kate: And are you tired?"
+   ]
+  }
+ }
+}

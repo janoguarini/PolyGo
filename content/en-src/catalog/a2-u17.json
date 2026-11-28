@@ -1,0 +1,1371 @@
+{
+ "unit": "a2-u17",
+ "level": "A2",
+ "titleEn": "Telling a story",
+ "strings": [
+  {
+   "id": "c75b02b7a8",
+   "es": "Contar una historia",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Telling a story"
+  },
+  {
+   "id": "7a337b9256",
+   "es": "Lo que estaba pasando (was/were + -ing), when y while, accidentes y el orden de un relato.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "805dc2f2dc",
+   "es": "Puedes contar una historia corta del pasado: qué estaba pasando, qué pasó de repente y cómo terminó.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "a3671611d8",
+   "es": "Past continuous",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "6f3688bdf9",
+   "es": "Was/were + verbo con -ing cuenta lo que estaba pasando en un momento del pasado. La acción corta que la interrumpe va en past simple: I was cooking when the phone rang.",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "5a0f8ab144",
+   "es": "A las nueve estaba leyendo.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I was reading at nine."
+  },
+  {
+   "id": "51e15cf1f4",
+   "es": "Estaba durmiendo cuando sonó el teléfono.",
+   "kinds": [
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "I was sleeping when the phone rang."
+  },
+  {
+   "id": "49071aa175",
+   "es": "Mientras caminábamos, oímos un ruido.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "While we were walking, we heard a noise."
+  },
+  {
+   "id": "6e2714875d",
+   "es": "historia / cuento",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "story"
+  },
+  {
+   "id": "874900292a",
+   "es": "historia",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "story"
+  },
+  {
+   "id": "46dfd5f9ec",
+   "es": "cuento",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "story"
+  },
+  {
+   "id": "f1a1d14357",
+   "es": "Leo una historia todas las noches.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I read a story every night."
+  },
+  {
+   "id": "bd831b0636",
+   "es": "mientras",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "while"
+  },
+  {
+   "id": "917f974c77",
+   "es": "Yo cocinaba mientras ella leía.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I was cooking while she was reading."
+  },
+  {
+   "id": "124c7e65b0",
+   "es": "de repente",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "suddenly"
+  },
+  {
+   "id": "19b498cec0",
+   "es": "de pronto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "suddenly"
+  },
+  {
+   "id": "5adae6a2cc",
+   "es": "De repente, sonó mi teléfono.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Suddenly, my phone rang."
+  },
+  {
+   "id": "d64e52523f",
+   "es": "pasó / sucedió",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "happened"
+  },
+  {
+   "id": "38300af949",
+   "es": "pasó",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "happened"
+  },
+  {
+   "id": "db621eea67",
+   "es": "sucedió",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "happened"
+  },
+  {
+   "id": "913b3c94c8",
+   "es": "ocurrió",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "happened"
+  },
+  {
+   "id": "a1711f29bb",
+   "es": "¿Qué pasó?",
+   "kinds": [
+    "word.example",
+    "lesson.title",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "What happened?"
+  },
+  {
+   "id": "55c8e9931e",
+   "es": "al principio",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "at first"
+  },
+  {
+   "id": "fa03d82364",
+   "es": "Al principio estaba nervioso.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "At first, I was nervous."
+  },
+  {
+   "id": "f35d1a958e",
+   "es": "al final",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "in the end"
+  },
+  {
+   "id": "bc65fe9945",
+   "es": "finalmente",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "in the end"
+  },
+  {
+   "id": "69ca4fd43a",
+   "es": "Al final, estábamos contentos.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "In the end, we were happy."
+  },
+  {
+   "id": "afdacc71b5",
+   "es": "al día siguiente",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "the next day"
+  },
+  {
+   "id": "d63d09b6ba",
+   "es": "Al día siguiente fuimos a la playa.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The next day, we went to the beach."
+  },
+  {
+   "id": "193e1a4cc5",
+   "es": "me caí / se cayó (fall)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "fell"
+  },
+  {
+   "id": "963a5221e0",
+   "es": "me caí",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "fell"
+  },
+  {
+   "id": "7f663d56c7",
+   "es": "se cayó",
+   "kinds": [
+    "word.accepted",
+    "exercise.option"
+   ],
+   "en": "fell"
+  },
+  {
+   "id": "1ce4464d46",
+   "es": "cayó",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "fell"
+  },
+  {
+   "id": "ccf668b29d",
+   "es": "Se cayó en la calle.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She fell in the street."
+  },
+  {
+   "id": "26a28963ec",
+   "es": "rompí / rompió (break)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "broke"
+  },
+  {
+   "id": "b8eca54615",
+   "es": "rompí",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "broke"
+  },
+  {
+   "id": "a2ab5d56a9",
+   "es": "rompió",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "broke"
+  },
+  {
+   "id": "e6c6d2e123",
+   "es": "se rompió",
+   "kinds": [
+    "word.accepted",
+    "exercise.option"
+   ],
+   "en": "broke"
+  },
+  {
+   "id": "75081caa2e",
+   "es": "Se rompió el brazo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "He broke his arm."
+  },
+  {
+   "id": "5d745c4dda",
+   "es": "sonó (ring)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "rang"
+  },
+  {
+   "id": "cb81b2730a",
+   "es": "Mi teléfono sonó a las seis.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My phone rang at six."
+  },
+  {
+   "id": "c9be976571",
+   "es": "empecé / empezó (begin)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "began"
+  },
+  {
+   "id": "b9d836ced3",
+   "es": "empezó",
+   "kinds": [
+    "word.accepted",
+    "exercise.option"
+   ],
+   "en": "began"
+  },
+  {
+   "id": "74b823be27",
+   "es": "comenzó",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "began"
+  },
+  {
+   "id": "3e1c5c7cf2",
+   "es": "Empezó a llover.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "It began to rain."
+  },
+  {
+   "id": "37fa5eda20",
+   "es": "oí / oyó (hear)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "heard"
+  },
+  {
+   "id": "42a6da2c5d",
+   "es": "oí",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "heard"
+  },
+  {
+   "id": "e175d864b4",
+   "es": "oyó",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "heard"
+  },
+  {
+   "id": "3610ca136e",
+   "es": "escuché",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "heard"
+  },
+  {
+   "id": "02110a63ad",
+   "es": "escuchó",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "heard"
+  },
+  {
+   "id": "a3f0dc6fd7",
+   "es": "Oí un ruido.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I heard a noise."
+  },
+  {
+   "id": "35cc8e7587",
+   "es": "ruido",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "noise"
+  },
+  {
+   "id": "5548c494fd",
+   "es": "Oí un ruido afuera.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I heard a noise outside."
+  },
+  {
+   "id": "012aad971b",
+   "es": "asustado / asustada",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "scared"
+  },
+  {
+   "id": "8891413f50",
+   "es": "asustado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "scared"
+  },
+  {
+   "id": "18ad121fda",
+   "es": "asustada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "scared"
+  },
+  {
+   "id": "75d0c9f0f9",
+   "es": "con miedo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "scared"
+  },
+  {
+   "id": "ab2bddd897",
+   "es": "Estaba muy asustado.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I was very scared."
+  },
+  {
+   "id": "36d3799b5e",
+   "es": "por suerte",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "luckily"
+  },
+  {
+   "id": "732f85d76e",
+   "es": "afortunadamente",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "luckily"
+  },
+  {
+   "id": "72d322cabe",
+   "es": "Por suerte, el médico estaba ahí.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Luckily, the doctor was there."
+  },
+  {
+   "id": "1d49fc0933",
+   "es": "afuera",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "outside"
+  },
+  {
+   "id": "3b57c8ad92",
+   "es": "fuera",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "outside"
+  },
+  {
+   "id": "e4bea3d0de",
+   "es": "Los chicos estaban jugando afuera.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The children were playing outside."
+  },
+  {
+   "id": "43c5cb02ba",
+   "es": "Lo que estaba pasando",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "e96f11061a",
+   "es": "Contar qué estaba pasando en un momento del pasado.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "c4207d9ee7",
+   "es": "El past continuous cuenta lo que estaba pasando en un momento del pasado: was/were + verbo con -ing. Con I, he, she e it va was; con you, we y they, were.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "eed7c81689",
+   "es": "Estaban mirando una película.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "They were watching a movie."
+  },
+  {
+   "id": "5249ca50d6",
+   "es": "Cuentas qué estaba pasando: I was cooking, they were sleeping.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "fb89af2e53",
+   "es": "Preguntas: What were you doing at eight?",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "1c876d58b5",
+   "es": "A las ocho estaba cocinando.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "At eight o'clock I was cooking."
+  },
+  {
+   "id": "7bb64ab458",
+   "es": "Past continuous: was/were + -ing. Con I, he, she e it va was.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "was"
+  },
+  {
+   "id": "25a8e8bfe7",
+   "es": "¿Qué estabas haciendo a las nueve?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What were you doing at nine?"
+  },
+  {
+   "id": "11883a597d",
+   "es": "Después de was/were va el verbo con -ing: doing.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "doing"
+  },
+  {
+   "id": "cf834dbc51",
+   "es": "¿Qué significa «outside»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "ef2fe91ca2",
+   "es": "adentro",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "bd6ad98f1a",
+   "es": "arriba",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "71c688e671",
+   "es": "Estaba leyendo una historia en la cama.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I was reading a story in bed."
+  },
+  {
+   "id": "40533e7365",
+   "es": "dormías",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What were you doing at ten last night? (dormías)"
+  },
+  {
+   "id": "a824047359",
+   "es": "¿Qué estabas haciendo anoche a las diez?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What were you doing at ten last night? (dormías)"
+  },
+  {
+   "id": "bbffdd380c",
+   "es": "Estaba lloviendo afuera.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "It was raining outside."
+  },
+  {
+   "id": "9f439c7fd5",
+   "es": "When y while",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "96a2aef6d9",
+   "es": "Contar una acción que interrumpe otra.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "8799a06163",
+   "es": "Cuando una acción corta interrumpe otra larga, la larga va en past continuous y la corta en past simple: I was cooking when the phone rang. While (mientras) va con la acción larga: While I was cooking, the phone rang.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "a5cbb66465",
+   "es": "Cuentas una acción que interrumpe otra: I was cooking when the phone rang.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "615956d949",
+   "es": "Usas while con la acción larga.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "3d4c549a06",
+   "es": "When va con la acción corta (rang); while, con la larga (was sleeping).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "when"
+  },
+  {
+   "id": "8ac7fdc644",
+   "es": "Estaba leyendo cuando oyó un ruido.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She was reading when she heard a noise."
+  },
+  {
+   "id": "974e92ff8c",
+   "es": "Hear es irregular: el pasado es heard.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "heard"
+  },
+  {
+   "id": "3e1dffd0ea",
+   "es": "Estaba cocinando cuando llamaste.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I was cooking when you called."
+  },
+  {
+   "id": "5ce0793e8d",
+   "es": "Preguntar qué pasó y contar un accidente.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "1066b29fc1",
+   "es": "Para preguntar qué pasó: What happened? Un accidente se cuenta con past simple y past continuous: I fell when I was running. Luckily (por suerte) cuenta lo bueno.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "44eea89a44",
+   "es": "Se cayó y se rompió el brazo.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "He fell and broke his arm."
+  },
+  {
+   "id": "a1d7f3ee5d",
+   "es": "Preguntas What happened? y cuentas un accidente.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "ecddfb70de",
+   "es": "Dices cómo te sentiste: I was scared.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "5fd9430899",
+   "es": "¿Qué significa «happened»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "1dd29b9f32",
+   "es": "Se cayó cuando estaba corriendo en el parque.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "He fell when he was running in the park."
+  },
+  {
+   "id": "ce8bb41b33",
+   "es": "Fall (caerse) es irregular: el pasado es fell. Felt es el pasado de feel.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "fell"
+  },
+  {
+   "id": "553b84e641",
+   "es": "Mia le pregunta a Leo por su brazo.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a2-u17-accident"
+  },
+  {
+   "id": "6aac7934e4",
+   "es": "¿Cómo se lastimó Leo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u17-accident"
+  },
+  {
+   "id": "ebec483517",
+   "es": "Se cayó de la bici",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u17-accident"
+  },
+  {
+   "id": "969ed1f934",
+   "es": "Se cayó en el gimnasio",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "99d7dd8f45",
+   "es": "Lo chocó un auto",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "731de9e8b5",
+   "es": "Se cayó corriendo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "bce47630cb",
+   "es": "Leo dice: «I fell when I was riding my bike».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u17-accident"
+  },
+  {
+   "id": "63727f3700",
+   "es": "¿Quién lo ayudó?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u17-accident"
+  },
+  {
+   "id": "bcf9f0d7f0",
+   "es": "Una médica que estaba en la calle",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u17-accident"
+  },
+  {
+   "id": "dc926a1ffa",
+   "es": "Un policía",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "207555e3b9",
+   "es": "Nadie",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ca5fa644af",
+   "es": "Leo dice: «Luckily, a doctor was in the street, and she helped me».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u17-accident"
+  },
+  {
+   "id": "776d556270",
+   "es": "te caíste",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What happened? (te caíste)"
+  },
+  {
+   "id": "a852f5532f",
+   "es": "Estaba muy asustada.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I was very scared."
+  },
+  {
+   "id": "7c2ed86d94",
+   "es": "El orden de la historia",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "d4f78e86e1",
+   "es": "Ordenar un relato: al principio, después, al día siguiente, al final.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "ae4974ef61",
+   "es": "Para ordenar una historia: at first (al principio), then (después), the next day (al día siguiente) e in the end (al final). Para decir que algo empezó: It began to rain (empezó a llover).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "8d6c6b1ec5",
+   "es": "Al final estábamos muy contentos.",
+   "kinds": [
+    "example"
+   ],
+   "en": "In the end, we were very happy."
+  },
+  {
+   "id": "608e20279d",
+   "es": "Ordenas una historia con at first, then, the next day e in the end.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "314d42a545",
+   "es": "Cuentas cuándo empezó algo: It began to rain.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "cb5004897a",
+   "es": "Al principio estaba nervioso, pero después estaba contento.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "At first, I was nervous, but then I was happy."
+  },
+  {
+   "id": "c7b847ace4",
+   "es": "Empezó a llover cuando estábamos en la playa.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "It began to rain when we were at the beach."
+  },
+  {
+   "id": "a12eca5b72",
+   "es": "Begin (empezar) es irregular: el pasado es began.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "began"
+  },
+  {
+   "id": "5b20c844ac",
+   "es": "Al día siguiente fuimos a la montaña.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "The next day we went to the mountains."
+  },
+  {
+   "id": "f414852556",
+   "es": "Emma cuenta un día de sus vacaciones.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a2-u17-beach"
+  },
+  {
+   "id": "362c25e3b0",
+   "es": "¿Qué estaban haciendo cuando empezó a llover?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u17-beach"
+  },
+  {
+   "id": "4e5c7a656b",
+   "es": "Nadando en el mar",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u17-beach"
+  },
+  {
+   "id": "467e600b72",
+   "es": "Comiendo en el auto",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7eae26a5a6",
+   "es": "Caminando por la playa",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9a4bb2354a",
+   "es": "Durmiendo en el hotel",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "06e1e7e8ad",
+   "es": "Emma escribe: «We were swimming in the sea when suddenly it began to rain».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u17-beach"
+  },
+  {
+   "id": "32e5ad62c6",
+   "es": "¿Cómo estuvo el tiempo al día siguiente?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u17-beach"
+  },
+  {
+   "id": "d34f20a977",
+   "es": "Lindo: el cielo estaba azul",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u17-beach"
+  },
+  {
+   "id": "654a8eb36d",
+   "es": "Llovió todo el día",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a1f7d90950",
+   "es": "Hizo mucho frío",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b8044b221e",
+   "es": "Hubo tormenta",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a0ea08e186",
+   "es": "Emma escribe: «The next day, the sky was blue again».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u17-beach"
+  },
+  {
+   "id": "d30eadd910",
+   "es": "Al final, estábamos muy contentos.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "In the end, we were very happy."
+  },
+  {
+   "id": "e5e71478ae",
+   "es": "Al día siguiente, empezó a nevar.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "The next day, it began to snow."
+  },
+  {
+   "id": "5aaef8d2bd",
+   "es": "Tu historia",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "8f7d755bca",
+   "es": "Contar una historia corta con comienzo, problema y final.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "cb3744cad2",
+   "es": "Una historia corta tiene un comienzo (dónde estabas y qué estabas haciendo), algo que pasó de repente y un final. Usa was/were + -ing para la escena y el past simple para lo que pasó.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "9a0a818f3c",
+   "es": "Volvía caminando a casa cuando vi a un viejo amigo.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I was walking home when I saw an old friend."
+  },
+  {
+   "id": "e3cac1eed7",
+   "es": "Al final, cenamos juntos.",
+   "kinds": [
+    "example"
+   ],
+   "en": "In the end, we had dinner together."
+  },
+  {
+   "id": "c9e403e6c7",
+   "es": "Cuentas una historia corta con comienzo, problema y final.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "615d464d85",
+   "es": "Combinas el past continuous y el past simple.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "24e336329b",
+   "es": "Leo cuenta algo que le pasó el viernes.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a2-u17-station"
+  },
+  {
+   "id": "8b5faa1806",
+   "es": "¿Dónde estaba Leo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u17-station"
+  },
+  {
+   "id": "417386b8e3",
+   "es": "En la estación, esperando el tren",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u17-station"
+  },
+  {
+   "id": "92f6b6e938",
+   "es": "En el tren, leyendo un libro",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a73334eb83",
+   "es": "En la casa de su profesora",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "96e69dc77b",
+   "es": "Leo dice: «I was waiting for the train at the station».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u17-station"
+  },
+  {
+   "id": "dc731f7005",
+   "es": "¿Qué pasó al final?",
+   "kinds": [
+    "context.question",
+    "exercise.translation"
+   ],
+   "en": "en.stim.a2-u17-station"
+  },
+  {
+   "id": "ee25192e08",
+   "es": "Tomó el tren siguiente",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u17-station"
+  },
+  {
+   "id": "f1862696e5",
+   "es": "No viajó",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1eb120ab69",
+   "es": "Volvió a su casa",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "673e02b3d8",
+   "es": "Tomó un taxi",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "06e95f0a80",
+   "es": "Leo dice: «In the end, I took the next train».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u17-station"
+  },
+  {
+   "id": "5b8a48a7d0",
+   "es": "Empezó a llover mientras esperaba.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "It began to rain while I was waiting."
+  },
+  {
+   "id": "6dafeb6757",
+   "es": "Por suerte, había un policía y nos ayudó.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Luckily, a police officer was there and he helped us."
+  },
+  {
+   "id": "5cc8cca845",
+   "es": "caminabas por el parque",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What were you doing when it began to rain? (caminabas por el parque)"
+  },
+  {
+   "id": "7051d26c50",
+   "es": "¿Qué estabas haciendo cuando empezó a llover?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What were you doing when it began to rain? (caminabas por el parque)"
+  },
+  {
+   "id": "2153ccd877",
+   "es": "Mientras cocinaba, oí un ruido.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "While I was cooking, I heard a noise."
+  },
+  {
+   "id": "ef320d0dbc",
+   "es": "Cuenta una historia",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "89d9f0a885",
+   "es": "Cuenta una historia corta (real o inventada): dónde estabas y qué estabas haciendo, qué pasó de repente y cómo terminó.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "1f06ef4f84",
+   "es": "¿Usaste was/were + -ing?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "2a33a18960",
+   "es": "¿Usaste suddenly, when o while?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "8948cd60b1",
+   "es": "¿Le diste un final (in the end, the next day…)?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "3e4c2c2129",
+   "es": "¿Escribiste al menos 5 oraciones?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "b451f24286",
+   "es": "Conté dónde estaba y qué estaba haciendo.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "a2ece1175a",
+   "es": "Conté qué pasó de repente.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "c37d39fc1f",
+   "es": "La historia tiene un final.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.a2-u17-accident": {
+   "setting": "Mia le pregunta a Leo por su brazo.",
+   "lines": [
+    "Mia: What happened to your arm?",
+    "Leo: I fell when I was riding my bike.",
+    "Mia: Did it hurt?",
+    "Leo: Yes, a lot, and I was very scared.",
+    "Leo: Luckily, a doctor was in the street, and she helped me."
+   ]
+  },
+  "en.stim.a2-u17-beach": {
+   "setting": "Emma cuenta un día de sus vacaciones.",
+   "lines": [
+    "Last summer, I went to the beach with my family.",
+    "At first, the weather was sunny and warm.",
+    "We were swimming in the sea when suddenly it began to rain.",
+    "We went back to the car.",
+    "The next day, the sky was blue again.",
+    "In the end, it was a great vacation!"
+   ]
+  },
+  "en.stim.a2-u17-station": {
+   "setting": "Leo cuenta algo que le pasó el viernes.",
+   "lines": [
+    "Leo: Last Friday, I was waiting for the train at the station.",
+    "Leo: I was reading a book when suddenly a woman said hello.",
+    "Leo: It was my old teacher from school!",
+    "Leo: We talked a lot, and I forgot the train.",
+    "Leo: In the end, I took the next train."
+   ]
+  }
+ }
+}

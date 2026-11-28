@@ -1,4 +1,5 @@
 import { HAN, languageConfig, type LanguageConfig } from '../shared/languages';
+import { enSrcPrompts } from './en-src/texts';
 import type { ExerciseDef } from './types';
 
 /**
@@ -38,7 +39,10 @@ export function joinHan(sentence: string): string {
 }
 
 /** Consignas en el idioma de apoyo: español (todos los cursos) o inglés (el curso de español). */
-function promptsFor(language: LanguageConfig) {
+function promptsFor(language: LanguageConfig, namespace?: string) {
+  // Inglés para hablantes de portugués, italiano o francés (docs/EN_MULTI_SOURCE.md).
+  const localized = namespace ? enSrcPrompts(namespace) : undefined;
+  if (localized) return localized;
   const han = language.script === 'han';
   if (language.support?.code === 'en') {
     const name = language.support.targetName;
@@ -69,9 +73,10 @@ function promptsFor(language: LanguageConfig) {
   };
 }
 
-export function exercisesFor(language: LanguageConfig) {
+/** `namespace`: el espacio de ids de un curso de inglés localizado (ept, eit, efr), si lo es. */
+export function exercisesFor(language: LanguageConfig, namespace?: string) {
   const han = language.script === 'han';
-  const t = promptsFor(language);
+  const t = promptsFor(language, namespace);
   return {
     imageChoice: (
       emoji: string,

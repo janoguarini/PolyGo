@@ -1,0 +1,207 @@
+{
+  "unit": "a2-u10",
+  "strings": {
+    "69b7b95ad6": "Travail et obligations",
+    "49a7d00495": "Les métiers, le bureau et ce que tu dois faire : have to et must.",
+    "c23675fddd": "travail / emploi",
+    "8d38e9323b": "emploi",
+    "401c787fa7": "poste",
+    "b7670d5212": "J’ai un nouveau travail.",
+    "0aec0b5b86": "bureau",
+    "2473eeb8c2": "Je travaille dans un bureau près de chez moi.",
+    "895387a36b": "chef / cheffe",
+    "452b889d10": "chef",
+    "752f0d2ec0": "cheffe",
+    "9862da1c35": "J’ai une réunion avec mon chef.",
+    "e1f9d6b49e": "collègue (de travail)",
+    "23f18bef93": "collègue de travail",
+    "2b95df9f30": "collègue",
+    "48466258a0": "Mes collègues sont très gentils.",
+    "e869472124": "infirmier",
+    "9fe1954f4e": "infirmière",
+    "e63f93e251": "Elle est infirmière à l’hôpital.",
+    "88135d3ead": "serveur / serveuse",
+    "115b9a0353": "serveur",
+    "67194d7f4f": "serveuse",
+    "35de1f4e97": "garçon de café",
+    "d1168ee263": "",
+    "b4cdcebea5": "",
+    "7e7dd1e5c5": "Le serveur nous a apporté le repas.",
+    "22c39a6780": "policier / policière",
+    "571ef5c905": "agent de police",
+    "10eb5bb786": "Le policier nous a aidés.",
+    "2a0b219060": "ingénieur",
+    "39306b1853": "ingénieure",
+    "a992b75198": "Elle est ingénieure.",
+    "4f2d5e241d": "avocat / avocate",
+    "ae87211efc": "avocat",
+    "053f188f81": "avocate",
+    "b53ad9ca2e": "Ma mère est avocate.",
+    "b58dafb821": "chauffeur / conducteur",
+    "4fad8ba129": "chauffeur",
+    "0380db97ec": "conducteur",
+    "f248572361": "conductrice",
+    "8d71b4d605": "Mon père est chauffeur de bus.",
+    "b9496b859b": "devoir",
+    "579ec09765": "je dois",
+    "d6c41b03a3": "Je dois travailler samedi.",
+    "f64f1180c9": "devoir (règle)",
+    "3db199821e": "il faut",
+    "7341d45b36": "Tu dois être à l’heure.",
+    "ba38b4e445": "il ne faut pas / c’est interdit",
+    "3edee7659d": "c’est interdit",
+    "c03ab457f7": "on ne peut pas",
+    "6891f6f7e7": "ne pas devoir",
+    "50888ed414": "Tu ne dois pas utiliser ton téléphone pendant la réunion.",
+    "d72c264f24": "réunion",
+    "41e21fb17c": "La réunion est à dix heures.",
+    "0d2c3072b0": "e-mail / courriel",
+    "00d8d3f117": "mail",
+    "31eb60d41c": "courriel",
+    "82244417f9": "e-mail",
+    "b67d7d1180": "J’ai envoyé l’e-mail à mon chef.",
+    "87fdc7664b": "gagner (de l’argent)",
+    "de97b71a30": "gagner",
+    "b07abaf1a8": "",
+    "d49e06605b": "Combien tu gagnes par mois ?",
+    "cfc1280e94": "salaire",
+    "b7543b3bcc": "salaire",
+    "cec2dbf1d3": "paie",
+    "bc57d828a1": "Elle gagne un bon salaire.",
+    "307ca7a624": "entreprise",
+    "705ac92922": "société",
+    "c3b73a718e": "boîte",
+    "0b622df975": "Elle travaille pour une grande entreprise.",
+    "6e80bb3110": "entretien",
+    "1f1347bfe0": "Demain, j’ai un entretien d’embauche.",
+    "1d259971bc": "temps libre",
+    "31856d5fc8": "loisirs",
+    "86deef2dae": "Pendant mon temps libre, je joue au foot.",
+    "b0dfb0c237": "Les métiers",
+    "082825a7d7": "Dire ce que fait quelqu’un dans la vie.",
+    "d6367cf1e8": "Les métiers prennent a/an : an engineer (an devant un son de voyelle). En français, on ne met pas d’article : « elle est ingénieure ».",
+    "588c0651d6": "Au bureau",
+    "b04fe50cb1": "Chefs, collègues, réunions et e-mails.",
+    "812617b5b1": "J’ai une réunion avec mon chef à dix heures.",
+    "a5569740c5": "Que veut dire « boss » ?",
+    "bdf656d515": "Have to",
+    "741e5c12e9": "Les obligations : devoir.",
+    "f72fc1bf91": "Devoir = have to (avec he, she, it : has to).",
+    "4500b9617f": "Elle doit se lever à six heures.",
+    "6a68617239": "Tu n’es pas obligé de porter un uniforme.",
+    "caa5afa9d8": "Tu dois travailler demain ?",
+    "7a8d2e9fa0": "Avec have to, la question se fait avec do/does : Do you have to…?",
+    "6f2e08d47a": "Tu dois travailler dimanche ?",
+    "32ab872592": "Je dois étudier.",
+    "8acd12f97e": "Must et mustn't",
+    "f96b88f76f": "Règles, interdictions et ce qui n’est pas nécessaire.",
+    "ab58b7e27f": "Tu dois être à l’aéroport deux heures avant le vol.",
+    "67762638a7": "Must = obligation forte (une règle). Ensuite, le verbe sans to.",
+    "beecab52d2": "Pas besoin de venir tôt. La réunion est à dix heures.",
+    "c9fd147d54": "Don't have to = tu n’es pas obligé. Mustn't = c’est interdit. Ce n’est pas pareil ! Attention : « tu ne dois pas » se dit mustn't.",
+    "a0ac2427c4": "Que veut dire « job » ?",
+    "650d740359": "Tu n’es pas obligé de venir.",
+    "718c63a02f": "Chercher du travail",
+    "84e43bb2f9": "Entretiens, salaire et temps libre.",
+    "4c31c1fe1c": "Demain, j’ai un entretien d’embauche. Je suis nerveux.",
+    "73d2174d53": "Gagner de l’argent en travaillant = earn. Win, c’est gagner un match ou un prix.",
+    "28f3e064cc": "Que veut dire « salary » ?",
+    "f895262dee": "je suis infirmière",
+    "eafb1ede64": "Qu’est-ce que tu fais dans la vie ?",
+    "182c0b8fe2": "Je dois aller à un entretien d’embauche.",
+    "7f076e65e4": "Je travaille pour une grande entreprise."
+  },
+  "accepted": {
+    "job": [
+      "travail",
+      "emploi",
+      "boulot",
+      "poste"
+    ],
+    "office": [
+      "bureau"
+    ],
+    "boss": [
+      "chef",
+      "cheffe",
+      "patron",
+      "patronne"
+    ],
+    "coworker": [
+      "collègue",
+      "collègue de travail"
+    ],
+    "nurse": [
+      "infirmier",
+      "infirmière"
+    ],
+    "waiter": [
+      "serveur",
+      "serveuse",
+      "garçon de café"
+    ],
+    "police officer": [
+      "policier",
+      "policière",
+      "agent de police"
+    ],
+    "engineer": [
+      "ingénieur",
+      "ingénieure"
+    ],
+    "lawyer": [
+      "avocat",
+      "avocate"
+    ],
+    "driver": [
+      "chauffeur",
+      "conducteur",
+      "conductrice"
+    ],
+    "have to": [
+      "devoir",
+      "je dois",
+      "il faut",
+      "être obligé de"
+    ],
+    "must": [
+      "devoir",
+      "il faut"
+    ],
+    "mustn't": [
+      "c’est interdit",
+      "il ne faut pas",
+      "on ne peut pas",
+      "ne pas devoir"
+    ],
+    "meeting": [
+      "réunion"
+    ],
+    "email": [
+      "e-mail",
+      "mail",
+      "courriel"
+    ],
+    "earn": [
+      "gagner"
+    ],
+    "salary": [
+      "salaire",
+      "paie"
+    ],
+    "company": [
+      "entreprise",
+      "société",
+      "boîte"
+    ],
+    "interview": [
+      "entretien",
+      "entretien d’embauche"
+    ],
+    "free time": [
+      "temps libre",
+      "loisirs"
+    ]
+  },
+  "notes": "1) Trampa clave para francófonos: «tu ne dois pas» significa mustn't (prohibido), no don't have to. La explicación c9fd147d54 se adaptó con esa advertencia; don't have to → «tu n’es pas obligé (de)» / «pas besoin de». 2) La explicación de a/an (d6367cf1e8) se amplió comparando con el francés, que no lleva artículo («elle est ingénieure»). 3) Variantes rioplatenses sin equivalente quedaron vacías: mozo/moza y «ganar (plata)». camarero → «garçon de café». 4) have to / must: los dos son «devoir» en francés; must lleva «(règle)» en el par y «il faut» como aceptada, para distinguirlos. mustn't (par) → «il ne faut pas / c’est interdit», distinto de la opción «c’est interdit». 5) coworker: «colega» y «compañero de trabajo» son ambos «collègue»; la traducción quedó «collègue (de travail)». 6) interview → «entretien (d’embauche)». 7) Problemas del catálogo: en de 6f2e08d47a = «Do you have to work on Sunday? (no)» y de eafb1ede64 = «What do you do? (soy enfermera)» llevan anotaciones en español dentro del inglés. nurse no tiene word.translation en esta unidad (solo aceptadas)."
+}

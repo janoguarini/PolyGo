@@ -1,0 +1,1157 @@
+{
+ "unit": "a1-u10",
+ "level": "A1",
+ "titleEn": "Places in the city",
+ "strings": [
+  {
+   "id": "1bd3055c05",
+   "es": "Lugares de la ciudad",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Places in the city"
+  },
+  {
+   "id": "dfd57a62a7",
+   "es": "Nombrar lugares, preguntar dónde quedan y dar indicaciones simples.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "3838ff1476",
+   "es": "ciudad",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "city"
+  },
+  {
+   "id": "f9dff1febd",
+   "es": "Londres es una ciudad grande.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "London is a big city."
+  },
+  {
+   "id": "fd498c18ab",
+   "es": "calle",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.hint"
+   ],
+   "en": "street"
+  },
+  {
+   "id": "4558bf761c",
+   "es": "Vivo en esta calle.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I live on this street."
+  },
+  {
+   "id": "e2a4e102d1",
+   "es": "parque",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "park"
+  },
+  {
+   "id": "472ef68efd",
+   "es": "El parque está cerca de mi casa.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "The park is near my house."
+  },
+  {
+   "id": "6ebac15514",
+   "es": "restaurante",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "restaurant"
+  },
+  {
+   "id": "3637d48fd3",
+   "es": "El restaurante está abierto.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The restaurant is open."
+  },
+  {
+   "id": "cc22b26e63",
+   "es": "supermercado",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "supermarket"
+  },
+  {
+   "id": "d81f356d97",
+   "es": "Vamos al supermercado el sábado.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We go to the supermarket on Saturday."
+  },
+  {
+   "id": "8afe3c83de",
+   "es": "hospital",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "hospital"
+  },
+  {
+   "id": "74e724c91d",
+   "es": "banco",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "bank"
+  },
+  {
+   "id": "90e76267b0",
+   "es": "El banco está al lado del hotel.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The bank is next to the hotel."
+  },
+  {
+   "id": "d8f4401053",
+   "es": "estación",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "word.accepted"
+   ],
+   "en": "station"
+  },
+  {
+   "id": "5ea6c8e8cf",
+   "es": "¿Dónde está la estación?",
+   "kinds": [
+    "word.example",
+    "exercise.option",
+    "exercise.source"
+   ],
+   "en": "Where is the station?"
+  },
+  {
+   "id": "8d53a3e367",
+   "es": "hotel",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "hotel"
+  },
+  {
+   "id": "ddbce6e08e",
+   "es": "El hotel está en la ciudad.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "The hotel is in the city."
+  },
+  {
+   "id": "3adec85c04",
+   "es": "museo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "museum"
+  },
+  {
+   "id": "5656a625be",
+   "es": "El museo está cerrado los lunes.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The museum is closed on Monday."
+  },
+  {
+   "id": "e2b4d452e0",
+   "es": "negocio / tienda",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "shop"
+  },
+  {
+   "id": "cb0d84d0f0",
+   "es": "tienda",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "shop"
+  },
+  {
+   "id": "d692799f86",
+   "es": "negocio",
+   "kinds": [
+    "word.accepted",
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "shop"
+  },
+  {
+   "id": "25bf8e1a23",
+   "es": "local",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "shop"
+  },
+  {
+   "id": "4628ec089f",
+   "es": "El negocio está cerrado el domingo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The shop is closed on Sunday."
+  },
+  {
+   "id": "1694f83179",
+   "es": "cine",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "cinema"
+  },
+  {
+   "id": "386819633e",
+   "es": "Vemos una película en el cine.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We watch a movie at the cinema."
+  },
+  {
+   "id": "8d6341258d",
+   "es": "biblioteca",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "library"
+  },
+  {
+   "id": "0e196553b7",
+   "es": "Leo en la biblioteca.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I read in the library."
+  },
+  {
+   "id": "b393c0a2e1",
+   "es": "autobús",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "bus"
+  },
+  {
+   "id": "ef1c4008fc",
+   "es": "colectivo / autobús",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "bus"
+  },
+  {
+   "id": "af964e9821",
+   "es": "colectivo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "bus"
+  },
+  {
+   "id": "04e027e499",
+   "es": "bus",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "bus"
+  },
+  {
+   "id": "596af12ecd",
+   "es": "Voy a trabajar en autobús.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I go to work by bus."
+  },
+  {
+   "id": "0ede4cbb2a",
+   "es": "cerca de",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "near"
+  },
+  {
+   "id": "2e2793f16d",
+   "es": "cerca",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "near"
+  },
+  {
+   "id": "a8bdc7b2c7",
+   "es": "El banco está cerca de la estación.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The bank is near the station."
+  },
+  {
+   "id": "bbd6749e09",
+   "es": "lejos",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "far"
+  },
+  {
+   "id": "a30af7d8ff",
+   "es": "El hospital está lejos de aquí.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "The hospital is far from here."
+  },
+  {
+   "id": "fc58cf9386",
+   "es": "izquierda",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "left"
+  },
+  {
+   "id": "4ec95cc401",
+   "es": "Dobla a la izquierda.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "Turn left."
+  },
+  {
+   "id": "1d59f535cb",
+   "es": "derecha",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "right"
+  },
+  {
+   "id": "64368b3de5",
+   "es": "El parque está a la derecha.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The park is on the right."
+  },
+  {
+   "id": "ef61a58447",
+   "es": "doblar / girar",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "turn"
+  },
+  {
+   "id": "a2a2509347",
+   "es": "doblar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "turn"
+  },
+  {
+   "id": "e9cc78545c",
+   "es": "girar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "turn"
+  },
+  {
+   "id": "5e8a60ae88",
+   "es": "Dobla a la derecha en el banco.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Turn right at the bank."
+  },
+  {
+   "id": "9b606995d5",
+   "es": "derecho / todo recto",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "straight on"
+  },
+  {
+   "id": "bf11f5652f",
+   "es": "derecho",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "straight on"
+  },
+  {
+   "id": "e0775a2513",
+   "es": "todo recto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "straight on"
+  },
+  {
+   "id": "fa1c490c4d",
+   "es": "recto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "straight on"
+  },
+  {
+   "id": "536679e3f6",
+   "es": "Sigue derecho.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Go straight on."
+  },
+  {
+   "id": "18e52cac67",
+   "es": "En la ciudad",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "caca64be93",
+   "es": "Ciudad, calle, parque, banco y hospital.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "53c1d3fd98",
+   "es": "¿Qué significa «street»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "4735f607c8",
+   "es": "Lugares para ir",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "b166da605c",
+   "es": "Restaurante, supermercado, negocio, museo, cine y biblioteca.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "ab14e8ea9b",
+   "es": "¿Qué significa «library»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "97caf2be47",
+   "es": "librería",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b69e2ddc56",
+   "es": "Falso amigo: library = biblioteca. Una librería es a bookshop.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "library"
+  },
+  {
+   "id": "94c2972ae0",
+   "es": "El restaurante está al lado del cine.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "The restaurant is next to the cinema."
+  },
+  {
+   "id": "2af131e926",
+   "es": "Escribe en inglés lo que muestra la imagen.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "🏦"
+  },
+  {
+   "id": "dd485d762b",
+   "es": "Viajar por la ciudad",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "e7cdd92e05",
+   "es": "Estación, hotel y autobús.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "44cae42b2a",
+   "es": "Medio de transporte: by bus, by car (sin the).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "by"
+  },
+  {
+   "id": "ae9470394d",
+   "es": "¿Qué significa «Where is the station?»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "18a7e5b0de",
+   "es": "¿Dónde está el hotel?",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f7f1a32035",
+   "es": "¿Hay una estación?",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "99549f3963",
+   "es": "Cerca y lejos",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "6121f32c16",
+   "es": "Decir si un lugar queda cerca o lejos.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "0228cc6d10",
+   "es": "¿Qué significa «near»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "1439a79bb1",
+   "es": "¿Qué significa «far»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "b2d2064a4d",
+   "es": "2 minutos",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "The park is ___ my house. (2 minutos)"
+  },
+  {
+   "id": "8581454fe3",
+   "es": "Lejos de = far from.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "from"
+  },
+  {
+   "id": "174ca8b97b",
+   "es": "No, está lejos.",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Is the station near? (No, está lejos.)"
+  },
+  {
+   "id": "dd33785b21",
+   "es": "¿La estación está cerca?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Is the station near? (No, está lejos.)"
+  },
+  {
+   "id": "ee2b8a517c",
+   "es": "El museo está cerca del banco.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "The museum is near the bank."
+  },
+  {
+   "id": "508ac1f506",
+   "es": "Dobla a la izquierda",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "ebb70d14ea",
+   "es": "Dar indicaciones: left, right, turn y straight on.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "3b5b580d29",
+   "es": "Dobla a la izquierda en el banco.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Turn left at the bank."
+  },
+  {
+   "id": "148e1351e9",
+   "es": "El cine está a la derecha.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "The cinema is on the right."
+  },
+  {
+   "id": "337520abab",
+   "es": "A la derecha = on the right. A la izquierda = on the left.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "right"
+  },
+  {
+   "id": "893e97dc45",
+   "es": "Dobla a la derecha en la escuela.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Turn right at the school."
+  },
+  {
+   "id": "e7ffa0eb29",
+   "es": "Mira las flechas y escribe cómo llegar al banco: primero una indicación y después otra.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "🧍 ⬆️ ⬆️ ➡️ 🏦"
+  },
+  {
+   "id": "199f1ca27f",
+   "es": "Imperativo: Go straight on… turn right.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Go straight on and turn right."
+  },
+  {
+   "id": "419b39ba9b",
+   "es": "En contexto: ¿cómo llego?",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "d0afb37fc8",
+   "es": "Entender carteles e indicaciones para llegar a un lugar.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "540b7b803f",
+   "es": "Vas a leer un cartel, escuchar a alguien que pide indicaciones en la calle y seguir unas indicaciones escritas. Fíjate hacia dónde hay que ir y si queda cerca o lejos.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "0b5923cdba",
+   "es": "Sigue derecho y dobla a la izquierda.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Go straight on and turn left."
+  },
+  {
+   "id": "56e5f3f6c0",
+   "es": "El hotel queda lejos.",
+   "kinds": [
+    "example"
+   ],
+   "en": "The hotel is far."
+  },
+  {
+   "id": "ecc47ad19f",
+   "es": "Ahora puedes entender indicaciones sencillas para llegar a un lugar.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "3226a5b6b2",
+   "es": "Un cartel en una esquina de la ciudad.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u10-street-sign"
+  },
+  {
+   "id": "8f5dcd6b74",
+   "es": "Si quieres ir al parque, ¿hacia dónde tienes que doblar?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u10-street-sign"
+  },
+  {
+   "id": "fa07f873fa",
+   "es": "A la derecha",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u10-street-sign"
+  },
+  {
+   "id": "4094514334",
+   "es": "A la izquierda",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "35bb1c0950",
+   "es": "No hay que doblar: es derecho",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "94b69a1436",
+   "es": "«Park: turn right».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u10-street-sign"
+  },
+  {
+   "id": "9f69634670",
+   "es": "¿Dónde está la biblioteca?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u10-street-sign"
+  },
+  {
+   "id": "42b7655756",
+   "es": "Al lado del hospital",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u10-street-sign"
+  },
+  {
+   "id": "8c1691dd05",
+   "es": "Al lado del banco",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "95e1457db4",
+   "es": "Lejos del banco",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "639fecc0d8",
+   "es": "«Library: next to the bank».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u10-street-sign"
+  },
+  {
+   "id": "a9aff5ac01",
+   "es": "¿Qué lugar queda hacia la izquierda?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u10-street-sign"
+  },
+  {
+   "id": "0e008f32bf",
+   "es": "El parque",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u10-street-sign"
+  },
+  {
+   "id": "93af1eeaeb",
+   "es": "El hospital",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3cf1b000ed",
+   "es": "La estación",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "30bbb7caf8",
+   "es": "«Station: turn left».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u10-street-sign"
+  },
+  {
+   "id": "3a089bc173",
+   "es": "Ann pide indicaciones en la calle.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u10-asking-the-way"
+  },
+  {
+   "id": "17239b6e25",
+   "es": "Ann",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.a1-u10-asking-the-way"
+  },
+  {
+   "id": "6dd8b7d7d3",
+   "es": "Joe",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.a1-u10-asking-the-way"
+  },
+  {
+   "id": "b1c772244a",
+   "es": "¿Qué lugar busca Ann primero?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u10-asking-the-way"
+  },
+  {
+   "id": "062f801f8a",
+   "es": "El supermercado",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u10-asking-the-way"
+  },
+  {
+   "id": "ae5301bce2",
+   "es": "El hotel",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2391fd636d",
+   "es": "El cine",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f943a84859",
+   "es": "Su primera pregunta es «Where is the cinema, please?».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u10-asking-the-way"
+  },
+  {
+   "id": "dfbe2d737f",
+   "es": "¿Cómo se llega al cine?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u10-asking-the-way"
+  },
+  {
+   "id": "4c93719fc5",
+   "es": "Derecho y después a la derecha",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u10-asking-the-way"
+  },
+  {
+   "id": "aca74eae83",
+   "es": "Derecho y después a la izquierda",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "727dc20fef",
+   "es": "En autobús",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b5d15b1ab9",
+   "es": "«Go straight on and turn left».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u10-asking-the-way"
+  },
+  {
+   "id": "ecbe3a6ed0",
+   "es": "¿Qué le aconseja Joe para ir al hotel?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u10-asking-the-way"
+  },
+  {
+   "id": "82e096bad7",
+   "es": "Ir caminando, porque queda cerca",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u10-asking-the-way"
+  },
+  {
+   "id": "987803e528",
+   "es": "Tomar el autobús, porque queda lejos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0ec018507f",
+   "es": "Doblar a la izquierda en el cine",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "59f35fba30",
+   "es": "«The hotel is far. Take the bus».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u10-asking-the-way"
+  },
+  {
+   "id": "d641080e87",
+   "es": "Indicaciones escritas para ir caminando de la estación al museo.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u10-way-to-the-museum"
+  },
+  {
+   "id": "464f8346ca",
+   "es": "Al salir de la estación, ¿qué hay que hacer primero?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u10-way-to-the-museum"
+  },
+  {
+   "id": "b0076cd0c2",
+   "es": "Doblar a la izquierda",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u10-way-to-the-museum"
+  },
+  {
+   "id": "da05df0ff9",
+   "es": "Seguir derecho",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8f986fe996",
+   "es": "Doblar a la derecha",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d834a79e46",
+   "es": "La primera indicación es «From the station, go straight on».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u10-way-to-the-museum"
+  },
+  {
+   "id": "9eb10c8c8d",
+   "es": "¿Dónde hay que doblar a la izquierda?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u10-way-to-the-museum"
+  },
+  {
+   "id": "ebba64f690",
+   "es": "En la biblioteca",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u10-way-to-the-museum"
+  },
+  {
+   "id": "55a21862f6",
+   "es": "En el supermercado",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b322d69614",
+   "es": "En la estación",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b20333e48a",
+   "es": "«Turn left at the supermarket».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u10-way-to-the-museum"
+  },
+  {
+   "id": "d50a82f667",
+   "es": "¿Dónde está el museo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u10-way-to-the-museum"
+  },
+  {
+   "id": "ef636fedac",
+   "es": "A la izquierda, al lado de la biblioteca",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u10-way-to-the-museum"
+  },
+  {
+   "id": "da09f3b18d",
+   "es": "A la derecha, al lado del supermercado",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "18ead20347",
+   "es": "A la derecha, al lado de la biblioteca",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "de93110dd6",
+   "es": "«The museum is on the right, next to the library».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u10-way-to-the-museum"
+  }
+ ],
+ "stimuli": {
+  "en.stim.a1-u10-street-sign": {
+   "setting": "Un cartel en una esquina de la ciudad.",
+   "lines": [
+    "Station: turn left.",
+    "Park: turn right.",
+    "Hospital: go straight on.",
+    "Library: next to the bank."
+   ]
+  },
+  "en.stim.a1-u10-asking-the-way": {
+   "setting": "Ann pide indicaciones en la calle.",
+   "lines": [
+    "Ann: Excuse me. Where is the cinema, please?",
+    "Joe: The cinema is near. Go straight on and turn left. It is next to the supermarket.",
+    "Ann: And the hotel?",
+    "Joe: The hotel is far. Take the bus.",
+    "Ann: Thank you!"
+   ]
+  },
+  "en.stim.a1-u10-way-to-the-museum": {
+   "setting": "Indicaciones escritas para ir caminando de la estación al museo.",
+   "lines": [
+    "From the station, go straight on.",
+    "Turn left at the supermarket.",
+    "Go straight on. The museum is on the right, next to the library."
+   ]
+  }
+ }
+}

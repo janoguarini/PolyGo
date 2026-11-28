@@ -1,0 +1,1387 @@
+{
+ "unit": "a2-u13",
+ "level": "A2",
+ "titleEn": "Eating out",
+ "strings": [
+  {
+   "id": "1499d339b9",
+   "es": "Comer afuera",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Eating out"
+  },
+  {
+   "id": "5931ace337",
+   "es": "El menú, some y any, much y many, pedir en un restaurante y pagar la cuenta.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "cc80d8601e",
+   "es": "Puedes leer un menú, pedir la comida con cortesía y pedir la cuenta.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "864daf5b71",
+   "es": "Some, any, much y many",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "670ad47e5f",
+   "es": "Some va en afirmativas y any en negativas y preguntas. Many va con lo que se cuenta (many eggs) y much con lo que no (much water); a lot of sirve para los dos.",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "56d7934c1d",
+   "es": "Hay algo de leche.",
+   "kinds": [
+    "example",
+    "word.example"
+   ],
+   "en": "There is some milk."
+  },
+  {
+   "id": "c74de1255e",
+   "es": "No tenemos nada de pan.",
+   "kinds": [
+    "example",
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "We don't have any bread."
+  },
+  {
+   "id": "962c186c09",
+   "es": "No hay mucha gente aquí.",
+   "kinds": [
+    "example",
+    "word.example"
+   ],
+   "en": "There aren't many people here."
+  },
+  {
+   "id": "2672e12bfd",
+   "es": "menú",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "menu"
+  },
+  {
+   "id": "c1cf0a881f",
+   "es": "¿Puedo ver el menú, por favor?",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "Can I see the menu, please?"
+  },
+  {
+   "id": "7a0027aa3e",
+   "es": "sopa",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "soup"
+  },
+  {
+   "id": "1417e4afda",
+   "es": "La sopa está caliente.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The soup is hot."
+  },
+  {
+   "id": "7a1784100b",
+   "es": "ensalada",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "salad"
+  },
+  {
+   "id": "f91afd8b1a",
+   "es": "Quiero una ensalada verde.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I want a green salad."
+  },
+  {
+   "id": "ac445d6161",
+   "es": "pescado",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "fish"
+  },
+  {
+   "id": "472353467f",
+   "es": "pez",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "fish"
+  },
+  {
+   "id": "61a5b03f24",
+   "es": "No como pescado.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I don't eat fish."
+  },
+  {
+   "id": "e7b5b3f001",
+   "es": "carne",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "meat"
+  },
+  {
+   "id": "72291b775e",
+   "es": "Comen mucha carne.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "They eat a lot of meat."
+  },
+  {
+   "id": "27b1a1e485",
+   "es": "verduras",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "vegetables"
+  },
+  {
+   "id": "a4988c732d",
+   "es": "vegetales",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "vegetables"
+  },
+  {
+   "id": "bed5fbc3f1",
+   "es": "Como verduras todos los días.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I eat vegetables every day."
+  },
+  {
+   "id": "c4cdbc7c4e",
+   "es": "postre",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.hint"
+   ],
+   "en": "dessert"
+  },
+  {
+   "id": "9ab05407ba",
+   "es": "¿Qué quieres de postre?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "What do you want for dessert?"
+  },
+  {
+   "id": "903cd5f754",
+   "es": "delicioso / deliciosa",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "delicious"
+  },
+  {
+   "id": "50ed5d52c5",
+   "es": "delicioso",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "delicious"
+  },
+  {
+   "id": "4651072f41",
+   "es": "deliciosa",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "delicious"
+  },
+  {
+   "id": "997dfb384c",
+   "es": "riquísimo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "delicious"
+  },
+  {
+   "id": "a95086bc26",
+   "es": "riquísima",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "delicious"
+  },
+  {
+   "id": "7d50ea6e5c",
+   "es": "La sopa estaba deliciosa.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The soup was delicious."
+  },
+  {
+   "id": "e6bec88423",
+   "es": "picante",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "spicy"
+  },
+  {
+   "id": "f881cc88e2",
+   "es": "Este pollo es muy picante.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "This chicken is very spicy."
+  },
+  {
+   "id": "63f04f9c90",
+   "es": "pedir (en un restaurante)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "order"
+  },
+  {
+   "id": "dd58189110",
+   "es": "ordenar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "order"
+  },
+  {
+   "id": "05b486de0f",
+   "es": "Queremos pedir ahora.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "We want to order now."
+  },
+  {
+   "id": "492e1b3b9d",
+   "es": "una mesa para dos",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "a table for two"
+  },
+  {
+   "id": "cd1ee7e756",
+   "es": "Una mesa para dos, por favor.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "A table for two, please."
+  },
+  {
+   "id": "5eebe14389",
+   "es": "¿me podría dar…?",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "could I have"
+  },
+  {
+   "id": "c744b108d1",
+   "es": "me podría dar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "could I have"
+  },
+  {
+   "id": "16c5dbd99a",
+   "es": "me podrías dar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "could I have"
+  },
+  {
+   "id": "44d0d81cc3",
+   "es": "me da",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "could I have"
+  },
+  {
+   "id": "840a8150df",
+   "es": "¿Me podría dar agua, por favor?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Could I have some water, please?"
+  },
+  {
+   "id": "d7d37e8943",
+   "es": "la cuenta",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "the bill"
+  },
+  {
+   "id": "2e69ecb0f9",
+   "es": "cuenta",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "the bill"
+  },
+  {
+   "id": "8dbfc7a01c",
+   "es": "¿Me podría dar la cuenta, por favor?",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "Could I have the bill, please?"
+  },
+  {
+   "id": "06aa1845ca",
+   "es": "algo de / unos",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "some"
+  },
+  {
+   "id": "2e72896b51",
+   "es": "algo de",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "some"
+  },
+  {
+   "id": "d39b12fc85",
+   "es": "unos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "some"
+  },
+  {
+   "id": "b2944925eb",
+   "es": "unas",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "some"
+  },
+  {
+   "id": "04bbfc0c2d",
+   "es": "algunos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "some"
+  },
+  {
+   "id": "e75f4af20f",
+   "es": "algunas",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "some"
+  },
+  {
+   "id": "586c5f7a02",
+   "es": "nada de / ningún (en negativas y preguntas)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "any"
+  },
+  {
+   "id": "c09036fd0c",
+   "es": "nada de",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "any"
+  },
+  {
+   "id": "309b72116e",
+   "es": "ningún",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "any"
+  },
+  {
+   "id": "308b666bfd",
+   "es": "ninguna",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "any"
+  },
+  {
+   "id": "536a838438",
+   "es": "algún",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "any"
+  },
+  {
+   "id": "8336fa1777",
+   "es": "alguna",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "any"
+  },
+  {
+   "id": "c0cb9456ff",
+   "es": "mucho / mucha (lo que no se cuenta)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "much"
+  },
+  {
+   "id": "2089e92fdc",
+   "es": "No tomo mucho café.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I don't drink much coffee."
+  },
+  {
+   "id": "e56968c8bc",
+   "es": "muchos / muchas (lo que se cuenta)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "many"
+  },
+  {
+   "id": "1bd2730b9b",
+   "es": "muchos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "many"
+  },
+  {
+   "id": "f30e08be1e",
+   "es": "muchas",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "many"
+  },
+  {
+   "id": "4db8a8c692",
+   "es": "un montón de",
+   "kinds": [
+    "word.translation",
+    "word.accepted"
+   ],
+   "en": "a lot of"
+  },
+  {
+   "id": "48c82b9346",
+   "es": "mucha cantidad de",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "a lot of"
+  },
+  {
+   "id": "b906c5bf7d",
+   "es": "Tomo mucha agua.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "I drink a lot of water."
+  },
+  {
+   "id": "0c13c1ec74",
+   "es": "El menú",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "a9218f4c76",
+   "es": "Nombrar los platos de un menú.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "5ebe79f86f",
+   "es": "En un restaurante, el menú (menu) se divide en platos: soup (sopa), salad (ensalada), meat (carne), fish (pescado) y dessert (postre). Vegetables (verduras) casi siempre va en plural.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "a5f93a5d8b",
+   "es": "Quiero la sopa de pescado.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I want the fish soup."
+  },
+  {
+   "id": "06810237da",
+   "es": "Nombras los platos de un menú: soup, salad, meat, fish, dessert.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "dd961c1ab0",
+   "es": "Pides ver el menú con Can I see the menu, please?",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "77969105e1",
+   "es": "No como carne. Quiero el pescado.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I don't eat meat. I want the fish."
+  },
+  {
+   "id": "1f9dae0cb7",
+   "es": "Queremos sopa y ensalada para el almuerzo.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "We want soup and salad for lunch."
+  },
+  {
+   "id": "28a156de73",
+   "es": "Dessert (postre) lleva doble s. Desert, con una sola, es «desierto».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "dessert"
+  },
+  {
+   "id": "e83a2bbd64",
+   "es": "Quiero una ensalada.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I want a salad."
+  },
+  {
+   "id": "7be961af08",
+   "es": "Some y any",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "a16d5c79ac",
+   "es": "Decir qué hay y qué no hay con some y any.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "3b97b09a0e",
+   "es": "Some (algo de, unos) va en oraciones afirmativas: There is some milk. Any va en negativas y en preguntas: There isn’t any milk. Is there any milk?",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "bc6ef708c4",
+   "es": "Hay unos huevos.",
+   "kinds": [
+    "example"
+   ],
+   "en": "There are some eggs."
+  },
+  {
+   "id": "b8db113f9f",
+   "es": "Usas some en afirmativas: There is some cheese.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "7c9be77d9c",
+   "es": "Usas any en negativas y preguntas: Is there any juice?",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "6549d058a7",
+   "es": "Hay algo de leche en la cocina.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "There is some milk in the kitchen."
+  },
+  {
+   "id": "59fb76717f",
+   "es": "En una oración afirmativa se usa some.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "some"
+  },
+  {
+   "id": "651291664d",
+   "es": "En una oración negativa se usa any.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "any"
+  },
+  {
+   "id": "54c569fa65",
+   "es": "¿Hay huevos?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Are there any eggs?"
+  },
+  {
+   "id": "37eba21105",
+   "es": "En preguntas se usa any. Eggs se cuenta, así que no va con much.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "any"
+  },
+  {
+   "id": "b4ff4a3cca",
+   "es": "¿Qué significa «some»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "c48b1c8aef",
+   "es": "No tengo nada de dinero.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I don't have any money."
+  },
+  {
+   "id": "77fae2008d",
+   "es": "¿Hay queso?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Is there any cheese? (no)"
+  },
+  {
+   "id": "daf8133841",
+   "es": "Hay unas verduras en la mesa.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "There are some vegetables on the table."
+  },
+  {
+   "id": "602c03ad1e",
+   "es": "Pedir la comida",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "1021443a90",
+   "es": "Pedir una mesa y la comida con Could I have…?",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "71aa1e5c82",
+   "es": "Para pedir con cortesía se usa Could I have…? (¿me podría dar…?). Al llegar se pide la mesa: A table for two, please. Para decir que algo está muy rico: It’s delicious!",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "1cb444200b",
+   "es": "¿Me podría dar la sopa, por favor?",
+   "kinds": [
+    "example"
+   ],
+   "en": "Could I have the soup, please?"
+  },
+  {
+   "id": "460cf5e55a",
+   "es": "Pides una mesa: A table for two, please.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "3e5693ebe5",
+   "es": "Pides con cortesía: Could I have the fish, please?",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "c21874b65e",
+   "es": "Dices si la comida está delicious o es spicy.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "89e81b8392",
+   "es": "Situación: estás en un restaurante y quieres pedir la sopa con cortesía.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Could I have the soup, please?"
+  },
+  {
+   "id": "e376fe60d2",
+   "es": "Two (dos), too (también) y to suenan igual.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "two"
+  },
+  {
+   "id": "edb4a5717e",
+   "es": "¿Qué significa «spicy»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "3ae2eb72af",
+   "es": "dulce",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3cca81b0bb",
+   "es": "Lucy llega a un restaurante y pide la comida.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a2-u13-order"
+  },
+  {
+   "id": "ff6abd792d",
+   "es": "¿Qué pide Lucy para comer?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u13-order"
+  },
+  {
+   "id": "71e86e1e89",
+   "es": "Sopa de pescado y una ensalada",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u13-order"
+  },
+  {
+   "id": "9714a5d459",
+   "es": "Pescado con verduras",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4aef7c806d",
+   "es": "Carne y una ensalada",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "147af5096a",
+   "es": "Sopa de verduras y pan",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "297234baca",
+   "es": "Lucy dice: «Could I have the fish soup and a salad, please?».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u13-order"
+  },
+  {
+   "id": "8f4f666dbd",
+   "es": "Jugo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "73473dcc12",
+   "es": "Café",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5a4fdea798",
+   "es": "Té",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "58aeff1fe0",
+   "es": "Cuando Sam pregunta «And to drink?», Lucy responde «Some water, please».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u13-order"
+  },
+  {
+   "id": "0cf8cdce59",
+   "es": "¿Me podría dar agua?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Could I have some water?"
+  },
+  {
+   "id": "7f5be70065",
+   "es": "¿Me podría dar el pescado, por favor?",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "Could I have the fish, please?"
+  },
+  {
+   "id": "eca1b9b51e",
+   "es": "La sopa está deliciosa.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "The soup is delicious."
+  },
+  {
+   "id": "cc68576f93",
+   "es": "Mucho y muchos",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "f6e6262f8f",
+   "es": "Hablar de cantidades con much, many y a lot of.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "d3f900ef66",
+   "es": "Many va con lo que se cuenta (many people, many eggs) y much con lo que no se cuenta (much water, much money), sobre todo en negativas y preguntas. A lot of sirve para los dos, sobre todo en afirmativas.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "7df5d82b28",
+   "es": "Usas many con lo que se cuenta y much con lo que no.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "c94e187588",
+   "es": "Usas a lot of en afirmativas: a lot of vegetables.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "fde986ca85",
+   "es": "Coffee no se cuenta: much coffee.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "much"
+  },
+  {
+   "id": "bed54b756b",
+   "es": "No hay mucha gente en el parque.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "There aren't many people in the park."
+  },
+  {
+   "id": "474f5cf7bc",
+   "es": "People se cuenta: many people.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "many"
+  },
+  {
+   "id": "b65f461983",
+   "es": "Ella come muchas verduras.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She eats a lot of vegetables."
+  },
+  {
+   "id": "4e72f2c06e",
+   "es": "mucha agua",
+   "kinds": [
+    "exercise.pair"
+   ],
+   "en": "much water"
+  },
+  {
+   "id": "430f0220c3",
+   "es": "muchos huevos",
+   "kinds": [
+    "exercise.pair"
+   ],
+   "en": "many eggs"
+  },
+  {
+   "id": "a56618924d",
+   "es": "mucha gente",
+   "kinds": [
+    "exercise.pair"
+   ],
+   "en": "a lot of people"
+  },
+  {
+   "id": "bbd8944dc8",
+   "es": "algo de pan",
+   "kinds": [
+    "exercise.pair"
+   ],
+   "en": "some bread"
+  },
+  {
+   "id": "27e7b3e135",
+   "es": "Hay mucha gente en el restaurante.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "There are a lot of people in the restaurant."
+  },
+  {
+   "id": "cc421e1813",
+   "es": "a lot",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "How much water do you drink? (a lot)"
+  },
+  {
+   "id": "60db83a3ad",
+   "es": "¿Cuánta agua tomas?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How much water do you drink? (a lot)"
+  },
+  {
+   "id": "d4bc01379e",
+   "es": "No hay muchos restaurantes aquí.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "There aren't many restaurants here."
+  },
+  {
+   "id": "7b319f42dd",
+   "es": "La cuenta, por favor",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "161412dce1",
+   "es": "Leer un menú con precios, pedir la cuenta y pagar.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "19a30713e2",
+   "es": "Al final se pide la cuenta (the bill): Could I have the bill, please? Se paga by card (con tarjeta) o in cash (en efectivo).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "e9a03e0a66",
+   "es": "Lees un menú con precios.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "d41175c869",
+   "es": "Pides la cuenta y preguntas cómo pagar.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "22ef2efdec",
+   "es": "¿Qué significa «the bill»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "615013fa1b",
+   "es": "el menú",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "24627e2a95",
+   "es": "la mesa",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "fa76389eee",
+   "es": "el postre",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "900c6b8e69",
+   "es": "El menú de un restaurante.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a2-u13-menu"
+  },
+  {
+   "id": "5d79795c75",
+   "es": "¿Cuánto cuesta el pescado con verduras?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u13-menu"
+  },
+  {
+   "id": "85318090e1",
+   "es": "14 dólares",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u13-menu"
+  },
+  {
+   "id": "a6c4c2fd57",
+   "es": "6 dólares",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ec2fe027bc",
+   "es": "4 dólares",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a5b02facfa",
+   "es": "El menú dice «Fish and vegetables: $14».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u13-menu"
+  },
+  {
+   "id": "8481f292ab",
+   "es": "No comes carne ni pescado y quieres un plato del menú. ¿Cuál pides?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u13-menu"
+  },
+  {
+   "id": "6bce420c07",
+   "es": "La ensalada verde",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u13-menu"
+  },
+  {
+   "id": "8757db66f9",
+   "es": "El pollo con arroz",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c53d336cb6",
+   "es": "El pescado con verduras",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e6e20bfa14",
+   "es": "Un café",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "36064560e3",
+   "es": "Green salad (ensalada verde) no lleva carne ni pescado; el pollo y el pescado, sí. El café no es un plato.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u13-menu"
+  },
+  {
+   "id": "ed9eabc39e",
+   "es": "Lucy termina de comer y pide la cuenta.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a2-u13-bill"
+  },
+  {
+   "id": "bd0c9f60de",
+   "es": "¿Cuánto es la cuenta?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u13-bill"
+  },
+  {
+   "id": "6b6bb8e39e",
+   "es": "26 dólares",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u13-bill"
+  },
+  {
+   "id": "eaf0885cc0",
+   "es": "20 dólares",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "182fe22b50",
+   "es": "Sam dice: «It’s twenty-six dollars».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u13-bill"
+  },
+  {
+   "id": "719c040050",
+   "es": "¿Cómo paga Lucy?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a2-u13-bill"
+  },
+  {
+   "id": "2292b37af3",
+   "es": "Con tarjeta",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a2-u13-bill"
+  },
+  {
+   "id": "27dc98513a",
+   "es": "En efectivo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0da2fabeeb",
+   "es": "Con un cheque",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "88440f2847",
+   "es": "Paga otra persona",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f6fa80838e",
+   "es": "Lucy pregunta «Can I pay by card?» y Sam responde «Yes, sure».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a2-u13-bill"
+  },
+  {
+   "id": "f57c6b520c",
+   "es": "El postre estaba delicioso.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "The dessert was delicious."
+  },
+  {
+   "id": "252d4fc98d",
+   "es": "Una cena afuera",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "ce480875df",
+   "es": "Cuenta una comida en un restaurante (real o inventada): qué pediste, cómo estaba y cómo pagaste.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "fc44a6a397",
+   "es": "Nombras lo que comiste (soup, salad, fish, meat, dessert…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "23aa10aca0",
+   "es": "Dices cómo estaba (delicious, spicy, good…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "191c7f96d1",
+   "es": "Cuentas cómo pagaste o que pediste la cuenta",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "fead3bb42d",
+   "es": "Dije qué comí.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "89dad5b9b6",
+   "es": "Di mi opinión.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "d6e88458fa",
+   "es": "Conté cómo pagamos.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.a2-u13-order": {
+   "setting": "Lucy llega a un restaurante y pide la comida.",
+   "lines": [
+    "Sam: Good evening. A table for two?",
+    "Lucy: Yes, please. Could I have the menu?",
+    "Sam: Here you are.",
+    "Lucy: Could I have the fish soup and a salad, please?",
+    "Sam: Sure. And to drink?",
+    "Lucy: Some water, please."
+   ]
+  },
+  "en.stim.a2-u13-menu": {
+   "setting": "El menú de un restaurante.",
+   "lines": [
+    "Soup of the day: $5",
+    "Green salad: $6",
+    "Chicken and rice: $12",
+    "Fish and vegetables: $14",
+    "Dessert: $4",
+    "Water, juice or coffee: $2"
+   ]
+  },
+  "en.stim.a2-u13-bill": {
+   "setting": "Lucy termina de comer y pide la cuenta.",
+   "lines": [
+    "Lucy: Could I have the bill, please?",
+    "Sam: Sure. It's twenty-six dollars.",
+    "Lucy: Can I pay by card?",
+    "Sam: Yes, sure."
+   ]
+  }
+ }
+}

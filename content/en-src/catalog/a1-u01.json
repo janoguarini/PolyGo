@@ -1,0 +1,1595 @@
+{
+ "unit": "a1-u01",
+ "level": "A1",
+ "titleEn": "Greetings and introductions",
+ "strings": [
+  {
+   "id": "f09b2f0644",
+   "es": "Saludos y presentaciones",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Greetings and introductions"
+  },
+  {
+   "id": "d662732704",
+   "es": "Saludar, despedirte, ser amable y presentarte.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "260f1a0548",
+   "es": "Puedes saludar según el momento del día, presentarte, preguntar cómo está alguien y responder con cortesía.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "1bb5e5695c",
+   "es": "My name is… / I am…",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "c1f2d87a24",
+   "es": "Para decir tu nombre usas my name is o I am (I'm). Para devolver un saludo agregas too: nice to meet you too.",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "070b205a48",
+   "es": "Mi nombre es Tom.",
+   "kinds": [
+    "example",
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "My name is Tom."
+  },
+  {
+   "id": "b67505b071",
+   "es": "Estoy bien, gracias.",
+   "kinds": [
+    "example",
+    "word.example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "I'm fine, thank you."
+  },
+  {
+   "id": "b221d9dbb0",
+   "es": "hola",
+   "kinds": [
+    "word.translation",
+    "word.accepted",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "hello"
+  },
+  {
+   "id": "b1fb026719",
+   "es": "¡Hola, Ana!",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "Hello, Ana!"
+  },
+  {
+   "id": "b21616f5f2",
+   "es": "hola (informal)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "hi"
+  },
+  {
+   "id": "1c55f84fce",
+   "es": "¡Hola, Tom!",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Hi, Tom!"
+  },
+  {
+   "id": "b21b0777c6",
+   "es": "adiós",
+   "kinds": [
+    "word.translation",
+    "word.accepted",
+    "exercise.option",
+    "exercise.pair",
+    "exercise.hint"
+   ],
+   "en": "goodbye"
+  },
+  {
+   "id": "69beb9c4eb",
+   "es": "Adiós, nos vemos mañana.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Goodbye, see you tomorrow."
+  },
+  {
+   "id": "266dd25dac",
+   "es": "chao",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "bye"
+  },
+  {
+   "id": "2274631b81",
+   "es": "chau",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "bye"
+  },
+  {
+   "id": "0663563f02",
+   "es": "¡Chao, mamá!",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "Bye, Mom!"
+  },
+  {
+   "id": "4f87498b67",
+   "es": "sí",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair",
+    "exercise.cue"
+   ],
+   "en": "yes"
+  },
+  {
+   "id": "37db3060e5",
+   "es": "Sí, soy estudiante.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Yes, I am a student."
+  },
+  {
+   "id": "9390298f3f",
+   "es": "no",
+   "kinds": [
+    "word.translation",
+    "word.accepted",
+    "exercise.cue"
+   ],
+   "en": "no"
+  },
+  {
+   "id": "1b2d883c35",
+   "es": "No, gracias.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "No, thank you."
+  },
+  {
+   "id": "5ab4d7f1fc",
+   "es": "buenos días",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "good morning"
+  },
+  {
+   "id": "1d9751db26",
+   "es": "¡Buenos días a todos!",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "Good morning, everyone!"
+  },
+  {
+   "id": "0de6a7102e",
+   "es": "buenas tardes",
+   "kinds": [
+    "word.translation",
+    "word.accepted",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "good afternoon"
+  },
+  {
+   "id": "f3378ba196",
+   "es": "Buenas tardes, señor Smith.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Good afternoon, Mr. Smith."
+  },
+  {
+   "id": "9c7d90bbb7",
+   "es": "buenas noches (al saludar)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "good evening"
+  },
+  {
+   "id": "8cbbc6554f",
+   "es": "buenas noches",
+   "kinds": [
+    "word.accepted",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "good evening"
+  },
+  {
+   "id": "c5d3474399",
+   "es": "¡Buenas noches! Bienvenidos.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "Good evening! Welcome."
+  },
+  {
+   "id": "24a9c154f0",
+   "es": "buenas noches (al despedirse)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "good night"
+  },
+  {
+   "id": "5e10b55b42",
+   "es": "¡Buenas noches! Hasta mañana.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "Good night! See you tomorrow."
+  },
+  {
+   "id": "87d73033cc",
+   "es": "por favor",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair",
+    "exercise.hint"
+   ],
+   "en": "please"
+  },
+  {
+   "id": "b8c5cc375f",
+   "es": "Agua, por favor.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "Water, please."
+  },
+  {
+   "id": "3f8852329b",
+   "es": "gracias",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "thank you"
+  },
+  {
+   "id": "a1b7ca90a9",
+   "es": "¡Gracias, Ana!",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Thank you, Ana!"
+  },
+  {
+   "id": "847c9e5d00",
+   "es": "de nada",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "you're welcome"
+  },
+  {
+   "id": "8e5116fbb7",
+   "es": "A: ¡Gracias! B: De nada.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "A: Thank you! B: You're welcome."
+  },
+  {
+   "id": "7864ddcc9f",
+   "es": "perdón",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "sorry"
+  },
+  {
+   "id": "df63e6da8c",
+   "es": "lo siento",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "sorry"
+  },
+  {
+   "id": "291f983d02",
+   "es": "Perdón, llego tarde.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Sorry, I'm late."
+  },
+  {
+   "id": "a0dfd1fd97",
+   "es": "disculpe",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "excuse me"
+  },
+  {
+   "id": "07661e3d28",
+   "es": "permiso",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "excuse me"
+  },
+  {
+   "id": "147d195cf8",
+   "es": "disculpa",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "excuse me"
+  },
+  {
+   "id": "dac13e7f94",
+   "es": "disculpá",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "excuse me"
+  },
+  {
+   "id": "8668a98550",
+   "es": "Disculpe, ¿dónde está el banco?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Excuse me, where is the bank?"
+  },
+  {
+   "id": "0bfe93928a",
+   "es": "nombre",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "name"
+  },
+  {
+   "id": "3a3f13beeb",
+   "es": "Mi nombre es Ana.",
+   "kinds": [
+    "word.example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "My name is Ana."
+  },
+  {
+   "id": "eee1c1ade6",
+   "es": "mi",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "my"
+  },
+  {
+   "id": "764c4c7b78",
+   "es": "tu",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "your"
+  },
+  {
+   "id": "0a64ce1085",
+   "es": "su",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "your"
+  },
+  {
+   "id": "91fa9bfdb1",
+   "es": "¿Cuál es tu nombre?",
+   "kinds": [
+    "word.example",
+    "exercise.option",
+    "exercise.translation"
+   ],
+   "en": "What is your name?"
+  },
+  {
+   "id": "0f510bdb10",
+   "es": "encantado de conocerte",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "nice to meet you"
+  },
+  {
+   "id": "86d2409821",
+   "es": "encantada de conocerte",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "nice to meet you"
+  },
+  {
+   "id": "4d17c35987",
+   "es": "mucho gusto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "nice to meet you"
+  },
+  {
+   "id": "db27383aee",
+   "es": "Hola, soy Ana. Encantada de conocerte.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Hi, I'm Ana. Nice to meet you."
+  },
+  {
+   "id": "bbeffe60c3",
+   "es": "¿cómo estás?",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "how are you"
+  },
+  {
+   "id": "f39ea88292",
+   "es": "¡Hola, Tom! ¿Cómo estás?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Hi, Tom! How are you?"
+  },
+  {
+   "id": "48b3f8392f",
+   "es": "bien",
+   "kinds": [
+    "word.translation",
+    "word.accepted",
+    "exercise.pair",
+    "exercise.hint"
+   ],
+   "en": "fine"
+  },
+  {
+   "id": "3ea7bee855",
+   "es": "bueno",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "good"
+  },
+  {
+   "id": "a1fce43638",
+   "es": "y",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "and"
+  },
+  {
+   "id": "527441be11",
+   "es": "Estoy bien. ¿Y tú?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I'm fine. And you?"
+  },
+  {
+   "id": "599aba2d2a",
+   "es": "Hola y adiós",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "441bd07079",
+   "es": "Saludar y despedirte; decir sí y no.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "627d65f3a7",
+   "es": "Hello y hi son «hola»; hi es más informal. Para despedirte: goodbye o, más informal, bye.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "fae5456b27",
+   "es": "Saludas con hello o hi.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "24affd5268",
+   "es": "Te despides con goodbye o bye.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "7dcc035845",
+   "es": "Dices yes y no.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "23a16d7cc3",
+   "es": "¿Qué significa «hello»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "dbb580c4a3",
+   "es": "¿Qué significa «goodbye»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "d2406c38fa",
+   "es": "¿Qué muestra la imagen?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "c20f2db3aa",
+   "es": "Escucha y elige lo que oyes",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "e477384730",
+   "es": "Traduce al inglés",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "e633f4fc79",
+   "es": "Hola",
+   "kinds": [
+    "exercise.source",
+    "exercise.option"
+   ],
+   "en": "hello"
+  },
+  {
+   "id": "fae62217be",
+   "es": "Une cada palabra con su significado",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "1b1d150236",
+   "es": "Escribe la palabra completa",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "5d2b9ac6c6",
+   "es": "Chao",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "bye"
+  },
+  {
+   "id": "f4460d7b46",
+   "es": "Bye es más informal que goodbye; las dos sirven para despedirte.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "bye"
+  },
+  {
+   "id": "b17b73ff16",
+   "es": "Sí, gracias.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "Yes, thank you."
+  },
+  {
+   "id": "68e1933344",
+   "es": "Completa la frase",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "210ceb604a",
+   "es": "Situación: llegas a clase y ves a tu amiga Ana. ¿Qué le dices?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Hello, Ana!"
+  },
+  {
+   "id": "f0b98391b7",
+   "es": "Al llegar se saluda: Hello (o Hi). Goodbye es para irse.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Hello"
+  },
+  {
+   "id": "e3957c1f56",
+   "es": "Situación: te vas de la casa de Tom. ¿Qué le dices?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Bye, Tom!"
+  },
+  {
+   "id": "7819f4d31d",
+   "es": "Al irse se dice Bye o Goodbye.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Bye"
+  },
+  {
+   "id": "94473c714f",
+   "es": "Escucha y responde",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "50ec061542",
+   "es": "Tom sale de la clase.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u01-lm-goodbye"
+  },
+  {
+   "id": "81f3bf42a9",
+   "es": "Tom",
+   "kinds": [
+    "context.speaker",
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u01-lm-goodbye"
+  },
+  {
+   "id": "d1ef09c426",
+   "es": "¿Qué significa lo que dice Tom?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u01-lm-goodbye"
+  },
+  {
+   "id": "229892b5bf",
+   "es": "Adiós",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u01-lm-goodbye"
+  },
+  {
+   "id": "3d03f6acd5",
+   "es": "Gracias",
+   "kinds": [
+    "exercise.option",
+    "exercise.source"
+   ]
+  },
+  {
+   "id": "55a7385e6b",
+   "es": "Perdón",
+   "kinds": [
+    "exercise.option",
+    "exercise.source"
+   ]
+  },
+  {
+   "id": "3240a47f75",
+   "es": "Tom dice «Goodbye!»: es una despedida (adiós).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u01-lm-goodbye"
+  },
+  {
+   "id": "3cdd05f785",
+   "es": "Momentos del día",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "fd4c3bdb0c",
+   "es": "Saludar según la hora del día.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "87a7974f9d",
+   "es": "Good morning es para la mañana, good afternoon para la tarde y good evening para saludar a la noche. Good night es sólo para despedirte o irte a dormir.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "4c01076de2",
+   "es": "Saludas con good morning, good afternoon o good evening según la hora.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "e2e6dd80cc",
+   "es": "Usas good night sólo para despedirte.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "5a22bd8476",
+   "es": "¿Qué significa «good afternoon»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "0acc585a5a",
+   "es": "¡Buenos días, Ana!",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Good morning, Ana!"
+  },
+  {
+   "id": "21aebc4838",
+   "es": "Buenos días",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "good morning"
+  },
+  {
+   "id": "1ecd9f4d9a",
+   "es": "Good evening se usa para saludar a la noche; good night, para despedirte o ir a dormir.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "night"
+  },
+  {
+   "id": "ce3891f924",
+   "es": "Buenas tardes",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "good afternoon"
+  },
+  {
+   "id": "42a160b0f5",
+   "es": "Buenas noches, hasta mañana.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "Good night, see you tomorrow."
+  },
+  {
+   "id": "dce5483d7f",
+   "es": "Para despedirte a la noche se usa good night, no good evening.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Good night, see you tomorrow."
+  },
+  {
+   "id": "d4d58ee2a8",
+   "es": "Situación: son las 9 de la mañana y entras a la oficina. ¿Cómo saludas a Ana?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Good morning, Ana!"
+  },
+  {
+   "id": "2d229a9613",
+   "es": "A la mañana: Good morning. Good night es para despedirse a la noche.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Good morning"
+  },
+  {
+   "id": "22328e298f",
+   "es": "Situación: son las 11 de la noche y te vas a dormir. ¿Qué le dices a Tom?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Good night, Tom!"
+  },
+  {
+   "id": "fc8c5c4202",
+   "es": "Good night se usa para despedirse a la noche o antes de dormir.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Good night"
+  },
+  {
+   "id": "bdcac6e438",
+   "es": "Responde en inglés",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "2883f5faba",
+   "es": "Situación: es de noche y te vas a dormir. Escribe en inglés qué le dices a tu familia.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "🌙 😴"
+  },
+  {
+   "id": "bd1a8031b3",
+   "es": "Antes de dormir se dice Good night (no Good evening, que es un saludo).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Good night."
+  },
+  {
+   "id": "bf5cdee918",
+   "es": "Cortesía",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "3972d3719e",
+   "es": "Pedir por favor, agradecer y disculparte.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "83f032c198",
+   "es": "Please es «por favor» y thank you, «gracias»; se responde you're welcome. Sorry es para pedir perdón y excuse me, para llamar la atención de alguien.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "557d0044e9",
+   "es": "¡Gracias! — De nada.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Thank you! — You're welcome."
+  },
+  {
+   "id": "593e72fe6c",
+   "es": "Disculpe, por favor.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "Excuse me, please."
+  },
+  {
+   "id": "110b5fe3dd",
+   "es": "Pides algo con please y agradeces con thank you.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "0d998310f2",
+   "es": "Respondes you're welcome.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "d048bfe55e",
+   "es": "Te disculpas con sorry o excuse me.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "6ad50f9b63",
+   "es": "¿Qué significa «please»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "3fa3f22927",
+   "es": "¿Qué significa «thank you»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "ea74947052",
+   "es": "Ordena las palabras",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "a84431a522",
+   "es": "Sorry es para pedir perdón; excuse me, para llamar la atención de alguien.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "sorry"
+  },
+  {
+   "id": "d76f138ef1",
+   "es": "Presentarte",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "d5bb99f258",
+   "es": "Decir tu nombre y saludar a alguien nuevo.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "b87156f05a",
+   "es": "Para presentarte: my name is + tu nombre. Al conocer a alguien se dice nice to meet you, y se responde nice to meet you too.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "c4f35aa27f",
+   "es": "Encantado de conocerte.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Nice to meet you."
+  },
+  {
+   "id": "4299425c9e",
+   "es": "Igualmente.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Nice to meet you too."
+  },
+  {
+   "id": "f7ba60fc63",
+   "es": "Te presentas con my name is + tu nombre.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "1fd4b68797",
+   "es": "Respondes nice to meet you too.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "be1cc126ab",
+   "es": "¿Qué significa «name»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "84871a760b",
+   "es": "número",
+   "kinds": [
+    "exercise.option",
+    "word.translation"
+   ]
+  },
+  {
+   "id": "a29bb351ab",
+   "es": "amigo",
+   "kinds": [
+    "exercise.option",
+    "word.accepted"
+   ]
+  },
+  {
+   "id": "a5e60c4fcc",
+   "es": "país",
+   "kinds": [
+    "exercise.option",
+    "word.translation",
+    "exercise.pair"
+   ]
+  },
+  {
+   "id": "1314e1c4a2",
+   "es": "¿Qué significa «your»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "e9058ab198",
+   "es": "yo",
+   "kinds": [
+    "exercise.option",
+    "word.translation",
+    "exercise.pair"
+   ]
+  },
+  {
+   "id": "018576b803",
+   "es": "él",
+   "kinds": [
+    "exercise.option",
+    "word.translation",
+    "exercise.pair"
+   ]
+  },
+  {
+   "id": "45450d735e",
+   "es": "Encantado de conocerte",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "nice to meet you"
+  },
+  {
+   "id": "d61044c783",
+   "es": "Hola, soy Tom. Encantado de conocerte.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Hi, I am Tom. Nice to meet you."
+  },
+  {
+   "id": "49ccd44209",
+   "es": "Para devolver el saludo se agrega too al final: Nice to meet you too.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Nice to meet you too."
+  },
+  {
+   "id": "4967d44d91",
+   "es": "¿Cómo estás?",
+   "kinds": [
+    "lesson.title",
+    "example",
+    "exercise.option",
+    "exercise.source",
+    "exercise.translation"
+   ]
+  },
+  {
+   "id": "10562fcbf9",
+   "es": "Preguntar y responder cómo está alguien.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "7a58db3f6f",
+   "es": "How are you? es «¿cómo estás?». Se responde I'm fine o I'm good, y se devuelve la pregunta con and you?",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "73cf73daa6",
+   "es": "Estoy bien, gracias. ¿Y tú?",
+   "kinds": [
+    "example"
+   ],
+   "en": "I'm fine, thank you. And you?"
+  },
+  {
+   "id": "ae89ce1c43",
+   "es": "Preguntas how are you? y respondes I'm fine.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "3e9e7be364",
+   "es": "Devuelves la pregunta con and you?",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "213aa6b3cd",
+   "es": "¿Qué significa «How are you?»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "8da98da9a0",
+   "es": "¿Cómo te llamas?",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9047ffcb58",
+   "es": "¿De dónde eres?",
+   "kinds": [
+    "exercise.option",
+    "example",
+    "word.example",
+    "lesson.title",
+    "exercise.translation",
+    "exercise.source"
+   ]
+  },
+  {
+   "id": "9652f1030d",
+   "es": "¿Cuántos años tienes?",
+   "kinds": [
+    "exercise.option",
+    "example",
+    "word.example",
+    "lesson.title",
+    "exercise.source"
+   ]
+  },
+  {
+   "id": "97f59488cb",
+   "es": "¿Y tú?",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "And you?"
+  },
+  {
+   "id": "38880ad63f",
+   "es": "En contexto: un primer encuentro",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "908948dcc8",
+   "es": "Entender un saludo escrito y una presentación oral.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "c45d890c45",
+   "es": "Vas a leer un mensaje y a escuchar a dos personas que se conocen. No hace falta entender cada palabra: busca quién habla, cuándo y qué quiere.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "6003e56069",
+   "es": "Bien, gracias. ¿Y tú?",
+   "kinds": [
+    "example"
+   ],
+   "en": "Fine, thank you. And you?"
+  },
+  {
+   "id": "90d1fce162",
+   "es": "Ahora puedes entender quién saluda, cuándo y qué pregunta en un mensaje corto.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "f858e509c6",
+   "es": "Lee el texto y responde.",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "1b17a65938",
+   "es": "Un mensaje en el chat de un curso nuevo.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u01-welcome-message"
+  },
+  {
+   "id": "2bd35b477f",
+   "es": "¿Quién escribe el mensaje?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u01-welcome-message"
+  },
+  {
+   "id": "dea210f058",
+   "es": "Ana",
+   "kinds": [
+    "exercise.option",
+    "context.speaker",
+    "exercise.cue"
+   ],
+   "en": "en.stim.a1-u01-welcome-message"
+  },
+  {
+   "id": "458d1968f4",
+   "es": "El profesor del curso",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a5ee60ef90",
+   "es": "Dice «My name is Ana»: la que escribe es Ana, y le escribe a Tom.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u01-welcome-message"
+  },
+  {
+   "id": "230d21e16f",
+   "es": "¿En qué momento del día escribe?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u01-welcome-message"
+  },
+  {
+   "id": "32d413e799",
+   "es": "A la tarde",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u01-welcome-message"
+  },
+  {
+   "id": "6ccaa47147",
+   "es": "A la mañana",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c2f950d890",
+   "es": "A la noche",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a866900e8e",
+   "es": "«Good morning» se usa a la mañana.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u01-welcome-message"
+  },
+  {
+   "id": "70b0d0ca07",
+   "es": "¿Qué le pregunta Ana a Tom?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u01-welcome-message"
+  },
+  {
+   "id": "7079a0230a",
+   "es": "Cómo está",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u01-welcome-message"
+  },
+  {
+   "id": "802e3e46f5",
+   "es": "Cómo se llama",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "74227c2735",
+   "es": "Dónde vive",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "05e61dfcb8",
+   "es": "«How are you?» es «¿Cómo estás?».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u01-welcome-message"
+  },
+  {
+   "id": "008c800eef",
+   "es": "Escucha y responde.",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "02816c352b",
+   "es": "Dos personas se encuentran por primera vez.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u01-first-meeting"
+  },
+  {
+   "id": "a3fa95a3b9",
+   "es": "Lucy",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.a1-u01-first-meeting"
+  },
+  {
+   "id": "09532304f9",
+   "es": "¿Qué están haciendo Tom y Lucy?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u01-first-meeting"
+  },
+  {
+   "id": "b29972f0c7",
+   "es": "Se despiden hasta mañana",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u01-first-meeting"
+  },
+  {
+   "id": "fae6e4e9d0",
+   "es": "Se presentan por primera vez",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c998e9aea1",
+   "es": "Se piden perdón",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9fe847f029",
+   "es": "Dicen sus nombres y «Nice to meet you»: se están conociendo.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u01-first-meeting"
+  },
+  {
+   "id": "72ad9d46cc",
+   "es": "¿Cómo está Lucy?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u01-first-meeting"
+  },
+  {
+   "id": "3d7ed1bfba",
+   "es": "Bien",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u01-first-meeting"
+  },
+  {
+   "id": "c269d7a8c7",
+   "es": "Mal",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5583a7176e",
+   "es": "No responde",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5d4a0379f4",
+   "es": "Lucy responde «Fine, thank you»: está bien.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u01-first-meeting"
+  },
+  {
+   "id": "7f9650bedc",
+   "es": "¿En qué momento del día se encuentran?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u01-first-meeting"
+  },
+  {
+   "id": "e11ab7e7ea",
+   "es": "Tom saluda con «Good afternoon», que se usa a la tarde.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u01-first-meeting"
+  },
+  {
+   "id": "68b395c942",
+   "es": "Saluda y di cómo estás",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "3ae9b6420f",
+   "es": "Responde a Tom con tus datos (puedes inventarlos): saluda, di tu nombre y cómo estás.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "936077fb37",
+   "es": "Saludas (Hello, Hi, Good morning…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "30f939e2b5",
+   "es": "Dices tu nombre (My name is… / I am…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "dc687a0a23",
+   "es": "Dices cómo estás (I am fine, I am good…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "41e5bc672f",
+   "es": "Escribes al menos 2 oraciones",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "c44fcadcbe",
+   "es": "Cada oración empieza con mayúscula",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "ff2c119731",
+   "es": "Terminas con punto, signo de exclamación o de pregunta",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "e9a763751d",
+   "es": "Saludé.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "45dccab2e1",
+   "es": "Dije mi nombre.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "44302df20e",
+   "es": "Dije cómo estoy.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.a1-u01-lm-goodbye": {
+   "setting": "Tom sale de la clase.",
+   "lines": [
+    "Tom: Goodbye!"
+   ]
+  },
+  "en.stim.a1-u01-welcome-message": {
+   "setting": "Un mensaje en el chat de un curso nuevo.",
+   "lines": [
+    "Good morning, Tom!",
+    "My name is Ana. Nice to meet you.",
+    "How are you?"
+   ]
+  },
+  "en.stim.a1-u01-first-meeting": {
+   "setting": "Dos personas se encuentran por primera vez.",
+   "lines": [
+    "Tom: Good afternoon! My name is Tom.",
+    "Lucy: Hi, Tom. My name is Lucy. Nice to meet you.",
+    "Tom: Nice to meet you, Lucy. How are you?",
+    "Lucy: Fine, thank you. And you?"
+   ]
+  }
+ }
+}

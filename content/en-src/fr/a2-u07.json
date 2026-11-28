@@ -1,0 +1,197 @@
+{
+  "unit": "a2-u07",
+  "strings": {
+    "58d55554ec": "Comparer",
+    "7190dbde9f": "Plus grand que, le plus cher, meilleur et pire, pareil ou différent.",
+    "7c5a215626": "grand / grande (taille)",
+    "175d374a1e": "grand",
+    "478cc1059b": "grande",
+    "ddd92ab64a": "Mon frère est plus grand que moi.",
+    "902d0d1af8": "petit / court",
+    "4666d539e3": "petite",
+    "462d0ccb2d": "court",
+    "cec396807d": "courte",
+    "a5f2883048": "Ma sœur est petite.",
+    "f19d4eab98": "long / longue",
+    "2a0a132ef2": "long",
+    "c76a68c504": "longue",
+    "36b794c3e4": "Cette rue est plus longue que ma rue.",
+    "977a5d6fec": "jeune",
+    "9f65e61101": "C’est la plus jeune de la famille.",
+    "6303e378fe": "nouveau / nouvelle",
+    "238b4429a6": "nouveau",
+    "dda7c10869": "nouvelle",
+    "461bcb4bcc": "Mon nouveau téléphone est très rapide.",
+    "70ff1a748c": "rapide",
+    "8fd4b28988": "rapide",
+    "98f07f39f2": "vite",
+    "6c525678b3": "Un avion est plus rapide qu’un train.",
+    "859838100b": "lent / lente",
+    "c7e4b85273": "lente",
+    "af55482de1": "Le train est plus lent que la voiture.",
+    "f5c8dafd06": "facile",
+    "82ee0e0b4c": "Cette leçon est plus facile que la précédente.",
+    "b0cfeb97ad": "difficile",
+    "6a4ec0ac09": "Pour moi, l’anglais est plus difficile que l’espagnol.",
+    "4c7e7556f4": "beau / belle",
+    "0de2516452": "beau",
+    "a2f4bbfcaa": "belle",
+    "955cd2727e": "joli",
+    "6bab3007f5": "jolie",
+    "473eacf12c": "La plage est plus belle que la ville.",
+    "33e6521013": "intéressant",
+    "ede557c206": "Ce livre est plus intéressant que le film.",
+    "43c97b114b": "meilleur (que)",
+    "a922247821": "mieux",
+    "5d54329353": "Mon anglais est meilleur que l’année dernière.",
+    "6efee746c0": "le meilleur / la meilleure",
+    "e0c95ed969": "le meilleur",
+    "b97e9ca47b": "la meilleure",
+    "15b649706d": "Le dimanche est le meilleur jour de la semaine.",
+    "ac681660c7": "pire (que)",
+    "edaf909abd": "pire",
+    "e7c1628957": "Ce film est pire que le premier.",
+    "4b84380f87": "le pire / la pire",
+    "b04d59cba4": "le pire",
+    "e073eb9237": "la pire",
+    "49d31be221": "C’était le pire jour de ma vie.",
+    "041e32a1a2": "que (pour comparer)",
+    "c57b7501cd": "que",
+    "5abe317bcd": "plus",
+    "56b9cae5fc": "Ce livre est plus intéressant.",
+    "98bc78c1f2": "le plus / la plus",
+    "6bf3455094": "le plus",
+    "869383a195": "la plus",
+    "8609c4fe20": "C’est l’hôtel le plus cher de la ville.",
+    "f2168cd78f": "même (le même / la même)",
+    "7850454930": "même",
+    "a83fe6d953": "la même",
+    "af5d4bb635": "pareil",
+    "bf929e1239": "Nous sommes dans la même classe.",
+    "280b8dae7e": "différent / différente",
+    "b72802bda9": "différent",
+    "5d2246262f": "différente",
+    "7730dc207d": "distinct",
+    "74ce077192": "Mon frère et moi, nous sommes très différents.",
+    "205fc78007": "Plus grand que",
+    "75e2b2b429": "Adjectifs courts : -er + than.",
+    "ed151f885b": "Adjectif court + -er + than : tall → taller than.",
+    "4c90708360": "Pour comparer, « que » se dit than (pas that ni then). Attention : le « que » de « je pense que » se dit that.",
+    "2c2a1fcd22": "Ma sœur est plus jeune que moi.",
+    "35bc39d940": "plus grand",
+    "8b9674ab6c": "Voyelle + consonne à la fin : la consonne double (big → bigger).",
+    "084ed7f892": "Ma maison est plus petite que ta maison.",
+    "be68727172": "Plus intéressant",
+    "8876c3e9d7": "Adjectifs longs : more + adjectif + than.",
+    "7f21f3e7cd": "Adjectifs longs : more + adjectif + than (more interesting than).",
+    "45efc63a7d": "Consonne + y → -ier : easy → easier.",
+    "71ef25414f": "Que veut dire « beautiful » ?",
+    "2926b71421": "Mon nouveau téléphone est plus cher que l’ancien.",
+    "5c3ed9b272": "C’est plus intéressant.",
+    "e532aa2ac6": "Le plus grand",
+    "27538bde78": "Superlatifs : the + -est / the most.",
+    "5467af86e7": "C’est l’élève le plus grand de la classe.",
+    "5210185347": "Superlatif : the + adjectif court + -est (the tallest).",
+    "e9e155b164": "Adjectifs longs : the most + adjectif (the most expensive).",
+    "740bbec089": "Le dimanche est le meilleur jour de la semaine !",
+    "2011af4018": "Good → better → the best. Ils sont irréguliers.",
+    "56d7868679": "C’est le meilleur film.",
+    "0de38c97e9": "Meilleur et pire",
+    "f89cfc0e2b": "Comparer avec better et worse.",
+    "54a1795113": "Que veut dire « than » ?",
+    "f58f54bde4": "Le train est plus rapide que le bus ?",
+    "cb59033a58": "mon père",
+    "21f0f3a09c": "Qui est le plus grand, toi ou ton père ?",
+    "3288d0ebff": "Je me sens mieux aujourd’hui.",
+    "9aa643283d": "Pareil ou différent",
+    "bac73d5dae": "The same, different et d’autres comparaisons.",
+    "14743e0b9e": "Toujours the same : the same class.",
+    "17c9b2bc2e": "Que veut dire « different » ?",
+    "daffdbad5c": "Nous avons le même film préféré.",
+    "005acfacbf": "C’est très facile."
+  },
+  "accepted": {
+    "tall": [
+      "grand",
+      "grande"
+    ],
+    "short": [
+      "petit",
+      "petite",
+      "court",
+      "courte"
+    ],
+    "long": [
+      "long",
+      "longue"
+    ],
+    "young": [
+      "jeune",
+      "jeunes"
+    ],
+    "new": [
+      "nouveau",
+      "nouvelle",
+      "neuf",
+      "neuve"
+    ],
+    "fast": [
+      "rapide",
+      "vite"
+    ],
+    "slow": [
+      "lent",
+      "lente",
+      "lentement"
+    ],
+    "beautiful": [
+      "beau",
+      "belle",
+      "joli",
+      "jolie",
+      "magnifique"
+    ],
+    "interesting": [
+      "intéressant",
+      "intéressante"
+    ],
+    "better": [
+      "meilleur",
+      "meilleure",
+      "mieux"
+    ],
+    "best": [
+      "le meilleur",
+      "la meilleure",
+      "le mieux"
+    ],
+    "worse": [
+      "pire",
+      "plus mauvais"
+    ],
+    "worst": [
+      "le pire",
+      "la pire"
+    ],
+    "than": [
+      "que",
+      "qu’"
+    ],
+    "most": [
+      "le plus",
+      "la plus"
+    ],
+    "same": [
+      "même",
+      "le même",
+      "la même",
+      "pareil"
+    ],
+    "different": [
+      "différent",
+      "différente",
+      "distinct"
+    ]
+  },
+  "notes": "1) tall → «grand / grande (taille)»: en francés «grand» sirve para tall y big; se agregó «(taille)» para que el par no se confunda con big. La pista de bigger «más grande» quedó «plus grand». 2) better: en francés hay dos formas: «meilleur» (adjetivo) y «mieux» (adverbio, «je me sens mieux»). La cue «mejor» (de «How do you feel today? (mejor)», que aparece en A2 U9) se tradujo «mieux», que es lo natural ahí; las dos van en accepted. 3) than: la explicación 4c90708360 se adaptó: en francés «que» es también la conjunción («je pense que» = that), así que se agregó esa advertencia en lugar de comparar con el español. 4) 6a4ec0ac09: el inglés dice «than Spanish», así que quedó «que l’espagnol» aunque el alumno sea francófono (no se puede cambiar el inglés). 5) same: «mismo / misma» → «même (le même / la même)», porque en francés «même» no cambia con el género; las aceptadas pasaron a «même», «la même» y «pareil» (igual). 6) rápida → «vite» (adverbio, fast también se usa así) para no repetir «rapide». 7) different: «diferente» (aceptada) → «distinct». 8) Fuente: el en de 21f0f3a09c «Who is taller, you or your father? (mi papá)» lleva una pista en español («(mi papá)» → «(mon père)»). Falso amigo útil (sin texto donde ponerlo): long ≠ large (large en francés = wide)."
+}

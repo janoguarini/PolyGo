@@ -1,0 +1,1432 @@
+{
+ "unit": "a1-u04",
+ "level": "A1",
+ "titleEn": "Family and people",
+ "strings": [
+  {
+   "id": "5c753f6f19",
+   "es": "Familia y personas",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Family and people"
+  },
+  {
+   "id": "7b81de822d",
+   "es": "Presentar a tu familia y hablar de otras personas.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "44a6a235a6",
+   "es": "Puedes presentar a tu familia, decir de quién es algo con his, her, our y their, y cuántos familiares tienes.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "7d81887bd0",
+   "es": "His / her y have / has",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "b811b4b739",
+   "es": "His es «su» de él y her, «su» de ella: depende de quién es dueño. Tener es have, pero con he, she e it es has.",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "1ffac43004",
+   "es": "Su hermano (de ella) tiene diez años.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Her brother is ten."
+  },
+  {
+   "id": "3296d9b987",
+   "es": "Tengo dos hermanas.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I have two sisters."
+  },
+  {
+   "id": "282695c0a5",
+   "es": "Él tiene un bebé.",
+   "kinds": [
+    "example"
+   ],
+   "en": "He has a baby."
+  },
+  {
+   "id": "d368c2ac7f",
+   "es": "familia",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "family"
+  },
+  {
+   "id": "d4ea129f81",
+   "es": "Esta es mi familia.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "This is my family."
+  },
+  {
+   "id": "d99468a541",
+   "es": "madre",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.hint"
+   ],
+   "en": "mother"
+  },
+  {
+   "id": "162e30509e",
+   "es": "mamá",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "mother"
+  },
+  {
+   "id": "c7021c3d56",
+   "es": "Mi madre es profesora.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My mother is a teacher."
+  },
+  {
+   "id": "26709765e7",
+   "es": "padre",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "father"
+  },
+  {
+   "id": "d193df4aee",
+   "es": "papá",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "father"
+  },
+  {
+   "id": "d6a51df9c9",
+   "es": "Su padre está cansado.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "His father is tired."
+  },
+  {
+   "id": "6c40651d46",
+   "es": "padres",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "parents"
+  },
+  {
+   "id": "87cbf96ad8",
+   "es": "Mis padres son de España.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "My parents are from Spain."
+  },
+  {
+   "id": "f04ce5c9de",
+   "es": "hermano",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair",
+    "exercise.hint"
+   ],
+   "en": "brother"
+  },
+  {
+   "id": "1fb08b3be9",
+   "es": "hermana",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "sister"
+  },
+  {
+   "id": "8f642a65fd",
+   "es": "Mi hermana tiene doce años.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My sister is twelve."
+  },
+  {
+   "id": "58c8652ae5",
+   "es": "abuela",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "grandmother"
+  },
+  {
+   "id": "b3ed759e88",
+   "es": "Mi abuela está feliz.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "My grandmother is happy."
+  },
+  {
+   "id": "a0e195ed18",
+   "es": "abuelo",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "grandfather"
+  },
+  {
+   "id": "528e43d67d",
+   "es": "Su abuelo es de México.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Her grandfather is from Mexico."
+  },
+  {
+   "id": "872645a753",
+   "es": "bebé",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "baby"
+  },
+  {
+   "id": "f5aa8aca30",
+   "es": "El bebé tiene un año.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "The baby is one year old."
+  },
+  {
+   "id": "f9a1d5e8c1",
+   "es": "hombre",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "man"
+  },
+  {
+   "id": "2bb86314b6",
+   "es": "Es un buen hombre.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "He is a good man."
+  },
+  {
+   "id": "b4c0115ed2",
+   "es": "mujer",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.hint"
+   ],
+   "en": "woman"
+  },
+  {
+   "id": "5a8fd93620",
+   "es": "Es una mujer feliz.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She is a happy woman."
+  },
+  {
+   "id": "5a7e7a8a9b",
+   "es": "chico",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "word.accepted"
+   ],
+   "en": "boy"
+  },
+  {
+   "id": "d6108ffef0",
+   "es": "niño",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "boy"
+  },
+  {
+   "id": "86f7e7894a",
+   "es": "El chico tiene diez años.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The boy is ten."
+  },
+  {
+   "id": "057bb44c9d",
+   "es": "chica",
+   "kinds": [
+    "word.translation",
+    "word.accepted"
+   ],
+   "en": "girl"
+  },
+  {
+   "id": "b142d3098f",
+   "es": "niña",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "girl"
+  },
+  {
+   "id": "5319a1d924",
+   "es": "La chica es mi hermana.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The girl is my sister."
+  },
+  {
+   "id": "fbc7949ffd",
+   "es": "quién",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "who"
+  },
+  {
+   "id": "5b6cda4976",
+   "es": "¿Quién es ella?",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.option"
+   ],
+   "en": "Who is she?"
+  },
+  {
+   "id": "18bc6c5a63",
+   "es": "su (de él)",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "his"
+  },
+  {
+   "id": "24cdc656a8",
+   "es": "Su nombre es Tom.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "His name is Tom."
+  },
+  {
+   "id": "727fbeff54",
+   "es": "su (de ella)",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "her"
+  },
+  {
+   "id": "e585a71038",
+   "es": "Su nombre es Ana.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "Her name is Ana."
+  },
+  {
+   "id": "28151a023a",
+   "es": "nuestro / nuestra",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "our"
+  },
+  {
+   "id": "ac8ebb9420",
+   "es": "nuestro",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "our"
+  },
+  {
+   "id": "9bb696f56f",
+   "es": "nuestra",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "our"
+  },
+  {
+   "id": "ae62bdc4d9",
+   "es": "Nuestra profesora es de Inglaterra.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Our teacher is from England."
+  },
+  {
+   "id": "6cb386c49c",
+   "es": "su (de ellos)",
+   "kinds": [
+    "word.translation",
+    "exercise.option",
+    "exercise.pair"
+   ],
+   "en": "their"
+  },
+  {
+   "id": "6370d82de2",
+   "es": "Su madre es profesora.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Their mother is a teacher."
+  },
+  {
+   "id": "08fac7aa94",
+   "es": "tener (I, you, we, they)",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "have"
+  },
+  {
+   "id": "dcbf611fa5",
+   "es": "tener",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "have"
+  },
+  {
+   "id": "34f2bd9e1e",
+   "es": "tengo",
+   "kinds": [
+    "word.accepted",
+    "exercise.option"
+   ],
+   "en": "have"
+  },
+  {
+   "id": "0274465c7b",
+   "es": "tenemos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "have"
+  },
+  {
+   "id": "febc75957e",
+   "es": "Tenemos dos hermanas.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "We have two sisters."
+  },
+  {
+   "id": "7932166181",
+   "es": "tiene (he, she, it)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "has"
+  },
+  {
+   "id": "6dac4e252d",
+   "es": "tiene",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "has"
+  },
+  {
+   "id": "0db869c7c2",
+   "es": "Ella tiene un hermano.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "She has a brother."
+  },
+  {
+   "id": "ee3d80cbf3",
+   "es": "Mi familia",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "c785e89e19",
+   "es": "Nombrar a la familia cercana.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "1f4a94ce2e",
+   "es": "Mother y father son madre y padre; parents, los dos. Ojo: parents no son los parientes, son tus padres.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "5647efa911",
+   "es": "Mi familia es chica.",
+   "kinds": [
+    "example"
+   ],
+   "en": "My family is small."
+  },
+  {
+   "id": "e17e432d2a",
+   "es": "Nombras a tu madre, tu padre y tus padres.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "2f304e3f1c",
+   "es": "Sabes que parents son tus padres.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "6c7eea36a8",
+   "es": "¿Qué significa «mother»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "f32a990543",
+   "es": "¿Qué significa «father»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "6f0089ab43",
+   "es": "Mi madre",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "my mother"
+  },
+  {
+   "id": "27f137752d",
+   "es": "Hermanos y abuelos",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "8cfba5d7e6",
+   "es": "Hablar de hermanos, abuelos y bebés.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "786ae4ca09",
+   "es": "Brother y sister son hermano y hermana. Grandmother y grandfather, los abuelos.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "6a8640860c",
+   "es": "Nombras a tus hermanos y abuelos.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "aad665eb81",
+   "es": "Dices cómo está un familiar con is.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "0e6927f824",
+   "es": "Mi abuelo",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "my grandfather"
+  },
+  {
+   "id": "fa2ea3fb08",
+   "es": "Personas",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "baaddeb133",
+   "es": "Hombre, mujer, chico, chica y preguntar quién es alguien.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "5007581095",
+   "es": "Man y woman son hombre y mujer; boy y girl, chico y chica. Para preguntar quién es alguien: Who is he?",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "76e28cd6f5",
+   "es": "Él es un chico.",
+   "kinds": [
+    "example"
+   ],
+   "en": "He is a boy."
+  },
+  {
+   "id": "d9863f1121",
+   "es": "Nombras a las personas: man, woman, boy, girl.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "06118ed835",
+   "es": "Preguntas quién es alguien con Who is…?",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "f197b5c3cd",
+   "es": "¿Qué significa «man»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "c9e343ffc4",
+   "es": "¿Qué significa «Who is she?»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "4dfd09ee7b",
+   "es": "¿Cómo está ella?",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5ba4baf219",
+   "es": "¿De dónde es ella?",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0f337cda7b",
+   "es": "¿Cuántos años tiene ella?",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "493e87e69b",
+   "es": "¿Quién es él? Es mi hermano.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Who is he? He is my brother."
+  },
+  {
+   "id": "ce8a987e20",
+   "es": "Who pregunta por una persona: Who is he? = ¿Quién es él?",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Who"
+  },
+  {
+   "id": "1d3775ff28",
+   "es": "Plural irregular: one woman, two women.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "woman"
+  },
+  {
+   "id": "af34fb9b8e",
+   "es": "Ana = mi hermana",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Who is Ana? (Ana = mi hermana)"
+  },
+  {
+   "id": "11497e8f3d",
+   "es": "¿Quién es Ana?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Who is Ana? (Ana = mi hermana)"
+  },
+  {
+   "id": "a4f0983479",
+   "es": "¿Quién es él?",
+   "kinds": [
+    "exercise.source",
+    "example"
+   ],
+   "en": "Who is he?"
+  },
+  {
+   "id": "826104fce7",
+   "es": "Ella es una chica.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "She is a girl."
+  },
+  {
+   "id": "282b1b6e02",
+   "es": "Su, nuestro y su de ellos",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "c9d157b87f",
+   "es": "Usar his, her, our y their.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "71f5749a9f",
+   "es": "En inglés «su» cambia según el dueño: his (de él), her (de ella), their (de ellos). Our es «nuestro» o «nuestra».",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "279bab8557",
+   "es": "Su nombre (de él) es Tom.",
+   "kinds": [
+    "example",
+    "exercise.source"
+   ],
+   "en": "His name is Tom."
+  },
+  {
+   "id": "b3d296487e",
+   "es": "Nuestra madre es profesora.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Our mother is a teacher."
+  },
+  {
+   "id": "65ab723329",
+   "es": "Eliges his o her según quién es el dueño.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "0d904f6e79",
+   "es": "Usas our y their.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "58ae90ea62",
+   "es": "¿Qué significa «his»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "53bc8bca3e",
+   "es": "¿Qué significa «her»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "785f6eb6a3",
+   "es": "Tom es mi amigo. Su nombre es Tom.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Tom is my friend. His name is Tom."
+  },
+  {
+   "id": "d1cfa75982",
+   "es": "His se usa cuando el dueño es un hombre o un chico.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "His"
+  },
+  {
+   "id": "b99a53464e",
+   "es": "Ana es estudiante. Su profesor es de Inglaterra.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Ana is a student. Her teacher is from England."
+  },
+  {
+   "id": "8725a332a1",
+   "es": "Her se usa cuando la dueña es una mujer o una chica.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Her"
+  },
+  {
+   "id": "00517f1a35",
+   "es": "Somos hermanos. Nuestra madre está feliz.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "We are brothers. Our mother is happy."
+  },
+  {
+   "id": "cb4a259488",
+   "es": "Son hermanas. Su padre es profesor.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "They are sisters. Their father is a teacher."
+  },
+  {
+   "id": "fb48fd50ad",
+   "es": "Their = de ellos o de ellas.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Their"
+  },
+  {
+   "id": "79dfb5e9f1",
+   "es": "Ana es mujer: her. Si fuera Tom, sería His name is Tom.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Her name is Ana."
+  },
+  {
+   "id": "a29c6d2e70",
+   "es": "Nuestra familia",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "our family"
+  },
+  {
+   "id": "7d4459958e",
+   "es": "La madre de Ana es profesora.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Ana's mother is a teacher."
+  },
+  {
+   "id": "204bb3be98",
+   "es": "La posesión de una persona se dice con 's: Ana's mother = la madre de Ana.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Ana's"
+  },
+  {
+   "id": "75b055be0f",
+   "es": "Tom es el hermano de Lucy.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Tom is Lucy's brother."
+  },
+  {
+   "id": "c2383aa9a2",
+   "es": "Lucy's brother: el dueño + 's + la persona.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Lucy's"
+  },
+  {
+   "id": "efe1b54359",
+   "es": "El nombre de mi papá es Juan.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "My father's name is Juan."
+  },
+  {
+   "id": "eef0e3404f",
+   "es": "Mira el árbol y escribe quién es Rosa para Ana. Usa 's.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "👵 Rosa\n⬇️\n👩 Maria\n⬇️\n👧 Ana"
+  },
+  {
+   "id": "c0111f19e6",
+   "es": "Rosa es la madre de la madre de Ana: Ana's grandmother.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Rosa is Ana's grandmother."
+  },
+  {
+   "id": "0184735f6c",
+   "es": "El hermano de Ana",
+   "kinds": [
+    "exercise.source",
+    "exercise.option"
+   ],
+   "en": "Ana's brother"
+  },
+  {
+   "id": "f75b58f8c8",
+   "es": "«De Ana» va antes de la persona, con 's: Ana's brother.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Ana's brother"
+  },
+  {
+   "id": "bb68264aba",
+   "es": "Tengo dos hermanas",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "8c3b8502cb",
+   "es": "Usar have y has para hablar de tu familia.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "0c26b6367d",
+   "es": "Tener es have con I, you, we y they, y has con he, she e it: I have, she has.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "acbffe2050",
+   "es": "Usas have y has según la persona.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "551a4861d7",
+   "es": "Dices cuántos familiares tienes.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "5fdf3118bb",
+   "es": "Con I, you, we y they se usa have.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "have"
+  },
+  {
+   "id": "7ef9160f57",
+   "es": "Ella tiene dos hermanas.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She has two sisters."
+  },
+  {
+   "id": "fb5f9421ad",
+   "es": "Con he, she e it se usa has.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "has"
+  },
+  {
+   "id": "d592b844a4",
+   "es": "Tenemos un bebé.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "We have a baby."
+  },
+  {
+   "id": "25bce6089d",
+   "es": "Mi padre tiene dos hermanos.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "My father has two brothers."
+  },
+  {
+   "id": "34c139293d",
+   "es": "Sí, tengo uno.",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Do you have a brother? (Sí, tengo uno.)"
+  },
+  {
+   "id": "1f5f7afc45",
+   "es": "¿Tienes un hermano?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Do you have a brother? (Sí, tengo uno.)"
+  },
+  {
+   "id": "53da3aebe8",
+   "es": "En contexto: la familia de Ana",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "044d208060",
+   "es": "Entender una descripción y una conversación sobre una familia.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "c498bae40e",
+   "es": "Vas a leer cómo describe Ana a su familia y a escuchar una conversación sobre una foto. Fíjate en las relaciones: quién es hermano, abuela o bebé de quién.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "d1f2fc68e4",
+   "es": "Mi hermana tiene un bebé.",
+   "kinds": [
+    "example"
+   ],
+   "en": "My sister has a baby."
+  },
+  {
+   "id": "790013b21c",
+   "es": "Ahora puedes entender quién es quién en una familia descripta en inglés.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "e4db51f725",
+   "es": "Ana publica un texto sobre su familia.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u04-ana-family"
+  },
+  {
+   "id": "1ef9d279e3",
+   "es": "¿Cuántos hermanos varones tiene Ana?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u04-ana-family"
+  },
+  {
+   "id": "17bcc6fa36",
+   "es": "Uno",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u04-ana-family"
+  },
+  {
+   "id": "c5225e4e7e",
+   "es": "Dos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b55c253c16",
+   "es": "«I have two brothers and a sister»: dos hermanos y una hermana.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u04-ana-family"
+  },
+  {
+   "id": "ae7d47fe56",
+   "es": "¿Quién tiene un bebé?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u04-ana-family"
+  },
+  {
+   "id": "16bb4d0468",
+   "es": "La madre de Ana",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u04-ana-family"
+  },
+  {
+   "id": "78c66444f6",
+   "es": "La hermana de Ana",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e6b956c113",
+   "es": "«My sister has a baby».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u04-ana-family"
+  },
+  {
+   "id": "bde794994f",
+   "es": "¿Quién es Elena?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u04-ana-family"
+  },
+  {
+   "id": "9fcb2a5f04",
+   "es": "La abuela de Ana",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e479f889e1",
+   "es": "«Our grandmother is Elena»; la madre se llama Rosa.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u04-ana-family"
+  },
+  {
+   "id": "15ae97bda7",
+   "es": "Tom mira una foto de la familia de Ana y le pregunta.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.a1-u04-family-photo"
+  },
+  {
+   "id": "909061153c",
+   "es": "¿Quién es el hombre de la foto?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u04-family-photo"
+  },
+  {
+   "id": "44cf243757",
+   "es": "El padre de Ana",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u04-family-photo"
+  },
+  {
+   "id": "5d7e9a98c1",
+   "es": "El abuelo de Ana",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5952c9ab57",
+   "es": "Ana responde «He is my grandfather».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u04-family-photo"
+  },
+  {
+   "id": "5aad2b14af",
+   "es": "¿Qué tiene Julia?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u04-family-photo"
+  },
+  {
+   "id": "bff4dd9dd2",
+   "es": "Un hijo bebé",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u04-family-photo"
+  },
+  {
+   "id": "7632104e94",
+   "es": "Dos hermanas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "59ddacabd5",
+   "es": "Una hija bebé",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "53501e7fe7",
+   "es": "«She has a baby girl»: una beba.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u04-family-photo"
+  },
+  {
+   "id": "3ad19ad63e",
+   "es": "¿A qué se dedica Julia?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.a1-u04-family-photo"
+  },
+  {
+   "id": "117c846ef7",
+   "es": "Es estudiante",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.a1-u04-family-photo"
+  },
+  {
+   "id": "5a84ad0d8b",
+   "es": "No trabaja",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "50d3777357",
+   "es": "Es profesora",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "fefe8f996c",
+   "es": "A «Is Julia a teacher?» Ana responde «Yes, she is».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.a1-u04-family-photo"
+  },
+  {
+   "id": "1beda43ddd",
+   "es": "Tu familia",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "b2f8d86444",
+   "es": "Escribe sobre tu familia (real o inventada): cuántos hermanos o hermanas tienes y cómo se llama alguien de tu familia.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "3c1ff7cf95",
+   "es": "Usas I have para decir qué familiares tienes",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "35f24552bc",
+   "es": "Nombras a un familiar (mother, brother, sister…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "bd481ecafc",
+   "es": "Dices un nombre con his, her o my (Her name is…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "713aac97b9",
+   "es": "Escribes al menos 3 oraciones",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "d4bf9bcfa6",
+   "es": "Usé have o has bien.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "26830d3cd6",
+   "es": "Usé his o her según la persona.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "5ce22730c0",
+   "es": "Bloque 1: preséntate y presenta a alguien",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "35ebba7ba1",
+   "es": "Escribe 4 o 5 oraciones: quién eres (nombre, edad, país) y una persona de tu familia o un amigo. Puedes inventar los datos.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "c80b2c7e67",
+   "es": "Pista: ¿dijiste tu nombre?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "3e6697eed0",
+   "es": "Pista: ¿hablaste de otra persona con he o she?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "ae7760a639",
+   "es": "Escribiste al menos 4 oraciones",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "766814cfc7",
+   "es": "Dije mi nombre, mi edad y de dónde soy.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "7129aa4768",
+   "es": "Presenté a otra persona con he o she.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "d4de646190",
+   "es": "Usé am, is y are bien.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "5c55ed1a2d",
+   "es": "Mi texto se entiende si lo leo en voz alta.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.a1-u04-ana-family": {
+   "setting": "Ana publica un texto sobre su familia.",
+   "lines": [
+    "My family is big.",
+    "My mother is Rosa and my father is Carlos.",
+    "I have two brothers and a sister.",
+    "My sister has a baby. Her baby is a girl.",
+    "Our grandmother is Elena."
+   ]
+  },
+  "en.stim.a1-u04-family-photo": {
+   "setting": "Tom mira una foto de la familia de Ana y le pregunta.",
+   "lines": [
+    "Tom: Who is he?",
+    "Ana: He is my grandfather.",
+    "Tom: And who is she?",
+    "Ana: She is my sister, Julia. She has a baby girl.",
+    "Tom: Is Julia a teacher?",
+    "Ana: Yes, she is."
+   ]
+  }
+ }
+}
