@@ -12,6 +12,7 @@ const mockMutate = jest.fn();
 const mockPush = jest.fn();
 let mockState: {
   list: CourseList | null;
+  isTester: boolean;
   isPending: boolean;
   isError: boolean;
   progressError: boolean;
@@ -64,7 +65,13 @@ beforeEach(() => {
   mockBack.mockClear();
   mockMutate.mockClear();
   mockPush.mockClear();
-  mockState = { list: sampleList(), isPending: false, isError: false, progressError: false };
+  mockState = {
+    list: sampleList(),
+    isTester: false,
+    isPending: false,
+    isError: false,
+    progressError: false,
+  };
 });
 
 afterAll(() => __setInterfaceLanguageForTests('es'));
@@ -85,15 +92,43 @@ it('mis cursos muestra cada curso con su propio nivel y progreso', async () => {
   ).toBeTruthy();
 });
 
-it('los cursos para empezar van por idioma de origen: test de nivel o desde A1', async () => {
+it('sólo muestra tus cursos y un botón «Agregar curso»: el selector empieza cerrado', async () => {
   await render(<CoursesScreen />);
+  expect(screen.getByText('Agregar curso')).toBeTruthy();
+  expect(screen.queryByText('EMPEZAR UN CURSO NUEVO')).toBeNull();
+  expect(screen.queryByText('Idiomas para hablantes de español')).toBeNull();
+  expect(screen.queryByText('Chino mandarín')).toBeNull();
+});
+
+it('«Agregar curso» abre el selector por idioma de origen: el del teléfono abierto, el resto cerrado', async () => {
+  await render(<CoursesScreen />);
+  await fireEvent.press(screen.getByText('Agregar curso'));
   expect(screen.getByText('EMPEZAR UN CURSO NUEVO')).toBeTruthy();
-  expect(screen.getByText(/Para hablantes de español/)).toBeTruthy();
-  // Todos los cursos tienen A1 y A2: francés, portugués y chino (desde español) y español (desde
-  // inglés) ofrecen el test de nivel.
-  expect(screen.getAllByText(/Test de nivel o desde A1/).length).toBe(4);
-  expect(screen.queryByText(/Empiezas desde A1/)).toBeNull();
-  expect(screen.getByText(/Para hablantes de inglés/)).toBeTruthy();
+  const es = screen.getByRole('button', { name: 'Idiomas para hablantes de español, 5 cursos' });
+  const en = screen.getByRole('button', { name: 'Idiomas para hablantes de inglés, 1 curso' });
+  expect(es.props.accessibilityState).toMatchObject({ expanded: true });
+  expect(en.props.accessibilityState).toMatchObject({ expanded: false });
+  // Inglés para hablantes de portugués, italiano y francés: una sección cada uno, cerrada.
+  for (const name of ['portugués', 'italiano', 'francés']) {
+    const section = screen.getByRole('button', {
+      name: `Idiomas para hablantes de ${name}, 1 curso`,
+    });
+    expect(section.props.accessibilityState).toMatchObject({ expanded: false });
+  }
+  // Tus cursos van marcados; los demás, con su rango de niveles.
+  expect(screen.getByRole('button', { name: 'Inglés, A1–A2, ya lo estudias' })).toBeTruthy();
+  expect(screen.getByRole('button', { name: 'Italiano, A1–A2, ya lo estudias' })).toBeTruthy();
+  expect(screen.getByText('Curso actual')).toBeTruthy();
+  expect(screen.getByText('Ya lo estudias')).toBeTruthy();
+  expect(screen.getByRole('button', { name: 'Chino mandarín, A1–A2' })).toBeTruthy();
+  // El español (desde inglés) recién se ve al abrir su sección; se puede tener más de una abierta.
+  expect(screen.queryByRole('button', { name: 'Español, A1–A2' })).toBeNull();
+  await fireEvent.press(en);
+  expect(screen.getByRole('button', { name: 'Español, A1–A2' })).toBeTruthy();
+  expect(screen.getByRole('button', { name: 'Chino mandarín, A1–A2' })).toBeTruthy();
+  // Y se vuelve a cerrar.
+  await fireEvent.press(es);
+  expect(screen.queryByRole('button', { name: 'Chino mandarín, A1–A2' })).toBeNull();
 });
 
 it('tocar uno de mis cursos lo elige y vuelve a Aprender; uno nuevo abre por dónde empezar', async () => {
@@ -105,18 +140,23 @@ it('tocar uno de mis cursos lo elige y vuelve a Aprender; uno nuevo abre por dó
   expect(mockMutate.mock.calls[0][0]).toMatchObject({ code: 'it-from-es', target: 'it' });
   expect(mockBack).toHaveBeenCalledTimes(1);
 
+  // En el selector, un curso tuyo también te pasa a ese curso (no se vuelve a empezar).
+  await fireEvent.press(screen.getByText('Agregar curso'));
+  await fireEvent.press(screen.getByRole('button', { name: 'Italiano, A1–A2, ya lo estudias' }));
+  expect(mockMutate).toHaveBeenCalledTimes(2);
+  expect(mockPush).not.toHaveBeenCalled();
+  // El que ya estudiás sólo vuelve a Aprender.
+  await fireEvent.press(screen.getByRole('button', { name: 'Inglés, A1–A2, ya lo estudias' }));
+  expect(mockMutate).toHaveBeenCalledTimes(2);
+  expect(mockBack).toHaveBeenCalledTimes(3);
+
   // Un curso nuevo no se elige directo (Fase 4): se abre la elección entre test y A1.
-  await fireEvent.press(
-    screen.getByRole('button', { name: /Chino mandarín desde español, nivel A1$/ }),
-  );
-  expect(mockMutate).toHaveBeenCalledTimes(1);
+  await fireEvent.press(screen.getByRole('button', { name: 'Chino mandarín, A1–A2' }));
+  expect(mockMutate).toHaveBeenCalledTimes(2);
   expect(mockPush).toHaveBeenCalledWith({
     pathname: '/course-start/[code]',
     params: { code: 'zh-from-es' },
   });
-  expect(
-    screen.getByRole('button', { name: /Francés desde español/ }).props.accessibilityHint,
-  ).toMatch(/test de nivel/);
 });
 
 it('si el cambio falla, avisa que el progreso está a salvo', async () => {
@@ -133,20 +173,26 @@ it('si el cambio falla, avisa que el progreso está a salvo', async () => {
   alert.mockRestore();
 });
 
-it('sin cursos para empezar lo dice en vez de dejar la sección vacía', async () => {
-  mockState.list = { ...sampleList(), available: [] };
-  await render(<CoursesScreen />);
-  expect(screen.getByText(/Ya estás en todos los cursos disponibles/)).toBeTruthy();
-});
-
 it('estado de carga', async () => {
-  mockState = { list: null, isPending: true, isError: false, progressError: false };
+  mockState = {
+    list: null,
+    isTester: false,
+    isPending: true,
+    isError: false,
+    progressError: false,
+  };
   await render(<CoursesScreen />);
   expect(screen.getByText('Cargando tus cursos…')).toBeTruthy();
 });
 
 it('estado de error', async () => {
-  mockState = { list: null, isPending: false, isError: true, progressError: false };
+  mockState = {
+    list: null,
+    isTester: false,
+    isPending: false,
+    isError: true,
+    progressError: false,
+  };
   await render(<CoursesScreen />);
   expect(screen.getByText('No pudimos cargar tus cursos.')).toBeTruthy();
 });
@@ -156,11 +202,22 @@ it('en inglés: textos, idiomas y etiquetas de accesibilidad en inglés', async 
   await render(<CoursesScreen />);
   expect(screen.getByText(/YOU’RE LEARNING/)).toBeTruthy();
   expect(screen.getByLabelText('Current course: English from Spanish, level A2')).toBeTruthy();
-  expect(screen.getByText(/For Spanish speakers/)).toBeTruthy();
   expect(
     screen.getByRole('button', { name: 'Italian from Spanish, level A1, 33 percent' }),
   ).toBeTruthy();
-  expect(screen.queryByText(/Starts at A1/)).toBeNull();
-  expect(screen.getAllByText(/Placement test or start at A1/).length).toBe(4);
   expect(screen.getByText('Keep learning')).toBeTruthy();
+  // Con la app en inglés, arriba y abierta va la sección de quien habla inglés.
+  await fireEvent.press(screen.getByText('Add a course'));
+  const sections = screen.getAllByRole('button', { name: /^For .* speakers, / });
+  expect(sections.map((s) => s.props.accessibilityLabel)).toEqual([
+    'For English speakers, 1 course',
+    'For Spanish speakers, 5 courses',
+    'For Portuguese speakers, 1 course',
+    'For Italian speakers, 1 course',
+    'For French speakers, 1 course',
+  ]);
+  expect(sections[0]!.props.accessibilityState).toMatchObject({ expanded: true });
+  expect(sections[1]!.props.accessibilityState).toMatchObject({ expanded: false });
+  expect(screen.getByRole('button', { name: 'Spanish, A1–A2' })).toBeTruthy();
+  expect(screen.queryByRole('button', { name: /^Italian, / })).toBeNull();
 });

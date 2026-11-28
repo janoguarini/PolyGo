@@ -34,6 +34,7 @@ import {
   useAnswerServerReview,
   useMyWords,
   useServerReview,
+  useStudyCourse,
   useStudyLanguage,
   useSubmitServerReview,
   useWordPool,
@@ -59,7 +60,12 @@ import { sessionStats, type PlayerState } from '@/features/learning/player';
 import { recordPractice } from '@/features/reminders/practiceLog';
 import { track } from '@/lib/analytics';
 import { reviewAnswerQueue, SESSION_GONE } from '@/features/learning/reviewAnswerQueue';
-import { newOpenReview, RESTART_CODES, takeWarmReview } from '@/features/learning/reviewWarmup';
+import {
+  newOpenReview,
+  RESTART_CODES,
+  reviewScope,
+  takeWarmReview,
+} from '@/features/learning/reviewWarmup';
 import { parseCoachUnits } from '@shared/coach';
 import { CoachResultCard } from '@/features/coach/CoachResultCard';
 import { shuffle, uuid } from '@/features/learning/random';
@@ -183,22 +189,25 @@ function ServerReviewScreen({ mode, focus }: { mode: ReviewMode; focus?: ReviewF
   useTheme();
   const t = useStrings(reviewStrings);
   const language = useStudyLanguage();
+  // Sesión guardada y precargada por curso (dos cursos de inglés no comparten repaso).
+  const course = useStudyCourse();
+  const scope = course ? reviewScope(course) : language.code;
   const kind = reviewKind(focus);
   const qc = useQueryClient();
   // Precargado (reviewWarmup.ts): la sesión y su contenido ya están, se abre sin «Preparando repaso…».
   const [open, setOpen] = useState<OpenReview | null>(
-    () => takeWarmReview(qc, language.code, focus) ?? null,
+    () => takeWarmReview(qc, language.code, focus, scope) ?? null,
   );
   useEffect(() => {
     let alive = true;
-    void loadOpenReview(language.code, kind).then((found) => {
+    void loadOpenReview(scope, kind).then((found) => {
       // La precargada (si hubo) ya está en pantalla y es la misma que quedó guardada: no se cambia.
       if (alive) setOpen((current) => current ?? found ?? newOpenReview());
     });
     return () => {
       alive = false;
     };
-  }, [language.code, kind]);
+  }, [scope, kind]);
 
   const review = useServerReview(open?.sessionId ?? null, language.code, focus);
   const answer = useAnswerServerReview(open?.sessionId ?? null);
@@ -216,12 +225,12 @@ function ServerReviewScreen({ mode, focus }: { mode: ReviewMode; focus?: ReviewF
   // Se olvida la sesión guardada y, recién después, se empieza otra.
   const restart = useCallback(
     () =>
-      clearOpenReview(language.code, kind).then(() => {
+      clearOpenReview(scope, kind).then(() => {
         finalizeReset();
         setFinished(null);
         setOpen(newOpenReview());
       }),
-    [language.code, kind, finalizeReset],
+    [scope, kind, finalizeReset],
   );
 
   // Una sesión ya enviada (p. ej. desde otro dispositivo) o de otro tipo no se retoma: se empieza otra.
@@ -273,8 +282,8 @@ function ServerReviewScreen({ mode, focus }: { mode: ReviewMode; focus?: ReviewF
 
   // Recién cuando el servidor registró el plan se guarda para poder retomarlo.
   useEffect(() => {
-    if (open && session) void saveOpenReview(language.code, open, kind);
-  }, [open, session, language.code, kind]);
+    if (open && session) void saveOpenReview(scope, open, kind);
+  }, [open, session, scope, kind]);
 
   const { mutateAsync: answerAsync } = answer;
   const { refetch: refetchReview } = review;
@@ -353,10 +362,10 @@ function ServerReviewScreen({ mode, focus }: { mode: ReviewMode; focus?: ReviewF
             return reviewSubmission(settled);
           },
         },
-        { onSuccess: () => void clearOpenReview(language.code, kind) },
+        { onSuccess: () => void clearOpenReview(scope, kind) },
       );
     },
-    [submitMutate, open, queue, language.code, kind],
+    [submitMutate, open, queue, scope, kind],
   );
 
   const handleFinished = useCallback(

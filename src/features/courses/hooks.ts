@@ -2,7 +2,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useCallback, useEffect } from 'react';
 import { AppState } from 'react-native';
 
-import type { CourseDef } from '@shared/courses';
+import { defaultCourseFor, type CourseDef } from '@shared/courses';
 
 import { useAuth } from '@/features/auth/AuthProvider';
 import { setTargetLanguage } from '@/features/profile/api';
@@ -22,7 +22,7 @@ import {
   profileLanguageDecision,
   syncPendingInterfaceLanguage,
 } from './interfaceLanguageSync';
-import { languageStartLevel, type CourseProfile } from './level';
+import { courseForLanguage, languageStartLevel, type CourseProfile } from './level';
 
 /** Dentro de ['profile']: cambiar de idioma (useSetTargetLanguage) ya invalida ['profile']. */
 export const courseKeys = {
@@ -50,6 +50,20 @@ export function useLanguageStartLevel(language?: string): string | undefined {
   const profile = me.data?.profile as CourseProfile | undefined;
   if (!profile) return undefined;
   return languageStartLevel(profile, courses.data ?? null, language);
+}
+
+/**
+ * Resolvedor idioma → curso (el que devuelve la base para ese idioma, user_course_for): para las
+ * claves de caché por curso de las listas de idiomas. Sin perfil, el curso por defecto.
+ */
+export function useCourseForLanguage(): (language: string) => CourseDef {
+  const profile = useMyProfile().data?.profile as CourseProfile | undefined;
+  const enrollments = useMyCourses().data ?? null;
+  return useCallback(
+    (language: string) =>
+      profile ? courseForLanguage(profile, language, enrollments) : defaultCourseFor(language),
+    [profile, enrollments],
+  );
 }
 
 /** Resolvedor para listas de idiomas (perfil): idioma → nivel inicial. */

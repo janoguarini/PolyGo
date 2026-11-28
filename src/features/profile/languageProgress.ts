@@ -3,15 +3,15 @@ import { useQueries, useQuery } from '@tanstack/react-query';
 import { VISIBLE_LANGUAGES, isSelectable, type LanguageConfig } from '@shared/languages';
 
 import { useAuth } from '@/features/auth/AuthProvider';
-import { useLanguageStartLevels } from '@/features/courses/hooks';
-import { fetchCurriculum, fetchLessonProgress } from '@/features/learning/api';
+import { useCourseForLanguage, useLanguageStartLevels } from '@/features/courses/hooks';
+import { fetchLessonProgress } from '@/features/learning/api';
 import {
   withStatus,
   type LessonProgress,
   type UnitSummary,
   type UnitWithStatus,
 } from '@/features/learning/curriculum';
-import { learningKeys } from '@/features/learning/hooks';
+import { curriculumQuery, learningKeys } from '@/features/learning/hooks';
 
 import { useIsContentTester } from './hooks';
 
@@ -104,12 +104,10 @@ export function useLanguageRows(
   // Nivel por curso (modelo de cursos); sin él, la regla anterior.
   const levelOf = useLanguageStartLevels();
   const languages = VISIBLE_LANGUAGES.filter((l) => isSelectable(l, tester) || l.code === current);
+  // Caché por curso (el camino de cada idioma es el de su curso, como en Aprender).
+  const courseFor = useCourseForLanguage();
   const curricula = useQueries({
-    queries: languages.map((l) => ({
-      queryKey: learningKeys.curriculum(l.code),
-      queryFn: () => fetchCurriculum(l.code),
-      staleTime: 10 * 60_000,
-    })),
+    queries: languages.map((l) => curriculumQuery(courseFor(l.code))),
   });
   const progress = useQuery({
     queryKey: learningKeys.progress(userId ?? 'anonymous'),

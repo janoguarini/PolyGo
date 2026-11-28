@@ -6,8 +6,8 @@ import { VISIBLE_LANGUAGES, isSelectable, type LanguageConfig } from '@shared/la
 import { RATING_CONFIG } from '@shared/ranking';
 
 import { Text, colors, radii, spacing, themedStyles } from '@/design-system';
-import { fetchCurriculum } from '@/features/learning/api';
-import { learningKeys } from '@/features/learning/hooks';
+import { useCourseForLanguage } from '@/features/courses/hooks';
+import { curriculumQuery } from '@/features/learning/hooks';
 import { useStrings } from '@/i18n';
 import { useLanguageName } from '@/i18n/languages';
 
@@ -18,17 +18,15 @@ import { languagesRowStrings } from '../strings';
 export function usePrefetchLanguagePaths(current: string | undefined) {
   const tester = useIsContentTester().data ?? false;
   const qc = useQueryClient();
+  // Caché por curso: el camino de cada idioma es el de su curso (el que devuelve la base).
+  const courseFor = useCourseForLanguage();
   useEffect(() => {
     if (!current) return;
     for (const l of VISIBLE_LANGUAGES) {
       if (l.code === current || !isSelectable(l, tester)) continue;
-      void qc.prefetchQuery({
-        queryKey: learningKeys.curriculum(l.code),
-        queryFn: () => fetchCurriculum(l.code),
-        staleTime: 10 * 60_000,
-      });
+      void qc.prefetchQuery(curriculumQuery(courseFor(l.code)));
     }
-  }, [qc, current, tester]);
+  }, [qc, current, tester, courseFor]);
 }
 
 /**

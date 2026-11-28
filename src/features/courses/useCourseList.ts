@@ -11,7 +11,8 @@ import type { CourseProfile } from './level';
 
 /**
  * Lista de «Tus cursos»: el activo, los empezados y los que se pueden empezar, con el nivel y el
- * progreso de cada uno (las mismas consultas y caché que Aprender y Perfil).
+ * progreso de cada uno (las mismas consultas y caché que Aprender y Perfil). `isTester`: para el
+ * selector de «Agregar curso» (los beta, sólo para testers de contenido).
  */
 export function useCourseList() {
   const me = useMyProfile();
@@ -42,6 +43,7 @@ export function useCourseList() {
   }, [profile, enrollments, rows.rows, tester.data]);
   return {
     list,
+    isTester: tester.data ?? false,
     // Sin perfil no hay nada que mostrar; el progreso puede llegar después (las filas se completan).
     isPending: me.isPending || courses.isPending,
     isError: me.isError || courses.isError,

@@ -1,4 +1,4 @@
-import { activeCourseOf, defaultCourseFor, type CourseDef } from '@shared/courses';
+import { activeCourseOf, courseByCode, defaultCourseFor, type CourseDef } from '@shared/courses';
 
 /**
  * Nivel por curso (docs/MULTILINGUAL_ONBOARDING_PLAN.md §4.2). Lógica pura, sin red.
@@ -26,10 +26,37 @@ export interface CourseProfile {
   interface_language?: string | null;
 }
 
-/** Curso de un idioma de destino para este perfil: el activo si es de ese idioma; si no, el por defecto. */
-export function courseForLanguage(profile: CourseProfile, language: string): CourseDef {
+/**
+ * Curso de un idioma de destino para este perfil, igual que user_course_for en la base
+ * (20270108120000_courses_per_language.sql): el activo si es de ese idioma; si no, el último elegido
+ * (o inscripto) de ese idioma; si no, el por defecto. Es el curso cuyas unidades devuelve la base al
+ * pedir ese idioma.
+ */
+export function courseForLanguage(
+  profile: CourseProfile,
+  language: string,
+  enrollments: readonly CourseEnrollment[] | null = null,
+): CourseDef {
   const active = activeCourseOf(profile);
-  return active.target === language ? active : defaultCourseFor(language);
+  if (active.target === language) return active;
+  let latest: { e: CourseEnrollment; course: CourseDef } | null = null;
+  for (const e of enrollments ?? []) {
+    const course = courseByCode(e.course_code);
+    if (course?.target !== language) continue;
+    if (!latest || newer(e, course, latest.e, latest.course)) latest = { e, course };
+  }
+  return latest?.course ?? defaultCourseFor(language);
+}
+
+/** Orden de user_course_for: last_selected_at desc nulls last, enrolled_at desc, código. */
+function newer(a: CourseEnrollment, ac: CourseDef, b: CourseEnrollment, bc: CourseDef): boolean {
+  if (a.last_selected_at !== b.last_selected_at) {
+    if (a.last_selected_at === null) return false;
+    if (b.last_selected_at === null) return true;
+    return Date.parse(a.last_selected_at) > Date.parse(b.last_selected_at);
+  }
+  if (a.enrolled_at !== b.enrolled_at) return Date.parse(a.enrolled_at) > Date.parse(b.enrolled_at);
+  return ac.code < bc.code;
 }
 
 export function courseStartLevel(
@@ -51,5 +78,5 @@ export function languageStartLevel(
   enrollments: readonly CourseEnrollment[] | null,
   language: string = profile.target_language,
 ): string {
-  return courseStartLevel(profile, enrollments, courseForLanguage(profile, language));
+  return courseStartLevel(profile, enrollments, courseForLanguage(profile, language, enrollments));
 }

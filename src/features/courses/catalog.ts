@@ -3,16 +3,21 @@ import {
   activeCourseOf,
   courseByCode,
   courseLanguage,
-  defaultCourseFor,
+  isCourseSelectable,
   selectableCoursesFor,
   type CourseDef,
   type SourceLanguage,
 } from '@shared/courses';
-import { isSelectable, type LanguageConfig } from '@shared/languages';
+import type { LanguageConfig } from '@shared/languages';
 
 import type { LevelProgress } from '@/features/profile/languageProgress';
 
-import { courseStartLevel, type CourseEnrollment, type CourseProfile } from './level';
+import {
+  courseForLanguage,
+  courseStartLevel,
+  type CourseEnrollment,
+  type CourseProfile,
+} from './level';
 
 /**
  * Lista de cursos de la pantalla «Tus cursos» (Fase 3, docs/MULTILINGUAL_ONBOARDING_PLAN.md). Lógica
@@ -57,7 +62,11 @@ export interface CourseListInput {
   profile: CourseProfile;
   /** null = migración sin aplicar (modelo anterior). */
   enrollments: readonly CourseEnrollment[] | null;
-  /** Progreso por idioma de destino (de useLanguageRows). Los que faltan se consideran sin empezar. */
+  /**
+   * Progreso por idioma de destino (de useLanguageRows). Los que faltan se consideran sin empezar. La
+   * base devuelve el camino de un idioma según su curso (user_course_for): el progreso es de ese curso
+   * (courseForLanguage), no de los otros cursos del mismo idioma.
+   */
   progressByLanguage: ReadonlyMap<string, { progress: LevelProgress | null; started: boolean }>;
   isTester: boolean;
 }
@@ -76,16 +85,19 @@ export function buildCourseList({
       course,
       language,
       active,
-      selectable: active || isSelectable(language, isTester),
+      selectable: active || isCourseSelectable(course, isTester),
       startLevel: courseStartLevel(profile, enrollments, course),
-      progress: progressByLanguage.get(course.target)?.progress ?? null,
+      progress:
+        courseForLanguage(profile, course.target, enrollments).code === course.code
+          ? (progressByLanguage.get(course.target)?.progress ?? null)
+          : null,
     };
   };
 
   const mineCodes = new Set<string>();
   for (const e of enrollments ?? []) if (courseByCode(e.course_code)) mineCodes.add(e.course_code);
   for (const [language, row] of progressByLanguage) {
-    if (row.started) mineCodes.add(defaultCourseFor(language).code);
+    if (row.started) mineCodes.add(courseForLanguage(profile, language, enrollments).code);
   }
   mineCodes.delete(activeCourse.code);
 

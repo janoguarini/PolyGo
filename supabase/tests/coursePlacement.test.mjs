@@ -3,7 +3,7 @@
 // curso ya empezado, validación contra lo publicado, errores atómicos, reintentos y rollback.
 import { test, describe, before } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 
 import { createDb, createUser, as } from './harness.mjs';
 
@@ -17,6 +17,10 @@ const rollbackSql = readFileSync(
 );
 const courseModelRollback = readFileSync(
   new URL('../rollback/20261223120000_course_model.down.sql', import.meta.url),
+  'utf8',
+);
+const coursesPerLanguageRollback = readFileSync(
+  new URL('../rollback/20270108120000_courses_per_language.down.sql', import.meta.url),
   'utf8',
 );
 const pending = (name) => readFileSync(new URL(`../pending/${name}`, import.meta.url), 'utf8');
@@ -429,7 +433,13 @@ describe('con el francés publicado y disponible (como en producción)', () => {
 
 describe('rollback', () => {
   test('quita start_course y la puntuación sin tocar niveles, progreso ni curso activo; se reaplica', async () => {
-    const db = await createDb();
+    // Hasta 20270108120000_courses_per_language: con contenido de otros cursos (en-from-pt…) su
+    // rollback se niega a propósito.
+    const db = await createDb({
+      files: readdirSync(new URL('../migrations/', import.meta.url))
+        .filter((f) => f.endsWith('.sql') && f <= '20270108120000_courses_per_language.sql')
+        .sort(),
+    });
     const u = await onboard(db, { language: 'it' });
     await start(db, u, 'en-from-es', 'A2', A2_RESULT);
     await complete(db, u, await firstLesson(db, 'en', 'A2'));
@@ -463,6 +473,8 @@ describe('rollback', () => {
     await db.exec(migrationSql);
     await db.exec(migrationSql); // idempotente
     assert.equal((await start(db, u, 'pt-from-es', 'A1')).created, true);
+    // Orden inverso: primero el rollback de 20270108120000_courses_per_language.
+    await db.exec(coursesPerLanguageRollback);
     await db.exec(rollbackSql);
     await db.exec(courseModelRollback);
     // Y el rollback de esta migración no falla sin la tabla.

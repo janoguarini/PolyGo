@@ -3,9 +3,10 @@ import { useFocusEffect } from 'expo-router';
 import { useCallback, useEffect } from 'react';
 import { AppState } from 'react-native';
 
+import type { CourseDef } from '@shared/courses';
+
 import { useAuth } from '@/features/auth/AuthProvider';
 import { coachKeys, fetchCoachStatus } from '@/features/coach/api';
-import { useMyProfile } from '@/features/profile/hooks';
 
 import {
   LearningSessionHttpError,
@@ -13,7 +14,7 @@ import {
   type ReviewFocus,
   type ServerReviewStart,
 } from './api';
-import { serverReviewQuery, useMyWords, wordPoolQuery } from './hooks';
+import { serverReviewQuery, useMyWords, useStudyCourse, wordPoolQuery } from './hooks';
 import { uuid } from './random';
 import {
   clearOpenReview,
@@ -49,10 +50,19 @@ export const newOpenReview = (): OpenReview => ({
 /** Una respuesta sin repaso («al día», sin contenido) se reutiliza sólo un rato: puede cambiar. */
 const EMPTY_FRESH_MS = 2 * 60_000;
 
-/** `${idioma}|${tipo}` → sesión precargada (en memoria: dura lo que la app abierta). */
+/**
+ * Ámbito de un repaso: el curso. Para los cursos por defecto es su idioma (así siguen valiendo las
+ * sesiones guardadas antes de que hubiera varios cursos por idioma); para los demás, su código
+ * (en-from-pt no retoma ni precarga el repaso de en-from-es). Se usa para la sesión precargada y para
+ * la guardada (serverReview.ts); el servidor sigue recibiendo el idioma.
+ */
+export const reviewScope = (course: CourseDef): string =>
+  course.isDefault ? course.target : course.code;
+
+/** `${ámbito}|${tipo}` → sesión precargada (en memoria: dura lo que la app abierta). */
 const warm = new Map<string, OpenReview>();
 const inflight = new Set<string>();
-const slot = (language: string, kind: string) => `${language}|${kind}`;
+const slot = (scope: string, kind: string) => `${scope}|${kind}`;
 
 /** ¿La precarga sigue sirviendo? Una sesión lista vale en el día; una vacía, unos minutos. */
 function usable(
@@ -77,17 +87,18 @@ export async function warmReview(
   qc: QueryClient,
   language: string,
   focus?: ReviewFocus,
+  scope: string = language,
 ): Promise<void> {
   if (focus?.kind === 'coach') return;
   const kind = reviewKind(focus);
-  const k = slot(language, kind);
+  const k = slot(scope, kind);
   if (inflight.has(k)) return;
   const have = warm.get(k);
   if (have && usable(qc, have, language, focus)) return;
   warm.delete(k);
   inflight.add(k);
   try {
-    let open = (await loadOpenReview(language, kind)) ?? newOpenReview();
+    let open = (await loadOpenReview(scope, kind)) ?? newOpenReview();
     let query = serverReviewQuery(open.sessionId, language, focus);
     // Un repaso en pantalla no se toca (volver a pedirlo cambiaría lo que se está jugando).
     if (qc.getQueryCache().find({ queryKey: query.queryKey })?.getObserversCount()) return;
@@ -99,7 +110,7 @@ export async function warmReview(
       qc.removeQueries({ queryKey: query.queryKey, exact: true });
       if (!(err instanceof LearningSessionHttpError && RESTART_CODES.has(err.code))) return;
       // La guardada ya se envió (otro dispositivo) o es de otro tipo: se empieza otra.
-      await clearOpenReview(language, kind);
+      await clearOpenReview(scope, kind);
       open = newOpenReview();
       query = serverReviewQuery(open.sessionId, language, focus);
       data = await qc.fetchQuery(query);
@@ -109,7 +120,7 @@ export async function warmReview(
       return;
     }
     // Recién cuando el servidor registró el plan se guarda para poder retomarlo (como review.tsx).
-    if (data.status === 'ok' && data.items.length > 0) await saveOpenReview(language, open, kind);
+    if (data.status === 'ok' && data.items.length > 0) await saveOpenReview(scope, open, kind);
     warm.set(k, open);
   } catch {
     // Sin red o el servidor no respondió: la pantalla lo pide al entrar, como siempre.
@@ -126,8 +137,9 @@ export function takeWarmReview(
   qc: QueryClient,
   language: string,
   focus?: ReviewFocus,
+  scope: string = language,
 ): OpenReview | undefined {
-  const k = slot(language, reviewKind(focus));
+  const k = slot(scope, reviewKind(focus));
   const open = warm.get(k);
   if (!open) return undefined;
   warm.delete(k);
@@ -135,14 +147,16 @@ export function takeWarmReview(
 }
 
 /** Precarga mientras la pantalla está a la vista (p. ej. la presentación del repaso inteligente). */
-export function useWarmReview(language: string | undefined, focus: ReviewFocus | null) {
+export function useWarmReview(course: CourseDef | undefined, focus: ReviewFocus | null) {
   const qc = useQueryClient();
   const key = focus ? reviewKind(focus) : null;
+  const language = course?.target;
+  const scope = course ? reviewScope(course) : undefined;
   useEffect(() => {
-    if (language && focus) void warmReview(qc, language, focus);
+    if (language && scope && focus) void warmReview(qc, language, focus, scope);
     // focus se identifica por su tipo (key): un objeto nuevo con el mismo foco no vuelve a precargar.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [qc, language, key]);
+  }, [qc, language, scope, key]);
 }
 
 /** Pausa antes de precargar: lo que está en pantalla carga primero. */
@@ -156,24 +170,27 @@ const IDLE_DELAY_MS = 600;
 export function useWarmNextSteps() {
   const qc = useQueryClient();
   const userId = useAuth().session?.user.id;
-  const language = useMyProfile().data?.profile.target_language;
+  const course = useStudyCourse();
+  const language = course?.target;
+  const courseCode = course?.code;
+  const scope = course ? reviewScope(course) : undefined;
   const words = useMyWords().data;
 
   const run = useCallback(() => {
-    if (!language) return;
+    if (!language || !courseCode) return;
     const now = Date.now();
     const due = (words ?? []).some(
       (e) => e.nextReviewAt && new Date(e.nextReviewAt).getTime() <= now,
     );
-    void qc.prefetchQuery(wordPoolQuery(language));
+    void qc.prefetchQuery(wordPoolQuery(language, courseCode));
     if (userId) {
       void qc.prefetchQuery({
         queryKey: coachKeys.status(userId),
         queryFn: fetchCoachStatus,
       });
     }
-    if (due) void warmReview(qc, language);
-  }, [qc, language, userId, words]);
+    if (due) void warmReview(qc, language, undefined, scope);
+  }, [qc, language, courseCode, scope, userId, words]);
 
   useFocusEffect(
     useCallback(() => {

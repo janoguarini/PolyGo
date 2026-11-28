@@ -163,12 +163,16 @@ describe('repasos del servidor en la app (fase 4)', () => {
     expect(reviewKind({ kind: 'smart' })).toBe('smart');
     expect(reviewKind({ kind: 'topic', unit_id: 'a1-u02' })).toBe('topic.a1-u02');
     // Coach: el orden de las unidades no cambia la sesión guardada.
-    expect(reviewKind({ kind: 'coach', unit_ids: ['a1-u03', 'a1-u01'] })).toBe('coach.a1-u01+a1-u03');
+    expect(reviewKind({ kind: 'coach', unit_ids: ['a1-u03', 'a1-u01'] })).toBe(
+      'coach.a1-u01+a1-u03',
+    );
     expect(await loadOpenReview('en', 'smart', at('2026-11-08T13:00:00Z'))).toBeNull();
     await saveOpenReview('en', { ...open, sessionId: 's2' }, 'smart');
     expect((await loadOpenReview('en', 'smart', at('2026-11-08T13:00:00Z')))?.sessionId).toBe('s2');
     await clearOpenReview('en', 'smart');
-    expect((await loadOpenReview('en', 'review', at('2026-11-08T13:00:00Z')))?.sessionId).toBe('s1');
+    expect((await loadOpenReview('en', 'review', at('2026-11-08T13:00:00Z')))?.sessionId).toBe(
+      's1',
+    );
   });
 
   test('P4: un error vuelve al final hasta 2 veces; las repeticiones no entran en el envío', () => {
@@ -241,7 +245,11 @@ describe('repasos del servidor en la app (fase 4)', () => {
 
 describe('fase 5: ítems de varios conceptos y contrato', () => {
   test('el ejercicio lleva todas las palabras del ítem y el mapa de palabras las incluye', () => {
-    const cat = { id: 'en-cat', text: 'cat', translation_es: 'gato' } as unknown as ReviewItem['word'];
+    const cat = {
+      id: 'en-cat',
+      text: 'cat',
+      translation_es: 'gato',
+    } as unknown as ReviewItem['word'];
     const multi = item(1, { words: [word, cat] });
     expect(reviewExercise(multi).wordIds).toEqual(['en-dog', 'en-cat']);
     expect(Object.keys(reviewSession([multi, item(2)]).words).sort()).toEqual(['en-cat', 'en-dog']);

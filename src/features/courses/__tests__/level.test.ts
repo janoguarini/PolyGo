@@ -25,7 +25,7 @@ const enrollment = (course_code: string, start_level: string): CourseEnrollment 
 });
 
 describe('catálogo de cursos (shared/courses.ts)', () => {
-  it('un curso por idioma, con el origen que dice su contenido', () => {
+  it('un curso por defecto por idioma, con el origen que dice su contenido; más los de inglés', () => {
     expect(COURSES.map((c) => c.code)).toEqual([
       'en-from-es',
       'fr-from-es',
@@ -33,6 +33,9 @@ describe('catálogo de cursos (shared/courses.ts)', () => {
       'pt-from-es',
       'zh-from-es',
       'es-from-en',
+      'en-from-pt',
+      'en-from-it',
+      'en-from-fr',
     ]);
     expect(new Set(COURSES.map((c) => c.target))).toEqual(new Set(LANGUAGES.map((l) => l.code)));
     expect(courseByCode('es-from-en')).toMatchObject({ target: 'es', source: 'en' });

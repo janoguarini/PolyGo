@@ -2,7 +2,9 @@ import { QueryClient } from '@tanstack/react-query';
 
 import { LearningSessionHttpError, startServerReview, type ServerReviewStart } from '../api';
 import { serverReviewQuery } from '../hooks';
-import { __resetWarmReviews, takeWarmReview, warmReview } from '../reviewWarmup';
+import { courseByCode } from '@shared/courses';
+
+import { __resetWarmReviews, reviewScope, takeWarmReview, warmReview } from '../reviewWarmup';
 import { loadOpenReview, saveOpenReview } from '../serverReview';
 
 jest.mock('expo-router', () => ({ useFocusEffect: jest.fn() }));
@@ -61,6 +63,24 @@ describe('precarga del repaso', () => {
     expect(qc.getQueryData(serverReviewQuery(sessionId, 'en').queryKey)).toEqual(ok(sessionId));
     // Se usa una sola vez.
     expect(takeWarmReview(qc, 'en')).toBeUndefined();
+  });
+
+  it('por curso: dos cursos de inglés no comparten la sesión precargada ni la guardada', async () => {
+    const fromEs = courseByCode('en-from-es')!;
+    const fromPt = courseByCode('en-from-pt')!;
+    // Los cursos por defecto siguen con la clave de su idioma (las sesiones guardadas siguen valiendo).
+    expect(reviewScope(fromEs)).toBe('en');
+    expect(reviewScope(fromPt)).toBe('en-from-pt');
+
+    await warmReview(qc, 'en', undefined, reviewScope(fromPt));
+    const [sessionId, language] = start.mock.calls[0]!;
+    // Al servidor se le sigue pidiendo el idioma.
+    expect(language).toBe('en');
+    expect((await loadOpenReview('en-from-pt'))?.sessionId).toBe(sessionId);
+    expect(await loadOpenReview('en')).toBeNull();
+    // Inglés desde español no se lleva el repaso de inglés desde portugués.
+    expect(takeWarmReview(qc, 'en', undefined, reviewScope(fromEs))).toBeUndefined();
+    expect(takeWarmReview(qc, 'en', undefined, reviewScope(fromPt))?.sessionId).toBe(sessionId);
   });
 
   it('precargar varias veces no vuelve a pedir el repaso', async () => {

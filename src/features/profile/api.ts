@@ -5,6 +5,7 @@ import type {
   SeasonRow,
   UserSettingsRow,
 } from '@/lib/database.types';
+import { setActiveCourse } from '@/features/courses/api';
 import type { FriendshipState } from '@/features/friends/api';
 import { requireSupabase } from '@/lib/supabase';
 
@@ -60,6 +61,11 @@ export interface OnboardingInput {
   targetLanguage: string;
   startLevel: string;
   dailyGoalMinutes: number;
+  /**
+   * Sólo si se eligió un curso que no es el por defecto de su idioma (p. ej. en-from-pt):
+   * complete_onboarding elige el por defecto y después se activa éste (set_active_course).
+   */
+  courseCode?: string;
 }
 
 export async function completeOnboarding(input: OnboardingInput): Promise<ProfileRow> {
@@ -71,6 +77,7 @@ export async function completeOnboarding(input: OnboardingInput): Promise<Profil
     p_daily_goal_minutes: input.dailyGoalMinutes,
   });
   if (error) throw error;
+  if (input.courseCode) await setActiveCourse(input.courseCode);
   return data;
 }
 

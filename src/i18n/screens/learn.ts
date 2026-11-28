@@ -6,8 +6,6 @@ export const learnStrings = defineStrings({
     loading: 'Cargando tu camino…',
     studying: (name: string, beta: boolean) => `Estudiando ${name}${beta ? ', beta' : ''}`,
     languagesHint: 'Muestra tus idiomas para cambiar de curso o agregar otro',
-    switchTo: (name: string) => `Cambiar a ${name}`,
-    addLanguage: 'Agregar otro idioma',
     streakA11y: (streak: number, activeToday: boolean, freezes: number) =>
       `Racha de ${streak} días${activeToday ? '' : ', todavía no estudiaste hoy'}${
         freezes ? `, ${freezes} ${freezes === 1 ? 'protector' : 'protectores'}` : ''
@@ -27,8 +25,6 @@ export const learnStrings = defineStrings({
     loading: 'Loading your path…',
     studying: (name: string, beta: boolean) => `Studying ${name}${beta ? ', beta' : ''}`,
     languagesHint: 'Shows your languages to switch courses or add another one',
-    switchTo: (name: string) => `Switch to ${name}`,
-    addLanguage: 'Add another language',
     streakA11y: (streak: number, activeToday: boolean, freezes: number) =>
       `${streak}-day streak${activeToday ? '' : ', you haven’t studied today yet'}${
         freezes ? `, ${freezes} ${freezes === 1 ? 'streak freeze' : 'streak freezes'}` : ''
@@ -48,8 +44,6 @@ export const learnStrings = defineStrings({
     loading: 'Carregando sua trilha…',
     studying: (name: string, beta: boolean) => `Estudando ${name}${beta ? ', beta' : ''}`,
     languagesHint: 'Mostra seus idiomas para trocar de curso ou adicionar outro',
-    switchTo: (name: string) => `Mudar para ${name}`,
-    addLanguage: 'Adicionar outro idioma',
     streakA11y: (streak: number, activeToday: boolean, freezes: number) =>
       `Sequência de ${streak} dias${activeToday ? '' : ', você ainda não estudou hoje'}${
         freezes ? `, ${freezes} ${freezes === 1 ? 'protetor' : 'protetores'}` : ''
@@ -69,8 +63,6 @@ export const learnStrings = defineStrings({
     loading: 'Caricamento del tuo percorso…',
     studying: (name: string, beta: boolean) => `Stai studiando ${name}${beta ? ', beta' : ''}`,
     languagesHint: 'Mostra le tue lingue per cambiare corso o aggiungerne un’altra',
-    switchTo: (name: string) => `Passa a ${name}`,
-    addLanguage: 'Aggiungi un’altra lingua',
     streakA11y: (streak: number, activeToday: boolean, freezes: number) =>
       `Serie di ${streak} giorni${activeToday ? '' : ', oggi non hai ancora studiato'}${
         freezes ? `, ${freezes} ${freezes === 1 ? 'protezione' : 'protezioni'}` : ''
@@ -85,5 +77,25 @@ export const learnStrings = defineStrings({
     myLesson: 'La mia lezione',
     noUnits: 'Non ci sono ancora unità pubblicate',
     cefr: 'Il contenuto usa il QCER come riferimento; completarlo non equivale a una certificazione ufficiale.',
+  },
+  fr: {
+    loading: 'Chargement de ton parcours…',
+    studying: (name: string, beta: boolean) => `Langue étudiée : ${name}${beta ? ', bêta' : ''}`,
+    languagesHint: 'Affiche tes langues pour changer de cours ou en ajouter une autre',
+    streakA11y: (streak: number, activeToday: boolean, freezes: number) =>
+      `Série de ${streak} ${streak <= 1 ? 'jour' : 'jours'}${activeToday ? '' : ', tu n’as pas encore étudié aujourd’hui'}${
+        freezes ? `, ${freezes} ${freezes === 1 ? 'protection' : 'protections'}` : ''
+      }`,
+    lostStreakA11y: (days: string) =>
+      `Tu as perdu ta série de ${days}. Récupère-la dans la boutique.`,
+    lostStreak: (days: string) => `Tu as perdu ta série de ${days}`,
+    recoverable: 'Tu peux encore la récupérer avec des Polys.',
+    missionsA11y: 'Tu as terminé les missions du jour. Ouvre ton coffre de Polys.',
+    missionsDone: 'Missions terminées !',
+    openChest: 'Ouvre ton coffre et gagne des Polys.',
+    goToLesson: 'Aller à ma leçon actuelle',
+    myLesson: 'Ma leçon',
+    noUnits: 'Aucune unité publiée pour l’instant',
+    cefr: 'Le contenu s’appuie sur le CECRL comme référence ; le terminer n’équivaut pas à une certification officielle.',
   },
 });

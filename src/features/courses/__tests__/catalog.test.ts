@@ -48,7 +48,7 @@ describe('lista de cursos (buildCourseList)', () => {
 
   it('ofrece los cursos disponibles agrupados por origen: primero el del curso activo', () => {
     const { available } = buildCourseList(input());
-    expect(available.map((g) => g.source)).toEqual(['es', 'en']);
+    expect(available.map((g) => g.source)).toEqual(['es', 'en', 'pt', 'it', 'fr']);
     expect(codes(available[0]!.courses)).toEqual([
       'fr-from-es',
       'it-from-es',
@@ -57,6 +57,12 @@ describe('lista de cursos (buildCourseList)', () => {
     ]);
     // El español se enseña desde el inglés: aparece en el grupo «desde inglés».
     expect(codes(available[1]!.courses)).toEqual(['es-from-en']);
+    // Inglés para hablantes de portugués, italiano y francés: uno por grupo.
+    expect(available.slice(2).map((g) => codes(g.courses))).toEqual([
+      ['en-from-pt'],
+      ['en-from-it'],
+      ['en-from-fr'],
+    ]);
   });
 
   it('un idioma «Próximamente» no se ofrece para empezar', () => {
@@ -104,6 +110,9 @@ describe('lista de cursos (buildCourseList)', () => {
       'fr-from-es',
       'pt-from-es',
       'es-from-en',
+      'en-from-pt',
+      'en-from-it',
+      'en-from-fr',
     ]);
   });
 
@@ -171,6 +180,7 @@ describe('lista de cursos (buildCourseList)', () => {
         enrollments: [
           ...['en', 'fr', 'it', 'pt', 'zh'].map((l) => enrollment(`${l}-from-es`, 'A1')),
           enrollment('es-from-en', 'A1'),
+          ...['pt', 'it', 'fr'].map((s) => enrollment(`en-from-${s}`, 'A1')),
         ],
       }),
     );

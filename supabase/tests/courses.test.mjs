@@ -5,13 +5,17 @@ import { test, describe, before } from 'node:test';
 import assert from 'node:assert/strict';
 import { readdirSync, readFileSync } from 'node:fs';
 
-import { COURSES } from '../../shared/courses.ts';
+import { COURSES, courseStatus } from '../../shared/courses.ts';
 import { createDb, createUser, as } from './harness.mjs';
 
 const MIGRATION = '20261223120000_course_model.sql';
 const migrationSql = readFileSync(new URL(`../migrations/${MIGRATION}`, import.meta.url), 'utf8');
 const rollbackSql = readFileSync(
   new URL('../rollback/20261223120000_course_model.down.sql', import.meta.url),
+  'utf8',
+);
+const coursesPerLanguageRollback = readFileSync(
+  new URL('../rollback/20270108120000_courses_per_language.down.sql', import.meta.url),
   'utf8',
 );
 const pending = (name) => readFileSync(new URL(`../pending/${name}`, import.meta.url), 'utf8');
@@ -74,28 +78,50 @@ const rejects = async (promise, code) => {
   });
 };
 
+/**
+ * Publicación de en-from-pt/it/fr (aplicada en producción el 2026-11-27): en migrations/ se crean
+ * ocultos (20270108120000_courses_per_language) y estos archivos los abren (status = 'available').
+ */
+const PUBLISH_EN_FROM = [
+  '20270111120000_publish_en_from_pt.sql',
+  '20270111120100_publish_en_from_it.sql',
+  '20270111120200_publish_en_from_fr.sql',
+];
+
 describe('catálogo', () => {
   let db;
   before(async () => {
     db = await createDb();
+    // Como producción: con los cursos de inglés para hablantes de pt/it/fr publicados.
+    for (const file of PUBLISH_EN_FROM) await db.exec(pending(file));
   });
 
-  test('public.courses es exactamente shared/courses.ts', async () => {
+  test('public.courses es exactamente shared/courses.ts (como en producción)', async () => {
     const { rows } = await db.query(
       `select code, target_language as target, source_language as source,
-              is_default as "isDefault", position from public.courses order by position`,
+              is_default as "isDefault", position, status from public.courses order by position`,
     );
     assert.deepEqual(
       rows,
-      COURSES.map((c) => ({ ...c })),
+      // Las columnas del espejo; status: el de la base (null = el del idioma) frente al del curso.
+      COURSES.map(({ code, target, source, isDefault, position, status }) => ({
+        code,
+        target,
+        source,
+        isDefault,
+        position,
+        status: status ?? null,
+      })),
     );
+    // Ninguno oculto: el espejo es el catálogo entero.
+    for (const c of COURSES) assert.notEqual(courseStatus(c), 'hidden', c.code);
   });
 
   test('un solo curso por defecto por idioma de destino, y cada idioma tiene el suyo', async () => {
     await rejects(
       db.query(
         `insert into public.courses (code, target_language, source_language, is_default, position)
-         values ('en-from-fr', 'en', 'fr', true, 9)`,
+         values ('en-from-zh', 'en', 'zh', true, 19)`,
       ),
       'courses_one_default_per_target',
     );
@@ -310,7 +336,7 @@ describe('RPC nuevos', () => {
     await rpc(db, u, `select public.set_interface_language('en')`);
     assert.equal((await profileOf(db, u)).interface_language, 'en');
     await rejects(
-      rpc(db, u, `select public.set_interface_language('fr')`),
+      rpc(db, u, `select public.set_interface_language('de')`),
       'interface_language_invalid',
     );
   });
@@ -348,7 +374,7 @@ describe('RPC nuevos', () => {
       );
     await rejects(call('es-from-en', 'A1', 'en'), 'course_unavailable');
     await rejects(call('it-from-es', 'A2', 'es'), 'level_unavailable');
-    await rejects(call('en-from-es', 'A1', 'fr'), 'interface_language_invalid');
+    await rejects(call('en-from-es', 'A1', 'de'), 'interface_language_invalid');
     await rejects(call('en-from-es', 'A1', 'es', 'Z9'), 'placement_level_invalid');
     await onboard(db);
     await rejects(
@@ -457,7 +483,9 @@ describe('RLS y permisos', () => {
 
   test('el catálogo se lee sin sesión y no se escribe', async () => {
     const { rows } = await as(db, 'anon', null, () => db.query('select code from public.courses'));
-    assert.equal(rows.length, 6);
+    // 6 cursos por defecto + en-from-pt/it/fr (20270108120000_courses_per_language; en esta base,
+    // sin las publicaciones de supabase/pending/, siguen ocultos pero se listan igual).
+    assert.equal(rows.length, 9);
     await rejects(
       rpc(db, u, `update public.courses set is_default = false where code = 'en-from-es'`),
       'permission denied',
@@ -478,7 +506,9 @@ describe('RLS y permisos', () => {
 
 describe('rollback', () => {
   test('vuelve al modelo anterior sin tocar el progreso, y se puede volver a aplicar', async () => {
-    const db = await createDb();
+    // Hasta 20270108120000_courses_per_language: con contenido de otros cursos (en-from-pt…) su
+    // rollback se niega a propósito.
+    const db = await createDb({ files: allMigrations.filter((f) => f <= '20270108120000_courses_per_language.sql') });
     const u = await onboard(db, { language: 'en', level: 'A2' });
     await complete(db, u, await firstLesson(db, 'en', 'A2'));
     await rpc(db, u, `select public.set_active_course('it-from-es')`);
@@ -487,6 +517,8 @@ describe('rollback', () => {
         .rows;
     const before = await progress();
 
+    // Orden inverso: primero el rollback de 20270108120000_courses_per_language.
+    await db.exec(coursesPerLanguageRollback);
     await db.exec(rollbackSql);
     await db.exec(rollbackSql); // idempotente
     const leftovers = await db.query(

@@ -3,6 +3,7 @@ import * as Haptics from 'expo-haptics';
 import { useCallback, useEffect, useRef } from 'react';
 
 import { BOT_CONFIG } from '@shared/bots';
+import { activeCourseOf } from '@shared/courses';
 import { WORD_RUSH, type BattleMode } from '@shared/protocol';
 import {
   generateQuestions,
@@ -15,8 +16,7 @@ import {
 
 import { useAuth } from '@/features/auth/AuthProvider';
 import { notifyBattleInvite } from '@/features/friends/push';
-import { fetchWordPool } from '@/features/learning/api';
-import { learningKeys } from '@/features/learning/hooks';
+import { wordPoolQuery } from '@/features/learning/hooks';
 import { useMyProfile } from '@/features/profile/hooks';
 import { playSound } from '@/lib/sounds';
 
@@ -94,11 +94,10 @@ export function useLocalBattleSession() {
         try {
           if (!profile?.username) throw new Error('onboarding_required');
           const language = profile.target_language;
-          const words = await queryClient.fetchQuery({
-            queryKey: learningKeys.pool(language),
-            queryFn: () => fetchWordPool(language),
-            staleTime: 30 * 60_000,
-          });
+          // Mismo banco (y misma caché por curso) que Práctica libre.
+          const words = await queryClient.fetchQuery(
+            wordPoolQuery(language, activeCourseOf(profile).code),
+          );
           // Fases C.7/C.8: sólo palabras publicadas de unidades que la base dice que puede usar (ruta
           // persistente con el nivel de esta build, publicadas y desbloqueadas). Las unidades se piden en
           // cada partida (el banco de palabras puede venir del caché); si la base no responde, no hay

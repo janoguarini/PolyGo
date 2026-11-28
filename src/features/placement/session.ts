@@ -1,6 +1,5 @@
 import type { AnswerVerdict } from '@shared/answers';
-import type { CourseDef } from '@shared/courses';
-import { languageConfig } from '@shared/languages';
+import { courseLevels, type CourseDef } from '@shared/courses';
 import {
   answerPlacement,
   createPlacement,
@@ -20,7 +19,7 @@ import { PLACEMENT_BANKS } from '../../../content/placement/banks.generated';
  */
 
 /**
- * Banco de un curso, acotado a los niveles publicados hoy (shared/languages.ts). null = el curso no
+ * Banco de un curso, acotado a los niveles publicados hoy del curso (shared/courses.ts). null = el curso no
  * tiene test (un solo nivel publicado o sin banco): empieza en A1.
  */
 export function placementBankFor(
@@ -29,7 +28,7 @@ export function placementBankFor(
 ): PlacementBank | null {
   const bank = banks[course.code];
   if (!bank) return null;
-  const limited = limitBankToLevels(bank, languageConfig(course.target).levels);
+  const limited = limitBankToLevels(bank, courseLevels(course));
   return placementUseful(limited) ? limited : null;
 }
 

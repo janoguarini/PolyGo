@@ -41,7 +41,10 @@ describe('dialogueVoices', () => {
   it('la misma voz en otra calidad (iOS) o en red y local (Android) no es una segunda voz', () => {
     const ios = dialogueVoices(
       [
-        { ...voice('com.apple.voice.enhanced.en-US.Samantha', 'en-US', 'Enhanced'), name: 'Samantha (Enhanced)' },
+        {
+          ...voice('com.apple.voice.enhanced.en-US.Samantha', 'en-US', 'Enhanced'),
+          name: 'Samantha (Enhanced)',
+        },
         { ...voice('com.apple.voice.compact.en-US.Samantha'), name: 'Samantha' },
       ],
       'en-US',
@@ -74,7 +77,6 @@ describe('dialogueVoices', () => {
     expect(v).toMatchObject({ available: false, distinct: false });
   });
 });
-
 
 describe('speakDialogue', () => {
   beforeEach(() => {

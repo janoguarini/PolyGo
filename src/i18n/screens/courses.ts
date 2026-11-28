@@ -7,6 +7,12 @@ import { defineStrings } from '..';
 const lower = (s: string) => s.toLocaleLowerCase('es');
 const lowerPt = (s: string) => s.toLocaleLowerCase('pt-BR');
 const lowerIt = (s: string) => s.toLocaleLowerCase('it');
+const lowerFr = (s: string) => s.toLocaleLowerCase('fr');
+/** «l’anglais», «le français»: el artículo francés según la primera letra. */
+const theFr = (s: string) => {
+  const name = lowerFr(s);
+  return /^[aeiouyéèêh]/.test(name) ? `l’${name}` : `le ${name}`;
+};
 export const coursesStrings = defineStrings({
   es: {
     title: 'Tus cursos',
@@ -22,11 +28,8 @@ export const coursesStrings = defineStrings({
     xpNote: 'Tu XP y tu nivel de jugador son los mismos en todos los cursos.',
     myCourses: 'MIS CURSOS',
     available: 'EMPEZAR UN CURSO NUEVO',
-    forSpeakers: (source: string) => `Para hablantes de ${lower(source)}`,
-    startsAtA1: 'Empiezas desde A1',
     unavailable: 'No disponible por ahora',
     switching: 'Cambiando…',
-    noMoreCourses: 'Ya estás en todos los cursos disponibles. ¡Pronto llegan más!',
     switchErrorTitle: 'No pudimos cambiar de curso',
     switchErrorMessage: 'Tu progreso está a salvo. Vuelve a intentarlo en un rato.',
     activeA11y: (target: string, source: string, level: string) =>
@@ -36,10 +39,6 @@ export const coursesStrings = defineStrings({
         ? `${target} desde ${lower(source)}, nivel ${level}`
         : `${target} desde ${lower(source)}, nivel ${level}, ${percent} por ciento`,
     switchHint: 'Pasa a estudiar este curso. El progreso de cada curso se conserva.',
-    startHint: 'Empieza este curso desde A1. Tus otros cursos no cambian.',
-    startsWithTest: 'Test de nivel o desde A1',
-    startWithTestHint:
-      'Elige entre hacer el test de nivel o empezar desde A1. Tus otros cursos no cambian.',
   },
   en: {
     title: 'Your courses',
@@ -55,11 +54,8 @@ export const coursesStrings = defineStrings({
     xpNote: 'Your XP and player level are shared across all your courses.',
     myCourses: 'MY COURSES',
     available: 'START A NEW COURSE',
-    forSpeakers: (source: string) => `For ${source} speakers`,
-    startsAtA1: 'Starts at A1',
     unavailable: 'Not available right now',
     switching: 'Switching…',
-    noMoreCourses: 'You’re already in every available course. More are coming soon!',
     switchErrorTitle: 'We couldn’t switch courses',
     switchErrorMessage: 'Your progress is safe. Try again in a bit.',
     activeA11y: (target: string, source: string, level: string) =>
@@ -69,10 +65,6 @@ export const coursesStrings = defineStrings({
         ? `${target} from ${source}, level ${level}`
         : `${target} from ${source}, level ${level}, ${percent} percent`,
     switchHint: 'Switches to this course. Each course keeps its own progress.',
-    startHint: 'Starts this course at A1. Your other courses don’t change.',
-    startsWithTest: 'Placement test or start at A1',
-    startWithTestHint:
-      'Choose between taking the placement test or starting at A1. Your other courses don’t change.',
   },
   'pt-BR': {
     title: 'Seus cursos',
@@ -88,11 +80,8 @@ export const coursesStrings = defineStrings({
     xpNote: 'Seu XP e seu nível de jogador são os mesmos em todos os cursos.',
     myCourses: 'MEUS CURSOS',
     available: 'COMEÇAR UM CURSO NOVO',
-    forSpeakers: (source: string) => `Para falantes de ${lowerPt(source)}`,
-    startsAtA1: 'Começa do A1',
     unavailable: 'Indisponível no momento',
     switching: 'Trocando…',
-    noMoreCourses: 'Você já está em todos os cursos disponíveis. Em breve chegam mais!',
     switchErrorTitle: 'Não conseguimos trocar de curso',
     switchErrorMessage: 'Seu progresso está seguro. Tente de novo daqui a pouco.',
     activeA11y: (target: string, source: string, level: string) =>
@@ -102,10 +91,6 @@ export const coursesStrings = defineStrings({
         ? `${target} a partir do ${lowerPt(source)}, nível ${level}`
         : `${target} a partir do ${lowerPt(source)}, nível ${level}, ${percent} por cento`,
     switchHint: 'Passa a estudar este curso. O progresso de cada curso é mantido.',
-    startHint: 'Começa este curso do A1. Seus outros cursos não mudam.',
-    startsWithTest: 'Teste de nível ou do A1',
-    startWithTestHint:
-      'Escolha entre fazer o teste de nível ou começar do A1. Seus outros cursos não mudam.',
   },
   it: {
     title: 'I tuoi corsi',
@@ -121,11 +106,8 @@ export const coursesStrings = defineStrings({
     xpNote: 'I tuoi XP e il tuo livello giocatore sono gli stessi in tutti i corsi.',
     myCourses: 'I MIEI CORSI',
     available: 'INIZIA UN NUOVO CORSO',
-    forSpeakers: (source: string) => `Per chi parla ${lowerIt(source)}`,
-    startsAtA1: 'Si parte da A1',
     unavailable: 'Non disponibile per ora',
     switching: 'Cambio in corso…',
-    noMoreCourses: 'Sei già iscritto a tutti i corsi disponibili. Presto ne arriveranno altri!',
     switchErrorTitle: 'Non siamo riusciti a cambiare corso',
     switchErrorMessage: 'I tuoi progressi sono al sicuro. Riprova tra poco.',
     activeA11y: (target: string, source: string, level: string) =>
@@ -135,9 +117,31 @@ export const coursesStrings = defineStrings({
         ? `${target} per chi parla ${lowerIt(source)}, livello ${level}`
         : `${target} per chi parla ${lowerIt(source)}, livello ${level}, ${percent} per cento`,
     switchHint: 'Passa a questo corso. Ogni corso mantiene i suoi progressi.',
-    startHint: 'Inizia questo corso da A1. Gli altri tuoi corsi non cambiano.',
-    startsWithTest: 'Test di livello o da A1',
-    startWithTestHint:
-      'Scegli se fare il test di livello o iniziare da A1. Gli altri tuoi corsi non cambiano.',
+  },
+  fr: {
+    title: 'Tes cours',
+    loading: 'Chargement de tes cours…',
+    loadError: 'Impossible de charger tes cours.',
+    progressError: 'Impossible de charger ta progression. Touche pour réessayer.',
+    studyingNow: 'TU APPRENDS',
+    fromLanguage: (source: string) => `depuis ${theFr(source)}`,
+    levelProgress: (level: string, done: number, total: number) =>
+      `Niveau ${level} · ${done} leçons sur ${total}`,
+    levelOnly: (level: string) => `Niveau ${level}`,
+    keepLearning: 'Continuer à apprendre',
+    xpNote: 'Tes XP et ton niveau de joueur sont les mêmes dans tous tes cours.',
+    myCourses: 'MES COURS',
+    available: 'COMMENCER UN NOUVEAU COURS',
+    unavailable: 'Pas disponible pour l’instant',
+    switching: 'Changement…',
+    switchErrorTitle: 'Impossible de changer de cours',
+    switchErrorMessage: 'Ta progression est en sécurité. Réessaie dans un moment.',
+    activeA11y: (target: string, source: string, level: string) =>
+      `Cours actuel : ${target} depuis ${theFr(source)}, niveau ${level}`,
+    courseA11y: (target: string, source: string, level: string, percent: number | null) =>
+      percent === null
+        ? `${target} depuis ${theFr(source)}, niveau ${level}`
+        : `${target} depuis ${theFr(source)}, niveau ${level}, ${percent} pour cent`,
+    switchHint: 'Passe à ce cours. Chaque cours garde sa propre progression.',
   },
 });

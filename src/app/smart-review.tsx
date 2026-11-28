@@ -30,7 +30,7 @@ import {
   spacing,
   themedStyles,
 } from '@/design-system';
-import { useCurriculum, useMyWords, useStudyLanguage } from '@/features/learning/hooks';
+import { useCurriculum, useMyWords, useStudyCourse } from '@/features/learning/hooks';
 import type { ReviewFocus } from '@/features/learning/api';
 import { useWarmReview } from '@/features/learning/reviewWarmup';
 import { usePlus } from '@/features/plus/api';
@@ -63,7 +63,7 @@ export default function SmartReviewScreen() {
   const words = useMyWords();
   const curriculum = useCurriculum();
   const plus = usePlus();
-  const language = useStudyLanguage();
+  const course = useStudyCourse();
   const [now] = useState(() => Date.now());
 
   const preview = useMemo(
@@ -72,10 +72,7 @@ export default function SmartReviewScreen() {
   );
 
   // Con Plus y algo para trabajar, el repaso inteligente se prepara mientras leés la presentación.
-  useWarmReview(
-    language.code,
-    plus === true && preview.length > 0 ? SMART_FOCUS : null,
-  );
+  useWarmReview(course, plus === true && preview.length > 0 ? SMART_FOCUS : null);
 
   if (words.isPending || curriculum.isPending) return <LoadingState />;
   if (words.isError || !words.data) {

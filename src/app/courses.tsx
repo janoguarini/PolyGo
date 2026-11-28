@@ -1,6 +1,7 @@
 import * as Haptics from 'expo-haptics';
 import { router } from 'expo-router';
-import { ChevronRight, Sparkles } from 'lucide-react-native';
+import { ChevronRight, Plus, Sparkles } from 'lucide-react-native';
+import { useMemo, useState } from 'react';
 import { Alert, Pressable, StyleSheet, View } from 'react-native';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 
@@ -21,48 +22,67 @@ import {
   themedStyles,
 } from '@/design-system';
 import type { CourseEntry } from '@/features/courses/catalog';
+import { CoursePicker } from '@/features/courses/CoursePicker';
 import { useSwitchCourse } from '@/features/courses/hooks';
+import { buildCoursePicker, type PickerCourse } from '@/features/courses/picker';
+import { coursePickerStrings } from '@/features/courses/strings';
 import { useCourseList } from '@/features/courses/useCourseList';
-import { placementBankFor } from '@/features/placement/session';
 import { levelColor } from '@/features/profile/levelColor';
 import { usePrefetchLanguagePaths } from '@/features/profile/components/LanguagesRow';
-import { useStrings } from '@/i18n';
+import { useInterfaceLanguage, useStrings } from '@/i18n';
 import { useLanguageName } from '@/i18n/languages';
 import { coursesStrings } from '@/i18n/screens/courses';
 
 /**
  * Tus cursos (Fase 3, docs/MULTILINGUAL_ONBOARDING_PLAN.md): el curso que estudiás, desde qué idioma y
- * su nivel; tus otros cursos con su propio nivel y progreso; y los cursos disponibles para empezar,
- * agrupados por idioma de origen. Cambiar de curso no borra ni mezcla nada: cada curso conserva su
- * nivel, progreso, repasos y ELO, y el XP es global. Un curso nuevo abre «Empezar un curso nuevo»
- * (src/app/course-start/[code].tsx, Fase 4): test de nivel o desde A1.
+ * su nivel, y tus otros cursos con su propio nivel y progreso (se llega tocando el idioma en Aprender o
+ * desde Perfil). «Agregar curso» abre el selector agrupado por idioma de origen (CoursePicker, el mismo
+ * del registro): tocar un curso tuyo te pasa a ese curso; uno nuevo abre «Empezar un curso nuevo»
+ * (src/app/course-start/[code].tsx, Fase 4): test de nivel o desde A1. Cambiar de curso no borra ni
+ * mezcla nada: cada curso conserva su nivel, progreso, repasos y ELO, y el XP es global.
  */
 export default function CoursesScreen() {
   const styles = useStyles();
   const t = useStrings(coursesStrings);
+  const pt = useStrings(coursePickerStrings);
+  const ui = useInterfaceLanguage();
   const languageName = useLanguageName();
-  const { list, isPending, isError, progressError, refetch } = useCourseList();
+  const { list, isTester, isPending, isError, progressError, refetch } = useCourseList();
   const switchCourse = useSwitchCourse();
+  const [adding, setAdding] = useState(false);
   usePrefetchLanguagePaths(list?.active.course.target);
+  const sections = useMemo(
+    () =>
+      list
+        ? buildCoursePicker({
+            ui,
+            isTester,
+            mine: new Set(list.mine.map((e) => e.course.code)),
+            activeCode: list.active.course.code,
+          })
+        : [],
+    [list, ui, isTester],
+  );
 
   if (isPending) return <LoadingState label={t.loading} />;
   if (isError || !list) return <ErrorState message={t.loadError} onRetry={refetch} />;
 
-  // Un curso nuevo se empieza eligiendo por dónde (test de nivel o desde A1): Fase 4.
-  const startNew = (entry: CourseEntry) => {
-    if (!entry.selectable) return;
-    void Haptics.selectionAsync();
-    router.push({ pathname: '/course-start/[code]', params: { code: entry.course.code } });
-  };
-
-  const choose = (entry: CourseEntry) => {
+  const choose = (entry: CourseEntry, haptic = true) => {
     if (entry.active || !entry.selectable || switchCourse.isPending) return;
-    void Haptics.selectionAsync();
+    if (haptic) void Haptics.selectionAsync();
     switchCourse.mutate(entry.course, {
       onError: () => Alert.alert(t.switchErrorTitle, t.switchErrorMessage),
     });
     // El cambio es optimista: Aprender ya muestra el curso nuevo.
     router.back();
+  };
+
+  // El selector ya vibra al tocar: tus cursos se eligen, uno nuevo abre por dónde empezar.
+  const pick = (c: PickerCourse) => {
+    if (c.active) return router.back();
+    const entry = list.mine.find((e) => e.course.code === c.course.code);
+    if (entry) return choose(entry, false);
+    router.push({ pathname: '/course-start/[code]', params: { code: c.course.code } });
   };
 
   const { active } = list;
@@ -152,29 +172,26 @@ export default function CoursesScreen() {
         </>
       ) : null}
 
-      <Text variant="overline" style={styles.section}>
-        {t.available}
-      </Text>
-      {list.available.length === 0 ? (
-        <Text variant="caption">{t.noMoreCourses}</Text>
+      {adding ? (
+        <Animated.View entering={FadeInDown.duration(250)} style={styles.picker}>
+          <Text variant="overline" style={styles.section}>
+            {t.available}
+          </Text>
+          <CoursePicker sections={sections} onPick={pick} />
+        </Animated.View>
       ) : (
-        list.available.map((group) => (
-          <View key={group.source} style={styles.group}>
-            <Text variant="bodyStrong" color="textStrong">
-              {languageConfig(group.source).flag} {t.forSpeakers(languageName(group.source))}
-            </Text>
-            {group.courses.map((entry) => (
-              <CourseRow
-                key={entry.course.code}
-                entry={entry}
-                onPress={() => startNew(entry)}
-                detail={placementBankFor(entry.course) ? t.startsWithTest : t.startsAtA1}
-                hint={placementBankFor(entry.course) ? t.startWithTestHint : t.startHint}
-                fresh
-              />
-            ))}
-          </View>
-        ))
+        <Button
+          label={pt.addCourse}
+          variant="secondary"
+          size="lg"
+          accessibilityHint={pt.addCourseHint}
+          icon={<Plus color={colors.primaryBright} size={18} strokeWidth={2.6} />}
+          style={styles.add}
+          onPress={() => {
+            void Haptics.selectionAsync();
+            setAdding(true);
+          }}
+        />
       )}
     </Screen>
   );
@@ -185,15 +202,12 @@ function CourseRow({
   onPress,
   detail,
   hint,
-  fresh,
 }: {
   entry: CourseEntry;
   onPress: () => void;
   /** Línea extra (p. ej. «Empezás desde A1»); null = el progreso del nivel. */
   detail: string | null;
   hint: string;
-  /** Curso para empezar: sin barra de progreso. */
-  fresh?: boolean;
 }) {
   const styles = useStyles();
   const t = useStrings(coursesStrings);
@@ -201,7 +215,7 @@ function CourseRow({
   const target = languageName(entry.course.target);
   const source = languageName(entry.course.source);
   const level = entry.progress?.level ?? entry.startLevel;
-  const percent = !fresh && entry.progress ? Math.round(entry.progress.ratio * 100) : null;
+  const percent = entry.progress ? Math.round(entry.progress.ratio * 100) : null;
   return (
     <Pressable
       accessibilityRole="button"
@@ -266,7 +280,8 @@ const useStyles = themedStyles(() =>
   StyleSheet.create({
     flex: { flex: 1 },
     section: { marginTop: spacing.lg },
-    group: { gap: spacing.sm },
+    picker: { gap: spacing.sm },
+    add: { marginTop: spacing.lg },
     heroRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
     heroFlag: {
       width: 64,

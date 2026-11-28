@@ -14,8 +14,8 @@ import { useState, type ReactNode } from 'react';
 import { Alert, Image, Pressable, StyleSheet, View, type ImageSourcePropType } from 'react-native';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 
-import { courseByCode, courseLanguage } from '@shared/courses';
-import { isSelectable, languageConfig } from '@shared/languages';
+import { courseByCode, courseLanguage, courseLevels, isCourseSelectable } from '@shared/courses';
+import { languageConfig } from '@shared/languages';
 import { maxQuestions } from '@shared/placement';
 
 import {
@@ -76,10 +76,12 @@ export default function CourseStartScreen() {
   if (courses.isError) return <ErrorState onRetry={() => void courses.refetch()} />;
 
   const language = courseLanguage(course);
+  const levels = courseLevels(course);
   const target = languageName(course.target);
   const source = languageName(course.source);
-  const firstLevel = language.levels[0];
-  if (!firstLevel || !isSelectable(language, tester.data ?? false)) {
+  // Niveles y disponibilidad del curso (un curso oculto no se empieza ni por enlace).
+  const firstLevel = levels[0];
+  if (!firstLevel || !isCourseSelectable(course, tester.data ?? false)) {
     return (
       <Screen edges={['top', 'bottom']}>
         <ScreenHeader title={t.title} onBack={() => router.back()} />
@@ -196,7 +198,7 @@ export default function CourseStartScreen() {
         <Fact
           icon={<Layers color={colors.primaryBright} size={18} />}
           label={t.levelsLabel}
-          value={language.levels.join(' – ')}
+          value={levels.join(' – ')}
         />
         <Fact
           icon={<Swords color={language.ranked ? colors.gold : colors.textMuted} size={18} />}

@@ -1,6 +1,6 @@
 import * as Haptics from 'expo-haptics';
 import { ChevronLeft } from 'lucide-react-native';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Pressable, StyleSheet, Text as RNText, View } from 'react-native';
 import Animated, { FadeInDown, FadeInRight } from 'react-native-reanimated';
 
@@ -11,8 +11,8 @@ import {
   usernameSchema,
   type DailyGoalMinutes,
 } from '@shared/profile';
-import { defaultCourseFor } from '@shared/courses';
-import { VISIBLE_LANGUAGES, isSelectable, languageConfig } from '@shared/languages';
+import { courseLanguage, courseLevels } from '@shared/courses';
+import { DEFAULT_LANGUAGE } from '@shared/languages';
 
 import {
   Button,
@@ -33,7 +33,9 @@ import { PlayerCard } from '@/features/onboarding/signup/PlayerCard';
 import { STARTER_SKIN, SkinPicker } from '@/features/onboarding/signup/SkinPicker';
 import { UsernameField } from '@/features/onboarding/signup/UsernameField';
 import { WelcomeHero } from '@/features/onboarding/signup/WelcomeHero';
+import { CoursePicker } from '@/features/courses/CoursePicker';
 import { useChooseInterfaceLanguage } from '@/features/courses/hooks';
+import { buildCoursePicker } from '@/features/courses/picker';
 import { signupStrings } from '@/features/onboarding/signup/strings';
 import { isUsernameAvailable } from '@/features/profile/api';
 import { useCompleteOnboarding } from '@/features/profile/hooks';
@@ -60,7 +62,9 @@ import { playSound } from '@/lib/sounds';
  * avatar va antes que el nombre para que la tarjeta se vea completa mientras escribís.
  *
  * Todo el texto sale de signupStrings en el idioma de la interfaz, que se puede cambiar en la
- * bienvenida (arranca con el del teléfono). El idioma a aprender no viene elegido de antemano.
+ * bienvenida (arranca con el del teléfono). El curso a aprender no viene elegido de antemano: se elige
+ * en el selector agrupado por idioma de origen (CoursePicker), con abierta la sección del idioma de la
+ * interfaz.
  */
 const STEPS = ['welcome', 'language', 'level', 'goal', 'avatar', 'username'] as const;
 type Step = (typeof STEPS)[number];
@@ -73,21 +77,12 @@ const POSES: Record<Exclude<Step, 'welcome'>, MascotPose> = {
   username: 'pointDown',
 };
 
-/** Idioma de los cursos que coincide con el de la interfaz (no se ofrece aprender el propio). */
-const OWN_LANGUAGE: Record<InterfaceLanguage, string> = {
-  es: 'es',
-  en: 'en',
-  'pt-BR': 'pt',
-  it: 'it',
-};
-
 /**
- * Idiomas que se muestran al registrarse con la interfaz en `ui`: todos los visibles menos el propio
- * (los «Próximamente» se ven bloqueados; los beta, sólo desde Perfil). Cada curso dice en qué idioma
- * se explica cuando no es el de la interfaz.
+ * Cursos que se ofrecen al registrarse con la interfaz en `ui`, por idioma de origen (picker.ts):
+ * sólo los disponibles para todos (los beta, desde «Tus cursos»).
  */
-export function onboardingLanguages(ui: InterfaceLanguage) {
-  return VISIBLE_LANGUAGES.filter((l) => l.code !== OWN_LANGUAGE[ui]);
+export function onboardingCourses(ui: InterfaceLanguage) {
+  return buildCoursePicker({ ui });
 }
 
 /** Emoji y fuerza (1–6 barras) de cada nivel. */
@@ -113,11 +108,9 @@ export default function OnboardingScreen() {
   const ui = useInterfaceLanguage();
   const languageName = useLanguageName();
   const chooseLanguage = useChooseInterfaceLanguage();
-  // Dentro de una frase el idioma va en minúscula salvo en inglés («Explicado en español»).
-  const inSentence = (name: string) => (ui === 'en' ? name : name.toLocaleLowerCase(LOCALES[ui]));
   const [stepIndex, setStepIndex] = useState(0);
-  // Sin idioma preelegido: nadie viene a aprender inglés por defecto.
-  const [language, setLanguage] = useState<string | null>(null);
+  // Sin curso preelegido: nadie viene a aprender inglés por defecto.
+  const [courseCode, setCourseCode] = useState<string | null>(null);
   const [level, setLevel] = useState<string>('A1');
   const [goal, setGoal] = useState<DailyGoalMinutes>(10);
   const [username, setUsername] = useState('');
@@ -134,15 +127,14 @@ export default function OnboardingScreen() {
   const isWelcome = step === 'welcome';
   // El paso de bienvenida no cuenta en la barra de progreso.
   const progress = stepIndex / (STEPS.length - 1);
-  // En cada idioma sólo se elige un nivel con contenido.
-  const choices = onboardingLanguages(ui);
-  // Si se cambia el idioma de la app y el elegido deja de ofrecerse (p. ej. Italiano → interfaz it).
+  // En cada curso sólo se elige un nivel con contenido.
+  const sections = useMemo(() => onboardingCourses(ui), [ui]);
+  // Si se cambia el idioma de la app y el elegido deja de ofrecerse, no queda elegido.
   const chosen =
-    language && choices.some((l) => l.code === language && isSelectable(l, false))
-      ? language
-      : null;
-  const lang = languageConfig(chosen);
-  const levelOpen = (id: string, available: boolean) => available && lang.levels.includes(id);
+    sections.flatMap((s) => s.courses).find((c) => c.course.code === courseCode)?.course ?? null;
+  const lang = chosen ? courseLanguage(chosen) : DEFAULT_LANGUAGE;
+  const levels = chosen ? courseLevels(chosen) : lang.levels;
+  const levelOpen = (id: string, available: boolean) => available && levels.includes(id);
   const comingNext = nextStartLevel(level);
   const canContinue = step !== 'language' || chosen !== null;
   const bubble = isWelcome
@@ -189,14 +181,17 @@ export default function OnboardingScreen() {
         {
           username: parsed.data,
           avatarId: avatar,
-          targetLanguage: chosen,
+          targetLanguage: chosen.target,
           startLevel: level,
           dailyGoalMinutes: goal,
+          // Un curso que no es el por defecto de su idioma (p. ej. inglés para hablantes de portugués).
+          ...(chosen.isDefault ? {} : { courseCode: chosen.code }),
         },
         {
           onSuccess: () => {
             track('onboarding_completed', {
-              language: chosen,
+              language: chosen.target,
+              course: chosen.code,
               level,
               daily_goal_minutes: goal,
               suggested_username: usedSuggestion,
@@ -291,43 +286,16 @@ export default function OnboardingScreen() {
         )}
 
         {step === 'language' && (
-          // Al registrarse se eligen los idiomas disponibles para todos (los beta, sólo desde Perfil).
-          <View style={styles.grid}>
-            {choices.map((l, i) => {
-              const name = languageName(l.code);
-              const source = defaultCourseFor(l.code).source;
-              const explained =
-                source !== OWN_LANGUAGE[ui] ? t.taughtFrom(inSentence(languageName(source))) : null;
-              return (
-                <Animated.View
-                  key={l.code}
-                  entering={FadeInDown.delay(80 + i * 60).springify()}
-                  style={styles.half}
-                >
-                  <OptionTile
-                    accessibilityLabel={explained ? `${name}, ${explained}` : name}
-                    selected={chosen === l.code}
-                    disabled={!isSelectable(l, false)}
-                    onPress={() => {
-                      setLanguage(l.code);
-                      if (!languageConfig(l.code).levels.includes(level)) setLevel('A1');
-                    }}
-                    contentStyle={styles.langTile}
-                  >
-                    <RNText style={styles.flag}>{l.flag}</RNText>
-                    <Text variant="bodyStrong" color="textStrong">
-                      {name}
-                    </Text>
-                    {explained ? (
-                      <Text variant="caption" color="textMuted" align="center">
-                        {explained}
-                      </Text>
-                    ) : null}
-                  </OptionTile>
-                </Animated.View>
-              );
-            })}
-          </View>
+          // Agrupado por idioma de origen: arriba y abierta, la sección del idioma de la interfaz.
+          <CoursePicker
+            key={ui}
+            sections={sections}
+            selectedCode={chosen?.code ?? null}
+            onPick={(c) => {
+              setCourseCode(c.course.code);
+              if (!c.levels.includes(level)) setLevel('A1');
+            }}
+          />
         )}
 
         {step === 'level' && (
@@ -421,7 +389,7 @@ export default function OnboardingScreen() {
               avatarId={avatar}
               username={username}
               flag={lang.flag}
-              languageName={chosen ? languageName(chosen) : ''}
+              languageName={chosen ? languageName(chosen.target) : ''}
               level={level}
               goal={goal}
             />

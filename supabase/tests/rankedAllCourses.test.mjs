@@ -29,6 +29,15 @@ const PUBLISHED = [
   '20261203130000_enable_fr.sql',
   '20261205120000_publish_es_a1_a2.sql',
 ];
+/**
+ * Publicados en producción después de esta migración (2026-11-27): inglés para hablantes de
+ * portugués, italiano y francés, que shared/courses.ts ya da por abiertos.
+ */
+const PUBLISHED_AFTER = [
+  '20270111120000_publish_en_from_pt.sql',
+  '20270111120100_publish_en_from_it.sql',
+  '20270111120200_publish_en_from_fr.sql',
+];
 const rollbackSql = readFileSync(
   new URL(`../rollback/20261226120000_ranked_all_courses.down.sql`, import.meta.url),
   'utf8',
@@ -266,6 +275,7 @@ describe('Ranked por curso, después de la migración', () => {
   before(async () => {
     db = await productionLike();
     await db.exec(pending(MIGRATION));
+    for (const file of PUBLISHED_AFTER) await db.exec(pending(file));
   });
 
   test('cada curso se puede activar y crea su propio rating (los otros no cambian)', async () => {
@@ -502,6 +512,9 @@ describe('Ranked por curso, después de la migración', () => {
       enrolled.map((e) => [e.course_code, e.start_level, e.placement_level]),
       [
         ['en-from-es', 'A1', null],
+        ['en-from-fr', 'A2', 'A2'],
+        ['en-from-it', 'A2', 'A2'],
+        ['en-from-pt', 'A2', 'A2'],
         ['es-from-en', 'A2', 'A2'],
         ['fr-from-es', 'A2', 'A2'],
         ['it-from-es', 'A2', 'A2'],
