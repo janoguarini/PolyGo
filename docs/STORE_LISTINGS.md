@@ -25,17 +25,17 @@ Los límites de cada campo los comprueba `scripts/check-store-listings.ts`. Ning
 | Nome (30) | PolyGo: Aprenda inglês |
 | Subtítulo (30) | Inglês jogando e competindo |
 | Palavras-chave (100) | idiomas,curso,vocabulario,gramatica,pronuncia,conversacao,duelo,ranking,iniciante,falar,licoes |
-| Texto promocional (170) | Aprenda inglês do zero ao B1 com lições curtas e desafie jogadores do mundo todo em duelos de 60 segundos. Tudo explicado em português. |
+| Texto promocional (170) | Aprenda inglês do zero ao B2 com lições curtas e desafie jogadores do mundo todo em duelos de 60 segundos. Tudo explicado em português. |
 
 **Descrição**
 
 ```
 Aprenda inglês jogando — e prove o que você sabe em duelos ao vivo.
 
-PolyGo é o curso de inglês feito para quem fala português: do básico ao intermediário (A1 a B1), com explicações pensadas para brasileiros. Nada de traduzir ao pé da letra: a gente mostra onde o português ajuda e onde ele engana (actually não é "atualmente", pretend não é "pretender").
+PolyGo é o curso de inglês feito para quem fala português: do básico ao intermediário avançado (A1 a B2), com explicações pensadas para brasileiros. Nada de traduzir ao pé da letra: a gente mostra onde o português ajuda e onde ele engana (actually não é "atualmente", pretend não é "pretender").
 
 UM CURSO COMPLETO
-• 43 unidades e 450 lições curtas, do "hello" às conversas do dia a dia
+• 55 unidades e 570 lições curtas, do "hello" às conversas do dia a dia
 • Gramática explicada comparando com o português
 • Exercícios de ouvir, ler, escrever, montar frases e falar em voz alta
 • Textos e diálogos para treinar compreensão
@@ -67,14 +67,14 @@ Comece grátis e jogue seu primeiro duelo hoje.
 | Campo | Texto |
 | --- | --- |
 | Título (30) | PolyGo: Aprenda Inglês Jogando |
-| Descrição curta (80) | Inglês do A1 ao B1 em lições curtas e duelos ao vivo de 60 segundos. |
+| Descrição curta (80) | Inglês do A1 ao B2 em lições curtas e duelos ao vivo de 60 segundos. |
 
 **Descrição completa:** el mismo texto de la descripción de App Store.
 
 ### Novidades (primera versión con el curso)
 
 ```
-Novo: curso de inglês para quem fala português (A1–B1), app em português e duelos com jogadores do mundo todo.
+Novo: curso de inglês para quem fala português (A1–B2), app em português e duelos com jogadores do mundo todo.
 ```
 
 ---
@@ -88,17 +88,17 @@ Novo: curso de inglês para quem fala português (A1–B1), app em português e 
 | Nome (30) | PolyGo: Impara l'inglese |
 | Sottotitolo (30) | L'inglese giocando e sfidando |
 | Parole chiave (100) | lingue,corso,vocabolario,grammatica,pronuncia,conversazione,duello,classifica,principianti,parlare |
-| Testo promozionale (170) | Impara l'inglese da zero al B1 con lezioni brevi e sfida giocatori di tutto il mondo in duelli da 60 secondi. Tutto spiegato in italiano. |
+| Testo promozionale (170) | Impara l'inglese da zero al B2 con lezioni brevi e sfida giocatori di tutto il mondo in duelli da 60 secondi. Tutto spiegato in italiano. |
 
 **Descrizione**
 
 ```
 Impara l'inglese giocando — e metti alla prova quello che sai in duelli dal vivo.
 
-PolyGo è il corso di inglese pensato per chi parla italiano: dalle basi al livello intermedio (dall'A1 al B1), con spiegazioni fatte su misura. Niente traduzioni parola per parola: ti mostriamo dove l'italiano ti aiuta e dove ti inganna (library non è "libreria", actually non è "attualmente").
+PolyGo è il corso di inglese pensato per chi parla italiano: dalle basi al livello intermedio avanzato (dall'A1 al B2), con spiegazioni fatte su misura. Niente traduzioni parola per parola: ti mostriamo dove l'italiano ti aiuta e dove ti inganna (library non è "libreria", actually non è "attualmente").
 
 UN CORSO COMPLETO
-• 43 unità e 450 lezioni brevi, dal primo "hello" alle conversazioni di tutti i giorni
+• 55 unità e 570 lezioni brevi, dal primo "hello" alle conversazioni di tutti i giorni
 • Grammatica spiegata confrontandola con l'italiano
 • Esercizi di ascolto, lettura, scrittura, costruzione di frasi e pronuncia ad alta voce
 • Testi e dialoghi per allenare la comprensione
@@ -130,14 +130,14 @@ Inizia gratis e gioca il tuo primo duello oggi.
 | Campo | Testo |
 | --- | --- |
 | Titolo (30) | PolyGo: Impara l'inglese |
-| Descrizione breve (80) | Inglese dall'A1 al B1 con lezioni brevi e duelli dal vivo da 60 secondi. |
+| Descrizione breve (80) | Inglese dall'A1 al B2 con lezioni brevi e duelli dal vivo da 60 secondi. |
 
 **Descrizione completa:** lo stesso testo della descrizione App Store.
 
 ### Novità
 
 ```
-Novità: corso di inglese per chi parla italiano (A1–B1), app in italiano e duelli con giocatori di tutto il mondo.
+Novità: corso di inglese per chi parla italiano (A1–B2), app in italiano e duelli con giocatori di tutto il mondo.
 ```
 
 ---
@@ -151,17 +151,17 @@ Novità: corso di inglese per chi parla italiano (A1–B1), app in italiano e du
 | Nom (30) | PolyGo : apprendre l'anglais |
 | Sous-titre (30) | L'anglais en jouant |
 | Mots-clés (100) | langues,cours,vocabulaire,grammaire,prononciation,conversation,duel,classement,débutant,parler,jeu |
-| Texte promotionnel (170) | Apprends l'anglais de zéro au B1 avec des leçons courtes et défie des joueurs du monde entier en duels de 60 secondes. Tout est expliqué en français. |
+| Texte promotionnel (170) | Apprends l'anglais de zéro au B2 avec des leçons courtes et défie des joueurs du monde entier en duels de 60 secondes. Tout est expliqué en français. |
 
 **Description**
 
 ```
 Apprends l'anglais en jouant — et prouve ce que tu sais en duel, en direct.
 
-PolyGo, c'est le cours d'anglais pensé pour les francophones : des bases au niveau intermédiaire (A1 à B1), avec des explications faites pour toi. Pas de traduction mot à mot : on te montre où le français t'aide et où il te piège (actually ne veut pas dire « actuellement », library n'est pas une « librairie »).
+PolyGo, c'est le cours d'anglais pensé pour les francophones : des bases au niveau intermédiaire avancé (A1 à B2), avec des explications faites pour toi. Pas de traduction mot à mot : on te montre où le français t'aide et où il te piège (actually ne veut pas dire « actuellement », library n'est pas une « librairie »).
 
 UN COURS COMPLET
-• 43 unités et 450 leçons courtes, du premier « hello » aux conversations du quotidien
+• 55 unités et 570 leçons courtes, du premier « hello » aux conversations du quotidien
 • La grammaire expliquée en la comparant au français
 • Des exercices d'écoute, de lecture, d'écriture, de construction de phrases et de prononciation à voix haute
 • Des textes et des dialogues pour travailler la compréhension
@@ -193,12 +193,12 @@ Commence gratuitement et joue ton premier duel dès aujourd'hui.
 | Champ | Texte |
 | --- | --- |
 | Titre (30) | PolyGo : apprendre l'anglais |
-| Description courte (80) | L'anglais de A1 à B1 en leçons courtes et en duels de 60 secondes en direct. |
+| Description courte (80) | L'anglais de A1 à B2 en leçons courtes et en duels de 60 secondes en direct. |
 
 **Description complète :** le même texte que la description App Store.
 
 ### Nouveautés
 
 ```
-Nouveau : cours d'anglais pour les francophones (A1–B1), appli en français et duels avec des joueurs du monde entier.
+Nouveau : cours d'anglais pour les francophones (A1–B2), appli en français et duels avec des joueurs du monde entier.
 ```

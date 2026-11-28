@@ -233,7 +233,7 @@ export const PAGE_META = {
     home: {
       title: 'PolyGo · Aprenda inglês jogando e dispute duelos ao vivo',
       description:
-        'Curso de inglês do A1 ao B1 explicado em português: 450 lições curtas, revisão espaçada e duelos ao vivo de 60 segundos contra jogadores do mundo todo. Grátis no iPhone e no Android.',
+        'Curso de inglês do A1 ao B2 explicado em português: 570 lições curtas, revisão espaçada e duelos ao vivo de 60 segundos contra jogadores do mundo todo. Grátis no iPhone e no Android.',
     },
     privacy: {
       title: 'Política de privacidade · PolyGo',
@@ -258,7 +258,7 @@ export const PAGE_META = {
     home: {
       title: 'PolyGo · Impara l’inglese giocando e sfida altri giocatori dal vivo',
       description:
-        'Corso di inglese dall’A1 al B1 spiegato in italiano: 450 lezioni brevi, ripasso a intervalli e duelli dal vivo da 60 secondi contro giocatori di tutto il mondo. Gratis su iPhone e Android.',
+        'Corso di inglese dall’A1 al B2 spiegato in italiano: 570 lezioni brevi, ripasso a intervalli e duelli dal vivo da 60 secondi contro giocatori di tutto il mondo. Gratis su iPhone e Android.',
     },
     privacy: {
       title: 'Informativa sulla privacy · PolyGo',
@@ -284,7 +284,7 @@ export const PAGE_META = {
     home: {
       title: 'PolyGo · Apprends l’anglais en jouant et affronte d’autres joueurs en direct',
       description:
-        'Cours d’anglais de A1 à B1 expliqué en français\u00a0: 450 leçons courtes, révision espacée et duels en direct de 60 secondes contre des joueurs du monde entier. Gratuit sur iPhone et Android.',
+        'Cours d’anglais de A1 à B2 expliqué en français\u00a0: 570 leçons courtes, révision espacée et duels en direct de 60 secondes contre des joueurs du monde entier. Gratuit sur iPhone et Android.',
     },
     privacy: {
       title: 'Politique de confidentialité · PolyGo',
