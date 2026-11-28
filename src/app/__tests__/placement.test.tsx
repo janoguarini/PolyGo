@@ -56,7 +56,10 @@ jest.mock('@/features/placement/startCourse', () => {
   };
 });
 
-const bank = placementBankFor(courseByCode('en-from-es')!)!;
+/** El banco de en-from-es (A1–B2 publicados: 8 bandas, hasta 24 preguntas). */
+const fullBank = placementBankFor(courseByCode('en-from-es')!)!;
+/** El banco que tiene la pantalla (un test puede acotar los niveles publicados). */
+let bank = fullBank;
 /** Respuestas dadas hasta ahora (para saber qué pregunta hay en pantalla). */
 let given: boolean[] = [];
 
@@ -69,9 +72,12 @@ async function answer(correct: boolean) {
     const target = e.answer.replace(/[.?!]$/, '').split(' ');
     const order = correct ? target : [...target].reverse();
     for (const token of order) {
+      // La ficha libre del banco (va después de la oración). Las ya elegidas también son botones (al
+      // tocarlas vuelven al banco), y una palabra puede repetirse (p. ej. «the» dos veces en B2).
       const enabled = screen
         .getAllByRole('button', { name: token })
-        .find((b) => !b.props.accessibilityState?.disabled);
+        .filter((b) => !b.props.accessibilityState?.disabled)
+        .at(-1);
       await fireEvent.press(enabled!);
     }
   } else if (p.type === 'short_answer') {
@@ -103,6 +109,7 @@ async function begin() {
 beforeEach(() => {
   __setInterfaceLanguageForTests('es');
   mockCode = 'en-from-es';
+  bank = fullBank;
   given = [];
   mockMutate.mockReset();
   for (const fn of Object.values(mockRouter)) fn.mockClear();
@@ -110,7 +117,7 @@ beforeEach(() => {
 
 afterAll(() => __setInterfaceLanguageForTests('es'));
 
-/** Cambia por un momento la configuración de un idioma (hoy todos tienen A1 y A2 y están disponibles). */
+/** Cambia por un momento la configuración de un idioma (niveles publicados o estado). */
 async function withLanguage(
   code: string,
   patch: { levels?: string[]; status?: string },
@@ -138,13 +145,13 @@ it('bienvenida: qué se evalúa, cómo funciona y cuánto dura', async () => {
   ]) {
     expect(screen.getByText(label)).toBeTruthy();
   }
-  expect(screen.getByText('Hasta 12 preguntas · unos 3 minutos')).toBeTruthy();
+  expect(screen.getByText('Hasta 24 preguntas · unos 6 minutos')).toBeTruthy();
   expect(screen.getByText(/Si sales, no se guarda nada/)).toBeTruthy();
 });
 
 it('progreso visible y preguntas de a una, con el nivel de la pregunta', async () => {
   await begin();
-  expect(screen.getByLabelText('Pregunta 1, como máximo 12')).toBeTruthy();
+  expect(screen.getByLabelText('Pregunta 1, como máximo 24')).toBeTruthy();
   expect(screen.getByText('Pregunta 1')).toBeTruthy();
   expect(screen.getByText('Nivel A1')).toBeTruthy();
   await answer(true);
@@ -182,24 +189,46 @@ it('dos errores al principio: A1, y «Comenzar curso» guarda el resultado en es
   expect(mockRouter.navigate).toHaveBeenCalledWith('/');
 });
 
-it('todo bien: sube a A2, termina en A2 (el máximo publicado) y se puede elegir A1', async () => {
+it('todo bien: sube nivel por nivel hasta B2 (el máximo publicado) y se puede elegir A1', async () => {
   await begin();
   let finished = false;
-  let sawLevelUp = false;
+  const levelUps = new Set<string>();
   while (!finished) {
     finished = await answer(true);
-    if (screen.queryByText('¡Subes al nivel A2!')) sawLevelUp = true;
+    for (const level of ['A2', 'B1', 'B2']) {
+      if (screen.queryByText(`¡Subes al nivel ${level}!`)) levelUps.add(level);
+    }
     await next();
   }
-  expect(sawLevelUp).toBe(true);
-  expect(screen.getByLabelText('Tu nivel estimado es A2, Básico')).toBeTruthy();
+  expect([...levelUps]).toEqual(['A2', 'B1', 'B2']);
+  // Dos aciertos por banda alcanzan para superarla: 8 bandas, 16 preguntas.
+  expect(screen.getByLabelText('Tu nivel estimado es B2, Intermedio alto')).toBeTruthy();
   expect(screen.getByText(/el nivel más alto disponible/)).toBeTruthy();
-  expect(screen.getByText('8 de 8 respuestas correctas')).toBeTruthy();
+  expect(screen.getByText('16 de 16 respuestas correctas')).toBeTruthy();
 
   await fireEvent.press(screen.getByRole('button', { name: 'Prefiero empezar desde A1' }));
   expect(mockMutate.mock.calls[0][0]).toMatchObject({
     startLevel: 'A1',
-    placement: { level: 'A2', correct: 8, total: 8 },
+    placement: { level: 'B2', correct: 16, total: 16 },
+  });
+});
+
+it('si el curso publica sólo A1–A2, el test termina en A2 aunque el banco traiga más', async () => {
+  await withLanguage('en', { levels: ['A1', 'A2'] }, async () => {
+    bank = placementBankFor(courseByCode('en-from-es')!)!;
+    expect(bank.bands.map((b) => b.level)).toEqual(['A1', 'A1', 'A2', 'A2']);
+    await render(<PlacementScreen />);
+    expect(screen.getByText('Hasta 12 preguntas · unos 3 minutos')).toBeTruthy();
+    await fireEvent.press(screen.getByRole('button', { name: 'Empezar el desafío' }));
+    let finished = false;
+    while (!finished) {
+      finished = await answer(true);
+      expect(screen.queryByText('¡Subes al nivel B1!')).toBeNull();
+      await next();
+    }
+    expect(screen.getByLabelText('Tu nivel estimado es A2, Básico')).toBeTruthy();
+    expect(screen.getByText(/el nivel más alto disponible/)).toBeTruthy();
+    expect(screen.getByText('8 de 8 respuestas correctas')).toBeTruthy();
   });
 });
 
@@ -297,9 +326,9 @@ it('en inglés: instrucciones y resultado en el idioma de la interfaz; las pregu
   __setInterfaceLanguageForTests('en');
   await render(<PlacementScreen />);
   expect(screen.getByText('How much do you know?')).toBeTruthy();
-  expect(screen.getByText('Up to 12 questions · about 3 minutes')).toBeTruthy();
+  expect(screen.getByText('Up to 24 questions · about 6 minutes')).toBeTruthy();
   await fireEvent.press(screen.getByRole('button', { name: 'Start the challenge' }));
-  expect(screen.getByLabelText('Question 1, up to 12')).toBeTruthy();
+  expect(screen.getByLabelText('Question 1, up to 24')).toBeTruthy();
   // La consigna es contenido del curso (en su idioma de origen), no de la interfaz.
   expect(screen.getByText(bank.bands[0]!.items[0]!.exercise.prompt)).toBeTruthy();
   const first = bank.bands[0]!.items[0]!.exercise;

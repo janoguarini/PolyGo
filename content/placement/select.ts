@@ -10,6 +10,8 @@ import {
   type PlacementDimension,
   type PlacementItem,
 } from '../../shared/placement';
+import { B1_PATH } from '../b1';
+import { B2_PATH } from '../b2';
 import { enSrcCourse } from '../en-src/course';
 import { ES_PATH } from '../es-course';
 import { FR_PATH } from '../fr-course';
@@ -18,7 +20,7 @@ import { IT_PATH } from '../it-course';
 import { PT_PATH } from '../pt-course';
 import { ZH_PATH } from '../zh-course';
 import { lessonExerciseIndex, pathExerciseId } from '../path';
-import type { ExerciseDef } from '../types';
+import type { ExerciseDef, Level } from '../types';
 
 /**
  * Banco del test de nivel (Fase 4, docs/PLACEMENT_TEST.md). NO se escriben preguntas nuevas: cada
@@ -45,6 +47,11 @@ interface CourseSource {
    * Francés: todo el curso se cargó y publicó junto (2026-11-21), con ids declarados.
    */
   declaredIdsPublished: boolean;
+  /**
+   * Niveles cargados y publicados juntos, con ids declarados, aunque `declaredIdsPublished` sea false
+   * (inglés B1 y B2: 20261122/20261124 + sus publicaciones).
+   */
+  declaredLevels?: readonly Level[];
 }
 
 /**
@@ -60,8 +67,9 @@ const pilotPlus = (language: string, rest: readonly PathUnit[]): CourseSource =>
 /** De dónde sale el contenido publicado de cada curso con más de un nivel. */
 const SOURCES: Record<string, CourseSource> = {
   'en-from-es': {
-    path: CURRICULUM_PATH.filter((u) => u.language === 'en'),
+    path: [...CURRICULUM_PATH.filter((u) => u.language === 'en'), ...B1_PATH, ...B2_PATH],
     declaredIdsPublished: false,
+    declaredLevels: ['B1', 'B2'],
   },
   'fr-from-es': { path: FR_PATH, declaredIdsPublished: true },
   'it-from-es': pilotPlus('it', IT_PATH),
@@ -193,7 +201,9 @@ export function buildPlacementBank(courseCode: string): PlacementBank | null {
         const start = Math.floor(((slot + 1) * half.length) / (BAND_SIZE + 1));
         const order = [...half.slice(start), ...half.slice(0, start)];
         const pool = order
-          .flatMap((u) => candidates(u, source.declaredIdsPublished))
+          .flatMap((u) =>
+            candidates(u, source.declaredIdsPublished || !!source.declaredLevels?.includes(u.level)),
+          )
           .filter(
             (c) =>
               !used.has(c.sourceId) &&

@@ -1,6 +1,8 @@
 {
  "unit": "b1-u02",
  "strings": {
+  "2017308431": "Perché lavora di notte",
+  "3343927696": "Il cibo salato",
   "11d532c0b0": "Abitudini e passatempi",
   "a520bc827a": "Da quanto tempo fai qualcosa (for, since), che cosa stai facendo ultimamente (have been + -ing) e che cosa ti piace fare, inizi o smetti di fare.",
   "8da8cec949": "Sai dire da quanto tempo fai qualcosa, che cosa hai fatto ultimamente e quali abitudini hai preso o lasciato.",
@@ -29,7 +31,7 @@
   "f69c3c2c6e": "Mio padre ha smesso di fumare.",
   "c73ba28089": "abitudine",
   "d69b696dc8": "abitudine",
-  "41930ce4d1": "",
+  "41930ce4d1": "abitudine",
   "a6cd1e4ee0": "Leggere ogni sera è una buona abitudine.",
   "2bbeead23b": "continuare / mantenere",
   "3a3499ad31": "continuare",
@@ -90,7 +92,6 @@
   "916d486484": "Sam dice: “For about three years”.",
   "968a35eb42": "Perché Sam si esercita solo nel fine settimana?",
   "7171396c4a": "Perché ultimamente è stato molto impegnato",
-  "2017308431": "Perché lavora di notte",
   "f914f9f1f1": "Perché non gli piace esercitarsi",
   "1af6c176ac": "Perché la chitarra è nuova",
   "272d7dffdc": "Sam dice: “I've been very busy lately, so I only practice on weekends”.",
@@ -136,7 +137,6 @@
   "df7ad20def": "Quale abitudine ha lasciato Tom?",
   "1e9c354e80": "Lo zucchero",
   "b5c9c8e68e": "Camminare",
-  "3343927696": "Il cibo salato",
   "bf4e2a4d8b": "Tom dice: “I gave up sugar in March”.",
   "eb373a31c8": "Che cosa fa Tom ogni giorno in questo periodo?",
   "8d66bbebca": "Va al lavoro a piedi",
@@ -178,21 +178,81 @@
   "7a7ea8f4bc": "Ho raccontato che cosa mi piace."
  },
  "accepted": {
-  "for": ["da", "per"],
-  "how long": ["quanto tempo", "da quanto tempo", "da quanto"],
-  "enjoy": ["godersi", "amare", "piacere", "divertirsi"],
-  "take up": ["iniziare", "cominciare", "cominciare a fare"],
-  "give up": ["smettere", "lasciare", "rinunciare", "arrendersi", "abbandonare"],
-  "habit": ["abitudine", "consuetudine"],
-  "keep": ["continuare", "mantenere", "tenere"],
-  "practice": ["esercitarsi", "allenarsi", "praticare"],
-  "improve": ["migliorare", "perfezionare"],
-  "skill": ["capacità", "competenza", "abilità"],
-  "instrument": ["strumento musicale"],
-  "good at": ["bravo a", "bravo in", "brava a", "brava in", "bravo con"],
-  "interested in": ["interessato a", "interessata a"],
-  "stop": ["smettere di", "fermarsi", "smettere", "fermare"],
-  "lately": ["ultimamente", "di recente", "in questi giorni"]
+  "for": [
+   "da",
+   "per"
+  ],
+  "how long": [
+   "quanto tempo",
+   "da quanto tempo",
+   "da quanto"
+  ],
+  "enjoy": [
+   "godersi",
+   "amare",
+   "piacere",
+   "divertirsi"
+  ],
+  "take up": [
+   "iniziare",
+   "cominciare",
+   "cominciare a fare"
+  ],
+  "give up": [
+   "smettere",
+   "lasciare",
+   "rinunciare",
+   "arrendersi",
+   "abbandonare"
+  ],
+  "habit": [
+   "abitudine",
+   "consuetudine"
+  ],
+  "keep": [
+   "continuare",
+   "mantenere",
+   "tenere"
+  ],
+  "practice": [
+   "esercitarsi",
+   "allenarsi",
+   "praticare"
+  ],
+  "improve": [
+   "migliorare",
+   "perfezionare"
+  ],
+  "skill": [
+   "capacità",
+   "competenza",
+   "abilità"
+  ],
+  "instrument": [
+   "strumento musicale"
+  ],
+  "good at": [
+   "bravo a",
+   "bravo in",
+   "brava a",
+   "brava in",
+   "bravo con"
+  ],
+  "interested in": [
+   "interessato a",
+   "interessata a"
+  ],
+  "stop": [
+   "smettere di",
+   "fermarsi",
+   "smettere",
+   "fermare"
+  ],
+  "lately": [
+   "ultimamente",
+   "di recente",
+   "in questi giorni"
+  ]
  },
  "notes": "1) En gramática y lección 1 comparé con el italiano: «studio inglese da due anni» va en presente y el italiano usa «da» tanto para for como para since; el inglés distingue. 2) for → «per / da (un periodo)»; las opciones «Desde hace tres años» → «Da tre anni». 3) enjoy → «amare fare / godersi» (en italiano «godere» suena raro con verbos); el título «Lo que disfrutas» quedó «Che cosa ti piace fare». Agregué en la lección que el italiano usa infinitivo tras «piacere» y el inglés -ing. 4) «costumbre» (41930ce4d1, solo word.accepted) quedó vacío: en italiano «costume» es falso amigo (traje de baño/disfraz); la traducción principal de habit queda solo «abitudine». 5) practice → «esercitarsi» (más natural que «praticare» para instrumentos/idiomas). 6) Agregué en b6d5f2ff89 la trampa stop eating vs stop to eat. Fuente: las pistas de los ejercicios abiertos siguen en español en la capa inglesa (p. ej. «What are you good at? (cocinar)»: 269c4027d0 no tiene cue propio en el catálogo)."
 }

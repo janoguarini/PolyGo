@@ -49,7 +49,7 @@ if v_bad is not null then raise exception 'ept_publish: ítems que faltan o no s
 
 select string_agg(x.id, ', ') into v_bad from (
   select u.id from public.curriculum_units u
-  where u.course_code = 'en-from-pt' and u.id not in (select jsonb_array_elements_text(d -> 'units'))
+  where u.course_code = 'en-from-pt' and u.level in ('A1', 'A2', 'B1') and u.id not in (select jsonb_array_elements_text(d -> 'units'))
   union all
   select w.id from public.words w
   where w.unit_id in (select jsonb_array_elements_text(d -> 'units'))

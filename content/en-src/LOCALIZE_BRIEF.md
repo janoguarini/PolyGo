@@ -52,3 +52,16 @@ friends: actually ≠ actuellement, library ≠ librairie, eventually ≠ évent
 attend ≠ attendre, college ≠ collège, deception ≠ déception, coin ≠ coin, pain, assist, rest ≠ rester,
 journey ≠ journée, sympathetic ≠ sympathique. Passé composé vs present perfect is a key trap ("Hier j’ai
 mangé" → "Yesterday I ate"). Note: the French "y" (il y a) is fine.
+
+## Brazilian Portuguese (pt)
+Português do Brasil, «você», friendly app tone, quotes “ ”, Brazilian vocabulary (ônibus, celular, academia…).
+Generated-instruction wording: "Traduza para o inglês", "Complete a frase", "Ouça e escolha o que você
+ouve", "Una cada palavra ao seu significado", "Ordene as palavras", "Escreva a palavra completa",
+"O que significa “X”?", "Responda em inglês", "Leia e responda", "Ouça e responda", "Revisão". False friends:
+actually ≠ atualmente, pretend ≠ pretender, push ≠ puxar, parents ≠ parentes, college, library ≠ livraria,
+eventually ≠ eventualmente, realize ≠ realizar, support ≠ suportar, argue ≠ argumentar.
+
+## B2 (all languages)
+B2 units (b2-u01…b2-u12) are richer: nuance, negotiation, debate, register. Keep the same level of
+precision in explanations, and adapt idioms/collocations to natural equivalents in your language.
+Look at your language's finished b1-u10…b1-u12 files for consistent terminology.

@@ -104,7 +104,8 @@
    "es": "mientras",
    "kinds": [
     "word.translation",
-    "exercise.pair"
+    "exercise.pair",
+    "word.accepted"
    ],
    "en": "while"
   },
@@ -122,7 +123,8 @@
    "kinds": [
     "word.translation",
     "exercise.pair",
-    "exercise.option"
+    "exercise.option",
+    "word.accepted"
    ],
    "en": "suddenly"
   },

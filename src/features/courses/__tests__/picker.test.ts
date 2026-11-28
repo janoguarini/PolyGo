@@ -90,9 +90,9 @@ describe('selector de cursos agrupado por idioma de origen', () => {
       codes: ['en-from-it'],
     });
     expect(view({ ui: 'es' }).map((s) => s.source)).toEqual(['es', 'en', 'pt', 'it', 'fr']);
-    // Niveles por curso: el inglés para hablantes de portugués llega a B1.
+    // Niveles por curso: el inglés para hablantes de portugués llega a B2.
     const pt = buildCoursePicker({ ui: 'pt-BR' })[0]!.courses[0]!;
-    expect(levelRange(pt.levels)).toBe('A1–B1');
+    expect(levelRange(pt.levels)).toBe('A1–B2');
   });
 
   it('una sección sin cursos no aparece; si es la de la interfaz, se abre la primera que quede', () => {

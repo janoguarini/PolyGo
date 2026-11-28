@@ -72,12 +72,12 @@ describe('varios cursos por idioma (shared/courses.ts)', () => {
     }
   });
 
-  it('inglés para hablantes de portugués, italiano y francés: publicados, no por defecto, A1–B1', () => {
+  it('inglés para hablantes de portugués, italiano y francés: publicados, no por defecto, A1–B2', () => {
     expect(ALL_COURSES.filter((c) => !c.isDefault).map((c) => c.code)).toEqual(NEW);
     for (const code of NEW) {
       const c = courseByCode(code)!;
       expect(c).toMatchObject({ target: 'en', isDefault: false, status: 'available' });
-      expect(courseLevels(c)).toEqual(['A1', 'A2', 'B1']);
+      expect(courseLevels(c)).toEqual(['A1', 'A2', 'B1', 'B2']);
       expect(isCourseSelectable(c)).toBe(true);
       // Publicados: están en el espejo de la base (supabase/tests/courses.test.mjs).
       expect(COURSES).toContain(c);

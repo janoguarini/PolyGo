@@ -1,0 +1,1725 @@
+{
+ "unit": "b2-u10",
+ "level": "B2",
+ "titleEn": "Argument and debate",
+ "strings": [
+  {
+   "id": "5607a806e6",
+   "es": "Argumentación y debate",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Argument and debate"
+  },
+  {
+   "id": "d0cae03d83",
+   "es": "Sumar argumentos, reconocer y rebatir, defender una postura y concluir, con conectores y oraciones como What matters is… o The reason why… is…",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "7add46205c",
+   "es": "Puedes defender una opinión con argumentos, reconocer la postura contraria, rebatirla y sacar una conclusión.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "042bcd8587",
+   "es": "Oraciones escindidas y conectores",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "5256ee8183",
+   "es": "Para enfatizar una parte de la oración, la «partes» en dos: What matters is the result (lo que importa es…), What worries me is… (lo que me preocupa es…), The reason why… is that… (la razón por la que… es que…), It is… that… (It is the cost of ignorance that should worry us). Conectores formales: moreover y furthermore suman; as a result da la consecuencia; admittedly reconoce un punto contrario y nevertheless lo rebate; on the contrary dice que es todo lo opuesto.",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "c4bb2d5ae2",
+   "es": "Lo que me preocupa son los clientes.",
+   "kinds": [
+    "example"
+   ],
+   "en": "What worries me is the customers."
+  },
+  {
+   "id": "b34016d2af",
+   "es": "La razón por la que lo hicieron es que la gente trabaja mejor descansada.",
+   "kinds": [
+    "example"
+   ],
+   "en": "The reason why they did it is that people work better when they are rested."
+  },
+  {
+   "id": "fe150d0beb",
+   "es": "Es cierto que es caro. Aun así, vale la pena.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Admittedly, it is expensive. Nevertheless, it is worth it."
+  },
+  {
+   "id": "6f7a9000cc",
+   "es": "debate",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "debate"
+  },
+  {
+   "id": "ab7cb0b76b",
+   "es": "Tuvimos un debate sobre las redes sociales.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "We had a debate about social media."
+  },
+  {
+   "id": "cf4c6a7b10",
+   "es": "además (formal)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "moreover"
+  },
+  {
+   "id": "9f5f712fa8",
+   "es": "además",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "moreover"
+  },
+  {
+   "id": "4eeaa53be7",
+   "es": "El plan es barato. Además, es fácil de empezar.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "The plan is cheap. Moreover, it is easy to start."
+  },
+  {
+   "id": "ab455f6ed5",
+   "es": "asimismo / es más",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "furthermore"
+  },
+  {
+   "id": "d3cad75828",
+   "es": "asimismo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "furthermore"
+  },
+  {
+   "id": "deb11e7958",
+   "es": "es más",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "furthermore"
+  },
+  {
+   "id": "da6d63a406",
+   "es": "Asimismo, la educación gratuita da a todos las mismas oportunidades.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Furthermore, free education gives everyone the same chances."
+  },
+  {
+   "id": "ba2ed5b1a4",
+   "es": "como resultado / por eso",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "as a result"
+  },
+  {
+   "id": "6201df94f1",
+   "es": "como resultado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "as a result"
+  },
+  {
+   "id": "c82d3b0ac3",
+   "es": "en consecuencia",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "as a result"
+  },
+  {
+   "id": "3908999525",
+   "es": "Llovió toda la semana. Como resultado, se canceló el partido.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "It rained all week. As a result, the match was canceled."
+  },
+  {
+   "id": "f4323a44c9",
+   "es": "lo que importa es",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "what matters is"
+  },
+  {
+   "id": "a4e36c5b0a",
+   "es": "Lo que importa es que lo intentaste.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "What matters is that you tried."
+  },
+  {
+   "id": "44ad2b0fac",
+   "es": "la razón por la que",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "the reason why"
+  },
+  {
+   "id": "70c8bbe15c",
+   "es": "el motivo por el que",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "the reason why"
+  },
+  {
+   "id": "bd3a4c3e78",
+   "es": "La razón por la que llamé es que necesito tu ayuda.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "The reason why I called is that I need your help."
+  },
+  {
+   "id": "67ff6d4dca",
+   "es": "en otras palabras / es decir",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "in other words"
+  },
+  {
+   "id": "3c05f25431",
+   "es": "en otras palabras",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "in other words"
+  },
+  {
+   "id": "37a41d66e9",
+   "es": "es decir",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "in other words"
+  },
+  {
+   "id": "9678712b25",
+   "es": "o sea",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "in other words"
+  },
+  {
+   "id": "21ffd7ca67",
+   "es": "Llegó tarde otra vez. En otras palabras, no le importa.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "He was late again. In other words, he does not care."
+  },
+  {
+   "id": "945361bc3e",
+   "es": "es cierto que / hay que reconocer que",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "admittedly"
+  },
+  {
+   "id": "f9089105bb",
+   "es": "es cierto que",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "admittedly"
+  },
+  {
+   "id": "7bcc9ecc07",
+   "es": "hay que reconocer que",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "admittedly"
+  },
+  {
+   "id": "78bef33f5c",
+   "es": "Es cierto que es caro.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "Admittedly, it is expensive."
+  },
+  {
+   "id": "9af866e4eb",
+   "es": "aun así / de todos modos",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "nevertheless"
+  },
+  {
+   "id": "c5482f55ba",
+   "es": "aun así",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "nevertheless"
+  },
+  {
+   "id": "45d6eb230f",
+   "es": "de todos modos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "nevertheless"
+  },
+  {
+   "id": "c85a331761",
+   "es": "Fue difícil. Aun así, terminamos a tiempo.",
+   "kinds": [
+    "word.example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "It was difficult. Nevertheless, we finished on time."
+  },
+  {
+   "id": "358be2ea9a",
+   "es": "al contrario",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "on the contrary"
+  },
+  {
+   "id": "3a3dfba0b6",
+   "es": "por el contrario",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "on the contrary"
+  },
+  {
+   "id": "001fcc1bc7",
+   "es": "No estoy cansado. Al contrario, me siento genial.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I'm not tired. On the contrary, I feel great."
+  },
+  {
+   "id": "cc48ae0fa1",
+   "es": "punto de vista",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "point of view"
+  },
+  {
+   "id": "38d6152843",
+   "es": "Entiendo tu punto de vista, pero no estoy de acuerdo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I understand your point of view, but I disagree."
+  },
+  {
+   "id": "180e96393c",
+   "es": "válido",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "valid"
+  },
+  {
+   "id": "a95bacd264",
+   "es": "Es un argumento válido.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "That's a valid point."
+  },
+  {
+   "id": "c93a07cb12",
+   "es": "convincente",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "convincing"
+  },
+  {
+   "id": "38d6722726",
+   "es": "Su argumento fue muy convincente.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Her argument was very convincing."
+  },
+  {
+   "id": "8a7ce72fe2",
+   "es": "suposición / supuesto",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "assumption"
+  },
+  {
+   "id": "b88e88eb0a",
+   "es": "suposición",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "assumption"
+  },
+  {
+   "id": "b5f19f4af8",
+   "es": "supuesto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "assumption"
+  },
+  {
+   "id": "326d50bc25",
+   "es": "Eso es sólo una suposición. ¿Dónde están las pruebas?",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "That's just an assumption. Where is the evidence?"
+  },
+  {
+   "id": "6161c88ac4",
+   "es": "tener en cuenta",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "take into account"
+  },
+  {
+   "id": "5d69d1dd9b",
+   "es": "tomar en cuenta",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "take into account"
+  },
+  {
+   "id": "24a5d35c0b",
+   "es": "Tenemos que tener en cuenta los costos.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "We need to take the costs into account."
+  },
+  {
+   "id": "482fc53ba6",
+   "es": "superar / pesar más que",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "outweigh"
+  },
+  {
+   "id": "8fe88d1a56",
+   "es": "superar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "outweigh"
+  },
+  {
+   "id": "f6113e899b",
+   "es": "pesar más que",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "outweigh"
+  },
+  {
+   "id": "60249ef9fe",
+   "es": "Los beneficios superan a los costos.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "The benefits outweigh the costs."
+  },
+  {
+   "id": "66cb2a5754",
+   "es": "en resumen / para resumir",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "to sum up"
+  },
+  {
+   "id": "f542560db1",
+   "es": "en resumen",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "to sum up"
+  },
+  {
+   "id": "5b38d66ec1",
+   "es": "para resumir",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "to sum up"
+  },
+  {
+   "id": "ea3370b4c4",
+   "es": "en síntesis",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "to sum up"
+  },
+  {
+   "id": "f0f03bf6fb",
+   "es": "En resumen, creo que el plan es una buena idea.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "To sum up, I think the plan is a good idea."
+  },
+  {
+   "id": "1b61cae1db",
+   "es": "después de todo / en definitiva",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "all things considered"
+  },
+  {
+   "id": "d6a1ed37e2",
+   "es": "después de todo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "all things considered"
+  },
+  {
+   "id": "153798319b",
+   "es": "en definitiva",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "all things considered"
+  },
+  {
+   "id": "5d96dfbd17",
+   "es": "considerando todo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "all things considered"
+  },
+  {
+   "id": "a76520863c",
+   "es": "En definitiva, fue un buen año.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "All things considered, it was a good year."
+  },
+  {
+   "id": "761103d75b",
+   "es": "Sumar argumentos",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "af9180f68e",
+   "es": "Agregar razones y consecuencias en un debate.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "1754965596",
+   "es": "En un debate o un texto formal, moreover y furthermore suman otra razón (además, asimismo); van al principio de la oración, seguidos de coma. As a result introduce la consecuencia. Son más formales que also y so.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "4864212c26",
+   "es": "Sumas argumentos con moreover y furthermore.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "cf6526ea1f",
+   "es": "Presentas consecuencias con as a result.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "4da91cb716",
+   "es": "Moreover suma una razón a favor; however marca un contraste.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Moreover"
+  },
+  {
+   "id": "f14ceaf32f",
+   "es": "Un debate en un colegio: ¿hay que prohibir los teléfonos en clase?",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u10-school-debate"
+  },
+  {
+   "id": "6748ec8b76",
+   "es": "Moderator",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u10-school-debate"
+  },
+  {
+   "id": "79cb79153c",
+   "es": "Hannah",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u10-school-debate"
+  },
+  {
+   "id": "11bb61fcad",
+   "es": "¿Qué razones da Lucas para prohibir los teléfonos?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u10-school-debate"
+  },
+  {
+   "id": "c9c0bf9b61",
+   "es": "Distraen y facilitan el acoso, que sigue después del colegio",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u10-school-debate"
+  },
+  {
+   "id": "7cbe926492",
+   "es": "Son caros",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1a00ee1fc3",
+   "es": "Se rompen fácilmente",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "fe97e9dbdb",
+   "es": "Los profesores no saben usarlos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "fffac54fd4",
+   "es": "Lucas dice: «Phones distract students. Moreover, they make bullying easier, because it continues after school».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u10-school-debate"
+  },
+  {
+   "id": "5ae0a4756b",
+   "es": "¿Qué consecuencia menciona Lucas?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u10-school-debate"
+  },
+  {
+   "id": "f4b90207aa",
+   "es": "Muchos estudiantes se sienten ansiosos todo el día",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u10-school-debate"
+  },
+  {
+   "id": "1130e8f75c",
+   "es": "Los estudiantes sacan malas notas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "dafe9970b9",
+   "es": "Los padres se quejan",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2ae5ecc9d6",
+   "es": "El colegio gasta más",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9ea017ab3c",
+   "es": "Lucas dice: «As a result, many students feel anxious all day».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u10-school-debate"
+  },
+  {
+   "id": "39d3e23072",
+   "es": "Un artículo de opinión sobre la universidad gratuita.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u10-free-uni"
+  },
+  {
+   "id": "b71edf4bfa",
+   "es": "¿Qué segundo argumento suma la autora con furthermore?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u10-free-uni"
+  },
+  {
+   "id": "ad0301124d",
+   "es": "Que la educación gratuita da a los estudiantes pobres las mismas oportunidades",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u10-free-uni"
+  },
+  {
+   "id": "7d3aa3a45a",
+   "es": "Que los graduados pagan menos impuestos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d2ea56aa08",
+   "es": "Que las universidades son baratas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b9bc771564",
+   "es": "Que los ricos no deberían estudiar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "aa3a4c43d0",
+   "es": "El artículo dice: «Furthermore, free education gives poor students the same chances as rich ones».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u10-free-uni"
+  },
+  {
+   "id": "673931f316",
+   "es": "llovió toda la semana; como resultado, se canceló",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "The match was canceled. Why? (llovió toda la semana; como resultado, se canceló)"
+  },
+  {
+   "id": "8ef935b7b9",
+   "es": "Se canceló el partido. ¿Por qué?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "The match was canceled. Why? (llovió toda la semana; como resultado, se canceló)"
+  },
+  {
+   "id": "cd0239fb46",
+   "es": "Lo que importa es…",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "820c7cc356",
+   "es": "Enfatizar una idea con oraciones escindidas.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "ed15ab709e",
+   "es": "Para poner el foco en una idea: What + sujeto + verbo + is… (What matters is that you tried; What worries me is the cost). The reason why + oración + is that… También It is / was… that…: It is the cost of ignorance that should worry us. In other words reformula lo dicho (o sea, es decir).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "73db42c95f",
+   "es": "Enfatizas con What… is y The reason why… is that…",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "02c98f6629",
+   "es": "Reformulas una idea con in other words.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "9508af419b",
+   "es": "What… is: «lo que… es». No se dice «That matters is».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "What"
+  },
+  {
+   "id": "6a9f78f439",
+   "es": "The reason why… is that… (no «is because» en un registro cuidado).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "why"
+  },
+  {
+   "id": "c5d5cf4f31",
+   "es": "Unos colegas discuten la propuesta de trabajar cuatro días por semana.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u10-four-days"
+  },
+  {
+   "id": "a78a420390",
+   "es": "Olivia",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u10-four-days"
+  },
+  {
+   "id": "b3cd90b170",
+   "es": "Ken",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u10-four-days"
+  },
+  {
+   "id": "d26700bc8f",
+   "es": "¿Qué le preocupa a Olivia de la semana de cuatro días?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u10-four-days"
+  },
+  {
+   "id": "1fe1143462",
+   "es": "Quién va a atender a los clientes los viernes",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u10-four-days"
+  },
+  {
+   "id": "9627fcc73c",
+   "es": "Ganar menos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "24938a3447",
+   "es": "Trabajar más horas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3ecfa00ba9",
+   "es": "Que Ken no esté",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "209fc5a845",
+   "es": "Olivia dice: «What worries me is the customers. Who answers the phone on Fridays?».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u10-four-days"
+  },
+  {
+   "id": "8252c89c0a",
+   "es": "Según Ken, ¿por qué otras empresas adoptaron la semana de cuatro días?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u10-four-days"
+  },
+  {
+   "id": "81a14236a3",
+   "es": "Porque la gente trabaja mejor cuando está descansada",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u10-four-days"
+  },
+  {
+   "id": "9facd6d900",
+   "es": "Porque ahorran dinero",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e47a9105f4",
+   "es": "Porque los clientes lo pidieron",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d29105322c",
+   "es": "Porque es la ley",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9e4a5e3388",
+   "es": "Ken dice: «The reason why other companies have done it is that people work better when they’re rested».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u10-four-days"
+  },
+  {
+   "id": "dd5a9b26b2",
+   "es": "¿Qué aclara Hannah con «In other words…»?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u10-school-debate"
+  },
+  {
+   "id": "e106178728",
+   "es": "Que con la prohibición los estudiantes sólo van a usar más el teléfono en casa",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u10-school-debate"
+  },
+  {
+   "id": "40f67f0884",
+   "es": "Que los teléfonos son peligrosos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "50390dbeea",
+   "es": "Que está de acuerdo con Lucas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "572e795966",
+   "es": "Que no tiene pruebas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6ae7a24b11",
+   "es": "Hannah dice: «a ban doesn’t teach anything. In other words, students will just use their phones more at home».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u10-school-debate"
+  },
+  {
+   "id": "c4a945d027",
+   "es": "Lo que me preocupa es el costo.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What worries me is the cost."
+  },
+  {
+   "id": "cdb47e2ba4",
+   "es": "la razón es que quieres trabajar en el exterior",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Why are you studying English? (la razón es que quieres trabajar en el exterior)"
+  },
+  {
+   "id": "c757126314",
+   "es": "¿Por qué estudias inglés?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Why are you studying English? (la razón es que quieres trabajar en el exterior)"
+  },
+  {
+   "id": "a41e0c707e",
+   "es": "Reconocer y rebatir",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "1eaa99124e",
+   "es": "Reconocer el punto del otro y responder con tu postura.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "710a90654f",
+   "es": "Un buen argumento reconoce la otra postura antes de rebatirla. Admittedly (es cierto que…) concede un punto; nevertheless (aun así) vuelve a tu postura. On the contrary (al contrario) dice que es todo lo opuesto. Your point of view es tu punto de vista.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "d5abdb4530",
+   "es": "Concedes un punto con admittedly y lo rebates con nevertheless.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "0005022604",
+   "es": "Dices que es todo lo contrario con on the contrary.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "1f4b746c91",
+   "es": "Nevertheless introduce algo que pasa a pesar de lo anterior.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Nevertheless"
+  },
+  {
+   "id": "723bf8f9bb",
+   "es": "On the contrary niega lo anterior. On the other hand agrega otro lado de la misma idea.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "contrary"
+  },
+  {
+   "id": "1500547666",
+   "es": "¿Qué concede Hannah y qué propone en cambio?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u10-school-debate"
+  },
+  {
+   "id": "7655340f9d",
+   "es": "Reconoce que los teléfonos distraen, pero propone enseñar a usarlos bien",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u10-school-debate"
+  },
+  {
+   "id": "95987b4882",
+   "es": "Acepta prohibirlos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f91bc4c65e",
+   "es": "Dice que no distraen",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0ea15cc1fc",
+   "es": "Propone prohibirlos sólo en los exámenes",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a7392c645b",
+   "es": "Hannah dice: «Admittedly, phones can be a distraction. Nevertheless, banning them is not the answer. On the contrary, schools should teach students how to use them responsibly».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u10-school-debate"
+  },
+  {
+   "id": "b9a3eaacc4",
+   "es": "¿Qué reconoce la autora y cómo lo rebate?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u10-free-uni"
+  },
+  {
+   "id": "92decc8187",
+   "es": "Que cuesta mucho al gobierno, pero los beneficios a largo plazo son mayores",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u10-free-uni"
+  },
+  {
+   "id": "4a9ec88060",
+   "es": "Que es injusto, pero necesario",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "eafcbfde01",
+   "es": "Que los alumnos no lo valoran",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d1e13a802a",
+   "es": "Que es imposible, pero hay que intentarlo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "fe0f56ae1e",
+   "es": "El artículo dice: «Admittedly, free universities cost the government a lot of money… Nevertheless, the long-term benefits outweigh the costs».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u10-free-uni"
+  },
+  {
+   "id": "5b4f496f12",
+   "es": "Es cierto que es caro, pero vale la pena.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Admittedly it is expensive but it is worth it."
+  },
+  {
+   "id": "fff9c87e6c",
+   "es": "entiendes su punto de vista, pero no estás de acuerdo",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "You don't agree with me, do you? (entiendes su punto de vista, pero no estás de acuerdo)"
+  },
+  {
+   "id": "7cee209abc",
+   "es": "No estás de acuerdo conmigo, ¿no?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "You don't agree with me, do you? (entiendes su punto de vista, pero no estás de acuerdo)"
+  },
+  {
+   "id": "4f8665f4e6",
+   "es": "Argumentos sólidos",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "a04f07669f",
+   "es": "Evaluar si un argumento es válido y convincente.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "73bd6ce3ab",
+   "es": "A valid point es un argumento válido; convincing, convincente. An assumption es una suposición que no se demostró. Take into account es tener en cuenta: We need to take the costs into account (fíjate que el objeto puede ir en el medio).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "1949e6bf9b",
+   "es": "Evalúas argumentos: valid, convincing, assumption.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "1a6b5031e8",
+   "es": "Pides que se tenga algo en cuenta con take into account.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "ffd1ae39b6",
+   "es": "¿Qué le reprocha Lucas a Hannah?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u10-school-debate"
+  },
+  {
+   "id": "4caac43469",
+   "es": "Que lo que dice es una suposición sin pruebas",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u10-school-debate"
+  },
+  {
+   "id": "8ed80d5406",
+   "es": "Que habla demasiado",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2cca47efbb",
+   "es": "Que cambió de opinión",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6f249e048c",
+   "es": "Que no respondió la pregunta",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "92d96df846",
+   "es": "Lucas dice: «But that’s an assumption. Where is the evidence that teaching works better?».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u10-school-debate"
+  },
+  {
+   "id": "c6f33e2cd2",
+   "es": "¿Qué pide Olivia que se tenga en cuenta y cómo responde Ken?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u10-four-days"
+  },
+  {
+   "id": "0d52ee8d37",
+   "es": "Que los clientes los esperan todos los días; Ken lo acepta y propone una prueba de tres meses",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u10-four-days"
+  },
+  {
+   "id": "d9192b3727",
+   "es": "Que es caro; Ken lo niega",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "10207dc285",
+   "es": "Que nadie quiere trabajar los viernes; Ken se enoja",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "fba72b1817",
+   "es": "Que es ilegal; Ken lo duda",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f82e9196d4",
+   "es": "Olivia: «we need to take into account that our clients expect us every day». Ken: «That’s a valid point. So let’s try it for three months».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u10-four-days"
+  },
+  {
+   "id": "990d31d6de",
+   "es": "Consejos para escribir un buen argumento.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u10-tips"
+  },
+  {
+   "id": "915f97e1c3",
+   "es": "Según los consejos, ¿qué diferencia hay entre un punto de vista y un argumento?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u10-tips"
+  },
+  {
+   "id": "726250d95e",
+   "es": "Un argumento da una razón concreta, no sólo una opinión",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u10-tips"
+  },
+  {
+   "id": "9c04abcb37",
+   "es": "No hay diferencia",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8c5d7b8088",
+   "es": "El argumento es más corto",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "af17c21168",
+   "es": "El punto de vista usa números",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "535f5d5d12",
+   "es": "El texto dice: «\"I think it is bad\" is a point of view; \"it increases traffic by 30%\" is an argument».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u10-tips"
+  },
+  {
+   "id": "def4fcc61c",
+   "es": "sí, fue muy convincente",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Did his presentation persuade you? (sí, fue muy convincente)"
+  },
+  {
+   "id": "baa5c1aa06",
+   "es": "¿Te convenció su presentación?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Did his presentation persuade you? (sí, fue muy convincente)"
+  },
+  {
+   "id": "18df705777",
+   "es": "Sacar una conclusión",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "940475b7ba",
+   "es": "Cerrar un argumento: pesar pros y contras y resumir.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "945650ed86",
+   "es": "Outweigh es pesar más que algo: The benefits outweigh the costs. Para cerrar: To sum up (en resumen) o All things considered (en definitiva, considerando todo). Y una escindida da fuerza al final: It is the cost of ignorance that should worry us.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "e976a68446",
+   "es": "Comparas pros y contras con outweigh.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "986645e4c2",
+   "es": "Concluyes con to sum up y all things considered.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "38b4b3fe6b",
+   "es": "¿Qué significa «outweigh»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "3d4e4d8ed7",
+   "es": "The benefits (plural) outweigh.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "outweigh"
+  },
+  {
+   "id": "73c8886fec",
+   "es": "¿Con qué idea cierra la autora?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u10-free-uni"
+  },
+  {
+   "id": "556e8ef5d0",
+   "es": "Que la universidad gratuita es una inversión en todos, no un regalo",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u10-free-uni"
+  },
+  {
+   "id": "95f69058ac",
+   "es": "Que la universidad debería ser más barata",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "501d5ab0b2",
+   "es": "Que los estudiantes deben pagar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5ff167f4fc",
+   "es": "Que el gobierno gasta mal",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1117924c89",
+   "es": "El artículo termina: «To sum up, free university is not a gift. It is an investment in all of us».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u10-free-uni"
+  },
+  {
+   "id": "111d22b99c",
+   "es": "¿Qué enfatiza la oración «It is not the cost of education that should worry us, but the cost of ignorance»?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u10-free-uni"
+  },
+  {
+   "id": "cc6e411d86",
+   "es": "Que lo realmente caro es no educar a la gente",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u10-free-uni"
+  },
+  {
+   "id": "0d8e120928",
+   "es": "Que la educación es muy cara",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d40c391b99",
+   "es": "Que la ignorancia no tiene costo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1a6542890a",
+   "es": "Que el gobierno debería gastar menos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d1ff5317c6",
+   "es": "Con It is… that…, la autora pone el foco en «the cost of ignorance»: lo preocupante no es pagar la educación sino la falta de ella.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u10-free-uni"
+  },
+  {
+   "id": "685a8a495f",
+   "es": "¿Cómo termina la discusión?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u10-four-days"
+  },
+  {
+   "id": "d82d2d51a2",
+   "es": "Olivia se convence: probar tres meses es un buen término medio",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u10-four-days"
+  },
+  {
+   "id": "1f4b8f0fcc",
+   "es": "No se ponen de acuerdo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8c18841f46",
+   "es": "Ken retira la propuesta",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6d34d2744f",
+   "es": "Deciden preguntarle al jefe",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5086214ae8",
+   "es": "Olivia dice: «OK, I find that convincing. All things considered, a trial is a good compromise».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u10-four-days"
+  },
+  {
+   "id": "32490e15cf",
+   "es": "en resumen, crees que sí",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "So, should we buy the house? (en resumen, crees que sí)"
+  },
+  {
+   "id": "db421d1cdb",
+   "es": "Entonces, ¿compramos la casa?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "So, should we buy the house? (en resumen, crees que sí)"
+  },
+  {
+   "id": "43ec6e1280",
+   "es": "Una argumentación",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "458aa5025b",
+   "es": "Elige un tema (¿Hay que prohibir los teléfonos en el colegio? ¿Trabajar cuatro días por semana?). Defiende tu postura con dos razones, reconoce la postura contraria y cierra con una conclusión.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "e0cf9cc30d",
+   "es": "Sumas una razón con moreover o furthermore",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "5096c77408",
+   "es": "Reconoces la otra postura (admittedly) y la rebates (nevertheless, however)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "f31822d20d",
+   "es": "Rebates con nevertheless o however",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "c022a0d2cd",
+   "es": "Concluyes con to sum up o all things considered",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "0e61a848a9",
+   "es": "Di mi postura con dos razones.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "12977067a8",
+   "es": "Reconocí la otra postura con admittedly y la rebatí.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "781eafa634",
+   "es": "Cerré con una conclusión.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.b2-u10-school-debate": {
+   "setting": "Un debate en un colegio: ¿hay que prohibir los teléfonos en clase?",
+   "lines": [
+    "Moderator: Today's debate: should phones be banned in schools? Lucas, you're first.",
+    "Lucas: Yes, they should. Phones distract students. Moreover, they make bullying easier, because it continues after school. As a result, many students feel anxious all day.",
+    "Moderator: Hannah, your answer?",
+    "Hannah: Admittedly, phones can be a distraction. Nevertheless, banning them is not the answer. On the contrary, schools should teach students how to use them responsibly.",
+    "Lucas: But that's an assumption. Where is the evidence that teaching works better?",
+    "Hannah: Fair question. What I'm saying is that a ban doesn't teach anything. In other words, students will just use their phones more at home."
+   ]
+  },
+  "en.stim.b2-u10-free-uni": {
+   "setting": "Un artículo de opinión sobre la universidad gratuita.",
+   "lines": [
+    "Should university be free? I believe it should.",
+    "First, education benefits everyone, not only the student. Educated citizens earn more, pay more taxes and are healthier. Furthermore, free education gives poor students the same chances as rich ones.",
+    "Admittedly, free universities cost the government a lot of money, and some people argue that students should pay for their own future. Nevertheless, the long-term benefits outweigh the costs.",
+    "It is not the cost of education that should worry us, but the cost of ignorance.",
+    "To sum up, free university is not a gift. It is an investment in all of us."
+   ]
+  },
+  "en.stim.b2-u10-four-days": {
+   "setting": "Unos colegas discuten la propuesta de trabajar cuatro días por semana.",
+   "lines": [
+    "Olivia: So, the four-day week. What worries me is the customers. Who answers the phone on Fridays?",
+    "Ken: We'd take turns. The reason why other companies have done it is that people work better when they're rested.",
+    "Olivia: That may be true for some jobs. But we need to take into account that our clients expect us every day.",
+    "Ken: That's a valid point. So let's try it for three months and measure the results.",
+    "Olivia: OK, I find that convincing. All things considered, a trial is a good compromise."
+   ]
+  },
+  "en.stim.b2-u10-tips": {
+   "setting": "Consejos para escribir un buen argumento.",
+   "lines": [
+    "How to write a convincing argument",
+    "Give reasons, not only opinions. \"I think it is bad\" is a point of view; \"it increases traffic by 30%\" is an argument.",
+    "Question your assumptions. If you assume that everyone agrees with you, your argument will be weak.",
+    "Take the other side into account. Mention the strongest counterargument and explain why your position is still valid.",
+    "Finish clearly. What readers remember is usually the last thing they read."
+   ]
+  }
+ }
+}

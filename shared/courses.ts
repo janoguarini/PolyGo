@@ -49,7 +49,8 @@ const DEFAULT_COURSES: CourseDef[] = ORDER.map((target, i) => {
 /**
  * Inglés para hablantes de portugués, italiano y francés (docs/EN_MULTI_SOURCE.md; contenido con
  * prefijos ept / eit / efr). Publicados y abiertos en producción el 2026-11-27
- * (supabase/pending/20270111*_publish_en_from_*.sql, public.courses.status = 'available').
+ * (supabase/pending/20270111*_publish_en_from_*.sql, public.courses.status = 'available'). B2: cargas
+ * 20270112120*_en_from_*_b2 + pending/20270112130*_publish_en_from_*_b2.
  */
 const EXTRA_COURSES: CourseDef[] = [
   {
@@ -59,7 +60,7 @@ const EXTRA_COURSES: CourseDef[] = [
     isDefault: false,
     position: 7,
     status: 'available',
-    levels: ['A1', 'A2', 'B1'],
+    levels: ['A1', 'A2', 'B1', 'B2'],
   },
   {
     code: 'en-from-it',
@@ -68,7 +69,7 @@ const EXTRA_COURSES: CourseDef[] = [
     isDefault: false,
     position: 8,
     status: 'available',
-    levels: ['A1', 'A2', 'B1'],
+    levels: ['A1', 'A2', 'B1', 'B2'],
   },
   {
     code: 'en-from-fr',
@@ -77,7 +78,7 @@ const EXTRA_COURSES: CourseDef[] = [
     isDefault: false,
     position: 9,
     status: 'available',
-    levels: ['A1', 'A2', 'B1'],
+    levels: ['A1', 'A2', 'B1', 'B2'],
   },
 ];
 

@@ -20,10 +20,18 @@ import { EN_SOURCES, type EnSource } from '../content/en-src/localize';
 import { enSrcSql } from './build-en-src-sql';
 import { assertNoDelimiters } from './content-sql';
 
-export function enSrcPublishSql(source: EnSource) {
-  const { document, course } = enSrcSql(source);
+export function enSrcPublishSql(source: EnSource, levels?: readonly string[]) {
+  const { document, course } = enSrcSql(source, levels);
   const code = course.code;
   const tag = `${course.namespace}_publish`;
+  // Publicar sólo algunos niveles (p. ej. B2 sobre un curso ya publicado A1–B1): el control de «filas del
+  // curso que no son de la carga» mira sólo esos niveles.
+  const range = !levels
+    ? 'curso completo'
+    : levels.length === 1
+      ? levels[0]!
+      : `${levels[0]}–${levels[levels.length - 1]}`;
+  const levelFilter = levels ? ` and u.level in (${levels.map((l) => `'${l}'`).join(', ')})` : '';
   const ids = {
     units: document.units.map((u) => u.id),
     words: document.words.map((w) => w.id),
@@ -36,7 +44,7 @@ export function enSrcPublishSql(source: EnSource) {
   assertNoDelimiters(payload);
 
   const sql = `-- =====================================================================
--- Publicación de ${code} (inglés para hablantes de ${source}, A1–B1; docs/EN_MULTI_SOURCE.md), generada por
+-- Publicación de ${code} (inglés para hablantes de ${source}, ${range}; docs/EN_MULTI_SOURCE.md), generada por
 -- scripts/build-en-src-publish-sql.ts. NO editar a mano: regenerar.
 -- Requiere la carga sin publicar de estas filas y 20270108120000_courses_per_language.sql.
 -- Publica: ${ids.units.length} unidades · ${ids.words.length} palabras (y sus conceptos) · ${ids.lessons.length} lecciones · ${ids.exercises.length} ejercicios.
@@ -86,7 +94,7 @@ if v_bad is not null then raise exception '${tag}: ítems que faltan o no son de
 
 select string_agg(x.id, ', ') into v_bad from (
   select u.id from public.curriculum_units u
-  where u.course_code = '${code}' and u.id not in (select jsonb_array_elements_text(d -> 'units'))
+  where u.course_code = '${code}'${levelFilter} and u.id not in (select jsonb_array_elements_text(d -> 'units'))
   union all
   select w.id from public.words w
   where w.unit_id in (select jsonb_array_elements_text(d -> 'units'))
@@ -155,12 +163,13 @@ $polygo_publish$;
 }
 
 if (require.main === module) {
-  const [source, out] = process.argv.slice(2);
+  const [source, out, levelArg] = process.argv.slice(2);
+  const levels = levelArg ? levelArg.split(',') : undefined;
   if (!EN_SOURCES.includes(source as EnSource) || !out) {
     console.error('Uso: npx tsx scripts/build-en-src-publish-sql.ts <pt|it|fr> <archivo.sql>');
     process.exit(1);
   }
-  const { sql, ids, code } = enSrcPublishSql(source as EnSource);
+  const { sql, ids, code } = enSrcPublishSql(source as EnSource, levels);
   writeFileSync(out, sql, 'utf8');
   console.log(
     `${out} (${code}): ${ids.units.length} unidades · ${ids.words.length} palabras · ${ids.lessons.length} lecciones · ${ids.exercises.length} ejercicios · ${ids.items.length} ítems activos · ${ids.draft_items.length} en draft`,

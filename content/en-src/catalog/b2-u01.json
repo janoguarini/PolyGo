@@ -1,0 +1,1674 @@
+{
+ "unit": "b2-u01",
+ "level": "B2",
+ "titleEn": "Saying things with nuance",
+ "strings": [
+  {
+   "id": "543212b42a",
+   "es": "Decir las cosas con matices",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Saying things with nuance"
+  },
+  {
+   "id": "6c5d49dba9",
+   "es": "Malentendidos, tono e indirectas; remember, stop o try con -ing o infinitivo; ser directo sin ser brusco.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "1eb44b08a9",
+   "es": "Puedes aclarar un malentendido, entender una indirecta y decir algo difícil con tacto.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "9dbef5acf6",
+   "es": "Verbos con -ing o infinitivo",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "68c98e42f7",
+   "es": "Algunos verbos cambian de sentido según lo que sigue. Remember / forget + -ing: algo que ya pasó (I remember meeting her). Remember / forget + to: algo que tienes que hacer (Remember to call him). Stop + -ing: dejar de hacer; stop + to: parar para hacer otra cosa. Try + -ing: probar algo; try + to: intentar. Regret + -ing: lamentar algo que hiciste. Mean to: tener la intención.",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "1e2a08fe4c",
+   "es": "Me acuerdo de haberla conocido, pero me olvidé de preguntarle el nombre.",
+   "kinds": [
+    "example",
+    "exercise.source"
+   ],
+   "en": "I remember meeting her, but I forgot to ask her name."
+  },
+  {
+   "id": "334d0e9dea",
+   "es": "Paramos para hablar. Después dejamos de hablar.",
+   "kinds": [
+    "example"
+   ],
+   "en": "We stopped to talk. Then we stopped talking."
+  },
+  {
+   "id": "30f85bc451",
+   "es": "No fue mi intención sonar maleducado.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I didn't mean to sound rude."
+  },
+  {
+   "id": "50b79df1fb",
+   "es": "malentendido",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "misunderstanding"
+  },
+  {
+   "id": "5883e23ba0",
+   "es": "No fue una pelea, sólo un malentendido.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "It wasn't an argument, just a misunderstanding."
+  },
+  {
+   "id": "32daaf2b46",
+   "es": "tono",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "tone"
+  },
+  {
+   "id": "56111f8c94",
+   "es": "No me gustó el tono de su mensaje.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I didn’t like the tone of his message."
+  },
+  {
+   "id": "0a4947fb4c",
+   "es": "tener la intención de / querer (hacer algo)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "mean to"
+  },
+  {
+   "id": "f41f5544fb",
+   "es": "tener la intención de",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "mean to"
+  },
+  {
+   "id": "1ec9b7ca4e",
+   "es": "querer hacer",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "mean to"
+  },
+  {
+   "id": "a74a70cc91",
+   "es": "Perdón, no quise despertarte.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Sorry, I didn't mean to wake you up."
+  },
+  {
+   "id": "be34171766",
+   "es": "transmitir / hacer entender (una idea)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "get across"
+  },
+  {
+   "id": "5ff4362d98",
+   "es": "transmitir",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "get across"
+  },
+  {
+   "id": "2fc09e97cf",
+   "es": "hacer entender",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "get across"
+  },
+  {
+   "id": "df79115f50",
+   "es": "Es difícil transmitir tus ideas en un mensaje corto.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "It is hard to get your ideas across in a short message."
+  },
+  {
+   "id": "f32e1ee366",
+   "es": "en realidad",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "actually"
+  },
+  {
+   "id": "fcae22e4e6",
+   "es": "de hecho",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "actually"
+  },
+  {
+   "id": "3e0277e8e9",
+   "es": "Pensé que estaba enojado, pero en realidad estaba cansado.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I thought he was angry, but actually he was tired."
+  },
+  {
+   "id": "2a0822537e",
+   "es": "indirecta / pista",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "hint"
+  },
+  {
+   "id": "a97e0a8af6",
+   "es": "indirecta",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "hint"
+  },
+  {
+   "id": "961220d4da",
+   "es": "pista",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "hint"
+  },
+  {
+   "id": "fb09b09278",
+   "es": "Tiró una indirecta sobre su regalo de cumpleaños.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "She dropped a hint about her birthday present."
+  },
+  {
+   "id": "3315820663",
+   "es": "insinuar / dar a entender",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "imply"
+  },
+  {
+   "id": "ed86ceabc4",
+   "es": "insinuar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "imply"
+  },
+  {
+   "id": "0c3f3bab7b",
+   "es": "dar a entender",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "imply"
+  },
+  {
+   "id": "982c31e417",
+   "es": "¿Estás insinuando que soy vago?",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "Are you implying that I am lazy?"
+  },
+  {
+   "id": "dccf19f6e4",
+   "es": "sarcástico",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "sarcastic"
+  },
+  {
+   "id": "242e28a978",
+   "es": "¿Estaba siendo sarcástico o lo decía en serio?",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Was he being sarcastic, or did he mean it?"
+  },
+  {
+   "id": "f5d5ae80bb",
+   "es": "al parecer / por lo visto",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "apparently"
+  },
+  {
+   "id": "fc207af8b4",
+   "es": "al parecer",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "apparently"
+  },
+  {
+   "id": "77a0a08e59",
+   "es": "por lo visto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "apparently"
+  },
+  {
+   "id": "85cc4a28c0",
+   "es": "aparentemente",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "apparently"
+  },
+  {
+   "id": "514d0c92f5",
+   "es": "Al parecer, cancelaron la reunión.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Apparently, the meeting has been canceled."
+  },
+  {
+   "id": "e899b297eb",
+   "es": "parecer",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "seem"
+  },
+  {
+   "id": "5d8950b36a",
+   "es": "Pareces preocupado. ¿Está todo bien?",
+   "kinds": [
+    "word.example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "You seem worried. Is everything OK?"
+  },
+  {
+   "id": "c94f9a284c",
+   "es": "arrepentirse de / lamentar",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "regret"
+  },
+  {
+   "id": "a1d5394059",
+   "es": "arrepentirse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "regret"
+  },
+  {
+   "id": "a2f5fa885d",
+   "es": "lamentar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "regret"
+  },
+  {
+   "id": "62de64ef0b",
+   "es": "Me arrepiento de haberle dicho esas cosas a mi hermano.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I regret saying those things to my brother."
+  },
+  {
+   "id": "123b97f6a5",
+   "es": "acordarse de haber hecho",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "remember doing"
+  },
+  {
+   "id": "38c3817591",
+   "es": "recordar haber hecho",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "remember doing"
+  },
+  {
+   "id": "974a0ced41",
+   "es": "Me acuerdo de haber hecho la tarea, pero no la encuentro.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I remember doing my homework, but I can’t find it."
+  },
+  {
+   "id": "a4a1dc3c8f",
+   "es": "tender a / soler",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "tend to"
+  },
+  {
+   "id": "81fa4669b8",
+   "es": "tender a",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "tend to"
+  },
+  {
+   "id": "7e8d0abb5a",
+   "es": "soler",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "tend to"
+  },
+  {
+   "id": "06b7614688",
+   "es": "La gente tiende a hablar más rápido cuando está nerviosa.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "People tend to speak faster when they are nervous."
+  },
+  {
+   "id": "b23dbd773b",
+   "es": "directo / franco",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "straightforward"
+  },
+  {
+   "id": "3ffc0fd63f",
+   "es": "directo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "straightforward"
+  },
+  {
+   "id": "93722a04fa",
+   "es": "franco",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "straightforward"
+  },
+  {
+   "id": "55e0c1cc1a",
+   "es": "sencillo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "straightforward"
+  },
+  {
+   "id": "424c909e87",
+   "es": "Prefiero las respuestas directas.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I prefer straightforward answers."
+  },
+  {
+   "id": "7ccf507aca",
+   "es": "brusco / demasiado directo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "blunt"
+  },
+  {
+   "id": "11875c8961",
+   "es": "brusco",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "blunt"
+  },
+  {
+   "id": "d09ced1938",
+   "es": "demasiado directo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "blunt"
+  },
+  {
+   "id": "aef1a2d517",
+   "es": "Perdón por ser tan directo, pero tu plan no va a funcionar.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Sorry to be blunt, but your plan won’t work."
+  },
+  {
+   "id": "1b74c89731",
+   "es": "con tacto / diplomático",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "tactful"
+  },
+  {
+   "id": "98aa621174",
+   "es": "con tacto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "tactful"
+  },
+  {
+   "id": "3d65939e28",
+   "es": "diplomático",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "tactful"
+  },
+  {
+   "id": "8828fcf4bf",
+   "es": "Trata de tener tacto cuando des tu opinión.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Try to be tactful when you give feedback."
+  },
+  {
+   "id": "e6a611d139",
+   "es": "señalar / hacer notar",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "point out"
+  },
+  {
+   "id": "cb11c08f9d",
+   "es": "señalar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "point out"
+  },
+  {
+   "id": "5ca37f71cc",
+   "es": "hacer notar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "point out"
+  },
+  {
+   "id": "5e3ec97959",
+   "es": "Señaló un error en mi informe.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "She pointed out a mistake in my report."
+  },
+  {
+   "id": "6a191c1c2a",
+   "es": "sacar (un tema) / mencionar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "bring up"
+  },
+  {
+   "id": "141a0dc78e",
+   "es": "sacar un tema",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "bring up"
+  },
+  {
+   "id": "3c2838c7cd",
+   "es": "mencionar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "bring up"
+  },
+  {
+   "id": "114cd9a804",
+   "es": "plantear",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "bring up"
+  },
+  {
+   "id": "13200b72ed",
+   "es": "No saques el tema de la política en la cena.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Don't bring up politics at dinner."
+  },
+  {
+   "id": "1c2fac4e84",
+   "es": "lenguaje corporal",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "body language"
+  },
+  {
+   "id": "f62cf3b634",
+   "es": "Su lenguaje corporal mostraba que estaba nervioso.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "His body language showed that he was nervous."
+  },
+  {
+   "id": "8ca7ff4825",
+   "es": "No quise decir eso",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "8766ba41f6",
+   "es": "Aclarar un malentendido y explicar lo que quisiste decir.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "47258fbf24",
+   "es": "Cuando algo se entiende mal, en inglés aclaras la intención con mean to: I didn’t mean to sound rude (no fue mi intención). Actually corrige una idea equivocada: Actually, I wasn’t angry (en realidad). Un misunderstanding es un malentendido y el tone, el tono de lo que dices.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "fb1364d850",
+   "es": "Aclaras tu intención con I didn’t mean to…",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "a576660721",
+   "es": "Corriges una idea equivocada con actually.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "ae9e5abda0",
+   "es": "Didn’t mean to + verbo: no era tu intención hacerlo.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "mean"
+  },
+  {
+   "id": "a6efeadce6",
+   "es": "Pensé que estaba enojado, pero en realidad sólo estaba cansado.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I thought he was angry, but actually he was just tired."
+  },
+  {
+   "id": "043f5f63e7",
+   "es": "Actually = en realidad (corrige lo que pensabas). No es «actualmente».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "actually"
+  },
+  {
+   "id": "621827fc1e",
+   "es": "Dos compañeros de trabajo hablan de un correo que cayó mal.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u1-email-tone"
+  },
+  {
+   "id": "3e9bc15b66",
+   "es": "¿Por qué el correo de Nina pareció maleducado?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u1-email-tone"
+  },
+  {
+   "id": "7a3a3db981",
+   "es": "Porque era muy corto, sin saludo ni agradecimiento",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u1-email-tone"
+  },
+  {
+   "id": "bbeef2d76a",
+   "es": "Porque tenía errores",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a2cb293b66",
+   "es": "Porque lo mandó a todos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9d794d7ef6",
+   "es": "Porque estaba en mayúsculas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "67539e5a1c",
+   "es": "Sam dice: «It was a bit short. You just wrote \"Fix this today.\" No hello, no thanks».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u1-email-tone"
+  },
+  {
+   "id": "f870af61de",
+   "es": "¿Qué cree Sam que conviene hacer?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u1-email-tone"
+  },
+  {
+   "id": "aa5848b8a6",
+   "es": "Llamar a Mark, porque el tono no siempre se entiende por escrito",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u1-email-tone"
+  },
+  {
+   "id": "0e70ae1cf9",
+   "es": "Mandarle otro correo a Mark",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5da24cc5f2",
+   "es": "Hablar con el jefe",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "599db037eb",
+   "es": "Sam dice: «A call is better than another email. Tone doesn’t always get across in writing».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u1-email-tone"
+  },
+  {
+   "id": "a7ce7641a9",
+   "es": "No fue mi intención sonar enojado.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I did not mean to sound angry."
+  },
+  {
+   "id": "dd4e89b8c4",
+   "es": "no fue tu intención ser maleducado",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Why did you say that? (no fue tu intención ser maleducado)"
+  },
+  {
+   "id": "0a3f168450",
+   "es": "¿Por qué dijiste eso?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Why did you say that? (no fue tu intención ser maleducado)"
+  },
+  {
+   "id": "c2dde1cd32",
+   "es": "Leer entre líneas",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "0131e89765",
+   "es": "Entender indirectas, sarcasmo y lo que alguien da a entender.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "ad731e310c",
+   "es": "No todo se dice de forma directa. Imply es dar a entender algo sin decirlo; to drop a hint es tirar una indirecta. Si alguien es sarcastic, dice lo contrario de lo que piensa. Apparently (al parecer) y seem (parecer) muestran que no estás del todo seguro.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "466f3b5ef1",
+   "es": "Al parecer, hablaba de Tom.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Apparently, she was talking about Tom."
+  },
+  {
+   "id": "0adbb0ab5e",
+   "es": "Reconoces una indirecta y el sarcasmo.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "196209125e",
+   "es": "Cuentas lo que no sabes seguro con apparently y seem.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "72b54d54f0",
+   "es": "Seem + adjetivo: parecer. Look like va con un sustantivo.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "seem"
+  },
+  {
+   "id": "e788ee2d8c",
+   "es": "Dos amigos comentan una cena de la noche anterior.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u1-dinner"
+  },
+  {
+   "id": "fed1a0585f",
+   "es": "Ivy",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u1-dinner"
+  },
+  {
+   "id": "34dae63ab9",
+   "es": "¿Qué dio a entender Carla con su comentario?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u1-dinner"
+  },
+  {
+   "id": "015a75f3b6",
+   "es": "Que Tom nunca paga",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u1-dinner"
+  },
+  {
+   "id": "f2b607181c",
+   "es": "Que la cena era cara",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9b92d4f47a",
+   "es": "Que Leo llegó tarde",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "fe7cad3c29",
+   "es": "Que Ivy olvidó la billetera",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "65b4de48cf",
+   "es": "Leo dice: «So she was implying that he never pays?».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u1-dinner"
+  },
+  {
+   "id": "fec48ea641",
+   "es": "¿Cómo reaccionó Tom, según Leo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u1-dinner"
+  },
+  {
+   "id": "f00d63677b",
+   "es": "No le hizo gracia y estuvo callado el resto de la noche",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u1-dinner"
+  },
+  {
+   "id": "36f7fddbbb",
+   "es": "Se rió mucho",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1b7df934dd",
+   "es": "Pagó toda la cena",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b91ec66fc8",
+   "es": "Se fue enojado antes del postre",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b5a9c6da0e",
+   "es": "Leo dice: «Tom didn’t seem to find it funny… He went quiet for the rest of the night».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u1-dinner"
+  },
+  {
+   "id": "5ef93fedaa",
+   "es": "no, estaba siendo sarcástico",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Was he being serious? (no, estaba siendo sarcástico)"
+  },
+  {
+   "id": "e0025400df",
+   "es": "¿Lo decía en serio?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Was he being serious? (no, estaba siendo sarcástico)"
+  },
+  {
+   "id": "6eb44ef7bb",
+   "es": "Recordar, dejar, intentar",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "a7fecff4af",
+   "es": "Usar remember, forget, stop, try y regret con -ing o con infinitivo.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "2f4120cae8",
+   "es": "Con -ing hablas de algo que ya hiciste o de la actividad misma: I remember meeting her (me acuerdo de haberla conocido), I regret saying it (me arrepiento de haberlo dicho), We stopped talking (dejamos de hablar). Con to + verbo hablas de lo que hay que hacer o del propósito: Remember to call (acuérdate de llamar), We stopped to talk (paramos para hablar). Try + -ing es probar algo; try to, intentar.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "dd16de4598",
+   "es": "Distingues remember doing (ya pasó) de remember to do (hay que hacerlo).",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "bca40974ca",
+   "es": "Usas stop, try y regret con el sentido correcto.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "ec1f4f2a53",
+   "es": "Me acuerdo de haberla conocido en una fiesta, pero no me acuerdo de su nombre.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I remember meeting her at a party, but I can’t remember her name."
+  },
+  {
+   "id": "7919864443",
+   "es": "Remember + -ing: un recuerdo de algo que ya pasó.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "meeting"
+  },
+  {
+   "id": "4dedd93cab",
+   "es": "Por favor, acuérdate de cerrar la puerta cuando te vayas.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Please remember to close the door when you leave."
+  },
+  {
+   "id": "26da9f14fd",
+   "es": "Remember + to: algo que tienes que hacer.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "to close"
+  },
+  {
+   "id": "64e61fcd3f",
+   "es": "Estábamos cansados, así que paramos para tomar un café.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "We were tired, so we stopped to have a coffee."
+  },
+  {
+   "id": "a6bb30ff8f",
+   "es": "Stop + to: parar para hacer otra cosa. Stop + -ing: dejar de hacerla.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "to have"
+  },
+  {
+   "id": "0623de1b3e",
+   "es": "Regret + -ing: te arrepientes de algo que hiciste.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "saying"
+  },
+  {
+   "id": "a2fd6ff6b9",
+   "es": "Un correo que intenta aclarar un malentendido.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u1-apology"
+  },
+  {
+   "id": "aca455f00e",
+   "es": "¿De qué se arrepiente Nina?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u1-apology"
+  },
+  {
+   "id": "cf2d874776",
+   "es": "De haber escrito el correo con apuro",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u1-apology"
+  },
+  {
+   "id": "9786a87038",
+   "es": "De haber criticado el informe",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "695b09e01b",
+   "es": "De no haber ido a la reunión",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "37f4dade97",
+   "es": "De haber llamado a Mark",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "76bf8c3496",
+   "es": "Nina escribe: «I regret writing it in such a hurry».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u1-apology"
+  },
+  {
+   "id": "55db12e056",
+   "es": "¿Qué hará Nina la próxima vez?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u1-apology"
+  },
+  {
+   "id": "994b76d37d",
+   "es": "Parar a pensar antes de hacer clic en «enviar»",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u1-apology"
+  },
+  {
+   "id": "a32dc9f896",
+   "es": "Dejar de mandar correos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7172d0a7c8",
+   "es": "Pedirle a Mark que revise sus correos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f3c90d72b3",
+   "es": "Escribir más rápido",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "119f49de78",
+   "es": "Nina escribe: «Next time I will stop to think before I click \"send\"» (stop + to = parar para).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u1-apology"
+  },
+  {
+   "id": "976a89864c",
+   "es": "Acuérdate de llamar a tu abuela esta noche.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Remember to call your grandmother tonight."
+  },
+  {
+   "id": "939b888ef9",
+   "es": "dejaste de fumar hace dos años",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Are you still smoking? (dejaste de fumar hace dos años)"
+  },
+  {
+   "id": "4e73156202",
+   "es": "¿Fumas?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Are you still smoking? (dejaste de fumar hace dos años)"
+  },
+  {
+   "id": "06a3f1a6bc",
+   "es": "Directo, pero con tacto",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "48a2ba9458",
+   "es": "Decir algo difícil de forma clara y amable.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "45dce3772b",
+   "es": "Straightforward es claro y directo (algo bueno); blunt es tan directo que puede ofender; tactful es tener tacto. Para señalar un problema usas point out, y para sacar un tema, bring up. Tend to (soler) suaviza una crítica: You tend to interrupt people suena mejor que You always interrupt.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "29824dacf9",
+   "es": "Distingues straightforward, blunt y tactful.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "1eb1ade270",
+   "es": "Señalas un problema con point out y lo suavizas con tend to.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "6d41b15f2d",
+   "es": "Blunt: tan directo que puede caer mal. Se usa para disculparse antes de una crítica.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "blunt"
+  },
+  {
+   "id": "7eedd8840c",
+   "es": "Una publicación de un blog sobre cómo dar una opinión difícil.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u1-feedback-post"
+  },
+  {
+   "id": "3f9bd4555a",
+   "es": "Según el texto, ¿cuál es el problema de las indirectas?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u1-feedback-post"
+  },
+  {
+   "id": "1d5db06511",
+   "es": "Que es fácil no darse cuenta de ellas",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u1-feedback-post"
+  },
+  {
+   "id": "fd449c8b7a",
+   "es": "Que son maleducadas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c6b2029eca",
+   "es": "Que llevan mucho tiempo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "77fde7f327",
+   "es": "Que siempre ofenden",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8d9c75ae93",
+   "es": "El texto dice: «The problem is that hints are easy to miss».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u1-feedback-post"
+  },
+  {
+   "id": "fb6d79869c",
+   "es": "¿Qué diferencia hace el texto entre straightforward y blunt?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u1-feedback-post"
+  },
+  {
+   "id": "35d74d6999",
+   "es": "Se puede ser claro sin ser brusco",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u1-feedback-post"
+  },
+  {
+   "id": "575d05dab6",
+   "es": "Son lo mismo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "249a299219",
+   "es": "Ser brusco funciona mejor",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "08a70e818d",
+   "es": "Hay que evitar ser claro",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f03d733368",
+   "es": "El texto dice: «Being straightforward does not mean being blunt».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u1-feedback-post"
+  },
+  {
+   "id": "91ef2e7cd8",
+   "es": "¿Qué es lo que, según el texto, la gente acepta peor?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u1-feedback-post"
+  },
+  {
+   "id": "2408bbdfff",
+   "es": "El sarcasmo",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u1-feedback-post"
+  },
+  {
+   "id": "c4f0e9b008",
+   "es": "Una opinión sincera",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ead3eb3b63",
+   "es": "Un comentario positivo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "77e6461357",
+   "es": "Una solución en conjunto",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2bf0cddcdf",
+   "es": "El texto dice: «people can accept honest feedback when it is tactful. What they find hard to accept is sarcasm».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u1-feedback-post"
+  },
+  {
+   "id": "6539f75fcf",
+   "es": "sí, pero con tacto",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Should I tell him about the problem? (sí, pero con tacto)"
+  },
+  {
+   "id": "8a2518ea44",
+   "es": "¿Le cuento del problema?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Should I tell him about the problem? (sí, pero con tacto)"
+  },
+  {
+   "id": "f0dc6c4f46",
+   "es": "Más allá de las palabras",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "2f3703691c",
+   "es": "Interpretar el lenguaje corporal y suavizar lo que dices.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "b55c2e491d",
+   "es": "El body language (lenguaje corporal) también comunica. Para hablar de lo que ves sin afirmarlo: He seems nervous, She tends to look away. Para suavizar una opinión: I’d say…, It seems to me that…, a bit. Y si no se entendió tu idea: I couldn’t get my point across.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "56fd5dcc13",
+   "es": "Describes el lenguaje corporal con seem y tend to.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "2b1c36fd24",
+   "es": "Suavizas una opinión y explicas si una idea no se entendió.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "3289bb522d",
+   "es": "¿Qué significa «body language»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "fef2b90a64",
+   "es": "Parece estar cansado. No para de cerrar los ojos.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "He seems to be tired. He keeps closing his eyes."
+  },
+  {
+   "id": "a7c1865c4e",
+   "es": "Seem to + verbo: parecer (por lo que ves).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "seems"
+  },
+  {
+   "id": "3db619122b",
+   "es": "¿Qué piensa hacer Ivy?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u1-dinner"
+  },
+  {
+   "id": "2a82b72660",
+   "es": "Hablar del tema con Carla",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u1-dinner"
+  },
+  {
+   "id": "96dc95d63f",
+   "es": "Pedirle perdón a Tom",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3fe801027f",
+   "es": "Invitar a Tom a cenar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2372e706e7",
+   "es": "No meterse",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3857cc1253",
+   "es": "Ivy dice: «Maybe I’ll bring it up with Carla. She’d want to know he was hurt».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u1-dinner"
+  },
+  {
+   "id": "4d1f976869",
+   "es": "¿Qué explica Nina sobre su correo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u1-email-tone"
+  },
+  {
+   "id": "4bdcf1e514",
+   "es": "Que no quiso sonar enojada: estaba apurada",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u1-email-tone"
+  },
+  {
+   "id": "b3a15ed103",
+   "es": "Que estaba enojada con Mark",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4f2f82d78e",
+   "es": "Que no lo escribió ella",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6289ae2c8a",
+   "es": "Que lo mandó por error",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "cfbbd50b70",
+   "es": "Nina dice: «I didn’t mean to sound angry. I was in a hurry, that’s all».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u1-email-tone"
+  },
+  {
+   "id": "66bcbb3499",
+   "es": "La gente suele apartar la mirada cuando miente.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "People tend to look away when they are lying."
+  },
+  {
+   "id": "43f695a517",
+   "es": "no, no pude transmitirla",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Did they understand your idea? (no, no pude transmitirla)"
+  },
+  {
+   "id": "d72dff1c4c",
+   "es": "¿Entendieron tu idea?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Did they understand your idea? (no, no pude transmitirla)"
+  },
+  {
+   "id": "f83d170692",
+   "es": "Aclarar un malentendido",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "c8204e8e72",
+   "es": "Un compañero se ofendió por un mensaje tuyo. Escríbele un correo breve y con tacto: reconoce que el mensaje sonó mal, explica qué quisiste decir y propón hablar.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "32298e2bab",
+   "es": "Aclaras tu intención (I didn’t mean to…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "03c3bbf4b9",
+   "es": "Corriges la idea equivocada con actually",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "1221518e58",
+   "es": "Pides disculpas (sorry, apologize)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "0638d5ad64",
+   "es": "Reconocí que el mensaje sonó mal y pedí disculpas.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "8408d20b67",
+   "es": "Expliqué lo que quise decir con I didn’t mean to… y actually.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "d7347821e8",
+   "es": "Propuse hablar.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.b2-u1-email-tone": {
+   "setting": "Dos compañeros de trabajo hablan de un correo que cayó mal.",
+   "lines": [
+    "Nina: Can I ask you something? Did my email this morning seem rude to you?",
+    "Sam: Honestly? It was a bit short. You just wrote \"Fix this today.\" No hello, no thanks.",
+    "Nina: Oh no. I didn't mean to sound angry. I was in a hurry, that's all.",
+    "Sam: I know, but Mark actually thought you were annoyed with him.",
+    "Nina: That's a misunderstanding. I'll call him and explain.",
+    "Sam: Good idea. A call is better than another email. Tone doesn't always get across in writing."
+   ]
+  },
+  "en.stim.b2-u1-dinner": {
+   "setting": "Dos amigos comentan una cena de la noche anterior.",
+   "lines": [
+    "Leo: Did you notice what Carla said at dinner? \"Some people never offer to pay.\"",
+    "Ivy: I did. Apparently she was talking about Tom. He always forgets his wallet.",
+    "Leo: So she was implying that he never pays? That was a pretty strong hint.",
+    "Ivy: Well, I don't think she meant to embarrass him. She was being sarcastic, but in a friendly way.",
+    "Leo: Tom didn't seem to find it funny, though. He went quiet for the rest of the night.",
+    "Ivy: Maybe I'll bring it up with Carla. She'd want to know he was hurt."
+   ]
+  },
+  "en.stim.b2-u1-apology": {
+   "setting": "Un correo que intenta aclarar un malentendido.",
+   "lines": [
+    "Hi Mark,",
+    "I want to apologize for my email yesterday. I realize it sounded rude, and I regret writing it in such a hurry.",
+    "I did not mean to criticize your work. Actually, the report is very good. I only wanted to show you one mistake in the numbers before the meeting.",
+    "Next time I will stop to think before I click \"send\". If you have a minute today, I would be happy to talk about it.",
+    "Best wishes,",
+    "Nina"
+   ]
+  },
+  "en.stim.b2-u1-feedback-post": {
+   "setting": "Una publicación de un blog sobre cómo dar una opinión difícil.",
+   "lines": [
+    "Most of us tend to avoid difficult conversations. We are afraid of hurting people, so we say nothing, or we drop a hint and hope the other person understands.",
+    "The problem is that hints are easy to miss. Your colleague may not realize there is a problem at all.",
+    "Being straightforward does not mean being blunt. Start with something positive, then point out the problem clearly and calmly, and finally look for a solution together.",
+    "Remember: people can accept honest feedback when it is tactful. What they find hard to accept is sarcasm."
+   ]
+  }
+ }
+}

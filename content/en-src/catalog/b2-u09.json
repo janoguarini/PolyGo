@@ -1,0 +1,1660 @@
+{
+ "unit": "b2-u09",
+ "level": "B2",
+ "titleEn": "Education and personal growth",
+ "strings": [
+  {
+   "id": "31a88a4c36",
+   "es": "Educación y desarrollo personal",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Education and personal growth"
+  },
+  {
+   "id": "f3644c8934",
+   "es": "Mirar atrás con el tercer condicional y if only, la forma de pensar y la motivación, estudiar con método y salir de la zona de confort.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "a7b04a03dc",
+   "es": "Puedes hablar de tu educación, lamentar decisiones del pasado e imaginar otros resultados, y contar cómo aprendes mejor.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "38f7ebeaf7",
+   "es": "Tercer condicional y wish / if only",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "826a9c5f11",
+   "es": "El tercer condicional imagina un pasado distinto: If + past perfect, would have + participio (If I had studied, I would have passed = si hubiera estudiado, habría aprobado). Negativo: If I hadn’t left, I wouldn’t have started my business. Para lamentar algo del pasado: I wish / If only + past perfect (If only I had asked for help = ojalá hubiera pedido ayuda).",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "de951efc4e",
+   "es": "Si le hubiera hecho caso a mi profesora, habría estudiado ciencias.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "If I had listened to my teacher, I would have studied science."
+  },
+  {
+   "id": "1162c21073",
+   "es": "Si no me hubiera ido, no habría empezado mi negocio.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "If I hadn't left, I wouldn't have started my business."
+  },
+  {
+   "id": "b11f09aa45",
+   "es": "Ojalá hubiera pedido ayuda.",
+   "kinds": [
+    "example",
+    "word.example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "If only I had asked for help."
+  },
+  {
+   "id": "4b3d7c30a6",
+   "es": "habría / hubiera",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "would have"
+  },
+  {
+   "id": "b197523c29",
+   "es": "habría",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "would have"
+  },
+  {
+   "id": "30d94d5563",
+   "es": "hubiera",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "would have"
+  },
+  {
+   "id": "71a18e77d7",
+   "es": "Si hubiera estudiado, habría aprobado el examen.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "If I had studied, I would have passed the exam."
+  },
+  {
+   "id": "d296b948ab",
+   "es": "ojalá / si tan sólo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "if only"
+  },
+  {
+   "id": "a67cbdd101",
+   "es": "si tan sólo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "if only"
+  },
+  {
+   "id": "0a938df224",
+   "es": "recordar / mirar atrás (a una época)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "look back on"
+  },
+  {
+   "id": "1ca1f2f19e",
+   "es": "recordar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "look back on"
+  },
+  {
+   "id": "9a97bb64cb",
+   "es": "mirar atrás",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "look back on"
+  },
+  {
+   "id": "91f838277a",
+   "es": "Muchas veces recuerdo mis años de colegio.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "I often look back on my school days."
+  },
+  {
+   "id": "f3d032364e",
+   "es": "abandonar (los estudios)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "drop out"
+  },
+  {
+   "id": "b57895c23a",
+   "es": "dejar los estudios",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "drop out"
+  },
+  {
+   "id": "318534ca25",
+   "es": "Abandonó la universidad en segundo año.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "He dropped out of university in his second year."
+  },
+  {
+   "id": "5ab80fdbab",
+   "es": "tener dificultades / costar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "struggle"
+  },
+  {
+   "id": "e8fa45f775",
+   "es": "tener dificultades",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "struggle"
+  },
+  {
+   "id": "b42f080d23",
+   "es": "costar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "struggle"
+  },
+  {
+   "id": "787ba7c098",
+   "es": "luchar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "struggle"
+  },
+  {
+   "id": "0b2f6a8a99",
+   "es": "En el colegio me costaba matemática.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I struggled with math at school."
+  },
+  {
+   "id": "12a85f0be4",
+   "es": "mentalidad / forma de pensar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "mindset"
+  },
+  {
+   "id": "a48943751b",
+   "es": "mentalidad",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "mindset"
+  },
+  {
+   "id": "f554bf0b90",
+   "es": "forma de pensar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "mindset"
+  },
+  {
+   "id": "f0856d8b86",
+   "es": "Tu forma de pensar es más importante que tu talento.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "Your mindset is more important than your talent."
+  },
+  {
+   "id": "3d04814b65",
+   "es": "potencial",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "potential"
+  },
+  {
+   "id": "0f1f7f6ea2",
+   "es": "Los buenos profesores ayudan a los alumnos a desarrollar su potencial.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Good teachers help students reach their potential."
+  },
+  {
+   "id": "c42fc93b15",
+   "es": "motivación",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "motivation"
+  },
+  {
+   "id": "8c9bf9bf03",
+   "es": "La motivación va y viene.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "Motivation comes and goes."
+  },
+  {
+   "id": "4651fff7cd",
+   "es": "progresar / avanzar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "make progress"
+  },
+  {
+   "id": "dd87ae8d5d",
+   "es": "progresar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "make progress"
+  },
+  {
+   "id": "a79b040efa",
+   "es": "avanzar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "make progress"
+  },
+  {
+   "id": "d63b77b431",
+   "es": "hacer progresos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "make progress"
+  },
+  {
+   "id": "f3706e2660",
+   "es": "Estás progresando mucho con tu inglés.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "You are making great progress with your English."
+  },
+  {
+   "id": "dc0148dc1a",
+   "es": "postergar / dejar para después",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "procrastinate"
+  },
+  {
+   "id": "b0a9a69fe7",
+   "es": "postergar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "procrastinate"
+  },
+  {
+   "id": "2be6aabd90",
+   "es": "procrastinar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "procrastinate"
+  },
+  {
+   "id": "f92fa9d495",
+   "es": "dejar para después",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "procrastinate"
+  },
+  {
+   "id": "1cd212bef8",
+   "es": "¡Deja de postergar y empieza la tarea!",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Stop procrastinating and start your homework!"
+  },
+  {
+   "id": "e521b6f7a6",
+   "es": "autodisciplina / constancia",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "self-discipline"
+  },
+  {
+   "id": "1a7be952dd",
+   "es": "autodisciplina",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "self-discipline"
+  },
+  {
+   "id": "7d60df0b0d",
+   "es": "disciplina",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "self-discipline"
+  },
+  {
+   "id": "198dddb656",
+   "es": "constancia",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "self-discipline"
+  },
+  {
+   "id": "29111bdc81",
+   "es": "Aprender un idioma requiere autodisciplina.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "Learning a language takes self-discipline."
+  },
+  {
+   "id": "bf2e20b5a5",
+   "es": "llevar la cuenta de / registrar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "keep track of"
+  },
+  {
+   "id": "1d36e1cb03",
+   "es": "llevar la cuenta de",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "keep track of"
+  },
+  {
+   "id": "fe0b2b99bd",
+   "es": "registrar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "keep track of"
+  },
+  {
+   "id": "2c733dda95",
+   "es": "llevar un registro de",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "keep track of"
+  },
+  {
+   "id": "dd463e308d",
+   "es": "Llevo la cuenta de mis horas de estudio en un cuaderno.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I keep track of my study hours in a notebook."
+  },
+  {
+   "id": "1fbf9b7617",
+   "es": "ponerse al día",
+   "kinds": [
+    "word.translation",
+    "word.accepted",
+    "exercise.pair"
+   ],
+   "en": "catch up"
+  },
+  {
+   "id": "c34a07ee6d",
+   "es": "recuperar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "catch up"
+  },
+  {
+   "id": "12a0144b5c",
+   "es": "Falté a dos clases, así que tengo que ponerme al día.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I missed two classes, so I need to catch up."
+  },
+  {
+   "id": "8c78915c42",
+   "es": "beca",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "scholarship"
+  },
+  {
+   "id": "de9be5d85e",
+   "es": "Ganó una beca para estudiar en el exterior.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "She won a scholarship to study abroad."
+  },
+  {
+   "id": "d853bb8034",
+   "es": "inscribirse / anotarse",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "enroll"
+  },
+  {
+   "id": "9aa3ac447d",
+   "es": "inscribirse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "enroll"
+  },
+  {
+   "id": "46b71622bc",
+   "es": "anotarse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "enroll"
+  },
+  {
+   "id": "581bd59365",
+   "es": "matricularse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "enroll"
+  },
+  {
+   "id": "0f646898e2",
+   "es": "Me anoté en un curso nocturno.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I have enrolled in an evening course."
+  },
+  {
+   "id": "c8b8b98135",
+   "es": "zona de confort",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "comfort zone"
+  },
+  {
+   "id": "90d985e160",
+   "es": "Hablar en público me saca de mi zona de confort.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Speaking in public takes me out of my comfort zone."
+  },
+  {
+   "id": "40905c1bc6",
+   "es": "probar / intentarlo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "give it a try"
+  },
+  {
+   "id": "775a24ecb9",
+   "es": "intentarlo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "give it a try"
+  },
+  {
+   "id": "995bf03be9",
+   "es": "hacer la prueba",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "give it a try"
+  },
+  {
+   "id": "23de31c1c3",
+   "es": "¿Nunca probaste yoga? ¡Pruébalo!",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "You've never tried yoga? Give it a try!"
+  },
+  {
+   "id": "cab09ce814",
+   "es": "Si hubiera…",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "dcf5dc308b",
+   "es": "Imaginar un pasado distinto con el tercer condicional.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "c5e482050e",
+   "es": "El tercer condicional habla de algo que no pasó y de su resultado imaginario: If + had + participio, would have + participio. If I had studied, I would have passed (si hubiera estudiado, habría aprobado; pero no estudié). En la conversación: If I’d studied, I’d have passed.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "5ae4c306f2",
+   "es": "Imaginas otro resultado para el pasado con if + had + participio.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "1f8a487a90",
+   "es": "Usas would have / wouldn’t have + participio en la otra parte.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "121c5cc869",
+   "es": "Would have + participio (passed).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "passed"
+  },
+  {
+   "id": "865a1db7d2",
+   "es": "Después de if va el past perfect (had + participio), no would.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "had"
+  },
+  {
+   "id": "7ed406965b",
+   "es": "Dos excompañeros de colegio se encuentran veinte años después.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u9-reunion"
+  },
+  {
+   "id": "8df830a849",
+   "es": "Clara",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u9-reunion"
+  },
+  {
+   "id": "27b1c2eee3",
+   "es": "¿Qué habría estudiado Clara si le hubiera hecho caso a su profesora?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u9-reunion"
+  },
+  {
+   "id": "526cd858d4",
+   "es": "Ciencias",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u9-reunion"
+  },
+  {
+   "id": "f72f02cc92",
+   "es": "Matemática",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9c012c61aa",
+   "es": "Ingeniería",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1a1b3e6ecc",
+   "es": "Administración",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "16a590cd54",
+   "es": "Clara dice: «If I had listened to Mrs. Gray, I would have studied science».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u9-reunion"
+  },
+  {
+   "id": "d3d1dbef41",
+   "es": "¿Por qué Paul no está seguro de arrepentirse?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u9-reunion"
+  },
+  {
+   "id": "5c2bc0a82e",
+   "es": "Porque si no hubiera dejado la facultad, no habría empezado su negocio",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u9-reunion"
+  },
+  {
+   "id": "5f037ba8f5",
+   "es": "Porque no le gustaba la ingeniería",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3a23c3d254",
+   "es": "Porque nunca tuvo dificultades",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0a19efb15f",
+   "es": "Porque Clara lo convenció",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "defb85db1e",
+   "es": "Paul dice: «But if I hadn’t left, I wouldn’t have started my business. So I’m not sure».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u9-reunion"
+  },
+  {
+   "id": "ccf4603085",
+   "es": "Si hubiéramos salido antes, habríamos alcanzado el tren.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "If we had left earlier we would have caught the train."
+  },
+  {
+   "id": "d9d5fdc007",
+   "es": "si hubieras estudiado, habrías aprobado",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Why did you fail the test? (si hubieras estudiado, habrías aprobado)"
+  },
+  {
+   "id": "d4433750fc",
+   "es": "¿Por qué desaprobaste la prueba?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Why did you fail the test? (si hubieras estudiado, habrías aprobado)"
+  },
+  {
+   "id": "b36969396a",
+   "es": "Ojalá hubiera…",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "99b6f890e2",
+   "es": "Lamentar el pasado con if only y wish, y recordar una época.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "1c8619a594",
+   "es": "Para lamentar algo del pasado: I wish / If only + past perfect. If only I had asked for help (ojalá hubiera pedido ayuda). I wish I hadn’t said that (ojalá no hubiera dicho eso). Look back on es recordar una época de tu vida. Struggle es tener dificultades con algo.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "6ace5423ef",
+   "es": "Lamentas el pasado con if only / I wish + past perfect.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "6966621b06",
+   "es": "Recuerdas una época con look back on y cuentas qué te costaba.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "397d1d7311",
+   "es": "If only / I wish + past perfect: lamentar el pasado.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "had"
+  },
+  {
+   "id": "e91802de18",
+   "es": "Ojalá no le hubiera dicho eso.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I wish I hadn't said that to her."
+  },
+  {
+   "id": "b68ce27033",
+   "es": "¿Qué lamenta Paul?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u9-reunion"
+  },
+  {
+   "id": "e543f2358d",
+   "es": "No haber pedido ayuda cuando tenía dificultades",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u9-reunion"
+  },
+  {
+   "id": "34f547814b",
+   "es": "Haber estudiado ingeniería",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0e596048d7",
+   "es": "Haber empezado un negocio",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "345a731d0b",
+   "es": "No haber ido a la reunión",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ecf6351ac1",
+   "es": "Paul dice: «If only I had asked for help when I was struggling».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u9-reunion"
+  },
+  {
+   "id": "a0f32f9f34",
+   "es": "¿Qué le pasó a Paul en la universidad?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u9-reunion"
+  },
+  {
+   "id": "f571a371c5",
+   "es": "La dejó en segundo año",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u9-reunion"
+  },
+  {
+   "id": "f8f927b4b3",
+   "es": "Se recibió de ingeniero",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d1e37a0ec4",
+   "es": "Cambió de carrera",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6ba1521cd7",
+   "es": "Nunca empezó",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9e13410ec4",
+   "es": "Paul dice: «I dropped out of university in my second year».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u9-reunion"
+  },
+  {
+   "id": "56e5f5386f",
+   "es": "ojalá hubieras estudiado más",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Do you regret anything from school? (ojalá hubieras estudiado más)"
+  },
+  {
+   "id": "23fbb73883",
+   "es": "¿Te arrepientes de algo del colegio?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Do you regret anything from school? (ojalá hubieras estudiado más)"
+  },
+  {
+   "id": "6d6404f983",
+   "es": "La forma de pensar",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "9521f3679e",
+   "es": "Hablar de la mentalidad, la motivación y el progreso.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "ae7c408c35",
+   "es": "Your mindset es tu forma de pensar. Potential es tu potencial: reach your potential (desarrollarlo al máximo). Motivation es la motivación. Make progress es progresar (progress es incontable: no se dice «a progress»).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "04ca684182",
+   "es": "Hablas de la mentalidad y la motivación.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "c35c95816d",
+   "es": "Cuentas tu progreso con make progress.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "39d238fa82",
+   "es": "Collocation: make progress (no «do progress»).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "making"
+  },
+  {
+   "id": "12b8943b6f",
+   "es": "Un artículo de divulgación sobre la mentalidad de crecimiento.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u9-mindset"
+  },
+  {
+   "id": "c0ee81f106",
+   "es": "¿Qué piensan las personas con «mentalidad fija» cuando algo les cuesta?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u9-mindset"
+  },
+  {
+   "id": "d8d70c4e87",
+   "es": "Que simplemente no son buenas para eso",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u9-mindset"
+  },
+  {
+   "id": "8862949599",
+   "es": "Que tienen que practicar más",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "53657871ac",
+   "es": "Que el profesor es malo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "82bb22efeb",
+   "es": "Que es cuestión de tiempo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "68e3366618",
+   "es": "El artículo dice: «When they struggle, they think: \"I am just not good at this.\"».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u9-mindset"
+  },
+  {
+   "id": "8a4930a971",
+   "es": "Para quien tiene «mentalidad de crecimiento», ¿qué es un error?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u9-mindset"
+  },
+  {
+   "id": "e06553dec4",
+   "es": "Información que muestra qué practicar después",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u9-mindset"
+  },
+  {
+   "id": "81728de9a2",
+   "es": "Un fracaso",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "eeebb5d6f6",
+   "es": "Una razón para abandonar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3d9732e76f",
+   "es": "Algo que hay que ocultar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0f6c29555d",
+   "es": "El artículo dice: «a mistake is not a failure but information: it shows what to practice next».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u9-mindset"
+  },
+  {
+   "id": "07a19e93b1",
+   "es": "¿Qué ayuda a que los alumnos sigan motivados más tiempo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u9-mindset"
+  },
+  {
+   "id": "bdf23b270e",
+   "es": "Ver su propio progreso",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u9-mindset"
+  },
+  {
+   "id": "f59551a881",
+   "es": "Sacar buenas notas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a8d2410a2f",
+   "es": "Tener talento",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "20beaa8e28",
+   "es": "Estudiar solos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "701cf1fb3c",
+   "es": "El artículo dice: «students who see their progress stay motivated for longer».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u9-mindset"
+  },
+  {
+   "id": "94a7b55ed6",
+   "es": "estás progresando mucho",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "How is your English going? (estás progresando mucho)"
+  },
+  {
+   "id": "d2939cf15a",
+   "es": "¿Cómo va tu inglés?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How is your English going? (estás progresando mucho)"
+  },
+  {
+   "id": "d1b0ff200b",
+   "es": "Estudiar con método",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "1110310da6",
+   "es": "Contar cómo organizas el estudio y cómo dejar de postergar.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "beab04c04b",
+   "es": "Procrastinate es postergar, dejar todo para después. Self-discipline es la autodisciplina, la constancia. Keep track of es llevar la cuenta o el registro de algo. Catch up es ponerse al día: I need to catch up with the classes I missed.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "52aef15598",
+   "es": "Cuentas cómo organizas tu estudio y llevas la cuenta.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "e1a7341724",
+   "es": "Hablas de postergar, de la constancia y de ponerte al día.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "db3ce7c714",
+   "es": "Una publicación de blog sobre dejar de postergar.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u9-procrastinate"
+  },
+  {
+   "id": "37244ff3ea",
+   "es": "Según el autor, ¿qué lo ayudó a dejar de postergar?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u9-procrastinate"
+  },
+  {
+   "id": "822e07eff1",
+   "es": "La autodisciplina: una rutina que funciona aun en los días malos",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u9-procrastinate"
+  },
+  {
+   "id": "58fbea4c8c",
+   "es": "La motivación",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "10caef82f5",
+   "es": "Un profesor particular",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3e7757437a",
+   "es": "Apagar el teléfono",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "cfda7e718e",
+   "es": "Escribe: «What finally helped was not motivation… What I needed was self-discipline: a routine that works even on bad days».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u9-procrastinate"
+  },
+  {
+   "id": "6c82841427",
+   "es": "¿Qué hace con cada sesión de estudio?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u9-procrastinate"
+  },
+  {
+   "id": "c1fa9bd578",
+   "es": "La anota en un cuaderno y le gusta ver crecer la lista",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u9-procrastinate"
+  },
+  {
+   "id": "f26b2468d7",
+   "es": "La graba en video",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0119272be0",
+   "es": "La comparte en las redes",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4654d326d2",
+   "es": "Se la muestra a un amigo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3d06455acd",
+   "es": "Escribe: «I keep track of every session in a notebook, and seeing the list grow is surprisingly satisfying».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u9-procrastinate"
+  },
+  {
+   "id": "9cd9939144",
+   "es": "Un estudiante habla con una tutora de la universidad.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u9-advisor"
+  },
+  {
+   "id": "ebec404b68",
+   "es": "Ivan",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u9-advisor"
+  },
+  {
+   "id": "a60642c29f",
+   "es": "Ms. Ortiz",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u9-advisor"
+  },
+  {
+   "id": "15cad6a28e",
+   "es": "¿Por qué Ivan piensa en dejar la facultad?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u9-advisor"
+  },
+  {
+   "id": "2416a57a9d",
+   "es": "Faltó seis semanas por el trabajo y cree que no se va a poder poner al día",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u9-advisor"
+  },
+  {
+   "id": "62611c22ab",
+   "es": "No le gusta su carrera",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0bc89ee5a3",
+   "es": "Le ofrecieron un trabajo mejor",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e73931722d",
+   "es": "Desaprobó un examen",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ff500d8b0a",
+   "es": "Ivan dice: «I’ve missed six weeks of classes because of my job, and I’ll never catch up».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u9-advisor"
+  },
+  {
+   "id": "5be85d6182",
+   "es": "Deja de postergar y empieza la tarea.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Stop procrastinating and start your homework."
+  },
+  {
+   "id": "0a59585cf6",
+   "es": "faltaste a clases y tienes que ponerte al día",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Why are you studying on a Saturday? (faltaste a clases y tienes que ponerte al día)"
+  },
+  {
+   "id": "d99adadfb1",
+   "es": "¿Por qué estás estudiando un sábado?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Why are you studying on a Saturday? (faltaste a clases y tienes que ponerte al día)"
+  },
+  {
+   "id": "e542cfe0bb",
+   "es": "Salir de la zona de confort",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "619afaa0f9",
+   "es": "Hablar de becas, inscripciones y de animarte a probar algo nuevo.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "cda146c6c7",
+   "es": "A scholarship es una beca. Enroll (in a course) es inscribirse. Your comfort zone es tu zona de confort, y step out of it, salir de ella. Give it a try es probarlo, animarse. Con el tercer condicional cuentas lo que habría pasado: If I’d known, I wouldn’t have…",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "5ebd10a362",
+   "es": "Hablas de becas e inscripciones.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "0f8696c648",
+   "es": "Animas a alguien a probar algo fuera de su zona de confort.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "e2a0fe7940",
+   "es": "¿Qué le ofrece la tutora a Ivan?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u9-advisor"
+  },
+  {
+   "id": "b7d230b743",
+   "es": "Una beca para estudiantes que trabajan, que le paga la cuota",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u9-advisor"
+  },
+  {
+   "id": "6e923c350e",
+   "es": "Un trabajo en la universidad",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b8cca04ae1",
+   "es": "Más tiempo para el examen",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ae5d7c6145",
+   "es": "Cambiarlo de carrera",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "273ddc51d2",
+   "es": "La tutora pregunta por «our scholarship for working students» y explica: «It pays your fees, so you could work fewer hours».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u9-advisor"
+  },
+  {
+   "id": "5dd1dbc579",
+   "es": "¿Qué habría hecho distinto Ivan si hubiera sabido antes de la beca?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u9-advisor"
+  },
+  {
+   "id": "b4c923a687",
+   "es": "No habría tomado tantos turnos de trabajo",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u9-advisor"
+  },
+  {
+   "id": "ee6c5a22b2",
+   "es": "No se habría inscripto",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "538e2b0f68",
+   "es": "Habría cambiado de trabajo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d8b2be9712",
+   "es": "Habría dejado antes la facultad",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "acfc0777a4",
+   "es": "Ivan dice: «If I’d known about it earlier, I wouldn’t have taken so many shifts».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u9-advisor"
+  },
+  {
+   "id": "88dd47193d",
+   "es": "¿Qué le recomienda el autor a quien nunca probó su método?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u9-procrastinate"
+  },
+  {
+   "id": "cc4d889d77",
+   "es": "Que lo pruebe, aunque al principio se sienta raro",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u9-procrastinate"
+  },
+  {
+   "id": "aefb7085d0",
+   "es": "Que no lo intente",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "177ea71eb6",
+   "es": "Que pida ayuda a un experto",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7bb1bf4142",
+   "es": "Que estudie más horas seguidas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "33d4edc686",
+   "es": "Escribe: «If you have never tried it, give it a try. It feels strange at first, a bit outside your comfort zone».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u9-procrastinate"
+  },
+  {
+   "id": "c21d0f00ad",
+   "es": "anímalo: que lo pruebe",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "I'm scared of singing in public. (anímalo: que lo pruebe)"
+  },
+  {
+   "id": "4868109d53",
+   "es": "Me da miedo cantar en público.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I'm scared of singing in public. (anímalo: que lo pruebe)"
+  },
+  {
+   "id": "4e8a8c47e2",
+   "es": "Mirar atrás",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "1fbf66d90b",
+   "es": "Mira hacia atrás en tu educación (el colegio, la facultad, un curso). Cuenta una decisión, imagina qué habría pasado con otra elección y di qué aprendiste.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "8943153f92",
+   "es": "Usas el tercer condicional (If I had…, I would have…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "b123921ee7",
+   "es": "Empiezas la condición con if + had",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "51d7ca82f8",
+   "es": "Lamentas algo con I wish o If only",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "8fc9f2d04a",
+   "es": "Imaginé otro resultado con If I had…, I would have…",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "45358c1ccd",
+   "es": "Lamenté algo con I wish o If only.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "c441ac6c72",
+   "es": "Conté qué aprendí.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.b2-u9-reunion": {
+   "setting": "Dos excompañeros de colegio se encuentran veinte años después.",
+   "lines": [
+    "Paul: Twenty years! Do you ever look back on our school days?",
+    "Clara: All the time. If I had listened to Mrs. Gray, I would have studied science. I loved it, but I was too lazy.",
+    "Paul: You weren't lazy. You just had a lot going on at home.",
+    "Clara: Maybe. And you? You were always the best at math.",
+    "Paul: I dropped out of university in my second year. If I hadn't, I would have become an engineer.",
+    "Clara: Do you regret it?",
+    "Paul: Sometimes. If only I had asked for help when I was struggling. But if I hadn't left, I wouldn't have started my business. So I'm not sure."
+   ]
+  },
+  "en.stim.b2-u9-mindset": {
+   "setting": "Un artículo de divulgación sobre la mentalidad de crecimiento.",
+   "lines": [
+    "Why do some students give up after one bad grade, while others work harder? According to many psychologists, the answer is their mindset.",
+    "People with a \"fixed mindset\" believe that intelligence is something you are born with. When they struggle, they think: \"I am just not good at this.\"",
+    "People with a \"growth mindset\" believe that ability can be developed. For them, a mistake is not a failure but information: it shows what to practice next.",
+    "The good news is that mindset can change. Teachers who praise effort instead of talent help students reach their potential, and students who see their progress stay motivated for longer."
+   ]
+  },
+  "en.stim.b2-u9-procrastinate": {
+   "setting": "Una publicación de blog sobre dejar de postergar.",
+   "lines": [
+    "For years I was an expert at procrastinating. I cleaned my room, checked my phone, made coffee… anything except studying.",
+    "What finally helped was not motivation. Motivation comes and goes. What I needed was self-discipline: a routine that works even on bad days.",
+    "Now I study for twenty-five minutes, then take a five-minute break. I keep track of every session in a notebook, and seeing the list grow is surprisingly satisfying.",
+    "If you have never tried it, give it a try. It feels strange at first, a bit outside your comfort zone, but after two weeks it becomes a habit."
+   ]
+  },
+  "en.stim.b2-u9-advisor": {
+   "setting": "Un estudiante habla con una tutora de la universidad.",
+   "lines": [
+    "Ivan: I'm thinking of dropping out. I've missed six weeks of classes because of my job, and I'll never catch up.",
+    "Ms. Ortiz: Wait. Before you decide, have you heard about our scholarship for working students?",
+    "Ivan: No. What does it involve?",
+    "Ms. Ortiz: It pays your fees, so you could work fewer hours. You'd have time to catch up with the classes you've missed.",
+    "Ivan: That would change everything. If I'd known about it earlier, I wouldn't have taken so many shifts.",
+    "Ms. Ortiz: Well, you know now. Applications close on Friday. I can help you with the form.",
+    "Ivan: Thank you. I really thought I had no choice."
+   ]
+  }
+ }
+}

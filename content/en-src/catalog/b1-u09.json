@@ -395,7 +395,8 @@
    "es": "reducir",
    "kinds": [
     "word.translation",
-    "exercise.pair"
+    "exercise.pair",
+    "word.accepted"
    ],
    "en": "reduce"
   },

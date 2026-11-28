@@ -50,7 +50,9 @@ export const LANGUAGES: readonly LanguageConfig[] = [
     speechLocale: 'en-US',
     script: 'latin',
     variant: 'Inglés general americano',
-    levels: ['A1', 'A2'],
+    // A1, A2, B1 (20261122120000 + 20261123120000_publish_en_b1) y B2 (20261124120000 +
+    // 20261125120000_publish_en_b2) publicados en producción.
+    levels: ['A1', 'A2', 'B1', 'B2'],
   },
   {
     code: 'it',

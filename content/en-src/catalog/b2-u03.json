@@ -1,0 +1,1572 @@
+{
+ "unit": "b2-u03",
+ "level": "B2",
+ "titleEn": "Society, culture and current affairs",
+ "strings": [
+  {
+   "id": "73414e1b45",
+   "es": "Sociedad, cultura y actualidad",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Society, culture and current affairs"
+  },
+  {
+   "id": "88766728e5",
+   "es": "Cambios en la sociedad, generaciones y costumbres, cifras y encuestas, y la voz pasiva avanzada: has been done, is being done, it is said that…",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "1e27a092a3",
+   "es": "Puedes hablar de cambios sociales, entender una noticia con cifras y contar lo que se dice o se espera con la voz pasiva.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "04a99dc70c",
+   "es": "Voz pasiva avanzada",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "d7797204d5",
+   "es": "La pasiva pone el foco en lo que pasa, no en quién lo hace. Present perfect: has been + participio (The roof has been repaired). Continuo: is / are being + participio (New homes are being built). Con modales: should / can / will be + participio. Impersonal, para lo que piensa o dice la gente: It is said that… / It is believed that…, o Something is expected to / is believed to + verbo.",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "8bc802db64",
+   "es": "Se están construyendo dos mil viviendas nuevas cerca del río.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Two thousand new homes are being built near the river."
+  },
+  {
+   "id": "b011ba32a9",
+   "es": "El techo ya fue reparado.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "The roof has already been repaired."
+  },
+  {
+   "id": "d02f768153",
+   "es": "Se dice que vivir solo hace que la gente se sienta sola.",
+   "kinds": [
+    "example"
+   ],
+   "en": "It is said that living alone makes people lonely."
+  },
+  {
+   "id": "1209d955ae",
+   "es": "sociedad",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "society"
+  },
+  {
+   "id": "e3f6130ea0",
+   "es": "La tecnología cambió nuestra sociedad.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "Technology has changed our society."
+  },
+  {
+   "id": "25d97d848c",
+   "es": "generación",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "generation"
+  },
+  {
+   "id": "7729a048a6",
+   "es": "Mi generación creció con internet.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "My generation grew up with the internet."
+  },
+  {
+   "id": "f33164b09d",
+   "es": "tendencia",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "trend"
+  },
+  {
+   "id": "78cff7a84b",
+   "es": "Trabajar desde casa es una tendencia en aumento.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "Working from home is a growing trend."
+  },
+  {
+   "id": "925394cfc8",
+   "es": "En algunos países es costumbre sacarse los zapatos.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "In some countries it is a custom to take off your shoes."
+  },
+  {
+   "id": "7423ad8a23",
+   "es": "población",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "population"
+  },
+  {
+   "id": "3dcadd74b2",
+   "es": "La población de la ciudad aumentó.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "The population of the city has risen."
+  },
+  {
+   "id": "796e871fee",
+   "es": "mayoría",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "majority"
+  },
+  {
+   "id": "ee8efc8794",
+   "es": "La mayoría de la gente votó a favor del plan.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "The majority of people voted for the plan."
+  },
+  {
+   "id": "523548e695",
+   "es": "minoría",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "minority"
+  },
+  {
+   "id": "930ecc02f6",
+   "es": "Sólo una minoría de los estudiantes vive sola.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Only a minority of students live alone."
+  },
+  {
+   "id": "d3ae3ae429",
+   "es": "promedio / medio",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "average"
+  },
+  {
+   "id": "c676e4334d",
+   "es": "promedio",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "average"
+  },
+  {
+   "id": "3f0d209ebb",
+   "es": "medio",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "average"
+  },
+  {
+   "id": "28cea1f9f7",
+   "es": "La familia promedio tiene menos de dos hijos.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "The average family has fewer than two children."
+  },
+  {
+   "id": "918555044d",
+   "es": "encuesta",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "survey"
+  },
+  {
+   "id": "d1e3dca4d8",
+   "es": "Según una encuesta, la mayoría de la gente es feliz.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "According to a survey, most people are happy."
+  },
+  {
+   "id": "afd74e96fa",
+   "es": "aumentar / subir",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "rise"
+  },
+  {
+   "id": "0f82c9cecc",
+   "es": "aumentar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "rise"
+  },
+  {
+   "id": "f2df514513",
+   "es": "subir",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "rise"
+  },
+  {
+   "id": "d8da8fb1ff",
+   "es": "Los precios aumentaron mucho este año.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Prices have risen a lot this year."
+  },
+  {
+   "id": "0468d01ec2",
+   "es": "disminuir / bajar",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "decline"
+  },
+  {
+   "id": "5f77e48005",
+   "es": "El número de familias numerosas disminuyó.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The number of large families has declined."
+  },
+  {
+   "id": "d62075ebf5",
+   "es": "se dice que",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "it is said that"
+  },
+  {
+   "id": "7d24f9185d",
+   "es": "dicen que",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "it is said that"
+  },
+  {
+   "id": "03805f34f6",
+   "es": "Se dice que la casa tiene doscientos años.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "It is said that the house is two hundred years old."
+  },
+  {
+   "id": "f90e725bd3",
+   "es": "se espera que",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "be expected to"
+  },
+  {
+   "id": "ca86b839ec",
+   "es": "se prevé que",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "be expected to"
+  },
+  {
+   "id": "99685210e0",
+   "es": "Se espera que las viviendas nuevas estén listas el año que viene.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "The new homes are expected to be ready next year."
+  },
+  {
+   "id": "91a1289f29",
+   "es": "generalizado / extendido",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "widespread"
+  },
+  {
+   "id": "087b250b24",
+   "es": "generalizado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "widespread"
+  },
+  {
+   "id": "7f6aa6cfed",
+   "es": "extendido",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "widespread"
+  },
+  {
+   "id": "76c09c7655",
+   "es": "Es una idea muy extendida, pero no es cierta.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "It is a widespread idea, but it is not true."
+  },
+  {
+   "id": "5eaa9eb3ab",
+   "es": "vivienda",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "housing"
+  },
+  {
+   "id": "bfb7aa7d54",
+   "es": "La vivienda es muy cara en las ciudades grandes.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "Housing is very expensive in big cities."
+  },
+  {
+   "id": "c1e2d5c67a",
+   "es": "tener lugar / realizarse",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "take place"
+  },
+  {
+   "id": "a975bc17fd",
+   "es": "tener lugar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "take place"
+  },
+  {
+   "id": "298ef9cb7d",
+   "es": "realizarse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "take place"
+  },
+  {
+   "id": "2f15eebd1d",
+   "es": "El festival se va a realizar en el mercado viejo.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "The festival will take place in the old market."
+  },
+  {
+   "id": "c3576d21f4",
+   "es": "diversidad",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "diversity"
+  },
+  {
+   "id": "e78523112d",
+   "es": "La diversidad de la ciudad es su mejor cualidad.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "The diversity of the city is its best quality."
+  },
+  {
+   "id": "cc2982e5ca",
+   "es": "se está construyendo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "is being built"
+  },
+  {
+   "id": "864bb0d9e6",
+   "es": "están construyendo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "is being built"
+  },
+  {
+   "id": "be75a67762",
+   "es": "Se está construyendo una escuela nueva cerca de mi casa.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "A new school is being built near my house."
+  },
+  {
+   "id": "12eae2a319",
+   "es": "Una sociedad que cambia",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "df903bf2e8",
+   "es": "Hablar de cambios sociales, generaciones y costumbres.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "0ca1373ffa",
+   "es": "Para hablar de cambios sociales: society (sociedad), generation (generación), trend (tendencia) y custom (costumbre). Ojo: custom no es «costume» (disfraz). Los cambios se cuentan con el present perfect: Technology has changed our society.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "a7fb866eb9",
+   "es": "Hablas de la sociedad, las generaciones y sus costumbres.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "aeaa1846d5",
+   "es": "Describes tendencias con el present perfect.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "437e87bc23",
+   "es": "En algunos países es costumbre sacarse los zapatos en casa.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "In some countries it is a custom to take off your shoes at home."
+  },
+  {
+   "id": "3571920ee2",
+   "es": "Custom: costumbre de una sociedad. Habit: hábito de una persona.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "custom"
+  },
+  {
+   "id": "4df5ea95f3",
+   "es": "Un pódcast entrevista a una socióloga sobre las generaciones.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u3-podcast"
+  },
+  {
+   "id": "4a823118b9",
+   "es": "Host",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u3-podcast"
+  },
+  {
+   "id": "344a0caf87",
+   "es": "Dr. Reyes",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u3-podcast"
+  },
+  {
+   "id": "f3f73d9231",
+   "es": "Según la socióloga, ¿qué dice cada generación de la siguiente?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u3-podcast"
+  },
+  {
+   "id": "afe6837ea0",
+   "es": "Que no respeta las costumbres de antes",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u3-podcast"
+  },
+  {
+   "id": "974102e738",
+   "es": "Que es más trabajadora",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7b06fdbd89",
+   "es": "Que vive mejor",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "529aa5d5a5",
+   "es": "Que es más feliz",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1be760137e",
+   "es": "El conductor pregunta si los jóvenes no respetan las costumbres y ella responde: «Every generation has said that about the next one».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u3-podcast"
+  },
+  {
+   "id": "f40126e6fb",
+   "es": "¿Qué cambió y qué no, según la socióloga?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u3-podcast"
+  },
+  {
+   "id": "c4d2fa1830",
+   "es": "Cambiaron las costumbres, pero no los valores",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u3-podcast"
+  },
+  {
+   "id": "450be3d215",
+   "es": "Cambiaron los valores, pero no las costumbres",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "206ad78008",
+   "es": "No cambió nada",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "818a0fd911",
+   "es": "Cambió todo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b00547d5a9",
+   "es": "Dice: «Customs change, of course… But the values behind them haven’t disappeared».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u3-podcast"
+  },
+  {
+   "id": "959f14694a",
+   "es": "trabajar desde casa",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What is a big trend in your country? (trabajar desde casa)"
+  },
+  {
+   "id": "2d97226a8b",
+   "es": "¿Cuál es una gran tendencia en tu país?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What is a big trend in your country? (trabajar desde casa)"
+  },
+  {
+   "id": "cd7e6b13a9",
+   "es": "Cifras y encuestas",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "86f81dd476",
+   "es": "Entender y contar datos: mayorías, promedios, aumentos y caídas.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "f61b452961",
+   "es": "Para dar cifras: the majority of (la mayoría de), a minority of (una minoría de), the average family (la familia promedio), one in four (uno de cada cuatro). Rise (rose, risen) es aumentar y decline, disminuir. Una survey es una encuesta.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "60b9e7e3d5",
+   "es": "Entiendes datos de una encuesta: majority, minority, average.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "7bbb3d3a71",
+   "es": "Cuentas aumentos y caídas con rise y decline.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "36f0226f37",
+   "es": "Rise es irregular: rise, rose, risen. Con have va el participio: have risen.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "risen"
+  },
+  {
+   "id": "98d6d19a6d",
+   "es": "Un artículo sobre una encuesta acerca de las personas que viven solas.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u3-alone"
+  },
+  {
+   "id": "3c780b052b",
+   "es": "¿Cómo cambió el número de hogares de una sola persona?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u3-alone"
+  },
+  {
+   "id": "15d90bf74a",
+   "es": "Pasó de uno de cada diez a uno de cada cuatro",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u3-alone"
+  },
+  {
+   "id": "8609f001d1",
+   "es": "Pasó de uno de cada cuatro a uno de cada diez",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3afae8168b",
+   "es": "No cambió",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "dee31bc95a",
+   "es": "Bajó a la mitad",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f0e5d8d3ab",
+   "es": "El artículo dice: «one in four homes now has only one person in it. Fifty years ago, the figure was one in ten».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u3-alone"
+  },
+  {
+   "id": "a8db108869",
+   "es": "¿Qué dice la encuesta sobre la idea de que vivir solo hace sentir solo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u3-alone"
+  },
+  {
+   "id": "30f839ded2",
+   "es": "Que la mayoría de quienes viven solos dicen ser felices",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u3-alone"
+  },
+  {
+   "id": "38f457f356",
+   "es": "Que es cierta",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "cc4eb1dfcb",
+   "es": "Que sólo vale para los jóvenes",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "521711ffe5",
+   "es": "Que no lo preguntó",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "69a6a4b3b2",
+   "es": "El artículo dice: «the survey suggests the opposite: most people who live alone said they were happy».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u3-alone"
+  },
+  {
+   "id": "4b05e6cc43",
+   "es": "¿Qué disminuyó, según el artículo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u3-alone"
+  },
+  {
+   "id": "7e0704ba2c",
+   "es": "El número de familias numerosas",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u3-alone"
+  },
+  {
+   "id": "7d92166968",
+   "es": "El número de personas mayores",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "201e45899e",
+   "es": "El número de hogares",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0e16f30a67",
+   "es": "El número de jóvenes",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5124d7ebfb",
+   "es": "El artículo dice: «What has declined is the number of large families».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u3-alone"
+  },
+  {
+   "id": "539522fb69",
+   "es": "no, disminuyó",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Has the number of large families risen? (no, disminuyó)"
+  },
+  {
+   "id": "6a5be8af0f",
+   "es": "¿Aumentó el número de familias numerosas?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Has the number of large families risen? (no, disminuyó)"
+  },
+  {
+   "id": "015f5a72b2",
+   "es": "Se dice que…",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "ae85d8c634",
+   "es": "Contar lo que se dice, se cree o se espera con la pasiva impersonal.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "3a9417b870",
+   "es": "Para contar lo que dice o piensa mucha gente, sin decir quién: It is said that… (se dice que), It is believed that… (se cree que). También con la persona o la cosa como sujeto: The homes are expected to be ready next year (se espera que estén listas). Algo widespread es muy extendido.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "d552e100f2",
+   "es": "Cuentas lo que se dice o se cree: It is said that…",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "6f6c487de5",
+   "es": "Cuentas lo que se espera: …is expected to…",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "41dc9087b5",
+   "es": "Pasiva impersonal: It is said / believed that + oración.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "said"
+  },
+  {
+   "id": "4dc1c5f25c",
+   "es": "Be expected + to + verbo.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "to be"
+  },
+  {
+   "id": "492a34ebd3",
+   "es": "¿Para qué menciona la socióloga a los antiguos griegos?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u3-podcast"
+  },
+  {
+   "id": "3c05403670",
+   "es": "Para mostrar que la queja sobre los jóvenes es muy antigua",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u3-podcast"
+  },
+  {
+   "id": "c5b62d82b8",
+   "es": "Para hablar de la historia de Grecia",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "fd8250b74a",
+   "es": "Para decir que los griegos eran mejores",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "95e8dff100",
+   "es": "Para explicar una costumbre griega",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c32c98670b",
+   "es": "Dice: «It is said that even the ancient Greeks complained about their teenagers».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u3-podcast"
+  },
+  {
+   "id": "3d5c72bceb",
+   "es": "¿Qué opina la socióloga de la idea de que la distancia entre generaciones es cada vez mayor?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u3-podcast"
+  },
+  {
+   "id": "4046279e78",
+   "es": "Que mucha gente lo cree, pero su investigación no lo confirma",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u3-podcast"
+  },
+  {
+   "id": "aa67a2176f",
+   "es": "Que es nueva",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e5c099a6a0",
+   "es": "Que nadie la cree",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "453f320485",
+   "es": "Dice: «Many people believe that, but my research shows that parents and children agree about most things».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u3-podcast"
+  },
+  {
+   "id": "4c0d84c004",
+   "es": "Un aviso de la municipalidad sobre el mercado viejo.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u3-market"
+  },
+  {
+   "id": "27b45ad481",
+   "es": "¿Qué se cree del mercado?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u3-market"
+  },
+  {
+   "id": "75e935f7db",
+   "es": "Que es el edificio más viejo del barrio",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u3-market"
+  },
+  {
+   "id": "75b3f2f021",
+   "es": "Que va a cerrar para siempre",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "bb3aa49be5",
+   "es": "Que es el más grande de la ciudad",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f8494cd633",
+   "es": "Que lo construyó una familia",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4d50fb76fd",
+   "es": "El aviso dice: «It is believed to be the oldest building in the neighborhood».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u3-market"
+  },
+  {
+   "id": "e212cc3e5f",
+   "es": "Se espera que el festival se realice en junio.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "The festival is expected to take place in June."
+  },
+  {
+   "id": "70e10309b8",
+   "es": "se espera que estén listas el año que viene",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "When will the homes be ready? (se espera que estén listas el año que viene)"
+  },
+  {
+   "id": "06dc4c465a",
+   "es": "¿Cuándo van a estar listas las viviendas?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "When will the homes be ready? (se espera que estén listas el año que viene)"
+  },
+  {
+   "id": "db1274af40",
+   "es": "Obras en marcha",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "a5b437f71d",
+   "es": "Contar lo que se está haciendo y lo que ya se hizo con la pasiva.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "2ad0935128",
+   "es": "Para algo que se está haciendo ahora: is / are being + participio (A new school is being built). Para algo que ya se hizo: has / have been + participio (The roof has been repaired). Take place es tener lugar, realizarse (un evento). Housing es la vivienda en general.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "3bb29d2512",
+   "es": "Cuentas obras en marcha con is being + participio.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "57633f0ecf",
+   "es": "Cuentas lo que ya se hizo con has been + participio.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "f778d4dae5",
+   "es": "Pasiva continua: is / are + being + participio.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "being"
+  },
+  {
+   "id": "4a656245e9",
+   "es": "Pasiva en present perfect: has / have + been + participio.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "been"
+  },
+  {
+   "id": "b4d65634b9",
+   "es": "Un informe en la radio sobre el último censo de una ciudad.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u3-radio"
+  },
+  {
+   "id": "9ef077a123",
+   "es": "Presenter",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u3-radio"
+  },
+  {
+   "id": "bf4fccd616",
+   "es": "Anna",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u3-radio"
+  },
+  {
+   "id": "2f1d6bf228",
+   "es": "¿Por qué los jóvenes comparten apartamento hasta los treinta, según el informe?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u3-radio"
+  },
+  {
+   "id": "298c9e1067",
+   "es": "Porque la vivienda es muy cara",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u3-radio"
+  },
+  {
+   "id": "d7413ecd36",
+   "es": "Porque no consiguen trabajo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5c8706bfa2",
+   "es": "Porque prefieren vivir con amigos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "32e5974776",
+   "es": "Porque estudian hasta los treinta",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4dd2a10e88",
+   "es": "Anna dice: «Housing is very expensive, so the average young person shares a flat until the age of thirty».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u3-radio"
+  },
+  {
+   "id": "3e63af2369",
+   "es": "¿Qué se está haciendo para solucionar el problema?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u3-radio"
+  },
+  {
+   "id": "f2e3a70697",
+   "es": "Se están construyendo dos mil viviendas cerca del río",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u3-radio"
+  },
+  {
+   "id": "ab55bf9bdd",
+   "es": "Se bajaron los alquileres",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e33d38a515",
+   "es": "Se construyó un barrio nuevo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7e7b38b2d1",
+   "es": "Se cerró el mercado viejo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5206078fbe",
+   "es": "Anna dice: «Two thousand new homes are being built near the river».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u3-radio"
+  },
+  {
+   "id": "e1908ebe93",
+   "es": "¿Qué trabajo ya se terminó en el mercado?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u3-market"
+  },
+  {
+   "id": "0053c0482b",
+   "es": "El techo",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u3-market"
+  },
+  {
+   "id": "6d0b51dc6b",
+   "es": "Las luces",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8c1f9ab14a",
+   "es": "Todo el edificio",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a62a2f297c",
+   "es": "La oficina",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "34c9f973b6",
+   "es": "El aviso dice: «The roof has already been repaired, and new lights are being installed this month».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u3-market"
+  },
+  {
+   "id": "28e997c8d4",
+   "es": "en el mercado viejo",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Where will the festival take place? (en el mercado viejo)"
+  },
+  {
+   "id": "7e4675238a",
+   "es": "¿Dónde se va a realizar el festival?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Where will the festival take place? (en el mercado viejo)"
+  },
+  {
+   "id": "6cc1e4c6f0",
+   "es": "Una ciudad diversa",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "6785b23b06",
+   "es": "Hablar de la diversidad y opinar sobre lo que se debería hacer.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "15d3d9fd1a",
+   "es": "Diversity es la diversidad (de culturas, de idiomas, de edades). Para opinar sobre lo que habría que hacer sin decir quién: should be + participio (More homes should be built). También can be + participio para posibilidades: Many languages can be heard in the market.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "57518de495",
+   "es": "Deberían construirse más viviendas para los jóvenes.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "More homes should be built for young people."
+  },
+  {
+   "id": "575bf1616a",
+   "es": "Hablas de la diversidad de un lugar.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "df2a901d74",
+   "es": "Opinas sobre lo que se debería hacer con should be + participio.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "f0d376213c",
+   "es": "¿Qué significa «diversity»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "8560978b61",
+   "es": "Pasiva con modal: should / can / will + be + participio.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "be"
+  },
+  {
+   "id": "94b7c73d44",
+   "es": "En el mercado se pueden oír muchos idiomas.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Many languages can be heard in the market."
+  },
+  {
+   "id": "7c2b457e12",
+   "es": "¿Cómo muestran hoy los jóvenes que les importa su familia, según la socióloga?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u3-podcast"
+  },
+  {
+   "id": "07d2e2d858",
+   "es": "De otra forma, por ejemplo con una videollamada en vez de un almuerzo",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u3-podcast"
+  },
+  {
+   "id": "e05591c723",
+   "es": "Ya no lo muestran",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "162a8b7fce",
+   "es": "Viviendo con sus padres",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1e6f314d81",
+   "es": "Yendo a la iglesia",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "95fc5ace05",
+   "es": "Dice: «They just show it in different ways: a video call instead of a Sunday lunch».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u3-podcast"
+  },
+  {
+   "id": "e2af602d54",
+   "es": "¿Para qué se va a usar el mercado cuando terminen las obras?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u3-market"
+  },
+  {
+   "id": "80a481f34c",
+   "es": "Para conciertos y festivales",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u3-market"
+  },
+  {
+   "id": "80929171c4",
+   "es": "Para viviendas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d411f16cb1",
+   "es": "Para oficinas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "61fbb2e33e",
+   "es": "Como escuela",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9945a8a3ea",
+   "es": "El aviso dice: «the market will be used for concerts and festivals».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u3-market"
+  },
+  {
+   "id": "8f041528b1",
+   "es": "su diversidad",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What do you like most about your city? (su diversidad)"
+  },
+  {
+   "id": "541a5ad1fe",
+   "es": "¿Qué es lo que más te gusta de tu ciudad?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What do you like most about your city? (su diversidad)"
+  },
+  {
+   "id": "72baf83459",
+   "es": "Un informe breve sobre tu ciudad",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "c9f3a2e090",
+   "es": "Escribe un informe breve para una revista sobre los cambios en tu ciudad o tu barrio: qué se hizo, qué se está haciendo y qué se espera. Usa la voz pasiva.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "0f48484117",
+   "es": "Cuentas algo que ya se hizo (has / have been + participio)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "12b51e6d38",
+   "es": "Cuentas algo que se está haciendo (is / are being + participio)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "45bd59e894",
+   "es": "Dices lo que se espera o se dice (is expected to, it is said that…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "9675644fbf",
+   "es": "Conté lo que ya se hizo con has been + participio.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "ba13afcf16",
+   "es": "Conté lo que se está haciendo con is being + participio.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "c0d71d1ee7",
+   "es": "Dije lo que se espera.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.b2-u3-podcast": {
+   "setting": "Un pódcast entrevista a una socióloga sobre las generaciones.",
+   "lines": [
+    "Host: People often complain that young people have no respect for old customs. Is that true?",
+    "Dr. Reyes: Every generation has said that about the next one. It is said that even the ancient Greeks complained about their teenagers.",
+    "Host: So nothing has really changed?",
+    "Dr. Reyes: Customs change, of course. Fewer people get married in church, for example, and family dinners are less common. But the values behind them haven't disappeared.",
+    "Host: What do you mean?",
+    "Dr. Reyes: Young people still care about their families. They just show it in different ways: a video call instead of a Sunday lunch.",
+    "Host: And is the gap between generations getting bigger?",
+    "Dr. Reyes: Honestly, I don't think so. Many people believe that, but my research shows that parents and children agree about most things."
+   ]
+  },
+  "en.stim.b2-u3-alone": {
+   "setting": "Un artículo sobre una encuesta acerca de las personas que viven solas.",
+   "lines": [
+    "Living alone used to be unusual. Today it is one of the biggest trends in our society.",
+    "According to a recent survey, one in four homes now has only one person in it. Fifty years ago, the figure was one in ten.",
+    "The majority of people who live alone are over sixty, but the number of young people living alone is also rising.",
+    "It is often said that living alone makes people lonely. However, the survey suggests the opposite: most people who live alone said they were happy with their lives.",
+    "What has declined is the number of large families. In 1970 the average family had four children. Today it has fewer than two."
+   ]
+  },
+  "en.stim.b2-u3-market": {
+   "setting": "Un aviso de la municipalidad sobre el mercado viejo.",
+   "lines": [
+    "The old market is being renovated and will be closed until the end of May.",
+    "The roof has already been repaired, and new lights are being installed this month.",
+    "The market has been used by local families for more than a hundred years. It is believed to be the oldest building in the neighborhood.",
+    "When the work is finished, the market will be used for concerts and festivals. The first festival is expected to take place in June.",
+    "Questions can be sent to the community office."
+   ]
+  },
+  "en.stim.b2-u3-radio": {
+   "setting": "Un informe en la radio sobre el último censo de una ciudad.",
+   "lines": [
+    "Presenter: Good morning. The results of the new census have just been published. Anna, what do they tell us?",
+    "Anna: The population of the city has risen by ten percent in five years, mainly because of young people from other regions.",
+    "Presenter: And where are they living?",
+    "Anna: That's the problem. Housing is very expensive, so the average young person shares a flat until the age of thirty.",
+    "Presenter: Is anything being done about it?",
+    "Anna: Two thousand new homes are being built near the river, and more are expected to be ready next year.",
+    "Presenter: Thank you, Anna. In other news, the summer festival will take place in the old market this year."
+   ]
+  }
+ }
+}

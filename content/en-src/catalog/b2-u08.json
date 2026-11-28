@@ -1,0 +1,1777 @@
+{
+ "unit": "b2-u08",
+ "level": "B2",
+ "titleEn": "Media and misinformation",
+ "strings": [
+  {
+   "id": "c9f8e3d8f8",
+   "es": "Medios y desinformación",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Media and misinformation"
+  },
+  {
+   "id": "e720c1f8e6",
+   "es": "Rumores y publicaciones virales, fuentes confiables y sesgadas, y estilo indirecto con claim, deny, admit, warn, accuse y refuse.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "fcf09a49a1",
+   "es": "Puedes reconocer información engañosa, contar con precisión lo que dijo alguien y opinar sobre las fuentes.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "6943acf95c",
+   "es": "Verbos de reporte",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "21a0d8094b",
+   "es": "Para contar lo que alguien dijo con más precisión que say o tell, cada verbo tiene su forma: claim that / claim to (afirmar), suggest + -ing o suggest that (sugerir), warn someone (not) to (advertir), insist that / insist on + -ing (insistir), accuse someone of + -ing (acusar), deny / admit + -ing (negar / admitir) y refuse to (negarse a). Los tiempos retroceden como en el B1: is → was, has → had.",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "adb1e0862c",
+   "es": "Advirtió a la gente que no creyera todo lo que lee en internet.",
+   "kinds": [
+    "example"
+   ],
+   "en": "She warned people not to believe everything they read online."
+  },
+  {
+   "id": "63d0c5772e",
+   "es": "Negó haber usado dinero público.",
+   "kinds": [
+    "example"
+   ],
+   "en": "He denied using public money."
+  },
+  {
+   "id": "0a55aebeeb",
+   "es": "Lo acusaron de mentir.",
+   "kinds": [
+    "example",
+    "word.example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "They accused him of lying."
+  },
+  {
+   "id": "16f6f50a7c",
+   "es": "rumor",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "rumor"
+  },
+  {
+   "id": "3c6452e922",
+   "es": "Es sólo un rumor. No lo creas.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "It's just a rumor. Don't believe it."
+  },
+  {
+   "id": "851d4d0d56",
+   "es": "volverse viral",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "go viral"
+  },
+  {
+   "id": "031659fa2f",
+   "es": "hacerse viral",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "go viral"
+  },
+  {
+   "id": "e35ef3af0d",
+   "es": "El video se volvió viral en un día.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "The video went viral in one day."
+  },
+  {
+   "id": "9b2b2c0e77",
+   "es": "difundirse / propagarse",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "spread"
+  },
+  {
+   "id": "9a161ce480",
+   "es": "difundirse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "spread"
+  },
+  {
+   "id": "d7b8ee6b46",
+   "es": "propagarse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "spread"
+  },
+  {
+   "id": "77b2a7ba13",
+   "es": "difundir",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "spread"
+  },
+  {
+   "id": "38d713ca73",
+   "es": "Las noticias falsas se difunden más rápido que la verdad.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "Fake news spreads faster than the truth."
+  },
+  {
+   "id": "2b7711bed1",
+   "es": "desinformación / información falsa",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "misinformation"
+  },
+  {
+   "id": "5193e47cc5",
+   "es": "desinformación",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "misinformation"
+  },
+  {
+   "id": "289301716d",
+   "es": "información falsa",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "misinformation"
+  },
+  {
+   "id": "ee5e22027a",
+   "es": "Hay mucha desinformación en internet.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "There is a lot of misinformation online."
+  },
+  {
+   "id": "58554828c8",
+   "es": "título engañoso (para que hagas clic)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "clickbait"
+  },
+  {
+   "id": "9de8cf8a72",
+   "es": "ciberanzuelo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "clickbait"
+  },
+  {
+   "id": "74e5566780",
+   "es": "Ese título es para que hagas clic. La nota no dice nada nuevo.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "That headline is clickbait. The article says nothing new."
+  },
+  {
+   "id": "19abc60419",
+   "es": "afirmar / asegurar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "claim"
+  },
+  {
+   "id": "be05c05d51",
+   "es": "afirmar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "claim"
+  },
+  {
+   "id": "093b0c1f89",
+   "es": "asegurar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "claim"
+  },
+  {
+   "id": "6fd9a6027e",
+   "es": "sostener",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "claim"
+  },
+  {
+   "id": "9dcf9c1082",
+   "es": "La publicación asegura que los médicos lo recomiendan.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "The post claims that doctors recommend it."
+  },
+  {
+   "id": "a0d8362bd5",
+   "es": "sugerir / proponer",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "suggest"
+  },
+  {
+   "id": "ccc6e6fd55",
+   "es": "sugerir",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "suggest"
+  },
+  {
+   "id": "e6b5d77d93",
+   "es": "proponer",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "suggest"
+  },
+  {
+   "id": "72136cbeb7",
+   "es": "Sugirió consultar la página oficial.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "She suggested checking the official website."
+  },
+  {
+   "id": "5322bab033",
+   "es": "advertir / avisar (de un peligro)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "warn"
+  },
+  {
+   "id": "829bbbb747",
+   "es": "advertir",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "warn"
+  },
+  {
+   "id": "8110bfa53d",
+   "es": "prevenir",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "warn"
+  },
+  {
+   "id": "c249bcec30",
+   "es": "Me advirtió que no tocara los cables.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "He warned me not to touch the cables."
+  },
+  {
+   "id": "e9e9c6ce2e",
+   "es": "insistir",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "insist"
+  },
+  {
+   "id": "f3daeff0e8",
+   "es": "Insistió en pagar la cena.",
+   "kinds": [
+    "word.example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "She insisted on paying for dinner."
+  },
+  {
+   "id": "6edb5a56d5",
+   "es": "acusar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "accuse"
+  },
+  {
+   "id": "41e6c3fd03",
+   "es": "negar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "deny"
+  },
+  {
+   "id": "e496690b8b",
+   "es": "Negó haberse llevado el dinero.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "He denied taking the money."
+  },
+  {
+   "id": "aa4ef5215f",
+   "es": "admitir / reconocer",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "admit"
+  },
+  {
+   "id": "98f7fa7c6a",
+   "es": "admitir",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "admit"
+  },
+  {
+   "id": "ffe2b90440",
+   "es": "Reconoció haberse equivocado.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "She admitted making a mistake."
+  },
+  {
+   "id": "8c434bb1bc",
+   "es": "negarse a",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "refuse"
+  },
+  {
+   "id": "00c116dec2",
+   "es": "negarse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "refuse"
+  },
+  {
+   "id": "0462d8b291",
+   "es": "Se negó a responder la pregunta.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "He refused to answer the question."
+  },
+  {
+   "id": "0127c4840f",
+   "es": "confiable / fiable",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "reliable"
+  },
+  {
+   "id": "c3c06a4df3",
+   "es": "confiable",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "reliable"
+  },
+  {
+   "id": "8d46bc13ac",
+   "es": "fiable",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "reliable"
+  },
+  {
+   "id": "97a7da6096",
+   "es": "¿Es una fuente confiable?",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "Is this a reliable source?"
+  },
+  {
+   "id": "42a589cd5a",
+   "es": "parcial / sesgado",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "biased"
+  },
+  {
+   "id": "ebe897f063",
+   "es": "parcial",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "biased"
+  },
+  {
+   "id": "174c90903f",
+   "es": "sesgado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "biased"
+  },
+  {
+   "id": "fbe49b9c5d",
+   "es": "tendencioso",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "biased"
+  },
+  {
+   "id": "120b3ca145",
+   "es": "La nota es parcial. Sólo muestra un lado.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "The article is biased. It only shows one side."
+  },
+  {
+   "id": "625cd9718b",
+   "es": "engañoso",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "misleading"
+  },
+  {
+   "id": "cb85b98775",
+   "es": "Los números de la publicación son engañosos.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "The numbers in the post are misleading."
+  },
+  {
+   "id": "0a0b1a777a",
+   "es": "verificar (datos)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "fact-check"
+  },
+  {
+   "id": "48b910466e",
+   "es": "verificar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "fact-check"
+  },
+  {
+   "id": "41c4d4fbd2",
+   "es": "chequear",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "fact-check"
+  },
+  {
+   "id": "f7a809c491",
+   "es": "Verifica siempre una noticia antes de compartirla.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "Always fact-check a story before you share it."
+  },
+  {
+   "id": "f902bd5158",
+   "es": "público / audiencia",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "audience"
+  },
+  {
+   "id": "f1d9b88298",
+   "es": "público",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "audience"
+  },
+  {
+   "id": "4852618aa1",
+   "es": "audiencia",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "audience"
+  },
+  {
+   "id": "aad1baf8a4",
+   "es": "El programa tiene mucho público.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "The program has a large audience."
+  },
+  {
+   "id": "1a3ab5772b",
+   "es": "Se volvió viral",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "574c85a82c",
+   "es": "Hablar de rumores y publicaciones virales y de cómo se difunde la desinformación.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "923c8a2411",
+   "es": "Algo que go viral (went viral) se comparte muchísimo en poco tiempo. A rumor es un rumor; misinformation, la desinformación. Spread (spread, spread) es difundirse. Clickbait es un título engañoso pensado para que hagas clic.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "a9e8d7a98a",
+   "es": "Cuentas que algo se volvió viral y se difundió.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "95cbef9358",
+   "es": "Reconoces rumores, desinformación y clickbait.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "a404957621",
+   "es": "Go viral (went viral): volverse viral.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "went"
+  },
+  {
+   "id": "b841363f08",
+   "es": "News es singular: news spreads.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "spreads"
+  },
+  {
+   "id": "13e6b9058e",
+   "es": "Dos amigas hablan de una publicación que se volvió viral.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u8-viral"
+  },
+  {
+   "id": "458556af7d",
+   "es": "Zoe",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u8-viral"
+  },
+  {
+   "id": "6410ef0d3a",
+   "es": "Amy",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u8-viral"
+  },
+  {
+   "id": "84d87a9718",
+   "es": "¿Qué dice la publicación viral?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u8-viral"
+  },
+  {
+   "id": "f91e3ffb7f",
+   "es": "Que tomar agua caliente cada hora evita los resfríos",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u8-viral"
+  },
+  {
+   "id": "c177b3580e",
+   "es": "Que el agua fría cura el resfrío",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "dd9a678ed5",
+   "es": "Que los médicos están en contra del agua",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "aa69ef0360",
+   "es": "Que hay que tomar remedios cada hora",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "63d3c64b3c",
+   "es": "Zoe dice: «A post says that drinking hot water every hour stops you from getting a cold».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u8-viral"
+  },
+  {
+   "id": "1f7c9c5dcf",
+   "es": "Según Amy, ¿cómo se difunde la desinformación?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u8-viral"
+  },
+  {
+   "id": "277a157556",
+   "es": "Sin nombres ni fuentes, sólo con una gran promesa",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u8-viral"
+  },
+  {
+   "id": "4a1e068b93",
+   "es": "Por los diarios",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "82dde2e1d0",
+   "es": "A través de los médicos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "48b8e23598",
+   "es": "Con muchos datos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "84220fe579",
+   "es": "Amy dice: «That’s how misinformation spreads: no names, no sources, just a big promise».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u8-viral"
+  },
+  {
+   "id": "f8a91880a5",
+   "es": "¿Qué encontró el sitio de verificación?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u8-viral"
+  },
+  {
+   "id": "dd4123c06d",
+   "es": "Ninguna prueba de que sea cierto",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u8-viral"
+  },
+  {
+   "id": "41daf3c44a",
+   "es": "Que es cierto",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4679a77881",
+   "es": "Que lo dijo un médico famoso",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5473c80acd",
+   "es": "Que la publicación se borró",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1240cdf65b",
+   "es": "Amy dice: «A fact-checking website looked at it this morning. They found no evidence at all».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u8-viral"
+  },
+  {
+   "id": "64979d355d",
+   "es": "porque se volvió viral",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Why is everyone talking about that video? (porque se volvió viral)"
+  },
+  {
+   "id": "67c6cc4084",
+   "es": "¿Por qué todos hablan de ese video?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Why is everyone talking about that video? (porque se volvió viral)"
+  },
+  {
+   "id": "ada5b27a68",
+   "es": "Lo que dijo, con precisión",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "a977d8f212",
+   "es": "Contar lo que alguien afirmó, sugirió o advirtió.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "279ddfddf1",
+   "es": "Claim that es afirmar algo que puede no ser cierto. Suggest va con -ing o con that: She suggested checking the website. Warn someone (not) to es advertir: He warned me not to touch it. Insist on + -ing o insist that: She insisted on paying.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "f05efac68c",
+   "es": "Cuentas lo que alguien afirmó o sugirió con claim y suggest.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "fcc0b35e00",
+   "es": "Cuentas advertencias e insistencias con warn e insist.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "23b81c5107",
+   "es": "Suggest + -ing (o suggest that…), nunca «suggest to».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "checking"
+  },
+  {
+   "id": "9437c9b387",
+   "es": "Warn someone not to + verbo.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "not to"
+  },
+  {
+   "id": "cc1baf1ce0",
+   "es": "Una noticia de un diario local.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u8-mayor"
+  },
+  {
+   "id": "25adbb1437",
+   "es": "¿Qué había sugerido la publicación en las redes?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u8-mayor"
+  },
+  {
+   "id": "af603883a4",
+   "es": "Que ya estaba decidido cerrar el parque para construir oficinas",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u8-mayor"
+  },
+  {
+   "id": "82e183629a",
+   "es": "Que el parque iba a ser más grande",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1b2beee0ca",
+   "es": "Que la alcaldesa iba a renunciar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c4d832a77f",
+   "es": "Que las oficinas se iban a cerrar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "dcd9efde04",
+   "es": "La noticia dice: «A post on social media had suggested that the decision was already made».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u8-mayor"
+  },
+  {
+   "id": "04c5e87264",
+   "es": "¿Qué advirtió y qué sugirió la alcaldesa?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u8-mayor"
+  },
+  {
+   "id": "8bb459cd24",
+   "es": "Que no crean todo lo que leen en internet y que consulten la página de la ciudad",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u8-mayor"
+  },
+  {
+   "id": "237ba01161",
+   "es": "Que no vayan al parque",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d1022e3c29",
+   "es": "Que borren la publicación",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "663f412f06",
+   "es": "Que llamen a la municipalidad",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "dcd8dd95f9",
+   "es": "La noticia dice: «She also warned people not to believe everything they read online, and suggested checking the city website».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u8-mayor"
+  },
+  {
+   "id": "ec54c65295",
+   "es": "te advirtió que no comieras azúcar",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What did the doctor say? (te advirtió que no comieras azúcar)"
+  },
+  {
+   "id": "f07133bda7",
+   "es": "¿Qué dijo el médico?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What did the doctor say? (te advirtió que no comieras azúcar)"
+  },
+  {
+   "id": "fa7caa082f",
+   "es": "Acusar, negar, admitir",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "a1a086be06",
+   "es": "Contar acusaciones, negaciones y confesiones con su forma correcta.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "3e2e2a566a",
+   "es": "Accuse someone of + -ing: They accused him of lying. Deny + -ing es negar haber hecho algo: He denied taking the money. Admit + -ing es reconocerlo: She admitted making a mistake. Refuse to + verbo es negarse a hacer algo: He refused to answer.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "6ee92e410e",
+   "es": "Cuentas acusaciones con accuse someone of + -ing.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "bfcba8599b",
+   "es": "Usas deny y admit con -ing y refuse con to.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "3c04e8608c",
+   "es": "Accuse someone of + -ing.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "of"
+  },
+  {
+   "id": "2f85067bcf",
+   "es": "Deny + -ing.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "taking"
+  },
+  {
+   "id": "90b118eec7",
+   "es": "Refuse to + verbo.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "to answer"
+  },
+  {
+   "id": "9ee4acdc82",
+   "es": "Una entrevista en la televisión a un político.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u8-interview"
+  },
+  {
+   "id": "fea5977752",
+   "es": "Journalist",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u8-interview"
+  },
+  {
+   "id": "44993b03e8",
+   "es": "Hart",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u8-interview"
+  },
+  {
+   "id": "43a108321b",
+   "es": "¿De qué acusó un diario al partido de Hart?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u8-interview"
+  },
+  {
+   "id": "c443d56f0a",
+   "es": "De usar dinero público para su campaña",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u8-interview"
+  },
+  {
+   "id": "78b859fbc8",
+   "es": "De mentir en una entrevista",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4ef021b38b",
+   "es": "De cerrar oficinas del gobierno",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5167fa7c5f",
+   "es": "De no pagar impuestos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "617186d846",
+   "es": "La periodista dice: «a newspaper has accused your party of using public money for its campaign».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u8-interview"
+  },
+  {
+   "id": "04ed4bb136",
+   "es": "¿Qué admitió Hart la semana anterior, según él?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u8-interview"
+  },
+  {
+   "id": "d22f393ff3",
+   "es": "Haber usado una oficina para una reunión",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u8-interview"
+  },
+  {
+   "id": "094dbf95f0",
+   "es": "Haber usado dinero público",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "bc57e99a09",
+   "es": "Haber mentido",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1243d07172",
+   "es": "Hart dice: «I admitted using one office for one meeting. That’s very different».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u8-interview"
+  },
+  {
+   "id": "2ab47423eb",
+   "es": "¿Qué hace Hart cuando le preguntan por las cuentas de la campaña?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u8-interview"
+  },
+  {
+   "id": "d242a023ca",
+   "es": "Se niega a responder y dice que son rumores",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u8-interview"
+  },
+  {
+   "id": "d3e4762afc",
+   "es": "Promete publicarlas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2e4a19bedd",
+   "es": "Admite que hubo errores",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "77cfd5fc61",
+   "es": "Culpa a la periodista",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7e3d767ab1",
+   "es": "Hart dice: «I refuse to answer questions based on rumors. I insist that we haven’t done anything wrong».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u8-interview"
+  },
+  {
+   "id": "25831beeeb",
+   "es": "no, negó haberlo tomado",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Did he say he took the money? (no, negó haberlo tomado)"
+  },
+  {
+   "id": "7bc784ba1e",
+   "es": "¿Dijo que se llevó el dinero?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Did he say he took the money? (no, negó haberlo tomado)"
+  },
+  {
+   "id": "973b425786",
+   "es": "Distinguir fuentes confiables, parciales y engañosas.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "e3a8860197",
+   "es": "A reliable source es una fuente confiable. Un artículo biased es parcial: muestra un solo lado. Misleading es engañoso (no siempre falso, pero lleva a una idea equivocada). Fact-check es verificar los datos.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "16d3a2cad1",
+   "es": "Evalúas si una fuente es confiable o parcial.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "9d47d3acc8",
+   "es": "Detectas números y títulos engañosos y verificas antes de compartir.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "d93c641bb9",
+   "es": "Una guía para reconocer información falsa.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u8-guide"
+  },
+  {
+   "id": "df7a86cc92",
+   "es": "Según la guía, ¿qué hacen los títulos clickbait?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u8-guide"
+  },
+  {
+   "id": "c92d6dc098",
+   "es": "Prometen algo impactante para que hagas clic, pero la nota dice otra cosa",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u8-guide"
+  },
+  {
+   "id": "f06ad53e74",
+   "es": "Resumen bien la nota",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d72dde9bcf",
+   "es": "Dan el nombre del periodista",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "43fa34c0bd",
+   "es": "Muestran los dos lados",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6609777483",
+   "es": "La guía dice: «Clickbait headlines promise something shocking to make you click, but the article often says something different».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u8-guide"
+  },
+  {
+   "id": "228d6350c6",
+   "es": "¿Por qué un «aumento del 300%» puede ser engañoso?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u8-guide"
+  },
+  {
+   "id": "fd7d19186a",
+   "es": "Porque puede significar que el número pasó de uno a cuatro",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u8-guide"
+  },
+  {
+   "id": "d01a9a0b55",
+   "es": "Porque siempre es falso",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6c2b1fa29f",
+   "es": "Porque es un número muy chico",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9c5065e9c9",
+   "es": "Porque nadie lo verifica",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "cea5242782",
+   "es": "La guía dice: «A \"300% rise\" sounds huge, but it may mean the number went from one to four».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u8-guide"
+  },
+  {
+   "id": "23aa1d05d8",
+   "es": "¿Qué recomienda la guía si ningún otro medio publicó la noticia?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u8-guide"
+  },
+  {
+   "id": "e5fbb54c67",
+   "es": "Tener cuidado y verificarla en un sitio de verificación",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u8-guide"
+  },
+  {
+   "id": "37eef04611",
+   "es": "Compartirla rápido",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "45c29878ef",
+   "es": "Creerla igual",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6928dde9cb",
+   "es": "Escribirle al periodista",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "83c9d4c660",
+   "es": "La guía dice: «If nobody else has the story, be careful. Check it on a fact-checking site».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u8-guide"
+  },
+  {
+   "id": "7178003466",
+   "es": "porque no es una fuente confiable",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Why don’t you trust that website? (porque no es una fuente confiable)"
+  },
+  {
+   "id": "f3e500ac99",
+   "es": "¿Por qué no confías en esa página?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Why don’t you trust that website? (porque no es una fuente confiable)"
+  },
+  {
+   "id": "b13dfb4f9c",
+   "es": "Los medios y su público",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "29cf7f0bdd",
+   "es": "Opinar sobre los medios y contar una noticia con verbos de reporte.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "023b402c43",
+   "es": "The audience es el público de un programa, un medio o un espectáculo. Para contar una noticia con precisión, combinas los verbos de la unidad: The mayor denied the rumor, admitted that…, insisted that…, warned people not to…",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "43016e1d0f",
+   "es": "La alcaldesa negó el rumor sobre el parque.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "The mayor denied the rumor about the park."
+  },
+  {
+   "id": "f3482b4753",
+   "es": "Hablas del público de los medios.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "2668795c8c",
+   "es": "Cuentas una noticia combinando claim, deny, admit, insist y warn.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "8834efbbf7",
+   "es": "¿Qué significa «audience»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "5639f80c0d",
+   "es": "Audience: el público de un programa o un espectáculo.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "audience"
+  },
+  {
+   "id": "eb91de922b",
+   "es": "Deny + sustantivo o -ing. Refuse va con to + verbo.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "denied"
+  },
+  {
+   "id": "80aa82f7d1",
+   "es": "¿Qué admitió la alcaldesa?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u8-mayor"
+  },
+  {
+   "id": "280abad91a",
+   "es": "Que la ciudad había hablado de oficinas nuevas en la zona",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u8-mayor"
+  },
+  {
+   "id": "2dbb1c2c4e",
+   "es": "Que iban a cerrar el parque",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f755cd0ae3",
+   "es": "Que la publicación era cierta",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "14b11194db",
+   "es": "Que no conocía el plan",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "22f50ff3bd",
+   "es": "La noticia dice: «She admitted that the city had discussed new offices in the area, but she insisted that the park was never part of the plan».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u8-mayor"
+  },
+  {
+   "id": "a6b9460cc9",
+   "es": "¿Qué hizo la persona que creó la publicación?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u8-mayor"
+  },
+  {
+   "id": "1328e8ebae",
+   "es": "Se negó a hacer comentarios",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u8-mayor"
+  },
+  {
+   "id": "8d7812e7bc",
+   "es": "Pidió perdón",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c951547f4c",
+   "es": "Borró la publicación",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b57f3db0a2",
+   "es": "Habló con la alcaldesa",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "64d9ab83bd",
+   "es": "La noticia termina: «The person who created the post has refused to comment».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u8-mayor"
+  },
+  {
+   "id": "fa4143b5a4",
+   "es": "¿Qué sugiere la periodista con su último comentario?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u8-interview"
+  },
+  {
+   "id": "f82e344c16",
+   "es": "Que mucha gente no le va a creer a Hart",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u8-interview"
+  },
+  {
+   "id": "bfd159be48",
+   "es": "Que Hart tiene razón",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6f00e9d7a2",
+   "es": "Que la entrevista terminó bien",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5fd5f0128d",
+   "es": "Que el público no la estaba mirando",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "716b07d623",
+   "es": "La periodista dice: «Many viewers will find that answer hard to believe».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u8-interview"
+  },
+  {
+   "id": "1c4dd714b5",
+   "es": "que el parque se iba a cerrar",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What did the post claim? (que el parque se iba a cerrar)"
+  },
+  {
+   "id": "75219d4005",
+   "es": "¿Qué afirmaba la publicación?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What did the post claim? (que el parque se iba a cerrar)"
+  },
+  {
+   "id": "07364b864c",
+   "es": "Contar una noticia",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "d12ca655d1",
+   "es": "Cuenta una noticia (real o inventada) como en un diario: qué se afirmó, quién lo negó o lo admitió y qué advirtió alguien. Usa verbos de reporte en lugar de say.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "8e92311488",
+   "es": "Cuentas lo que alguien afirmó (claimed, suggested)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "22dfa17707",
+   "es": "Usas denied o admitted (+ -ing o that)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "ce2ef4c971",
+   "es": "Cuentas una advertencia o una negativa (warned… not to, refused to)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "7200468361",
+   "es": "Conté lo que se afirmó con claimed.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "9a123b76d2",
+   "es": "Usé denied o admitted.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "29bdc803b6",
+   "es": "Conté una advertencia con warned… not to o una negativa con refused to.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "7a61d86633",
+   "es": "Discrepar con diplomacia",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "f1f059987b",
+   "es": "Un colega publicó una opinión con la que no estás de acuerdo (por ejemplo, «Las redes sociales son la mejor fuente de noticias»). Respóndele con respeto: reconoce lo que tiene de cierto y explica por qué piensas distinto.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "e6fb0d2a78",
+   "es": "¿Suavizaste tu desacuerdo (I see your point, but…; I’m not sure…)?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "ceb66033c0",
+   "es": "¿Usaste even though, despite o whereas?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "9397a048d0",
+   "es": "¿Contaste lo que dijo con un verbo de reporte (claimed, suggested)?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "551602c297",
+   "es": "Reconocí lo que tiene de cierto la otra opinión.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "0d81defe74",
+   "es": "Expliqué mi desacuerdo con respeto.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "af8c75d142",
+   "es": "Hice una propuesta.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.b2-u8-viral": {
+   "setting": "Dos amigas hablan de una publicación que se volvió viral.",
+   "lines": [
+    "Zoe: Have you seen this? A post says that drinking hot water every hour stops you from getting a cold.",
+    "Amy: I've seen it. It went viral yesterday. My aunt has already shared it with the whole family.",
+    "Zoe: Is it true, though? The post claims that doctors recommend it.",
+    "Amy: Which doctors? It doesn’t say. That’s how misinformation spreads: no names, no sources, just a big promise.",
+    "Zoe: So it’s just a rumor?",
+    "Amy: Probably. A fact-checking website looked at it this morning. They found no evidence at all.",
+    "Zoe: I'll send the link to your aunt, then. Before she shares the next one!"
+   ]
+  },
+  "en.stim.b2-u8-mayor": {
+   "setting": "Una noticia de un diario local.",
+   "lines": [
+    "Mayor denies plan to close Central Park",
+    "The mayor has denied claims that Central Park will be closed to build offices. A post on social media had suggested that the decision was already made, and it was shared more than fifty thousand times.",
+    "\"This is completely false,\" the mayor said yesterday. She admitted that the city had discussed new offices in the area, but she insisted that the park was never part of the plan.",
+    "She also warned people not to believe everything they read online, and suggested checking the city website for official information.",
+    "The person who created the post has refused to comment."
+   ]
+  },
+  "en.stim.b2-u8-interview": {
+   "setting": "Una entrevista en la televisión a un político.",
+   "lines": [
+    "Journalist: Mr. Hart, a newspaper has accused your party of using public money for its campaign. Is that true?",
+    "Hart: I completely deny that. Every dollar we spent was ours.",
+    "Journalist: But you admitted last week that the campaign had used government offices.",
+    "Hart: I admitted using one office for one meeting. That's very different.",
+    "Journalist: Will you publish the campaign accounts?",
+    "Hart: I refuse to answer questions based on rumors. I insist that we haven't done anything wrong.",
+    "Journalist: Many viewers will find that answer hard to believe."
+   ]
+  },
+  "en.stim.b2-u8-guide": {
+   "setting": "Una guía para reconocer información falsa.",
+   "lines": [
+    "Five questions to ask before you share a story",
+    "1. Who wrote it? Reliable sources tell you who the journalist is and where the information comes from.",
+    "2. Does the headline match the story? Clickbait headlines promise something shocking to make you click, but the article often says something different.",
+    "3. Is it one-sided? A biased article only shows one side and ignores facts that do not support its argument.",
+    "4. Are the numbers misleading? A \"300% rise\" sounds huge, but it may mean the number went from one to four.",
+    "5. Have other media reported it? If nobody else has the story, be careful. Check it on a fact-checking site."
+   ]
+  }
+ }
+}

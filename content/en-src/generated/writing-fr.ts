@@ -3001,5 +3001,1324 @@ export const EN_FROM_FR_WRITING_TASKS: readonly WritingTaskDef[] = [
       "J’ai montré un contraste.",
       "J’ai donné mon avis et une solution."
     ]
+  },
+  {
+    "language": "en",
+    "allowInvented": true,
+    "maxChars": 1500,
+    "id": "efr.b2.wt.misunderstanding",
+    "kind": "guided",
+    "codes": [],
+    "lesson": "efr-b2-u01-l05",
+    "title": "Dissiper un malentendu",
+    "instructions": "Un collègue s’est vexé à cause d’un de tes messages. Écris-lui un e-mail court et plein de tact : reconnais que le message a mal sonné, explique ce que tu voulais dire et propose d’en parler.",
+    "prompts": [
+      "What did you write?",
+      "What did you actually mean?",
+      "What can you do now?"
+    ],
+    "requirements": [
+      {
+        "id": "mean",
+        "label": "Tu clarifies ton intention (I didn’t mean to…)",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "didn't|did",
+            "not|mean",
+            "mean|to"
+          ],
+          [
+            "meant",
+            "to"
+          ]
+        ]
+      },
+      {
+        "id": "actually",
+        "label": "Tu corriges l’idée fausse avec actually",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "actually"
+          ]
+        ]
+      },
+      {
+        "id": "apology",
+        "label": "Tu t’excuses (sorry, apologize)",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "sorry|apologize"
+          ]
+        ]
+      },
+      {
+        "id": "sentences",
+        "label": "Tu écris au moins 4 phrases",
+        "kind": "min_sentences",
+        "min": 4
+      },
+      {
+        "id": "capital",
+        "label": "Chaque phrase commence par une majuscule",
+        "kind": "capital_start"
+      },
+      {
+        "id": "punctuation",
+        "label": "Tu termines par un point, un point d’exclamation ou un point d’interrogation",
+        "kind": "end_punctuation"
+      }
+    ],
+    "model": "Hi Mark, I want to apologize for my message this morning. I realize it sounded rude, but I didn’t mean to criticize your work. Actually, I think your report is very good. I was in a hurry, and my tone didn’t get across in writing. Could we talk about it after lunch?",
+    "checklist": [
+      "J’ai reconnu que le message avait mal sonné et je me suis excusé(e).",
+      "J’ai expliqué ce que je voulais dire avec I didn’t mean to… et actually.",
+      "J’ai proposé d’en parler."
+    ]
+  },
+  {
+    "language": "en",
+    "allowInvented": true,
+    "maxChars": 1500,
+    "id": "efr.b2.wt.offer-conditions",
+    "kind": "guided",
+    "codes": [],
+    "lesson": "efr-b2-u02-l05",
+    "title": "Répondre à une offre en posant des conditions",
+    "instructions": "On t’a proposé un poste. Réponds par un e-mail formel : remercie, pose une condition pour accepter (as long as, provided that) et dis ce qui se passe si elle n’est pas remplie (otherwise).",
+    "prompts": [
+      "What do you like about the offer?",
+      "What do you ask for?",
+      "What will you do otherwise?"
+    ],
+    "requirements": [
+      {
+        "id": "greeting",
+        "label": "Tu commences par une formule de salutation formelle (Dear…)",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "dear"
+          ]
+        ]
+      },
+      {
+        "id": "condition",
+        "label": "Tu poses une condition avec as long as ou provided that",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "as",
+            "long",
+            "as"
+          ],
+          [
+            "provided",
+            "that"
+          ]
+        ]
+      },
+      {
+        "id": "otherwise",
+        "label": "Tu dis ce qui se passe si elle n’est pas remplie (otherwise)",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "otherwise"
+          ]
+        ]
+      },
+      {
+        "id": "closing",
+        "label": "Tu termines de façon formelle (Kind regards, Best wishes…)",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "regards"
+          ],
+          [
+            "best",
+            "wishes"
+          ],
+          [
+            "yours",
+            "sincerely"
+          ]
+        ]
+      },
+      {
+        "id": "sentences",
+        "label": "Tu écris au moins 4 phrases",
+        "kind": "min_sentences",
+        "min": 4
+      },
+      {
+        "id": "capital",
+        "label": "Chaque phrase commence par une majuscule",
+        "kind": "capital_start"
+      },
+      {
+        "id": "punctuation",
+        "label": "Tu termines par un point, un point d’exclamation ou un point d’interrogation",
+        "kind": "end_punctuation"
+      }
+    ],
+    "model": "Dear Mr. Patel, Thank you very much for the job offer. I am very excited about the project and the team. I would be happy to accept, provided that I can work from home two days a week. Otherwise, I am afraid I would have to turn the offer down. I hope we can reach an agreement. Kind regards.",
+    "checklist": [
+      "J’ai utilisé une formule d’appel et une formule de politesse formelles.",
+      "J’ai posé une condition avec provided that ou as long as.",
+      "J’ai dit poliment ce qui se passe si elle n’est pas remplie."
+    ]
+  },
+  {
+    "language": "en",
+    "allowInvented": true,
+    "maxChars": 1500,
+    "id": "efr.b2.wt.city-report",
+    "kind": "guided",
+    "codes": [],
+    "lesson": "efr-b2-u03-l05",
+    "title": "Un court rapport sur ta ville",
+    "instructions": "Écris un court rapport pour un magazine sur les changements dans ta ville ou ton quartier : ce qui a été fait, ce qui est en cours et ce qui est prévu. Utilise la voix passive.",
+    "prompts": [
+      "What has been built or changed?",
+      "What is being done now?",
+      "What is expected next?"
+    ],
+    "requirements": [
+      {
+        "id": "perfect-passive",
+        "label": "Tu racontes quelque chose qui a déjà été fait (has / have been + participe)",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "has|have",
+            "been",
+            "<WORD>"
+          ]
+        ]
+      },
+      {
+        "id": "continuous-passive",
+        "label": "Tu racontes quelque chose qui est en cours (is / are being + participe)",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "is|are",
+            "being",
+            "<WORD>"
+          ]
+        ]
+      },
+      {
+        "id": "expected",
+        "label": "Tu dis ce qui est prévu ou ce qu’on dit (is expected to, it is said that…)",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "expected",
+            "to"
+          ],
+          [
+            "it",
+            "is",
+            "said|believed"
+          ]
+        ]
+      },
+      {
+        "id": "sentences",
+        "label": "Tu écris au moins 4 phrases",
+        "kind": "min_sentences",
+        "min": 4
+      },
+      {
+        "id": "capital",
+        "label": "Chaque phrase commence par une majuscule",
+        "kind": "capital_start"
+      },
+      {
+        "id": "punctuation",
+        "label": "Tu termines par un point, un point d’exclamation ou un point d’interrogation",
+        "kind": "end_punctuation"
+      }
+    ],
+    "model": "My neighborhood has changed a lot in the last five years. A new park has been built near the river, and the old market has been repaired. At the moment, two hundred new homes are being built for young families. However, housing is still very expensive. The new homes are expected to be ready next year.",
+    "checklist": [
+      "J’ai raconté ce qui a déjà été fait avec has been + participe.",
+      "J’ai raconté ce qui est en cours avec is being + participe.",
+      "J’ai dit ce qui est prévu."
+    ]
+  },
+  {
+    "language": "en",
+    "allowInvented": true,
+    "maxChars": 1500,
+    "id": "efr.b2.wt.tech-opinion",
+    "kind": "guided",
+    "codes": [],
+    "lesson": "efr-b2-u04-l05",
+    "title": "Ton avis sur une technologie",
+    "instructions": "Choisis une technologie que tu utilises tous les jours (une appli, l’intelligence artificielle, le téléphone). Explique ce que c’est, pourquoi tu en dépends et ce qui t’inquiète. Utilise des relatives entre virgules.",
+    "prompts": [
+      "What technology do you rely on?",
+      "Why is it useful?",
+      "What worries you about it?"
+    ],
+    "requirements": [
+      {
+        "id": "relative",
+        "label": "Tu ajoutes des informations entre virgules avec which ou who",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "which|who|whose"
+          ]
+        ]
+      },
+      {
+        "id": "rely",
+        "label": "Tu dis de quoi tu dépends (rely on)",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "rely|relies",
+            "on"
+          ]
+        ]
+      },
+      {
+        "id": "worry",
+        "label": "Tu dis ce qui t’inquiète (privacy, data, I worry about…)",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "privacy|data|worry|worried"
+          ]
+        ]
+      },
+      {
+        "id": "sentences",
+        "label": "Tu écris au moins 4 phrases",
+        "kind": "min_sentences",
+        "min": 4
+      },
+      {
+        "id": "capital",
+        "label": "Chaque phrase commence par une majuscule",
+        "kind": "capital_start"
+      },
+      {
+        "id": "punctuation",
+        "label": "Tu termines par un point, un point d’exclamation ou un point d’interrogation",
+        "kind": "end_punctuation"
+      }
+    ],
+    "model": "I rely on my phone for everything. My favorite app, which I use every day, helps me plan my week. It is very useful, but it collects a lot of data about me, which worries me. I would like to know who uses my information. In my opinion, privacy is more important than innovation.",
+    "checklist": [
+      "J’ai utilisé which ou who pour ajouter des informations.",
+      "J’ai expliqué de quoi je dépends avec rely on.",
+      "J’ai dit ce qui m’inquiète."
+    ]
+  },
+  {
+    "language": "en",
+    "allowInvented": true,
+    "maxChars": 1500,
+    "id": "efr.b2.wt.repair-complaint",
+    "kind": "guided",
+    "codes": [],
+    "lesson": "efr-b2-u05-l05",
+    "title": "Une réclamation avec une proposition",
+    "instructions": "Tu as acheté quelque chose de cher qui s’est cassé tout de suite. Écris une réclamation formelle : raconte ce qui s’est passé, compare avec ce que tu attendais et propose une solution (le faire réparer ou remplacer).",
+    "prompts": [
+      "What did you buy?",
+      "What went wrong?",
+      "What would you like the shop to do?"
+    ],
+    "requirements": [
+      {
+        "id": "greeting",
+        "label": "Tu commences par une formule de salutation formelle (Dear…)",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "dear"
+          ]
+        ]
+      },
+      {
+        "id": "causative",
+        "label": "Tu demandes à le faire réparer ou remplacer (have / get it repaired, replaced…)",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "have|get|had|got",
+            "it|them",
+            "<WORD>"
+          ]
+        ]
+      },
+      {
+        "id": "comparison",
+        "label": "Tu compares avec nuance (twice as, nowhere near as, by far…)",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "twice",
+            "as"
+          ],
+          [
+            "nowhere",
+            "near"
+          ],
+          [
+            "by",
+            "far"
+          ]
+        ]
+      },
+      {
+        "id": "sentences",
+        "label": "Tu écris au moins 4 phrases",
+        "kind": "min_sentences",
+        "min": 4
+      },
+      {
+        "id": "capital",
+        "label": "Chaque phrase commence par une majuscule",
+        "kind": "capital_start"
+      },
+      {
+        "id": "punctuation",
+        "label": "Tu termines par un point, un point d’exclamation ou un point d’interrogation",
+        "kind": "end_punctuation"
+      }
+    ],
+    "model": "Dear Sir or Madam, Last month I bought some headphones from your shop. They were twice as expensive as my old ones, but they broke after two weeks. They are nowhere near as good as your website says. I would like to have them repaired or replaced this week. I have attached the receipt. Kind regards.",
+    "checklist": [
+      "J’ai raconté ce qui s’est passé avec le produit.",
+      "J’ai comparé avec twice as ou nowhere near as.",
+      "J’ai demandé à le faire réparer ou remplacer avec have / get + participe."
+    ]
+  },
+  {
+    "language": "en",
+    "allowInvented": true,
+    "maxChars": 1500,
+    "id": "efr.b2.wt.make-up",
+    "kind": "guided",
+    "codes": [],
+    "lesson": "efr-b2-u06-l05",
+    "title": "Faire la paix",
+    "instructions": "Tu t’es fâché avec un ami. Écris-lui un message : reconnais ce que tu aurais dû faire autrement, montre que tu comprends ce qu’il a ressenti et propose de vous réconcilier.",
+    "prompts": [
+      "What happened?",
+      "What should you have done?",
+      "How might your friend have felt?"
+    ],
+    "requirements": [
+      {
+        "id": "should-have",
+        "label": "Tu reconnais ton erreur avec should / shouldn’t have",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "should|shouldn't",
+            "have",
+            "<WORD>"
+          ],
+          [
+            "should've",
+            "<WORD>"
+          ]
+        ]
+      },
+      {
+        "id": "deduction",
+        "label": "Tu déduis ce qu’il a ressenti avec must / might have",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "must|might|could",
+            "have",
+            "<WORD>"
+          ],
+          [
+            "must've|might've|could've",
+            "<WORD>"
+          ]
+        ]
+      },
+      {
+        "id": "make-up",
+        "label": "Tu proposes de vous réconcilier ou de vous voir (make up, coffee, meet…)",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "make|made",
+            "up"
+          ],
+          [
+            "coffee|meet|talk"
+          ]
+        ]
+      },
+      {
+        "id": "sentences",
+        "label": "Tu écris au moins 4 phrases",
+        "kind": "min_sentences",
+        "min": 4
+      },
+      {
+        "id": "capital",
+        "label": "Chaque phrase commence par une majuscule",
+        "kind": "capital_start"
+      },
+      {
+        "id": "punctuation",
+        "label": "Tu termines par un point, un point d’exclamation ou un point d’interrogation",
+        "kind": "end_punctuation"
+      }
+    ],
+    "model": "Hi Sara, I'm really sorry about what happened on Friday. I shouldn't have shouted at you in front of everyone. You must have felt embarrassed, and I feel guilty about it. I overreacted, and I hope you don't take it personally. Can we meet for a coffee and make up?",
+    "checklist": [
+      "J’ai reconnu mon erreur avec should / shouldn’t have.",
+      "J’ai montré de l’empathie avec must / might have.",
+      "J’ai proposé de faire la paix."
+    ]
+  },
+  {
+    "language": "en",
+    "allowInvented": true,
+    "maxChars": 1500,
+    "id": "efr.b2.wt.environment-opinion",
+    "kind": "guided",
+    "codes": [],
+    "lesson": "efr-b2-u07-l05",
+    "title": "Une tribune sur l’environnement",
+    "instructions": "Écris une courte tribune sur un problème environnemental (les sécheresses, la pollution, l’énergie). Présente le problème, reconnais une difficulté et propose une solution.",
+    "prompts": [
+      "What is the problem?",
+      "What makes it hard to tackle?",
+      "What should we do?"
+    ],
+    "requirements": [
+      {
+        "id": "concession",
+        "label": "Tu nuances avec despite, in spite of ou even though",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "despite"
+          ],
+          [
+            "in",
+            "spite",
+            "of"
+          ],
+          [
+            "even",
+            "though"
+          ]
+        ]
+      },
+      {
+        "id": "whereas",
+        "label": "Tu opposes deux idées avec whereas",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "whereas"
+          ]
+        ]
+      },
+      {
+        "id": "solution",
+        "label": "Tu proposes une solution (should, need to, tackle…)",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "should|tackle"
+          ],
+          [
+            "need",
+            "to"
+          ]
+        ]
+      },
+      {
+        "id": "sentences",
+        "label": "Tu écris au moins 5 phrases",
+        "kind": "min_sentences",
+        "min": 5
+      },
+      {
+        "id": "capital",
+        "label": "Chaque phrase commence par une majuscule",
+        "kind": "capital_start"
+      },
+      {
+        "id": "punctuation",
+        "label": "Tu termines par un point, un point d’exclamation ou un point d’interrogation",
+        "kind": "end_punctuation"
+      }
+    ],
+    "model": "Water shortages are a growing threat in my country. Despite the storms last winter, many rivers are still very low. Some people waste a lot of water, whereas farmers often have no choice. Even though it is not easy, we need to tackle the problem now. In my opinion, the government should invest in renewable energy and help farmers use less water.",
+    "checklist": [
+      "J’ai présenté le problème.",
+      "J’ai utilisé despite / even though et whereas.",
+      "J’ai proposé une solution."
+    ],
+    "glossary": [
+      {
+        "term": "invest",
+        "meaning": "investir"
+      }
+    ]
+  },
+  {
+    "language": "en",
+    "allowInvented": true,
+    "maxChars": 1500,
+    "id": "efr.b2.wt.report-story",
+    "kind": "guided",
+    "codes": [],
+    "lesson": "efr-b2-u08-l05",
+    "title": "Raconter une info",
+    "instructions": "Raconte une info (vraie ou inventée) comme dans un journal : ce qui a été affirmé, qui l’a nié ou admis, et de quoi quelqu’un a averti. Utilise des verbes introducteurs au lieu de say.",
+    "prompts": [
+      "What was the rumor?",
+      "Who denied or admitted something?",
+      "What did they warn?"
+    ],
+    "requirements": [
+      {
+        "id": "claim",
+        "label": "Tu rapportes ce que quelqu’un a affirmé (claimed, suggested)",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "claimed|claims|suggested|suggests"
+          ]
+        ]
+      },
+      {
+        "id": "deny-admit",
+        "label": "Tu utilises denied ou admitted (+ -ing ou that)",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "denied|denies|admitted|admits"
+          ]
+        ]
+      },
+      {
+        "id": "warn",
+        "label": "Tu rapportes un avertissement ou un refus (warned… not to, refused to)",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "warned|warns",
+            "<WORD>",
+            "not",
+            "to"
+          ],
+          [
+            "refused|refuses",
+            "to"
+          ]
+        ]
+      },
+      {
+        "id": "sentences",
+        "label": "Tu écris au moins 4 phrases",
+        "kind": "min_sentences",
+        "min": 4
+      },
+      {
+        "id": "capital",
+        "label": "Chaque phrase commence par une majuscule",
+        "kind": "capital_start"
+      },
+      {
+        "id": "punctuation",
+        "label": "Tu termines par un point, un point d’exclamation ou un point d’interrogation",
+        "kind": "end_punctuation"
+      }
+    ],
+    "model": "Last week a post claimed that the city was going to close the main library. The post went viral in one day. The mayor denied the rumor and insisted that the library would stay open. However, she admitted that the building needed repairs. She also warned people not to believe everything they read online.",
+    "checklist": [
+      "J’ai rapporté ce qui a été affirmé avec claimed.",
+      "J’ai utilisé denied ou admitted.",
+      "J’ai rapporté un avertissement avec warned… not to ou un refus avec refused to."
+    ]
+  },
+  {
+    "language": "en",
+    "allowInvented": true,
+    "maxChars": 1500,
+    "id": "efr.b2.wt.looking-back",
+    "kind": "guided",
+    "codes": [],
+    "lesson": "efr-b2-u09-l05",
+    "title": "Regarder en arrière",
+    "instructions": "Repense à ta scolarité (l’école, la fac, une formation). Raconte une décision, imagine ce qui se serait passé avec un autre choix et dis ce que tu as appris.",
+    "prompts": [
+      "What decision do you look back on?",
+      "What would have happened otherwise?",
+      "What did you learn?"
+    ],
+    "requirements": [
+      {
+        "id": "third",
+        "label": "Tu utilises le troisième conditionnel (If I had…, I would have…)",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "would",
+            "have",
+            "<WORD>"
+          ],
+          [
+            "would've|i'd|wouldn't",
+            "have",
+            "<WORD>"
+          ],
+          [
+            "wouldn't",
+            "have"
+          ]
+        ]
+      },
+      {
+        "id": "if-had",
+        "label": "Tu commences la condition par if + had",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "if",
+            "<WORD>",
+            "had|hadn’t|hadn't"
+          ],
+          [
+            "if",
+            "i'd"
+          ]
+        ]
+      },
+      {
+        "id": "wish",
+        "label": "Tu exprimes un regret avec I wish ou If only",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "wish"
+          ],
+          [
+            "if",
+            "only"
+          ]
+        ]
+      },
+      {
+        "id": "sentences",
+        "label": "Tu écris au moins 4 phrases",
+        "kind": "min_sentences",
+        "min": 4
+      },
+      {
+        "id": "capital",
+        "label": "Chaque phrase commence par une majuscule",
+        "kind": "capital_start"
+      },
+      {
+        "id": "punctuation",
+        "label": "Tu termines par un point, un point d’exclamation ou un point d’interrogation",
+        "kind": "end_punctuation"
+      }
+    ],
+    "model": "When I look back on my school days, I remember how much I struggled with math. If I had asked for help earlier, I would have passed the exam the first time. If only I had been less shy! However, that experience changed my mindset. Now I know that mistakes help me make progress.",
+    "checklist": [
+      "J’ai imaginé un autre résultat avec If I had…, I would have…",
+      "J’ai exprimé un regret avec I wish ou If only.",
+      "J’ai raconté ce que j’ai appris."
+    ]
+  },
+  {
+    "language": "en",
+    "allowInvented": true,
+    "maxChars": 1500,
+    "id": "efr.b2.wt.argument",
+    "kind": "guided",
+    "codes": [],
+    "lesson": "efr-b2-u10-l05",
+    "title": "Un argumentaire",
+    "instructions": "Choisis un sujet (Faut-il interdire les téléphones à l’école ? Faut-il travailler quatre jours par semaine ?). Défends ta position avec deux raisons, reconnais la position contraire et termine par une conclusion.",
+    "prompts": [
+      "What is your position?",
+      "What do people on the other side say?",
+      "How do you finish?"
+    ],
+    "requirements": [
+      {
+        "id": "add",
+        "label": "Tu ajoutes une raison avec moreover ou furthermore",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "moreover|furthermore"
+          ]
+        ]
+      },
+      {
+        "id": "concede",
+        "label": "Tu reconnais l’autre position (admittedly) et tu la réfutes (nevertheless, however)",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "admittedly"
+          ]
+        ]
+      },
+      {
+        "id": "rebut",
+        "label": "Tu réfutes avec nevertheless ou however",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "nevertheless|however"
+          ]
+        ]
+      },
+      {
+        "id": "conclude",
+        "label": "Tu conclus avec to sum up ou all things considered",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "to",
+            "sum",
+            "up"
+          ],
+          [
+            "all",
+            "things",
+            "considered"
+          ]
+        ]
+      },
+      {
+        "id": "sentences",
+        "label": "Tu écris au moins 5 phrases",
+        "kind": "min_sentences",
+        "min": 5
+      },
+      {
+        "id": "capital",
+        "label": "Chaque phrase commence par une majuscule",
+        "kind": "capital_start"
+      },
+      {
+        "id": "punctuation",
+        "label": "Tu termines par un point, un point d’exclamation ou un point d’interrogation",
+        "kind": "end_punctuation"
+      }
+    ],
+    "model": "In my opinion, companies should try the four-day week. People who are rested work better and make fewer mistakes. Moreover, they have more time for their families. Admittedly, some clients expect us every day. Nevertheless, teams can take turns, so nobody is left without help. To sum up, the benefits outweigh the costs.",
+    "checklist": [
+      "J’ai donné ma position avec deux raisons.",
+      "J’ai reconnu l’autre position avec admittedly et je l’ai réfutée.",
+      "J’ai terminé par une conclusion."
+    ]
+  },
+  {
+    "language": "en",
+    "allowInvented": true,
+    "maxChars": 1500,
+    "id": "efr.b2.wt.story",
+    "kind": "guided",
+    "codes": [],
+    "lesson": "efr-b2-u11-l05",
+    "title": "Le début d’un récit",
+    "instructions": "Écris le début d’un récit (vrai ou inventé). Commence par une proposition participiale, ajoute une inversion pour créer de la tension et utilise au moins une expression idiomatique.",
+    "prompts": [
+      "Where does the story start?",
+      "What happens out of the blue?",
+      "How does the character feel?"
+    ],
+    "requirements": [
+      {
+        "id": "participle",
+        "label": "Tu utilises une proposition participiale (Having…, Walking…)",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "having",
+            "<WORD>"
+          ],
+          [
+            "walking|looking|sitting|standing|running"
+          ]
+        ]
+      },
+      {
+        "id": "inversion",
+        "label": "Tu utilises une inversion (Never had…, Hardly had…, Little did…)",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "never",
+            "had|have|has"
+          ],
+          [
+            "hardly",
+            "had"
+          ],
+          [
+            "no",
+            "sooner",
+            "had"
+          ],
+          [
+            "little",
+            "did"
+          ]
+        ]
+      },
+      {
+        "id": "idiom",
+        "label": "Tu utilises une expression (out of the blue, burst into tears, break the ice…)",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "out",
+            "of",
+            "the",
+            "blue"
+          ],
+          [
+            "burst",
+            "into",
+            "tears"
+          ],
+          [
+            "break|broke",
+            "the",
+            "ice"
+          ],
+          [
+            "piece",
+            "of",
+            "cake"
+          ],
+          [
+            "last",
+            "straw"
+          ],
+          [
+            "blue",
+            "moon"
+          ]
+        ]
+      },
+      {
+        "id": "sentences",
+        "label": "Tu écris au moins 4 phrases",
+        "kind": "min_sentences",
+        "min": 4
+      },
+      {
+        "id": "capital",
+        "label": "Chaque phrase commence par une majuscule",
+        "kind": "capital_start"
+      },
+      {
+        "id": "punctuation",
+        "label": "Tu termines par un point, un point d’exclamation ou un point d’interrogation",
+        "kind": "end_punctuation"
+      }
+    ],
+    "model": "Having missed the last bus, Tom set off on foot. Never had he seen the streets so empty. Walking past the old cinema, he heard someone call his name. Out of the blue, his old friend Ana appeared. Little did he know that she had been looking for him for years.",
+    "checklist": [
+      "J’ai commencé par une proposition participiale.",
+      "J’ai utilisé une inversion pour créer de la tension.",
+      "J’ai utilisé une expression idiomatique."
+    ],
+    "glossary": [
+      {
+        "term": "appeared",
+        "meaning": "est apparu"
+      }
+    ]
+  },
+  {
+    "language": "en",
+    "allowInvented": true,
+    "maxChars": 1500,
+    "id": "efr.b2.wt.recommendation",
+    "kind": "guided",
+    "codes": [],
+    "lesson": "efr-b2-u12-l05",
+    "title": "Recommander une option",
+    "instructions": "Un ami doit choisir entre deux options (deux emplois, deux villes, deux formations). Écris-lui en comparant les deux, avec leurs avantages et leurs inconvénients, et recommande-lui-en une.",
+    "prompts": [
+      "What can your friend choose?",
+      "What are the pros and cons?",
+      "What do you recommend?"
+    ],
+    "requirements": [
+      {
+        "id": "pros-cons",
+        "label": "Tu parles du pour et du contre ou de la contrepartie (trade-off)",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "pros",
+            "and",
+            "cons"
+          ],
+          [
+            "trade-off"
+          ],
+          [
+            "advantage|advantages|disadvantage|disadvantages"
+          ]
+        ]
+      },
+      {
+        "id": "contrast",
+        "label": "Tu compares avec whereas, however ou on the other hand",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "whereas|however"
+          ],
+          [
+            "on",
+            "the",
+            "other",
+            "hand"
+          ]
+        ]
+      },
+      {
+        "id": "recommend",
+        "label": "Tu recommandes une option (I would…, I recommend, you should…)",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "recommend"
+          ],
+          [
+            "you",
+            "should"
+          ],
+          [
+            "if",
+            "i",
+            "were",
+            "you"
+          ]
+        ]
+      },
+      {
+        "id": "sentences",
+        "label": "Tu écris au moins 5 phrases",
+        "kind": "min_sentences",
+        "min": 5
+      },
+      {
+        "id": "capital",
+        "label": "Chaque phrase commence par une majuscule",
+        "kind": "capital_start"
+      },
+      {
+        "id": "punctuation",
+        "label": "Tu termines par un point, un point d’exclamation ou un point d’interrogation",
+        "kind": "end_punctuation"
+      }
+    ],
+    "model": "Hi! I have been weighing up the pros and cons of your two offers. The job in Lisbon pays more, whereas the job here is closer to your family. However, Lisbon is only a short flight away. Every choice has a trade-off, but this is a great opportunity. If I were you, I would take the job in Lisbon.",
+    "checklist": [
+      "J’ai comparé les deux options avec leurs avantages et leurs inconvénients.",
+      "J’ai utilisé whereas ou however.",
+      "J’ai recommandé une option."
+    ]
+  },
+  {
+    "language": "en",
+    "allowInvented": true,
+    "maxChars": 1500,
+    "id": "efr.b2.wt.block1-proposal",
+    "kind": "free",
+    "codes": [],
+    "lesson": "efr-b2-u04-final",
+    "block": 1,
+    "title": "Une proposition pour ton travail ou tes études",
+    "instructions": "Écris une proposition pour améliorer quelque chose dans ton travail, ta fac ou ton quartier. Explique la situation, ton idée, ses conditions et pourquoi elle est avantageuse.",
+    "prompts": [
+      "What is the problem now?",
+      "What is your proposal?",
+      "Why is it a good idea?"
+    ],
+    "requirements": [
+      {
+        "id": "proposal",
+        "label": "As-tu présenté ta proposition clairement ?",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "proposal"
+          ],
+          [
+            "i",
+            "suggest"
+          ],
+          [
+            "we",
+            "could|should"
+          ]
+        ],
+        "optional": true
+      },
+      {
+        "id": "condition",
+        "label": "As-tu posé une condition (as long as, provided that) ?",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "as",
+            "long",
+            "as"
+          ],
+          [
+            "provided",
+            "that"
+          ]
+        ],
+        "optional": true
+      },
+      {
+        "id": "relative",
+        "label": "As-tu ajouté des informations avec which, who ou whose ?",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "which|who|whose"
+          ]
+        ],
+        "optional": true
+      },
+      {
+        "id": "length",
+        "label": "Tu as écrit au moins 5 phrases ?",
+        "kind": "min_sentences",
+        "min": 5,
+        "optional": true
+      }
+    ],
+    "model": "At the moment, our team has too many meetings, most of which are not necessary. My proposal is easy: one short meeting on Monday, which everyone attends, and written updates for the rest of the week. This would give us more time for real work. We could try it for a month, as long as the managers agree. If it works, we will reach our goals faster.",
+    "checklist": [
+      "J’ai expliqué la situation et ma proposition.",
+      "J’ai posé une condition.",
+      "J’ai expliqué pourquoi elle est avantageuse."
+    ],
+    "glossary": [
+      {
+        "term": "attends",
+        "meaning": "assiste à, fréquente (≠ attendre)"
+      },
+      {
+        "term": "updates",
+        "meaning": "nouveautés, mises à jour"
+      }
+    ]
+  },
+  {
+    "language": "en",
+    "allowInvented": true,
+    "maxChars": 1500,
+    "id": "efr.b2.wt.block2-disagree",
+    "kind": "free",
+    "codes": [],
+    "lesson": "efr-b2-u08-final",
+    "block": 2,
+    "title": "Exprimer son désaccord avec diplomatie",
+    "instructions": "Un collègue a publié une opinion avec laquelle tu n’es pas d’accord (par exemple : « Les réseaux sociaux sont la meilleure source d’information »). Réponds-lui avec respect : reconnais ce qu’il y a de vrai et explique pourquoi tu penses autrement.",
+    "prompts": [
+      "What do you agree with?",
+      "Why do you see it differently?",
+      "What do you suggest?"
+    ],
+    "requirements": [
+      {
+        "id": "soften",
+        "label": "As-tu adouci ton désaccord (I see your point, but… ; I’m not sure…) ?",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "i",
+            "see",
+            "your",
+            "point"
+          ],
+          [
+            "not",
+            "sure"
+          ],
+          [
+            "i",
+            "understand"
+          ]
+        ],
+        "optional": true
+      },
+      {
+        "id": "contrast",
+        "label": "As-tu utilisé even though, despite ou whereas ?",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "even",
+            "though"
+          ],
+          [
+            "despite"
+          ],
+          [
+            "whereas"
+          ]
+        ],
+        "optional": true
+      },
+      {
+        "id": "reporting",
+        "label": "As-tu rapporté ce qu’il a dit avec un verbe introducteur (claimed, suggested) ?",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "claimed|claim|suggested|suggest|admitted|warned"
+          ]
+        ],
+        "optional": true
+      },
+      {
+        "id": "length",
+        "label": "Tu as écrit au moins 5 phrases ?",
+        "kind": "min_sentences",
+        "min": 5,
+        "optional": true
+      }
+    ],
+    "model": "Hi! I read your post with interest. I see your point: social media is fast, and it is where young people get their news. However, I’m not sure it is the best source. Even though some posts are reliable, many are biased or misleading, and rumors spread very quickly. I would suggest checking a story in two different sources before sharing it.",
+    "checklist": [
+      "J’ai reconnu ce qu’il y a de vrai dans l’autre opinion.",
+      "J’ai expliqué mon désaccord avec respect.",
+      "J’ai fait une proposition."
+    ]
+  },
+  {
+    "language": "en",
+    "allowInvented": true,
+    "maxChars": 1500,
+    "id": "efr.b2.wt.block3-opinion",
+    "kind": "free",
+    "codes": [],
+    "lesson": "efr-b2-u12-final",
+    "block": 3,
+    "title": "Une tribune : avantages et inconvénients",
+    "instructions": "Écris une tribune sur un sujet qui t’intéresse (le télétravail, l’intelligence artificielle dans l’éducation, l’université gratuite). Présente les avantages et les inconvénients, ta position et une conclusion.",
+    "prompts": [
+      "What are the main advantages?",
+      "What are the disadvantages?",
+      "What do you think in the end?"
+    ],
+    "requirements": [
+      {
+        "id": "linkers",
+        "label": "As-tu utilisé des connecteurs (moreover, however, nevertheless) ?",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "moreover|furthermore|however|nevertheless"
+          ]
+        ],
+        "optional": true
+      },
+      {
+        "id": "cleft",
+        "label": "As-tu mis une idée en relief (What matters is…, The reason why…) ?",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "what",
+            "<WORD>",
+            "is"
+          ],
+          [
+            "the",
+            "reason",
+            "why"
+          ]
+        ],
+        "optional": true
+      },
+      {
+        "id": "conclusion",
+        "label": "As-tu terminé par une conclusion (to sum up, all things considered) ?",
+        "kind": "pattern",
+        "patterns": [
+          [
+            "to",
+            "sum",
+            "up"
+          ],
+          [
+            "all",
+            "things",
+            "considered"
+          ]
+        ],
+        "optional": true
+      },
+      {
+        "id": "length",
+        "label": "As-tu écrit au moins 6 phrases ?",
+        "kind": "min_sentences",
+        "min": 6,
+        "optional": true
+      }
+    ],
+    "model": "Working from home has become very common. Its main advantage is flexibility: people save time and money, and they can organize their day. Moreover, many say they are more productive. However, working alone can be lonely, and it is harder to build a team. What matters is not where we work, but how well we communicate. All things considered, I believe a mix of home and office is the best solution.",
+    "checklist": [
+      "J’ai présenté les avantages et les inconvénients.",
+      "J’ai utilisé des connecteurs et mis une idée en relief.",
+      "J’ai terminé par une conclusion."
+    ],
+    "glossary": [
+      {
+        "term": "productive",
+        "meaning": "productif"
+      },
+      {
+        "term": "organize",
+        "meaning": "organiser"
+      },
+      {
+        "term": "communicate",
+        "meaning": "communiquer"
+      },
+      {
+        "term": "mix",
+        "meaning": "mélange"
+      },
+      {
+        "term": "build",
+        "meaning": "construire, bâtir"
+      }
+    ]
   }
 ];

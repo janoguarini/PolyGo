@@ -1,0 +1,1646 @@
+{
+ "unit": "b2-u04",
+ "level": "B2",
+ "titleEn": "Science, technology and innovation",
+ "strings": [
+  {
+   "id": "79854d2b12",
+   "es": "Ciencia, tecnología e innovación",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Science, technology and innovation"
+  },
+  {
+   "id": "96331cc37c",
+   "es": "Investigación y descubrimientos, inventos, inteligencia artificial y privacidad, y oraciones de relativo con comas, whose y which.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "2ad809cb9d",
+   "es": "Puedes contar un descubrimiento, opinar sobre la tecnología y dar información extra con oraciones de relativo.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "8499dfd587",
+   "es": "Oraciones de relativo avanzadas",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "1b6e3f66db",
+   "es": "Las explicativas van entre comas y agregan información extra; no se usa that: Our filter, which costs five dollars, uses sunlight. Whose indica posesión (cuyo): a scientist whose team… Which puede retomar toda la oración anterior: One experiment failed, which was frustrating. En un registro más formal, la preposición va antes: for whom, in which. Most of which / many of whom: la mayoría de los cuales.",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "c809a7f90e",
+   "es": "Nuestro filtro, que cuesta menos de cinco dólares, usa sólo la luz del sol.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Our filter, which costs less than five dollars, uses only sunlight."
+  },
+  {
+   "id": "91e3b7f5bd",
+   "es": "Marie Curie, cuyos descubrimientos cambiaron la medicina, ganó dos premios Nobel.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Marie Curie, whose discoveries changed medicine, won two Nobel Prizes."
+  },
+  {
+   "id": "3989c77368",
+   "es": "Uno de nuestros experimentos falló, lo cual fue muy frustrante.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "One of our experiments failed, which was very frustrating."
+  },
+  {
+   "id": "956c165513",
+   "es": "científico / científica",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "scientist"
+  },
+  {
+   "id": "512a2a827a",
+   "es": "científico",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "scientist"
+  },
+  {
+   "id": "2b31ddd32c",
+   "es": "científica",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "scientist"
+  },
+  {
+   "id": "b020055b7c",
+   "es": "Es una científica que estudia el océano.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "She is a scientist who studies the ocean."
+  },
+  {
+   "id": "609513334f",
+   "es": "experimento",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "experiment"
+  },
+  {
+   "id": "8886ab98ea",
+   "es": "El experimento falló, pero aprendimos mucho.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "The experiment failed, but we learned a lot."
+  },
+  {
+   "id": "94556db95a",
+   "es": "pruebas / evidencia",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "evidence"
+  },
+  {
+   "id": "718e397851",
+   "es": "pruebas",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "evidence"
+  },
+  {
+   "id": "769c9e0034",
+   "es": "evidencia",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "evidence"
+  },
+  {
+   "id": "ea80247af0",
+   "es": "No hay pruebas de que funcione.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "There is no evidence that it works."
+  },
+  {
+   "id": "e54b4208c0",
+   "es": "descubrimiento",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "discovery"
+  },
+  {
+   "id": "55e72ef7d4",
+   "es": "Fue el descubrimiento más importante del siglo.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "It was the most important discovery of the century."
+  },
+  {
+   "id": "f627d8958a",
+   "es": "gran avance / descubrimiento clave",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "breakthrough"
+  },
+  {
+   "id": "518da90405",
+   "es": "gran avance",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "breakthrough"
+  },
+  {
+   "id": "35d5eec950",
+   "es": "avance",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "breakthrough"
+  },
+  {
+   "id": "446be73bcd",
+   "es": "El filtro nuevo es un verdadero gran avance.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The new filter is a real breakthrough."
+  },
+  {
+   "id": "37816139de",
+   "es": "ocurrírsele / idear",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "come up with"
+  },
+  {
+   "id": "86cb372ce3",
+   "es": "idear",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "come up with"
+  },
+  {
+   "id": "147254605a",
+   "es": "ocurrírsele",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "come up with"
+  },
+  {
+   "id": "51b885c611",
+   "es": "inventar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "come up with"
+  },
+  {
+   "id": "d1caf64a46",
+   "es": "¿A quién se le ocurrió esta idea?",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "Who came up with this idea?"
+  },
+  {
+   "id": "4e4ce40a80",
+   "es": "invento",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "invention"
+  },
+  {
+   "id": "ad6648af82",
+   "es": "El teléfono fue un gran invento.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "The telephone was a great invention."
+  },
+  {
+   "id": "a89c92eae3",
+   "es": "innovación",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "innovation"
+  },
+  {
+   "id": "66566188e2",
+   "es": "La empresa es famosa por su innovación.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "The company is famous for innovation."
+  },
+  {
+   "id": "cd9731208b",
+   "es": "cuyo / cuya",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "whose"
+  },
+  {
+   "id": "6473e673b7",
+   "es": "cuyo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "whose"
+  },
+  {
+   "id": "95ba2cc66e",
+   "es": "cuya",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "whose"
+  },
+  {
+   "id": "8a6dee6376",
+   "es": "Es la científica cuyo equipo ganó el premio.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "She is the scientist whose team won the prize."
+  },
+  {
+   "id": "35ad388e56",
+   "es": "la mayoría de los cuales",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "most of which"
+  },
+  {
+   "id": "297c1085e1",
+   "es": "la mayoría de las cuales",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "most of which"
+  },
+  {
+   "id": "181cad4317",
+   "es": "Tengo muchos libros, la mayoría de los cuales nunca leí.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "I have many books, most of which I have never read."
+  },
+  {
+   "id": "fb79a0a30e",
+   "es": "inteligencia artificial",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "artificial intelligence"
+  },
+  {
+   "id": "a75d067fa4",
+   "es": "IA",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "artificial intelligence"
+  },
+  {
+   "id": "f251e0929e",
+   "es": "La inteligencia artificial ayuda a los médicos a leer radiografías.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Artificial intelligence helps doctors read X-rays."
+  },
+  {
+   "id": "2477803baf",
+   "es": "datos",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "data"
+  },
+  {
+   "id": "78e4176afa",
+   "es": "La aplicación recoge datos sobre tu ubicación.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "The app collects data about your location."
+  },
+  {
+   "id": "82f2a80b9e",
+   "es": "privacidad",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "privacy"
+  },
+  {
+   "id": "a8269bb782",
+   "es": "Me preocupa mi privacidad en internet.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "I worry about my privacy online."
+  },
+  {
+   "id": "ab926b25a0",
+   "es": "depender de / confiar en",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "rely on"
+  },
+  {
+   "id": "74d4aa506d",
+   "es": "depender de",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "rely on"
+  },
+  {
+   "id": "21fe9490d0",
+   "es": "contar con",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "rely on"
+  },
+  {
+   "id": "2f8e1d15d0",
+   "es": "Dependemos del teléfono para todo.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "We rely on our phones for everything."
+  },
+  {
+   "id": "0a0445e7bf",
+   "es": "mantenerse al día con / seguir el ritmo de",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "keep up with"
+  },
+  {
+   "id": "7ea6405b07",
+   "es": "mantenerse al día con",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "keep up with"
+  },
+  {
+   "id": "54c7a781f5",
+   "es": "seguir el ritmo de",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "keep up with"
+  },
+  {
+   "id": "471118d4a6",
+   "es": "Es difícil mantenerse al día con la tecnología.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "It's hard to keep up with technology."
+  },
+  {
+   "id": "ed3a0d59a8",
+   "es": "anticuado / desactualizado",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "outdated"
+  },
+  {
+   "id": "45352b0ccd",
+   "es": "anticuado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "outdated"
+  },
+  {
+   "id": "3354795ff6",
+   "es": "desactualizado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "outdated"
+  },
+  {
+   "id": "f2d97fd080",
+   "es": "obsoleto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "outdated"
+  },
+  {
+   "id": "b8f28f62df",
+   "es": "¡Tu teléfono es muy anticuado!",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Your phone is so outdated!"
+  },
+  {
+   "id": "1bee0a7201",
+   "es": "de vanguardia / de última generación",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "cutting-edge"
+  },
+  {
+   "id": "c95fae562c",
+   "es": "de vanguardia",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "cutting-edge"
+  },
+  {
+   "id": "88405d92e0",
+   "es": "de última generación",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "cutting-edge"
+  },
+  {
+   "id": "8dcc4d2b9f",
+   "es": "El laboratorio usa tecnología de vanguardia.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "The lab uses cutting-edge technology."
+  },
+  {
+   "id": "9d82ed875e",
+   "es": "En el laboratorio",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "1c87915864",
+   "es": "Hablar de científicos, experimentos y pruebas.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "22860073d2",
+   "es": "A scientist hace research (investigación) y experiments. Evidence son las pruebas que demuestran algo: es incontable, así que se dice some evidence, no «an evidence». A discovery es un descubrimiento.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "604ad1da76",
+   "es": "Hablas de experimentos, pruebas y descubrimientos.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "1e2361d4b9",
+   "es": "Usas evidence como incontable: some evidence, no evidence.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "bcbda61c69",
+   "es": "Evidence es incontable: no evidence, some evidence.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "evidence"
+  },
+  {
+   "id": "682888f0a2",
+   "es": "Una entrevista de radio a una científica que inventó un filtro de agua.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u4-interview"
+  },
+  {
+   "id": "c0e0ee5327",
+   "es": "Mei",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u4-interview"
+  },
+  {
+   "id": "fbf260f5f7",
+   "es": "¿Cómo surgió la idea del filtro?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u4-interview"
+  },
+  {
+   "id": "f6b4fb37a6",
+   "es": "Por casualidad, a partir de un experimento que falló",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u4-interview"
+  },
+  {
+   "id": "61b7793337",
+   "es": "Después de años de planificación",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b517c2b6ac",
+   "es": "Gracias a otro científico",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "bff7f8cb0f",
+   "es": "En un viaje a un pueblo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0fb5c98930",
+   "es": "Mei dice: «By accident, actually. One of our experiments failed… But the results showed something we didn’t expect».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u4-interview"
+  },
+  {
+   "id": "0ea11accac",
+   "es": "¿Qué pruebas tienen de que el filtro funciona fuera del laboratorio?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u4-interview"
+  },
+  {
+   "id": "22b277c0af",
+   "es": "Lo probaron en cuarenta pueblos y los datos son claros",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u4-interview"
+  },
+  {
+   "id": "86caca9e9f",
+   "es": "Ninguna todavía",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d24640030b",
+   "es": "Lo probaron en su ciudad",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "74fb185eb2",
+   "es": "Lo usan en hospitales",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2b882fb034",
+   "es": "Mei dice: «We have tested it in forty villages… The data are very clear».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u4-interview"
+  },
+  {
+   "id": "6d3544f0a3",
+   "es": "no hay pruebas",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Does this medicine really work? (no hay pruebas)"
+  },
+  {
+   "id": "6d45c9e606",
+   "es": "¿De verdad funciona este remedio?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Does this medicine really work? (no hay pruebas)"
+  },
+  {
+   "id": "e8bbd56045",
+   "es": "Un gran avance",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "37314f6f66",
+   "es": "Contar un invento o una idea nueva y quién la tuvo.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "07ec25d18d",
+   "es": "Come up with es idear, tener una idea: Who came up with this? A breakthrough es un avance clave. Invention es un invento e innovation, la innovación. Whose (cuyo) une a una persona con algo suyo: the scientist whose team won the prize.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "63e7df84c8",
+   "es": "Cuentas quién tuvo una idea con come up with.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "26e5fe9ab6",
+   "es": "Unes una persona con algo suyo con whose.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "5f7a4f35b8",
+   "es": "Whose + sustantivo: posesión (cuyo). Who’s es who is.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "whose"
+  },
+  {
+   "id": "cf28cd4c14",
+   "es": "¿Qué tiene de especial el filtro de Mei Lin?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u4-interview"
+  },
+  {
+   "id": "21849d6110",
+   "es": "Es barato y limpia el agua sólo con la luz del sol",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u4-interview"
+  },
+  {
+   "id": "efb75608e7",
+   "es": "Es el más grande del mundo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e73a0f34e9",
+   "es": "Funciona con electricidad",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "11e57a9e0a",
+   "es": "Lo inventó el entrevistador",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b4f97689ae",
+   "es": "Mei dice: «Our filter, which costs less than five dollars, uses only sunlight to clean dirty water».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u4-interview"
+  },
+  {
+   "id": "3e9ab85ed4",
+   "es": "¿Qué quiere decir Mei con «The invention is useless if the people who need it can’t get it»?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u4-interview"
+  },
+  {
+   "id": "fb50d62aed",
+   "es": "Que el invento sólo sirve si llega a quienes lo necesitan",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u4-interview"
+  },
+  {
+   "id": "e94a307659",
+   "es": "Que el invento no funciona",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "36a3cf37c1",
+   "es": "Que es muy caro",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "06fe32e66a",
+   "es": "Que nadie lo necesita",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "bcc4df5509",
+   "es": "Por eso el próximo paso es fabricarlo en grandes cantidades: «We want to make it in large numbers».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u4-interview"
+  },
+  {
+   "id": "1bf2f1d776",
+   "es": "Carteles de una sala de un museo de ciencia.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u4-museum"
+  },
+  {
+   "id": "2a1d8f7d92",
+   "es": "¿Qué se destaca de Tim Berners-Lee?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u4-museum"
+  },
+  {
+   "id": "ac66937b84",
+   "es": "Que compartir información le importaba más que el dinero",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u4-museum"
+  },
+  {
+   "id": "588bbfb2b6",
+   "es": "Que inventó el teléfono",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "bd89b6843a",
+   "es": "Que ganó dos premios Nobel",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1016f26c94",
+   "es": "Que cobró mucho por su invento",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a139a9e1ef",
+   "es": "El cartel dice: «a scientist for whom sharing information was more important than money. He never asked for payment».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u4-museum"
+  },
+  {
+   "id": "4b610bf39e",
+   "es": "se le ocurrió a mi hermana",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Whose idea was it? (se le ocurrió a mi hermana)"
+  },
+  {
+   "id": "f2533a32ad",
+   "es": "¿De quién fue la idea?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Whose idea was it? (se le ocurrió a mi hermana)"
+  },
+  {
+   "id": "dff38d0274",
+   "es": "Información extra entre comas",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "7cbe236ce1",
+   "es": "Agregar información con oraciones de relativo explicativas y which.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "f2cbf029f0",
+   "es": "Las explicativas van entre comas y dan información extra: The telephone, which was invented in 1876, … No se usa that. Which también puede retomar toda una idea: One experiment failed, which was frustrating (lo cual). Most of which y many of whom: la mayoría de los cuales, muchos de los cuales.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "4b7b81b3b4",
+   "es": "Agregas información extra entre comas con which y who.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "6430f02815",
+   "es": "Retomas toda una idea con which y hablas de partes con most of which.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "ff9ff6861f",
+   "es": "El teléfono, que se inventó en 1876, cambió el mundo.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "The telephone, which was invented in 1876, changed the world."
+  },
+  {
+   "id": "130ec70b35",
+   "es": "En una explicativa (entre comas) no se usa that: which para cosas, who para personas.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "which"
+  },
+  {
+   "id": "7654e0220b",
+   "es": "Which retoma toda la oración anterior (lo cual).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "which"
+  },
+  {
+   "id": "1c0c9bbd66",
+   "es": "Most of which: después de una coma, no se repite them.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "which"
+  },
+  {
+   "id": "7aa7b61561",
+   "es": "¿Cómo son la mayoría de los pueblos donde probaron el filtro?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u4-interview"
+  },
+  {
+   "id": "8c56d9e572",
+   "es": "No tienen agua limpia",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u4-interview"
+  },
+  {
+   "id": "d0c505ba62",
+   "es": "Están cerca del laboratorio",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8388b2de98",
+   "es": "Tienen mucho sol",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f4bb0b68f1",
+   "es": "Son muy grandes",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b18b50dc82",
+   "es": "Mei dice: «We have tested it in forty villages, most of which have no clean water».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u4-interview"
+  },
+  {
+   "id": "cdd18788c0",
+   "es": "¿Por qué se recuerda a Marie Curie en el cartel?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u4-museum"
+  },
+  {
+   "id": "4e4ac21ff3",
+   "es": "Sus descubrimientos cambiaron la medicina y ganó dos premios Nobel",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u4-museum"
+  },
+  {
+   "id": "cea47d51c3",
+   "es": "Inventó el teléfono",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0eaded8488",
+   "es": "Creó la World Wide Web",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ab2317e205",
+   "es": "Fue la primera médica",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "67faa81452",
+   "es": "El cartel dice: «Marie Curie, whose discoveries changed medicine, was the first person to win two Nobel Prizes».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u4-museum"
+  },
+  {
+   "id": "119d0118c8",
+   "es": "Mi hermano que vive en Londres es científico.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "My brother who lives in London is a scientist."
+  },
+  {
+   "id": "304eb2f8cc",
+   "es": "falló, lo cual fue frustrante",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "How did the experiment go? (falló, lo cual fue frustrante)"
+  },
+  {
+   "id": "c8c1c99465",
+   "es": "¿Cómo salió el experimento?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How did the experiment go? (falló, lo cual fue frustrante)"
+  },
+  {
+   "id": "713c4ca893",
+   "es": "Máquinas que piensan",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "46e0b6955d",
+   "es": "Opinar sobre la inteligencia artificial, los datos y la privacidad.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "43f0ef8994",
+   "es": "Artificial intelligence (AI) es la inteligencia artificial. Data (datos) se usa casi siempre como incontable: the data is / are. Privacy es la privacidad. Rely on es depender de algo o confiar en que funcione: We rely on our phones.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "5726caa5f7",
+   "es": "Hablas de la inteligencia artificial, los datos y la privacidad.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "e86f1b47e5",
+   "es": "Dices de qué dependes con rely on.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "1542b2ba72",
+   "es": "Rely on (no «rely of»): depender de.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "on"
+  },
+  {
+   "id": "de58135c9d",
+   "es": "Un artículo de opinión sobre la inteligencia artificial.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u4-ai"
+  },
+  {
+   "id": "d98f7da3e7",
+   "es": "Según el autor, ¿cuál es «exactamente el problema»?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u4-ai"
+  },
+  {
+   "id": "d0a003985a",
+   "es": "Que dependemos de la IA todos los días sin pensarlo",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u4-ai"
+  },
+  {
+   "id": "cfeac3318c",
+   "es": "Que la IA es muy cara",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "569acc8091",
+   "es": "Que los médicos no la usan",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d84eeb40dd",
+   "es": "Que la IA elige mal las canciones",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "cbf00ecea5",
+   "es": "El artículo dice: «Most of us rely on it every day without thinking about it. That is exactly the problem».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u4-ai"
+  },
+  {
+   "id": "d9b9b83b94",
+   "es": "¿Por qué la IA plantea preguntas sobre la privacidad?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u4-ai"
+  },
+  {
+   "id": "5f22137cad",
+   "es": "Porque necesita muchos datos, gran parte de nuestros teléfonos",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u4-ai"
+  },
+  {
+   "id": "ea97815fb2",
+   "es": "Porque es muy lenta",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "92f5a3343e",
+   "es": "Porque no funciona sin internet",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4a3e1336f4",
+   "es": "Porque la usan los bancos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "17ce162031",
+   "es": "El artículo dice: «these systems need huge amounts of data, much of which comes from our phones… which raises serious questions about privacy».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u4-ai"
+  },
+  {
+   "id": "b9e1036e2f",
+   "es": "¿Cuál es la postura del autor sobre la innovación?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u4-ai"
+  },
+  {
+   "id": "e2b587fbba",
+   "es": "No hay que rechazarla, pero hay que saber cómo se usan nuestros datos",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u4-ai"
+  },
+  {
+   "id": "524762cc47",
+   "es": "Hay que prohibirla",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5dacd2cd77",
+   "es": "No tiene ningún riesgo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d2fb76f44d",
+   "es": "Sólo deberían usarla los médicos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e3fca29049",
+   "es": "El artículo dice: «This does not mean we should reject innovation. But we should know who collects our data».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u4-ai"
+  },
+  {
+   "id": "e3dea6dcf9",
+   "es": "te preocupa tu privacidad",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What do you think about apps that collect your data? (te preocupa tu privacidad)"
+  },
+  {
+   "id": "d10db3ebbf",
+   "es": "¿Qué piensas de las aplicaciones que recogen tus datos?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What do you think about apps that collect your data? (te preocupa tu privacidad)"
+  },
+  {
+   "id": "85660f783f",
+   "es": "Ponerse al día",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "e35a806257",
+   "es": "Hablar de tecnología nueva y vieja y de cómo seguirle el ritmo.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "351080b714",
+   "es": "Keep up with es mantenerse al día, seguir el ritmo: It’s hard to keep up with technology. Algo outdated está anticuado; algo cutting-edge es de vanguardia. Con which puedes agregar un comentario: My phone, which I bought ten years ago, still works.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "61fa12aa2a",
+   "es": "Cuentas si te cuesta seguirle el ritmo a la tecnología.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "6070b2e77d",
+   "es": "Describes algo como outdated o cutting-edge.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "5f7a1fe55e",
+   "es": "¿Qué significa «outdated»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "aa116d80cd",
+   "es": "Un nieto ayuda a su abuela con su teléfono.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u4-grandma"
+  },
+  {
+   "id": "7062f3b647",
+   "es": "Dani",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u4-grandma"
+  },
+  {
+   "id": "751e26c6fa",
+   "es": "¿Por qué la abuela no quiere cambiar su teléfono al principio?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u4-grandma"
+  },
+  {
+   "id": "5af19a61d3",
+   "es": "Porque hace llamadas, que es lo único que necesita",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u4-grandma"
+  },
+  {
+   "id": "a2999af1c6",
+   "es": "Porque no tiene dinero",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a661fbb7b4",
+   "es": "Porque no le gustan las cámaras",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "113847ef18",
+   "es": "La abuela dice: «It makes calls, which is all I need».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u4-grandma"
+  },
+  {
+   "id": "432411d3c5",
+   "es": "¿Qué le ofrece Dani a su abuela?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u4-grandma"
+  },
+  {
+   "id": "6147815d34",
+   "es": "Su teléfono viejo, que es mucho más nuevo, y enseñarle a usarlo",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u4-grandma"
+  },
+  {
+   "id": "eecabbce00",
+   "es": "Un teléfono de última generación",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "795cecca57",
+   "es": "Comprarle un teléfono",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "44854f89f1",
+   "es": "Arreglar su teléfono",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4faaf9612b",
+   "es": "Dani dice: «My old phone, which I don’t use anymore, is much newer than yours… And I’ll teach you how to use it».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u4-grandma"
+  },
+  {
+   "id": "416b8b044e",
+   "es": "Mi teléfono, que compré hace diez años, todavía funciona.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "My phone which I bought ten years ago still works."
+  },
+  {
+   "id": "433e285f99",
+   "es": "el tuyo está muy anticuado",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Why do you want a new laptop? (el tuyo está muy anticuado)"
+  },
+  {
+   "id": "887d0c1d4f",
+   "es": "¿Por qué quieres una computadora nueva?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Why do you want a new laptop? (el tuyo está muy anticuado)"
+  },
+  {
+   "id": "d4cb7104c8",
+   "es": "Tu opinión sobre una tecnología",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "9d9dfcfdcd",
+   "es": "Elige una tecnología que usas todos los días (una app, la inteligencia artificial, el teléfono). Explica qué es, por qué dependes de ella y qué te preocupa. Usa oraciones de relativo con comas.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "714bc731e4",
+   "es": "Agregas información entre comas con which o who",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "da4670d29b",
+   "es": "Dices de qué dependes (rely on)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "5990cb93bc",
+   "es": "Dices qué te preocupa (privacy, data, I worry about…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "e7cddf620a",
+   "es": "Usé which o who para agregar información.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "ddf18bd3ed",
+   "es": "Expliqué de qué dependo con rely on.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "102b2edb43",
+   "es": "Dije qué me preocupa.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "082f290576",
+   "es": "Una propuesta para tu trabajo o tu estudio",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "0d0dc0664a",
+   "es": "Escribe una propuesta para mejorar algo en tu trabajo, tu facultad o tu barrio. Explica la situación, tu idea, sus condiciones y por qué conviene.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "2bb9dbcde3",
+   "es": "asiste",
+   "kinds": [
+    "writing.glossary"
+   ],
+   "en": "attends"
+  },
+  {
+   "id": "32a288a5b0",
+   "es": "novedades, actualizaciones",
+   "kinds": [
+    "writing.glossary"
+   ],
+   "en": "updates"
+  },
+  {
+   "id": "310061e4ba",
+   "es": "¿Presentaste tu propuesta con claridad?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "accf187786",
+   "es": "¿Pusiste una condición (as long as, provided that)?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "2dd2ca4f62",
+   "es": "¿Agregaste información con which, who o whose?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "b80b978433",
+   "es": "Expliqué la situación y mi propuesta.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "7ad47f5265",
+   "es": "Puse una condición.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "c6baf6cde8",
+   "es": "Expliqué por qué conviene.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.b2-u4-interview": {
+   "setting": "Una entrevista de radio a una científica que inventó un filtro de agua.",
+   "lines": [
+    "Host: My guest today is Dr. Mei Lin, whose team has come up with a new way to clean water. Welcome.",
+    "Mei: Thank you. Our filter, which costs less than five dollars, uses only sunlight to clean dirty water.",
+    "Host: That sounds like a real breakthrough. How did you get the idea?",
+    "Mei: By accident, actually. One of our experiments failed, which was very frustrating at the time. But the results showed something we didn't expect.",
+    "Host: And is there evidence that it works outside the lab?",
+    "Mei: Yes. We have tested it in forty villages, most of which have no clean water. The data are very clear.",
+    "Host: What is the next step?",
+    "Mei: We want to make it in large numbers. The invention is useless if the people who need it can't get it."
+   ]
+  },
+  "en.stim.b2-u4-museum": {
+   "setting": "Carteles de una sala de un museo de ciencia.",
+   "lines": [
+    "Room 3: Ideas that changed the world",
+    "The telephone, which was invented in 1876, allowed people to talk across long distances for the first time.",
+    "Marie Curie, whose discoveries changed medicine, was the first person to win two Nobel Prizes.",
+    "The World Wide Web was created by Tim Berners-Lee, a scientist for whom sharing information was more important than money. He never asked for payment for his invention.",
+    "Which of these innovations do you use every day?"
+   ]
+  },
+  "en.stim.b2-u4-ai": {
+   "setting": "Un artículo de opinión sobre la inteligencia artificial.",
+   "lines": [
+    "Artificial intelligence is everywhere: it chooses the songs we listen to, suggests the products we buy and even helps doctors read X-rays.",
+    "Most of us rely on it every day without thinking about it. That is exactly the problem.",
+    "To work well, these systems need huge amounts of data, much of which comes from our phones. Every search, every photo and every location can be stored, which raises serious questions about privacy.",
+    "This does not mean we should reject innovation. But we should know who collects our data, how it is used and for how long it is kept.",
+    "Technology is a tool. Whether it helps or harms us depends on the rules we decide to give it."
+   ]
+  },
+  "en.stim.b2-u4-grandma": {
+   "setting": "Un nieto ayuda a su abuela con su teléfono.",
+   "lines": [
+    "Dani: Grandma, your phone is so outdated. It is older than me!",
+    "Grandma: It works fine, thank you. It makes calls, which is all I need.",
+    "Dani: But you can't use video calls, and the bank app doesn't work on it.",
+    "Grandma: I know. It's hard to keep up with technology. Everything changes so fast.",
+    "Dani: I'll help you. My old phone, which I don't use anymore, is much newer than yours.",
+    "Grandma: Is it one of those cutting-edge phones with three cameras?",
+    "Dani: Not really, but it's good enough for you. And I'll teach you how to use it."
+   ]
+  }
+ }
+}

@@ -1,0 +1,1700 @@
+{
+ "unit": "b2-u06",
+ "level": "B2",
+ "titleEn": "Psychology and relationships",
+ "strings": [
+  {
+   "id": "e250c5e2c3",
+   "es": "Psicología y relaciones",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Psychology and relationships"
+  },
+  {
+   "id": "0103adecbc",
+   "es": "Deducir lo que pasó y lamentar lo que hiciste (must have, should have), peleas y reconciliaciones, estados de ánimo y empatía.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "221a851b09",
+   "es": "Puedes deducir qué le pasó a alguien, lamentar lo que hiciste, resolver una pelea y hablar de emociones.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "56aabb31ab",
+   "es": "Modales perfectos",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "e6622220c5",
+   "es": "Modal + have + participio habla del pasado. Para deducir: must have (seguro que sí), might / could have (es posible) y can’t have (seguro que no): She must have lost her phone. Para lamentar o criticar: should have / shouldn’t have (debería / no debería haber) y could have (podría haber, pero no lo hizo).",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "7b4cf23c65",
+   "es": "Seguro que perdió el teléfono otra vez.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "She must have lost her phone again."
+  },
+  {
+   "id": "e19c895101",
+   "es": "No puede haberlo perdido. Subió una foto esta mañana.",
+   "kinds": [
+    "example"
+   ],
+   "en": "She can't have lost it. She posted a photo this morning."
+  },
+  {
+   "id": "bd5f30df4c",
+   "es": "Debería haber pensado antes de hablar.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I should have thought before I spoke."
+  },
+  {
+   "id": "54f0e822bc",
+   "es": "debe de haber / seguro que (pasado)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "must have"
+  },
+  {
+   "id": "04b039130d",
+   "es": "debe de haber",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "must have"
+  },
+  {
+   "id": "6a2e65bc4a",
+   "es": "debe haber",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "must have"
+  },
+  {
+   "id": "1f12db486b",
+   "es": "Debes de haber estado muy cansado.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "You must have been very tired."
+  },
+  {
+   "id": "a54876de34",
+   "es": "puede que haya / quizás haya",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "might have"
+  },
+  {
+   "id": "60edd9b75e",
+   "es": "puede que haya",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "might have"
+  },
+  {
+   "id": "7addd7dfe3",
+   "es": "quizás haya",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "might have"
+  },
+  {
+   "id": "5f400aac1a",
+   "es": "Puede que haya perdido el autobús.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "He might have missed the bus."
+  },
+  {
+   "id": "d440bec900",
+   "es": "no puede haber",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "can't have"
+  },
+  {
+   "id": "22bfb1c3f3",
+   "es": "no puede ser que haya",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "can't have"
+  },
+  {
+   "id": "619a53d30f",
+   "es": "No puede haberse olvidado. Se lo recordé esta mañana.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "She can't have forgotten. I reminded her this morning."
+  },
+  {
+   "id": "e2b85ad0ea",
+   "es": "debería haber",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "should have"
+  },
+  {
+   "id": "7e310003f8",
+   "es": "tendría que haber",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "should have"
+  },
+  {
+   "id": "cbdb901697",
+   "es": "Debería haberte llamado ayer.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I should have called you yesterday."
+  },
+  {
+   "id": "62cb0d0cf6",
+   "es": "podría haber",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "could have"
+  },
+  {
+   "id": "37f9673255",
+   "es": "¡Me lo podrías haber dicho antes!",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "You could have told me earlier!"
+  },
+  {
+   "id": "0fd72da29a",
+   "es": "culpable",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "guilty"
+  },
+  {
+   "id": "754fa90b51",
+   "es": "Me siento culpable por lo que dije.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I feel guilty about what I said."
+  },
+  {
+   "id": "ab69085e35",
+   "es": "pelearse / enojarse (con alguien)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "fall out"
+  },
+  {
+   "id": "d521f3f762",
+   "es": "enojarse con alguien",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "fall out"
+  },
+  {
+   "id": "5d98cb4a72",
+   "es": "La semana pasada me peleé con mi mejor amiga.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I fell out with my best friend last week."
+  },
+  {
+   "id": "7989f12a15",
+   "es": "reconciliarse / hacer las paces",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "make up"
+  },
+  {
+   "id": "1107bbe563",
+   "es": "reconciliarse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "make up"
+  },
+  {
+   "id": "2df9ec7081",
+   "es": "hacer las paces",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "make up"
+  },
+  {
+   "id": "e3b003ba59",
+   "es": "amigarse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "make up"
+  },
+  {
+   "id": "eb7532d738",
+   "es": "Discutieron, pero al día siguiente se reconciliaron.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "They argued, but they made up the next day."
+  },
+  {
+   "id": "51a9047064",
+   "es": "exagerar / reaccionar de más",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "overreact"
+  },
+  {
+   "id": "2475763f9d",
+   "es": "exagerar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "overreact"
+  },
+  {
+   "id": "e933020598",
+   "es": "reaccionar de más",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "overreact"
+  },
+  {
+   "id": "dda6ad1468",
+   "es": "Perdón por exagerar. No era un problema grave.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I'm sorry I overreacted. It wasn't a big problem."
+  },
+  {
+   "id": "3e577d4b7c",
+   "es": "tomárselo como algo personal",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "take it personally"
+  },
+  {
+   "id": "049c72808d",
+   "es": "tomárselo a pecho",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "take it personally"
+  },
+  {
+   "id": "80d835f6ce",
+   "es": "No te lo tomes como algo personal. Es maleducado con todos.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Don't take it personally. He is rude to everyone."
+  },
+  {
+   "id": "1c4200a435",
+   "es": "molesto / dolido",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "upset"
+  },
+  {
+   "id": "617645408d",
+   "es": "molesto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "upset"
+  },
+  {
+   "id": "bb2c7c42a2",
+   "es": "dolido",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "upset"
+  },
+  {
+   "id": "8f4c33d44a",
+   "es": "disgustado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "upset"
+  },
+  {
+   "id": "0d7f3b1d3b",
+   "es": "Estaba dolida porque nadie la llamó.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "She was upset because nobody called her."
+  },
+  {
+   "id": "d5eab6f811",
+   "es": "humor / estado de ánimo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "mood"
+  },
+  {
+   "id": "c50a5e4de8",
+   "es": "humor",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "mood"
+  },
+  {
+   "id": "10ddcf60dc",
+   "es": "estado de ánimo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "mood"
+  },
+  {
+   "id": "fcff42dc4b",
+   "es": "No le hables ahora. Está de mal humor.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "Don't talk to him now. He is in a bad mood."
+  },
+  {
+   "id": "0862b113c4",
+   "es": "animar / levantar el ánimo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "cheer up"
+  },
+  {
+   "id": "8ca3886fe5",
+   "es": "animar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "cheer up"
+  },
+  {
+   "id": "2bb4effc99",
+   "es": "animarse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "cheer up"
+  },
+  {
+   "id": "b0a6859462",
+   "es": "levantar el ánimo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "cheer up"
+  },
+  {
+   "id": "eab9e4a922",
+   "es": "¡Arriba ese ánimo! Mañana va a ser mejor.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Cheer up! Tomorrow will be better."
+  },
+  {
+   "id": "3bb2471ab7",
+   "es": "decepcionar / fallarle a alguien",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "let down"
+  },
+  {
+   "id": "22ac4cf050",
+   "es": "decepcionar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "let down"
+  },
+  {
+   "id": "a1af0c1eeb",
+   "es": "fallarle a alguien",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "let down"
+  },
+  {
+   "id": "7bf5779766",
+   "es": "defraudar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "let down"
+  },
+  {
+   "id": "e6abc56bdf",
+   "es": "Confié en ti y me fallaste.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I trusted you, and you let me down."
+  },
+  {
+   "id": "3967c06603",
+   "es": "agradecido",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "grateful"
+  },
+  {
+   "id": "1194b26609",
+   "es": "Te estoy muy agradecido por tu ayuda.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I am very grateful for your help."
+  },
+  {
+   "id": "cd99e22e3a",
+   "es": "terco / testarudo",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "stubborn"
+  },
+  {
+   "id": "64adda70bd",
+   "es": "terco",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "stubborn"
+  },
+  {
+   "id": "70c6f1993b",
+   "es": "testarudo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "stubborn"
+  },
+  {
+   "id": "4f72d0dc5d",
+   "es": "cabeza dura",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "stubborn"
+  },
+  {
+   "id": "8443c5cebd",
+   "es": "Es demasiado terco para pedir perdón.",
+   "kinds": [
+    "word.example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "He is too stubborn to say sorry."
+  },
+  {
+   "id": "88a4663d51",
+   "es": "empatía",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "empathy"
+  },
+  {
+   "id": "83efb6c5bb",
+   "es": "Empatía significa entender cómo se sienten los demás.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "Empathy means understanding how others feel."
+  },
+  {
+   "id": "42964c33c5",
+   "es": "confianza en uno mismo / seguridad",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "self-confidence"
+  },
+  {
+   "id": "39934876f4",
+   "es": "confianza en uno mismo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "self-confidence"
+  },
+  {
+   "id": "1ea9f394f5",
+   "es": "seguridad",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "self-confidence"
+  },
+  {
+   "id": "b402159a38",
+   "es": "autoestima",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "self-confidence"
+  },
+  {
+   "id": "6b7576e1b7",
+   "es": "Aprender un idioma me dio más confianza en mí mismo.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "Learning a language gave me more self-confidence."
+  },
+  {
+   "id": "e6c3810965",
+   "es": "Algo debe de haber pasado",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "f2e707d810",
+   "es": "Deducir qué pasó con must have, might have y can't have.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "f7e0fac31d",
+   "es": "Para deducir algo del pasado: must have + participio (estás casi seguro: She must have lost her phone), might / could have (es posible: She might have been busy) y can’t have (estás casi seguro de que no: She can’t have forgotten). En la conversación suena «must’ve», «might’ve».",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "0846ce67eb",
+   "es": "Deduces lo que pasó con must have y can’t have.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "386a0e6169",
+   "es": "Dices lo que es posible con might have.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "7ea8fcbbe6",
+   "es": "Trabajaste doce horas. Debes de haber estado agotado.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "You worked twelve hours. You must have been exhausted."
+  },
+  {
+   "id": "86834e7a83",
+   "es": "Modal + have + participio: must have been.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "been"
+  },
+  {
+   "id": "f724ff671b",
+   "es": "Can’t have: estás casi seguro de que no pasó.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "can't"
+  },
+  {
+   "id": "d0b8608b99",
+   "es": "Dos amigos se preocupan porque una amiga no contesta.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u6-no-answer"
+  },
+  {
+   "id": "d6603d1f82",
+   "es": "Eva",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u6-no-answer"
+  },
+  {
+   "id": "ab217e5fc7",
+   "es": "¿Por qué Max está seguro de que Sara no perdió el teléfono?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u6-no-answer"
+  },
+  {
+   "id": "8b7e2332cf",
+   "es": "Porque subió una foto a las redes esa mañana",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u6-no-answer"
+  },
+  {
+   "id": "7ad16154d2",
+   "es": "Porque la llamó y atendió",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "92975afb9d",
+   "es": "Porque Eva la vio",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f180db68b5",
+   "es": "Porque Sara nunca pierde nada",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "63d10b7907",
+   "es": "Max dice: «She can’t have lost it. She posted a photo on social media this morning».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u6-no-answer"
+  },
+  {
+   "id": "7bcd93631b",
+   "es": "¿Qué teme Max?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u6-no-answer"
+  },
+  {
+   "id": "105c57b735",
+   "es": "Haber dicho algo que la molestó",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u6-no-answer"
+  },
+  {
+   "id": "9be48ef12e",
+   "es": "Que Sara esté enferma",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "dcda00a61e",
+   "es": "Que Sara se haya mudado",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b209f1ed87",
+   "es": "Que Eva esté enojada",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3a389218a5",
+   "es": "Max dice: «I might have said something that upset her. I made a joke about her new job».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u6-no-answer"
+  },
+  {
+   "id": "ddec583bd8",
+   "es": "quizás perdió el tren",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Where's Tom? He's never late. (quizás perdió el tren)"
+  },
+  {
+   "id": "e70efc9723",
+   "es": "¿Dónde está Tom? Nunca llega tarde.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Where's Tom? He's never late. (quizás perdió el tren)"
+  },
+  {
+   "id": "bb4d69fcfc",
+   "es": "Lo que debería haber hecho",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "63ea27af90",
+   "es": "Lamentar y criticar el pasado con should have y could have.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "b02997438b",
+   "es": "Should have + participio: algo que era lo correcto y no pasó (I should have called you = debería haberte llamado). Shouldn’t have: algo que pasó y no tendría que haber pasado. Could have: una posibilidad que no se aprovechó (You could have told me = me lo podrías haber dicho). Si te sientes mal por algo que hiciste, te sientes guilty.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "12a3ab8d95",
+   "es": "Lamentas lo que hiciste o no hiciste con should / shouldn’t have.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "52ea1fb5cb",
+   "es": "Reprochas con could have y dices que te sientes culpable.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "7b5f615e1f",
+   "es": "Debería haberte llamado ayer. ¡Perdón!",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I should have called you yesterday. Sorry!"
+  },
+  {
+   "id": "30049b25c5",
+   "es": "Should have + participio.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "called"
+  },
+  {
+   "id": "bc90e8d70a",
+   "es": "No deberías haber bromeado sobre su trabajo. Estaba muy nerviosa.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "You shouldn't have joked about her job. She was very nervous."
+  },
+  {
+   "id": "61b2e207aa",
+   "es": "¿Qué opina Eva del chiste de Max?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u6-no-answer"
+  },
+  {
+   "id": "4aa23fae7f",
+   "es": "Que no tendría que haber bromeado sobre eso",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u6-no-answer"
+  },
+  {
+   "id": "32a70bca3a",
+   "es": "Que fue gracioso",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9952d33d1e",
+   "es": "Que Sara no lo escuchó",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ee99b2193f",
+   "es": "Eva dice: «Honestly, you shouldn’t have joked about that. She’s very nervous about it».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u6-no-answer"
+  },
+  {
+   "id": "84339e0a02",
+   "es": "¿Qué lamenta Max y qué va a hacer?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u6-no-answer"
+  },
+  {
+   "id": "82136cf997",
+   "es": "No haber pensado antes de hablar; la va a llamar para pedirle perdón",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u6-no-answer"
+  },
+  {
+   "id": "5721d11f62",
+   "es": "Haber llamado tarde; le va a escribir",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1c1754ca1e",
+   "es": "Haber perdido el teléfono; se va a comprar otro",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "75b6cb0678",
+   "es": "Nada; va a esperar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4c53a6caa8",
+   "es": "Max dice: «I should have thought before I spoke. I’ll call her tonight and apologize».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u6-no-answer"
+  },
+  {
+   "id": "f83e8d9a7a",
+   "es": "deberías haber estudiado más",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Why do you feel bad? (deberías haber estudiado más)"
+  },
+  {
+   "id": "108e55a184",
+   "es": "¿Por qué te sientes mal?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Why do you feel bad? (deberías haber estudiado más)"
+  },
+  {
+   "id": "d943675468",
+   "es": "Peleas y reconciliaciones",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "d50d1277a9",
+   "es": "Contar una pelea, reconocer que exageraste y hacer las paces.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "67589586de",
+   "es": "Fall out (with someone) es pelearse; make up, reconciliarse. Overreact es exagerar, reaccionar de más. Don’t take it personally: no te lo tomes como algo personal. Si alguien está upset, está molesto o dolido (no «enojado» del todo).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "547489afe8",
+   "es": "Cuentas una pelea con fall out y una reconciliación con make up.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "84cd151072",
+   "es": "Reconoces que exageraste y pides que no lo tomen como algo personal.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "c725f80629",
+   "es": "Una columna de consejos: la carta de una lectora y la respuesta.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u6-advice"
+  },
+  {
+   "id": "132b507cef",
+   "es": "¿Por qué se pelearon Lina y su amiga?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u6-advice"
+  },
+  {
+   "id": "ba27eee60b",
+   "es": "La amiga llegó una hora tarde y Lina le gritó delante de todos",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u6-advice"
+  },
+  {
+   "id": "137560695d",
+   "es": "La amiga no fue al cumpleaños",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6778e9a948",
+   "es": "Lina llegó tarde a una cena",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "85eba173fe",
+   "es": "La amiga le gritó a Lina",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9a929086e0",
+   "es": "Lina escribe: «She was an hour late for my birthday dinner, and I shouted at her in front of everyone».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u6-advice"
+  },
+  {
+   "id": "df91a006cc",
+   "es": "¿Cuál es la opinión de Ruth?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u6-advice"
+  },
+  {
+   "id": "b3ceff2d9f",
+   "es": "Las dos se equivocaron: llegar tarde fue grosero, pero Lina exageró",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u6-advice"
+  },
+  {
+   "id": "e11c164fec",
+   "es": "Sólo se equivocó la amiga",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "23f513a183",
+   "es": "Sólo se equivocó Lina",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "448e915772",
+   "es": "Ninguna se equivocó",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ba47df679e",
+   "es": "Ruth responde: «you both made mistakes… you probably overreacted when you shouted at her in public».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u6-advice"
+  },
+  {
+   "id": "f26b28a497",
+   "es": "¿Qué es lo más importante, según Ruth?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u6-advice"
+  },
+  {
+   "id": "6e403e82ae",
+   "es": "Cómo se reconcilian, porque los amigos se pelean siempre",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u6-advice"
+  },
+  {
+   "id": "ac5b680348",
+   "es": "No pelearse nunca",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6585c0875c",
+   "es": "Quién tiene razón",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "50c64717b7",
+   "es": "Que la amiga pida perdón primero",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f5cabb580f",
+   "es": "Ruth termina: «Friends fall out all the time. What matters is how you make up».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u6-advice"
+  },
+  {
+   "id": "995dcf8764",
+   "es": "Perdón por exagerar ayer.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I am sorry I overreacted yesterday."
+  },
+  {
+   "id": "707c719aea",
+   "es": "no, ya se reconciliaron",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Are you still angry with your sister? (no, ya se reconciliaron)"
+  },
+  {
+   "id": "5e2d6efd4c",
+   "es": "¿Sigues enojado con tu hermana?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Are you still angry with your sister? (no, ya se reconciliaron)"
+  },
+  {
+   "id": "6201845354",
+   "es": "No te lo tomes como algo personal.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "Don't take it personally."
+  },
+  {
+   "id": "cbaa839074",
+   "es": "Estados de ánimo",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "5e145c83bf",
+   "es": "Hablar del humor, animar a alguien y contar que alguien te falló.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "db4ad2b316",
+   "es": "Mood es el humor: in a good / bad mood. Cheer up es animar (Cheer up! = ¡Arriba!) y cheer someone up, animar a alguien. Let someone down es fallarle, decepcionarlo. Grateful es agradecido; stubborn, terco.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "15713c8189",
+   "es": "Describes el humor de alguien y lo animas.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "b61df04011",
+   "es": "Dices que alguien te falló o que estás agradecido.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "3a5049edf9",
+   "es": "Be in a good / bad mood: estar de buen / mal humor.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "mood"
+  },
+  {
+   "id": "e26f1acd71",
+   "es": "Un mensaje de disculpas entre amigos.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u6-sorry"
+  },
+  {
+   "id": "a593838987",
+   "es": "¿Por qué Sara no contestaba los mensajes?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u6-sorry"
+  },
+  {
+   "id": "8283269ede",
+   "es": "Tuvo una primera semana horrible en el trabajo y estaba de muy mal humor",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u6-sorry"
+  },
+  {
+   "id": "ea02dbd81f",
+   "es": "Estaba enojada con Max",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "faad651b0c",
+   "es": "Había perdido el teléfono",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "89041ce278",
+   "es": "Estaba de viaje",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8e96d0adb1",
+   "es": "Sara escribe: «I wasn’t angry with you. My first week at the new job was awful, and I was in a terrible mood».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u6-sorry"
+  },
+  {
+   "id": "35e59e6ba0",
+   "es": "¿Por qué Sara está agradecida con Max?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u6-sorry"
+  },
+  {
+   "id": "d4a2c2abdc",
+   "es": "Porque la llamó y siempre sabe cómo animarla",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u6-sorry"
+  },
+  {
+   "id": "22d43ed006",
+   "es": "Porque le pidió perdón por escrito",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e6c946de3d",
+   "es": "Porque la ayudó con el trabajo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f0d80cd4d8",
+   "es": "Porque le regaló un café",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "376bec19b0",
+   "es": "Sara escribe: «I’m really grateful that you called last night. You always know how to cheer me up».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u6-sorry"
+  },
+  {
+   "id": "97b01deeb2",
+   "es": "¿Qué reconoce Sara sobre el chiste?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u6-sorry"
+  },
+  {
+   "id": "5746c7a110",
+   "es": "Que fue un poco fuerte, pero ella se lo tomó demasiado a pecho",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u6-sorry"
+  },
+  {
+   "id": "3607e06715",
+   "es": "Que fue muy gracioso",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5936c29f31",
+   "es": "Que no lo leyó",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "995fe9d764",
+   "es": "Que Max lo dijo para molestarla",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "686e28b30e",
+   "es": "Sara escribe: «Your joke was a bit much, but I know you didn’t mean it. I was being too sensitive».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u6-sorry"
+  },
+  {
+   "id": "894b5123f6",
+   "es": "porque él le falló",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Why is she not speaking to him? (porque él le falló)"
+  },
+  {
+   "id": "f6c5a000cb",
+   "es": "¿Por qué ella no le habla?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Why is she not speaking to him? (porque él le falló)"
+  },
+  {
+   "id": "a41ab613d5",
+   "es": "Ponerse en el lugar del otro",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "c8537fe55d",
+   "es": "Hablar de la empatía y de la confianza en uno mismo.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "0c484a2b19",
+   "es": "Empathy es entender cómo se siente otra persona: to put yourself in someone’s shoes (ponerse en su lugar). Self-confidence es la confianza en uno mismo. Para hablar de lo que alguien podría haber sentido: She might have felt alone.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "2c4c389dbc",
+   "es": "Explicas qué es la empatía y cómo se practica.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "87c8092255",
+   "es": "Hablas de tu confianza en ti mismo.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "dc76adb96a",
+   "es": "¿Qué significa «self-confidence»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "0d3da2b82d",
+   "es": "Un pódcast sobre psicología entrevista a un psicólogo.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u6-podcast"
+  },
+  {
+   "id": "f0a2ffc7cc",
+   "es": "Dr. Moss",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u6-podcast"
+  },
+  {
+   "id": "10f3b1372f",
+   "es": "Según el psicólogo, ¿la empatía es lo mismo que estar de acuerdo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u6-podcast"
+  },
+  {
+   "id": "c258ffcff9",
+   "es": "No: es entender cómo se siente otro, aunque no estés de acuerdo",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u6-podcast"
+  },
+  {
+   "id": "c19bfb62ee",
+   "es": "Sí, es lo mismo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d0b7443ca8",
+   "es": "Sí, pero sólo con amigos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5acb5b0234",
+   "es": "No: es dar consejos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6e26c7a526",
+   "es": "Dice: «It is the ability to understand how another person feels… It’s not the same as agreeing with them».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u6-podcast"
+  },
+  {
+   "id": "599ae831ab",
+   "es": "¿Qué puede haber detrás de estar seguido de mal humor?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u6-podcast"
+  },
+  {
+   "id": "300b4313bc",
+   "es": "Estrés o falta de sueño",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u6-podcast"
+  },
+  {
+   "id": "da15490749",
+   "es": "Una mala dieta",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0976a0ae25",
+   "es": "Demasiado trabajo en equipo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "14851b6265",
+   "es": "El clima",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d7af3011f1",
+   "es": "Dice: «if you are often in a bad mood, it might be stress, or a lack of sleep».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u6-podcast"
+  },
+  {
+   "id": "f680d702d5",
+   "es": "¿Qué dice con humor sobre las personas con poca confianza en sí mismas?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u6-podcast"
+  },
+  {
+   "id": "99854415fd",
+   "es": "Creen que los demás las juzgan, pero los demás están pensando en sí mismos",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u6-podcast"
+  },
+  {
+   "id": "51a32dccd6",
+   "es": "Que nunca cambian",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "910a8319cd",
+   "es": "Que tienen razón",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "aef34708a4",
+   "es": "Que deberían hablar más",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b8ddc13b35",
+   "es": "Dice: «People with low self-confidence tend to think that others are judging them. Usually, others are too busy thinking about themselves!».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u6-podcast"
+  },
+  {
+   "id": "77e820ffc8",
+   "es": "te dio más confianza en ti mismo",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "How has learning English helped you? (te dio más confianza en ti mismo)"
+  },
+  {
+   "id": "c8faff92d2",
+   "es": "¿En qué te ayudó aprender inglés?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How has learning English helped you? (te dio más confianza en ti mismo)"
+  },
+  {
+   "id": "ffa4a2fc39",
+   "es": "Hacer las paces",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "35a4db28e8",
+   "es": "Te peleaste con un amigo. Escríbele un mensaje: reconoce lo que deberías haber hecho distinto, muestra que entiendes cómo se sintió y propón reconciliarse.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "f15417345f",
+   "es": "Reconoces tu error con should / shouldn’t have",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "5066739379",
+   "es": "Deduces cómo se sintió con must / might have",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "cf1efad2f2",
+   "es": "Propones reconciliarse o verse (make up, coffee, meet…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "f9ab0ec096",
+   "es": "Reconocí mi error con should / shouldn’t have.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "d11e87581f",
+   "es": "Mostré empatía con must / might have.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "d17dee123b",
+   "es": "Propuse hacer las paces.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.b2-u6-no-answer": {
+   "setting": "Dos amigos se preocupan porque una amiga no contesta.",
+   "lines": [
+    "Max: Sara hasn't answered my messages since Friday. That's not like her.",
+    "Eva: She must have lost her phone again. She loses it every month.",
+    "Max: She can't have lost it. She posted a photo on social media this morning.",
+    "Eva: Then she might have been busy with work. She has a big project at the moment.",
+    "Max: Maybe. Or I might have said something that upset her. I made a joke about her new job.",
+    "Eva: Honestly, you shouldn't have joked about that. She's very nervous about it.",
+    "Max: You're right. I should have thought before I spoke. I'll call her tonight and apologize."
+   ]
+  },
+  "en.stim.b2-u6-advice": {
+   "setting": "Una columna de consejos: la carta de una lectora y la respuesta.",
+   "lines": [
+    "Dear Ruth, Last week I fell out with my best friend. She was an hour late for my birthday dinner, and I shouted at her in front of everyone. Now I feel guilty, but I am also still a bit angry. What should I do? — Lina",
+    "Dear Lina, It sounds like you both made mistakes. Being an hour late is rude, and you had every right to be upset. However, you probably overreacted when you shouted at her in public.",
+    "Try not to take it personally. She could have had a good reason for being late. Call her, tell her how you felt, and listen to her side of the story.",
+    "Friends fall out all the time. What matters is how you make up. — Ruth"
+   ]
+  },
+  "en.stim.b2-u6-sorry": {
+   "setting": "Un mensaje de disculpas entre amigos.",
+   "lines": [
+    "Hi Max, I'm sorry I didn't reply. I wasn't angry with you. My first week at the new job was awful, and I was in a terrible mood.",
+    "Your joke was a bit much, but I know you didn’t mean it. I was being too sensitive.",
+    "I'm really grateful that you called last night. You always know how to cheer me up.",
+    "I promise I won't disappear like that again. I hate letting my friends down. Coffee on Saturday? Sara"
+   ]
+  },
+  "en.stim.b2-u6-podcast": {
+   "setting": "Un pódcast sobre psicología entrevista a un psicólogo.",
+   "lines": [
+    "Host: Today we are talking about empathy. What exactly is it?",
+    "Dr. Moss: It is the ability to understand how another person feels, to put yourself in their shoes. It's not the same as agreeing with them.",
+    "Host: Can empathy be learned?",
+    "Dr. Moss: Yes. The first step is to listen without judging. Most of us listen only to answer.",
+    "Host: Some listeners say their mood changes very quickly. Is that normal?",
+    "Dr. Moss: Everybody has good and bad days. But if you are often in a bad mood, it might be stress, or a lack of sleep.",
+    "Host: And what about self-confidence?",
+    "Dr. Moss: People with low self-confidence tend to think that others are judging them. Usually, others are too busy thinking about themselves!"
+   ]
+  }
+ }
+}

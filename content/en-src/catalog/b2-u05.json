@@ -1,0 +1,1615 @@
+{
+ "unit": "b2-u05",
+ "level": "B2",
+ "titleEn": "Money, shopping and everyday finance",
+ "strings": [
+  {
+   "id": "c1a463bf25",
+   "es": "Economía, consumo y finanzas",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Money, shopping and everyday finance"
+  },
+  {
+   "id": "eaa1f9ecde",
+   "es": "Ahorros, préstamos y deudas, gastar menos, marcas y precios, have something done y comparaciones como twice as… as o nowhere near as… as.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "55b92065b6",
+   "es": "Puedes hablar de tu economía, comparar precios con matices y explicar que mandas a hacer o arreglar algo.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "00ebff9316",
+   "es": "Have something done y comparación avanzada",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "e538c8a75b",
+   "es": "Have / get + objeto + participio: otra persona hace algo por ti (I had my screen replaced = me cambiaron la pantalla; no la cambiaste tú). Para comparar con matices: by far + superlativo (by far the best), twice / three times as … as (el doble de…), nowhere near as … as (ni de cerca tan… como) y the …-er, the …-er (cuanto más…, más…).",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "5abbb3df94",
+   "es": "Quisiera que me cambiaran la pantalla.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I'd like to have the screen replaced."
+  },
+  {
+   "id": "dbb4f76565",
+   "es": "¡Es el doble de lo que pagué la última vez!",
+   "kinds": [
+    "example"
+   ],
+   "en": "That's twice as much as I paid last time!"
+  },
+  {
+   "id": "e659b72288",
+   "es": "Fue por lejos la mejor decisión que tomé el año pasado.",
+   "kinds": [
+    "example"
+   ],
+   "en": "It was by far the best decision I made last year."
+  },
+  {
+   "id": "736dc34069",
+   "es": "permitirse (pagar algo)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "afford"
+  },
+  {
+   "id": "1eb3e400fa",
+   "es": "permitirse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "afford"
+  },
+  {
+   "id": "e7ed0be7a7",
+   "es": "alcanzar para pagar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "afford"
+  },
+  {
+   "id": "dc58288dd3",
+   "es": "Ahora no me puedo permitir un auto nuevo.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I can't afford a new car right now."
+  },
+  {
+   "id": "f080bb228f",
+   "es": "ahorros",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "savings"
+  },
+  {
+   "id": "40d5654c29",
+   "es": "Usé todos mis ahorros.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I have used all my savings."
+  },
+  {
+   "id": "4b4523c57d",
+   "es": "préstamo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "loan"
+  },
+  {
+   "id": "d158fe6da9",
+   "es": "Pidió un préstamo para comprarse un apartamento.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "She took out a loan to buy a flat."
+  },
+  {
+   "id": "aa5aca07d5",
+   "es": "deuda",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "debt"
+  },
+  {
+   "id": "8ad227a8e4",
+   "es": "Todavía está pagando su deuda.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "He is still paying off his debt."
+  },
+  {
+   "id": "3550e366fa",
+   "es": "tasa de interés",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "interest rate"
+  },
+  {
+   "id": "3ee3ac4e35",
+   "es": "interés",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "interest rate"
+  },
+  {
+   "id": "80b23daeea",
+   "es": "El banco ofrece una tasa de interés baja.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "The bank offers a low interest rate."
+  },
+  {
+   "id": "c0e55db078",
+   "es": "gastar menos en / reducir",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "cut back on"
+  },
+  {
+   "id": "7792e94a76",
+   "es": "recortar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "cut back on"
+  },
+  {
+   "id": "e92f640249",
+   "es": "Tenemos que gastar menos en comer afuera.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "We need to cut back on eating out."
+  },
+  {
+   "id": "aa705d798f",
+   "es": "suscripción",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "subscription"
+  },
+  {
+   "id": "946f9753dc",
+   "es": "El mes pasado cancelé dos suscripciones.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I canceled two subscriptions last month."
+  },
+  {
+   "id": "98d404720b",
+   "es": "de segunda mano / usado",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "second-hand"
+  },
+  {
+   "id": "5debf2c0a0",
+   "es": "de segunda mano",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "second-hand"
+  },
+  {
+   "id": "bae7972764",
+   "es": "usado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "second-hand"
+  },
+  {
+   "id": "78c0b3fcdb",
+   "es": "Compré una bici usada por cincuenta dólares.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I bought a second-hand bike for fifty dollars."
+  },
+  {
+   "id": "2ca8d35c90",
+   "es": "ganga / oferta",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "bargain"
+  },
+  {
+   "id": "2bca1dd677",
+   "es": "ganga",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "bargain"
+  },
+  {
+   "id": "4a1c7fa694",
+   "es": "buena compra",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "bargain"
+  },
+  {
+   "id": "1e2c47e4c8",
+   "es": "¿Treinta dólares? ¡Es una verdadera ganga!",
+   "kinds": [
+    "word.example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "Thirty dollars? That is a real bargain!"
+  },
+  {
+   "id": "95583caccb",
+   "es": "mandar a hacer algo / que te hagan algo",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "have something done"
+  },
+  {
+   "id": "7d82304130",
+   "es": "mandar a hacer algo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "have something done"
+  },
+  {
+   "id": "0e7a01f5ef",
+   "es": "que te hagan algo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "have something done"
+  },
+  {
+   "id": "58caef9398",
+   "es": "La semana pasada me arreglaron el teléfono.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "I had my phone repaired last week."
+  },
+  {
+   "id": "65910c88ea",
+   "es": "por lejos / con diferencia",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "by far"
+  },
+  {
+   "id": "4b8a5e8165",
+   "es": "por lejos",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "by far"
+  },
+  {
+   "id": "e8f610f4f2",
+   "es": "con diferencia",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "by far"
+  },
+  {
+   "id": "a31b7bc44a",
+   "es": "Fue por lejos la mejor decisión que tomé.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "It was by far the best decision I made."
+  },
+  {
+   "id": "dd27c1907c",
+   "es": "el doble de / dos veces más",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "twice as"
+  },
+  {
+   "id": "a830309ad0",
+   "es": "el doble de",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "twice as"
+  },
+  {
+   "id": "dee0cf5346",
+   "es": "dos veces más",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "twice as"
+  },
+  {
+   "id": "9818bc51f8",
+   "es": "Este teléfono es el doble de caro que ese.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "This phone is twice as expensive as that one."
+  },
+  {
+   "id": "4e6ea2ff27",
+   "es": "ni de cerca / ni por asomo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "nowhere near"
+  },
+  {
+   "id": "f548a2f790",
+   "es": "ni de cerca",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "nowhere near"
+  },
+  {
+   "id": "a884a44b4a",
+   "es": "ni por asomo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "nowhere near"
+  },
+  {
+   "id": "4740e79ca5",
+   "es": "Los baratos no son ni de cerca tan buenos.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "The cheap ones are nowhere near as good."
+  },
+  {
+   "id": "27a4108aff",
+   "es": "buena relación calidad-precio",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "value for money"
+  },
+  {
+   "id": "ae28fd9519",
+   "es": "relación calidad-precio",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "value for money"
+  },
+  {
+   "id": "8fc842afe3",
+   "es": "calidad-precio",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "value for money"
+  },
+  {
+   "id": "62c697aa59",
+   "es": "Este restaurante tiene una relación calidad-precio excelente.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "This restaurant is great value for money."
+  },
+  {
+   "id": "0982f3ed15",
+   "es": "consumidor / consumidora",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "consumer"
+  },
+  {
+   "id": "fcfc5e06ae",
+   "es": "consumidor",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "consumer"
+  },
+  {
+   "id": "0b0fa56864",
+   "es": "consumidora",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "consumer"
+  },
+  {
+   "id": "71b62bf4c8",
+   "es": "Los consumidores quieren productos más baratos y mejores.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Consumers want cheaper and better products."
+  },
+  {
+   "id": "493fdf88f2",
+   "es": "marca",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "brand"
+  },
+  {
+   "id": "ec97741cdf",
+   "es": "Nunca compro marcas caras.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I never buy expensive brands."
+  },
+  {
+   "id": "1308b0ffb5",
+   "es": "robo / estafa (precio abusivo)",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "rip-off"
+  },
+  {
+   "id": "2038b3b773",
+   "es": "robo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "rip-off"
+  },
+  {
+   "id": "d10873491d",
+   "es": "estafa",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "rip-off"
+  },
+  {
+   "id": "58f65d637f",
+   "es": "¿Diez dólares por un café? ¡Qué robo!",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "Ten dollars for a coffee? What a rip-off!"
+  },
+  {
+   "id": "cb6a17ef89",
+   "es": "demasiado caro / sobrevaluado",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "overpriced"
+  },
+  {
+   "id": "3c2cd11249",
+   "es": "demasiado caro",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "overpriced"
+  },
+  {
+   "id": "297794c8df",
+   "es": "sobrevaluado",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "overpriced"
+  },
+  {
+   "id": "3a092f1eb3",
+   "es": "carísimo",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "overpriced"
+  },
+  {
+   "id": "d281f26c72",
+   "es": "La comida era buena, pero demasiado cara.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "The food was good, but overpriced."
+  },
+  {
+   "id": "1bf05e5ae8",
+   "es": "¿Me lo puedo permitir?",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "85baf8d9f5",
+   "es": "Hablar de ahorros, préstamos y deudas.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "ad78b92676",
+   "es": "Afford es poder permitirse algo: I can’t afford it (no me alcanza). Savings son los ahorros; a loan, un préstamo (take out a loan = pedir un préstamo); debt, una deuda. The interest rate es la tasa de interés.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "5f2269f62b",
+   "es": "Dices si puedes permitirte algo con afford.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "511f9bc77a",
+   "es": "Hablas de ahorros, préstamos, deudas e intereses.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "a6417ba8c9",
+   "es": "Afford + cosa: poder pagarla (casi siempre con can / can’t).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "afford"
+  },
+  {
+   "id": "ea413fa99e",
+   "es": "Take out a loan: pedir un préstamo.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "out"
+  },
+  {
+   "id": "51ab296ede",
+   "es": "Dos amigos que comparten apartamento hablan de dinero.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u5-flatmates"
+  },
+  {
+   "id": "a819b11c8f",
+   "es": "Jake",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u5-flatmates"
+  },
+  {
+   "id": "c0ee4f342a",
+   "es": "Rita",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u5-flatmates"
+  },
+  {
+   "id": "070c77e867",
+   "es": "¿Por qué duda Rita de que Jake pida un préstamo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u5-flatmates"
+  },
+  {
+   "id": "bdd16ae066",
+   "es": "Porque Jake todavía tiene deuda en la tarjeta de crédito",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u5-flatmates"
+  },
+  {
+   "id": "3d2f42f418",
+   "es": "Porque el banco no le presta",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ba162d6c98",
+   "es": "Porque Jake no maneja",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "15f54bdd0d",
+   "es": "Porque los autos son caros",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f38ea8e080",
+   "es": "Rita dice: «You still have debt on your credit card».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u5-flatmates"
+  },
+  {
+   "id": "df239bfac5",
+   "es": "¿Qué advierte Rita sobre la tasa de interés?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u5-flatmates"
+  },
+  {
+   "id": "2c9bc82ffd",
+   "es": "Que ahora es baja, pero podría subir",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u5-flatmates"
+  },
+  {
+   "id": "6c667eca80",
+   "es": "Que es muy alta",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "108c087ed3",
+   "es": "Que nunca cambia",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2d5d7262d0",
+   "es": "Que no importa",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9742d99bec",
+   "es": "Rita dice: «Low now, but it could rise. And can you really afford the monthly payments?».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u5-flatmates"
+  },
+  {
+   "id": "d4eb8991d3",
+   "es": "no, no te lo puedes permitir",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Are you going to buy the new phone? (no, no te lo puedes permitir)"
+  },
+  {
+   "id": "196377c860",
+   "es": "¿Te vas a comprar el teléfono nuevo?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Are you going to buy the new phone? (no, no te lo puedes permitir)"
+  },
+  {
+   "id": "9eae3f0e9e",
+   "es": "Gastar menos",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "3b3e0974e3",
+   "es": "Contar cómo ahorrar: recortar gastos, comprar usado y buscar ofertas.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "7700a5c709",
+   "es": "Cut back on es gastar menos en algo: cut back on subscriptions. Second-hand es de segunda mano, usado. A bargain es una ganga. Para contar lo que hiciste para ahorrar usas el present perfect o el past simple, como siempre.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "8eb2534f34",
+   "es": "Cuentas en qué gastas menos con cut back on.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "565df7ab2a",
+   "es": "Hablas de compras usadas y de gangas.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "dd841f8fba",
+   "es": "Una publicación de un blog sobre cómo ahorrar.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u5-savings"
+  },
+  {
+   "id": "ef4c9dca20",
+   "es": "¿Qué hizo primero la autora para ahorrar?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u5-savings"
+  },
+  {
+   "id": "48923ff9c8",
+   "es": "Cancelar suscripciones que no usaba",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u5-savings"
+  },
+  {
+   "id": "d177590396",
+   "es": "Pedir un préstamo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0eda221619",
+   "es": "Cambiar de trabajo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7c34c71e39",
+   "es": "Vender su auto",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d3b793bb81",
+   "es": "Escribe: «First, I cut back on subscriptions… Canceling them saved me sixty dollars a month».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u5-savings"
+  },
+  {
+   "id": "2278a4a28d",
+   "es": "¿Qué se pregunta antes de comprar algo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u5-savings"
+  },
+  {
+   "id": "80ee80d029",
+   "es": "Si vale lo que cuesta o si sólo lo quiere",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u5-savings"
+  },
+  {
+   "id": "250cde4d94",
+   "es": "Si es de una buena marca",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4fd883e1df",
+   "es": "Si lo puede pagar en cuotas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2dd8519da6",
+   "es": "Si está de moda",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "68ca12caca",
+   "es": "Escribe: «is this good value for money, or do I just want it?».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u5-savings"
+  },
+  {
+   "id": "fae729b69a",
+   "es": "¿Qué opina de la ropa y los muebles usados?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u5-savings"
+  },
+  {
+   "id": "a1ee14918e",
+   "es": "Casi todo está perfecto y cuesta la mitad",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u5-savings"
+  },
+  {
+   "id": "77558cb5c2",
+   "es": "Que son de mala calidad",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a9c49c09e3",
+   "es": "Que son caros",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "354646c37d",
+   "es": "Que no los recomienda",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a1bfa07ae8",
+   "es": "Escribe: «Most of it is in perfect condition and costs half the price».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u5-savings"
+  },
+  {
+   "id": "4ba3c78a3f",
+   "es": "gastas menos en ropa",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "How do you save money? (gastas menos en ropa)"
+  },
+  {
+   "id": "26c465334a",
+   "es": "¿Cómo ahorras?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How do you save money? (gastas menos en ropa)"
+  },
+  {
+   "id": "98ab090f62",
+   "es": "Mandar a hacer",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "a046835467",
+   "es": "Explicar que otra persona te hace o te arregla algo: have something done.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "30d7d2aad2",
+   "es": "Have / get + objeto + participio: alguien hace algo por ti. I had my phone repaired (me arreglaron el teléfono, no lo arreglé yo). I’m going to get my hair cut (me voy a cortar el pelo, en la peluquería). Compara: I repaired my phone = lo arreglé yo.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "e4ecb8a9c7",
+   "es": "Cuentas lo que te hacen con have / get + objeto + participio.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "0eaafd59f5",
+   "es": "Distingues I had it repaired de I repaired it.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "3fbb9c4275",
+   "es": "Have + objeto + participio (repaired).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "repaired"
+  },
+  {
+   "id": "e64bd9e609",
+   "es": "Mañana me voy a cortar el pelo.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I'm going to get my hair cut tomorrow."
+  },
+  {
+   "id": "428209c3a8",
+   "es": "Cut es irregular: el participio es cut.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "cut"
+  },
+  {
+   "id": "c04feea5d8",
+   "es": "El mes que viene nos van a pintar la cocina.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "We are having our kitchen painted next month."
+  },
+  {
+   "id": "61c795234e",
+   "es": "Un cliente en un local que arregla teléfonos.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u5-repair"
+  },
+  {
+   "id": "bf3763383a",
+   "es": "Customer",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u5-repair"
+  },
+  {
+   "id": "391e405152",
+   "es": "Assistant",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u5-repair"
+  },
+  {
+   "id": "74bc134816",
+   "es": "¿Qué quiere el cliente?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u5-repair"
+  },
+  {
+   "id": "04c44453da",
+   "es": "Que le cambien la pantalla del teléfono",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u5-repair"
+  },
+  {
+   "id": "3bb66a89eb",
+   "es": "Que le devuelvan el dinero",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ed4d89db0a",
+   "es": "Arreglar la pantalla él mismo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8de3077ed3",
+   "es": "El cliente dice: «I’d like to have the screen replaced».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u5-repair"
+  },
+  {
+   "id": "04ed1222f0",
+   "es": "¿Qué va a hacer Jake este fin de semana?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u5-flatmates"
+  },
+  {
+   "id": "ded524e49b",
+   "es": "Hacer que un mecánico revise algunos autos",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u5-flatmates"
+  },
+  {
+   "id": "6243871e19",
+   "es": "Revisar él mismo los autos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1e3450e73e",
+   "es": "Pedir el préstamo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "58a1f2c476",
+   "es": "Jake dice: «I’ll have a mechanic check a few cars this weekend». Have + persona + verbo: otra persona lo hace.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u5-flatmates"
+  },
+  {
+   "id": "47266296db",
+   "es": "no, te lo cortaron en la peluquería",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Your hair looks great! Did you cut it yourself? (no, te lo cortaron en la peluquería)"
+  },
+  {
+   "id": "1881b360fd",
+   "es": "¡Qué lindo pelo! ¿Te lo cortaste tú?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Your hair looks great! Did you cut it yourself? (no, te lo cortaron en la peluquería)"
+  },
+  {
+   "id": "b04a4d51dd",
+   "es": "Comparar con matices",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "afa2cf3d4e",
+   "es": "Comparar precios y calidad: by far, twice as, nowhere near.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "5792497102",
+   "es": "By far refuerza un superlativo: by far the best (por lejos el mejor). Twice as … as es el doble: twice as expensive as. Nowhere near as … as es «ni de cerca tan… como». The …-er, the …-er: The older the phone, the less sense it makes (cuanto más viejo, menos sentido tiene). Value for money es la relación calidad-precio.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "fefc3f6aff",
+   "es": "Comparas con by far, twice as… as y nowhere near as… as.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "13d77aea2f",
+   "es": "Hablas de la relación calidad-precio.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "61e348b534",
+   "es": "Twice as + adjetivo + as (no than).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "as"
+  },
+  {
+   "id": "ac062fc8b2",
+   "es": "Cuanto más viejo es el teléfono, menos sentido tiene.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "The older the phone, the less sense it makes."
+  },
+  {
+   "id": "6ff4a1272e",
+   "es": "The + comparativo, the + comparativo: cuanto más…, más…",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "older"
+  },
+  {
+   "id": "24706ce377",
+   "es": "¿Por qué esta vez la pantalla cuesta el doble?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u5-repair"
+  },
+  {
+   "id": "9268c2af02",
+   "es": "Porque es original; la última vez le pusieron una más barata",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u5-repair"
+  },
+  {
+   "id": "da9571e35c",
+   "es": "Porque el teléfono es nuevo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7e5a302318",
+   "es": "Porque la entregan hoy",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d649416a77",
+   "es": "Porque subieron los precios",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e0e8e4ce45",
+   "es": "El empleado dice: «Last time you had a cheaper screen put in. This one is original. The cheaper ones are nowhere near as good».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u5-repair"
+  },
+  {
+   "id": "4e7e585ed3",
+   "es": "¿Cómo valora la autora su decisión de ahorrar?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u5-savings"
+  },
+  {
+   "id": "c29242a776",
+   "es": "Como por lejos la mejor decisión del año pasado",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u5-savings"
+  },
+  {
+   "id": "f0cf9f6d01",
+   "es": "Como un error",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f3e52de2af",
+   "es": "Como algo difícil que no repetiría",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a3064126de",
+   "es": "Como una decisión más",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e52caf07a2",
+   "es": "Escribe: «It was by far the best decision I made last year».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u5-savings"
+  },
+  {
+   "id": "d6a8db4dfc",
+   "es": "sí, el doble de grande",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Is your new flat bigger than the old one? (sí, el doble de grande)"
+  },
+  {
+   "id": "05750fa48d",
+   "es": "¿Tu apartamento nuevo es más grande que el viejo?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Is your new flat bigger than the old one? (sí, el doble de grande)"
+  },
+  {
+   "id": "a504b28cb5",
+   "es": "Consumidores exigentes",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "b509adcafb",
+   "es": "Opinar sobre marcas y precios: ganga, robo, demasiado caro.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "f69d1d2985",
+   "es": "A consumer es un consumidor. A brand es una marca. Si algo es carísimo para lo que vale, es overpriced; si el precio es abusivo, a rip-off (¡qué robo!). Lo contrario: a bargain o good value for money.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "9d85d55f90",
+   "es": "Opinas sobre marcas y precios como consumidor.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "3156d5b0e9",
+   "es": "Dices si algo es una ganga, un robo o demasiado caro.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "848f900580",
+   "es": "¿Qué significa «rip-off»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "0f1030124b",
+   "es": "Dos opiniones de clientes sobre unos auriculares en una tienda online.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u5-reviews"
+  },
+  {
+   "id": "f6d69d4683",
+   "es": "¿Por qué el primer cliente está contento?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u5-reviews"
+  },
+  {
+   "id": "b5651139d2",
+   "es": "Pagó poco y suenan tan bien como los de las marcas famosas",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u5-reviews"
+  },
+  {
+   "id": "133551fb1d",
+   "es": "Son de una marca famosa",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1c4c4fc8a4",
+   "es": "Se los regalaron",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2535347238",
+   "es": "Le devolvieron el dinero",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a54b914258",
+   "es": "Escribe: «They are nowhere near as famous as the big brands, but the sound is just as good».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u5-reviews"
+  },
+  {
+   "id": "23c2042a2e",
+   "es": "¿Qué critica el segundo cliente?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u5-reviews"
+  },
+  {
+   "id": "f7e036d452",
+   "es": "Que pagó mucho por la marca y se rompieron al mes",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u5-reviews"
+  },
+  {
+   "id": "2e11fea817",
+   "es": "Que eran baratos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "446b2a48c9",
+   "es": "Que tardaron en llegar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0542ed520d",
+   "es": "Que no tenían marca",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "022baade53",
+   "es": "Escribe: «I paid two hundred dollars because of the brand name, and they broke after a month… Completely overpriced».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u5-reviews"
+  },
+  {
+   "id": "935ca9ea95",
+   "es": "¿Qué ofrece la tienda al cliente enojado?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u5-reviews"
+  },
+  {
+   "id": "60a02f77e7",
+   "es": "Arreglarle o cambiarle los auriculares si manda el ticket",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u5-reviews"
+  },
+  {
+   "id": "3d6d91b82b",
+   "es": "Devolverle el dinero sin ticket",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "11748c25be",
+   "es": "Un descuento en otra marca",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b74e081363",
+   "es": "Nada",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "bf3aee83ee",
+   "es": "La tienda responde: «Please send us your receipt and we will have the headphones repaired or replaced».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u5-reviews"
+  },
+  {
+   "id": "331e573cbf",
+   "es": "era lindo, pero demasiado caro",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Did you like the hotel? (era lindo, pero demasiado caro)"
+  },
+  {
+   "id": "a994b3f602",
+   "es": "¿Te gustó el hotel?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Did you like the hotel? (era lindo, pero demasiado caro)"
+  },
+  {
+   "id": "c725f0ca31",
+   "es": "Un reclamo con una propuesta",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "68abe524c9",
+   "es": "Compraste algo caro que se rompió enseguida. Escribe un reclamo formal: cuenta qué pasó, compara con lo que esperabas y propón una solución (que te lo arreglen o te lo cambien).",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "a909501c6f",
+   "es": "Pides que te lo arreglen o cambien (have / get it repaired, replaced…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "20e895eee1",
+   "es": "Comparas con matices (twice as, nowhere near as, by far…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "594e5ed656",
+   "es": "Conté qué pasó con el producto.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "671ff01958",
+   "es": "Comparé con twice as o nowhere near as.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "3e1d41fd42",
+   "es": "Pedí que me lo arreglen o cambien con have / get + participio.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.b2-u5-flatmates": {
+   "setting": "Dos amigos que comparten apartamento hablan de dinero.",
+   "lines": [
+    "Jake: I'm thinking of taking out a loan to buy a car.",
+    "Rita: Are you sure? You still have debt on your credit card.",
+    "Jake: I know, but the bank is offering a low interest rate at the moment.",
+    "Rita: Low now, but it could rise. And can you really afford the monthly payments?",
+    "Jake: If I cut back on eating out, I think so.",
+    "Rita: Why not buy a second-hand car instead? You'd need a much smaller loan, or no loan at all.",
+    "Jake: That's actually a good idea. I'll have a mechanic check a few cars this weekend."
+   ]
+  },
+  "en.stim.b2-u5-savings": {
+   "setting": "Una publicación de un blog sobre cómo ahorrar.",
+   "lines": [
+    "Last January I looked at my bank account and realized I had no savings at all. So I decided to change a few things.",
+    "First, I cut back on subscriptions. I was paying for four streaming services and a gym I never went to. Canceling them saved me sixty dollars a month.",
+    "Second, I started buying second-hand clothes and furniture. Most of it is in perfect condition and costs half the price.",
+    "Third, before buying anything, I ask myself one question: is this good value for money, or do I just want it?",
+    "One year later, I have saved three thousand dollars. It was by far the best decision I made last year."
+   ]
+  },
+  "en.stim.b2-u5-repair": {
+   "setting": "Un cliente en un local que arregla teléfonos.",
+   "lines": [
+    "Customer: Hi. I dropped my phone yesterday and I'd like to have the screen replaced.",
+    "Assistant: Let me see. Yes, we can do that. It's ninety dollars, and it'll be ready tomorrow.",
+    "Customer: Ninety? That's twice as much as I paid last time!",
+    "Assistant: Last time you had a cheaper screen put in. This one is original. The cheaper ones are nowhere near as good.",
+    "Customer: Hmm. Is it worth it? The phone is three years old.",
+    "Assistant: Honestly, the older the phone, the less sense it makes. A new one costs about four hundred.",
+    "Customer: I can't afford a new one right now. Go ahead and replace the screen, please."
+   ]
+  },
+  "en.stim.b2-u5-reviews": {
+   "setting": "Dos opiniones de clientes sobre unos auriculares en una tienda online.",
+   "lines": [
+    "★★★★★ \"A real bargain.\" I bought these on sale for thirty dollars. They are nowhere near as famous as the big brands, but the sound is just as good. Great value for money.",
+    "★☆☆☆☆ \"Total rip-off.\" I paid two hundred dollars because of the brand name, and they broke after a month. The more you pay, the better the quality? Not here. Completely overpriced.",
+    "Reply from the shop: We are sorry to hear this. Please send us your receipt and we will have the headphones repaired or replaced."
+   ]
+  }
+ }
+}

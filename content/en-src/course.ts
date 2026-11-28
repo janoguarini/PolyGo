@@ -104,15 +104,18 @@ export function enSrcCourse(source: EnSource): EnSrcCourse {
     level: u.level,
     unit: renameUnit(ns, `${ns}-${u.source}`, u.unit),
   }));
-  // Palabras conocidas para descartar traducciones ambiguas: todo el curso (como el español).
-  const known = renamed.flatMap((u) => u.unit.words);
+  // Palabras conocidas para descartar traducciones ambiguas: todo el curso (como el español). A1–B1
+  // se cargó en producción con las palabras de A1–B1: B2 (agregado después) no cambia sus repasos
+  // generados; B2 mira todo el curso.
+  const firstLoad = renamed.filter((u) => u.level !== 'B2').flatMap((u) => u.unit.words);
+  const all = renamed.flatMap((u) => u.unit.words);
   const path: PathUnit[] = renamed.map(({ level, unit }) => ({
     language: ns,
     level: level as Level,
     unit,
     lessons: unitPath(
       unit,
-      known,
+      level === 'B2' ? all : firstLoad,
       `${ns}-${level.toLowerCase()}-u${String(unit.position).padStart(2, '0')}`,
       ns,
       { unitWordsOnly: true },

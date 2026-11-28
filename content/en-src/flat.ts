@@ -1,5 +1,6 @@
 import { A2_EXPANSION_PATH } from '../a2-expansion';
 import { B1_PATH } from '../b1';
+import { B2_PATH } from '../b2';
 import { COMPREHENSION_PATH } from '../comprehension';
 import { CURRICULUM_PATH, type PathUnit } from '../index';
 import { PLANNED_PATH } from '../planned';
@@ -28,7 +29,7 @@ export interface FlatUnit {
   unit: UnitDef;
 }
 
-const LEVELS: readonly Level[] = ['A1', 'A2', 'B1'];
+const LEVELS: readonly Level[] = ['A1', 'A2', 'B1', 'B2'];
 
 const pad = (n: number) => String(n).padStart(2, '0');
 const sourceKey = (level: Level, position: number) => `${level.toLowerCase()}-u${pad(position)}`;
@@ -39,6 +40,7 @@ const WRITTEN: readonly PathUnit[] = [
   ...PLANNED_PATH,
   ...A2_EXPANSION_PATH,
   ...B1_PATH,
+  ...B2_PATH,
 ].filter((p) => p.language === 'en' && LEVELS.includes(p.level));
 
 const stripLesson = ({ title, objective, intro, takeaways, exercises }: LessonDef): LessonDef => ({
@@ -86,7 +88,7 @@ function flatten(base: PathUnit): FlatUnit {
   return { level, source: key, unit: { ...meta, words, lessons } };
 }
 
-/** El inglés A1–B1 completo, unidad por unidad y en orden. */
+/** El inglés A1–B2 completo, unidad por unidad y en orden (B2 agregado el 2026-11-27). */
 export function flatEnglish(): FlatUnit[] {
   const seen = new Set<string>();
   const units = WRITTEN.map((p) => {

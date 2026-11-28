@@ -1,0 +1,1571 @@
+{
+ "unit": "b2-u02",
+ "level": "B2",
+ "titleEn": "Work, leadership and negotiation",
+ "strings": [
+  {
+   "id": "dcac3fa369",
+   "es": "Trabajo, liderazgo y negociación",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Work, leadership and negotiation"
+  },
+  {
+   "id": "85b2a658ec",
+   "es": "Negociar y ceder, poner condiciones (as long as, provided that, otherwise, in case), liderar un equipo y decir que no con cortesía.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "522e788c4d",
+   "es": "Puedes negociar un acuerdo con condiciones, repartir tareas en un equipo y rechazar una propuesta con cortesía.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "0008f343e6",
+   "es": "Condiciones: as long as, provided that, otherwise, in case",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "a1b9593c6e",
+   "es": "As long as y provided that ponen una condición (siempre que, siempre y cuando) y van con presente aunque hablen del futuro. Otherwise (si no, de lo contrario) dice qué pasa si la condición no se cumple. In case (por si) habla de una precaución: haces algo antes por si pasa otra cosa. Unless (a menos que) ya lo conoces del B1.",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "8f6eb04bb8",
+   "es": "Podría ofrecer un tres por ciento, siempre que firmen un contrato de dos años.",
+   "kinds": [
+    "example"
+   ],
+   "en": "I could offer three percent, as long as you sign a two-year contract."
+  },
+  {
+   "id": "39e67643b8",
+   "es": "Mándame las condiciones por escrito, por si algo cambia.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Send me the terms in writing, in case anything changes."
+  },
+  {
+   "id": "3509070939",
+   "es": "Apúrate. Si no, vamos a perder el tren.",
+   "kinds": [
+    "example",
+    "word.example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "Hurry up. Otherwise, we will miss the train."
+  },
+  {
+   "id": "2efd45fd1d",
+   "es": "negociar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "negotiate"
+  },
+  {
+   "id": "0bb0241b40",
+   "es": "Tenemos que negociar un mejor precio.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "We need to negotiate a better price."
+  },
+  {
+   "id": "a94a8a4fe6",
+   "es": "trato / acuerdo (comercial)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "deal"
+  },
+  {
+   "id": "4bb1db3320",
+   "es": "trato",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "deal"
+  },
+  {
+   "id": "63dc23d6d7",
+   "es": "acuerdo comercial",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "deal"
+  },
+  {
+   "id": "cdc85a3ed0",
+   "es": "Si estás de acuerdo, trato hecho.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "If you agree, we have a deal."
+  },
+  {
+   "id": "176118aa36",
+   "es": "propuesta",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "proposal"
+  },
+  {
+   "id": "9e79fe257c",
+   "es": "Gracias por la propuesta. La vamos a leer con atención.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Thanks for the proposal. We will read it carefully."
+  },
+  {
+   "id": "27439de4df",
+   "es": "llegar a un acuerdo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "reach an agreement"
+  },
+  {
+   "id": "d6cfb75861",
+   "es": "Después de dos horas, llegamos a un acuerdo.",
+   "kinds": [
+    "word.example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "After two hours, we reached an agreement."
+  },
+  {
+   "id": "6e9c873b6f",
+   "es": "concesión / término medio",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "compromise"
+  },
+  {
+   "id": "f7138f44ae",
+   "es": "concesión",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "compromise"
+  },
+  {
+   "id": "ad3c72771d",
+   "es": "término medio",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "compromise"
+  },
+  {
+   "id": "0ce2074a76",
+   "es": "ceder",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "compromise"
+  },
+  {
+   "id": "6aa79906ff",
+   "es": "Nadie consiguió todo, pero fue un buen término medio.",
+   "kinds": [
+    "word.example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "Nobody got everything, but it was a good compromise."
+  },
+  {
+   "id": "9602705527",
+   "es": "ceder cada uno un poco / encontrarse a mitad de camino",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "meet halfway"
+  },
+  {
+   "id": "937a0bfc1f",
+   "es": "ceder cada uno un poco",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "meet halfway"
+  },
+  {
+   "id": "32f35ea0d5",
+   "es": "encontrarse a mitad de camino",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "meet halfway"
+  },
+  {
+   "id": "fa4541188d",
+   "es": "Tú quieres diez y yo seis. Cedamos los dos: ocho.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "You want ten, I want six. Let's meet halfway at eight."
+  },
+  {
+   "id": "800ad6207f",
+   "es": "flexible",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "flexible"
+  },
+  {
+   "id": "acaf071f41",
+   "es": "Mi jefe es flexible con los horarios de trabajo.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "My boss is flexible about working hours."
+  },
+  {
+   "id": "a3923bc243",
+   "es": "prioridad",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "priority"
+  },
+  {
+   "id": "981775260e",
+   "es": "Nuestra prioridad principal es el cliente.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "Our main priority is the customer."
+  },
+  {
+   "id": "7cc8b2d37d",
+   "es": "siempre que / mientras",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "as long as"
+  },
+  {
+   "id": "9f3d158556",
+   "es": "siempre que",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "as long as"
+  },
+  {
+   "id": "fdf05b004c",
+   "es": "Puedes usar mi auto siempre que manejes con cuidado.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "You can borrow my car as long as you drive carefully."
+  },
+  {
+   "id": "f4ba47f33a",
+   "es": "siempre y cuando / con la condición de que",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "provided that"
+  },
+  {
+   "id": "7e47b63310",
+   "es": "siempre y cuando",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "provided that"
+  },
+  {
+   "id": "5e9fe6c8f6",
+   "es": "con la condición de que",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "provided that"
+  },
+  {
+   "id": "ab7ca45891",
+   "es": "Vamos a firmar, siempre y cuando el precio siga igual.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "We will sign, provided that the price stays the same."
+  },
+  {
+   "id": "5ab7562a46",
+   "es": "si no / de lo contrario",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "otherwise"
+  },
+  {
+   "id": "9e866e7cb8",
+   "es": "si no",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "otherwise"
+  },
+  {
+   "id": "4239d7ddb1",
+   "es": "de lo contrario",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "otherwise"
+  },
+  {
+   "id": "943714c876",
+   "es": "por si (acaso)",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "in case"
+  },
+  {
+   "id": "0c2dc93d6a",
+   "es": "por si",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "in case"
+  },
+  {
+   "id": "eb31831618",
+   "es": "por si acaso",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "in case"
+  },
+  {
+   "id": "10a34a1d80",
+   "es": "Lleva un paraguas por si llueve.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "Take an umbrella in case it rains."
+  },
+  {
+   "id": "a34905f1a5",
+   "es": "líder",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "leader"
+  },
+  {
+   "id": "5980d53cf9",
+   "es": "Un buen líder escucha al equipo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "A good leader listens to the team."
+  },
+  {
+   "id": "e39dd53dae",
+   "es": "delegar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "delegate"
+  },
+  {
+   "id": "1039cdd423",
+   "es": "Deberías delegar algunas tareas en tu equipo.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "You should delegate some tasks to your team."
+  },
+  {
+   "id": "003cf23665",
+   "es": "carga de trabajo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "workload"
+  },
+  {
+   "id": "439142e79d",
+   "es": "Este mes tengo demasiado trabajo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "My workload is too heavy this month."
+  },
+  {
+   "id": "07022d4172",
+   "es": "asumir / hacerse cargo de",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "take on"
+  },
+  {
+   "id": "bff885d30d",
+   "es": "asumir",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "take on"
+  },
+  {
+   "id": "4a95be0af8",
+   "es": "hacerse cargo de",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "take on"
+  },
+  {
+   "id": "4fdf56f1c5",
+   "es": "La semana pasada asumió un proyecto nuevo.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "She took on a new project last week."
+  },
+  {
+   "id": "4c539bcc47",
+   "es": "convencer / persuadir",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "persuade"
+  },
+  {
+   "id": "e832263a65",
+   "es": "convencer",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "persuade"
+  },
+  {
+   "id": "416f7343c6",
+   "es": "persuadir",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "persuade"
+  },
+  {
+   "id": "3ec030b043",
+   "es": "Convencí a mi jefe de que me diera un día libre.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I persuaded my boss to give me a day off."
+  },
+  {
+   "id": "ec81ee83a4",
+   "es": "rechazar",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "turn down"
+  },
+  {
+   "id": "c28bf49e34",
+   "es": "no aceptar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "turn down"
+  },
+  {
+   "id": "abdf2729d8",
+   "es": "Rechazó el trabajo porque el sueldo era muy bajo.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "He turned down the job because the salary was too low."
+  },
+  {
+   "id": "b695880ad5",
+   "es": "Sentarse a negociar",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "3479fe9470",
+   "es": "Presentar una propuesta, negociar un precio y cerrar un trato.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "bb55a6534d",
+   "es": "Para negociar: negotiate a price (negociar un precio), make a proposal (hacer una propuesta) y, al final, reach an agreement (llegar a un acuerdo). We have a deal significa trato hecho. Para sugerir algo con suavidad, What if we…? va con el pasado: What if we kept the price?",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "afa3e7cce8",
+   "es": "Presentas y discutes una propuesta.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "9d3ebec228",
+   "es": "Cierras una negociación: We have a deal, we reached an agreement.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "fcae2cade5",
+   "es": "Collocation: reach an agreement (llegar a un acuerdo).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "reached"
+  },
+  {
+   "id": "92be941e48",
+   "es": "Una gerente negocia con un proveedor el precio y la fecha de entrega.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u2-supplier"
+  },
+  {
+   "id": "4dedad6eb6",
+   "es": "Rachel",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u2-supplier"
+  },
+  {
+   "id": "7297db81c2",
+   "es": "Daniel",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u2-supplier"
+  },
+  {
+   "id": "4761a925f7",
+   "es": "¿Qué le preocupa a Rachel de la propuesta?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u2-supplier"
+  },
+  {
+   "id": "878e5fe86d",
+   "es": "El precio, más alto de lo que esperaban",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u2-supplier"
+  },
+  {
+   "id": "0f93a954bc",
+   "es": "La fecha de entrega",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c7df2f4766",
+   "es": "La calidad del producto",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "94cc33e29d",
+   "es": "La duración del contrato",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1262cb209d",
+   "es": "Rachel dice: «the price is higher than we expected» y «Time is not our main priority. The budget is».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u2-supplier"
+  },
+  {
+   "id": "b60730355d",
+   "es": "¿Cómo termina la negociación?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u2-supplier"
+  },
+  {
+   "id": "aaaf45a5a9",
+   "es": "Con un trato, siempre y cuando el director de Daniel esté de acuerdo",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u2-supplier"
+  },
+  {
+   "id": "b30e3b581f",
+   "es": "Sin acuerdo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1405650737",
+   "es": "Con un trato firmado ese mismo día",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5fba242468",
+   "es": "Con una nueva reunión",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8513ffcec1",
+   "es": "Daniel dice: «Provided that my director agrees, we have a deal».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u2-supplier"
+  },
+  {
+   "id": "2f77bd91f5",
+   "es": "Gracias por la propuesta, la vamos a leer con atención.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Thanks for the proposal we will read it carefully."
+  },
+  {
+   "id": "c68208715a",
+   "es": "sí, trato hecho",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "So, do we agree on the price? (sí, trato hecho)"
+  },
+  {
+   "id": "21549955fe",
+   "es": "Entonces, ¿estamos de acuerdo con el precio?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "So, do we agree on the price? (sí, trato hecho)"
+  },
+  {
+   "id": "fc53dbcd42",
+   "es": "Ceder un poco",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "6aef1459be",
+   "es": "Buscar un término medio y decir qué es lo más importante para ti.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "ba222d1eb7",
+   "es": "En una negociación nadie consigue todo: a compromise es un término medio. Let’s meet halfway propone que los dos cedan un poco. Para explicar qué te importa más: Our main priority is… Y si puedes adaptarte, eres flexible.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "c3c2edda39",
+   "es": "Propones un término medio: Let’s meet halfway.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "c625cc8f0c",
+   "es": "Explicas tus prioridades y si puedes ser flexible.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "cdb8737026",
+   "es": "Compromise no es «compromiso» (promesa): es una concesión, un punto medio.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "compromise"
+  },
+  {
+   "id": "e2b01f7d88",
+   "es": "¿Cómo terminan cediendo los dos?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u2-supplier"
+  },
+  {
+   "id": "19f58783c9",
+   "es": "Un cuatro por ciento de descuento y un contrato de dieciocho meses",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u2-supplier"
+  },
+  {
+   "id": "68c910ceb9",
+   "es": "Un cinco por ciento y dos años",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "819ea29818",
+   "es": "Un tres por ciento y un año",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1033fd5608",
+   "es": "Sin descuento y entrega antes",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "45850dc822",
+   "es": "Rachel propone: «Let’s meet halfway: four percent and an eighteen-month contract», y Daniel acepta.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u2-supplier"
+  },
+  {
+   "id": "d2a8ec7402",
+   "es": "el dinero es tu prioridad",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What is more important for you, time or money? (el dinero es tu prioridad)"
+  },
+  {
+   "id": "df2519448e",
+   "es": "¿Qué es más importante para ti, el tiempo o el dinero?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What is more important for you, time or money? (el dinero es tu prioridad)"
+  },
+  {
+   "id": "a3c1422947",
+   "es": "Con una condición",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "73344643e5",
+   "es": "Poner condiciones y precauciones con as long as, provided that, otherwise e in case.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "5f5c1d09ae",
+   "es": "As long as y provided that ponen una condición y van con presente: I’ll sign, provided that the price stays the same. Otherwise dice qué pasa si no se cumple. In case es una precaución: llevas un paraguas in case it rains (por si llueve, aunque no sepas si va a llover).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "1a6bdc108d",
+   "es": "Pones condiciones con as long as y provided that.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "7559ed6443",
+   "es": "Hablas de precauciones con in case y de consecuencias con otherwise.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "15b0f07a38",
+   "es": "As long as + presente: la condición para que algo pase.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "as long as"
+  },
+  {
+   "id": "d69ffbf174",
+   "es": "In case: haces algo antes, como precaución.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "in case"
+  },
+  {
+   "id": "cbb0995eb1",
+   "es": "Después de provided that (como después de if) va presente, aunque hables del futuro.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "stays"
+  },
+  {
+   "id": "64d60dfbb6",
+   "es": "Una candidata responde a una oferta de trabajo.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u2-offer"
+  },
+  {
+   "id": "18d7c4b7ff",
+   "es": "¿Qué condición pone Laura para aceptar la oferta?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u2-offer"
+  },
+  {
+   "id": "7d3eb4ba72",
+   "es": "Seguir trabajando dos días por semana desde su casa",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u2-offer"
+  },
+  {
+   "id": "e2c83a0c2b",
+   "es": "Un sueldo más alto",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8d9b857bf5",
+   "es": "Empezar el mes que viene",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "40bdfc462e",
+   "es": "Tener su propio equipo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "bd3220ab64",
+   "es": "Laura escribe: «I would be happy to accept a slightly lower salary, provided that I can keep those two days at home».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u2-offer"
+  },
+  {
+   "id": "9e9a8afce0",
+   "es": "¿Qué pasa si la empresa no acepta su condición?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u2-offer"
+  },
+  {
+   "id": "7958f8e1d0",
+   "es": "Laura va a rechazar la oferta",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u2-offer"
+  },
+  {
+   "id": "2a0cfc0762",
+   "es": "Laura va a aceptar igual",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "38bfc3d35d",
+   "es": "Laura va a pedir más tiempo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6b829a4bd8",
+   "es": "Laura va a hablar con su jefe actual",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8966de3db5",
+   "es": "Laura escribe: «Otherwise, I am afraid I would have to turn the offer down».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u2-offer"
+  },
+  {
+   "id": "45a9eefac3",
+   "es": "Te voy a ayudar siempre que tú me ayudes.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "I will help you as long as you help me."
+  },
+  {
+   "id": "da26981046",
+   "es": "por si hace frío",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Why are you taking a jacket? (por si hace frío)"
+  },
+  {
+   "id": "99067b8dd4",
+   "es": "¿Por qué llevas una chaqueta?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Why are you taking a jacket? (por si hace frío)"
+  },
+  {
+   "id": "4813fa3325",
+   "es": "Liderar un equipo",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "23c711caca",
+   "es": "Repartir tareas, hablar de la carga de trabajo y convencer.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "8516eb8f28",
+   "es": "A leader no hace todo: delegate es delegar tareas en otros. Si tienes demasiado trabajo, tu workload es demasiado grande. Take on es asumir una tarea nueva. Persuade someone to do something es convencer a alguien de hacer algo.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "0be3d69222",
+   "es": "Hablas de la carga de trabajo y de asumir tareas nuevas.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "1c92e4d7cd",
+   "es": "Delegas y convences con persuade.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "d06f30c607",
+   "es": "Persuade someone to + verbo.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "to give"
+  },
+  {
+   "id": "84af6242f9",
+   "es": "Una líder de equipo habla con un empleado que está desbordado.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u2-team"
+  },
+  {
+   "id": "f2465f78e0",
+   "es": "Grace",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u2-team"
+  },
+  {
+   "id": "2dd1283eb2",
+   "es": "Omar",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u2-team"
+  },
+  {
+   "id": "f9c46d65b8",
+   "es": "¿Por qué Omar tiene tanto trabajo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u2-team"
+  },
+  {
+   "id": "ae25bd616b",
+   "es": "Asumió un cliente nuevo y sigue con sus proyectos de antes",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u2-team"
+  },
+  {
+   "id": "4bd409062f",
+   "es": "Un compañero renunció",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "99327638b4",
+   "es": "Está aprendiendo un trabajo nuevo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "057059923d",
+   "es": "Su jefa le dio los informes de Ben",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c707cbedad",
+   "es": "Omar dice: «I took on the new client last month, and I’m still doing my old projects».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u2-team"
+  },
+  {
+   "id": "67d928be64",
+   "es": "¿Qué solución propone Grace?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u2-team"
+  },
+  {
+   "id": "b775ab96d3",
+   "es": "Delegar los informes en Ben y ayudarlo al principio",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u2-team"
+  },
+  {
+   "id": "f01cd690e9",
+   "es": "Rechazar al cliente nuevo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "52feb30ce8",
+   "es": "Contratar a otra persona",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "30ac14a3e5",
+   "es": "Que Omar trabaje el fin de semana",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7579bcf18b",
+   "es": "Grace dice: «Let’s delegate the reports to Ben… I’ll help him at the beginning».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u2-team"
+  },
+  {
+   "id": "a51c82d066",
+   "es": "Un artículo de revista sobre el liderazgo.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u2-leader"
+  },
+  {
+   "id": "a63fbc10fe",
+   "es": "Según el artículo, ¿por qué conviene convencer en vez de dar órdenes?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u2-leader"
+  },
+  {
+   "id": "5ad1514f03",
+   "es": "Porque un equipo que entiende la razón trabaja más para que la decisión funcione",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u2-leader"
+  },
+  {
+   "id": "d953f88236",
+   "es": "Porque las órdenes son ilegales",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6d594d3496",
+   "es": "Porque así el líder trabaja menos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "790270a129",
+   "es": "Porque el equipo siempre tiene razón",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "58f13e3b36",
+   "es": "El artículo dice: «When a team understands the reason for a decision, it works harder to make it succeed».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u2-leader"
+  },
+  {
+   "id": "d82be05b4c",
+   "es": "Según el artículo, ¿cómo son los mejores líderes?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u2-leader"
+  },
+  {
+   "id": "f929775e57",
+   "es": "Flexibles: escuchan y ceden si aparece una idea mejor",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u2-leader"
+  },
+  {
+   "id": "dd2eddd618",
+   "es": "Firmes: nunca cambian de opinión",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "88c8e4074a",
+   "es": "Exigentes: dan órdenes claras",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d7c691ac7c",
+   "es": "Independientes: hacen todo solos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ab316e86f2",
+   "es": "El artículo dice: «The best leaders are flexible. They listen first, and they are willing to compromise».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u2-leader"
+  },
+  {
+   "id": "a33184f33b",
+   "es": "tienes demasiado trabajo",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "How is work at the moment? (tienes demasiado trabajo)"
+  },
+  {
+   "id": "2b0da0ed1b",
+   "es": "¿Cómo va el trabajo?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How is work at the moment? (tienes demasiado trabajo)"
+  },
+  {
+   "id": "cc4c5e20ab",
+   "es": "Decir que no con cortesía",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "c46e9893cb",
+   "es": "Rechazar una oferta o una tarea sin cerrar la puerta.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "ac38e86683",
+   "es": "Turn down es rechazar (una oferta, una invitación, un trabajo). Para decir que no con cortesía, suavizas: I’m afraid I’ll have to turn it down (me temo que…), I’d love to, but… Y si quieres seguir negociando, ofreces una alternativa con as long as o provided that.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "7d1fa58d86",
+   "es": "Me temo que voy a tener que rechazarlo.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I'm afraid I'll have to turn it down."
+  },
+  {
+   "id": "f43001e138",
+   "es": "Rechazas algo con cortesía: I’m afraid I’ll have to turn it down.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "ce8f94369a",
+   "es": "Ofreces una alternativa con una condición.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "6c53b94924",
+   "es": "¿Qué significa «turn down»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "e3b2ad1097",
+   "es": "Turn down (rechazar); turn on / off es prender / apagar.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "down"
+  },
+  {
+   "id": "7198dfde4f",
+   "es": "I’m afraid… suaviza una mala noticia (me temo que).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "afraid"
+  },
+  {
+   "id": "cf313c8acb",
+   "es": "¿Por qué Omar no rechazó al cliente nuevo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u2-team"
+  },
+  {
+   "id": "45d1f1a6c2",
+   "es": "Porque le pareció una buena oportunidad",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u2-team"
+  },
+  {
+   "id": "ef562769f0",
+   "es": "Porque se lo ordenó Grace",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7e4aa5c791",
+   "es": "Porque necesitaba más sueldo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "35f25b11bc",
+   "es": "Porque Ben no podía",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d832a489fa",
+   "es": "Omar dice: «I didn’t want to turn down the client. I thought it was a good opportunity».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u2-team"
+  },
+  {
+   "id": "a1a3371751",
+   "es": "¿Qué tono tiene el correo de Laura?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u2-offer"
+  },
+  {
+   "id": "408f79353a",
+   "es": "Amable y abierto a negociar",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u2-offer"
+  },
+  {
+   "id": "c9cf959a97",
+   "es": "Enojado y exigente",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0c4cbe241e",
+   "es": "Triste y resignado",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b5f8cf9b0b",
+   "es": "Informal y gracioso",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ca5c21de2f",
+   "es": "Laura agradece la oferta, explica su condición y termina con «I hope we can reach an agreement».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u2-offer"
+  },
+  {
+   "id": "9e14b74222",
+   "es": "Rechazó la oferta por los horarios.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She turned down the offer because of the hours."
+  },
+  {
+   "id": "5a32d522b2",
+   "es": "no, lo rechazaste porque el sueldo era bajo",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Did you accept the job? (no, lo rechazaste porque el sueldo era bajo)"
+  },
+  {
+   "id": "3c72aec78e",
+   "es": "¿Aceptaste el trabajo?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Did you accept the job? (no, lo rechazaste porque el sueldo era bajo)"
+  },
+  {
+   "id": "bb25654e5c",
+   "es": "Te voy a ayudar, siempre y cuando me avises antes.",
+   "kinds": [
+    "exercise.source"
+   ],
+   "en": "I will help you, provided that you tell me before."
+  },
+  {
+   "id": "263341df1b",
+   "es": "Responder a una oferta con condiciones",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "5c21f7e133",
+   "es": "Te ofrecieron un trabajo. Responde con un correo formal: agradece, pon una condición para aceptar (as long as, provided that) y di qué pasa si no se cumple (otherwise).",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "edbc9c8e93",
+   "es": "Pones una condición con as long as o provided that",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "dd79324437",
+   "es": "Dices qué pasa si no se cumple (otherwise)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "37c69ee3fe",
+   "es": "Cierras de forma formal (Kind regards, Best wishes…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "e455d18fb5",
+   "es": "Usé un saludo y una despedida formales.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "c779e3cccf",
+   "es": "Puse una condición con provided that o as long as.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "dd3bb880f4",
+   "es": "Dije qué pasa si no se cumple, con cortesía.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.b2-u2-supplier": {
+   "setting": "Una gerente negocia con un proveedor el precio y la fecha de entrega.",
+   "lines": [
+    "Rachel: Thanks for the proposal, Daniel. To be honest, the price is higher than we expected.",
+    "Daniel: I understand. What if we kept the price but delivered two weeks earlier?",
+    "Rachel: Time is not our main priority. The budget is. Could you go down five percent?",
+    "Daniel: Five is difficult. I could offer three, as long as you sign a two-year contract.",
+    "Rachel: Two years is a long time. Let's meet halfway: four percent and an eighteen-month contract.",
+    "Daniel: That sounds fair. Provided that my director agrees, we have a deal.",
+    "Rachel: Great. Please send me the new terms in writing."
+   ]
+  },
+  "en.stim.b2-u2-offer": {
+   "setting": "Una candidata responde a una oferta de trabajo.",
+   "lines": [
+    "Dear Mr. Patel,",
+    "Thank you very much for the job offer. I am very excited about joining the team.",
+    "Before I accept, I would like to discuss one point. In my current job I work from home two days a week, and this flexibility is important to me.",
+    "I would be happy to accept a slightly lower salary, provided that I can keep those two days at home. Otherwise, I am afraid I would have to turn the offer down.",
+    "I hope we can reach an agreement. I am free to talk at any time this week.",
+    "Kind regards,",
+    "Laura Kim"
+   ]
+  },
+  "en.stim.b2-u2-team": {
+   "setting": "Una líder de equipo habla con un empleado que está desbordado.",
+   "lines": [
+    "Grace: Omar, you look exhausted. Is your workload too heavy at the moment?",
+    "Omar: Honestly, yes. I took on the new client last month, and I'm still doing my old projects.",
+    "Grace: You should have told me. A good leader needs to know these things.",
+    "Omar: I didn't want to turn down the client. I thought it was a good opportunity.",
+    "Grace: It is, but you can't do everything. Let's delegate the reports to Ben.",
+    "Omar: Are you sure? He is quite new.",
+    "Grace: That's fine. I'll help him at the beginning, in case he has questions."
+   ]
+  },
+  "en.stim.b2-u2-leader": {
+   "setting": "Un artículo de revista sobre el liderazgo.",
+   "lines": [
+    "What makes a good leader? Many people imagine someone who gives orders and never changes their mind. Research shows the opposite.",
+    "The best leaders are flexible. They listen first, and they are willing to compromise when a better idea appears.",
+    "They also know how to delegate. Instead of doing everything themselves, they give people responsibility and trust them to do the job.",
+    "Finally, they persuade rather than order. When a team understands the reason for a decision, it works harder to make it succeed."
+   ]
+  }
+ }
+}

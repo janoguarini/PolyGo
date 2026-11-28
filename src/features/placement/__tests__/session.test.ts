@@ -1,6 +1,6 @@
-import { courseByCode } from '@shared/courses';
+import { courseByCode, courseLevels } from '@shared/courses';
 import { LANGUAGES } from '@shared/languages';
-import { placementResult, type PlacementBank } from '@shared/placement';
+import { placementResult } from '@shared/placement';
 import { unreadHan } from '@shared/readings';
 
 import { PLACEMENT_BANKS } from '../../../../content/placement/banks.generated';
@@ -23,9 +23,23 @@ const answer = (s: PlacementSession, ok: boolean) =>
   });
 
 describe('placementBankFor', () => {
-  it('inglés y francés tienen test (A1 y A2 publicados)', () => {
-    expect(placementBankFor(en)?.levels.map((l) => l.level)).toEqual(['A1', 'A2']);
-    expect(placementBankFor(courseByCode('fr-from-es')!)).not.toBeNull();
+  it('inglés (A1–B2 publicados) y francés (A1–A2) tienen test', () => {
+    expect(placementBankFor(en)?.levels.map((l) => l.level)).toEqual(['A1', 'A2', 'B1', 'B2']);
+    expect(placementBankFor(courseByCode('fr-from-es')!)?.levels.map((l) => l.level)).toEqual([
+      'A1',
+      'A2',
+    ]);
+  });
+
+  it('inglés desde pt, it y fr: el banco también llega a B2', () => {
+    for (const code of ['en-from-pt', 'en-from-it', 'en-from-fr']) {
+      expect(placementBankFor(courseByCode(code)!)?.levels.map((l) => l.level)).toEqual([
+        'A1',
+        'A2',
+        'B1',
+        'B2',
+      ]);
+    }
   });
 
   it('italiano, portugués, chino y español (A1 y A2) también tienen test', () => {
@@ -59,20 +73,28 @@ describe('placementBankFor', () => {
   });
 
   it('acota el banco a los niveles publicados hoy: nunca más de lo disponible', () => {
-    const withB1: PlacementBank = {
-      ...PLACEMENT_BANKS['en-from-es']!,
-      levels: [
-        ...PLACEMENT_BANKS['en-from-es']!.levels,
-        { level: 'B1', firstUnitTitle: 'x', units: 4 },
-      ],
-      bands: [
-        ...PLACEMENT_BANKS['en-from-es']!.bands,
-        { ...PLACEMENT_BANKS['en-from-es']!.bands[0]!, level: 'B1' },
-      ],
-    };
-    const bank = placementBankFor(en, { 'en-from-es': withB1 })!;
-    expect(bank.levels.map((l) => l.level)).toEqual(['A1', 'A2']);
-    expect(bank.bands.every((b) => b.level !== 'B1')).toBe(true);
+    // El banco generado de en-from-es trae A1–B2; si el idioma publicara sólo A1–A2, el test no
+    // podría ofrecer (ni asignar) B1 ni B2.
+    const enLang = LANGUAGES.find((l) => l.code === 'en') as unknown as { levels: string[] };
+    const levels = enLang.levels;
+    enLang.levels = ['A1', 'A2'];
+    try {
+      expect(PLACEMENT_BANKS['en-from-es']!.bands.some((b) => b.level === 'B2')).toBe(true);
+      const bank = placementBankFor(en)!;
+      expect(bank.levels.map((l) => l.level)).toEqual(['A1', 'A2']);
+      expect(bank.bands.every((b) => b.level === 'A1' || b.level === 'A2')).toBe(true);
+    } finally {
+      enLang.levels = levels;
+    }
+  });
+
+  it('cada banco generado cabe en los niveles publicados de su curso', () => {
+    for (const [code, generated] of Object.entries(PLACEMENT_BANKS)) {
+      const course = courseByCode(code)!;
+      const published = courseLevels(course);
+      expect(generated.levels.every((l) => published.includes(l.level))).toBe(true);
+      expect(generated.bands.every((b) => published.includes(b.level))).toBe(true);
+    }
   });
 
   it('el resultado de un banco no sirve para otro curso: cada curso usa el suyo', () => {

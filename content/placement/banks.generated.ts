@@ -16,6 +16,16 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
         "level": "A2",
         "firstUnitTitle": "El pasado de to be",
         "units": 12
+      },
+      {
+        "level": "B1",
+        "firstUnitTitle": "Experiencias de vida",
+        "units": 12
+      },
+      {
+        "level": "B2",
+        "firstUnitTitle": "Decir las cosas con matices",
+        "units": 12
       }
     ],
     "bands": [
@@ -389,6 +399,454 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
                 ]
               },
               "answer": "sunny",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          }
+        ]
+      },
+      {
+        "level": "B1",
+        "half": 1,
+        "items": [
+          {
+            "sourceId": "en.ex.h17dsptrg6phhc",
+            "dimension": "structures",
+            "unit": 2,
+            "exercise": {
+              "id": "placement.en.ex.h17dsptrg6phhc",
+              "lessonId": null,
+              "position": 13,
+              "type": "order_words",
+              "skill": "sentence_building",
+              "prompt": "Ordena las palabras",
+              "payload": {
+                "type": "order_words",
+                "tokens": [
+                  "I",
+                  "practice",
+                  "the",
+                  "piano",
+                  "every",
+                  "day"
+                ],
+                "translation": "Practico piano todos los días."
+              },
+              "answer": "I practice the piano every day.",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 25,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "en.ex.eoyt7jie4cdsuy",
+            "dimension": "context",
+            "unit": 4,
+            "exercise": {
+              "id": "placement.en.ex.eoyt7jie4cdsuy",
+              "lessonId": null,
+              "position": 14,
+              "type": "context_choice",
+              "skill": "reading",
+              "prompt": "Lee y responde",
+              "payload": {
+                "type": "context_choice",
+                "stimulus": {
+                  "kind": "reading",
+                  "id": "en.stim.b1-u4-course",
+                  "document": "email",
+                  "setting": "Kate escribe a una escuela de idiomas.",
+                  "from": "Kate Brown",
+                  "title": "Summer course",
+                  "lines": [
+                    "Dear Sir or Madam,",
+                    "I would like to apply for the summer English course.",
+                    "I am a nurse, and my goal is to work abroad in the future.",
+                    "I am free from July until September.",
+                    "I look forward to hearing from you.",
+                    "Best wishes, Kate Brown"
+                  ]
+                },
+                "question": "¿Por qué quiere Kate hacer el curso?",
+                "options": [
+                  "Quiere trabajar en el exterior en el futuro",
+                  "Quiere ser profesora",
+                  "Necesita un trabajo de enfermera",
+                  "Va a jubilarse"
+                ]
+              },
+              "answer": "Quiere trabajar en el exterior en el futuro",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 60,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "en.ex.j6wmcvrvjl70u3",
+            "dimension": "grammar",
+            "unit": 5,
+            "exercise": {
+              "id": "placement.en.ex.j6wmcvrvjl70u3",
+              "lessonId": null,
+              "position": 15,
+              "type": "fill_blank",
+              "skill": "grammar",
+              "prompt": "Completa la frase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "Are we ___ to eat in the classroom?",
+                "translation": "¿Podemos comer en el aula?",
+                "options": [
+                  "allowed",
+                  "must",
+                  "have",
+                  "need"
+                ]
+              },
+              "answer": "allowed",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          }
+        ]
+      },
+      {
+        "level": "B1",
+        "half": 2,
+        "items": [
+          {
+            "sourceId": "en.ex.h66byp4fd0g78e",
+            "dimension": "structures",
+            "unit": 8,
+            "exercise": {
+              "id": "placement.en.ex.h66byp4fd0g78e",
+              "lessonId": null,
+              "position": 16,
+              "type": "order_words",
+              "skill": "sentence_building",
+              "prompt": "Ordena las palabras",
+              "payload": {
+                "type": "order_words",
+                "tokens": [
+                  "This",
+                  "is",
+                  "the",
+                  "app",
+                  "that",
+                  "I",
+                  "use",
+                  "every",
+                  "day"
+                ],
+                "translation": "Esta es la app que uso todos los días."
+              },
+              "answer": "This is the app that I use every day.",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 25,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "en.ex.6ob4lf3f545x0r",
+            "dimension": "context",
+            "unit": 10,
+            "exercise": {
+              "id": "placement.en.ex.6ob4lf3f545x0r",
+              "lessonId": null,
+              "position": 17,
+              "type": "context_choice",
+              "skill": "reading",
+              "prompt": "Lee y responde",
+              "payload": {
+                "type": "context_choice",
+                "stimulus": {
+                  "kind": "reading",
+                  "id": "en.stim.b1-u10-fake",
+                  "document": "post",
+                  "setting": "Un periodista escribe sobre noticias falsas.",
+                  "from": "Ben",
+                  "title": "Check before you share",
+                  "lines": [
+                    "Last week, a lot of people shared an article which said that the city zoo was closing.",
+                    "It was fake news. The zoo explained that it was open as usual.",
+                    "Before you share a story, check the source.",
+                    "Is it a real newspaper? Has the story been on other news sites?"
+                  ]
+                },
+                "question": "¿Qué decía la nota falsa?",
+                "options": [
+                  "Que el zoológico iba a cerrar",
+                  "Que el zoológico era gratis",
+                  "Que abrían un zoológico nuevo",
+                  "Que había un incendio"
+                ]
+              },
+              "answer": "Que el zoológico iba a cerrar",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 60,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "en.ex.ck5yu0ppk6nhcm",
+            "dimension": "grammar",
+            "unit": 11,
+            "exercise": {
+              "id": "placement.en.ex.ck5yu0ppk6nhcm",
+              "lessonId": null,
+              "position": 18,
+              "type": "fill_blank",
+              "skill": "grammar",
+              "prompt": "Completa la frase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "I wish I ___ more free time.",
+                "translation": "Ojalá tuviera más tiempo libre.",
+                "options": [
+                  "had",
+                  "have",
+                  "will have",
+                  "having"
+                ]
+              },
+              "answer": "had",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          }
+        ]
+      },
+      {
+        "level": "B2",
+        "half": 1,
+        "items": [
+          {
+            "sourceId": "en.ex.e5u2d7soyzij7q",
+            "dimension": "structures",
+            "unit": 2,
+            "exercise": {
+              "id": "placement.en.ex.e5u2d7soyzij7q",
+              "lessonId": null,
+              "position": 19,
+              "type": "order_words",
+              "skill": "sentence_building",
+              "prompt": "Ordena las palabras",
+              "payload": {
+                "type": "order_words",
+                "tokens": [
+                  "She",
+                  "turned",
+                  "down",
+                  "the",
+                  "offer",
+                  "because",
+                  "of",
+                  "the",
+                  "hours"
+                ],
+                "translation": "Rechazó la oferta por los horarios."
+              },
+              "answer": "She turned down the offer because of the hours.",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 25,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "en.ex.eri9430tonohik",
+            "dimension": "context",
+            "unit": 6,
+            "exercise": {
+              "id": "placement.en.ex.eri9430tonohik",
+              "lessonId": null,
+              "position": 20,
+              "type": "context_choice",
+              "skill": "reading",
+              "prompt": "Lee y responde",
+              "payload": {
+                "type": "context_choice",
+                "stimulus": {
+                  "kind": "reading",
+                  "id": "en.stim.b2-u6-sorry",
+                  "document": "message",
+                  "setting": "Un mensaje de disculpas entre amigos.",
+                  "from": "Sara",
+                  "to": "Max",
+                  "lines": [
+                    "Hi Max, I'm sorry I didn't reply. I wasn't angry with you. My first week at the new job was awful, and I was in a terrible mood.",
+                    "Your joke was a bit much, but I know you didn’t mean it. I was being too sensitive.",
+                    "I'm really grateful that you called last night. You always know how to cheer me up.",
+                    "I promise I won't disappear like that again. I hate letting my friends down. Coffee on Saturday? Sara"
+                  ]
+                },
+                "question": "¿Por qué Sara no contestaba los mensajes?",
+                "options": [
+                  "Tuvo una primera semana horrible en el trabajo y estaba de muy mal humor",
+                  "Estaba enojada con Max",
+                  "Había perdido el teléfono",
+                  "Estaba de viaje"
+                ]
+              },
+              "answer": "Tuvo una primera semana horrible en el trabajo y estaba de muy mal humor",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 60,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "en.ex.soyycix4znv5da",
+            "dimension": "grammar",
+            "unit": 5,
+            "exercise": {
+              "id": "placement.en.ex.soyycix4znv5da",
+              "lessonId": null,
+              "position": 21,
+              "type": "fill_blank",
+              "skill": "grammar",
+              "prompt": "Completa la frase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "This phone is twice as expensive ___ that one.",
+                "translation": "Este teléfono es el doble de caro que ese.",
+                "options": [
+                  "as",
+                  "than",
+                  "like",
+                  "that"
+                ]
+              },
+              "answer": "as",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          }
+        ]
+      },
+      {
+        "level": "B2",
+        "half": 2,
+        "items": [
+          {
+            "sourceId": "en.ex.cin533d51z6zkq",
+            "dimension": "structures",
+            "unit": 8,
+            "exercise": {
+              "id": "placement.en.ex.cin533d51z6zkq",
+              "lessonId": null,
+              "position": 22,
+              "type": "order_words",
+              "skill": "sentence_building",
+              "prompt": "Ordena las palabras",
+              "payload": {
+                "type": "order_words",
+                "tokens": [
+                  "She",
+                  "suggested",
+                  "checking",
+                  "the",
+                  "official",
+                  "website"
+                ],
+                "translation": "Sugirió consultar la página oficial."
+              },
+              "answer": "She suggested checking the official website.",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 25,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "en.ex.7dysi3jw6exnx3",
+            "dimension": "context",
+            "unit": 11,
+            "exercise": {
+              "id": "placement.en.ex.7dysi3jw6exnx3",
+              "lessonId": null,
+              "position": 23,
+              "type": "context_choice",
+              "skill": "reading",
+              "prompt": "Lee y responde",
+              "payload": {
+                "type": "context_choice",
+                "stimulus": {
+                  "kind": "reading",
+                  "id": "en.stim.b2-u11-story",
+                  "document": "post",
+                  "setting": "El comienzo de un cuento.",
+                  "title": "The Lighthouse — Chapter 1",
+                  "lines": [
+                    "Having missed the last train, Elena set off on foot along the dark coast road.",
+                    "Never had she felt so alone. The wind was cold, and the only sound was the sea.",
+                    "Walking past the old lighthouse, she noticed a light in the window. It had been empty for twenty years.",
+                    "Hardly had she stopped when the door opened, and a voice called her name.",
+                    "Little did she know that this night would change her life."
+                  ]
+                },
+                "question": "¿Por qué Elena caminaba sola por la ruta de la costa?",
+                "options": [
+                  "Porque había perdido el último tren",
+                  "Porque quería ver el faro",
+                  "Porque le gustaba caminar de noche",
+                  "Porque alguien la esperaba"
+                ]
+              },
+              "answer": "Porque había perdido el último tren",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 60,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "en.ex.2esnq4q0q5c5ev",
+            "dimension": "grammar",
+            "unit": 11,
+            "exercise": {
+              "id": "placement.en.ex.2esnq4q0q5c5ev",
+              "lessonId": null,
+              "position": 24,
+              "type": "fill_blank",
+              "skill": "grammar",
+              "prompt": "Completa la frase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "Never ___ she felt so alone.",
+                "translation": "Nunca se había sentido tan sola.",
+                "options": [
+                  "had",
+                  "has",
+                  "did",
+                  "was"
+                ]
+              },
+              "answer": "had",
               "acceptedAnswers": [],
               "explanation": null,
               "difficulty": 1,
@@ -2647,6 +3105,11 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
         "level": "B1",
         "firstUnitTitle": "Experiências de vida",
         "units": 12
+      },
+      {
+        "level": "B2",
+        "firstUnitTitle": "Dizer as coisas com nuance",
+        "units": 12
       }
     ],
     "bands": [
@@ -3273,6 +3736,229 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
             }
           }
         ]
+      },
+      {
+        "level": "B2",
+        "half": 1,
+        "items": [
+          {
+            "sourceId": "ept.ex.ijuy81kclr45o0",
+            "dimension": "structures",
+            "unit": 2,
+            "exercise": {
+              "id": "placement.ept.ex.ijuy81kclr45o0",
+              "lessonId": null,
+              "position": 19,
+              "type": "order_words",
+              "skill": "sentence_building",
+              "prompt": "Ordene as palavras",
+              "payload": {
+                "type": "order_words",
+                "tokens": [
+                  "She",
+                  "turned",
+                  "down",
+                  "the",
+                  "offer",
+                  "because",
+                  "of",
+                  "the",
+                  "hours"
+                ],
+                "translation": "Ela recusou a oferta por causa dos horários."
+              },
+              "answer": "She turned down the offer because of the hours.",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 25,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "ept.ex.e5mkxxtp2yq4g5",
+            "dimension": "context",
+            "unit": 6,
+            "exercise": {
+              "id": "placement.ept.ex.e5mkxxtp2yq4g5",
+              "lessonId": null,
+              "position": 20,
+              "type": "context_choice",
+              "skill": "reading",
+              "prompt": "Leia e responda",
+              "payload": {
+                "type": "context_choice",
+                "stimulus": {
+                  "kind": "reading",
+                  "id": "ept.stim.b2-u6-sorry",
+                  "document": "message",
+                  "setting": "Uma mensagem de desculpas entre amigos.",
+                  "from": "Sara",
+                  "to": "Max",
+                  "lines": [
+                    "Hi Max, I'm sorry I didn't reply. I wasn't angry with you. My first week at the new job was awful, and I was in a terrible mood.",
+                    "Your joke was a bit much, but I know you didn’t mean it. I was being too sensitive.",
+                    "I'm really grateful that you called last night. You always know how to cheer me up.",
+                    "I promise I won't disappear like that again. I hate letting my friends down. Coffee on Saturday? Sara"
+                  ]
+                },
+                "question": "Por que Sara não respondia às mensagens?",
+                "options": [
+                  "Teve uma primeira semana horrível no trabalho e estava de péssimo humor",
+                  "Estava brava com Max",
+                  "Tinha perdido o celular",
+                  "Estava viajando"
+                ]
+              },
+              "answer": "Teve uma primeira semana horrível no trabalho e estava de péssimo humor",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 60,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "ept.ex.g3x0p11jmbonwd",
+            "dimension": "grammar",
+            "unit": 5,
+            "exercise": {
+              "id": "placement.ept.ex.g3x0p11jmbonwd",
+              "lessonId": null,
+              "position": 21,
+              "type": "fill_blank",
+              "skill": "grammar",
+              "prompt": "Complete a frase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "This phone is twice as expensive ___ that one.",
+                "translation": "Este celular é duas vezes mais caro que aquele.",
+                "options": [
+                  "as",
+                  "than",
+                  "like",
+                  "that"
+                ]
+              },
+              "answer": "as",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          }
+        ]
+      },
+      {
+        "level": "B2",
+        "half": 2,
+        "items": [
+          {
+            "sourceId": "ept.ex.8ljjegaaj3gs0n",
+            "dimension": "structures",
+            "unit": 8,
+            "exercise": {
+              "id": "placement.ept.ex.8ljjegaaj3gs0n",
+              "lessonId": null,
+              "position": 22,
+              "type": "order_words",
+              "skill": "sentence_building",
+              "prompt": "Ordene as palavras",
+              "payload": {
+                "type": "order_words",
+                "tokens": [
+                  "She",
+                  "suggested",
+                  "checking",
+                  "the",
+                  "official",
+                  "website"
+                ],
+                "translation": "Ela sugeriu consultar o site oficial."
+              },
+              "answer": "She suggested checking the official website.",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 25,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "ept.ex.f5hiy7eiwxjx8s",
+            "dimension": "context",
+            "unit": 11,
+            "exercise": {
+              "id": "placement.ept.ex.f5hiy7eiwxjx8s",
+              "lessonId": null,
+              "position": 23,
+              "type": "context_choice",
+              "skill": "reading",
+              "prompt": "Leia e responda",
+              "payload": {
+                "type": "context_choice",
+                "stimulus": {
+                  "kind": "reading",
+                  "id": "ept.stim.b2-u11-story",
+                  "document": "post",
+                  "setting": "O começo de um conto.",
+                  "title": "The Lighthouse — Chapter 1",
+                  "lines": [
+                    "Having missed the last train, Elena set off on foot along the dark coast road.",
+                    "Never had she felt so alone. The wind was cold, and the only sound was the sea.",
+                    "Walking past the old lighthouse, she noticed a light in the window. It had been empty for twenty years.",
+                    "Hardly had she stopped when the door opened, and a voice called her name.",
+                    "Little did she know that this night would change her life."
+                  ]
+                },
+                "question": "Por que a Elena caminhava sozinha pela estrada da costa?",
+                "options": [
+                  "Porque tinha perdido o último trem",
+                  "Porque queria ver o farol",
+                  "Porque gostava de caminhar à noite",
+                  "Porque alguém a esperava"
+                ]
+              },
+              "answer": "Porque tinha perdido o último trem",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 60,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "ept.ex.m3f61qffgh60pg",
+            "dimension": "grammar",
+            "unit": 11,
+            "exercise": {
+              "id": "placement.ept.ex.m3f61qffgh60pg",
+              "lessonId": null,
+              "position": 24,
+              "type": "fill_blank",
+              "skill": "grammar",
+              "prompt": "Complete a frase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "Never ___ she felt so alone.",
+                "translation": "Ela nunca tinha se sentido tão sozinha.",
+                "options": [
+                  "had",
+                  "has",
+                  "did",
+                  "was"
+                ]
+              },
+              "answer": "had",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          }
+        ]
       }
     ]
   },
@@ -3293,6 +3979,11 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
       {
         "level": "B1",
         "firstUnitTitle": "Esperienze di vita",
+        "units": 12
+      },
+      {
+        "level": "B2",
+        "firstUnitTitle": "Dire le cose con le sfumature giuste",
         "units": 12
       }
     ],
@@ -3920,6 +4611,229 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
             }
           }
         ]
+      },
+      {
+        "level": "B2",
+        "half": 1,
+        "items": [
+          {
+            "sourceId": "eit.ex.s6qysndur5l0wy",
+            "dimension": "structures",
+            "unit": 2,
+            "exercise": {
+              "id": "placement.eit.ex.s6qysndur5l0wy",
+              "lessonId": null,
+              "position": 19,
+              "type": "order_words",
+              "skill": "sentence_building",
+              "prompt": "Metti le parole in ordine",
+              "payload": {
+                "type": "order_words",
+                "tokens": [
+                  "She",
+                  "turned",
+                  "down",
+                  "the",
+                  "offer",
+                  "because",
+                  "of",
+                  "the",
+                  "hours"
+                ],
+                "translation": "Ha rifiutato l’offerta per via degli orari."
+              },
+              "answer": "She turned down the offer because of the hours.",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 25,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "eit.ex.kd3v0am1750g4u",
+            "dimension": "context",
+            "unit": 6,
+            "exercise": {
+              "id": "placement.eit.ex.kd3v0am1750g4u",
+              "lessonId": null,
+              "position": 20,
+              "type": "context_choice",
+              "skill": "reading",
+              "prompt": "Leggi e rispondi",
+              "payload": {
+                "type": "context_choice",
+                "stimulus": {
+                  "kind": "reading",
+                  "id": "eit.stim.b2-u6-sorry",
+                  "document": "message",
+                  "setting": "Un messaggio di scuse tra amici.",
+                  "from": "Sara",
+                  "to": "Max",
+                  "lines": [
+                    "Hi Max, I'm sorry I didn't reply. I wasn't angry with you. My first week at the new job was awful, and I was in a terrible mood.",
+                    "Your joke was a bit much, but I know you didn’t mean it. I was being too sensitive.",
+                    "I'm really grateful that you called last night. You always know how to cheer me up.",
+                    "I promise I won't disappear like that again. I hate letting my friends down. Coffee on Saturday? Sara"
+                  ]
+                },
+                "question": "Perché Sara non rispondeva ai messaggi?",
+                "options": [
+                  "Ha avuto una prima settimana di lavoro terribile ed era di pessimo umore",
+                  "Era arrabbiata con Max",
+                  "Aveva perso il telefono",
+                  "Era in viaggio"
+                ]
+              },
+              "answer": "Ha avuto una prima settimana di lavoro terribile ed era di pessimo umore",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 60,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "eit.ex.dhshn7zkunyxo0",
+            "dimension": "grammar",
+            "unit": 5,
+            "exercise": {
+              "id": "placement.eit.ex.dhshn7zkunyxo0",
+              "lessonId": null,
+              "position": 21,
+              "type": "fill_blank",
+              "skill": "grammar",
+              "prompt": "Completa la frase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "This phone is twice as expensive ___ that one.",
+                "translation": "Questo telefono è due volte più caro di quello.",
+                "options": [
+                  "as",
+                  "than",
+                  "like",
+                  "that"
+                ]
+              },
+              "answer": "as",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          }
+        ]
+      },
+      {
+        "level": "B2",
+        "half": 2,
+        "items": [
+          {
+            "sourceId": "eit.ex.as9nf8y5j2zewu",
+            "dimension": "structures",
+            "unit": 8,
+            "exercise": {
+              "id": "placement.eit.ex.as9nf8y5j2zewu",
+              "lessonId": null,
+              "position": 22,
+              "type": "order_words",
+              "skill": "sentence_building",
+              "prompt": "Metti le parole in ordine",
+              "payload": {
+                "type": "order_words",
+                "tokens": [
+                  "She",
+                  "suggested",
+                  "checking",
+                  "the",
+                  "official",
+                  "website"
+                ],
+                "translation": "Ha suggerito di consultare il sito ufficiale."
+              },
+              "answer": "She suggested checking the official website.",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 25,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "eit.ex.5h7olmn0d9whc4",
+            "dimension": "context",
+            "unit": 11,
+            "exercise": {
+              "id": "placement.eit.ex.5h7olmn0d9whc4",
+              "lessonId": null,
+              "position": 23,
+              "type": "context_choice",
+              "skill": "reading",
+              "prompt": "Leggi e rispondi",
+              "payload": {
+                "type": "context_choice",
+                "stimulus": {
+                  "kind": "reading",
+                  "id": "eit.stim.b2-u11-story",
+                  "document": "post",
+                  "setting": "L’inizio di un racconto.",
+                  "title": "The Lighthouse — Chapter 1",
+                  "lines": [
+                    "Having missed the last train, Elena set off on foot along the dark coast road.",
+                    "Never had she felt so alone. The wind was cold, and the only sound was the sea.",
+                    "Walking past the old lighthouse, she noticed a light in the window. It had been empty for twenty years.",
+                    "Hardly had she stopped when the door opened, and a voice called her name.",
+                    "Little did she know that this night would change her life."
+                  ]
+                },
+                "question": "Perché Elena camminava da sola lungo la strada costiera?",
+                "options": [
+                  "Perché aveva perso l’ultimo treno",
+                  "Perché voleva vedere il faro",
+                  "Perché le piaceva camminare di notte",
+                  "Perché qualcuno la aspettava"
+                ]
+              },
+              "answer": "Perché aveva perso l’ultimo treno",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 60,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "eit.ex.hlwlfoypsum56z",
+            "dimension": "grammar",
+            "unit": 11,
+            "exercise": {
+              "id": "placement.eit.ex.hlwlfoypsum56z",
+              "lessonId": null,
+              "position": 24,
+              "type": "fill_blank",
+              "skill": "grammar",
+              "prompt": "Completa la frase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "Never ___ she felt so alone.",
+                "translation": "Non si era mai sentita così sola.",
+                "options": [
+                  "had",
+                  "has",
+                  "did",
+                  "was"
+                ]
+              },
+              "answer": "had",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          }
+        ]
       }
     ]
   },
@@ -3940,6 +4854,11 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
       {
         "level": "B1",
         "firstUnitTitle": "Expériences de vie",
+        "units": 12
+      },
+      {
+        "level": "B2",
+        "firstUnitTitle": "Dire les choses avec nuance",
         "units": 12
       }
     ],
@@ -4556,6 +5475,229 @@ export const PLACEMENT_BANKS: Readonly<Record<string, PlacementBank>> = {
                   "have",
                   "will have",
                   "having"
+                ]
+              },
+              "answer": "had",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          }
+        ]
+      },
+      {
+        "level": "B2",
+        "half": 1,
+        "items": [
+          {
+            "sourceId": "efr.ex.iw5v43yh58quia",
+            "dimension": "structures",
+            "unit": 2,
+            "exercise": {
+              "id": "placement.efr.ex.iw5v43yh58quia",
+              "lessonId": null,
+              "position": 19,
+              "type": "order_words",
+              "skill": "sentence_building",
+              "prompt": "Remets les mots dans l’ordre",
+              "payload": {
+                "type": "order_words",
+                "tokens": [
+                  "She",
+                  "turned",
+                  "down",
+                  "the",
+                  "offer",
+                  "because",
+                  "of",
+                  "the",
+                  "hours"
+                ],
+                "translation": "Elle a refusé l’offre à cause des horaires."
+              },
+              "answer": "She turned down the offer because of the hours.",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 25,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "efr.ex.l4rv9scfrplv6n",
+            "dimension": "context",
+            "unit": 6,
+            "exercise": {
+              "id": "placement.efr.ex.l4rv9scfrplv6n",
+              "lessonId": null,
+              "position": 20,
+              "type": "context_choice",
+              "skill": "reading",
+              "prompt": "Lis et réponds",
+              "payload": {
+                "type": "context_choice",
+                "stimulus": {
+                  "kind": "reading",
+                  "id": "efr.stim.b2-u6-sorry",
+                  "document": "message",
+                  "setting": "Un message d’excuses entre amis.",
+                  "from": "Sara",
+                  "to": "Max",
+                  "lines": [
+                    "Hi Max, I'm sorry I didn't reply. I wasn't angry with you. My first week at the new job was awful, and I was in a terrible mood.",
+                    "Your joke was a bit much, but I know you didn’t mean it. I was being too sensitive.",
+                    "I'm really grateful that you called last night. You always know how to cheer me up.",
+                    "I promise I won't disappear like that again. I hate letting my friends down. Coffee on Saturday? Sara"
+                  ]
+                },
+                "question": "Pourquoi Sara ne répondait-elle pas aux messages ?",
+                "options": [
+                  "Elle a eu une première semaine horrible au travail et elle était de très mauvaise humeur",
+                  "Elle était fâchée contre Max",
+                  "Elle avait perdu son téléphone",
+                  "Elle était en voyage"
+                ]
+              },
+              "answer": "Elle a eu une première semaine horrible au travail et elle était de très mauvaise humeur",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 60,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "efr.ex.h5yjdleazsx6j0",
+            "dimension": "grammar",
+            "unit": 5,
+            "exercise": {
+              "id": "placement.efr.ex.h5yjdleazsx6j0",
+              "lessonId": null,
+              "position": 21,
+              "type": "fill_blank",
+              "skill": "grammar",
+              "prompt": "Complète la phrase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "This phone is twice as expensive ___ that one.",
+                "translation": "Ce téléphone est deux fois plus cher que celui-là.",
+                "options": [
+                  "as",
+                  "than",
+                  "like",
+                  "that"
+                ]
+              },
+              "answer": "as",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 15,
+              "wordIds": []
+            }
+          }
+        ]
+      },
+      {
+        "level": "B2",
+        "half": 2,
+        "items": [
+          {
+            "sourceId": "efr.ex.wyj0xxhlx143ck",
+            "dimension": "structures",
+            "unit": 8,
+            "exercise": {
+              "id": "placement.efr.ex.wyj0xxhlx143ck",
+              "lessonId": null,
+              "position": 22,
+              "type": "order_words",
+              "skill": "sentence_building",
+              "prompt": "Remets les mots dans l’ordre",
+              "payload": {
+                "type": "order_words",
+                "tokens": [
+                  "She",
+                  "suggested",
+                  "checking",
+                  "the",
+                  "official",
+                  "website"
+                ],
+                "translation": "Elle a suggéré de consulter le site officiel."
+              },
+              "answer": "She suggested checking the official website.",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 25,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "efr.ex.azufz1sie31m9m",
+            "dimension": "context",
+            "unit": 11,
+            "exercise": {
+              "id": "placement.efr.ex.azufz1sie31m9m",
+              "lessonId": null,
+              "position": 23,
+              "type": "context_choice",
+              "skill": "reading",
+              "prompt": "Lis et réponds",
+              "payload": {
+                "type": "context_choice",
+                "stimulus": {
+                  "kind": "reading",
+                  "id": "efr.stim.b2-u11-story",
+                  "document": "post",
+                  "setting": "Le début d’une nouvelle.",
+                  "title": "The Lighthouse — Chapter 1",
+                  "lines": [
+                    "Having missed the last train, Elena set off on foot along the dark coast road.",
+                    "Never had she felt so alone. The wind was cold, and the only sound was the sea.",
+                    "Walking past the old lighthouse, she noticed a light in the window. It had been empty for twenty years.",
+                    "Hardly had she stopped when the door opened, and a voice called her name.",
+                    "Little did she know that this night would change her life."
+                  ]
+                },
+                "question": "Pourquoi Elena marchait-elle seule sur la route de la côte ?",
+                "options": [
+                  "Parce qu’elle avait raté le dernier train",
+                  "Parce qu’elle voulait voir le phare",
+                  "Parce qu’elle aimait marcher la nuit",
+                  "Parce que quelqu’un l’attendait"
+                ]
+              },
+              "answer": "Parce qu’elle avait raté le dernier train",
+              "acceptedAnswers": [],
+              "explanation": null,
+              "difficulty": 1,
+              "recommendedSeconds": 60,
+              "wordIds": []
+            }
+          },
+          {
+            "sourceId": "efr.ex.aog93km2kymjdw",
+            "dimension": "grammar",
+            "unit": 11,
+            "exercise": {
+              "id": "placement.efr.ex.aog93km2kymjdw",
+              "lessonId": null,
+              "position": 24,
+              "type": "fill_blank",
+              "skill": "grammar",
+              "prompt": "Complète la phrase",
+              "payload": {
+                "type": "fill_blank",
+                "sentence": "Never ___ she felt so alone.",
+                "translation": "Jamais elle ne s’était sentie aussi seule.",
+                "options": [
+                  "had",
+                  "has",
+                  "did",
+                  "was"
                 ]
               },
               "answer": "had",

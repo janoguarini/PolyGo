@@ -116,7 +116,7 @@ it('«Agregar curso» abre el selector por idioma de origen: el del teléfono ab
     expect(section.props.accessibilityState).toMatchObject({ expanded: false });
   }
   // Tus cursos van marcados; los demás, con su rango de niveles.
-  expect(screen.getByRole('button', { name: 'Inglés, A1–A2, ya lo estudias' })).toBeTruthy();
+  expect(screen.getByRole('button', { name: 'Inglés, A1–B2, ya lo estudias' })).toBeTruthy();
   expect(screen.getByRole('button', { name: 'Italiano, A1–A2, ya lo estudias' })).toBeTruthy();
   expect(screen.getByText('Curso actual')).toBeTruthy();
   expect(screen.getByText('Ya lo estudias')).toBeTruthy();
@@ -146,7 +146,7 @@ it('tocar uno de mis cursos lo elige y vuelve a Aprender; uno nuevo abre por dó
   expect(mockMutate).toHaveBeenCalledTimes(2);
   expect(mockPush).not.toHaveBeenCalled();
   // El que ya estudiás sólo vuelve a Aprender.
-  await fireEvent.press(screen.getByRole('button', { name: 'Inglés, A1–A2, ya lo estudias' }));
+  await fireEvent.press(screen.getByRole('button', { name: 'Inglés, A1–B2, ya lo estudias' }));
   expect(mockMutate).toHaveBeenCalledTimes(2);
   expect(mockBack).toHaveBeenCalledTimes(3);
 

@@ -31,12 +31,16 @@ const PUBLISHED = [
 ];
 /**
  * Publicados en producción después de esta migración (2026-11-27): inglés para hablantes de
- * portugués, italiano y francés, que shared/courses.ts ya da por abiertos.
+ * portugués, italiano y francés (A1–B1), y su B2 (20270112130*), que shared/courses.ts ya da por
+ * abiertos.
  */
 const PUBLISHED_AFTER = [
   '20270111120000_publish_en_from_pt.sql',
   '20270111120100_publish_en_from_it.sql',
   '20270111120200_publish_en_from_fr.sql',
+  '20270112130000_publish_en_from_pt_b2.sql',
+  '20270112130100_publish_en_from_it_b2.sql',
+  '20270112130200_publish_en_from_fr_b2.sql',
 ];
 const rollbackSql = readFileSync(
   new URL(`../rollback/20261226120000_ranked_all_courses.down.sql`, import.meta.url),

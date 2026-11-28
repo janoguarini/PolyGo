@@ -107,14 +107,15 @@ export const START_LEVELS = [
     title: 'Me defiendo',
     description: 'Me las arreglo de viaje y cuento experiencias y planes.',
     // Se abre sólo en los cursos que publican B1 (onboarding: levelOpen = available y courseLevels del
-    // curso): hoy en-from-pt / it / fr. Se guarda en user_courses vía complete_onboarding_v2.
+    // curso): el inglés (desde es, pt, it y fr). Se guarda en user_courses vía complete_onboarding_v2.
     available: true,
   },
   {
     id: 'B2',
     title: 'Hablo con soltura',
     description: 'Sigo series y charlas sin problema y opino sobre muchos temas.',
-    available: false,
+    // Igual que B1: sólo en los cursos que publican B2 (hoy el inglés para hispanohablantes).
+    available: true,
   },
   {
     id: 'C1',

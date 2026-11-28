@@ -2,6 +2,7 @@ import type { WritingTaskDef } from '../../shared/writing';
 import { EN_A1_WRITING_TASKS } from '../en/a1/writing';
 import { EN_A2_WRITING_TASKS } from '../en/a2/writing';
 import { EN_B1_WRITING_TASKS } from '../en/b1/writing';
+import { EN_B2_WRITING_TASKS } from '../en/b2/writing';
 import type { SupportFn } from './support';
 
 /**
@@ -10,7 +11,12 @@ import type { SupportFn } from './support';
  * lista de control. Las preguntas guía y el modelo están en inglés y no cambian.
  */
 export function enWritingTasks(): { unit: string; task: WritingTaskDef }[] {
-  return [...EN_A1_WRITING_TASKS, ...EN_A2_WRITING_TASKS, ...EN_B1_WRITING_TASKS].map((task) => {
+  return [
+    ...EN_A1_WRITING_TASKS,
+    ...EN_A2_WRITING_TASKS,
+    ...EN_B1_WRITING_TASKS,
+    ...EN_B2_WRITING_TASKS,
+  ].map((task) => {
     const unit = /^([ab]\d-u\d{2})-/.exec(task.lesson ?? '')?.[1];
     if (!unit) throw new Error(`${task.id}: sin lección de unidad`);
     return { unit, task };

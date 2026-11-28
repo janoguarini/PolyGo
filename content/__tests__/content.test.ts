@@ -5,6 +5,8 @@ import { HAN, LANGUAGES, languageConfig } from '@shared/languages';
 import { readingDictionary, unreadHan } from '@shared/readings';
 
 import { ALL_WORDS, COURSES, CURRICULUM_PATH, idPrefix, unitId } from '..';
+import { B1_PATH } from '../b1';
+import { B2_PATH } from '../b2';
 import { ES_COURSE } from '../es-course';
 import { FR_COURSE } from '../fr-course';
 import { IT_COURSE } from '../it-course';
@@ -82,7 +84,8 @@ describe('estructura del currículo', () => {
 
   it('los niveles de cada idioma en shared/languages.ts son los que tienen contenido', () => {
     // Francés y español tienen su curso aparte (fuera de COURSES y de CURRICULUM_PATH); italiano,
-    // portugués y chino suman al piloto A1 su propio camino (A1 U13–U16 y A2).
+    // portugués y chino suman al piloto A1 su propio camino (A1 U13–U16 y A2); el inglés suma a
+    // A1–A2 (COURSES) los niveles que viven en su propio camino (B1_PATH y B2_PATH).
     const union = (...lists: (readonly { level: string }[])[]) => [
       ...new Set(lists.flatMap((list) => list.map((v) => v.level))),
     ];
@@ -93,6 +96,10 @@ describe('estructura del currículo', () => {
       it: union(pilot('it'), IT_COURSE),
       pt: union(pilot('pt'), PT_COURSE),
       zh: union(pilot('zh'), ZH_COURSE),
+      en: union(
+        pilot('en'),
+        [...B1_PATH, ...B2_PATH].filter((u) => u.language === 'en'),
+      ),
     };
     for (const l of LANGUAGES) {
       const levels =

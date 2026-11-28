@@ -94,7 +94,9 @@
    "id": "5f593cb79b",
    "es": "apenas",
    "kinds": [
-    "word.accepted"
+    "word.accepted",
+    "word.translation",
+    "exercise.pair"
    ],
    "en": "as soon as"
   },
@@ -468,7 +470,8 @@
    "id": "cc8b155199",
    "es": "reconocer",
    "kinds": [
-    "word.translation"
+    "word.translation",
+    "word.accepted"
    ],
    "en": "recognize"
   },

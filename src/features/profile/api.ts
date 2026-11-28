@@ -6,6 +6,8 @@ import type {
   UserSettingsRow,
 } from '@/lib/database.types';
 import type { FriendshipState } from '@/features/friends/api';
+import { defaultCourseFor } from '@shared/courses';
+
 import { getInterfaceLanguage } from '@/i18n';
 import { callPendingRpc } from '@/lib/pendingRpc';
 import { requireSupabase } from '@/lib/supabase';
@@ -71,12 +73,17 @@ export interface OnboardingInput {
   courseCode?: string;
 }
 
+/** profiles.start_level (y complete_onboarding v1) sólo admiten estos; el resto va por curso (v2). */
+const PROFILE_START_LEVELS = ['A1', 'A2'];
+
 export async function completeOnboarding(input: OnboardingInput): Promise<ProfileRow> {
-  if (input.courseCode) {
+  // Un curso que no es el por defecto, o un nivel por encima de A2 (B1, B2): complete_onboarding_v2,
+  // que valida el nivel contra el curso y lo guarda en user_courses. El resto, como siempre (v1).
+  if (input.courseCode || !PROFILE_START_LEVELS.includes(input.startLevel)) {
     return callPendingRpc<ProfileRow>('complete_onboarding_v2', {
       p_username: input.username,
       p_avatar_id: input.avatarId,
-      p_course_code: input.courseCode,
+      p_course_code: input.courseCode ?? defaultCourseFor(input.targetLanguage).code,
       p_start_level: input.startLevel,
       p_daily_goal_minutes: input.dailyGoalMinutes,
       p_interface_language: getInterfaceLanguage(),

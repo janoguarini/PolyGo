@@ -203,6 +203,9 @@ interface Explain {
   topReached: boolean;
 }
 
+/** Duración estimada del test: ~15 s por pregunta, nunca menos de 3 minutos (12 → 3, 24 → 6). */
+export const placementMinutes = (max: number) => Math.max(3, Math.round((max * 15) / 60));
+
 export const courseStartStrings = defineStrings({
   es: {
     title: 'Nuevo curso',
@@ -219,7 +222,7 @@ export const courseStartStrings = defineStrings({
     question: '¿Por dónde quieres empezar?',
     testTitle: 'Hacer el test de nivel',
     testBody: (levels: string, max: number) =>
-      `Un desafío corto para ubicarte entre ${levels}. Hasta ${max} preguntas, unos 3 minutos.`,
+      `Un desafío corto para ubicarte entre ${levels}. Hasta ${max} preguntas, unos ${placementMinutes(max)} minutos.`,
     testBadge: 'SI YA SABES ALGO',
     testHint: 'Abre el test de nivel. No se guarda nada hasta que confirmes el resultado.',
     testSoon: 'El test de nivel llega con la próxima actualización del servidor.',
@@ -254,7 +257,7 @@ export const courseStartStrings = defineStrings({
     question: 'Where do you want to start?',
     testTitle: 'Take the placement test',
     testBody: (levels: string, max: number) =>
-      `A short challenge to place you between ${levels}. Up to ${max} questions, about 3 minutes.`,
+      `A short challenge to place you between ${levels}. Up to ${max} questions, about ${placementMinutes(max)} minutes.`,
     testBadge: 'IF YOU ALREADY KNOW SOME',
     testHint: 'Opens the placement test. Nothing is saved until you confirm your result.',
     testSoon: 'The placement test arrives with the next server update.',
@@ -289,7 +292,7 @@ export const courseStartStrings = defineStrings({
     question: 'Por onde você quer começar?',
     testTitle: 'Fazer o teste de nível',
     testBody: (levels: string, max: number) =>
-      `Um desafio rápido para descobrir seu nível entre ${levels}. Até ${max} perguntas, uns 3 minutos.`,
+      `Um desafio rápido para descobrir seu nível entre ${levels}. Até ${max} perguntas, uns ${placementMinutes(max)} minutos.`,
     testBadge: 'SE VOCÊ JÁ SABE ALGUMA COISA',
     testHint: 'Abre o teste de nível. Nada é salvo até você confirmar o resultado.',
     testSoon: 'O teste de nível chega com a próxima atualização do servidor.',
@@ -324,7 +327,7 @@ export const courseStartStrings = defineStrings({
     question: 'Da dove vuoi iniziare?',
     testTitle: 'Fai il test di livello',
     testBody: (levels: string, max: number) =>
-      `Una breve sfida per capire il tuo livello tra ${levels}. Fino a ${max} domande, circa 3 minuti.`,
+      `Una breve sfida per capire il tuo livello tra ${levels}. Fino a ${max} domande, circa ${placementMinutes(max)} minuti.`,
     testBadge: 'SE SAI GIÀ QUALCOSA',
     testHint: 'Apre il test di livello. Non viene salvato nulla finché non confermi il risultato.',
     testSoon: 'Il test di livello arriverà con il prossimo aggiornamento del server.',
@@ -359,7 +362,7 @@ export const courseStartStrings = defineStrings({
     question: 'Par où veux-tu commencer ?',
     testTitle: 'Passer le test de niveau',
     testBody: (levels: string, max: number) =>
-      `Un petit défi pour te situer entre ${levels}. Jusqu’à ${max} questions, environ 3 minutes.`,
+      `Un petit défi pour te situer entre ${levels}. Jusqu’à ${max} questions, environ ${placementMinutes(max)} minutes.`,
     testBadge: 'SI TU T’Y CONNAIS DÉJÀ UN PEU',
     testHint: 'Ouvre le test de niveau. Rien n’est enregistré avant que tu confirmes le résultat.',
     testSoon: 'Le test de niveau arrive avec la prochaine mise à jour du serveur.',
@@ -392,7 +395,7 @@ export const placementStrings = defineStrings({
     ruleHarder: 'Si aciertas, las preguntas se ponen más difíciles.',
     ruleStop: 'Si algo te cuesta, el test termina antes: no hace falta saberlo todo.',
     ruleSafe: 'No suma XP ni cambia tus otros cursos. Si sales, no se guarda nada.',
-    duration: (max: number) => `Hasta ${max} preguntas · unos 3 minutos`,
+    duration: (max: number) => `Hasta ${max} preguntas · unos ${placementMinutes(max)} minutos`,
     startChallenge: 'Empezar el desafío',
     exit: 'Salir del test',
     exitTitle: '¿Salir del test?',
@@ -452,7 +455,7 @@ export const placementStrings = defineStrings({
     ruleHarder: 'Get them right and the questions get harder.',
     ruleStop: 'If something is hard, the test ends early: you don’t need to know it all.',
     ruleSafe: 'It doesn’t add XP or change your other courses. If you leave, nothing is saved.',
-    duration: (max: number) => `Up to ${max} questions · about 3 minutes`,
+    duration: (max: number) => `Up to ${max} questions · about ${placementMinutes(max)} minutes`,
     startChallenge: 'Start the challenge',
     exit: 'Leave the test',
     exitTitle: 'Leave the test?',
@@ -512,7 +515,7 @@ export const placementStrings = defineStrings({
     ruleHarder: 'Se você acertar, as perguntas ficam mais difíceis.',
     ruleStop: 'Se algo ficar difícil, o teste termina antes: você não precisa saber tudo.',
     ruleSafe: 'Não soma XP nem muda seus outros cursos. Se você sair, nada é salvo.',
-    duration: (max: number) => `Até ${max} perguntas · uns 3 minutos`,
+    duration: (max: number) => `Até ${max} perguntas · uns ${placementMinutes(max)} minutos`,
     startChallenge: 'Começar o desafio',
     exit: 'Sair do teste',
     exitTitle: 'Sair do teste?',
@@ -573,7 +576,7 @@ export const placementStrings = defineStrings({
     ruleStop: 'Se qualcosa ti mette in difficoltà, il test finisce prima: non serve sapere tutto.',
     ruleSafe:
       'Non aggiunge XP e non cambia gli altri tuoi corsi. Se esci, non viene salvato nulla.',
-    duration: (max: number) => `Fino a ${max} domande · circa 3 minuti`,
+    duration: (max: number) => `Fino a ${max} domande · circa ${placementMinutes(max)} minuti`,
     startChallenge: 'Inizia la sfida',
     exit: 'Esci dal test',
     exitTitle: 'Uscire dal test?',
@@ -635,7 +638,7 @@ export const placementStrings = defineStrings({
       'Si quelque chose te pose problème, le test s’arrête plus tôt : pas besoin de tout savoir.',
     ruleSafe:
       'Ça ne rapporte pas d’XP et ne change pas tes autres cours. Si tu quittes, rien n’est enregistré.',
-    duration: (max: number) => `Jusqu’à ${max} questions · environ 3 minutes`,
+    duration: (max: number) => `Jusqu’à ${max} questions · environ ${placementMinutes(max)} minutes`,
     startChallenge: 'Commencer le défi',
     exit: 'Quitter le test',
     exitTitle: 'Quitter le test ?',

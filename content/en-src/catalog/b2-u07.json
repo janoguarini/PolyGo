@@ -1,0 +1,1604 @@
+{
+ "unit": "b2-u07",
+ "level": "B2",
+ "titleEn": "The environment and global issues",
+ "strings": [
+  {
+   "id": "ab37969398",
+   "es": "Medioambiente y problemas globales",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "The environment and global issues"
+  },
+  {
+   "id": "0957315dac",
+   "es": "El calentamiento global, sequías e inundaciones, energía renovable, pobreza y especies en peligro, y el contraste con despite, even though y whereas.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "b7b1705603",
+   "es": "Puedes hablar de problemas ambientales y globales, sus causas y consecuencias, y matizar con despite, even though y whereas.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "da0a2be020",
+   "es": "Concesivas y contraste",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "a1e481588a",
+   "es": "Despite / in spite of + sustantivo o -ing (a pesar de): Despite the storms, the rivers are low. Even though + oración (aunque, a pesar de que), más fuerte que although: Even though they saved water, they lost their crops. Even if + oración (aun si, incluso si): una condición que no cambia el resultado. Whereas (mientras que) compara dos hechos opuestos.",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "079df359f8",
+   "es": "A pesar de las tormentas de la semana pasada, los ríos siguen muy bajos.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Despite the storms last week, the rivers are still very low."
+  },
+  {
+   "id": "2c9d33c828",
+   "es": "Aun si todos dejaran de volar, sería una diferencia mínima.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Even if everyone stopped flying, it would be a tiny difference."
+  },
+  {
+   "id": "6d433d04b6",
+   "es": "Una familia puede ahorrar unas toneladas, mientras que una fábrica puede producir millones.",
+   "kinds": [
+    "example"
+   ],
+   "en": "A family can save a few tons, whereas a factory can produce millions."
+  },
+  {
+   "id": "394cb2e135",
+   "es": "calentamiento global",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "global warming"
+  },
+  {
+   "id": "864e1aa3da",
+   "es": "El calentamiento global está cambiando el clima.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "Global warming is changing the weather."
+  },
+  {
+   "id": "8f827736f2",
+   "es": "emisiones",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "emissions"
+  },
+  {
+   "id": "e00f343094",
+   "es": "Los autos producen muchas emisiones.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Cars produce a lot of emissions."
+  },
+  {
+   "id": "462de50609",
+   "es": "huella de carbono",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "carbon footprint"
+  },
+  {
+   "id": "e3c66ada3f",
+   "es": "Comer menos carne reduce tu huella de carbono.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "Eating less meat reduces your carbon footprint."
+  },
+  {
+   "id": "c4c98f3040",
+   "es": "consecuencia",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "consequence"
+  },
+  {
+   "id": "2a6e6f954c",
+   "es": "Las inundaciones son una consecuencia del calentamiento global.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "Floods are a consequence of global warming."
+  },
+  {
+   "id": "f17a793904",
+   "es": "sequía",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "drought"
+  },
+  {
+   "id": "ad7c5bd9d6",
+   "es": "Es la peor sequía en cincuenta años.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "It is the worst drought in fifty years."
+  },
+  {
+   "id": "90ab04103d",
+   "es": "inundación",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "flood"
+  },
+  {
+   "id": "94dae7f751",
+   "es": "La inundación destruyó muchas casas.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The flood destroyed many homes."
+  },
+  {
+   "id": "fc55cd86ae",
+   "es": "escasez / falta",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "shortage"
+  },
+  {
+   "id": "bd6748759c",
+   "es": "escasez",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "shortage"
+  },
+  {
+   "id": "6872a5ebdd",
+   "es": "falta",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "shortage"
+  },
+  {
+   "id": "d600b7a654",
+   "es": "Hay escasez de agua en tres pueblos.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "There is a water shortage in three towns."
+  },
+  {
+   "id": "e52590cf83",
+   "es": "amenaza",
+   "kinds": [
+    "word.translation",
+    "exercise.pair",
+    "exercise.option"
+   ],
+   "en": "threat"
+  },
+  {
+   "id": "da8e6455f6",
+   "es": "El cambio climático es una amenaza para las personas y la naturaleza.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Climate change is a threat to people and nature."
+  },
+  {
+   "id": "1c389cb155",
+   "es": "a pesar de",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "despite"
+  },
+  {
+   "id": "4f76d96f9b",
+   "es": "A pesar de la lluvia, salimos a caminar.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "Despite the rain, we went for a walk."
+  },
+  {
+   "id": "5d3436d463",
+   "es": "pese a",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "in spite of"
+  },
+  {
+   "id": "7336348783",
+   "es": "Pese al precio, tomo el tren.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "In spite of the price, I take the train."
+  },
+  {
+   "id": "095cfe0928",
+   "es": "a pesar de que / aun cuando",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "even though"
+  },
+  {
+   "id": "d320086613",
+   "es": "a pesar de que",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "even though"
+  },
+  {
+   "id": "1beed90bb0",
+   "es": "aun cuando",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "even though"
+  },
+  {
+   "id": "0cb46a759a",
+   "es": "A pesar de que estaba cansado, terminé el informe.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Even though I was tired, I finished the report."
+  },
+  {
+   "id": "8576fa8688",
+   "es": "aun si / incluso si",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "even if"
+  },
+  {
+   "id": "cf0c75b406",
+   "es": "aun si",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "even if"
+  },
+  {
+   "id": "c9dde664cf",
+   "es": "incluso si",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "even if"
+  },
+  {
+   "id": "0c9f4287e6",
+   "es": "Aun si llueve, el partido se va a jugar.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "Even if it rains, the game will go ahead."
+  },
+  {
+   "id": "738f761f6c",
+   "es": "mientras que",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "whereas"
+  },
+  {
+   "id": "945704f5ee",
+   "es": "A mí me encanta la ciudad, mientras que mi hermano prefiere el campo.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I love the city, whereas my brother prefers the country."
+  },
+  {
+   "id": "9d3af67650",
+   "es": "renovable",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "renewable"
+  },
+  {
+   "id": "f53ae9ba39",
+   "es": "Necesitamos más energía renovable.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "We need more renewable energy."
+  },
+  {
+   "id": "cbade6e6b8",
+   "es": "sostenible / sustentable",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "sustainable"
+  },
+  {
+   "id": "f277af6f50",
+   "es": "sostenible",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "sustainable"
+  },
+  {
+   "id": "b1c6ff9faa",
+   "es": "sustentable",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "sustainable"
+  },
+  {
+   "id": "6f13ea328a",
+   "es": "Todos queremos un futuro sostenible.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "We all want a sustainable future."
+  },
+  {
+   "id": "b17453fad2",
+   "es": "abordar / enfrentar (un problema)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "tackle"
+  },
+  {
+   "id": "55e1c96f46",
+   "es": "abordar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "tackle"
+  },
+  {
+   "id": "0d7b5e9cfc",
+   "es": "enfrentar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "tackle"
+  },
+  {
+   "id": "a8ba538b96",
+   "es": "combatir",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "tackle"
+  },
+  {
+   "id": "104810ba87",
+   "es": "Tenemos que enfrentar las verdaderas causas del problema.",
+   "kinds": [
+    "word.example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "We need to tackle the real causes of the problem."
+  },
+  {
+   "id": "72ca52faaf",
+   "es": "pobreza",
+   "kinds": [
+    "word.translation",
+    "exercise.option"
+   ],
+   "en": "poverty"
+  },
+  {
+   "id": "f0fa7e1e2c",
+   "es": "La pobreza y el medioambiente están relacionados.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "Poverty and the environment are connected."
+  },
+  {
+   "id": "d4df080e56",
+   "es": "en peligro de extinción",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "endangered"
+  },
+  {
+   "id": "149f9d5477",
+   "es": "en peligro",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "endangered"
+  },
+  {
+   "id": "d241ee3e39",
+   "es": "El panda es un animal en peligro de extinción.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "The panda is an endangered animal."
+  },
+  {
+   "id": "a7bdf471e2",
+   "es": "Un planeta más caliente",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "ac3cfa6eef",
+   "es": "Hablar del calentamiento global, las emisiones y sus consecuencias.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "1c2d64fec8",
+   "es": "Global warming es el calentamiento global, causado sobre todo por las emissions (emisiones) de CO2. Tu carbon footprint es tu huella de carbono: cuánto contaminas con lo que haces. Una consequence es una consecuencia: Floods are a consequence of global warming.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "5c3c1400eb",
+   "es": "Hablas del calentamiento global y las emisiones.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "428597da65",
+   "es": "Explicas tu huella de carbono y las consecuencias.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "1661702756",
+   "es": "El clima extremo es una consecuencia del calentamiento global.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Extreme weather is a consequence of global warming."
+  },
+  {
+   "id": "1767432b0f",
+   "es": "Un artículo de opinión sobre la huella de carbono.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u7-footprint"
+  },
+  {
+   "id": "4e73890a9d",
+   "es": "¿Cuál es la idea principal del artículo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u7-footprint"
+  },
+  {
+   "id": "380644f2f7",
+   "es": "Que los cambios individuales ayudan, pero no alcanzan sin cambios grandes",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u7-footprint"
+  },
+  {
+   "id": "b1f87ced55",
+   "es": "Que las duchas cortas salvan el planeta",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "051152c096",
+   "es": "Que no hay que hacer nada",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ec9cfdcd92",
+   "es": "Que las empresas no contaminan",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8a92a8eda4",
+   "es": "El artículo dice: «These things matter, but they are not enough» y propone el paso a la energía renovable.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u7-footprint"
+  },
+  {
+   "id": "b8a902af8e",
+   "es": "¿Qué compara el autor con whereas?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u7-footprint"
+  },
+  {
+   "id": "fac9547902",
+   "es": "Lo que ahorra una familia con lo que produce una fábrica",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u7-footprint"
+  },
+  {
+   "id": "2e2444f553",
+   "es": "Dos tipos de energía",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5d3b88256f",
+   "es": "Dos países",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "652fbb4977",
+   "es": "La carne y el pescado",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a92de7026e",
+   "es": "El artículo dice: «Whereas a single family can save a few tons of CO2 a year, one large factory can produce millions».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u7-footprint"
+  },
+  {
+   "id": "08ac6ab091",
+   "es": "comer menos carne",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "How can you reduce your carbon footprint? (comer menos carne)"
+  },
+  {
+   "id": "eedf40aab4",
+   "es": "¿Cómo puedes reducir tu huella de carbono?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How can you reduce your carbon footprint? (comer menos carne)"
+  },
+  {
+   "id": "3003b9696e",
+   "es": "Sequías e inundaciones",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "f3e3acba49",
+   "es": "Entender una noticia sobre sequías, inundaciones y escasez.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "0917febfb1",
+   "es": "A drought es una sequía; a flood, una inundación. A shortage es la escasez o la falta de algo: a water shortage. A threat es una amenaza. Las noticias suelen usar el present perfect: There hasn’t been any rain for eight months.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "02d106a2a4",
+   "es": "Entiendes noticias sobre sequías, inundaciones y escasez.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "c78c582cb8",
+   "es": "Hablas de amenazas y consecuencias del clima extremo.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "ab5177a952",
+   "es": "Un informe de radio sobre la sequía en una región agrícola.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u7-drought"
+  },
+  {
+   "id": "d62ab489c5",
+   "es": "Paula",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u7-drought"
+  },
+  {
+   "id": "e0a07356e5",
+   "es": "¿Por qué los ríos siguen bajos?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u7-drought"
+  },
+  {
+   "id": "e9940fdb8f",
+   "es": "Porque las tormentas de la semana pasada no alcanzaron después de ocho meses sin lluvia",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u7-drought"
+  },
+  {
+   "id": "03a8db0fcf",
+   "es": "Porque los agricultores usan demasiada agua",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ffc7b64283",
+   "es": "Porque hubo inundaciones",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ec3baa7ef3",
+   "es": "Porque cerraron una represa",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d0f6ff966e",
+   "es": "Paula dice: «This is the worst drought in fifty years. Despite the storms last week, the rivers are still very low».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u7-drought"
+  },
+  {
+   "id": "aa2674efcb",
+   "es": "¿Qué tiene de irónico la situación, según Paula?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u7-drought"
+  },
+  {
+   "id": "ba2367a31d",
+   "es": "Que hace dos años la misma región sufrió inundaciones terribles",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u7-drought"
+  },
+  {
+   "id": "7a05a69db4",
+   "es": "Que nunca había llovido tanto",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0bf04ef8b1",
+   "es": "Que los agricultores ganaron más",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4961a5f6b7",
+   "es": "Que los científicos no saben la causa",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9b72b5bc3e",
+   "es": "Paula dice: «Ironically, two years ago this same region suffered terrible floods».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u7-drought"
+  },
+  {
+   "id": "f64ea10661",
+   "es": "Un resumen de un informe de una organización ambiental.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u7-report"
+  },
+  {
+   "id": "5a19583d62",
+   "es": "¿A quiénes afectan más las sequías y las inundaciones, según el informe?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u7-report"
+  },
+  {
+   "id": "b5ccc80a0d",
+   "es": "A los países más pobres, aunque son los que menos contaminan",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u7-report"
+  },
+  {
+   "id": "3dbe4f1471",
+   "es": "A los países más ricos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "10a13ca1ee",
+   "es": "A las grandes empresas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b7a033c41d",
+   "es": "A todos por igual",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "621e6df32e",
+   "es": "El informe dice: «Floods and droughts hit the poorest countries hardest, even though they produce the lowest emissions».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u7-report"
+  },
+  {
+   "id": "c5913649cd",
+   "es": "por la sequía",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Why is there no water in the town? (por la sequía)"
+  },
+  {
+   "id": "0a61999c0c",
+   "es": "¿Por qué no hay agua en el pueblo?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Why is there no water in the town? (por la sequía)"
+  },
+  {
+   "id": "1376ea7eca",
+   "es": "A pesar de todo",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "e51e84f2c4",
+   "es": "Contrastar ideas con despite, in spite of, even though y even if.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "d507bd664b",
+   "es": "Despite e in spite of van con un sustantivo o con -ing: Despite the rain… / In spite of feeling tired… Even though va con una oración completa y es más enfático que although: Even though I was tired, I finished. Even if es «aun si»: el resultado no cambia aunque se cumpla la condición.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "42a1c2cf43",
+   "es": "Usas despite / in spite of con un sustantivo o -ing.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "6190033423",
+   "es": "Usas even though y even if con una oración.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "5309f35713",
+   "es": "Despite + sustantivo (the rain). Even though y although van con una oración.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Despite"
+  },
+  {
+   "id": "ea46c634f0",
+   "es": "Even though + oración completa (I was tired).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Even though"
+  },
+  {
+   "id": "6679d2602d",
+   "es": "In spite of (con of); despite va sin of.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "of"
+  },
+  {
+   "id": "3a05262173",
+   "es": "Dos estudiantes discuten si una persona puede ayudar al planeta.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u7-students"
+  },
+  {
+   "id": "678202b3c0",
+   "es": "Noah",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u7-students"
+  },
+  {
+   "id": "c322932aba",
+   "es": "¿Qué hace Noah a pesar del precio?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u7-students"
+  },
+  {
+   "id": "670b962d83",
+   "es": "Viaja en tren para visitar a su familia en vez de volar",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u7-students"
+  },
+  {
+   "id": "e27310b324",
+   "es": "Vuela menos de vacaciones",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2a5a8ecd77",
+   "es": "Usa la bici para ir a la facultad",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "43e30134c9",
+   "es": "Dejó de comer carne",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c51dc5beb6",
+   "es": "Noah dice: «I’ve stopped flying. In spite of the price, I take the train to visit my family».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u7-students"
+  },
+  {
+   "id": "4b75df6b83",
+   "es": "¿Qué quiere decir Mia con «Even if everyone in this city stopped flying, it would be a tiny difference»?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u7-students"
+  },
+  {
+   "id": "7f0fffbfcb",
+   "es": "Que aunque todos lo hicieran, el efecto sería muy pequeño",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u7-students"
+  },
+  {
+   "id": "1e24b537db",
+   "es": "Que nadie va a dejar de volar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f5649cceca",
+   "es": "Que volar no contamina",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "196bd48d3c",
+   "es": "Que la ciudad es muy chica",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6a9ad95dc3",
+   "es": "Even if: aun si todos dejaran de volar, el resultado (una diferencia mínima) no cambia.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u7-students"
+  },
+  {
+   "id": "9e0441a68c",
+   "es": "¿Qué les pasó a los agricultores aunque redujeron el uso de agua?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u7-drought"
+  },
+  {
+   "id": "f4d74b63fa",
+   "es": "Muchos perdieron la mitad de sus cultivos",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u7-drought"
+  },
+  {
+   "id": "63e9a1ffc1",
+   "es": "Ganaron más dinero",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d0247c4018",
+   "es": "Se mudaron a otra región",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "44586f48e5",
+   "es": "No tuvieron problemas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "166d2009a3",
+   "es": "Paula dice: «Even though they have reduced their water use, many have lost half of their crops».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u7-drought"
+  },
+  {
+   "id": "9d6b26b2ac",
+   "es": "sí, a pesar del frío",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Did you go to the beach? (sí, a pesar del frío)"
+  },
+  {
+   "id": "db73cdd56d",
+   "es": "¿Fueron a la playa?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Did you go to the beach? (sí, a pesar del frío)"
+  },
+  {
+   "id": "1475a4e57e",
+   "es": "Energía y futuro",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "de6ff49932",
+   "es": "Hablar de soluciones: energía renovable, sostenibilidad y cómo enfrentar un problema.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "47fbd3abca",
+   "es": "Renewable energy es la energía renovable (solar, eólica). Sustainable es sostenible: que puede durar sin dañar el planeta. Tackle a problem es enfrentar o abordar un problema. Whereas (mientras que) compara dos cosas opuestas: Coal is cheap, whereas solar energy is clean.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "7b3fe8bafa",
+   "es": "Hablas de energía renovable y de un futuro sostenible.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "c8c12c3416",
+   "es": "Comparas dos ideas opuestas con whereas.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "1f4cca1732",
+   "es": "Whereas une dos hechos opuestos.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "whereas"
+  },
+  {
+   "id": "1a4d00ca20",
+   "es": "Collocation: tackle a problem (enfrentar un problema).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "tackle"
+  },
+  {
+   "id": "c84d04aa90",
+   "es": "¿Cuál es la verdadera solución, según el autor?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u7-footprint"
+  },
+  {
+   "id": "80070f5332",
+   "es": "Pasar rápido a la energía renovable, algo que sólo pueden hacer los gobiernos",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u7-footprint"
+  },
+  {
+   "id": "9e85e7f217",
+   "es": "Que cada familia tome duchas cortas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "13d2bed9fc",
+   "es": "Cerrar todas las fábricas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "471a39b6b1",
+   "es": "Dejar de votar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7fdf546f46",
+   "es": "El artículo dice: «The real solution is a fast move to renewable energy… Only governments can make that happen».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u7-footprint"
+  },
+  {
+   "id": "e6ba2675af",
+   "es": "¿En qué terminan de acuerdo Noah y Mia?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u7-students"
+  },
+  {
+   "id": "2899b522b8",
+   "es": "Los dos quieren un futuro sostenible, pero no coinciden en cómo llegar",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u7-students"
+  },
+  {
+   "id": "95d6d4ee5d",
+   "es": "Los dos van a dejar de volar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b9a48a9f56",
+   "es": "No coinciden en nada",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "010670623c",
+   "es": "Mia acepta que una persona puede cambiar todo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "065932e809",
+   "es": "Mia dice: «So we both want a sustainable future. We just disagree about how to get there».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u7-students"
+  },
+  {
+   "id": "29e34ec649",
+   "es": "¿Qué causas quiere enfrentar Mia?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u7-students"
+  },
+  {
+   "id": "d1b8da3454",
+   "es": "El carbón, el petróleo y la forma de producir alimentos",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u7-students"
+  },
+  {
+   "id": "aa9366abd5",
+   "es": "Los vuelos y los trenes",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2582b2adb4",
+   "es": "Las duchas largas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "df9991facd",
+   "es": "Las grandes ciudades",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e67d1fb871",
+   "es": "Mia dice: «we need to tackle the real causes: coal, oil, and the way we produce food».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u7-students"
+  },
+  {
+   "id": "ade0ff0239",
+   "es": "energía renovable, como la solar",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What kind of energy should we use? (energía renovable, como la solar)"
+  },
+  {
+   "id": "66b2454393",
+   "es": "¿Qué tipo de energía deberíamos usar?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What kind of energy should we use? (energía renovable, como la solar)"
+  },
+  {
+   "id": "a8395918b8",
+   "es": "Problemas globales",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "54779b9d88",
+   "es": "Hablar de la pobreza, las especies en peligro y por qué todo está conectado.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "ba4b81e065",
+   "es": "Poverty es la pobreza. An endangered animal está en peligro de extinción. Para relacionar problemas: X is connected to Y, X is a consequence of Y, X is a threat to Y. Y para no perder la esperanza: Despite these problems, there is good news.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "42453b096a",
+   "es": "Relacionas problemas globales: connected, consequence, threat.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "9d7229057a",
+   "es": "Hablas de especies en peligro y de la pobreza.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "f8d29500a3",
+   "es": "¿Qué significa «poverty»?",
+   "kinds": [
+    "exercise.prompt"
+   ]
+  },
+  {
+   "id": "2c132cb175",
+   "es": "Endangered: en peligro. Dangerous: peligroso (que causa peligro).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "endangered"
+  },
+  {
+   "id": "7798b4561a",
+   "es": "¿Por qué hay tantas especies en peligro, según el informe?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u7-report"
+  },
+  {
+   "id": "ac458634c5",
+   "es": "Sobre todo por la pérdida de bosques y la contaminación de los océanos",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u7-report"
+  },
+  {
+   "id": "46cf2924b7",
+   "es": "Por la caza",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "054af2d7bb",
+   "es": "Por las sequías solamente",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "020a1d23bb",
+   "es": "Por el turismo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4bc19caf54",
+   "es": "El informe dice: «More than one million species are endangered, mainly because of the loss of forests and the pollution of oceans».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u7-report"
+  },
+  {
+   "id": "d24704a2f1",
+   "es": "¿Cómo se relacionan la pobreza y el medioambiente, según el informe?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u7-report"
+  },
+  {
+   "id": "437806bdeb",
+   "es": "La gente pobre a veces no tiene más opción que talar bosques para sobrevivir",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u7-report"
+  },
+  {
+   "id": "2c04fb2b49",
+   "es": "No tienen relación",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e17d863c18",
+   "es": "Los países pobres contaminan más",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "567bae1be9",
+   "es": "La pobreza protege los bosques",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "66ca29e95c",
+   "es": "El informe dice: «when people are poor, they often have no choice but to cut down forests to survive».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u7-report"
+  },
+  {
+   "id": "9c17e1215d",
+   "es": "¿Cuál es la buena noticia del informe?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u7-report"
+  },
+  {
+   "id": "3863cf7507",
+   "es": "Se salvaron varias especies, lo que muestra que actuar funciona",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u7-report"
+  },
+  {
+   "id": "6e1f3f51f4",
+   "es": "Ya no hay especies en peligro",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "000470112e",
+   "es": "Bajaron las emisiones",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "dda9ff9369",
+   "es": "Terminó la sequía",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8557b51b51",
+   "es": "El informe dice: «Despite these problems, there is good news. Several species have been saved in the last ten years».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u7-report"
+  },
+  {
+   "id": "13e21582eb",
+   "es": "la pobreza",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "What is the biggest global problem, in your opinion? (la pobreza)"
+  },
+  {
+   "id": "515b45dc81",
+   "es": "En tu opinión, ¿cuál es el mayor problema global?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "What is the biggest global problem, in your opinion? (la pobreza)"
+  },
+  {
+   "id": "c0a55d8c5c",
+   "es": "Un artículo de opinión sobre el medioambiente",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "3b9fc6e832",
+   "es": "Escribe un artículo breve de opinión sobre un problema ambiental (las sequías, la contaminación, la energía). Presenta el problema, reconoce una dificultad y propón una solución.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "bf807dbe9a",
+   "es": "invertir",
+   "kinds": [
+    "writing.glossary"
+   ],
+   "en": "invest"
+  },
+  {
+   "id": "6fc9c7f38f",
+   "es": "Contrastas con despite, in spite of o even though",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "e69f82f40b",
+   "es": "Comparas dos ideas opuestas con whereas",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "844917ab45",
+   "es": "Propones una solución (should, need to, tackle…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "3890f476b1",
+   "es": "Escribes al menos 5 oraciones",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "0eb4b16459",
+   "es": "Presenté el problema.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "a4c52dabc2",
+   "es": "Usé despite / even though y whereas.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "d901ee24c0",
+   "es": "Propuse una solución.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.b2-u7-footprint": {
+   "setting": "Un artículo de opinión sobre la huella de carbono.",
+   "lines": [
+    "We are constantly told to reduce our carbon footprint: take shorter showers, eat less meat, fly less. These things matter, but they are not enough.",
+    "Just one hundred companies are responsible for most of the world’s emissions. Whereas a single family can save a few tons of CO2 a year, one large factory can produce millions.",
+    "This does not mean that individual action is useless. Even if your own impact is small, your choices send a message to companies and governments.",
+    "The real solution is a fast move to renewable energy, such as solar and wind. Only governments can make that happen, and only if we vote for it."
+   ]
+  },
+  "en.stim.b2-u7-drought": {
+   "setting": "Un informe de radio sobre la sequía en una región agrícola.",
+   "lines": [
+    "Presenter: We go now to Paula, who is in the south, where there hasn't been any real rain for eight months.",
+    "Paula: Thanks. This is the worst drought in fifty years. Despite the storms last week, the rivers are still very low.",
+    "Presenter: How are farmers dealing with it?",
+    "Paula: With great difficulty. Even though they have reduced their water use, many have lost half of their crops. And there is now a water shortage in three towns.",
+    "Presenter: Is this connected to global warming?",
+    "Paula: Scientists say yes. Ironically, two years ago this same region suffered terrible floods. Extreme weather, in both directions, is a direct consequence of a warmer planet."
+   ]
+  },
+  "en.stim.b2-u7-report": {
+   "setting": "Un resumen de un informe de una organización ambiental.",
+   "lines": [
+    "Key findings of our annual report:",
+    "More than one million species are endangered, mainly because of the loss of forests and the pollution of oceans.",
+    "Climate change is a growing threat not only to nature, but to people. Floods and droughts hit the poorest countries hardest, even though they produce the lowest emissions.",
+    "Poverty and the environment are connected: when people are poor, they often have no choice but to cut down forests to survive.",
+    "Despite these problems, there is good news. Several species have been saved in the last ten years, which shows that action works."
+   ]
+  },
+  "en.stim.b2-u7-students": {
+   "setting": "Dos estudiantes discuten si una persona puede ayudar al planeta.",
+   "lines": [
+    "Noah: I've stopped flying. In spite of the price, I take the train to visit my family.",
+    "Mia: That's great, but honestly, it won't change anything. Even if everyone in this city stopped flying, it would be a tiny difference.",
+    "Noah: I don't agree. Big changes always start with small groups of people.",
+    "Mia: Maybe. But we need to tackle the real causes: coal, oil, and the way we produce food.",
+    "Noah: Sure, but those things change when people demand something different.",
+    "Mia: OK, that's a fair point. So we both want a sustainable future. We just disagree about how to get there."
+   ]
+  }
+ }
+}

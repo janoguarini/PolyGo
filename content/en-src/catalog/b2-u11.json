@@ -1,0 +1,1569 @@
+{
+ "unit": "b2-u11",
+ "level": "B2",
+ "titleEn": "Stories, books and idioms",
+ "strings": [
+  {
+   "id": "516f1b7f17",
+   "es": "Historias, libros y expresiones",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Stories, books and idioms"
+  },
+  {
+   "id": "a96567eb5b",
+   "es": "Hablar de novelas y personajes, contar una historia con participios e inversión (Never had I…, Hardly had… when…) y expresiones idiomáticas frecuentes.",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "3b05cebf8f",
+   "es": "Puedes comentar un libro, contar una historia con recursos narrativos y entender expresiones idiomáticas frecuentes.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "1abd7015f0",
+   "es": "Participios e inversión narrativa",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "ca64c740ab",
+   "es": "Las oraciones con participio resumen una acción del mismo sujeto: Walking home, I saw… (mientras caminaba); Having missed the train, she walked (como había perdido el tren). En los relatos, algunas expresiones negativas al principio invierten el sujeto y el auxiliar para dar dramatismo: Never had she felt so alone; Hardly had she stopped when…; No sooner had we arrived than…; Little did she know that…",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "04361b8091",
+   "es": "Como había perdido el último tren, Elena salió a pie.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "Having missed the last train, Elena set off on foot."
+  },
+  {
+   "id": "e514e26a77",
+   "es": "Nunca se había sentido tan sola.",
+   "kinds": [
+    "example",
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Never had she felt so alone."
+  },
+  {
+   "id": "86d26da1d6",
+   "es": "Poco se imaginaba que esa noche le cambiaría la vida.",
+   "kinds": [
+    "example"
+   ],
+   "en": "Little did she know that this night would change her life."
+  },
+  {
+   "id": "cb71c6c37b",
+   "es": "novela",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "novel"
+  },
+  {
+   "id": "48eb771334",
+   "es": "No podía dejar de leer la novela.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "I could not stop reading the novel."
+  },
+  {
+   "id": "58cda2b723",
+   "es": "trama / argumento",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "plot"
+  },
+  {
+   "id": "4675f59c50",
+   "es": "trama",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "plot"
+  },
+  {
+   "id": "459ab440e9",
+   "es": "argumento",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "plot"
+  },
+  {
+   "id": "85487e3857",
+   "es": "La trama es ingeniosa y sorprendente.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "The plot is clever and surprising."
+  },
+  {
+   "id": "ae478792ea",
+   "es": "personaje",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "character"
+  },
+  {
+   "id": "6b3f8e98d1",
+   "es": "Mi personaje favorito es el viejo pescador.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "My favorite character is the old fisherman."
+  },
+  {
+   "id": "71cc091aed",
+   "es": "capítulo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "chapter"
+  },
+  {
+   "id": "9c2fed65cd",
+   "es": "El giro está en el último capítulo.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "The twist is in the last chapter."
+  },
+  {
+   "id": "53b7e88765",
+   "es": "narrador / narradora",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "narrator"
+  },
+  {
+   "id": "0950c3ce2a",
+   "es": "narrador",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "narrator"
+  },
+  {
+   "id": "2382dbfc4e",
+   "es": "narradora",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "narrator"
+  },
+  {
+   "id": "47355e6eb3",
+   "es": "La narradora nos estaba mintiendo.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "The narrator was lying to us."
+  },
+  {
+   "id": "8f08b4874e",
+   "es": "giro (inesperado)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "twist"
+  },
+  {
+   "id": "1b779809a1",
+   "es": "giro",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "twist"
+  },
+  {
+   "id": "1754d9d29f",
+   "es": "vuelta de tuerca",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "twist"
+  },
+  {
+   "id": "04a18d0e40",
+   "es": "No me esperaba ese giro al final.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "I didn't expect that twist at the end."
+  },
+  {
+   "id": "a1998b529f",
+   "es": "resultar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "turn out"
+  },
+  {
+   "id": "a42006fc05",
+   "es": "resultar que",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "turn out"
+  },
+  {
+   "id": "6feaabe359",
+   "es": "Resultó que vivíamos en la misma calle.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "It turned out that we lived on the same street."
+  },
+  {
+   "id": "c1f28d667c",
+   "es": "salir / ponerse en camino",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "set off"
+  },
+  {
+   "id": "3461719d6a",
+   "es": "ponerse en camino",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "set off"
+  },
+  {
+   "id": "23befb7584",
+   "es": "Salimos temprano a la mañana.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "We set off early in the morning."
+  },
+  {
+   "id": "9cb02d0091",
+   "es": "de la nada / de repente",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "out of the blue"
+  },
+  {
+   "id": "2d2ce48e76",
+   "es": "de la nada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "out of the blue"
+  },
+  {
+   "id": "d0cb630f3f",
+   "es": "sin aviso",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "out of the blue"
+  },
+  {
+   "id": "7a6ae40aac",
+   "es": "Mi viejo amigo me llamó de la nada.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.source"
+   ],
+   "en": "My old friend called me out of the blue."
+  },
+  {
+   "id": "22c25b76d8",
+   "es": "romper el hielo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "break the ice"
+  },
+  {
+   "id": "b43d62762b",
+   "es": "Un buen chiste puede romper el hielo.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "A good joke can break the ice."
+  },
+  {
+   "id": "6915846341",
+   "es": "ponerse a llorar / romper en llanto",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "burst into tears"
+  },
+  {
+   "id": "09012eacab",
+   "es": "ponerse a llorar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "burst into tears"
+  },
+  {
+   "id": "3d9928c74b",
+   "es": "romper en llanto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "burst into tears"
+  },
+  {
+   "id": "7df9199831",
+   "es": "Cuando escuchó la noticia, se puso a llorar.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "When she heard the news, she burst into tears."
+  },
+  {
+   "id": "ee399d9789",
+   "es": "nunca había (inversión)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "never had"
+  },
+  {
+   "id": "a1d0ad4d86",
+   "es": "nunca había",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "never had"
+  },
+  {
+   "id": "05c138e089",
+   "es": "casi no",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "hardly"
+  },
+  {
+   "id": "b684530166",
+   "es": "Apenas se había detenido cuando se abrió la puerta.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Hardly had she stopped when the door opened."
+  },
+  {
+   "id": "5e412a0860",
+   "es": "no bien / en cuanto",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "no sooner"
+  },
+  {
+   "id": "3687e74b70",
+   "es": "no bien",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "no sooner"
+  },
+  {
+   "id": "b72e0bc05e",
+   "es": "No bien llegamos, empezó a llover.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "No sooner had we arrived than it started to rain."
+  },
+  {
+   "id": "66fc558219",
+   "es": "poco me imaginaba / no tenía idea",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "little did I know"
+  },
+  {
+   "id": "3e821d3145",
+   "es": "poco me imaginaba",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "little did I know"
+  },
+  {
+   "id": "75d13e9adb",
+   "es": "no tenía idea",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "little did I know"
+  },
+  {
+   "id": "d557403fe7",
+   "es": "Poco me imaginaba que iba a ser mi esposa.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Little did I know that she would become my wife."
+  },
+  {
+   "id": "9279d77334",
+   "es": "pan comido / muy fácil",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "a piece of cake"
+  },
+  {
+   "id": "fb263bd609",
+   "es": "pan comido",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "a piece of cake"
+  },
+  {
+   "id": "23a424924e",
+   "es": "muy fácil",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "a piece of cake"
+  },
+  {
+   "id": "c5cf7a513b",
+   "es": "El examen fue pan comido.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "The exam was a piece of cake."
+  },
+  {
+   "id": "dd9271e512",
+   "es": "muy de vez en cuando",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "once in a blue moon"
+  },
+  {
+   "id": "4e7610ec95",
+   "es": "de vez en cuando",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "once in a blue moon"
+  },
+  {
+   "id": "ed03100a4e",
+   "es": "casi nunca",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "once in a blue moon"
+  },
+  {
+   "id": "b8648b9c6c",
+   "es": "Voy al cine muy de vez en cuando.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "I only go to the cinema once in a blue moon."
+  },
+  {
+   "id": "66814640f2",
+   "es": "la gota que colmó el vaso",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "the last straw"
+  },
+  {
+   "id": "b8baf5e69f",
+   "es": "la gota que rebalsó el vaso",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "the last straw"
+  },
+  {
+   "id": "ce58ac3290",
+   "es": "El ruido a las tres de la mañana fue la gota que colmó el vaso.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "The noise at three in the morning was the last straw."
+  },
+  {
+   "id": "304a6aa71f",
+   "es": "Comentar un libro",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "c8f7855da5",
+   "es": "Hablar de una novela: la trama, los personajes y los capítulos.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "57348b66b3",
+   "es": "A novel es una novela (no «una telenovela»). The plot es la trama; a character, un personaje (no el carácter de una persona); a chapter, un capítulo. Para opinar: The plot is clever, I couldn’t stop reading, My favorite character is…",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "db4615c73e",
+   "es": "Comentas una novela: trama, personajes y capítulos.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "eb55476142",
+   "es": "Das tu opinión sobre un libro.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "851736505a",
+   "es": "Character: personaje de una historia (y también el carácter de alguien).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "character"
+  },
+  {
+   "id": "cd3423425c",
+   "es": "Dos amigas comentan una novela en su club de lectura.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u11-book-club"
+  },
+  {
+   "id": "e89fe62ec8",
+   "es": "Julia",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u11-book-club"
+  },
+  {
+   "id": "4463461f5f",
+   "es": "¿Qué le pareció la novela a Nora?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u11-book-club"
+  },
+  {
+   "id": "78ddcb88f0",
+   "es": "No podía dejar de leerla; la trama le pareció muy ingeniosa",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u11-book-club"
+  },
+  {
+   "id": "5c29e1d6d0",
+   "es": "Le pareció aburrida",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8eaf06849c",
+   "es": "No la terminó",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f415682b31",
+   "es": "Le gustó sólo el final",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "db39039273",
+   "es": "Nora dice: «I couldn’t stop reading. The plot is so clever».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u11-book-club"
+  },
+  {
+   "id": "80361b8a1f",
+   "es": "¿Qué personaje prefiere Nora y por qué?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u11-book-club"
+  },
+  {
+   "id": "e28ec800d1",
+   "es": "El viejo pescador: casi no habla, pero cada palabra importa",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u11-book-club"
+  },
+  {
+   "id": "3eb4ecb6ca",
+   "es": "La narradora, porque es sincera",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1d5bb1f82b",
+   "es": "El protagonista, porque es valiente",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9e3fc69d0d",
+   "es": "Ninguno",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e221df442c",
+   "es": "Nora dice: «My favorite character was the old fisherman… He hardly says anything, but every word matters».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u11-book-club"
+  },
+  {
+   "id": "a8c7a10e33",
+   "es": "no podías dejar de leerlo",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "How was the book? (no podías dejar de leerlo)"
+  },
+  {
+   "id": "911f631b23",
+   "es": "¿Qué tal el libro?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How was the book? (no podías dejar de leerlo)"
+  },
+  {
+   "id": "35b29012ac",
+   "es": "Giros inesperados",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "8009bc65c4",
+   "es": "Hablar del narrador, de los giros de una historia y de cómo resultó todo.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "434eda3ef9",
+   "es": "The narrator es quien cuenta la historia. A twist es un giro inesperado. Turn out es resultar: It turns out that… (resulta que…). Set off es salir, ponerse en camino: She set off on foot.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "1cddfd6d4a",
+   "es": "Hablas del narrador y de los giros de una historia.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "17c01909f3",
+   "es": "Cuentas cómo resultó algo con turn out y cuándo salieron con set off.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "aaf95b5901",
+   "es": "¿Cuál es el giro del último capítulo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u11-book-club"
+  },
+  {
+   "id": "300b04ad09",
+   "es": "Que la narradora les mentía desde el principio",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u11-book-club"
+  },
+  {
+   "id": "c8e0d9b29d",
+   "es": "Que el pescador era el narrador",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3ed8ee857e",
+   "es": "Que todo era un sueño",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "162325be08",
+   "es": "Que la protagonista muere",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2d0e93c286",
+   "es": "Nora dice: «It turns out that the narrator was lying to us from the start».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u11-book-club"
+  },
+  {
+   "id": "c3356eccf6",
+   "es": "¿Qué se da cuenta Julia al mirar hacia atrás?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u11-book-club"
+  },
+  {
+   "id": "ec809a4954",
+   "es": "Que las pistas estaban, pero ella confiaba en la narradora",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u11-book-club"
+  },
+  {
+   "id": "fc46b27574",
+   "es": "Que el libro tenía errores",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "381dc61b5a",
+   "es": "Que ya conocía el final",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "03aeb5e16a",
+   "es": "Que no entendió la trama",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "91c7d7c8bd",
+   "es": "Julia dice: «Looking back, the clues were all there, but I trusted her completely».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u11-book-club"
+  },
+  {
+   "id": "8eef9c5c42",
+   "es": "salieron temprano a la mañana",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "When did you leave for the mountains? (salieron temprano a la mañana)"
+  },
+  {
+   "id": "39e63529cb",
+   "es": "¿Cuándo salieron para la montaña?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "When did you leave for the mountains? (salieron temprano a la mañana)"
+  },
+  {
+   "id": "6628997bbe",
+   "es": "Contar con estilo",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "2f104fcc72",
+   "es": "Contar una historia con oraciones con participio y expresiones vivas.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "3a4b531d01",
+   "es": "Con un participio resumes una acción del mismo sujeto: Walking past the lighthouse, she noticed a light (mientras pasaba…). Having + participio cuenta lo que pasó antes: Having missed the train, she walked. Expresiones que dan vida a un relato: out of the blue (de la nada), break the ice (romper el hielo), burst into tears (ponerse a llorar).",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "25d0b5c0c7",
+   "es": "Unes acciones con un participio: Walking…, Having…",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "b5f40dec87",
+   "es": "Cuentas con expresiones como out of the blue y burst into tears.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "a1049c5d92",
+   "es": "Having + participio: una acción anterior del mismo sujeto.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Having"
+  },
+  {
+   "id": "8474a6095e",
+   "es": "Al pasar junto al viejo faro, vio una luz.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Walking past the old lighthouse, she noticed a light."
+  },
+  {
+   "id": "3ac8626d9a",
+   "es": "Participio en -ing: dos acciones al mismo tiempo, del mismo sujeto.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Walking"
+  },
+  {
+   "id": "b89d9a4e77",
+   "es": "Un abuelo le cuenta a su nieta cómo conoció a su abuela.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u11-grandpa"
+  },
+  {
+   "id": "059f727ac7",
+   "es": "Lily",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u11-grandpa"
+  },
+  {
+   "id": "e4dbedab38",
+   "es": "Grandpa",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u11-grandpa"
+  },
+  {
+   "id": "29512b6c1f",
+   "es": "¿Cómo se acercó la abuela al abuelo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u11-grandpa"
+  },
+  {
+   "id": "9923170696",
+   "es": "De la nada, fue y lo invitó a bailar",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u11-grandpa"
+  },
+  {
+   "id": "d98eb643eb",
+   "es": "Él la invitó a bailar",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "414d80545c",
+   "es": "Los presentó un amigo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f84786a00d",
+   "es": "Se conocieron en la calle",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ffa1d854e6",
+   "es": "El abuelo dice: «Then, out of the blue, she came over and asked me to dance».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u11-grandpa"
+  },
+  {
+   "id": "9e398a512f",
+   "es": "¿Qué rompió el hielo esa noche?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u11-grandpa"
+  },
+  {
+   "id": "602a5c31e5",
+   "es": "Que ella se rió cuando él le pisó el pie",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u11-grandpa"
+  },
+  {
+   "id": "75c83d74c8",
+   "es": "Un chiste del abuelo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "318ac478d2",
+   "es": "Una canción",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8c6b2e37a1",
+   "es": "Que eran vecinos",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3eea50613c",
+   "es": "El abuelo dice: «She laughed, and that broke the ice».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u11-grandpa"
+  },
+  {
+   "id": "bd8a9a159f",
+   "es": "¿Qué pasó con la madre de la abuela en el casamiento?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u11-grandpa"
+  },
+  {
+   "id": "a2648be6ee",
+   "es": "Se puso a llorar, de felicidad según el abuelo",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u11-grandpa"
+  },
+  {
+   "id": "659b144794",
+   "es": "Se fue temprano",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0f65d87fe2",
+   "es": "No quiso ir",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "67c964b0c9",
+   "es": "El abuelo dice: «her mother burst into tears. Happy tears, I hope!».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u11-grandpa"
+  },
+  {
+   "id": "d1d6ac1c37",
+   "es": "se puso a llorar",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "How did she react to the news? (se puso a llorar)"
+  },
+  {
+   "id": "8d107f69a8",
+   "es": "¿Cómo reaccionó a la noticia?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How did she react to the news? (se puso a llorar)"
+  },
+  {
+   "id": "362ee34b49",
+   "es": "Nunca había visto algo así",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "eee32f3c4d",
+   "es": "Dar dramatismo a un relato con la inversión.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "382eac1ca2",
+   "es": "En los relatos, si empiezas con never, hardly, no sooner o little, se invierten el auxiliar y el sujeto: Never had she felt so alone (= She had never felt so alone). Hardly had… when… y No sooner had… than…: una cosa pasó apenas terminó la otra. Little did I know…: poco me imaginaba.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "fee587fded",
+   "es": "Inviertes auxiliar y sujeto después de never, hardly y no sooner.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "bff49f2bf5",
+   "es": "Anticipas un giro con Little did I know…",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "70daa408d6",
+   "es": "Inversión: Never + had + sujeto + participio.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "had"
+  },
+  {
+   "id": "51b7897480",
+   "es": "No sooner… than; hardly… when.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "than"
+  },
+  {
+   "id": "efda3b066e",
+   "es": "El comienzo de un cuento.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u11-story"
+  },
+  {
+   "id": "9c9e1bfa62",
+   "es": "¿Por qué Elena caminaba sola por la ruta de la costa?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u11-story"
+  },
+  {
+   "id": "0b2fbb4f12",
+   "es": "Porque había perdido el último tren",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u11-story"
+  },
+  {
+   "id": "6f8aa45df3",
+   "es": "Porque quería ver el faro",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f62fc8dd42",
+   "es": "Porque le gustaba caminar de noche",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0e933d832c",
+   "es": "Porque alguien la esperaba",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a9e147df9d",
+   "es": "El cuento empieza: «Having missed the last train, Elena set off on foot».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u11-story"
+  },
+  {
+   "id": "5740703ddf",
+   "es": "¿Por qué le llama la atención la luz del faro?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u11-story"
+  },
+  {
+   "id": "907d892f48",
+   "es": "Porque el faro estaba vacío desde hacía veinte años",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u11-story"
+  },
+  {
+   "id": "b5bd0f88f1",
+   "es": "Porque era de colores",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "cfd5fe0047",
+   "es": "Porque se apagaba y prendía",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c8d518468a",
+   "es": "Porque nunca había visto un faro",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e3fbe48865",
+   "es": "El cuento dice: «she noticed a light in the window. It had been empty for twenty years».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u11-story"
+  },
+  {
+   "id": "394d21d05f",
+   "es": "¿Qué efecto tiene la última oración, «Little did she know that this night would change her life»?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u11-story"
+  },
+  {
+   "id": "cf6a009a1c",
+   "es": "Anticipa que va a pasar algo importante que ella todavía no sabe",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u11-story"
+  },
+  {
+   "id": "d11dfba9e4",
+   "es": "Cuenta el final de la historia",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e23f6badbb",
+   "es": "Dice que Elena tenía miedo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "085c497591",
+   "es": "Explica quién la llamó",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "bc94be3693",
+   "es": "Little did she know…: el narrador sabe algo que el personaje ignora y crea suspenso.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u11-story"
+  },
+  {
+   "id": "acfe6e6825",
+   "es": "reescríbelo empezando con Never had…",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "She had never seen such a beautiful place. (reescríbelo empezando con Never had…)"
+  },
+  {
+   "id": "8096124e6e",
+   "es": "Reescribe con inversión: «Nunca había visto un lugar tan lindo».",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "She had never seen such a beautiful place. (reescríbelo empezando con Never had…)"
+  },
+  {
+   "id": "0a428dfecb",
+   "es": "Expresiones de todos los días",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "8b423e31fb",
+   "es": "Entender y usar expresiones idiomáticas frecuentes.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "966043e010",
+   "es": "Las expresiones idiomáticas no se traducen palabra por palabra. A piece of cake es pan comido; once in a blue moon, muy de vez en cuando; the last straw, la gota que colmó el vaso. Úsalas en situaciones informales y con moderación.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "4cfbcae588",
+   "es": "Entiendes expresiones idiomáticas frecuentes.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "bd9864ab91",
+   "es": "Usas algunas en situaciones informales.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "45c978ad95",
+   "es": "Una publicación sobre expresiones idiomáticas en inglés.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u11-idioms"
+  },
+  {
+   "id": "08ec24a0ea",
+   "es": "Según la publicación, ¿cuándo se dice «the last straw»?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u11-idioms"
+  },
+  {
+   "id": "7e1927d5da",
+   "es": "Cuando un último problema hace que pierdas la paciencia",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u11-idioms"
+  },
+  {
+   "id": "6c9dd356d4",
+   "es": "Cuando algo es muy fácil",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "660c96fdb2",
+   "es": "Cuando algo pasa muy pocas veces",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "398a885ee4",
+   "es": "Cuando alguien llama de repente",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "85dce947ed",
+   "es": "La publicación dice: «\"The last straw.\" The final problem that makes you lose patience».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u11-idioms"
+  },
+  {
+   "id": "9cc320e53e",
+   "es": "¿Qué significa «once in a blue moon» en el ejemplo del cine?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u11-idioms"
+  },
+  {
+   "id": "08ebab9492",
+   "es": "Que casi nunca va al cine",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u11-idioms"
+  },
+  {
+   "id": "7e2f37790f",
+   "es": "Que va al cine de noche",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "638c1858d4",
+   "es": "Que va todos los meses",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7f396e154e",
+   "es": "Que va sólo con luna llena",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "224c0006a6",
+   "es": "La publicación dice: «\"Once in a blue moon.\" Very rarely».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u11-idioms"
+  },
+  {
+   "id": "617cc7069a",
+   "es": "Esa fue la gota que colmó el vaso.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "That was the last straw."
+  },
+  {
+   "id": "781df42f56",
+   "es": "fue pan comido",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "How was the driving test? (fue pan comido)"
+  },
+  {
+   "id": "1ee87c497e",
+   "es": "¿Cómo te fue en el examen de manejo?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "How was the driving test? (fue pan comido)"
+  },
+  {
+   "id": "045c593f34",
+   "es": "El comienzo de un relato",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "9c31883761",
+   "es": "Escribe el comienzo de un relato (real o inventado). Empieza con una oración con participio, agrega una inversión para crear tensión y usa al menos una expresión idiomática.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "f17631a6c4",
+   "es": "apareció",
+   "kinds": [
+    "writing.glossary"
+   ],
+   "en": "appeared"
+  },
+  {
+   "id": "ce32748f08",
+   "es": "Usas una oración con participio (Having…, Walking…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "ff9307f33c",
+   "es": "Usas una inversión (Never had…, Hardly had…, Little did…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "8dc58b193d",
+   "es": "Usas una expresión (out of the blue, burst into tears, break the ice…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "51534937e4",
+   "es": "Empecé con una oración con participio.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "d64935b821",
+   "es": "Usé una inversión para crear tensión.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "861f71c970",
+   "es": "Usé una expresión idiomática.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.b2-u11-book-club": {
+   "setting": "Dos amigas comentan una novela en su club de lectura.",
+   "lines": [
+    "Julia: So, did you finish the novel?",
+    "Nora: Last night. I couldn't stop reading. The plot is so clever.",
+    "Julia: I know! And that twist in the last chapter… I didn't see it coming at all.",
+    "Nora: Neither did I. It turns out that the narrator was lying to us from the start.",
+    "Julia: Exactly. Looking back, the clues were all there, but I trusted her completely.",
+    "Nora: My favorite character was the old fisherman, though. He hardly says anything, but every word matters.",
+    "Julia: Same here. Shall we choose another book by her for next month?"
+   ]
+  },
+  "en.stim.b2-u11-grandpa": {
+   "setting": "Un abuelo le cuenta a su nieta cómo conoció a su abuela.",
+   "lines": [
+    "Lily: Grandpa, how did you meet Grandma?",
+    "Grandpa: At a wedding. I didn't know anyone, so I was standing in a corner, feeling a bit silly.",
+    "Lily: And then?",
+    "Grandpa: Then, out of the blue, she came over and asked me to dance. I was so nervous that I stepped on her foot!",
+    "Lily: Oh no!",
+    "Grandpa: She laughed, and that broke the ice. We talked all night. It turned out that we lived on the same street.",
+    "Lily: That's so romantic.",
+    "Grandpa: Fifty years later, I still remember it. When we got married, her mother burst into tears. Happy tears, I hope!"
+   ]
+  },
+  "en.stim.b2-u11-story": {
+   "setting": "El comienzo de un cuento.",
+   "lines": [
+    "Having missed the last train, Elena set off on foot along the dark coast road.",
+    "Never had she felt so alone. The wind was cold, and the only sound was the sea.",
+    "Walking past the old lighthouse, she noticed a light in the window. It had been empty for twenty years.",
+    "Hardly had she stopped when the door opened, and a voice called her name.",
+    "Little did she know that this night would change her life."
+   ]
+  },
+  "en.stim.b2-u11-idioms": {
+   "setting": "Una publicación sobre expresiones idiomáticas en inglés.",
+   "lines": [
+    "Five idioms you will actually hear",
+    "\"It was a piece of cake.\" Something was very easy. You can say it about an exam, a task or a recipe.",
+    "\"Once in a blue moon.\" Very rarely. I only go to the cinema once in a blue moon.",
+    "\"The last straw.\" The final problem that makes you lose patience. The neighbors played loud music again at three in the morning. That was the last straw.",
+    "\"To break the ice.\" To make people feel relaxed when they first meet. A good joke can break the ice.",
+    "\"Out of the blue.\" Suddenly, without warning. My old friend called me out of the blue."
+   ]
+  }
+ }
+}

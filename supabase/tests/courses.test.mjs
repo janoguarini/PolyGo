@@ -79,13 +79,18 @@ const rejects = async (promise, code) => {
 };
 
 /**
- * Publicación de en-from-pt/it/fr (aplicada en producción el 2026-11-27): en migrations/ se crean
- * ocultos (20270108120000_courses_per_language) y estos archivos los abren (status = 'available').
+ * Publicación de en-from-pt/it/fr (A1–B1 aplicada en producción el 2026-11-27): en migrations/ se
+ * crean ocultos (20270108120000_courses_per_language) y estos archivos los abren (status =
+ * 'available'); los tres últimos publican su B2.
  */
 const PUBLISH_EN_FROM = [
   '20270111120000_publish_en_from_pt.sql',
   '20270111120100_publish_en_from_it.sql',
   '20270111120200_publish_en_from_fr.sql',
+  // B2 de esos tres cursos (cargado en migrations/ 20270112120*_en_from_*_b2).
+  '20270112130000_publish_en_from_pt_b2.sql',
+  '20270112130100_publish_en_from_it_b2.sql',
+  '20270112130200_publish_en_from_fr_b2.sql',
 ];
 
 describe('catálogo', () => {

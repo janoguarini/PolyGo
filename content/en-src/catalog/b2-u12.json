@@ -1,0 +1,1778 @@
+{
+ "unit": "b2-u12",
+ "level": "B2",
+ "titleEn": "Decisions and conflicts",
+ "strings": [
+  {
+   "id": "72e7586e42",
+   "es": "Decisiones y conflictos",
+   "kinds": [
+    "unit.title"
+   ],
+   "en": "Decisions and conflicts"
+  },
+  {
+   "id": "222feb8d41",
+   "es": "Pesar una decisión, condicionales mixtos, resolver conflictos y defender una postura, e inversión enfática (Not only…, Under no circumstances…).",
+   "kinds": [
+    "unit.description"
+   ]
+  },
+  {
+   "id": "9fe16eca25",
+   "es": "Puedes pesar una decisión difícil, imaginar cómo sería tu presente con otras elecciones, mediar en un conflicto y expresarte con énfasis formal.",
+   "kinds": [
+    "unit.objective"
+   ]
+  },
+  {
+   "id": "a482e11e0d",
+   "es": "Condicionales mixtos e inversión enfática",
+   "kinds": [
+    "grammar.title"
+   ]
+  },
+  {
+   "id": "4a425de039",
+   "es": "Los condicionales mixtos combinan tiempos: un pasado distinto con un resultado en el presente (If I had taken the job, I would be living in Berlin now) o un presente distinto con un resultado en el pasado (If I were braver, I would have said yes). En un registro formal, algunas expresiones al principio invierten auxiliar y sujeto para dar énfasis: Not only is it free, but…; Under no circumstances will we…; Only then can we…; Should you need help (= If you need help).",
+   "kinds": [
+    "grammar.explanation"
+   ]
+  },
+  {
+   "id": "587d74030b",
+   "es": "Si hubieras aceptado el trabajo, ya estarías hablando alemán.",
+   "kinds": [
+    "example"
+   ],
+   "en": "If you had taken the job, you'd be speaking German by now."
+  },
+  {
+   "id": "6331cb1733",
+   "es": "Si fuera más valiente, habría dicho que sí.",
+   "kinds": [
+    "example",
+    "exercise.translation"
+   ],
+   "en": "If I were braver, I would have said yes."
+  },
+  {
+   "id": "bcd6e0eb5e",
+   "es": "El servicio no sólo es gratuito, sino que también es confidencial.",
+   "kinds": [
+    "example",
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Not only is the service free, but it is also confidential."
+  },
+  {
+   "id": "3853779289",
+   "es": "dilema",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "dilemma"
+  },
+  {
+   "id": "b62b3cf487",
+   "es": "Tengo un verdadero dilema.",
+   "kinds": [
+    "word.example",
+    "exercise.source"
+   ],
+   "en": "I've got a real dilemma."
+  },
+  {
+   "id": "15b6fdccd8",
+   "es": "sopesar / evaluar",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "weigh up"
+  },
+  {
+   "id": "1517a3e6ac",
+   "es": "sopesar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "weigh up"
+  },
+  {
+   "id": "ca46619098",
+   "es": "evaluar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "weigh up"
+  },
+  {
+   "id": "bde4a39914",
+   "es": "Estoy sopesando los pros y los contras.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "I am weighing up the pros and cons."
+  },
+  {
+   "id": "4a82f2d7f0",
+   "es": "pros y contras",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "pros and cons"
+  },
+  {
+   "id": "1fc54b6230",
+   "es": "ventajas y desventajas",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "pros and cons"
+  },
+  {
+   "id": "f43a12cb14",
+   "es": "Anota los pros y los contras.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "Write down the pros and cons."
+  },
+  {
+   "id": "37feeea0d7",
+   "es": "concesión / costo a cambio",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "trade-off"
+  },
+  {
+   "id": "ebb495d57f",
+   "es": "costo a cambio",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "trade-off"
+  },
+  {
+   "id": "0e69737604",
+   "es": "equilibrio",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "trade-off"
+  },
+  {
+   "id": "4af80e7fbf",
+   "es": "Más dinero, menos tiempo libre: ése es el costo.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "More money, less free time: that is the trade-off."
+  },
+  {
+   "id": "69b0ee6ad4",
+   "es": "corazonada / intuición",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "gut feeling"
+  },
+  {
+   "id": "a18dc14faf",
+   "es": "corazonada",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "gut feeling"
+  },
+  {
+   "id": "fd3dbd88ea",
+   "es": "intuición",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "gut feeling"
+  },
+  {
+   "id": "36b3b03723",
+   "es": "presentimiento",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "gut feeling"
+  },
+  {
+   "id": "288479c894",
+   "es": "Mi intuición me dice que tengo que ir.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "My gut feeling says I should go."
+  },
+  {
+   "id": "e1084acda9",
+   "es": "dudar / replantearse algo",
+   "kinds": [
+    "word.translation"
+   ],
+   "en": "have second thoughts"
+  },
+  {
+   "id": "71ceb1f6b8",
+   "es": "dudar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "have second thoughts"
+  },
+  {
+   "id": "7b13220e86",
+   "es": "replantearse",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "have second thoughts"
+  },
+  {
+   "id": "4e197ca9f8",
+   "es": "pensarlo dos veces",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "have second thoughts"
+  },
+  {
+   "id": "86895621f8",
+   "es": "Estoy dudando sobre el viaje.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I'm having second thoughts about the trip."
+  },
+  {
+   "id": "f1ecc12e79",
+   "es": "en juego",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "at stake"
+  },
+  {
+   "id": "75c148dfd0",
+   "es": "Hay un cliente importante en juego.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "A big client is at stake."
+  },
+  {
+   "id": "ecb7f05cf4",
+   "es": "conflicto",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "conflict"
+  },
+  {
+   "id": "03a098278e",
+   "es": "Hubo un conflicto entre los dos equipos.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "There has been a conflict between the two teams."
+  },
+  {
+   "id": "d480281c6e",
+   "es": "resolver / solucionar (un conflicto)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "resolve"
+  },
+  {
+   "id": "1d1d5d8ee2",
+   "es": "resolver un conflicto",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "resolve"
+  },
+  {
+   "id": "62620e622b",
+   "es": "zanjar",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "resolve"
+  },
+  {
+   "id": "d15d0c8b20",
+   "es": "Podemos ayudarte a resolver el conflicto.",
+   "kinds": [
+    "word.example",
+    "example"
+   ],
+   "en": "We can help you resolve the conflict."
+  },
+  {
+   "id": "f1e1fc42b7",
+   "es": "mediador / mediadora",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "mediator"
+  },
+  {
+   "id": "11318b138c",
+   "es": "mediador",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "mediator"
+  },
+  {
+   "id": "a8567a969e",
+   "es": "mediadora",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "mediator"
+  },
+  {
+   "id": "321ac13486",
+   "es": "Un mediador ayuda a las dos partes a escucharse.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "A mediator helps both sides listen to each other."
+  },
+  {
+   "id": "d91a9444a0",
+   "es": "tomar partido",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "take sides"
+  },
+  {
+   "id": "94f61e450e",
+   "es": "No quiero tomar partido en su pelea.",
+   "kinds": [
+    "word.example",
+    "exercise.translation"
+   ],
+   "en": "I don't want to take sides in their argument."
+  },
+  {
+   "id": "727d71ed15",
+   "es": "puntos en común",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "common ground"
+  },
+  {
+   "id": "21aa234749",
+   "es": "terreno común",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "common ground"
+  },
+  {
+   "id": "65e077a158",
+   "es": "Trata de encontrar puntos en común.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "Try to find some common ground."
+  },
+  {
+   "id": "bab5017c65",
+   "es": "defender (a alguien o algo)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "stand up for"
+  },
+  {
+   "id": "7246d2b2b9",
+   "es": "defender",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "stand up for"
+  },
+  {
+   "id": "693e3e9d44",
+   "es": "dar la cara por",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "stand up for"
+  },
+  {
+   "id": "d3de1b8fd0",
+   "es": "Tengo que defender a mi equipo.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "I have to stand up for my team."
+  },
+  {
+   "id": "0d9e15a027",
+   "es": "ceder / echarse atrás",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "back down"
+  },
+  {
+   "id": "fcf1fb75ed",
+   "es": "echarse atrás",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "back down"
+  },
+  {
+   "id": "18b271b62a",
+   "es": "dar el brazo a torcer",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "back down"
+  },
+  {
+   "id": "83f2052070",
+   "es": "Ninguna de las dos partes quería ceder.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "Neither side wanted to back down."
+  },
+  {
+   "id": "871125167b",
+   "es": "no sólo",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "not only"
+  },
+  {
+   "id": "a12938ca8c",
+   "es": "no solamente",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "not only"
+  },
+  {
+   "id": "9555f8b710",
+   "es": "bajo ninguna circunstancia",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "under no circumstances"
+  },
+  {
+   "id": "25c6f9f739",
+   "es": "de ninguna manera",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "under no circumstances"
+  },
+  {
+   "id": "92e6b6e9fa",
+   "es": "Bajo ninguna circunstancia deberías abrir esta puerta.",
+   "kinds": [
+    "word.example",
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "Under no circumstances should you open this door."
+  },
+  {
+   "id": "cfec4c4341",
+   "es": "sólo entonces",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "only then"
+  },
+  {
+   "id": "7c9a7f2e82",
+   "es": "recién entonces",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "only then"
+  },
+  {
+   "id": "c4990c06d6",
+   "es": "Sólo entonces podremos terminar a tiempo.",
+   "kinds": [
+    "word.example"
+   ],
+   "en": "Only then can we finish on time."
+  },
+  {
+   "id": "57ed98222d",
+   "es": "si llegaras a / en caso de que (formal)",
+   "kinds": [
+    "word.translation",
+    "exercise.pair"
+   ],
+   "en": "should you"
+  },
+  {
+   "id": "35f86317f9",
+   "es": "si llegaras a",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "should you"
+  },
+  {
+   "id": "83fcab84ca",
+   "es": "en caso de que",
+   "kinds": [
+    "word.accepted"
+   ],
+   "en": "should you"
+  },
+  {
+   "id": "2872fcde1d",
+   "es": "Si necesita ayuda, llame a recepción.",
+   "kinds": [
+    "word.example",
+    "example",
+    "exercise.translation"
+   ],
+   "en": "Should you need help, please call reception."
+  },
+  {
+   "id": "b281edd88f",
+   "es": "Un dilema",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "3d2cf89253",
+   "es": "Contar un dilema y pesar los pros y los contras.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "70a8adfe0d",
+   "es": "A dilemma es un dilema: dos opciones difíciles. Weigh up es sopesar, evaluar: I’m weighing up the pros and cons (los pros y los contras). A trade-off es lo que pierdes a cambio de lo que ganas: More money, less free time.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "ee5e0b324c",
+   "es": "Cuentas un dilema y sopesas los pros y los contras.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "b747aa93c0",
+   "es": "Explicas lo que se pierde a cambio con trade-off.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "3461312d7e",
+   "es": "Una amiga le cuenta a otra que tiene que decidir si se muda por trabajo.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u12-job-offer"
+  },
+  {
+   "id": "3bc5106297",
+   "es": "Alice",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u12-job-offer"
+  },
+  {
+   "id": "75f9577a16",
+   "es": "Rosa",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u12-job-offer"
+  },
+  {
+   "id": "2884de9572",
+   "es": "¿Cuál es el dilema de Alice?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u12-job-offer"
+  },
+  {
+   "id": "bd85dad94d",
+   "es": "Si aceptar un puesto en Lisboa y mudarse en un mes",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u12-job-offer"
+  },
+  {
+   "id": "184a72deb9",
+   "es": "Si cambiar de carrera",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "0672400785",
+   "es": "Si mudarse a Berlín",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "fd1caa7050",
+   "es": "Si dejar su trabajo para cuidar a sus padres",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "618890ff5c",
+   "es": "Alice dice: «I’ve got a real dilemma. The Lisbon office has offered me a job as team manager… I’d have to move in a month».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u12-job-offer"
+  },
+  {
+   "id": "6fff9ecf57",
+   "es": "Un artículo sobre cómo tomar decisiones importantes.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u12-guide"
+  },
+  {
+   "id": "7d9d7b86d5",
+   "es": "Según el artículo, ¿por qué son difíciles las grandes decisiones?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u12-guide"
+  },
+  {
+   "id": "08fd323447",
+   "es": "Porque siempre se gana algo a cambio de perder otra cosa",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u12-guide"
+  },
+  {
+   "id": "93a1d301f6",
+   "es": "Porque nunca hay información",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "be31d0e361",
+   "es": "Porque la gente es insegura",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f0b4fac31f",
+   "es": "Porque llevan mucho tiempo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a02b6755eb",
+   "es": "El artículo dice: «there is always a trade-off: more money but less free time, adventure but less security».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u12-guide"
+  },
+  {
+   "id": "4e76f9740c",
+   "es": "¿Para qué sirve anotar los pros y los contras, según el artículo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u12-guide"
+  },
+  {
+   "id": "325def7eff",
+   "es": "Para sopesarlos con más calma",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u12-guide"
+  },
+  {
+   "id": "9bd3554524",
+   "es": "Para mostrárselos a otros",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b522449ae7",
+   "es": "Para no tener que decidir",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b163f02c9a",
+   "es": "Para recordarlos años después",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "8b7b51e7ef",
+   "es": "El artículo dice: «Seeing them on paper helps you weigh them up more calmly».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u12-guide"
+  },
+  {
+   "id": "a07cec4080",
+   "es": "no, todavía estás sopesando los pros y los contras",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Have you decided about the new job? (no, todavía estás sopesando los pros y los contras)"
+  },
+  {
+   "id": "4c740d5921",
+   "es": "¿Decidiste lo del trabajo nuevo?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Have you decided about the new job? (no, todavía estás sopesando los pros y los contras)"
+  },
+  {
+   "id": "ed3dc50df7",
+   "es": "Si hubiera… ahora estaría…",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "e35176253b",
+   "es": "Imaginar tu presente con otras decisiones: condicionales mixtos.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "287be8693b",
+   "es": "Condicional mixto 1: un pasado distinto cambia el presente. If + past perfect, would + verbo: If you had taken the job, you would be in Berlin now. Condicional mixto 2: un presente distinto habría cambiado el pasado. If + past simple, would have + participio: If I were braver, I would have said yes. Gut feeling es la intuición; have second thoughts, dudar.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "bfacf35d25",
+   "es": "Imaginas tu presente con un pasado distinto: If I had…, I would be…",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "43bd02e2f8",
+   "es": "Hablas de tu intuición y de tus dudas.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "b241643cea",
+   "es": "Si hubiera aceptado el trabajo, ahora estaría en Berlín.",
+   "kinds": [
+    "exercise.translation",
+    "exercise.source"
+   ],
+   "en": "If I had taken the job, I would be in Berlin now."
+  },
+  {
+   "id": "2b029b5e62",
+   "es": "Mixto: pasado distinto (had taken) → resultado presente (would be… now).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "be"
+  },
+  {
+   "id": "fd21af1331",
+   "es": "Mixto: presente distinto (if I were) → resultado pasado (would have said).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "were"
+  },
+  {
+   "id": "c54d859ac6",
+   "es": "¿Qué le recuerda Rosa a Alice?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u12-job-offer"
+  },
+  {
+   "id": "8c5cab22db",
+   "es": "Que si hubiera aceptado el trabajo en Berlín, ahora hablaría alemán",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u12-job-offer"
+  },
+  {
+   "id": "3d28d9c39c",
+   "es": "Que en Berlín le fue mal",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "594c6b3c14",
+   "es": "Que nunca le ofrecieron nada en Berlín",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "aeed1bf26b",
+   "es": "Que sus padres viven en Lisboa",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5f61c21f1c",
+   "es": "Rosa dice: «If you had taken it, you’d be speaking German by now» (pasado distinto → presente distinto).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u12-job-offer"
+  },
+  {
+   "id": "9c46dfe676",
+   "es": "¿Qué le dice su intuición a Alice y por qué duda?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u12-job-offer"
+  },
+  {
+   "id": "dc3c95a222",
+   "es": "Que vaya, pero duda por sus padres, que están más grandes",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u12-job-offer"
+  },
+  {
+   "id": "5dc4b50043",
+   "es": "Que se quede, porque no le gusta Lisboa",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "aaa3eae1ba",
+   "es": "Que vaya, porque el sueldo es alto",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "54b103413e",
+   "es": "No tiene ninguna intuición",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "3fa0987f23",
+   "es": "Alice dice: «To go. But I’m having second thoughts because of my parents. They’re getting older».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u12-job-offer"
+  },
+  {
+   "id": "a4ff357ffc",
+   "es": "¿Qué dice el artículo sobre la intuición?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u12-guide"
+  },
+  {
+   "id": "4758d9e2ce",
+   "es": "Que la primera reacción suele tener información de la que no somos conscientes",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u12-guide"
+  },
+  {
+   "id": "58025ed34b",
+   "es": "Que no hay que hacerle caso",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b53dc272fe",
+   "es": "Que siempre acierta",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "5ad1ef23fc",
+   "es": "Que es sólo para decisiones chicas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "fd4fad1fb7",
+   "es": "El artículo dice: «our first reaction often contains information we are not aware of».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u12-guide"
+  },
+  {
+   "id": "e59ff5c332",
+   "es": "si no te hubieras acostado tan tarde, no estarías cansado",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Why are you so tired today? (si no te hubieras acostado tan tarde, no estarías cansado)"
+  },
+  {
+   "id": "1edb22904a",
+   "es": "¿Por qué estás tan cansado hoy?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Why are you so tired today? (si no te hubieras acostado tan tarde, no estarías cansado)"
+  },
+  {
+   "id": "833e75bbc7",
+   "es": "Resolver un conflicto",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "6c7879afe9",
+   "es": "Hablar de un conflicto, de no tomar partido y de buscar puntos en común.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "50b4da5b44",
+   "es": "A conflict es un conflicto; resolve, resolverlo. A mediator ayuda a las dos partes sin take sides (tomar partido). La idea es find common ground: encontrar puntos en común.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "837e72b522",
+   "es": "Hablas de un conflicto y de cómo resolverlo.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "7e04d91021",
+   "es": "Propones no tomar partido y buscar puntos en común.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "3d727ec8a5",
+   "es": "Un aviso de un servicio de mediación entre vecinos.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u12-neighbors"
+  },
+  {
+   "id": "6872fa183f",
+   "es": "¿Qué hacen los mediadores, según el aviso?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u12-neighbors"
+  },
+  {
+   "id": "01f2cb76ca",
+   "es": "Ayudan a las dos personas a escucharse y encontrar puntos en común",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u12-neighbors"
+  },
+  {
+   "id": "89a7691ffd",
+   "es": "Deciden quién tiene razón",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c54ffcad23",
+   "es": "Llaman a la policía",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "d12402abb3",
+   "es": "Cobran una multa",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "12a2ca2523",
+   "es": "El aviso dice: «Our mediators do not take sides. Their job is to help both people listen to each other and find common ground».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u12-neighbors"
+  },
+  {
+   "id": "590dad1f95",
+   "es": "Una reunión tensa de un equipo antes de presentar un proyecto.",
+   "kinds": [
+    "context.setting"
+   ],
+   "en": "en.stim.b2-u12-team-conflict"
+  },
+  {
+   "id": "c3ef02333f",
+   "es": "Ines",
+   "kinds": [
+    "context.speaker"
+   ],
+   "en": "en.stim.b2-u12-team-conflict"
+  },
+  {
+   "id": "651b249eb1",
+   "es": "¿Cuál es el conflicto entre diseño y ventas?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u12-team-conflict"
+  },
+  {
+   "id": "a549889ba7",
+   "es": "Ventas quiere cambiar el diseño dos días antes del lanzamiento",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u12-team-conflict"
+  },
+  {
+   "id": "442d95671f",
+   "es": "Diseño no quiere trabajar los fines de semana",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a43f7cf0f9",
+   "es": "Ventas perdió un cliente",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "c64027e4fc",
+   "es": "Nadie quiere hacer el proyecto",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "57daaa8712",
+   "es": "Leo dice: «The sales team wants to change the design again, two days before the launch».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u12-team-conflict"
+  },
+  {
+   "id": "07db0dffe6",
+   "es": "no quieres tomar partido",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Who is right, your sister or your brother? (no quieres tomar partido)"
+  },
+  {
+   "id": "4ae564b417",
+   "es": "¿Quién tiene razón, tu hermana o tu hermano?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Who is right, your sister or your brother? (no quieres tomar partido)"
+  },
+  {
+   "id": "801f3efd6a",
+   "es": "Defender lo tuyo",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "91beb6921b",
+   "es": "Defender a tu equipo o tu postura y decidir cuándo ceder.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "dd0f226d4e",
+   "es": "Stand up for es defender a alguien o algo: I have to stand up for my team. Back down es ceder, echarse atrás. Something is at stake: está en juego. Neither side (ninguna de las dos partes) va con el verbo en afirmativo: Neither side wanted to back down.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "4f18e9d938",
+   "es": "Defiendes a alguien con stand up for.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "4e766e4ad6",
+   "es": "Hablas de lo que está en juego y de ceder con back down.",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "fb84f27d8c",
+   "es": "¿Por qué Ines insiste con los cambios?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u12-team-conflict"
+  },
+  {
+   "id": "905fdc5cb9",
+   "es": "Porque hay un cliente importante en juego",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u12-team-conflict"
+  },
+  {
+   "id": "0766f66a29",
+   "es": "Porque no le gusta el diseño",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "6a933f73d5",
+   "es": "Porque el jefe se lo pidió",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "fff6217e81",
+   "es": "Porque Leo trabaja poco",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "a32301c1ae",
+   "es": "Ines dice: «We’re only asking because a big client is at stake. If we lose them, everyone loses».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u12-team-conflict"
+  },
+  {
+   "id": "59b6a338ac",
+   "es": "¿Qué solución propone la gerente?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u12-team-conflict"
+  },
+  {
+   "id": "521fbc1274",
+   "es": "Ninguna parte cede del todo: una sola lista de cambios esenciales y el equipo de Leo decide qué es posible",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u12-team-conflict"
+  },
+  {
+   "id": "d966749eda",
+   "es": "Cancelar el lanzamiento",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "02df4e51bc",
+   "es": "Hacer todos los cambios de ventas",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "ff55fc581e",
+   "es": "Que Leo decida solo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "171380e982",
+   "es": "La gerente dice: «Neither side has to back down completely. Ines, send one list of changes, the essential ones only. Leo, your team decides what is possible».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u12-team-conflict"
+  },
+  {
+   "id": "1f45d5ca84",
+   "es": "¿Por qué Leo defiende a su equipo?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u12-team-conflict"
+  },
+  {
+   "id": "1b460de097",
+   "es": "Porque trabajaron todos los fines de semana del mes",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u12-team-conflict"
+  },
+  {
+   "id": "f28e0d48be",
+   "es": "Porque el diseño es perfecto",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f03dc42642",
+   "es": "Porque no conocen al cliente",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "f70bc4e3f3",
+   "es": "Porque Ines le cae mal",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "4cb76eb5d5",
+   "es": "Leo dice: «I have to stand up for my team. They’ve worked every weekend this month».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u12-team-conflict"
+  },
+  {
+   "id": "dbd7ca0e96",
+   "es": "no, no vas a echarte atrás",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "Will you change your mind? (no, no vas a echarte atrás)"
+  },
+  {
+   "id": "5189676906",
+   "es": "¿Vas a cambiar de opinión?",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "Will you change your mind? (no, no vas a echarte atrás)"
+  },
+  {
+   "id": "46233ebd20",
+   "es": "Énfasis formal",
+   "kinds": [
+    "lesson.title"
+   ]
+  },
+  {
+   "id": "d4e1c57154",
+   "es": "Usar la inversión enfática en textos formales.",
+   "kinds": [
+    "lesson.objective"
+   ]
+  },
+  {
+   "id": "00462ed486",
+   "es": "En avisos, correos formales y discursos: Not only + auxiliar + sujeto…, but (also)… (Not only is it free, but it is also confidential). Under no circumstances + auxiliar + sujeto (bajo ninguna circunstancia). Only then + auxiliar + sujeto (sólo entonces). Should you + verbo = If you + verbo, más formal: Should you need help, call reception.",
+   "kinds": [
+    "lesson.intro"
+   ]
+  },
+  {
+   "id": "32940ead31",
+   "es": "Enfatizas con Not only…, Under no circumstances… y Only then…",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "1523fe7eb2",
+   "es": "Escribes condiciones formales con Should you…",
+   "kinds": [
+    "lesson.takeaway"
+   ]
+  },
+  {
+   "id": "1bc45dc9cb",
+   "es": "Not only + auxiliar + sujeto: Not only is the service…",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "is"
+  },
+  {
+   "id": "fa61904cbd",
+   "es": "Under no circumstances + auxiliar + sujeto.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "should"
+  },
+  {
+   "id": "f10c00ecbe",
+   "es": "Should you need… = If you need… (formal).",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "Should"
+  },
+  {
+   "id": "ae475685cc",
+   "es": "¿Qué dos ventajas destaca el aviso sobre el servicio?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u12-neighbors"
+  },
+  {
+   "id": "dde331c3d8",
+   "es": "Que es gratuito y confidencial",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u12-neighbors"
+  },
+  {
+   "id": "1f76f58bfb",
+   "es": "Que es rápido y barato",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "9d2a97600f",
+   "es": "Que es obligatorio y gratuito",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "b8624b32f6",
+   "es": "Que funciona los fines de semana",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "1d34f0d937",
+   "es": "El aviso dice: «Not only is the service free, but it is also confidential».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u12-neighbors"
+  },
+  {
+   "id": "a2371078e7",
+   "es": "¿Qué promete el servicio sobre tu información?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u12-neighbors"
+  },
+  {
+   "id": "dc16caa3c9",
+   "es": "Que nunca la va a compartir con la otra persona sin tu permiso",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u12-neighbors"
+  },
+  {
+   "id": "1bb6ac6295",
+   "es": "Que la publica en el centro comunitario",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "e313ae5443",
+   "es": "Que la comparte con la policía",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "cb9149f580",
+   "es": "Que la borra después de una semana",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "7240b35176",
+   "es": "El aviso dice: «Under no circumstances will we share your information with the other person without your permission».",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u12-neighbors"
+  },
+  {
+   "id": "543125aabb",
+   "es": "¿Qué quiere decir la gerente con «Only then can we finish on time»?",
+   "kinds": [
+    "context.question"
+   ],
+   "en": "en.stim.b2-u12-team-conflict"
+  },
+  {
+   "id": "085364a36c",
+   "es": "Que sólo con ese acuerdo van a poder terminar a tiempo",
+   "kinds": [
+    "exercise.option"
+   ],
+   "en": "en.stim.b2-u12-team-conflict"
+  },
+  {
+   "id": "fd9b4ca28a",
+   "es": "Que van a terminar tarde igual",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "2764652dd2",
+   "es": "Que el cliente decide la fecha",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "252cd8141f",
+   "es": "Que hay que empezar de nuevo",
+   "kinds": [
+    "exercise.option"
+   ]
+  },
+  {
+   "id": "47c575e3e5",
+   "es": "Only then + auxiliar + sujeto: sólo si hacen lo que propuso podrán terminar a tiempo.",
+   "kinds": [
+    "exercise.explanation"
+   ],
+   "en": "en.stim.b2-u12-team-conflict"
+  },
+  {
+   "id": "02b95f73c1",
+   "es": "reescríbelo empezando con Should you…",
+   "kinds": [
+    "exercise.cue"
+   ],
+   "en": "If you have any questions, contact us. (reescríbelo empezando con Should you…)"
+  },
+  {
+   "id": "e2c64f74df",
+   "es": "Si tiene alguna pregunta, contáctenos.",
+   "kinds": [
+    "exercise.translation"
+   ],
+   "en": "If you have any questions, contact us. (reescríbelo empezando con Should you…)"
+  },
+  {
+   "id": "2066844701",
+   "es": "Recomendar una opción",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "9b3c2a7b75",
+   "es": "Un amigo tiene que elegir entre dos opciones (dos trabajos, dos ciudades, dos cursos). Escríbele comparando las dos, con sus pros y contras, y recomiéndale una.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "5891257215",
+   "es": "Hablas de pros y contras o del costo a cambio (trade-off)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "4b56b35795",
+   "es": "Comparas con whereas, however u on the other hand",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "a4244aec76",
+   "es": "Recomiendas una opción (I would…, I recommend, you should…)",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "49ee63e6a2",
+   "es": "Comparé las dos opciones con sus pros y contras.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "42a0796b7b",
+   "es": "Usé whereas o however.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "1118befb0c",
+   "es": "Recomendé una opción.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "cb9b300a67",
+   "es": "Un artículo de opinión: ventajas y desventajas",
+   "kinds": [
+    "writing.title"
+   ]
+  },
+  {
+   "id": "1a909250ad",
+   "es": "Escribe un artículo de opinión sobre un tema que te interese (el trabajo remoto, la inteligencia artificial en la educación, la universidad gratuita). Presenta ventajas y desventajas, tu postura y una conclusión.",
+   "kinds": [
+    "writing.instructions"
+   ]
+  },
+  {
+   "id": "88321fcb44",
+   "es": "productivo",
+   "kinds": [
+    "writing.glossary"
+   ],
+   "en": "productive"
+  },
+  {
+   "id": "492e7654a6",
+   "es": "organizar",
+   "kinds": [
+    "writing.glossary"
+   ],
+   "en": "organize"
+  },
+  {
+   "id": "f122838054",
+   "es": "comunicarse",
+   "kinds": [
+    "writing.glossary"
+   ],
+   "en": "communicate"
+  },
+  {
+   "id": "e0ea56e3f7",
+   "es": "mezcla",
+   "kinds": [
+    "writing.glossary"
+   ],
+   "en": "mix"
+  },
+  {
+   "id": "c6ac437de9",
+   "es": "armar, construir",
+   "kinds": [
+    "writing.glossary"
+   ],
+   "en": "build"
+  },
+  {
+   "id": "e2bc162e18",
+   "es": "¿Usaste conectores (moreover, however, nevertheless)?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "873450a5f8",
+   "es": "¿Enfatizaste una idea (What matters is…, The reason why…)?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "ac99dece9f",
+   "es": "¿Cerraste con una conclusión (to sum up, all things considered)?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "963f8d9bd3",
+   "es": "¿Escribiste al menos 6 oraciones?",
+   "kinds": [
+    "writing.requirement"
+   ]
+  },
+  {
+   "id": "fa0c3595fe",
+   "es": "Presenté ventajas y desventajas.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  },
+  {
+   "id": "d2630887e8",
+   "es": "Usé conectores y enfaticé una idea.",
+   "kinds": [
+    "writing.checklist"
+   ]
+  }
+ ],
+ "stimuli": {
+  "en.stim.b2-u12-job-offer": {
+   "setting": "Una amiga le cuenta a otra que tiene que decidir si se muda por trabajo.",
+   "lines": [
+    "Alice: I've got a real dilemma. The Lisbon office has offered me a job as team manager.",
+    "Rosa: That's amazing! So why do you look worried?",
+    "Alice: Because I'd have to move in a month. I've been weighing up the pros and cons all week.",
+    "Rosa: What does your gut feeling say?",
+    "Alice: To go. But I'm having second thoughts because of my parents. They're getting older.",
+    "Rosa: Remember two years ago, when you turned down the job in Berlin? If you had taken it, you'd be speaking German by now.",
+    "Alice: I know. And if I were braver, I would have said yes immediately this time too.",
+    "Rosa: Every choice has a trade-off. But Lisbon is only a short flight away. You could visit them often."
+   ]
+  },
+  "en.stim.b2-u12-guide": {
+   "setting": "Un artículo sobre cómo tomar decisiones importantes.",
+   "lines": [
+    "Big decisions are hard because there is always a trade-off: more money but less free time, adventure but less security.",
+    "First, write down the pros and cons. Seeing them on paper helps you weigh them up more calmly.",
+    "Second, ask yourself what is really at stake. Will this matter in five years? If not, do not spend weeks on it.",
+    "Third, listen to your gut feeling. Research suggests that our first reaction often contains information we are not aware of.",
+    "Finally, accept that no decision is perfect. If we had a crystal ball, we would never make mistakes. We do not, so we learn from them."
+   ]
+  },
+  "en.stim.b2-u12-neighbors": {
+   "setting": "Un aviso de un servicio de mediación entre vecinos.",
+   "lines": [
+    "Community Mediation Service",
+    "Has a conflict with a neighbor gone on for too long? Noise, parking, trees, pets… We can help you resolve it.",
+    "Our mediators do not take sides. Their job is to help both people listen to each other and find common ground.",
+    "Not only is the service free, but it is also confidential. Under no circumstances will we share your information with the other person without your permission.",
+    "Should you need more information, please visit the community center from Monday to Friday."
+   ]
+  },
+  "en.stim.b2-u12-team-conflict": {
+   "setting": "Una reunión tensa de un equipo antes de presentar un proyecto.",
+   "lines": [
+    "Manager: I know there has been a conflict between design and sales. Let’s sort it out today.",
+    "Leo: The sales team wants to change the design again, two days before the launch. We can't keep doing that.",
+    "Ines: We're only asking because a big client is at stake. If we lose them, everyone loses.",
+    "Leo: I understand, but I have to stand up for my team. They've worked every weekend this month.",
+    "Manager: OK. Neither side has to back down completely. Ines, send one list of changes, the essential ones only. Leo, your team decides what is possible.",
+    "Ines: That sounds fair.",
+    "Manager: Good. Only then can we finish on time."
+   ]
+  }
+ }
+}

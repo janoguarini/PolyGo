@@ -1170,7 +1170,8 @@
    "id": "52d7d8604b",
    "es": "Lucas",
    "kinds": [
-    "exercise.option"
+    "exercise.option",
+    "context.speaker"
    ],
    "en": "en.stim.a1-u03-player-cards"
   },
