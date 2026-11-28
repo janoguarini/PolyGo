@@ -5,8 +5,9 @@ import type {
   SeasonRow,
   UserSettingsRow,
 } from '@/lib/database.types';
-import { setActiveCourse } from '@/features/courses/api';
 import type { FriendshipState } from '@/features/friends/api';
+import { getInterfaceLanguage } from '@/i18n';
+import { callPendingRpc } from '@/lib/pendingRpc';
 import { requireSupabase } from '@/lib/supabase';
 
 import { MAX_CHART_POINTS, isMatchResult, type MatchResult, type RatingPoint } from './stats';
@@ -62,13 +63,25 @@ export interface OnboardingInput {
   startLevel: string;
   dailyGoalMinutes: number;
   /**
-   * Sólo si se eligió un curso que no es el por defecto de su idioma (p. ej. en-from-pt):
-   * complete_onboarding elige el por defecto y después se activa éste (set_active_course).
+   * Sólo si se eligió un curso que no es el por defecto de su idioma (p. ej. en-from-pt). Ese curso
+   * se registra con complete_onboarding_v2, que valida el nivel contra lo publicado EN ESE CURSO y lo
+   * guarda en user_courses: así se puede empezar en B1 (profiles.start_level sólo admite A1 / A2 y
+   * complete_onboarding v1 lo escribiría ahí).
    */
   courseCode?: string;
 }
 
 export async function completeOnboarding(input: OnboardingInput): Promise<ProfileRow> {
+  if (input.courseCode) {
+    return callPendingRpc<ProfileRow>('complete_onboarding_v2', {
+      p_username: input.username,
+      p_avatar_id: input.avatarId,
+      p_course_code: input.courseCode,
+      p_start_level: input.startLevel,
+      p_daily_goal_minutes: input.dailyGoalMinutes,
+      p_interface_language: getInterfaceLanguage(),
+    });
+  }
   const { data, error } = await requireSupabase().rpc('complete_onboarding', {
     p_username: input.username,
     p_avatar_id: input.avatarId,
@@ -77,7 +90,6 @@ export async function completeOnboarding(input: OnboardingInput): Promise<Profil
     p_daily_goal_minutes: input.dailyGoalMinutes,
   });
   if (error) throw error;
-  if (input.courseCode) await setActiveCourse(input.courseCode);
   return data;
 }
 

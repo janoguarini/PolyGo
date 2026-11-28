@@ -85,8 +85,9 @@ export function flagEmoji(code: string | null | undefined): string | null {
 
 /**
  * Niveles MCER del registro: el elegido define qué camino ves primero en Aprender. Los que tienen
- * `available: false` todavía no tienen contenido y se muestran como «Próximamente» (al habilitar
- * uno, ampliar también el CHECK de profiles.start_level).
+ * `available: false` todavía no tienen contenido y se muestran como «Próximamente». Uno habilitado
+ * igual sólo se ofrece si el curso elegido lo publica (courseLevels). profiles.start_level sigue en
+ * A1 / A2: el nivel de un curso nuevo vive en user_courses (complete_onboarding_v2).
  */
 export const START_LEVELS = [
   {
@@ -105,7 +106,9 @@ export const START_LEVELS = [
     id: 'B1',
     title: 'Me defiendo',
     description: 'Me las arreglo de viaje y cuento experiencias y planes.',
-    available: false,
+    // Se abre sólo en los cursos que publican B1 (onboarding: levelOpen = available y courseLevels del
+    // curso): hoy en-from-pt / it / fr. Se guarda en user_courses vía complete_onboarding_v2.
+    available: true,
   },
   {
     id: 'B2',

@@ -309,4 +309,36 @@ describe('registro en otros idiomas de interfaz', () => {
       expect.anything(),
     );
   });
+
+  it('pt-BR: el curso llega a B1, así que se puede empezar en B1', async () => {
+    __setInterfaceLanguageForTests('pt-BR');
+    mockMutate.mockImplementation((_input, opts: { onSuccess: () => void }) => opts.onSuccess());
+    await render(<OnboardingScreen />);
+    await press('Vamos lá! 🚀');
+    await fireEvent.press(screen.getByLabelText('Inglês, A1–B1'));
+    await press('Continuar');
+    const b1 = screen.getByLabelText(/^B1, /);
+    expect(b1.props.accessibilityState?.disabled).toBeFalsy();
+    expect(screen.getByLabelText(/^B2, /).props.accessibilityState?.disabled).toBe(true);
+    await fireEvent.press(b1);
+    for (let i = 0; i < 3; i++) await press('Continuar');
+    await fireEvent.changeText(screen.getByLabelText('Nome de jogador'), 'brasuca');
+    await act(async () => {
+      await press('Começar a jogar! 🎮');
+    });
+    expect(mockMutate).toHaveBeenCalledWith(
+      expect.objectContaining({ courseCode: 'en-from-pt', startLevel: 'B1' }),
+      expect.anything(),
+    );
+  });
+
+  it('español: el inglés para hispanohablantes publica A1–A2, así que B1 sigue cerrado', async () => {
+    __setInterfaceLanguageForTests('es');
+    await render(<OnboardingScreen />);
+    await press('¡Empecemos! 🚀');
+    await fireEvent.press(screen.getByLabelText('Inglés, A1–A2'));
+    await press('Continuar');
+    expect(screen.getByLabelText(/^A2, /).props.accessibilityState?.disabled).toBeFalsy();
+    expect(screen.getByLabelText(/^B1, /).props.accessibilityState?.disabled).toBe(true);
+  });
 });
