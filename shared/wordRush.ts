@@ -19,6 +19,13 @@ export interface RushWord {
    * comunes a los jugadores (fase C.7, rush_common_unit_ids).
    */
   unitId?: string | null;
+  /**
+   * Ranked compartido entre cursos del mismo idioma (docs/RANKED_SHARED_POOL.md): la traducción de esta
+   * misma palabra (mismo inglés) en el curso de otro asiento, por código de curso
+   * (`{ 'en-from-pt': 'olá' }`). `translationEs` es la del curso canónico. Ausente en las partidas de
+   * un solo curso: todo queda como siempre.
+   */
+  support?: Readonly<Record<string, string>>;
 }
 
 const silver = TIERS.find((t) => t.id === 'silver')!.minRating;
@@ -38,9 +45,13 @@ export function rushLevels(rating: number): readonly string[] {
   return levels;
 }
 
-/** Nivel de una palabra según su unidad: a1-uNN, a2-uNN o, en otros idiomas, it-a1-uNN (content/index.ts). */
+/**
+ * Nivel de una palabra según su unidad: a1-uNN, a2-uNN o, en otros idiomas, it-a1-uNN (content/index.ts);
+ * en los cursos localizados de un mismo idioma, con el prefijo de su curso: ept-a1-uNN
+ * (docs/EN_MULTI_SOURCE.md).
+ */
 export function wordLevel(unitId: string | null | undefined): string | null {
-  const match = /^(?:[a-z]{2}-)?(a\d)-u\d+$/i.exec(unitId ?? '');
+  const match = /^(?:[a-z]{2,3}-)?(a\d)-u\d+$/i.exec(unitId ?? '');
   return match ? match[1]!.toUpperCase() : null;
 }
 
