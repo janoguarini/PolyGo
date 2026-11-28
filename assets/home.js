@@ -1,4 +1,4 @@
-// Portada de Polygo: aparición al hacer scroll, contadores y profundidad leve en la portada.
+// Portada de PolyGo: aparición al hacer scroll, contadores y profundidad leve en la portada.
 // Sin dependencias. Con «reducir movimiento» todo se muestra quieto.
 (() => {
   document.documentElement.classList.remove('no-js');
@@ -89,8 +89,14 @@ function runDemo(phone) {
   const $ = (k) => phone.querySelector('[data-d="' + k + '"]');
   const stage = phone.closest('.hero-stage');
   const modes = [...phone.querySelectorAll('.wr-mode')];
-  const KIND = { swipe: 'SWIPE BATTLE', connect: 'CONNECT', audio: 'AUDIO BLITZ', end: 'FIN' };
-  const SWIPES = [['la mela', 'manzana'], ['il cane', 'perro'], ['ciao', 'hola'], ['il pane', 'pan'], ['grazie', 'gracias'], ['il mare', 'mar']];
+  // Cada idioma del sitio puede traer sus palabras (data-swipes) y su «FIN» (data-end).
+  const KIND = { swipe: 'SWIPE BATTLE', connect: 'CONNECT', audio: 'AUDIO BLITZ', end: phone.dataset.end || 'FIN' };
+  let SWIPES = [['la mela', 'manzana'], ['il cane', 'perro'], ['ciao', 'hola'], ['il pane', 'pan'], ['grazie', 'gracias'], ['il mare', 'mar']];
+  try {
+    if (phone.dataset.swipes) SWIPES = JSON.parse(phone.dataset.swipes);
+  } catch {
+    /* se quedan las de español */
+  }
   let visible = true;
   new IntersectionObserver(([e]) => (visible = e.isIntersecting)).observe(phone);
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -99,7 +105,8 @@ function runDemo(phone) {
     while (!visible || document.hidden) await sleep(400);
   };
   let me = 0, rival = 0, t = 60, combo = 1, si = 0;
-  const fmt = (n) => n.toLocaleString('es-AR');
+  const numLocale = document.documentElement.lang === 'es' ? 'es-AR' : document.documentElement.lang;
+  const fmt = (n) => n.toLocaleString(numLocale);
   const render = () => {
     $('time').textContent = Math.max(0, Math.ceil(t));
     $('bar').style.width = (Math.max(0, t) / 60) * 100 + '%';

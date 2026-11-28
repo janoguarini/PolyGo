@@ -1,11 +1,146 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://polygoidiomas.com/</loc><lastmod>2026-11-26</lastmod><priority>1.0</priority></url>
-  <url><loc>https://polygoidiomas.com/privacidad</loc><lastmod>2026-11-26</lastmod><priority>0.3</priority></url>
-  <url><loc>https://polygoidiomas.com/borrar-cuenta</loc><lastmod>2026-11-26</lastmod><priority>0.3</priority></url>
-  <url><loc>https://polygoidiomas.com/terminos</loc><lastmod>2026-11-26</lastmod><priority>0.3</priority></url>
-  <url><loc>https://polygoidiomas.com/soporte</loc><lastmod>2026-11-26</lastmod><priority>0.4</priority></url>
-  <url><loc>https://polygoidiomas.com/blog/</loc><lastmod>2026-11-26</lastmod><priority>0.8</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://polygoidiomas.com/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://polygoidiomas.com/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://polygoidiomas.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://polygoidiomas.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://polygoidiomas.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://polygoidiomas.com/"/>
+    <lastmod>2026-11-28</lastmod><priority>1.0</priority></url>
+  <url><loc>https://polygoidiomas.com/privacidad</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://polygoidiomas.com/privacidad"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://polygoidiomas.com/pt/privacidade"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://polygoidiomas.com/it/privacy"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://polygoidiomas.com/fr/confidentialite"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://polygoidiomas.com/privacidad"/>
+    <lastmod>2026-11-28</lastmod><priority>0.3</priority></url>
+  <url><loc>https://polygoidiomas.com/borrar-cuenta</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://polygoidiomas.com/borrar-cuenta"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://polygoidiomas.com/pt/excluir-conta"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://polygoidiomas.com/it/elimina-account"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://polygoidiomas.com/fr/supprimer-compte"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://polygoidiomas.com/borrar-cuenta"/>
+    <lastmod>2026-11-28</lastmod><priority>0.3</priority></url>
+  <url><loc>https://polygoidiomas.com/terminos</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://polygoidiomas.com/terminos"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://polygoidiomas.com/pt/termos"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://polygoidiomas.com/it/termini"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://polygoidiomas.com/fr/conditions"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://polygoidiomas.com/terminos"/>
+    <lastmod>2026-11-28</lastmod><priority>0.3</priority></url>
+  <url><loc>https://polygoidiomas.com/soporte</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://polygoidiomas.com/soporte"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://polygoidiomas.com/pt/suporte"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://polygoidiomas.com/it/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://polygoidiomas.com/fr/assistance"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://polygoidiomas.com/soporte"/>
+    <lastmod>2026-11-28</lastmod><priority>0.4</priority></url>
+  <url><loc>https://polygoidiomas.com/pt/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://polygoidiomas.com/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://polygoidiomas.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://polygoidiomas.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://polygoidiomas.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://polygoidiomas.com/"/>
+    <lastmod>2026-11-28</lastmod><priority>1.0</priority></url>
+  <url><loc>https://polygoidiomas.com/pt/privacidade</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://polygoidiomas.com/privacidad"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://polygoidiomas.com/pt/privacidade"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://polygoidiomas.com/it/privacy"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://polygoidiomas.com/fr/confidentialite"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://polygoidiomas.com/privacidad"/>
+    <lastmod>2026-11-28</lastmod><priority>0.3</priority></url>
+  <url><loc>https://polygoidiomas.com/pt/excluir-conta</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://polygoidiomas.com/borrar-cuenta"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://polygoidiomas.com/pt/excluir-conta"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://polygoidiomas.com/it/elimina-account"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://polygoidiomas.com/fr/supprimer-compte"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://polygoidiomas.com/borrar-cuenta"/>
+    <lastmod>2026-11-28</lastmod><priority>0.3</priority></url>
+  <url><loc>https://polygoidiomas.com/pt/termos</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://polygoidiomas.com/terminos"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://polygoidiomas.com/pt/termos"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://polygoidiomas.com/it/termini"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://polygoidiomas.com/fr/conditions"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://polygoidiomas.com/terminos"/>
+    <lastmod>2026-11-28</lastmod><priority>0.3</priority></url>
+  <url><loc>https://polygoidiomas.com/pt/suporte</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://polygoidiomas.com/soporte"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://polygoidiomas.com/pt/suporte"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://polygoidiomas.com/it/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://polygoidiomas.com/fr/assistance"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://polygoidiomas.com/soporte"/>
+    <lastmod>2026-11-28</lastmod><priority>0.4</priority></url>
+  <url><loc>https://polygoidiomas.com/it/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://polygoidiomas.com/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://polygoidiomas.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://polygoidiomas.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://polygoidiomas.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://polygoidiomas.com/"/>
+    <lastmod>2026-11-28</lastmod><priority>1.0</priority></url>
+  <url><loc>https://polygoidiomas.com/it/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://polygoidiomas.com/privacidad"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://polygoidiomas.com/pt/privacidade"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://polygoidiomas.com/it/privacy"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://polygoidiomas.com/fr/confidentialite"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://polygoidiomas.com/privacidad"/>
+    <lastmod>2026-11-28</lastmod><priority>0.3</priority></url>
+  <url><loc>https://polygoidiomas.com/it/elimina-account</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://polygoidiomas.com/borrar-cuenta"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://polygoidiomas.com/pt/excluir-conta"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://polygoidiomas.com/it/elimina-account"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://polygoidiomas.com/fr/supprimer-compte"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://polygoidiomas.com/borrar-cuenta"/>
+    <lastmod>2026-11-28</lastmod><priority>0.3</priority></url>
+  <url><loc>https://polygoidiomas.com/it/termini</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://polygoidiomas.com/terminos"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://polygoidiomas.com/pt/termos"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://polygoidiomas.com/it/termini"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://polygoidiomas.com/fr/conditions"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://polygoidiomas.com/terminos"/>
+    <lastmod>2026-11-28</lastmod><priority>0.3</priority></url>
+  <url><loc>https://polygoidiomas.com/it/assistenza</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://polygoidiomas.com/soporte"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://polygoidiomas.com/pt/suporte"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://polygoidiomas.com/it/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://polygoidiomas.com/fr/assistance"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://polygoidiomas.com/soporte"/>
+    <lastmod>2026-11-28</lastmod><priority>0.4</priority></url>
+  <url><loc>https://polygoidiomas.com/fr/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://polygoidiomas.com/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://polygoidiomas.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://polygoidiomas.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://polygoidiomas.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://polygoidiomas.com/"/>
+    <lastmod>2026-11-28</lastmod><priority>1.0</priority></url>
+  <url><loc>https://polygoidiomas.com/fr/confidentialite</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://polygoidiomas.com/privacidad"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://polygoidiomas.com/pt/privacidade"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://polygoidiomas.com/it/privacy"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://polygoidiomas.com/fr/confidentialite"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://polygoidiomas.com/privacidad"/>
+    <lastmod>2026-11-28</lastmod><priority>0.3</priority></url>
+  <url><loc>https://polygoidiomas.com/fr/supprimer-compte</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://polygoidiomas.com/borrar-cuenta"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://polygoidiomas.com/pt/excluir-conta"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://polygoidiomas.com/it/elimina-account"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://polygoidiomas.com/fr/supprimer-compte"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://polygoidiomas.com/borrar-cuenta"/>
+    <lastmod>2026-11-28</lastmod><priority>0.3</priority></url>
+  <url><loc>https://polygoidiomas.com/fr/conditions</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://polygoidiomas.com/terminos"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://polygoidiomas.com/pt/termos"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://polygoidiomas.com/it/termini"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://polygoidiomas.com/fr/conditions"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://polygoidiomas.com/terminos"/>
+    <lastmod>2026-11-28</lastmod><priority>0.3</priority></url>
+  <url><loc>https://polygoidiomas.com/fr/assistance</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://polygoidiomas.com/soporte"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://polygoidiomas.com/pt/suporte"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://polygoidiomas.com/it/assistenza"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://polygoidiomas.com/fr/assistance"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://polygoidiomas.com/soporte"/>
+    <lastmod>2026-11-28</lastmod><priority>0.4</priority></url>
+  <url><loc>https://polygoidiomas.com/blog/</loc><lastmod>2026-11-28</lastmod><priority>0.8</priority></url>
   <url><loc>https://polygoidiomas.com/blog/aprender-ingles-desde-cero</loc><lastmod>2026-11-25</lastmod><priority>0.7</priority></url>
   <url><loc>https://polygoidiomas.com/blog/aprender-italiano</loc><lastmod>2026-11-25</lastmod><priority>0.7</priority></url>
   <url><loc>https://polygoidiomas.com/blog/aprender-portugues</loc><lastmod>2026-11-25</lastmod><priority>0.7</priority></url>

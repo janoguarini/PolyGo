@@ -1,4 +1,4 @@
-/* Polygo · sitio estático. Mismos colores que la app (src/design-system/tokens.ts). */
+/* PolyGo · sitio estático. Mismos colores que la app (src/design-system/tokens.ts). */
 :root {
   --ink950: #07060f;
   --ink900: #0b0a1a;
@@ -838,7 +838,8 @@ tr:last-child td {
 
 .footer-links {
   display: flex;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 8px 20px;
 }
 
 .footer-links a {
@@ -848,6 +849,31 @@ tr:last-child td {
 
 .footer-links a:hover {
   text-decoration: underline;
+}
+
+/* Selector de idioma del pie: la página actual resaltada. */
+.lang-switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.lang-switch a {
+  padding: 4px 10px;
+  border: 1px solid var(--ink700);
+  border-radius: 999px;
+  color: var(--ink100);
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+
+.lang-switch a:hover {
+  border-color: var(--violet300);
+}
+
+.lang-switch a[aria-current] {
+  border-color: var(--violet300);
+  color: #fff;
 }
 
 @media (prefers-reduced-motion: reduce) {
