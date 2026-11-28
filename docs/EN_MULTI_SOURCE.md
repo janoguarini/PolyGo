@@ -17,11 +17,8 @@ Estado (2026-11-27): **PUBLICADO en producción** (base: cursos, cargas, publica
 - **Tareas de escritura:** 38 por curso, en `content/en-src/generated/writing-*.ts` y registradas en `content/writing.ts`.
 - **Interfaz en francés:** hecha (docs/I18N_GUIDE.md).
 - **Migración `20270108120000_courses_per_language.sql` APLICADA en producción** (2026-11-27, psql, historial 152→153; SHA-256 821cda4a…). Antes: las 15 funciones que reemplaza coincidían por md5 con el repo. Después: contenido idéntico (210 unidades, 3.751 palabras), 0 filas sin curso, 3 cursos nuevos `hidden`; `interface_language` acepta es/en/pt-BR/it/fr (supera a `20270103` salvo `claim_battle_invite_push`, que sigue sin aplicar).
-- **Falta:**
-  - probar las cargas en PGlite;
-  - `learning-session` por curso. **Cliente (local, sin build):** `shared/courses.ts` con los tres cursos (`status: 'hidden'`, niveles A1–B1; abrir uno = cambiar su `status`), selector agrupado por idioma de origen (`src/features/courses/CoursePicker.tsx`) en el registro y en «Tus cursos» → «Agregar curso», el idioma de Aprender abre «Tus cursos», y las cachés de contenido (camino, banco, palabras, palabra del día, dominio, repaso precargado/guardado) por curso;
-  - Ranked compartido;
-  - la publicación.
+- **Hecho después (2026-11-27):** cargas probadas en PGlite (supabase/tests/enSrcContent.test.mjs); cliente por curso y selector por idioma de origen (en-from-pt/it/fr  en shared/courses.ts); Ranked compartido (docs/RANKED_SHARED_POOL.md); publicación; test de nivel A1–B1; fichas de tienda (docs/STORE_LISTINGS.md); sitio en pt/it/fr publicado.
+- **Falta:** la build de la app (sin ella nadie ve los cursos nuevos), el enlace de App Store en la web, reenviar el sitemap en Search Console y la revisión nativa.
 
 **Pendiente de revisión humana:**
 - las notas de cada `content/en-src/<idioma>/<unidad>.json`;

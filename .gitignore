@@ -54,3 +54,6 @@ website/dist/
 
 # audios de voces neurales generados (npm run tts)
 /build/
+
+# Caché de la CLI de Supabase (proyecto vinculado, versiones): local, nunca se versiona.
+supabase/.temp/
