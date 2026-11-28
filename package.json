@@ -114,6 +114,7 @@
     "content:placement": "tsx scripts/build-placement-bank.ts",
     "test:server": "npm --prefix server run typecheck && npm --prefix server test",
     "website:build": "node website/build.mjs",
+    "website:check": "node website/build.mjs && node website/check.mjs",
     "website:emblems": "tsx scripts/generate-website-emblems.ts",
     "functions:build": "tsx scripts/build-functions.ts",
     "env:check": "tsx scripts/check-env.ts",

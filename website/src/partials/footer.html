@@ -1,16 +1,19 @@
     <footer class="footer">
       <div class="wrap footer-inner">
-        <a class="logo logo-sm" href="{{base}}./">
+        <a class="logo logo-sm" href="{{home}}">
           <img src="{{base}}assets/img/logo.png" alt="" width="26" height="26" />
           <span>PolyGo</span>
         </a>
-        <nav class="footer-links" aria-label="Legales">
-          <a href="/blog/">Blog</a>
-          <a href="{{base}}privacidad">Privacidad</a>
-          <a href="{{base}}terminos">Términos</a>
-          <a href="{{base}}soporte">Soporte</a>
-          <a href="{{base}}borrar-cuenta">Borrar cuenta</a>
+        <nav class="footer-links" aria-label="{{t.footerAria}}">
+          {{t.footerBlog}}
+          <a href="{{privacyUrl}}">{{t.privacy}}</a>
+          <a href="{{termsUrl}}">{{t.terms}}</a>
+          <a href="{{supportUrl}}">{{t.support}}</a>
+          <a href="{{deleteUrl}}">{{t.delete}}</a>
         </nav>
-        <p>© {{year}} PolyGo · Aprende idiomas jugando</p>
+        <nav class="lang-switch" aria-label="{{t.langAria}}">
+          {{langSwitch}}
+        </nav>
+        <p>© {{year}} PolyGo · {{t.tagline}}</p>
       </div>
     </footer>

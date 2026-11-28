@@ -1,6 +1,6 @@
 # Inglés para hablantes de portugués, italiano y francés
 
-Estado (2026-11-27): **en preparación, todo local.** No hay nada aplicado en producción, ni despliegues, builds o commits.
+Estado (2026-11-27): **PUBLICADO en producción** (base: cursos, cargas, publicación, Ranked compartido; servidor d476178; notify-battle-invite v5). En la app se ven con la **próxima build** (shared/courses.ts ya los marca disponibles). Commits en i18n/neutral-spanish (sin push). Lo que sigue en esta sección es el historial del trabajo.
 
 **Avance:**
 

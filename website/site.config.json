@@ -5,6 +5,16 @@
   "contactEmail": "polygocontacto@gmail.com",
   "ownerName": "Jano Guarini",
   "country": "Argentina",
+  "countryLocalized": {
+    "pt-BR": "Argentina",
+    "it": "Argentina",
+    "fr": "Argentine"
+  },
   "privacyUpdated": "27 de noviembre de 2026",
+  "privacyUpdatedLocalized": {
+    "pt-BR": "27 de novembro de 2026",
+    "it": "27 novembre 2026",
+    "fr": "27 novembre 2026"
+  },
   "indexable": true
 }

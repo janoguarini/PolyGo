@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="pt-BR" class="no-js">
+  <head>
+{{> head}}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,600;0,700;0,800;0,900;1,900&display=swap"
+    />
+    <link rel="stylesheet" href="{{base}}assets/home.css" />
+    <script src="{{base}}assets/home.js" defer></script>
+  </head>
+  <body class="home">
+{{> nav}}
+    <main>
+      <!-- ============ CAPA ============ -->
+      <section class="hero" id="inicio">
+        <div class="aurora" aria-hidden="true">
+          <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+        </div>
+        <div class="stars" aria-hidden="true"></div>
+        <div class="wrap hero-grid">
+          <div class="hero-copy reveal">
+            <p class="chip-pill"><span class="dot"></span> Grátis · iPhone e Android · Inglês do A1 ao B1</p>
+            <h1>
+              Aprenda inglês<br class="br-d" /> <span class="grad">jogando.</span><br />Compita
+              <span class="grad-gold">pra valer.</span>
+            </h1>
+            <p class="lead">
+              Um curso de inglês explicado em português, revisão que não deixa esquecer e
+              <strong>duelos 1 contra 1 ao vivo</strong> de 60 segundos. Ganhe ELO, suba do Bronze ao
+              Grão-Mestre e colecione raposas.
+            </p>
+            <div class="hero-stores">{{stores}}{{instagram}}</div>
+            <ul class="hero-proof">
+              <li><b>60 s</b> por duelo</li>
+              <li><b>450</b> lições</li>
+              <li><b>8</b> ranks</li>
+            </ul>
+          </div>
+
+          <div class="hero-stage reveal" data-parallax>
+            <img class="hero-fox" src="{{base}}assets/img/fox/point-up.webp" alt="" width="240" height="278" />
+            <div class="phone phone-hero" role="img" aria-label="Demonstração de um duelo de Word Rush no PolyGo: Swipe Battle, Connect e Audio Blitz em 60 segundos" data-demo data-end="FIM" data-swipes='[["the apple","a maçã"],["the dog","o cachorro"],["hello","olá"],["the bread","o pão"],["thank you","obrigado"],["the sea","o mar"]]'>
+              <div class="notch"></div>
+              <div class="scr wr">
+                <div class="wr-top">
+                  <span class="ovl">RANKED · WORD RUSH</span>
+                  <span class="x">✕</span>
+                </div>
+                <div class="wr-time"><b data-d="time">60</b><span class="bar"><i data-d="bar"></i></span><span class="combo" data-d="combo">⚡x1</span></div>
+                <div class="wr-players">
+                  <img src="{{base}}assets/img/avatars/fox-violet.webp" alt="" width="34" height="34" />
+                  <div><small>Você</small><b data-d="me">0</b></div>
+                  <span class="tug"><i data-d="tug"></i></span>
+                  <div class="r"><small>sofi_22</small><b class="o" data-d="rival">0</b></div>
+                  <img src="{{base}}assets/img/avatars/panda-yellow.webp" alt="" width="34" height="34" />
+                </div>
+                <div class="wr-flashslot"><p class="wr-flash" data-d="flash">+100</p></div>
+                <p class="wr-kind" data-d="kind">SWIPE BATTLE</p>
+                <div class="wr-stage">
+                  <div class="wr-mode on" data-mode="swipe">
+                    <p class="wr-q">É A TRADUÇÃO CERTA?</p>
+                    <div class="wr-card" data-d="card"><b data-d="w">the apple</b><hr /><span data-d="t">a maçã</span></div>
+                    <div class="wr-btns"><span class="no">✕</span><span class="yes" data-d="yes">✓</span></div>
+                  </div>
+                  <div class="wr-mode" data-mode="connect">
+                    <p class="wr-q">LIGUE CADA PAR</p>
+                    <div class="wr-grid">
+                      <span data-p="0">hello</span><span data-p="1">gato</span>
+                      <span data-p="1">cat</span><span data-p="2">água</span>
+                      <span data-p="2">water</span><span data-p="0">olá</span>
+                    </div>
+                  </div>
+                  <div class="wr-mode" data-mode="audio">
+                    <p class="wr-q">O QUE VOCÊ OUVIU?</p>
+                    <div class="wr-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                    <div class="wr-opts"><span>good morning</span><span data-ok>good evening</span><span>goodbye</span><span>thank you</span></div>
+                  </div>
+                  <div class="wr-mode" data-mode="end">
+                    <p class="wr-win">Vitória!</p>
+                    <p class="wr-winsub">+18 ELO</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="float f-streak"><span>🔥</span><div><b>12 dias</b><small>de sequência</small></div></div>
+            <div class="float f-rank">
+              <img src="{{base}}assets/emblems/gold.svg" alt="" width="40" height="40" />
+              <div><b>Ouro II</b><small class="up">+18 ELO</small></div>
+            </div>
+            <div class="float f-frenzy">FRENESI! <span>PONTOS x2</span></div>
+          </div>
+        </div>
+        <a class="scroll-hint" href="#idiomas" aria-label="Continuar">
+          <span></span>
+        </a>
+      </section>
+
+      <!-- ============ O CURSO ============ -->
+      <section class="langs" id="idiomas" aria-label="O curso de inglês do PolyGo">
+        <div class="marquee">
+          <div class="track">
+            <span><img src="{{base}}assets/flags/gb.svg" alt="" width="36" height="24" />Inglês do A1 ao B1</span><span>43 unidades</span><span>450 lições</span><span>Explicado em português</span><span>Revisão espaçada</span><span>Duelos ao vivo</span>
+            <span><img src="{{base}}assets/flags/gb.svg" alt="" width="36" height="24" />Inglês do A1 ao B1</span><span>43 unidades</span><span>450 lições</span><span>Explicado em português</span><span>Revisão espaçada</span><span>Duelos ao vivo</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ NÚMEROS ============ -->
+      <section class="wrap numbers" aria-label="PolyGo em números">
+        <div class="num reveal"><b data-count="43">43</b><span>unidades do A1 ao B1</span></div>
+        <div class="num reveal"><b data-count="450">450</b><span>lições curtas</span></div>
+        <div class="num reveal"><b data-count="60" data-suffix=" s">60 s</b><span>dura cada duelo</span></div>
+        <div class="num reveal"><b data-count="8">8</b><span>ranks até o topo</span></div>
+      </section>
+
+      <!-- ============ COMO FUNCIONA ============ -->
+      <section class="block" id="como-funciona">
+        <div class="wrap">
+          <header class="head reveal">
+            <p class="kicker">COMO FUNCIONA</p>
+            <h2>Três hábitos. <span class="grad">Zero tédio.</span></h2>
+            <p class="lead">Você aprende inglês novo, fixa tudo antes de esquecer e coloca à prova em duelos ao vivo.</p>
+          </header>
+          <div class="steps3">
+            <article class="step reveal">
+              <img src="{{base}}assets/img/fox/wave.webp" alt="" width="150" height="174" loading="lazy" />
+              <span class="step-n">1</span>
+              <h3>Aprenda</h3>
+              <p>Uma trilha de lições curtas explicadas em português: ouvir, ler, escrever, montar frases e falar em voz alta. A gente mostra onde o português ajuda e onde ele engana: <i lang="en">actually</i> não é “atualmente”. Sem erros, a lição fica <b class="gold">dourada</b> com 3 estrelas.</p>
+            </article>
+            <article class="step reveal">
+              <img src="{{base}}assets/img/fox/thinking.webp" alt="" width="150" height="174" loading="lazy" />
+              <span class="step-n">2</span>
+              <h3>Revise</h3>
+              <p>Com a revisão espaçada, cada palavra volta na hora certa, antes de você esquecer. E você pode praticar seus erros e pontos fracos quando quiser.</p>
+            </article>
+            <article class="step reveal">
+              <img src="{{base}}assets/img/fox/challenge.webp" alt="" width="150" height="174" loading="lazy" />
+              <span class="step-n">3</span>
+              <h3>Compita</h3>
+              <p>Word Rush ao vivo: 60 segundos contra gente do mundo todo que também aprende inglês, com as mesmas perguntas para os dois. Ganhe <b class="violet">ELO</b>, suba de rank e apareça no ranking.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ WORD RUSH ============ -->
+      <section class="block band" id="ranked">
+        <div class="aurora soft" aria-hidden="true"><span class="blob b2"></span><span class="blob b4"></span></div>
+        <div class="wrap">
+          <header class="head reveal">
+            <p class="kicker gold">RANKED · WORD RUSH</p>
+            <h2>60 segundos. <span class="grad-gold">4 jogos.</span> Um vencedor.</h2>
+            <p class="lead">Grátis e ilimitado. Cada acerto conta, a sequência multiplica e nos últimos 15 segundos chega o <b class="gold">Frenesi</b>: tudo vale o dobro.</p>
+          </header>
+          <div class="games">
+            <article class="game reveal">
+              <div class="g-art g-swipe"><span class="gw">the cat</span><span class="gt">o gato</span><i class="gy">✓</i></div>
+              <h3>Swipe Battle</h3>
+              <p>A tradução está certa? Deslize para a direita ou para a esquerda, bem rápido.</p>
+            </article>
+            <article class="game reveal">
+              <div class="g-art g-connect">
+                <span class="on">hello</span><span class="on">olá</span><span>cat</span><span>casa</span><span>house</span><span>gato</span>
+              </div>
+              <h3>Connect</h3>
+              <p>Ligue cada palavra ao seu significado antes do seu rival.</p>
+            </article>
+            <article class="game reveal">
+              <div class="g-art g-audio"><span class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="pill-o">good morning</span></div>
+              <h3>Audio Blitz</h3>
+              <p>Ouça e escolha o que você ouviu. Treine o ouvido de verdade.</p>
+            </article>
+            <article class="game reveal">
+              <div class="g-art g-sentence"><span>I</span><span>like</span><span class="ghost">…</span><span>coffee</span></div>
+              <h3>Sentence Rush</h3>
+              <p>Monte a frase na ordem certa com os blocos, contra o relógio.</p>
+            </article>
+          </div>
+
+          <div class="combo-row reveal">
+            <div class="combo-card"><b>x2</b><span>Combo: acerte em sequência e multiplique os pontos.</span></div>
+            <div class="combo-card frenzy"><b>FRENESI!</b><span>Nos últimos 15 segundos, pontos em dobro.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ RANKS ============ -->
+      <section class="block" id="rangos">
+        <div class="wrap split">
+          <div class="reveal">
+            <p class="kicker">RANKS</p>
+            <h2>Do Bronze ao <span class="grad-gold">Grão-Mestre</span></h2>
+            <p class="lead">Vencer alguém de nível mais alto vale mais. As primeiras partidas te posicionam rápido e depois cada ponto de ELO custa. Até onde você chega?</p>
+            <ul class="ticks">
+              <li>Rivais do seu nível, do mundo todo, que também aprendem inglês.</li>
+              <li>As mesmas perguntas para os dois: cada um vê a tradução no seu idioma.</li>
+              <li>Desafie seus amigos para um duelo, sem mexer no ELO.</li>
+            </ul>
+          </div>
+          <div class="ladder2 reveal" aria-label="Ranks do PolyGo">
+            <div class="rk"><img src="{{base}}assets/emblems/bronze.svg" alt="" width="70" height="70" loading="lazy" /><span>Bronze</span></div>
+            <div class="rk"><img src="{{base}}assets/emblems/silver.svg" alt="" width="70" height="70" loading="lazy" /><span>Prata</span></div>
+            <div class="rk"><img src="{{base}}assets/emblems/gold.svg" alt="" width="70" height="70" loading="lazy" /><span>Ouro</span></div>
+            <div class="rk"><img src="{{base}}assets/emblems/platinum.svg" alt="" width="70" height="70" loading="lazy" /><span>Platina</span></div>
+            <div class="rk"><img src="{{base}}assets/emblems/emerald.svg" alt="" width="70" height="70" loading="lazy" /><span>Esmeralda</span></div>
+            <div class="rk"><img src="{{base}}assets/emblems/diamond.svg" alt="" width="70" height="70" loading="lazy" /><span>Diamante</span></div>
+            <div class="rk top"><img src="{{base}}assets/emblems/master.svg" alt="" width="70" height="70" loading="lazy" /><span>Mestre</span></div>
+            <div class="rk top"><img src="{{base}}assets/emblems/grandmaster.svg" alt="" width="70" height="70" loading="lazy" /><span>Grão-Mestre</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ COLEÇÃO ============ -->
+      <section class="block band" id="zorros">
+        <div class="wrap">
+          <header class="head reveal">
+            <p class="kicker">COLEÇÃO</p>
+            <h2>Colecione <span class="grad">raposas</span> lendárias</h2>
+            <p class="lead">Ganhe Polys jogando e desbloqueie skins, molduras e fundos para o seu perfil. Todo rival vê o seu estilo.</p>
+          </header>
+          <div class="skins">
+            <figure class="skin r-free reveal"><img src="{{base}}assets/img/skins/clasico.webp" alt="Raposa com a skin Clássico" width="180" height="180" loading="lazy" /><figcaption><b>Clássico</b><span>Grátis</span></figcaption></figure>
+            <figure class="skin r-common reveal"><img src="{{base}}assets/img/skins/ninja.webp" alt="Raposa com a skin Ninja" width="180" height="180" loading="lazy" /><figcaption><b>Ninja</b><span>Comum</span></figcaption></figure>
+            <figure class="skin r-common reveal"><img src="{{base}}assets/img/skins/explorador.webp" alt="Raposa com a skin Explorador" width="180" height="180" loading="lazy" /><figcaption><b>Explorador</b><span>Comum</span></figcaption></figure>
+            <figure class="skin r-rare reveal"><img src="{{base}}assets/img/skins/academico.webp" alt="Raposa com a skin Acadêmico" width="180" height="180" loading="lazy" /><figcaption><b>Acadêmico</b><span>Raro</span></figcaption></figure>
+            <figure class="skin r-epic reveal"><img src="{{base}}assets/img/skins/cyber.webp" alt="Raposa com a skin Cyber" width="180" height="180" loading="lazy" /><figcaption><b>Cyber</b><span>Épico</span></figcaption></figure>
+            <figure class="skin r-epic reveal"><img src="{{base}}assets/img/skins/azteca.webp" alt="Raposa com a skin Asteca" width="180" height="180" loading="lazy" /><figcaption><b>Asteca</b><span>Épico</span></figcaption></figure>
+            <figure class="skin r-legend reveal"><img src="{{base}}assets/img/skins/dragon.webp" alt="Raposa com a skin Dragão" width="180" height="180" loading="lazy" /><figcaption><b>Dragão</b><span>Lendário</span></figcaption></figure>
+            <figure class="skin r-legend reveal"><img src="{{base}}assets/img/skins/rey.webp" alt="Raposa com a skin Rei" width="180" height="180" loading="lazy" /><figcaption><b>Rei</b><span>Lendário</span></figcaption></figure>
+            <figure class="skin r-mythic reveal"><img src="{{base}}assets/img/skins/titan.webp" alt="Raposa com a skin Titã" width="180" height="180" loading="lazy" /><figcaption><b>Titã</b><span>Mítico</span></figcaption></figure>
+            <figure class="skin r-plus reveal"><img src="{{base}}assets/img/skins/diamante.webp" alt="Raposa com a skin Diamante" width="180" height="180" loading="lazy" /><figcaption><b>Diamante</b><span>Exclusivo Plus</span></figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ FUNÇÕES ============ -->
+      <section class="block" id="funciones">
+        <div class="wrap">
+          <header class="head reveal">
+            <p class="kicker">MOTIVAÇÃO TODO DIA</p>
+            <h2>Um pouco por dia, <span class="grad-gold">sem perceber</span></h2>
+          </header>
+          <div class="feats">
+            <article class="feat reveal"><span class="fi"><img src="{{base}}assets/img/emoji/fire.webp" alt="" width="40" height="40" loading="lazy" /></span><h3>Sequência</h3><p>Some dias seguidos. Se um dia você não puder, um protetor mantém a sequência viva.</p></article>
+            <article class="feat reveal"><span class="fi"><img src="{{base}}assets/img/emoji/gift.webp" alt="" width="40" height="40" loading="lazy" /></span><h3>Baús de boas-vindas</h3><p>Nos seus primeiros 7 dias, um baú por dia jogado, com prêmios que crescem até o lendário.</p></article>
+            <article class="feat reveal"><span class="fi"><img src="{{base}}assets/img/emoji/target.webp" alt="" width="40" height="40" loading="lazy" /></span><h3>Missões diárias</h3><p>Três metas novas por dia, com Polys de prêmio.</p></article>
+            <article class="feat reveal"><span class="fi"><img src="{{base}}assets/img/emoji/swords.webp" alt="" width="40" height="40" loading="lazy" /></span><h3>Desafie amigos</h3><p>Mande um link e joguem o mesmo duelo ao vivo.</p></article>
+            <article class="feat reveal"><span class="fi"><img src="{{base}}assets/img/emoji/trophy.webp" alt="" width="40" height="40" loading="lazy" /></span><h3>Conquistas e níveis</h3><p>Ganhe XP em cada lição e partida, suba de nível e desbloqueie conquistas.</p></article>
+            <article class="feat reveal"><span class="fi" aria-hidden="true">📱</span><h3>Widgets</h3><p>Na tela inicial do celular, uma palavra ou uma pergunta rápida.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ POLYGO PLUS ============ -->
+      <section class="block band" id="plus">
+        <div class="wrap">
+          <header class="head reveal">
+            <p class="kicker gold">POLYGO PLUS (OPCIONAL)</p>
+            <h2>Mais prática. <span class="grad-gold">Zero vantagem no Ranked.</span></h2>
+            <p class="lead">Lições ilimitadas, sem anúncios, revisão inteligente, revisão por tema e o Coach com sessões personalizadas. No Ranked, o PolyGo Plus não dá nenhuma vantagem: lá, só conta o que você sabe.</p>
+          </header>
+        </div>
+      </section>
+
+      <!-- ============ BAIXAR ============ -->
+      <section class="block" id="descargar">
+        <div class="wrap">
+          <div class="final reveal">
+            <div class="aurora soft" aria-hidden="true"><span class="blob b1"></span><span class="blob b3"></span></div>
+            <img class="final-fox l" src="{{base}}assets/img/fox/wave.webp" alt="" width="200" height="232" loading="lazy" />
+            <img class="final-fox r" src="{{base}}assets/img/fox/celebrate.webp" alt="" width="200" height="213" loading="lazy" />
+            <img class="final-logo" src="{{base}}assets/img/icon-192.png" alt="" width="96" height="96" loading="lazy" />
+            <h2>Seu primeiro duelo está a <span class="grad-gold">dois minutos</span></h2>
+            <p class="lead">Baixe o PolyGo grátis, faça sua primeira lição e entre no Ranked.</p>
+            {{stores}}
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PERGUNTAS ============ -->
+      <section class="block" id="preguntas">
+        <div class="wrap narrow">
+          <header class="head reveal">
+            <p class="kicker">PERGUNTAS FREQUENTES</p>
+            <h2>O que todo mundo pergunta</h2>
+          </header>
+          <div class="faq">
+            <details class="faq-item">
+              <summary>O PolyGo é grátis?</summary>
+              <p>Sim. Você baixa o app, cria sua conta, aprende e joga o Ranked de graça, sem limite de duelos. O PolyGo Plus é opcional e soma extras como lições ilimitadas e revisões especiais.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Preciso saber inglês para começar?</summary>
+              <p>Não. O curso começa do zero (A1) e vai até o B1, em 43 unidades e 450 lições curtas. Se você já sabe um pouco, o teste de nível te coloca no ponto certo.</p>
+            </details>
+            <details class="faq-item">
+              <summary>As explicações são em português?</summary>
+              <p>Sim. A gramática é explicada comparando com o português, com atenção aos falsos cognatos: actually não é “atualmente” e pretend não é “pretender”.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Contra quem eu jogo no Ranked?</summary>
+              <p>Contra pessoas do mundo todo que também aprendem inglês, com um ELO parecido com o seu. As perguntas são as mesmas para os dois, e cada um vê a tradução no seu idioma.</p>
+            </details>
+            <details class="faq-item">
+              <summary>O que o PolyGo Plus inclui?</summary>
+              <p>Lições ilimitadas, sem anúncios, revisão inteligente, revisão por tema e o Coach com sessões personalizadas. No Ranked ele não dá nenhuma vantagem.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Quanto tempo por dia eu preciso estudar?</summary>
+              <p>Com 5 ou 10 minutos por dia já dá para manter a sequência e avançar na sua trilha de lições.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Posso excluir minha conta?</summary>
+              <p>Sim, quando quiser, em Perfil → Configurações → Excluir conta. Seu perfil e seu progresso são apagados. Mais informações na página de excluir conta.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+{{> footer}}
+  </body>
+</html>

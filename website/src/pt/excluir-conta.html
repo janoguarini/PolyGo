@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+{{> head}}
+  </head>
+  <body>
+{{> nav}}
+    <main class="wrap legal">
+      <h1>Excluir sua conta do PolyGo</h1>
+      <p class="lead">
+        Você pode excluir sua conta e todos os seus dados quando quiser. É imediato e não pode ser
+        desfeito.
+      </p>
+{{> legalnav}}
+
+      <h2>Pelo app (imediato)</h2>
+      <ol class="steps">
+        <li>Abra o PolyGo e faça login.</li>
+        <li>Vá em <strong>Perfil</strong> e toque na engrenagem de <strong>Configurações</strong>.</li>
+        <li>No final, toque em <strong>Excluir conta</strong>.</li>
+        <li>
+          Digite seu nome de usuário para confirmar e toque em
+          <strong>Excluir minha conta para sempre</strong>.
+        </li>
+      </ol>
+
+      <h2>Sem o app (por email)</h2>
+      <p>
+        Se você não tem mais o app instalado, escreva para {{required:contactEmail:email de contacto}}
+        a partir do email com que você criou a conta, com o assunto <em>“Excluir minha conta”</em>.
+        Nós a excluímos em no máximo 30 dias e confirmamos por email.
+      </p>
+
+      <h2>O que é apagado</h2>
+      <ul>
+        <li>Sua conta, email e senha.</li>
+        <li>Seu perfil: nome de usuário, avatar ou foto, e país.</li>
+        <li>Seu progresso: lições, palavras, revisões, sequência, XP, missões, protetores e conquistas.</li>
+        <li>Seus Polys, skins, molduras e fundos.</li>
+        <li>Seu rating, rank e estatísticas.</li>
+        <li>Seus amigos, solicitações, convites e bloqueios.</li>
+      </ul>
+      <p>
+        As partidas que você jogou ficam no histórico dos seus rivais, mas
+        <strong>sem seu nome nem seu avatar</strong> (aparecem como “Jogador excluído”). Não guardamos
+        cópias dos seus dados depois que a conta é excluída.
+      </p>
+      <p>
+        Os dados de uso (análise) que ficaram associados ao identificador da sua conta são apagados
+        mediante pedido: escreva para {{required:contactEmail:email de contacto}}.
+      </p>
+      <h2>Se você tem o PolyGo Plus</h2>
+      <p>
+        Excluir a conta <strong>não cancela</strong> a assinatura: quem cobra é a loja. Cancele antes no
+        iPhone (Ajustes → seu nome → Assinaturas) ou no Android (Google Play → Pagamentos e
+        assinaturas → Assinaturas). A Apple e o Google mantêm o registro das suas compras conforme as
+        próprias políticas.
+      </p>
+      <p>Mais detalhes na <a href="privacidade">política de privacidade</a>.</p>
+    </main>
+{{> footer}}
+  </body>
+</html>
