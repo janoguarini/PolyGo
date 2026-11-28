@@ -29,6 +29,7 @@ La lista completa (tiendas, builds, calidad) está en [LAUNCH_CHECKLIST.md](LAUN
 | Función | `verify_jwt` | Uso |
 | --- | --- | --- |
 | `delete-account` | `false` (valida el token en el código) | Borra la cuenta del usuario que llama. Fuente: `supabase/functions/delete-account/index.ts`; redeploy por MCP o `npx supabase functions deploy delete-account --no-verify-jwt` |
+| `waitlist-join` | `false` (la llama el sitio estático) | Lista de espera del sitio. LOCAL, sin desplegar: pasos y secreto `WAITLIST_SALT` en [WAITLIST.md](WAITLIST.md) |
 
 ## App
 

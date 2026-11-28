@@ -16,5 +16,13 @@
     "it": "27 novembre 2026",
     "fr": "27 novembre 2026"
   },
-  "indexable": true
+  "indexable": true,
+  "launch": {
+    "mode": "waitlist"
+  },
+  "waitlist": {
+    "endpoint": "https://wtymosvsymzoosxscnxi.supabase.co/functions/v1/waitlist-join",
+    "minCountToShow": 50,
+    "consentVersion": "waitlist-2026-11-27"
+  }
 }

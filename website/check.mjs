@@ -3,7 +3,8 @@
 //   los hreflang de todas las versiones (+ x-default) y recíprocos;
 // - todos los enlaces internos (href/src) llevan a un archivo que existe en dist, y los #ancla a un id;
 // - el sitemap lista todas las páginas (salvo la 404) y nada que no exista;
-// - en francés, espacio fino/duro antes de ? ! : ; y dentro de « » (no un espacio común).
+// - en francés, espacio fino/duro antes de ? ! : ; y dentro de « » (no un espacio común);
+// - la lista de espera: casilla de consentimiento, enlace a la política, etiquetas y aria-live.
 // Sale con código 1 si encuentra algún problema.
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
@@ -18,6 +19,10 @@ const siteUrl = (process.env.SITE_URL || config.siteUrl).replace(/\/+$/, '');
 const problems = [];
 const fail = (file, msg) => problems.push(`${file}: ${msg}`);
 const storePlaceholders = new Set();
+// Mismo criterio que build.mjs: «stores» sin ningún enlace de tienda sigue mostrando la lista.
+const waitlistMode =
+  (process.env.LAUNCH_MODE || config.launch?.mode || 'waitlist') === 'waitlist' ||
+  !(process.env.APP_STORE_URL || config.appStoreUrl || process.env.PLAY_STORE_URL || config.playStoreUrl);
 
 const walk = (dir) =>
   readdirSync(dir).flatMap((name) => {
@@ -108,6 +113,38 @@ for (const [file, html] of pages) {
       fail(file, `${attr}="${raw}": no hay id="${hash}" en ${target}`);
     }
   }
+
+  // Lista de espera: cada formulario con su casilla de consentimiento (obligatoria y sin marcar), el
+  // enlace a la sección de la política de su idioma, etiqueta del email, trampa para bots y estado
+  // anunciado (aria-live). Las portadas de todos los idiomas lo tienen mientras launch.mode = "waitlist".
+  const waitlistForms = html.match(/<form class="wl"[\s\S]*?<\/form>/g) ?? [];
+  if (waitlistMode && !isBlog && path === `/${locale.dir ? `${locale.dir}/` : ''}` && !waitlistForms.length)
+    fail(file, 'launch.mode = "waitlist" y la portada no tiene el formulario de la lista de espera');
+  const privacyFile = `${locale.dir ? `${locale.dir}/` : ''}${locale.slugs.privacy}.html`;
+  for (const form of waitlistForms) {
+    const consent = form.match(/<input [^>]*name="consent"[^>]*>/)?.[0] ?? '';
+    if (!/type="checkbox"/.test(consent) || !/\srequired/.test(consent))
+      fail(file, 'lista de espera: falta la casilla de consentimiento obligatoria');
+    if (/\schecked/.test(consent)) fail(file, 'lista de espera: la casilla no puede venir marcada');
+    const consentId = consent.match(/id="([^"]+)"/)?.[1];
+    if (!consentId || !form.includes(`<label for="${consentId}">`))
+      fail(file, 'lista de espera: la casilla no tiene etiqueta');
+    const emailId = form.match(/<input [^>]*id="([^"]+)"[^>]*name="email"/)?.[1];
+    if (!emailId || !form.includes(`<label class="wl-sr" for="${emailId}">`))
+      fail(file, 'lista de espera: el email no tiene etiqueta');
+    const privacyLink = [...form.matchAll(/href="([^"#]*)#([^"]+)"/g)].find(([, p]) => {
+      const resolved = new URL(p, `https://x${path}`).pathname;
+      return fileFor(resolved) === privacyFile;
+    });
+    if (!privacyLink) fail(file, `lista de espera: falta el enlace a ${privacyFile}`);
+    if (!/name="website"[^>]*tabindex="-1"/.test(form) || !/class="wl-hp" aria-hidden="true"/.test(form))
+      fail(file, 'lista de espera: falta la trampa para bots oculta');
+    if (!/role="status" aria-live="polite"/.test(form)) fail(file, 'lista de espera: falta aria-live');
+    if (!form.includes(`name="locale" value="${locale.code}"`) && !isBlog)
+      fail(file, `lista de espera: el idioma enviado no es ${locale.code}`);
+  }
+  if (waitlistForms.length && (html.match(/assets\/waitlist\.js/g) ?? []).length !== 1)
+    fail(file, 'lista de espera: assets/waitlist.js tiene que cargarse una vez');
 
   // Tipografía francesa: nada de espacio común antes de ? ! : ; ni dentro de « ».
   if (locale.code === 'fr') {

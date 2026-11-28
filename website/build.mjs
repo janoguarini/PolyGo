@@ -24,7 +24,22 @@ const config = {
   ownerName: process.env.OWNER_NAME || file.ownerName,
   // false hasta tener el dominio definitivo: los buscadores no indexan la dirección provisoria.
   indexable: file.indexable !== false,
+  // Antes del lanzamiento: lista de espera en lugar de los botones de las tiendas (docs/WAITLIST.md).
+  launchMode: process.env.LAUNCH_MODE || file.launch?.mode || 'waitlist',
+  waitlist: {
+    endpoint:
+      process.env.WAITLIST_ENDPOINT ||
+      file.waitlist?.endpoint ||
+      'https://wtymosvsymzoosxscnxi.supabase.co/functions/v1/waitlist-join',
+    // El contador se esconde por debajo de este total (una lista casi vacía no entusiasma a nadie).
+    minCountToShow: Number(file.waitlist?.minCountToShow ?? 50),
+    // Cambiarla cada vez que cambie el texto del consentimiento (wlConsent en i18n.mjs).
+    consentVersion: file.waitlist?.consentVersion || 'waitlist-1',
+  },
 };
+if (!['waitlist', 'stores'].includes(config.launchMode)) {
+  throw new Error(`launch.mode = "${config.launchMode}": tiene que ser "waitlist" o "stores"`);
+}
 
 /** Páginas del sitio: archivo fuente, ruta pública, título y descripción (SEO). */
 const PAGES = [
@@ -166,6 +181,60 @@ const instagramHtml = (locale) =>
 const storesHtml = (locale) =>
   `<div class="stores">${storeButton(config.appStoreUrl, 'ios', APPLE_ICON, locale.t.appStoreSmall, 'App Store')}${storeButton(config.playStoreUrl, 'android', PLAY_ICON, locale.t.playSmall, 'Google Play')}</div>`;
 
+// «stores» sin ningún enlace cargado: no hay a dónde mandar a nadie, así que sigue la lista de espera.
+const hasStoreLinks = Boolean(config.appStoreUrl || config.playStoreUrl);
+const showWaitlist = config.launchMode === 'waitlist' || !hasStoreLinks;
+if (config.launchMode === 'stores' && !hasStoreLinks) {
+  warnings.push('launch.mode = "stores" sin enlaces de las tiendas: se muestra la lista de espera');
+}
+
+/**
+ * Formulario de la lista de espera (en cada lugar donde iban los botones de las tiendas). Funciona sin
+ * JS: envío común a la Edge Function, que vuelve a la página con #lista-ok o #lista-error (los avisos
+ * .wl-flash se ven con :target). Con JS (assets/waitlist.js) se envía por fetch y muestra el contador.
+ * `n` numera los formularios de la página (ids únicos); el primero trae los avisos y el script.
+ */
+function waitlistHtml(locale, { n, base, privacyUrl, path }) {
+  const t = locale.t;
+  const id = (name) => `wl-${name}-${n}`;
+  const w = config.waitlist;
+  const data = {
+    endpoint: w.endpoint,
+    min: String(w.minCountToShow),
+    'msg-success': t.wlSuccess,
+    'msg-success-count': t.wlSuccessCount,
+    'msg-invalid': t.wlErrInvalid,
+    'msg-consent': t.wlErrConsent,
+    'msg-network': t.wlErrNetwork,
+    'msg-rate': t.wlErrRate,
+    'msg-server': t.wlErrServer,
+    'msg-sending': t.wlSending,
+  };
+  const attrs = Object.entries(data)
+    .map(([k, v]) => ` data-${k}="${escape(v)}"`)
+    .join('');
+  const flash =
+    n === 1
+      ? `<p class="wl-flash wl-flash-ok" id="lista-ok">${t.wlSuccess}</p><p class="wl-flash wl-flash-err" id="lista-error">${t.wlErrServer}</p>`
+      : '';
+  return `<form class="wl" action="${escape(w.endpoint)}" method="post" data-waitlist${attrs}>
+              ${flash}<p class="wl-intro">${t.wlIntro}</p>
+              <p class="wl-count" data-wl-count data-template="${escape(t.wlCounter)}" hidden></p>
+              <div class="wl-row">
+                <label class="wl-sr" for="${id('email')}">${t.wlEmailLabel}</label>
+                <input class="wl-email" id="${id('email')}" type="email" name="email" required maxlength="254" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" placeholder="${escape(t.wlPlaceholder)}" aria-describedby="${id('status')}" />
+                <button class="btn btn-primary wl-btn" type="submit">${t.wlSubmit}</button>
+              </div>
+              <p class="wl-consent"><input id="${id('consent')}" type="checkbox" name="consent" value="true" required /><span><label for="${id('consent')}">${t.wlConsent}</label> <a href="${privacyUrl}#${t.wlAnchor}">${t.wlPrivacyLink}</a></span></p>
+              <div class="wl-hp" aria-hidden="true"><label for="${id('website')}">${t.wlHoneypot}</label><input id="${id('website')}" type="text" name="website" tabindex="-1" autocomplete="off" /></div>
+              <input type="hidden" name="locale" value="${locale.code}" />
+              <input type="hidden" name="consentVersion" value="${escape(w.consentVersion)}" />
+              <input type="hidden" name="return" value="${escape(path)}" />
+              <input type="hidden" name="source" value="" />
+              <p class="wl-status" id="${id('status')}" role="status" aria-live="polite"></p>
+            </form>${n === 1 ? `<script src="${base}assets/waitlist.js" defer></script>` : ''}`;
+}
+
 /** Texto plano de un fragmento HTML (para los datos estructurados): sin etiquetas ni entidades. */
 const textOf = (html) =>
   html
@@ -248,6 +317,9 @@ function render(page) {
     return `<a href="${link(target)}" hreflang="${l.lang}" lang="${l.lang}"${current ? ' aria-current="page"' : ''}>${l.name}</a>`;
   }).join('\n          ');
   const t = Object.fromEntries(Object.entries(locale.t).map(([k, v]) => [`t.${k}`, v]));
+  // Con la lista de espera, el botón del menú invita a anotarse (lleva al mismo #descargar).
+  if (showWaitlist) t['t.download'] = locale.t.wlNav;
+  let forms = 0;
   const vars = {
     ...t,
     lang: locale.lang,
@@ -266,7 +338,7 @@ function render(page) {
     siteUrl: config.siteUrl,
     year: String(new Date().getFullYear()),
     jsonLd: jsonLd(page),
-    stores: storesHtml(locale),
+    stores: showWaitlist ? '' : storesHtml(locale),
     instagram: instagramHtml(locale),
     base,
     headExtra: page.headExtra ?? '',
@@ -277,6 +349,10 @@ function render(page) {
   html = html.replace(/\{\{> (\w+)\}\}/g, (_, name) => partial(name));
   html = html.replace(/\{\{required:(\w+):([^}]+)\}\}/g, (_, key, label) => required(key, label, locale));
   html = html.replace(/\{\{([\w.]+)\}\}/g, (m, key) => {
+    if (key === 'stores' && showWaitlist) {
+      forms += 1;
+      return waitlistHtml(locale, { n: forms, base, privacyUrl: vars.privacyUrl, path: page.path });
+    }
     if (key in vars) return vars[key];
     if (key in config) return escape(config[key]);
     throw new Error(`${page.file ?? page.out}: variable desconocida ${m}`);

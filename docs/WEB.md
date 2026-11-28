@@ -37,6 +37,7 @@ npm run website:emblems   # regenera los SVG de rangos desde la geometría de la
 | `contactEmail`, `ownerName`, `country`, `privacyUpdated` | Datos de la política de privacidad y de borrar cuenta. |
 | `privacyUpdatedLocalized`, `countryLocalized` | La fecha de actualización y el país escritos en cada idioma (`"pt-BR"`, `"it"`, `"fr"`). Al cambiar `privacyUpdated`, cambiar también estas fechas: si falta una, el build avisa. |
 | `indexable` | `false` = todas las páginas con `noindex` y sin sitemap en `robots.txt`. Hoy está en `false` hasta tener dominio propio. |
+| `launch.mode`, `waitlist` | `"waitlist"` = formulario de lista de espera donde iban las tiendas (antes del lanzamiento); `"stores"` = los botones de las tiendas. Endpoint, umbral del contador y versión del consentimiento en `waitlist`. Ver [WAITLIST.md](WAITLIST.md). Variables: `LAUNCH_MODE`, `WAITLIST_ENDPOINT`. |
 
 Cada campo se puede pisar con una variable de entorno en el hosting: `SITE_URL`, `APP_STORE_URL`, `PLAY_STORE_URL`, `CONTACT_EMAIL`, `OWNER_NAME`.
 
