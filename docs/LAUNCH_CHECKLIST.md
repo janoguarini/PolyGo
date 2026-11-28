@@ -62,10 +62,62 @@ dispositivo o una decisión de producto; el resto está en el repo.
 
 ## 5. Fichas de tienda
 
-- **Apple → Privacidad de la app:** datos vinculados al usuario: email (cuenta), nombre de usuario (identificador), contenido del usuario (progreso de aprendizaje, partidas). Uso: funcionalidad de la app. **Sin** seguimiento, **sin** publicidad, **sin** analítica de terceros.
-- **Google Play → Seguridad de los datos:** lo mismo. Datos cifrados en tránsito (HTTPS). El usuario puede pedir el borrado (en la app y en la URL web de la sección 1).
-- **Clasificación por edad:** sin contenido sensible; hay interacción entre usuarios limitada (nombre de usuario y avatar visibles en clasificación y partidas, sin chat).
+> Revisado el 2026-11-27 contra el código (src/lib/analytics.ts, src/lib/metaEvents.ts, app.config.ts,
+> src/features/ads/config.ts, SpeakAnswer.tsx). Lo anterior («sin seguimiento, sin publicidad, sin
+> analítica») quedó viejo: hoy hay PostHog, el SDK de Meta con ATT y AdMob (apagado en release).
+> Vale para **todos los idiomas** de las fichas. Si cambia un SDK, se revisa esto y la política.
+
+### Apple → Privacidad de la app
+
+**Datos usados para rastrearte (tracking):**
+- **Identificadores → ID del dispositivo** (IDFA): SDK de Meta, para medir qué anuncios trajeron la
+  instalación. Sólo si la persona acepta el aviso ATT (si lo rechaza, no se usa).
+
+**Datos vinculados a ti:**
+
+| Categoría (Apple) | Dato | Uso declarado |
+| --- | --- | --- |
+| Información de contacto → Email | Cuenta (Supabase Auth; o Apple / Google) | Funcionalidad de la app |
+| Identificadores → ID de usuario | Id interno, nombre de usuario | Funcionalidad; Analítica (PostHog usa sólo el id interno) |
+| Contenido del usuario → Fotos | Foto de perfil, si la sube | Funcionalidad |
+| Contenido del usuario → Otro contenido | Progreso, respuestas, partidas, amigos | Funcionalidad |
+| Compras → Historial de compras | PolyGo Plus / Sin publicidad (RevenueCat) | Funcionalidad; Analítica (evento de compra a Meta y PostHog) |
+| Uso → Interacción con el producto | Pantallas, lecciones, partidas (PostHog); registro, primera lección y compra (Meta) | Analítica; Publicidad de terceros (Meta, medición) |
+| Diagnóstico → Otros datos de diagnóstico | Versión de la app, modelo y sistema del dispositivo (PostHog) | Analítica |
+
+**No se recopila:** ubicación, contactos, historial de navegación, datos financieros (la tarjeta la
+maneja Apple), salud. **Audio:** el micrófono sólo se usa en los ejercicios de pronunciación; el
+reconocimiento lo hace el sistema (Apple) y PolyGo no guarda ni envía la grabación → no se declara
+como dato recopilado por la app. **Publicidad (AdMob):** el SDK está en la app pero en las builds de
+tienda no se inicia (`ADS_MODE = 'off'`). El día que se encienda: agregar «ID del dispositivo» y
+«Datos de publicidad» con uso «Publicidad de terceros», y revisar el consentimiento (UMP/ATT).
+
+### Google Play → Seguridad de los datos
+
+| Tipo de dato | ¿Se recopila? / ¿se comparte? | Para qué | ¿Opcional? |
+| --- | --- | --- | --- |
+| Información personal → Dirección de email | Recopilado | Funcionalidad, gestión de la cuenta | No |
+| Información personal → ID de usuario | Recopilado | Funcionalidad, analítica | No |
+| Fotos y videos → Fotos | Recopilado | Funcionalidad (foto de perfil) | Sí |
+| Información financiera → Historial de compras | Recopilado | Funcionalidad, analítica | Sí |
+| Actividad en la app → Interacciones | Recopilado; **compartido** con Meta (medición de anuncios) | Analítica, publicidad o marketing | Sí (Ajustes → Compartir datos de uso) |
+| Información y rendimiento de la app → Diagnóstico | Recopilado | Analítica | Sí |
+| Identificadores de dispositivo u otros → ID de publicidad | Recopilado; **compartido** con Meta | Publicidad o marketing (atribución) | Sí |
+| Audio → Grabaciones de voz | No (lo procesa el reconocimiento del sistema; PolyGo no lo guarda) | — | — |
+
+- Datos cifrados en tránsito: **sí** (HTTPS). Borrado de datos: **sí**, en la app (Ajustes → Eliminar
+  cuenta) y en https://polygoidiomas.com/borrar-cuenta.
+- **Declaración de ID de publicidad** (Play Console → Contenido de la app): **sí, usa el ID de
+  publicidad** (SDK de Meta; y AdMob cuando se encienda). El permiso `AD_ID` lo agregan esos SDK.
+
+### Otros
+
+- **Clasificación por edad:** sin contenido sensible; interacción entre usuarios limitada (nombre de
+  usuario, avatar y foto de perfil visibles en clasificación, perfiles y partidas, sin chat; las fotos
+  se pueden reportar).
 - **Categoría:** Educación.
+- **Política de privacidad:** https://polygoidiomas.com/privacidad (la misma para todos los idiomas;
+  hay versiones traducidas del sitio).
 
 ## 6. Guion de prueba manual
 
